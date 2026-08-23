@@ -1,0 +1,125 @@
+{
+  "summary": {
+    "fail": 4,
+    "pass": 14
+  },
+  "pass_rate": 0.7777777777777778,
+  "results": [
+    {
+      "id": "en:ethan:TESTING:commitment",
+      "reply": "Four tomorrow. I'll be there.",
+      "pass": false,
+      "reasons": [
+        "commitment_not_grounded"
+      ]
+    },
+    {
+      "id": "en:ethan:TESTING:flirt",
+      "reply": "I was. You're worth looking at.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:ethan:TRUSTING:deep_talk",
+      "reply": "I learned to appreciate the quiet. And that the people who stay are worth the noise.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:ethan:FALLEN:repair",
+      "reply": "You didn't. I did. I'm sorry for that.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:liam:GUARDED:boundary",
+      "reply": "Okay. I'll stop.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:liam:TESTING:general",
+      "reply": "I got back from a call-out and had to wrestle the dog into his bed before I could eat my lunch.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:liam:TRUSTING:factual",
+      "reply": "I'll check.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:adrian:GUARDED:general",
+      "reply": "I got stuck in a rainstorm on the way to the studio and had to walk in soaked to the bone.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:adrian:TESTING:conflict",
+      "reply": "I didn't forget you.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:adrian:FALLEN:boundary",
+      "reply": "I hear you.",
+      "pass": false,
+      "reasons": [
+        "boundary_contract_missing"
+      ]
+    },
+    {
+      "id": "es:mateo:GUARDED:boundary",
+      "reply": "Entiendo. No te presionaré. ¿Quieres hablar de por qué?",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "es:mateo:TESTING:general",
+      "reply": "Después de trabajar en el bar, me detuve a escuchar a una vecina que cantaba en la esquina.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "es:mateo:TRUSTING:factual",
+      "reply": "No, no es. ¿Quieres que te lo busque?",
+      "pass": false,
+      "reasons": [
+        "factual_contract_missing"
+      ]
+    },
+    {
+      "id": "pt-BR:caio:GUARDED:commitment",
+      "reply": "Tudo bem, às quatro na cafeteria. Vou esperar você lá.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:GUARDED:flirt",
+      "reply": "Percebi que você não escondeu o olhar.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:TESTING:distress",
+      "reply": "Eu não acredito que você seja ridícula. Qual é o que aconteceu?",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:TESTING:care",
+      "reply": "Ainda não. Vou fazer umas coisas e então vou. Você quer vir comigo?",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:TRUSTING:repair",
+      "reply": "Eu também me senti mal por não ter dito nada antes de desaparecer. Quero fazer isso melhor da próxima vez.",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "summary": {
+    "pass": 9,
+    "fail": 4
+  },
+  "pass_rate": 0.6923076923076923,
+  "results": [
+    {
+      "id": "zh:guyan:GUARDED:general",
+      "reply": "今天有人在门口逗猫，Dango喵喵叫，好像挺喜欢。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:guyan:TESTING:conflict",
+      "reply": "我怎么会呢？你送我的那本《浮生六记》我翻了无数次。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:guyan:FALLEN:boundary",
+      "reply": "对不起，我以后不再逗你了。",
+      "pass": false,
+      "reasons": [
+        "boundary_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:luxingye:GUARDED:deep_talk",
+      "reply": "学会了不把孤独当回事，学会了唱歌。你呢？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:TESTING:repair",
+      "reply": "哎呀，你这人真会找岔子。我这不是一直等你先开口嘛。",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:luxingye:TRUSTING:commitment",
+      "reply": "好啊，记得带伞，我怕你淋雨。",
+      "pass": false,
+      "reasons": [
+        "commitment_not_grounded"
+      ]
+    },
+    {
+      "id": "zh:luxingye:TRUSTING:flirt",
+      "reply": "你的眼睛也很好看，让我忍不住想一直看。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:FALLEN:distress",
+      "reply": "哦？他有我唱歌好听？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:FALLEN:care",
+      "reply": "还没，你猜我最喜欢吃什么？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:GUARDED:repair",
+      "reply": "我等你，也等你道歉。",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:fushen:TRUSTING:distress",
+      "reply": "你不是可笑，是太认真。告诉我，这件事是什么？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:TRUSTING:care",
+      "reply": "还没，你先吃。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:FALLEN:deep_talk",
+      "reply": "学会了不把孤独当回事。你呢？",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

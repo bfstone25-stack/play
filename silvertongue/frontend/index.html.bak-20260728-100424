@@ -1,0 +1,797 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>舌战 · Silvertongue</title><script src="config.js"></script>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;background:#141019;font-family:-apple-system,'PingFang SC','Microsoft YaHei',Georgia,serif;color:#f0e9dd}
+#app{position:fixed;inset:0;max-width:640px;margin:0 auto;display:flex;flex-direction:column;overflow:hidden;background:#141019}
+/* HUD 目标条 */
+#hud{position:relative;z-index:8;margin:8px 10px 6px;padding:9px 12px;background:linear-gradient(180deg,rgba(60,48,36,.9),rgba(40,32,26,.92));border:1px solid #5a4a36;border-left:3px solid #e0a94e;border-radius:8px}
+.day{color:#e0a94e;font-size:.68em;letter-spacing:2px;font-family:monospace}
+.goal{font-size:1em;font-weight:700;margin-top:2px;color:#f5ecd9;line-height:1.35}
+.diff{color:#b09668;font-size:.74em;margin-top:2px}
+.lang{position:absolute;top:10px;right:10px;z-index:30;background:rgba(255,255,255,.08);border:1px solid #5a4a3a;color:#c9b48f;border-radius:20px;padding:4px 11px;font-size:.78em;cursor:pointer}
+.helpbtn{position:absolute;top:10px;left:10px;z-index:30;width:28px;height:28px;background:rgba(255,255,255,.08);border:1px solid #5a4a3a;color:#c9b48f;border-radius:50%;font-size:.85em;cursor:pointer}
+#hud{margin-top:44px}
+/* 地图区 */
+#stageWrap{position:relative;flex:1;min-height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#game{display:block;image-rendering:auto;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+#bubbles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:9}
+/* 漫画气泡 */
+.bub{position:absolute;transform:translate(-50%,-100%);max-width:230px;background:#fdf9f0;color:#2a2018;border-radius:12px;padding:8px 11px;font-size:.86em;line-height:1.5;box-shadow:0 4px 14px rgba(0,0,0,.35);opacity:0;transition:opacity .18s;pointer-events:none;word-break:break-word}
+.bub.show{opacity:1}
+.bub::after{content:"";position:absolute;left:var(--tailX,50%);bottom:-8px;transform:translateX(-50%);border:9px solid transparent;border-top-color:#fdf9f0;border-bottom:0}
+.bub.player{background:#fff3d6}.bub.player::after{border-top-color:#fff3d6}
+.bub.gray{background:#d8d4cc;color:#555}.bub.gray::after{border-top-color:#d8d4cc}
+.bub .cursor{display:inline-block;width:7px;height:.9em;background:#c99a3c;vertical-align:-2px;animation:blink .7s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+/* 角落轮次 */
+#turnsBox{position:absolute;right:10px;bottom:10px;z-index:10;background:rgba(20,14,10,.7);border:1px solid #4a3c30;border-radius:10px;padding:5px 10px;display:none;align-items:center;gap:8px}
+.moves{font-family:monospace;font-size:.72em;color:#d8c39a;letter-spacing:1px}
+.pips{display:flex;gap:3px}.pip{width:6px;height:6px;border-radius:50%;background:#3a3026}.pip.used{background:#e0a94e}
+/* 输入条 */
+#inputBar{position:relative;z-index:8;margin:0 10px;padding:8px 0 10px;display:none;gap:8px}
+#inputBar.on{display:flex}
+#inp{flex:1;background:#1a1418;border:1px solid #4a3c30;color:#efe6d6;border-radius:20px;padding:11px 15px;font-size:1em;font-family:inherit;outline:none;min-width:0}
+#inp:focus{border-color:#e0a94e}
+#send{background:linear-gradient(180deg,#e6b45c,#d0913c);border:0;border-radius:20px;padding:0 17px;color:#2a1c08;font-weight:800;font-size:1.05em;cursor:pointer}
+#send:active{transform:scale(.9)}#send:disabled{opacity:.4}
+#leaveBtn{background:transparent;border:1px solid #4a3c30;color:#a89066;border-radius:20px;padding:0 12px;cursor:pointer;font-size:.8em}
+#hint{z-index:8;text-align:center;color:#8a7860;font-size:.74em;padding:4px 0 8px;letter-spacing:1px}
+/* 虚拟十字键 */
+#dpad{position:absolute;right:14px;bottom:64px;z-index:25;width:132px;height:132px;display:none;user-select:none}
+#dpad.on{display:block}
+.dbtn{position:absolute;width:44px;height:44px;background:rgba(240,205,136,.16);border:1px solid rgba(224,169,78,.5);border-radius:10px;color:#e0a94e;font-size:1.2em;display:flex;align-items:center;justify-content:center}
+.dbtn:active{background:rgba(240,205,136,.4)}
+#dU{left:44px;top:0}#dD{left:44px;bottom:0}#dL{left:0;top:44px}#dR{right:0;top:44px}
+#dA{left:44px;top:44px;border-radius:50%;font-size:.75em;font-weight:800}
+#dpadToggle{position:absolute;right:10px;bottom:38px;z-index:26;width:32px;height:32px;background:rgba(255,255,255,.08);border:1px solid #5a4a3a;border-radius:8px;font-size:1em;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+#dpadToggle:active{background:rgba(240,205,136,.3)}
+/* 胜负横幅 */
+#banner{position:absolute;inset:0;z-index:22;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px;background:radial-gradient(circle at 50% 40%,rgba(60,44,20,.9),rgba(0,0,0,.93))}
+#banner h2{font-size:2.1em;letter-spacing:3px;margin:0 0 8px;text-shadow:0 0 24px rgba(240,205,136,.6)}
+.grid{font-size:1.5em;letter-spacing:3px;margin:10px 0}
+.share{background:linear-gradient(180deg,#e6b45c,#d0913c);border:0;color:#2a1c08;border-radius:10px;padding:12px 26px;font-weight:800;cursor:pointer;font-size:1em;margin-top:6px}
+/* 序幕 */
+#introOv{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:rgba(10,8,4,.85);padding:22px;backdrop-filter:blur(3px)}
+.intro-card{max-width:440px;width:100%;background:linear-gradient(180deg,#241a12,#171017);border:1px solid #5a4a36;border-radius:16px;padding:26px 24px 22px;box-shadow:0 0 60px rgba(224,169,78,.18),0 20px 50px rgba(0,0,0,.6);position:relative;overflow:hidden}
+.intro-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8a6a34,#f0cd88,#e0a94e,#8a6a34)}
+.intro-title{font-size:1.5em;font-weight:800;letter-spacing:3px;color:#f0cd88;text-align:center;margin:4px 0 12px;text-shadow:0 0 18px rgba(240,205,136,.35)}
+.intro-open{color:#d8c39a;font-size:.95em;line-height:1.7;text-align:center;margin-bottom:16px;font-style:italic}
+.intro-rules{color:#c9b48f;font-size:.88em;line-height:1.75}
+.intro-rules div{margin-bottom:7px}
+.intro-rules b{color:#e0a94e;margin-right:6px}
+.intro-go{display:block;width:100%;margin-top:18px;background:linear-gradient(180deg,#e6b45c,#d0913c);border:0;border-radius:12px;padding:13px;color:#2a1c08;font-weight:800;font-size:1.05em;cursor:pointer;letter-spacing:1px}
+.intro-go:active{transform:scale(.97)}
+</style></head><body>
+<div id="app">
+<button class="lang" onclick="toggleLang()">中/EN</button>
+<button class="helpbtn" onclick="showIntro()">?</button>
+<div id="introOv"><div class="intro-card">
+  <div class="intro-title" id="inTitle"></div>
+  <div class="intro-open" id="inOpen"></div>
+  <div class="intro-rules" id="inRules"></div>
+  <button class="intro-go" id="inGo" onclick="closeIntro()"></button>
+</div></div>
+<div id="hud"><div class="day" id="day"></div><div class="goal" id="goal">…</div><div class="diff" id="diff"></div></div>
+<div id="stageWrap">
+  <canvas id="game"></canvas>
+  <div id="bubbles"></div>
+  <div id="turnsBox"><span class="moves" id="moves"></span><div class="pips" id="pips"></div></div>
+  <div id="dpad">
+    <div class="dbtn" id="dU">▲</div><div class="dbtn" id="dD">▼</div>
+    <div class="dbtn" id="dL">◀</div><div class="dbtn" id="dR">▶</div>
+    <div class="dbtn" id="dA">GO</div>
+  </div>
+  <button id="dpadToggle" title="d-pad">🎮</button>
+  <div id="banner"></div>
+</div>
+<div id="inputBar"><input id="inp" placeholder="" enterkeyhint="send"><button id="send" onclick="say()">➤</button><button id="leaveBtn" onclick="exitDialog()"></button></div>
+<div id="hint"></div>
+</div>
+<script>
+"use strict";
+/* ============ API 契约（与旧版完全一致） ============ */
+const API=window.SILVERTONGUE_API||window.APP_API||"";
+const EMO={customs:"🛃",raise:"💼",guard:"💂",landlord:"🏠",cat:"🐈",investor:"📈",dragon:"🐉",teen:"🙄",barista:"☕",ai:"🤖",witness:"🫣",chef:"👨‍🍳",genie:"🧞",exlover:"💔"};
+let S=null,hist=[],turns=0,done=false,lang=navigator.language.startsWith("zh")?"zh":"en";
+const T={en:{ph:"Say something…",moves:(u,b)=>`${u}/${b}`,diff:(d,n)=>`${"★".repeat(d)} · ${n} won today`,
+  win:"PERSUADED!",winsub:(n,p)=>`in ${n} line${n>1?"s":""}${p!=null?` · top ${p}%`:""}`,lost:"Out of words",
+  lostsub:"A new challenge tomorrow",share:"Share",copied:"Copied — paste anywhere.",leave:"Leave",
+  hintWalk:"Arrows/WASD to move · walk up to the person with '!' · SPACE to talk",
+  hintTalk:"Type your line below · Enter to send",wait:"(…)",opening:c=>`(${c} looks at you, waiting.)`,
+  tomorrow:"Come back tomorrow for a new duel.",loseLine:"(shakes head) That's enough for today."},
+ zh:{ph:"说点什么…",moves:(u,b)=>`${u}/${b}`,diff:(d,n)=>`${"★".repeat(d)} · 今日${n}人说服`,
+  win:"说服成功！",winsub:(n,p)=>`用了${n}句${p!=null?` · 今日前${p}%`:""}`,lost:"次数用尽",
+  lostsub:"明天再来新挑战",share:"分享战绩",copied:"已复制——粘贴到任何地方。",leave:"离开",
+  hintWalk:"方向键/WASD移动 · 走到头顶'!'的人身边 · 空格对话",
+  hintTalk:"在下方输入你的话 · 回车发送",wait:"（……）",opening:c=>`（${c}看着你，等你开口。）`,
+  tomorrow:"明天再来，新的对手在等你。",loseLine:"（摇了摇头）今天就到这吧。"}};
+function tr(){return T[lang]}
+function pid(){let p=localStorage.getItem("st_pid");if(!p){p=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("st_pid",p);}return p;}
+
+/* ============ 地图：12x8 逻辑网格 ============ */
+const COLS=12,ROWS=8,TS=48,W=COLS*TS,H=ROWS*TS;
+// 0草 1石板路 2建筑体(实心) 3树(实心) 4花 5长椅(实心)
+const MAP=[
+ [3,0,0,0,0,0,3,0,0,0,0,3],
+ [0,2,2,2,0,0,0,0,2,2,2,0],
+ [0,2,2,2,0,4,0,0,2,2,2,0],
+ [0,0,1,0,0,0,0,0,0,1,0,4],
+ [1,1,1,1,1,1,1,1,1,1,1,1],
+ [4,0,0,0,0,1,0,0,0,0,0,0],
+ [3,0,0,4,0,1,0,0,5,0,4,3],
+ [0,0,0,0,0,1,0,0,0,0,0,0]];
+// 建筑元数据：[c0,r0,c1,r1, 墙色, 屋顶色, 标签key]
+const BLDG=[[1,1,3,2,"#e8d9b8","#c96f4a","hq"],[8,1,10,2,"#e0c9a8","#7a9e6b","cafe"]];
+const BLDG_LABEL={hq:{zh:"事务所",en:"OFFICE"},cafe:{zh:"咖啡",en:"CAFÉ"}};
+function solid(c,r){if(c<0||r<0||c>=COLS||r>=ROWS)return true;const t=MAP[r][c];return t===2||t===3||t===5;}
+
+/* ============ 角色 ============ */
+const player={c:5,r:7,x:5,y:7,dir:"up",moving:false,mx:0,my:0,mt:0,phase:0};
+// 今日对手：站在事务所(左上建筑)门前
+const boss={c:2,r:3,dir:"down",emoji:"🗣️",name:"",isBoss:true,
+  skin:"#f2c79a",shirt:"#8a5a9e"};
+// 氛围NPC（本地台词，双语，不调API）
+const AMBIENT=[
+ {c:9,r:3,dir:"down",skin:"#e8b48a",shirt:"#5a8a6e",
+  lines:{zh:"新烘的豆子……可惜今天不卖，我在等一个道歉。",en:"Fresh roast today… but I'm not selling. I'm waiting for an apology."}},
+ {c:9,r:6,dir:"left",skin:"#f2cfa0",shirt:"#4a6a9e",
+  lines:{zh:"我在这张长椅上说服过我自己三次。都失败了。",en:"I've tried to persuade myself three times on this bench. Lost every round."}},
+ {c:3,r:6,dir:"right",skin:"#e0a87a",shirt:"#b5723e",
+  lines:{zh:"听说头顶有'!'的那位今天心情不太好。祝你好运。",en:"Word is, the one with the '!' is in a mood today. Good luck."}}];
+const npcs=[boss,...AMBIENT];
+
+/* ============ Canvas ============ */
+const cv=document.getElementById("game"),cx=cv.getContext("2d");
+let scale=1,dpr=Math.min(window.devicePixelRatio||1,2);
+function fit(){
+ const w=document.getElementById("stageWrap");
+ const aw=w.clientWidth-8,ah=w.clientHeight-8;
+ scale=Math.min(aw/W,ah/H);
+ cv.style.width=(W*scale)+"px";cv.style.height=(H*scale)+"px";
+ cv.width=Math.round(W*scale*dpr);cv.height=Math.round(H*scale*dpr);
+ cx.setTransform(scale*dpr,0,0,scale*dpr,0,0);
+}
+window.addEventListener("resize",fit);
+
+/* --- 底图缓存 --- */
+let ground=null;
+function buildGround(){
+ ground=document.createElement("canvas");ground.width=W;ground.height=H;
+ const g=ground.getContext("2d");
+ for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+  const t=MAP[r][c],x=c*TS,y=r*TS;
+  // 草地底色（棋盘微差）
+  g.fillStyle=(c+r)%2?"#96c268":"#9ecb72";g.fillRect(x,y,TS,TS);
+  if(t===1){ // 石板路
+   g.fillStyle="#cfc4ae";g.fillRect(x,y,TS,TS);
+   g.fillStyle="#bdb29c";g.fillRect(x+2,y+2,TS/2-3,TS/2-3);g.fillRect(x+TS/2+1,y+TS/2+1,TS/2-3,TS/2-3);
+   g.fillStyle="#c6bba6";g.fillRect(x+TS/2+1,y+2,TS/2-3,TS/2-3);g.fillRect(x+2,y+TS/2+1,TS/2-3,TS/2-3);
+  }
+  if(t===4){ // 花
+   for(let i=0;i<3;i++){const fx=x+8+i*14,fy=y+12+(i%2)*16;
+    g.fillStyle=["#f0c95e","#e88a9a","#f5f0e0"][i%3];
+    g.beginPath();g.arc(fx,fy,3.4,0,7);g.fill();
+    g.fillStyle="#d89a3c";g.beginPath();g.arc(fx,fy,1.4,0,7);g.fill();}
+  }
+ }
+ // 建筑
+ for(const[b0,r0,b1,r1,wall,roof,key]of BLDG){
+  const x=b0*TS,y=r0*TS,w=(b1-b0+1)*TS,h=(r1-r0+1)*TS;
+  g.fillStyle="rgba(0,0,0,.15)";g.fillRect(x+3,y+h-3,w,7); // 影
+  g.fillStyle=wall;g.fillRect(x,y+12,w,h-12);
+  g.fillStyle=roof;g.beginPath();g.moveTo(x-7,y+16);g.lineTo(x+w/2,y-14);g.lineTo(x+w+7,y+16);g.closePath();g.fill();
+  g.fillStyle="rgba(0,0,0,.12)";g.fillRect(x,y+12,w,4);
+  // 门+窗
+  g.fillStyle="#6b4a2e";g.fillRect(x+w/2-10,y+h-26,20,26);
+  g.fillStyle="#f5e6b8";g.fillRect(x+10,y+24,16,14);g.fillRect(x+w-26,y+24,16,14);
+  g.strokeStyle="#8a7a5e";g.strokeRect(x+10,y+24,16,14);g.strokeRect(x+w-26,y+24,16,14);
+  // 招牌
+  const lb=BLDG_LABEL[key];g.fillStyle="#3a2c1e";g.font="bold 11px monospace";g.textAlign="center";
+  g.fillText(lang==="zh"?lb.zh:lb.en,x+w/2,y+22);
+ }
+ // 树 & 长椅
+ for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+  const x=c*TS,y=r*TS;
+  if(MAP[r][c]===3){
+   g.fillStyle="rgba(0,0,0,.15)";g.beginPath();g.ellipse(x+TS/2,y+TS-6,14,5,0,0,7);g.fill();
+   g.fillStyle="#7a5230";g.fillRect(x+TS/2-4,y+TS-22,8,18);
+   g.fillStyle="#4f8a44";g.beginPath();g.arc(x+TS/2,y+16,16,0,7);g.fill();
+   g.fillStyle="#5fa050";g.beginPath();g.arc(x+TS/2-7,y+22,11,0,7);g.arc(x+TS/2+8,y+21,10,0,7);g.fill();
+  }
+  if(MAP[r][c]===5){
+   g.fillStyle="rgba(0,0,0,.15)";g.fillRect(x+4,y+TS-10,TS-8,5);
+   g.fillStyle="#a06a3a";g.fillRect(x+4,y+16,TS-8,10);g.fillRect(x+4,y+8,TS-8,6);
+   g.fillStyle="#7a4e28";g.fillRect(x+7,y+26,5,14);g.fillRect(x+TS-12,y+26,5,14);
+  }
+ }
+}
+
+/* --- 小人 --- */
+function drawPerson(g,px,py,dir,phase,skin,shirt,moving){
+ const sw=moving?Math.sin(phase)*4:0;
+ g.fillStyle="rgba(0,0,0,.18)";g.beginPath();g.ellipse(px,py+16,10,4,0,0,7);g.fill();
+ // 腿
+ g.fillStyle="#3a3548";
+ g.fillRect(px-6,py+4,5,12+sw*.6);g.fillRect(px+1,py+4,5,12-sw*.6);
+ // 身体
+ g.fillStyle=shirt;g.beginPath();g.roundRect(px-8,py-10,16,17,5);g.fill();
+ // 手臂摆动
+ g.fillStyle=shirt;g.fillRect(px-11,py-8+sw*.5,4,11);g.fillRect(px+7,py-8-sw*.5,4,11);
+ // 头
+ g.fillStyle=skin;g.beginPath();g.arc(px,py-19,9,0,7);g.fill();
+ // 头发
+ g.fillStyle="#4a3220";g.beginPath();g.arc(px,py-21,9,Math.PI,0);g.fill();
+ // 眼睛（按方向）
+ g.fillStyle="#2a2018";
+ if(dir==="down"){g.fillRect(px-4,py-19,2.4,2.4);g.fillRect(px+2,py-19,2.4,2.4);}
+ else if(dir==="left")g.fillRect(px-6,py-19,2.4,2.4);
+ else if(dir==="right")g.fillRect(px+4,py-19,2.4,2.4);
+}
+function worldXY(o){ // 中心像素坐标（player 用插值坐标）
+ const gx=o===player?player.x:o.c,gy=o===player?player.y:o.r;
+ return[gx*TS+TS/2,gy*TS+TS/2+6];
+}
+
+/* --- 彩带粒子 --- */
+let confetti=[];
+function popConfetti(){
+ confetti=[];const colors=["#e6b45c","#f0cd88","#e88a9a","#7ac0e8","#8fd08a","#f5f0e0"];
+ for(let i=0;i<130;i++)confetti.push({x:W/2,y:H*.4,vx:(Math.random()-.5)*9,vy:-Math.random()*8-3,
+  g:.22,w:4+Math.random()*5,h:3+Math.random()*4,rot:Math.random()*7,vr:(Math.random()-.5)*.4,
+  col:colors[i%6],life:120+Math.random()*60});
+}
+function drawConfetti(){
+ for(const p of confetti){p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.99;p.rot+=p.vr;p.life--;
+  cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.globalAlpha=Math.max(0,Math.min(1,p.life/40));
+  cx.fillStyle=p.col;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore();}
+ confetti=confetti.filter(p=>p.life>0&&p.y<H+30);
+}
+
+/* --- 渲染循环 --- */
+let tick=0;
+function frame(){
+ tick++;
+ stepPlayer();
+ cx.clearRect(0,0,W,H);
+ if(ground)cx.drawImage(ground,0,0);
+ // 按 y 排序绘制角色
+ const chars=[...npcs,player].sort((a,b)=>worldXY(a)[1]-worldXY(b)[1]);
+ for(const ch of chars){
+  const[px,py]=worldXY(ch);
+  if(ch===player)drawPerson(cx,px,py,player.dir,player.phase,"#f5cfa2","#c9803c",player.moving);
+  else drawPerson(cx,px,py,ch.dir,0,ch.skin,ch.shirt,false);
+  if(ch.isBoss&&!done){ // 金色 "!" 气泡
+   const by=py-40+Math.sin(tick*.08)*3;
+   cx.fillStyle="#f0cd88";cx.beginPath();cx.roundRect(px-8,by-14,16,18,5);cx.fill();
+   cx.beginPath();cx.moveTo(px-4,by+3);cx.lineTo(px+4,by+3);cx.lineTo(px,by+9);cx.closePath();cx.fill();
+   cx.fillStyle="#8a5a10";cx.font="bold 14px monospace";cx.textAlign="center";cx.fillText("!",px,by);
+  }
+ }
+ drawConfetti();
+ placeBubbles();
+ requestAnimationFrame(frame);
+}
+
+/* ============ 移动 & 碰撞 ============ */
+const keys={};
+let inDialog=false;
+document.addEventListener("keydown",e=>{
+ if(e.target.tagName==="INPUT"){if(e.key==="Enter")say();return;}
+ const k=e.key.toLowerCase();
+ if(["arrowup","arrowdown","arrowleft","arrowright"," "].includes(e.key.toLowerCase())||"wasd".includes(k))e.preventDefault();
+ if(e.key===" "||e.key==="Enter"){interact();return;}
+ keys[k]=true;
+});
+document.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false;});
+function dirInput(){
+ if(keys["arrowup"]||keys["w"])return"up";if(keys["arrowdown"]||keys["s"])return"down";
+ if(keys["arrowleft"]||keys["a"])return"left";if(keys["arrowright"]||keys["d"])return"right";return null;}
+const DV={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]};
+function npcAt(c,r){return npcs.find(n=>n.c===c&&n.r===r);}
+function stepPlayer(){
+ if(player.moving){
+  player.mt+=0.14;player.phase+=0.35;
+  if(player.mt>=1){player.mt=0;player.moving=false;player.c=player.mx;player.r=player.my;player.x=player.c;player.y=player.r;}
+  else{player.x=player.c+(player.mx-player.c)*player.mt;player.y=player.r+(player.my-player.r)*player.mt;}
+  return;
+ }
+ if(inDialog){autoPath=[];pendingNPC=null;return;}
+ const d=dirInput();
+ if(!d){stepAuto();return;}
+ autoPath=[];pendingNPC=null; // 键盘输入取消自动寻路
+ player.dir=d;const[dc,dr]=DV[d];const nc=player.c+dc,nr=player.r+dr;
+ if(solid(nc,nr)||npcAt(nc,nr))return;
+ player.mx=nc;player.my=nr;player.moving=true;player.mt=0;
+}
+function adjacentNPC(){
+ for(const[dc,dr]of[[0,-1],[0,1],[-1,0],[1,0]]){const n=npcAt(player.c+dc,player.r+dr);if(n)return n;}
+ return null;
+}
+
+/* ============ 点击寻路（BFS） ============ */
+let autoPath=[];      // 待走的格子队列 [[c,r],...]
+let pendingNPC=null;  // 走到后要对话的NPC
+function walkable(c,r){return !solid(c,r)&&!npcAt(c,r);}
+function bfsPath(sc,sr,goals){ // goals: Set("c,r")；返回不含起点的路径
+ if(goals.has(sc+","+sr))return[];
+ const prev=new Map(),q=[[sc,sr]];prev.set(sc+","+sr,null);
+ while(q.length){
+  const[c,r]=q.shift();
+  for(const[dc,dr]of[[0,-1],[0,1],[-1,0],[1,0]]){
+   const nc=c+dc,nr=r+dr,k=nc+","+nr;
+   if(prev.has(k)||!walkable(nc,nr))continue;
+   prev.set(k,c+","+r);
+   if(goals.has(k)){ // 回溯
+    const path=[];let cur=k;
+    while(cur&&cur!==sc+","+sr){path.unshift(cur.split(",").map(Number));cur=prev.get(cur);}
+    return path;
+   }
+   q.push([nc,nr]);
+  }
+ }
+ return null;
+}
+function faceAndTalk(n){ // 面向NPC并触发对话
+ const dc=n.c-player.c,dr=n.r-player.r;
+ player.dir=dc===1?"right":dc===-1?"left":dr===-1?"up":"down";
+ interact();
+}
+function goTo(tc,tr,npc){ // 设定自动寻路目标
+ pendingNPC=npc||null;
+ let goals;
+ if(npc){ // 目标=NPC四邻可走格；若已相邻直接对话
+  if(Math.abs(npc.c-player.c)+Math.abs(npc.r-player.r)===1){autoPath=[];faceAndTalk(npc);return;}
+  goals=new Set();
+  for(const[dc,dr]of[[0,-1],[0,1],[-1,0],[1,0]])if(walkable(npc.c+dc,npc.r+dr))goals.add((npc.c+dc)+","+(npc.r+dr));
+ }else if(walkable(tc,tr)){goals=new Set([tc+","+tr]);}
+ else{ // 不可走格→其可走相邻格中取一
+  goals=new Set();
+  for(const[dc,dr]of[[0,-1],[0,1],[-1,0],[1,0]])if(walkable(tc+dc,tr+dr))goals.add((tc+dc)+","+(tr+dr));
+ }
+ if(!goals||goals.size===0){pendingNPC=null;return;}
+ const p=bfsPath(player.c,player.r,goals);
+ if(p===null){pendingNPC=null;return;} // 不可达
+ autoPath=p;
+}
+function stepAuto(){ // 每帧：无键盘输入且有路径时走下一格
+ if(!autoPath.length){
+  if(pendingNPC){const n=pendingNPC;pendingNPC=null;
+   if(Math.abs(n.c-player.c)+Math.abs(n.r-player.r)===1)faceAndTalk(n);}
+  return;
+ }
+ const[nc,nr]=autoPath[0];
+ if(!walkable(nc,nr)){autoPath=[];pendingNPC=null;return;} // 路被堵
+ autoPath.shift();
+ player.dir=nc>player.c?"right":nc<player.c?"left":nr>player.r?"down":"up";
+ player.mx=nc;player.my=nr;player.moving=true;player.mt=0;
+}
+
+/* ============ 气泡（DOM 跟随） ============ */
+const bubLayer=document.getElementById("bubbles");
+const bubEls=new Map(); // owner -> el
+function bubbleFor(owner){
+ let el=bubEls.get(owner);
+ if(!el){el=document.createElement("div");el.className="bub"+(owner===player?" player":"");bubLayer.appendChild(el);bubEls.set(owner,el);}
+ return el;
+}
+let typing=null;
+function showBubble(owner,txt,opts={}){
+ const el=bubbleFor(owner);
+ el.classList.toggle("gray",!!opts.gray);
+ el.classList.add("show");
+ clearTimeout(el._hideT);
+ if(opts.type){
+  clearInterval(typing);let i=0;const c='<span class="cursor"></span>';
+  el.innerHTML=c;
+  typing=setInterval(()=>{i++;el.innerHTML=esc(txt.slice(0,i))+(i<txt.length?c:"");if(i>=txt.length)clearInterval(typing);},24);
+ }else el.innerHTML=esc(txt);
+ if(opts.ttl)el._hideT=setTimeout(()=>el.classList.remove("show"),opts.ttl);
+}
+function hideBubble(owner){const el=bubEls.get(owner);if(el){clearInterval(typing);el.classList.remove("show");}}
+function esc(s){return s.replace(/[&<>]/g,x=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[x]));}
+function placeBubbles(){
+ const rect=cv.getBoundingClientRect(),wrap=document.getElementById("stageWrap").getBoundingClientRect();
+ const shown=[];
+ for(const[owner,el]of bubEls){
+  if(!el.classList.contains("show"))continue;
+  const[px,py]=worldXY(owner);
+  const ax=Math.max(70,Math.min(wrap.width-70,(rect.left-wrap.left)+px*scale));
+  const ay=Math.max(el.offsetHeight+4,(rect.top-wrap.top)+(py-34)*scale);
+  shown.push({owner,el,ax,ay,dx:0,w:el.offsetWidth,h:el.offsetHeight});
+ }
+ // 重叠的气泡水平错开, 各让一半
+ for(let i=0;i<shown.length;i++)for(let j=i+1;j<shown.length;j++){
+  const a=shown[i],b=shown[j];
+  const overX=(a.w+b.w)/2-Math.abs((a.ax+a.dx)-(b.ax+b.dx));
+  const overY=Math.min(a.ay,b.ay)-Math.max(a.ay-a.h,b.ay-b.h);
+  if(overX>0&&overY>0){
+   let l=a,r=b;
+   if(b.ax<a.ax||(b.ax===a.ax&&b.owner!==player)){l=b;r=a;}
+   const push=overX/2+8;l.dx-=push;r.dx+=push;
+  }
+ }
+ for(const s of shown){
+  s.x=Math.max(s.w/2+4,Math.min(wrap.width-s.w/2-4,s.ax+s.dx));
+ }
+ // 窄屏水平让不开时, 把上方气泡再抬高避开
+ for(let i=0;i<shown.length;i++)for(let j=i+1;j<shown.length;j++){
+  const a=shown[i],b=shown[j];
+  const overX=(a.w+b.w)/2-Math.abs(a.x-b.x);
+  const overY=Math.min(a.ay,b.ay)-Math.max(a.ay-a.h,b.ay-b.h);
+  if(overX>0&&overY>0){
+   const[up,low]=a.ay<=b.ay?[a,b]:[b,a];
+   up.ay=Math.max(up.h+4,low.ay-low.h-6);
+  }
+ }
+ for(const s of shown){
+  s.el.style.left=s.x+"px";s.el.style.top=s.ay+"px";
+  // 尾巴仍指向说话者头顶
+  const tail=Math.max(12,Math.min(s.w-12,s.w/2+(s.ax-s.x)));
+  s.el.style.setProperty("--tailX",tail+"px");
+ }
+}
+
+/* ============ 对话系统（API 契约沿用旧版） ============ */
+function interact(){
+ if(inDialog||done)return;
+ const n=adjacentNPC();if(!n)return;
+ n.dir=({up:"down",down:"up",left:"right",right:"left"})[player.dir]||"down";
+ if(n.isBoss)enterDialog();
+ else showBubble(n,n.lines[lang],{type:true,ttl:4200});
+}
+function enterDialog(){
+ if(!S)return;
+ inDialog=true;
+ document.getElementById("inputBar").classList.add("on");
+ document.getElementById("turnsBox").style.display="flex";
+ document.getElementById("hint").textContent=tr().hintTalk;
+ if(hist.length===0)showBubble(boss,tr().opening(S.character),{type:true});
+ else showBubble(boss,hist[hist.length-1].content,{type:true});
+ setTimeout(()=>document.getElementById("inp").focus(),50);
+}
+function exitDialog(){
+ inDialog=false;
+ document.getElementById("inputBar").classList.remove("on");
+ document.getElementById("hint").textContent=tr().hintWalk;
+ hideBubble(boss);hideBubble(player);
+ document.getElementById("inp").blur();
+}
+function updateBar(){
+ document.getElementById("moves").textContent=tr().moves(turns,S.max_turns);
+ let p="";for(let i=0;i<S.max_turns;i++)p+=`<div class="pip ${i<turns?'used':''}"></div>`;
+ document.getElementById("pips").innerHTML=p;
+}
+async function say(){
+ if(done||!S||turns>=S.max_turns)return;
+ const inp=document.getElementById("inp"),msg=inp.value.trim();if(!msg)return;
+ inp.value="";document.getElementById("send").disabled=true;turns++;updateBar();
+ showBubble(player,msg,{});           // 玩家头顶气泡
+ showBubble(boss,tr().wait,{});       // 等待中
+ try{
+  const r=await (await fetch(API+"/say",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({history:hist,message:msg,lang:lang,pid:pid()})})).json();
+  hist.push({role:"user",content:msg});hist.push({role:"assistant",content:r.reply||"…"});
+  showBubble(boss,r.reply||"…",{type:true});
+  turns=r.turns||turns;updateBar();
+  if(r.won){done=true;setTimeout(()=>win(r.turns),900);}
+  else if(r.over){done=true;setTimeout(lose,900);}
+ }catch(e){showBubble(boss,"(connection error)",{gray:true,ttl:3000});}
+ document.getElementById("send").disabled=false;
+}
+
+/* ============ 胜负 ============ */
+async function win(n){
+ exitDialog();
+ popConfetti();winSound();
+ let pct=null;try{const p=await (await fetch(API+"/percentile?turns="+n)).json();pct=p.percentile;}catch(e){}
+ const grid="🗣️".repeat(Math.max(n,1))+"✅";
+ const b=document.getElementById("banner");b.style.display="flex";
+ b.innerHTML=`<h2 style="color:#f0cd88">${tr().win}</h2><div style="color:#c9b48f">${tr().winsub(n,pct)}</div>
+   <div class="grid">${grid}</div><div style="color:#8a7860;font-size:.85em">${tr().tomorrow}</div>
+   <button class="share" onclick="share(${n},'${grid}')">${tr().share}</button>${fbHTML()}`;
+}
+function lose(){
+ showBubble(boss,tr().loseLine,{gray:true,ttl:3500});
+ loseSound();
+ setTimeout(()=>{exitDialog();
+  const b=document.getElementById("banner");b.style.display="flex";
+  b.innerHTML=`<h2 style="color:#b0684e">${tr().lost}</h2><div style="color:#8a7860">${tr().lostsub}</div>${fbHTML()}`;
+ },1800);
+}
+/* ============ 游戏反馈（每日一次，fire-and-forget） ============ */
+function fbHTML(){
+ if(!API)return"";
+ if(localStorage.getItem("st_fb_last")===new Date().toISOString().slice(0,10))return"";
+ const q=lang==="zh"?"今天这局怎么样?":"How was today's duel?";
+ return `<div id="fbBox" style="margin-top:16px;padding:10px 16px;border:1px solid #5a4a3a;border-radius:12px;background:rgba(240,205,136,.06)">
+  <span style="color:#c9b48f;font-size:.9em;margin-right:8px">${q}</span>
+  <button onclick="sendFb(3)" style="background:none;border:none;font-size:1.4em;cursor:pointer">😍</button>
+  <button onclick="sendFb(2)" style="background:none;border:none;font-size:1.4em;cursor:pointer">😐</button>
+  <button onclick="sendFb(1)" style="background:none;border:none;font-size:1.4em;cursor:pointer">🥱</button>
+ </div>`;
+}
+function postFb(score,note){
+ try{fetch(API+"/scout/api/game_feedback",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({game:"silvertongue",score:score,note:note||"",pid:pid()})}).catch(()=>{});}catch(e){}
+}
+function sendFb(score){
+ localStorage.setItem("st_fb_last",new Date().toISOString().slice(0,10));
+ postFb(score,"");
+ const box=document.getElementById("fbBox");if(!box)return;
+ const thx=lang==="zh"?"谢谢!":"Thanks!";
+ const ph=lang==="zh"?"想说一句?(可选)":"One more thought? (optional)";
+ box.innerHTML=`<span style="color:#f0cd88;font-size:.9em">${thx}</span>
+  <input id="fbNote" maxlength="200" placeholder="${ph}" style="margin-left:8px;background:rgba(255,255,255,.08);border:1px solid #5a4a3a;border-radius:8px;color:#f5f0e0;padding:5px 9px;font-size:.85em;width:190px"
+   onkeydown="if(event.key==='Enter')sendFbNote(${score})">
+  <button onclick="sendFbNote(${score})" style="margin-left:6px;background:#5a4a3a;border:none;border-radius:8px;color:#f0cd88;padding:5px 11px;cursor:pointer;font-size:.85em">${lang==="zh"?"发送":"Send"}</button>`;
+ const inp=document.getElementById("fbNote");if(inp)inp.focus();
+}
+function sendFbNote(score){
+ const inp=document.getElementById("fbNote");const note=inp?inp.value.trim():"";
+ if(note)postFb(score,note);
+ const box=document.getElementById("fbBox");
+ if(box)box.innerHTML=`<span style="color:#f0cd88;font-size:.9em">${lang==="zh"?"谢谢!":"Thanks!"} 🙏</span>`;
+}
+function share(n,grid){const txt=`舌战 Silvertongue · Day ${S.day}\n${S.goal}\n${grid}  ${lang==="zh"?n+"句":n+" lines"}\n${location.href.split("?")[0]}`;
+ navigator.clipboard.writeText(txt);alert(tr().copied);}
+
+/* ============ WebAudio 合成音效（零音频文件） ============ */
+let AC=null;
+function ac(){if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();return AC;}
+document.addEventListener("pointerdown",()=>{try{ac()}catch(e){}},{once:true});
+function tone(freq,t0,dur,type,gain){
+ const a=ac(),o=a.createOscillator(),g=a.createGain();
+ o.type=type;o.frequency.value=freq;o.connect(g);g.connect(a.destination);
+ g.gain.setValueAtTime(0,a.currentTime+t0);
+ g.gain.linearRampToValueAtTime(gain,a.currentTime+t0+.02);
+ g.gain.exponentialRampToValueAtTime(.001,a.currentTime+t0+dur);
+ o.start(a.currentTime+t0);o.stop(a.currentTime+t0+dur+.05);
+}
+function winSound(){ // 胜利琶音 C5-E5-G5-C6 + 尾音和弦
+ try{[523.25,659.25,783.99,1046.5].forEach((f,i)=>tone(f,i*.11,.3,"triangle",.18));
+ tone(1046.5,.5,.7,"sine",.14);tone(1318.5,.5,.7,"sine",.1);}catch(e){}
+}
+function loseSound(){try{tone(196,0,.4,"sawtooth",.1);tone(147,.25,.6,"sawtooth",.09);}catch(e){}}
+
+/* ============ 虚拟十字键（pointer：触屏+鼠标通用） ============ */
+const isTouch=("ontouchstart" in window)||navigator.maxTouchPoints>0;
+const dpadEl=document.getElementById("dpad");
+function dpadPref(){const v=localStorage.getItem("st_dpad");return v===null?isTouch:v==="1";}
+function applyDpad(on){dpadEl.classList.toggle("on",on);}
+applyDpad(dpadPref());
+function bindD(id,key){
+ const el=document.getElementById(id);
+ el.addEventListener("pointerdown",e=>{e.preventDefault();el.setPointerCapture&&el.setPointerCapture(e.pointerId);keys[key]=true;});
+ el.addEventListener("pointerup",e=>{e.preventDefault();keys[key]=false;});
+ el.addEventListener("pointercancel",()=>{keys[key]=false;});
+ el.addEventListener("pointerleave",()=>{keys[key]=false;});
+}
+bindD("dU","arrowup");bindD("dD","arrowdown");bindD("dL","arrowleft");bindD("dR","arrowright");
+document.getElementById("dA").addEventListener("pointerdown",e=>{e.preventDefault();interact();});
+// 右下角 d-pad 显隐切换按钮
+document.getElementById("dpadToggle").addEventListener("click",()=>{
+ const on=!dpadEl.classList.contains("on");
+ applyDpad(on);localStorage.setItem("st_dpad",on?"1":"0");
+});
+/* ============ 点击/点按地图：寻路移动 & 点NPC对话 ============ */
+cv.addEventListener("pointerdown",e=>{
+ if(inDialog||done)return; // 对话模式点击地图不移动（防误触）
+ e.preventDefault();
+ const rect=cv.getBoundingClientRect(); // CSS缩放换算到逻辑格
+ const wx=(e.clientX-rect.left)*(W/rect.width),wy=(e.clientY-rect.top)*(H/rect.height);
+ const c=Math.floor(wx/TS),r=Math.floor(wy/TS);
+ if(c<0||r<0||c>=COLS||r>=ROWS)return;
+ const n=npcAt(c,r);
+ goTo(c,r,n); // 有NPC→走到相邻并对话；否则走到该格/最近可达邻格；再点新目标自动替换旧路径
+});
+
+/* ============ 加载 & 语言 ============ */
+async function load(){
+ S=await (await fetch(API+"/state?lang="+lang)).json();
+ boss.name=S.character;boss.emoji=EMO[S.id]||"🗣️";
+ document.getElementById("day").textContent="DAY "+S.day+" · "+S.character;
+ document.getElementById("goal").textContent=S.goal;
+ document.getElementById("diff").textContent=tr().diff(S.difficulty,S.solved_today);
+ document.getElementById("inp").placeholder=tr().ph;
+ document.getElementById("leaveBtn").textContent=tr().leave;
+ document.getElementById("hint").textContent=inDialog?tr().hintTalk:tr().hintWalk;
+ buildGround();updateBar();
+}
+function toggleLang(){
+ lang=lang==="zh"?"en":"zh";
+ if(!done){hist=[];turns=0;done=false;document.getElementById("banner").style.display="none";
+  if(inDialog)exitDialog();load();}
+ else load();
+}
+/* ============ 序幕 ============ */
+const INTRO={zh:{t:"舌战",o:"小镇的清晨。人群里有一位不好说话的角色在等你——但每个人心里都有一扇门，钥匙是对的话。",
+ r:["用方向键/WASD在小镇里走动，找到头顶有'!'的人","也可以直接点击地图走动 / 点击人物对话","每日一局，说服TA自愿答应你的目标","真诚、共情、有理有据才有效——贿赂与威胁必败","独立裁判判定胜负，轮次越少越体面"],g:"进镇"},
+ en:{t:"SILVERTONGUE",o:"Morning in a small town. Somewhere in the crowd, a stubborn soul awaits—but everyone has a door, and the right words are the key.",
+ r:["Walk the town with arrow keys / WASD and find the one with the '!' overhead","Or simply tap/click the map to walk, click a person to talk","One duel a day: talk them into willingly conceding your goal","Sincerity, empathy and sound logic work—bribes and threats never do","An independent judge calls it. Fewer turns, more style."],g:"Enter Town"}};
+function showIntro(){const i=INTRO[lang];
+ document.getElementById("inTitle").textContent=i.t;
+ document.getElementById("inOpen").textContent=i.o;
+ document.getElementById("inRules").innerHTML=i.r.map(x=>`<div><b>◆</b>${x}</div>`).join("");
+ document.getElementById("inGo").textContent=i.g;
+ document.getElementById("introOv").style.display="flex";}
+function closeIntro(){document.getElementById("introOv").style.display="none";localStorage.setItem("st_intro_seen","1");}
+if(!localStorage.getItem("st_intro_seen"))showIntro();
+
+load();fit();requestAnimationFrame(frame);
+setTimeout(fit,100);
+</script><style>
+#tickbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(20,15,8,.88);backdrop-filter:blur(8px);border-top:1px solid rgba(224,169,78,.35);overflow:hidden;height:30px;pointer-events:none}
+#tick{display:inline-block;white-space:nowrap;line-height:30px;font-size:.82em;color:#d8c9a8;animation:tk 28s linear infinite;padding-left:100vw}
+#tick b{color:#e0a94e}
+@keyframes tk{to{transform:translateX(-100%)}}
+</style>
+<div id="tickbar"><span id="tick"></span></div>
+<script>
+(function(){
+  const TIPS={
+    zh:["<b>↑↓←→ / WASD</b> 移动","也可以直接<b>点击地图走动 / 点击人物对话</b>","找到头顶 <b>金色 !</b> 的人","走到TA身边按 <b>空格</b> 开聊","<b>真诚 · 共情 · 讲理</b> 才有效","<b>贿赂和威胁必败</b>","轮次越少越体面","手机用右下角 <b>方向盘</b> 走动","咖啡店和长椅的人也能聊两句"],
+    en:["Move with <b>arrows / WASD</b>","Or <b>tap/click the map to walk · click a person to talk</b>","Find the one with the <b>gold !</b>","Stand close, press <b>Space</b> to talk","<b>Sincerity · empathy · logic</b> win","<b>Bribes & threats always fail</b>","Fewer turns, more style","On mobile use the <b>d-pad</b>","Cafe & bench folks chat too"]};
+  let cur="";
+  function refresh(){
+    const L=(typeof lang!=="undefined"&&String(lang).startsWith("en"))?"en":(typeof lang!=="undefined"&&lang==="zh")?"zh":(navigator.language.startsWith("zh")?"zh":"en");
+    if(L===cur)return; cur=L;
+    document.getElementById("tick").innerHTML=TIPS[L].join('&nbsp;&nbsp;&nbsp;◆&nbsp;&nbsp;&nbsp;')+ '&nbsp;&nbsp;&nbsp;◆&nbsp;&nbsp;&nbsp;';
+  }
+  refresh(); setInterval(refresh,1200);
+})();
+</script>
+
+<script>
+// 统一埋点SDK: 自动记录pageview/click/停留/会话时长, 手动记录chat/feedback
+(function(){
+  const API = window.TEL_API || (window.API || "");
+  const pid = (function(){let p=localStorage.getItem("tel_pid");
+    if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
+  const sid = "s"+Math.random().toString(36).slice(2,10);
+  const t0 = Date.now();
+  let queue = [];
+  function push(etype,name,value,dur){
+    queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
+                value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
+    if(queue.length>=8) flush();
+  }
+  function flush(useBeacon){
+    if(!queue.length||!API) return;
+    const batch = queue.splice(0,50);
+    const body = JSON.stringify(batch);
+    if(useBeacon && navigator.sendBeacon){
+      navigator.sendBeacon(API+"/tel_batch", new Blob([body],{type:"application/json"}));
+    } else {
+      fetch(API+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
+    }
+  }
+  // 自动: pageview
+  push("pageview", location.pathname||"/", document.title||"");
+  // 自动: 所有click(记录元素id/class/文本)
+  document.addEventListener("click", e=>{
+    const el=e.target.closest("button,a,[data-tel],.card,.chip,[role=button]");
+    if(!el)return;
+    push("click", el.id||el.dataset.tel||el.className||el.tagName,
+         (el.innerText||"").trim().slice(0,60));
+  }, true);
+  // 自动: 会话时长(离开时上报)
+  window.addEventListener("beforeunload", ()=>{
+    push("session_end","session","",Math.round((Date.now()-t0)/1000));
+    flush(true);
+  });
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
+  setInterval(()=>flush(), 20000);   // 定期flush
+  // 暴露手动埋点: TEL.chat(用户消息,回复) / TEL.feedback(分数,留言) / TEL.ev(类型,名,值)
+  window.TEL = {
+    chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
+    feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
+    ev: (name, value)=>push("custom",name,value),
+    flush
+  };
+})();
+</script>
+
+
+<script>
+/* 通用等待动画: 任何异步请求期间显示"思考中"呼吸提示, 零服务器成本 */
+(function(){
+  let _wt=null;
+  const HINTS={zh:["正在思考…","整理中…","正在分析…","稍等一下…"],
+               en:["thinking…","working on it…","analyzing…","one moment…"]};
+  window.showWaiting=function(elId){
+    const el=document.getElementById(elId)||document.querySelector("[data-wait]")||document.body;
+    const zh=(document.documentElement.lang||navigator.language||"").toLowerCase().startsWith("zh");
+    const hints=zh?HINTS.zh:HINTS.en;
+    let d=0,hi=Math.floor(Math.random()*hints.length);
+    window._waitEl=el; window._waitPrev=el.innerHTML;
+    _wt=setInterval(()=>{d=(d+1)%4;
+      el.innerHTML=`<div style="opacity:.6;font-style:italic;padding:12px">${hints[hi]}${".".repeat(d)}</div>`;
+      if(d===0&&Math.random()<0.3)hi=(hi+1)%hints.length;},520);
+  };
+  window.hideWaiting=function(){if(_wt){clearInterval(_wt);_wt=null;}};
+})();
+</script>
+
+
+<style>
+#uxFbBtn{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9998;
+ height:34px;padding:0 14px;background:linear-gradient(135deg,#ffd7e6,#ffb3d1);
+ border:1.5px solid rgba(255,255,255,.9);border-radius:17px;font-size:13px;font-weight:600;
+ cursor:pointer;color:#b23a6a;box-shadow:0 3px 12px rgba(200,90,140,.28);display:flex;align-items:center;gap:5px}
+#uxFbOv{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+ background:rgba(30,25,35,.45);backdrop-filter:blur(4px);padding:20px}
+#uxFbOv.show{display:flex}
+#uxFbCard{background:#fff;border-radius:18px;padding:22px 20px;max-width:340px;width:100%;text-align:center;
+ box-shadow:0 20px 60px rgba(0,0,0,.28);font-family:-apple-system,"PingFang SC",system-ui,sans-serif}
+#uxFbCard h3{margin:0 0 14px;font-size:16px;color:#333}
+.uxEmo{width:46px;height:46px;font-size:22px;border:2px solid #eee;background:#fafafa;border-radius:12px;
+ cursor:pointer;margin:0 5px;transition:all .15s}
+.uxEmo.sel{border-color:#ffb3d1;background:#fff0f6;transform:scale(1.1)}
+#uxFbNote{width:100%;margin:14px 0 12px;padding:10px;border:1.5px solid #eee;border-radius:10px;
+ font-family:inherit;font-size:13px;resize:vertical;min-height:56px}
+#uxFbSend{width:100%;padding:11px;background:linear-gradient(135deg,#ffb3d1,#ff8fb8);color:#fff;border:0;
+ border-radius:10px;font-size:14px;font-weight:600;cursor:pointer}
+#uxFbSend:disabled{opacity:.45}
+#uxFbX{position:absolute;top:10px;right:14px;background:none;border:0;font-size:18px;color:#999;cursor:pointer}
+</style>
+<button id="uxFbBtn" onclick="uxOpenFb()">♡</button>
+<div id="uxFbOv" onclick="if(event.target===this)uxCloseFb()">
+  <div id="uxFbCard" style="position:relative">
+    <button id="uxFbX" onclick="uxCloseFb()">✕</button>
+    <h3 id="uxFbQ"></h3>
+    <div id="uxFbEmos"></div>
+    <textarea id="uxFbNote" placeholder=""></textarea>
+    <button id="uxFbSend" onclick="uxSendFb()" disabled></button>
+  </div>
+</div>
+<script>
+/* 评价UI - 跟随界面语言(避免英文界面出现中文) */
+(function(){
+  function isZH(){
+    // 1. app自己的语言状态(最可靠)
+    try{ if(typeof lang!=="undefined") return String(lang).toLowerCase().startsWith("zh"); }catch(e){}
+    try{ const ls=localStorage.getItem("lang")||localStorage.getItem("locale");
+         if(ls) return ls.toLowerCase().startsWith("zh"); }catch(e){}
+    // 2. URL参数
+    const u=new URLSearchParams(location.search).get("lang");
+    if(u) return u.toLowerCase().startsWith("zh");
+    // 3. html lang属性
+    const h=(document.documentElement.lang||"").toLowerCase();
+    if(h.startsWith("zh")) return true;
+    if(h.startsWith("en")) return false;
+    // 4. 兜底: 浏览器语言(不再扫描页面中文,避免误判)
+    return (navigator.language||"").toLowerCase().startsWith("zh");
+  }
+  const T={
+    zh:{btn:"\u2661 \u8bc4\u4ef7",q:"\u7528\u5f97\u8fd8\u987a\u624b\u5417\uff1f",ph:"\u60f3\u8bf4\u70b9\u4ec0\u4e48\u2026\uff08\u53ef\u9009\uff09",send:"\u53d1\u9001 \u2661",done:"\u6536\u5230\u5566 \u2661 \u8c22\u8c22\u4f60"},
+    en:{btn:"\u2661 Rate",q:"How's it working for you?",ph:"Anything you'd like to tell us? (optional)",send:"Send \u2661",done:"Got it \u2661 Thank you"}
+  };
+  window.uxT=function(){return isZH()?T.zh:T.en;};
+  window.uxSyncLabels=function(){
+    const t=uxT(), b=document.getElementById("uxFbBtn");
+    if(b)b.textContent=t.btn;
+  };
+  document.addEventListener("DOMContentLoaded",uxSyncLabels);
+  setTimeout(uxSyncLabels,300);
+})();
+let uxScore=0;
+function uxEmos(){const es=[["\ud83d\ude0d",3],["\ud83d\ude10",2],["\ud83e\udd71",1]];
+ document.getElementById("uxFbEmos").innerHTML=es.map(([e,s])=>
+  `<button class="uxEmo${uxScore===s?" sel":""}" onclick="uxPick(${s})">${e}</button>`).join("");}
+function uxOpenFb(){const t=uxT();uxScore=0;
+ document.getElementById("uxFbQ").textContent=t.q;
+ document.getElementById("uxFbNote").placeholder=t.ph;
+ const sb=document.getElementById("uxFbSend");sb.textContent=t.send;sb.disabled=true;
+ uxEmos();document.getElementById("uxFbOv").classList.add("show");}
+function uxCloseFb(){document.getElementById("uxFbOv").classList.remove("show");}
+function uxPick(s){uxScore=s;uxEmos();document.getElementById("uxFbSend").disabled=false;}
+function uxSendFb(){
+ const note=document.getElementById("uxFbNote").value;
+ if(window.TEL)TEL.feedback(uxScore,note);
+ document.getElementById("uxFbCard").innerHTML=`<h3 style="margin:20px 0">${uxT().done}</h3>`;
+ setTimeout(uxCloseFb,1200);
+}
+</script>
+
+</body></html>

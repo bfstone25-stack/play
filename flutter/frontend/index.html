@@ -1,0 +1,1946 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER — He remembers you</title><script src="config.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script>
+<style>
+:root{--accent:#e87aa8;--hue:320;--edition-bg0:#0c1720;--edition-bg1:#233343;--edition-bg2:#111a22;--edition-glowA:#d07c63;--edition-glowB:#547e99;--edition-ink:#f4eee8;--edition-muted:#c7bdba;--edition-font:'Avenir Next','Helvetica Neue',Inter,Arial,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;color:#3a2b33}
+#app{position:fixed;inset:0;display:flex;flex-direction:column;margin:0 auto;overflow:hidden}
+.lang{position:absolute;top:12px;right:12px;z-index:80;background:rgba(255,255,255,.12);color:var(--edition-ink);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:5px 28px 5px 12px;min-height:44px;font-size:.78em;cursor:pointer;backdrop-filter:blur(10px);font-family:var(--edition-font)}
+.sound-btn{position:absolute;top:12px;right:140px;z-index:81;width:44px;height:44px;border:1px solid rgba(255,255,255,.22);border-radius:50%;cursor:pointer;color:var(--edition-ink);background:rgba(255,255,255,.12);backdrop-filter:blur(12px);font-size:1.05em}
+.sound-panel{position:absolute;z-index:90;top:62px;right:12px;width:min(330px,calc(100vw - 24px));display:none;padding:18px;color:var(--edition-ink);font:500 .82em/1.4 var(--edition-font);background:color-mix(in srgb,var(--edition-bg0) 88%,transparent);border:1px solid color-mix(in srgb,var(--edition-glowA) 34%,transparent);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.35);backdrop-filter:blur(22px)}
+.sound-panel.show{display:block;animation:audioIn .24s ease both}.sound-title{letter-spacing:.18em;font-size:.8em;margin-bottom:14px;color:var(--edition-glowA)}
+.sound-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;margin:12px 0}.sound-row.stack{grid-template-columns:1fr}.sound-row input[type="range"]{width:118px;accent-color:var(--edition-glowA)}
+.sound-row select{max-width:185px;padding:8px 28px 8px 10px;border:1px solid color-mix(in srgb,var(--edition-glowA) 30%,transparent);border-radius:10px;background:var(--edition-bg1);color:var(--edition-ink);font:inherit}
+.sound-note{min-height:1.4em;color:var(--edition-muted);font-size:.75em;line-height:1.5}.sound-check{width:18px;height:18px;accent-color:var(--edition-glowA)}
+@keyframes audioIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+html[data-edition="ja"] .sound-btn,html[data-edition="ja"] .sound-panel,html[data-edition="ja"] .sound-row select{border-radius:2px}
+
+/* ---------- 选人画面 ---------- */
+#select{position:absolute;inset:0;z-index:20;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:64px clamp(18px,4vw,56px) 24px;
+  background:linear-gradient(150deg,var(--edition-bg0) 0%,var(--edition-bg1) 45%,var(--edition-bg2) 100%);isolation:isolate;font-family:var(--edition-font)}
+#select.reveal{display:flex;animation:selectionArrive .85s cubic-bezier(.16,.8,.2,1) both}
+#select.leaving{pointer-events:none;animation:selectionLeave .72s cubic-bezier(.65,0,.85,.25) both}
+#select::before{content:"";position:absolute;inset:-20%;z-index:-3;background:
+  radial-gradient(ellipse at 20% 20%,color-mix(in srgb,var(--edition-glowA) 34%,transparent),transparent 34%),
+  radial-gradient(ellipse at 80% 75%,color-mix(in srgb,var(--edition-glowB) 28%,transparent),transparent 38%);
+  animation:titleAurora 11s ease-in-out infinite alternate}
+.title-noise{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.16;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E")}
+.title-orbit{position:absolute;width:74vw;max-width:390px;aspect-ratio:1;top:-16%;right:-34%;border:1px solid rgba(247,197,207,.18);
+  border-radius:50%;box-shadow:0 0 80px rgba(232,122,168,.12);animation:titleOrbit 18s linear infinite}
+.title-orbit::after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;top:50%;left:-4px;background:#f5c8d2;
+  box-shadow:0 0 18px 6px rgba(245,200,210,.48)}
+.brand{position:relative;text-align:center;margin-bottom:2px;animation:titleReveal 1.2s cubic-bezier(.2,.8,.2,1) both}
+#select h1{font-family:var(--edition-font);font-size:clamp(2.7em,12vw,4.1em);font-weight:300;margin:0;letter-spacing:.2em;
+  color:var(--edition-ink);text-indent:.22em;text-shadow:0 4px 30px color-mix(in srgb,var(--edition-glowA) 42%,transparent)}
+.brand-local{min-height:18px;margin-top:3px;color:var(--edition-glowA);font-family:var(--edition-font);font-size:.75em;font-weight:400;letter-spacing:.48em;text-indent:.48em}
+.pulse-line{width:min(230px,62vw);height:20px;margin:4px auto 0;overflow:visible}
+.pulse-line path{fill:none;stroke:#e6a6b9;stroke-width:1.35;stroke-linecap:round;stroke-dasharray:340;stroke-dashoffset:340;
+  filter:drop-shadow(0 0 5px rgba(232,122,168,.8));animation:drawPulse 2.2s ease .35s forwards}
+.brand-category{margin-top:7px;color:var(--edition-muted);font:500 clamp(.54em,1.25vw,.68em)/1.2 var(--edition-font);
+  letter-spacing:.32em;text-indent:.32em;opacity:.68;white-space:nowrap;animation:titleReveal 1s ease .55s both}
+#select .sub{color:var(--edition-muted);margin-bottom:8px;font-size:.88em;letter-spacing:.08em;animation:titleReveal 1s ease .45s both}
+#cards{width:min(100%,1120px);display:grid;grid-template-columns:repeat(var(--route-count,3),minmax(0,1fr));gap:clamp(10px,2vw,24px);
+  animation:titleReveal 1s ease .7s both;perspective:1200px}
+#cards:has(.card:only-child){max-width:360px}
+@keyframes titleAurora{to{transform:translate3d(-4%,3%,0) scale(1.08);filter:hue-rotate(8deg)}}
+@keyframes titleOrbit{to{transform:rotate(360deg)}}
+@keyframes titleReveal{from{opacity:0;transform:translateY(14px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes drawPulse{70%,100%{stroke-dashoffset:0}85%{opacity:1}100%{opacity:.68}}
+@keyframes selectionArrive{from{opacity:0;clip-path:inset(0 50% 0 50%)}to{opacity:1;clip-path:inset(0)}}
+@keyframes selectionLeave{to{opacity:0;filter:blur(12px);transform:scale(1.035)}}
+
+/* ---------- Edition art direction: shared soul, different markets ---------- */
+/* 中文《怦然》：柔软、被偏爱、糖度高，但以光和触感代替廉价贴纸感 */
+html[data-edition="zh"] #select{background:
+  radial-gradient(circle at 50% 14%,rgba(255,255,255,.82),transparent 24%),
+  linear-gradient(155deg,#fbe4ec 0%,#eec5d6 48%,#cfaecf 100%)}
+html[data-edition="zh"] #select::before{background:
+  radial-gradient(circle at 12% 24%,rgba(255,255,255,.7),transparent 21%),
+  radial-gradient(circle at 84% 70%,rgba(255,217,232,.72),transparent 25%);animation:zhDream 7s ease-in-out infinite alternate}
+html[data-edition="zh"] .title-noise{opacity:.05}
+html[data-edition="zh"] .title-orbit{width:260px;top:-70px;right:-100px;border-color:rgba(147,72,111,.15);animation-duration:26s}
+html[data-edition="zh"] #select h1{font-size:1.05em;font-weight:600;letter-spacing:.48em;color:#92506d;text-shadow:none}
+html[data-edition="zh"] .brand-local{font-size:2.5em;font-weight:600;letter-spacing:.28em;text-indent:.28em;margin-top:7px;color:#a84470;
+  text-shadow:0 8px 28px rgba(198,79,127,.25)}
+html[data-edition="zh"] .pulse-line path{stroke:#bc527e}
+html[data-edition="zh"] #select .sub{color:#7c5367}
+html[data-edition="zh"] .lang{color:#814d66;background:rgba(255,255,255,.44);border-color:rgba(121,69,94,.18)}
+html[data-edition="zh"] #cards{animation-name:zhCards}
+@keyframes zhDream{to{transform:translate3d(3%,-2%,0) scale(1.08)}}
+@keyframes zhCards{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+
+/* 日本「あわい」：静けさ、余白、未说出口的距离 */
+html[data-edition="ja"] #select{align-items:flex-start;justify-content:flex-start;padding-top:112px;background:
+  linear-gradient(165deg,#e9e7e2 0%,#d8d9da 48%,#b9c0c5 100%)}
+html[data-edition="ja"] #select::before{inset:0;background:
+  linear-gradient(102deg,transparent 0 61%,rgba(255,255,255,.34) 61.2% 61.6%,transparent 61.8%),
+  radial-gradient(ellipse at 82% 12%,rgba(255,255,255,.72),transparent 28%);animation:none}
+html[data-edition="ja"] .title-noise{opacity:.08}
+html[data-edition="ja"] .title-orbit{display:none}
+html[data-edition="ja"] .brand{text-align:left;margin:0 0 25px 10px;animation:jaReveal 1.8s ease both}
+html[data-edition="ja"] #select h1{font-size:.76em;font-weight:500;letter-spacing:.5em;color:#555a5d;text-shadow:none}
+html[data-edition="ja"] .brand-local{font-size:2.8em;font-weight:300;letter-spacing:.3em;text-indent:0;margin-top:12px;color:#34383b}
+html[data-edition="ja"] .pulse-line{width:150px;margin:17px 0 0}
+html[data-edition="ja"] .pulse-line path{stroke:#7f777a;animation-duration:3.6s}
+html[data-edition="ja"] .brand-category{text-align:left;text-indent:0;letter-spacing:.27em}
+html[data-edition="ja"] #select .sub{align-self:flex-start;margin-left:10px;color:#606468;letter-spacing:.18em}
+html[data-edition="ja"] #cards{align-self:center;gap:8px;animation:jaReveal 1.8s ease .35s both}
+html[data-edition="ja"] .card{border-radius:2px;box-shadow:0 7px 22px rgba(45,50,54,.12);border-color:rgba(255,255,255,.35)}
+html[data-edition="ja"] .lang{color:#43484c;background:rgba(255,255,255,.3);border-radius:2px}
+@keyframes jaReveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* 西语 LATIDO：目光交锋、热度和戏剧张力 */
+html[data-edition="es"] #select{background:
+  linear-gradient(128deg,#19070e 0%,#731a32 54%,#d95b43 145%)}
+html[data-edition="es"] #select::before{background:
+  conic-gradient(from 210deg at 15% 100%,transparent,#f77f52 12%,transparent 24%),
+  radial-gradient(circle at 84% 18%,rgba(255,150,94,.44),transparent 25%);animation:esHeat 8s ease-in-out infinite alternate}
+html[data-edition="es"] .title-orbit{width:430px;top:-220px;right:-220px;border-width:2px;animation-duration:9s}
+html[data-edition="es"] #select h1{font-size:1em;font-weight:700;letter-spacing:.55em;color:#ffd8c6}
+html[data-edition="es"] .brand-local{font-size:2.55em;font-weight:800;letter-spacing:.1em;text-indent:.1em;color:#fff1e6}
+html[data-edition="es"] .pulse-line path{stroke:#ff9b6f;animation-duration:1.35s}
+html[data-edition="es"] .card{border-radius:13px;transform:skewX(-1.5deg)}
+html[data-edition="es"] .card:active{transform:skewX(-1.5deg) scale(.97)}
+@keyframes esHeat{to{transform:translate3d(-3%,2%,0) scale(1.12);filter:saturate(1.18)}}
+
+/* 巴西 ENTRE NÓS：阳光、生命力和自然亲密 */
+html[data-edition="pt-BR"] #select{background:
+  radial-gradient(circle at 12% 3%,rgba(255,202,113,.5),transparent 25%),
+  linear-gradient(148deg,#12382b 0%,#276550 50%,#153f4c 100%)}
+html[data-edition="pt-BR"] #select::before{background:
+  radial-gradient(circle at 15% 82%,rgba(242,166,90,.35),transparent 25%),
+  radial-gradient(circle at 90% 25%,rgba(66,168,139,.34),transparent 28%);animation:ptSway 9s ease-in-out infinite alternate}
+html[data-edition="pt-BR"] .title-orbit{width:360px;top:-150px;right:-150px;border-color:rgba(255,217,145,.28);animation-duration:13s}
+html[data-edition="pt-BR"] #select h1{font-size:1em;font-weight:600;color:#ffe9bd}
+html[data-edition="pt-BR"] .brand-local{font-size:2.15em;font-weight:650;letter-spacing:.08em;text-indent:.08em;color:#fff6df}
+html[data-edition="pt-BR"] .pulse-line path{stroke:#ffc16f}
+html[data-edition="pt-BR"] .card{border-radius:26px}
+html[data-edition="pt-BR"] #cards{animation-name:ptCards}
+@keyframes ptSway{to{transform:translate3d(4%,-2%,0) rotate(2deg) scale(1.08)}}
+@keyframes ptCards{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.card{width:100%;height:clamp(250px,43vh,470px);border-radius:clamp(12px,2vw,24px);cursor:pointer;display:flex;align-items:flex-end;
+  border:1px solid rgba(255,255,255,.24);box-shadow:0 22px 55px rgba(0,0,0,.3);transition:transform .55s cubic-bezier(.16,.8,.2,1),box-shadow .55s,filter .45s,opacity .45s;
+  position:relative;overflow:hidden;isolation:isolate;transform-origin:50% 85%}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 18%,rgba(7,7,12,.12) 48%,rgba(8,5,10,.94) 100%)}
+.card::after{content:"";position:absolute;inset:0;z-index:3;border:1px solid transparent;border-radius:inherit;transition:border-color .4s,box-shadow .4s;pointer-events:none}
+.card:focus-visible{outline:2px solid var(--edition-glowA);outline-offset:5px}
+.card:hover,.card:focus-visible{transform:translateY(-12px) rotateX(2deg) scale(1.025);box-shadow:0 32px 80px rgba(0,0,0,.44)}
+.card:hover::after,.card:focus-visible::after{border-color:rgba(255,255,255,.48);box-shadow:inset 0 0 45px rgba(255,255,255,.08)}
+#cards:has(.card:hover) .card:not(:hover){filter:saturate(.55) brightness(.7);transform:scale(.975)}
+.card:active{transform:translateY(-4px) scale(.985)}
+.card .por{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:top center;transition:transform 1s cubic-bezier(.16,.8,.2,1),filter .6s}
+.card:hover .por,.card:focus-visible .por{transform:scale(1.075)}
+.card .nm{font-size:clamp(1.25em,2.2vw,1.8em);font-weight:750;letter-spacing:.04em;color:#fff!important}
+.card .ti{font-size:.82em;opacity:.76;margin-top:4px}
+.card .tg{font-size:.68em;margin-top:9px;display:inline-block;padding:4px 9px;border-radius:2px;background:rgba(255,255,255,.12)}
+.card .card-copy{min-width:0;flex:1;padding:26px 20px 22px;color:#fff;transform:translateY(8px);transition:transform .5s}
+.card:hover .card-copy,.card:focus-visible .card-copy{transform:none}
+.card .enter-cta{position:absolute;right:17px;bottom:18px;z-index:2;padding:8px 11px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.34);background:rgba(18,10,16,.18);font-size:.66em;font-weight:800;
+  letter-spacing:.05em;white-space:nowrap;backdrop-filter:blur(8px);opacity:0;transform:translateX(-8px);transition:.4s}
+.card:hover .enter-cta,.card:focus-visible .enter-cta{background:rgba(255,255,255,.19);opacity:1;transform:none}
+.card .hk{max-width:80%;opacity:0;transform:translateY(8px);transition:.45s}
+.card:hover .hk,.card:focus-visible .hk{opacity:.78;transform:none}
+html:not([data-edition="zh"]) .card{color:var(--edition-ink)}
+html:not([data-edition="zh"]) .card .tg{background:rgba(255,255,255,.1)}
+html:not([data-edition="zh"]) .card .hk{color:var(--edition-muted)}
+
+@media (orientation:portrait),(max-width:700px){
+  #select{justify-content:flex-start;padding-top:74px;overflow-y:auto}
+  #select .brand{transform:scale(.84);transform-origin:center;margin-bottom:0}
+  #select .sub{margin-top:4px;margin-bottom:2px}
+  #cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;width:calc(100% + 36px);padding:4px 18px 24px;
+    scrollbar-width:none}
+  #cards::-webkit-scrollbar{display:none}
+  .card{flex:0 0 min(78vw,320px);height:min(47vh,430px);scroll-snap-align:center}
+  .card .enter-cta{opacity:1;transform:none}
+}
+@media (orientation:landscape) and (min-width:701px){
+  #select .brand{position:absolute;left:clamp(28px,5vw,80px);top:clamp(34px,7vh,72px);text-align:left}
+  #select .brand .pulse-line{margin-left:0}
+  #select .sub{position:absolute;left:clamp(28px,5vw,80px);top:clamp(205px,30vh,265px)}
+  #cards{margin-top:clamp(105px,17vh,155px)}
+  #opReplay{position:absolute;left:clamp(28px,5vw,80px);bottom:25px}
+}
+
+/* ---------- Full-screen wordmark interlude ---------- */
+#launchGate{position:fixed;inset:0;z-index:190;display:none;place-items:center;overflow:hidden;color:var(--edition-ink);
+  background:linear-gradient(145deg,var(--edition-bg0),var(--edition-bg1) 56%,var(--edition-bg2));font-family:var(--edition-font);cursor:pointer;isolation:isolate}
+#launchGate.show{display:grid;animation:gateIn 1.1s ease both}
+#launchGate.depart{animation:gateDepart .9s cubic-bezier(.65,0,.8,.3) both}
+#launchGate::before{content:"";position:absolute;inset:-25%;z-index:-1;background:
+  radial-gradient(circle at 28% 30%,color-mix(in srgb,var(--edition-glowA) 26%,transparent),transparent 28%),
+  radial-gradient(circle at 75% 72%,color-mix(in srgb,var(--edition-glowB) 22%,transparent),transparent 32%);
+  animation:titleAurora 10s ease-in-out infinite alternate}
+.gate-inner{text-align:center;padding:8vw}
+.gate-kicker{font-size:.64em;letter-spacing:.35em;opacity:.48;margin-bottom:20px}
+.gate-title{font-size:clamp(3.2em,12vw,8.8em);font-weight:250;letter-spacing:.22em;text-indent:.22em}
+.gate-pulse{width:min(230px,62vw);margin:0 auto 22px}
+.gate-local{font-size:clamp(1em,3vw,2em);letter-spacing:.42em;text-indent:.42em;color:var(--edition-glowA);margin-top:10px}
+.gate-category{margin-top:14px;font-size:clamp(.55em,1.15vw,.7em);font-weight:500;letter-spacing:.38em;text-indent:.38em;opacity:.66}
+.gate-tagline{font-size:clamp(.72em,1.3vw,.92em);letter-spacing:.16em;opacity:.62;margin-top:28px}
+.gate-prompt{position:absolute;bottom:clamp(28px,7vh,70px);font-size:.68em;letter-spacing:.22em;opacity:.65;animation:gatePrompt 1.8s ease-in-out infinite}
+@keyframes gateIn{from{opacity:0;filter:blur(10px)}to{opacity:1;filter:none}}
+@keyframes gateDepart{to{opacity:0;filter:blur(15px);transform:scale(1.08)}}
+@keyframes gatePrompt{50%{opacity:.28;transform:translateY(3px)}}
+
+/* ---------- EN editorial game introduction ---------- */
+#brandIntro{position:fixed;inset:0;z-index:195;display:none;overflow:hidden;color:#f7efec;background:
+  radial-gradient(ellipse at 24% 28%,rgba(126,38,67,.28),transparent 38%),
+  radial-gradient(ellipse at 78% 72%,rgba(196,116,91,.17),transparent 36%),#160910;
+  font-family:'Avenir Next','Helvetica Neue',Arial,sans-serif}
+#brandIntro.show{display:grid;place-items:center;animation:biIn .8s ease both}
+#brandIntro.depart{animation:biOut .9s ease both}
+html[data-edition="zh"] #brandIntro{color:#fff7fa;background:
+  radial-gradient(circle at 72% 24%,rgba(255,214,229,.24),transparent 30%),
+  radial-gradient(circle at 22% 74%,rgba(174,77,119,.34),transparent 38%),#321522;
+  font-family:'PingFang SC','Microsoft YaHei',sans-serif}
+html[data-edition="ja"] #brandIntro{color:#ececeb;background:
+  linear-gradient(105deg,transparent 0 67%,rgba(255,255,255,.08) 67.2% 67.5%,transparent 67.7%),
+  radial-gradient(ellipse at 78% 18%,rgba(211,219,223,.18),transparent 33%),#222629;
+  font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif}
+html[data-edition="ja"] .bi-line{font-weight:300;letter-spacing:.13em}
+html[data-edition="es"] #brandIntro{color:#fff2e9;background:
+  linear-gradient(128deg,#19060d 0%,#681429 58%,#b94738 145%);
+  font-family:'Avenir Next','Helvetica Neue',Arial,sans-serif}
+html[data-edition="es"] .bi-line{font-weight:650;letter-spacing:.055em;text-align:left;transform:skewX(-1.5deg)}
+html[data-edition="pt-BR"] #brandIntro{color:#fff5dd;background:
+  radial-gradient(circle at 14% 12%,rgba(247,182,91,.32),transparent 27%),
+  radial-gradient(circle at 82% 78%,rgba(40,132,106,.35),transparent 35%),#10372e;
+  font-family:'Avenir Next','Helvetica Neue',Arial,sans-serif}
+.bi-grain{position:absolute;inset:0;opacity:.06;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+.bi-line{position:relative;width:min(820px,82vw);min-height:5em;display:grid;place-items:center;text-align:center;
+  font-size:clamp(1.25rem,3.2vw,2.45rem);font-weight:350;line-height:1.55;letter-spacing:.07em;text-wrap:balance}
+.bi-line span{display:block;animation:biWords 8s cubic-bezier(.2,.7,.2,1) both}
+.bi-progress{position:absolute;left:9vw;right:9vw;bottom:9vh;height:1px;background:rgba(255,255,255,.12);overflow:hidden}
+.bi-progress i{display:block;width:100%;height:100%;transform-origin:left;background:linear-gradient(90deg,#ca6d82,#e6b09f);animation:biProgress 120s linear both}
+.bi-skip{position:absolute;right:4vw;top:4vh;z-index:2;border:0;background:transparent;color:rgba(255,255,255,.58);
+  min-width:70px;min-height:44px;font:500 .7rem/1 inherit;letter-spacing:.18em;cursor:pointer}
+.bi-theme{position:absolute;left:4vw;top:4vh;z-index:2;border:1px solid rgba(255,255,255,.18);border-radius:999px;
+  background:rgba(255,255,255,.045);color:rgba(255,255,255,.66);padding:0 15px;min-height:40px;
+  font:500 .66rem/1 inherit;letter-spacing:.13em;cursor:pointer;backdrop-filter:blur(10px)}
+@keyframes biIn{from{opacity:0}to{opacity:1}}@keyframes biOut{to{opacity:0;filter:blur(9px)}}
+@keyframes biWords{0%{opacity:0;transform:translateY(14px);filter:blur(7px)}15%,78%{opacity:1;transform:none;filter:none}100%{opacity:0;transform:translateY(-8px);filter:blur(4px)}}
+@keyframes biProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ---------- 游戏画面 ---------- */
+#game{position:absolute;inset:0;display:none;flex-direction:column}
+#scene{position:absolute;inset:0;z-index:0;transition:background .8s}
+.glow{position:absolute;border-radius:50%;filter:blur(50px);opacity:.5;animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.petal{position:absolute;top:-30px;font-size:16px;opacity:.8;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+
+/* 顶部HUD */
+.hud{position:relative;z-index:5;padding:14px 16px 6px;display:flex;align-items:center;gap:10px}
+.aff{flex:1}
+.aff .lab{font-size:.7em;color:#7a5a66;display:flex;justify-content:space-between;margin-bottom:3px}
+.bar{position:relative;height:13px;border-radius:8px;background:rgba(255,255,255,.5);overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.12)}
+.fill{height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#ffb3d1,var(--accent),#ff7eb3);background-size:200% 100%;animation:shimmer 3s linear infinite;transition:width .7s cubic-bezier(.22,1,.36,1)}
+@keyframes shimmer{to{background-position:200% 0}}
+.barglow{position:absolute;top:0;left:0;height:100%;width:0;border-radius:8px;pointer-events:none;box-shadow:0 0 14px 3px var(--accent);opacity:0;transition:opacity .3s}
+.tier{font-weight:800;color:var(--accent);letter-spacing:.3px}
+.tierpulse{animation:tierp .8s ease}@keyframes tierp{0%{transform:scale(1)}40%{transform:scale(1.28)}100%{transform:scale(1)}}
+@keyframes heartgain-rise{0%{opacity:0;transform:scale(.5) translateY(0)}10%{opacity:1;transform:scale(1.1) translateY(-40px)}100%{opacity:1;transform:scale(1) translateY(calc(-100vh + 140px))}}
+.heartgain{position:fixed;z-index:9999;pointer-events:auto;cursor:pointer;font-weight:900;text-shadow:0 3px 12px rgba(255,60,120,.6),0 0 20px rgba(255,120,170,.4);animation:heartgain-rise 1.2s cubic-bezier(.2,.7,.3,1) forwards;will-change:opacity,transform;background:rgba(0,0,0,.35);padding:6px 14px;border-radius:24px;border:2px solid rgba(255,120,170,.5)}
+.mood{font-size:1.5em;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
+
+/* 立绘 */
+.stage{position:relative;z-index:4;flex:0 0 auto;height:38vh;display:flex;align-items:center;justify-content:center;min-height:0}
+.portrait{width:210px;height:290px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:4.6em;
+  background-color:rgba(255,255,255,.25);background-size:cover;background-position:top center;
+  box-shadow:0 0 0 4px rgba(255,255,255,.4),0 0 44px 6px var(--accent),0 16px 44px rgba(0,0,0,.28);
+  animation:bob 4.5s ease-in-out infinite;transition:filter .6s ease,box-shadow .6s ease}
+.portrait[data-mood="smile"]{filter:brightness(1.035) saturate(1.03)}
+.portrait[data-mood="blush"]{filter:brightness(1.05) saturate(1.08) sepia(.025)}
+.portrait[data-mood="love"]{filter:brightness(1.06) saturate(1.1);box-shadow:0 0 0 4px rgba(255,255,255,.5),0 0 64px 12px var(--accent),0 18px 48px rgba(0,0,0,.3)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.pet{position:absolute;bottom:6px;left:14px;z-index:4;font-size:2em;animation:bob 3.4s ease-in-out infinite}
+
+/* 对话框 VN */
+.chatlog{position:relative;z-index:6;margin:0 12px 8px;padding:4px 4px;overflow-y:auto;flex:1 1 auto;min-height:80px;
+  display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.chatlog::-webkit-scrollbar{width:4px}.chatlog::-webkit-scrollbar-thumb{background:rgba(150,90,120,.25);border-radius:4px}
+.msg{max-width:78%;padding:9px 14px;border-radius:16px;font-size:1.02em;line-height:1.5;word-wrap:break-word;
+  animation:msgin .3s ease;box-shadow:0 2px 8px rgba(150,90,120,.12)}
+.msg.them{align-self:flex-start;background:rgba(255,255,255,.9);color:#3a2b33;border-bottom-left-radius:5px}
+.msg.me{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:5px}
+.msg.them strong{color:#2a1d24}.msg.them em{font-style:italic;color:#6b4a5a}
+.msg.ev{align-self:center;max-width:88%;background:rgba(120,80,100,.14);color:#6b4a5a;font-style:italic;font-size:.94em;text-align:center;box-shadow:none}
+@keyframes msgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.dbox{position:relative;z-index:6;margin:0 12px 10px;padding:16px 18px 14px;border-radius:20px;min-height:120px;
+  background:rgba(255,255,255,.82);backdrop-filter:blur(10px);box-shadow:0 -4px 24px rgba(150,90,120,.18)}
+.name{position:absolute;top:-14px;left:18px;background:var(--accent);color:#fff;font-weight:800;font-size:.9em;padding:4px 16px;border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,.15)}
+.line{font-size:1.08em;line-height:1.6;min-height:52px;color:#3a2b33}
+.line strong{font-weight:700;color:#2a1d24}
+.line em{font-style:italic;color:#6b4a5a}
+.line code{font-family:ui-monospace,monospace;font-size:.92em;background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px}
+.cursor{display:inline-block;width:7px;background:var(--accent);margin-left:1px;animation:blink .7s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.inrow{display:flex;gap:8px;margin-top:12px}
+#inp{flex:1;min-width:0;min-height:44px;background:#fff;border:1.5px solid #f2d3de;border-radius:22px;padding:11px 16px;font-size:1em;font-family:inherit;outline:none}
+#inp:focus{border-color:var(--accent)}
+#send{background:linear-gradient(135deg,#f4cfa6,var(--accent) 70%);border:0;border-radius:22px;padding:0 18px;min-width:56px;min-height:44px;color:#fff;font-size:1em;font-weight:700;letter-spacing:1px;cursor:pointer;transition:transform .12s;box-shadow:0 3px 10px rgba(232,122,168,.35),inset 0 1px 0 rgba(255,255,255,.45)}
+#send:active{transform:scale(.9)}#send:disabled{opacity:.45}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.acts{display:flex;gap:8px;justify-content:space-around;margin-top:10px;padding:6px 0}
+.act{cursor:pointer;font-size:1.55em;padding:6px 10px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,120,170,.25);transition:transform .15s ease,background .2s ease;user-select:none;position:relative}
+.act:active{transform:scale(.88)}
+.act:hover{background:rgba(255,120,170,.15)}
+.act .lbl{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);font-size:.5em;color:var(--muted);white-space:nowrap;opacity:.75}
+.chip{font-size:.78em;padding:5px 13px;min-height:38px;display:inline-flex;align-items:center;border-radius:19px;background:rgba(255,255,255,.7);border:1px solid #f2d3de;cursor:pointer;color:#a85f7e}
+
+/* 里程碑弹幕 */
+.ms{position:absolute;inset:0;z-index:15;display:none;align-items:center;justify-content:center;flex-direction:column;background:rgba(255,225,235,.55);backdrop-filter:blur(3px)}
+.ms .big{font-size:2.6em;font-weight:900;color:#c9527e;text-shadow:0 3px 16px rgba(232,122,168,.5);animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+.burst{position:absolute;font-size:1.6em;animation:burst 1.1s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+.back{position:absolute;top:12px;left:12px;z-index:8;background:rgba(255,255,255,.55);border:0;border-radius:20px;padding:5px 12px;min-height:44px;min-width:44px;font-size:1em;cursor:pointer}
+.card .hk{font-size:.76em;margin-top:6px;color:#a8798d;font-style:italic;line-height:1.4}
+@media (prefers-reduced-motion:reduce){
+  .title-orbit,#select::before,.pulse-line path{animation:none}
+  .pulse-line path{stroke-dashoffset:0}
+  .brand,#select .sub,#cards{animation-duration:.01ms;animation-delay:0s}
+}
+
+/* ---------- 序幕 Prologue ---------- */
+#prologueOv{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:22px;
+  background:linear-gradient(170deg,rgba(24,16,34,.9),rgba(46,22,44,.88) 55%,rgba(20,14,30,.92));backdrop-filter:blur(8px)}
+#prologueOv.show{display:flex}
+.plg-card{width:100%;max-width:420px;border-radius:18px;padding:34px 28px 30px;text-align:center;position:relative;
+  background:linear-gradient(165deg,rgba(56,32,52,.92),rgba(38,24,44,.94));
+  border:1px solid rgba(233,180,160,.28);box-shadow:0 0 60px rgba(232,122,168,.22),0 24px 60px rgba(0,0,0,.5)}
+.plg-card::before{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(240,180,190,.12),transparent 70%)}
+.plg-star{font-size:1.5em;margin-bottom:14px;opacity:0;animation:plgIn 1.2s ease forwards .2s}
+.plg-p{color:#f3dde2;font-size:.98em;line-height:1.85;margin:0 0 16px;opacity:0;animation:plgIn 1.2s ease forwards;letter-spacing:.4px}
+.plg-p.names{color:#eec9a8;font-size:.9em;letter-spacing:1px}
+.plg-p:nth-of-type(1){animation-delay:.5s}.plg-p:nth-of-type(2){animation-delay:1.6s}
+.plg-p:nth-of-type(3){animation-delay:3s}.plg-p:nth-of-type(4){animation-delay:4s}
+@keyframes plgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.plg-btn{margin-top:10px;padding:12px 38px;border:0;border-radius:26px;cursor:pointer;font-size:1em;font-weight:700;letter-spacing:2px;
+  color:#4a2c38;background:linear-gradient(135deg,#f4cfa6,#eda9bd 60%,#e78ab0);
+  box-shadow:0 6px 22px rgba(232,122,168,.4),inset 0 1px 0 rgba(255,255,255,.5);
+  opacity:0;animation:plgIn 1.2s ease forwards 4.9s;transition:transform .15s}
+.plg-btn:active{transform:scale(.95)}
+.plg-card.fast .plg-star,.plg-card.fast .plg-p,.plg-card.fast .plg-btn{animation-delay:0s;animation-duration:.4s}
+.help{position:absolute;top:12px;right:88px;z-index:30;width:44px;height:44px;background:rgba(255,255,255,.55);border:0;border-radius:50%;font-size:.85em;cursor:pointer;backdrop-filter:blur(6px);color:#a85f7e;font-weight:800}
+
+/* ---------- 反馈 Feedback ---------- */
+.fbbtn{position:fixed;top:15px;left:50%;transform:translateX(-50%);z-index:60;height:31px;padding:0 12px;
+  background:color-mix(in srgb,var(--edition-bg0) 52%,transparent);border:1px solid color-mix(in srgb,var(--edition-glowA) 34%,transparent);
+  border-radius:4px;font:500 .68em/1 var(--edition-font);letter-spacing:.1em;cursor:pointer;color:var(--edition-ink);
+  box-shadow:0 5px 18px color-mix(in srgb,var(--edition-bg0) 24%,transparent);backdrop-filter:blur(12px);display:flex;align-items:center;gap:6px;opacity:.68;
+  transition:opacity .2s,background .2s,transform .15s}
+.fbbtn::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--edition-glowA);box-shadow:0 0 8px var(--edition-glowA)}
+.fbbtn:hover{opacity:1;background:color-mix(in srgb,var(--edition-bg0) 72%,transparent)}
+.fbbtn:active{transform:translateX(-50%) scale(.94)}
+#fbOv{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(60,35,50,.35);backdrop-filter:blur(4px)}
+#fbOv.show{display:flex}
+.fb-card{width:100%;max-width:340px;border-radius:20px;padding:24px 22px 20px;text-align:center;position:relative;
+  color:var(--edition-ink);background:linear-gradient(155deg,color-mix(in srgb,var(--edition-bg1) 94%,#fff 6%),var(--edition-bg0));
+  border:1px solid color-mix(in srgb,var(--edition-glowA) 30%,transparent);box-shadow:0 18px 54px color-mix(in srgb,var(--edition-bg0) 55%,transparent)}
+.fb-x{position:absolute;top:8px;right:8px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:var(--edition-muted);font-size:1.1em;cursor:pointer}
+.fb-q{font-weight:600;color:var(--edition-ink);font-size:1.02em;margin-bottom:14px;letter-spacing:.05em}
+.fb-emos{display:flex;justify-content:center;gap:18px;margin-bottom:14px}
+.fb-emo{font-size:2em;background:rgba(255,255,255,.65);border:2px solid transparent;border-radius:50%;width:58px;height:58px;cursor:pointer;transition:transform .15s,border-color .15s}
+.fb-emo:active{transform:scale(.9)}
+.fb-emo.sel{border-color:var(--edition-glowA);background:rgba(255,255,255,.92);box-shadow:0 4px 14px color-mix(in srgb,var(--edition-glowA) 30%,transparent)}
+.fb-note{width:100%;border:1px solid color-mix(in srgb,var(--edition-glowA) 34%,transparent);border-radius:8px;padding:10px 12px;font-size:.9em;font-family:inherit;outline:none;
+  background:rgba(255,255,255,.1);resize:none;color:var(--edition-ink)}
+.fb-note::placeholder{color:var(--edition-muted)}.fb-note:focus{border-color:var(--edition-glowA)}
+.fb-send{margin-top:12px;padding:10px 34px;border:0;border-radius:22px;cursor:pointer;font-weight:700;letter-spacing:1px;color:#fff;
+  background:linear-gradient(135deg,var(--edition-glowA),var(--edition-glowB));box-shadow:0 5px 16px color-mix(in srgb,var(--edition-bg0) 35%,transparent)}
+.fb-send:disabled{opacity:.45}
+.fb-done{color:var(--edition-ink);font-weight:700;font-size:1.15em;padding:26px 0;animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
+#fbBar{position:fixed;left:50%;bottom:-90px;transform:translateX(-50%);z-index:65;width:calc(100% - 32px);max-width:420px;
+  border-radius:18px;padding:10px 14px;display:flex;align-items:center;gap:10px;
+  background:linear-gradient(150deg,#fff4f0,#ffe8ee);border:1px solid rgba(233,180,190,.55);
+  box-shadow:0 10px 30px rgba(180,110,140,.35);transition:bottom .6s cubic-bezier(.22,1,.36,1)}
+#fbBar.show{bottom:16px}
+#fbBar .fb-q{margin:0;flex:1;text-align:left;font-size:.88em}
+#fbBar .fb-emo{width:42px;height:42px;font-size:1.35em}
+html[data-edition="zh"] .fbbtn{border-radius:16px;background:rgba(255,250,252,.38);color:#7c3f5c}
+html[data-edition="ja"] .fbbtn,html[data-edition="ja"] .fb-card,html[data-edition="ja"] .fb-note{border-radius:2px}
+html[data-edition="es"] .fbbtn{transform:translateX(-50%) skewX(-3deg);border-radius:3px}
+html[data-edition="es"] .fbbtn:active{transform:translateX(-50%) skewX(-3deg) scale(.94)}
+html[data-edition="pt-BR"] .fbbtn{border-radius:18px}
+
+/* ---------- 故事线 Story ---------- */
+.chap{position:relative;z-index:7;margin:4px 14px 8px;padding:10px 13px;font-size:.76em;color:var(--edition-ink);
+  display:flex;align-items:center;gap:7px;flex-wrap:wrap;border:1px solid color-mix(in srgb,var(--edition-glowA) 28%,transparent);
+  border-radius:14px;background:color-mix(in srgb,var(--edition-bg0) 72%,transparent);backdrop-filter:blur(14px);
+  box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.chap .ci{background:var(--accent);color:#fff;border-radius:10px;padding:1px 8px;font-weight:700;font-size:.9em}
+.chap .cg{flex-basis:100%;background:transparent;color:var(--edition-ink);padding:3px 1px 0;font-weight:650;font-size:1.05em;line-height:1.45}
+.chap .cg::before{content:attr(data-label);display:block;margin-bottom:2px;color:var(--edition-glowA);font-size:.72em;letter-spacing:.12em}
+.chapter-map{flex-basis:100%;display:flex;align-items:center;gap:5px;padding-top:5px}
+.chapter-map i{display:block;flex:1;height:2px;border-radius:2px;background:color-mix(in srgb,var(--edition-ink) 13%,transparent)}
+.chapter-map i.done{background:color-mix(in srgb,var(--edition-glowA) 55%,transparent)}
+.chapter-map i.current{height:4px;background:var(--edition-glowA);box-shadow:0 0 10px color-mix(in srgb,var(--edition-glowA) 65%,transparent)}
+.chapter-wish{position:fixed;inset:0;z-index:88;display:none;place-items:center;overflow:hidden;padding:8vw;text-align:center;
+  color:var(--edition-ink);background:linear-gradient(145deg,var(--edition-bg0),var(--edition-bg1) 58%,var(--edition-bg2));
+  font-family:var(--edition-font);isolation:isolate;cursor:pointer}
+.chapter-wish.show{display:grid;animation:wishIn .75s ease both}
+.chapter-wish.collapse{animation:wishCollapse .9s cubic-bezier(.65,0,.78,.3) both}
+.chapter-wish::before{content:"";position:absolute;inset:-20%;z-index:-1;background:
+  radial-gradient(circle at 25% 25%,color-mix(in srgb,var(--edition-glowA) 25%,transparent),transparent 30%),
+  radial-gradient(circle at 76% 72%,color-mix(in srgb,var(--edition-glowB) 22%,transparent),transparent 34%);
+  animation:titleAurora 9s ease-in-out infinite alternate}
+.wish-inner{width:min(760px,86vw)}
+.wish-kicker{font-size:.66em;letter-spacing:.28em;color:var(--edition-glowA);margin-bottom:22px}
+.wish-title{font-size:clamp(.82em,1.5vw,1.05em);letter-spacing:.14em;opacity:.55;margin-bottom:24px}
+.wish-text{font-size:clamp(1.45em,4.5vw,3.2em);font-weight:350;line-height:1.55;text-wrap:balance}
+.wish-line{width:min(230px,58vw);height:1px;margin:34px auto 0;background:linear-gradient(90deg,transparent,var(--edition-glowA),transparent)}
+.wish-skip{position:absolute;right:4vw;top:4vh;border:0;background:transparent;color:inherit;opacity:.48;
+  min-width:68px;min-height:44px;font:500 .68em/1 inherit;letter-spacing:.15em;cursor:pointer}
+html[data-edition="zh"] .chapter-wish{background:radial-gradient(circle at 50% 18%,rgba(255,249,252,.72),transparent 28%),linear-gradient(150deg,#f5dce6,#d9aec2 58%,#bc91b6)}
+html[data-edition="ja"] .chapter-wish{background:linear-gradient(165deg,#e6e4df,#c9cdd0);color:#3f4447}
+html[data-edition="ja"] .wish-text{font-weight:300;letter-spacing:.1em}
+html[data-edition="es"] .chapter-wish{background:linear-gradient(128deg,#1c070e,#71182e 58%,#c54d3d);color:#fff0e8}
+html[data-edition="es"] .wish-inner{transform:skewX(-1.5deg)}
+html[data-edition="es"] .wish-text{font-weight:700;text-align:left}
+html[data-edition="pt-BR"] .chapter-wish{background:radial-gradient(circle at 17% 12%,rgba(255,195,100,.38),transparent 28%),linear-gradient(150deg,#174638,#27664f 58%,#18414a);color:#fff5dc}
+@keyframes wishIn{from{opacity:0;filter:blur(9px)}to{opacity:1;filter:none}}
+@keyframes wishCollapse{to{opacity:0;transform:translateY(-34vh) scale(.16);filter:blur(5px)}}
+/* 剧情事件 beat 卡 */
+.beat{position:relative;z-index:6;margin:6px 12px 0;padding:10px 14px;border-radius:14px;font-size:.92em;line-height:1.55;color:#5a3a48;
+  background:linear-gradient(135deg,rgba(255,240,246,.92),rgba(255,232,220,.9));border:1px solid rgba(233,180,190,.5);
+  box-shadow:0 3px 14px rgba(180,110,140,.16);animation:pop .45s cubic-bezier(.2,1.3,.4,1)}
+.beat::before{content:"◈";color:var(--accent);margin-right:6px}
+/* 章末抉择 choice */
+.choiceOv{position:absolute;inset:0;z-index:16;display:none;align-items:center;justify-content:center;padding:22px;
+  background:linear-gradient(170deg,rgba(30,18,32,.72),rgba(46,22,44,.7));backdrop-filter:blur(5px)}
+.choiceOv.show{display:flex}
+.choiceCard{width:100%;max-width:400px;border-radius:20px;padding:24px 20px;text-align:center;
+  background:linear-gradient(160deg,rgba(58,34,52,.96),rgba(40,24,44,.97));border:1px solid rgba(233,180,160,.3);
+  box-shadow:0 0 50px rgba(232,122,168,.25),0 20px 50px rgba(0,0,0,.5)}
+.choiceCard .cprompt{color:#f3dde2;font-size:1.02em;line-height:1.7;margin-bottom:18px;font-weight:600}
+.copt{display:block;width:100%;margin:9px 0;padding:13px 16px;border:1px solid rgba(233,180,190,.4);border-radius:14px;cursor:pointer;
+  background:rgba(255,255,255,.08);color:#f3dde2;font-size:.96em;font-family:inherit;line-height:1.5;transition:transform .12s,background .2s}
+.copt:active{transform:scale(.97)}.copt:hover{background:rgba(255,255,255,.16)}
+/* 结局 ending */
+.endOv{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:22px;
+  background:linear-gradient(170deg,rgba(20,12,26,.96),rgba(40,20,40,.96));backdrop-filter:blur(8px)}
+.endOv.show{display:flex}
+.endCard{width:100%;max-width:440px;border-radius:18px;padding:36px 28px 30px;text-align:center;
+  background:linear-gradient(165deg,rgba(56,32,52,.95),rgba(38,24,44,.97));border:1px solid rgba(233,180,160,.3);
+  box-shadow:0 0 70px rgba(232,122,168,.28),0 24px 60px rgba(0,0,0,.55)}
+.endCard .etag{font-size:.78em;letter-spacing:3px;color:#eec9a8;opacity:.85;margin-bottom:10px}
+.endCard .etitle{font-size:1.5em;font-weight:900;color:#f3dde2;margin-bottom:18px;text-shadow:0 3px 16px rgba(232,122,168,.4)}
+.endCard .etext{color:#e8d2da;font-size:.98em;line-height:1.9;white-space:pre-wrap;text-align:left;margin-bottom:22px}
+.endCard .ebtn{padding:12px 34px;border:0;border-radius:24px;cursor:pointer;font-weight:700;letter-spacing:1px;color:#4a2c38;
+  background:linear-gradient(135deg,#f4cfa6,#e78ab0)}
+.clearOv,.archiveOv{position:fixed;inset:0;z-index:85;display:none;align-items:center;justify-content:center;padding:22px;
+  background:color-mix(in srgb,var(--edition-bg0) 78%,transparent);backdrop-filter:blur(14px)}
+.clearOv.show,.archiveOv.show{display:flex}.clearCard,.archiveCard{width:100%;max-width:440px;max-height:84vh;overflow:auto;padding:30px 26px;border-radius:22px;
+  color:var(--edition-ink);background:linear-gradient(155deg,var(--edition-bg1),var(--edition-bg0));border:1px solid color-mix(in srgb,var(--edition-glowA) 38%,transparent);
+  box-shadow:0 24px 80px rgba(0,0,0,.46);text-align:center}
+.clearKicker{font-size:.68em;letter-spacing:.24em;color:var(--edition-glowA)}.clearTitle{font-size:1.55em;margin:12px 0 18px}
+.rewardCard{padding:18px;border:1px solid color-mix(in srgb,var(--edition-glowA) 32%,transparent);border-radius:16px;background:rgba(255,255,255,.07);text-align:left}
+.rewardKind{font-size:.65em;letter-spacing:.18em;color:var(--edition-glowA)}.rewardText{margin-top:10px;line-height:1.7;color:var(--edition-muted)}
+.clearNext,.archiveClose{margin-top:20px;padding:12px 28px;border:0;border-radius:999px;cursor:pointer;font:700 .85em var(--edition-font);color:var(--edition-bg0);background:var(--edition-glowA)}
+.archiveBtn{position:absolute;left:14px;bottom:14px;z-index:55;border:1px solid color-mix(in srgb,var(--edition-glowA) 35%,transparent);border-radius:999px;padding:9px 13px;
+  color:var(--edition-ink);background:color-mix(in srgb,var(--edition-bg0) 58%,transparent);backdrop-filter:blur(12px);cursor:pointer;font:600 .68em var(--edition-font);letter-spacing:.08em}
+.archiveGrid{display:grid;gap:10px;text-align:left;margin-top:18px}.archiveItem{padding:13px;border-left:2px solid var(--edition-glowA);background:rgba(255,255,255,.06)}
+.archiveEmpty{padding:34px 0;color:var(--edition-muted)}.routeProgress{position:absolute;top:14px;right:14px;z-index:4;padding:5px 9px;border-radius:999px;
+  background:rgba(8,5,10,.56);color:#fff;font-size:.64em;letter-spacing:.06em;backdrop-filter:blur(8px)}
+/* 依恋类型指示(HUD 内, 极简) */
+.attach{font-size:1.05em;cursor:default}
+
+/* ---------- In-game Edition language ---------- */
+html[data-edition="en"] .dbox{background:rgba(35,14,24,.84);border:1px solid rgba(229,177,164,.15);box-shadow:0 -8px 34px rgba(20,4,10,.38)}
+html[data-edition="en"] .line{color:#f3ece8}
+html[data-edition="en"] .portrait{border-radius:10px;box-shadow:0 0 0 1px rgba(229,177,164,.3),0 20px 54px rgba(30,5,14,.46)}
+html[data-edition="en"] #inp{background:rgba(255,244,240,.09);border-color:rgba(229,177,164,.22);color:#fff}
+html[data-edition="en"] #inp::placeholder{color:rgba(255,255,255,.48)}
+
+html[data-edition="zh"] .portrait{border-radius:25px;box-shadow:0 0 0 4px rgba(255,255,255,.5),0 0 48px 7px var(--accent),0 16px 44px rgba(80,34,58,.22)}
+html[data-edition="zh"] .dbox{background:rgba(255,250,252,.88);box-shadow:0 -5px 28px rgba(181,91,132,.2)}
+
+html[data-edition="ja"] .portrait{border-radius:2px;box-shadow:12px 14px 0 rgba(255,255,255,.18),0 20px 42px rgba(25,30,34,.25)}
+html[data-edition="ja"] .dbox{border-radius:2px;background:rgba(239,238,233,.9);box-shadow:0 -1px 0 rgba(50,55,58,.16)}
+html[data-edition="ja"] .name{border-radius:0;background:#555b60;font-weight:500;letter-spacing:.15em}
+html[data-edition="ja"] #inp{border-radius:2px;border:0;border-bottom:1px solid #9ca0a2;background:rgba(255,255,255,.42)}
+html[data-edition="ja"] #send{border-radius:2px;background:#6f777c;box-shadow:none}
+html[data-edition="ja"] .chip{border-radius:2px;background:rgba(255,255,255,.45);border-color:rgba(60,65,68,.18);color:#555b60}
+
+html[data-edition="es"] .portrait{border-radius:8px;box-shadow:-12px 12px 0 rgba(255,139,95,.18),0 18px 54px rgba(35,6,16,.42)}
+html[data-edition="es"] .dbox{border-radius:14px;background:rgba(48,15,29,.88);border-left:3px solid #ff9166;box-shadow:0 -8px 32px rgba(50,5,20,.32)}
+html[data-edition="es"] .line{color:#fff0e8}
+html[data-edition="es"] #inp{background:rgba(255,255,255,.1);border-color:rgba(255,179,142,.3);color:#fff}
+html[data-edition="es"] #inp::placeholder{color:rgba(255,255,255,.5)}
+
+html[data-edition="pt-BR"] .portrait{border-radius:30px;box-shadow:0 0 0 3px rgba(255,232,184,.45),0 18px 50px rgba(8,48,38,.34)}
+html[data-edition="pt-BR"] .dbox{border-radius:28px;background:rgba(246,244,226,.9);box-shadow:0 -8px 32px rgba(15,70,55,.22)}
+html[data-edition="pt-BR"] .name{background:#29735a}
+html[data-edition="pt-BR"] #send{background:linear-gradient(135deg,#f2a65a,#2e8d70)}
+
+/* ---------- Edition-specific in-game direction ---------- */
+#game[data-portrait-mode="scene"] .stage{margin:4px 14px 8px;height:34vh}
+#game[data-portrait-mode="scene"] .portrait{width:100%;height:100%;max-width:none;background-size:cover;background-position:center;border-radius:16px;font-size:0}
+#game[data-portrait-mode="scene"] .pet{bottom:-8px}
+
+/* EN — full-bleed streaming drama, asymmetrical and restrained */
+html[data-edition="en"] #game .hud{padding:18px 18px 8px}
+html[data-edition="en"] #game .stage{height:42vh;justify-content:flex-end;padding-right:14px}
+html[data-edition="en"] #game:not([data-portrait-mode="scene"]) .portrait{width:min(66vw,255px);height:100%;border-radius:7px;background-position:center top}
+html[data-edition="en"] #game .chatlog{margin:0 14px 6px}
+html[data-edition="en"] #game .msg.them{background:rgba(30,12,21,.84);color:#f6ebe7;border:1px solid rgba(216,155,137,.15);border-radius:4px 14px 14px 4px}
+html[data-edition="en"] #game .msg.me{background:#7c2c48;border-radius:14px 4px 4px 14px}
+html[data-edition="en"] #game .dbox{margin:0 10px 10px;border-radius:7px}
+html[data-edition="en"] #game .chap{letter-spacing:.06em;text-transform:uppercase}
+
+/* ZH — central romantic stage, soft layering and visible emotional reward */
+html[data-edition="zh"] #game .stage{height:39vh}
+html[data-edition="zh"] #game .hud{padding-top:16px}
+html[data-edition="zh"] #game .msg.them{border-radius:18px 18px 18px 5px}
+html[data-edition="zh"] #game .msg.me{border-radius:18px 18px 5px 18px;background:linear-gradient(135deg,#d95d8d,var(--accent))}
+html[data-edition="zh"] #game .dbox{border-radius:24px}
+html[data-edition="zh"] #game .beat{border-radius:18px;background:linear-gradient(135deg,rgba(255,247,250,.95),rgba(250,224,233,.92))}
+
+/* JA — the environment leads; quiet editorial panels and deliberate whitespace */
+html[data-edition="ja"] #game .hud{padding:18px 20px 10px;border-bottom:1px solid rgba(55,60,63,.12)}
+html[data-edition="ja"] #game .stage{height:28vh;margin-top:12px;align-items:stretch}
+html[data-edition="ja"] #game[data-portrait-mode="scene"] .stage{height:30vh;margin:12px 18px 14px;padding:0}
+html[data-edition="ja"] #game[data-portrait-mode="scene"] .portrait{border-radius:0;background-position:center;filter:saturate(.52) contrast(.92)}
+html[data-edition="ja"] #game .chatlog{margin:0 20px 10px;gap:12px}
+html[data-edition="ja"] #game .msg{box-shadow:none;line-height:1.72;font-size:.95em}
+html[data-edition="ja"] #game .msg.them{background:rgba(244,243,239,.82);border-radius:0;border-left:1px solid #7f8589;padding-left:16px}
+html[data-edition="ja"] #game .msg.me{background:transparent;color:#3f4548;border-radius:0;border-right:1px solid #7f8589;text-align:right;padding-right:16px}
+html[data-edition="ja"] #game .dbox{margin:0 18px 14px;padding:18px 16px 12px}
+html[data-edition="ja"] #game .chap{margin:2px 20px;color:#5b6266}
+html[data-edition="ja"] #game .chap .ci{border-radius:0;background:#666e73}
+html[data-edition="ja"] #game .chap .cg{border-radius:0;background:transparent;border-left:1px solid #8d9497}
+html[data-edition="ja"] #game .pet,html[data-edition="ja"] #game .particles{display:none}
+
+/* ES — diagonal stage, sharp conversational rhythm and opposing message blocks */
+html[data-edition="es"] #game .hud{padding:16px 16px 6px}
+html[data-edition="es"] #game .stage{height:39vh;justify-content:flex-start;padding-left:10px;overflow:hidden}
+html[data-edition="es"] #game:not([data-portrait-mode="scene"]) .portrait{width:78%;height:100%;border-radius:0;clip-path:polygon(0 0,100% 0,86% 100%,0 100%)}
+html[data-edition="es"] #game[data-portrait-mode="scene"] .stage{height:35vh;margin-left:8px;margin-right:8px;transform:skewX(-1.5deg)}
+html[data-edition="es"] #game[data-portrait-mode="scene"] .portrait{border-radius:2px;background-position:42% center}
+html[data-edition="es"] #game .chatlog{gap:6px}
+html[data-edition="es"] #game .msg{border-radius:2px;font-weight:500}
+html[data-edition="es"] #game .msg.them{background:rgba(48,12,25,.86);color:#fff0e8;border-left:3px solid #ef7b55}
+html[data-edition="es"] #game .msg.me{background:#b4384f;border-right:3px solid #ffb06e}
+html[data-edition="es"] #game .dbox{margin-left:8px;margin-right:8px}
+html[data-edition="es"] #game .chap .ci,html[data-edition="es"] #game .chap .cg{border-radius:2px}
+
+/* PT-BR — open, rounded, tactile and socially warm */
+html[data-edition="pt-BR"] #game .hud{padding:17px 18px 7px}
+html[data-edition="pt-BR"] #game .stage{height:36vh}
+html[data-edition="pt-BR"] #game:not([data-portrait-mode="scene"]) .portrait{width:min(72vw,270px);height:100%;border-radius:48% 48% 24px 24px}
+html[data-edition="pt-BR"] #game[data-portrait-mode="scene"] .stage{height:34vh;margin:6px 12px 10px}
+html[data-edition="pt-BR"] #game[data-portrait-mode="scene"] .portrait{border-radius:34px;background-position:center 48%}
+html[data-edition="pt-BR"] #game .chatlog{gap:9px}
+html[data-edition="pt-BR"] #game .msg.them{background:rgba(248,244,221,.92);border-radius:22px 22px 22px 7px;color:#284b3e}
+html[data-edition="pt-BR"] #game .msg.me{background:#2f8468;border-radius:22px 22px 7px 22px}
+html[data-edition="pt-BR"] #game .dbox{margin-left:10px;margin-right:10px}
+html[data-edition="pt-BR"] #game .chip{background:rgba(255,248,222,.75);border-color:rgba(47,132,104,.22);color:#286d59}
+
+/* ---------- Opening Director ---------- */
+#opening{position:fixed;inset:0;z-index:200;display:none;overflow:hidden;color:#fff;background:#100a0e;font-family:var(--edition-font)}
+#opening.show{display:block}
+.op-skip{position:absolute;z-index:8;right:18px;top:17px;border:0;background:transparent;color:currentColor;opacity:.58;
+  font:500 .72em/1 var(--edition-font);letter-spacing:.14em;min-width:52px;min-height:40px;cursor:pointer}
+.op-frame{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;animation:opCut .7s cubic-bezier(.2,.75,.25,1) both}
+.op-caption{position:relative;z-index:3;width:min(82%,390px)}
+.op-eyebrow{font-size:.64em;letter-spacing:.24em;opacity:.55;margin-bottom:14px}
+.op-text{font-size:clamp(1.25em,6vw,1.85em);line-height:1.45;letter-spacing:.025em;white-space:normal}
+.op-world{position:absolute;inset:0;overflow:hidden}
+.op-world i{position:absolute;display:block}
+.op-scene-image{position:absolute;inset:-4%;background-image:var(--op-scene);background-size:cover;background-position:center;background-repeat:no-repeat;
+  transform-origin:center;animation:opSceneIn 2.4s cubic-bezier(.18,.72,.22,1) both}
+.op-character{position:absolute;inset:0;background-image:var(--op-image);background-repeat:no-repeat;pointer-events:none}
+.op-wordmark{font-size:clamp(2.7em,14vw,4.5em);font-weight:300;letter-spacing:.2em;text-indent:.2em;animation:opLogo 1.1s ease both}
+.op-local{text-align:center;font-size:1.15em;letter-spacing:.38em;text-indent:.38em;margin-top:9px;animation:opLogo 1s ease .22s both}
+.op-category{text-align:center;font-size:clamp(.52em,1.4vw,.66em);font-weight:500;letter-spacing:.38em;text-indent:.38em;
+  opacity:.66;margin-top:15px;animation:opLogo 1s ease .34s both}
+.op-tagline{text-align:center;font-size:.72em;letter-spacing:.13em;opacity:.62;margin-top:24px;animation:opLogo 1s ease .4s both}
+.op-heartline{width:min(230px,62vw);height:20px;margin:0 auto 18px}
+.op-brand{flex-direction:column}
+@keyframes opCut{from{opacity:0;filter:blur(8px);transform:scale(1.025)}to{opacity:1;filter:none;transform:none}}
+@keyframes opLogo{from{opacity:0;letter-spacing:.36em;filter:blur(5px)}to{opacity:1;filter:none}}
+@keyframes opBeat{0%{transform:scale(.4);opacity:.2}35%{transform:scale(1.9);opacity:1}100%{transform:scale(.7);opacity:.55}}
+@keyframes opSceneIn{from{opacity:.35;transform:scale(1.09);filter:blur(5px)}to{opacity:1;transform:scale(1.025);filter:none}}
+
+/* EN: close, controlled, adult */
+#opening[data-opening="en"]{background:linear-gradient(150deg,#10070c,#491426 58%,#1d0d16);color:#f7eae5}
+#opening[data-opening="en"] .op-caption{text-align:left}
+#opening[data-opening="en"] .op-scene-image{background-position:58% center;filter:saturate(.82) contrast(1.06)}
+#opening[data-opening="en"] .op-message .op-scene-image{background-position:74% 88%;animation-name:enSceneCoffee}
+#opening[data-opening="en"] .op-gaze .op-scene-image{background-position:65% 35%;animation-name:enSceneGaze}
+#opening[data-opening="en"] .op-dawn .op-world::before{content:"";position:absolute;inset:-20%;background:linear-gradient(112deg,transparent 38%,rgba(224,157,130,.34) 49%,transparent 57%);animation:enLight 2.4s ease both}
+#opening[data-opening="en"] .op-character{width:86%;left:auto;background-size:cover;background-position:center 12%;filter:saturate(.58) contrast(1.09) sepia(.12);
+  -webkit-mask-image:linear-gradient(to left,#000 58%,rgba(0,0,0,.78) 75%,transparent 100%),linear-gradient(to top,transparent 0,#000 24%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(to left,#000 58%,rgba(0,0,0,.78) 75%,transparent 100%);
+  transform-origin:65% 35%;animation:enCamera 2.2s cubic-bezier(.2,.7,.25,1) both}
+#opening[data-opening="en"] .op-frame:not(.op-brand)::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(15,5,10,.93) 0%,rgba(30,7,16,.65) 37%,transparent 70%),
+  linear-gradient(0deg,rgba(20,5,11,.72),transparent 42%);mix-blend-mode:multiply}
+#opening[data-opening="en"] .op-brand>div{position:relative;z-index:2}
+#opening[data-opening="en"] .op-caption{z-index:3;width:56%;margin-left:7%;margin-right:auto}
+#opening[data-opening="en"] .op-dawn .op-character{width:94%;right:-18%;background-position:58% 16%;filter:saturate(.48) contrast(1.12) sepia(.2) brightness(.72)}
+#opening[data-opening="en"] .op-message .op-character{width:84%;right:-11%;background-position:55% 10%;animation-name:enSlide}
+#opening[data-opening="en"] .op-message .op-caption{padding:22px;border-left:1px solid rgba(229,177,164,.55);background:rgba(20,6,12,.34);backdrop-filter:blur(10px)}
+#opening[data-opening="en"] .op-gaze .op-character{width:93%;right:-12%;background-position:50% 7%;filter:saturate(.46) contrast(1.12) sepia(.16) brightness(.8);animation-name:enGaze}
+#opening[data-opening="en"] .op-gaze .op-caption{align-self:flex-end;margin-bottom:18vh;width:78%;text-align:right;text-shadow:0 4px 22px #19060e}
+#opening[data-opening="en"] .op-gaze .op-world::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 72% 29%,rgba(221,154,129,.24),transparent 25%)}
+@keyframes enLight{from{transform:translateX(-30%)}to{transform:translateX(20%)}}
+@keyframes enSceneCoffee{from{opacity:.45;transform:scale(1.03) translateY(-3%)}to{opacity:1;transform:scale(1.18) translateY(-9%)}}
+@keyframes enSceneGaze{from{opacity:.55;transform:scale(1.08) translateX(2%)}to{opacity:1;transform:scale(1.2) translateX(-3%)}}
+@keyframes enCamera{from{opacity:0;transform:scale(1.16) translateX(4%);filter:blur(5px) saturate(.4) brightness(.62)}to{opacity:.96;transform:scale(1.04);}}
+@keyframes enSlide{from{opacity:0;transform:scale(1.08) translateX(8%)}to{opacity:.94;transform:scale(1.02) translateX(0)}}
+@keyframes enGaze{from{opacity:.25;transform:scale(1.12) translateX(3%);filter:blur(3px) saturate(.4) brightness(.65)}to{opacity:1;transform:scale(1.025);}}
+
+/* ZH: soft certainty and being remembered */
+#opening[data-opening="zh"]{background:linear-gradient(155deg,#f8dce6,#c97899 58%,#6f3655);color:#fff8fb}
+#opening[data-opening="zh"] .op-caption{text-align:center;text-shadow:0 3px 20px rgba(91,28,59,.25)}
+#opening[data-opening="zh"] .op-scene-image{background-position:55% center;filter:saturate(.78) contrast(.98)}
+#opening[data-opening="zh"] .op-message .op-scene-image{background-position:78% 82%;animation-name:zhSceneCoffee}
+#opening[data-opening="zh"] .op-reach .op-scene-image{background-position:59% 50%;animation-name:zhSceneNear}
+#opening[data-opening="zh"] .op-world::before,#opening[data-opening="zh"] .op-world::after{content:"";position:absolute;border-radius:50%;filter:blur(18px);background:rgba(255,255,255,.26);animation:zhFloat 3s ease-in-out infinite alternate}
+#opening[data-opening="zh"] .op-world::before{width:220px;height:220px;left:-60px;top:8%}
+#opening[data-opening="zh"] .op-world::after{width:160px;height:160px;right:-20px;bottom:12%;animation-delay:-1.2s}
+#opening[data-opening="zh"] .op-character{width:92%;left:auto;right:-15%;background-size:cover;background-position:center 8%;filter:saturate(.72) sepia(.06) brightness(.92);
+  -webkit-mask-image:linear-gradient(to left,#000 55%,rgba(0,0,0,.78) 72%,transparent 100%);mask-image:linear-gradient(to left,#000 55%,rgba(0,0,0,.78) 72%,transparent 100%);
+  animation:zhPerson 2.15s cubic-bezier(.2,.75,.2,1) both}
+#opening[data-opening="zh"] .op-frame:not(.op-brand)::after{content:"";position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(112,38,73,.68),transparent 72%),linear-gradient(0deg,rgba(81,26,53,.52),transparent 46%)}
+#opening[data-opening="zh"] .op-caption{z-index:3}
+#opening[data-opening="zh"] .op-message .op-caption{width:64%;margin-right:auto;margin-left:7%;padding:26px 18px;border-radius:30px;background:rgba(255,249,252,.18);backdrop-filter:blur(13px)}
+#opening[data-opening="zh"] .op-reach .op-character{width:100%;right:-24%;background-position:52% 7%;animation-name:zhNear}
+#opening[data-opening="zh"] .op-reach .op-caption{align-self:flex-end;margin-bottom:17vh;text-align:left;width:82%}
+@keyframes zhFloat{to{transform:translate(20px,-16px) scale(1.12)}}
+@keyframes zhSceneCoffee{from{opacity:.45;transform:scale(1.02)}to{opacity:1;transform:scale(1.16) translate(-4%,-5%)}}
+@keyframes zhSceneNear{from{opacity:.5;transform:scale(1.06) translateX(3%)}to{opacity:1;transform:scale(1.18) translateX(-2%)}}
+@keyframes zhPerson{from{opacity:0;transform:scale(1.12) translateX(8%);filter:blur(6px) saturate(.55)}to{opacity:.92;transform:scale(1.025)}}
+@keyframes zhNear{from{opacity:.3;transform:scale(1.12)}to{opacity:.96;transform:scale(1.035) translateX(-2%)}}
+
+/* JA: rain, reflection, silence */
+#opening[data-opening="ja"]{background:linear-gradient(165deg,#d9dcdd,#848c91 58%,#343a40);color:#f4f2ed}
+#opening[data-opening="ja"] .op-frame{align-items:flex-end;justify-content:flex-start;padding:0 34px 22vh}
+#opening[data-opening="ja"] .op-scene-image{inset:0;background-position:center;filter:saturate(.42) contrast(.9);animation-duration:3.4s}
+#opening[data-opening="ja"] .op-reflection .op-scene-image{background-position:23% center;animation-name:jaSceneReflection}
+#opening[data-opening="ja"] .op-umbrella .op-scene-image{background-position:82% center;animation-name:jaSceneUmbrella}
+#opening[data-opening="ja"] .op-caption{width:72%;text-align:left}
+#opening[data-opening="ja"] .op-text{font-weight:300;letter-spacing:.16em;font-size:1.35em}
+#opening[data-opening="ja"] .op-rain .op-world{background:repeating-linear-gradient(102deg,transparent 0 34px,rgba(255,255,255,.12) 35px,transparent 37px);animation:jaRain 3s linear infinite}
+#opening[data-opening="ja"] .op-reflection .op-world::before{content:"";position:absolute;left:18%;bottom:0;width:92px;height:68%;background:linear-gradient(transparent,#485057);filter:blur(5px);opacity:.58}
+#opening[data-opening="ja"] .op-umbrella .op-world::after{content:"";position:absolute;width:330px;height:165px;border-radius:330px 330px 0 0;right:-80px;top:12%;border-top:1px solid rgba(255,255,255,.5)}
+#opening[data-opening="ja"] .op-character{width:72%;height:88%;left:auto;right:-9%;top:6%;background-size:cover;background-position:center 8%;filter:grayscale(.5) saturate(.44) contrast(.94) brightness(.82);
+  opacity:.48;-webkit-mask-image:linear-gradient(to left,#000 42%,rgba(0,0,0,.55) 70%,transparent 100%),linear-gradient(to top,transparent,#000 30%);
+  mask-image:linear-gradient(to left,#000 42%,rgba(0,0,0,.55) 70%,transparent 100%);animation:jaPerson 2.8s ease both}
+#opening[data-opening="ja"] .op-caption{z-index:3}
+#opening[data-opening="ja"] .op-reflection .op-character{transform:scaleX(-1);filter:grayscale(.72) saturate(.25) blur(1.2px) brightness(.7);opacity:.38}
+#opening[data-opening="ja"] .op-umbrella .op-character{width:76%;right:-5%;opacity:.62}
+#opening[data-opening="ja"] .op-wordmark{font-size:1em;font-weight:500;letter-spacing:.52em}
+#opening[data-opening="ja"] .op-local{font-size:3em;font-weight:300}
+@keyframes jaRain{to{background-position:-80px 140px}}
+@keyframes jaSceneReflection{from{opacity:.35;transform:scale(1.02) translateX(3%)}to{opacity:.82;transform:scale(1.1) translateX(7%)}}
+@keyframes jaSceneUmbrella{from{opacity:.42;transform:scale(1.04) translateX(-2%)}to{opacity:1;transform:scale(1.14) translateX(-6%)}}
+@keyframes jaPerson{from{opacity:0;transform:translateX(4%) scale(1.04)}to{transform:none}}
+
+/* ES: fast, theatrical, verbally charged */
+#opening[data-opening="es"]{background:linear-gradient(125deg,#21070e,#821b32 60%,#e26343);color:#fff0e7}
+#opening[data-opening="es"] .op-caption{transform:skewX(-4deg);text-align:left}
+#opening[data-opening="es"] .op-scene-image{background-position:43% center;filter:saturate(.94) contrast(1.1);animation-duration:1.35s}
+#opening[data-opening="es"] .op-answer .op-scene-image{background-position:40% 46%;animation-name:esSceneTurn}
+#opening[data-opening="es"] .op-near .op-scene-image{background-position:39% 34%;animation-name:esSceneNear}
+#opening[data-opening="es"] .op-text{font-weight:700;font-size:2em}
+#opening[data-opening="es"] .op-steps .op-world{background:repeating-linear-gradient(115deg,transparent 0 50px,rgba(255,165,105,.14) 52px,transparent 57px);animation:esRush 1.4s linear both}
+#opening[data-opening="es"] .op-answer .op-caption{text-align:right}
+#opening[data-opening="es"] .op-near .op-world::after{content:"";position:absolute;inset:8% -15%;border:1px solid rgba(255,180,128,.42);border-radius:50%;transform:rotate(-12deg);animation:esNear 1.5s ease both}
+#opening[data-opening="es"] .op-character{width:96%;height:100%;left:-18%;background-size:cover;background-position:center 8%;filter:saturate(.66) contrast(1.12) sepia(.12) brightness(.78);
+  -webkit-mask-image:linear-gradient(to right,#000 48%,rgba(0,0,0,.75) 72%,transparent 100%);mask-image:linear-gradient(to right,#000 48%,rgba(0,0,0,.75) 72%,transparent 100%);
+  animation:esPerson 1.35s cubic-bezier(.15,.8,.2,1) both}
+#opening[data-opening="es"] .op-frame:not(.op-brand)::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(270deg,rgba(72,7,22,.78),transparent 68%)}
+#opening[data-opening="es"] .op-caption{position:relative;z-index:3}
+#opening[data-opening="es"] .op-answer .op-caption{width:58%;margin-left:auto;margin-right:7%}
+#opening[data-opening="es"] .op-near .op-character{width:108%;left:-20%;background-position:55% 5%;animation-name:esFace}
+#opening[data-opening="es"] .op-near .op-caption{align-self:flex-end;margin:0 7% 15vh auto;width:76%;text-align:right}
+#opening[data-opening="es"] .op-wordmark{font-weight:750}
+#opening[data-opening="es"] .op-local{font-size:2.25em;font-weight:800;letter-spacing:.1em}
+@keyframes esRush{from{transform:translateX(-18%)}to{transform:translateX(8%)}}
+@keyframes esSceneTurn{from{opacity:.3;transform:scale(1.04) translateX(-5%)}to{opacity:1;transform:scale(1.13) translateX(2%)}}
+@keyframes esSceneNear{from{opacity:.55;transform:scale(1.12)}to{opacity:1;transform:scale(1.26) translateX(5%)}}
+@keyframes esNear{from{transform:rotate(-12deg) scale(1.4)}to{transform:rotate(-12deg) scale(.82)}}
+@keyframes esPerson{from{opacity:0;transform:translateX(-12%) scale(1.08)}to{opacity:.94;transform:translateX(0) scale(1.02)}}
+@keyframes esFace{from{opacity:.25;transform:scale(1.18) translateX(-4%)}to{opacity:1;transform:scale(1.04)}}
+
+/* PT-BR: sun, movement, warmth */
+#opening[data-opening="pt-BR"]{background:radial-gradient(circle at 12% 0,#efb663 0,transparent 28%),linear-gradient(145deg,#113b2c,#267158 60%,#165167);color:#fff6df}
+#opening[data-opening="pt-BR"] .op-caption{text-align:center}
+#opening[data-opening="pt-BR"] .op-scene-image{background-position:48% center;filter:saturate(.9) contrast(.98);animation-duration:2.1s}
+#opening[data-opening="pt-BR"] .op-laugh .op-scene-image{background-position:50% 44%;animation-name:ptSceneLaugh}
+#opening[data-opening="pt-BR"] .op-close .op-scene-image{background-position:50% 72%;animation-name:ptSceneClose}
+#opening[data-opening="pt-BR"] .op-world::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;left:-170px;top:-190px;border:1px solid rgba(255,230,168,.5);box-shadow:0 0 80px rgba(245,184,94,.24);animation:ptSun 3s ease-in-out infinite alternate}
+#opening[data-opening="pt-BR"] .op-laugh .op-caption{animation:ptLaugh .8s cubic-bezier(.2,1.5,.3,1) both}
+#opening[data-opening="pt-BR"] .op-close .op-world{background:linear-gradient(118deg,transparent 45%,rgba(255,216,139,.2) 46%,transparent 58%)}
+#opening[data-opening="pt-BR"] .op-character{width:88%;height:100%;left:auto;right:-13%;background-size:cover;background-position:center 8%;filter:saturate(.82) contrast(1.02) sepia(.08) brightness(.94);
+  -webkit-mask-image:linear-gradient(to left,#000 55%,rgba(0,0,0,.74) 74%,transparent 100%);mask-image:linear-gradient(to left,#000 55%,rgba(0,0,0,.74) 74%,transparent 100%);
+  animation:ptPerson 1.8s cubic-bezier(.2,.8,.25,1) both}
+#opening[data-opening="pt-BR"] .op-frame:not(.op-brand)::after{content:"";position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(8,53,39,.74),transparent 72%),linear-gradient(0deg,rgba(8,47,39,.52),transparent 45%)}
+#opening[data-opening="pt-BR"] .op-caption{position:relative;z-index:3}
+#opening[data-opening="pt-BR"] .op-laugh .op-caption{width:60%;margin-left:7%;margin-right:auto;text-align:left}
+#opening[data-opening="pt-BR"] .op-close .op-character{width:96%;right:-21%;background-position:52% 7%;animation-name:ptClose}
+#opening[data-opening="pt-BR"] .op-close .op-caption{align-self:flex-end;width:78%;margin-bottom:13vh;text-align:left}
+#opening[data-opening="pt-BR"] .op-wordmark{font-weight:600;color:#ffe7af}
+#opening[data-opening="pt-BR"] .op-local{font-size:2em;font-weight:700;letter-spacing:.09em}
+@keyframes ptSun{to{transform:translate(35px,24px) scale(1.08)}}
+@keyframes ptSceneLaugh{from{opacity:.45;transform:scale(1.05) translateY(2%)}to{opacity:1;transform:scale(1.14) translateY(-1%)}}
+@keyframes ptSceneClose{from{opacity:.5;transform:scale(1.08)}to{opacity:1;transform:scale(1.19) translateY(-4%)}}
+@keyframes ptLaugh{from{opacity:0;transform:translateY(18px) rotate(-2deg)}to{opacity:1;transform:rotate(1deg)}}
+@keyframes ptPerson{from{opacity:0;transform:translateY(3%) scale(1.08)}to{opacity:.96;transform:scale(1.015)}}
+@keyframes ptClose{from{opacity:.35;transform:scale(1.13) translateX(3%)}to{opacity:1;transform:scale(1.035)}}
+
+/*
+ * One master still, three real shots.
+ * Each frame uses a deliberately tight crop instead of revealing the whole
+ * composition again. Portrait and landscape viewports receive separate lenses.
+ */
+#opening .op-frame:not(.op-brand) .op-scene-image{
+  inset:-7%;background-size:var(--shot-size,230%) auto!important;
+  background-position:var(--shot-pos,50% 50%)!important;
+  animation:shotFocus 2.45s cubic-bezier(.18,.72,.2,1) both!important;
+}
+@keyframes shotFocus{
+  from{opacity:.42;transform:scale(1.02)}
+  to{opacity:1;transform:scale(1.105)}
+}
+
+/* EN — skyline / remembered coffee / restrained eye contact */
+#opening[data-opening="en"] .op-dawn .op-scene-image{--shot-size:225%;--shot-pos:100% 19%}
+#opening[data-opening="en"] .op-message .op-scene-image{--shot-size:295%;--shot-pos:100% 100%}
+#opening[data-opening="en"] .op-gaze .op-scene-image{--shot-size:315%;--shot-pos:69% 24%}
+
+/* ZH — exhausted city / the exact coffee / the look that says “I noticed” */
+#opening[data-opening="zh"] .op-window .op-scene-image{--shot-size:235%;--shot-pos:83% 48%}
+#opening[data-opening="zh"] .op-message .op-scene-image{--shot-size:305%;--shot-pos:100% 100%}
+#opening[data-opening="zh"] .op-reach .op-scene-image{--shot-size:290%;--shot-pos:62% 49%}
+
+/* JA — rain on glass / unsent words in his back / the waiting umbrella */
+#opening[data-opening="ja"] .op-rain .op-scene-image{--shot-size:235%;--shot-pos:0% 19%}
+#opening[data-opening="ja"] .op-reflection .op-scene-image{--shot-size:255%;--shot-pos:100% 47%}
+#opening[data-opening="ja"] .op-umbrella .op-scene-image{--shot-size:285%;--shot-pos:100% 83%}
+
+/* ES — wet footsteps / the turn / proximity */
+#opening[data-opening="es"] .op-steps .op-scene-image{--shot-size:235%;--shot-pos:100% 100%}
+#opening[data-opening="es"] .op-answer .op-scene-image{--shot-size:285%;--shot-pos:47% 29%}
+#opening[data-opening="es"] .op-near .op-scene-image{--shot-size:345%;--shot-pos:43% 22%}
+
+/* PT-BR — sunset heat / an unguarded laugh / a drink already waiting */
+#opening[data-opening="pt-BR"] .op-sun .op-scene-image{--shot-size:230%;--shot-pos:0% 14%}
+#opening[data-opening="pt-BR"] .op-laugh .op-scene-image{--shot-size:285%;--shot-pos:44% 33%}
+#opening[data-opening="pt-BR"] .op-close .op-scene-image{--shot-size:305%;--shot-pos:53% 100%}
+
+@media (orientation:landscape){
+  #opening[data-opening="en"] .op-dawn .op-scene-image{--shot-size:165%;--shot-pos:100% 18%}
+  #opening[data-opening="en"] .op-message .op-scene-image{--shot-size:215%;--shot-pos:100% 100%}
+  #opening[data-opening="en"] .op-gaze .op-scene-image{--shot-size:235%;--shot-pos:68% 24%}
+  #opening[data-opening="zh"] .op-window .op-scene-image{--shot-size:170%;--shot-pos:84% 48%}
+  #opening[data-opening="zh"] .op-message .op-scene-image{--shot-size:225%;--shot-pos:100% 100%}
+  #opening[data-opening="zh"] .op-reach .op-scene-image{--shot-size:215%;--shot-pos:62% 46%}
+  #opening[data-opening="ja"] .op-rain .op-scene-image{--shot-size:175%;--shot-pos:0% 22%}
+  #opening[data-opening="ja"] .op-reflection .op-scene-image{--shot-size:195%;--shot-pos:100% 45%}
+  #opening[data-opening="ja"] .op-umbrella .op-scene-image{--shot-size:220%;--shot-pos:100% 82%}
+  #opening[data-opening="es"] .op-steps .op-scene-image{--shot-size:175%;--shot-pos:100% 100%}
+  #opening[data-opening="es"] .op-answer .op-scene-image{--shot-size:215%;--shot-pos:46% 28%}
+  #opening[data-opening="es"] .op-near .op-scene-image{--shot-size:255%;--shot-pos:42% 21%}
+  #opening[data-opening="pt-BR"] .op-sun .op-scene-image{--shot-size:170%;--shot-pos:0% 13%}
+  #opening[data-opening="pt-BR"] .op-laugh .op-scene-image{--shot-size:210%;--shot-pos:43% 31%}
+  #opening[data-opening="pt-BR"] .op-close .op-scene-image{--shot-size:225%;--shot-pos:52% 100%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .op-frame,.op-world,.op-caption,.op-wordmark,.op-local,.op-tagline{animation:none!important}
+  #opening .op-scene-image{animation:none!important}
+}
+</style></head><body>
+<div id="opening" aria-hidden="true">
+  <button class="op-skip" id="opSkip" onclick="FLUTTER_OPENING.skip()">SKIP</button>
+  <div class="op-frame"></div>
+</div>
+<div id="launchGate" role="button" tabindex="0" aria-hidden="true" onclick="enterSelection()">
+  <div class="gate-inner">
+    <div class="gate-kicker" id="gateKicker">DESIRE · MEMORY · BECOMING</div>
+    <svg class="pulse-line gate-pulse" viewBox="0 0 230 20" aria-hidden="true"><path d="M1 11h73l8-1 5-8 8 17 7-14 7 6h120"/></svg>
+    <div class="gate-title">FLUTTER</div>
+    <div class="gate-local" id="gateLocal"></div>
+    <div class="gate-category">HER · PSYCHE · RPG</div>
+    <div class="gate-tagline" id="gateTagline"></div>
+  </div>
+  <div class="gate-prompt" id="gatePrompt">PRESS ANY KEY · CLICK TO ENTER</div>
+</div>
+<div id="brandIntro" aria-hidden="true">
+  <div class="bi-grain"></div>
+  <button class="bi-theme" id="biTheme" onclick="toggleIntroTheme()">THEME SONG · ON</button>
+  <button class="bi-skip" id="biSkip" onclick="finishBrandIntro()">SKIP</button>
+  <div class="bi-line" id="biLine"></div>
+  <div class="bi-progress"><i></i></div>
+</div>
+<div id="app">
+<select class="lang" id="editionSelect" onchange="switchEdition(this.value)" aria-label="Market edition"></select>
+<button class="sound-btn" id="soundBtn" onclick="toggleSoundPanel()" aria-label="Sound settings">♪</button>
+<div class="sound-panel" id="soundPanel">
+  <div class="sound-title" data-audio-title>SOUND</div>
+  <label class="sound-row"><span data-music-label>Atmosphere</span><input class="sound-check" data-music-toggle type="checkbox" onchange="FLUTTER_AUDIO.setMusic(this.checked)"></label>
+  <label class="sound-row"><span>VOL</span><input data-volume type="range" min="0" max=".5" step=".01" oninput="FLUTTER_AUDIO.setVolume(this.value)"></label>
+  <label class="sound-row"><span data-voice-label>Dialogue voice</span><select data-voice onchange="selectVoiceMode(this)"></select></label>
+  <label class="sound-row"><span data-rate-label>Voice pace</span><input data-rate type="range" min=".75" max="1.25" step=".05" oninput="FLUTTER_AUDIO.setRate(this.value)"></label>
+  <div class="sound-note" data-edge-note></div><div class="sound-note" data-privacy></div>
+</div>
+<button class="fbbtn" id="fbBtn" onclick="openFb()">♡</button>
+
+<div id="fbOv" onclick="if(event.target===this)closeFb()">
+  <div class="fb-card" id="fbCard"></div>
+</div>
+<div id="fbBar"></div>
+
+<div id="prologueOv">
+  <div class="plg-card" id="plgCard"></div>
+</div>
+<div class="chapter-wish" id="chapterWish" role="button" tabindex="0" aria-hidden="true" onclick="finishChapterWish()">
+  <button class="wish-skip" id="wishSkip" onclick="finishChapterWish()">SKIP</button>
+  <div class="wish-inner">
+    <div class="wish-kicker" id="wishKicker"></div>
+    <div class="wish-title" id="wishTitle"></div>
+    <div class="wish-text" id="wishText"></div>
+    <div class="wish-line"></div>
+  </div>
+</div>
+
+<div id="select">
+  <div class="title-noise"></div><div class="title-orbit"></div>
+  <div class="brand">
+    <h1>FLUTTER</h1><div class="brand-local" id="brandLocal">怦然</div>
+    <svg class="pulse-line" viewBox="0 0 230 20" aria-hidden="true"><path d="M1 11h73l8-1 5-8 8 17 7-14 7 6h120"/></svg>
+    <div class="brand-category">HER · PSYCHE · RPG</div>
+  </div>
+  <div class="sub" id="ssub">他，真的会记得你</div>
+  <div id="cards"></div>
+  <button id="opReplay" onclick="FLUTTER_OPENING.play(edition.id,{full:true})" aria-label="Replay opening" style="border:0;background:transparent;color:var(--edition-muted);font:500 .68em/1 var(--edition-font);letter-spacing:.12em;min-height:38px;cursor:pointer">▶ OPENING</button>
+  <button class="archiveBtn" id="archiveBtn" onclick="openArchive()">◇ MEMORIES</button>
+</div>
+
+<div id="game">
+  <div id="scene"></div>
+  <div class="particles" id="particles"></div>
+  <button class="back" onclick="goSelect()">‹</button>
+  <div class="hud">
+    <div class="aff"><div class="lab"><span class="tier" id="tierbadge">✨ 初识</span><span id="affpct">0 → 10</span></div>
+      <div class="bar"><div class="fill" id="fill"></div><div class="barglow" id="barglow"></div></div></div>
+    <div class="attach" id="attach" title=""></div>
+    <div class="mood" id="mood">🌸</div>
+  </div>
+  <div class="chap" id="chap" style="display:none"></div>
+  <div class="stage"><div class="portrait" id="portrait">💗</div><div class="pet" id="pet">🐱</div></div>
+  <div class="chatlog" id="chatlog"></div>
+  <div class="dbox">
+    <div class="name" id="cname">…</div>
+    <div class="line" id="line"></div>
+    <div class="inrow"><input id="inp" placeholder="说点什么…" enterkeyhint="send"><button id="send" onclick="say()">♡</button></div>
+    <div class="acts" id="acts"></div>
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="ms" id="ms"><div class="big" id="msbig"></div></div>
+  <div class="choiceOv" id="choiceOv"><div class="choiceCard" id="choiceCard"></div></div>
+</div>
+</div>
+<div class="endOv" id="endOv"><div class="endCard" id="endCard"></div></div>
+<div class="clearOv" id="clearOv"><div class="clearCard" id="clearCard"></div></div>
+<div class="archiveOv" id="archiveOv" onclick="if(event.target===this)closeArchive()"><div class="archiveCard" id="archiveCard"></div></div>
+<script>
+// API前缀自动推导: gateway下(/flutter/)用同前缀, 直连后端时用空
+const API = window.FLUTTER_API || window.APP_API ||
+  (location.pathname.startsWith("/flutter") ? "/flutter" : "");
+let edition=FLUTTER_EDITIONS.apply(FLUTTER_EDITIONS.detect()),lang=edition.id;
+let R=null, route=null, hist=[], mem="", aff=0, busy=false;
+let storyState={}, curChoice=null, storyDone=false, pendingClear=null;
+const ATTACH_ICON={anxious:"💓",avoidant:"🌙",secure:"🌿"};
+const ATTACH_LABEL={zh:{anxious:"她需要安心",avoidant:"她需要空间",secure:"她敞开着心"},
+ en:{anxious:"she needs reassurance",avoidant:"she needs space",secure:"she's open-hearted"},
+ es:{anxious:"necesita seguridad",avoidant:"necesita espacio",secure:"tiene el corazón abierto"},
+ "pt-BR":{anxious:"ela precisa de segurança",avoidant:"ela precisa de espaço",secure:"ela abriu o coração"},
+ ja:{anxious:"安心を求めている",avoidant:"距離を必要としている",secure:"心をひらいている"}};
+const T={zh:{sub:"他，真的会记得你",aff:"好感",ph:"说点什么…",send:"发送 ♡",back:"回到选择",enter:"进入故事 →",
+  chips:["今天想你了","给你带了咖啡","陪我说说话","你今天好看"],
+  ms:{初识:"初识",心动:"心动",交心:"交心",怦然:"怦然♡"}},
+ en:{sub:"He remembers you",aff:"Affection",ph:"Say something…",send:"Send ♡",back:"Back to routes",enter:"ENTER →",
+  chips:["I missed you","Brought you coffee","Talk with me","You look good today"],
+  ms:{"First spark":"First spark",Heartbeat:"Heartbeat",Trust:"Trust","Fallen for you":"Fallen for you"}},
+ es:{sub:"Él te recuerda",aff:"Conexión",ph:"Dile algo…",send:"Enviar ♡",back:"Volver a las historias",enter:"ENTRAR →",
+  chips:["Te extrañé","Te traje café","Quédate conmigo","Hoy estás irresistible"],
+  ms:{"First spark":"Primera chispa",Heartbeat:"Latido",Trust:"Confianza","Fallen for you":"Enamorado de ti"}},
+ "pt-BR":{sub:"Ele se lembra de você",aff:"Conexão",ph:"Diz alguma coisa…",send:"Enviar ♡",back:"Voltar às histórias",enter:"ENTRAR →",
+  chips:["Senti sua falta","Trouxe café pra você","Fica aqui comigo","Você está lindo hoje"],
+  ms:{"First spark":"Primeira faísca",Heartbeat:"Coração acelerado",Trust:"Confiança","Fallen for you":"Apaixonado por você"}},
+ ja:{sub:"あなたを、覚えている",aff:"親密度",ph:"ことばを届ける…",send:"送る ♡",back:"物語を選ぶ",enter:"物語へ →",
+  chips:["会いたかった","コーヒー、どうぞ","少し話さない？","今日、素敵だね"],
+  ms:{"First spark":"はじまり",Heartbeat:"ときめき",Trust:"信頼","Fallen for you":"恋に落ちて"}}};
+function tr(){return T[lang]||T.en}
+
+/* ---------- 序幕 Prologue ---------- */
+const PLG={zh:{p:["加班到十一点，地铁上人很少。",
+  "你刷着手机，突然想：要是有个人，能记得我随口说过的每一句话——记得我讨厌香菜，记得我上周说想去看海，记得我今天说了“好累”。",
+  "在这里，有三个人会这样记得你。",
+  "旧书店温柔的老板顾言 · 万人追捧的顶流偶像陆星野 · 矜贵疏离的财阀继承人傅深"],btn:"遇见他们"},
+ en:{p:["Eleven p.m. Overtime again. The train is almost empty.",
+  "You scroll your phone and wonder—what if someone remembered every little thing you ever said? That you hate cilantro. That last week you wanted to see the ocean. That today you said 'I'm so tired.'",
+  "Here, three people will remember you exactly like that.",
+  "Ethan Cole, the cold CEO · Liam Brody, the firefighter next door · Adrian Vale, the rockstar who writes about you"],btn:"Meet Them"},
+ es:{p:["Son las once. El último tren está casi vacío.",
+  "Miras el teléfono y piensas: ¿y si alguien recordara esas pequeñas cosas que dices sin importancia?",
+  "Aquí, tres hombres te escuchan de verdad. Y lo que elijas cambiará la distancia entre ustedes.",
+  "Ethan Cole · Liam Brody · Adrian Vale"],btn:"Conócelos"},
+ "pt-BR":{p:["Onze da noite. O último trem está quase vazio.",
+  "Você olha o celular e pensa: e se alguém lembrasse de cada detalhe que você contou sem perceber?",
+  "Aqui, três homens escutam de verdade. E suas escolhas mudam o espaço entre vocês.",
+  "Ethan Cole · Liam Brody · Adrian Vale"],btn:"Conheça cada um"},
+ ja:{p:["夜十一時。帰りの電車には、ほとんど人がいない。",
+  "何気なく話したことまで、誰かが覚えていてくれたなら。",
+  "言葉を重ねるたび、まだ名前のない距離が、少しずつ変わっていく。",
+  "Ethan Cole · Liam Brody · Adrian Vale"],btn:"物語をはじめる"}};
+const HOOKS={guyan:{zh:"他不多话，但你说过的他都记得。",en:"He doesn't say much—but he remembers everything you say."},
+ luxingye:{zh:"他的世界很吵，唯独听你的时候很安静。",en:"His world is loud, yet he goes quiet just to listen to you."},
+ fushen:{zh:"他能赢所有辩论，却总让着你。",en:"He wins every argument—except the ones with you."},
+ ren:{ja:"言葉より先に、あなたの降りる駅を覚えていた。",en:"He remembered your station before he knew what to say."},
+ mateo:{es:"Siempre tiene la última palabra. Hasta que llegas tú.",en:"He always gets the last word—until you arrive."},
+ caio:{"pt-BR":"Ele registra o mundo inteiro, mas lembra dos seus detalhes.",en:"He captures the whole world, but remembers your details."}};
+const V2_CHARACTERS=new Set(["ethan","liam","adrian","guyan","luxingye","fushen","ren","mateo","caio"]);
+const V2_APPROVED_VARIANTS=new Set(["ethan","liam","adrian","guyan","luxingye","fushen","ren","mateo","caio"]);
+function v2Master(id){return `portraits/v2/masters/${id}-master-v1.webp`;}
+function v2Variant(id,expr){
+ const mood={"_smile":"smile","_blush":"blush","_love":"love"}[expr];
+ return mood&&V2_APPROVED_VARIANTS.has(id)?`portraits/v2/variants/${id}-${mood}-v1.webp`:v2Master(id);
+}
+function showPrologue(){
+ const P=PLG[lang];
+ const card=document.getElementById("plgCard");
+ card.classList.toggle("fast",!!localStorage.getItem("flutter_prologue_seen_"+edition.id));
+ card.innerHTML=`<div class="plg-star">🌙✨</div>`+
+   P.p.map((t,i)=>`<p class="plg-p${i===3?" names":""}">${t}</p>`).join("")+
+   `<button class="plg-btn" onclick="closePrologue()">${P.btn}</button>`;
+ document.getElementById("prologueOv").classList.add("show");
+}
+function closePrologue(){
+ localStorage.setItem("flutter_prologue_seen_"+edition.id,"1");
+ document.getElementById("prologueOv").classList.remove("show");
+}
+const GAME_UI={
+ zh:{mem:"◇ 回忆收藏",chapter:"章节完成",reward:"获得回忆",next:"进入下一章",archive:"回忆收藏",empty:"还没有收藏。去和他创造第一个回忆吧。",close:"关闭",complete:"已完成"},
+ en:{mem:"◇ MEMORIES",chapter:"CHAPTER COMPLETE",reward:"MEMORY UNLOCKED",next:"ENTER NEXT CHAPTER",archive:"MEMORIES",empty:"Nothing collected yet. Go make the first memory with him.",close:"CLOSE",complete:"COMPLETE"},
+ ja:{mem:"◇ 記憶",chapter:"章を終えた",reward:"記憶をひらいた",next:"次の章へ",archive:"記憶",empty:"まだ記憶はありません。",close:"閉じる",complete:"完了"},
+ es:{mem:"◇ RECUERDOS",chapter:"CAPÍTULO COMPLETADO",reward:"RECUERDO DESBLOQUEADO",next:"SIGUIENTE CAPÍTULO",archive:"RECUERDOS",empty:"Aún no hay recuerdos.",close:"CERRAR",complete:"COMPLETO"},
+ "pt-BR":{mem:"◇ MEMÓRIAS",chapter:"CAPÍTULO CONCLUÍDO",reward:"MEMÓRIA DESBLOQUEADA",next:"PRÓXIMO CAPÍTULO",archive:"MEMÓRIAS",empty:"Ainda não há memórias.",close:"FECHAR",complete:"CONCLUÍDO"}
+};
+function gameUi(){return GAME_UI[lang]||GAME_UI.en}
+function archiveKey(){return "flutter_archive_"+edition.id}
+function getArchive(){try{return JSON.parse(localStorage.getItem(archiveKey())||'{"rewards":[],"endings":[]}')}catch(_){return{rewards:[],endings:[]}}}
+function saveArchive(data){localStorage.setItem(archiveKey(),JSON.stringify(data))}
+function collect(kind,item){
+ const data=getArchive(),list=kind==="ending"?data.endings:data.rewards;
+ if(!list.some(x=>x.id===item.id))list.push({...item,route:route&&route.id,at:Date.now()});
+ saveArchive(data);
+}
+function savedProgress(id){
+ try{
+  const d=JSON.parse(localStorage.getItem("flutter_"+edition.id+"_"+id)||"{}"),s=d.storyState||{};
+  const chapter=Number(String(s.chapter||"ch1").replace(/\D/g,""))||1;
+  const complete=getArchive().endings.some(e=>e.route===id);
+  return{chapter,complete};
+ }catch(_){return{chapter:1,complete:false}}
+}
+function openArchive(){
+ const ui=gameUi(),data=getArchive(),items=[...data.endings.map(x=>({...x,kind:ui.complete})),...data.rewards];
+ document.getElementById("archiveCard").innerHTML=`<div class="clearKicker">${ui.archive}</div>`+
+  (items.length?`<div class="archiveGrid">${items.map(x=>`<div class="archiveItem"><b>${esc(x.title||x.id)}</b><div class="rewardKind">${esc(String(x.kind||"MEMORY").toUpperCase())}</div></div>`).join("")}</div>`:`<div class="archiveEmpty">${ui.empty}</div>`)+
+  `<button class="archiveClose" onclick="closeArchive()">${ui.close}</button>`;
+ document.getElementById("archiveOv").classList.add("show");
+}
+function closeArchive(){document.getElementById("archiveOv").classList.remove("show")}
+
+async function boot(){
+ syncBrand(); // Edition controls must work even when the API is offline/file://.
+ R=await (await fetch(API+"/routes?lang="+encodeURIComponent(lang)+"&edition="+encodeURIComponent(edition.id))).json();
+ renderRouteCards(R.routes);
+}
+function renderRouteCards(routes){
+ document.getElementById("cards").style.setProperty("--route-count",Math.min(routes.length,3));
+ document.getElementById("cards").innerHTML=routes.map(r=>{
+   const g=edition.palette.cardA,g2=edition.palette.cardB;
+   const progress=savedProgress(r.id),progressText=progress.complete?gameUi().complete:`${lang==="zh"||lang==="ja"?"第":"CH. "}${progress.chapter}${lang==="zh"?"章":""}`;
+   const portrait=V2_CHARACTERS.has(r.id)?v2Master(r.id):(r.portrait||("portraits/"+r.id+".jpg"));
+   return `<div class="card" role="button" tabindex="0" style="background:linear-gradient(135deg,${g},${g2})" onclick="chooseRoute('${r.id}',this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();chooseRoute('${r.id}',this)}">
+     <div class="por" style="background-image:url('${portrait}');background-size:cover;background-position:center"></div><span class="routeProgress">${progressText}</span>
+     <div class="card-copy"><div class="nm" style="color:${r.accent}">${r.name}</div>
+       <div class="ti">${r.title}</div><div class="tg">${r.tag}</div>${HOOKS[r.id]?`<div class="hk">${HOOKS[r.id][lang]}</div>`:""}</div>
+     <span class="enter-cta">${tr().enter}</span></div>`;}).join("");
+}
+function syncBrand(){
+ edition=FLUTTER_EDITIONS.apply(lang);
+ if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setEdition(edition.id);
+ document.getElementById("brandLocal").textContent=edition.localTitle;
+ document.getElementById("ssub").textContent=tr().sub;
+ document.getElementById("gateLocal").textContent=edition.localTitle;
+ document.getElementById("gateTagline").textContent=edition.tagline;
+ document.getElementById("archiveBtn").textContent=gameUi().mem;
+ const sel=document.getElementById("editionSelect");
+ if(sel&&!sel.options.length)sel.innerHTML=FLUTTER_EDITIONS.order.map(id=>{
+   const e=FLUTTER_EDITIONS.editions[id];return `<option value="${id}">${e.label}</option>`;
+ }).join("");
+ if(sel)sel.value=edition.id;
+ const opLabels={
+  zh:{skip:"跳过",replay:"▶ 重播开场"},en:{skip:"SKIP",replay:"▶ OPENING"},
+  es:{skip:"SALTAR",replay:"▶ APERTURA"},"pt-BR":{skip:"PULAR",replay:"▶ ABERTURA"},
+  ja:{skip:"スキップ",replay:"▶ オープニング"}
+ };
+ const ol=opLabels[lang]||opLabels.en;
+ const skip=document.getElementById("opSkip"),replay=document.getElementById("opReplay");
+ if(skip)skip.textContent=ol.skip;if(replay)replay.textContent=ol.replay;
+ const gates={
+  zh:["一场只记得你的恋爱体验","按任意键 · 或轻触进入"],
+  en:["DESIRE · MEMORY · BECOMING","PRESS ANY KEY · CLICK TO ENTER"],
+  ja:["まだ名前のない恋の物語","何かキーを押す · またはタップ"],
+  es:["UNA HISTORIA QUE RESPONDE A TI","PULSA UNA TECLA · O TOCA PARA ENTRAR"],
+  "pt-BR":["UMA HISTÓRIA QUE SE LEMBRA DE VOCÊ","APERTE UMA TECLA · OU TOQUE PARA ENTRAR"]
+ };
+ const gateCopy=gates[lang]||gates.en;
+ document.getElementById("gateKicker").textContent=gateCopy[0];
+ document.getElementById("gatePrompt").textContent=gateCopy[1];
+}
+function petals(hue){
+ const p=document.getElementById("particles");p.innerHTML="";
+ const sets={
+  zh:["🌸","♡","✨","🌸","·"],
+  en:["✦","·","◦","✧","·"],
+  ja:["·","。","◦","·","⋅"],
+  es:["✦","◆","·","✧","◆"],
+  "pt-BR":["✦","◌","·","✺","◦"]
+ };
+ const set=sets[edition.id]||sets.en;
+ const amount=edition.id==="ja"?8:edition.id==="zh"?14:10;
+ for(let i=0;i<amount;i++){const e=document.createElement("div");e.className="petal";
+   e.textContent=set[i%set.length];e.style.left=Math.random()*100+"%";
+   e.style.animationDuration=((edition.id==="ja"?12:7)+Math.random()*8)+"s";e.style.animationDelay=(-Math.random()*10)+"s";
+   e.style.fontSize=(8+Math.random()*(edition.id==="zh"?14:8))+"px";
+   e.style.opacity=edition.id==="ja"?".35":".7";p.appendChild(e);}
+}
+function startRoute(id){
+ fetch(API+"/gpu/warmup",{method:"POST"}).catch(()=>{});
+ if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("conversation");
+ route=R.routes.find(r=>r.id===id);
+ document.getElementById("game").dataset.portraitMode=(V2_CHARACTERS.has(route.id)||route.portrait_expressions)?"character":"scene";
+ document.documentElement.style.setProperty("--accent",route.accent);
+ document.documentElement.style.setProperty("--hue",route.hue);
+ const sv=localStorage.getItem("flutter_"+edition.id+"_"+id);
+ if(sv){const d=JSON.parse(sv);hist=d.hist||[];mem=d.mem||"";aff=d.aff||0;storyState=d.storyState||{};pendingClear=d.pendingClear||null;}
+ else{hist=[];mem="";aff=0;storyState={};pendingClear=null;}
+ curChoice=null;storyDone=false;
+ document.getElementById("attach").textContent="";
+ document.getElementById("chap").style.display="none";
+ // scene bg
+ const sc=document.getElementById("scene");
+ sc.style.background=edition.id==="zh"
+  ?`linear-gradient(165deg,hsl(${route.hue},65%,88%),hsl(${(route.hue+30)%360},60%,90%) 55%,hsl(${(route.hue+330)%360},55%,86%))`
+  :`linear-gradient(165deg,${edition.palette.cardA},${edition.palette.bg1} 55%,${edition.palette.bg2})`;
+ sc.innerHTML=`<div class="glow" style="width:60%;height:30%;top:8%;left:-10%;background:${route.accent}"></div>
+   <div class="glow" style="width:50%;height:28%;bottom:12%;right:-8%;background:hsl(${route.hue},80%,75%);animation-delay:-3s"></div>`;
+ petals(route.hue);
+ {const _p=document.getElementById("portrait");_p.textContent="";updatePortrait();}
+ document.getElementById("pet").textContent=R.pet.emoji;
+ document.getElementById("cname").textContent=route.name;
+ document.getElementById("inp").placeholder=tr().ph;
+ document.getElementById("send").textContent=tr().send;
+ renderChips();renderActs(); updateAff(false);
+ document.getElementById("select").style.display="none";
+ document.getElementById("game").style.display="flex";
+ // 恢复聊天流: 把之前的对话渲染成气泡(可上滑回看)
+ clearChatlog();
+ if(hist.length){
+   hist.forEach(m=>pushBubble(m.content, m.role==="user"?'me':'them'));
+   typeLine(greeting(),false); // 重逢寒暄只显示在dbox不入历史(避免重复)
+ } else {
+   typeLine(greeting()); // 初见: 打完提交进聊天流
+ }
+ if(pendingClear)setTimeout(()=>showChapterClear(pendingClear),500);
+ loadChapterObjective();
+}
+async function loadChapterObjective(){
+ try{
+  const info=await (await fetch(API+"/story/"+encodeURIComponent(route.id))).json();
+  if(!info.has_story||!info.chapters||!info.chapters.length)return;
+  const cid=storyState.chapter||info.chapters[0].id;
+  const index=Math.max(0,info.chapters.findIndex(c=>c.id===cid)),chapter=info.chapters[index]||info.chapters[0];
+  renderChapter({...chapter,chapter_index:index+1,chapter_total:info.chapters.length});
+ }catch(e){console.warn("[flutter/objective]",e);}
+}
+function chooseRoute(id,el){
+ if(document.getElementById("select").classList.contains("leaving"))return;
+ document.querySelectorAll(".card").forEach(card=>{
+  card.style.opacity=card===el?"1":".18";
+  if(card===el)card.style.transform="translateY(-8px) scale(1.055)";
+ });
+ document.getElementById("select").classList.add("leaving");
+ setTimeout(()=>{
+  startRoute(id);
+  const select=document.getElementById("select");
+  select.classList.remove("leaving","reveal");
+  document.querySelectorAll(".card").forEach(card=>{card.style.opacity="";card.style.transform=""});
+ },620);
+}
+function greeting(){
+ const g={guyan:{zh:"（抬头，轻轻一笑）你来了。今天想读点什么？",en:"(looks up, a soft smile) You're here. What shall we read today?"},
+  luxingye:{zh:"（摘下口罩，眼睛亮起来）就知道你会来。想我了没？",en:"(pulls down his mask, eyes lighting up) I knew you'd come. Did you miss me?"},
+  fushen:{zh:"（转过身，语气淡淡却放柔了）……来了。坐吧。",en:"(turns, voice cool but softening) ...You're here. Sit."},
+  ethan:{en:"(looks up, one brow lifting) You made it.",es:"(alza la mirada, arqueando una ceja) Viniste.", "pt-BR":"(ergue os olhos, uma sobrancelha levantada) Você veio.",ja:"（視線を上げ、わずかに眉を動かす）……来たんだな。"},
+  liam:{en:"(easy grin) There you are. Long day?",es:"(sonríe) Ahí estás. ¿Día largo?", "pt-BR":"(abre um sorriso) Aí está você. Dia longo?",ja:"（やわらかく笑う）おかえり。今日は長かった？"},
+  adrian:{en:"(sets the guitar aside) I was wondering when you'd show.",es:"(deja la guitarra a un lado) Me preguntaba cuándo aparecerías.", "pt-BR":"(deixa a guitarra de lado) Estava pensando quando você ia aparecer.",ja:"（ギターを置く）……いつ来るかと思ってた。"}};
+ g.ren={ja:"（窓の雨を見たまま）……次、あなたの駅。"};
+ g.mateo={es:"(hace girar las llaves y sonríe) Llegas tarde. Estaba a punto de darte la razón."};
+ g.caio={"pt-BR":"(coloca o segundo copo na mesa) Chegou na hora certa. Finge que eu planejei."};
+ const contentLang=edition.contentSet;
+ return (g[route.id]||{})[lang]||(g[route.id]||{})[contentLang]||(g[route.id]||{}).en||"…";
+}
+function renderChips(){
+ document.getElementById("chips").innerHTML=(tr().chips||T.en.chips).map(c=>
+   `<span class="chip" onclick="quick('${c}')">${c}</span>`).join("");
+}
+function quick(c){document.getElementById("inp").value=c;say();}
+function syncMusicMood(mood){
+ if(!window.FLUTTER_AUDIO)return;
+ const mark=String(mood||"");
+ if(/[😔😢💔🌧🥀]/u.test(mark))FLUTTER_AUDIO.setScene("melancholy");
+ else FLUTTER_AUDIO.setScene(aff>=30?"intimate":"conversation");
+}
+function directMusic(cue){
+ if(!window.FLUTTER_AUDIO)return;
+ cue=cue||{};
+ const s=cue.signals||{},text=String(cue.text||"").toLowerCase();
+ const sad=/(难过|失去|离开|告别|哭|眼泪|雨|hurt|leave|goodbye|cry|rain|triste|llorar|chuva|さよなら|涙|雨)/i.test(text);
+ if(cue.kind==="choice"||cue.kind==="goal"||s.boundary_violation){
+  if(cue.kind==="goal"||s.boundary_violation)FLUTTER_AUDIO.playCue("longing");
+  FLUTTER_AUDIO.setScene("tension");return;
+ }
+ if(cue.kind==="clear"){
+  FLUTTER_AUDIO.playCue("tender");
+  FLUTTER_AUDIO.setScene("resolution");return;
+ }
+ if(sad||/[😔😢💔🌧🥀]/u.test(String(cue.mood||""))){
+  FLUTTER_AUDIO.playCue("longing");
+  FLUTTER_AUDIO.setScene("melancholy");return;
+ }
+ if(cue.kind==="intimate"||s.flirt>0||s.depth>0||s.care>0||aff>=30){
+  if(s.flirt>0)FLUTTER_AUDIO.playCue("spark");
+  else if(s.depth>0||s.care>0||cue.kind==="intimate")FLUTTER_AUDIO.playCue("tender");
+  FLUTTER_AUDIO.setScene("intimate");return;
+ }
+ FLUTTER_AUDIO.setScene("conversation");
+}
+
+// ═════ 零 LLM 互动 (不打后端, 客户端全权处理: 立即反馈 + 加好感 + 存 hist) ═════
+// 每个动作: {label, emoji, heart(+aff), me(玩家动作文案), reply(角色反应文案)}
+// reply 按角色/语言查, 找不到时退回通用文案
+const ACT_LIB={
+ // 送花
+ gift:{emoji:"🌹",heart:2,
+   me:{zh:"（递上一束花）送给你的。",en:"(hands over a bouquet) These are for you."},
+   reply:{
+    guyan:{zh:"（怔了一下，指尖轻碰花瓣）……谢谢。我把它夹在书里。",en:"(pauses, fingertip brushing a petal) ...Thank you. I'll press one between the pages."},
+    luxingye:{zh:"哇——真的假的？给我拍张照，我要发朋友圈说我今天被人送花啦！",en:"Whoa—for me? Take a picture, I'm posting: 'someone brought me flowers today.'"},
+    fushen:{zh:"（挑眉，接过时手指擦过你的）……你怎么知道我最近有点难缠。",en:"(brow raised, his fingers brush yours as he takes them) ...How did you know I've been unbearable lately."},
+    ethan:{zh:"（放下威士忌，看了花很久）没人给我送过花。放我桌上，天天看得见的地方。",en:"(sets down the whiskey, stares at the bouquet a beat too long) No one's ever brought me flowers. Put them on my desk—where I'll see them."},
+    liam:{zh:"（憨笑挠头）我都从来没被送过花。狗子来闻闻！好香吧？",en:"(sheepish grin, scratches his head) Nobody's ever done this for me. C'mere buddy, smell 'em—pretty, huh?"},
+    adrian:{zh:"（愣了一秒，然后低笑）反了吧，送花不该是我的活儿？……谢谢。",en:"(pauses, then a low laugh) Aren't I supposed to be the one doing this? …Thank you."}}},
+ // 靠近/依偎
+ lean:{emoji:"🤗",heart:2,
+   me:{zh:"（轻轻靠过去）",en:"(leans in gently)"},
+   reply:{
+    guyan:{zh:"（书页停在同一行，很久没翻）……别动。",en:"(the page doesn't turn for a long time) ...Don't move."},
+    luxingye:{zh:"（低头一笑，把耳机分你一只）听同一首歌。",en:"(smiles down, slips one earbud into your ear) Same song. Both of us."},
+    fushen:{zh:"（僵了半秒，然后微微侧过来接住你的重量）……嗯。",en:"(stiffens for a beat, then shifts to catch your weight) ...Mm."},
+    ethan:{zh:"（手臂环过去，下巴搁在你头顶）今晚别谈生意了。",en:"(his arm goes around you, chin resting on your hair) No more business tonight."},
+    liam:{zh:"（顺势把外套披你身上）冷不冷？狗子躺你脚边挺暖和的。",en:"(pulls his jacket over your shoulders) Cold? Dog's warm—he's on your feet."},
+    adrian:{zh:"（吉他放一边，一只手绕过你的肩）就这样待会儿。",en:"(sets the guitar aside, one arm around you) Just… stay like this a while."}}},
+ // 静静看着他
+ gaze:{emoji:"👀",heart:1,
+   me:{zh:"（就这样静静看着他）",en:"(just quietly watches him)"},
+   reply:{
+    guyan:{zh:"（察觉后耳尖微红，假装继续读）……看什么。",en:"(ears going pink, pretends to keep reading) ...What are you looking at."},
+    luxingye:{zh:"（回望，眨眼）盯我干嘛，脸上有东西？",en:"(catches your eye, blinks) What? Something on my face?"},
+    fushen:{zh:"（放下笔，回视，声音低了）……说。",en:"(sets down the pen, meets your gaze, voice lower) ...Speak."},
+    ethan:{zh:"（对上你的目光，罕见地不动）……在想什么？",en:"(meets your look, unusually still) ...What are you thinking?"},
+    liam:{zh:"（笑起来，露出小虎牙）你这么看我，我脸都要烫了。",en:"(grins, one crooked tooth showing) You keep looking at me like that, my face's gonna catch fire."},
+    adrian:{zh:"（回望，久得让整个空气都慢下来）……继续看。",en:"(holds your gaze until the room slows) ...Keep looking."}}}
+};
+const REGIONAL_ACTS={
+ ja:[
+  {e:"☂",label:"傘を寄せる",heart:2,me:"（傘を彼の肩にもそっと寄せる）",reply:"蓮は一度だけこちらを見て、傘の柄を持つ手を少し近づけた。「……ありがとう。」"},
+  {e:"◌",label:"隣に座る",heart:2,me:"（一席あけず、彼の隣に座る）",reply:"残していた余白が静かに消える。彼は動かない。ただ、次の駅が来ても立たなかった。"},
+  {e:"…",label:"沈黙を分ける",heart:1,me:"（何も急かさず、同じ雨音を聞く）",reply:"「話さなくても、帰らなくていい時間ってあるんだな。」蓮の声は、雨より小さかった。"}
+ ],
+ es:[
+  {e:"◆",label:"Retarlo",heart:2,me:"(Lo miras con una sonrisa que no piensa darle la razón.)",reply:"Mateo ladea la cabeza, encantado. «Esa mirada cuenta como argumento ilegal. Pero continúa.»"},
+  {e:"↗",label:"Acercarte",heart:2,me:"(Acortas la distancia sin pedir permiso al silencio.)",reply:"Su broma se detiene a mitad. «Así es difícil conservar la última palabra», admite, sin retroceder."},
+  {e:"◇",label:"Que se quede",heart:1,me:"«Quédate cinco minutos más.»",reply:"Mateo deja las llaves sobre la barra. «Cinco. Y luego negociamos los siguientes cinco.»"}
+ ],
+ "pt-BR":[
+  {e:"☕",label:"Dividir o café",heart:2,me:"(Empurra o segundo café para o lado dele.)",reply:"Caio aceita e sorri. «Você percebeu que eu sempre esqueço o meu. Isso é perigosamente íntimo.»"},
+  {e:"↗",label:"Chegar perto",heart:2,me:"(Chega mais perto, sem posar para a câmera.)",reply:"Ele abaixa a câmera. «Melhor assim. Tem coisa que eu prefiro viver antes de enquadrar.»"},
+  {e:"☀",label:"Caminhar",heart:1,me:"«Vem andar comigo até o sol baixar.»",reply:"Caio já está ao seu lado. «Sem roteiro. As melhores partes sempre começam assim.»"}
+ ]
+};
+
+function renderActs(){
+ const box=document.getElementById("acts"); if(!box) return;
+ box.style.display="flex";
+ if(REGIONAL_ACTS[lang]){
+  box.innerHTML=REGIONAL_ACTS[lang].map((a,i)=>`<span class="act" onclick="doRegionalAct(${i})" title="${a.label}">${a.e}<span class="lbl">${a.label}</span></span>`).join("");
+  return;
+ }
+ const zh=lang==="zh";
+ const L={gift:{zh:"送花",en:"flowers"},lean:{zh:"靠近",en:"lean in"},gaze:{zh:"看着他",en:"gaze"}};
+ box.innerHTML=Object.keys(ACT_LIB).map(k=>
+   `<span class="act" onclick="doAct('${k}')" title="${L[k][zh?'zh':'en']}">${ACT_LIB[k].emoji}<span class="lbl">${L[k][zh?'zh':'en']}</span></span>`
+ ).join("");
+}
+function doRegionalAct(index){
+ if(busy)return;
+ const a=(REGIONAL_ACTS[lang]||[])[index];if(!a)return;
+ pushBubble(a.me,"me");hist.push({role:"user",content:a.me},{role:"assistant",content:a.reply});
+ const gain=claimAct("regional:"+index,a.heart);
+ const prev=aff;aff=Math.min(100,aff+gain);updateAff(true);typeLine(a.reply);if(gain)heartGain(gain);
+ directMusic({kind:a.heart>=2?"intimate":"conversation",text:a.reply});
+ if(tierOf(aff)>tierOf(prev))maybeFbBar();save();
+}
+
+function claimAct(key,base){
+ const chapter=storyState.chapter||"ch1",used=storyState.actions_used||{};
+ const keys=used[chapter]||[];
+ if(keys.includes(key))return 0;
+ used[chapter]=[...keys,key];storyState.actions_used=used;
+ return base;
+}
+function doAct(k){
+ if(busy) return;
+ const a=ACT_LIB[k]; if(!a) return;
+ const zh=lang==="zh";
+ const meTxt=a.me[zh?"zh":"en"];
+ const rid=route.id;
+ const rp=(a.reply[rid]&&a.reply[rid][zh?"zh":"en"])
+          || (zh?"（他望向你，眼底有笑意）":"(he looks at you, warmth in his eyes)");
+ // 走一遍 say() 的收尾流程但不打 LLM
+ pushBubble(meTxt,'me');
+ hist.push({role:"user",content:meTxt});
+ hist.push({role:"assistant",content:rp});
+ const prev=aff;
+ const gain=claimAct(k,a.heart);
+ aff=Math.min(aff+gain,100);
+ updateAff(true);
+ typeLine(rp);
+ directMusic({kind:(k==="lean"||k==="gift")?"intimate":"conversation",text:rp});
+ if(gain)heartGain(gain);
+ if(tierOf(aff)>tierOf(prev)) maybeFbBar();
+ // 里程碑触发 (与 say() 一致)
+ const ms={10:["初识","First spark"],30:["心动","Heartbeat"],60:["交心","Trust"],100:["怦然","Fallen for you"]};
+ if(ms[aff]) celebrate(zh?ms[aff][0]:ms[aff][1]);
+ save();
+}
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+// 轻量markdown->HTML: 转义后还原行内标记(**粗**/*斜*/_斜_/`码`),换行->br
+function mdInline(s){
+ let h=esc(s);
+ h=h.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+ h=h.replace(/(^|[^*])\*([^*\n]+)\*/g,'$1<em>$2</em>');
+ h=h.replace(/(^|[^_\w])_([^_\n]+)_/g,'$1<em>$2</em>');
+ h=h.replace(/`([^`\n]+)`/g,'<code>$1</code>');
+ h=h.replace(/\n/g,'<br>');
+ return h;
+}
+
+// ── 聊天流: 每句话累积成气泡, 可上滑回看之前的对话 ──
+function pushBubble(text, who){ // who: 'me' | 'them' | 'ev'
+ const log=document.getElementById("chatlog");
+ const b=document.createElement("div");
+ b.className="msg "+who;
+ b.innerHTML=(who==='me')?esc(text):mdInline(text);
+ log.appendChild(b);
+ log.scrollTop=log.scrollHeight;
+ return b;
+}
+function clearChatlog(){const l=document.getElementById("chatlog");if(l)l.innerHTML="";}
+
+// ── 等待期情境化动画(零服务器成本): "对方正在输入"的呼吸点 ──
+let waitTimer=null;
+function startWaitAnim(){
+  const el=document.getElementById("line");
+  const hintSets={
+   zh:["正在想怎么回你…","在打字…","停顿了一下…","似乎在斟酌用词…"],
+   en:["thinking of what to say…","typing…","pauses for a moment…","choosing words carefully…"],
+   ja:["ことばを選んでいる…","入力中…","少し、間があいた…","考えている…"],
+   es:["está pensando qué decir…","escribiendo…","hace una pausa…","elige bien las palabras…"],
+   "pt-BR":["pensando no que dizer…","digitando…","faz uma pausa…","escolhendo as palavras…"]
+  };
+  const hints=hintSets[lang]||hintSets.en;
+  let dots=0, hi=Math.floor(Math.random()*hints.length);
+  clearInterval(typing);
+  waitTimer=setInterval(()=>{
+    dots=(dots+1)%4;
+    el.innerHTML=`<span style="opacity:.55;font-style:italic">${hints[hi]}${".".repeat(dots)}</span>`;
+    if(dots===0&&Math.random()<0.3)hi=(hi+1)%hints.length;
+  },520);
+}
+function stopWaitAnim(){if(waitTimer){clearInterval(waitTimer);waitTimer=null;}}
+
+function syncFbLabel(){const b=document.getElementById("fbBtn");
+ const labels={zh:"反馈",en:"REVIEW",es:"OPINIÓN","pt-BR":"OPINIÃO",ja:"感想"};
+ if(b)b.textContent=labels[lang]||labels.en;}
+let typing=null;
+function typeLine(txt,commit){ // commit!==false时: 打完把这句移入聊天流气泡
+ clearInterval(typing);const el=document.getElementById("line");el.innerHTML="";
+ let i=0;const cur='<span class="cursor">&nbsp;</span>';el.innerHTML=cur;
+ const log=document.getElementById("chatlog");
+ typing=setInterval(()=>{i++;
+   if(i>=txt.length){
+     el.innerHTML=mdInline(txt);clearInterval(typing);
+     if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.speak(txt,edition.locale);
+     if(commit!==false){ // 打字完成→提交进聊天流, dbox行清空
+       pushBubble(txt,'them');
+       el.innerHTML="";
+     }
+   }
+   else{el.innerHTML=esc(txt.slice(0,i))+cur;
+     if(log)log.scrollTop=log.scrollHeight;}
+ },26);
+}
+function exprFor(a){return a>=15?'_love':a>=8?'_blush':a>=3?'_smile':'';}
+let lastExpr=null;
+function updatePortrait(){const p=document.getElementById('portrait');
+ const e=exprFor(aff);
+ p.dataset.mood={"_smile":"smile","_blush":"blush","_love":"love"}[e]||"neutral";
+ if(lastExpr!==null&&e!==lastExpr){p.style.transition='box-shadow .35s';p.style.boxShadow='0 0 0 6px rgba(255,255,255,.55),0 0 70px 14px var(--accent),0 16px 44px rgba(0,0,0,.28)';setTimeout(()=>{p.style.boxShadow='';},700);}
+ lastExpr=e;
+ if(V2_CHARACTERS.has(route.id)){
+  const routeId=route.id,preferred=v2Variant(routeId,e),fallback=v2Master(routeId),probe=new Image();
+  probe.onload=()=>{if(route&&route.id===routeId)p.style.backgroundImage=`url('${preferred}')`;};
+  probe.onerror=()=>{if(route&&route.id===routeId)p.style.backgroundImage=`url('${fallback}')`;};
+  probe.src=preferred;
+  return;
+ }
+ if(route&&!route.portrait_expressions){p.style.backgroundImage=`url('${route.portrait}')`;return;}
+ p.style.backgroundImage="url('portraits/"+route.id+e+".jpg')";}
+// 段位: 名字/emoji/区间。好感在段位内的进度=进度条(鼓励冲下一段)
+const TIERS=[
+ {min:0,zh:"初识",en:"First Spark",ja:"はじまり",es:"Primera chispa",pt:"Primeiro olhar",e:"◇"},
+ {min:10,zh:"心动",en:"Heartbeat",ja:"ときめき",es:"Latido",pt:"Sintonia",e:"♡"},
+ {min:30,zh:"交心",en:"Trust",ja:"信頼",es:"Confianza",pt:"Confiança",e:"◈"},
+ {min:60,zh:"情浓",en:"Falling",ja:"近づく",es:"Cayendo",pt:"Mais perto",e:"◆"},
+ {min:100,zh:"怦然",en:"Fallen",ja:"あわい",es:"Sin distancia",pt:"Entre nós",e:"♥"}
+];
+function tierLabel(t){
+ const key=lang==="pt-BR"?"pt":lang;
+ return t[key]||t.en;
+}
+function tierInfo(a){let i=0;for(let k=0;k<TIERS.length;k++)if(a>=TIERS[k].min)i=k;
+ const cur=TIERS[i],nxt=TIERS[i+1];
+ const lo=cur.min,hi=nxt?nxt.min:100;
+ const pct=hi>lo?Math.min(100,(a-lo)/(hi-lo)*100):100;
+ return{cur,nxt,lo,hi,pct,idx:i};}
+let _lastTierIdx=0;
+function updateAff(anim){ if(route) updatePortrait();
+ const t=tierInfo(aff);
+ // 进度条=当前段位内进度(离下一段多远),不是绝对0-100→更有奔头
+ document.getElementById("fill").style.width=t.pct+"%";
+ const badge=document.getElementById("tierbadge");
+ badge.textContent=t.cur.e+" "+tierLabel(t.cur);
+ const complete={zh:"圆满",en:"Complete",ja:"満ちる",es:"Completo","pt-BR":"Completo"}[lang]||"Complete";
+ document.getElementById("affpct").textContent=t.nxt?(aff+" → "+t.hi):(complete+" "+aff);
+ // 跨段位: 徽章脉冲 + 进度条发光
+ if(t.idx>_lastTierIdx && _lastTierIdx>=0 && anim){
+   badge.classList.remove("tierpulse");void badge.offsetWidth;badge.classList.add("tierpulse");
+   const g=document.getElementById("barglow");g.style.width="100%";g.style.opacity="1";
+   setTimeout(()=>{g.style.opacity="0";},900);
+ }
+ _lastTierIdx=t.idx;
+ document.getElementById("fill").parentNode.querySelector("#barglow").style.width=t.pct+"%";
+}
+// +N ♥ 飘字: 说得好飘大金心,敷衍飘小灰字。用 CSS @keyframes 播,不依赖 transition 触发时机
+function heartGain(n){
+ const st=document.querySelector(".stage");
+ const r=st?st.getBoundingClientRect():{left:window.innerWidth/2-40,top:window.innerHeight*0.35,width:80,height:120};
+ const el=document.createElement("div");el.className="heartgain";
+ const gainMark={zh:"♥",en:"◆",ja:"・",es:"◆","pt-BR":"☀"}[lang]||"◆";
+ el.textContent="+"+n+" "+gainMark;
+ const sz=n<=1?2.0:n===2?2.4:n===3?2.8:n===4?3.2:3.6;
+ const col=edition.palette.glowA;
+ // 起点: 屏幕底部输入框上方; 终点: 屏幕顶部, 停留展示直到点击关闭 or 8秒自动消失
+ const x=Math.max(30,Math.min(window.innerWidth-120, window.innerWidth/2-40+(Math.random()*80-40)));
+ const y=window.innerHeight-160;
+ el.style.cssText+=`left:${x}px;top:${y}px;font-size:${sz}em;color:${col}`;
+ el.onclick=()=>el.remove();
+ document.body.appendChild(el);
+ setTimeout(()=>{if(el.parentNode)el.remove();},8000);
+}
+function save(){localStorage.setItem("flutter_"+edition.id+"_"+route.id,JSON.stringify({hist:hist.slice(-24),mem:mem,aff:aff,storyState:storyState,pendingClear:pendingClear}));}
+
+/* ---------- 故事线渲染 ---------- */
+let _lastChapIdx=0;
+let chapterWishTimer=null,chapterWishPending=null;
+const WISH_UI={
+ zh:{kicker:"本章心愿",skip:"跳过"},en:{kicker:"CHAPTER INTENTION",skip:"SKIP"},
+ ja:{kicker:"この章の想い",skip:"スキップ"},es:{kicker:"INTENCIÓN DEL CAPÍTULO",skip:"SALTAR"},
+ "pt-BR":{kicker:"INTENÇÃO DO CAPÍTULO",skip:"PULAR"}
+};
+function chapterWishKey(s){return`flutter_wish_${edition.id}_${route.id}_${s.id||s.chapter_index}`;}
+function showChapterWish(s){
+ const ov=document.getElementById("chapterWish"),ui=WISH_UI[lang]||WISH_UI.en;
+ chapterWishPending=s;clearTimeout(chapterWishTimer);
+ document.getElementById("wishKicker").textContent=ui.kicker;
+ document.getElementById("wishSkip").textContent=ui.skip;
+ document.getElementById("wishTitle").textContent=`${s.chapter_index} / ${s.chapter_total}  ·  ${(lang==="zh"?s.title_zh:s.title_en)||""}`;
+ document.getElementById("wishText").textContent=(lang==="zh"?s.goal_zh:s.goal_en)||"";
+ ov.classList.remove("collapse");ov.classList.add("show");ov.setAttribute("aria-hidden","false");
+ if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.playCue("tender");
+ try{localStorage.setItem(chapterWishKey(s),"1");}catch(_){}
+ chapterWishTimer=setTimeout(finishChapterWish,4200);
+}
+function finishChapterWish(){
+ const ov=document.getElementById("chapterWish");if(!ov.classList.contains("show")||ov.classList.contains("collapse"))return;
+ clearTimeout(chapterWishTimer);ov.classList.add("collapse");
+ if(chapterWishPending)renderChapterCard(chapterWishPending);
+ setTimeout(()=>{ov.classList.remove("show","collapse");ov.setAttribute("aria-hidden","true");chapterWishPending=null;},880);
+}
+function renderChapter(s){
+ if(!s){document.getElementById("chap").style.display="none";return;}
+ let seen=false;try{seen=!!localStorage.getItem(chapterWishKey(s));}catch(_){}
+ if(!seen){showChapterWish(s);return;}
+ renderChapterCard(s);
+}
+function renderChapterCard(s){
+ const el=document.getElementById("chap");
+ const title=(lang==="zh"?s.title_zh:s.title_en)||"";
+ const goal=(lang==="zh"?s.goal_zh:s.goal_en)||"";
+ const chapterLabel=lang==="zh"||lang==="ja"?`第${s.chapter_index}章`:
+   lang==="es"?`CAP. ${s.chapter_index}`:lang==="pt-BR"?`CAP. ${s.chapter_index}`:`Ch. ${s.chapter_index}`;
+ const goalLabel={zh:"本章心愿",en:"CHAPTER INTENTION",ja:"この章の想い",es:"INTENCIÓN DEL CAPÍTULO","pt-BR":"INTENÇÃO DO CAPÍTULO"}[lang]||"CHAPTER INTENTION";
+ const map=Array.from({length:s.chapter_total},(_,i)=>`<i class="${i+1<s.chapter_index?"done":i+1===s.chapter_index?"current":""}"></i>`).join("");
+ el.innerHTML=`<span class="ci">${chapterLabel} / ${s.chapter_total}</span>`+
+   `<b>${title}</b>`+(goal?`<span class="cg" data-label="${goalLabel}">${goal}</span>`:"")+
+   `<span class="chapter-map" aria-label="${s.chapter_index} / ${s.chapter_total}">${map}</span>`;
+ el.style.display="flex";
+ // 章节升级 → 丘比特射心庆祝
+ if(s.chapter_index>_lastChapIdx && _lastChapIdx>0){cupidStrike();}
+ _lastChapIdx=s.chapter_index;
+}
+// 好感够但目标没达成: 一句柔和引导"还差什么"
+function showGoalHint(gh){
+ if(!gh||!gh.reason)return;
+ const t=(lang==="zh"?"💭 ":"💭 ")+gh.reason;
+ pushBubble(t,'ev');
+ directMusic({kind:"goal",text:gh.reason});
+}
+function showBeat(txt){
+ if(!txt)return;
+ const stage=document.querySelector(".stage");
+ const b=document.createElement("div");b.className="beat";b.textContent=txt;
+ stage.parentNode.insertBefore(b,stage.nextSibling);
+ directMusic({text:txt});
+ setTimeout(()=>{b.style.transition="opacity .6s";b.style.opacity="0";setTimeout(()=>b.remove(),600);},7000);
+}
+function showAttach(a){
+ if(!a||!a.type||a.type==="unknown")return;
+ const el=document.getElementById("attach");
+ el.textContent=ATTACH_ICON[a.type]||"";
+ el.title=(ATTACH_LABEL[lang]||ATTACH_LABEL.en)[a.type]||"";
+}
+function showChoice(c){
+ directMusic({kind:"choice",text:c.prompt});
+ curChoice=c;
+ const card=document.getElementById("choiceCard");
+ card.innerHTML=`<div class="cprompt">${esc(c.prompt||"")}</div>`+
+   c.options.map(o=>`<button class="copt" onclick="pickChoice(${o.index})">${esc(o.text)}</button>`).join("");
+ document.getElementById("choiceOv").classList.add("show");
+}
+async function pickChoice(idx){
+ if(!curChoice)return;
+ const c=curChoice;curChoice=null;
+ document.getElementById("choiceOv").classList.remove("show");
+ const chosen=c.options[idx];
+ // 把玩家的选择作为一条 user 消息进历史(让剧情连贯)
+ hist.push({role:"user",content:chosen.text});
+ pushBubble(chosen.text,'me');
+ try{
+  const r=await (await fetch(API+"/choose",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({route:route.id,chapter:c.chapter,choice:c.id,option:idx,
+      affection:aff,story_state:storyState,lang:lang})})).json();
+  if(r.story_state)storyState=r.story_state;
+  const prev=aff;if(typeof r.affection==="number")aff=r.affection;
+  updateAff(true);if(aff>prev)floatHeart();
+  if(r.reply){hist.push({role:"assistant",content:r.reply});typeLine(r.reply);}
+  if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene(aff>=30?"intimate":"conversation");
+  if(r.chapter_clear)pendingClear=r.chapter_clear;
+  save();
+  if(r.chapter_clear)setTimeout(()=>showChapterClear(r.chapter_clear),900);
+  if(r.ending)setTimeout(()=>showEnding(r.ending),1400);
+ }catch(e){console.error("[flutter/choose]",e);}
+}
+function showChapterClear(clear){
+ const ui=gameUi(),reward=clear.reward||{};
+ directMusic({kind:"clear",text:(reward.title||"")+" "+(reward.text||"")});
+ collect("reward",reward);
+ document.getElementById("clearCard").innerHTML=`<div class="clearKicker">${ui.chapter} · ${clear.chapter_index}/${clear.chapter_total}</div>
+  <div class="clearTitle">${esc(clear.title||"")}</div>
+  <div class="rewardCard"><div class="rewardKind">${ui.reward} · ${esc(String(reward.kind||"memory").toUpperCase())}</div>
+  <b>${esc(reward.title||clear.title||"")}</b><div class="rewardText">${mdInline(reward.text||"")}</div></div>
+  <button class="clearNext" onclick="continueChapter()">${ui.next}</button>`;
+ document.getElementById("clearOv").classList.add("show");
+}
+async function continueChapter(){
+ const btn=document.querySelector("#clearCard .clearNext");if(btn)btn.disabled=true;
+ try{
+  const r=await (await fetch(API+"/continue",{method:"POST",headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({route:route.id,story_state:storyState,lang:lang})})).json();
+  if(r.error)throw new Error(r.error);
+  storyState=r.story_state||storyState;pendingClear=null;save();
+  document.getElementById("clearOv").classList.remove("show");
+  if(r.story)renderChapter(r.story);
+  clearChatlog();
+  if(r.opening){hist.push({role:"assistant",content:r.opening});typeLine(r.opening);}
+  if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("conversation");
+ }catch(e){console.error("[flutter/continue]",e);if(btn)btn.disabled=false;}
+}
+function showEnding(end){
+ if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("theme");
+ storyDone=true;
+ collect("ending",end);
+ const card=document.getElementById("endCard");
+ const endingLabel={zh:"结 局",en:"ENDING",ja:"結 末",es:"FINAL","pt-BR":"FINAL"}[lang]||"ENDING";
+ card.innerHTML=`<div class="etag">${endingLabel}</div>`+
+   `<div class="etitle">${esc(end.title||"")}</div>`+
+   `<div class="etext">${esc(end.text||"")}</div>`+
+   `<button class="ebtn" onclick="closeEnding()">${tr().back}</button>`;
+ document.getElementById("endOv").classList.add("show");
+}
+function closeEnding(){document.getElementById("endOv").classList.remove("show");goSelect();if(R)renderRouteCards(R.routes);}
+async function say(){
+ if(busy)return;const inp=document.getElementById("inp"),msg=inp.value.trim();if(!msg)return;
+ inp.value="";busy=true;document.getElementById("send").disabled=true;
+ hist.push({role:"user",content:msg});
+ pushBubble(msg,'me');
+ try{
+  startWaitAnim();
+  const r=await (await fetch(API+"/say",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({route:route.id,history:hist.slice(0,-1),memory:mem,message:msg,affection:aff,lang:lang,pid:pid(),story_state:storyState})})).json();
+  stopWaitAnim();
+  hist.push({role:"assistant",content:r.reply});
+  if(r.memory_update)mem=(mem?mem+" ":"")+r.memory_update;
+  const prev=aff;aff=r.affection;
+  document.getElementById("mood").textContent=r.mood||"💗";
+  directMusic({mood:r.mood,signals:r.signals,text:(r.beat||"")+" "+(r.reply||"")});
+  updateAff(true);typeLine(r.reply);
+  if(typeof r.heart_gain==="number"&&r.heart_gain>0)heartGain(r.heart_gain);
+  else if(aff>prev)floatHeart();
+  if(tierOf(aff)>tierOf(prev))maybeFbBar();
+  if(r.milestone)celebrate(r.milestone);
+  // 故事线: 更新章节/依恋/触发事件/章末抉择
+  if(r.story_state)storyState=r.story_state;
+  if(r.story)renderChapter(r.story);
+  if(r.goal_hint)setTimeout(()=>showGoalHint(r.goal_hint),(r.reply?r.reply.length*26:0)+400);
+  if(r.attach)showAttach(r.attach);
+  if(r.beat)setTimeout(()=>showBeat(r.beat),700);
+  if(r.story&&r.story.choice&&!storyDone)setTimeout(()=>showChoice(r.story.choice),r.beat?2400:1200);
+  if(window.TEL)TEL.chat(msg,r.reply,{route:route.id,aff:aff});
+  save();
+ }catch(e){stopWaitAnim();console.error("[flutter]",e);
+   const errors={zh:"（信号有点不稳…再说一次？）",en:"(connection hiccup… try again?)",
+    ja:"（通信が少し不安定みたい。もう一度？）",es:"(la conexión falló… ¿otra vez?)",
+    "pt-BR":"(a conexão falhou… tenta de novo?)"};
+   typeLine(errors[lang]||errors.en);}
+ busy=false;document.getElementById("send").disabled=false;
+}
+function floatHeart(){const b=document.getElementById("portrait").getBoundingClientRect();
+ const h=document.createElement("div");h.textContent="♡";h.style.cssText=`position:fixed;left:${b.left+b.width/2}px;top:${b.top}px;z-index:16;font-size:1.6em;color:var(--accent);pointer-events:none;transition:all 1.1s ease-out;opacity:1`;
+ document.body.appendChild(h);requestAnimationFrame(()=>{h.style.top=(b.top-90)+"px";h.style.opacity="0";});setTimeout(()=>h.remove(),1100);}
+// 丘比特一箭射中上升的心 → 过关庆祝
+function cupidStrike(){
+ if(edition.id!=="zh"){editionTransition();return;}
+ const heart=document.createElement("div");
+ heart.textContent="💗";
+ heart.style.cssText="position:fixed;left:50%;top:52%;transform:translate(-50%,-50%);z-index:30;font-size:3.2em;pointer-events:none;transition:all .9s cubic-bezier(.2,.8,.3,1);filter:drop-shadow(0 6px 16px rgba(220,60,120,.4))";
+ document.body.appendChild(heart);
+ const arrow=document.createElement("div");
+ arrow.textContent="💘";
+ arrow.style.cssText="position:fixed;left:-12%;top:44%;z-index:31;font-size:2.4em;pointer-events:none;transition:transform .5s cubic-bezier(.5,0,.9,.4);transform:translateX(0) rotate(8deg)";
+ document.body.appendChild(arrow);
+ requestAnimationFrame(()=>{
+   heart.style.top="40%";heart.style.fontSize="3.8em";        // 心上升
+   arrow.style.transform="translateX(62vw) rotate(8deg)";     // 箭飞向心
+ });
+ setTimeout(()=>{
+   // 命中: 爆发爱心粒子 + 心放大脉冲
+   heart.style.transition="all .3s ease";heart.style.fontSize="5em";heart.textContent="💖";
+   const r=heart.getBoundingClientRect();const cx=r.left+r.width/2,cy=r.top+r.height/2;
+   for(let i=0;i<16;i++){const p=document.createElement("div");p.textContent=["💗","✨","💕","💖"][i%4];
+     const a=(i/16)*Math.PI*2,d=90+Math.random()*70;
+     p.style.cssText=`position:fixed;left:${cx}px;top:${cy}px;z-index:30;font-size:1.5em;pointer-events:none;transition:all 1s ease-out;opacity:1`;
+     document.body.appendChild(p);
+     requestAnimationFrame(()=>{p.style.left=(cx+Math.cos(a)*d)+"px";p.style.top=(cy+Math.sin(a)*d)+"px";p.style.opacity="0";});
+     setTimeout(()=>p.remove(),1000);}
+   arrow.remove();
+   setTimeout(()=>{heart.style.transition="all .5s ease";heart.style.opacity="0";heart.style.top="30%";setTimeout(()=>heart.remove(),500);},600);
+ },520);
+}
+function editionTransition(){
+ const el=document.createElement("div");
+ const marks={en:"◆",ja:"○",es:"／","pt-BR":"☀"};el.textContent=marks[edition.id]||"◆";
+ el.style.cssText=`position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;pointer-events:none;
+  color:${edition.palette.glowA};font:300 5em/1 var(--edition-font);background:color-mix(in srgb,${edition.palette.bg0} 16%,transparent);
+  opacity:0;transform:scale(.65);transition:opacity .32s,transform .8s cubic-bezier(.2,.8,.2,1);`;
+ document.body.appendChild(el);
+ requestAnimationFrame(()=>{el.style.opacity=".9";el.style.transform="scale(1.18)";});
+ setTimeout(()=>{el.style.opacity="0";el.style.transform="scale(1.5)";setTimeout(()=>el.remove(),350);},650);
+}
+function celebrate(txt){
+ const ms=document.getElementById("ms"),big=document.getElementById("msbig");
+ big.textContent=(tr().ms&&tr().ms[txt])||txt;ms.style.display="flex";
+ const burstSets={zh:["♡","花","✦","♥"],en:["◆","✦","·","◇"],ja:["。","○","・","余"],
+   es:["◆","／","✦","·"],"pt-BR":["☀","◌","✦","·"]};
+ const marks=burstSets[edition.id]||burstSets.en;
+ for(let i=0;i<18;i++){const b=document.createElement("div");b.className="burst";
+   b.textContent=marks[i%marks.length];b.style.color=edition.palette.glowA;
+   b.style.left="50%";b.style.top="50%";b.style.setProperty("--dx",(Math.random()*300-150)+"px");
+   b.style.setProperty("--dy",(Math.random()*300-150)+"px");ms.appendChild(b);setTimeout(()=>b.remove(),1100);}
+ setTimeout(()=>{ms.style.display="none";},1700);
+}
+function showLaunchGate(){
+ const gate=document.getElementById("launchGate");
+ if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.pauseForOpening();
+ document.getElementById("gatePrompt").textContent=gatePhase==="opening"?"CLICK · TAP TO BEGIN":"PRESS ANY KEY · CLICK TO ENTER";
+ document.getElementById("select").classList.remove("reveal","leaving");
+ gate.classList.remove("depart");
+ gate.classList.add("show");
+ gate.setAttribute("aria-hidden","false");
+ setTimeout(()=>gate.focus({preventScroll:true}),80);
+}
+let gatePhase="opening";
+let brandIntroTimers=[];
+let introThemeEnabled=localStorage.getItem("flutter_intro_theme")!=="off";
+const BRAND_INTROS={en:[
+ "HE REMEMBERS WHAT YOU TELL HIM.",
+ "NOT AS A SCORE.<br>AS SOMETHING THAT MATTERED.",
+ "THREE MEN. THREE LIVES.<br>NO PERFECT ANSWER.",
+ "ONE WILL CHALLENGE THE STORY YOU TELL ABOUT YOURSELF.",
+ "ONE WILL NOTICE THE CARE YOU GIVE EVERYONE BUT YOU.",
+ "ONE WILL HEAR WHAT YOU LEAVE UNSAID.",
+ "YOUR WORDS ARE THE CONTROLLER.",
+ "FLIRT. JOKE. ASK THE QUESTION<br>YOU ALMOST DIDN’T.",
+ "OR HESITATE. PULL AWAY.<br>MAKE HIM EARN THE DISTANCE BACK.",
+ "HE RESPONDS TO HOW YOU LISTEN,<br>HOW DEEPLY YOU SPEAK, AND HOW YOU CARE.",
+ "EMPTY CHARM CAN OPEN A DOOR.<br>IT CANNOT CARRY A RELATIONSHIP.",
+ "EVERY CHAPTER ASKS FOR SOMETHING REAL.",
+ "EVERY CHOICE LEAVES A MEMORY.",
+ "THE SAME MOMENT CAN BECOME<br>TENDERNESS, TENSION, OR GOODBYE.",
+ "THIS ISN’T A STORY YOU WATCH.<br>IT’S ONE THAT REMEMBERS YOU."
+],zh:[
+ "他记得的，不只是你说过的话。",
+ "而是你嘴硬时停顿的那一秒。",
+ "三个人，三种靠近。<br>没有标准答案。",
+ "有人看穿你的逞强，却不急着拆穿。",
+ "有人记得你照顾所有人时，<br>唯独忘了自己。",
+ "有人听懂那些<br>你没有说出口的话。",
+ "你的表达，就是故事的方向。",
+ "试探、心动、撒娇，<br>或者问出那句一直不敢问的话。",
+ "你也可以迟疑、后退，<br>让他重新赢得你的信任。",
+ "他会记住你的温柔、边界，<br>也记住你真正介意的事。",
+ "一时的甜言蜜语可以让人心动，<br>却无法替代真正的理解。",
+ "每一章，都需要你更诚实一点。",
+ "每一次选择，都会留下回声。",
+ "同一个夜晚，可能成为偏爱、遗憾，<br>或者终于说出口的喜欢。",
+ "《怦然》不是旁观别人的爱情。<br>这是一次被认真记住的人生。"
+],ja:[
+ "言葉より先に、<br>沈黙があなたを語っている。",
+ "彼が覚えているのは、<br>あなたが目をそらした、その一瞬。",
+ "三人、三つの距離。<br>正しい恋など、ひとつもない。",
+ "踏み込まずに、<br>あなたの強がりを見守る人。",
+ "誰かを優先するあなたを、<br>いちばんに気づかう人。",
+ "送れなかった言葉まで、<br>静かに待ってくれる人。",
+ "選ぶのは台詞ではない。<br>ふたりの間合い。",
+ "笑ってもいい。近づいてもいい。<br>本当のことを尋ねてもいい。",
+ "ためらいも、すれ違いも、<br>恋の余白になる。",
+ "彼はあなたの優しさと境界、<br>そして沈黙の意味を覚えていく。",
+ "きれいな言葉だけでは、<br>心の距離は埋まらない。",
+ "章を重ねるたび、<br>ふたりの時間が深くなる。",
+ "小さな選択が、記憶になる。",
+ "同じ雨が、ぬくもりにも、<br>別れにも変わっていく。",
+ "『あわい』は、見る物語ではない。<br>あなたが余白を満たす恋。"
+],es:[
+ "ÉL RECUERDA CÓMO LO MIRASTE.",
+ "Y ESA PAUSA JUSTO ANTES<br>DE DECIR QUE NO TE IMPORTABA.",
+ "TRES HOMBRES. TRES FORMAS DE ARDER.<br>NINGUNA RESPUESTA FÁCIL.",
+ "UNO DESAFIARÁ CADA EXCUSA<br>QUE USAS PARA PROTEGERTE.",
+ "UNO VERÁ LA TERNURA<br>QUE ESCONDES DETRÁS DEL HUMOR.",
+ "UNO SABRÁ CUÁNDO ACERCARSE<br>Y CUÁNDO HACERTE ESPERAR.",
+ "TUS PALABRAS MARCAN EL RITMO.",
+ "PROVOCA. RÍE. COQUETEA.<br>DI LO QUE CAMBIA LA NOCHE.",
+ "O ALÉJATE. HAZLE SENTIR<br>LA DISTANCIA QUE HA CREADO.",
+ "ÉL RECUERDA TU DESEO,<br>TUS LÍMITES Y TU VALENTÍA.",
+ "LA QUÍMICA ABRE LA PUERTA.<br>LA VERDAD DECIDE QUIÉN SE QUEDA.",
+ "CADA CAPÍTULO SUBE LA APUESTA.",
+ "CADA ELECCIÓN DEJA UNA MARCA.",
+ "UNA MIRADA PUEDE TERMINAR<br>EN PASIÓN, CONFLICTO O ADIÓS.",
+ "LATIDO NO SE CONTEMPLA.<br>SE VIVE A TU PROPIO RITMO."
+],"pt-BR":[
+ "ELE LEMBRA DO JEITO<br>QUE VOCÊ RI SEM PERCEBER.",
+ "E DO SILÊNCIO QUE CHEGA<br>QUANDO A CONVERSA FICA SÉRIA.",
+ "TRÊS HOMENS. TRÊS JEITOS DE CHEGAR.<br>NENHUM AMOR PRONTO.",
+ "UM VAI TRANSFORMAR PROVOCAÇÃO<br>EM UMA INTIMIDADE IMPROVÁVEL.",
+ "UM VAI NOTAR QUANDO VOCÊ<br>ESTÁ CUIDANDO DE TODO MUNDO.",
+ "UM VAI ENTENDER QUE LEVEZA<br>TAMBÉM PODE SER CORAGEM.",
+ "SUAS PALAVRAS MOVEM A HISTÓRIA.",
+ "BRINQUE. FLERTE. PERGUNTE.<br>DEIXE O MOMENTO RESPIRAR.",
+ "OU RECUSE. MUDE O RUMO.<br>FAÇA ELE APRENDER A VOLTAR.",
+ "ELE GUARDA SEU AFETO,<br>SEUS LIMITES E SUA VERDADE.",
+ "CHARME COMEÇA UMA NOITE.<br>PRESENÇA CONSTRÓI UMA VIDA.",
+ "CADA CAPÍTULO MUDA A PROXIMIDADE.",
+ "CADA ESCOLHA VIRA LEMBRANÇA.",
+ "O MESMO PÔR DO SOL PODE SER<br>ABRAÇO, SAUDADE OU RECOMEÇO.",
+ "ENTRE NÓS NÃO É UMA HISTÓRIA DISTANTE.<br>É UMA VIDA QUE RESPONDE A VOCÊ."
+]};
+const INTRO_UI={
+ en:{theme:"THEME SONG",on:"ON",off:"OFF",skip:"SKIP"},
+ zh:{theme:"主题曲",on:"开启",off:"关闭",skip:"跳过"},
+ ja:{theme:"テーマ曲",on:"オン",off:"オフ",skip:"スキップ"},
+ es:{theme:"TEMA",on:"SÍ",off:"NO",skip:"SALTAR"},
+ "pt-BR":{theme:"TEMA",on:"SIM",off:"NÃO",skip:"PULAR"}
+};
+function syncIntroControls(){
+ const ui=INTRO_UI[lang]||INTRO_UI.en;
+ document.getElementById("biTheme").textContent=`${ui.theme} · ${introThemeEnabled?ui.on:ui.off}`;
+ document.getElementById("biSkip").textContent=ui.skip;
+}
+function startBrandIntro(){
+ const intro=document.getElementById("brandIntro"),line=document.getElementById("biLine");
+ const script=BRAND_INTROS[lang]||BRAND_INTROS.en;
+ brandIntroTimers.forEach(clearTimeout);brandIntroTimers=[];
+ if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.pauseForOpening();
+ syncIntroControls();
+ intro.classList.remove("depart");intro.classList.add("show");intro.setAttribute("aria-hidden","false");
+ if(introThemeEnabled&&window.FLUTTER_AUDIO)FLUTTER_AUDIO.playIntroTheme();
+ const show=i=>{line.innerHTML=`<span>${script[i]}</span>`;};
+ show(0);
+ script.slice(1).forEach((_,i)=>brandIntroTimers.push(setTimeout(()=>show(i+1),(i+1)*8000)));
+ brandIntroTimers.push(setTimeout(finishBrandIntro,120000));
+}
+function toggleIntroTheme(){
+ introThemeEnabled=!introThemeEnabled;
+ localStorage.setItem("flutter_intro_theme",introThemeEnabled?"on":"off");
+ syncIntroControls();
+ if(!window.FLUTTER_AUDIO)return;
+ if(introThemeEnabled)FLUTTER_AUDIO.playIntroTheme();
+ else FLUTTER_AUDIO.pauseForOpening();
+}
+function finishBrandIntro(){
+ const intro=document.getElementById("brandIntro");if(!intro.classList.contains("show"))return;
+ brandIntroTimers.forEach(clearTimeout);brandIntroTimers=[];
+ intro.classList.add("depart");
+ if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.resumeScene("main");
+ setTimeout(()=>{
+  intro.classList.remove("show","depart");intro.setAttribute("aria-hidden","true");
+  document.getElementById("select").classList.add("reveal");
+ },820);
+}
+function enterSelection(){
+ const gate=document.getElementById("launchGate");
+ if(!gate.classList.contains("show")||gate.classList.contains("depart"))return;
+ if(gatePhase==="opening")FLUTTER_OPENING.prime();
+ gate.classList.add("depart");
+ setTimeout(()=>{
+   gate.classList.remove("show","depart");
+   gate.setAttribute("aria-hidden","true");
+   if(gatePhase==="opening"){
+    gatePhase="intro";
+    FLUTTER_OPENING.playWithSound(edition.id,{full:true});
+    return;
+   }
+   startBrandIntro();
+ },760);
+}
+window.addEventListener("flutter:opening-finished",()=>{gatePhase="intro";showLaunchGate();});
+window.addEventListener("keydown",event=>{
+ const wish=document.getElementById("chapterWish");
+ if(wish.classList.contains("show")&&(event.key==="Escape"||event.key==="Enter"||event.key===" ")){
+  event.preventDefault();finishChapterWish();return;
+ }
+ const intro=document.getElementById("brandIntro");
+ if(intro.classList.contains("show")&&(event.key==="Escape"||event.key==="Enter"||event.key===" ")){
+  event.preventDefault();finishBrandIntro();return;
+ }
+ const gate=document.getElementById("launchGate");
+ if(gate.classList.contains("show")){
+  event.preventDefault();
+  enterSelection();
+ }
+});
+function goSelect(){
+ if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("main");
+ document.getElementById("game").style.display="none";
+ const select=document.getElementById("select");
+ select.style.display="";
+ select.classList.add("reveal");
+}
+function pid(){let p=localStorage.getItem("flutter_pid");if(!p){p=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("flutter_pid",p);}return p;}
+function switchEdition(id){setTimeout(syncFbLabel,50);lang=FLUTTER_EDITIONS.normalize(id);edition=FLUTTER_EDITIONS.apply(lang);syncBrand();
+ document.getElementById("select").classList.remove("reveal");
+ FLUTTER_OPENING.play(lang,{full:true});
+ if(document.getElementById("prologueOv").classList.contains("show"))showPrologue();
+ if(document.getElementById("fbOv").classList.contains("show"))openFb();
+ if(route){goSelect();route=null;}
+ boot().catch(showOfflinePreview);}
+function toggleLang(){switchEdition(lang==="zh"?"en":"zh");}
+function toggleSoundPanel(){
+ const panel=document.getElementById("soundPanel");
+ panel.classList.toggle("show");
+ if(panel.classList.contains("show")&&window.FLUTTER_AUDIO)FLUTTER_AUDIO.unlock();
+}
+function selectVoiceMode(select){
+ if(!window.FLUTTER_AUDIO)return;
+ const accepted=FLUTTER_AUDIO.setVoice(select.value);
+ if(!accepted){select.value=FLUTTER_AUDIO.getState().voice;FLUTTER_AUDIO.setEdition(edition.id);}
+}
+function showOfflinePreview(){
+ const offline={
+  en:[
+   {id:"ethan",name:"Ethan Cole",title:"the CEO who never loses",tag:"Power · Slow Burn",hue:345,accent:"#d59a82",portrait:"portraits/ethan.jpg",portrait_expressions:true},
+   {id:"liam",name:"Liam Brody",title:"the firefighter next door",tag:"Warm · Protective",hue:20,accent:"#e08a5a",portrait:"portraits/liam.jpg",portrait_expressions:true},
+   {id:"adrian",name:"Adrian Vale",title:"the rockstar who writes about you",tag:"Bad Boy · Intense",hue:275,accent:"#a879e0",portrait:"portraits/adrian.jpg",portrait_expressions:true}
+  ],
+  zh:[
+   {id:"guyan",name:"顾言",title:"旧书店的温柔老板",tag:"治愈 · 文艺",hue:28,accent:"#e8b06a",portrait:"portraits/guyan.jpg",portrait_expressions:true},
+   {id:"luxingye",name:"陆星野",title:"万人追捧的顶流偶像",tag:"明星 · 心动",hue:320,accent:"#e87aa8",portrait:"portraits/luxingye.jpg",portrait_expressions:true},
+   {id:"fushen",name:"傅深",title:"矜贵疏离的财阀继承人",tag:"奢华 · 反差",hue:210,accent:"#7aa8e8",portrait:"portraits/fushen.jpg",portrait_expressions:true}
+  ],
+  ja:[{id:"ren",name:"蓮",title:"終電で会う、静かな建築家",tag:"余白 · 雨 · 慢い恋",hue:205,accent:"#7f858a",portrait:"openings/ja-rain-train-v1.webp",portrait_expressions:false}],
+  es:[{id:"mateo",name:"Mateo Vidal",title:"el restaurador que siempre tiene la última palabra",tag:"Ingenio · Fuego lento",hue:8,accent:"#d96548",portrait:"openings/es-midnight-v1.webp",portrait_expressions:false}],
+  "pt-BR":[{id:"caio",name:"Caio Nascimento",title:"o fotógrafo que transforma rotina em encontro",tag:"Calor · Humor · Presença",hue:145,accent:"#3c9a72",portrait:"openings/pt-sunset-v1.webp",portrait_expressions:false}]
+ };
+ R={pet:{emoji:"🐱"},routes:offline[lang]||offline.en};
+ renderRouteCards(R.routes);
+}
+document.getElementById("inp").addEventListener("keydown",e=>{if(e.key==="Enter")say();});
+// 软键盘弹出时保证输入条与对话框可见
+document.getElementById("inp").addEventListener("focus",()=>{setTimeout(()=>{
+ document.querySelector(".dbox").scrollIntoView({block:"end",behavior:"smooth"});},300);});
+/* ---------- 反馈 Feedback ---------- */
+const FBT={zh:{q:"喜欢和他聊天吗？",ph:"想对制作人说…（可选）",send:"发送 ♡",done:"收到啦♡"},
+ en:{q:"Enjoying him?",ph:"A word for the makers… (optional)",send:"Send ♡",done:"Got it ♡"},
+ es:{q:"¿Te gusta estar con él?",ph:"Cuéntanos algo… (opcional)",send:"Enviar ♡",done:"Recibido ♡"},
+ "pt-BR":{q:"Está gostando dele?",ph:"Conta pra gente… (opcional)",send:"Enviar ♡",done:"Recebido ♡"},
+ ja:{q:"彼との時間、どうでしたか？",ph:"感想を聞かせてください（任意）",send:"送る ♡",done:"ありがとう ♡"}};
+let fbScore=0;
+if(API)document.getElementById("fbBtn").style.display="";
+syncFbLabel();
+function tierOf(a){return a>=15?3:a>=8?2:a>=3?1:0;}
+function fbEmos(sel,fn){return [["😍",3],["😐",2],["🥱",1]].map(([e,s])=>
+ `<button class="fb-emo${sel===s?" sel":""}" onclick="${fn}(${s})">${e}</button>`).join("");}
+function openFb(){
+ if(!API)return;fbScore=0;
+ const t=FBT[lang];
+ document.getElementById("fbCard").innerHTML=`<button class="fb-x" onclick="closeFb()">✕</button>
+  <div class="fb-q">${t.q}</div>
+  <div class="fb-emos" id="fbEmos">${fbEmos(0,"pickFb")}</div>
+  <textarea class="fb-note" id="fbNote" rows="2" placeholder="${t.ph}"></textarea>
+  <button class="fb-send" id="fbSend" onclick="sendFb()" disabled>${t.send}</button>`;
+ document.getElementById("fbOv").classList.add("show");
+}
+function closeFb(){document.getElementById("fbOv").classList.remove("show");}
+function pickFb(s){fbScore=s;
+ document.getElementById("fbEmos").innerHTML=fbEmos(s,"pickFb");
+ document.getElementById("fbSend").disabled=false;}
+function postFb(score,note){
+ try{fetch(API+"/scout/api/game_feedback",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({game:"flutter",score:score,note:note||"",pid:pid()})}).catch(()=>{});}catch(e){}
+}
+function sendFb(){
+ if(!fbScore)return;
+ postFb(fbScore,(document.getElementById("fbNote")||{}).value.trim());
+ document.getElementById("fbCard").innerHTML=`<div class="fb-done">${FBT[lang].done}</div>`;
+ setTimeout(closeFb,1200);
+}
+function maybeFbBar(){
+ if(!API)return;
+ const today=new Date().toISOString().slice(0,10);
+ if(localStorage.getItem("flutter_fb_last_"+edition.id)===today)return;
+ localStorage.setItem("flutter_fb_last_"+edition.id,today);
+ setTimeout(()=>{
+  const bar=document.getElementById("fbBar"),t=FBT[lang];
+  bar.innerHTML=`<div class="fb-q">${t.q}</div>${fbEmos(0,"pickFbBar")}
+   <button class="fb-x" style="position:static" onclick="hideFbBar()">✕</button>`;
+  bar.classList.add("show");
+ },2000);
+}
+function hideFbBar(){document.getElementById("fbBar").classList.remove("show");}
+function pickFbBar(s){
+ postFb(s,"");
+ document.getElementById("fbBar").innerHTML=`<div class="fb-q" style="text-align:center">${FBT[lang].done}</div>`;
+ setTimeout(hideFbBar,1400);
+}
+syncBrand();
+if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.mount();
+boot().catch(showOfflinePreview);
+showLaunchGate();
+</script>
+<script>
+// 统一埋点SDK: 自动记录pageview/click/停留/会话时长, 手动记录chat/feedback
+(function(){
+  const TAPI = window.TEL_API || window.FLUTTER_API || (location.pathname.split("/")[1]?"/"+location.pathname.split("/")[1]:"");
+  const pid = (function(){let p=localStorage.getItem("tel_pid");
+    if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
+  const sid = "s"+Math.random().toString(36).slice(2,10);
+  const t0 = Date.now();
+  let queue = [];
+  function push(etype,name,value,dur){
+    queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
+                value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
+    if(queue.length>=8) flush();
+  }
+  function flush(useBeacon){
+    if(!queue.length||!TAPI) return;
+    const batch = queue.splice(0,50);
+    const body = JSON.stringify(batch);
+    if(useBeacon && navigator.sendBeacon){
+      navigator.sendBeacon(TAPI+"/tel_batch", new Blob([body],{type:"application/json"}));
+    } else {
+      fetch(TAPI+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
+    }
+  }
+  // 自动: pageview
+  push("pageview", location.pathname||"/", document.title||"");
+  // 自动: 所有click(记录元素id/class/文本)
+  document.addEventListener("click", e=>{
+    const el=e.target.closest("button,a,[data-tel],.card,.chip,[role=button]");
+    if(!el)return;
+    push("click", el.id||el.dataset.tel||el.className||el.tagName,
+         (el.innerText||"").trim().slice(0,60));
+  }, true);
+  // 自动: 会话时长(离开时上报)
+  window.addEventListener("beforeunload", ()=>{
+    push("session_end","session","",Math.round((Date.now()-t0)/1000));
+    flush(true);
+  });
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
+  setInterval(()=>flush(), 20000);   // 定期flush
+  // 暴露手动埋点: TEL.chat(用户消息,回复) / TEL.feedback(分数,留言) / TEL.ev(类型,名,值)
+  window.TEL = {
+    chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
+    feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
+    ev: (name, value)=>push("custom",name,value),
+    flush
+  };
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#701d1d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>破绽 · TELL</title><script src="config.js"></script>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;font-family:'Georgia','Songti SC',-apple-system,serif;color:#d8d4cc;background:#080809}
+.brand,.title,.casefileCard h2,.verdict h2,#introCard h1{font-family:Impact,'Arial Narrow','Songti SC','YuMincho',serif;font-stretch:condensed;text-shadow:1px 0 #31110f,-1px 0 #000;letter-spacing:1.6px}
+#app{position:fixed;inset:0;max-width:520px;margin:0 auto;display:flex;flex-direction:column;overflow:hidden}
+/* 雨夜氛围 */
+#atmos{position:absolute;inset:0;z-index:0;background:radial-gradient(120% 80% at 50% -10%,#1c1e24 0%,#0d0e11 45%,#050506 100%)}
+.rain{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:.35}
+.drop{position:absolute;top:-12%;width:1px;height:70px;background:linear-gradient(transparent,#8aa);animation:rain linear infinite}
+@keyframes rain{to{transform:translateY(120vh)}}
+.vig{position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 160px 40px #000;background:radial-gradient(60% 50% at 50% 30%,transparent,rgba(0,0,0,.5))}
+.lang{position:absolute;top:12px;right:12px;z-index:30;background:rgba(255,255,255,.06);border:1px solid #333;color:#998;border-radius:4px;padding:5px 11px;font-size:.78em;cursor:pointer;font-family:monospace}
+/* 扩大小按钮触屏命中区至≥44px，不改视觉 */
+.lang::after,.help::after{content:"";position:absolute;inset:-9px}
+/* 卷宗 */
+.dossier{position:relative;z-index:5;margin:44px 14px 8px;padding:14px 16px;background:linear-gradient(180deg,#16171b,#101114);border:1px solid #2a2c33;border-left:3px solid #a1332b;border-radius:3px;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+.stamp{position:absolute;top:-12px;right:12px;font-family:monospace;font-size:.62em;letter-spacing:2px;color:#a1332b;border:2px solid #a1332b;padding:2px 8px;border-radius:3px;transform:rotate(-6deg);opacity:.85}
+.case{font-family:monospace;font-size:.66em;letter-spacing:3px;color:#7a7266}
+.title{font-size:1.32em;font-weight:700;margin:3px 0 6px;color:#e9e4da;letter-spacing:1px}
+.setup{font-size:.9em;line-height:1.55;color:#b6b1a6}
+.vic{font-family:monospace;font-size:.72em;color:#8a8478;margin-top:7px;border-top:1px dashed #333;padding-top:6px}
+.filebtn{margin-top:8px;background:none;border:0;color:#d4a24e;padding:4px 0;font-family:monospace;font-size:.7em;letter-spacing:1px;cursor:pointer}
+/* 嫌疑人 mugshots */
+.lineup{position:relative;z-index:5;display:flex;gap:8px;margin:8px 14px}
+.mug{flex:1;cursor:pointer;text-align:center;padding:8px 4px 6px;border:1px solid #2a2c33;border-radius:4px;background:#111216;transition:.18s;position:relative}
+.mug.on{border-color:#d4a24e;background:#191712;box-shadow:0 0 16px rgba(212,162,78,.25)}
+.face{width:64px;height:64px;margin:0 auto 5px;border-radius:3px;background-image:url('assets/suspects-v1.webp');background-repeat:no-repeat;background-color:#17181c;filter:saturate(.76) contrast(1.08)}
+.mug .mn{font-weight:700;font-size:.9em;color:#ddd}
+.mug .mr{font-size:.68em;color:#877f72}
+/* 审讯台 */
+.stage{position:relative;z-index:4;flex:1;display:flex;align-items:flex-end;justify-content:center;min-height:60px}
+.spot{position:absolute;top:-30px;left:50%;transform:translateX(-50%);width:220px;height:230px;background:radial-gradient(50% 60% at 50% 0,rgba(212,162,78,.16),transparent 70%);pointer-events:none}
+.subject{width:104px;height:104px;border-radius:4px;background-image:url('assets/suspects-v1.webp');background-repeat:no-repeat;background-color:#17181c;filter:saturate(.78) contrast(1.08);box-shadow:0 6px 26px rgba(0,0,0,.7),0 0 30px rgba(212,162,78,.1);margin-bottom:6px}
+/* 对话框 */
+.dbox{position:relative;z-index:6;margin:6px 12px 10px;padding:15px 16px 12px;background:linear-gradient(180deg,rgba(20,21,25,.94),rgba(14,15,18,.96));border:1px solid #2c2e35;border-radius:6px;min-height:118px;backdrop-filter:blur(4px)}
+.who{position:absolute;top:-13px;left:16px;background:#a1332b;color:#f5ece6;font-weight:700;font-size:.82em;padding:3px 14px;border-radius:3px;letter-spacing:1px;font-family:-apple-system,'PingFang SC',serif}
+.line{font-size:1.05em;line-height:1.62;min-height:50px;color:#e0dbd0}
+.prompts{display:flex;gap:5px;overflow-x:auto;margin:9px 0 1px;padding-bottom:2px}.prompt{white-space:nowrap;background:#17181d;border:1px solid #34363e;color:#9d9588;border-radius:12px;padding:5px 9px;font-size:.66em;cursor:pointer}
+.cursor{display:inline-block;width:8px;background:#d4a24e;margin-left:2px;animation:blink .7s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.inrow{display:flex;gap:8px;margin-top:11px}
+#inp{flex:1;background:#0d0e11;border:1px solid #33353d;color:#e0dbd0;border-radius:4px;padding:11px 14px;font-size:1em;font-family:inherit;outline:none}
+#inp:focus{border-color:#d4a24e}
+#send{background:#d4a24e;border:0;border-radius:4px;padding:0 16px;min-width:52px;min-height:44px;color:#1a1400;font-weight:800;cursor:pointer;transition:.12s}
+#send:active{transform:scale(.9)}#send:disabled{opacity:.4}
+.bar{display:flex;justify-content:space-between;align-items:center;margin-top:9px}
+.q{font-family:monospace;font-size:.74em;color:#8a8478;letter-spacing:1px}
+.pips{display:flex;gap:3px}.pip{width:7px;height:7px;border-radius:50%;background:#333}.pip.used{background:#a1332b}
+.accuse{width:100%;margin-top:11px;background:linear-gradient(180deg,#a1332b,#7d251f);color:#fff;border:0;border-radius:5px;padding:12px;font-size:1em;font-weight:700;cursor:pointer;letter-spacing:2px;font-family:-apple-system,'PingFang SC',serif}
+.accuse:active{transform:scale(.98)}
+/* 判决 */
+.verdict{position:absolute;inset:0;z-index:20;display:none;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;background:radial-gradient(circle at 50% 30%,rgba(30,20,15,.9),rgba(0,0,0,.96))}
+.verdict h2{font-size:2.1em;letter-spacing:3px;margin:0 0 12px}
+.grid{font-size:1.5em;letter-spacing:3px;margin:14px 0}
+.share{background:#d4a24e;border:0;color:#1a1400;border-radius:5px;padding:12px 26px;font-weight:800;cursor:pointer;font-size:1em;letter-spacing:1px}
+.rev{color:#b6b1a6;font-size:.92em;line-height:1.6;margin:6px 0;max-width:360px}
+/* 反馈 feedback */
+.fb{margin-top:18px;padding-top:14px;border-top:1px solid rgba(212,162,78,.25);width:100%;max-width:300px}
+.fbq{color:#877f72;font-size:.82em;letter-spacing:1px;margin-bottom:8px}
+.fbrow{display:flex;justify-content:center;gap:14px;align-items:center}
+.fbe{background:rgba(255,255,255,.05);border:1px solid #33353d;border-radius:6px;padding:7px 13px;font-size:1.25em;cursor:pointer;transition:transform .1s,border-color .1s}
+.fbe:hover,.fbe:active{border-color:#d4a24e;transform:scale(1.1)}
+.fbin{flex:1;background:#15161a;border:1px solid #33353d;border-radius:5px;padding:8px 10px;color:#e9e4da;font-size:.85em;font-family:inherit;outline:none}
+.fbin:focus{border-color:#d4a24e}
+.back{position:absolute;top:12px;left:12px;z-index:8;background:rgba(255,255,255,.06);border:1px solid #333;color:#998;border-radius:4px;padding:5px 11px;font-size:.78em;cursor:pointer;font-family:monospace}
+/* 主菜单与案件卷宗 */
+#home{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:22px;overflow:auto;background:linear-gradient(180deg,#08090b 0,#11100e 55%,#080706 100%)}
+#home:before{content:"";position:absolute;inset:0;background:radial-gradient(38% 46% at 50% 5%,rgba(237,190,107,.19),transparent 68%),repeating-linear-gradient(90deg,transparent 0 79px,rgba(255,255,255,.012) 80px);box-shadow:inset 0 0 190px 65px #000;pointer-events:none}#home:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-14%;height:43%;background:linear-gradient(170deg,#211a12,#0e0c09 48%,#17110b);border-top:1px solid #392c1c;box-shadow:0 -18px 60px #000;transform:perspective(500px) rotateX(12deg);pointer-events:none}
+.hangWire{position:absolute;z-index:1;top:0;left:50%;width:2px;height:63px;background:#222}.hangLamp{position:absolute;z-index:2;top:57px;left:50%;width:88px;height:27px;transform:translateX(-50%);border-radius:50% 50% 10px 10px;background:linear-gradient(#292824,#090a0b);box-shadow:0 4px 8px #000,0 20px 55px rgba(218,169,83,.13);animation:lampBreathe 8s infinite}.hangLamp:after{content:"";position:absolute;left:11px;right:11px;bottom:-3px;height:6px;border-radius:50%;background:#b58c4a;box-shadow:0 5px 20px #d4a24e}@keyframes lampBreathe{0%,92%,100%{opacity:1}93%{opacity:.42}94%{opacity:1}96%{opacity:.62}97%{opacity:1}}
+.homeCard{width:min(430px,100%);position:relative;z-index:4;padding-top:55px}.brand{text-align:center;font-size:3.25em;letter-spacing:12px;color:#eee8dc;text-shadow:3px 1px 0 #32100e,-2px 0 0 #000,0 2px 18px #000;margin-bottom:3px;transform:scaleX(.9)}.brandSub{text-align:center;font-family:monospace;color:#a1332b;letter-spacing:4px;font-size:.69em;margin-bottom:21px}.homeLead{text-align:center;color:#aaa296;font-style:italic;line-height:1.55;margin:0 auto 18px;max-width:390px;font-size:.9em}.playMode{width:96%;display:block;text-align:left;margin:10px auto;padding:16px 18px 14px;border:1px solid #54442d;border-radius:2px;background:linear-gradient(135deg,#2b2419,#18140e);color:#d7c9b4;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 8px 15px rgba(0,0,0,.48);transform:rotate(-.45deg);transition:.18s}.playMode:nth-of-type(2){transform:rotate(.55deg);background:linear-gradient(135deg,#25231d,#131311)}.playMode:before{content:"CASE FILE";position:absolute;right:13px;top:9px;font:9px monospace;letter-spacing:2px;color:#79654a}.playMode.on{border-color:#b98b43;box-shadow:0 0 0 1px #3b2b18,0 10px 25px #000}.playMode.on:after{content:"SELECTED";position:absolute;right:12px;bottom:10px;border:2px solid #922d27;color:#a93d35;padding:2px 6px;font:9px monospace;letter-spacing:1px;transform:rotate(-5deg)}.playMode b{display:block;position:relative;z-index:2;font-family:Impact,'Arial Narrow','Songti SC','YuMincho',serif;font-size:1.08em;letter-spacing:2.5px;color:#eee0c9;text-shadow:1px 1px #32110f}.playMode small{display:block;position:relative;z-index:2;margin-top:5px;color:#91826e;max-width:75%}.bloodPrint{position:absolute;right:44px;top:4px;width:78px;height:78px;opacity:.34;transform:rotate(19deg);mix-blend-mode:multiply;background:center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%239b241f' stroke-width='3' stroke-linecap='round'%3E%3Cellipse cx='50' cy='50' rx='34' ry='43' stroke-dasharray='74 17 19 12'/%3E%3Cellipse cx='50' cy='51' rx='28' ry='36' stroke-dasharray='31 8 47 16'/%3E%3Cellipse cx='50' cy='52' rx='22' ry='29' stroke-dasharray='52 10 18 13'/%3E%3Cpath d='M39 58c0-18 22-20 23-2 1 13-7 22-14 30M44 51c5-8 14-4 13 7-1 13-6 20-10 27M33 66c-4-24 4-36 17-38 14-2 25 10 24 30' stroke-dasharray='28 7 19 9'/%3E%3C/g%3E%3C/svg%3E")}.playMode:nth-of-type(2) .bloodPrint{right:25px;top:11px;opacity:.25;transform:rotate(-28deg) scale(.86)}.bloodPrint:after{content:"";position:absolute;width:60px;height:10px;right:-28px;bottom:7px;background:linear-gradient(90deg,rgba(117,24,20,.5),transparent);filter:blur(3px);transform:rotate(-10deg)}.homeGo{width:88%;display:block;margin:16px auto 0;padding:14px;border:1px solid #c89a52;border-radius:2px;background:linear-gradient(#d4a24e,#a8732c);color:#171005;font-weight:900;letter-spacing:3px;cursor:pointer;box-shadow:0 7px 22px #000}.settings{display:flex;gap:8px;justify-content:space-between;align-items:center;width:88%;margin:14px auto 0;padding-top:12px;border-top:1px solid #30291e;color:#787269;font-family:monospace;font-size:.69em}.settingsBtn{background:none;border:1px solid #403a30;color:#a69b8a;padding:7px 10px;cursor:pointer;letter-spacing:1px}.langChoice{display:flex;flex-wrap:wrap;justify-content:flex-end}.langChoice button{background:#13130f;border:1px solid #3a342b;color:#82786b;padding:6px 8px;cursor:pointer;font-size:.9em}.langChoice button.on{border-color:#b58949;color:#e1d4bf;background:#211a10}
+#settingsOv{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(3,3,4,.9);backdrop-filter:blur(8px)}.settingsCard{width:min(440px,100%);max-height:92vh;overflow:auto;background:linear-gradient(#171817,#0e0f10);border:1px solid #3c352a;border-top:3px solid #9d332c;padding:21px;border-radius:4px;box-shadow:0 28px 80px #000}.settingsCard h2{margin:0 0 4px;letter-spacing:4px}.settingsSub{font:10px monospace;letter-spacing:2px;color:#8f312d;margin-bottom:18px}.settingRow{display:grid;grid-template-columns:1fr minmax(145px,54%);gap:15px;align-items:center;padding:10px 0;border-bottom:1px solid #292a2a;color:#bbb3a6;font-size:.82em}.settingRow input[type=range]{width:100%;accent-color:#b18441}.settingRow select{width:100%;background:#111214;color:#d1c8ba;border:1px solid #37383b;padding:8px}.toggle{display:flex;justify-content:flex-end;gap:6px}.toggle button{background:#111214;border:1px solid #37383b;color:#777;padding:7px 9px;cursor:pointer}.toggle button.on{border-color:#b18441;color:#e0d5c4;background:#211a11}.settingsClose{width:100%;margin-top:18px;padding:11px;background:#9d332c;border:0;color:#fff;font-weight:800;letter-spacing:2px;cursor:pointer}
+body.reduce-motion *{animation:none!important;transition:none!important}body.no-flicker .hangLamp{animation:none}
+#briefOv{position:fixed;inset:0;z-index:75;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(2,2,3,.94)}.casefileCard{width:min(470px,100%);max-height:92vh;overflow:auto;background:#111217;border:1px solid #30323a;border-top:3px solid #a1332b;padding:21px;border-radius:6px;box-shadow:0 20px 70px #000}.casefileHead{font-family:monospace;letter-spacing:3px;color:#a1332b;font-size:.72em}.casefileCard h2{margin:5px 0 12px;color:#eee7da}.fact{margin:7px 0;padding:9px 11px;border-left:2px solid #d4a24e;background:#17181d;color:#bbb4a7;font-size:.84em;line-height:1.45}.statement{margin:8px 0;color:#aaa397;font-size:.82em;line-height:1.45}.statement b{color:#ddd5c8}.briefGo{width:100%;margin-top:15px;padding:12px;border:0;background:#d4a24e;color:#191204;font-weight:900;letter-spacing:2px;cursor:pointer}
+/* 序幕 intro */
+.help{position:absolute;top:12px;right:88px;z-index:30;background:rgba(255,255,255,.06);border:1px solid #333;color:#998;border-radius:4px;padding:5px 11px;font-size:.78em;cursor:pointer;font-family:monospace}
+#introOv{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.85)}
+.introCard{max-width:440px;width:100%;background:#0d0e11;border:1px solid #2a2c33;border-top:2px solid #d4a24e;border-radius:14px;padding:26px 24px 22px;color:#e9e4da;box-shadow:0 0 60px rgba(212,162,78,.12),0 20px 50px rgba(0,0,0,.8)}
+.introCard h1{margin:0 0 12px;font-size:1.5em;letter-spacing:3px;color:#e9e4da}
+.introCard .lede{color:#b6b1a6;font-size:.95em;line-height:1.65;margin-bottom:14px;font-style:italic}
+.introCard .rule{color:#cfc9bd;font-size:.88em;line-height:1.6;margin:8px 0}
+.introCard .rule b{color:#d4a24e;margin-right:6px}
+.introGo{width:100%;margin-top:18px;background:linear-gradient(180deg,#d4a24e,#b3823a);border:0;border-radius:6px;padding:13px;color:#1a1400;font-weight:800;font-size:1em;letter-spacing:2px;cursor:pointer;font-family:inherit}
+.introGo:active{transform:scale(.98)}
+</style></head><body>
+<div id="app">
+<div id="atmos"></div><div class="rain" id="rain"></div><div class="vig"></div>
+<div id="home"><div class="hangWire"></div><div class="hangLamp"></div><div class="homeCard">
+  <div class="brand"><img src="assets/tell-title-v1.webp" alt="TELL"></div><div class="brandSub" id="homeSub">INTERROGATION FILES</div>
+  <div class="homeLead" id="homeLead"></div>
+  <button class="playMode" id="dailyMode" onclick="selectMode('daily')"><b></b><small></small><i class="bloodPrint" aria-hidden="true"></i></button>
+  <button class="playMode" id="runMode" onclick="selectMode('run')"><b></b><small></small><i class="bloodPrint" aria-hidden="true"></i></button>
+  <button class="homeGo" id="homeGo" onclick="enterGame()"></button>
+  <div class="settings"><button class="settingsBtn" id="settingsLabel" onclick="openSettings()"></button><div class="langChoice"><button id="langEn" onclick="setLang('en')">EN</button><button id="langEs" onclick="setLang('es')">ES</button><button id="langPt" onclick="setLang('pt')">PT</button><button id="langZh" onclick="setLang('zh')">中文</button><button id="langJa" onclick="setLang('ja')">日本語</button></div></div>
+</div></div>
+<div id="settingsOv"><div class="settingsCard" id="settingsCard"></div></div>
+<div id="briefOv"><div class="casefileCard" id="casefileCard"></div></div>
+<button class="back" onclick="goHome()">⌂</button>
+<button class="lang" onclick="toggleLang()">🌐</button>
+<button class="help" onclick="showIntro()">?</button>
+<div id="introOv"><div class="introCard" id="introCard"></div></div>
+<div class="dossier">
+  <div class="stamp" id="stamp">CONFIDENTIAL</div>
+  <div class="case" id="case">CASE FILE</div>
+  <div class="title" id="title">…</div>
+  <div class="setup" id="setup"></div>
+  <div class="vic" id="vic"></div>
+  <button class="filebtn" id="fileBtn" onclick="showBrief()"></button>
+</div>
+<div class="lineup" id="lineup"></div>
+<div class="stage"><div class="spot"></div><div class="subject" id="subject"></div></div>
+<div class="dbox">
+  <div class="who" id="who">…</div>
+  <div class="line" id="line"></div>
+  <div class="prompts" id="prompts"></div>
+  <div class="inrow"><input id="inp" placeholder="" enterkeyhint="send"><button id="send" onclick="send()">➤</button></div>
+  <div class="bar"><span class="q" id="qcount"></span><div class="pips" id="pips"></div></div>
+  <button class="accuse" id="accuseBtn" onclick="openAccuse()"></button>
+</div>
+<div class="verdict" id="verdict"></div>
+</div>
+<script>
+// A checked-out/file preview has no local API. Point previews at the live
+// service while keeping same-origin requests in production.
+const IS_PREVIEW=location.protocol==="file:"||location.hostname==="localhost"||location.hostname==="127.0.0.1";
+const API=IS_PREVIEW
+  ?"https://apps.blazecore.dev/tell"
+  :(window.TELL_API||window.APP_API||"");
+let lang=localStorage.getItem("tell_lang")||(navigator.language.startsWith("zh")?"zh":"en");
+let S=null,cur=null,convos={},qUsed=0,done=false;
+let mode=localStorage.getItem("tell_mode")==="run"?"run":"daily";
+let runCase=Math.max(0,parseInt(localStorage.getItem("tell_run_case")||"0",10)||0);
+let runStreak=Math.max(0,parseInt(localStorage.getItem("tell_run_streak")||"0",10)||0);
+let gameStartedAt=0;
+const CFG_DEFAULT={master:.78,music:.68,ambience:.5,sfx:.72,textSpeed:22,difficulty:"detective",motion:true,flicker:true,haptics:true};
+let CFG={...CFG_DEFAULT,...(()=>{try{return JSON.parse(localStorage.getItem("tell_settings")||"{}")}catch(e){return{}}})()};
+function track(name,value={}){if(window.TEL)window.TEL.ev(name,{lang,mode,difficulty:CFG.difficulty,case_id:S?.case_id||"",...value});}
+function saveCfg(){localStorage.setItem("tell_settings",JSON.stringify(CFG));applyCfg();}
+function setCfg(k,v){CFG[k]=v;saveCfg();track("setting_changed",{setting:k,value:v});if(k==="difficulty"&&S)resetCase();openSettings();}
+function applyCfg(){document.body.classList.toggle("reduce-motion",!CFG.motion);document.body.classList.toggle("no-flicker",!CFG.flicker);if(AUDIO.master)AUDIO.master.gain.value=CFG.master;if(AUDIO.music)AUDIO.music.gain.value=CFG.music;if(AUDIO.ambience)AUDIO.ambience.gain.value=CFG.ambience;if(AUDIO.sfx)AUDIO.sfx.gain.value=CFG.sfx;if(SCORE.player)SCORE.player.volume=scoreVolume();}
+const T={en:{sub:"INTERROGATION FILES",ph:"Ask a question…",who:n=>n,q:(u,b)=>`INTERROGATION ${u}/${b}`,
+  accuse:"⚖  PRESENT YOUR CASE",victim:"VICTIM",whoDunit:"Name your suspect:",why:"Which fact proves the contradiction?",cancel:"‹ back",
+  win:"CASE CLOSED",lose:"CASE COLD",solved:n=>`${n} cracked it today`,
+  winsub:(n,p)=>`Cracked in ${n} question${n>1?"s":""}${p!=null?` · top ${p}%`:""}`,
+  truth:c=>`The killer: ${c}`,share:"Share",copied:"Copied — paste anywhere.",daily:"TODAY'S CASE",run:"CASE RUN",dailyHint:"One shared case. Return tomorrow.",runHint:"Keep interrogating. Build your streak.",next:"NEXT CASE  →",retry:"RETRY CASE",tomorrow:"A new case arrives tomorrow.",
+  lead:"Every lie has a seam. Read the file. Compare the statements. Find the detail only the killer could know.",play:"OPEN CASEFILE",settings:"OPTIONS · LANGUAGE",file:"▣  REVIEW CASEFILE",brief:"CONFIDENTIAL CASEFILE",begin:"BEGIN INTERROGATION",weak:"RIGHT SUSPECT · WRONG PROOF",weakSub:"Suspicion is not a conviction. The contradiction must fit the evidence.",
+  qs:["Where were you?","Your relationship to the victim?","What did you personally see?","Explain the evidence."]},
+ es:{sub:"ARCHIVOS DE INTERROGATORIO",ph:"Haz una pregunta…",who:n=>n,q:(u,b)=>`INTERROGATORIO ${u}/${b}`,
+  accuse:"⚖  PRESENTAR ACUSACIÓN",victim:"VÍCTIMA",whoDunit:"Señala al sospechoso:",why:"¿Qué hecho demuestra la contradicción?",cancel:"‹ volver",
+  win:"CASO CERRADO",lose:"CASO SIN RESOLVER",solved:n=>`${n} lo resolvieron hoy`,
+  winsub:(n,p)=>`Resuelto en ${n} pregunta${n===1?"":"s"}${p!=null?` · top ${p}%`:""}`,
+  truth:c=>`El culpable: ${c}`,share:"Compartir",copied:"Copiado. Pégalo donde quieras.",daily:"CASO DE HOY",run:"RACHA DE CASOS",dailyHint:"El mismo caso para todos · clasificación diaria",runHint:"Investiga siete casos · construye tu racha",next:"SIGUIENTE CASO  →",retry:"REINTENTAR",tomorrow:"Mañana llega un caso nuevo.",
+  lead:"Toda mentira tiene una costura. Lee el expediente, compara los testimonios y encuentra el detalle que solo el culpable podía conocer.",play:"ABRIR EXPEDIENTE",settings:"OPCIONES · IDIOMA",file:"▣  REVISAR EXPEDIENTE",brief:"EXPEDIENTE CONFIDENCIAL",begin:"INICIAR INTERROGATORIO",weak:"SOSPECHOSO CORRECTO · PRUEBA INCORRECTA",weakSub:"Una sospecha no basta. La contradicción debe encajar con la evidencia.",
+  qs:["¿Dónde estabas?","¿Qué relación tenías con la víctima?","¿Qué viste personalmente?","Explica la evidencia."]},
+ pt:{sub:"ARQUIVOS DE INTERROGATÓRIO",ph:"Faça uma pergunta…",who:n=>n,q:(u,b)=>`INTERROGATÓRIO ${u}/${b}`,
+  accuse:"⚖  APRESENTAR ACUSAÇÃO",victim:"VÍTIMA",whoDunit:"Indique o suspeito:",why:"Qual fato prova a contradição?",cancel:"‹ voltar",
+  win:"CASO ENCERRADO",lose:"CASO ARQUIVADO",solved:n=>`${n} resolveram hoje`,winsub:(n,p)=>`Resolvido em ${n} pergunta${n===1?"":"s"}${p!=null?` · top ${p}%`:""}`,
+  truth:c=>`O culpado: ${c}`,share:"Compartilhar",copied:"Copiado.",daily:"CASO DE HOJE",run:"SEQUÊNCIA DE CASOS",dailyHint:"O mesmo caso para todos · ranking diário",runHint:"Investigue sete casos · aumente sua sequência",next:"PRÓXIMO CASO  →",retry:"TENTAR NOVAMENTE",tomorrow:"Um novo caso chega amanhã.",
+  lead:"Toda mentira tem uma fissura. Leia o arquivo, compare os depoimentos e encontre o detalhe que só o culpado poderia saber.",play:"ABRIR ARQUIVO",settings:"OPÇÕES · IDIOMA",file:"▣  REVISAR ARQUIVO",brief:"ARQUIVO CONFIDENCIAL",begin:"INICIAR INTERROGATÓRIO",weak:"SUSPEITO CERTO · PROVA ERRADA",weakSub:"Suspeita não basta. A contradição precisa corresponder às evidências.",qs:["Onde você estava?","Qual era sua relação com a vítima?","O que você viu pessoalmente?","Explique as evidências."]},
+ ja:{sub:"取調事件簿",ph:"質問を入力…",who:n=>n,q:(u,b)=>`取調べ ${u}/${b}`,
+  accuse:"⚖  告発する",victim:"被害者",whoDunit:"容疑者を選べ：",why:"決定的な矛盾を示す事実は？",cancel:"‹ 戻る",
+  win:"事件解決",lose:"未解決",solved:n=>`本日${n}人が解決`,winsub:(n,p)=>`${n}問で解決${p!=null?` · 上位${p}%`:""}`,
+  truth:c=>`犯人：${c}`,share:"共有",copied:"コピーしました。",daily:"本日の事件",run:"連続事件",dailyHint:"全員が同じ事件に挑む · デイリー順位",runHint:"七つの事件を連続捜査 · 連勝記録",next:"次の事件  →",retry:"再捜査",tomorrow:"新しい事件は明日届く。",
+  lead:"嘘には必ず綻びがある。事件簿を読み、証言を比べ、犯人だけが知るはずの事実を見抜け。",play:"事件簿を開く",settings:"設定 · 言語",file:"▣  事件簿を確認",brief:"機密事件簿",begin:"取調べ開始",weak:"容疑者は正しい · 証拠が違う",weakSub:"疑いだけでは有罪にできない。矛盾と証拠を一致させろ。",qs:["その時どこにいた？","被害者との関係は？","自分の目で何を見た？","証拠を説明して。"]},
+ zh:{sub:"破绽 · 审讯档案",ph:"审讯提问…",who:n=>n,q:(u,b)=>`审讯 ${u}/${b}`,
+  accuse:"⚖  提交指控",victim:"死者",whoDunit:"指认嫌疑人：",why:"哪项事实构成决定性破绽？",cancel:"‹ 返回",
+  win:"结案",lose:"悬案",solved:n=>`今日${n}人破案`,
+  winsub:(n,p)=>`${n}问破案${p!=null?` · 今日前${p}%`:""}`,
+  truth:c=>`真凶：${c}`,share:"分享",copied:"已复制——粘贴到任何地方。",daily:"今日悬案",run:"破案连击",dailyHint:"所有玩家面对同一宗案件 · 每日排名",runHint:"连续调查七宗案件 · 建立连胜",next:"下一宗案  →",retry:"重试本案",tomorrow:"明天会有新的案件。",
+  lead:"每个谎言都有接缝。阅读卷宗，核对证词，找出只有凶手才知道的细节。",play:"打开卷宗",settings:"选项 · 语言",file:"▣  查看案件卷宗",brief:"机密案件卷宗",begin:"开始审讯",weak:"嫌疑人正确 · 证据不足",weakSub:"怀疑不能定罪。你必须指出与证据吻合的决定性破绽。",
+  qs:["你当时在哪里？","你和死者什么关系？","你亲眼看见了什么？","解释一下现有证据。"]}};
+const OPT={
+ en:{title:"OPTIONS",sub:"INTERROGATION ROOM SYSTEMS",master:"Master volume",music:"Original score",ambience:"Room ambience",sfx:"Evidence & UI",speed:"Text speed",difficulty:"Detective rank",motion:"Motion",flicker:"Light flicker",haptics:"Haptics",on:"ON",off:"OFF",close:"SAVE & RETURN",slow:"Cinematic",normal:"Standard",fast:"Fast",instant:"Instant",rookie:"Junior Detective",detective:"Major Crimes",black:"Black File"},
+ zh:{title:"选项",sub:"审讯室系统",master:"主音量",music:"原创配乐",ambience:"环境声",sfx:"证据与界面音效",speed:"文字速度",difficulty:"侦探等级",motion:"动态效果",flicker:"灯光闪烁",haptics:"震动反馈",on:"开",off:"关",close:"保存并返回",slow:"电影感",normal:"标准",fast:"快速",instant:"即时",rookie:"见习探员",detective:"重案探长",black:"黑档调查员"},
+ es:{title:"OPCIONES",sub:"SISTEMAS DE LA SALA",master:"Volumen general",music:"Banda sonora original",ambience:"Ambiente",sfx:"Evidencia e interfaz",speed:"Velocidad del texto",difficulty:"Rango de detective",motion:"Movimiento",flicker:"Parpadeo de luz",haptics:"Vibración",on:"SÍ",off:"NO",close:"GUARDAR Y VOLVER",slow:"Cinemática",normal:"Normal",fast:"Rápida",instant:"Instantánea",rookie:"Detective novato",detective:"Casos mayores",black:"Archivo negro"},
+ pt:{title:"OPÇÕES",sub:"SISTEMAS DA SALA",master:"Volume geral",music:"Trilha sonora original",ambience:"Ambiente",sfx:"Evidências e interface",speed:"Velocidade do texto",difficulty:"Patente de detetive",motion:"Movimento",flicker:"Luz oscilante",haptics:"Vibração",on:"SIM",off:"NÃO",close:"SALVAR E VOLTAR",slow:"Cinemática",normal:"Normal",fast:"Rápida",instant:"Imediata",rookie:"Detetive júnior",detective:"Crimes graves",black:"Arquivo negro"},
+ ja:{title:"設定",sub:"取調室システム",master:"マスター音量",music:"オリジナル音楽",ambience:"環境音",sfx:"証拠・UI音",speed:"文字速度",difficulty:"捜査官ランク",motion:"モーション",flicker:"照明の点滅",haptics:"振動",on:"オン",off:"オフ",close:"保存して戻る",slow:"シネマ",normal:"標準",fast:"高速",instant:"瞬時",rookie:"見習い捜査官",detective:"重大犯罪班",black:"黒ファイル"}
+};
+const FB={
+ en:{q:"How was the case?",thanks:"Thanks!",ph:"One line? (optional)",done:"Noted. See you tomorrow night.",unit:n=>`${n} questions · ${runStreak}× streak`},
+ zh:{q:"今天这案子怎么样？",thanks:"谢谢！",ph:"想说一句？（可选）",done:"已收到，明晚见。",unit:n=>`${n}问破案 · 连胜 ${runStreak}`},
+ es:{q:"¿Qué te pareció el caso?",thanks:"¡Gracias!",ph:"¿Algo más? (opcional)",done:"Anotado. Nos vemos mañana por la noche.",unit:n=>`${n} preguntas · racha ${runStreak}`},
+ pt:{q:"O que achou do caso?",thanks:"Obrigado!",ph:"Quer dizer mais algo? (opcional)",done:"Anotado. Até amanhã à noite.",unit:n=>`${n} perguntas · sequência ${runStreak}`},
+ ja:{q:"事件はいかがでしたか？",thanks:"ありがとう！",ph:"感想があれば（任意）",done:"記録しました。また明日の夜に。",unit:n=>`${n}問で解決 · ${runStreak}連勝`}
+};
+function tr(){return T[lang]||T.en}
+function renderHome(){
+ document.getElementById("homeSub").textContent=tr().sub;
+ document.getElementById("homeLead").textContent=tr().lead;
+ document.getElementById("homeGo").textContent=tr().play;
+ document.getElementById("settingsLabel").textContent=tr().settings;
+ [["dailyMode",tr().daily,tr().dailyHint,"daily"],["runMode",tr().run,tr().runHint,"run"]].forEach(([id,name,hint,m])=>{const b=document.getElementById(id);b.querySelector("b").textContent=name;b.querySelector("small").textContent=hint;b.classList.toggle("on",mode===m);});
+ [["langZh","zh"],["langEn","en"],["langEs","es"],["langPt","pt"],["langJa","ja"]].forEach(([id,l])=>document.getElementById(id).classList.toggle("on",lang===l));
+}
+function settingToggle(key,o){const t=OPT[lang]||OPT.en;return `<div class="toggle"><button class="${CFG[key]?'on':''}" onclick="setCfg('${key}',true)">${t.on}</button><button class="${!CFG[key]?'on':''}" onclick="setCfg('${key}',false)">${t.off}</button></div>`}
+function openSettings(){const t=OPT[lang]||OPT.en,vol=(key,label)=>`<div class="settingRow"><span>${label}</span><input type="range" min="0" max="1" step=".05" value="${CFG[key]}" oninput="CFG.${key}=+this.value;saveCfg()"></div>`;document.getElementById("settingsCard").innerHTML=`<h2>${t.title}</h2><div class="settingsSub">${t.sub}</div>${vol("master",t.master)}${vol("music",t.music)}${vol("ambience",t.ambience)}${vol("sfx",t.sfx)}<div class="settingRow"><span>${t.speed}</span><select onchange="setCfg('textSpeed',+this.value)"><option value="38" ${CFG.textSpeed===38?'selected':''}>${t.slow}</option><option value="22" ${CFG.textSpeed===22?'selected':''}>${t.normal}</option><option value="10" ${CFG.textSpeed===10?'selected':''}>${t.fast}</option><option value="0" ${CFG.textSpeed===0?'selected':''}>${t.instant}</option></select></div><div class="settingRow"><span>${t.difficulty}</span><select onchange="setCfg('difficulty',this.value)"><option value="rookie" ${CFG.difficulty==='rookie'?'selected':''}>${t.rookie}</option><option value="detective" ${CFG.difficulty==='detective'?'selected':''}>${t.detective}</option><option value="black" ${CFG.difficulty==='black'?'selected':''}>${t.black}</option></select></div><div class="settingRow"><span>${t.motion}</span>${settingToggle("motion")}</div><div class="settingRow"><span>${t.flicker}</span>${settingToggle("flicker")}</div><div class="settingRow"><span>${t.haptics}</span>${settingToggle("haptics")}</div><button class="settingsClose" onclick="closeSettings()">${t.close}</button>`;document.getElementById("settingsOv").style.display="flex";initAudio();paperSound();}
+function closeSettings(){document.getElementById("settingsOv").style.display="none";saveCfg();}
+// ACE-Step 1.5 generated original score: one shared D–E♭–A–D identity,
+// re-orchestrated for title, interrogation, revelation and resolution.
+const SCORE_PATHS={
+ menu:"audio/bgm/tell-menu-final.mp3",
+ interrogation:"audio/bgm/tell-interrogation-v2.mp3?v=2",
+ tension:"audio/bgm/tell-tension-final.mp3",
+ resolution:"audio/bgm/tell-resolution-final.mp3"
+};
+const SCORE={player:null,scene:"",requested:"",request:0};
+function scoreVolume(){return Math.min(.52,Math.max(0,CFG.master*CFG.music*.52))}
+function fadeScore(player,to,ms,done){if(!player)return;const from=player.volume,start=performance.now();player.__fadeId=(player.__fadeId||0)+1;const fadeId=player.__fadeId;function step(now){if(player.__fadeId!==fadeId)return;const p=Math.min(1,(now-start)/ms);player.volume=Math.max(0,Math.min(1,from+(to-from)*(p*(2-p))));if(p<1)requestAnimationFrame(step);else if(done)done()}requestAnimationFrame(step)}
+function playScore(scene,returnTo){
+ const src=SCORE_PATHS[scene];if(!src)return;
+ if(SCORE.requested===scene&&SCORE.player&&!SCORE.player.paused)return;
+ const request=++SCORE.request,old=SCORE.player,next=new Audio(src);
+ SCORE.requested=scene;next.preload="auto";next.loop=scene==="menu"||scene==="interrogation";next.volume=0;
+ if(!next.loop)next.addEventListener("ended",()=>{if(SCORE.player===next)playScore(returnTo||"interrogation")},{once:true});
+ next.play().then(()=>{
+  if(request!==SCORE.request){next.pause();next.src="";return}
+  SCORE.player=next;SCORE.scene=scene;fadeScore(next,scoreVolume(),900);
+  if(old&&old!==next)fadeScore(old,0,650,()=>{old.pause();old.src=""});
+ }).catch(()=>{if(request===SCORE.request)SCORE.requested=SCORE.scene});
+}
+function stopScore(ms=420){
+ ++SCORE.request;SCORE.requested="";SCORE.scene="";
+ const old=SCORE.player;SCORE.player=null;
+ if(old)fadeScore(old,0,ms,()=>{old.pause();old.src=""});
+}
+const AUDIO={ctx:null,master:null,music:null,ambience:null,sfx:null,reverb:null,wet:null,started:false,menuAwake:false};
+function initAudio(){if(AUDIO.ctx){if(AUDIO.ctx.state==="suspended")AUDIO.ctx.resume();return}const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const c=AUDIO.ctx=new AC(),lim=c.createDynamicsCompressor();lim.threshold.value=-18;lim.knee.value=18;lim.ratio.value=4;lim.attack.value=.015;lim.release.value=.5;AUDIO.master=c.createGain();AUDIO.music=c.createGain();AUDIO.ambience=c.createGain();AUDIO.sfx=c.createGain();AUDIO.reverb=c.createConvolver();AUDIO.wet=c.createGain();AUDIO.wet.gain.value=.32;const impulse=c.createBuffer(2,c.sampleRate*3.4,c.sampleRate);for(let ch=0;ch<2;ch++){const d=impulse.getChannelData(ch);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2.8)}AUDIO.reverb.buffer=impulse;AUDIO.music.connect(AUDIO.master);AUDIO.music.connect(AUDIO.reverb);AUDIO.reverb.connect(AUDIO.wet);AUDIO.wet.connect(AUDIO.master);AUDIO.ambience.connect(AUDIO.master);AUDIO.sfx.connect(AUDIO.master);AUDIO.master.connect(lim);lim.connect(c.destination);applyCfg();}
+function tone(freq,at,dur,gain=.08,type="sine",bus="music",cutoff=1200,detune=0){if(!AUDIO.ctx)return;const c=AUDIO.ctx,o=c.createOscillator(),g=c.createGain(),f=c.createBiquadFilter(),sh=c.createWaveShaper();o.type=type;o.frequency.setValueAtTime(freq,at);o.frequency.exponentialRampToValueAtTime(freq*.992,at+dur);o.detune.value=detune;f.type=type==="sawtooth"?"bandpass":"lowpass";f.frequency.value=cutoff;f.Q.value=type==="sawtooth"?2.8:.7;const curve=new Float32Array(512);for(let i=0;i<curve.length;i++){const x=i*2/(curve.length-1)-1;curve[i]=Math.tanh(x*(type==="sawtooth"?4.8:1.2))}sh.curve=curve;sh.oversample="4x";g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(gain,at+.055);g.gain.exponentialRampToValueAtTime(.0001,at+dur);o.connect(sh);sh.connect(f);f.connect(g);g.connect(AUDIO[bus]);o.start(at);o.stop(at+dur+.08)}
+function startAmbience(){initAudio();if(!AUDIO.ctx||AUDIO.started)return;AUDIO.started=true;const c=AUDIO.ctx,o=c.createOscillator(),g=c.createGain();o.type="sine";o.frequency.value=43;g.gain.value=.018;o.connect(g);g.connect(AUDIO.ambience);o.start();const b=c.createBuffer(1,c.sampleRate*3,c.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*.16;const src=c.createBufferSource(),flt=c.createBiquadFilter(),ng=c.createGain();src.buffer=b;src.loop=true;flt.type="lowpass";flt.frequency.value=420;ng.gain.value=.055;src.connect(flt);flt.connect(ng);ng.connect(AUDIO.ambience);src.start()}
+function wakeMenuAudio(){if(AUDIO.menuAwake)return;AUDIO.menuAwake=true;initAudio();startAmbience();playScore("menu");}
+function paperSound(){initAudio();if(!AUDIO.ctx)return;const c=AUDIO.ctx,b=c.createBuffer(1,c.sampleRate*.22,c.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(1-i/d.length);const s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();s.buffer=b;f.type="bandpass";f.frequency.value=1500;g.gain.value=.08;s.connect(f);f.connect(g);g.connect(AUDIO.sfx);s.start()}
+function uiSound(){initAudio();if(!AUDIO.ctx)return;tone(92,AUDIO.ctx.currentTime,.12,.035,"square","sfx")}
+function rain(){const r=document.getElementById("rain");r.innerHTML="";for(let i=0;i<40;i++){const d=document.createElement("div");d.className="drop";d.style.left=Math.random()*100+"%";d.style.animationDuration=(.4+Math.random()*.5)+"s";d.style.animationDelay=(-Math.random()*2)+"s";d.style.opacity=.2+Math.random()*.5;r.appendChild(d);}}
+function spriteStyle(n){const col=n%3,row=Math.floor(n/3),x=[0,50,100][col],y=row*100/6;return `background-size:300% 700%;background-position:${x}% ${y}%`}
+async function load(){
+ S=await (await fetch(API+"/state?lang="+lang+"&mode="+mode+"&case_index="+runCase)).json();
+ S.budget=CFG.difficulty==="rookie"?14:CFG.difficulty==="black"?8:12;
+ document.getElementById("case").textContent=mode==="run"?`${tr().run.toUpperCase()} ${S.case_index+1}/${S.case_total} · ${runStreak}× STREAK`:`${tr().daily.toUpperCase()} · ${tr().solved(S.solved_today)}`;
+ document.getElementById("title").textContent=S.title;
+ document.getElementById("setup").textContent=S.setup;
+ document.getElementById("vic").textContent=`${tr().victim}: ${S.victim}`;
+ document.getElementById("lineup").innerHTML=S.suspects.map((s,i)=>
+   `<div class="mug" id="mug-${s.id}" onclick="pick('${s.id}')"><div class="face" style="${spriteStyle(s.portrait)}"></div><div class="mn">${s.name}</div><div class="mr">${s.role}</div></div>`).join("");
+ document.getElementById("inp").placeholder=tr().ph;
+ document.getElementById("accuseBtn").textContent=tr().accuse;
+ document.getElementById("fileBtn").textContent=tr().file;
+ document.getElementById("prompts").innerHTML=tr().qs.map(q=>`<button class="prompt" onclick="quickAsk(this.textContent)">${q}</button>`).join("");
+ document.getElementById("prompts").style.display=CFG.difficulty==="black"?"none":"flex";
+ S.suspects.forEach(s=>{if(!convos[s.id])convos[s.id]=[{role:"assistant",content:s.opening}]});
+ if(!cur)cur=S.suspects[0].id;
+ pick(cur);
+ track("case_loaded",{case_id:S.case_id||S.title,case_index:S.case_index,budget:S.budget});
+}
+function resetCase(){cur=null;convos={};qUsed=0;done=false;clearInterval(typing);document.getElementById("verdict").style.display="none";document.getElementById("inp").disabled=false;document.getElementById("send").disabled=false;}
+function selectMode(next){initAudio();uiSound();mode=next;localStorage.setItem("tell_mode",mode);track("mode_selected",{selected:next});renderHome();}
+async function enterGame(){
+ const go=document.getElementById("homeGo"),label=go.textContent;
+ go.disabled=true;go.textContent=lang==="zh"?"调取卷宗…":lang==="ja"?"事件簿を読込中…":lang==="es"?"CARGANDO…":lang==="pt"?"CARREGANDO…":"LOADING CASEFILE…";
+ gameStartedAt=Date.now();track("game_start",{run_case:runCase,run_streak:runStreak});startAmbience();stopScore();resetCase();
+ try{
+  await load();playScore("interrogation");document.getElementById("home").style.display="none";showBrief();
+ }catch(err){
+  console.error("TELL casefile load failed",err);playScore("menu");track("case_load_failed",{message:String(err?.message||err)});
+  alert(lang==="zh"?"卷宗调取失败，请检查网络后重试。":lang==="ja"?"事件簿を読み込めません。通信を確認して再試行してください。":lang==="es"?"No se pudo cargar el expediente. Comprueba la conexión e inténtalo de nuevo.":lang==="pt"?"Não foi possível carregar o arquivo. Verifique a conexão e tente novamente.":"The casefile could not be loaded. Check your connection and try again.");
+ }finally{go.disabled=false;go.textContent=label;}
+}
+function goHome(){track("return_home",{questions:qUsed});playScore("menu");document.getElementById("verdict").style.display="none";document.getElementById("briefOv").style.display="none";document.getElementById("home").style.display="flex";renderHome();}
+function setLang(next){lang=next;localStorage.setItem("tell_lang",lang);document.documentElement.lang=lang;track("language_selected",{selected:next});renderHome();if(document.getElementById("settingsOv").style.display==="flex")openSettings();if(window.uxSyncLabels)uxSyncLabels();}
+function nextCase(){track("next_case",{streak:runStreak});playScore("interrogation");runCase=(runCase+1)%S.case_total;localStorage.setItem("tell_run_case",String(runCase));gameStartedAt=Date.now();resetCase();load().then(showBrief);}
+function retryCase(){track("retry_case",{});playScore("interrogation");gameStartedAt=Date.now();resetCase();load().then(showBrief);}
+function pick(id){if(cur!==id)track("suspect_selected",{suspect:id});cur=id;S.suspects.forEach(s=>document.getElementById("mug-"+s.id).classList.toggle("on",s.id===id));
+ const s=S.suspects.find(x=>x.id===id);
+ document.getElementById("subject").style.cssText=spriteStyle(s.portrait);
+ document.getElementById("who").textContent=s.name+" · "+s.role;render();}
+function render(){
+ const c=convos[cur]||[],last=c[c.length-1];
+ if(last&&last.role==="assistant")typeLine(last.content);
+ else if(!c.length)typeLine(lang==="zh"?"（"+S.suspects.find(x=>x.id===cur).name+"抬眼看你，沉默着。）":"("+S.suspects.find(x=>x.id===cur).name+" looks up at you, silent.)");
+ updateBar();
+}
+function showBrief(){if(!S)return;track("casefile_opened",{case_index:S.case_index});paperSound();const facts=S.facts.map((f,i)=>`<div class="fact"><b>0${i+1}</b> · ${f}</div>`).join("");const statements=S.suspects.map(s=>`<div class="statement"><b>${s.name}：</b>“${s.opening}”</div>`).join("");document.getElementById("casefileCard").innerHTML=`<div class="casefileHead">${tr().brief}</div><h2>${S.title}</h2><div class="setup">${S.setup}</div><div style="margin-top:13px">${facts}</div><div style="margin-top:14px;border-top:1px dashed #34363d;padding-top:7px">${statements}</div><button class="briefGo" onclick="closeBrief()">${tr().begin}</button>`;document.getElementById("briefOv").style.display="flex";}
+function closeBrief(){track("interrogation_start",{case_index:S?.case_index});playScore("interrogation");paperSound();document.getElementById("briefOv").style.display="none";}
+function quickAsk(q){const inp=document.getElementById("inp");inp.value=q;send();}
+function updateBar(){document.getElementById("qcount").textContent=tr().q(qUsed,S.budget);
+ let p="";for(let i=0;i<S.budget;i++)p+=`<div class="pip ${i<qUsed?'used':''}"></div>`;document.getElementById("pips").innerHTML=p;}
+let typing=null;
+function typeLine(txt){clearInterval(typing);const el=document.getElementById("line");let i=0;const cur='<span class="cursor">&nbsp;</span>';el.innerHTML=cur;
+ if(!CFG.textSpeed){el.textContent=txt;return}typing=setInterval(()=>{i++;el.innerHTML=txt.slice(0,i).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))+(i<txt.length?cur:"");if(i>=txt.length)clearInterval(typing);},CFG.textSpeed);}
+async function send(){
+ if(done||qUsed>=S.budget)return;const inp=document.getElementById("inp"),msg=inp.value.trim();if(!msg)return;
+ inp.value="";document.getElementById("send").disabled=true;
+ convos[cur].push({role:"user",content:msg});qUsed++;updateBar();
+ typeLine(lang==="zh"?"（……）":"(…)");
+ const askStarted=Date.now();track("question_asked",{suspect:cur,question_number:qUsed});
+ try{const r=await (await fetch(API+"/ask",{method:"POST",headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({suspect:cur,history:convos[cur].slice(0,-1),message:msg,lang:lang,mode:mode,case_index:runCase,difficulty:CFG.difficulty,pid:pid()})})).json();
+  convos[cur].push({role:"assistant",content:r.reply||"…"});typeLine(r.reply||"…");if(r.tension)playScore("tension","interrogation");
+  track("question_answered",{suspect:cur,question_number:qUsed,latency_ms:r.latency_ms||Date.now()-askStarted,tension:!!r.tension});
+ }catch(e){typeLine("(connection error)");track("question_error",{suspect:cur,question_number:qUsed,latency_ms:Date.now()-askStarted});}
+ document.getElementById("send").disabled=false;
+ if(qUsed>=S.budget){document.getElementById("inp").disabled=true;document.getElementById("send").disabled=true;}
+}
+function openAccuse(){if(done)return;
+ track("accusation_opened",{questions:qUsed});
+ const opts=S.suspects.map(s=>`<button class="accuse" style="background:#15161a;border:1px solid #33353d;color:#ddd;margin-top:8px;letter-spacing:1px" onclick="chooseReason('${s.id}')">${s.name} · ${s.role}</button>`).join("");
+ const v=document.getElementById("verdict");v.style.display="flex";
+ v.innerHTML=`<div style="font-weight:700;letter-spacing:2px;margin-bottom:6px">${tr().whoDunit}</div>${opts}<div style="margin-top:14px"><a href="#" onclick="closeAccuse();return false" style="color:#877f72">${tr().cancel}</a></div>`;}
+function chooseReason(id){playScore("tension","interrogation");const s=S.suspects.find(x=>x.id===id);const opts=S.reasons.map(r=>`<button class="accuse" style="background:#15161a;border:1px solid #33353d;color:#ddd;margin-top:8px;letter-spacing:0" onclick="accuse('${id}','${r.id}')">${r.label}</button>`).join("");document.getElementById("verdict").innerHTML=`<div style="color:#d4a24e;font-family:monospace;margin-bottom:8px">${s.name} · ${s.role}</div><div style="font-weight:700;letter-spacing:1px;margin-bottom:6px">${tr().why}</div>${opts}<div style="margin-top:14px"><a href="#" onclick="openAccuse();return false" style="color:#877f72">${tr().cancel}</a></div>`;}
+function closeAccuse(){document.getElementById("verdict").style.display="none";}
+async function accuse(id,reason){done=true;
+ const r=await (await fetch(API+"/accuse",{method:"POST",headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({suspect:id,reason:reason,questions:qUsed,lang:lang,pid:pid(),mode:mode,case_index:runCase,difficulty:CFG.difficulty,elapsed_s:(Date.now()-gameStartedAt)/1000,run_streak:runStreak})})).json();
+ track("accusation_result",{suspect:id,reason,questions:qUsed,correct:!!r.correct,suspect_correct:!!r.suspect_correct,reason_correct:!!r.reason_correct,elapsed_s:Math.round((Date.now()-gameStartedAt)/1000)});
+ if(r.correct)track("case_solved",{questions:qUsed,elapsed_s:Math.round((Date.now()-gameStartedAt)/1000)});
+ if(mode==="run"){runStreak=r.correct?runStreak+1:0;localStorage.setItem("tell_run_streak",String(runStreak));}
+ let pct=null;if(r.correct&&mode==="daily"){try{const p=await (await fetch(API+"/percentile?questions="+qUsed+"&difficulty="+CFG.difficulty)).json();pct=p.percentile;}catch(e){}}
+ const partial=r.suspect_correct&&!r.reason_correct;
+ if(r.correct)playScore("resolution","interrogation");else playScore("tension","interrogation");
+ const grid=r.correct?("🔍".repeat(Math.max(qUsed,1))+"✅"):(partial?"🔍⚠️":"🚬❌");
+ const v=document.getElementById("verdict");v.style.display="flex";
+ v.innerHTML=`<h2 style="color:${r.correct?'#d4a24e':partial?'#d4a24e':'#a1332b'}">${r.correct?tr().win:partial?tr().weak:tr().lose}</h2>
+  <div class="rev">${tr().truth(r.culprit_name)}<br><span style="font-size:.9em;color:#8a8478">${r.reveal}</span></div>
+  ${r.correct?`<div style="color:#b6b1a6;margin-top:6px">${mode==="run"?(FB[lang]||FB.en).unit(qUsed):tr().winsub(qUsed,pct)}</div><div class="grid">${grid}</div>
+  ${mode==="run"?`<button class="share" onclick="nextCase()">${tr().next}</button>`:`<button class="share" onclick="share(${qUsed},'${grid}')">${tr().share}</button>`}`:
+  `<div class="grid">${grid}</div><div style="color:#877f72;font-size:.85em">${partial?tr().weakSub:(mode==="run"?tr().runHint:tr().tomorrow)}</div>${mode==="run"?`<button class="share" style="margin-top:14px" onclick="retryCase()">${tr().retry}</button>`:""}`}${fbHtml()}`;}
+// ── 游戏反馈 game feedback ──
+function fbHtml(){
+ const today=new Date().toISOString().slice(0,10);
+ if(localStorage.getItem("tell_fb_last")===today)return"";
+ return `<div class="fb" id="fb"><div class="fbq">${(FB[lang]||FB.en).q}</div>
+  <div class="fbrow">${[["😍",3],["😐",2],["🥱",1]].map(([e,s])=>`<button class="fbe" onclick="fbPick(${s})">${e}</button>`).join("")}</div></div>`;}
+function fbPick(score){
+ const today=new Date().toISOString().slice(0,10);localStorage.setItem("tell_fb_last",today);
+ window.__fbScore=score;
+ const el=document.getElementById("fb");if(!el)return;
+ el.innerHTML=`<div class="fbq" style="color:#d4a24e">${(FB[lang]||FB.en).thanks}</div>
+  <div class="fbrow"><input class="fbin" id="fbNote" maxlength="200" placeholder="${(FB[lang]||FB.en).ph}"><button class="fbe" style="font-size:.9em;color:#d4a24e" onclick="fbSend()">➤</button></div>`;
+ document.getElementById("fbNote").addEventListener("keydown",e=>{if(e.key==="Enter")fbSend();});}
+function fbSend(){const el=document.getElementById("fbNote");const note=el?el.value.trim():"";
+ fbPost(window.__fbScore,note);
+ const f=document.getElementById("fb");if(f)f.innerHTML=`<div class="fbq" style="color:#d4a24e">${(FB[lang]||FB.en).done}</div>`;}
+function fbPost(score,note){try{fetch(API+"/feedback",{method:"POST",headers:{"Content-Type":"application/json"},
+ body:JSON.stringify({score,note,pid:pid(),lang,mode,difficulty:CFG.difficulty,case_id:S?.case_id||""})}).then(r=>{if(r.ok)track("feedback_submitted",{score,has_note:!!note});}).catch(()=>{});}catch(e){}}
+function share(n,grid){const txt=`TELL · Case ${S.day}\n${S.title}\n${grid}  ${(FB[lang]||FB.en).unit(n)}\n${location.href.split("?")[0]}`;
+ navigator.clipboard.writeText(txt);track("share_clicked",{questions:n});alert(tr().copied);}
+function pid(){let p=localStorage.getItem("tell_pid");if(!p){p=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("tell_pid",p);}return p;}
+function toggleLang(){const langs=["en","es","pt","zh","ja"],i=langs.indexOf(lang);setLang(langs[(i+1)%langs.length]);if(document.getElementById("home").style.display==="none"){resetCase();load();}}
+document.getElementById("inp").addEventListener("keydown",e=>{if(e.key==="Enter")send();});
+// 移动端：软键盘弹出时保证对话框可见（visualViewport优先，退化为scrollIntoView）
+(function(){const inp=document.getElementById("inp"),dbox=document.querySelector(".dbox");
+ function reveal(){if(document.activeElement===inp)dbox.scrollIntoView({block:"end",behavior:"smooth"});}
+ inp.addEventListener("focus",()=>setTimeout(reveal,300));
+ if(window.visualViewport)visualViewport.addEventListener("resize",reveal);})();
+const IT={zh:{h:"破绽",lede:"审讯室的灯只照着一把椅子。嫌疑人就坐在那里——案卷里没写的细节，只有凶手知道。",
+ r:["先阅读卷宗：公共事实和开场证词不会改变。","核对三人的时间线；不知道的事实，嫌疑人不能凭空编造。","指控时必须同时选出嫌疑人和决定性破绽。"],go:"我明白了"},
+ es:{h:"TELL",lede:"Una lámpara. Una silla. El culpable conoce un detalle que nunca se hizo público.",
+ r:["Lee primero el expediente: los hechos públicos y las declaraciones iniciales no cambian.","Compara las cronologías. Nadie puede inventar hechos que no conoce.","Para acusar, elige al sospechoso y la contradicción decisiva."],go:"Entendido"},
+ pt:{h:"TELL",lede:"Uma lâmpada. Uma cadeira. O culpado conhece um detalhe que nunca foi divulgado.",r:["Leia primeiro o arquivo: fatos públicos e depoimentos iniciais não mudam.","Compare as linhas do tempo. Ninguém pode inventar fatos que não conhece.","Para acusar, escolha o suspeito e a contradição decisiva."],go:"Entendido"},
+ ja:{h:"TELL",lede:"一つの灯り。一脚の椅子。犯人だけが未公表の事実を知っている。",r:["まず事件簿を読め。公表事実と冒頭証言は変わらない。","時間軸を照合せよ。知らない事実を容疑者が作ることはできない。","告発には容疑者と決定的な矛盾の両方が必要だ。"],go:"了解"},
+ en:{h:"TELL",lede:"One lamp. One chair. The suspect knows details that never made the papers—details only the killer could know.",
+ r:["Read the casefile first: public facts and opening statements never change.","Compare timelines. A suspect cannot invent facts they could not know.","To convict, identify both the suspect and the decisive contradiction."],go:"Understood"}};
+function showIntro(){const t=IT[lang];
+ document.getElementById("introCard").innerHTML=`<h1>${t.h}</h1><div class="lede">${t.lede}</div>`+
+  t.r.map(x=>`<div class="rule"><b>◆</b>${x}</div>`).join("")+
+  `<button class="introGo" onclick="closeIntro()">${t.go}</button>`;
+ document.getElementById("introOv").style.display="flex";}
+function closeIntro(){document.getElementById("introOv").style.display="none";localStorage.setItem("tell_intro_seen","1");}
+document.documentElement.lang=lang;applyCfg();rain();renderHome();
+setTimeout(()=>track("app_open",{returning:!!localStorage.getItem("tell_intro_seen")}),0);
+document.addEventListener("pointerdown",()=>{if(document.getElementById("home").style.display!=="none")wakeMenuAudio()},{once:true,capture:true});
+document.addEventListener("keydown",()=>{if(document.getElementById("home").style.display!=="none")wakeMenuAudio()},{once:true,capture:true});
+</script>
+<script>
+// 统一埋点SDK: 自动记录pageview/click/停留/会话时长, 手动记录chat/feedback
+(function(){
+  const API = window.TEL_API || window.TELL_API || window.API || "";
+  const pid = (function(){let p=localStorage.getItem("tel_pid");
+    if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
+  const sid = "s"+Math.random().toString(36).slice(2,10);
+  const t0 = Date.now();
+  let queue = [];
+  function push(etype,name,value,dur){
+    queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
+                value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
+    if(queue.length>=8) flush();
+  }
+  function flush(useBeacon){
+    if(!queue.length||!API) return;
+    const batch = queue.splice(0,50);
+    const body = JSON.stringify(batch);
+    if(useBeacon && navigator.sendBeacon){
+      navigator.sendBeacon(API+"/tel_batch", new Blob([body],{type:"application/json"}));
+    } else {
+      fetch(API+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
+    }
+  }
+  // 自动: pageview
+  push("pageview", location.pathname||"/", document.title||"");
+  // 自动: 所有click(记录元素id/class/文本)
+  document.addEventListener("click", e=>{
+    const el=e.target.closest("button,a,[data-tel],.card,.chip,[role=button]");
+    if(!el)return;
+    push("click", el.id||el.dataset.tel||el.className||el.tagName,
+         (el.innerText||"").trim().slice(0,60));
+  }, true);
+  // 自动: 会话时长(离开时上报)
+  window.addEventListener("beforeunload", ()=>{
+    push("session_end","session","",Math.round((Date.now()-t0)/1000));
+    flush(true);
+  });
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
+  setInterval(()=>flush(), 20000);   // 定期flush
+  // 暴露手动埋点: TEL.chat(用户消息,回复) / TEL.feedback(分数,留言) / TEL.ev(类型,名,值)
+  window.TEL = {
+    chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
+    feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
+    ev: (name, value)=>push("custom",name,value),
+    flush
+  };
+})();
+</script>
+
+
+<script>
+/* 通用等待动画: 任何异步请求期间显示"思考中"呼吸提示, 零服务器成本 */
+(function(){
+  let _wt=null;
+  const HINTS={zh:["正在思考…","整理中…","正在分析…","稍等一下…"],
+               en:["thinking…","working on it…","analyzing…","one moment…"]};
+  window.showWaiting=function(elId){
+    const el=document.getElementById(elId)||document.querySelector("[data-wait]")||document.body;
+    const zh=(document.documentElement.lang||navigator.language||"").toLowerCase().startsWith("zh");
+    const hints=zh?HINTS.zh:HINTS.en;
+    let d=0,hi=Math.floor(Math.random()*hints.length);
+    window._waitEl=el; window._waitPrev=el.innerHTML;
+    _wt=setInterval(()=>{d=(d+1)%4;
+      el.innerHTML=`<div style="opacity:.6;font-style:italic;padding:12px">${hints[hi]}${".".repeat(d)}</div>`;
+      if(d===0&&Math.random()<0.3)hi=(hi+1)%hints.length;},520);
+  };
+  window.hideWaiting=function(){if(_wt){clearInterval(_wt);_wt=null;}};
+})();
+</script>
+
+
+<style>
+#uxFbBtn{position:fixed;top:58px;right:12px;z-index:9998;height:34px;padding:0 13px;
+ background:linear-gradient(145deg,#211b16,#0e0d0c);border:1px solid #75312d;border-radius:2px;
+ font:700 10px/1 monospace;letter-spacing:1.4px;cursor:pointer;color:#b86a5f;
+ box-shadow:0 5px 16px #000,0 0 0 1px rgba(0,0,0,.8) inset;display:flex;align-items:center;
+ transform:rotate(1.2deg);clip-path:polygon(4px 0,100% 0,100% calc(100% - 5px),calc(100% - 6px) 100%,0 100%,0 4px)}
+#uxFbBtn:before{content:"";width:6px;height:6px;border:1px solid #8a3b34;border-radius:50%;margin-right:7px;box-shadow:0 0 5px #7d251f}
+#uxFbBtn:hover{color:#d79889;border-color:#a84a41;background:linear-gradient(145deg,#2b211a,#13100e)}
+#uxFbOv{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+ background:rgba(0,0,0,.78);backdrop-filter:blur(5px) grayscale(.35);padding:20px}
+#uxFbOv.show{display:flex}
+#uxFbCard{background:linear-gradient(140deg,#262119,#151411);border:1px solid #5a4934;border-radius:2px;
+ padding:25px 22px 21px;max-width:340px;width:100%;text-align:center;color:#c9bcaa;
+ box-shadow:0 24px 75px #000,0 0 0 5px rgba(15,12,9,.75);font-family:Georgia,"Songti SC",serif;
+ transform:rotate(-.35deg)}
+#uxFbCard:before{content:"CONFIDENTIAL · FIELD REVIEW";display:block;color:#7f302b;border-bottom:1px solid #463729;
+ padding-bottom:9px;margin-bottom:16px;font:9px monospace;letter-spacing:2px;text-align:left}
+#uxFbCard h3{margin:0 0 16px;font-size:16px;color:#d1c5b3;letter-spacing:1px}
+.uxEmo{width:48px;height:43px;font-size:20px;border:1px solid #4a4034;background:#171613;border-radius:2px;
+ color:#998b79;cursor:pointer;margin:0 5px;transition:all .15s;filter:grayscale(.75)}
+.uxEmo.sel{border-color:#8f3932;background:#2c1916;color:#d6b9ad;transform:translateY(-2px);filter:none;box-shadow:0 4px 12px #000}
+#uxFbNote{box-sizing:border-box;width:100%;margin:16px 0 12px;padding:10px;background:#11110f;color:#c7bbaa;
+ border:1px solid #473c30;border-radius:2px;font-family:inherit;font-size:13px;resize:vertical;min-height:62px;outline:none}
+#uxFbNote:focus{border-color:#7b4e36;box-shadow:0 0 0 1px #2c2017}
+#uxFbSend{width:100%;padding:11px;background:linear-gradient(#81332e,#59221f);color:#e0cfc2;border:1px solid #963e36;
+ border-radius:2px;font:700 12px monospace;letter-spacing:1.5px;cursor:pointer;box-shadow:0 4px 10px #000}
+#uxFbSend:disabled{opacity:.45}
+#uxFbX{position:absolute;top:10px;right:12px;background:none;border:0;font-size:16px;color:#73695c;cursor:pointer}
+@media(max-width:520px){#uxFbBtn{top:52px;right:8px;height:31px;padding:0 10px;font-size:9px}}
+.brand{display:flex!important;align-items:center;justify-content:center;width:100%;margin:0 auto 4px!important;transform:none!important;filter:drop-shadow(0 5px 15px #000)}
+.brand img{display:block;width:min(360px,84vw);height:auto}
+</style>
+<button id="uxFbBtn" onclick="uxOpenFb()">♡</button>
+<div id="uxFbOv" onclick="if(event.target===this)uxCloseFb()">
+  <div id="uxFbCard" style="position:relative">
+    <button id="uxFbX" onclick="uxCloseFb()">✕</button>
+    <h3 id="uxFbQ"></h3>
+    <div id="uxFbEmos"></div>
+    <textarea id="uxFbNote" placeholder=""></textarea>
+    <button id="uxFbSend" onclick="uxSendFb()" disabled></button>
+  </div>
+</div>
+<script>
+/* 评价UI - 跟随界面语言(避免英文界面出现中文) */
+(function(){
+  function currentLanguage(){
+    // 1. app自己的语言状态(最可靠)
+    try{ if(typeof lang!=="undefined") return String(lang).toLowerCase().slice(0,2); }catch(e){}
+    try{ const ls=localStorage.getItem("tell_lang")||localStorage.getItem("lang")||localStorage.getItem("locale");
+         if(ls) return ls.toLowerCase().slice(0,2); }catch(e){}
+    // 2. URL参数
+    const u=new URLSearchParams(location.search).get("lang");
+    if(u) return u.toLowerCase().slice(0,2);
+    // 3. html lang属性
+    const h=(document.documentElement.lang||"").toLowerCase();
+    if(h) return h.slice(0,2);
+    // 4. 兜底: 浏览器语言(不再扫描页面中文,避免误判)
+    return (navigator.language||"en").toLowerCase().slice(0,2);
+  }
+  const T={
+    zh:{btn:"案卷评价",q:"本案体验如何？",ph:"留下您的调查意见……（可选）",send:"提交记录",done:"意见已归档，谢谢"},
+    en:{btn:"CASE REVIEW",q:"How was this investigation?",ph:"Leave a field note… (optional)",send:"FILE REPORT",done:"Report filed. Thank you."},
+    es:{btn:"REVISAR CASO",q:"¿Cómo fue la investigación?",ph:"Deja una nota de campo… (opcional)",send:"ARCHIVAR INFORME",done:"Informe archivado. Gracias."},
+    pt:{btn:"REVISAR CASO",q:"Como foi a investigação?",ph:"Deixe uma nota de campo… (opcional)",send:"ARQUIVAR RELATO",done:"Relato arquivado. Obrigado."},
+    ja:{btn:"事件評価",q:"今回の捜査はいかがでしたか？",ph:"捜査メモを残す…（任意）",send:"記録を提出",done:"記録を保管しました。ありがとう。"}
+  };
+  window.uxT=function(){return T[currentLanguage()]||T.en;};
+  window.uxSyncLabels=function(){
+    const t=uxT(), b=document.getElementById("uxFbBtn");
+    if(b)b.textContent=t.btn;
+  };
+  document.addEventListener("DOMContentLoaded",uxSyncLabels);
+  setTimeout(uxSyncLabels,300);
+})();
+let uxScore=0;
+function uxEmos(){const es=[["\ud83d\ude0d",3],["\ud83d\ude10",2],["\ud83e\udd71",1]];
+ document.getElementById("uxFbEmos").innerHTML=es.map(([e,s])=>
+  `<button class="uxEmo${uxScore===s?" sel":""}" onclick="uxPick(${s})">${e}</button>`).join("");}
+function uxOpenFb(){const t=uxT();uxScore=0;track("feedback_opened",{placement:"floating"});
+ document.getElementById("uxFbQ").textContent=t.q;
+ document.getElementById("uxFbNote").placeholder=t.ph;
+ const sb=document.getElementById("uxFbSend");sb.textContent=t.send;sb.disabled=true;
+ uxEmos();document.getElementById("uxFbOv").classList.add("show");}
+function uxCloseFb(){document.getElementById("uxFbOv").classList.remove("show");}
+function uxPick(s){uxScore=s;uxEmos();document.getElementById("uxFbSend").disabled=false;}
+function uxSendFb(){
+ const note=document.getElementById("uxFbNote").value;
+ fbPost(uxScore,note);
+ document.getElementById("uxFbCard").innerHTML=`<h3 style="margin:20px 0">${uxT().done}</h3>`;
+ setTimeout(uxCloseFb,1200);
+}
+</script>
+
+</body></html>

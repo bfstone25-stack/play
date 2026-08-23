@@ -1,0 +1,10 @@
+[Unit]
+Description=Flutter otome game backend
+After=network.target
+[Service]
+WorkingDirectory=%h/Play/flutter
+ExecStart=%h/miniconda3/envs/hsm_lcr/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 8919
+Restart=on-failure
+Environment=LLAMACPP_URL=http://127.0.0.1:8903
+[Install]
+WantedBy=default.target

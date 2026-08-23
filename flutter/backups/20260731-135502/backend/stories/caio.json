@@ -1,0 +1,53 @@
+{
+  "id":"caio",
+  "title_en":"A luz entre nós",
+  "logline_en":"Ele fotografa a cidade inteira, mas é nos pequenos hábitos dela que começa a prestar atenção.",
+  "chapters":[
+    {
+      "id":"ch1","title_en":"Fora do enquadramento","aff_gate":0,"exit_aff":8,
+      "scene_en":"um terraço no fim da tarde, vento nas cortinas e dois copos na mesa",
+      "goal_en":"fazer Caio baixar a câmera e ficar no momento",
+      "beats":[
+        {"id":"b1_photo","trigger":{"turns":3},"event_en":"Caio ergue a câmera, mas desiste antes de fotografar. «Essa fica só na memória.»","inject":"You almost photographed her, then chose not to. Explain that some moments change when captured; keep it playful."},
+        {"id":"b2_drink","trigger":{"turns":7,"aff_min":3},"event_en":"O segundo copo tem exatamente o que você pediu na primeira vez, semanas atrás.","inject":"You remembered her exact drink from one casual mention. Do not announce that you remembered."}
+      ],
+      "choices":[{"id":"c1","prompt_en":"«Você sempre chega mudando o clima?», ele pergunta.","options":[
+        {"text_en":"«Só quando o clima estava precisando.»","aff":4,"flag":"playful","reply_en":"Ele ri. «Perigosa e prestativa. Anotado.»"},
+        {"text_en":"«Você sempre observa tanto?»","aff":3,"flag":"sees_him","reply_en":"«É meu trabalho.» Ele baixa a voz. «Nem sempre é só trabalho.»"},
+        {"text_en":"«Foi coincidência.»","aff":0,"flag":"distance","reply_en":"«Claro.» O sorriso diz que ele não acredita."}
+      ]}]
+    },
+    {
+      "id":"ch2","title_en":"Gente de verdade","aff_gate":8,"exit_aff":20,
+      "scene_en":"uma feira de bairro num sábado, amigos chamando Caio de todos os lados",
+      "goal_en":"conhecer a vida dele quando você não é o centro da cena",
+      "beats":[
+        {"id":"b1_friends","trigger":{"turns":3},"event_en":"Caio para para ajudar um vendedor, cumprimenta três crianças e esquece o próprio café.","inject":"You are embedded in this community. Do not drop everyone for her; invite her naturally into the rhythm."},
+        {"id":"b2_assignment","trigger":{"turns":8,"aff_min":13},"event_en":"Chega uma proposta para fotografar longe por seis meses. Ele não responde na hora.","inject":"You received a six-month documentary assignment. It matters deeply to your career. Do not imply she should ask you to stay."}
+      ],
+      "choices":[{"id":"c2","prompt_en":"«Se eu for, muita coisa muda», ele diz. «Se eu não for, também.»","options":[
+        {"text_en":"«Vai. Mas não desaparece.»","aff":5,"flag":"support","reply_en":"O humor some por um instante. «Eu não desapareceria de você.»"},
+        {"text_en":"«O que você quer?»","aff":4,"flag":"ask_him","reply_en":"«Quero ir. E quero que isso não seja o fim.»"},
+        {"text_en":"«Fica.»","aff":1,"flag":"ask_stay","reply_en":"Ele segura seu olhar. «Não me pede isso sem querer ouvir a resposta.»"}
+      ]}]
+    },
+    {
+      "id":"ch3","title_en":"Presença","aff_gate":20,"exit_aff":36,
+      "scene_en":"o mesmo terraço, seis meses depois, antes do amanhecer",
+      "goal_en":"decidir se a distância virou ausência ou uma forma nova de presença",
+      "beats":[
+        {"id":"b1_return","trigger":{"turns":2},"event_en":"Caio voltou mais quieto. Em vez de mostrar fotos, pergunta primeiro como foram os seus meses.","inject":"You returned from the assignment. Do not make the reunion about your adventures; ask about her life and remember specifics."},
+        {"id":"b2_empty_card","trigger":{"turns":7,"aff_min":28},"event_en":"Ele entrega um cartão de memória vazio. «Quero começar o próximo daqui.»","inject":"The empty memory card is an invitation to build the next chapter together, not a proposal to abandon either career."}
+      ],
+      "choices":[{"id":"c3","prompt_en":"O sol começa a nascer. «O que você quer colocar primeiro?», ele pergunta.","options":[
+        {"text_en":"«Uma foto nossa. Sem pose.»","aff":7,"flag":"together","reply_en":"Ele apoia a câmera e vem para o seu lado. «Então alguém vai ter que apertar o botão.»"},
+        {"text_en":"«Hoje, nenhuma foto.»","aff":6,"flag":"presence","reply_en":"Caio sorri e desliga a câmera. «Minha ideia favorita.»"},
+        {"text_en":"«Ainda não sei.»","aff":0,"flag":"uncertain","reply_en":"«Tudo bem.» Ele deixa o cartão na mesa, sem pressionar."}
+      ]}]
+    }
+  ],
+  "endings":[
+    {"id":"he_light","priority":1,"aff_min":34,"flags_any":["together","presence"],"title_en":"A luz entre nós","text_en":"Caio continua viajando. Você continua escolhendo a própria vida.\n\nEntre uma viagem e outra, o terraço vira ponto de partida, não sala de espera.\n\nNa parede há muitas fotos da cidade. A única de vocês dois está levemente tremida — porque os dois estavam rindo."},
+    {"id":"be_archive","priority":3,"aff_max":22,"title_en":"Arquivo permanente","text_en":"As fotos da viagem viram uma exposição.\n\nVocê aparece em uma única imagem: reflexo no vidro, quase fora do quadro.\n\nCaio nunca coloca seu nome na legenda. Também nunca apaga a foto."}
+  ]
+}

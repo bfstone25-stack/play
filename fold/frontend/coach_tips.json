@@ -1,0 +1,112 @@
+{
+  "en": {
+    "easy": [
+      "A clean beginning. Two paths became one.",
+      "Simple forms, clearly seen.",
+      "The first fold is complete."
+    ],
+    "medium": [
+      "You saw the order hidden in the space.",
+      "Each move made the whole more certain.",
+      "Calm direction brought the pieces home."
+    ],
+    "hard": [
+      "Patience revealed the shape within the maze.",
+      "Complexity yielded to a quiet plan.",
+      "You held the whole board in mind."
+    ],
+    "expert": [
+      "Many possibilities, one inevitable form.",
+      "Precision turned the labyrinth into clarity.",
+      "Nothing wasted. Everything returned to one."
+    ]
+  },
+  "es": {
+    "easy": [
+      "Un comienzo limpio. Dos caminos se hicieron uno.",
+      "Formas simples, vistas con claridad.",
+      "El primer pliegue está completo."
+    ],
+    "medium": [
+      "Viste el orden oculto en el espacio.",
+      "Cada movimiento hizo el conjunto más cierto.",
+      "Una dirección serena llevó las piezas a casa."
+    ],
+    "hard": [
+      "La paciencia reveló la forma dentro del laberinto.",
+      "La complejidad cedió ante un plan sereno.",
+      "Mantuviste todo el tablero en la mente."
+    ],
+    "expert": [
+      "Muchas posibilidades, una forma inevitable.",
+      "La precisión convirtió el laberinto en claridad.",
+      "Nada se desperdició. Todo volvió a ser uno."
+    ]
+  },
+  "pt": {
+    "easy": [
+      "Um começo limpo. Dois caminhos se tornaram um.",
+      "Formas simples, vistas com clareza.",
+      "A primeira dobra está completa."
+    ],
+    "medium": [
+      "Você viu a ordem escondida no espaço.",
+      "Cada jogada tornou o todo mais certo.",
+      "Uma direção serena levou as peças para casa."
+    ],
+    "hard": [
+      "A paciência revelou a forma dentro do labirinto.",
+      "A complexidade cedeu a um plano tranquilo.",
+      "Você manteve o tabuleiro inteiro na mente."
+    ],
+    "expert": [
+      "Muitas possibilidades, uma forma inevitável.",
+      "A precisão transformou o labirinto em clareza.",
+      "Nada foi desperdiçado. Tudo retornou ao uno."
+    ]
+  },
+  "zh": {
+    "easy": [
+      "初折已成，两端归一。",
+      "形虽简，观之已明。",
+      "一念既定，万物始归。"
+    ],
+    "medium": [
+      "你看见了空间里潜藏的秩序。",
+      "每一步，都让全局更加确定。",
+      "心静而向明，诸数自归位。"
+    ],
+    "hard": [
+      "耐心照见了迷局中的形。",
+      "繁复终究让位于从容的布局。",
+      "一盘在心，落子自然。"
+    ],
+    "expert": [
+      "万般可能，终成一形。",
+      "以精准破迷局，以留白见澄明。",
+      "无一步虚掷，万物皆归一。"
+    ]
+  },
+  "ja": {
+    "easy": [
+      "初めの一折。二つの道が一つになりました。",
+      "簡素な形、その理が見えました。",
+      "最初の折りが静かに結ばれました。"
+    ],
+    "medium": [
+      "空間に潜む秩序を見抜きました。",
+      "一手ごとに、全体が確かな形へ。",
+      "静かな導きが、すべてを帰す。"
+    ],
+    "hard": [
+      "忍耐が迷いの中の形を照らしました。",
+      "複雑さは、静かな構想に道を譲りました。",
+      "盤のすべてが、心の中にありました。"
+    ],
+    "expert": [
+      "無数の可能性が、必然の一形へ。",
+      "精緻な一手が、迷宮を澄明に変えました。",
+      "一手も虚しくなく、万象は一へ帰りました。"
+    ]
+  }
+}

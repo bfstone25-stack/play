@@ -1,0 +1,10 @@
+[Unit]
+Description=llama.cpp Gemma-2-9B server (Chinese emotional games)
+After=network.target
+[Service]
+Environment=LD_LIBRARY_PATH=/home/frankstone/llama.cpp/cpu/llama-b9911
+ExecStart=/home/frankstone/llama.cpp/cpu/llama-b9911/llama-server -m %h/llama.cpp/models/gemma2-9b-it-q4.gguf -c 4096 -t 6 --host 127.0.0.1 --port 8903
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,53 @@
+{
+  "id": "ren",
+  "title_en": "雨と終電のあいだ",
+  "logline_en": "同じ終電、同じ車両。言葉より先に、彼はあなたの降りる駅を覚えていた。",
+  "chapters": [
+    {
+      "id": "ch1", "title_en": "向かいの席", "aff_gate": 0, "exit_aff": 8,
+      "scene_en": "雨の終電。ほとんど誰もいない車両で、蓮は向かいに座っている",
+      "goal_en": "沈黙を壊さずに、彼と最初の言葉を交わす",
+      "beats": [
+        {"id":"b1_book","trigger":{"turns":3},"event_en":"電車が揺れ、あなたの本が床に落ちる。彼は栞の位置を崩さずに拾った。","inject":"Her book fell. You picked it up without losing her page. Hand it back with one quiet observation, not a compliment."},
+        {"id":"b2_station","trigger":{"turns":7,"aff_min":3},"event_en":"車内放送より先に、彼が小さく言う。『次、あなたの駅。』","inject":"You have noticed which station she leaves at from repeated nights. Say it simply; do not admit how many times you noticed."}
+      ],
+      "choices":[{"id":"c1","prompt_en":"扉が開く。彼の透明な傘は一本だけだ。","options":[
+        {"text_en":"「半分、借りてもいい？」","aff":3,"flag":"share_space","reply_en":"彼は傘を少し持ち上げた。『駅までなら。』"},
+        {"text_en":"「また、明日。」","aff":2,"flag":"tomorrow","reply_en":"一拍遅れて、彼はうなずく。『……同じ時間に。』"},
+        {"text_en":"黙って会釈する","aff":0,"flag":"distance","reply_en":"扉が閉まる直前、窓の向こうで彼も会釈した。"}
+      ]}]
+    },
+    {
+      "id": "ch2", "title_en": "一本の傘", "aff_gate": 8, "exit_aff": 20,
+      "scene_en": "雨の駅前。傘の下には、二人分には少し足りない余白がある",
+      "goal_en": "彼が毎晩終電に乗る理由を知る",
+      "beats":[
+        {"id":"b1_shoulder","trigger":{"turns":3},"event_en":"傘はずっとあなた側に傾いている。彼の右肩だけが濡れていく。","inject":"You keep the umbrella over her and let your own shoulder get wet. If noticed, say the rain is not heavy."},
+        {"id":"b2_model","trigger":{"turns":7,"aff_min":12},"event_en":"彼の鞄から、小さな建築模型の一部がのぞく。閉鎖予定の古い駅舎だった。","inject":"You are redesigning the old station slated for closure. This is why you take the last train: to observe who still needs it."}
+      ],
+      "choices":[{"id":"c2","prompt_en":"『残すべきだと思う？』彼は駅舎を見上げる。","options":[
+        {"text_en":"「便利だからじゃなく、帰る場所だから。」","aff":5,"flag":"sees_place","reply_en":"彼は駅舎ではなく、あなたを見た。『その言葉、借りてもいい？』"},
+        {"text_en":"「あなたは残したいんでしょう？」","aff":3,"flag":"sees_him","reply_en":"『設計者の気持ちは、図面には要らない。』そう言いながら、声は少し柔らかい。"},
+        {"text_en":"「新しくするのも悪くない。」","aff":1,"flag":"practical","reply_en":"彼は静かにうなずいた。『そういう答えも必要だ。』"}
+      ]}]
+    },
+    {
+      "id": "ch3", "title_en": "未送信", "aff_gate": 20, "exit_aff": 36,
+      "scene_en": "最終電車が運休した夜。ホームに二人だけが残っている",
+      "goal_en": "言葉にしないまま続いてきた関係に、名前を与える",
+      "beats":[
+        {"id":"b1_cancel","trigger":{"turns":2},"event_en":"運休の表示が点く。蓮は困った顔をせず、あなたの隣に座った。","inject":"The last train is cancelled. You sit beside her, leaving exactly one careful hand-width between you."},
+        {"id":"b2_unsent","trigger":{"turns":7,"aff_min":27},"event_en":"彼の画面に一瞬だけ、未送信の『会いたかった』が見えた。すぐに消える。","inject":"She may have seen the unsent words 'I wanted to see you.' Do not lie if asked, but do not rescue yourself with a speech."}
+      ],
+      "choices":[{"id":"c3","prompt_en":"始発まで四時間。彼は言う。『帰る方法なら探せる。』","options":[
+        {"text_en":"「探さなくていい。ここにいたい。」","aff":7,"flag":"stay","reply_en":"長い沈黙のあと、隣の一手分の距離がなくなった。"},
+        {"text_en":"「未送信の続き、聞いてもいい？」","aff":6,"flag":"ask_truth","reply_en":"彼は目を伏せた。『……会いたかった。それだけ。』"},
+        {"text_en":"「タクシーを呼ぼう。」","aff":0,"flag":"leave","reply_en":"『うん。』彼はいつもの距離に戻った。"}
+      ]}]
+    }
+  ],
+  "endings":[
+    {"id":"he_awai","priority":1,"aff_min":34,"flags_any":["stay","ask_truth"],"title_en":"ふたりの余白","text_en":"古い駅舎は残った。\n\n新しい待合室のベンチには、座る人同士が少しだけ近づく角度がついている。\n\n設計者の蓮は説明しない。ただ、終電のあとにはいつも、あなたの隣に座る。今度は、余白を残さずに。"},
+    {"id":"be_platform","priority":3,"aff_max":22,"title_en":"向かいのホーム","text_en":"駅舎は残った。でも、乗る時間が少しずつ変わり、同じ車両で会うことはなくなった。\n\n雨の夜、向かいのホームに似た傘を見かけるたび、あなたは一度だけ振り返る。"}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "赛博木鱼 · Cyber Merit",
+  "short_name": "Cyber Merit",
+  "description": "Tap the cyber fish. Stack digital merit.",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070b16",
+  "theme_color": "#070b16",
+  "lang": "zh-Hans"
+}

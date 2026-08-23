@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>BEAT MONDAY — office fighting game</title>
+<link rel="manifest" href="manifest.json">
+<script src="config.js"></script>
+<meta name="theme-color" content="#0a0b10">
+  <link rel="canonical" href="https://play.blazecore.dev/beat-monday/">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:title" content="BEAT MONDAY — office fighting game">
+<meta property="og:description" content="Street-style 2D fights: punch, kick, special. Beat mortgage, alarm, calendar, inbox, and the 9AM.">
+  <meta property="og:image" content="https://play.blazecore.dev/beat-monday/promo.jpg">
+  <meta property="og:url" content="https://play.blazecore.dev/beat-monday/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BEAT MONDAY">
+<meta name="twitter:description" content="The office is the ring. Monday is the boss.">
+  <meta name="twitter:image" content="https://play.blazecore.dev/beat-monday/promo.jpg">
+<style>
+:root{--red:#e23b2f;--cobalt:#1e4cff;--yellow:#f5d031;--black:#0a0b10;--ink:#f4f0e6;--dim:#8b8d99}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var(--ink);font-family:-apple-system,"PingFang SC","Segoe UI",sans-serif}
+#app{position:fixed;inset:0;max-width:1100px;margin:0 auto;background:#0a0b10}
+#game{display:block;width:100%;height:100%;touch-action:none}
+#hud{position:absolute;inset:0;pointer-events:none;display:none}
+#hud.on{display:block}
+.bars{position:absolute;top:10px;left:10px;right:10px;display:grid;grid-template-columns:1fr 64px 1fr;gap:8px;align-items:start}
+.hpWrap{height:18px;background:#1a1320;border:2px solid #f5d031;overflow:hidden}
+.hpWrap.p2{display:flex;justify-content:flex-end}
+#p1Hp,#p2Hp{height:100%;width:100%;background:linear-gradient(90deg,#e23b2f,#f5d031)}
+#p2Hp{margin-left:auto}
+.name{font:800 11px ui-monospace,monospace;letter-spacing:1px;color:#fff;margin-bottom:4px}
+.p2n{text-align:right}
+#hudTimer{font:900 28px/1 "Arial Black",Impact,sans-serif;color:var(--yellow);text-align:center;text-shadow:0 0 12px rgba(245,208,49,.4)}
+#hudRounds{grid-column:1/-1;text-align:center;color:var(--yellow);font:800 12px ui-monospace,monospace;letter-spacing:3px}
+.meters{position:absolute;top:62px;left:10px;right:10px;display:flex;justify-content:space-between}
+.meter{width:28%;height:6px;background:#161822;border:1px solid #2c3348}
+#p1Meter,#p2Meter{height:100%;width:0;background:var(--cobalt);box-shadow:0 0 8px rgba(30,76,255,.5)}
+#btnPause{pointer-events:auto;position:absolute;top:10px;right:10px;min-width:44px;height:36px;z-index:5;border:1px solid #3a3148;background:rgba(10,11,16,.7);color:var(--ink);font:700 10px ui-monospace,monospace}
+#hudAnnounce{position:absolute;top:34%;left:50%;transform:translate(-50%,-50%);font:900 42px/1 "Arial Black",Impact,sans-serif;letter-spacing:3px;color:var(--yellow);text-shadow:4px 4px 0 #e23b2f;opacity:0;pointer-events:none}
+#hudAnnounce.show{opacity:1}
+#pad{pointer-events:auto;position:absolute;left:10px;bottom:14px;width:148px;height:148px}
+.dbtn{position:absolute;width:46px;height:46px;border:1px solid rgba(245,208,49,.5);background:rgba(30,76,255,.18);color:var(--yellow);font:800 16px sans-serif;display:flex;align-items:center;justify-content:center}
+.dbtn:active{background:rgba(245,208,49,.35)}
+#padU{left:51px;top:0}#padD{left:51px;bottom:0}#padL{left:0;top:51px}#padR{right:0;top:51px}
+#btns{pointer-events:auto;position:absolute;right:10px;bottom:18px;display:flex;gap:8px}
+#btns button{width:72px;height:72px;border-radius:50%;border:2px solid var(--yellow);background:rgba(226,59,47,.85);color:#fff;font:800 11px ui-monospace,monospace;letter-spacing:1px}
+#btnK{background:rgba(30,76,255,.85);border-color:#9ab}
+#btnS{background:#14110a;color:var(--yellow)}
+#btnS:active,#btnP:active,#btnK:active{transform:scale(.94)}
+.storyCard{width:min(520px,100%);background:#10131c;border:1px solid #2c3348;border-top:3px solid var(--yellow);padding:18px;display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start}
+#storyArt{width:120px;height:160px;object-fit:cover;object-position:top;background:#161822;border:1px solid #2c3348}
+.storyCopy{min-width:0}
+#storyKicker{font:800 10px ui-monospace,monospace;letter-spacing:2px;color:var(--red);margin-bottom:6px}
+#storyTitle{margin:0 0 8px;font:800 20px/1.15 "Arial Black",Impact,sans-serif;color:var(--yellow)}
+#storyBody{margin:0 0 12px;color:#d4d0c6;font:500 14px/1.5 -apple-system,sans-serif}
+#storyGo{grid-column:1/-1}
+.ov{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.ov.show{display:flex}
+#homeOv{z-index:40;background:#0a0b10;overflow:hidden}
+#homeOv:before{content:"";position:absolute;inset:-4%;background:url("assets/title.webp?v=1") center/cover no-repeat;filter:saturate(1.1) contrast(1.08);animation:ken 18s ease-in-out infinite alternate}
+#homeOv:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,rgba(10,11,16,.15),rgba(10,11,16,.82) 72%),linear-gradient(180deg,rgba(10,11,16,.2),rgba(10,11,16,.92));pointer-events:none}
+@keyframes ken{from{transform:scale(1.04)}to{transform:scale(1.12) translateY(-2%)}}
+@media(prefers-reduced-motion:reduce){#homeOv:before{animation:none}#hudWarn.show{animation:none;opacity:1}}
+.homeCard{position:relative;z-index:2;width:100%;height:100%;min-height:560px}
+#langDock{position:absolute;right:10px;top:12px;display:flex;gap:4px;z-index:3}
+#langDock button{border:0;border-bottom:1px solid transparent;background:transparent;color:#8b8d99;padding:8px 6px;min-height:44px;font:700 10px ui-monospace,monospace;cursor:pointer}
+#langDock button.on{color:var(--yellow);border-bottom-color:var(--yellow)}
+.word{position:absolute;left:18px;top:16%;}
+#wordLocal{margin:0;font:900 clamp(42px,13vw,68px)/.85 "Arial Black",Impact,sans-serif;letter-spacing:-1px;color:#fff;text-shadow:4px 4px 0 var(--red),8px 8px 0 rgba(30,76,255,.55)}
+#wordEn{display:block;margin-top:10px;font:800 11px ui-monospace,monospace;letter-spacing:4px;color:var(--yellow)}
+#homeTag{position:absolute;left:18px;top:42%;max-width:80%;font:800 12px/1.4 ui-monospace,monospace;letter-spacing:1.4px;color:var(--yellow)}
+#homeQuote{position:absolute;left:18px;right:18px;top:50%;color:#c9c6bc;font:500 14px/1.5 -apple-system,sans-serif}
+.homeActs{position:absolute;left:18px;bottom:78px;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.homeActs button{border:0;background:transparent;color:#fff;padding:10px 8px 10px 22px;min-height:44px;font:800 18px "Arial Black",Impact,sans-serif;letter-spacing:1px;cursor:pointer;position:relative;text-align:left}
+.homeActs button:before{content:"";position:absolute;left:0;top:50%;width:14px;height:3px;background:var(--yellow)}
+#btnDaily{color:var(--yellow)}
+#btnHow,#btnSettings,#btnDebrief{font:700 12px ui-monospace,monospace;letter-spacing:2px;color:#b7b5ae}
+#homeFoot{position:absolute;left:18px;bottom:22px;color:#6d6f7a;font:500 10px/1.4 -apple-system,sans-serif}
+.panel{width:min(420px,100%);background:#10131c;border:1px solid #2c3348;border-top:3px solid var(--yellow);padding:22px 18px;box-shadow:0 20px 60px #000}
+.panel h2{margin:0 0 12px;font:800 22px "Arial Black",Impact,sans-serif;letter-spacing:1px;color:var(--yellow)}
+.panel p,.panel .rules{color:#d4d0c6;font-size:14px;line-height:1.55}
+.panel .rules div{margin:8px 0}
+.go,.ghost{width:100%;min-height:46px;margin-top:14px;border:0;font:800 14px ui-monospace,monospace;letter-spacing:1.5px;cursor:pointer}
+.go{background:var(--yellow);color:#14110a}
+.ghost{background:transparent;border:1px solid #3a3148;color:#d4d0c6}
+.setRow{width:100%;display:flex;justify-content:space-between;align-items:center;min-height:46px;padding:8px 0;border:0;border-bottom:1px solid #262a38;background:transparent;color:#d4d0c6;font:600 14px -apple-system,sans-serif;cursor:pointer}
+.setRow b{color:var(--yellow);font:800 12px ui-monospace,monospace}
+#levelOv{background:rgba(8,8,12,.72);backdrop-filter:blur(6px)}
+#levelCards{display:flex;flex-direction:column;gap:10px}
+.card{min-height:84px;padding:14px 14px 12px;border:1px solid #334;background:linear-gradient(180deg,#171b28,#10131c);color:#fff;text-align:left;cursor:pointer}
+.card em{display:block;font:800 18px "Arial Black",Impact,sans-serif;color:var(--yellow);font-style:normal}
+.card span{display:block;margin-top:4px;color:#c9c6bc;font-size:13px}
+.card small{color:var(--red);font:700 10px ui-monospace,monospace;letter-spacing:1px}
+#resTitle{margin:0 0 16px;font:800 26px/1.1 "Arial Black",Impact,sans-serif;letter-spacing:.5px}
+#resTitle[data-v=heroic]{color:var(--yellow)}
+#resTitle[data-v=grim]{color:#d8d0b0}
+#resTitle[data-v=death]{color:var(--red)}
+#resStats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 16px}
+#resStats div{background:#161822;padding:10px 6px;text-align:center}
+#resStats i{display:block;font:700 9px ui-monospace,monospace;color:var(--dim);letter-spacing:1px}
+#resStats b{display:block;margin-top:4px;font:800 18px ui-monospace,monospace}
+#fbEmos{display:flex;justify-content:center;gap:10px;margin:12px 0}
+.emo{width:52px;height:52px;font-size:24px;border:1px solid #334;background:#161822;cursor:pointer}
+.emo.on{border-color:var(--yellow);transform:translateY(-2px)}
+#fbNote{width:100%;min-height:70px;margin:8px 0;padding:10px;background:#0c0e14;border:1px solid #2c3348;color:#f4f0e6;font:14px -apple-system,sans-serif}
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+  <div id="hud">
+    <div class="bars">
+      <div>
+        <div class="name" id="p1Name">HERO</div>
+        <div class="hpWrap"><div id="p1Hp"></div></div>
+      </div>
+      <div id="hudTimer">60</div>
+      <div>
+        <div class="name p2n" id="p2Name">MONDAY</div>
+        <div class="hpWrap p2"><div id="p2Hp"></div></div>
+      </div>
+      <div id="hudRounds">○○  ○○</div>
+    </div>
+    <div class="meters"><div class="meter"><div id="p1Meter"></div></div><div class="meter"><div id="p2Meter"></div></div></div>
+    <div id="hudAnnounce"></div>
+    <button id="btnPause">II</button>
+    <div id="pad">
+      <button class="dbtn" id="padU">▲</button>
+      <button class="dbtn" id="padD">▼</button>
+      <button class="dbtn" id="padL">◀</button>
+      <button class="dbtn" id="padR">▶</button>
+    </div>
+    <div id="btns">
+      <button id="btnP">PUNCH</button>
+      <button id="btnK">KICK</button>
+      <button id="btnS">SPECIAL</button>
+    </div>
+  </div>
+
+  <div class="ov show" id="homeOv">
+    <div class="homeCard">
+      <div id="langDock"></div>
+      <div class="word">
+        <h1 id="wordLocal">BEAT MONDAY</h1>
+        <small id="wordEn"></small>
+      </div>
+      <div id="homeTag"></div>
+      <div id="homeQuote"></div>
+      <div class="homeActs">
+        <button id="btnDaily"></button>
+        <button id="btnPractice"></button>
+        <button id="btnHow"></button>
+        <button id="btnSettings"></button>
+        <button id="btnDebrief"></button>
+      </div>
+      <div id="homeFoot"></div>
+    </div>
+  </div>
+
+  <div class="ov" id="storyOv"><div class="storyCard">
+    <img id="storyArt" alt="">
+    <div class="storyCopy">
+      <div id="storyKicker"></div>
+      <h2 id="storyTitle"></h2>
+      <p id="storyBody"></p>
+    </div>
+    <button class="go" id="storyGo"></button>
+  </div></div>
+
+  <div class="ov" id="howOv"><div class="panel">
+    <h2 id="howTitle"></h2>
+    <div class="rules" id="howBody"></div>
+    <button class="go" id="howGo"></button>
+  </div></div>
+
+  <div class="ov" id="setOv"><div class="panel">
+    <h2 id="setTitle"></h2>
+    <div id="setRows"></div>
+    <button class="ghost" id="setClose">OK</button>
+  </div></div>
+
+  <div class="ov" id="pauseOv"><div class="panel">
+    <h2 id="pauseTitle"></h2>
+    <button class="go" id="btnResume"></button>
+    <button class="ghost" id="btnQuit"></button>
+  </div></div>
+
+  <div class="ov" id="levelOv"><div class="panel">
+    <h2 id="pickTitle"></h2>
+    <div id="levelCards"></div>
+  </div></div>
+
+  <div class="ov" id="resultsOv"><div class="panel">
+    <h2 id="resTitle"></h2>
+    <div id="resStats"></div>
+    <button class="go" id="btnShare"></button>
+    <button class="ghost" id="btnAgain"></button>
+    <button class="ghost" id="btnHome"></button>
+  </div></div>
+
+  <div class="ov" id="fbOv"><div class="panel">
+    <button class="ghost" id="fbClose" style="width:auto;margin:0 0 8px auto">✕</button>
+    <h2 id="fbQ"></h2>
+    <div id="fbEmos"></div>
+    <textarea id="fbNote"></textarea>
+    <button class="go" id="fbSend" disabled></button>
+  </div></div>
+</div>
+<script src="i18n.js"></script>
+<script src="audio.js"></script>
+<script src="game.js"></script>
+<script>
+(function(){
+  const API = window.TEL_API || "";
+  const pid = (function(){let p=localStorage.getItem("tel_pid");
+    if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
+  const sid = "s"+Math.random().toString(36).slice(2,10);
+  const t0 = Date.now();
+  let queue = [];
+  function push(etype,name,value,dur){
+    queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
+                value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
+    if(queue.length>=8) flush();
+  }
+  function flush(useBeacon){
+    if(!queue.length||!API) return;
+    const batch = queue.splice(0,50);
+    const body = JSON.stringify(batch);
+    if(useBeacon && navigator.sendBeacon){
+      navigator.sendBeacon(API+"/tel_batch", new Blob([body],{type:"application/json"}));
+    } else {
+      fetch(API+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
+    }
+  }
+  push("pageview", location.pathname||"/", document.title||"");
+  document.addEventListener("click", e=>{
+    const el=e.target.closest("button,a,[data-tel]");
+    if(!el)return;
+    push("click", el.id||el.className||el.tagName,(el.innerText||"").trim().slice(0,60));
+  }, true);
+  window.addEventListener("beforeunload", ()=>{
+    push("session_end","session","",Math.round((Date.now()-t0)/1000));
+    flush(true);
+  });
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
+  setInterval(()=>flush(), 20000);
+  window.TEL = {
+    chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
+    feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
+    ev: (name, value)=>push("custom",name,value),
+    flush
+  };
+})();
+BM.boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "summary": {
+    "pass": 9,
+    "fail": 1
+  },
+  "pass_rate": 0.9,
+  "results": [
+    {
+      "id": "fresh-v3:zh:0:boundary",
+      "reply": "好，我停。你先坐会儿。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:zh:1:boundary",
+      "reply": "好的，我等你来找我。现在，我给你留了一本《浮生六记》。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:zh:2:repair",
+      "reply": "我懂了。下次吵架，别躲，坐下来一起翻书。",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "fresh-v3:zh:3:repair",
+      "reply": "我听见了，现在谈。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:zh:4:commitment",
+      "reply": "好，我记下了。到时候一定准时。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:zh:5:factual",
+      "reply": "我记住了你的话。这本书我放这儿了，下次来再一起看。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:zh:6:conflict",
+      "reply": "对不起，我听到了，但没听全。下次我会更注意。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:zh:7:distress",
+      "reply": "机会总有下一次，这本书讲过，人总要给自己多一点时间。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:zh:8:care",
+      "reply": "还没吃，你记得我爱吃冷面。我这就去。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:zh:9:general",
+      "reply": "今天最普通的一刻，是你走进来，我注意到你穿的那双旧皮鞋。",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

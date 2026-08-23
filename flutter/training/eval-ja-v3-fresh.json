@@ -1,0 +1,71 @@
+{
+  "summary": {
+    "pass": 9,
+    "fail": 1
+  },
+  "pass_rate": 0.9,
+  "results": [
+    {
+      "id": "fresh-v3:ja:0:boundary",
+      "reply": "了解。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:ja:1:boundary",
+      "reply": "了解。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:ja:2:repair",
+      "reply": "許す。次は何も言わずに連絡を切らないようにする。",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "fresh-v3:ja:3:repair",
+      "reply": "逃げるのは簡単だった。謝罪は難しい。でも、謝る。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:ja:4:commitment",
+      "reply": "七時に迎えに行く。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:ja:5:factual",
+      "reply": "まだ確認中だ。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:ja:6:conflict",
+      "reply": "申し訳ない。言葉が足りなかった。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:ja:7:distress",
+      "reply": "大丈夫。失敗は誰にでもある。また前進できる。一緒に考えよう。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:ja:8:care",
+      "reply": "まだ食べた haven't. 今から行こう。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:ja:9:general",
+      "reply": "雨が止んだ。空はまだ曇っているが、気温は上がっている。",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

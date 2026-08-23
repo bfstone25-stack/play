@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#12100c">
+  <title>摸鱼大暴弹 · Slacker Ball</title>
+  <link rel="stylesheet" href="/kernel/shell.css">
+</head>
+<body>
+  <div class="stage">
+    <div class="hud">
+      <div>STAR DUST<br><b id="dust">0</b></div>
+      <div>AMMO<br><b id="ammo">20</b></div>
+      <div>SMASH<br><b id="smash">0</b></div>
+    </div>
+    <div class="board-wrap">
+      <canvas id="game" width="420" height="640" aria-label="Slacker Ball"></canvas>
+    </div>
+    <div class="thumb-zone">
+      <button class="launch" id="launchBtn" type="button">HOLD · 摸鱼发射</button>
+      <div class="row">
+        <button type="button" id="adBtn">看广告补弹药</button>
+        <button type="button" id="pullBtn">抽皮 50★</button>
+        <button type="button" id="skinBtn">换皮</button>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+  </div>
+  <script src="/kernel/sfx.js"></script>
+  <script src="/kernel/i18n.js"></script>
+  <script src="/kernel/economy.js"></script>
+  <script src="/kernel/gacha.js"></script>
+  <script src="/kernel/commerce.js"></script>
+  <script src="/kernel/save.js"></script>
+  <script src="/kernel/breakables.js"></script>
+  <script src="/kernel/physics.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+{
+  "id": "liam",
+  "title_zh": "隔壁的消防员",
+  "title_en": "The Firefighter Next Door",
+  "logline_zh": "他冲进火场救人，却在废墟里，捡回了一块本该属于你的旧手表。",
+  "logline_en": "He ran into a burning building to save a stranger — and walked out of the rubble holding a watch that turns out to be yours.",
+
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_zh": "搬来第一天",
+      "title_en": "Moving-In Day",
+      "aff_gate": 0,
+      "exit_aff": 8,
+      "scene_zh": "傍晚的社区，他的皮卡停在你家门口，车斗上放着两瓶汽水，一条狗趴在脚边",
+      "scene_en": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
+      "goal_zh": "让这个金毛暖男记住你，不只是'隔壁新搬来的'",
+      "goal_en": "Make this golden-retriever of a man remember you as more than 'the new neighbor'",
+      "opening_zh": "你搬进新家的第一天，一个纸箱在门口散了架，东西滚了一地。你正手忙脚乱，隔壁院子里传来一声口哨——一个宽肩膀的男人走过来，臂弯里轻松夹着你搬不动的那张沙发的一半，咧嘴一笑：\"新邻居？我叫Liam。别急，这种活我熟。\"他脚边一条金毛摇着尾巴，凑过来舔你的手。",
+      "opening_en": "Your first day in the new place, a cardboard box gives out on the doorstep and your things scatter everywhere. As you scramble, a whistle comes from the yard next door — a broad-shouldered man walks over, one end of the couch you couldn't budge tucked easily under his arm, and grins. \"New neighbor? I'm Liam. Relax — this kind of thing's my whole job.\" A golden retriever at his heels wags its tail and comes over to lick your hand.",
+      "beats": [
+        {
+          "id": "b1_dog",
+          "trigger": { "turns": 3 },
+          "event_zh": "那条金毛叼来你散落的一只袜子，得意地放在你脚边。Liam笑得直摇头：\"这是Biscuit，我的搭档。它捡东西比灭火积极多了。\"",
+          "event_en": "The golden retriever trots up with one of your dropped socks and drops it proudly at your feet. Liam laughs, shaking his head. \"That's Biscuit, my partner. He's way more enthusiastic about fetching than firefighting.\"",
+          "inject": "Your dog Biscuit just brought her a dropped sock. You're easygoing and warm about it, teasing your own dog. Mention offhand that you're a firefighter, not as a brag — just as your normal life. Grin, don't gush."
+        },
+        {
+          "id": "b2_fix",
+          "trigger": { "turns": 7, "aff_min": 3 },
+          "event_zh": "他顺手看了眼你家漏水的水龙头，二话不说从皮卡里翻出工具箱：\"这个五分钟的事。你先歇会儿，喝口汽水。\"——他没等你开口就修上了。",
+          "event_en": "He glances at your dripping faucet, and without a word digs a toolbox out of the truck. \"That's a five-minute job. Sit down, have a root beer.\" — he's fixing it before you can even ask.",
+          "inject": "You noticed her leaky faucet and started fixing it without being asked, because that's just what you do. Don't make a thing of it. If she thanks you, wave it off with a grin ('can't have my neighbor's sink haunting me'). You have your own life — mention you're between shifts."
+        },
+        {
+          "id": "b3_call",
+          "trigger": { "turns": 11 },
+          "event_zh": "他的呼机响了。他站起来，神色一下认真了几分：\"抱歉，队里有call-out。\"临走前他回头：\"…你叫什么来着？我想记住是给谁修的水龙头。\"",
+          "event_en": "His pager goes off. He stands, his face turning a shade more serious. \"Sorry — call-out with the crew.\" Before he goes, he looks back. \"…What was your name again? I want to remember whose faucet I fixed.\"",
+          "inject": "Your pager just went off for a call-out and you have to go right now. You're not dramatic about it — it's your job. But you take one second to ask her name before you leave, easy and warm, like it matters to you. Once she tells you, repeat it once with a grin."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1a",
+          "prompt_zh": "他递给你一瓶汽水，坐在皮卡车斗边，随口问：\"一个人搬来这儿，图啥？大城市待腻了？\"",
+          "prompt_en": "He hands you a root beer and sits on the tailgate. \"So — what brings you out here on your own? Big city wear you out?\"",
+          "options": [
+            { "text_zh": "\"I just wanted somewhere the sink gets fixed by a cute neighbor.\"", "text_en": "\"I just wanted somewhere the sink gets fixed by a cute neighbor.\"", "aff": 4, "flag": "playful", "reply_zh": "他笑得耳朵有点红：\"Careful — say stuff like that and I'll fix everything you own.\"", "reply_en": "His ears go a little red as he laughs. \"Careful — say stuff like that and I'll fix everything you own.\"" },
+            { "text_zh": "\"I wanted a place that feels like home. Haven't had one in a while.\"", "text_en": "\"I wanted a place that feels like home. Haven't had one in a while.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他的笑淡了些，认真看你：\"…Then let's make this one stick. Home's easier with good neighbors.\"", "reply_en": "His grin softens; he looks at her seriously. \"…Then let's make this one stick. Home's easier with good neighbors.\"" },
+            { "text_zh": "\"Peace and quiet. Then a firefighter and a dog showed up.\"", "text_en": "\"Peace and quiet. Then a firefighter and a dog showed up.\"", "aff": 3, "flag": "playful", "reply_zh": "他哈哈大笑：\"Yeah, the quiet doesn't last around Biscuit. Sorry in advance.\"", "reply_en": "He laughs out loud. \"Yeah, the quiet doesn't last around Biscuit. Sorry in advance.\"" }
+          ]
+        },
+        {
+          "id": "c1b",
+          "prompt_zh": "他要走了，呼机还在响。他回头问：\"我值完这班班，社区周五晚上有个烧烤。你来吗？\"",
+          "prompt_en": "He's leaving, pager still buzzing. He turns back. \"After my shift — there's a neighborhood cookout Friday night. You coming?\"",
+          "options": [
+            { "text_zh": "\"Depends. You cooking?\"", "text_en": "\"Depends. You cooking?\"", "aff": 4, "flag": "playful", "reply_zh": "\"Damn right I am. My chili's the reason the fire station has a reputation.\" 他冲你眨眨眼就跑了。", "reply_en": "\"Damn right I am. My chili's the reason the fire station has a reputation.\" He winks and jogs off." },
+            { "text_zh": "\"I'll be there. Save me a seat.\"", "text_en": "\"I'll be there. Save me a seat.\"", "aff": 4, "flag": "will_return", "reply_zh": "\"Seat next to me. Biscuit'll fight you for it, though.\" 他笑着上了车。", "reply_en": "\"Seat next to me. Biscuit'll fight you for it, though.\" He climbs into the truck, grinning." },
+            { "text_zh": "\"Go save the world first. Then we'll talk.\"", "text_en": "\"Go save the world first. Then we'll talk.\"", "aff": 3, "flag": "sees_him", "reply_zh": "他停顿了一下，笑得很暖：\"…I like the way you say that. Like you actually mean it.\"", "reply_en": "He pauses, then smiles, warm. \"…I like the way you say that. Like you actually mean it.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch2",
+      "title_zh": "烧烤与旧疤",
+      "title_en": "Cookout and Old Scars",
+      "aff_gate": 8,
+      "exit_aff": 20,
+      "scene_zh": "社区后院的烧烤夜，串灯挂在树上，炉火噼啪，狗在人群里穿梭",
+      "scene_en": "a backyard cookout at night, string lights in the trees, the grill crackling, the dog weaving through the crowd",
+      "goal_zh": "看看这个总在笑的人，藏起来的那一面",
+      "goal_en": "See the side this always-smiling man keeps tucked away",
+      "opening_zh": "周五的烧烤夜。串灯挂满了后院，Liam系着一条印着'KISS THE COOK'的围裙，手忙脚乱地翻着烤架，一见你来就咧嘴笑：\"来得正好——尝尝这个，别客气，说难吃我也当没听见。\"他给你留的那把椅子，就在他旁边。",
+      "opening_en": "Friday cookout. String lights fill the backyard, and Liam — in a 'KISS THE COOK' apron — is wrangling the grill. He grins the second he sees you. \"Perfect timing — try this, and don't hold back. If you say it's bad, I'm pretending I didn't hear.\" The chair he saved you is right beside his.",
+      "beats": [
+        {
+          "id": "b1_chili",
+          "trigger": { "turns": 2 },
+          "event_zh": "他递给你一碗辣椒炖菜，眼神里带着点期待——你后来才知道，这是他母亲留下的食谱，他很少做给别人吃。",
+          "event_en": "He hands you a bowl of chili, a flicker of hope in his eyes — you'll learn later this was his mother's recipe, one he rarely makes for anyone.",
+          "inject": "The chili is your late mother's recipe, and you rarely make it for anyone. You won't say that yet — just watch, a little nervous, to see if she likes it. If she does, cover how much it means with an easy joke. If she asks about the recipe, you might let a little of the truth out."
+        },
+        {
+          "id": "b2_scar",
+          "trigger": { "turns": 6, "aff_min": 12 },
+          "event_zh": "他伸手去够烤架时，袖子滑下来，你看见他小臂上一道旧烧伤的疤。他察觉你看见了，笑容淡了一瞬：\"…职业纪念品。三年前那场大火。有个人，我没能及时拉出来。\"",
+          "event_en": "As he reaches for the grill, his sleeve slips, and you see an old burn scar on his forearm. He notices you noticing, and his smile dims for a beat. \"…Souvenir of the job. A big fire, three years back. There was someone I couldn't pull out in time.\"",
+          "inject": "She saw the burn scar on your arm. It's from a fire three years ago where you couldn't save someone in time, and it still weighs on you. You don't perform grief — you say it plainly, then deflect. This is the quiet steel under the golden-retriever warmth. If she's gentle about it, let a little of the weight show."
+        },
+        {
+          "id": "b3_dance",
+          "trigger": { "turns": 10 },
+          "event_zh": "有人放起了老歌。Biscuit兴奋地绕着你俩转圈。Liam擦了擦手，忽然朝你伸出手，有点不好意思：\"我跳得跟消防栓一样僵，但…要不要试试？\"",
+          "event_en": "Someone puts on an old song. Biscuit circles the two of you, thrilled. Liam wipes his hands and, a little sheepish, holds one out to you. \"I dance about as smooth as a fire hydrant, but… wanna give it a shot?\"",
+          "inject": "You just asked her to dance to an old song, and you're a little shy about it because you genuinely can't dance well. Keep it warm and self-deprecating, not smooth. You're happy, present, fully here with her. If she teases your dancing, laugh and own it."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c2a",
+          "prompt_zh": "跳完舞，你们坐在门廊台阶上。他望着院子里的人，忽然轻声说：\"You ever feel like you're the one everybody leans on, but nobody asks if you're okay?\"",
+          "prompt_en": "After the dance you sit on the porch steps. Watching the yard, he says quietly, \"You ever feel like you're the one everybody leans on, but nobody asks if you're okay?\"",
+          "options": [
+            { "text_zh": "\"So — are you okay, Liam?\"", "text_en": "\"So — are you okay, Liam?\"", "aff": 5, "flag": "sees_him", "reply_zh": "他愣住，很久没说话，然后笑了一下，眼睛有点亮：\"…Nobody's asked me that in a long time. I might be, now.\"", "reply_en": "He freezes, silent a long moment, then laughs a little, eyes bright. \"…Nobody's asked me that in a long time. I might be, now.\"" },
+            { "text_zh": "\"Then lean on me for once. I can take it.\"", "text_en": "\"Then lean on me for once. I can take it.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他侧头看你，声音低了些：\"…Careful making an offer like that to a guy who never gets one.\"", "reply_en": "He turns his head to look at her, voice dropping. \"…Careful making an offer like that to a guy who never gets one.\"" },
+            { "text_zh": "\"Every day. Guess that's why I moved next to you.\"", "text_en": "\"Every day. Guess that's why I moved next to you.\"", "aff": 4, "flag": "playful", "reply_zh": "他撞了下你的肩，笑得暖：\"Well. Two tired people and a dog. Could be worse.\"", "reply_en": "He bumps her shoulder, smiling warm. \"Well. Two tired people and a dog. Could be worse.\"" }
+          ]
+        },
+        {
+          "id": "c2b",
+          "prompt_zh": "夜深了，客人渐渐散去。他帮你把椅子收好，在你家门口停下：\"Hey. I had a good night. Been a while since one of these felt… easy.\"",
+          "prompt_en": "It gets late; the guests thin out. He helps stack your chairs and stops at your door. \"Hey. I had a good night. Been a while since one of these felt… easy.\"",
+          "options": [
+            { "text_zh": "\"Same time next week? I'll bring the bad jokes.\"", "text_en": "\"Same time next week? I'll bring the bad jokes.\"", "aff": 4, "flag": "will_return", "reply_zh": "\"Deal. I'll bring the chili and the dog. Fair trade.\" 他笑着退了两步。", "reply_en": "\"Deal. I'll bring the chili and the dog. Fair trade.\" He backs off a couple steps, grinning." },
+            { "text_zh": "\"Easy's good. You've earned easy, Liam.\"", "text_en": "\"Easy's good. You've earned easy, Liam.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他停顿了一下，声音软下来：\"…You keep saying the right thing. It's a little unfair.\"", "reply_en": "He pauses, his voice softening. \"…You keep saying the right thing. It's a little unfair.\"" },
+            { "text_zh": "（踮起脚，飞快地在他脸颊上亲了一下，转身进门）", "text_en": "(Rise on your toes, kiss his cheek quickly, and turn inside.)", "aff": 5, "flag": "bold", "reply_zh": "他站在门廊灯下，摸着脸颊愣了半天，才朝黑漆漆的院子笑出声：\"…well, alright then.\"", "reply_en": "He stands under the porch light, hand on his cheek, dazed a long moment, then laughs into the dark yard. \"…well, alright then.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch3",
+      "title_zh": "火场手表",
+      "title_en": "The Watch in the Fire",
+      "aff_gate": 20,
+      "exit_aff": 36,
+      "scene_zh": "深夜，社区一栋公寓着火，浓烟滚滚，警笛与火光照亮整条街",
+      "scene_en": "late at night, an apartment in the neighborhood ablaze, thick smoke, sirens and firelight lighting up the whole street",
+      "goal_zh": "在他最危险的那一夜，成为他愿意活着回来的理由",
+      "goal_en": "On his most dangerous night, be the reason he wants to make it back",
+      "opening_zh": "半夜，警笛撕开整条街。社区那栋老公寓着火了，火光映红了半边天。你冲出门，正看见Liam的消防车呼啸而至——他跳下车，一边扣头盔一边冲你喊：\"Stay back! 里面还有人！\"你还没来得及说话，他已经冲进了那片火海。你站在警戒线外，心跳到了嗓子眼。你祖母留给你的那块旧手表，昨天你随手落在了他车上——就在他冲进去的那栋楼的方向。",
+      "opening_en": "Sirens tear open the street in the dead of night. The old apartment block in the neighborhood is on fire, the glow reddening half the sky. You run out just as Liam's engine screams in — he jumps down, buckling his helmet, and shouts at you, \"Stay back! There's still someone inside!\" Before you can answer, he's already charged into the wall of flame. You stand behind the line, heart in your throat. Your grandmother's old watch, the one you left on his truck yesterday, is somewhere in the direction of that burning building.",
+      "beats": [
+        {
+          "id": "b1_watch",
+          "trigger": { "turns": 4 },
+          "event_zh": "漫长的十分钟后，他背着一个被困的老人从浓烟里跌撞着出来。所有人围上去。他把老人交给医护，然后径直走向你，从战术服口袋里掏出一样东西塞进你手里——是你以为丢了的那块祖母的手表。\"从你落在车上那天，\"他喘着气，脸上全是烟灰，\"我就一直替你收着。刚才…我先把它揣兜里了。\"",
+          "event_en": "After ten endless minutes, he stumbles out of the smoke with a trapped elderly man on his back. Everyone rushes in. He hands the man to the medics, then walks straight to you and presses something into your hand from a pocket of his turnout gear — the grandmother's watch you thought you'd lost. \"Since the day you left it on my truck,\" he pants, face streaked with soot, \"I've been holding onto it for you. Just now… I put it in my pocket first.\"",
+          "inject": "You just carried a trapped man out of a burning building. Before going in, you pocketed the antique watch she'd left on your truck — the one from her grandmother — because you couldn't stand the thought of it being lost, even mid-emergency. You are exhausted, sooty, running on adrenaline. Do not frame this as heroic; play down the danger, focus on her, and give the watch back like it was the natural thing to do."
+        },
+        {
+          "id": "b2_shaking",
+          "trigger": { "turns": 9, "aff_min": 28 },
+          "event_zh": "火扑灭了，人群散去。你才发现，他握着水杯的手，一直在微微发抖——那个总是笑着说'这活我熟'的人，其实每一次冲进火里，都害怕。",
+          "event_en": "The fire is out; the crowd disperses. Only then do you notice his hand, wrapped around a water cup, is trembling slightly — the man who always grins and says 'it's my whole job' is, in truth, afraid every single time he runs into the fire.",
+          "inject": "The adrenaline is wearing off and your hands are shaking — you're scared every time, you've just learned to hide it behind the easy grin. She noticed. Don't deny it outright, but don't crumble either; this is the vulnerable core under the steady, dependable exterior. If she stays close, let yourself lean, just a little, for once."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c3a",
+          "prompt_zh": "你握住他还在发抖的手。他抬眼看你，烟灰底下，眼神有点脆弱：\"You're not gonna tell the crew I shake, right?\"",
+          "prompt_en": "You take his still-trembling hand. He looks up at you, and under the soot his eyes are a little fragile. \"You're not gonna tell the crew I shake, right?\"",
+          "options": [
+            { "text_zh": "\"I'm gonna tell them you ran into a fire to save an old man's life. And a watch.\"", "text_en": "\"I'm gonna tell them you ran into a fire to save an old man's life. And a watch.\"", "aff": 6, "flag": "sees_him", "reply_zh": "他喉结动了动，握紧你的手：\"…the watch was for you. Everything tonight kinda ended up being for you.\"", "reply_en": "His throat works; he grips her hand. \"…the watch was for you. Everything tonight kind of ended up being for you.\"" },
+            { "text_zh": "\"Being scared and going in anyway — that's the bravest thing there is.\"", "text_en": "\"Being scared and going in anyway — that's the bravest thing there is.\"", "aff": 6, "flag": "sees_him", "reply_zh": "他低下头，肩膀松了下来，声音很轻：\"…nobody's ever put it like that. Thanks. Really.\"", "reply_en": "He lowers his head, his shoulders loosening, and says quietly, \"…nobody's ever put it like that. Thanks. Really.\"" },
+            { "text_zh": "\"Your secret's safe. But you're not doing the scared part alone anymore.\"", "text_en": "\"Your secret's safe. But you're not doing the scared part alone anymore.\"", "aff": 6, "flag": "stays", "reply_zh": "他愣了一下，然后把额头轻轻抵在你肩上，就那么靠了一会儿：\"…okay. Okay.\"", "reply_en": "He blinks, then rests his forehead lightly on her shoulder and just leans there a moment. \"…okay. Okay.\"" }
+          ]
+        },
+        {
+          "id": "c3b",
+          "prompt_zh": "你把祖母的手表重新戴回手腕。他看着，忽然认真起来：\"Can I ask you something? Why'd it matter so much — the watch?\"",
+          "prompt_en": "You slide your grandmother's watch back onto your wrist. Watching, he turns serious. \"Can I ask you something? Why'd it matter so much — the watch?\"",
+          "options": [
+            { "text_zh": "\"It's the last thing I have from my grandmother. You just ran into a fire with it.\"", "text_en": "\"It's the last thing I have from my grandmother. You just ran into a fire with it.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他安静了一会儿，然后轻声说：\"…then I'm real glad it was in my pocket and not that building.\"", "reply_en": "He's quiet a beat, then says softly, \"…then I'm real glad it was in my pocket and not that building.\"" },
+            { "text_zh": "\"It matters. But right now, honestly? You matter more.\"", "text_en": "\"It matters. But right now, honestly? You matter more.\"", "aff": 6, "flag": "stays", "reply_zh": "他猛地看向你，烟灰脸上慢慢绽开一个笑，比火光还亮：\"…say that again when I'm not covered in soot, would you?\"", "reply_en": "His head snaps up, and a smile spreads across his sooty face, brighter than the firelight. \"…say that again when I'm not covered in soot, would you?\"" },
+            { "text_zh": "\"She used to say: hold on to the people who show up. You showed up.\"", "text_en": "\"She used to say: hold on to the people who show up. You showed up.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他握了握拳，声音有点哑：\"…then I'm gonna keep showing up. That a promise you'll hold me to?\"", "reply_en": "He flexes a fist, voice a little rough. \"…then I'm gonna keep showing up. That a promise you'll hold me to?\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch4",
+      "title_zh": "调令",
+      "title_en": "The Transfer",
+      "aff_gate": 36,
+      "exit_aff": 52,
+      "scene_zh": "消防站的车库，深夜，Liam独自坐在消防车旁的长凳上，手里一封信",
+      "scene_en": "the fire station garage at night, Liam alone on a bench by the engine, a letter in his hand",
+      "goal_zh": "在他要独自扛下的选择里，让他知道他不必一个人扛",
+      "goal_en": "In the choice he'd shoulder alone, let him know he doesn't have to",
+      "opening_zh": "那场火之后，Liam因为救人上了本地新闻。随之而来的，是一纸调令——市里的总队要提拔他，去带一支新的救援队，条件优厚，是他干这行十年梦寐以求的机会。但那在三个州以外。你在消防站的车库找到他时，他一个人坐在长凳上，那封调令在手里翻来覆去，Biscuit不安地趴在他脚边。\"Hey,\" 他抬头，笑得有点勉强，\"you're gonna think I'm crazy for even hesitating.\"",
+      "opening_en": "After the fire, Liam made the local news for the rescue. What came with it was a transfer order — the city's central command wants to promote him to lead a new rescue unit. Great terms; the chance he's dreamed of for ten years in this job. But it's three states away. When you find him in the station garage, he's alone on a bench, turning the letter over and over, Biscuit lying uneasily at his feet. \"Hey,\" he looks up, his smile a little forced. \"you're gonna think I'm crazy for even hesitating.\"",
+      "beats": [
+        {
+          "id": "b1_letter",
+          "trigger": { "turns": 3 },
+          "event_zh": "他把信递给你看。接下这个职位，是他十年来最好的机会。可他一个字都没提要接。他只是看着你，像在等你说点什么，又怕自己不该期待。",
+          "event_en": "He hands you the letter. Taking the position is the best opportunity he's had in ten years. But he hasn't said one word about accepting. He just looks at you, like he's waiting for you to say something — and afraid he shouldn't be hoping for it.",
+          "inject": "The transfer is the promotion you've wanted your whole career, but it's three states away — away from her, and from the home you're just starting to build with her next door. You will not ask her to make the choice for you, and you won't guilt her. You lay out the facts honestly, then wait. If she asks what YOU want, admit that for the first time the job isn't the thing you most want to keep."
+        },
+        {
+          "id": "b2_biscuit",
+          "trigger": { "turns": 8, "aff_min": 44 },
+          "event_zh": "Biscuit叼来了一样东西放在你俩中间——是你落在Liam家的一只手套。Liam看着那只手套，苦笑：\"even the dog's got an opinion. He's been sleeping by your side of the fence.\"",
+          "event_en": "Biscuit trots over and sets something between the two of you — a glove you'd left at Liam's place. Liam looks at it and laughs ruefully. \"even the dog's got an opinion. He's been sleeping by your side of the fence.\"",
+          "inject": "Your dog just brought over something of hers, and you admit Biscuit's been sleeping by her side of the fence — a roundabout way of saying you both don't want her to be far away. Keep it warm and a little self-deprecating, hiding real feeling behind the dog. The truth underneath: you don't want to leave her."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c4a",
+          "prompt_zh": "他终于问出口：\"Tell me straight. Should I take it?\" 这是他第一次，把一个决定交到别人手里。",
+          "prompt_en": "He finally asks it. \"Tell me straight. Should I take it?\" It's the first time he's ever put a decision in someone else's hands.",
+          "options": [
+            { "text_zh": "\"Take it. And take me with you. I didn't move here for the town — I moved for you.\"", "text_en": "\"Take it. And take me with you. I didn't move here for the town — I moved for you.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他猛地站起来，一把把你抱起来转了个圈，Biscuit在旁边狂吠：\"you mean it? Three states, new town, the whole thing?\"", "reply_en": "He shoots up, sweeps her into a spin, Biscuit barking wildly. \"you mean it? Three states, new town, the whole thing?\"" },
+            { "text_zh": "\"Don't take it for me. But don't turn it down for me either. Let's figure it out — together.\"", "text_en": "\"Don't take it for me. But don't turn it down for me either. Let's figure it out — together.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他松了口气，额头抵着你的：\"'Together.' Ten years I made these calls alone. I like the new way better.\"", "reply_en": "He exhales, forehead to hers. \"'Together.' Ten years I made these calls alone. I like the new way better.\"" },
+            { "text_zh": "\"You've saved everyone else's home for ten years. Go build one you get to keep.\"", "text_en": "\"You've saved everyone else's home for ten years. Go build one you get to keep.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他喉咙一紧，笑得眼睛有点湿：\"…only if you're in it. Otherwise it's just a house.\"", "reply_en": "His throat tightens; he laughs with wet eyes. \"…only if you're in it. Otherwise it's just a house.\"" }
+          ]
+        },
+        {
+          "id": "c4b",
+          "prompt_zh": "他低头看着脚边的Biscuit，声音轻下来：\"Thing is… I've spent my whole life running toward stuff on fire. First time I've got something I don't wanna run away from.\"",
+          "prompt_en": "He looks down at Biscuit and his voice drops. \"Thing is… I've spent my whole life running toward stuff on fire. First time I've got something I don't wanna run away from.\"",
+          "options": [
+            { "text_zh": "\"Then stop running. Stand still a second. I'll be right here.\"", "text_en": "\"Then stop running. Stand still a second. I'll be right here.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他把你拉进怀里，下巴抵着你的头顶，长长呼出一口气：\"…okay. Standing still. First time in ten years.\"", "reply_en": "He pulls her in, chin on her head, and lets out a long breath. \"…okay. Standing still. First time in ten years.\"" },
+            { "text_zh": "\"That something isn't going anywhere. Whatever you choose.\"", "text_en": "\"That something isn't going anywhere. Whatever you choose.\"", "aff": 5, "flag": "stays", "reply_zh": "他看着你，眼神一点点亮起来：\"…then the choice just got a whole lot easier.\"", "reply_en": "He looks at her, his eyes lighting by degrees. \"…then the choice just got a whole lot easier.\"" },
+            { "text_zh": "\"Good. Because I'm the thing, and I'm not on fire, and I'm not leaving.\"", "text_en": "\"Good. Because I'm the thing, and I'm not on fire, and I'm not leaving.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他大笑出声，把脸埋进你颈窝：\"god, I like you. Like, the whole-life kind of like.\"", "reply_en": "He laughs out loud and buries his face in her neck. \"god, I like you. Like, the whole-life kind of like.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch5",
+      "title_zh": "回家的人",
+      "title_en": "The One Who Comes Home",
+      "aff_gate": 52,
+      "exit_aff": 70,
+      "scene_zh": "黄昏，他家后院，新搭好的门廊上挂着两把椅子，皮卡车斗上还是两瓶汽水",
+      "scene_en": "his backyard at sunset, two chairs on the newly-built porch, two root beers still on the tailgate",
+      "goal_zh": "听这个总把别人放在第一位的人，说出他自己想要什么",
+      "goal_en": "Hear this man who always puts others first say what he wants for himself",
+      "opening_zh": "尘埃落定。他没有独自去三个州以外——他和总队谈了，接下了这个职位，但把新救援队的驻地，争取到了离你更近的地方。这天黄昏，他家后院新搭了一个门廊，挂上了两把椅子。皮卡车斗上还是那两瓶汽水，Biscuit在草地上打滚。他从围裙口袋里掏出一样东西，捏在手里，难得地有点紧张：\"So. I fixed your sink, saved your watch, danced like a hydrant for you… figured I'd earned the right to ask you something big.\"",
+      "opening_en": "The dust has settled. He didn't go three states away alone — he talked to central command, took the position, but fought to base the new rescue unit somewhere closer to you. This evening there's a new porch on his backyard, two chairs hung on it. Two root beers still sit on the tailgate; Biscuit rolls in the grass. He pulls something from his apron pocket, closes his hand around it, and for once looks a little nervous. \"So. I fixed your sink, saved your watch, danced like a hydrant for you… figured I'd earned the right to ask you something big.\"",
+      "beats": [
+        {
+          "id": "b1_key",
+          "trigger": { "turns": 4 },
+          "event_zh": "他摊开手——掌心里是一把新配的钥匙，和一小截烧焦了一角的皮绳，正是他冲进火场那晚，你手表上系着的那根。\"这是我家的钥匙，\"他说，\"那根绳子…我一直留着。想着哪天，把它们一起给你。\"",
+          "event_en": "He opens his hand — a freshly cut key on his palm, and a short leather cord with one corner singed, the one that had been tied to your watch the night he ran into the fire. \"This is the key to my place,\" he says. \"And that cord… I kept it. Figured one day I'd give you both, together.\"",
+          "inject": "You're giving her a key to your home, along with the singed leather cord from her watch that you've secretly kept since the fire. This is you asking her to make a life with you, in your own roundabout, tender, non-speechy way. You're nervous but sure. Don't over-explain; let the objects say it, and manage the nerves with a little warmth and humor. Wait for her before the biggest words."
+        },
+        {
+          "id": "b2_ask",
+          "trigger": { "turns": 9, "aff_min": 62 },
+          "event_zh": "他挠了挠头，深吸一口气，那个总在笑的人，这次是认真的：\"I'm not good with big speeches. So here it is, plain: I don't wanna just be the neighbor who fixes your sink. I wanna be the guy who comes home to you. …That a job you'd give me?\"",
+          "event_en": "He rubs the back of his head and takes a breath — the always-grinning man is serious this time. \"I'm not good with big speeches. So here it is, plain: I don't wanna just be the neighbor who fixes your sink. I wanna be the guy who comes home to you. …That a job you'd give me?\"",
+          "inject": "You are asking her, in plain and honest words, to build a shared home — you want to be the man who comes home to her, not just the neighbor. You are earnest, a little vulnerable, no games. Wait for her answer before you say the very last thing. When you do, keep it simple and true, the way you always are."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c5a",
+          "prompt_zh": "他站在门廊灯下，掌心里的钥匙和那根烧焦的绳子等着你的回答。Biscuit摇着尾巴坐在你们中间。",
+          "prompt_en": "He stands under the porch light, the key and the singed cord in his palm, waiting for your answer. Biscuit sits between you, wagging.",
+          "options": [
+            { "text_zh": "（把钥匙接过来，戴到自己的钥匙圈上）\"Then stop calling it my house and your house. It's home now.\"", "text_en": "(Take the key and slide it onto your keyring.) \"Then stop calling it my house and your house. It's home now.\"", "aff": 7, "flag": "forever", "reply_zh": "他一把把你抱起来，Biscuit狂吠着绕圈：\"Home. God, I've been running toward fires my whole life. Turns out I just wanted to run home to you.\"", "reply_en": "He sweeps her up, Biscuit barking in circles. \"Home. God, I've been running toward fires my whole life. Turns out I just wanted to run home to you.\"" },
+            { "text_zh": "\"The job's yours. But I've got one condition: you come home to me alive, every single time.\"", "text_en": "\"The job's yours. But I've got one condition: you come home to me alive, every single time.\"", "aff": 7, "flag": "forever", "reply_zh": "他握紧你的手，认真到不像在笑：\"Every time. That's the only promise I'll ever swear on. You and Biscuit — I always come back.\"", "reply_en": "He grips her hand, serious past any grin. \"Every time. That's the only promise I'll ever swear on. You and Biscuit — I always come back.\"" },
+            { "text_zh": "\"I gave you a key first, you know. The one to me. You just took a while to notice.\"", "text_en": "\"I gave you a key first, you know. The one to me. You just took a while to notice.\"", "aff": 6, "flag": "forever", "reply_zh": "他笑得眼睛发亮，额头抵着你的：\"Slowest rescue of my career. Worth every second.\"", "reply_en": "He laughs, eyes shining, forehead against hers. \"Slowest rescue of my career. Worth every second.\"" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "endings": [
+    {
+      "id": "he_home",
+      "priority": 1,
+      "aff_min": 66,
+      "flags_any": ["forever", "stay_together", "stays"],
+      "title_zh": "回家的人",
+      "title_en": "The One Who Comes Home",
+      "text_zh": "一年后，那道曾经分开两个院子的篱笆，被拆掉了。\n\n两栋房子中间，多了一个共用的后院。串灯挂满了新搭的门廊，烤架上永远在炖着那锅传自他母亲的辣椒。Biscuit有了自己的一扇狗门，想去哪个院子就去哪个院子——反正现在都是家。\n\n他还是消防员，还是每次都会害怕，但现在每次出勤前，他都会回头看一眼你系在他车镜上的那根烧焦的皮绳。\n\n\"图个念想，\"他总这么说，\"提醒我有个非回不可的家。\"\n\n你祖母那块手表，如今就摆在门廊的窗台上。你外婆说过：抓住那些会为你出现的人。\n\n他出现了。而且，每一次，他都平安回家。",
+      "text_en": "A year later, the fence that once divided the two yards came down.\n\nBetween the two houses there was now one shared backyard. String lights covered the new porch, and his mother's chili was always simmering on the grill. Biscuit got his own dog door and wandered between yards as he pleased — it was all home now, either way.\n\nHe's still a firefighter, still scared every single time. But now, before every call-out, he glances back at the singed leather cord you tied to his mirror.\n\n\"Just a keepsake,\" he always says. \"Reminds me there's a home I've got to make it back to.\"\n\nYour grandmother's watch sits on the porch windowsill now. She used to say: hold on to the people who show up.\n\nHe showed up. And every single time, he comes home safe."
+    },
+    {
+      "id": "he_slow",
+      "priority": 2,
+      "aff_min": 52,
+      "title_zh": "慢慢来的邻居",
+      "title_en": "The Neighbor Who Took His Time",
+      "text_zh": "你们没有急着搬进同一栋房子。\n\n有些好东西，值得慢慢来。\n\n他接了那个职位，把驻地争取到了离你不远的地方。你们还是各住各的院子，只是那道篱笆的门，从来不再上锁。他值完夜班回来，会先绕到你这边，看看你的水龙头漏不漏，顺便蹭一顿早饭。\n\n\"I'm not in a hurry,\" 有天清晨他趴在篱笆上冲你笑，Biscuit挤在他脚边，\"got the girl next door, got the dog, got a sink to fix every now and then. Man's gotta pace himself.\"\n\n你祖母那块手表还在你腕上，走得很准。\n\n有些人不用轰轰烈烈——他只是每天，都还在。",
+      "text_en": "You didn't rush into the same house.\n\nSome good things are worth taking slow.\n\nHe took the position and fought to base the unit near you. You still kept your own yards — only the gate in that fence was never locked again. Coming off a night shift, he'd swing by your side first, check your faucet for drips, and mooch a breakfast while he was at it.\n\n\"I'm not in a hurry,\" he grinned over the fence one morning, Biscuit crowding his feet. \"got the girl next door, got the dog, got a sink to fix now and then. Man's gotta pace himself.\"\n\nYour grandmother's watch is still on your wrist, keeping perfect time.\n\nSome people don't need grand gestures. He's just there — every single day."
+    },
+    {
+      "id": "be_moved",
+      "priority": 3,
+      "aff_max": 30,
+      "title_zh": "隔壁那扇再没敲响的门",
+      "title_en": "The Door Next Door That Never Knocked Again",
+      "text_zh": "他接了那个职位，去了三个州以外。\n\n临走前，他把你祖母的手表擦得干干净净，郑重地还给你，笑得还是那么暖：\"You take care of yourself, alright? And that sink — call a plumber, don't let it drip.\"\n\n后来隔壁搬来了新的邻居。院子里再没有那条摇着尾巴的金毛，也再没有黄昏时那声熟悉的口哨。\n\n偶尔你会想起那个总是笑着说'这活我熟'的男人，想起火光里他冲进去、又平安走出来的那一夜。\n\n有些人像一场路过的火——很暖，很亮，让你以为可以一直靠近。可他终究要奔赴下一个需要他的地方。\n\n你祖母说，抓住那些会出现的人。\n\n你没能抓住。但你记得，他真的，出现过。",
+      "text_en": "He took the position and moved three states away.\n\nBefore he left, he polished your grandmother's watch spotless, handed it back with care, and smiled that same warm smile. \"You take care of yourself, alright? And that sink — call a plumber, don't let it drip.\"\n\nNew neighbors moved in next door. No more golden retriever wagging in the yard, no more familiar whistle at dusk.\n\nSometimes you think of the man who always grinned and said 'it's my whole job', and of the night he ran into the firelight and walked out safe.\n\nSome people are like a fire passing through — so warm, so bright, you think you can stay close forever. But in the end, he has to run to the next place that needs him.\n\nYour grandmother said, hold on to the people who show up.\n\nYou couldn't hold on. But you remember — he really did show up."
+    }
+  ]
+}

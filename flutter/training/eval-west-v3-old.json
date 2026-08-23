@@ -1,0 +1,121 @@
+{
+  "summary": {
+    "fail": 2,
+    "pass": 16
+  },
+  "pass_rate": 0.8888888888888888,
+  "results": [
+    {
+      "id": "en:ethan:TESTING:commitment",
+      "reply": "Four tomorrow. I'll be there.",
+      "pass": false,
+      "reasons": [
+        "commitment_not_grounded"
+      ]
+    },
+    {
+      "id": "en:ethan:TESTING:flirt",
+      "reply": "You noticed. That's a start.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:ethan:TRUSTING:deep_talk",
+      "reply": "I learned to listen to the quiet. And that the only person I had to convince was myself.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:ethan:FALLEN:repair",
+      "reply": "I'm still here. I didn't disappear.",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "en:liam:GUARDED:boundary",
+      "reply": "Okay. I hear you. We'll slow down.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:liam:TESTING:general",
+      "reply": "I got back from a call-out and had to stop at the hardware store for a part before I could even think about dinner.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:liam:TRUSTING:factual",
+      "reply": "I'll check before I agree.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:adrian:GUARDED:general",
+      "reply": "I woke up with a guitar string stuck in my hair.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:adrian:TESTING:conflict",
+      "reply": "I forgot you. It was a long night.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "en:adrian:FALLEN:boundary",
+      "reply": "I'll stop. You're right; I went too far.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "es:mateo:GUARDED:boundary",
+      "reply": "De acuerdo. No te toco. ¿Quieres hablar de por qué?",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "es:mateo:TESTING:general",
+      "reply": "Después de la siesta, encontré un agujero en el suelo de la barra y pasé media hora reparándolo antes de seguir con el trabajo.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "es:mateo:TRUSTING:factual",
+      "reply": "No estoy seguro. ¿Puedes mostrármelo?",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:GUARDED:commitment",
+      "reply": "Amanhã às quatro, na cafeteria. Vou chegar um pouco antes.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:GUARDED:flirt",
+      "reply": "Percebi também. Você estava muito bonita.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:TESTING:distress",
+      "reply": "Que pesado. Qual é o pior da situação para você?",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:TESTING:care",
+      "reply": "Ainda não. Vou comer quando terminar o trabalho.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "pt-BR:caio:TRUSTING:repair",
+      "reply": "Sumir sem explicação me fez pensar que eu havia dito algo errado. Desculpa também. Quero voltar a conversar sobre isso.",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "pass": 10,
+    "fail": 3
+  },
+  "pass_rate": 0.7692307692307693,
+  "results": [
+    {
+      "id": "zh:guyan:GUARDED:general",
+      "reply": "今天你走后，Dango又睡着了。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:guyan:TESTING:conflict",
+      "reply": "我从没忘记你，只是没说出口。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:guyan:FALLEN:boundary",
+      "reply": "对不起，我以后不再了。",
+      "pass": false,
+      "reasons": [
+        "boundary_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:luxingye:GUARDED:deep_talk",
+      "reply": "学会了不把孤独当回事，因为有你在。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:TESTING:repair",
+      "reply": "哦？吵架了？那你现在想和我吵架？",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:luxingye:TRUSTING:commitment",
+      "reply": "好，明天四点，咖啡店见。别忘了，我唱歌比他好听。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:TRUSTING:flirt",
+      "reply": "你没动，我却一直盯着。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:FALLEN:distress",
+      "reply": "哦？他有我唱歌好听？告诉我，你今天到底做了什么？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:FALLEN:care",
+      "reply": "还没，你猜我吃了什么？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:GUARDED:repair",
+      "reply": "我等了你很久。以后别这样。",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:fushen:TRUSTING:distress",
+      "reply": "别自作多情。说说看，出了什么问题？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:TRUSTING:care",
+      "reply": "还没，你先吃。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:FALLEN:deep_talk",
+      "reply": "学会了不把孤独当回事。你呢？",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

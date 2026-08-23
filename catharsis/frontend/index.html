@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#12100c">
+  <title>blazeCore Play · 情绪解药</title>
+  <link rel="stylesheet" href="hub.css">
+</head>
+<body>
+  <header>
+    <small>BLAZECORE PLAY</small>
+    <h1>情绪解药</h1>
+    <p>七台单手微游戏。星尘共通。神社仍是一号机。</p>
+  </header>
+  <nav id="cabs"></nav>
+  <script src="/kernel/i18n.js"></script>
+  <script>
+    const CABS = [
+      { href: "/null-shrine/", tag: "01", name: "NULL//SHRINE", sub: "技巧弹珠 · 击球臂", track: "seed" },
+      { href: "/slacker-ball/", tag: "02", name: "摸鱼大暴弹", sub: "职场弹珠泄压", track: "work" },
+      { href: "/office-landlord/", tag: "03", name: "职场大赢家", sub: "符号构筑连携", track: "work" },
+      { href: "/beat-monday/", tag: "04", name: "击溃星期一", sub: "单手割草走位", track: "work" },
+      { href: "/cyber-merit/", tag: "05", name: "赛博木鱼", sub: "Z世代点击功德", track: "zgen" },
+      { href: "/crazy-rant/", tag: "06", name: "发疯文学", sub: "词条弹幕对战", track: "zgen" },
+      { href: "/rebound-tycoon/", tag: "07", name: "老王逆袭记", sub: "保安逆袭放置", track: "work" },
+      { href: "/word-pop/", tag: "08", name: "单词弹珠英雄", sub: "答题充能弹珠", track: "work" },
+    ];
+    const nav = document.getElementById("cabs");
+    CABS.forEach(c => {
+      const a = document.createElement("a");
+      a.href = c.href;
+      a.className = c.track;
+      a.innerHTML = `<i>${c.tag}</i><div><b>${c.name}</b><span>${c.sub}</span></div>`;
+      nav.appendChild(a);
+    });
+  </script>
+</body>
+</html>

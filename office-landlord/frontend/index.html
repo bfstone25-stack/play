@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#12161c">
+  <meta name="description" content="Office Landlord — a tactical desk tableau. Place staff, build chains, pay the landlord.">
+  <title>Office Landlord · 职场大赢家</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="void" aria-hidden="true">
+    <div class="glow a"></div>
+    <div class="glow b"></div>
+    <div class="haze"></div>
+  </div>
+
+  <div class="lang-bar" role="group" aria-label="Language and sound">
+    <button type="button" class="lang-btn active" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="zh">中</button>
+    <button type="button" class="lang-btn" id="soundBtn" aria-pressed="true">♪</button>
+  </div>
+
+  <div class="arena">
+    <div class="fit-slot">
+      <div class="cabinet">
+        <div class="marquee">
+          <div class="landlord-plate" id="landlordPlate">
+            <img src="assets/landlord-portrait.webp" alt="" id="landlordFace" width="72" height="96">
+            <i id="moodDot"></i>
+          </div>
+          <div>
+            <small id="tagline">CABINET 03 · DESK LEASE</small>
+            <b>OFFICE LANDLORD</b>
+            <em id="lore">Place staff. Build chains. Pay the landlord.</em>
+          </div>
+          <span id="runState">WAITING</span>
+        </div>
+
+        <div class="hood">
+          <div class="play-bay">
+            <aside class="side-rail" aria-label="Lease ledger">
+              <div class="plate">
+                <small id="lRent">RENT DUE</small>
+                <b id="rent">8</b>
+              </div>
+              <div class="plate">
+                <small id="lBank">BANK</small>
+                <b id="bank">0</b>
+              </div>
+              <div class="plate chain">
+                <small id="lChain">CHAIN</small>
+                <b id="chain">0</b>
+                <div id="chainTrack"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <article class="plate mission">
+                <small id="lFloor">FLOOR</small>
+                <b id="floorLabel">1 / 8</b>
+                <div class="bar"><i id="floorFill"></i></div>
+                <strong id="previewPay">PREVIEW 0</strong>
+              </article>
+            </aside>
+
+            <div class="glass">
+              <canvas id="game" aria-label="Office Landlord desk"></canvas>
+              <div class="scan"></div>
+              <div class="banner" id="banner"></div>
+            </div>
+
+            <aside class="side-rail right" aria-label="Relics and forecast">
+              <div class="plate">
+                <small id="lNext">NEXT RENT</small>
+                <b id="nextRent">11</b>
+              </div>
+              <article class="plate relics" id="relicBox">
+                <small id="lRelics">RELICS</small>
+                <div id="relicList" class="relic-list"></div>
+              </article>
+              <div class="plate line">
+                <small id="lLine">LANDLORD</small>
+                <p id="landlordLine">The floor is empty. That is not a strategy.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="deck">
+          <div class="offers" id="offers"></div>
+          <div class="deck-actions">
+            <button type="button" class="ghost" id="rerollBtn"><small id="lReroll">REROLL</small><b id="rerollCost">4</b></button>
+            <button type="button" class="launch" id="settleBtn"><small id="lHold">COLLECT</small><b id="lSettle">SETTLE</b></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay show" id="intro" role="dialog" aria-modal="true">
+    <div class="sheet title-sheet">
+      <img src="assets/title.webp" alt="" class="title-art">
+      <small id="introTag">CABINET 03</small>
+      <h1>Office Landlord</h1>
+      <p id="introBody">A 5×4 desk. Three offers each beat. Place the piece yourself. Chains pay. The landlord still wants rent.</p>
+      <button type="button" class="launch" id="startBtn"><b id="lStart">SIGN THE LEASE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="shop" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <small id="shopTag">BETWEEN FLOORS</small>
+      <h2 id="shopTitle">Procurement</h2>
+      <p id="shopBody">Pick one. The elevator is already closing.</p>
+      <div class="shop-row" id="shopRow"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="end" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <small id="endTag">NOTICE</small>
+      <h2 id="endTitle">Eviction</h2>
+      <p id="endBody">Rent missed. Badge revoked. The plant stays.</p>
+      <strong id="endStat">BANK 0 · BEST 0</strong>
+      <button type="button" class="launch" id="againBtn"><b id="lAgain">NEW LEASE</b></button>
+    </div>
+  </div>
+
+  <script src="js/landlord.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

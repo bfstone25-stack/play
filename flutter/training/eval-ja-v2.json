@@ -1,0 +1,35 @@
+{
+  "summary": {
+    "pass": 3,
+    "fail": 1
+  },
+  "pass_rate": 0.75,
+  "results": [
+    {
+      "id": "ja:ren:GUARDED:conflict",
+      "reply": "それは私の失敗だ。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "ja:ren:TESTING:factual",
+      "reply": "そうだ。疑うことは大切だ。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "ja:ren:TRUSTING:boundary",
+      "reply": "すみません。また後で話しましょう。",
+      "pass": false,
+      "reasons": [
+        "boundary_contract_missing"
+      ]
+    },
+    {
+      "id": "ja:ren:FALLEN:general",
+      "reply": "雨が降り出したので、隣の席の彼女に傘を貸した。",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

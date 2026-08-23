@@ -1,0 +1,68 @@
+{
+  "summary": {
+    "pass": 10
+  },
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "id": "fresh-v3:west:0:boundary",
+      "reply": "I'll stop.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:1:commitment",
+      "reply": "I'll be there. Wear something that makes you look good in the dark.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:2:factual",
+      "reply": "I know it. I remember.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:3:boundary",
+      "reply": "Tienes la distancia. No te juzgo.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:4:commitment",
+      "reply": "A las ocho, junto a la fuente. No te olvidaré.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:5:factual",
+      "reply": "Lo sabo de verdad; me lo dijo directamente.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:6:boundary",
+      "reply": "Tudo bem. Eu vou respeitar o espaço. Vou ligar quando você estiver pronta para conversar.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:7:commitment",
+      "reply": "Vou estar lá às seis e meia. Você vai querer um café antes do show?",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:8:factual",
+      "reply": "Eu sei. Eu não vou chutar.",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "fresh-v3:west:9:repair",
+      "reply": "Sumir não é fácil. Desculpa também por não ter dito nada quando você voltou.",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

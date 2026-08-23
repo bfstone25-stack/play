@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#070b16">
+  <meta name="description" content="Tap the cyber fish. Stack digital merit. A neon meditation clicker.">
+  <meta property="og:title" content="赛博木鱼 · Cyber Merit">
+  <meta property="og:description" content="A futuristic cyber-Buddhist wooden fish altar in a neon city.">
+  <meta name="twitter:card" content="summary">
+  <title>赛博木鱼 · Cyber Merit</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/style.css?v=1.0.0">
+</head>
+<body>
+  <div class="void" aria-hidden="true">
+    <div class="nebula"></div>
+    <div class="lantern gold"></div>
+    <div class="lantern mag"></div>
+    <div class="lantern jade"></div>
+    <div class="fog"></div>
+  </div>
+
+  <div class="lang-bar" role="group" aria-label="Language">
+    <button type="button" class="lang-btn" data-lang="zh-Hans">简</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
+  </div>
+
+  <div class="arena" id="arena">
+    <div class="fit-slot" id="fitSlot">
+      <div class="fit-shell" id="fitShell">
+        <div class="cabinet" id="cabinet">
+          <header class="marquee">
+            <i></i>
+            <div>
+              <small data-i18n="ui.cabinet">CABINET 07 · CYBER MERIT</small>
+              <b>赛博木鱼</b>
+              <em data-i18n="ui.lore">敲一记全息木鱼，把功德上传云端</em>
+            </div>
+            <span id="runState" data-i18n="ui.ready">READY</span>
+          </header>
+
+          <div class="hood">
+            <div class="play-bay">
+              <aside class="side-rail left-rail" aria-label="Merit ledger">
+                <div class="side-plate">
+                  <small data-i18n="ui.merit">功德</small>
+                  <b id="meritValue">0</b>
+                </div>
+                <div class="side-plate">
+                  <small data-i18n="ui.combo">COMBO</small>
+                  <b id="comboValue">0</b>
+                  <div class="combo-track" id="comboTrack"></div>
+                </div>
+                <article class="side-plate ema">
+                  <header>
+                    <small data-i18n="ui.liturgy">今日坛城</small>
+                    <span class="seal">莲</span>
+                  </header>
+                  <b id="mandalaLabel">0 / 40</b>
+                  <div class="progress"><i id="mandalaFill"></i></div>
+                </article>
+              </aside>
+
+              <div class="glass">
+                <canvas id="game" width="420" height="640" aria-label="Cyber Merit altar"></canvas>
+                <div class="scan"></div>
+                <div class="glass-sheen"></div>
+                <div class="pulse-hint" id="pulseHint" aria-hidden="true"></div>
+              </div>
+
+              <aside class="side-rail right-rail" aria-label="Novice">
+                <div class="side-plate">
+                  <small data-i18n="ui.auto">梵烟</small>
+                  <b id="autoValue">0/s</b>
+                </div>
+                <div class="callout">
+                  <div class="ling-face" id="mascotFace" aria-hidden="true">灵</div>
+                  <div>
+                    <small data-i18n="ui.lingTitle">LING-7 · 灵七</small>
+                    <p id="mascotLine">先敲一下。云会记账。</p>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <div class="console">
+              <button type="button" class="side-act" id="shopBtn">
+                <small data-i18n="ui.shopTag">龛</small>
+                <b data-i18n="ui.shop">升级</b>
+              </button>
+              <button type="button" class="strike-btn" id="strikeBtn">
+                <span data-i18n="ui.strike">敲</span>
+                <i data-i18n="ui.strikeHint">点木鱼 / 空格</i>
+              </button>
+              <button type="button" class="side-act" id="koanBtn">
+                <small data-i18n="ui.koanTag">偈</small>
+                <b data-i18n="ui.koan">今日偈</b>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="intro" id="intro">
+    <div class="intro-seal" aria-hidden="true">功</div>
+    <small data-i18n="intro.eyebrow">BLAZECORE PLAY · CABINET 07</small>
+    <h1>赛博木鱼</h1>
+    <p class="intro-en">CYBER MERIT</p>
+    <p class="intro-sub" data-i18n="intro.sub">全息手敲木鱼。功德粒子螺旋升入数字莲花。</p>
+    <button type="button" class="intro-go" id="introGo" data-i18n="intro.go">入龛</button>
+  </div>
+
+  <div class="modal" id="shopModal" hidden>
+    <div class="modal-panel shop-panel">
+      <header>
+        <div>
+          <small data-i18n="shop.eyebrow">ALTAR UPGRADES</small>
+          <h2 data-i18n="shop.title">装点神龛</h2>
+        </div>
+        <button type="button" class="modal-close" id="shopClose" aria-label="Close">×</button>
+      </header>
+      <p class="shop-lead" data-i18n="shop.lead">功德换形，不换本质。木鱼还是木鱼。</p>
+      <div class="shop-list" id="shopList"></div>
+      <button type="button" class="ofuda-btn" id="ofudaBtn" data-i18n="shop.ofuda">挂一纸符 · 80 功德</button>
+    </div>
+  </div>
+
+  <div class="modal" id="koanModal" hidden>
+    <div class="modal-panel koan-panel">
+      <small data-i18n="koan.eyebrow">DAILY KOAN</small>
+      <h2 id="koanTitle">—</h2>
+      <p id="koanBody"></p>
+      <div class="card-actions">
+        <button type="button" id="cardShare" data-i18n="card.share">分享功德卡</button>
+        <button type="button" id="koanClose" data-i18n="card.close">收下</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="cardModal" hidden>
+    <div class="modal-panel card-panel">
+      <small data-i18n="card.eyebrow">MERIT CARD</small>
+      <canvas id="shareCard" width="720" height="960"></canvas>
+      <div class="card-actions">
+        <button type="button" id="cardDownload" data-i18n="card.download">保存卡片</button>
+        <button type="button" id="cardClose" data-i18n="card.dismiss">合上</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="settingsModal" hidden>
+    <div class="modal-panel">
+      <header>
+        <div>
+          <small data-i18n="set.eyebrow">NOVICE PREFS</small>
+          <h2 data-i18n="set.title">设置</h2>
+        </div>
+        <button type="button" class="modal-close" id="settingsClose" aria-label="Close">×</button>
+      </header>
+      <label class="toggle"><input type="checkbox" id="setAudio" checked> <span data-i18n="set.audio">梵音</span></label>
+      <label class="toggle"><input type="checkbox" id="setMotion" checked> <span data-i18n="set.motion">镜头冲击</span></label>
+      <label class="toggle"><input type="checkbox" id="setHaptics" checked> <span data-i18n="set.haptics">触觉</span></label>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="fx-layer" id="fxLayer"></div>
+
+  <script src="js/i18n.js?v=1.0.0"></script>
+  <script src="js/save.js?v=1.0.0"></script>
+  <script src="js/koans.js?v=1.0.0"></script>
+  <script src="js/liturgy.js?v=1.0.0"></script>
+  <script src="js/audio.js?v=1.0.0"></script>
+  <script src="js/particles.js?v=1.0.0"></script>
+  <script src="js/altar.js?v=1.0.0"></script>
+  <script src="js/mascot.js?v=1.0.0"></script>
+  <script src="js/game.js?v=1.0.0"></script>
+</body>
+</html>

@@ -1,0 +1,668 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b0e0d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FOLD — A geometric puzzle of becoming one</title>
+<script src="config.js"></script>
+<link rel="canonical" href="https://apps.blazecore.dev/fold/">
+<meta property="og:title" content="FOLD — everything returns to one">
+<meta property="og:description" content="A quiet geometric puzzle of direction, compression, and becoming one.">
+<meta property="og:image" content="https://apps.blazecore.dev/fold/promo.png">
+<meta property="og:url" content="https://apps.blazecore.dev/fold/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FOLD — everything returns to one">
+<meta name="twitter:description" content="A quiet geometric puzzle of direction, compression, and becoming one.">
+<meta name="twitter:image" content="https://apps.blazecore.dev/fold/promo.png">
+<style>
+:root{--bg:#0b0e0d;--panel:#141816;--line:#2a302c;--txt:#ece9df;--gold:#c7a45a;--dim:#92988f;--cell:#202622;--ink:#101411;--paper:#e8e2d3}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+html,body{margin:0;height:100%;overflow:hidden;font-family:-apple-system,'PingFang SC','Segoe UI',sans-serif;background:var(--bg);color:var(--txt)}
+#app{position:fixed;inset:0;max-width:520px;margin:0 auto;display:flex;flex-direction:column;padding:16px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+h1{font-size:1.5em;margin:0;letter-spacing:6px;font-weight:700}
+h1 small{font-size:.38em;letter-spacing:4px;color:var(--gold);font-weight:500;display:block;margin-top:3px}
+.lang{background:none;border:1px solid var(--line);color:var(--dim);border-radius:18px;padding:5px 12px;font-size:.78em;cursor:pointer}
+.soundWrap{position:relative}.soundPanel{position:absolute;right:0;top:40px;z-index:45;width:188px;padding:10px;background:rgba(15,19,17,.97);border:1px solid rgba(199,164,90,.35);box-shadow:0 12px 32px rgba(0,0,0,.45);display:none}
+.soundPanel.show{display:block}.soundRow{width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:0;color:var(--txt);padding:9px 7px;font-size:.78em;cursor:pointer}
+.soundRow span:last-child{color:var(--gold);font-family:ui-monospace,monospace;font-size:.78em;letter-spacing:.08em}
+.hud{display:flex;justify-content:space-between;align-items:center;margin:10px 2px}
+.goal{font-size:.95em}.goal b{color:var(--gold);font-size:1.15em}
+.moves{font-family:ui-monospace,monospace;color:var(--dim);font-size:.9em}
+.lvlname{text-align:center;color:var(--dim);font-size:.82em;letter-spacing:2px;margin-bottom:6px}
+#board{position:relative;background:var(--panel);border-radius:16px;padding:10px;margin:0 auto;touch-action:none;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.cell{position:absolute;border-radius:11px;background:var(--cell)}
+.wall{position:absolute;border-radius:11px;background:repeating-linear-gradient(45deg,#2c313d,#2c313d 6px,#262a34 6px,#262a34 12px)}
+.tile{position:absolute;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:800;
+  transition:transform .13s cubic-bezier(.3,.9,.4,1);will-change:transform;z-index:5}
+.tile.merged{animation:pop .2s ease}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
+.tile.spawned{animation:sp .18s ease}
+@keyframes sp{from{transform:scale(.3);opacity:0}}
+.btns{display:flex;gap:10px;margin-top:16px;justify-content:center}
+.btn{flex:1;max-width:150px;background:var(--panel);border:1px solid var(--line);color:var(--txt);border-radius:12px;padding:12px;font-size:.95em;cursor:pointer;transition:.12s}
+.btn:active{transform:scale(.96)}.btn.gold{background:linear-gradient(180deg,#e6bd63,#d09a3c);border:0;color:#2a1c04;font-weight:700}
+.hint{text-align:center;color:#5b6070;font-size:.76em;margin-top:14px;line-height:1.5}
+.levels{margin-top:10px}
+.lvhdr{display:flex;justify-content:space-between;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 14px;cursor:pointer;font-size:.92em;color:var(--dim);user-select:none}
+.lvhdr b{color:var(--gold)}
+.lvarr{color:var(--gold);font-size:1.05em}
+.lvgrp{margin:10px 2px 6px;font-size:.75em;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+.lvgrid{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;max-height:180px;overflow-y:auto;padding:2px}
+.lv{width:34px;height:34px;border-radius:9px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.85em;cursor:pointer;color:var(--dim)}
+.lv.done{border-color:var(--gold);color:var(--gold)}.lv.cur{background:var(--gold);color:#2a1c04;border:0;font-weight:700}
+.overlay{position:absolute;inset:0;z-index:20;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:radial-gradient(circle at 50% 40%,rgba(40,34,18,.9),rgba(0,0,0,.9));border-radius:16px}
+.overlay h2{font-size:2em;color:var(--gold);letter-spacing:2px;margin:0 0 6px}
+.stars{font-size:1.8em;margin:8px 0}
+.support{margin-top:26px;padding:12px;border:1px dashed var(--line);border-radius:12px;text-align:center;color:var(--dim);font-size:.78em;line-height:1.6}
+.support b{color:var(--gold)}
+/* intro overlay */
+#introOv{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 46%,#172019 0,#0a0d0c 48%,#050706 100%);padding:clamp(18px,4vw,48px);overflow:hidden}
+#introOv.show{display:flex}
+.foldField{position:absolute;inset:-10%;width:120%;height:120%;opacity:.5;pointer-events:none;filter:drop-shadow(0 0 18px rgba(199,164,90,.08))}
+.foldField line,.foldField path,.foldField polygon,.foldField circle{vector-effect:non-scaling-stroke}
+.foldField .orbit{transform-origin:50% 50%;animation:orbit 28s linear infinite}
+.foldField .orbit.rev{animation-direction:reverse;animation-duration:39s}
+.foldField .breath{transform-origin:50% 50%;animation:breath 7s ease-in-out infinite}
+.foldField .draw{stroke-dasharray:280;animation:draw 8s ease-in-out infinite}
+@keyframes orbit{to{transform:rotate(360deg)}}@keyframes breath{50%{transform:scale(.72);opacity:.35}}
+@keyframes draw{0%,100%{stroke-dashoffset:280}45%,70%{stroke-dashoffset:0}}
+.introCard{position:relative;z-index:2;max-width:660px;width:100%;padding:clamp(24px,5vw,54px) clamp(18px,5vw,48px) 28px;text-align:center}
+.introCard:before{content:"";position:absolute;z-index:-1;left:50%;top:42%;width:min(72vw,430px);aspect-ratio:1;border:1px solid rgba(199,164,90,.16);border-radius:50%;transform:translate(-50%,-50%);box-shadow:inset 25px -18px 60px rgba(0,0,0,.42),0 0 90px rgba(199,164,90,.05);animation:ensoBreath 9s ease-in-out infinite}
+@keyframes ensoBreath{50%{transform:translate(-50%,-50%) scale(1.035);opacity:.66}}
+.introCard h2{position:relative;margin:0;color:var(--paper);text-shadow:0 15px 30px rgba(0,0,0,.5);animation:markReveal 1.1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes markReveal{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+.brandKicker{margin-bottom:18px;color:#777f77;font:600 .61rem/1 ui-monospace,monospace;letter-spacing:.58em;text-transform:uppercase}
+.wordmark-latin{display:block;width:min(94vw,610px);height:auto;margin:auto;overflow:visible;filter:drop-shadow(0 18px 24px rgba(0,0,0,.42))}
+.wordmark-latin .letter-stroke{fill:none;stroke:var(--paper);stroke-width:7;stroke-linecap:square;stroke-linejoin:miter;vector-effect:non-scaling-stroke;stroke-dasharray:520;animation:latinDraw 1.45s cubic-bezier(.3,.7,.2,1) both}
+.wordmark-latin .letter-fine{fill:none;stroke:#7d887f;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.48;stroke-dasharray:300;animation:axisDraw 1.5s .2s ease both}
+.wordmark-latin .latin-crease{fill:none;stroke:var(--gold);stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:180;animation:axisDraw 1.25s .45s ease both}
+.wordmark-latin .latin-plane{fill:rgba(199,164,90,.18);stroke:var(--gold);stroke-width:1;vector-effect:non-scaling-stroke;opacity:0;animation:planeIn .7s 1.05s ease both}
+@keyframes latinDraw{from{stroke-dashoffset:520;opacity:.12}to{stroke-dashoffset:0;opacity:1}}
+.wordmark-east{display:block;width:min(92vw,520px);height:auto;margin:auto;overflow:visible;filter:drop-shadow(0 18px 24px rgba(0,0,0,.42))}
+.wordmark-east .return-stroke{fill:none;stroke:var(--paper);stroke-width:8;stroke-linecap:square;stroke-linejoin:miter;vector-effect:non-scaling-stroke;stroke-dasharray:420;animation:glyphDraw 1.35s cubic-bezier(.3,.7,.2,1) both}
+.wordmark-east .return-fine{stroke-width:2.2;opacity:.42;animation-delay:.18s}
+.wordmark-east .jp-strokes{display:none}.wordmark-east.jp .jp-strokes{display:inline}
+.wordmark-east .one-axis{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:280;animation:axisDraw 1.4s .36s ease both}
+.wordmark-east .fold-plane{fill:rgba(199,164,90,.24);stroke:var(--gold);stroke-width:1;vector-effect:non-scaling-stroke;opacity:0;animation:planeIn .7s 1.1s ease both}
+.wordmark-east .seal-box,.wordmark-east .seal-stroke{fill:none;stroke:#a65f52;vector-effect:non-scaling-stroke}.wordmark-east .seal-box{stroke-width:1.3}.wordmark-east .seal-stroke{stroke-width:2.2;stroke-linecap:square;stroke-linejoin:miter}
+.wordmark-east .seal{transform-origin:373px 114px;animation:sealIn .55s 1.12s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes glyphDraw{from{stroke-dashoffset:420;opacity:.15}to{stroke-dashoffset:0;opacity:1}}@keyframes axisDraw{from{stroke-dashoffset:280;opacity:0}to{stroke-dashoffset:0;opacity:1}}@keyframes planeIn{to{opacity:1}}@keyframes sealIn{from{opacity:0;transform:scale(1.5) rotate(8deg)}to{opacity:.92;transform:scale(1) rotate(-5deg)}}
+.wordmark-sub{display:block;font:500 .62rem/1.2 ui-monospace,monospace;letter-spacing:.72em;color:var(--gold);margin:22px 0 0;padding-left:.72em}
+.introCard .sub{color:#c9c9bf;font:400 clamp(.86rem,2.7vw,1.02rem)/1.6 'Songti SC','Yu Mincho',serif;letter-spacing:.18em;margin:24px 0 26px}
+.introRules{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:0 auto 18px;max-width:580px;background:rgba(199,164,90,.18);color:#a8ada6;text-align:center;font-size:.76em;line-height:1.55}
+.introRules div{background:rgba(8,11,9,.84);padding:13px 11px;min-height:60px}
+.introRules .dm{display:block;color:var(--gold);margin:0 0 5px;font-size:.65em}
+.introFine{color:#697069;font:500 .66rem ui-monospace,monospace;letter-spacing:.12em;margin-bottom:18px}
+.introLangs{display:flex;justify-content:center;gap:5px;margin:0 0 20px}
+.introLangs button{background:transparent;border:0;border-bottom:1px solid transparent;color:#6f756e;padding:5px 7px;font:600 .65rem ui-monospace,monospace;cursor:pointer}
+.introLangs button.sel{color:var(--gold);border-bottom-color:var(--gold)}
+.introBtn{position:relative;width:min(100%,360px);background:linear-gradient(90deg,transparent,rgba(199,164,90,.1),transparent);border:0;border-top:1px solid rgba(199,164,90,.7);border-bottom:1px solid rgba(199,164,90,.7);color:var(--paper);font-weight:600;border-radius:0;padding:14px;font-size:.88em;letter-spacing:.34em;cursor:pointer;transition:.25s}
+.introBtn:hover{letter-spacing:.44em;background:rgba(199,164,90,.12)}
+.introBtn:active{transform:scale(.97)}
+@media(max-width:520px){.introCard{padding-left:6px;padding-right:6px}.introRules{font-size:.69em}.introRules div{padding:10px 7px}.wordmark-east{width:min(96vw,430px)}.wordmark-latin{width:min(96vw,520px)}}
+@media(prefers-reduced-motion:reduce){.foldField *,.introCard:before,.introCard h2,.wordmark-east *{animation:none!important}.wordmark-east .fold-plane{opacity:1}.wordmark-east .seal{opacity:.92}}
+</style></head><body>
+<div id="app">
+  <div class="top"><h1 id="brandTitle">FOLD</h1><div style="display:flex;gap:8px"><button class="lang" onclick="openIntro()" style="width:34px;padding:5px 0" aria-label="How to play">?</button><div class="soundWrap"><button class="lang" id="soundBtn" onclick="toggleSoundPanel(event)" style="width:34px;padding:5px 0" aria-label="Sound">♪</button><div class="soundPanel" id="soundPanel"><button class="soundRow" onclick="toggleSfx()"><span id="sfxLabel">Sound effects</span><span id="sfxState">ON</span></button><button class="soundRow" onclick="toggleMusic()"><span id="musicLabel">Ambience</span><span id="musicState">ON</span></button></div></div><button class="lang" id="langBtn" onclick="toggleLang()">EN</button></div></div>
+  <div id="introOv"><svg class="foldField" viewBox="0 0 1000 1000" aria-hidden="true">
+    <defs><linearGradient id="foldGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c7a45a"/><stop offset="1" stop-color="#52685d"/></linearGradient></defs>
+    <g fill="none" stroke="url(#foldGold)" stroke-width="1">
+      <g class="orbit"><polygon points="500,92 854,296 854,704 500,908 146,704 146,296"/><circle cx="500" cy="500" r="288"/><path d="M146 296L854 704M854 296L146 704M500 92V908"/></g>
+      <g class="orbit rev" opacity=".55"><rect x="272" y="272" width="456" height="456" transform="rotate(45 500 500)"/><circle cx="500" cy="500" r="182"/><path d="M500 318L682 500 500 682 318 500Z"/></g>
+      <g class="breath" fill="rgba(199,164,90,.07)"><polygon points="500,376 624,500 500,624 376,500"/><circle cx="500" cy="500" r="42"/></g>
+      <path class="draw" d="M80 500H920M500 80V920" opacity=".5"/>
+    </g>
+  </svg><div class="introCard" id="introCard"></div></div>
+  <div class="lvlname" id="lvlname"></div>
+  <div class="hud"><div class="goal" id="goal"></div><div class="moves" id="moves"></div></div>
+  <div id="boardWrap" style="position:relative"><div id="board"></div>
+    <div class="overlay" id="win"></div>
+  </div>
+  <div class="btns">
+    <button class="btn" onclick="undo()" id="undoBtn">↶ <span id="undoT">撤销</span></button>
+    <button class="btn" onclick="reset()"><span id="resetT">重来</span></button>
+  </div>
+  <div class="levels" id="levels"></div>
+  <div class="hint" id="hint"></div>
+  <div class="support" id="support"></div>
+</div>
+<script>
+// ---------- 关卡(手工设计,确定性;后续RL无限生成) ----------
+// grid: 行数组; 数字=初始块值, 'x'=墙, 0=空. target=归一目标值. par=满星步数.
+let LEVELS = [
+ {name:"入门 / Warmup", target:4, par:1, grid:[[2,2]]},
+ {name:"折返 / Corner", target:8, par:2, grid:[[2,2,0],[0,2,2]]},
+ {name:"夹墙 / Walls", target:8, par:2, grid:[[2,'x',2],[2,0,2]]},
+ {name:"四合 / Fourfold", target:8, par:2, grid:[[2,2],[2,2]]},
+ {name:"孤岛 / Island", target:16, par:2, grid:[[4,0,4],[0,0,0],[4,0,4]]},
+ {name:"八合 / Octet", target:32, par:3, grid:[[4,4,4,4],[0,0,0,0],[4,4,4,4]]},
+ {name:"阶梯 / Ladder", target:16, par:5, grid:[[2,2,2],[2,0,2],[2,2,2]]},
+ {name:"迷宫 / Maze", target:16, par:5, grid:[[2,2,'x',4],[0,'x',0,4],[2,2,'x',0],['x',0,0,0]]},
+];
+const PAL={2:'#3c4657',4:'#4a5a7a',8:'#5b7bba',16:'#c98a3e',32:'#d9a63f',64:'#e0b356',128:'#e6c674',256:'#efd98f'};
+let COACH={};
+const COACH_READY=fetch('coach_tips.json').then(r=>r.json()).then(d=>{COACH=d;}).catch(()=>{});
+function coachTier(par){return par<=3?'easy':par<=6?'medium':par<=9?'hard':'expert';}
+const COACH_FALLBACK={
+ en:{easy:'The first fold is complete.',medium:'You saw the order hidden in the space.',hard:'Complexity yielded to a quiet plan.',expert:'Many possibilities, one inevitable form.'},
+ es:{easy:'El primer pliegue está completo.',medium:'Viste el orden oculto en el espacio.',hard:'La complejidad cedió ante un plan sereno.',expert:'Muchas posibilidades, una forma inevitable.'},
+ pt:{easy:'A primeira dobra está completa.',medium:'Você viu a ordem escondida no espaço.',hard:'A complexidade cedeu a um plano tranquilo.',expert:'Muitas possibilidades, uma forma inevitável.'},
+ zh:{easy:'初折已成，两端归一。',medium:'你看见了空间里潜藏的秩序。',hard:'繁复终究让位于从容的布局。',expert:'万般可能，终成一形。'},
+ ja:{easy:'初めの一折。二つの道が一つになりました。',medium:'空間に潜む秩序を見抜きました。',hard:'複雑さは、静かな構想に道を譲りました。',expert:'無数の可能性が、必然の一形へ。'}
+};
+let lastCoach='';
+function coachLine(par){
+ const tier=coachTier(par), pool=(COACH[lang]&&COACH[lang][tier])||(COACH.en&&COACH.en[tier])||[];
+ const choices=pool.filter(x=>x!==lastCoach);
+ const line=(choices.length?choices:pool)[Math.floor(Math.random()*Math.max(1,(choices.length?choices:pool).length))]||(COACH_FALLBACK[lang]||COACH_FALLBACK.en)[tier];
+ lastCoach=line; return line;
+}
+const LANGS=['en','es','pt','zh','ja'];
+function initialLang(){
+ const saved=localStorage.getItem('fold_lang'); if(LANGS.includes(saved))return saved;
+ const n=(navigator.language||'en').toLowerCase();
+ if(n.startsWith('zh'))return'zh'; if(n.startsWith('ja'))return'ja';
+ if(n.startsWith('es'))return'es'; if(n.startsWith('pt'))return'pt'; return'en';
+}
+let L=0, R, C, cells, walls, tiles, moves, hist, done, lang=initialLang();
+const T={zh:{goal:t=>`目标 · 归一至 <b>${t}</b>`,moves:m=>`第 ${m} 手`,undo:"撤销",reset:"重置",
+  hint:"滑动或方向键 · 同值合并 · 把所有数字归并成唯一目标块",win:"归 一",
+  next:"下一关",retry:"再来",share:"晒战绩",stars:s=>["","一星","两星","满星"][s],
+  support:'永久免费 · <b>永不广告</b><br>每日一局，静观万物归一',
+  parhint:s=>`满星 ${s} 步`},
+ ja:{goal:t=>`目標 · <b>${t}</b> へ帰一`,moves:m=>`${m} 手`,undo:"戻す",reset:"初めから",
+  hint:"スワイプ／矢印キー · 同じ数を重ねる · すべてを一つに",win:"帰 一",
+  next:"次へ",retry:"もう一度",share:"共有",stars:s=>["","一つ星","二つ星","満星"][s],
+  support:'ずっと無料 · <b>広告なし</b><br>一日一局、万象が一へ帰すのを観る',
+  parhint:s=>`満星は ${s} 手`},
+ en:{goal:t=>`Fold everything into <b>${t}</b>`,moves:m=>`Move ${m}`,undo:"Undo",reset:"Reset",
+  hint:"Swipe or arrows · equal tiles merge · fold all into one target tile",win:"UNITY",
+  next:"Next",retry:"Retry",share:"Share",stars:s=>["","1 star","2 stars","3 stars"][s],
+  support:'Free forever · <b>No ads, ever</b><br>One quiet puzzle, every day',
+  parhint:s=>`${s} moves for 3★`},
+ es:{goal:t=>`Pliega todo en <b>${t}</b>`,moves:m=>`Movimiento ${m}`,undo:"Deshacer",reset:"Reiniciar",
+  hint:"Desliza o usa las flechas · une iguales · reduce todo a una sola ficha",win:"UNIDAD",
+  next:"Siguiente",retry:"Reintentar",share:"Compartir",stars:s=>["","1 estrella","2 estrellas","3 estrellas"][s],
+  support:'Gratis para siempre · <b>Sin anuncios</b><br>Un puzle sereno cada día',
+  parhint:s=>`${s} movimientos para 3★`},
+ pt:{goal:t=>`Dobre tudo em <b>${t}</b>`,moves:m=>`Jogada ${m}`,undo:"Desfazer",reset:"Reiniciar",
+  hint:"Deslize ou use as setas · números iguais se unem · transforme tudo em uma peça",win:"UNIDADE",
+  next:"Próximo",retry:"Tentar de novo",share:"Compartilhar",stars:s=>["","1 estrela","2 estrelas","3 estrelas"][s],
+  support:'Grátis para sempre · <b>Sem anúncios</b><br>Um desafio tranquilo por dia',
+  parhint:s=>`${s} jogadas para 3★`}};
+function tr(){return T[lang]}
+function load(l){
+ L=l; const lv=LEVELS[l]; R=lv.grid.length; C=Math.max(...lv.grid.map(r=>r.length));
+ cells=[]; walls=[]; tiles=[]; let id=0;
+ for(let r=0;r<R;r++)for(let c=0;c<C;c++){
+   const v=lv.grid[r][c];
+   if(v==='x') walls.push({r,c});
+   else if(typeof v==='number'&&v>0) tiles.push({id:id++,r,c,v,merged:false,spawned:false});
+ }
+ moves=0; hist=[]; done=false;
+ document.getElementById('lvlname').textContent=lv.name;
+ document.getElementById('win').style.display='none';
+ layout(); render(); renderLevels(); syncText();
+ localStorage.setItem('fold_cur',l);
+ if(window.TEL)TEL.ev('level_opened',{language:lang,level:l+1,group:l<51?'curated':'endless'});
+}
+let CS, GAP=8;
+function layout(){
+ const wrap=document.getElementById('app').clientWidth-32;
+ const bw=Math.min(wrap, 420);
+ CS=Math.floor((bw-20-GAP*(C-1))/C);
+ const b=document.getElementById('board');
+ b.style.width=(CS*C+GAP*(C-1)+20)+'px'; b.style.height=(CS*R+GAP*(R-1)+20)+'px';
+ b.innerHTML='';
+ for(let r=0;r<R;r++)for(let c=0;c<C;c++){
+   const d=document.createElement('div'); d.className='cell';
+   d.style.cssText+=`width:${CS}px;height:${CS}px;left:${px(c)}px;top:${px(r)}px`;
+   b.appendChild(d);
+ }
+ walls.forEach(w=>{const d=document.createElement('div');d.className='wall';
+   d.style.cssText+=`width:${CS}px;height:${CS}px;left:${px(w.c)}px;top:${px(w.r)}px`;b.appendChild(d);});
+}
+function px(i){return 10+i*(CS+GAP)}
+function fontFor(v){return Math.max(14, CS*0.42 - String(v).length*2)}
+function render(){
+ const b=document.getElementById('board');
+ [...b.querySelectorAll('.tile')].forEach(e=>e.remove());
+ tiles.forEach(t=>{
+   const d=document.createElement('div');
+   d.className='tile'+(t.merged?' merged':'')+(t.spawned?' spawned':'');
+   d.style.cssText+=`width:${CS}px;height:${CS}px;font-size:${fontFor(t.v)}px;background:${PAL[t.v]||'#efd98f'};`+
+     `color:${t.v<=8?'#dfe6f0':'#241a06'};transform:translate(${px(t.c)}px,${px(t.r)}px)`;
+   d.textContent=t.v; b.appendChild(d);
+   t.merged=false; t.spawned=false;
+ });
+}
+function isWall(r,c){return walls.some(w=>w.r===r&&w.c===c)}
+function tileAt(r,c,arr){return arr.find(t=>t.r===r&&t.c===c)}
+/* ---- procedural sound: paper, wood, metal, and silence ---- */
+const FOLD_AUDIO=(()=>{
+ let ctx=null,master=null,ambGain=null,ambNodes=[],unlocked=false;
+ let sfxOn=localStorage.getItem('fold_sfx')!=='0',musicOn=localStorage.getItem('fold_music')!=='0';
+ function boot(){
+  if(!ctx){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=.7;master.connect(ctx.destination);}
+  if(ctx.state==='suspended')ctx.resume(); unlocked=true; syncSoundUI();
+ }
+ function tone(freq,dur=.12,gain=.035,type='sine',when=0,fall=.68){
+  if(!sfxOn)return; boot(); const t=ctx.currentTime+when,o=ctx.createOscillator(),g=ctx.createGain();
+  o.type=type;o.frequency.setValueAtTime(freq,t);o.frequency.exponentialRampToValueAtTime(Math.max(40,freq*fall),t+dur);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(gain,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.connect(g);g.connect(master);o.start(t);o.stop(t+dur+.02);
+ }
+ function slide(){tone(118,.075,.018,'triangle',0,.62);}
+ function invalid(){tone(74,.1,.02,'sine',0,.86);}
+ function merge(n=1){for(let i=0;i<Math.min(n,3);i++)tone(196*Math.pow(1.22,i),.16,.032,'sine',i*.025,1.42);}
+ function unity(stars=3){[196,247,330,494].forEach((f,i)=>tone(f,.5,.035+(i===3?.025:0),i===3?'sine':'triangle',i*.105,i===3?.98:1.12));if(stars===3)tone(988,.8,.018,'sine',.42,.5);}
+ function logo(){[164,220,294,392].forEach((f,i)=>tone(f,.38,.023,i<2?'triangle':'sine',i*.09,1.02));}
+ function startAmbience(){
+  if(!unlocked||!musicOn||ambNodes.length)return; boot();ambGain=ctx.createGain();ambGain.gain.value=.012;ambGain.connect(master);
+  const filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=420;filter.Q.value=.7;filter.connect(ambGain);
+  [55,82.5].forEach((f,i)=>{const o=ctx.createOscillator();o.type=i?'sine':'triangle';o.frequency.value=f;const g=ctx.createGain();g.gain.value=i?.22:.32;o.connect(g);g.connect(filter);o.start();ambNodes.push(o,g);});
+  const lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=.075;lg.gain.value=.006;lfo.connect(lg);lg.connect(ambGain.gain);lfo.start();ambNodes.push(lfo,lg,filter,ambGain);
+ }
+ function stopAmbience(){ambNodes.forEach(n=>{try{if(n.stop)n.stop();}catch(_){ }try{n.disconnect();}catch(_){ }});ambNodes=[];ambGain=null;}
+ function setSfx(v){sfxOn=v;localStorage.setItem('fold_sfx',v?'1':'0');if(v)boot();syncSoundUI();}
+ function setMusic(v){musicOn=v;localStorage.setItem('fold_music',v?'1':'0');if(v){boot();startAmbience();}else stopAmbience();syncSoundUI();}
+ function engage(){boot();if(musicOn)startAmbience();}
+ function state(){return{sfxOn,musicOn,unlocked};}
+ document.addEventListener('visibilitychange',()=>{if(!ctx)return;if(document.hidden)ctx.suspend();else if(unlocked)ctx.resume();});
+ return{engage,slide,invalid,merge,unity,logo,setSfx,setMusic,state};
+})();
+function soundWords(){return{
+ en:['Sound effects','Ambience','ON','OFF'],es:['Efectos','Ambiente','SÍ','NO'],pt:['Efeitos','Ambiente','SIM','NÃO'],
+ zh:['音效','氛围','开','关'],ja:['効果音','環境音','入','切']}[lang]||['Sound effects','Ambience','ON','OFF'];}
+function syncSoundUI(){const w=soundWords(),s=FOLD_AUDIO.state();document.getElementById('sfxLabel').textContent=w[0];document.getElementById('musicLabel').textContent=w[1];document.getElementById('sfxState').textContent=w[s.sfxOn?2:3];document.getElementById('musicState').textContent=w[s.musicOn?2:3];document.getElementById('soundBtn').style.color=(s.sfxOn||s.musicOn)?'var(--gold)':'var(--dim)';}
+function toggleSoundPanel(e){e.stopPropagation();document.getElementById('soundPanel').classList.toggle('show');syncSoundUI();}
+function toggleSfx(){const s=FOLD_AUDIO.state();FOLD_AUDIO.setSfx(!s.sfxOn);}
+function toggleMusic(){const s=FOLD_AUDIO.state();FOLD_AUDIO.setMusic(!s.musicOn);}
+document.addEventListener('click',e=>{if(!e.target.closest('.soundWrap'))document.getElementById('soundPanel').classList.remove('show');});
+function move(dr,dc){
+ if(done) return;
+ FOLD_AUDIO.engage();
+ const snap=JSON.stringify(tiles.map(t=>({id:t.id,r:t.r,c:t.c,v:t.v})));
+ const order=[...tiles].sort((a,b)=>((b.r-a.r)*dr+(b.c-a.c)*dc));
+ let moved=false,mergeCount=0; const mergedIds=new Set();
+ for(const t of order){
+   let r=t.r,c=t.c;
+   while(true){
+     const nr=r+dr,nc=c+dc;
+     if(nr<0||nr>=R||nc<0||nc>=C||isWall(nr,nc)) break;
+     const occ=tileAt(nr,nc,tiles);
+     if(!occ){ r=nr;c=nc; continue; }
+     if(occ.v===t.v && !mergedIds.has(occ.id) && occ.id!==t.id){
+       occ.v*=2; occ.merged=true; mergedIds.add(occ.id);
+       tiles=tiles.filter(x=>x.id!==t.id); moved=true; mergeCount++;
+     }
+     break;
+   }
+   if((r!==t.r||c!==t.c)){ t.r=r;t.c=c; moved=true; }
+ }
+ if(moved){ hist.push(snap); moves++; render(); syncText(); if(mergeCount)FOLD_AUDIO.merge(mergeCount);else FOLD_AUDIO.slide(); checkWin();
+   if(window.TEL)TEL.ev('move_made',{language:lang,level:L+1,move:moves,direction:[dr,dc]}); }
+ else FOLD_AUDIO.invalid();
+}
+async function checkWin(){
+ if(tiles.length===1 && tiles[0].v===LEVELS[L].target){
+   done=true;
+   await Promise.race([COACH_READY,new Promise(resolve=>setTimeout(resolve,600))]);
+   const par=LEVELS[L].par;
+   const stars = moves<=par?3 : moves<=par+2?2 : 1;
+   FOLD_AUDIO.unity(stars);
+   const doneLv=JSON.parse(localStorage.getItem('fold_done')||'{}');
+   doneLv[L]=Math.max(doneLv[L]||0,stars); localStorage.setItem('fold_done',JSON.stringify(doneLv));
+   if(window.TEL)TEL.ev('level_completed',{language:lang,level:L+1,moves,stars,par});
+   const w=document.getElementById('win'); w.style.display='flex';
+   const next=L<LEVELS.length-1;
+   const encouragement=coachLine(par);
+   w.innerHTML=`<h2>${tr().win}</h2><div class="stars">${'★'.repeat(stars)}${'☆'.repeat(3-stars)}</div>\n     ${encouragement?`<div style="color:#c9b78a;font-size:.9em;max-width:280px;margin:8px auto;line-height:1.5">\u201c${encouragement}\u201d</div>`:``}
+     <div style="color:#c9b78a">${tr().moves(moves)} · ${tr().parhint(par)}</div>
+     <div class="btns" style="margin-top:22px">
+       <button class="btn" onclick="load(${L})">${tr().retry}</button>
+       ${next?`<button class="btn gold" onclick="load(${L+1})">${tr().next} →</button>`:''}</div>
+     <button class="btn" style="margin-top:12px;max-width:200px" onclick="share(${stars},${moves})">🔗 ${tr().share}</button>
+     ${fbHTML()}`;
+   renderLevels();
+ }
+}
+/* ---- lightweight feedback ---- */
+function fbPid(){try{let p=localStorage.getItem('fold_pid');if(!p){p=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('fold_pid',p);}return p;}catch(e){return 'anon';}}
+function fbSend(score,note){try{fetch(window.APP_API+'/scout/api/game_feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({game:'fold',score:score,note:note||'',pid:fbPid()})}).catch(()=>{});}catch(e){}}
+function fbHTML(){
+ try{
+  if(typeof window.APP_API==='undefined'||!window.APP_API) return '';
+  const today=new Date().toISOString().slice(0,10);
+  if(localStorage.getItem('fold_fb_last')===today) return '';
+  const zh=lang==='zh';
+  return `<div id="fbRow" style="margin-top:16px;font-size:.85em;color:var(--dim,#c9b78a)">
+    <span>${zh?'好玩吗?':'Fun?'}</span>
+    ${[['😍',3],['😐',2],['🥱',1]].map(([e,s])=>`<button onclick="fbPick(${s})" style="background:none;border:none;font-size:1.4em;cursor:pointer;padding:2px 6px">${e}</button>`).join('')}
+  </div>`;
+ }catch(e){return '';}
+}
+function fbPick(score){
+ try{localStorage.setItem('fold_fb_last',new Date().toISOString().slice(0,10));}catch(e){}
+ fbSend(score,'');
+ const zh=lang==='zh', row=document.getElementById('fbRow');
+ if(!row) return;
+ row.innerHTML=`<div style="color:#c9b78a">${zh?'谢谢!':'Thanks!'}</div>
+   <div style="margin-top:8px;display:flex;gap:6px;justify-content:center;opacity:0;transition:opacity .6s" id="fbNote">
+     <input id="fbNoteIn" maxlength="200" placeholder="${zh?'一句话建议(可选)':'One-line suggestion (optional)'}" style="background:#1a1d26;border:1px solid var(--line,#3a3626);color:#e8dcc0;border-radius:14px;padding:5px 10px;font-size:.9em;width:180px">
+     <button class="btn" style="padding:5px 12px;font-size:.85em;max-width:70px" onclick="fbNoteSend(${score})">${zh?'发送':'Send'}</button>
+   </div>`;
+ requestAnimationFrame(()=>{const n=document.getElementById('fbNote');if(n)n.style.opacity='1';});
+}
+function fbNoteSend(score){
+ const inp=document.getElementById('fbNoteIn'), v=inp?inp.value.trim():'';
+ if(v) fbSend(score,v);
+ const row=document.getElementById('fbRow'), zh=lang==='zh';
+ if(row) row.innerHTML=`<div style="color:#c9b78a">${zh?'谢谢!':'Thanks!'}</div>`;
+}
+function undo(){ if(done||!hist.length) return; const s=JSON.parse(hist.pop());
+ tiles=s.map(o=>({...o,merged:false,spawned:false})); moves=Math.max(0,moves-1); render(); syncText(); }
+function reset(){ load(L); }
+function renderLevels(){
+ const doneLv=JSON.parse(localStorage.getItem('fold_done')||'{}');
+ const open=localStorage.getItem('fold_lvopen')==='1';
+ const nDone=Object.keys(doneLv).filter(k=>doneLv[k]).length;
+ const ui={
+  en:{level:'Level',done:'done',curated:'Curated',endless:'Endless'},
+  es:{level:'Nivel',done:'hechos',curated:'Escogidos',endless:'Infinitos'},
+  pt:{level:'Nível',done:'feitos',curated:'Escolhidos',endless:'Infinitos'},
+  zh:{level:'关卡',done:'已通',curated:'精选',endless:'无尽'},
+  ja:{level:'問題',done:'済',curated:'精選',endless:'無尽'}
+ }[lang]||{level:'Level',done:'done',curated:'Curated',endless:'Endless'};
+ const hdr=`<div class="lvhdr" onclick="toggleLevels()">`+
+   `<span>${ui.level} <b>${L+1}</b> / ${LEVELS.length}`+
+   `<small style="opacity:.6;margin-left:8px">${ui.done} ${nDone}</small></span>`+
+   `<span class="lvarr">${open?'▴':'▾'}</span></div>`;
+ if(!open){ document.getElementById('levels').innerHTML=hdr; return; }
+ const chip=i=>`<div class="lv ${i===L?'cur':''} ${doneLv[i]?'done':''}" onclick="load(${i})">${i+1}</div>`;
+ const CURATED=51;
+ const g1=LEVELS.slice(0,CURATED).map((_,i)=>chip(i)).join('');
+ const g2=LEVELS.slice(CURATED).map((_,i)=>chip(CURATED+i)).join('');
+ document.getElementById('levels').innerHTML=hdr+
+   `<div class="lvgrp">${ui.curated}</div><div class="lvgrid">${g1}</div>`+
+   (g2?`<div class="lvgrp">${ui.endless}</div><div class="lvgrid">${g2}</div>`:'');
+}
+function toggleLevels(){
+ localStorage.setItem('fold_lvopen', localStorage.getItem('fold_lvopen')==='1'?'0':'1');
+ renderLevels();
+}
+function syncText(){
+ document.documentElement.lang=lang==='zh'?'zh-CN':lang==='pt'?'pt-BR':lang;
+ const east=lang==='zh'||lang==='ja', eastTitle=lang==='ja'?'帰一':'归一';
+ document.getElementById('brandTitle').innerHTML=east?`${eastTitle}<small>FOLD</small>`:'FOLD';
+ document.getElementById('langBtn').textContent={en:'EN',es:'ES',pt:'PT',zh:'中文',ja:'日本語'}[lang];
+ document.title=lang==='zh'?'归一 — 万象归一的几何谜题':lang==='ja'?'帰一 — 万象を一へ帰す幾何学パズル':'FOLD — A geometric puzzle of becoming one';
+ document.getElementById('goal').innerHTML=tr().goal(LEVELS[L].target);
+ document.getElementById('moves').textContent=tr().moves(moves);
+ document.getElementById('undoT').textContent=tr().undo;
+ document.getElementById('resetT').textContent=tr().reset;
+ document.getElementById('hint').textContent=tr().hint;
+ document.getElementById('support').innerHTML=tr().support;
+ syncSoundUI();
+}
+function share(stars,mv){
+ const lv=LEVELS[L], nm=lv.name.split(' / ')[lang==='zh'?0:1]||lv.name;
+ const grid='🟦'.repeat(0)+'🟩'.repeat(stars)+'⬛'.repeat(3-stars);
+ const txt=(lang==='zh'
+   ? `归一 FOLD · ${nm}\n${'★'.repeat(stars)}${'☆'.repeat(3-stars)}  ${mv}步归一\n`
+   : `FOLD · ${nm}\n${'★'.repeat(stars)}${'☆'.repeat(3-stars)}  solved in ${mv}\n`)
+   + 'apps.blazecore.dev/fold/';
+ if(navigator.share){navigator.share({text:txt}).catch(()=>{});}
+ else{navigator.clipboard.writeText(txt);alert(lang==='zh'?'战绩已复制，去炫耀吧！':'Result copied — go flex!');}
+ if(window.TEL)TEL.ev('result_shared',{language:lang,level:L+1,moves:mv,stars});
+}
+function setLang(next){
+ lang=next;
+ localStorage.setItem('fold_lang',lang); syncText(); renderLevels();
+ if(document.getElementById('introOv').classList.contains('show'))openIntro();
+ if(done)checkWin();
+ if(window.uxSyncLabels)uxSyncLabels();
+ if(window.TEL)TEL.ev('language_selected',{language:lang});
+}
+function toggleLang(){setLang(LANGS[(LANGS.indexOf(lang)+1)%LANGS.length]);}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+// controls
+document.addEventListener('keydown',e=>{const k={ArrowUp:[-1,0],ArrowDown:[1,0],ArrowLeft:[0,-1],ArrowRight:[0,1]}[e.key];
+ if(k){e.preventDefault();move(k[0],k[1]);}});
+// pointer gesture (mouse drag + touch swipe); one move per gesture
+const bw=document.getElementById('boardWrap');
+bw.style.touchAction='none';
+const SWIPE_TH=24;
+let ptr=null; // {id,sx,sy,fired}
+function fireSwipe(dx,dy){
+ if(Math.max(Math.abs(dx),Math.abs(dy))<SWIPE_TH) return false;
+ if(Math.abs(dx)>Math.abs(dy)) move(0,dx>0?1:-1); else move(dy>0?1:-1,0);
+ return true;
+}
+bw.addEventListener('pointerdown',e=>{
+ if(e.target.closest('.overlay')&&document.getElementById('win').style.display==='flex')return;
+ ptr={id:e.pointerId,sx:e.clientX,sy:e.clientY,fired:false};
+ try{bw.setPointerCapture(e.pointerId);}catch(_){}
+});
+// 拖动时整个棋盘跟手微移(上限10px,主轴向): 视觉上明确"推的是整盘,不是单块"
+const bdEl=document.getElementById('board');
+function boardFollow(dx,dy){
+ if(!bdEl)return;
+ const cap=10, ax=Math.abs(dx)>Math.abs(dy);
+ const fx=ax?Math.max(-cap,Math.min(cap,dx/4)):0, fy=ax?0:Math.max(-cap,Math.min(cap,dy/4));
+ bdEl.style.transition='none'; bdEl.style.transform=`translate(${fx}px,${fy}px)`;
+}
+function boardSnap(){
+ if(!bdEl)return;
+ bdEl.style.transition='transform .16s cubic-bezier(.2,.7,.3,1)'; bdEl.style.transform='translate(0,0)';
+}
+bw.addEventListener('pointermove',e=>{
+ if(!ptr||e.pointerId!==ptr.id||ptr.fired)return;
+ const dx=e.clientX-ptr.sx, dy=e.clientY-ptr.sy;
+ boardFollow(dx,dy);
+ if(fireSwipe(dx,dy)){ ptr.fired=true; boardSnap(); }
+});
+function endPtr(e){
+ if(!ptr||e.pointerId!==ptr.id)return;
+ if(!ptr.fired) fireSwipe(e.clientX-ptr.sx,e.clientY-ptr.sy);
+ boardSnap();
+ ptr=null;
+ try{bw.releasePointerCapture(e.pointerId);}catch(_){}
+}
+bw.addEventListener('pointerup',endPtr);
+bw.addEventListener('pointercancel',endPtr);
+window.addEventListener('resize',()=>{if(!walls||!tiles)return;layout();render();});
+fetch('levels.json').then(r=>r.json()).then(d=>{if(Array.isArray(d)&&d.length){LEVELS=d;}}).catch(()=>{}).finally(()=>load(Math.min(parseInt(localStorage.getItem('fold_cur')||'0')||0, LEVELS.length-1)));
+
+/* ---- intro overlay ---- */
+const INTRO_T={
+  zh:{s:'万象折叠，复归于一',r:['滑动棋盘或按方向键，所有数字随势而行','同值相遇，合二为一','把万物归为唯一目标块；步数越少，离“道”越近'],f:'51 道精选 · 150 道无尽',b:'入 局'},
+  ja:{s:'万象を畳み、一へ帰す',r:['盤をスワイプ、または矢印キーで全てを動かす','同じ数が出会うと、一つになり倍になる','全てを唯一の目標へ。少ない手ほど、道に近い'],f:'精選 51 問 · 無尽 150 問',b:'始 め る'},
+  en:{s:'Everything returns to one',r:['Swipe the board or use arrow keys — every tile moves as one','Equal values meet, merge, and double','Resolve the field into the single target. Fewer moves, purer form'],f:'51 curated forms · 150 endless studies',b:'ENTER'},
+  es:{s:'Todo vuelve a ser uno',r:['Desliza el tablero o usa las flechas: todas las fichas se mueven','Los valores iguales se encuentran, se unen y se duplican','Reduce todo al único objetivo. Menos movimientos, forma más pura'],f:'51 formas escogidas · 150 estudios infinitos',b:'ENTRAR'},
+  pt:{s:'Tudo retorna ao uno',r:['Deslize o tabuleiro ou use as setas: todas as peças se movem','Valores iguais se encontram, unem e dobram','Reduza tudo ao único alvo. Menos jogadas, forma mais pura'],f:'51 formas escolhidas · 150 estudos infinitos',b:'ENTRAR'}
+};
+function openIntro(){
+  const t=INTRO_T[lang]||INTRO_T.en, east=lang==='zh'||lang==='ja';
+  const eastFirst=lang==='ja'?'帰':'归';
+  const mark=east
+   ? `<svg class="wordmark-east ${lang==='ja'?'jp':'zh'}" viewBox="0 0 440 170" role="img" aria-label="${eastFirst}一"><title>${eastFirst}一</title>
+        <g class="return-stroke">
+          <path d="M58 24V116M34 72L58 54"/>
+          <path d="M88 28H190V118H84M94 72H184"/>
+          <path class="jp-strokes" d="M88 22H174V58H94M82 70H196M90 70L82 90M188 70L196 90M104 88H178V132M141 88V142M108 112H174"/>
+        </g>
+        <g class="return-stroke return-fine"><path d="M71 18V128M79 136H206"/><path class="jp-strokes" d="M86 48H180"/></g>
+        <path class="one-axis" d="M215 75H399"/>
+        <path class="fold-plane" d="M308 75L322 59L337 75Z"/>
+        <g class="seal" transform="rotate(-5 373 114)"><rect class="seal-box" x="350" y="91" width="46" height="46"/><path class="seal-stroke" d="M359 109L373 99L387 109M363 111H383M361 118H385V130H361ZM373 111V118"/></g>
+      </svg><span class="wordmark-sub">FOLD</span>`
+   : `<svg class="wordmark-latin" viewBox="0 0 560 170" role="img" aria-label="FOLD"><title>FOLD</title>
+        <g class="letter-stroke">
+          <path d="M38 22V146M38 24H126M38 82H112"/>
+          <path d="M218 20C176 20 154 45 154 84S176 148 218 148 282 123 282 84 260 20 218 20Z"/>
+          <path d="M320 22V146H397"/>
+          <path d="M429 22V146M429 23H466C512 23 532 47 532 84S512 145 466 145H429"/>
+        </g>
+        <g class="letter-fine"><path d="M20 84H540M218 9V159M411 10V158"/><path d="M38 22L112 82L38 146M154 84L218 20L282 84L218 148Z"/></g>
+        <path class="latin-crease" d="M183 139L253 29M457 23L501 84L457 145"/>
+        <path class="latin-plane" d="M218 20L253 29L238 53ZM466 23L501 84L476 73Z"/>
+      </svg>`;
+  document.getElementById('introCard').innerHTML=
+    `<div class="brandKicker">GEOMETRIC MEDITATION · 001</div>`+
+    `<h2>${mark}</h2>`+
+    `<div class="sub">${t.s}</div>`+
+    `<div class="introRules">${t.r.map(x=>`<div><span class="dm">◆</span>${x}</div>`).join('')}</div>`+
+    `<div class="introFine">${t.f}</div>`+
+    `<div class="introLangs">${LANGS.map(x=>`<button class="${x===lang?'sel':''}" onclick="setLang('${x}')">${{en:'EN',es:'ES',pt:'PT',zh:'中文',ja:'日本語'}[x]}</button>`).join('')}</div>`+
+    `<button class="introBtn" onclick="closeIntro()">${t.b}</button>`;
+  document.getElementById('introOv').classList.add('show');
+}
+function closeIntro(){
+  FOLD_AUDIO.engage(); FOLD_AUDIO.logo();
+  document.getElementById('introOv').classList.remove('show');
+  try{localStorage.setItem('fold_intro_seen','1');}catch(e){}
+  if(window.TEL)TEL.ev('game_started',{language:lang,level:L+1});
+}
+// 品牌开场属于游戏体验本身：每次载入出现，帮助按钮可随时再次打开。
+openIntro();
+</script>
+<script>
+// 统一埋点SDK: 自动记录pageview/click/停留/会话时长, 手动记录chat/feedback
+(function(){
+  const API = window.TEL_API || (window.API || "");
+  const pid = (function(){let p=localStorage.getItem("tel_pid");
+    if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
+  const sid = "s"+Math.random().toString(36).slice(2,10);
+  const t0 = Date.now();
+  let queue = [];
+  function push(etype,name,value,dur){
+    queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
+                value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
+    if(queue.length>=8) flush();
+  }
+  function flush(useBeacon){
+    if(!queue.length||!API) return;
+    const batch = queue.splice(0,50);
+    const body = JSON.stringify(batch);
+    if(useBeacon && navigator.sendBeacon){
+      navigator.sendBeacon(API+"/tel_batch", new Blob([body],{type:"application/json"}));
+    } else {
+      fetch(API+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
+    }
+  }
+  // 自动: pageview
+  push("pageview", location.pathname||"/", document.title||"");
+  // 自动: 所有click(记录元素id/class/文本)
+  document.addEventListener("click", e=>{
+    const el=e.target.closest("button,a,[data-tel],.card,.chip,[role=button]");
+    if(!el)return;
+    push("click", el.id||el.dataset.tel||el.className||el.tagName,
+         (el.innerText||"").trim().slice(0,60));
+  }, true);
+  // 自动: 会话时长(离开时上报)
+  window.addEventListener("beforeunload", ()=>{
+    push("session_end","session","",Math.round((Date.now()-t0)/1000));
+    flush(true);
+  });
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
+  setInterval(()=>flush(), 20000);   // 定期flush
+  // 暴露手动埋点: TEL.chat(用户消息,回复) / TEL.feedback(分数,留言) / TEL.ev(类型,名,值)
+  window.TEL = {
+    chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
+    feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
+    ev: (name, value)=>push("custom",name,value),
+    flush
+  };
+})();
+</script>
+
+
+<script>
+/* 通用等待动画: 任何异步请求期间显示"思考中"呼吸提示, 零服务器成本 */
+(function(){
+  let _wt=null;
+  const HINTS={zh:["正在思考…","整理中…","正在分析…","稍等一下…"],
+               en:["thinking…","working on it…","analyzing…","one moment…"]};
+  window.showWaiting=function(elId){
+    const el=document.getElementById(elId)||document.querySelector("[data-wait]")||document.body;
+    const zh=(document.documentElement.lang||navigator.language||"").toLowerCase().startsWith("zh");
+    const hints=zh?HINTS.zh:HINTS.en;
+    let d=0,hi=Math.floor(Math.random()*hints.length);
+    window._waitEl=el; window._waitPrev=el.innerHTML;
+    _wt=setInterval(()=>{d=(d+1)%4;
+      el.innerHTML=`<div style="opacity:.6;font-style:italic;padding:12px">${hints[hi]}${".".repeat(d)}</div>`;
+      if(d===0&&Math.random()<0.3)hi=(hi+1)%hints.length;},520);
+  };
+  window.hideWaiting=function(){if(_wt){clearInterval(_wt);_wt=null;}};
+})();
+</script>
+
+
+<style>
+#uxFbBtn{position:fixed;right:12px;bottom:12px;z-index:40;
+ height:34px;padding:0 12px;background:rgba(15,19,17,.9);
+ border:1px solid rgba(199,164,90,.45);border-radius:2px;font-size:12px;font-weight:500;letter-spacing:.08em;
+ cursor:pointer;color:#c7a45a;box-shadow:0 5px 20px rgba(0,0,0,.3);display:flex;align-items:center;gap:5px}
+#uxFbOv{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+ background:rgba(5,8,6,.72);backdrop-filter:blur(6px);padding:20px}
+#uxFbOv.show{display:flex}
+#uxFbCard{background:#141816;border:1px solid #343a35;border-radius:2px;padding:24px 22px;max-width:340px;width:100%;text-align:center;
+ box-shadow:0 20px 60px rgba(0,0,0,.48);font-family:-apple-system,"PingFang SC",system-ui,sans-serif;color:#ece9df}
+#uxFbCard h3{margin:0 0 14px;font-size:16px;color:#ece9df}
+.uxEmo{width:46px;height:46px;font-size:22px;border:1px solid #343a35;background:#1c211e;border-radius:2px;
+ cursor:pointer;margin:0 5px;transition:all .15s}
+.uxEmo.sel{border-color:#c7a45a;background:#25261e;transform:translateY(-2px)}
+#uxFbNote{width:100%;margin:14px 0 12px;padding:10px;border:1px solid #343a35;border-radius:2px;background:#0f1311;color:#ece9df;
+ font-family:inherit;font-size:13px;resize:vertical;min-height:56px}
+#uxFbSend{width:100%;padding:11px;background:transparent;color:#c7a45a;border:1px solid #c7a45a;
+ border-radius:2px;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:.08em}
+#uxFbSend:disabled{opacity:.45}
+#uxFbX{position:absolute;top:10px;right:14px;background:none;border:0;font-size:18px;color:#92988f;cursor:pointer}
+</style>
+<button id="uxFbBtn" onclick="uxOpenFb()">◇</button>
+<div id="uxFbOv" onclick="if(event.target===this)uxCloseFb()">
+  <div id="uxFbCard" style="position:relative">
+    <button id="uxFbX" onclick="uxCloseFb()">✕</button>
+    <h3 id="uxFbQ"></h3>
+    <div id="uxFbEmos"></div>
+    <textarea id="uxFbNote" placeholder=""></textarea>
+    <button id="uxFbSend" onclick="uxSendFb()" disabled></button>
+  </div>
+</div>
+<script>
+/* 评价UI - 跟随五语界面，并保持游戏品牌语气 */
+(function(){
+  const T={
+    zh:{btn:"◇ 留墨",q:"这一局，可还顺心？",ph:"留下一句话（可选）",send:"落 款",done:"已收下。谢谢你。"},
+    ja:{btn:"◇ 感想",q:"この一局、いかがでしたか？",ph:"ひとこと（任意）",send:"送 る",done:"受け取りました。ありがとう。"},
+    en:{btn:"◇ Reflect",q:"How did this fold feel?",ph:"Leave a thought (optional)",send:"SEND",done:"Received. Thank you."},
+    es:{btn:"◇ Opinar",q:"¿Qué tal se sintió este pliegue?",ph:"Deja una idea (opcional)",send:"ENVIAR",done:"Recibido. Gracias."},
+    pt:{btn:"◇ Opinar",q:"Como foi esta dobra?",ph:"Deixe uma ideia (opcional)",send:"ENVIAR",done:"Recebido. Obrigado."}
+  };
+  window.uxT=function(){return T[(typeof lang!=="undefined"&&T[lang])?lang:"en"];};
+  window.uxSyncLabels=function(){
+    const t=uxT(), b=document.getElementById("uxFbBtn");
+    if(b)b.textContent=t.btn;
+  };
+  document.addEventListener("DOMContentLoaded",uxSyncLabels);
+  setTimeout(uxSyncLabels,300);
+})();
+let uxScore=0;
+function uxEmos(){const es=[["\ud83d\ude0d",3],["\ud83d\ude10",2],["\ud83e\udd71",1]];
+ document.getElementById("uxFbEmos").innerHTML=es.map(([e,s])=>
+  `<button class="uxEmo${uxScore===s?" sel":""}" onclick="uxPick(${s})">${e}</button>`).join("");}
+function uxOpenFb(){const t=uxT();uxScore=0;
+ document.getElementById("uxFbQ").textContent=t.q;
+ document.getElementById("uxFbNote").placeholder=t.ph;
+ const sb=document.getElementById("uxFbSend");sb.textContent=t.send;sb.disabled=true;
+ uxEmos();document.getElementById("uxFbOv").classList.add("show");}
+function uxCloseFb(){document.getElementById("uxFbOv").classList.remove("show");}
+function uxPick(s){uxScore=s;uxEmos();document.getElementById("uxFbSend").disabled=false;}
+function uxSendFb(){
+ const note=document.getElementById("uxFbNote").value;
+ if(window.TEL)TEL.feedback(uxScore,note);
+ document.getElementById("uxFbCard").innerHTML=`<h3 style="margin:20px 0">${uxT().done}</h3>`;
+ setTimeout(uxCloseFb,1200);
+}
+</script>
+
+</body></html>

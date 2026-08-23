@@ -1,0 +1,2 @@
+/home/frankstone/bin/gpu_polite.sh: line 18: syntax error near unexpected token `)'
+/home/frankstone/bin/gpu_polite.sh: line 18: `    DEVICE=cpu case "$SCRIPT" in *.sh) exec bash "$SCRIPT";; *) exec ${PYTHON:-$HOME/miniconda3/envs/cogvideo/bin/python} "$SCRIPT";; esac'

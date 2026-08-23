@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <title>单词弹珠英雄 · Word Pop Quest</title>
+  <link rel="stylesheet" href="/kernel/shell.css">
+</head>
+<body>
+  <div class="stage">
+    <div class="hud">
+      <div>CHARGE<br><b id="chg">0%</b></div>
+      <div>答对<br><b id="ok">0</b></div>
+      <div>STAR DUST<br><b id="dust">0</b></div>
+    </div>
+    <div class="board-wrap">
+      <canvas id="game" width="420" height="420" aria-label="Word Pop"></canvas>
+    </div>
+    <div class="thumb-zone">
+      <p id="prompt" style="margin:0;font-size:18px"></p>
+      <input id="ans" inputmode="text" autocomplete="off" placeholder="答案" style="height:44px;border-radius:10px;border:1px solid #3a3428;background:#1c1914;color:#f4ead8;padding:0 12px">
+      <button class="launch" id="goBtn" type="button">答题充能 / 发射</button>
+      <div class="row">
+        <button type="button" id="reportBtn">家长日报</button>
+        <button type="button" id="pullBtn">萌宠 50★</button>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+  </div>
+  <script src="/kernel/sfx.js"></script>
+  <script src="/kernel/economy.js"></script>
+  <script src="/kernel/gacha.js"></script>
+  <script src="/kernel/save.js"></script>
+  <script src="/kernel/quiz.js"></script>
+  <script src="/kernel/physics.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

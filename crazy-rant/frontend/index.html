@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Crazy Rant · 发疯文学</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="void" aria-hidden="true">
+    <div class="flare crimson"></div>
+    <div class="flare cyan"></div>
+    <div class="halftone"></div>
+  </div>
+
+  <div class="lang-bar" role="group" aria-label="Language">
+    <button type="button" class="lang-btn active" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="zh">中</button>
+  </div>
+
+  <div class="arena">
+    <div class="fit-slot">
+      <div class="cabinet">
+        <div class="marquee">
+          <i></i>
+          <div>
+            <small id="tagline">CABINET 06 · RANT RING</small>
+            <b>CRAZY RANT</b>
+            <em id="lore">Scream in glyphs. Smile dies in color.</em>
+          </div>
+          <span id="runState">WAITING</span>
+        </div>
+
+        <div class="hood">
+          <div class="play-bay">
+            <aside class="side-rail">
+              <div class="plate">
+                <small id="lHp">HP</small>
+                <b id="hp">5</b>
+                <div class="bar"><i id="hpFill"></i></div>
+              </div>
+              <div class="plate">
+                <small id="lRage">RAGE</small>
+                <b id="rage">0</b>
+                <div class="bar acid"><i id="rageFill"></i></div>
+              </div>
+              <div class="plate chain">
+                <small id="lCombo">COMBO</small>
+                <b id="combo">×0</b>
+                <div id="chainTrack"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <article class="plate mission">
+                <small id="lPhase">PHASE</small>
+                <b id="phase">SMUG</b>
+                <div class="bar cyan"><i id="bossFill"></i></div>
+                <strong id="bossHp">1000</strong>
+              </article>
+            </aside>
+
+            <div class="glass">
+              <canvas id="game" aria-label="Crazy Rant arena"></canvas>
+              <div class="scan"></div>
+              <div class="dots"></div>
+              <div class="overlay" id="titleOv">
+                <img class="keyart" src="promo.jpg" alt="" onerror="this.style.display='none'">
+                <small id="titleTag">CABINET 06</small>
+                <h1>CRAZY RANT</h1>
+                <h2>发疯文学</h2>
+                <p id="titleHint">A verbal boss battle. No readable words in the ring.</p>
+                <button type="button" class="punch" id="startBtn">PRESS START</button>
+              </div>
+              <div class="overlay load" id="loadOv" hidden>
+                <small id="loadTag">PICK THREE</small>
+                <div class="bank" id="bank"></div>
+                <p class="hint" id="loadHint">Drag to dodge. Auto-fire.</p>
+                <button type="button" class="punch" id="fightBtn">RANT</button>
+              </div>
+              <div class="overlay end" id="endOv" hidden>
+                <small id="endTag">KO</small>
+                <h1 id="endTitle">SUNSHINE DOWN</h1>
+                <p id="endDetail"></p>
+                <button type="button" class="punch" id="againBtn">RETRY</button>
+              </div>
+              <div class="banner" id="banner"></div>
+            </div>
+
+            <aside class="side-rail right">
+              <div class="plate">
+                <small id="lBest">BEST</small>
+                <b id="best">—</b>
+              </div>
+              <div class="plate">
+                <small id="lMax">MAX HIT</small>
+                <b id="maxCombo">0</b>
+              </div>
+              <div class="plate slots" id="slotPlate">
+                <small id="lSlots">SLOTS</small>
+                <div class="slot-row" id="slotRow"></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="deck">
+          <div class="held" id="held"></div>
+          <button type="button" class="launch" id="deckBtn">
+            <small id="lHold">TAP</small>
+            <b id="lLaunch">START</b>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/pool.js"></script>
+  <script src="js/rant.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/glyphs.js"></script>
+  <script src="js/combat.js"></script>
+  <script src="js/boss.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

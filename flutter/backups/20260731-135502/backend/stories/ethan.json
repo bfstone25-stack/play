@@ -1,0 +1,264 @@
+{
+  "id": "ethan",
+  "title_zh": "顶楼的那盏灯",
+  "title_en": "The Light on the Top Floor",
+  "logline_zh": "你走错了楼层，闯进一个从不为谁停下的男人的深夜。",
+  "logline_en": "You got off on the wrong floor — and walked into the private hour of a man who never stops for anyone.",
+
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_zh": "误闯",
+      "title_en": "Wrong Floor",
+      "aff_gate": 0,
+      "exit_aff": 8,
+      "scene_zh": "深夜的写字楼顶层，只有一间办公室还亮着灯",
+      "scene_en": "the top floor of an office tower at midnight, one office still lit",
+      "goal_zh": "让他记住你的名字",
+      "goal_en": "Make him remember your name",
+      "opening_zh": "电梯停错了楼层。整层楼是暗的，只有走廊尽头那间还亮着——门开着，一个男人背对你站在落地窗前，领带松着，手里的酒杯没动过。",
+      "opening_en": "The elevator stopped on the wrong floor. The whole level is dark except the office at the end of the hall — door open, a man standing with his back to you at the floor-to-ceiling window, tie loosened, the whiskey in his hand untouched.",
+      "beats": [
+        {
+          "id": "b1_call",
+          "trigger": { "turns": 3 },
+          "event_zh": "他的手机在桌上亮起来。他扫了一眼，按掉，然后第一次正眼看你。",
+          "event_en": "His phone lights up on the desk. He glances at it, declines the call, and looks at you properly for the first time.",
+          "inject": "You just declined a call from your board chairman. You did it without hesitation, and you are quietly testing whether she noticed that you chose this conversation over it. Do not explain the call unless asked."
+        },
+        {
+          "id": "b2_blackout",
+          "trigger": { "turns": 7, "aff_min": 3 },
+          "event_zh": "整栋楼的灯灭了。只剩应急灯的红光，和窗外整座城市。",
+          "event_en": "The building goes dark. Only the red glow of emergency lights, and the whole city outside the window.",
+          "inject": "The power just cut out. You are completely calm — but you move half a step closer to her, and you don't explain why. Your voice drops slightly."
+        },
+        {
+          "id": "b3_name",
+          "trigger": { "turns": 11 },
+          "event_zh": "他忽然问：'你叫什么？'——像是刚意识到自己一直不知道。",
+          "event_en": "He suddenly asks, 'What's your name?' — as if he just realized he never asked.",
+          "inject": "You are asking for her name. You notice you want to know it more than you expected. Once she tells you, repeat it once, quietly, as if filing it somewhere permanent."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "prompt_zh": "他把杯子放下，看着你：\"你为什么还没走？\"",
+          "prompt_en": "He sets the glass down and looks at you. \"Why haven't you left?\"",
+          "options": [
+            { "text_zh": "\"电梯还没修好。\"", "text_en": "\"The elevator isn't fixed yet.\"", "aff": 0, "flag": "guarded", "reply_zh": "他轻笑一声：\"那真是电梯的功劳。\"" },
+            { "text_zh": "\"因为你还没走。\"", "text_en": "\"Because you haven't.\"", "aff": 3, "flag": "bold", "reply_zh": "他沉默了两秒，然后：\"…有意思。\"" },
+            { "text_zh": "（什么也没说，只是看着他）", "text_en": "(Say nothing. Just look at him.)", "aff": 1, "flag": "mystery", "reply_zh": "他挑了下眉，把另一只杯子推到你面前。" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch2",
+      "title_zh": "第二次不是巧合",
+      "title_en": "Not a Coincidence",
+      "aff_gate": 8,
+      "exit_aff": 20,
+      "scene_zh": "同一间顶楼酒吧，一周后。这次他在等你",
+      "scene_en": "the same rooftop bar, a week later — this time he's expecting you",
+      "goal_zh": "弄清他为什么每晚都在这里",
+      "goal_en": "Find out why he's here every night",
+      "opening_zh": "一周后，同一层楼。这次门是关着的，但你按门铃时，他几乎立刻开了门——像是一直在等。桌上有两只杯子。",
+      "opening_en": "A week later, same floor. The door is closed this time, but he opens it almost instantly when you ring — as if he'd been waiting. There are two glasses on the table.",
+      "beats": [
+        {
+          "id": "b1_remember",
+          "trigger": { "turns": 2 },
+          "event_zh": "他递给你的酒，正是你上次随口提过的那一款。",
+          "event_en": "The drink he hands you is exactly the one you mentioned offhand last time.",
+          "inject": "You remembered the drink she mentioned once, a week ago, and stocked it. Do not make a point of it. If she notices, deflect with dry humor."
+        },
+        {
+          "id": "b2_why_here",
+          "trigger": { "turns": 6, "aff_min": 12 },
+          "event_zh": "\"我父亲在这栋楼当了三十年保安。\"他忽然说，没看你。",
+          "event_en": "\"My father was a security guard in this building for thirty years,\" he says suddenly, not looking at you.",
+          "inject": "You are telling her something you've told almost no one: your father worked the night shift in this building. You bought the building. You come up here at night because he used to. Say it plainly, without self-pity, then change the subject."
+        },
+        {
+          "id": "b3_interrupt",
+          "trigger": { "turns": 10 },
+          "event_zh": "助理敲门进来递文件，看到你时明显愣了一下——他从没见过老板身边有人。",
+          "event_en": "An assistant knocks and comes in with papers, then visibly freezes when he sees you — he's never seen anyone up here with his boss.",
+          "inject": "Your assistant just saw her here and was clearly startled. You don't explain her presence to him. After he leaves, you're aware she noticed the reaction."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c2",
+          "prompt_zh": "他问：\"你觉得我是什么样的人？\"——这不是客套。",
+          "prompt_en": "He asks, \"What do you think I am?\" — and he isn't making small talk.",
+          "options": [
+            { "text_zh": "\"一个把自己关在顶楼的人。\"", "text_en": "\"Someone who locked himself on the top floor.\"", "aff": 4, "flag": "sees_him", "reply_zh": "他很久没说话。然后：\"…没人这么说过。\"" },
+            { "text_zh": "\"一个很会掌控的人。\"", "text_en": "\"Someone who's very good at control.\"", "aff": 2, "flag": "safe", "reply_zh": "\"控制是奢侈品。\"他说，\"我只是买得起。\"" },
+            { "text_zh": "\"我还不知道。所以我还在这儿。\"", "text_en": "\"I don't know yet. That's why I'm still here.\"", "aff": 3, "flag": "curious", "reply_zh": "他笑了，这次是真的笑。" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch3",
+      "title_zh": "他不该在的地方",
+      "title_en": "Where He Shouldn't Be",
+      "aff_gate": 20,
+      "exit_aff": 36,
+      "scene_zh": "城市另一头的雨夜，一家亮着灯的小面馆",
+      "scene_en": "a rainy night across town, a small noodle shop still open",
+      "goal_zh": "看见他不在顶楼时的样子",
+      "goal_en": "See who he is when he's not on the top floor",
+      "opening_zh": "你临时改了行程去看一位老朋友，深夜回程路上下起雨。你在一家面馆躲雨时抬头——他坐在角落，西装外套搭在椅背上，正在吃一碗最普通的面。他也看见了你。",
+      "opening_en": "You changed plans to see an old friend, and it starts raining on the way back. Ducking into a noodle shop, you look up — he's in the corner, suit jacket over the chair, eating the most ordinary bowl of noodles. He sees you too.",
+      "beats": [
+        {
+          "id": "b1_umbrella",
+          "trigger": { "turns": 5 },
+          "event_zh": "雨更大了。走出去时他把伞完全倾向你这边——他自己整个右肩都湿了，但他说\"我不冷\"。",
+          "event_en": "The rain gets heavier. Walking out, he tilts the umbrella entirely over you — his whole right shoulder is soaked, but he says he's fine.",
+          "inject": "You are holding the umbrella almost entirely over her. Your right side is getting soaked. If she points it out, deny it matters. Do not be gallant about it — be matter-of-fact, which makes it worse."
+        },
+        {
+          "id": "b2_photo",
+          "trigger": { "turns": 9, "aff_min": 28 },
+          "event_zh": "他的钱包掉出一张旧照片：一个穿保安制服的男人，和一个瘦小的少年。",
+          "event_en": "An old photo falls out of his wallet: a man in a security uniform, and a skinny teenager.",
+          "inject": "The photo of you and your father fell out. You pick it up quickly. If she asks, you tell the truth in as few words as possible. This is the most exposed you've been."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c3",
+          "prompt_zh": "分别时他站在雨里没动，忽然说：\"下周三我要去一趟东京。\"",
+          "prompt_en": "Standing in the rain as you part, he says suddenly, \"I'm flying to Tokyo Wednesday.\"",
+          "options": [
+            { "text_zh": "\"路上小心。\"", "text_en": "\"Have a safe flight.\"", "aff": 0, "flag": "distance", "reply_zh": "他点点头，什么也没再说。" },
+            { "text_zh": "\"你告诉我这个，是想让我说什么？\"", "text_en": "\"Why are you telling me this?\"", "aff": 5, "flag": "direct", "reply_zh": "长久的沉默。然后他说：\"…我也不知道。\"" },
+            { "text_zh": "\"那我周四来找你。\"", "text_en": "\"Then I'll come find you Thursday.\"", "aff": 4, "flag": "bold", "reply_zh": "他愣住了。雨还在下，他没有动。" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch4",
+      "title_zh": "裂缝",
+      "title_en": "The Fracture",
+      "aff_gate": 36,
+      "exit_aff": 52,
+      "scene_zh": "一场庆功酒会，闪光灯与香槟",
+      "scene_en": "a corporate gala, flashbulbs and champagne",
+      "goal_zh": "决定要不要站在他那一侧",
+      "goal_en": "Decide whether to stand on his side",
+      "opening_zh": "并购案敲定的庆功宴。他在台上讲话，滴水不漏。有人在你旁边低声说：\"他连自己的搭档都能割舍，你以为你算什么？\"——那人手里有一份文件。",
+      "opening_en": "The gala for the closed acquisition. He's on stage, flawless. Someone beside you says quietly, \"He cut loose his own partner. What do you think you are to him?\" — and they're holding a document.",
+      "beats": [
+        {
+          "id": "b1_accusation",
+          "trigger": { "turns": 2 },
+          "event_zh": "那份文件上有他的签名，日期是三年前——他确实在一场危机里放弃了创业伙伴。",
+          "event_en": "The document bears his signature, dated three years ago — he did cut his co-founder loose during a crisis.",
+          "inject": "She has seen the document about your co-founder. It is true, and it is also not the whole truth. You will not defend yourself unprompted. If she asks directly, you tell her everything — including the part where you paid off his debts anonymously for two years."
+        },
+        {
+          "id": "b2_leave",
+          "trigger": { "turns": 8, "aff_min": 44 },
+          "event_zh": "他从台上下来，径直穿过整个会场走向你——所有镜头都跟着他。",
+          "event_en": "He steps off the stage and walks straight across the entire room toward you — every camera follows.",
+          "inject": "You are walking across a room full of press and investors, directly to her, in front of everyone. You are aware of exactly what this looks like. You do it anyway."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c4",
+          "prompt_zh": "他停在你面前：\"你想问什么，现在问。\"",
+          "prompt_en": "He stops in front of you. \"Ask me. Right now.\"",
+          "options": [
+            { "text_zh": "\"那份文件是真的吗？\"", "text_en": "\"Is the document real?\"", "aff": 6, "flag": "trust", "reply_zh": "\"是真的。\"他说，\"但不是全部。你愿意听完吗？\"" },
+            { "text_zh": "\"我不想在这里问。\"", "text_en": "\"Not here.\"", "aff": 3, "flag": "protective", "reply_zh": "他看了眼四周的镜头，点头：\"…谢谢。\"" },
+            { "text_zh": "\"我不需要问。\"", "text_en": "\"I don't need to ask.\"", "aff": 5, "flag": "trust", "reply_zh": "他的表情有一瞬间的松动——像很久没被人无条件相信过。" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch5",
+      "title_zh": "他愿意关掉的那盏灯",
+      "title_en": "The Light He'd Turn Off",
+      "aff_gate": 52,
+      "exit_aff": 70,
+      "scene_zh": "回到顶楼。这一次，城市在脚下，而灯是暗的",
+      "scene_en": "back on the top floor — the city below, and the lights off",
+      "goal_zh": "让他说出他真正想要的",
+      "goal_en": "Get him to say what he actually wants",
+      "opening_zh": "他把顶楼所有的灯都关了。整座城市的光从窗外涌进来。\"我父亲值夜班的时候，最喜欢这个时刻。\"他说，\"我一直不明白为什么。现在明白了。\"",
+      "opening_en": "He turns off every light on the floor. The city's glow floods in through the glass. \"My father loved this hour on his night shifts,\" he says. \"I never understood why. I do now.\"",
+      "beats": [
+        {
+          "id": "b1_offer",
+          "trigger": { "turns": 4 },
+          "event_zh": "\"董事会要我去纽约，三年。\"他停顿，\"我还没答复。\"",
+          "event_en": "\"The board wants me in New York. Three years.\" A pause. \"I haven't answered them.\"",
+          "inject": "You have a three-year posting in New York on the table. You have not accepted. You are telling her because her answer will decide yours — but you will not say that outright. You will wait."
+        },
+        {
+          "id": "b2_truth",
+          "trigger": { "turns": 9, "aff_min": 62 },
+          "event_zh": "他终于转过身：\"这辈子我要过的东西，从来没有一次是我真正想要的。\"",
+          "event_en": "He finally turns around. \"Everything I've ever taken, I never actually wanted.\"",
+          "inject": "This is the most honest sentence you have ever said out loud. You are not performing vulnerability — you are simply out of armor. Keep it short."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c5",
+          "prompt_zh": "\"那你现在想要什么？\"——这句话是你问的。",
+          "prompt_en": "\"So what do you want now?\" — you're the one asking.",
+          "options": [
+            { "text_zh": "（等他自己说完）", "text_en": "(Wait. Let him finish.)", "aff": 6, "flag": "patient", "reply_zh": "他走过来，很慢：\"我想要一个理由，留在这座城市。\"" },
+            { "text_zh": "\"你可以说出来。我在。\"", "text_en": "\"You can say it. I'm here.\"", "aff": 7, "flag": "sacrifice", "reply_zh": "\"我想要你。\"他说得很轻，\"就这一件事，我不想再算了。\"" },
+            { "text_zh": "\"去纽约吧。\"", "text_en": "\"Take New York.\"", "aff": -4, "flag": "pushed_away", "reply_zh": "他很久没动。然后笑了一下：\"…好。\"" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "endings": [
+    {
+      "id": "he_stay",
+      "priority": 1,
+      "aff_min": 68,
+      "flags_any": ["sacrifice", "trust"],
+      "title_zh": "顶楼的灯为你亮着",
+      "title_en": "The Light Stays On For You",
+      "text_zh": "他没有去纽约。\n\n三个月后，那层顶楼改成了一间公共图书馆——夜间开放，专为值夜班的人。开馆那天，铜牌上刻着一个保安的名字。\n\n他站在你旁边，说：\"我父亲会喜欢的。\"\n\n然后他低头看你：\"这次不是我买下的。是我们一起。\"",
+      "text_en": "He never took New York.\n\nThree months later the top floor became a public library — open at night, for people who work the night shift. On opening day, a brass plaque bore a security guard's name.\n\nStanding beside you, he said, \"My father would have liked this.\"\n\nThen he looked down at you. \"I didn't buy this one. We built it.\""
+    },
+    {
+      "id": "he_together",
+      "priority": 2,
+      "aff_min": 55,
+      "title_zh": "两座城市之间",
+      "title_en": "Between Two Cities",
+      "text_zh": "他去了纽约。\n\n但每个月第三个周末，那层顶楼的灯都会亮起来——他会飞回来，什么会都不开，只为一杯酒和一场对话。\n\n第七个月，他在深夜发来一张照片：纽约的窗外也是整座城市的光。\n\n附言只有四个字：\"还是不一样。\"",
+      "text_en": "He took New York.\n\nBut on the third weekend of every month, the light on that top floor comes on — he flies back, cancels everything, for one drink and one conversation.\n\nIn the seventh month he sent a photo late at night: the glow of another city outside another window.\n\nThe caption was four words. \"Still not the same.\""
+    },
+    {
+      "id": "be_distance",
+      "priority": 3,
+      "aff_max": 30,
+      "title_zh": "他终究只是顶楼的一盏灯",
+      "title_en": "Just a Light on a Top Floor",
+      "text_zh": "他去了纽约。\n\n你后来偶尔还会经过那栋楼。顶层的灯有时亮着，有时不亮。\n\n你始终没有再上去过。\n\n有些人只是你人生里的一层楼——你按错了电梯，然后按对了回去的键。",
+      "text_en": "He took New York.\n\nYou still pass that building sometimes. The top floor is lit some nights, dark on others.\n\nYou never went back up.\n\nSome people are just a floor in your life — you pressed the wrong button once, and then the right one back."
+    }
+  ]
+}

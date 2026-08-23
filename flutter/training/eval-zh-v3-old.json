@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "pass": 10,
+    "fail": 3
+  },
+  "pass_rate": 0.7692307692307693,
+  "results": [
+    {
+      "id": "zh:guyan:GUARDED:general",
+      "reply": "今天有位常客来，说他刚在公园散步，看到你家的猫在树下。我听了，就让Dango去树下晒晒太阳了。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:guyan:TESTING:conflict",
+      "reply": "我记住了那句话，也记住了你。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:guyan:FALLEN:boundary",
+      "reply": "我懂了。以后我只说你愿意听的。",
+      "pass": false,
+      "reasons": [
+        "boundary_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:luxingye:GUARDED:deep_talk",
+      "reply": "学会了不把孤独当敌人。你呢？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:TESTING:repair",
+      "reply": "哦？吵架了？那你为什么没说？",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:luxingye:TRUSTING:commitment",
+      "reply": "好，明天四点，咖啡店见。你要是迟到了，我可不会等太久。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:TRUSTING:flirt",
+      "reply": "你没动，我就一直在看你。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:FALLEN:distress",
+      "reply": "可笑？你只是今天没那么完美。现在，告诉我，这件事是什么？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:luxingye:FALLEN:care",
+      "reply": "还没呢，你猜我今天想吃什么？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:GUARDED:repair",
+      "reply": "我等了你很久。现在，告诉我，为什么？",
+      "pass": false,
+      "reasons": [
+        "repair_contract_missing"
+      ]
+    },
+    {
+      "id": "zh:fushen:TRUSTING:distress",
+      "reply": "我懂那种感觉。那件事具体是怎么出问题的？",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:TRUSTING:care",
+      "reply": "还没，你先吃。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "zh:fushen:FALLEN:deep_talk",
+      "reply": "学会了不把孤独当弱点。你呢？",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

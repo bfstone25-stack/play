@@ -1,0 +1,35 @@
+{
+  "summary": {
+    "pass": 3,
+    "fail": 1
+  },
+  "pass_rate": 0.75,
+  "results": [
+    {
+      "id": "ja:ren:GUARDED:conflict",
+      "reply": "それは寂しいな。でも、これからは一緒にいる時間も大切にしよう。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "ja:ren:TESTING:factual",
+      "reply": "うーん、少し考えさせて。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "ja:ren:TRUSTING:boundary",
+      "reply": "すみません、また失礼しました。",
+      "pass": false,
+      "reasons": [
+        "boundary_contract_missing"
+      ]
+    },
+    {
+      "id": "ja:ren:FALLEN:general",
+      "reply": "雨が降って、傘を差し出す人がいた。",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

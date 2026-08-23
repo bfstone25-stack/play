@@ -1,0 +1,12 @@
+{
+  "counts": {
+    "west:train": 147,
+    "zh:train": 101,
+    "ja:train": 49
+  },
+  "source_sha256": "1d42157a65cbbf7a18741388373eae5b7ba61e7678f4fc758c5b8e2de50c344b",
+  "sources": [
+    "training/gold-behavior.jsonl",
+    "training/authored-candidates.jsonl"
+  ]
+}

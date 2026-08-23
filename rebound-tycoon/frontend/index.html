@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#061018">
+  <meta name="description" content="REBOUND — night-shift pinball that grows into a property empire.">
+  <title>REBOUND · 回弹大亨</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="canonical" href="https://play.blazecore.dev/rebound-tycoon/">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta property="og:title" content="REBOUND — night-shift pinball tycoon">
+  <meta property="og:description" content="Launch the ball. Rebound every bumper. Spend the coins on a neon empire.">
+  <meta property="og:image" content="https://play.blazecore.dev/rebound-tycoon/assets/promo.jpg">
+  <meta property="og:url" content="https://play.blazecore.dev/rebound-tycoon/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="REBOUND — night-shift pinball tycoon">
+  <meta name="twitter:description" content="Launch the ball. Rebound every bumper. Spend the coins on a neon empire.">
+  <meta name="twitter:image" content="https://play.blazecore.dev/rebound-tycoon/assets/promo.jpg">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <script src="config.js"></script>
+</head>
+<body>
+  <div class="void" aria-hidden="true">
+    <div class="glow a"></div>
+    <div class="glow b"></div>
+    <div class="haze"></div>
+  </div>
+
+  <div class="lang-bar" role="group" aria-label="Language and booth">
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+    <button type="button" class="lang-btn" data-lang="pt">PT</button>
+    <button type="button" class="lang-btn" data-lang="zh">中</button>
+    <button type="button" class="lang-btn" data-lang="ja">日</button>
+    <button type="button" class="icon-btn" id="soundBtn" aria-pressed="true">♪</button>
+    <button type="button" class="icon-btn" id="settingsBtn">☰</button>
+  </div>
+
+  <div class="arena">
+    <div class="fit-slot">
+      <div class="cabinet">
+        <div class="marquee">
+          <div class="guard-plate" id="guardPlate">
+            <img src="assets/guard.webp" alt="" id="guardFace" width="72" height="96">
+            <i id="moodDot"></i>
+          </div>
+          <div>
+            <small id="tagline">GATE 01 · NIGHT EMPIRE</small>
+            <b id="wordmark">REBOUND</b>
+            <em id="submark">回弹大亨</em>
+          </div>
+          <span id="runState">WAITING</span>
+        </div>
+
+        <div class="hood">
+          <div class="play-bay">
+            <aside class="side-rail" aria-label="Ledger">
+              <div class="plate">
+                <small id="lCoins">COINS</small>
+                <b id="coins">0</b>
+              </div>
+              <div class="plate">
+                <small id="lRent">RENT</small>
+                <b id="rent">0</b>
+              </div>
+              <div class="plate">
+                <small id="lBalls">BALLS</small>
+                <b id="balls">3</b>
+              </div>
+              <div class="plate">
+                <small id="lCombo">COMBO</small>
+                <b id="combo">0</b>
+              </div>
+              <article class="plate mission">
+                <small id="lNight">NIGHT</small>
+                <b id="night">1</b>
+                <small id="lEra">ERA</small>
+                <strong id="eraName">Booth</strong>
+                <div class="bar"><i id="eraFill"></i></div>
+              </article>
+            </aside>
+
+            <div class="glass">
+              <canvas id="stage" aria-label="Rebound Tycoon skyline"></canvas>
+              <div class="scan"></div>
+              <div class="banner" id="banner"></div>
+              <p class="caption" id="dutyLine">The booth is enough. For an hour.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="deck pin-deck">
+          <button type="button" class="ghost flip-btn" id="leftBtn"><small>Z</small><b id="leftLabel">LEFT</b></button>
+          <button type="button" class="spray-btn" id="sprayBtn"><small>SPACE</small><b id="sprayLabel">PUMP HOSE</b></button>
+          <button type="button" class="ghost flip-btn" id="rightBtn"><small>/</small><b id="rightLabel">RIGHT</b></button>
+          <button type="button" class="ghost" id="shopBtn"><small id="shopHint">BUY</small><b id="shopLabel">LEDGER</b></button>
+          <button type="button" class="launch" id="prestigeBtn"><small id="tokenHint">0</small><b id="prestigeLabel">REBOUND</b></button>
+        </div>
+        <button type="button" class="launch again-btn" id="againBtn" style="display:none"><b id="againLabel">NEW NIGHT</b></button>
+        <p id="loreLine" hidden></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay show" id="intro" role="dialog" aria-modal="true">
+    <div class="sheet title-sheet">
+      <img src="assets/title.webp?v=6" alt="" class="title-art">
+      <small id="introTag">GATE 01</small>
+      <h1 id="introTitle">Rebound Tycoon</h1>
+      <p id="introBody">You are the night-shift guard. Pump the water hose. Soak troublemakers. Bank the rent. Buy the skyline.</p>
+      <button type="button" class="launch" id="startBtn"><b id="startLabel">TAKE THE GATE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="shop" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <button type="button" class="sheet-x" id="closeShopX" aria-label="Close">×</button>
+      <small>LEDGER</small>
+      <h2 id="shopTitle">Ledger</h2>
+      <p id="shopBody">Buy the booth. Then the towers.</p>
+      <div class="shop-list" id="shopList"></div>
+      <button type="button" class="ghost" id="closeShop">CLOSE</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="prestige" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <button type="button" class="sheet-x" id="closePrestigeX" aria-label="Close">×</button>
+      <small>REBOUND</small>
+      <h2 id="prestigeTitle">Rebound</h2>
+      <p id="prestigeBody">Reach the lobby era, then earn a token.</p>
+      <p><small>TOKENS</small> <b id="tokens">0</b></p>
+      <div class="perk-list" id="perkList"></div>
+      <button type="button" class="launch" id="prestigeGo">REBOUND THE EMPIRE</button>
+      <button type="button" class="ghost" id="closePrestige">CLOSE</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="settings" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <button type="button" class="sheet-x" id="closeSettingsX" aria-label="Close">×</button>
+      <small>BOOTH</small>
+      <h2 id="settingsTitle">Booth</h2>
+      <div class="setting-row"><span id="lSound">Sound</span><button type="button" class="ghost" id="soundToggle"><b id="soundState">ON</b></button></div>
+      <div class="setting-row"><span id="lMotion">Motion</span><button type="button" class="ghost" id="motionToggle"><b id="motionState">FULL</b></button></div>
+      <p id="lLanguage">Language</p>
+      <div class="lang-grid">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="pt">PT</button>
+        <button type="button" data-lang="zh">中</button>
+        <button type="button" data-lang="ja">日</button>
+      </div>
+      <button type="button" class="ghost" id="logBtn">NIGHT LOG</button>
+      <button type="button" class="launch" id="shareBtn">SHARE THE GATE</button>
+      <button type="button" class="ghost" id="closeSettings">CLOSE</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="log" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <button type="button" class="sheet-x" id="closeLogX" aria-label="Close">×</button>
+      <small>NIGHT LOG</small>
+      <h2 id="logTitle">Night Log</h2>
+      <p id="logBody">How was the shift? The empire is listening.</p>
+      <div class="scores">
+        <button type="button" data-score="1">1</button>
+        <button type="button" data-score="2">2</button>
+        <button type="button" data-score="3">3</button>
+        <button type="button" data-score="4">4</button>
+        <button type="button" data-score="5">5</button>
+      </div>
+      <textarea id="logNote" class="field-note" maxlength="400"></textarea>
+      <button type="button" class="launch" id="sendLog">FILE THE LOG</button>
+      <button type="button" class="ghost" id="closeLog">CLOSE</button>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const API = window.TEL_API || "";
+    const pid = (function(){let p=localStorage.getItem("tel_pid");
+      if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
+    const sid = "s"+Math.random().toString(36).slice(2,10);
+    const t0 = Date.now();
+    let queue = [];
+    function push(etype,name,value,dur){
+      queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
+                  value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
+      if(queue.length>=8) flush();
+    }
+    function flush(useBeacon){
+      if(!queue.length||!API) return;
+      const batch = queue.splice(0,50);
+      const body = JSON.stringify(batch);
+      if(useBeacon && navigator.sendBeacon){
+        navigator.sendBeacon(API+"/tel_batch", new Blob([body],{type:"application/json"}));
+      } else {
+        fetch(API+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
+      }
+    }
+    push("pageview", location.pathname||"/", document.title||"");
+    document.addEventListener("click", e=>{
+      const el=e.target.closest("button,a,[data-tel]");
+      if(!el)return;
+      push("click", el.id||el.dataset.tel||el.className||el.tagName,
+           (el.innerText||"").trim().slice(0,60));
+    }, true);
+    window.addEventListener("beforeunload", ()=>{
+      push("session_end","session","",Math.round((Date.now()-t0)/1000));
+      flush(true);
+    });
+    document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
+    setInterval(()=>flush(), 20000);
+    window.TEL = {
+      chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
+      feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
+      ev: (name, value)=>push("custom",name,value),
+      flush
+    };
+  })();
+  </script>
+  <script src="js/kernel.js?v=6"></script>
+  <script src="js/copy.js?v=6"></script>
+  <script src="js/audio.js?v=6"></script>
+  <script src="js/stage.js?v=6"></script>
+  <script src="js/game.js?v=6"></script>
+</body>
+</html>

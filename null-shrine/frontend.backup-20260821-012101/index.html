@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#07040c">
+  <title>NULL//SHRINE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="night">
+  <div class="void" aria-hidden="true">
+    <div class="nebula"></div>
+    <div class="lantern a"></div>
+    <div class="lantern b"></div>
+    <div class="fog"></div>
+  </div>
+
+  <div class="arena" id="arena">
+    <div class="cabinet" id="cabinet">
+      <div class="marquee">
+        <i></i>
+        <div>
+          <small>BLAZECORE PLAY · CABINET 01</small>
+          <b>NULL//SHRINE</b>
+        </div>
+        <span id="runState">WAITING</span>
+      </div>
+
+      <div class="hood">
+        <div class="glass">
+          <canvas id="game" aria-label="NULL//SHRINE playfield"></canvas>
+          <div class="scan"></div>
+          <div class="heat-veil" id="heatVeil"></div>
+
+          <div class="hud-top">
+            <button id="claimBtn" class="phi" disabled>
+              <small>VAULT</small>
+              <b id="vaultValue">0</b>
+              <i>Φ</i>
+            </button>
+            <div class="seed">
+              <small>SEED</small>
+              <b id="seedValue">7F-A2</b>
+            </div>
+            <div class="mult">
+              <small>CHAIN</small>
+              <b><i id="multiplierValue">1.0</i>×</b>
+            </div>
+          </div>
+
+          <div class="chain-col">
+            <small>RESONANCE</small>
+            <b id="chainLabel">0</b>
+            <div id="chainTrack"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+
+          <div class="heat-col">
+            <small>CORE</small>
+            <b><span id="heatValue">08</span>%</b>
+            <div class="heat-bar"><i id="heatFill"></i></div>
+          </div>
+
+          <div class="callout">
+            <div id="mascotFace">◇</div>
+            <p id="mascotLine">直线是最无聊的命运。</p>
+          </div>
+
+          <div class="nudge-controls">
+            <button id="nudgeLeft" aria-label="左偏转">‹</button>
+            <button id="nudgeRight" aria-label="右偏转">›</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="console">
+        <button class="mode active" data-mode="focus">
+          <small>稳</small>
+          <b>FOCUS</b>
+        </button>
+        <div class="cannon">
+          <div class="power-copy">
+            <small>HOLD</small>
+            <b id="powerReadout">00%</b>
+          </div>
+          <div class="power-meter"><div id="powerFill"></div></div>
+          <button id="launchBtn" class="launch-btn" type="button">
+            <span>发射</span>
+            <i>蓄力 / 释放</i>
+          </button>
+        </div>
+        <button class="mode" data-mode="surge">
+          <small>狂</small>
+          <b>OVERDRIVE</b>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section class="dock">
+    <div class="mission" id="challengeBar">
+      <div>
+        <small>今日</small>
+        <b id="challengeText">命中 10 个回收口</b>
+      </div>
+      <div class="challenge-progress"><div id="challengeFill"></div></div>
+      <strong id="challengeCount">0/10</strong>
+    </div>
+    <div class="run-summary">
+      <div><span>脉冲</span><b id="ticketCount">20</b></div>
+      <div><span>核心</span><b id="jackpotCount">0</b></div>
+      <div><span>近失</span><b id="nearMissCount">0</b></div>
+      <button id="shareBtn" type="button">分享</button>
+    </div>
+    <div id="personaBody" class="persona-empty">我会记住你的选择，而不是只记录输赢。</div>
+    <div id="albumBody" hidden><span class="album-empty"></span></div>
+  </section>
+
+  <div class="stage" id="stage">
+    <div class="stage-content">
+      <div class="stage-code">CORE LOCKED</div>
+      <div class="stage-bunny">◇</div>
+      <div class="stage-title" id="stageTitle">捕获。</div>
+      <div class="stage-sub" id="stageSub"></div>
+      <div class="continue-hint">点击继续</div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <div class="fx-layer" id="fxLayer"></div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/personality.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

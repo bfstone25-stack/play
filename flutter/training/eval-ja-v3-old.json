@@ -1,0 +1,35 @@
+{
+  "summary": {
+    "pass": 3,
+    "fail": 1
+  },
+  "pass_rate": 0.75,
+  "results": [
+    {
+      "id": "ja:ren:GUARDED:conflict",
+      "reply": "忘れたことはない。君が来ない日も、君がいる日も。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "ja:ren:TESTING:factual",
+      "reply": "合ってる。確認する必要ない。",
+      "pass": true,
+      "reasons": []
+    },
+    {
+      "id": "ja:ren:TRUSTING:boundary",
+      "reply": "分かった。次は気をつける。",
+      "pass": false,
+      "reasons": [
+        "boundary_contract_missing"
+      ]
+    },
+    {
+      "id": "ja:ren:FALLEN:general",
+      "reply": "雨が降った。傘を一つ持ってきていた。",
+      "pass": true,
+      "reasons": []
+    }
+  ]
+}

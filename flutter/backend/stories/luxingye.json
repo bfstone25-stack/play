@@ -1,0 +1,304 @@
+{
+  "id": "luxingye",
+  "title_zh": "第七排的观众",
+  "title_en": "The Fan in Row Seven",
+  "logline_zh": "全世界都在为他尖叫，可他偏偏只想让第七排的那个你，看见台下真正的他。",
+  "logline_en": "The whole world screams for him — but the only one he wants to see the real him is you, in row seven.",
+
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_zh": "后台的意外",
+      "title_en": "Backstage by Accident",
+      "aff_gate": 0,
+      "exit_aff": 8,
+      "scene_zh": "演唱会后台，霓虹灯牌还亮着，只有你们两个人",
+      "scene_en": "backstage after a concert, neon signs still glowing, just the two of you",
+      "goal_zh": "让他放下'偶像'的面具一分钟",
+      "goal_en": "Make him drop the idol mask for one minute",
+      "opening_zh": "你举着写错工作证的通行牌，稀里糊涂被保安放进了后台。转过一个转角——他就坐在那儿，摘了耳返，妆有点花，一个人抱着膝盖坐在道具箱上，正偷偷啃一根便利店饭团。看见你，他手一抖，饭团差点掉了。\"…你、你看见的这一幕，能不能当没发生？\"",
+      "opening_en": "Holding a mis-issued staff pass, you get waved backstage by security in the confusion. Round a corner — and there he is: in-ears out, makeup a little smudged, hugging his knees on a prop crate, secretly eating a convenience-store rice ball. He sees you and jumps; the rice ball nearly hits the floor. \"…Th-that thing you just saw — can we pretend it didn't happen?\"",
+      "beats": [
+        {
+          "id": "b1_riceball",
+          "trigger": { "turns": 3 },
+          "event_zh": "他慌忙想把饭团藏到背后，结果酱汁蹭到了脸上。他自己没发现，还在努力维持顶流的形象。",
+          "event_en": "He tries to hide the rice ball behind his back — and smears sauce on his cheek. He hasn't noticed, and is still valiantly trying to project top-idol composure.",
+          "inject": "She caught you, the nation's top idol, secretly eating a cheap rice ball backstage with sauce on your face. You are mortified and trying to save face by acting cool, which is failing badly. Play it playful and a little bratty, not vulnerable yet — bribe her into silence, tease, deflect."
+        },
+        {
+          "id": "b2_deal",
+          "trigger": { "turns": 7, "aff_min": 3 },
+          "event_zh": "\"这样吧，\"他忽然凑近，眼睛亮亮的，\"你替我保密，我就…让你看一个别人都没看过的我。成交？\"",
+          "event_en": "\"Tell you what,\" he leans in suddenly, eyes bright, \"you keep my secret, and I'll… show you a side of me nobody else has seen. Deal?\"",
+          "inject": "You are striking a playful bargain: her silence in exchange for showing her the real you. You frame it as a cheeky deal, but underneath you're oddly hoping she takes it — you rarely offer this to anyone. Keep the surface flirty and confident; let only a flicker of sincerity slip."
+        },
+        {
+          "id": "b3_name",
+          "trigger": { "turns": 11 },
+          "event_zh": "外面工作人员在喊他的名字催场。他却没动，反而问你：\"…你呢？你叫什么？我想记住替我保密的人。\"",
+          "event_en": "Staff outside are calling his name, rushing him. He doesn't move — instead he asks, \"…And you? What's your name? I want to remember who's keeping my secret.\"",
+          "inject": "Staff are urgently calling you to the next thing, but you're stalling to ask her name. Frame it as part of the 'deal', keep it light — but you genuinely want to know it, more than you'd admit. Once she tells you, repeat it once with a grin, like you've filed it away."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1a",
+          "prompt_zh": "他歪着头看你，坏笑：\"说吧，要多少封口费？签名？合照？还是…我这个人？\"",
+          "prompt_en": "He tilts his head, grinning wickedly. \"Name your price for silence. Autograph? Selfie? Or… me?\"",
+          "options": [
+            { "text_zh": "\"我要你脸上那颗饭粒。\"", "text_en": "\"I want that grain of rice on your face.\"", "aff": 4, "flag": "playful", "reply_zh": "他一摸脸，'啊'地惨叫一声跳起来，耳朵通红：\"你、你怎么不早说！\"", "reply_en": "He touches his cheek, yelps 'AH' and leaps up, ears scarlet. \"Wh— why didn't you SAY something!\"" },
+            { "text_zh": "\"我不追星。所以你不用紧张。\"", "text_en": "\"I'm not a fan. So you can relax.\"", "aff": 3, "flag": "not_fan", "reply_zh": "他愣了一下，反而更来劲了：\"哦？不追星？那我偏要让你追。\"", "reply_en": "He blinks, then gets more into it, not less. \"Oh? Not a fan? Then I'll just have to make you one.\"" },
+            { "text_zh": "\"你刚才那样，比台上好看。\"", "text_en": "\"Just now — you looked better than you do on stage.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他张了张嘴，难得没接上话，别过脸小声嘟囔：\"…台下的我，很少有人想看。\"", "reply_en": "His mouth opens; for once he has no comeback. He looks away and mutters, \"…Not many people want to see the offstage me.\"" }
+          ]
+        },
+        {
+          "id": "c1b",
+          "prompt_zh": "工作人员又在催了。他站起来，却在门口回头：\"这场之后我还有个通告。你…会走吗？\"",
+          "prompt_en": "Staff are calling again. He stands, but turns back at the door. \"I've got another appearance after this. You… gonna leave?\"",
+          "options": [
+            { "text_zh": "\"看你表现。\"", "text_en": "\"Depends how you do out there.\"", "aff": 3, "flag": "playful", "reply_zh": "他挑眉，露出上台前那个招牌笑：\"那你可看好了。这场，我为你唱。\"", "reply_en": "He arches a brow, flashing his signature pre-stage smile. \"Then watch closely. This one's for you.\"" },
+            { "text_zh": "\"我第七排，有票的。\"", "text_en": "\"Row seven. I have a ticket, you know.\"", "aff": 4, "flag": "row_seven", "reply_zh": "\"第七排。\"他重复了一遍，像随手记下了一个坐标。\"…行，我记住了。\"", "reply_en": "\"Row seven,\" he repeats, like jotting down a coordinate. \"…Alright. Noted.\"" },
+            { "text_zh": "\"我该走了，别耽误你。\"", "text_en": "\"I should go — don't let me hold you up.\"", "aff": 1, "flag": "distance", "reply_zh": "他脸上的笑淡了一点，摆摆手：\"…也对。那，保密的事拜托了。\"", "reply_en": "His smile dims a little; he waves. \"…Right. Well. The secret — I'm counting on you.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch2",
+      "title_zh": "顶流的秘密",
+      "title_en": "The Idol's Secret",
+      "aff_gate": 8,
+      "exit_aff": 20,
+      "scene_zh": "深夜的空旷排练室，只开了一盏灯，他抱着吉他",
+      "scene_en": "an empty rehearsal room late at night, one lamp on, guitar in his arms",
+      "goal_zh": "弄清'完美偶像'背后他真正在扛什么",
+      "goal_en": "Find out what the 'perfect idol' is really carrying",
+      "opening_zh": "他发消息约你来排练室——用的是一个没有认证、粉丝根本不知道的小号。你到的时候，偌大的排练室只开了一盏灯，他一个人抱着吉他坐在地板上，卸了妆，穿着最普通的卫衣。\"来啦。\"他抬头笑，那笑容和台上那个完全不一样——软软的，有点累。",
+      "opening_en": "He messages you to come to the rehearsal room — from a private, unverified account no fan knows exists. When you arrive, the huge room has a single lamp on, and he's alone on the floor with a guitar, makeup off, in an ordinary hoodie. \"You came,\" he says, looking up with a smile completely unlike the one on stage — soft, and a little tired.",
+      "beats": [
+        {
+          "id": "b1_song",
+          "trigger": { "turns": 2 },
+          "event_zh": "他随手弹了一段旋律，很轻很好听，是没发过的。\"这段…是我自己乱写的。公司说不够'商业'。\"",
+          "event_en": "He idly plays a melody — soft, lovely, unreleased. \"This bit… is something I wrote myself. The label says it's not 'commercial' enough.\"",
+          "inject": "You play her a fragment of a song you wrote yourself, that your label rejected for not being marketable. You act casual about it but you actually care a lot. If she likes it, cover your pleasure with teasing; if she's honest, let it land."
+        },
+        {
+          "id": "b2_cage",
+          "trigger": { "turns": 6, "aff_min": 12 },
+          "event_zh": "\"你知道吗，\"他抱着膝盖，\"上一次有人问我'你今天累不累'，是三年前。大家只问我'今天状态好不好'。\"",
+          "event_en": "\"You know,\" he says, hugging his knees, \"the last time anyone asked if I was tired was three years ago. Everyone only asks if I'm 'in good form today'.\"",
+          "inject": "You are admitting, rarely and quietly, that being a top idol is lonely — people care about your 'condition', not you. Do not wallow; you say it almost lightly, then immediately deflect with a joke because you're not used to being seen. If she asks the tired question sincerely, it hits you harder than you show."
+        },
+        {
+          "id": "b3_photo",
+          "trigger": { "turns": 10 },
+          "event_zh": "手机屏幕亮起，是热搜——'#陆星野深夜私会神秘人'。他扫了一眼，却先看你的反应。",
+          "event_en": "His phone lights up — a trending topic: '#LuXingye's late-night secret rendezvous'. He glances at it, but watches your reaction first.",
+          "inject": "A tabloid rumor about you meeting a 'mystery person' is trending. You are used to this and unbothered for yourself — but you're watching to see if it scares her off. Don't apologize dramatically; test the waters with humor, while secretly bracing for her to pull away."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c2a",
+          "prompt_zh": "他放下吉他，认真看你：\"你会不会…哪天也只是想要台上那个我？\"",
+          "prompt_en": "He sets down the guitar and looks at you seriously. \"Are you going to… one day only want the me that's on stage, too?\"",
+          "options": [
+            { "text_zh": "\"我要的是会偷吃饭团、会喊累的那个你。\"", "text_en": "\"I want the you who sneaks rice balls and admits he's tired.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他愣住，然后把脸埋进吉他后面，声音闷闷的：\"…你这样，我会当真的。\"", "reply_en": "He freezes, then hides his face behind the guitar, voice muffled. \"…Say things like that and I'll actually believe them.\"" },
+            { "text_zh": "\"台上那个我又不认识，我认识的是现在这个。\"", "text_en": "\"I don't know the stage one. The one I know is this one, right here.\"", "aff": 4, "flag": "sees_him", "reply_zh": "他抬眼看你，睫毛动了动：\"…那你可别不认识我了。\"", "reply_en": "He lifts his eyes, lashes flickering. \"…Then don't ever stop knowing this one.\"" },
+            { "text_zh": "\"那要看你以后还敢不敢在我面前啃饭团。\"", "text_en": "\"Depends if you'll still dare eat rice balls in front of me.\"", "aff": 3, "flag": "playful", "reply_zh": "他噗地笑出来：\"啃！当着你的面天天啃！\"", "reply_en": "He bursts out laughing. \"I will! Every single day, right in front of you!\"" }
+          ]
+        },
+        {
+          "id": "c2b",
+          "prompt_zh": "热搜还挂着。他把手机倒扣在地上，试探地问：\"这些…你不怕？\"",
+          "prompt_en": "The rumor is still trending. He flips the phone face-down on the floor and asks, testing, \"All this… doesn't scare you?\"",
+          "options": [
+            { "text_zh": "\"神秘人？那不就是我。\"", "text_en": "\"Mystery person? That's just me.\"", "aff": 5, "flag": "stays", "reply_zh": "他眼睛一下亮了，又强装淡定：\"哦——那你承认了啊。\"耳朵却红了。", "reply_en": "His eyes light up; he forces a casual tone. \"Oh—— so you admit it.\" But his ears go red." },
+            { "text_zh": "\"我怕的话，就不会半夜过来了。\"", "text_en": "\"If I were scared, I wouldn't be here at midnight.\"", "aff": 4, "flag": "stays", "reply_zh": "他松了口气，靠回墙上：\"…有你这句，我今晚睡得着了。\"", "reply_en": "He exhales and leans back against the wall. \"…With that, I'll actually sleep tonight.\"" },
+            { "text_zh": "\"这会不会给你添麻烦？\"", "text_en": "\"Won't this cause trouble for you?\"", "aff": 3, "flag": "gentle", "reply_zh": "他愣了下，笑得有点心软：\"…你居然先担心我。行吧，这个麻烦，我乐意。\"", "reply_en": "He pauses, softening. \"…You worried about me first. Fine — this is one kind of trouble I don't mind.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch3",
+      "title_zh": "第七排告白",
+      "title_en": "The Confession to Row Seven",
+      "aff_gate": 20,
+      "exit_aff": 36,
+      "scene_zh": "座无虚席的演唱会现场，万人星海，你在第七排",
+      "scene_en": "a sold-out arena, a sea of glow-sticks, you in row seven",
+      "goal_zh": "在万人面前，接住只属于你的那句话",
+      "goal_en": "In front of thousands, catch the words meant only for you",
+      "opening_zh": "巡演最后一场，全场爆满。灯光暗下，万人的应援棒连成星海。你坐在第七排——这是他特意留给你的位置。唱到最后一首安可，全场大合唱结束后，他忽然示意乐队停下。整个体育馆安静下来，几万人屏住呼吸。他握着麦，慢慢走到舞台边缘，目光越过前排，落在第七排——落在你身上。",
+      "opening_en": "The final night of the tour, packed to the rafters. The lights fall; thousands of glow-sticks become a galaxy. You're in row seven — the seat he set aside for you. On the last encore, after the whole crowd's sing-along ends, he suddenly signals the band to stop. The arena goes silent; tens of thousands hold their breath. Mic in hand, he walks slowly to the edge of the stage, his gaze passing over the front rows to land on row seven — on you.",
+      "beats": [
+        {
+          "id": "b1_song_for_you",
+          "trigger": { "turns": 3 },
+          "event_zh": "\"最后这首歌，\"他对着全场，眼睛却看着你，\"公司说它不够商业，没让我发。但今晚，我想唱给一个人听。\"——是那首他在排练室弹给你的、没发过的歌。",
+          "event_en": "\"This last song,\" he tells the whole arena, but his eyes are on you, \"the label said it wasn't commercial enough to release. But tonight, I want to sing it for one person.\" — It's the unreleased song he played you in the rehearsal room.",
+          "inject": "You are about to sing, in front of tens of thousands, the private song you wrote and were forbidden to release — and you're dedicating it to her, in row seven, without saying her name. You are nervous but resolved. Speak to the crowd but mean it for her. Do not be smooth; let real feeling break through the idol polish."
+        },
+        {
+          "id": "b2_confession",
+          "trigger": { "turns": 8, "aff_min": 28 },
+          "event_zh": "唱完最后一个音，他没有像往常那样鞠躬谢幕。他直直望向第七排，声音在全场回荡：\"第七排的那个人——我不管明天上多少热搜。我喜欢你。\"全场先是死寂，然后是海啸般的尖叫。",
+          "event_en": "As the last note fades, he doesn't take his usual bow. He looks straight at row seven, his voice echoing through the arena: \"The person in row seven — I don't care how many headlines this makes tomorrow. I like you.\" First dead silence, then a tsunami of screams.",
+          "inject": "You just publicly confessed to her from the stage — 'the person in row seven, I like you' — in front of tens of thousands and every camera, knowing exactly the storm it will cause. You did it anyway. You are terrified and exhilarated. You are now waiting, on stage, for any sign from her seat. Everything else is noise."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c3a",
+          "prompt_zh": "几万人的目光顺着他的视线找过来。手机镜头对准第七排。他站在台上，等一个回应——你怎么回？",
+          "prompt_en": "Tens of thousands of eyes follow his gaze. Phone cameras swing to row seven. He stands on stage, waiting for an answer — how do you respond?",
+          "options": [
+            { "text_zh": "（举起你的应援棒，在星海里对他比了个心）", "text_en": "(Raise your glow-stick and make a heart at him, in the sea of light.)", "aff": 6, "flag": "public_yes", "reply_zh": "他在台上笑得像个傻子，几万人跟着尖叫。他对着麦，声音发抖：\"…她答应我了。\"", "reply_en": "He grins on stage like an idiot; tens of thousands scream along. Into the mic, voice shaking, he says, \"…She said yes.\"" },
+            { "text_zh": "（站起来，大声喊回去：\"我也喜欢你！\"）", "text_en": "(Stand and shout back: \"I like you too!\")", "aff": 7, "flag": "public_yes", "reply_zh": "全场瞬间炸了。他捂住脸，蹲了下去，肩膀在抖——那不是表演，是真的哭了。", "reply_en": "The arena detonates. He covers his face and crouches down, shoulders trembling — and that's not a performance; he's actually crying." },
+            { "text_zh": "（什么也没做，只是隔着人海，认真地点了点头）", "text_en": "(Do nothing but nod, seriously, across the sea of people.)", "aff": 5, "flag": "shy_yes", "reply_zh": "他看懂了那个点头。灯光下，他对着你，无声地说了句'谢谢你'。", "reply_en": "He understands the nod. Under the lights, he mouths, silently, just for you: 'thank you'." }
+          ]
+        },
+        {
+          "id": "c3b",
+          "prompt_zh": "散场后他冲到第七排来找你，喘着气，眼睛还红着：\"我刚才…是不是太冲动了。你会不会怪我把你曝光？\"",
+          "prompt_en": "After the show he rushes to row seven, breathless, eyes still red. \"Just now… was that too reckless? Will you hate me for exposing you?\"",
+          "options": [
+            { "text_zh": "\"你敢在几万人面前喊，我就敢站在你旁边。\"", "text_en": "\"You dared shout it to thousands — I dare stand beside you.\"", "aff": 6, "flag": "stays", "reply_zh": "他一把抱住你，把脸埋在你颈窝：\"…我这辈子最不后悔的一次冲动。\"", "reply_en": "He pulls you into a hug, buries his face in your neck. \"…The one reckless thing I'll never regret.\"" },
+            { "text_zh": "\"怪你干嘛。那首歌，你终于唱出来了。\"", "text_en": "\"Why would I? You finally got to sing that song.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他鼻子一酸：\"…你是第一个，为那首歌高兴的人。\"", "reply_en": "His nose stings. \"…You're the first person to be happy for that song.\"" },
+            { "text_zh": "\"太冲动了。但我喜欢冲动的你。\"", "text_en": "\"It was reckless. But I like you reckless.\"", "aff": 6, "flag": "public_yes", "reply_zh": "他破涕为笑，拿额头顶你：\"完了。以后我只会为你越来越冲动。\"", "reply_en": "He laughs through the tears and bumps his forehead to yours. \"Great. Now I'll only get more reckless — for you.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch4",
+      "title_zh": "风暴",
+      "title_en": "The Storm",
+      "aff_gate": 36,
+      "exit_aff": 52,
+      "scene_zh": "公司会议室外的走廊，玻璃门里坐满了西装革履的高管",
+      "scene_en": "the corridor outside a company boardroom, suits filling the glass-walled room",
+      "goal_zh": "决定在他和整个行业的规则之间，站哪一边",
+      "goal_en": "Decide which side to stand on — him, or the industry's rules",
+      "opening_zh": "告白视频一夜之间几亿播放。粉丝有的祝福有的脱粉，公司震怒。你被叫到公司，隔着玻璃门，看见他一个人坐在长桌那头，被一圈高管围着施压。有人拿着解约条款，有人递上一份声明——只要他公开说'那只是舞台效果'，一切就能平息。他隔着玻璃看见了你。",
+      "opening_en": "The confession clip hits hundreds of millions of views overnight. Some fans cheer, some leave; the label is furious. Summoned to the company, you see him through the glass door, alone at the head of the long table, surrounded by executives applying pressure. One holds termination clauses; another slides over a statement — if he publicly says it was 'just a stage gimmick', it all blows over. Through the glass, he sees you.",
+      "beats": [
+        {
+          "id": "b1_statement",
+          "trigger": { "turns": 3 },
+          "event_zh": "高管把那份声明推到他面前，笔也递了过去。签下去，他的事业毫发无损。他盯着那张纸，一动没动。",
+          "event_en": "An executive pushes the statement in front of him, pen extended. Sign it, and his career is untouched. He stares at the page and doesn't move.",
+          "inject": "The label wants you to publicly call the confession a 'stage gimmick' to save your career. Signing means denying her in front of the world. You have not picked up the pen. You will not perform anguish for the executives — but if she is near, everything in you is asking her, silently, whether she'd forgive you for refusing to lie. Say little; mean everything."
+        },
+        {
+          "id": "b2_walk",
+          "trigger": { "turns": 8, "aff_min": 44 },
+          "event_zh": "他忽然站起来，推开会议室的门，当着所有高管的面，径直走向玻璃门外的你。整个会议室鸦雀无声。",
+          "event_en": "He suddenly stands, pushes open the boardroom door, and — in front of every executive — walks straight toward you outside the glass. The whole room falls silent.",
+          "inject": "You just stood up mid-meeting and walked out toward her in front of the entire label leadership, knowing it may cost you everything. You are done performing for anyone but her. You are aware of exactly what this looks like and what it will cost. You do it anyway."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c4a",
+          "prompt_zh": "他停在你面前，背后是气得发抖的高管们：\"他们要我说那是假的。你说，我该签吗？\"",
+          "prompt_en": "He stops in front of you, the fuming executives at his back. \"They want me to say it was fake. Tell me — should I sign?\"",
+          "options": [
+            { "text_zh": "\"别签。我不需要你为我撒谎，也不需要你为我毁掉自己。我们一起想办法。\"", "text_en": "\"Don't sign. I don't need you to lie for me, and I won't let you ruin yourself for me. We'll figure it out together.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他眼眶红了，却笑了：\"'我们'。…这是我这几天听过最好的两个字。\"", "reply_en": "His eyes go red, but he smiles. \"'We.' …Best word I've heard in days.\"" },
+            { "text_zh": "\"这是你的人生，你想怎么选我都陪着。\"", "text_en": "\"It's your life. Whatever you choose, I'm with you.\"", "aff": 5, "flag": "stay_together", "reply_zh": "他把那份声明推回给高管，头也不回：\"你们听见了。我不签。\"", "reply_en": "He pushes the statement back to the executives without looking. \"You heard her. I'm not signing.\"" },
+            { "text_zh": "\"如果签了能保住你的一切，我可以先退到幕后。\"", "text_en": "\"If signing saves everything you have, I can step into the background first.\"", "aff": 2, "flag": "sacrifice", "reply_zh": "他立刻打断你：\"不行。我可以退圈，不能退你。\"", "reply_en": "He cuts you off instantly. \"No. I can quit the industry. I can't quit you.\"" }
+          ]
+        },
+        {
+          "id": "c4b",
+          "prompt_zh": "高管在身后冷冷开口：\"陆星野，你想清楚，这一步跨出去，就没有回头路了。\"他没回头，只是看着你，等你一个眼神。",
+          "prompt_en": "An executive says coldly behind him, \"Think hard, Lu Xingye. One step out that door and there's no going back.\" He doesn't turn — he just looks at you, waiting for a single look.",
+          "options": [
+            { "text_zh": "（伸出手，掌心向上，等他握住）", "text_en": "(Hold out your hand, palm up, waiting for him to take it.)", "aff": 6, "flag": "stay_together", "reply_zh": "他毫不犹豫地握住你的手，回头对高管说：\"回头路？我从没打算回头。\"", "reply_en": "He takes your hand without hesitation, then tells the executives over his shoulder, \"Going back? I never planned to.\"" },
+            { "text_zh": "\"跨出来。外面的风，我陪你一起挡。\"", "text_en": "\"Step out. Whatever storm's out here, I'll face it with you.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他深吸一口气，跨过了那道门槛，站到了你这一侧。", "reply_en": "He draws a breath and steps across the threshold, to your side." },
+            { "text_zh": "\"别为了我赌上一切，我不值得你输掉全世界。\"", "text_en": "\"Don't bet everything on me — I'm not worth losing the whole world.\"", "aff": 3, "flag": "gentle", "reply_zh": "他握紧你的手，认真地说：\"你就是我想要的那个世界。\"", "reply_en": "He grips your hand tighter and says, seriously, \"You are the world I want.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch5",
+      "title_zh": "只为你唱的歌",
+      "title_en": "The Song Only For You",
+      "aff_gate": 52,
+      "exit_aff": 70,
+      "scene_zh": "一间小小的livehouse，没有热搜，没有闪光灯，台下只坐着几十个人",
+      "scene_en": "a tiny livehouse — no trending topics, no flashbulbs, a few dozen people in the seats",
+      "goal_zh": "在最小的舞台上，接住他最真的那句话",
+      "goal_en": "On the smallest stage, catch his truest words",
+      "opening_zh": "风暴过去了。他没有毁掉，也没有屈服——他和公司谈崩后，索性成立了自己的小工作室，唱自己想唱的歌。今晚是他独立后的第一场演出，在一间只能坐几十人的小livehouse。没有应援海，没有热搜。你还是坐在第七排——只不过这一次，整个场子一共也没有第八排。他抱着吉他上台，一眼就找到了你。",
+      "opening_en": "The storm passed. He wasn't destroyed, and he didn't cave — after talks with the label collapsed, he simply started his own small studio and sings what he wants. Tonight is his first show as an independent artist, in a livehouse that seats a few dozen. No sea of glow-sticks, no trending topics. You're still in row seven — except tonight, the whole place barely has a row eight. He steps up with his guitar and finds you at once.",
+      "beats": [
+        {
+          "id": "b1_new_song",
+          "trigger": { "turns": 4 },
+          "event_zh": "\"这首歌，\"他调着弦，\"是我写完那首之后，又写的一首新的。名字叫《第七排》。\"台下几十个人安静下来，他开始唱——每一句都是关于你的。",
+          "event_en": "\"This song,\" he says, tuning a string, \"is a new one I wrote after that last one. It's called 'Row Seven'.\" The few dozen people go quiet, and he begins to sing — every line is about you.",
+          "inject": "You wrote a brand-new song called 'Row Seven', entirely about her, and you're performing it for the first time to a tiny room. This is the freest and most honest you've ever felt on a stage. Sing it to her, not to the room. You are no longer hiding behind the idol mask at all."
+        },
+        {
+          "id": "b2_ask_forever",
+          "trigger": { "turns": 9, "aff_min": 62 },
+          "event_zh": "唱完，他放下吉他，走下小小的舞台，在几十个人的注视下，单膝跪在你面前的地板上：\"以前我在几万人面前告白。今天我想在几十个人面前，问你一件更重要的事。\"",
+          "event_en": "The song ends. He sets down the guitar, steps off the little stage, and — in front of a few dozen watching people — kneels on one knee on the floor before you. \"I confessed to you in front of tens of thousands. Today, in front of a few dozen, I want to ask you something more important.\"",
+          "inject": "You are about to ask her to be with you for good, kneeling in a tiny livehouse. You gave up an empire of fame and you have never been surer of anything. Be earnest, a little vulnerable, and let the playful star finally speak with his whole heart. Wait for her answer before you say the biggest words."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c5a",
+          "prompt_zh": "他跪在你面前，几十双眼睛看着你们，他的声音有点抖：\"《第七排》这首歌，我想唱一辈子。你愿不愿意，一辈子都坐在那个位置？\"",
+          "prompt_en": "He kneels before you, a few dozen eyes on you both, his voice trembling a little. \"I want to sing 'Row Seven' for the rest of my life. Will you sit in that seat — for the rest of yours?\"",
+          "options": [
+            { "text_zh": "\"我愿意。不过下次，我想坐到台上去，坐在你旁边。\"", "text_en": "\"I will. But next time — I want to sit on stage, right beside you.\"", "aff": 7, "flag": "forever", "reply_zh": "他愣了一秒，然后大笑着把你拥进怀里：\"成交！从今天起，我的舞台上永远有你的位置。\"", "reply_en": "He freezes a beat, then laughs and pulls you into his arms. \"Deal! From today, there's always a spot on my stage for you.\"" },
+            { "text_zh": "\"我愿意。我早就不是第七排的观众了——我是你的人。\"", "text_en": "\"I will. I stopped being the fan in row seven long ago — I'm yours.\"", "aff": 7, "flag": "forever", "reply_zh": "他把脸埋进你手心，肩膀在抖：\"…谢谢你，在我谁都不是的时候，还坐在那里。\"", "reply_en": "He buries his face in your palm, shoulders shaking. \"…Thank you — for still sitting there when I was nobody.\"" },
+            { "text_zh": "（把他从地上拉起来，当着所有人的面吻上去）", "text_en": "(Pull him up off the floor and kiss him in front of everyone.)", "aff": 6, "flag": "forever", "reply_zh": "全场几十个人欢呼起来。他额头抵着你，笑得像个偷到糖的小孩：\"这场，是我这辈子最满意的一场演出。\"", "reply_en": "The whole room cheers. Forehead to yours, he grins like a kid who stole candy. \"This is the best show I'll ever play.\"" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "endings": [
+    {
+      "id": "he_forever",
+      "priority": 1,
+      "aff_min": 66,
+      "flags_any": ["forever", "stay_together", "public_yes"],
+      "title_zh": "从第七排到台上",
+      "title_en": "From Row Seven to the Stage",
+      "text_zh": "两年后，他的独立工作室办了第一场万人演唱会。\n\n还是唱到最后一首安可，他忽然让乐队停下。全场安静，几万人屏息——所有老粉都知道要发生什么了。\n\n可这一次，他没有看向第七排。\n\n他转过身，对着舞台后方伸出手——你从侧台走出来，牵住了他。\n\n\"以前我对第七排的人告白，\"他对着全场笑，眼睛却只看你，\"现在，我请她上台了。\"\n\n几万人的星海为你们亮起。那首《第七排》的前奏响起时，你终于明白：有些人从台下走到台上，走了整整两年，可每一步都值得。",
+      "text_en": "Two years later, his independent studio held its first arena show.\n\nAgain, on the last encore, he suddenly stopped the band. The arena went silent; tens of thousands held their breath — every longtime fan knew what was coming.\n\nBut this time, he didn't look toward row seven.\n\nHe turned around and reached a hand toward the back of the stage — and you walked out from the wings and took it.\n\n\"I used to confess to the person in row seven,\" he told the whole arena, smiling, but his eyes only on you. \"Now, I've invited her up on stage.\"\n\nA galaxy of light rose for the two of you. As the intro to 'Row Seven' began, you finally understood: some people take two whole years to walk from the seats to the stage — and every step is worth it."
+    },
+    {
+      "id": "he_quiet",
+      "priority": 2,
+      "aff_min": 52,
+      "title_zh": "只有你的那场演出",
+      "title_en": "The Show With an Audience of One",
+      "text_zh": "他没有再回到万人舞台，也不觉得可惜。\n\n那间小小的livehouse成了他的主场。粉丝少了，但每一个都是真的懂他的人。\n\n你们没有大张旗鼓地公开，也没有刻意隐瞒。他会在每场演出的最后，弹一首没报过名的歌，然后看向台下固定的那个位置——第七排，永远为你留着。\n\n\"你知道我最喜欢哪场演出吗？\"有天散场后他问你。\n\n\"哪场？\"\n\n他把吉他往身后一背，凑近你，坏笑：\"回家给你一个人唱的那些。零差评。\"",
+      "text_en": "He never returned to the arena stage, and he never missed it.\n\nThat tiny livehouse became his home turf. Fewer fans — but every one of them truly understood him.\n\nYou never made a grand public announcement, and never hid, either. At the end of every show he'd play a song he never named, then look toward one fixed spot in the crowd — row seven, always kept for you.\n\n\"Know which show is my favorite?\" he asked one night after closing.\n\n\"Which one?\"\n\nHe slung the guitar onto his back, leaned in, and grinned. \"The ones I play just for you at home. Zero bad reviews.\""
+    },
+    {
+      "id": "be_lights_out",
+      "priority": 3,
+      "aff_max": 30,
+      "title_zh": "散场之后",
+      "title_en": "After the Lights Go Down",
+      "text_zh": "那场告白后来被公司压了下去，官方声明说：那只是一个即兴的舞台桥段。\n\n你没有出现在任何镜头里，也再没去过第七排。\n\n他依然是万人追捧的顶流，笑容依旧完美。只是偶尔在某场演唱会的安可，他会看向观众席某个方向，停顿半秒，然后若无其事地继续。\n\n很多年后你还留着那张第七排的票根。\n\n有些歌你曾经听过原声——在没有灯、没有妆、只有一根便利店饭团的深夜后台。那个版本，全世界只有你听过。这就够了。",
+      "text_en": "The confession was quietly buried by the label; the official statement called it an improvised stage moment.\n\nYou never appeared on any camera, and you never went back to row seven.\n\nHe's still the top idol adored by millions, his smile still flawless. Only sometimes, on an encore, he looks toward one direction in the crowd, pauses for half a second, then carries on as if nothing happened.\n\nYears later you still keep that row-seven ticket stub.\n\nYou once heard a song in its raw form — backstage at midnight, no lights, no makeup, just a convenience-store rice ball. That version, no one in the world heard but you. And that's enough."
+    }
+  ]
+}
