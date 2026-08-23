@@ -7,7 +7,7 @@ import os, sys, torch
 torch.backends.cudnn.enabled = False
 from diffusers import StableDiffusionPipeline
 
-OUT = os.path.expanduser("~/Play/flutter/frontend/portraits")
+OUT = os.path.expanduser("~/Products/play/flutter/frontend/portraits")
 os.makedirs(OUT, exist_ok=True)
 
 COMMON_NEG = ("lowres, bad anatomy, bad hands, extra fingers, missing fingers, deformed, mutated, "

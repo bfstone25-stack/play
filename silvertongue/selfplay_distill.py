@@ -7,7 +7,7 @@
 """
 import json, os, sqlite3, time, urllib.request, random, sys
 
-HERE = os.path.expanduser("~/Play/silvertongue/backend")
+HERE = os.path.expanduser("~/Products/play/silvertongue/backend")
 DB = f"{HERE}/data/silvertongue.db"
 SCEN = json.load(open(f"{HERE}/scenarios.json"))
 LLAMACPP = os.getenv("LANE_URL", "http://127.0.0.1:8901")

@@ -5,7 +5,7 @@ from diffusers import StableDiffusionImg2ImgPipeline
 from PIL import Image
 torch.backends.cudnn.enabled = False
 
-OUT = os.path.expanduser("~/Play/flutter/portraits")
+OUT = os.path.expanduser("~/Products/play/flutter/portraits")
 NEG = "lowres, bad anatomy, deformed, ugly, blurry, watermark, text, child, woman, feminine, extra fingers"
 EXPR = {
     "smile": "(bright warm smile:1.35), soft happy eyes",

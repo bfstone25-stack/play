@@ -1,5 +1,5 @@
 import json, random, sys, os
-sys.path.insert(0, os.path.expanduser("~/Play/fold/rl"))
+sys.path.insert(0, os.path.expanduser("~/Products/play/fold/rl"))
 from gen_levels import solve_stats, tier
 def random_board(rng):
     R=rng.choice([4,5,5,6]); C=rng.choice([4,5,5,6])
@@ -22,6 +22,6 @@ while any(len(got[k])<per[k] for k in per) and tries<120000:
     if len(got[tr])>=per[tr]: continue
     got[tr].append({"grid":g,"target":t,"par":m})
     if sum(len(v) for v in got.values())%25==0: print(tries, {k:len(v) for k,v in got.items()},flush=True)
-out=os.path.expanduser("~/Play/fold/rl/levels_endless.json")
+out=os.path.expanduser("~/Products/play/fold/rl/levels_endless.json")
 json.dump(got,open(out,"w"))
 print("ENDLESS_DONE",{k:len(v) for k,v in got.items()},flush=True)

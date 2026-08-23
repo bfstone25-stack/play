@@ -3,7 +3,7 @@
 import json, os, urllib.request, re, sys
 
 LANE = os.getenv("LANE_URL", "http://127.0.0.1:8903")  # gemma中文核显
-CASES = os.path.expanduser("~/Play/tell/backend/cases.json")
+CASES = os.path.expanduser("~/Products/play/tell/backend/cases.json")
 N = int(sys.argv[1]) if len(sys.argv) > 1 else 8
 
 SETTINGS = ["公寓楼顶花园","私人游艇","大学实验室","老剧院后台","高级餐厅包间","滑雪度假村","古董书店","医院病房","律师事务所","深夜电台直播间","美术拍卖行","封闭山庄晚宴"]

@@ -1,6 +1,6 @@
 """Flutter表情立绘批量: 3角色 x 3表情(smile/blush/lovestruck), 同seed保角色一致性."""
 import os, sys, torch
-sys.path.insert(0, os.path.expanduser("~/Play/flutter"))
+sys.path.insert(0, os.path.expanduser("~/Products/play/flutter"))
 from gen_portraits import CHARS, COMMON_NEG, build
 
 EXPR = {
@@ -8,7 +8,7 @@ EXPR = {
     "blush": "shy blushing face, flustered expression, looking slightly away, pink cheeks",
     "love": "lovestruck tender gaze, faint blush, soft affectionate smile, sparkling eyes",
 }
-OUT = os.path.expanduser("~/Play/flutter/portraits")
+OUT = os.path.expanduser("~/Products/play/flutter/portraits")
 pipe = build()
 for cid, c in CHARS.items():
     base = c["prompt"]

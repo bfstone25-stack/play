@@ -140,7 +140,7 @@ def selftest():
 
 def main():
     selftest()
-    pool = "/home/frankstone/Play/fold/rl/big_levels_pool.json"
+    pool = "/home/frankstone/Products/play/fold/rl/big_levels_pool.json"
     if os.path.exists(pool):
         solve_pool(pool, pool.replace(".json", "_beam.json"))
     else:

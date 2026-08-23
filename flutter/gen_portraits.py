@@ -1,13 +1,13 @@
 """Flutter立绘生成 — dreamshaper-8, 1660Ti(fp32绕过16xx黑图bug).
 三位攻略对象各一张英雄立绘(固定seed保一致性), 竖版半身.
 用法: python gen_portraits.py [char_id]  (无参=全部)
-输出: ~/Play/flutter/portraits/<id>.png
+输出: ~/Products/play/flutter/portraits/<id>.png
 """
 import os, sys, torch
 torch.backends.cudnn.enabled = False
 from diffusers import StableDiffusionPipeline
 
-OUT = os.path.expanduser("~/Play/flutter/portraits")
+OUT = os.path.expanduser("~/Products/play/flutter/portraits")
 os.makedirs(OUT, exist_ok=True)
 
 COMMON_NEG = ("lowres, bad anatomy, bad hands, extra fingers, missing fingers, deformed, mutated, "

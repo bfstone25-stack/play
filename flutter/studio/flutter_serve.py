@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, Response
 import urllib.request, os
 app=FastAPI()
-FE=os.path.expanduser('~/Play/flutter/frontend')
+FE=os.path.expanduser('~/Products/play/flutter/frontend')
 BACKEND='http://127.0.0.1:8919'
 
 # API代理优先(明确路径)

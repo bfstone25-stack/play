@@ -1,8 +1,8 @@
 """表情立绘v2: 表情词前置加权+随机seed(放开构图)+精确负面. 先验证顾言三表情差异够不够."""
 import os, sys, torch
-sys.path.insert(0, os.path.expanduser("~/Play/flutter"))
+sys.path.insert(0, os.path.expanduser("~/Products/play/flutter"))
 from gen_portraits import CHARS, build
-OUT=os.path.expanduser("~/Play/flutter/portraits")
+OUT=os.path.expanduser("~/Products/play/flutter/portraits")
 EXPR={
  "smile":("(gentle warm smile:1.3), soft eyes, relaxed", "crying, angry, blush, open mouth"),
  "blush":("(heavy blush:1.5), (shy flustered face:1.4), (rosy red cheeks:1.4), looking away bashfully, embarrassed", "neutral, calm, confident, angry"),

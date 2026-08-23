@@ -1,10 +1,10 @@
 """FOLD关卡生成器 v1(RL引擎地基, 纯CPU) — 随机铸盘+求解器验证+难度分档.
 约束: 块值和=目标(2的幂,守恒不变量); 求解器BFS给出min_moves与探索状态数.
 难度分: easy(min 2-3) / medium(4-6) / hard(7-9) / expert(10+)
-输出: ~/Play/fold/rl/levels_gen.json (按档位各N关)
+输出: ~/Products/play/fold/rl/levels_gen.json (按档位各N关)
 """
 import json, random, sys, os
-sys.path.insert(0, os.path.expanduser("~/Play/fold/rl"))
+sys.path.insert(0, os.path.expanduser("~/Products/play/fold/rl"))
 from solver import move, parse
 from collections import deque
 
@@ -65,7 +65,7 @@ def main(per_tier=12, seed=20260710):
                        "difficulty": t, "search_states": explored})
         if tries % 2000 == 0 or sum(len(v) for v in got.values()) % 10 == 0:
             print(f"tries={tries} " + " ".join(f"{k}:{len(v)}" for k,v in got.items()), flush=True)
-    out = os.path.expanduser("~/Play/fold/rl/levels_gen.json")
+    out = os.path.expanduser("~/Products/play/fold/rl/levels_gen.json")
     json.dump(got, open(out,"w"))
     print("GEN_LEVELS_DONE tries=%d " % tries + " ".join(f"{k}:{len(v)}" for k,v in got.items()), flush=True)
     # 难度分布样本
