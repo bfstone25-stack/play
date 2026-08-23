@@ -534,7 +534,7 @@ def analytics_summary(days: int = 30):
                                                 GROUP BY phase""", (since,)).fetchall())
     c.close()
     telemetry = {"events": 0, "users": 0, "sessions": 0, "by_event": {}, "funnel": []}
-    tel_db = os.path.abspath(os.path.join(HERE, "..", "..", "data", "telemetry.db"))
+    tel_db = os.path.expanduser("~/Products/data/telemetry.db")
     if os.path.exists(tel_db):
         t = sqlite3.connect(tel_db)
         row = t.execute("""SELECT count(*),count(DISTINCT pid),count(DISTINCT sid)

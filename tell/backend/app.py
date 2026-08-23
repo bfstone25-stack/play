@@ -1155,7 +1155,7 @@ def analytics_summary(days: int = 30):
 
     telemetry = {"events": 0, "users": 0, "sessions": 0, "by_type": {},
                  "funnel": [], "daily_active": []}
-    tel_db = os.path.abspath(os.path.join(HERE, "..", "..", "data", "telemetry.db"))
+    tel_db = os.path.expanduser("~/Products/data/telemetry.db")
     if os.path.exists(tel_db):
         tdb = sqlite3.connect(tel_db)
         row = tdb.execute("""SELECT count(*),count(DISTINCT pid),count(DISTINCT sid)
