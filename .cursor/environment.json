@@ -1,0 +1,12 @@
+{
+  "name": "play",
+  "install": "git fetch origin && git merge --ff-only origin/main || true",
+  "start": "git fetch origin && git merge --ff-only @{u} || true",
+  "terminals": [
+    {
+      "name": "repo-sync",
+      "command": "while true; do git fetch origin && git merge --ff-only @{u} >/tmp/repo-sync.log 2>&1; sleep 60; done",
+      "description": "Keep this VM's play checkout fast-forwarded from GitHub."
+    }
+  ]
+}
