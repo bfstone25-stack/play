@@ -232,6 +232,7 @@
   }
 
   function startFight() {
+    if (!slots.length) slots = save.unlocked.slice(0, 3);
     if (!slots.length) { banner(t().load); return; }
     const load = parseLoadout(slots, CATALOG);
     const combo = combinePhrases(load.map(p => p.text));
