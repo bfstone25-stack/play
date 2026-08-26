@@ -23,9 +23,10 @@ function rantPattern(ids, catalog) {
   const power = load.reduce((s, p) => s + (p.power || 0), 0);
   if (load.some(p => p.id === "legend") || power >= 120) return "burst";
   if (load.length >= 3 || power >= 50) return "spread";
+  if (load.some(p => p.id === "teach")) return "wave";
   return "stream";
 }
 
 function rantShotPower(combo, catalog) {
-  return Math.max(3, rantDamage(combo, catalog) / 24);
+  return Math.min(7, Math.max(2.2, rantDamage(combo, catalog) / 40));
 }

@@ -1,25 +1,32 @@
 var BOSS = (() => {
   function create(W, H) {
+    const first = DANMAKU.MEETINGS[0];
     return {
       x: W * 0.5,
-      y: H * 0.22,
-      hw: 120,
-      hh: 90,
-      hp: 2400,
-      maxHp: 2400,
+      y: H * 0.2,
+      hw: 118,
+      hh: 86,
+      hp: first.hp,
+      maxHp: first.hp,
       phase: 0,
+      meeting: 0,
+      endless: 0,
       t: 0,
-      acc: 0,
-      smileT: 0,
+      acc: 0.4,
+      scriptI: 0,
+      lastPattern: "",
+      recent: [],
     };
   }
 
-  function phaseOf(hp, max) {
-    const r = hp / max;
-    if (r <= 0.1) return 2;
-    if (r <= 0.4) return 2;
-    if (r <= 0.7) return 1;
-    return 0;
+  function startEndless(boss) {
+    boss.endless = 1;
+    boss.meeting = 4;
+    boss.hp = 3600;
+    boss.maxHp = 3600;
+    boss.scriptI = 0;
+    boss.acc = 0.2;
+    boss.recent = [];
   }
 
   function hit(boss, shot) {
@@ -28,99 +35,77 @@ var BOSS = (() => {
     return (dx * dx) / (boss.hw * boss.hw) + (dy * dy) / (boss.hh * boss.hh) < 1;
   }
 
-  function spawnFan(state, count, speed, spread, type, color) {
-    const b = state.boss;
-    for (let i = 0; i < count; i++) {
-      const mid = (count - 1) / 2;
-      const a = Math.PI / 2 + (i - mid) * spread;
-      state.hazards.spawn(h => {
-        h.x = b.x;
-        h.y = b.y + b.hh * 0.35;
-        h.vx = Math.cos(a) * speed;
-        h.vy = Math.sin(a) * speed;
-        h.r = type === "poster" ? 12 : 8;
-        h.type = type;
-        h.color = color;
-        h.life = 6;
-        h.homing = 0;
-        h.rot = a;
-      });
+  function pickEndless(boss) {
+    const pool = DANMAKU.ENDLESS;
+    for (let n = 0; n < 8; n++) {
+      const name = pool[(Math.random() * pool.length) | 0];
+      if (boss.recent.indexOf(name) < 0) return name;
     }
+    return pool[boss.t * 3 % pool.length | 0];
   }
 
-  function spawnSmile(state, homing) {
+  function firePattern(state) {
     const b = state.boss;
-    state.hazards.spawn(h => {
-      h.x = b.x + (Math.random() - 0.5) * 80;
-      h.y = b.y + 40;
-      h.vx = (Math.random() - 0.5) * 40;
-      h.vy = 70 + Math.random() * 40;
-      h.r = 10;
-      h.type = "smile";
-      h.life = 7;
-      h.homing = homing;
-      h.rot = 0;
-    });
+    let name;
+    if (b.endless) {
+      name = pickEndless(b);
+      b.recent.push(name);
+      if (b.recent.length > 4) b.recent.shift();
+      state.rank = Math.min(14, (state.rank || 0) + 0.12);
+    } else {
+      const meet = DANMAKU.MEETINGS[b.meeting] || DANMAKU.MEETINGS[0];
+      name = meet.script[b.scriptI % meet.script.length];
+      b.scriptI += 1;
+    }
+    b.lastPattern = name;
+    const wait = DANMAKU.run(name, state);
+    b.acc = -Math.max(0.35, wait);
+    if (window.SFX) SFX.paper();
+  }
+
+  function advance(state) {
+    const b = state.boss;
+    if (b.endless) {
+      b.hp = b.maxHp = Math.floor(b.maxHp * 1.08);
+      state.rank = Math.min(14, (state.rank || 0) + 0.45);
+      b.scriptI = 0;
+      b.acc = 0.15;
+      state.shake = state.reduced ? 0 : 14;
+      if (window.SFX) SFX.phase();
+      return;
+    }
+    if (b.meeting + 1 < DANMAKU.MEETINGS.length) {
+      b.meeting += 1;
+      const next = DANMAKU.MEETINGS[b.meeting];
+      b.hp = next.hp;
+      b.maxHp = next.hp;
+      b.scriptI = 0;
+      b.acc = 0.35;
+      b.phase = Math.min(2, b.meeting);
+      state.shake = state.reduced ? 0 : 14;
+      state.player.iFrames = Math.max(state.player.iFrames, 0.8);
+      if (window.SFX) SFX.phase();
+      return;
+    }
+    state.boss.hp = 0;
+    state.outcome = "win";
+    state.shake = state.reduced ? 0 : 16;
+    if (window.SFX) SFX.win();
   }
 
   function update(state, dt) {
     const b = state.boss;
     b.t += dt;
     b.acc += dt;
-    b.smileT += dt;
-    const next = phaseOf(b.hp, b.maxHp);
-    if (next !== b.phase) {
-      b.phase = next;
-      b.acc = 0.8;
-      if (!state.reduced) state.shake = 12;
-    }
-    const sway = Math.sin(b.t * 1.4) * 10;
+    const sway = Math.sin(b.t * 1.15) * (18 + b.meeting * 4);
     b.x = COMBAT.W * 0.5 + sway;
-
-    if (b.phase === 0) {
-      if (b.acc > 1.55) {
-        b.acc = 0;
-        spawnFan(state, 7, 132, 0.22, "sun");
-        if (window.SFX) SFX.paper();
-      }
-      if (b.smileT > 2.4) {
-        b.smileT = 0;
-        spawnSmile(state, 0);
-      }
-    } else if (b.phase === 1) {
-      if (b.acc > 1.05) {
-        b.acc = 0;
-        spawnFan(state, 9, 168, 0.2, "shard", "#22d3ee");
-        spawnFan(state, 5, 150, 0.28, "poster");
-        if (window.SFX) SFX.paper();
-      }
-      if (b.smileT > 1.6) {
-        b.smileT = 0;
-        spawnSmile(state, 70);
-        spawnSmile(state, 70);
-      }
-    } else {
-      if (b.acc > 0.68) {
-        b.acc = 0;
-        spawnFan(state, 6, 200, 0.18, "shard", "#e11d48");
-        const saved = b.x;
-        b.x = COMBAT.W * 0.28;
-        spawnFan(state, 5, 190, 0.2, "sun");
-        b.x = COMBAT.W * 0.72;
-        spawnFan(state, 5, 190, 0.2, "shard", "#22d3ee");
-        b.x = saved;
-        if (window.SFX) SFX.paper();
-      }
-      if (b.smileT > 1.1) {
-        b.smileT = 0;
-        spawnSmile(state, 90);
-      }
-    }
+    b.phase = b.endless ? 2 : Math.min(2, b.meeting);
+    if (b.acc >= 0) firePattern(state);
   }
 
   function draw(ctx, boss, t, reduced) {
-    const cracked = boss.phase >= 1;
-    const berserk = boss.phase >= 2;
+    const cracked = boss.phase >= 1 || boss.meeting >= 1;
+    const berserk = boss.phase >= 2 || boss.endless;
     const posters = [
       { x: -70, y: -18, w: 78, h: 96, r: -0.18 },
       { x: 64, y: -8, w: 72, h: 88, r: 0.16 },
@@ -148,5 +133,5 @@ var BOSS = (() => {
     ctx.restore();
   }
 
-  return { create, hit, update, draw, phaseOf };
+  return { create, hit, update, draw, advance, startEndless };
 })();

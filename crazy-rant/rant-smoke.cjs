@@ -25,7 +25,8 @@ if (rantPattern(["ok"], cat) !== "stream") throw new Error("ok should stream");
 if (rantPattern(["quit", "teach"], cat) !== "spread") throw new Error("mid power should spread");
 if (rantPattern(["quit", "teach", "ok"], cat) !== "spread") throw new Error("three cards should spread");
 if (rantPattern(["legend"], cat) !== "burst") throw new Error("legend should burst");
-if (rantShotPower(combo, cat) < 3) throw new Error("shot power");
+if (rantPattern(["teach", "ok"], cat) !== "wave") throw new Error("teach pair should wave");
+if (rantShotPower(combo, cat) < 2.2) throw new Error("shot power");
 if (rantPattern([], cat) !== "stream") throw new Error("empty loadout");
 
 const combatCtx = { console, Math, performance: { now: Date.now } };
@@ -33,13 +34,42 @@ combatCtx.window = combatCtx;
 combatCtx.SFX = { unlock(){}, fire(){}, hit(){}, hurt(){}, phase(){}, win(){}, lose(){}, paper(){}, pulse(){} };
 combatCtx.GLYPHS = { META: { ok: { color: "#eab308" }, quit: { color: "#e11d48" }, teach: { color: "#06b6d4" } } };
 vm.createContext(combatCtx);
-vm.runInContext(fs.readFileSync(path.join(__dirname, "frontend/js/pool.js"), "utf8"), combatCtx);
-vm.runInContext(fs.readFileSync(path.join(__dirname, "frontend/js/boss.js"), "utf8"), combatCtx);
-vm.runInContext(fs.readFileSync(path.join(__dirname, "frontend/js/combat.js"), "utf8"), combatCtx);
+for (const file of ["pool.js", "phrases.js", "danmaku.js", "combat.js", "boss.js"]) {
+  vm.runInContext(fs.readFileSync(path.join(__dirname, "frontend/js", file), "utf8"), combatCtx);
+}
+const names = Object.keys(combatCtx.DANMAKU.CATALOG);
+if (names.length < 12) throw new Error("not enough patterns " + names.length);
+const motions = new Set();
+const texts = new Set();
+for (const name of names) {
+  const state = combatCtx.COMBAT.create();
+  combatCtx.COMBAT.reset(state, { pattern: "spread", shotPower: 12, loadout: ["quit", "teach"], reduced: true, lang: "zh" });
+  combatCtx.DANMAKU.run(name, state);
+  if (state.hazards.live.length < 1) throw new Error(name + " spawned nothing");
+  state.hazards.live.forEach((h) => {
+    if (!h.text) throw new Error(name + " bullet has no text");
+    texts.add(h.text);
+    motions.add(h.motion);
+  });
+}
+if (texts.size < 8) throw new Error("phrase pool too thin " + texts.size);
+if (motions.size < 5) throw new Error("motion variety too thin " + [...motions]);
+
 const state = combatCtx.COMBAT.create();
-combatCtx.COMBAT.reset(state, { pattern: "spread", shotPower: 12, loadout: ["quit", "teach"], reduced: true });
+combatCtx.COMBAT.reset(state, { pattern: "spread", shotPower: 12, loadout: ["quit", "teach"], reduced: true, lang: "en" });
 for (let i = 0; i < 240; i++) combatCtx.COMBAT.update(state, 1 / 60);
 if (state.boss.hp >= state.boss.maxHp) throw new Error("boss never damaged");
 if (state.hazards.live.length < 1 && state.outcome !== "win") throw new Error("boss never attacked");
 if (state.shots.live.length < 1 && !state.outcome) throw new Error("player never fired");
-console.log("crazy rant combinator ok", { combo, dmg, pattern: rantPattern(["quit", "teach"], cat), boss: Math.round(state.boss.hp), phase: state.boss.phase });
+const readable = state.hazards.live.filter((h) => h.text && h.text.length >= 2);
+if (readable.length < 1 && state.outcome !== "win") throw new Error("no readable bullets");
+
+console.log("crazy rant combinator ok", {
+  combo, dmg,
+  pattern: rantPattern(["quit", "teach"], cat),
+  boss: Math.round(state.boss.hp),
+  meeting: state.boss.meeting,
+  patterns: names.length,
+  motions: [...motions],
+  phrases: texts.size,
+});

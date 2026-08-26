@@ -7,48 +7,48 @@
     { id: "legend", text: "你们不要再劝我努力了", power: 80, rarity: "SSR" },
   ];
   const ORDER = ["ok", "lie", "teach", "quit", "legend"];
-  const KEY = "crazy-rant.cabinet.v1";
+  const KEY = "crazy-rant.cabinet.v2";
   const COPY = {
     en: {
-      tag: "CABINET 06 · RANT RING",
-      lore: "Scream in glyphs. Smile dies in color.",
-      hint: "A verbal boss battle. No readable words in the ring.",
+      tag: "CABINET 06 · OFFICE HELL",
+      lore: "Workplace knives, written as bullets.",
+      hint: "Office-politics shmup. Read the words. Graze the meeting.",
       start: "PRESS START",
       load: "PICK THREE",
-      fight: "RANT",
+      fight: "CLOCK IN",
       hold: "TAP",
       launchStart: "START",
       launchFight: "FIGHT",
       launchAgain: "AGAIN",
-      hp: "HP", rage: "RAGE", combo: "COMBO", phase: "PHASE",
+      hp: "HP", rage: "GRAZE", combo: "COMBO", phase: "MEETING",
       best: "BEST", max: "MAX HIT", slots: "SLOTS",
-      wait: "WAITING", live: "RAGING", down: "DOWN", dead: "KO",
-      win: "SUNSHINE DOWN", lose: "SMILED TO DEATH",
-      retry: "RETRY", next: "NEXT RANT",
-      dodge: "Drag to dodge. Auto-fire.",
+      wait: "WAITING", live: "IN MEETING", down: "ADJOURNED", dead: "PIP'd",
+      win: "PIP SURVIVED", lose: "SMILED TO DEATH",
+      retry: "RETRY", next: "OVERTIME",
+      dodge: "Drag / WASD to dodge. Auto-fire. Graze the text.",
       unlock: "UNLOCKED ",
-      phases: ["SMUG", "CRACKED", "BERSERK"],
+      phases: ["STANDUP", "1:1", "ALL-HANDS", "PIP", "OVERTIME"],
       cards: { ok: "OK", lie: "LIE", teach: "TEACH", quit: "QUIT", legend: "LEGEND" },
     },
     zh: {
-      tag: "六号机柜 · 发疯擂台",
-      lore: "用字形嘶吼。假笑死在颜色里。",
-      hint: "一场口头 Boss 战。场上没有可读的字。",
+      tag: "六号机柜 · 职场弹幕",
+      lore: "明争暗斗写成子弹。字要大，要能读。",
+      hint: "职场 STG。读子弹，擦弹，把会开完。",
       start: "按开始",
       load: "选三张",
-      fight: "开骂",
+      fight: "上班",
       hold: "点",
       launchStart: "开始",
       launchFight: "开战",
       launchAgain: "再来",
-      hp: "生命", rage: "怒气", combo: "连击", phase: "阶段",
+      hp: "生命", rage: "擦弹", combo: "连击", phase: "会议",
       best: "最快", max: "最高连", slots: "槽位",
-      wait: "待命", live: "发作中", down: "倒下", dead: "倒下",
-      win: "毒鸡汤已退散", lose: "被微笑淹死",
-      retry: "再战", next: "下一场",
-      dodge: "拖拽走位，自动弹幕。",
+      wait: "待命", live: "开会中", down: "散会", dead: "优化",
+      win: "PIP 活下来了", lose: "被微笑淹死",
+      retry: "再战", next: "加班",
+      dodge: "拖拽或 WASD 走位，自动射击。擦过文字加分。",
       unlock: "解锁 ",
-      phases: ["假笑", "裂开", "狂晒"],
+      phases: ["站会", "1对1", "全员会", "PIP", "加班"],
       cards: { ok: "好好", lie: "很好", teach: "教我", quit: "不干", legend: "别劝" },
     },
   };
@@ -61,7 +61,7 @@
   let slots = [];
   let dragging = false;
   const save = { unlocked: ["ok", "lie", "teach"], bestTime: 0, maxCombo: 0, wins: 0 };
-  try { Object.assign(save, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (_) {}
+  try { Object.assign(save, JSON.parse(localStorage.getItem(KEY) || localStorage.getItem("crazy-rant.cabinet.v1") || "{}")); } catch (_) {}
   if (!save.unlocked || !save.unlocked.length) save.unlocked = ["ok", "lie", "teach"];
   const state = COMBAT.create();
 
@@ -150,7 +150,7 @@
         c.width = 64; c.height = 48;
         c.style.width = "100%"; c.style.height = "100%";
         const g = c.getContext("2d");
-        GLYPHS.drawBubble(g, 32, 24, 14, id, i + 2);
+        GLYPHS.drawShot(g, { x: 32, y: 24, kind: id, font: 10, rot: 0 }, lang);
         chip.appendChild(c);
       }
       row.appendChild(chip);
@@ -162,11 +162,12 @@
     const fighting = screen === "fight" && !state.outcome;
     document.getElementById("hp").textContent = Math.max(0, Math.ceil(state.player.hp));
     document.getElementById("hpFill").style.width = (state.player.hp / state.player.maxHp * 100) + "%";
-    const rage = Math.min(12, state.combo);
+    const rage = state.graze;
     document.getElementById("rage").textContent = Math.floor(rage);
-    document.getElementById("rageFill").style.width = (rage / 12 * 100) + "%";
+    document.getElementById("rageFill").style.width = Math.min(100, (rage % 36) / 36 * 100) + "%";
     document.getElementById("combo").textContent = "×" + Math.floor(state.combo);
-    document.getElementById("phase").textContent = c.phases[state.boss.phase] || c.phases[0];
+    const meetI = state.boss.endless ? 4 : Math.min(4, state.boss.meeting || 0);
+    document.getElementById("phase").textContent = c.phases[meetI] || c.phases[0];
     document.getElementById("bossHp").textContent = Math.max(0, Math.ceil(state.boss.hp));
     document.getElementById("bossFill").style.width = (state.boss.hp / state.boss.maxHp * 100) + "%";
     document.getElementById("best").textContent = fmtTime(save.bestTime);
@@ -218,7 +219,10 @@
       pattern: rantPattern(slots, CATALOG),
       shotPower: rantShotPower(combo, CATALOG),
       reduced,
+      lang,
+      endless: !!startFight.endless,
     });
+    startFight.endless = false;
     screen = "fight";
     show("titleOv", false);
     show("loadOv", false);
@@ -244,7 +248,7 @@
         banner(c.unlock + c.cards[next]);
       }
       persist();
-      document.getElementById("endDetail").textContent = fmtTime(state.time) + " · ×" + Math.floor(state.combo);
+      document.getElementById("endDetail").textContent = fmtTime(state.time) + " · ×" + Math.floor(state.combo) + " · graze " + state.graze;
       document.getElementById("againBtn").textContent = c.next;
     } else {
       if (state.combo > save.maxCombo) { save.maxCombo = Math.floor(state.combo); persist(); }
@@ -311,13 +315,20 @@
     }
     body(0);
 
-    state.shots.live.forEach(s => GLYPHS.drawBubble(ctx, s.x, s.y, s.r, s.kind, s.seed));
+    state.shots.live.forEach(s => GLYPHS.drawShot(ctx, s, lang));
     state.hazards.live.forEach(h => {
-      if (h.type === "smile") GLYPHS.drawSmile(ctx, h.x, h.y, h.r, true);
+      if (h.text) GLYPHS.drawWord(ctx, h);
+      else if (h.type === "smile") GLYPHS.drawSmile(ctx, h.x, h.y, h.r, true);
       else if (h.type === "poster") GLYPHS.drawPoster(ctx, h.x, h.y, 22, 28, h.rot, true);
       else if (h.type === "shard") GLYPHS.drawShard(ctx, h.x, h.y, h.r, h.color || "#22d3ee");
       else GLYPHS.drawSun(ctx, h.x, h.y, h.r, state.time);
     });
+    // true hitbox
+    ctx.save();
+    ctx.globalAlpha = 0.9;
+    ctx.fillStyle = "#22d3ee";
+    ctx.fillRect(state.player.x - 2, state.player.y - 2, 4, 4);
+    ctx.restore();
     state.fx.live.forEach(f => GLYPHS.drawBurst(ctx, f.x, f.y, f.life, f.color));
   }
 
@@ -353,8 +364,10 @@
   document.getElementById("fightBtn").onclick = startFight;
   document.getElementById("againBtn").onclick = () => {
     SFX.unlock();
-    if (state.outcome === "win") openLoadout();
-    else startFight();
+    if (state.outcome === "win") {
+      startFight.endless = true;
+      startFight();
+    } else startFight();
   };
   document.getElementById("deckBtn").onclick = () => {
     SFX.unlock();

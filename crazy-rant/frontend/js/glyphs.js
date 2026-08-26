@@ -49,6 +49,17 @@ var GLYPHS = (() => {
     ctx.restore();
   }
 
+  function roundRect(ctx, x, y, w, h, r) {
+    const rr = Math.min(r, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + rr, y);
+    ctx.arcTo(x + w, y, x + w, y + h, rr);
+    ctx.arcTo(x + w, y + h, x, y + h, rr);
+    ctx.arcTo(x, y + h, x, y, rr);
+    ctx.arcTo(x, y, x + w, y, rr);
+    ctx.closePath();
+  }
+
   function drawBubble(ctx, x, y, r, kind, seed) {
     const m = META[kind] || META.ok;
     ctx.save();
@@ -59,6 +70,111 @@ var GLYPHS = (() => {
     ctx.strokeStyle = "#0a0a0a";
     ctx.stroke();
     strokes(ctx, x, y - r * 0.08, r, seed, "#0a0a0a");
+    ctx.restore();
+  }
+
+  function drawShot(ctx, s, lang) {
+    const m = META[s.kind] || META.ok;
+    const text = (typeof PHRASES !== "undefined") ? PHRASES.shot(lang || "en", s.kind) : (s.kind || "!");
+    ctx.save();
+    ctx.translate(s.x, s.y);
+    ctx.rotate(s.rot || 0);
+    const font = s.font || 13;
+    ctx.font = "700 " + font + "px \"PingFang SC\",\"Noto Sans SC\",Impact,sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const tw = ctx.measureText(text).width;
+    const w = tw + 16;
+    const h = font + 10;
+    roundRect(ctx, -w / 2, -h / 2, w, h, 8);
+    ctx.fillStyle = m.color;
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#0a0a0a";
+    ctx.stroke();
+    ctx.fillStyle = "#0a0a0a";
+    ctx.fillText(text, 0, 1);
+    ctx.restore();
+  }
+
+  function drawWord(ctx, h) {
+    const text = h.text || "!";
+    const font = h.font || 15;
+    ctx.save();
+    ctx.translate(h.x, h.y);
+    ctx.rotate(h.rot || 0);
+    ctx.font = "700 " + font + "px \"PingFang SC\",\"Noto Sans SC\",Impact,sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const tw = ctx.measureText(text).width;
+    const ink = h.color === "#f8fafc" ? "#0a0a0a" : "#0a0a0a";
+    const fill = h.color || "#eab308";
+    if (h.shape === "stamp") {
+      const rad = Math.max(tw * 0.55, font * 1.15);
+      ctx.beginPath();
+      ctx.arc(0, 0, rad, 0, Math.PI * 2);
+      ctx.fillStyle = fill;
+      ctx.fill();
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = "#0a0a0a";
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, rad - 4, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(10,10,10,.35)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.fillStyle = ink;
+      ctx.fillText(text, 0, 1);
+    } else if (h.shape === "needle") {
+      const w = tw + 14, ht = font + 6;
+      ctx.beginPath();
+      ctx.moveTo(-w / 2, 0);
+      ctx.lineTo(-w / 2 + 6, -ht / 2);
+      ctx.lineTo(w / 2, -ht / 2);
+      ctx.lineTo(w / 2 + 8, 0);
+      ctx.lineTo(w / 2, ht / 2);
+      ctx.lineTo(-w / 2 + 6, ht / 2);
+      ctx.closePath();
+      ctx.fillStyle = fill;
+      ctx.fill();
+      ctx.lineWidth = 1.8;
+      ctx.strokeStyle = "#0a0a0a";
+      ctx.stroke();
+      ctx.fillStyle = ink;
+      ctx.fillText(text, 0, 1);
+    } else if (h.shape === "giant") {
+      const w = tw + 28, ht = font + 22;
+      roundRect(ctx, -w / 2, -ht / 2, w, ht, 14);
+      ctx.fillStyle = fill;
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#0a0a0a";
+      ctx.stroke();
+      ctx.fillStyle = ink;
+      ctx.font = "800 " + font + "px \"PingFang SC\",\"Noto Sans SC\",Impact,sans-serif";
+      ctx.fillText(text, 0, 1);
+    } else if (h.shape === "bar") {
+      const w = tw + 22, ht = font + 10;
+      ctx.fillStyle = fill;
+      ctx.fillRect(-w / 2, -ht / 2, w, ht);
+      ctx.strokeStyle = "#0a0a0a";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(-w / 2, -ht / 2, w, ht);
+      ctx.fillStyle = "#22d3ee";
+      ctx.fillRect(-w / 2, -ht / 2, 6, ht);
+      ctx.fillStyle = ink;
+      ctx.fillText(text, 3, 1);
+    } else {
+      const w = tw + 18, ht = font + 12;
+      roundRect(ctx, -w / 2, -ht / 2, w, ht, 7);
+      ctx.fillStyle = fill;
+      ctx.fill();
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = "#0a0a0a";
+      ctx.stroke();
+      ctx.fillStyle = ink;
+      ctx.fillText(text, 0, 1);
+    }
     ctx.restore();
   }
 
@@ -206,15 +322,15 @@ var GLYPHS = (() => {
     const m = META[kind] || META.ok;
     el.innerHTML = "";
     const c = document.createElement("canvas");
-    c.width = 80; c.height = 80;
+    c.width = 96; c.height = 56;
     c.className = "sig";
     const g = c.getContext("2d");
-    g.scale(2, 2);
-    drawBubble(g, 20, 20, 13, kind, kind.length + 2);
+    g.scale(1, 1);
+    drawShot(g, { x: 40, y: 28, kind, font: 11, rot: 0 }, (document.documentElement.lang || "").indexOf("zh") === 0 ? "zh" : "en");
     el.appendChild(c);
     el.style.borderColor = m.color;
     return m;
   }
 
-  return { META, drawBubble, drawSmile, drawSun, drawPoster, drawShard, drawPlayer, drawBurst, drawSpeedLines, paintSig };
+  return { META, drawBubble, drawShot, drawWord, drawSmile, drawSun, drawPoster, drawShard, drawPlayer, drawBurst, drawSpeedLines, paintSig };
 })();
