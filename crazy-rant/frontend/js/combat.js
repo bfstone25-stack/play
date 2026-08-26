@@ -1,10 +1,10 @@
 var COMBAT = (() => {
   const W = 420, H = 720;
   const SPECS = {
-    stream: { interval: 0.12, count: 1, spread: 0, speed: 520, font: 13 },
-    spread: { interval: 0.16, count: 3, spread: 0.26, speed: 500, font: 13 },
-    burst: { interval: 0.36, count: 5, spread: 0.34, speed: 540, font: 12 },
-    wave: { interval: 0.14, count: 2, spread: 0.2, speed: 500, font: 13, sine: true },
+    stream: { interval: 0.12, count: 1, spread: 0, speed: 520, font: 10 },
+    spread: { interval: 0.16, count: 3, spread: 0.26, speed: 500, font: 10 },
+    burst: { interval: 0.36, count: 5, spread: 0.34, speed: 540, font: 10 },
+    wave: { interval: 0.14, count: 2, spread: 0.2, speed: 500, font: 10, sine: true },
   };
 
   function create() {
@@ -14,9 +14,9 @@ var COMBAT = (() => {
       shots: makePool(() => ({ x: 0, y: 0, vx: 0, vy: 0, r: 10, kind: "ok", seed: 0, life: 1, font: 13, rot: 0, motion: "linear", amp: 0, phase: 0, age: 0 })),
       hazards: makePool(() => ({
         x: 0, y: 0, vx: 0, vy: 0, ax: 0, ay: 0, r: 10, type: "word", life: 1,
-        homing: 0, rot: 0, text: "", shape: "card", motion: "linear", amp: 0, freq: 2,
+        homing: 0, rot: 0, text: "", shape: "ofuda", motion: "linear", amp: 0, freq: 2,
         age: 0, spin: 0, split: 0, splitKey: "ok", phase: 0, ox: 0, oy: 0,
-        orbitR: 0, orbitA: 0, orbitSpd: 0, turn: 0, cap: 0, seed: 0, font: 15,
+        orbitR: 0, orbitA: 0, orbitSpd: 0, turn: 0, cap: 0, seed: 0, font: 11,
         color: "#eab308", key: "ok", flipped: 0,
       })),
       fx: makePool(() => ({ x: 0, y: 0, life: 1, color: "#eab308" })),
@@ -91,12 +91,12 @@ var COMBAT = (() => {
         s.y = state.player.y - 20;
         s.vx = Math.cos(a) * spec.speed;
         s.vy = Math.sin(a) * spec.speed;
-        s.r = 11;
+        s.r = 7;
         s.kind = kind;
         s.seed = (state.time * 17 + i * 3) | 0;
         s.life = 2.2;
-        s.font = spec.font || 13;
-        s.rot = a + Math.PI / 2;
+        s.font = spec.font || 10;
+        s.rot = 0;
         s.motion = spec.sine ? "sine" : "linear";
         s.amp = spec.sine ? 40 : 0;
         s.phase = i;
@@ -144,7 +144,7 @@ var COMBAT = (() => {
 
   function stepHazard(state, h, dt) {
     h.age += dt;
-    h.rot += (h.spin || 0) * dt;
+    h.rot = 0;
     if (h.motion === "sine") {
       h.x += h.vx * dt + Math.cos((h.age + h.phase) * h.freq) * h.amp * dt;
       h.y += h.vy * dt;
@@ -155,7 +155,6 @@ var COMBAT = (() => {
       h.vy = Math.sin(a) * sp;
       h.x += h.vx * dt;
       h.y += h.vy * dt;
-      h.rot = a;
     } else if (h.motion === "homing") {
       const dx = state.player.x - h.x, dy = state.player.y - h.y;
       const d = Math.hypot(dx, dy) || 1;
@@ -166,7 +165,6 @@ var COMBAT = (() => {
       if (sp > cap) { h.vx = h.vx / sp * cap; h.vy = h.vy / sp * cap; }
       h.x += h.vx * dt;
       h.y += h.vy * dt;
-      h.rot = Math.atan2(h.vy, h.vx);
     } else if (h.motion === "boomerang") {
       if (!h.flipped && h.age > 1.2) {
         h.vx *= -0.9;
@@ -175,7 +173,6 @@ var COMBAT = (() => {
       }
       h.x += h.vx * dt;
       h.y += h.vy * dt;
-      h.rot += dt * 3;
     } else if (h.motion === "bounce") {
       h.x += h.vx * dt;
       h.y += h.vy * dt;
@@ -192,7 +189,6 @@ var COMBAT = (() => {
       h.vy += (h.ay || 0) * dt;
       h.x += h.vx * dt;
       h.y += h.vy * dt;
-      h.rot = Math.atan2(h.vy, h.vx);
     } else if (h.motion === "split") {
       h.x += h.vx * dt;
       h.y += h.vy * dt;

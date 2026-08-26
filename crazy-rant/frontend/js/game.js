@@ -11,8 +11,8 @@
   const COPY = {
     en: {
       tag: "CABINET 06 · OFFICE HELL",
-      lore: "Workplace knives, written as bullets.",
-      hint: "Office-politics shmup. Read the words. Graze the meeting.",
+      lore: "Workplace knives, written as ofuda.",
+      hint: "Office-politics shmup. Read the charms. Graze the meeting.",
       start: "PRESS START",
       load: "PICK THREE",
       fight: "CLOCK IN",
@@ -32,8 +32,8 @@
     },
     zh: {
       tag: "六号机柜 · 职场弹幕",
-      lore: "明争暗斗写成子弹。字要大，要能读。",
-      hint: "职场 STG。读子弹，擦弹，把会开完。",
+      lore: "职场刀子写成神道灵符。竖着写，才能躲。",
+      hint: "职场 STG。读御札，擦弹，把会开完。",
       start: "按开始",
       load: "选三张",
       fight: "上班",
@@ -51,6 +51,27 @@
       phases: ["站会", "1对1", "全员会", "PIP", "加班"],
       cards: { ok: "好好", lie: "很好", teach: "教我", quit: "不干", legend: "别劝" },
     },
+    ja: {
+      tag: "六号機 · 社内御札",
+      lore: "社内の刃は、御札になる。",
+      hint: "職場STG。札を読んで、擦って、会議を終える。",
+      start: "はじめる",
+      load: "三枚選べ",
+      fight: "出勤",
+      hold: "タップ",
+      launchStart: "開始",
+      launchFight: "開戦",
+      launchAgain: "もう一回",
+      hp: "HP", rage: "擦弾", combo: "コンボ", phase: "会議",
+      best: "最速", max: "最大", slots: "札",
+      wait: "待機", live: "会議中", down: "散会", dead: "PIP",
+      win: "PIPを生き抜いた", lose: "笑顔に沈んだ",
+      retry: "再戦", next: "残業",
+      dodge: "ドラッグ / WASD。自動射撃。札を擦れ。",
+      unlock: "解禁 ",
+      phases: ["朝会", "1on1", "全社会", "PIP", "残業"],
+      cards: { ok: "了解", lie: "元気", teach: "指導", quit: "辞める", legend: "頑張るな" },
+    },
   };
 
   const canvas = document.getElementById("game");
@@ -65,7 +86,7 @@
   if (!save.unlocked || !save.unlocked.length) save.unlocked = ["ok", "lie", "teach"];
   const state = COMBAT.create();
 
-  function t() { return COPY[lang]; }
+  function t() { return COPY[lang] || COPY.en; }
   function persist() {
     try { localStorage.setItem(KEY, JSON.stringify(save)); } catch (_) {}
   }
@@ -85,7 +106,7 @@
 
   function applyLang() {
     const c = t();
-    document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+    document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang === "ja" ? "ja" : "en";
     document.getElementById("tagline").textContent = c.tag;
     document.getElementById("lore").textContent = c.lore;
     document.getElementById("titleTag").textContent = c.tag;
@@ -284,15 +305,13 @@
     const oy = reduced ? 0 : (Math.random() - 0.5) * state.shake;
     ctx.setTransform(dpr * sx, 0, 0, dpr * sy, ox * dpr * sx, oy * dpr * sy);
     const g = ctx.createLinearGradient(0, 0, 0, H);
-    g.addColorStop(0, "#1a1020");
-    g.addColorStop(0.45, "#0a0a0a");
-    g.addColorStop(1, "#12080c");
+    g.addColorStop(0, "#2c1410");
+    g.addColorStop(0.45, "#0c0a08");
+    g.addColorStop(1, "#140c0a");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
-    ctx.fillStyle = "rgba(225,29,72,.08)";
-    ctx.fillRect(0, 0, W * 0.5, H);
-    ctx.fillStyle = "rgba(34,211,238,.08)";
-    ctx.fillRect(W * 0.5, 0, W * 0.5, H);
+    ctx.fillStyle = "rgba(194,65,45,.10)";
+    ctx.fillRect(0, 0, W, H);
     if (!reduced) GLYPHS.drawSpeedLines(ctx, W, H, state.time);
 
     const chroma = state.chroma;

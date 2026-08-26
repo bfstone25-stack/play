@@ -4,11 +4,27 @@ var DANMAKU = (() => {
   function W() { return (typeof COMBAT !== "undefined" && COMBAT.W) || 420; }
   function H() { return (typeof COMBAT !== "undefined" && COMBAT.H) || 720; }
 
+  /* Spread ofuda across the shrine with a minimum column pitch so the
+     6px player hitbox can weave. Extra requested columns are dropped. */
+  function columns(n, pitch) {
+    const usable = W() - 56;
+    const maxN = Math.max(2, Math.floor(usable / pitch) + 1);
+    const count = Math.min(n, maxN);
+    const span = (count - 1) * pitch;
+    const x0 = (W() - span) / 2;
+    const xs = [];
+    for (let i = 0; i < count; i++) xs.push(x0 + i * pitch);
+    return xs;
+  }
+
   function word(state, opt) {
     const key = opt.key || PALETTE[(opt.seed || 0) % PALETTE.length];
     const lang = state.lang || "en";
     const text = opt.text || PHRASES.pick(lang, key, opt.seed || 0);
-    const font = opt.font || (opt.shape === "giant" ? 22 : opt.shape === "needle" ? 12 : 15);
+    const shape = opt.shape || "ofuda";
+    const font = opt.font || (shape === "giant" ? 14 : shape === "needle" ? 10 : 11);
+    const hit = opt.hit != null ? opt.hit
+      : (shape === "giant" ? 14 : shape === "needle" ? 4.5 : shape === "stamp" ? 11 : 6);
     state.hazards.spawn((h) => {
       h.x = opt.x;
       h.y = opt.y;
@@ -16,20 +32,21 @@ var DANMAKU = (() => {
       h.vy = opt.vy || 0;
       h.ax = opt.ax || 0;
       h.ay = opt.ay || 0;
-      h.r = opt.hit != null ? opt.hit : (opt.shape === "giant" ? 16 : opt.shape === "needle" ? 7 : 11);
+      h.r = hit;
       h.font = font;
       h.text = text;
       h.key = key;
       h.color = opt.color || PHRASES.color(key);
-      h.shape = opt.shape || "card";
+      h.shape = shape;
       h.motion = opt.motion || "linear";
       h.amp = opt.amp || 0;
       h.freq = opt.freq || 2.2;
       h.homing = opt.homing || 0;
       h.life = opt.life || 8;
       h.age = 0;
-      h.rot = opt.rot || 0;
-      h.spin = opt.spin || 0;
+      /* Ofuda stay upright. Never rotate into a horizontal wall. */
+      h.rot = 0;
+      h.spin = 0;
       h.split = opt.split || 0;
       h.splitKey = opt.splitKey || "ok";
       h.phase = opt.phase || 0;
@@ -59,31 +76,28 @@ var DANMAKU = (() => {
 
   function rain_ok(state) {
     const r = rankOf(state);
-    const n = Math.round(5 + r * 2);
-    const w = W();
-    for (let i = 0; i < n; i++) {
+    const xs = columns(4 + Math.min(3, Math.round(r)), 40);
+    xs.forEach((x, i) => {
       word(state, {
-        x: 28 + i * ((w - 56) / Math.max(1, n - 1)),
-        y: -20,
-        vy: 70 + r * 18,
+        x, y: -28,
+        vy: 62 + r * 10,
         key: i % 2 ? "ok" : "stamp",
-        shape: "card",
         seed: (state.time * 9 + i) | 0,
         motion: "sine",
-        amp: 26 + r * 4,
-        freq: 1.6,
-        hit: 10,
+        amp: 12 + r * 2,
+        freq: 1.4,
+        hit: 6,
       });
-    }
+    });
     return 0.72 / Math.min(1.6, r);
   }
 
   function fan_cc(state) {
     const r = rankOf(state);
-    const n = Math.round(7 + r);
+    const n = Math.round(5 + Math.min(2, r));
     const a0 = Math.PI * 0.22;
     const a1 = Math.PI - a0;
-    const spd = 95 + r * 16;
+    const spd = 80 + r * 12;
     for (let i = 0; i < n; i++) {
       const a = a0 + (a1 - a0) * (n === 1 ? 0.5 : i / (n - 1));
       word(state, {
@@ -92,12 +106,8 @@ var DANMAKU = (() => {
         vx: Math.cos(a) * spd,
         vy: Math.sin(a) * spd,
         key: "cc",
-        shape: "bar",
-        font: 13,
         seed: i,
-        rot: a - Math.PI / 2,
-        spin: 0,
-        hit: 10,
+        hit: 6,
       });
     }
     return 0.95 / Math.min(1.5, r);
@@ -105,29 +115,27 @@ var DANMAKU = (() => {
 
   function sine_align(state) {
     const r = rankOf(state);
-    const n = Math.round(4 + r);
-    for (let i = 0; i < n; i++) {
+    const xs = columns(3 + Math.min(2, Math.round(r)), 56);
+    xs.forEach((x, i) => {
       word(state, {
-        x: 40 + i * 80,
-        y: -16,
-        vy: 88 + r * 12,
+        x, y: -28,
+        vy: 72 + r * 10,
         key: "sync",
-        shape: "card",
         motion: "sine",
-        amp: 48,
-        freq: 2.4,
+        amp: 16,
+        freq: 1.6,
         phase: i * 0.8,
         seed: i + 3,
-        hit: 11,
+        hit: 5.5,
       });
-    }
+    });
     return 0.8;
   }
 
   function spiral_empower(state) {
     const r = rankOf(state);
-    const n = Math.round(8 + r * 2);
-    const spd = 70 + r * 10;
+    const n = Math.round(6 + Math.min(3, r));
+    const spd = 62 + r * 8;
     for (let i = 0; i < n; i++) {
       const a = state.time * 1.7 + i * ((Math.PI * 2) / n);
       word(state, {
@@ -140,8 +148,8 @@ var DANMAKU = (() => {
         motion: "turn",
         turn: 0.55 + r * 0.08,
         seed: i,
-        hit: 10,
-        font: 13,
+        hit: 9,
+        font: 11,
       });
     }
     return 0.62;
@@ -149,23 +157,22 @@ var DANMAKU = (() => {
 
   function aimed_follow(state) {
     const r = rankOf(state);
-    const n = Math.round(2 + r);
+    const n = Math.round(2 + Math.min(2, r));
     for (let i = 0; i < n; i++) {
-      const v = aimed(state, 130 + r * 20);
-      const spread = (i - (n - 1) / 2) * 0.18;
+      const v = aimed(state, 118 + r * 16);
+      const spread = (i - (n - 1) / 2) * 0.22;
       const ca = Math.cos(spread), sa = Math.sin(spread);
       word(state, {
-        x: state.boss.x + (i - (n - 1) / 2) * 18,
+        x: state.boss.x + (i - (n - 1) / 2) * 28,
         y: state.boss.y + 42,
         vx: v.vx * ca - v.vy * sa,
         vy: v.vx * sa + v.vy * ca,
         key: "own",
-        shape: "card",
         motion: "homing",
-        homing: 28 + r * 6,
-        cap: 170,
+        homing: 22 + r * 5,
+        cap: 150,
         seed: i + 11,
-        hit: 11,
+        hit: 6,
       });
     }
     return 0.88;
@@ -173,20 +180,19 @@ var DANMAKU = (() => {
 
   function boomerang_sync(state) {
     const r = rankOf(state);
-    const n = Math.round(5 + r);
+    const n = Math.round(4 + Math.min(2, r));
     for (let i = 0; i < n; i++) {
-      const a = Math.PI * 0.3 + i * 0.22;
+      const a = Math.PI * 0.3 + i * 0.28;
       word(state, {
         x: state.boss.x,
         y: state.boss.y + 30,
-        vx: Math.cos(a) * (140 + r * 10),
-        vy: Math.sin(a) * (140 + r * 10),
+        vx: Math.cos(a) * (120 + r * 8),
+        vy: Math.sin(a) * (120 + r * 8),
         key: "sync",
-        shape: "card",
         motion: "boomerang",
         seed: i,
         life: 5.5,
-        hit: 11,
+        hit: 6,
       });
     }
     return 1.05;
@@ -194,30 +200,28 @@ var DANMAKU = (() => {
 
   function splitter_group(state) {
     const r = rankOf(state);
-    const n = Math.round(3 + r * 0.6);
-    for (let i = 0; i < n; i++) {
+    const xs = columns(Math.round(3 + Math.min(1, r)), 90);
+    xs.forEach((x, i) => {
       word(state, {
-        x: 70 + i * ((W() - 140) / Math.max(1, n - 1)),
-        y: state.boss.y + 50,
-        vy: 70,
+        x, y: state.boss.y + 50,
+        vy: 64,
         key: "group",
-        shape: "card",
         motion: "split",
         split: 1.15,
         splitKey: "stamp",
         seed: i + 4,
         life: 6,
-        font: 16,
-        hit: 12,
+        font: 12,
+        hit: 7,
       });
-    }
+    });
     return 1.2;
   }
 
   function ring_family(state) {
     const r = rankOf(state);
-    const n = Math.round(10 + r * 2);
-    const spd = 78 + r * 10;
+    const n = Math.round(8 + Math.min(3, r));
+    const spd = 70 + r * 8;
     for (let i = 0; i < n; i++) {
       const a = (i / n) * Math.PI * 2 + state.time;
       word(state, {
@@ -226,9 +230,8 @@ var DANMAKU = (() => {
         vx: Math.cos(a) * spd,
         vy: Math.sin(a) * spd,
         key: i % 2 ? "family" : "ok",
-        shape: "card",
         seed: i,
-        hit: 10,
+        hit: 5.5,
       });
     }
     return 1.1;
@@ -236,18 +239,17 @@ var DANMAKU = (() => {
 
   function curtain_ok(state) {
     const r = rankOf(state);
-    const cols = Math.round(6 + r);
-    const gap = 1 + ((state.time * 3) | 0) % 3;
+    const cols = 8;
+    const gap = 1 + ((state.time * 3) | 0) % 5;
     for (let i = 0; i < cols; i++) {
       if (i === gap || i === gap + 1) continue;
       word(state, {
-        x: 24 + i * ((W() - 48) / (cols - 1)),
-        y: -24,
-        vy: 95 + r * 10,
+        x: 36 + i * ((W() - 72) / (cols - 1)),
+        y: -28,
+        vy: 82 + r * 8,
         key: "ok",
-        shape: "card",
         seed: i + 20,
-        hit: 11,
+        hit: 5.5,
       });
     }
     return 0.55;
@@ -255,22 +257,20 @@ var DANMAKU = (() => {
 
   function side_cubicle(state) {
     const r = rankOf(state);
-    const n = Math.round(4 + r);
+    const n = Math.round(3 + Math.min(2, r));
     const fromLeft = ((state.time * 2) | 0) % 2 === 0;
     for (let i = 0; i < n; i++) {
       word(state, {
-        x: fromLeft ? -30 : W() + 30,
-        y: 180 + i * 70,
-        vx: (fromLeft ? 1 : -1) * (110 + r * 14),
-        vy: 20,
+        x: fromLeft ? -16 : W() + 16,
+        y: 200 + i * 90,
+        vx: (fromLeft ? 1 : -1) * (90 + r * 10),
+        vy: 16,
         key: "knife",
-        shape: "bar",
-        font: 14,
         seed: i + 7,
         motion: "sine",
-        amp: 18,
-        freq: 3,
-        hit: 10,
+        amp: 10,
+        freq: 2.2,
+        hit: 6,
       });
     }
     return 0.9;
@@ -281,35 +281,33 @@ var DANMAKU = (() => {
     word(state, {
       x: 70 + (state.time * 97) % (W() - 140),
       y: -40,
-      vy: 42 + r * 6,
+      vy: 38 + r * 5,
       key: "bless",
       shape: "giant",
-      font: 24,
-      hit: 18,
+      font: 14,
+      hit: 14,
       seed: (state.time * 3) | 0,
       life: 12,
     });
-    const n = Math.round(3 + r);
-    for (let i = 0; i < n; i++) {
+    columns(4 + Math.min(2, Math.round(r)), 52).forEach((x, i) => {
       word(state, {
-        x: 50 + i * 90,
-        y: -10,
-        vy: 120 + r * 16,
+        x, y: -36,
+        vy: 108 + r * 12,
         key: "rush",
         shape: "needle",
-        font: 12,
+        font: 10,
         seed: i + 30,
-        hit: 7,
+        hit: 4.5,
       });
-    }
+    });
     return 1.15;
   }
 
   function flower(state) {
     const r = rankOf(state);
     const arms = 5;
-    const n = Math.round(3 + r);
-    const spd = 86 + r * 12;
+    const n = Math.round(2 + Math.min(1, r));
+    const spd = 78 + r * 10;
     const rot = state.time * 0.9;
     for (let a = 0; a < arms; a++) {
       for (let k = 0; k < n; k++) {
@@ -321,11 +319,11 @@ var DANMAKU = (() => {
           vy: Math.sin(ang) * (spd + k * 14),
           key: k % 2 ? "power" : "loop",
           shape: "stamp",
-          font: 12,
+          font: 11,
           seed: a * 10 + k,
           motion: "turn",
           turn: k % 2 ? 0.4 : -0.35,
-          hit: 9,
+          hit: 8,
         });
       }
     }
@@ -334,21 +332,21 @@ var DANMAKU = (() => {
 
   function bounce_loop(state) {
     const r = rankOf(state);
-    const n = Math.round(6 + r);
+    const n = Math.round(5 + Math.min(2, r));
     for (let i = 0; i < n; i++) {
-      const a = 0.4 + i * 0.22;
+      const a = 0.4 + i * 0.28;
       word(state, {
         x: state.boss.x,
         y: state.boss.y + 24,
-        vx: Math.cos(a) * (120 + r * 10),
-        vy: Math.sin(a) * (90 + r * 8),
+        vx: Math.cos(a) * (108 + r * 8),
+        vy: Math.sin(a) * (82 + r * 6),
         key: "loop",
         shape: "stamp",
         motion: "bounce",
         seed: i,
         life: 7,
-        hit: 10,
-        font: 13,
+        hit: 9,
+        font: 11,
       });
     }
     return 1.0;
@@ -356,7 +354,7 @@ var DANMAKU = (() => {
 
   function orbit_then_fire(state) {
     const r = rankOf(state);
-    const n = Math.round(8 + r);
+    const n = Math.round(6 + Math.min(2, r));
     for (let i = 0; i < n; i++) {
       word(state, {
         x: state.boss.x,
@@ -373,8 +371,8 @@ var DANMAKU = (() => {
         split: 2.2,
         splitKey: "own",
         seed: i,
-        hit: 9,
-        font: 12,
+        hit: 8,
+        font: 11,
       });
     }
     return 1.35;
@@ -384,7 +382,7 @@ var DANMAKU = (() => {
     rain_ok(state);
     fan_cc(state);
     const r = rankOf(state);
-    const v = aimed(state, 150 + r * 18);
+    const v = aimed(state, 140 + r * 14);
     word(state, {
       x: state.boss.x,
       y: state.boss.y + 40,
@@ -392,8 +390,8 @@ var DANMAKU = (() => {
       vy: v.vy,
       key: "rush",
       shape: "giant",
-      font: 20,
-      hit: 16,
+      font: 14,
+      hit: 14,
       seed: 99,
     });
     return 0.7;
@@ -401,20 +399,20 @@ var DANMAKU = (() => {
 
   function accel_rush(state) {
     const r = rankOf(state);
-    const n = Math.round(6 + r);
+    const n = Math.round(4 + Math.min(2, r));
     for (let i = 0; i < n; i++) {
-      const a = Math.PI * 0.28 + i * 0.18;
+      const a = Math.PI * 0.28 + i * 0.22;
       word(state, {
         x: state.boss.x,
         y: state.boss.y + 28,
-        vx: Math.cos(a) * 40,
-        vy: Math.sin(a) * 40,
-        ay: 90 + r * 20,
+        vx: Math.cos(a) * 36,
+        vy: Math.sin(a) * 36,
+        ay: 80 + r * 16,
         key: "rush",
         shape: "needle",
         motion: "accel",
         seed: i,
-        hit: 7,
+        hit: 4.5,
       });
     }
     return 0.75;
@@ -441,5 +439,5 @@ var DANMAKU = (() => {
     return fn(state) || 0.8;
   }
 
-  return { CATALOG, MEETINGS, ENDLESS, word, run, rankOf };
+  return { CATALOG, MEETINGS, ENDLESS, word, run, rankOf, columns };
 })();

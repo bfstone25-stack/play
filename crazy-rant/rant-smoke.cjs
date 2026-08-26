@@ -43,17 +43,43 @@ const motions = new Set();
 const texts = new Set();
 for (const name of names) {
   const state = combatCtx.COMBAT.create();
-  combatCtx.COMBAT.reset(state, { pattern: "spread", shotPower: 12, loadout: ["quit", "teach"], reduced: true, lang: "zh" });
+  combatCtx.COMBAT.reset(state, { pattern: "spread", shotPower: 12, loadout: ["quit", "teach"], reduced: true, lang: "ja" });
   combatCtx.DANMAKU.run(name, state);
   if (state.hazards.live.length < 1) throw new Error(name + " spawned nothing");
   state.hazards.live.forEach((h) => {
     if (!h.text) throw new Error(name + " bullet has no text");
+    if (h.text.length > 4) throw new Error(name + " ofuda too long: " + h.text);
+    if (h.rot) throw new Error(name + " ofuda rotated " + h.rot);
+    if (h.shape !== "giant" && h.shape !== "stamp" && (h.r || 0) > 8) {
+      throw new Error(name + " fat hitbox " + h.r + " " + h.shape);
+    }
     texts.add(h.text);
     motions.add(h.motion);
   });
 }
 if (texts.size < 8) throw new Error("phrase pool too thin " + texts.size);
 if (motions.size < 5) throw new Error("motion variety too thin " + [...motions]);
+
+function minPitch(state) {
+  const xs = state.hazards.live.map((h) => h.x).sort((a, b) => a - b);
+  let min = Infinity;
+  for (let i = 1; i < xs.length; i++) min = Math.min(min, xs[i] - xs[i - 1]);
+  return min;
+}
+const rain = combatCtx.COMBAT.create();
+combatCtx.COMBAT.reset(rain, { pattern: "spread", shotPower: 12, loadout: ["quit"], reduced: true, lang: "zh" });
+rain.rank = 14;
+rain.boss.meeting = 3;
+combatCtx.DANMAKU.run("rain_ok", rain);
+if (minPitch(rain) < 36) throw new Error("rain columns too tight " + minPitch(rain));
+const curtain = combatCtx.COMBAT.create();
+combatCtx.COMBAT.reset(curtain, { pattern: "spread", shotPower: 12, loadout: ["quit"], reduced: true, lang: "en" });
+curtain.rank = 14;
+curtain.boss.meeting = 3;
+combatCtx.DANMAKU.run("curtain_ok", curtain);
+if (minPitch(curtain) < 36) throw new Error("curtain columns too tight " + minPitch(curtain));
+const jaWord = combatCtx.PHRASES.pick("ja", "ok", 0);
+if (!jaWord || jaWord.length < 2) throw new Error("ja bank empty");
 
 const state = combatCtx.COMBAT.create();
 combatCtx.COMBAT.reset(state, { pattern: "spread", shotPower: 12, loadout: ["quit", "teach"], reduced: true, lang: "en" });

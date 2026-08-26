@@ -73,107 +73,97 @@ var GLYPHS = (() => {
     ctx.restore();
   }
 
+  function charsOf(text) {
+    return Array.from(String(text || "!"));
+  }
+
+  function fillOfuda(ctx, w, h, vermillion) {
+    ctx.fillStyle = "#f4ead3";
+    ctx.fillRect(-w / 2, -h / 2, w, h);
+    ctx.strokeStyle = vermillion || "#c2412d";
+    ctx.lineWidth = 2.4;
+    ctx.strokeRect(-w / 2 + 1, -h / 2 + 1, w - 2, h - 2);
+    ctx.lineWidth = 1;
+    ctx.strokeRect(-w / 2 + 4, -h / 2 + 4, w - 8, h - 8);
+    ctx.fillStyle = vermillion || "#c2412d";
+    ctx.fillRect(-w / 2 + 5, -h / 2 + 5, w - 10, 3);
+  }
+
+  function verticalInk(ctx, chars, font, color) {
+    ctx.fillStyle = color || "#1a120c";
+    ctx.font = "700 " + font + "px \"Noto Serif JP\",\"Yu Mincho\",\"Songti SC\",\"Noto Serif SC\",serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const lh = font + 1;
+    const total = chars.length * lh;
+    let y = -total / 2 + lh / 2;
+    for (let i = 0; i < chars.length; i++) {
+      ctx.fillText(chars[i], 0, y);
+      y += lh;
+    }
+  }
+
+  function hanko(ctx, y, color) {
+    ctx.save();
+    ctx.strokeStyle = color || "#9f1239";
+    ctx.fillStyle = "rgba(159,18,57,.18)";
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.arc(0, y, 5.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawOfuda(ctx, text, font, vermillion, wide) {
+    const chars = charsOf(text).slice(0, 4);
+    const lh = font + 1;
+    const w = wide || Math.max(18, font + 8);
+    const h = chars.length * lh + 22;
+    fillOfuda(ctx, w, h, vermillion);
+    verticalInk(ctx, chars, font, "#1a120c");
+    hanko(ctx, h / 2 - 10, vermillion);
+    return { w, h };
+  }
+
   function drawShot(ctx, s, lang) {
     const m = META[s.kind] || META.ok;
     const text = (typeof PHRASES !== "undefined") ? PHRASES.shot(lang || "en", s.kind) : (s.kind || "!");
     ctx.save();
     ctx.translate(s.x, s.y);
-    ctx.rotate(s.rot || 0);
-    const font = s.font || 13;
-    ctx.font = "700 " + font + "px \"PingFang SC\",\"Noto Sans SC\",Impact,sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    const tw = ctx.measureText(text).width;
-    const w = tw + 16;
-    const h = font + 10;
-    roundRect(ctx, -w / 2, -h / 2, w, h, 8);
-    ctx.fillStyle = m.color;
-    ctx.fill();
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "#0a0a0a";
-    ctx.stroke();
-    ctx.fillStyle = "#0a0a0a";
-    ctx.fillText(text, 0, 1);
+    drawOfuda(ctx, text, s.font || 11, m.color, 16);
     ctx.restore();
   }
 
   function drawWord(ctx, h) {
     const text = h.text || "!";
-    const font = h.font || 15;
+    const font = h.font || 13;
+    const vermillion = h.color || "#c2412d";
     ctx.save();
     ctx.translate(h.x, h.y);
-    ctx.rotate(h.rot || 0);
-    ctx.font = "700 " + font + "px \"PingFang SC\",\"Noto Sans SC\",Impact,sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    const tw = ctx.measureText(text).width;
-    const ink = h.color === "#f8fafc" ? "#0a0a0a" : "#0a0a0a";
-    const fill = h.color || "#eab308";
     if (h.shape === "stamp") {
-      const rad = Math.max(tw * 0.55, font * 1.15);
-      ctx.beginPath();
-      ctx.arc(0, 0, rad, 0, Math.PI * 2);
-      ctx.fillStyle = fill;
-      ctx.fill();
+      const rad = 13;
+      ctx.fillStyle = "#f4ead3";
+      ctx.beginPath(); ctx.arc(0, 0, rad, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = vermillion;
       ctx.lineWidth = 2.2;
-      ctx.strokeStyle = "#0a0a0a";
       ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(0, 0, rad - 4, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(10,10,10,.35)";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.fillStyle = ink;
-      ctx.fillText(text, 0, 1);
+      ctx.beginPath(); ctx.arc(0, 0, rad - 3.5, 0, Math.PI * 2); ctx.stroke();
+      verticalInk(ctx, charsOf(text).slice(0, 2), 11, "#1a120c");
     } else if (h.shape === "needle") {
-      const w = tw + 14, ht = font + 6;
-      ctx.beginPath();
-      ctx.moveTo(-w / 2, 0);
-      ctx.lineTo(-w / 2 + 6, -ht / 2);
-      ctx.lineTo(w / 2, -ht / 2);
-      ctx.lineTo(w / 2 + 8, 0);
-      ctx.lineTo(w / 2, ht / 2);
-      ctx.lineTo(-w / 2 + 6, ht / 2);
-      ctx.closePath();
-      ctx.fillStyle = fill;
-      ctx.fill();
-      ctx.lineWidth = 1.8;
-      ctx.strokeStyle = "#0a0a0a";
-      ctx.stroke();
-      ctx.fillStyle = ink;
-      ctx.fillText(text, 0, 1);
+      const chars = charsOf(text).slice(0, 3);
+      const w = 12;
+      const hgt = chars.length * (font + 1) + 14;
+      ctx.fillStyle = "#f4ead3";
+      ctx.fillRect(-w / 2, -hgt / 2, w, hgt);
+      ctx.strokeStyle = vermillion;
+      ctx.lineWidth = 1.6;
+      ctx.strokeRect(-w / 2 + 0.5, -hgt / 2 + 0.5, w - 1, hgt - 1);
+      verticalInk(ctx, chars, font, vermillion);
     } else if (h.shape === "giant") {
-      const w = tw + 28, ht = font + 22;
-      roundRect(ctx, -w / 2, -ht / 2, w, ht, 14);
-      ctx.fillStyle = fill;
-      ctx.fill();
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = "#0a0a0a";
-      ctx.stroke();
-      ctx.fillStyle = ink;
-      ctx.font = "800 " + font + "px \"PingFang SC\",\"Noto Sans SC\",Impact,sans-serif";
-      ctx.fillText(text, 0, 1);
-    } else if (h.shape === "bar") {
-      const w = tw + 22, ht = font + 10;
-      ctx.fillStyle = fill;
-      ctx.fillRect(-w / 2, -ht / 2, w, ht);
-      ctx.strokeStyle = "#0a0a0a";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(-w / 2, -ht / 2, w, ht);
-      ctx.fillStyle = "#22d3ee";
-      ctx.fillRect(-w / 2, -ht / 2, 6, ht);
-      ctx.fillStyle = ink;
-      ctx.fillText(text, 3, 1);
+      drawOfuda(ctx, text, font, vermillion, 28);
     } else {
-      const w = tw + 18, ht = font + 12;
-      roundRect(ctx, -w / 2, -ht / 2, w, ht, 7);
-      ctx.fillStyle = fill;
-      ctx.fill();
-      ctx.lineWidth = 2.2;
-      ctx.strokeStyle = "#0a0a0a";
-      ctx.stroke();
-      ctx.fillStyle = ink;
-      ctx.fillText(text, 0, 1);
+      drawOfuda(ctx, text, font, vermillion, h.shape === "bar" ? 18 : 20);
     }
     ctx.restore();
   }
@@ -306,7 +296,7 @@ var GLYPHS = (() => {
 
   function drawSpeedLines(ctx, w, h, t) {
     ctx.save();
-    ctx.strokeStyle = "rgba(34,211,238,.18)";
+    ctx.strokeStyle = "rgba(194,65,45,.22)";
     ctx.lineWidth = 1;
     for (let i = 0; i < 10; i++) {
       const y = ((i * 67 + t * 90) % h);
@@ -326,7 +316,9 @@ var GLYPHS = (() => {
     c.className = "sig";
     const g = c.getContext("2d");
     g.scale(1, 1);
-    drawShot(g, { x: 40, y: 28, kind, font: 11, rot: 0 }, (document.documentElement.lang || "").indexOf("zh") === 0 ? "zh" : "en");
+    const dl = document.documentElement.lang || "";
+    const shotLang = dl.indexOf("zh") === 0 ? "zh" : dl.indexOf("ja") === 0 ? "ja" : "en";
+    drawShot(g, { x: 40, y: 28, kind, font: 11, rot: 0 }, shotLang);
     el.appendChild(c);
     el.style.borderColor = m.color;
     return m;

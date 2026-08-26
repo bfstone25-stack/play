@@ -7,7 +7,7 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family
 .void{position:fixed;inset:0;z-index:0;pointer-events:none}
 .flare{position:absolute;width:46vw;height:46vw;border-radius:50%;filter:blur(48px);opacity:.28}
 .flare.crimson{left:-8%;top:-6%;background:var(--crimson)}
-.flare.cyan{right:-10%;bottom:8%;background:var(--cyan)}
+.flare.cyan{right:-10%;bottom:8%;background:#c2412d}
 .halftone{position:absolute;inset:0;background-image:radial-gradient(rgba(234,179,8,.18) .8px,transparent .9px);background-size:7px 7px;mix-blend-mode:screen;opacity:.35}
 .lang-bar{position:fixed;top:calc(10px + env(safe-area-inset-top));right:14px;z-index:8;display:flex;gap:6px}
 .lang-btn{border:2px solid #3a3a40;background:#111;color:var(--muted);padding:5px 10px;border-radius:999px;font:12px ui-sans-serif,sans-serif;cursor:pointer}
@@ -37,7 +37,7 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family
 .chain #chainTrack i.on{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
 .slot-row{display:flex;gap:6px;margin-top:8px;min-height:36px}
 .slot-row .chip{flex:1;height:36px;border:2px solid #111;background:#0a0a0a}
-.glass{position:relative;border:3px solid #111;background:#050508;overflow:hidden;min-height:240px;box-shadow:inset 0 0 0 2px var(--cyan)}
+.glass{position:relative;border:3px solid #111;background:#050508;overflow:hidden;min-height:240px;box-shadow:inset 0 0 0 2px #c2412d}
 #game{display:block;width:100%;height:100%}
 .scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 2px,rgba(255,255,255,.03) 2px 3px)}
 .dots{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(234,179,8,.2) .7px,transparent .8px);background-size:8px 8px;mix-blend-mode:screen;opacity:.22}
