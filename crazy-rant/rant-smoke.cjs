@@ -90,6 +90,13 @@ if (state.shots.live.length < 1 && !state.outcome) throw new Error("player never
 const readable = state.hazards.live.filter((h) => h.text && h.text.length >= 2);
 if (readable.length < 1 && state.outcome !== "win") throw new Error("no readable bullets");
 
+const aim = combatCtx.COMBAT.create();
+combatCtx.COMBAT.reset(aim, { pattern: "stream", shotPower: 12, loadout: ["ok"], reduced: true, lang: "en" });
+aim.player.x = 80;
+aim.player.y = 560;
+const sideShot = { x: 80, y: aim.boss.y, hw: 10, hh: 30 };
+if (!combatCtx.BOSS.hit(aim.boss, sideShot)) throw new Error("boss still ignores ofuda at the side");
+
 console.log("crazy rant combinator ok", {
   combo, dmg,
   pattern: rantPattern(["quit", "teach"], cat),

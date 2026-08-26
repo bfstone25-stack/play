@@ -11,7 +11,7 @@ var COMBAT = (() => {
     return {
       player: { x: W * 0.5, y: H * 0.78, r: 6, hp: 7, maxHp: 7, iFrames: 0, vx: 0 },
       boss: BOSS.create(W, H),
-      shots: makePool(() => ({ x: 0, y: 0, vx: 0, vy: 0, r: 10, kind: "ok", seed: 0, life: 1, font: 13, rot: 0, motion: "linear", amp: 0, phase: 0, age: 0 })),
+      shots: makePool(() => ({ x: 0, y: 0, vx: 0, vy: 0, r: 12, hw: 10, hh: 30, kind: "ok", seed: 0, life: 1, font: 13, rot: 0, motion: "linear", amp: 0, phase: 0, age: 0 })),
       hazards: makePool(() => ({
         x: 0, y: 0, vx: 0, vy: 0, ax: 0, ay: 0, r: 10, type: "word", life: 1,
         homing: 0, rot: 0, text: "", shape: "ofuda", motion: "linear", amp: 0, freq: 2,
@@ -91,7 +91,9 @@ var COMBAT = (() => {
         s.y = state.player.y - 20;
         s.vx = Math.cos(a) * spec.speed;
         s.vy = Math.sin(a) * spec.speed;
-        s.r = 7;
+        s.r = 12;
+        s.hw = 10;
+        s.hh = 30;
         s.kind = kind;
         s.seed = (state.time * 17 + i * 3) | 0;
         s.life = 2.2;
@@ -275,15 +277,19 @@ var COMBAT = (() => {
     state.meetingName = DANMAKU.MEETINGS[state.boss.meeting] ? DANMAKU.MEETINGS[state.boss.meeting].id : "overtime";
     state.chroma = state.reduced ? 0 : (state.boss.meeting >= 3 || state.boss.endless ? 1 : state.boss.meeting >= 1 ? 0.35 : 0);
 
+    if (state.boss.flash > 0) state.boss.flash = Math.max(0, state.boss.flash - dt);
     state.shots.live.forEach(s => {
       s.age += dt;
       if (s.motion === "sine") s.x += Math.cos((s.age + s.phase) * 8) * 70 * dt;
+      /* Drift toward the meeting so side-lane weave still chips HP. */
+      s.vx += (state.boss.x - s.x) * 2.4 * dt;
       s.x += s.vx * dt;
       s.y += s.vy * dt;
       s.life -= dt;
       if (s.y < -30 || s.x < -30 || s.x > W + 30 || s.life <= 0) state.shots.kill(s);
       else if (BOSS.hit(state.boss, s)) {
         state.boss.hp -= state.shotPower;
+        state.boss.flash = 0.14;
         state.combo += 1;
         state.comboT = 1.15;
         state.score += 4;

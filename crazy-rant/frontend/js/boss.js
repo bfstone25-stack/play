@@ -16,6 +16,7 @@ var BOSS = (() => {
       scriptI: 0,
       lastPattern: "",
       recent: [],
+      flash: 0,
     };
   }
 
@@ -30,9 +31,17 @@ var BOSS = (() => {
   }
 
   function hit(boss, shot) {
-    const dx = shot.x - boss.x;
-    const dy = shot.y - boss.y;
-    return (dx * dx) / (boss.hw * boss.hw) + (dy * dy) / (boss.hh * boss.hh) < 1;
+    /* Ofuda are tall paper, not points. Treat the shot as a vertical
+       charm and the boss as the poster cluster. */
+    const hw = (boss.hw || 118) + 36;
+    const hh = (boss.hh || 86) + 28;
+    const sw = (shot.hw || 10);
+    const sh = (shot.hh || 28);
+    const dx = Math.abs(shot.x - boss.x) - sw;
+    const dy = Math.abs(shot.y - boss.y) - sh;
+    const ex = Math.max(0, dx) / hw;
+    const ey = Math.max(0, dy) / hh;
+    return ex * ex + ey * ey < 1;
   }
 
   function pickEndless(boss) {
@@ -129,6 +138,11 @@ var BOSS = (() => {
       ctx.lineTo(8, 6);
       ctx.lineTo(36, -12);
       ctx.stroke();
+    }
+    if (boss.flash > 0) {
+      ctx.globalAlpha = Math.min(0.55, boss.flash * 4);
+      ctx.fillStyle = "#f8fafc";
+      ctx.fillRect(-130, -90, 260, 200);
     }
     ctx.restore();
   }
