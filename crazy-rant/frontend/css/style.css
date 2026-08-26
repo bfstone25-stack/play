@@ -36,7 +36,7 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family
 .chain #chainTrack i{flex:1;height:5px;background:#2a2a30;border:1px solid #111}
 .chain #chainTrack i.on{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
 .slot-row{display:flex;gap:6px;margin-top:8px;min-height:36px}
-.slot-row .chip{flex:1;height:36px;border:2px solid #111;background:#0a0a0a}
+.slot-row .chip{flex:1;height:48px;border:2px solid #111;background:#0a0a0a}
 .glass{position:relative;border:3px solid #111;background:#050508;overflow:hidden;min-height:240px;box-shadow:inset 0 0 0 2px #c2412d}
 #game{display:block;width:100%;height:100%}
 .scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 2px,rgba(255,255,255,.03) 2px 3px)}
@@ -52,10 +52,10 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family
 .punch{margin-top:16px;border:3px solid #111;background:var(--acid);color:#111;font:22px Impact,sans-serif;letter-spacing:.12em;padding:12px 22px;cursor:pointer;box-shadow:5px 5px 0 var(--crimson)}
 .punch:active{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--crimson)}
 .bank{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:14px 0 8px;max-width:360px}
-.card{width:96px;border:3px solid #111;background:#111318;color:var(--ink);padding:10px 6px 8px;cursor:pointer;box-shadow:3px 3px 0 var(--cyan)}
+.card{width:88px;border:3px solid #111;background:#111318;color:var(--ink);padding:10px 6px 8px;cursor:pointer;box-shadow:3px 3px 0 var(--cyan)}
 .card.on{background:#1a1020;box-shadow:3px 3px 0 var(--acid);outline:2px solid var(--acid)}
 .card.lock{opacity:.35;cursor:not-allowed}
-.card .sig{width:72px;height:40px;margin:0 auto 6px;display:block}
+.card .sig{width:44px;height:64px;margin:0 auto 6px;display:block}
 .card b{display:block;font:12px ui-monospace,monospace;letter-spacing:.1em}
 .hint{margin:0;color:var(--muted)!important}
 .banner{position:absolute;left:50%;top:18%;transform:translateX(-50%);padding:8px 14px;border:3px solid #111;background:var(--acid);color:#111;font-size:16px;opacity:0;transition:opacity .2s;white-space:nowrap;z-index:4;pointer-events:none}

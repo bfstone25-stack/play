@@ -168,10 +168,10 @@
       if (id) {
         chip.style.background = (GLYPHS.META[id] || GLYPHS.META.ok).color;
         const c = document.createElement("canvas");
-        c.width = 64; c.height = 48;
+        c.width = 40; c.height = 56;
         c.style.width = "100%"; c.style.height = "100%";
         const g = c.getContext("2d");
-        GLYPHS.drawShot(g, { x: 32, y: 24, kind: id, font: 10, rot: 0 }, lang);
+        GLYPHS.drawShot(g, { x: 20, y: 28, kind: id, font: 10, rot: 0 }, lang);
         chip.appendChild(c);
       }
       row.appendChild(chip);

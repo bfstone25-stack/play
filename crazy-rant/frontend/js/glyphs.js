@@ -312,13 +312,12 @@ var GLYPHS = (() => {
     const m = META[kind] || META.ok;
     el.innerHTML = "";
     const c = document.createElement("canvas");
-    c.width = 96; c.height = 56;
+    c.width = 48; c.height = 72;
     c.className = "sig";
     const g = c.getContext("2d");
-    g.scale(1, 1);
     const dl = document.documentElement.lang || "";
     const shotLang = dl.indexOf("zh") === 0 ? "zh" : dl.indexOf("ja") === 0 ? "ja" : "en";
-    drawShot(g, { x: 40, y: 28, kind, font: 11, rot: 0 }, shotLang);
+    drawShot(g, { x: 24, y: 36, kind, font: 10, rot: 0 }, shotLang);
     el.appendChild(c);
     el.style.borderColor = m.color;
     return m;
