@@ -69,6 +69,17 @@ var SFX = (() => {
       [196, 247, 330].forEach((f, i) => tone({ freq: f, type: "square", dur: 0.16, vol: 0.12, delay: i * 0.05 }));
       noise({ dur: 0.16, vol: 0.1, freq: 700 });
     },
+    bomb() {
+      tone({ freq: 880, type: "sine", dur: 0.08, vol: 0.25, glideTo: 1760 });
+      tone({ freq: 110, type: "sawtooth", dur: 0.6, vol: 0.35, glideTo: 30, delay: 0.04 });
+      noise({ dur: 0.55, vol: 0.3, freq: 350, q: 0.5, delay: 0.02 });
+    },
+    relic() {
+      [392, 523, 659, 784].forEach((f, i) => tone({ freq: f, type: "sine", dur: 0.18, vol: 0.15, delay: i * 0.06 }));
+    },
+    grazeCharge() {
+      tone({ freq: 520, type: "triangle", dur: 0.06, vol: 0.12, glideTo: 880 });
+    },
     win() {
       [262, 330, 392, 523].forEach((f, i) => tone({ freq: f, type: "square", dur: 0.2, vol: 0.14, delay: i * 0.07 }));
     },

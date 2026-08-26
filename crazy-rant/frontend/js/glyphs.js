@@ -278,19 +278,51 @@ var GLYPHS = (() => {
     ctx.restore();
   }
 
-  function drawBurst(ctx, x, y, life, color) {
+  function drawBurst(ctx, x, y, life, color, text) {
     ctx.save();
     ctx.globalAlpha = Math.max(0, life);
     ctx.strokeStyle = color || "#eab308";
     ctx.lineWidth = 2;
     for (let i = 0; i < 8; i++) {
       const a = (i / 8) * Math.PI * 2;
-      const r = 8 + (1 - life) * 18;
+      const r = 8 + (1 - life) * 26;
       ctx.beginPath();
       ctx.moveTo(x + Math.cos(a) * r * 0.3, y + Math.sin(a) * r * 0.3);
       ctx.lineTo(x + Math.cos(a) * r, y + Math.sin(a) * r);
       ctx.stroke();
     }
+    if (text) {
+      ctx.fillStyle = color || "#eab308";
+      ctx.font = "900 12px ui-monospace,monospace";
+      ctx.textAlign = "center";
+      ctx.fillText(text, x, y - (1 - life) * 20);
+    }
+    ctx.restore();
+  }
+
+  function drawBombEffect(ctx, w, h, timer) {
+    if (timer <= 0) return;
+    const progress = 1 - (timer / 0.8);
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, 1 - progress) * 0.75;
+    ctx.fillStyle = progress < 0.3 ? "#ffffff" : "#e11d48";
+    ctx.fillRect(0, 0, w, h);
+    
+    // Expanding circular shockwaves
+    ctx.lineWidth = 4 + (1 - progress) * 8;
+    ctx.strokeStyle = "#fde047";
+    ctx.beginPath();
+    ctx.arc(w / 2, h / 2, progress * Math.hypot(w, h) * 0.65, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Giant calligraphy stamp in the center
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "900 36px \"Noto Serif JP\",\"Yu Mincho\",\"Songti SC\",serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.shadowColor = "#e11d48";
+    ctx.shadowBlur = 16;
+    ctx.fillText("掀桌 · 退勤", w / 2, h / 2 - 20);
     ctx.restore();
   }
 
@@ -323,5 +355,5 @@ var GLYPHS = (() => {
     return m;
   }
 
-  return { META, drawBubble, drawShot, drawWord, drawSmile, drawSun, drawPoster, drawShard, drawPlayer, drawBurst, drawSpeedLines, paintSig };
+  return { META, drawBubble, drawShot, drawWord, drawSmile, drawSun, drawPoster, drawShard, drawPlayer, drawBurst, drawSpeedLines, drawBombEffect, paintSig };
 })();

@@ -19,7 +19,7 @@ var COMBAT = (() => {
         orbitR: 0, orbitA: 0, orbitSpd: 0, turn: 0, cap: 0, seed: 0, font: 11,
         color: "#eab308", key: "ok", flipped: 0,
       })),
-      fx: makePool(() => ({ x: 0, y: 0, life: 1, color: "#eab308" })),
+      fx: makePool(() => ({ x: 0, y: 0, life: 1, color: "#eab308", text: "", font: 12 })),
       combo: 0,
       comboT: 0,
       time: 0,
@@ -38,6 +38,15 @@ var COMBAT = (() => {
       score: 0,
       rank: 0,
       meetingName: "standup",
+      bombs: 1,
+      bombMax: 3,
+      bombCharge: 0,
+      bombTimer: 0,
+      relics: [],
+      shields: 0,
+      shieldCooldown: 0,
+      gold: 0,
+      upgradesChosen: 0,
     };
   }
 
@@ -69,6 +78,15 @@ var COMBAT = (() => {
     state.score = 0;
     state.rank = opt.rank || 0;
     state.meetingName = DANMAKU.MEETINGS[0].id;
+    state.bombs = 1;
+    state.bombMax = 3;
+    state.bombCharge = 0;
+    state.bombTimer = 0;
+    state.relics = [];
+    state.shields = 0;
+    state.shieldCooldown = 0;
+    state.gold = 0;
+    state.upgradesChosen = 0;
   }
 
   function aim(state, x, y) {
@@ -108,13 +126,55 @@ var COMBAT = (() => {
     if (window.SFX) SFX.fire(state.pattern);
   }
 
-  function burst(state, x, y, color) {
-    state.fx.spawn(f => { f.x = x; f.y = y; f.life = 1; f.color = color || "#eab308"; });
+  function triggerBomb(state) {
+    if (state.outcome) return false;
+    if (state.bombs <= 0 && state.bombCharge < 36) return false;
+    if (state.bombs > 0) {
+      state.bombs -= 1;
+    } else {
+      state.bombCharge = 0;
+    }
+    state.bombTimer = 0.8;
+    state.shake = state.reduced ? 0 : 18;
+    state.player.iFrames = Math.max(state.player.iFrames, 2.2);
+
+    let clearedCount = 0;
+    state.hazards.live.forEach(h => {
+      clearedCount += 1;
+      burst(state, h.x, h.y, "#fde047");
+      state.hazards.kill(h);
+    });
+    state.hazards.reap();
+
+    const dmg = 240 + clearedCount * 12 + (state.relics.includes("tableFlip") ? 160 : 0);
+    if (state.boss) {
+      state.boss.hp -= dmg;
+      state.boss.flash = 0.4;
+      state.combo += Math.min(20, clearedCount);
+      state.comboT = 2.0;
+      state.score += clearedCount * 50;
+      if (state.boss.hp <= 0) BOSS.advance(state);
+    }
+    if (window.SFX && SFX.bomb) SFX.bomb();
+    return true;
+  }
+
+  function burst(state, x, y, color, text) {
+    state.fx.spawn(f => { f.x = x; f.y = y; f.life = 1; f.color = color || "#eab308"; f.text = text || ""; f.font = 13; });
   }
 
   function hurt(state, dmg) {
     if (state.player.iFrames > 0 || state.outcome) return;
-    state.player.hp -= dmg;
+    if (state.relics.includes("slacking") && state.shields > 0) {
+      state.shields -= 1;
+      state.player.iFrames = 1.4;
+      state.shake = state.reduced ? 0 : 6;
+      burst(state, state.player.x, state.player.y, "#22d3ee", "SHIELDED");
+      if (window.SFX && SFX.phase) SFX.phase();
+      return;
+    }
+    const finalDmg = state.relics.includes("thickSkin") ? Math.max(1, dmg * 0.8) : dmg;
+    state.player.hp -= finalDmg;
     state.player.iFrames = 0.9;
     state.combo = 0;
     state.shake = state.reduced ? 0 : 10;
@@ -233,14 +293,23 @@ var COMBAT = (() => {
       hurt(state, 1);
       return;
     }
-    if (dist < (h.r || 10) + 22 && state.player.iFrames <= 0) {
+    const grazeRadius = state.relics.includes("ignoreRead") ? 34 : 22;
+    if (dist < (h.r || 10) + grazeRadius && state.player.iFrames <= 0) {
       state.grazeAcc += dt;
       if (state.grazeAcc >= 0.05) {
         state.grazeAcc = 0;
         state.graze += 1;
+        state.bombCharge = Math.min(36, state.bombCharge + 1);
         state.score += 10;
-        if (state.graze > 0 && state.graze % 36 === 0 && state.player.hp < state.player.maxHp) {
-          state.player.hp += 1;
+        if (state.graze > 0 && state.graze % 36 === 0) {
+          if (state.bombs < state.bombMax) {
+            state.bombs += 1;
+            burst(state, state.player.x, state.player.y - 15, "#eab308", "BOMB+1");
+            if (window.SFX && SFX.grazeCharge) SFX.grazeCharge();
+          } else if (state.player.hp < state.player.maxHp) {
+            state.player.hp += 1;
+            burst(state, state.player.x, state.player.y - 15, "#22d3ee", "HP+1");
+          }
         }
       }
     }
@@ -257,8 +326,18 @@ var COMBAT = (() => {
     state.comboT -= dt;
     if (state.comboT <= 0) state.combo = Math.max(0, state.combo - dt * 4);
     state.shake = Math.max(0, state.shake - dt * 28);
+    if (state.bombTimer > 0) state.bombTimer = Math.max(0, state.bombTimer - dt);
 
-    const spd = 230;
+    if (state.relics.includes("slacking")) {
+      state.shieldCooldown += dt;
+      if (state.shieldCooldown >= 20 && state.shields < 1) {
+        state.shields = 1;
+        state.shieldCooldown = 0;
+        burst(state, state.player.x, state.player.y, "#22d3ee", "SHIELD READY");
+      }
+    }
+
+    const spd = state.relics.includes("coffee") ? 290 : 230;
     if (state.keys.l) state.player.x -= spd * dt;
     if (state.keys.r) state.player.x += spd * dt;
     if (state.keys.u) state.player.y -= spd * dt;
@@ -288,7 +367,8 @@ var COMBAT = (() => {
       s.life -= dt;
       if (s.y < -30 || s.x < -30 || s.x > W + 30 || s.life <= 0) state.shots.kill(s);
       else if (BOSS.hit(state.boss, s)) {
-        state.boss.hp -= state.shotPower;
+        const dmgMulti = state.relics.includes("rageTyping") ? 1.4 : 1.0;
+        state.boss.hp -= (state.shotPower * dmgMulti);
         state.boss.flash = 0.14;
         state.combo += 1;
         state.comboT = 1.15;
@@ -311,5 +391,5 @@ var COMBAT = (() => {
     state.fx.reap();
   }
 
-  return { W, H, SPECS, create, reset, update, aim };
+  return { W, H, SPECS, create, reset, update, aim, triggerBomb };
 })();

@@ -97,6 +97,14 @@ aim.player.y = 560;
 const sideShot = { x: 80, y: aim.boss.y, hw: 10, hh: 30 };
 if (!combatCtx.BOSS.hit(aim.boss, sideShot)) throw new Error("boss still ignores ofuda at the side");
 
+// Test Bomb Trigger
+combatCtx.DANMAKU.run("rain_ok", state);
+const prevCount = state.hazards.live.length;
+if (prevCount === 0) throw new Error("no hazards for bomb test");
+const bombSuccess = combatCtx.COMBAT.triggerBomb(state);
+if (!bombSuccess) throw new Error("bomb trigger failed");
+if (state.hazards.live.length !== 0) throw new Error("bomb did not clear screen hazards");
+
 console.log("crazy rant combinator ok", {
   combo, dmg,
   pattern: rantPattern(["quit", "teach"], cat),

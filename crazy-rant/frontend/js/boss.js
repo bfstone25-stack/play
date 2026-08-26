@@ -92,8 +92,11 @@ var BOSS = (() => {
       b.acc = 0.35;
       b.phase = Math.min(2, b.meeting);
       state.shake = state.reduced ? 0 : 14;
-      state.player.iFrames = Math.max(state.player.iFrames, 0.8);
+      state.player.iFrames = Math.max(state.player.iFrames, 1.2);
       if (window.SFX) SFX.phase();
+      if (typeof window.onMeetingCleared === "function") {
+        window.onMeetingCleared(state, b.meeting);
+      }
       return;
     }
     state.boss.hp = 0;

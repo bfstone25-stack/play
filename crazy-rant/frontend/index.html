@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#0a0a0a">
   <title>Crazy Rant · 发疯文学</title>
-  <!-- ofuda-4: boss takes ofuda hits; itch re-extract -->
+  <!-- ofuda-5: Graze Bomb + Roguelite Relics + Daily Omamori Fortune Card -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -47,6 +47,11 @@
                 <b id="rage">0</b>
                 <div class="bar acid"><i id="rageFill"></i></div>
               </div>
+              <div class="plate bomb-plate">
+                <small id="lBomb">BOMB (SPACE)</small>
+                <b id="bombVal">⚡ 1</b>
+                <button type="button" class="bomb-btn" id="bombBtn">FLIP TABLE</button>
+              </div>
               <div class="plate chain">
                 <small id="lCombo">COMBO</small>
                 <b id="combo">×0</b>
@@ -78,11 +83,27 @@
                 <p class="hint" id="loadHint">Drag / WASD to dodge. Auto-fire. Graze the text.</p>
                 <button type="button" class="punch" id="fightBtn">CLOCK IN</button>
               </div>
+              <div class="overlay relic-ov" id="relicOv" hidden>
+                <small id="relicTag">MEETING ADJOURNED</small>
+                <h1 id="relicTitle">PICK A PERK</h1>
+                <p class="hint" id="relicHint">Choose your workplace survival buff:</p>
+                <div class="relic-grid" id="relicGrid"></div>
+              </div>
               <div class="overlay end" id="endOv" hidden>
                 <small id="endTag">KO</small>
                 <h1 id="endTitle">SUNSHINE DOWN</h1>
                 <p id="endDetail"></p>
-                <button type="button" class="punch" id="againBtn">RETRY</button>
+                <div class="omamori-card" id="omamoriCard">
+                  <div class="omamori-badge" id="omamoriBadge">今日除厄御守</div>
+                  <h3 id="omamoriTitle">【定时下班】</h3>
+                  <div class="omamori-verse" id="omamoriVerse">诸邪退散 · 拒绝PUA · 会议速决</div>
+                  <div class="omamori-stats" id="omamoriStats"></div>
+                  <div class="omamori-stamp">【奉纳】</div>
+                </div>
+                <div class="end-actions">
+                  <button type="button" class="punch" id="againBtn">RETRY</button>
+                  <button type="button" class="punch share-btn" id="shareBtn">SAVE FORTUNE</button>
+                </div>
               </div>
               <div class="banner" id="banner"></div>
             </div>
@@ -99,6 +120,10 @@
               <div class="plate slots" id="slotPlate">
                 <small id="lSlots">SLOTS</small>
                 <div class="slot-row" id="slotRow"></div>
+              </div>
+              <div class="plate relics-plate" id="relicsPlate">
+                <small id="lRelics">PERKS</small>
+                <div class="relic-pills" id="relicPills"></div>
               </div>
             </aside>
           </div>
