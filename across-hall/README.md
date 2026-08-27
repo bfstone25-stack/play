@@ -30,7 +30,9 @@ godot --path across-hall -s res://tests/smoke.gd
 
 WASD move, mouse look, E interact, F flashlight, Shift walk faster, Esc free the mouse.
 
-Loop: flashlight on the landing → note on the table in 402 → tape in the bathroom → play it on the radio.
+Loop: flashlight → 401 门缝 → 402 退租单 → 浴室磁带 → 录音机。邻居只在余光里。正视它会到你背后。结局：对门是你留下的那一半。
+
+Itch-length apartment horror: analog grain, 02:17, knock/drip, peripheral enemy, one thesis.
 
 ## Why this instead of the H5 draft
 

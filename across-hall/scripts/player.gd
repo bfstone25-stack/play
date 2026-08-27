@@ -90,7 +90,7 @@ func _physics_process(delta: float) -> void:
 	camera.position.y = bob
 
 	if light_on and has_flashlight:
-		battery = maxf(0.0, battery - delta * 0.012)
+		battery = maxf(0.0, battery - delta * 0.0065)
 		flashlight.light_energy = 2.4 * battery * (0.92 + 0.08 * sin(Time.get_ticks_msec() * 0.012))
 		if battery <= 0.0:
 			flashlight.visible = false

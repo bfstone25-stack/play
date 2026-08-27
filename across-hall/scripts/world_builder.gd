@@ -78,6 +78,14 @@ func _build() -> void:
 	_table(Vector3(4.45, 0.24, 8.55))
 	_sink(Vector3(8.25, 0.48, 11.4))
 	_shoes(Vector3(2.15, 0.06, 8.05))
+	_wardrobe(Vector3(3.35, 1.05, 5.15))
+	_toothbrush(Vector3(8.05, 0.62, 11.15))
+	_mirror(Vector3(8.72, 1.45, 11.35))
+	_sign(Vector3(4.4, 1.35, 4.05), "退租确认  签名：你")
+	_sign(Vector3(-1.52, 1.55, 6.2), "夜间请勿敲门")
+	_wet(Vector3(7.4, 0.03, 10.6))
+	_wet(Vector3(5.1, 0.03, 8.9))
+	_wet(Vector3(2.6, 0.03, 8.1))
 
 	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.72, 0.35), 4.2, 11.0)
 	_fixture(Vector3(0, 2.46, 9.4), Color(0.95, 0.98, 0.75), 2.2, 8.0, true)
@@ -126,6 +134,11 @@ func _closed_door(pos: Vector3, yaw: float, label: String) -> void:
 	sh.size = Vector3(0.07, 2.12, 0.92)
 	col.shape = sh
 	body.add_child(col)
+	body.set_script(preload("res://scripts/door.gd"))
+	body.set("prompt", "听 401")
+	body.set("kind", "401")
+	body.collision_layer = 1
+	body.collision_mask = 0
 	mi.add_child(body)
 	_plate(pos + Vector3(0.05, 0.48, 0) if yaw > 1.0 else pos + Vector3(-0.05, 0.48, 0), label, yaw)
 
@@ -182,6 +195,7 @@ func _fixture(pos: Vector3, color: Color, energy: float, rng: float, flicker := 
 	li.omni_attenuation = 1.6
 	# Omni dual-paraboloid shadows on box halls look like starbursts.
 	li.shadow_enabled = false
+	li.add_to_group("hall_light")
 	if flicker:
 		li.set_script(preload("res://scripts/flicker_light.gd"))
 	add_child(li)
@@ -217,6 +231,41 @@ func _table(pos: Vector3) -> void:
 
 func _sink(pos: Vector3) -> void:
 	_box(pos, Vector3(0.72, 0.1, 0.46), _tile)
+
+func _wardrobe(pos: Vector3) -> void:
+	_box(pos, Vector3(0.55, 2.05, 1.15), _wood)
+	_box(pos + Vector3(0.3, 0.2, 0), Vector3(0.04, 1.6, 0.5), _wood)
+
+func _toothbrush(pos: Vector3) -> void:
+	_box(pos, Vector3(0.08, 0.16, 0.08), _noisy(Color(0.75, 0.75, 0.78), 0.3, Vector3(1, 1, 1), 0.02))
+	_box(pos + Vector3(0, 0.14, 0), Vector3(0.02, 0.18, 0.02), _noisy(Color(0.2, 0.45, 0.55), 0.4, Vector3(1, 1, 1), 0.01))
+
+func _mirror(pos: Vector3) -> void:
+	var glass := MeshInstance3D.new()
+	var mesh := BoxMesh.new()
+	mesh.size = Vector3(0.03, 0.7, 0.45)
+	glass.mesh = mesh
+	glass.position = pos
+	var m := StandardMaterial3D.new()
+	m.albedo_color = Color(0.35, 0.38, 0.4)
+	m.metallic = 0.85
+	m.roughness = 0.08
+	glass.material_override = m
+	add_child(glass)
+
+func _sign(pos: Vector3, text: String) -> void:
+	_box(pos, Vector3(0.02, 0.28, 0.55), _noisy(Color(0.15, 0.14, 0.12), 0.8, Vector3(1, 1, 1), 0.02))
+	var l := Label3D.new()
+	l.text = text
+	l.font_size = 28
+	l.pixel_size = 0.0032
+	l.modulate = Color(0.82, 0.78, 0.7)
+	l.position = pos + Vector3(0.03, 0, 0)
+	l.rotation.y = PI * 0.5
+	add_child(l)
+
+func _wet(pos: Vector3) -> void:
+	_stain(pos, Vector3(0.35, 0.4, 0.22))
 
 func _shoes(pos: Vector3) -> void:
 	_box(pos + Vector3(-0.08, 0, 0), Vector3(0.1, 0.07, 0.26), _noisy(Color(0.08, 0.08, 0.09), 0.9, Vector3(1, 1, 1), 0.02))
