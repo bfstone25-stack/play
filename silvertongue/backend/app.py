@@ -121,14 +121,65 @@ def _advance_state(pid, uid, scenario, difficulty, message, run_day=None):
     c.commit(); c.close()
     return state
 
+def _rule_based_fallback_reply(scenario, message, pstate, lang):
+    """Offline heuristic fallback so game never hard-crashes on llama-server timeouts."""
+    scen_id = scenario.get("id", "")
+    phase = pstate.get("phase", "guarded")
+    is_zh = (lang or "").startswith("zh")
+    is_ja = (lang or "").startswith("ja")
+    is_es = (lang or "").startswith("es")
+    
+    if phase == "breakthrough":
+        if is_zh:
+            return "好……你说的确实很有道理。这次就按你说的办吧！"
+        elif is_ja:
+            return "わかりました……おっしゃる通りです。今回は承諾しましょう。"
+        elif is_es:
+            return "Está bien... tienes un punto muy válido. Acepto lo que propones."
+        else:
+            return "Alright... you make a genuinely compelling point. I'll agree to this."
+    elif phase == "wavering":
+        if is_zh:
+            return "你这番话确实让我有些动摇，但你还得给我一个更明确的理由。"
+        elif is_ja:
+            return "確かに筋は通っていますが、もう少し確信が持てる説明が必要です。"
+        elif is_es:
+            return "Lo que dices tiene sentido, pero aún necesito una razón más convincente."
+        else:
+            return "You're making a strong case, but I still need a bit more certainty to fully agree."
+    elif phase == "engaged":
+        if is_zh:
+            return "我在听。不过仅凭这些，还不足以让我改变主意。"
+        elif is_ja:
+            return "聞いてはいます。ですが、それだけではまだ判断を変えられません。"
+        elif is_es:
+            return "Te estoy escuchando, pero eso aún no es suficiente para cambiar de opinión."
+        else:
+            return "I hear what you're saying, but that alone isn't quite enough to change my mind."
+    else:
+        if is_zh:
+            return "抱歉，规矩就是规矩。请说明你的具体理由和依据。"
+        elif is_ja:
+            return "申し訳ありませんが、ルールはルールです。具体的な根拠をお聞かせください。"
+        elif is_es:
+            return "Lo siento, las reglas son las reglas. Necesito motivos y detalles claros."
+        else:
+            return "I'm sorry, but rules are rules. Give me a clear and concrete reason."
+
 def _chat(system, messages, max_tokens=200, temperature=0.7):
-    subprocess.run([os.path.expanduser("~/bin/llm_claim.sh"), "games", "8903"],
-                   timeout=90, check=False)
-    body = json.dumps({"model": "silvertongue", "max_tokens": max_tokens, "temperature": temperature,
-                       "messages": [{"role": "system", "content": system}] + messages}).encode()
-    req = urllib.request.Request(f"{LLAMACPP}/v1/chat/completions", data=body,
-                                 headers={"Content-Type": "application/json"})
-    return json.loads(urllib.request.urlopen(req, timeout=120).read())["choices"][0]["message"]["content"].strip()
+    try:
+        subprocess.run([os.path.expanduser("~/bin/llm_claim.sh"), "games", "8903"],
+                       timeout=10, check=False)
+        body = json.dumps({"model": "silvertongue", "max_tokens": max_tokens, "temperature": temperature,
+                           "messages": [{"role": "system", "content": system}] + messages}).encode()
+        req = urllib.request.Request(f"{LLAMACPP}/v1/chat/completions", data=body,
+                                     headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=12) as response:
+            res_data = json.loads(response.read())
+            return res_data["choices"][0]["message"]["content"].strip()
+    except Exception as e:
+        print("[silvertongue _chat fallback]", e)
+        return ""
 
 @app.get("/health")
 def health(): return {"ok": True, "app": "silvertongue", "day": day_index() + 1}
@@ -435,7 +486,8 @@ def say(r: SayReq, request: Request):
                + state_directive(pstate, s["id"]) + lang_note)
     convo = r.history + [{"role": "user", "content": msg}]
     grounded = _ai_grounded_reply(msg, r.lang, pstate["phase"]) if s["id"] == "ai" and not pstate["eligible"] else ""
-    reply = grounded or _chat(persona, convo, max_tokens=180)
+    raw_reply = grounded or _chat(persona, convo, max_tokens=180)
+    reply = raw_reply or _rule_based_fallback_reply(s, msg, pstate, r.lang)
 
     # judge: 独立轻量裁决
     judge_sys = ("You are a strict referee. Given a goal and a conversation, answer with ONLY 'YES' or 'NO': "
@@ -444,20 +496,22 @@ def say(r: SayReq, request: Request):
     judge_user = (f"GOAL: {s['win_condition']}\n\nCharacter's latest reply: \"{reply}\"\n\n"
                   f"Player's last message: \"{msg}\"\n\nAchieved? Answer YES or NO only.")
     verdict = _chat(judge_sys, [{"role": "user", "content": judge_user}], max_tokens=4, temperature=0.0)
-    actor_conceded = verdict.strip().upper().startswith("YES")
+    actor_conceded = verdict.strip().upper().startswith("YES") if verdict else bool(pstate["eligible"])
     won = bool(pstate["eligible"] and actor_conceded)
 
     # BV-ToT-lite: the actor may not overrule the symbolic game state. Repair a
     # branch once when its outward reply contradicts the authorised transition.
-    if actor_conceded != bool(pstate["eligible"]):
+    if raw_reply and (actor_conceded != bool(pstate["eligible"])):
         repair = ("Rewrite your latest reply in character, under 60 words. "
                   + ("The player has earned the outcome: explicitly concede the exact goal now."
                      if pstate["eligible"] else
                      "The player has not earned the outcome: do not agree, concede, or perform the goal; show only the current degree of softening."))
-        reply = _chat(persona, convo + [{"role":"assistant","content":reply}, {"role":"user","content":repair}], max_tokens=180, temperature=0.35)
-        verdict = _chat(judge_sys, [{"role":"user","content":
-            f"GOAL: {s['win_condition']}\n\nCharacter's latest reply: \"{reply}\"\n\nAchieved? Answer YES or NO only."}], max_tokens=4, temperature=0.0)
-        won = bool(pstate["eligible"] and verdict.strip().upper().startswith("YES"))
+        repaired_reply = _chat(persona, convo + [{"role":"assistant","content":reply}, {"role":"user","content":repair}], max_tokens=180, temperature=0.35)
+        if repaired_reply:
+            reply = repaired_reply
+            verdict = _chat(judge_sys, [{"role":"user","content":
+                f"GOAL: {s['win_condition']}\n\nCharacter's latest reply: \"{reply}\"\n\nAchieved? Answer YES or NO only."}], max_tokens=4, temperature=0.0)
+            won = bool(pstate["eligible"] and (verdict.strip().upper().startswith("YES") if verdict else True))
 
     c = _db()
     c.execute("""INSERT INTO distill_log(

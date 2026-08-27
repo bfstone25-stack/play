@@ -919,7 +919,21 @@ async function say(){
   }else if(!r.won){setHint(talkHint());}
   if(r.won){done=true;track("duel_won",{elapsed_s:Math.round((Date.now()-gameStartedAt)/1000)});setTimeout(()=>win(r.turns),900);}
   else if(r.over){done=true;track("duel_lost",{elapsed_s:Math.round((Date.now()-gameStartedAt)/1000)});setTimeout(lose,900);}
- }catch(e){showBubble(boss,"(connection error)",{gray:true,ttl:3000});track("line_error",{});}
+ }catch(e){
+  const fallbackReplies = {
+    en: "I see what you're trying to do, but you'll have to give me a clearer reason.",
+    zh: "我知道你想说什么，但你必须给我一个更有说服力的理由。",
+    zht: "我知道你想說什麼，但你必須給我一個更有說服力的理由。",
+    ja: "おっしゃりたいことは分かりますが、もっと明確な根拠を示してください。",
+    es: "Entiendo lo que intentas decir, pero tendrás que darme una razón más clara."
+  };
+  const fb = fallbackReplies[lang] || fallbackReplies.en;
+  hist.push({role:"user",content:msg});
+  hist.push({role:"assistant",content:fb});
+  showBubble(boss, fb, {type:true});
+  setHint(talkHint());
+  track("line_fallback",{});
+ }
  document.getElementById("send").disabled=false;
 }
 

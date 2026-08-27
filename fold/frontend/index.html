@@ -26,13 +26,25 @@ h1 small{font-size:.38em;letter-spacing:4px;color:var(--gold);font-weight:500;di
 .goal{font-size:.95em}.goal b{color:var(--gold);font-size:1.15em}
 .moves{font-family:ui-monospace,monospace;color:var(--dim);font-size:.9em}
 .lvlname{text-align:center;color:var(--dim);font-size:.82em;letter-spacing:2px;margin-bottom:6px}
-#board{position:relative;background:var(--panel);border-radius:16px;padding:10px;margin:0 auto;touch-action:none;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+#boardWrap{position:relative;perspective:800px}
+#board{position:relative;background:var(--panel);border-radius:16px;padding:10px;margin:0 auto;touch-action:none;box-shadow:0 14px 40px rgba(0,0,0,.35);transform-style:preserve-3d}
+.board-crease{position:absolute;pointer-events:none;z-index:15;background:linear-gradient(to bottom, rgba(255,255,255,0.18), rgba(0,0,0,0.4), rgba(255,255,255,0.18));opacity:0;transition:opacity .1s ease}
+.board-crease.v{width:3px;top:0;bottom:0;box-shadow:0 0 8px rgba(199,164,90,0.5)}
+.board-crease.h{height:3px;left:0;right:0;box-shadow:0 0 8px rgba(199,164,90,0.5)}
 .cell{position:absolute;border-radius:11px;background:var(--cell)}
 .wall{position:absolute;border-radius:11px;background:repeating-linear-gradient(45deg,#2c313d,#2c313d 6px,#262a34 6px,#262a34 12px)}
 .tile{position:absolute;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:800;
-  transition:transform .13s cubic-bezier(.3,.9,.4,1);will-change:transform;z-index:5}
-.tile.merged{animation:pop .2s ease}
-@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
+  transition:transform .18s cubic-bezier(.25,1,.5,1), box-shadow .18s ease;will-change:transform;z-index:5}
+.tile.folding-up{animation:foldTileUp .22s ease-in-out}
+.tile.folding-down{animation:foldTileDown .22s ease-in-out}
+.tile.folding-left{animation:foldTileLeft .22s ease-in-out}
+.tile.folding-right{animation:foldTileRight .22s ease-in-out}
+@keyframes foldTileUp{0%{transform:translate(var(--tx),var(--ty)) rotateX(0deg);box-shadow:none}50%{transform:translate(var(--tx),var(--ty)) rotateX(-35deg) translateY(-8px);box-shadow:0 12px 20px rgba(0,0,0,.5);filter:brightness(1.15)}100%{transform:translate(var(--tx),var(--ty)) rotateX(0deg);box-shadow:none}}
+@keyframes foldTileDown{0%{transform:translate(var(--tx),var(--ty)) rotateX(0deg);box-shadow:none}50%{transform:translate(var(--tx),var(--ty)) rotateX(35deg) translateY(8px);box-shadow:0 12px 20px rgba(0,0,0,.5);filter:brightness(1.15)}100%{transform:translate(var(--tx),var(--ty)) rotateX(0deg);box-shadow:none}}
+@keyframes foldTileLeft{0%{transform:translate(var(--tx),var(--ty)) rotateY(0deg);box-shadow:none}50%{transform:translate(var(--tx),var(--ty)) rotateY(35deg) translateX(-8px);box-shadow:12px 0 20px rgba(0,0,0,.5);filter:brightness(1.15)}100%{transform:translate(var(--tx),var(--ty)) rotateY(0deg);box-shadow:none}}
+@keyframes foldTileRight{0%{transform:translate(var(--tx),var(--ty)) rotateY(0deg);box-shadow:none}50%{transform:translate(var(--tx),var(--ty)) rotateY(-35deg) translateX(8px);box-shadow:-12px 0 20px rgba(0,0,0,.5);filter:brightness(1.15)}100%{transform:translate(var(--tx),var(--ty)) rotateY(0deg);box-shadow:none}}
+.tile.merged{animation:pop .24s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes pop{0%{transform:translate(var(--tx),var(--ty)) scale(0.9) rotate(0deg)}50%{transform:translate(var(--tx),var(--ty)) scale(1.22) rotate(3deg);filter:brightness(1.25)}100%{transform:translate(var(--tx),var(--ty)) scale(1) rotate(0deg)}}
 .tile.spawned{animation:sp .18s ease}
 @keyframes sp{from{transform:scale(.3);opacity:0}}
 .btns{display:flex;gap:10px;margin-top:16px;justify-content:center}
@@ -222,14 +234,17 @@ function layout(){
 }
 function px(i){return 10+i*(CS+GAP)}
 function fontFor(v){return Math.max(14, CS*0.42 - String(v).length*2)}
-function render(){
+function render(animDir){
  const b=document.getElementById('board');
  [...b.querySelectorAll('.tile')].forEach(e=>e.remove());
  tiles.forEach(t=>{
    const d=document.createElement('div');
-   d.className='tile'+(t.merged?' merged':'')+(t.spawned?' spawned':'');
+   const foldClass=animDir?` folding-${animDir}`:'';
+   d.className='tile'+(t.merged?' merged':'')+(t.spawned?' spawned':'')+foldClass;
+   d.style.setProperty('--tx', `${px(t.c)}px`);
+   d.style.setProperty('--ty', `${px(t.r)}px`);
    d.style.cssText+=`width:${CS}px;height:${CS}px;font-size:${fontFor(t.v)}px;background:${PAL[t.v]||'#efd98f'};`+
-     `color:${t.v<=8?'#dfe6f0':'#241a06'};transform:translate(${px(t.c)}px,${px(t.r)}px)`;
+     `color:${t.v<=8?'#dfe6f0':'#241a06'};transform:translate(${px(t.c)}px,${px(t.r)}px);--tx:${px(t.c)}px;--ty:${px(t.r)}px;`;
    d.textContent=t.v; b.appendChild(d);
    t.merged=false; t.spawned=false;
  });
@@ -277,6 +292,20 @@ function toggleSoundPanel(e){e.stopPropagation();document.getElementById('soundP
 function toggleSfx(){const s=FOLD_AUDIO.state();FOLD_AUDIO.setSfx(!s.sfxOn);}
 function toggleMusic(){const s=FOLD_AUDIO.state();FOLD_AUDIO.setMusic(!s.musicOn);}
 document.addEventListener('click',e=>{if(!e.target.closest('.soundWrap'))document.getElementById('soundPanel').classList.remove('show');});
+function triggerBoardFold(dr,dc){
+ const b=document.getElementById('board');
+ if(!b)return;
+ const rotX = dr !== 0 ? (dr > 0 ? 12 : -12) : 0;
+ const rotY = dc !== 0 ? (dc > 0 ? -12 : 12) : 0;
+ const tz = -14;
+ b.style.transition='transform .12s ease-out';
+ b.style.transform=`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(${tz}px)`;
+ setTimeout(()=>{
+   b.style.transition='transform .22s cubic-bezier(.25,1,.5,1)';
+   b.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+ }, 120);
+}
+
 function move(dr,dc){
  if(done) return;
  FOLD_AUDIO.engage();
@@ -298,7 +327,11 @@ function move(dr,dc){
    }
    if((r!==t.r||c!==t.c)){ t.r=r;t.c=c; moved=true; }
  }
- if(moved){ hist.push(snap); moves++; render(); syncText(); if(mergeCount)FOLD_AUDIO.merge(mergeCount);else FOLD_AUDIO.slide(); checkWin();
+ if(moved){
+   hist.push(snap); moves++;
+   const animDir = dr < 0 ? 'up' : dr > 0 ? 'down' : dc < 0 ? 'left' : 'right';
+   triggerBoardFold(dr, dc);
+   render(animDir); syncText(); if(mergeCount)FOLD_AUDIO.merge(mergeCount);else FOLD_AUDIO.slide(); checkWin();
    if(window.TEL)TEL.ev('move_made',{language:lang,level:L+1,move:moves,direction:[dr,dc]}); }
  else FOLD_AUDIO.invalid();
 }
