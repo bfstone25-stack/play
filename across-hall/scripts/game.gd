@@ -118,8 +118,9 @@ func _inspect(pos: Vector3, id: String, prompt: String, note: String, color: Col
 	p.add_child(mesh)
 	var tag := Label3D.new()
 	tag.text = prompt
-	tag.font_size = 48
-	tag.pixel_size = 0.004
+	tag.font_size = 36
+	tag.pixel_size = 0.0035
+	tag.width = 400
 	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	tag.modulate = Color(0.9, 0.8, 0.58)

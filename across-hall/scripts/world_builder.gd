@@ -20,11 +20,70 @@ func _ready() -> void:
 	_dust()
 
 func _make_materials() -> void:
-	_plaster = _noisy(WALL, 0.92, Vector3(3.5, 2.2, 3.5), 0.11)
-	_floor_mat = _noisy(FLOOR, 0.78, Vector3(6, 1, 1.2), 0.08)
-	_wood = _noisy(WOOD, 0.65, Vector3(0.4, 3, 1), 0.06)
-	_tile = _noisy(TILE, 0.4, Vector3(8, 8, 8), 0.04)
-	_trim = _noisy(TRIM, 0.7, Vector3(2, 2, 2), 0.05)
+	_plaster = _plaster_mat()
+	_floor_mat = _plank_mat(FLOOR, 0.82)
+	_wood = _plank_mat(WOOD, 0.7)
+	_tile = _tile_mat()
+	_trim = _plank_mat(TRIM, 0.55)
+
+func _tex_from(img: Image, rough: float, uv: Vector3) -> StandardMaterial3D:
+	var tex := ImageTexture.create_from_image(img)
+	var m := StandardMaterial3D.new()
+	m.albedo_texture = tex
+	m.albedo_color = Color(1, 1, 1)
+	m.roughness = rough
+	m.uv1_scale = uv
+	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	return m
+
+func _plaster_mat() -> StandardMaterial3D:
+	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
+	for y in 256:
+		for x in 256:
+			var speck := float((x * 19 + y * 11) % 23) / 90.0
+			var mott := 0.1 * (((x * 13) ^ (y * 7)) % 17) / 17.0
+			var n := mott + speck * 0.25 - 0.08
+			var c := Color(
+				clampf(WALL.r + n, 0.0, 1.0),
+				clampf(WALL.g + n * 0.85, 0.0, 1.0),
+				clampf(WALL.b + n * 0.6, 0.0, 1.0)
+			)
+			img.set_pixel(x, y, c)
+	return _tex_from(img, 0.93, Vector3(1.6, 1.4, 1.6))
+
+func _plank_mat(base: Color, rough: float) -> StandardMaterial3D:
+	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
+	for y in 256:
+		for x in 256:
+			var plank := int(y / 32.0)
+			var groove := 0.0
+			if y % 32 < 2:
+				groove = -0.18
+			var grain := 0.12 * sin(x * 0.4 + plank * 1.7) + 0.06 * sin(x * 1.3)
+			var n := grain + groove + 0.04 * float((x * 7 + plank * 13) % 11) / 11.0
+			var c := Color(
+				clampf(base.r + n, 0.0, 1.0),
+				clampf(base.g + n * 0.8, 0.0, 1.0),
+				clampf(base.b + n * 0.55, 0.0, 1.0)
+			)
+			img.set_pixel(x, y, c)
+	return _tex_from(img, rough, Vector3(2.2, 0.45, 6.0))
+
+func _tile_mat() -> StandardMaterial3D:
+	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
+	for y in 256:
+		for x in 256:
+			var grout := 0.0
+			if x % 32 < 2 or y % 32 < 2:
+				grout = -0.22
+			var n := grout + 0.05 * sin(x * 0.2) + 0.04 * float((x + y) % 9) / 9.0
+			var c := Color(
+				clampf(TILE.r + n, 0.0, 1.0),
+				clampf(TILE.g + n, 0.0, 1.0),
+				clampf(TILE.b + n, 0.0, 1.0)
+			)
+			img.set_pixel(x, y, c)
+	return _tex_from(img, 0.35, Vector3(6, 6, 6))
 
 func _noisy(base: Color, rough: float, uv: Vector3, amp: float) -> StandardMaterial3D:
 	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
@@ -37,14 +96,7 @@ func _noisy(base: Color, rough: float, uv: Vector3, amp: float) -> StandardMater
 				clampf(base.b + n * 0.7, 0.0, 1.0)
 			)
 			img.set_pixel(x, y, c)
-	var tex := ImageTexture.create_from_image(img)
-	var m := StandardMaterial3D.new()
-	m.albedo_texture = tex
-	m.albedo_color = Color(1, 1, 1)
-	m.roughness = rough
-	m.uv1_scale = uv
-	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	return m
+	return _tex_from(img, rough, uv)
 
 func _build() -> void:
 	# Hall along +Z. Player looks down +Z toward 402.
@@ -95,17 +147,17 @@ func _build() -> void:
 
 	_apt401()
 
-	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.72, 0.35), 4.2, 11.0)
-	_fixture(Vector3(0, 2.46, 9.4), Color(0.95, 0.98, 0.75), 2.2, 8.0, true)
-	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.86, 0.62), 5.5, 9.0)
-	_fixture(Vector3(7.4, 2.46, 11.3), Color(0.7, 0.85, 1.0), 2.8, 6.0)
-	_fixture(Vector3(-4.6, 2.46, 2.4), Color(0.85, 0.7, 0.55), 4.6, 8.5)
-	_fixture(Vector3(-7.4, 2.46, 5.65), Color(0.55, 0.7, 0.9), 2.4, 5.5, true)
+	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.72, 0.35), 2.6, 9.0)
+	_fixture(Vector3(0, 2.46, 9.4), Color(0.95, 0.98, 0.75), 1.4, 7.0, true)
+	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.86, 0.62), 3.2, 8.0)
+	_fixture(Vector3(7.4, 2.46, 11.3), Color(0.7, 0.85, 1.0), 1.8, 5.5)
+	_fixture(Vector3(-4.6, 2.46, 2.4), Color(0.85, 0.7, 0.55), 2.8, 7.5)
+	_fixture(Vector3(-7.4, 2.46, 5.65), Color(0.55, 0.7, 0.9), 1.6, 5.0, true)
 
 	var moon := DirectionalLight3D.new()
 	moon.light_color = Color(0.45, 0.55, 0.75)
-	moon.light_energy = 0.18
-	moon.shadow_enabled = true
+	moon.light_energy = 0.08
+	moon.shadow_enabled = false
 	moon.rotation_degrees = Vector3(-35, 110, 0)
 	add_child(moon)
 
@@ -253,7 +305,7 @@ func _fixture(pos: Vector3, color: Color, energy: float, rng: float, flicker := 
 	li.light_color = color
 	li.light_energy = energy
 	li.omni_range = rng
-	li.omni_attenuation = 1.6
+	li.omni_attenuation = 1.35
 	# Omni dual-paraboloid shadows on box halls look like starbursts.
 	li.shadow_enabled = false
 	li.add_to_group("hall_light")

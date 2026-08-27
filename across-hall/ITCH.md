@@ -46,4 +46,4 @@ Required fields that have bitten us:
 
 **AI disclosure:** yes — text + code (not graphics pack / not licensed soundtrack)
 
-Details HTML is the long English night/controls/jam/AI block in this file’s previous revision; keep player-facing English.
+Cover, screenshots, and html5 0.1.1 are live. Cover is a listing still (630-style); in-game lights no longer stripe the hall.
