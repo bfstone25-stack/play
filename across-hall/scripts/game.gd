@@ -28,9 +28,9 @@ func _ready() -> void:
 	var amb := Node.new()
 	amb.set_script(preload("res://scripts/ambience.gd"))
 	add_child(amb)
-	hud.show_title("Fourth floor. You didn't lock the door.")
+	hud.show_title("Fourth floor. 02:17, again. You didn't lock the door.")
 	if OS.has_feature("web"):
-		hud.set_objective("Click to capture the mouse. Half the hall lights are dead. Across the hall is open.")
+		hud.set_objective("Click to capture the mouse. The clock will not leave 02:17. Across the hall is open.")
 		var env: Environment = $WorldEnvironment.environment
 		env.ssao_enabled = false
 		env.glow_enabled = false
@@ -38,7 +38,7 @@ func _ready() -> void:
 		env.ambient_light_energy = 0.62
 		env.tonemap_exposure = 1.28
 	else:
-		hud.set_objective("Half the hall lights are dead. Across the hall is open.")
+		hud.set_objective("The clock will not leave 02:17. Across the hall is open.")
 		player.capture_mouse()
 
 func _setup_audio() -> void:
