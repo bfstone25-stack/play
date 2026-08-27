@@ -37,9 +37,10 @@ func _tex_from(img: Image, rough: float, uv: Vector3) -> StandardMaterial3D:
 	return m
 
 func _plaster_mat() -> StandardMaterial3D:
-	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
-	for y in 256:
-		for x in 256:
+	var dim := 128 if OS.has_feature("web") else 256
+	var img := Image.create(dim, dim, false, Image.FORMAT_RGB8)
+	for y in dim:
+		for x in dim:
 			var speck := float((x * 19 + y * 11) % 23) / 90.0
 			var mott := 0.1 * (((x * 13) ^ (y * 7)) % 17) / 17.0
 			var n := mott + speck * 0.25 - 0.08
@@ -52,9 +53,10 @@ func _plaster_mat() -> StandardMaterial3D:
 	return _tex_from(img, 0.93, Vector3(1.6, 1.4, 1.6))
 
 func _plank_mat(base: Color, rough: float) -> StandardMaterial3D:
-	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
-	for y in 256:
-		for x in 256:
+	var dim := 128 if OS.has_feature("web") else 256
+	var img := Image.create(dim, dim, false, Image.FORMAT_RGB8)
+	for y in dim:
+		for x in dim:
 			var plank := int(y / 32.0)
 			var groove := 0.0
 			if y % 32 < 2:

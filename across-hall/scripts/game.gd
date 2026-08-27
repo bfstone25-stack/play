@@ -60,6 +60,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if ending:
 		return
+	if hud and hud.has_method("hide_splash") and hud.splash and hud.splash.visible:
+		if event is InputEventMouseButton and event.pressed:
+			hud.hide_splash()
+			player.capture_mouse()
+		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var t = player.interact_target()
 		if t:
