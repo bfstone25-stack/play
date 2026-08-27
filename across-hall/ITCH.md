@@ -46,4 +46,6 @@ Required fields that have bitten us:
 
 **AI disclosure:** yes — text + code (not graphics pack / not licensed soundtrack)
 
-Cover, screenshots, and html5 0.1.1 are live. Cover is a listing still (630-style); in-game lights no longer stripe the hall.
+Cover, screenshots, and html5 `0.1.4` are live.
+
+**Embed BG** (the hallway still behind **Run game**): theme editor field `layout[embed_background_image][image_id]`. Upload via `POST /dashboard/upload-image?game_id=4944030` (`action=prepare` → GCS → `action=success`), then POST the theme form to `https://bfstone25-stack.itch.io/across-the-hall/edit` with CSRF + `itchio_token` from GET. Live image id `29577643`.
