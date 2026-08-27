@@ -79,7 +79,7 @@ func _build() -> void:
 	_sink(Vector3(8.25, 0.48, 11.4))
 	_shoes(Vector3(2.15, 0.06, 8.05))
 
-	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.72, 0.35), 7.5, 11.0)
+	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.72, 0.35), 4.2, 11.0)
 	_fixture(Vector3(0, 2.46, 9.4), Color(0.95, 0.98, 0.75), 2.2, 8.0, true)
 	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.86, 0.62), 5.5, 9.0)
 	_fixture(Vector3(7.4, 2.46, 11.3), Color(0.7, 0.85, 1.0), 2.8, 6.0)
@@ -179,8 +179,9 @@ func _fixture(pos: Vector3, color: Color, energy: float, rng: float, flicker := 
 	li.light_color = color
 	li.light_energy = energy
 	li.omni_range = rng
-	li.omni_attenuation = 1.4
-	li.shadow_enabled = true
+	li.omni_attenuation = 1.6
+	# Omni dual-paraboloid shadows on box halls look like starbursts.
+	li.shadow_enabled = false
 	if flicker:
 		li.set_script(preload("res://scripts/flicker_light.gd"))
 	add_child(li)
