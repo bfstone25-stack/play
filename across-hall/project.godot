@@ -24,11 +24,9 @@ anti_aliasing/quality/msaa_3d.web=0
 environment/defaults/default_clear_color=Color(0.02, 0.018, 0.016, 1)
 rendering_device/fallback_to_opengl3=true
 
-[gui]
-theme/custom_font="res://fonts/DroidSansFallback.ttf"
-
 [internationalization]
 locale/fallback="en"
+locale/include_text_server_data=true
 
 [input]
 interact={

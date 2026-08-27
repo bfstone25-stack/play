@@ -14,9 +14,9 @@ var grain: ColorRect
 func _ready() -> void:
 	note.visible = false
 	prompt.text = ""
-	Cjk.apply_label(prompt)
-	Cjk.apply_label(note)
-	Cjk.apply_label(objective)
+	UiFont.apply_label(prompt)
+	UiFont.apply_label(note)
+	UiFont.apply_label(objective)
 	_clock()
 	_title()
 	_grain()
@@ -28,7 +28,7 @@ func _clock() -> void:
 	clock.add_theme_font_size_override("font_size", 14)
 	clock.add_theme_color_override("font_color", Color(0.55, 0.72, 0.48, 0.85))
 	clock.text = "02:17"
-	Cjk.apply_label(clock)
+	UiFont.apply_label(clock)
 	add_child(clock)
 
 func _title() -> void:
@@ -43,7 +43,7 @@ func _title() -> void:
 	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color(0.86, 0.8, 0.7, 1))
 	title.visible = false
-	Cjk.apply_label(title)
+	UiFont.apply_label(title)
 	add_child(title)
 
 func _grain() -> void:

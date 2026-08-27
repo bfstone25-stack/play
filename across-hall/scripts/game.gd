@@ -118,7 +118,7 @@ func _spawn_pickups() -> void:
 	tag.position = Vector3(0, 0.28, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	tag.modulate = Color(0.95, 0.82, 0.55)
-	Cjk.apply_3d(tag)
+	UiFont.apply_3d(tag)
 	radio.add_child(tag)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
@@ -151,7 +151,7 @@ func _pickup(pos: Vector3, id: String, prompt: String, note: String, color: Colo
 	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	tag.modulate = Color(0.95, 0.86, 0.62)
-	Cjk.apply_3d(tag)
+	UiFont.apply_3d(tag)
 	p.add_child(tag)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
