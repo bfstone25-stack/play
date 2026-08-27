@@ -83,8 +83,8 @@ func _build() -> void:
 	_wardrobe(Vector3(3.55, 1.05, 4.85))
 	_toothbrush(Vector3(8.05, 0.62, 11.15))
 	_mirror(Vector3(8.72, 1.45, 11.35))
-	_sign(Vector3(4.4, 1.35, 4.05), "退租确认  签名：你")
-	_sign(Vector3(-1.52, 1.55, 6.2), "夜间请勿敲门")
+	_sign(Vector3(4.4, 1.35, 4.05), "VACANCY CONFIRMED  signed: you")
+	_sign(Vector3(-1.52, 1.55, 6.2), "Do not knock after midnight")
 	_wet(Vector3(7.4, 0.03, 10.6))
 	_wet(Vector3(5.1, 0.03, 8.9))
 	_wet(Vector3(2.6, 0.03, 8.1))
@@ -137,7 +137,7 @@ func _closed_door(pos: Vector3, yaw: float, label: String) -> void:
 	col.shape = sh
 	body.add_child(col)
 	body.set_script(preload("res://scripts/door.gd"))
-	body.set("prompt", "听 401")
+	body.set("prompt", "Listen at 401")
 	body.set("kind", "401")
 	body.collision_layer = 1
 	body.collision_mask = 0

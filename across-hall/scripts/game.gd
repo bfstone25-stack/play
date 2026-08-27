@@ -1,10 +1,10 @@
 extends Node3D
 
 const NOTES := {
-	"note1": "物业回执写着：402 于三个月前退租。\n空置证明上的签名，是我的名字。\n笔迹比我现在的手稳。",
-	"note2": "401 的拖鞋在 402 的垫子上。尺码对得上。\n我把钥匙从里面反锁。\n所以现在敲门的，只能是还留在外面的那一个。",
-	"tape": "没有日期。带仓是温的。\n像刚从耳朵里抽出来。",
-	"end": "磁带里的呼吸对得上你的胸腔。\n对门从来没有别人。\n你只是把不想承认的那一半，留在了开着的那扇门里。",
+	"note1": "Management says 402 vacated three months ago.\nThe vacancy form is signed with my name.\nThe handwriting is steadier than mine is now.",
+	"note2": "401's slippers are on 402's mat. Same size.\nI deadbolted the key from the inside.\nSo whoever is knocking can only be the one still left outside.",
+	"tape": "No date. The cassette is still warm.\nLike it was just pulled out of an ear.",
+	"end": "The breathing on the tape matches your chest.\nThere was never anyone across the hall.\nYou only left the half of yourself you would not claim behind an open door.",
 }
 
 var items := {}
@@ -28,9 +28,9 @@ func _ready() -> void:
 	var amb := Node.new()
 	amb.set_script(preload("res://scripts/ambience.gd"))
 	add_child(amb)
-	hud.show_title("四楼。你没锁门。")
+	hud.show_title("Fourth floor. You didn't lock the door.")
 	if OS.has_feature("web"):
-		hud.set_objective("点击画面。走廊灯坏了一半。对门开着。")
+		hud.set_objective("Click to capture the mouse. Half the hall lights are dead. Across the hall is open.")
 		var env: Environment = $WorldEnvironment.environment
 		env.ssao_enabled = false
 		env.glow_enabled = false
@@ -38,7 +38,7 @@ func _ready() -> void:
 		env.ambient_light_energy = 0.62
 		env.tonemap_exposure = 1.28
 	else:
-		hud.set_objective("走廊灯坏了一半。对门开着。")
+		hud.set_objective("Half the hall lights are dead. Across the hall is open.")
 		player.capture_mouse()
 
 func _setup_audio() -> void:
@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
 		return
 	var t = player.interact_target()
 	if t and t.get("prompt"):
-		hud.set_prompt("E / 点击  " + str(t.prompt))
+		hud.set_prompt("E / click  " + str(t.prompt))
 	else:
 		hud.set_prompt("")
 	if caught_t > 0.0:
@@ -85,9 +85,9 @@ func _process(delta: float) -> void:
 		hud.set_fear(0.0)
 
 func _spawn_pickups() -> void:
-	_pickup(Vector3(0.55, 0.06, 2.6), "flashlight", "拿手电", "", Color(0.75, 0.72, 0.35), Vector3(0.28, 0.07, 0.08))
-	_pickup(Vector3(3.05, 0.48, 8.05), "note", "读退租确认书", NOTES["note1"], Color(0.92, 0.88, 0.72), Vector3(0.32, 0.03, 0.42))
-	_pickup(Vector3(7.85, 0.58, 11.35), "tape", "拿磁带", NOTES["tape"], Color(0.55, 0.12, 0.1), Vector3(0.2, 0.06, 0.12))
+	_pickup(Vector3(0.55, 0.06, 2.6), "flashlight", "Take flashlight", "", Color(0.75, 0.72, 0.35), Vector3(0.28, 0.07, 0.08))
+	_pickup(Vector3(3.05, 0.48, 8.05), "note", "Read vacancy notice", NOTES["note1"], Color(0.92, 0.88, 0.72), Vector3(0.32, 0.03, 0.42))
+	_pickup(Vector3(7.85, 0.58, 11.35), "tape", "Take cassette", NOTES["tape"], Color(0.55, 0.12, 0.1), Vector3(0.2, 0.06, 0.12))
 	var radio := StaticBody3D.new()
 	radio.set_script(preload("res://scripts/radio.gd"))
 	radio.position = Vector3(3.55, 0.56, 8.05)
@@ -112,7 +112,7 @@ func _spawn_pickups() -> void:
 	speaker.material_override = sm
 	radio.add_child(speaker)
 	var tag := Label3D.new()
-	tag.text = "录音机"
+	tag.text = "TAPE DECK"
 	tag.font_size = 64
 	tag.pixel_size = 0.0045
 	tag.position = Vector3(0, 0.28, 0)
@@ -168,14 +168,14 @@ func give_item(id: String) -> void:
 	match id:
 		"flashlight":
 			player.give_flashlight()
-			hud.set_objective("F 手电。对门一直开着。不要正视角落。")
+			hud.set_objective("F flashlight. 402 stays open. Don't stare into the corners.")
 			phase = maxi(phase, 1)
 		"note":
-			hud.set_objective("浴室水龙头没关。还有别的声音。")
+			hud.set_objective("The bathroom tap is still running. Something else is too.")
 			phase = maxi(phase, 2)
 			_dim_hall(0.45)
 		"tape":
-			hud.set_objective("客厅桌上那台录音机还在转。")
+			hud.set_objective("The tape deck on the living-room table is still turning.")
 			phase = maxi(phase, 3)
 			_dim_hall(0.18)
 
@@ -190,21 +190,21 @@ func knock_behind_401() -> void:
 
 func play_tape() -> void:
 	if not items.get("tape", false):
-		show_note("仓是空的。你却已经听见磁带在转。")
+		show_note("The deck is empty. You can still hear a cassette turning.")
 		return
 	if ending:
 		return
 	ending = true
 	tape_player.play()
-	hud.set_objective("呼吸对得上。")
+	hud.set_objective("The breathing matches.")
 	_dim_hall(0.06)
 	await get_tree().create_timer(6.8).timeout
 	show_note(NOTES["end"])
 	hud.note_t = 40.0
 	player.locked = true
 	drone.volume_db = -6.0
-	hud.set_prompt("终局。按 R 重新开始（E 不会把你送回走廊）")
-	hud.show_title("你就是对门")
+	hud.set_prompt("Ending. Press R to restart. E will not send you back.")
+	hud.show_title("You are the door across the hall")
 	await_restart = true
 
 func on_tenant_seen() -> void:
@@ -218,7 +218,7 @@ func caught() -> void:
 		return
 	caught_t = 2.2
 	player.locked = true
-	hud.show_note("有人从后面捂住你的眼睛。\n洗发水是你早上那瓶。\n手的温度也是。")
+	hud.show_note("Someone covers your eyes from behind.\nThe shampoo is the bottle you used this morning.\nThe hands are the same temperature.")
 	drone.volume_db = -3.0
 
 func _reset_catch() -> void:
@@ -226,7 +226,7 @@ func _reset_catch() -> void:
 	player.global_position = Vector3(0, 0.05, 0.8)
 	player.rotation.y = PI
 	drone.volume_db = -20.0
-	hud.set_objective("你还在四楼。门还开着。那一半已经认得你了。")
+	hud.set_objective("You're still on the fourth floor. The door is still open. That half already knows you.")
 	var tenant := get_tree().get_first_node_in_group("tenant") as Node3D
 	if tenant:
 		tenant.global_position = Vector3(2.2, 0.95, 8.05)

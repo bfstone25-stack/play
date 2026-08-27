@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var prompt := "放磁带"
+@export var prompt := "Play cassette"
 
 func _ready() -> void:
 	add_to_group("interactable")

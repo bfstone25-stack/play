@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var prompt := "拿起"
+@export var prompt := "Pick up"
 @export var item_id := ""
 @export var note_text := ""
 
