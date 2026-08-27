@@ -10,6 +10,8 @@ var note_t := 0.0
 func _ready() -> void:
 	note.visible = false
 	prompt.text = ""
+	if OS.has_feature("web"):
+		set_objective("点击画面锁定鼠标。WASD 移动，E 交互，F 手电。")
 
 func set_prompt(t: String) -> void:
 	prompt.text = t

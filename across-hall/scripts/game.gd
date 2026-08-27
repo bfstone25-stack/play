@@ -19,10 +19,19 @@ var caught_t := 0.0
 func _ready() -> void:
 	add_to_group("game")
 	player.add_to_group("player")
-	hud.set_objective("走廊灯坏了。对门开着。")
 	_setup_audio()
 	_spawn_pickups()
-	player.capture_mouse()
+	if OS.has_feature("web"):
+		hud.set_objective("点击画面锁定鼠标。走廊灯坏了。对门开着。")
+		var env: Environment = $WorldEnvironment.environment
+		env.ssao_enabled = false
+		env.glow_enabled = false
+		env.fog_density = 0.004
+		env.ambient_light_energy = 0.75
+		env.tonemap_exposure = 1.35
+	else:
+		hud.set_objective("走廊灯坏了。对门开着。")
+		player.capture_mouse()
 
 func _setup_audio() -> void:
 	drone.stream = _tone_stream(46.0, 0.35)

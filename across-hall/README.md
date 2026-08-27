@@ -6,11 +6,16 @@ You spawn on the 4th-floor landing. 401 is yours and shut. 402 is open. A tenant
 
 ## Play
 
-On a machine with Godot 4.7:
+**Browser (the one you can actually open from a headless Ubuntu box):** export the `Web` preset, then serve the folder. WASM needs `application/wasm`, so do not open `index.html` as a file.
 
 ```
-godot --path across-hall
+godot --headless --path across-hall --export-release Web across-hall/build/web/index.html
+python3 -m http.server 8060 --directory across-hall/build/web
 ```
+
+Desktop Linux/Windows/macOS still use Forward+ if you have a GPU window (`godot --path across-hall`). A GPU-less SSH server cannot display that build.
+
+Same project, two renderers: Forward+ on PC, GL Compatibility (WebGL 2) in the browser.
 
 Smoke (needs a GPU window; `--headless` cannot dump a real Forward+ frame):
 
