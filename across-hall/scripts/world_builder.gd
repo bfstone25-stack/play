@@ -51,13 +51,15 @@ func _build() -> void:
 	_box(Vector3(0, -0.05, 6), Vector3(3.4, 0.1, 16.4), _floor_mat)
 	_box(Vector3(0, 2.62, 6), Vector3(3.4, 0.12, 16.4), _plaster)
 	_box(Vector3(-1.75, 1.3, 6), Vector3(0.18, 2.7, 16.4), _plaster)
-	_box(Vector3(1.75, 1.3, 1.5), Vector3(0.18, 2.7, 7.4), _plaster)
-	_box(Vector3(1.75, 1.3, 11.7), Vector3(0.18, 2.7, 5.0), _plaster)
+	# Hall +X wall with a 1m door cut at z=8.05 — not a missing wall.
+	_box(Vector3(1.75, 1.3, 2.7), Vector3(0.22, 2.7, 9.7), _plaster)
+	_box(Vector3(1.75, 1.3, 11.35), Vector3(0.22, 2.7, 5.6), _plaster)
+	_box(Vector3(1.75, 2.28, 8.05), Vector3(0.22, 0.72, 1.08), _plaster)
 	_box(Vector3(0, 1.3, -2.15), Vector3(3.5, 2.7, 0.18), _plaster)
 	_box(Vector3(0, 1.3, 14.15), Vector3(3.5, 2.7, 0.18), _plaster)
-	# Baseboards
 	_box(Vector3(-1.64, 0.08, 6), Vector3(0.06, 0.16, 16.2), _trim)
-	_box(Vector3(1.64, 0.08, 1.5), Vector3(0.06, 0.16, 7.3), _trim)
+	_box(Vector3(1.62, 0.08, 2.7), Vector3(0.06, 0.16, 9.6), _trim)
+	_box(Vector3(1.62, 0.08, 11.35), Vector3(0.06, 0.16, 5.5), _trim)
 
 	_closed_door(Vector3(-1.62, 1.08, 2.4), PI * 0.5, "401")
 	_open_door(Vector3(1.62, 1.08, 8.05), "402")
@@ -75,10 +77,10 @@ func _build() -> void:
 
 	_window(Vector3(8.78, 1.5, 8.05))
 	_couch(Vector3(5.9, 0.32, 6.35))
-	_table(Vector3(4.45, 0.24, 8.55))
+	_table(Vector3(3.25, 0.38, 8.05))
 	_sink(Vector3(8.25, 0.48, 11.4))
-	_shoes(Vector3(2.15, 0.06, 8.05))
-	_wardrobe(Vector3(3.35, 1.05, 5.15))
+	_shoes(Vector3(2.25, 0.06, 8.05))
+	_wardrobe(Vector3(3.55, 1.05, 4.85))
 	_toothbrush(Vector3(8.05, 0.62, 11.15))
 	_mirror(Vector3(8.72, 1.45, 11.35))
 	_sign(Vector3(4.4, 1.35, 4.05), "退租确认  签名：你")
@@ -223,11 +225,11 @@ func _couch(pos: Vector3) -> void:
 	_box(pos + Vector3(0, 0.38, -0.28), Vector3(1.7, 0.42, 0.18), _noisy(Color(0.2, 0.21, 0.22), 0.95, Vector3(2, 2, 2), 0.04))
 
 func _table(pos: Vector3) -> void:
-	_box(pos, Vector3(0.95, 0.07, 0.95), _wood)
-	_box(pos + Vector3(0.38, -0.18, 0.38), Vector3(0.07, 0.36, 0.07), _wood)
-	_box(pos + Vector3(-0.38, -0.18, 0.38), Vector3(0.07, 0.36, 0.07), _wood)
-	_box(pos + Vector3(0.38, -0.18, -0.38), Vector3(0.07, 0.36, 0.07), _wood)
-	_box(pos + Vector3(-0.38, -0.18, -0.38), Vector3(0.07, 0.36, 0.07), _wood)
+	_box(pos, Vector3(1.15, 0.08, 0.7), _wood)
+	_box(pos + Vector3(0.46, -0.22, 0.26), Vector3(0.07, 0.36, 0.07), _wood)
+	_box(pos + Vector3(-0.46, -0.22, 0.26), Vector3(0.07, 0.36, 0.07), _wood)
+	_box(pos + Vector3(0.46, -0.22, -0.26), Vector3(0.07, 0.36, 0.07), _wood)
+	_box(pos + Vector3(-0.46, -0.22, -0.26), Vector3(0.07, 0.36, 0.07), _wood)
 
 func _sink(pos: Vector3) -> void:
 	_box(pos, Vector3(0.72, 0.1, 0.46), _tile)

@@ -6,6 +6,9 @@ extends StaticBody3D
 
 var taken := false
 
+func _ready() -> void:
+	add_to_group("interactable")
+
 func interact(game: Node) -> void:
 	if taken:
 		return

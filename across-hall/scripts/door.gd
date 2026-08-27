@@ -3,6 +3,9 @@ extends StaticBody3D
 @export var prompt := "听门缝"
 @export var kind := "401"
 
+func _ready() -> void:
+	add_to_group("interactable")
+
 func interact(game: Node) -> void:
 	if kind == "401":
 		if int(game.get("phase")) < 2:

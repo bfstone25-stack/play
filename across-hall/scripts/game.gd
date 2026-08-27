@@ -53,7 +53,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if ending:
 		return
-	if event.is_action_pressed("interact"):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var t = player.interact_target()
+		if t:
+			t.interact(self)
+			return
+	if event.is_action_pressed("interact") or (event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_E):
 		var t = player.interact_target()
 		if t:
 			t.interact(self)
@@ -67,7 +72,7 @@ func _process(delta: float) -> void:
 		return
 	var t = player.interact_target()
 	if t and t.get("prompt"):
-		hud.set_prompt("E  " + str(t.prompt))
+		hud.set_prompt("E / 点击  " + str(t.prompt))
 	else:
 		hud.set_prompt("")
 	if caught_t > 0.0:
@@ -79,23 +84,43 @@ func _process(delta: float) -> void:
 		hud.set_fear(0.0)
 
 func _spawn_pickups() -> void:
-	_pickup(Vector3(0.55, 0.04, 3.4), "flashlight", "拿手电", "", Color(0.18, 0.18, 0.2), Vector3(0.22, 0.05, 0.06))
-	_pickup(Vector3(4.35, 0.55, 8.6), "note", "读退租单", NOTES["note1"], Color(0.78, 0.72, 0.58), Vector3(0.16, 0.01, 0.22))
-	_pickup(Vector3(7.9, 0.55, 11.35), "tape", "拿磁带", NOTES["tape"], Color(0.35, 0.12, 0.1), Vector3(0.14, 0.04, 0.08))
+	_pickup(Vector3(0.55, 0.06, 2.6), "flashlight", "拿手电", "", Color(0.75, 0.72, 0.35), Vector3(0.28, 0.07, 0.08))
+	_pickup(Vector3(3.05, 0.48, 8.05), "note", "读退租确认书", NOTES["note1"], Color(0.92, 0.88, 0.72), Vector3(0.32, 0.03, 0.42))
+	_pickup(Vector3(7.85, 0.58, 11.35), "tape", "拿磁带", NOTES["tape"], Color(0.55, 0.12, 0.1), Vector3(0.2, 0.06, 0.12))
 	var radio := StaticBody3D.new()
 	radio.set_script(preload("res://scripts/radio.gd"))
-	radio.position = Vector3(4.55, 0.42, 8.35)
+	radio.position = Vector3(3.55, 0.56, 8.05)
 	var mesh := MeshInstance3D.new()
 	var box := BoxMesh.new()
-	box.size = Vector3(0.28, 0.16, 0.18)
+	box.size = Vector3(0.42, 0.22, 0.28)
 	mesh.mesh = box
 	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color(0.12, 0.12, 0.12)
+	mat.albedo_color = Color(0.18, 0.12, 0.08)
 	mesh.material_override = mat
 	radio.add_child(mesh)
+	var speaker := MeshInstance3D.new()
+	var cyl := CylinderMesh.new()
+	cyl.top_radius = 0.08
+	cyl.bottom_radius = 0.08
+	cyl.height = 0.04
+	speaker.mesh = cyl
+	speaker.rotation.x = PI * 0.5
+	speaker.position = Vector3(0.08, 0.02, -0.12)
+	var sm := StandardMaterial3D.new()
+	sm.albedo_color = Color(0.08, 0.08, 0.08)
+	speaker.material_override = sm
+	radio.add_child(speaker)
+	var tag := Label3D.new()
+	tag.text = "录音机"
+	tag.font_size = 64
+	tag.pixel_size = 0.0045
+	tag.position = Vector3(0, 0.28, 0)
+	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	tag.modulate = Color(0.95, 0.82, 0.55)
+	radio.add_child(tag)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
-	sh.size = Vector3(0.4, 0.3, 0.3)
+	sh.size = Vector3(0.7, 0.5, 0.55)
 	col.shape = sh
 	radio.add_child(col)
 	radio.collision_layer = 1
@@ -117,9 +142,17 @@ func _pickup(pos: Vector3, id: String, prompt: String, note: String, color: Colo
 	mat.albedo_color = color
 	mesh.material_override = mat
 	p.add_child(mesh)
+	var tag := Label3D.new()
+	tag.text = prompt
+	tag.font_size = 52
+	tag.pixel_size = 0.004
+	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
+	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	tag.modulate = Color(0.95, 0.86, 0.62)
+	p.add_child(tag)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
-	sh.size = size + Vector3(0.1, 0.1, 0.1)
+	sh.size = size + Vector3(0.25, 0.25, 0.25)
 	col.shape = sh
 	p.add_child(col)
 	p.collision_layer = 1

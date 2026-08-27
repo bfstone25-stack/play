@@ -106,11 +106,20 @@ func facing() -> Vector3:
 	return -camera.global_transform.basis.z
 
 func interact_target() -> Node:
-	if not ray.is_colliding():
-		return null
-	var n := ray.get_collider() as Node
-	while n:
-		if n.has_method("interact"):
-			return n
-		n = n.get_parent()
-	return null
+	if ray.is_colliding():
+		var n := ray.get_collider() as Node
+		while n:
+			if n.has_method("interact") and not bool(n.get("taken")):
+				return n
+			n = n.get_parent()
+	var best: Node = null
+	var best_d := 1.85
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if n.get("taken"):
+			continue
+		if n is Node3D:
+			var d: float = global_position.distance_to((n as Node3D).global_position)
+			if d < best_d:
+				best_d = d
+				best = n
+	return best
