@@ -18,4 +18,12 @@ Desktop: `godot --path across-hall` (needs a GPU window).
 
 WASD move, mouse look, E interact, F flashlight, Shift walk faster, Esc free the mouse. After the ending, R restarts.
 
-Loop: flashlight → listen at 401 → vacancy notice in 402 → cassette in the bathroom → tape deck. The neighbor lives in peripheral vision. Staring puts it behind you. Ending: you are the door across the hall.
+Loop (5 chapters):
+
+1. Hall — flashlight. 401 locked, 402 open.
+2. Apt 402 — vacancy notice signed with your name.
+3. 402 bath — cassette + 401 key.
+4. Apt 401 — unlock your own door. Calendar stuck on Feb 17. Clock at 02:17.
+5. Overlap — plates swap. Play the cassette on the 401 deck. Ending: you are the door across the hall.
+
+The neighbor lives in peripheral vision. Staring puts it behind you. Caught = reset to the hall, same 02:17.

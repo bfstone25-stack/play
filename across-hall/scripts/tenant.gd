@@ -63,11 +63,12 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var in_402 := player.global_position.x > 1.85
+	var in_401 := player.global_position.x < -1.85
 	if not activated:
-		if in_402:
+		if in_402 or in_401:
 			activated = true
 			visible = true
-			global_position = Vector3(6.6, 0.95, 10.8)
+			global_position = Vector3(6.6, 0.95, 10.8) if in_402 else Vector3(-6.6, 0.95, 5.4)
 		else:
 			visible = false
 			return
@@ -129,6 +130,9 @@ func _relocate(player: Node3D, phase: int) -> void:
 	if player.global_position.x > 1.85:
 		back.x = clampf(back.x, 2.5, 8.3)
 		back.z = clampf(back.z, 4.5, 11.7)
+	elif player.global_position.x < -1.85:
+		back.x = clampf(back.x, -8.3, -2.5)
+		back.z = clampf(back.z, -1.2, 6.2)
 	else:
 		back.x = clampf(back.x, -1.2, 1.2)
 		back.z = clampf(back.z, 0.4, 13.0)

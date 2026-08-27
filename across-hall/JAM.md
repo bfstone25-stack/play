@@ -31,6 +31,8 @@ A short first-person apartment horror.
 
 WASD move · mouse look · E / click interact · F flashlight · Esc release mouse · R restart after the ending
 
+Chapters: hall → 402 vacancy → bathroom cassette + key → unlock 401 → overlap (plates swap) → play the tape in 401.
+
 Do not stare into the corners.
 
 ---

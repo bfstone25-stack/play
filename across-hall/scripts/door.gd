@@ -8,6 +8,12 @@ func _ready() -> void:
 
 func interact(game: Node) -> void:
 	if kind == "401":
+		if bool(game.get("apt401_open")):
+			game.show_note("It's your door. It is already open from this side.")
+			return
+		if game.items.get("key", false):
+			game.open_401()
+			return
 		if int(game.get("phase")) < 2:
 			game.show_note("Deadbolted. No light in the keyhole.\nYou check your pockets: no key, and no seam where a pocket should be.")
 		else:

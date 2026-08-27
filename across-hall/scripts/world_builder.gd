@@ -50,19 +50,23 @@ func _build() -> void:
 	# Hall along +Z. Player looks down +Z toward 402.
 	_box(Vector3(0, -0.05, 6), Vector3(3.4, 0.1, 16.4), _floor_mat)
 	_box(Vector3(0, 2.62, 6), Vector3(3.4, 0.12, 16.4), _plaster)
-	_box(Vector3(-1.75, 1.3, 6), Vector3(0.18, 2.7, 16.4), _plaster)
-	# Hall +X wall with a 1m door cut at z=8.05 — not a missing wall.
+	# Hall -X wall with a 1m door cut at z=2.4 (401).
+	_box(Vector3(-1.75, 1.3, -0.145), Vector3(0.22, 2.7, 4.01), _plaster)
+	_box(Vector3(-1.75, 1.3, 8.545), Vector3(0.22, 2.7, 11.21), _plaster)
+	_box(Vector3(-1.75, 2.28, 2.4), Vector3(0.22, 0.72, 1.08), _plaster)
+	# Hall +X wall with a 1m door cut at z=8.05 (402).
 	_box(Vector3(1.75, 1.3, 2.7), Vector3(0.22, 2.7, 9.7), _plaster)
 	_box(Vector3(1.75, 1.3, 11.35), Vector3(0.22, 2.7, 5.6), _plaster)
 	_box(Vector3(1.75, 2.28, 8.05), Vector3(0.22, 0.72, 1.08), _plaster)
 	_box(Vector3(0, 1.3, -2.15), Vector3(3.5, 2.7, 0.18), _plaster)
 	_box(Vector3(0, 1.3, 14.15), Vector3(3.5, 2.7, 0.18), _plaster)
-	_box(Vector3(-1.64, 0.08, 6), Vector3(0.06, 0.16, 16.2), _trim)
+	_box(Vector3(-1.62, 0.08, -0.15), Vector3(0.06, 0.16, 3.9), _trim)
+	_box(Vector3(-1.62, 0.08, 8.4), Vector3(0.06, 0.16, 11.4), _trim)
 	_box(Vector3(1.62, 0.08, 2.7), Vector3(0.06, 0.16, 9.6), _trim)
 	_box(Vector3(1.62, 0.08, 11.35), Vector3(0.06, 0.16, 5.5), _trim)
 
 	_closed_door(Vector3(-1.62, 1.08, 2.4), PI * 0.5, "401")
-	_open_door(Vector3(1.62, 1.08, 8.05), "402")
+	_open_door(Vector3(1.62, 1.08, 8.05), "402", 1.0)
 
 	# Apartment 402
 	_box(Vector3(5.3, -0.05, 8.05), Vector3(7.4, 0.1, 8.6), _floor_mat)
@@ -89,10 +93,14 @@ func _build() -> void:
 	_wet(Vector3(5.1, 0.03, 8.9))
 	_wet(Vector3(2.6, 0.03, 8.1))
 
+	_apt401()
+
 	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.72, 0.35), 4.2, 11.0)
 	_fixture(Vector3(0, 2.46, 9.4), Color(0.95, 0.98, 0.75), 2.2, 8.0, true)
 	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.86, 0.62), 5.5, 9.0)
 	_fixture(Vector3(7.4, 2.46, 11.3), Color(0.7, 0.85, 1.0), 2.8, 6.0)
+	_fixture(Vector3(-4.6, 2.46, 2.4), Color(0.85, 0.7, 0.55), 4.6, 8.5)
+	_fixture(Vector3(-7.4, 2.46, 5.65), Color(0.55, 0.7, 0.9), 2.4, 5.5, true)
 
 	var moon := DirectionalLight3D.new()
 	moon.light_color = Color(0.45, 0.55, 0.75)
@@ -121,6 +129,55 @@ func _box(pos: Vector3, size: Vector3, mat: Material) -> MeshInstance3D:
 	mi.add_child(body)
 	return mi
 
+func _apt401() -> void:
+	_box(Vector3(-5.3, -0.05, 2.4), Vector3(7.4, 0.1, 8.6), _floor_mat)
+	_box(Vector3(-5.3, 2.62, 2.4), Vector3(7.4, 0.12, 8.6), _plaster)
+	_box(Vector3(-5.3, 1.3, -1.9), Vector3(7.4, 2.7, 0.18), _plaster)
+	_box(Vector3(-5.3, 1.3, 6.7), Vector3(7.4, 2.7, 0.18), _plaster)
+	_box(Vector3(-9.0, 1.3, 2.4), Vector3(0.18, 2.7, 8.6), _plaster)
+	_box(Vector3(-6.5, 1.3, 4.75), Vector3(2.6, 2.7, 0.14), _plaster)
+	_box(Vector3(-7.7, 1.3, 5.65), Vector3(0.14, 2.7, 1.9), _plaster)
+	_box(Vector3(-6.7, 1.3, 0.0), Vector3(2.9, 2.7, 0.14), _plaster)
+	_box(Vector3(-7.5, 0.02, 5.65), Vector3(2.5, 0.04, 1.85), _tile)
+	_window(Vector3(-8.78, 1.5, 2.4))
+	_couch(Vector3(-5.9, 0.32, 0.7))
+	_table(Vector3(-3.25, 0.38, 2.4))
+	_sink(Vector3(-8.25, 0.48, 5.75))
+	_shoes(Vector3(-2.25, 0.06, 2.4))
+	_wardrobe(Vector3(-3.55, 1.05, -0.8))
+	_toothbrush(Vector3(-8.05, 0.62, 5.5))
+	_mirror(Vector3(-8.72, 1.45, 5.7))
+	_sign(Vector3(-4.4, 1.35, -1.65), "YOU LIVE HERE. YOU LEFT.")
+	_wet(Vector3(-7.4, 0.03, 5.0))
+	_wet(Vector3(-3.4, 0.03, 2.5))
+	_stain(Vector3(-6.2, 0.02, 3.6), Vector3(1.1, 1, 0.8))
+
+func open_401() -> void:
+	if has_meta("apt401_open"):
+		return
+	set_meta("apt401_open", true)
+	for n in get_tree().get_nodes_in_group("door_401_solid"):
+		n.visible = false
+		_disable_colliders(n)
+	_open_door(Vector3(-1.62, 1.08, 2.4), "401", -1.0)
+
+func swap_plates() -> void:
+	for n in get_tree().get_nodes_in_group("door_plate"):
+		if n is Label3D:
+			var lab := n as Label3D
+			if lab.text == "401":
+				lab.text = "402"
+			elif lab.text == "402":
+				lab.text = "401"
+
+func _disable_colliders(n: Node) -> void:
+	if n is CollisionShape3D:
+		(n as CollisionShape3D).disabled = true
+	if n is CollisionObject3D:
+		(n as CollisionObject3D).collision_layer = 0
+	for c in n.get_children():
+		_disable_colliders(c)
+
 func _closed_door(pos: Vector3, yaw: float, label: String) -> void:
 	var mi := MeshInstance3D.new()
 	var mesh := BoxMesh.new()
@@ -129,6 +186,7 @@ func _closed_door(pos: Vector3, yaw: float, label: String) -> void:
 	mi.position = pos
 	mi.rotation.y = yaw
 	mi.material_override = _wood
+	mi.add_to_group("door_401_solid")
 	add_child(mi)
 	var body := StaticBody3D.new()
 	var col := CollisionShape3D.new()
@@ -144,21 +202,20 @@ func _closed_door(pos: Vector3, yaw: float, label: String) -> void:
 	mi.add_child(body)
 	_plate(pos + Vector3(0.05, 0.48, 0) if yaw > 1.0 else pos + Vector3(-0.05, 0.48, 0), label, yaw)
 
-func _open_door(pos: Vector3, label: String) -> void:
-	# Frame
+func _open_door(pos: Vector3, label: String, inward_x: float = 1.0) -> void:
 	for zoff in [-0.5, 0.5]:
 		_box(pos + Vector3(0, 0.02, zoff), Vector3(0.1, 2.2, 0.08), _wood)
 	_box(pos + Vector3(0, 1.12, 0), Vector3(0.1, 0.08, 1.1), _wood)
-	# Leaf swung into 402
 	var leaf := MeshInstance3D.new()
 	var mesh := BoxMesh.new()
 	mesh.size = Vector3(0.06, 2.1, 0.92)
 	leaf.mesh = mesh
 	leaf.material_override = _wood
-	leaf.position = pos + Vector3(0.48, 0, 0.42)
-	leaf.rotation.y = deg_to_rad(-80)
+	leaf.position = pos + Vector3(0.48 * inward_x, 0, 0.42)
+	leaf.rotation.y = deg_to_rad(-80.0 * inward_x)
 	add_child(leaf)
-	_plate(pos + Vector3(-0.08, 0.48, 0), label, -PI * 0.5)
+	var plate_yaw := -PI * 0.5 if inward_x > 0.0 else PI * 0.5
+	_plate(pos + Vector3(-0.08 * inward_x, 0.48, 0), label, plate_yaw)
 
 func _plate(pos: Vector3, text: String, yaw: float) -> void:
 	var l := Label3D.new()
@@ -171,6 +228,7 @@ func _plate(pos: Vector3, text: String, yaw: float) -> void:
 	l.position = pos
 	l.rotation.y = yaw
 	l.shaded = true
+	l.add_to_group("door_plate")
 	UiFont.apply_3d(l)
 	add_child(l)
 
@@ -264,7 +322,7 @@ func _sign(pos: Vector3, text: String) -> void:
 	l.pixel_size = 0.0032
 	l.modulate = Color(0.82, 0.78, 0.7)
 	l.position = pos + Vector3(0.03, 0, 0)
-	l.rotation.y = PI * 0.5
+	l.rotation.y = PI * 0.5 if pos.x > 0.0 else -PI * 0.5
 	UiFont.apply_3d(l)
 	add_child(l)
 

@@ -2,14 +2,20 @@ extends Node3D
 
 const NOTES := {
 	"note1": "Management says 402 vacated three months ago.\nThe vacancy form is signed with my name.\nThe handwriting is steadier than mine is now.",
-	"note2": "401's slippers are on 402's mat. Same size.\nI deadbolted the key from the inside.\nSo whoever is knocking can only be the one still left outside.",
-	"tape": "No date. The cassette is still warm.\nLike it was just pulled out of an ear.",
+	"note2": "401's calendar is still on February 17.\nThe clock is frozen at 02:17.\nYou already came home. You just used the other door.",
+	"tape": "No date. The cassette is still warm.\nThe spine is labeled 401 in your handwriting.",
+	"key": "A key on a ring with a photo of this hallway.\nThe tag says HOME. The teeth match 401.",
+	"clock": "The second hand is not stuck.\nIt is waiting for you to catch up.",
 	"end": "The breathing on the tape matches your chest.\nThere was never anyone across the hall.\nYou only left the half of yourself you would not claim behind an open door.",
 }
 
 var items := {}
 var phase := 0
+var chapter := 1
 var ending := false
+var apt401_open := false
+var visited_401 := false
+var overlap := false
 var await_restart := false
 var caught_t := 0.0
 var title_t := 5.5
@@ -28,9 +34,9 @@ func _ready() -> void:
 	var amb := Node.new()
 	amb.set_script(preload("res://scripts/ambience.gd"))
 	add_child(amb)
-	hud.show_title("Fourth floor. 02:17, again. You didn't lock the door.")
+	hud.show_title("Chapter 1 — The hall. 02:17, again.")
 	if OS.has_feature("web"):
-		hud.set_objective("Click to capture the mouse. The clock will not leave 02:17. Across the hall is open.")
+		hud.set_objective("Ch.1 Hall. Click to capture the mouse. Take the flashlight.")
 		var env: Environment = $WorldEnvironment.environment
 		env.ssao_enabled = false
 		env.glow_enabled = false
@@ -38,7 +44,7 @@ func _ready() -> void:
 		env.ambient_light_energy = 0.62
 		env.tonemap_exposure = 1.28
 	else:
-		hud.set_objective("The clock will not leave 02:17. Across the hall is open.")
+		hud.set_objective("Ch.1 Hall. Take the flashlight. 401 is locked. 402 is open.")
 		player.capture_mouse()
 
 func _setup_audio() -> void:
@@ -71,6 +77,7 @@ func _process(delta: float) -> void:
 			hud.hide_title()
 	if ending:
 		return
+	_track_401()
 	var t = player.interact_target()
 	if t and t.get("prompt"):
 		hud.set_prompt("E / click  " + str(t.prompt))
@@ -88,9 +95,51 @@ func _spawn_pickups() -> void:
 	_pickup(Vector3(0.55, 0.06, 2.6), "flashlight", "Take flashlight", "", Color(0.75, 0.72, 0.35), Vector3(0.28, 0.07, 0.08))
 	_pickup(Vector3(3.05, 0.48, 8.05), "note", "Read vacancy notice", NOTES["note1"], Color(0.92, 0.88, 0.72), Vector3(0.32, 0.03, 0.42))
 	_pickup(Vector3(7.85, 0.58, 11.35), "tape", "Take cassette", NOTES["tape"], Color(0.55, 0.12, 0.1), Vector3(0.2, 0.06, 0.12))
+	_pickup(Vector3(8.2, 0.52, 11.55), "key", "Take 401 key", NOTES["key"], Color(0.72, 0.62, 0.22), Vector3(0.12, 0.04, 0.22))
+	_inspect(Vector3(-3.25, 0.72, 2.15), "calendar", "Read calendar", NOTES["note2"], Color(0.85, 0.78, 0.62), Vector3(0.28, 0.36, 0.04))
+	_inspect(Vector3(-5.9, 0.85, 0.7), "clock", "Check the clock", NOTES["clock"], Color(0.2, 0.18, 0.16), Vector3(0.16, 0.16, 0.08))
+	_deck(Vector3(3.55, 0.56, 8.05), "402", "Play cassette (402)")
+	_deck(Vector3(-3.55, 0.56, 2.4), "401", "Play cassette (401)")
+
+func _inspect(pos: Vector3, id: String, prompt: String, note: String, color: Color, size: Vector3) -> void:
+	var p := StaticBody3D.new()
+	p.set_script(preload("res://scripts/inspect.gd"))
+	p.position = pos
+	p.inspect_id = id
+	p.prompt = prompt
+	p.note_text = note
+	var mesh := MeshInstance3D.new()
+	var box := BoxMesh.new()
+	box.size = size
+	mesh.mesh = box
+	var mat := StandardMaterial3D.new()
+	mat.albedo_color = color
+	mesh.material_override = mat
+	p.add_child(mesh)
+	var tag := Label3D.new()
+	tag.text = prompt
+	tag.font_size = 48
+	tag.pixel_size = 0.004
+	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
+	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	tag.modulate = Color(0.9, 0.8, 0.58)
+	UiFont.apply_3d(tag)
+	p.add_child(tag)
+	var col := CollisionShape3D.new()
+	var sh := BoxShape3D.new()
+	sh.size = size + Vector3(0.22, 0.22, 0.22)
+	col.shape = sh
+	p.add_child(col)
+	p.collision_layer = 1
+	p.collision_mask = 0
+	add_child(p)
+
+func _deck(pos: Vector3, which: String, prompt: String) -> void:
 	var radio := StaticBody3D.new()
 	radio.set_script(preload("res://scripts/radio.gd"))
-	radio.position = Vector3(3.55, 0.56, 8.05)
+	radio.position = pos
+	radio.deck = which
+	radio.prompt = prompt
 	var mesh := MeshInstance3D.new()
 	var box := BoxMesh.new()
 	box.size = Vector3(0.42, 0.22, 0.28)
@@ -112,8 +161,8 @@ func _spawn_pickups() -> void:
 	speaker.material_override = sm
 	radio.add_child(speaker)
 	var tag := Label3D.new()
-	tag.text = "TAPE DECK"
-	tag.font_size = 64
+	tag.text = "TAPE DECK " + which
+	tag.font_size = 56
 	tag.pixel_size = 0.0045
 	tag.position = Vector3(0, 0.28, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
@@ -168,16 +217,19 @@ func give_item(id: String) -> void:
 	match id:
 		"flashlight":
 			player.give_flashlight()
-			hud.set_objective("F flashlight. 402 stays open. Don't stare into the corners.")
+			_set_chapter(1, "Ch.1 Hall. F flashlight. 402 is open. 401 is still locked.")
 			phase = maxi(phase, 1)
 		"note":
-			hud.set_objective("The bathroom tap is still running. Something else is too.")
+			_set_chapter(2, "Ch.2 Apt 402. Bathroom tap is still running. Find the cassette.")
 			phase = maxi(phase, 2)
 			_dim_hall(0.45)
 		"tape":
-			hud.set_objective("The tape deck on the living-room table is still turning.")
+			_set_chapter(3, "Ch.3 Bath. Take the 401 key. The 402 deck is only a copy.")
 			phase = maxi(phase, 3)
-			_dim_hall(0.18)
+			_dim_hall(0.28)
+		"key":
+			_set_chapter(4, "Ch.4 Home. Unlock 401 across the hall.")
+			phase = maxi(phase, 4)
 
 func show_note(text: String) -> void:
 	hud.show_note(text)
@@ -188,15 +240,74 @@ func knock_behind_401() -> void:
 	sfx.volume_db = -4.0
 	sfx.play()
 
-func play_tape() -> void:
+func play_tape(deck: String = "402") -> void:
 	if not items.get("tape", false):
 		show_note("The deck is empty. You can still hear a cassette turning.")
 		return
 	if ending:
 		return
+	if deck == "402":
+		if not visited_401:
+			show_note("The voice on the tape is coming from 401.\nThis deck is a copy. Play it in the room that is yours.")
+			if items.get("key", false) and not apt401_open:
+				open_401()
+			return
+		show_note("Wrong room. The breathing is louder through the other door.")
+		return
+	_begin_ending()
+
+func inspect(id: String, text: String) -> void:
+	show_note(text)
+	click_sfx()
+	if id == "calendar" or id == "clock":
+		visited_401 = true
+		_start_overlap()
+
+func open_401() -> void:
+	if apt401_open:
+		return
+	apt401_open = true
+	phase = maxi(phase, 4)
+	click_sfx()
+	var world := get_node_or_null("World")
+	if world and world.has_method("open_401"):
+		world.open_401()
+	show_note("The deadbolt yields. The air inside already knows your shampoo.")
+	_set_chapter(4, "Ch.4 Apt 401. Read the calendar. The clock is waiting.")
+	knock_behind_401()
+
+func _track_401() -> void:
+	if player.global_position.x < -1.9:
+		visited_401 = true
+		if chapter < 4:
+			_set_chapter(4, "Ch.4 Apt 401. This is the room you locked from the inside.")
+
+func _start_overlap() -> void:
+	if overlap:
+		return
+	overlap = true
+	phase = maxi(phase, 5)
+	_set_chapter(5, "Ch.5 Overlap. The plates have swapped. Play the tape in 401.")
+	hud.show_title("Chapter 5 — The plates have swapped")
+	title_t = 4.0
+	_dim_hall(0.1)
+	var world := get_node_or_null("World")
+	if world and world.has_method("swap_plates"):
+		world.swap_plates()
+	hud.set_clock("02:17 / 02:17")
+
+func _set_chapter(n: int, objective: String) -> void:
+	if n > chapter:
+		chapter = n
+		hud.show_title("Chapter %d" % n)
+		title_t = 3.2
+	hud.set_objective(objective)
+
+func _begin_ending() -> void:
 	ending = true
+	phase = 6
 	tape_player.play()
-	hud.set_objective("The breathing matches.")
+	hud.set_objective("Ch.5 Overlap. The breathing matches.")
 	_dim_hall(0.06)
 	await get_tree().create_timer(6.8).timeout
 	show_note(NOTES["end"])
