@@ -6,12 +6,17 @@ You spawn on the 4th-floor landing. 401 is yours and shut. 402 is open. A tenant
 
 ## Play
 
-**Browser (the one you can actually open from a headless Ubuntu box):** export the `Web` preset, then serve the folder. WASM needs `application/wasm`, so do not open `index.html` as a file.
+Godot 4 will not run in Chrome unless the page is HTTPS (or localhost).
+`http://100.x.x.x` on Tailscale is **not** a secure context — that is the
+“Secure Context missing” error on Pixel.
 
 ```
 godot --headless --path across-hall --export-release Web across-hall/build/web/index.html
-python3 -m http.server 8060 --directory across-hall/build/web
+python3 across-hall/scripts/serve_web.py --https --port 8443
 ```
+
+On Pixel Chrome open `https://100.121.195.19:8443/` (or `https://blazeubuntu:8443/`),
+tap Advanced → Proceed for the self-signed cert, then wait for WASM.
 
 Desktop Linux/Windows/macOS still use Forward+ if you have a GPU window (`godot --path across-hall`). A GPU-less SSH server cannot display that build.
 
