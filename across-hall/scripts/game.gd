@@ -48,8 +48,9 @@ func _setup_audio() -> void:
 	tape_player.stream = _tape_stream()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if await_restart and (event.is_action_pressed("interact") or event.is_action_pressed("ui_accept")):
-		get_tree().reload_current_scene()
+	if await_restart:
+		if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_R:
+			get_tree().reload_current_scene()
 		return
 	if ending:
 		return
@@ -117,6 +118,7 @@ func _spawn_pickups() -> void:
 	tag.position = Vector3(0, 0.28, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	tag.modulate = Color(0.95, 0.82, 0.55)
+	Cjk.apply_3d(tag)
 	radio.add_child(tag)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
@@ -149,6 +151,7 @@ func _pickup(pos: Vector3, id: String, prompt: String, note: String, color: Colo
 	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	tag.modulate = Color(0.95, 0.86, 0.62)
+	Cjk.apply_3d(tag)
 	p.add_child(tag)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
@@ -197,9 +200,11 @@ func play_tape() -> void:
 	_dim_hall(0.06)
 	await get_tree().create_timer(6.8).timeout
 	show_note(NOTES["end"])
+	hud.note_t = 40.0
 	player.locked = true
 	drone.volume_db = -6.0
-	hud.set_prompt("E  再走一遍走廊")
+	hud.set_prompt("终局。按 R 重新开始（E 不会把你送回走廊）")
+	hud.show_title("你就是对门")
 	await_restart = true
 
 func on_tenant_seen() -> void:

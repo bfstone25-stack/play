@@ -171,6 +171,7 @@ func _plate(pos: Vector3, text: String, yaw: float) -> void:
 	l.position = pos
 	l.rotation.y = yaw
 	l.shaded = true
+	Cjk.apply_3d(l)
 	add_child(l)
 
 func _fixture(pos: Vector3, color: Color, energy: float, rng: float, flicker := false) -> void:
@@ -264,6 +265,7 @@ func _sign(pos: Vector3, text: String) -> void:
 	l.modulate = Color(0.82, 0.78, 0.7)
 	l.position = pos + Vector3(0.03, 0, 0)
 	l.rotation.y = PI * 0.5
+	Cjk.apply_3d(l)
 	add_child(l)
 
 func _wet(pos: Vector3) -> void:
