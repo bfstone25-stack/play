@@ -14,7 +14,9 @@ func interact(game: Node) -> void:
 		return
 	taken = true
 	visible = false
-	$CollisionShape3D.disabled = true
+	for c in get_children():
+		if c is CollisionShape3D:
+			c.disabled = true
 	if item_id != "":
 		game.give_item(item_id)
 	if note_text != "":

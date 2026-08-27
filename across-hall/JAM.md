@@ -1,6 +1,8 @@
-# Jam submit kit — Across the Hall
+# Jam / store
 
-I cannot log into your itch.io account. You click Join / Submit. Paste the blocks below.
+Full itch listing copy (title, short text, HTML details, tags, AI disclosure): **`ITCH.md`**.
+
+Itch has no API to create a page or edit the description. Create the game once at https://itch.io/game/new, paste `ITCH.md`, Save. Then butler can push the HTML5 build.
 
 ## 1. Do this now (deadline 2026-08-31 07:59 UTC)
 

@@ -109,13 +109,13 @@ func interact_target() -> Node:
 	if ray.is_colliding():
 		var n := ray.get_collider() as Node
 		while n:
-			if n.has_method("interact") and not bool(n.get("taken")):
+			if n.has_method("interact") and n.get("taken") != true:
 				return n
 			n = n.get_parent()
 	var best: Node = null
 	var best_d := 1.85
 	for n in get_tree().get_nodes_in_group("interactable"):
-		if n.get("taken"):
+		if n.get("taken") == true:
 			continue
 		if n is Node3D:
 			var d: float = global_position.distance_to((n as Node3D).global_position)
