@@ -47,5 +47,6 @@ Sibling pivots (other agents): Crazy Rant → 3D Horror VN; Beat Monday → 2D P
 - 1 — stock first bag item  
 - 2 — appraise selected shelf  
 - 3 — sell selected  
-- 4 — enter crypt (day → night)  
+- 4 — enter crypt (day → night)
+- 0 — force extract (+1 loot) while in crypt  
 - 5 — finish run (settle)

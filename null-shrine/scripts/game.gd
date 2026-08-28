@@ -304,6 +304,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		sell_selected()
 	elif k == KEY_4 and phase == Phase.DAY:
 		enter_night()
+	elif k == KEY_0 and phase == Phase.NIGHT:
+		# Demo: force extract with a free loot
+		add_loot(_random_loot())
+		return_from_dungeon()
 	elif k == KEY_5 and phase == Phase.SETTLE:
 		finish_run()
 	elif k == KEY_ENTER or k == KEY_KP_ENTER:
