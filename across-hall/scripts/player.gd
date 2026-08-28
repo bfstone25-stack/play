@@ -118,8 +118,9 @@ func interact_target() -> Node:
 		if n.get("taken") == true:
 			continue
 		if n is Node3D:
-			var d: float = global_position.distance_to((n as Node3D).global_position)
-			if d < best_d:
+			var to: Vector3 = (n as Node3D).global_position - global_position
+			var d: float = to.length()
+			if d < best_d and facing().dot(to.normalized()) > 0.22:
 				best_d = d
 				best = n
 	return best

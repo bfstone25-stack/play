@@ -24,6 +24,10 @@ func _init() -> void:
 		return
 	campaign.call("perform_action", "ep2_tag")
 	campaign.call("perform_action", "ep2_reset")
+	var present: Label3D = campaign.get_node_or_null("World/PresentDoor")
+	if present == null or not str(present.text).contains("PRESENT"):
+		_fail("Episode II reset did not mark the present room", 15)
+		return
 	campaign.call("perform_action", "ep2_present")
 	campaign.call("perform_action", "ep2_plate")
 	campaign.call("perform_action", "ep2_elevator")
@@ -41,6 +45,9 @@ func _init() -> void:
 	campaign.call("perform_action", "ep3_archive")
 	campaign.call("perform_action", "ep3_recording")
 	campaign.call("perform_action", "ep3_hall")
+	if campaign.get_node_or_null("World/WaitingTenant") == null:
+		_fail("HALL circuit did not reveal the waiting tenant", 16)
+		return
 	campaign.call("perform_action", "ep3_key")
 	campaign.call("perform_action", "ep3_stairs")
 	if int(campaign.get("episode")) != 4:

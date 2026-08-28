@@ -10,8 +10,10 @@ var campaign_complete := false
 var final_choice := ""
 var _stamp_index := 0
 var _title_t := 0.0
+var _blackout_t := 0.0
 var _forms := {"vacancy": false, "noise": false, "duplicate": false}
 var _memories := {"elevator": false, "mailbox": false, "exterior": false}
+var _fade: ColorRect
 
 @onready var world: Node3D = $World
 @onready var player: CharacterBody3D = $Player
@@ -26,6 +28,11 @@ func _ready() -> void:
 	drone.stream = _tone_stream(38.0, 0.2)
 	drone.volume_db = -24.0
 	drone.play()
+	_fade = ColorRect.new()
+	_fade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_fade.color = Color(0, 0, 0, 0)
+	hud.add_child(_fade)
 	start_episode(_load_progress() if OS.has_feature("full_game") else 2)
 	if hud.has_method("hide_splash"):
 		hud.hide_splash()
@@ -35,11 +42,18 @@ func _ready() -> void:
 func start_episode(number: int) -> void:
 	episode = clampi(number, 2, 5)
 	player.locked = false
+	if player.has_flashlight:
+		player.battery = 1.0
+		player.light_on = true
+		player.flashlight.visible = true
 	_clear_actions()
 	world.build_episode(episode)
-	player.global_position = Vector3(0, 0.05, 0.0)
-	player.rotation = Vector3(0, PI, 0)
+	player.global_position = Vector3(0, 0.05, 0.8)
+	player.rotation = Vector3.ZERO
 	player.velocity = Vector3.ZERO
+	if "pitch" in player:
+		player.pitch = 0.0
+		player.head.rotation.x = 0.0
 	_spawn_episode_actions()
 	hud.set_clock("02:17")
 	hud.set_fear(0.0)
@@ -108,6 +122,12 @@ func _process(delta: float) -> void:
 		_title_t -= delta
 		if _title_t <= 0.0:
 			hud.hide_title()
+	if _blackout_t > 0.0:
+		_blackout_t -= delta
+		if _fade:
+			_fade.color.a = clampf(_blackout_t / 0.85, 0.0, 0.92)
+	elif _fade and _fade.color.a > 0.0:
+		_fade.color.a = maxf(0.0, _fade.color.a - delta * 1.4)
 	if campaign_complete:
 		return
 	var target: Node = player.interact_target()
@@ -137,17 +157,22 @@ func perform_action(action_id: String) -> bool:
 				show_note("The hall resets. Your hands come back empty.\nAnchor the tag first.")
 				return false
 			flags["reset_done"] = true
+			_blackout_t = 0.85
+			if world.has_method("mark_present_room"):
+				world.mark_present_room()
+			_mark_action("ep2_reset", "RESET already pulled")
 			show_note(
 				"The lights blink out. Every door returns to 401.\n"
 				+ "The tag is still in your hand. The present room clicks open."
 			)
-			hud.set_objective("Open the present 401 and recover the missing floor plate.")
+			hud.set_objective("Open the glowing PRESENT 401. Recover the missing floor plate.")
 			return false
 		"ep2_present":
 			if not flags.get("reset_done", false):
 				show_note("This 401 belongs to a later version of the night.")
 				return false
 			flags["present_open"] = true
+			hud.set_objective("Take the missing floor plate from the present room.")
 			show_note("Inside: your coat, still warm. The elevator plate lies beneath it.")
 			return true
 		"ep2_plate":
@@ -155,7 +180,7 @@ func perform_action(action_id: String) -> bool:
 				show_note("The floor plate is behind the present 401.")
 				return false
 			items["floor_plate"] = true
-			hud.set_objective("Install the missing B plate in the elevator panel.")
+			hud.set_objective("Walk to the elevator. Install the missing B plate.")
 			show_note("A brass B. The scratch beneath it reads: BASEMENT / BEFORE.")
 			return true
 		"ep2_elevator":
@@ -169,6 +194,7 @@ func perform_action(action_id: String) -> bool:
 		"ep3_lift":
 			flags["circuit"] = "lift"
 			world.set_circuit("lift")
+			hud.set_objective("LIFT is live. Take the fuse from the elevator cabinet.")
 			show_note("LIFT circuit live. A cabinet unlatches beside the elevator.")
 			return false
 		"ep3_archive":
@@ -177,6 +203,7 @@ func perform_action(action_id: String) -> bool:
 				return false
 			flags["circuit"] = "archive"
 			world.set_circuit("archive")
+			hud.set_objective("ARCHIVE is live. Play the 02:17 complaint reel.")
 			show_note("ARCHIVE circuit live. A reel marked 02:17 begins to turn.")
 			return false
 		"ep3_hall":
@@ -185,6 +212,10 @@ func perform_action(action_id: String) -> bool:
 				return false
 			flags["circuit"] = "hall"
 			world.set_circuit("hall")
+			if world.has_method("show_waiting_tenant"):
+				world.show_waiting_tenant()
+			hud.set_fear(0.28)
+			hud.set_objective("The tenant is waiting, not hunting. Take the management key.")
 			show_note("The exit lights. The tenant waits beneath it instead of hunting.")
 			return false
 		"ep3_fuse":
@@ -192,7 +223,7 @@ func perform_action(action_id: String) -> bool:
 				show_note("The elevator cabinet is dark. Route power to LIFT.")
 				return false
 			items["fuse"] = true
-			hud.set_objective("Route power to ARCHIVE, install the fuse, play 02:17.")
+			hud.set_objective("Route power to ARCHIVE. Then play the 02:17 reel.")
 			show_note("The fuse is warm enough to have been used moments ago.")
 			return true
 		"ep3_recording":
@@ -200,6 +231,7 @@ func perform_action(action_id: String) -> bool:
 				show_note("The complaint reel has no power.")
 				return false
 			flags["recording_played"] = true
+			_mark_action("ep3_recording", "Complaint already heard")
 			hud.set_objective("Route power to HALL. Meet what has been following you.")
 			show_note(
 				"COMPLAINT 401, 02:17:\n"
@@ -211,7 +243,8 @@ func perform_action(action_id: String) -> bool:
 				show_note("In the dark, the tenant closes its hand around the key.")
 				return false
 			items["management_key"] = true
-			hud.set_objective("Use the management key on the records stairwell.")
+			hud.set_fear(0.08)
+			hud.set_objective("Unlock the records stairwell with the management key.")
 			show_note("It opens its palm. The key is tagged MANAGEMENT / NO PERSON.")
 			return true
 		"ep3_stairs":
@@ -257,9 +290,12 @@ func perform_action(action_id: String) -> bool:
 		"ep5_elevator", "ep5_mailbox", "ep5_exterior":
 			var memory := action_id.trim_prefix("ep5_")
 			_memories[memory] = true
+			_mark_action(action_id, memory.to_upper() + " installed")
 			show_note(_memory_text(memory))
 			if _all_memories():
-				hud.set_objective("The blank directory slot is ready. Choose who occupies it.")
+				hud.set_objective("Choose OCCUPANT or DOOR for the blank directory slot.")
+			else:
+				hud.set_objective("Install the remaining memories. Three sockets. One plate.")
 			return false
 		"ep5_occupant":
 			if not _all_memories():
@@ -277,7 +313,13 @@ func perform_action(action_id: String) -> bool:
 
 func _advance_to(next_episode: int) -> void:
 	_save_progress(next_episode)
+	_blackout_t = 0.55
 	start_episode(next_episode)
+
+func _mark_action(action_id: String, next_prompt: String) -> void:
+	for action in get_tree().get_nodes_in_group("campaign_action"):
+		if action.get("action_id") == action_id and action.has_method("mark_used"):
+			action.mark_used(next_prompt)
 
 func _load_progress() -> int:
 	var config := ConfigFile.new()
@@ -375,11 +417,11 @@ func _finish_campaign(choice: String) -> void:
 func _spawn_episode_actions() -> void:
 	match episode:
 		2:
-			_action(Vector3(0.7, 0.35, 2.0), "ep2_tag", "Take inspection tag", true, Color(0.72, 0.55, 0.2))
-			_action(Vector3(-1.2, 0.6, 4.5), "ep2_reset", "Pull floor RESET", false, Color(0.55, 0.1, 0.08))
-			_action(Vector3(1.8, 0.65, 7.0), "ep2_present", "Open present 401", true, Color(0.3, 0.26, 0.2))
-			_action(Vector3(-1.4, 0.32, 9.3), "ep2_plate", "Take missing floor plate", true, Color(0.72, 0.55, 0.16))
-			_action(Vector3(0, 0.7, 12.2), "ep2_elevator", "Install B plate", false, Color(0.4, 0.42, 0.38))
+			_action(Vector3(0.7, 0.18, 2.0), "ep2_tag", "Take inspection tag", true, Color(0.72, 0.55, 0.2), Vector3(0.22, 0.04, 0.32))
+			_action(Vector3(-1.2, 0.72, 4.5), "ep2_reset", "Pull floor RESET", false, Color(0.55, 0.1, 0.08), Vector3(0.18, 0.55, 0.18))
+			_action(Vector3(3.35, 1.05, 7.5), "ep2_present", "Open present 401", true, Color(0.3, 0.26, 0.2), Vector3(0.16, 2.0, 0.9))
+			_action(Vector3(2.35, 0.2, 8.55), "ep2_plate", "Take missing floor plate", true, Color(0.72, 0.55, 0.16), Vector3(0.34, 0.05, 0.28))
+			_action(Vector3(0, 0.95, 12.2), "ep2_elevator", "Install B plate", false, Color(0.4, 0.42, 0.38), Vector3(0.42, 0.55, 0.12))
 		3:
 			_action(Vector3(-2.4, 0.55, 3.0), "ep3_lift", "Route circuit: LIFT", false, Color(0.65, 0.18, 0.1))
 			_action(Vector3(0, 0.55, 3.0), "ep3_archive", "Route circuit: ARCHIVE", false, Color(0.65, 0.18, 0.1))
@@ -409,7 +451,8 @@ func _action(
 	action_id: String,
 	prompt: String,
 	one_shot: bool,
-	color: Color
+	color: Color,
+	size := Vector3(0.48, 0.3, 0.38)
 ) -> void:
 	var action := StaticBody3D.new()
 	action.set_script(ACTION_SCRIPT)
@@ -422,11 +465,14 @@ func _action(
 	action.add_to_group("campaign_action")
 	var mesh_instance := MeshInstance3D.new()
 	var mesh := BoxMesh.new()
-	mesh.size = Vector3(0.48, 0.3, 0.38)
+	mesh.size = size
 	mesh_instance.mesh = mesh
 	var material := StandardMaterial3D.new()
 	material.albedo_color = color
 	material.roughness = 0.62
+	if action_id.ends_with("_plate") or action_id == "ep2_tag":
+		material.emission_enabled = true
+		material.emission = color * 0.35
 	mesh_instance.material_override = material
 	action.add_child(mesh_instance)
 	var label := Label3D.new()
@@ -434,7 +480,7 @@ func _action(
 	label.font_size = 30
 	label.pixel_size = 0.0022
 	label.width = 600
-	label.position = Vector3(0, 0.32, 0)
+	label.position = Vector3(0, size.y * 0.5 + 0.18, 0)
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	label.visibility_range_end = 4.5
 	label.visibility_range_end_margin = 0.8
@@ -443,7 +489,7 @@ func _action(
 	action.add_child(label)
 	var collision := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
-	shape.size = Vector3(0.8, 0.65, 0.7)
+	shape.size = size + Vector3(0.28, 0.28, 0.28)
 	collision.shape = shape
 	action.add_child(collision)
 	add_child(action)

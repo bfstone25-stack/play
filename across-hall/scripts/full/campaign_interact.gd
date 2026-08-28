@@ -21,3 +21,11 @@ func interact(game: Node) -> void:
 		for child in get_children():
 			if child is CollisionShape3D:
 				(child as CollisionShape3D).disabled = true
+
+func mark_used(next_prompt: String = "") -> void:
+	if next_prompt != "":
+		prompt = next_prompt
+		for child in get_children():
+			if child is Label3D:
+				(child as Label3D).text = next_prompt
+				(child as Label3D).modulate = Color(0.55, 0.5, 0.42)

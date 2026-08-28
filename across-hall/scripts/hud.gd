@@ -136,6 +136,7 @@ func show_note(t: String) -> void:
 	note.text = t
 	note.visible = true
 	note_t = 9.0
+	hide_title()
 
 func _process(delta: float) -> void:
 	if note_t > 0.0:

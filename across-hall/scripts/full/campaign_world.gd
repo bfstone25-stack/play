@@ -78,9 +78,12 @@ func _build_fifth_floor() -> void:
 		_door(Vector3(-3.82, 1.05, z), "401")
 		_door(Vector3(3.82, 1.05, z + 1.7), "401")
 	_box(Vector3(0, 0.42, 12.8), Vector3(2.3, 0.84, 0.7), _metal)
-	_sign(Vector3(0, 1.18, 12.35), "ELEVATOR\n4   5   [ ]", 34, Color(0.8, 0.7, 0.48))
+	var elevator_sign := _sign(Vector3(0, 1.18, 12.35), "ELEVATOR\n4   5   [ ]", 34, Color(0.8, 0.7, 0.48))
+	elevator_sign.name = "ElevatorSign"
 	_box(Vector3(-2.7, 0.34, 7.0), Vector3(1.4, 0.68, 0.55), _wood)
 	_box(Vector3(2.7, 0.34, 8.7), Vector3(1.4, 0.68, 0.55), _wood)
+	var present := _sign(Vector3(3.35, 1.55, 7.5), "401", 34, Color(0.72, 0.62, 0.48))
+	present.name = "PresentDoor"
 
 func _build_basement() -> void:
 	_shell("B — SERVICE BASEMENT", "One circuit at a time. The complaints need power.")
@@ -96,10 +99,18 @@ func _build_basement() -> void:
 		pipe.rotation.x = PI * 0.5
 		add_child(pipe)
 	_box(Vector3(-2.6, 0.8, 3.3), Vector3(1.6, 1.6, 0.45), _metal)
-	_sign(Vector3(-2.6, 1.1, 3.0), "LIFT\nARCHIVE\nHALL", 30, Color(0.8, 0.28, 0.18))
+	_sign(Vector3(-2.6, 1.48, 3.02), "LIFT", 28, Color(0.82, 0.32, 0.2))
+	_box(Vector3(0.0, 0.8, 3.3), Vector3(1.6, 1.6, 0.45), _metal)
+	_sign(Vector3(0.0, 1.48, 3.02), "ARCHIVE", 28, Color(0.82, 0.32, 0.2))
+	_box(Vector3(2.6, 0.8, 3.3), Vector3(1.6, 1.6, 0.45), _metal)
+	_sign(Vector3(2.6, 1.48, 3.02), "HALL", 28, Color(0.82, 0.32, 0.2))
+	_station_light("lift", Vector3(-2.6, 1.9, 3.0))
+	_station_light("archive", Vector3(0.0, 1.9, 3.0))
+	_station_light("hall", Vector3(2.6, 1.9, 3.0))
 	_box(Vector3(2.4, 0.7, 8.3), Vector3(2.4, 1.4, 0.8), _metal)
 	_sign(Vector3(2.4, 1.05, 7.82), "COMPLAINT ARCHIVE\n02:17", 28, Color(0.62, 0.72, 0.62))
 	_door(Vector3(0, 1.05, 14.9), "RECORDS")
+	set_circuit("")
 
 func _build_management() -> void:
 	_shell("MANAGEMENT", "RETURN / RETAIN / REMOVE")
@@ -127,24 +138,37 @@ func _build_lobby() -> void:
 			)
 	_door(Vector3(-1.5, 1.05, 14.8), "EXIT")
 	_door(Vector3(1.5, 1.05, 14.8), "EXIT")
-	# The tenant finally stands in direct view.
-	_box(Vector3(2.6, 0.88, 10.8), Vector3(0.36, 1.75, 0.3), _dark, false)
-	var head := MeshInstance3D.new()
-	var sphere := SphereMesh.new()
-	sphere.radius = 0.22
-	sphere.height = 0.44
-	head.mesh = sphere
-	head.material_override = _dark
-	head.position = Vector3(2.6, 1.9, 10.8)
-	add_child(head)
+	_figure(Vector3(2.6, 0.0, 10.8))
+
+func mark_present_room() -> void:
+	var present := get_node_or_null("PresentDoor")
+	if present is Label3D:
+		(present as Label3D).text = "PRESENT 401"
+		(present as Label3D).modulate = Color(0.95, 0.82, 0.42)
+	var elevator := get_node_or_null("ElevatorSign")
+	if elevator is Label3D:
+		(elevator as Label3D).text = "ELEVATOR\n4   5   B?"
+
+func show_waiting_tenant() -> void:
+	if get_node_or_null("WaitingTenant"):
+		return
+	_figure(Vector3(0.8, 0.0, 11.15), "WaitingTenant")
 
 func set_circuit(which: String) -> void:
 	for light in get_tree().get_nodes_in_group("campaign_light"):
 		if light is OmniLight3D:
-			var on := which == "hall" or str(light.name).to_lower().contains(which)
-			(light as OmniLight3D).light_energy = 2.2 if on else 0.12
+			var name_l := str(light.name).to_lower()
+			var is_station := name_l.begins_with("circuit_")
+			var on := false
+			if which == "hall" and not is_station:
+				on = true
+			elif is_station and which != "" and name_l == "circuit_" + which:
+				on = true
+			elif not is_station and which == "":
+				on = true
+			(light as OmniLight3D).light_energy = (2.15 if on else 0.08)
 			(light as OmniLight3D).light_color = (
-				Color(0.78, 0.88, 1.0) if on else Color(0.35, 0.12, 0.08)
+				Color(0.78, 0.88, 1.0) if on else Color(0.28, 0.1, 0.07)
 			)
 
 func _door(pos: Vector3, label: String) -> void:
@@ -162,7 +186,7 @@ func _fixture(pos: Vector3) -> void:
 	shade.position = pos
 	add_child(shade)
 	var light := OmniLight3D.new()
-	light.name = "hall_%d" % int(pos.z)
+	light.name = "ceiling_%d" % int(pos.z)
 	light.position = pos - Vector3(0, 0.18, 0)
 	light.light_color = Color(0.95, 0.75, 0.48)
 	light.light_energy = 1.55
@@ -171,7 +195,36 @@ func _fixture(pos: Vector3) -> void:
 	light.add_to_group("campaign_light")
 	add_child(light)
 
-func _sign(pos: Vector3, text: String, font_size: int, color: Color) -> void:
+func _station_light(circuit: String, pos: Vector3) -> void:
+	var light := OmniLight3D.new()
+	light.name = "circuit_" + circuit
+	light.position = pos
+	light.light_color = Color(0.35, 0.12, 0.08)
+	light.light_energy = 0.08
+	light.omni_range = 4.2
+	light.shadow_enabled = false
+	light.add_to_group("campaign_light")
+	add_child(light)
+
+func _figure(pos: Vector3, node_name := "TenantFigure") -> void:
+	var body := MeshInstance3D.new()
+	body.name = node_name
+	var box := BoxMesh.new()
+	box.size = Vector3(0.36, 1.75, 0.3)
+	body.mesh = box
+	body.material_override = _dark
+	body.position = pos + Vector3(0, 0.88, 0)
+	add_child(body)
+	var head := MeshInstance3D.new()
+	var sphere := SphereMesh.new()
+	sphere.radius = 0.22
+	sphere.height = 0.44
+	head.mesh = sphere
+	head.material_override = _dark
+	head.position = Vector3(0, 1.02, 0)
+	body.add_child(head)
+
+func _sign(pos: Vector3, text: String, font_size: int, color: Color) -> Label3D:
 	var label := Label3D.new()
 	label.text = text
 	label.font_size = font_size
@@ -183,6 +236,7 @@ func _sign(pos: Vector3, text: String, font_size: int, color: Color) -> void:
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	UiFont.apply_3d(label)
 	add_child(label)
+	return label
 
 func _box(
 	pos: Vector3,
