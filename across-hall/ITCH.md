@@ -31,7 +31,7 @@ Required fields that have bitten us:
 - `game[published]` = `published` | `draft` | `restricted` (not `1`)
 - `game[payment_mode]` = `free`
 - `game[min_price]` = `0`
-- `game[community_type]` = `none`
+- `game[community_type]` = `topic` (comments enabled; valid values also include `none` and `category`)
 - do **not** send `game[genre]=horror` (not in their genre enum; horror is a tag)
 
 ## Listing copy (what is live)
