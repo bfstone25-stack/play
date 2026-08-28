@@ -11,26 +11,38 @@ complete ending or put existing content behind payment.
 
 ## Store model
 
-itch.io does not have a dependable native DLC model. Later episodes should be
-separate paid projects on the same account, linked from Episode I and collected
-in an **Across the Hall** bundle.
+Keep the existing **Across the Hall** page, URL, traffic, followers, ratings,
+jam entry, devlogs, and tags. Use the same structure already proven by
+**Tell**:
 
-Do not sell the episodes as individually priced files on the free Episode I
-page. Those files behave as payment tiers, not independent purchases; later
-price changes can lock previous buyers out.
+- Project payment mode: **Paid** once Episode II is ready.
+- Embedded HTML upload: the continually improved Episode I, playable free.
+- Full download upload: Episode I plus all released paid episodes, available
+  after purchasing the project.
+
+The split is by content, not merely by file format: the free embed ends with
+Episode I; the paid download continues into Episode II and later episodes.
+“Episode I remains free” means the browser version remains playable without a
+purchase. The current downloadable Episode I zip can be retired or marked as a
+demo when the paid full build launches.
+
+Do not use individually priced files as pseudo-DLC. They behave as cumulative
+payment tiers and later price changes can lock previous buyers out. Use the
+project's base minimum price for the full build so purchasers retain ownership
+when the price rises.
 
 Recommended ladder:
 
-| Release | Scope | Price |
-| --- | --- | --- |
-| Episode I — The Fourth Floor | Current 10–15 minute complete short | Free / donate |
-| Episode II — The Fifth Floor | 25–40 minutes, one new mechanic and ending | USD 2.99 |
-| Episode III — The Service Basement | 40–60 minutes, resolves the building arc | USD 4.99 |
-| Season bundle | Episodes II + III; Episode I linked as the free entry | USD 5.99 |
+| Store milestone | Free embedded slice | Paid full download | Minimum price |
+| --- | --- | --- | --- |
+| Now | Episode I | None; Episode I remains free/donate | Free |
+| Episode II launch | Episode I | Episodes I + II | USD 2.99 |
+| Episode III launch | Episode I | Episodes I + II + III | USD 5.99 |
 
 Treat these as launch targets, not promises on the public page. Recheck price
 against wishlists, follows, completion feedback, and play time before publishing
-each product.
+each milestone. Buyers at the Episode II price keep ownership and receive later
+updates on this same project; that early-buyer benefit is intentional.
 
 ## Episode II — The Fifth Floor
 
@@ -54,11 +66,12 @@ night.
   tenant systems.
 - Add one vertical traversal hub, three room-state variants, and a
   persistence/causality state machine.
-- Keep one clear paid-episode ending. Do not require an Episode I save; web
-  storage and separate itch projects are not a reliable entitlement or import
-  boundary.
-- Target desktop Web plus downloadable Windows/Linux builds if web performance
-  becomes the limiting factor.
+- Keep one clear paid-episode ending. The full build contains Episode I and
+  carries state into Episode II internally; it must also offer an Episode II
+  start option for returning players.
+- The free web build stays Episode I only. The paid full build targets
+  downloadable Windows and Linux first; do not put the paid episodes in a
+  publicly accessible web archive.
 
 ## Episode III — The Service Basement
 
@@ -74,20 +87,24 @@ system.
 
 - Episode I ending and store page link to **GHOST CHANNEL** and **Tell** now.
 - Episode I asks for an itch follow, not a purchase.
-- When Episode II has a real trailer or playable vertical slice, replace the
-  generic follow line with its project link and launch notification.
-- Each paid episode links back to the free Episode I and forward to the next
-  episode.
-- Bundle only after two paid episodes exist; until then, avoid a season pass or
-  promise of undelivered content.
+- When Episode II has a real trailer or playable vertical slice, the existing
+  page changes from Free to Paid and the generic follow line becomes a clear
+  **Buy the full game** call to action.
+- Devlogs on the existing page announce each milestone to followers without
+  rebuilding traffic on a new project.
+- Do not call this a season pass. The purchase grants the full build available
+  on the page and its future updates; only promise chapters that are actually
+  scoped and in production.
 
 ## Release gate for Episode II
 
-Before making a paid page public:
+Before changing the existing page from Free to Paid:
 
 - A vertical slice proves the carry-through-reset mechanic in Web export.
 - At least five external players reach the slice ending without developer help.
 - The page has a trailer, three real gameplay screenshots, controls, content
   disclosure, and a support/contact path.
-- Price, expected play time, refund expectations, and whether downloadable
-  builds are included are stated plainly.
+- The embedded upload is verified to stop at Episode I, while the gated full
+  download contains Episode II.
+- Price, expected play time, supported download platforms, and the early-access
+  update policy are stated plainly.

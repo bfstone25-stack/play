@@ -53,9 +53,11 @@ Jam: [Themed Horror Game Jam #25](https://itch.io/jam/themed-horror-game-jam-25)
 Devlog: https://bfstone25-stack.itch.io/across-the-hall/devlog/1642952/the-hallway-is-open
 
 **Product position:** the current complete short is **Episode I: The Fourth Floor**.
-It remains free permanently. Later paid episodes use separate itch projects,
-because itch does not provide native DLC ownership for a free HTML5 project.
-See `EPISODES.md`.
+It remains free permanently. When Episode II is ready, this existing page
+switches to Paid: the continuously improved Episode I remains the free embedded
+slice, while the gated full download contains Episode I plus the paid chapters.
+This follows the same channel split as Tell and preserves this page's traffic,
+followers, jam entry, ratings, comments, and devlogs. See `EPISODES.md`.
 
 **Cross-promo:** the page and Episode I ending point to:
 
