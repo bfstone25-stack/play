@@ -39,5 +39,16 @@ func _init() -> void:
 		push_error("ending did not start")
 		quit(6)
 		return
+	await create_timer(7.0).timeout
+	var objective: Label = scene.get_node("HUD/Objective")
+	var prompt: Label = scene.get_node("HUD/Prompt")
+	if "Episode I complete" not in objective.text:
+		push_error("episode completion message missing")
+		quit(7)
+		return
+	if "/ghost-channel" not in prompt.text:
+		push_error("ending cross-promo missing")
+		quit(8)
+		return
 	print("CHAPTERS_OK phase=", game.get("phase"), " chapter=", game.get("chapter"))
 	quit(0)
