@@ -463,9 +463,9 @@ func _spawn_episode_actions() -> void:
 			_action(Vector3(2.55, 0.14, 8.35), "ep2_plate", "Take missing floor plate", true, Color(0.78, 0.58, 0.18), Vector3(0.36, 0.04, 0.28), "B", "plate")
 			_action(Vector3(0, 1.15, 12.55), "ep2_elevator", "Install B plate", false, Color(0.42, 0.44, 0.4), Vector3(0.5, 0.6, 0.1), "PANEL", "panel")
 		3:
-			_action(Vector3(-2.6, 0.95, 2.28), "ep3_lift", "Route circuit: LIFT", false, Color(0.7, 0.18, 0.1), Vector3(0.42, 0.28, 0.2), "LIFT", "pad")
-			_action(Vector3(0.0, 0.95, 5.28), "ep3_archive", "Route circuit: ARCHIVE", false, Color(0.7, 0.18, 0.1), Vector3(0.42, 0.28, 0.2), "ARCHIVE", "pad")
-			_action(Vector3(2.6, 0.95, 8.28), "ep3_hall", "Route circuit: HALL", false, Color(0.7, 0.18, 0.1), Vector3(0.42, 0.28, 0.2), "HALL", "pad")
+			_action(Vector3(-2.6, 0.95, 2.28), "ep3_lift", "Route circuit: LIFT", false, Color(0.7, 0.18, 0.1), Vector3(0.42, 0.28, 0.2), "", "pad")
+			_action(Vector3(0.0, 0.95, 5.28), "ep3_archive", "Route circuit: ARCHIVE", false, Color(0.7, 0.18, 0.1), Vector3(0.42, 0.28, 0.2), "", "pad")
+			_action(Vector3(2.6, 0.95, 8.28), "ep3_hall", "Route circuit: HALL", false, Color(0.7, 0.18, 0.1), Vector3(0.42, 0.28, 0.2), "", "pad")
 			_action(Vector3(-2.6, 0.4, 3.7), "ep3_fuse", "Take elevator fuse", true, Color(0.72, 0.58, 0.18), Vector3(0.18, 0.18, 0.5), "FUSE", "fuse")
 			_action(Vector3(2.2, 0.7, 10.4), "ep3_recording", "Play complaint 02:17", true, Color(0.28, 0.22, 0.16), Vector3(0.55, 0.18, 0.4), "02:17", "deck")
 			_action(Vector3(0.8, 0.25, 12.2), "ep3_key", "Take management key", true, Color(0.78, 0.58, 0.2), Vector3(0.12, 0.04, 0.28), "KEY", "key")
@@ -474,9 +474,9 @@ func _spawn_episode_actions() -> void:
 			_action(Vector3(-1.8, 0.9, 1.65), "ep4_vacancy", "Take VACANCY complaint", true, Color(0.86, 0.8, 0.64), Vector3(0.32, 0.03, 0.42), "VACANCY", "paper")
 			_action(Vector3(0.0, 0.9, 1.65), "ep4_noise", "Take NOISE complaint", true, Color(0.86, 0.8, 0.64), Vector3(0.32, 0.03, 0.42), "NOISE", "paper")
 			_action(Vector3(1.8, 0.9, 1.65), "ep4_duplicate", "Take DUPLICATE complaint", true, Color(0.86, 0.8, 0.64), Vector3(0.32, 0.03, 0.42), "DUPLICATE", "paper")
-			_action(Vector3(-2.7, 0.95, 5.95), "ep4_return", "Stamp current form RETURN", false, Color(0.62, 0.48, 0.18), Vector3(0.42, 0.12, 0.42), "RETURN", "pad")
-			_action(Vector3(0.0, 0.95, 5.95), "ep4_retain", "Stamp current form RETAIN", false, Color(0.62, 0.48, 0.18), Vector3(0.42, 0.12, 0.42), "RETAIN", "pad")
-			_action(Vector3(2.7, 0.95, 5.95), "ep4_remove", "Stamp current form REMOVE", false, Color(0.62, 0.48, 0.18), Vector3(0.42, 0.12, 0.42), "REMOVE", "pad")
+			_action(Vector3(-2.7, 0.95, 5.95), "ep4_return", "Stamp current form RETURN", false, Color(0.62, 0.48, 0.18), Vector3(0.42, 0.12, 0.42), "", "pad")
+			_action(Vector3(0.0, 0.95, 5.95), "ep4_retain", "Stamp current form RETAIN", false, Color(0.62, 0.48, 0.18), Vector3(0.42, 0.12, 0.42), "", "pad")
+			_action(Vector3(2.7, 0.95, 5.95), "ep4_remove", "Stamp current form REMOVE", false, Color(0.62, 0.48, 0.18), Vector3(0.42, 0.12, 0.42), "", "pad")
 			_action(Vector3(0, 0.7, 12.7), "ep4_plate", "Take TENANT / DOOR plate", true, Color(0.78, 0.6, 0.22), Vector3(0.4, 0.05, 0.28), "MASTER", "plate")
 			_action(Vector3(0, 1.1, 13.55), "ep4_stairs", "Insert plate in records window", false, Color(0.24, 0.22, 0.18), Vector3(1.2, 1.4, 0.12), "WINDOW", "panel")
 		5:
@@ -520,6 +520,7 @@ func _action(
 	label.visibility_range_end = 5.2
 	label.visibility_range_end_margin = 0.8
 	label.modulate = Color(0.94, 0.84, 0.64)
+	label.visible = short_label != ""
 	UiFont.apply_3d(label)
 	action.add_child(label)
 	var collision := CollisionShape3D.new()
