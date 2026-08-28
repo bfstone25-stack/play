@@ -139,6 +139,13 @@ func _process(delta: float) -> void:
 		hud.set_prompt("E / click  " + str(target.prompt))
 	else:
 		hud.set_prompt("")
+	# Keep world labels quiet while a note is up, and hide the focused object's label (HUD owns it).
+	var note_up := hud.note and hud.note.visible
+	for action in get_tree().get_nodes_in_group("campaign_action"):
+		for child in action.get_children():
+			if child is Label3D:
+				var focused := target == action
+				(child as Label3D).visible = not note_up and not focused
 
 func _interact() -> void:
 	var target: Node = player.interact_target()
