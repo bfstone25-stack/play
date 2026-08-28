@@ -320,8 +320,9 @@ func _begin_ending() -> void:
 	hud.note_t = 40.0
 	player.locked = true
 	drone.volume_db = -6.0
-	hud.set_prompt("Ending. Press R to restart. E will not send you back.")
-	hud.show_title("You are the door across the hall")
+	hud.set_objective("Episode I complete. The Fourth Floor stays free.")
+	hud.set_prompt("R restart · Follow bfstone25-stack on itch.io · More: /ghost-channel")
+	hud.show_title("Episode I complete\nYou are the door across the hall")
 	await_restart = true
 
 func on_tenant_seen() -> void:
