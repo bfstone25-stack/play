@@ -24,8 +24,8 @@ func _init() -> void:
 		quit(4)
 		return
 	var interactables := get_nodes_in_group("interactable")
-	if interactables.size() < 3:
-		push_error("expected note/pipe/choice interactables")
+	if interactables.size() < 1:
+		push_error("expected initial inspection interaction")
 		quit(5)
 		return
 	var hud := scene.get_node_or_null("HUD") as CanvasItem
@@ -35,8 +35,8 @@ func _init() -> void:
 	cam.fov = 68.0
 	cam.current = true
 	scene.add_child(cam)
-	cam.global_position = Vector3(0.1, 1.5, 1.6)
-	cam.look_at(Vector3(4.2, 1.15, 2.4), Vector3.UP)
+	cam.global_position = Vector3(-6.0, 1.5, 5.6)
+	cam.look_at(Vector3(-1.0, 1.15, 5.0), Vector3.UP)
 	DisplayServer.window_set_size(Vector2i(1280, 720))
 	for i in 50:
 		RenderingServer.force_draw()
@@ -47,8 +47,8 @@ func _init() -> void:
 		var dest := "/tmp/late-inspection-smoke.png"
 		img.save_png(dest)
 		print("SMOKE_PNG ", dest, " ", img.get_width(), "x", img.get_height())
-	cam.global_position = Vector3(5.4, 1.4, 3.2)
-	cam.look_at(Vector3(7.2, 0.7, 4.9), Vector3.UP)
+	cam.global_position = Vector3(7.9, 1.45, 2.0)
+	cam.look_at(Vector3(10.6, 0.9, 4.0), Vector3.UP)
 	for i in 35:
 		RenderingServer.force_draw()
 		await process_frame
@@ -63,10 +63,10 @@ func _init() -> void:
 			hud.hide_splash()
 	(scene as Node).call(
 		"open_choice",
-		"stay_or_leave",
-		"The lease says the inspection ends at midnight.\nIt is already later than that.",
-		"Stay overnight and finish the checklist",
-		"Leave the key on the table and walk out",
+		"stain",
+		"IRIS VALE — STILL HERE",
+		"Keep the photograph and attach it",
+		"Wipe the wall and delete the image",
 		null
 	)
 	for i in 20:

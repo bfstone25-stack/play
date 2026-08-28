@@ -12,6 +12,7 @@ func _ready() -> void:
 func interact(game: Node) -> void:
 	if taken:
 		return
+	taken = true
 	if game.has_method("show_note"):
 		game.show_note(note_text if note_text != "" else note_id)
 	if game.has_method("on_note"):

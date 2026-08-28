@@ -15,25 +15,24 @@ func _init() -> void:
 	var hud := scene.get_node("HUD")
 	if hud.has_method("hide_splash"):
 		hud.hide_splash()
-	game.open_choice(
-		"stay_or_leave",
-		"The lease says the inspection ends at midnight.",
-		"Stay overnight and finish the checklist",
-		"Leave the key on the table and walk out",
-		null
-	)
+	game.open_choice("stain", "IRIS VALE — STILL HERE", "Keep photograph", "Delete image", null)
 	await process_frame
 	await process_frame
 	if not hud.choice_panel or not hud.choice_panel.visible:
 		push_error("choice panel not visible")
 		quit(2)
 		return
-	hud._pick(1)
+	hud._pick(0)
 	await process_frame
 	await process_frame
-	if not game.ending:
-		push_error("expected ending after leave choice")
+	if not game.flags["photo_kept"] or game.stage != 4:
+		push_error("expected stain choice to set evidence flag and advance")
 		quit(3)
 		return
-	print("CHOICE_SMOKE_OK ending=", game.ending, " stay=", game.flags["choice_stay"])
+	var ending_id: String = game.debug_complete_route("witness")
+	if ending_id != "WITNESS":
+		push_error("expected Witness route")
+		quit(4)
+		return
+	print("CHOICE_SMOKE_OK choice_flag=", game.flags["photo_kept"], " ending=", ending_id)
 	quit(0)

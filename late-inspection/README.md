@@ -1,8 +1,8 @@
 # Late Inspection: Flat 404（深夜验房：404室）
 
-Standalone **3D Horror VN** (Godot 4.7). Product pivot from Catharsis cabinet 06 Crazy Rant.
+Standalone **3D Horror VN** (Godot 4.7). A complete six-zone episode with four decisions and three authored endings.
 
-See [`PIVOT.md`](PIVOT.md) for naming, scope, scene list, endings, and Across the Hall reuse rules.
+See [`PRODUCT_BIBLE.md`](PRODUCT_BIBLE.md) for the executable screenplay, state map, cues, and acceptance criteria.
 
 ## Run
 
@@ -17,12 +17,19 @@ xvfb-run -a /tmp/godot-bin/Godot_v4.7.2-stable_linux.x86_64 --path late-inspecti
 xvfb-run -a /tmp/godot-bin/Godot_v4.7.2-stable_linux.x86_64 --headless --path late-inspection -s res://tests/smoke.gd
 ```
 
-## Prototype controls
+## Controls
 
 - WASD + mouse look
 - E / click — interact (notes, pipe, overnight clause)
-- Esc — release mouse
+- Esc — pause/resume and release/capture mouse
 - Choice panel — two hard options (mouse)
+- R — restart after an ending
+
+Progression verification:
+
+```bash
+godot --headless --path late-inspection -s res://tests/progression.gd
+```
 
 ## Not this repo folder
 

@@ -65,9 +65,9 @@ Across the Hall stays a separate product / PR. Patterns are **copy-adapted** int
 | 5 | Bathroom | Neighbor note under door | Knock at *your* door |
 | 6 | Bedroom | Choice: sleep / keep inspecting | Clock stuck near 02:00 |
 | 7 | Doorway (optional) | Choice: open door / ignore | Silhouette / nothing |
-| 8 | Ending beat | One of three closings | Hard cut / credits stub |
+| 8 | Ending beat | One of three closings | Authored multi-beat ending scene |
 
-Prototype scaffold covers **1–4 + one choice node + knock/drip stubs**. Full script later.
+The production episode now covers the complete route above. Exact runtime copy and implementation criteria live in `PRODUCT_BIBLE.md`.
 
 ---
 
@@ -96,7 +96,7 @@ DOOR_KNOCK → CHOICE_C (open / ignore)
 2. **Complicit** — You wiped the evidence; the knock stops; the calendar advances one day you did not live.
 3. **404** — Unit not found. You are standing in the corridor with a key that fits nothing.
 
-Exact copy TBD in script pass.
+Exact ending copy is locked in `PRODUCT_BIBLE.md` and implemented in the episode.
 
 ---
 
@@ -133,24 +133,22 @@ Exact copy TBD in script pass.
 
 ---
 
-## Prototype acceptance (this PR)
+## Production acceptance
 
 - [x] Godot 4.7 project boots `scenes/main.tscn`
 - [x] Dark apartment lighting (warm + green locals)
 - [x] First-person walk
 - [x] Interactable neighbor note
-- [x] One two-choice VN node
-- [x] Knock + drip ambience stub
+- [x] Four two-choice VN nodes
+- [x] Knock + drip + fluorescent ambience
 - [x] Headless / xvfb smoke screenshot
 
-**Not in this PR:** full 30 min script, three polished endings, itch upload, Beat Monday / Null-shrine pivots.
+**Not in this PR:** itch upload or implementation of Beat Monday / Null-shrine.
 
 ---
 
-## Next (for Blaze / follow-up agents)
+## Verification gate
 
-1. Lock or override title (A/B/C).
-2. Write full zh-Hans + EN micro-script (~30 min, 3 endings).
-3. Expand rooms to scene list 5–8; wire flags → endings.
-4. Store page art + itch draft when asked.
-5. Await separate briefs for Beat Monday and Null-shrine.
+1. Run all progression routes on `blazeubuntu`.
+2. Export and host the verified Web build.
+3. Keep Beat Monday and Null-shrine implementation waiting.

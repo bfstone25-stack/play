@@ -16,8 +16,19 @@ var choice_prompt: Label
 var btn_a: Button
 var btn_b: Button
 var _choice_cb: Callable = Callable()
+var chapter: Label
+var evidence_label: Label
+var pause_panel: Control
+var ending_panel: Control
+var ending_title: Label
+var ending_text: Label
+var ending_button: Button
+var ending_beats: Array = []
+var ending_index := 0
+var evidence: Array[String] = []
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	note.visible = false
 	note.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
@@ -30,9 +41,12 @@ func _ready() -> void:
 	UiFont.apply_label(note)
 	UiFont.apply_label(objective)
 	_clock()
+	_chapter()
 	_title()
 	_grain()
 	_choice_ui()
+	_pause_ui()
+	_ending_ui()
 	_splash()
 
 func _clock() -> void:
@@ -44,6 +58,26 @@ func _clock() -> void:
 	clock.text = "02:04"
 	UiFont.apply_label(clock)
 	add_child(clock)
+
+func _chapter() -> void:
+	chapter = Label.new()
+	chapter.name = "Chapter"
+	chapter.position = Vector2(28, 72)
+	chapter.add_theme_font_size_override("font_size", 13)
+	chapter.add_theme_color_override("font_color", Color(0.72, 0.62, 0.48, 0.88))
+	UiFont.apply_label(chapter)
+	add_child(chapter)
+	evidence_label = Label.new()
+	evidence_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	evidence_label.offset_left = -310.0
+	evidence_label.offset_right = -24.0
+	evidence_label.offset_top = 24.0
+	evidence_label.offset_bottom = 54.0
+	evidence_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	evidence_label.add_theme_font_size_override("font_size", 13)
+	evidence_label.add_theme_color_override("font_color", Color(0.62, 0.7, 0.58, 0.9))
+	UiFont.apply_label(evidence_label)
+	add_child(evidence_label)
 
 func _title() -> void:
 	title = Label.new()
@@ -118,6 +152,73 @@ func _mk_btn(n: String, off: Vector2, size: Vector2) -> Button:
 	b.add_theme_font_size_override("font_size", 16)
 	return b
 
+func _pause_ui() -> void:
+	pause_panel = Control.new()
+	pause_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	pause_panel.visible = false
+	var dim := ColorRect.new()
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.color = Color(0.015, 0.012, 0.01, 0.88)
+	pause_panel.add_child(dim)
+	var lab := Label.new()
+	lab.set_anchors_preset(Control.PRESET_CENTER)
+	lab.offset_left = -320
+	lab.offset_right = 320
+	lab.offset_top = -150
+	lab.offset_bottom = -40
+	lab.text = "INSPECTION PAUSED\nEsc resumes · Mouse recaptures on return"
+	lab.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lab.add_theme_font_size_override("font_size", 23)
+	UiFont.apply_label(lab)
+	pause_panel.add_child(lab)
+	var resume := _mk_btn("Resume", Vector2(-180, 10), Vector2(360, 48))
+	resume.text = "RESUME INSPECTION"
+	resume.pressed.connect(func() -> void: get_tree().call_group("game", "toggle_pause"))
+	pause_panel.add_child(resume)
+	var restart_btn := _mk_btn("Restart", Vector2(-180, 72), Vector2(360, 48))
+	restart_btn.text = "RESTART FROM ARRIVAL"
+	restart_btn.pressed.connect(func() -> void: get_tree().call_group("game", "restart"))
+	pause_panel.add_child(restart_btn)
+	add_child(pause_panel)
+
+func _ending_ui() -> void:
+	ending_panel = Control.new()
+	ending_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	ending_panel.visible = false
+	var bg := ColorRect.new()
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(0.025, 0.018, 0.014, 0.9)
+	ending_panel.add_child(bg)
+	ending_title = Label.new()
+	ending_title.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	ending_title.offset_left = -440
+	ending_title.offset_right = 440
+	ending_title.offset_top = 90
+	ending_title.offset_bottom = 150
+	ending_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ending_title.add_theme_font_size_override("font_size", 30)
+	ending_title.add_theme_color_override("font_color", Color(0.9, 0.76, 0.55))
+	UiFont.apply_label(ending_title)
+	ending_panel.add_child(ending_title)
+	ending_text = Label.new()
+	ending_text.set_anchors_preset(Control.PRESET_CENTER)
+	ending_text.offset_left = -450
+	ending_text.offset_right = 450
+	ending_text.offset_top = -130
+	ending_text.offset_bottom = 150
+	ending_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ending_text.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	ending_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	ending_text.add_theme_font_size_override("font_size", 21)
+	ending_text.add_theme_color_override("font_color", Color(0.91, 0.86, 0.77))
+	UiFont.apply_label(ending_text)
+	ending_panel.add_child(ending_text)
+	ending_button = _mk_btn("EndingNext", Vector2(-180, 185), Vector2(360, 50))
+	ending_button.text = "CONTINUE"
+	ending_button.pressed.connect(_next_ending_beat)
+	ending_panel.add_child(ending_button)
+	add_child(ending_panel)
+
 func _splash() -> void:
 	splash = Control.new()
 	splash.name = "Splash"
@@ -167,6 +268,17 @@ func set_clock(t: String) -> void:
 	if clock:
 		clock.text = t
 
+func set_chapter(t: String, clock_text: String) -> void:
+	if chapter:
+		chapter.text = t
+	set_clock(clock_text)
+
+func add_evidence(id: String) -> void:
+	if not evidence.has(id):
+		evidence.append(id)
+	if evidence_label:
+		evidence_label.text = "EVIDENCE %02d / 15" % evidence.size()
+
 func show_title(t: String) -> void:
 	title.text = t
 	title.visible = true
@@ -192,6 +304,31 @@ func open_choice(text: String, a: String, b: String, cb: Callable) -> void:
 	choice_panel.visible = true
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func set_pause(value: bool) -> void:
+	pause_panel.visible = value
+	mouse_filter = Control.MOUSE_FILTER_STOP if value else Control.MOUSE_FILTER_IGNORE
+
+func show_ending(t: String, beats: Array) -> void:
+	ending_title.text = t
+	ending_beats = beats
+	ending_index = 0
+	ending_panel.visible = true
+	ending_text.text = str(ending_beats[0])
+	ending_button.text = "CONTINUE"
+	mouse_filter = Control.MOUSE_FILTER_STOP
+
+func _next_ending_beat() -> void:
+	ending_index += 1
+	if ending_index >= ending_beats.size():
+		ending_text.text = "FLAT 404\n\nThank you for witnessing.\n\nPress R to restart the inspection."
+		ending_button.text = "RESTART"
+		ending_button.pressed.disconnect(_next_ending_beat)
+		ending_button.pressed.connect(func() -> void: get_tree().call_group("game", "restart"))
+		return
+	ending_text.text = str(ending_beats[ending_index])
+	if ending_index == ending_beats.size() - 1:
+		ending_button.text = "CREDITS"
 
 func _pick(i: int) -> void:
 	choice_panel.visible = false

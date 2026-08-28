@@ -1,7 +1,8 @@
 extends Node3D
 
-## Flat 404 — corridor stub + entry + living + wet kitchen.
-## Copy-adapted lighting approach from Across the Hall; layout is inspection-specific.
+## Flat 404 production set: six connected, dressed zones built from standalone
+## procedural geometry. Primitives are assembled into readable architecture and
+## furniture rather than used as label-only placeholders.
 
 var _plaster: StandardMaterial3D
 var _floor_mat: StandardMaterial3D
@@ -11,6 +12,10 @@ var _trim: StandardMaterial3D
 var _metal: StandardMaterial3D
 var _dark: StandardMaterial3D
 var _paper: StandardMaterial3D
+var _fabric: StandardMaterial3D
+var _red: StandardMaterial3D
+var _glass: StandardMaterial3D
+var zone_names := ["LIFT LOBBY", "FOURTH-FLOOR CORRIDOR", "LIVING ROOM", "KITCHEN", "BATHROOM", "BEDROOM"]
 
 func _ready() -> void:
 	_make_materials()
@@ -25,45 +30,24 @@ func _make_materials() -> void:
 	_metal = GameMaterials.metal(Color(0.22, 0.24, 0.23))
 	_dark = GameMaterials.flat(Color(0.035, 0.03, 0.025), 1.0)
 	_paper = GameMaterials.paper(Color(0.78, 0.72, 0.58))
+	_fabric = GameMaterials.carpet(Color(0.16, 0.12, 0.1))
+	_red = GameMaterials.carpet(Color(0.28, 0.045, 0.035))
+	_glass = GameMaterials.metal(Color(0.12, 0.16, 0.18), 0.18)
 
 func _build() -> void:
-	# Corridor outside 404 (along +Z, door on +X).
-	_box(Vector3(0, -0.05, 2.0), Vector3(2.4, 0.1, 8.0), _floor_mat)
-	_box(Vector3(0, 2.55, 2.0), Vector3(2.4, 0.1, 8.0), _plaster)
-	_box(Vector3(-1.25, 1.25, 2.0), Vector3(0.16, 2.6, 8.0), _plaster)
-	_box(Vector3(1.25, 1.25, -0.4), Vector3(0.16, 2.6, 3.2), _plaster)
-	_box(Vector3(1.25, 1.25, 4.8), Vector3(0.16, 2.6, 3.2), _plaster)
-	_box(Vector3(0, 1.25, -2.05), Vector3(2.5, 2.6, 0.16), _plaster)
-	_box(Vector3(0, 1.25, 6.05), Vector3(2.5, 2.6, 0.16), _plaster)
-	_box(Vector3(-1.15, 0.08, 2.0), Vector3(0.05, 0.14, 7.8), _trim)
-	_box(Vector3(1.15, 0.08, -0.4), Vector3(0.05, 0.14, 3.1), _trim)
-	_box(Vector3(1.15, 0.08, 4.8), Vector3(0.05, 0.14, 3.1), _trim)
-
-	_door_leaf(Vector3(1.18, 1.05, 2.2), "404")
-	_sign(Vector3(1.16, 1.72, 2.2), "LATE INSPECTION")
-
-	# Apartment interior (+X from door).
-	_box(Vector3(4.6, -0.05, 2.2), Vector3(6.6, 0.1, 7.2), _floor_mat)
-	_box(Vector3(4.6, 2.55, 2.2), Vector3(6.6, 0.1, 7.2), _plaster)
-	_box(Vector3(4.6, 1.25, -1.35), Vector3(6.6, 2.6, 0.16), _plaster)
-	_box(Vector3(4.6, 1.25, 5.75), Vector3(6.6, 2.6, 0.16), _plaster)
-	_box(Vector3(7.85, 1.25, 2.2), Vector3(0.16, 2.6, 7.2), _plaster)
-	_box(Vector3(1.35, 1.25, -0.05), Vector3(0.16, 2.6, 2.5), _plaster)
-	_box(Vector3(1.35, 1.25, 4.45), Vector3(0.16, 2.6, 2.5), _plaster)
-	_box(Vector3(1.35, 2.35, 2.2), Vector3(0.16, 0.45, 1.05), _plaster)
-
-	_box(Vector3(6.6, 0.02, 4.4), Vector3(2.2, 0.04, 2.0), _tile)
-	_counter(Vector3(6.9, 0.0, 4.85))
-	_pipe_drip(Vector3(7.45, 0.55, 5.15))
-
-	_couch(Vector3(3.4, 0.28, 0.1))
-	_table(Vector3(3.5, 0.35, 1.5))
-	_lamp(Vector3(2.6, 0.0, 0.35))
-	_calendar(Vector3(4.2, 1.45, -1.25))
-
-	_fixture(Vector3(0.0, 2.35, 2.0), Color(1.0, 0.72, 0.32), 1.15, 7.5, true)
-	_fixture(Vector3(3.8, 2.35, 1.6), Color(1.0, 0.78, 0.42), 1.55, 8.0, false)
-	_fixture(Vector3(7.2, 0.35, 5.1), Color(0.45, 0.85, 0.35), 0.85, 3.8, true)
+	_build_lobby()
+	_build_corridor()
+	_build_living()
+	_build_kitchen()
+	_build_bathroom()
+	_build_bedroom()
+	_fixture(Vector3(-5.2, 2.35, 4.0), Color(0.38, 0.78, 0.46), 1.0, 5.5, true)
+	_fixture(Vector3(-1.0, 2.35, 2.0), Color(1.0, 0.66, 0.28), 1.25, 6.5, true)
+	_fixture(Vector3(-1.0, 2.35, 8.0), Color(1.0, 0.72, 0.34), 1.0, 5.5, false)
+	_fixture(Vector3(4.5, 2.35, 2.4), Color(1.0, 0.72, 0.35), 1.45, 7.0, false)
+	_fixture(Vector3(9.4, 2.3, 2.5), Color(0.5, 0.82, 0.32), 0.8, 4.5, true)
+	_fixture(Vector3(9.4, 2.3, 7.3), Color(0.35, 0.72, 0.33), 0.72, 4.0, true)
+	_fixture(Vector3(4.9, 1.0, 8.2), Color(0.92, 0.24, 0.13), 0.8, 4.5, false)
 
 	var moon := DirectionalLight3D.new()
 	moon.light_color = Color(0.35, 0.42, 0.55)
@@ -71,6 +55,113 @@ func _build() -> void:
 	moon.shadow_enabled = false
 	moon.rotation_degrees = Vector3(-40, 95, 0)
 	add_child(moon)
+
+func _build_lobby() -> void:
+	_room_shell(Vector3(-5.2, 0, 4.0), Vector2(3.8, 5.2), _tile)
+	# Lift surround, rain window, radiator and stair rail.
+	_box(Vector3(-7.0, 1.25, 4.0), Vector3(0.15, 2.5, 5.1), _plaster)
+	_box(Vector3(-5.8, 1.15, 1.48), Vector3(1.7, 2.3, 0.12), _metal)
+	_box(Vector3(-5.8, 1.15, 1.4), Vector3(0.04, 2.1, 0.06), _dark, false)
+	_sign(Vector3(-5.8, 2.05, 1.32), "04")
+	_box(Vector3(-6.65, 1.25, 4.6), Vector3(0.08, 1.45, 1.5), _glass, false)
+	_box(Vector3(-6.45, 0.5, 6.0), Vector3(0.3, 0.9, 1.4), _metal)
+	for z in 4:
+		_box(Vector3(-6.25, 0.34 + z * 0.16, 6.0), Vector3(0.45, 0.06, 1.3), _trim)
+	_zone_label(Vector3(-5.2, 2.42, 2.0), zone_names[0])
+
+func _build_corridor() -> void:
+	_box(Vector3(-1.0, -0.05, 5.0), Vector3(4.5, 0.1, 10.0), _floor_mat)
+	_box(Vector3(-1.0, 2.55, 5.0), Vector3(4.5, 0.1, 10.0), _plaster)
+	_box(Vector3(-3.2, 1.25, 7.5), Vector3(0.16, 2.6, 5.0), _plaster)
+	_box(Vector3(1.2, 1.25, 7.7), Vector3(0.16, 2.6, 4.6), _plaster)
+	_box(Vector3(-1.0, 1.25, 10.0), Vector3(4.5, 2.6, 0.16), _plaster)
+	_box(Vector3(-1.0, 0.015, 5.0), Vector3(1.25, 0.03, 8.8), _red, false)
+	for z in [3.0, 5.5, 8.0]:
+		_door_leaf(Vector3(-3.08, 1.05, z), str(398 + int(z)))
+	_mailboxes(Vector3(-2.95, 1.25, 9.0))
+	_door_leaf(Vector3(1.08, 1.05, 4.0), "404")
+	_zone_label(Vector3(-1.0, 2.42, 6.5), zone_names[1])
+
+func _build_living() -> void:
+	_room_shell(Vector3(4.4, 0, 3.4), Vector2(6.4, 6.6), _floor_mat)
+	# Openings to corridor, kitchen and bedroom are deliberate wall gaps.
+	_wall_segments_x(1.2, -0.1, 6.7, [Vector2(3.45, 4.55)])
+	_wall_segments_x(7.6, -0.1, 6.7, [Vector2(1.6, 3.2), Vector2(5.7, 6.6)])
+	_couch(Vector3(3.7, 0.28, 1.2))
+	_table(Vector3(4.1, 0.35, 3.2))
+	_lamp(Vector3(2.2, 0.0, 1.2))
+	_box(Vector3(5.8, 0.48, 0.35), Vector3(1.5, 0.95, 0.4), _wood)
+	_box(Vector3(5.8, 1.18, 0.32), Vector3(1.25, 0.72, 0.08), _dark, false)
+	_shoe_rack(Vector3(1.8, 0.2, 5.7))
+	for i in 4:
+		_box(Vector3(6.6, 0.3 + i * 0.5, 4.9), Vector3(0.7, 0.42, 0.7), _paper)
+	_calendar(Vector3(4.4, 1.45, 0.14))
+	_zone_label(Vector3(4.4, 2.42, 0.4), zone_names[2])
+
+func _build_kitchen() -> void:
+	_room_shell(Vector3(9.4, 0, 2.45), Vector2(3.6, 4.5), _tile)
+	_box(Vector3(11.2, 1.25, 2.45), Vector3(0.16, 2.6, 4.5), _plaster)
+	_box(Vector3(9.4, 1.25, 0.2), Vector3(3.6, 2.6, 0.16), _plaster)
+	_counter(Vector3(10.5, 0.0, 1.0))
+	_counter(Vector3(10.5, 0.0, 3.8))
+	# Fridge, sink, taps, cabinets and kettle.
+	_box(Vector3(8.3, 0.95, 0.65), Vector3(1.0, 1.9, 0.8), GameMaterials.metal(Color(0.36, 0.4, 0.35)))
+	_box(Vector3(10.5, 1.0, 3.78), Vector3(0.72, 0.06, 0.42), _metal, false)
+	_box(Vector3(10.5, 1.18, 3.9), Vector3(0.05, 0.35, 0.05), _metal, false)
+	_box(Vector3(9.2, 1.85, 0.35), Vector3(2.8, 0.6, 0.35), _wood)
+	_pipe_drip(Vector3(10.85, 0.65, 4.25))
+	_zone_label(Vector3(9.4, 2.42, 0.32), zone_names[3])
+
+func _build_bathroom() -> void:
+	_room_shell(Vector3(9.45, 0, 7.15), Vector2(3.5, 4.2), _tile)
+	_box(Vector3(11.2, 1.25, 7.15), Vector3(0.16, 2.6, 4.2), _plaster)
+	_box(Vector3(9.45, 1.25, 9.25), Vector3(3.5, 2.6, 0.16), _plaster)
+	# Tub, translucent curtain, basin, toilet and service stack.
+	_box(Vector3(10.35, 0.35, 8.45), Vector3(1.4, 0.7, 1.05), _paper)
+	_box(Vector3(10.35, 1.45, 7.9), Vector3(1.5, 1.9, 0.03), GameMaterials.flat(Color(0.55, 0.62, 0.48, 0.55)), false)
+	_box(Vector3(8.25, 0.48, 8.45), Vector3(0.75, 0.95, 0.8), _paper)
+	_box(Vector3(8.25, 0.95, 8.7), Vector3(0.65, 0.4, 0.18), _paper)
+	_box(Vector3(8.3, 0.82, 6.0), Vector3(0.85, 0.12, 0.55), _paper)
+	_box(Vector3(8.3, 1.55, 5.75), Vector3(1.0, 0.85, 0.05), _glass, false)
+	_box(Vector3(10.9, 1.1, 7.0), Vector3(0.1, 2.1, 0.1), _metal, false)
+	_box(Vector3(10.92, 1.3, 7.35), Vector3(0.6, 0.8, 0.04), _metal)
+	_zone_label(Vector3(9.4, 2.42, 9.05), zone_names[4])
+
+func _build_bedroom() -> void:
+	_room_shell(Vector3(4.45, 0, 8.1), Vector2(6.4, 3.7), _floor_mat)
+	_box(Vector3(1.2, 1.25, 8.1), Vector3(0.16, 2.6, 3.7), _plaster)
+	_box(Vector3(4.45, 1.25, 9.95), Vector3(6.5, 2.6, 0.16), _plaster)
+	_bed(Vector3(3.4, 0.22, 8.45))
+	_wardrobe(Vector3(6.65, 1.05, 8.5))
+	_table(Vector3(2.0, 0.42, 9.15))
+	_box(Vector3(4.4, 1.5, 9.84), Vector3(1.9, 1.25, 0.08), _dark)
+	# False wall cavity and exposed pipe.
+	_box(Vector3(7.35, 1.1, 8.5), Vector3(0.06, 2.15, 1.6), _dark, false)
+	_box(Vector3(7.25, 1.05, 8.5), Vector3(0.08, 2.0, 0.08), _metal, false)
+	_zone_label(Vector3(4.5, 2.42, 9.78), zone_names[5])
+
+func _room_shell(center: Vector3, footprint: Vector2, floor_mat: Material) -> void:
+	_box(Vector3(center.x, -0.05, center.z), Vector3(footprint.x, 0.1, footprint.y), floor_mat)
+	_box(Vector3(center.x, 2.55, center.z), Vector3(footprint.x, 0.1, footprint.y), _plaster)
+
+func _wall_segments_x(x: float, z0: float, z1: float, gaps: Array[Vector2]) -> void:
+	var cursor := z0
+	for gap in gaps:
+		if gap.x > cursor:
+			_box(Vector3(x, 1.25, (cursor + gap.x) * 0.5), Vector3(0.16, 2.6, gap.x - cursor), _plaster)
+		cursor = gap.y
+	if cursor < z1:
+		_box(Vector3(x, 1.25, (cursor + z1) * 0.5), Vector3(0.16, 2.6, z1 - cursor), _plaster)
+
+func _zone_label(pos: Vector3, text: String) -> void:
+	var lab := Label3D.new()
+	lab.text = text
+	lab.font_size = 18
+	lab.modulate = Color(0.48, 0.42, 0.32, 0.55)
+	lab.position = pos
+	lab.pixel_size = 0.003
+	UiFont.apply_3d(lab)
+	add_child(lab)
 
 func _box(pos: Vector3, size: Vector3, mat: Material, collide := true) -> MeshInstance3D:
 	var mi := MeshInstance3D.new()
@@ -116,6 +207,32 @@ func _table(pos: Vector3) -> void:
 	_box(pos + Vector3(0.35, -0.2, -0.2), Vector3(0.05, 0.4, 0.05), _wood)
 	_box(pos + Vector3(-0.35, -0.2, 0.2), Vector3(0.05, 0.4, 0.05), _wood)
 	_box(pos + Vector3(0.35, -0.2, 0.2), Vector3(0.05, 0.4, 0.05), _wood)
+
+func _mailboxes(pos: Vector3) -> void:
+	for row in 3:
+		for col in 2:
+			_box(
+				pos + Vector3(0.0, (row - 1) * 0.32, (col - 0.5) * 0.48),
+				Vector3(0.16, 0.26, 0.4),
+				_metal
+			)
+
+func _shoe_rack(pos: Vector3) -> void:
+	for shelf in 2:
+		_box(pos + Vector3(0, shelf * 0.28, 0), Vector3(0.95, 0.05, 0.38), _wood)
+	for x in [-0.28, 0.28]:
+		_box(pos + Vector3(x, 0.08, 0), Vector3(0.28, 0.14, 0.52), _dark, false)
+
+func _bed(pos: Vector3) -> void:
+	_box(pos, Vector3(2.2, 0.38, 1.35), _wood)
+	_box(pos + Vector3(0, 0.25, 0), Vector3(2.05, 0.25, 1.25), _fabric)
+	_box(pos + Vector3(-0.7, 0.43, 0), Vector3(0.55, 0.15, 1.05), _paper, false)
+	_box(pos + Vector3(1.05, 0.55, 0), Vector3(0.1, 1.15, 1.45), _wood)
+
+func _wardrobe(pos: Vector3) -> void:
+	_box(pos, Vector3(1.05, 2.1, 1.45), _wood)
+	_box(pos + Vector3(-0.53, 0, 0), Vector3(0.04, 1.9, 1.25), _dark, false)
+	_box(pos + Vector3(-0.57, 0.1, -0.3), Vector3(0.08, 0.08, 0.08), _metal, false)
 
 func _lamp(pos: Vector3) -> void:
 	_box(pos + Vector3(0, 0.45, 0), Vector3(0.08, 0.9, 0.08), _metal, false)
@@ -166,3 +283,38 @@ func _fixture(pos: Vector3, color: Color, energy: float, range_m: float, flicker
 	if not flicker:
 		light.light_energy = energy
 	add_child(light)
+
+func apply_ending(id: String) -> void:
+	# Each ending changes the physical set behind the authored card sequence.
+	match id:
+		"WITNESS":
+			var dawn := DirectionalLight3D.new()
+			dawn.light_color = Color(1.0, 0.62, 0.32)
+			dawn.light_energy = 1.15
+			dawn.rotation_degrees = Vector3(-28, -72, 0)
+			add_child(dawn)
+			_sign(Vector3(1.02, 1.72, 4.0), "IRIS VALE")
+			# Iris: deliberate obscured silhouette behind service pipework.
+			_box(Vector3(10.55, 0.85, 7.65), Vector3(0.55, 1.7, 0.3), _dark, false)
+			_box(Vector3(10.55, 1.85, 7.65), Vector3(0.32, 0.32, 0.28), _dark, false)
+		"COMPLICIT":
+			for child in get_children():
+				if child is Light3D:
+					(child as Light3D).light_energy *= 0.28
+			_fixture(Vector3(4.4, 2.2, 3.4), Color(0.96, 0.92, 0.82), 2.4, 9.0, false)
+			for i in 5:
+				_box(Vector3(5.8, 1.0 + (i % 2) * 0.42, 0.25 + i * 0.12), Vector3(0.3, 0.36, 0.04), _paper, false)
+		_:
+			for child in get_children():
+				if child is Light3D:
+					(child as Light3D).light_color = Color(0.18, 0.32, 0.46)
+			_sign(Vector3(1.02, 1.72, 4.0), "403")
+			# Brick over the lift aperture.
+			for row in 5:
+				for col in 4:
+					_box(
+						Vector3(-5.8 + (col - 1.5) * 0.4, 0.25 + row * 0.42, 1.32),
+						Vector3(0.36, 0.18, 0.16),
+						_red,
+						false
+					)
