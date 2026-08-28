@@ -272,6 +272,7 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 	if source:
 		source.consumed = true
 		source.taken = true
+		source.collision_layer = 0
 		for c in source.get_children():
 			if c is Label3D:
 				c.visible = false

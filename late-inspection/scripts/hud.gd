@@ -293,7 +293,7 @@ func set_fear(v: float) -> void:
 func show_note(t: String) -> void:
 	note.text = t
 	note.visible = true
-	note_t = 7.0
+	note_t = clampf(7.0 + float(t.length()) / 28.0, 9.0, 34.0)
 	hide_title()
 
 func open_choice(text: String, a: String, b: String, cb: Callable) -> void:
