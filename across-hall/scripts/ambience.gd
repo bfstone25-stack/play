@@ -38,7 +38,10 @@ func _process(delta: float) -> void:
 	clock_t += delta
 	var hud := game.get_node_or_null("HUD")
 	if hud and hud.has_method("set_clock"):
-		hud.set_clock("02:%02d" % mini(17 + int(clock_t * 0.28), 59))
+		# Episode I promise: the hallway clock will not leave 02:17.
+		# Blink the colon so the second hand still feels alive / waiting.
+		var colon := ":" if int(clock_t * 2.0) % 2 == 0 else " "
+		hud.set_clock("02%s17" % colon)
 	var phase := int(game.get("phase"))
 	var player := game.get_node_or_null("Player") as Node3D
 	var in_402 := player != null and player.global_position.x > 2.0

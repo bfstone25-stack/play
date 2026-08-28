@@ -20,6 +20,7 @@ func _init() -> void:
 		{"pos": Vector3(7.4, 0.05, 10.7), "look": Vector3(8.05, 1.15, 10.4)},
 		{"pos": Vector3(-1.1, 0.05, 2.4), "look": Vector3(-1.7, 1.0, 2.4)},
 		{"pos": Vector3(-3.1, 0.05, 2.35), "look": Vector3(-3.25, 0.8, 2.15)},
+		{"pos": Vector3(-7.4, 0.05, 0.85), "look": Vector3(-8.7, 1.55, 0.85)},
 		{"pos": Vector3(-3.4, 0.05, 2.25), "look": Vector3(-3.55, 0.55, 2.45)},
 	]
 	for step in steps:
