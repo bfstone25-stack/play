@@ -18,7 +18,10 @@ func _init() -> void:
 		{"name": "hall", "pos": Vector3(0.05, 0.05, 1.1), "look": Vector3(1.55, 1.25, 8.0)},
 		{"name": "doors", "pos": Vector3(0.0, 0.05, 5.2), "look": Vector3(-1.55, 1.35, 2.4)},
 		{"name": "apt402", "pos": Vector3(3.4, 0.05, 8.05), "look": Vector3(7.6, 1.2, 8.05)},
+		{"name": "bath402", "pos": Vector3(6.4, 0.05, 9.6), "look": Vector3(7.8, 1.2, 11.4)},
+		{"name": "bedroom402", "pos": Vector3(5.2, 0.05, 6.8), "look": Vector3(7.2, 1.0, 4.6)},
 		{"name": "apt401", "pos": Vector3(-3.4, 0.05, 2.4), "look": Vector3(-7.4, 1.2, 2.4)},
+		{"name": "bath401", "pos": Vector3(-6.3, 0.05, 4.2), "look": Vector3(-7.8, 1.2, 5.8)},
 	]
 	DirAccess.make_dir_recursive_absolute("/tmp/across-shots")
 	for s in shots:

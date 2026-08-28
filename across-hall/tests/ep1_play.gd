@@ -21,7 +21,9 @@ func _init() -> void:
 		{"name": "hall_start", "pos": Vector3(0.05, 0.05, 1.0), "look": Vector3(0.2, 1.2, 9.0)},
 		{"name": "doors", "pos": Vector3(0.0, 0.05, 5.0), "look": Vector3(-1.5, 1.3, 2.4)},
 		{"name": "apt402", "pos": Vector3(3.5, 0.05, 8.05), "look": Vector3(7.8, 1.2, 9.5)},
-		{"name": "bath402", "pos": Vector3(7.2, 0.05, 11.0), "look": Vector3(8.4, 1.0, 11.4)},
+		{"name": "bath402", "pos": Vector3(7.15, 0.05, 10.85), "look": Vector3(8.4, 1.1, 11.2)},
+		{"name": "bath_door", "pos": Vector3(6.2, 0.05, 9.4), "look": Vector3(6.55, 1.2, 10.4)},
+		{"name": "bedroom", "pos": Vector3(5.3, 0.05, 6.5), "look": Vector3(7.2, 1.0, 4.7)},
 	]
 	for s in shots:
 		player.global_position = s.pos

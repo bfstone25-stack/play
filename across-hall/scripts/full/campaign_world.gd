@@ -74,18 +74,88 @@ func _shell(title: String, subtitle: String) -> void:
 		_fixture(Vector3(0, 2.55, z))
 
 func _build_fifth_floor() -> void:
-	_shell("FLOOR 5 — UNLISTED", "Every door says 401. Only one object remembers.")
+	# Hall shell with a gap in the +X wall for the PRESENT apartment wing.
+	_box(Vector3(0, -0.05, 7), Vector3(8.0, 0.1, 18.0), _floor)
+	_box(Vector3(0, 2.75, 7), Vector3(8.0, 0.12, 18.0), _wall)
+	_box(Vector3(-4.0, 1.35, 7), Vector3(0.16, 2.8, 18.0), _wall)
+	_box(Vector3(4.0, 1.35, 2.7), Vector3(0.16, 2.8, 9.4), _wall)
+	_box(Vector3(4.0, 1.35, 12.35), Vector3(0.16, 2.8, 7.3), _wall)
+	_box(Vector3(4.0, 2.45, 7.5), Vector3(0.16, 0.6, 1.15), _wall)
+	_box(Vector3(0, 1.35, -2.0), Vector3(8.0, 2.8, 0.16), _wall)
+	_box(Vector3(0, 1.35, 16.0), Vector3(8.0, 2.8, 0.16), _wall)
+	_box(Vector3(-3.9, 0.08, 7), Vector3(0.08, 0.16, 17.6), _trim, false)
+	_box(Vector3(3.9, 0.08, 7), Vector3(0.08, 0.16, 17.6), _trim, false)
+	_sign(Vector3(0, 2.05, -1.82), "FLOOR 5 — UNLISTED", 52, Color(0.9, 0.76, 0.53))
+	_sign(Vector3(0, 1.55, -1.8), "Every door says 401. Only one object remembers.", 26, Color(0.65, 0.6, 0.52))
+	for z in [1.0, 5.0, 9.0, 13.0]:
+		_fixture(Vector3(0, 2.55, z))
 	for z in [2.1, 5.8, 9.5]:
 		_door(Vector3(-3.82, 1.05, z), "401")
-		_door(Vector3(3.82, 1.05, z + 1.7), "401")
+		# Skip the right-wall door at z=7.5 — that opening is PRESENT 401.
+		if absf((z + 1.7) - 7.5) > 0.05:
+			_door(Vector3(3.82, 1.05, z + 1.7), "401")
 	_elevator(Vector3(0, 0.0, 13.0))
 	var elevator_sign := _sign(Vector3(0, 1.35, 12.45), "ELEVATOR\n4   5   [ ]", 32, Color(0.8, 0.7, 0.48))
 	elevator_sign.name = "ElevatorSign"
 	_console(Vector3(-2.7, 0.0, 7.0))
 	_console(Vector3(2.7, 0.0, 8.7))
-	var present := _sign(Vector3(3.45, 1.55, 7.5), "401", 34, Color(0.72, 0.62, 0.48))
+	_build_present_apartment()
+	var closed := _box(Vector3(3.95, 1.05, 7.5), Vector3(0.12, 2.1, 1.0), _wood)
+	closed.name = "PresentDoorSolid"
+	var present := _sign(Vector3(3.92, 1.55, 7.5), "401", 34, Color(0.72, 0.62, 0.48))
 	present.name = "PresentDoor"
 	present.rotation.y = -PI * 0.5
+
+func _build_present_apartment() -> void:
+	# Side wing past the hall wall — living room + bathroom with an interior door.
+	_box(Vector3(6.6, -0.05, 7.5), Vector3(5.0, 0.1, 5.2), _floor)
+	_box(Vector3(6.6, 2.75, 7.5), Vector3(5.0, 0.12, 5.2), _wall)
+	_box(Vector3(9.05, 1.35, 7.5), Vector3(0.16, 2.8, 5.2), _wall)
+	_box(Vector3(6.6, 1.35, 4.95), Vector3(5.0, 2.8, 0.16), _wall)
+	_box(Vector3(6.6, 1.35, 10.05), Vector3(5.0, 2.8, 0.16), _wall)
+	# Bath partition + doorway
+	_box(Vector3(7.85, 1.35, 8.55), Vector3(2.4, 2.8, 0.12), _wall)
+	_box(Vector3(5.75, 1.35, 8.55), Vector3(1.0, 2.8, 0.12), _wall)
+	_box(Vector3(6.7, 2.4, 8.55), Vector3(0.95, 0.7, 0.12), _wall)
+	_box(Vector3(8.25, 0.02, 9.3), Vector3(1.6, 0.04, 1.4), GameMaterials.concrete(Color(0.5, 0.51, 0.48), 0.4), false)
+	_fixture(Vector3(6.6, 2.55, 6.6))
+	_fixture(Vector3(8.0, 2.55, 9.25))
+	# Furniture
+	_box(Vector3(5.7, 0.32, 6.1), Vector3(1.5, 0.42, 0.7), GameMaterials.carpet(Color(0.22, 0.2, 0.18), 0.95))
+	_box(Vector3(5.7, 0.7, 5.85), Vector3(1.5, 0.4, 0.18), GameMaterials.carpet(Color(0.22, 0.2, 0.18), 0.95))
+	_box(Vector3(7.6, 0.28, 5.7), Vector3(1.4, 0.28, 1.7), _wood)
+	_box(Vector3(7.6, 0.5, 5.7), Vector3(1.3, 0.14, 1.6), GameMaterials.carpet(Color(0.25, 0.22, 0.2), 0.95), false)
+	_box(Vector3(7.6, 0.68, 5.05), Vector3(1.1, 0.16, 0.35), GameMaterials.flat(Color(0.8, 0.76, 0.68), 0.9), false)
+	# Interior bath door (ajar)
+	var leaf := MeshInstance3D.new()
+	var mesh := BoxMesh.new()
+	mesh.size = Vector3(0.86, 2.05, 0.05)
+	leaf.mesh = mesh
+	leaf.material_override = _wood
+	leaf.position = Vector3(6.45, 1.05, 8.58)
+	leaf.rotation.y = deg_to_rad(-70.0)
+	add_child(leaf)
+	# Bathroom fixtures
+	_box(Vector3(8.55, 0.42, 9.55), Vector3(0.5, 0.84, 0.55), _wood)
+	_box(Vector3(8.55, 0.9, 9.55), Vector3(0.45, 0.08, 0.45), GameMaterials.concrete(Color(0.52, 0.53, 0.5), 0.4), false)
+	_box(Vector3(8.55, 0.96, 9.55), Vector3(0.32, 0.05, 0.32), _dark, false)
+	_box(Vector3(8.55, 1.45, 9.55), Vector3(0.03, 0.55, 0.4), _metal, false)
+	_box(Vector3(8.5, 0.22, 8.95), Vector3(0.4, 0.4, 0.5), GameMaterials.flat(Color(0.88, 0.88, 0.9), 0.35))
+	_box(Vector3(8.5, 0.55, 8.75), Vector3(0.36, 0.4, 0.16), GameMaterials.flat(Color(0.86, 0.86, 0.88), 0.35))
+	_box(Vector3(7.35, 0.04, 9.45), Vector3(0.9, 0.08, 0.9), GameMaterials.concrete(Color(0.5, 0.51, 0.48), 0.4))
+	_box(Vector3(7.35, 1.05, 9.0), Vector3(0.85, 2.0, 0.04), _glass, false)
+	_box(Vector3(6.95, 1.7, 9.45), Vector3(0.05, 0.5, 0.05), _metal, false)
+	var head := MeshInstance3D.new()
+	var cyl := CylinderMesh.new()
+	cyl.top_radius = 0.09
+	cyl.bottom_radius = 0.07
+	cyl.height = 0.05
+	head.mesh = cyl
+	head.material_override = _metal
+	head.position = Vector3(6.95, 1.95, 9.45)
+	add_child(head)
+	_box(Vector3(7.35, 2.05, 9.85), Vector3(0.85, 0.03, 0.03), _metal, false)
+	_box(Vector3(7.45, 1.3, 9.85), Vector3(0.5, 1.3, 0.02), GameMaterials.flat(Color(0.5, 0.52, 0.55, 0.55), 0.7), false)
 
 func _build_basement() -> void:
 	_shell("B — SERVICE BASEMENT", "One circuit at a time. The complaints need power.")
@@ -148,6 +218,31 @@ func mark_present_room() -> void:
 	glow.light_energy = 2.4
 	glow.omni_range = 3.5
 	add_child(glow)
+
+func open_present_apartment() -> void:
+	var solid := get_node_or_null("PresentDoorSolid")
+	if solid:
+		solid.visible = false
+		_disable_colliders(solid)
+	if get_node_or_null("PresentDoorOpen"):
+		return
+	var leaf := MeshInstance3D.new()
+	leaf.name = "PresentDoorOpen"
+	var mesh := BoxMesh.new()
+	mesh.size = Vector3(0.06, 2.05, 0.95)
+	leaf.mesh = mesh
+	leaf.material_override = _wood
+	leaf.position = Vector3(4.45, 1.05, 7.95)
+	leaf.rotation.y = deg_to_rad(-75.0)
+	add_child(leaf)
+
+func _disable_colliders(n: Node) -> void:
+	if n is CollisionShape3D:
+		(n as CollisionShape3D).disabled = true
+	if n is CollisionObject3D:
+		(n as CollisionObject3D).collision_layer = 0
+	for c in n.get_children():
+		_disable_colliders(c)
 
 func show_waiting_tenant() -> void:
 	if get_node_or_null("WaitingTenant"):

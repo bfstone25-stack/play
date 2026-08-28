@@ -187,8 +187,10 @@ func perform_action(action_id: String) -> bool:
 				show_note("This 401 belongs to a later version of the night.")
 				return false
 			flags["present_open"] = true
+			if world.has_method("open_present_apartment"):
+				world.open_present_apartment()
 			hud.set_objective("Take the missing floor plate from the present room.")
-			show_note("Inside: your coat, still warm. The elevator plate lies beneath it.")
+			show_note("The present room opens onto a lived-in floor.\nBathroom door ajar. The plate is inside.")
 			return true
 		"ep2_plate":
 			if not flags.get("present_open", false):
@@ -463,8 +465,8 @@ func _spawn_episode_actions() -> void:
 		2:
 			_action(Vector3(0.7, 0.12, 2.0), "ep2_tag", "Take inspection tag", true, Color(0.78, 0.58, 0.2), Vector3(0.28, 0.03, 0.38), "TAG", "plate")
 			_action(Vector3(-1.2, 0.85, 4.5), "ep2_reset", "Pull floor RESET", false, Color(0.58, 0.1, 0.08), Vector3(0.12, 0.55, 0.12), "RESET", "lever")
-			_action(Vector3(3.55, 1.05, 7.5), "ep2_present", "Open present 401", true, Color(0.28, 0.22, 0.16), Vector3(0.14, 2.0, 1.0), "401", "door")
-			_action(Vector3(2.55, 0.14, 8.35), "ep2_plate", "Take missing floor plate", true, Color(0.78, 0.58, 0.18), Vector3(0.36, 0.04, 0.28), "B", "plate")
+			_action(Vector3(3.95, 1.05, 7.5), "ep2_present", "Open present 401", true, Color(0.28, 0.22, 0.16), Vector3(0.14, 2.0, 1.0), "401", "door")
+			_action(Vector3(5.55, 0.14, 6.85), "ep2_plate", "Take missing floor plate", true, Color(0.78, 0.58, 0.18), Vector3(0.36, 0.04, 0.28), "B", "plate")
 			_action(Vector3(0, 1.15, 12.55), "ep2_elevator", "Install B plate", false, Color(0.42, 0.44, 0.4), Vector3(0.5, 0.6, 0.1), "PANEL", "panel")
 		3:
 			_action(Vector3(-2.6, 0.95, 2.28), "ep3_lift", "Route circuit: LIFT", false, Color(0.7, 0.18, 0.1), Vector3(0.42, 0.28, 0.2), "", "pad")

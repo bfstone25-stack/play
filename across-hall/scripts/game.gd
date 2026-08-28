@@ -130,8 +130,9 @@ func _process(delta: float) -> void:
 func _spawn_pickups() -> void:
 	_pickup(Vector3(0.55, 0.06, 2.6), "flashlight", "Take flashlight", "", Color(0.75, 0.72, 0.35), Vector3(0.28, 0.07, 0.08))
 	_pickup(Vector3(3.05, 0.48, 8.05), "note", "Read vacancy notice", NOTES["note1"], Color(0.92, 0.88, 0.72), Vector3(0.32, 0.03, 0.42))
-	_pickup(Vector3(7.85, 0.58, 11.35), "tape", "Take cassette", NOTES["tape"], Color(0.55, 0.12, 0.1), Vector3(0.2, 0.06, 0.12))
-	_pickup(Vector3(8.2, 0.52, 11.55), "key", "Take 401 key", NOTES["key"], Color(0.72, 0.62, 0.22), Vector3(0.12, 0.04, 0.22))
+	# On the 402 vanity — still the bathroom find, now with a real sink/toilet/shower around it.
+	_pickup(Vector3(8.38, 0.98, 10.88), "tape", "Take cassette", NOTES["tape"], Color(0.55, 0.12, 0.1), Vector3(0.2, 0.06, 0.12))
+	_pickup(Vector3(8.42, 0.98, 11.22), "key", "Take 401 key", NOTES["key"], Color(0.72, 0.62, 0.22), Vector3(0.12, 0.04, 0.22))
 	_inspect(Vector3(-3.25, 0.72, 2.15), "calendar", "Read calendar", NOTES["note2"], Color(0.85, 0.78, 0.62), Vector3(0.28, 0.36, 0.04))
 	_inspect(Vector3(-5.9, 0.85, 0.7), "clock", "Check the clock", NOTES["clock"], Color(0.2, 0.18, 0.16), Vector3(0.16, 0.16, 0.08))
 	_deck(Vector3(3.55, 0.56, 8.05), "402", "Play cassette (402)")

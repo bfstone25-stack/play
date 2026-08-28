@@ -13,7 +13,7 @@ var hum: AudioStreamPlayer3D
 
 func _ready() -> void:
 	knock = _bus("Knock", Vector3(2.0, 1.2, 8.05), 18.0)
-	drip = _bus("Drip", Vector3(8.25, 1.1, 11.4), 10.0)
+	drip = _bus("Drip", Vector3(8.55, 1.1, 11.05), 10.0)
 	far = _bus("FarStep", Vector3(5.5, 0.1, 8.0), 16.0)
 	hum = _bus("Radiator", Vector3(5.3, 0.4, 4.1), 12.0)
 	knock.stream = _tone(88.0, 0.13, 0.95)

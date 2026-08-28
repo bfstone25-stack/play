@@ -50,29 +50,50 @@ func _build() -> void:
 	_closed_door(Vector3(-1.62, 1.08, 2.4), PI * 0.5, "401")
 	_open_door(Vector3(1.62, 1.08, 8.05), "402", 1.0)
 
-	# Apartment 402
+	# Apartment 402 — living / bedroom / bathroom with real doorways.
 	_box(Vector3(5.3, -0.05, 8.05), Vector3(7.4, 0.1, 8.6), _floor_mat)
 	_box(Vector3(5.3, 2.62, 8.05), Vector3(7.4, 0.12, 8.6), _plaster)
 	_box(Vector3(5.3, 1.3, 3.8), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(5.3, 1.3, 12.25), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(8.9, 1.3, 8.05), Vector3(0.18, 2.7, 8.6), _plaster)
-	_box(Vector3(6.5, 1.3, 10.4), Vector3(2.6, 2.7, 0.14), _plaster)
-	_box(Vector3(7.7, 1.3, 11.3), Vector3(0.14, 2.7, 1.9), _plaster)
-	_box(Vector3(6.7, 1.3, 5.65), Vector3(2.9, 2.7, 0.14), _plaster)
+	# Bathroom partition with a 0.95m doorway at x≈6.55.
+	_box(Vector3(5.55, 1.3, 10.4), Vector3(1.3, 2.7, 0.12), _plaster)
+	_box(Vector3(7.75, 1.3, 10.4), Vector3(1.5, 2.7, 0.12), _plaster)
+	_box(Vector3(6.55, 2.35, 10.4), Vector3(0.95, 0.55, 0.12), _plaster)
+	_box(Vector3(7.75, 1.3, 11.35), Vector3(0.12, 2.7, 1.8), _plaster)
+	# Bedroom partition with doorway at x≈5.4.
+	_box(Vector3(7.55, 1.3, 5.65), Vector3(2.0, 2.7, 0.12), _plaster)
+	_box(Vector3(4.55, 1.3, 5.65), Vector3(1.5, 2.7, 0.12), _plaster)
+	_box(Vector3(5.55, 2.35, 5.65), Vector3(0.95, 0.55, 0.12), _plaster)
 	_box(Vector3(7.5, 0.02, 11.3), Vector3(2.5, 0.04, 1.85), _tile)
+	_box(Vector3(7.5, 1.0, 12.15), Vector3(2.4, 1.9, 0.04), _tile, false)
 
 	_window(Vector3(8.78, 1.5, 8.05))
 	_couch(Vector3(5.9, 0.32, 6.35))
 	_table(Vector3(3.25, 0.38, 8.05))
-	_sink(Vector3(8.25, 0.48, 11.4))
 	_shoes(Vector3(2.25, 0.06, 8.05))
-	_wardrobe(Vector3(3.55, 1.05, 4.85))
-	_toothbrush(Vector3(8.05, 0.62, 11.15))
-	_mirror(Vector3(8.72, 1.45, 11.35))
+	_wardrobe(Vector3(7.6, 1.05, 4.6))
+	_bed(Vector3(7.35, 0.28, 4.55))
+	_nightstand(Vector3(6.35, 0.0, 4.35))
 	_radiator(Vector3(5.3, 0.35, 4.1))
+	_interior_door(Vector3(6.55, 1.08, 10.4), 0.0, -72.0, "BATH")
+	_interior_door(Vector3(5.55, 1.08, 5.65), 0.0, 68.0, "BED")
+	_bathroom_402()
+	# Lived-in living room
+	_lamp(Vector3(4.55, 0.0, 6.55))
+	_plant(Vector3(8.35, 0.0, 6.55))
+	_rug(Vector3(5.8, 0.02, 7.4), Vector3(1.9, 0.04, 1.5))
+	_curtain(Vector3(8.78, 1.4, 7.15), Vector3(0.05, 2.2, 0.55))
+	_curtain(Vector3(8.78, 1.4, 8.95), Vector3(0.05, 2.2, 0.55))
+	_trash(Vector3(8.45, 0.0, 9.85))
+	_laundry(Vector3(8.2, 0.0, 9.55))
+	_frame(Vector3(4.25, 1.45, 7.85), 1.0)
+	_box(Vector3(3.15, 0.48, 8.15), Vector3(0.18, 0.04, 0.12), GameMaterials.paper(Color(0.84, 0.78, 0.64)), false)
+	_box(Vector3(3.35, 0.48, 7.95), Vector3(0.14, 0.03, 0.1), GameMaterials.paper(Color(0.8, 0.74, 0.6)), false)
+	_coat_hook(Vector3(2.55, 1.55, 8.55))
+	_coat_hook(Vector3(2.55, 1.55, 8.75))
 	_sign(Vector3(4.4, 1.35, 4.05), "VACANCY CONFIRMED  signed: you")
 	_sign(Vector3(-1.52, 1.55, 6.2), "Do not knock after midnight")
-	_wet(Vector3(7.4, 0.03, 10.6))
 	_wet(Vector3(5.1, 0.03, 8.9))
 	_wet(Vector3(2.6, 0.03, 8.1))
 
@@ -119,23 +140,197 @@ func _apt401() -> void:
 	_box(Vector3(-5.3, 1.3, -1.9), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(-5.3, 1.3, 6.7), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(-9.0, 1.3, 2.4), Vector3(0.18, 2.7, 8.6), _plaster)
-	_box(Vector3(-6.5, 1.3, 4.75), Vector3(2.6, 2.7, 0.14), _plaster)
-	_box(Vector3(-7.7, 1.3, 5.65), Vector3(0.14, 2.7, 1.9), _plaster)
-	_box(Vector3(-6.7, 1.3, 0.0), Vector3(2.9, 2.7, 0.14), _plaster)
+	# Bathroom partition + doorway (mirrored).
+	_box(Vector3(-5.55, 1.3, 4.75), Vector3(1.3, 2.7, 0.12), _plaster)
+	_box(Vector3(-7.75, 1.3, 4.75), Vector3(1.5, 2.7, 0.12), _plaster)
+	_box(Vector3(-6.55, 2.35, 4.75), Vector3(0.95, 0.55, 0.12), _plaster)
+	_box(Vector3(-7.75, 1.3, 5.7), Vector3(0.12, 2.7, 1.8), _plaster)
+	# Bedroom partition + doorway.
+	_box(Vector3(-7.55, 1.3, 0.0), Vector3(2.0, 2.7, 0.12), _plaster)
+	_box(Vector3(-4.55, 1.3, 0.0), Vector3(1.5, 2.7, 0.12), _plaster)
+	_box(Vector3(-5.55, 2.35, 0.0), Vector3(0.95, 0.55, 0.12), _plaster)
 	_box(Vector3(-7.5, 0.02, 5.65), Vector3(2.5, 0.04, 1.85), _tile)
+	_box(Vector3(-7.5, 1.0, 6.5), Vector3(2.4, 1.9, 0.04), _tile, false)
 	_window(Vector3(-8.78, 1.5, 2.4))
 	_couch(Vector3(-5.9, 0.32, 0.7))
 	_table(Vector3(-3.25, 0.38, 2.4))
-	_sink(Vector3(-8.25, 0.48, 5.75))
 	_shoes(Vector3(-2.25, 0.06, 2.4))
-	_wardrobe(Vector3(-3.55, 1.05, -0.8))
-	_toothbrush(Vector3(-8.05, 0.62, 5.5))
-	_mirror(Vector3(-8.72, 1.45, 5.7))
+	_wardrobe(Vector3(-7.6, 1.05, -0.95))
+	_bed(Vector3(-7.35, 0.28, -0.9))
+	_nightstand(Vector3(-6.35, 0.0, -0.7))
 	_radiator(Vector3(-5.3, 0.35, -1.55))
+	_interior_door(Vector3(-6.55, 1.08, 4.75), PI, 72.0, "BATH")
+	_interior_door(Vector3(-5.55, 1.08, 0.0), PI, -68.0, "BED")
+	_bathroom_401()
+	_lamp(Vector3(-4.55, 0.0, 0.9))
+	_plant(Vector3(-8.35, 0.0, 0.9))
+	_rug(Vector3(-5.8, 0.02, 1.75), Vector3(1.9, 0.04, 1.5))
+	_curtain(Vector3(-8.78, 1.4, 1.5), Vector3(0.05, 2.2, 0.55))
+	_curtain(Vector3(-8.78, 1.4, 3.3), Vector3(0.05, 2.2, 0.55))
+	_trash(Vector3(-8.45, 0.0, 4.2))
+	_laundry(Vector3(-8.2, 0.0, 3.9))
+	_frame(Vector3(-4.25, 1.45, 2.2), -1.0)
+	_box(Vector3(-3.15, 0.48, 2.55), Vector3(0.18, 0.04, 0.12), GameMaterials.paper(Color(0.84, 0.78, 0.64)), false)
+	_box(Vector3(-3.0, 0.46, 2.35), Vector3(0.08, 0.1, 0.08), GameMaterials.flat(Color(0.72, 0.7, 0.66), 0.4), false)
+	_coat_hook(Vector3(-2.55, 1.55, 2.9))
+	_coat_hook(Vector3(-2.55, 1.55, 3.1))
 	_sign(Vector3(-4.4, 1.35, -1.65), "YOU LIVE HERE. YOU LEFT.")
-	_wet(Vector3(-7.4, 0.03, 5.0))
 	_wet(Vector3(-3.4, 0.03, 2.5))
 	_stain(Vector3(-6.2, 0.02, 3.6), Vector3(1.1, 1, 0.8))
+
+func _bathroom_402() -> void:
+	# Vanity / toilet on the outer wall; shower opposite the doorway.
+	_vanity(Vector3(8.55, 0.0, 11.05), 1.0)
+	_toilet(Vector3(8.45, 0.0, 11.85), 1.0)
+	_shower(Vector3(6.7, 0.0, 11.7), 1.0)
+	_towel_bar(Vector3(7.65, 1.35, 10.55), 1.0)
+	_wet(Vector3(7.3, 0.03, 11.2))
+	_wet(Vector3(8.1, 0.03, 11.6))
+
+func _bathroom_401() -> void:
+	_vanity(Vector3(-8.55, 0.0, 5.4), -1.0)
+	_toilet(Vector3(-8.45, 0.0, 6.2), -1.0)
+	_shower(Vector3(-6.7, 0.0, 6.05), -1.0)
+	_towel_bar(Vector3(-7.65, 1.35, 4.9), -1.0)
+	_wet(Vector3(-7.3, 0.03, 5.55))
+	_wet(Vector3(-8.1, 0.03, 5.95))
+
+func _interior_door(pos: Vector3, yaw: float, open_deg: float, _label: String) -> void:
+	# Frame around a ~0.95m opening in a wall that faces ±Z when yaw=0.
+	_box(pos + Vector3(-0.52, 0.02, 0).rotated(Vector3.UP, yaw), Vector3(0.1, 2.2, 0.14), _trim)
+	_box(pos + Vector3(0.52, 0.02, 0).rotated(Vector3.UP, yaw), Vector3(0.1, 2.2, 0.14), _trim)
+	_box(pos + Vector3(0, 1.14, 0), Vector3(1.14, 0.1, 0.14), _trim)
+	var leaf := MeshInstance3D.new()
+	var mesh := BoxMesh.new()
+	# Wide in X, thin in Z when closed (yaw=0); hinge on the −X edge.
+	mesh.size = Vector3(0.86, 2.05, 0.05)
+	leaf.mesh = mesh
+	leaf.material_override = _wood
+	var hinge := Vector3(-0.4, 0.0, 0.04).rotated(Vector3.UP, yaw)
+	var half := Vector3(0.43, 0.0, 0.0).rotated(Vector3.UP, yaw + deg_to_rad(open_deg))
+	leaf.position = pos + hinge + half
+	leaf.rotation.y = yaw + deg_to_rad(open_deg)
+	add_child(leaf)
+	var handle := MeshInstance3D.new()
+	var hcyl := CylinderMesh.new()
+	hcyl.top_radius = 0.022
+	hcyl.bottom_radius = 0.022
+	hcyl.height = 0.1
+	handle.mesh = hcyl
+	handle.material_override = _metal
+	handle.rotation.x = PI * 0.5
+	handle.position = Vector3(0.32, 0.0, 0.04)
+	leaf.add_child(handle)
+
+func _glass_mat(a := 0.28) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_color = Color(0.55, 0.65, 0.72, a)
+	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	m.roughness = 0.08
+	m.metallic = 0.15
+	return m
+
+func _vanity(pos: Vector3, side: float) -> void:
+	_box(pos + Vector3(0, 0.42, 0), Vector3(0.55, 0.84, 0.7), _wood)
+	_box(pos + Vector3(-0.05 * side, 0.88, 0), Vector3(0.5, 0.08, 0.55), _tile)
+	_box(pos + Vector3(-0.05 * side, 0.94, 0), Vector3(0.38, 0.05, 0.38), _dark, false)
+	_box(pos + Vector3(0.12 * side, 1.05, 0), Vector3(0.05, 0.18, 0.05), _metal, false)
+	_box(pos + Vector3(0.12 * side, 1.16, 0.08), Vector3(0.04, 0.04, 0.14), _metal, false)
+	_toothbrush(pos + Vector3(-0.12 * side, 0.98, -0.12))
+	_mirror(pos + Vector3(0.28 * side, 1.45, 0))
+	_box(pos + Vector3(-0.08 * side, 0.98, 0.16), Vector3(0.06, 0.14, 0.06), GameMaterials.flat(Color(0.75, 0.55, 0.2), 0.45), false)
+	_box(pos + Vector3(0.05 * side, 0.95, 0.18), Vector3(0.05, 0.08, 0.05), GameMaterials.flat(Color(0.85, 0.85, 0.88), 0.5), false)
+
+func _toilet(pos: Vector3, side: float) -> void:
+	_box(pos + Vector3(0, 0.22, 0), Vector3(0.42, 0.4, 0.55), GameMaterials.flat(Color(0.88, 0.88, 0.9), 0.35))
+	_box(pos + Vector3(0.08 * side, 0.55, -0.12), Vector3(0.38, 0.45, 0.18), GameMaterials.flat(Color(0.86, 0.86, 0.88), 0.35))
+	_box(pos + Vector3(0, 0.44, 0.05), Vector3(0.36, 0.05, 0.4), GameMaterials.flat(Color(0.92, 0.92, 0.94), 0.25), false)
+	_box(pos + Vector3(0.05 * side, 0.72, -0.12), Vector3(0.08, 0.04, 0.04), _metal, false)
+
+func _shower(pos: Vector3, side: float) -> void:
+	var glass := _glass_mat(0.3)
+	_box(pos + Vector3(0, 0.04, 0), Vector3(0.95, 0.08, 0.95), _tile)
+	_box(pos + Vector3(-0.42 * side, 1.05, 0), Vector3(0.04, 2.0, 0.9), glass, false)
+	_box(pos + Vector3(0, 1.05, -0.42), Vector3(0.9, 2.0, 0.04), glass, false)
+	_box(pos + Vector3(0.35 * side, 1.7, 0.2), Vector3(0.05, 0.55, 0.05), _metal, false)
+	var head := MeshInstance3D.new()
+	var cyl := CylinderMesh.new()
+	cyl.top_radius = 0.1
+	cyl.bottom_radius = 0.08
+	cyl.height = 0.05
+	head.mesh = cyl
+	head.material_override = _metal
+	head.position = pos + Vector3(0.35 * side, 1.95, 0.2)
+	add_child(head)
+	_box(pos + Vector3(0, 2.05, 0.42), Vector3(0.9, 0.03, 0.03), _metal, false)
+	_box(pos + Vector3(0.1 * side, 1.35, 0.42), Vector3(0.55, 1.35, 0.02), GameMaterials.flat(Color(0.55, 0.58, 0.62, 0.55), 0.7), false)
+	_box(pos + Vector3(-0.15 * side, 0.55, -0.15), Vector3(0.07, 0.18, 0.07), GameMaterials.flat(Color(0.2, 0.45, 0.55), 0.4), false)
+
+func _towel_bar(pos: Vector3, side: float) -> void:
+	_box(pos, Vector3(0.04, 0.04, 0.55), _metal, false)
+	_box(pos + Vector3(0.02 * side, -0.15, 0), Vector3(0.03, 0.35, 0.35), GameMaterials.flat(Color(0.75, 0.72, 0.65), 0.85), false)
+
+func _bed(pos: Vector3) -> void:
+	_box(pos, Vector3(1.55, 0.28, 2.0), _wood)
+	_box(pos + Vector3(0, 0.22, 0), Vector3(1.45, 0.16, 1.9), _fabric)
+	_box(pos + Vector3(0, 0.38, -0.7), Vector3(1.2, 0.18, 0.4), GameMaterials.flat(Color(0.82, 0.78, 0.7), 0.9), false)
+	_box(pos + Vector3(0, 0.55, -0.95), Vector3(1.5, 0.55, 0.08), _wood)
+
+func _nightstand(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 0.28, 0), Vector3(0.4, 0.56, 0.4), _wood)
+	_box(pos + Vector3(0, 0.6, 0.02), Vector3(0.12, 0.08, 0.08), GameMaterials.flat(Color(0.55, 0.45, 0.3), 0.5), false)
+
+func _lamp(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 0.55, 0), Vector3(0.08, 1.1, 0.08), _metal, false)
+	_box(pos + Vector3(0, 0.04, 0), Vector3(0.28, 0.08, 0.28), _dark, false)
+	var shade := MeshInstance3D.new()
+	var cyl := CylinderMesh.new()
+	cyl.top_radius = 0.12
+	cyl.bottom_radius = 0.22
+	cyl.height = 0.28
+	shade.mesh = cyl
+	shade.position = pos + Vector3(0, 1.2, 0)
+	shade.material_override = GameMaterials.flat(Color(0.78, 0.7, 0.55), 0.85)
+	add_child(shade)
+	var li := OmniLight3D.new()
+	li.position = pos + Vector3(0, 1.15, 0)
+	li.light_color = Color(1.0, 0.82, 0.55)
+	li.light_energy = 1.1
+	li.omni_range = 3.2
+	li.shadow_enabled = false
+	add_child(li)
+
+func _plant(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 0.18, 0), Vector3(0.28, 0.36, 0.28), GameMaterials.flat(Color(0.35, 0.22, 0.14), 0.7))
+	var leaf := MeshInstance3D.new()
+	var sph := SphereMesh.new()
+	sph.radius = 0.22
+	sph.height = 0.4
+	leaf.mesh = sph
+	leaf.position = pos + Vector3(0, 0.55, 0)
+	leaf.material_override = GameMaterials.flat(Color(0.18, 0.35, 0.2), 0.9)
+	add_child(leaf)
+
+func _rug(pos: Vector3, size: Vector3) -> void:
+	_box(pos, size, GameMaterials.carpet(Color(0.28, 0.18, 0.14), 0.95), false)
+
+func _curtain(pos: Vector3, size: Vector3) -> void:
+	_box(pos, size, GameMaterials.flat(Color(0.32, 0.28, 0.35), 0.88), false)
+
+func _trash(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 0.2, 0), Vector3(0.22, 0.4, 0.22), GameMaterials.flat(Color(0.2, 0.22, 0.2), 0.55))
+
+func _laundry(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 0.22, 0), Vector3(0.38, 0.32, 0.32), GameMaterials.flat(Color(0.55, 0.52, 0.45), 0.75))
+	_box(pos + Vector3(0, 0.4, 0), Vector3(0.3, 0.1, 0.24), _fabric, false)
+
+func _frame(pos: Vector3, side: float) -> void:
+	_box(pos, Vector3(0.04, 0.32, 0.42), _wood, false)
+	_box(pos + Vector3(0.02 * side, 0, 0), Vector3(0.01, 0.24, 0.32), GameMaterials.paper(Color(0.7, 0.68, 0.6)), false)
+
+func _coat_hook(pos: Vector3) -> void:
+	_box(pos, Vector3(0.04, 0.04, 0.04), _metal, false)
+	_box(pos + Vector3(0.06, -0.04, 0), Vector3(0.1, 0.03, 0.03), _metal, false)
 
 func open_401() -> void:
 	if has_meta("apt401_open"):
