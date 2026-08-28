@@ -115,7 +115,7 @@ func interact_target() -> Node:
 	var best: Node = null
 	# A generous focus radius keeps small paper props usable on controllers and
 	# low-resolution Web builds; the nearest active story prop still wins.
-	var best_d := 4.5
+	var best_d := 6.5
 	for n in get_tree().get_nodes_in_group("interactable"):
 		if n.get("taken") == true:
 			continue
