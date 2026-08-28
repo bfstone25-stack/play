@@ -85,14 +85,14 @@ func _splash() -> void:
 	splash.add_child(dim)
 	var lab := Label.new()
 	lab.set_anchors_preset(Control.PRESET_CENTER)
-	lab.offset_left = -320.0
-	lab.offset_right = 320.0
-	lab.offset_top = -50.0
-	lab.offset_bottom = 70.0
+	lab.offset_left = -420.0
+	lab.offset_right = 420.0
+	lab.offset_top = -70.0
+	lab.offset_bottom = 110.0
 	lab.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lab.add_theme_font_size_override("font_size", 28)
+	lab.add_theme_font_size_override("font_size", 26)
 	lab.add_theme_color_override("font_color", Color(0.93, 0.86, 0.72, 1))
-	lab.text = "Across the Hall\nClick to enter the fourth floor"
+	lab.text = "Across the Hall\nClick to enter the fourth floor\nWASD  mouse look  E interact  F light  Esc"
 	UiFont.apply_label(lab)
 	splash.add_child(lab)
 	splash.gui_input.connect(_on_splash_input)

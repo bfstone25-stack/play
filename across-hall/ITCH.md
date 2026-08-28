@@ -42,10 +42,14 @@ Required fields that have bitten us:
 
 **Kind:** HTML · **Embed:** 1280×720 fullscreen · **Price:** free · **Visibility:** public
 
-**Tags:** horror, psychological-horror, 3d, first-person, short, godot, walking-simulator, atmospheric, ai-generated
+**Tags:** horror, psychological-horror, 3d, first-person, short, godot, walking-simulator, atmospheric, ai-generated, time-travel
 
-**AI disclosure:** yes — text + code (not graphics pack / not licensed soundtrack)
+**AI disclosure:** yes — text + code + listing graphics (not licensed soundtrack)
 
-Cover, screenshots, and html5 `0.1.4` are live.
+Cover, four in-game screenshots, html5 `0.1.5`, Embed BG, and a first devlog are live.
 
-**Embed BG** (the hallway still behind **Run game**): theme editor field `layout[embed_background_image][image_id]`. Upload via `POST /dashboard/upload-image?game_id=4944030` (`action=prepare` → GCS → `action=success`), then POST the theme form to `https://bfstone25-stack.itch.io/across-the-hall/edit` with CSRF + `itchio_token` from GET. Live image id `29577643`.
+Jam: [Themed Horror Game Jam #25](https://itch.io/jam/themed-horror-game-jam-25) — theme **Time Travel**. Entry: Across the Hall.
+
+Devlog: https://bfstone25-stack.itch.io/across-the-hall/devlog/1642952/the-hallway-is-open
+
+**Embed BG** (the hallway still behind **Run game**): theme editor field `layout[embed_background_image][image_id]`. Upload via `POST /dashboard/upload-image?game_id=4944030` (`action=prepare` → GCS → `action=success`), then POST the theme form to `https://bfstone25-stack.itch.io/across-the-hall/edit` with CSRF + `itchio_token` from GET. Live image id `29577643`. Screenshots use `POST /game/edit/4944030/upload/prepare` with `kind=image` `type=screenshot`, then `screenshot[id][position]` on the edit save.
