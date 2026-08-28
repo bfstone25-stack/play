@@ -56,11 +56,10 @@ func _build() -> void:
 	_box(Vector3(5.3, 1.3, 3.8), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(5.3, 1.3, 12.25), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(8.9, 1.3, 8.05), Vector3(0.18, 2.7, 8.6), _plaster)
-	# Bathroom partition with a 0.95m doorway at x≈6.55.
+	# Bathroom partition with a 0.95m doorway at x≈6.55 (open bath beyond).
 	_box(Vector3(5.55, 1.3, 10.4), Vector3(1.3, 2.7, 0.12), _plaster)
-	_box(Vector3(7.75, 1.3, 10.4), Vector3(1.5, 2.7, 0.12), _plaster)
+	_box(Vector3(7.85, 1.3, 10.4), Vector3(1.7, 2.7, 0.12), _plaster)
 	_box(Vector3(6.55, 2.35, 10.4), Vector3(0.95, 0.55, 0.12), _plaster)
-	_box(Vector3(7.75, 1.3, 11.35), Vector3(0.12, 2.7, 1.8), _plaster)
 	# Bedroom partition with doorway at x≈5.4.
 	_box(Vector3(7.55, 1.3, 5.65), Vector3(2.0, 2.7, 0.12), _plaster)
 	_box(Vector3(4.55, 1.3, 5.65), Vector3(1.5, 2.7, 0.12), _plaster)
@@ -140,11 +139,10 @@ func _apt401() -> void:
 	_box(Vector3(-5.3, 1.3, -1.9), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(-5.3, 1.3, 6.7), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(-9.0, 1.3, 2.4), Vector3(0.18, 2.7, 8.6), _plaster)
-	# Bathroom partition + doorway (mirrored).
+	# Bathroom partition + doorway (mirrored, open bath beyond).
 	_box(Vector3(-5.55, 1.3, 4.75), Vector3(1.3, 2.7, 0.12), _plaster)
-	_box(Vector3(-7.75, 1.3, 4.75), Vector3(1.5, 2.7, 0.12), _plaster)
+	_box(Vector3(-7.85, 1.3, 4.75), Vector3(1.7, 2.7, 0.12), _plaster)
 	_box(Vector3(-6.55, 2.35, 4.75), Vector3(0.95, 0.55, 0.12), _plaster)
-	_box(Vector3(-7.75, 1.3, 5.7), Vector3(0.12, 2.7, 1.8), _plaster)
 	# Bedroom partition + doorway.
 	_box(Vector3(-7.55, 1.3, 0.0), Vector3(2.0, 2.7, 0.12), _plaster)
 	_box(Vector3(-4.55, 1.3, 0.0), Vector3(1.5, 2.7, 0.12), _plaster)
