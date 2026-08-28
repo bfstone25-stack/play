@@ -93,10 +93,10 @@ func _spawn_stage(s: int) -> void:
 		4:
 			_note(Vector3(8.25, 1.52, 5.72), "mirror", "Look into the delayed mirror",
 				"MARA: My reflection blinks late.\n\nIn the mirror, the bathroom door is closed.\nBehind you, it is open.")
-			_note(Vector3(10.84, 1.38, 7.34), "service", "Read service tag",
+			_note(Vector3(9.4, 1.25, 6.2), "service", "Read service tag",
 				"STACK 4 / DO NOT ISOLATE WHILE OCCUPIED\nLast service: 14 NOV / PELL\nReported voice transmission: 'tenant misuse.'\n\nThree metallic knocks travel up the copper: short, short, long.")
 		5:
-			_choice(Vector3(10.78, 0.9, 7.0), "pipe", "Respond to the service pipe",
+			_choice(Vector3(9.4, 0.9, 6.2), "pipe", "Respond to the service pipe",
 				"The copper knocks three times. Something waits for a reply.",
 				"Answer with three knocks",
 				"Close the valve and silence it")
