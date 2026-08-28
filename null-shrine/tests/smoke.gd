@@ -2,16 +2,19 @@ extends SceneTree
 ## Headless smoke for Midnight Pawn & Crypt hybrid loop.
 
 
-func _initialize() -> void:
+func _init() -> void:
+	call_deferred("_run")
+
+
+func _run() -> void:
 	print("MPC smoke starting…")
-	var packed: PackedScene = load("res://scenes/main.tscn")
+	var packed: PackedScene = load("res://scenes/main.tscn") as PackedScene
 	if packed == null:
 		push_error("Cannot load main.tscn")
 		quit(1)
 		return
 	var game: Node = packed.instantiate()
 	root.add_child(game)
-	# Allow _ready / bind
 	await process_frame
 	await process_frame
 

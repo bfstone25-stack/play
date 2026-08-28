@@ -172,7 +172,7 @@ func stock_from_bag(bag_index: int) -> void:
 		return
 	if bag_index < 0 or bag_index >= bag.size():
 		return
-	var free_slot := -1
+	var free_slot: int = -1
 	for i in shelf.size():
 		if shelf[i] == null:
 			free_slot = i
@@ -180,7 +180,7 @@ func stock_from_bag(bag_index: int) -> void:
 	if free_slot < 0:
 		_log("Shelves full (3). Sell or hold.")
 		return
-	var item: Dictionary = bag[bag_index]
+	var item: Dictionary = bag[bag_index] as Dictionary
 	bag.remove_at(bag_index)
 	shelf[free_slot] = item
 	selected_shelf = free_slot
@@ -198,8 +198,8 @@ func appraise_selected() -> void:
 	if item.get("appraised", false):
 		_log("Already appraised: %s (%s) = %dG" % [_label(item), item["tag"], item["value"]])
 		return
-	var jitter := randi_range(-2, 4)
-	item["value"] = max(1, int(item["base"]) + jitter)
+	var jitter: int = randi_range(-2, 4)
+	item["value"] = maxi(1, int(item["base"]) + jitter)
 	item["appraised"] = true
 	shelf[selected_shelf] = item
 	_emit_all()
@@ -215,7 +215,7 @@ func sell_selected() -> void:
 	var item: Dictionary = shelf[selected_shelf]
 	if not item.get("appraised", false):
 		# Quick-sell at half base if unappraised
-		var payout := max(1, int(item["base"]) / 2)
+		var payout: int = maxi(1, int(item["base"]) / 2)
 		gold += payout
 		_log("Sold unappraised %s for %dG (half)." % [_label(item), payout])
 	else:
@@ -246,7 +246,7 @@ func add_loot(item: Dictionary) -> void:
 
 func spawn_night_loot() -> Array:
 	var drops: Array = []
-	var count := 3 + randi() % 3
+	var count: int = 3 + (randi() % 3)
 	for _i in count:
 		drops.append(_random_loot())
 	return drops

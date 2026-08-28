@@ -28,7 +28,7 @@ func bind(g: Node) -> void:
 	btn_finish.pressed.connect(func(): game.finish_run())
 	for i in shelf_row.get_child_count():
 		var b: Button = shelf_row.get_child(i)
-		var idx := i
+		var idx: int = i
 		b.pressed.connect(func(): game.select_shelf(idx))
 	refresh()
 
@@ -36,17 +36,17 @@ func bind(g: Node) -> void:
 func refresh() -> void:
 	if game == null:
 		return
-	var phase_name: String = game.phase_name()
+	var phase_name: String = str(game.phase_name())
 	title_label.text = "午夜典当 · %s  (Day %d)" % [phase_name, game.day_index]
 	gold_label.text = "Gold: %dG   Bag: %d   Looted nights: %d" % [game.gold, game.bag.size(), game.night_looted]
 	for i in shelf_row.get_child_count():
 		var b: Button = shelf_row.get_child(i)
-		var slot = game.shelf[i] if i < game.shelf.size() else null
+		var slot: Variant = game.shelf[i] if i < game.shelf.size() else null
 		if slot == null:
 			b.text = "Shelf %d\n(empty)" % (i + 1)
 		else:
-			var mark := "✓" if slot.get("appraised", false) else "?"
-			var val := str(slot["value"]) if slot.get("appraised", false) else "??"
+			var mark: String = "✓" if slot.get("appraised", false) else "?"
+			var val: String = str(slot["value"]) if slot.get("appraised", false) else "??"
 			b.text = "Shelf %d [%s]\n%s\n%sG" % [i + 1, mark, game._label(slot), val]
 		b.modulate = Color(1.2, 1.15, 0.8) if i == game.selected_shelf else Color.WHITE
 	bag_list.clear()
