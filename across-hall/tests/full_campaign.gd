@@ -1,12 +1,41 @@
 extends SceneTree
 
+#region agent log
+func _agent_log(message: String, data: Dictionary, hypothesis_id: String) -> void:
+	var path := "/opt/cursor/logs/debug.log"
+	var file := FileAccess.open(path, FileAccess.READ_WRITE)
+	if file == null:
+		file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		file.seek_end()
+		file.store_line(JSON.stringify({
+			"hypothesisId": hypothesis_id,
+			"location": "tests/full_campaign.gd",
+			"message": message,
+			"data": data,
+			"timestamp": Time.get_unix_time_from_system() * 1000.0,
+		}))
+#endregion
+
 func _init() -> void:
+	#region agent log
+	_agent_log("test init entered", {}, "A")
+	#endregion
 	var packed := load("res://scenes/full_campaign.tscn")
+	#region agent log
+	_agent_log("scene load returned", {"loaded": packed != null}, "A")
+	#endregion
 	if packed == null:
 		_fail("full_campaign.tscn failed to load", 1)
 		return
 	var campaign: Node = packed.instantiate()
+	#region agent log
+	_agent_log("scene instantiate returned; entering tree next", {"campaign_valid": is_instance_valid(campaign)}, "B")
+	#endregion
 	root.add_child(campaign)
+	#region agent log
+	_agent_log("root add_child returned", {"inside_tree": campaign.is_inside_tree(), "episode": campaign.get("episode")}, "B")
+	#endregion
 	await process_frame
 	await process_frame
 	if int(campaign.get("episode")) != 2:

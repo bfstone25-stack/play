@@ -17,7 +17,27 @@ var _memories := {"elevator": false, "mailbox": false, "exterior": false}
 @onready var drone: AudioStreamPlayer = $Drone
 @onready var sfx: AudioStreamPlayer3D = $Sfx
 
+#region agent log
+func _agent_log(message: String, data: Dictionary, hypothesis_id: String) -> void:
+	var path := "/opt/cursor/logs/debug.log"
+	var file := FileAccess.open(path, FileAccess.READ_WRITE)
+	if file == null:
+		file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		file.seek_end()
+		file.store_line(JSON.stringify({
+			"hypothesisId": hypothesis_id,
+			"location": "scripts/full/campaign.gd",
+			"message": message,
+			"data": data,
+			"timestamp": Time.get_unix_time_from_system() * 1000.0,
+		}))
+#endregion
+
 func _ready() -> void:
+	#region agent log
+	_agent_log("campaign ready entered", {"player_valid": is_instance_valid(player), "world_valid": is_instance_valid(world)}, "B")
+	#endregion
 	add_to_group("game")
 	player.add_to_group("player")
 	player.give_flashlight()
@@ -29,12 +49,21 @@ func _ready() -> void:
 		hud.hide_splash()
 	if not DisplayServer.get_name().contains("headless"):
 		player.capture_mouse()
+	#region agent log
+	_agent_log("campaign ready exited", {"episode": episode, "actions": get_tree().get_nodes_in_group("campaign_action").size()}, "B")
+	#endregion
 
 func start_episode(number: int) -> void:
+	#region agent log
+	_agent_log("start_episode entered", {"requested": number, "current": episode, "world_children": world.get_child_count()}, "C")
+	#endregion
 	episode = clampi(number, 2, 5)
 	player.locked = false
 	_clear_actions()
 	world.build_episode(episode)
+	#region agent log
+	_agent_log("world build returned", {"episode": episode, "world_children": world.get_child_count()}, "C")
+	#endregion
 	player.global_position = Vector3(0, 0.05, 0.0)
 	player.rotation = Vector3(0, PI, 0)
 	player.velocity = Vector3.ZERO
