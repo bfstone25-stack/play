@@ -318,6 +318,10 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 	drone.volume_db = -22.0
 
 func _advance(next_stage: int, objective: String, chapter_index: int, clock: String) -> void:
+	for prop in active_ids.values():
+		if is_instance_valid(prop) and prop.get("taken") != true:
+			prop.set("taken", true)
+			prop.set("collision_layer", 0)
 	stage = next_stage
 	hud.set_objective(objective)
 	hud.set_chapter(CHAPTERS[chapter_index], clock)
