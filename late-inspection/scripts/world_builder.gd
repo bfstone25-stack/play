@@ -79,7 +79,7 @@ func _build_corridor() -> void:
 	for z in [3.0, 5.5, 8.0]:
 		_door_leaf(Vector3(-3.08, 1.05, z), str(398 + int(z)))
 	_mailboxes(Vector3(-2.95, 1.25, 9.0))
-	_door_leaf(Vector3(1.08, 1.05, 4.0), "404")
+	_open_door_leaf(Vector3(1.08, 1.05, 4.0), "404")
 	_zone_label(Vector3(-1.0, 2.42, 6.5), zone_names[1])
 
 func _build_living() -> void:
@@ -183,6 +183,12 @@ func _box(pos: Vector3, size: Vector3, mat: Material, collide := true) -> MeshIn
 
 func _door_leaf(pos: Vector3, label: String) -> void:
 	_box(pos, Vector3(0.08, 2.05, 0.92), _wood)
+	_box(pos + Vector3(-0.06, 0.0, 0.32), Vector3(0.06, 0.06, 0.06), _metal, false)
+	_sign(pos + Vector3(-0.05, 0.55, 0.0), label)
+
+func _open_door_leaf(pos: Vector3, label: String) -> void:
+	var leaf := _box(pos + Vector3(0.45, 0, 0.42), Vector3(0.08, 2.05, 0.92), _wood, false)
+	leaf.rotation_degrees.y = -62.0
 	_box(pos + Vector3(-0.06, 0.0, 0.32), Vector3(0.06, 0.06, 0.06), _metal, false)
 	_sign(pos + Vector3(-0.05, 0.55, 0.0), label)
 
