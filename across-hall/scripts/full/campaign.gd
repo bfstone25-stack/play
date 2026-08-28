@@ -8,6 +8,7 @@ var flags := {}
 var campaign_complete := false
 var final_choice := ""
 var _stamp_index := 0
+var _title_t := 0.0
 var _forms := {"vacancy": false, "noise": false, "duplicate": false}
 var _memories := {"elevator": false, "mailbox": false, "exterior": false}
 
@@ -42,6 +43,7 @@ func start_episode(number: int) -> void:
 	hud.set_clock("02:17")
 	hud.set_fear(0.0)
 	hud.show_title(_episode_title())
+	_title_t = 4.5
 	hud.set_objective(_objective())
 	hud.set_prompt("")
 
@@ -97,7 +99,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	):
 		_interact()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if _title_t > 0.0:
+		_title_t -= delta
+		if _title_t <= 0.0:
+			hud.hide_title()
 	if campaign_complete:
 		return
 	var target: Node = player.interact_target()
@@ -405,11 +411,13 @@ func _action(
 	action.add_child(mesh_instance)
 	var label := Label3D.new()
 	label.text = prompt
-	label.font_size = 42
-	label.pixel_size = 0.0035
-	label.width = 700
-	label.position = Vector3(0, 0.38, 0)
+	label.font_size = 30
+	label.pixel_size = 0.0022
+	label.width = 600
+	label.position = Vector3(0, 0.32, 0)
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.visibility_range_end = 4.5
+	label.visibility_range_end_margin = 0.8
 	label.modulate = Color(0.94, 0.84, 0.64)
 	UiFont.apply_3d(label)
 	action.add_child(label)
