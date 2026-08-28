@@ -57,3 +57,7 @@ interact={
 
 [internationalization]
 locale/fallback="en"
+
+[debug]
+gdscript/warnings/infer_variant=1
+gdscript/warnings/return_value_discarded=0
