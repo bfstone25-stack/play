@@ -187,6 +187,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if await_restart:
 		if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_R:
 			get_tree().reload_current_scene()
+		elif event is InputEventKey and event.pressed and not event.echo and event.physical_keycode in [KEY_SPACE, KEY_ENTER]:
+			hud._next_ending_beat()
 		return
 	if ending or paused:
 		return
@@ -196,6 +198,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			player.capture_mouse()
 		return
 	if hud and hud.choice_panel and hud.choice_panel.visible:
+		if event is InputEventKey and event.pressed and not event.echo:
+			if event.physical_keycode == KEY_A:
+				hud._pick(0)
+			elif event.physical_keycode == KEY_B:
+				hud._pick(1)
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var t = player.interact_target()

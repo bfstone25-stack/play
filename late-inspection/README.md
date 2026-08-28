@@ -22,7 +22,8 @@ xvfb-run -a /tmp/godot-bin/Godot_v4.7.2-stable_linux.x86_64 --headless --path la
 - WASD + mouse look
 - E / click — interact (notes, pipe, overnight clause)
 - Esc — pause/resume and release/capture mouse
-- Choice panel — two hard options (mouse)
+- Choice panel — click or press A / B
+- Ending cards — click Continue or press Space / Enter
 - R — restart after an ending
 
 Progression verification:
