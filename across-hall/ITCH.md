@@ -46,7 +46,7 @@ Required fields that have bitten us:
 
 **AI disclosure:** yes — text + code + listing graphics (not licensed soundtrack)
 
-Cover, four in-game screenshots, html5 `0.1.6`, Embed BG, and a first devlog are live.
+Cover, four in-game screenshots, html5 `0.1.7`, Embed BG, and a first devlog are live.
 
 Jam: [Themed Horror Game Jam #25](https://itch.io/jam/themed-horror-game-jam-25) — theme **Time Travel**. Entry: Across the Hall.
 
