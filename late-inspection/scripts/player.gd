@@ -113,7 +113,9 @@ func interact_target() -> Node:
 				return n
 			n = n.get_parent()
 	var best: Node = null
-	var best_d := 1.85
+	# A generous focus radius keeps small paper props usable on controllers and
+	# low-resolution Web builds; the nearest active story prop still wins.
+	var best_d := 4.5
 	for n in get_tree().get_nodes_in_group("interactable"):
 		if n.get("taken") == true:
 			continue
@@ -123,13 +125,7 @@ func interact_target() -> Node:
 			if d >= best_d:
 				continue
 			var flat := Vector3(to.x, 0.0, to.z)
-			var face_ok := true
-			if flat.length() > 0.35:
-				# Hallway / desk items must be roughly in front.
-				face_ok = facing().dot(flat.normalized()) > 0.12
-			else:
-				# Floor items underfoot: allow looking down.
-				face_ok = facing().dot(to.normalized()) > -0.35
+			var face_ok := facing().dot(to.normalized()) > -0.72
 			if face_ok:
 				best_d = d
 				best = n
