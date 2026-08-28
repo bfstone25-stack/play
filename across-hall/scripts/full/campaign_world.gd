@@ -8,6 +8,7 @@ var _metal: StandardMaterial3D
 var _paper: StandardMaterial3D
 var _dark: StandardMaterial3D
 var _accent: StandardMaterial3D
+var _trim: StandardMaterial3D
 
 func build_episode(next_episode: int) -> void:
 	episode = next_episode
@@ -50,6 +51,7 @@ func _make_materials() -> void:
 	_metal = _mat(Color(0.22, 0.24, 0.23), 0.38)
 	_paper = _mat(Color(0.82, 0.77, 0.64), 0.92)
 	_dark = _mat(Color(0.025, 0.022, 0.02), 1.0)
+	_trim = _mat(Color(0.16, 0.12, 0.09), 0.85)
 
 func _mat(color: Color, roughness: float, emission := false) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
@@ -67,8 +69,11 @@ func _shell(title: String, subtitle: String) -> void:
 	_box(Vector3(4.0, 1.35, 7), Vector3(0.16, 2.8, 18.0), _wall)
 	_box(Vector3(0, 1.35, -2.0), Vector3(8.0, 2.8, 0.16), _wall)
 	_box(Vector3(0, 1.35, 16.0), Vector3(8.0, 2.8, 0.16), _wall)
-	_sign(Vector3(0, 1.72, -1.82), title, 58, Color(0.9, 0.76, 0.53))
-	_sign(Vector3(0, 1.18, -1.8), subtitle, 30, Color(0.65, 0.6, 0.52))
+	# Baseboards give the hall a real edge instead of a floating box.
+	_box(Vector3(-3.9, 0.08, 7), Vector3(0.08, 0.16, 17.6), _trim, false)
+	_box(Vector3(3.9, 0.08, 7), Vector3(0.08, 0.16, 17.6), _trim, false)
+	_sign(Vector3(0, 2.05, -1.82), title, 52, Color(0.9, 0.76, 0.53))
+	_sign(Vector3(0, 1.55, -1.8), subtitle, 26, Color(0.65, 0.6, 0.52))
 	for z in [1.0, 5.0, 9.0, 13.0]:
 		_fixture(Vector3(0, 2.55, z))
 
@@ -77,13 +82,15 @@ func _build_fifth_floor() -> void:
 	for z in [2.1, 5.8, 9.5]:
 		_door(Vector3(-3.82, 1.05, z), "401")
 		_door(Vector3(3.82, 1.05, z + 1.7), "401")
-	_box(Vector3(0, 0.42, 12.8), Vector3(2.3, 0.84, 0.7), _metal)
-	var elevator_sign := _sign(Vector3(0, 1.18, 12.35), "ELEVATOR\n4   5   [ ]", 34, Color(0.8, 0.7, 0.48))
+	_elevator(Vector3(0, 0.0, 13.0))
+	var elevator_sign := _sign(Vector3(0, 1.35, 12.45), "ELEVATOR\n4   5   [ ]", 32, Color(0.8, 0.7, 0.48))
 	elevator_sign.name = "ElevatorSign"
 	_box(Vector3(-2.7, 0.34, 7.0), Vector3(1.4, 0.68, 0.55), _wood)
 	_box(Vector3(2.7, 0.34, 8.7), Vector3(1.4, 0.68, 0.55), _wood)
-	var present := _sign(Vector3(3.35, 1.55, 7.5), "401", 34, Color(0.72, 0.62, 0.48))
+	# Interactable action owns the present door; only a wall-facing plate lives in the world.
+	var present := _sign(Vector3(3.45, 1.55, 7.5), "401", 34, Color(0.72, 0.62, 0.48))
 	present.name = "PresentDoor"
+	present.rotation.y = -PI * 0.5
 
 func _build_basement() -> void:
 	_shell("B — SERVICE BASEMENT", "One circuit at a time. The complaints need power.")
@@ -98,61 +105,81 @@ func _build_basement() -> void:
 		pipe.position = Vector3(x, 2.2, 6.2)
 		pipe.rotation.x = PI * 0.5
 		add_child(pipe)
-	_box(Vector3(-2.6, 0.8, 3.3), Vector3(1.6, 1.6, 0.45), _metal)
-	_sign(Vector3(-2.6, 1.48, 3.02), "LIFT", 28, Color(0.82, 0.32, 0.2))
-	_box(Vector3(0.0, 0.8, 3.3), Vector3(1.6, 1.6, 0.45), _metal)
-	_sign(Vector3(0.0, 1.48, 3.02), "ARCHIVE", 28, Color(0.82, 0.32, 0.2))
-	_box(Vector3(2.6, 0.8, 3.3), Vector3(1.6, 1.6, 0.45), _metal)
-	_sign(Vector3(2.6, 1.48, 3.02), "HALL", 28, Color(0.82, 0.32, 0.2))
-	_station_light("lift", Vector3(-2.6, 1.9, 3.0))
-	_station_light("archive", Vector3(0.0, 1.9, 3.0))
-	_station_light("hall", Vector3(2.6, 1.9, 3.0))
-	_box(Vector3(2.4, 0.7, 8.3), Vector3(2.4, 1.4, 0.8), _metal)
-	_sign(Vector3(2.4, 1.05, 7.82), "COMPLAINT ARCHIVE\n02:17", 28, Color(0.62, 0.72, 0.62))
+	# Walk the order: LIFT → ARCHIVE → HALL down the hall.
+	_station(Vector3(-2.6, 0.0, 2.6), "LIFT", "lift")
+	_station(Vector3(0.0, 0.0, 5.6), "ARCHIVE", "archive")
+	_station(Vector3(2.6, 0.0, 8.6), "HALL", "hall")
+	_box(Vector3(-2.6, 0.55, 4.0), Vector3(1.1, 1.1, 0.55), _metal)
+	_sign(Vector3(-2.6, 1.25, 3.68), "ELEVATOR\nCABINET", 24, Color(0.72, 0.62, 0.4))
+	_box(Vector3(2.4, 0.7, 10.8), Vector3(2.4, 1.4, 0.8), _metal)
+	_sign(Vector3(2.4, 1.05, 10.32), "COMPLAINT ARCHIVE\n02:17", 26, Color(0.62, 0.72, 0.62))
 	_door(Vector3(0, 1.05, 14.9), "RECORDS")
 	set_circuit("")
 
 func _build_management() -> void:
 	_shell("MANAGEMENT", "RETURN / RETAIN / REMOVE")
+	# Intake rail near the entrance, stamp desks further down.
+	_box(Vector3(0, 0.42, 1.9), Vector3(5.4, 0.84, 0.7), _wood)
+	_sign(Vector3(0, 1.05, 1.5), "INTAKE", 28, Color(0.78, 0.68, 0.48))
 	for x in [-2.7, 0.0, 2.7]:
-		_box(Vector3(x, 0.42, 5.0), Vector3(1.7, 0.84, 0.75), _wood)
+		_box(Vector3(x, 0.42, 6.4), Vector3(1.6, 0.84, 0.85), _wood)
+	_sign(Vector3(-2.7, 1.12, 5.9), "RETURN", 32, Color(0.72, 0.62, 0.34))
+	_sign(Vector3(0, 1.12, 5.9), "RETAIN", 32, Color(0.72, 0.62, 0.34))
+	_sign(Vector3(2.7, 1.12, 5.9), "REMOVE", 32, Color(0.72, 0.62, 0.34))
 	for x in [-2.6, 2.6]:
-		for z in [8.0, 10.0, 12.0]:
+		for z in [9.0, 11.0, 13.0]:
 			_box(Vector3(x, 0.9, z), Vector3(1.5, 1.8, 0.65), _metal)
-	_sign(Vector3(-2.7, 1.05, 4.55), "RETURN", 34, Color(0.72, 0.62, 0.34))
-	_sign(Vector3(0, 1.05, 4.55), "RETAIN", 34, Color(0.72, 0.62, 0.34))
-	_sign(Vector3(2.7, 1.05, 4.55), "REMOVE", 34, Color(0.72, 0.62, 0.34))
-	_box(Vector3(0, 0.52, 13.0), Vector3(3.2, 1.04, 1.0), _wood)
-	_sign(Vector3(0, 1.25, 12.5), "NO MANAGER ON DUTY", 30, Color(0.72, 0.18, 0.12))
+	_box(Vector3(0, 0.52, 13.2), Vector3(3.0, 1.04, 1.0), _wood)
+	_sign(Vector3(0, 1.28, 12.65), "NO MANAGER ON DUTY", 28, Color(0.72, 0.18, 0.12))
 
 func _build_lobby() -> void:
 	_shell("EXIT DIRECTORY", "Every name is now DOOR or OCCUPANT.")
-	_box(Vector3(-2.55, 1.0, 5.0), Vector3(2.1, 2.0, 0.35), _wood)
-	_sign(Vector3(-2.55, 1.2, 4.78), "DIRECTORY\n401  —\n402  —\nYOU  —", 30, Color(0.7, 0.78, 0.7))
+	_box(Vector3(-2.55, 1.0, 4.2), Vector3(2.1, 2.0, 0.35), _wood)
+	_sign(Vector3(-2.55, 1.25, 3.98), "DIRECTORY\n401  —\n402  —\nYOU  —", 28, Color(0.7, 0.78, 0.7))
 	for row in 3:
 		for column in 4:
 			_box(
-				Vector3(1.7 + column * 0.48, 0.45 + row * 0.45, 5.0),
+				Vector3(1.7 + column * 0.48, 0.45 + row * 0.45, 4.2),
 				Vector3(0.4, 0.34, 0.34),
 				_metal
 			)
+	_box(Vector3(-2.4, 0.55, 6.8), Vector3(1.2, 1.1, 0.4), _metal)
+	_sign(Vector3(-2.4, 1.2, 6.55), "ELEVATOR\nSOCKET", 22, Color(0.55, 0.7, 0.7))
+	_box(Vector3(2.4, 0.55, 8.8), Vector3(1.2, 1.1, 0.4), _wood)
+	_sign(Vector3(2.4, 1.2, 8.55), "MAILBOX\nSOCKET", 22, Color(0.55, 0.7, 0.7))
+	_box(Vector3(0, 0.55, 11.0), Vector3(1.4, 1.1, 0.4), _metal)
+	_sign(Vector3(0, 1.2, 10.75), "EXIT\nSOCKET", 22, Color(0.55, 0.7, 0.7))
 	_door(Vector3(-1.5, 1.05, 14.8), "EXIT")
 	_door(Vector3(1.5, 1.05, 14.8), "EXIT")
-	_figure(Vector3(2.6, 0.0, 10.8))
+	_figure(Vector3(2.6, 0.0, 12.2))
 
 func mark_present_room() -> void:
 	var present := get_node_or_null("PresentDoor")
 	if present is Label3D:
 		(present as Label3D).text = "PRESENT 401"
-		(present as Label3D).modulate = Color(0.95, 0.82, 0.42)
+		(present as Label3D).modulate = Color(0.98, 0.86, 0.42)
+		(present as Label3D).font_size = 38
 	var elevator := get_node_or_null("ElevatorSign")
 	if elevator is Label3D:
 		(elevator as Label3D).text = "ELEVATOR\n4   5   B?"
+	var glow := OmniLight3D.new()
+	glow.name = "PresentGlow"
+	glow.position = Vector3(3.2, 1.4, 7.5)
+	glow.light_color = Color(0.95, 0.78, 0.35)
+	glow.light_energy = 2.4
+	glow.omni_range = 3.5
+	add_child(glow)
 
 func show_waiting_tenant() -> void:
 	if get_node_or_null("WaitingTenant"):
 		return
-	_figure(Vector3(0.8, 0.0, 11.15), "WaitingTenant")
+	_figure(Vector3(0.8, 0.0, 12.4), "WaitingTenant")
+	var glow := OmniLight3D.new()
+	glow.position = Vector3(0.8, 1.6, 12.4)
+	glow.light_color = Color(0.55, 0.7, 0.85)
+	glow.light_energy = 1.6
+	glow.omni_range = 3.2
+	add_child(glow)
 
 func set_circuit(which: String) -> void:
 	for light in get_tree().get_nodes_in_group("campaign_light"):
@@ -170,10 +197,52 @@ func set_circuit(which: String) -> void:
 			(light as OmniLight3D).light_color = (
 				Color(0.78, 0.88, 1.0) if on else Color(0.28, 0.1, 0.07)
 			)
+	for marker in get_tree().get_nodes_in_group("circuit_marker"):
+		if marker is MeshInstance3D and marker.material_override is StandardMaterial3D:
+			var live := which != "" and str(marker.name).to_lower() == "marker_" + which
+			var mat := (marker.material_override as StandardMaterial3D).duplicate() as StandardMaterial3D
+			mat.emission_enabled = true
+			mat.emission = Color(0.85, 0.35, 0.12) if live else Color(0.12, 0.04, 0.03)
+			mat.albedo_color = Color(0.75, 0.22, 0.1) if live else Color(0.35, 0.1, 0.08)
+			marker.material_override = mat
+
+func _station(pos: Vector3, label: String, circuit: String) -> void:
+	_box(pos + Vector3(0, 0.8, 0), Vector3(1.5, 1.6, 0.5), _metal)
+	_sign(pos + Vector3(0, 1.55, -0.28), label, 28, Color(0.82, 0.32, 0.2))
+	var marker := MeshInstance3D.new()
+	marker.name = "marker_" + circuit
+	var bulb := SphereMesh.new()
+	bulb.radius = 0.12
+	bulb.height = 0.24
+	marker.mesh = bulb
+	var mat := StandardMaterial3D.new()
+	mat.albedo_color = Color(0.35, 0.1, 0.08)
+	mat.emission_enabled = true
+	mat.emission = Color(0.12, 0.04, 0.03)
+	marker.material_override = mat
+	marker.position = pos + Vector3(0, 1.95, -0.05)
+	marker.add_to_group("circuit_marker")
+	add_child(marker)
+	_station_light(circuit, pos + Vector3(0, 1.9, -0.2))
+
+func _elevator(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 1.1, 0), Vector3(2.5, 2.2, 0.8), _metal)
+	_box(pos + Vector3(0, 1.1, -0.42), Vector3(1.4, 1.8, 0.08), _dark, false)
 
 func _door(pos: Vector3, label: String) -> void:
-	_box(pos, Vector3(1.15, 2.1, 0.16), _wood)
-	_sign(pos + Vector3(0, 0.25, -0.12), label, 38, Color(0.82, 0.7, 0.5))
+	_box(pos, Vector3(1.15, 2.1, 0.16) if absf(pos.x) < 3.5 else Vector3(0.16, 2.1, 1.15), _wood)
+	var face := Vector3(0, 0.35, -0.12)
+	var yaw := PI
+	if pos.x <= -3.5:
+		face = Vector3(0.12, 0.35, 0)
+		yaw = PI * 0.5
+	elif pos.x >= 3.5:
+		face = Vector3(-0.12, 0.35, 0)
+		yaw = -PI * 0.5
+	_box(pos + Vector3(0, 1.05, 0), Vector3(1.28, 0.08, 0.2), _trim, false)
+	_box(pos + Vector3(0, -1.0, 0), Vector3(1.28, 0.08, 0.2), _trim, false)
+	var plate := _sign(pos + face, label, 34, Color(0.82, 0.7, 0.5))
+	plate.rotation.y = yaw
 
 func _fixture(pos: Vector3) -> void:
 	var shade := MeshInstance3D.new()
@@ -234,7 +303,6 @@ func _sign(pos: Vector3, text: String, font_size: int, color: Color) -> Label3D:
 	label.position = pos
 	label.modulate = color
 	label.billboard = BaseMaterial3D.BILLBOARD_DISABLED
-	# Face players walking +Z from spawn; the back-wall title faces the other way.
 	label.rotation.y = 0.0 if pos.z < 0.0 else PI
 	UiFont.apply_3d(label)
 	add_child(label)

@@ -27,5 +27,14 @@ func mark_used(next_prompt: String = "") -> void:
 		prompt = next_prompt
 		for child in get_children():
 			if child is Label3D:
-				(child as Label3D).text = next_prompt
+				var short := next_prompt
+				if next_prompt.length() > 14:
+					short = next_prompt.substr(0, 12) + "…"
+				(child as Label3D).text = short
 				(child as Label3D).modulate = Color(0.55, 0.5, 0.42)
+	for child in get_children():
+		if child is MeshInstance3D and child.material_override is StandardMaterial3D:
+			var mat := (child.material_override as StandardMaterial3D).duplicate() as StandardMaterial3D
+			mat.albedo_color = mat.albedo_color.darkened(0.35)
+			mat.emission_enabled = false
+			child.material_override = mat
