@@ -52,6 +52,9 @@ func _look(campaign: Node, player: Node3D, look_at: Vector3, name: String) -> vo
 	for _i in 10:
 		RenderingServer.force_draw()
 		await process_frame
-	var image := player.get_node("Head/Camera3D").get_viewport().get_texture().get_image()
-	image.save_png(ProjectSettings.globalize_path(OUT + "/" + name + ".png"))
+	var texture := player.get_node("Head/Camera3D").get_viewport().get_texture()
+	if texture:
+		var image := texture.get_image()
+		if image:
+			image.save_png(ProjectSettings.globalize_path(OUT + "/" + name + ".png"))
 	player.locked = false
