@@ -48,6 +48,10 @@ Required fields that have bitten us:
 
 Cover, four in-game screenshots, html5 `0.1.8`, Embed BG, and a first devlog are live.
 
+**02:17 store refresh (ready to upload):** replace the live gallery with
+`promo/itch-store/store_{hall,doors,clock,calendar,apt401}_0217.png`.
+Butler cannot swap screenshots — use the pop-os Firefox cookie hop below.
+
 Jam: [Themed Horror Game Jam #25](https://itch.io/jam/themed-horror-game-jam-25) — theme **Time Travel**. Entry: Across the Hall.
 
 Devlog: https://bfstone25-stack.itch.io/across-the-hall/devlog/1642952/the-hallway-is-open
