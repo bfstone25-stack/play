@@ -135,11 +135,34 @@ func _build_present_apartment() -> void:
 	leaf.position = Vector3(6.45, 1.05, 8.58)
 	leaf.rotation.y = deg_to_rad(-70.0)
 	add_child(leaf)
-	# Bathroom fixtures
-	_box(Vector3(8.55, 0.42, 9.55), Vector3(0.5, 0.84, 0.55), _wood)
-	_box(Vector3(8.55, 0.9, 9.55), Vector3(0.45, 0.08, 0.45), GameMaterials.concrete(Color(0.52, 0.53, 0.5), 0.4), false)
-	_box(Vector3(8.55, 0.96, 9.55), Vector3(0.32, 0.05, 0.32), _dark, false)
-	_box(Vector3(8.55, 1.45, 9.55), Vector3(0.03, 0.55, 0.4), _metal, false)
+	# Bathroom fixtures — ceramic basin + chrome tap (matches Episode I vanity).
+	var ceramic := GameMaterials.flat(Color(0.93, 0.94, 0.95), 0.22)
+	var wet := GameMaterials.flat(Color(0.78, 0.82, 0.86), 0.12)
+	wet.metallic = 0.15
+	var chrome := GameMaterials.metal(Color(0.72, 0.74, 0.76))
+	chrome.roughness = 0.18
+	_box(Vector3(8.55, 0.4, 9.55), Vector3(0.62, 0.8, 0.6), _wood)
+	_box(Vector3(8.55, 0.84, 9.55), Vector3(0.62, 0.06, 0.6), ceramic)
+	_cyl_mesh(Vector3(8.55, 0.9, 9.55), 0.18, 0.1, ceramic)
+	_cyl_mesh(Vector3(8.55, 0.88, 9.55), 0.14, 0.1, wet)
+	_cyl_mesh(Vector3(8.55, 0.84, 9.55), 0.025, 0.02, chrome)
+	_cyl_mesh(Vector3(8.7, 0.92, 9.48), 0.05, 0.04, chrome)
+	_cyl_mesh(Vector3(8.7, 1.04, 9.48), 0.016, 0.2, chrome)
+	var spout := MeshInstance3D.new()
+	var spout_mesh := CylinderMesh.new()
+	spout_mesh.top_radius = 0.012
+	spout_mesh.bottom_radius = 0.016
+	spout_mesh.height = 0.18
+	spout.mesh = spout_mesh
+	spout.material_override = chrome
+	spout.position = Vector3(8.6, 1.12, 9.52)
+	spout.rotation.z = deg_to_rad(55.0)
+	add_child(spout)
+	_cyl_mesh(Vector3(8.52, 1.06, 9.58), 0.018, 0.03, chrome)
+	var drip_mat := GameMaterials.flat(Color(0.55, 0.72, 0.85, 0.55), 0.05)
+	drip_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	_cyl_mesh(Vector3(8.52, 0.96, 9.58), 0.006, 0.16, drip_mat)
+	_box(Vector3(8.72, 1.45, 9.55), Vector3(0.03, 0.55, 0.4), _metal, false)
 	_box(Vector3(8.5, 0.22, 8.95), Vector3(0.4, 0.4, 0.5), GameMaterials.flat(Color(0.88, 0.88, 0.9), 0.35))
 	_box(Vector3(8.5, 0.55, 8.75), Vector3(0.36, 0.4, 0.16), GameMaterials.flat(Color(0.86, 0.86, 0.88), 0.35))
 	_box(Vector3(7.35, 0.04, 9.45), Vector3(0.9, 0.08, 0.9), GameMaterials.concrete(Color(0.5, 0.51, 0.48), 0.4))
@@ -156,6 +179,17 @@ func _build_present_apartment() -> void:
 	add_child(head)
 	_box(Vector3(7.35, 2.05, 9.85), Vector3(0.85, 0.03, 0.03), _metal, false)
 	_box(Vector3(7.45, 1.3, 9.85), Vector3(0.5, 1.3, 0.02), GameMaterials.flat(Color(0.5, 0.52, 0.55, 0.55), 0.7), false)
+
+func _cyl_mesh(pos: Vector3, radius: float, height: float, mat: Material) -> void:
+	var mi := MeshInstance3D.new()
+	var mesh := CylinderMesh.new()
+	mesh.top_radius = radius
+	mesh.bottom_radius = radius
+	mesh.height = height
+	mi.mesh = mesh
+	mi.position = pos
+	mi.material_override = mat
+	add_child(mi)
 
 func _build_basement() -> void:
 	_shell("B — SERVICE BASEMENT", "One circuit at a time. The complaints need power.")

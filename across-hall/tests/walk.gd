@@ -16,8 +16,8 @@ func _init() -> void:
 	var steps := [
 		{"pos": Vector3(0.55, 0.05, 2.35), "look": Vector3(0.55, 0.15, 2.7)},
 		{"pos": Vector3(2.7, 0.05, 8.05), "look": Vector3(3.2, 0.5, 8.05)},
-		{"pos": Vector3(7.2, 0.05, 10.9), "look": Vector3(8.4, 0.95, 11.0)},
-		{"pos": Vector3(7.6, 0.05, 11.0), "look": Vector3(8.4, 0.95, 11.2)},
+		{"pos": Vector3(7.2, 0.05, 10.9), "look": Vector3(8.35, 0.95, 10.75)},
+		{"pos": Vector3(7.5, 0.05, 10.85), "look": Vector3(8.45, 0.95, 10.7)},
 		{"pos": Vector3(-1.1, 0.05, 2.4), "look": Vector3(-1.7, 1.0, 2.4)},
 		{"pos": Vector3(-3.1, 0.05, 2.35), "look": Vector3(-3.25, 0.8, 2.15)},
 		{"pos": Vector3(-3.4, 0.05, 2.25), "look": Vector3(-3.55, 0.55, 2.45)},

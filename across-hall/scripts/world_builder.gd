@@ -229,15 +229,69 @@ func _glass_mat(a := 0.28) -> StandardMaterial3D:
 	return m
 
 func _vanity(pos: Vector3, side: float) -> void:
-	_box(pos + Vector3(0, 0.42, 0), Vector3(0.55, 0.84, 0.7), _wood)
-	_box(pos + Vector3(-0.05 * side, 0.88, 0), Vector3(0.5, 0.08, 0.55), _tile)
-	_box(pos + Vector3(-0.05 * side, 0.94, 0), Vector3(0.38, 0.05, 0.38), _dark, false)
-	_box(pos + Vector3(0.12 * side, 1.05, 0), Vector3(0.05, 0.18, 0.05), _metal, false)
-	_box(pos + Vector3(0.12 * side, 1.16, 0.08), Vector3(0.04, 0.04, 0.14), _metal, false)
-	_toothbrush(pos + Vector3(-0.12 * side, 0.98, -0.12))
-	_mirror(pos + Vector3(0.28 * side, 1.45, 0))
-	_box(pos + Vector3(-0.08 * side, 0.98, 0.16), Vector3(0.06, 0.14, 0.06), GameMaterials.flat(Color(0.75, 0.55, 0.2), 0.45), false)
-	_box(pos + Vector3(0.05 * side, 0.95, 0.18), Vector3(0.05, 0.08, 0.05), GameMaterials.flat(Color(0.85, 0.85, 0.88), 0.5), false)
+	var ceramic := GameMaterials.flat(Color(0.93, 0.94, 0.95), 0.22)
+	var wet := GameMaterials.flat(Color(0.78, 0.82, 0.86), 0.12)
+	wet.metallic = 0.15
+	var chrome := GameMaterials.metal(Color(0.72, 0.74, 0.76))
+	chrome.roughness = 0.18
+	# Cabinet + countertop ledge around the basin.
+	_box(pos + Vector3(0, 0.4, 0), Vector3(0.62, 0.8, 0.72), _wood)
+	_box(pos + Vector3(0.28 * side, 0.12, 0), Vector3(0.04, 0.12, 0.08), chrome, false)
+	_box(pos + Vector3(-0.02 * side, 0.84, 0), Vector3(0.62, 0.06, 0.72), ceramic)
+	# Recessed round basin (outer rim + inner wet bowl + drain).
+	_cyl(pos + Vector3(-0.02 * side, 0.9, 0.02), 0.2, 0.1, ceramic, false)
+	_cyl(pos + Vector3(-0.02 * side, 0.88, 0.02), 0.16, 0.1, wet, false)
+	_cyl(pos + Vector3(-0.02 * side, 0.84, 0.02), 0.03, 0.02, chrome, false)
+	# Chrome mixer tap: base, riser, spout over the bowl, hot/cold levers.
+	var tap := pos + Vector3(0.14 * side, 0.9, -0.02)
+	_cyl(tap + Vector3(0, 0.02, 0), 0.055, 0.04, chrome, false)
+	_cyl(tap + Vector3(0, 0.14, 0), 0.018, 0.22, chrome, false)
+	var spout := MeshInstance3D.new()
+	var spout_mesh := CylinderMesh.new()
+	spout_mesh.top_radius = 0.014
+	spout_mesh.bottom_radius = 0.018
+	spout_mesh.height = 0.2
+	spout.mesh = spout_mesh
+	spout.material_override = chrome
+	spout.position = tap + Vector3(-0.07 * side, 0.24, 0.02)
+	spout.rotation.z = deg_to_rad(-55.0 * side)
+	add_child(spout)
+	_cyl(tap + Vector3(-0.14 * side, 0.18, 0.06), 0.02, 0.03, chrome, false)
+	_cyl(tap + Vector3(0.05, 0.08, 0), 0.012, 0.05, chrome, false)
+	_cyl(tap + Vector3(-0.05, 0.08, 0), 0.012, 0.05, chrome, false)
+	# Running drip into the basin (matches the chapter line about the tap).
+	var drip_mat := GameMaterials.flat(Color(0.55, 0.72, 0.85, 0.55), 0.05)
+	drip_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	_cyl(tap + Vector3(-0.14 * side, 0.05, 0.06), 0.006, 0.2, drip_mat, false)
+	# Toothbrush cup + brush, toothpaste, soap dish — cylinders, not candy cubes.
+	_cyl(pos + Vector3(-0.2 * side, 0.93, -0.22), 0.035, 0.08, ceramic, false)
+	_toothbrush(pos + Vector3(-0.2 * side, 0.98, -0.22))
+	_cyl(pos + Vector3(-0.12 * side, 0.93, -0.24), 0.018, 0.12, GameMaterials.flat(Color(0.88, 0.88, 0.9), 0.35), false)
+	_cyl(pos + Vector3(0.18 * side, 0.9, 0.22), 0.05, 0.02, ceramic, false)
+	_cyl(pos + Vector3(0.18 * side, 0.92, 0.22), 0.035, 0.025, GameMaterials.flat(Color(0.86, 0.82, 0.76), 0.55), false)
+	_cyl(pos + Vector3(-0.18 * side, 0.96, 0.2), 0.028, 0.14, GameMaterials.flat(Color(0.45, 0.55, 0.52), 0.4), false)
+	_mirror(pos + Vector3(0.3 * side, 1.48, 0))
+
+func _cyl(pos: Vector3, radius: float, height: float, mat: Material, collide := true) -> MeshInstance3D:
+	var mi := MeshInstance3D.new()
+	var mesh := CylinderMesh.new()
+	mesh.top_radius = radius
+	mesh.bottom_radius = radius
+	mesh.height = height
+	mi.mesh = mesh
+	mi.position = pos
+	mi.material_override = mat
+	add_child(mi)
+	if collide:
+		var body := StaticBody3D.new()
+		var col := CollisionShape3D.new()
+		var sh := CylinderShape3D.new()
+		sh.radius = radius
+		sh.height = height
+		col.shape = sh
+		body.add_child(col)
+		mi.add_child(body)
+	return mi
 
 func _toilet(pos: Vector3, side: float) -> void:
 	_box(pos + Vector3(0, 0.22, 0), Vector3(0.42, 0.4, 0.55), GameMaterials.flat(Color(0.88, 0.88, 0.9), 0.35))
@@ -510,22 +564,27 @@ func _wardrobe(pos: Vector3) -> void:
 	_box(pos + Vector3(0.3, 0.2, 0.28), Vector3(0.03, 0.08, 0.03), _metal, false)
 
 func _toothbrush(pos: Vector3) -> void:
-	_box(pos, Vector3(0.08, 0.16, 0.08), GameMaterials.flat(Color(0.75, 0.75, 0.78), 0.3))
-	_box(pos + Vector3(0, 0.14, 0), Vector3(0.02, 0.18, 0.02), GameMaterials.flat(Color(0.2, 0.45, 0.55), 0.4))
+	# Handle + bristle head — thin stick, not a chunky cube.
+	_box(pos + Vector3(0, 0.1, 0), Vector3(0.014, 0.2, 0.014), GameMaterials.flat(Color(0.55, 0.62, 0.68), 0.35), false)
+	_box(pos + Vector3(0, 0.22, 0.01), Vector3(0.02, 0.05, 0.03), GameMaterials.flat(Color(0.9, 0.9, 0.92), 0.55), false)
 
 func _mirror(pos: Vector3) -> void:
 	var glass := MeshInstance3D.new()
 	var mesh := BoxMesh.new()
-	mesh.size = Vector3(0.03, 0.7, 0.45)
+	mesh.size = Vector3(0.03, 0.72, 0.48)
 	glass.mesh = mesh
 	glass.position = pos
 	var m := StandardMaterial3D.new()
-	m.albedo_color = Color(0.35, 0.38, 0.4)
-	m.metallic = 0.85
-	m.roughness = 0.08
+	m.albedo_color = Color(0.55, 0.62, 0.7)
+	m.metallic = 0.95
+	m.roughness = 0.05
+	m.emission_enabled = true
+	m.emission = Color(0.2, 0.25, 0.3)
+	m.emission_energy_multiplier = 0.25
 	glass.material_override = m
 	add_child(glass)
-	_box(pos + Vector3(0, 0, 0), Vector3(0.05, 0.78, 0.52), _trim, false)
+	_box(pos, Vector3(0.05, 0.8, 0.56), _trim, false)
+	_box(pos + Vector3(0.02, 0, 0), Vector3(0.01, 0.68, 0.44), GameMaterials.flat(Color(0.4, 0.45, 0.5), 0.08), false)
 
 func _radiator(pos: Vector3) -> void:
 	_box(pos, Vector3(1.4, 0.55, 0.18), _metal)
