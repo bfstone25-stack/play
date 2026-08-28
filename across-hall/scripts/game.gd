@@ -57,6 +57,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if await_restart:
 		if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_R:
 			get_tree().reload_current_scene()
+		elif (
+			OS.has_feature("full_game")
+			and event is InputEventKey
+			and event.pressed
+			and not event.echo
+			and event.physical_keycode == KEY_N
+		):
+			get_tree().change_scene_to_file("res://scenes/full_campaign.tscn")
 		return
 	if ending:
 		return
@@ -321,7 +329,10 @@ func _begin_ending() -> void:
 	player.locked = true
 	drone.volume_db = -6.0
 	hud.set_objective("Episode I complete. The Fourth Floor stays free.")
-	hud.set_prompt("R restart · Follow bfstone25-stack on itch.io · More: /ghost-channel")
+	if OS.has_feature("full_game"):
+		hud.set_prompt("N next floor · R replay Episode I")
+	else:
+		hud.set_prompt("R restart · Follow bfstone25-stack on itch.io · More: /ghost-channel")
 	hud.show_title("Episode I complete\nYou are the door across the hall")
 	await_restart = true
 
