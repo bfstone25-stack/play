@@ -134,12 +134,14 @@ func _spawn_pickups() -> void:
 	_pickup(Vector3(7.88, 1.12, 10.42), "tape", "Take cassette", NOTES["tape"], Color(0.42, 0.12, 0.1), Vector3(0.16, 0.04, 0.1))
 	_pickup(Vector3(8.05, 1.12, 10.4), "key", "Take 401 key", NOTES["key"], Color(0.55, 0.48, 0.28), Vector3(0.08, 0.02, 0.16))
 	_inspect(Vector3(-3.25, 0.72, 2.15), "calendar", "Read calendar", NOTES["note2"], Color(0.85, 0.78, 0.62), Vector3(0.28, 0.36, 0.04))
-	_wall_clock(Vector3(-8.7, 1.55, 0.85), -PI * 0.5, "Check the clock", NOTES["clock"])
+	# West wall of 401 living room — yaw +90° so local +Z faces into the room.
+	_wall_clock(Vector3(-8.7, 1.55, 0.85), PI * 0.5, "Check the clock", NOTES["clock"])
 	_deck(Vector3(3.55, 0.56, 8.05), "402", "Play cassette (402)")
 	_deck(Vector3(-3.55, 0.56, 2.4), "401", "Play cassette (401)")
 
 func _wall_clock(pos: Vector3, yaw: float, prompt: String, note: String) -> void:
 	# Analog wall clock frozen at 02:17 — matches listing copy.
+	# Local +Z is the front of the dial (must face the room).
 	var body := StaticBody3D.new()
 	body.set_script(preload("res://scripts/inspect.gd"))
 	body.position = pos
@@ -147,19 +149,23 @@ func _wall_clock(pos: Vector3, yaw: float, prompt: String, note: String) -> void
 	body.inspect_id = "clock"
 	body.prompt = prompt
 	body.note_text = note
+	var face_mat := GameMaterials.flat(Color(0.94, 0.92, 0.86), 0.35)
+	face_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	var ink := GameMaterials.flat(Color(0.06, 0.05, 0.04), 0.55)
+	ink.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	var face := MeshInstance3D.new()
 	var cyl := CylinderMesh.new()
 	cyl.top_radius = 0.18
 	cyl.bottom_radius = 0.18
-	cyl.height = 0.03
+	cyl.height = 0.028
 	face.mesh = cyl
 	face.rotation.x = PI * 0.5
-	face.material_override = GameMaterials.flat(Color(0.92, 0.9, 0.84), 0.25)
+	face.material_override = face_mat
 	body.add_child(face)
 	var rim := MeshInstance3D.new()
 	var rim_mesh := TorusMesh.new()
 	rim_mesh.inner_radius = 0.165
-	rim_mesh.outer_radius = 0.2
+	rim_mesh.outer_radius = 0.205
 	rim.mesh = rim_mesh
 	rim.rotation.x = PI * 0.5
 	rim.material_override = GameMaterials.metal(Color(0.28, 0.22, 0.14))
@@ -169,59 +175,60 @@ func _wall_clock(pos: Vector3, yaw: float, prompt: String, note: String) -> void
 		var tick_a := deg_to_rad(tick_deg)
 		var tick := MeshInstance3D.new()
 		var tb := BoxMesh.new()
-		tb.size = Vector3(0.02, 0.035, 0.01)
+		tb.size = Vector3(0.022, 0.04, 0.012)
 		tick.mesh = tb
-		tick.position = Vector3(sin(tick_a) * 0.145, cos(tick_a) * 0.145, 0.02)
+		tick.position = Vector3(sin(tick_a) * 0.145, cos(tick_a) * 0.145, 0.022)
 		tick.rotation.z = -tick_a
-		tick.material_override = GameMaterials.flat(Color(0.1, 0.1, 0.1), 0.6)
+		tick.material_override = ink
 		body.add_child(tick)
 	# 12-o'clock = +Y. Minute @ 17 → 102°, hour @ 2:17 → 68.5°.
-	_clock_hand(body, 0.13, 0.018, deg_to_rad(102.0), Color(0.05, 0.05, 0.05))
-	_clock_hand(body, 0.085, 0.022, deg_to_rad(68.5), Color(0.08, 0.07, 0.06))
+	_clock_hand(body, 0.135, 0.016, deg_to_rad(102.0), ink)
+	_clock_hand(body, 0.09, 0.022, deg_to_rad(68.5), ink)
 	var hub := MeshInstance3D.new()
 	var hub_mesh := SphereMesh.new()
-	hub_mesh.radius = 0.02
-	hub_mesh.height = 0.04
+	hub_mesh.radius = 0.018
+	hub_mesh.height = 0.036
 	hub.mesh = hub_mesh
-	hub.position = Vector3(0, 0, 0.035)
+	hub.position = Vector3(0, 0, 0.04)
 	hub.material_override = GameMaterials.metal(Color(0.35, 0.3, 0.22))
 	body.add_child(hub)
 	var digits := Label3D.new()
 	digits.text = "02:17"
-	digits.font_size = 64
-	digits.pixel_size = 0.0024
-	digits.modulate = Color(0.1, 0.08, 0.06)
-	digits.position = Vector3(0, -0.07, 0.04)
-	digits.outline_size = 8
-	digits.outline_modulate = Color(0.95, 0.93, 0.88)
+	digits.font_size = 72
+	digits.pixel_size = 0.0022
+	digits.modulate = Color(0.08, 0.06, 0.05)
+	# Label3D faces local -Z by default; flip so it reads on the dial front (+Z).
+	digits.position = Vector3(0, -0.075, 0.05)
+	digits.rotation.y = PI
+	digits.outline_size = 10
+	digits.outline_modulate = Color(0.96, 0.94, 0.9)
+	digits.double_sided = true
 	UiFont.apply_3d(digits)
 	body.add_child(digits)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
-	sh.size = Vector3(0.36, 0.36, 0.1)
+	sh.size = Vector3(0.42, 0.42, 0.12)
 	col.shape = sh
 	body.add_child(col)
 	var tag := Label3D.new()
 	tag.text = prompt
 	tag.font_size = 32
 	tag.pixel_size = 0.0032
-	tag.position = Vector3(0, 0.28, 0)
+	tag.position = Vector3(0, 0.28, 0.02)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	UiFont.apply_3d(tag)
 	body.add_child(tag)
 	add_child(body)
 
-func _clock_hand(parent: Node3D, length: float, thickness: float, angle: float, color: Color) -> void:
+func _clock_hand(parent: Node3D, length: float, thickness: float, angle: float, mat: Material) -> void:
 	var hand := MeshInstance3D.new()
 	var box := BoxMesh.new()
-	box.size = Vector3(thickness, length, 0.015)
+	box.size = Vector3(thickness, length, 0.016)
 	hand.mesh = box
-	hand.position = Vector3(sin(angle) * length * 0.5, cos(angle) * length * 0.5, 0.04)
+	# Pivot at hub: offset along hand axis so the tip reaches `length`.
+	hand.position = Vector3(sin(angle) * length * 0.5, cos(angle) * length * 0.5, 0.038)
 	hand.rotation.z = -angle
-	hand.material_override = GameMaterials.flat(color, 0.45)
-	parent.add_child(hand)
-
-	hand.material_override = GameMaterials.flat(color, 0.55)
+	hand.material_override = mat
 	parent.add_child(hand)
 
 func _inspect(pos: Vector3, id: String, prompt: String, note: String, color: Color, size: Vector3) -> void:
