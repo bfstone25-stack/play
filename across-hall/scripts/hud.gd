@@ -15,6 +15,11 @@ var splash: Control
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	note.visible = false
+	note.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	note.offset_left = -380.0
+	note.offset_right = 380.0
+	note.offset_top = -220.0
+	note.offset_bottom = -72.0
 	prompt.text = ""
 	UiFont.apply_label(prompt)
 	UiFont.apply_label(note)
@@ -37,11 +42,11 @@ func _clock() -> void:
 func _title() -> void:
 	title = Label.new()
 	title.name = "Title"
-	title.set_anchors_preset(Control.PRESET_CENTER)
-	title.offset_left = -280.0
-	title.offset_right = 280.0
-	title.offset_top = -40.0
-	title.offset_bottom = 40.0
+	title.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	title.offset_left = -320.0
+	title.offset_right = 320.0
+	title.offset_top = 72.0
+	title.offset_bottom = 132.0
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color(0.86, 0.8, 0.7, 1))
@@ -135,7 +140,7 @@ func set_fear(v: float) -> void:
 func show_note(t: String) -> void:
 	note.text = t
 	note.visible = true
-	note_t = 9.0
+	note_t = 6.5
 	hide_title()
 
 func _process(delta: float) -> void:

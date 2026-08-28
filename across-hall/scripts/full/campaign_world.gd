@@ -233,7 +233,8 @@ func _sign(pos: Vector3, text: String, font_size: int, color: Color) -> Label3D:
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.position = pos
 	label.modulate = color
-	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+	label.rotation.y = PI
 	UiFont.apply_3d(label)
 	add_child(label)
 	return label

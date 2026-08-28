@@ -33,6 +33,7 @@ func _ready() -> void:
 	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_fade.color = Color(0, 0, 0, 0)
 	hud.add_child(_fade)
+	hud.move_child(_fade, 0)
 	start_episode(_load_progress() if OS.has_feature("full_game") else 2)
 	if hud.has_method("hide_splash"):
 		hud.hide_splash()
@@ -57,8 +58,11 @@ func start_episode(number: int) -> void:
 	_spawn_episode_actions()
 	hud.set_clock("02:17")
 	hud.set_fear(0.0)
+	if hud.note:
+		hud.note.visible = false
+		hud.note_t = 0.0
 	hud.show_title(_episode_title())
-	_title_t = 4.5
+	_title_t = 2.8
 	hud.set_objective(_objective())
 	hud.set_prompt("")
 
@@ -157,7 +161,7 @@ func perform_action(action_id: String) -> bool:
 				show_note("The hall resets. Your hands come back empty.\nAnchor the tag first.")
 				return false
 			flags["reset_done"] = true
-			_blackout_t = 0.85
+			_blackout_t = 0.45
 			if world.has_method("mark_present_room"):
 				world.mark_present_room()
 			_mark_action("ep2_reset", "RESET already pulled")
