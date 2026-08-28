@@ -145,7 +145,8 @@ func _process(delta: float) -> void:
 		for child in action.get_children():
 			if child is Label3D:
 				var focused: bool = target == action
-				(child as Label3D).visible = not note_up and not focused
+				var has_text: bool = str((child as Label3D).text).strip_edges() != ""
+				(child as Label3D).visible = has_text and not note_up and not focused
 
 func _interact() -> void:
 	var target: Node = player.interact_target()
@@ -520,7 +521,10 @@ func _action(
 	label.visibility_range_end = 5.2
 	label.visibility_range_end_margin = 0.8
 	label.modulate = Color(0.94, 0.84, 0.64)
+	# Empty short labels mean the world already has a permanent sign; never show a prompt clone.
 	label.visible = short_label != ""
+	if short_label == "":
+		label.text = ""
 	UiFont.apply_3d(label)
 	action.add_child(label)
 	var collision := CollisionShape3D.new()
@@ -576,17 +580,21 @@ func _prop_mesh(kind: String, size: Vector3, color: Color, action_id: String) ->
 			var box := BoxMesh.new()
 			box.size = size
 			mesh_instance.mesh = box
-	var material := StandardMaterial3D.new()
-	material.albedo_color = color
-	material.roughness = 0.58
-	if (
+	var glowing := (
 		action_id.ends_with("_plate")
 		or action_id == "ep2_tag"
 		or kind in ["plate", "socket", "key", "fuse"]
-	):
-		material.emission_enabled = true
-		material.emission = color * 0.4
-	mesh_instance.material_override = material
+	)
+	if kind == "paper":
+		mesh_instance.material_override = CampaignMaterials.paper(color)
+	elif kind in ["pad", "panel", "door", "deck"]:
+		mesh_instance.material_override = (
+			CampaignMaterials.emissive(color, 0.28) if glowing else CampaignMaterials.metal(color)
+		)
+	elif glowing:
+		mesh_instance.material_override = CampaignMaterials.emissive(color, 0.4)
+	else:
+		mesh_instance.material_override = CampaignMaterials.metal(color, 0.55)
 	if kind == "lever":
 		var knob := MeshInstance3D.new()
 		var sphere := SphereMesh.new()
@@ -594,12 +602,18 @@ func _prop_mesh(kind: String, size: Vector3, color: Color, action_id: String) ->
 		sphere.height = 0.16
 		knob.mesh = sphere
 		knob.position = Vector3(0, size.y * 0.45, 0)
-		var km := StandardMaterial3D.new()
-		km.albedo_color = Color(0.75, 0.15, 0.1)
-		km.emission_enabled = true
-		km.emission = Color(0.45, 0.08, 0.05)
-		knob.material_override = km
+		knob.material_override = CampaignMaterials.emissive(Color(0.75, 0.15, 0.1), 0.5)
 		mesh_instance.add_child(knob)
+	elif kind == "key":
+		var bow := MeshInstance3D.new()
+		var torus := TorusMesh.new()
+		torus.inner_radius = 0.04
+		torus.outer_radius = 0.08
+		bow.mesh = torus
+		bow.position = Vector3(0, 0, -size.z * 0.45)
+		bow.rotation.x = PI * 0.5
+		bow.material_override = CampaignMaterials.emissive(color, 0.35)
+		mesh_instance.add_child(bow)
 	return mesh_instance
 
 func _clear_actions() -> void:

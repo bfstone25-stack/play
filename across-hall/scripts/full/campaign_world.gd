@@ -9,6 +9,7 @@ var _paper: StandardMaterial3D
 var _dark: StandardMaterial3D
 var _accent: StandardMaterial3D
 var _trim: StandardMaterial3D
+var _glass: StandardMaterial3D
 
 func build_episode(next_episode: int) -> void:
 	episode = next_episode
@@ -32,35 +33,29 @@ func _clear_world() -> void:
 func _make_materials() -> void:
 	match episode:
 		2:
-			_wall = _mat(Color(0.38, 0.32, 0.26), 0.9)
-			_floor = _mat(Color(0.18, 0.11, 0.08), 0.78)
-			_accent = _mat(Color(0.68, 0.48, 0.22), 0.55, true)
+			_wall = CampaignMaterials.plaster(Color(0.42, 0.36, 0.28))
+			_floor = CampaignMaterials.planks(Color(0.22, 0.14, 0.09), 0.8)
+			_accent = CampaignMaterials.emissive(Color(0.72, 0.52, 0.24), 0.35)
 		3:
-			_wall = _mat(Color(0.24, 0.27, 0.25), 0.96)
-			_floor = _mat(Color(0.12, 0.14, 0.13), 0.92)
-			_accent = _mat(Color(0.58, 0.14, 0.08), 0.5, true)
+			_wall = CampaignMaterials.concrete(Color(0.28, 0.3, 0.28))
+			_floor = CampaignMaterials.concrete(Color(0.16, 0.17, 0.16), 0.9)
+			_accent = CampaignMaterials.emissive(Color(0.62, 0.16, 0.08), 0.45)
 		4:
-			_wall = _mat(Color(0.32, 0.38, 0.31), 0.94)
-			_floor = _mat(Color(0.14, 0.12, 0.09), 0.86)
-			_accent = _mat(Color(0.62, 0.52, 0.28), 0.58, true)
+			_wall = CampaignMaterials.plaster(Color(0.36, 0.4, 0.33))
+			_floor = CampaignMaterials.carpet(Color(0.18, 0.14, 0.1))
+			_accent = CampaignMaterials.emissive(Color(0.66, 0.54, 0.28), 0.32)
 		_:
-			_wall = _mat(Color(0.42, 0.38, 0.31), 0.88)
-			_floor = _mat(Color(0.16, 0.13, 0.1), 0.8)
-			_accent = _mat(Color(0.52, 0.68, 0.7), 0.45, true)
-	_wood = _mat(Color(0.25, 0.13, 0.07), 0.72)
-	_metal = _mat(Color(0.22, 0.24, 0.23), 0.38)
-	_paper = _mat(Color(0.82, 0.77, 0.64), 0.92)
-	_dark = _mat(Color(0.025, 0.022, 0.02), 1.0)
-	_trim = _mat(Color(0.16, 0.12, 0.09), 0.85)
-
-func _mat(color: Color, roughness: float, emission := false) -> StandardMaterial3D:
-	var material := StandardMaterial3D.new()
-	material.albedo_color = color
-	material.roughness = roughness
-	if emission:
-		material.emission_enabled = true
-		material.emission = color * 0.42
-	return material
+			_wall = CampaignMaterials.plaster(Color(0.46, 0.4, 0.33))
+			_floor = CampaignMaterials.planks(Color(0.2, 0.15, 0.11), 0.78)
+			_accent = CampaignMaterials.emissive(Color(0.52, 0.7, 0.72), 0.38)
+	_wood = CampaignMaterials.planks(Color(0.28, 0.15, 0.08), 0.7)
+	_metal = CampaignMaterials.metal(Color(0.26, 0.28, 0.27))
+	_paper = CampaignMaterials.paper(Color(0.84, 0.78, 0.64))
+	_dark = CampaignMaterials.flat(Color(0.03, 0.025, 0.02), 1.0)
+	_trim = CampaignMaterials.planks(Color(0.18, 0.12, 0.08), 0.82)
+	_glass = CampaignMaterials.flat(Color(0.55, 0.65, 0.72, 0.35), 0.08)
+	_glass.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	_glass.albedo_color.a = 0.28
 
 func _shell(title: String, subtitle: String) -> void:
 	_box(Vector3(0, -0.05, 7), Vector3(8.0, 0.1, 18.0), _floor)
@@ -69,9 +64,10 @@ func _shell(title: String, subtitle: String) -> void:
 	_box(Vector3(4.0, 1.35, 7), Vector3(0.16, 2.8, 18.0), _wall)
 	_box(Vector3(0, 1.35, -2.0), Vector3(8.0, 2.8, 0.16), _wall)
 	_box(Vector3(0, 1.35, 16.0), Vector3(8.0, 2.8, 0.16), _wall)
-	# Baseboards give the hall a real edge instead of a floating box.
 	_box(Vector3(-3.9, 0.08, 7), Vector3(0.08, 0.16, 17.6), _trim, false)
 	_box(Vector3(3.9, 0.08, 7), Vector3(0.08, 0.16, 17.6), _trim, false)
+	_box(Vector3(-3.9, 2.55, 7), Vector3(0.06, 0.1, 17.6), _trim, false)
+	_box(Vector3(3.9, 2.55, 7), Vector3(0.06, 0.1, 17.6), _trim, false)
 	_sign(Vector3(0, 2.05, -1.82), title, 52, Color(0.9, 0.76, 0.53))
 	_sign(Vector3(0, 1.55, -1.8), subtitle, 26, Color(0.65, 0.6, 0.52))
 	for z in [1.0, 5.0, 9.0, 13.0]:
@@ -85,9 +81,8 @@ func _build_fifth_floor() -> void:
 	_elevator(Vector3(0, 0.0, 13.0))
 	var elevator_sign := _sign(Vector3(0, 1.35, 12.45), "ELEVATOR\n4   5   [ ]", 32, Color(0.8, 0.7, 0.48))
 	elevator_sign.name = "ElevatorSign"
-	_box(Vector3(-2.7, 0.34, 7.0), Vector3(1.4, 0.68, 0.55), _wood)
-	_box(Vector3(2.7, 0.34, 8.7), Vector3(1.4, 0.68, 0.55), _wood)
-	# Interactable action owns the present door; only a wall-facing plate lives in the world.
+	_console(Vector3(-2.7, 0.0, 7.0))
+	_console(Vector3(2.7, 0.0, 8.7))
 	var present := _sign(Vector3(3.45, 1.55, 7.5), "401", 34, Color(0.72, 0.62, 0.48))
 	present.name = "PresentDoor"
 	present.rotation.y = -PI * 0.5
@@ -95,41 +90,28 @@ func _build_fifth_floor() -> void:
 func _build_basement() -> void:
 	_shell("B — SERVICE BASEMENT", "One circuit at a time. The complaints need power.")
 	for x in [-2.8, 0.0, 2.8]:
-		var pipe := MeshInstance3D.new()
-		var cylinder := CylinderMesh.new()
-		cylinder.top_radius = 0.12
-		cylinder.bottom_radius = 0.12
-		cylinder.height = 13.0
-		pipe.mesh = cylinder
-		pipe.material_override = _metal
-		pipe.position = Vector3(x, 2.2, 6.2)
-		pipe.rotation.x = PI * 0.5
-		add_child(pipe)
-	# Walk the order: LIFT → ARCHIVE → HALL down the hall.
+		_pipe(Vector3(x, 2.2, 6.2), 13.0)
 	_station(Vector3(-2.6, 0.0, 2.6), "LIFT", "lift")
 	_station(Vector3(0.0, 0.0, 5.6), "ARCHIVE", "archive")
 	_station(Vector3(2.6, 0.0, 8.6), "HALL", "hall")
-	_box(Vector3(-2.6, 0.55, 4.0), Vector3(1.1, 1.1, 0.55), _metal)
-	_sign(Vector3(-2.6, 1.25, 3.68), "ELEVATOR\nCABINET", 24, Color(0.72, 0.62, 0.4))
-	_box(Vector3(2.4, 0.7, 10.8), Vector3(2.4, 1.4, 0.8), _metal)
-	_sign(Vector3(2.4, 1.05, 10.32), "COMPLAINT ARCHIVE\n02:17", 26, Color(0.62, 0.72, 0.62))
+	_cabinet(Vector3(-2.6, 0.0, 4.0), "ELEVATOR\nCABINET")
+	_archive_rack(Vector3(2.4, 0.0, 10.8))
 	_door(Vector3(0, 1.05, 14.9), "RECORDS")
 	set_circuit("")
 
 func _build_management() -> void:
 	_shell("MANAGEMENT", "RETURN / RETAIN / REMOVE")
-	# Intake rail near the entrance, stamp desks further down.
-	_box(Vector3(0, 0.42, 1.9), Vector3(5.4, 0.84, 0.7), _wood)
+	_desk(Vector3(0, 0.0, 1.9), Vector3(5.4, 0.84, 0.7))
 	_sign(Vector3(0, 1.05, 1.5), "INTAKE", 28, Color(0.78, 0.68, 0.48))
 	for x in [-2.7, 0.0, 2.7]:
-		_box(Vector3(x, 0.42, 6.4), Vector3(1.6, 0.84, 0.85), _wood)
+		_desk(Vector3(x, 0.0, 6.4), Vector3(1.6, 0.84, 0.85))
 	_sign(Vector3(-2.7, 1.12, 5.9), "RETURN", 32, Color(0.72, 0.62, 0.34))
 	_sign(Vector3(0, 1.12, 5.9), "RETAIN", 32, Color(0.72, 0.62, 0.34))
 	_sign(Vector3(2.7, 1.12, 5.9), "REMOVE", 32, Color(0.72, 0.62, 0.34))
 	for x in [-2.6, 2.6]:
 		for z in [9.0, 11.0, 13.0]:
-			_box(Vector3(x, 0.9, z), Vector3(1.5, 1.8, 0.65), _metal)
-	_box(Vector3(0, 0.52, 13.2), Vector3(3.0, 1.04, 1.0), _wood)
+			_file_cabinet(Vector3(x, 0.0, z))
+	_desk(Vector3(0, 0.0, 13.2), Vector3(3.0, 1.04, 1.0))
 	_sign(Vector3(0, 1.28, 12.65), "NO MANAGER ON DUTY", 28, Color(0.72, 0.18, 0.12))
 
 func _build_lobby() -> void:
@@ -143,12 +125,9 @@ func _build_lobby() -> void:
 				Vector3(0.4, 0.34, 0.34),
 				_metal
 			)
-	_box(Vector3(-2.4, 0.55, 6.8), Vector3(1.2, 1.1, 0.4), _metal)
-	_sign(Vector3(-2.4, 1.2, 6.55), "ELEVATOR\nSOCKET", 22, Color(0.55, 0.7, 0.7))
-	_box(Vector3(2.4, 0.55, 8.8), Vector3(1.2, 1.1, 0.4), _wood)
-	_sign(Vector3(2.4, 1.2, 8.55), "MAILBOX\nSOCKET", 22, Color(0.55, 0.7, 0.7))
-	_box(Vector3(0, 0.55, 11.0), Vector3(1.4, 1.1, 0.4), _metal)
-	_sign(Vector3(0, 1.2, 10.75), "EXIT\nSOCKET", 22, Color(0.55, 0.7, 0.7))
+	_socket_stand(Vector3(-2.4, 0.0, 6.8), "ELEVATOR\nSOCKET")
+	_socket_stand(Vector3(2.4, 0.0, 8.8), "MAILBOX\nSOCKET", true)
+	_socket_stand(Vector3(0, 0.0, 11.0), "EXIT\nSOCKET")
 	_door(Vector3(-1.5, 1.05, 14.8), "EXIT")
 	_door(Vector3(1.5, 1.05, 14.8), "EXIT")
 	_figure(Vector3(2.6, 0.0, 12.2))
@@ -198,62 +177,141 @@ func set_circuit(which: String) -> void:
 				Color(0.78, 0.88, 1.0) if on else Color(0.28, 0.1, 0.07)
 			)
 	for marker in get_tree().get_nodes_in_group("circuit_marker"):
-		if marker is MeshInstance3D and marker.material_override is StandardMaterial3D:
+		if marker is MeshInstance3D:
 			var live := which != "" and str(marker.name).to_lower() == "marker_" + which
-			var mat := (marker.material_override as StandardMaterial3D).duplicate() as StandardMaterial3D
-			mat.emission_enabled = true
-			mat.emission = Color(0.85, 0.35, 0.12) if live else Color(0.12, 0.04, 0.03)
-			mat.albedo_color = Color(0.75, 0.22, 0.1) if live else Color(0.35, 0.1, 0.08)
-			marker.material_override = mat
+			marker.material_override = CampaignMaterials.emissive(
+				Color(0.85, 0.35, 0.12) if live else Color(0.28, 0.1, 0.08),
+				0.7 if live else 0.08
+			)
 
 func _station(pos: Vector3, label: String, circuit: String) -> void:
-	_box(pos + Vector3(0, 0.8, 0), Vector3(1.5, 1.6, 0.5), _metal)
-	_sign(pos + Vector3(0, 1.55, -0.28), label, 28, Color(0.82, 0.32, 0.2))
+	_box(pos + Vector3(0, 0.85, 0), Vector3(1.5, 1.7, 0.55), _metal)
+	_box(pos + Vector3(0, 0.95, -0.28), Vector3(1.1, 0.9, 0.08), _dark, false)
+	_sign(pos + Vector3(0, 1.55, -0.34), label, 28, Color(0.82, 0.32, 0.2))
 	var marker := MeshInstance3D.new()
 	marker.name = "marker_" + circuit
 	var bulb := SphereMesh.new()
-	bulb.radius = 0.12
-	bulb.height = 0.24
+	bulb.radius = 0.1
+	bulb.height = 0.2
 	marker.mesh = bulb
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color(0.35, 0.1, 0.08)
-	mat.emission_enabled = true
-	mat.emission = Color(0.12, 0.04, 0.03)
-	marker.material_override = mat
+	marker.material_override = CampaignMaterials.emissive(Color(0.28, 0.1, 0.08), 0.08)
 	marker.position = pos + Vector3(0, 1.95, -0.05)
 	marker.add_to_group("circuit_marker")
 	add_child(marker)
 	_station_light(circuit, pos + Vector3(0, 1.9, -0.2))
 
 func _elevator(pos: Vector3) -> void:
-	_box(pos + Vector3(0, 1.1, 0), Vector3(2.5, 2.2, 0.8), _metal)
-	_box(pos + Vector3(0, 1.1, -0.42), Vector3(1.4, 1.8, 0.08), _dark, false)
+	_box(pos + Vector3(0, 1.15, 0.1), Vector3(2.6, 2.3, 0.9), _metal)
+	_box(pos + Vector3(0, 1.15, -0.38), Vector3(1.45, 1.9, 0.06), _dark, false)
+	_box(pos + Vector3(-0.85, 1.3, -0.42), Vector3(0.18, 0.55, 0.08), _metal, false)
+	_box(pos + Vector3(-0.85, 1.3, -0.48), Vector3(0.12, 0.45, 0.02), CampaignMaterials.emissive(Color(0.45, 0.55, 0.4), 0.25), false)
 
 func _door(pos: Vector3, label: String) -> void:
-	_box(pos, Vector3(1.15, 2.1, 0.16) if absf(pos.x) < 3.5 else Vector3(0.16, 2.1, 1.15), _wood)
-	var face := Vector3(0, 0.35, -0.12)
+	var side := absf(pos.x) >= 3.5
+	var size := Vector3(0.14, 2.1, 1.05) if side else Vector3(1.05, 2.1, 0.14)
+	_box(pos, size, _wood)
+	# Frame
+	if side:
+		_box(pos + Vector3(0, 1.12, 0), Vector3(0.2, 0.1, 1.18), _trim, false)
+		_box(pos + Vector3(0, -1.05, 0), Vector3(0.2, 0.1, 1.18), _trim, false)
+	else:
+		_box(pos + Vector3(0, 1.12, 0), Vector3(1.18, 0.1, 0.2), _trim, false)
+		_box(pos + Vector3(0, -1.05, 0), Vector3(1.18, 0.1, 0.2), _trim, false)
+	# Handle
+	var handle_offset := Vector3(-0.08, 0.0, 0.35) if side and pos.x > 0 else Vector3(0.08, 0.0, 0.35)
+	if not side:
+		handle_offset = Vector3(0.38, 0.0, -0.08)
+	elif pos.x < 0:
+		handle_offset = Vector3(0.08, 0.0, -0.35)
+	_box(pos + handle_offset, Vector3(0.04, 0.12, 0.04), _metal, false)
+	var face := Vector3(0, 0.4, -0.1)
 	var yaw := PI
 	if pos.x <= -3.5:
-		face = Vector3(0.12, 0.35, 0)
+		face = Vector3(0.1, 0.4, 0)
 		yaw = PI * 0.5
 	elif pos.x >= 3.5:
-		face = Vector3(-0.12, 0.35, 0)
+		face = Vector3(-0.1, 0.4, 0)
 		yaw = -PI * 0.5
-	_box(pos + Vector3(0, 1.05, 0), Vector3(1.28, 0.08, 0.2), _trim, false)
-	_box(pos + Vector3(0, -1.0, 0), Vector3(1.28, 0.08, 0.2), _trim, false)
-	var plate := _sign(pos + face, label, 34, Color(0.82, 0.7, 0.5))
+	var plate := _sign(pos + face, label, 32, Color(0.82, 0.7, 0.5))
 	plate.rotation.y = yaw
+
+func _console(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 0.35, 0), Vector3(1.4, 0.7, 0.55), _wood)
+	_box(pos + Vector3(0, 0.72, -0.05), Vector3(1.1, 0.05, 0.4), _metal, false)
+
+func _desk(pos: Vector3, size: Vector3) -> void:
+	_box(pos + Vector3(0, size.y * 0.5, 0), size, _wood)
+	_box(pos + Vector3(-size.x * 0.42, 0.18, -size.z * 0.35), Vector3(0.08, 0.36, 0.08), _trim, false)
+	_box(pos + Vector3(size.x * 0.42, 0.18, -size.z * 0.35), Vector3(0.08, 0.36, 0.08), _trim, false)
+	_box(pos + Vector3(-size.x * 0.42, 0.18, size.z * 0.35), Vector3(0.08, 0.36, 0.08), _trim, false)
+	_box(pos + Vector3(size.x * 0.42, 0.18, size.z * 0.35), Vector3(0.08, 0.36, 0.08), _trim, false)
+
+func _file_cabinet(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 0.9, 0), Vector3(1.45, 1.8, 0.62), _metal)
+	for i in 3:
+		_box(pos + Vector3(0, 0.35 + i * 0.5, -0.32), Vector3(1.25, 0.38, 0.04), _dark, false)
+		_box(pos + Vector3(0, 0.35 + i * 0.5, -0.35), Vector3(0.18, 0.04, 0.04), _metal, false)
+
+func _cabinet(pos: Vector3, label: String) -> void:
+	_box(pos + Vector3(0, 0.55, 0), Vector3(1.15, 1.1, 0.55), _metal)
+	_box(pos + Vector3(0, 0.55, -0.28), Vector3(0.9, 0.8, 0.04), _dark, false)
+	_sign(pos + Vector3(0, 1.25, -0.32), label, 22, Color(0.72, 0.62, 0.4))
+
+func _archive_rack(pos: Vector3) -> void:
+	_box(pos + Vector3(0, 0.7, 0), Vector3(2.4, 1.4, 0.8), _metal)
+	_box(pos + Vector3(0, 0.85, -0.35), Vector3(1.8, 0.9, 0.08), _dark, false)
+	_sign(pos + Vector3(0, 1.05, -0.48), "COMPLAINT ARCHIVE\n02:17", 24, Color(0.62, 0.72, 0.62))
+	# Reel
+	var reel := MeshInstance3D.new()
+	var cyl := CylinderMesh.new()
+	cyl.top_radius = 0.22
+	cyl.bottom_radius = 0.22
+	cyl.height = 0.08
+	reel.mesh = cyl
+	reel.material_override = _wood
+	reel.position = pos + Vector3(0.35, 0.85, -0.42)
+	reel.rotation.x = PI * 0.5
+	add_child(reel)
+
+func _socket_stand(pos: Vector3, label: String, wood := false) -> void:
+	_box(pos + Vector3(0, 0.55, 0), Vector3(1.2, 1.1, 0.4), _wood if wood else _metal)
+	_box(pos + Vector3(0, 0.7, -0.18), Vector3(0.7, 0.45, 0.05), _dark, false)
+	_sign(pos + Vector3(0, 1.2, -0.25), label, 22, Color(0.55, 0.7, 0.7))
+
+func _pipe(pos: Vector3, length: float) -> void:
+	var pipe := MeshInstance3D.new()
+	var cylinder := CylinderMesh.new()
+	cylinder.top_radius = 0.11
+	cylinder.bottom_radius = 0.11
+	cylinder.height = length
+	pipe.mesh = cylinder
+	pipe.material_override = _metal
+	pipe.position = pos
+	pipe.rotation.x = PI * 0.5
+	add_child(pipe)
+	# Hangers
+	for side in [-1.0, 1.0]:
+		_box(pos + Vector3(0, 0.18, side * length * 0.28), Vector3(0.08, 0.2, 0.08), _metal, false)
 
 func _fixture(pos: Vector3) -> void:
 	var shade := MeshInstance3D.new()
 	var cylinder := CylinderMesh.new()
-	cylinder.top_radius = 0.22
-	cylinder.bottom_radius = 0.34
-	cylinder.height = 0.12
+	cylinder.top_radius = 0.18
+	cylinder.bottom_radius = 0.32
+	cylinder.height = 0.1
 	shade.mesh = cylinder
 	shade.material_override = _accent
 	shade.position = pos
 	add_child(shade)
+	var stem := MeshInstance3D.new()
+	var stem_mesh := CylinderMesh.new()
+	stem_mesh.top_radius = 0.03
+	stem_mesh.bottom_radius = 0.03
+	stem_mesh.height = 0.18
+	stem.mesh = stem_mesh
+	stem.material_override = _metal
+	stem.position = pos + Vector3(0, 0.12, 0)
+	add_child(stem)
 	var light := OmniLight3D.new()
 	light.name = "ceiling_%d" % int(pos.z)
 	light.position = pos - Vector3(0, 0.18, 0)
@@ -279,18 +337,25 @@ func _figure(pos: Vector3, node_name := "TenantFigure") -> void:
 	var body := MeshInstance3D.new()
 	body.name = node_name
 	var box := BoxMesh.new()
-	box.size = Vector3(0.36, 1.75, 0.3)
+	box.size = Vector3(0.38, 1.55, 0.28)
 	body.mesh = box
 	body.material_override = _dark
-	body.position = pos + Vector3(0, 0.88, 0)
+	body.position = pos + Vector3(0, 0.95, 0)
 	add_child(body)
+	var shoulders := MeshInstance3D.new()
+	var shoulder_mesh := BoxMesh.new()
+	shoulder_mesh.size = Vector3(0.55, 0.22, 0.22)
+	shoulders.mesh = shoulder_mesh
+	shoulders.material_override = _dark
+	shoulders.position = Vector3(0, 0.55, 0)
+	body.add_child(shoulders)
 	var head := MeshInstance3D.new()
 	var sphere := SphereMesh.new()
-	sphere.radius = 0.22
-	sphere.height = 0.44
+	sphere.radius = 0.2
+	sphere.height = 0.4
 	head.mesh = sphere
 	head.material_override = _dark
-	head.position = Vector3(0, 1.02, 0)
+	head.position = Vector3(0, 0.98, 0)
 	body.add_child(head)
 
 func _sign(pos: Vector3, text: String, font_size: int, color: Color) -> Label3D:

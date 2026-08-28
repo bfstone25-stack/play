@@ -50,3 +50,6 @@ during Episode I to continue the latest unlocked episode. At the final ending,
 
 The public Web preset excludes `scripts/full/*` and
 `scenes/full_campaign.tscn`; its embed remains Episode I only.
+
+The full build is first-person camera-only: no player body mesh. Hands can be
+added later if needed; a full avatar is not required for this camera style.
