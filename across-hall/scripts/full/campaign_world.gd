@@ -33,27 +33,27 @@ func _clear_world() -> void:
 func _make_materials() -> void:
 	match episode:
 		2:
-			_wall = CampaignMaterials.plaster(Color(0.42, 0.36, 0.28))
-			_floor = CampaignMaterials.planks(Color(0.22, 0.14, 0.09), 0.8)
-			_accent = CampaignMaterials.emissive(Color(0.72, 0.52, 0.24), 0.35)
+			_wall = GameMaterials.plaster(Color(0.42, 0.36, 0.28))
+			_floor = GameMaterials.planks(Color(0.22, 0.14, 0.09), 0.8)
+			_accent = GameMaterials.emissive(Color(0.72, 0.52, 0.24), 0.35)
 		3:
-			_wall = CampaignMaterials.concrete(Color(0.28, 0.3, 0.28))
-			_floor = CampaignMaterials.concrete(Color(0.16, 0.17, 0.16), 0.9)
-			_accent = CampaignMaterials.emissive(Color(0.62, 0.16, 0.08), 0.45)
+			_wall = GameMaterials.concrete(Color(0.28, 0.3, 0.28))
+			_floor = GameMaterials.concrete(Color(0.16, 0.17, 0.16), 0.9)
+			_accent = GameMaterials.emissive(Color(0.62, 0.16, 0.08), 0.45)
 		4:
-			_wall = CampaignMaterials.plaster(Color(0.36, 0.4, 0.33))
-			_floor = CampaignMaterials.carpet(Color(0.18, 0.14, 0.1))
-			_accent = CampaignMaterials.emissive(Color(0.66, 0.54, 0.28), 0.32)
+			_wall = GameMaterials.plaster(Color(0.36, 0.4, 0.33))
+			_floor = GameMaterials.carpet(Color(0.18, 0.14, 0.1))
+			_accent = GameMaterials.emissive(Color(0.66, 0.54, 0.28), 0.32)
 		_:
-			_wall = CampaignMaterials.plaster(Color(0.46, 0.4, 0.33))
-			_floor = CampaignMaterials.planks(Color(0.2, 0.15, 0.11), 0.78)
-			_accent = CampaignMaterials.emissive(Color(0.52, 0.7, 0.72), 0.38)
-	_wood = CampaignMaterials.planks(Color(0.28, 0.15, 0.08), 0.7)
-	_metal = CampaignMaterials.metal(Color(0.26, 0.28, 0.27))
-	_paper = CampaignMaterials.paper(Color(0.84, 0.78, 0.64))
-	_dark = CampaignMaterials.flat(Color(0.03, 0.025, 0.02), 1.0)
-	_trim = CampaignMaterials.planks(Color(0.18, 0.12, 0.08), 0.82)
-	_glass = CampaignMaterials.flat(Color(0.55, 0.65, 0.72, 0.35), 0.08)
+			_wall = GameMaterials.plaster(Color(0.46, 0.4, 0.33))
+			_floor = GameMaterials.planks(Color(0.2, 0.15, 0.11), 0.78)
+			_accent = GameMaterials.emissive(Color(0.52, 0.7, 0.72), 0.38)
+	_wood = GameMaterials.planks(Color(0.28, 0.15, 0.08), 0.7)
+	_metal = GameMaterials.metal(Color(0.26, 0.28, 0.27))
+	_paper = GameMaterials.paper(Color(0.84, 0.78, 0.64))
+	_dark = GameMaterials.flat(Color(0.03, 0.025, 0.02), 1.0)
+	_trim = GameMaterials.planks(Color(0.18, 0.12, 0.08), 0.82)
+	_glass = GameMaterials.flat(Color(0.55, 0.65, 0.72, 0.35), 0.08)
 	_glass.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	_glass.albedo_color.a = 0.28
 
@@ -179,7 +179,7 @@ func set_circuit(which: String) -> void:
 	for marker in get_tree().get_nodes_in_group("circuit_marker"):
 		if marker is MeshInstance3D:
 			var live := which != "" and str(marker.name).to_lower() == "marker_" + which
-			marker.material_override = CampaignMaterials.emissive(
+			marker.material_override = GameMaterials.emissive(
 				Color(0.85, 0.35, 0.12) if live else Color(0.28, 0.1, 0.08),
 				0.7 if live else 0.08
 			)
@@ -194,7 +194,7 @@ func _station(pos: Vector3, label: String, circuit: String) -> void:
 	bulb.radius = 0.1
 	bulb.height = 0.2
 	marker.mesh = bulb
-	marker.material_override = CampaignMaterials.emissive(Color(0.28, 0.1, 0.08), 0.08)
+	marker.material_override = GameMaterials.emissive(Color(0.28, 0.1, 0.08), 0.08)
 	marker.position = pos + Vector3(0, 1.95, -0.05)
 	marker.add_to_group("circuit_marker")
 	add_child(marker)
@@ -204,7 +204,7 @@ func _elevator(pos: Vector3) -> void:
 	_box(pos + Vector3(0, 1.15, 0.1), Vector3(2.6, 2.3, 0.9), _metal)
 	_box(pos + Vector3(0, 1.15, -0.38), Vector3(1.45, 1.9, 0.06), _dark, false)
 	_box(pos + Vector3(-0.85, 1.3, -0.42), Vector3(0.18, 0.55, 0.08), _metal, false)
-	_box(pos + Vector3(-0.85, 1.3, -0.48), Vector3(0.12, 0.45, 0.02), CampaignMaterials.emissive(Color(0.45, 0.55, 0.4), 0.25), false)
+	_box(pos + Vector3(-0.85, 1.3, -0.48), Vector3(0.12, 0.45, 0.02), GameMaterials.emissive(Color(0.45, 0.55, 0.4), 0.25), false)
 
 func _door(pos: Vector3, label: String) -> void:
 	var side := absf(pos.x) >= 3.5

@@ -28,6 +28,9 @@ func _ready() -> void:
 	drone.stream = _tone_stream(38.0, 0.2)
 	drone.volume_db = -24.0
 	drone.play()
+	var amb := Node.new()
+	amb.set_script(preload("res://scripts/full/campaign_ambience.gd"))
+	add_child(amb)
 	_fade = ColorRect.new()
 	_fade.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -586,15 +589,15 @@ func _prop_mesh(kind: String, size: Vector3, color: Color, action_id: String) ->
 		or kind in ["plate", "socket", "key", "fuse"]
 	)
 	if kind == "paper":
-		mesh_instance.material_override = CampaignMaterials.paper(color)
+		mesh_instance.material_override = GameMaterials.paper(color)
 	elif kind in ["pad", "panel", "door", "deck"]:
 		mesh_instance.material_override = (
-			CampaignMaterials.emissive(color, 0.28) if glowing else CampaignMaterials.metal(color)
+			GameMaterials.emissive(color, 0.28) if glowing else GameMaterials.metal(color)
 		)
 	elif glowing:
-		mesh_instance.material_override = CampaignMaterials.emissive(color, 0.4)
+		mesh_instance.material_override = GameMaterials.emissive(color, 0.4)
 	else:
-		mesh_instance.material_override = CampaignMaterials.metal(color, 0.55)
+		mesh_instance.material_override = GameMaterials.metal(color, 0.55)
 	if kind == "lever":
 		var knob := MeshInstance3D.new()
 		var sphere := SphereMesh.new()
@@ -602,7 +605,7 @@ func _prop_mesh(kind: String, size: Vector3, color: Color, action_id: String) ->
 		sphere.height = 0.16
 		knob.mesh = sphere
 		knob.position = Vector3(0, size.y * 0.45, 0)
-		knob.material_override = CampaignMaterials.emissive(Color(0.75, 0.15, 0.1), 0.5)
+		knob.material_override = GameMaterials.emissive(Color(0.75, 0.15, 0.1), 0.5)
 		mesh_instance.add_child(knob)
 	elif kind == "key":
 		var bow := MeshInstance3D.new()
@@ -612,7 +615,7 @@ func _prop_mesh(kind: String, size: Vector3, color: Color, action_id: String) ->
 		bow.mesh = torus
 		bow.position = Vector3(0, 0, -size.z * 0.45)
 		bow.rotation.x = PI * 0.5
-		bow.material_override = CampaignMaterials.emissive(color, 0.35)
+		bow.material_override = GameMaterials.emissive(color, 0.35)
 		mesh_instance.add_child(bow)
 	return mesh_instance
 

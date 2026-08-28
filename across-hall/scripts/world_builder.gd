@@ -1,18 +1,15 @@
 extends Node3D
 
-## Built with MeshInstance3D + lights + decals + dust, not a black CSG cave.
-
-const WALL := Color(0.62, 0.56, 0.46)
-const FLOOR := Color(0.28, 0.20, 0.14)
-const WOOD := Color(0.32, 0.18, 0.10)
-const TILE := Color(0.55, 0.56, 0.53)
-const TRIM := Color(0.45, 0.38, 0.28)
+## Episode I hall + apartments. Materials match the full-campaign upgrade.
 
 var _plaster: StandardMaterial3D
 var _floor_mat: StandardMaterial3D
 var _wood: StandardMaterial3D
 var _tile: StandardMaterial3D
 var _trim: StandardMaterial3D
+var _metal: StandardMaterial3D
+var _dark: StandardMaterial3D
+var _fabric: StandardMaterial3D
 
 func _ready() -> void:
 	_make_materials()
@@ -20,104 +17,35 @@ func _ready() -> void:
 	_dust()
 
 func _make_materials() -> void:
-	_plaster = _plaster_mat()
-	_floor_mat = _plank_mat(FLOOR, 0.82)
-	_wood = _plank_mat(WOOD, 0.7)
-	_tile = _tile_mat()
-	_trim = _plank_mat(TRIM, 0.55)
-
-func _tex_from(img: Image, rough: float, uv: Vector3) -> StandardMaterial3D:
-	var tex := ImageTexture.create_from_image(img)
-	var m := StandardMaterial3D.new()
-	m.albedo_texture = tex
-	m.albedo_color = Color(1, 1, 1)
-	m.roughness = rough
-	m.uv1_scale = uv
-	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	return m
-
-func _plaster_mat() -> StandardMaterial3D:
-	var dim := 128 if OS.has_feature("web") else 256
-	var img := Image.create(dim, dim, false, Image.FORMAT_RGB8)
-	for y in dim:
-		for x in dim:
-			var speck := float((x * 19 + y * 11) % 23) / 90.0
-			var mott := 0.1 * (((x * 13) ^ (y * 7)) % 17) / 17.0
-			var n := mott + speck * 0.25 - 0.08
-			var c := Color(
-				clampf(WALL.r + n, 0.0, 1.0),
-				clampf(WALL.g + n * 0.85, 0.0, 1.0),
-				clampf(WALL.b + n * 0.6, 0.0, 1.0)
-			)
-			img.set_pixel(x, y, c)
-	return _tex_from(img, 0.93, Vector3(1.6, 1.4, 1.6))
-
-func _plank_mat(base: Color, rough: float) -> StandardMaterial3D:
-	var dim := 128 if OS.has_feature("web") else 256
-	var img := Image.create(dim, dim, false, Image.FORMAT_RGB8)
-	for y in dim:
-		for x in dim:
-			var plank := int(y / 32.0)
-			var groove := 0.0
-			if y % 32 < 2:
-				groove = -0.18
-			var grain := 0.12 * sin(x * 0.4 + plank * 1.7) + 0.06 * sin(x * 1.3)
-			var n := grain + groove + 0.04 * float((x * 7 + plank * 13) % 11) / 11.0
-			var c := Color(
-				clampf(base.r + n, 0.0, 1.0),
-				clampf(base.g + n * 0.8, 0.0, 1.0),
-				clampf(base.b + n * 0.55, 0.0, 1.0)
-			)
-			img.set_pixel(x, y, c)
-	return _tex_from(img, rough, Vector3(2.2, 0.45, 6.0))
-
-func _tile_mat() -> StandardMaterial3D:
-	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
-	for y in 256:
-		for x in 256:
-			var grout := 0.0
-			if x % 32 < 2 or y % 32 < 2:
-				grout = -0.22
-			var n := grout + 0.05 * sin(x * 0.2) + 0.04 * float((x + y) % 9) / 9.0
-			var c := Color(
-				clampf(TILE.r + n, 0.0, 1.0),
-				clampf(TILE.g + n, 0.0, 1.0),
-				clampf(TILE.b + n, 0.0, 1.0)
-			)
-			img.set_pixel(x, y, c)
-	return _tex_from(img, 0.35, Vector3(6, 6, 6))
-
-func _noisy(base: Color, rough: float, uv: Vector3, amp: float) -> StandardMaterial3D:
-	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
-	for y in 256:
-		for x in 256:
-			var n := amp * (sin(x * 0.17 + y * 0.03) * 0.5 + sin(y * 0.31) * 0.35 + float((x * 13 + y * 7) % 17) / 80.0)
-			var c := Color(
-				clampf(base.r + n, 0.0, 1.0),
-				clampf(base.g + n * 0.9, 0.0, 1.0),
-				clampf(base.b + n * 0.7, 0.0, 1.0)
-			)
-			img.set_pixel(x, y, c)
-	return _tex_from(img, rough, uv)
+	_plaster = GameMaterials.plaster(Color(0.58, 0.52, 0.42))
+	_floor_mat = GameMaterials.planks(Color(0.26, 0.18, 0.12), 0.82)
+	_wood = GameMaterials.planks(Color(0.3, 0.16, 0.09), 0.7)
+	_tile = GameMaterials.concrete(Color(0.52, 0.53, 0.5), 0.4)
+	_tile.metallic = 0.05
+	_trim = GameMaterials.planks(Color(0.4, 0.32, 0.22), 0.58)
+	_metal = GameMaterials.metal(Color(0.28, 0.3, 0.29))
+	_dark = GameMaterials.flat(Color(0.04, 0.035, 0.03), 1.0)
+	_fabric = GameMaterials.carpet(Color(0.2, 0.21, 0.22), 0.96)
 
 func _build() -> void:
 	# Hall along +Z. Player looks down +Z toward 402.
 	_box(Vector3(0, -0.05, 6), Vector3(3.4, 0.1, 16.4), _floor_mat)
 	_box(Vector3(0, 2.62, 6), Vector3(3.4, 0.12, 16.4), _plaster)
-	# Hall -X wall with a 1m door cut at z=2.4 (401).
 	_box(Vector3(-1.75, 1.3, -0.145), Vector3(0.22, 2.7, 4.01), _plaster)
 	_box(Vector3(-1.75, 1.3, 8.545), Vector3(0.22, 2.7, 11.21), _plaster)
 	_box(Vector3(-1.75, 2.28, 2.4), Vector3(0.22, 0.72, 1.08), _plaster)
-	# Hall +X wall with a 1m door cut at z=8.05 (402).
 	_box(Vector3(1.75, 1.3, 2.7), Vector3(0.22, 2.7, 9.7), _plaster)
 	_box(Vector3(1.75, 1.3, 11.35), Vector3(0.22, 2.7, 5.6), _plaster)
 	_box(Vector3(1.75, 2.28, 8.05), Vector3(0.22, 0.72, 1.08), _plaster)
 	_box(Vector3(0, 1.3, -2.15), Vector3(3.5, 2.7, 0.18), _plaster)
 	_box(Vector3(0, 1.3, 14.15), Vector3(3.5, 2.7, 0.18), _plaster)
+	# Baseboards + crown
 	_box(Vector3(-1.62, 0.08, -0.15), Vector3(0.06, 0.16, 3.9), _trim)
 	_box(Vector3(-1.62, 0.08, 8.4), Vector3(0.06, 0.16, 11.4), _trim)
 	_box(Vector3(1.62, 0.08, 2.7), Vector3(0.06, 0.16, 9.6), _trim)
 	_box(Vector3(1.62, 0.08, 11.35), Vector3(0.06, 0.16, 5.5), _trim)
+	_box(Vector3(-1.62, 2.48, 6), Vector3(0.05, 0.08, 15.8), _trim, false)
+	_box(Vector3(1.62, 2.48, 6), Vector3(0.05, 0.08, 15.8), _trim, false)
 
 	_closed_door(Vector3(-1.62, 1.08, 2.4), PI * 0.5, "401")
 	_open_door(Vector3(1.62, 1.08, 8.05), "402", 1.0)
@@ -141,6 +69,7 @@ func _build() -> void:
 	_wardrobe(Vector3(3.55, 1.05, 4.85))
 	_toothbrush(Vector3(8.05, 0.62, 11.15))
 	_mirror(Vector3(8.72, 1.45, 11.35))
+	_radiator(Vector3(5.3, 0.35, 4.1))
 	_sign(Vector3(4.4, 1.35, 4.05), "VACANCY CONFIRMED  signed: you")
 	_sign(Vector3(-1.52, 1.55, 6.2), "Do not knock after midnight")
 	_wet(Vector3(7.4, 0.03, 10.6))
@@ -166,7 +95,7 @@ func _build() -> void:
 	_stain(Vector3(0.2, 0.02, 6.8), Vector3(1.4, 1, 0.7))
 	_stain(Vector3(6.2, 0.02, 9.6), Vector3(1.1, 1, 0.8))
 
-func _box(pos: Vector3, size: Vector3, mat: Material) -> MeshInstance3D:
+func _box(pos: Vector3, size: Vector3, mat: Material, collide := true) -> MeshInstance3D:
 	var mi := MeshInstance3D.new()
 	var mesh := BoxMesh.new()
 	mesh.size = size
@@ -174,13 +103,14 @@ func _box(pos: Vector3, size: Vector3, mat: Material) -> MeshInstance3D:
 	mi.position = pos
 	mi.material_override = mat
 	add_child(mi)
-	var body := StaticBody3D.new()
-	var col := CollisionShape3D.new()
-	var sh := BoxShape3D.new()
-	sh.size = size
-	col.shape = sh
-	body.add_child(col)
-	mi.add_child(body)
+	if collide:
+		var body := StaticBody3D.new()
+		var col := CollisionShape3D.new()
+		var sh := BoxShape3D.new()
+		sh.size = size
+		col.shape = sh
+		body.add_child(col)
+		mi.add_child(body)
 	return mi
 
 func _apt401() -> void:
@@ -201,6 +131,7 @@ func _apt401() -> void:
 	_wardrobe(Vector3(-3.55, 1.05, -0.8))
 	_toothbrush(Vector3(-8.05, 0.62, 5.5))
 	_mirror(Vector3(-8.72, 1.45, 5.7))
+	_radiator(Vector3(-5.3, 0.35, -1.55))
 	_sign(Vector3(-4.4, 1.35, -1.65), "YOU LIVE HERE. YOU LEFT.")
 	_wet(Vector3(-7.4, 0.03, 5.0))
 	_wet(Vector3(-3.4, 0.03, 2.5))
@@ -242,6 +173,18 @@ func _closed_door(pos: Vector3, yaw: float, label: String) -> void:
 	mi.material_override = _wood
 	mi.add_to_group("door_401_solid")
 	add_child(mi)
+	# Frame + handle
+	_box(pos + Vector3(0, 1.12, 0), Vector3(0.12, 0.08, 1.05), _trim, false)
+	var handle := MeshInstance3D.new()
+	var hcyl := CylinderMesh.new()
+	hcyl.top_radius = 0.025
+	hcyl.bottom_radius = 0.025
+	hcyl.height = 0.12
+	handle.mesh = hcyl
+	handle.material_override = _metal
+	handle.rotation.x = PI * 0.5
+	handle.position = Vector3(0.06, 0.0, 0.32)
+	mi.add_child(handle)
 	var body := StaticBody3D.new()
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
@@ -268,6 +211,16 @@ func _open_door(pos: Vector3, label: String, inward_x: float = 1.0) -> void:
 	leaf.position = pos + Vector3(0.48 * inward_x, 0, 0.42)
 	leaf.rotation.y = deg_to_rad(-80.0 * inward_x)
 	add_child(leaf)
+	var handle := MeshInstance3D.new()
+	var hcyl := CylinderMesh.new()
+	hcyl.top_radius = 0.025
+	hcyl.bottom_radius = 0.025
+	hcyl.height = 0.12
+	handle.mesh = hcyl
+	handle.material_override = _metal
+	handle.rotation.x = PI * 0.5
+	handle.position = Vector3(0, 0, 0.35)
+	leaf.add_child(handle)
 	var plate_yaw := -PI * 0.5 if inward_x > 0.0 else PI * 0.5
 	_plate(pos + Vector3(-0.08 * inward_x, 0.48, 0), label, plate_yaw)
 
@@ -289,26 +242,29 @@ func _plate(pos: Vector3, text: String, yaw: float) -> void:
 func _fixture(pos: Vector3, color: Color, energy: float, rng: float, flicker := false) -> void:
 	var shade := MeshInstance3D.new()
 	var cyl := CylinderMesh.new()
-	cyl.top_radius = 0.12
-	cyl.bottom_radius = 0.18
-	cyl.height = 0.08
+	cyl.top_radius = 0.14
+	cyl.bottom_radius = 0.26
+	cyl.height = 0.1
 	shade.mesh = cyl
 	shade.position = pos
-	var sm := StandardMaterial3D.new()
-	sm.albedo_color = Color(0.85, 0.8, 0.65)
-	sm.emission_enabled = true
-	sm.emission = color
-	sm.emission_energy_multiplier = 2.4
-	shade.material_override = sm
+	shade.material_override = GameMaterials.emissive(color, 0.55)
 	shade.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(shade)
+	var stem := MeshInstance3D.new()
+	var stem_mesh := CylinderMesh.new()
+	stem_mesh.top_radius = 0.03
+	stem_mesh.bottom_radius = 0.03
+	stem_mesh.height = 0.16
+	stem.mesh = stem_mesh
+	stem.material_override = _metal
+	stem.position = pos + Vector3(0, 0.12, 0)
+	add_child(stem)
 	var li := OmniLight3D.new()
 	li.position = pos + Vector3(0, -0.12, 0)
 	li.light_color = color
 	li.light_energy = energy
 	li.omni_range = rng
 	li.omni_attenuation = 1.35
-	# Omni dual-paraboloid shadows on box halls look like starbursts.
 	li.shadow_enabled = false
 	li.add_to_group("hall_light")
 	if flicker:
@@ -330,30 +286,39 @@ func _window(pos: Vector3) -> void:
 	m.roughness = 0.08
 	glass.material_override = m
 	add_child(glass)
-	_box(pos + Vector3(0, 0, -0.88), Vector3(0.08, 1.4, 0.06), _trim)
-	_box(pos + Vector3(0, 0, 0.88), Vector3(0.08, 1.4, 0.06), _trim)
+	_box(pos + Vector3(0, 0, -0.88), Vector3(0.08, 1.4, 0.06), _trim, false)
+	_box(pos + Vector3(0, 0, 0.88), Vector3(0.08, 1.4, 0.06), _trim, false)
+	_box(pos + Vector3(0, 0.65, 0), Vector3(0.08, 0.06, 1.8), _trim, false)
+	_box(pos + Vector3(0, -0.65, 0), Vector3(0.08, 0.06, 1.8), _trim, false)
 
 func _couch(pos: Vector3) -> void:
-	_box(pos, Vector3(1.7, 0.42, 0.72), _noisy(Color(0.22, 0.23, 0.24), 0.95, Vector3(2, 2, 2), 0.04))
-	_box(pos + Vector3(0, 0.38, -0.28), Vector3(1.7, 0.42, 0.18), _noisy(Color(0.2, 0.21, 0.22), 0.95, Vector3(2, 2, 2), 0.04))
+	_box(pos, Vector3(1.7, 0.42, 0.72), _fabric)
+	_box(pos + Vector3(0, 0.38, -0.28), Vector3(1.7, 0.42, 0.18), _fabric)
+	_box(pos + Vector3(-0.78, 0.28, 0.05), Vector3(0.14, 0.55, 0.62), _fabric)
+	_box(pos + Vector3(0.78, 0.28, 0.05), Vector3(0.14, 0.55, 0.62), _fabric)
+	_box(pos + Vector3(0, 0.28, 0.08), Vector3(1.35, 0.12, 0.42), _fabric, false)
 
 func _table(pos: Vector3) -> void:
 	_box(pos, Vector3(1.15, 0.08, 0.7), _wood)
-	_box(pos + Vector3(0.46, -0.22, 0.26), Vector3(0.07, 0.36, 0.07), _wood)
-	_box(pos + Vector3(-0.46, -0.22, 0.26), Vector3(0.07, 0.36, 0.07), _wood)
-	_box(pos + Vector3(0.46, -0.22, -0.26), Vector3(0.07, 0.36, 0.07), _wood)
-	_box(pos + Vector3(-0.46, -0.22, -0.26), Vector3(0.07, 0.36, 0.07), _wood)
+	for sx in [-1.0, 1.0]:
+		for sz in [-1.0, 1.0]:
+			_box(pos + Vector3(0.46 * sx, -0.22, 0.26 * sz), Vector3(0.07, 0.36, 0.07), _wood)
 
 func _sink(pos: Vector3) -> void:
 	_box(pos, Vector3(0.72, 0.1, 0.46), _tile)
+	_box(pos + Vector3(0, 0.08, 0), Vector3(0.55, 0.06, 0.32), _dark, false)
+	_box(pos + Vector3(0.18, 0.16, 0), Vector3(0.06, 0.16, 0.06), _metal, false)
 
 func _wardrobe(pos: Vector3) -> void:
 	_box(pos, Vector3(0.55, 2.05, 1.15), _wood)
-	_box(pos + Vector3(0.3, 0.2, 0), Vector3(0.04, 1.6, 0.5), _wood)
+	_box(pos + Vector3(0.28, 0.15, -0.28), Vector3(0.04, 1.55, 0.48), _wood, false)
+	_box(pos + Vector3(0.28, 0.15, 0.28), Vector3(0.04, 1.55, 0.48), _wood, false)
+	_box(pos + Vector3(0.3, 0.2, -0.28), Vector3(0.03, 0.08, 0.03), _metal, false)
+	_box(pos + Vector3(0.3, 0.2, 0.28), Vector3(0.03, 0.08, 0.03), _metal, false)
 
 func _toothbrush(pos: Vector3) -> void:
-	_box(pos, Vector3(0.08, 0.16, 0.08), _noisy(Color(0.75, 0.75, 0.78), 0.3, Vector3(1, 1, 1), 0.02))
-	_box(pos + Vector3(0, 0.14, 0), Vector3(0.02, 0.18, 0.02), _noisy(Color(0.2, 0.45, 0.55), 0.4, Vector3(1, 1, 1), 0.01))
+	_box(pos, Vector3(0.08, 0.16, 0.08), GameMaterials.flat(Color(0.75, 0.75, 0.78), 0.3))
+	_box(pos + Vector3(0, 0.14, 0), Vector3(0.02, 0.18, 0.02), GameMaterials.flat(Color(0.2, 0.45, 0.55), 0.4))
 
 func _mirror(pos: Vector3) -> void:
 	var glass := MeshInstance3D.new()
@@ -367,9 +332,15 @@ func _mirror(pos: Vector3) -> void:
 	m.roughness = 0.08
 	glass.material_override = m
 	add_child(glass)
+	_box(pos + Vector3(0, 0, 0), Vector3(0.05, 0.78, 0.52), _trim, false)
+
+func _radiator(pos: Vector3) -> void:
+	_box(pos, Vector3(1.4, 0.55, 0.18), _metal)
+	for i in 5:
+		_box(pos + Vector3(-0.5 + i * 0.25, 0.02, -0.02), Vector3(0.08, 0.48, 0.14), _metal, false)
 
 func _sign(pos: Vector3, text: String) -> void:
-	_box(pos, Vector3(0.02, 0.28, 0.55), _noisy(Color(0.15, 0.14, 0.12), 0.8, Vector3(1, 1, 1), 0.02))
+	_box(pos, Vector3(0.02, 0.28, 0.55), GameMaterials.flat(Color(0.15, 0.14, 0.12), 0.8), false)
 	var l := Label3D.new()
 	l.text = text
 	l.font_size = 28
@@ -384,8 +355,8 @@ func _wet(pos: Vector3) -> void:
 	_stain(pos, Vector3(0.35, 0.4, 0.22))
 
 func _shoes(pos: Vector3) -> void:
-	_box(pos + Vector3(-0.08, 0, 0), Vector3(0.1, 0.07, 0.26), _noisy(Color(0.08, 0.08, 0.09), 0.9, Vector3(1, 1, 1), 0.02))
-	_box(pos + Vector3(0.1, 0, 0.02), Vector3(0.1, 0.07, 0.26), _noisy(Color(0.08, 0.08, 0.09), 0.9, Vector3(1, 1, 1), 0.02))
+	_box(pos + Vector3(-0.08, 0, 0), Vector3(0.1, 0.07, 0.26), GameMaterials.flat(Color(0.08, 0.08, 0.09), 0.9))
+	_box(pos + Vector3(0.1, 0, 0.02), Vector3(0.1, 0.07, 0.26), GameMaterials.flat(Color(0.08, 0.08, 0.09), 0.9))
 
 func _stain(pos: Vector3, size: Vector3) -> void:
 	var d := Decal.new()

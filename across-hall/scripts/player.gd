@@ -120,7 +120,17 @@ func interact_target() -> Node:
 		if n is Node3D:
 			var to: Vector3 = (n as Node3D).global_position - global_position
 			var d: float = to.length()
-			if d < best_d and facing().dot(to.normalized()) > 0.22:
+			if d >= best_d:
+				continue
+			var flat := Vector3(to.x, 0.0, to.z)
+			var face_ok := true
+			if flat.length() > 0.35:
+				# Hallway / desk items must be roughly in front.
+				face_ok = facing().dot(flat.normalized()) > 0.12
+			else:
+				# Floor items underfoot: allow looking down.
+				face_ok = facing().dot(to.normalized()) > -0.35
+			if face_ok:
 				best_d = d
 				best = n
 	return best

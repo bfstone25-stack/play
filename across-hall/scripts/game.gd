@@ -113,6 +113,12 @@ func _process(delta: float) -> void:
 		hud.set_prompt("E / click  " + str(t.prompt))
 	else:
 		hud.set_prompt("")
+	var note_up: bool = hud.note != null and hud.note.visible
+	for n in get_tree().get_nodes_in_group("interactable"):
+		for child in n.get_children():
+			if child is Label3D:
+				var focused: bool = t == n
+				(child as Label3D).visible = not note_up and not focused
 	if caught_t > 0.0:
 		caught_t -= delta
 		hud.set_fear(0.55)
@@ -142,17 +148,22 @@ func _inspect(pos: Vector3, id: String, prompt: String, note: String, color: Col
 	var box := BoxMesh.new()
 	box.size = size
 	mesh.mesh = box
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = color
-	mesh.material_override = mat
+	if id == "calendar":
+		mesh.material_override = GameMaterials.paper(color)
+	elif id == "clock":
+		mesh.material_override = GameMaterials.metal(color)
+	else:
+		mesh.material_override = GameMaterials.flat(color, 0.7)
 	p.add_child(mesh)
 	var tag := Label3D.new()
 	tag.text = prompt
-	tag.font_size = 36
-	tag.pixel_size = 0.0035
+	tag.font_size = 32
+	tag.pixel_size = 0.0032
 	tag.width = 400
 	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	tag.visibility_range_begin = 0.7
+	tag.visibility_range_end = 4.5
 	tag.modulate = Color(0.9, 0.8, 0.58)
 	UiFont.apply_3d(tag)
 	p.add_child(tag)
@@ -175,9 +186,7 @@ func _deck(pos: Vector3, which: String, prompt: String) -> void:
 	var box := BoxMesh.new()
 	box.size = Vector3(0.42, 0.22, 0.28)
 	mesh.mesh = box
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color(0.18, 0.12, 0.08)
-	mesh.material_override = mat
+	mesh.material_override = GameMaterials.planks(Color(0.18, 0.12, 0.08), 0.72)
 	radio.add_child(mesh)
 	var speaker := MeshInstance3D.new()
 	var cyl := CylinderMesh.new()
@@ -187,16 +196,16 @@ func _deck(pos: Vector3, which: String, prompt: String) -> void:
 	speaker.mesh = cyl
 	speaker.rotation.x = PI * 0.5
 	speaker.position = Vector3(0.08, 0.02, -0.12)
-	var sm := StandardMaterial3D.new()
-	sm.albedo_color = Color(0.08, 0.08, 0.08)
-	speaker.material_override = sm
+	speaker.material_override = GameMaterials.flat(Color(0.08, 0.08, 0.08), 0.9)
 	radio.add_child(speaker)
 	var tag := Label3D.new()
 	tag.text = "TAPE DECK " + which
-	tag.font_size = 56
-	tag.pixel_size = 0.0045
+	tag.font_size = 40
+	tag.pixel_size = 0.0035
 	tag.position = Vector3(0, 0.28, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	tag.visibility_range_begin = 0.7
+	tag.visibility_range_end = 4.5
 	tag.modulate = Color(0.95, 0.82, 0.55)
 	UiFont.apply_3d(tag)
 	radio.add_child(tag)
@@ -220,16 +229,36 @@ func _pickup(pos: Vector3, id: String, prompt: String, note: String, color: Colo
 	var box := BoxMesh.new()
 	box.size = size
 	mesh.mesh = box
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = color
-	mesh.material_override = mat
+	match id:
+		"flashlight":
+			mesh.material_override = GameMaterials.emissive(color, 0.45)
+		"note":
+			mesh.material_override = GameMaterials.paper(color)
+		"tape":
+			mesh.material_override = GameMaterials.emissive(color, 0.25)
+		"key":
+			mesh.material_override = GameMaterials.emissive(color, 0.4)
+		_:
+			mesh.material_override = GameMaterials.flat(color, 0.6)
 	p.add_child(mesh)
+	if id == "key":
+		var bow := MeshInstance3D.new()
+		var torus := TorusMesh.new()
+		torus.inner_radius = 0.035
+		torus.outer_radius = 0.07
+		bow.mesh = torus
+		bow.position = Vector3(0, 0, -size.z * 0.45)
+		bow.rotation.x = PI * 0.5
+		bow.material_override = GameMaterials.emissive(color, 0.35)
+		p.add_child(bow)
 	var tag := Label3D.new()
 	tag.text = prompt
-	tag.font_size = 52
-	tag.pixel_size = 0.004
+	tag.font_size = 42
+	tag.pixel_size = 0.0035
 	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	tag.visibility_range_begin = 0.7
+	tag.visibility_range_end = 4.8
 	tag.modulate = Color(0.95, 0.86, 0.62)
 	UiFont.apply_3d(tag)
 	p.add_child(tag)
@@ -285,6 +314,12 @@ func play_tape(deck: String = "402") -> void:
 			return
 		show_note("Wrong room. The breathing is louder through the other door.")
 		return
+	if not apt401_open:
+		show_note("You are holding the recording of a room you have not entered.")
+		return
+	if not overlap:
+		show_note("The plates have not swapped yet.\nRead the calendar. Check the clock.")
+		return
 	_begin_ending()
 
 func inspect(id: String, text: String) -> void:
@@ -299,13 +334,19 @@ func open_401() -> void:
 		return
 	apt401_open = true
 	phase = maxi(phase, 4)
-	click_sfx()
+	_door_sfx()
 	var world := get_node_or_null("World")
 	if world and world.has_method("open_401"):
 		world.open_401()
 	show_note("The deadbolt yields. The air inside already knows your shampoo.")
 	_set_chapter(4, "Ch.4 Apt 401. Read the calendar. The clock is waiting.")
 	knock_behind_401()
+
+func _door_sfx() -> void:
+	sfx.global_position = Vector3(-1.6, 1.1, 2.4)
+	sfx.stream = _click_stream(55.0, 0.28)
+	sfx.volume_db = -6.0
+	sfx.play()
 
 func _track_401() -> void:
 	if player.global_position.x < -1.9:

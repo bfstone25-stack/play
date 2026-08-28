@@ -1,8 +1,8 @@
 extends RefCounted
-class_name CampaignMaterials
+class_name GameMaterials
 
-## Procedural surfaces shared by Episodes II–V. Matches Episode I's approach:
-## generated ImageTexture planks / plaster / metal — no external asset pack.
+## Procedural surfaces for Episode I and the full campaign.
+## Generated ImageTexture planks / plaster / metal — no external asset pack.
 
 static func dim() -> int:
 	return 96 if OS.has_feature("web") else 192
