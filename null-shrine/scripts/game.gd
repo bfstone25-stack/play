@@ -287,3 +287,27 @@ func phase_name() -> String:
 		Phase.COMPLETE:
 			return "COMPLETE"
 	return "?"
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not (event is InputEventKey and event.pressed and not event.echo):
+		return
+	var k: Key = event.keycode
+	# Demo / accessibility hotkeys (also used for automated walkthrough)
+	if k == KEY_1 and (phase == Phase.DAY or phase == Phase.SETTLE):
+		if bag.size() > 0:
+			stock_from_bag(0)
+			select_shelf(0)
+	elif k == KEY_2 and (phase == Phase.DAY or phase == Phase.SETTLE):
+		appraise_selected()
+	elif k == KEY_3 and (phase == Phase.DAY or phase == Phase.SETTLE):
+		sell_selected()
+	elif k == KEY_4 and phase == Phase.DAY:
+		enter_night()
+	elif k == KEY_5 and phase == Phase.SETTLE:
+		finish_run()
+	elif k == KEY_ENTER or k == KEY_KP_ENTER:
+		if phase == Phase.TITLE:
+			start_run()
+		elif phase == Phase.COMPLETE:
+			start_run()

@@ -40,3 +40,12 @@ xvfb-run -a /tmp/godot-bin/Godot_v4.7.2-stable_linux.x86_64 --headless --path nu
 Archived NULL//SHRINE H5 cabinet: [`legacy-h5/`](legacy-h5/). Not the forward product.
 
 Sibling pivots (other agents): Crazy Rant → 3D Horror VN; Beat Monday → 2D Pixel Horror VN.
+
+## Demo hotkeys
+
+- Enter — start / restart run  
+- 1 — stock first bag item  
+- 2 — appraise selected shelf  
+- 3 — sell selected  
+- 4 — enter crypt (day → night)  
+- 5 — finish run (settle)
