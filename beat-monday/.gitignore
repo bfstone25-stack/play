@@ -1,0 +1,9 @@
+.godot/
+*.translation
+export.cfg
+*.tmp
+__pycache__/
+build/
+.import/
+*.import
+export_presets.cfg
