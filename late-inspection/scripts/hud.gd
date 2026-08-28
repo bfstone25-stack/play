@@ -304,6 +304,7 @@ func open_choice(text: String, a: String, b: String, cb: Callable) -> void:
 	choice_panel.visible = true
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	btn_a.grab_focus()
 
 func set_pause(value: bool) -> void:
 	pause_panel.visible = value
@@ -317,6 +318,7 @@ func show_ending(t: String, beats: Array) -> void:
 	ending_text.text = str(ending_beats[0])
 	ending_button.text = "CONTINUE"
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	ending_button.grab_focus()
 
 func _next_ending_beat() -> void:
 	ending_index += 1
