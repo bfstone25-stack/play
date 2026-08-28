@@ -9,6 +9,21 @@ Episode I remains free permanently. Updates may improve performance, clarity,
 accessibility, atmosphere, and bug fixes, but must not remove its current
 complete ending or put existing content behind payment.
 
+## Implementation status
+
+The Ubuntu full-build vertical slice now contains playable Episodes II–V:
+
+- Episode II anchors one item through a floor reset.
+- Episode III routes mutually exclusive basement circuits.
+- Episode IV validates three complaint-stamp decisions.
+- Episode V reuses the master plate at memory sockets and supports both final
+  designations before the clock advances to 02:18.
+
+The full campaign has automated progression coverage and a Linux export preset.
+It is **not store-ready or uploaded**: external completion playtests, art/audio
+polish, pacing, and paid-build packaging still gate the switch to Paid. The
+public Web export explicitly excludes full-campaign scripts and scenes.
+
 ## Store model
 
 Keep the existing **Across the Hall** page, URL, traffic, followers, ratings,
