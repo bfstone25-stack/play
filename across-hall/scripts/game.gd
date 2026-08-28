@@ -130,9 +130,9 @@ func _process(delta: float) -> void:
 func _spawn_pickups() -> void:
 	_pickup(Vector3(0.55, 0.06, 2.6), "flashlight", "Take flashlight", "", Color(0.75, 0.72, 0.35), Vector3(0.28, 0.07, 0.08))
 	_pickup(Vector3(3.05, 0.48, 8.05), "note", "Read vacancy notice", NOTES["note1"], Color(0.92, 0.88, 0.72), Vector3(0.32, 0.03, 0.42))
-	# On the 402 vanity counter ledge (beside the basin, not inside it).
-	_pickup(Vector3(8.28, 0.96, 10.7), "tape", "Take cassette", NOTES["tape"], Color(0.42, 0.12, 0.1), Vector3(0.18, 0.05, 0.11))
-	_pickup(Vector3(8.52, 0.96, 10.66), "key", "Take 401 key", NOTES["key"], Color(0.62, 0.55, 0.28), Vector3(0.1, 0.03, 0.2))
+	# On the wall shelf beside the 402 vanity — basin stays a wash area.
+	_pickup(Vector3(7.88, 1.12, 10.42), "tape", "Take cassette", NOTES["tape"], Color(0.42, 0.12, 0.1), Vector3(0.16, 0.04, 0.1))
+	_pickup(Vector3(8.05, 1.12, 10.4), "key", "Take 401 key", NOTES["key"], Color(0.55, 0.48, 0.28), Vector3(0.08, 0.02, 0.16))
 	_inspect(Vector3(-3.25, 0.72, 2.15), "calendar", "Read calendar", NOTES["note2"], Color(0.85, 0.78, 0.62), Vector3(0.28, 0.36, 0.04))
 	_inspect(Vector3(-5.9, 0.85, 0.7), "clock", "Check the clock", NOTES["clock"], Color(0.2, 0.18, 0.16), Vector3(0.16, 0.16, 0.08))
 	_deck(Vector3(3.55, 0.56, 8.05), "402", "Play cassette (402)")
@@ -236,12 +236,31 @@ func _pickup(pos: Vector3, id: String, prompt: String, note: String, color: Colo
 		"note":
 			mesh.material_override = GameMaterials.paper(color)
 		"tape":
-			mesh.material_override = GameMaterials.emissive(color, 0.25)
+			mesh.material_override = GameMaterials.flat(Color(0.22, 0.1, 0.1), 0.55)
 		"key":
-			mesh.material_override = GameMaterials.emissive(color, 0.4)
+			mesh.material_override = GameMaterials.metal(Color(0.72, 0.62, 0.28))
 		_:
 			mesh.material_override = GameMaterials.flat(color, 0.6)
 	p.add_child(mesh)
+	if id == "tape":
+		var window := MeshInstance3D.new()
+		var win := BoxMesh.new()
+		win.size = Vector3(size.x * 0.55, size.y * 0.35, size.z * 0.08)
+		window.mesh = win
+		window.position = Vector3(0, 0.01, -size.z * 0.45)
+		window.material_override = GameMaterials.flat(Color(0.35, 0.4, 0.45), 0.2)
+		p.add_child(window)
+		for sx in [-1.0, 1.0]:
+			var spool := MeshInstance3D.new()
+			var cyl := CylinderMesh.new()
+			cyl.top_radius = 0.025
+			cyl.bottom_radius = 0.025
+			cyl.height = 0.02
+			spool.mesh = cyl
+			spool.rotation.x = PI * 0.5
+			spool.position = Vector3(0.045 * sx, 0.01, -size.z * 0.42)
+			spool.material_override = GameMaterials.flat(Color(0.12, 0.12, 0.12), 0.6)
+			p.add_child(spool)
 	if id == "key":
 		var bow := MeshInstance3D.new()
 		var torus := TorusMesh.new()
@@ -250,7 +269,7 @@ func _pickup(pos: Vector3, id: String, prompt: String, note: String, color: Colo
 		bow.mesh = torus
 		bow.position = Vector3(0, 0, -size.z * 0.45)
 		bow.rotation.x = PI * 0.5
-		bow.material_override = GameMaterials.emissive(color, 0.35)
+		bow.material_override = GameMaterials.metal(Color(0.72, 0.62, 0.28))
 		p.add_child(bow)
 	var tag := Label3D.new()
 	tag.text = prompt

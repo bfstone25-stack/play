@@ -182,6 +182,9 @@ func _bathroom_402() -> void:
 	_toilet(Vector3(8.45, 0.0, 11.85), 1.0)
 	_shower(Vector3(6.7, 0.0, 11.7), 1.0)
 	_towel_bar(Vector3(7.65, 1.35, 10.55), 1.0)
+	# Small wall shelf for the cassette/key — keeps the basin clear.
+	_box(Vector3(7.95, 1.05, 10.45), Vector3(0.35, 0.04, 0.22), _wood, false)
+	_box(Vector3(7.95, 0.95, 10.45), Vector3(0.04, 0.2, 0.2), _wood, false)
 	_wet(Vector3(7.3, 0.03, 11.2))
 	_wet(Vector3(8.1, 0.03, 11.6))
 
@@ -229,48 +232,71 @@ func _glass_mat(a := 0.28) -> StandardMaterial3D:
 	return m
 
 func _vanity(pos: Vector3, side: float) -> void:
-	var ceramic := GameMaterials.flat(Color(0.93, 0.94, 0.95), 0.22)
-	var wet := GameMaterials.flat(Color(0.78, 0.82, 0.86), 0.12)
-	wet.metallic = 0.15
-	var chrome := GameMaterials.metal(Color(0.72, 0.74, 0.76))
-	chrome.roughness = 0.18
-	# Cabinet + countertop ledge around the basin.
-	_box(pos + Vector3(0, 0.4, 0), Vector3(0.62, 0.8, 0.72), _wood)
-	_box(pos + Vector3(0.28 * side, 0.12, 0), Vector3(0.04, 0.12, 0.08), chrome, false)
-	_box(pos + Vector3(-0.02 * side, 0.84, 0), Vector3(0.62, 0.06, 0.72), ceramic)
-	# Recessed round basin (outer rim + inner wet bowl + drain).
-	_cyl(pos + Vector3(-0.02 * side, 0.9, 0.02), 0.2, 0.1, ceramic, false)
-	_cyl(pos + Vector3(-0.02 * side, 0.88, 0.02), 0.16, 0.1, wet, false)
-	_cyl(pos + Vector3(-0.02 * side, 0.84, 0.02), 0.03, 0.02, chrome, false)
-	# Chrome mixer tap: base, riser, spout over the bowl, hot/cold levers.
-	var tap := pos + Vector3(0.14 * side, 0.9, -0.02)
-	_cyl(tap + Vector3(0, 0.02, 0), 0.055, 0.04, chrome, false)
-	_cyl(tap + Vector3(0, 0.14, 0), 0.018, 0.22, chrome, false)
-	var spout := MeshInstance3D.new()
-	var spout_mesh := CylinderMesh.new()
-	spout_mesh.top_radius = 0.014
-	spout_mesh.bottom_radius = 0.018
-	spout_mesh.height = 0.2
-	spout.mesh = spout_mesh
-	spout.material_override = chrome
-	spout.position = tap + Vector3(-0.07 * side, 0.24, 0.02)
-	spout.rotation.z = deg_to_rad(-55.0 * side)
-	add_child(spout)
-	_cyl(tap + Vector3(-0.14 * side, 0.18, 0.06), 0.02, 0.03, chrome, false)
-	_cyl(tap + Vector3(0.05, 0.08, 0), 0.012, 0.05, chrome, false)
-	_cyl(tap + Vector3(-0.05, 0.08, 0), 0.012, 0.05, chrome, false)
-	# Running drip into the basin (matches the chapter line about the tap).
-	var drip_mat := GameMaterials.flat(Color(0.55, 0.72, 0.85, 0.55), 0.05)
+	var ceramic := GameMaterials.flat(Color(0.94, 0.95, 0.96), 0.2)
+	var chrome := GameMaterials.metal(Color(0.78, 0.8, 0.82))
+	chrome.roughness = 0.12
+	# Cabinet body + drawer face.
+	_box(pos + Vector3(0, 0.38, 0), Vector3(0.68, 0.76, 0.74), _wood)
+	_box(pos + Vector3(0.34 * side, 0.45, 0), Vector3(0.02, 0.55, 0.55), _wood, false)
+	_box(pos + Vector3(0.36 * side, 0.45, 0.12), Vector3(0.03, 0.04, 0.04), chrome, false)
+	_box(pos + Vector3(0.36 * side, 0.45, -0.12), Vector3(0.03, 0.04, 0.04), chrome, false)
+	# Counter rim around a circular cutout (basin sits in the hole).
+	var c := pos + Vector3(-0.02 * side, 0.0, 0.02)
+	_box(c + Vector3(0, 0.8, -0.26), Vector3(0.68, 0.08, 0.22), ceramic)
+	_box(c + Vector3(0, 0.8, 0.26), Vector3(0.68, 0.08, 0.22), ceramic)
+	_box(c + Vector3(-0.26, 0.8, 0), Vector3(0.16, 0.08, 0.3), ceramic)
+	_box(c + Vector3(0.26, 0.8, 0), Vector3(0.16, 0.08, 0.3), ceramic)
+	# Deep white basin in the cutout + clearly wet inner bowl + drain.
+	_cyl(c + Vector3(0, 0.72, 0), 0.2, 0.22, ceramic, false)
+	var wet_deep := StandardMaterial3D.new()
+	wet_deep.albedo_color = Color(0.35, 0.48, 0.58)
+	wet_deep.roughness = 0.05
+	wet_deep.metallic = 0.25
+	_cyl(c + Vector3(0, 0.68, 0), 0.165, 0.14, wet_deep, false)
+	# Standing water surface in the bowl (readable from the doorway).
+	var water := StandardMaterial3D.new()
+	water.albedo_color = Color(0.3, 0.55, 0.72, 0.7)
+	water.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	water.roughness = 0.02
+	water.metallic = 0.35
+	_cyl(c + Vector3(0, 0.76, 0), 0.155, 0.035, water, false)
+	_cyl(c + Vector3(0, 0.62, 0), 0.045, 0.025, chrome, false)
+	# Mixer tap at the back rim: base, column, spout arm over the bowl.
+	var tap := c + Vector3(0.0, 0.84, -0.22)
+	_cyl(tap, 0.07, 0.04, chrome, false)
+	_cyl(tap + Vector3(0, 0.11, 0), 0.025, 0.18, chrome, false)
+	var arm := MeshInstance3D.new()
+	var arm_mesh := CylinderMesh.new()
+	arm_mesh.top_radius = 0.018
+	arm_mesh.bottom_radius = 0.022
+	arm_mesh.height = 0.28
+	arm.mesh = arm_mesh
+	arm.material_override = chrome
+	arm.position = tap + Vector3(0, 0.2, 0.13)
+	arm.rotation.x = deg_to_rad(82.0)
+	add_child(arm)
+	_cyl(tap + Vector3(0, 0.12, 0.26), 0.028, 0.05, chrome, false)
+	# Hot / cold levers
+	_box(tap + Vector3(-0.08, 0.05, 0), Vector3(0.07, 0.025, 0.025), chrome, false)
+	_box(tap + Vector3(0.08, 0.05, 0), Vector3(0.07, 0.025, 0.025), chrome, false)
+	_cyl(tap + Vector3(-0.11, 0.05, 0), 0.018, 0.035, chrome, false)
+	_cyl(tap + Vector3(0.11, 0.05, 0), 0.018, 0.035, chrome, false)
+	# Running stream into the bowl.
+	var drip_mat := StandardMaterial3D.new()
+	drip_mat.albedo_color = Color(0.7, 0.85, 0.95, 0.5)
 	drip_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	_cyl(tap + Vector3(-0.14 * side, 0.05, 0.06), 0.006, 0.2, drip_mat, false)
-	# Toothbrush cup + brush, toothpaste, soap dish — cylinders, not candy cubes.
-	_cyl(pos + Vector3(-0.2 * side, 0.93, -0.22), 0.035, 0.08, ceramic, false)
-	_toothbrush(pos + Vector3(-0.2 * side, 0.98, -0.22))
-	_cyl(pos + Vector3(-0.12 * side, 0.93, -0.24), 0.018, 0.12, GameMaterials.flat(Color(0.88, 0.88, 0.9), 0.35), false)
-	_cyl(pos + Vector3(0.18 * side, 0.9, 0.22), 0.05, 0.02, ceramic, false)
-	_cyl(pos + Vector3(0.18 * side, 0.92, 0.22), 0.035, 0.025, GameMaterials.flat(Color(0.86, 0.82, 0.76), 0.55), false)
-	_cyl(pos + Vector3(-0.18 * side, 0.96, 0.2), 0.028, 0.14, GameMaterials.flat(Color(0.45, 0.55, 0.52), 0.4), false)
-	_mirror(pos + Vector3(0.3 * side, 1.48, 0))
+	drip_mat.roughness = 0.05
+	_cyl(tap + Vector3(0, 0.0, 0.26), 0.008, 0.24, drip_mat, false)
+	# Cup + brush, toothpaste, soap dish, lotion — muted cylinders.
+	_cyl(c + Vector3(-0.26 * side, 0.88, -0.28), 0.032, 0.09, ceramic, false)
+	_toothbrush(c + Vector3(-0.26 * side, 0.93, -0.28))
+	_cyl(c + Vector3(-0.18 * side, 0.9, -0.3), 0.014, 0.14, GameMaterials.flat(Color(0.9, 0.9, 0.92), 0.3), false)
+	_box(c + Vector3(-0.18 * side, 0.97, -0.3), Vector3(0.028, 0.02, 0.028), GameMaterials.flat(Color(0.55, 0.58, 0.6), 0.45), false)
+	_cyl(c + Vector3(0.26 * side, 0.85, 0.28), 0.055, 0.015, ceramic, false)
+	_cyl(c + Vector3(0.26 * side, 0.87, 0.28), 0.04, 0.03, GameMaterials.flat(Color(0.88, 0.84, 0.78), 0.5), false)
+	_cyl(c + Vector3(-0.24 * side, 0.92, 0.26), 0.025, 0.16, GameMaterials.flat(Color(0.5, 0.58, 0.55), 0.35), false)
+	_cyl(c + Vector3(-0.24 * side, 1.02, 0.26), 0.018, 0.04, GameMaterials.flat(Color(0.4, 0.48, 0.45), 0.4), false)
+	_mirror(pos + Vector3(0.32 * side, 1.5, 0.02))
 
 func _cyl(pos: Vector3, radius: float, height: float, mat: Material, collide := true) -> MeshInstance3D:
 	var mi := MeshInstance3D.new()
@@ -294,10 +320,13 @@ func _cyl(pos: Vector3, radius: float, height: float, mat: Material, collide := 
 	return mi
 
 func _toilet(pos: Vector3, side: float) -> void:
-	_box(pos + Vector3(0, 0.22, 0), Vector3(0.42, 0.4, 0.55), GameMaterials.flat(Color(0.88, 0.88, 0.9), 0.35))
-	_box(pos + Vector3(0.08 * side, 0.55, -0.12), Vector3(0.38, 0.45, 0.18), GameMaterials.flat(Color(0.86, 0.86, 0.88), 0.35))
-	_box(pos + Vector3(0, 0.44, 0.05), Vector3(0.36, 0.05, 0.4), GameMaterials.flat(Color(0.92, 0.92, 0.94), 0.25), false)
-	_box(pos + Vector3(0.05 * side, 0.72, -0.12), Vector3(0.08, 0.04, 0.04), _metal, false)
+	var porcelain := GameMaterials.flat(Color(0.92, 0.93, 0.94), 0.25)
+	_box(pos + Vector3(0, 0.2, 0.02), Vector3(0.4, 0.36, 0.5), porcelain)
+	_cyl(pos + Vector3(0, 0.4, 0.06), 0.17, 0.08, porcelain, false)
+	_cyl(pos + Vector3(0, 0.42, 0.06), 0.13, 0.04, GameMaterials.flat(Color(0.75, 0.8, 0.84), 0.15), false)
+	_box(pos + Vector3(0.06 * side, 0.58, -0.14), Vector3(0.36, 0.42, 0.16), porcelain)
+	_box(pos + Vector3(0, 0.42, 0.05), Vector3(0.34, 0.04, 0.38), porcelain, false)
+	_box(pos + Vector3(0.04 * side, 0.78, -0.14), Vector3(0.07, 0.03, 0.04), _metal, false)
 
 func _shower(pos: Vector3, side: float) -> void:
 	var glass := _glass_mat(0.3)
