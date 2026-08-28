@@ -36,6 +36,9 @@ Do **not** rewrite shrine in Matter.js / Box2D. Extract its custom 2D engine int
 | 1 | `slacker-ball` | 摸鱼大暴弹 / Slacker Ball | Workplace | Peglin-like pegs + smash blocks | High — skin + breakables |
 | 2 | `office-landlord` | 职场大赢家 / Office Landlord | Workplace | 5×4 symbol builder | None — grid sim |
 | 3 | `beat-monday` | 击溃星期一 / Beat the Monday | Workplace | One-thumb survivor-like | Low — circle vs circle |
+
+> **2026-08-28 product exit:** Beat Monday left the Catharsis H5 cabinet track (fighter prototype under `beat-monday/frontend/`). Standalone pivot: Godot 4.7 **2D pixel horror VN** — *Floor 13: Night Shift（13楼夜班）*. See `beat-monday/PIVOT.md`. Do not extend the H5 fighter / survivor loop as the shipping surface. (Intentional exit from the Catharsis “Vanilla JS only / no new engines” contract.)
+
 | 4 | `cyber-merit` | 赛博木鱼 / Cyber Merit | Z-Gen emptiness | Clicker + ASMR | None |
 | 5 | `crazy-rant` | 发疯文学 / Crazy Rant | Z-Gen metaphysics | Phrase auto-battler | None — particles |
 | 6 | `rebound-tycoon` | 老王逆袭记 / Rebound Tycoon | Midlife / gig | Idle tycoon | None |
