@@ -129,14 +129,14 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if campaign_complete:
 		return
-	var target := player.interact_target()
+	var target: Node = player.interact_target()
 	if target and target.get("prompt"):
 		hud.set_prompt("E / click  " + str(target.prompt))
 	else:
 		hud.set_prompt("")
 
 func _interact() -> void:
-	var target := player.interact_target()
+	var target: Node = player.interact_target()
 	if target:
 		target.interact(self)
 

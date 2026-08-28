@@ -32,6 +32,12 @@ func _init() -> void:
 	#region agent log
 	_agent_log("scene instantiate returned; entering tree next", {"campaign_valid": is_instance_valid(campaign)}, "B")
 	#endregion
+	if campaign.get_script() == null or not campaign.has_method("perform_action"):
+		#region agent log
+		_agent_log("campaign script attachment missing", {"script_attached": campaign.get_script() != null, "perform_action_attached": campaign.has_method("perform_action")}, "A")
+		#endregion
+		_fail("full_campaign.tscn instantiated without its campaign script", 2)
+		return
 	root.add_child(campaign)
 	#region agent log
 	_agent_log("root add_child returned", {"inside_tree": campaign.is_inside_tree(), "episode": campaign.get("episode")}, "B")
@@ -39,13 +45,13 @@ func _init() -> void:
 	await process_frame
 	await process_frame
 	if int(campaign.get("episode")) != 2:
-		_fail("campaign did not start at Episode II", 2)
+		_fail("campaign did not start at Episode II", 3)
 		return
 
 	# Episode II: one anchored item survives the reset.
 	campaign.call("perform_action", "ep2_elevator")
 	if int(campaign.get("episode")) != 2:
-		_fail("Episode II gate skipped", 3)
+		_fail("Episode II gate skipped", 4)
 		return
 	campaign.call("perform_action", "ep2_tag")
 	campaign.call("perform_action", "ep2_reset")
@@ -53,13 +59,13 @@ func _init() -> void:
 	campaign.call("perform_action", "ep2_plate")
 	campaign.call("perform_action", "ep2_elevator")
 	if int(campaign.get("episode")) != 3:
-		_fail("Episode II did not advance", 4)
+		_fail("Episode II did not advance", 5)
 		return
 
 	# Episode III: only the powered circuit exposes its resource.
 	campaign.call("perform_action", "ep3_archive")
 	if campaign.get("flags").get("circuit", "") == "archive":
-		_fail("Archive powered without fuse", 5)
+		_fail("Archive powered without fuse", 6)
 		return
 	campaign.call("perform_action", "ep3_lift")
 	campaign.call("perform_action", "ep3_fuse")
@@ -69,7 +75,7 @@ func _init() -> void:
 	campaign.call("perform_action", "ep3_key")
 	campaign.call("perform_action", "ep3_stairs")
 	if int(campaign.get("episode")) != 4:
-		_fail("Episode III did not advance", 6)
+		_fail("Episode III did not advance", 7)
 		return
 
 	# Episode IV: a wrong stamp does not consume the current complaint.
@@ -78,7 +84,7 @@ func _init() -> void:
 	campaign.call("perform_action", "ep4_duplicate")
 	campaign.call("perform_action", "ep4_remove")
 	if int(campaign.get("_stamp_index")) != 0:
-		_fail("Wrong stamp advanced filing", 7)
+		_fail("Wrong stamp advanced filing", 8)
 		return
 	campaign.call("perform_action", "ep4_return")
 	campaign.call("perform_action", "ep4_retain")
@@ -86,27 +92,27 @@ func _init() -> void:
 	campaign.call("perform_action", "ep4_plate")
 	campaign.call("perform_action", "ep4_stairs")
 	if int(campaign.get("episode")) != 5:
-		_fail("Episode IV did not advance", 8)
+		_fail("Episode IV did not advance", 9)
 		return
 
 	# Episode V: all three memories are required before the final designation.
 	campaign.call("perform_action", "ep5_occupant")
 	if bool(campaign.get("campaign_complete")):
-		_fail("Episode V ended before memories", 9)
+		_fail("Episode V ended before memories", 10)
 		return
 	campaign.call("perform_action", "ep5_elevator")
 	campaign.call("perform_action", "ep5_mailbox")
 	campaign.call("perform_action", "ep5_exterior")
 	campaign.call("perform_action", "ep5_occupant")
 	if not bool(campaign.get("campaign_complete")):
-		_fail("OCCUPANT ending did not complete", 10)
+		_fail("OCCUPANT ending did not complete", 11)
 		return
 	if str(campaign.get("final_choice")) != "OCCUPANT":
-		_fail("OCCUPANT ending choice missing", 11)
+		_fail("OCCUPANT ending choice missing", 12)
 		return
 	var clock: Label = campaign.get_node("HUD").get("clock")
 	if clock.text != "02:18":
-		_fail("Final clock did not advance", 12)
+		_fail("Final clock did not advance", 13)
 		return
 
 	# The alternate final designation converges on the same campaign ending.
@@ -125,7 +131,7 @@ func _init() -> void:
 		not bool(alternate.get("campaign_complete"))
 		or str(alternate.get("final_choice")) != "DOOR"
 	):
-		_fail("DOOR ending did not converge", 13)
+		_fail("DOOR ending did not converge", 14)
 		return
 
 	print("FULL_CAMPAIGN_OK episodes=2-5 final_clock=02:18 choices=2")
