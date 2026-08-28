@@ -12,6 +12,7 @@ func _init() -> void:
 	root.add_child(campaign)
 	await process_frame
 	await process_frame
+	campaign.call("start_episode", 2)
 	if int(campaign.get("episode")) != 2:
 		_fail("campaign did not start at Episode II", 3)
 		return

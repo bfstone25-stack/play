@@ -27,3 +27,26 @@ Loop (5 chapters):
 5. Overlap — plates swap. Play the cassette on the 401 deck. Ending: you are the door across the hall.
 
 The neighbor lives in peripheral vision. Staring puts it behind you. Caught = reset to the hall, same 02:17.
+
+## Full campaign
+
+The paid/full build continues through four additional episodes:
+
+1. **Episode II — The Unlisted Fifth Floor:** anchor an inspection tag through a reset and restore the basement button.
+2. **Episode III — The Service Basement:** route LIFT, ARCHIVE, and HALL power to recover Management's key.
+3. **Episode IV — Management:** file vacancy, noise, and duplicate complaints as RETURN, RETAIN, or REMOVE.
+4. **Episode V — The Exit Directory:** recover three memories, choose OCCUPANT or DOOR, and move the clock to 02:18.
+
+Export the Ubuntu build:
+
+```
+godot --headless --path across-hall --export-release "Linux Full" across-hall/build/full/across-the-hall.x86_64
+```
+
+The full build starts with Episode I. At its ending, press **N** for the next
+floor. Progress is saved at episode boundaries; on a later launch, press **C**
+during Episode I to continue the latest unlocked episode. At the final ending,
+**R** clears campaign progress and starts again from Episode I.
+
+The public Web preset excludes `scripts/full/*` and
+`scenes/full_campaign.tscn`; its embed remains Episode I only.

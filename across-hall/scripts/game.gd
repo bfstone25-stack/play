@@ -46,6 +46,13 @@ func _ready() -> void:
 	else:
 		hud.set_objective("Ch.1 Hall. Take the flashlight. 401 is locked. 402 is open.")
 		player.capture_mouse()
+	if OS.has_feature("full_game"):
+		var unlocked := _saved_full_episode()
+		if unlocked >= 2:
+			hud.set_objective(
+				"Episode I. Press C to continue at Episode %d, or take the flashlight."
+				% unlocked
+			)
 
 func _setup_audio() -> void:
 	drone.stream = _tone_stream(44.0, 0.32)
@@ -67,6 +74,16 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_tree().change_scene_to_file("res://scenes/full_campaign.tscn")
 		return
 	if ending:
+		return
+	if (
+		OS.has_feature("full_game")
+		and _saved_full_episode() >= 2
+		and event is InputEventKey
+		and event.pressed
+		and not event.echo
+		and event.physical_keycode == KEY_C
+	):
+		get_tree().change_scene_to_file("res://scenes/full_campaign.tscn")
 		return
 	if hud and hud.has_method("hide_splash") and hud.splash and hud.splash.visible:
 		if event is InputEventMouseButton and event.pressed:
@@ -335,6 +352,12 @@ func _begin_ending() -> void:
 		hud.set_prompt("R restart · Follow bfstone25-stack on itch.io · More: /ghost-channel")
 	hud.show_title("Episode I complete\nYou are the door across the hall")
 	await_restart = true
+
+func _saved_full_episode() -> int:
+	var config := ConfigFile.new()
+	if config.load("user://campaign.cfg") != OK:
+		return 1
+	return clampi(int(config.get_value("campaign", "unlocked_episode", 1)), 1, 5)
 
 func on_tenant_seen() -> void:
 	sfx.stream = _click_stream(220.0, 0.08)

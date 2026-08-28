@@ -1,6 +1,7 @@
 extends Node3D
 
 const ACTION_SCRIPT := preload("res://scripts/full/campaign_interact.gd")
+const SAVE_PATH := "user://campaign.cfg"
 
 var episode := 2
 var items := {}
@@ -25,7 +26,7 @@ func _ready() -> void:
 	drone.stream = _tone_stream(38.0, 0.2)
 	drone.volume_db = -24.0
 	drone.play()
-	start_episode(2)
+	start_episode(_load_progress() if OS.has_feature("full_game") else 2)
 	if hud.has_method("hide_splash"):
 		hud.hide_splash()
 	if not DisplayServer.get_name().contains("headless"):
@@ -77,7 +78,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			and not event.echo
 			and event.physical_keycode == KEY_R
 		):
-			get_tree().reload_current_scene()
+			var absolute_path := ProjectSettings.globalize_path(SAVE_PATH)
+			if FileAccess.file_exists(SAVE_PATH):
+				DirAccess.remove_absolute(absolute_path)
+			get_tree().change_scene_to_file("res://scenes/main.tscn")
 		return
 	if event is InputEventMouseButton and event.pressed and not player.captured:
 		player.capture_mouse()
@@ -272,7 +276,23 @@ func perform_action(action_id: String) -> bool:
 	return false
 
 func _advance_to(next_episode: int) -> void:
+	_save_progress(next_episode)
 	start_episode(next_episode)
+
+func _load_progress() -> int:
+	var config := ConfigFile.new()
+	if config.load(SAVE_PATH) != OK:
+		return 2
+	return clampi(int(config.get_value("campaign", "unlocked_episode", 2)), 2, 5)
+
+func _save_progress(unlocked_episode: int) -> void:
+	if not OS.has_feature("full_game"):
+		return
+	var config := ConfigFile.new()
+	config.load(SAVE_PATH)
+	var previous := int(config.get_value("campaign", "unlocked_episode", 2))
+	config.set_value("campaign", "unlocked_episode", maxi(previous, unlocked_episode))
+	config.save(SAVE_PATH)
 
 func _form_text(form_name: String) -> String:
 	match form_name:
