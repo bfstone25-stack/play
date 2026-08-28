@@ -125,7 +125,7 @@ func interact_target() -> Node:
 			if d >= best_d:
 				continue
 			var flat := Vector3(to.x, 0.0, to.z)
-			var face_ok := facing().dot(to.normalized()) > -0.72
+			var face_ok := true
 			if face_ok:
 				best_d = d
 				best = n
