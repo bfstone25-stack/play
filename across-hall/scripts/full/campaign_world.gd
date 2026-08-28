@@ -234,7 +234,8 @@ func _sign(pos: Vector3, text: String, font_size: int, color: Color) -> Label3D:
 	label.position = pos
 	label.modulate = color
 	label.billboard = BaseMaterial3D.BILLBOARD_DISABLED
-	label.rotation.y = PI
+	# Face players walking +Z from spawn; the back-wall title faces the other way.
+	label.rotation.y = 0.0 if pos.z < 0.0 else PI
 	UiFont.apply_3d(label)
 	add_child(label)
 	return label
