@@ -353,6 +353,11 @@ html, body {
   cursor: pointer;
 }
 .title-sheet { text-align: center; }
+.xpromo { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.xpromo a { display: block; text-decoration: none; padding: 8px 10px; border: 1px solid #3d6a68; border-left: 3px solid var(--gold); color: inherit; background: #102428; }
+.xpromo a small { display: block; letter-spacing: .16em; color: var(--gold); }
+.xpromo a b { display: block; margin-top: 3px; }
+.xpromo a span { display: block; margin-top: 3px; color: #cfe3df; font-size: 12px; line-height: 1.35; }
 .title-art {
   display: block;
   width: 100%;

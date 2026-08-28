@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#701d1d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>破绽 · TELL</title><script src="config.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#701d1d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>破绽 · TELL</title><script src="build.js"></script><script src="config.js"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;overflow:hidden;font-family:'Georgia','Songti SC',-apple-system,serif;color:#d8d4cc;background:#080809}
@@ -52,6 +52,11 @@ html,body{margin:0;height:100%;overflow:hidden;font-family:'Georgia','Songti SC'
 .accuse:active{transform:scale(.98)}
 /* 判决 */
 .verdict{position:absolute;inset:0;z-index:20;display:none;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;background:radial-gradient(circle at 50% 30%,rgba(30,20,15,.9),rgba(0,0,0,.96))}
+#payOv{display:none;position:fixed;inset:0;z-index:90;align-items:center;justify-content:center;padding:18px;background:rgba(2,2,3,.92)}
+.payCard{width:min(440px,100%);background:#111217;border:1px solid #30323a;border-top:3px solid #d4a24e;padding:22px;border-radius:6px}
+.payCard h3{margin:8px 0 10px;color:#eee7da;font-family:Impact,'Arial Narrow',serif}
+.payCard p{color:#bbb4a7;line-height:1.5;font-size:.9em}
+.payCard button{width:100%;margin-top:12px;padding:12px;border:0;background:#d4a24e;color:#191204;font-weight:900;letter-spacing:1px;cursor:pointer}
 .verdict h2{font-size:2.1em;letter-spacing:3px;margin:0 0 12px}
 .grid{font-size:1.5em;letter-spacing:3px;margin:14px 0}
 .share{background:#d4a24e;border:0;color:#1a1400;border-radius:5px;padding:12px 26px;font-weight:800;cursor:pointer;font-size:1em;letter-spacing:1px}
@@ -72,6 +77,12 @@ html,body{margin:0;height:100%;overflow:hidden;font-family:'Georgia','Songti SC'
 .homeCard{width:min(430px,100%);position:relative;z-index:4;padding-top:55px}.brand{text-align:center;font-size:3.25em;letter-spacing:12px;color:#eee8dc;text-shadow:3px 1px 0 #32100e,-2px 0 0 #000,0 2px 18px #000;margin-bottom:3px;transform:scaleX(.9)}.brandSub{text-align:center;font-family:monospace;color:#a1332b;letter-spacing:4px;font-size:.69em;margin-bottom:21px}.homeLead{text-align:center;color:#aaa296;font-style:italic;line-height:1.55;margin:0 auto 18px;max-width:390px;font-size:.9em}.playMode{width:96%;display:block;text-align:left;margin:10px auto;padding:16px 18px 14px;border:1px solid #54442d;border-radius:2px;background:linear-gradient(135deg,#2b2419,#18140e);color:#d7c9b4;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 8px 15px rgba(0,0,0,.48);transform:rotate(-.45deg);transition:.18s}.playMode:nth-of-type(2){transform:rotate(.55deg);background:linear-gradient(135deg,#25231d,#131311)}.playMode:before{content:"CASE FILE";position:absolute;right:13px;top:9px;font:9px monospace;letter-spacing:2px;color:#79654a}.playMode.on{border-color:#b98b43;box-shadow:0 0 0 1px #3b2b18,0 10px 25px #000}.playMode.on:after{content:"SELECTED";position:absolute;right:12px;bottom:10px;border:2px solid #922d27;color:#a93d35;padding:2px 6px;font:9px monospace;letter-spacing:1px;transform:rotate(-5deg)}.playMode b{display:block;position:relative;z-index:2;font-family:Impact,'Arial Narrow','Songti SC','YuMincho',serif;font-size:1.08em;letter-spacing:2.5px;color:#eee0c9;text-shadow:1px 1px #32110f}.playMode small{display:block;position:relative;z-index:2;margin-top:5px;color:#91826e;max-width:75%}.bloodPrint{position:absolute;right:44px;top:4px;width:78px;height:78px;opacity:.34;transform:rotate(19deg);mix-blend-mode:multiply;background:center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%239b241f' stroke-width='3' stroke-linecap='round'%3E%3Cellipse cx='50' cy='50' rx='34' ry='43' stroke-dasharray='74 17 19 12'/%3E%3Cellipse cx='50' cy='51' rx='28' ry='36' stroke-dasharray='31 8 47 16'/%3E%3Cellipse cx='50' cy='52' rx='22' ry='29' stroke-dasharray='52 10 18 13'/%3E%3Cpath d='M39 58c0-18 22-20 23-2 1 13-7 22-14 30M44 51c5-8 14-4 13 7-1 13-6 20-10 27M33 66c-4-24 4-36 17-38 14-2 25 10 24 30' stroke-dasharray='28 7 19 9'/%3E%3C/g%3E%3C/svg%3E")}.playMode:nth-of-type(2) .bloodPrint{right:25px;top:11px;opacity:.25;transform:rotate(-28deg) scale(.86)}.bloodPrint:after{content:"";position:absolute;width:60px;height:10px;right:-28px;bottom:7px;background:linear-gradient(90deg,rgba(117,24,20,.5),transparent);filter:blur(3px);transform:rotate(-10deg)}.homeGo{width:88%;display:block;margin:16px auto 0;padding:14px;border:1px solid #c89a52;border-radius:2px;background:linear-gradient(#d4a24e,#a8732c);color:#171005;font-weight:900;letter-spacing:3px;cursor:pointer;box-shadow:0 7px 22px #000}.settings{display:flex;gap:8px;justify-content:space-between;align-items:center;width:88%;margin:14px auto 0;padding-top:12px;border-top:1px solid #30291e;color:#787269;font-family:monospace;font-size:.69em}.settingsBtn{background:none;border:1px solid #403a30;color:#a69b8a;padding:7px 10px;cursor:pointer;letter-spacing:1px}.langChoice{display:flex;flex-wrap:wrap;justify-content:flex-end}.langChoice button{background:#13130f;border:1px solid #3a342b;color:#82786b;padding:6px 8px;cursor:pointer;font-size:.9em}.langChoice button.on{border-color:#b58949;color:#e1d4bf;background:#211a10}
 #settingsOv{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(3,3,4,.9);backdrop-filter:blur(8px)}.settingsCard{width:min(440px,100%);max-height:92vh;overflow:auto;background:linear-gradient(#171817,#0e0f10);border:1px solid #3c352a;border-top:3px solid #9d332c;padding:21px;border-radius:4px;box-shadow:0 28px 80px #000}.settingsCard h2{margin:0 0 4px;letter-spacing:4px}.settingsSub{font:10px monospace;letter-spacing:2px;color:#8f312d;margin-bottom:18px}.settingRow{display:grid;grid-template-columns:1fr minmax(145px,54%);gap:15px;align-items:center;padding:10px 0;border-bottom:1px solid #292a2a;color:#bbb3a6;font-size:.82em}.settingRow input[type=range]{width:100%;accent-color:#b18441}.settingRow select{width:100%;background:#111214;color:#d1c8ba;border:1px solid #37383b;padding:8px}.toggle{display:flex;justify-content:flex-end;gap:6px}.toggle button{background:#111214;border:1px solid #37383b;color:#777;padding:7px 9px;cursor:pointer}.toggle button.on{border-color:#b18441;color:#e0d5c4;background:#211a11}.settingsClose{width:100%;margin-top:18px;padding:11px;background:#9d332c;border:0;color:#fff;font-weight:800;letter-spacing:2px;cursor:pointer}
 body.reduce-motion *{animation:none!important;transition:none!important}body.no-flicker .hangLamp{animation:none}
+.xpromo{width:88%;margin:16px auto 8px;padding-top:12px;border-top:1px solid #30291e;display:flex;flex-direction:column;gap:8px}
+.xpromo a{display:block;text-decoration:none;padding:8px 10px;border:1px solid #403a30;border-left:3px solid #d4a24e;background:#13130f;color:#d7c9b4}
+.xpromo a:hover{border-color:#b98b43}
+.xpromo small{display:block;font:9px monospace;letter-spacing:1.5px;color:#a1332b}
+.xpromo b{display:block;color:#eee0c9;font-size:.92em;letter-spacing:1px;margin-top:2px}
+.xpromo span{display:block;color:#91826e;font-size:.72em;margin-top:2px;line-height:1.35}
 #briefOv{position:fixed;inset:0;z-index:75;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(2,2,3,.94)}.casefileCard{width:min(470px,100%);max-height:92vh;overflow:auto;background:#111217;border:1px solid #30323a;border-top:3px solid #a1332b;padding:21px;border-radius:6px;box-shadow:0 20px 70px #000}.casefileHead{font-family:monospace;letter-spacing:3px;color:#a1332b;font-size:.72em}.casefileCard h2{margin:5px 0 12px;color:#eee7da}.fact{margin:7px 0;padding:9px 11px;border-left:2px solid #d4a24e;background:#17181d;color:#bbb4a7;font-size:.84em;line-height:1.45}.statement{margin:8px 0;color:#aaa397;font-size:.82em;line-height:1.45}.statement b{color:#ddd5c8}.briefGo{width:100%;margin-top:15px;padding:12px;border:0;background:#d4a24e;color:#191204;font-weight:900;letter-spacing:2px;cursor:pointer}
 /* 序幕 intro */
 .help{position:absolute;top:12px;right:88px;z-index:30;background:rgba(255,255,255,.06);border:1px solid #333;color:#998;border-radius:4px;padding:5px 11px;font-size:.78em;cursor:pointer;font-family:monospace}
@@ -96,6 +107,11 @@ body.reduce-motion *{animation:none!important;transition:none!important}body.no-
   <button class="homeGo" id="homeGo" onclick="enterGame()"></button>
   <button class="detectiveFileBtn" id="detectiveFileBtn" onclick="openAuth()"></button>
   <div class="settings"><button class="settingsBtn" id="settingsLabel" onclick="openSettings()"></button><div class="langChoice"><button id="langEn" onclick="setLang('en')">EN</button><button id="langEs" onclick="setLang('es')">ES</button><button id="langPt" onclick="setLang('pt')">PT</button><button id="langZh" onclick="setLang('zh')">中文</button><button id="langJa" onclick="setLang('ja')">日本語</button></div></div>
+  <nav class="xpromo" aria-label="More games">
+    <a href="https://apps.blazecore.dev/silvertongue/" target="_blank" rel="noopener noreferrer"><small>DIALOGUE RPG</small><b>SILVERTONGUE</b><span>Talk your way through town. Same AI table, different stakes.</span></a>
+    <a href="https://apps.blazecore.dev/flutter/" target="_blank" rel="noopener noreferrer"><small>DIALOGUE RPG</small><b>FLUTTER · 怦然</b><span>He remembers what you said. Romance, not a confession.</span></a>
+    <a href="https://bfstone25-stack.itch.io/across-the-hall" target="_blank" rel="noopener noreferrer"><small>THRILLER</small><b>ACROSS THE HALL</b><span>Apartment next door. Different case. Same kind of night.</span></a>
+  </nav>
 </div></div>
 <div id="settingsOv"><div class="settingsCard" id="settingsCard"></div></div>
 <div id="authOv"><div class="authCard" id="authCard"></div></div>
@@ -123,10 +139,14 @@ body.reduce-motion *{animation:none!important;transition:none!important}body.no-
   <button class="accuse" id="accuseBtn" onclick="openAccuse()"></button>
 </div>
 <div class="verdict" id="verdict"></div>
+<div id="payOv"><div class="payCard" id="payCard"></div></div>
 </div>
 <script>
 // A checked-out/file preview has no local API. Point previews at the live
 // service while keeping same-origin requests in production.
+const BUILD=window.TELL_BUILD||"demo";
+const DEMO=BUILD!=="full";
+const DEMO_RUN_CASES=2;
 const IS_PREVIEW=location.protocol==="file:"||location.hostname==="localhost"||location.hostname==="127.0.0.1";
 const API=IS_PREVIEW
   ?"https://apps.blazecore.dev/tell"
@@ -149,6 +169,7 @@ const T={en:{sub:"INTERROGATION FILES",ph:"Ask a question…",who:n=>n,q:(u,b)=>
   winsub:(n,p)=>`Cracked in ${n} question${n>1?"s":""}${p!=null?` · top ${p}%`:""}`,
   truth:c=>`The killer: ${c}`,share:"Share",copied:"Copied — paste anywhere.",daily:"TODAY'S CASE",run:"CASE RUN",dailyHint:"One shared case. Return tomorrow.",runHint:"Keep interrogating. Build your streak.",next:"NEXT CASE  →",retry:"RETRY CASE",tomorrow:"A new case arrives tomorrow.",
   lead:"Every lie has a seam. Read the file. Compare the statements. Find the detail only the killer could know.",play:"OPEN CASEFILE",settings:"OPTIONS · LANGUAGE",file:"▣  REVIEW CASEFILE",brief:"CONFIDENTIAL CASEFILE",begin:"BEGIN INTERROGATION",weak:"RIGHT SUSPECT · WRONG PROOF",weakSub:"Suspicion is not a conviction. The contradiction must fit the evidence.",
+  payTitle:"DEMO ENDS HERE",payBody:"This browser page is the free slice: today's case, plus the first two Case Run files. The rest is in the paid full zip on this itch page. Download, unzip, open index.html.",payClose:"BACK TO TODAY'S CASE",
   qs:["Where were you?","Your relationship to the victim?","What did you personally see?","Explain the evidence."]},
  es:{sub:"ARCHIVOS DE INTERROGATORIO",ph:"Haz una pregunta…",who:n=>n,q:(u,b)=>`INTERROGATORIO ${u}/${b}`,
   accuse:"⚖  PRESENTAR ACUSACIÓN",victim:"VÍCTIMA",whoDunit:"Señala al sospechoso:",why:"¿Qué hecho demuestra la contradicción?",cancel:"‹ volver",
@@ -216,7 +237,7 @@ function renderHome(){
  document.getElementById("homeGo").textContent=tr().play;
  document.getElementById("settingsLabel").textContent=tr().settings;
  renderAuthButton();
- [["dailyMode",tr().daily,tr().dailyHint,"daily"],["runMode",tr().run,tr().runHint,"run"]].forEach(([id,name,hint,m])=>{const b=document.getElementById(id);b.querySelector("b").textContent=name;b.querySelector("small").textContent=hint;b.classList.toggle("on",mode===m);});
+ [["dailyMode",tr().daily,tr().dailyHint,"daily"],["runMode",tr().run,DEMO?(tr().runHint+" · demo 2/7"):tr().runHint,"run"]].forEach(([id,name,hint,m])=>{const b=document.getElementById(id);b.querySelector("b").textContent=name;b.querySelector("small").textContent=hint;b.classList.toggle("on",mode===m);});
  [["langZh","zh"],["langEn","en"],["langEs","es"],["langPt","pt"],["langJa","ja"]].forEach(([id,l])=>document.getElementById(id).classList.toggle("on",lang===l));
 }
 function settingToggle(key,o){const t=OPT[lang]||OPT.en;return `<div class="toggle"><button class="${CFG[key]?'on':''}" onclick="setCfg('${key}',true)">${t.on}</button><button class="${!CFG[key]?'on':''}" onclick="setCfg('${key}',false)">${t.off}</button></div>`}
@@ -280,7 +301,16 @@ async function load(){
 }
 function resetCase(){cur=null;convos={};qUsed=0;done=false;clearInterval(typing);document.getElementById("verdict").style.display="none";document.getElementById("inp").disabled=false;document.getElementById("send").disabled=false;}
 function selectMode(next){initAudio();uiSound();mode=next;localStorage.setItem("tell_mode",mode);track("mode_selected",{selected:next});renderHome();}
+function closePaywall(){document.getElementById("payOv").style.display="none";}
+function showPaywall(){
+  const t=tr();
+  document.getElementById("payCard").innerHTML=`<div class="casefileHead">${DEMO?"HTML DEMO":"FULL"}</div><h3>${t.payTitle||"DEMO ENDS HERE"}</h3><p>${t.payBody||""}</p><button type="button" onclick="closePaywall();selectMode('daily');goHome()">${t.payClose||"BACK"}</button>`;
+  document.getElementById("payOv").style.display="flex";
+  track("demo_paywall",{mode,run_case:runCase});
+}
+function demoRunLocked(idx){return DEMO&&mode==="run"&&idx>=DEMO_RUN_CASES;}
 async function enterGame(){
+ if(demoRunLocked(runCase)){showPaywall();return;}
  const go=document.getElementById("homeGo"),label=go.textContent;
  go.disabled=true;go.textContent=lang==="zh"?"调取卷宗…":lang==="ja"?"事件簿を読込中…":lang==="es"?"CARGANDO…":lang==="pt"?"CARREGANDO…":"LOADING CASEFILE…";
  gameStartedAt=Date.now();track("game_start",{run_case:runCase,run_streak:runStreak});startAmbience();stopScore();resetCase();
@@ -293,7 +323,7 @@ async function enterGame(){
 }
 function goHome(){track("return_home",{questions:qUsed});playScore("menu");document.getElementById("verdict").style.display="none";document.getElementById("briefOv").style.display="none";document.getElementById("home").style.display="flex";renderHome();}
 function setLang(next){lang=next;localStorage.setItem("tell_lang",lang);document.documentElement.lang=lang;track("language_selected",{selected:next});renderHome();if(document.getElementById("settingsOv").style.display==="flex")openSettings();if(window.uxSyncLabels)uxSyncLabels();}
-function nextCase(){track("next_case",{streak:runStreak});playScore("interrogation");runCase=(runCase+1)%S.case_total;localStorage.setItem("tell_run_case",String(runCase));gameStartedAt=Date.now();resetCase();load().then(showBrief);}
+function nextCase(){const nxt=(runCase+1)%(S.case_total||7);if(DEMO&&nxt>=DEMO_RUN_CASES){showPaywall();return;}track("next_case",{streak:runStreak});playScore("interrogation");runCase=nxt;localStorage.setItem("tell_run_case",String(runCase));gameStartedAt=Date.now();resetCase();load().then(showBrief);}
 function retryCase(){track("retry_case",{});playScore("interrogation");gameStartedAt=Date.now();resetCase();load().then(showBrief);}
 function pick(id){if(cur!==id)track("suspect_selected",{suspect:id});cur=id;S.suspects.forEach(s=>document.getElementById("mug-"+s.id).classList.toggle("on",s.id===id));
  const s=S.suspects.find(x=>x.id===id);

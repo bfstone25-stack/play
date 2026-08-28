@@ -83,6 +83,11 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var
 #btnDaily{color:var(--yellow)}
 #btnHow,#btnSettings,#btnDebrief{font:700 12px ui-monospace,monospace;letter-spacing:2px;color:#b7b5ae}
 #homeFoot{position:absolute;left:18px;bottom:22px;color:#6d6f7a;font:500 10px/1.4 -apple-system,sans-serif}
+.xpromo{position:absolute;right:18px;bottom:78px;max-width:46%;display:flex;flex-direction:column;gap:6px;z-index:3}
+.xpromo a{text-decoration:none;border-left:3px solid var(--yellow);padding:7px 9px;background:rgba(10,11,16,.62);color:#fff;display:block}
+.xpromo a small{display:block;font:700 8px ui-monospace,monospace;letter-spacing:1.4px;color:var(--yellow)}
+.xpromo a b{display:block;font:800 12px "Arial Black",Impact,sans-serif;letter-spacing:.4px;margin-top:2px}
+.xpromo a span{display:block;color:#c9c6bc;font:500 11px/1.35 -apple-system,sans-serif;margin-top:2px}
 .panel{width:min(420px,100%);background:#10131c;border:1px solid #2c3348;border-top:3px solid var(--yellow);padding:22px 18px;box-shadow:0 20px 60px #000}
 .panel h2{margin:0 0 12px;font:800 22px "Arial Black",Impact,sans-serif;letter-spacing:1px;color:var(--yellow)}
 .panel p,.panel .rules{color:#d4d0c6;font-size:14px;line-height:1.55}
@@ -160,6 +165,10 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var
         <button id="btnSettings"></button>
         <button id="btnDebrief"></button>
       </div>
+      <nav class="xpromo" aria-label="More games">
+        <a href="https://play.blazecore.dev/office-landlord/" target="_blank" rel="noopener noreferrer"><small>DESK TYCOON</small><b>OFFICE LANDLORD</b><span>Same office. Rent, not fists.</span></a>
+        <a href="https://play.blazecore.dev/rebound-tycoon/" target="_blank" rel="noopener noreferrer"><small>NIGHT SHIFT</small><b>REBOUND TYCOON</b><span>Hose the lot. Bank the rent.</span></a>
+      </nav>
       <div id="homeFoot"></div>
     </div>
   </div>

@@ -444,6 +444,8 @@ html[data-edition="pt-BR"] .chapter-wish{background:radial-gradient(circle at 17
 .clearNext,.archiveClose{margin-top:20px;padding:12px 28px;border:0;border-radius:999px;cursor:pointer;font:700 .85em var(--edition-font);color:var(--edition-bg0);background:var(--edition-glowA)}
 .archiveBtn{position:absolute;left:14px;bottom:14px;z-index:55;border:1px solid color-mix(in srgb,var(--edition-glowA) 35%,transparent);border-radius:999px;padding:9px 13px;
   color:var(--edition-ink);background:color-mix(in srgb,var(--edition-bg0) 58%,transparent);backdrop-filter:blur(12px);cursor:pointer;font:600 .68em var(--edition-font);letter-spacing:.08em}
+.xpromo{position:absolute;right:14px;bottom:14px;z-index:55;display:flex;flex-direction:column;align-items:flex-end;gap:6px;max-width:58%}
+.xpromo a{text-decoration:none;border:1px solid color-mix(in srgb,var(--edition-glowA) 35%,transparent);border-radius:999px;padding:8px 12px;color:var(--edition-ink);background:color-mix(in srgb,var(--edition-bg0) 58%,transparent);backdrop-filter:blur(12px);font:600 .62em var(--edition-font);letter-spacing:.06em}
 .archiveGrid{display:grid;gap:10px;text-align:left;margin-top:18px}.archiveItem{padding:13px;border-left:2px solid var(--edition-glowA);background:rgba(255,255,255,.06)}
 .archiveEmpty{padding:34px 0;color:var(--edition-muted)}.routeProgress{position:absolute;top:14px;right:14px;z-index:4;padding:5px 9px;border-radius:999px;
   background:rgba(8,5,10,.56);color:#fff;font-size:.64em;letter-spacing:.06em;backdrop-filter:blur(8px)}
@@ -825,6 +827,10 @@ html[data-edition="pt-BR"] #game .chip{background:rgba(255,248,222,.75);border-c
   <div id="cards"></div>
   <button id="opReplay" onclick="FLUTTER_OPENING.play(edition.id,{full:true})" aria-label="Replay opening" style="border:0;background:transparent;color:var(--edition-muted);font:500 .68em/1 var(--edition-font);letter-spacing:.12em;min-height:38px;cursor:pointer">▶ OPENING</button>
   <button class="archiveBtn" id="archiveBtn" onclick="openArchive()">◇ MEMORIES</button>
+  <nav class="xpromo" aria-label="More games">
+    <a href="https://apps.blazecore.dev/tell/" target="_blank" rel="noopener noreferrer">TELL · 破绽 ↗</a>
+    <a href="https://apps.blazecore.dev/silvertongue/" target="_blank" rel="noopener noreferrer">SILVERTONGUE ↗</a>
+  </nav>
 </div>
 
 <div id="game">
