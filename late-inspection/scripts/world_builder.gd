@@ -40,7 +40,7 @@ func _build() -> void:
 	_box(Vector3(1.15, 0.08, 4.8), Vector3(0.05, 0.14, 3.1), _trim)
 
 	_door_leaf(Vector3(1.18, 1.05, 2.2), "404")
-	_sign(Vector3(1.16, 1.72, 2.2), "404  LATE INSPECTION ONLY")
+	_sign(Vector3(1.16, 1.72, 2.2), "LATE INSPECTION")
 
 	# Apartment interior (+X from door).
 	_box(Vector3(4.6, -0.05, 2.2), Vector3(6.6, 0.1, 7.2), _floor_mat)
@@ -63,7 +63,7 @@ func _build() -> void:
 
 	_fixture(Vector3(0.0, 2.35, 2.0), Color(1.0, 0.72, 0.32), 1.15, 7.5, true)
 	_fixture(Vector3(3.8, 2.35, 1.6), Color(1.0, 0.78, 0.42), 1.55, 8.0, false)
-	_fixture(Vector3(7.2, 0.35, 5.1), Color(0.45, 0.85, 0.35), 1.35, 4.2, true)
+	_fixture(Vector3(7.2, 0.35, 5.1), Color(0.45, 0.85, 0.35), 0.85, 3.8, true)
 
 	var moon := DirectionalLight3D.new()
 	moon.light_color = Color(0.35, 0.42, 0.55)

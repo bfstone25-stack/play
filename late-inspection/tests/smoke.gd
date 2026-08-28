@@ -47,8 +47,8 @@ func _init() -> void:
 		var dest := "/tmp/late-inspection-smoke.png"
 		img.save_png(dest)
 		print("SMOKE_PNG ", dest, " ", img.get_width(), "x", img.get_height())
-	cam.global_position = Vector3(5.8, 1.45, 3.6)
-	cam.look_at(Vector3(7.3, 0.6, 5.0), Vector3.UP)
+	cam.global_position = Vector3(5.4, 1.4, 3.2)
+	cam.look_at(Vector3(7.2, 0.7, 4.9), Vector3.UP)
 	for i in 35:
 		RenderingServer.force_draw()
 		await process_frame
@@ -57,5 +57,25 @@ func _init() -> void:
 		var dest2 := "/tmp/late-inspection-pipe.png"
 		img.save_png(dest2)
 		print("SMOKE_PNG ", dest2, " ", img.get_width(), "x", img.get_height())
+	if hud:
+		hud.visible = true
+		if hud.has_method("hide_splash"):
+			hud.hide_splash()
+	(scene as Node).call(
+		"open_choice",
+		"stay_or_leave",
+		"The lease says the inspection ends at midnight.\nIt is already later than that.",
+		"Stay overnight and finish the checklist",
+		"Leave the key on the table and walk out",
+		null
+	)
+	for i in 20:
+		RenderingServer.force_draw()
+		await process_frame
+	img = root.get_viewport().get_texture().get_image()
+	if img:
+		var dest3 := "/tmp/late-inspection-choice.png"
+		img.save_png(dest3)
+		print("SMOKE_PNG ", dest3, " ", img.get_width(), "x", img.get_height())
 	print("SMOKE_OK children=", world.get_child_count(), " interactables=", interactables.size())
 	quit(0)
