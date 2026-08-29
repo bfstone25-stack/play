@@ -6,7 +6,7 @@ The product direction is now **Floor 13: Night Shift** — see `../PIVOT.md` and
 
 Kept for:
 - `assets/sprites/stage-office.webp` mood reference
-- fighter portraits as coworker mug placeholders
+- original fighter portraits as historical source material
 - historical smoke (`../monday-smoke.cjs`) and i18n patterns
 
-Do not treat this folder as the shipping surface.
+Nothing in this folder is loaded by the Godot game or included in its Web export. The shipping visuals are procedural pixel scenes in `../scripts/office_builder.gd`.

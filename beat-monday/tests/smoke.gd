@@ -54,5 +54,36 @@ func _init() -> void:
 	await process_frame
 	var dialogue_image := root.get_viewport().get_texture().get_image()
 	dialogue_image.save_png("/tmp/floor13-screens/dialogue.png")
+	while hud.dialogue_panel.visible:
+		hud._advance_dialogue()
+	hud.show_log()
+	if not hud.overlay.visible or "EVIDENCE" not in hud.overlay_body.text:
+		push_error("case log failed to open")
+		quit(6)
+		return
+	hud.overlay.visible = false
+	hud._busy = false
+	hud.show_pause()
+	if not hud.overlay.visible or hud.overlay_title.text != "NIGHT SHIFT PAUSED":
+		push_error("pause overlay failed to open")
+		quit(7)
+		return
+	game.restart()
+	if not hud.title_panel.visible or game.started:
+		push_error("restart did not return to title")
+		quit(8)
+		return
+	DisplayServer.window_set_size(Vector2i(1920, 1080))
+	world.build("manager")
+	hud.title_panel.visible = false
+	for _frame in 8:
+		RenderingServer.force_draw()
+		await process_frame
+	var large_image := root.get_viewport().get_texture().get_image()
+	if large_image == null or large_image.get_size() != Vector2i(1920, 1080):
+		push_error("1920x1080 integer-scale render failed")
+		quit(9)
+		return
+	large_image.save_png("/tmp/floor13-screens/manager-1080p.png")
 	print("SMOKE_OK screens=7 current_hotspots=", hotspots.size(), " min_touch_target=", min_target)
 	quit(0)

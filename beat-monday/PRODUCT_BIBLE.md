@@ -301,13 +301,13 @@ Procedural low-volume fluorescent hum runs after first interaction. Authored cue
 
 ## Verification gate
 
-- [ ] 7 distinct areas and 28 hotspots visible and reachable.
-- [ ] 4 choices persist; delayed consequence assertions pass.
-- [ ] All 16 flag combinations terminate; three target routes independently trigger all endings.
-- [ ] First-read word count and measured normal run fall within 25–35 minutes.
-- [ ] No clipped dialogue at 1280×720 and 1920×1080; touch targets remain at least 44 CSS pixels.
-- [ ] Pause, case log, restart, and return-to-title work; no dead ends.
-- [ ] Godot 4.7.2 GPU import/run/Web export succeeds on blazeubuntu.
-- [ ] Hosted `/floor-13/` returns HTML 200; `.wasm` MIME is `application/wasm`; byte ranges work.
-- [ ] Screenshots cover all seven visual areas; short video proves choices, consequence, transition, and ending.
-- [ ] Product 3 / Null Shrine remains untouched.
+- [x] 7 distinct areas and 28 hotspots visible and reachable.
+- [x] 4 choices persist; delayed consequence assertions pass.
+- [x] All 16 flag combinations terminate; three target routes independently trigger all endings.
+- [x] First-read word count and measured normal run fall within 25–35 minutes.
+- [x] No clipped dialogue at 1280×720 and 1920×1080; touch targets remain at least 44 CSS pixels.
+- [x] Pause, case log, restart, and return-to-title work; no dead ends.
+- [x] Godot 4.7.2 GPU import/run/Web export succeeds on blazeubuntu.
+- [x] Hosted `/floor-13/` returns HTML 200; `.wasm` MIME is `application/wasm`; byte ranges work.
+- [x] Screenshots cover all seven visual areas; short video proves choices, consequence, transition, and ending.
+- [x] Product 3 / Null Shrine remains untouched.

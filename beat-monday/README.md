@@ -1,9 +1,12 @@
-# Beat Monday → Floor 13: Night Shift
+# Floor 13: Night Shift
 
-**Pivot in progress.** Former Catharsis workplace fighter / H5 cabinet is becoming a standalone **2D pixel horror VN** (Godot 4.7).
+Complete standalone Godot 4.7.2 pixel-horror interactive narrative.
 
-- Product plan: [`PIVOT.md`](./PIVOT.md)
-- Playable prototype: open `project.godot` (main scene `scenes/main.tscn`)
-- Legacy fighter: `frontend/` (archived; assets kept for reuse)
+- Canonical script and production contract: [`PRODUCT_BIBLE.md`](./PRODUCT_BIBLE.md)
+- Main scene: `scenes/main.tscn`
+- Runtime: 7 chapters, 28 point-click hotspots, 4 persistent decisions, 3 endings
+- Input: mouse/touch only; no typing or movement controls
+- Tests: `tests/routes.gd`, `tests/playthroughs.gd`, `tests/smoke.gd`, and `tests/first_read.gd`
+- Web route: `/floor-13/`
 
-Sibling pivots (separate PRs): Crazy Rant → 3D Horror VN; Across the Hall remains its own title. Null-shrine awaits Blaze’s brief.
+The former Beat Monday browser fighter remains under `frontend/` as an excluded historical archive. It is not loaded or exported by this game.
