@@ -76,7 +76,7 @@ func _run() -> void:
 		state.inventory.append(state.make_curio("crypt_heart"))
 	game._show_final()
 	await _shot("10-final-appraisal")
-	state.rooms_cleared = [0, 1, 2, 3]
+	state.rooms_cleared.assign([0, 1, 2, 3])
 	state.choose_final("seal")
 	game._show_result()
 	await _shot("11-quiet-seal-result")

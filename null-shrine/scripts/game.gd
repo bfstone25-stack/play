@@ -224,6 +224,9 @@ func _show_title() -> void:
 	state = MidnightStateScript.new()
 	state.phase = MidnightStateScript.Phase.TITLE
 	stage.set_scene("title")
+	_set_ambience("shop")
+	item_grid.visible = true
+	log_label.visible = true
 	phase_label.text = "MIDNIGHT PAWN & CRYPT"
 	header.text = "Complete free run · 15–20 min"
 	title.text = "午夜典当行与地下密室"
@@ -250,6 +253,8 @@ func _start_run() -> void:
 
 func _show_opening() -> void:
 	phase_label.text = "23:41 · INHERITANCE"
+	item_grid.visible = true
+	log_label.visible = true
 	header.text = "18G  ♥12  ◆5"
 	title.text = "The Last Receipt / 最后一张当票"
 	subtitle.text = "Opening + tutorial transaction"
@@ -278,10 +283,13 @@ func _opening_step(step: int) -> void:
 func _show_shop() -> void:
 	encounter_open = false
 	stage.set_scene("shop")
+	_set_ambience("shop")
+	item_grid.visible = true
+	log_label.visible = false
 	stage.customer_id = str(state.current_customer().get("id", ""))
 	var day_text := "DAY 1 · 10:12" if state.day == 1 else "DAY 2 · 09:47"
 	phase_label.text = day_text
-	header.text = "%dG  ♥%d  ◆%d  ☾%d  BANK %d" % [state.gold, state.health, state.resolve, state.curse, state.marks_bank]
+	header.text = "%dG  HP%d  RES%d  CURSE%d  BANK%d" % [state.gold, state.health, state.resolve, state.curse, state.marks_bank]
 	var customer: Dictionary = state.current_customer()
 	title.text = "Shop Floor / 典当营业"
 	if customer.is_empty():
@@ -385,6 +393,8 @@ func _call_customer() -> void:
 func _show_customer_offer() -> void:
 	var customer: Dictionary = state.current_customer()
 	var item: Dictionary = state.get_item(state.selected_id)
+	item_grid.visible = false
+	log_label.visible = true
 	title.text = "%s / %s" % [customer["name"], customer["zh"]]
 	subtitle.text = customer["behavior"]
 	var offer_text := "REFUSES: identity evidence is incomplete." if state.offer <= 0 else "OFFERS %dG for %s." % [state.offer, item["name"]]
@@ -419,9 +429,12 @@ func _enter_night() -> void:
 func _start_room() -> void:
 	encounter_open = false
 	stage.set_scene("dungeon", state.room_index)
+	_set_ambience("crypt")
+	item_grid.visible = false
+	log_label.visible = true
 	var room: Dictionary = MidnightStateScript.ROOMS[state.room_index]
 	phase_label.text = "NIGHT %d · ROOM %d/4" % [state.night, state.room_index + 1]
-	header.text = "%dG  ♥%d  ◆%d  ☾%d  UNBANKED %d" % [state.gold, state.health, state.resolve, state.curse, state.marks_unbanked]
+	header.text = "%dG  HP%d  RES%d  CURSE%d  UNBANKED%d" % [state.gold, state.health, state.resolve, state.curse, state.marks_unbanked]
 	title.text = "%s / %s" % [room["name"], room["zh"]]
 	subtitle.text = room["risk"]
 	detail.text = "Move Nara across the room to the pulsing encounter mark.\n\n[color=#d45b68]RISK:[/color] %s\n[color=#52b4a6]CARRIED:[/color] %s\n\nTap the floor, use WASD/arrows, or press the on-screen direction controls." % [room["risk"], state.get_item(state.carried_id).get("name", "none")]
@@ -532,8 +545,11 @@ func _advance_room() -> void:
 func _show_final() -> void:
 	stage.set_scene("final")
 	stage.selected_curio = "crypt_heart"
+	_set_ambience("crypt")
+	item_grid.visible = false
+	log_label.visible = true
 	phase_label.text = "00:17 · FINAL APPRAISAL"
-	header.text = "%dG  ♥%d  ☾%d  MERCY %d" % [state.gold, state.health, state.curse, state.mercy]
+	header.text = "%dG  HP%d  CURSE%d  MERCY%d" % [state.gold, state.health, state.curse, state.mercy]
 	title.text = "Heart of the Crypt / 地窖之心"
 	subtitle.text = "Value 40G · Curse 4 · Demand: your own"
 	detail.text = "[color=#f1dfb0]“The shop is its coffin. Your name is its key.”[/color]\n\n[color=#e8b84a]SELL[/color] gains its appraised value; gold and concealed debt shape the business.\n[color=#52b4a6]SEAL[/color] costs 12G; mercy, clues, and low curse strengthen the ward.\n[color=#d45b68]KEEP[/color] preserves power; survival, health, optional relic, and curse decide who owns whom."
@@ -553,6 +569,9 @@ func _choose_final(choice: String) -> void:
 
 func _show_result() -> void:
 	stage.set_scene("result")
+	_set_ambience("shop")
+	item_grid.visible = false
+	log_label.visible = true
 	phase_label.text = "RUN COMPLETE"
 	header.text = "SCORE %d · RANK %s" % [state.score, state.rank]
 	title.text = state.outcome
@@ -600,6 +619,23 @@ func _play(kind: String) -> void:
 	var spec: Array = specs.get(kind, specs["tick"])
 	audio_player.stream = _tone(spec[0], spec[1], spec[2])
 	audio_player.play()
+	if kind == "hit" and is_instance_valid(stage):
+		stage.position = Vector2(3, -2)
+		var shake := create_tween()
+		shake.tween_property(stage, "position", Vector2.ZERO, 0.09)
+
+
+func _set_ambience(kind: String) -> void:
+	var frequency := 72.0 if kind == "shop" else 48.0
+	if ambience_player.has_meta("kind") and ambience_player.get_meta("kind") == kind:
+		return
+	var stream := _tone(frequency, 2.0, 0.035)
+	stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	stream.loop_begin = 0
+	stream.loop_end = stream.data.size() / 2
+	ambience_player.stream = stream
+	ambience_player.set_meta("kind", kind)
+	ambience_player.play()
 
 
 func _tone(frequency: float, duration: float, volume: float) -> AudioStreamWAV:
