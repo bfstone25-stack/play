@@ -76,16 +76,16 @@ func _build_ui() -> void:
 	root_margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root_margin.add_theme_constant_override("margin_left", 10)
 	root_margin.add_theme_constant_override("margin_right", 10)
-	root_margin.add_theme_constant_override("margin_top", 8)
-	root_margin.add_theme_constant_override("margin_bottom", 8)
+	root_margin.add_theme_constant_override("margin_top", 6)
+	root_margin.add_theme_constant_override("margin_bottom", 6)
 	add_child(root_margin)
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 6)
+	column.add_theme_constant_override("separation", 5)
 	root_margin.add_child(column)
 
 	var top := HBoxContainer.new()
 	top.clip_contents = false
-	top.custom_minimum_size.y = 36
+	top.custom_minimum_size.y = 32
 	column.add_child(top)
 	phase_label = Label.new()
 	phase_label.text = "MIDNIGHT PAWN"
@@ -186,7 +186,7 @@ func _build_ui() -> void:
 	lang_host.name = "LanguageHost"
 	lang_host.clip_contents = false
 	lang_host.add_theme_constant_override("separation", 4)
-	lang_host.custom_minimum_size.y = 74
+	lang_host.custom_minimum_size.y = 92
 	lang_host.visible = false
 	column.add_child(lang_host)
 	footer_hint = Label.new()
@@ -350,14 +350,14 @@ func _add_language_picker() -> void:
 	var row := HBoxContainer.new()
 	row.clip_contents = false
 	row.add_theme_constant_override("separation", 6)
-	row.custom_minimum_size.y = 44
+	row.custom_minimum_size.y = 48
 	lang_box.add_child(row)
 	for code_v in Loc.ALLOWED:
 		var code := str(code_v)
 		var b := Button.new()
 		b.clip_text = false
 		b.text = str(Loc.NATIVE[code])
-		b.custom_minimum_size = Vector2(108, 44)
+		b.custom_minimum_size = Vector2(108, 48)
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.pressed.connect(func() -> void: Loc.set_code(code))
 		row.add_child(b)
@@ -373,7 +373,7 @@ func _add_language_picker() -> void:
 
 
 func _set_title_layout(on_title: bool) -> void:
-	var height := 168 if on_title else 240
+	var height := 150 if on_title else 240
 	if stage_panel:
 		stage_panel.custom_minimum_size = Vector2(300, height)
 	if stage:
