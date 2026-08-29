@@ -299,6 +299,11 @@ func peaceful_claimant() -> bool:
 		resolve -= 1
 		mercy += 3
 		trust += 1
+		var ring := get_item("wedding_ring")
+		shelf.erase("wedding_ring")
+		if not ring.is_empty():
+			inventory.erase(ring)
+		carried_id = ""
 		enemy_hp = 0
 		finish_room()
 		action_count += 1
