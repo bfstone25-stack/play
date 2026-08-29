@@ -9,7 +9,7 @@ func _init() -> void:
 	order.interact(scene)
 	await process_frame
 	var hud = scene.get_node("HUD")
-	if not hud.document_panel.visible or hud.document_pages.size() != 3:
+	if not hud.document_panel.visible or hud.document_pages.size() != 4:
 		push_error("paged document viewer did not open order folio")
 		quit(1)
 		return
@@ -20,5 +20,5 @@ func _init() -> void:
 		push_error("document close did not complete progression and unlock player")
 		quit(2)
 		return
-	print("DOCUMENT_SMOKE_OK pages=3 stage=", scene.stage)
+	print("DOCUMENT_SMOKE_OK pages=4 stage=", scene.stage)
 	quit(0)
