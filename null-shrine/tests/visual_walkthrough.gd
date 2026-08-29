@@ -9,6 +9,8 @@ func _init() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--output="):
 			output_dir = arg.trim_prefix("--output=")
+		elif arg.begins_with("--locale="):
+			Loc.set_code(arg.trim_prefix("--locale="))
 	call_deferred("_run")
 
 
