@@ -2,6 +2,7 @@ extends Control
 
 const MidnightStateScript = preload("res://scripts/game_state.gd")
 const PixelStageScript = preload("res://scripts/pixel_stage.gd")
+const CJKFont = preload("res://assets/fonts/wqy-microhei.ttc")
 
 var state
 var stage
@@ -173,6 +174,7 @@ func _build_ui() -> void:
 
 func _apply_theme() -> void:
 	var theme := Theme.new()
+	theme.default_font = CJKFont
 	theme.default_font_size = 12
 	var normal := StyleBoxFlat.new()
 	normal.bg_color = PANEL_2
