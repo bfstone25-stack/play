@@ -83,6 +83,10 @@ for setting in [
     if setting not in project_source:
         raise SystemExit(f"pixel pipeline setting missing: {setting}")
 
+export_source = (ROOT / "export_presets.cfg").read_text()
+if "assets/fonts/wqy-microhei.ttc" not in export_source:
+    raise SystemExit("redistributable vector source must remain excluded from runtime export")
+
 glyph_count = next(
     int(line.split("=")[1])
     for line in (ROOT / "assets" / "fonts" / "midnight_pixel_12.fnt").read_text().splitlines()
