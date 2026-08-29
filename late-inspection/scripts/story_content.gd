@@ -204,7 +204,7 @@ Four knocks. One soft scream.
 
 DANE, now through the wall: Inspector! Pell is in the corridor. He does not have a face in the peephole.""")]
 		9:
-			var evidence_route := flags["photo_kept"] or flags["pipe_answered"]
+			var evidence_route: bool = bool(flags["photo_kept"]) or bool(flags["pipe_answered"])
 			var text := """PELL: Your report contains a former tenant's name. Delete it before synchronization.
 ---
 MARA: Iris collected medicine after surrender. You ordered this wall before the leak. Harrow signed tomorrow's invoice.
@@ -234,7 +234,7 @@ A shadow crosses under the front door twice in the same direction. Your report r
 
 Signing preserves the room but names you sole occupant. Refusing rejects Pell's order but lets the corridor challenge whether 404 exists.""", "Sign as temporary custodian", "Tear and refuse the clause")]
 		11:
-			var signed := flags["clause_signed"]
+			var signed: bool = bool(flags["clause_signed"])
 			var final_text := """The key tag now says TENANT — MARA VENN. Your report calls Iris's shoes yours and her cassette an appliance fault.
 ---
 DANE: A signature is not a door. Open it. Say her name before the building finishes yours.
