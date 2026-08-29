@@ -10,6 +10,7 @@ var header: Label
 var phase_label: Label
 var title: Label
 var subtitle: Label
+var customer_portrait: TextureRect
 var detail: RichTextLabel
 var log_label: RichTextLabel
 var item_grid: GridContainer
@@ -29,6 +30,13 @@ const CREAM := Color("#f1dfb0")
 const MUTED := Color("#9f94ac")
 const RED := Color("#d45b68")
 const TEAL := Color("#52b4a6")
+const UI_ATLAS = preload("res://assets/pixel/ui_atlas.png")
+const CURIO_ATLAS = preload("res://assets/pixel/curios.png")
+const CHARACTER_ATLAS = preload("res://assets/pixel/characters.png")
+const CURIO_ORDER := [
+	"wedding_ring", "bone_key", "music_box", "dueling_pistol",
+	"black_ledger", "moon_coin", "saints_tooth", "crypt_heart",
+]
 
 
 func _ready() -> void:
@@ -87,10 +95,10 @@ func _build_ui() -> void:
 	body.split_offset = 300
 	column.add_child(body)
 	var stage_panel := PanelContainer.new()
-	stage_panel.custom_minimum_size = Vector2(300, 170)
+	stage_panel.custom_minimum_size = Vector2(300, 240)
 	body.add_child(stage_panel)
 	stage = PixelStageScript.new()
-	stage.custom_minimum_size = Vector2(300, 170)
+	stage.custom_minimum_size = Vector2(300, 240)
 	stage_panel.add_child(stage)
 
 	var info_margin := MarginContainer.new()
@@ -99,11 +107,22 @@ func _build_ui() -> void:
 	var info := VBoxContainer.new()
 	info.add_theme_constant_override("separation", 4)
 	info_margin.add_child(info)
+	var title_row := HBoxContainer.new()
+	title_row.add_theme_constant_override("separation", 5)
+	info.add_child(title_row)
 	title = Label.new()
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	title.add_theme_color_override("font_color", GOLD)
 	title.add_theme_font_size_override("font_size", 18)
 	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	info.add_child(title)
+	title_row.add_child(title)
+	customer_portrait = TextureRect.new()
+	customer_portrait.custom_minimum_size = Vector2(32, 48)
+	customer_portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	customer_portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	customer_portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	customer_portrait.visible = false
+	title_row.add_child(customer_portrait)
 	subtitle = Label.new()
 	subtitle.add_theme_color_override("font_color", MUTED)
 	subtitle.add_theme_font_size_override("font_size", 11)
@@ -172,36 +191,40 @@ func _build_ui() -> void:
 		pause_box.add_child(button)
 
 
+func _atlas(source: Texture2D, region: Rect2) -> AtlasTexture:
+	var texture := AtlasTexture.new()
+	texture.atlas = source
+	texture.region = region
+	return texture
+
+
+func _ui_style(region: Rect2) -> StyleBoxTexture:
+	var style := StyleBoxTexture.new()
+	style.texture = _atlas(UI_ATLAS, region)
+	style.texture_margin_left = 3
+	style.texture_margin_top = 3
+	style.texture_margin_right = 3
+	style.texture_margin_bottom = 3
+	style.content_margin_left = 8
+	style.content_margin_right = 8
+	style.content_margin_top = 5
+	style.content_margin_bottom = 5
+	style.axis_stretch_horizontal = StyleBoxTexture.AXIS_STRETCH_MODE_TILE
+	style.axis_stretch_vertical = StyleBoxTexture.AXIS_STRETCH_MODE_TILE
+	return style
+
+
 func _apply_theme() -> void:
 	var theme := Theme.new()
 	theme.default_font = CJKFont
 	theme.default_font_size = 12
-	var normal := StyleBoxFlat.new()
-	normal.bg_color = PANEL_2
-	normal.border_color = Color("#5d4968")
-	normal.set_border_width_all(2)
-	normal.corner_radius_top_left = 2
-	normal.corner_radius_top_right = 2
-	normal.corner_radius_bottom_left = 2
-	normal.corner_radius_bottom_right = 2
-	normal.content_margin_left = 8
-	normal.content_margin_right = 8
-	var hover := normal.duplicate()
-	hover.bg_color = Color("#463553")
-	hover.border_color = GOLD
-	var pressed := normal.duplicate()
-	pressed.bg_color = Color("#15101c")
-	theme.set_stylebox("normal", "Button", normal)
-	theme.set_stylebox("hover", "Button", hover)
-	theme.set_stylebox("pressed", "Button", pressed)
+	theme.set_stylebox("normal", "Button", _ui_style(Rect2(0, 0, 64, 32)))
+	theme.set_stylebox("hover", "Button", _ui_style(Rect2(64, 0, 64, 32)))
+	theme.set_stylebox("pressed", "Button", _ui_style(Rect2(192, 0, 64, 32)))
 	theme.set_color("font_color", "Button", CREAM)
 	theme.set_color("font_hover_color", "Button", Color.WHITE)
 	theme.set_font_size("font_size", "Button", 11)
-	var panel := StyleBoxFlat.new()
-	panel.bg_color = PANEL
-	panel.border_color = Color("#4c3b59")
-	panel.set_border_width_all(2)
-	theme.set_stylebox("panel", "PanelContainer", panel)
+	theme.set_stylebox("panel", "PanelContainer", _ui_style(Rect2(0, 0, 64, 32)))
 	self.theme = theme
 
 
@@ -226,6 +249,7 @@ func _show_title() -> void:
 	state = MidnightStateScript.new()
 	state.phase = MidnightStateScript.Phase.TITLE
 	stage.set_scene("title")
+	customer_portrait.visible = false
 	_set_ambience("shop")
 	item_grid.visible = true
 	log_label.visible = true
@@ -259,6 +283,7 @@ func _show_opening() -> void:
 	log_label.visible = true
 	header.text = "18G  ♥12  ◆5"
 	title.text = "The Last Receipt / 最后一张当票"
+	customer_portrait.visible = false
 	subtitle.text = "Opening + tutorial transaction"
 	detail.text = "[color=#f1dfb0]AUNT ELSA'S WILL:[/color]\n“Every object has two prices: what the living offer, and what the dead return for.”\n\nThe Bell Child waits at the counter with a rusted bell. Appraise the maker's mark, choose a fair 10G price, then complete your first sale."
 	_clear(item_grid)
@@ -289,10 +314,12 @@ func _show_shop() -> void:
 	item_grid.visible = true
 	log_label.visible = false
 	stage.customer_id = str(state.current_customer().get("id", ""))
+	stage.set_customer_expression(0)
 	var day_text := "DAY 1 · 10:12" if state.day == 1 else "DAY 2 · 09:47"
 	phase_label.text = day_text
 	header.text = "%dG  HP%d  RES%d  CURSE%d  BANK%d" % [state.gold, state.health, state.resolve, state.curse, state.marks_bank]
 	var customer: Dictionary = state.current_customer()
+	_set_customer_portrait(customer, 0)
 	title.text = "Shop Floor / 典当营业"
 	if customer.is_empty():
 		subtitle.text = "Customers served. Choose what crosses midnight with you."
@@ -319,6 +346,18 @@ func _shop_detail(customer: Dictionary) -> String:
 	return text
 
 
+func _set_customer_portrait(customer: Dictionary, expression: int) -> void:
+	if customer.is_empty():
+		customer_portrait.visible = false
+		return
+	var index := ["mara", "orin", "tamsin", "ivo"].find(str(customer.get("id", "")))
+	if index < 0:
+		customer_portrait.visible = false
+		return
+	customer_portrait.texture = _atlas(CHARACTER_ATLAS, Rect2(clampi(expression, 0, 3) * 32, 48 + index * 48, 32, 48))
+	customer_portrait.visible = true
+
+
 func _refresh_item_grid() -> void:
 	_clear(item_grid)
 	for item in state.inventory:
@@ -326,10 +365,15 @@ func _refresh_item_grid() -> void:
 		var shelf_mark := " ◆" if item["id"] in state.shelf else ""
 		var curse_mark := "" if not item["appraised"] or int(item["curse"]) == 0 else " ☾%d" % item["curse"]
 		var text := "%s%s\n%s%s" % [item["zh"], shelf_mark, mark, curse_mark]
-		_add_item_button(text, func(id = item["id"]): _select_item(id), item["id"] == state.selected_id)
+		var item_button := _add_item_button(text, func(id = item["id"]): _select_item(id), item["id"] == state.selected_id)
+		var icon_index := CURIO_ORDER.find(str(item["id"]))
+		if icon_index >= 0:
+			item_button.icon = _atlas(CURIO_ATLAS, Rect2(icon_index * 32, 0, 32, 32))
+			item_button.icon_max_width = 24
+			item_button.expand_icon = true
 
 
-func _add_item_button(text: String, callback: Callable, selected := false) -> void:
+func _add_item_button(text: String, callback: Callable, selected := false) -> Button:
 	var b := Button.new()
 	b.text = text
 	b.custom_minimum_size = Vector2(132, 42)
@@ -338,6 +382,7 @@ func _add_item_button(text: String, callback: Callable, selected := false) -> vo
 	if selected:
 		b.add_theme_color_override("font_color", GOLD)
 	item_grid.add_child(b)
+	return b
 
 
 func _select_item(id: String) -> void:
@@ -395,6 +440,8 @@ func _call_customer() -> void:
 func _show_customer_offer() -> void:
 	var customer: Dictionary = state.current_customer()
 	var item: Dictionary = state.get_item(state.selected_id)
+	stage.set_customer_expression(2)
+	_set_customer_portrait(customer, 2)
 	item_grid.visible = false
 	log_label.visible = true
 	title.text = "%s / %s" % [customer["name"], customer["zh"]]
@@ -442,6 +489,7 @@ func _enter_night() -> void:
 func _start_room() -> void:
 	encounter_open = false
 	stage.set_scene("dungeon", state.room_index)
+	customer_portrait.visible = false
 	_set_ambience("crypt")
 	item_grid.visible = false
 	log_label.visible = true
@@ -453,10 +501,16 @@ func _start_room() -> void:
 	detail.text = "Move Nara across the room to the pulsing encounter mark.\n\n[color=#d45b68]RISK:[/color] %s\n[color=#52b4a6]CARRIED:[/color] %s\n\nTap the floor, use WASD/arrows, or press the on-screen direction controls." % [room["risk"], state.get_item(state.carried_id).get("name", "none")]
 	_clear(item_grid)
 	_clear(actions)
-	_button("◀", func(): stage.nudge(Vector2.LEFT))
-	_button("▲", func(): stage.nudge(Vector2.UP))
-	_button("▼", func(): stage.nudge(Vector2.DOWN))
-	_button("▶", func(): stage.nudge(Vector2.RIGHT))
+	for spec in [
+		[Vector2.LEFT, Rect2(0, 32, 64, 40)],
+		[Vector2.UP, Rect2(64, 32, 64, 40)],
+		[Vector2.DOWN, Rect2(128, 32, 64, 40)],
+		[Vector2.RIGHT, Rect2(192, 32, 64, 40)],
+	]:
+		var move_button := _button("", func(direction = spec[0]): stage.nudge(direction))
+		move_button.icon = _atlas(UI_ATLAS, spec[1])
+		move_button.icon_max_width = 30
+		move_button.expand_icon = true
 	_button("APPROACH\n接敌", _on_objective_reached, true)
 	footer_hint.text = "Movement is required in normal play; APPROACH is an accessibility shortcut."
 
@@ -558,6 +612,7 @@ func _advance_room() -> void:
 func _show_final() -> void:
 	stage.set_scene("final")
 	stage.selected_curio = "crypt_heart"
+	customer_portrait.visible = false
 	_set_ambience("crypt")
 	item_grid.visible = false
 	log_label.visible = true
@@ -582,6 +637,7 @@ func _choose_final(choice: String) -> void:
 
 func _show_result() -> void:
 	stage.set_scene("result")
+	customer_portrait.visible = false
 	_set_ambience("shop")
 	item_grid.visible = false
 	log_label.visible = true
