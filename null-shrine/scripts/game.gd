@@ -282,7 +282,7 @@ func _show_shop() -> void:
 	var day_text := "DAY 1 · 10:12" if state.day == 1 else "DAY 2 · 09:47"
 	phase_label.text = day_text
 	header.text = "%dG  ♥%d  ◆%d  ☾%d  BANK %d" % [state.gold, state.health, state.resolve, state.curse, state.marks_bank]
-	var customer := state.current_customer()
+	var customer: Dictionary = state.current_customer()
 	title.text = "Shop Floor / 典当营业"
 	if customer.is_empty():
 		subtitle.text = "Customers served. Choose what crosses midnight with you."
@@ -295,7 +295,7 @@ func _show_shop() -> void:
 
 
 func _shop_detail(customer: Dictionary) -> String:
-	var item := state.get_item(state.selected_id)
+	var item: Dictionary = state.get_item(state.selected_id)
 	if item.is_empty():
 		return "Select a curio. A run cannot softlock: unsold stock can always be carried."
 	var mode_names := ["LOW −20%", "FAIR", "HIGH +25%"]
@@ -340,7 +340,7 @@ func _select_item(id: String) -> void:
 
 func _refresh_shop_actions() -> void:
 	_clear(actions)
-	var item := state.get_item(state.selected_id)
+	var item: Dictionary = state.get_item(state.selected_id)
 	if item.is_empty():
 		return
 	if not item["appraised"]:
@@ -383,8 +383,8 @@ func _call_customer() -> void:
 
 
 func _show_customer_offer() -> void:
-	var customer := state.current_customer()
-	var item := state.get_item(state.selected_id)
+	var customer: Dictionary = state.current_customer()
+	var item: Dictionary = state.get_item(state.selected_id)
 	title.text = "%s / %s" % [customer["name"], customer["zh"]]
 	subtitle.text = customer["behavior"]
 	var offer_text := "REFUSES: identity evidence is incomplete." if state.offer <= 0 else "OFFERS %dG for %s." % [state.offer, item["name"]]
@@ -398,8 +398,8 @@ func _show_customer_offer() -> void:
 func _resolve_offer(accept: bool, honest: bool) -> void:
 	var customer_name := str(state.current_customer().get("name", "Customer"))
 	var item_name := str(state.get_item(state.selected_id).get("name", "curio"))
-	var amount := state.offer
-	var sold := state.resolve_customer(accept, honest)
+	var amount: int = state.offer
+	var sold: bool = state.resolve_customer(accept, honest)
 	_play("coin" if sold else "tick")
 	if sold:
 		_log("SALE +%dG · %s buys %s%s." % [amount, customer_name, item_name, " with a truthful warning" if honest else " — curse concealed"])
@@ -473,7 +473,7 @@ func _peaceful_claimant() -> void:
 
 
 func _combat(action: String) -> void:
-	var result := state.combat_action(action)
+	var result: Dictionary = state.combat_action(action)
 	if not result.get("ok", false):
 		_log("Not enough Resolve for that action.")
 		return
@@ -516,7 +516,7 @@ func _room_cleared() -> void:
 
 
 func _advance_room() -> void:
-	var old_phase := state.phase
+	var old_phase: int = state.phase
 	state.advance_room()
 	if state.phase == old_phase:
 		_start_room()

@@ -120,6 +120,11 @@ func _test_scene_load() -> void:
 	root.add_child(game)
 	await process_frame
 	await process_frame
+	if not game.has_method("start_run"):
+		_expect(false, "main game script compiles")
+		game.queue_free()
+		return
+	_expect(true, "main game script compiles")
 	_expect(game.state.phase == MidnightState.Phase.TITLE, "title phase renders")
 	game.start_run()
 	await process_frame
