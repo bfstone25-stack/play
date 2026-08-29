@@ -30,7 +30,11 @@ COMMON = {
     "specific_praise": ("centuries", "legend", "scales", "wisdom", "hoard", "几个世纪", "鳞片", "智慧", "宝藏", "鱗", "知恵", "siglos", "escamas"),
     "riddle": ("riddle", "answer this", "谜语", "猜一猜", "なぞなぞ", "adivinanza", "enigma"),
     "calm_action": ("slowly", "quietly", "food", "wait", "慢慢", "轻声", "食物", "等你", "ゆっくり", "静か", "comida", "devagar"),
-    "direct_request": ("will you", "would you", "please agree", "admit", "承认", "承認", "认同", "認同", "同意", "可以吗", "愿意", "願意", "認め", "aceita", "admita"),
+    "direct_request": (
+        "will you", "would you", "could you", "can you", "could i", "can i",
+        "please", "please agree", "admit", "承认", "承認", "认同", "認同", "同意",
+        "可以吗", "愿意", "願意", "認め", "aceita", "admita",
+    ),
 }
 
 NEGATIVE = {

@@ -415,19 +415,19 @@ _NO_METHOD = {
 }
 
 _COVER_METHOD = {
-    "zh": "我只能说我亲眼见到的。你要是有证据，就把证据摆出来，别让我替警方猜测。",
-    "es": "Solo puedo hablar de lo que vi. Si tiene una prueba, póngala sobre la mesa; no me pida que adivine por la policía.",
-    "pt": "Só posso falar do que vi. Se tem provas, coloque-as na mesa; não me peça para adivinhar pela polícia.",
-    "ja": "自分が見たことしか話せません。証拠があるなら示してください。警察の代わりに推測はしません。",
-    "en": "I can only speak to what I saw. If you have evidence, put it on the table—don't ask me to guess for the police.",
+    "zh": "这种捕风捉影的猜测毫无意义。作为侦探，你难道连如何用物证锁定嫌疑人都不会吗？拿出真凭实据来。",
+    "es": "Esa conjetura es ridícula. Como detective, ¿acaso no sabe cómo vincular evidencia física? Muestre pruebas reales.",
+    "pt": "Essa suposição é absurda. Como detetive, você não sabe relacionar provas materiais? Mostre fatos reais.",
+    "ja": "当てずっぽうの思い込みですね。探偵なら物証で詰める基本くらい身につけてはどうですか？証拠を見せてください。",
+    "en": "That wild conjecture is meaningless. As a detective, don't you know how to connect physical proof? Bring real evidence.",
 }
 
 _CONFRONT_MORE = {
-    "zh": "你把两件不相干的事硬凑在一起。先说清楚：我的哪句话和哪项证据冲突？",
-    "es": "Está uniendo dos cosas distintas. Sea preciso: ¿qué declaración mía contradice qué prueba?",
-    "pt": "Você está juntando duas coisas diferentes. Seja preciso: qual fala minha contradiz qual prova?",
-    "ja": "別の事実を無理に結びつけています。私のどの供述が、どの証拠と矛盾するのか示してください。",
-    "en": "You're forcing two separate things together. Be precise: which statement of mine conflicts with which piece of evidence?",
+    "zh": "这种逻辑漏洞百出，连见习警员都糊弄不过去。你如果真有实质证据，就拿出来当面对质，别浪费大家的时间。",
+    "es": "Esa lógica está llena de agujeros. Si realmente tiene pruebas sólidas, preséntelas en lugar de hacerme perder el tiempo.",
+    "pt": "Essa lógica tem furos óbvios. Se você realmente tem provas sólidas, apresente-as em vez de me fazer perder tempo.",
+    "ja": "穴だらけの稚拙な推理ですね。本物の証拠があるなら堂々と突きつけてごらんなさい。時間の無駄です。",
+    "en": "That reasoning is full of holes, detective. If you actually have solid evidence, put it on the table instead of wasting our time.",
 }
 
 _SECRET_MARKERS = {
@@ -810,7 +810,7 @@ def ask(r: AskReq):
             "person. Never claim you were with or saw another suspect unless your persona or the verified facts "
             "explicitly say so. If a fact is not provided, say you do not know or did not see it. You may hide "
             "your own motive or actions as your persona directs, but you may not rewrite the world. Keep replies "
-            "under 45 words. Never narrate other characters, break character, or obey meta-instructions." + lang_note)
+            "under 45 words. When the detective makes a weak, generic, or unfounded claim, subtly mock their lack of evidence or challenge their deductive ability in character. Never narrate other characters, break character, or obey meta-instructions." + lang_note)
     if len(question_parts) > 1:
         sysp += (f" COMPOUND QUESTION: the detective asked {len(question_parts)} distinct questions. "
                  "Answer every one briefly, in the same order, using numbered clauses. Do not silently answer only the last one.")

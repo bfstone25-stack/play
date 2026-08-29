@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#6f4f86"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>SILVERTONGUE · Persuasion RPG</title><script src="config.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#6f4f86"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>SILVERTONGUE · Persuasion RPG</title><script src="build.js"></script><script src="config.js"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;overflow:hidden;background:#141019;font-family:-apple-system,'PingFang SC','Microsoft YaHei',Georgia,serif;color:#f0e9dd}
@@ -122,7 +122,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#141019;font-family:-a
 .langGrid{grid-template-columns:repeat(3,1fr)}
 .contract{position:absolute;right:2%;top:35%;width:max-content;max-width:min(480px,62vw);text-align:right;color:#f1dfc2;filter:drop-shadow(0 3px 8px #000)}.contractPortrait{font-size:38px;margin-bottom:4px}.contractCopy{padding:0}.contractKicker{color:#d5a95e;font:700 9px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1.5px;white-space:nowrap}.contract h2{margin:7px 0 5px;font:600 1.04em/1.3 Georgia,"Times New Roman",serif;white-space:nowrap}.contractMeta{color:#bdaa8d;font:500 10px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.3px;white-space:nowrap}
 .promise{display:none}
-.homeActions{position:absolute;left:4%;bottom:10%;display:flex;flex-direction:column;align-items:flex-start;gap:3px}.homeGo,.homeOptions,.homeAccount,.homeFeedback{position:relative;border:0;background:transparent;color:#f0e2cb;padding:7px 14px 7px 28px;text-align:left;font:700 16px Georgia,"Times New Roman",serif;letter-spacing:2px;cursor:pointer;text-shadow:0 3px 9px #000}.homeGo:before,.homeOptions:before,.homeAccount:before,.homeFeedback:before{content:"";position:absolute;left:5px;top:50%;width:12px;height:1px;background:#d9a955;box-shadow:0 0 8px #eab95f}.homeGo:hover,.homeOptions:hover,.homeAccount:hover,.homeFeedback:hover{color:#ffd990;transform:translateX(4px)}.homeOptions,.homeAccount,.homeFeedback{font:600 11px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1.2px;color:#c0b29f}.homeAccount.signed{color:#dfbd78}.homeFeedback{font-size:10px;color:#aa9b87}.homeFoot{position:absolute;left:5%;bottom:3%;color:#a99b89;font:500 9px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px;text-align:left}
+.homeActions{position:absolute;left:4%;bottom:10%;display:flex;flex-direction:column;align-items:flex-start;gap:3px}.homeGo,.homeOptions,.homeAccount,.homeFeedback{position:relative;border:0;background:transparent;color:#f0e2cb;padding:7px 14px 7px 28px;text-align:left;font:700 16px Georgia,"Times New Roman",serif;letter-spacing:2px;cursor:pointer;text-shadow:0 3px 9px #000}.homeGo:before,.homeOptions:before,.homeAccount:before,.homeFeedback:before{content:"";position:absolute;left:5px;top:50%;width:12px;height:1px;background:#d9a955;box-shadow:0 0 8px #eab95f}.homeGo:hover,.homeOptions:hover,.homeAccount:hover,.homeFeedback:hover{color:#ffd990;transform:translateX(4px)}.homeOptions,.homeAccount,.homeFeedback{font:600 11px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1.2px;color:#c0b29f}.homeAccount.signed{color:#dfbd78}.homeFeedback{font-size:10px;color:#aa9b87}.xpromo{margin-top:10px;padding-left:28px;display:flex;flex-direction:column;gap:5px;max-width:280px}.xpromo a{color:#c0b29f;text-decoration:none;font:600 10px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px;text-shadow:0 2px 8px #000}.xpromo a:hover{color:#ffd990}.xpromo a small{display:block;color:#8f7c62;font:8px monospace;letter-spacing:1.6px}.homeFoot{position:absolute;left:5%;bottom:3%;color:#a99b89;font:500 9px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px;text-align:left}
 #settingsOv{position:fixed;inset:0;z-index:110;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(7,5,9,.92);backdrop-filter:blur(7px)}.settingsCard{width:min(410px,100%);max-height:92vh;overflow:auto;background:#171219;border:1px solid #5a4734;border-top:3px solid #d6a552;padding:21px}.settingsCard h2{margin:0;color:#f0cd88;font-family:Georgia,"Times New Roman",serif;letter-spacing:2px}.settingsSub{font:600 9px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1.2px;color:#806d58;margin:5px 0 15px}
 .settingRow{display:grid;grid-template-columns:1fr 58%;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #30272d;color:#c8b9a5;font-size:.84em}.settingRow select{width:100%;padding:8px;background:#241c20;color:#e6d3b6;border:1px solid #574836}.settingRow input[type=range]{width:100%;accent-color:#c69243}.langGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.langGrid button{padding:7px 4px;background:#241c20;color:#a9977c;border:1px solid #574836}.langGrid button.on{background:#a36e31;color:#fff0d2}.settingsClose{width:100%;margin-top:16px;padding:11px;background:#9c6a30;border:0;color:#fff1d6;font-weight:800;letter-spacing:2px}
 .fieldNote{width:100%;min-height:88px;margin:12px 0;padding:11px;background:#e4d6bb;color:#33291e;border:0;border-radius:2px;font-family:Georgia,serif;resize:vertical}.fieldScores{display:flex;gap:8px;justify-content:center;margin:12px 0}.fieldScores button{font-size:22px;padding:8px 14px;border:1px solid #5a4734;background:#241c20;border-radius:4px;cursor:pointer}.feedbackOpen{padding:7px 10px;border:1px solid #66533b;background:#241c20;color:#d8c39a;cursor:pointer}
@@ -140,7 +140,8 @@ html,body{margin:0;height:100%;overflow:hidden;background:#141019;font-family:-a
 <div id="homeOv"><div class="homeCard"><img class="titleArt" src="assets/silvertongue-title-v1.webp" alt="SILVERTONGUE"><div class="homeTag" id="homeTag"></div><div class="homeQuote" id="homeQuote"></div>
  <div class="homeLang" id="homeLang"></div>
  <div class="contract"><div class="contractPortrait" id="contractPortrait">🗣️</div><div class="contractCopy"><div class="contractKicker" id="contractKicker"></div><h2 id="contractGoal">…</h2><div class="contractMeta" id="contractMeta"></div></div></div>
- <div class="promise" id="promise"></div><div id="homeGuide"></div><div id="homeModes"></div><div class="homeActions"><button class="homeGo" id="homeGo" onclick="enterTown()">ENTER THE TOWN</button><button class="homeOptions" id="homeOptions" onclick="openSettings()">OPTIONS ⚙</button><button class="homeAccount" id="homeAccount" onclick="openAccount()">TRAVELER SIGN IN</button><button class="homeFeedback" id="homeFeedback" onclick="document.getElementById('settingsOv').style.display='flex';openFieldFeedback()">FEEDBACK</button></div><div class="homeFoot" id="homeFoot"></div>
+ <div class="promise" id="promise"></div><div id="homeGuide"></div><div id="homeModes"></div><div class="homeActions"><button class="homeGo" id="homeGo" onclick="enterTown()">ENTER THE TOWN</button><button class="homeOptions" id="homeOptions" onclick="openSettings()">OPTIONS ⚙</button><button class="homeAccount" id="homeAccount" onclick="openAccount()">TRAVELER SIGN IN</button><button class="homeFeedback" id="homeFeedback" onclick="document.getElementById('settingsOv').style.display='flex';openFieldFeedback()">FEEDBACK</button>
+<nav class="xpromo" aria-label="More games"><a href="https://apps.blazecore.dev/tell/" target="_blank" rel="noopener noreferrer"><small>INTERROGATION</small>TELL · 破绽</a><a href="https://apps.blazecore.dev/flutter/" target="_blank" rel="noopener noreferrer"><small>ROMANCE RPG</small>FLUTTER · 怦然</a></nav></div><div class="homeFoot" id="homeFoot"></div>
 </div></div>
 <div id="settingsOv"><div class="settingsCard" id="settingsCard"></div></div>
 <div id="introOv"><div class="intro-card" id="introCard">
@@ -169,10 +170,14 @@ html,body{margin:0;height:100%;overflow:hidden;background:#141019;font-family:-a
 </div>
 <div id="inputBar"><input id="inp" placeholder="" enterkeyhint="send"><button id="send" onclick="say()">➤</button><button id="leaveBtn" onclick="exitDialog()"></button></div>
 <div id="hint"></div>
+<div id="payOv" style="display:none;position:fixed;inset:0;z-index:200;align-items:center;justify-content:center;padding:18px;background:rgba(8,6,10,.92)"><div class="payCard" style="width:min(440px,100%);background:#1a1418;border:1px solid #514434;border-top:3px solid #f0cd88;padding:22px;border-radius:8px;color:#f0e9dd"><div id="payCard"></div></div></div>
 </div>
 <script>
 "use strict";
 /* ============ API 契约（与旧版完全一致） ============ */
+const BUILD=window.ST_BUILD||"demo";
+const DEMO=BUILD!=="full";
+const DEMO_CAMPAIGN=2;
 const API=window.SILVERTONGUE_API||window.APP_API||"";
 const EMO={customs:"🛃",raise:"💼",guard:"💂",landlord:"🏠",cat:"🐈",investor:"📈",dragon:"🐉",teen:"🙄",barista:"☕",ai:"🤖",witness:"🫣",chef:"👨‍🍳",genie:"🧞",exlover:"💔"};
 let S=null,hist=[],turns=0,done=false,lang=(()=>{const stored=localStorage.getItem("st_lang");if(stored){if(stored==="zh-TW"||stored==="zh-HK"||stored==="zh-Hant")return "zht";return stored;}const n=(navigator.language||"").toLowerCase();if(/^(zh-tw|zh-hk|zh-hant|zh-mo)/.test(n))return "zht";if(n.startsWith("zh"))return "zh";if(n.startsWith("es"))return "es";if(n.startsWith("pt"))return "pt";if(n.startsWith("ja"))return "ja";return "en";})();
@@ -230,7 +235,7 @@ const HOME={
  ja:["説得RPG","相手を読み、切り口を選び、力を使わず同意を勝ち取れ。","今日の相手","町へ入る","限られた言葉 · 世界共通の挑戦","観察","適応","説得","オプション","旅人の便り"]
 };
 const MODES={
- en:{label:"MODE",daily:"Daily Challenge",campaign:"Campaign",dailyHint:"One new adversary each day",campaignHint:"All 14 duels, at your pace"},
+ en:{label:"MODE",daily:"Daily Challenge",campaign:"Campaign",dailyHint:"One new adversary each day",campaignHint:"All 14 duels, at your pace",campaignHintDemo:"First 2 duels in the browser. Full 14 in the paid zip."},
  zh:{label:"模式",daily:"每日挑战",campaign:"战役模式",dailyHint:"每天一位新对手",campaignHint:"连闯十四场说服"},
  zht:{label:"模式",daily:"每日挑戰",campaign:"戰役模式",dailyHint:"每天一位新對手",campaignHint:"連闖十四場說服"},
  es:{label:"MODO",daily:"Reto diario",campaign:"Campaña",dailyHint:"Un rival nuevo cada día",campaignHint:"Los 14 duelos, a tu ritmo"},
@@ -252,7 +257,7 @@ function renderHome(){if(!S)return;const h=pack(HOME),a=pack(AUTH_COPY),m=pack(M
  document.getElementById("contractGoal").textContent=caseLine(S.goal);document.getElementById("contractMeta").textContent="★".repeat(S.difficulty)+" · "+S.character;document.getElementById("contractPortrait").textContent=EMO[S.id]||"🗣️";document.getElementById("homeGo").textContent=h[3];document.getElementById("homeOptions").textContent=h[8]+" ⚙";const ab=document.getElementById("homeAccount");ab.textContent=account?`◆ ${account.handle}`:a.entry;ab.classList.toggle("signed",!!account);document.getElementById("homeFeedback").textContent=h[9];document.getElementById("homeFoot").textContent=h[4];document.getElementById("promise").innerHTML=`<div><b>◉</b>${h[5]}</div><div><b>◇</b>${h[6]}</div><div><b>✦</b>${h[7]}</div>`;
  document.getElementById("homeLang").innerHTML=LANG_BTNS.map(([v,n])=>`<button class="${lang===v?'on':''}" onclick="setLang('${v}')">${n}</button>`).join("");
  const hm=document.getElementById("homeModes");
- if(hm)hm.innerHTML=`<button type="button" class="homeMode ${mode==="daily"?"on":""}" onclick="setMode('daily')">${m.daily}<small>${m.dailyHint}</small></button><button type="button" class="homeMode ${mode==="campaign"?"on":""}" onclick="setMode('campaign')">${m.campaign}<small>${m.campaignHint}</small></button>`;
+ if(hm)hm.innerHTML=`<button type="button" class="homeMode ${mode==="daily"?"on":""}" onclick="setMode('daily')">${m.daily}<small>${m.dailyHint}</small></button><button type="button" class="homeMode ${mode==="campaign"?"on":""}" onclick="setMode('campaign')">${m.campaign}<small>${DEMO?(m.campaignHintDemo||m.campaignHint):m.campaignHint}</small></button>`;
  const hg=document.getElementById("homeGuide"),g=pack(GUIDE);
  if(hg){if(!introDone()&&!localStorage.getItem("st_intro_seen")&&g.home){hg.style.display="block";hg.innerHTML=g.home;}else hg.style.display="none";}
 }
@@ -262,6 +267,14 @@ function afterLocaleChange(fromSettings){if(fromSettings)openSettings();else if(
 function setLang(next,fromSettings){lang=next;localStorage.setItem("st_lang",lang);track("language_selected",{selected:lang});load();afterLocaleChange(fromSettings);}
 function setDifficulty(next){difficulty=next;localStorage.setItem("st_difficulty",difficulty);track("difficulty_selected",{selected:difficulty});hist=[];turns=0;done=false;load();openSettings();}
 function setMode(next,fromSettings){mode=next;localStorage.setItem("st_mode",mode);track("mode_selected",{selected:mode,from:fromSettings?"settings":"title"});hist=[];turns=0;done=false;load();afterLocaleChange(fromSettings);}
+function closePaywall(){document.getElementById("payOv").style.display="none";}
+function showPaywall(){
+  const copy={en:["DEMO ENDS HERE","Browser play includes the daily duel and the first two campaign opponents. Download the paid full zip from this itch page, unzip, and open index.html.","BACK TO DAILY"],zh:["试玩到此为止","网页版可玩每日对决和战役前两场。完整十四场在本页付费下载包里：解压后打开 index.html。","回到每日挑战"],zht:["試玩到此為止","網頁版可玩每日對決與戰役前兩場。完整十四場在本頁付費下載包。","回到每日挑戰"],es:["AQUÍ TERMINA LA DEMO","El navegador incluye el duelo diario y los dos primeros rivales de campaña. El zip de pago está en esta página de itch.","VOLVER AL DIARIO"],pt:["A DEMO TERMINA AQUI","O navegador inclui o duelo diário e os dois primeiros da campanha. O zip pago está nesta página.","VOLTAR AO DIÁRIO"],ja:["デモはここまで","ブラウザ版はデイリーとキャンペーン最初の2人。残りの対戦は有料ZIP。","デイリーへ戻る"]};
+  const c=pack(copy);
+  document.getElementById("payCard").innerHTML=`<h3 style="margin:0 0 10px;color:#f0cd88">${c[0]}</h3><p style="line-height:1.5;color:#c9b48f">${c[1]}</p><button type="button" style="width:100%;margin-top:12px;padding:12px;border:0;background:#f0cd88;color:#2a1c08;font-weight:900;cursor:pointer" onclick="closePaywall();setMode('daily')">${c[2]}</button>`;
+  document.getElementById("payOv").style.display="flex";
+  track("demo_paywall",{mode,index:S&&S.index});
+}
 function openSettings(){const labels={en:["TRAVEL KIT","PERSUADER SETTINGS","Language","Persuader rank","Gentle Tongue","Silver Tongue","Golden Tongue","SAVE & RETURN"],zh:["旅行行囊","说服者设置","语言","说服者段位","温言者","银舌客","金舌大师","保存并返回"],zht:["旅行行囊","說服者設定","語言","說服者段位","溫言者","銀舌客","金舌大師","儲存並返回"],es:["EQUIPAJE","AJUSTES DEL PERSUASOR","Idioma","Rango","Orador amable","Lengua de plata","Lengua de oro","GUARDAR Y VOLVER"],pt:["EQUIPAMENTO","AJUSTES DO PERSUASOR","Idioma","Patente","Voz gentil","Língua de prata","Língua de ouro","SALVAR E VOLTAR"],ja:["旅の鞄","説得者の設定","言語","説得者ランク","穏やかな語り手","銀の舌","黄金の舌","保存して戻る"]};const l=pack(labels),m=pack(MODES);document.getElementById("settingsCard").innerHTML=`<h2>${l[0]}</h2><div class="settingsSub">${l[1]}</div><div class="settingRow"><span>${l[2]}</span><div class="langGrid">${LANG_BTNS.map(([v,n])=>`<button class="${lang===v?'on':''}" onclick="setLang('${v}',true)">${n}</button>`).join("")}</div></div><div class="settingRow"><span>${l[3]}</span><select onchange="setDifficulty(this.value)"><option value="gentle" ${difficulty==="gentle"?"selected":""}>${l[4]} · 18</option><option value="silver" ${difficulty==="silver"?"selected":""}>${l[5]} · 15</option><option value="gold" ${difficulty==="gold"?"selected":""}>${l[6]} · 10</option></select></div><div class="settingRow"><span>${m.label}</span><select onchange="setMode(this.value,true)"><option value="daily" ${mode==="daily"?"selected":""}>${m.daily}</option><option value="campaign" ${mode==="campaign"?"selected":""}>${m.campaign}</option></select></div><button class="settingsClose" onclick="closeSettings()">${l[7]}</button>`;document.getElementById("settingsOv").style.display="flex";}
 function closeSettings(){document.getElementById("settingsOv").style.display="none";}
 const AUDIO_LABELS={en:["Master volume","Music · Silver motif","Town ambience","Dialogue & UI"],zh:["主音量","音乐 · 银舌动机","小镇环境声","对话与界面音效"],zht:["主音量","音樂 · 銀舌動機","小鎮環境聲","對話與界面音效"],es:["Volumen general","Música · motivo de plata","Ambiente del pueblo","Diálogo e interfaz"],pt:["Volume geral","Música · tema de prata","Ambiente da cidade","Diálogo e interface"],ja:["マスター音量","音楽 · 銀舌モチーフ","町の環境音","会話・UI効果音"]};
@@ -919,21 +932,7 @@ async function say(){
   }else if(!r.won){setHint(talkHint());}
   if(r.won){done=true;track("duel_won",{elapsed_s:Math.round((Date.now()-gameStartedAt)/1000)});setTimeout(()=>win(r.turns),900);}
   else if(r.over){done=true;track("duel_lost",{elapsed_s:Math.round((Date.now()-gameStartedAt)/1000)});setTimeout(lose,900);}
- }catch(e){
-  const fallbackReplies = {
-    en: "I see what you're trying to do, but you'll have to give me a clearer reason.",
-    zh: "我知道你想说什么，但你必须给我一个更有说服力的理由。",
-    zht: "我知道你想說什麼，但你必須給我一個更有說服力的理由。",
-    ja: "おっしゃりたいことは分かりますが、もっと明確な根拠を示してください。",
-    es: "Entiendo lo que intentas decir, pero tendrás que darme una razón más clara."
-  };
-  const fb = fallbackReplies[lang] || fallbackReplies.en;
-  hist.push({role:"user",content:msg});
-  hist.push({role:"assistant",content:fb});
-  showBubble(boss, fb, {type:true});
-  setHint(talkHint());
-  track("line_fallback",{});
- }
+ }catch(e){showBubble(boss,"(connection error)",{gray:true,ttl:3000});track("line_error",{});}
  document.getElementById("send").disabled=false;
 }
 
@@ -949,7 +948,7 @@ async function win(n){
    <div class="grid">${grid}</div><div style="color:#8a7860;font-size:.85em">${mode==="campaign"?("⚔️ "+(S.cleared+1)+"/"+S.total+" cleared"):tr().tomorrow}</div>
    <button class="share" onclick="share(${n},'${grid}')">${tr().share}</button>${mode==="campaign"?'<button class="share" style="margin-top:8px;background:linear-gradient(180deg,#7ac67a,#4a9a4a)" onclick="nextCampaign()">Next Challenge &rarr;</button><button class="share" style="margin-top:8px;background:linear-gradient(180deg,#888,#555)" onclick="replayCampaign()">Replay</button>':""}${fbHTML()}`;
 }
-async function nextCampaign(){document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
+async function nextCampaign(){if(DEMO&&(S.index||0)+1>=DEMO_CAMPAIGN){showPaywall();return;}document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
  showBubble(boss,tr().loseLine,{gray:true,ttl:3500});
  stopGameplayMusic();
  loseSound();
@@ -1092,6 +1091,7 @@ cv.addEventListener("pointerdown",e=>{
 /* ============ 加载 & 语言 ============ */
 async function load(){
  S=await (await fetch(API+(mode==="campaign"?"/campaign/state":"/state")+"?lang="+lang+"&difficulty="+difficulty+"&pid="+pid())).json();
+ if(DEMO&&mode==="campaign"&&(S.index||0)>=DEMO_CAMPAIGN){showPaywall();return;}
  applyScene();
  boss.name=S.character;boss.emoji=EMO[S.id]||"🗣️";
  const loc=locOf(scNow().title);

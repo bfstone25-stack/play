@@ -328,6 +328,11 @@ html, body {
 .sheet h1, .sheet h2 { margin: 8px 0 6px; letter-spacing: .03em; }
 .sheet p { color: var(--muted); font-size: 14px; line-height: 1.45; }
 .sheet .launch { width: 100%; margin-top: 12px; }
+.xpromo { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.xpromo a { display: block; text-decoration: none; padding: 8px 10px; border: 1px solid #3d5360; border-left: 3px solid var(--amber); color: inherit; background: #1a2228; }
+.xpromo a small { display: block; letter-spacing: .16em; color: var(--amber); }
+.xpromo a b { display: block; margin-top: 3px; }
+.xpromo a span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.35; }
 .title-art {
   width: 100%;
   height: 140px;
