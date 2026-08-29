@@ -3,8 +3,8 @@ extends Control
 const MidnightStateScript = preload("res://scripts/game_state.gd")
 const PixelStageScript = preload("res://scripts/pixel_stage.gd")
 
-var state: MidnightState
-var stage: PixelStage
+var state
+var stage
 var header: Label
 var phase_label: Label
 var title: Label
@@ -35,7 +35,7 @@ func _ready() -> void:
 	_build_ui()
 	_apply_theme()
 	state = MidnightStateScript.new()
-	state.phase = MidnightState.Phase.TITLE
+	state.phase = MidnightStateScript.Phase.TITLE
 	stage.objective_reached.connect(_on_objective_reached)
 	stage.floor_risk_triggered.connect(_on_floor_risk)
 	get_viewport().size_changed.connect(_on_viewport_changed)
@@ -222,7 +222,7 @@ func _clear(container: Node) -> void:
 
 func _show_title() -> void:
 	state = MidnightStateScript.new()
-	state.phase = MidnightState.Phase.TITLE
+	state.phase = MidnightStateScript.Phase.TITLE
 	stage.set_scene("title")
 	phase_label.text = "MIDNIGHT PAWN & CRYPT"
 	header.text = "Complete free run · 15–20 min"
@@ -419,7 +419,7 @@ func _enter_night() -> void:
 func _start_room() -> void:
 	encounter_open = false
 	stage.set_scene("dungeon", state.room_index)
-	var room: Dictionary = MidnightState.ROOMS[state.room_index]
+	var room: Dictionary = MidnightStateScript.ROOMS[state.room_index]
 	phase_label.text = "NIGHT %d · ROOM %d/4" % [state.night, state.room_index + 1]
 	header.text = "%dG  ♥%d  ◆%d  ☾%d  UNBANKED %d" % [state.gold, state.health, state.resolve, state.curse, state.marks_unbanked]
 	title.text = "%s / %s" % [room["name"], room["zh"]]
@@ -439,10 +439,10 @@ func _on_floor_risk() -> void:
 	state.trigger_floor_risk()
 	_play("hit")
 	_log("FLOOR RISK triggered · Health %d · Resolve %d · Curse %d" % [state.health, state.resolve, state.curse])
-	if state.phase == MidnightState.Phase.DAY_2:
+	if state.phase == MidnightStateScript.Phase.DAY_2:
 		_log("RECOVERY: unbanked loot lost; Nara returns with 3 health and emergency 5G.")
 		_show_shop()
-	elif state.phase == MidnightState.Phase.FINAL:
+	elif state.phase == MidnightStateScript.Phase.FINAL:
 		_show_final()
 	else:
 		_start_room()
@@ -452,7 +452,7 @@ func _on_objective_reached() -> void:
 	if encounter_open or not state.room_active:
 		return
 	encounter_open = true
-	var room: Dictionary = MidnightState.ROOMS[state.room_index]
+	var room: Dictionary = MidnightStateScript.ROOMS[state.room_index]
 	title.text = "%s · HP %d/%d" % [room["enemy"], state.enemy_hp, room["hp"]]
 	subtitle.text = "Deterministic pattern: attacks for %d; guard reduces the next hit." % room["damage"]
 	detail.text = "[color=#d45b68]%s blocks extraction.[/color]\n\nSTRIKE deals 2. GUARD reduces damage and restores Resolve. REMEMBER costs 2 Resolve and reveals identity. CARRIED ITEM uses its room synergy or heals 2." % room["enemy"]
@@ -478,11 +478,11 @@ func _combat(action: String) -> void:
 		_log("Not enough Resolve for that action.")
 		return
 	_play("hit" if not result.get("won", false) else "loot")
-	if state.phase == MidnightState.Phase.DAY_2:
+	if state.phase == MidnightStateScript.Phase.DAY_2:
 		_log("DEFEAT & RECOVERY · unbanked loot and marks lost; banked goods persist.")
 		_show_shop()
 		return
-	if state.phase == MidnightState.Phase.FINAL:
+	if state.phase == MidnightStateScript.Phase.FINAL:
 		_log("DEFEAT & RECOVERY · the cracked Heart still demands a decision.")
 		_show_final()
 		return
@@ -500,7 +500,7 @@ func _on_objective_reached_refresh() -> void:
 
 func _room_cleared() -> void:
 	stage.mark_enemy_defeated()
-	var room: Dictionary = MidnightState.ROOMS[state.room_index]
+	var room: Dictionary = MidnightStateScript.ROOMS[state.room_index]
 	title.text = "ROOM CLEARED / 房间已清理"
 	subtitle.text = "%s cannot follow you." % room["enemy"]
 	var loot_text := ""
@@ -520,7 +520,7 @@ func _advance_room() -> void:
 	state.advance_room()
 	if state.phase == old_phase:
 		_start_room()
-	elif state.phase == MidnightState.Phase.DAY_2:
+	elif state.phase == MidnightStateScript.Phase.DAY_2:
 		_play("coin")
 		_log("EXTRACTED · Loot and %d marks banked. New identities surface at dawn." % state.marks_bank)
 		_show_shop()
@@ -621,7 +621,7 @@ func _tone(frequency: float, duration: float, volume: float) -> AudioStreamWAV:
 
 
 func _toggle_pause() -> void:
-	if state.phase == MidnightState.Phase.TITLE:
+	if state.phase == MidnightStateScript.Phase.TITLE:
 		return
 	pause_layer.visible = not pause_layer.visible
 	get_tree().paused = pause_layer.visible
@@ -654,7 +654,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		_toggle_pause()
 		return
-	if state.phase != MidnightState.Phase.NIGHT_1 and state.phase != MidnightState.Phase.NIGHT_2:
+	if state.phase != MidnightStateScript.Phase.NIGHT_1 and state.phase != MidnightStateScript.Phase.NIGHT_2:
 		return
 	if event.is_action_pressed("move_left"):
 		stage.nudge(Vector2.LEFT)
@@ -681,5 +681,5 @@ func test_enter_encounter() -> void:
 
 
 func test_finish_combat() -> void:
-	while state.room_active and state.phase in [MidnightState.Phase.NIGHT_1, MidnightState.Phase.NIGHT_2]:
+	while state.room_active and state.phase in [MidnightStateScript.Phase.NIGHT_1, MidnightStateScript.Phase.NIGHT_2]:
 		state.combat_action("strike")
