@@ -39,7 +39,7 @@ func _ready() -> void:
 	hotspot_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
 	hud.root_ui.add_child(hotspot_layer)
 	hud.root_ui.move_child(hotspot_layer, 1)
-	world.build("cubicle")
+	world.build("cubicle", flags)
 	hud.set_header("FILE 13", "NIGHT OPERATIONS", "SUNDAY", "Begin when ready. Choices persist until restart.")
 
 func start_game() -> void:
@@ -60,13 +60,13 @@ func restart() -> void:
 	ending_id = ""
 	_clear_hotspots()
 	hud.reset_ui()
-	world.build("cubicle")
+	world.build("cubicle", flags)
 	hud.set_header("FILE 13", "NIGHT OPERATIONS", "SUNDAY", "Begin when ready. Choices persist until restart.")
 
 func _load_area() -> void:
 	_clear_hotspots()
 	var area: Dictionary = StoryData.AREAS[area_index]
-	world.build(area.id)
+	world.build(area.id, flags)
 	hud.set_header(area.chapter, area.place, area.clock, area.objective)
 	pending = "opening"
 	hud.show_dialogue(_expand(area.opening))
@@ -82,23 +82,18 @@ func _show_hotspots() -> void:
 		button.name = "Hotspot_%s" % id
 		button.position = Vector2(rect[0] * 2.0, rect[1] * 2.0)
 		button.size = Vector2(rect[2] * 2.0, rect[3] * 2.0)
-		button.text = "%02d\n%s" % [count + 1, hotspot[1]]
+		button.text = ""
 		button.tooltip_text = str(hotspot[1])
-		button.add_theme_font_size_override("font_size", 8)
-		button.add_theme_color_override("font_color", Color("#d7f4ff"))
-		button.add_theme_color_override("font_hover_color", Color.WHITE)
 		var normal := StyleBoxFlat.new()
-		normal.bg_color = Color("#10233475")
-		normal.border_color = Color("#55bdd0bb")
-		normal.set_border_width_all(1)
+		normal.bg_color = Color.TRANSPARENT
 		var hover := normal.duplicate()
-		hover.bg_color = Color("#1b4057d9")
+		hover.bg_color = Color("#1b405733")
 		hover.border_color = Color("#84efff")
-		hover.set_border_width_all(2)
+		hover.set_border_width_all(1)
 		var pressed := normal.duplicate()
-		pressed.bg_color = Color("#56242cdd")
+		pressed.bg_color = Color("#56242c55")
 		pressed.border_color = Color("#ff5264")
-		pressed.set_border_width_all(2)
+		pressed.set_border_width_all(1)
 		button.add_theme_stylebox_override("normal", normal)
 		button.add_theme_stylebox_override("hover", hover)
 		button.add_theme_stylebox_override("pressed", pressed)
@@ -106,6 +101,17 @@ func _show_hotspots() -> void:
 		button.pressed.connect(_on_hotspot.bind(id))
 		button.add_to_group("hotspot")
 		hotspot_layer.add_child(button)
+		var marker := Label.new()
+		marker.position = Vector2(4, 4)
+		marker.size = Vector2(26, 17)
+		marker.text = "◆ %02d" % (count + 1)
+		marker.add_theme_font_size_override("font_size", 8)
+		marker.add_theme_color_override("font_color", Color("#b8f4ff"))
+		marker.add_theme_color_override("font_outline_color", Color("#05070d"))
+		marker.add_theme_constant_override("outline_size", 3)
+		marker.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		UiFont.apply_label(marker)
+		button.add_child(marker)
 		count += 1
 
 func _on_hotspot(id: String) -> void:
@@ -153,6 +159,7 @@ func _on_choice(value: String) -> void:
 	var area: Dictionary = StoryData.AREAS[area_index]
 	var flag_name := str(area.choice.id)
 	flags[flag_name] = value
+	world.build(area.id, flags)
 	discoveries.append("DECISION — %s: %s" % [flag_name.to_upper().replace("_", " "), value])
 	soundscape.cue("choice")
 	pending = "choice_after"
@@ -172,6 +179,7 @@ func _begin_ending() -> void:
 	discoveries.append("ENDING — %s" % ending_id.replace("_", " "))
 	pending = "ending"
 	soundscape.cue("ending")
+	world.show_ending(ending_id)
 	var lines: Array = StoryData.ENDINGS[ending_id].duplicate(true)
 	lines.pop_back()
 	hud.show_dialogue(_expand(lines))

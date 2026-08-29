@@ -14,6 +14,7 @@ var objective_label: Label
 var dialogue_panel: PanelContainer
 var speaker_label: Label
 var body_label: Label
+var portrait: TextureRect
 var continue_button: Button
 var choice_panel: PanelContainer
 var choice_prompt: Label
@@ -25,7 +26,7 @@ var pause_button: Button
 var overlay: PanelContainer
 var overlay_title: Label
 var overlay_body: Label
-var title_panel: ColorRect
+var title_panel: TextureRect
 var title_start: Button
 var ending_panel: PanelContainer
 var ending_label: Label
@@ -62,17 +63,42 @@ func _panel_style(bg: Color, border: Color, width := 2) -> StyleBoxFlat:
 	style.content_margin_bottom = 9
 	return style
 
+func _atlas(region: Rect2) -> AtlasTexture:
+	var texture := AtlasTexture.new()
+	texture.atlas = load("res://assets/pixel/ui_atlas.png")
+	texture.region = region
+	return texture
+
+func _pixel_style(region: Rect2, margin := 3.0) -> StyleBoxTexture:
+	var style := StyleBoxTexture.new()
+	style.texture = _atlas(region)
+	style.texture_margin_left = margin
+	style.texture_margin_top = margin
+	style.texture_margin_right = margin
+	style.texture_margin_bottom = margin
+	style.content_margin_left = 10
+	style.content_margin_right = 10
+	style.content_margin_top = 6
+	style.content_margin_bottom = 6
+	style.axis_stretch_horizontal = StyleBoxTexture.AXIS_STRETCH_MODE_TILE
+	style.axis_stretch_vertical = StyleBoxTexture.AXIS_STRETCH_MODE_TILE
+	return style
+
 func _format_label(node: Label, size: int, color: Color) -> void:
 	node.add_theme_font_size_override("font_size", size)
 	node.add_theme_color_override("font_color", color)
+	node.add_theme_color_override("font_outline_color", Color("#05070d"))
+	node.add_theme_constant_override("outline_size", 2)
 	UiFont.apply_label(node)
 
 func _format_button(node: Button, size := 11) -> void:
 	node.add_theme_font_size_override("font_size", size)
 	node.add_theme_color_override("font_color", Color("#e7edf5"))
-	node.add_theme_stylebox_override("normal", _panel_style(Color("#151c2bdd"), Color("#526785"), 1))
-	node.add_theme_stylebox_override("hover", _panel_style(Color("#22324ae8"), Color("#6ad9f1"), 2))
-	node.add_theme_stylebox_override("pressed", _panel_style(Color("#34202bea"), Color("#ef4757"), 2))
+	node.add_theme_stylebox_override("normal", _pixel_style(Rect2(64, 64, 64, 32)))
+	node.add_theme_stylebox_override("hover", _pixel_style(Rect2(192, 64, 64, 32)))
+	node.add_theme_stylebox_override("pressed", _pixel_style(Rect2(128, 64, 64, 32)))
+	node.add_theme_color_override("font_outline_color", Color("#05070d"))
+	node.add_theme_constant_override("outline_size", 2)
 	UiFont.apply_button(node)
 
 func _build_top() -> void:
@@ -110,10 +136,22 @@ func _build_dialogue() -> void:
 	dialogue_panel.position = Vector2(38, 218)
 	dialogue_panel.size = Vector2(564, 129)
 	dialogue_panel.visible = false
-	dialogue_panel.add_theme_stylebox_override("panel", _panel_style(Color("#080d18f2"), Color("#6b7c98"), 2))
+	dialogue_panel.add_theme_stylebox_override("panel", _pixel_style(Rect2(0, 64, 64, 32), 4))
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 9)
+	dialogue_panel.add_child(row)
+	portrait = TextureRect.new()
+	portrait.name = "SpeakerPortrait"
+	portrait.custom_minimum_size = Vector2(48, 48)
+	portrait.texture = _atlas(Rect2(0, 0, 48, 48))
+	portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	row.add_child(portrait)
 	var stack := VBoxContainer.new()
+	stack.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	stack.add_theme_constant_override("separation", 4)
-	dialogue_panel.add_child(stack)
+	row.add_child(stack)
 	speaker_label = Label.new()
 	_format_label(speaker_label, 9, Color("#ef5262"))
 	stack.add_child(speaker_label)
@@ -136,7 +174,7 @@ func _build_choices() -> void:
 	choice_panel.position = Vector2(106, 86)
 	choice_panel.size = Vector2(428, 194)
 	choice_panel.visible = false
-	choice_panel.add_theme_stylebox_override("panel", _panel_style(Color("#080d18f7"), Color("#ef4455"), 2))
+	choice_panel.add_theme_stylebox_override("panel", _pixel_style(Rect2(128, 64, 64, 32), 4))
 	var stack := VBoxContainer.new()
 	stack.add_theme_constant_override("separation", 10)
 	choice_panel.add_child(stack)
@@ -191,7 +229,7 @@ func _build_overlay() -> void:
 	overlay.position = Vector2(73, 48)
 	overlay.size = Vector2(494, 265)
 	overlay.visible = false
-	overlay.add_theme_stylebox_override("panel", _panel_style(Color("#070b14fa"), Color("#5f789d"), 2))
+	overlay.add_theme_stylebox_override("panel", _pixel_style(Rect2(0, 64, 64, 32), 4))
 	var stack := VBoxContainer.new()
 	stack.add_theme_constant_override("separation", 8)
 	overlay.add_child(stack)
@@ -221,11 +259,21 @@ func _build_overlay() -> void:
 	root_ui.add_child(overlay)
 
 func _build_title() -> void:
-	title_panel = ColorRect.new()
-	title_panel.color = Color("#050914f5")
+	title_panel = TextureRect.new()
+	title_panel.texture = load("res://assets/pixel/title_backdrop.png")
+	title_panel.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	title_panel.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	title_panel.stretch_mode = TextureRect.STRETCH_SCALE
+	title_panel.modulate = Color("#d5e5ff")
 	title_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
 	title_panel.z_index = 30
 	root_ui.add_child(title_panel)
+	var veil := ColorRect.new()
+	veil.position = Vector2(0, 0)
+	veil.size = Vector2(640, 360)
+	veil.color = Color("#02050a77")
+	veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	title_panel.add_child(veil)
 	var eyebrow := Label.new()
 	eyebrow.position = Vector2(0, 72)
 	eyebrow.size = Vector2(640, 22)
@@ -234,14 +282,14 @@ func _build_title() -> void:
 	_format_label(eyebrow, 9, Color("#667b9a"))
 	title_panel.add_child(eyebrow)
 	var title := Label.new()
-	title.position = Vector2(0, 99)
+	title.position = Vector2(0, 86)
 	title.size = Vector2(640, 106)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.text = "FLOOR 13\nNIGHT SHIFT"
-	_format_label(title, 29, Color("#ee4052"))
+	_format_label(title, 31, Color("#ff4054"))
 	title_panel.add_child(title)
 	var info := Label.new()
-	info.position = Vector2(90, 222)
+	info.position = Vector2(90, 220)
 	info.size = Vector2(460, 35)
 	info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	info.text = "A 25–35 MINUTE POINT-CLICK HORROR NARRATIVE\nHeadphones recommended · choices persist"
@@ -260,7 +308,7 @@ func _build_ending() -> void:
 	ending_panel.position = Vector2(104, 66)
 	ending_panel.size = Vector2(432, 242)
 	ending_panel.visible = false
-	ending_panel.add_theme_stylebox_override("panel", _panel_style(Color("#060a13fa"), Color("#ef4455"), 3))
+	ending_panel.add_theme_stylebox_override("panel", _pixel_style(Rect2(128, 64, 64, 32), 4))
 	var stack := VBoxContainer.new()
 	stack.alignment = BoxContainer.ALIGNMENT_CENTER
 	stack.add_theme_constant_override("separation", 18)
@@ -304,7 +352,18 @@ func _advance_dialogue() -> void:
 	var line: Array = _queue.pop_front()
 	speaker_label.text = str(line[0])
 	body_label.text = str(line[1])
+	_set_portrait(str(line[0]))
 	continue_button.text = "CONTINUE  ▸  %d" % (_queue.size() + 1)
+
+func _set_portrait(speaker: String) -> void:
+	var index := 0
+	if "ELI" in speaker:
+		index = 1
+	elif "MARA" in speaker:
+		index = 2
+	elif speaker in ["AUDITOR", "COMPLIANCE", "SYSTEM", "PA"]:
+		index = 3
+	portrait.texture = _atlas(Rect2(index * 48, 0, 48, 48))
 
 func show_choice(data: Dictionary) -> void:
 	_busy = true
