@@ -115,6 +115,41 @@ func _test_shelf_and_offer_guards() -> void:
 	_expect(state.economy_valid(), "shelf invariant")
 
 
+func _test_curio_synergies_and_alternate_route() -> void:
+	var state: MidnightState = StateScript.new()
+	state.reset()
+	state.tutorial_sale()
+	for id in ["wedding_ring", "bone_key"]:
+		state.appraise(id)
+		state.toggle_shelf(id)
+		state.call_customer(id)
+		state.resolve_customer(false, true)
+	_expect(state.enter_night("wedding_ring"), "alternate route carries wedding ring")
+	_fight_room(state)
+	state.advance_room()
+	_expect(state.peaceful_claimant(), "ring resolves Widow peacefully")
+	_expect(state.mercy == 3, "peaceful claimant grants mercy")
+	state.advance_room()
+	for id in ["dueling_pistol", "black_ledger"]:
+		state.appraise(id)
+		state.toggle_shelf(id)
+		state.call_customer(id)
+		state.resolve_customer(false, true)
+	_expect(state.enter_night("bone_key"), "alternate route carries bone key")
+	_fight_room(state)
+	_expect(state.optional_relic and "saints_tooth" in state.unbanked_loot, "bone key opens optional relic cache")
+
+	var ledger: MidnightState = StateScript.new()
+	ledger.reset()
+	ledger.tutorial_sale()
+	ledger.carried_id = "black_ledger"
+	ledger.night = 1
+	ledger.phase = MidnightState.Phase.NIGHT_1
+	ledger.start_room(0)
+	ledger.finish_room()
+	_expect(ledger.marks_unbanked == 6 and ledger.curse == 1, "black ledger doubles marks with curse cost")
+
+
 func _test_scene_load() -> void:
 	var packed := load("res://scenes/main.tscn") as PackedScene
 	_expect(packed != null, "main scene loads")
@@ -142,6 +177,7 @@ func _test_scene_load() -> void:
 func _run() -> void:
 	print("MIDNIGHT PAWN production verification")
 	_test_shelf_and_offer_guards()
+	_test_curio_synergies_and_alternate_route()
 	_test_loss_recovery()
 	var sell := _full_route("sell")
 	var seal := _full_route("seal")
