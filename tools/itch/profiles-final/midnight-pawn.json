@@ -1,0 +1,16 @@
+{
+  "title": "Midnight Pawn & Crypt",
+  "slug": "midnight-pawn",
+  "short_text": "Every object has two prices: the living's and the dead's. Pixel pawn-shop RPG · 3 endings.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "paid",
+  "min_price": "1.99",
+  "suggested_price": "2.99",
+  "tags": "pixel-art,management,dungeon-crawler,rpg,horror,atmospheric,multiple-endings,short,2d,dark-fantasy",
+  "genre": "rpg",
+  "description_file": "copy/midnight-pawn-desc.html",
+  "instructions_file": "copy/midnight-pawn-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}

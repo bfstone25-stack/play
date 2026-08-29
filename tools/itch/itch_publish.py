@@ -111,6 +111,21 @@ def full_fields(profile: dict, token: str) -> dict:
         fields["game[genre]"] = profile["genre"]
     if profile.get("cover_image_id"):
         fields["game[cover_image_id]"] = str(profile["cover_image_id"])
+    ai = profile.get("ai") or {}
+    if ai:
+        fields["game[ai_disclosure][ai_generated]"] = ai.get("ai_generated", "yes")
+        for kind in ("ai_graphics", "ai_audio", "ai_text", "ai_code"):
+            if ai.get(kind):
+                fields[f"game[ai_disclosure][{kind}]"] = "on"
+    emb = profile.get("embed") or {}
+    if emb:
+        fields["embed[embed_type]"] = emb.get("embed_type", "frame")
+        fields["embed[size_type]"] = emb.get("size_type", "manual")
+        fields["embed[width]"] = str(emb.get("width", 1280))
+        fields["embed[height]"] = str(emb.get("height", 720))
+        for flag in ("fullscreen", "mobile_friendly", "scrollbars", "autostart"):
+            if emb.get(flag):
+                fields[f"embed[{flag}]"] = "on"
     return fields
 
 
@@ -152,11 +167,26 @@ def cmd_push(args) -> None:
     html, token = edit_page(opener, args.id)
     state = embedded_state(html)
     fields = full_fields(profile, token)
+    uploads = state.get("uploads", [])
+    file_prices = profile.get("file_prices") or {}
+    if args.embed_channel or args.demo_channel or file_prices:
+        for pos, up in enumerate(uploads):
+            fields[f"upload[{up['id']}][position]"] = str(up.get("position", pos))
+    for up in uploads:
+        ch = up.get("channel_name") or ""
+        if ch in file_prices:
+            fields[f"upload[{up['id']}][min_price]"] = file_prices[ch]
+            print(f"file price {file_prices[ch]} on {ch} ({up.get('filename')})")
     if args.embed_channel:
-        for up in state.get("uploads", []):
+        for up in uploads:
             if up.get("channel_name") == args.embed_channel or args.embed_channel in (up.get("filename") or ""):
                 fields[f"upload[{up['id']}][embed]"] = "on"
                 print(f"embed flag on upload {up['id']} ({up.get('filename')})")
+    if args.demo_channel:
+        for up in uploads:
+            if up.get("channel_name") == args.demo_channel or args.demo_channel in (up.get("filename") or ""):
+                fields[f"upload[{up['id']}][demo]"] = "on"
+                print(f"demo flag on upload {up['id']} ({up.get('filename')})")
     code, _, body = post_form(opener, f"https://itch.io/game/edit/{args.id}", fields)
     errs = errors_of(body)
     print(f"push -> {code}", ("ERRORS " + json.dumps(errs, ensure_ascii=False)) if errs else "OK")
@@ -171,7 +201,8 @@ def _image_size(path, fallback):
         return fallback
 
 
-def _s3_upload(opener, prepare_url: str, params: dict, file_path: Path, token: str) -> dict:
+def _s3_upload(opener, prepare_url: str, params: dict, file_path: Path, token: str,
+               save_params: dict | None = None) -> dict:
     params = dict(params)
     params["csrf_token"] = token
     code, _, body = post_form(opener, prepare_url, params)
@@ -196,7 +227,12 @@ def _s3_upload(opener, prepare_url: str, params: dict, file_path: Path, token: s
         raise SystemExit(f"S3 upload failed: {exc}")
     if s3code >= 300:
         raise SystemExit(f"S3 upload -> {s3code}")
-    code, _, body = post_form(opener, data["success_url"], {"csrf_token": token})
+    success_url = data["success_url"]
+    if success_url.startswith("/"):
+        success_url = "https://itch.io" + success_url
+    save = dict(save_params or {})
+    save["csrf_token"] = token
+    code, _, body = post_form(opener, success_url, save)
     if code != 200:
         raise SystemExit(f"success_url -> {code}: {body[:200]}")
     try:
@@ -217,17 +253,20 @@ def cmd_upload_cover(args) -> None:
         p, token,
     )
     print("cover upload ->", json.dumps(res)[:300])
-    img_id = res.get("id") or (res.get("image") or {}).get("id")
-    if img_id:
-        _, token = edit_page(opener, args.id)
-        html, token = edit_page(opener, args.id)
-        state = embedded_state(html)
-        fields = {"csrf_token": token, "game[cover_image_id]": str(img_id)}
-        code, _, body = post_form(opener, f"https://itch.io/game/edit/{args.id}", fields)
-        errs = errors_of(body)
-        print(f"cover assign -> {code}", ("ERRORS " + json.dumps(errs)) if errs else "OK")
-    else:
+    img_id = res.get("id") or (res.get("image") or {}).get("id") or (res.get("upload") or {}).get("id")
+    if not img_id:
         print("NO IMAGE ID IN RESPONSE")
+        return
+    if not args.profile:
+        print(f"COVER_IMAGE_ID {img_id} (no profile given; assign via push)")
+        return
+    profile = json.loads((ROOT / args.profile).read_text())
+    profile["cover_image_id"] = img_id
+    _, token = edit_page(opener, args.id)
+    fields = full_fields(profile, token)
+    code, _, body = post_form(opener, f"https://itch.io/game/edit/{args.id}", fields)
+    errs = errors_of(body)
+    print(f"cover assign -> {code}", ("ERRORS " + json.dumps(errs)) if errs else "OK")
 
 
 def cmd_upload_screenshot(args) -> None:
@@ -242,6 +281,7 @@ def cmd_upload_screenshot(args) -> None:
             {"kind": "image", "filename": p.name, "width": w, "height": h,
              "type": "screenshot", "thumb_size": "editor_preview"},
             p, token,
+            save_params={"type": "screenshot", "thumb_size": "editor_preview"},
         )
         print(f"screenshot {p.name} ->", json.dumps(res)[:200])
 
@@ -255,18 +295,18 @@ def cmd_set_theme(args) -> None:
     pub_url = f"https://{user}.itch.io/{slug}"
     code, _, pub_html = fetch(opener, pub_url)
     token = csrf_from(pub_html, cookies)
-    theme = {
-        "bg_color": args.bg,
-        "bg2_color": args.bg2,
-        "text_color": args.text,
-        "link_color": args.link,
-        "font_family": args.font,
-        "font_size": args.size,
-        "screenshots_loc": "sidebar",
-        "default_screenshots_loc": "hidden",
-        "embed_background_alpha": 0,
+    fields = {
+        "csrf_token": token,
+        "layout[bg_color]": args.bg,
+        "layout[bg2_color]": args.bg2,
+        "layout[text_color]": args.text,
+        "layout[link_color]": args.link,
+        "layout[font_family]": args.font,
+        "layout[font_size]": args.size,
+        "layout[screenshots_loc]": "sidebar",
+        "layout[default_screenshots_loc]": "hidden",
     }
-    code, _, body = post_form(opener, pub_url + "/edit", {"csrf_token": token, "theme": json.dumps(theme)})
+    code, _, body = post_form(opener, pub_url + "/edit", fields)
     print(f"set-theme -> {code} {body[:200]}")
 
 
@@ -313,12 +353,14 @@ def main() -> int:
     p.add_argument("id", type=int)
     p.add_argument("--profile", required=True)
     p.add_argument("--embed-channel")
+    p.add_argument("--demo-channel")
     p.add_argument("--publish", action="store_true")
     p.set_defaults(f=cmd_push)
 
     p = sub.add_parser("upload-cover")
     p.add_argument("id", type=int)
     p.add_argument("file")
+    p.add_argument("--profile")
     p.set_defaults(f=cmd_upload_cover)
 
     p = sub.add_parser("upload-screenshot")

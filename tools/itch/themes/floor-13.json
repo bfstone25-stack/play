@@ -1,0 +1,13 @@
+{
+  "bg_color": "#050814",
+  "bg2_color": "#0b1020",
+  "text_color": "#cfd8e8",
+  "link_color": "#ff5264",
+  "button_color": "#ff5264",
+  "font_family": "anonymous_pro",
+  "header_font_family": "pixel",
+  "font_size": "large",
+  "screenshots_loc": "sidebar",
+  "default_screenshots_loc": "hidden",
+  "embed_background_alpha": 0
+}
