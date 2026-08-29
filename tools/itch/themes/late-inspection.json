@@ -1,0 +1,10 @@
+{
+  "bg_color": "#0d0f0a",
+  "bg2_color": "#171a12",
+  "text_color": "#e3e0d2",
+  "link_color": "#8aa65e",
+  "font_family": "lato",
+  "font_size": "large",
+  "screenshots_loc": "sidebar",
+  "default_screenshots_loc": "hidden"
+}

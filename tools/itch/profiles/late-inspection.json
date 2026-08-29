@@ -1,0 +1,34 @@
+{
+ "title": "Late Inspection: Flat 404",
+ "slug": "late-inspection",
+ "short_text": "Flat 404 is not vacant — the checklist knows. First-person horror VN · 7 chapters · 3 endings.",
+ "type": "html",
+ "release_status": "released",
+ "payment_mode": "paid",
+ "min_price": "2.99",
+ "tags": "horror,psychological-horror,3d,first-person,visual-novel,atmospheric,multiple-endings,short,supernatural,ai-generated",
+ "genre": "visual-novel",
+ "description_file": "copy/late-inspection-desc.html",
+ "instructions_file": "copy/late-inspection-instructions.txt",
+ "published": "draft",
+ "ai": {
+  "ai_generated": "yes",
+  "ai_graphics": true,
+  "ai_text": true,
+  "ai_code": true
+ },
+ "file_prices": {
+  "windows": "",
+  "linux": "",
+  "macos": ""
+ },
+ "embed": {
+  "embed_type": "frame",
+  "size_type": "manual",
+  "width": 1280,
+  "height": 720,
+  "fullscreen": true,
+  "mobile_friendly": true
+ },
+ "suggested_price": "4.99"
+}
