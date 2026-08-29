@@ -1,5 +1,6 @@
 extends SceneTree
 
+const StateScript = preload("res://scripts/game_state.gd")
 var game: Control
 var output_dir := "res://visual-output"
 
@@ -36,7 +37,7 @@ func _run() -> void:
 	game.complete_tutorial()
 	await _shot("03-day1-shop")
 
-	var state: MidnightState = game.state
+	var state = game.state
 	for id in ["wedding_ring", "bone_key"]:
 		state.appraise(id)
 		state.toggle_shelf(id)
@@ -54,12 +55,12 @@ func _run() -> void:
 	await _shot("06-room2-widow-combat")
 
 	state.day = 2
-	state.phase = MidnightState.Phase.DAY_2
+	state.phase = StateScript.Phase.DAY_2
 	state.customer_index = 2
 	game._show_shop()
 	await _shot("07-day2-shop")
 	state.night = 2
-	state.phase = MidnightState.Phase.NIGHT_2
+	state.phase = StateScript.Phase.NIGHT_2
 	state.carried_id = "bone_key"
 	state.start_room(2)
 	game._start_room()
@@ -70,7 +71,7 @@ func _run() -> void:
 	game._on_objective_reached()
 	await _shot("09-room4-bell-warden")
 
-	state.phase = MidnightState.Phase.FINAL
+	state.phase = StateScript.Phase.FINAL
 	if not state.has_item("crypt_heart"):
 		state.inventory.append(state.make_curio("crypt_heart"))
 	game._show_final()
