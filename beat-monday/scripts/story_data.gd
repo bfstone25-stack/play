@@ -424,16 +424,45 @@ const ENDINGS := {
 }
 
 static func live() -> Array:
-	return StoryZh.AREAS if Loc.is_zh() else AREAS
+	match Loc.current():
+		"zh":
+			return StoryZh.AREAS
+		"ja":
+			return StoryJa.AREAS
+		"es":
+			return StoryEs.AREAS
+		"ko":
+			return StoryKo.AREAS
+		_:
+			return AREAS
 
 
 static func live_endings() -> Dictionary:
-	return StoryZh.ENDINGS if Loc.is_zh() else ENDINGS
+	match Loc.current():
+		"zh":
+			return StoryZh.ENDINGS
+		"ja":
+			return StoryJa.ENDINGS
+		"es":
+			return StoryEs.ENDINGS
+		"ko":
+			return StoryKo.ENDINGS
+		_:
+			return ENDINGS
 
 
 static func conditional_line(key: String, flags: Dictionary) -> Array:
-	if Loc.is_zh():
-		return StoryZh.conditional(key, flags)
+	match Loc.current():
+		"zh":
+			return StoryZh.conditional(key, flags)
+		"ja":
+			return StoryJa.conditional(key, flags)
+		"es":
+			return StoryEs.conditional(key, flags)
+		"ko":
+			return StoryKo.conditional(key, flags)
+		_:
+			pass
 	match key:
 		"ELI_FOLDER":
 			return ["NARRATION", "Eli's folder is still marked ACTIVE, though its pages fade at the edges. June's visitor badge has bought him time, not safety."] if flags.eli_stance == "TRUST" else ["NARRATION", "Eli's folder is empty except for a wet badge outline. Compliance has converted his testimony into an absence report."]

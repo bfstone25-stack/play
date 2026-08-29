@@ -31,8 +31,8 @@ var title_start: Button
 var title_eyebrow: Label
 var title_name: Label
 var title_info: Label
-var title_lang_en: Button
-var title_lang_zh: Button
+var title_lang_caption: Label
+var lang_buttons: Dictionary = {}
 var choice_banner: Label
 var overlay_close: Button
 var overlay_restart: Button
@@ -64,6 +64,7 @@ func _ready() -> void:
 	_build_overlay()
 	_build_title()
 	_build_ending()
+	set_process_unhandled_input(true)
 	Loc.on_change(apply_locale)
 	apply_locale()
 
@@ -152,9 +153,11 @@ func _build_top() -> void:
 
 func _build_dialogue() -> void:
 	dialogue_panel = PanelContainer.new()
-	dialogue_panel.position = Vector2(8, 252)
-	dialogue_panel.size = Vector2(624, 100)
+	dialogue_panel.position = Vector2(8, 196)
+	dialogue_panel.size = Vector2(624, 156)
 	dialogue_panel.visible = false
+	dialogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	dialogue_panel.gui_input.connect(_on_vn_gui)
 	dialogue_panel.add_theme_stylebox_override("panel", _pixel_style(Rect2(0, 64, 64, 32), 4))
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 9)
@@ -175,23 +178,23 @@ func _build_dialogue() -> void:
 	_format_label(speaker_label, 9, Color("#ef5262"))
 	stack.add_child(speaker_label)
 	body_label = Label.new()
-	body_label.custom_minimum_size = Vector2(0, 40)
+	body_label.custom_minimum_size = Vector2(0, 44)
 	body_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	body_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	_format_label(body_label, 10, Color("#e1e6ee"))
 	stack.add_child(body_label)
 	continue_button = Button.new()
 	continue_button.text = Loc.t("btn.continue")
-	continue_button.custom_minimum_size = Vector2(0, 22)
-	_format_button(continue_button, 9)
+	continue_button.custom_minimum_size = Vector2(0, 36)
+	_format_button(continue_button, 10)
 	continue_button.pressed.connect(_advance_dialogue)
 	stack.add_child(continue_button)
 	root_ui.add_child(dialogue_panel)
 
 func _build_choices() -> void:
 	choice_panel = PanelContainer.new()
-	choice_panel.position = Vector2(18, 156)
-	choice_panel.size = Vector2(604, 92)
+	choice_panel.position = Vector2(18, 108)
+	choice_panel.size = Vector2(604, 140)
 	choice_panel.visible = false
 	choice_panel.add_theme_stylebox_override("panel", _pixel_style(Rect2(128, 64, 64, 32), 4))
 	var stack := VBoxContainer.new()
@@ -207,13 +210,13 @@ func _build_choices() -> void:
 	_format_label(choice_prompt, 11, Color("#f0eee6"))
 	stack.add_child(choice_prompt)
 	choice_a = Button.new()
-	choice_a.custom_minimum_size = Vector2(0, 24)
-	_format_button(choice_a, 10)
+	choice_a.custom_minimum_size = Vector2(0, 44)
+	_format_button(choice_a, 11)
 	choice_a.pressed.connect(func() -> void: _pick(0))
 	stack.add_child(choice_a)
 	choice_b = Button.new()
-	choice_b.custom_minimum_size = Vector2(0, 24)
-	_format_button(choice_b, 10)
+	choice_b.custom_minimum_size = Vector2(0, 44)
+	_format_button(choice_b, 11)
 	choice_b.pressed.connect(func() -> void: _pick(1))
 	stack.add_child(choice_b)
 	root_ui.add_child(choice_panel)
@@ -309,33 +312,32 @@ func _build_title() -> void:
 	title_info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_format_label(title_info, 8, Color("#929db1"))
 	title_panel.add_child(title_info)
-	var lang_cap := Label.new()
-	lang_cap.position = Vector2(0, 214)
-	lang_cap.size = Vector2(640, 16)
-	lang_cap.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lang_cap.text = "Language / 语言"
-	_format_label(lang_cap, 8, Color("#8e9bb0"))
-	title_panel.add_child(lang_cap)
-	title_lang_en = Button.new()
-	title_lang_en.position = Vector2(150, 234)
-	title_lang_en.size = Vector2(150, 32)
-	title_lang_en.text = "English"
-	_format_button(title_lang_en, 9)
-	title_lang_en.pressed.connect(func() -> void: Loc.set_code("en"))
-	title_panel.add_child(title_lang_en)
-	title_lang_zh = Button.new()
-	title_lang_zh.position = Vector2(340, 234)
-	title_lang_zh.size = Vector2(150, 32)
-	title_lang_zh.text = "简体中文"
-	_format_button(title_lang_zh, 9)
-	title_lang_zh.pressed.connect(func() -> void: Loc.set_code("zh"))
-	title_panel.add_child(title_lang_zh)
+	title_lang_caption = Label.new()
+	title_lang_caption.position = Vector2(0, 204)
+	title_lang_caption.size = Vector2(640, 16)
+	title_lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_format_label(title_lang_caption, 8, Color("#8e9bb0"))
+	title_panel.add_child(title_lang_caption)
+	var codes := Loc.ALLOWED
+	for i in codes.size():
+		var code := str(codes[i])
+		var b := Button.new()
+		b.name = "Lang_%s" % code
+		b.position = Vector2(18 + (i % 5) * 122, 222)
+		b.size = Vector2(116, 36)
+		b.text = str(Loc.NATIVE[code])
+		_format_button(b, 8)
+		b.pressed.connect(_on_lang_pressed.bind(code))
+		title_panel.add_child(b)
+		lang_buttons[code] = b
 	title_start = Button.new()
-	title_start.position = Vector2(215, 294)
-	title_start.size = Vector2(210, 42)
-	_format_button(title_start, 11)
-	title_start.pressed.connect(func() -> void: title_panel.visible = false; title_requested.emit())
+	title_start.name = "TitleStart"
+	title_start.position = Vector2(150, 286)
+	title_start.size = Vector2(340, 52)
+	_format_button(title_start, 12)
+	title_start.pressed.connect(_emit_start)
 	title_panel.add_child(title_start)
+	title_panel.gui_input.connect(_on_title_gui)
 
 func _build_ending() -> void:
 	ending_panel = PanelContainer.new()
@@ -367,12 +369,14 @@ func _build_nvl() -> void:
 	nvl_root.position = Vector2(0, 0)
 	nvl_root.size = Vector2(640, 360)
 	nvl_root.visible = false
-	nvl_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	nvl_root.mouse_filter = Control.MOUSE_FILTER_STOP
+	nvl_root.gui_input.connect(_on_vn_gui)
 	nvl_veil = ColorRect.new()
 	nvl_veil.set_anchors_preset(Control.PRESET_FULL_RECT)
 	nvl_veil.size = Vector2(640, 360)
 	nvl_veil.color = Color(0.18, 0.01, 0.03, 0.88)
-	nvl_veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	nvl_veil.mouse_filter = Control.MOUSE_FILTER_STOP
+	nvl_veil.gui_input.connect(_on_vn_gui)
 	nvl_root.add_child(nvl_veil)
 	nvl_name = Label.new()
 	nvl_name.position = Vector2(40, 48)
@@ -464,13 +468,62 @@ func _advance_dialogue() -> void:
 
 func _set_portrait(speaker: String) -> void:
 	var index := 0
-	if "ELI" in speaker:
+	var s := speaker.to_upper()
+	if "ELI" in s or "伊莱" in speaker or "イーライ" in speaker or "엘리" in speaker:
 		index = 1
-	elif "MARA" in speaker:
+	elif "MARA" in s or "玛拉" in speaker or "マラ" in speaker or "마라" in speaker:
 		index = 2
-	elif speaker in ["AUDITOR", "COMPLIANCE", "SYSTEM", "PA"]:
+	elif s in ["AUDITOR", "COMPLIANCE", "SYSTEM", "PA"] or "审计" in speaker or "監査" in speaker or "시스템" in speaker or "시스템" in speaker or "广播" in speaker or "广播" in speaker:
 		index = 3
 	portrait.texture = _atlas(Rect2(index * 48, 0, 48, 48))
+
+func _on_lang_pressed(next: String) -> void:
+	Loc.set_code(next)
+
+func _emit_start() -> void:
+	if title_panel == null or not title_panel.visible:
+		return
+	title_panel.visible = false
+	title_requested.emit()
+
+func _on_title_gui(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var pos: Vector2 = event.position
+		for b in lang_buttons.values():
+			if b is Control and Rect2((b as Control).position, (b as Control).size).has_point(pos):
+				return
+		_emit_start()
+
+func _on_vn_gui(event: InputEvent) -> void:
+	if choice_panel.visible or overlay.visible or ending_panel.visible:
+		return
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_advance_dialogue()
+		accept_event()
+
+func _is_advance(event: InputEvent) -> bool:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		return true
+	if event is InputEventScreenTouch and event.pressed:
+		return true
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("interact"):
+		return true
+	if event is InputEventKey and event.pressed and not event.echo:
+		return event.keycode in [KEY_E, KEY_SPACE, KEY_ENTER] or event.physical_keycode in [KEY_E, KEY_SPACE, KEY_ENTER]
+	return false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if title_panel and title_panel.visible:
+		if _is_advance(event) and not (event is InputEventMouseButton):
+			_emit_start()
+			get_viewport().set_input_as_handled()
+		return
+	if overlay.visible or ending_panel.visible or choice_panel.visible:
+		return
+	if is_line_open():
+		if _is_advance(event):
+			_advance_dialogue()
+			get_viewport().set_input_as_handled()
 
 func show_choice(data: Dictionary) -> void:
 	_busy = true
@@ -564,13 +617,15 @@ func apply_locale() -> void:
 		title_info.text = Loc.t("title.info")
 	if title_start:
 		title_start.text = Loc.t("title.start")
-	if title_lang_en and title_lang_zh:
-		if Loc.is_zh():
-			title_lang_zh.add_theme_color_override("font_color", Color("#6fdcef"))
-			title_lang_en.remove_theme_color_override("font_color")
+	if title_lang_caption:
+		title_lang_caption.text = Loc.t("lang.caption")
+	for code in lang_buttons.keys():
+		var b: Button = lang_buttons[code]
+		b.text = str(Loc.NATIVE[code])
+		if str(code) == Loc.current():
+			b.add_theme_color_override("font_color", Color("#6fdcef"))
 		else:
-			title_lang_en.add_theme_color_override("font_color", Color("#6fdcef"))
-			title_lang_zh.remove_theme_color_override("font_color")
+			b.remove_theme_color_override("font_color")
 	if continue_button and not dialogue_panel.visible:
 		continue_button.text = Loc.t("btn.continue")
 	if log_button:

@@ -31,11 +31,11 @@ func _ready() -> void:
 	hud = HorrorHud.new()
 	hud.name = "HUD"
 	add_child(hud)
-	await get_tree().process_frame
 	hud.choice_made.connect(_on_choice)
 	hud.route_requested.connect(_on_route)
 	hud.restart_requested.connect(restart)
 	hud.title_requested.connect(start_game)
+	await get_tree().process_frame
 	hotspot_layer = Control.new()
 	hotspot_layer.name = "Hotspots"
 	hotspot_layer.set_anchors_preset(Control.PRESET_FULL_RECT)

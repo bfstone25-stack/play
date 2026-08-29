@@ -20,10 +20,17 @@ func _run() -> void:
 	await _shot("title-zh")
 	Loc.set_code("en")
 	await _shot("title-en")
+	Loc.set_code("ja")
+	await _shot("title-ja")
 	Loc.set_code("zh")
 	hud.title_panel.visible = false
 	game.start_game()
 	await _shot("dialogue-zh")
+	game.restart()
+	Loc.set_code("ja")
+	hud.title_panel.visible = false
+	game.start_game()
+	await _shot("dialogue-ja")
 	print("VISUAL_LOCALE_OK")
 	quit(0)
 
