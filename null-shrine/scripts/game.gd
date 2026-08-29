@@ -28,6 +28,7 @@ var lang_en: Button
 var lang_zh: Button
 var lang_buttons: Dictionary = {}
 var lang_box: VBoxContainer
+var lang_host: VBoxContainer
 var log_lines: Array[String] = []
 var encounter_open := false
 var audio_player: AudioStreamPlayer
@@ -82,10 +83,12 @@ func _build_ui() -> void:
 	root_margin.add_child(column)
 
 	var top := HBoxContainer.new()
-	top.custom_minimum_size.y = 28
+	top.clip_contents = false
+	top.custom_minimum_size.y = 36
 	column.add_child(top)
 	phase_label = Label.new()
 	phase_label.text = "MIDNIGHT PAWN"
+	phase_label.clip_text = false
 	phase_label.add_theme_color_override("font_color", GOLD)
 	phase_label.add_theme_font_override("font", PixelDisplayFont)
 	phase_label.add_theme_font_size_override("font_size", 16)
@@ -93,6 +96,10 @@ func _build_ui() -> void:
 	header = Label.new()
 	header.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	header.clip_text = false
+	header.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	header.max_lines_visible = 2
+	header.custom_minimum_size.y = 32
 	header.add_theme_color_override("font_color", CREAM)
 	header.add_theme_font_size_override("font_size", 12)
 	top.add_child(header)
@@ -125,6 +132,9 @@ func _build_ui() -> void:
 	info.add_child(title_row)
 	title = Label.new()
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.clip_text = false
+	title.custom_minimum_size.y = 40
+	title.max_lines_visible = 3
 	title.add_theme_color_override("font_color", GOLD)
 	title.add_theme_font_override("font", PixelDisplayFont)
 	title.add_theme_font_size_override("font_size", 16)
@@ -138,6 +148,9 @@ func _build_ui() -> void:
 	customer_portrait.visible = false
 	title_row.add_child(customer_portrait)
 	subtitle = Label.new()
+	subtitle.clip_text = false
+	subtitle.custom_minimum_size.y = 22
+	subtitle.max_lines_visible = 2
 	subtitle.add_theme_color_override("font_color", MUTED)
 	subtitle.add_theme_font_size_override("font_size", 12)
 	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -164,9 +177,17 @@ func _build_ui() -> void:
 	info.add_child(log_label)
 
 	actions = HBoxContainer.new()
+	actions.clip_contents = false
 	actions.add_theme_constant_override("separation", 5)
-	actions.custom_minimum_size.y = 42
+	actions.custom_minimum_size.y = 44
 	column.add_child(actions)
+	lang_host = VBoxContainer.new()
+	lang_host.name = "LanguageHost"
+	lang_host.clip_contents = false
+	lang_host.add_theme_constant_override("separation", 4)
+	lang_host.custom_minimum_size.y = 72
+	lang_host.visible = false
+	column.add_child(lang_host)
 	footer_hint = Label.new()
 	footer_hint.text = Loc.t("footer.play")
 	footer_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -305,43 +326,60 @@ func _on_locale_changed() -> void:
 
 
 func _add_language_picker() -> void:
+	if lang_host == null:
+		return
+	for child in lang_host.get_children():
+		child.queue_free()
+	lang_buttons.clear()
 	lang_box = VBoxContainer.new()
 	lang_box.name = "LanguagePicker"
+	lang_box.clip_contents = false
 	lang_box.add_theme_constant_override("separation", 4)
+	lang_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	lang_caption = Label.new()
 	lang_caption.text = Loc.t("lang.caption")
 	lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lang_caption.clip_text = false
+	lang_caption.custom_minimum_size.y = 18
 	lang_caption.add_theme_color_override("font_color", MUTED)
 	lang_box.add_child(lang_caption)
 	var row := HBoxContainer.new()
+	row.clip_contents = false
 	row.add_theme_constant_override("separation", 6)
+	row.custom_minimum_size.y = 42
 	lang_box.add_child(row)
-	var row2 := HBoxContainer.new()
-	row2.add_theme_constant_override("separation", 6)
-	lang_box.add_child(row2)
-	for i in Loc.ALLOWED.size():
-		var code := str(Loc.ALLOWED[i])
+	for code_v in Loc.ALLOWED:
+		var code := str(code_v)
 		var b := Button.new()
+		b.clip_text = false
 		b.text = str(Loc.NATIVE[code])
-		b.custom_minimum_size = Vector2(88, 36)
+		b.custom_minimum_size = Vector2(108, 40)
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.pressed.connect(func() -> void: Loc.set_code(code))
-		(row if i < 3 else row2).add_child(b)
+		row.add_child(b)
 		lang_buttons[code] = b
 		if code == "en":
 			lang_en = b
 		elif code == "zh":
 			lang_zh = b
-	actions.add_child(lang_box)
+	lang_host.add_child(lang_box)
+	lang_host.visible = true
 	_mark_language_buttons()
+
+
+func _hide_language_picker() -> void:
+	if lang_host:
+		lang_host.visible = false
 
 
 func _mark_language_buttons() -> void:
 	if lang_caption:
 		lang_caption.text = Loc.t("lang.caption")
+		lang_caption.clip_text = false
 	for code in lang_buttons.keys():
 		var b: Button = lang_buttons[code]
 		b.text = str(Loc.NATIVE[code])
+		b.clip_text = false
 		if str(code) == Loc.current():
 			b.add_theme_color_override("font_color", GOLD)
 		else:
@@ -394,6 +432,7 @@ func _show_opening() -> void:
 	_clear(item_grid)
 	_add_item_button(Loc.t("open.item"), func(): pass, true)
 	_clear(actions)
+	_hide_language_picker()
 	_button(Loc.t("open.appraise"), func(): _opening_step(1))
 	footer_hint.text = Loc.t("open.footer")
 	_log(Loc.t("open.log"))
@@ -433,6 +472,7 @@ func _show_shop() -> void:
 	detail.text = _shop_detail(customer)
 	_refresh_item_grid()
 	_refresh_shop_actions()
+	_hide_language_picker()
 	footer_hint.text = Loc.t("shop.footer", [state.shelf.size(), state.transactions.size()])
 
 
@@ -578,6 +618,7 @@ func _show_customer_offer() -> void:
 	var modes := [Loc.t("shop.mode.low").get_slice(" ", 0), Loc.t("shop.mode.fair"), Loc.t("shop.mode.high").get_slice(" ", 0)]
 	detail.text = Loc.t("offer.body", [offer_text, item["value"], modes[item["price_mode"]], Loc.t("yes") if item["demand"] == customer["wants"] else Loc.t("no"), item["curse"]])
 	_clear(actions)
+	_hide_language_picker()
 	if customer["id"] == "tamsin" and not state.negotiated:
 		_button(Loc.t("btn.negotiate"), _negotiate_offer, true)
 	_button(Loc.t("btn.accept_warn"), func(): _resolve_offer(true, true), true)
@@ -629,6 +670,7 @@ func _start_room() -> void:
 	detail.text = Loc.t("night.body", [Loc.t("risk.%d" % state.room_index), _item_label(state.get_item(state.carried_id))])
 	_clear(item_grid)
 	_clear(actions)
+	_hide_language_picker()
 	for spec in [
 		[Vector2.LEFT, Rect2(0, 32, 64, 40)],
 		[Vector2.UP, Rect2(64, 32, 64, 40)],
@@ -752,6 +794,7 @@ func _show_final() -> void:
 	detail.text = Loc.t("final.body")
 	_clear(item_grid)
 	_clear(actions)
+	_hide_language_picker()
 	_button(Loc.t("btn.sell", [state.get_item("crypt_heart").get("value", 20)]), func(): _choose_final("sell"), true)
 	_button(Loc.t("btn.seal"), func(): _choose_final("seal"))
 	_button(Loc.t("btn.keep"), func(): _choose_final("keep"))
@@ -785,6 +828,7 @@ func _show_result() -> void:
 	detail.text = Loc.t("result.body", [state.gold, state.marks_bank, state.mercy, state.trust, state.clues, state.health, state.curse, state.recovered, state.rooms_cleared.size(), state.transactions.size(), Loc.t("yes") if state.optional_relic else Loc.t("no"), state.score, state.rank, state.elapsed_seconds() / 60.0, state.expected_normal_minutes()])
 	_clear(item_grid)
 	_clear(actions)
+	_hide_language_picker()
 	_button(Loc.t("btn.replay"), _start_run, true)
 	_button(Loc.t("btn.title"), _show_title)
 	footer_hint.text = Loc.t("result.footer")

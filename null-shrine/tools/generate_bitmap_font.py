@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Build the project-owned monochrome BMFont subsets used at runtime.
 
-The redistributable Apache-2.0 WenQuanYi source is rasterized once into a
-finite, one-bit glyph atlas. Godot never renders the vector source in-game.
+The redistributable Apache-2.0 WenQuanYi source (CJK/Kana) plus Nanum
+(Hangul) and DejaVu (Latin-1) are rasterized once into a finite one-bit
+atlas. Godot never renders the vector sources in-game.
 """
 from __future__ import annotations
 
@@ -22,48 +23,124 @@ SOURCE_FILES = sorted((ROOT / "scripts").glob("*.gd"))
 SIZES = (12, 16)
 ATLAS_WIDTH = 1024
 PADDING = 1
+# Hangul ink sits below the Latin baseline; size+2 clips 한국어.
+LINE_PAD = 6
+EXTRAS = (
+    "English简体中文日本語Español한국어言語언어Idioma"
+    "ñáéíóúüÑÁÉÍÓÚÜ¿¡—–·"
+)
+
+
+def _font_path(name: str) -> Path | None:
+    home = Path.home() / ".local/share/fonts"
+    candidates = {
+        "nanum": [
+            home / "NanumGothic.ttf",
+            Path("/usr/share/fonts/truetype/nanum/NanumGothic.ttf"),
+        ],
+        "dejavu": [Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")],
+        "wqy": [SOURCE_FONT, Path("/usr/share/fonts/truetype/wqy/wqy-microhei.ttc")],
+    }
+    for path in candidates[name]:
+        if path.is_file():
+            return path
+    return None
 
 
 def source_charset() -> list[str]:
     chars = set(chr(codepoint) for codepoint in range(32, 127))
+    chars.update(EXTRAS)
+    for codepoint in range(0xA0, 0x100):
+        chars.add(chr(codepoint))
     quoted = re.compile(r'"(?:\\.|[^"\\])*"')
+    triple = re.compile(r'"""(?:\\.|[^"\\])*"""', re.S)
     for path in SOURCE_FILES:
         source = path.read_text(encoding="utf-8")
-        for match in quoted.finditer(source):
+        for match in list(quoted.finditer(source)) + list(triple.finditer(source)):
             try:
                 value = ast.literal_eval(match.group(0))
             except (SyntaxError, ValueError):
+                continue
+            if not isinstance(value, str):
                 continue
             chars.update(char for char in value if char >= " " and char != "\u007f")
     return sorted(chars, key=ord)
 
 
-def glyph_bitmap(font: ImageFont.FreeTypeFont, char: str, size: int) -> tuple[Image.Image, int, int, int]:
-    east_asian = unicodedata.east_asian_width(char) in {"W", "F"}
+def _is_hangul(char: str) -> bool:
+    code = ord(char)
+    return (
+        0xAC00 <= code <= 0xD7AF
+        or 0x1100 <= code <= 0x11FF
+        or 0x3130 <= code <= 0x318F
+    )
+
+
+def _is_latin_ext(char: str) -> bool:
+    code = ord(char)
+    return 0xA0 <= code <= 0x24F or 0x1E00 <= code <= 0x1EFF
+
+
+def _load_faces(size: int) -> dict[str, ImageFont.FreeTypeFont]:
+    faces: dict[str, ImageFont.FreeTypeFont] = {}
+    wqy = _font_path("wqy")
+    if wqy:
+        faces["wqy"] = ImageFont.truetype(str(wqy), size=size, index=0)
+    nanum = _font_path("nanum")
+    if nanum:
+        faces["nanum"] = ImageFont.truetype(str(nanum), size=size)
+    dejavu = _font_path("dejavu")
+    if dejavu:
+        faces["dejavu"] = ImageFont.truetype(str(dejavu), size=size)
+    if "wqy" not in faces:
+        raise SystemExit("WenQuanYi Micro Hei is required to build Midnight BMFont")
+    return faces
+
+
+def _pick_face(faces: dict[str, ImageFont.FreeTypeFont], char: str) -> ImageFont.FreeTypeFont:
+    if _is_hangul(char) and "nanum" in faces:
+        return faces["nanum"]
+    if _is_latin_ext(char) and "dejavu" in faces:
+        return faces["dejavu"]
+    return faces["wqy"]
+
+
+def glyph_bitmap(font: ImageFont.FreeTypeFont, char: str, size: int) -> tuple[Image.Image, int, int, int] | None:
+    east_asian = unicodedata.east_asian_width(char) in {"W", "F"} or _is_hangul(char)
     advance = size if east_asian else max(3, round(font.getlength(char)))
     if char == " ":
         return Image.new("1", (1, 1), 0), 0, 0, advance
 
-    canvas = Image.new("L", (size * 3, size * 3), 0)
+    canvas_h = size * 4
+    canvas = Image.new("L", (size * 3, canvas_h), 0)
     draw = ImageDraw.Draw(canvas)
-    baseline = size + 2
+    baseline = size + 4
     draw.text((size, baseline), char, font=font, fill=255, anchor="ls", stroke_width=0)
-    # A hard threshold produces exactly transparent/opaque pixels: no AA,
-    # subpixel coverage, MSDF, or runtime smoothing.
     mono = canvas.point(lambda value: 255 if value >= 96 else 0, mode="1")
     bbox = mono.getbbox()
     if bbox is None:
-        return Image.new("1", (1, 1), 0), 0, 0, advance
+        return None
+    width = bbox[2] - bbox[0]
+    height = bbox[3] - bbox[1]
+    if width <= 1 and height <= 1:
+        return None
     crop = mono.crop(bbox)
     x_offset = bbox[0] - size
     y_offset = bbox[1] - (baseline - size)
     return crop, x_offset, y_offset, advance
 
 
-def build(size: int, chars: list[str]) -> tuple[int, tuple[int, int]]:
-    font = ImageFont.truetype(str(SOURCE_FONT), size=size, index=0)
-    glyphs = [(char, *glyph_bitmap(font, char, size)) for char in chars]
-    row_height = size + PADDING * 2 + 2
+def build(size: int, chars: list[str]) -> tuple[int, tuple[int, int], int]:
+    faces = _load_faces(size)
+    glyphs: list[tuple[str, Image.Image, int, int, int]] = []
+    skipped = 0
+    for char in chars:
+        rendered = glyph_bitmap(_pick_face(faces, char), char, size)
+        if rendered is None:
+            skipped += 1
+            continue
+        glyphs.append((char, *rendered))
+    row_height = size + PADDING * 2 + LINE_PAD
     positions: list[tuple[str, Image.Image, int, int, int, int, int]] = []
     x = PADDING
     y = PADDING
@@ -87,14 +164,12 @@ def build(size: int, chars: list[str]) -> tuple[int, tuple[int, int]]:
     atlas_name = f"{stem}.png"
     atlas.save(FONT_DIR / atlas_name, optimize=True)
 
+    line_height = size + LINE_PAD
     lines = [
         f'info face="Midnight Pixel {size}" size={size} bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=0 aa=1 padding=0,0,0,0 spacing=0,0 outline=0',
-        # Godot's BMFont loader treats four zero channel descriptors as a
-        # plain RGBA8 color atlas. Alpha-only channel metadata is interpreted
-        # as a separate outline plane and is rejected without outline data.
-        f"common lineHeight={size + 2} base={size} scaleW={ATLAS_WIDTH} scaleH={atlas_height} pages=1 packed=0 alphaChnl=0 redChnl=0 greenChnl=0 blueChnl=0",
+        f"common lineHeight={line_height} base={size + 2} scaleW={ATLAS_WIDTH} scaleH={atlas_height} pages=1 packed=0 alphaChnl=0 redChnl=0 greenChnl=0 blueChnl=0",
         f'page id=0 file="{atlas_name}"',
-        f"chars count={len(chars)}",
+        f"chars count={len(positions)}",
     ]
     for char, bitmap, x_offset, y_offset, advance, gx, gy in positions:
         width, height = bitmap.size
@@ -115,14 +190,17 @@ def build(size: int, chars: list[str]) -> tuple[int, tuple[int, int]]:
             )
         )
     (FONT_DIR / f"{stem}.fnt").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    return len(chars), atlas.size
+    return len(positions), atlas.size, skipped
 
 
 def main() -> None:
     chars = source_charset()
     for size in SIZES:
-        count, atlas_size = build(size, chars)
-        print(f"BMFont size={size} glyphs={count} atlas={atlas_size[0]}x{atlas_size[1]} mono=1bit")
+        count, atlas_size, skipped = build(size, chars)
+        print(
+            f"BMFont size={size} glyphs={count} skipped={skipped} "
+            f"atlas={atlas_size[0]}x{atlas_size[1]} lineHeight={size + LINE_PAD} mono=1bit"
+        )
 
 
 if __name__ == "__main__":
