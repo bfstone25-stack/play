@@ -145,16 +145,17 @@ func _build_top() -> void:
 	_format_label(clock_label, 9, Color("#6fdcef"))
 	root_ui.add_child(clock_label)
 	objective_label = Label.new()
-	objective_label.position = Vector2(88, 27)
-	objective_label.size = Vector2(528, 16)
-	objective_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	objective_label.position = Vector2(88, 24)
+	objective_label.size = Vector2(528, 20)
+	objective_label.clip_text = false
+	objective_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 	_format_label(objective_label, 8, Color("#8e9bb0"))
 	root_ui.add_child(objective_label)
 
 func _build_dialogue() -> void:
 	dialogue_panel = PanelContainer.new()
-	dialogue_panel.position = Vector2(8, 196)
-	dialogue_panel.size = Vector2(624, 156)
+	dialogue_panel.position = Vector2(8, 186)
+	dialogue_panel.size = Vector2(624, 168)
 	dialogue_panel.visible = false
 	dialogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	dialogue_panel.gui_input.connect(_on_vn_gui)
@@ -178,7 +179,8 @@ func _build_dialogue() -> void:
 	_format_label(speaker_label, 9, Color("#ef5262"))
 	stack.add_child(speaker_label)
 	body_label = Label.new()
-	body_label.custom_minimum_size = Vector2(0, 44)
+	body_label.custom_minimum_size = Vector2(0, 52)
+	body_label.clip_text = false
 	body_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	body_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	_format_label(body_label, 10, Color("#e1e6ee"))
@@ -303,18 +305,23 @@ func _build_title() -> void:
 	title_name = Label.new()
 	title_name.position = Vector2(0, 68)
 	title_name.size = Vector2(640, 90)
+	title_name.clip_text = false
 	title_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_format_label(title_name, 31, Color("#ff4054"))
 	title_panel.add_child(title_name)
 	title_info = Label.new()
-	title_info.position = Vector2(90, 168)
-	title_info.size = Vector2(460, 40)
+	title_info.position = Vector2(70, 160)
+	title_info.size = Vector2(500, 48)
+	title_info.clip_text = false
+	title_info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	title_info.max_lines_visible = 3
 	title_info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_format_label(title_info, 8, Color("#929db1"))
 	title_panel.add_child(title_info)
 	title_lang_caption = Label.new()
 	title_lang_caption.position = Vector2(0, 204)
-	title_lang_caption.size = Vector2(640, 16)
+	title_lang_caption.size = Vector2(640, 18)
+	title_lang_caption.clip_text = false
 	title_lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_format_label(title_lang_caption, 8, Color("#8e9bb0"))
 	title_panel.add_child(title_lang_caption)
@@ -323,8 +330,9 @@ func _build_title() -> void:
 		var code := str(codes[i])
 		var b := Button.new()
 		b.name = "Lang_%s" % code
-		b.position = Vector2(18 + (i % 5) * 122, 222)
-		b.size = Vector2(116, 36)
+		b.position = Vector2(12 + (i % 5) * 124, 220)
+		b.size = Vector2(120, 40)
+		b.clip_text = false
 		b.text = str(Loc.NATIVE[code])
 		_format_button(b, 8)
 		b.pressed.connect(_on_lang_pressed.bind(code))

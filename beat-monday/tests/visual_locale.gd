@@ -35,6 +35,16 @@ func _run() -> void:
 	hud.title_panel.visible = false
 	game.start_game()
 	await _shot("dialogue-ja")
+	game.restart()
+	Loc.set_code("es")
+	hud.title_panel.visible = false
+	game.start_game()
+	await _shot("dialogue-es")
+	game.restart()
+	Loc.set_code("ko")
+	hud.title_panel.visible = false
+	game.start_game()
+	await _shot("dialogue-ko")
 	print("VISUAL_LOCALE_OK")
 	quit(0)
 

@@ -1,20 +1,21 @@
 extends RefCounted
 class_name UiFont
 
-## Pixel atlas for Latin + a CJK bitmap subset. Missing glyphs (Hangul, ñ)
-## load from OS/res FontFile paths — never a packed-Web TTF theme, and never
-## a Latin SystemFont with allow_system_fallback (Across the Hall tofu).
+## Latin pixel atlas for EN/ES. CJK/Kana/Hangul come from the packed bitmap
+## subset (Web-safe PNG). Browser/system FontFile is a fallback only — never
+## a packed TTF theme, and never a Latin SystemFont with allow_system_fallback
+## as the first face (that is the Across the Hall tofu path).
 
 static var _face: Font
 
 static func refresh() -> void:
 	_face = null
 
+
 static func face() -> Font:
 	if _face:
 		return _face
 	var latin: Font = load("res://assets/pixel/floor13_font.fnt")
-	var composed: Font = latin.duplicate()
 	var extras: Array[Font] = []
 	if ResourceLoader.exists("res://assets/pixel/floor13_cjk.fnt"):
 		extras.append(load("res://assets/pixel/floor13_cjk.fnt"))
@@ -23,16 +24,35 @@ static func face() -> Font:
 		if ttf.load_dynamic_font(path) == OK:
 			extras.append(ttf)
 	if OS.has_feature("web"):
-		extras.append(_web_cjk())
+		var web := _web_cjk()
+		if _cjk_locale():
+			# WebGL will not bind a packed TTF. Put the browser face first so
+			# JA/KO never sit behind a Latin-only bitmap that draws hex tofu.
+			var web_extras: Array[Font] = [latin]
+			web_extras.append_array(extras)
+			web.fallbacks = web_extras
+			_face = web
+			return _face
+		extras.append(web)
+	var composed: Font = latin.duplicate()
 	composed.fallbacks = extras
 	_face = composed
 	return _face
 
+
 static func apply_label(l: Label) -> void:
 	l.add_theme_font_override("font", face())
+	l.clip_text = false
+
 
 static func apply_button(b: Button) -> void:
 	b.add_theme_font_override("font", face())
+	b.clip_text = false
+
+
+static func _cjk_locale() -> bool:
+	return Loc.current() in ["zh", "ja", "ko"]
+
 
 static func _web_cjk() -> Font:
 	var f := SystemFont.new()
@@ -43,6 +63,7 @@ static func _web_cjk() -> Font:
 		"PingFang SC", "Hiragino Sans", "Yu Gothic", "sans-serif",
 	])
 	return f
+
 
 static func _font_files() -> Array[String]:
 	var out: Array[String] = []
