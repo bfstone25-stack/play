@@ -7,16 +7,45 @@ func _init() -> void:
 	call_deferred("_run")
 
 
+func _is_cjk(ch: String) -> bool:
+	var o := ch.unicode_at(0)
+	return o >= 0x4E00 and o <= 0x9FFF
+
+
+func _is_latin(ch: String) -> bool:
+	return (ch >= "A" and ch <= "Z") or (ch >= "a" and ch <= "z")
+
+
+func _strip_bbcode(text: String) -> String:
+	var re := RegEx.new()
+	re.compile("\\[[^\\]]+\\]")
+	return re.sub(text, " ", true)
+
+
+func _has_latin_word(s: String) -> bool:
+	var run := 0
+	for ch in s:
+		if _is_latin(ch):
+			run += 1
+			if run >= 3:
+				return true
+		else:
+			run = 0
+	return false
+
+
+func _has_cjk(s: String) -> bool:
+	for ch in s:
+		if _is_cjk(ch):
+			return true
+	return false
+
+
 func _mixed(text: String) -> bool:
-	if text.strip_edges() == "Language / 语言":
+	if text.strip_edges().begins_with("Language / 语言"):
 		return false
-	var slash := RegEx.new()
-	slash.compile("[A-Za-z]{3,}[^\\n]{0,40} / [^\\n]{0,40}[\\u4e00-\\u9fff]")
-	if slash.search(text):
-		return true
-	var stacked := RegEx.new()
-	stacked.compile("[A-Za-z]{3,}[^\\n]{0,48}\\n[\\u4e00-\\u9fff]")
-	return stacked.search(text) != null
+	var plain := _strip_bbcode(text)
+	return _has_latin_word(plain) and _has_cjk(plain)
 
 
 func _collect(node: Node, into: Array[String]) -> void:
