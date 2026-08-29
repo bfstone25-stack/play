@@ -42,6 +42,14 @@ var ending_restart: Button
 var _queue: Array = []
 var _choice_ids := PackedStringArray()
 var _busy := false
+var nvl_root: Control
+var nvl_veil: ColorRect
+var nvl_name: Label
+var nvl_body: Label
+var nvl_hint: Label
+var pressure: Label
+var _nvl := false
+var _pulse := 0.0
 
 func _ready() -> void:
 	layer = 30
@@ -51,6 +59,7 @@ func _ready() -> void:
 	_build_top()
 	_build_dialogue()
 	_build_choices()
+	_build_nvl()
 	_build_controls()
 	_build_overlay()
 	_build_title()
@@ -114,8 +123,8 @@ func _format_button(node: Button, size := 11) -> void:
 func _build_top() -> void:
 	var bar := ColorRect.new()
 	bar.position = Vector2(0, 0)
-	bar.size = Vector2(640, 48)
-	bar.color = Color("#080d17ee")
+	bar.size = Vector2(640, 40)
+	bar.color = Color("#080d17cc")
 	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root_ui.add_child(bar)
 	chapter_label = Label.new()
@@ -129,8 +138,8 @@ func _build_top() -> void:
 	_format_label(place_label, 12, Color("#e7edf5"))
 	root_ui.add_child(place_label)
 	clock_label = Label.new()
-	clock_label.position = Vector2(520, 7)
-	clock_label.size = Vector2(104, 18)
+	clock_label.position = Vector2(368, 7)
+	clock_label.size = Vector2(56, 18)
 	clock_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_format_label(clock_label, 9, Color("#6fdcef"))
 	root_ui.add_child(clock_label)
@@ -143,8 +152,8 @@ func _build_top() -> void:
 
 func _build_dialogue() -> void:
 	dialogue_panel = PanelContainer.new()
-	dialogue_panel.position = Vector2(38, 218)
-	dialogue_panel.size = Vector2(564, 129)
+	dialogue_panel.position = Vector2(8, 252)
+	dialogue_panel.size = Vector2(624, 100)
 	dialogue_panel.visible = false
 	dialogue_panel.add_theme_stylebox_override("panel", _pixel_style(Rect2(0, 64, 64, 32), 4))
 	var row := HBoxContainer.new()
@@ -166,14 +175,14 @@ func _build_dialogue() -> void:
 	_format_label(speaker_label, 9, Color("#ef5262"))
 	stack.add_child(speaker_label)
 	body_label = Label.new()
-	body_label.custom_minimum_size = Vector2(0, 63)
+	body_label.custom_minimum_size = Vector2(0, 40)
 	body_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	body_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	_format_label(body_label, 10, Color("#e1e6ee"))
 	stack.add_child(body_label)
 	continue_button = Button.new()
 	continue_button.text = Loc.t("btn.continue")
-	continue_button.custom_minimum_size = Vector2(0, 28)
+	continue_button.custom_minimum_size = Vector2(0, 22)
 	_format_button(continue_button, 9)
 	continue_button.pressed.connect(_advance_dialogue)
 	stack.add_child(continue_button)
@@ -181,29 +190,29 @@ func _build_dialogue() -> void:
 
 func _build_choices() -> void:
 	choice_panel = PanelContainer.new()
-	choice_panel.position = Vector2(106, 86)
-	choice_panel.size = Vector2(428, 194)
+	choice_panel.position = Vector2(18, 156)
+	choice_panel.size = Vector2(604, 92)
 	choice_panel.visible = false
 	choice_panel.add_theme_stylebox_override("panel", _pixel_style(Rect2(128, 64, 64, 32), 4))
 	var stack := VBoxContainer.new()
-	stack.add_theme_constant_override("separation", 10)
+	stack.add_theme_constant_override("separation", 4)
 	choice_panel.add_child(stack)
 	var label := Label.new()
 	choice_banner = Label.new()
 	_format_label(choice_banner, 8, Color("#ef4455"))
 	stack.add_child(choice_banner)
 	choice_prompt = Label.new()
-	choice_prompt.custom_minimum_size = Vector2(0, 45)
+	choice_prompt.custom_minimum_size = Vector2(0, 20)
 	choice_prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_format_label(choice_prompt, 11, Color("#f0eee6"))
 	stack.add_child(choice_prompt)
 	choice_a = Button.new()
-	choice_a.custom_minimum_size = Vector2(0, 43)
+	choice_a.custom_minimum_size = Vector2(0, 24)
 	_format_button(choice_a, 10)
 	choice_a.pressed.connect(func() -> void: _pick(0))
 	stack.add_child(choice_a)
 	choice_b = Button.new()
-	choice_b.custom_minimum_size = Vector2(0, 43)
+	choice_b.custom_minimum_size = Vector2(0, 24)
 	_format_button(choice_b, 10)
 	choice_b.pressed.connect(func() -> void: _pick(1))
 	stack.add_child(choice_b)
@@ -211,22 +220,22 @@ func _build_choices() -> void:
 
 func _build_controls() -> void:
 	log_button = Button.new()
-	log_button.position = Vector2(14, 321)
-	log_button.size = Vector2(77, 27)
+	log_button.position = Vector2(430, 6)
+	log_button.size = Vector2(80, 28)
 	log_button.text = Loc.t("btn.case_log")
 	_format_button(log_button, 8)
 	log_button.pressed.connect(show_log)
 	root_ui.add_child(log_button)
 	pause_button = Button.new()
-	pause_button.position = Vector2(549, 321)
-	pause_button.size = Vector2(77, 27)
+	pause_button.position = Vector2(524, 6)
+	pause_button.size = Vector2(104, 28)
 	pause_button.text = Loc.t("btn.pause")
 	_format_button(pause_button, 8)
 	pause_button.pressed.connect(show_pause)
 	root_ui.add_child(pause_button)
 	route_button = Button.new()
-	route_button.position = Vector2(225, 301)
-	route_button.size = Vector2(190, 43)
+	route_button.position = Vector2(210, 214)
+	route_button.size = Vector2(220, 32)
 	route_button.text = Loc.t("btn.proceed")
 	route_button.visible = false
 	_format_button(route_button, 10)
@@ -352,23 +361,92 @@ func _build_ending() -> void:
 	stack.add_child(ending_restart)
 	root_ui.add_child(ending_panel)
 
+func _build_nvl() -> void:
+	nvl_root = Control.new()
+	nvl_root.name = "NvlRoot"
+	nvl_root.position = Vector2(0, 0)
+	nvl_root.size = Vector2(640, 360)
+	nvl_root.visible = false
+	nvl_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	nvl_veil = ColorRect.new()
+	nvl_veil.set_anchors_preset(Control.PRESET_FULL_RECT)
+	nvl_veil.size = Vector2(640, 360)
+	nvl_veil.color = Color(0.18, 0.01, 0.03, 0.88)
+	nvl_veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	nvl_root.add_child(nvl_veil)
+	nvl_name = Label.new()
+	nvl_name.position = Vector2(40, 48)
+	nvl_name.size = Vector2(560, 22)
+	nvl_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_format_label(nvl_name, 10, Color("#ff6a6a"))
+	nvl_root.add_child(nvl_name)
+	nvl_body = Label.new()
+	nvl_body.position = Vector2(36, 78)
+	nvl_body.size = Vector2(568, 230)
+	nvl_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	nvl_body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	nvl_body.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_format_label(nvl_body, 14, Color("#f3c8c0"))
+	var sh := load("res://shaders/nvl_shake.gdshader")
+	if sh:
+		var mat := ShaderMaterial.new()
+		mat.shader = sh
+		nvl_body.material = mat
+	nvl_root.add_child(nvl_body)
+	nvl_hint = Label.new()
+	nvl_hint.position = Vector2(200, 322)
+	nvl_hint.size = Vector2(240, 18)
+	nvl_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_format_label(nvl_hint, 8, Color("#c56b66"))
+	nvl_root.add_child(nvl_hint)
+	pressure = Label.new()
+	pressure.position = Vector2(14, 42)
+	pressure.size = Vector2(120, 14)
+	pressure.visible = false
+	_format_label(pressure, 8, Color("#ef4455"))
+	root_ui.add_child(nvl_root)
+	root_ui.add_child(pressure)
+
 func set_header(chapter: String, place: String, clock: String, objective: String) -> void:
 	chapter_label.text = chapter
 	place_label.text = place
 	clock_label.text = clock
 	objective_label.text = objective
 
-func show_dialogue(lines: Array) -> void:
+func show_dialogue(lines: Array, use_nvl := false) -> void:
 	_queue = lines.duplicate(true)
 	_busy = true
+	_nvl = use_nvl
 	route_button.visible = false
-	dialogue_panel.visible = true
 	choice_panel.visible = false
+	dialogue_panel.visible = true
+	if use_nvl:
+		dialogue_panel.modulate.a = 0.0
+		nvl_root.visible = true
+		nvl_veil.color = Color(0, 0, 0, 1)
+		pressure.visible = true
+		pressure.text = Loc.t("vn.pressure")
+		_pulse = 0.0
+	else:
+		dialogue_panel.modulate.a = 1.0
+		nvl_root.visible = false
+		pressure.visible = false
 	_advance_dialogue()
+
+func is_line_open() -> bool:
+	return dialogue_panel.visible or (nvl_root != null and nvl_root.visible)
+
+func current_line_text() -> String:
+	return body_label.text if body_label else ""
 
 func _advance_dialogue() -> void:
 	if _queue.is_empty():
 		dialogue_panel.visible = false
+		dialogue_panel.modulate.a = 1.0
+		if nvl_root:
+			nvl_root.visible = false
+		pressure.visible = false
+		_nvl = false
 		_busy = false
 		var game := get_tree().get_first_node_in_group("game")
 		if game and game.has_method("on_dialogue_done"):
@@ -379,6 +457,10 @@ func _advance_dialogue() -> void:
 	body_label.text = str(line[1])
 	_set_portrait(str(line[0]))
 	continue_button.text = Loc.t("btn.continue_n", [_queue.size() + 1])
+	if _nvl and nvl_root:
+		nvl_name.text = str(line[0])
+		nvl_body.text = str(line[1])
+		nvl_hint.text = Loc.t("vn.advance")
 
 func _set_portrait(speaker: String) -> void:
 	var index := 0
@@ -392,7 +474,14 @@ func _set_portrait(speaker: String) -> void:
 
 func show_choice(data: Dictionary) -> void:
 	_busy = true
-	dialogue_panel.visible = false
+	_nvl = false
+	if nvl_root:
+		nvl_root.visible = false
+	pressure.visible = false
+	dialogue_panel.visible = true
+	dialogue_panel.modulate.a = 1.0
+	speaker_label.text = Loc.t("choice.banner")
+	body_label.text = data.prompt
 	choice_panel.visible = true
 	choice_prompt.text = data.prompt
 	choice_a.text = data.a[0]
@@ -433,15 +522,35 @@ func show_pause() -> void:
 func show_ending_card(text: String) -> void:
 	_busy = true
 	dialogue_panel.visible = false
+	if nvl_root:
+		nvl_root.visible = true
+		nvl_name.text = ""
+		nvl_body.text = text
+		nvl_hint.text = ""
+		pressure.visible = true
 	ending_label.text = text
+	ending_label.visible = false
 	ending_panel.visible = true
+	ending_panel.position = Vector2(176, 300)
+	ending_panel.size = Vector2(288, 48)
 
 func reset_ui() -> void:
 	_busy = false
+	_nvl = false
 	dialogue_panel.visible = false
+	dialogue_panel.modulate.a = 1.0
 	choice_panel.visible = false
 	overlay.visible = false
 	ending_panel.visible = false
+	ending_panel.modulate = Color(1, 1, 1, 1)
+	ending_panel.position = Vector2(104, 66)
+	ending_panel.size = Vector2(432, 242)
+	if ending_label:
+		ending_label.visible = true
+	if nvl_root:
+		nvl_root.visible = false
+	if pressure:
+		pressure.visible = false
 	route_button.visible = false
 	title_panel.visible = true
 
@@ -478,10 +587,26 @@ func apply_locale() -> void:
 		overlay_restart.text = Loc.t("btn.restart")
 	if ending_restart:
 		ending_restart.text = Loc.t("btn.restart_shift")
+	if pressure:
+		pressure.text = Loc.t("vn.pressure")
+	if nvl_hint and nvl_root and nvl_root.visible:
+		nvl_hint.text = Loc.t("vn.advance")
 	var game := get_tree().get_first_node_in_group("game")
 	if game and game.has_method("on_locale_changed"):
 		game.on_locale_changed()
 
+func _process(delta: float) -> void:
+	if nvl_root == null or not nvl_root.visible:
+		return
+	_pulse += delta
+	nvl_veil.color = Color(0, 0, 0, 1).lerp(Color(0.2, 0.015, 0.04, 0.9), clampf(_pulse * 3.0, 0.0, 1.0))
+	var pulse := 1.0 + 0.1 * sin(_pulse * 3.6)
+	nvl_body.add_theme_font_size_override("font_size", int(14.0 * pulse))
+	if nvl_body.material is ShaderMaterial:
+		(nvl_body.material as ShaderMaterial).set_shader_parameter("time", _pulse)
+		(nvl_body.material as ShaderMaterial).set_shader_parameter("shake", 2.1 + sin(_pulse * 8.0))
+	if pressure:
+		pressure.modulate.a = 0.4 + 0.45 * absf(sin(_pulse * 2.5))
 
 func is_busy() -> bool:
-	return _busy or dialogue_panel.visible or choice_panel.visible or overlay.visible or ending_panel.visible
+	return _busy or dialogue_panel.visible or choice_panel.visible or overlay.visible or ending_panel.visible or (nvl_root != null and nvl_root.visible)

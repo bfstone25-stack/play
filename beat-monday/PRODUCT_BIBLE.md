@@ -306,6 +306,7 @@ Procedural low-volume fluorescent hum runs after first interaction. Authored cue
 - [x] All 16 flag combinations terminate; three target routes independently trigger all endings.
 - [x] First-read word count and measured normal run fall within 25–35 minutes.
 - [x] No clipped dialogue at 1280×720 and 1920×1080; touch targets remain at least 44 CSS pixels.
+- [x] Routine inspects use a bottom ADV bar; diary / SAN collapse / endings use full-screen NVL.
 - [x] Pause, case log, restart, and return-to-title work; no dead ends.
 - [x] Godot 4.7.2 GPU import/run/Web export succeeds on blazeubuntu.
 - [x] Hosted `/floor-13/` returns HTML 200; `.wasm` MIME is `application/wasm`; byte ranges work.

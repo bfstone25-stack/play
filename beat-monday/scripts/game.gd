@@ -18,6 +18,8 @@ var hud: HorrorHud
 var hotspot_layer: Control
 var soundscape: Soundscape
 
+const NVL_HOTSPOTS := ["coffee", "drawer", "ledger", "camera", "intercom", "alarm"]
+
 func _ready() -> void:
 	add_to_group("game")
 	world = OfficeBuilder.new()
@@ -69,7 +71,7 @@ func _load_area() -> void:
 	world.build(area.id, flags)
 	hud.set_header(area.chapter, area.place, area.clock, area.objective)
 	pending = "opening"
-	hud.show_dialogue(_expand(area.opening))
+	hud.show_dialogue(_expand(area.opening), false)
 
 func _show_hotspots() -> void:
 	_clear_hotspots()
@@ -123,7 +125,7 @@ func _on_hotspot(id: String) -> void:
 			current_hotspot = id
 			pending = "hotspot"
 			soundscape.cue(_cue_for(id))
-			hud.show_dialogue(_expand(hotspot[3]))
+			hud.show_dialogue(_expand(hotspot[3]), str(id) in NVL_HOTSPOTS)
 			return
 
 func on_dialogue_done() -> void:
@@ -163,7 +165,7 @@ func _on_choice(value: String) -> void:
 	discoveries.append(Loc.t("log.decision", [flag_name.to_upper().replace("_", " "), value]))
 	soundscape.cue("choice")
 	pending = "choice_after"
-	hud.show_dialogue(_expand(area.after[value]))
+	hud.show_dialogue(_expand(area.after[value]), str(area.id) == "manager")
 
 func _on_route() -> void:
 	hud.hide_route()
@@ -172,7 +174,7 @@ func _on_route() -> void:
 		_begin_ending()
 		return
 	pending = "transition"
-	hud.show_dialogue(_expand(area.get("transition", [])))
+	hud.show_dialogue(_expand(area.get("transition", [])), false)
 
 func _begin_ending() -> void:
 	ending_id = StoryData.resolve(flags)
@@ -182,7 +184,7 @@ func _begin_ending() -> void:
 	world.show_ending(ending_id)
 	var lines: Array = StoryData.live_endings()[ending_id].duplicate(true)
 	lines.pop_back()
-	hud.show_dialogue(_expand(lines))
+	hud.show_dialogue(_expand(lines), true)
 
 func _area_complete() -> bool:
 	var area: Dictionary = StoryData.live()[area_index]
