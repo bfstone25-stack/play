@@ -195,7 +195,7 @@ func call_customer(id: String) -> bool:
 	if customer["id"] == "orin" and int(item["curse"]) > 0 and clues < 2:
 		offer = 0
 	else:
-		var mode_mult := [0.8, 1.0, 1.25][int(item["price_mode"])]
+		var mode_mult: float = [0.8, 1.0, 1.25][int(item["price_mode"])]
 		offer = int(round(int(item["value"]) * mode_mult))
 		if item["demand"] == customer["wants"]:
 			offer += int(customer["premium"])
@@ -293,6 +293,7 @@ func combat_action(action: String) -> Dictionary:
 	if not room_active or enemy_hp <= 0:
 		return {"ok": false}
 	var dealt := 0
+	var skip_enemy := false
 	match action:
 		"strike":
 			dealt = 2
@@ -309,6 +310,7 @@ func combat_action(action: String) -> Dictionary:
 				dealt = 3
 			elif carried_id == "music_box" and room_index == 3:
 				dealt = 4
+				skip_enemy = enemy_turn == 0
 			elif carried_id == "saints_tooth" and room_index == 2:
 				dealt = 4
 			else:
@@ -319,6 +321,8 @@ func combat_action(action: String) -> Dictionary:
 	if enemy_hp == 0:
 		finish_room()
 		return {"ok": true, "dealt": dealt, "won": true, "damage": 0}
+	if skip_enemy:
+		return {"ok": true, "dealt": dealt, "won": false, "damage": 0, "interrupted": true}
 	enemy_turn += 1
 	var damage := int(ROOMS[room_index]["damage"])
 	if guarded:

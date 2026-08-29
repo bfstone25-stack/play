@@ -85,7 +85,7 @@ func _test_loss_recovery() -> void:
 	state.marks_unbanked = 11
 	var gold_before := state.gold
 	state.health = 1
-	state.combat_action("guard")
+	state.combat_action("strike")
 	_expect(state.phase == MidnightState.Phase.DAY_2, "night 1 defeat continues")
 	_expect(state.unbanked_loot.is_empty() and state.marks_unbanked == 0, "defeat loses unbanked rewards")
 	_expect(state.gold == gold_before + 5, "recovery grants emergency crowns")
@@ -142,7 +142,7 @@ func _run() -> void:
 	_expect(keep.outcome.begins_with("Midnight Keeper"), "keep ending")
 	_expect(sell.outcome != seal.outcome and seal.outcome != keep.outcome, "three distinct outcomes")
 	_expect(sell.transactions.size() >= 5, "four customers plus tutorial transaction")
-	_expect(sell.rooms_cleared.size() == 4 or sell.recovered > 0, "four rooms or valid recovery route")
+	_expect(sell.rooms_cleared.size() == 4 and sell.recovered == 0, "automated route clears all four rooms")
 	await _test_scene_load()
 	if failures > 0:
 		push_error("VERIFICATION FAILED: %d assertions" % failures)
