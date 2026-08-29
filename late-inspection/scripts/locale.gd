@@ -139,7 +139,7 @@ const ZH := {
 	"splash.title": "深夜验房：404室",
 	"splash.hint": "点击进入  ·  方向键  鼠标  互动键  暂停键",
 	"splash.start": "进入大楼",
-	"pause.title": "验房已暂停\nEsc 继续 · 返回时鼠标会重新锁定",
+	"pause.title": "验房已暂停\n暂停键继续 · 返回时鼠标会重新锁定",
 	"pause.resume": "继续验房",
 	"pause.restart": "从抵达处重开",
 	"doc.continue": "继续  ›",

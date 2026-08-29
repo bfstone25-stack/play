@@ -16,14 +16,37 @@ func _commentary(id: String) -> String:
 
 
 func on_locale_changed() -> void:
+	if hud == null:
+		return
 	hud.show_title(Loc.t("title.card"))
-	hud.set_chapter(_chapter(mini(stage, 6)), hud.clock.text if hud.clock else "01:47")
+	hud.set_chapter(_chapter(chapter_index), hud.clock.text if hud.clock else "01:47")
+	hud.set_objective(Loc.t(objective_key))
 	if $World.has_method("refresh_locale"):
 		$World.refresh_locale()
+	_refresh_prop_locale()
+
+
+func _refresh_prop_locale() -> void:
+	for item in _stage_items(stage):
+		var id := str(item["id"])
+		if not active_ids.has(id):
+			continue
+		var body: Node = active_ids[id]
+		if body == null or not is_instance_valid(body):
+			continue
+		body.set("prompt", item["prompt"])
+		if str(item.get("kind", "")) == "choice":
+			body.set("prompt_text", item["text"])
+			body.set("option_a", item["a"])
+			body.set("option_b", item["b"])
+		else:
+			body.set("note_text", str(item["text"]) + _commentary(id))
 
 var ending := false
 var ending_id := ""
 var stage := 0
+var objective_key := "obj.0"
+var chapter_index := 0
 var paused := false
 var await_restart := false
 var title_t := 6.0
@@ -69,7 +92,8 @@ func _ready() -> void:
 	add_child(amb)
 	hud.show_title(Loc.t("title.card"))
 	hud.set_chapter(_chapter(0), "01:47")
-	hud.set_objective(Loc.t("obj.0"))
+	objective_key = "obj.0"
+	hud.set_objective(Loc.t(objective_key))
 	if OS.has_feature("web"):
 		var env: Environment = $WorldEnvironment.environment
 		env.ssao_enabled = false
@@ -259,10 +283,11 @@ func on_note(id: String) -> void:
 	match id:
 		"order":
 			flags["order_read"] = true
-			_advance(1, Loc.t("obj.order"), 1, "01:53")
+			_advance(1, "obj.order", 1, "01:53")
 		"dane":
 			flags["dane_note"] = true
-			hud.set_objective(Loc.t("obj.dane"))
+			objective_key = "obj.dane"
+			hud.set_objective(Loc.t(objective_key))
 		"fire_plan":
 			flags["fire_plan"] = true
 		"frame":
@@ -280,23 +305,23 @@ func on_note(id: String) -> void:
 		"letters":
 			flags["letters_found"] = true
 		"notice":
-			_advance(2, Loc.t("obj.notice"), 2, "01:58")
+			_advance(2, "obj.notice", 2, "01:58")
 		"checklist":
-			_advance(3, Loc.t("obj.checklist"), 2, "02:01")
+			_advance(3, "obj.checklist", 2, "02:01")
 		"answering":
-			_advance(4, Loc.t("obj.answering"), 2, "02:04")
+			_advance(4, "obj.answering", 2, "02:04")
 		"service":
-			_advance(6, Loc.t("obj.service"), 3, "02:09")
+			_advance(6, "obj.service", 3, "02:09")
 		"wardrobe":
-			_advance(8, Loc.t("obj.wardrobe"), 4, "02:17")
+			_advance(8, "obj.wardrobe", 4, "02:17")
 		"cassette":
 			flags["iris_record"] = true
-			_advance(9, Loc.t("obj.cassette"), 5, "02:21")
+			_advance(9, "obj.cassette", 5, "02:21")
 		"followup":
 			flags["pell_threat"] = flags["photo_kept"] or flags["pipe_answered"]
-			_advance(10, Loc.t("obj.followup"), 5, "02:23")
+			_advance(10, "obj.followup", 5, "02:23")
 		"final_evidence":
-			_advance(12, Loc.t("obj.final"), 6, "02:29")
+			_advance(12, "obj.final", 6, "02:29")
 
 func open_choice(choice_id: String, text: String, a: String, b: String, source: Node) -> void:
 	player.locked = true
@@ -324,7 +349,7 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 			else:
 				flags["photo_deleted"] = true
 				hud.show_note(Loc.t("note.stain_wipe"))
-			_advance(5, Loc.t("obj.stain"), 3, "02:06")
+			_advance(5, "obj.stain", 3, "02:06")
 		"pipe":
 			if i == 0:
 				flags["pipe_answered"] = true
@@ -332,7 +357,7 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 			else:
 				flags["pipe_silenced"] = true
 				hud.show_note(Loc.t("note.pipe_no"))
-			_advance(7, Loc.t("obj.pipe"), 4, "02:13")
+			_advance(7, "obj.pipe", 4, "02:13")
 		"clause":
 			if i == 0:
 				flags["clause_signed"] = true
@@ -340,7 +365,7 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 			else:
 				flags["clause_refused"] = true
 				hud.show_note(Loc.t("note.clause_no"))
-			_advance(11, Loc.t("obj.clause"), 6, "02:27")
+			_advance(11, "obj.clause", 6, "02:27")
 		"final":
 			flags["final_open"] = i == 0
 			flags["final_ignore"] = i == 1
@@ -350,14 +375,16 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 	player.capture_mouse()
 	drone.volume_db = -22.0
 
-func _advance(next_stage: int, objective: String, chapter_index: int, clock: String) -> void:
+func _advance(next_stage: int, obj_key: String, next_chapter: int, clock: String) -> void:
 	for prop in active_ids.values():
 		if is_instance_valid(prop) and prop.get("taken") != true:
 			prop.set("taken", true)
 			prop.set("collision_layer", 0)
 	stage = next_stage
-	hud.set_objective(objective)
-	hud.set_chapter(_chapter(chapter_index), clock)
+	chapter_index = next_chapter
+	objective_key = obj_key
+	hud.set_objective(Loc.t(obj_key))
+	hud.set_chapter(_chapter(next_chapter), clock)
 	_spawn_stage(stage)
 
 func _resolve_ending() -> String:
