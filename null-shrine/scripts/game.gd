@@ -1,317 +1,685 @@
-extends Node
-## Midnight Pawn & Crypt — closed micro-run host (Day shop ↔ Night dungeon).
+extends Control
 
-enum Phase { TITLE, DAY, NIGHT, SETTLE, COMPLETE }
+const MidnightStateScript = preload("res://scripts/game_state.gd")
+const PixelStageScript = preload("res://scripts/pixel_stage.gd")
 
-const STARTER_GOLD := 40
-const CURIO_POOL := [
-	{"id": "rusty_bell", "name": "Rusty Bell", "name_zh": "锈铃", "base": 8, "tag": "mundane"},
-	{"id": "moon_coin", "name": "Moon Coin", "name_zh": "月币", "base": 14, "tag": "curious"},
-	{"id": "bone_key", "name": "Bone Key", "name_zh": "骨钥", "base": 18, "tag": "curious"},
-	{"id": "void_shard", "name": "Void Shard", "name_zh": "虚无碎片", "base": 28, "tag": "cursed"},
-	{"id": "lantern_oil", "name": "Lantern Oil", "name_zh": "提灯油", "base": 10, "tag": "mundane"},
-	{"id": "crypt_map", "name": "Torn Crypt Map", "name_zh": "残破密图", "base": 22, "tag": "curious"},
-]
+var state: MidnightState
+var stage: PixelStage
+var header: Label
+var phase_label: Label
+var title: Label
+var subtitle: Label
+var detail: RichTextLabel
+var log_label: RichTextLabel
+var item_grid: GridContainer
+var actions: HBoxContainer
+var footer_hint: Label
+var pause_layer: ColorRect
+var log_lines: Array[String] = []
+var encounter_open := false
+var audio_player: AudioStreamPlayer
+var ambience_player: AudioStreamPlayer
 
-signal phase_changed(phase: int)
-signal gold_changed(gold: int)
-signal bag_changed(bag: Array)
-signal shelf_changed(shelf: Array)
-signal log_line(text: String)
-signal run_complete(score: int)
-
-var phase: Phase = Phase.TITLE
-var gold: int = 0
-var bag: Array = [] ## unappraised / inventory curios
-var shelf: Array = [] ## up to 3 stocked items {curio, appraised:bool, value:int}
-var selected_shelf: int = -1
-var night_looted: int = 0
-var day_index: int = 0
-var score: int = 0
-var locale_zh: bool = true
-
-@onready var shop: Control = $Shop
-@onready var dungeon: Node2D = $Dungeon
-@onready var hud: CanvasLayer = $HUD
-@onready var title_ui: Control = $Title
-@onready var complete_ui: Control = $Complete
+const BG := Color("#100d18")
+const PANEL := Color("#201928")
+const PANEL_2 := Color("#2b2133")
+const GOLD := Color("#e8b84a")
+const CREAM := Color("#f1dfb0")
+const MUTED := Color("#9f94ac")
+const RED := Color("#d45b68")
+const TEAL := Color("#52b4a6")
 
 
 func _ready() -> void:
-	randomize()
-	shop.visible = false
-	dungeon.visible = false
-	complete_ui.visible = false
-	title_ui.visible = true
-	_wire_ui()
-	_emit_all()
-	_log("午夜典当行开张预备。Midnight Pawn ready.")
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_build_ui()
+	_apply_theme()
+	state = MidnightStateScript.new()
+	state.phase = MidnightState.Phase.TITLE
+	stage.objective_reached.connect(_on_objective_reached)
+	stage.floor_risk_triggered.connect(_on_floor_risk)
+	get_viewport().size_changed.connect(_on_viewport_changed)
+	_show_title()
 
 
-func _wire_ui() -> void:
-	if title_ui.has_signal("start_pressed") == false and title_ui.has_method("bind"):
-		title_ui.bind(self)
-	if shop.has_method("bind"):
-		shop.bind(self)
-	if dungeon.has_method("bind"):
-		dungeon.bind(self)
-	if complete_ui.has_method("bind"):
-		complete_ui.bind(self)
-	if hud.has_method("bind"):
-		hud.bind(self)
+func _build_ui() -> void:
+	var bg := ColorRect.new()
+	bg.color = BG
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(bg)
+
+	var root_margin := MarginContainer.new()
+	root_margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root_margin.add_theme_constant_override("margin_left", 10)
+	root_margin.add_theme_constant_override("margin_right", 10)
+	root_margin.add_theme_constant_override("margin_top", 8)
+	root_margin.add_theme_constant_override("margin_bottom", 8)
+	add_child(root_margin)
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 6)
+	root_margin.add_child(column)
+
+	var top := HBoxContainer.new()
+	top.custom_minimum_size.y = 28
+	column.add_child(top)
+	phase_label = Label.new()
+	phase_label.text = "MIDNIGHT PAWN"
+	phase_label.add_theme_color_override("font_color", GOLD)
+	phase_label.add_theme_font_size_override("font_size", 14)
+	top.add_child(phase_label)
+	header = Label.new()
+	header.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	header.add_theme_color_override("font_color", CREAM)
+	header.add_theme_font_size_override("font_size", 12)
+	top.add_child(header)
+	var pause := Button.new()
+	pause.text = "Ⅱ"
+	pause.tooltip_text = "Pause / 暂停"
+	pause.custom_minimum_size = Vector2(42, 30)
+	pause.pressed.connect(_toggle_pause)
+	top.add_child(pause)
+
+	var body := HSplitContainer.new()
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.split_offset = 300
+	column.add_child(body)
+	var stage_panel := PanelContainer.new()
+	stage_panel.custom_minimum_size = Vector2(300, 170)
+	body.add_child(stage_panel)
+	stage = PixelStageScript.new()
+	stage.custom_minimum_size = Vector2(300, 170)
+	stage_panel.add_child(stage)
+
+	var info_margin := MarginContainer.new()
+	info_margin.add_theme_constant_override("margin_left", 8)
+	body.add_child(info_margin)
+	var info := VBoxContainer.new()
+	info.add_theme_constant_override("separation", 4)
+	info_margin.add_child(info)
+	title = Label.new()
+	title.add_theme_color_override("font_color", GOLD)
+	title.add_theme_font_size_override("font_size", 18)
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	info.add_child(title)
+	subtitle = Label.new()
+	subtitle.add_theme_color_override("font_color", MUTED)
+	subtitle.add_theme_font_size_override("font_size", 11)
+	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	info.add_child(subtitle)
+	detail = RichTextLabel.new()
+	detail.bbcode_enabled = true
+	detail.fit_content = false
+	detail.scroll_active = true
+	detail.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	detail.custom_minimum_size.y = 72
+	detail.add_theme_font_size_override("normal_font_size", 12)
+	info.add_child(detail)
+	item_grid = GridContainer.new()
+	item_grid.columns = 2
+	item_grid.add_theme_constant_override("h_separation", 4)
+	item_grid.add_theme_constant_override("v_separation", 4)
+	info.add_child(item_grid)
+	log_label = RichTextLabel.new()
+	log_label.bbcode_enabled = true
+	log_label.custom_minimum_size.y = 42
+	log_label.fit_content = false
+	log_label.scroll_active = true
+	log_label.add_theme_font_size_override("normal_font_size", 10)
+	info.add_child(log_label)
+
+	actions = HBoxContainer.new()
+	actions.add_theme_constant_override("separation", 5)
+	actions.custom_minimum_size.y = 42
+	column.add_child(actions)
+	footer_hint = Label.new()
+	footer_hint.text = "Click/tap controls · 点击即可游玩"
+	footer_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	footer_hint.add_theme_color_override("font_color", MUTED)
+	footer_hint.add_theme_font_size_override("font_size", 9)
+	column.add_child(footer_hint)
+
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	ambience_player = AudioStreamPlayer.new()
+	ambience_player.volume_db = -26
+	add_child(ambience_player)
+
+	pause_layer = ColorRect.new()
+	pause_layer.color = Color(0.04, 0.03, 0.07, 0.94)
+	pause_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	pause_layer.visible = false
+	pause_layer.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(pause_layer)
+	var pause_center := CenterContainer.new()
+	pause_center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	pause_layer.add_child(pause_center)
+	var pause_box := VBoxContainer.new()
+	pause_box.add_theme_constant_override("separation", 10)
+	pause_center.add_child(pause_box)
+	var paused := Label.new()
+	paused.text = "PAUSED / 暂停"
+	paused.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	paused.add_theme_font_size_override("font_size", 24)
+	pause_box.add_child(paused)
+	for spec in [["RESUME / 继续", "_resume"], ["RESTART RUN / 重开本局", "_restart"], ["TITLE / 返回标题", "_title"]]:
+		var button := Button.new()
+		button.text = spec[0]
+		button.custom_minimum_size = Vector2(220, 44)
+		button.pressed.connect(Callable(self, spec[1]))
+		pause_box.add_child(button)
 
 
-func start_run() -> void:
-	gold = STARTER_GOLD
-	bag = [_make_curio("rusty_bell"), _make_curio("lantern_oil")]
-	shelf = [null, null, null]
-	selected_shelf = -1
-	night_looted = 0
-	day_index = 1
-	score = 0
-	title_ui.visible = false
-	complete_ui.visible = false
-	_enter_day("Run start — stock the tiny pawn shop.")
+func _apply_theme() -> void:
+	var theme := Theme.new()
+	theme.default_font_size = 12
+	var normal := StyleBoxFlat.new()
+	normal.bg_color = PANEL_2
+	normal.border_color = Color("#5d4968")
+	normal.set_border_width_all(2)
+	normal.corner_radius_top_left = 2
+	normal.corner_radius_top_right = 2
+	normal.corner_radius_bottom_left = 2
+	normal.corner_radius_bottom_right = 2
+	normal.content_margin_left = 8
+	normal.content_margin_right = 8
+	var hover := normal.duplicate()
+	hover.bg_color = Color("#463553")
+	hover.border_color = GOLD
+	var pressed := normal.duplicate()
+	pressed.bg_color = Color("#15101c")
+	theme.set_stylebox("normal", "Button", normal)
+	theme.set_stylebox("hover", "Button", hover)
+	theme.set_stylebox("pressed", "Button", pressed)
+	theme.set_color("font_color", "Button", CREAM)
+	theme.set_color("font_hover_color", "Button", Color.WHITE)
+	theme.set_font_size("font_size", "Button", 11)
+	var panel := StyleBoxFlat.new()
+	panel.bg_color = PANEL
+	panel.border_color = Color("#4c3b59")
+	panel.set_border_width_all(2)
+	theme.set_stylebox("panel", "PanelContainer", panel)
+	self.theme = theme
 
 
-func _make_curio(id: String) -> Dictionary:
-	for c in CURIO_POOL:
-		if c["id"] == id:
-			return {
-				"id": c["id"],
-				"name": c["name"],
-				"name_zh": c["name_zh"],
-				"base": c["base"],
-				"tag": c["tag"],
-				"appraised": false,
-				"value": 0,
-			}
-	return {
-		"id": id,
-		"name": id,
-		"name_zh": id,
-		"base": 5,
-		"tag": "mundane",
-		"appraised": false,
-		"value": 0,
-	}
+func _button(text: String, callback: Callable, accent := false) -> Button:
+	var b := Button.new()
+	b.text = text
+	b.custom_minimum_size = Vector2(92, 40)
+	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	if accent:
+		b.add_theme_color_override("font_color", GOLD)
+	b.pressed.connect(callback)
+	actions.add_child(b)
+	return b
 
 
-func _random_loot() -> Dictionary:
-	var pick: Dictionary = CURIO_POOL[randi() % CURIO_POOL.size()]
-	return _make_curio(pick["id"])
+func _clear(container: Node) -> void:
+	for child in container.get_children():
+		child.queue_free()
 
 
-func _enter_day(reason: String) -> void:
-	phase = Phase.DAY
-	dungeon.visible = false
-	if dungeon.has_method("deactivate"):
-		dungeon.deactivate()
-	shop.visible = true
-	if shop.has_method("refresh"):
-		shop.refresh()
-	phase_changed.emit(phase)
-	_emit_all()
-	_log("DAY %d — %s" % [day_index, reason])
+func _show_title() -> void:
+	state = MidnightStateScript.new()
+	state.phase = MidnightState.Phase.TITLE
+	stage.set_scene("title")
+	phase_label.text = "MIDNIGHT PAWN & CRYPT"
+	header.text = "Complete free run · 15–20 min"
+	title.text = "午夜典当行与地下密室"
+	subtitle.text = "MIDNIGHT PAWN & CRYPT"
+	detail.text = "[color=#f1dfb0]继承一间只在午夜进货的典当行。白天衡量价格，夜里衡量代价。[/color]\n\nAppraise cursed curios, read customers, cross four crypt rooms, and decide what no pawnbroker should own."
+	_clear(item_grid)
+	_clear(actions)
+	_button("BEGIN INHERITANCE\n开始继承", _start_run, true)
+	_button("HOW TO PLAY\n玩法说明", _show_help)
+	log_lines = ["All controls support mouse, touch, and keyboard."]
+	_refresh_log()
 
 
-func enter_night() -> void:
-	if phase != Phase.DAY:
-		return
-	phase = Phase.NIGHT
-	shop.visible = false
-	dungeon.visible = true
-	if dungeon.has_method("activate"):
-		dungeon.activate()
-	phase_changed.emit(phase)
-	_emit_all()
-	_log("NIGHT — descend the pocket crypt. Grab loot, then extract.")
+func _show_help() -> void:
+	detail.text = "[color=#e8b84a]SHOP / 典当行[/color]\nAppraise → set LOW/FAIR/HIGH → display → read each customer → accept or reject.\n\n[color=#e8b84a]CRYPT / 地窖[/color]\nWASD/arrows, tap a destination, or use the D-pad. Reach the marked encounter. Strike, guard, remember, or use your carried curio.\n\n[color=#e8b84a]LOSS[/color]\nDefeat loses only unbanked loot and marks. Nara recovers and the story continues."
 
 
-func return_from_dungeon() -> void:
-	if phase != Phase.NIGHT:
-		return
-	day_index += 1
-	if day_index >= 3:
-		_enter_settle()
+func _start_run() -> void:
+	state.reset()
+	_play("bell")
+	stage.set_scene("shop")
+	_show_opening()
+
+
+func _show_opening() -> void:
+	phase_label.text = "23:41 · INHERITANCE"
+	header.text = "18G  ♥12  ◆5"
+	title.text = "The Last Receipt / 最后一张当票"
+	subtitle.text = "Opening + tutorial transaction"
+	detail.text = "[color=#f1dfb0]AUNT ELSA'S WILL:[/color]\n“Every object has two prices: what the living offer, and what the dead return for.”\n\nThe Bell Child waits at the counter with a rusted bell. Appraise the maker's mark, choose a fair 10G price, then complete your first sale."
+	_clear(item_grid)
+	_add_item_button("锈蚀招魂铃\nRusted Bell · ? → 10G", func(): pass, true)
+	_clear(actions)
+	_button("APPRAISE\n鉴定", func(): _opening_step(1))
+	footer_hint.text = "Tutorial: every transaction shows value, demand, and consequence."
+	_log("The shop bell rings once, although the door never opened.")
+
+
+func _opening_step(step: int) -> void:
+	if step == 1:
+		_play("appraise")
+		detail.text = "[color=#e8b84a]IDENTIFIED[/color] · Rusted Bell / 锈蚀招魂铃\nValue 10G · Demand: MEMORY · Curse: none\nClue: Its last ring calls a child, not a ghost.\n\nThe Bell Child offers exactly 10G. This fair sale funds the lamps without exploiting a memory."
+		_clear(actions)
+		_button("PRICE: FAIR 10G\n公平定价", func(): _opening_step(2), true)
 	else:
-		_enter_day("Appraise night haul, sell, then close again.")
+		state.tutorial_sale()
+		_play("coin")
+		_log("SALE +10G · Bell Child: “Now it knows where home is.”")
+		_show_shop()
 
 
-func _enter_settle() -> void:
-	phase = Phase.SETTLE
-	dungeon.visible = false
-	if dungeon.has_method("deactivate"):
-		dungeon.deactivate()
-	shop.visible = true
-	if shop.has_method("refresh"):
-		shop.refresh()
-	phase_changed.emit(phase)
-	_emit_all()
-	_log("SETTLE — final sales. Then close the run.")
-
-
-func finish_run() -> void:
-	score = gold + night_looted * 5
-	for slot in shelf:
-		if slot != null:
-			score += int(slot.get("value", slot.get("base", 0)))
-	phase = Phase.COMPLETE
-	shop.visible = false
-	dungeon.visible = false
-	complete_ui.visible = true
-	if complete_ui.has_method("show_score"):
-		complete_ui.show_score(score, gold, night_looted)
-	phase_changed.emit(phase)
-	run_complete.emit(score)
-	_log("RUN COMPLETE — score %d" % score)
-
-
-func stock_from_bag(bag_index: int) -> void:
-	if phase != Phase.DAY and phase != Phase.SETTLE:
-		return
-	if bag_index < 0 or bag_index >= bag.size():
-		return
-	var free_slot: int = -1
-	for i in shelf.size():
-		if shelf[i] == null:
-			free_slot = i
-			break
-	if free_slot < 0:
-		_log("Shelves full (3). Sell or hold.")
-		return
-	var item: Dictionary = bag[bag_index] as Dictionary
-	bag.remove_at(bag_index)
-	shelf[free_slot] = item
-	selected_shelf = free_slot
-	_emit_all()
-	_log("Stocked: %s" % _label(item))
-
-
-func appraise_selected() -> void:
-	if phase != Phase.DAY and phase != Phase.SETTLE:
-		return
-	if selected_shelf < 0 or selected_shelf >= shelf.size() or shelf[selected_shelf] == null:
-		_log("Select a shelf item to appraise.")
-		return
-	var item: Dictionary = shelf[selected_shelf]
-	if item.get("appraised", false):
-		_log("Already appraised: %s (%s) = %dG" % [_label(item), item["tag"], item["value"]])
-		return
-	var jitter: int = randi_range(-2, 4)
-	item["value"] = maxi(1, int(item["base"]) + jitter)
-	item["appraised"] = true
-	shelf[selected_shelf] = item
-	_emit_all()
-	_log("Appraised %s → %s · %dG" % [_label(item), item["tag"], item["value"]])
-
-
-func sell_selected() -> void:
-	if phase != Phase.DAY and phase != Phase.SETTLE:
-		return
-	if selected_shelf < 0 or selected_shelf >= shelf.size() or shelf[selected_shelf] == null:
-		_log("Select a shelf item to sell.")
-		return
-	var item: Dictionary = shelf[selected_shelf]
-	if not item.get("appraised", false):
-		# Quick-sell at half base if unappraised
-		var payout: int = maxi(1, int(item["base"]) / 2)
-		gold += payout
-		_log("Sold unappraised %s for %dG (half)." % [_label(item), payout])
+func _show_shop() -> void:
+	encounter_open = false
+	stage.set_scene("shop")
+	stage.customer_id = str(state.current_customer().get("id", ""))
+	var day_text := "DAY 1 · 10:12" if state.day == 1 else "DAY 2 · 09:47"
+	phase_label.text = day_text
+	header.text = "%dG  ♥%d  ◆%d  ☾%d  BANK %d" % [state.gold, state.health, state.resolve, state.curse, state.marks_bank]
+	var customer := state.current_customer()
+	title.text = "Shop Floor / 典当营业"
+	if customer.is_empty():
+		subtitle.text = "Customers served. Choose what crosses midnight with you."
 	else:
-		gold += int(item["value"])
-		_log("Sold %s for %dG." % [_label(item), item["value"]])
-	shelf[selected_shelf] = null
-	selected_shelf = -1
-	gold_changed.emit(gold)
-	shelf_changed.emit(shelf)
-	_emit_all()
+		subtitle.text = "NEXT: %s / %s" % [customer["name"], customer["zh"]]
+	detail.text = _shop_detail(customer)
+	_refresh_item_grid()
+	_refresh_shop_actions()
+	footer_hint.text = "Shelf %d/3 · Transactions %d/5 · Select a curio card" % [state.shelf.size(), state.transactions.size()]
 
 
-func select_shelf(index: int) -> void:
-	if index < 0 or index >= shelf.size():
+func _shop_detail(customer: Dictionary) -> String:
+	var item := state.get_item(state.selected_id)
+	if item.is_empty():
+		return "Select a curio. A run cannot softlock: unsold stock can always be carried."
+	var mode_names := ["LOW −20%", "FAIR", "HIGH +25%"]
+	var text := "[color=#e8b84a]%s / %s[/color]\n" % [item["name"], item["zh"]]
+	if item["appraised"]:
+		text += "Value %dG · Price %s · Curse %d · Demand %s\n%s\n" % [item["value"], mode_names[item["price_mode"]], item["curse"], str(item["demand"]).to_upper(), item["clue"]]
+	else:
+		text += "Value ? · Curse ? · Demand ?\nAppraise to reveal exact identity and tradeoffs.\n"
+	if not customer.is_empty():
+		text += "\n[color=#52b4a6]%s[/color] wants %s.\n%s" % [customer["name"], str(customer["wants"]).to_upper(), customer["behavior"]]
+	return text
+
+
+func _refresh_item_grid() -> void:
+	_clear(item_grid)
+	for item in state.inventory:
+		var mark := "?" if not item["appraised"] else ("%dG" % item["value"])
+		var shelf_mark := " ◆" if item["id"] in state.shelf else ""
+		var curse_mark := "" if not item["appraised"] or int(item["curse"]) == 0 else " ☾%d" % item["curse"]
+		var text := "%s%s\n%s%s" % [item["zh"], shelf_mark, mark, curse_mark]
+		_add_item_button(text, func(id = item["id"]): _select_item(id), item["id"] == state.selected_id)
+
+
+func _add_item_button(text: String, callback: Callable, selected := false) -> void:
+	var b := Button.new()
+	b.text = text
+	b.custom_minimum_size = Vector2(132, 42)
+	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	b.pressed.connect(callback)
+	if selected:
+		b.add_theme_color_override("font_color", GOLD)
+	item_grid.add_child(b)
+
+
+func _select_item(id: String) -> void:
+	state.selected_id = id
+	stage.selected_curio = id
+	stage.queue_redraw()
+	_play("tick")
+	_show_shop()
+
+
+func _refresh_shop_actions() -> void:
+	_clear(actions)
+	var item := state.get_item(state.selected_id)
+	if item.is_empty():
 		return
-	selected_shelf = index
-	shelf_changed.emit(shelf)
-	if shop.has_method("refresh"):
-		shop.refresh()
+	if not item["appraised"]:
+		_button("APPRAISE\n鉴定", _appraise_selected, true)
+	else:
+		var modes := ["LOW", "FAIR", "HIGH"]
+		_button("PRICE: %s\n调整定价" % modes[item["price_mode"]], _cycle_price)
+		_button(("REMOVE\n撤下货架" if item["id"] in state.shelf else "DISPLAY\n上架"), _toggle_display)
+		if not state.current_customer().is_empty() and item["id"] in state.shelf:
+			_button("CALL CUSTOMER\n接待顾客", _call_customer, true)
+	if state.can_enter_night():
+		_button("CARRY & DESCEND\n携带并下楼", _enter_night, true)
 
 
-func add_loot(item: Dictionary) -> void:
-	bag.append(item)
-	night_looted += 1
-	bag_changed.emit(bag)
-	_log("Looted: %s" % _label(item))
+func _appraise_selected() -> void:
+	if state.appraise(state.selected_id):
+		_play("appraise")
+		_log("IDENTIFIED · %s — %s" % [state.get_item(state.selected_id)["name"], state.get_item(state.selected_id)["clue"]])
+	_show_shop()
 
 
-func spawn_night_loot() -> Array:
-	var drops: Array = []
-	var count: int = 3 + (randi() % 3)
-	for _i in count:
-		drops.append(_random_loot())
-	return drops
+func _cycle_price() -> void:
+	state.cycle_price(state.selected_id)
+	_play("tick")
+	_show_shop()
 
 
-func _label(item: Dictionary) -> String:
-	if locale_zh:
-		return str(item.get("name_zh", item.get("name", "?")))
-	return str(item.get("name", "?"))
+func _toggle_display() -> void:
+	if not state.toggle_shelf(state.selected_id):
+		_log("Shelf full: remove one of the three displayed curios.")
+	else:
+		_play("tick")
+	_show_shop()
+
+
+func _call_customer() -> void:
+	if not state.call_customer(state.selected_id):
+		_log("This customer refuses an unidentified cursed object.")
+	_show_customer_offer()
+
+
+func _show_customer_offer() -> void:
+	var customer := state.current_customer()
+	var item := state.get_item(state.selected_id)
+	title.text = "%s / %s" % [customer["name"], customer["zh"]]
+	subtitle.text = customer["behavior"]
+	var offer_text := "REFUSES: identity evidence is incomplete." if state.offer <= 0 else "OFFERS %dG for %s." % [state.offer, item["name"]]
+	detail.text = "[color=#52b4a6]%s[/color]\n\nValue %dG · Listed posture %s · Demand match: %s\nCurse %d: revealing it earns trust; concealing it adds debt to the ending." % [offer_text, item["value"], ["LOW", "FAIR", "HIGH"][item["price_mode"]], "YES" if item["demand"] == customer["wants"] else "NO", item["curse"]]
+	_clear(actions)
+	_button("ACCEPT + WARN\n成交并告知诅咒", func(): _resolve_offer(true, true), true)
+	_button("ACCEPT + HIDE\n隐瞒后成交", func(): _resolve_offer(true, false))
+	_button("REJECT / 拒绝", func(): _resolve_offer(false, true))
+
+
+func _resolve_offer(accept: bool, honest: bool) -> void:
+	var customer_name := str(state.current_customer().get("name", "Customer"))
+	var item_name := str(state.get_item(state.selected_id).get("name", "curio"))
+	var amount := state.offer
+	var sold := state.resolve_customer(accept, honest)
+	_play("coin" if sold else "tick")
+	if sold:
+		_log("SALE +%dG · %s buys %s%s." % [amount, customer_name, item_name, " with a truthful warning" if honest else " — curse concealed"])
+	else:
+		_log("%s leaves; %s remains in inventory." % [customer_name, item_name])
+	_show_shop()
+
+
+func _enter_night() -> void:
+	if not state.enter_night(state.selected_id):
+		_log("Serve two customers this day and select a carried curio.")
+		return
+	_play("bell")
+	_start_room()
+
+
+func _start_room() -> void:
+	encounter_open = false
+	stage.set_scene("dungeon", state.room_index)
+	var room: Dictionary = MidnightState.ROOMS[state.room_index]
+	phase_label.text = "NIGHT %d · ROOM %d/4" % [state.night, state.room_index + 1]
+	header.text = "%dG  ♥%d  ◆%d  ☾%d  UNBANKED %d" % [state.gold, state.health, state.resolve, state.curse, state.marks_unbanked]
+	title.text = "%s / %s" % [room["name"], room["zh"]]
+	subtitle.text = room["risk"]
+	detail.text = "Move Nara across the room to the pulsing encounter mark.\n\n[color=#d45b68]RISK:[/color] %s\n[color=#52b4a6]CARRIED:[/color] %s\n\nTap the floor, use WASD/arrows, or press the on-screen direction controls." % [room["risk"], state.get_item(state.carried_id).get("name", "none")]
+	_clear(item_grid)
+	_clear(actions)
+	_button("◀", func(): stage.nudge(Vector2.LEFT))
+	_button("▲", func(): stage.nudge(Vector2.UP))
+	_button("▼", func(): stage.nudge(Vector2.DOWN))
+	_button("▶", func(): stage.nudge(Vector2.RIGHT))
+	_button("APPROACH\n接敌", _on_objective_reached, true)
+	footer_hint.text = "Movement is required in normal play; APPROACH is an accessibility shortcut."
+
+
+func _on_floor_risk() -> void:
+	state.trigger_floor_risk()
+	_play("hit")
+	_log("FLOOR RISK triggered · Health %d · Resolve %d · Curse %d" % [state.health, state.resolve, state.curse])
+	if state.phase == MidnightState.Phase.DAY_2:
+		_log("RECOVERY: unbanked loot lost; Nara returns with 3 health and emergency 5G.")
+		_show_shop()
+	elif state.phase == MidnightState.Phase.FINAL:
+		_show_final()
+	else:
+		_start_room()
+
+
+func _on_objective_reached() -> void:
+	if encounter_open or not state.room_active:
+		return
+	encounter_open = true
+	var room: Dictionary = MidnightState.ROOMS[state.room_index]
+	title.text = "%s · HP %d/%d" % [room["enemy"], state.enemy_hp, room["hp"]]
+	subtitle.text = "Deterministic pattern: attacks for %d; guard reduces the next hit." % room["damage"]
+	detail.text = "[color=#d45b68]%s blocks extraction.[/color]\n\nSTRIKE deals 2. GUARD reduces damage and restores Resolve. REMEMBER costs 2 Resolve and reveals identity. CARRIED ITEM uses its room synergy or heals 2." % room["enemy"]
+	_clear(actions)
+	_button("STRIKE\n攻击", func(): _combat("strike"), true)
+	_button("GUARD\n格挡", func(): _combat("guard"))
+	_button("REMEMBER −2◆\n追忆", func(): _combat("remember"))
+	_button("USE CARRIED\n使用古物", func(): _combat("item"))
+	if state.room_index == 1 and state.carried_id == "wedding_ring":
+		_button("RETURN RING\n归还婚戒", _peaceful_claimant, true)
+
+
+func _peaceful_claimant() -> void:
+	if state.peaceful_claimant():
+		_play("loot")
+		_log("MERCY +3 · Widow Voss remembers the missing song. No combat.")
+		_room_cleared()
+
+
+func _combat(action: String) -> void:
+	var result := state.combat_action(action)
+	if not result.get("ok", false):
+		_log("Not enough Resolve for that action.")
+		return
+	_play("hit" if not result.get("won", false) else "loot")
+	if state.phase == MidnightState.Phase.DAY_2:
+		_log("DEFEAT & RECOVERY · unbanked loot and marks lost; banked goods persist.")
+		_show_shop()
+		return
+	if state.phase == MidnightState.Phase.FINAL:
+		_log("DEFEAT & RECOVERY · the cracked Heart still demands a decision.")
+		_show_final()
+		return
+	_log("%s: dealt %d · received %d · enemy HP %d · Nara ♥%d" % [action.to_upper(), result.get("dealt", 0), result.get("damage", 0), state.enemy_hp, state.health])
+	if result.get("won", false):
+		_room_cleared()
+	else:
+		_on_objective_reached_refresh()
+
+
+func _on_objective_reached_refresh() -> void:
+	encounter_open = false
+	_on_objective_reached()
+
+
+func _room_cleared() -> void:
+	stage.mark_enemy_defeated()
+	var room: Dictionary = MidnightState.ROOMS[state.room_index]
+	title.text = "ROOM CLEARED / 房间已清理"
+	subtitle.text = "%s cannot follow you." % room["enemy"]
+	var loot_text := ""
+	if state.room_index == 0:
+		loot_text = "\nLoot: Moon Coin (unbanked)."
+	elif state.room_index == 2 and state.carried_id == "bone_key":
+		loot_text = "\nOPTIONAL CACHE: Saint's Tooth recovered."
+	elif state.room_index == 3:
+		loot_text = "\nCORE CURIO: Heart of the Crypt recovered."
+	detail.text = "Marks +%d%s\n\nUnbanked rewards are lost on defeat. Extraction after the second room banks everything." % [room["marks"] * (2 if state.carried_id == "black_ledger" else 1), loot_text]
+	_clear(actions)
+	_button("CONTINUE / 继续", _advance_room, true)
+
+
+func _advance_room() -> void:
+	var old_phase := state.phase
+	state.advance_room()
+	if state.phase == old_phase:
+		_start_room()
+	elif state.phase == MidnightState.Phase.DAY_2:
+		_play("coin")
+		_log("EXTRACTED · Loot and %d marks banked. New identities surface at dawn." % state.marks_bank)
+		_show_shop()
+	else:
+		_play("appraise")
+		_show_final()
+
+
+func _show_final() -> void:
+	stage.set_scene("final")
+	stage.selected_curio = "crypt_heart"
+	phase_label.text = "00:17 · FINAL APPRAISAL"
+	header.text = "%dG  ♥%d  ☾%d  MERCY %d" % [state.gold, state.health, state.curse, state.mercy]
+	title.text = "Heart of the Crypt / 地窖之心"
+	subtitle.text = "Value 40G · Curse 4 · Demand: your own"
+	detail.text = "[color=#f1dfb0]“The shop is its coffin. Your name is its key.”[/color]\n\n[color=#e8b84a]SELL[/color] gains its appraised value; gold and concealed debt shape the business.\n[color=#52b4a6]SEAL[/color] costs 12G; mercy, clues, and low curse strengthen the ward.\n[color=#d45b68]KEEP[/color] preserves power; survival, health, optional relic, and curse decide who owns whom."
+	_clear(item_grid)
+	_clear(actions)
+	_button("SELL +%dG\n出售核心" % state.get_item("crypt_heart").get("value", 20), func(): _choose_final("sell"), true)
+	_button("SEAL −12G\n封印核心", func(): _choose_final("seal"))
+	_button("KEEP\n保留核心", func(): _choose_final("keep"))
+	footer_hint.text = "Final decision node · economy + choices + survival determine the result."
+
+
+func _choose_final(choice: String) -> void:
+	state.choose_final(choice)
+	_play("bell")
+	_show_result()
+
+
+func _show_result() -> void:
+	stage.set_scene("result")
+	phase_label.text = "RUN COMPLETE"
+	header.text = "SCORE %d · RANK %s" % [state.score, state.rank]
+	title.text = state.outcome
+	var condition := ""
+	match state.final_choice:
+		"sell":
+			condition = "The lamps stay lit. %s" % ("No hidden debt follows the buyer." if state.curse <= 2 else "Red ink appears beneath tomorrow's profits.")
+		"seal":
+			condition = "The crypt falls quiet. %s" % ("Claimants find their names at dawn." if state.mercy >= 3 else "The seal holds, but nobody remembers why.")
+		"keep":
+			condition = "Nara keeps the Heart. %s" % ("It beats when she commands." if state.health >= 4 and state.curse <= 5 else "Some nights, it appraises her.")
+	subtitle.text = condition
+	detail.text = "[color=#e8b84a]ECONOMY[/color] %dG · Banked marks %d\n[color=#52b4a6]CHOICES[/color] Mercy %d · Trust %d · Clues %d\n[color=#d45b68]SURVIVAL[/color] Health %d · Curse %d · Recoveries %d\nRooms %d/4 · Customers %d · Optional relic %s\n\nSCORE %d · RANK %s\nMeasured session %.1f min · Normal reading route %.1f min" % [state.gold, state.marks_bank, state.mercy, state.trust, state.clues, state.health, state.curse, state.recovered, state.rooms_cleared.size(), state.transactions.size(), "YES" if state.optional_relic else "NO", state.score, state.rank, state.elapsed_seconds() / 60.0, state.expected_normal_minutes()]
+	_clear(item_grid)
+	_clear(actions)
+	_button("REPLAY / 再来一局", _start_run, true)
+	_button("TITLE / 返回标题", _show_title)
+	footer_hint.text = "Replay with different pricing, truth, carried curio, relic route, and core choice."
 
 
 func _log(text: String) -> void:
-	log_line.emit(text)
+	log_lines.append(text)
+	if log_lines.size() > 7:
+		log_lines.pop_front()
+	_refresh_log()
 	print("[MPC] ", text)
 
 
-func _emit_all() -> void:
-	gold_changed.emit(gold)
-	bag_changed.emit(bag)
-	shelf_changed.emit(shelf)
-	phase_changed.emit(phase)
-	if shop.has_method("refresh"):
-		shop.refresh()
-	if hud.has_method("refresh"):
-		hud.refresh()
+func _refresh_log() -> void:
+	if log_label == null:
+		return
+	log_label.text = "[color=#9f94ac]LEDGER LOG[/color]\n" + "\n".join(log_lines)
+	log_label.scroll_to_line(maxi(0, log_lines.size() - 1))
 
 
-func phase_name() -> String:
-	match phase:
-		Phase.TITLE:
-			return "TITLE"
-		Phase.DAY:
-			return "DAY"
-		Phase.NIGHT:
-			return "NIGHT"
-		Phase.SETTLE:
-			return "SETTLE"
-		Phase.COMPLETE:
-			return "COMPLETE"
-	return "?"
+func _play(kind: String) -> void:
+	var specs := {
+		"bell": [660.0, 0.22, 0.42],
+		"appraise": [920.0, 0.12, 0.25],
+		"coin": [1180.0, 0.10, 0.28],
+		"hit": [130.0, 0.09, 0.34],
+		"loot": [780.0, 0.16, 0.30],
+		"tick": [440.0, 0.04, 0.18],
+	}
+	var spec: Array = specs.get(kind, specs["tick"])
+	audio_player.stream = _tone(spec[0], spec[1], spec[2])
+	audio_player.play()
+
+
+func _tone(frequency: float, duration: float, volume: float) -> AudioStreamWAV:
+	var mix_rate := 22050
+	var frames := int(duration * mix_rate)
+	var bytes := PackedByteArray()
+	bytes.resize(frames * 2)
+	for i in frames:
+		var envelope := 1.0 - float(i) / frames
+		var sample := sin(TAU * frequency * i / mix_rate) * envelope * volume
+		var value := int(clampf(sample, -1.0, 1.0) * 32767.0)
+		bytes.encode_s16(i * 2, value)
+	var wav := AudioStreamWAV.new()
+	wav.format = AudioStreamWAV.FORMAT_16_BITS
+	wav.mix_rate = mix_rate
+	wav.stereo = false
+	wav.data = bytes
+	return wav
+
+
+func _toggle_pause() -> void:
+	if state.phase == MidnightState.Phase.TITLE:
+		return
+	pause_layer.visible = not pause_layer.visible
+	get_tree().paused = pause_layer.visible
+	pause_layer.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
+
+func _resume() -> void:
+	pause_layer.visible = false
+	get_tree().paused = false
+
+
+func _restart() -> void:
+	_resume()
+	_start_run()
+
+
+func _title() -> void:
+	_resume()
+	_show_title()
+
+
+func _on_viewport_changed() -> void:
+	var narrow := get_viewport_rect().size.x < 700
+	var split := find_children("*", "HSplitContainer", true, false)
+	if not split.is_empty():
+		(split[0] as HSplitContainer).split_offset = 250 if narrow else 300
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not (event is InputEventKey and event.pressed and not event.echo):
+	if event.is_action_pressed("ui_cancel"):
+		_toggle_pause()
 		return
-	var k: Key = event.keycode
-	# Demo / accessibility hotkeys (also used for automated walkthrough)
-	if k == KEY_1 and (phase == Phase.DAY or phase == Phase.SETTLE):
-		if bag.size() > 0:
-			stock_from_bag(0)
-			select_shelf(0)
-	elif k == KEY_2 and (phase == Phase.DAY or phase == Phase.SETTLE):
-		appraise_selected()
-	elif k == KEY_3 and (phase == Phase.DAY or phase == Phase.SETTLE):
-		sell_selected()
-	elif k == KEY_4 and phase == Phase.DAY:
-		enter_night()
-	elif k == KEY_0 and phase == Phase.NIGHT:
-		# Demo: force extract with a free loot
-		add_loot(_random_loot())
-		return_from_dungeon()
-	elif k == KEY_5 and phase == Phase.SETTLE:
-		finish_run()
-	elif k == KEY_ENTER or k == KEY_KP_ENTER:
-		if phase == Phase.TITLE:
-			start_run()
-		elif phase == Phase.COMPLETE:
-			start_run()
+	if state.phase != MidnightState.Phase.NIGHT_1 and state.phase != MidnightState.Phase.NIGHT_2:
+		return
+	if event.is_action_pressed("move_left"):
+		stage.nudge(Vector2.LEFT)
+	elif event.is_action_pressed("move_right"):
+		stage.nudge(Vector2.RIGHT)
+	elif event.is_action_pressed("move_up"):
+		stage.nudge(Vector2.UP)
+	elif event.is_action_pressed("move_down"):
+		stage.nudge(Vector2.DOWN)
+
+
+# Test-facing deterministic route helpers.
+func start_run() -> void:
+	_start_run()
+
+
+func complete_tutorial() -> void:
+	state.tutorial_sale()
+	_show_shop()
+
+
+func test_enter_encounter() -> void:
+	_on_objective_reached()
+
+
+func test_finish_combat() -> void:
+	while state.room_active and state.phase in [MidnightState.Phase.NIGHT_1, MidnightState.Phase.NIGHT_2]:
+		state.combat_action("strike")
