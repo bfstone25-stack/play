@@ -141,7 +141,7 @@ func _draw_dungeon_actors() -> void:
 		var source := Rect2(room_index * 64 + enemy_frame * 32, 72, 32, 48)
 		draw_texture_rect_region(CRYPT_ATLAS, Rect2(objective - Vector2(16, 38), Vector2(32, 48)), source)
 	else:
-		var curio_index := [5, 0, 6, 7][room_index]
+		var curio_index: int = [5, 0, 6, 7][room_index]
 		draw_texture_rect_region(CURIOS, Rect2(objective - Vector2(16, 14), Vector2(32, 32)), Rect2(curio_index * 32, 32, 32, 32))
 	if action_flash > 0.0:
 		draw_texture_rect_region(CRYPT_ATLAS, Rect2(objective - Vector2(20, 20), Vector2(32, 32)), Rect2(224, 136, 32, 32))
