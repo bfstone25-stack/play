@@ -95,7 +95,7 @@ func _add_coworker() -> void:
 	frames.add_animation("idle")
 	frames.set_animation_speed("idle", 3.5)
 	frames.set_animation_loop("idle", true)
-	var corrupt := state.get("eli_stance", "") == "SUSPECT"
+	var corrupt: bool = str(state.get("eli_stance", "")) == "SUSPECT"
 	var atlas: Texture2D = load("res://assets/pixel/office_atlas.png")
 	for index in 4:
 		var frame := AtlasTexture.new()
