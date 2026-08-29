@@ -57,14 +57,14 @@ func _init() -> void:
 	while hud.dialogue_panel.visible:
 		hud._advance_dialogue()
 	hud.show_log()
-	if not hud.overlay.visible or "EVIDENCE" not in hud.overlay_body.text:
+	if not hud.overlay.visible or ("EVIDENCE" not in hud.overlay_body.text and "证据" not in hud.overlay_body.text):
 		push_error("case log failed to open")
 		quit(6)
 		return
 	hud.overlay.visible = false
 	hud._busy = false
 	hud.show_pause()
-	if not hud.overlay.visible or hud.overlay_title.text != "NIGHT SHIFT PAUSED":
+	if not hud.overlay.visible or hud.overlay_title.text != Loc.t("pause.title"):
 		push_error("pause overlay failed to open")
 		quit(7)
 		return

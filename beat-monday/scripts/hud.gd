@@ -28,6 +28,14 @@ var overlay_title: Label
 var overlay_body: Label
 var title_panel: TextureRect
 var title_start: Button
+var title_eyebrow: Label
+var title_name: Label
+var title_info: Label
+var title_lang_en: Button
+var title_lang_zh: Button
+var choice_banner: Label
+var overlay_close: Button
+var overlay_restart: Button
 var ending_panel: PanelContainer
 var ending_label: Label
 var ending_restart: Button
@@ -47,6 +55,8 @@ func _ready() -> void:
 	_build_overlay()
 	_build_title()
 	_build_ending()
+	Loc.on_change(apply_locale)
+	apply_locale()
 
 func _panel_style(bg: Color, border: Color, width := 2) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
@@ -162,7 +172,7 @@ func _build_dialogue() -> void:
 	_format_label(body_label, 10, Color("#e1e6ee"))
 	stack.add_child(body_label)
 	continue_button = Button.new()
-	continue_button.text = "CONTINUE  ▸"
+	continue_button.text = Loc.t("btn.continue")
 	continue_button.custom_minimum_size = Vector2(0, 28)
 	_format_button(continue_button, 9)
 	continue_button.pressed.connect(_advance_dialogue)
@@ -179,9 +189,9 @@ func _build_choices() -> void:
 	stack.add_theme_constant_override("separation", 10)
 	choice_panel.add_child(stack)
 	var label := Label.new()
-	label.text = "DECISION RECORDED PERMANENTLY"
-	_format_label(label, 8, Color("#ef4455"))
-	stack.add_child(label)
+	choice_banner = Label.new()
+	_format_label(choice_banner, 8, Color("#ef4455"))
+	stack.add_child(choice_banner)
 	choice_prompt = Label.new()
 	choice_prompt.custom_minimum_size = Vector2(0, 45)
 	choice_prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -203,21 +213,21 @@ func _build_controls() -> void:
 	log_button = Button.new()
 	log_button.position = Vector2(14, 321)
 	log_button.size = Vector2(77, 27)
-	log_button.text = "CASE LOG"
+	log_button.text = Loc.t("btn.case_log")
 	_format_button(log_button, 8)
 	log_button.pressed.connect(show_log)
 	root_ui.add_child(log_button)
 	pause_button = Button.new()
 	pause_button.position = Vector2(549, 321)
 	pause_button.size = Vector2(77, 27)
-	pause_button.text = "PAUSE"
+	pause_button.text = Loc.t("btn.pause")
 	_format_button(pause_button, 8)
 	pause_button.pressed.connect(show_pause)
 	root_ui.add_child(pause_button)
 	route_button = Button.new()
 	route_button.position = Vector2(225, 301)
 	route_button.size = Vector2(190, 43)
-	route_button.text = "PROCEED  ▸"
+	route_button.text = Loc.t("btn.proceed")
 	route_button.visible = false
 	_format_button(route_button, 10)
 	route_button.add_theme_stylebox_override("normal", _panel_style(Color("#192e36ed"), Color("#62d6e9"), 2))
@@ -244,18 +254,16 @@ func _build_overlay() -> void:
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 8)
 	stack.add_child(actions)
-	var close := Button.new()
-	close.text = "RETURN"
-	close.custom_minimum_size = Vector2(226, 32)
-	_format_button(close, 9)
-	close.pressed.connect(func() -> void: overlay.visible = false; _busy = false)
-	actions.add_child(close)
-	var restart := Button.new()
-	restart.text = "RESTART FROM TITLE"
-	restart.custom_minimum_size = Vector2(226, 32)
-	_format_button(restart, 9)
-	restart.pressed.connect(func() -> void: restart_requested.emit())
-	actions.add_child(restart)
+	overlay_close = Button.new()
+	overlay_close.custom_minimum_size = Vector2(226, 32)
+	_format_button(overlay_close, 9)
+	overlay_close.pressed.connect(func() -> void: overlay.visible = false; _busy = false)
+	actions.add_child(overlay_close)
+	overlay_restart = Button.new()
+	overlay_restart.custom_minimum_size = Vector2(226, 32)
+	_format_button(overlay_restart, 9)
+	overlay_restart.pressed.connect(func() -> void: restart_requested.emit())
+	actions.add_child(overlay_restart)
 	root_ui.add_child(overlay)
 
 func _build_title() -> void:
@@ -274,31 +282,48 @@ func _build_title() -> void:
 	veil.color = Color("#02050a77")
 	veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	title_panel.add_child(veil)
-	var eyebrow := Label.new()
-	eyebrow.position = Vector2(0, 72)
-	eyebrow.size = Vector2(640, 22)
-	eyebrow.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	eyebrow.text = "A MERIDIAN LEDGER NIGHT OPERATIONS FILE"
-	_format_label(eyebrow, 9, Color("#667b9a"))
-	title_panel.add_child(eyebrow)
-	var title := Label.new()
-	title.position = Vector2(0, 86)
-	title.size = Vector2(640, 106)
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.text = "FLOOR 13\nNIGHT SHIFT"
-	_format_label(title, 31, Color("#ff4054"))
-	title_panel.add_child(title)
-	var info := Label.new()
-	info.position = Vector2(90, 220)
-	info.size = Vector2(460, 35)
-	info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	info.text = "A 25–35 MINUTE POINT-CLICK HORROR NARRATIVE\nHeadphones recommended · choices persist"
-	_format_label(info, 8, Color("#929db1"))
-	title_panel.add_child(info)
+	title_eyebrow = Label.new()
+	title_eyebrow.position = Vector2(0, 48)
+	title_eyebrow.size = Vector2(640, 22)
+	title_eyebrow.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_format_label(title_eyebrow, 9, Color("#667b9a"))
+	title_panel.add_child(title_eyebrow)
+	title_name = Label.new()
+	title_name.position = Vector2(0, 68)
+	title_name.size = Vector2(640, 90)
+	title_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_format_label(title_name, 31, Color("#ff4054"))
+	title_panel.add_child(title_name)
+	title_info = Label.new()
+	title_info.position = Vector2(90, 168)
+	title_info.size = Vector2(460, 40)
+	title_info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_format_label(title_info, 8, Color("#929db1"))
+	title_panel.add_child(title_info)
+	var lang_cap := Label.new()
+	lang_cap.position = Vector2(0, 214)
+	lang_cap.size = Vector2(640, 16)
+	lang_cap.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lang_cap.text = "Language / 语言"
+	_format_label(lang_cap, 8, Color("#8e9bb0"))
+	title_panel.add_child(lang_cap)
+	title_lang_en = Button.new()
+	title_lang_en.position = Vector2(150, 234)
+	title_lang_en.size = Vector2(150, 32)
+	title_lang_en.text = "English"
+	_format_button(title_lang_en, 9)
+	title_lang_en.pressed.connect(func() -> void: Loc.set_code("en"))
+	title_panel.add_child(title_lang_en)
+	title_lang_zh = Button.new()
+	title_lang_zh.position = Vector2(340, 234)
+	title_lang_zh.size = Vector2(150, 32)
+	title_lang_zh.text = "简体中文"
+	_format_button(title_lang_zh, 9)
+	title_lang_zh.pressed.connect(func() -> void: Loc.set_code("zh"))
+	title_panel.add_child(title_lang_zh)
 	title_start = Button.new()
 	title_start.position = Vector2(215, 294)
 	title_start.size = Vector2(210, 42)
-	title_start.text = "BEGIN NIGHT SHIFT"
 	_format_button(title_start, 11)
 	title_start.pressed.connect(func() -> void: title_panel.visible = false; title_requested.emit())
 	title_panel.add_child(title_start)
@@ -320,7 +345,7 @@ func _build_ending() -> void:
 	_format_label(ending_label, 18, Color("#f1e9dc"))
 	stack.add_child(ending_label)
 	ending_restart = Button.new()
-	ending_restart.text = "RESTART NIGHT SHIFT"
+	ending_restart.text = Loc.t("btn.restart_shift")
 	ending_restart.custom_minimum_size = Vector2(0, 38)
 	_format_button(ending_restart, 10)
 	ending_restart.pressed.connect(func() -> void: restart_requested.emit())
@@ -353,7 +378,7 @@ func _advance_dialogue() -> void:
 	speaker_label.text = str(line[0])
 	body_label.text = str(line[1])
 	_set_portrait(str(line[0]))
-	continue_button.text = "CONTINUE  ▸  %d" % (_queue.size() + 1)
+	continue_button.text = Loc.t("btn.continue_n", [_queue.size() + 1])
 
 func _set_portrait(speaker: String) -> void:
 	var index := 0
@@ -379,7 +404,9 @@ func _pick(index: int) -> void:
 	_busy = false
 	choice_made.emit(_choice_ids[index])
 
-func enable_route(label := "PROCEED  ▸") -> void:
+func enable_route(label := "") -> void:
+	if label == "":
+		label = Loc.t("btn.proceed")
 	route_button.text = label
 	route_button.visible = true
 
@@ -390,16 +417,16 @@ func show_log() -> void:
 	if _busy:
 		return
 	var game := get_tree().get_first_node_in_group("game")
-	overlay_title.text = "CASE LOG // PERSISTENT RECORD"
-	overlay_body.text = game.get_case_log_text() if game else "No record."
+	overlay_title.text = Loc.t("log.title")
+	overlay_body.text = game.get_case_log_text() if game else Loc.t("log.empty")
 	overlay.visible = true
 	_busy = true
 
 func show_pause() -> void:
 	if _busy:
 		return
-	overlay_title.text = "NIGHT SHIFT PAUSED"
-	overlay_body.text = "The clock has stopped for you. The record has not.\n\nAll progress is held in this session. Resume to continue, or restart from the title using the button below."
+	overlay_title.text = Loc.t("pause.title")
+	overlay_body.text = Loc.t("pause.body")
 	overlay.visible = true
 	_busy = true
 
@@ -417,6 +444,44 @@ func reset_ui() -> void:
 	ending_panel.visible = false
 	route_button.visible = false
 	title_panel.visible = true
+
+func apply_locale() -> void:
+	UiFont.refresh()
+	if title_eyebrow:
+		title_eyebrow.text = Loc.t("title.eyebrow")
+	if title_name:
+		title_name.text = Loc.t("title.name")
+	if title_info:
+		title_info.text = Loc.t("title.info")
+	if title_start:
+		title_start.text = Loc.t("title.start")
+	if title_lang_en and title_lang_zh:
+		if Loc.is_zh():
+			title_lang_zh.add_theme_color_override("font_color", Color("#6fdcef"))
+			title_lang_en.remove_theme_color_override("font_color")
+		else:
+			title_lang_en.add_theme_color_override("font_color", Color("#6fdcef"))
+			title_lang_zh.remove_theme_color_override("font_color")
+	if continue_button and not dialogue_panel.visible:
+		continue_button.text = Loc.t("btn.continue")
+	if log_button:
+		log_button.text = Loc.t("btn.case_log")
+	if pause_button:
+		pause_button.text = Loc.t("btn.pause")
+	if route_button and not route_button.visible:
+		route_button.text = Loc.t("btn.proceed")
+	if choice_banner:
+		choice_banner.text = Loc.t("choice.banner")
+	if overlay_close:
+		overlay_close.text = Loc.t("btn.return")
+	if overlay_restart:
+		overlay_restart.text = Loc.t("btn.restart")
+	if ending_restart:
+		ending_restart.text = Loc.t("btn.restart_shift")
+	var game := get_tree().get_first_node_in_group("game")
+	if game and game.has_method("on_locale_changed"):
+		game.on_locale_changed()
+
 
 func is_busy() -> bool:
 	return _busy or dialogue_panel.visible or choice_panel.visible or overlay.visible or ending_panel.visible

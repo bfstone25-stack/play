@@ -40,7 +40,7 @@ func _ready() -> void:
 	hud.root_ui.add_child(hotspot_layer)
 	hud.root_ui.move_child(hotspot_layer, 1)
 	world.build("cubicle", flags)
-	hud.set_header("FILE 13", "NIGHT OPERATIONS", "SUNDAY", "Begin when ready. Choices persist until restart.")
+	hud.set_header(Loc.t("idle.chapter"), Loc.t("idle.place"), Loc.t("idle.clock"), Loc.t("idle.objective"))
 
 func start_game() -> void:
 	if started:
@@ -61,11 +61,11 @@ func restart() -> void:
 	_clear_hotspots()
 	hud.reset_ui()
 	world.build("cubicle", flags)
-	hud.set_header("FILE 13", "NIGHT OPERATIONS", "SUNDAY", "Begin when ready. Choices persist until restart.")
+	hud.set_header(Loc.t("idle.chapter"), Loc.t("idle.place"), Loc.t("idle.clock"), Loc.t("idle.objective"))
 
 func _load_area() -> void:
 	_clear_hotspots()
-	var area: Dictionary = StoryData.AREAS[area_index]
+	var area: Dictionary = StoryData.live()[area_index]
 	world.build(area.id, flags)
 	hud.set_header(area.chapter, area.place, area.clock, area.objective)
 	pending = "opening"
@@ -73,7 +73,7 @@ func _load_area() -> void:
 
 func _show_hotspots() -> void:
 	_clear_hotspots()
-	var area: Dictionary = StoryData.AREAS[area_index]
+	var area: Dictionary = StoryData.live()[area_index]
 	var count := 0
 	for hotspot in area.hotspots:
 		var id := str(hotspot[0])
@@ -117,7 +117,7 @@ func _show_hotspots() -> void:
 func _on_hotspot(id: String) -> void:
 	if hud.is_busy() or completed_hotspots.has(_area_key(id)):
 		return
-	var area: Dictionary = StoryData.AREAS[area_index]
+	var area: Dictionary = StoryData.live()[area_index]
 	for hotspot in area.hotspots:
 		if hotspot[0] == id:
 			current_hotspot = id
@@ -133,42 +133,42 @@ func on_dialogue_done() -> void:
 			_show_hotspots()
 		"hotspot":
 			completed_hotspots[_area_key(current_hotspot)] = true
-			discoveries.append("%s — %s" % [StoryData.AREAS[area_index].place, _hotspot_label(current_hotspot)])
+			discoveries.append("%s — %s" % [StoryData.live()[area_index].place, _hotspot_label(current_hotspot)])
 			current_hotspot = ""
 			pending = ""
 			_show_hotspots()
 			if _area_complete():
 				_clear_hotspots()
-				var area: Dictionary = StoryData.AREAS[area_index]
+				var area: Dictionary = StoryData.live()[area_index]
 				if area.has("choice"):
 					hud.show_choice(area.choice)
 				else:
-					hud.enable_route("CONTINUE TO NEXT AREA  ▸")
+					hud.enable_route(Loc.t("route.next"))
 		"choice_after":
 			pending = ""
-			hud.enable_route("CONTINUE WITH THIS DECISION  ▸")
+			hud.enable_route(Loc.t("route.decision"))
 		"transition":
 			pending = ""
 			area_index += 1
 			_load_area()
 		"ending":
 			pending = ""
-			hud.show_ending_card(StoryData.ENDINGS[ending_id][-1][1])
+			hud.show_ending_card(StoryData.live_endings()[ending_id][-1][1])
 
 func _on_choice(value: String) -> void:
-	var area: Dictionary = StoryData.AREAS[area_index]
+	var area: Dictionary = StoryData.live()[area_index]
 	var flag_name := str(area.choice.id)
 	flags[flag_name] = value
 	world.build(area.id, flags)
-	discoveries.append("DECISION — %s: %s" % [flag_name.to_upper().replace("_", " "), value])
+	discoveries.append(Loc.t("log.decision", [flag_name.to_upper().replace("_", " "), value]))
 	soundscape.cue("choice")
 	pending = "choice_after"
 	hud.show_dialogue(_expand(area.after[value]))
 
 func _on_route() -> void:
 	hud.hide_route()
-	var area: Dictionary = StoryData.AREAS[area_index]
-	if area_index == StoryData.AREAS.size() - 1:
+	var area: Dictionary = StoryData.live()[area_index]
+	if area_index == StoryData.live().size() - 1:
 		_begin_ending()
 		return
 	pending = "transition"
@@ -176,26 +176,26 @@ func _on_route() -> void:
 
 func _begin_ending() -> void:
 	ending_id = StoryData.resolve(flags)
-	discoveries.append("ENDING — %s" % ending_id.replace("_", " "))
+	discoveries.append(Loc.t("log.ending", [ending_id.replace("_", " ")]))
 	pending = "ending"
 	soundscape.cue("ending")
 	world.show_ending(ending_id)
-	var lines: Array = StoryData.ENDINGS[ending_id].duplicate(true)
+	var lines: Array = StoryData.live_endings()[ending_id].duplicate(true)
 	lines.pop_back()
 	hud.show_dialogue(_expand(lines))
 
 func _area_complete() -> bool:
-	var area: Dictionary = StoryData.AREAS[area_index]
+	var area: Dictionary = StoryData.live()[area_index]
 	for hotspot in area.hotspots:
 		if not completed_hotspots.has(_area_key(hotspot[0])):
 			return false
 	return true
 
 func _area_key(id: String) -> String:
-	return "%s/%s" % [StoryData.AREAS[area_index].id, id]
+	return "%s/%s" % [StoryData.live()[area_index].id, id]
 
 func _hotspot_label(id: String) -> String:
-	for hotspot in StoryData.AREAS[area_index].hotspots:
+	for hotspot in StoryData.live()[area_index].hotspots:
 		if hotspot[0] == id:
 			return hotspot[1]
 	return id
@@ -221,39 +221,28 @@ func _expand(lines: Array) -> Array:
 		if raw[0] != "CONDITIONAL":
 			result.append(raw)
 			continue
-		match raw[1]:
-			"ELI_FOLDER":
-				result.append(["NARRATION", "Eli's folder is still marked ACTIVE, though its pages fade at the edges. June's visitor badge has bought him time, not safety."] if flags.eli_stance == "TRUST" else ["NARRATION", "Eli's folder is empty except for a wet badge outline. Compliance has converted his testimony into an absence report."])
-			"MARA_ELI":
-				result.append(["MARA", "Eli carried my warning through six loops. Trust did not make him safe, but it kept another witness in the record."] if flags.eli_stance == "TRUST" else ["MARA", "Compliance is using Eli's breath on the phone now. Reporting him taught the system exactly which fear would move you."])
-			"ROUTE_PHONE":
-				result.append(["ELI / PHONE", "I reached the stair control. I can hold one gate for ninety heartbeats. I refuse to call them seconds anymore."] if flags.eli_stance == "TRUST" else ["ELI / PHONE", "Variance is a lonely word. You made it mine. Compliance says the elevator is safer for listed personnel."])
-			"STAIR_HELP":
-				result.append(["ELI", "The gate is open. Keep naming them; the landing cannot reset while two people remember the same sequence."] if flags.eli_stance == "TRUST" else ["NARRATION", "No one answers the stair phone. June bridges the alarm contacts with the metal staple from her forged resignation."])
-			"COAT_EVIDENCE":
-				result.append(["NARRATION", "Because June took the stairs, the carved replacement list confirms every coat's owner."] if flags.escape_route == "STAIRS" else ["NARRATION", "Rusk's keycard opens a maintenance tag: every coat was inventoried as reusable identity material."])
-			"GATE_RESULT":
-				result.append(["SYSTEM", "WITNESS ROUTE ACCEPTED. Replacement chronology attached."] if flags.escape_route == "STAIRS" else ["SYSTEM", "MANAGEMENT ROUTE ACCEPTED. Master authorization attached."])
-			"PHOTO_ROUTE":
-				result.append(["NARRATION", "The stair list identifies every person in the photographs, including the six whose faces Rusk cut away."] if flags.escape_route == "STAIRS" else ["NARRATION", "Rusk's keycard opens the frames. Behind them are severance cheques totaling the missing wages."])
-			"WINDOW_ELI":
-				result.append(["NARRATION", "Eli waits beside Mara under the awning, one hand holding the stair door."] if flags.eli_stance == "TRUST" else ["NARRATION", "Only Eli's blank badge lies on the pavement beside Mara. The rain passes through its photograph."])
-			"LOOP_COMPANION":
-				if flags.eli_stance == "TRUST":
-					result.append(["ELI", "You saved half a record. The Auditor rounds halves down. I remember enough to ask you to make the choices agree."])
-				else:
-					result.append(["MARA", "You cannot use Compliance's route and call the destination freedom. It has returned us to the last place your story was whole."])
+		result.append(StoryData.conditional_line(str(raw[1]), flags))
 	return result
 
+func on_locale_changed() -> void:
+	if not started:
+		hud.set_header(Loc.t("idle.chapter"), Loc.t("idle.place"), Loc.t("idle.clock"), Loc.t("idle.objective"))
+		return
+	if hud.is_busy():
+		return
+	var area: Dictionary = StoryData.live()[area_index]
+	hud.set_header(area.chapter, area.place, area.clock, area.objective)
+
 func get_case_log_text() -> String:
+	var pending := Loc.t("log.pending")
 	var lines := PackedStringArray([
-		"OBJECTIVE\n%s\n" % StoryData.AREAS[area_index].objective,
-		"DECISIONS",
-		"Eli: %s" % (flags.eli_stance if flags.eli_stance else "pending"),
-		"Compliance: %s" % (flags.compliance if flags.compliance else "pending"),
-		"Route: %s" % (flags.escape_route if flags.escape_route else "pending"),
-		"Contract: %s\n" % (flags.contract if flags.contract else "pending"),
-		"EVIDENCE // %d OF 28" % completed_hotspots.size()
+		Loc.t("log.objective", [StoryData.live()[area_index].objective]),
+		Loc.t("log.decisions"),
+		Loc.t("log.eli", [flags.eli_stance if flags.eli_stance else pending]),
+		Loc.t("log.compliance", [flags.compliance if flags.compliance else pending]),
+		Loc.t("log.route", [flags.escape_route if flags.escape_route else pending]),
+		Loc.t("log.contract", [flags.contract if flags.contract else pending]),
+		Loc.t("log.evidence", [completed_hotspots.size()])
 	])
 	for i in range(max(0, discoveries.size() - 8), discoveries.size()):
 		lines.append("• " + discoveries[i])

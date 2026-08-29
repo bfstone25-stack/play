@@ -423,6 +423,41 @@ const ENDINGS := {
 	]
 }
 
+static func live() -> Array:
+	return StoryZh.AREAS if Loc.is_zh() else AREAS
+
+
+static func live_endings() -> Dictionary:
+	return StoryZh.ENDINGS if Loc.is_zh() else ENDINGS
+
+
+static func conditional_line(key: String, flags: Dictionary) -> Array:
+	if Loc.is_zh():
+		return StoryZh.conditional(key, flags)
+	match key:
+		"ELI_FOLDER":
+			return ["NARRATION", "Eli's folder is still marked ACTIVE, though its pages fade at the edges. June's visitor badge has bought him time, not safety."] if flags.eli_stance == "TRUST" else ["NARRATION", "Eli's folder is empty except for a wet badge outline. Compliance has converted his testimony into an absence report."]
+		"MARA_ELI":
+			return ["MARA", "Eli carried my warning through six loops. Trust did not make him safe, but it kept another witness in the record."] if flags.eli_stance == "TRUST" else ["MARA", "Compliance is using Eli's breath on the phone now. Reporting him taught the system exactly which fear would move you."]
+		"ROUTE_PHONE":
+			return ["ELI / PHONE", "I reached the stair control. I can hold one gate for ninety heartbeats. I refuse to call them seconds anymore."] if flags.eli_stance == "TRUST" else ["ELI / PHONE", "Variance is a lonely word. You made it mine. Compliance says the elevator is safer for listed personnel."]
+		"STAIR_HELP":
+			return ["ELI", "The gate is open. Keep naming them; the landing cannot reset while two people remember the same sequence."] if flags.eli_stance == "TRUST" else ["NARRATION", "No one answers the stair phone. June bridges the alarm contacts with the metal staple from her forged resignation."]
+		"COAT_EVIDENCE":
+			return ["NARRATION", "Because June took the stairs, the carved replacement list confirms every coat's owner."] if flags.escape_route == "STAIRS" else ["NARRATION", "Rusk's keycard opens a maintenance tag: every coat was inventoried as reusable identity material."]
+		"GATE_RESULT":
+			return ["SYSTEM", "WITNESS ROUTE ACCEPTED. Replacement chronology attached."] if flags.escape_route == "STAIRS" else ["SYSTEM", "MANAGEMENT ROUTE ACCEPTED. Master authorization attached."]
+		"PHOTO_ROUTE":
+			return ["NARRATION", "The stair list identifies every person in the photographs, including the six whose faces Rusk cut away."] if flags.escape_route == "STAIRS" else ["NARRATION", "Rusk's keycard opens the frames. Behind them are severance cheques totaling the missing wages."]
+		"WINDOW_ELI":
+			return ["NARRATION", "Eli waits beside Mara under the awning, one hand holding the stair door."] if flags.eli_stance == "TRUST" else ["NARRATION", "Only Eli's blank badge lies on the pavement beside Mara. The rain passes through its photograph."]
+		"LOOP_COMPANION":
+			if flags.eli_stance == "TRUST":
+				return ["ELI", "You saved half a record. The Auditor rounds halves down. I remember enough to ask you to make the choices agree."]
+			return ["MARA", "You cannot use Compliance's route and call the destination freedom. It has returned us to the last place your story was whole."]
+	return ["NARRATION", ""]
+
+
 static func total_hotspots() -> int:
 	var total := 0
 	for area in AREAS:

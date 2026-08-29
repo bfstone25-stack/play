@@ -5,6 +5,7 @@ const HOTSPOT_SCAN_SECONDS := 4.0
 const DECISION_SECONDS := 15.0
 
 func _init() -> void:
+	Loc.set_code("en")
 	var started_at := Time.get_ticks_msec()
 	var game: Node = load("res://scenes/main.tscn").instantiate()
 	root.add_child(game)
