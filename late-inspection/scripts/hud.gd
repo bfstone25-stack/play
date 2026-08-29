@@ -33,6 +33,13 @@ var document_button: Button
 var document_pages: PackedStringArray
 var document_index := 0
 var _document_cb: Callable = Callable()
+var splash_title: Label
+var pause_lab: Label
+var pause_resume: Button
+var pause_restart: Button
+var lang_en: Button
+var lang_zh: Button
+var splash_enter: Button
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -56,6 +63,8 @@ func _ready() -> void:
 	_pause_ui()
 	_ending_ui()
 	_splash()
+	Loc.on_change(apply_locale)
+	apply_locale()
 
 func _clock() -> void:
 	clock = Label.new()
@@ -203,7 +212,7 @@ func _document_ui() -> void:
 	UiFont.apply_label(document_page)
 	document_panel.add_child(document_page)
 	document_button = _mk_btn("DocumentNext", Vector2(-170, 192), Vector2(340, 44))
-	document_button.text = "CONTINUE  ›"
+	document_button.text = Loc.t("doc.continue")
 	document_button.pressed.connect(_next_document_page)
 	document_panel.add_child(document_button)
 	add_child(document_panel)
@@ -216,25 +225,22 @@ func _pause_ui() -> void:
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	dim.color = Color(0.015, 0.012, 0.01, 0.88)
 	pause_panel.add_child(dim)
-	var lab := Label.new()
-	lab.set_anchors_preset(Control.PRESET_CENTER)
-	lab.offset_left = -320
-	lab.offset_right = 320
-	lab.offset_top = -150
-	lab.offset_bottom = -40
-	lab.text = "INSPECTION PAUSED\nEsc resumes · Mouse recaptures on return"
-	lab.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lab.add_theme_font_size_override("font_size", 23)
-	UiFont.apply_label(lab)
-	pause_panel.add_child(lab)
-	var resume := _mk_btn("Resume", Vector2(-180, 10), Vector2(360, 48))
-	resume.text = "RESUME INSPECTION"
-	resume.pressed.connect(func() -> void: get_tree().call_group("game", "toggle_pause"))
-	pause_panel.add_child(resume)
-	var restart_btn := _mk_btn("Restart", Vector2(-180, 72), Vector2(360, 48))
-	restart_btn.text = "RESTART FROM ARRIVAL"
-	restart_btn.pressed.connect(func() -> void: get_tree().call_group("game", "restart"))
-	pause_panel.add_child(restart_btn)
+	pause_lab = Label.new()
+	pause_lab.set_anchors_preset(Control.PRESET_CENTER)
+	pause_lab.offset_left = -320
+	pause_lab.offset_right = 320
+	pause_lab.offset_top = -150
+	pause_lab.offset_bottom = -40
+	pause_lab.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	pause_lab.add_theme_font_size_override("font_size", 23)
+	UiFont.apply_label(pause_lab)
+	pause_panel.add_child(pause_lab)
+	pause_resume = _mk_btn("Resume", Vector2(-180, 10), Vector2(360, 48))
+	pause_resume.pressed.connect(func() -> void: get_tree().call_group("game", "toggle_pause"))
+	pause_panel.add_child(pause_resume)
+	pause_restart = _mk_btn("Restart", Vector2(-180, 72), Vector2(360, 48))
+	pause_restart.pressed.connect(func() -> void: get_tree().call_group("game", "restart"))
+	pause_panel.add_child(pause_restart)
 	add_child(pause_panel)
 
 func _ending_ui() -> void:
@@ -270,7 +276,7 @@ func _ending_ui() -> void:
 	UiFont.apply_label(ending_text)
 	ending_panel.add_child(ending_text)
 	ending_button = _mk_btn("EndingNext", Vector2(-180, 185), Vector2(360, 50))
-	ending_button.text = "CONTINUE"
+	ending_button.text = Loc.t("btn.continue")
 	ending_button.pressed.connect(_next_ending_beat)
 	ending_panel.add_child(ending_button)
 	add_child(ending_panel)
@@ -285,19 +291,46 @@ func _splash() -> void:
 	bg.color = Color(0.05, 0.035, 0.025, 1)
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	splash.add_child(bg)
-	var lab := Label.new()
-	lab.set_anchors_preset(Control.PRESET_CENTER)
-	lab.offset_left = -440.0
-	lab.offset_right = 440.0
-	lab.offset_top = -90.0
-	lab.offset_bottom = 110.0
-	lab.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lab.add_theme_font_size_override("font_size", 24)
-	lab.add_theme_color_override("font_color", Color(0.93, 0.86, 0.72, 1))
-	lab.text = "Late Inspection: Flat 404\n深夜验房：404室\nClick to enter  ·  WASD  mouse  E interact  Esc"
-	UiFont.apply_label(lab)
-	splash.add_child(lab)
-	splash.gui_input.connect(_on_splash_input)
+	splash_title = Label.new()
+	splash_title.set_anchors_preset(Control.PRESET_CENTER)
+	splash_title.offset_left = -440.0
+	splash_title.offset_right = 440.0
+	splash_title.offset_top = -140.0
+	splash_title.offset_bottom = 20.0
+	splash_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	splash_title.add_theme_font_size_override("font_size", 24)
+	splash_title.add_theme_color_override("font_color", Color(0.93, 0.86, 0.72, 1))
+	UiFont.apply_label(splash_title)
+	splash.add_child(splash_title)
+	var lang_cap := Label.new()
+	lang_cap.set_anchors_preset(Control.PRESET_CENTER)
+	lang_cap.offset_left = -200
+	lang_cap.offset_right = 200
+	lang_cap.offset_top = 28
+	lang_cap.offset_bottom = 52
+	lang_cap.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lang_cap.text = "Language / 语言"
+	lang_cap.add_theme_font_size_override("font_size", 16)
+	lang_cap.add_theme_color_override("font_color", Color(0.7, 0.62, 0.5, 1))
+	UiFont.apply_label(lang_cap)
+	splash.add_child(lang_cap)
+	lang_en = _mk_btn("LangEn", Vector2(-220, 60), Vector2(200, 44))
+	lang_en.text = "English"
+	lang_en.pressed.connect(func() -> void: Loc.set_code("en"))
+	splash.add_child(lang_en)
+	lang_zh = _mk_btn("LangZh", Vector2(20, 60), Vector2(200, 44))
+	lang_zh.text = "简体中文"
+	lang_zh.pressed.connect(func() -> void: Loc.set_code("zh"))
+	splash.add_child(lang_zh)
+	splash_enter = _mk_btn("Enter", Vector2(-180, 120), Vector2(360, 48))
+	splash_enter.name = "EnterBuilding"
+	splash_enter.pressed.connect(func() -> void:
+		hide_splash()
+		var p := get_tree().get_first_node_in_group("player")
+		if p and p.has_method("capture_mouse"):
+			p.capture_mouse()
+	)
+	splash.add_child(splash_enter)
 	add_child(splash)
 
 func _on_splash_input(event: InputEvent) -> void:
@@ -333,7 +366,7 @@ func add_evidence(id: String) -> void:
 	if not evidence.has(id):
 		evidence.append(id)
 	if evidence_label:
-		evidence_label.text = "EVIDENCE %02d / 23" % evidence.size()
+		evidence_label.text = Loc.t("evidence", [evidence.size()])
 
 func show_title(t: String) -> void:
 	title.text = t
@@ -364,8 +397,8 @@ func show_document(t: String, cb: Callable) -> void:
 
 func _render_document_page() -> void:
 	document_text.text = document_pages[document_index].strip_edges()
-	document_page.text = "PAGE %d / %d" % [document_index + 1, document_pages.size()]
-	document_button.text = "CLOSE" if document_index == document_pages.size() - 1 else "CONTINUE  ›"
+	document_page.text = Loc.t("doc.page", [document_index + 1, document_pages.size()])
+	document_button.text = Loc.t("doc.close") if document_index == document_pages.size() - 1 else Loc.t("doc.continue")
 
 func _next_document_page() -> void:
 	if not document_panel.visible:
@@ -402,21 +435,21 @@ func show_ending(t: String, beats: Array) -> void:
 	ending_index = 0
 	ending_panel.visible = true
 	ending_text.text = str(ending_beats[0])
-	ending_button.text = "CONTINUE"
+	ending_button.text = Loc.t("btn.continue")
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	ending_button.grab_focus()
 
 func _next_ending_beat() -> void:
 	ending_index += 1
 	if ending_index >= ending_beats.size():
-		ending_text.text = "FLAT 404\n\nThank you for witnessing.\n\nPress R to restart the inspection."
-		ending_button.text = "RESTART"
+		ending_text.text = Loc.t("ending.thanks")
+		ending_button.text = Loc.t("btn.restart")
 		ending_button.pressed.disconnect(_next_ending_beat)
 		ending_button.pressed.connect(func() -> void: get_tree().call_group("game", "restart"))
 		return
 	ending_text.text = str(ending_beats[ending_index])
 	if ending_index == ending_beats.size() - 1:
-		ending_button.text = "CREDITS"
+		ending_button.text = Loc.t("btn.credits")
 
 func _pick(i: int) -> void:
 	choice_panel.visible = false
@@ -434,3 +467,28 @@ func _process(delta: float) -> void:
 	vignette.color.a = 0.05 + fear * 0.3
 	if grain and grain.material is ShaderMaterial:
 		(grain.material as ShaderMaterial).set_shader_parameter("grain", 0.06 + fear * 0.1)
+
+
+func apply_locale() -> void:
+	if splash_title:
+		splash_title.text = "%s\n%s" % [Loc.t("splash.title"), Loc.t("splash.hint")]
+	if splash_enter:
+		splash_enter.text = Loc.t("splash.start")
+	if pause_lab:
+		pause_lab.text = Loc.t("pause.title")
+	if pause_resume:
+		pause_resume.text = Loc.t("pause.resume")
+	if pause_restart:
+		pause_restart.text = Loc.t("pause.restart")
+	if lang_en and lang_zh:
+		if Loc.is_zh():
+			lang_zh.add_theme_color_override("font_color", Color(0.95, 0.82, 0.5))
+			lang_en.remove_theme_color_override("font_color")
+		else:
+			lang_en.add_theme_color_override("font_color", Color(0.95, 0.82, 0.5))
+			lang_zh.remove_theme_color_override("font_color")
+	if evidence_label and evidence.size() > 0:
+		evidence_label.text = Loc.t("evidence", [evidence.size()])
+	var game := get_tree().get_first_node_in_group("game")
+	if game and game.has_method("on_locale_changed"):
+		game.on_locale_changed()

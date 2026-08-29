@@ -15,11 +15,26 @@ var _paper: StandardMaterial3D
 var _fabric: StandardMaterial3D
 var _red: StandardMaterial3D
 var _glass: StandardMaterial3D
-var zone_names := ["LIFT LOBBY", "FOURTH-FLOOR CORRIDOR", "LIVING ROOM", "KITCHEN", "BATHROOM", "BEDROOM"]
+var zone_names: Array[String] = []
 
 func _ready() -> void:
 	_make_materials()
+	_refresh_zone_names()
 	_build()
+
+
+func _refresh_zone_names() -> void:
+	zone_names = [
+		Loc.t("zone.0"), Loc.t("zone.1"), Loc.t("zone.2"),
+		Loc.t("zone.3"), Loc.t("zone.4"), Loc.t("zone.5"),
+	]
+
+
+func refresh_locale() -> void:
+	_refresh_zone_names()
+	for child in get_children():
+		if child is Label3D and child.has_meta("loc_key"):
+			child.text = Loc.t(str(child.get_meta("loc_key")))
 
 func _make_materials() -> void:
 	_plaster = GameMaterials.plaster(Color(0.42, 0.38, 0.32))
@@ -70,7 +85,7 @@ func _build_lobby() -> void:
 	_box(Vector3(-6.45, 0.5, 6.0), Vector3(0.3, 0.9, 1.4), _metal)
 	for z in 4:
 		_box(Vector3(-6.25, 0.34 + z * 0.16, 6.0), Vector3(0.45, 0.06, 1.3), _trim)
-	_zone_label(Vector3(-5.2, 2.42, 2.0), zone_names[0])
+	_zone_label(Vector3(-5.2, 2.42, 2.0), "zone.0")
 
 func _build_corridor() -> void:
 	_box(Vector3(-1.0, -0.05, 5.0), Vector3(4.5, 0.1, 10.0), _floor_mat)
@@ -88,7 +103,7 @@ func _build_corridor() -> void:
 	_box(Vector3(-2.7,.78,1.0), Vector3(.08,.72,.48), _metal)
 	for z in [.82,1.18]:
 		_cylinder(Vector3(-2.65,.12,z), .12, .08, _dark, Vector3(90,0,0))
-	_zone_label(Vector3(-1.0, 2.42, 6.5), zone_names[1])
+	_zone_label(Vector3(-1.0, 2.42, 6.5), "zone.1")
 
 func _build_living() -> void:
 	_room_shell(Vector3(4.4, 0, 3.4), Vector2(6.4, 6.6), _floor_mat)
@@ -109,7 +124,7 @@ func _build_living() -> void:
 	for i in 4:
 		_box(Vector3(6.6, 0.3 + i * 0.5, 4.9), Vector3(0.7, 0.42, 0.7), _paper)
 	_calendar(Vector3(4.4, 1.45, 0.14))
-	_zone_label(Vector3(4.4, 2.42, 0.4), zone_names[2])
+	_zone_label(Vector3(4.4, 2.42, 0.4), "zone.2")
 
 func _build_kitchen() -> void:
 	_room_shell(Vector3(9.4, 0, 2.45), Vector2(3.6, 4.5), _tile)
@@ -128,7 +143,7 @@ func _build_kitchen() -> void:
 		_box(Vector3(x,1.85,.16), Vector3(.62,.52,.04), _trim, false)
 		_cylinder(Vector3(x,1.85,.12), .025, .05, _metal, Vector3(90,0,0))
 	_pipe_drip(Vector3(10.85, 0.65, 4.25))
-	_zone_label(Vector3(9.4, 2.42, 0.32), zone_names[3])
+	_zone_label(Vector3(9.4, 2.42, 0.32), "zone.3")
 
 func _build_bathroom() -> void:
 	_room_shell(Vector3(9.45, 0, 7.15), Vector2(3.5, 4.2), _tile)
@@ -147,7 +162,7 @@ func _build_bathroom() -> void:
 	_box(Vector3(8.3, 1.55, 5.75), Vector3(1.0, 0.85, 0.05), _glass, false)
 	_box(Vector3(10.9, 1.1, 7.0), Vector3(0.1, 2.1, 0.1), _metal, false)
 	_box(Vector3(10.92, 1.3, 7.35), Vector3(0.6, 0.8, 0.04), _metal)
-	_zone_label(Vector3(9.4, 2.42, 9.05), zone_names[4])
+	_zone_label(Vector3(9.4, 2.42, 9.05), "zone.4")
 
 func _build_bedroom() -> void:
 	_room_shell(Vector3(4.45, 0, 8.1), Vector2(6.4, 3.7), _floor_mat)
@@ -163,7 +178,7 @@ func _build_bedroom() -> void:
 	# Personal objects and scattered photographs around the cavity.
 	for i in 5:
 		_box(Vector3(6.85 + (i%2)*.18,.18+i*.025,8.0+i*.17), Vector3(.14,.012,.18), _paper, false)
-	_zone_label(Vector3(4.5, 2.42, 9.78), zone_names[5])
+	_zone_label(Vector3(4.5, 2.42, 9.78), "zone.5")
 
 func _room_shell(center: Vector3, footprint: Vector2, floor_mat: Material) -> void:
 	_box(Vector3(center.x, -0.05, center.z), Vector3(footprint.x, 0.1, footprint.y), floor_mat)
@@ -178,9 +193,10 @@ func _wall_segments_x(x: float, z0: float, z1: float, gaps: Array[Vector2]) -> v
 	if cursor < z1:
 		_box(Vector3(x, 1.25, (cursor + z1) * 0.5), Vector3(0.16, 2.6, z1 - cursor), _plaster)
 
-func _zone_label(pos: Vector3, text: String) -> void:
+func _zone_label(pos: Vector3, key: String) -> void:
 	var lab := Label3D.new()
-	lab.text = text
+	lab.set_meta("loc_key", key)
+	lab.text = Loc.t(key)
 	lab.font_size = 18
 	lab.modulate = Color(0.48, 0.42, 0.32, 0.55)
 	lab.position = pos
@@ -301,7 +317,8 @@ func _lamp(pos: Vector3) -> void:
 func _calendar(pos: Vector3) -> void:
 	_box(pos, Vector3(0.45, 0.55, 0.02), _paper, false)
 	var lab := Label3D.new()
-	lab.text = "TONIGHT"
+	lab.set_meta("loc_key", "world.tonight")
+	lab.text = Loc.t("world.tonight")
 	lab.font_size = 42
 	lab.modulate = Color(0.35, 0.12, 0.1, 1)
 	lab.position = pos + Vector3(0, 0, 0.03)
@@ -371,7 +388,7 @@ func apply_ending(id: String) -> void:
 			dawn.light_energy = 1.15
 			dawn.rotation_degrees = Vector3(-28, -72, 0)
 			add_child(dawn)
-			_sign(Vector3(1.02, 1.72, 4.0), "IRIS VALE")
+			_sign(Vector3(1.02, 1.72, 4.0), Loc.t("world.iris"))
 			# Iris: deliberate obscured silhouette behind service pipework.
 			_box(Vector3(10.55, 0.85, 7.65), Vector3(0.55, 1.7, 0.3), _dark, false)
 			_box(Vector3(10.55, 1.85, 7.65), Vector3(0.32, 0.32, 0.28), _dark, false)

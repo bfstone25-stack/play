@@ -3,15 +3,23 @@ extends Node3D
 ## Flat 404 production episode. The same flag resolver is used by play,
 ## deterministic route verification, and automated progression tests.
 
-const CHAPTERS := [
-	"CHAPTER I — AFTER HOURS",
-	"CHAPTER II — PREMISES SURRENDERED",
-	"CHAPTER III — STILL HERE",
-	"CHAPTER IV — THE PIPE SPEAKS",
-	"CHAPTER V — ONE MINUTE",
-	"CHAPTER VI — TEMPORARY CUSTODIAN",
-	"CHAPTER VII — THE FINAL KNOCK",
-]
+func _chapter(i: int) -> String:
+	return Loc.t("ch.%d" % i)
+
+
+func _stage_items(s: int) -> Array:
+	return StoryZh.stage(s, flags) if Loc.is_zh() else StoryContent.stage(s, flags)
+
+
+func _commentary(id: String) -> String:
+	return StoryZh.commentary(id) if Loc.is_zh() else StoryContent.commentary(id)
+
+
+func on_locale_changed() -> void:
+	hud.show_title(Loc.t("title.card"))
+	hud.set_chapter(_chapter(mini(stage, 6)), hud.clock.text if hud.clock else "01:47")
+	if $World.has_method("refresh_locale"):
+		$World.refresh_locale()
 
 var ending := false
 var ending_id := ""
@@ -59,9 +67,9 @@ func _ready() -> void:
 	var amb := Node.new()
 	amb.set_script(preload("res://scripts/ambience.gd"))
 	add_child(amb)
-	hud.show_title("FLAT 404\nA late inspection")
-	hud.set_chapter(CHAPTERS[0], "01:47")
-	hud.set_objective("Read the after-hours inspection order in the lift lobby.")
+	hud.show_title(Loc.t("title.card"))
+	hud.set_chapter(_chapter(0), "01:47")
+	hud.set_objective(Loc.t("obj.0"))
 	if OS.has_feature("web"):
 		var env: Environment = $WorldEnvironment.environment
 		env.ssao_enabled = false
@@ -78,12 +86,12 @@ func _setup_audio() -> void:
 	drone.play()
 
 func _spawn_stage(s: int) -> void:
-	for item in StoryContent.stage(s, flags):
+	for item in _stage_items(s):
 		var pos: Vector3 = item["pos"]
 		if item["kind"] == "choice":
 			_choice(pos, item["id"], item["prompt"], item["text"], item["a"], item["b"])
 		else:
-			_note(pos, item["id"], item["prompt"], item["text"] + StoryContent.commentary(item["id"]))
+			_note(pos, item["id"], item["prompt"], item["text"] + _commentary(item["id"]))
 	if $World.has_method("stage_event"):
 		$World.stage_event(s, flags)
 
@@ -224,7 +232,7 @@ func _process(delta: float) -> void:
 		return
 	var t = player.interact_target()
 	if t and t.get("prompt"):
-		hud.set_prompt("E / click  " + str(t.prompt))
+		hud.set_prompt(Loc.t("prompt.prefix") + str(t.prompt))
 	else:
 		hud.set_prompt("")
 	var fear := 0.12 + float(stage) * 0.055
@@ -251,10 +259,10 @@ func on_note(id: String) -> void:
 	match id:
 		"order":
 			flags["order_read"] = true
-			_advance(1, "Find Flat 404. Read the notice taped over its number.", 1, "01:53")
+			_advance(1, Loc.t("obj.order"), 1, "01:53")
 		"dane":
 			flags["dane_note"] = true
-			hud.set_objective("Read the access notice on Flat 404.")
+			hud.set_objective(Loc.t("obj.dane"))
 		"fire_plan":
 			flags["fire_plan"] = true
 		"frame":
@@ -272,23 +280,23 @@ func on_note(id: String) -> void:
 		"letters":
 			flags["letters_found"] = true
 		"notice":
-			_advance(2, "Enter 404 and inspect the checklist in the living room.", 2, "01:58")
+			_advance(2, Loc.t("obj.notice"), 2, "01:58")
 		"checklist":
-			_advance(3, "Search the living room. Play the answering machine when ready.", 2, "02:01")
+			_advance(3, Loc.t("obj.checklist"), 2, "02:01")
 		"answering":
-			_advance(4, "Investigate the kitchen and document the damp wall.", 2, "02:04")
+			_advance(4, Loc.t("obj.answering"), 2, "02:04")
 		"service":
-			_advance(6, "The pipe is waiting. Answer it or close the valve.", 3, "02:09")
+			_advance(6, Loc.t("obj.service"), 3, "02:09")
 		"wardrobe":
-			_advance(8, "Play the cassette hidden inside the wall cavity.", 4, "02:17")
+			_advance(8, Loc.t("obj.wardrobe"), 4, "02:17")
 		"cassette":
 			flags["iris_record"] = true
-			_advance(9, "Return to the living room. Pell is calling.", 5, "02:21")
+			_advance(9, Loc.t("obj.cassette"), 5, "02:21")
 		"followup":
 			flags["pell_threat"] = flags["photo_kept"] or flags["pipe_answered"]
-			_advance(10, "Read the overnight clause on the coffee table.", 5, "02:23")
+			_advance(10, Loc.t("obj.followup"), 5, "02:23")
 		"final_evidence":
-			_advance(12, "The final knock is waiting at the front door.", 6, "02:29")
+			_advance(12, Loc.t("obj.final"), 6, "02:29")
 
 func open_choice(choice_id: String, text: String, a: String, b: String, source: Node) -> void:
 	player.locked = true
@@ -312,27 +320,27 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 		"stain":
 			if i == 0:
 				flags["photo_kept"] = true
-				hud.show_note("MARA: Evidence first. Pell can explain the impossible part.\nThe letters IRIS VALE remain visible inside the damp.")
+				hud.show_note(Loc.t("note.stain_keep"))
 			else:
 				flags["photo_deleted"] = true
-				hud.show_note("MARA: A reflection. Bad compression. Finish the job.\nThe letters smear into a five-fingered handprint.")
-			_advance(5, "Follow the wet line into the bathroom. Read the service tag.", 3, "02:06")
+				hud.show_note(Loc.t("note.stain_wipe"))
+			_advance(5, Loc.t("obj.stain"), 3, "02:06")
 		"pipe":
 			if i == 0:
 				flags["pipe_answered"] = true
-				hud.show_note("MARA knocks three times.\nIRIS, through copper: Bedroom. Behind the coats. Record me.\nDANE: You heard her. Don't let Pell make it maintenance.")
+				hud.show_note(Loc.t("note.pipe_yes"))
 			else:
 				flags["pipe_silenced"] = true
-				hud.show_note("The valve resists like a held wrist, then turns.\nPELL: Good. A quiet building is a safe building.")
-			_advance(7, "Wet footprints lead to the bedroom. Search before opening the wardrobe.", 4, "02:13")
+				hud.show_note(Loc.t("note.pipe_no"))
+			_advance(7, Loc.t("obj.pipe"), 4, "02:13")
 		"clause":
 			if i == 0:
 				flags["clause_signed"] = true
-				hud.show_note("MARA VENN. Temporary. Until morning.\nInk crawls from your signature toward the printed word 'contents.'")
+				hud.show_note(Loc.t("note.clause_yes"))
 			else:
 				flags["clause_refused"] = true
-				hud.show_note("MARA: No. This inspection is suspended.\nBoth torn halves now read UNIT 404: NOT FOUND.")
-			_advance(11, "Inspect the changed key and look through the peephole.", 6, "02:27")
+				hud.show_note(Loc.t("note.clause_no"))
+			_advance(11, Loc.t("obj.clause"), 6, "02:27")
 		"final":
 			flags["final_open"] = i == 0
 			flags["final_ignore"] = i == 1
@@ -349,7 +357,7 @@ func _advance(next_stage: int, objective: String, chapter_index: int, clock: Str
 			prop.set("collision_layer", 0)
 	stage = next_stage
 	hud.set_objective(objective)
-	hud.set_chapter(CHAPTERS[chapter_index], clock)
+	hud.set_chapter(_chapter(chapter_index), clock)
 	_spawn_stage(stage)
 
 func _resolve_ending() -> String:
@@ -372,26 +380,11 @@ func _finish(id: String) -> void:
 		world.apply_ending(id)
 	match id:
 		"WITNESS":
-			hud.show_ending("ENDING — WITNESS", [
-				"The door opens onto the service cavity. Iris stands behind translucent pipework, one hand against the wall.",
-				"MARA: Iris Vale occupied this flat. I heard her. I recorded her. I am not certifying it vacant.\nIRIS: Then look at me.",
-				"Door 404 bears IRIS VALE. Dawn reaches the corridor.\nDANE: Did she come out?\nMARA: Her name did.",
-				"Vesper Court received seventeen inspection requests that morning.\nFlat 404 was never listed as vacant again."
-			])
+			hud.show_ending(Loc.t("end.witness"), [Loc.t("beat.witness.0"), Loc.t("beat.witness.1"), Loc.t("beat.witness.2"), Loc.t("beat.witness.3")])
 		"COMPLICIT":
-			hud.show_ending("ENDING — COMPLICIT", [
-				"You turn off the standing lamp. The knocking stops halfway through a strike.",
-				"Daylight. The flat is immaculate. Family photographs now show you with your face turned away.\nPELL: Inspection accepted. Your renewal begins today.",
-				"OCCUPANT: MARA VENN\nMOVE-OUT INSPECTOR: [awaiting arrival]\nPlease keep the pipe quiet for the next guest.",
-				"A new inspector's key enters from the corridor.\nYou made the building quiet. The building made you easy to replace."
-			])
+			hud.show_ending(Loc.t("end.complicit"), [Loc.t("beat.complicit.0"), Loc.t("beat.complicit.1"), Loc.t("beat.complicit.2"), Loc.t("beat.complicit.3")])
 		_:
-			hud.show_ending("ERROR 404 — INSPECTOR NOT FOUND", [
-				"Every fourth-floor door now reads 403. Your key passes through the wall where 404 stood.",
-				"MARA: I was inside. Kitchen, bath, bedroom—\nOPERATOR: Vesper Court has no fourth unit on any floor.",
-				"Your inventory erases itself: cassette, photograph, clause, then MARA VENN.\nIRIS: A witness who will not choose is only another missing room.",
-				"The lift opens on a brick wall.\nThe next appointment is at 01:47. Please bring identification."
-			])
+			hud.show_ending(Loc.t("end.404"), [Loc.t("beat.404.0"), Loc.t("beat.404.1"), Loc.t("beat.404.2"), Loc.t("beat.404.3")])
 
 func toggle_pause() -> void:
 	paused = not paused
