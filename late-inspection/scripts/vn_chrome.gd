@@ -3,9 +3,7 @@ class_name VnChrome
 
 ## Bottom ADV bar for ordinary inspects, full-screen NVL for diary / collapse / endings.
 
-const NVL_IDS := PackedStringArray([
-	"letters", "answering", "cassette", "mirror", "final_evidence"
-])
+const NVL_IDS := ["letters", "answering", "cassette", "mirror", "final_evidence"]
 
 const SPEAKER_KEYS := {
 	"MARA": "spk.mara",

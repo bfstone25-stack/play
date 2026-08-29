@@ -23,20 +23,18 @@ func _init() -> void:
 		push_error("order folio lost page splits")
 		quit(2)
 		return
-	var cam := Camera3D.new()
-	cam.current = true
-	cam.fov = 68.0
-	scene.add_child(cam)
-	cam.global_position = Vector3(-6.0, 1.5, 5.6)
-	cam.look_at(Vector3(-1.0, 1.15, 5.0), Vector3.UP)
-	for i in 20:
-		RenderingServer.force_draw()
-		await process_frame
-	root.get_viewport().get_texture().get_image().save_png("/tmp/late-vn/adv.png")
-	while hud.is_vn_open():
+	await process_frame
+	var tex := root.get_viewport().get_texture()
+	if tex:
+		var img := tex.get_image()
+		if img:
+			img.save_png("/tmp/late-vn/adv.png")
+	var guard := 0
+	while hud.is_vn_open() and guard < 80:
 		hud._next_document_page()
 		await process_frame
-	if scene.stage != 1:
+		guard += 1
+	if hud.is_vn_open() or scene.stage != 1:
 		push_error("ADV close did not advance")
 		quit(3)
 		return
@@ -49,9 +47,11 @@ Inspector—do not rescue me by removing the proof I remained."""
 		push_error("diary should open as NVL")
 		quit(4)
 		return
-	for i in 24:
-		RenderingServer.force_draw()
-		await process_frame
-	root.get_viewport().get_texture().get_image().save_png("/tmp/late-vn/nvl.png")
-	print("VN_CHROME_OK adv=1 nvl=1 pages=", hud.document_pages.size())
+	await process_frame
+	tex = root.get_viewport().get_texture()
+	if tex:
+		var nvl_img := tex.get_image()
+		if nvl_img:
+			nvl_img.save_png("/tmp/late-vn/nvl.png")
+	print("VN_CHROME_OK adv=1 nvl=1 pages=", hud.document_pages.size(), " lines=", hud.vn.line_count())
 	quit(0)
