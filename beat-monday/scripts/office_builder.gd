@@ -46,7 +46,7 @@ func build(id: String, story_state := {}) -> void:
 func _process(delta: float) -> void:
 	phase += delta
 	if is_instance_valid(scanner):
-		var y := 174.0 + sin(phase * 2.7) * 9.0
+		var y := roundf(174.0 + sin(phase * 2.7) * 9.0)
 		scanner.points = PackedVector2Array([Vector2(-24, y), Vector2(664, y)])
 		scanner.modulate.a = 0.62 + 0.25 * sin(phase * 6.0)
 	if is_instance_valid(coworker) and state.get("eli_stance", "") == "SUSPECT":
@@ -123,15 +123,7 @@ func _apply_story_palette() -> void:
 	if str(state.get("contract", "")) == "SIGN":
 		scene_sprite.modulate = Color("#ff8c83")
 
-func _light_texture() -> GradientTexture2D:
-	var gradient := Gradient.new()
-	gradient.colors = PackedColorArray([Color(1, 1, 1, 0.26), Color(1, 1, 1, 0)])
-	gradient.offsets = PackedFloat32Array([0.0, 1.0])
-	var texture := GradientTexture2D.new()
-	texture.gradient = gradient
-	texture.width = 48
-	texture.height = 24
-	texture.fill = GradientTexture2D.FILL_RADIAL
-	texture.fill_from = Vector2(0.5, 0.5)
-	texture.fill_to = Vector2(1.0, 0.5)
-	return texture
+func _light_texture() -> Texture2D:
+	# Authored four-band 48x24 alpha ramp with a dithered edge. Keeping this
+	# as a nearest-filtered PNG avoids a smooth runtime radial gradient.
+	return load("res://assets/pixel/light_pool.png")

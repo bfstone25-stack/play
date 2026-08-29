@@ -38,6 +38,48 @@ def checker(draw, y0, a, b, tile=8):
         line(draw, [(0, y), (W, y)], "#0a0d14")
 
 
+def cluster(draw, x, y, color, flip=False):
+    """An intentional chip/stain cluster, not a procedural noise field."""
+    points = [(0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (3, 1), (1, 2), (2, 2)]
+    for dx, dy in points:
+        xx = x - dx if flip else x + dx
+        px(draw, (xx, y + dy, xx, y + dy), color)
+
+
+def office_shell(draw, wall, floor_a, floor_b, trim):
+    """Author a 3-ramp office shell with ceiling, wall, and floor materials."""
+    px(draw, (0, 0, W - 1, 16), NIGHT[0])
+    # Acoustic ceiling tiles with broken edge clips.
+    for x in range(3, W, 40):
+        px(draw, (x, 2, min(x + 34, W - 1), 12), NIGHT[2], NIGHT[1])
+        line(draw, [(x + 3, 4), (min(x + 25, W - 2), 4)], NIGHT[3])
+        cluster(draw, x + 6, 9, NIGHT[1])
+    px(draw, (0, 16, W - 1, 104), wall)
+    # Wall panel seams, cable raceway, and localized wear.
+    for x in range(0, W, 53):
+        line(draw, [(x, 18), (x, 103)], NIGHT[1])
+        line(draw, [(x + 1, 18), (x + 1, 103)], NIGHT[3])
+    px(draw, (0, 93, W - 1, 98), NIGHT[1], INK)
+    for x in range(9, W, 27):
+        px(draw, (x, 95, x + 8, 96), trim)
+    for x, y, flip in [(8, 29, False), (69, 82, True), (176, 39, False), (251, 75, True), (302, 24, True)]:
+        cluster(draw, x, y, NIGHT[1], flip)
+    line(draw, [(44, 71), (47, 66), (45, 59), (50, 54)], NIGHT[0])
+    # Broad calm floor tiles with seams, scuffs, and a hard foreground ramp.
+    px(draw, (0, 104, W - 1, H - 1), floor_a)
+    for y in range(110, H, 16):
+        line(draw, [(0, y), (W - 1, y)], floor_b)
+    for row, y in enumerate(range(110, H, 16)):
+        for x in range(-16 if row % 2 else 0, W, 32):
+            line(draw, [(x, y), (x, min(y + 15, H - 1))], floor_b)
+    for x, y in [(17, 121), (83, 151), (145, 132), (224, 166), (285, 118)]:
+        line(draw, [(x, y), (x + 7, y)], trim)
+        cluster(draw, x + 2, y + 2, floor_b)
+    px(draw, (0, 104, W - 1, 110), trim, INK)
+    for y in range(164, H, 4):
+        line(draw, [(0, y), (W - 1, y)], floor_b)
+
+
 def fluorescent(draw, x, y, w, cold=False):
     glow = SPECTRAL[4] if cold else "#d8d2a7"
     px(draw, (x - 3, y - 1, x + w + 3, y + 5), NIGHT[2])
@@ -138,10 +180,7 @@ def person(draw, x, y, corrupt=False, coat="#36465b", pose=0):
 def base(wall, floor_a, floor_b, trim):
     im = Image.new("RGBA", (W, H), wall)
     d = ImageDraw.Draw(im)
-    checker(d, 110, floor_a, floor_b)
-    px(d, (0, 104, W, 110), trim, INK)
-    for x in range(0, W, 32):
-        line(d, [(x, 0), (x, 104)], NIGHT[1])
+    office_shell(d, wall, floor_a, floor_b, trim)
     return im, d
 
 
@@ -154,6 +193,7 @@ def cubicle():
         px(d, box, "#3e4858", INK)
     for x in range(29, 151, 15):
         px(d, (x, 51, x + 10, 53), "#7d6d72")
+        cluster(d, x + 2, 56, "#293543")
     papers(d, 34, 62, 24)
     desk(d, 37, 106, 126)
     crt(d, 78, 65, True)
@@ -165,6 +205,7 @@ def cubicle():
     chair(d, 133, 121)
     for x, y in ((182, 134), (273, 126), (291, 151)):
         px(d, (x, y, x + 3, y + 2), "#5b5347")
+    line(d, [(169, 63), (191, 63), (191, 99), (207, 99)], NIGHT[4], 2)
     return im
 
 
@@ -176,6 +217,7 @@ def office():
             x, y = 12 + col * 59 + row * 10, 47 + row * 46
             desk(d, x, y, 48, False); crt(d, x + 13, y - 24, True, red=(row == 1 and col == 3))
             chair(d, x + 20, y + 7, True)
+            cluster(d, x + 5, y + 13, NIGHT[0], col % 2)
     # printer with output photograph
     px(d, (20, 80, 74, 132), STEEL[4], INK); px(d, (25, 73, 69, 93), STEEL[5], INK)
     px(d, (29, 68, 66, 78), "#ddd6bd", INK); px(d, (33, 71, 61, 75), "#7b7060")
@@ -209,12 +251,20 @@ def breakroom():
         px(d, (x, y, x + 7, y + 10), ["#c55a55", "#628bb0", "#d29c51"][i % 3], INK)
     phone(d, 144, 134, True)
     px(d, (285, 108, 308, 133), "#675442", INK); px(d, (288, 112, 305, 131), "#1b2522")
+    for x, y in [(10, 88), (199, 39), (282, 72)]:
+        cluster(d, x, y, "#0f1918")
+    line(d, [(10, 101), (54, 101), (54, 82)], STEEL[2], 2)
     return im
 
 
 def server():
     im = Image.new("RGBA", (W, H), "#040814")
     d = ImageDraw.Draw(im)
+    # Cable tray, ceiling conduit, and cold tile structure frame the racks.
+    px(d, (0, 0, W - 1, 14), "#07101e")
+    for x in range(4, W, 28):
+        px(d, (x, 4, min(x + 19, W - 1), 7), "#1f3348", INK)
+    line(d, [(0, 12), (91, 12), (102, 20), (319, 20)], CYAN[2], 2)
     for i in range(7):
         x = 7 + i * 45
         px(d, (x, 17, x + 36, 148), "#0a1527", INK); px(d, (x + 4, 21, x + 32, 142), "#102039", "#243958")
@@ -223,12 +273,18 @@ def server():
             px(d, (x + 7, yy, x + 29, yy + 6), "#07101e", "#1f3348")
             px(d, (x + 9, yy + 2, x + 10, yy + 3), CYAN[4] if (i + j) % 3 else "#82e7a9")
             line(d, [(x + 14, yy + 2), (x + 25, yy + 2)], "#29465c")
+            if (i * 3 + j) % 7 == 0:
+                cluster(d, x + 20, yy + 4, "#07101e", i % 2)
     px(d, (111, 51, 207, 111), STEEL[2], INK); crt(d, 122, 58, True, False, 2)
     papers(d, 224, 113, 61)
     for yy in range(152, 180, 8):
         line(d, [(0, yy), (319, yy)], "#101927")
     for x in range(0, 320, 16):
         line(d, [(x, 148), (x - 12, 180)], "#17243a")
+    for x in range(7, 320, 32):
+        px(d, (x, 164, x + 16, 168), "#0a1527", "#243958")
+        for xx in range(x + 2, x + 15, 4):
+            line(d, [(xx, 165), (xx - 2, 167)], CYAN[1])
     line(d, [(0, 157), (319, 157)], RED[4], 2)
     return im
 
@@ -258,12 +314,23 @@ def lobby():
     # spectral reflection is a silhouette, not an overlay block.
     person(d, 259, 80, True, pose=0)
     line(d, [(200, 30), (200, 134)], SPECTRAL[4], 2)
+    for x in (101, 181, 306):
+        px(d, (x, 21, x + 3, 91), WOOD[2])
+        cluster(d, x - 2, 85, "#100f16")
     return im
 
 
 def stairs():
     im = Image.new("RGBA", (W, H), "#111824")
     d = ImageDraw.Draw(im)
+    # Concrete block courses with chipped corners and damp stairwell shadows.
+    for y in range(0, H, 18):
+        line(d, [(0, y), (W - 1, y)], "#26313b")
+        for x in range((-28 if (y // 18) % 2 else 0), W, 56):
+            line(d, [(x, y), (x, min(y + 17, H - 1))], "#26313b")
+    for x, y, flip in [(9, 104, False), (73, 126, True), (186, 69, False), (304, 112, True)]:
+        cluster(d, x, y, "#080d15", flip)
+    line(d, [(28, 97), (33, 91), (30, 83), (35, 76)], "#080d15")
     for x in range(0, W, 56):
         px(d, (x, 0, x + 2, H), "#26313b")
     # hanging coats, each with silhouette details and a readable tag
@@ -289,6 +356,7 @@ def stairs():
     px(d, (232, 19, 301, 88), "#090d13", STEEL[4])
     for x in range(238, 300, 10):
         line(d, [(x, 22), (x, 85)], STEEL[4], 2)
+    px(d, (228, 87, 306, 92), "#080d15")
     px(d, (194, 9, 247, 19), "#0a1727", SPECTRAL[4])
     line(d, [(201, 14), (238, 14)], SPECTRAL[5], 2)
     return im
@@ -302,6 +370,8 @@ def manager():
         px(d, (x + 4, 22, x + 47, 66), "#86a9a5", "#d1c17e")
         line(d, [(x + 25, 22), (x + 25, 66)], "#667c79", 2)
         line(d, [(x + 4, 44), (x + 47, 44)], "#667c79", 2)
+        for yy in (27, 57):
+            cluster(d, x + 8 + yy % 5, yy, "#5b533f")
     # framed analyst portraits
     for i in range(4):
         x = 204 + i * 22
@@ -319,6 +389,12 @@ def manager():
     person(d, 258, 67, True, pose=1)
     line(d, [(248, 81), (293, 81)], RED[4], 2)
     window(d, (4, 1, 10, 101), True, True)
+    # Veneer grain and damaged skirting anchor the warm office palette.
+    for y in (75, 84):
+        for x in range(16, 300, 37):
+            line(d, [(x, y), (x + 21, y)], "#5b533f")
+    for x in (19, 114, 191, 302):
+        cluster(d, x, 99, WOOD[1], x > 160)
     return im
 
 
@@ -394,6 +470,23 @@ def ui_atlas():
     line(d, [(201, 121), (209, 103), (217, 121), (201, 121)], RED[4], 2)
     px(d, (208, 109, 210, 115), RED[5]); px(d, (208, 118, 210, 120), RED[5])
     im.save(OUT / "ui_atlas.png", optimize=True)
+
+
+def light_pool():
+    """Four hard alpha bands plus sparse edge dither; no runtime gradient."""
+    im = Image.new("RGBA", (48, 24), (255, 255, 255, 0))
+    d = ImageDraw.Draw(im)
+    bands = [
+        ((2, 3, 45, 20), 28),
+        ((7, 5, 40, 18), 58),
+        ((13, 7, 34, 16), 92),
+        ((19, 9, 28, 14), 128),
+    ]
+    for box, alpha in bands:
+        d.ellipse(box, fill=(255, 255, 255, alpha))
+    for x, y in [(5, 8), (9, 17), (14, 4), (34, 5), (39, 16), (43, 10)]:
+        px(d, (x, y, x, y), (255, 255, 255, 28))
+    im.save(OUT / "light_pool.png", optimize=True)
 
 
 def title_and_endings():
@@ -483,6 +576,7 @@ def main():
         save_scene(name, fn())
     atlas()
     ui_atlas()
+    light_pool()
     title_and_endings()
     bitmap_font()
     print("generated 14 PNG assets plus BMFont at 320x180/atlas-grid resolution")
