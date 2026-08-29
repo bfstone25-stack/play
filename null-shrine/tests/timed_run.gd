@@ -59,6 +59,9 @@ func _run() -> void:
 		await _pace("set price and display " + id)
 		state.call_customer(id)
 		await _pace("negotiate customer offer " + id)
+		if id == "dueling_pistol":
+			state.negotiate_current()
+			await _pace("spend Resolve to improve Tamsin's offer")
 		state.resolve_customer(true, true)
 		await _pace("complete warned transaction " + id)
 	state.enter_night("music_box")

@@ -48,6 +48,7 @@ var customer_index := 0
 var customer_pending := false
 var offer := 0
 var honest_warning := false
+var negotiated := false
 var transactions: Array[Dictionary] = []
 var room_index := -1
 var enemy_hp := 0
@@ -85,6 +86,7 @@ func reset() -> void:
 	carried_id = ""
 	customer_index = 0
 	customer_pending = false
+	negotiated = false
 	transactions = []
 	room_index = -1
 	enemy_hp = 0
@@ -200,7 +202,22 @@ func call_customer(id: String) -> bool:
 		if item["demand"] == customer["wants"]:
 			offer += int(customer["premium"])
 	customer_pending = true
+	negotiated = false
 	selected_id = id
+	action_count += 1
+	return true
+
+
+func negotiate_current() -> bool:
+	if not customer_pending or negotiated or resolve < 1:
+		return false
+	var customer := current_customer()
+	if customer.is_empty() or customer["id"] != "tamsin":
+		return false
+	resolve -= 1
+	offer += 5
+	trust += 1
+	negotiated = true
 	action_count += 1
 	return true
 

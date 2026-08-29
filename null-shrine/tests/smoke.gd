@@ -51,6 +51,10 @@ func _prepare_day_two(state: MidnightState) -> void:
 		_expect(state.appraise(id), "appraise day2 " + id)
 		_expect(state.toggle_shelf(id), "display day2 " + id)
 		_expect(state.call_customer(id), "call day2 customer " + id)
+		if id == "dueling_pistol":
+			var before_offer := state.offer
+			_expect(state.negotiate_current(), "Tamsin negotiation succeeds")
+			_expect(state.offer == before_offer + 5, "negotiation improves offer")
 		state.resolve_customer(true, true)
 
 

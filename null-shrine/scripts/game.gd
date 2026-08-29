@@ -400,9 +400,20 @@ func _show_customer_offer() -> void:
 	var offer_text := "REFUSES: identity evidence is incomplete." if state.offer <= 0 else "OFFERS %dG for %s." % [state.offer, item["name"]]
 	detail.text = "[color=#52b4a6]%s[/color]\n\nValue %dG · Listed posture %s · Demand match: %s\nCurse %d: revealing it earns trust; concealing it adds debt to the ending." % [offer_text, item["value"], ["LOW", "FAIR", "HIGH"][item["price_mode"]], "YES" if item["demand"] == customer["wants"] else "NO", item["curse"]]
 	_clear(actions)
+	if customer["id"] == "tamsin" and not state.negotiated:
+		_button("NEGOTIATE −1 RES\n议价", _negotiate_offer, true)
 	_button("ACCEPT + WARN\n成交并告知诅咒", func(): _resolve_offer(true, true), true)
 	_button("ACCEPT + HIDE\n隐瞒后成交", func(): _resolve_offer(true, false))
 	_button("REJECT / 拒绝", func(): _resolve_offer(false, true))
+
+
+func _negotiate_offer() -> void:
+	if state.negotiate_current():
+		_play("coin")
+		_log("NEGOTIATED · Tamsin adds 5G after a direct warning.")
+	else:
+		_log("Negotiation needs 1 Resolve and can only be attempted once.")
+	_show_customer_offer()
 
 
 func _resolve_offer(accept: bool, honest: bool) -> void:
