@@ -9,11 +9,11 @@ func _init() -> void:
 	order.interact(scene)
 	await process_frame
 	var hud = scene.get_node("HUD")
-	if not hud.document_panel.visible or hud.document_pages.size() != 4:
-		push_error("paged document viewer did not open order folio")
+	if not hud.is_vn_open() or hud.is_nvl_open() or hud.document_pages.size() != 4:
+		push_error("ADV viewer did not open order folio")
 		quit(1)
 		return
-	while hud.document_panel.visible:
+	while hud.is_vn_open():
 		hud._next_document_page()
 		await process_frame
 	if scene.stage != 1 or scene.player.locked:

@@ -215,7 +215,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if await_restart:
 		if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_R:
 			get_tree().reload_current_scene()
-		elif event is InputEventKey and event.pressed and not event.echo and event.physical_keycode in [KEY_SPACE, KEY_ENTER]:
+		elif event is InputEventKey and event.pressed and not event.echo and event.physical_keycode in [KEY_SPACE, KEY_ENTER, KEY_E]:
+			hud._next_ending_beat()
+		elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			hud._next_ending_beat()
 		return
 	if ending or paused:
@@ -225,12 +227,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			hud.hide_splash()
 			player.capture_mouse()
 		return
-	if hud and hud.choice_panel and hud.choice_panel.visible:
+	if hud and hud.is_choice_open():
 		if event is InputEventKey and event.pressed and not event.echo:
 			if event.physical_keycode == KEY_A:
 				hud._pick(0)
 			elif event.physical_keycode == KEY_B:
 				hud._pick(1)
+		return
+	if hud and hud.is_vn_open():
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			hud.advance_vn()
+			return
+		if event.is_action_pressed("interact") or (event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_E):
+			hud.advance_vn()
+			return
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var t = player.interact_target()
@@ -251,8 +261,10 @@ func _process(delta: float) -> void:
 			hud.hide_title()
 	if ending:
 		return
-	if hud.choice_panel and hud.choice_panel.visible:
+	if hud.is_vn_open() or hud.is_choice_open():
 		hud.set_prompt("")
+		if hud.is_nvl_open():
+			hud.set_fear(0.82)
 		return
 	var t = player.interact_target()
 	if t and t.get("prompt"):
@@ -265,14 +277,16 @@ func _process(delta: float) -> void:
 	hud.set_fear(fear)
 
 func show_note(text: String) -> void:
+	player.locked = true
 	hud.show_note(text)
 
 func on_document(id: String, text: String) -> void:
 	player.locked = true
-	hud.show_document(text, func() -> void:
+	hud.show_story(id, text, VnChrome.is_nvl_id(id), func() -> void:
 		on_note(id)
-		player.locked = false
-		player.capture_mouse()
+		if not ending:
+			player.locked = false
+			player.capture_mouse()
 	)
 
 func on_note(id: String) -> void:

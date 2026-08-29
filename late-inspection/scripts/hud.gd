@@ -11,6 +11,7 @@ var clock: Label
 var title: Label
 var grain: ColorRect
 var splash: Control
+var vn: VnChrome
 var choice_panel: Control
 var choice_prompt: Label
 var btn_a: Button
@@ -45,12 +46,10 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	note.visible = false
-	note.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	note.offset_left = -380.0
-	note.offset_right = 380.0
-	note.offset_top = -220.0
-	note.offset_bottom = -72.0
+	note.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	prompt.text = ""
+	prompt.offset_top = -248.0
+	prompt.offset_bottom = -208.0
 	UiFont.apply_label(prompt)
 	UiFont.apply_label(note)
 	UiFont.apply_label(objective)
@@ -58,8 +57,7 @@ func _ready() -> void:
 	_chapter()
 	_title()
 	_grain()
-	_choice_ui()
-	_document_ui()
+	_vn_ui()
 	_pause_ui()
 	_ending_ui()
 	_splash()
@@ -124,39 +122,20 @@ func _grain() -> void:
 	add_child(grain)
 	move_child(grain, 1)
 
-func _choice_ui() -> void:
-	choice_panel = Control.new()
-	choice_panel.name = "ChoicePanel"
-	choice_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
-	choice_panel.visible = false
-	choice_panel.mouse_filter = Control.MOUSE_FILTER_STOP
-
-	var dim := ColorRect.new()
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
-	dim.color = Color(0.02, 0.015, 0.01, 0.62)
-	dim.mouse_filter = Control.MOUSE_FILTER_STOP
-	choice_panel.add_child(dim)
-
-	choice_prompt = Label.new()
-	choice_prompt.set_anchors_preset(Control.PRESET_CENTER)
-	choice_prompt.offset_left = -420.0
-	choice_prompt.offset_right = 420.0
-	choice_prompt.offset_top = -160.0
-	choice_prompt.offset_bottom = -40.0
-	choice_prompt.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	choice_prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	choice_prompt.add_theme_font_size_override("font_size", 20)
-	choice_prompt.add_theme_color_override("font_color", Color(0.9, 0.84, 0.72, 1))
-	UiFont.apply_label(choice_prompt)
-	choice_panel.add_child(choice_prompt)
-
-	btn_a = _mk_btn("ChoiceA", Vector2(-420, 20), Vector2(840, 48))
-	btn_b = _mk_btn("ChoiceB", Vector2(-420, 84), Vector2(840, 48))
-	btn_a.pressed.connect(func() -> void: _pick(0))
-	btn_b.pressed.connect(func() -> void: _pick(1))
-	choice_panel.add_child(btn_a)
-	choice_panel.add_child(btn_b)
-	add_child(choice_panel)
+func _vn_ui() -> void:
+	vn = VnChrome.new()
+	vn.name = "VnChrome"
+	add_child(vn)
+	choice_panel = vn.choice_root
+	choice_prompt = vn.choice_prompt
+	btn_a = vn.btn_a
+	btn_b = vn.btn_b
+	document_panel = vn.adv_root
+	document_text = vn.body
+	document_page = vn.hint
+	document_button = Button.new()
+	document_button.visible = false
+	add_child(document_button)
 
 func _mk_btn(n: String, off: Vector2, size: Vector2) -> Button:
 	var b := Button.new()
@@ -168,54 +147,6 @@ func _mk_btn(n: String, off: Vector2, size: Vector2) -> Button:
 	b.offset_bottom = off.y + size.y
 	b.add_theme_font_size_override("font_size", 16)
 	return b
-
-func _document_ui() -> void:
-	document_panel = Control.new()
-	document_panel.name = "DocumentPanel"
-	document_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
-	document_panel.visible = false
-	document_panel.mouse_filter = Control.MOUSE_FILTER_STOP
-	var dim := ColorRect.new()
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
-	dim.color = Color(0.01, 0.008, 0.006, 0.82)
-	document_panel.add_child(dim)
-	var paper := ColorRect.new()
-	paper.set_anchors_preset(Control.PRESET_CENTER)
-	paper.offset_left = -440
-	paper.offset_right = 440
-	paper.offset_top = -250
-	paper.offset_bottom = 235
-	paper.color = Color(0.075, 0.06, 0.043, 0.98)
-	document_panel.add_child(paper)
-	document_text = Label.new()
-	document_text.set_anchors_preset(Control.PRESET_CENTER)
-	document_text.offset_left = -390
-	document_text.offset_right = 390
-	document_text.offset_top = -215
-	document_text.offset_bottom = 145
-	document_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	document_text.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	document_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	document_text.add_theme_font_size_override("font_size", 19)
-	document_text.add_theme_color_override("font_color", Color(0.91, 0.85, 0.73))
-	UiFont.apply_label(document_text)
-	document_panel.add_child(document_text)
-	document_page = Label.new()
-	document_page.set_anchors_preset(Control.PRESET_CENTER)
-	document_page.offset_left = -390
-	document_page.offset_right = 390
-	document_page.offset_top = 155
-	document_page.offset_bottom = 185
-	document_page.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	document_page.add_theme_font_size_override("font_size", 13)
-	document_page.add_theme_color_override("font_color", Color(0.58, 0.52, 0.43))
-	UiFont.apply_label(document_page)
-	document_panel.add_child(document_page)
-	document_button = _mk_btn("DocumentNext", Vector2(-170, 192), Vector2(340, 44))
-	document_button.text = Loc.t("doc.continue")
-	document_button.pressed.connect(_next_document_page)
-	document_panel.add_child(document_button)
-	add_child(document_panel)
 
 func _pause_ui() -> void:
 	pause_panel = Control.new()
@@ -344,7 +275,7 @@ func hide_splash() -> void:
 	if splash:
 		splash.visible = false
 		splash.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	if not choice_panel or not choice_panel.visible:
+	if not is_blocking():
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func set_prompt(t: String) -> void:
@@ -379,51 +310,79 @@ func hide_title() -> void:
 func set_fear(v: float) -> void:
 	fear = v
 
+func is_blocking() -> bool:
+	return (splash and splash.visible) or (pause_panel and pause_panel.visible) or is_choice_open() or is_nvl_open()
+
+func is_vn_open() -> bool:
+	return vn != null and vn.is_open()
+
+func is_nvl_open() -> bool:
+	return vn != null and vn.is_nvl_open()
+
+func is_choice_open() -> bool:
+	return vn != null and vn.is_choice_open()
+
 func show_note(t: String) -> void:
-	note.text = t
-	note.visible = true
-	note_t = clampf(7.0 + float(t.length()) / 28.0, 9.0, 34.0)
+	note.visible = false
+	note_t = 0.0
 	hide_title()
+	_document_cb = Callable()
+	vn.show_text(t, false, Callable())
+	document_pages = vn.document_pages
+	document_panel = vn.adv_root
+	_sync_mouse()
 
 func show_document(t: String, cb: Callable) -> void:
-	document_pages = t.split("\n---\n", false)
-	document_index = 0
-	_document_cb = cb
-	document_panel.visible = true
-	mouse_filter = Control.MOUSE_FILTER_STOP
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	_render_document_page()
-	document_button.grab_focus()
+	show_story("", t, false, cb)
 
-func _render_document_page() -> void:
-	document_text.text = document_pages[document_index].strip_edges()
-	document_page.text = Loc.t("doc.page", [document_index + 1, document_pages.size()])
-	document_button.text = Loc.t("doc.close") if document_index == document_pages.size() - 1 else Loc.t("doc.continue")
+func show_story(id: String, t: String, use_nvl: bool, cb: Callable) -> void:
+	hide_title()
+	_document_cb = cb
+	vn.show_text(t, use_nvl or VnChrome.is_nvl_id(id), func() -> void:
+		document_panel = vn.adv_root
+		_sync_mouse()
+		var done := _document_cb
+		_document_cb = Callable()
+		if done.is_valid():
+			done.call()
+	)
+	document_pages = vn.document_pages
+	document_panel = vn.nvl_root if vn.is_nvl_open() else vn.adv_root
+	_sync_mouse()
 
 func _next_document_page() -> void:
-	if not document_panel.visible:
+	if vn == null or not vn.is_open():
 		return
-	document_index += 1
-	if document_index < document_pages.size():
-		_render_document_page()
-		document_button.grab_focus()
+	vn.advance(true)
+	document_panel = vn.nvl_root if vn.is_nvl_open() else vn.adv_root
+	if not vn.is_open():
+		_sync_mouse()
+
+func advance_vn() -> void:
+	if vn == null:
 		return
-	document_panel.visible = false
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var cb := _document_cb
-	_document_cb = Callable()
-	if cb.is_valid():
-		cb.call()
+	vn.advance(false)
+	document_panel = vn.nvl_root if vn.is_nvl_open() else vn.adv_root
+	_sync_mouse()
 
 func open_choice(text: String, a: String, b: String, cb: Callable) -> void:
-	choice_prompt.text = text
-	btn_a.text = "A  " + a
-	btn_b.text = "B  " + b
 	_choice_cb = cb
-	choice_panel.visible = true
-	mouse_filter = Control.MOUSE_FILTER_STOP
+	vn.open_choice(text, a, b, func(i: int) -> void:
+		var done := _choice_cb
+		_choice_cb = Callable()
+		_sync_mouse()
+		if done.is_valid():
+			done.call(i)
+	)
+	choice_panel = vn.choice_root
+	_sync_mouse()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	btn_a.grab_focus()
+
+func _sync_mouse() -> void:
+	if is_blocking():
+		mouse_filter = Control.MOUSE_FILTER_STOP
+	else:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func set_pause(value: bool) -> void:
 	pause_panel.visible = value
@@ -434,12 +393,25 @@ func show_ending(t: String, beats: Array) -> void:
 	ending_beats = beats
 	ending_index = 0
 	ending_panel.visible = true
+	ending_panel.modulate = Color(1, 1, 1, 0)
+	ending_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ending_text.text = str(ending_beats[0])
 	ending_button.text = Loc.t("btn.continue")
-	mouse_filter = Control.MOUSE_FILTER_STOP
-	ending_button.grab_focus()
+	var pages: Array = [{"speaker": "SYSTEM", "body": t}]
+	for beat in beats:
+		pages.append_array(VnChrome.parse_text(str(beat)))
+	pages.append({"speaker": "SYSTEM", "body": Loc.t("ending.thanks")})
+	vn.show_lines(pages, true, Callable(), true)
+	document_panel = vn.nvl_root
+	_sync_mouse()
 
 func _next_ending_beat() -> void:
+	if vn and vn.is_open():
+		vn.advance(true)
+		ending_index = vn.line_index
+		if ending_index >= vn.lines.size() - 1:
+			ending_button.text = Loc.t("btn.restart")
+		return
 	ending_index += 1
 	if ending_index >= ending_beats.size():
 		ending_text.text = Loc.t("ending.thanks")
@@ -452,21 +424,23 @@ func _next_ending_beat() -> void:
 		ending_button.text = Loc.t("btn.credits")
 
 func _pick(i: int) -> void:
-	choice_panel.visible = false
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var cb := _choice_cb
-	_choice_cb = Callable()
-	if cb.is_valid():
-		cb.call(i)
+	if vn:
+		vn.pick(i)
+	else:
+		var cb := _choice_cb
+		_choice_cb = Callable()
+		if cb.is_valid():
+			cb.call(i)
 
 func _process(delta: float) -> void:
 	if note_t > 0.0:
 		note_t -= delta
 		if note_t <= 0.0:
 			note.visible = false
-	vignette.color.a = 0.05 + fear * 0.3
+	var nvl_boost := 0.55 if is_nvl_open() else 0.0
+	vignette.color.a = 0.05 + fear * 0.3 + nvl_boost
 	if grain and grain.material is ShaderMaterial:
-		(grain.material as ShaderMaterial).set_shader_parameter("grain", 0.06 + fear * 0.1)
+		(grain.material as ShaderMaterial).set_shader_parameter("grain", 0.06 + fear * 0.1 + nvl_boost * 0.12)
 
 
 func apply_locale() -> void:
@@ -489,6 +463,8 @@ func apply_locale() -> void:
 			lang_zh.remove_theme_color_override("font_color")
 	if evidence_label and evidence.size() > 0:
 		evidence_label.text = Loc.t("evidence", [evidence.size()])
+	if vn:
+		vn.apply_locale()
 	var game := get_tree().get_first_node_in_group("game")
 	if game and game.has_method("on_locale_changed"):
 		game.on_locale_changed()

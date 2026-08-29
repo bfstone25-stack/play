@@ -20,10 +20,10 @@ xvfb-run -a /tmp/godot-bin/Godot_v4.7.2-stable_linux.x86_64 --headless --path la
 ## Controls
 
 - WASD + mouse look
-- E / click — interact (notes, pipe, overnight clause)
+- E / click — interact, then advance the bottom ADV bar
 - Esc — pause/resume and release/capture mouse
-- Choice panel — click or press A / B
-- Ending cards — click Continue or press Space / Enter
+- Choices sit above the ADV bar — click or press A / B
+- Diary / breakdown / endings use full-screen NVL (red filter + shake)
 - R — restart after an ending
 
 Progression verification:

@@ -15,5 +15,8 @@ static func face() -> Font:
 static func apply_label(l: Label) -> void:
 	l.add_theme_font_override("font", face())
 
+static func apply_button(b: Button) -> void:
+	b.add_theme_font_override("font", face())
+
 static func apply_3d(l: Label3D) -> void:
 	l.font = face()
