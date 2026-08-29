@@ -9,6 +9,8 @@ func _hold(seconds := 1.8) -> void:
 
 
 func _run() -> void:
+	DisplayServer.window_set_size(Vector2i(1280, 720))
+	DisplayServer.window_set_position(Vector2i(0, 0))
 	var packed := load("res://scenes/main.tscn") as PackedScene
 	game = packed.instantiate()
 	root.add_child(game)
