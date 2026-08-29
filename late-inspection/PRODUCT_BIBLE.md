@@ -339,7 +339,7 @@ No zone may be represented only by labeled primitive blocks. Primitive meshes ar
 
 ## Interaction inventory
 
-23 authored evidence interactions: 13 mandatory, 10 optional. Runtime copy is split into 69 readable document pages (2,001 words on the Witness route), plus four decision presentations: stain, pipe, clause, final door. Three ending-specific interactive/camera sequences follow. HUD includes objective, prompt, paged evidence viewer, chapter/time, evidence count, pause overlay, restart, and mouse capture state.
+23 authored evidence interactions: 13 mandatory, 10 optional. Runtime copy is split into 92 readable document pages (2,948 words on the Witness route), plus four decision presentations: stain, pipe, clause, final door. At 170 words/minute, measured page handling, inspection, and choice input produce a 26:23 first-read floor before any traversal. Three ending-specific interactive/camera sequences follow. HUD includes objective, prompt, paged evidence viewer, chapter/time, evidence count, pause overlay, restart, and mouse capture state.
 
 ## Audio cue sheet
 
