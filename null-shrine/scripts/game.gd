@@ -29,6 +29,7 @@ var lang_zh: Button
 var lang_buttons: Dictionary = {}
 var lang_box: VBoxContainer
 var lang_host: VBoxContainer
+var stage_panel: PanelContainer
 var log_lines: Array[String] = []
 var encounter_open := false
 var audio_player: AudioStreamPlayer
@@ -114,11 +115,11 @@ func _build_ui() -> void:
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.split_offset = 300
 	column.add_child(body)
-	var stage_panel := PanelContainer.new()
-	stage_panel.custom_minimum_size = Vector2(300, 240)
+	stage_panel = PanelContainer.new()
+	stage_panel.custom_minimum_size = Vector2(300, 168)
 	body.add_child(stage_panel)
 	stage = PixelStageScript.new()
-	stage.custom_minimum_size = Vector2(300, 240)
+	stage.custom_minimum_size = Vector2(300, 168)
 	stage_panel.add_child(stage)
 
 	var info_margin := MarginContainer.new()
@@ -133,8 +134,8 @@ func _build_ui() -> void:
 	title = Label.new()
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	title.clip_text = false
-	title.custom_minimum_size.y = 40
-	title.max_lines_visible = 3
+	title.custom_minimum_size.y = 28
+	title.max_lines_visible = 2
 	title.add_theme_color_override("font_color", GOLD)
 	title.add_theme_font_override("font", PixelDisplayFont)
 	title.add_theme_font_size_override("font_size", 16)
@@ -185,7 +186,7 @@ func _build_ui() -> void:
 	lang_host.name = "LanguageHost"
 	lang_host.clip_contents = false
 	lang_host.add_theme_constant_override("separation", 4)
-	lang_host.custom_minimum_size.y = 72
+	lang_host.custom_minimum_size.y = 74
 	lang_host.visible = false
 	column.add_child(lang_host)
 	footer_hint = Label.new()
@@ -334,26 +335,29 @@ func _add_language_picker() -> void:
 	lang_box = VBoxContainer.new()
 	lang_box.name = "LanguagePicker"
 	lang_box.clip_contents = false
-	lang_box.add_theme_constant_override("separation", 4)
+	lang_box.add_theme_constant_override("separation", 6)
+	var pad := Control.new()
+	pad.custom_minimum_size.y = 4
+	lang_box.add_child(pad)
 	lang_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	lang_caption = Label.new()
 	lang_caption.text = Loc.t("lang.caption")
 	lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	lang_caption.clip_text = false
-	lang_caption.custom_minimum_size.y = 18
+	lang_caption.custom_minimum_size.y = 22
 	lang_caption.add_theme_color_override("font_color", MUTED)
 	lang_box.add_child(lang_caption)
 	var row := HBoxContainer.new()
 	row.clip_contents = false
 	row.add_theme_constant_override("separation", 6)
-	row.custom_minimum_size.y = 42
+	row.custom_minimum_size.y = 44
 	lang_box.add_child(row)
 	for code_v in Loc.ALLOWED:
 		var code := str(code_v)
 		var b := Button.new()
 		b.clip_text = false
 		b.text = str(Loc.NATIVE[code])
-		b.custom_minimum_size = Vector2(108, 40)
+		b.custom_minimum_size = Vector2(108, 44)
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.pressed.connect(func() -> void: Loc.set_code(code))
 		row.add_child(b)
@@ -364,12 +368,24 @@ func _add_language_picker() -> void:
 			lang_zh = b
 	lang_host.add_child(lang_box)
 	lang_host.visible = true
+	_set_title_layout(true)
 	_mark_language_buttons()
+
+
+func _set_title_layout(on_title: bool) -> void:
+	var height := 168 if on_title else 240
+	if stage_panel:
+		stage_panel.custom_minimum_size = Vector2(300, height)
+	if stage:
+		stage.custom_minimum_size = Vector2(300, height)
+	if footer_hint:
+		footer_hint.visible = not on_title
 
 
 func _hide_language_picker() -> void:
 	if lang_host:
 		lang_host.visible = false
+	_set_title_layout(false)
 
 
 func _mark_language_buttons() -> void:
@@ -392,13 +408,13 @@ func _show_title() -> void:
 	stage.set_scene("title")
 	customer_portrait.visible = false
 	_set_ambience("shop")
-	item_grid.visible = true
-	log_label.visible = true
+	item_grid.visible = false
+	log_label.visible = false
 	phase_label.text = Loc.t("brand")
 	header.text = Loc.t("title.tag")
 	title.text = Loc.t("title.name")
 	subtitle.text = Loc.t("brand")
-	detail.text = Loc.t("title.blurb")
+	detail.text = Loc.t("title.blurb") + "\n\n" + Loc.t("title.controls")
 	_clear(item_grid)
 	_clear(actions)
 	_button(Loc.t("title.begin"), _start_run, true)
