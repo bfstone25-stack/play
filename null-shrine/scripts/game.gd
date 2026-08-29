@@ -18,6 +18,15 @@ var item_grid: GridContainer
 var actions: HBoxContainer
 var footer_hint: Label
 var pause_layer: ColorRect
+var pause_title: Label
+var pause_resume: Button
+var pause_restart: Button
+var pause_title_btn: Button
+var pause_button: Button
+var lang_caption: Label
+var lang_en: Button
+var lang_zh: Button
+var lang_box: VBoxContainer
 var log_lines: Array[String] = []
 var encounter_open := false
 var audio_player: AudioStreamPlayer
@@ -49,6 +58,7 @@ func _ready() -> void:
 	stage.objective_reached.connect(_on_objective_reached)
 	stage.floor_risk_triggered.connect(_on_floor_risk)
 	get_viewport().size_changed.connect(_on_viewport_changed)
+	Loc.on_change(_on_locale_changed)
 	_show_title()
 
 
@@ -85,12 +95,12 @@ func _build_ui() -> void:
 	header.add_theme_color_override("font_color", CREAM)
 	header.add_theme_font_size_override("font_size", 12)
 	top.add_child(header)
-	var pause := Button.new()
-	pause.text = "Ⅱ"
-	pause.tooltip_text = "Pause / 暂停"
-	pause.custom_minimum_size = Vector2(42, 30)
-	pause.pressed.connect(_toggle_pause)
-	top.add_child(pause)
+	pause_button = Button.new()
+	pause_button.text = "Ⅱ"
+	pause_button.tooltip_text = Loc.t("pause.tip")
+	pause_button.custom_minimum_size = Vector2(42, 30)
+	pause_button.pressed.connect(_toggle_pause)
+	top.add_child(pause_button)
 
 	var body := HSplitContainer.new()
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -157,7 +167,7 @@ func _build_ui() -> void:
 	actions.custom_minimum_size.y = 42
 	column.add_child(actions)
 	footer_hint = Label.new()
-	footer_hint.text = "Click/tap controls · 点击即可游玩"
+	footer_hint.text = Loc.t("footer.play")
 	footer_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	footer_hint.add_theme_color_override("font_color", MUTED)
 	footer_hint.add_theme_font_size_override("font_size", 12)
@@ -181,18 +191,24 @@ func _build_ui() -> void:
 	var pause_box := VBoxContainer.new()
 	pause_box.add_theme_constant_override("separation", 10)
 	pause_center.add_child(pause_box)
-	var paused := Label.new()
-	paused.text = "PAUSED / 暂停"
-	paused.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	paused.add_theme_font_override("font", PixelDisplayFont)
-	paused.add_theme_font_size_override("font_size", 16)
-	pause_box.add_child(paused)
-	for spec in [["RESUME / 继续", "_resume"], ["RESTART RUN / 重开本局", "_restart"], ["TITLE / 返回标题", "_title"]]:
-		var button := Button.new()
-		button.text = spec[0]
-		button.custom_minimum_size = Vector2(220, 44)
-		button.pressed.connect(Callable(self, spec[1]))
-		pause_box.add_child(button)
+	pause_title = Label.new()
+	pause_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	pause_title.add_theme_font_override("font", PixelDisplayFont)
+	pause_title.add_theme_font_size_override("font_size", 16)
+	pause_box.add_child(pause_title)
+	pause_resume = Button.new()
+	pause_resume.custom_minimum_size = Vector2(220, 44)
+	pause_resume.pressed.connect(_resume)
+	pause_box.add_child(pause_resume)
+	pause_restart = Button.new()
+	pause_restart.custom_minimum_size = Vector2(220, 44)
+	pause_restart.pressed.connect(_restart)
+	pause_box.add_child(pause_restart)
+	pause_title_btn = Button.new()
+	pause_title_btn.custom_minimum_size = Vector2(220, 44)
+	pause_title_btn.pressed.connect(_title)
+	pause_box.add_child(pause_title_btn)
+	_refresh_pause_labels()
 
 
 func _atlas(source: Texture2D, region: Rect2) -> AtlasTexture:
@@ -249,6 +265,83 @@ func _clear(container: Node) -> void:
 		child.queue_free()
 
 
+func _refresh_pause_labels() -> void:
+	if pause_title:
+		pause_title.text = Loc.t("pause.title")
+	if pause_resume:
+		pause_resume.text = Loc.t("pause.resume")
+	if pause_restart:
+		pause_restart.text = Loc.t("pause.restart")
+	if pause_title_btn:
+		pause_title_btn.text = Loc.t("pause.title_btn")
+	if pause_button:
+		pause_button.tooltip_text = Loc.t("pause.tip")
+
+
+func _on_locale_changed() -> void:
+	_refresh_pause_labels()
+	if state == null:
+		return
+	match state.phase:
+		MidnightStateScript.Phase.TITLE:
+			_show_title()
+		MidnightStateScript.Phase.OPENING:
+			_show_opening()
+		MidnightStateScript.Phase.DAY_1, MidnightStateScript.Phase.DAY_2:
+			if state.customer_pending:
+				_show_customer_offer()
+			else:
+				_show_shop()
+		MidnightStateScript.Phase.NIGHT_1, MidnightStateScript.Phase.NIGHT_2:
+			if encounter_open:
+				_on_objective_reached_refresh()
+			else:
+				_start_room()
+		MidnightStateScript.Phase.FINAL:
+			_show_final()
+		MidnightStateScript.Phase.RESULT:
+			_show_result()
+
+
+func _add_language_picker() -> void:
+	lang_box = VBoxContainer.new()
+	lang_box.name = "LanguagePicker"
+	lang_box.add_theme_constant_override("separation", 4)
+	lang_caption = Label.new()
+	lang_caption.text = "Language / 语言"
+	lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lang_caption.add_theme_color_override("font_color", MUTED)
+	lang_box.add_child(lang_caption)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 6)
+	lang_box.add_child(row)
+	lang_en = Button.new()
+	lang_en.text = "English"
+	lang_en.custom_minimum_size = Vector2(120, 36)
+	lang_en.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lang_en.pressed.connect(func() -> void: Loc.set_code("en"))
+	row.add_child(lang_en)
+	lang_zh = Button.new()
+	lang_zh.text = "简体中文"
+	lang_zh.custom_minimum_size = Vector2(120, 36)
+	lang_zh.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lang_zh.pressed.connect(func() -> void: Loc.set_code("zh"))
+	row.add_child(lang_zh)
+	actions.add_child(lang_box)
+	_mark_language_buttons()
+
+
+func _mark_language_buttons() -> void:
+	if lang_en == null or lang_zh == null:
+		return
+	if Loc.is_zh():
+		lang_zh.add_theme_color_override("font_color", GOLD)
+		lang_en.remove_theme_color_override("font_color")
+	else:
+		lang_en.add_theme_color_override("font_color", GOLD)
+		lang_zh.remove_theme_color_override("font_color")
+
+
 func _show_title() -> void:
 	state = MidnightStateScript.new()
 	state.phase = MidnightStateScript.Phase.TITLE
@@ -257,21 +350,23 @@ func _show_title() -> void:
 	_set_ambience("shop")
 	item_grid.visible = true
 	log_label.visible = true
-	phase_label.text = "MIDNIGHT PAWN & CRYPT"
-	header.text = "Complete free run · 15–20 min"
-	title.text = "午夜典当行与地下密室"
-	subtitle.text = "MIDNIGHT PAWN & CRYPT"
-	detail.text = "[color=#f1dfb0]继承一间只在午夜进货的典当行。白天衡量价格，夜里衡量代价。[/color]\n\nAppraise cursed curios, read customers, cross four crypt rooms, and decide what no pawnbroker should own."
+	phase_label.text = Loc.t("brand")
+	header.text = Loc.t("title.tag")
+	title.text = Loc.t("title.name")
+	subtitle.text = Loc.t("brand")
+	detail.text = Loc.t("title.blurb")
 	_clear(item_grid)
 	_clear(actions)
-	_button("BEGIN INHERITANCE\n开始继承", _start_run, true)
-	_button("HOW TO PLAY\n玩法说明", _show_help)
-	log_lines = ["All controls support mouse, touch, and keyboard."]
+	_button(Loc.t("title.begin"), _start_run, true)
+	_button(Loc.t("title.help"), _show_help)
+	_add_language_picker()
+	log_lines = [Loc.t("title.controls")]
 	_refresh_log()
+	footer_hint.text = Loc.t("footer.play")
 
 
 func _show_help() -> void:
-	detail.text = "[color=#e8b84a]SHOP / 典当行[/color]\nAppraise → set LOW/FAIR/HIGH → display → read each customer → accept or reject.\n\n[color=#e8b84a]CRYPT / 地窖[/color]\nWASD/arrows, tap a destination, or use the D-pad. Reach the marked encounter. Strike, guard, remember, or use your carried curio.\n\n[color=#e8b84a]LOSS[/color]\nDefeat loses only unbanked loot and marks. Nara recovers and the story continues."
+	detail.text = Loc.t("help.body")
 
 
 func _start_run() -> void:
@@ -282,32 +377,32 @@ func _start_run() -> void:
 
 
 func _show_opening() -> void:
-	phase_label.text = "23:41 · INHERITANCE"
+	phase_label.text = Loc.t("open.phase")
 	item_grid.visible = true
 	log_label.visible = true
-	header.text = "18G  ♥12  ◆5"
-	title.text = "The Last Receipt / 最后一张当票"
+	header.text = Loc.t("open.header")
+	title.text = Loc.t("open.title")
 	customer_portrait.visible = false
-	subtitle.text = "Opening + tutorial transaction"
-	detail.text = "[color=#f1dfb0]AUNT ELSA'S WILL:[/color]\n“Every object has two prices: what the living offer, and what the dead return for.”\n\nThe Bell Child waits at the counter with a rusted bell. Appraise the maker's mark, choose a fair 10G price, then complete your first sale."
+	subtitle.text = Loc.t("open.sub")
+	detail.text = Loc.t("open.body")
 	_clear(item_grid)
-	_add_item_button("锈蚀招魂铃\nRusted Bell · ? → 10G", func(): pass, true)
+	_add_item_button(Loc.t("open.item"), func(): pass, true)
 	_clear(actions)
-	_button("APPRAISE\n鉴定", func(): _opening_step(1))
-	footer_hint.text = "Tutorial: every transaction shows value, demand, and consequence."
-	_log("The shop bell rings once, although the door never opened.")
+	_button(Loc.t("open.appraise"), func(): _opening_step(1))
+	footer_hint.text = Loc.t("open.footer")
+	_log(Loc.t("open.log"))
 
 
 func _opening_step(step: int) -> void:
 	if step == 1:
 		_play("appraise")
-		detail.text = "[color=#e8b84a]IDENTIFIED[/color] · Rusted Bell / 锈蚀招魂铃\nValue 10G · Demand: MEMORY · Curse: none\nClue: Its last ring calls a child, not a ghost.\n\nThe Bell Child offers exactly 10G. This fair sale funds the lamps without exploiting a memory."
+		detail.text = Loc.t("open.identified")
 		_clear(actions)
-		_button("PRICE: FAIR 10G\n公平定价", func(): _opening_step(2), true)
+		_button(Loc.t("open.fair"), func(): _opening_step(2), true)
 	else:
 		state.tutorial_sale()
 		_play("coin")
-		_log("SALE +10G · Bell Child: “Now it knows where home is.”")
+		_log(Loc.t("open.sale"))
 		_show_shop()
 
 
@@ -319,34 +414,56 @@ func _show_shop() -> void:
 	log_label.visible = false
 	stage.customer_id = str(state.current_customer().get("id", ""))
 	stage.set_customer_expression(0)
-	var day_text := "DAY 1 · 10:12" if state.day == 1 else "DAY 2 · 09:47"
+	var day_text := Loc.t("shop.day1") if state.day == 1 else Loc.t("shop.day2")
 	phase_label.text = day_text
-	header.text = "%dG  HP%d  RES%d  CURSE%d  BANK%d" % [state.gold, state.health, state.resolve, state.curse, state.marks_bank]
+	header.text = Loc.t("shop.header", [state.gold, state.health, state.resolve, state.curse, state.marks_bank])
 	var customer: Dictionary = state.current_customer()
 	_set_customer_portrait(customer, 0)
-	title.text = "Shop Floor / 典当营业"
+	title.text = Loc.t("shop.title")
 	if customer.is_empty():
-		subtitle.text = "Customers served. Choose what crosses midnight with you."
+		subtitle.text = Loc.t("shop.done")
 	else:
-		subtitle.text = "NEXT: %s / %s" % [customer["name"], customer["zh"]]
+		subtitle.text = Loc.t("shop.next", [_customer_label(customer)])
 	detail.text = _shop_detail(customer)
 	_refresh_item_grid()
 	_refresh_shop_actions()
-	footer_hint.text = "Shelf %d/3 · Transactions %d/5 · Select a curio card" % [state.shelf.size(), state.transactions.size()]
+	footer_hint.text = Loc.t("shop.footer", [state.shelf.size(), state.transactions.size()])
+
+
+func _item_label(item: Dictionary) -> String:
+	if item.is_empty():
+		return Loc.t("night.none")
+	if str(item.get("id", "")) == "crypt_heart" and int(item.get("value", 40)) == 20:
+		return Loc.t("item.crypt_heart_cracked")
+	return Loc.item_name(str(item.get("id", "")))
+
+
+func _customer_label(customer: Dictionary) -> String:
+	if customer.is_empty():
+		return ""
+	return Loc.customer_name(str(customer.get("id", "")))
+
+
+func _item_clue(item: Dictionary) -> String:
+	return Loc.t("clue." + str(item.get("id", "")))
+
+
+func _customer_behavior(customer: Dictionary) -> String:
+	return Loc.t("beh." + str(customer.get("id", "")))
 
 
 func _shop_detail(customer: Dictionary) -> String:
 	var item: Dictionary = state.get_item(state.selected_id)
 	if item.is_empty():
-		return "Select a curio. A run cannot softlock: unsold stock can always be carried."
-	var mode_names := ["LOW −20%", "FAIR", "HIGH +25%"]
-	var text := "[color=#e8b84a]%s / %s[/color]\n" % [item["name"], item["zh"]]
+		return Loc.t("shop.empty")
+	var mode_names := [Loc.t("shop.mode.low"), Loc.t("shop.mode.fair"), Loc.t("shop.mode.high")]
+	var text := "[color=#e8b84a]%s[/color]\n" % _item_label(item)
 	if item["appraised"]:
-		text += "Value %dG · Price %s · Curse %d · Demand %s\n%s\n" % [item["value"], mode_names[item["price_mode"]], item["curse"], str(item["demand"]).to_upper(), item["clue"]]
+		text += Loc.t("shop.item.known", [item["value"], mode_names[item["price_mode"]], item["curse"], Loc.demand_name(str(item["demand"])), _item_clue(item)])
 	else:
-		text += "Value ? · Curse ? · Demand ?\nAppraise to reveal exact identity and tradeoffs.\n"
+		text += Loc.t("shop.item.unknown")
 	if not customer.is_empty():
-		text += "\n[color=#52b4a6]%s[/color] wants %s.\n%s" % [customer["name"], str(customer["wants"]).to_upper(), customer["behavior"]]
+		text += Loc.t("shop.wants", [_customer_label(customer), Loc.demand_name(str(customer["wants"])), _customer_behavior(customer)])
 	return text
 
 
@@ -368,7 +485,7 @@ func _refresh_item_grid() -> void:
 		var mark := "?" if not item["appraised"] else ("%dG" % item["value"])
 		var shelf_mark := " ◆" if item["id"] in state.shelf else ""
 		var curse_mark := "" if not item["appraised"] or int(item["curse"]) == 0 else " ☾%d" % item["curse"]
-		var text := "%s%s\n%s%s" % [item["zh"], shelf_mark, mark, curse_mark]
+		var text := "%s%s\n%s%s" % [_item_label(item), shelf_mark, mark, curse_mark]
 		var item_button := _add_item_button(text, func(id = item["id"]): _select_item(id), item["id"] == state.selected_id)
 		var icon_index := CURIO_ORDER.find(str(item["id"]))
 		if icon_index >= 0:
@@ -403,21 +520,22 @@ func _refresh_shop_actions() -> void:
 	if item.is_empty():
 		return
 	if not item["appraised"]:
-		_button("APPRAISE\n鉴定", _appraise_selected, true)
+		_button(Loc.t("btn.appraise"), _appraise_selected, true)
 	else:
-		var modes := ["LOW", "FAIR", "HIGH"]
-		_button("PRICE: %s\n调整定价" % modes[item["price_mode"]], _cycle_price)
-		_button(("REMOVE\n撤下货架" if item["id"] in state.shelf else "DISPLAY\n上架"), _toggle_display)
+		var modes := [Loc.t("shop.mode.low").get_slice(" ", 0), Loc.t("shop.mode.fair"), Loc.t("shop.mode.high").get_slice(" ", 0)]
+		_button(Loc.t("btn.price", [modes[item["price_mode"]]]), _cycle_price)
+		_button((Loc.t("btn.remove") if item["id"] in state.shelf else Loc.t("btn.display")), _toggle_display)
 		if not state.current_customer().is_empty() and item["id"] in state.shelf:
-			_button("CALL CUSTOMER\n接待顾客", _call_customer, true)
+			_button(Loc.t("btn.call"), _call_customer, true)
 	if state.can_enter_night():
-		_button("CARRY & DESCEND\n携带并下楼", _enter_night, true)
+		_button(Loc.t("btn.descend"), _enter_night, true)
 
 
 func _appraise_selected() -> void:
 	if state.appraise(state.selected_id):
 		_play("appraise")
-		_log("IDENTIFIED · %s — %s" % [state.get_item(state.selected_id)["name"], state.get_item(state.selected_id)["clue"]])
+		var identified: Dictionary = state.get_item(state.selected_id)
+		_log(Loc.t("log.identified", [_item_label(identified), _item_clue(identified)]))
 	_show_shop()
 
 
@@ -429,7 +547,7 @@ func _cycle_price() -> void:
 
 func _toggle_display() -> void:
 	if not state.toggle_shelf(state.selected_id):
-		_log("Shelf full: remove one of the three displayed curios.")
+		_log(Loc.t("log.shelf_full"))
 	else:
 		_play("tick")
 	_show_shop()
@@ -437,7 +555,7 @@ func _toggle_display() -> void:
 
 func _call_customer() -> void:
 	if not state.call_customer(state.selected_id):
-		_log("This customer refuses an unidentified cursed object.")
+		_log(Loc.t("log.orin_refuse"))
 	_show_customer_offer()
 
 
@@ -448,43 +566,44 @@ func _show_customer_offer() -> void:
 	_set_customer_portrait(customer, 2)
 	item_grid.visible = false
 	log_label.visible = true
-	title.text = "%s / %s" % [customer["name"], customer["zh"]]
-	subtitle.text = customer["behavior"]
-	var offer_text := "REFUSES: identity evidence is incomplete." if state.offer <= 0 else "OFFERS %dG for %s." % [state.offer, item["name"]]
-	detail.text = "[color=#52b4a6]%s[/color]\n\nValue %dG · Listed posture %s · Demand match: %s\nCurse %d: revealing it earns trust; concealing it adds debt to the ending." % [offer_text, item["value"], ["LOW", "FAIR", "HIGH"][item["price_mode"]], "YES" if item["demand"] == customer["wants"] else "NO", item["curse"]]
+	title.text = _customer_label(customer)
+	subtitle.text = _customer_behavior(customer)
+	var offer_text := Loc.t("offer.refuse") if state.offer <= 0 else Loc.t("offer.pays", [state.offer, _item_label(item)])
+	var modes := [Loc.t("shop.mode.low").get_slice(" ", 0), Loc.t("shop.mode.fair"), Loc.t("shop.mode.high").get_slice(" ", 0)]
+	detail.text = Loc.t("offer.body", [offer_text, item["value"], modes[item["price_mode"]], Loc.t("yes") if item["demand"] == customer["wants"] else Loc.t("no"), item["curse"]])
 	_clear(actions)
 	if customer["id"] == "tamsin" and not state.negotiated:
-		_button("NEGOTIATE −1 RES\n议价", _negotiate_offer, true)
-	_button("ACCEPT + WARN\n成交并告知诅咒", func(): _resolve_offer(true, true), true)
-	_button("ACCEPT + HIDE\n隐瞒后成交", func(): _resolve_offer(true, false))
-	_button("REJECT / 拒绝", func(): _resolve_offer(false, true))
+		_button(Loc.t("btn.negotiate"), _negotiate_offer, true)
+	_button(Loc.t("btn.accept_warn"), func(): _resolve_offer(true, true), true)
+	_button(Loc.t("btn.accept_hide"), func(): _resolve_offer(true, false))
+	_button(Loc.t("btn.reject"), func(): _resolve_offer(false, true))
 
 
 func _negotiate_offer() -> void:
 	if state.negotiate_current():
 		_play("coin")
-		_log("NEGOTIATED · Tamsin adds 5G after a direct warning.")
+		_log(Loc.t("log.negotiated"))
 	else:
-		_log("Negotiation needs 1 Resolve and can only be attempted once.")
+		_log(Loc.t("log.negotiate_fail"))
 	_show_customer_offer()
 
 
 func _resolve_offer(accept: bool, honest: bool) -> void:
-	var customer_name := str(state.current_customer().get("name", "Customer"))
-	var item_name := str(state.get_item(state.selected_id).get("name", "curio"))
+	var customer_name := _customer_label(state.current_customer())
+	var item_name := _item_label(state.get_item(state.selected_id))
 	var amount: int = state.offer
 	var sold: bool = state.resolve_customer(accept, honest)
 	_play("coin" if sold else "tick")
 	if sold:
-		_log("SALE +%dG · %s buys %s%s." % [amount, customer_name, item_name, " with a truthful warning" if honest else " — curse concealed"])
+		_log(Loc.t("log.sale_warn" if honest else "log.sale_hide", [amount, customer_name, item_name]))
 	else:
-		_log("%s leaves; %s remains in inventory." % [customer_name, item_name])
+		_log(Loc.t("log.reject", [customer_name, item_name]))
 	_show_shop()
 
 
 func _enter_night() -> void:
 	if not state.enter_night(state.selected_id):
-		_log("Serve two customers this day and select a carried curio.")
+		_log(Loc.t("log.need_carry"))
 		return
 	_play("bell")
 	_start_room()
@@ -497,12 +616,11 @@ func _start_room() -> void:
 	_set_ambience("crypt")
 	item_grid.visible = false
 	log_label.visible = true
-	var room: Dictionary = MidnightStateScript.ROOMS[state.room_index]
-	phase_label.text = "NIGHT %d · ROOM %d/4" % [state.night, state.room_index + 1]
-	header.text = "%dG  HP%d  RES%d  CURSE%d  UNBANKED%d" % [state.gold, state.health, state.resolve, state.curse, state.marks_unbanked]
-	title.text = "%s / %s" % [room["name"], room["zh"]]
-	subtitle.text = room["risk"]
-	detail.text = "Move Nara across the room to the pulsing encounter mark.\n\n[color=#d45b68]RISK:[/color] %s\n[color=#52b4a6]CARRIED:[/color] %s\n\nTap the floor, use WASD/arrows, or press the on-screen direction controls." % [room["risk"], state.get_item(state.carried_id).get("name", "none")]
+	phase_label.text = Loc.t("night.phase", [state.night, state.room_index + 1])
+	header.text = Loc.t("night.header", [state.gold, state.health, state.resolve, state.curse, state.marks_unbanked])
+	title.text = Loc.t("room.%d" % state.room_index)
+	subtitle.text = Loc.t("risk.%d" % state.room_index)
+	detail.text = Loc.t("night.body", [Loc.t("risk.%d" % state.room_index), _item_label(state.get_item(state.carried_id))])
 	_clear(item_grid)
 	_clear(actions)
 	for spec in [
@@ -515,16 +633,16 @@ func _start_room() -> void:
 		move_button.icon = _atlas(UI_ATLAS, spec[1])
 		move_button.add_theme_constant_override("icon_max_width", 30)
 		move_button.expand_icon = true
-	_button("APPROACH\n接敌", _on_objective_reached, true)
-	footer_hint.text = "Movement is required in normal play; APPROACH is an accessibility shortcut."
+	_button(Loc.t("btn.approach"), _on_objective_reached, true)
+	footer_hint.text = Loc.t("night.footer")
 
 
 func _on_floor_risk() -> void:
 	state.trigger_floor_risk()
 	_play("hit")
-	_log("FLOOR RISK triggered · Health %d · Resolve %d · Curse %d" % [state.health, state.resolve, state.curse])
+	_log(Loc.t("log.floor", [state.health, state.resolve, state.curse]))
 	if state.phase == MidnightStateScript.Phase.DAY_2:
-		_log("RECOVERY: unbanked loot lost; Nara returns with 3 health and emergency 5G.")
+		_log(Loc.t("log.recover_day"))
 		_show_shop()
 	elif state.phase == MidnightStateScript.Phase.FINAL:
 		_show_final()
@@ -537,40 +655,41 @@ func _on_objective_reached() -> void:
 		return
 	encounter_open = true
 	var room: Dictionary = MidnightStateScript.ROOMS[state.room_index]
-	title.text = "%s · HP %d/%d" % [room["enemy"], state.enemy_hp, room["hp"]]
-	subtitle.text = "Deterministic pattern: attacks for %d; guard reduces the next hit." % room["damage"]
-	detail.text = "[color=#d45b68]%s blocks extraction.[/color]\n\nSTRIKE deals 2. GUARD reduces damage and restores Resolve. REMEMBER costs 2 Resolve and reveals identity. CARRIED ITEM uses its room synergy or heals 2." % room["enemy"]
+	var enemy := Loc.t("enemy.%d" % state.room_index)
+	title.text = Loc.t("fight.title", [enemy, state.enemy_hp, room["hp"]])
+	subtitle.text = Loc.t("fight.sub", [room["damage"]])
+	detail.text = Loc.t("fight.body", [enemy])
 	_clear(actions)
-	_button("STRIKE\n攻击", func(): _combat("strike"), true)
-	_button("GUARD\n格挡", func(): _combat("guard"))
-	_button("REMEMBER −2◆\n追忆", func(): _combat("remember"))
-	_button("USE CARRIED\n使用古物", func(): _combat("item"))
+	_button(Loc.t("btn.strike"), func(): _combat("strike"), true)
+	_button(Loc.t("btn.guard"), func(): _combat("guard"))
+	_button(Loc.t("btn.remember"), func(): _combat("remember"))
+	_button(Loc.t("btn.item"), func(): _combat("item"))
 	if state.room_index == 1 and state.carried_id == "wedding_ring":
-		_button("RETURN RING\n归还婚戒", _peaceful_claimant, true)
+		_button(Loc.t("btn.ring"), _peaceful_claimant, true)
 
 
 func _peaceful_claimant() -> void:
 	if state.peaceful_claimant():
 		_play("loot")
-		_log("MERCY +3 · Widow Voss remembers the missing song. No combat.")
+		_log(Loc.t("log.mercy"))
 		_room_cleared()
 
 
 func _combat(action: String) -> void:
 	var result: Dictionary = state.combat_action(action)
 	if not result.get("ok", false):
-		_log("Not enough Resolve for that action.")
+		_log(Loc.t("log.no_res"))
 		return
 	_play("hit" if not result.get("won", false) else "loot")
 	if state.phase == MidnightStateScript.Phase.DAY_2:
-		_log("DEFEAT & RECOVERY · unbanked loot and marks lost; banked goods persist.")
+		_log(Loc.t("log.defeat_day"))
 		_show_shop()
 		return
 	if state.phase == MidnightStateScript.Phase.FINAL:
-		_log("DEFEAT & RECOVERY · the cracked Heart still demands a decision.")
+		_log(Loc.t("log.defeat_final"))
 		_show_final()
 		return
-	_log("%s: dealt %d · received %d · enemy HP %d · Nara ♥%d" % [action.to_upper(), result.get("dealt", 0), result.get("damage", 0), state.enemy_hp, state.health])
+	_log(Loc.t("log.combat", [Loc.t("btn." + action) if action != "item" else Loc.t("btn.item"), result.get("dealt", 0), result.get("damage", 0), state.enemy_hp, state.health]))
 	if result.get("won", false):
 		_room_cleared()
 	else:
@@ -585,18 +704,18 @@ func _on_objective_reached_refresh() -> void:
 func _room_cleared() -> void:
 	stage.mark_enemy_defeated()
 	var room: Dictionary = MidnightStateScript.ROOMS[state.room_index]
-	title.text = "ROOM CLEARED / 房间已清理"
-	subtitle.text = "%s cannot follow you." % room["enemy"]
+	title.text = Loc.t("clear.title")
+	subtitle.text = Loc.t("clear.sub", [Loc.t("enemy.%d" % state.room_index)])
 	var loot_text := ""
 	if state.room_index == 0:
-		loot_text = "\nLoot: Moon Coin (unbanked)."
+		loot_text = Loc.t("clear.loot0")
 	elif state.room_index == 2 and state.carried_id == "bone_key":
-		loot_text = "\nOPTIONAL CACHE: Saint's Tooth recovered."
+		loot_text = Loc.t("clear.loot2")
 	elif state.room_index == 3:
-		loot_text = "\nCORE CURIO: Heart of the Crypt recovered."
-	detail.text = "Marks +%d%s\n\nUnbanked rewards are lost on defeat. Extraction after the second room banks everything." % [room["marks"] * (2 if state.carried_id == "black_ledger" else 1), loot_text]
+		loot_text = Loc.t("clear.loot3")
+	detail.text = Loc.t("clear.body", [room["marks"] * (2 if state.carried_id == "black_ledger" else 1), loot_text])
 	_clear(actions)
-	_button("CONTINUE / 继续", _advance_room, true)
+	_button(Loc.t("btn.continue"), _advance_room, true)
 
 
 func _advance_room() -> void:
@@ -606,7 +725,7 @@ func _advance_room() -> void:
 		_start_room()
 	elif state.phase == MidnightStateScript.Phase.DAY_2:
 		_play("coin")
-		_log("EXTRACTED · Loot and %d marks banked. New identities surface at dawn." % state.marks_bank)
+		_log(Loc.t("log.extract", [state.marks_bank]))
 		_show_shop()
 	else:
 		_play("appraise")
@@ -620,17 +739,17 @@ func _show_final() -> void:
 	_set_ambience("crypt")
 	item_grid.visible = false
 	log_label.visible = true
-	phase_label.text = "00:17 · FINAL APPRAISAL"
-	header.text = "%dG  HP%d  CURSE%d  MERCY%d" % [state.gold, state.health, state.curse, state.mercy]
-	title.text = "Heart of the Crypt / 地窖之心"
-	subtitle.text = "Value 40G · Curse 4 · Demand: your own"
-	detail.text = "[color=#f1dfb0]“The shop is its coffin. Your name is its key.”[/color]\n\n[color=#e8b84a]SELL[/color] gains its appraised value; gold and concealed debt shape the business.\n[color=#52b4a6]SEAL[/color] costs 12G; mercy, clues, and low curse strengthen the ward.\n[color=#d45b68]KEEP[/color] preserves power; survival, health, optional relic, and curse decide who owns whom."
+	phase_label.text = Loc.t("final.phase")
+	header.text = Loc.t("final.header", [state.gold, state.health, state.curse, state.mercy])
+	title.text = Loc.t("final.title")
+	subtitle.text = Loc.t("final.sub")
+	detail.text = Loc.t("final.body")
 	_clear(item_grid)
 	_clear(actions)
-	_button("SELL +%dG\n出售核心" % state.get_item("crypt_heart").get("value", 20), func(): _choose_final("sell"), true)
-	_button("SEAL −12G\n封印核心", func(): _choose_final("seal"))
-	_button("KEEP\n保留核心", func(): _choose_final("keep"))
-	footer_hint.text = "Final decision node · economy + choices + survival determine the result."
+	_button(Loc.t("btn.sell", [state.get_item("crypt_heart").get("value", 20)]), func(): _choose_final("sell"), true)
+	_button(Loc.t("btn.seal"), func(): _choose_final("seal"))
+	_button(Loc.t("btn.keep"), func(): _choose_final("keep"))
+	footer_hint.text = Loc.t("final.footer")
 
 
 func _choose_final(choice: String) -> void:
@@ -645,24 +764,24 @@ func _show_result() -> void:
 	_set_ambience("shop")
 	item_grid.visible = false
 	log_label.visible = true
-	phase_label.text = "RUN COMPLETE"
-	header.text = "SCORE %d · RANK %s" % [state.score, state.rank]
-	title.text = state.outcome
+	phase_label.text = Loc.t("result.phase")
+	header.text = Loc.t("result.header", [state.score, state.rank])
+	title.text = Loc.t("ending." + state.outcome)
 	var condition := ""
 	match state.final_choice:
 		"sell":
-			condition = "The lamps stay lit. %s" % ("No hidden debt follows the buyer." if state.curse <= 2 else "Red ink appears beneath tomorrow's profits.")
+			condition = Loc.t("result.sell_clean" if state.curse <= 2 else "result.sell_debt")
 		"seal":
-			condition = "The crypt falls quiet. %s" % ("Claimants find their names at dawn." if state.mercy >= 3 else "The seal holds, but nobody remembers why.")
+			condition = Loc.t("result.seal_mercy" if state.mercy >= 3 else "result.seal_hold")
 		"keep":
-			condition = "Nara keeps the Heart. %s" % ("It beats when she commands." if state.health >= 4 and state.curse <= 5 else "Some nights, it appraises her.")
+			condition = Loc.t("result.keep_own" if state.health >= 4 and state.curse <= 5 else "result.keep_owned")
 	subtitle.text = condition
-	detail.text = "[color=#e8b84a]ECONOMY[/color] %dG · Banked marks %d\n[color=#52b4a6]CHOICES[/color] Mercy %d · Trust %d · Clues %d\n[color=#d45b68]SURVIVAL[/color] Health %d · Curse %d · Recoveries %d\nRooms %d/4 · Customers %d · Optional relic %s\n\nSCORE %d · RANK %s\nMeasured session %.1f min · Normal reading route %.1f min" % [state.gold, state.marks_bank, state.mercy, state.trust, state.clues, state.health, state.curse, state.recovered, state.rooms_cleared.size(), state.transactions.size(), "YES" if state.optional_relic else "NO", state.score, state.rank, state.elapsed_seconds() / 60.0, state.expected_normal_minutes()]
+	detail.text = Loc.t("result.body", [state.gold, state.marks_bank, state.mercy, state.trust, state.clues, state.health, state.curse, state.recovered, state.rooms_cleared.size(), state.transactions.size(), Loc.t("yes") if state.optional_relic else Loc.t("no"), state.score, state.rank, state.elapsed_seconds() / 60.0, state.expected_normal_minutes()])
 	_clear(item_grid)
 	_clear(actions)
-	_button("REPLAY / 再来一局", _start_run, true)
-	_button("TITLE / 返回标题", _show_title)
-	footer_hint.text = "Replay with different pricing, truth, carried curio, relic route, and core choice."
+	_button(Loc.t("btn.replay"), _start_run, true)
+	_button(Loc.t("btn.title"), _show_title)
+	footer_hint.text = Loc.t("result.footer")
 
 
 func _log(text: String) -> void:
@@ -676,7 +795,7 @@ func _log(text: String) -> void:
 func _refresh_log() -> void:
 	if log_label == null:
 		return
-	log_label.text = "[color=#9f94ac]LEDGER LOG[/color]\n" + "\n".join(log_lines)
+	log_label.text = Loc.t("log.title") + "\n".join(log_lines)
 	log_label.scroll_to_line(maxi(0, log_lines.size() - 1))
 
 

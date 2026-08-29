@@ -438,15 +438,15 @@ func choose_final(choice: String) -> bool:
 	match choice:
 		"sell":
 			gold += int(get_item("crypt_heart").get("value", 20))
-			outcome = "Dawn Broker / 晨曦掌柜"
+			outcome = "dawn_broker"
 		"seal":
 			gold = maxi(0, gold - 12)
 			mercy += 4
 			curse = maxi(0, curse - 3)
-			outcome = "Quiet Seal / 静默封印"
+			outcome = "quiet_seal"
 		"keep":
 			curse += 2
-			outcome = "Midnight Keeper / 午夜守藏人"
+			outcome = "midnight_keeper"
 	score = gold + marks_bank * 2 + mercy * 12 + trust * 8 + rooms_cleared.size() * 15 + clues * 3
 	score += 20 if health > 0 else 0
 	score += 18 if optional_relic else 0
