@@ -15,6 +15,10 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[gui]
+theme/default_font="res://assets/fonts/late_inspection_pixel_16.fnt"
+theme/default_font_size=16
+
 [rendering]
 renderer/rendering_method="forward_plus"
 renderer/rendering_method.mobile="mobile"
@@ -24,6 +28,10 @@ anti_aliasing/quality/msaa_3d=2
 anti_aliasing/quality/msaa_3d.web=0
 environment/defaults/default_clear_color=Color(0.02, 0.018, 0.016, 1)
 rendering_device/fallback_to_opengl3=true
+textures/default_filters/use_nearest_mipmap_filter=false
+
+[rendering/2d]
+snap/snap_2d_transforms_to_pixel=true
 
 [internationalization]
 locale/fallback="en"

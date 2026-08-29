@@ -282,7 +282,8 @@ func _process(delta: float) -> void:
 		nvl_veil.color = Color(0, 0, 0, 1).lerp(target, clampf(fade_t * 3.2, 0.0, 1.0))
 		pulse_t += delta
 		var pulse := 1.0 + 0.085 * sin(pulse_t * 3.5)
-		nvl_body.add_theme_font_size_override("font_size", int(26.0 * pulse))
+		# Keep the BMFont at its atlas size; animate its Control transform only.
+		nvl_body.scale = Vector2.ONE * (1.625 * pulse)
 		if nvl_body.material is ShaderMaterial:
 			(nvl_body.material as ShaderMaterial).set_shader_parameter("time", pulse_t)
 			(nvl_body.material as ShaderMaterial).set_shader_parameter("shake", 2.6 + 1.1 * sin(pulse_t * 7.0))
@@ -413,6 +414,7 @@ func _build_nvl() -> void:
 	nvl_body.add_theme_font_size_override("font_size", 26)
 	nvl_body.add_theme_color_override("font_color", Color(0.96, 0.78, 0.7))
 	UiFont.apply_label(nvl_body)
+	nvl_body.pivot_offset = nvl_body.size * 0.5
 	var sh := load("res://shaders/nvl_shake.gdshader")
 	if sh:
 		var mat := ShaderMaterial.new()
