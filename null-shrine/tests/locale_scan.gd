@@ -9,7 +9,7 @@ func _init() -> void:
 
 func _is_cjk(ch: String) -> bool:
 	var o := ch.unicode_at(0)
-	return o >= 0x4E00 and o <= 0x9FFF
+	return (o >= 0x4E00 and o <= 0x9FFF) or (o >= 0x3040 and o <= 0x30FF) or (o >= 0xAC00 and o <= 0xD7AF)
 
 
 func _is_latin(ch: String) -> bool:
@@ -42,7 +42,10 @@ func _has_cjk(s: String) -> bool:
 
 
 func _mixed(text: String) -> bool:
-	if text.strip_edges().begins_with("Language / 语言"):
+	var trimmed := text.strip_edges()
+	if trimmed in ["Language", "语言", "言語", "Idioma", "언어"]:
+		return false
+	if trimmed in Loc.NATIVE.values():
 		return false
 	var plain := _strip_bbcode(text)
 	return _has_latin_word(plain) and _has_cjk(plain)
@@ -78,8 +81,11 @@ func _run() -> void:
 	root.add_child(game)
 	await process_frame
 	await process_frame
-	var fails := await _scan(game, "zh")
-	fails += await _scan(game, "en")
+	var fails := 0
+	for locale in Loc.ALLOWED:
+		fails += await _scan(game, locale)
+	Loc.set_code("en")
+	await process_frame
 	if game.title.text != "Midnight Pawn & Crypt":
 		push_error("EN title not applied")
 		fails += 1

@@ -26,6 +26,7 @@ var pause_button: Button
 var lang_caption: Label
 var lang_en: Button
 var lang_zh: Button
+var lang_buttons: Dictionary = {}
 var lang_box: VBoxContainer
 var log_lines: Array[String] = []
 var encounter_open := false
@@ -308,38 +309,43 @@ func _add_language_picker() -> void:
 	lang_box.name = "LanguagePicker"
 	lang_box.add_theme_constant_override("separation", 4)
 	lang_caption = Label.new()
-	lang_caption.text = "Language / 语言"
+	lang_caption.text = Loc.t("lang.caption")
 	lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	lang_caption.add_theme_color_override("font_color", MUTED)
 	lang_box.add_child(lang_caption)
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 6)
 	lang_box.add_child(row)
-	lang_en = Button.new()
-	lang_en.text = "English"
-	lang_en.custom_minimum_size = Vector2(120, 36)
-	lang_en.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	lang_en.pressed.connect(func() -> void: Loc.set_code("en"))
-	row.add_child(lang_en)
-	lang_zh = Button.new()
-	lang_zh.text = "简体中文"
-	lang_zh.custom_minimum_size = Vector2(120, 36)
-	lang_zh.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	lang_zh.pressed.connect(func() -> void: Loc.set_code("zh"))
-	row.add_child(lang_zh)
+	var row2 := HBoxContainer.new()
+	row2.add_theme_constant_override("separation", 6)
+	lang_box.add_child(row2)
+	for i in Loc.ALLOWED.size():
+		var code := str(Loc.ALLOWED[i])
+		var b := Button.new()
+		b.text = str(Loc.NATIVE[code])
+		b.custom_minimum_size = Vector2(88, 36)
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		b.pressed.connect(func() -> void: Loc.set_code(code))
+		(row if i < 3 else row2).add_child(b)
+		lang_buttons[code] = b
+		if code == "en":
+			lang_en = b
+		elif code == "zh":
+			lang_zh = b
 	actions.add_child(lang_box)
 	_mark_language_buttons()
 
 
 func _mark_language_buttons() -> void:
-	if lang_en == null or lang_zh == null:
-		return
-	if Loc.is_zh():
-		lang_zh.add_theme_color_override("font_color", GOLD)
-		lang_en.remove_theme_color_override("font_color")
-	else:
-		lang_en.add_theme_color_override("font_color", GOLD)
-		lang_zh.remove_theme_color_override("font_color")
+	if lang_caption:
+		lang_caption.text = Loc.t("lang.caption")
+	for code in lang_buttons.keys():
+		var b: Button = lang_buttons[code]
+		b.text = str(Loc.NATIVE[code])
+		if str(code) == Loc.current():
+			b.add_theme_color_override("font_color", GOLD)
+		else:
+			b.remove_theme_color_override("font_color")
 
 
 func _show_title() -> void:
