@@ -14,6 +14,9 @@ func interact(game: Node) -> void:
 		return
 	taken = true
 	collision_layer = 0
+	if game.has_method("on_document"):
+		game.on_document(note_id, note_text)
+		return
 	if game.has_method("show_note"):
 		game.show_note(note_text if note_text != "" else note_id)
 	if game.has_method("on_note"):

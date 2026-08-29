@@ -32,6 +32,15 @@ var flags := {
 	"clause_refused": false,
 	"final_open": false,
 	"final_ignore": false,
+	"fire_plan": false,
+	"frame_found": false,
+	"shoes_seen": false,
+	"invoice_found": false,
+	"medicine_found": false,
+	"drain_seen": false,
+	"locket_found": false,
+	"letters_found": false,
+	"pell_threat": false,
 }
 var interaction_count := 0
 var choice_count := 0
@@ -69,55 +78,14 @@ func _setup_audio() -> void:
 	drone.play()
 
 func _spawn_stage(s: int) -> void:
-	match s:
-		0:
-			_note(Vector3(-5.0, 0.52, 4.0), "order", "Read inspection order",
-				"VESPER COURT / AFTER-HOURS INSPECTION 71-B\nUnit: 404. Tenant: [name removed].\nConfirm vacant. Record water damage. Do not contact adjoining tenants.\nIf work exceeds midnight, complete the overnight occupancy clause.\n— M. Pell, Building Manager\n\nMARA: It exceeded midnight before he called me.")
-		1:
-			_note(Vector3(-2.72, 0.14, 5.5), "dane", "Read note from 403",
-				"INSPECTOR—\nPell will tell you 404 is empty. Ask why an empty room knocks back.\nIf the pipe calls three times, answer three times. Not two.\n— D, 403")
-			_note(Vector3(0.72, 0.82, 4.0), "notice", "Read 404 access notice",
-				"FINAL ACCESS NOTICE\nPremises surrendered. Contents abandoned.\nEntry constitutes confirmation that no resident remains.\n\nMARA: That isn't what entry means.\nThe key turns before it enters fully. Warm air pushes through the gap.\nMARA: Hello? Building inspection.")
-		2:
-			_note(Vector3(4.1, 0.48, 3.2), "checklist", "Read room checklist",
-				"1. Confirm all personal property removed.\n2. Kitchen wall dry.\n3. Bathroom service pipe closed.\n4. Bedroom wardrobe empty.\n5. Overnight clause completed if keys remain after 00:00.\n\nMARA: Shoes. Tea. Half the books. Nothing about this says vacant.")
-			_note(Vector3(5.8, 1.28, 0.36), "answering", "Play answering machine",
-				"PELL: Iris, this is the last courtesy. Sign the surrender. We can correct the damp after access is returned. Please don't involve 403 again.\n\nIRIS: Dane, if this records: the wall gets wet when Pell brings an inspector. It isn't rain. Don't let them erase my name.\n\nMARA: Iris.")
-			_note(Vector3(6.45, 0.7, 4.9), "frame", "Inspect empty photograph frame",
-				"Dust protects the rectangle where a photograph stood.\nOn the backing, in blue pen:\nIRIS + DANE / FIRST NIGHT WITH HEAT.")
-		3:
-			_choice(Vector3(10.82, 1.08, 4.18), "stain", "Inspect letter-shaped stain",
-				"The checklist camera opens. In its preview, letters surface inside the damp:\nIRIS VALE — STILL HERE",
-				"Keep the photograph and attach it to the report",
-				"Wipe the wall and delete the corrupted image")
-		4:
-			_note(Vector3(8.25, 1.52, 5.72), "mirror", "Look into the delayed mirror",
-				"MARA: My reflection blinks late.\n\nIn the mirror, the bathroom door is closed.\nBehind you, it is open.")
-			_note(Vector3(9.4, 1.25, 6.2), "service", "Read service tag",
-				"STACK 4 / DO NOT ISOLATE WHILE OCCUPIED\nLast service: 14 NOV / PELL\nReported voice transmission: 'tenant misuse.'\n\nThree metallic knocks travel up the copper: short, short, long.")
-		5:
-			_choice(Vector3(9.4, 0.9, 6.2), "pipe", "Respond to the service pipe",
-				"The copper knocks three times. Something waits for a reply.",
-				"Answer with three knocks",
-				"Close the valve and silence it")
-		6:
-			_note(Vector3(2.0, 0.78, 9.12), "clock", "Inspect frozen clock",
-				"The second hand reaches 17 and falls back to 16.\nScratched beneath it:\nSHE GETS ONE MINUTE EACH INSPECTION.")
-			_note(Vector3(6.08, 1.0, 8.5), "wardrobe", "Open the wardrobe",
-				"Coats conceal a false plywood back. Behind it: a cassette recorder,\none woman-sized cavity, and copper crossing torn insulation.\n\nMARA: This wall was opened and closed from the room side.")
-		7:
-			_note(Vector3(7.02, 0.7, 8.5), "cassette", "Play Iris's cassette",
-				"IRIS: My name is Iris Vale. It is November fourteenth. Pell says the leak makes the flat uninhabitable, but he won't let me leave with proof.\n\nIRIS: When the first inspector signed 'vacant,' the corridor forgot my door. I stayed in the wall so somebody would hear me before it closed.\n\nIRIS: Keep my name. Answer the pipe. At the final knock, open the flat from inside. A witness has to cross the threshold willingly.\n\nDANE, through the wall: Inspector! Pell is in the corridor. He doesn't have a face in the peephole.")
-		8:
-			_choice(Vector3(4.1, 0.49, 3.2), "clause", "Read overnight clause",
-				"OVERNIGHT OCCUPANCY CLAUSE\nThe undersigned accepts temporary custodianship of Unit 404 and all unresolved contents until morning. Custodianship supersedes prior occupancy claims.",
-				"Sign as temporary custodian",
-				"Refuse and tear the clause in half")
-		9:
-			_choice(Vector3(0.82, 1.0, 4.0), "final", "Answer the final knock",
-				"Four knocks sound from the corridor: 4 — 0 — 4 — silence.\nWho leaves Flat 404?",
-				"Open the door and state what you witnessed",
-				"Turn off the light and certify the flat vacant")
+	for item in StoryContent.stage(s, flags):
+		var pos: Vector3 = item["pos"]
+		if item["kind"] == "choice":
+			_choice(pos, item["id"], item["prompt"], item["text"], item["a"], item["b"])
+		else:
+			_note(pos, item["id"], item["prompt"], item["text"])
+	if $World.has_method("stage_event"):
+		$World.stage_event(s, flags)
 
 func _note(pos: Vector3, id: String, prompt: String, text: String) -> void:
 	var body := StaticBody3D.new()
@@ -127,25 +95,12 @@ func _note(pos: Vector3, id: String, prompt: String, text: String) -> void:
 	body.note_id = id
 	body.note_text = text
 	body.set_meta("story_id", id)
-	var mesh := MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size = Vector3(0.22, 0.02, 0.16)
-	mesh.mesh = box
-	mesh.material_override = GameMaterials.paper(Color(0.82, 0.76, 0.6))
-	body.add_child(mesh)
+	_decorate_prop(body, id, false)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
 	sh.size = Vector3(0.28, 0.12, 0.22)
 	col.shape = sh
 	body.add_child(col)
-	var lab := Label3D.new()
-	lab.text = "NOTE"
-	lab.font_size = 28
-	lab.position = Vector3(0, 0.08, 0)
-	lab.pixel_size = 0.004
-	lab.modulate = Color(0.9, 0.82, 0.65)
-	UiFont.apply_3d(lab)
-	body.add_child(lab)
 	add_child(body)
 	active_ids[id] = body
 
@@ -158,27 +113,68 @@ func _choice(pos: Vector3, id: String, prompt: String, text: String, a: String, 
 	body.prompt_text = text
 	body.option_a = a
 	body.option_b = b
-	var mesh := MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size = Vector3(0.28, 0.02, 0.2)
-	mesh.mesh = box
-	mesh.material_override = GameMaterials.paper(Color(0.7, 0.62, 0.48))
-	body.add_child(mesh)
+	_decorate_prop(body, id, true)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
 	sh.size = Vector3(0.4, 0.5, 0.35)
 	col.shape = sh
 	body.add_child(col)
-	var lab := Label3D.new()
-	lab.text = "DECIDE"
-	lab.font_size = 26
-	lab.position = Vector3(0, 0.1, 0)
-	lab.pixel_size = 0.004
-	lab.modulate = Color(0.85, 0.55, 0.4)
-	UiFont.apply_3d(lab)
-	body.add_child(lab)
 	add_child(body)
 	active_ids[id] = body
+
+func _prop_box(parent: Node3D, pos: Vector3, size: Vector3, mat: Material) -> void:
+	var mesh := MeshInstance3D.new()
+	var shape := BoxMesh.new()
+	shape.size = size
+	mesh.mesh = shape
+	mesh.position = pos
+	mesh.material_override = mat
+	parent.add_child(mesh)
+
+func _prop_cylinder(parent: Node3D, pos: Vector3, radius: float, height: float, mat: Material) -> void:
+	var mesh := MeshInstance3D.new()
+	var shape := CylinderMesh.new()
+	shape.top_radius = radius
+	shape.bottom_radius = radius
+	shape.height = height
+	mesh.mesh = shape
+	mesh.position = pos
+	mesh.material_override = mat
+	parent.add_child(mesh)
+
+func _decorate_prop(body: Node3D, id: String, choice: bool) -> void:
+	var paper := GameMaterials.paper(Color(0.76, 0.68, 0.5))
+	var dark := GameMaterials.flat(Color(0.055, 0.045, 0.035), 0.8)
+	var metal := GameMaterials.metal(Color(0.22, 0.2, 0.16))
+	if id in ["answering", "followup"]:
+		_prop_box(body, Vector3.ZERO, Vector3(.42,.16,.3), dark)
+		_prop_box(body, Vector3(0,.12,-.04), Vector3(.3,.08,.12), metal)
+		for x in [-.12, 0.0, .12]:
+			_prop_cylinder(body, Vector3(x,.11,.09), .025, .02, paper)
+	elif id in ["frame", "mirror"]:
+		for x in [-.18,.18]:
+			_prop_box(body, Vector3(x,0,0), Vector3(.035,.42,.03), metal)
+		for y in [-.2,.2]:
+			_prop_box(body, Vector3(0,y,0), Vector3(.4,.035,.03), metal)
+	elif id in ["medicine", "kettle"]:
+		_prop_cylinder(body, Vector3.ZERO, .12, .28, metal if id == "kettle" else paper)
+		_prop_cylinder(body, Vector3(0,.17,0), .06, .05, dark)
+	elif id in ["clock", "thermostat"]:
+		_prop_box(body, Vector3.ZERO, Vector3(.32,.22,.1), dark)
+		_prop_box(body, Vector3(0,0,-.055), Vector3(.22,.1,.01), GameMaterials.emissive(Color(.32,.5,.28), .25))
+	elif id in ["cassette", "wardrobe"]:
+		_prop_box(body, Vector3.ZERO, Vector3(.38,.16,.26), dark)
+		_prop_cylinder(body, Vector3(-.1,.09,-.03), .065, .025, metal)
+		_prop_cylinder(body, Vector3(.1,.09,-.03), .065, .025, metal)
+	elif id in ["stain", "pipe", "final"]:
+		_prop_cylinder(body, Vector3.ZERO, .16, .08, GameMaterials.emissive(Color(.42,.09,.055), .18))
+	else:
+		_prop_box(body, Vector3.ZERO, Vector3(.3,.018,.22), paper)
+		if id in ["order", "checklist", "invoice", "clause", "final_evidence"]:
+			_prop_box(body, Vector3(0,-.025,.015), Vector3(.34,.045,.26), dark)
+			_prop_box(body, Vector3(0,.025,-.08), Vector3(.1,.035,.04), metal)
+	if choice:
+		_prop_box(body, Vector3(0,.035,0), Vector3(.36,.012,.28), paper)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and not ending:
@@ -239,6 +235,14 @@ func _process(delta: float) -> void:
 func show_note(text: String) -> void:
 	hud.show_note(text)
 
+func on_document(id: String, text: String) -> void:
+	player.locked = true
+	hud.show_document(text, func() -> void:
+		on_note(id)
+		player.locked = false
+		player.capture_mouse()
+	)
+
 func on_note(id: String) -> void:
 	if not collected.has(id):
 		collected.append(id)
@@ -251,19 +255,40 @@ func on_note(id: String) -> void:
 		"dane":
 			flags["dane_note"] = true
 			hud.set_objective("Read the access notice on Flat 404.")
+		"fire_plan":
+			flags["fire_plan"] = true
+		"frame":
+			flags["frame_found"] = true
+		"shoes":
+			flags["shoes_seen"] = true
+		"invoice":
+			flags["invoice_found"] = true
+		"medicine":
+			flags["medicine_found"] = true
+		"drain":
+			flags["drain_seen"] = true
+		"locket":
+			flags["locket_found"] = true
+		"letters":
+			flags["letters_found"] = true
 		"notice":
 			_advance(2, "Enter 404 and inspect the checklist in the living room.", 2, "01:58")
 		"checklist":
-			_advance(3, "Investigate the letter-shaped damp in the kitchen.", 2, "02:01")
+			_advance(3, "Search the living room. Play the answering machine when ready.", 2, "02:01")
+		"answering":
+			_advance(4, "Investigate the kitchen and document the damp wall.", 2, "02:04")
 		"service":
-			_advance(5, "The pipe is waiting. Answer it or close the valve.", 3, "02:09")
+			_advance(6, "The pipe is waiting. Answer it or close the valve.", 3, "02:09")
 		"wardrobe":
-			_advance(7, "Play the cassette hidden inside the wall cavity.", 4, "02:17")
+			_advance(8, "Play the cassette hidden inside the wall cavity.", 4, "02:17")
 		"cassette":
 			flags["iris_record"] = true
-			var conditional := "\nPELL: You uploaded a tenant name. Delete it. Your authorization does not include testimony." if flags["photo_kept"] else "\nPELL: The kitchen correction came through clean. You understand how buildings survive."
-			hud.show_note(str((active_ids[id] as Node).get("note_text")) + conditional)
-			_advance(8, "Return to the living room and read the overnight clause.", 5, "02:23")
+			_advance(9, "Return to the living room. Pell is calling.", 5, "02:21")
+		"followup":
+			flags["pell_threat"] = flags["photo_kept"] or flags["pipe_answered"]
+			_advance(10, "Read the overnight clause on the coffee table.", 5, "02:23")
+		"final_evidence":
+			_advance(12, "The final knock is waiting at the front door.", 6, "02:29")
 
 func open_choice(choice_id: String, text: String, a: String, b: String, source: Node) -> void:
 	player.locked = true
@@ -291,7 +316,7 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 			else:
 				flags["photo_deleted"] = true
 				hud.show_note("MARA: A reflection. Bad compression. Finish the job.\nThe letters smear into a five-fingered handprint.")
-			_advance(4, "Follow the wet line into the bathroom. Read the service tag.", 3, "02:06")
+			_advance(5, "Follow the wet line into the bathroom. Read the service tag.", 3, "02:06")
 		"pipe":
 			if i == 0:
 				flags["pipe_answered"] = true
@@ -299,7 +324,7 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 			else:
 				flags["pipe_silenced"] = true
 				hud.show_note("The valve resists like a held wrist, then turns.\nPELL: Good. A quiet building is a safe building.")
-			_advance(6, "Wet footprints lead to the bedroom wardrobe.", 4, "02:13")
+			_advance(7, "Wet footprints lead to the bedroom. Search before opening the wardrobe.", 4, "02:13")
 		"clause":
 			if i == 0:
 				flags["clause_signed"] = true
@@ -307,7 +332,7 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 			else:
 				flags["clause_refused"] = true
 				hud.show_note("MARA: No. This inspection is suspended.\nBoth torn halves now read UNIT 404: NOT FOUND.")
-			_advance(9, "Four knocks at the front door. Decide who leaves.", 6, "02:29")
+			_advance(11, "Inspect the changed key and look through the peephole.", 6, "02:27")
 		"final":
 			flags["final_open"] = i == 0
 			flags["final_ignore"] = i == 1

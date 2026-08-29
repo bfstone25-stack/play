@@ -40,7 +40,13 @@ func _process(delta: float) -> void:
 	knock_t -= delta
 	if knock_t <= 0.0:
 		knock.play()
-		knock_t = randf_range(9.0, 16.0)
+		var stage := int(game.get("stage"))
+		if stage >= 9:
+			knock_t = randf_range(3.2, 5.5)
+		elif stage >= 5:
+			knock_t = randf_range(6.0, 10.0)
+		else:
+			knock_t = randf_range(11.0, 18.0)
 	drip_t -= delta
 	if drip_t <= 0.0:
 		drip.play()

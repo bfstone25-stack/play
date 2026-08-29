@@ -61,6 +61,9 @@ func _build_lobby() -> void:
 	# Lift surround, rain window, radiator and stair rail.
 	_box(Vector3(-7.0, 1.25, 4.0), Vector3(0.15, 2.5, 5.1), _plaster)
 	_box(Vector3(-5.8, 1.15, 1.48), Vector3(1.7, 2.3, 0.12), _metal)
+	_box(Vector3(-6.7, 1.15, 1.38), Vector3(.08,2.45,.18), _trim, false)
+	_box(Vector3(-4.9, 1.15, 1.38), Vector3(.08,2.45,.18), _trim, false)
+	_box(Vector3(-5.8, 2.35, 1.38), Vector3(1.88,.08,.18), _trim, false)
 	_box(Vector3(-5.8, 1.15, 1.4), Vector3(0.04, 2.1, 0.06), _dark, false)
 	_sign(Vector3(-5.8, 2.05, 1.32), "04")
 	_box(Vector3(-6.65, 1.25, 4.6), Vector3(0.08, 1.45, 1.5), _glass, false)
@@ -80,6 +83,11 @@ func _build_corridor() -> void:
 		_door_leaf(Vector3(-3.08, 1.05, z), str(398 + int(z)))
 	_mailboxes(Vector3(-2.95, 1.25, 9.0))
 	_open_door_leaf(Vector3(1.08, 1.05, 4.0), "404")
+	# Maintenance cart and inspection case sell the working-building setting.
+	_box(Vector3(-2.35,.42,1.0), Vector3(.9,.08,.48), _metal)
+	_box(Vector3(-2.7,.78,1.0), Vector3(.08,.72,.48), _metal)
+	for z in [.82,1.18]:
+		_cylinder(Vector3(-2.65,.12,z), .12, .08, _dark, Vector3(90,0,0))
 	_zone_label(Vector3(-1.0, 2.42, 6.5), zone_names[1])
 
 func _build_living() -> void:
@@ -92,6 +100,11 @@ func _build_living() -> void:
 	_lamp(Vector3(2.2, 0.0, 1.2))
 	_box(Vector3(5.8, 0.48, 0.35), Vector3(1.5, 0.95, 0.4), _wood)
 	_box(Vector3(5.8, 1.18, 0.32), Vector3(1.25, 0.72, 0.08), _dark, false)
+	# Television bezel and feet.
+	for x in [-.65,.65]:
+		_box(Vector3(5.8+x,1.18,.27), Vector3(.06,.82,.1), _metal, false)
+	for x in [-.48,.48]:
+		_box(Vector3(5.8+x,.83,.15), Vector3(.08,.3,.08), _metal, false)
 	_shoe_rack(Vector3(1.8, 0.2, 5.7))
 	for i in 4:
 		_box(Vector3(6.6, 0.3 + i * 0.5, 4.9), Vector3(0.7, 0.42, 0.7), _paper)
@@ -106,9 +119,14 @@ func _build_kitchen() -> void:
 	_counter(Vector3(10.5, 0.0, 3.8))
 	# Fridge, sink, taps, cabinets and kettle.
 	_box(Vector3(8.3, 0.95, 0.65), Vector3(1.0, 1.9, 0.8), GameMaterials.metal(Color(0.36, 0.4, 0.35)))
+	_box(Vector3(8.28,1.38,.23), Vector3(.92,.03,.02), _dark, false)
+	_box(Vector3(8.7,1.1,.2), Vector3(.035,.48,.04), _metal, false)
 	_box(Vector3(10.5, 1.0, 3.78), Vector3(0.72, 0.06, 0.42), _metal, false)
 	_box(Vector3(10.5, 1.18, 3.9), Vector3(0.05, 0.35, 0.05), _metal, false)
 	_box(Vector3(9.2, 1.85, 0.35), Vector3(2.8, 0.6, 0.35), _wood)
+	for x in [8.35,9.05,9.75,10.45]:
+		_box(Vector3(x,1.85,.16), Vector3(.62,.52,.04), _trim, false)
+		_cylinder(Vector3(x,1.85,.12), .025, .05, _metal, Vector3(90,0,0))
 	_pipe_drip(Vector3(10.85, 0.65, 4.25))
 	_zone_label(Vector3(9.4, 2.42, 0.32), zone_names[3])
 
@@ -118,10 +136,14 @@ func _build_bathroom() -> void:
 	_box(Vector3(9.45, 1.25, 9.25), Vector3(3.5, 2.6, 0.16), _plaster)
 	# Tub, translucent curtain, basin, toilet and service stack.
 	_box(Vector3(10.35, 0.35, 8.45), Vector3(1.4, 0.7, 1.05), _paper)
+	_box(Vector3(10.35,.68,8.45), Vector3(1.18,.08,.83), _tile, false)
+	_cylinder(Vector3(10.72,.86,8.05), .035, .42, _metal)
 	_box(Vector3(10.35, 1.45, 7.9), Vector3(1.5, 1.9, 0.03), GameMaterials.flat(Color(0.55, 0.62, 0.48, 0.55)), false)
 	_box(Vector3(8.25, 0.48, 8.45), Vector3(0.75, 0.95, 0.8), _paper)
+	_cylinder(Vector3(8.25,.84,8.45), .34, .25, _paper)
 	_box(Vector3(8.25, 0.95, 8.7), Vector3(0.65, 0.4, 0.18), _paper)
 	_box(Vector3(8.3, 0.82, 6.0), Vector3(0.85, 0.12, 0.55), _paper)
+	_cylinder(Vector3(8.3,.9,6.0), .22, .1, _metal)
 	_box(Vector3(8.3, 1.55, 5.75), Vector3(1.0, 0.85, 0.05), _glass, false)
 	_box(Vector3(10.9, 1.1, 7.0), Vector3(0.1, 2.1, 0.1), _metal, false)
 	_box(Vector3(10.92, 1.3, 7.35), Vector3(0.6, 0.8, 0.04), _metal)
@@ -138,6 +160,9 @@ func _build_bedroom() -> void:
 	# False wall cavity and exposed pipe.
 	_box(Vector3(7.35, 1.1, 8.5), Vector3(0.06, 2.15, 1.6), _dark, false)
 	_box(Vector3(7.25, 1.05, 8.5), Vector3(0.08, 2.0, 0.08), _metal, false)
+	# Personal objects and scattered photographs around the cavity.
+	for i in 5:
+		_box(Vector3(6.85 + (i%2)*.18,.18+i*.025,8.0+i*.17), Vector3(.14,.012,.18), _paper, false)
 	_zone_label(Vector3(4.5, 2.42, 9.78), zone_names[5])
 
 func _room_shell(center: Vector3, footprint: Vector2, floor_mat: Material) -> void:
@@ -181,9 +206,27 @@ func _box(pos: Vector3, size: Vector3, mat: Material, collide := true) -> MeshIn
 		mi.add_child(body)
 	return mi
 
+func _cylinder(pos: Vector3, radius: float, height: float, mat: Material, rot := Vector3.ZERO) -> MeshInstance3D:
+	var mi := MeshInstance3D.new()
+	var mesh := CylinderMesh.new()
+	mesh.top_radius = radius
+	mesh.bottom_radius = radius
+	mesh.height = height
+	mi.mesh = mesh
+	mi.position = pos
+	mi.rotation_degrees = rot
+	mi.material_override = mat
+	add_child(mi)
+	return mi
+
 func _door_leaf(pos: Vector3, label: String) -> void:
 	_box(pos, Vector3(0.08, 2.05, 0.92), _wood)
-	_box(pos + Vector3(-0.06, 0.0, 0.32), Vector3(0.06, 0.06, 0.06), _metal, false)
+	for z in [-.32,.32]:
+		_box(pos + Vector3(-.045,.38,z), Vector3(.025,.55,.22), _trim, false)
+	_box(pos + Vector3(-0.07, 0.0, 0.32), Vector3(0.07, 0.07, 0.07), _metal, false)
+	_box(pos + Vector3(0,0,-.55), Vector3(.16,2.25,.08), _trim, false)
+	_box(pos + Vector3(0,0,.55), Vector3(.16,2.25,.08), _trim, false)
+	_box(pos + Vector3(0,1.1,0), Vector3(.16,.08,1.18), _trim, false)
 	_sign(pos + Vector3(-0.05, 0.55, 0.0), label)
 
 func _open_door_leaf(pos: Vector3, label: String) -> void:
@@ -206,6 +249,10 @@ func _sign(pos: Vector3, text: String) -> void:
 func _couch(pos: Vector3) -> void:
 	_box(pos, Vector3(1.8, 0.42, 0.75), GameMaterials.carpet(Color(0.18, 0.16, 0.14)))
 	_box(pos + Vector3(0, 0.35, -0.28), Vector3(1.8, 0.45, 0.18), GameMaterials.carpet(Color(0.16, 0.14, 0.12)))
+	for x in [-.82,.82]:
+		_box(pos + Vector3(x,.28,0), Vector3(.18,.5,.78), _fabric, false)
+	for x in [-.42,.42]:
+		_box(pos + Vector3(x,.25,.06), Vector3(.72,.12,.58), GameMaterials.carpet(Color(.22,.17,.13)), false)
 
 func _table(pos: Vector3) -> void:
 	_box(pos, Vector3(0.85, 0.05, 0.55), _wood)
@@ -266,12 +313,17 @@ func _calendar(pos: Vector3) -> void:
 func _counter(pos: Vector3) -> void:
 	_box(pos + Vector3(0, 0.45, 0), Vector3(1.8, 0.9, 0.55), _wood)
 	_box(pos + Vector3(0, 0.92, 0), Vector3(1.85, 0.05, 0.58), _tile)
+	for x in [-.58,0,.58]:
+		_box(pos + Vector3(x,.46,-.29), Vector3(.53,.76,.035), _trim, false)
+		_cylinder(pos + Vector3(x+.18,.46,-.32), .025, .04, _metal, Vector3(90,0,0))
 
 func _pipe_drip(pos: Vector3) -> void:
 	_box(pos, Vector3(0.08, 0.9, 0.08), _metal, false)
 	_box(pos + Vector3(-0.15, -0.52, 0.1), Vector3(0.55, 0.02, 0.4), GameMaterials.flat(Color(0.12, 0.02, 0.02), 0.95), false)
 	var drip_mat: StandardMaterial3D = GameMaterials.emissive(Color(0.45, 0.08, 0.06), 0.25)
 	_box(pos + Vector3(0, -0.2, 0.06), Vector3(0.04, 0.12, 0.04), drip_mat, false)
+	for i in 7:
+		_box(pos + Vector3(-.2 + (i%3)*.16,-.5, -.05+i*.09), Vector3(.12,.008,.22), GameMaterials.flat(Color(.14,.018,.012), .95), false)
 
 func _fixture(pos: Vector3, color: Color, energy: float, range_m: float, flicker: bool) -> void:
 	_box(pos, Vector3(0.35, 0.08, 0.35), _metal, false)
@@ -289,6 +341,26 @@ func _fixture(pos: Vector3, color: Color, energy: float, range_m: float, flicker
 	if not flicker:
 		light.light_energy = energy
 	add_child(light)
+
+func stage_event(stage: int, flags: Dictionary) -> void:
+	if stage == 5:
+		# Wet footprints lead from tub toward the bedroom, readable without UI.
+		for i in 5:
+			var print := _box(Vector3(9.7-i*.62,.012,7.9-i*.28), Vector3(.18,.012,.34), GameMaterials.flat(Color(.16,.025,.018), .9), false)
+			print.rotation_degrees.y = -18.0 if i % 2 == 0 else 18.0
+	if stage == 7:
+		if flags["pipe_answered"]:
+			_fixture(Vector3(6.9,1.2,8.5), Color(.55,.08,.045), 1.2, 3.2, true)
+		else:
+			for child in get_children():
+				if child is Light3D and (child as Node3D).position.x > 7.5:
+					(child as Light3D).light_energy *= .35
+	if stage == 9:
+		# One controlled peripheral reveal, framed by the apartment doorway.
+		_box(Vector3(.25,.9,4.02), Vector3(.22,1.8,.38), _dark, false)
+		_cylinder(Vector3(.25,1.92,4.02), .16,.3,_dark)
+	if stage == 11 and flags["clause_refused"]:
+		_sign(Vector3(1.02,1.72,4.0), "40_")
 
 func apply_ending(id: String) -> void:
 	# Each ending changes the physical set behind the authored card sequence.

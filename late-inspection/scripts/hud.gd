@@ -26,6 +26,13 @@ var ending_button: Button
 var ending_beats: Array = []
 var ending_index := 0
 var evidence: Array[String] = []
+var document_panel: Control
+var document_text: Label
+var document_page: Label
+var document_button: Button
+var document_pages: PackedStringArray
+var document_index := 0
+var _document_cb: Callable = Callable()
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -45,6 +52,7 @@ func _ready() -> void:
 	_title()
 	_grain()
 	_choice_ui()
+	_document_ui()
 	_pause_ui()
 	_ending_ui()
 	_splash()
@@ -151,6 +159,54 @@ func _mk_btn(n: String, off: Vector2, size: Vector2) -> Button:
 	b.offset_bottom = off.y + size.y
 	b.add_theme_font_size_override("font_size", 16)
 	return b
+
+func _document_ui() -> void:
+	document_panel = Control.new()
+	document_panel.name = "DocumentPanel"
+	document_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	document_panel.visible = false
+	document_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	var dim := ColorRect.new()
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.color = Color(0.01, 0.008, 0.006, 0.82)
+	document_panel.add_child(dim)
+	var paper := ColorRect.new()
+	paper.set_anchors_preset(Control.PRESET_CENTER)
+	paper.offset_left = -440
+	paper.offset_right = 440
+	paper.offset_top = -250
+	paper.offset_bottom = 235
+	paper.color = Color(0.075, 0.06, 0.043, 0.98)
+	document_panel.add_child(paper)
+	document_text = Label.new()
+	document_text.set_anchors_preset(Control.PRESET_CENTER)
+	document_text.offset_left = -390
+	document_text.offset_right = 390
+	document_text.offset_top = -215
+	document_text.offset_bottom = 145
+	document_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	document_text.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	document_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	document_text.add_theme_font_size_override("font_size", 19)
+	document_text.add_theme_color_override("font_color", Color(0.91, 0.85, 0.73))
+	UiFont.apply_label(document_text)
+	document_panel.add_child(document_text)
+	document_page = Label.new()
+	document_page.set_anchors_preset(Control.PRESET_CENTER)
+	document_page.offset_left = -390
+	document_page.offset_right = 390
+	document_page.offset_top = 155
+	document_page.offset_bottom = 185
+	document_page.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	document_page.add_theme_font_size_override("font_size", 13)
+	document_page.add_theme_color_override("font_color", Color(0.58, 0.52, 0.43))
+	UiFont.apply_label(document_page)
+	document_panel.add_child(document_page)
+	document_button = _mk_btn("DocumentNext", Vector2(-170, 192), Vector2(340, 44))
+	document_button.text = "CONTINUE  ›"
+	document_button.pressed.connect(_next_document_page)
+	document_panel.add_child(document_button)
+	add_child(document_panel)
 
 func _pause_ui() -> void:
 	pause_panel = Control.new()
@@ -277,7 +333,7 @@ func add_evidence(id: String) -> void:
 	if not evidence.has(id):
 		evidence.append(id)
 	if evidence_label:
-		evidence_label.text = "EVIDENCE %02d / 15" % evidence.size()
+		evidence_label.text = "EVIDENCE %02d / 23" % evidence.size()
 
 func show_title(t: String) -> void:
 	title.text = t
@@ -295,6 +351,36 @@ func show_note(t: String) -> void:
 	note.visible = true
 	note_t = clampf(7.0 + float(t.length()) / 28.0, 9.0, 34.0)
 	hide_title()
+
+func show_document(t: String, cb: Callable) -> void:
+	document_pages = t.split("\n---\n", false)
+	document_index = 0
+	_document_cb = cb
+	document_panel.visible = true
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	_render_document_page()
+	document_button.grab_focus()
+
+func _render_document_page() -> void:
+	document_text.text = document_pages[document_index].strip_edges()
+	document_page.text = "PAGE %d / %d" % [document_index + 1, document_pages.size()]
+	document_button.text = "CLOSE" if document_index == document_pages.size() - 1 else "CONTINUE  ›"
+
+func _next_document_page() -> void:
+	if not document_panel.visible:
+		return
+	document_index += 1
+	if document_index < document_pages.size():
+		_render_document_page()
+		document_button.grab_focus()
+		return
+	document_panel.visible = false
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var cb := _document_cb
+	_document_cb = Callable()
+	if cb.is_valid():
+		cb.call()
 
 func open_choice(text: String, a: String, b: String, cb: Callable) -> void:
 	choice_prompt.text = text

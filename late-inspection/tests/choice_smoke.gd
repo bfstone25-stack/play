@@ -25,7 +25,7 @@ func _init() -> void:
 	hud._pick(0)
 	await process_frame
 	await process_frame
-	if not game.flags["photo_kept"] or game.stage != 4:
+	if not game.flags["photo_kept"] or game.stage != 5:
 		push_error("expected stain choice to set evidence flag and advance")
 		quit(3)
 		return
