@@ -258,9 +258,9 @@ const ZH := {
 const JA := {
 	"lang.caption": "言語",
 	"splash.title": "深夜検査：404号室",
-	"splash.hint": "クリックで入る  ·  WASD  マウス  Eで調べる  Esc",
+	"splash.hint": "クリックで入る  ·  移動キー  マウス  調べる  一時停止",
 	"splash.start": "建物に入る",
-	"pause.title": "検査は停止中\nEscで再開 · 戻るとマウスは再ロック",
+	"pause.title": "検査は停止中\n一時停止キーで再開 · 戻るとマウスは再ロック",
 	"pause.resume": "検査を続ける",
 	"pause.restart": "到着からやり直す",
 	"doc.continue": "続ける  ›",
@@ -418,9 +418,9 @@ const ES := {
 const KO := {
 	"lang.caption": "언어",
 	"splash.title": "심야 점검: 404호",
-	"splash.hint": "클릭해서 들어가기  ·  WASD  마우스  E 조사  Esc",
+	"splash.hint": "클릭해서 들어가기  ·  이동키  마우스  조사  일시정지",
 	"splash.start": "건물 들어가기",
-	"pause.title": "점검이 멈춤\nEsc로 계속 · 돌아오면 마우스가 다시 잠김",
+	"pause.title": "점검이 멈춤\n일시정지 키로 계속 · 돌아오면 마우스가 다시 잠김",
 	"pause.resume": "점검 계속",
 	"pause.restart": "도착부터 다시",
 	"doc.continue": "계속  ›",

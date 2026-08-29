@@ -1,9 +1,8 @@
 extends RefCounted
 class_name UiFont
 
-## System Latin first. CJK binds from an OS font file on desktop, or from
-## browser/system faces on Web. Never set a packed TTF as the project theme
-## font — Godot HTML5 Compatibility often leaves those as tofu boxes.
+## System Latin first (no allow_system_fallback). CJK/Hangul from FontFile
+## paths that actually have those glyphs. Packed TTF is never the theme font.
 
 static var _face: Font
 
@@ -14,16 +13,15 @@ static func face() -> Font:
 	if _face:
 		return _face
 	var latin := SystemFont.new()
-	latin.allow_system_fallback = true
-	latin.font_names = PackedStringArray(["Arial", "Helvetica", "Noto Sans", "DejaVu Sans", "sans-serif"])
+	latin.allow_system_fallback = false
+	latin.font_names = PackedStringArray(["Arial", "Helvetica", "DejaVu Sans", "Liberation Sans", "Noto Sans"])
 	var extras: Array[Font] = []
-	if not OS.has_feature("web"):
-		var path := _os_cjk_file()
-		if path != "":
-			var ttf := FontFile.new()
-			if ttf.load_dynamic_font(path) == OK:
-				extras.append(ttf)
-	extras.append(_system_cjk())
+	for path in _font_files():
+		var ttf := FontFile.new()
+		if ttf.load_dynamic_font(path) == OK:
+			extras.append(ttf)
+	if OS.has_feature("web"):
+		extras.append(_web_cjk())
 	latin.fallbacks = extras
 	_face = latin
 	return _face
@@ -37,31 +35,33 @@ static func apply_button(b: Button) -> void:
 static func apply_3d(l: Label3D) -> void:
 	l.font = face()
 
-static func _system_cjk() -> Font:
+static func _web_cjk() -> Font:
 	var f := SystemFont.new()
 	f.allow_system_fallback = true
 	f.font_names = PackedStringArray([
-		"WenQuanYi Micro Hei", "文泉驛微米黑", "文泉驿微米黑",
-		"Droid Sans Fallback",
-		"Noto Sans CJK SC", "Noto Sans CJK JP", "Noto Sans CJK KR",
-		"Noto Sans SC", "Noto Sans JP", "Noto Sans KR",
-		"Source Han Sans SC", "Source Han Sans",
-		"Microsoft YaHei", "PingFang SC", "Hiragino Sans GB",
-		"Hiragino Sans", "Yu Gothic UI", "Yu Gothic",
-		"Malgun Gothic", "Apple SD Gothic Neo", "SimSun",
-		"AppleGothic", "sans-serif",
+		"Noto Sans CJK KR", "Malgun Gothic", "Apple SD Gothic Neo",
+		"Noto Sans CJK SC", "Noto Sans CJK JP", "Microsoft YaHei",
+		"PingFang SC", "Hiragino Sans", "Yu Gothic", "sans-serif",
 	])
 	return f
 
-static func _os_cjk_file() -> String:
+static func _font_files() -> Array[String]:
+	var out: Array[String] = []
 	for path in [
-		"/usr/share/fonts/truetype/wqy/wqy-microhei.ttc",
+		OS.get_environment("HOME").path_join(".local/share/fonts/NanumGothic.ttf"),
+		"/usr/share/fonts/truetype/nanum/NanumGothic.ttf",
 		"/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf",
+		"/usr/share/fonts/truetype/wqy/wqy-microhei.ttc",
 		"/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
-		"/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc",
+		"/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+		"C:/Windows/Fonts/malgun.ttf",
 		"C:/Windows/Fonts/msyh.ttc",
+		"/System/Library/Fonts/AppleSDGothicNeo.ttc",
 		"/System/Library/Fonts/PingFang.ttc",
 	]:
-		if FileAccess.file_exists(path):
-			return path
-	return ""
+		if path.begins_with("res://"):
+			if FileAccess.file_exists(path):
+				out.append(path)
+		elif FileAccess.file_exists(path):
+			out.append(path)
+	return out
