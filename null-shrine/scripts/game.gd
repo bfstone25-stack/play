@@ -51,6 +51,10 @@ const CURIO_ORDER := [
 	"black_ledger", "moon_coin", "saints_tooth", "crypt_heart",
 ]
 
+## Web exports built with the `slice` feature tag end once Night 1 is banked
+## (or lost). The full two-day run ships as the paid download.
+static var SLICE: bool = OS.has_feature("slice")
+
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -412,6 +416,8 @@ func _show_title() -> void:
 	log_label.visible = false
 	phase_label.text = Loc.t("brand")
 	header.text = Loc.t("title.tag")
+	if SLICE:
+		header.text += "\n" + Loc.t("title.slice")
 	title.text = Loc.t("title.name")
 	subtitle.text = Loc.t("brand")
 	detail.text = Loc.t("title.blurb") + "\n\n" + Loc.t("title.controls")
@@ -706,6 +712,9 @@ func _on_floor_risk() -> void:
 	_play("hit")
 	_log(Loc.t("log.floor", [state.health, state.resolve, state.curse]))
 	if state.phase == MidnightStateScript.Phase.DAY_2:
+		if SLICE:
+			_show_slice_end()
+			return
 		_log(Loc.t("log.recover_day"))
 		_show_shop()
 	elif state.phase == MidnightStateScript.Phase.FINAL:
@@ -746,6 +755,9 @@ func _combat(action: String) -> void:
 		return
 	_play("hit" if not result.get("won", false) else "loot")
 	if state.phase == MidnightStateScript.Phase.DAY_2:
+		if SLICE:
+			_show_slice_end()
+			return
 		_log(Loc.t("log.defeat_day"))
 		_show_shop()
 		return
@@ -788,12 +800,34 @@ func _advance_room() -> void:
 	if state.phase == old_phase:
 		_start_room()
 	elif state.phase == MidnightStateScript.Phase.DAY_2:
+		if SLICE:
+			_show_slice_end()
+			return
 		_play("coin")
 		_log(Loc.t("log.extract", [state.marks_bank]))
 		_show_shop()
 	else:
 		_play("appraise")
 		_show_final()
+
+
+func _show_slice_end() -> void:
+	stage.set_scene("result")
+	customer_portrait.visible = false
+	_set_ambience("shop")
+	item_grid.visible = false
+	log_label.visible = true
+	phase_label.text = Loc.t("slice.phase")
+	header.text = Loc.t("shop.header", [state.gold, state.health, state.resolve, state.curse, state.marks_bank])
+	title.text = Loc.t("slice.title")
+	subtitle.text = Loc.t("slice.sub")
+	detail.text = Loc.t("slice.body")
+	_clear(item_grid)
+	_clear(actions)
+	_hide_language_picker()
+	_button(Loc.t("btn.replay"), _start_run, true)
+	_button(Loc.t("btn.title"), _show_title)
+	footer_hint.text = Loc.t("slice.footer")
 
 
 func _show_final() -> void:

@@ -262,6 +262,12 @@ const EN := {
 	"ending.dawn_broker": "Dawn Broker",
 	"ending.quiet_seal": "Quiet Seal",
 	"ending.midnight_keeper": "Midnight Keeper",
+	"title.slice": "FREE BROWSER SLICE — DAY 1 + NIGHT 1",
+	"slice.phase": "FREE SLICE COMPLETE",
+	"slice.title": "The First Night Is Banked",
+	"slice.sub": "Day 1 and Night 1 complete · half the run",
+	"slice.body": "[color=#f1dfb0]The lamps are lit. The first marks are banked.[/color]\n\nThe complete edition continues: Day 2 customers Tamsin and Ivo, the Ossuary Market and the Foreclosure Chapel, the optional relic, and the final appraisal of the Heart of the Crypt — sell, seal, or keep.\n\nThree endings. Your pricing, mercy, and survival decide who owns the shop at dawn.",
+	"slice.footer": "Free slice · the full two-day run waits in the complete edition below.",
 }
 
 const ZH := {
@@ -428,6 +434,12 @@ const ZH := {
 	"ending.dawn_broker": "晨曦掌柜",
 	"ending.quiet_seal": "静默封印",
 	"ending.midnight_keeper": "午夜守藏人",
+	"title.slice": "免费试玩 —— 第一天 + 第一夜",
+	"slice.phase": "免费试玩完成",
+	"slice.title": "第一夜已入账",
+	"slice.sub": "第一天与第一夜完成 · 流程过半",
+	"slice.body": "[color=#f1dfb0]灯已点亮，第一批印记已入账。[/color]\n\n完整版还将继续：第二天的顾客谭姆辛与伊沃、骨市与赎当教堂、可选圣物，以及对地下密室之心的最终鉴定——出售、封印，或留下。\n\n三个结局。你的定价、仁慈与生存，决定黎明时店铺归谁。",
+	"slice.footer": "免费试玩 · 完整的两天流程在下方正式版中。",
 }
 
 const JA := {
@@ -594,6 +606,12 @@ const JA := {
 	"ending.dawn_broker": "夜明けの店主",
 	"ending.quiet_seal": "静かな封印",
 	"ending.midnight_keeper": "真夜中の守り手",
+	"title.slice": "無料スライス — 1日目 + 1夜目",
+	"slice.phase": "無料スライス完了",
+	"slice.title": "最初の夜は清算された",
+	"slice.sub": "1日目と1夜目を完了 · 折り返し",
+	"slice.body": "[color=#f1dfb0]ランプは灯り、最初の刻印は清算された。[/color]\n\n完全版では続きが待つ：2日目の客タムシンとイヴォ、納骨市と差押礼拝堂、任意の遺物、そして地下聖堂の心臓の最終鑑定——売るか、封じるか、手元に置くか。\n\n三つの結末。値付けと慈悲と生存が、夜明けの店の主を決める。",
+	"slice.footer": "無料スライス · 完全な二日間は下の完全版へ。",
 }
 
 const ES := {
@@ -760,6 +778,12 @@ const ES := {
 	"ending.dawn_broker": "Prestamista del alba",
 	"ending.quiet_seal": "Sello silencioso",
 	"ending.midnight_keeper": "Guardiana de medianoche",
+	"title.slice": "PRUEBA GRATIS — DÍA 1 + NOCHE 1",
+	"slice.phase": "PRUEBA GRATIS COMPLETA",
+	"slice.title": "La primera noche está cobrada",
+	"slice.sub": "Día 1 y Noche 1 completos · mitad del recorrido",
+	"slice.body": "[color=#f1dfb0]Las lámparas siguen encendidas. Las primeras marcas están cobradas.[/color]\n\nLa edición completa continúa: los clientes del Día 2, Tamsin e Ivo, el Mercado del Osario y la Capilla de la Ejecución, la reliquia opcional y la tasación final del Corazón de la Cripta — vender, sellar o quedárselo.\n\nTres finales. Tus precios, tu piedad y tu supervivencia deciden de quién es la tienda al amanecer.",
+	"slice.footer": "Prueba gratis · la partida completa de dos días espera en la edición de abajo.",
 }
 
 const KO := {
@@ -926,6 +950,12 @@ const KO := {
 	"ending.dawn_broker": "새벽의 주인",
 	"ending.quiet_seal": "고요한 봉인",
 	"ending.midnight_keeper": "한밤의 수호자",
+	"title.slice": "무료 체험 — 1일차 + 첫째 밤",
+	"slice.phase": "무료 체험 완료",
+	"slice.title": "첫 번째 밤이 입금되었다",
+	"slice.sub": "1일차 낮과 밤 완료 · 전반부",
+	"slice.body": "[color=#f1dfb0]등불은 켜졌고, 첫 인장은 입금되었다.[/color]\n\n완전판에서는 이어집니다: 2일차 손님 탐신과 이보, 납골 시장과 압류 예배당, 선택 성물, 그리고 지하 밀실의 심장 최종 감정——팔거나, 봉인하거나, 간직하거나.\n\n세 가지 결말. 가격과 자비와 생존이 새벽의 가게 주인을 결정합니다.",
+	"slice.footer": "무료 체험 · 이틀 전체 런은 아래 완전판에서.",
 }
 
 
