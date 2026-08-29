@@ -3,9 +3,9 @@
 ## Production contract
 
 - Standalone Godot 4.7 2D pixel shop-and-dungeon run.
-- Implementation is **WAITING** until Flat 404 passes verification. This document defines the future build; it authorizes no Product 3 code work.
-- Full run target: 15–20 minutes. One preparation phase, one fixed six-room crypt route, extraction or death, score recap.
-- Free build: complete shop plus rooms 1–3 and a mini-boss extraction. Full build: rooms 1–6, all relic tiers, final boss, ascension modifiers.
+- Products 1 and 2 passed verification; Product 3 production is authorized.
+- Full run target: 15–20 minutes. Opening/tutorial, Day 1 shop, Night 1 rooms 1–2, Day 2 shop, Night 2 rooms 3–4, final appraisal, and score recap.
+- The free slice is the entire two-day/two-night run with all three endings. A potential paid expansion may add deeper crypt floors, additional curios, customers, and challenge modifiers, but never removes or interrupts this complete run.
 - No gacha, premium currency, energy timer, or randomized paid advantage.
 
 ## Player promise
@@ -257,9 +257,73 @@ Ranks: D `0–39`, C `40–79`, B `80–119`, A `120–169`, S `170+`.
 - 3 result scenes: Repossessed, Safe Ledger, Dawn Balance (with Forgive/Foreclose variants).
 - 24 mandatory dialogue lines, 18 conditional claimant/item lines, 12 inspectable environment lines.
 
-## Implementation checklist — WAITING
+## Two-day production amendment (authoritative)
 
-- [ ] Do not begin until Product 1 gate is accepted and Product 2 is separately completed/authorized.
+The sections below override the original six-room route wherever they conflict. The original encounter arithmetic remains a source for names, flavor, and deterministic balancing.
+
+### Curated curios
+
+| Curio | Base | Curse / risk | Demand / synergy |
+|---|---:|---|---|
+| Brass wedding ring | 18 | none | Widow pays +8; peaceful Widow Voss route |
+| Bone-handled key | 14 | −1 value if identity stays hidden | Collector pays +6; opens Ossuary cache |
+| Child's music box | 20 | Bell Warden wakes if overpriced | Child pays +8; interrupts Bell Warden |
+| Cracked dueling pistol | 24 | −1 health if kept overnight | Veteran pays +7; 3-damage dungeon shot |
+| Black ledger | 30 | +1 curse after each crypt room | Scholar pays +10; doubles mark rewards |
+| Moon coin | 16 | haggler discount pressure | Mystic pays +7; ward against first curse |
+| Saint's tooth | 22 | hazard damage +1 while carried | Collector pays +8; elite armor −1 |
+| Heart of the Crypt | 40 | core ending risk | final choice: sell, seal, or keep |
+
+Appraisal reveals identity, exact value, curse, and demand. Pricing is `low`, `fair`, or `high`; low prices sell reliably for −20%, fair prices follow demand, and high prices need matching demand or successful negotiation.
+
+### Customers and transaction behavior
+
+1. Mara Voss, widow: pays a premium for memory objects and accepts a compassionate price.
+2. Orin Pike, collector: wants keys/bones, rejects cursed goods unless fully identified.
+3. Tamsin Reed, veteran: wants weapons, negotiates high prices, respects a truthful curse warning.
+4. Ivo Glass, mystic: wants occult goods, pays more as curse rises, but exploits low prices.
+5. The Bell Child, tutorial customer: buys the Rusted Bell at a scripted fair price and teaches appraisal, pricing, and sale.
+
+At least four customer offers occur in each normal run. Rejected or failed offers preserve the item; every offer shows demand, quoted price, and consequence.
+
+### Required sequence and decisions
+
+1. Opening inheritance and Bell Child tutorial sale.
+2. Day 1: appraise starting stock, set shelf prices, serve Mara and Orin, then choose one curio to carry.
+3. Night 1, Receipt Stair: movement tutorial, Receipt Moth combat, loose floor curse.
+4. Night 1, Widow's Niche: Widow Voss claimant; ring/Resolve or combat; extraction banks loot and marks.
+5. Day 2: identities and curses become legible, serve Tamsin and Ivo, negotiate one offer, choose keep/sell stock.
+6. Night 2, Ossuary Market: spike hazard plus Debt Hand elite; Bone Key opens optional Saint's Tooth cache.
+7. Night 2, Foreclosure Chapel: Bell Warden encounter, optional Moon Seal, Heart of the Crypt extraction.
+8. Final appraisal: `SELL` the Heart, `SEAL` it, or `KEEP` it.
+
+Meaningful decisions are: price posture, truthfully reveal a curse or conceal it, claimant mercy or force, optional relic risk, and final Heart disposition. Gold, mercy, curse, health, debt, survival, and those choices determine outcome text and score.
+
+### Loss and recovery
+
+- Health at zero loses all unbanked loot and unbanked marks and returns Nara to the shop with 3 health and 5 emergency crowns.
+- Night 1 defeat continues to Day 2; Night 2 defeat proceeds to final appraisal with a cracked Heart worth less. There is no dead-run trap.
+- Banked inventory, gold, prior sales, customer trust, and mercy never disappear on defeat.
+
+### Three complete outcomes
+
+- **Dawn Broker / 晨曦掌柜**: sell the Heart. High gold improves the business result; concealed curses add debt.
+- **Quiet Seal / 静默封印**: seal the Heart. Requires sacrifice of gold and rewards mercy, identity clues, and low curse.
+- **Midnight Keeper / 午夜守藏人**: keep the Heart. Survival, health, optional relic, and managed curse determine whether Nara controls it.
+
+Every outcome is reachable on a deterministic route and includes an economy/inventory/survival breakdown, score, rank, and replay prompt.
+
+### Timing and presentation contract
+
+- A first normal read-and-play route contains 55–70 deliberate interactions, four movement rooms, four encounters, four customer offers, appraisal copy, and ending recap; measured target is 15–20 minutes without timers or forced waiting.
+- Internal viewport is 480×270, nearest filtered, integer scaled. Shop and crypt use procedural pixel tiles, silhouettes, object icons, particles, and short restrained screen shake rather than placeholder ColorRects.
+- Every action has a minimum 44 CSS-pixel-equivalent touch target. Dungeon supports keyboard, click/tap destination movement, and an on-screen directional pad plus action button.
+- Pause, title, restart, tutorial/log history, and guarded progression are available without keyboard input.
+- Audio cues include bell, appraisal shimmer, coin sale, hit, loot, and distinct shop/crypt ambience.
+
+## Implementation checklist — PRODUCTION
+
+- [x] Product 1 and Product 2 accepted; Product 3 authorized.
 - [ ] Implement exact integer economy in one tested data resource.
 - [ ] Build shop decisions, pack capacity, and buyback.
 - [ ] Implement deterministic turn engine and enemy pattern display.
@@ -271,10 +335,10 @@ Ranks: D `0–39`, C `40–79`, B `80–119`, A `120–169`, S `170+`.
 ## Acceptance criteria
 
 1. Full run lasts 15–20 minutes and never depends on random room order.
-2. Every number in runtime data matches this document.
-3. A player can win room 3 with at least three distinct opening builds.
-4. The full boss can be beaten with no pistol and with no Black Ledger.
-5. Free build contains a complete scored run and clearly states the boundary only after room-3 victory.
+2. Every number in runtime data matches the authoritative amendment.
+3. A player can finish all four rooms with at least three distinct shop builds.
+4. Night 2 can be completed with no pistol and with no Black Ledger.
+5. Free build contains both days, both nights, all four rooms, all three outcomes, and complete scoring.
 6. No monetization interrupts the shop, combat, death, or extraction loop.
 7. Automated tests exhaustively validate purchases, pack capacity, enemy patterns, item effects, extraction, death, and score thresholds.
-8. No implementation begins during the current Product 1 phase.
+8. Loss recovery continues the run while removing only unbanked loot and marks.
