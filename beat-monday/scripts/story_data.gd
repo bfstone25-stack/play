@@ -442,7 +442,7 @@ static func word_count() -> int:
 		for line in area.opening:
 			count += _words(line[1])
 		for hotspot in area.hotspots:
-			for line in hotspot[4]:
+			for line in hotspot[3]:
 				count += _words(line[1])
 		for line in area.get("transition", []):
 			count += _words(line[1])
@@ -460,7 +460,7 @@ static func route_word_count(flags: Dictionary) -> int:
 		for line in area.opening:
 			count += _words(line[1])
 		for hotspot in area.hotspots:
-			for line in hotspot[4]:
+			for line in hotspot[3]:
 				if line[0] != "CONDITIONAL":
 					count += _words(line[1])
 		for line in area.get("transition", []):

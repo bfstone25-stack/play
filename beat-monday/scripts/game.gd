@@ -117,7 +117,7 @@ func _on_hotspot(id: String) -> void:
 			current_hotspot = id
 			pending = "hotspot"
 			soundscape.cue(_cue_for(id))
-			hud.show_dialogue(_expand(hotspot[4]))
+			hud.show_dialogue(_expand(hotspot[3]))
 			return
 
 func on_dialogue_done() -> void:
