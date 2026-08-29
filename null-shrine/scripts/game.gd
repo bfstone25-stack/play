@@ -2,7 +2,8 @@ extends Control
 
 const MidnightStateScript = preload("res://scripts/game_state.gd")
 const PixelStageScript = preload("res://scripts/pixel_stage.gd")
-const CJKFont = preload("res://assets/fonts/wqy-microhei.ttc")
+const PixelBodyFont = preload("res://assets/fonts/midnight_pixel_12.fnt")
+const PixelDisplayFont = preload("res://assets/fonts/midnight_pixel_16.fnt")
 
 var state
 var stage
@@ -75,7 +76,8 @@ func _build_ui() -> void:
 	phase_label = Label.new()
 	phase_label.text = "MIDNIGHT PAWN"
 	phase_label.add_theme_color_override("font_color", GOLD)
-	phase_label.add_theme_font_size_override("font_size", 14)
+	phase_label.add_theme_font_override("font", PixelDisplayFont)
+	phase_label.add_theme_font_size_override("font_size", 16)
 	top.add_child(phase_label)
 	header = Label.new()
 	header.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -113,7 +115,8 @@ func _build_ui() -> void:
 	title = Label.new()
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	title.add_theme_color_override("font_color", GOLD)
-	title.add_theme_font_size_override("font_size", 18)
+	title.add_theme_font_override("font", PixelDisplayFont)
+	title.add_theme_font_size_override("font_size", 16)
 	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	title_row.add_child(title)
 	customer_portrait = TextureRect.new()
@@ -125,7 +128,7 @@ func _build_ui() -> void:
 	title_row.add_child(customer_portrait)
 	subtitle = Label.new()
 	subtitle.add_theme_color_override("font_color", MUTED)
-	subtitle.add_theme_font_size_override("font_size", 11)
+	subtitle.add_theme_font_size_override("font_size", 12)
 	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	info.add_child(subtitle)
 	detail = RichTextLabel.new()
@@ -146,7 +149,7 @@ func _build_ui() -> void:
 	log_label.custom_minimum_size.y = 42
 	log_label.fit_content = false
 	log_label.scroll_active = true
-	log_label.add_theme_font_size_override("normal_font_size", 10)
+	log_label.add_theme_font_size_override("normal_font_size", 12)
 	info.add_child(log_label)
 
 	actions = HBoxContainer.new()
@@ -157,7 +160,7 @@ func _build_ui() -> void:
 	footer_hint.text = "Click/tap controls · 点击即可游玩"
 	footer_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	footer_hint.add_theme_color_override("font_color", MUTED)
-	footer_hint.add_theme_font_size_override("font_size", 9)
+	footer_hint.add_theme_font_size_override("font_size", 12)
 	column.add_child(footer_hint)
 
 	audio_player = AudioStreamPlayer.new()
@@ -181,7 +184,8 @@ func _build_ui() -> void:
 	var paused := Label.new()
 	paused.text = "PAUSED / 暂停"
 	paused.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	paused.add_theme_font_size_override("font_size", 24)
+	paused.add_theme_font_override("font", PixelDisplayFont)
+	paused.add_theme_font_size_override("font_size", 16)
 	pause_box.add_child(paused)
 	for spec in [["RESUME / 继续", "_resume"], ["RESTART RUN / 重开本局", "_restart"], ["TITLE / 返回标题", "_title"]]:
 		var button := Button.new()
@@ -216,14 +220,14 @@ func _ui_style(region: Rect2) -> StyleBoxTexture:
 
 func _apply_theme() -> void:
 	var theme := Theme.new()
-	theme.default_font = CJKFont
+	theme.default_font = PixelBodyFont
 	theme.default_font_size = 12
 	theme.set_stylebox("normal", "Button", _ui_style(Rect2(0, 0, 64, 32)))
 	theme.set_stylebox("hover", "Button", _ui_style(Rect2(64, 0, 64, 32)))
 	theme.set_stylebox("pressed", "Button", _ui_style(Rect2(192, 0, 64, 32)))
 	theme.set_color("font_color", "Button", CREAM)
 	theme.set_color("font_hover_color", "Button", Color.WHITE)
-	theme.set_font_size("font_size", "Button", 11)
+	theme.set_font_size("font_size", "Button", 12)
 	theme.set_stylebox("panel", "PanelContainer", _ui_style(Rect2(0, 0, 64, 32)))
 	self.theme = theme
 

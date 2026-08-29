@@ -39,6 +39,34 @@ def dither(d, box, a, b, step=4):
             rect(d, (x, y, x, y), b)
 
 
+def cluster(d, x, y, color, mirror=False):
+    """Small hand-shaped material chip; never a random noise field."""
+    points = [(0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (3, 1), (1, 2), (2, 2)]
+    for px, py in points:
+        xx = x - px if mirror else x + px
+        rect(d, (xx, y + py, xx, y + py), color)
+
+
+def plaster_wear(d, box):
+    x1, y1, x2, y2 = box
+    # Panel seams establish scale; concentrated chips keep broad areas calm.
+    for x in range(x1 + 58, x2, 59):
+        line(d, [(x, y1 + 3), (x, y2 - 2)], SHOP[1])
+        line(d, [(x + 1, y1 + 3), (x + 1, y2 - 2)], "#51303a")
+    for x, y, mirror in [
+        (x1 + 8, y1 + 15, False), (x1 + 43, y1 + 78, True),
+        (x1 + 118, y1 + 27, False), (x2 - 16, y1 + 64, True),
+        (x2 - 72, y2 - 20, False),
+    ]:
+        cluster(d, x, y, SHOP[1], mirror)
+    # Two authored cracks, one cable run, and a vent replace empty plaster.
+    line(d, [(x1 + 26, y1 + 95), (x1 + 29, y1 + 90), (x1 + 27, y1 + 84), (x1 + 31, y1 + 80)], SHOP[1])
+    line(d, [(x2 - 92, y1 + 7), (x2 - 92, y1 + 30), (x2 - 83, y1 + 38)], OUTLINE, 2)
+    rect(d, (x2 - 55, y1 + 9, x2 - 21, y1 + 24), SHOP[1], OUTLINE)
+    for yy in range(y1 + 12, y1 + 22, 3):
+        line(d, [(x2 - 51, yy), (x2 - 25, yy)], SHOP[4])
+
+
 def plank_floor(d, y0=188):
     dither(d, (0, y0, SW - 1, SH - 1), SHOP[3], SHOP[2], 6)
     for y in range(y0, SH, 12):
@@ -46,6 +74,11 @@ def plank_floor(d, y0=188):
     for row, y in enumerate(range(y0, SH, 12)):
         for x in range((row % 2) * 22, SW, 44):
             line(d, [(x, y), (x, min(SH - 1, y + 11))], SHOP[1])
+    for x, y in [(18, y0 + 8), (74, y0 + 29), (141, y0 + 14), (231, y0 + 39), (278, y0 + 19)]:
+        line(d, [(x, y), (x + 9, y)], SHOP[5])
+        cluster(d, x + 3, y + 2, SHOP[2])
+    # Hard-edged counter shadow creates foreground separation.
+    dither(d, (0, y0, SW - 1, y0 + 7), SHOP[1], SHOP[2], 4)
 
 
 def stone_floor(d, y0=176, cold=0):
@@ -56,6 +89,9 @@ def stone_floor(d, y0=176, cold=0):
         for x in range(-shift, SW, 24):
             rect(d, (x, y, x + 22, y + 10), colors[0], colors[1])
             line(d, [(x + 2, y + 2), (x + 12, y + 2)], CRYPT[3 + cold])
+    for x, y in [(7, y0 + 9), (63, y0 + 31), (126, y0 + 15), (184, y0 + 46), (256, y0 + 24)]:
+        cluster(d, x, y, CRYPT[0])
+    dither(d, (0, y0, SW - 1, y0 + 8), CRYPT[0], CRYPT[1], 4)
 
 
 def brick_wall(d, box, palette=CRYPT):
@@ -66,6 +102,12 @@ def brick_wall(d, box, palette=CRYPT):
         for x in range(x1 - shift, x2, 18):
             rect(d, (x, y, min(x + 16, x2), min(y + 9, y2)), palette[2], palette[0])
             line(d, [(x + 2, y + 2), (min(x + 11, x2), y + 2)], palette[3])
+            if (row * 7 + x // 18) % 9 == 2:
+                cluster(d, x + 5, y + 5, palette[1], (row % 2) == 0)
+    # Localized damp ramps and cracks avoid a mechanically perfect tile wall.
+    for xx, yy in [(x1 + 17, y1 + 28), (x1 + 143, y1 + 91), (x2 - 38, y1 + 55)]:
+        dither(d, (xx, yy, min(xx + 18, x2), min(yy + 17, y2)), palette[1], palette[2], 4)
+    line(d, [(x1 + 72, y1 + 17), (x1 + 75, y1 + 29), (x1 + 70, y1 + 38), (x1 + 74, y1 + 49)], palette[0])
 
 
 def shelf(d, x, y, w, rows=2):
@@ -225,7 +267,11 @@ def shop_scene():
     im = Image.new("RGBA", (SW, SH), SHOP[1])
     d = ImageDraw.Draw(im)
     dither(d, (0, 0, SW - 1, 187), SHOP[2], "#51303a", 8)
+    plaster_wear(d, (0, 20, SW - 1, 187))
     rect(d, (0, 0, SW - 1, 19), SHOP[3]); line(d, [(0, 19), (SW, 19)], SHOP[5], 2)
+    for x in range(8, SW, 42):
+        rect(d, (x, 4, x + 25, 8), SHOP[2])
+        cluster(d, x + 3, 10, SHOP[5])
     # Window, shelving, clock, tools, counter and visible stories.
     rect(d, (15, 30, 76, 102), SHOP[3], OUTLINE)
     rect(d, (20, 35, 71, 96), "#102126", GOLD[2])
@@ -249,6 +295,9 @@ def shop_scene():
     line(d, [(149, 173), (157, 181)], GOLD[4], 3)
     curio(d, 189, 154, 0)
     book(d, 78, 159, RED[2], False); book(d, 81, 153, VIOLET[2], False)
+    for x in (31, 64, 211, 261):
+        line(d, [(x, 155), (x + 14, 155)], SHOP[5])
+        cluster(d, x + 4, 176, SHOP[2])
     plank_floor(d, 188)
     return im
 
@@ -267,6 +316,12 @@ def title_scene():
     shelf(d, 67, 100, 72, 1); shelf(d, 162, 100, 72, 1)
     curio(d, 86, 113, 0); curio(d, 112, 113, 2); curio(d, 178, 113, 5); curio(d, 205, 111, 7)
     rect(d, (82, 17, 218, 45), SHOP[3], OUTLINE); rect(d, (88, 22, 212, 40), "#1a1118", GOLD[4])
+    for x, y in [(12, 22), (25, 151), (271, 62), (280, 184), (57, 201)]:
+        cluster(d, x, y, "#0c0b12")
+    rect(d, (17, 12, 21, 198), "#10131c", CRYPT[4])
+    for y in (38, 97, 157):
+        rect(d, (14, y, 24, y + 3), CRYPT[3])
+    rect(d, (91, 25, 94, 28), GOLD[2]); rect(d, (206, 25, 209, 28), GOLD[2])
     # Crypt stair visible under the shop threshold.
     for i in range(7):
         x1, x2, y = 76 + i * 12, 224 - i * 12, 184 + i * 9
@@ -292,6 +347,11 @@ def dungeon_scene(room):
         rect(d, (14, 29, 59, 84), "#121a26", CRYPT[4])
         for y in range(37, 78, 8):
             line(d, [(20, y), (52, y)], "#d8c7ae")
+        # Ledger cables and wall receipts tell the route before combat.
+        line(d, [(58, 18), (58, 98), (86, 124), (86, 166)], VIOLET[2], 2)
+        for x, y in [(211, 23), (236, 49), (267, 72)]:
+            rect(d, (x, y, x + 14, y + 20), "#d8c7ae", OUTLINE)
+            line(d, [(x + 3, y + 5), (x + 11, y + 5)], RED[3])
     elif room == 1:
         brick_wall(d, (0, 0, 299, 175))
         # Widow niche, memorial flowers and ring plinth.
@@ -303,6 +363,10 @@ def dungeon_scene(room):
             line(d, [(x + 6, 110), (x + 2, 94)], TEAL[3], 2)
             rect(d, (x - 2, 90, x + 5, 97), VIOLET[4])
         rect(d, (131, 137, 169, 170), CRYPT[4], OUTLINE); curio(d, 137, 140, 0)
+        for x in (17, 281):
+            line(d, [(x, 22), (x, 135)], TEAL[2], 2)
+            for y in (46, 83, 122):
+                cluster(d, x - 2, y, TEAL[3], x > 100)
     elif room == 2:
         brick_wall(d, (0, 0, 299, 175))
         # Ossuary market: coherent stalls, skull shelves and bone spike hazard.
@@ -318,6 +382,9 @@ def dungeon_scene(room):
         for i in range(7):
             x = 92 + i * 17
             d.polygon([(x, 176), (x + 8, 140 - (i % 2) * 9), (x + 16, 176)], fill=RED[3], outline=OUTLINE)
+        for x in (31, 119, 233):
+            line(d, [(x, 54), (x + 43, 54)], SHOP[5])
+            cluster(d, x + 8, 123, SHOP[1])
     else:
         # Chapel architecture and bell hazards.
         brick_wall(d, (0, 0, 299, 175))
@@ -332,6 +399,9 @@ def dungeon_scene(room):
         rect(d, (111, 141, 189, 174), SHOP[3], OUTLINE)
         rect(d, (121, 132, 179, 145), RED[2], GOLD[3])
         line(d, [(127, 138), (173, 138)], RED[5])
+        for x in (60, 239):
+            line(d, [(x, 64), (x + (-7 if x < 100 else 7), 118)], VIOLET[2], 2)
+            cluster(d, x - 2, 121, VIOLET[3], x > 100)
     stone_floor(d, 176)
     # Four location-specific exit doors.
     rect(d, (264, 111, 294, 177), CRYPT[1], CRYPT[5])
