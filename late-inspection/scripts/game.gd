@@ -83,7 +83,7 @@ func _spawn_stage(s: int) -> void:
 		if item["kind"] == "choice":
 			_choice(pos, item["id"], item["prompt"], item["text"], item["a"], item["b"])
 		else:
-			_note(pos, item["id"], item["prompt"], item["text"])
+			_note(pos, item["id"], item["prompt"], item["text"] + StoryContent.commentary(item["id"]))
 	if $World.has_method("stage_event"):
 		$World.stage_event(s, flags)
 
