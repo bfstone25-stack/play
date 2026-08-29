@@ -89,7 +89,10 @@ def build(size: int, chars: list[str]) -> tuple[int, tuple[int, int]]:
 
     lines = [
         f'info face="Midnight Pixel {size}" size={size} bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=0 aa=1 padding=0,0,0,0 spacing=0,0 outline=0',
-        f"common lineHeight={size + 2} base={size} scaleW={ATLAS_WIDTH} scaleH={atlas_height} pages=1 packed=0 alphaChnl=1 redChnl=4 greenChnl=4 blueChnl=4",
+        # Godot's BMFont loader treats four zero channel descriptors as a
+        # plain RGBA8 color atlas. Alpha-only channel metadata is interpreted
+        # as a separate outline plane and is rejected without outline data.
+        f"common lineHeight={size + 2} base={size} scaleW={ATLAS_WIDTH} scaleH={atlas_height} pages=1 packed=0 alphaChnl=0 redChnl=0 greenChnl=0 blueChnl=0",
         f'page id=0 file="{atlas_name}"',
         f"chars count={len(chars)}",
     ]
