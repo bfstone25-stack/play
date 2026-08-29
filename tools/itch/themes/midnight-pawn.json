@@ -1,13 +1,10 @@
 {
-  "bg_color": "#100e18",
-  "bg2_color": "#1a1526",
-  "text_color": "#e8dff0",
-  "link_color": "#e8c86a",
-  "button_color": "#e8c86a",
-  "font_family": "lato",
-  "header_font_family": "pixel",
+  "bg_color": "#100d18",
+  "bg2_color": "#201928",
+  "text_color": "#f1dfb0",
+  "link_color": "#e8b84a",
+  "font_family": "pixel",
   "font_size": "large",
   "screenshots_loc": "sidebar",
-  "default_screenshots_loc": "hidden",
-  "embed_background_alpha": 0
+  "default_screenshots_loc": "hidden"
 }

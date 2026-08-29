@@ -248,6 +248,8 @@ def full_fields_current(html: str, token: str) -> dict:
             self._ta = None
             self._buf = []
             self._sel = None
+            self._opt_val = None
+            self._opt_sel = False
 
         def handle_starttag(self, tag, attrs):
             a = dict(attrs)
@@ -266,6 +268,9 @@ def full_fields_current(html: str, token: str) -> dict:
                 self._buf = []
             elif tag == "select" and name:
                 self._sel = name
+            elif tag == "option" and self._sel:
+                self._opt_val = a.get("value") or ""
+                self._opt_sel = "selected" in a
 
         def handle_data(self, data):
             if self._ta:
@@ -275,6 +280,10 @@ def full_fields_current(html: str, token: str) -> dict:
             if tag == "textarea" and self._ta:
                 self.fields[self._ta] = htmlmod.unescape("".join(self._buf))
                 self._ta = None
+            elif tag == "option" and self._sel:
+                if self._opt_sel or self._sel not in self.fields:
+                    self.fields[self._sel] = self._opt_val or ""
+                self._opt_val = None
             elif tag == "select":
                 self._sel = None
 
@@ -305,8 +314,9 @@ def full_fields_current(html: str, token: str) -> dict:
             fields["embed[fullscreen]"] = "on"
         if eo.get("mobile_friendly"):
             fields["embed[mobile_friendly]"] = "on"
-    if state.get("min_price") is not None:
-        fields["game[min_price]"] = "%.2f" % (int(state["min_price"]) / 100.0)
+    min_price = int(state.get("min_price") or 0)
+    fields["game[payment_mode]"] = "paid" if min_price > 0 else "free"
+    fields["game[min_price]"] = "%.2f" % (min_price / 100.0)
     if state.get("suggested_price"):
         fields["game[suggested_price]"] = "%.2f" % (int(state["suggested_price"]) / 100.0)
     if state.get("published"):
@@ -362,22 +372,66 @@ def cmd_embedbg(args) -> None:
 
 
 def cmd_theme(args) -> None:
+    """Full layout[...] form POST — the theme endpoint replaces unspecified
+    fields with defaults, so always send the complete set."""
     opener, cookies = get_opener()
     pub_url = f"https://{args.user}.itch.io/{args.slug}"
-    theme, submit_url, token = theme_state(opener, cookies, pub_url)
-    if args.colors:
-        colors = json.loads((ROOT / args.colors).read_text())
-        theme.update(colors)
+    _, submit_url, token = theme_state(opener, cookies, pub_url)
+    colors = json.loads((ROOT / args.colors).read_text())
+    fields = {
+        "csrf_token": token,
+        "layout[bg_color]": colors["bg_color"],
+        "layout[bg2_color]": colors["bg2_color"],
+        "layout[text_color]": colors["text_color"],
+        "layout[link_color]": colors["link_color"],
+        "layout[font_family]": colors.get("font_family", "lato"),
+        "layout[font_size]": colors.get("font_size", "large"),
+        "layout[screenshots_loc]": colors.get("screenshots_loc", "sidebar"),
+        "layout[default_screenshots_loc]": colors.get("default_screenshots_loc", "hidden"),
+    }
+    if colors.get("button_color"):
+        fields["layout[button_color]"] = colors["button_color"]
+    if colors.get("header_font_family"):
+        fields["layout[header_font_family]"] = colors["header_font_family"]
     if args.embedbg_id:
         saved = json.loads((ROOT / f"embedbg-{args.id}.json").read_text())
         img = saved.get("upload") or saved.get("image") or saved
-        theme["embed_background_image"] = {
-            "id": img.get("id"),
-            "url": img.get("url"),
-            "thumb_url": img.get("thumb_url") or img.get("url"),
-        }
-    code, _, body = post_form(opener, submit_url, {"csrf_token": token, "theme": json.dumps(theme)})
+        fields["layout[embed_background_image][image_id]"] = str(img.get("id"))
+        fields["layout[embed_background_image][alpha]"] = "0"
+    code, _, body = post_form(opener, submit_url, fields)
     print(f"theme -> {code} {body[:200]}")
+
+
+def cmd_embedbg_apply(args) -> None:
+    """ITCH.md-documented path: layout[embed_background_image][image_id] form field."""
+    opener, cookies = get_opener()
+    pub_url = f"https://{args.user}.itch.io/{args.slug}"
+    _, submit_url, token = theme_state(opener, cookies, pub_url)
+    saved = json.loads((ROOT / f"embedbg-{args.id}.json").read_text())
+    img = saved.get("upload") or saved.get("image") or saved
+    img_id = img.get("id")
+    fields = {
+        "csrf_token": token,
+        "layout[embed_background_image][image_id]": str(img_id),
+    }
+    code, _, body = post_form(opener, submit_url, fields)
+    print(f"embedbg-apply -> {code} {body[:200]} (image_id {img_id})")
+
+
+def cmd_retire(args) -> None:
+    """Unlist an old page (restricted) without touching its content."""
+    opener, _ = get_opener()
+    html, token = edit_page(opener, args.id)
+    fields = full_fields_current(html, token)
+    fields["game[published]"] = "restricted"
+    code, _, body = post_form(opener, f"https://itch.io/game/edit/{args.id}", fields)
+    errs = errors_of(body)
+    print(f"retire -> {code}", ("ERRORS " + json.dumps(errs)) if errs else "OK")
+    html2, _ = edit_page(opener, args.id)
+    state = embedded_state(html2)
+    print(json.dumps({"slug": (state.get("game") or {}).get("slug"),
+                      "published": state.get("published"),
+                      "restricted": state.get("restricted")}))
 
 
 def cmd_themestate(args) -> None:
@@ -445,6 +499,16 @@ def main() -> int:
     p.add_argument("--colors")
     p.add_argument("--embedbg-id", action="store_true")
     p.set_defaults(f=cmd_theme)
+
+    p = sub.add_parser("embedbg-apply")
+    p.add_argument("id", type=int)
+    p.add_argument("--slug", required=True)
+    p.add_argument("--user", default="bfstone25-stack")
+    p.set_defaults(f=cmd_embedbg_apply)
+
+    p = sub.add_parser("retire")
+    p.add_argument("id", type=int)
+    p.set_defaults(f=cmd_retire)
 
     p = sub.add_parser("themestate")
     p.add_argument("--slug", required=True)
