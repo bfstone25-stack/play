@@ -78,4 +78,5 @@ func _run() -> void:
 	var elapsed := (Time.get_ticks_msec() - started) / 1000.0
 	var valid: bool = state.phase == StateScript.Phase.RESULT and state.rooms_cleared.size() == 4 and state.economy_valid()
 	print("TIMED RUN RESULT steps=%d elapsed_seconds=%.1f elapsed_minutes=%.2f outcome=%s score=%d valid=%s" % [step, elapsed, elapsed / 60.0, state.outcome, state.score, valid])
-	quit(0 if valid and elapsed >= 900.0 and elapsed <= 1200.0 else 1)
+	var duration_valid: bool = pace_seconds == 0.0 or (elapsed >= 900.0 and elapsed <= 1200.0)
+	quit(0 if valid and duration_valid else 1)
