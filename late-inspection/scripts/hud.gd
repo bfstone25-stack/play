@@ -397,7 +397,7 @@ func set_pause(value: bool) -> void:
 	pause_panel.visible = value
 	mouse_filter = Control.MOUSE_FILTER_STOP if value else Control.MOUSE_FILTER_IGNORE
 
-func show_ending(t: String, beats: Array) -> void:
+func show_ending(t: String, beats: Array, thanks_key := "ending.thanks") -> void:
 	ending_title.text = t
 	ending_beats = beats
 	ending_index = 0
@@ -409,7 +409,7 @@ func show_ending(t: String, beats: Array) -> void:
 	var pages: Array = [{"speaker": "SYSTEM", "body": t}]
 	for beat in beats:
 		pages.append_array(VnChrome.parse_text(str(beat)))
-	pages.append({"speaker": "SYSTEM", "body": Loc.t("ending.thanks")})
+	pages.append({"speaker": "SYSTEM", "body": Loc.t(thanks_key)})
 	vn.show_lines(pages, true, Callable(), true)
 	document_panel = vn.nvl_root
 	_sync_mouse()

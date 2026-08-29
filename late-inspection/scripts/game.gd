@@ -3,6 +3,12 @@ extends Node3D
 ## Flat 404 production episode. The same flag resolver is used by play,
 ## deterministic route verification, and automated progression tests.
 
+## Web exports built with the `slice` feature tag stop after the player
+## enters Flat 404 and reads the checklist (chapters I–II plus the threshold
+## beat). The full episode ships as the paid download.
+static var SLICE: bool = OS.has_feature("slice")
+const SLICE_LAST_STAGE := 2
+
 func _chapter(i: int) -> String:
 	return Loc.t("ch.%d" % i)
 
@@ -35,10 +41,16 @@ func _commentary(id: String) -> String:
 			return StoryContent.commentary(id)
 
 
+func _title_card() -> String:
+	var card: String = Loc.t("title.card")
+	if SLICE:
+		card += "\n" + Loc.t("title.slice")
+	return card
+
 func on_locale_changed() -> void:
 	if hud == null:
 		return
-	hud.show_title(Loc.t("title.card"))
+	hud.show_title(_title_card())
 	hud.set_chapter(_chapter(chapter_index), hud.clock.text if hud.clock else "01:47")
 	hud.set_objective(Loc.t(objective_key))
 	if $World.has_method("refresh_locale"):
@@ -110,7 +122,7 @@ func _ready() -> void:
 	var amb := Node.new()
 	amb.set_script(preload("res://scripts/ambience.gd"))
 	add_child(amb)
-	hud.show_title(Loc.t("title.card"))
+	hud.show_title(_title_card())
 	hud.set_chapter(_chapter(0), "01:47")
 	objective_key = "obj.0"
 	hud.set_objective(Loc.t(objective_key))
@@ -410,6 +422,9 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 	drone.volume_db = -22.0
 
 func _advance(next_stage: int, obj_key: String, next_chapter: int, clock: String) -> void:
+	if SLICE and next_stage > SLICE_LAST_STAGE:
+		_slice_end()
+		return
 	for prop in active_ids.values():
 		if is_instance_valid(prop) and prop.get("taken") != true:
 			prop.set("taken", true)
@@ -420,6 +435,20 @@ func _advance(next_stage: int, obj_key: String, next_chapter: int, clock: String
 	hud.set_objective(Loc.t(obj_key))
 	hud.set_chapter(_chapter(next_chapter), clock)
 	_spawn_stage(stage)
+
+func _slice_end() -> void:
+	ending = true
+	ending_id = "SLICE"
+	await_restart = true
+	player.locked = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	hud.set_prompt("")
+	drone.stop()
+	hud.show_ending(Loc.t("slice.end"), [
+		Loc.t("slice.beat.0"),
+		Loc.t("slice.beat.1"),
+		Loc.t("slice.beat.2"),
+	], "slice.thanks")
 
 func _resolve_ending() -> String:
 	if flags["final_open"] and flags["photo_kept"] and flags["pipe_answered"] and flags["iris_record"]:
