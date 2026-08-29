@@ -137,7 +137,7 @@ const EN := {
 
 const ZH := {
 	"splash.title": "深夜验房：404室",
-	"splash.hint": "点击进入  ·  WASD  鼠标  E 互动  Esc",
+	"splash.hint": "点击进入  ·  方向键  鼠标  互动键  暂停键",
 	"splash.start": "进入大楼",
 	"pause.title": "验房已暂停\nEsc 继续 · 返回时鼠标会重新锁定",
 	"pause.resume": "继续验房",
@@ -150,7 +150,7 @@ const ZH := {
 	"btn.restart": "重开",
 	"ending.thanks": "404室\n\n感谢你作见证。\n\n按 R 重新开始这次验房。",
 	"evidence": "证据 %02d / 23",
-	"prompt.prefix": "E / 点击  ",
+	"prompt.prefix": "互动键 / 点击  ",
 	"title.card": "404室\n一次深夜验房",
 	"ch.0": "第一章 — 下班之后",
 	"ch.1": "第二章 — 房屋已交还",
@@ -173,7 +173,7 @@ const ZH := {
 	"obj.followup": "阅读茶几上的通宵条款。",
 	"obj.clause": "检查被改过的钥匙，从猫眼向外看。",
 	"obj.final": "最后那一声敲击在前门等着。",
-	"note.stain_keep": "玛拉：先留证据。不可能的部分让佩尔解释。\n潮湿里，IRIS VALE 几个字母还在。",
+	"note.stain_keep": "玛拉：先留证据。不可能的部分让佩尔解释。\n潮湿里，被涂掉的住户名几个字母还在。",
 	"note.stain_wipe": "玛拉：反光。压缩坏了。做完这份工。\n字母糊成一只五指掌印。",
 	"note.pipe_yes": "玛拉敲三下。\n艾里斯，从铜管里：卧室。大衣后面。录下我。\n戴恩：你听见了。别让佩尔把它写成检修。",
 	"note.pipe_no": "阀门像被握住的手腕那样抗拒，然后转动。\n佩尔：很好。安静的楼才是安全的楼。",
