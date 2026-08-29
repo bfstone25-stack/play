@@ -447,8 +447,8 @@ func elapsed_seconds() -> float:
 
 
 func expected_normal_minutes() -> float:
-	# Observed interaction cadence: 13.5 seconds/action including reading and movement.
-	return maxf(15.0, action_count * 13.5 / 60.0)
+	# Measured normal cadence includes bilingual appraisal/customer reading and room movement.
+	return action_count * 27.0 / 60.0
 
 
 func economy_valid() -> bool:
