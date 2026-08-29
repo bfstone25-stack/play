@@ -55,6 +55,7 @@ func _ready() -> void:
 	layer = 30
 	root_ui = Control.new()
 	root_ui.set_anchors_preset(Control.PRESET_FULL_RECT)
+	UiFont.apply_theme(root_ui)
 	add_child(root_ui)
 	_build_top()
 	_build_dialogue()
@@ -105,14 +106,12 @@ func _pixel_style(region: Rect2, margin := 3.0) -> StyleBoxTexture:
 	return style
 
 func _format_label(node: Label, size: int, color: Color) -> void:
-	node.add_theme_font_size_override("font_size", size)
+	UiFont.apply_label(node, size >= 14)
 	node.add_theme_color_override("font_color", color)
 	node.add_theme_color_override("font_outline_color", Color("#05070d"))
 	node.add_theme_constant_override("outline_size", 2)
-	UiFont.apply_label(node)
 
-func _format_button(node: Button, size := 11) -> void:
-	node.add_theme_font_size_override("font_size", size)
+func _format_button(node: Button, _size := 11) -> void:
 	node.add_theme_color_override("font_color", Color("#e7edf5"))
 	node.add_theme_stylebox_override("normal", _pixel_style(Rect2(64, 64, 64, 32)))
 	node.add_theme_stylebox_override("hover", _pixel_style(Rect2(192, 64, 64, 32)))
@@ -624,9 +623,12 @@ func apply_locale() -> void:
 			nvl_name, nvl_body, nvl_hint, pressure, overlay_title, overlay_body,
 			overlay_close, overlay_restart, ending_label, ending_restart]:
 		if node is Label:
-			UiFont.apply_label(node)
+			var display := node in [title_name, overlay_title, ending_label, nvl_body]
+			UiFont.apply_label(node, display)
 		elif node is Button:
 			UiFont.apply_button(node)
+	for code in lang_buttons.keys():
+		UiFont.apply_button(lang_buttons[code])
 	if title_eyebrow:
 		title_eyebrow.text = Loc.t("title.eyebrow")
 	if title_name:
@@ -674,7 +676,8 @@ func _process(delta: float) -> void:
 	_pulse += delta
 	nvl_veil.color = Color(0, 0, 0, 1).lerp(Color(0.2, 0.015, 0.04, 0.9), clampf(_pulse * 3.0, 0.0, 1.0))
 	var pulse := 1.0 + 0.1 * sin(_pulse * 3.6)
-	nvl_body.add_theme_font_size_override("font_size", int(14.0 * pulse))
+	nvl_body.scale = Vector2(pulse, pulse)
+	nvl_body.pivot_offset = nvl_body.size * 0.5
 	if nvl_body.material is ShaderMaterial:
 		(nvl_body.material as ShaderMaterial).set_shader_parameter("time", _pulse)
 		(nvl_body.material as ShaderMaterial).set_shader_parameter("shake", 2.1 + sin(_pulse * 8.0))

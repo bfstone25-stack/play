@@ -107,7 +107,6 @@ func _show_hotspots() -> void:
 		marker.position = Vector2(4, 4)
 		marker.size = Vector2(26, 17)
 		marker.text = "◆ %02d" % (count + 1)
-		marker.add_theme_font_size_override("font_size", 8)
 		marker.add_theme_color_override("font_color", Color("#b8f4ff"))
 		marker.add_theme_color_override("font_outline_color", Color("#05070d"))
 		marker.add_theme_constant_override("outline_size", 3)

@@ -88,6 +88,12 @@ func _run() -> void:
 	if _has_cjk(hud.title_name.text):
 		push_error("EN title still bilingual")
 		fails += 1
+	if not (UiFont.body() is FontFile) or not (UiFont.display() is FontFile):
+		push_error("UiFont must be a packed BMFont FontFile")
+		fails += 1
+	if UiFont.body() is SystemFont or UiFont.display() is SystemFont:
+		push_error("UiFont must not use SystemFont")
+		fails += 1
 	if fails > 0:
 		quit(1)
 	else:
