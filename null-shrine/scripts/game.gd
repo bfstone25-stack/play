@@ -369,7 +369,7 @@ func _refresh_item_grid() -> void:
 		var icon_index := CURIO_ORDER.find(str(item["id"]))
 		if icon_index >= 0:
 			item_button.icon = _atlas(CURIO_ATLAS, Rect2(icon_index * 32, 0, 32, 32))
-			item_button.icon_max_width = 24
+			item_button.add_theme_constant_override("icon_max_width", 24)
 			item_button.expand_icon = true
 
 
@@ -509,7 +509,7 @@ func _start_room() -> void:
 	]:
 		var move_button := _button("", func(direction = spec[0]): stage.nudge(direction))
 		move_button.icon = _atlas(UI_ATLAS, spec[1])
-		move_button.icon_max_width = 30
+		move_button.add_theme_constant_override("icon_max_width", 30)
 		move_button.expand_icon = true
 	_button("APPROACH\n接敌", _on_objective_reached, true)
 	footer_hint.text = "Movement is required in normal play; APPROACH is an accessibility shortcut."
