@@ -24,7 +24,7 @@ func _init() -> void:
 			await _drain(hud)
 		if area.has("choice"):
 			await create_timer(1.5).timeout
-			var choice := {"breakroom": "TRUST", "server": "REFUSE", "lobby": "STAIRS", "manager": "RESIGN"}[area.id]
+			var choice: String = {"breakroom": "TRUST", "server": "REFUSE", "lobby": "STAIRS", "manager": "RESIGN"}[area.id]
 			game._on_choice(choice)
 			await create_timer(1.2).timeout
 			await _drain(hud)
