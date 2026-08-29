@@ -1,245 +1,313 @@
-# Floor 13: Night Shift — Product Bible
+# Floor 13: Night Shift（13楼夜班）— Production Bible
 
 ## Production contract
 
-- Standalone Godot 4.7 2D pixel office horror; implementation is explicitly **WAITING** until Flat 404 passes its production gate.
-- Target: 35–45 minutes, keyboard/gamepad movement, contextual interact, dialogue choices, light stealth; no combat system.
-- Structure: prologue plus four chapters, three major flags, three endings. Native canvas 384×216 scaled integer-nearest to 16:9.
-- Player: **June Park**, temporary payroll analyst on her first night shift at Meridian Ledger.
-- Antagonist: **The Auditor**, an office process that removes people whose records do not balance.
+Standalone Godot 4.7.2 Web game. Pure mouse/touch, choice-driven horror narrative; no typing, movement, combat, stealth, or artificial waits. English is the authoritative player-facing language. The Chinese subtitle is a title treatment only.
 
-## Core state
+- Native canvas: 640×360; nearest texture filtering; integer scaling.
+- First-read target: 25–35 minutes at 170–190 words/minute, including exploration and choices.
+- Protagonist: June Park, temporary payroll analyst at Meridian Ledger.
+- Antagonist: The Auditor, a compliance process that edits people until the records balance.
+- Supporting characters: Eli Song, an intern who has worked six Mondays; Mara Vale, the erased analyst whose employment record June inherited; Supervisor Rusk, heard through recordings.
+- Structure: seven sequential chapters, seven illustrated areas, 28 authored hotspots, four binary choices, three endings.
 
-| Flag | Values | Set |
+## Runtime state and resolver
+
+| Flag | Values | Delayed consequence |
 |---|---|---|
-| `ledger_action` | `COPY`, `CORRECT` | Chapter 1 payroll discrepancy |
-| `intern_trust` | `WARN`, `REPORT` | Chapter 2 encounter with Eli |
-| `badge_owner` | `JUNE`, `MARA` | Chapter 3 identity terminal |
-| `has_red_stapler` | bool | optional supply-room puzzle |
-| `saw_floor_zero` | bool | optional lift-camera reel |
+| `eli_stance` | `TRUST`, `SUSPECT` | Eli opens the stair gate, or Compliance removes his face and leaves his phone ringing later. |
+| `compliance` | `REFUSE`, `OBEY` | The original ledger survives, or June's employee record becomes permanent. |
+| `escape_route` | `STAIRS`, `ELEVATOR` | Stair route finds the replacement list; elevator route sees Floor 0 and acquires Rusk's keycard. |
+| `contract` | `RESIGN`, `SIGN` | June rejects inherited hours, or accepts Night Operations management. |
 
-Resolver:
+Ending resolver:
 
-- `COPY + WARN + JUNE` and completed evidence set → **CLOCK OUT**.
-- `CORRECT + REPORT + MARA` → **PROMOTED**.
-- all other combinations → **MONDAY FOREVER**.
+- **CLOCK OUT**: `TRUST + REFUSE + STAIRS + RESIGN`.
+- **THE NEW MANAGER**: `SUSPECT + OBEY + ELEVATOR + SIGN`.
+- **MONDAY FOREVER**: every other complete combination. This is an authored ending, not a failure stub.
 
-## Chapter screenplay
+Every choice sets a durable flag, changes at least one later screen, adds an evidence-log entry, and is covered by automated route tests. All routes reach a complete ending.
 
-### Prologue — Sunday, 22:48 / Lobby (4 minutes)
+## Interaction and pacing model
 
-Security shutter closes after June enters. Rain loops outside. Guard desk holds an unsigned visitor book.
+Each area contains four visible point-click hotspots. Three are required; the fourth is optional but substantive. A large touch-friendly route button appears after required discoveries. Dialogue is paginated to one speaker and one short paragraph per page. Estimated first-read text is 4,700–5,300 words; visual inspection, decisions, and pagination add 4–7 minutes. There are no timer gates.
 
-RECEPTION SPEAKER: “Welcome, temporary associate June Park. Your shift ends when Monday’s ledger balances.”
+Persistent HUD:
 
-JUNE: “Payroll said midnight.”
+- chapter / location / clock;
+- current objective;
+- `CASE LOG` overlay with discovered evidence and all four decisions;
+- `PAUSE` overlay with resume, restart, and title controls;
+- dialogue `CONTINUE` button and two 56-pixel-high choice buttons;
+- hotspot labels and completed-state marks.
 
-Interaction: visitor book.
+## Full executable screenplay
 
-> 22:47 — JUNE PARK — IN  
-> 22:48 — JUNE PARK — IN  
-> 22:49 — JUNE PARK — IN
+The following is the canonical story sequence. Implementation may wrap lines differently, but must not omit beats or reduce endings.
 
-Elevator buttons show 1–12 and 14. A paper label reading `13 / NIGHT OPERATIONS` covers the alarm key. Pressing it starts title card.
+### 1 — 11:59 PM / June's cubicle
 
-### Chapter 1 — The discrepancy / Open office (9 minutes)
+**Opening pages**
 
-Zones: reception bullpen, cubicle maze, break room, print bay. Objective: print Monday payroll and reconcile one red row.
+NARRATION: Sunday has narrowed Meridian Ledger to one lit cubicle. Rain combs the windows. The fluorescent tube over June Park's desk hums in a pitch that makes her teeth feel loose.
 
-TERMINAL:
+JUNE: One last ticket. Submit, clock out, never agree to “flexible close” again.
 
-> EMPLOYEE 013: MARA VALE  
-> HOURS: 168 / STATUS: ABSENT / PAY: WITHHELD  
-> ERROR: EMPLOYEE HAS WORKED MORE HOURS THAN EXIST THIS WEEK.
+SYSTEM: OVERTIME TICKET 1313. Reconcile Employee 013 before 00:00. Failure to close transfers the outstanding hours to the active analyst.
 
-Voicemail, Supervisor Rusk:
+**Hotspot: Last ticket**
 
-> “Do not call me. Correct red rows, print three copies, leave one in the outbox. If someone asks you to restore a name, they are not on payroll.”
+The screen lists Mara Vale, payroll analyst, absent for 168 hours in a seven-day week. Her pay is withheld. The correction field has already been filled with `NEVER EMPLOYED`, but June's cursor waits over Submit.
 
-The printer produces a staff photo with June standing in the back row although it is dated 1998.
+June notices a second cursor moving half a beat behind hers. It circles Mara's name, then underlines the word `active`.
 
-Choice 1:
+**Hotspot: Desk phone**
 
-- `COPY`: Save the original ledger to a floppy marked `BEFORE`. JUNE: “An error is evidence before it is a correction.”
-- `CORRECT`: Change Mara’s status to `TERMINATED / NEVER EMPLOYED`. SPEAKER: “Variance resolved. Initiative noted.”
+RUSK, voicemail: Park. Do not call back. Red rows are not people; they are variance. Correct, print three copies, put one in my outbox. If anyone asks you to restore a name, they are not on payroll.
 
-Pressure: cubicle monitors wake in sequence behind June; each displays `MONDAY 00:00`.
+The message metadata says it was recorded tomorrow at 08:04. Beneath Rusk's voice, forty people whisper the same employee number.
 
-Optional copy, break-room rota:
+**Hotspot: Empty coffee**
 
-> COFFEE / DISHWASHER / MISSING-PERSON REPORT  
-> Monday: Mara / Tuesday: Eli / Wednesday: June
+The cup is still warm although June finished it at ten. A lipstick mark that is not hers forms a complete ring. On the cardboard sleeve someone wrote: `WHEN THE CLOCK LOSES A MINUTE, LOOK AT THE DIRECTORY`.
 
-### Chapter 2 — The intern / Records annex (9 minutes)
+**Hotspot: Drawer**
 
-At 23:26, intern **Eli Song** crawls from under a desk. His badge photo is blank.
+Inside lies a resignation form bearing June's signature. Reason for leaving: `POSITION NEVER EXISTED`. The carbon copy underneath bears Mara Vale's signature in the same handwriting.
 
-ELI: “Please don’t scan me. The Auditor follows badge pings.”
+**Transition**
 
-JUNE: “You work here?”
+At 11:59, the office clock clicks backward to 11:58. Every monitor in the open office wakes. The elevator bell sounds from a floor the directory does not list.
 
-ELI: “I started Monday. I think it has been six Mondays.”
+### 2 — The directory changes / Open office and elevator lobby
 
-Objective: cross the dark records annex. Auditor is shown only as a tall column of suit-colored pixels and a moving red scan line. Hide behind shelving when scanner sound rises.
+**Opening pages**
 
-Eli dialogue at locked archive:
+June steps into the open office. Forty vacant chairs face their monitors. Each screen shows her cubicle from a slightly different angle. In one view, somebody stands behind her.
 
-> “Mara found a floor beneath the basement. She copied everyone before Rusk balanced them out. Your temp record replaced hers.”
+The overhead announcement calmly asks all Night Operations staff to report to Floor 13. Meridian Ledger occupies floors 8 through 12. The brass directory has always skipped thirteen.
 
-Choice 2:
+**Hotspot: Printer**
 
-- `WARN`: Give Eli June’s spare visitor badge and direct him to the stairwell. Sets trust. ELI: “If the elevator opens twice, take the second one.”
-- `REPORT`: Scan Eli’s blank badge at the compliance phone. Red light sweeps under the door; Eli’s dialogue portrait loses its face. SPEAKER: “Unlisted variance removed.”
+The printer feeds a 1998 staff photograph. June stands in the back row wearing clothes she donated in college. Mara is beside her, scratched away so deeply the paper has a hole.
 
-Archive memo:
+On the reverse: `REPLACEMENTS ARE CHEAPER THAN OVERTIME`.
 
-> BALANCE PROTOCOL  
-> One active identity per workstation. One absence permits one temporary replacement. At week close, unresolved replacements inherit all attendance debt.
+**Hotspot: Attendance board**
 
-Optional supply puzzle: retrieve red stapler from Rusk’s locked cabinet using drawer sequence 1-3-1-2 printed on copier jams. It pins a document so the Auditor cannot re-sort it.
+Magnetic names fill the board: Mara, Eli, June, then thirty-nine blank strips. Moving June's strip to OUT makes it snap back to IN. Eli's strip is warm and damp.
 
-### Chapter 3 — Identity audit / Executive floor (10 minutes)
+**Hotspot: Elevator directory**
 
-At 23:51, the elevator opens onto executive offices whose windows show daytime. Family photographs on desks all contain June.
+The directory lettering rearranges itself. Floors 8–12 become `DAY OPERATIONS`; the blank between 12 and 14 becomes `13 — NIGHT OPERATIONS`. Below Basement, a blue-lit line reads `0 — RETENTION`.
 
-MARA appears through terminal chat:
+**Hotspot: Security camera**
 
-MARA: “You have my hours. I have your exit badge. The system will allow one of us to be real at midnight.”
+The lobby feed is delayed by one minute. Future June waits before the elevator. Behind her, a tall shape in a suit unfolds from the seam between two cubicles. Its red scanner line passes through chairs without touching them.
 
-JUNE: “Are you alive?”
+**Transition**
 
-MARA: “That is an HR category, not an answer.”
+The elevator opens. Inside, the mirrored wall reflects an intern crouched behind June. The real elevator is empty. When she turns around, he is standing in the lobby.
 
-Evidence terminals reveal:
+### 3 — The coworker who should not be there / Break room
 
-1. Rusk has hired 42 temporary replacements for one permanent role.
-2. Every replacement was marked absent after the first Sunday.
-3. The Auditor is an automated retention routine executed through badge readers.
+**Opening pages**
 
-Choice 3, identity terminal:
+ELI: Don't scan my badge. Please. It tells the Auditor where the mistakes are.
 
-- `JUNE`: Keep June Park active and restore Mara as witness-only. Requires entering the three printed evidence page numbers by interaction, not typing. JUNE: “We leave as two names or the record goes public.”
-- `MARA`: Reassign active identity to Mara Vale and mark June `TEMPORARY RESOURCE / DISPOSABLE`. MARA: “You should not have balanced this for them.”
+Eli Song looks twenty-two and exhausted enough to be ancient. His plastic badge has a photograph-shaped blank. He says he started last Monday and has watched six Mondays arrive without a Tuesday.
 
-Conditional lines:
+He leads June into the break room, where the refrigerator motor masks their voices. He knows Mara's name before June says it.
 
-- `COPY`: Mara confirms the floppy can expose Rusk.
-- `CORRECT`: Terminal reports the source row permanently overwritten.
-- `WARN`: Eli opens the stair gate remotely.
-- `REPORT`: the compliance phone rings from inside June’s inventory.
+**Hotspot: Eli's badge**
 
-### Chapter 4 — Midnight close / Floor 13 (8 minutes)
+The badge serial matches June's except for the final digit. Under ultraviolet vending-machine light, six layers of names show beneath Eli's: six temporary interns, all marked `ABSENCE REPLACEMENT`.
 
-At 00:00 all doors lock. The Auditor walks the cubicle lanes. Player must carry three documents to one of two endpoints:
+ELI: They reuse the card after the person stops matching it.
 
-- Roof transmitter: evidence upload route.
-- Rusk’s office outbox: compliance route.
+**Hotspot: Break-room rota**
 
-Final interactions:
+The rota assigns chores by weekday: coffee, dishwasher, missing-person report. Monday belongs to Mara. Tuesday belongs to Eli. Wednesday belongs to June. There are no columns after Wednesday.
 
-> TIMESHEET: 168 hours worked  
-> OVERTIME REASON: “WAITING FOR MONDAY TO END”  
-> EMPLOYEE SIGNATURE: the line is already signed in June’s handwriting.
+**Hotspot: Refrigerator**
 
-If `has_red_stapler`, player can pin the original ledger to the transmitter and shorten the final stealth loop. If `saw_floor_zero`, elevator offers a hidden escape route but resolves to Monday Forever unless the primary route qualifies.
+Forty-two lunch bags line the shelves, each dated the same Sunday. One labeled JUNE contains a house key, a severance cheque for zero dollars, and a molar wrapped in a payslip.
 
-## Ending scenes
+Eli refuses to look inside the bag labeled ELI.
 
-### CLOCK OUT
+**Hotspot: Compliance phone**
 
-Requirements: `COPY + WARN + JUNE`, original ledger, archive memo, replacement list.
+The wall phone has no keypad, only a badge reader and two lamps: green `LISTED`, red `VARIANCE`. Lifting the receiver plays Rusk's voice: “Unlisted staff must be reported. Silence is participation.”
 
-June uploads the evidence. Office windows change from fake noon to rainy midnight. Eli holds the stair door; Mara’s portrait resolves on every monitor.
+**Choice 1 — Trust or suspect**
 
-MARA: “Forty-two names. Read them.”
+ELI: Mara copied the original ledger. She hid it in the server corridor. I can get you there, but you have to decide whether I am a person or another trap wearing a badge.
 
-June reads six aloud; the remaining names scroll during a playable walk to the lobby. The Auditor separates into ordinary coat racks and scanner lights.
+- `TRUST — Give Eli the visitor badge.` June covers Eli's blank badge with her spare visitor pass. He promises to open the stair gate if she refuses Compliance.
+- `SUSPECT — Scan Eli at the compliance phone.` The red lamp wakes. Eli's portrait on the badge loses its eyes, then mouth. He runs before the scanner reaches his name. The receiver keeps breathing after he is gone.
 
-Outside clock: Monday 00:03. June’s visitor book line finally gains `OUT`.
+### 4 — Compliance request / Server corridor
 
-Cards:
+**Opening pages**
 
-> ENDING: CLOCK OUT  
-> Meridian Ledger opened Monday with forty-two employees demanding back pay.  
-> June never accepted another “flexible” night shift.
+Server fans push cold air through a corridor that should not fit inside the building. Blue status lamps blink like distant windows. A red scan line travels along the floor, pauses at June's shoes, and continues.
 
-### PROMOTED
+COMPLIANCE: Active Analyst Park. Employee 013 remains unresolved. Produce the original ledger for correction.
 
-Requirements: `CORRECT + REPORT + MARA`.
+**Hotspot: Server rack**
 
-June puts corrected pages in Rusk’s outbox. Daylight snaps on. Rusk’s office chair turns; it is empty except for June’s permanent badge.
+Rack 13 contains personnel folders instead of hardware. Forty-two folders use the same job code. Every temporary analyst replaced the previous analyst's unexplained absence. Each replacement became the next absence.
 
-SPEAKER: “All discrepancies resolved. Supervisor Park, please onboard tonight’s temporary associate.”
+If Eli was trusted, his folder is still labeled ACTIVE but its pages are fading. If reported, it is empty except for a wet badge outline.
 
-Mara exits through the elevator without looking back. June’s sprite gains Rusk’s red tie. A new applicant waits in the lobby below.
+**Hotspot: Mara's terminal**
 
-Cards:
+MARA: You have my hours. I have your exit authorization. The system permits one active identity at midnight.
 
-> ENDING: PROMOTED  
-> The floor balanced perfectly.  
-> Monday needed a supervisor.
+MARA: Rusk fed it corrections until the corrections learned to ask for people. The Auditor is not a ghost. It is policy with enough electricity to move.
 
-### MONDAY FOREVER
+If Eli was trusted, Mara confirms he carried her warning through six loops. If reported, she says Compliance now speaks with his breath.
 
-Mixed routes trigger a loop. June reaches the lobby at 00:01; shutter rises onto the same office at 22:48. The visitor book adds another `IN`.
+**Hotspot: Original ledger**
 
-ELI or MARA (depending flags): “You saved half a record. The Auditor rounds halves down.”
+Behind a loose vent is a dot-matrix ledger stamped BEFORE. It records forty-two names, original hours, and Rusk's approvals. Mara's name is not absent; it is overwritten by June's temporary ID.
 
-Each loop removes one color from the palette until only red scan lines remain.
+June can feel the printer paper trembling in time with the scanner.
 
-Cards:
+**Hotspot: Emergency intercom**
 
-> ENDING: MONDAY FOREVER  
-> CURRENT SHIFT: 169:00:00  
-> Variance pending.
+RUSK, recording: Night Operations exists to make daylight's numbers possible. Somebody always owns the unpaid hours. Sign the correction and it won't be you—at least, not tonight.
 
-## Room and encounter sequence
+The recording ends with Rusk asking someone named June to train the next hire.
 
-1. Lobby tutorial; inspect book, call elevator.
-2. Reception/open office; collect task list and reach assigned cubicle.
-3. Print bay puzzle; route paper between two jammed printers.
-4. Break room optional lore and cabinet code.
-5. Records annex stealth encounter 1; learn scan-line timing.
-6. Archive interaction and Eli choice.
-7. Executive floor exploration; three evidence terminals.
-8. Identity terminal choice.
-9. Cubicle maze reversal with Auditor encounter 2.
-10. Roof transmitter or outbox endpoint; resolver and ending walk.
+**Choice 2 — Obey or refuse**
 
-## Visual/audio specification
+COMPLIANCE: Surrender the original. Confirm Mara Vale never worked here. Permanent employment will be issued.
 
-- 16×16 tile grid; characters 24×32; portraits 96×96 with 4–6 facial variants.
-- Palette by chapter: nicotine beige → fluorescent cyan → executive daylight → emergency red.
-- Distinct sets: lobby, cubicles, print bay, break room, archive, executive suite, roof.
-- Audio: fluorescent 60 Hz loop, printer rhythm, distant office phone, badge chirp, scanner sweep, rain, elevator bell variants.
-- Auditor never uses a full monster portrait; fear comes from scan line, suit silhouette, and office machinery converging.
+- `REFUSE — Preserve the ledger.` June folds the pages inside her coat. The server lamps turn spectral blue. Compliance marks her `HOSTILE WITNESS`; Mara restores three erased names to the case log.
+- `OBEY — Submit the correction.` The printer eats the original and produces June's permanent badge. The scanner turns blood red. Compliance marks her `SUCCESSION ELIGIBLE`; somewhere, Mara screams through a dial-up tone.
 
-## Interaction copy inventory
+### 5 — Escape route / Elevator lobby and stairs
 
-- 18 mandatory interactables, 12 optional documents/props, 3 binary choices.
-- 4 Mara terminal conversations, 3 Eli conversations, 2 Rusk voicemails.
-- Every picked document remains in a pause-menu evidence tab.
-- No typing: codes use ordered object interaction or selectable number chips.
+**Opening pages**
 
-## Implementation checklist — WAITING
+At midnight, all office doors lock. The elevator opens and closes by itself. The stair alarm rings without making sound. June has one route to Rusk's office on the impossible floor.
 
-- [ ] Do not begin until Flat 404 verification gate is accepted.
-- [ ] Replace prototype combat remnants with exploration controller.
-- [ ] Build seven tile sets and room maps.
-- [ ] Implement state ledger and three choices.
-- [ ] Implement scanner-cone stealth and checkpoint reset.
-- [ ] Implement all screenplay copy and evidence log.
-- [ ] Implement three multi-beat endings.
-- [ ] Add unit tests for resolver, flags, and chapter gates.
-- [ ] Import/export and complete GPU manual playthroughs only after authorization.
+The selected route provides unique evidence and changes the final confrontation.
 
-## Acceptance criteria
+**Hotspot: Fire map**
 
-1. 35–45 minute first run and 20–25 minute replay.
-2. Seven visually distinct office zones and two readable Auditor encounters.
-3. 30 total authored interactions, three choices, three independently triggerable endings.
-4. Early ledger and Eli choices alter chapter 3 dialogue, available assistance, and eligibility.
-5. All routes are completable with keyboard or gamepad and require no typed input.
-6. Pixel scaling remains crisp at 720p and 1080p.
-7. Automated tests cover all endings plus at least three mixed-route loop cases.
-8. No implementation commit is made before Product 1 passes its gate.
+The map shows stairs descending from 14 directly to 12. A handwritten thirteenth landing appears only when June touches the glass. `DO NOT COUNT THE STEPS. IT COUNTS BACK.`
+
+**Hotspot: Elevator inspection seal**
+
+The inspection date advances while June reads it. The inspector signature changes from Rusk to Mara to June. Beneath the seal is a keycard slot stained with old adhesive.
+
+**Hotspot: Ringing phone**
+
+If Eli was trusted, he whispers that he has reached the stair control and can hold one gate for ninety heartbeats—he refuses to call them seconds.
+
+If Eli was reported, the phone rings from inside June's coat. Eli's compliance-clean voice says, “Variance is a lonely word. You made it mine.”
+
+**Hotspot: Directory glass**
+
+June's reflection wears Rusk's red manager tie. Mara's reflection stands beside her without a face. The Auditor appears only as the narrow space separating them.
+
+**Choice 3 — Stairs or elevator**
+
+- `STAIRS — Follow the fire route.` On the thirteenth landing, June finds the replacement list carved beneath forty-two coats. Eli opens the upper gate if trusted; otherwise June uses the resignation-form staple to bridge the alarm contacts. Each landing repeats with one fewer color until she speaks Mara's name aloud.
+- `ELEVATOR — Descend before going up.` The elevator travels below the basement to Floor 0. Rows of badge printers stamp blank faces. June takes Rusk's master keycard from an empty suit. When the doors reopen, the display reads 13 although the car has not moved.
+
+### 6 — Final resignation / Manager office
+
+**Opening pages**
+
+Rusk's office is a perfect daylight set at midnight: painted sun on the windows, plastic plants, family photographs containing every temporary analyst. The desk nameplate waits blank.
+
+The Auditor stands behind the chair as a column of suit-dark pixels crossed by a red scanner. It never raises its voice.
+
+AUDITOR: One role. One active employee. One absence. Balance the record.
+
+**Hotspot: Rusk's outbox**
+
+The outbox contains forty-one resignation forms and one empty slot. Every form cites voluntary abandonment at exactly 00:00. The signatures begin differently, then converge into June's handwriting.
+
+**Hotspot: Family photographs**
+
+Each photo shows Rusk with a different analyst and the same birthday cake. In the newest, June holds the knife. If she came by stairs, all forty-two names are written on the frame. If by elevator, Rusk's keycard opens the backing to reveal severance cheques totaling the missing wages.
+
+**Hotspot: Midnight contract**
+
+The contract offers permanent manager status, full benefits, and responsibility for all unresolved hours. Its final clause: `MANAGER CONSENTS TO REMAIN UNTIL A QUALIFIED REPLACEMENT ACCEPTS ENTRY`.
+
+**Hotspot: Window**
+
+Behind the painted daylight is real rainy darkness. Far below, the lobby shutter is half open. Mara waits outside the glass, rendered in blue monitor light. If Eli was trusted, he waits with her. If not, only his blank badge lies on the pavement.
+
+**Choice 4 — Resign or sign**
+
+- `RESIGN — Reject inherited hours.` June tears her pre-signed resignation in half and writes all forty-two names across the contract. If she preserved the ledger and took the stairs with Eli's help, the Auditor must process each witness before it can process her.
+- `SIGN — Accept Night Operations.` June uses Rusk's keycard or the permanent badge to sign. The manager tie in the reflection turns real. The Auditor steps backward into her shadow.
+
+### 7 — Staged closures
+
+#### Ending A — CLOCK OUT
+
+Eligibility: `TRUST + REFUSE + STAIRS + RESIGN`.
+
+1. June feeds the original ledger and replacement list into Rusk's fax. Mara routes it to every payroll inbox and the labor board. Forty-two monitors wake, each restoring one name.
+2. Eli holds the stair door while the Auditor's red scan line breaks into harmless copier light. Mara appears first as a portrait, then as a woman reflected in the rainy windows.
+3. June walks through the open office. She reads six names aloud; the others scroll in the case log. Empty chairs turn toward the windows, no longer toward her.
+4. In the lobby, the visitor book finally changes June Park from IN to OUT at Monday 00:03. Eli's line gains OUT. Mara's gains `PRESENT`.
+5. Outside, dawn is ordinary gray. Meridian opens with forty-two claims for back pay. June never accepts another flexible night shift. Final card: `ENDING — CLOCK OUT / THE RECORD REMEMBERS`.
+
+#### Ending B — THE NEW MANAGER
+
+Eligibility: `SUSPECT + OBEY + ELEVATOR + SIGN`.
+
+1. The painted sun snaps on. June's badge prints with the title SUPERVISOR PARK. The corrected ledger is shredded into white confetti that falls upward.
+2. The elevator opens. Mara, restored by June's accepted identity exchange, walks out without looking back. Eli's blank badge is swept into Rusk's outbox.
+3. The Auditor adjusts June's red tie in the window reflection and dissolves into her shadow. The office fills with warm daytime color, but the clocks remain at 11:59.
+4. Downstairs, a new temporary analyst enters out of the rain. June hears her own voice through Reception: “Red rows are not people. They are variance.”
+5. She tries to warn the applicant. The only words Compliance permits are onboarding instructions. Final card: `ENDING — THE NEW MANAGER / MONDAY NEEDS A SUPERVISOR`.
+
+#### Ending C — MONDAY FOREVER
+
+Eligibility: any other complete route.
+
+1. June's chosen evidence contradicts her chosen contract. The Auditor stamps both `PARTIAL`. Half a record is rounded down.
+2. She reaches the lobby at 00:01. The shutter rises onto the same office at Sunday 11:48 PM. Rain climbs upward outside.
+3. Eli or Mara, depending on June's choices, remembers the previous loop in fragments. One asks her to choose a whole truth next time. The other repeats Compliance's greeting.
+4. The visitor book adds another June Park — IN. The office palette loses one color. The case log retains all flags, proving the loop is consequence rather than reset.
+5. June sits at her cubicle. Ticket 1313 opens with Employee 013 changed to JUNE PARK and Mara listed as active analyst. Final card: `ENDING — MONDAY FOREVER / CURRENT SHIFT 169:00:00 / VARIANCE PENDING`.
+
+## Visual direction
+
+Seven illustrated areas: cubicle, open office, break room, server corridor, elevator lobby, stairwell, manager office. Procedural pixel art uses 8/16-pixel geometry, silhouette characters, localized red scanner light, blue monitor glow, rain, printer paper, server LEDs, and animated fluorescent flicker. Red and blue communicate Compliance and witness evidence; neither is a global decorative tint.
+
+Palette:
+
+- cubicle: navy, nicotine beige, CRT green;
+- open office: charcoal and monitor cyan;
+- break room: sickly green with vending ultraviolet;
+- server corridor: black-blue with spectral LEDs and a moving red scan line;
+- elevator lobby: brass, concrete, emergency blue;
+- stairs: raw concrete, blue exit lamps, isolated blood-red landings;
+- manager office: false cream daylight invaded by red scanner and rainy blue.
+
+## Audio direction
+
+Procedural low-volume fluorescent hum runs after first interaction. Authored cues: printer clack, desk phone pulse, elevator double bell, badge chirp, server throb, scanner sweep, stair alarm, contract stamp, and rain. Audio reinforces reveals and never blocks progression.
+
+## Verification gate
+
+- [ ] 7 distinct areas and 28 hotspots visible and reachable.
+- [ ] 4 choices persist; delayed consequence assertions pass.
+- [ ] All 16 flag combinations terminate; three target routes independently trigger all endings.
+- [ ] First-read word count and measured normal run fall within 25–35 minutes.
+- [ ] No clipped dialogue at 1280×720 and 1920×1080; touch targets remain at least 44 CSS pixels.
+- [ ] Pause, case log, restart, and return-to-title work; no dead ends.
+- [ ] Godot 4.7.2 GPU import/run/Web export succeeds on blazeubuntu.
+- [ ] Hosted `/floor-13/` returns HTML 200; `.wasm` MIME is `application/wasm`; byte ranges work.
+- [ ] Screenshots cover all seven visual areas; short video proves choices, consequence, transition, and ending.
+- [ ] Product 3 / Null Shrine remains untouched.
