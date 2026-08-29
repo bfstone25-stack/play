@@ -24,6 +24,7 @@ Shrine kernel rewire. `play/null-shrine/frontend/js/physics.js` now references `
 - Kernel at `play/catharsis/kernel/`. Titles at `play/<slug>/frontend`.
 - Commits on `play/catharsis-series`; no push.
 - Do not point shrine at `/kernel/physics.js` while shrine physics has drifted.
+- Beat Monday intentional product exit from Catharsis “no new engines” H5 contract into standalone Godot 2D pixel horror VN.
 
 ## Notes
 
