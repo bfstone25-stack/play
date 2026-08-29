@@ -13,8 +13,8 @@ func _init() -> void:
 	DirAccess.make_dir_recursive_absolute("/tmp/late-vn")
 	var order: Node = scene.active_ids["order"]
 	order.interact(scene)
-	await process_frame
-	await process_frame
+	for _i in 8:
+		await process_frame
 	if not hud.is_vn_open() or hud.is_nvl_open():
 		push_error("order folio should open as ADV")
 		quit(1)
@@ -42,7 +42,8 @@ func _init() -> void:
 ---
 Inspector—do not rescue me by removing the proof I remained."""
 	hud.show_story("letters", letters, true, Callable())
-	await process_frame
+	for _i in 18:
+		await process_frame
 	if not hud.is_nvl_open():
 		push_error("diary should open as NVL")
 		quit(4)

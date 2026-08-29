@@ -126,6 +126,7 @@ func _vn_ui() -> void:
 	vn = VnChrome.new()
 	vn.name = "VnChrome"
 	add_child(vn)
+	vn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	choice_panel = vn.choice_root
 	choice_prompt = vn.choice_prompt
 	btn_a = vn.btn_a

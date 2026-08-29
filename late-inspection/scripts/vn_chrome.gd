@@ -60,13 +60,31 @@ var pressure: Label
 var shake_host: Control
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_build_adv()
 	_build_choice()
 	_build_nvl()
 	_build_pressure()
 	visible = true
+	call_deferred("_fit")
+
+func _fit() -> void:
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	if adv_root:
+		adv_root.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+		adv_root.offset_top = -196.0
+		adv_root.offset_bottom = -18.0
+		adv_root.offset_left = 48.0
+		adv_root.offset_right = -48.0
+	if nvl_root:
+		nvl_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	if choice_root:
+		choice_root.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+		choice_root.offset_top = -348.0
+		choice_root.offset_bottom = -200.0
+		choice_root.offset_left = 80.0
+		choice_root.offset_right = -80.0
 
 func is_open() -> bool:
 	return adv_root.visible or nvl_root.visible
@@ -102,8 +120,8 @@ func show_lines(parsed: Array, use_nvl: bool, cb: Callable = Callable(), keep :=
 	if use_nvl:
 		adv_root.visible = false
 		nvl_root.visible = true
-		nvl_veil.color = Color(0, 0, 0, 1)
-		fade_t = 0.0
+		nvl_veil.color = Color(0.04, 0.0, 0.01, 1)
+		fade_t = 0.12
 		pressure.visible = true
 	else:
 		nvl_root.visible = false
