@@ -1,0 +1,15 @@
+{
+  "title": "Floor 13: Night Shift",
+  "slug": "floor-13",
+  "short_text": "The directory skips thirteen. The PA says otherwise. Point-click office horror · 3 endings.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "paid",
+  "min_price": "2.00",
+  "suggested_price": "3.00",
+  "tags": "horror,pixel-art,point-and-click,atmospheric,psychological-horror,mystery,multiple-endings,short,2d,supernatural",
+  "genre": "adventure",
+  "description_file": "copy/floor-13-desc.html",
+  "instructions_file": "copy/floor-13-instructions.txt",
+  "published": "draft"
+}

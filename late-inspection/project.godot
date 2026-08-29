@@ -20,6 +20,7 @@ theme/default_font="res://assets/fonts/late_inspection_pixel_16.fnt"
 theme/default_font_size=16
 
 [rendering]
+textures/vram_compression/import_etc2_astc=true
 renderer/rendering_method="forward_plus"
 renderer/rendering_method.mobile="mobile"
 renderer/rendering_method.web="gl_compatibility"
