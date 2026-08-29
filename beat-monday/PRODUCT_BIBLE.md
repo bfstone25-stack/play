@@ -2,7 +2,7 @@
 
 ## Production contract
 
-Standalone Godot 4.7.2 Web game. Pure mouse/touch, choice-driven horror narrative; no typing, movement, combat, stealth, or artificial waits. English is the authoritative player-facing language. The Chinese subtitle is a title treatment only.
+Standalone Godot 4.7.2 Web game. Pure mouse/touch, choice-driven horror narrative; no typing, movement, combat, stealth, or artificial waits. English is the sole player-facing language so the Web export never depends on unavailable CJK system fonts.
 
 - Native canvas: 640×360; nearest texture filtering; integer scaling.
 - First-read target: 25–35 minutes at 170–190 words/minute, including exploration and choices.

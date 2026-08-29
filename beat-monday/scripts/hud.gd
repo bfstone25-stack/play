@@ -240,15 +240,8 @@ func _build_title() -> void:
 	title.text = "FLOOR 13\nNIGHT SHIFT"
 	_format_label(title, 29, Color("#ee4052"))
 	title_panel.add_child(title)
-	var chinese := Label.new()
-	chinese.position = Vector2(0, 202)
-	chinese.size = Vector2(640, 28)
-	chinese.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	chinese.text = "13 楼 夜 班"
-	_format_label(chinese, 14, Color("#67d8ec"))
-	title_panel.add_child(chinese)
 	var info := Label.new()
-	info.position = Vector2(90, 245)
+	info.position = Vector2(90, 222)
 	info.size = Vector2(460, 35)
 	info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	info.text = "A 25–35 MINUTE POINT-CLICK HORROR NARRATIVE\nHeadphones recommended · choices persist"
