@@ -39,7 +39,7 @@ func _init() -> void:
 
 func _read_dialogue(hud: Node) -> void:
 	while hud.dialogue_panel.visible:
-		var words := hud.body_label.text.replace("\n", " ").split(" ", false).size()
+		var words: int = hud.body_label.text.replace("\n", " ").split(" ", false).size()
 		await create_timer(max(1.5, float(words) / WORDS_PER_MINUTE * 60.0)).timeout
 		hud._advance_dialogue()
 		await process_frame
