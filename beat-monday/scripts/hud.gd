@@ -623,7 +623,7 @@ func apply_locale() -> void:
 			nvl_name, nvl_body, nvl_hint, pressure, overlay_title, overlay_body,
 			overlay_close, overlay_restart, ending_label, ending_restart]:
 		if node is Label:
-			var display := node in [title_name, overlay_title, ending_label, nvl_body]
+			var display: bool = node == title_name or node == overlay_title or node == ending_label or node == nvl_body
 			UiFont.apply_label(node, display)
 		elif node is Button:
 			UiFont.apply_button(node)
