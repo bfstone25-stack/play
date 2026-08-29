@@ -339,7 +339,7 @@ No zone may be represented only by labeled primitive blocks. Primitive meshes ar
 
 ## Interaction inventory
 
-14 authored inspection interactions: 9 mandatory, 5 optional. Four decision presentations: stain, pipe, clause, final door. Three ending-specific interactive/camera sequences. HUD includes objective, crosshair/prompt, timed subtitle card, chapter/time, evidence log, pause overlay, restart, and mouse capture state.
+23 authored evidence interactions: 13 mandatory, 10 optional. Runtime copy is split into 69 readable document pages (2,001 words on the Witness route), plus four decision presentations: stain, pipe, clause, final door. Three ending-specific interactive/camera sequences follow. HUD includes objective, prompt, paged evidence viewer, chapter/time, evidence count, pause overlay, restart, and mouse capture state.
 
 ## Audio cue sheet
 
@@ -387,7 +387,7 @@ All synthesized streams must use deterministic seeds where noise is generated so
 1. Fresh player can complete without developer keys, typing, console, or external instructions.
 2. A first read of all mandatory and most optional copy measures 25–35 minutes at 170–210 English words/minute plus traversal.
 3. Six zones are visually distinguishable in screenshots by architecture, dressing, palette, and practical light.
-4. At least 14 reachable authored interactions and four choice presentations exist.
+4. At least 23 reachable authored evidence interactions and four choice presentations exist.
 5. Early stain and pipe flags alter later Pell/Dane/Iris copy and ending eligibility.
 6. Witness, Complicit, and 404 each require a distinct route and each delivers at least three staged beats plus final cards.
 7. Automated tests instantiate the production scene and assert each ending, mixed-route 404, gating, and conditional dialogue.

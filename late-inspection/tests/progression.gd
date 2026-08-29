@@ -9,8 +9,9 @@ func _init() -> void:
 	await _test_route("404", "404")
 	await _test_mixed_routes()
 	await _test_stage_flags()
+	_test_delayed_consequences()
 	if failures.is_empty():
-		print("PROGRESSION_OK routes=6 endings=3 critical_flags=10")
+		print("PROGRESSION_OK routes=6 endings=3 critical_flags=19 delayed_scenes=2")
 		quit(0)
 	else:
 		for failure in failures:
@@ -66,3 +67,15 @@ func _test_stage_flags() -> void:
 	if game._resolve_ending() != "WITNESS":
 		failures.append("Witness eligibility does not consume early flags")
 	game.free()
+
+func _test_delayed_consequences() -> void:
+	var witness_flags := {"photo_kept":true, "pipe_answered":true, "clause_signed":false, "clause_refused":true}
+	var denial_flags := {"photo_kept":false, "pipe_answered":false, "clause_signed":true, "clause_refused":false}
+	var witness_call: String = StoryContent.stage(9, witness_flags)[0]["text"]
+	var denial_call: String = StoryContent.stage(9, denial_flags)[0]["text"]
+	if witness_call == denial_call or not witness_call.contains("witness") or not denial_call.contains("clean"):
+		failures.append("early evidence flags did not alter Pell follow-up scene")
+	var signed_scene: String = StoryContent.stage(11, denial_flags)[0]["text"]
+	var refused_scene: String = StoryContent.stage(11, witness_flags)[0]["text"]
+	if signed_scene == refused_scene or not signed_scene.contains("TENANT") or not refused_scene.contains("NOT FOUND"):
+		failures.append("clause choice did not alter final peephole scene")
