@@ -418,6 +418,29 @@ def cmd_embedbg_apply(args) -> None:
     print(f"embedbg-apply -> {code} {body[:200]} (image_id {img_id})")
 
 
+def cmd_devlog(args) -> None:
+    opener, _ = get_opener()
+    url = f"https://itch.io/dashboard/game/{args.id}/new-devlog"
+    code, _, html = fetch(opener, url)
+    if code != 200:
+        raise SystemExit(f"GET devlog form -> {code}")
+    token = csrf_from(html, {})
+    body_html = (ROOT / args.body).read_text()
+    fields = {
+        "csrf_token": token,
+        "post[title]": args.title,
+        "post[user_classification]": "major_update",
+        "post[body]": body_html,
+        "post[tags]": args.tags,
+        "post[enable_comments]": "on",
+    }
+    if args.publish:
+        fields["post[published]"] = "on"
+    code, loc, body = post_form(opener, url, fields)
+    errs = errors_of(body)
+    print(f"devlog -> {code}", ("ERRORS " + json.dumps(errs)) if errs else "OK", loc[:120])
+
+
 def cmd_retire(args) -> None:
     """Unlist an old page (restricted) without touching its content."""
     opener, _ = get_opener()
@@ -505,6 +528,14 @@ def main() -> int:
     p.add_argument("--slug", required=True)
     p.add_argument("--user", default="bfstone25-stack")
     p.set_defaults(f=cmd_embedbg_apply)
+
+    p = sub.add_parser("devlog")
+    p.add_argument("id", type=int)
+    p.add_argument("--title", required=True)
+    p.add_argument("--body", required=True)
+    p.add_argument("--tags", default="")
+    p.add_argument("--publish", action="store_true")
+    p.set_defaults(f=cmd_devlog)
 
     p = sub.add_parser("retire")
     p.add_argument("id", type=int)

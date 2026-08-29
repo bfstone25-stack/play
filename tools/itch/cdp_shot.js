@@ -82,7 +82,10 @@ async function main() {
     await sleep(parseInt(process.env.POST_CLICK_MS || "4000", 10));
   }
 
-  const shot = await send("Page.captureScreenshot", { format: "png" });
+  const fullPage = process.env.FULL_PAGE === "1";
+  const shot = await send("Page.captureScreenshot", fullPage
+    ? { format: "png", captureBeyondViewport: true }
+    : { format: "png" });
   require("fs").writeFileSync(out, Buffer.from(shot.data, "base64"));
   console.log("BOOTED", booted, "CONSOLE", consoleLines.length, "->", out);
   const interesting = consoleLines.filter((l) => /error|Error|GODOT|Godot|SCRIPT/i.test(l)).slice(0, 8);
