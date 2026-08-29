@@ -16,9 +16,18 @@ static func face() -> Font:
 	if _face:
 		return _face
 	var latin: Font = load("res://assets/pixel/floor13_font.fnt")
-	var extras: Array[Font] = []
+	var cjk: Font = null
 	if ResourceLoader.exists("res://assets/pixel/floor13_cjk.fnt"):
-		extras.append(load("res://assets/pixel/floor13_cjk.fnt"))
+		cjk = load("res://assets/pixel/floor13_cjk.fnt")
+	var extras: Array[Font] = []
+	# Latin-only BMFont draws .notdef for ñ/á instead of falling through.
+	# Put the complete atlas first for ES and CJK locales.
+	var primary: Font = latin
+	if cjk and Loc.current() in ["es", "zh", "ja", "ko"]:
+		primary = cjk
+		extras.append(latin)
+	elif cjk:
+		extras.append(cjk)
 	for path in _font_files():
 		var ttf := FontFile.new()
 		if ttf.load_dynamic_font(path) == OK:
@@ -28,13 +37,13 @@ static func face() -> Font:
 		if _cjk_locale():
 			# WebGL will not bind a packed TTF. Put the browser face first so
 			# JA/KO never sit behind a Latin-only bitmap that draws hex tofu.
-			var web_extras: Array[Font] = [latin]
+			var web_extras: Array[Font] = [primary]
 			web_extras.append_array(extras)
 			web.fallbacks = web_extras
 			_face = web
 			return _face
 		extras.append(web)
-	var composed: Font = latin.duplicate()
+	var composed: Font = primary.duplicate()
 	composed.fallbacks = extras
 	_face = composed
 	return _face

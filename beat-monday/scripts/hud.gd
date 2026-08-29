@@ -145,8 +145,8 @@ func _build_top() -> void:
 	_format_label(clock_label, 9, Color("#6fdcef"))
 	root_ui.add_child(clock_label)
 	objective_label = Label.new()
-	objective_label.position = Vector2(88, 24)
-	objective_label.size = Vector2(528, 20)
+	objective_label.position = Vector2(88, 22)
+	objective_label.size = Vector2(528, 22)
 	objective_label.clip_text = false
 	objective_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 	_format_label(objective_label, 8, Color("#8e9bb0"))
