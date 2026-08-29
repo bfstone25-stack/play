@@ -9,7 +9,8 @@ func _init() -> void:
 	var hud: Node = game.get_node("HUD")
 	hud.title_panel.visible = false
 	game.start_game()
-	await process_frame
+	for _i in 8:
+		await process_frame
 	if not hud.dialogue_panel.visible or hud.nvl_root.visible:
 		push_error("opening should use ADV")
 		quit(1)
@@ -24,7 +25,8 @@ func _init() -> void:
 		hud._advance_dialogue()
 		await process_frame
 	game._on_hotspot("coffee")
-	await process_frame
+	for _i in 18:
+		await process_frame
 	if not hud.nvl_root.visible:
 		push_error("coffee diary should use NVL")
 		quit(2)
