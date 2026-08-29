@@ -635,6 +635,8 @@ func apply_locale() -> void:
 		title_name.text = Loc.t("title.name")
 	if title_info:
 		title_info.text = Loc.t("title.info")
+		if OS.has_feature("slice"):
+			title_info.text += "\n" + Loc.t("title.slice")
 	if title_start:
 		title_start.text = Loc.t("title.start")
 	if title_lang_caption:

@@ -20,6 +20,11 @@ var soundscape: Soundscape
 
 const NVL_HOTSPOTS := ["coffee", "drawer", "ledger", "camera", "intercom", "alarm"]
 
+## Web exports built with the `slice` feature tag end after File 2
+## (the elevator lobby). The full seven-file shift ships as the paid download.
+static var SLICE: bool = OS.has_feature("slice")
+const SLICE_LAST_AREA := 1
+
 func _ready() -> void:
 	add_to_group("game")
 	world = OfficeBuilder.new()
@@ -155,6 +160,9 @@ func on_dialogue_done() -> void:
 		"ending":
 			pending = ""
 			hud.show_ending_card(StoryData.live_endings()[ending_id][-1][1])
+		"slice_end":
+			pending = ""
+			hud.show_ending_card(Loc.t("slice.card"))
 
 func _on_choice(value: String) -> void:
 	var area: Dictionary = StoryData.live()[area_index]
@@ -168,12 +176,25 @@ func _on_choice(value: String) -> void:
 
 func _on_route() -> void:
 	hud.hide_route()
+	if SLICE and area_index >= SLICE_LAST_AREA:
+		_begin_slice_end()
+		return
 	var area: Dictionary = StoryData.live()[area_index]
 	if area_index == StoryData.live().size() - 1:
 		_begin_ending()
 		return
 	pending = "transition"
 	hud.show_dialogue(_expand(area.get("transition", [])), false)
+
+func _begin_slice_end() -> void:
+	ending_id = "SLICE"
+	pending = "slice_end"
+	soundscape.cue("ending")
+	hud.show_dialogue([
+		[Loc.t("slice.sp.narr"), Loc.t("slice.line.0")],
+		[Loc.t("slice.sp.sys"), Loc.t("slice.line.1")],
+		[Loc.t("slice.sp.sys"), Loc.t("slice.line.2")],
+	], true)
 
 func _begin_ending() -> void:
 	ending_id = StoryData.resolve(flags)
