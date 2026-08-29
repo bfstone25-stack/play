@@ -438,13 +438,22 @@ def bitmap_font():
     if not source.exists():
         raise SystemExit(f"font source unavailable: {source}")
     font = ImageFont.truetype(str(source), 9)
-    sheet = Image.new("RGBA", (128, 72), (0, 0, 0, 0))
+    source_text = "".join(
+        path.read_text()
+        for path in (ROOT / "scripts").glob("*.gd")
+    )
+    characters = sorted(set(chr(code) for code in range(32, 127)) | {
+        char for char in source_text if ord(char) >= 32 and char not in "\n\r\t"
+    }, key=ord)
+    rows = (len(characters) + 15) // 16
+    sheet = Image.new("RGBA", (128, rows * 12), (0, 0, 0, 0))
     entries = []
-    for index, code in enumerate(range(32, 127)):
+    for index, char in enumerate(characters):
+        code = ord(char)
         x, y = (index % 16) * 8, (index // 16) * 12
         glyph = Image.new("L", (8, 12), 0)
         gd = ImageDraw.Draw(glyph)
-        gd.text((0, -1), chr(code), font=font, fill=255, stroke_width=0)
+        gd.text((0, -1), char, font=font, fill=255, stroke_width=0)
         # Explicit threshold removes grayscale antialiasing; every glyph pixel is on/off.
         glyph = glyph.point(lambda value: 255 if value >= 112 else 0)
         white = Image.new("RGBA", glyph.size, (255, 255, 255, 255))
@@ -457,7 +466,7 @@ def bitmap_font():
     descriptor = [
         'info face="Floor13 Bitmap Mono" size=9 bold=0 italic=0 charset="" unicode=1 '
         'stretchH=100 smooth=0 aa=1 padding=0,0,0,0 spacing=0,0 outline=0',
-        "common lineHeight=12 base=10 scaleW=128 scaleH=72 pages=1 packed=0",
+        f"common lineHeight=12 base=10 scaleW=128 scaleH={rows * 12} pages=1 packed=0",
         'page id=0 file="floor13_font.png"',
         f"chars count={len(entries)}",
         *entries,

@@ -35,7 +35,8 @@ for path in required:
     if path.name.endswith("atlas.png") and not any(color[3] == 0 for _, color in colors):
         raise SystemExit(f"{path.name}: atlas lacks transparent silhouettes")
 
-if Image.open(font_sheet).size != (128, 72) or not font_descriptor.exists():
+font_size = Image.open(font_sheet).size
+if font_size[0] != 128 or font_size[1] < 72 or font_size[1] % 12 or not font_descriptor.exists():
     raise SystemExit("hard-edged bitmap font assets are incomplete")
 
 source = (ROOT / "scripts" / "office_builder.gd").read_text()
