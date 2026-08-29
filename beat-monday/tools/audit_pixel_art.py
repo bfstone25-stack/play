@@ -49,5 +49,6 @@ for scene in SCENES:
 print(
     "PIXEL_ART_AUDIT_OK "
     f"scenes={len(SCENES)} atlases=2 endings=3 png_total={len(required) + 1} "
+    "tiles=40 coworker_frames=8 portraits=4 ui_skins=4 "
     "base=320x180 nearest=true"
 )
