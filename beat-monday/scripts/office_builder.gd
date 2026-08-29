@@ -21,7 +21,6 @@ func build(id: String) -> void:
 		"lobby": _lobby()
 		"stairs": _stairs()
 		"manager": _manager()
-	_label(18, 328, "MERIDIAN LEDGER // NIGHT OPERATIONS", 10, Color("#65718f"))
 
 func _process(delta: float) -> void:
 	phase += delta
