@@ -39,7 +39,7 @@ func _run() -> void:
 	if hud.nvl_root.visible:
 		_fail(7, "opening must be ADV not NVL")
 		return
-	var first := hud.current_line_text()
+	var first: String = hud.current_line_text()
 	if first == "":
 		_fail(8, "first ADV line empty")
 		return

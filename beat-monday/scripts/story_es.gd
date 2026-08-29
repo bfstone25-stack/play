@@ -14,11 +14,11 @@ const AREAS := [
 			["NARRACIÓN", "El reloj sobre la salida de emergencia avanza, duda y vuelve a las 11:59. En algún punto del piso, una impresora despierta y alimenta una bandeja vacía."]
 		],
 		"hotspots": [
-			["ticket", "最后一张工单", [82, 78, 105, 64], [
-				["JUNE", "雇员 013：玛拉·维尔。薪酬分析员。状态：缺勤。本周工时：一百六十八。一周只有一百六十八小时。照这说法，她每小时都在上班，也每小时都缺勤。"],
-				["SISTEMA", "建议更正：从未雇用。此更正已为你准备完毕。选择提交，即承认不存在劳动、身份或未结报酬。"],
-				["NARRACIÓN", "第二只光标出现在琼的旁边。它比她慢半拍，圈住玛拉的名字，并给“现任分析员”加下划线。琼松开鼠标，第二只光标还在动。"],
-				["JUNE", "错误在成为更正之前先是证据。爸爸谈税务审计时这么说。他指的是数字。他从没必要澄清，他也指人。"]
+			["ticket", "ÚLTIMO TICKET", [82, 78, 105, 64], [
+				["JUNE", "Empleada 013: Mara Vale. Analista de nómina. Estado: AUSENTE. Horas esta semana: ciento sesenta y ocho. Solo hay ciento sesenta y ocho horas en una semana. Según esto, trabajó todas y faltó a todas."],
+				["SISTEMA", "Corrección sugerida: NUNCA EMPLEADA. Enviar admite que no existió trabajo, identidad ni compensación pendiente."],
+				["NARRACIÓN", "Un segundo cursor aparece junto al de June. Se mueve medio pulso después, rodea el nombre de Mara y subraya ANALISTA ACTIVA. Cuando suelta el ratón, el segundo cursor sigue."],
+				["JUNE", "Un error es evidencia antes de ser una corrección. Papá lo decía de las auditorías fiscales. Hablaba de números. Nunca tuvo que aclarar que también hablaba de personas."]
 			]],
 			["phone", "桌面电话", [215, 70, 55, 44], [
 				["RUSK / 语音信箱", "朴。别回电话。红行不是人，是偏差。改那一行，打三份，一份放进我的发件箱。若有人要你恢复一个名字，他们不在名册上。"],

@@ -22,6 +22,10 @@ func _run() -> void:
 	await _shot("title-en")
 	Loc.set_code("ja")
 	await _shot("title-ja")
+	Loc.set_code("ko")
+	await _shot("title-ko")
+	Loc.set_code("es")
+	await _shot("title-es")
 	Loc.set_code("zh")
 	hud.title_panel.visible = false
 	game.start_game()

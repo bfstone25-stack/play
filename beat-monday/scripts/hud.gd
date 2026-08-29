@@ -499,7 +499,7 @@ func _on_vn_gui(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		_advance_dialogue()
-		accept_event()
+		get_viewport().set_input_as_handled()
 
 func _is_advance(event: InputEvent) -> bool:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -609,6 +609,16 @@ func reset_ui() -> void:
 
 func apply_locale() -> void:
 	UiFont.refresh()
+	for node in [title_eyebrow, title_name, title_info, title_lang_caption, title_start,
+			chapter_label, place_label, clock_label, objective_label,
+			speaker_label, body_label, continue_button, choice_banner, choice_prompt,
+			choice_a, choice_b, log_button, pause_button, route_button,
+			nvl_name, nvl_body, nvl_hint, pressure, overlay_title, overlay_body,
+			overlay_close, overlay_restart, ending_label, ending_restart]:
+		if node is Label:
+			UiFont.apply_label(node)
+		elif node is Button:
+			UiFont.apply_button(node)
 	if title_eyebrow:
 		title_eyebrow.text = Loc.t("title.eyebrow")
 	if title_name:
