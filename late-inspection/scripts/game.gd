@@ -8,11 +8,31 @@ func _chapter(i: int) -> String:
 
 
 func _stage_items(s: int) -> Array:
-	return StoryZh.stage(s, flags) if Loc.is_zh() else StoryContent.stage(s, flags)
+	match Loc.current():
+		"zh":
+			return StoryZh.stage(s, flags)
+		"ja":
+			return StoryJa.stage(s, flags)
+		"es":
+			return StoryEs.stage(s, flags)
+		"ko":
+			return StoryKo.stage(s, flags)
+		_:
+			return StoryContent.stage(s, flags)
 
 
 func _commentary(id: String) -> String:
-	return StoryZh.commentary(id) if Loc.is_zh() else StoryContent.commentary(id)
+	match Loc.current():
+		"zh":
+			return StoryZh.commentary(id)
+		"ja":
+			return StoryJa.commentary(id)
+		"es":
+			return StoryEs.commentary(id)
+		"ko":
+			return StoryKo.commentary(id)
+		_:
+			return StoryContent.commentary(id)
 
 
 func on_locale_changed() -> void:

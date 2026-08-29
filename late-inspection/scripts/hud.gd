@@ -40,6 +40,8 @@ var pause_resume: Button
 var pause_restart: Button
 var lang_en: Button
 var lang_zh: Button
+var lang_buttons: Dictionary = {}
+var lang_caption: Label
 var splash_enter: Button
 
 func _ready() -> void:
@@ -147,6 +149,7 @@ func _mk_btn(n: String, off: Vector2, size: Vector2) -> Button:
 	b.offset_right = off.x + size.x
 	b.offset_bottom = off.y + size.y
 	b.add_theme_font_size_override("font_size", 16)
+	UiFont.apply_button(b)
 	return b
 
 func _pause_ui() -> void:
@@ -234,27 +237,32 @@ func _splash() -> void:
 	splash_title.add_theme_color_override("font_color", Color(0.93, 0.86, 0.72, 1))
 	UiFont.apply_label(splash_title)
 	splash.add_child(splash_title)
-	var lang_cap := Label.new()
-	lang_cap.set_anchors_preset(Control.PRESET_CENTER)
-	lang_cap.offset_left = -200
-	lang_cap.offset_right = 200
-	lang_cap.offset_top = 28
-	lang_cap.offset_bottom = 52
-	lang_cap.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lang_cap.text = "Language / 语言"
-	lang_cap.add_theme_font_size_override("font_size", 16)
-	lang_cap.add_theme_color_override("font_color", Color(0.7, 0.62, 0.5, 1))
-	UiFont.apply_label(lang_cap)
-	splash.add_child(lang_cap)
-	lang_en = _mk_btn("LangEn", Vector2(-220, 60), Vector2(200, 44))
-	lang_en.text = "English"
-	lang_en.pressed.connect(func() -> void: Loc.set_code("en"))
-	splash.add_child(lang_en)
-	lang_zh = _mk_btn("LangZh", Vector2(20, 60), Vector2(200, 44))
-	lang_zh.text = "简体中文"
-	lang_zh.pressed.connect(func() -> void: Loc.set_code("zh"))
-	splash.add_child(lang_zh)
-	splash_enter = _mk_btn("Enter", Vector2(-180, 120), Vector2(360, 48))
+	lang_caption = Label.new()
+	lang_caption.set_anchors_preset(Control.PRESET_CENTER)
+	lang_caption.offset_left = -200
+	lang_caption.offset_right = 200
+	lang_caption.offset_top = 16
+	lang_caption.offset_bottom = 40
+	lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lang_caption.add_theme_font_size_override("font_size", 16)
+	lang_caption.add_theme_color_override("font_color", Color(0.7, 0.62, 0.5, 1))
+	UiFont.apply_label(lang_caption)
+	splash.add_child(lang_caption)
+	var codes := Loc.ALLOWED
+	for i in codes.size():
+		var code := str(codes[i])
+		var col := i % 3
+		var row := int(i / 3)
+		var b := _mk_btn("Lang_%s" % code, Vector2(-270 + col * 186, 48 + row * 50), Vector2(174, 44))
+		b.text = str(Loc.NATIVE[code])
+		b.pressed.connect(func() -> void: Loc.set_code(code))
+		splash.add_child(b)
+		lang_buttons[code] = b
+		if code == "en":
+			lang_en = b
+		elif code == "zh":
+			lang_zh = b
+	splash_enter = _mk_btn("Enter", Vector2(-180, 156), Vector2(360, 52))
 	splash_enter.name = "EnterBuilding"
 	splash_enter.pressed.connect(func() -> void:
 		hide_splash()
@@ -445,7 +453,9 @@ func _process(delta: float) -> void:
 
 
 func apply_locale() -> void:
+	UiFont.refresh()
 	if splash_title:
+		UiFont.apply_label(splash_title)
 		splash_title.text = "%s\n%s" % [Loc.t("splash.title"), Loc.t("splash.hint")]
 	if splash_enter:
 		splash_enter.text = Loc.t("splash.start")
@@ -455,13 +465,16 @@ func apply_locale() -> void:
 		pause_resume.text = Loc.t("pause.resume")
 	if pause_restart:
 		pause_restart.text = Loc.t("pause.restart")
-	if lang_en and lang_zh:
-		if Loc.is_zh():
-			lang_zh.add_theme_color_override("font_color", Color(0.95, 0.82, 0.5))
-			lang_en.remove_theme_color_override("font_color")
+	if lang_caption:
+		lang_caption.text = Loc.t("lang.caption")
+	for code in lang_buttons.keys():
+		var b: Button = lang_buttons[code]
+		b.text = str(Loc.NATIVE[code])
+		UiFont.apply_button(b)
+		if str(code) == Loc.current():
+			b.add_theme_color_override("font_color", Color(0.95, 0.82, 0.5))
 		else:
-			lang_en.add_theme_color_override("font_color", Color(0.95, 0.82, 0.5))
-			lang_zh.remove_theme_color_override("font_color")
+			b.remove_theme_color_override("font_color")
 	if evidence_label and evidence.size() > 0:
 		evidence_label.text = Loc.t("evidence", [evidence.size()])
 	if vn:
