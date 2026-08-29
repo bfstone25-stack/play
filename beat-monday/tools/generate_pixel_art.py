@@ -5,7 +5,7 @@ The artwork is authored at 320x180. Every primitive lands on the pixel grid and
 uses location-specific hand-picked ramps; there is no random/noise decoration.
 """
 from pathlib import Path
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "pixel"
@@ -432,6 +432,40 @@ def title_and_endings():
         e.save(OUT / f"ending_{name}.png", optimize=True)
 
 
+def bitmap_font():
+    """Rasterize a legally redistributable mono face into a hard-edged BMFont."""
+    source = Path("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf")
+    if not source.exists():
+        raise SystemExit(f"font source unavailable: {source}")
+    font = ImageFont.truetype(str(source), 9)
+    sheet = Image.new("RGBA", (128, 72), (0, 0, 0, 0))
+    entries = []
+    for index, code in enumerate(range(32, 127)):
+        x, y = (index % 16) * 8, (index // 16) * 12
+        glyph = Image.new("L", (8, 12), 0)
+        gd = ImageDraw.Draw(glyph)
+        gd.text((0, -1), chr(code), font=font, fill=255, stroke_width=0)
+        # Explicit threshold removes grayscale antialiasing; every glyph pixel is on/off.
+        glyph = glyph.point(lambda value: 255 if value >= 112 else 0)
+        white = Image.new("RGBA", glyph.size, (255, 255, 255, 255))
+        sheet.alpha_composite(Image.composite(white, Image.new("RGBA", glyph.size), glyph), (x, y))
+        entries.append(
+            f"char id={code} x={x} y={y} width=8 height=12 "
+            "xoffset=0 yoffset=0 xadvance=8 page=0 chnl=15"
+        )
+    sheet.save(OUT / "floor13_font.png", optimize=True)
+    descriptor = [
+        'info face="Floor13 Bitmap Mono" size=9 bold=0 italic=0 charset="" unicode=1 '
+        'stretchH=100 smooth=0 aa=1 padding=0,0,0,0 spacing=0,0 outline=0',
+        "common lineHeight=12 base=10 scaleW=128 scaleH=72 pages=1 packed=0",
+        'page id=0 file="floor13_font.png"',
+        f"chars count={len(entries)}",
+        *entries,
+        "kernings count=0",
+    ]
+    (OUT / "floor13_font.fnt").write_text("\n".join(descriptor) + "\n")
+
+
 def main():
     for name, fn in {
         "cubicle": cubicle, "office": office, "breakroom": breakroom,
@@ -441,7 +475,8 @@ def main():
     atlas()
     ui_atlas()
     title_and_endings()
-    print("generated 13 PNG assets at 320x180/atlas-grid resolution")
+    bitmap_font()
+    print("generated 14 PNG assets plus BMFont at 320x180/atlas-grid resolution")
 
 
 if __name__ == "__main__":

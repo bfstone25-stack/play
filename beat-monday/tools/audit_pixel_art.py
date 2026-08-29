@@ -17,6 +17,8 @@ required += [
     ASSETS / "ending_new_manager.png",
     ASSETS / "ending_monday_forever.png",
 ]
+font_sheet = ASSETS / "floor13_font.png"
+font_descriptor = ASSETS / "floor13_font.fnt"
 
 for path in required:
     if not path.exists():
@@ -33,6 +35,9 @@ for path in required:
     if path.name.endswith("atlas.png") and not any(color[3] == 0 for _, color in colors):
         raise SystemExit(f"{path.name}: atlas lacks transparent silhouettes")
 
+if Image.open(font_sheet).size != (128, 72) or not font_descriptor.exists():
+    raise SystemExit("hard-edged bitmap font assets are incomplete")
+
 source = (ROOT / "scripts" / "office_builder.gd").read_text()
 if "ColorRect.new()" in source or "func _rect" in source:
     raise SystemExit("office_builder.gd regressed to visible programmer-block scene art")
@@ -42,6 +47,6 @@ for scene in SCENES:
 
 print(
     "PIXEL_ART_AUDIT_OK "
-    f"scenes={len(SCENES)} atlases=2 endings=3 png_total={len(required)} "
+    f"scenes={len(SCENES)} atlases=2 endings=3 png_total={len(required) + 1} "
     "base=320x180 nearest=true"
 )
