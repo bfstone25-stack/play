@@ -63,3 +63,42 @@ restyle check only (cover/screenshots/theme vs. the new bar); keep paid.
 3. Restyle = cover, in-game screenshots, embed BG, theme, tags, AI disclosure,
   English-primary copy with tidy locale blocks.
 4. jam16 has no itch page (repo-only jam folder) — no action.
+
+
+## Second pass results (2026-08-30)
+
+Subtitles live on the three relaunched pages (short_text leads with
+"Free to Play Online"; price and download structure unchanged):
+Late Inspection, Floor 13, Midnight Pawn.
+
+Restyled to the relaunch standard (copy, tags=10, screenshots, theme,
+AI disclosure, 1280x720 frame embed):
+
+| Page | id | Model | Notes |
+|---|---|---|---|
+| Flutter | 4922085 | free | "Free to Play Online"; 3 shots; romance/otome tags replace generic ones |
+| Cyber Merit | 4922053 | free | NOT broken — full cyber-Buddhist clicker (28 KB is just efficient); 3 shots |
+| GHOST CHANNEL | 4928255 | $1.99 | 0 -> 10 tags; first screenshots; neon theme |
+| SilverTongue | 4922064 | $2.99 | 0 -> 10 tags; 3 shots; genre rpg |
+| Tell | 4922065 | $2.99 | 0 -> 10 tags; 3 shots incl. live interrogation |
+| Rebound Tycoon | 4922060 | free | 5 -> 10 tags; pinball-tycoon copy |
+| Office Landlord | 4922056 | free | new copy from in-game text; 2 shots |
+| Fold | 4922063 | free | new copy; 2 shots; suggested $2 donation kept |
+| ShiFu | 4925171 | free tool | subtitle + screenshot + cream theme; see size note below |
+
+### Package size investigations
+
+- flutter-html5.zip (226 MB): LOADS FINE — itch serves HTML5 files
+  individually from the CDN; title renders in ~12 s headless. The weight is
+  196 MB of BGM in 3 formats (mp3 91 MB + ogg 39 MB + opus 55 MB + cues).
+  Slim export possible (mp3-only ~115 MB, or EN-only slice ~40 MB) but not
+  required; embed kept as-is. Instructions note the large first load.
+- sh<ifux>-html5.zip (451 MB): LOADS FINE (landing renders in <10 s).
+  432 MB is 324 editorial 1024x1024 PNGs (~1.3 MB each) loaded on demand.
+  PNG -> WebP would take it to ~40 MB but needs a rebuild + re-upload from
+  the pop-os source (Products/.itch-tools); page works without it.
+- cyber-merit (28 KB): verified working, not a placeholder.
+
+Remaining audit items: slacker / word-pop (not on account), catharsis hub,
+and the tools pages (appealpro, logos, medikin, mingxi, replyguard,
+visacheck) — inspect-before-change per first-pass rules.
