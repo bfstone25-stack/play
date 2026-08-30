@@ -105,7 +105,7 @@ def full_fields(profile: dict, token: str) -> dict:
         "game[title]": profile["title"],
         "game[slug]": profile["slug"],
         "game[short_text]": profile.get("short_text", ""),
-        "game[user_classification]": "game",
+        "game[user_classification]": profile.get("classification", "game"),
         "game[type]": profile.get("type", "html"),
         "game[release_status]": profile.get("release_status", "released"),
         "game[classname]": "",
@@ -229,7 +229,7 @@ def cmd_cover(args) -> None:
         p, token,
     )
     print("cover upload ->", json.dumps(res)[:240])
-    img_id = res.get("id") or (res.get("image") or {}).get("id")
+    img_id = res.get("id") or (res.get("image") or {}).get("id") or (res.get("upload") or {}).get("id")
     if not img_id:
         print("NO IMAGE ID")
         return
@@ -396,6 +396,12 @@ def cmd_theme(args) -> None:
         "layout[screenshots_loc]": colors.get("screenshots_loc", "sidebar"),
         "layout[default_screenshots_loc]": colors.get("default_screenshots_loc", "hidden"),
     }
+    if colors.get("embed_color1"):
+        fields["layout[embed_background_color1]"] = colors["embed_color1"]
+    if colors.get("embed_color2"):
+        fields["layout[embed_background_color2]"] = colors["embed_color2"]
+    if colors.get("clear_embedbg"):
+        fields["layout[embed_background_image][image_id]"] = ""
     if colors.get("button_color"):
         fields["layout[button_color]"] = colors["button_color"]
     if colors.get("header_font_family"):

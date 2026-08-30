@@ -1,0 +1,15 @@
+{
+  "title": "ReplyGuard · 好评管家",
+  "slug": "replyguard",
+  "short_text": "Free to Use Online · On-brand, risk-checked owner responses to reviews in 30 seconds. 中/EN.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "ai-assisted,bilingual,business,customer-service,productivity,reputation-management,tool,utility,web-app,writing",
+  "description_file": "copy-tools/replyguard-desc.html",
+  "instructions_file": "copy-tools/replyguard-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true,
+  "classification": "tool"
+}

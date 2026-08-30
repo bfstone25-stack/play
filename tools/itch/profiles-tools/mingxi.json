@@ -1,0 +1,15 @@
+{
+  "title": "MingXi · 明析",
+  "slug": "mingxi",
+  "short_text": "Free to Use Online · Real BaZi charting & classical Chinese decision reading in 12 languages.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "ai-assisted,cultural,educational,iching,lifestyle,multilingual,reflection,tool,utility,web-app",
+  "description_file": "copy-tools/mingxi-desc.html",
+  "instructions_file": "copy-tools/mingxi-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true,
+  "classification": "tool"
+}

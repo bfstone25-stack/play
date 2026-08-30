@@ -1,0 +1,8 @@
+Use in the browser: click Run tool, then complete the two sections.
+
+1 · Your birth moment — enter birth date, approximate hour, and gender to calculate the chart, relations, and timeline. (Optional: the reading can work from the question alone.)
+2 · Name your dilemma — describe the concrete decision you are weighing, then cast.
+
+Available in 12 languages from the header menu. Birth data is used for the current reading only and is never stored.
+
+Free to use. MingXi offers cultural perspective, not professional advice.

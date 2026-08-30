@@ -1,0 +1,15 @@
+{
+  "title": "Logos",
+  "slug": "logos",
+  "short_text": "Free to Use Online · A quiet, scripture-rooted reflection companion in 12 languages.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "ai-assisted,conversation,educational,multilingual,productivity,reflection,spiritual,tool,web-app,wellness",
+  "description_file": "copy-tools/logos-desc.html",
+  "instructions_file": "copy-tools/logos-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true,
+  "classification": "tool"
+}

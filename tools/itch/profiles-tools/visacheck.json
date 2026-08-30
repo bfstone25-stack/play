@@ -1,0 +1,15 @@
+{
+  "title": "VisaCheck · 签途审计",
+  "slug": "visacheck",
+  "short_text": "Free to Use Online · Pre-submission audit for US immigration drafts — flag RFE risks first.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "ai-assisted,checklist,immigration,multilingual,productivity,tool,utility,visa,web-app,writing",
+  "description_file": "copy-tools/visacheck-desc.html",
+  "instructions_file": "copy-tools/visacheck-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true,
+  "classification": "tool"
+}

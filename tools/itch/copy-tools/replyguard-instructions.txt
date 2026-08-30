@@ -1,0 +1,9 @@
+Use in the browser: click Run tool, then work through the card.
+
+1 · Add your business (name + city) and, optionally, brand memory — public contact, response rules, phrases to avoid.
+2 · Paste the customer review, pick a tone (warm, professional, concise, empathetic), and generate the owner response.
+3 · Optional: paste what you planned to post to scan it for public-response risks first.
+
+Switch between 中文 and English from the header. Pasted reviews are used for the current reply only and are never stored.
+
+Free to use. You remain responsible for what your business publishes.

@@ -1,0 +1,15 @@
+{
+  "title": "MediKin · 家医管家",
+  "slug": "medikin",
+  "short_text": "Free to Use Online · Plain-language readings of medical bills, lab reports & EOBs. 中/EN.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "accessibility,ai-assisted,bilingual,educational,health,medical,productivity,tool,utility,web-app",
+  "description_file": "copy-tools/medikin-desc.html",
+  "instructions_file": "copy-tools/medikin-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true,
+  "classification": "tool"
+}

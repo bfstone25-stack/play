@@ -1,0 +1,15 @@
+{
+  "title": "AppealPro · 申诉专家",
+  "slug": "appealpro",
+  "short_text": "Free to Use Online · Evidence-first appeal letters for Amazon, eBay, Etsy, Walmart & Shopify sellers. 中/EN.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "ai-assisted,bilingual,business,e-commerce,productivity,tool,utility,web-app,writing,seller-tools",
+  "description_file": "copy-tools/appealpro-desc.html",
+  "instructions_file": "copy-tools/appealpro-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true,
+  "classification": "tool"
+}

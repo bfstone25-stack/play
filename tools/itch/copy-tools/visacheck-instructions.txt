@@ -1,0 +1,8 @@
+Use in the browser: click Run tool, then follow the two steps.
+
+1 · Select visa & document type — H-1B, OPT/STEM OPT, EB-1/NIW, EB-2/EB-3 PERM, I-485 AOS, F-1, or O-1; recommendation letter, employer letter, and more.
+2 · Paste your draft or key form data — receive a sentence-level audit flagging RFE-prone wording, logic gaps, and formatting issues, with concrete fixes.
+
+Available in 9 languages from the header menu. Your draft is used for this audit only and is never stored.
+
+Free to use. VisaCheck is not legal advice and does not replace a qualified immigration attorney.

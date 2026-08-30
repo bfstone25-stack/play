@@ -1,0 +1,8 @@
+Use in the browser: click Run tool, then follow the two steps.
+
+1 · Whose document is this? — choose self, parent, spouse, child, or other, then pick the document type (medical bill, lab report, insurance EOB, doctor's note, medication).
+2 · Paste the document text — receive a plain-language explanation with abnormalities, inconsistencies, and suggested follow-up questions.
+
+Switch between 中文 and English from the header. Pasted text is used for this reading only and is never stored.
+
+Free to use. MediKin is informational only and does not replace professional medical care.
