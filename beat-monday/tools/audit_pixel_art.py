@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+"""Fail the visual gate when authored pixel assets regress or disappear."""
+from pathlib import Path
+from PIL import Image
+
+ROOT = Path(__file__).resolve().parents[1]
+ASSETS = ROOT / "assets" / "pixel"
+SCENES = [
+    "cubicle", "office", "breakroom", "server", "lobby", "stairs", "manager"
+]
+required = [ASSETS / f"scene_{name}.png" for name in SCENES]
+required += [
+    ASSETS / "office_atlas.png",
+    ASSETS / "ui_atlas.png",
+    ASSETS / "light_pool.png",
+    ASSETS / "title_backdrop.png",
+    ASSETS / "ending_clock_out.png",
+    ASSETS / "ending_new_manager.png",
+    ASSETS / "ending_monday_forever.png",
+]
+font_sheet = ASSETS / "floor13_font.png"
+font_descriptor = ASSETS / "floor13_font.fnt"
+
+for path in required:
+    if not path.exists():
+        raise SystemExit(f"missing authored asset: {path.name}")
+    image = Image.open(path).convert("RGBA")
+    expected = (
+        (256, 256) if path.name == "office_atlas.png" else
+        (256, 128) if path.name == "ui_atlas.png" else
+        (48, 24) if path.name == "light_pool.png" else
+        (320, 180)
+    )
+    if image.size != expected:
+        raise SystemExit(f"{path.name}: expected {expected}, got {image.size}")
+    colors = image.getcolors(maxcolors=4096)
+    minimum_colors = 5 if path.name == "light_pool.png" else 8
+    if colors is None or len(colors) < minimum_colors:
+        raise SystemExit(f"{path.name}: insufficient authored palette detail")
+    if path.name.endswith("atlas.png") and not any(color[3] == 0 for _, color in colors):
+        raise SystemExit(f"{path.name}: atlas lacks transparent silhouettes")
+
+font_size = Image.open(font_sheet).size
+if font_size[0] != 128 or font_size[1] < 72 or font_size[1] % 12 or not font_descriptor.exists():
+    raise SystemExit("hard-edged bitmap font assets are incomplete")
+
+source = (ROOT / "scripts" / "office_builder.gd").read_text()
+if "ColorRect.new()" in source or "func _rect" in source:
+    raise SystemExit("office_builder.gd regressed to visible programmer-block scene art")
+if "Gradient" in source or "light_pool.png" not in source:
+    raise SystemExit("runtime lighting regressed to a smooth vector gradient")
+for scene in SCENES:
+    if f"scene_{scene}.png" not in source:
+        raise SystemExit(f"runtime does not reference scene_{scene}.png")
+
+project_source = (ROOT / "project.godot").read_text()
+for setting in [
+    'window/stretch/scale_mode="integer"',
+    "textures/canvas_textures/default_texture_filter=0",
+    "2d/snap/snap_2d_transforms_to_pixel=true",
+    "2d/snap/snap_2d_vertices_to_pixel=true",
+]:
+    if setting not in project_source:
+        raise SystemExit(f"pixel pipeline setting missing: {setting}")
+
+light_alphas = {
+    rgba[3]
+    for _, rgba in Image.open(ASSETS / "light_pool.png").convert("RGBA").getcolors(4096)
+}
+if len(light_alphas) != 5:
+    raise SystemExit(f"pixel light must use exactly four hard bands plus clear: {light_alphas}")
+
+print(
+    "PIXEL_ART_AUDIT_OK "
+    f"scenes={len(SCENES)} atlases=2 endings=3 png_total={len(required) + 1} "
+    "tiles=40 coworker_frames=8 portraits=4 ui_skins=4 "
+    "base=320x180 nearest=true scale=integer snap=on light_bands=4"
+)

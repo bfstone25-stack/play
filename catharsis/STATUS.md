@@ -1,10 +1,14 @@
 # Catharsis series — live status
 
-Updated: 2026-08-21 (matrix complete; shrine rewire skipped)
+Updated: 2026-08-28 (Beat Monday product exit)
 
 ## Next
 
-Idle. Do not add an eighth title. Optional only: EN strings on the newest cabinets, or reload apps-gateway.
+Idle on remaining cabinet H5 work. Do not add an eighth title.
+
+**Beat Monday (cabinet 03) pivoted out of Catharsis** → standalone Godot 2D pixel horror VN at `play/beat-monday/` (*Floor 13: Night Shift*; see `beat-monday/PIVOT.md`). Do not extend the H5 fighter loop as the shipping surface. Crazy Rant is handled by a sibling agent/PR. Null-shrine still awaits Blaze’s brief.
+
+Optional only for other cabinets: EN strings, or reload apps-gateway.
 
 ## Blocked
 
@@ -20,6 +24,7 @@ Shrine kernel rewire. `play/null-shrine/frontend/js/physics.js` now references `
 - Kernel at `play/catharsis/kernel/`. Titles at `play/<slug>/frontend`.
 - Commits on `play/catharsis-series`; no push.
 - Do not point shrine at `/kernel/physics.js` while shrine physics has drifted.
+- Beat Monday intentional product exit from Catharsis “no new engines” H5 contract into standalone Godot 2D pixel horror VN.
 
 ## Notes
 
