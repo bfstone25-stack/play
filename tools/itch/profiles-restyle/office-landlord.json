@@ -1,0 +1,15 @@
+{
+  "title": "Office Landlord",
+  "slug": "office-landlord",
+  "short_text": "Free to Play Online · Place staff. Build chains. Pay the landlord. A 5x4 desk-floor strategy toy.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "2d,comedy,incremental,management,office,satire,short-session,simulation,strategy,tycoon",
+  "genre": "strategy",
+  "description_file": "copy-restyle/office-landlord-desc.html",
+  "instructions_file": "copy-restyle/office-landlord-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}

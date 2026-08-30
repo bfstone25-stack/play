@@ -1,0 +1,15 @@
+{
+  "title": "Flutter",
+  "slug": "flutter",
+  "short_text": "Free to Play Online · He remembers you — a live-AI romance RPG in 5 languages. Every reply is his, written for you.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "romance,otome,visual-novel,dating-sim,story-rich,multiple-endings,ai,text-based,atmospheric,female-protagonist",
+  "genre": "visual-novel",
+  "description_file": "copy-restyle/flutter-desc.html",
+  "instructions_file": "copy-restyle/flutter-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}

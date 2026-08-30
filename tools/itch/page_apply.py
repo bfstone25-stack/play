@@ -176,7 +176,8 @@ def _image_size(path, fallback):
         return fallback
 
 
-def _s3_upload(opener, prepare_url: str, params: dict, file_path: Path, token: str) -> dict:
+def _s3_upload(opener, prepare_url: str, params: dict, file_path: Path, token: str,
+               save_params: dict | None = None) -> dict:
     params = dict(params)
     params["csrf_token"] = token
     code, _, body = post_form(opener, prepare_url, params)
@@ -202,7 +203,12 @@ def _s3_upload(opener, prepare_url: str, params: dict, file_path: Path, token: s
         raise SystemExit(f"S3 upload failed: {exc}")
     if s3code >= 300:
         raise SystemExit(f"S3 upload -> {s3code}")
-    code, _, body = post_form(opener, data["success_url"], {"csrf_token": token})
+    success_url = data["success_url"]
+    if success_url.startswith("/"):
+        success_url = "https://itch.io" + success_url
+    save = dict(save_params or {})
+    save["csrf_token"] = token
+    code, _, body = post_form(opener, success_url, save)
     if code != 200:
         raise SystemExit(f"success_url -> {code}: {body[:200]}")
     try:
@@ -337,6 +343,7 @@ def cmd_screenshots(args) -> None:
             {"kind": "image", "filename": p.name, "width": w, "height": h,
              "type": "screenshot", "thumb_size": "editor_preview"},
             p, token,
+            save_params={"type": "screenshot", "thumb_size": "editor_preview"},
         )
         sid = res.get("id") or (res.get("screenshot") or {}).get("id") or res.get("image_id")
         print(f"screenshot {p.name} -> id={sid} :: {json.dumps(res)[:160]}")

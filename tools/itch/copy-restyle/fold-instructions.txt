@@ -1,0 +1,5 @@
+Play in the browser: click Run game, then ENTER.
+
+Swipe / drag the board or use arrow keys — every tile moves as one · Equal values merge and double · Fold the whole field into the target number · Undo and Reset below the board.
+
+Free forever. 51 curated levels plus 150 endless studies, one daily puzzle for everyone.

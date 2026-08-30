@@ -1,0 +1,15 @@
+{
+  "title": "Rebound Tycoon",
+  "slug": "rebound-tycoon",
+  "short_text": "Free to Play Online · Night-shift pinball tycoon. Pump the hose, soak troublemakers, pay rent, build an empire.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "pinball,tycoon,incremental,one-button,short-session,arcade,neon,2d,management,retro",
+  "genre": "simulation",
+  "description_file": "copy-restyle/rebound-tycoon-desc.html",
+  "instructions_file": "copy-restyle/rebound-tycoon-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}

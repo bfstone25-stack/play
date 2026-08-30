@@ -1,0 +1,15 @@
+{
+  "title": "Cyber Merit",
+  "slug": "cyber-merit",
+  "short_text": "Free to Play Online · Tap the holographic wooden fish. Merit particles spiral into digital lotuses.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "clicker,cyberpunk,idle,incremental,neon,satire,comedy,short-session,2d,relaxing",
+  "genre": "simulation",
+  "description_file": "copy-restyle/cyber-merit-desc.html",
+  "instructions_file": "copy-restyle/cyber-merit-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}

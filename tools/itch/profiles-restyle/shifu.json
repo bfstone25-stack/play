@@ -1,0 +1,14 @@
+{
+  "title": "ShiFu · 找师傅",
+  "slug": "shifu",
+  "short_text": "Free to Use Online · A bilingual home-services marketplace for Chinese-speaking communities in North America.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "tags": "bilingual,business,community,home,marketplace,productivity,utility,web-app",
+  "description_file": "copy-restyle/shifu-desc.html",
+  "instructions_file": "copy-restyle/shifu-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}

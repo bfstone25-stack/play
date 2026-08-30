@@ -1,0 +1,15 @@
+{
+  "title": "GHOST CHANNEL [Free Web Playable]",
+  "slug": "ghost-channel",
+  "short_text": "Free Web Slice · Five voices. One mimic. Name the ghost. Radio deduction in 5 languages.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "paid",
+  "min_price": "1.99",
+  "tags": "mystery,deduction,horror,atmospheric,story-rich,singleplayer,short,2d,ai,spy",
+  "genre": "puzzle",
+  "description_file": "copy-restyle/ghost-channel-desc.html",
+  "instructions_file": "copy-restyle/ghost-channel-instructions.txt",
+  "published": "published",
+  "mobile_friendly": false
+}

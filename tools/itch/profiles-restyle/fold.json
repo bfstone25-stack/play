@@ -1,0 +1,16 @@
+{
+  "title": "Fold",
+  "slug": "fold",
+  "short_text": "Free to Play Online · Everything returns to one. A quiet geometric puzzle — 51 curated forms, 150 endless studies.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "free",
+  "min_price": "0.00",
+  "suggested_price": "2.00",
+  "tags": "2d,brain-teaser,cozy,logic,mobile-friendly,one-button,puzzle,relaxing,satisfying,short",
+  "genre": "puzzle",
+  "description_file": "copy-restyle/fold-desc.html",
+  "instructions_file": "copy-restyle/fold-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}

@@ -1,0 +1,5 @@
+Play in the browser: click Run game, allow sound, and the opening film begins.
+
+Click / tap — advance · Type in the box — say anything, he answers in character · Language menu (top right) — English, Español, Português, 中文, 日本語.
+
+The browser edition is the full experience. Large first load (about 220 MB of music and cinematics) — give it a moment on slow connections.

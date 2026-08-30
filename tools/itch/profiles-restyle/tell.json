@@ -1,0 +1,15 @@
+{
+  "title": "Tell [Free Web Playable]",
+  "slug": "tell",
+  "short_text": "Free Web Slice · Every lie has a seam. Interrogate three suspects; find the detail only the killer could know.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "paid",
+  "min_price": "2.99",
+  "tags": "mystery,detective,visual-novel,story-rich,choices-matter,noir,singleplayer,text-based,ai,short",
+  "genre": "visual-novel",
+  "description_file": "copy-restyle/tell-desc.html",
+  "instructions_file": "copy-restyle/tell-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}

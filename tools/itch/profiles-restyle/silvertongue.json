@@ -1,0 +1,15 @@
+{
+  "title": "SilverTongue [Free Web Playable]",
+  "slug": "silvertongue",
+  "short_text": "Free Web Slice · A persuasion RPG — not a chatbot. First 2 duels free in browser; full campaign in the download.",
+  "type": "html",
+  "release_status": "released",
+  "payment_mode": "paid",
+  "min_price": "2.99",
+  "tags": "rpg,dialogue,story-rich,choices-matter,multiple-endings,atmospheric,singleplayer,text-based,ai,mystery",
+  "genre": "rpg",
+  "description_file": "copy-restyle/silvertongue-desc.html",
+  "instructions_file": "copy-restyle/silvertongue-instructions.txt",
+  "published": "published",
+  "mobile_friendly": true
+}
