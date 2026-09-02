@@ -3,8 +3,15 @@
 screen end_screen_cta():
     tag menu
 
+    key "K_g" action ShowMenu("cg_gallery")
+    key "g" action ShowMenu("cg_gallery")
+    key "K_r" action Start()
+    key "r" action Start()
+    key "K_m" action MainMenu()
+    key "m" action MainMenu()
+
     # Background
-    add "#0c0812"
+    add "images/bg/study_normal.webp"
 
     vbox:
         xalign 0.5
@@ -72,22 +79,31 @@ screen end_screen_cta():
             spacing 40
 
             textbutton _("🖼 View CG Gallery"):
-                action ShowMenu("cg_gallery")
-                text_size 24
-                text_color "#d99b66"
-                text_hover_color "#ffdfa0"
+                action Show("cg_gallery")
+                text_size 26
+                text_color "#ffdfa0"
+                text_hover_color "#ffffff"
+                background Transform("#24172a", alpha=0.92)
+                hover_background Transform("#3d2238", alpha=0.95)
+                padding (20, 10, 20, 10)
 
             textbutton _("↺ Replay Chapter 1"):
                 action Start()
-                text_size 24
+                text_size 26
                 text_color "#d99b66"
-                text_hover_color "#ffdfa0"
+                text_hover_color "#ffe0a0"
+                background Transform("#24172a", alpha=0.92)
+                hover_background Transform("#3d2238", alpha=0.95)
+                padding (20, 10, 20, 10)
 
             textbutton _("⌂ Return to Title"):
                 action MainMenu()
-                text_size 24
+                text_size 26
                 text_color "#d99b66"
-                text_hover_color "#ffdfa0"
+                text_hover_color "#ffe0a0"
+                background Transform("#24172a", alpha=0.92)
+                hover_background Transform("#3d2238", alpha=0.95)
+                padding (20, 10, 20, 10)
 
 label end_cta_screen:
     stop music fadeout 2.0

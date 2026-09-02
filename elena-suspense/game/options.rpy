@@ -1,6 +1,9 @@
 ## Options configuration for Ren'Py 8
 ## Elena: Crimson Archives - Softcore / Suspense Narrative MVP
 
+define config.screen_width = 1920
+define config.screen_height = 1080
+
 define config.name = _("Elena: Crimson Archives")
 define gui.show_name = True
 define config.version = "0.1.0"
@@ -21,7 +24,7 @@ define config.end_game_transition = fade
 define config.window_show_transition = Dissolve(.2)
 define config.window_hide_transition = Dissolve(.2)
 
-default preferences.text_cps = 50
+default preferences.text_cps = 0
 default preferences.afm_time = 15
 
 define config.save_directory = "elena_crimson_archives-1725200000"

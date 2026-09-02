@@ -17,6 +17,17 @@ init -1:
         size gui.text_size
         color gui.text_color
 
+    style namebox:
+        xalign 0.0
+        yalign 0.0
+        padding (0, 0, 0, 0)
+
+    style namebox_label:
+        font gui.name_text_font
+        size gui.name_text_size
+        color gui.accent_color
+        bold True
+
     style say_thought:
         font gui.text_font
         size gui.text_size
@@ -57,13 +68,15 @@ screen say(who, what):
     window:
         id "window"
 
-        if who is not None:
-            window:
-                id "namebox"
-                style "namebox"
-                text who id "who"
+        vbox:
+            spacing 10
+            if who is not None:
+                window:
+                    id "namebox"
+                    style "namebox"
+                    text who id "who"
 
-        text what id "what"
+            text what id "what"
 
     use quick_menu
 
@@ -71,9 +84,31 @@ screen say(who, what):
 screen choice(items):
     style_prefix "choice"
 
+    key "K_1" action items[0].action
+    key "1" action items[0].action
+    if len(items) > 1:
+        key "K_2" action items[1].action
+        key "2" action items[1].action
+    if len(items) > 2:
+        key "K_3" action items[2].action
+        key "3" action items[2].action
+
     vbox:
+        yalign 0.5
+        xalign 0.5
+        spacing 25
+
         for i in items:
-            textbutton i.caption action i.action
+            textbutton i.caption action i.action:
+                xsize 1100
+                ysize 70
+                background Transform("#241a28", alpha=0.92)
+                hover_background Transform("#3d2238", alpha=0.95)
+                text_size 28
+                text_color "#f0e6dc"
+                text_hover_color "#ffdfa0"
+                text_xalign 0.5
+                text_yalign 0.5
 
 ## Quick Menu
 screen quick_menu():
@@ -101,7 +136,11 @@ default quick_menu = True
 screen main_menu():
     tag menu
 
-    add "#0d0912"
+    add "images/bg/study_dark.webp"
+
+    key "K_s" action Start()
+    key "K_RETURN" action Start()
+    key "K_SPACE" action Start()
 
     # Dark Academia ambient decoration
     vbox:

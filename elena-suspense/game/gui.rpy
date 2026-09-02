@@ -16,9 +16,9 @@ define gui.text_color = '#f5f0eb'
 define gui.interface_text_color = '#f5f0eb'
 
 ## Fonts
-define gui.text_font = gui.system_font
-define gui.name_text_font = gui.system_font
-define gui.interface_text_font = gui.system_font
+define gui.text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "DejaVuSans.ttf"
 
 ## Font sizes
 define gui.text_size = 32

@@ -594,11 +594,17 @@ def main():
     parser.add_argument("--quality", type=int, default=85, help="WebP compression quality (default: 85)")
     parser.add_argument("--target-height", type=int, default=1080, help="Target sprite height (default: 1080)")
 
+    parser.add_argument("--remove-bg", action="store_true", default=True, help="Remove background from sprites (default: True)")
+
     args = parser.parse_args()
     base_dir = Path(args.project_root).resolve()
 
-    if args.generate_baseline or not (base_dir / "raw_assets" / "sprites" / "elena_neutral.png").exists():
+    if args.generate_baseline and not (base_dir / "raw_assets" / "sprites" / "elena_neutral.png").exists():
         generate_baseline_raw_assets(base_dir)
+        generate_baseline_audio(base_dir)
+
+    # Ensure audio exists
+    if not (base_dir / "game" / "audio" / "rain_ambience.ogg").exists():
         generate_baseline_audio(base_dir)
 
     print(f"=== Starting Asset Optimization Pipeline (Quality={args.quality}%) ===")
@@ -609,7 +615,7 @@ def main():
         out_dir=base_dir / "game" / "images" / "characters",
         target_height=args.target_height,
         quality=args.quality,
-        remove_bg=False
+        remove_bg=args.remove_bg
     )
 
     # Process Backgrounds and Event CGs
