@@ -1,0 +1,12 @@
+*.rpyb
+*.rpyc
+saves/
+cache/
+traceback.txt
+errors.txt
+log.txt
+dist/
+test_dist/
+progressive_download.txt
+*.tar.bz2
+*.zip

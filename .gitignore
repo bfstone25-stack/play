@@ -6,3 +6,5 @@ __pycache__/
 studio/*.log
 .itch-push.log
 **/models/**
+test_dist/
+tools/
