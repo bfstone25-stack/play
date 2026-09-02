@@ -45,6 +45,7 @@ init python:
     build.classify('**/thumbs.db', None)
     build.classify('tools/**', None)
     build.classify('raw_assets/**', None)
+    build.classify('dist/**', None)
 
     build.classify('game/**.png', 'archive')
     build.classify('game/**.jpg', 'archive')
