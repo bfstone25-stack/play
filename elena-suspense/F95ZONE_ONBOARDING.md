@@ -1,15 +1,43 @@
 # F95zone Onboarding — Blaze / bfstone25-stack
 
-**Status (2026-09-04):** Registration done. **0/3 counting posts submitted.** Drafts ready below.  
-**Live logged-in notice:** Not capturable from this agent VM (no pop-os Tailscale route; Chrome here shows only Log in / Register). Restriction text below is the exact notice Blaze reported from Firefox after registration (also mirrored in `/opt/cursor/artifacts/f95_restriction_notice.png`).
+**Status (2026-09-04):** Registration done. Blaze reports the **3 counting posts were already submitted manually**. Next gate: staff approval + link unlock, then automated Elena release via `tools/f95zone/publisher.py`.
 
-**Do not** open a game release thread, post Elena promo, or include any links until **all** of:
+**Do not** open a game release thread with links until:
 
-1. Three **regular** posts that count toward the minimum are visible/approved  
-2. Staff has cleared the “messages held until approved” gate  
-3. Link posting is unlocked (restriction banner gone / three-post threshold met)
+1. Three **regular** counting posts exist and are staff-visible  
+2. Restriction banner / link lock is gone  
+3. Session cookies are available to the publisher (`F95ZONE_COOKIES_FILE`)
 
-Release BBCode package: `F95ZONE_RELEASE.md` (Ren’Py branch). Use **only after** unlock.
+Release BBCode: `F95ZONE_RELEASE.md` and `f95_posts/release_elena_body.txt`.
+
+---
+
+## Automation: why “XenForo API” is not enough by itself
+
+F95zone runs XenForo’s REST API (`GET https://f95zone.to/api/` → JSON error `no_api_key_in_request`). That API **requires an admin-issued `XF-Api-Key`** from the forum ACP. Normal members cannot mint a key. OAuth clients are also admin-gated.
+
+So for a one-person studio the **real** automation surface is the same pattern we already use for itch page edits:
+
+1. Log in once in Firefox (human, Cloudflare passes).  
+2. Export session cookies (`xf_user`, `xf_session`, `cf_clearance`, …).  
+3. Script scrapes `data-csrf` / `_xfToken` and POSTs `/threads/{id}/add-reply` or `/forums/{id}/post-thread`.
+
+Tooling lives in **`tools/f95zone/`** — see that README.
+
+```bash
+# On the machine with logged-in Firefox:
+python3 tools/f95zone/export_firefox_cookies.py --out ~/.config/f95zone/cookies.json
+export F95ZONE_COOKIES_FILE=~/.config/f95zone/cookies.json
+
+python3 tools/f95zone/publisher.py whoami
+python3 tools/f95zone/publisher.py self-test-guest   # proves API key wall + CSRF scrape
+python3 tools/f95zone/publisher.py run-job \
+  --job elena-suspense/f95_posts/jobs/release_elena.yaml --dry-run
+```
+
+**One-time cookie export ≠ hand-posting forever.** Export once (or when the session expires); every later reply/thread/update is a CLI/job.
+
+Never commit cookie values. `.gitignore` already excludes `**/cookies.json` and `.secrets/`.
 
 ---
 
@@ -17,140 +45,47 @@ Release BBCode package: `F95ZONE_RELEASE.md` (Ren’Py branch). Use **only after
 
 | Notice line | Meaning |
 | --- | --- |
-| Do not post any links until you have three posts | URLs in posts/PMs are blocked until **3 counting posts** exist. This matches the long-standing F95 anti-spam rule for link privileges. |
-| Messages will not be seen by anyone until approved by staff | **All** early posts/replies are invisible to other members until a moderator/staff approves them. You may see them in your own history; the community does not. |
-| Many words blocked due to common spam usage (also affects signatures, profile posts, profile info) | Aggressive keyword filters hit body, signature, profile wall, and about fields. Avoid spammy vocabulary even when not promoting. |
-| Profile posts do NOT count toward the three minimum posts | Profile-wall / “profile post” activity **does not** advance the 3-post unlock. |
+| Do not post any links until you have three posts | URLs blocked until **3 counting posts** |
+| Messages will not be seen by anyone until approved by staff | Early posts invisible until moderator approval |
+| Many words blocked due to common spam usage | Aggressive filters on body / signature / profile |
+| Profile posts do NOT count toward the three minimum posts | Profile wall does **not** unlock links |
 
 ### Chinese summary / 中文摘要
 
-- **不能发链接**：累计满 **3 条计分帖** 之前，帖子和私信都不能带链接。  
-- **先审后显**：新账号发帖对他人不可见，需 **staff 审核通过** 后才公开。  
-- **敏感词**：大量常见 spam 词被拦，签名/主页留言/资料同样受影响。  
-- **主页留言不计分**：Profile posts **不计入** 那 3 帖。
+- **不能发链接**：满 **3 条计分帖** 前不能带 URL。  
+- **先审后显**：新帖需 staff 审核后才公开。  
+- **敏感词**：签名/主页/资料同样过滤。  
+- **主页留言不计分**。  
+- **自动化**：公开 REST API 需要管理员 API Key（拿不到）；用 Firefox cookie + `_xfToken` 发帖脚本。
 
 ---
 
 ## What counts toward the 3 posts
 
-| Counts? | Where | Notes |
-| --- | --- | --- |
-| **Yes** | New thread or reply in **Introduction** | `https://f95zone.to/forums/introduction.11/` |
-| **Yes** | Reply in **General Discussions** | Genre / favorites / craft talk |
-| **Yes** | Reply in **Dev Help** / **Programming, Development & Art** | Technical Ren’Py/VN questions OK; **no** product dump |
-| **No** | Profile posts / profile wall | Explicitly excluded by the notice |
-| **No** | Signature / profile info edits | Filtered; does not count |
-| **Not yet** | Games release thread with download / store links | Wait for unlock + approval |
-
-Sources checked (guest/public where possible):
-
-- Blaze Firefox new-user banner (transcribed)  
-- Survival Guide: `https://f95zone.to/threads/f95zone-survival-guide-a-guide-to-making-everyone-happy.9784/`  
-- Game Uploading Rules sticky: `https://f95zone.to/threads/game-uploading-rules-2024-02-29.524/`  
-- Site terms: `https://f95zone.to/help/terms/`  
-- Community documentation of the 3-normal-posts-before-links rule (same policy F95 has used for years)
-
-General Rules sticky (`…5589`) and some search endpoints return login/403 from this VM; policy above is still sufficient to plan safe posts.
-
----
-
-## Three planned counting posts (drafts)
-
-Paste from the **logged-in Firefox** account on pop-os. **No links**, no Elena / itch / Patreon, no “check my game” language.
-
-### Post 1 — Introduction (new thread)
-
-**Forum:** Introduction — `https://f95zone.to/forums/introduction.11/`  
-**Title:**
-
-```text
-Hello — longtime VN reader, new account
-```
-
-**Body:**
-
-```text
-Hey everyone. Finally made an account after lurking for a while.
-
-Mostly into story-heavy visual novels and quieter atmospheric indie titles. I care a lot about pacing, mood, and dialogue that feels lived-in rather than rushed.
-
-Looking forward to reading recommendations and chatting about writing craft. Nice to meet you.
-```
-
-### Post 2 — General Discussions reply
-
-**Thread:** Underrated Genres in H games — `https://f95zone.to/threads/underrated-genres-in-h-games.313472/`  
-
-```text
-Mystery and slow-burn psychological stuff still feel underrated to me.
-
-A lot of releases lean hard on spectacle, but when a game trusts silence, awkward conversations, and a steady mood, it sticks longer. Curious what others put in that bucket — especially titles where atmosphere does more work than the twist.
-```
-
-### Post 3 — Development / craft reply
-
-**Preferred:** Programming, Development & Art — `https://f95zone.to/forums/programming-development-art.73/`  
-Open a recent on-topic Ren’Py / VN craft thread and reply (or Dev Help if a better fit).
-
-```text
-Working in Ren'Py and still learning how much of the feel comes from scene structure versus presentation.
-
-Curious how other people approach first-ten-minutes pacing in narrative games — do you lock tone early with sparse dialogue, or open denser and trim later? Always interested in craft notes from folks who ship story-first work.
-```
-
-**Alt Post 3** (General Discussions):  
-**Thread:** What’s your TOP 10 games of all time? — `https://f95zone.to/threads/whats-your-top-10-games-of-all-time.313725/`
-
-```text
-My list shifts a lot, but I always respect games that nail tone early.
-
-If the first ten minutes set a mood I can sit in, I usually stay even when the systems are simple. Curious how other people weigh story against systems when they build their lists.
-```
-
----
-
-## Automation status (this agent run)
-
-| Step | Result |
+| Counts? | Where |
 | --- | --- |
-| Inspect live Firefox notice on pop-os | **Blocked** — Tailscale auth key in this VM is invalid (`API key does not exist`); `100.84.182.19` / `100.121.195.19` time out. `SSHPASS` for blazeubuntu hop is **not** injected (prior agents had it). |
-| Extract `xf_user` / `xf_session` / `cf_clearance` | **Not possible yet** — no session on this VM; Chrome cookie DB only has empty `xf_csrf` guest cookie. |
-| Post 3 replies via XenForo forms | **Not possible yet** — no auth cookies; Cloudflare/login required for member actions. Even with cookies, staff hold means posts stay invisible until approval. |
-| Drafts + rule research | **Done** (this file + artifacts). |
+| **Yes** | Introduction / General Discussions / Dev forum threads & replies |
+| **No** | Profile posts, signatures, profile info |
+| **Not yet** | Games release with download/store links |
 
-### Cookie extract (run later on pop-os when SSH works)
-
-Do **not** commit or print full cookie values. Store only in a local secrets file for publisher tooling:
-
-```bash
-# On pop-os, as frankstone — names + lengths only for a smoke check:
-python3 - <<'PY'
-import sqlite3, shutil, os, tempfile
-src = os.path.expanduser("~/.mozilla/firefox")
-# locate default profile cookies.sqlite, copy, then:
-# SELECT name, length(value) FROM moz_cookies WHERE host LIKE '%f95zone%';
-# Expect xf_user, xf_session, cf_clearance when logged in.
-print("inspect cookies.sqlite in Firefox profile; export names only to logs")
-PY
-```
-
-For publisher tooling: export those three cookies from the logged-in Firefox profile into an agent secret / local env — never into git.
+Draft text files (also used by the publisher job): `elena-suspense/f95_posts/`.
 
 ---
 
-## After staff approval → game release thread
+## After staff approval → automated game release
 
-1. Confirm the three posts are visible while logged out / in a private window.  
-2. Confirm the restriction banner is gone and a harmless link can be typed (draft only) without block.  
-3. Create the Elena Games thread using `F95ZONE_RELEASE.md` + Games upload template sticky.  
-4. Optional later: Survival Guide developer-proof via support ticket (separate from the 3-post unlock).
+1. Confirm the three posts are visible while logged out.  
+2. Confirm the restriction banner is gone.  
+3. Export cookies → `whoami` succeeds from the agent machine.  
+4. Confirm `f95_posts/release_elena_body.txt` matches the latest `F95ZONE_RELEASE.md`.  
+5. Set the correct Games forum id in `f95_posts/jobs/release_elena.yaml`.  
+6. `publisher.py run-job --job …/release_elena.yaml` (dry-run first).
 
 ---
 
-## Agent session notes (2026-09-04)
+## Agent session notes
 
-- VM Chrome opened `https://f95zone.to/` — **guest only** (Log in / Register).  
-- Public pages verified: Introduction, Dev Help, Survival Guide, Game Uploading Rules, Terms.  
-- Restriction notice transcribed from Blaze’s reported Firefox banner; desktop capture: `/opt/cursor/artifacts/f95_restriction_notice.png`.  
-- No passwords or full session cookies stored in this repo.  
-- Automatic posting is **not** possible until pop-os Tailscale/SSH + Firefox session are reachable again **and** staff approval is not still holding every message.
+- Live `/api/` returns `no_api_key_in_request` / `api_key_not_found` — API exists, member key does not.  
+- Guest thread pages expose `data-csrf` for form automation once cookies are present.  
+- pop-os Tailscale/SSH was unreachable from the cloud VM at last check; cookie file can be copied into the agent secret store when connectivity returns.  
+- No passwords or full session cookies are stored in this repo.

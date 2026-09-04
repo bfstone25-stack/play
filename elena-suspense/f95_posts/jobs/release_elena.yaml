@@ -1,0 +1,14 @@
+# Elena release thread — ONLY after 3-post unlock + staff approval + links allowed.
+# forum_id 2 = https://f95zone.to/forums/games.2/ (confirm against Game Uploading Rules sticky before go-live).
+# Body is BBCode extracted from F95ZONE_RELEASE.md into ../release_elena_body.txt
+#
+#   export F95ZONE_COOKIES_FILE=~/.config/f95zone/cookies.json
+#   python3 tools/f95zone/publisher.py run-job --job elena-suspense/f95_posts/jobs/release_elena.yaml --dry-run
+#   python3 tools/f95zone/publisher.py run-job --job elena-suspense/f95_posts/jobs/release_elena.yaml
+
+name: elena-crimson-archives-release
+steps:
+  - type: create-thread
+    forum_id: 2
+    title_file: ../release_elena_title.txt
+    message_file: ../release_elena_body.txt

@@ -1,0 +1,26 @@
+{
+  "base_url": "https://f95zone.to",
+  "cookies": [
+    {
+      "domain": ".f95zone.to",
+      "name": "xf_user",
+      "value": "REPLACE_WITH_REAL_VALUE",
+      "path": "/",
+      "secure": true
+    },
+    {
+      "domain": ".f95zone.to",
+      "name": "xf_session",
+      "value": "REPLACE_WITH_REAL_VALUE",
+      "path": "/",
+      "secure": true
+    },
+    {
+      "domain": ".f95zone.to",
+      "name": "cf_clearance",
+      "value": "REPLACE_WITH_REAL_VALUE",
+      "path": "/",
+      "secure": true
+    }
+  ]
+}

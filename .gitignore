@@ -6,3 +6,6 @@ __pycache__/
 studio/*.log
 .itch-push.log
 **/models/**
+.secrets/
+**/cookies.json
+**/.f95zone-cookies.json
