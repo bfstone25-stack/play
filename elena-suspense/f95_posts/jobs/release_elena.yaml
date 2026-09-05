@@ -1,6 +1,6 @@
 # Elena release — official F95 path for non-uploader members:
-# post in Game Requests (forum_id 3), then report thread to be moved to Games.
-# ONLY after itch download page is LIVE (not 404).
+# post in Game Requests (forum_id 3) with prefix REQ (24), then report thread
+# to be moved to Games. ONLY after itch download page is LIVE.
 #
 #   export F95ZONE_COOKIES_FILE=~/.config/f95zone/cookies.json
 #   python3 tools/f95zone/publisher.py run-job --job elena-suspense/f95_posts/jobs/release_elena.yaml --dry-run
@@ -10,5 +10,6 @@ name: elena-crimson-archives-release
 steps:
   - type: create-thread
     forum_id: 3
+    prefix_id: 24
     title_file: ../release_elena_title.txt
     message_file: ../release_elena_body.txt

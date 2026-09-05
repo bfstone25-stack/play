@@ -251,6 +251,7 @@ class F95Publisher:
         *,
         dry_run: bool = False,
         tags: str | None = None,
+        prefix_id: int | None = None,
     ) -> dict[str, Any]:
         path = f"/forums/{forum_id}/"
         csrf, request_uri = self._csrf_from(path)
@@ -269,6 +270,12 @@ class F95Publisher:
         }
         if tags:
             payload["tags"] = tags
+        # XenForo + SV multi-prefix expects repeated prefix_id[] fields.
+        # requests encodes dict values fine for scalars, but for list fields we
+        # must pass a sequence of tuples or the [] name is dropped/ignored.
+        data_items: list[tuple[str, str]] = [(k, str(v)) for k, v in payload.items()]
+        if prefix_id is not None:
+            data_items.append(("prefix_id[]", str(prefix_id)))
         if dry_run:
             return {
                 "dry_run": True,
@@ -276,11 +283,12 @@ class F95Publisher:
                 "forum_id": forum_id,
                 "title": title.strip(),
                 "message_chars": len(message),
+                "prefix_id": prefix_id,
                 "csrf_present": True,
             }
         r = self.session.post(
             endpoint,
-            data=payload,
+            data=data_items,
             headers={
                 "X-Requested-With": "XMLHttpRequest",
                 "Referer": self.url(path),
@@ -404,6 +412,7 @@ def main(argv: list[str] | None = None) -> int:
     p_new.add_argument("--message", default=None)
     p_new.add_argument("--message-file", default=None)
     p_new.add_argument("--tags", default=None)
+    p_new.add_argument("--prefix-id", type=int, default=None, help="Forum prefix id (e.g. 24=REQ)")
     p_new.add_argument("--dry-run", action="store_true")
 
     p_job = sub.add_parser("run-job", help="Run a YAML/JSON job of posts")
@@ -445,6 +454,7 @@ def main(argv: list[str] | None = None) -> int:
                 message,
                 dry_run=args.dry_run,
                 tags=args.tags,
+                prefix_id=args.prefix_id,
             )
             print(json.dumps(result, indent=2))
             return 0 if result.get("ok", args.dry_run) else 1
@@ -497,6 +507,7 @@ def run_job(pub: F95Publisher, job_path: Path, *, dry_run: bool) -> int:
                 message,
                 dry_run=dry_run,
                 tags=step.get("tags"),
+                prefix_id=(int(step["prefix_id"]) if step.get("prefix_id") is not None else None),
             )
         else:
             raise PublisherError(f"step {i}: unknown type {kind!r}")
