@@ -26,25 +26,25 @@ curl -sS -H 'XF-Api-Key: anything' https://f95zone.to/api/me
 
 So “XenForo has an API” is true. “Your account can call it” is false until F95 staff hand you a key (they won’t for regular publishers). Cookie + form automation is the squeeze-every-automation path.
 
-## One-time setup (human, ~2 minutes, then reusable)
+## One-time setup (then reusable)
 
-1. Stay logged into F95zone in Firefox (the account that already made the 3 posts).
-2. Export cookies (names + values) into a **local secrets file outside git**:
+1. Log into F95zone in **Chrome on the agent VM** (or Firefox on a machine this environment can read).
+2. Export cookies into a **local secrets file outside git**:
 
 ```bash
-# On the machine with the logged-in Firefox profile:
-python3 tools/f95zone/export_firefox_cookies.py \
-  --out ~/.config/f95zone/cookies.json
-```
+# Preferred on this cloud VM (Chrome + libsecret/D-Bus):
+pip install -r tools/f95zone/requirements.txt
+python3 tools/f95zone/export_chrome_cookies.py --out ~/.config/f95zone/cookies.json
 
-Or copy cookies from a cookie-manager extension into the same JSON shape (see `cookies.example.json`).
+# Or from a Firefox profile:
+python3 tools/f95zone/export_firefox_cookies.py --out ~/.config/f95zone/cookies.json
+```
 
 3. Point the publisher at that file:
 
 ```bash
 export F95ZONE_COOKIES_FILE="$HOME/.config/f95zone/cookies.json"
-# optional override:
-# export F95ZONE_BASE_URL=https://f95zone.to
+python3 tools/f95zone/publisher.py whoami
 ```
 
 **Never commit cookies, passwords, or full `xf_user` values.**

@@ -115,14 +115,21 @@ def extract_session_info(html: str) -> SessionInfo:
     m = re.search(r'data-user-id="(\d+)"', html)
     if m:
         user_id = m.group(1)
-    m = re.search(r'class="[^"]*p-navgroup-link--user[^"]*"[^>]*>\s*<span[^>]*>([^<]+)</span>', html)
+    m = re.search(
+        r'class="[^"]*p-navgroup-link--user[^"]*"[^>]*>\s*<span[^>]*class="p-navgroup-linkText"[^>]*>([^<]+)</span>',
+        html,
+    )
     if m:
         username = m.group(1).strip()
     if not username:
-        m = re.search(r'/members/[^/]+\.(\d+)/[^"]*"[^>]*>([^<]+)<', html)
+        m = re.search(r'class="p-navgroup-linkText">([^<]+)</span>', html)
+        if m and m.group(1).strip().lower() not in {"profile", "inbox", "alerts", "what's new"}:
+            username = m.group(1).strip()
+    if not username:
+        m = re.search(r'/members/([^/]+)\.(\d+)/', html)
         if m:
-            user_id = user_id or m.group(1)
-            username = m.group(2).strip()
+            user_id = user_id or m.group(2)
+            username = m.group(1)
     if not username:
         m = re.search(r'"username"\s*:\s*"([^"]+)"', html)
         if m:
