@@ -1,0 +1,105 @@
+# F95zone Official Release Package — Elena: Crimson Archives [v0.1.0]
+
+Below is the complete, ready-to-post BBCode and Release Package formatted according to the official F95zone Visual Novel / Ecchi Release Standards.
+
+***
+
+```bbcode
+[CENTER]
+[B][SIZE=6][COLOR=#d4af37]Elena: Crimson Archives[/COLOR][/SIZE][/B]
+[SIZE=4][I][COLOR=#c8b8b0]A Dark Academia Suspense & Softcore Romance Visual Novel[/COLOR][/I][/SIZE]
+
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTAwLnBuZw==/original/elena_cover.png[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[B][COLOR=#d4af37]Thread Title:[/COLOR][/B] [VN] [Completed/WIP] Elena: Crimson Archives [v0.1.0] [bfstone25-stack]
+[B][COLOR=#d4af37]Developer / Studio:[/COLOR][/B] Flat 404 / bfstone25-stack
+[B][COLOR=#d4af37]Engine:[/COLOR][/B] Ren'Py 8.3+ (Python 3)
+[B][COLOR=#d4af37]Version:[/COLOR][/B] v0.1.0 (Chapter 1 MVP)
+[B][COLOR=#d4af37]Release Date:[/COLOR][/B] September 2026
+[B][COLOR=#d4af37]Censorship:[/COLOR][/B] [COLOR=#70c080]Uncensored[/COLOR] (Softcore / Ecchi suggestive CGs, artistic nude silhouettes, no explicit genitals)
+[B][COLOR=#d4af37]OS / Platforms:[/COLOR][/B] Windows, Linux, macOS, Web (HTML5 Browser Playable)
+[B][COLOR=#d4af37]Language:[/COLOR][/B] English
+[B][COLOR=#d4af37]Genre / Tags:[/COLOR][/B] [B]Suspense[/B], [B]Dark Academia[/B], [B]Softcore / Ecchi[/B], [B]Romance[/B], [B]Female Protagonist[/B], [B]Mystery[/B], [B]Psychological[/B], [B]Choices Matter[/B], [B]Multiple Endings[/B], [B]CG Gallery[/B], [B]AI-Assisted[/B]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#d4af37]■ OVERVIEW & STORYLINE[/COLOR][/SIZE]
+
+[I]Saint Jude Academy — Department of Antiquities, 11:42 PM.[/I]
+Rain lashes relentlessly against the tall Gothic windows of the faculty archives. You are Professor Vance, investigating a missing 19th-century occult bequest that has been systematically purged from the department's catalog records.
+
+When the heavy oak door unlocks in the dead of night, you catch [B]Elena[/B] (22) — your brilliant, immaculate, and notoriously aloof research assistant — clutching the stolen manuscript tightly against her chest. Cornered against the towering cedar bookshelves with her tie loosened and breathing shallow, her composed scholar facade crumbles into trembling vulnerability. 
+
+Will you conduct a strict interrogation, yield to the intoxicating intimacy of midnight surrender on the mahogany desk, or forge a clandestine romantic pact?
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#d4af37]■ CHARACTER PROFILE[/COLOR][/SIZE]
+
+[B][COLOR=#e14155]Elena (Age 22)[/COLOR][/B]
+• [B]Role:[/B] Postgraduate Research Assistant & Antiquities Scholar
+• [B]Appearance:[/B] Dark auburn curls, striking cyan gaze, gold-rimmed wire spectacles, immaculate Dark Academia knit vest, pleated skirt, and silk tie.
+• [B]Personality:[/B] Diligent, highly analytical, and guarded. Beneath her reserved scholarly exterior lies a desperate yearning for belonging and an intense, breathless vulnerability when confronted in private.
+• [B]Secret:[/B] Her family's academic lineage was systematically scrubbed from Saint Jude's archives thirty years ago.
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#d4af37]■ GAMEPLAY FEATURES[/COLOR][/SIZE]
+
+✔ [B]Rich Branching Narrative:[/B] 3 distinct storyline branches ([I]Strict Interrogation[/I], [I]Ecchi Surrender[/I], and [I]Secret Romance Pact[/I]).
+✔ [B]3 Unlockable 1080p Event CGs:[/B]
+  • [B]CG 1 - Confrontation:[/B] Elena cornered against the archive bookshelf, disheveled blouse & documents clutched to chest.
+  • [B]CG 2 - Climax:[/B] Midnight surrender on the mahogany study desk under silver moonlight.
+  • [B]CG 3 - Aftermath:[/B] Quiet dawn amber warmth, draped in an oversized coat with shared secrets.
+✔ [B]Persistent 3-Slot CG Gallery:[/B] In-game gallery screen with high-res modal viewer accessible from the main menu and end-screen.
+✔ [B]Optimized 1080p WebP Pipeline:[/B] Crystal-clear high-definition artwork with minimal download footprint.
+✔ [B]Full Atmospheric Soundscape:[/B] Dynamic ambient rain, suspense motifs, sensual melodic themes, and heartbeat audio effects.
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#d4af37]■ SCREENSHOTS & PREVIEW[/COLOR][/SIZE]
+
+[CENTER]
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTAxLnBuZw==/original/elena_01_main_menu.png[/IMG]
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTAyLnBuZw==/original/elena_02_sprite_neutral.png[/IMG]
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTAzLnBuZw==/original/elena_03_choice_1.png[/IMG]
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTA0LnBuZw==/original/elena_04_sprite_flustered.png[/IMG]
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTA1LnBuZw==/original/elena_05_cg_confrontation.png[/IMG]
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTA2LnBuZw==/original/elena_07_cg_climax.png[/IMG]
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTA3LnBuZw==/original/elena_08_cg_aftermath.png[/IMG]
+[IMG]https://img.itch.zone/aW1nLzE5OTQ0MTA4LnBuZw==/original/elena_10_cg_gallery.png[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#d4af37]■ CHANGELOG[/COLOR][/SIZE]
+
+[B]v0.1.0 (Initial MVP Release):[/B]
+• Complete Chapter 1 narrative with 15–20 minutes of gameplay.
+• Implemented 3 interactive branching choice menus and affection/suspicion tracking.
+• Added 3 Event CGs (Confrontation, Climax, Aftermath) and 3 Elena character expressions (Neutral, Flustered, Submission).
+• Integrated persistent CG Gallery with full-screen viewer.
+• Enabled multi-platform distribution (Windows, macOS, Linux, Web HTML5).
+
+[HR][/HR]
+
+[SIZE=5][COLOR=#d4af37]■ DOWNLOAD LINKS[/COLOR][/SIZE]
+
+[B][COLOR=#70c080]★ Official Itch.io Storefront (Free Web Playable Slice + Standalone $2.99):[/COLOR][/B]
+[URL='https://bfstone25-stack.itch.io/elena-crimson-archives']https://bfstone25-stack.itch.io/elena-crimson-archives[/URL]
+
+[B][COLOR=#70c080]★ Standalone Offline Downloads (v0.1.0):[/COLOR][/B]
+• [B]Windows (34.7 MB .zip):[/B] [URL='https://bfstone25-stack.itch.io/elena-crimson-archives']Download Windows Edition[/URL]
+• [B]macOS (42.4 MB .zip):[/B] [URL='https://bfstone25-stack.itch.io/elena-crimson-archives']Download macOS Edition[/URL]
+• [B]Linux (25.3 MB .tar.bz2):[/B] [URL='https://bfstone25-stack.itch.io/elena-crimson-archives']Download Linux Edition[/URL]
+
+[B][COLOR=#e14155]★ Support Future Chapters & Development on Patreon:[/COLOR][/B]
+[URL='https://www.patreon.com/']Support on Patreon (Unlock Chapter 2 & 3 Early Builds + Live2D H-CGs)[/URL]
+
+[HR][/HR]
+
+[I][COLOR=#888888]Generative AI Disclosure: Scenario writing, character concepts, and 1080p visual assets were created using an automated AI asset pipeline and refined with Ren'Py 8.3+ scripting. Audio is synthesized in-engine and royalty-free.[/COLOR][/I]
+```
