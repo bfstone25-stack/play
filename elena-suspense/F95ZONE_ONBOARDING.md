@@ -1,8 +1,8 @@
 # F95zone Onboarding — Blaze / bfstone25-stack
 
-**Status (2026-09-05):** Cloud VM Chrome logged in as **BlazeCore** (user id `11769231`).  
-Three counting posts are **live**. The new-user “no links until 3 posts” banner is **gone**.  
-**Elena Games release is NOT posted yet** — the Games forum still shows **no Post thread** control for this account (`GET /forums/games.2/post-thread` → 403).
+**Status (2026-09-05, resumed after user power blip):** Cloud VM Chrome still logged in as **BlazeCore** (`11769231`).  
+Three counting posts are **still live**. New-user link lock is cleared. Publisher cookies re-exported.  
+**Elena release thread is NOT posted yet.** Direct Games posting stays 403; official path for non-uploaders is **Game Requests** (forum 3, Post thread available). Blocker: itch page `bfstone25-stack.itch.io/elena-crimson-archives` is still **404**, so we must publish itch downloads before opening the F95 thread.
 
 ## Live counting posts
 
