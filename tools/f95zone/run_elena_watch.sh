@@ -6,7 +6,8 @@ LOG_DIR="$HOME/.local/share/f95zone"
 INTERVAL="${F95_WATCH_INTERVAL_SEC:-1800}"
 mkdir -p "$LOG_DIR"
 export F95ZONE_COOKIES_FILE="$COOKIES"
-exec python3 "$ROOT/tools/f95zone/watch_elena_approval.py" \
+# Do not use `exec ... | tee` — bash treats the pipeline oddly under tmux.
+python3 "$ROOT/tools/f95zone/watch_elena_approval.py" \
   --cookies "$COOKIES" \
   --interval-sec "$INTERVAL" \
   --log "$LOG_DIR/elena_watch.jsonl" \

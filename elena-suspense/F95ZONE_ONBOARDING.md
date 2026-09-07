@@ -55,6 +55,9 @@ Never commit cookies or butler API keys.
 tools/f95zone/watch_elena.sh status
 cat ~/.local/share/f95zone/elena_watch_state.json
 tail ~/.local/share/f95zone/elena_watch_events.jsonl
+cat ~/.local/share/f95zone/elena_approved_snapshot.json  # appears after Games move
 ```
 
 Polls every 30 minutes in tmux session `f95-elena-watch`. No agent tokens used while idle.
+On approval it auto-writes `elena_approved_snapshot.json` (final URL, tags, download/media links).
+A low-frequency agent timer also wakes every few hours to act only if staff asked for fixes or the thread was approved.

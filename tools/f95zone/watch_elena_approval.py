@@ -122,14 +122,67 @@ def check_once(session: requests.Session, thread_url: str, ticket_url: str) -> d
         # only if latest is from staff-ish content and not our own ack
         if "i updated the opening post" not in latest and "re-uploaded the cover" not in latest:
             needs.append("staff_requested_changes")
+    # Stale rejection alerts stay forever; only flag if images still look broken
+    # or staff still asks for changes in the latest ticket message.
     if any("rejected" in a.lower() for a in alerts):
-        needs.append("report_rejected")
+        if ("staff_requested_changes" in needs) or (not out["has_attach_imgs"]) or out[
+            "view_attachment_text"
+        ] > 0:
+            needs.append("report_rejected")
     if out["in_games"]:
         needs = [n for n in needs if n != "waiting_games_move"]
         needs.append("APPROVED_MOVED_TO_GAMES")
     out["needs_attention"] = needs
     out["approved"] = bool(out["in_games"]) and not out["still_req"]
     return out
+
+
+def collect_approval_snapshot(
+    session: requests.Session, status: dict, collect_path: Path
+) -> dict:
+    """When staff moves Elena to Games, dump durable release metadata (no tokens)."""
+    thread_url = status.get("thread_url") or DEFAULT_THREAD
+    th = session.get(thread_url, timeout=60, allow_redirects=True)
+    html = th.text
+    links = sorted(set(re.findall(r'https?://[^\s"<>]+', html)))
+    interesting = [
+        u
+        for u in links
+        if any(
+            k in u.lower()
+            for k in (
+                "gofile.io",
+                "itch.io",
+                "attachments.f95zone.to",
+                "mega.nz",
+                "pixeldrain",
+                "workupload",
+                "mediafire",
+            )
+        )
+    ]
+    prefixes = re.findall(r'class="label[^"]*"[^>]*>([^<]+)', html)
+    tags = re.findall(r"/tags/[^\"']+", html)
+    snap = {
+        "ts": utc_now(),
+        "approved": True,
+        "thread_url": th.url,
+        "thread_title": status.get("thread_title"),
+        "crumbs": status.get("crumbs"),
+        "ticket_status": status.get("ticket_status"),
+        "ticket_latest": status.get("ticket_latest"),
+        "prefixes": prefixes[:20],
+        "tag_hrefs": tags[:40],
+        "download_or_media_links": interesting[:80],
+        "games_post_button": status.get("games_post_button"),
+        "has_attach_imgs": status.get("has_attach_imgs"),
+        "bb_image_count": status.get("bb_image_count"),
+    }
+    collect_path.parent.mkdir(parents=True, exist_ok=True)
+    collect_path.write_text(json.dumps(snap, indent=2) + "\n", encoding="utf-8")
+    # Also keep an append-only history of approval snapshots
+    append_jsonl(collect_path.with_name("elena_approved_history.jsonl"), snap)
+    return snap
 
 
 def append_jsonl(path: Path, obj: dict) -> None:
@@ -195,15 +248,27 @@ def main() -> int:
         "--export-script",
         default=str(Path(__file__).resolve().parents[2] / "tools/f95zone/export_chrome_cookies.py"),
     )
+    ap.add_argument(
+        "--collect",
+        default=str(Path.home() / ".local/share/f95zone/elena_approved_snapshot.json"),
+        help="Write release metadata here when thread moves to Games",
+    )
     args = ap.parse_args()
 
     cookies = Path(args.cookies).expanduser()
     log_path = Path(args.log).expanduser()
     state_path = Path(args.state).expanduser()
     events_path = Path(args.events).expanduser()
+    collect_path = Path(args.collect).expanduser()
     export_script = Path(args.export_script).expanduser()
 
     prev_needs: set[str] | None = None
+    prev_approved = False
+    if state_path.is_file():
+        try:
+            prev_approved = bool(json.loads(state_path.read_text()).get("approved"))
+        except Exception:
+            prev_approved = False
     loop = 0
     while True:
         loop += 1
@@ -214,6 +279,7 @@ def main() -> int:
             status = check_once(session, args.thread_url, args.ticket_url)
         except Exception as e:
             status = {"ts": utc_now(), "ok": False, "error": f"{type(e).__name__}: {e}"}
+            session = None  # type: ignore
 
         append_jsonl(log_path, status)
         write_state(state_path, status)
@@ -244,7 +310,37 @@ def main() -> int:
                         "title": status.get("thread_title"),
                     },
                 )
+        # Auto-collect once when approval flips true (and refresh if missing)
+        if status.get("ok") and status.get("approved") and session is not None:
+            should_collect = (not prev_approved) or (not collect_path.is_file())
+            if should_collect:
+                try:
+                    snap = collect_approval_snapshot(session, status, collect_path)
+                    append_jsonl(
+                        events_path,
+                        {
+                            "ts": utc_now(),
+                            "type": "collected",
+                            "collect_path": str(collect_path),
+                            "thread_url": snap.get("thread_url"),
+                            "links": len(snap.get("download_or_media_links") or []),
+                        },
+                    )
+                    print(
+                        f"[{utc_now()}] COLLECTED approval snapshot -> {collect_path}",
+                        flush=True,
+                    )
+                except Exception as e:
+                    append_jsonl(
+                        events_path,
+                        {
+                            "ts": utc_now(),
+                            "type": "collect_error",
+                            "error": f"{type(e).__name__}: {e}",
+                        },
+                    )
         prev_needs = needs
+        prev_approved = bool(status.get("approved"))
 
         # Human-readable one-liner to stdout for tmux logs
         if status.get("ok"):

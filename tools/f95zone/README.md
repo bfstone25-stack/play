@@ -104,5 +104,6 @@ Outputs (outside git):
 - `~/.local/share/f95zone/elena_watch_state.json` — latest status
 - `~/.local/share/f95zone/elena_watch.jsonl` — history
 - `~/.local/share/f95zone/elena_watch_events.jsonl` — only when status changes / approved
+- `~/.local/share/f95zone/elena_approved_snapshot.json` — auto-written when moved to Games (links/tags/title)
 
-When `approved=true` / event type `approved`, Elena has been moved into Games.
+When `approved=true` / event type `approved`, Elena has been moved into Games and the watcher collects release metadata without needing an agent.
