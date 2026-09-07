@@ -26,7 +26,11 @@ python3 tools/f95zone/feedback_triage.py \
 | Signal | Source | Status |
 | --- | --- | --- |
 | Vault "getaway" plot hole | Jack Mehoff 61 | Fixed in script + OP overview |
-| Banner title too small | Jnx | Cover text enlarged for v0.1.1 |
+| Banner title too small | Jnx | Cover enlarged + **live OP cover attachment swapped** |
 | Overview AI cadence / em dashes | glitterjizzz | Overview rewritten |
 | AI tag / disclosure | vall6269 | Thread already has AI-CG; disclosure clarified in OP |
 | Thanks | rKnight | Included in community thanks reply |
+
+## Closed-loop rule (important)
+
+When feedback is about something **visible in the thread** (cover, overview, screenshots), update the **live OP asset**, not only local/repo files. Fans judge the thread first.

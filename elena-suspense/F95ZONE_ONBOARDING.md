@@ -25,3 +25,5 @@ See `FEEDBACK_LOOP.md`. Triage tool: `tools/f95zone/feedback_triage.py`
 - Rebuild/publish **v0.1.1** (itch + mirrors) with script + banner changes
 - Continue prose pass to cut remaining purple/AI cadence in mid-chapter
 - Watch thread; only act on new actionable signals
+
+- Live OP cover attachment swapped to readable-title version (attach 6443006)
