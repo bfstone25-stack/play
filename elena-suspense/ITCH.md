@@ -23,43 +23,20 @@
 
 ---
 
+## Short text
+`After-hours vault alert. Your assistant. A ledger that should not exist.`
+
 ## Description Copy (HTML)
 
+Source of truth: `itch_posts/description.html` (also pushed live to the itch page).
+
+Avoid AI synopsis tells in store copy:
+- no "What begins as X becomes Y"
+- no triple stacked adjectives
+- no trailer em-dash stacks / rain-lashes openers unless they earn their place
+
 ```html
-<p><em>A Dark Academia softcore suspense visual novel. Midnight research, forbidden archives, and delicate surrender.</em></p>
-
-<p>Saint Jude Academy — Department of Antiquities, 11:42 PM. Rain lashes against the Gothic stained glass. A missing 19th-century occult research ledger has been systematically erased from the records. When the vault door clicks open, you find <strong>Elena</strong> (22) — your most brilliant, composed, and notoriously distant postgraduate research assistant — clutching the stolen manuscript against her chest.</p>
-
-<p>Cornered between towering cedar bookshelves and your presence, her cool academic composure crumbles into trembling vulnerability. What begins as an interrogation swiftly turns into a clandestine midnight encounter.</p>
-
-<p><strong>Free Web Playable Slice</strong> — Play Chapter 1 directly in your browser: the midnight confrontation in the archive, the first choice, and the initial suspense branch.</p>
-
-<p><strong>Complete Edition & Standalone Downloads ($2.99)</strong>:</p>
-<ul>
-  <li><strong>Complete Branching Narrative</strong> — 3 distinct paths: Strict Interrogation, Ecchi Surrender, and the Secret Romantic Pact.</li>
-  <li><strong>3 Unlockable Event CGs</strong> — High-definition 1080p Event CGs (Confrontation, Mahogany Desk Climax, and Amber Dawn Aftermath).</li>
-  <li><strong>Persistent CG Gallery & Viewer</strong> — In-game gallery with full-screen inspect mode and replayable memories.</li>
-  <li><strong>Atmospheric Soundscape</strong> — Ambient rain, suspense themes, sensual melodic motifs, and heartbeat audio.</li>
-  <li><strong>Standalone Offline Builds</strong> — High-performance native builds for Windows, macOS, and Linux.</li>
-</ul>
-
-<hr>
-
-<h3>Controls & System Requirements</h3>
-<ul>
-  <li><strong>Controls</strong>: Left Click / Space / Enter to advance text · Tab to skip · Esc / Right Click for Game Menu · 'G' key for CG Gallery · 'R' key to restart.</li>
-  <li><strong>Platforms</strong>: Web (Chrome / Firefox / Edge / Safari), Windows 10/11, macOS 10.15+, Linux (x86_64).</li>
-  <li><strong>Playtime</strong>: ~15–25 minutes per playthrough with full branch exploration.</li>
-</ul>
-
-<hr>
-
-<h3>Generative AI Disclosure</h3>
-<p>This project utilizes generative AI and procedural tooling in its creation pipeline: story scenario drafting, character design concepts, 1080p background/CG artwork generation, and code scaffolding. Audio is synthesized in-engine and licensed under royalty-free assets.</p>
-
-<hr>
-
-<p><em>Support the ongoing development on <a href="https://www.patreon.com/">Patreon</a> to unlock upcoming Chapters 2 & 3 (The Crypt Vault & Forbidden Rituals) and animated Live2D/H-CG expansions!</em></p>
+<!-- see itch_posts/description.html -->
 ```
 
 ---

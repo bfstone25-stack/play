@@ -28,6 +28,7 @@ python3 tools/f95zone/feedback_triage.py \
 | Vault "getaway" plot hole | Jack Mehoff 61 | Fixed in script + OP overview |
 | Banner title too small | Jnx | Cover enlarged + **live OP cover attachment swapped** |
 | Overview AI cadence / em dashes | glitterjizzz | Overview rewritten |
+| Itch "What begins as…" synopsis cliché + adjective stacks | glitterjizzz (store copy) | Live itch description rewritten |
 | AI tag / disclosure | vall6269 | Thread already has AI-CG; disclosure clarified in OP |
 | Thanks | rKnight | Included in community thanks reply |
 
