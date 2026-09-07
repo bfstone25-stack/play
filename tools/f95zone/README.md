@@ -88,3 +88,21 @@ F95 sits behind Cloudflare. Cookie export from a **real browser that already pas
 2. `whoami` succeeds from the agent/CI machine using exported cookies.
 3. `run-job` the Elena release YAML (links allowed only after unlock).
 4. Re-export cookies when the session expires (periodic, still far less labor than hand-posting every thread).
+
+## Background approval watcher
+
+Unattended poller (no agent tokens). Checks Elena thread + ticket every 30 minutes:
+
+```bash
+tools/f95zone/watch_elena.sh start   # tmux session f95-elena-watch
+tools/f95zone/watch_elena.sh status
+tools/f95zone/watch_elena.sh once
+tools/f95zone/watch_elena.sh stop
+```
+
+Outputs (outside git):
+- `~/.local/share/f95zone/elena_watch_state.json` — latest status
+- `~/.local/share/f95zone/elena_watch.jsonl` — history
+- `~/.local/share/f95zone/elena_watch_events.jsonl` — only when status changes / approved
+
+When `approved=true` / event type `approved`, Elena has been moved into Games.
