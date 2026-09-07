@@ -33,3 +33,11 @@ python3 tools/f95zone/publisher.py whoami
 ```
 
 Never commit cookies or butler API keys.
+
+## Staff review update (2026-09-07)
+
+- Not moved to Games yet (still `REQ` in Game Requests).
+- Report was rejected: staff asked to follow https://f95zone.to/threads/how-to-post-a-new-game.159990/
+- Ticket #30281 staff reply: use that template, then tell them when fixed.
+- We rewrote the OP to the official template and added approved Gofile mirrors for Win/Linux/Mac.
+- Re-reported the thread and notified staff on the ticket.
