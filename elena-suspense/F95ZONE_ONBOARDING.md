@@ -41,3 +41,10 @@ Never commit cookies or butler API keys.
 - Ticket #30281 staff reply: use that template, then tell them when fixed.
 - We rewrote the OP to the official template and added approved Gofile mirrors for Win/Linux/Mac.
 - Re-reported the thread and notified staff on the ticket.
+
+## Staff review update (2026-09-07 evening)
+
+- New staff rejection: images broken / redo step 5 (upload cover+previews to F95 attachment server).
+- Fixed: uploaded attachments and rewrote OP to use `[ATTACH]` / `[ATTACH=full]`.
+- Notified ticket #30281 and re-reported the thread.
+- Still waiting for Games move.
