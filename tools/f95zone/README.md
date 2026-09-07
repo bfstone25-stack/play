@@ -107,3 +107,12 @@ Outputs (outside git):
 - `~/.local/share/f95zone/elena_approved_snapshot.json` — auto-written when moved to Games (links/tags/title)
 
 When `approved=true` / event type `approved`, Elena has been moved into Games and the watcher collects release metadata without needing an agent.
+
+## Community feedback triage
+
+```bash
+python3 tools/f95zone/feedback_triage.py --in replies.json --out ~/.local/share/f95zone/elena_feedback_triage.json
+```
+
+`edit-post` preserves attachment hashes when updating the OP.
+

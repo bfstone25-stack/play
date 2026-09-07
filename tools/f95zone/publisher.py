@@ -243,6 +243,86 @@ class F95Publisher:
         )
         return self._parse_xf_response(r, action="reply")
 
+    def edit_post(
+        self,
+        post_id: int,
+        message: str,
+        *,
+        title: str | None = None,
+        dry_run: bool = False,
+    ) -> dict[str, Any]:
+        """Edit an existing post while preserving attachment hashes from the edit form."""
+        path = f"/posts/{post_id}/edit"
+        r = self.session.get(self.url(path), timeout=60)
+        if r.status_code >= 400:
+            raise PublisherError(f"Cannot open edit form for post {post_id}: HTTP {r.status_code}")
+        csrf = extract_csrf(r.text)
+        if not csrf:
+            raise PublisherError(f"No CSRF on edit form for post {post_id}")
+
+        def field(name: str, default: str = "") -> str:
+            m = re.search(rf'name="{re.escape(name)}"[^>]*value="([^"]*)"', r.text)
+            if not m:
+                return default
+            # HTML attribute entities
+            return (
+                m.group(1)
+                .replace("&quot;", '"')
+                .replace("&#039;", "'")
+                .replace("&amp;", "&")
+                .replace("&lt;", "<")
+                .replace("&gt;", ">")
+            )
+
+        attachment_hash = field("attachment_hash")
+        attachment_hash_combined = field("attachment_hash_combined")
+        form_title = title if title is not None else field("title")
+        # Collect existing prefix ids (multi-prefix)
+        prefixes = re.findall(r'name="prefix_id\[\]"[^>]*value="(\d+)"', r.text)
+        if not prefixes:
+            # selected options
+            prefixes = re.findall(
+                r'<option[^>]*value="(\d+)"[^>]*selected[^>]*>',
+                r.text,
+            )
+
+        endpoint = self.url(path)
+        data_items: list[tuple[str, str]] = [
+            ("message", message.rstrip() + "\n"),
+            ("attachment_hash", attachment_hash),
+            ("attachment_hash_combined", attachment_hash_combined),
+            ("_xfToken", csrf),
+            ("_xfRequestUri", path),
+            ("_xfWithData", "1"),
+            ("_xfResponseType", "json"),
+        ]
+        if form_title:
+            data_items.append(("title", form_title))
+        for pfx in prefixes:
+            data_items.append(("prefix_id[]", pfx))
+
+        if dry_run:
+            return {
+                "dry_run": True,
+                "endpoint": endpoint,
+                "post_id": post_id,
+                "message_chars": len(message),
+                "attachment_hash_present": bool(attachment_hash),
+                "prefixes": prefixes,
+                "title": form_title,
+            }
+
+        resp = self.session.post(
+            endpoint,
+            data=data_items,
+            headers={
+                "X-Requested-With": "XMLHttpRequest",
+                "Referer": self.url(path),
+            },
+            timeout=60,
+        )
+        return self._parse_xf_response(resp, action="edit-post")
+
     def create_thread(
         self,
         forum_id: int,
@@ -405,6 +485,13 @@ def main(argv: list[str] | None = None) -> int:
     p_reply.add_argument("--message-file", default=None)
     p_reply.add_argument("--dry-run", action="store_true")
 
+    p_edit = sub.add_parser("edit-post", help="Edit an existing post (preserves attachment hash)")
+    p_edit.add_argument("--post-id", type=int, required=True)
+    p_edit.add_argument("--message", default=None)
+    p_edit.add_argument("--message-file", default=None)
+    p_edit.add_argument("--title", default=None, help="Optional thread title override")
+    p_edit.add_argument("--dry-run", action="store_true")
+
     p_new = sub.add_parser("create-thread", help="Create a forum thread")
     p_new.add_argument("--forum-id", type=int, required=True)
     p_new.add_argument("--title", default=None)
@@ -442,6 +529,16 @@ def main(argv: list[str] | None = None) -> int:
                 message,
                 dry_run=args.dry_run,
                 thread_url=args.thread_url,
+            )
+            print(json.dumps(result, indent=2))
+            return 0 if result.get("ok", args.dry_run) else 1
+        if args.cmd == "edit-post":
+            message = read_text_arg(args.message, args.message_file)
+            result = pub.edit_post(
+                args.post_id,
+                message,
+                title=args.title,
+                dry_run=args.dry_run,
             )
             print(json.dumps(result, indent=2))
             return 0 if result.get("ok", args.dry_run) else 1

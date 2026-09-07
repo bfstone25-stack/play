@@ -2,9 +2,11 @@
 
 [B]Overview:[/B]
 [SPOILER]
-Saint Jude Academy — Department of Antiquities, 11:42 PM. Rain lashes against the Gothic windows. A missing 19th-century occult ledger has been erased from the records. When the vault door opens, you find [B]Elena[/B] (22) — your brilliant, composed research assistant — clutching the stolen manuscript.
+Saint Jude Academy, Department of Antiquities, 11:42 PM. An after-hours vault alert hits your desk: someone is still inside the sealed Blackwood wing.
 
-What begins as an interrogation becomes a midnight confrontation with three branches: Strict Interrogation, Ecchi Surrender, and Secret Romance Pact.
+You open the door with a faculty override and find [B]Elena[/B] (22), your research assistant, halfway through photographing a ledger that was never supposed to exist. She did not lock herself in as an escape plan. The timed vault seal closed while she was still copying pages that name her family.
+
+What follows is a short midnight confrontation with three routes: Strict Interrogation, Ecchi Surrender, and a Secret Romance Pact.
 
 [B]Free web playable slice + paid standalone downloads[/B] on itch.io.
 [/SPOILER][/CENTER]
@@ -13,7 +15,7 @@ What begins as an interrogation becomes a midnight confrontation with three bran
 [B]Release Date[/B]: 2026-09-05
 [B]Developer[/B]: Flat 404 / bfstone25-stack [URL='https://bfstone25-stack.itch.io/elena-crimson-archives']Website[/URL]
 [B]Censored[/B]: No (softcore / ecchi suggestive CGs; no explicit genitals)
-[B]Version[/B]: v0.1.0
+[B]Version[/B]: v0.1.0 (copy/motivation fix queued for v0.1.1)
 [B]OS[/B]: Windows / Linux / Mac / Web
 [B]Language[/B]: English
 [B]Genre[/B]:
@@ -34,11 +36,18 @@ What begins as an interrogation becomes a midnight confrontation with three bran
 - 3 story branches
 - 3 event CGs + gallery
 - Windows / Linux / Mac / Web builds
+
+[B]Community notes in progress (v0.1.1)[/B]
+- Rewrite overview/scene motivation (vault timed seal, not a "getaway")
+- Larger banner title readability
+- Tighten prose away from generic draft cadence
 [/SPOILER]
 
 [B]Developer Notes[/B]:
 [SPOILER]
-I am the developer. Please move this thread to Games after review and grant Dev ownership/tags (ticket already opened).
+Developer release by Flat 404 / bfstone25-stack.
+
+This build uses AI-assisted art/tools in the pipeline and is tagged accordingly (AI-CG). Early draft quality feedback is welcome and being treated as a production backlog, not a debate thread.
 
 Official storefront: [URL='https://bfstone25-stack.itch.io/elena-crimson-archives']https://bfstone25-stack.itch.io/elena-crimson-archives[/URL]
 [/SPOILER]
