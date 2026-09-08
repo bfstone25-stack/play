@@ -87,7 +87,7 @@ init -1 python:
 
     def _tel_post(batch):
         endpoint = _tel_endpoint()
-        if not endpoint or not batch or _urlrequest is None:
+        if not endpoint or not batch or (_urlrequest is None and not getattr(renpy, "emscripten", False)):
             return False
         # Allow either full /tel_batch URL or base host.
         url = endpoint
@@ -96,6 +96,14 @@ init -1 python:
         if "app=" not in url:
             url = url + ("&" if "?" in url else "?") + "app=" + _TEL_APP
         body = json.dumps(batch).encode("utf-8")
+        # Web build: sockets do not exist under emscripten; Ren'Py's fetch goes through the browser.
+        if getattr(renpy, "emscripten", False):
+            try:
+                renpy.fetch(url, method="POST", data=body, content_type="application/json",
+                            timeout=_TEL_TIMEOUT_S, result="text")
+                return True
+            except Exception:
+                return False
         req = _urlrequest.Request(
             url,
             data=body,
@@ -128,7 +136,11 @@ init -1 python:
             return
         if not force and len(batch) < 1:
             return
-        threading.Thread(target=_tel_flush_worker, args=(batch,), daemon=True).start()
+        if getattr(renpy, "emscripten", False):
+            # No worker threads in the browser; fetch is short and the batch is small.
+            _tel_flush_worker(batch)
+        else:
+            threading.Thread(target=_tel_flush_worker, args=(batch,), daemon=True).start()
 
     def tel_track(name, value=None, etype="custom", dur=0):
         """Queue one anonymous funnel / analytics event.
