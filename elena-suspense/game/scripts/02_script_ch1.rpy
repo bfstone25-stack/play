@@ -7,6 +7,8 @@ label start:
     $ elena_affection = 0
     $ secret_ledger_discovered = False
     $ chosen_ending = "none"
+    $ tel_ensure_session()
+    $ tel_track("game_start")
 
     # Start atmospheric soundscape
     play ambience rain_ambience fadein 2.0
@@ -32,6 +34,8 @@ label start:
     narrator "The timed seal releases under your override. Warm lamplight spills out."
     narrator "Elena is on her knees beside an open crate, photographing page after page of a ledger that was scrubbed from every public catalog."
 
+    $ tel_track("vault_enter")
+
     show elena neutral at center
     with dissolve
 
@@ -50,6 +54,7 @@ label start:
     menu:
         "“What is that folder in your hands, Elena?”":
             $ elena_suspicion += 1
+            $ tel_track("choice_1", {"choice": "ask_folder"})
             show elena flustered
             with dissolve
             elena "This? Just... preliminary transcription drafts! Nothing of administrative concern, I assure you."
@@ -58,6 +63,7 @@ label start:
 
         "“You're drenched from the rain. Step closer to the lamp.”":
             $ elena_affection += 1
+            $ tel_track("choice_1", {"choice": "warm_lamp"})
             show elena flustered
             with dissolve
             elena "Ah... thank you, Professor. It began pouring right as I crossed the courtyard."
@@ -66,6 +72,7 @@ label start:
 
         "Say nothing and step between her and the archive exit.":
             $ elena_suspicion += 2
+            $ tel_track("choice_1", {"choice": "block_exit"})
             show elena flustered
             with dissolve
             narrator "You rise quietly from your chair and step toward the heavy arched door, cutting off her path."
@@ -91,6 +98,7 @@ label start:
 
     # Unlock Event CG 1: Confrontation
     $ unlock_cg("cg_confrontation")
+    $ tel_track("confrontation")
 
     scene cg confrontation
     with fade
@@ -112,15 +120,18 @@ label start:
         "Press closer and demand the full truth with uncompromising intimacy.":
             $ elena_affection += 2
             $ elena_suspicion += 0
+            $ tel_track("branch_choice", {"branch": "ecchi_surrender"})
             jump scene_ecchi_surrender
 
         "Strictly seize the ledger and question her academic integrity.":
             $ elena_suspicion += 3
+            $ tel_track("branch_choice", {"branch": "strict_interrogation"})
             jump scene_strict_interrogation
 
         "Offer a clandestine pact in exchange for her absolute loyalty.":
             $ elena_affection += 3
             $ secret_ledger_discovered = True
+            $ tel_track("branch_choice", {"branch": "secret_pact"})
             jump scene_secret_pact
 
 # Branch A: Ecchi Surrender & Climax
@@ -139,6 +150,7 @@ label scene_ecchi_surrender:
 
     # Unlock Event CG 2: Climax
     $ unlock_cg("cg_climax")
+    $ tel_track("climax_cg", {"branch": "ecchi_surrender"})
 
     scene cg climax
     with dissolve
@@ -204,6 +216,7 @@ label scene_secret_pact:
 
     # Unlock Event CG 2 & Climax
     $ unlock_cg("cg_climax")
+    $ tel_track("climax_cg", {"branch": "secret_pact"})
     scene cg climax
     with fade
 
@@ -219,6 +232,8 @@ label scene_dawn_resolution:
 
     # Unlock Event CG 3: Aftermath
     $ unlock_cg("cg_aftermath")
+    $ tel_track("dawn_resolution")
+    $ tel_flush(True)
 
     scene cg aftermath
     with fade

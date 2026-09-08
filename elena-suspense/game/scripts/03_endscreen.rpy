@@ -1,4 +1,4 @@
-## 03_endscreen.rpy - High-Conversion CTA Endscreen for Patreon, DLsite, F95zone, and Community Channels
+## 03_endscreen.rpy - High-Conversion CTA Endscreen for itch, F95zone, and Community Channels
 
 screen end_screen_cta():
     tag menu
@@ -44,8 +44,8 @@ screen end_screen_cta():
             xalign 0.5
             spacing 30
 
-            textbutton _("★ Support on Patreon (Early Builds)"):
-                action OpenURL("https://www.patreon.com/")
+            textbutton _("★ Get Chapter Updates on itch.io"):
+                action [Function(tel_cta_click, "itch"), OpenURL("https://bfstone25-stack.itch.io/elena-crimson-archives")]
                 text_size 24
                 text_color "#ffffff"
                 text_hover_color "#ffe0a0"
@@ -54,7 +54,7 @@ screen end_screen_cta():
                 padding (25, 15, 25, 15)
 
             textbutton _("🛒 DLsite Official Store Page"):
-                action OpenURL("https://www.dlsite.com/")
+                action [Function(tel_cta_click, "dlsite"), OpenURL("https://www.dlsite.com/")]
                 text_size 24
                 text_color "#ffffff"
                 text_hover_color "#ffe0a0"
@@ -63,7 +63,7 @@ screen end_screen_cta():
                 padding (25, 15, 25, 15)
 
             textbutton _("💬 F95zone Discussion Thread"):
-                action OpenURL("https://f95zone.to/")
+                action [Function(tel_cta_click, "f95"), OpenURL("https://f95zone.to/threads/elena-crimson-archives-v0-1-0-flat-404.313771/")]
                 text_size 24
                 text_color "#ffffff"
                 text_hover_color "#ffe0a0"
@@ -109,5 +109,7 @@ label end_cta_screen:
     stop music fadeout 2.0
     stop ambience fadeout 2.0
     play music suspense_theme fadein 2.0
+    $ tel_track("end_cta")
+    $ tel_flush(True)
     call screen end_screen_cta
     return
