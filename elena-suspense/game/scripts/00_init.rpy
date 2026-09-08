@@ -88,3 +88,7 @@ define audio.ecchi_theme = "audio/ecchi_theme.ogg"
 define audio.heartbeat = "audio/heartbeat.ogg"
 define audio.page_flip = "audio/page_flip.ogg"
 define audio.click = "audio/click.ogg"
+
+## Business rule: the browser build is a Chapter 1 demo; chapters 2-5 ship only in the paid downloads ($2.99 on itch).
+define ELENA_WEB_DEMO = True
+ITCH_BUY_URL = "https://bfstone25-stack.itch.io/elena-crimson-archives/purchase"

@@ -18,7 +18,7 @@ screen end_screen_cta():
         spacing 22
 
         text _("ELENA: CRIMSON ARCHIVES") size 42 color "#d99b66" bold True xalign 0.5
-        text _("Chapters 1–5 Complete (Free Web Build)") size 28 color "#c8b8b0" xalign 0.5
+        text _("Chapters 1–5 Complete") size 28 color "#c8b8b0" xalign 0.5
 
         null height 12
 
@@ -31,7 +31,7 @@ screen end_screen_cta():
             vbox:
                 spacing 10
                 xalign 0.5
-                text _("Support the studio for deluxe content:") size 24 color "#ffdfa0" bold True xalign 0.5
+                text _("Thank you for reading to the end. Support the next chapters:") size 24 color "#ffdfa0" bold True xalign 0.5
                 text _("• Uncensored CG packs, voice, and side routes") size 20 color "#f0e6dc"
                 text _("• Early Chapter updates via Patreon / SubscribeStar") size 20 color "#f0e6dc"
                 text _("• Paid DRM-free builds on itch (Adult) + DLsite") size 20 color "#f0e6dc"
@@ -42,7 +42,7 @@ screen end_screen_cta():
             xalign 0.5
             spacing 18
 
-            textbutton _("★ Free / Tip on itch.io"):
+            textbutton _("★ Full game on itch.io ($2.99)"):
                 action [Function(tel_cta_click, "itch"), OpenURL("https://bfstone25-stack.itch.io/elena-crimson-archives")]
                 text_size 20
                 text_color "#ffffff"
@@ -128,4 +128,102 @@ label end_cta_screen:
     $ tel_track("end_cta", {"chapters": chapter_cleared, "ending": chosen_ending})
     $ tel_flush(True)
     call screen end_screen_cta
+    return
+
+
+## Web demo gate: Chapter 1 is free in the browser; the paid download continues the story.
+screen demo_paywall_screen():
+    tag menu
+    key "K_g" action ShowMenu("cg_gallery")
+    key "K_m" action MainMenu()
+
+    add "images/bg/study_dark.webp"
+
+    vbox:
+        xalign 0.5
+        yalign 0.42
+        spacing 22
+
+        text _("CHAPTER 1 COMPLETE") size 46 color "#d99b66" bold True xalign 0.5
+        text _("Somebody is coming down the stairs.") size 26 color "#c8b8b0" xalign 0.5
+
+        null height 10
+
+        frame:
+            xsize 1120
+            ysize 230
+            background Transform("#1d1424", alpha=0.92)
+            padding (36, 22, 36, 22)
+
+            vbox:
+                spacing 10
+                xalign 0.5
+                text _("The full game continues with Chapters 2–5:") size 24 color "#ffdfa0" bold True xalign 0.5
+                text _("• The Crypt Vault, the Rite, the Dean's annex, and the Circle") size 20 color "#f0e6dc"
+                text _("• Your route carries forward: control, pact, or the door you walked out of") size 20 color "#f0e6dc"
+                text _("• Three endings, every CG, DRM-free download for Windows, Linux and Mac") size 20 color "#f0e6dc"
+                text _("$2.99 on itch.io — one purchase, all future chapters included") size 22 color "#ffffff" bold True xalign 0.5
+
+        null height 12
+
+        hbox:
+            xalign 0.5
+            spacing 24
+
+            textbutton _("★ Get the full game — $2.99"):
+                action [Function(tel_cta_click, "itch_buy"), OpenURL(ITCH_BUY_URL)]
+                text_size 24
+                text_color "#ffffff"
+                text_hover_color "#ffe0a0"
+                background Transform("#d95a43", alpha=0.95)
+                hover_background Transform("#f2725c", alpha=1.0)
+                padding (22, 14, 22, 14)
+
+            textbutton _("💬 F95zone Thread"):
+                action [Function(tel_cta_click, "f95"), OpenURL("https://f95zone.to/threads/elena-crimson-archives-v0-1-0-flat-404.313771/")]
+                text_size 20
+                text_color "#e0d0ff"
+                text_hover_color "#ffffff"
+                padding (16, 12, 16, 12)
+
+        null height 14
+
+        hbox:
+            xalign 0.5
+            spacing 36
+
+            textbutton _("🖼 CG Gallery"):
+                action ShowMenu("cg_gallery")
+                text_size 22
+                text_color "#ffdfa0"
+                text_hover_color "#ffffff"
+                background Transform("#24172a", alpha=0.92)
+                hover_background Transform("#3d2238", alpha=0.95)
+                padding (18, 10, 18, 10)
+
+            textbutton _("↺ Replay Chapter 1 (other route)"):
+                action Start()
+                text_size 22
+                text_color "#d99b66"
+                text_hover_color "#ffe0a0"
+                background Transform("#24172a", alpha=0.92)
+                hover_background Transform("#3d2238", alpha=0.95)
+                padding (18, 10, 18, 10)
+
+            textbutton _("⌂ Title"):
+                action MainMenu()
+                text_size 22
+                text_color "#d99b66"
+                text_hover_color "#ffe0a0"
+                background Transform("#24172a", alpha=0.92)
+                hover_background Transform("#3d2238", alpha=0.95)
+                padding (18, 10, 18, 10)
+
+label demo_paywall:
+    stop music fadeout 2.0
+    stop ambience fadeout 2.0
+    play music suspense_theme fadein 2.0
+    $ tel_track("end_cta", {"chapters": chapter_cleared, "ending": chosen_ending, "demo": True})
+    $ tel_flush(True)
+    call screen demo_paywall_screen
     return

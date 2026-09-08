@@ -401,4 +401,6 @@ label scene_dawn_resolution:
 
     # Chapter 2 picks up forty-eight hours later (05_script_ch2.rpy).
     $ chapter_cleared = max(chapter_cleared, 1)
+    if ELENA_WEB_DEMO and renpy.emscripten:
+        jump demo_paywall
     jump chapter_2
