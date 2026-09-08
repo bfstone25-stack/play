@@ -8,3 +8,8 @@ window.TEL_API = (function () {
     : location.origin;
 })();
 window.APP_API = window.TEL_API;
+
+// closed-loop telemetry endpoint
+window.TEL_APP = "fold";
+window.TEL_API = "https://apps.blazecore.dev/fold";
+window.APP_API = window.TEL_API;

@@ -1,15 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b0e0d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FOLD — A geometric puzzle of becoming one</title>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b0e0d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FOLD — Fold the grid. Solve the shape. Relax your mind.</title>
 <script src="config.js"></script>
+<script>window.TEL_APP="fold";window.TEL_API="https://apps.blazecore.dev";</script>
+<script src="tel.js"></script>
 <link rel="canonical" href="https://apps.blazecore.dev/fold/">
-<meta property="og:title" content="FOLD — everything returns to one">
-<meta property="og:description" content="A quiet geometric puzzle of direction, compression, and becoming one.">
-<meta property="og:image" content="https://apps.blazecore.dev/fold/promo.png">
+<meta name="description" content="Click, drag, and watch it snap perfectly. A short, satisfying spatial puzzle.">
+<meta property="og:title" content="FOLD — Fold the grid. Solve the shape.">
+<meta property="og:description" content="Click, drag, and watch it snap perfectly. A cozy brain teaser in three minutes.">
+<meta property="og:image" content="cover.gif">
 <meta property="og:url" content="https://apps.blazecore.dev/fold/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FOLD — everything returns to one">
-<meta name="twitter:description" content="A quiet geometric puzzle of direction, compression, and becoming one.">
-<meta name="twitter:image" content="https://apps.blazecore.dev/fold/promo.png">
+<meta name="twitter:title" content="FOLD — Fold the grid. Solve the shape.">
+<meta name="twitter:description" content="Click, drag, and watch it snap perfectly.">
+<meta name="twitter:image" content="cover.gif">
 <style>
 :root{--bg:#0b0e0d;--panel:#141816;--line:#2a302c;--txt:#ece9df;--gold:#c7a45a;--dim:#92988f;--cell:#202622;--ink:#101411;--paper:#e8e2d3}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
@@ -26,25 +29,13 @@ h1 small{font-size:.38em;letter-spacing:4px;color:var(--gold);font-weight:500;di
 .goal{font-size:.95em}.goal b{color:var(--gold);font-size:1.15em}
 .moves{font-family:ui-monospace,monospace;color:var(--dim);font-size:.9em}
 .lvlname{text-align:center;color:var(--dim);font-size:.82em;letter-spacing:2px;margin-bottom:6px}
-#boardWrap{position:relative;perspective:800px}
-#board{position:relative;background:var(--panel);border-radius:16px;padding:10px;margin:0 auto;touch-action:none;box-shadow:0 14px 40px rgba(0,0,0,.35);transform-style:preserve-3d}
-.board-crease{position:absolute;pointer-events:none;z-index:15;background:linear-gradient(to bottom, rgba(255,255,255,0.18), rgba(0,0,0,0.4), rgba(255,255,255,0.18));opacity:0;transition:opacity .1s ease}
-.board-crease.v{width:3px;top:0;bottom:0;box-shadow:0 0 8px rgba(199,164,90,0.5)}
-.board-crease.h{height:3px;left:0;right:0;box-shadow:0 0 8px rgba(199,164,90,0.5)}
+#board{position:relative;background:var(--panel);border-radius:16px;padding:10px;margin:0 auto;touch-action:none;box-shadow:0 14px 40px rgba(0,0,0,.35)}
 .cell{position:absolute;border-radius:11px;background:var(--cell)}
 .wall{position:absolute;border-radius:11px;background:repeating-linear-gradient(45deg,#2c313d,#2c313d 6px,#262a34 6px,#262a34 12px)}
 .tile{position:absolute;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:800;
-  transition:transform .18s cubic-bezier(.25,1,.5,1), box-shadow .18s ease;will-change:transform;z-index:5}
-.tile.folding-up{animation:foldTileUp .22s ease-in-out}
-.tile.folding-down{animation:foldTileDown .22s ease-in-out}
-.tile.folding-left{animation:foldTileLeft .22s ease-in-out}
-.tile.folding-right{animation:foldTileRight .22s ease-in-out}
-@keyframes foldTileUp{0%{transform:translate(var(--tx),var(--ty)) rotateX(0deg);box-shadow:none}50%{transform:translate(var(--tx),var(--ty)) rotateX(-35deg) translateY(-8px);box-shadow:0 12px 20px rgba(0,0,0,.5);filter:brightness(1.15)}100%{transform:translate(var(--tx),var(--ty)) rotateX(0deg);box-shadow:none}}
-@keyframes foldTileDown{0%{transform:translate(var(--tx),var(--ty)) rotateX(0deg);box-shadow:none}50%{transform:translate(var(--tx),var(--ty)) rotateX(35deg) translateY(8px);box-shadow:0 12px 20px rgba(0,0,0,.5);filter:brightness(1.15)}100%{transform:translate(var(--tx),var(--ty)) rotateX(0deg);box-shadow:none}}
-@keyframes foldTileLeft{0%{transform:translate(var(--tx),var(--ty)) rotateY(0deg);box-shadow:none}50%{transform:translate(var(--tx),var(--ty)) rotateY(35deg) translateX(-8px);box-shadow:12px 0 20px rgba(0,0,0,.5);filter:brightness(1.15)}100%{transform:translate(var(--tx),var(--ty)) rotateY(0deg);box-shadow:none}}
-@keyframes foldTileRight{0%{transform:translate(var(--tx),var(--ty)) rotateY(0deg);box-shadow:none}50%{transform:translate(var(--tx),var(--ty)) rotateY(-35deg) translateX(8px);box-shadow:-12px 0 20px rgba(0,0,0,.5);filter:brightness(1.15)}100%{transform:translate(var(--tx),var(--ty)) rotateY(0deg);box-shadow:none}}
-.tile.merged{animation:pop .24s cubic-bezier(.175,.885,.32,1.275)}
-@keyframes pop{0%{transform:translate(var(--tx),var(--ty)) scale(0.9) rotate(0deg)}50%{transform:translate(var(--tx),var(--ty)) scale(1.22) rotate(3deg);filter:brightness(1.25)}100%{transform:translate(var(--tx),var(--ty)) scale(1) rotate(0deg)}}
+  transition:transform .13s cubic-bezier(.3,.9,.4,1);will-change:transform;z-index:5}
+.tile.merged{animation:pop .2s ease}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
 .tile.spawned{animation:sp .18s ease}
 @keyframes sp{from{transform:scale(.3);opacity:0}}
 .btns{display:flex;gap:10px;margin-top:16px;justify-content:center}
@@ -110,15 +101,24 @@ h1 small{font-size:.38em;letter-spacing:4px;color:var(--gold);font-weight:500;di
 .introBtn:hover{letter-spacing:.44em;background:rgba(199,164,90,.12)}
 .introBtn:active{transform:scale(.97)}
 @media(max-width:520px){.introCard{padding-left:6px;padding-right:6px}.introRules{font-size:.69em}.introRules div{padding:10px 7px}.wordmark-east{width:min(96vw,430px)}.wordmark-latin{width:min(96vw,520px)}}
-@media(prefers-reduced-motion:reduce){.foldField *,.introCard:before,.introCard h2,.wordmark-east *{animation:none!important}.wordmark-east .fold-plane{opacity:1}.wordmark-east .seal{opacity:.92}}
-</style><!-- closed-loop telemetry bootstrap -->
-<script>
-window.TEL_APP = window.TEL_APP || 'fold';
-window.TEL_API = window.TEL_API || ('https://apps.blazecore.dev' + "/" + window.TEL_APP);
-window.APP_API = window.APP_API || window.TEL_API;
-window.API = window.API || window.TEL_API;
-</script>
-</head><body>
+@media(prefers-reduced-motion:reduce){.foldField *,.introCard:before,.introCard h2,.wordmark-east *{animation:none!important}.wordmark-east .fold-plane{opacity:1}.wordmark-east .seal{opacity:.92}.snapTile,.snapTile.result{animation:none!important;opacity:1}}
+.snapDemo{position:relative;width:min(72vw,280px);height:168px;margin:0 auto 18px}
+.snapBoard{position:absolute;inset:0;border-radius:16px;background:#141816;border:1px solid #2a302c;overflow:hidden}
+.snapTile{position:absolute;width:54px;height:54px;border-radius:11px;display:flex;align-items:center;justify-content:center;font:800 22px/1 ui-sans-serif,system-ui;color:#dfe6f0}
+.snapTile.t0{left:28px;top:22px;background:#3c4657;animation:snapIn 2.4s cubic-bezier(.2,.8,.2,1) infinite}
+.snapTile.t1{right:28px;top:22px;background:#4a5a7a;animation:snapIn 2.4s .08s cubic-bezier(.2,.8,.2,1) infinite}
+.snapTile.t2{left:28px;bottom:22px;background:#5b7bba;animation:snapIn 2.4s .12s cubic-bezier(.2,.8,.2,1) infinite}
+.snapTile.t3{right:28px;bottom:22px;background:#c98a3e;color:#241a06;animation:snapIn 2.4s .16s cubic-bezier(.2,.8,.2,1) infinite}
+.snapTile.result{left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;background:#d9a63f;color:#241a06;font-size:26px;opacity:0;animation:snapPop 2.4s .55s cubic-bezier(.2,.9,.3,1.15) infinite}
+@keyframes snapIn{0%,12%{opacity:1;transform:none}38%,62%{opacity:0;transform:translate(var(--dx,0),var(--dy,0)) scale(.4)}100%{opacity:1;transform:none}}
+.snapTile.t0{--dx:42px;--dy:28px}.snapTile.t1{--dx:-42px;--dy:28px}.snapTile.t2{--dx:42px;--dy:-28px}.snapTile.t3{--dx:-42px;--dy:-28px}
+@keyframes snapPop{0%,8%{opacity:0;transform:scale(.2)}18%,55%{opacity:1;transform:scale(1)}70%,100%{opacity:0;transform:scale(.6)}}
+.snapLine{margin:0 0 8px;color:var(--gold);font:600 .92rem/1.35 ui-sans-serif,system-ui;letter-spacing:.04em}
+.nerdBox{margin:16px auto 0;max-width:520px;text-align:left;color:#697069;font-size:.72rem;line-height:1.5}
+.nerdBox summary{cursor:pointer;color:#92988f;letter-spacing:.12em;text-transform:uppercase;font:600 .62rem ui-monospace,monospace;list-style:none}
+.nerdBox summary::-webkit-details-marker{display:none}
+.nerdBox[open]{border-top:1px dashed #2a302c;padding-top:10px}
+</style></head><body>
 <div id="app">
   <div class="top"><h1 id="brandTitle">FOLD</h1><div style="display:flex;gap:8px"><button class="lang" onclick="openIntro()" style="width:34px;padding:5px 0" aria-label="How to play">?</button><div class="soundWrap"><button class="lang" id="soundBtn" onclick="toggleSoundPanel(event)" style="width:34px;padding:5px 0" aria-label="Sound">♪</button><div class="soundPanel" id="soundPanel"><button class="soundRow" onclick="toggleSfx()"><span id="sfxLabel">Sound effects</span><span id="sfxState">ON</span></button><button class="soundRow" onclick="toggleMusic()"><span id="musicLabel">Ambience</span><span id="musicState">ON</span></button></div></div><button class="lang" id="langBtn" onclick="toggleLang()">EN</button></div></div>
   <div id="introOv"><svg class="foldField" viewBox="0 0 1000 1000" aria-hidden="true">
@@ -183,19 +183,19 @@ function initialLang(){
 }
 let L=0, R, C, cells, walls, tiles, moves, hist, done, lang=initialLang();
 const T={zh:{goal:t=>`目标 · 归一至 <b>${t}</b>`,moves:m=>`第 ${m} 手`,undo:"撤销",reset:"重置",
-  hint:"滑动或方向键 · 同值合并 · 把所有数字归并成唯一目标块",win:"归 一",
+  hint:"滑动或方向键 · 同值合并 · 折到只剩一块",win:"咬 合",
   next:"下一关",retry:"再来",share:"晒战绩",stars:s=>["","一星","两星","满星"][s],
-  support:'永久免费 · <b>永不广告</b><br>每日一局，静观万物归一',
+  support:'永久免费 · <b>永不广告</b> · 三分钟解压益智',
   parhint:s=>`满星 ${s} 步`},
  ja:{goal:t=>`目標 · <b>${t}</b> へ帰一`,moves:m=>`${m} 手`,undo:"戻す",reset:"初めから",
-  hint:"スワイプ／矢印キー · 同じ数を重ねる · すべてを一つに",win:"帰 一",
+  hint:"スワイプ／矢印キー · 同じ数を重ねる · 一枚になるまで折る",win:"カチッ",
   next:"次へ",retry:"もう一度",share:"共有",stars:s=>["","一つ星","二つ星","満星"][s],
-  support:'ずっと無料 · <b>広告なし</b><br>一日一局、万象が一へ帰すのを観る',
+  support:'ずっと無料 · <b>広告なし</b> · 3分の脳トレ',
   parhint:s=>`満星は ${s} 手`},
  en:{goal:t=>`Fold everything into <b>${t}</b>`,moves:m=>`Move ${m}`,undo:"Undo",reset:"Reset",
-  hint:"Swipe or arrows · equal tiles merge · fold all into one target tile",win:"UNITY",
+  hint:"Swipe or arrows · equals merge · fold the grid until one tile remains",win:"SNAP",
   next:"Next",retry:"Retry",share:"Share",stars:s=>["","1 star","2 stars","3 stars"][s],
-  support:'Free forever · <b>No ads, ever</b><br>One quiet puzzle, every day',
+  support:'Free · <b>no ads</b> · three-minute brain teaser',
   parhint:s=>`${s} moves for 3★`},
  es:{goal:t=>`Pliega todo en <b>${t}</b>`,moves:m=>`Movimiento ${m}`,undo:"Deshacer",reset:"Reiniciar",
   hint:"Desliza o usa las flechas · une iguales · reduce todo a una sola ficha",win:"UNIDAD",
@@ -241,17 +241,14 @@ function layout(){
 }
 function px(i){return 10+i*(CS+GAP)}
 function fontFor(v){return Math.max(14, CS*0.42 - String(v).length*2)}
-function render(animDir){
+function render(){
  const b=document.getElementById('board');
  [...b.querySelectorAll('.tile')].forEach(e=>e.remove());
  tiles.forEach(t=>{
    const d=document.createElement('div');
-   const foldClass=animDir?` folding-${animDir}`:'';
-   d.className='tile'+(t.merged?' merged':'')+(t.spawned?' spawned':'')+foldClass;
-   d.style.setProperty('--tx', `${px(t.c)}px`);
-   d.style.setProperty('--ty', `${px(t.r)}px`);
+   d.className='tile'+(t.merged?' merged':'')+(t.spawned?' spawned':'');
    d.style.cssText+=`width:${CS}px;height:${CS}px;font-size:${fontFor(t.v)}px;background:${PAL[t.v]||'#efd98f'};`+
-     `color:${t.v<=8?'#dfe6f0':'#241a06'};transform:translate(${px(t.c)}px,${px(t.r)}px);--tx:${px(t.c)}px;--ty:${px(t.r)}px;`;
+     `color:${t.v<=8?'#dfe6f0':'#241a06'};transform:translate(${px(t.c)}px,${px(t.r)}px)`;
    d.textContent=t.v; b.appendChild(d);
    t.merged=false; t.spawned=false;
  });
@@ -299,20 +296,6 @@ function toggleSoundPanel(e){e.stopPropagation();document.getElementById('soundP
 function toggleSfx(){const s=FOLD_AUDIO.state();FOLD_AUDIO.setSfx(!s.sfxOn);}
 function toggleMusic(){const s=FOLD_AUDIO.state();FOLD_AUDIO.setMusic(!s.musicOn);}
 document.addEventListener('click',e=>{if(!e.target.closest('.soundWrap'))document.getElementById('soundPanel').classList.remove('show');});
-function triggerBoardFold(dr,dc){
- const b=document.getElementById('board');
- if(!b)return;
- const rotX = dr !== 0 ? (dr > 0 ? 12 : -12) : 0;
- const rotY = dc !== 0 ? (dc > 0 ? -12 : 12) : 0;
- const tz = -14;
- b.style.transition='transform .12s ease-out';
- b.style.transform=`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(${tz}px)`;
- setTimeout(()=>{
-   b.style.transition='transform .22s cubic-bezier(.25,1,.5,1)';
-   b.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)';
- }, 120);
-}
-
 function move(dr,dc){
  if(done) return;
  FOLD_AUDIO.engage();
@@ -334,11 +317,7 @@ function move(dr,dc){
    }
    if((r!==t.r||c!==t.c)){ t.r=r;t.c=c; moved=true; }
  }
- if(moved){
-   hist.push(snap); moves++;
-   const animDir = dr < 0 ? 'up' : dr > 0 ? 'down' : dc < 0 ? 'left' : 'right';
-   triggerBoardFold(dr, dc);
-   render(animDir); syncText(); if(mergeCount)FOLD_AUDIO.merge(mergeCount);else FOLD_AUDIO.slide(); checkWin();
+ if(moved){ hist.push(snap); moves++; render(); syncText(); if(mergeCount)FOLD_AUDIO.merge(mergeCount);else FOLD_AUDIO.slide(); checkWin();
    if(window.TEL)TEL.ev('move_made',{language:lang,level:L+1,move:moves,direction:[dr,dc]}); }
  else FOLD_AUDIO.invalid();
 }
@@ -434,7 +413,7 @@ function syncText(){
  const east=lang==='zh'||lang==='ja', eastTitle=lang==='ja'?'帰一':'归一';
  document.getElementById('brandTitle').innerHTML=east?`${eastTitle}<small>FOLD</small>`:'FOLD';
  document.getElementById('langBtn').textContent={en:'EN',es:'ES',pt:'PT',zh:'中文',ja:'日本語'}[lang];
- document.title=lang==='zh'?'归一 — 万象归一的几何谜题':lang==='ja'?'帰一 — 万象を一へ帰す幾何学パズル':'FOLD — A geometric puzzle of becoming one';
+ document.title=lang==='zh'?'归一 FOLD — 折格子，对形状，松口气':lang==='ja'?'帰一 FOLD — 格子を折って、形を解く':'FOLD — Fold the grid. Solve the shape. Relax your mind.';
  document.getElementById('goal').innerHTML=tr().goal(LEVELS[L].target);
  document.getElementById('moves').textContent=tr().moves(moves);
  document.getElementById('undoT').textContent=tr().undo;
@@ -514,11 +493,11 @@ fetch('levels.json').then(r=>r.json()).then(d=>{if(Array.isArray(d)&&d.length){L
 
 /* ---- intro overlay ---- */
 const INTRO_T={
-  zh:{s:'万象折叠，复归于一',r:['滑动棋盘或按方向键，所有数字随势而行','同值相遇，合二为一','把万物归为唯一目标块；步数越少，离“道”越近'],f:'51 道精选 · 150 道无尽',b:'入 局'},
-  ja:{s:'万象を畳み、一へ帰す',r:['盤をスワイプ、または矢印キーで全てを動かす','同じ数が出会うと、一つになり倍になる','全てを唯一の目標へ。少ない手ほど、道に近い'],f:'精選 51 問 · 無尽 150 問',b:'始 め る'},
-  en:{s:'Everything returns to one',r:['Swipe the board or use arrow keys — every tile moves as one','Equal values meet, merge, and double','Resolve the field into the single target. Fewer moves, purer form'],f:'51 curated forms · 150 endless studies',b:'ENTER'},
-  es:{s:'Todo vuelve a ser uno',r:['Desliza el tablero o usa las flechas: todas las fichas se mueven','Los valores iguales se encuentran, se unen y se duplican','Reduce todo al único objetivo. Menos movimientos, forma más pura'],f:'51 formas escogidas · 150 estudios infinitos',b:'ENTRAR'},
-  pt:{s:'Tudo retorna ao uno',r:['Deslize o tabuleiro ou use as setas: todas as peças se movem','Valores iguais se encontram, unem e dobram','Reduza tudo ao único alvo. Menos jogadas, forma mais pura'],f:'51 formas escolhidas · 150 estudos infinitos',b:'ENTRAR'}
+  zh:{s:'折格子。对形状。松口气。',r:['点、拖，看它严丝合缝地咬合','相同数字相遇，合二为一','三分钟一关，解压比烧脑更先到'],f:'51 道短关 · 随时可停',b:'开 折',n:'给极客 / 技术栈',nd:'确定性关卡，守恒可解。无尽生成器在后台。无广告。求解器与 RL 不出现在玩局里。'},
+  ja:{s:'格子を折る。形を解く。息を整える。',r:['クリックしてドラッグ。ぴたりと噛み合う','同じ数が出会い、一つになる','3分で1問。爽快感が先、難解さは後'],f:'精選 51 問 · いつでも止まれる',b:'折 る',n:'オタク向け / 技術',nd:'決定的な面、保存則で解ける。無限生成は裏方。広告なし。ソルバーとRLはプレイ画面に出ない。'},
+  en:{s:'Fold the grid. Solve the shape. Relax your mind.',r:['Click, drag, and watch it snap perfectly.','Equals meet, merge, and double.','Three-minute levels. Satisfying first, clever second.'],f:'51 short levels · pause anytime',b:'FOLD IT',n:'For Nerds / Tech Stack',nd:'Deterministic puzzles with a conservation invariant. Endless generator stays backstage. No ads. The solver and RL never show up in play.'},
+  es:{s:'Dobla la cuadrícula. Resuelve la forma. Relájate.',r:['Haz clic, arrastra y mira cómo encaja.','Los iguales se encuentran, se unen y se duplican.','Niveles de tres minutos. Primero lo satisfactorio.'],f:'51 niveles cortos · pausa cuando quieras',b:'DOBLAR',n:'Para nerds / tech',nd:'Puzles deterministas con un invariante de conservación. El generador infinito queda detrás. Sin anuncios.'},
+  pt:{s:'Dobre a grade. Resolva a forma. Relaxe.',r:['Clique, arraste e veja encaixar.','Iguais se encontram, unem e dobram.','Fases de três minutos. Satisfação primeiro.'],f:'51 fases curtas · pause quando quiser',b:'DOBRAR',n:'Para nerds / tech',nd:'Puzzles determinísticos com invariante de conservação. O gerador infinito fica nos bastidores. Sem anúncios.'}
 };
 function openIntro(){
   const t=INTRO_T[lang]||INTRO_T.en, east=lang==='zh'||lang==='ja';
@@ -547,72 +526,36 @@ function openIntro(){
         <path class="latin-plane" d="M218 20L253 29L238 53ZM466 23L501 84L476 73Z"/>
       </svg>`;
   document.getElementById('introCard').innerHTML=
-    `<div class="brandKicker">GEOMETRIC MEDITATION · 001</div>`+
+    `<div class="brandKicker">SATISFYING · SPATIAL PUZZLE</div>`+
+    `<div class="snapDemo" aria-hidden="true"><div class="snapBoard">`+
+      `<div class="snapTile t0">2</div><div class="snapTile t1">2</div>`+
+      `<div class="snapTile t2">2</div><div class="snapTile t3">2</div>`+
+      `<div class="snapTile result">8</div></div></div>`+
+    `<p class="snapLine">${{en:'Click, drag, and watch it snap perfectly.',zh:'点一下，拖一下，看它严丝合缝咬上。',ja:'ドラッグして、ぴたりと噛み合う。',es:'Haz clic, arrastra, y encaja.',pt:'Clique, arraste, e veja encaixar.'}[lang]||'Click, drag, and watch it snap perfectly.'}</p>`+
     `<h2>${mark}</h2>`+
     `<div class="sub">${t.s}</div>`+
     `<div class="introRules">${t.r.map(x=>`<div><span class="dm">◆</span>${x}</div>`).join('')}</div>`+
     `<div class="introFine">${t.f}</div>`+
     `<div class="introLangs">${LANGS.map(x=>`<button class="${x===lang?'sel':''}" onclick="setLang('${x}')">${{en:'EN',es:'ES',pt:'PT',zh:'中文',ja:'日本語'}[x]}</button>`).join('')}</div>`+
-    `<button class="introBtn" onclick="closeIntro()">${t.b}</button>`;
+    `<button class="introBtn" onclick="closeIntro()">${t.b}</button>`+
+    `<details class="nerdBox"><summary>${t.n}</summary><p>${t.nd}</p></details>`;
   document.getElementById('introOv').classList.add('show');
+  if(window.TEL)TEL.ev('intro_shown',{language:lang});
+  const nb=document.querySelector('.nerdBox');
+  if(nb && !nb.dataset.telBound){
+    nb.dataset.telBound='1';
+    nb.addEventListener('toggle',()=>{ if(nb.open && window.TEL) TEL.ev('for_nerds_open',{language:lang}); });
+  }
 }
 function closeIntro(){
   FOLD_AUDIO.engage(); FOLD_AUDIO.logo();
   document.getElementById('introOv').classList.remove('show');
   try{localStorage.setItem('fold_intro_seen','1');}catch(e){}
+  if(window.TEL)TEL.ev('intro_closed',{language:lang,level:L+1});
   if(window.TEL)TEL.ev('game_started',{language:lang,level:L+1});
 }
 // 品牌开场属于游戏体验本身：每次载入出现，帮助按钮可随时再次打开。
 openIntro();
-</script>
-<script>
-// 统一埋点SDK: 自动记录pageview/click/停留/会话时长, 手动记录chat/feedback
-(function(){
-  const API = window.TEL_API || (window.API || "");
-  const pid = (function(){let p=localStorage.getItem("tel_pid");
-    if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
-  const sid = "s"+Math.random().toString(36).slice(2,10);
-  const t0 = Date.now();
-  let queue = [];
-  function push(etype,name,value,dur){
-    queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
-                value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
-    if(queue.length>=8) flush();
-  }
-  function flush(useBeacon){
-    if(!queue.length||!API) return;
-    const batch = queue.splice(0,50);
-    const body = JSON.stringify(batch);
-    if(useBeacon && navigator.sendBeacon){
-      navigator.sendBeacon(API+"/tel_batch", new Blob([body],{type:"application/json"}));
-    } else {
-      fetch(API+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
-    }
-  }
-  // 自动: pageview
-  push("pageview", location.pathname||"/", document.title||"");
-  // 自动: 所有click(记录元素id/class/文本)
-  document.addEventListener("click", e=>{
-    const el=e.target.closest("button,a,[data-tel],.card,.chip,[role=button]");
-    if(!el)return;
-    push("click", el.id||el.dataset.tel||el.className||el.tagName,
-         (el.innerText||"").trim().slice(0,60));
-  }, true);
-  // 自动: 会话时长(离开时上报)
-  window.addEventListener("beforeunload", ()=>{
-    push("session_end","session","",Math.round((Date.now()-t0)/1000));
-    flush(true);
-  });
-  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
-  setInterval(()=>flush(), 20000);   // 定期flush
-  // 暴露手动埋点: TEL.chat(用户消息,回复) / TEL.feedback(分数,留言) / TEL.ev(类型,名,值)
-  window.TEL = {
-    chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
-    feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
-    ev: (name, value)=>push("custom",name,value),
-    flush
-  };
-})();
 </script>
 
 
@@ -703,85 +646,6 @@ function uxSendFb(){
  document.getElementById("uxFbCard").innerHTML=`<h3 style="margin:20px 0">${uxT().done}</h3>`;
  setTimeout(uxCloseFb,1200);
 }
-</script>
-
-
-<script>
-(function(){
-  if (window.__TEL_BOOTED__) return;
-  window.__TEL_BOOTED__ = true;
-  var API = window.TEL_API || window.API || "https://apps.blazecore.dev";
-  var APP = window.TEL_APP || window.APP_SLUG || "";
-  try {
-    if (!APP) {
-      var m = (location.pathname || "").match(/^\/([^\/]+)/);
-      if (m && m[1] && m[1] !== "tel_batch" && m[1] !== "tel") APP = m[1];
-    }
-  } catch (e) {}
-  if (API && APP && !/\/[a-z0-9_-]+$/i.test(API.replace(/\/+$/,"")) && API.indexOf(APP) < 0) {
-    API = API.replace(/\/+$/, "") + "/" + APP;
-  }
-  window.TEL_API = API;
-  window.TEL_APP = APP;
-  var pid = (function(){
-    var p = localStorage.getItem("tel_pid");
-    if (!p) { p = "u" + Math.random().toString(36).slice(2, 10); localStorage.setItem("tel_pid", p); }
-    return p;
-  })();
-  var sid = "s" + Math.random().toString(36).slice(2, 10);
-  var t0 = Date.now();
-  var queue = [];
-  function push(etype, name, value, dur){
-    queue.push({
-      app: APP || undefined,
-      pid: pid,
-      sid: sid,
-      etype: etype,
-      name: String(name || "").slice(0, 120),
-      value: typeof value === "string" ? value : JSON.stringify(value || ""),
-      dur: dur || 0
-    });
-    if (queue.length >= 8) flush();
-  }
-  function flush(useBeacon){
-    if (!queue.length || !API) return;
-    var batch = queue.splice(0, 50);
-    var body = JSON.stringify(batch);
-    var url = API.replace(/\/+$/, "") + "/tel_batch";
-    try {
-      if (useBeacon && navigator.sendBeacon) {
-        navigator.sendBeacon(url, new Blob([body], {type: "application/json"}));
-      } else {
-        fetch(url, {method: "POST", headers: {"Content-Type": "application/json"}, body: body, mode: "cors", keepalive: true}).catch(function(){});
-      }
-    } catch (e) {}
-  }
-  push("pageview", location.pathname || "/", document.title || "");
-  document.addEventListener("click", function(e){
-    var el = e.target && e.target.closest && e.target.closest("button,a,[data-tel],.card,.chip,[role=button],canvas");
-    if (!el) return;
-    push("click", el.id || el.getAttribute("data-tel") || el.className || el.tagName,
-         ((el.innerText || el.getAttribute("aria-label") || "") + "").trim().slice(0, 60));
-  }, true);
-  window.addEventListener("beforeunload", function(){
-    push("session_end", "session", "", Math.round((Date.now() - t0) / 1000));
-    flush(true);
-  });
-  document.addEventListener("visibilitychange", function(){ if (document.hidden) flush(true); });
-  setInterval(function(){ flush(); }, 20000);
-  window.TEL = {
-    chat: function(userMsg, reply, meta){
-      push("chat", "message", {u: String(userMsg).slice(0, 800), r: String(reply).slice(0, 1200), ...(meta || {})});
-    },
-    feedback: function(score, note){
-      push("feedback", "rating", {score: score, note: String(note || "").slice(0, 500)});
-    },
-    ev: function(name, value){ push("custom", name, value); },
-    play_start: function(meta){ push("play_start", "play", meta || ""); },
-    play_end: function(meta, dur){ push("play_end", "play", meta || "", dur || 0); },
-    flush: flush
-  };
-})();
 </script>
 
 </body></html>

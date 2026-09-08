@@ -9,3 +9,8 @@ window.FLUTTER_API = (function () {
     ? "https://apps.blazecore.dev/flutter"
     : location.origin + "/flutter";
 })();
+
+// closed-loop telemetry endpoint
+window.TEL_APP = "flutter";
+window.TEL_API = "https://apps.blazecore.dev/flutter";
+window.APP_API = window.TEL_API;

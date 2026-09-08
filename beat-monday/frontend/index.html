@@ -6,8 +6,10 @@
 <title>BEAT MONDAY — office fighting game</title>
 <link rel="manifest" href="manifest.json">
 <script src="config.js"></script>
+<script>window.TEL_APP=window.TEL_APP||"beat-monday";window.TEL_API=window.TEL_API||"https://apps.blazecore.dev";</script>
+<script src="tel.js"></script>
 <meta name="theme-color" content="#0a0b10">
-  <link rel="canonical" href="https://play.blazecore.dev/beat-monday/">
+<link rel="canonical" href="https://apps.blazecore.dev/beat-monday/">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,13 +17,13 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta property="og:title" content="BEAT MONDAY — office fighting game">
 <meta property="og:description" content="Street-style 2D fights: punch, kick, special. Beat mortgage, alarm, calendar, inbox, and the 9AM.">
-  <meta property="og:image" content="https://play.blazecore.dev/beat-monday/promo.jpg">
-  <meta property="og:url" content="https://play.blazecore.dev/beat-monday/">
+<meta property="og:image" content="https://apps.blazecore.dev/beat-monday/promo.jpg">
+<meta property="og:url" content="https://apps.blazecore.dev/beat-monday/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BEAT MONDAY">
 <meta name="twitter:description" content="The office is the ring. Monday is the boss.">
-  <meta name="twitter:image" content="https://play.blazecore.dev/beat-monday/promo.jpg">
+<meta name="twitter:image" content="https://apps.blazecore.dev/beat-monday/promo.jpg">
 <style>
 :root{--red:#e23b2f;--cobalt:#1e4cff;--yellow:#f5d031;--black:#0a0b10;--ink:#f4f0e6;--dim:#8b8d99}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
@@ -64,7 +66,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var
 .ov{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
 .ov.show{display:flex}
 #homeOv{z-index:40;background:#0a0b10;overflow:hidden}
-#homeOv:before{content:"";position:absolute;inset:-4%;background:url("assets/title.webp?v=1") center/cover no-repeat;filter:saturate(1.1) contrast(1.08);animation:ken 18s ease-in-out infinite alternate}
+#homeOv:before{content:"";position:absolute;inset:-4%;background:url("assets/title.webp") center/cover no-repeat;filter:saturate(1.1) contrast(1.08);animation:ken 18s ease-in-out infinite alternate}
 #homeOv:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,rgba(10,11,16,.15),rgba(10,11,16,.82) 72%),linear-gradient(180deg,rgba(10,11,16,.2),rgba(10,11,16,.92));pointer-events:none}
 @keyframes ken{from{transform:scale(1.04)}to{transform:scale(1.12) translateY(-2%)}}
 @media(prefers-reduced-motion:reduce){#homeOv:before{animation:none}#hudWarn.show{animation:none;opacity:1}}
@@ -83,11 +85,6 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var
 #btnDaily{color:var(--yellow)}
 #btnHow,#btnSettings,#btnDebrief{font:700 12px ui-monospace,monospace;letter-spacing:2px;color:#b7b5ae}
 #homeFoot{position:absolute;left:18px;bottom:22px;color:#6d6f7a;font:500 10px/1.4 -apple-system,sans-serif}
-.xpromo{position:absolute;right:18px;bottom:78px;max-width:46%;display:flex;flex-direction:column;gap:6px;z-index:3}
-.xpromo a{text-decoration:none;border-left:3px solid var(--yellow);padding:7px 9px;background:rgba(10,11,16,.62);color:#fff;display:block}
-.xpromo a small{display:block;font:700 8px ui-monospace,monospace;letter-spacing:1.4px;color:var(--yellow)}
-.xpromo a b{display:block;font:800 12px "Arial Black",Impact,sans-serif;letter-spacing:.4px;margin-top:2px}
-.xpromo a span{display:block;color:#c9c6bc;font:500 11px/1.35 -apple-system,sans-serif;margin-top:2px}
 .panel{width:min(420px,100%);background:#10131c;border:1px solid #2c3348;border-top:3px solid var(--yellow);padding:22px 18px;box-shadow:0 20px 60px #000}
 .panel h2{margin:0 0 12px;font:800 22px "Arial Black",Impact,sans-serif;letter-spacing:1px;color:var(--yellow)}
 .panel p,.panel .rules{color:#d4d0c6;font-size:14px;line-height:1.55}
@@ -116,6 +113,13 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var
 .emo.on{border-color:var(--yellow);transform:translateY(-2px)}
 #fbNote{width:100%;min-height:70px;margin:8px 0;padding:10px;background:#0c0e14;border:1px solid #2c3348;color:#f4f0e6;font:14px -apple-system,sans-serif}
 </style>
+<!-- closed-loop telemetry bootstrap -->
+<script>
+window.TEL_APP = window.TEL_APP || 'beat-monday';
+window.TEL_API = window.TEL_API || ('https://apps.blazecore.dev' + "/" + window.TEL_APP);
+window.APP_API = window.APP_API || window.TEL_API;
+window.API = window.API || window.TEL_API;
+</script>
 </head>
 <body>
 <div id="app">
@@ -165,10 +169,6 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var
         <button id="btnSettings"></button>
         <button id="btnDebrief"></button>
       </div>
-      <nav class="xpromo" aria-label="More games">
-        <a href="https://play.blazecore.dev/office-landlord/" target="_blank" rel="noopener noreferrer"><small>DESK TYCOON</small><b>OFFICE LANDLORD</b><span>Same office. Rent, not fists.</span></a>
-        <a href="https://play.blazecore.dev/rebound-tycoon/" target="_blank" rel="noopener noreferrer"><small>NIGHT SHIFT</small><b>REBOUND TYCOON</b><span>Hose the lot. Bank the rent.</span></a>
-      </nav>
       <div id="homeFoot"></div>
     </div>
   </div>
@@ -225,49 +225,6 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var
 <script src="i18n.js"></script>
 <script src="audio.js"></script>
 <script src="game.js"></script>
-<script>
-(function(){
-  const API = window.TEL_API || "";
-  const pid = (function(){let p=localStorage.getItem("tel_pid");
-    if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
-  const sid = "s"+Math.random().toString(36).slice(2,10);
-  const t0 = Date.now();
-  let queue = [];
-  function push(etype,name,value,dur){
-    queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
-                value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
-    if(queue.length>=8) flush();
-  }
-  function flush(useBeacon){
-    if(!queue.length||!API) return;
-    const batch = queue.splice(0,50);
-    const body = JSON.stringify(batch);
-    if(useBeacon && navigator.sendBeacon){
-      navigator.sendBeacon(API+"/tel_batch", new Blob([body],{type:"application/json"}));
-    } else {
-      fetch(API+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
-    }
-  }
-  push("pageview", location.pathname||"/", document.title||"");
-  document.addEventListener("click", e=>{
-    const el=e.target.closest("button,a,[data-tel]");
-    if(!el)return;
-    push("click", el.id||el.className||el.tagName,(el.innerText||"").trim().slice(0,60));
-  }, true);
-  window.addEventListener("beforeunload", ()=>{
-    push("session_end","session","",Math.round((Date.now()-t0)/1000));
-    flush(true);
-  });
-  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
-  setInterval(()=>flush(), 20000);
-  window.TEL = {
-    chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
-    feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
-    ev: (name, value)=>push("custom",name,value),
-    flush
-  };
-})();
-BM.boot();
-</script>
+<script>BM.boot();</script>
 </body>
 </html>

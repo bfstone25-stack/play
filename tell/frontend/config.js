@@ -7,3 +7,8 @@ window.TELL_API = (function () {
     ? "https://apps.blazecore.dev/tell"
     : location.origin + "/tell";
 })();
+
+// closed-loop telemetry endpoint
+window.TEL_APP = "tell";
+window.TEL_API = "https://apps.blazecore.dev/tell";
+window.APP_API = window.TEL_API;

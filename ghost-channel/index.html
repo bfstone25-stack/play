@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>GHOST CHANNEL — Trust no one</title>
+  <meta name="theme-color" content="#07060c">
+  <meta name="description" content="Five voices. One mimic. Name the ghost. Trust no one.">
+  <link rel="icon" href="cover-315.png">
+  <link rel="stylesheet" href="style.css">
+<!-- closed-loop telemetry bootstrap -->
+<script>
+window.TEL_APP = window.TEL_APP || 'ghost-channel';
+window.TEL_API = window.TEL_API || ('https://apps.blazecore.dev' + "/" + window.TEL_APP);
+window.APP_API = window.APP_API || window.TEL_API;
+window.API = window.API || window.TEL_API;
+</script>
+</head>
+<body>
+  <div id="crt">
+    <div id="scan"></div>
+    <div id="vignette"></div>
+    <canvas id="fx"></canvas>
+    <div id="lang-dock" aria-label="Language"></div>
+
+    <section id="screen-boot" class="screen show">
+      <p class="boot-line" data-i18n-text="boot1">SITE // BLACK-IVY</p>
+      <p class="boot-line delay1" data-i18n-text="boot2">NET CONTROL ONLINE</p>
+      <p class="boot-line delay2" data-i18n="boot3">THEME: TRUST NO ONE</p>
+      <p class="boot-line delay3" data-i18n-text="boot4">TAP — THE RADIO IS LIVE</p>
+    </section>
+
+    <section id="screen-title" class="screen">
+      <div class="title-mark" data-i18n-text="mark">BRACKEYS JAM 2026.2 · RADIO DEDUCTION</div>
+      <h1>GHOST<br>CHANNEL</h1>
+      <p class="tag" data-i18n-text="tag">Five voices. One mimic. Name the ghost.</p>
+      <div class="title-acts">
+        <button id="btn-start" class="go" data-i18n-text="start">ANSWER THE RADIO</button>
+        <button id="btn-how" class="ghost" data-i18n-text="how">HOW TO PLAY</button>
+        <button id="btn-credits" class="ghost" data-i18n-text="credits">CREDITS</button>
+      </div>
+      <p class="hint" data-i18n-text="hint">During an op: A authorize · D deny · Q interrogate</p>
+    </section>
+
+    <section id="screen-ops" class="screen">
+      <header class="bar">
+        <span data-i18n-text="selectOp">SELECT OPERATION</span>
+        <button class="mini" data-back="title" data-i18n-text="back">BACK</button>
+      </header>
+      <div id="op-list"></div>
+    </section>
+
+    <section id="screen-how" class="screen">
+      <header class="bar">
+        <span data-i18n-text="howTitle">HOW TO PLAY</span>
+        <button class="mini" data-back="title" data-i18n-text="back">BACK</button>
+      </header>
+      <div class="manual">
+        <p data-i18n="how1"></p>
+        <div class="rule"><b>A</b> <span data-i18n-text="howA"></span></div>
+        <div class="rule"><b>D</b> <span data-i18n-text="howD"></span></div>
+        <div class="rule"><b>Q</b> <span data-i18n-text="howQ"></span></div>
+        <p data-i18n-text="howMap"></p>
+        <p data-i18n="howWin"></p>
+      </div>
+    </section>
+
+    <section id="screen-credits" class="screen">
+      <header class="bar">
+        <span data-i18n-text="credTitle">CREDITS</span>
+        <button class="mini" data-back="title" data-i18n-text="back">BACK</button>
+      </header>
+      <div class="manual">
+        <p data-i18n-text="cred1"></p>
+        <p data-i18n="cred2"></p>
+        <p data-i18n-text="cred3"></p>
+        <p data-i18n-text="cred4"></p>
+      </div>
+    </section>
+
+    <section id="screen-play" class="screen play">
+      <header class="play-top">
+        <div>
+          <div id="op-name">OP</div>
+          <div id="op-sub">NET CONTROL</div>
+        </div>
+        <div class="meters">
+          <div><span data-i18n-text="time">TIME</span> <b id="hud-time">00</b></div>
+          <div><span data-i18n-text="ff">FF</span> <b id="hud-ff">0</b>/2</div>
+          <div><span data-i18n-text="score">SCORE</span> <b id="hud-score">0</b></div>
+        </div>
+      </header>
+
+      <div class="play-grid">
+        <aside id="log" aria-label="Radio log"></aside>
+        <div class="map-wrap">
+          <canvas id="map" width="640" height="520"></canvas>
+          <div id="map-label" data-i18n-text="mapLabel">LIVE PLOT</div>
+        </div>
+        <aside class="roster-wrap">
+          <div class="side-title" data-i18n-text="roster">ROSTER</div>
+          <div id="roster"></div>
+          <div class="codebook">
+            <div class="side-title" data-i18n-text="todayCode">TODAY'S CODE</div>
+            <div id="codebook">—</div>
+            <div class="tiny" id="code-note"></div>
+          </div>
+        </aside>
+      </div>
+
+      <div id="incoming" class="incoming">
+        <canvas id="inc-face" width="72" height="72"></canvas>
+        <div class="inc-main">
+          <div class="inc-head">
+            <span id="inc-who" data-i18n-text="standby">STANDBY</span>
+            <span id="inc-type" data-i18n-text="noTraffic">NO TRAFFIC</span>
+          </div>
+          <p id="inc-body" data-i18n-text="waiting">Waiting for the next voice.</p>
+          <div id="inc-extra" class="inc-extra"></div>
+          <div class="acts" id="radio-acts">
+            <button id="btn-auth" class="go" data-i18n-text="auth">A · AUTHORIZE</button>
+            <button id="btn-deny" class="warn" data-i18n-text="deny">D · DENY</button>
+            <button id="btn-q" class="ghost" data-i18n-text="q">Q · INTERROGATE</button>
+          </div>
+          <div class="acts name-acts" id="name-acts" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-debrief" class="screen">
+      <header class="bar"><span data-i18n-text="debrief">DEBRIEF</span></header>
+      <h2 id="end-title">CHANNEL CLOSED</h2>
+      <p id="end-lead"></p>
+      <div id="end-stats" class="stats"></div>
+      <div class="title-acts">
+        <button id="btn-again" class="go" data-i18n-text="again">RUN IT AGAIN</button>
+        <button id="btn-menu" class="ghost" data-i18n-text="menu">NET CONTROL</button>
+      </div>
+    </section>
+  </div>
+  <script src="i18n.js"></script>
+  <script src="audio.js"></script>
+  <script>window.TEL_APP="ghost-channel";window.TEL_API="https://apps.blazecore.dev";</script>
+  <script src="tel.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

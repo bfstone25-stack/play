@@ -7,3 +7,8 @@ window.SILVERTONGUE_API = (function () {
     ? "https://apps.blazecore.dev/silvertongue"
     : location.origin + "/silvertongue";
 })();
+
+// closed-loop telemetry endpoint
+window.TEL_APP = "silvertongue";
+window.TEL_API = "https://apps.blazecore.dev/silvertongue";
+window.APP_API = window.TEL_API;
