@@ -1,0 +1,20 @@
+name: f95-onboarding-3-posts
+# Prefer this job only if the three counting posts were NOT already made by hand.
+# Usage:
+#   export F95ZONE_COOKIES_FILE=~/.config/f95zone/cookies.json
+#   python3 tools/f95zone/publisher.py run-job --job elena-suspense/f95_posts/jobs/onboarding.yaml --dry-run
+
+steps:
+  - type: create-thread
+    forum_id: 11
+    title_file: ../01_introduction_title.txt
+    message_file: ../01_introduction_body.txt
+  - type: reply
+    thread_id: 313472
+    thread_url: /threads/underrated-genres-in-h-games.313472/
+    message_file: ../02_underrated_genres.txt
+  - type: reply
+    # Set enabled: true and a real craft-thread id in forum 73 before running.
+    enabled: false
+    thread_id: 0
+    message_file: ../03_renpy_craft.txt

@@ -1,0 +1,14 @@
+[USER=3068495]vall6269[/USER] [USER=57398]Jnx[/USER] [USER=10676000]Jack Mehoff 61[/USER] [USER=2342544]glitterjizzz[/USER] [USER=65613]rKnight[/USER]
+
+Thanks for giving this early draft a look. I know v0.1.0 is rough, and I appreciate everyone who spent time with it (and said so bluntly).
+
+I'm not here to argue tastes. Concrete notes are already going into the next pass:
+- clearer scene motivation (why Elena is in the vault)
+- cleaner overview copy
+- more readable banner/title treatment
+- overall quality bar over "AI demo energy"
+
+If you try a later build and still hate it, fair. If something specific breaks or feels hollow, that kind of note is gold.
+
+Grateful for the early reads. More soon.
+— Flat 404 / BlazeCore

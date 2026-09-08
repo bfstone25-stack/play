@@ -1,0 +1,3 @@
+Working in Ren'Py and still learning how much of the feel comes from scene structure versus presentation.
+
+Curious how other people approach first-ten-minutes pacing in narrative games — do you lock tone early with sparse dialogue, or open denser and trim later? Always interested in craft notes from folks who ship story-first work.
