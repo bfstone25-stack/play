@@ -27,3 +27,14 @@ See `FEEDBACK_LOOP.md`. Triage tool: `tools/f95zone/feedback_triage.py`
 - Watch thread; only act on new actionable signals
 
 - Live OP cover attachment swapped to readable-title version (attach 6443006)
+
+## Dev tag / thread ownership ticket (#30281)
+
+Staff (hax) reply requires:
+1. Proof of identity/dev work (Patreon/SubscribeStar screenshot preferred, or work-in-progress screenshots linked to the game)
+2. Exact reply: `I have read and agree to the Thread Ownership terms.`
+3. Do **not** overwrite the uploader/staff OP template when updating, or ownership can be revoked
+
+Action taken 2026-09-08:
+- Replied on ticket with required ownership phrase + local Ren'Py/project proof screenshots
+- Ticket: https://f95zone.to/tickets/30281/
