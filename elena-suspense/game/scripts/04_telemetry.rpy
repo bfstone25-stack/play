@@ -19,12 +19,13 @@ init -1 python:
 
     # ---- config -------------------------------------------------------------
     # Prefer persistent override, then env, then local standalone server.
-    _DEFAULT_TEL_URL = "http://127.0.0.1:27100/tel_batch"
+    _DEFAULT_TEL_URL = "https://apps.blazecore.dev/tel_batch?app=elena"
     _TEL_APP = "elena"
     _TEL_FLUSH_AT = 6
     _TEL_TIMEOUT_S = 4.0
 
-    if persistent.telemetry_endpoint is None:
+    # Builds before 0.1.2 persisted a localhost dev endpoint; migrate those to the live host.
+    if persistent.telemetry_endpoint is None or "127.0.0.1:27100" in (persistent.telemetry_endpoint or ""):
         persistent.telemetry_endpoint = os.environ.get("ELENA_TELEMETRY_URL", _DEFAULT_TEL_URL)
 
     if persistent.telemetry_enabled is None:
