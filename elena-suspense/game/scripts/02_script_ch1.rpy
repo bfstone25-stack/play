@@ -223,6 +223,10 @@ label route_control:
 
     narrator "She nods once, like a woman closing a deal, and then she kisses you, and it is not like a woman closing anything."
 
+    if ELENA_WEB_DEMO and renpy.emscripten:
+        $ demo_cut = "control"
+        jump demo_paywall
+
     $ unlock_cg("cg_climax_control")
     $ tel_track("climax_cg", {"branch": "control"})
 
@@ -305,6 +309,10 @@ label route_pact:
 
     narrator "She kisses you first. It is careful for about two seconds."
 
+    if ELENA_WEB_DEMO and renpy.emscripten:
+        $ demo_cut = "pact"
+        jump demo_paywall
+
     $ unlock_cg("cg_climax_pact")
     $ tel_track("climax_cg", {"branch": "pact"})
 
@@ -347,6 +355,10 @@ label route_walk_away:
 
     $ chosen_ending = "walk_away"
     $ tel_track("climax_cg", {"branch": "walk_away", "skipped": True})
+    if ELENA_WEB_DEMO and renpy.emscripten:
+        $ demo_cut = "walk_away"
+        jump demo_paywall
+
     jump scene_dawn_resolution
 
 

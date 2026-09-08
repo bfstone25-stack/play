@@ -68,12 +68,21 @@ image cg annex = "images/cgs/cg_annex.webp"
 image cg muniment = "images/cgs/cg_muniment.webp"
 image cg aftermath = "images/cgs/cg_aftermath.webp"
 
+## Blurred teasers shown on the demo paywall
+image cg_locked_climax_control = "images/cgs/cg_climax_control_locked.webp"
+image cg_locked_climax_pact = "images/cgs/cg_climax_pact_locked.webp"
+image cg_locked_coal_store = "images/cgs/cg_coal_store_locked.webp"
+image cg_locked_annex = "images/cgs/cg_annex_locked.webp"
+image cg_locked_muniment = "images/cgs/cg_muniment_locked.webp"
+image cg_locked_aftermath = "images/cgs/cg_aftermath_locked.webp"
+
 ## Default Narrative State Variables
 default elena_suspicion = 0
 default elena_affection = 0
 default secret_ledger_discovered = False
 default chosen_ending = "none"
 default chapter_cleared = 0
+default demo_cut = "none"
 default blood_pact_signed = False
 default dean_blackmail = False
 default ritual_interrupted = False
@@ -102,3 +111,11 @@ define audio.click = "audio/click.ogg"
 ## Business rule: the browser build is a Chapter 1 demo; chapters 2-5 ship only in the paid downloads ($2.99 on itch).
 define ELENA_WEB_DEMO = True
 define ITCH_BUY_URL = "https://bfstone25-stack.itch.io/elena-crimson-archives/purchase"
+
+
+init 100 python:
+    # The web demo is the sales pitch: players were skipping 157 lines in 9 seconds
+    # to harvest CGs, so nobody ever read it. Skipping is off in the browser build only.
+    if ELENA_WEB_DEMO and renpy.emscripten:
+        config.allow_skipping = False
+        config.fast_skipping = False

@@ -6,7 +6,7 @@ define config.screen_height = 1080
 
 define config.name = _("Elena: Crimson Archives")
 define gui.show_name = True
-define config.version = "0.6.0"
+define config.version = "0.6.1"
 define gui.about = _("Elena: Crimson Archives\nA Dark Academia suspense romance visual novel.\nFlat 404 / Ren'Py 8.")
 
 define build.name = "elena_crimson_archives"
@@ -34,7 +34,7 @@ define config.window_icon = ""
 define config.check_conflicting_properties = True
 
 init python:
-    build.directory_name = "elena-crimson-archives-v0.6.0"
+    build.directory_name = "elena-crimson-archives-v0.6.1"
     build.executable_name = "ElenaCrimsonArchives"
     build.include_update = False
 
@@ -46,6 +46,14 @@ init python:
     build.classify('tools/**', None)
     build.classify('raw_assets/**', None)
     build.classify('dist/**', None)
+    # Store-page art and writing must not ship inside the build (was ~8 MB of the web download).
+    build.classify('promo/**', None)
+    build.classify('f95_posts/**', None)
+    build.classify('itch_posts/**', None)
+    build.classify('**.md', None)
+    build.classify('errors.txt', None)
+    build.classify('log.txt', None)
+    build.classify('progressive_download.txt', None)
 
     build.classify('game/**.png', 'archive')
     build.classify('game/**.jpg', 'archive')
