@@ -37,7 +37,8 @@ label chapter_5:
     narrator "The wheel turns. Nobody oiled it, and it turns anyway."
 
     $ tel_track("ch5_strongroom")
-    scene bg study_dark at ritual_tint
+    $ unlock_cg("cg_muniment")
+    scene cg muniment
     with fade
 
     narrator "The room is dry. That is the first surprise. Shelves, floor to ceiling, and on the shelves, ledgers. Not one. Sixty. Each spine a decade."
@@ -68,8 +69,9 @@ label chapter_5:
     else:
         narrator "Two sets of footsteps. One in heels. One in the kind of shoes money walks in."
 
-    $ unlock_cg("cg_confrontation")
-    scene cg confrontation at night_deep
+    scene bg study_dark at night_deep
+    show dean neutral at left
+    show penhallow neutral at right
     with dissolve
 
     narrator "Dean Holloway. And behind her, filling the door, Julian Penhallow, who looks around the muniment room the way a man looks around a house he has already sold."
@@ -127,8 +129,8 @@ label ch5_ending_rewrite:
     narrator "Penhallow leaves. He does not slam the door; men like him never do. The stair takes him up and out and, over the next eighteen months, out of the board, the wing, and the town."
 
     $ tel_track("ch5_climax", {"ending": "rewrite"})
-    $ unlock_cg("cg_climax")
-    scene cg climax at dawn_tint
+    $ unlock_cg("cg_climax_pact")
+    scene cg climax_pact at dawn_tint
     with dissolve
 
     narrator "The muniment room, later. The Dean gone up. The lamp still on. Sixty volumes and the two of you."
@@ -170,8 +172,8 @@ label ch5_ending_expose:
     narrator "The Dean retires early, in November, and writes you a letter you do not show anyone. It is two lines long. The second line is {i}Thank you.{/i}"
 
     $ tel_track("ch5_climax", {"ending": "expose"})
-    $ unlock_cg("cg_climax")
-    scene cg climax at night_deep
+    $ unlock_cg("cg_climax_control")
+    scene cg climax_control at night_deep
     with dissolve
 
     narrator "The night the story runs. Your flat. The phone finally off."
@@ -212,8 +214,8 @@ label ch5_ending_abscond:
     narrator "You are not archivists any more by the time you reach the car. You are two people with two books and nowhere in particular to be."
 
     $ tel_track("ch5_climax", {"ending": "abscond"})
-    $ unlock_cg("cg_climax")
-    scene cg climax at crypt_tint
+    $ unlock_cg("cg_climax_pact")
+    scene cg climax_pact at crypt_tint
     with dissolve
 
     narrator "A hotel outside the town, the kind with a car park and no questions. The ledgers on the chair. The rain on the window."

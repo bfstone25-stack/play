@@ -69,8 +69,7 @@ label chapter_3:
     narrator "Afterwards, sherry. Penhallow works the room like a man checking exits."
     narrator "He reaches you at the end. He has your name before you offer it."
 
-    $ unlock_cg("cg_confrontation")
-    scene cg confrontation at night_deep
+    show penhallow neutral at center
     with dissolve
 
     narrator "\"Vance. Antiquities. My grandfather's wing.\" He shakes your hand and does not let go at once. \"I hear you lost a crate.\""
@@ -138,9 +137,14 @@ label chapter_3:
         elena "I know. I know. Give me an hour where I am not the last Ashcombe, and then I will be reasonable."
 
     $ tel_track("ch3_climax", {"ending": chosen_ending})
-    $ unlock_cg("cg_climax")
-    scene cg climax at ritual_tint
-    with dissolve
+    if chosen_ending == "control":
+        $ unlock_cg("cg_climax_control")
+        scene cg climax_control at ritual_tint
+        with dissolve
+    else:
+        $ unlock_cg("cg_climax_pact")
+        scene cg climax_pact at ritual_tint
+        with dissolve
 
     if chosen_ending == "walk_away":
         narrator "She is not in a hurry, this first time. She takes your coat off you, and then her own, and folds both over the chair, and then undresses in the corridor light with her eyes on yours, one button at a time, as if daring you to look away."

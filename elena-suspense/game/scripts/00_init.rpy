@@ -52,10 +52,20 @@ image bg study_dark = "images/bg/study_dark.webp"
 
 image elena neutral = "images/characters/elena_neutral.webp"
 image elena flustered = "images/characters/elena_flustered.webp"
-image elena submission = "images/characters/elena_submission.webp"
+image elena soft = "images/characters/elena_soft.webp"
+image elena submission = "images/characters/elena_soft.webp"
+
+image dean neutral = "images/characters/dean_holloway.webp"
+image penhallow neutral = "images/characters/penhallow.webp"
+image cobb neutral = "images/characters/cobb.webp"
 
 image cg confrontation = "images/cgs/cg_confrontation.webp"
-image cg climax = "images/cgs/cg_climax.webp"
+image cg climax = "images/cgs/cg_climax_control.webp"
+image cg climax_control = "images/cgs/cg_climax_control.webp"
+image cg climax_pact = "images/cgs/cg_climax_pact.webp"
+image cg coal_store = "images/cgs/cg_coal_store.webp"
+image cg annex = "images/cgs/cg_annex.webp"
+image cg muniment = "images/cgs/cg_muniment.webp"
 image cg aftermath = "images/cgs/cg_aftermath.webp"
 
 ## Default Narrative State Variables

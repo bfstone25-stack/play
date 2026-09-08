@@ -6,21 +6,49 @@ init python:
         {
             "id": "cg_confrontation",
             "title": _("I. Cornered Scholar"),
-            "subtitle": _("Archive confrontation & forbidden records"),
+            "subtitle": _("The vault, the ledger, the first lie"),
             "full_image": "images/cgs/cg_confrontation.webp",
             "thumb": "images/cgs/cg_confrontation_thumb.webp"
         },
         {
-            "id": "cg_climax",
-            "title": _("II. Midnight Surrender"),
-            "subtitle": _("Ecchi desk climax & tangled confessions"),
-            "full_image": "images/cgs/cg_climax.webp",
-            "thumb": "images/cgs/cg_climax_thumb.webp"
+            "id": "cg_climax_control",
+            "title": _("II. On My Instruction"),
+            "subtitle": _("Control route: the desk, the key, the paper"),
+            "full_image": "images/cgs/cg_climax_control.webp",
+            "thumb": "images/cgs/cg_climax_control_thumb.webp"
+        },
+        {
+            "id": "cg_climax_pact",
+            "title": _("III. Coal Dust"),
+            "subtitle": _("Pact route: the crate, the brick in the door"),
+            "full_image": "images/cgs/cg_climax_pact.webp",
+            "thumb": "images/cgs/cg_climax_pact_thumb.webp"
+        },
+        {
+            "id": "cg_coal_store",
+            "title": _("IV. Lot Forty-One"),
+            "subtitle": _("The coal store, nine minutes before the van"),
+            "full_image": "images/cgs/cg_coal_store.webp",
+            "thumb": "images/cgs/cg_coal_store_thumb.webp"
+        },
+        {
+            "id": "cg_annex",
+            "title": _("V. The Dean's Annex"),
+            "subtitle": _("Twenty minutes in the file room"),
+            "full_image": "images/cgs/cg_annex.webp",
+            "thumb": "images/cgs/cg_annex_thumb.webp"
+        },
+        {
+            "id": "cg_muniment",
+            "title": _("VI. Muniment Room"),
+            "subtitle": _("Sixty volumes and a lamp that still works"),
+            "full_image": "images/cgs/cg_muniment.webp",
+            "thumb": "images/cgs/cg_muniment_thumb.webp"
         },
         {
             "id": "cg_aftermath",
-            "title": _("III. Amber Dawn Pact"),
-            "subtitle": _("Intimate quiet after the storm"),
+            "title": _("VII. Amber Dawn"),
+            "subtitle": _("The morning after, whichever morning it is"),
             "full_image": "images/cgs/cg_aftermath.webp",
             "thumb": "images/cgs/cg_aftermath_thumb.webp"
         }

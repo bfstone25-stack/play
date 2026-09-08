@@ -34,8 +34,7 @@ label chapter_2:
     narrator "He looks at the crate. At the ledger. At the two coffee cups on the desk, one of them yours from last night, one of them not."
 
     $ tel_track("ch2_cobb")
-    $ unlock_cg("cg_confrontation")
-    scene cg confrontation at night_deep
+    show cobb neutral at center
     with dissolve
 
     narrator "\"Professor Vance,\" he says. \"You are on the deaccession sheet as the signing officer for lot forty-one. The van comes at nine.\""
@@ -195,8 +194,8 @@ label chapter_2:
         elena "This is what you meant. Every evening. In here."
         protagonist "Only if you want it to be."
         elena "I have decided what I want. I decided at the loading dock, watching you shake."
-        $ unlock_cg("cg_climax")
-        scene cg climax at night_deep
+        $ unlock_cg("cg_climax_control")
+        scene cg climax_control at night_deep
         with dissolve
         narrator "She takes the key out of your pocket herself and puts it on the desk where you can both see it, and then she undoes your belt."
         narrator "No ledger this time. Nothing between you but the fact that she could pick the key up and leave, and does not."
@@ -208,6 +207,9 @@ label chapter_2:
         scene bg study_dark
         show elena flustered at center
         with dissolve
+        $ unlock_cg("cg_coal_store")
+        scene cg coal_store at crypt_tint
+        with dissolve
         narrator "The coal store, 9:30, the crate between you and the door propped with a brick. Cold enough to see your breath."
         elena "We have a receipt with your signature, a crate the Dean thinks is ash, and a porter who knows both."
         protagonist "And a second name we have not found yet."
@@ -216,8 +218,8 @@ label chapter_2:
         elena "I have not slept. I have not eaten. I have committed two crimes before nine in the morning with a man whose handwriting ruined my father."
         protagonist "And?"
         elena "And I have never felt this awake in my life."
-        $ unlock_cg("cg_climax")
-        scene cg climax at crypt_tint
+        $ unlock_cg("cg_climax_pact")
+        scene cg climax_pact at crypt_tint
         with dissolve
         narrator "On the crate, in the coal dust, with the door propped open on a brick and the rain coming in sideways."
         narrator "She is quick and fierce about it, as if the cold were a clock. She pushes you back and climbs onto you and holds your wrists against the lid, and laughs when the crate creaks, and does not stop."

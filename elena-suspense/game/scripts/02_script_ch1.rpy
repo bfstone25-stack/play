@@ -223,10 +223,10 @@ label route_control:
 
     narrator "She nods once, like a woman closing a deal, and then she kisses you, and it is not like a woman closing anything."
 
-    $ unlock_cg("cg_climax")
+    $ unlock_cg("cg_climax_control")
     $ tel_track("climax_cg", {"branch": "control"})
 
-    scene cg climax
+    scene cg climax_control
     with dissolve
 
     narrator "The blazer goes first, over the back of the reading chair. She undoes her own blouse because she does not want to be undone."
@@ -305,10 +305,10 @@ label route_pact:
 
     narrator "She kisses you first. It is careful for about two seconds."
 
-    $ unlock_cg("cg_climax")
+    $ unlock_cg("cg_climax_pact")
     $ tel_track("climax_cg", {"branch": "pact"})
 
-    scene cg climax
+    scene cg climax_pact
     with fade
 
     narrator "You clear the desk with one arm. Forty-two essays go on the floor and neither of you looks at them."
