@@ -254,5 +254,10 @@ label scene_dawn_resolution:
 
     elena "I look forward to our next private research session, Vance..."
 
-    # Branch to End CTA Screen
-    jump end_cta_screen
+    $ chapter_cleared = max(chapter_cleared, 1)
+    $ unlock_cg("cg_aftermath")
+    $ tel_track("ch1_complete")
+    $ tel_flush(True)
+
+    # Continue into Chapter 2 (full 5-chapter arc)
+    jump chapter_2

@@ -63,6 +63,23 @@ default elena_suspicion = 0
 default elena_affection = 0
 default secret_ledger_discovered = False
 default chosen_ending = "none"
+default chapter_cleared = 0
+default blood_pact_signed = False
+default dean_blackmail = False
+default ritual_interrupted = False
+
+## Scene tint helpers (reuse limited BGs across chapters)
+transform crypt_tint:
+    matrixcolor TintMatrix("#5c6f9a") * BrightnessMatrix(-0.08)
+
+transform ritual_tint:
+    matrixcolor TintMatrix("#8a3a55") * BrightnessMatrix(-0.05)
+
+transform dawn_tint:
+    matrixcolor TintMatrix("#c9a06a") * BrightnessMatrix(0.05)
+
+transform night_deep:
+    matrixcolor TintMatrix("#3a3558") * BrightnessMatrix(-0.12)
 
 ## Audio Definitions
 define audio.rain_ambience = "audio/rain_ambience.ogg"

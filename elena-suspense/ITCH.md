@@ -7,7 +7,8 @@
 - **Short text**: `Free to Play Online · Dark Academia Softcore Suspense Visual Novel`
 - **Classification**: Games / Visual Novel
 - **Kind**: HTML with Play in Browser (`dist/web/` -> `html5` channel)
-- **Payment Mode**: Paid ($2.99 minimum, $4.99 suggested)
+- **Payment Mode**: **Free / PWYW ($0 minimum)** for the Ch.1–5 web build; paid deluxe desktop + uncensored pack later
+- **Monetization**: See `PLATFORMS.md` (itch Adult + DLsite + Patreon/SubscribeStar)
 - **Tags**: `visual-novel`, `adult`, `erotic`, `romance`, `mystery`, `psychological-horror`, `dark-academia`, `renpy`, `story-rich`, `female-protagonist`, `ai-generated`
 - **AI Disclosure**: Yes — text + code + graphics generated/assisted with AI tools (Ren'Py 8 engine + procedural audio + AI graphic asset pipeline).
 

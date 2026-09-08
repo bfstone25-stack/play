@@ -6,7 +6,7 @@ define config.screen_height = 1080
 
 define config.name = _("Elena: Crimson Archives")
 define gui.show_name = True
-define config.version = "0.1.1"
+define config.version = "0.5.0"
 define gui.about = _("Elena: Crimson Archives\nA Dark Academia suspense romance visual novel.\nFlat 404 / Ren'Py 8.")
 
 define build.name = "elena_crimson_archives"
@@ -34,7 +34,7 @@ define config.window_icon = ""
 define config.check_conflicting_properties = True
 
 init python:
-    build.directory_name = "elena-crimson-archives-v0.1.1"
+    build.directory_name = "elena-crimson-archives-v0.5.0"
     build.executable_name = "ElenaCrimsonArchives"
     build.include_update = False
 
