@@ -226,5 +226,84 @@ window.API = window.API || window.TEL_API;
 <script src="audio.js"></script>
 <script src="game.js"></script>
 <script>BM.boot();</script>
+
+<script>
+(function(){
+  if (window.__TEL_BOOTED__) return;
+  window.__TEL_BOOTED__ = true;
+  var API = window.TEL_API || window.API || "https://apps.blazecore.dev";
+  var APP = window.TEL_APP || window.APP_SLUG || "";
+  try {
+    if (!APP) {
+      var m = (location.pathname || "").match(/^\/([^\/]+)/);
+      if (m && m[1] && m[1] !== "tel_batch" && m[1] !== "tel") APP = m[1];
+    }
+  } catch (e) {}
+  if (API && APP && !/\/[a-z0-9_-]+$/i.test(API.replace(/\/+$/,"")) && API.indexOf(APP) < 0) {
+    API = API.replace(/\/+$/, "") + "/" + APP;
+  }
+  window.TEL_API = API;
+  window.TEL_APP = APP;
+  var pid = (function(){
+    var p = localStorage.getItem("tel_pid");
+    if (!p) { p = "u" + Math.random().toString(36).slice(2, 10); localStorage.setItem("tel_pid", p); }
+    return p;
+  })();
+  var sid = "s" + Math.random().toString(36).slice(2, 10);
+  var t0 = Date.now();
+  var queue = [];
+  function push(etype, name, value, dur){
+    queue.push({
+      app: APP || undefined,
+      pid: pid,
+      sid: sid,
+      etype: etype,
+      name: String(name || "").slice(0, 120),
+      value: typeof value === "string" ? value : JSON.stringify(value || ""),
+      dur: dur || 0
+    });
+    if (queue.length >= 8) flush();
+  }
+  function flush(useBeacon){
+    if (!queue.length || !API) return;
+    var batch = queue.splice(0, 50);
+    var body = JSON.stringify(batch);
+    var url = API.replace(/\/+$/, "") + "/tel_batch";
+    try {
+      if (useBeacon && navigator.sendBeacon) {
+        navigator.sendBeacon(url, new Blob([body], {type: "application/json"}));
+      } else {
+        fetch(url, {method: "POST", headers: {"Content-Type": "application/json"}, body: body, mode: "cors", keepalive: true}).catch(function(){});
+      }
+    } catch (e) {}
+  }
+  push("pageview", location.pathname || "/", document.title || "");
+  document.addEventListener("click", function(e){
+    var el = e.target && e.target.closest && e.target.closest("button,a,[data-tel],.card,.chip,[role=button],canvas");
+    if (!el) return;
+    push("click", el.id || el.getAttribute("data-tel") || el.className || el.tagName,
+         ((el.innerText || el.getAttribute("aria-label") || "") + "").trim().slice(0, 60));
+  }, true);
+  window.addEventListener("beforeunload", function(){
+    push("session_end", "session", "", Math.round((Date.now() - t0) / 1000));
+    flush(true);
+  });
+  document.addEventListener("visibilitychange", function(){ if (document.hidden) flush(true); });
+  setInterval(function(){ flush(); }, 20000);
+  window.TEL = {
+    chat: function(userMsg, reply, meta){
+      push("chat", "message", {u: String(userMsg).slice(0, 800), r: String(reply).slice(0, 1200), ...(meta || {})});
+    },
+    feedback: function(score, note){
+      push("feedback", "rating", {score: score, note: String(note || "").slice(0, 500)});
+    },
+    ev: function(name, value){ push("custom", name, value); },
+    play_start: function(meta){ push("play_start", "play", meta || ""); },
+    play_end: function(meta, dur){ push("play_end", "play", meta || "", dur || 0); },
+    flush: flush
+  };
+})();
+</script>
+
 </body>
 </html>
