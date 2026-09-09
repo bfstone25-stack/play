@@ -925,7 +925,7 @@ async function say(){
  showBubble(player,msg,{});           // 玩家头顶气泡
  showBubble(boss,tr().wait,{});       // 等待中
  try{
-  const r=await (await fetch(API+"/say",{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},
+  const r=await (await fetch(API+"/say",{method:"POST",headers:{"Content-Type":"application/json"},
     body:JSON.stringify({history:hist,message:msg,lang:lang,pid:pid(),difficulty,challenge_day:S.day,mode:mode})})).json();
   hist.push({role:"user",content:msg});hist.push({role:"assistant",content:r.reply||"…"});
   motif(r.won?"win":"reply");
@@ -939,7 +939,7 @@ async function say(){
   }else if(!r.won){setHint(talkHint());}
   if(r.won){done=true;track("duel_won",{elapsed_s:Math.round((Date.now()-gameStartedAt)/1000)});setTimeout(()=>win(r.turns),900);}
   else if(r.over){done=true;track("duel_lost",{elapsed_s:Math.round((Date.now()-gameStartedAt)/1000)});setTimeout(lose,900);}
- }catch(e){showBubble(boss,"(connection error)",{gray:true,ttl:3000});track("line_error",{});}
+ }catch(e){turns=Math.max(0,turns-1);updateBar();showBubble(boss,"(connection error)",{gray:true,ttl:3000});track("line_error",{detail:String((e&&e.message)||e).slice(0,120)});}
  document.getElementById("send").disabled=false;
 }
 
@@ -955,7 +955,7 @@ async function win(n){
    <div class="grid">${grid}</div><div style="color:#8a7860;font-size:.85em">${mode==="campaign"?("⚔️ "+(S.cleared+1)+"/"+S.total+" cleared"):tr().tomorrow}</div>
    <button class="share" onclick="share(${n},'${grid}')">${tr().share}</button>${mode==="campaign"?'<button class="share" style="margin-top:8px;background:linear-gradient(180deg,#7ac67a,#4a9a4a)" onclick="nextCampaign()">Next Challenge &rarr;</button><button class="share" style="margin-top:8px;background:linear-gradient(180deg,#888,#555)" onclick="replayCampaign()">Replay</button>':""}${fbHTML()}`;
 }
-async function nextCampaign(){if(DEMO&&(S.index||0)+1>=DEMO_CAMPAIGN){showPaywall();return;}document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
+async function nextCampaign(){if(DEMO&&(S.index||0)+1>=DEMO_CAMPAIGN){showPaywall();return;}document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
  showBubble(boss,tr().loseLine,{gray:true,ttl:3500});
  stopGameplayMusic();
  loseSound();
@@ -977,7 +977,7 @@ function fbHTML(){
  </div>`;
 }
 function postFb(score,note){
- try{fetch(API+"/feedback",{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},
+ try{fetch(API+"/feedback",{method:"POST",headers:{"Content-Type":"application/json"},
   body:JSON.stringify({score,note:note||"",pid:pid(),lang,scenario:S?.id||"",turns})}).catch(()=>{});}catch(e){}
  if(window.TEL)TEL.feedback(score,note||"");
 }
