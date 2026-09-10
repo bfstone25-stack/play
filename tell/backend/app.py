@@ -437,21 +437,21 @@ _CONFRONT_MORE = {
 # toward something checkable instead; evidence is also the only route that
 # unlocks the tell.
 _PRESSED_LADDER = {
-    "zh": ["笔录就在你手上，再问一遍也不会变。去找点能和它对上的东西。",
+    "zh": ["我的回答就在笔录里，再问一遍也不会变。去找点能和它对上的东西。",
            "同样的问题，同样的回答。你要是觉得我的说法有问题，就指出哪一句对不上。",
-           "我已经说过好几遍我在哪里了。要么拿出能推翻它的证据，要么换个问题。"],
-    "es": ["Ya tiene mi declaración, detective. Repetir la pregunta no la cambiará; busque algo que pueda contrastar con ella.",
+           "同样的话我已经说过好几遍了。要么拿出能推翻它的证据，要么换个问题。"],
+    "es": ["Ya tiene mi respuesta, detective. Repetir la pregunta no la cambiará; busque algo que pueda contrastar con ella.",
            "La misma pregunta, la misma respuesta. Si cree que mi versión falla, señale la parte que no encaja.",
-           "Le he dicho dónde estaba varias veces. O presenta algo que lo contradiga, o pregúnteme otra cosa."],
-    "pt": ["O senhor já tem meu depoimento. Repetir a pergunta não vai mudá-lo; encontre algo que possa confrontar com ele.",
+           "Ya le he dado esa respuesta varias veces. O presenta algo que la contradiga, o pregúnteme otra cosa."],
+    "pt": ["O senhor já tem minha resposta. Repetir a pergunta não vai mudá-la; encontre algo que possa confrontar com ela.",
            "Mesma pergunta, mesma resposta. Se acha que minha versão falha, aponte a parte que não fecha.",
-           "Já disse onde eu estava várias vezes. Ou apresente algo que contradiga isso, ou pergunte outra coisa."],
-    "ja": ["調書はもうお持ちでしょう。同じことを聞いても変わりません。照らし合わせられるものを探してください。",
+           "Já dei essa resposta várias vezes. Ou apresente algo que a contradiga, ou pergunte outra coisa."],
+    "ja": ["答えはもう申し上げました。同じことを聞いても変わりません。照らし合わせられるものを探してください。",
            "同じ質問には同じ答えです。私の話が違うと思うなら、どこが合わないのか示してください。",
-           "どこにいたかは何度も申し上げました。覆す証拠を出すか、別のことを聞いてください。"],
-    "en": ["You have my statement, detective. Asking again will not change it — find something you can check it against.",
+           "同じ答えは何度も申し上げました。覆す証拠を出すか、別のことを聞いてください。"],
+    "en": ["You already have my answer, detective. Asking again will not change it — find something you can check it against.",
            "Same question, same answer. If you think my account is wrong, point at the part that does not fit.",
-           "I have told you where I was several times now. Either produce something that contradicts it, or ask me something else."],
+           "I have given you that answer more than once. Either produce something that contradicts it, or ask me something else."],
 }
 
 _TIMELINE_NOTE = (" TIMELINE QUESTION: expand on your recorded opening statement with one concrete, checkable "
@@ -927,7 +927,10 @@ def ask(r: AskReq):
             fallback_reason = "candidate_missed_authored_tell"
     # Never hand the same authored sentence to the same player twice. That loop,
     # not the writing, is what produced twelve identical replies in one session.
-    if not allow_tell and verifier.startswith("authored") and reply in delivered:
+    # This covers every deterministic path, including the safe line served after
+    # the verifier blocks a candidate: those blocks are correct, but repeating
+    # their fallback verbatim is what the player experiences as a dead end.
+    if not allow_tell and verifier not in {"verified", "verified_timeline"} and reply in delivered:
         ladder = _PRESSED_LADDER[_lang_key(r.lang)]
         reply = ladder[min(sum(1 for line in ladder if line in delivered), len(ladder) - 1)]
         fallback_reason = fallback_reason or "repeated_authored_reply"
