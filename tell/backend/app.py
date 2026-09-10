@@ -430,6 +430,34 @@ _CONFRONT_MORE = {
     "en": "That reasoning is full of holes, detective. If you actually have solid evidence, put it on the table instead of wasting our time.",
 }
 
+# A deterministic branch answered every timeline question with the suspect's
+# recorded opening statement — a line already printed on screen. In the logged
+# sessions that produced 61 of 65 timeline turns and, for one player, the same
+# sentence twelve times. When an authored line would repeat, press the detective
+# toward something checkable instead; evidence is also the only route that
+# unlocks the tell.
+_PRESSED_LADDER = {
+    "zh": ["笔录就在你手上，再问一遍也不会变。去找点能和它对上的东西。",
+           "同样的问题，同样的回答。你要是觉得我的说法有问题，就指出哪一句对不上。",
+           "我已经说过好几遍我在哪里了。要么拿出能推翻它的证据，要么换个问题。"],
+    "es": ["Ya tiene mi declaración, detective. Repetir la pregunta no la cambiará; busque algo que pueda contrastar con ella.",
+           "La misma pregunta, la misma respuesta. Si cree que mi versión falla, señale la parte que no encaja.",
+           "Le he dicho dónde estaba varias veces. O presenta algo que lo contradiga, o pregúnteme otra cosa."],
+    "pt": ["O senhor já tem meu depoimento. Repetir a pergunta não vai mudá-lo; encontre algo que possa confrontar com ele.",
+           "Mesma pergunta, mesma resposta. Se acha que minha versão falha, aponte a parte que não fecha.",
+           "Já disse onde eu estava várias vezes. Ou apresente algo que contradiga isso, ou pergunte outra coisa."],
+    "ja": ["調書はもうお持ちでしょう。同じことを聞いても変わりません。照らし合わせられるものを探してください。",
+           "同じ質問には同じ答えです。私の話が違うと思うなら、どこが合わないのか示してください。",
+           "どこにいたかは何度も申し上げました。覆す証拠を出すか、別のことを聞いてください。"],
+    "en": ["You have my statement, detective. Asking again will not change it — find something you can check it against.",
+           "Same question, same answer. If you think my account is wrong, point at the part that does not fit.",
+           "I have told you where I was several times now. Either produce something that contradicts it, or ask me something else."],
+}
+
+_TIMELINE_NOTE = (" TIMELINE QUESTION: expand on your recorded opening statement with one concrete, checkable "
+                  "detail that it or the verified facts already imply. Do not state a clock time, place, or "
+                  "witness that is absent from them, and do not repeat your opening statement word for word.")
+
 _SECRET_MARKERS = {
     "gallery": ("bronze", "statuette", "青铜", "銅像"),
     "yacht": ("gin", "tonic", "杜松", "金汤力", "ジントニック"),
@@ -665,6 +693,21 @@ def _tell_record(pid, case_id, suspect, mode):
     if not row: return None
     return dict(zip(("revealed", "question", "quote", "detail", "ts"), row))
 
+def _delivered_replies(pid, case_id, suspect, mode):
+    """Every line this suspect has already given this player, newest first."""
+    if not pid: return []
+    try:
+        db = _db()
+        rows = db.execute("""SELECT reply FROM distill_log
+                             WHERE pid=? AND case_id=? AND suspect=? AND mode=?
+                             ORDER BY ts DESC LIMIT 24""",
+                          (pid[:64], case_id, suspect, "run" if mode == "run" else "daily")).fetchall()
+        db.close()
+        return [x[0] for x in rows]
+    except Exception as exc:
+        print("[delivered]", exc)
+        return []
+
 def _verify_candidate(reply, case, sid, intent, allow_tell=False):
     """BV-ToT verifier: reject unsafe branch and fall back to authored truth."""
     low = reply.casefold()
@@ -686,6 +729,14 @@ def _verify_candidate(reply, case, sid, intent, allow_tell=False):
     if intent == "other_person":
         if any(s["name"].casefold() in low for s in case["suspects"] if s["id"] != sid):
             return False, "other_person_claim"
+    if intent == "timeline":
+        # An alibi is the one place a fabricated witness is most tempting, so a
+        # co-suspect may only appear in it if the authored dossier already puts
+        # them there.
+        grounded = authored + " " + " ".join(CASEFILES[case["id"]]["facts_en"]).casefold()
+        for other in (s for s in case["suspects"] if s["id"] != sid):
+            if other["name"].casefold() in low and other["name"].casefold() not in grounded:
+                return False, "invented_alibi_witness"
     if sid != case["solution"]:
         if any(x.casefold() in low for x in _SECRET_MARKERS[case["id"]]):
             return False, "innocent_secret_leak"
@@ -826,6 +877,7 @@ def ask(r: AskReq):
     # branches.  Creative role-play reaches the LLM, then BV-ToT verifies it.
     verifier = "deterministic"
     fallback_reason = ""
+    delivered = _delivered_replies(r.pid, c["id"], r.suspect, r.mode)
     if allow_tell:
         # A semicolon often separates evidence from the detective's inference;
         # it is one pressure move, not unrelated questions. Keep the decisive
@@ -841,10 +893,23 @@ def ask(r: AskReq):
         reply = _CONFRONT_MORE[_lang_key(r.lang)]
         verifier = "authored_evidence_gate"; fallback_reason = "missing_foundation"
     elif intent == "timeline":
-        # Timeline claims are authored evidence, not improvisation. This blocks
-        # invented rooms, witnesses and translated timestamps.
-        reply = _opening(c, r.suspect, r.lang)
-        verifier = "authored_timeline"
+        # Timeline claims must stay grounded, but returning the recorded opening
+        # statement for every one of them is what stalled real sessions: the
+        # player is re-shown a line already on screen and learns nothing. Let the
+        # character elaborate under the same verifier, and keep the authored
+        # statement as the fallback rather than the default.
+        candidate = ""
+        try:
+            candidate = _chat(sysp + _TIMELINE_NOTE, r.history[-8:] + [{"role": "user", "content": msg}])
+        except Exception as exc:
+            print("[ask-timeline]", exc)
+        valid, verifier = (_verify_candidate(candidate, c, r.suspect, intent, allow_tell)
+                           if candidate else (False, "timeline_model_unavailable"))
+        if valid and candidate not in delivered:
+            reply, verifier = candidate, "verified_timeline"
+        else:
+            fallback_reason = verifier if not valid else "timeline_repeat"
+            reply, verifier = _opening(c, r.suspect, r.lang), "authored_timeline"
     else:
         candidate = _chat(sysp, r.history[-8:] + [{"role": "user", "content": msg}])
         valid, verifier = _verify_candidate(candidate, c, r.suspect, intent, allow_tell)
@@ -860,6 +925,13 @@ def ask(r: AskReq):
         if allow_tell and not _contains_tell(reply, c["id"], r.lang):
             reply, verifier = _authored_tell(c["id"], r.lang), "tell_fallback"
             fallback_reason = "candidate_missed_authored_tell"
+    # Never hand the same authored sentence to the same player twice. That loop,
+    # not the writing, is what produced twelve identical replies in one session.
+    if not allow_tell and verifier.startswith("authored") and reply in delivered:
+        ladder = _PRESSED_LADDER[_lang_key(r.lang)]
+        reply = ladder[min(sum(1 for line in ladder if line in delivered), len(ladder) - 1)]
+        fallback_reason = fallback_reason or "repeated_authored_reply"
+        verifier = "authored_pressed"
     if allow_tell and _contains_tell(reply, c["id"], r.lang):
         _mark_tell(r.pid, c["id"], r.suspect, r.mode, msg, reply,
                    _SECRET_DETAIL[c["id"]][_lang_key(r.lang)])
@@ -1044,6 +1116,50 @@ def _telegram_business_update(update_id, update):
     return True
 
 
+ADMIN_LOOP_COMMANDS = {"/approve", "/skip", "/loop"}
+_PRODUCTS_ROOT = os.path.expanduser("~/Products")
+_ANALYTICS = os.path.join(_PRODUCTS_ROOT, "itch-analytics")
+
+
+def _admin_loop_command(command, text):
+    """Closed-loop controls, admin chat only. /approve posts one reviewed Reddit reply."""
+    import re as _re
+    import subprocess as _sp
+    arg = text.split(None, 1)[1].strip() if len(text.split(None, 1)) > 1 else ""
+    if command == "/loop":
+        path = os.path.join(_ANALYTICS, "reports", "closed-loop-digest-latest.md")
+        try:
+            with open(path, encoding="utf-8") as fh:
+                return fh.read()[:3800] or "digest is empty"
+        except OSError:
+            return "no digest yet; run itch-analytics/run.sh"
+    if not _re.fullmatch(r"t[13]_[a-z0-9]+", arg):
+        return f"usage: {command} t1_<comment id>"
+    if command == "/skip":
+        path = os.path.join(_ANALYTICS, "data", "reddit_reply_review.json")
+        try:
+            with open(path, encoding="utf-8") as fh:
+                queue = json.load(fh)
+            hit = False
+            for cand in queue.get("candidates") or []:
+                if cand.get("comment_id") == arg:
+                    cand["status"] = "skipped"; hit = True
+            with open(path, "w", encoding="utf-8") as fh:
+                json.dump(queue, fh, ensure_ascii=False, indent=2)
+            return f"skipped {arg}" if hit else f"{arg} not in review queue"
+        except (OSError, ValueError) as exc:
+            return f"skip failed: {type(exc).__name__}"
+    try:
+        proc = _sp.run(
+            ["/usr/bin/python3", os.path.join(_ANALYTICS, "social", "reddit_publisher.py"),
+             "--send-reviewed-feedback", arg],
+            cwd=_PRODUCTS_ROOT, capture_output=True, text=True, timeout=170)
+    except _sp.TimeoutExpired:
+        return f"timeout posting {arg}"
+    tail = "\n".join((proc.stdout + proc.stderr).strip().splitlines()[-4:])
+    return (f"posted {arg}" if proc.returncode == 0 else f"post FAILED for {arg}") + "\n" + tail[:1500]
+
+
 @app.post("/telegram/webhook")
 async def telegram_webhook(request: Request):
     """Private Telegram Bot API ingress for player feedback.
@@ -1075,6 +1191,9 @@ async def telegram_webhook(request: Request):
 
     command = text.split(None, 1)[0].split("@", 1)[0].lower()
     score = int(text) if text in {"1", "2", "3"} else 0
+    if TELEGRAM_ADMIN_CHAT_ID and chat_id == str(TELEGRAM_ADMIN_CHAT_ID) and command in ADMIN_LOOP_COMMANDS:
+        _telegram_send(chat_id, _admin_loop_command(command, text))
+        return {"ok": True}
     db = _db()
     duplicate = db.execute(
         "SELECT 1 FROM telegram_feedback WHERE update_id=?", (update_id,)).fetchone()
