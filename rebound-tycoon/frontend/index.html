@@ -192,51 +192,7 @@ window.API = window.API || window.TEL_API;
     </div>
   </div>
 
-  <script>
-  (function(){
-    const API = window.TEL_API || "";
-    const pid = (function(){let p=localStorage.getItem("tel_pid");
-      if(!p){p="u"+Math.random().toString(36).slice(2,10);localStorage.setItem("tel_pid",p);}return p;})();
-    const sid = "s"+Math.random().toString(36).slice(2,10);
-    const t0 = Date.now();
-    let queue = [];
-    function push(etype,name,value,dur){
-      queue.push({pid,sid,etype,name:String(name||"").slice(0,120),
-                  value:typeof value==="string"?value:JSON.stringify(value||""),dur:dur||0});
-      if(queue.length>=8) flush();
-    }
-    function flush(useBeacon){
-      if(!queue.length||!API) return;
-      const batch = queue.splice(0,50);
-      const body = JSON.stringify(batch);
-      if(useBeacon && navigator.sendBeacon){
-        navigator.sendBeacon(API+"/tel_batch", new Blob([body],{type:"application/json"}));
-      } else {
-        fetch(API+"/tel_batch",{method:"POST",headers:{"Content-Type":"application/json"},body}).catch(()=>{});
-      }
-    }
-    push("pageview", location.pathname||"/", document.title||"");
-    document.addEventListener("click", e=>{
-      const el=e.target.closest("button,a,[data-tel]");
-      if(!el)return;
-      push("click", el.id||el.dataset.tel||el.className||el.tagName,
-           (el.innerText||"").trim().slice(0,60));
-    }, true);
-    window.addEventListener("beforeunload", ()=>{
-      push("session_end","session","",Math.round((Date.now()-t0)/1000));
-      flush(true);
-    });
-    document.addEventListener("visibilitychange", ()=>{ if(document.hidden) flush(true); });
-    setInterval(()=>flush(), 20000);
-    window.TEL = {
-      chat: (userMsg, reply, meta)=>push("chat","message",{u:String(userMsg).slice(0,800),r:String(reply).slice(0,1200),...(meta||{})}),
-      feedback: (score, note)=>push("feedback","rating",{score,note:String(note||"").slice(0,500)}),
-      ev: (name, value)=>push("custom",name,value),
-      flush
-    };
-  })();
-  </script>
-  <script src="js/kernel.js?v=6"></script>
+    <script src="js/kernel.js?v=6"></script>
   <script src="js/copy.js?v=6"></script>
   <script src="js/audio.js?v=6"></script>
   <script src="js/stage.js?v=6"></script>
