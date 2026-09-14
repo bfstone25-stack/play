@@ -1119,7 +1119,7 @@ def _telegram_business_update(update_id, update):
     return True
 
 
-ADMIN_LOOP_COMMANDS = {"/approve", "/skip", "/loop"}
+ADMIN_LOOP_COMMANDS = {"/approve", "/skip", "/loop", "/f95"}
 _PRODUCTS_ROOT = os.path.expanduser("~/Products")
 _ANALYTICS = os.path.join(_PRODUCTS_ROOT, "itch-analytics")
 
@@ -1129,6 +1129,23 @@ def _admin_loop_command(command, text):
     import re as _re
     import subprocess as _sp
     arg = text.split(None, 1)[1].strip() if len(text.split(None, 1)) > 1 else ""
+    if command == "/f95":
+        # Approve and post the pending F95 dev update. Drafted by the loop, never
+        # posted without this explicit step.
+        import subprocess as _sp
+        script = os.path.join(_ANALYTICS, "social", "f95_devlog.py")
+        try:
+            a = _sp.run(["/usr/bin/python3", script, "--approve"],
+                        cwd=_PRODUCTS_ROOT, capture_output=True, text=True, timeout=60)
+            if a.returncode != 0:
+                return (a.stdout + a.stderr).strip()[:800] or "no pending draft"
+            b = _sp.run(["/usr/bin/python3", script, "--post"],
+                        cwd=_PRODUCTS_ROOT, capture_output=True, text=True, timeout=170)
+        except _sp.TimeoutExpired:
+            return "timeout posting the F95 dev update"
+        tail = "\n".join((b.stdout + b.stderr).strip().splitlines()[-4:])
+        return ("F95 dev update posted" if b.returncode == 0 else "F95 post FAILED") + "\n" + tail[:1200]
+
     if command == "/loop":
         path = os.path.join(_ANALYTICS, "reports", "closed-loop-digest-latest.md")
         try:
