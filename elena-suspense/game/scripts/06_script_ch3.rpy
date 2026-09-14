@@ -139,11 +139,13 @@ label chapter_3:
     $ tel_track("ch3_climax", {"ending": chosen_ending})
     if chosen_ending == "control":
         $ unlock_cg("cg_climax_control")
-        scene cg climax_control at ritual_tint
+        call cg_gate("climax_control")
+        scene expression cg_pick("climax_control") at ritual_tint
         with dissolve
     else:
         $ unlock_cg("cg_climax_pact")
-        scene cg climax_pact at ritual_tint
+        call cg_gate("climax_pact")
+        scene expression cg_pick("climax_pact") at ritual_tint
         with dissolve
 
     if chosen_ending == "walk_away":
@@ -183,4 +185,5 @@ label chapter_3:
     narrator "Instead you turn to the survey request form and sign it. Your own signature, for once. It looks strange on the page."
 
     $ chapter_cleared = max(chapter_cleared, 3)
+    call chapter_gate(4)
     jump chapter_4

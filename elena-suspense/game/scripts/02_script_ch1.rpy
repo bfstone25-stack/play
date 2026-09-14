@@ -223,14 +223,12 @@ label route_control:
 
     narrator "She nods once, like a woman closing a deal, and then she kisses you, and it is not like a woman closing anything."
 
-    if ELENA_WEB_DEMO and renpy.emscripten:
-        $ demo_cut = "control"
-        jump demo_paywall
 
     $ unlock_cg("cg_climax_control")
     $ tel_track("climax_cg", {"branch": "control"})
 
-    scene cg climax_control
+    call cg_gate("climax_control")
+    scene expression cg_pick("climax_control")
     with dissolve
 
     narrator "The blazer goes first, over the back of the reading chair. She undoes her own blouse because she does not want to be undone."
@@ -309,14 +307,12 @@ label route_pact:
 
     narrator "She kisses you first. It is careful for about two seconds."
 
-    if ELENA_WEB_DEMO and renpy.emscripten:
-        $ demo_cut = "pact"
-        jump demo_paywall
 
     $ unlock_cg("cg_climax_pact")
     $ tel_track("climax_cg", {"branch": "pact"})
 
-    scene cg climax_pact
+    call cg_gate("climax_pact")
+    scene expression cg_pick("climax_pact")
     with fade
 
     narrator "You clear the desk with one arm. Forty-two essays go on the floor and neither of you looks at them."
@@ -355,9 +351,6 @@ label route_walk_away:
 
     $ chosen_ending = "walk_away"
     $ tel_track("climax_cg", {"branch": "walk_away", "skipped": True})
-    if ELENA_WEB_DEMO and renpy.emscripten:
-        $ demo_cut = "walk_away"
-        jump demo_paywall
 
     jump scene_dawn_resolution
 
@@ -371,7 +364,8 @@ label scene_dawn_resolution:
     $ tel_track("dawn_resolution", {"ending": chosen_ending, "suspicion": elena_suspicion, "affection": elena_affection})
     $ tel_flush(True)
 
-    scene cg aftermath
+    call cg_gate("aftermath")
+    scene expression cg_pick("aftermath")
     with fade
 
     narrator "5:30 AM. The rain has stopped. The window is grey and then, slowly, gold."
@@ -413,6 +407,8 @@ label scene_dawn_resolution:
 
     # Chapter 2 picks up forty-eight hours later (05_script_ch2.rpy).
     $ chapter_cleared = max(chapter_cleared, 1)
-    if ELENA_WEB_DEMO and renpy.emscripten:
-        jump demo_paywall
+    # Dual-track (09_dist.rpy): the whole first chapter is free on every track, with
+    # the climax CGs censored; what happens next depends on where the game is running.
+    $ demo_cut = chosen_ending
+    call chapter_gate(2)
     jump chapter_2

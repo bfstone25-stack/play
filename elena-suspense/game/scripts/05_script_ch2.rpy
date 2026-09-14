@@ -195,7 +195,8 @@ label chapter_2:
         protagonist "Only if you want it to be."
         elena "I have decided what I want. I decided at the loading dock, watching you shake."
         $ unlock_cg("cg_climax_control")
-        scene cg climax_control at night_deep
+        call cg_gate("climax_control")
+        scene expression cg_pick("climax_control") at night_deep
         with dissolve
         narrator "She takes the key out of your pocket herself and puts it on the desk where you can both see it, and then she undoes your belt."
         narrator "No ledger this time. Nothing between you but the fact that she could pick the key up and leave, and does not."
@@ -208,7 +209,8 @@ label chapter_2:
         show elena flustered at center
         with dissolve
         $ unlock_cg("cg_coal_store")
-        scene cg coal_store at crypt_tint
+        call cg_gate("coal_store")
+        scene expression cg_pick("coal_store") at crypt_tint
         with dissolve
         narrator "The coal store, 9:30, the crate between you and the door propped with a brick. Cold enough to see your breath."
         elena "We have a receipt with your signature, a crate the Dean thinks is ash, and a porter who knows both."
@@ -219,7 +221,8 @@ label chapter_2:
         protagonist "And?"
         elena "And I have never felt this awake in my life."
         $ unlock_cg("cg_climax_pact")
-        scene cg climax_pact at crypt_tint
+        call cg_gate("climax_pact")
+        scene expression cg_pick("climax_pact") at crypt_tint
         with dissolve
         narrator "On the crate, in the coal dust, with the door propped open on a brick and the rain coming in sideways."
         narrator "She is quick and fierce about it, as if the cold were a clock. She pushes you back and climbs onto you and holds your wrists against the lid, and laughs when the crate creaks, and does not stop."
@@ -248,4 +251,5 @@ label chapter_2:
     narrator "And someone, thirty years ago, had wanted you to see his name and not the one they crossed out."
 
     $ chapter_cleared = max(chapter_cleared, 2)
+    call chapter_gate(3)
     jump chapter_3

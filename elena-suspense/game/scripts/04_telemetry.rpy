@@ -32,6 +32,17 @@ init -1 python:
         # On by default when an endpoint is configured; player may disable in prefs.
         persistent.telemetry_enabled = bool(persistent.telemetry_endpoint)
 
+    # On the web the page's HTML SDK already has a player id in localStorage; sharing it
+    # means the page-level events (arrive, engaged, session_end) and the story events
+    # describe one person instead of two.
+    if getattr(renpy, "emscripten", False):
+        try:
+            import emscripten
+            _jspid = emscripten.run_script_string("localStorage.getItem('tel_pid') || ''")
+            if _jspid:
+                persistent.telemetry_pid = _jspid
+        except Exception:
+            pass
     if persistent.telemetry_pid is None:
         persistent.telemetry_pid = "e" + uuid.uuid4().hex[:12]
 

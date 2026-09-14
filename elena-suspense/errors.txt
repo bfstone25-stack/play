@@ -1,0 +1,14 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/scripts/09_dist.rpy", line 144: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    $ ad_gate_open(key, "chapter")
+    ^
+
+File "game/scripts/09_dist.rpy", line 164: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    $ ad_gate_open(key, "chapter")
+    ^
+
+Ren'Py Version: Ren'Py 8.3.7.25031702
+Mon Sep 14 12:38:35 2026

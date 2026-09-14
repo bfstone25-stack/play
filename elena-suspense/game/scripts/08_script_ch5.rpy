@@ -38,7 +38,8 @@ label chapter_5:
 
     $ tel_track("ch5_strongroom")
     $ unlock_cg("cg_muniment")
-    scene cg muniment
+    call cg_gate("muniment")
+    scene expression cg_pick("muniment")
     with fade
 
     narrator "The room is dry. That is the first surprise. Shelves, floor to ceiling, and on the shelves, ledgers. Not one. Sixty. Each spine a decade."
@@ -130,7 +131,8 @@ label ch5_ending_rewrite:
 
     $ tel_track("ch5_climax", {"ending": "rewrite"})
     $ unlock_cg("cg_climax_pact")
-    scene cg climax_pact at dawn_tint
+    call cg_gate("climax_pact")
+    scene expression cg_pick("climax_pact") at dawn_tint
     with dissolve
 
     narrator "The muniment room, later. The Dean gone up. The lamp still on. Sixty volumes and the two of you."
@@ -139,7 +141,8 @@ label ch5_ending_rewrite:
     narrator "She comes with her back arched over a hundred years of paid silence and her mouth open on your name, and the lamp does not go out, and nobody comes down the stair."
 
     $ unlock_cg("cg_aftermath")
-    scene cg aftermath at dawn_tint
+    call cg_gate("aftermath")
+    scene expression cg_pick("aftermath") at dawn_tint
     with fade
 
     narrator "Spring. The muniment room has a reading desk now, and a sign-in book, and a postgraduate archivist on a proper salary who reads faster than the professor."
@@ -173,7 +176,8 @@ label ch5_ending_expose:
 
     $ tel_track("ch5_climax", {"ending": "expose"})
     $ unlock_cg("cg_climax_control")
-    scene cg climax_control at night_deep
+    call cg_gate("climax_control")
+    scene expression cg_pick("climax_control") at night_deep
     with dissolve
 
     narrator "The night the story runs. Your flat. The phone finally off."
@@ -182,7 +186,8 @@ label ch5_ending_expose:
     narrator "She comes with your name and then, quieter, her father's. You hold her a long time after."
 
     $ unlock_cg("cg_aftermath")
-    scene cg aftermath at dawn_tint
+    call cg_gate("aftermath")
+    scene expression cg_pick("aftermath") at dawn_tint
     with fade
 
     narrator "A year on. The muniment room is a museum now, which is not what either of you wanted, but it is open, and the names are on the wall."
@@ -215,7 +220,8 @@ label ch5_ending_abscond:
 
     $ tel_track("ch5_climax", {"ending": "abscond"})
     $ unlock_cg("cg_climax_pact")
-    scene cg climax_pact at crypt_tint
+    call cg_gate("climax_pact")
+    scene expression cg_pick("climax_pact") at crypt_tint
     with dissolve
 
     narrator "A hotel outside the town, the kind with a car park and no questions. The ledgers on the chair. The rain on the window."
@@ -224,7 +230,8 @@ label ch5_ending_abscond:
     narrator "You come together with the ledgers watching. Afterwards she lies on your chest and says, \"We are going to have to get jobs.\""
 
     $ unlock_cg("cg_aftermath")
-    scene cg aftermath at dawn_tint
+    call cg_gate("aftermath")
+    scene expression cg_pick("aftermath") at dawn_tint
     with fade
 
     narrator "A flat by the sea, eight months later. Two desks. A kettle. Sixty volumes, because you went back for the rest, one night in March, with Cobb's key."

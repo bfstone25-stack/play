@@ -131,7 +131,7 @@ label end_cta_screen:
     return
 
 
-## Web demo gate: Chapter 1 is free in the browser; the paid download continues the story.
+## itch web track gate: chapter 1 is free in the browser; the paid download continues the story (see 09_dist.rpy).
 screen demo_paywall_screen():
     tag menu
     key "K_g" action ShowMenu("cg_gallery")
