@@ -35,8 +35,9 @@
         display: "flex", alignItems: "center", justifyContent: "center"});
       slot.setAttribute("data-tel-ad", "gate");
       if (window.ELENA_AD_HTML) {
-        var frag = document.createRange().createContextualFragment(window.ELENA_AD_HTML); // scripts execute
-        slot.appendChild(frag);
+        // Inside an iframe: Adsterra's invoke.js uses document.write, which after load would wipe the game page.
+        var f = document.createElement("iframe"); f.width = "300"; f.height = "250"; f.style.border = "0"; f.style.background = "#000";
+        f.setAttribute("scrolling", "no"); f.srcdoc = '<body style="margin:0;background:#000">' + window.ELENA_AD_HTML + "</body>"; slot.appendChild(f);
       } else {
         slot.textContent = "Sponsor slot";
         css(slot, {color: "#665"});
