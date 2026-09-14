@@ -39,7 +39,8 @@
       box.appendChild(el("div", {fontSize: "22px", color: "#d99b66", marginBottom: "12px"}, (opts.title || "This part") + " unlocks after one sponsor clip"));
       var slot = el("div", {width: "min(90vw, 728px)", minHeight: "250px", background: "#151020", border: "1px solid #3a2a44", display: "flex", alignItems: "center", justifyContent: "center", color: "#665"});
       slot.setAttribute("data-tel-ad", "gate");
-      if (window.AD_HTML) slot.appendChild(document.createRange().createContextualFragment(window.AD_HTML)); else slot.textContent = "Sponsor slot";
+      if (window.AD_HTML) { var f = document.createElement("iframe"); f.width = "300"; f.height = "250"; f.style.border = "0"; f.style.background = "#000";
+        f.setAttribute("scrolling", "no"); f.srcdoc = '<body style="margin:0;background:#000">' + window.AD_HTML + "</body>"; slot.appendChild(f); } else slot.textContent = "Sponsor slot";
       var count = el("div", {fontSize: "18px", marginTop: "14px", color: "#c8b8b0"}, seconds + "s");
       var btn = el("button", primary, "Continue"); btn.disabled = true; css(btn, {background: "#3a2a44", color: "#887", cursor: "not-allowed"});
       var quit = el("button", quiet, "Not now");
