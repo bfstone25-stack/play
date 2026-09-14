@@ -6,7 +6,7 @@ define config.screen_height = 1080
 
 define config.name = _("Elena: Crimson Archives")
 define gui.show_name = True
-define config.version = "0.6.1"
+define config.version = "0.7.0"
 define gui.about = _("Elena: Crimson Archives\nA Dark Academia suspense romance visual novel.\nFlat 404 / Ren'Py 8.")
 
 define build.name = "elena_crimson_archives"
