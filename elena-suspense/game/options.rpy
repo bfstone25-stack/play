@@ -34,7 +34,7 @@ define config.window_icon = ""
 define config.check_conflicting_properties = True
 
 init python:
-    build.directory_name = "elena-crimson-archives-v0.6.1"
+    build.directory_name = "elena-crimson-archives-v0.7.0"
     build.executable_name = "ElenaCrimsonArchives"
     build.include_update = False
 
