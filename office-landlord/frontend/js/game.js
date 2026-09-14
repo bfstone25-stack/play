@@ -288,7 +288,13 @@
     hud();
   }
 
+  const FREE_FLOORS = 3; // dual-track (ops/DUAL_TRACK.md): floors 1-3 free, 4-8 behind the gate
   function nextFloor() {
+    const key = "floor" + (st.floor + 1);
+    if (st.floor + 1 > FREE_FLOORS && window.Gate && window.Gate.dist() !== "paid" && !window.Gate.has(key)) {
+      window.Gate.require(key, { title: "Floor " + (st.floor + 1), kind: "level" }).then((r) => { if (r === "unlocked") nextFloor(); });
+      return;
+    }
     st.floor += 1;
     st.cells = emptyCells();
     st.offers = rollFrom(st.deck, 3);

@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b0e0d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FOLD — A geometric puzzle of becoming one</title>
-<script src="config.js"></script>
+<script src="config.js"></script><script>window.GATE_CONFIG={price:"$1.99",buyUrl:"https://bfstone25-stack.itch.io/fold/purchase"};</script><script src="gate.js"></script>
 <link rel="canonical" href="https://apps.blazecore.dev/fold/">
 <meta property="og:title" content="FOLD — everything returns to one">
 <meta property="og:description" content="A quiet geometric puzzle of direction, compression, and becoming one.">
@@ -208,7 +208,12 @@ const T={zh:{goal:t=>`目标 · 归一至 <b>${t}</b>`,moves:m=>`第 ${m} 手`,u
   support:'Grátis para sempre · <b>Sem anúncios</b><br>Um desafio tranquilo por dia',
   parhint:s=>`${s} jogadas para 3★`}};
 function tr(){return T[lang]}
+const FREE_LEVELS=50; // dual-track (ops/DUAL_TRACK.md): levels 1-50 free, the rest behind the gate
 function load(l){
+ if(l>=FREE_LEVELS&&window.Gate&&window.Gate.dist()!=="paid"&&!window.Gate.has("lv"+l)){
+  window.Gate.require("lv"+l,{title:"Level "+(l+1),kind:"level"}).then(r=>{if(r==="unlocked")load(l);});
+  return;
+ }
  L=l; const lv=LEVELS[l]; R=lv.grid.length; C=Math.max(...lv.grid.map(r=>r.length));
  cells=[]; walls=[]; tiles=[]; let id=0;
  for(let r=0;r<R;r++)for(let c=0;c<C;c++){

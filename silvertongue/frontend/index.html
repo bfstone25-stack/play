@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#6f4f86"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>SILVERTONGUE · Persuasion RPG</title><script src="build.js"></script><script src="config.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#6f4f86"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>SILVERTONGUE · Persuasion RPG</title><script src="build.js"></script><script src="config.js"></script><script>window.GATE_CONFIG={price:"$2.99",buyUrl:"https://bfstone25-stack.itch.io/silvertongue/purchase"};</script><script src="gate.js"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;overflow:hidden;background:#141019;font-family:-apple-system,'PingFang SC','Microsoft YaHei',Georgia,serif;color:#f0e9dd}
@@ -955,7 +955,8 @@ async function win(n){
    <div class="grid">${grid}</div><div style="color:#8a7860;font-size:.85em">${mode==="campaign"?("⚔️ "+(S.cleared+1)+"/"+S.total+" cleared"):tr().tomorrow}</div>
    <button class="share" onclick="share(${n},'${grid}')">${tr().share}</button>${mode==="campaign"?'<button class="share" style="margin-top:8px;background:linear-gradient(180deg,#7ac67a,#4a9a4a)" onclick="nextCampaign()">Next Challenge &rarr;</button><button class="share" style="margin-top:8px;background:linear-gradient(180deg,#888,#555)" onclick="replayCampaign()">Replay</button>':""}${fbHTML()}`;
 }
-async function nextCampaign(){if(DEMO&&(S.index||0)+1>=DEMO_CAMPAIGN){showPaywall();return;}document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
+function campaignLocked(i){return DEMO&&i>=DEMO_CAMPAIGN&&!(window.Gate&&(window.Gate.dist()==="paid"||window.Gate.has("duel"+i)));}
+async function nextCampaign(){const ni=(S.index||0)+1;if(campaignLocked(ni)){if(window.Gate&&window.Gate.dist()==="ads_web"){const r=await window.Gate.require("duel"+ni,{title:"Duel "+(ni+1),kind:"level"});if(r!=="unlocked")return;}else{showPaywall();return;}}document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
  showBubble(boss,tr().loseLine,{gray:true,ttl:3500});
  stopGameplayMusic();
  loseSound();
@@ -1098,7 +1099,7 @@ cv.addEventListener("pointerdown",e=>{
 /* ============ 加载 & 语言 ============ */
 async function load(){
  S=await (await fetch(API+(mode==="campaign"?"/campaign/state":"/state")+"?lang="+lang+"&difficulty="+difficulty+"&pid="+pid())).json();
- if(DEMO&&mode==="campaign"&&(S.index||0)>=DEMO_CAMPAIGN){showPaywall();return;}
+ if(mode==="campaign"&&campaignLocked(S.index||0)){if(window.Gate&&window.Gate.dist()==="ads_web"){const r=await window.Gate.require("duel"+(S.index||0),{title:"Duel "+((S.index||0)+1),kind:"level"});if(r!=="unlocked")return;}else{showPaywall();return;}}
  applyScene();
  boss.name=S.character;boss.emoji=EMO[S.id]||"🗣️";
  const loc=locOf(scNow().title);

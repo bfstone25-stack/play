@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER — He remembers you</title><script src="config.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER — He remembers you</title><script src="config.js"></script><script>window.GATE_CONFIG={price:"$2.99",buyUrl:"https://bfstone25-stack.itch.io/flutter/purchase"};</script><script src="gate.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script>
 <style>
 :root{--accent:#e87aa8;--hue:320;--edition-bg0:#0c1720;--edition-bg1:#233343;--edition-bg2:#111a22;--edition-glowA:#d07c63;--edition-glowB:#547e99;--edition-ink:#f4eee8;--edition-muted:#c7bdba;--edition-font:'Avenir Next','Helvetica Neue',Inter,Arial,sans-serif}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -1513,6 +1513,12 @@ function showChapterClear(clear){
  document.getElementById("clearOv").classList.add("show");
 }
 async function continueChapter(){
+ // dual-track (ops/DUAL_TRACK.md): chapter 1 free; each further chapter behind the gate
+ const nextIdx=(pendingClear&&pendingClear.chapter_index?pendingClear.chapter_index:1)+1;
+ if(nextIdx>=2&&window.Gate&&window.Gate.dist()!=="paid"&&!window.Gate.has("ch"+nextIdx)){
+  const r=await window.Gate.require("ch"+nextIdx,{title:"Chapter "+nextIdx,kind:"chapter"});
+  if(r!=="unlocked")return;
+ }
  const btn=document.querySelector("#clearCard .clearNext");if(btn)btn.disabled=true;
  try{
   const r=await (await fetch(API+"/continue",{method:"POST",headers:{"Content-Type":"application/json"},

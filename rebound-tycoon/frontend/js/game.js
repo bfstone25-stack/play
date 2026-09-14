@@ -274,7 +274,13 @@
       btn.classList.add("on");
     });
   });
+  const FREE_NIGHTS = 3; // dual-track (ops/DUAL_TRACK.md): nights 1-3 free, later nights behind the gate
   document.getElementById("prestigeGo").addEventListener("click", () => {
+    const key = "night" + (st.night + 1);
+    if (st.night + 1 > FREE_NIGHTS && window.Gate && window.Gate.dist() !== "paid" && !window.Gate.has(key)) {
+      window.Gate.require(key, { title: "Night " + (st.night + 1), kind: "level" }).then((r) => { if (r === "unlocked") document.getElementById("prestigeGo").click(); });
+      return;
+    }
     const res = doPrestige(st);
     if (!res.ok) return;
     st = res.state;

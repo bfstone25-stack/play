@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#701d1d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>破绽 · TELL</title><script src="build.js"></script><script src="config.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#701d1d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>破绽 · TELL</title><script src="build.js"></script><script src="config.js"></script><script>window.GATE_CONFIG={price:"$2.99",buyUrl:"https://bfstone25-stack.itch.io/tell/purchase"};</script><script src="gate.js"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;overflow:hidden;font-family:'Georgia','Songti SC',-apple-system,serif;color:#d8d4cc;background:#080809}
@@ -315,9 +315,13 @@ function showPaywall(){
   document.getElementById("payOv").style.display="flex";
   track("demo_paywall",{mode,run_case:runCase});
 }
-function demoRunLocked(idx){return DEMO&&mode==="run"&&idx>=DEMO_RUN_CASES;}
+function demoRunLocked(idx){return DEMO&&mode==="run"&&idx>=DEMO_RUN_CASES&&!(window.Gate&&(window.Gate.dist()==="paid"||window.Gate.has("case"+idx)));}
+function adsTrack(){return window.Gate&&window.Gate.dist()==="ads_web";}
 async function enterGame(){
- if(demoRunLocked(runCase)){showPaywall();return;}
+ if(demoRunLocked(runCase)){
+  if(adsTrack()){const r=await window.Gate.require("case"+runCase,{title:"Case "+(runCase+1),kind:"level"});if(r!=="unlocked")return;}
+  else{showPaywall();return;}
+ }
  const go=document.getElementById("homeGo"),label=go.textContent;
  go.disabled=true;go.textContent=lang==="zh"?"调取卷宗…":lang==="ja"?"事件簿を読込中…":lang==="es"?"CARGANDO…":lang==="pt"?"CARREGANDO…":"LOADING CASEFILE…";
  gameStartedAt=Date.now();track("game_start",{run_case:runCase,run_streak:runStreak});startAmbience();stopScore();resetCase();
@@ -330,7 +334,7 @@ async function enterGame(){
 }
 function goHome(){track("return_home",{questions:qUsed});playScore("menu");document.getElementById("verdict").style.display="none";document.getElementById("briefOv").style.display="none";document.getElementById("home").style.display="flex";renderHome();}
 function setLang(next){lang=next;localStorage.setItem("tell_lang",lang);document.documentElement.lang=lang;track("language_selected",{selected:next});renderHome();if(document.getElementById("settingsOv").style.display==="flex")openSettings();if(window.uxSyncLabels)uxSyncLabels();}
-function nextCase(){const nxt=(runCase+1)%(S.case_total||7);if(DEMO&&nxt>=DEMO_RUN_CASES){showPaywall();return;}track("next_case",{streak:runStreak});playScore("interrogation");runCase=nxt;localStorage.setItem("tell_run_case",String(runCase));gameStartedAt=Date.now();resetCase();load().then(showBrief);}
+function nextCase(){const nxt=(runCase+1)%(S.case_total||7);if(demoRunLocked(nxt)){if(adsTrack()){window.Gate.require("case"+nxt,{title:"Case "+(nxt+1),kind:"level"}).then(r=>{if(r==="unlocked")nextCase();});return;}showPaywall();return;}track("next_case",{streak:runStreak});playScore("interrogation");runCase=nxt;localStorage.setItem("tell_run_case",String(runCase));gameStartedAt=Date.now();resetCase();load().then(showBrief);}
 function retryCase(){track("retry_case",{});playScore("interrogation");gameStartedAt=Date.now();resetCase();load().then(showBrief);}
 function pick(id){if(cur!==id)track("suspect_selected",{suspect:id});cur=id;S.suspects.forEach(s=>document.getElementById("mug-"+s.id).classList.toggle("on",s.id===id));
  const s=S.suspects.find(x=>x.id===id);
