@@ -29,7 +29,7 @@ const LITURGY = (() => {
     upgrades: { fish: 0, hand: 0, altar: 0, city: 0, mandala: 0 },
     charms: [],
     settings: { audio: true, motion: true, haptics: true },
-    lang: "zh-Hans",
+    lang: /^zh/i.test((typeof navigator !== "undefined" && navigator.language) || "") ? "zh-Hans" : "en",
     pulseT: 0,
     lastCompleteDay: "",
   };
@@ -181,7 +181,7 @@ const LITURGY = (() => {
     });
     state.charms = Array.isArray(data.charms) ? data.charms.slice() : [];
     state.settings = Object.assign({ audio: true, motion: true, haptics: true }, data.settings || {});
-    state.lang = data.lang === "en" ? "en" : "zh-Hans";
+    state.lang = data.lang === "en" ? "en" : (data.lang === "zh-Hans" ? "zh-Hans" : state.lang);
     state.lastCompleteDay = data.lastCompleteDay || "";
     return snapshot();
   }

@@ -26,7 +26,9 @@
     LITURGY.load(saved);
   }
   const idleGain = LITURGY.applyIdle(Date.now());
-  I18N.setLang(LITURGY.snapshot().lang || "zh-Hans");
+  // Fall back to the locale I18N picked from the browser, not to Chinese: on the portals and
+  // free.blazecore.dev a Chinese splash screen is where non-Chinese players leave.
+  I18N.setLang(LITURGY.snapshot().lang || I18N.getLang());
 
   const CAM = { yaw: 0, pitch: 6, punch: 0, userYaw: 0, userPitch: 0 };
   let lastHud = "";
@@ -340,7 +342,9 @@
     const needH = shell.offsetHeight, needW = shell.offsetWidth;
     const availH = Math.max(320, (window.visualViewport && window.visualViewport.height) || window.innerHeight) - 8;
     const availW = Math.max(280, window.innerWidth) - 4;
-    const scale = Math.min(1, availH / needH, availW / needW);
+    // Scale up as well as down: capping at 1 left the cabinet a small box in the middle of a
+    // 1080p screen, which portals reject as black bars / wasted canvas.
+    const scale = Math.min(2.2, availH / needH, availW / needW);
     shell.style.transformOrigin = "top center";
     shell.style.transform = "scale(" + scale + ")";
     slot.style.height = Math.ceil(needH * scale) + "px";

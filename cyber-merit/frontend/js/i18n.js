@@ -1,5 +1,8 @@
 const I18N = (() => {
-  let lang = "zh-Hans";
+  // Default to the visitor's language, not to Chinese: the game ships to CrazyGames and
+  // free.blazecore.dev where almost nobody reads it, and a Chinese splash screen is where
+  // those players bounce.
+  let lang = /^zh/i.test(navigator.language || "") ? "zh-Hans" : "en";
   const dict = { "zh-Hans": {}, en: {} };
 
   function register(bundle) {
