@@ -1,0 +1,13 @@
+{
+  "id": "./",
+  "name": "FOLD",
+  "short_name": "FOLD",
+  "description": "Fold the grid. Solve the shape. Relax your mind. Click, drag, and watch it snap perfectly.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0e0d",
+  "theme_color": "#0b0e0d",
+  "icons": [
+    { "src": "icon-192-v2.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}
