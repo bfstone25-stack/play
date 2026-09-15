@@ -111,6 +111,10 @@ define audio.click = "audio/click.ogg"
 ## Business rule: the browser build is a Chapter 1 demo; chapters 2-5 ship only in the paid downloads ($2.99 on itch).
 define ELENA_WEB_DEMO = True
 define ITCH_BUY_URL = "https://bfstone25-stack.itch.io/elena-crimson-archives/purchase"
+## The ad-supported edition. Adsterra pays per declared domain, and itch serves browser
+## games from html-classic.itch.zone, which we cannot declare — so the itch build sends
+## players who will not pay to the site where our ad code is allowed to run.
+define ADS_SITE_URL = "https://elena-crimson-archives.flat404.workers.dev/?src=itch"
 
 
 init 100 python:

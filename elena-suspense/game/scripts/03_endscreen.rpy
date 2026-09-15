@@ -195,6 +195,15 @@ screen demo_paywall_screen():
                 hover_background Transform("#f2725c", alpha=1.0)
                 padding (26, 15, 26, 15)
 
+            textbutton _("▶ Keep reading free, with ads"):
+                action [Function(tel_cta_click, "ads_site"), OpenURL(ADS_SITE_URL)]
+                text_size 22
+                text_color "#70c080"
+                text_hover_color "#a8e0b8"
+                background Transform("#1a2a1e", alpha=0.95)
+                hover_background Transform("#24402c", alpha=1.0)
+                padding (20, 13, 20, 13)
+
             textbutton _("↺ Try the other route"):
                 action Start()
                 text_size 20

@@ -135,6 +135,9 @@ screen cg_buy_screen(name):
                 textbutton _("★ Unlock everything - $2.99"):
                     action [Function(cg_buy_decide, name, "buy_click", t0), OpenURL(ITCH_BUY_URL)]
                     text_size 24 text_color "#ffffff" background Transform("#d95a43", alpha=0.95) padding (22, 12, 22, 12)
+                textbutton _("▶ Free with ads"):
+                    action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL(ADS_SITE_URL)]
+                    text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
                 textbutton _("Continue censored"):
                     action [Function(cg_buy_decide, name, "dismiss", t0), Return()]
                     text_size 20 text_color "#d99b66" background Transform("#24172a", alpha=0.92) padding (16, 10, 16, 10)
