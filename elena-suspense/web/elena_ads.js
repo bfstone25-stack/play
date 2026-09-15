@@ -11,6 +11,7 @@
 (function () {
   if (window.ElenaAds) return;
   var SECONDS = window.ELENA_AD_SECONDS || 30;
+  function isBot(){ try { return !!navigator.webdriver || / HeadlessChrome\//.test(navigator.userAgent || ""); } catch (e) { return false; } }
   var KEY = "elena_unlocks";
   var state = 0, timer = null, box = null;
   function unlocks() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
@@ -34,7 +35,7 @@
       var slot = css(document.createElement("div"), {width: "min(90vw, 728px)", minHeight: "250px", background: "#151020", border: "1px solid #3a2a44",
         display: "flex", alignItems: "center", justifyContent: "center"});
       slot.setAttribute("data-tel-ad", "gate");
-      if (window.ELENA_AD_HTML) {
+      if (window.ELENA_AD_HTML && !isBot()) {
         // Inside an iframe: Adsterra's invoke.js uses document.write, which after load would wipe the game page.
         var f = document.createElement("iframe"); f.width = "300"; f.height = "250"; f.style.border = "0"; f.style.background = "#000";
         f.setAttribute("scrolling", "no"); f.srcdoc = '<body style="margin:0;background:#000">' + window.ELENA_AD_HTML + "</body>"; slot.appendChild(f);
