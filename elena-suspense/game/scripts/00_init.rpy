@@ -115,6 +115,10 @@ define ITCH_BUY_URL = "https://bfstone25-stack.itch.io/elena-crimson-archives/pu
 ## games from html-classic.itch.zone, which we cannot declare — so the itch build sends
 ## players who will not pay to the site where our ad code is allowed to run.
 define ADS_SITE_URL = "https://elena-crimson-archives.flat404.workers.dev/?src=itch"
+## Adsterra Direct Link: the ad is served on Adsterra's own page, so it works from itch's
+## domain, which we can neither declare nor verify. Empty = the button is hidden.
+define DIRECT_LINK_URL = ""
+define DIRECT_LINK_SECONDS = 20
 
 
 init 100 python:

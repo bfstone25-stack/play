@@ -88,6 +88,25 @@ init -2 python:
             tel_cta_click("itch_buy_cg")
         tel_flush(True)
 
+    def direct_link_open(key):
+        """Open the sponsor page in a new tab and start the unlock timer.
+
+        Nothing is forced: the player chose this over paying, the tab is theirs to close,
+        and the unlock lands on return. One link per session key, never auto-triggered."""
+        tel_track("directlink_open", {"key": key, "dist": elena_dist()})
+        tel_flush(True)
+        store._dl_started = __import__("time").time()
+        _js("window.open(%r, '_blank')" % DIRECT_LINK_URL)
+
+    def direct_link_elapsed():
+        import time
+        return int(time.time() - getattr(store, "_dl_started", 0))
+
+    def direct_link_finish(key):
+        tel_track("directlink_returned", {"key": key}, dur=direct_link_elapsed())
+        _ad_unlocks().add(key)
+        tel_flush(True)
+
     def ad_gate_tick():
         r = ad_gate_poll()
         return r if r in (1, 2) else None
@@ -135,9 +154,14 @@ screen cg_buy_screen(name):
                 textbutton _("★ Unlock everything - $2.99"):
                     action [Function(cg_buy_decide, name, "buy_click", t0), OpenURL(ITCH_BUY_URL)]
                     text_size 24 text_color "#ffffff" background Transform("#d95a43", alpha=0.95) padding (22, 12, 22, 12)
-                textbutton _("▶ Free with ads"):
-                    action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL(ADS_SITE_URL)]
-                    text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
+                if DIRECT_LINK_URL:
+                    textbutton _("▶ Unlock free — open sponsor"):
+                        action [Function(cg_buy_decide, name, "directlink_click", t0), Return("directlink")]
+                        text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
+                else:
+                    textbutton _("▶ Free with ads"):
+                        action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL(ADS_SITE_URL)]
+                        text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
                 textbutton _("Continue censored"):
                     action [Function(cg_buy_decide, name, "dismiss", t0), Return()]
                     text_size 20 text_color "#d99b66" background Transform("#24172a", alpha=0.92) padding (16, 10, 16, 10)
@@ -191,6 +215,9 @@ label cg_gate(name):
     $ tel_track("paywall_seen", {"key": "cg_" + name, "dist": elena_dist()})
     if elena_dist() == "itch_web":
         call screen cg_buy_screen(name)
+        if _return == "directlink":
+            $ direct_link_open("cg_" + name)
+            call screen direct_link_screen("cg_" + name, _("Uncensored after the sponsor page"))
         return
     menu:
         "This scene is censored. Unlock the uncensored version?"
@@ -225,3 +252,26 @@ label warp_gate:
     call chapter_gate(2)
     narrator "[[warp] Chapter 2 unlocked."
     jump chapter_2
+
+
+## Sponsor-page unlock for the itch build: Adsterra's Direct Link runs on their own page,
+## so it needs no domain of ours. The player comes back and the scene opens.
+screen direct_link_screen(key, title):
+    modal True
+    tag menu
+    add Solid("#000000d8")
+    vbox:
+        xalign 0.5 yalign 0.40 spacing 14
+        text title size 30 color "#70c080" bold True xalign 0.5
+        text _("The sponsor page opened in a new tab. Come back when you are done.") size 20 color "#c8b8b0" xalign 0.5
+        text _("[direct_link_elapsed()] / [DIRECT_LINK_SECONDS] seconds") size 22 color "#ffdfa0" xalign 0.5
+        timer 1.0 repeat True action Function(renpy.restart_interaction)
+        hbox:
+            xalign 0.5 spacing 18
+            if direct_link_elapsed() >= DIRECT_LINK_SECONDS:
+                textbutton _("✓ Unlock"):
+                    action [Function(direct_link_finish, key), Return(1)]
+                    text_size 24 text_color "#ffffff" background Transform("#3a7a4a", alpha=0.95) padding (22, 12, 22, 12)
+            textbutton _("Cancel"):
+                action Return(0)
+                text_size 20 text_color "#d99b66" background Transform("#24172a", alpha=0.92) padding (16, 10, 16, 10)
