@@ -117,7 +117,7 @@ define ITCH_BUY_URL = "https://bfstone25-stack.itch.io/elena-crimson-archives/pu
 define ADS_SITE_URL = "https://elena-crimson-archives.flat404.workers.dev/?src=itch"
 ## Adsterra Direct Link: the ad is served on Adsterra's own page, so it works from itch's
 ## domain, which we can neither declare nor verify. Empty = the button is hidden.
-define DIRECT_LINK_URL = ""
+define DIRECT_LINK_URL = "https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9"
 define DIRECT_LINK_SECONDS = 20
 
 
