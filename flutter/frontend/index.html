@@ -785,7 +785,7 @@ window.API = window.API || window.TEL_API;
   </div>
   <div class="gate-prompt" id="gatePrompt">PRESS ANY KEY · CLICK TO ENTER</div>
 </div>
-<div id="brandIntro" aria-hidden="true">
+<div id="brandIntro" aria-hidden="true" onclick="advanceBrandIntro(event)">
   <div class="bi-grain"></div>
   <button class="bi-theme" id="biTheme" onclick="toggleIntroTheme()">THEME SONG · ON</button>
   <button class="bi-skip" id="biSkip" onclick="finishBrandIntro()">SKIP</button>
@@ -1647,6 +1647,7 @@ function showLaunchGate(){
 }
 let gatePhase="opening";
 let brandIntroTimers=[];
+let biScript=[],biIndex=0;
 let introThemeEnabled=localStorage.getItem("flutter_intro_theme")!=="off";
 const BRAND_INTROS={en:[
  "HE REMEMBERS WHAT YOU TELL HIM.",
@@ -1742,17 +1743,31 @@ function syncIntroControls(){
  document.getElementById("biSkip").textContent=ui.skip;
 }
 function startBrandIntro(){
- const intro=document.getElementById("brandIntro"),line=document.getElementById("biLine");
- const script=BRAND_INTROS[lang]||BRAND_INTROS.en;
+ const intro=document.getElementById("brandIntro");
+ biScript=BRAND_INTROS[lang]||BRAND_INTROS.en;
  brandIntroTimers.forEach(clearTimeout);brandIntroTimers=[];
  if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.pauseForOpening();
  syncIntroControls();
  intro.classList.remove("depart");intro.classList.add("show");intro.setAttribute("aria-hidden","false");
  if(introThemeEnabled&&window.FLUTTER_AUDIO)FLUTTER_AUDIO.playIntroTheme();
- const show=i=>{line.innerHTML=`<span>${script[i]}</span>`;};
- show(0);
- script.slice(1).forEach((_,i)=>brandIntroTimers.push(setTimeout(()=>show(i+1),(i+1)*8000)));
- brandIntroTimers.push(setTimeout(finishBrandIntro,120000));
+ showBrandLine(0);
+}
+// The intro runs 15 lines at 8s each behind a corner SKIP button. Enter/Space/Esc already
+// let a desktop player move, so a phone had no way through it but that small button —
+// and every real flutter session so far has been Android. Tapping anywhere advances a line.
+function showBrandLine(i){
+ biIndex=i;
+ document.getElementById("biLine").innerHTML=`<span>${biScript[i]}</span>`;
+ brandIntroTimers.forEach(clearTimeout);brandIntroTimers=[];
+ brandIntroTimers.push(setTimeout(()=>{
+  if(biIndex+1<biScript.length)showBrandLine(biIndex+1);else finishBrandIntro();
+ },8000));
+}
+function advanceBrandIntro(event){
+ const intro=document.getElementById("brandIntro");
+ if(!intro.classList.contains("show")||intro.classList.contains("depart"))return;
+ if(event&&event.target&&event.target.closest("button"))return;
+ if(biIndex+1<biScript.length)showBrandLine(biIndex+1);else finishBrandIntro();
 }
 function toggleIntroTheme(){
  introThemeEnabled=!introThemeEnabled;
@@ -1765,16 +1780,21 @@ function toggleIntroTheme(){
 function finishBrandIntro(){
  const intro=document.getElementById("brandIntro");if(!intro.classList.contains("show"))return;
  brandIntroTimers.forEach(clearTimeout);brandIntroTimers=[];
+ if(window.TEL)TEL.ev("intro_done",{line:biIndex,of:biScript.length,skipped:biIndex+1<biScript.length});
  intro.classList.add("depart");
  if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.resumeScene("main");
  setTimeout(()=>{
   intro.classList.remove("show","depart");intro.setAttribute("aria-hidden","true");
   document.getElementById("select").classList.add("reveal");
+  if(window.TEL)TEL.ev("select_shown","brand_intro");
  },820);
 }
-function enterSelection(){
+function enterSelection(via){
  const gate=document.getElementById("launchGate");
  if(!gate.classList.contains("show")||gate.classList.contains("depart"))return;
+ // The gate offers two doors ("PRESS ANY KEY · CLICK TO ENTER") but only the click one left
+ // a trace, so every keyboard player was counted as quitting at the title card.
+ if(window.TEL)TEL.ev("gate_passed",{via:via||"click",phase:gatePhase});
  if(gatePhase==="opening")FLUTTER_OPENING.prime();
  gate.classList.add("depart");
  setTimeout(()=>{
@@ -1788,7 +1808,7 @@ function enterSelection(){
    startBrandIntro();
  },760);
 }
-window.addEventListener("flutter:opening-finished",()=>{gatePhase="intro";showLaunchGate();});
+window.addEventListener("flutter:opening-finished",()=>{gatePhase="intro";if(window.TEL)TEL.ev("opening_done","");showLaunchGate();});
 window.addEventListener("keydown",event=>{
  const wish=document.getElementById("chapterWish");
  if(wish.classList.contains("show")&&(event.key==="Escape"||event.key==="Enter"||event.key===" ")){
@@ -1801,7 +1821,7 @@ window.addEventListener("keydown",event=>{
  const gate=document.getElementById("launchGate");
  if(gate.classList.contains("show")){
   event.preventDefault();
-  enterSelection();
+  enterSelection("key");
  }
 });
 function goSelect(){
