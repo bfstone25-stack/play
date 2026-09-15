@@ -39,7 +39,18 @@ init -2 python:
 
     def elena_dist():
         if not getattr(renpy, "emscripten", False):
-            return "paid"
+            # Desktop: the itch download is "paid" (everything open). The free download for
+            # F95 — whose rules demand an offline-playable build — ships with game/dist.txt
+            # saying offline_ads: chapters 2-5 and the uncensored CGs unlock through the
+            # Adsterra Direct Link, opened in the player's browser by their own click.
+            if getattr(store, "_elena_dist", None) is None:
+                try:
+                    store._elena_dist = renpy.file("dist.txt").read().decode("utf-8").strip() if renpy.loadable("dist.txt") else "paid"
+                except Exception:
+                    store._elena_dist = "paid"
+                if store._elena_dist not in ("paid", "offline_ads"):
+                    store._elena_dist = "paid"
+            return store._elena_dist
         if getattr(store, "_elena_dist", None) is None:
             d = _js_str("(window.ELENA_DIST || 'itch_web')")
             store._elena_dist = d if d in ("itch_web", "ads_web", "paid") else "itch_web"
@@ -96,7 +107,10 @@ init -2 python:
         tel_track("directlink_open", {"key": key, "dist": elena_dist()})
         tel_flush(True)
         store._dl_started = __import__("time").time()
-        _js("window.open(%r, '_blank')" % DIRECT_LINK_URL)
+        if getattr(renpy, "emscripten", False):
+            _js("window.open(%r, '_blank')" % DIRECT_LINK_URL)
+        else:
+            renpy.run(OpenURL(DIRECT_LINK_URL))
 
     def direct_link_elapsed():
         import time
@@ -176,6 +190,10 @@ label chapter_gate(n):
     if elena_dist() == "itch_web":
         jump demo_paywall
     $ key = "ch%d" % n
+    if elena_dist() == "offline_ads":
+        if is_ad_unlocked(key):
+            return
+        jump offline_chapter_gate
     if is_ad_unlocked(key):
         return
     $ started = __import__("time").time()
@@ -213,7 +231,7 @@ label cg_gate(name):
     if name not in GATED_CGS or elena_dist() == "paid" or is_ad_unlocked("cg_" + name):
         return
     $ tel_track("paywall_seen", {"key": "cg_" + name, "dist": elena_dist()})
-    if elena_dist() == "itch_web":
+    if elena_dist() in ("itch_web", "offline_ads"):
         call screen cg_buy_screen(name)
         if _return == "directlink":
             $ direct_link_open("cg_" + name)
@@ -275,3 +293,19 @@ screen direct_link_screen(key, title):
             textbutton _("Cancel"):
                 action Return(0)
                 text_size 20 text_color "#d99b66" background Transform("#24172a", alpha=0.92) padding (16, 10, 16, 10)
+
+
+## F95 download: the next chapter costs one sponsor page (or the $2.99 itch build).
+label offline_chapter_gate:
+    menu:
+        "Chapter [n] is locked in the free edition."
+        "Open the sponsor page, then continue":
+            $ direct_link_open(key)
+            call screen direct_link_screen(key, _("Chapter %d unlocks after the sponsor page") % n)
+            if _return == 1:
+                return
+            jump offline_chapter_gate
+        "Get the ad-free full game on itch ($2.99)":
+            $ tel_cta_click("itch_buy_offline")
+            $ renpy.run(OpenURL(ITCH_BUY_URL))
+            jump offline_chapter_gate
