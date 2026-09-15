@@ -141,7 +141,8 @@ window.API = window.API || window.TEL_API;
   <script src="i18n.js"></script>
   <script src="audio.js"></script>
   <script>window.TEL_APP="ghost-channel";window.TEL_API="https://apps.blazecore.dev";</script>
-  <script src="tel.js"></script>
+  <!-- tel.js removed: it posted to /tel/batch (404 — the gateway serves /tel_batch) and its
+       window.TEL was overwritten by the shared SDK below, so it only produced failed requests -->
   <script>window.GATE_CONFIG={price:"$1.99",buyUrl:"https://bfstone25-stack.itch.io/ghost-channel/purchase"};</script>
   <script src="gate.js"></script>
   <script src="game.js"></script>
