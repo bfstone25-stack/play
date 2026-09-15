@@ -117,6 +117,7 @@ label start:
 
     $ unlock_cg("cg_confrontation")
     $ tel_track("confrontation")
+    call ad_checkpoint("ck_confrontation", _("The confrontation continues after the sponsor page"))
 
     scene cg confrontation
     with fade
@@ -135,6 +136,7 @@ label start:
     narrator "The phone on the crate lights up. Upload complete."
 
     # Choice 2: the fork. This one commits the route.
+    call ad_checkpoint("ck_branch", _("Choose her fate after the sponsor page"))
     menu:
         "Take the ledger out of her arms. Do not let her see you look at page fourteen.":
             $ elena_suspicion += 3
@@ -357,6 +359,7 @@ label route_walk_away:
 
 ## ---------------------------------------------------------------- DAWN
 label scene_dawn_resolution:
+    call ad_checkpoint("ck_dawn", _("Dawn comes after the sponsor page"))
     stop music fadeout 3.0
     play music suspense_theme fadein 3.0
 

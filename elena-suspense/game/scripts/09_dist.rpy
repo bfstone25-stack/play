@@ -309,3 +309,46 @@ label offline_chapter_gate:
             $ tel_cta_click("itch_buy_offline")
             $ renpy.run(OpenURL(ITCH_BUY_URL))
             jump offline_chapter_gate
+
+
+## Story checkpoints: a sponsor gate at a narrative beat, mandatory on the free tracks.
+## Each one carries its beat name, so the reports can say *where* in the story people pay
+## twenty seconds and where they leave — the closest thing we have to reading them.
+label ad_checkpoint(key, title):
+    if elena_dist() in ("paid", "itch_web") or is_ad_unlocked(key):
+        return
+    $ tel_track("checkpoint_seen", {"key": key, "dist": elena_dist()})
+    $ tel_flush(True)
+    if elena_dist() == "ads_web":
+        jump checkpoint_clip
+    jump checkpoint_link
+
+label checkpoint_clip:
+    $ started = __import__("time").time()
+    $ ad_gate_open(key, "checkpoint")
+    call screen ad_gate_screen(key, "checkpoint", title)
+    $ ad_gate_finish(key, "checkpoint", _return, started)
+    if _return == 1:
+        return
+    menu:
+        "The story continues after one sponsor clip."
+        "Play the clip":
+            jump checkpoint_clip
+        "Get the ad-free full game ($2.99)":
+            $ tel_cta_click("itch_buy_checkpoint")
+            $ renpy.run(OpenURL(ITCH_BUY_URL))
+            jump checkpoint_clip
+
+label checkpoint_link:
+    menu:
+        "[title]"
+        "Open the sponsor page, then continue":
+            $ direct_link_open(key)
+            call screen direct_link_screen(key, title)
+            if _return == 1:
+                return
+            jump checkpoint_link
+        "Get the ad-free full game on itch ($2.99)":
+            $ tel_cta_click("itch_buy_checkpoint")
+            $ renpy.run(OpenURL(ITCH_BUY_URL))
+            jump checkpoint_link
