@@ -25,9 +25,38 @@ window.REBOUND_STAGE_CANDY = (() => {
 
   // macaron palette - bright ground, saturated accents, dark contour
   const C = {
-    cloth: ["#fdf3e7", "#ffe7d2"], rim: "#2a1b34", lane: "#ffd9a8",
-    ink: "#3a2a4a", pop: "#ff5c8a", mint: "#5ef0bd", sky: "#5cb8ff", lemon: "#ffd44d",
+    // dreamy sky, not a neutral card: lavender -> rose -> peach, the palette the portal's
+    // cute-casual shelf actually uses.
+    sky: ["#b8a6f0", "#f3a8d8", "#ffcfa8"],
+    board: ["#4a2a6e", "#33195a"], rim: "#ffd44d", rimDark: "#ff7ab8",
+    ink: "#5a3a6e", pop: "#ff5c8a", mint: "#5ef0bd", blue: "#5cb8ff", lemon: "#ffd44d",
   };
+  // decoration is generated once and reused, so it does not crawl between frames
+  const DECO = (() => {
+    const clouds = [], stars = [], bokeh = [];
+    let s = 7;
+    const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < 7; i++) clouds.push({ x: rnd(), y: 0.05 + rnd() * 0.85, r: 0.05 + rnd() * 0.05, a: 0.5 + rnd() * 0.4 });
+    for (let i = 0; i < 26; i++) stars.push({ x: rnd(), y: rnd(), r: 2 + rnd() * 3.5, ph: rnd() * 6.28 });
+    for (let i = 0; i < 12; i++) bokeh.push({ x: rnd(), y: rnd(), r: 0.02 + rnd() * 0.05, a: 0.10 + rnd() * 0.14 });
+    return { clouds, stars, bokeh };
+  })();
+
+  function puff(g, cx, cy, r, alpha) {
+    g.globalAlpha = alpha;
+    g.fillStyle = "#ffffff";
+    [[0, 0, 1], [-0.85, 0.18, 0.72], [0.85, 0.18, 0.72], [-0.42, -0.3, 0.66], [0.45, -0.28, 0.6]]
+      .forEach(([dx, dy, s2]) => { g.beginPath(); g.arc(cx + dx * r, cy + dy * r, r * s2, 0, Math.PI * 2); g.fill(); });
+    g.globalAlpha = 1;
+  }
+  function star(g, cx, cy, r, color) {
+    g.fillStyle = color; g.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2, rr = i % 2 ? r * 0.38 : r;
+      g[i ? "lineTo" : "moveTo"](cx + Math.cos(a) * rr, cy + Math.sin(a) * rr);
+    }
+    g.closePath(); g.fill();
+  }
   const BUMP = ["bumper_mint", "bumper_sky", "bumper_coral"];
 
   function resize(c) {
@@ -67,26 +96,64 @@ window.REBOUND_STAGE_CANDY = (() => {
     const K = globalThis;
 
     const bg = g.createLinearGradient(0, 0, 0, h);
-    bg.addColorStop(0, C.cloth[0]); bg.addColorStop(1, C.cloth[1]);
+    bg.addColorStop(0, C.sky[0]); bg.addColorStop(0.55, C.sky[1]); bg.addColorStop(1, C.sky[2]);
     g.fillStyle = bg; g.fillRect(0, 0, w, h);
+
+    DECO.bokeh.forEach((b) => {
+      g.globalAlpha = b.a; g.fillStyle = "#ffffff";
+      g.beginPath(); g.arc(b.x * w, b.y * h, b.r * w, 0, Math.PI * 2); g.fill();
+    });
+    g.globalAlpha = 1;
+    DECO.clouds.forEach((c) => puff(g, c.x * w, c.y * h, c.r * w, c.a * 0.5));
+    DECO.stars.forEach((s2) => {
+      const tw = 0.45 + 0.55 * Math.abs(Math.sin(fx.t * 1.4 + s2.ph));
+      g.globalAlpha = tw * 0.85;
+      star(g, s2.x * w, s2.y * h, s2.r, "#fffdf4");
+    });
+    g.globalAlpha = 1;
 
     // playfield card with a fat rounded border - the "chunky" cue
     const T = K.TABLE || { left: 0.075, right: 0.855, top: 0.055 };
+    const bx = px(T.left - 0.035, w), by = py(T.top - 0.03, h);
+    const bw = px(T.right - T.left + 0.07, w), bh = py(0.945, h);
+
+    // scalloped candy frame: a ring of dots behind the board reads as "cute" far faster
+    // than any amount of shading does
+    const per = 26, rr = 9;
+    g.fillStyle = C.rim;
+    for (let i = 0; i <= per; i++) {
+      const u = i / per;
+      g.beginPath(); g.arc(bx + u * bw, by - 3, rr, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.arc(bx + u * bw, by + bh + 3, rr, 0, Math.PI * 2); g.fill();
+    }
+    const perV = 17;
+    for (let i = 0; i <= perV; i++) {
+      const v = i / perV;
+      g.beginPath(); g.arc(bx - 3, by + v * bh, rr, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.arc(bx + bw + 3, by + v * bh, rr, 0, Math.PI * 2); g.fill();
+    }
+
     g.save();
-    g.beginPath();
-    g.roundRect(px(T.left - 0.03, w), py(T.top - 0.03, h),
-                px(T.right - T.left + 0.06, w), py(0.94, h), 26);
-    g.fillStyle = "#fffaf2"; g.fill();
-    g.lineWidth = 9; g.strokeStyle = C.rim; g.stroke();
+    g.shadowColor = "rgba(120,60,140,.35)"; g.shadowBlur = 26; g.shadowOffsetY = 8;
+    g.beginPath(); g.roundRect(bx, by, bw, bh, 34);
+    const boardG = g.createLinearGradient(0, by, 0, by + bh);
+    boardG.addColorStop(0, C.board[0]); boardG.addColorStop(1, C.board[1]);
+    g.fillStyle = boardG; g.fill();
+    g.shadowColor = "transparent"; g.shadowBlur = 0; g.shadowOffsetY = 0;
+    g.lineWidth = 10; g.strokeStyle = C.rim; g.stroke();
+    g.lineWidth = 4; g.strokeStyle = C.rimDark; g.stroke();
     g.clip();
 
-    g.strokeStyle = "rgba(94,240,189,.35)"; g.lineWidth = 5;
+    g.strokeStyle = "rgba(255,212,77,.22)"; g.lineWidth = 6;
     for (let i = 1; i <= 4; i++) {
       g.beginPath(); g.arc(px(0.46, w), py(0.46, h), px(0.075 * i, w), 0, Math.PI * 2); g.stroke();
     }
 
-    g.strokeStyle = C.rim; g.lineWidth = 8; g.lineCap = "round";
+    g.strokeStyle = "#7de8ff"; g.lineWidth = 13; g.lineCap = "round";
     (K.WALLS || []).forEach((wl) => {
+      g.strokeStyle = "#1d6a86"; g.lineWidth = 15;
+      g.beginPath(); g.moveTo(px(wl[0], w), py(wl[1], h)); g.lineTo(px(wl[2], w), py(wl[3], h)); g.stroke();
+      g.strokeStyle = "#7de8ff"; g.lineWidth = 9;
       g.beginPath(); g.moveTo(px(wl[0], w), py(wl[1], h)); g.lineTo(px(wl[2], w), py(wl[3], h)); g.stroke();
     });
 
@@ -125,7 +192,7 @@ window.REBOUND_STAGE_CANDY = (() => {
     }
 
     if (state.mode === "plunge") {
-      g.fillStyle = C.ink; g.font = "800 15px ui-rounded, ui-sans-serif, system-ui";
+      g.fillStyle = "#ffe9a8"; g.font = "800 16px ui-rounded, ui-sans-serif, system-ui";
       g.textAlign = "center";
       g.fillText(opts.hint || "HOLD SPACE", px(0.465, w), py(0.72, h));
     }
@@ -141,7 +208,7 @@ window.REBOUND_STAGE_CANDY = (() => {
       g.beginPath(); g.arc(p.x, p.y, 3.5, 0, Math.PI * 2); g.fill();
     });
     fx.drops.forEach((p) => {
-      g.globalAlpha = 1 - p.age / p.life; g.fillStyle = C.sky;
+      g.globalAlpha = 1 - p.age / p.life; g.fillStyle = C.blue;
       g.beginPath(); g.arc(p.x, p.y, 3, 0, Math.PI * 2); g.fill();
     });
     g.globalAlpha = 1;
