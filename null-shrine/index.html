@@ -84,8 +84,8 @@
           </div>
           <div class="power-meter"><div id="powerFill"></div></div>
           <button id="launchBtn" class="launch-btn" type="button">
-            <span>发射</span>
-            <i>蓄力 / 释放</i>
+            <span data-i18n="ui.launch">发射</span>
+            <i data-i18n="ui.launchHint">蓄力 / 释放</i>
           </button>
         </div>
         <button class="mode" data-mode="surge">
@@ -99,19 +99,19 @@
   <section class="dock">
     <div class="mission" id="challengeBar">
       <div>
-        <small>今日</small>
+        <small data-i18n="ui.today">今日</small>
         <b id="challengeText">命中 10 个回收口</b>
       </div>
       <div class="challenge-progress"><div id="challengeFill"></div></div>
       <strong id="challengeCount">0/10</strong>
     </div>
     <div class="run-summary">
-      <div><span>脉冲</span><b id="ticketCount">20</b></div>
-      <div><span>核心</span><b id="jackpotCount">0</b></div>
-      <div><span>近失</span><b id="nearMissCount">0</b></div>
-      <button id="shareBtn" type="button">分享</button>
+      <div><span data-i18n="ui.pulse">脉冲</span><b id="ticketCount">20</b></div>
+      <div><span data-i18n="ui.core">核心</span><b id="jackpotCount">0</b></div>
+      <div><span data-i18n="ui.nearMiss">近失</span><b id="nearMissCount">0</b></div>
+      <button id="shareBtn" type="button" data-i18n="ui.share">分享</button>
     </div>
-    <div id="personaBody" class="persona-empty">我会记住你的选择，而不是只记录输赢。</div>
+    <div id="personaBody" class="persona-empty" data-i18n="ui.personaEmpty">我会记住你的选择，而不是只记录输赢。</div>
     <div id="albumBody" hidden><span class="album-empty"></span></div>
   </section>
 

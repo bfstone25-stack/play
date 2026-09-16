@@ -364,7 +364,7 @@
       state.chain = 0; state.heat = 36;
       updateHUD(); shakeCabinet(); SFX.nearMiss();
       $("runState").textContent = "PURGE";
-      mascotSay("熔断。贪心也要看时机。", "×");
+      mascotSay(t("mascot.burst"), "×");
       toast("CHAIN LOST");
       return;
     }
@@ -864,6 +864,6 @@
   initChallenge();
   updateChallengeUI();
   updateHUD();
-  mascotSay("把光送进不可能的路径。按住，然后放手。", "◇");
+  mascotSay(t("mascot.intro"), "◇");
   loop(performance.now());
 })();
