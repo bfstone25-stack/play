@@ -16,6 +16,50 @@ def _has(text: str, *needles: str) -> bool:
     return any(n.casefold() in low for n in needles)
 
 
+def _hasre(text: str, pattern: str) -> bool:
+    return re.search(pattern, text, re.I | re.X) is not None
+
+
+# ARIA's proof detectors. These must stay balanced across languages. The
+# Chinese side has always matched everyday connectives - 等於 ("equals") and
+# 所以 ("so/therefore") appear in almost any Cantonese proof - while the
+# English side matched only formal spellings ("same as", "then why",
+# "contradiction"). The result was that Chinese-speaking players reached
+# breakthrough in five turns and English-speaking players could not reach it
+# at all: 36 losing turns, four players, momentum frozen at 0.24 in `guarded`.
+# These patterns give English the same everyday connectives.
+_AI_ARITHMETIC = r"""
+    \d+\s*(?:\+|\-|[x*×]|乘|加|减)\s*[（(]?\s*\d+
+  | \d+\s*(?:plus|minus|times|and)\s*\d+
+  | \b(?:one|two|three|four|five|six|seven|eight|nine|ten)\s+
+    (?:plus|minus|times|and)\s+
+    (?:one|two|three|four|five|six|seven|eight|nine|ten)\b
+"""
+_AI_EQUIVALENCE = r"""
+    \bequ[ai]ls?\b | \bequ[ai]l\s+to\b | \bequivalent\b
+  | \bthe\s+same\s+(?:number|thing|result|amount|answer|as)\b
+  | \bsame\s+as\b
+  | \badds?\s+up\s+to\b | \bcomes?\s+to\b
+  | \bin\s+total\b | \ball\s+together\b | \baltogether\b
+  | \bmakes?\s+(?:four|4)\b
+"""
+_AI_CONTRADICTION = r"""
+    \bcontradicts?\b | \bcontradiction\b | \binconsistent\b
+  | \b(?:so|then|therefore|thus|hence)\b
+  | \bwhy\s+is\b
+  | \bhow\s+(?:did|can|could|do|does)\s+you\b
+  | \b(?:but|earlier)\s+you\s+(?:just\s+)?said\b
+  | \bthat\s+means\b | \bdoes\s?n[o']?t\s+that\s+mean\b
+  | \bdoes\s?n[o']?t\s+add\s+up\b | \bmakes?\s+no\s+sense\b
+  | \b(?:glitch|error|mistake)\b
+"""
+_AI_CONCRETE = r"""
+    \b(?:apple|plum|orange|banana|coin|dollar|cent|finger|hand|screw|stone|
+        pebble|marble|block|cup|chair|computer|person|people|sheep|car)s?\b
+  | \b(?:owes?|owed|borrow(?:ed)?|counts?|counting)\b
+"""
+
+
 COMMON = {
     "respect": ("please", "thank", "appreciate", "respect", "understand", "sorry", "请", "谢谢", "理解", "尊重", "抱歉", "感謝", "すみません", "ありがとう", "por favor", "obrigad"),
     "accountability": ("my fault", "i was wrong", "responsibility", "no excuse", "我的错", "我错了", "责任", "不找借口", "責任", "私の責任", "mi culpa", "responsabilidad"),
@@ -75,14 +119,17 @@ def decompose(message: str, scenario: str) -> dict:
     if len(text) >= 45 or re.search(r"\b\d+(?:\.\d+)?(?:%|\s*(?:dollars?|days?|months?|years?))?\b", text, re.I):
         signals.add("evidence")
     if scenario == "ai":
-        if (re.search(r"\d+\s*(?:\+|\-|[x×*]|乘|加|减)\s*[（(]?\s*\d+", text, re.I)
+        if (_hasre(text, _AI_ARITHMETIC)
                 or _has(text, "2+2", "2 + 2", "1+1+1+1", "1 + 1 + 1 + 1", "二加二", "二加二等于")):
             signals.add("arithmetic")
-        if _has(text, "(1+1)+(1+1)", "（1+1）+（1+1）", "2×(1+1)", "2乘（1+1", "same as", "等於", "等于", "equivalent", "总共", "一共"):
+        if (_hasre(text, _AI_EQUIVALENCE)
+                or _has(text, "(1+1)+(1+1)", "（1+1）+（1+1）", "2×(1+1)", "2乘（1+1", "等於", "等于", "总共", "一共")):
             signals.add("equivalence")
-        if _has(text, "contradiction", "inconsistent", "then why", "so why", "why is", "那为何", "那為何", "为什么", "為什麼", "所以", "矛盾", "自相矛盾", "おかしい"):
+        if (_hasre(text, _AI_CONTRADICTION)
+                or _has(text, "那为何", "那為何", "为什么", "為什麼", "所以", "矛盾", "自相矛盾", "おかしい")):
             signals.add("contradiction")
-        if _has(text, "owe", "coins", "apples", "hands", "computers", "欠我", "借我", "苹果", "硬币", "手", "電腦", "电脑", "具体例子"):
+        if (_hasre(text, _AI_CONCRETE)
+                or _has(text, "欠我", "借我", "苹果", "硬币", "手", "電腦", "电脑", "具体例子")):
             signals.add("concrete_example")
     if scenario == "genie" and len(text) >= 80 and _has(text, "without", "不得", "不能", "且", "and", "同时", "except"):
         signals.add("constraints")
