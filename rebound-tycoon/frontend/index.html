@@ -196,6 +196,28 @@ window.API = window.API || window.TEL_API;
   <script src="js/copy.js?v=6"></script>
   <script src="js/audio.js?v=6"></script>
   <script src="js/stage.js?v=6"></script>
+  <!-- three's addons import the bare specifier "three"; the map points it at our vendored
+       copy so the build stays self-contained (no CDN, works offline and on portals). -->
+  <script type="importmap">
+  {"imports": {"three": "./vendor/three/three.module.min.js"}}
+  </script>
+  <!-- WebGL playfield. Loads as a module so it can fail quietly: if the import throws or
+       the GPU refuses a context, REBOUND_STAGE stays the 2D renderer and the game still
+       runs. ?flat=1 forces 2D for comparison. -->
+  <script type="module">
+    if (!/[?&]flat=1/.test(location.search)) {
+      import("./js/stage3d.js").then(function (m) {
+        var g = m.default;
+        if (!g || !g.available()) return;
+        var flat = window.REBOUND_STAGE;
+        window.REBOUND_STAGE = {
+          draw: function (c, s, o) { if (!g.draw(c, s, o)) flat.draw(c, s, o); },
+          spark: g.spark, burstCoins: g.burstCoins, spray: g.spray,
+          floatText: flat.floatText, fx: flat.fx,
+        };
+      }).catch(function () { /* keep the 2D renderer */ });
+    }
+  </script>
   <script src="js/game.js?v=6"></script>
 
 <script>
