@@ -12,7 +12,8 @@ window.REBOUND_STAGE_CANDY = (() => {
   const fx = { sparks: [], coins: [], drops: [], floats: [], t: 0 };
   const IMG = {};
   let loaded = 0, wanted = 0;
-  ["bumper_mint", "bumper_sky", "bumper_coral", "ball", "target", "flipper", "saucer", "rail"]
+  ["bumper_mint", "bumper_sky", "bumper_coral", "ball", "target", "flipper", "saucer", "rail",
+     "guard_idle", "guard_cheer", "guard_oops"]
     .forEach((n) => {
       wanted++;
       const i = new Image();
@@ -73,6 +74,32 @@ window.REBOUND_STAGE_CANDY = (() => {
     g.save(); g.translate(cx, cy); if (rot) g.rotate(rot);
     g.drawImage(img, -w / 2, -h / 2, w, h); g.restore();
     return true;
+  }
+
+  function face(g, cx, cy, r, hit) {
+    const ex = r * 0.34, ey = -r * 0.06, er = r * 0.12;
+    g.fillStyle = "#3a244e";
+    if (hit) {                                   // squint + open mouth on contact
+      g.lineWidth = er * 1.1; g.strokeStyle = "#3a244e"; g.lineCap = "round";
+      [-1, 1].forEach((s) => {
+        g.beginPath();
+        g.arc(cx + s * ex, cy + ey + er * 0.5, er * 1.5, Math.PI * 1.15, Math.PI * 1.85);
+        g.stroke();
+      });
+      g.fillStyle = "#3a244e";
+      g.beginPath(); g.ellipse(cx, cy + r * 0.34, er * 1.1, er * 1.35, 0, 0, Math.PI * 2); g.fill();
+    } else {
+      [-1, 1].forEach((s) => {
+        g.beginPath(); g.ellipse(cx + s * ex, cy + ey, er, er * 1.2, 0, 0, Math.PI * 2); g.fill();
+        g.fillStyle = "#fff"; g.beginPath();
+        g.arc(cx + s * ex - er * 0.18, cy + ey - er * 0.42, er * 0.36, 0, Math.PI * 2); g.fill();
+        g.fillStyle = "#3a244e";
+      });
+      g.lineWidth = Math.max(2, er * 0.55); g.strokeStyle = "#3a244e"; g.lineCap = "round";
+      g.beginPath(); g.arc(cx, cy + r * 0.2, er * 1.25, 0.25, Math.PI - 0.25); g.stroke();
+    }
+    g.fillStyle = "rgba(255,120,160,.45)";
+    [-1, 1].forEach((s) => { g.beginPath(); g.ellipse(cx + s * ex * 1.85, cy + er * 1.5, er * 0.9, er * 0.55, 0, 0, Math.PI * 2); g.fill(); });
   }
 
   function tickFx(dt, reduce) {
@@ -144,10 +171,22 @@ window.REBOUND_STAGE_CANDY = (() => {
     g.lineWidth = 4; g.strokeStyle = C.rimDark; g.stroke();
     g.clip();
 
-    g.strokeStyle = "rgba(255,212,77,.22)"; g.lineWidth = 6;
+    g.strokeStyle = "rgba(255,212,77,.18)"; g.lineWidth = 6;
     for (let i = 1; i <= 4; i++) {
       g.beginPath(); g.arc(px(0.46, w), py(0.46, h), px(0.075 * i, w), 0, Math.PI * 2); g.stroke();
     }
+    // confetti + stars scattered on the cloth so the board is not an empty slab
+    DECO.stars.forEach((s2, i) => {
+      if (i % 3) return;
+      g.globalAlpha = 0.5;
+      star(g, px(0.1 + s2.x * 0.72, w), py(0.1 + s2.y * 0.78, h), s2.r * 1.5, i % 2 ? "#ffd44d" : "#7de8ff");
+    });
+    DECO.bokeh.forEach((b, i) => {
+      if (i % 2) return;
+      g.globalAlpha = 0.14; g.fillStyle = "#ffd6ef";
+      g.beginPath(); g.arc(px(0.12 + b.x * 0.7, w), py(0.1 + b.y * 0.8, h), b.r * w * 0.5, 0, Math.PI * 2); g.fill();
+    });
+    g.globalAlpha = 1;
 
     g.strokeStyle = "#7de8ff"; g.lineWidth = 13; g.lineCap = "round";
     (K.WALLS || []).forEach((wl) => {
@@ -173,7 +212,9 @@ window.REBOUND_STAGE_CANDY = (() => {
     (K.BUMPERS || []).forEach((b, i) => {
       const flash = (state.bumperFlash && state.bumperFlash[i]) || 0;
       const scale = 1 + Math.min(flash, 0.14) * 1.6;
-      if (!sprite(g, IMG[BUMP[i % BUMP.length]], px(b.x, w), py(b.y, h), px(b.r * 2.9, w) * scale)) {
+      const drawn = sprite(g, IMG[BUMP[i % BUMP.length]], px(b.x, w), py(b.y, h), px(b.r * 2.9, w) * scale);
+      if (drawn) face(g, px(b.x, w), py(b.y - b.r * 0.18, h), px(b.r, w) * scale, flash > 0);
+      if (!drawn) {
         g.fillStyle = flash > 0 ? C.lemon : C.mint;
         g.beginPath(); g.arc(px(b.x, w), py(b.y, h), px(b.r, w), 0, Math.PI * 2); g.fill();
       }
@@ -190,6 +231,10 @@ window.REBOUND_STAGE_CANDY = (() => {
     if (state.ball) {
       sprite(g, IMG.ball, px(state.ball.x, w), py(state.ball.y, h), px((K.REBOUND?.BALL_R ?? 0.018) * 2.6, w));
     }
+
+    const mood = state.mode === "drain" ? "guard_oops"
+               : (state.combo || 0) >= 2 ? "guard_cheer" : "guard_idle";
+    sprite(g, IMG[mood], px(0.465, w), py(0.945, h), px(0.115, w));
 
     if (state.mode === "plunge") {
       g.fillStyle = "#ffe9a8"; g.font = "800 16px ui-rounded, ui-sans-serif, system-ui";
