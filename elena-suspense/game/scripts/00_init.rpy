@@ -68,6 +68,13 @@ image cg annex = "images/cgs/cg_annex.webp"
 image cg muniment = "images/cgs/cg_muniment.webp"
 image cg aftermath = "images/cgs/cg_aftermath.webp"
 
+## One new scene per chapter. Chapters 3-5 previously re-showed the chapter-1 CGs, so
+## paying an ad to unlock them bought nothing new — which is where players stopped.
+image cg ch2_office = "images/cgs/cg_ch2_office.webp"
+image cg ch3_crypt = "images/cgs/cg_ch3_crypt.webp"
+image cg ch4_chapel = "images/cgs/cg_ch4_chapel.webp"
+image cg ch5_muniment = "images/cgs/cg_ch5_muniment.webp"
+
 ## Blurred teasers shown on the demo paywall
 image cg_locked_climax_control = "images/cgs/cg_climax_control_locked.webp"
 image cg_locked_climax_pact = "images/cgs/cg_climax_pact_locked.webp"

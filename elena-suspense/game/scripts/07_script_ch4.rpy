@@ -170,9 +170,8 @@ label chapter_4:
         elena "I want it on paper, then. Properly. Write it."
         narrator "She puts a sheet in front of you. You write it: {i}Miss Ashcombe acted on my instruction at all times.{/i} You sign it. Your own hand."
         narrator "She reads it twice, folds it into her blouse, and then takes the blouse off."
-        $ unlock_cg("cg_climax_control")
-        call cg_gate("climax_control")
-        scene expression cg_pick("climax_control") at night_deep
+        $ unlock_cg("cg_ch4_chapel")
+        scene expression cg_pick("ch4_chapel") at night_deep
         with dissolve
         narrator "There is nothing slow about it tonight. She wants to be held down and she says so, and you do, wrists above her head on the desk, the folded paper somewhere under her shoulder."
         narrator "She keeps her eyes open the whole time. When you slow down she says {i}on my instruction{/i} in your own voice and laughs, and you stop being gentle, and she stops laughing."
@@ -186,9 +185,8 @@ label chapter_4:
         elena "Maybe it was."
         protagonist "Maybe. Everyone in that ledger thought they were paying a subscription."
         narrator "She takes off her glasses and puts them on a shelf between two books she has already decided she does not approve of."
-        $ unlock_cg("cg_climax_pact")
-        call cg_gate("climax_pact")
-        scene expression cg_pick("climax_pact")
+        $ unlock_cg("cg_ch4_chapel")
+        scene expression cg_pick("ch4_chapel")
         with dissolve
         narrator "A bed, for once. Sheets. She finds it funny and then does not."
         narrator "She is different lying down, without a crate or a desk to fight. She lets you take your time. She lets you look. She talks, low, the whole way through, about nothing, about the shelf, about the rain, until the talking turns into your name and then into nothing at all."
@@ -201,9 +199,8 @@ label chapter_4:
         elena "You are the first faculty member to stand in this room. If anyone sees you leave I lose my funding."
         protagonist "Then I will not leave."
         elena "That was the idea."
-        $ unlock_cg("cg_climax_pact")
-        call cg_gate("climax_pact")
-        scene expression cg_pick("climax_pact") at crypt_tint
+        $ unlock_cg("cg_ch4_chapel")
+        scene expression cg_pick("ch4_chapel") at crypt_tint
         with dissolve
         narrator "A single bed. Neither of you fits. You make it work, on your side, her back against your chest, your hand between her legs while she reads you the strongroom inventory from her phone in a whisper until she cannot."
         narrator "She turns over. What follows is careful because the walls are thin and fierce because they are, her mouth against your shoulder, yours in her hair, the bed complaining."

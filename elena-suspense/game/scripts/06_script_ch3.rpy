@@ -138,14 +138,12 @@ label chapter_3:
 
     $ tel_track("ch3_climax", {"ending": chosen_ending})
     if chosen_ending == "control":
-        $ unlock_cg("cg_climax_control")
-        call cg_gate("climax_control")
-        scene expression cg_pick("climax_control") at ritual_tint
+        $ unlock_cg("cg_ch3_crypt")
+        scene expression cg_pick("ch3_crypt") at ritual_tint
         with dissolve
     else:
-        $ unlock_cg("cg_climax_pact")
-        call cg_gate("climax_pact")
-        scene expression cg_pick("climax_pact") at ritual_tint
+        $ unlock_cg("cg_ch3_crypt")
+        scene expression cg_pick("ch3_crypt") at ritual_tint
         with dissolve
 
     if chosen_ending == "walk_away":

@@ -194,9 +194,8 @@ label chapter_2:
         elena "This is what you meant. Every evening. In here."
         protagonist "Only if you want it to be."
         elena "I have decided what I want. I decided at the loading dock, watching you shake."
-        $ unlock_cg("cg_climax_control")
-        call cg_gate("climax_control")
-        scene expression cg_pick("climax_control") at night_deep
+        $ unlock_cg("cg_ch2_office")
+        scene expression cg_pick("ch2_office") at night_deep
         with dissolve
         narrator "She takes the key out of your pocket herself and puts it on the desk where you can both see it, and then she undoes your belt."
         narrator "No ledger this time. Nothing between you but the fact that she could pick the key up and leave, and does not."
@@ -220,9 +219,8 @@ label chapter_2:
         elena "I have not slept. I have not eaten. I have committed two crimes before nine in the morning with a man whose handwriting ruined my father."
         protagonist "And?"
         elena "And I have never felt this awake in my life."
-        $ unlock_cg("cg_climax_pact")
-        call cg_gate("climax_pact")
-        scene expression cg_pick("climax_pact") at crypt_tint
+        $ unlock_cg("cg_ch2_office")
+        scene expression cg_pick("ch2_office") at crypt_tint
         with dissolve
         narrator "On the crate, in the coal dust, with the door propped open on a brick and the rain coming in sideways."
         narrator "She is quick and fierce about it, as if the cold were a clock. She pushes you back and climbs onto you and holds your wrists against the lid, and laughs when the crate creaks, and does not stop."

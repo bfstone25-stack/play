@@ -43,12 +43,36 @@ init -1 python:
                 persistent.telemetry_pid = _jspid
         except Exception:
             pass
+    def _tel_is_test():
+        """Our own QA runs must be separable in the data.
+
+        The page SDK already prefixes headless sessions with bot_, but the Ren'Py client
+        mints its own player id, so our screenshot passes looked like real people in the
+        telemetry — which is how an argument about who generated which ad impression
+        became unanswerable."""
+        if not getattr(renpy, "emscripten", False):
+            return False
+        try:
+            import emscripten
+            return emscripten.run_script_string(
+                "(function(){var q=new URLSearchParams(location.search);"
+                "if(q.get('warp'))return '1';"
+                "var s=(q.get('src')||'').toLowerCase();"
+                "if(/shot|test|probe|selftest|livecheck/.test(s))return '1';"
+                "if(navigator.webdriver)return '1';"
+                "if(location.hostname==='localhost'||location.hostname==='127.0.0.1')return '1';"
+                "return '';})()") == "1"
+        except Exception:
+            return False
+
     if persistent.telemetry_pid is None:
         persistent.telemetry_pid = "e" + uuid.uuid4().hex[:12]
 
     # Per-launch session id (not persisted across restarts).
     if not hasattr(store, "_tel_sid") or not store._tel_sid:
-        store._tel_sid = "s" + uuid.uuid4().hex[:12]
+        store._tel_sid = ("bot_s" if _tel_is_test() else "s") + uuid.uuid4().hex[:12]
+    if _tel_is_test() and not str(persistent.telemetry_pid or "").startswith("bot_"):
+        persistent.telemetry_pid = "bot_%s" % (persistent.telemetry_pid or uuid.uuid4().hex[:12])
 
     store._tel_queue = []
     store._tel_lock = threading.Lock()

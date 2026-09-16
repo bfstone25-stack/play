@@ -130,9 +130,8 @@ label ch5_ending_rewrite:
     narrator "Penhallow leaves. He does not slam the door; men like him never do. The stair takes him up and out and, over the next eighteen months, out of the board, the wing, and the town."
 
     $ tel_track("ch5_climax", {"ending": "rewrite"})
-    $ unlock_cg("cg_climax_pact")
-    call cg_gate("climax_pact")
-    scene expression cg_pick("climax_pact") at dawn_tint
+    $ unlock_cg("cg_ch5_muniment")
+    scene expression cg_pick("ch5_muniment") at dawn_tint
     with dissolve
 
     narrator "The muniment room, later. The Dean gone up. The lamp still on. Sixty volumes and the two of you."
@@ -175,9 +174,8 @@ label ch5_ending_expose:
     narrator "The Dean retires early, in November, and writes you a letter you do not show anyone. It is two lines long. The second line is {i}Thank you.{/i}"
 
     $ tel_track("ch5_climax", {"ending": "expose"})
-    $ unlock_cg("cg_climax_control")
-    call cg_gate("climax_control")
-    scene expression cg_pick("climax_control") at night_deep
+    $ unlock_cg("cg_ch5_muniment")
+    scene expression cg_pick("ch5_muniment") at night_deep
     with dissolve
 
     narrator "The night the story runs. Your flat. The phone finally off."
@@ -219,9 +217,8 @@ label ch5_ending_abscond:
     narrator "You are not archivists any more by the time you reach the car. You are two people with two books and nowhere in particular to be."
 
     $ tel_track("ch5_climax", {"ending": "abscond"})
-    $ unlock_cg("cg_climax_pact")
-    call cg_gate("climax_pact")
-    scene expression cg_pick("climax_pact") at crypt_tint
+    $ unlock_cg("cg_ch5_muniment")
+    scene expression cg_pick("ch5_muniment") at crypt_tint
     with dissolve
 
     narrator "A hotel outside the town, the kind with a car park and no questions. The ledgers on the chair. The rain on the window."
