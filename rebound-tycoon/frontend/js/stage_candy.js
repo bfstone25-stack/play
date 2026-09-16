@@ -12,6 +12,8 @@ window.REBOUND_STAGE_CANDY = (() => {
   const fx = { sparks: [], coins: [], drops: [], floats: [], t: 0 };
   const IMG = {};
   let loaded = 0, wanted = 0;
+  const BACKDROP = new Image();
+  BACKDROP.src = "assets/candy/backdrop.jpg";
   ["bumper_mint", "bumper_sky", "bumper_coral", "ball", "target", "flipper", "saucer", "rail",
      "guard_idle", "guard_cheer", "guard_oops"]
     .forEach((n) => {
@@ -68,9 +70,21 @@ window.REBOUND_STAGE_CANDY = (() => {
   }
   const px = (v, w) => v * w, py = (v, h) => v * h;
 
-  function sprite(g, img, cx, cy, w, rot) {
+  function shadow(g, cx, cy, w, squash) {
+    g.save();
+    g.globalAlpha = 0.30;
+    g.fillStyle = "#1a0d2e";
+    g.beginPath();
+    g.ellipse(cx, cy + w * 0.30, w * 0.42, w * 0.42 * (squash || 0.34), 0, 0, Math.PI * 2);
+    g.filter = "blur(4px)";
+    g.fill();
+    g.restore();
+  }
+
+  function sprite(g, img, cx, cy, w, rot, cast) {
     if (!img || !img.complete || !img.naturalWidth) return false;
     const h = w * (img.naturalHeight / img.naturalWidth);
+    if (cast !== false) shadow(g, cx, cy, w);
     g.save(); g.translate(cx, cy); if (rot) g.rotate(rot);
     g.drawImage(img, -w / 2, -h / 2, w, h); g.restore();
     return true;
@@ -122,20 +136,23 @@ window.REBOUND_STAGE_CANDY = (() => {
     tickFx(opts.dt || 0.016, opts.reduce);
     const K = globalThis;
 
-    const bg = g.createLinearGradient(0, 0, 0, h);
-    bg.addColorStop(0, C.sky[0]); bg.addColorStop(0.55, C.sky[1]); bg.addColorStop(1, C.sky[2]);
-    g.fillStyle = bg; g.fillRect(0, 0, w, h);
-
-    DECO.bokeh.forEach((b) => {
-      g.globalAlpha = b.a; g.fillStyle = "#ffffff";
-      g.beginPath(); g.arc(b.x * w, b.y * h, b.r * w, 0, Math.PI * 2); g.fill();
-    });
-    g.globalAlpha = 1;
-    DECO.clouds.forEach((c) => puff(g, c.x * w, c.y * h, c.r * w, c.a * 0.5));
-    DECO.stars.forEach((s2) => {
-      const tw = 0.45 + 0.55 * Math.abs(Math.sin(fx.t * 1.4 + s2.ph));
-      g.globalAlpha = tw * 0.85;
-      star(g, s2.x * w, s2.y * h, s2.r, "#fffdf4");
+    if (BACKDROP.complete && BACKDROP.naturalWidth) {
+      // cover-fit the rendered plate so it never letterboxes
+      const ar = BACKDROP.naturalWidth / BACKDROP.naturalHeight, ca = w / h;
+      let dw = w, dh = h;
+      if (ca > ar) dh = w / ar; else dw = h * ar;
+      g.drawImage(BACKDROP, (w - dw) / 2, (h - dh) / 2, dw, dh);
+    } else {
+      const bg = g.createLinearGradient(0, 0, 0, h);
+      bg.addColorStop(0, C.sky[0]); bg.addColorStop(0.55, C.sky[1]); bg.addColorStop(1, C.sky[2]);
+      g.fillStyle = bg; g.fillRect(0, 0, w, h);
+    }
+    // a few twinkles still animate on top - the plate is static
+    DECO.stars.forEach((s2, i) => {
+      if (i % 4) return;
+      const tw = 0.4 + 0.6 * Math.abs(Math.sin(fx.t * 1.6 + s2.ph));
+      g.globalAlpha = tw * 0.8;
+      star(g, s2.x * w, s2.y * h, s2.r * 1.1, "#fffdf4");
     });
     g.globalAlpha = 1;
 
