@@ -13,7 +13,10 @@
 ## two gates emit the same telemetry so they can be compared.
 
 init -2 python:
-    GATED_CGS = ("climax_control", "climax_pact", "coal_store", "annex", "muniment", "aftermath")
+    # Only the two love scenes are censored before unlocking. The other CGs live in chapters
+    # that are already behind the chapter gate, and calling a story illustration "uncensored"
+    # promised something it never delivered — which is the likeliest reason 75 plays bought nothing.
+    GATED_CGS = ("climax_control", "climax_pact")
 
     def _js_str(code):
         try:
@@ -99,6 +102,27 @@ init -2 python:
             tel_cta_click("itch_buy_cg")
         tel_flush(True)
 
+    def _is_test_run():
+        """True for our own screenshot/QA passes.
+
+        Our test runs opened the Adsterra direct link three times on 2026-09-15 and those
+        were indistinguishable from players at the ad network. They are distinguishable
+        here, so the sponsor step becomes a no-op instead."""
+        if not getattr(renpy, "emscripten", False):
+            return False
+        try:
+            probe = _js_str(
+                "(function(){var q=new URLSearchParams(location.search);"
+                "if(q.get('warp'))return '1';"
+                "var s=(q.get('src')||'').toLowerCase();"
+                "if(/shot|test|probe|selftest|livecheck/.test(s))return '1';"
+                "if(navigator.webdriver)return '1';"
+                "if(location.hostname==='localhost'||location.hostname==='127.0.0.1')return '1';"
+                "return '';})()")
+            return probe == "1"
+        except Exception:
+            return False
+
     def direct_link_open(key):
         """Open the sponsor page in a new tab and start the unlock timer.
 
@@ -107,6 +131,10 @@ init -2 python:
         tel_track("directlink_open", {"key": key, "dist": elena_dist()})
         tel_flush(True)
         store._dl_started = __import__("time").time()
+        if _is_test_run():
+            # QA path: the timer still runs, the sponsor page is never opened.
+            tel_track("directlink_test_noop", {"key": key})
+            return
         if getattr(renpy, "emscripten", False):
             _js("window.open(%r, '_blank')" % DIRECT_LINK_URL)
         else:

@@ -8,6 +8,20 @@
 //
 // No popunders, ever: they get the itch page reported and they teach players to
 // leave. The gate is a timed banner/native unit the player looks at on purpose.
+  // Test runs must never touch the sponsor network: our own screenshot passes were
+  // counted as real ad traffic on 2026-09-15 until this existed.
+  function isTestRun() {
+    try {
+      var q = new URLSearchParams(location.search);
+      if (q.get("warp")) return true;
+      var s = (q.get("src") || "").toLowerCase();
+      if (/shot|test|probe|selftest|livecheck|flowshot|gateshot/.test(s)) return true;
+      if (navigator.webdriver) return true;
+      if (location.hostname === "localhost" || location.hostname === "127.0.0.1") return true;
+    } catch (e) {}
+    return false;
+  }
+
 (function () {
   if (window.ElenaAds) return;
   var SECONDS = window.ELENA_AD_SECONDS || 30;
