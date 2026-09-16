@@ -111,6 +111,8 @@ screen end_screen():
                 text_size 20 text_color "#d9a86b" xalign 0.5
                 background Transform("#24202e", alpha=0.92)
                 padding (18, 12, 18, 12)
+        null height 18
+        use cross_promo
         null height 14
         text _("Artwork is AI-assisted. Writing is not. Both are disclosed on every store page.") size 17 color "#8d8f9b" xalign 0.5
         text _("Flat 404") size 17 color "#8d8f9b" xalign 0.5
@@ -166,6 +168,8 @@ screen demo_paywall_screen():
                 padding (18, 12, 18, 12)
         null height 12
         text _("Prefer free? The ad-supported web edition unlocks everything with short sponsor clips.") size 18 color "#8d8f9b" xalign 0.5
+        null height 16
+        use cross_promo
 
 label demo_paywall:
     stop music fadeout 2.0
