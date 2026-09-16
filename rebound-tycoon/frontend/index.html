@@ -196,6 +196,16 @@ window.API = window.API || window.TEL_API;
   <script src="js/copy.js?v=6"></script>
   <script src="js/audio.js?v=6"></script>
   <script src="js/stage.js?v=6"></script>
+  <script src="js/stage_candy.js?v=1"></script>
+  <!-- The candy sprite renderer is the portal-facing look. ?classic=1 keeps the original
+       dark vector stage; the 2D fallback below it never goes away. -->
+  <script>
+    if (!/[?&]classic=1/.test(location.search) && window.REBOUND_STAGE_CANDY) {
+      var _flat = window.REBOUND_STAGE;
+      window.REBOUND_STAGE = window.REBOUND_STAGE_CANDY;
+      window.REBOUND_STAGE_CLASSIC = _flat;
+    }
+  </script>
   <!-- three's addons import the bare specifier "three"; the map points it at our vendored
        copy so the build stays self-contained (no CDN, works offline and on portals). -->
   <script type="importmap">
@@ -205,7 +215,7 @@ window.API = window.API || window.TEL_API;
        the GPU refuses a context, REBOUND_STAGE stays the 2D renderer and the game still
        runs. ?flat=1 forces 2D for comparison. -->
   <script type="module">
-    if (!/[?&]flat=1/.test(location.search)) {
+    if (/[?&]webgl=1/.test(location.search)) {
       import("./js/stage3d.js").then(function (m) {
         var g = m.default;
         if (!g || !g.available()) return;
