@@ -13,6 +13,7 @@ import { EffectComposer } from "../vendor/three/addons/postprocessing/EffectComp
 import { RenderPass } from "../vendor/three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "../vendor/three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "../vendor/three/addons/postprocessing/OutputPass.js";
+import { GLTFLoader } from "../vendor/three/addons/loaders/GLTFLoader.js";
 
 const W = 10, D = 13;                       // playfield size in world units
 const X = (x) => (x - 0.5) * W;
@@ -26,6 +27,72 @@ let ballMesh, flipL, flipR, saucerRing, plungerMesh, hintSprite;
 const bumperMeshes = [], targetMeshes = [], skyline = [];
 const particles = [];
 let ready = false, failed = false, lastW = 0, lastH = 0;
+const KIT = {};                       // name -> THREE.Object3D prototype, once loaded
+let kitLoaded = false;
+
+function loadKit() {
+  const loader = new GLTFLoader();
+  const names = ["bumper", "target", "flipper", "rail", "saucer", "ball"];
+  let left = names.length;
+  names.forEach((n) => {
+    loader.load("assets3d/" + n + ".glb", (g) => {
+      KIT[n] = g.scene;
+      if (--left === 0) { kitLoaded = true; applyKit(); }
+    }, undefined, () => { if (--left === 0) { kitLoaded = true; applyKit(); } });
+  });
+}
+
+function swapIn(target, protoName, fit) {
+  const proto = KIT[protoName];
+  if (!proto || !target) return;
+  const inst = proto.clone(true);
+  inst.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.material = o.material.clone(); } });
+  const box = new THREE.Box3().setFromObject(inst);
+  const size = new THREE.Vector3(); box.getSize(size);
+  const s = fit / Math.max(size.x, size.z, 0.0001);
+  inst.scale.setScalar(s);
+  target.clear();
+  target.add(inst);
+  return inst;
+}
+
+function applyKit() {
+  const K = globalThis;
+  (K.BUMPERS || []).forEach((b, i) => {
+    const g = bumperMeshes[i]; if (!g) return;
+    const inst = swapIn(g, "bumper", R(b.r) * 2.1);
+    if (inst) {
+      let cap = null;
+      inst.traverse((o) => { if (o.isMesh && /cap/i.test(o.material.name || "")) cap = o; });
+      g.userData.cap = cap || g.userData.cap;
+    }
+  });
+  (K.TARGETS || []).forEach((t2, i) => {
+    const m = targetMeshes[i]; if (!m) return;
+    const holder = new THREE.Group();
+    holder.position.copy(m.position); holder.rotation.copy(m.rotation);
+    scene.remove(m); scene.add(holder);
+    swapIn(holder, "target", R(t2.w) * 1.15);
+    targetMeshes[i] = holder;
+  });
+  [flipL, flipR].forEach((f) => {
+    if (!f) return;
+    const inst = swapIn(f, "flipper", R(K.REBOUND?.FLIP_LEN ?? 0.115) * 1.0);
+    if (!inst) return;
+    const bb = new THREE.Box3().setFromObject(inst);
+    inst.position.x -= bb.min.x;            // pivot sits at the group origin
+    inst.traverse((o) => {
+      if (o.isMesh && o.material && o.material.emissiveIntensity > 0.4) o.material.emissiveIntensity = 0.35;
+    });
+  });
+  if (ballMesh) {
+    const holder = new THREE.Group();
+    holder.position.copy(ballMesh.position);
+    scene.remove(ballMesh); scene.add(holder);
+    swapIn(holder, "ball", R(K.REBOUND?.BALL_R ?? 0.018) * 2);
+    ballMesh = holder;
+  }
+}
 
 function mat(color, opts = {}) {
   return new THREE.MeshStandardMaterial({
@@ -177,6 +244,7 @@ function build() {
   scene.add(plungerMesh);
 
   clock = new THREE.Clock();
+  loadKit();
 }
 
 function ensure(canvas) {
@@ -264,6 +332,7 @@ function draw(canvas, state, opts) {
   bumperMeshes.forEach((g, i) => {
     const flash = (state.bumperFlash && state.bumperFlash[i]) || 0;
     const cap = g.userData.cap;
+    if (!cap || !cap.material) return;
     cap.material.emissiveIntensity = 0.55 + flash * 7;
     cap.material.color.setHex(flash > 0 ? HOT : CYAN);
     g.scale.setScalar(1 + Math.min(flash, 0.12) * 1.2);
@@ -273,7 +342,7 @@ function draw(canvas, state, opts) {
     const down = state.targetDown && state.targetDown[i];
     m.rotation.x = down ? -Math.PI / 2.4 : 0;
     m.position.y = down ? 0.06 : 0.23;
-    m.material.emissiveIntensity = down ? 0.05 : 0.45;
+    if (m.material) m.material.emissiveIntensity = down ? 0.05 : 0.45;
   });
 
   if (flipL) flipL.rotation.y = -(state.flipL || 0);
