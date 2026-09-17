@@ -384,7 +384,9 @@ label cg_gate(name):
     if name not in GATED_CGS or dist_track() == "paid" or is_ad_unlocked("cg_" + name):
         return
     $ tel_track("paywall_seen", {"key": "cg_" + name, "dist": dist_track()})
-    if dist_track() in ("itch_web", "offline_ads", "ads_web", "demo"):
+    # ads_web is our own domain: the banner plays in place (the menu below). Routing it
+    # through the buy prompt sent players to "our site" from our site.
+    if dist_track() in ("itch_web", "offline_ads", "demo"):
         call screen cg_buy_screen(name)
         if _return == "directlink":
             $ direct_link_open("cg_" + name)
