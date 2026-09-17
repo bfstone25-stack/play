@@ -134,6 +134,12 @@ window.API = window.API || window.TEL_API;
   <script src="js/landlord.js"></script><script>window.GATE_CONFIG={directLink:"https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9",directLinkSeconds:20,price:"$1.99",buyUrl:"https://bfstone25-stack.itch.io/office-landlord/purchase"};</script><script src="gate.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/icons.js"></script>
+  <!-- Cross-promotion back to the adult titles. The flag is decided by hostname rather
+       than by the build, so a copy of this folder handed to a portal (CrazyGames) or
+       embedded on itch can never show it, however it got there. Our own domains only. -->
+  <script>window.PROMO_ADULT_OK = /(^|\.)blazecore\.dev$|(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+          window.PROMO_FROM = "office-landlord";</script>
+  <script src="promo.js"></script>
   <script src="js/game.js"></script>
 
 <script>
