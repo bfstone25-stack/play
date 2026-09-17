@@ -3,7 +3,7 @@
 ## One build, three behaviours, decided at runtime so itch and Cloudflare Pages ship the
 ## same files:
 ##   paid      desktop downloads: everything open.
-##   itch_web  itch.io browser play: chapter 1 free, climax CGs censored, then the $2.99 gate.
+##   itch_web  itch.io browser play: chapter 1 free, climax CGs censored, then the $2.49 gate.
 ##   ads_web   Cloudflare Pages: every unlock — next chapter, uncensored CG — costs one
 ##             sponsor clip. The page's index.html sets window.ROOM704_DIST and loads
 ##             web/room704_ads.js, which draws the ad overlay and reports back.
@@ -46,18 +46,105 @@ init -2 python:
             # F95 — whose rules demand an offline-playable build — ships with game/dist.txt
             # saying offline_ads: chapters 2-5 and the uncensored CGs unlock through the
             # Adsterra Direct Link, opened in the player's browser by their own click.
-            if getattr(store, "_elena_dist", None) is None:
+            if getattr(store, "_r704_dist", None) is None:
                 try:
                     store._r704_dist = renpy.file("dist.txt").read().decode("utf-8").strip() if renpy.loadable("dist.txt") else "paid"
                 except Exception:
                     store._r704_dist = "paid"
-                if store._r704_dist not in ("paid", "offline_ads"):
+                # "demo" is the build shared on forums whose rules forbid gating content
+                # behind a promotional link (F95 general rules §3). It has no ad gate at
+                # all: act one is free, the rest points at the paid download.
+                if store._r704_dist not in ("paid", "offline_ads", "demo"):
                     store._r704_dist = "paid"
             return store._r704_dist
-        if getattr(store, "_elena_dist", None) is None:
+        if getattr(store, "_r704_dist", None) is None:
             d = _js_str("(window.ROOM704_DIST || 'itch_web')")
             store._r704_dist = d if d in ("itch_web", "ads_web", "paid") else "itch_web"
         return store._r704_dist
+
+
+    # ---- server-gated art -------------------------------------------------
+    # The uncensored CGs are not in the free packages at all. Completing a gate buys a
+    # single-use, time-locked ticket; the bytes arrive from the gateway and are written to
+    # the save directory for this install only. Editing a flag reveals nothing, because
+    # there is nothing in the package to reveal.
+    UNLOCK_API = "https://apps.blazecore.dev"
+
+    def _gated_dir():
+        import os
+        d = os.path.join(config.savedir, "unlocked")
+        try:
+            if not os.path.isdir(d):
+                os.makedirs(d)
+            if d not in config.searchpath:
+                config.searchpath.append(d)
+        except Exception:
+            pass
+        return d
+
+    def _gated_name(name):
+        return "unlocked_%s.webp" % name
+
+    def _gated_path(name):
+        import os
+        try:
+            return os.path.join(_gated_dir(), _gated_name(name))
+        except Exception:
+            return None
+
+    def gated_ready(name):
+        import os
+        p = _gated_path(name)
+        return bool(p and os.path.isfile(p) and os.path.getsize(p) > 1024)
+
+    def _http_json(url, payload):
+        body = __import__("json").dumps(payload).encode()
+        if getattr(renpy, "emscripten", False):
+            r = renpy.fetch(url, method="POST", data=body, content_type="application/json", result="json", timeout=15)
+            return r
+        import urllib.request
+        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return __import__("json").loads(resp.read().decode())
+
+    def _http_bytes(url):
+        if getattr(renpy, "emscripten", False):
+            return renpy.fetch(url, result="bytes", timeout=25)
+        import urllib.request
+        with urllib.request.urlopen(url, timeout=25) as resp:
+            return resp.read()
+
+    def gated_ticket(name):
+        """Ask for a ticket when the gate opens, so the server clock starts with the ad."""
+        try:
+            d = _http_json(UNLOCK_API + "/unlock/start", {"app": "room704", "key": name})
+            if d and d.get("ok"):
+                store._gate_ticket = {"name": name, "ticket": d["ticket"]}
+                return True
+        except Exception:
+            pass
+        store._gate_ticket = None
+        return False
+
+    def gated_redeem(name):
+        """Spend the ticket after the gate completes. Returns True if the art landed."""
+        tk = getattr(store, "_gate_ticket", None)
+        if not tk or tk.get("name") != name:
+            return gated_ready(name)
+        try:
+            url = "%s/unlock/fetch?ticket=%s&app=room704&key=%s" % (UNLOCK_API, tk["ticket"], name)
+            data = _http_bytes(url)
+            if data and len(data) > 1024:
+                p = _gated_path(name)
+                if p:
+                    with open(p, "wb") as f:
+                        f.write(data)
+                    _gated_dir()
+                    tel_track("unlock_delivered", {"key": name, "bytes": len(data)})
+                    return True
+        except Exception as exc:
+            tel_track("unlock_failed", {"key": name, "err": type(exc).__name__})
+        return False
 
     def _ad_unlocks():
         if persistent.ad_unlocks is None:
@@ -75,23 +162,40 @@ init -2 python:
         return False
 
     def cg_pick(name):
-        """Image to show for a climax CG under the current track."""
-        if name not in GATED_CGS or dist_track() == "paid" or is_ad_unlocked("cg_" + name):
+        """Image to show for a gated CG under the current track.
+
+        The uncensored files exist only in the paid package, so this checks for the file
+        rather than assuming a declared image: the free builds genuinely do not have them."""
+        if name not in GATED_CGS:
             return "cg " + name
-        # The locked teasers are 480x270 thumbnails made for the paywall strip; on the
-        # 1920x1080 stage they need scaling up (they are blurred, so nothing is lost).
-        return Transform("cg_locked_" + name, zoom=4.0)
+        paid_file = "images/cgs/cg_%s_x.webp" % name
+        if dist_track() == "paid" and renpy.loadable(paid_file):
+            return Image(paid_file)
+        if gated_ready(name):
+            _gated_dir()
+            return Image(_gated_name(name))
+        # The censored plates are 960x540; scale to the stage.
+        return Transform("cg_locked_" + name, zoom=2.0)
 
     def ad_gate_open(key, kind):
+        if kind == "cg":
+            gated_ticket(key[3:] if key.startswith("cg_") else key)
         tel_track("ad_prompt_shown", {"key": key, "kind": kind, "dist": dist_track()})
         tel_flush(True)
         _js("window.Room704Ads && window.Room704Ads.open(%r, %r)" % (key, kind))
 
-    def ad_gate_poll():
-        # 0 pending, 1 completed, 2 abandoned; a page without elena_ads.js (dev, or the
-        # script failed to load) must never brick the story, so it counts as completed.
+    AD_SCRIPT_GRACE = 8   # seconds to wait for room704_ads.js before calling the sponsor unavailable
+
+    def ad_gate_poll(started=None):
+        # 0 pending, 1 completed, 2 abandoned, 3 sponsor unavailable. A missing script used
+        # to count as *completed*, which opened every gate whenever the script was blocked
+        # or not shipped. Now it is a timed "unavailable" that the telemetry can see.
+        import time
         if not _js_int("window.Room704Ads ? 1 : 0"):
-            return 1
+            if started is not None and time.time() - started >= AD_SCRIPT_GRACE + DIRECT_LINK_SECONDS:
+                tel_track("ad_script_missing", {"dist": dist_track()})
+                return 3
+            return 0
         return _js_int("window.Room704Ads.result()")
 
     def cg_buy_decide(name, what, t0):
@@ -102,6 +206,27 @@ init -2 python:
             tel_cta_click("itch_buy_cg")
         tel_flush(True)
 
+    def _is_test_run():
+        """True for our own screenshot/QA passes.
+
+        Our test runs opened the Adsterra direct link three times on 2026-09-15 and those
+        were indistinguishable from players at the ad network. They are distinguishable
+        here, so the sponsor step becomes a no-op instead."""
+        if not getattr(renpy, "emscripten", False):
+            return False
+        try:
+            probe = _js_str(
+                "(function(){var q=new URLSearchParams(location.search);"
+                "if(q.get('warp'))return '1';"
+                "var s=(q.get('src')||'').toLowerCase();"
+                "if(/shot|test|probe|selftest|livecheck/.test(s))return '1';"
+                "if(navigator.webdriver)return '1';"
+                "if(location.hostname==='localhost'||location.hostname==='127.0.0.1')return '1';"
+                "return '';})()")
+            return probe == "1"
+        except Exception:
+            return False
+
     def direct_link_open(key):
         """Open the sponsor page in a new tab and start the unlock timer.
 
@@ -110,6 +235,12 @@ init -2 python:
         tel_track("directlink_open", {"key": key, "dist": dist_track()})
         tel_flush(True)
         store._dl_started = __import__("time").time()
+        if key.startswith("cg_"):
+            gated_ticket(key[3:])
+        if _is_test_run():
+            # QA path: the timer still runs, the sponsor page is never opened.
+            tel_track("directlink_test_noop", {"key": key})
+            return
         if getattr(renpy, "emscripten", False):
             _js("window.open(%r, '_blank')" % DIRECT_LINK_URL)
         else:
@@ -122,30 +253,43 @@ init -2 python:
     def direct_link_finish(key):
         tel_track("directlink_returned", {"key": key}, dur=direct_link_elapsed())
         _ad_unlocks().add(key)
+        if key.startswith("cg_"):
+            gated_redeem(key[3:])
         tel_flush(True)
 
-    def ad_gate_tick():
-        r = ad_gate_poll()
-        return r if r in (1, 2) else None
+    def ad_gate_tick(started=None):
+        r = ad_gate_poll(started)
+        return r if r in (1, 2, 3) else None
 
     def ad_gate_finish(key, kind, result, started):
         import time
         dur = int(time.time() - started)
         if result == 1:
             _ad_unlocks().add(key)
+            if kind == "cg":
+                gated_redeem(key[3:] if key.startswith("cg_") else key)
             tel_track("ad_completed", {"key": key, "kind": kind}, dur=dur)
+        elif result == 3:
+            # No creative was shown. The story is never bricked for an adblocker, so a
+            # chapter passes (flagged); the uncensored art is the paid differentiator and
+            # stays censored - there is nothing to trade it for.
+            if kind == "cg":
+                tel_track("ad_unavailable_censored", {"key": key, "kind": kind}, dur=dur)
+            else:
+                _ad_unlocks().add(key)
+                tel_track("ad_unavailable_passed", {"key": key, "kind": kind}, dur=dur)
         else:
             tel_track("ad_abandoned", {"key": key, "kind": kind}, dur=dur)
         tel_flush(True)
 
 
-## Watch-to-unlock overlay. The ad itself is HTML drawn over the canvas by elena_ads.js;
+## Watch-to-unlock overlay. The ad itself is HTML drawn over the canvas by room704_ads.js;
 ## this screen only waits for it and keeps the game paused underneath.
 screen ad_gate_screen(key, kind, title):
     modal True
     default started = __import__("time").time()
     # A Function that returns non-None ends the interaction with that value.
-    timer 0.5 repeat True action Function(ad_gate_tick)
+    timer 0.5 repeat True action Function(ad_gate_tick, started)
     add Solid("#000000cc")
     vbox:
         xalign 0.5 yalign 0.12 spacing 10
@@ -160,7 +304,7 @@ screen cg_buy_screen(name):
     tag menu
     default t0 = __import__("time").time()
     add Solid("#000000d0")
-    add "cg_locked_" + name xalign 0.5 yalign 0.42 zoom 2.6
+    add "cg_locked_" + name xalign 0.5 yalign 0.40 zoom 1.75
     frame:
         xalign 0.5 yalign 0.92 background Transform("#1d1424", alpha=0.94) padding (30, 18, 30, 18)
         vbox:
@@ -168,16 +312,20 @@ screen cg_buy_screen(name):
             text _("This scene is uncensored in the full game.") size 24 color "#ffdfa0" xalign 0.5
             hbox:
                 xalign 0.5 spacing 20
-                textbutton _("★ Unlock everything - $2.99"):
+                textbutton _("★ Unlock everything — $2.49"):
                     action [Function(cg_buy_decide, name, "buy_click", t0), OpenURL(ITCH_BUY_URL)]
                     text_size 24 text_color "#ffffff" background Transform("#d95a43", alpha=0.95) padding (22, 12, 22, 12)
-                if DIRECT_LINK_URL:
+                if renpy.emscripten and dist_track() != "demo":
+                    textbutton _("▶ Unlock free — watch a sponsor clip"):
+                        action [Function(cg_buy_decide, name, "banner_click", t0), Return("banner")]
+                        text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
+                elif DIRECT_LINK_URL and dist_track() != "demo":
                     textbutton _("▶ Unlock free — open sponsor"):
                         action [Function(cg_buy_decide, name, "directlink_click", t0), Return("directlink")]
                         text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
                 else:
                     textbutton _("▶ Free with ads"):
-                        action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL(ADS_SITE_URL)]
+                        action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL("https://room-704.flat404.workers.dev/?src=ingame")]
                         text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
                 textbutton _("Continue censored"):
                     action [Function(cg_buy_decide, name, "dismiss", t0), Return()]
@@ -186,14 +334,14 @@ screen cg_buy_screen(name):
 
 label chapter_gate(n):
     # Called at the end of chapter n-1. Returns when chapter n may start.
-    $ tel_track("act_%d_finish" % (n - 1), {"ending": chosen_ending, "dist": dist_track()})
+    $ tel_track("act_%d_finish" % (n - 1), {"route": route, "dist": dist_track()})
     $ tel_flush(True)
     if dist_track() == "paid":
         return
-    if dist_track() == "itch_web":
+    if dist_track() in ("itch_web", "demo"):
         jump demo_paywall
     $ key = "act%d" % n
-    if dist_track() == "offline_ads":
+    if dist_track() in ("offline_ads", "ads_web"):
         if is_ad_unlocked(key):
             return
         jump offline_chapter_gate
@@ -213,7 +361,7 @@ label chapter_gate_retry:
         "That chapter stays locked until the clip plays through."
         "Play the sponsor clip":
             jump chapter_gate_again
-        "Get the full game instead ($2.99, no ads)":
+        "Get the full game instead ($2.49, no ads)":
             $ tel_cta_click("itch_buy_from_adgate")
             $ renpy.run(OpenURL(ITCH_BUY_URL))
             jump chapter_gate_retry
@@ -234,9 +382,14 @@ label cg_gate(name):
     if name not in GATED_CGS or dist_track() == "paid" or is_ad_unlocked("cg_" + name):
         return
     $ tel_track("paywall_seen", {"key": "cg_" + name, "dist": dist_track()})
-    if dist_track() in ("itch_web", "offline_ads"):
+    if dist_track() in ("itch_web", "offline_ads", "ads_web", "demo"):
         call screen cg_buy_screen(name)
-        if _return == "directlink":
+        if _return == "banner":
+            $ started = __import__("time").time()
+            $ ad_gate_open("cg_" + name, "cg")
+            call screen ad_gate_screen("cg_" + name, "cg", _("Uncensored after one sponsor clip"))
+            $ ad_gate_finish("cg_" + name, "cg", _return, started)
+        elif _return == "directlink":
             $ direct_link_open("cg_" + name)
             call screen direct_link_screen("cg_" + name, _("Uncensored after the sponsor page"))
         return
@@ -295,7 +448,7 @@ screen direct_link_screen(key, title):
                 text_size 20 text_color "#d99b66" background Transform("#24172a", alpha=0.92) padding (16, 10, 16, 10)
 
 
-## F95 download: the next chapter costs one sponsor page (or the $2.99 itch build).
+## F95 download: the next chapter costs one sponsor page (or the $2.49 itch build).
 label offline_chapter_gate:
     menu:
         "Chapter [n] is locked in the free edition."
@@ -305,7 +458,7 @@ label offline_chapter_gate:
             if _return == 1:
                 return
             jump offline_chapter_gate
-        "Get the ad-free full game on itch ($2.99)":
+        "Get the ad-free full game on itch ($2.49)":
             $ tel_cta_click("itch_buy_offline")
             $ renpy.run(OpenURL(ITCH_BUY_URL))
             jump offline_chapter_gate
@@ -334,7 +487,7 @@ label checkpoint_clip:
         "The story continues after one sponsor clip."
         "Play the clip":
             jump checkpoint_clip
-        "Get the ad-free full game ($2.99)":
+        "Get the ad-free full game ($2.49)":
             $ tel_cta_click("itch_buy_checkpoint")
             $ renpy.run(OpenURL(ITCH_BUY_URL))
             jump checkpoint_clip
@@ -348,7 +501,7 @@ label checkpoint_link:
             if _return == 1:
                 return
             jump checkpoint_link
-        "Get the ad-free full game on itch ($2.99)":
+        "Get the ad-free full game on itch ($2.49)":
             $ tel_cta_click("itch_buy_checkpoint")
             $ renpy.run(OpenURL(ITCH_BUY_URL))
             jump checkpoint_link
