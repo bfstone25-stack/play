@@ -321,10 +321,6 @@ screen cg_buy_screen(name):
                     textbutton _("▶ Unlock free with ads — on our site"):
                         action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL("https://room-704.flat404.workers.dev/?src=itch")]
                         text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
-                elif DIRECT_LINK_URL and dist_track() != "demo":
-                    textbutton _("▶ Unlock free — open sponsor"):
-                        action [Function(cg_buy_decide, name, "directlink_click", t0), Return("directlink")]
-                        text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
                 else:
                     textbutton _("▶ Free with ads"):
                         action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL("https://room-704.flat404.workers.dev/?src=ingame")]
@@ -448,7 +444,36 @@ screen direct_link_screen(key, title):
 
 
 ## F95 download: the next chapter costs one sponsor page (or the $2.49 itch build).
+## The downloaded build is a short trial (act 1). A downloaded Ren'Py build has no browser
+## engine, so it cannot show a banner, and a sponsor page could never verify a view - so
+## instead of a fake gate the trial ends on the two honest paths.
+label offline_trial_end:
+    $ tel_track("trial_end", {"dist": dist_track()})
+    $ tel_flush(True)
+    call screen offline_trial_screen
+    jump offline_trial_end
+
+screen offline_trial_screen():
+    modal True
+    tag menu
+    add Solid("#000000e0")
+    vbox:
+        xalign 0.5 yalign 0.42 spacing 16
+        text _("The trial ends here.") size 34 color "#d9a86b" bold True xalign 0.5
+        text _("The rest of the night - the other routes, three endings - continues one of two ways.") size 20 color "#c8b8b0" xalign 0.5 text_align 0.5
+        null height 6
+        textbutton _("▶ Keep playing free, with ads - in your browser"):
+            action [Function(tel_cta_click, "trial_ads_site"), OpenURL("https://room-704.flat404.workers.dev/?src=trial")]
+            xalign 0.5 text_size 24 text_color "#ffffff" background Transform("#1f4a2a", alpha=0.95) padding (22, 12, 22, 12)
+        textbutton _("★ Get the full game, no ads - $2.49 on itch"):
+            action [Function(tel_cta_click, "trial_itch_buy"), OpenURL(ITCH_BUY_URL)]
+            xalign 0.5 text_size 24 text_color "#ffffff" background Transform("#c8503c", alpha=0.95) padding (22, 12, 22, 12)
+        textbutton _("Back to title"):
+            action MainMenu(confirm=False)
+            xalign 0.5 text_size 18 text_color "#d9a86b" background Transform("#24202e", alpha=0.92) padding (14, 8, 14, 8)
+
 label offline_chapter_gate:
+    jump offline_trial_end
     menu:
         "Chapter [n] is locked in the free edition."
         "Open the sponsor page, then continue":
