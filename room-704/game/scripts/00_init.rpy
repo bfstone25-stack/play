@@ -62,9 +62,11 @@ define audio.heartbeat = "audio/heartbeat.ogg"
 ## download is the whole night with nothing censored.
 define ROOM704_WEB_DEMO = True
 define ITCH_BUY_URL = "https://bfstone25-stack.itch.io/room-704/purchase"
-## Downloadable builds cannot show a banner, so the ad-supported offline track sends the
-## player to a sponsor page for a timed visit instead (ops/DUAL_TRACK.md).
-define DIRECT_LINK_URL = ""   # sponsor page removed from every track 2026-09-16 (F95 ban; unverifiable views)
+## The sponsor page is a *secondary* option and lives on our own domain only. It opens a
+## new tab, which F95 called malware and banned us for on 2026-09-16 — so no downloadable
+## build may reach it (direct_link_open enforces that), and on the web it is never the only
+## way forward: the banner countdown is, and that one keeps the player on the page.
+define DIRECT_LINK_URL = "https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9"
 define DIRECT_LINK_SECONDS = 20
 
 init 100 python:

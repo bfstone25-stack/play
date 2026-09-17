@@ -227,6 +227,13 @@ init -2 python:
         except Exception:
             return False
 
+    def direct_link_available():
+        """The sponsor page exists only on our own ad site, and only as a second choice.
+
+        Anywhere else — a downloaded build, itch's iframe, the DLsite trial — offering it
+        is the F95 ban all over again, so the option is not drawn at all."""
+        return bool(DIRECT_LINK_URL) and dist_track() == "ads_web"
+
     def direct_link_open(key):
         """Open the sponsor page in a new tab and start the unlock timer.
 
@@ -237,8 +244,9 @@ init -2 python:
         store._dl_started = __import__("time").time()
         if key.startswith("cg_"):
             gated_ticket(key[3:])
-        if _is_test_run():
-            # QA path: the timer still runs, the sponsor page is never opened.
+        if _is_test_run() or not direct_link_available():
+            # QA path, and the belt-and-braces stop for any track that must never open a
+            # third-party tab: the timer still runs, the sponsor page is never opened.
             tel_track("directlink_test_noop", {"key": key})
             return
         if getattr(renpy, "emscripten", False):
@@ -339,7 +347,11 @@ label chapter_gate(n):
     if dist_track() in ("itch_web", "demo"):
         jump demo_paywall
     $ key = "act%d" % n
-    if dist_track() in ("offline_ads", "ads_web"):
+    # ads_web is our own domain and has a working banner, so it falls through to the clip
+    # gate below. It used to be lumped in with offline_ads and sent to the sponsor *page*,
+    # which is how the one player LewdCorner sent us on 2026-09-16 got popped into a new
+    # tab at the end of act 1 and never came back.
+    if dist_track() == "offline_ads":
         if is_ad_unlocked(key):
             return
         jump offline_chapter_gate
@@ -359,6 +371,12 @@ label chapter_gate_retry:
         "That chapter stays locked until the clip plays through."
         "Play the sponsor clip":
             jump chapter_gate_again
+        "Open the sponsor page in a new tab instead" if direct_link_available():
+            $ direct_link_open(key)
+            call screen direct_link_screen(key, _("The rest of the night unlocks after the sponsor page"))
+            if _return == 1:
+                return
+            jump chapter_gate_retry
         "Get the full game instead ($2.49, no ads)":
             $ tel_cta_click("itch_buy_from_adgate")
             $ renpy.run(OpenURL(ITCH_BUY_URL))
@@ -473,33 +491,24 @@ screen offline_trial_screen():
             xalign 0.5 text_size 18 text_color "#d9a86b" background Transform("#24202e", alpha=0.92) padding (14, 8, 14, 8)
 
 label offline_chapter_gate:
+    # A downloaded build is an act-1 trial. It ends on the two honest exits and offers no
+    # gate to buy past, because nothing downloadable may open a third-party tab.
     jump offline_trial_end
-    menu:
-        "Chapter [n] is locked in the free edition."
-        "Open the sponsor page, then continue":
-            $ direct_link_open(key)
-            call screen direct_link_screen(key, _("The rest of the night unlocks after the sponsor page"))
-            if _return == 1:
-                return
-            jump offline_chapter_gate
-        "Get the ad-free full game on itch ($2.49)":
-            $ tel_cta_click("itch_buy_offline")
-            $ renpy.run(OpenURL(ITCH_BUY_URL))
-            jump offline_chapter_gate
 
 
 ## Story checkpoints: a sponsor gate at a narrative beat, mandatory on the free tracks.
 ## Each one carries its beat name, so the reports can say *where* in the story people pay
 ## twenty seconds and where they leave — the closest thing we have to reading them.
 label ad_checkpoint(key, title):
-    # "demo" is the DLsite trial: no ads there, ever.
-    if dist_track() in ("paid", "itch_web", "demo") or is_ad_unlocked(key):
+    # "demo" is the DLsite trial: no ads there, ever. Neither in a downloaded build —
+    # offline_ads is an act-1 trial that ends on its own screen, so a checkpoint inside it
+    # would be a gate with nothing behind it.
+    if dist_track() in ("paid", "itch_web", "demo", "offline_ads") or is_ad_unlocked(key):
         return
     $ tel_track("checkpoint_seen", {"key": key, "dist": dist_track()})
     $ tel_flush(True)
-    if dist_track() == "ads_web":
-        jump checkpoint_clip
-    jump checkpoint_link
+    # Only ads_web gets this far, and it has a banner.
+    jump checkpoint_clip
 
 label checkpoint_clip:
     $ started = __import__("time").time()
@@ -517,16 +526,3 @@ label checkpoint_clip:
             $ renpy.run(OpenURL(ITCH_BUY_URL))
             jump checkpoint_clip
 
-label checkpoint_link:
-    menu:
-        "[title]"
-        "Open the sponsor page, then continue":
-            $ direct_link_open(key)
-            call screen direct_link_screen(key, title)
-            if _return == 1:
-                return
-            jump checkpoint_link
-        "Get the ad-free full game on itch ($2.49)":
-            $ tel_cta_click("itch_buy_checkpoint")
-            $ renpy.run(OpenURL(ITCH_BUY_URL))
-            jump checkpoint_link
