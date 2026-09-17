@@ -136,7 +136,7 @@ default quick_menu = True
 screen main_menu():
     tag menu
 
-    add "images/bg/bg_lobby.webp"
+    add "images/bg/bg_room.webp"   # was Room 704's lobby, which does not exist in this game
     # The lobby art is bright on the left, where the title and the menu sit; without a scrim
     # the title is unreadable at thumbnail size, which is the mistake Elena's cover made.
     add Solid("#07070b") alpha 0.55
@@ -151,8 +151,8 @@ screen main_menu():
         yalign 0.4
         spacing 25
 
-        text _("ROOM 704") size 76 color "#d9a86b" bold True
-        text _("One night. One floor. Nobody in the book.") size 28 color "#a89a8c"
+        text _("CONFESSION ROOM") size 76 color "#d9a86b" bold True
+        text _("Three suspects. Twelve questions. One detail only the killer could know.") size 28 color "#a89a8c"
 
         null height 30
 
@@ -236,11 +236,6 @@ screen history():
 screen preferences():
     tag menu
     use game_menu(_("Preferences")):
-        ## Two rows, not one. Five columns — two of buttons and three 350px bars — added up
-        ## past 1920 with the menu's left nav, so the volume bars sat off the right edge of
-        ## the screen. A player on LewdCorner reported the menu music as "a very loud
-        ## constant buzzing sound" and said there were "no sliders/mute under the audio
-        ## tab": there were, he just could not see them.
         vbox:
             spacing 30
             hbox:
@@ -253,15 +248,11 @@ screen preferences():
 
                 vbox:
                     spacing 15
-                    text _("Language") size 30 color "#d99b66"
-                    textbutton "English" action Language(None)
-                    textbutton "日本語" action Language("japanese")
-
-                vbox:
-                    spacing 15
                     text _("Sound") size 30 color "#d99b66"
                     textbutton _("Mute all") action Preference("all mute", "toggle")
 
+            ## Second row: four columns, three of them 350px wide, overflowed 1920 next to
+            ## the menu's left nav and pushed the sliders off the screen.
             hbox:
                 spacing 60
                 vbox:
