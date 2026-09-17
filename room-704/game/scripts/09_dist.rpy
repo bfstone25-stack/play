@@ -316,8 +316,10 @@ screen cg_buy_screen(name):
                     action [Function(cg_buy_decide, name, "buy_click", t0), OpenURL(ITCH_BUY_URL)]
                     text_size 24 text_color "#ffffff" background Transform("#d95a43", alpha=0.95) padding (22, 12, 22, 12)
                 if renpy.emscripten and dist_track() != "demo":
-                    textbutton _("▶ Unlock free — watch a sponsor clip"):
-                        action [Function(cg_buy_decide, name, "banner_click", t0), Return("banner")]
+                    # The banner unit is registered to our own domain and Adsterra blocks a
+                    # unit moved off its domain, so on itch the free path is our ad site.
+                    textbutton _("▶ Unlock free with ads — on our site"):
+                        action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL("https://room-704.flat404.workers.dev/?src=itch")]
                         text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
                 elif DIRECT_LINK_URL and dist_track() != "demo":
                     textbutton _("▶ Unlock free — open sponsor"):
@@ -384,12 +386,7 @@ label cg_gate(name):
     $ tel_track("paywall_seen", {"key": "cg_" + name, "dist": dist_track()})
     if dist_track() in ("itch_web", "offline_ads", "ads_web", "demo"):
         call screen cg_buy_screen(name)
-        if _return == "banner":
-            $ started = __import__("time").time()
-            $ ad_gate_open("cg_" + name, "cg")
-            call screen ad_gate_screen("cg_" + name, "cg", _("Uncensored after one sponsor clip"))
-            $ ad_gate_finish("cg_" + name, "cg", _return, started)
-        elif _return == "directlink":
+        if _return == "directlink":
             $ direct_link_open("cg_" + name)
             call screen direct_link_screen("cg_" + name, _("Uncensored after the sponsor page"))
         return
