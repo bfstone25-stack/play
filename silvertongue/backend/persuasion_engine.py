@@ -79,6 +79,29 @@ COMMON = {
         "please", "please agree", "admit", "承认", "承認", "认同", "認同", "同意",
         "可以吗", "愿意", "願意", "認め", "aceita", "admita",
     ),
+    # The customs officer's whole scene is a search, so the supporting move a
+    # real player makes is to let him search: open the bag, go ahead, take a
+    # look. `cooperation` was named in customs' help set from the start but was
+    # never defined here, so it could never fire, and the only other supporting
+    # signal is `accountability` - confessing fault to a customs officer you
+    # have not wronged. On silver and gold, which need one supporting signal,
+    # that left the scenario unwinnable for a cooperative player: 45 losses and
+    # 1 win in the last 30 days, and the single win was on gentle, which needs
+    # no support at all. One English player complied for 15 straight turns and
+    # was told "Your bag is cleared. Proceed through the gate." while the
+    # engine recorded a loss, because `won` is eligible AND conceded.
+    "cooperation": (
+        "go ahead", "go right ahead", "open the bag", "open my bag", "opened it",
+        "take a look", "have a look", "look inside", "check it", "check the bag",
+        "you can check", "you may check", "feel free", "inspect", "search my",
+        "search the", "nothing to hide", "here you go", "here it is",
+        "i'll wait", "i will wait", "unpack", "unwrap", "whatever you need",
+        "请检查", "您检查", "你检查", "請檢查", "您檢查", "你檢查", "可以检查",
+        "可以檢查", "随便看", "隨便看", "打开了", "打開了", "取出来", "取出來",
+        "我配合", "配合检查", "配合檢查", "没问题", "沒問題",
+        "どうぞ", "開けます", "確認してください", "調べてください",
+        "adelante", "puede revisar", "revíselo", "pode verificar", "pode revistar",
+    ),
 }
 
 NEGATIVE = {
