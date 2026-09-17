@@ -492,7 +492,8 @@ label offline_chapter_gate:
 ## Each one carries its beat name, so the reports can say *where* in the story people pay
 ## twenty seconds and where they leave — the closest thing we have to reading them.
 label ad_checkpoint(key, title):
-    if dist_track() in ("paid", "itch_web") or is_ad_unlocked(key):
+    # "demo" is the DLsite trial: no ads there, ever.
+    if dist_track() in ("paid", "itch_web", "demo") or is_ad_unlocked(key):
         return
     $ tel_track("checkpoint_seen", {"key": key, "dist": dist_track()})
     $ tel_flush(True)
