@@ -209,9 +209,10 @@ init -2 python:
     def _is_test_run():
         """True for our own screenshot/QA passes.
 
-        Our test runs opened the Adsterra direct link three times on 2026-09-15 and those
-        were indistinguishable from players at the ad network. They are distinguishable
-        here, so the sponsor step becomes a no-op instead."""
+        Our test runs opened the sponsor page three times on 2026-09-15 and those were
+        indistinguishable from players at the other end. They are distinguishable here, so
+        the sponsor step becomes a no-op instead. (Docstrings survive into the .rpyc that
+        ships, so this one names no network.)"""
         if not getattr(renpy, "emscripten", False):
             return False
         try:
@@ -227,12 +228,21 @@ init -2 python:
         except Exception:
             return False
 
+    def direct_link_url():
+        """The sponsor URL, read from the page — never stored in the game's own files.
+
+        Only ads_config.js (shipped with the ads_web build alone) defines it, so on every
+        other track this is the empty string and there is nothing to open."""
+        if dist_track() != "ads_web" or not getattr(renpy, "emscripten", False):
+            return ""
+        return _js_str("(window.ROOM704_DIRECT_LINK || '')")
+
     def direct_link_available():
         """The sponsor page exists only on our own ad site, and only as a second choice.
 
         Anywhere else — a downloaded build, itch's iframe, the DLsite trial — offering it
         is the F95 ban all over again, so the option is not drawn at all."""
-        return bool(DIRECT_LINK_URL) and dist_track() == "ads_web"
+        return bool(direct_link_url())
 
     def direct_link_open(key):
         """Open the sponsor page in a new tab and start the unlock timer.
@@ -249,10 +259,8 @@ init -2 python:
             # third-party tab: the timer still runs, the sponsor page is never opened.
             tel_track("directlink_test_noop", {"key": key})
             return
-        if getattr(renpy, "emscripten", False):
-            _js("window.open(%r, '_blank')" % DIRECT_LINK_URL)
-        else:
-            renpy.run(OpenURL(DIRECT_LINK_URL))
+        # Web only, by construction: direct_link_url() is empty off the ads_web track.
+        _js("window.open(%r, '_blank')" % direct_link_url())
 
     def direct_link_elapsed():
         import time

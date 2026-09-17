@@ -64,9 +64,13 @@ define ROOM704_WEB_DEMO = True
 define ITCH_BUY_URL = "https://bfstone25-stack.itch.io/room-704/purchase"
 ## The sponsor page is a *secondary* option and lives on our own domain only. It opens a
 ## new tab, which F95 called malware and banned us for on 2026-09-16 — so no downloadable
-## build may reach it (direct_link_open enforces that), and on the web it is never the only
-## way forward: the banner countdown is, and that one keeps the player on the page.
-define DIRECT_LINK_URL = "https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9"
+## build may reach it, and on the web it is never the only way forward: the banner
+## countdown is, and that one keeps the player on the page.
+##
+## The URL itself is NOT here. A string in a script ends up in the .rpa of every package,
+## downloads included, where anyone grepping the archive finds an ad network's domain in a
+## build that never calls it. It is served to the web track by ads_config.js instead, and
+## direct_link_url() reads it from the page at runtime — so a download simply has no URL.
 define DIRECT_LINK_SECONDS = 20
 
 init 100 python:
