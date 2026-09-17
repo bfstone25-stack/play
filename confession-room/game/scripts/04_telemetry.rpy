@@ -19,8 +19,8 @@ init -1 python:
 
     # ---- config -------------------------------------------------------------
     # Prefer persistent override, then env, then local standalone server.
-    _DEFAULT_TEL_URL = "https://apps.blazecore.dev/tel_batch?app=room704"
-    _TEL_APP = "room704"
+    _DEFAULT_TEL_URL = "https://apps.blazecore.dev/tel_batch?app=confession-room"
+    _TEL_APP = "confession-room"
     _TEL_FLUSH_AT = 6
     _TEL_TIMEOUT_S = 4.0
 
