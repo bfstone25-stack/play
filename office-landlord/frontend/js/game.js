@@ -362,7 +362,13 @@
     // The return leg of the cross-promotion loop: the adult titles send players to this
     // catalogue, and the end of a run is where this catalogue sends some back. Inert
     // unless the build sets PROMO_ADULT_OK, so portal builds never carry it.
-    if (window.PROMO) setTimeout(function () { PROMO.showAfterRun(won ? "win" : "evict"); }, 900);
+    // The board is the offer Blaze asked for: a grid the player chooses from, not a
+    // single link. PROMO's one-card version stays as the fallback for builds that do not
+    // ship board.js.
+    setTimeout(function () {
+      if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+      else if (window.PROMO) PROMO.showAfterRun(won ? "win" : "evict");
+    }, 900);
   }
 
   function burst(links, payout) {
