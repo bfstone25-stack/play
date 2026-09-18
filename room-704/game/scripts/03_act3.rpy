@@ -64,6 +64,9 @@ label epilogue:
     nar "You look at the register, where the fourth row of the fourth floor is a clean unbroken line, and you tell him it was a quiet night."
     $ tel_track("end_cta", {"ending": route, "trust": trust, "acts": act_cleared})
     $ tel_flush(True)
+    ## End of the run: the rest of the adult catalogue. Offered before the end screen so
+    ## it is seen while the player is still here — the end screen is where they leave.
+    $ board_offer_more()
     call screen end_screen
     return
 

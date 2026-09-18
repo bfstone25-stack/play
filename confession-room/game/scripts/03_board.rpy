@@ -236,4 +236,7 @@ label epilogue:
     else:
         nar "You got [len(cases_cleared)] of [CASE_COUNT]. The rest sit in a drawer with your name on the tab."
     nar "{b}Confession Room{/b} — end of run."
+    ## End of the run: the rest of the adult catalogue, offered the same way the break is
+    ## — asked, never forced. Defined in 09_dist.rpy; a no-op outside the web build.
+    $ board_offer_more()
     return
