@@ -1,6 +1,6 @@
-// room704_ads.js — watch-to-unlock overlay for the web tracks (itch and our own domain).
+// confession_ads.js — watch-to-unlock overlay for the web tracks (itch and our own domain).
 //
-// The game (09_dist.rpy) calls Room704Ads.open(key, kind) and polls Room704Ads.result():
+// The game (09_dist.rpy) calls ConfessionAds.open(key, kind) and polls ConfessionAds.result():
 // 0 still watching, 1 completed, 2 closed early, 3 sponsor unavailable (counted down
 // without a creative — telemetry says so; we never brick the story for an adblocker).
 // Unlocks live in localStorage so a refresh does not re-charge the player.
@@ -19,7 +19,7 @@
 //   - there is no external link anywhere on the web tracks; the sponsor is the banner
 // No popunders, ever.
 (function () {
-  var BUY_URL = 'https://bfstone25-stack.itch.io/room-704/purchase';
+  var BUY_URL = 'https://bfstone25-stack.itch.io/confession-room/purchase';
 
   // --- did the creative actually render? -------------------------------------------
   // The slot is an iframe with srcdoc, so it is same-origin and we can look inside. An
@@ -41,10 +41,10 @@
     }
   }
 
-  if (window.Room704Ads) return;
-  var SECONDS = window.ROOM704_AD_SECONDS || 25;
+  if (window.ConfessionAds) return;
+  var SECONDS = window.CONFESSION_AD_SECONDS || 25;
   var LOAD_GRACE = 8;                       // seconds to give the network before "unavailable"
-  var KEY = "room704_unlocks";
+  var KEY = "confession_unlocks";
   var state = 0, timer = null, box = null;
 
   function isTestRun() {
@@ -72,7 +72,7 @@
     if (box && box.parentNode) box.parentNode.removeChild(box); box = null;
   }
 
-  window.Room704Ads = {
+  window.ConfessionAds = {
     has: function (key) { return unlocks()[key] ? 1 : 0; },
     result: function () { return state; },
     open: function (key, kind) {
@@ -98,13 +98,13 @@
       if (testRun) {
         // QA passes never touch the sponsor network; the clock runs so the flow is testable.
         slot.textContent = "Sponsor slot (QA)"; creativeLoaded = true;
-      } else if (window.ROOM704_AD_HTML) {
+      } else if (window.CONFESSION_AD_HTML) {
         // Inside an iframe: Adsterra's invoke.js uses document.write, which after load would wipe the game page.
         var f = document.createElement("iframe"); f.width = "300"; f.height = "250"; f.style.border = "0"; f.style.background = "#000";
         f.setAttribute("scrolling", "no");
         f.onload = function () { creativeLoaded = true; };
         frame = f;
-        f.srcdoc = '<body style="margin:0;background:#000">' + window.ROOM704_AD_HTML + "</body>";
+        f.srcdoc = '<body style="margin:0;background:#000">' + window.CONFESSION_AD_HTML + "</body>";
         slot.textContent = ""; slot.appendChild(f);
       } else {
         slot.textContent = "Sponsor unavailable"; unavailable = true;
@@ -123,7 +123,7 @@
         why.textContent = "Usually an ad blocker, sometimes the network having a bad day. We only get paid for an ad that actually appears, so we cannot open this on one that never did.";
         var again = css(document.createElement("button"), {background: "#3a7a4a", color: "#fff", border: "0", borderRadius: "6px", padding: "9px 16px", fontSize: "15px", cursor: "pointer", margin: "0 6px"});
         again.textContent = "I turned it off \u2014 try again";
-        again.onclick = function () { tel("ad_blocked_retry", {key: key, kind: kind}); close(2); setTimeout(function () { window.Room704Ads.open(key, kind); }, 80); };
+        again.onclick = function () { tel("ad_blocked_retry", {key: key, kind: kind}); close(2); setTimeout(function () { window.ConfessionAds.open(key, kind); }, 80); };
         var buy = css(document.createElement("button"), {background: "#c8503c", color: "#fff", border: "0", borderRadius: "6px", padding: "9px 16px", fontSize: "15px", cursor: "pointer", margin: "0 6px"});
         buy.textContent = "Get the ad-free version";
         buy.onclick = function () { tel("ad_blocked_buy", {key: key, kind: kind}); window.open(BUY_URL, "_blank", "noopener"); };
