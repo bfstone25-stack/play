@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://r6l7g74pdq3a"
+path="res://.godot/imported/floor13_cjk.fnt-7ceddb0d5647be4142c8ee57c8ec74a1.fontdata"
+
+[deps]
+
+source_file="res://assets/pixel/floor13_cjk.fnt"
+dest_files=["res://.godot/imported/floor13_cjk.fnt-7ceddb0d5647be4142c8ee57c8ec74a1.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
