@@ -19,8 +19,14 @@ init -1 python:
 
     # ---- config -------------------------------------------------------------
     # Prefer persistent override, then env, then local standalone server.
-    _DEFAULT_TEL_URL = "https://apps.blazecore.dev/tel_batch?app=room704"
-    _TEL_APP = "room704"
+    # itch, the portfolio roster, the warehouse and every report key this product as
+    # "room-704". This build shipped as "room704", so 40 sessions of real play landed
+    # in a bucket nothing queried and the product read as having no players.
+    # shared.telemetry.APP_ALIASES rewrites the old spelling at ingest, which is what
+    # actually fixes the builds already in players' hands; this keeps future builds
+    # from needing that alias. Do not remove the alias — old builds still post it.
+    _DEFAULT_TEL_URL = "https://apps.blazecore.dev/tel_batch?app=room-704"
+    _TEL_APP = "room-704"
     _TEL_FLUSH_AT = 6
     _TEL_TIMEOUT_S = 4.0
 
