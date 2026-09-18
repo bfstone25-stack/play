@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#12161c">
+  <meta name="description" content="Overtime Landlord (18+) — a tactical desk tableau. The pieces are the people who stayed late. Every plate is a board you built.">
+  <meta name="rating" content="adult">
+  <meta name="RATING" content="RTA-5042-1996-1400-1577-RTA">
+  <title>Overtime Landlord · 加班房东 (18+)</title>
+  <link rel="stylesheet" href="css/style.css">
+<!-- closed-loop telemetry bootstrap -->
+<script>
+window.TEL_APP = window.TEL_APP || 'overtime-landlord';
+window.TEL_API = window.TEL_API || ('https://apps.blazecore.dev' + "/" + window.TEL_APP);
+window.APP_API = window.APP_API || window.TEL_API;
+window.API = window.API || window.TEL_API;
+</script>
+</head>
+<body>
+  <div class="void" aria-hidden="true">
+    <div class="glow a"></div>
+    <div class="glow b"></div>
+    <div class="haze"></div>
+  </div>
+
+  <div class="lang-bar" role="group" aria-label="Language and sound">
+    <button type="button" class="lang-btn active" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="zh">中</button>
+    <button type="button" class="lang-btn" id="soundBtn" aria-pressed="true">♪</button>
+    <button type="button" class="lang-btn" id="galleryBtn" aria-label="Gallery">▣ 0/10</button>
+  </div>
+
+  <div class="arena">
+    <div class="fit-slot">
+      <div class="cabinet">
+        <div class="marquee">
+          <div class="landlord-plate" id="landlordPlate">
+            <img src="assets/landlord-portrait.webp" alt="" id="landlordFace" width="72" height="96">
+            <i id="moodDot"></i>
+          </div>
+          <div>
+            <small id="tagline">CABINET 03 · DESK LEASE</small>
+            <b>OVERTIME LANDLORD</b>
+            <em id="lore">Place staff. Build chains. Pay the landlord.</em>
+          </div>
+          <span id="runState">WAITING</span>
+        </div>
+
+        <div class="hood">
+          <div class="play-bay">
+            <aside class="side-rail" aria-label="Lease ledger">
+              <div class="plate">
+                <small id="lRent">RENT DUE</small>
+                <b id="rent">8</b>
+              </div>
+              <div class="plate">
+                <small id="lBank">BANK</small>
+                <b id="bank">0</b>
+              </div>
+              <div class="plate chain">
+                <small id="lChain">CHAIN</small>
+                <b id="chain">0</b>
+                <div id="chainTrack"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <article class="plate mission">
+                <small id="lFloor">FLOOR</small>
+                <b id="floorLabel">1 / 9</b>
+                <div class="bar"><i id="floorFill"></i></div>
+                <strong id="previewPay">PREVIEW 0</strong>
+              </article>
+            </aside>
+
+            <div class="glass">
+              <canvas id="game" aria-label="Overtime Landlord floor"></canvas>
+              <div class="scan"></div>
+              <div class="banner" id="banner"></div>
+            </div>
+
+            <aside class="side-rail right" aria-label="Relics and forecast">
+              <div class="plate">
+                <small id="lNext">NEXT RENT</small>
+                <b id="nextRent">11</b>
+              </div>
+              <article class="plate relics" id="relicBox">
+                <small id="lRelics">RELICS</small>
+                <div id="relicList" class="relic-list"></div>
+              </article>
+              <div class="plate line">
+                <small id="lLine">LANDLORD</small>
+                <p id="landlordLine">The floor is empty. That is not a strategy.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="deck">
+          <div class="offers" id="offers"></div>
+          <div class="deck-actions">
+            <button type="button" class="ghost" id="rerollBtn"><small id="lReroll">REROLL</small><b id="rerollCost">4</b></button>
+            <button type="button" class="launch" id="settleBtn"><small id="lHold">COLLECT</small><b id="lSettle">SETTLE</b></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay show" id="intro" role="dialog" aria-modal="true">
+    <div class="sheet title-sheet">
+      <img src="assets/title.webp" alt="" class="title-art">
+      <small id="introTag">CABINET 03</small>
+      <h1>Overtime Landlord</h1>
+      <p id="introBody">A 5×4 desk. Three offers each beat. Place the piece yourself. Chains pay. The landlord still wants rent.</p>
+      <button type="button" class="launch" id="startBtn"><b id="lStart">SIGN THE LEASE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="shop" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <small id="shopTag">BETWEEN FLOORS</small>
+      <h2 id="shopTitle">Procurement</h2>
+      <p id="shopBody">Pick one. The elevator is already closing.</p>
+      <div class="shop-row" id="shopRow"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="end" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <small id="endTag">NOTICE</small>
+      <h2 id="endTitle">Eviction</h2>
+      <p id="endBody">Rent missed. Badge revoked. The plant stays.</p>
+      <strong id="endStat">BANK 0 · BEST 0</strong>
+      <button type="button" class="launch" id="againBtn"><b id="lAgain">NEW LEASE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="gallery" role="dialog" aria-modal="true">
+    <div class="sheet wide">
+      <small>18+ · EARNED, NOT GROUND OUT</small>
+      <h2 id="galleryTitle">Plates</h2>
+      <p id="galleryBody">Every plate is a board you built. Tap a lit one to open it.</p>
+      <div class="plate-grid" id="galleryGrid"></div>
+      <button type="button" class="launch" id="galleryClose"><b>CLOSE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="plateView" role="dialog" aria-modal="true">
+    <div class="sheet wide">
+      <img id="plateImg" alt="" class="plate-full">
+      <p id="plateCap"></p>
+      <button type="button" class="launch" id="plateClose"><b>CLOSE</b></button>
+    </div>
+  </div>
+
+  <script src="js/landlord.js"></script><script>window.GATE_CONFIG={directLink:"https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9",directLinkSeconds:20,price:"$2.49",buyUrl:"https://bfstone25-stack.itch.io/overtime-landlord/purchase"};</script><script src="gate.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/icons.js"></script>
+  <!-- Cross-promotion back to the adult titles. The flag is decided by hostname rather
+       than by the build, so a copy of this folder handed to a portal (CrazyGames) or
+       embedded on itch can never show it, however it got there. Our own domains only. -->
+  <!-- This fork is the DESTINATION of the adult cross-promo loop, not a source of it, so
+       the adult board is off here and the casual board is what a finished run offers.
+       It also never ships to a portal: PORTAL_PLATFORM is deliberately never set. -->
+  <script>window.PROMO_ADULT_OK = 0;
+          window.BOARD_ADULT_OK = 0;
+          window.PROMO_FROM = "overtime-landlord";</script>
+  <script src="promo.js"></script>
+  <script src="board.js"></script>
+  <script src="js/game.js"></script>
+
+<script>
+(function(){
+  if (window.__TEL_BOOTED__) return;
+  window.__TEL_BOOTED__ = true;
+  var API = window.TEL_API || window.API || "https://apps.blazecore.dev";
+  var APP = window.TEL_APP || window.APP_SLUG || "";
+  try {
+    if (!APP) {
+      var m = (location.pathname || "").match(/^\/([^\/]+)/);
+      if (m && m[1] && m[1] !== "tel_batch" && m[1] !== "tel") APP = m[1];
+    }
+  } catch (e) {}
+  if (API && APP && !/\/[a-z0-9_-]+$/i.test(API.replace(/\/+$/,"")) && API.indexOf(APP) < 0) {
+    API = API.replace(/\/+$/, "") + "/" + APP;
+  }
+  window.TEL_API = API;
+  window.TEL_APP = APP;
+  var pid = (function(){
+    var p = localStorage.getItem("tel_pid");
+    if (!p) { p = "u" + Math.random().toString(36).slice(2, 10); localStorage.setItem("tel_pid", p); }
+    return p;
+  })();
+  var sid = "s" + Math.random().toString(36).slice(2, 10);
+  var t0 = Date.now();
+  var queue = [];
+  function push(etype, name, value, dur){
+    queue.push({
+      app: APP || undefined,
+      pid: pid,
+      sid: sid,
+      etype: etype,
+      name: String(name || "").slice(0, 120),
+      value: typeof value === "string" ? value : JSON.stringify(value || ""),
+      dur: dur || 0
+    });
+    if (queue.length >= 8) flush();
+  }
+  function flush(useBeacon){
+    if (!queue.length || !API) return;
+    var batch = queue.splice(0, 50);
+    var body = JSON.stringify(batch);
+    var url = API.replace(/\/+$/, "") + "/tel_batch";
+    try {
+      if (useBeacon && navigator.sendBeacon) {
+        navigator.sendBeacon(url, new Blob([body], {type: "application/json"}));
+      } else {
+        fetch(url, {method: "POST", headers: {"Content-Type": "application/json"}, body: body, mode: "cors", keepalive: true}).catch(function(){});
+      }
+    } catch (e) {}
+  }
+  push("pageview", location.pathname || "/", document.title || "");
+  document.addEventListener("click", function(e){
+    var el = e.target && e.target.closest && e.target.closest("button,a,[data-tel],.card,.chip,[role=button],canvas");
+    if (!el) return;
+    if (!lastCustom) { lastCustomAt = Date.now(); }
+    push("click", el.id || el.getAttribute("data-tel") || el.className || el.tagName,
+         ((el.innerText || el.getAttribute("aria-label") || "") + "").trim().slice(0, 60));
+  }, true);
+  window.addEventListener("beforeunload", function(){
+    if (pwSeenAt && !pwDecided) push("paywall_decision", "leave", "", Math.round((Date.now() - pwSeenAt) / 1000));
+    push("session_end", "session", window.__TEL_SESSION_SUMMARY__(), Math.round((Date.now() - t0) / 1000));
+    flush(true);
+  });
+  document.addEventListener("visibilitychange", function(){ if (document.hidden) flush(true); });
+  setInterval(function(){ flush(); }, 20000);
+
+  // ---- psychology layer -------------------------------------------------
+  // Counting heads told us "75 plays, 0 buys" and nothing about why. These events
+  // are chosen to answer why: where people came from, how long they hesitated at
+  // the door, whether they were actually paying attention, where they got
+  // frustrated, what they did when they saw a price, and whether they came back.
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem("tel_me") || "{}") || {}; } catch (e) {}
+  var nowS = Math.round(Date.now() / 1000);
+  var visits = (store.visits || 0) + 1;
+  var firstSeen = store.first || nowS;
+  var daysSince = store.last ? Math.round((nowS - store.last) / 86400) : 0;
+  var src = "";
+  try { src = new URLSearchParams(location.search).get("src") || ""; } catch (e) {}
+  var refHost = "";
+  try { refHost = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+  if (!store.src && (src || refHost)) store.src = src || refHost;   // first touch wins
+  store.visits = visits; store.first = firstSeen; store.last = nowS;
+  try { localStorage.setItem("tel_me", JSON.stringify(store)); } catch (e) {}
+  // arrive: referral_source + return behaviour + device, once per session
+  push("arrive", src || refHost || "direct", {
+    src: src, ref: refHost, first_src: store.src || "", visit: visits,
+    days_since_last: daysSince, returning: visits > 1,
+    w: window.innerWidth, h: window.innerHeight, touch: "ontouchstart" in window,
+    lang: navigator.language || "", embedded: window.top !== window.self
+  });
+  // engaged: seconds of hesitation before the first real interaction
+  var engaged = false;
+  function onFirst(){ if (engaged) return; engaged = true; push("engaged", "first_input", "", Math.round((Date.now() - t0) / 1000)); }
+  ["pointerdown", "keydown", "touchstart"].forEach(function(n){ window.addEventListener(n, onFirst, {once: true, capture: true}); });
+  // attention: active seconds (input in last 30s) vs merely-open seconds, reported at session_end
+  var lastInput = Date.now(), active = 0, hiddenAt = 0, hiddenTotal = 0, awayCount = 0;
+  ["pointerdown", "pointermove", "keydown", "wheel", "touchstart", "scroll"].forEach(function(n){
+    window.addEventListener(n, function(){ lastInput = Date.now(); }, {passive: true, capture: true});
+  });
+  setInterval(function(){ if (!document.hidden && Date.now() - lastInput < 30000) active += 5; }, 5000);
+  document.addEventListener("visibilitychange", function(){
+    if (document.hidden) { hiddenAt = Date.now(); awayCount++; }
+    else if (hiddenAt) { var away = Math.round((Date.now() - hiddenAt) / 1000); hiddenTotal += away; hiddenAt = 0;
+      push("focus_back", lastCustom || "", {away_s: away}); }
+  });
+  // rage: 4+ clicks on the same thing inside 1.2s = frustration or a dead control
+  var rc = 0, rt = 0, rk = "";
+  document.addEventListener("pointerdown", function(e){
+    var k = (e.target && (e.target.id || e.target.className || e.target.tagName)) + "";
+    var now = Date.now();
+    if (k === rk && now - rt < 1200) { rc++; if (rc === 4) push("rage", k.slice(0, 80), {last: lastCustom || ""}); }
+    else { rk = k; rc = 1; }
+    rt = now;
+  }, true);
+  // scroll depth: how far down a store/landing page they actually read
+  var maxScroll = 0;
+  window.addEventListener("scroll", function(){
+    var d = document.documentElement, h = Math.max(1, d.scrollHeight - d.clientHeight);
+    maxScroll = Math.max(maxScroll, Math.round(100 * (window.scrollY || d.scrollTop) / h));
+  }, {passive: true});
+  // last custom event = "where they stopped"; attached to session_end so exit point needs no join
+  var lastCustom = "", lastCustomAt = Date.now();
+  // paywall: seen (auto, when [data-tel-paywall] scrolls into view), then the decision and how long it took
+  var pwSeenAt = 0, pwDecided = false;
+  function paywallSeen(where){ if (pwSeenAt) return; pwSeenAt = Date.now(); push("paywall_seen", where || "", {last: lastCustom || ""}); }
+  function paywallDecision(what, meta){
+    if (!pwSeenAt || pwDecided) return; pwDecided = true;
+    push("paywall_decision", what, meta || "", Math.round((Date.now() - pwSeenAt) / 1000));
+  }
+  try {
+    if (window.IntersectionObserver) {
+      var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting) paywallSeen(x.target.getAttribute("data-tel-paywall") || "page"); }); }, {threshold: 0.5});
+      var scan = function(){ document.querySelectorAll("[data-tel-paywall]").forEach(function(el){ io.observe(el); }); };
+      scan(); new MutationObserver(scan).observe(document.documentElement, {childList: true, subtree: true});
+    }
+  } catch (e) {}
+  document.addEventListener("click", function(e){
+    var el = e.target && e.target.closest && e.target.closest("[data-tel-buy],[data-tel-promo],[data-tel-dismiss]");
+    if (!el) return;
+    if (el.hasAttribute("data-tel-buy")) { paywallSeen("buy_button"); paywallDecision("buy_click", {price: el.getAttribute("data-tel-buy") || ""}); flush(true); }
+    else if (el.hasAttribute("data-tel-dismiss")) paywallDecision("dismiss", "");
+    else push("cross_promo_click", el.getAttribute("data-tel-promo") || el.href || "", {from: lastCustom || ""});
+  }, true);
+  // ads: only meaningful once a network is wired in; adblock is detected by the provider script never defining its global
+  window.addEventListener("load", function(){
+    setTimeout(function(){
+      var slot = document.querySelector("[data-tel-ad]");
+      if (!slot) return;
+      var filled = slot.querySelector("iframe,img,ins") || slot.offsetHeight > 20;
+      push(filled ? "ad_shown" : "ad_blocked", slot.getAttribute("data-tel-ad") || "slot", "");
+    }, 4000);
+  });
+  var _sessionEndBase = null;
+  window.__TEL_SESSION_SUMMARY__ = function(){
+    return {active_s: active, away_s: hiddenTotal, away_n: awayCount, scroll: maxScroll,
+            last: lastCustom, since_last_s: Math.round((Date.now() - lastCustomAt) / 1000),
+            engaged: engaged, paywall: pwSeenAt ? (pwDecided ? "decided" : "left") : "no",
+            visit: visits, src: store.src || ""};
+  };
+  window.TEL = {
+    chat: function(userMsg, reply, meta){
+      push("chat", "message", {u: String(userMsg).slice(0, 800), r: String(reply).slice(0, 1200), ...(meta || {})});
+    },
+    feedback: function(score, note){
+      push("feedback", "rating", {score: score, note: String(note || "").slice(0, 500)});
+    },
+    ev: function(name, value){ lastCustom = String(name || ""); lastCustomAt = Date.now(); push("custom", name, value); },
+    paywall_seen: paywallSeen,
+    paywall: paywallDecision,
+    ad: function(state, meta){ push("ad_" + state, meta && meta.slot || "slot", meta || ""); },
+    promo: function(dest){ push("cross_promo_click", dest, {from: lastCustom || ""}); },
+    play_start: function(meta){ push("play_start", "play", meta || ""); },
+    play_end: function(meta, dur){ push("play_end", "play", meta || "", dur || 0); },
+    flush: flush
+  };
+})();
+</script>
+
+</body>
+</html>
