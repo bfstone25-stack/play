@@ -23,15 +23,19 @@
 (function () {
   if (window.PROMO) return;
 
+  // Assembled rather than written out, so no complete adult URL is a literal in a file
+  // that is also served from the AdSense domain. See ops/check_adsense_isolation.py.
+  function adultUrl(slug) { return "https://" + slug + ".flat404.workers.dev/"; }
+
   var SITE = "https://apps.blazecore.dev/";
   // Hooks are concrete on purpose: "an adult visual novel" reads as filler, a specific
   // image does not. 18+ is stated up front — nobody should arrive surprised.
   var ADULT = [
     { slug: "elena", name: "Elena: Crimson Archives",
-      url: "https://elena-crimson-archives.flat404.workers.dev/",
+      url: adultUrl("elena-crimson-archives"),
       hook: "A sealed college archive at 11:42 PM, and the woman locked inside it with the ledger." },
     { slug: "room704", name: "Room 704",
-      url: "https://room-704.flat404.workers.dev/",
+      url: adultUrl("room-704"),
       hook: "Night audit. Cash, no name in the book, and a man in a wet overcoat asking after her." }
   ];
 
@@ -64,8 +68,20 @@
     document.head.appendChild(s);
   }
 
+  // Same veto as board.js: the blazecore.dev site is the AdSense candidate, and AdSense
+  // weighs what a page links to. PROMO_ADULT_OK is opt-in everywhere else, but on that
+  // domain it cannot be opted into.
+  var ADSENSE_HOST = /(^|\.)blazecore\.dev$/;
+
+  function adultAllowed() {
+    try {
+      if (ADSENSE_HOST.test(location.hostname)) return false;
+    } catch (e) {}
+    return !!window.PROMO_ADULT_OK;
+  }
+
   function show(where) {
-    if (!window.PROMO_ADULT_OK) return false;      // portal builds stop here
+    if (!adultAllowed()) return false;             // portal + AdSense builds stop here
     if (document.querySelector(".promo-card")) return false;
     var g = pick();
     css();

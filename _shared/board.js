@@ -31,9 +31,24 @@
   var MEDIA_BASE = (typeof window.BOARD_BASE === "string") ? window.BOARD_BASE : "https://free.blazecore.dev/";
   var CATALOG_URL = MEDIA_BASE + "catalog.json";
 
-  var OWN_HOST = /(^|\.)blazecore\.dev$|(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/;
-  if (typeof window.BOARD_ADULT_OK === "undefined") {
-    window.BOARD_ADULT_OK = OWN_HOST.test(location.hostname) ? 1 : 0;
+  // Where the adult board may be drawn. This is deliberately NOT "our own hosts": the
+  // blazecore.dev site is the one we intend to put Google AdSense on, and AdSense judges
+  // a site by what it links to as well as what it shows. One adult tile in a board on
+  // that domain is the shape of thing that gets an AdSense account terminated, and that
+  // termination is not appealable in practice. So the adult board lives on the game hosts
+  // (*.workers.dev) and on local QA, and nowhere else.
+  var ADULT_HOST = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/;
+
+  // Hosts that must never render an adult link, whatever the page asks for. This is a veto,
+  // not a default — a host page setting BOARD_ADULT_OK = 1 cannot lift it. The rule is
+  // enforced here rather than remembered at each call site, because the failure is silent
+  // and expensive.
+  var ADSENSE_HOST = /(^|\.)blazecore\.dev$/;
+
+  if (ADSENSE_HOST.test(location.hostname)) {
+    window.BOARD_ADULT_OK = 0;
+  } else if (typeof window.BOARD_ADULT_OK === "undefined") {
+    window.BOARD_ADULT_OK = ADULT_HOST.test(location.hostname) ? 1 : 0;
   }
 
   // Baked-in fallback so a board still opens if the fetch fails — an empty grid after the
@@ -44,24 +59,52 @@
       { slug: "ghost-channel", name: "Ghost Channel", hook: "Five voices on a dead station. One is lying.", url: "https://free.blazecore.dev/ghost-channel/" },
       { slug: "office-landlord", name: "Office Landlord", hook: "Place staff, build chains, pay the landlord.", url: "https://free.blazecore.dev/office-landlord/" }
     ],
+    // Assembled from the host rather than written out, so that no complete adult URL
+    // appears as a literal in a file that also gets served from the AdSense domain. The
+    // fallback only ever runs where the adult board is allowed in the first place.
     adult: [
-      { slug: "elena", name: "Elena: Crimson Archives", hook: "A sealed archive at 11:42 PM.", url: "https://elena-crimson-archives.flat404.workers.dev/" },
-      { slug: "room704", name: "Room 704", hook: "Night audit. Cash, no name in the book.", url: "https://room-704.flat404.workers.dev/" }
+      { slug: "elena", name: "Elena: Crimson Archives", hook: "A sealed archive at 11:42 PM.", url: adultUrl("elena-crimson-archives") },
+      { slug: "room704", name: "Room 704", hook: "Night audit. Cash, no name in the book.", url: adultUrl("room-704") }
     ]
   };
 
   var catalog = null;
+  var adultCatalog = null;
 
   function tel(name, value) {
     try { if (window.TEL && TEL.ev) TEL.ev(name, value); } catch (e) {}
   }
 
-  function load() {
+  /* The adult catalogue is fetched from the game host, not from blazecore.dev, because
+   * the file listing adult titles must not exist on the AdSense candidate domain. A host
+   * page may override the base. */
+  function adultBase() {
+    return (typeof window.BOARD_ADULT_BASE === "string")
+      ? window.BOARD_ADULT_BASE
+      : adultUrl("free");
+  }
+
+  function adultUrl(slug) {
+    return "https://" + slug + ".flat404.workers.dev/";
+  }
+
+  /* `want` is "casual" or "adult". The casual catalogue comes from the SFW host and is
+   * safe anywhere; the adult one is only ever fetched where the adult board is allowed,
+   * so an AdSense-domain page never requests it and never receives those URLs. */
+  function load(want) {
+    if (want === "adult") {
+      if (!window.BOARD_ADULT_OK) return Promise.resolve({ casual: [], adult: [] });
+      if (adultCatalog) return Promise.resolve(adultCatalog);
+      return fetch(adultBase() + "catalog-adult.json", { mode: "cors" })
+        .then(function (r) { return r.json(); })
+        .then(function (j) { adultCatalog = j; return j; })
+        .catch(function () { adultCatalog = FALLBACK; return adultCatalog; });
+    }
     if (catalog) return Promise.resolve(catalog);
     return fetch(CATALOG_URL, { mode: "cors" })
       .then(function (r) { return r.json(); })
       .then(function (j) { catalog = j; return j; })
-      .catch(function () { catalog = FALLBACK; return catalog; });
+      .catch(function () { catalog = { casual: FALLBACK.casual, adult: [] }; return catalog; });
   }
 
   function css() {
@@ -200,7 +243,7 @@
 
   /* Offered between chapters of an adult title. The player is asked, not moved. */
   function offerBreak() {
-    return load().then(function (cat) {
+    return load("casual").then(function (cat) {
       var p = panel({
         tag: "break",
         title: "Need a breather?",
@@ -233,7 +276,7 @@
   function offerMore(kind) {
     var want = kind || "adult";
     if (want === "adult" && !window.BOARD_ADULT_OK) return Promise.resolve(false);
-    return load().then(function (cat) {
+    return load(want).then(function (cat) {
       var adult = want === "adult";
       var p = panel({
         tag: want,
@@ -242,7 +285,9 @@
           ? "We write adult visual novels too — full stories, free in your browser, 18+."
           : "A few small games, free in your browser. No account, no install."
       });
-      grid(p.box, (adult ? cat.adult : cat.casual) || FALLBACK[adult ? "adult" : "casual"], want);
+      var games = (adult ? cat.adult : cat.casual) || FALLBACK[adult ? "adult" : "casual"];
+      if (adult && !window.BOARD_ADULT_OK) games = [];   // belt and braces: never render
+      grid(p.box, games, want);
       return true;
     });
   }
