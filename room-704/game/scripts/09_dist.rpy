@@ -63,6 +63,30 @@ init -2 python:
         return store._r704_dist
 
 
+    # ---- the break offer ---------------------------------------------------
+    # Blaze's design: arousal fatigues, so between chapters a character asks whether the
+    # player wants ten minutes of something lighter, and only opens the casual board if
+    # they say yes. The board itself is play/_shared/board.js, loaded by the page.
+    #
+    # Not every gate. "After every chapter" was the ask, but a thing that asks every time
+    # is a thing players learn to dismiss without reading, and the second dismissal is
+    # worth less than the first. Offered on the 2nd and 4th gate of a session, never twice
+    # in a row, and never before the player has finished something.
+    def board_offer_break():
+        if not getattr(renpy, "emscripten", False):
+            return
+        n = getattr(store, "_board_gates", 0) + 1
+        store._board_gates = n
+        if n not in (2, 4):
+            return
+        _js("window.BOARD && BOARD.offerBreak && BOARD.offerBreak()")
+
+    def board_offer_more():
+        """End of the run: the rest of the adult catalogue, same consent shape."""
+        if not getattr(renpy, "emscripten", False):
+            return
+        _js("window.BOARD && BOARD.offerMore && BOARD.offerMore('adult')")
+
     # ---- server-gated art -------------------------------------------------
     # The uncensored CGs are not in the free packages at all. Completing a gate buys a
     # single-use, time-locked ticket; the bytes arrive from the gateway and are written to
@@ -372,6 +396,10 @@ label chapter_gate(n):
     if _return != 1:
         # They closed the ad. Ask again rather than dumping them to the menu.
         jump chapter_gate_retry
+    ## Offered after the unlock, never instead of it: the player has just paid attention
+    ## for the next act, so this asks whether they would rather spend ten minutes
+    ## elsewhere first. Says nothing on gates 1 and 3 (see board_offer_break).
+    $ board_offer_break()
     return
 
 label chapter_gate_retry:
