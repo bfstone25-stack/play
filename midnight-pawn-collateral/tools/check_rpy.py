@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Static check of the .rpy scripts, standing in for `renpy.sh lint`.
+"""Static check of the .rpy scripts — a fast pre-flight before `renpy.sh lint`.
 
-There is no Ren'Py SDK available (none on this machine, none on Blaze Ubuntu, not on PyPI),
-so this walks the scripts and checks the four things lint would have caught and that a
-hand-written fork gets wrong:
+A Ren'Py 8.3.7 SDK does exist on this machine (under another session's scratchpad
+in /tmp, so not a stable path); `renpy.sh lint` is clean and the game has been run
+end to end on DISPLAY=:0. These harnesses are still the fast loop, and the one that
+executes the scripts caught two crashes before the engine ever saw them.
+
+It walks the scripts and checks the things a hand-written fork gets wrong:
 
   1. every `jump`/`call <label>` target is a label that exists (in this project or in the
      Ren'Py/shared prelude);
   2. every `scene`/`show` image name is declared by an `image` statement (or is one of the
      dynamic `scene expression` forms);
   3. every `$`/`python:`/`init python:` block is valid Python;
+  3b. every name a python block *loads* is actually defined somewhere in the project —
+     lint does not do this, and a stale `route` from room-704 killed every non-paid track;
   4. `call ... from _name` checkpoints are unique, and every `call screen` names a declared
      screen.
 
@@ -145,6 +150,55 @@ def main():
             ast.parse(src)
         except SyntaxError as exc:
             errors.append("%s:%d  python block does not parse: %s" % (rel, ln, exc.msg))
+
+    # 3b. undefined names in python blocks ----------------------------------
+    # A real engine run found `route` — a room-704 variable that does not exist here — in a
+    # copied 09_dist line, which killed every non-paid track at appraisal 3. ast.parse() is
+    # happy with an undefined name, so resolve them: collect what the project defines and
+    # flag loads of anything else.
+    defined = set(dir(__builtins__)) | set(dir(ast))
+    defined |= {"renpy", "config", "persistent", "store", "_", "__", "gui", "build",
+                "preferences", "_preferences", "achievement", "layeredimage", "im",
+                "Character", "Solid", "Image", "Transform", "Function", "OpenURL", "Return",
+                "Start", "Show", "Hide", "Call", "TintMatrix", "BrightnessMatrix", "ui",
+                "emscripten", "urllib", "json", "os", "sys", "time", "threading", "uuid",
+                "math", "random", "re", "item", "n", "name", "key", "kind", "what", "t0",
+                "started", "_return", "True", "False", "None", "self", "exc", "d", "p", "f",
+                "core", "style", "layout", "absolute", "position", "director"}
+    all_src = ""
+    for path in files():
+        all_src += open(path, encoding="utf-8").read() + "\n"
+    for m in re.finditer(r"^\s*(?:default|define)\s+([A-Za-z_]\w*)", all_src, re.M):
+        defined.add(m.group(1))
+    for rel, ln, src in py_blocks:
+        try:
+            tree = ast.parse(src)
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                defined.add(node.name)
+            elif isinstance(node, ast.Name) and isinstance(node.ctx, ast.Store):
+                defined.add(node.id)
+            elif isinstance(node, ast.arg):
+                defined.add(node.arg)
+            elif isinstance(node, (ast.Import, ast.ImportFrom)):
+                for al in node.names:
+                    defined.add((al.asname or al.name).split(".")[0])
+    for rel, ln, src in py_blocks:
+        # Screen language has its own scope (for-loop vars, screen parameters) that a
+        # line-based parser cannot see, so the name pass covers the story scripts only.
+        if rel.endswith(("screens.rpy", "gui.rpy", "options.rpy")):
+            continue
+        try:
+            tree = ast.parse(src)
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load):
+                if node.id not in defined and not node.id.startswith("_"):
+                    errors.append("%s:%d  python block loads undefined name %r"
+                                  % (rel, ln, node.id))
 
     # 4. call screens + from-checkpoints ------------------------------------
     for rel, ln, name in call_screens:

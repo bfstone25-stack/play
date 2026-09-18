@@ -373,7 +373,12 @@ screen cg_buy_screen(name):
 
 label chapter_gate(n):
     # Called at the end of chapter n-1. Returns when chapter n may start.
-    $ tel_track("act_%d_finish" % (n - 1), {"route": route, "dist": dist_track()})
+    ## `route` was room-704's branch variable and does not exist in this fork, so this line
+    ## raised NameError on every non-paid track — i.e. the free browser build died at
+    ## appraisal 3, which is the first chapter_gate any player reaches. Caught by an actual
+    ## engine run, not by a static pass; check_rpy.py now resolves names so it cannot recur.
+    ## The fork's equivalent of a route is what the ledger says.
+    $ tel_track("act_%d_finish" % (n - 1), {"taken": len(run.readings_taken), "refused": len(run.readings_refused), "till": run.till, "dist": dist_track()})
     $ tel_flush(True)
     if dist_track() == "paid":
         return

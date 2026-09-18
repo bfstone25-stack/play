@@ -103,8 +103,39 @@ one. Kind and broke, or rich and blind.
 
 ## Verification
 
-No Ren'Py SDK exists on this machine or on Blaze Ubuntu, and `renpy` is not on PyPI, so
-`renpy.sh lint` was not available. Three harnesses stand in; all three pass.
+**Run in the real engine.** A Ren'Py 8.3.7 SDK is on this machine — under another session's
+scratchpad in `/tmp`, which is why a first, depth-limited search missed it, and which means
+the path is not stable; find it with `find /tmp/claude-1000 -name renpy.sh`.
+
+```
+export DISPLAY=:0 SDL_AUDIODRIVER=dummy RENPY_PERFORMANCE_TEST=0
+"$SDK/renpy.sh" /home/frankstone/Products/play/midnight-pawn-collateral lint
+```
+
+`lint` is clean — the only remaining warning is `10_i18n.rpy:29 init priority (1500)`, which
+is inherited verbatim from room-704 and present there too. Lint counts **512 dialogue blocks,
+9,087 words**, independently confirming the design's 9,000–11,000 band.
+
+The game was then played to completion in the engine, twice, with an auto-pilot injected into
+a throwaway copy (patching `renpy.exports.menu`/`say`/`call_screen` and overriding
+`label main_menu` so it starts itself; the window needs a real display — SDL's `dummy` and
+`offscreen` drivers both fail the GL setup, and there is no Xvfb):
+
+- **paid track** — 417 lines, every choice, ending **Collateral**, till 90 / net 187 against a
+  debt of 200, and **five CGs unlocked and written to the persistent gallery**. Numbers match
+  `tools/simulate.py` route 1 exactly.
+- **demo track** (`game/dist.txt` = `demo`) — `chapter_gate` fires, the story reaches
+  `demo_paywall_screen`, and **the refund fires in the engine**: `fees paid=0 refunded=35`,
+  with the in-fiction lines printed. No exceptions.
+
+**This found a real shipping bug.** `09_dist.rpy:376` still referenced `route`, room-704's
+branch variable, which does not exist here — so `chapter_gate` raised `NameError` and *every
+non-paid track died at appraisal 3*, the first gate any free player reaches. The static pass
+had missed it because `ast.parse()` is perfectly happy with an undefined name.
+`tools/check_rpy.py` now resolves names against everything the project defines, and re-adding
+the bug makes it fail, so it cannot come back.
+
+Three fast harnesses also pass, and are the loop to use while writing:
 
 ```
 python3 tools/check_rpy.py     # static: labels, images, python blocks, GATED_CGS, plate files
@@ -116,8 +147,9 @@ python3 tools/make_placeholders.py            # regenerate the placeholder plate
 
 `tools/simulate.py` is a small interpreter for the Ren'Py subset the story uses
 (label/jump/call/return/menu with conditional options/if-elif-else/`$`/`python:`/say). It
-reads the real files off disk. It found two crash bugs a static pass missed: a multi-line `$`
-statement (illegal in Ren'Py) and the double fee prompt above.
+reads the real files off disk, runs in a second, and needs no display. It found two crash bugs
+a static pass missed, before the engine ever saw them: a multi-line `$` statement (illegal in
+Ren'Py) and the double fee prompt above.
 
 ## What is waiting on art
 

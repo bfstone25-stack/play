@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """Play the night, headless, against the real rules module.
 
-There is no Ren'Py SDK on this machine or on Blaze Ubuntu (checked: no renpy.sh anywhere, and
-renpy is not on PyPI), so `renpy.sh lint` and an actual window are not available here. This
-harness is the substitute that matters: it imports game/python-packages/collateral_core.py —
+An SDK is available (see README), but a full engine playthrough takes minutes and needs a
+display; this runs in under a second and is where the rules get asserted. It imports game/python-packages/collateral_core.py —
 the same file 00_init.rpy imports — and replays whole runs through it, asserting the things
 that would otherwise only be caught by a human clicking.
 

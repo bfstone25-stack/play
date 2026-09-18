@@ -1,0 +1,44 @@
+2026-09-18 05:47:36 UTC
+Linux-6.12.10-76061203-generic-x86_64-with-glibc2.35
+Ren'Py 8.3.7.25031702
+
+Early init took 0.07s
+Loading error handling took 0.04s
+Loading script took 0.11s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.06s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Dump and make backups took 0.00s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+﻿Ren'Py 8.3.7.25031702 lint report, generated at: Thu Sep 17 22:47:37 2026
+
+game/scripts/10_i18n.rpy:29 The init priority (1500) is not in the -999 to 999 range.
+
+
+Statistics:
+
+The game contains 512 dialogue blocks, containing 9,087 words and 46,378
+characters, for an average of 17.7 words and 91 characters per block.
+
+The game contains 9 menus, 15 images, and 22 screens.
+
+
+Lint is not a substitute for thorough testing. Remember to update Ren'Py
+before releasing. New releases fix bugs and improve compatibility.

@@ -2,8 +2,8 @@
 """Actually execute the story scripts, without Ren'Py.
 
 tools/check_rpy.py is static and tools/playthrough.py exercises the rules module. Neither of
-them runs the game. With no Ren'Py SDK available anywhere (none on this machine, none on the
-GPU box, not on PyPI), this is the closest thing to playing it: a small interpreter for the
+them runs the game. A real SDK is available (see README) but takes minutes per route and needs
+a display, so this is the fast way to play it: a small interpreter for the
 subset of Ren'Py the story files actually use — label / jump / call / return / menu (including
 conditional options) / if-elif-else / $ / python: / scene / show / say / with / play / stop /
 call screen — driven by a scripted list of menu choices.
