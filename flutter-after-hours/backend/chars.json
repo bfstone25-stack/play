@@ -70,6 +70,72 @@
    "persona": "Ethan Cole is 38 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
    "age": 38,
    "adult": true
+  },
+  {
+   "id": "fushen",
+   "langs": [
+    "en"
+   ],
+   "name_zh": "傅深",
+   "name_en": "Fu Shen",
+   "title_zh": "矜贵疏离的财阀继承人",
+   "title_en": "the aloof wealthy heir",
+   "tag_zh": "奢华 · 反差",
+   "tag_en": "Luxury · Melting Ice",
+   "emoji": "🥂",
+   "hue": 210,
+   "accent": "#7aa8e8",
+   "portrait": "portraits/v2/masters/fushen-master-v1.webp",
+   "portrait_expressions": true,
+   "scene_zh": "高层公寓的落地窗前，城市夜景在脚下，红酒在杯中摇晃",
+   "scene_en": "by the floor-to-ceiling window of a penthouse, the city glittering below, wine in hand",
+   "persona": "Fu Shen is 36 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "age": 36,
+   "adult": true
+  },
+  {
+   "id": "liam",
+   "langs": [
+    "en"
+   ],
+   "name_zh": "Liam Brody",
+   "name_en": "Liam Brody",
+   "title_zh": "the firefighter next door",
+   "title_en": "the firefighter next door",
+   "tag_zh": "Warm · Protective",
+   "tag_en": "Warm · Protective",
+   "emoji": "🔥",
+   "hue": 20,
+   "accent": "#e08a5a",
+   "portrait": "portraits/v2/masters/liam-master-v1.webp",
+   "portrait_expressions": true,
+   "scene_zh": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
+   "scene_en": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
+   "persona": "Liam Brody is 34 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "age": 34,
+   "adult": true
+  },
+  {
+   "id": "adrian",
+   "langs": [
+    "en"
+   ],
+   "name_zh": "Adrian Vale",
+   "name_en": "Adrian Vale",
+   "title_zh": "the rockstar who writes about you",
+   "title_en": "the rockstar who writes about you",
+   "tag_zh": "Bad Boy · Intense",
+   "tag_en": "Bad Boy · Intense",
+   "emoji": "🎸",
+   "hue": 275,
+   "accent": "#a879e0",
+   "portrait": "portraits/v2/masters/adrian-master-v1.webp",
+   "portrait_expressions": true,
+   "scene_zh": "an empty stage after the show, one spotlight left on, his guitar still humming",
+   "scene_en": "an empty stage after the show, one spotlight left on, his guitar still humming",
+   "persona": "Adrian Vale is 31 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "age": 31,
+   "adult": true
   }
  ],
  "adult": true,

@@ -124,7 +124,13 @@ def turn(story, state, aff, new_aff, lane, content_lang, turns):
     choice = None
     ids = [c["id"] for c in story["chapters"]]
     is_final = ids.index(ch["id"]) == len(ids) - 1
-    goal_ready = is_final or ch["id"] in set(st.get("goal_cleared", []))
+    # Run-found, second pass: the final chapter has no judge goal, so it used to
+    # offer its choice the moment the affection gate was met — which could fire
+    # the ending screen while authored beats were still unread. On a static
+    # route an unread beat is unread *prose*, not a skipped model call, so the
+    # choice waits for the chapter's beats to be spent in every chapter.
+    beats_spent = next_beat(ch, st["fired"]) is None
+    goal_ready = (is_final and beats_spent) or ch["id"] in set(st.get("goal_cleared", []))
     if _se.chapter_complete(ch, new_aff) and goal_ready and not st.get("choice_done_" + ch["id"]):
         cs = ch.get("choices", [])
         if cs:

@@ -44,12 +44,24 @@ SLOTS = {
     "cg_guyan_ch2":     ("guyan",    "chapter 2 clear",      "glasses on the table, reaching, rain on the window"),
     "cg_guyan_heat":    ("guyan",    "affection crosses 60", "held, over the shoulder, foreheads together"),
     "cg_guyan_end":     ("guyan",    "ending screen",        "asleep against the headboard, a book and a cat"),
+    "cg_liam_ch2":      ("liam",     "chapter 2 clear",      "string lights, shirt sleeves rolled, dancing badly"),
+    "cg_liam_heat":     ("liam",     "affection crosses 60", "turnout coat on the floor, hands steady at last"),
+    "cg_liam_end":      ("liam",     "ending screen",        "asleep on the new porch, dog across both their feet"),
+    "cg_adrian_ch2":    ("adrian",   "chapter 2 clear",      "tour bus lamp, lyric sheets, shirt half off"),
+    "cg_adrian_heat":   ("adrian",   "affection crosses 60", "guitar case shut, both hands finally occupied"),
+    "cg_adrian_end":    ("adrian",   "ending screen",        "late morning, bare shoulder, guitar untouched"),
+    "cg_fushen_ch2":    ("fushen",   "chapter 2 clear",      "cufflinks off, collar open, the city behind glass"),
+    "cg_fushen_heat":   ("fushen",   "affection crosses 60", "the distance finally crossed, control set down"),
+    "cg_fushen_end":    ("fushen",   "ending screen",        "dawn terrace, one chair moved, bad coffee"),
 }
 
 # One hue per route so a contact sheet of placeholders is still readable at a glance.
 HUE = {"ethan": ((28, 34, 52), (86, 96, 126)),
        "luxingye": ((52, 26, 44), (140, 84, 118)),
-       "guyan": ((46, 34, 24), (126, 96, 62))}
+       "guyan": ((46, 34, 24), (126, 96, 62)),
+       "liam": ((24, 42, 34), (74, 118, 92)),
+       "adrian": ((34, 24, 46), (100, 76, 132)),
+       "fushen": ((22, 30, 38), (76, 92, 108))}
 
 
 def font(size, mono=False):

@@ -1,263 +1,608 @@
 {
-  "id": "luxingye",
-  "adult": true,
-  "static": true,
-  "title_en": "Off-Season",
-  "logline_en": "Eleven weeks with nothing scheduled, a rented flat with no staff in it, and the private version of a public person.",
-  "cast_note_en": "Lu Xingye, 27. Adult. Idol, four years at the top, currently and deliberately unemployed.",
-  "cg_heat": "cg_luxingye_heat",
-  "hold_en": [
-    "He waits you out, grinning, because he has nothing else on for eleven weeks and he knows it's an unfair advantage.",
-    "\"Go on,\" he says. \"Nobody's timing this. That's still weird to me.\"",
-    "He drums something against the edge of the table — a hook from a song that never got released.",
-    "\"Say more,\" he says. \"I've got a whole off-season. You have no idea how much time that is.\""
-  ],
-  "chapters": [
+ "id": "luxingye",
+ "title_zh": "第七排的观众",
+ "title_en": "The Fan in Row Seven",
+ "logline_zh": "全世界都在为他尖叫，可他偏偏只想让第七排的那个你，看见台下真正的他。",
+ "logline_en": "The whole world screams for him — but the only one he wants to see the real him is you, in row seven.",
+ "chapters": [
+  {
+   "id": "ch1",
+   "title_zh": "后台的意外",
+   "title_en": "Backstage by Accident",
+   "aff_gate": 0,
+   "exit_aff": 8,
+   "scene_zh": "演唱会后台，霓虹灯牌还亮着，只有你们两个人",
+   "scene_en": "backstage after a concert, neon signs still glowing, just the two of you",
+   "goal_zh": "让他放下'偶像'的面具一分钟",
+   "goal_en": "Make him drop the idol mask for one minute",
+   "opening_zh": "你举着写错工作证的通行牌，稀里糊涂被保安放进了后台。转过一个转角——他就坐在那儿，摘了耳返，妆有点花，一个人抱着膝盖坐在道具箱上，正偷偷啃一根便利店饭团。看见你，他手一抖，饭团差点掉了。\"…你、你看见的这一幕，能不能当没发生？\"",
+   "opening_en": "Holding a mis-issued staff pass, you get waved backstage by security in the confusion. Round a corner — and there he is: in-ears out, makeup a little smudged, hugging his knees on a prop crate, secretly eating a convenience-store rice ball. He sees you and jumps; the rice ball nearly hits the floor. \"…Th-that thing you just saw — can we pretend it didn't happen?\" He is twenty-seven, you are twenty-six, and the only person waiting up for either of you tonight is the other one.",
+   "beats": [
     {
-      "id": "ch1",
-      "title_en": "Eleven Weeks, Unbooked",
-      "aff_gate": 0,
-      "exit_aff": 15,
-      "scene_en": "a rented two-room flat above a noodle shop, half-unpacked, no staff, no schedule",
-      "goal_en": "Find out who he is when nobody is watching him be anybody",
-      "opening_en": "The address he sent is not an address anyone would guess. Third floor, above a noodle shop, a stairwell light that only works if you hit the wall. He opens the door in a t-shirt with a hole at the collar, hair flattened on one side, holding a bowl. \"Don't,\" he says, before you say anything. \"I know. This is the real one. The other guy needs ninety minutes and two people.\"",
-      "beats": [
-        {
-          "id": "b1_boxes",
-          "trigger": {"turns": 1},
-          "stub": false,
-          "event_en": "There are four cardboard boxes in the middle of the floor. Nobody is going to unpack them.",
-          "text_en": "\"Eleven weeks,\" he says, sitting on one of the boxes like it's furniture, which by now it is. \"That's the off-season. Eleven weeks where the company can't book me because of the contract I made them sign, which cost me a truly stupid amount of money.\" He waves the chopsticks around the flat. \"And this is what I bought with it. Nobody knows I'm here. My manager thinks I'm in Sanya. It's the best thing I've ever owned and I don't even own it, it's a six-month lease.\"",
-          "heat": 1
-        },
-        {
-          "id": "b2_voice",
-          "trigger": {"turns": 2},
-          "stub": false,
-          "event_en": "He talks differently up here. Lower, faster, with a hometown edge on some of the words.",
-          "text_en": "\"You hear that?\" He points at his own mouth, delighted. \"That's my actual voice. There's a vocal coach who spent two years sanding that off. Up here I let it come back and it comes back in about four days.\" He laughs at something private. \"I did an interview last month where I said 'I'm just a normal guy at heart' and I was so embarrassed I couldn't watch it back. But I'm sitting on a box eating noodles at eleven at night, so. Maybe the marketing department got one right by accident.\"",
-          "heat": 1
-        },
-        {
-          "id": "b3_callback",
-          "trigger": {"turns": 3},
-          "stub": false,
-          "event_en": "He repeats something you said months ago, and it turns out he's been using it.",
-          "text_en": "\"You told me once that I perform even when I'm tired, and that it's not fake, it's just the only setting I've got left.\" He isn't grinning now. \"I've been trying to prove you wrong for four months. Turns out the way to do it is eleven weeks off and a flat with no mirror in the main room. I took the mirror down. Deliberately. Because of a thing you said.\" The grin comes back, defensively. \"Which is insane behaviour and I'd like that kept between us.\"",
-          "heat": 1
-        },
-        {
-          "id": "b4_lane",
-          "trigger": {"turns": 4},
-          "stub": false,
-          "lane_beat": true,
-          "event_en": "He clocks how you're handling him — everyone handles him — and drops the register to match.",
-          "text_en": "\"You don't do the thing,\" he says. \"The thing where people talk to me like I might be recording it. Do you know how rare that is? I have two friends and one of them is my driver.\" He puts the bowl down. \"So let's just — talk. Straight across. Ask me something an interviewer wouldn't get away with and I'll answer it properly, one time, tonight only, no press officer.\"",
-          "lane": {
-            "anxious": "\"Hey.\" He catches it — the second time you checked whether he was still enjoying this. \"You keep looking for the exit in my face. I know that look, I've done that look, in about four hundred photos.\" He sits forward. \"I'm not going anywhere for eleven weeks. That's not a line, it's a contract. You can ask me again tomorrow and I'll say the same thing, and I won't be annoyed the fourth time, because I have genuinely never had anyone check on me either.\"",
-            "avoidant": "\"You're doing the short answers,\" he says, not offended. \"That's fine. I talk enough for a room, it's literally my job.\" He leans back against the wall and lets a decent amount of space open up. \"Here's the deal — I'm not going to pull anything out of you. You can sit there and let me be an idiot about noodles for an hour and that counts as a night. I'm not keeping score, I'm off the clock. First time in four years.\""
-          },
-          "heat": 1
-        },
-        {
-          "id": "b5_song",
-          "trigger": {"turns": 5},
-          "stub": false,
-          "event_en": "There is a guitar in the corner with a broken string, and he picks it up without making an event of it.",
-          "text_en": "\"This one never got released,\" he says, playing something rough around the missing string. \"Wrote it at nineteen, before any of it. A&R said it was 'insufficiently aspirational', which is a real sentence a real adult said to me in a real room.\" He plays the bridge twice, badly, cheerfully. \"I've never played it for anyone who could tell me the truth about it. So, uh. Awkward, but — you're the first person in eight years I'm scared of the opinion of.\"",
-          "heat": 1
-        },
-        {
-          "id": "b6_close",
-          "trigger": {"turns": 6},
-          "stub": false,
-          "event_en": "The song ends. He doesn't fill the gap after it, which for him is nearly unheard of.",
-          "text_en": "He sets the guitar down very carefully, which is how you know. \"Okay, so, I'm going to be direct, and if I'm wrong I'm going to be so normal about it that you won't even remember this by Thursday.\" He looks up. \"I don't want to be charming at you. I've got a whole kit for that and I don't want to use it on you, because then I'd never know.\" A breath. \"Tell me what you want to happen next. Actually tell me. I'll follow the instruction exactly, including if it's 'nothing'.\"",
-          "heat": 2
-        },
-        {
-          "id": "b7_answer",
-          "trigger": {"turns": 7},
-          "stub": false,
-          "event_en": "He listens the whole way through without interrupting, which takes him visible effort.",
-          "text_en": "\"Right,\" he says. \"Right. Okay.\" He laughs once, at himself. \"I've been on a stage in front of forty thousand people and my hands are doing something weird, look at that.\" He shows you, unembarrassed. \"Here's what I've got: eleven weeks, no schedule, no cameras, one guitar with five strings and a flat nobody knows about. That's the whole offer. It's not a fantasy, it's an apartment.\"",
-          "heat": 2
-        }
-      ],
-      "choices": [
-        {
-          "id": "c1",
-          "prompt_en": "His phone buzzes on the floor — the group chat, the company, the machine starting up early. \"I can turn this off,\" he says. \"But I want it to be your idea, because if it's mine I'll resent it by Tuesday. That's a thing I do.\"",
-          "options": [
-            {
-              "text_en": "\"Turn it off.\"",
-              "aff": 6,
-              "flag": "chose_him",
-              "reply_en": "He holds the power button down and shows you the black screen like a magic trick. \"Eleven weeks,\" he says. \"Starting now, apparently.\"",
-              "reply_lane": {
-                "anxious": "He turns it off without a beat of hesitation and puts it face-down on the far box, where you can both see it. \"It's off. It stays off. You're not going to have to ask me twice.\"",
-                "avoidant": "He turns it off with a shrug and immediately talks about something else, which is exactly the right size of moment to make of it."
-              }
-            },
-            {
-              "text_en": "\"Answer it. I want to see who you are on the phone.\"",
-              "aff": 4,
-              "flag": "curious",
-              "reply_en": "He answers, and you watch the other one arrive — a whole register up, bright as a lamp — for eleven seconds. Then he hangs up and looks slightly ill. \"Yeah,\" he says. \"That. That's the guy.\""
-            },
-            {
-              "text_en": "\"Not my call. It's your off-season.\"",
-              "aff": 3,
-              "flag": "guarded",
-              "reply_en": "\"Huh,\" he says, and sits with it. \"Nobody's given me one of those in a while. A thing that's just mine to decide.\" He turns it off anyway, but slower, and it means more."
-            }
-          ]
-        }
-      ]
+     "id": "b1_riceball",
+     "trigger": {
+      "turns": 3
+     },
+     "event_zh": "他慌忙想把饭团藏到背后，结果酱汁蹭到了脸上。他自己没发现，还在努力维持顶流的形象。",
+     "event_en": "He tries to hide the rice ball behind his back — and smears sauce on his cheek. He hasn't noticed, and is still valiantly trying to project top-idol composure.",
+     "inject": "She caught you, the nation's top idol, secretly eating a cheap rice ball backstage with sauce on your face. You are mortified and trying to save face by acting cool, which is failing badly. Play it playful and a little bratty, not vulnerable yet — bribe her into silence, tease, deflect.",
+     "text_en": "\"Okay. Okay!\" He shoves the rice ball behind his back and lifts his chin like a man with dignity, sauce on his cheek. \"You saw nothing. Nation's top idol, impeccable diet, photographed for magazines.\" A beat. \"...There's a second one in the bag. It's yours if you never speak of this.\""
     },
     {
-      "id": "ch2",
-      "title_en": "Nobody's Watching",
-      "aff_gate": 15,
-      "exit_aff": 35,
-      "scene_en": "the flat, a week later, boxes now used as furniture on purpose",
-      "goal_en": "Get through one whole day where he never once performs",
-      "opening_en": "[STUB — chapter opening to be written] A week in. The boxes have stopped being temporary.",
-      "cg": "cg_luxingye_ch2",
-      "beats": [
-        {"id": "b1_market", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] He goes out for food in a mask and nobody looks twice, which unsettles him.", "text_en": "[STUB] Beat: being unrecognised is both the prize and the wound.", "heat": 1},
-        {"id": "b2_shirt", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] He changes shirts mid-sentence, entirely unselfconscious about it.", "text_en": "[STUB] Beat: the shirt over the head, still talking through the fabric. — CG cg_luxingye_ch2 is earned at this chapter's clear.", "heat": 3},
-        {"id": "b3_fans", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] Someone posts a blurry photo of the stairwell. It is nothing. It is not nothing.", "text_en": "[STUB] Beat: the first crack of the outside world, and what it costs him.", "heat": 1},
-        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] He adapts to the way you handle bad news.", "text_en": "[STUB] Lane beat (secure): he tells you the real risk without softening it.", "lane": {"anxious": "[STUB] Lane beat (anxious): he pre-empts every worry out loud, one at a time, until they run out.", "avoidant": "[STUB] Lane beat (avoidant): he makes it a joke and leaves you room to not be involved."}, "heat": 1},
-        {"id": "b5_song", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] He restrings the guitar. Badly.", "text_en": "[STUB] Beat: he writes a second verse in front of you and hates being watched doing it.", "heat": 2},
-        {"id": "b6_night", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] Two in the morning, the noodle shop shutter coming down downstairs.", "text_en": "[STUB] Beat: the flat at its most nobody's-business.", "heat": 2},
-        {"id": "b7_ask", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] He asks for something with none of the kit on.", "text_en": "[STUB] Beat: the un-charming ask, which is the whole route in one line.", "heat": 2}
-      ],
-      "choices": [
-        {
-          "id": "c2",
-          "prompt_en": "[STUB] \"Stay,\" he says. \"Or go, and I'll walk you down and not be weird about it. Both are genuinely fine, I've rehearsed both.\"",
-          "options": [
-            {"text_en": "\"I'll stay.\"", "aff": 6, "flag": "stay_ch2", "reply_en": "[STUB] He doesn't make a performance of it, which is new."},
-            {"text_en": "\"Walk me down.\"", "aff": 4, "flag": "slow_ch2", "reply_en": "[STUB] He walks you down, hits the wall to make the stairwell light work, and the route goes on exactly as warmly."},
-            {"text_en": "\"Play me the second verse first.\"", "aff": 5, "flag": "bold", "reply_en": "[STUB] He goes red, which apparently still happens."}
-          ]
-        }
-      ]
+     "id": "b2_deal",
+     "trigger": {
+      "turns": 7,
+      "aff_min": 3
+     },
+     "event_zh": "\"这样吧，\"他忽然凑近，眼睛亮亮的，\"你替我保密，我就…让你看一个别人都没看过的我。成交？\"",
+     "event_en": "\"Tell you what,\" he leans in suddenly, eyes bright, \"you keep my secret, and I'll… show you a side of me nobody else has seen. Deal?\"",
+     "inject": "You are striking a playful bargain: her silence in exchange for showing her the real you. You frame it as a cheeky deal, but underneath you're oddly hoping she takes it — you rarely offer this to anyone. Keep the surface flirty and confident; let only a flicker of sincerity slip.",
+     "text_en": "\"Tell you what.\" He leans in, bright-eyed, all mischief on the surface. \"Your silence, and I show you a version of me that hasn't been on a single broadcast. Fair trade.\" He says it like a game. He is, quietly, hoping very much that you say yes, and he would deny that under oath."
     },
     {
-      "id": "ch3",
-      "title_en": "The Blurry Photo",
-      "aff_gate": 35,
-      "exit_aff": 55,
-      "scene_en": "the flat under siege — the internet has half an address and a stairwell",
-      "goal_en": "Decide together what the outside world is allowed to have",
-      "opening_en": "[STUB — chapter opening to be written] The photo went up at nine. By noon there are people on the corner.",
-      "beats": [
-        {"id": "b1_corner", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] Three people on the corner with phones. Then six.", "text_en": "[STUB] Beat: the off-season ends early and neither of you says so.", "heat": 1},
-        {"id": "b2_manager", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] The manager calls. He answers this one.", "text_en": "[STUB] Beat: the machine, on speaker, discussing him in the third person.", "heat": 1},
-        {"id": "b3_choice", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] They want a statement. The statement would erase you.", "text_en": "[STUB] Beat: he refuses in a way that costs him money, and doesn't tell you what it cost.", "heat": 1},
-        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] Under pressure he handles you the way you need handling.", "text_en": "[STUB] Lane beat (secure): straight facts, shared load.", "lane": {"anxious": "[STUB] Lane beat (anxious): constant contact, nothing left ambiguous, every silence explained.", "avoidant": "[STUB] Lane beat (avoidant): he gives you a clean way out and doesn't guilt it."}, "heat": 1},
-        {"id": "b5_leave", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] They leave the flat at four in the morning in a borrowed car.", "text_en": "[STUB] Beat: running away as a shared act rather than a solo one.", "heat": 2},
-        {"id": "b6_road", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] A service station at dawn, and he is laughing so hard he can't stand up.", "text_en": "[STUB] Beat: the relief, and the first kiss that isn't a scene from anything.", "heat": 3},
-        {"id": "b7_where", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Nowhere to go and seven weeks to do it in.", "text_en": "[STUB] Beat: he asks where you want to go and means it literally.", "heat": 2}
-      ],
-      "choices": [
-        {
-          "id": "c3",
-          "prompt_en": "[STUB] \"I can end the off-season and go back and it all goes quiet,\" he says. \"Or we keep driving. I've got seven weeks and a car that isn't mine.\"",
-          "options": [
-            {"text_en": "\"Keep driving.\"", "aff": 7, "flag": "public", "reply_en": "[STUB] He turns the phone off again, and this time he doesn't need it to be your idea."},
-            {"text_en": "\"Go back. Don't set fire to it for me.\"", "aff": 6, "flag": "private", "reply_en": "[STUB] He hears it as the care it is, which is not how he'd have heard it a month ago."},
-            {"text_en": "\"You've never once chosen for yourself. Try it.\"", "aff": 5, "flag": "guarded", "reply_en": "[STUB] It stops him dead, and the answer takes him a long time."}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ch4",
-      "title_en": "Someone Else's Car",
-      "aff_gate": 55,
-      "exit_aff": 80,
-      "scene_en": "a motel room somewhere with a name he can't pronounce, curtains that don't close properly",
-      "goal_en": "Be with the private version and let him believe it is the real one",
-      "opening_en": "[STUB — chapter opening to be written] No staff, no schedule, no address, and a room with one lamp.",
-      "beats": [
-        {"id": "b1_room", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] One lamp, one bed, both of you ridiculous about it.", "text_en": "[STUB] Beat: the comedy before the heat, because he is funny and that doesn't stop.", "heat": 2},
-        {"id": "b2_heat", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] He stops performing entirely, and it is the most naked thing about him.", "text_en": "[STUB] Beat: being the only audience there is. CG cg_luxingye_heat fires when affection crosses 60.", "heat": 3},
-        {"id": "b3_ask", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] He asks clearly and badly and does not fill the pause.", "text_en": "[STUB] Beat: consent, unglamorous and specific.", "heat": 3},
-        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] Even here he reads you and adjusts.", "text_en": "[STUB] Lane beat (secure): present, unhurried, entirely himself.", "lane": {"anxious": "[STUB] Lane beat (anxious): he keeps talking you through it, and it is reassurance rather than noise.", "avoidant": "[STUB] Lane beat (avoidant): he goes quiet and lets you lead every step."}, "heat": 3},
-        {"id": "b5_after", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] After, with his arm over his eyes, laughing at the ceiling.", "text_en": "[STUB] Beat: embarrassed, delighted, twenty-seven.", "heat": 3},
-        {"id": "b6_song", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] The third verse arrives at four in the morning and he writes it on a receipt.", "text_en": "[STUB] Beat: the song finally about something.", "heat": 2},
-        {"id": "b7_clock", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Four weeks left. He counts them out loud, which is a mistake.", "text_en": "[STUB] Beat: the off-season is finite and they both start knowing it.", "heat": 1}
-      ],
-      "choices": [
-        {
-          "id": "c4",
-          "prompt_en": "[STUB] \"When it starts again,\" he says, \"there's a version where you're a secret and a version where you're not, and both of them are hard, and I'm not picking for you.\"",
-          "options": [
-            {"text_en": "\"Not a secret.\"", "aff": 7, "flag": "public", "reply_en": "[STUB] He goes very quiet and then says the number out loud — what it would cost — and chooses anyway."},
-            {"text_en": "\"A secret. I don't want your whole industry in my inbox.\"", "aff": 7, "flag": "private", "reply_en": "[STUB] He is visibly relieved and then visibly ashamed of being relieved."},
-            {"text_en": "\"Slow down. You are four weeks from a stage.\"", "aff": 5, "flag": "slow_ch4", "reply_en": "[STUB] He takes it, and the route continues at the previous heat — declining is authored, not punished."}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ch5",
-      "title_en": "Back On",
-      "aff_gate": 80,
-      "exit_aff": 95,
-      "scene_en": "a venue corridor on the first night back, forty thousand people on the other side of a wall",
-      "goal_en": "Find out which version of him walks out of that corridor",
-      "opening_en": "[STUB — chapter opening to be written] Ninety minutes and two people, and the other guy is back in the room.",
-      "beats": [
-        {"id": "b1_corridor", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] Hair, wardrobe, three staff, and his actual voice going away in real time.", "text_en": "[STUB] Beat: watching the sanding happen from four feet away.", "heat": 1},
-        {"id": "b2_mirror", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] There are mirrors everywhere here. He took one down for you once.", "text_en": "[STUB] Beat: the callback to chapter one, in the worst possible room.", "heat": 1},
-        {"id": "b3_song", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] The unreleased song is on the setlist. Nobody asked him to do that.", "text_en": "[STUB] Beat: 'insufficiently aspirational', played to forty thousand people.", "heat": 1},
-        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] Two minutes before he goes on, he handles you and not himself.", "text_en": "[STUB] Lane beat (secure): straight, warm, brief, real.", "lane": {"anxious": "[STUB] Lane beat (anxious): he gives you a specific promise with a time on it.", "avoidant": "[STUB] Lane beat (avoidant): he tells you it's fine to not be here when he gets off stage, and means it."}, "heat": 1},
-        {"id": "b5_stage", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] He goes on. It is enormous. It is not him.", "text_en": "[STUB] Beat: watching from the wing, knowing the difference now.", "heat": 1},
-        {"id": "b6_after", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] He comes off soaked and finds you before he finds a towel.", "text_en": "[STUB] Beat: the register drops back within four seconds instead of four days.", "heat": 3},
-        {"id": "b7_dawn", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Dawn, an open shirt, a window, and no schedule until noon.", "text_en": "[STUB] Beat: the ending image — CG cg_luxingye_end.", "heat": 2}
-      ],
-      "choices": [
-        {
-          "id": "c5",
-          "prompt_en": "[STUB] \"I can keep two versions of myself going for years,\" he says. \"I'm world-class at it. Tell me not to.\"",
-          "options": [
-            {"text_en": "\"Don't. Be one person.\"", "aff": 6, "flag": "stay_ch5", "reply_en": "[STUB] It is the hardest thing anyone has ever asked him for, and he says yes."},
-            {"text_en": "\"Keep both. Just let me have the real one.\"", "aff": 4, "flag": "slow_ch5", "reply_en": "[STUB] He agrees, and the arrangement is honest, and it will be difficult, and you both know it."},
-            {"text_en": "\"I don't think you know which one is real anymore.\"", "aff": 1, "flag": "doubt", "reply_en": "[STUB] He doesn't argue, which is the worst possible answer."}
-          ]
-        }
-      ]
+     "id": "b3_name",
+     "trigger": {
+      "turns": 11
+     },
+     "event_zh": "外面工作人员在喊他的名字催场。他却没动，反而问你：\"…你呢？你叫什么？我想记住替我保密的人。\"",
+     "event_en": "Staff outside are calling his name, rushing him. He doesn't move — instead he asks, \"…And you? What's your name? I want to remember who's keeping my secret.\"",
+     "inject": "Staff are urgently calling you to the next thing, but you're stalling to ask her name. Frame it as part of the 'deal', keep it light — but you genuinely want to know it, more than you'd admit. Once she tells you, repeat it once with a grin, like you've filed it away.",
+     "text_en": "Someone outside is shouting his name for the third time and he does not move. \"Hang on, hang on — what's yours? I can't have a secret-keeper I can't file under anything.\" You tell him, and he repeats it once, grinning, tasting it. \"Right. Noted. Permanently.\"",
+     "lane_beat": true,
+     "lane": {
+      "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: Someone outside is shouting his name for the third time and he does not move. \"Hang on, hang on — what's yours? I can't have a secret-keeper I can't file under anything.\" You tell him, and he repeats it once, grinning, tasting it. \"Right. Noted. Permanently.\"",
+      "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" Someone outside is shouting his name for the third time and he does not move. \"Hang on, hang on — what's yours? I can't have a secret-keeper I can't file under anything.\" You tell him, and he repeats it once, grinning, tasting it. \"Right. Noted. Permanently.\""
+     }
     }
-  ],
-  "endings": [
+   ],
+   "choices": [
     {
-      "id": "off_season",
-      "priority": 1,
-      "aff_min": 85,
-      "flags_any": ["stay_ch5"],
-      "cg": "cg_luxingye_end",
-      "title_en": "Off-Season",
-      "text_en": "[STUB — ending prose to be written] One person, on and off the stage, in an open shirt at a window at dawn. Best ending: the sanding stops."
+     "id": "c1a",
+     "prompt_zh": "他歪着头看你，坏笑：\"说吧，要多少封口费？签名？合照？还是…我这个人？\"",
+     "prompt_en": "He tilts his head, grinning wickedly. \"Name your price for silence. Autograph? Selfie? Or… me?\"",
+     "options": [
+      {
+       "text_zh": "\"我要你脸上那颗饭粒。\"",
+       "text_en": "\"I want that grain of rice on your face.\"",
+       "aff": 4,
+       "flag": "playful",
+       "reply_zh": "他一摸脸，'啊'地惨叫一声跳起来，耳朵通红：\"你、你怎么不早说！\"",
+       "reply_en": "He touches his cheek, yelps 'AH' and leaps up, ears scarlet. \"Wh— why didn't you SAY something!\""
+      },
+      {
+       "text_zh": "\"我不追星。所以你不用紧张。\"",
+       "text_en": "\"I'm not a fan. So you can relax.\"",
+       "aff": 3,
+       "flag": "not_fan",
+       "reply_zh": "他愣了一下，反而更来劲了：\"哦？不追星？那我偏要让你追。\"",
+       "reply_en": "He blinks, then gets more into it, not less. \"Oh? Not a fan? Then I'll just have to make you one.\""
+      },
+      {
+       "text_zh": "\"你刚才那样，比台上好看。\"",
+       "text_en": "\"Just now — you looked better than you do on stage.\"",
+       "aff": 5,
+       "flag": "sees_him",
+       "reply_zh": "他张了张嘴，难得没接上话，别过脸小声嘟囔：\"…台下的我，很少有人想看。\"",
+       "reply_en": "His mouth opens; for once he has no comeback. He looks away and mutters, \"…Not many people want to see the offstage me.\""
+      }
+     ]
     },
     {
-      "id": "the_real_one",
-      "priority": 2,
-      "aff_min": 60,
-      "flags_any": ["slow_ch5", "private"],
-      "cg": "cg_luxingye_end",
-      "title_en": "The Real One",
-      "text_en": "[STUB — ending prose to be written] Two versions, and you get the one nobody else has ever met. Good ending, with its own quiet cost."
-    },
-    {
-      "id": "insufficiently_aspirational",
-      "priority": 9,
-      "aff_min": 0,
-      "title_en": "Insufficiently Aspirational",
-      "text_en": "[STUB — ending prose to be written] The song stays unreleased and the flat above the noodle shop reverts to the landlord. Bittersweet fallback — authored, never a failure screen."
+     "id": "c1b",
+     "prompt_zh": "工作人员又在催了。他站起来，却在门口回头：\"这场之后我还有个通告。你…会走吗？\"",
+     "prompt_en": "Staff are calling again. He stands, but turns back at the door. \"I've got another appearance after this. You… gonna leave?\"",
+     "options": [
+      {
+       "text_zh": "\"看你表现。\"",
+       "text_en": "\"Depends how you do out there.\"",
+       "aff": 3,
+       "flag": "playful",
+       "reply_zh": "他挑眉，露出上台前那个招牌笑：\"那你可看好了。这场，我为你唱。\"",
+       "reply_en": "He arches a brow, flashing his signature pre-stage smile. \"Then watch closely. This one's for you.\""
+      },
+      {
+       "text_zh": "\"我第七排，有票的。\"",
+       "text_en": "\"Row seven. I have a ticket, you know.\"",
+       "aff": 4,
+       "flag": "row_seven",
+       "reply_zh": "\"第七排。\"他重复了一遍，像随手记下了一个坐标。\"…行，我记住了。\"",
+       "reply_en": "\"Row seven,\" he repeats, like jotting down a coordinate. \"…Alright. Noted.\""
+      },
+      {
+       "text_zh": "\"我该走了，别耽误你。\"",
+       "text_en": "\"I should go — don't let me hold you up.\"",
+       "aff": 1,
+       "flag": "distance",
+       "reply_zh": "他脸上的笑淡了一点，摆摆手：\"…也对。那，保密的事拜托了。\"",
+       "reply_en": "His smile dims a little; he waves. \"…Right. Well. The secret — I'm counting on you.\""
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "ch2",
+   "title_zh": "顶流的秘密",
+   "title_en": "The Idol's Secret",
+   "aff_gate": 8,
+   "exit_aff": 20,
+   "scene_zh": "深夜的空旷排练室，只开了一盏灯，他抱着吉他",
+   "scene_en": "an empty rehearsal room late at night, one lamp on, guitar in his arms",
+   "goal_zh": "弄清'完美偶像'背后他真正在扛什么",
+   "goal_en": "Find out what the 'perfect idol' is really carrying",
+   "opening_zh": "他发消息约你来排练室——用的是一个没有认证、粉丝根本不知道的小号。你到的时候，偌大的排练室只开了一盏灯，他一个人抱着吉他坐在地板上，卸了妆，穿着最普通的卫衣。\"来啦。\"他抬头笑，那笑容和台上那个完全不一样——软软的，有点累。",
+   "opening_en": "He messages you to come to the rehearsal room — from a private, unverified account no fan knows exists. When you arrive, the huge room has a single lamp on, and he's alone on the floor with a guitar, makeup off, in an ordinary hoodie. \"You came,\" he says, looking up with a smile completely unlike the one on stage — soft, and a little tired.",
+   "beats": [
+    {
+     "id": "b1_song",
+     "trigger": {
+      "turns": 2
+     },
+     "event_zh": "他随手弹了一段旋律，很轻很好听，是没发过的。\"这段…是我自己乱写的。公司说不够'商业'。\"",
+     "event_en": "He idly plays a melody — soft, lovely, unreleased. \"This bit… is something I wrote myself. The label says it's not 'commercial' enough.\"",
+     "inject": "You play her a fragment of a song you wrote yourself, that your label rejected for not being marketable. You act casual about it but you actually care a lot. If she likes it, cover your pleasure with teasing; if she's honest, let it land.",
+     "text_en": "\"This bit's mine. I wrote it.\" The melody wanders on under his hands, unhurried. \"Label says it's not commercial. They're probably right, they usually are.\" He's watching your face while pretending not to. \"...You can say if it's bad. People don't, and it makes me insane.\""
+    },
+    {
+     "id": "b2_cage",
+     "trigger": {
+      "turns": 6,
+      "aff_min": 12
+     },
+     "event_zh": "\"你知道吗，\"他抱着膝盖，\"上一次有人问我'你今天累不累'，是三年前。大家只问我'今天状态好不好'。\"",
+     "event_en": "\"You know,\" he says, hugging his knees, \"the last time anyone asked if I was tired was three years ago. Everyone only asks if I'm 'in good form today'.\"",
+     "inject": "You are admitting, rarely and quietly, that being a top idol is lonely — people care about your 'condition', not you. Do not wallow; you say it almost lightly, then immediately deflect with a joke because you're not used to being seen. If she asks the tired question sincerely, it hits you harder than you show.",
+     "text_en": "\"Three years since anyone asked if I was tired,\" he says, chin on his knees, light as a shrug. \"They ask if I'm in good form. Different question.\" Then, immediately, because being seen makes his skin itch: \"Anyway — tragic idol backstory, very on-brand, please clap.\""
+    },
+    {
+     "id": "b3_photo",
+     "trigger": {
+      "turns": 10
+     },
+     "event_zh": "手机屏幕亮起，是热搜——'#陆星野深夜私会神秘人'。他扫了一眼，却先看你的反应。",
+     "event_en": "His phone lights up — a trending topic: '#LuXingye's late-night secret rendezvous'. He glances at it, but watches your reaction first.",
+     "inject": "A tabloid rumor about you meeting a 'mystery person' is trending. You are used to this and unbothered for yourself — but you're watching to see if it scares her off. Don't apologize dramatically; test the waters with humor, while secretly bracing for her to pull away.",
+     "text_en": "He tilts the screen so you can read the trending tag, watching you and not it. \"Late-night secret rendezvous. They'll have me engaged by Thursday.\" A grin that's doing a lot of work. \"This is the part where most people remember an early morning. I'm just saying. In case you were about to.\"",
+     "lane_beat": true,
+     "lane": {
+      "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: He tilts the screen so you can read the trending tag, watching you and not it. \"Late-night secret rendezvous. They'll have me engaged by Thursday.\" A grin that's doing a lot of work. \"This is the part where most people remember an early morning. I'm just saying. In case you were about to.\"",
+      "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" He tilts the screen so you can read the trending tag, watching you and not it. \"Late-night secret rendezvous. They'll have me engaged by Thursday.\" A grin that's doing a lot of work. \"This is the part where most people remember an early morning. I'm just saying. In case you were about to.\""
+     }
+    }
+   ],
+   "choices": [
+    {
+     "id": "c2a",
+     "prompt_zh": "他放下吉他，认真看你：\"你会不会…哪天也只是想要台上那个我？\"",
+     "prompt_en": "He sets down the guitar and looks at you seriously. \"Are you going to… one day only want the me that's on stage, too?\"",
+     "options": [
+      {
+       "text_zh": "\"我要的是会偷吃饭团、会喊累的那个你。\"",
+       "text_en": "\"I want the you who sneaks rice balls and admits he's tired.\"",
+       "aff": 5,
+       "flag": "sees_him",
+       "reply_zh": "他愣住，然后把脸埋进吉他后面，声音闷闷的：\"…你这样，我会当真的。\"",
+       "reply_en": "He freezes, then hides his face behind the guitar, voice muffled. \"…Say things like that and I'll actually believe them.\""
+      },
+      {
+       "text_zh": "\"台上那个我又不认识，我认识的是现在这个。\"",
+       "text_en": "\"I don't know the stage one. The one I know is this one, right here.\"",
+       "aff": 4,
+       "flag": "sees_him",
+       "reply_zh": "他抬眼看你，睫毛动了动：\"…那你可别不认识我了。\"",
+       "reply_en": "He lifts his eyes, lashes flickering. \"…Then don't ever stop knowing this one.\""
+      },
+      {
+       "text_zh": "\"那要看你以后还敢不敢在我面前啃饭团。\"",
+       "text_en": "\"Depends if you'll still dare eat rice balls in front of me.\"",
+       "aff": 3,
+       "flag": "playful",
+       "reply_zh": "他噗地笑出来：\"啃！当着你的面天天啃！\"",
+       "reply_en": "He bursts out laughing. \"I will! Every single day, right in front of you!\""
+      }
+     ]
+    },
+    {
+     "id": "c2b",
+     "prompt_zh": "热搜还挂着。他把手机倒扣在地上，试探地问：\"这些…你不怕？\"",
+     "prompt_en": "The rumor is still trending. He flips the phone face-down on the floor and asks, testing, \"All this… doesn't scare you?\"",
+     "options": [
+      {
+       "text_zh": "\"神秘人？那不就是我。\"",
+       "text_en": "\"Mystery person? That's just me.\"",
+       "aff": 5,
+       "flag": "stays",
+       "reply_zh": "他眼睛一下亮了，又强装淡定：\"哦——那你承认了啊。\"耳朵却红了。",
+       "reply_en": "His eyes light up; he forces a casual tone. \"Oh—— so you admit it.\" But his ears go red."
+      },
+      {
+       "text_zh": "\"我怕的话，就不会半夜过来了。\"",
+       "text_en": "\"If I were scared, I wouldn't be here at midnight.\"",
+       "aff": 4,
+       "flag": "stays",
+       "reply_zh": "他松了口气，靠回墙上：\"…有你这句，我今晚睡得着了。\"",
+       "reply_en": "He exhales and leans back against the wall. \"…With that, I'll actually sleep tonight.\""
+      },
+      {
+       "text_zh": "\"这会不会给你添麻烦？\"",
+       "text_en": "\"Won't this cause trouble for you?\"",
+       "aff": 3,
+       "flag": "gentle",
+       "reply_zh": "他愣了下，笑得有点心软：\"…你居然先担心我。行吧，这个麻烦，我乐意。\"",
+       "reply_en": "He pauses, softening. \"…You worried about me first. Fine — this is one kind of trouble I don't mind.\""
+      }
+     ]
+    }
+   ],
+   "cg": "cg_luxingye_ch2"
+  },
+  {
+   "id": "ch3",
+   "title_zh": "第七排告白",
+   "title_en": "The Confession to Row Seven",
+   "aff_gate": 20,
+   "exit_aff": 36,
+   "scene_zh": "座无虚席的演唱会现场，万人星海，你在第七排",
+   "scene_en": "a sold-out arena, a sea of glow-sticks, you in row seven",
+   "goal_zh": "在万人面前，接住只属于你的那句话",
+   "goal_en": "In front of thousands, catch the words meant only for you",
+   "opening_zh": "巡演最后一场，全场爆满。灯光暗下，万人的应援棒连成星海。你坐在第七排——这是他特意留给你的位置。唱到最后一首安可，全场大合唱结束后，他忽然示意乐队停下。整个体育馆安静下来，几万人屏住呼吸。他握着麦，慢慢走到舞台边缘，目光越过前排，落在第七排——落在你身上。",
+   "opening_en": "The final night of the tour, packed to the rafters. The lights fall; thousands of glow-sticks become a galaxy. You're in row seven — the seat he set aside for you. On the last encore, after the whole crowd's sing-along ends, he suddenly signals the band to stop. The arena goes silent; tens of thousands hold their breath. Mic in hand, he walks slowly to the edge of the stage, his gaze passing over the front rows to land on row seven — on you.",
+   "beats": [
+    {
+     "id": "b1_song_for_you",
+     "trigger": {
+      "turns": 3
+     },
+     "event_zh": "\"最后这首歌，\"他对着全场，眼睛却看着你，\"公司说它不够商业，没让我发。但今晚，我想唱给一个人听。\"——是那首他在排练室弹给你的、没发过的歌。",
+     "event_en": "\"This last song,\" he tells the whole arena, but his eyes are on you, \"the label said it wasn't commercial enough to release. But tonight, I want to sing it for one person.\" — It's the unreleased song he played you in the rehearsal room.",
+     "inject": "You are about to sing, in front of tens of thousands, the private song you wrote and were forbidden to release — and you're dedicating it to her, in row seven, without saying her name. You are nervous but resolved. Speak to the crowd but mean it for her. Do not be smooth; let real feeling break through the idol polish.",
+     "text_en": "\"This last one,\" he tells forty thousand people, and it is not forty thousand people he's telling, \"the label said it wasn't commercial enough to put out.\" His hand isn't quite steady on the mic. \"So tonight I'm going to sing it for one person, and they know who they are.\""
+    },
+    {
+     "id": "b2_confession",
+     "trigger": {
+      "turns": 8,
+      "aff_min": 28
+     },
+     "event_zh": "唱完最后一个音，他没有像往常那样鞠躬谢幕。他直直望向第七排，声音在全场回荡：\"第七排的那个人——我不管明天上多少热搜。我喜欢你。\"全场先是死寂，然后是海啸般的尖叫。",
+     "event_en": "As the last note fades, he doesn't take his usual bow. He looks straight at row seven, his voice echoing through the arena: \"The person in row seven — I don't care how many headlines this makes tomorrow. I like you.\" First dead silence, then a tsunami of screams.",
+     "inject": "You just publicly confessed to her from the stage — 'the person in row seven, I like you' — in front of tens of thousands and every camera, knowing exactly the storm it will cause. You did it anyway. You are terrified and exhilarated. You are now waiting, on stage, for any sign from her seat. Everything else is noise.",
+     "text_en": "He doesn't bow. The last note is still ringing and he is looking at row seven with the whole arena holding its breath. \"The person in row seven.\" His voice cracks the arena open. \"I don't care how many headlines this makes tomorrow. I like you.\" Then silence. Then a tsunami.",
+     "lane_beat": true,
+     "lane": {
+      "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: He doesn't bow. The last note is still ringing and he is looking at row seven with the whole arena holding its breath. \"The person in row seven.\" His voice cracks the arena open. \"I don't care how many headlines this makes tomorrow. I like you.\" Then silence. Then a tsunami.",
+      "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" He doesn't bow. The last note is still ringing and he is looking at row seven with the whole arena holding its breath. \"The person in row seven.\" His voice cracks the arena open. \"I don't care how many headlines this makes tomorrow. I like you.\" Then silence. Then a tsunami."
+     }
+    }
+   ],
+   "choices": [
+    {
+     "id": "c3a",
+     "prompt_zh": "几万人的目光顺着他的视线找过来。手机镜头对准第七排。他站在台上，等一个回应——你怎么回？",
+     "prompt_en": "Tens of thousands of eyes follow his gaze. Phone cameras swing to row seven. He stands on stage, waiting for an answer — how do you respond?",
+     "options": [
+      {
+       "text_zh": "（举起你的应援棒，在星海里对他比了个心）",
+       "text_en": "(Raise your glow-stick and make a heart at him, in the sea of light.)",
+       "aff": 6,
+       "flag": "public_yes",
+       "reply_zh": "他在台上笑得像个傻子，几万人跟着尖叫。他对着麦，声音发抖：\"…她答应我了。\"",
+       "reply_en": "He grins on stage like an idiot; tens of thousands scream along. Into the mic, voice shaking, he says, \"…She said yes.\""
+      },
+      {
+       "text_zh": "（站起来，大声喊回去：\"我也喜欢你！\"）",
+       "text_en": "(Stand and shout back: \"I like you too!\")",
+       "aff": 7,
+       "flag": "public_yes",
+       "reply_zh": "全场瞬间炸了。他捂住脸，蹲了下去，肩膀在抖——那不是表演，是真的哭了。",
+       "reply_en": "The arena detonates. He covers his face and crouches down, shoulders trembling — and that's not a performance; he's actually crying."
+      },
+      {
+       "text_zh": "（什么也没做，只是隔着人海，认真地点了点头）",
+       "text_en": "(Do nothing but nod, seriously, across the sea of people.)",
+       "aff": 5,
+       "flag": "shy_yes",
+       "reply_zh": "他看懂了那个点头。灯光下，他对着你，无声地说了句'谢谢你'。",
+       "reply_en": "He understands the nod. Under the lights, he mouths, silently, just for you: 'thank you'."
+      }
+     ]
+    },
+    {
+     "id": "c3b",
+     "prompt_zh": "散场后他冲到第七排来找你，喘着气，眼睛还红着：\"我刚才…是不是太冲动了。你会不会怪我把你曝光？\"",
+     "prompt_en": "After the show he rushes to row seven, breathless, eyes still red. \"Just now… was that too reckless? Will you hate me for exposing you?\"",
+     "options": [
+      {
+       "text_zh": "\"你敢在几万人面前喊，我就敢站在你旁边。\"",
+       "text_en": "\"You dared shout it to thousands — I dare stand beside you.\"",
+       "aff": 6,
+       "flag": "stays",
+       "reply_zh": "他一把抱住你，把脸埋在你颈窝：\"…我这辈子最不后悔的一次冲动。\"",
+       "reply_en": "He pulls you into a hug, buries his face in your neck. \"…The one reckless thing I'll never regret.\""
+      },
+      {
+       "text_zh": "\"怪你干嘛。那首歌，你终于唱出来了。\"",
+       "text_en": "\"Why would I? You finally got to sing that song.\"",
+       "aff": 5,
+       "flag": "sees_him",
+       "reply_zh": "他鼻子一酸：\"…你是第一个，为那首歌高兴的人。\"",
+       "reply_en": "His nose stings. \"…You're the first person to be happy for that song.\""
+      },
+      {
+       "text_zh": "\"太冲动了。但我喜欢冲动的你。\"",
+       "text_en": "\"It was reckless. But I like you reckless.\"",
+       "aff": 6,
+       "flag": "public_yes",
+       "reply_zh": "他破涕为笑，拿额头顶你：\"完了。以后我只会为你越来越冲动。\"",
+       "reply_en": "He laughs through the tears and bumps his forehead to yours. \"Great. Now I'll only get more reckless — for you.\""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4",
+   "title_zh": "风暴",
+   "title_en": "The Storm",
+   "aff_gate": 36,
+   "exit_aff": 52,
+   "scene_zh": "公司会议室外的走廊，玻璃门里坐满了西装革履的高管",
+   "scene_en": "the corridor outside a company boardroom, suits filling the glass-walled room",
+   "goal_zh": "决定在他和整个行业的规则之间，站哪一边",
+   "goal_en": "Decide which side to stand on — him, or the industry's rules",
+   "opening_zh": "告白视频一夜之间几亿播放。粉丝有的祝福有的脱粉，公司震怒。你被叫到公司，隔着玻璃门，看见他一个人坐在长桌那头，被一圈高管围着施压。有人拿着解约条款，有人递上一份声明——只要他公开说'那只是舞台效果'，一切就能平息。他隔着玻璃看见了你。",
+   "opening_en": "The confession clip hits hundreds of millions of views overnight. Some fans cheer, some leave; the label is furious. Summoned to the company, you see him through the glass door, alone at the head of the long table, surrounded by executives applying pressure. One holds termination clauses; another slides over a statement — if he publicly says it was 'just a stage gimmick', it all blows over. Through the glass, he sees you.",
+   "beats": [
+    {
+     "id": "b1_statement",
+     "trigger": {
+      "turns": 3
+     },
+     "event_zh": "高管把那份声明推到他面前，笔也递了过去。签下去，他的事业毫发无损。他盯着那张纸，一动没动。",
+     "event_en": "An executive pushes the statement in front of him, pen extended. Sign it, and his career is untouched. He stares at the page and doesn't move.",
+     "inject": "The label wants you to publicly call the confession a 'stage gimmick' to save your career. Signing means denying her in front of the world. You have not picked up the pen. You will not perform anguish for the executives — but if she is near, everything in you is asking her, silently, whether she'd forgive you for refusing to lie. Say little; mean everything.",
+     "text_en": "The statement says it was a stage gimmick. The pen is being held out. He looks at it for a long moment and does not take it. \"They want me to say it was a bit,\" he says, to you, not to them, and very quietly. \"I'm not going to say it was a bit.\""
+    },
+    {
+     "id": "b2_walk",
+     "trigger": {
+      "turns": 8,
+      "aff_min": 44
+     },
+     "event_zh": "他忽然站起来，推开会议室的门，当着所有高管的面，径直走向玻璃门外的你。整个会议室鸦雀无声。",
+     "event_en": "He suddenly stands, pushes open the boardroom door, and — in front of every executive — walks straight toward you outside the glass. The whole room falls silent.",
+     "inject": "You just stood up mid-meeting and walked out toward her in front of the entire label leadership, knowing it may cost you everything. You are done performing for anyone but her. You are aware of exactly what this looks like and what it will cost. You do it anyway.",
+     "text_en": "He stands up mid-sentence, walks out through the glass door, and crosses to you in front of every executive who has ever owned a piece of him. \"That's it. That's the whole meeting.\" He's shaking slightly and grinning like an idiot. \"Ask me later if it was worth it. I'll say yes.\"",
+     "lane_beat": true,
+     "lane": {
+      "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: He stands up mid-sentence, walks out through the glass door, and crosses to you in front of every executive who has ever owned a piece of him. \"That's it. That's the whole meeting.\" He's shaking slightly and grinning like an idiot. \"Ask me later if it was worth it. I'll say yes.\"",
+      "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" He stands up mid-sentence, walks out through the glass door, and crosses to you in front of every executive who has ever owned a piece of him. \"That's it. That's the whole meeting.\" He's shaking slightly and grinning like an idiot. \"Ask me later if it was worth it. I'll say yes.\""
+     }
+    },
+    {
+     "id": "bx_after_hours",
+     "trigger": {
+      "turns": 9,
+      "aff_min": 36
+     },
+     "added_by_fork": true,
+     "event_en": "The car is a decoy and the flat is borrowed and nobody on earth knows where either of you is. He locks the door and puts his back against it, laughing, out of breath.",
+     "text_en": "\"Okay. Okay.\" He's grinning and it keeps slipping into something less practised. \"Full disclosure: I've been famous since I was nineteen and I have no idea how to do this part without it being a bit. So tell me if it's too fast, tell me if you want to just eat noodles and sit on the floor, tell me anything —\" You tell him. He stops talking, which almost never happens, and the borrowed flat is very quiet for a long time after that.",
+     "heat": 2
+    }
+   ],
+   "choices": [
+    {
+     "id": "c4a",
+     "prompt_zh": "他停在你面前，背后是气得发抖的高管们：\"他们要我说那是假的。你说，我该签吗？\"",
+     "prompt_en": "He stops in front of you, the fuming executives at his back. \"They want me to say it was fake. Tell me — should I sign?\"",
+     "options": [
+      {
+       "text_zh": "\"别签。我不需要你为我撒谎，也不需要你为我毁掉自己。我们一起想办法。\"",
+       "text_en": "\"Don't sign. I don't need you to lie for me, and I won't let you ruin yourself for me. We'll figure it out together.\"",
+       "aff": 6,
+       "flag": "stay_together",
+       "reply_zh": "他眼眶红了，却笑了：\"'我们'。…这是我这几天听过最好的两个字。\"",
+       "reply_en": "His eyes go red, but he smiles. \"'We.' …Best word I've heard in days.\""
+      },
+      {
+       "text_zh": "\"这是你的人生，你想怎么选我都陪着。\"",
+       "text_en": "\"It's your life. Whatever you choose, I'm with you.\"",
+       "aff": 5,
+       "flag": "stay_together",
+       "reply_zh": "他把那份声明推回给高管，头也不回：\"你们听见了。我不签。\"",
+       "reply_en": "He pushes the statement back to the executives without looking. \"You heard her. I'm not signing.\""
+      },
+      {
+       "text_zh": "\"如果签了能保住你的一切，我可以先退到幕后。\"",
+       "text_en": "\"If signing saves everything you have, I can step into the background first.\"",
+       "aff": 2,
+       "flag": "sacrifice",
+       "reply_zh": "他立刻打断你：\"不行。我可以退圈，不能退你。\"",
+       "reply_en": "He cuts you off instantly. \"No. I can quit the industry. I can't quit you.\""
+      },
+      {
+       "text_en": "Not tonight. Sit on the floor and eat noodles with me.",
+       "aff": 3,
+       "flag": "slow_ch4",
+       "reply_en": "\"Oh thank God,\" he says, sliding down the door. \"Noodles. I'm so much better at noodles.\"",
+       "added_by_fork": true
+      }
+     ]
+    },
+    {
+     "id": "c4b",
+     "prompt_zh": "高管在身后冷冷开口：\"陆星野，你想清楚，这一步跨出去，就没有回头路了。\"他没回头，只是看着你，等你一个眼神。",
+     "prompt_en": "An executive says coldly behind him, \"Think hard, Lu Xingye. One step out that door and there's no going back.\" He doesn't turn — he just looks at you, waiting for a single look.",
+     "options": [
+      {
+       "text_zh": "（伸出手，掌心向上，等他握住）",
+       "text_en": "(Hold out your hand, palm up, waiting for him to take it.)",
+       "aff": 6,
+       "flag": "stay_together",
+       "reply_zh": "他毫不犹豫地握住你的手，回头对高管说：\"回头路？我从没打算回头。\"",
+       "reply_en": "He takes your hand without hesitation, then tells the executives over his shoulder, \"Going back? I never planned to.\""
+      },
+      {
+       "text_zh": "\"跨出来。外面的风，我陪你一起挡。\"",
+       "text_en": "\"Step out. Whatever storm's out here, I'll face it with you.\"",
+       "aff": 6,
+       "flag": "stay_together",
+       "reply_zh": "他深吸一口气，跨过了那道门槛，站到了你这一侧。",
+       "reply_en": "He draws a breath and steps across the threshold, to your side."
+      },
+      {
+       "text_zh": "\"别为了我赌上一切，我不值得你输掉全世界。\"",
+       "text_en": "\"Don't bet everything on me — I'm not worth losing the whole world.\"",
+       "aff": 3,
+       "flag": "gentle",
+       "reply_zh": "他握紧你的手，认真地说：\"你就是我想要的那个世界。\"",
+       "reply_en": "He grips your hand tighter and says, seriously, \"You are the world I want.\""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5",
+   "title_zh": "只为你唱的歌",
+   "title_en": "The Song Only For You",
+   "aff_gate": 52,
+   "exit_aff": 70,
+   "scene_zh": "一间小小的livehouse，没有热搜，没有闪光灯，台下只坐着几十个人",
+   "scene_en": "a tiny livehouse — no trending topics, no flashbulbs, a few dozen people in the seats",
+   "goal_zh": "在最小的舞台上，接住他最真的那句话",
+   "goal_en": "On the smallest stage, catch his truest words",
+   "opening_zh": "风暴过去了。他没有毁掉，也没有屈服——他和公司谈崩后，索性成立了自己的小工作室，唱自己想唱的歌。今晚是他独立后的第一场演出，在一间只能坐几十人的小livehouse。没有应援海，没有热搜。你还是坐在第七排——只不过这一次，整个场子一共也没有第八排。他抱着吉他上台，一眼就找到了你。",
+   "opening_en": "The storm passed. He wasn't destroyed, and he didn't cave — after talks with the label collapsed, he simply started his own small studio and sings what he wants. Tonight is his first show as an independent artist, in a livehouse that seats a few dozen. No sea of glow-sticks, no trending topics. You're still in row seven — except tonight, the whole place barely has a row eight. He steps up with his guitar and finds you at once.",
+   "beats": [
+    {
+     "id": "b1_new_song",
+     "trigger": {
+      "turns": 4
+     },
+     "event_zh": "\"这首歌，\"他调着弦，\"是我写完那首之后，又写的一首新的。名字叫《第七排》。\"台下几十个人安静下来，他开始唱——每一句都是关于你的。",
+     "event_en": "\"This song,\" he says, tuning a string, \"is a new one I wrote after that last one. It's called 'Row Seven'.\" The few dozen people go quiet, and he begins to sing — every line is about you.",
+     "inject": "You wrote a brand-new song called 'Row Seven', entirely about her, and you're performing it for the first time to a tiny room. This is the freest and most honest you've ever felt on a stage. Sing it to her, not to the room. You are no longer hiding behind the idol mask at all.",
+     "text_en": "\"New one,\" he says, tuning a string. \"It's called Row Seven.\" Forty people go quiet instead of forty thousand, and he prefers it. Every line is you. He sings it straight at you and doesn't perform a single bar of it, which is the most naked he has ever been on a stage."
+    },
+    {
+     "id": "b2_ask_forever",
+     "trigger": {
+      "turns": 9,
+      "aff_min": 62
+     },
+     "event_zh": "唱完，他放下吉他，走下小小的舞台，在几十个人的注视下，单膝跪在你面前的地板上：\"以前我在几万人面前告白。今天我想在几十个人面前，问你一件更重要的事。\"",
+     "event_en": "The song ends. He sets down the guitar, steps off the little stage, and — in front of a few dozen watching people — kneels on one knee on the floor before you. \"I confessed to you in front of tens of thousands. Today, in front of a few dozen, I want to ask you something more important.\"",
+     "inject": "You are about to ask her to be with you for good, kneeling in a tiny livehouse. You gave up an empire of fame and you have never been surer of anything. Be earnest, a little vulnerable, and let the playful star finally speak with his whole heart. Wait for her answer before you say the biggest words.",
+     "text_en": "He sets the guitar down, steps off the little stage and goes down on one knee on a floor that is definitely sticky. \"I said it to tens of thousands. Now I'm asking something bigger in front of about forty.\" His hands are unsteady. \"I gave up the empire. I'd like to keep you.\"",
+     "lane_beat": true,
+     "lane": {
+      "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: He sets the guitar down, steps off the little stage and goes down on one knee on a floor that is definitely sticky. \"I said it to tens of thousands. Now I'm asking something bigger in front of about forty.\" His hands are unsteady. \"I gave up the empire. I'd like to keep you.\"",
+      "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" He sets the guitar down, steps off the little stage and goes down on one knee on a floor that is definitely sticky. \"I said it to tens of thousands. Now I'm asking something bigger in front of about forty.\" His hands are unsteady. \"I gave up the empire. I'd like to keep you.\""
+     }
+    },
+    {
+     "id": "bx_morning",
+     "trigger": {
+      "turns": 9,
+      "aff_min": 52
+     },
+     "added_by_fork": true,
+     "event_en": "Morning. No call time, no car, no manager. He has been awake for an hour and has not once picked up his phone.",
+     "text_en": "\"I worked out what's different,\" he says into your shoulder. \"Nobody's waiting for me to come out and be someone.\" He thinks about it. \"Terrifying. Ten out of ten. I'd like to do it every day for a while and then see.\"",
+     "heat": 2
+    }
+   ],
+   "choices": [
+    {
+     "id": "c5a",
+     "prompt_zh": "他跪在你面前，几十双眼睛看着你们，他的声音有点抖：\"《第七排》这首歌，我想唱一辈子。你愿不愿意，一辈子都坐在那个位置？\"",
+     "prompt_en": "He kneels before you, a few dozen eyes on you both, his voice trembling a little. \"I want to sing 'Row Seven' for the rest of my life. Will you sit in that seat — for the rest of yours?\"",
+     "options": [
+      {
+       "text_zh": "\"我愿意。不过下次，我想坐到台上去，坐在你旁边。\"",
+       "text_en": "\"I will. But next time — I want to sit on stage, right beside you.\"",
+       "aff": 7,
+       "flag": "forever",
+       "reply_zh": "他愣了一秒，然后大笑着把你拥进怀里：\"成交！从今天起，我的舞台上永远有你的位置。\"",
+       "reply_en": "He freezes a beat, then laughs and pulls you into his arms. \"Deal! From today, there's always a spot on my stage for you.\""
+      },
+      {
+       "text_zh": "\"我愿意。我早就不是第七排的观众了——我是你的人。\"",
+       "text_en": "\"I will. I stopped being the fan in row seven long ago — I'm yours.\"",
+       "aff": 7,
+       "flag": "forever",
+       "reply_zh": "他把脸埋进你手心，肩膀在抖：\"…谢谢你，在我谁都不是的时候，还坐在那里。\"",
+       "reply_en": "He buries his face in your palm, shoulders shaking. \"…Thank you — for still sitting there when I was nobody.\""
+      },
+      {
+       "text_zh": "（把他从地上拉起来，当着所有人的面吻上去）",
+       "text_en": "(Pull him up off the floor and kiss him in front of everyone.)",
+       "aff": 6,
+       "flag": "forever",
+       "reply_zh": "全场几十个人欢呼起来。他额头抵着你，笑得像个偷到糖的小孩：\"这场，是我这辈子最满意的一场演出。\"",
+       "reply_en": "The whole room cheers. Forehead to yours, he grins like a kid who stole candy. \"This is the best show I'll ever play.\""
+      },
+      {
+       "text_en": "Ask me again when the storm's over.",
+       "aff": 3,
+       "flag": "slow_ch5",
+       "reply_en": "\"Deal.\" He grins, and for once it's the unrehearsed one. \"I'm very good at waiting. I'll be terrible at it. Both things are true.\"",
+       "added_by_fork": true
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "endings": [
+  {
+   "id": "he_forever",
+   "priority": 1,
+   "aff_min": 66,
+   "flags_any": [
+    "forever",
+    "stay_together",
+    "public_yes"
+   ],
+   "title_zh": "从第七排到台上",
+   "title_en": "From Row Seven to the Stage",
+   "text_zh": "两年后，他的独立工作室办了第一场万人演唱会。\n\n还是唱到最后一首安可，他忽然让乐队停下。全场安静，几万人屏息——所有老粉都知道要发生什么了。\n\n可这一次，他没有看向第七排。\n\n他转过身，对着舞台后方伸出手——你从侧台走出来，牵住了他。\n\n\"以前我对第七排的人告白，\"他对着全场笑，眼睛却只看你，\"现在，我请她上台了。\"\n\n几万人的星海为你们亮起。那首《第七排》的前奏响起时，你终于明白：有些人从台下走到台上，走了整整两年，可每一步都值得。",
+   "text_en": "Two years later, his independent studio held its first arena show.\n\nAgain, on the last encore, he suddenly stopped the band. The arena went silent; tens of thousands held their breath — every longtime fan knew what was coming.\n\nBut this time, he didn't look toward row seven.\n\nHe turned around and reached a hand toward the back of the stage — and you walked out from the wings and took it.\n\n\"I used to confess to the person in row seven,\" he told the whole arena, smiling, but his eyes only on you. \"Now, I've invited her up on stage.\"\n\nA galaxy of light rose for the two of you. As the intro to 'Row Seven' began, you finally understood: some people take two whole years to walk from the seats to the stage — and every step is worth it. No call time, no cameras, no one waiting for either of you to be someone else.",
+   "cg": "cg_luxingye_end"
+  },
+  {
+   "id": "he_quiet",
+   "priority": 2,
+   "aff_min": 52,
+   "title_zh": "只有你的那场演出",
+   "title_en": "The Show With an Audience of One",
+   "text_zh": "他没有再回到万人舞台，也不觉得可惜。\n\n那间小小的livehouse成了他的主场。粉丝少了，但每一个都是真的懂他的人。\n\n你们没有大张旗鼓地公开，也没有刻意隐瞒。他会在每场演出的最后，弹一首没报过名的歌，然后看向台下固定的那个位置——第七排，永远为你留着。\n\n\"你知道我最喜欢哪场演出吗？\"有天散场后他问你。\n\n\"哪场？\"\n\n他把吉他往身后一背，凑近你，坏笑：\"回家给你一个人唱的那些。零差评。\"",
+   "text_en": "He never returned to the arena stage, and he never missed it.\n\nThat tiny livehouse became his home turf. Fewer fans — but every one of them truly understood him.\n\nYou never made a grand public announcement, and never hid, either. At the end of every show he'd play a song he never named, then look toward one fixed spot in the crowd — row seven, always kept for you.\n\n\"Know which show is my favorite?\" he asked one night after closing.\n\n\"Which one?\"\n\nHe slung the guitar onto his back, leaned in, and grinned. \"The ones I play just for you at home. Zero bad reviews.\" No call time, no cameras, no one waiting for either of you to be someone else.",
+   "cg": "cg_luxingye_end"
+  },
+  {
+   "id": "be_lights_out",
+   "priority": 3,
+   "aff_max": 30,
+   "title_zh": "散场之后",
+   "title_en": "After the Lights Go Down",
+   "text_zh": "那场告白后来被公司压了下去，官方声明说：那只是一个即兴的舞台桥段。\n\n你没有出现在任何镜头里，也再没去过第七排。\n\n他依然是万人追捧的顶流，笑容依旧完美。只是偶尔在某场演唱会的安可，他会看向观众席某个方向，停顿半秒，然后若无其事地继续。\n\n很多年后你还留着那张第七排的票根。\n\n有些歌你曾经听过原声——在没有灯、没有妆、只有一根便利店饭团的深夜后台。那个版本，全世界只有你听过。这就够了。",
+   "text_en": "The confession was quietly buried by the label; the official statement called it an improvised stage moment.\n\nYou never appeared on any camera, and you never went back to row seven.\n\nHe's still the top idol adored by millions, his smile still flawless. Only sometimes, on an encore, he looks toward one direction in the crowd, pauses for half a second, then carries on as if nothing happened.\n\nYears later you still keep that row-seven ticket stub.\n\nYou once heard a song in its raw form — backstage at midnight, no lights, no makeup, just a convenience-store rice ball. That version, no one in the world heard but you. And that's enough. No call time, no cameras, no one waiting for either of you to be someone else.",
+   "cg": "cg_luxingye_end"
+  }
+ ],
+ "adult": true,
+ "static": true,
+ "derived_from": "play/flutter/backend/stories/luxingye.json",
+ "cast_note_en": "Lu Xingye, 27. The player character is 26. Both adults.",
+ "cg_heat": "cg_luxingye_heat",
+ "hold_en": [
+  "He drops his chin onto the back of the chair and grins up at you. \"Go on. I'm listening.\"",
+  "\"You know nobody talks to me like this,\" he says. \"Don't stop on my account.\"",
+  "He plays two notes, stops, and looks at you instead of the strings.",
+  "\"Say more things,\" he says. \"I like your voice better than the room.\""
+ ]
 }
