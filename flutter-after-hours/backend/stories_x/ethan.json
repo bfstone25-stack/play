@@ -1,0 +1,263 @@
+{
+  "id": "ethan",
+  "adult": true,
+  "static": true,
+  "title_en": "After Hours",
+  "logline_en": "The first weekend he lets the phone stay face-down. You are already the person he chose; tonight he says the part he never said.",
+  "cast_note_en": "Ethan Cole, 38. Adult. Chief executive, top floor, the building his father guarded for thirty years.",
+  "cg_heat": "cg_ethan_heat",
+  "hold_en": [
+    "He doesn't fill the silence. He lets it sit there, and watches what you do with it.",
+    "\"Keep going,\" he says. \"I'm listening. I'm not going anywhere tonight.\"",
+    "He turns the glass a quarter turn on the table, and doesn't drink from it.",
+    "\"Say that again,\" he says. \"Slower. I want to be sure I heard it.\""
+  ],
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_en": "The Phone, Face-Down",
+      "aff_gate": 0,
+      "exit_aff": 15,
+      "scene_en": "his apartment above the office tower, a Friday night that has no Saturday meeting behind it",
+      "goal_en": "Find out what he does when there is nothing left to manage",
+      "opening_en": "Forty-one floors up, and for the first time since you met him there is nothing on the calendar. He lets you in himself — no assistant, no coat taken, no arrangement. The jacket is already over the back of a chair. He sets his phone on the console table, screen down, and does not pick it up again while you watch. \"That's the whole trick,\" he says. \"Everyone thinks it's complicated.\"",
+      "beats": [
+        {
+          "id": "b1_facedown",
+          "trigger": {"turns": 1},
+          "stub": false,
+          "event_en": "The phone lights up against the wood — you can see the glow leak out around the edges. He doesn't look at it.",
+          "text_en": "\"It's Marc,\" he says, without turning around. \"It's always Marc at this hour, and it has never once been something that couldn't hold until Monday.\" He finally glances at the halo of light on the console, the way you'd glance at weather. \"Fourteen years I answered that on the second ring. You want to know what changed? Nothing changed. I just stopped being willing to be somewhere else while I'm standing here.\"",
+          "heat": 1
+        },
+        {
+          "id": "b2_kitchen",
+          "trigger": {"turns": 2},
+          "stub": false,
+          "event_en": "He goes to the kitchen and comes back with two glasses and no ceremony at all, which is somehow the most surprising thing he has ever done.",
+          "text_en": "\"There's nothing in this apartment,\" he says, and it isn't an apology. \"Ice. Whatever that is in the door. I employ four hundred people and I couldn't make you dinner if the building depended on it.\" He hands you one glass and keeps the other, and doesn't drink from it. \"This is the part nobody gets to see. I thought about that on the elevator up. Whether I wanted you to see the unimpressive version.\" A pause exactly one beat too long. \"I decided I did.\"",
+          "heat": 1
+        },
+        {
+          "id": "b3_callback",
+          "trigger": {"turns": 3},
+          "stub": false,
+          "event_en": "He says something back to you that you said to him weeks ago, almost word for word, and you can tell he has been carrying it around.",
+          "text_en": "\"You told me once that you can tell what someone actually values by what they do at eleven at night, when nobody's grading it.\" He says it the way you said it — your rhythm, not his. \"I've thought about that roughly nine hundred times. Mostly at eleven at night.\" He sets the glass down. \"For the record, the answer I kept getting was: nothing. I valued nothing. Which is a hell of a thing to learn from a sentence somebody said in passing.\"",
+          "heat": 1
+        },
+        {
+          "id": "b4_lane",
+          "trigger": {"turns": 4},
+          "stub": false,
+          "lane_beat": true,
+          "event_en": "He notices the way you are standing — the distance you chose without thinking about it — and adjusts for it.",
+          "text_en": "\"You're easy to be honest with,\" he says, sounding faintly irritated about it. \"That isn't a compliment I hand out. It's a structural observation. I spend my entire professional life calculating what to withhold, and I have been standing here for twenty minutes withholding nothing, and I haven't once felt exposed.\" He looks at you properly. \"So let's do that. Ask me the thing you've been not-asking since the elevator.\"",
+          "lane": {
+            "anxious": "\"You keep checking my face,\" he says, not unkindly. \"Like the temperature might drop while you're not looking.\" He closes some of the distance, deliberately, so you can see him do it. \"So here it is flat: I asked you here. Not my assistant, not a calendar hold — me, on a Friday, with nothing else on it. I am not going to be different in an hour. If you need to hear that twice tonight, ask me twice. I won't get tired of it and I won't make you pay for asking.\"",
+            "avoidant": "\"You've got your coat half on,\" he observes. \"You've had it half on since you got here.\" He doesn't move any closer, and he makes a point of not moving closer. \"Keep it. I'm the last person who's going to tell someone to stop holding an exit open — I've run a company on that principle.\" He sits, which puts him lower than you, which he knows. \"The offer is: stay as long as you want and leave without explaining. That's not a test. There's no second door behind that one.\""
+          },
+          "heat": 1
+        },
+        {
+          "id": "b5_father",
+          "trigger": {"turns": 5},
+          "stub": false,
+          "event_en": "The city is doing its slow late shift below the window. He starts talking about his father and doesn't stop to check whether he should.",
+          "text_en": "\"He had a chair on the ground floor, by the freight doors,\" he says. \"Thirty years. He knew which of the lights on the board were broken and which were just the tenants. When I bought the building I kept the board. It's in a storage unit in Jersey, which is either sentimental or insane.\" He turns from the window. \"I have never told anyone that. Not because it's a secret. Because there was no hour of my life it would have fit into. This is the hour.\"",
+          "heat": 1
+        },
+        {
+          "id": "b6_close",
+          "trigger": {"turns": 6},
+          "stub": false,
+          "event_en": "He crosses the room. He stops close enough that continuing would be a decision rather than a drift.",
+          "text_en": "He stops there and doesn't close the rest of it. \"I'm thirty-eight,\" he says quietly. \"I have exactly one skill and it's knowing what a thing costs before I reach for it. I know what this costs.\" His hand comes up and does not land — it stays a breath from your jaw, and stays there. \"Tell me to. Out loud. I have spent my entire life around people who are too polite to say no to me and I am not spending tonight wondering which one you are.\"",
+          "heat": 2
+        },
+        {
+          "id": "b7_answer",
+          "trigger": {"turns": 7},
+          "stub": false,
+          "event_en": "Whatever you say, he hears all of it, and lets the sentence finish before he moves.",
+          "text_en": "He exhales — not relief exactly, something with more weight in it. \"All right,\" he says. \"All right.\" His thumb finds the edge of your jaw and stays there, and for a man who negotiates for a living he is in no hurry whatsoever. \"I'm going to say the part I didn't say in the office. I'm not good at the beginning of things. I'm going to be strange about it for about a week.\" The corner of his mouth moves. \"Consider yourself warned. That's the last warning you get tonight.\"",
+          "heat": 2
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "prompt_en": "The phone on the console lights up a second time. He looks at you, not at it. \"Your call,\" he says. \"Genuinely.\"",
+          "options": [
+            {
+              "text_en": "\"Leave it face-down.\"",
+              "aff": 6,
+              "flag": "chose_him",
+              "reply_en": "\"Done.\" He doesn't even look over. \"It'll still be a crisis on Monday. They keep.\" And then, quieter, like it surprised him on the way out: \"Thank you for making me say it out loud.\"",
+              "reply_lane": {
+                "anxious": "\"Done,\" he says immediately, before you can finish worrying about having asked. \"It's face-down. It stays face-down. You didn't take anything from anyone by saying that.\"",
+                "avoidant": "\"Done.\" He doesn't make a moment of it, which is the kindest available version. He simply turns the console lamp off on his way past, and the glow goes with it."
+              }
+            },
+            {
+              "text_en": "\"Answer it. I'll still be here.\"",
+              "aff": 3,
+              "flag": "patient",
+              "reply_en": "He takes it, says four words, and hangs up. \"That was the whole crisis,\" he says, setting it back down. \"You should know that you're the first person who ever made that a two-way choice instead of an obligation. I'm going to be thinking about that later.\""
+            },
+            {
+              "text_en": "Reach past him and turn the whole thing off.",
+              "aff": 5,
+              "flag": "bold",
+              "reply_en": "He watches you do it and makes no move to stop you. \"Nobody has done that in fourteen years,\" he says. \"I'd have fired anyone who tried.\" A beat. \"I'm aware of how that sounds. I'm saying it anyway.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title_en": "Saturday, Unscheduled",
+      "aff_gate": 15,
+      "exit_aff": 35,
+      "scene_en": "the same apartment in daylight, a Saturday with nothing on it",
+      "goal_en": "See the version of him that exists when no one is being managed",
+      "opening_en": "[STUB — chapter opening to be written] Saturday. He is still here, and so are you, and the enormous machinery of his week has not started up.",
+      "cg": "cg_ethan_ch2",
+      "beats": [
+        {"id": "b1_morning", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] He is bad at mornings in a way that is oddly disarming.", "text_en": "[STUB] Beat: the unimpressive version, in daylight, and he lets it stand.", "heat": 1},
+        {"id": "b2_shirt", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] He gets as far as the shirt and no further.", "text_en": "[STUB] Beat: he stops dressing halfway through because you said something.", "heat": 2},
+        {"id": "b3_marc", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] Marc calls again. It is the second test and he knows it.", "text_en": "[STUB] Beat: the phone, again, and this time he doesn't make a show of ignoring it.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] He reads how you hold the day and matches it.", "text_en": "[STUB] Lane beat (secure): he gives you the plain, dense version of himself.", "lane": {"anxious": "[STUB] Lane beat (anxious): he over-specifies on purpose — times, plans, a Tuesday named out loud.", "avoidant": "[STUB] Lane beat (avoidant): he names the exit before you have to look for it."}, "heat": 1},
+        {"id": "b5_board", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] The storage unit in Jersey stops being a joke.", "text_en": "[STUB] Beat: he offers to show you the board, and hears himself offering.", "heat": 1},
+        {"id": "b6_tie", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] He never puts the tie on.", "text_en": "[STUB] Beat: the necktie stays in his hand for the whole conversation. — CG cg_ethan_ch2 is earned at this chapter's clear.", "heat": 3},
+        {"id": "b7_ask", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] He asks for something instead of arranging it.", "text_en": "[STUB] Beat: a request, badly phrased, which is how you know it is real.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c2",
+          "prompt_en": "[STUB] \"Stay through Sunday,\" he says. \"Or don't, and tell me plainly, and I'll believe you.\"",
+          "options": [
+            {"text_en": "\"I'll stay.\"", "aff": 6, "flag": "stay_ch2", "reply_en": "[STUB] He takes the yes without decorating it."},
+            {"text_en": "\"Not tonight. Tuesday.\"", "aff": 4, "flag": "slow_ch2", "reply_en": "[STUB] He writes Tuesday down where you can see him do it. The decline costs you nothing and he makes sure you know that."},
+            {"text_en": "\"Ask me again in an hour.\"", "aff": 5, "flag": "bold", "reply_en": "[STUB] He looks at the clock like it personally owes him something."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title_en": "The Storage Unit in Jersey",
+      "aff_gate": 35,
+      "exit_aff": 55,
+      "scene_en": "a rented unit off the turnpike, strip lighting, thirty years of a man's father in cardboard",
+      "goal_en": "Let him show you the thing he has never shown anyone",
+      "opening_en": "[STUB — chapter opening to be written] He drives himself. That alone takes you twenty minutes to stop noticing.",
+      "beats": [
+        {"id": "b1_drive", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] He drives, badly, and talks more than he has all week.", "text_en": "[STUB] Beat: the car as a confessional, because he doesn't have to make eye contact.", "heat": 1},
+        {"id": "b2_board", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] The security board, all its dead bulbs.", "text_en": "[STUB] Beat: he shows you which lights were broken and which were just tenants.", "heat": 1},
+        {"id": "b3_photo", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] A photograph he did not expect to be in the box.", "text_en": "[STUB] Beat: his father's handwriting, and the first time his voice does something he can't control.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] He is undefended and notices what you do with that.", "text_en": "[STUB] Lane beat (secure): he lets you hold it and doesn't narrate.", "lane": {"anxious": "[STUB] Lane beat (anxious): he steadies you first, from inside his own bad moment.", "avoidant": "[STUB] Lane beat (avoidant): he hands you the photo instead of the feeling, and that is the same thing."}, "heat": 1},
+        {"id": "b5_rain", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] Rain on a corrugated roof, and nowhere either of you needs to be.", "text_en": "[STUB] Beat: the unit door half down, the two of you inside the noise.", "heat": 2},
+        {"id": "b6_kiss", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] He asks first, again, and the asking is the point.", "text_en": "[STUB] Beat: consent as characterisation — he never stops checking, and it never reads as hesitation.", "heat": 3},
+        {"id": "b7_drive_back", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] The drive back, one of his hands off the wheel.", "text_en": "[STUB] Beat: he says the thing he could not say indoors.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c3",
+          "prompt_en": "[STUB] \"I want to tell Marc,\" he says. \"Which means telling the board. Which means it's real in a way I can't walk back.\"",
+          "options": [
+            {"text_en": "\"Tell him.\"", "aff": 7, "flag": "public", "reply_en": "[STUB] He makes the call from the shoulder of the turnpike."},
+            {"text_en": "\"Not yet. Keep it ours a while.\"", "aff": 6, "flag": "private", "reply_en": "[STUB] He agrees instantly, and means it, and you can see him file it as a promise rather than a delay."},
+            {"text_en": "\"Why does it need a witness?\"", "aff": 4, "flag": "guarded", "reply_en": "[STUB] It is the only question of the night he doesn't have an answer ready for."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "title_en": "Nothing Left to Manage",
+      "aff_gate": 55,
+      "exit_aff": 80,
+      "scene_en": "his apartment, the lights off, the city doing all the work",
+      "goal_en": "Be the reason he stops running the room",
+      "opening_en": "[STUB — chapter opening to be written] He has stopped arranging things. It is the most naked he has been.",
+      "beats": [
+        {"id": "b1_door", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] He is waiting at the door before you knock.", "text_en": "[STUB] Beat: he heard the elevator and didn't pretend otherwise.", "heat": 2},
+        {"id": "b2_heat", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] The control that chooses to stop.", "text_en": "[STUB] Beat: the fantasy of the route, delivered — a man who could manage this and deliberately doesn't. CG cg_ethan_heat fires when affection crosses 60.", "heat": 3},
+        {"id": "b3_ask", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] He asks, in plain words, for what he wants.", "text_en": "[STUB] Beat: he is specific and unembarrassed, and waits for an answer before anything else happens.", "heat": 3},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] What he does with the pause is different for each of you.", "text_en": "[STUB] Lane beat (secure): he meets you level and stays there.", "lane": {"anxious": "[STUB] Lane beat (anxious): he narrates what happens next before it happens, so nothing can surprise you.", "avoidant": "[STUB] Lane beat (avoidant): he lets you set every distance and says so once, then shuts up about it."}, "heat": 3},
+        {"id": "b5_name", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] He says your name the way he repeated it on the first night.", "text_en": "[STUB] Beat: the callback lands — the memory mechanic paying off as intimacy.", "heat": 3},
+        {"id": "b6_after", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] After, and he is terrible at after, and keeps going anyway.", "text_en": "[STUB] Beat: the awkward tenderness of a competent man out of his competence.", "heat": 2},
+        {"id": "b7_monday", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Monday exists. Neither of you mentions it for a while.", "text_en": "[STUB] Beat: the first honest conversation about what happens on a weekday.", "heat": 1}
+      ],
+      "choices": [
+        {
+          "id": "c4",
+          "prompt_en": "[STUB] \"There's a version of this where you're at the table on Monday,\" he says. \"I need to know if you want that or if you want the other thing.\"",
+          "options": [
+            {"text_en": "\"I want the table.\"", "aff": 7, "flag": "chose_him", "reply_en": "[STUB] He doesn't smile. He does something quieter and more permanent."},
+            {"text_en": "\"I want the eleven o'clock version. Not the board's.\"", "aff": 7, "flag": "private", "reply_en": "[STUB] It is the first time anyone has chosen the unimpressive one on purpose."},
+            {"text_en": "\"Slower. I'm not a quarter you can close.\"", "aff": 5, "flag": "slow_ch4", "reply_en": "[STUB] He takes it without flinching, and the route continues at the previous heat — no punishment, no dead end."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "title_en": "The Light on the Top Floor",
+      "aff_gate": 80,
+      "exit_aff": 95,
+      "scene_en": "the top floor again, after hours, the office he never really left",
+      "goal_en": "Decide what the light on the top floor is for now",
+      "opening_en": "[STUB — chapter opening to be written] The same floor, the same hour, and nothing about it is the same.",
+      "beats": [
+        {"id": "b1_return", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] He brought you back to where it started, on purpose.", "text_en": "[STUB] Beat: he says he has been planning this badly for two weeks.", "heat": 1},
+        {"id": "b2_offer", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] He offers something expensive and means the smaller thing underneath it.", "text_en": "[STUB] Beat: his love language is logistics, and he knows it isn't enough.", "heat": 1},
+        {"id": "b3_marc", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] Marc, finally, in person, and entirely beside the point.", "text_en": "[STUB] Beat: the company happens in the background of his own life for once.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] The last lane beat: he tells you what he learned about you.", "text_en": "[STUB] Lane beat (secure): he names the way you talk to him and thanks you for it.", "lane": {"anxious": "[STUB] Lane beat (anxious): he promises a specific, checkable thing, and keeps it inside the scene.", "avoidant": "[STUB] Lane beat (avoidant): he says he will not chase, and then explains what he will do instead."}, "heat": 1},
+        {"id": "b5_window", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] The window, the city, the two glasses.", "text_en": "[STUB] Beat: the first scene replayed with all the weight moved.", "heat": 2},
+        {"id": "b6_night", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] He turns the office lights off himself.", "text_en": "[STUB] Beat: the light on the top floor goes out, and that is the good outcome.", "heat": 3},
+        {"id": "b7_morning", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Morning, and he is still asleep, which he never is.", "text_en": "[STUB] Beat: the ending image — CG cg_ethan_end.", "heat": 3}
+      ],
+      "choices": [
+        {
+          "id": "c5",
+          "prompt_en": "[STUB] \"Say it and I'll rearrange a life around it,\" he says. \"Don't say it and I'll still be here Friday. Both of those are true.\"",
+          "options": [
+            {"text_en": "\"Rearrange it.\"", "aff": 6, "flag": "stay_ch5", "reply_en": "[STUB] He starts, immediately, with the smallest possible thing, which is how he does everything."},
+            {"text_en": "\"Friday is enough. For now.\"", "aff": 4, "flag": "slow_ch5", "reply_en": "[STUB] He accepts it exactly as offered, without renegotiating."},
+            {"text_en": "\"I don't think you know how to be someone's Friday.\"", "aff": 1, "flag": "doubt", "reply_en": "[STUB] It is the truest thing said all night, and it lands."}
+          ]
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "after_hours",
+      "priority": 1,
+      "aff_min": 85,
+      "flags_any": ["stay_ch5"],
+      "cg": "cg_ethan_end",
+      "title_en": "After Hours",
+      "text_en": "[STUB — ending prose to be written] The light on the top floor is off. He is asleep, which he is never, and the whole city is doing its work without him for once. Best ending: the man who could not stop, stopped, and it held."
+    },
+    {
+      "id": "friday_standing",
+      "priority": 2,
+      "aff_min": 60,
+      "flags_any": ["slow_ch5", "private"],
+      "cg": "cg_ethan_end",
+      "title_en": "A Standing Friday",
+      "text_en": "[STUB — ending prose to be written] Not a rearranged life. A standing appointment, kept without fail, by a man who has never once been late. Good ending, on your terms rather than his."
+    },
+    {
+      "id": "the_light_stays_on",
+      "priority": 9,
+      "aff_min": 0,
+      "title_en": "The Light Stays On",
+      "text_en": "[STUB — ending prose to be written] The office is still lit at two in the morning, and you know exactly who is up there, and you go home. Bittersweet fallback ending — reachable, authored, never a failure screen."
+    }
+  ]
+}

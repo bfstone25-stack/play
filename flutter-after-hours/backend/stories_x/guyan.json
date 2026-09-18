@@ -1,0 +1,263 @@
+{
+  "id": "guyan",
+  "adult": true,
+  "static": true,
+  "title_en": "The Sign Turned Around",
+  "logline_en": "The shop shut, the rain going all night, and the room upstairs he has never once mentioned.",
+  "cast_note_en": "Gu Yan, 33. Adult. Owner of a second-hand bookshop, and of the two rooms above it.",
+  "cg_heat": "cg_guyan_heat",
+  "hold_en": [
+    "He waits. He is extremely good at waiting; it is most of what the shop has taught him.",
+    "\"Take your time,\" he says. \"The rain isn't stopping and neither is anything else.\"",
+    "He straightens a stack that did not need straightening, which is what he does with his hands when he is thinking.",
+    "Dango relocates onto the counter between you, and neither of you moves her."
+  ],
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_en": "Closed",
+      "aff_gate": 0,
+      "exit_aff": 15,
+      "scene_en": "the bookshop after closing, rain on the window, one lamp left on at the back",
+      "goal_en": "Stay past the point where he would normally let someone leave",
+      "opening_en": "He turns the sign around at nine, the way he does every night, and then does not unlock the door behind you. It takes him a moment to notice he has done it. \"Ah,\" he says. \"That was — I didn't decide that on purpose.\" The rain is doing what it has been doing since four. Dango is asleep on the till. He does not turn the sign back.",
+      "beats": [
+        {
+          "id": "b1_sign",
+          "trigger": {"turns": 1},
+          "stub": false,
+          "event_en": "He looks at the sign, then at the rain, then very carefully at neither of you.",
+          "text_en": "\"I've turned that sign around every night for nine years,\" he says. \"Eleven hundred-odd times. It has never once occurred to me to leave someone on this side of it.\" He wipes something off the counter that isn't there. \"That isn't a line. I'd be worse at lines than this. I'm telling you because if I don't say it out loud I'll spend the next hour pretending it didn't happen, and I'd rather not be that man tonight.\"",
+          "heat": 1
+        },
+        {
+          "id": "b2_tea",
+          "trigger": {"turns": 2},
+          "stub": false,
+          "event_en": "He makes tea, badly, in the back, and talks over his shoulder the whole time.",
+          "text_en": "\"There's a kettle back here from the previous owner and it has never worked correctly.\" Something clatters. \"He left me the kettle, the cat's grandmother, and four thousand books he'd never priced. I was twenty-four. I thought I was being given a business.\" He comes back with two cups, one of which is chipped, and gives you the good one without seeming to decide to. \"It turns out I was being given a room where nobody makes you leave. I've only recently worked that out.\"",
+          "heat": 1
+        },
+        {
+          "id": "b3_callback",
+          "trigger": {"turns": 3},
+          "stub": false,
+          "event_en": "He has been holding on to something you said, and it comes out sideways, with a book attached.",
+          "text_en": "He slides a book across the counter — not new, not wrapped, just set down. \"You said once that you read to be somewhere else, and that you'd stopped, and that you didn't know when.\" He doesn't look up. \"I put this aside in March. Not for you exactly. I put it aside and then I couldn't sell it to anyone, and around July I admitted to myself why.\" He pushes it another inch. \"It's not a gift, it's a — it's been under the counter for five months. That's worse, isn't it. That's much worse.\"",
+          "heat": 1
+        },
+        {
+          "id": "b4_lane",
+          "trigger": {"turns": 4},
+          "stub": false,
+          "lane_beat": true,
+          "event_en": "He takes his glasses off to clean them, which is what he does instead of looking at you, and then puts them down entirely.",
+          "text_en": "\"You ask me things and then you let me finish,\" he says. \"Do you know how rarely that happens? People come in here and talk at a shopkeeper. You talk to whoever I am.\" He sets the glasses on the counter, which leaves him slightly at sea. \"So I'd like to be that, for an evening. Not the man behind the till. Ask me something the till doesn't know the answer to.\"",
+          "lane": {
+            "anxious": "\"You apologised for asking,\" he says. \"Twice. There's nothing to apologise for — I was going to stand here rearranging a shelf all night if you hadn't.\" He puts the glasses down and makes himself hold the look. \"I'm not going to get tired of you. I want to say that plainly, because I think you're braced for it. I have never once in nine years wanted someone to still be here at ten past nine, and I want it tonight, and I'll say so again in an hour if it helps.\"",
+            "avoidant": "\"You've been standing near the door,\" he says, mildly. \"I noticed at about half eight. I'm not going to make anything of it.\" He goes back to his shelf, which gives you the room. \"The door's unlocked, and it stays unlocked. I'd rather you stayed because the rain's good and the tea is bad than because leaving would be awkward. If you go now I'll simply be here tomorrow, with the same kettle. That's not a threat, it's just — that's the whole of it.\""
+          },
+          "heat": 1
+        },
+        {
+          "id": "b5_upstairs",
+          "trigger": {"turns": 5},
+          "stub": false,
+          "event_en": "You realise, for the first time in all the evenings you have spent here, that there is a staircase behind the curtain at the back.",
+          "text_en": "\"Two rooms,\" he says, when he sees you notice. \"I live above the shop. Everyone assumes I go somewhere at night, and I let them, because the truth is faintly sad when you say it in daylight.\" He turns the chipped cup around. \"Nine years of going up one flight of stairs. I've had exactly two people up there and both of them came to fix something.\" A pause he clearly did not plan. \"Three, if the rain keeps on.\"",
+          "heat": 1
+        },
+        {
+          "id": "b6_close",
+          "trigger": {"turns": 6},
+          "stub": false,
+          "event_en": "He comes round to your side of the counter, which puts nothing between you, and he is visibly aware of having done it.",
+          "text_en": "\"I'm thirty-three,\" he says, \"and I am about to be very bad at this, so I'd like to at least be accurate.\" His hand is on the counter next to yours and goes no further. \"I would like to kiss you. I have wanted that since roughly March, which as we've established is when I started hiding books under a counter like a lunatic.\" He breathes out. \"And if you say no, the shop is open tomorrow at ten and I will be entirely normal, and that is a promise, not a performance of one.\"",
+          "heat": 2
+        },
+        {
+          "id": "b7_answer",
+          "trigger": {"turns": 7},
+          "stub": false,
+          "event_en": "Whatever you say, he waits for the end of it. The rain keeps going. Dango does not wake up.",
+          "text_en": "\"Oh,\" he says, very quietly. \"Right.\" And then, because he cannot help it: \"Sorry — one moment —\" and he takes his glasses off the counter and folds them and puts them somewhere safe, and the ordinariness of it is somehow the least ordinary thing in the room. \"Yes. Sorry. I didn't want to break them, and I wanted to be paying attention.\"",
+          "heat": 2
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "prompt_en": "It is gone eleven and the rain has not let up. He glances at the curtain at the back of the shop and then, deliberately, does not suggest anything.",
+          "options": [
+            {
+              "text_en": "\"Show me upstairs.\"",
+              "aff": 6,
+              "flag": "upstairs",
+              "reply_en": "He pulls the curtain back like it costs him something. \"It's two rooms,\" he warns. \"There are books on the stairs. There are books in the bath.\"",
+              "reply_lane": {
+                "anxious": "\"Yes,\" he says, straight away, and then adds, because he has learned this about you: \"And you can come back down whenever you like, and I'll walk you home in the rain, and neither of those would be a disappointment.\"",
+                "avoidant": "He pulls the curtain back and then stands well clear of it, so the stairs are simply available rather than offered."
+              }
+            },
+            {
+              "text_en": "\"Walk me home instead.\"",
+              "aff": 4,
+              "flag": "slow_ch1",
+              "reply_en": "\"Of course.\" He is already finding the umbrella, which has a broken rib, and he doesn't say a word about the two rooms at the top of the stairs. The route goes on exactly as warmly; declining costs you nothing."
+            },
+            {
+              "text_en": "\"Turn the sign back around first.\"",
+              "aff": 5,
+              "flag": "bold",
+              "reply_en": "He laughs — a real one, surprised out of him. \"Closed,\" he says, turning it. \"Definitively closed. Nine years and that's the first time that's ever meant anything.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title_en": "Two Rooms",
+      "aff_gate": 15,
+      "exit_aff": 35,
+      "scene_en": "the flat above the shop — books on the stairs, one lamp, rain still going",
+      "goal_en": "See the rooms nobody has seen",
+      "opening_en": "[STUB — chapter opening to be written] Two rooms, a great many books, and a man apologising for both.",
+      "cg": "cg_guyan_ch2",
+      "beats": [
+        {"id": "b1_stairs", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] Books on every third stair, arranged by a system only he understands.", "text_en": "[STUB] Beat: the private taxonomy of a private man.", "heat": 1},
+        {"id": "b2_glasses", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] The glasses come off and go on the table and stay there.", "text_en": "[STUB] Beat: unbuttoned, unhurried, reaching. — CG cg_guyan_ch2 is earned at this chapter's clear.", "heat": 3},
+        {"id": "b3_dango", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] Dango arrives to ruin the moment, on schedule.", "text_en": "[STUB] Beat: comedy as an intimacy valve — the route's signature.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] He notices the shape of your nerves and shapes himself around them.", "text_en": "[STUB] Lane beat (secure): he says the true thing slowly and completely.", "lane": {"anxious": "[STUB] Lane beat (anxious): he repeats the reassurance without being asked and without making it a favour.", "avoidant": "[STUB] Lane beat (avoidant): he hands you a book and stops talking, which is the most generous thing available."}, "heat": 2},
+        {"id": "b5_shop", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] The shop is not doing well. He has not mentioned this.", "text_en": "[STUB] Beat: the first real problem, admitted at two in the morning.", "heat": 1},
+        {"id": "b6_rain", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] The rain gets heavier, which is the only reason either of you needs.", "text_en": "[STUB] Beat: staying, as a decision made twice.", "heat": 2},
+        {"id": "b7_morning", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] The shop has to open at ten whatever happens upstairs.", "text_en": "[STUB] Beat: the domesticity of a man with a business downstairs.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c2",
+          "prompt_en": "[STUB] \"Stay,\" he says, \"or let me walk you back in the rain. I have an umbrella with one broken rib and no opinion about which.\"",
+          "options": [
+            {"text_en": "\"I'll stay.\"", "aff": 6, "flag": "stay_ch2", "reply_en": "[STUB] He goes to find a second pillow and takes an embarrassingly long time about it."},
+            {"text_en": "\"The umbrella.\"", "aff": 4, "flag": "slow_ch2", "reply_en": "[STUB] He walks you back and holds the broken rib closed with one hand the entire way."},
+            {"text_en": "\"Open late tomorrow.\"", "aff": 5, "flag": "bold", "reply_en": "[STUB] For the first time in nine years, the shop opens at noon."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title_en": "Four Thousand Unpriced Books",
+      "aff_gate": 35,
+      "exit_aff": 55,
+      "scene_en": "the shop in daylight, the accounts open on the counter, the rain finally stopped",
+      "goal_en": "Get him to say out loud that he needs something",
+      "opening_en": "[STUB — chapter opening to be written] Daylight, and the ledger he has been not-showing anyone for two years.",
+      "beats": [
+        {"id": "b1_ledger", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] The numbers, finally, face-up on the counter.", "text_en": "[STUB] Beat: he is ashamed and says so in one sentence and then can't stop.", "heat": 1},
+        {"id": "b2_landlord", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] The building's owner wants the ground floor for something else.", "text_en": "[STUB] Beat: the shop as a body under threat.", "heat": 1},
+        {"id": "b3_help", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] You offer. He refuses. Then he sits down.", "text_en": "[STUB] Beat: the hardest scene in the route — a gentle man accepting help.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] He is at his least composed, and still reads you correctly.", "text_en": "[STUB] Lane beat (secure): he lets you carry half and says thank you properly.", "lane": {"anxious": "[STUB] Lane beat (anxious): he makes sure you know the crisis isn't about you, repeatedly and specifically.", "avoidant": "[STUB] Lane beat (avoidant): he asks for exactly one small thing, sized so you can say yes."}, "heat": 1},
+        {"id": "b5_night", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] Pricing four thousand books, at night, with a cat interfering.", "text_en": "[STUB] Beat: work as intimacy — the route's actual love scene, fully clothed.", "heat": 2},
+        {"id": "b6_kiss", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] Three in the morning, a box of poetry, and no more pretending.", "text_en": "[STUB] Beat: he asks, again, because he always asks.", "heat": 3},
+        {"id": "b7_dawn", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Dawn, and the shop is priced, and it might even be enough.", "text_en": "[STUB] Beat: exhausted, ink on both your hands.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c3",
+          "prompt_en": "[STUB] \"I can keep it open for another year, or I can sell the stock and be a person with evenings,\" he says. \"I've never had anyone to ask.\"",
+          "options": [
+            {"text_en": "\"Keep it open.\"", "aff": 7, "flag": "shop", "reply_en": "[STUB] He cries about it later, when you are not in the room, and tells you so the next day."},
+            {"text_en": "\"Have the evenings.\"", "aff": 6, "flag": "private", "reply_en": "[STUB] It had never once occurred to him that this was allowed."},
+            {"text_en": "\"Don't decide it tonight.\"", "aff": 5, "flag": "guarded", "reply_en": "[STUB] He agrees with obvious relief and immediately makes tea."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "title_en": "The Room Upstairs",
+      "aff_gate": 55,
+      "exit_aff": 80,
+      "scene_en": "the upstairs room, lamp on, rain back, the shop shut below",
+      "goal_en": "Let the slowest man you know take his time",
+      "opening_en": "[STUB — chapter opening to be written] The shop shut, the sign turned around, and no reason at all to hurry.",
+      "beats": [
+        {"id": "b1_slow", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] He is unhurried to the point of being almost unbearable.", "text_en": "[STUB] Beat: the fantasy of the route — slow, articulate, in no rush whatsoever.", "heat": 2},
+        {"id": "b2_heat", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] Held, over the shoulder, foreheads together, the lamp doing all the work.", "text_en": "[STUB] Beat: the tenderness peak. CG cg_guyan_heat fires when affection crosses 60.", "heat": 3},
+        {"id": "b3_words", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] He is articulate about this, and it turns out that is the whole appeal.", "text_en": "[STUB] Beat: a man who reads for a living, describing what he wants.", "heat": 3},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] He checks in without breaking anything.", "text_en": "[STUB] Lane beat (secure): a question, an answer, and no ceremony about either.", "lane": {"anxious": "[STUB] Lane beat (anxious): he says your name and what is true, on a loop, until you believe it.", "avoidant": "[STUB] Lane beat (avoidant): he waits, at length, and never once asks why you're waiting."}, "heat": 3},
+        {"id": "b5_after", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] After, and a book open face-down on the blanket, and a cat arriving.", "text_en": "[STUB] Beat: the ending image assembling itself a chapter early.", "heat": 2},
+        {"id": "b6_talk", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] He talks until four, which he has never done with anyone.", "text_en": "[STUB] Beat: the real biography, finally, in order.", "heat": 1},
+        {"id": "b7_ten", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] The shop opens at ten. Neither of you moves.", "text_en": "[STUB] Beat: the sign stays turned around a second morning.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c4",
+          "prompt_en": "[STUB] \"There's a spare key on the hook and I've been looking at it for a week,\" he says, and stops there, because he can't finish it.",
+          "options": [
+            {"text_en": "Take the key.", "aff": 7, "flag": "upstairs", "reply_en": "[STUB] He watches you take it off the hook and has to go and do something with the kettle."},
+            {"text_en": "\"Ask me properly.\"", "aff": 7, "flag": "bold", "reply_en": "[STUB] He does, in a complete sentence, and it is the bravest thing in the route."},
+            {"text_en": "\"Leave it on the hook a while.\"", "aff": 5, "flag": "slow_ch4", "reply_en": "[STUB] \"It'll be there,\" he says, and means it, and the route continues at the previous heat with nothing lost."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "title_en": "Open at Ten",
+      "aff_gate": 80,
+      "exit_aff": 95,
+      "scene_en": "the shop, a year of small decisions later",
+      "goal_en": "Decide whether the sign gets turned around for good",
+      "opening_en": "[STUB — chapter opening to be written] The shop, still here, with two names on the lease paperwork on the counter.",
+      "beats": [
+        {"id": "b1_lease", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] The lease renewal, and a second line for a signature.", "text_en": "[STUB] Beat: the least romantic and most romantic document in the route.", "heat": 1},
+        {"id": "b2_book", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] The book from under the counter, back in your hands.", "text_en": "[STUB] Beat: the March callback closing the loop.", "heat": 1},
+        {"id": "b3_dango", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] Dango is old. He has been quietly worried about it for months.", "text_en": "[STUB] Beat: a small grief, handled together.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] The last lane beat: he names what you taught him.", "text_en": "[STUB] Lane beat (secure): he says the plain grateful thing without hedging it.", "lane": {"anxious": "[STUB] Lane beat (anxious): he makes a durable, specific, boring promise, which is the only kind worth anything.", "avoidant": "[STUB] Lane beat (avoidant): he says the door stays unlocked, and that is the whole speech."}, "heat": 1},
+        {"id": "b5_evening", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] Nine o'clock. The sign. Nine years and then this year.", "text_en": "[STUB] Beat: the ritual, changed.", "heat": 2},
+        {"id": "b6_night", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] Upstairs, unhurried, the rain doing what it does.", "text_en": "[STUB] Beat: the last night scene of the route.", "heat": 3},
+        {"id": "b7_morning", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Morning, asleep against the headboard, a book and a cat on the blanket.", "text_en": "[STUB] Beat: the ending image — CG cg_guyan_end.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c5",
+          "prompt_en": "[STUB] He puts the lease on the counter and the pen next to it and says nothing at all, which for him is a whole paragraph.",
+          "options": [
+            {"text_en": "Sign it.", "aff": 6, "flag": "stay_ch5", "reply_en": "[STUB] He watches the pen and not your face, because he can't manage your face."},
+            {"text_en": "\"Not the lease. Just the key.\"", "aff": 4, "flag": "slow_ch5", "reply_en": "[STUB] \"That's still more than I had in March,\" he says."},
+            {"text_en": "\"You'd let me sign this and never say what you wanted.\"", "aff": 1, "flag": "doubt", "reply_en": "[STUB] It is the one accusation that is entirely fair."}
+          ]
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "open_at_ten",
+      "priority": 1,
+      "aff_min": 85,
+      "flags_any": ["stay_ch5"],
+      "cg": "cg_guyan_end",
+      "title_en": "Open at Ten",
+      "text_en": "[STUB — ending prose to be written] Two names on a lease, a shop that survived, and a man asleep against a headboard with a book and a cat on the blanket. Best ending."
+    },
+    {
+      "id": "the_spare_key",
+      "priority": 2,
+      "aff_min": 60,
+      "flags_any": ["slow_ch5", "private", "upstairs"],
+      "cg": "cg_guyan_end",
+      "title_en": "The Spare Key",
+      "text_en": "[STUB — ending prose to be written] Not the lease. The key, and the door that stays unlocked, and no hurry about the rest. Good ending at your pace."
+    },
+    {
+      "id": "under_the_counter",
+      "priority": 9,
+      "aff_min": 0,
+      "title_en": "Under the Counter",
+      "text_en": "[STUB — ending prose to be written] The book goes back under the counter and the shop opens at ten as it always has. Bittersweet fallback — authored, never a failure screen."
+    }
+  ]
+}

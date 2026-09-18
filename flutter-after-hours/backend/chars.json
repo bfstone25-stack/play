@@ -1,0 +1,77 @@
+{
+ "pet": {
+  "name_zh": "团子",
+  "name_en": "Dango",
+  "emoji": "🐱"
+ },
+ "routes": [
+  {
+   "id": "guyan",
+   "langs": [
+    "en"
+   ],
+   "name_zh": "顾言",
+   "name_en": "Gu Yan",
+   "title_zh": "把打烊牌留着没翻回来的书店老板",
+   "title_en": "the bookshop owner who left the sign turned around",
+   "tag_zh": "慢热 · 不赶时间",
+   "tag_en": "Slow burn · Unhurried",
+   "emoji": "📚",
+   "hue": 28,
+   "accent": "#e8b06a",
+   "portrait": "portraits/v2/masters/guyan-master-v1.webp",
+   "portrait_expressions": true,
+   "scene_zh": "打烊后的旧书店，窗上有雨，后面留着一盏灯",
+   "scene_en": "the bookshop after closing, rain on the window, one lamp at the back",
+   "persona": "Gu Yan is 33 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "age": 33,
+   "adult": true
+  },
+  {
+   "id": "luxingye",
+   "langs": [
+    "en"
+   ],
+   "name_zh": "陆星野",
+   "name_en": "Lu Xingye",
+   "title_zh": "无人知晓的休季偶像",
+   "title_en": "the idol in an off-season nobody knows about",
+   "tag_zh": "偶像 · 私下的那个他",
+   "tag_en": "Idol · The private version",
+   "emoji": "🎤",
+   "hue": 320,
+   "accent": "#e87aa8",
+   "portrait": "portraits/v2/masters/luxingye-master-v1.webp",
+   "portrait_expressions": true,
+   "scene_zh": "面馆楼上的出租屋，没有工作人员，没有行程",
+   "scene_en": "a rented flat above a noodle shop, no staff, no schedule",
+   "persona": "Lu Xingye is 27 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "age": 27,
+   "adult": true
+  },
+  {
+   "id": "ethan",
+   "langs": [
+    "en"
+   ],
+   "name_zh": "Ethan Cole",
+   "name_en": "Ethan Cole",
+   "title_zh": "终于把手机扣下的男人",
+   "title_en": "the man who finally put the phone face-down",
+   "tag_zh": "办公室 · 收得住的掌控",
+   "tag_en": "Office · Control that stops",
+   "emoji": "🥃",
+   "hue": 215,
+   "accent": "#6f9bd8",
+   "portrait": "portraits/v2/masters/ethan-master-v1.webp",
+   "portrait_expressions": true,
+   "scene_zh": "写字楼顶层的公寓，一个后面什么都没有的周五夜",
+   "scene_en": "his apartment above the office tower, a Friday with nothing behind it",
+   "persona": "Ethan Cole is 38 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "age": 38,
+   "adult": true
+  }
+ ],
+ "adult": true,
+ "content_notice_en": "18+. Everyone depicted is an adult and is written as one. Consensual only. No minors, no violence, no non-consent."
+}

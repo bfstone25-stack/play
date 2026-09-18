@@ -1,0 +1,263 @@
+{
+  "id": "luxingye",
+  "adult": true,
+  "static": true,
+  "title_en": "Off-Season",
+  "logline_en": "Eleven weeks with nothing scheduled, a rented flat with no staff in it, and the private version of a public person.",
+  "cast_note_en": "Lu Xingye, 27. Adult. Idol, four years at the top, currently and deliberately unemployed.",
+  "cg_heat": "cg_luxingye_heat",
+  "hold_en": [
+    "He waits you out, grinning, because he has nothing else on for eleven weeks and he knows it's an unfair advantage.",
+    "\"Go on,\" he says. \"Nobody's timing this. That's still weird to me.\"",
+    "He drums something against the edge of the table — a hook from a song that never got released.",
+    "\"Say more,\" he says. \"I've got a whole off-season. You have no idea how much time that is.\""
+  ],
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_en": "Eleven Weeks, Unbooked",
+      "aff_gate": 0,
+      "exit_aff": 15,
+      "scene_en": "a rented two-room flat above a noodle shop, half-unpacked, no staff, no schedule",
+      "goal_en": "Find out who he is when nobody is watching him be anybody",
+      "opening_en": "The address he sent is not an address anyone would guess. Third floor, above a noodle shop, a stairwell light that only works if you hit the wall. He opens the door in a t-shirt with a hole at the collar, hair flattened on one side, holding a bowl. \"Don't,\" he says, before you say anything. \"I know. This is the real one. The other guy needs ninety minutes and two people.\"",
+      "beats": [
+        {
+          "id": "b1_boxes",
+          "trigger": {"turns": 1},
+          "stub": false,
+          "event_en": "There are four cardboard boxes in the middle of the floor. Nobody is going to unpack them.",
+          "text_en": "\"Eleven weeks,\" he says, sitting on one of the boxes like it's furniture, which by now it is. \"That's the off-season. Eleven weeks where the company can't book me because of the contract I made them sign, which cost me a truly stupid amount of money.\" He waves the chopsticks around the flat. \"And this is what I bought with it. Nobody knows I'm here. My manager thinks I'm in Sanya. It's the best thing I've ever owned and I don't even own it, it's a six-month lease.\"",
+          "heat": 1
+        },
+        {
+          "id": "b2_voice",
+          "trigger": {"turns": 2},
+          "stub": false,
+          "event_en": "He talks differently up here. Lower, faster, with a hometown edge on some of the words.",
+          "text_en": "\"You hear that?\" He points at his own mouth, delighted. \"That's my actual voice. There's a vocal coach who spent two years sanding that off. Up here I let it come back and it comes back in about four days.\" He laughs at something private. \"I did an interview last month where I said 'I'm just a normal guy at heart' and I was so embarrassed I couldn't watch it back. But I'm sitting on a box eating noodles at eleven at night, so. Maybe the marketing department got one right by accident.\"",
+          "heat": 1
+        },
+        {
+          "id": "b3_callback",
+          "trigger": {"turns": 3},
+          "stub": false,
+          "event_en": "He repeats something you said months ago, and it turns out he's been using it.",
+          "text_en": "\"You told me once that I perform even when I'm tired, and that it's not fake, it's just the only setting I've got left.\" He isn't grinning now. \"I've been trying to prove you wrong for four months. Turns out the way to do it is eleven weeks off and a flat with no mirror in the main room. I took the mirror down. Deliberately. Because of a thing you said.\" The grin comes back, defensively. \"Which is insane behaviour and I'd like that kept between us.\"",
+          "heat": 1
+        },
+        {
+          "id": "b4_lane",
+          "trigger": {"turns": 4},
+          "stub": false,
+          "lane_beat": true,
+          "event_en": "He clocks how you're handling him — everyone handles him — and drops the register to match.",
+          "text_en": "\"You don't do the thing,\" he says. \"The thing where people talk to me like I might be recording it. Do you know how rare that is? I have two friends and one of them is my driver.\" He puts the bowl down. \"So let's just — talk. Straight across. Ask me something an interviewer wouldn't get away with and I'll answer it properly, one time, tonight only, no press officer.\"",
+          "lane": {
+            "anxious": "\"Hey.\" He catches it — the second time you checked whether he was still enjoying this. \"You keep looking for the exit in my face. I know that look, I've done that look, in about four hundred photos.\" He sits forward. \"I'm not going anywhere for eleven weeks. That's not a line, it's a contract. You can ask me again tomorrow and I'll say the same thing, and I won't be annoyed the fourth time, because I have genuinely never had anyone check on me either.\"",
+            "avoidant": "\"You're doing the short answers,\" he says, not offended. \"That's fine. I talk enough for a room, it's literally my job.\" He leans back against the wall and lets a decent amount of space open up. \"Here's the deal — I'm not going to pull anything out of you. You can sit there and let me be an idiot about noodles for an hour and that counts as a night. I'm not keeping score, I'm off the clock. First time in four years.\""
+          },
+          "heat": 1
+        },
+        {
+          "id": "b5_song",
+          "trigger": {"turns": 5},
+          "stub": false,
+          "event_en": "There is a guitar in the corner with a broken string, and he picks it up without making an event of it.",
+          "text_en": "\"This one never got released,\" he says, playing something rough around the missing string. \"Wrote it at nineteen, before any of it. A&R said it was 'insufficiently aspirational', which is a real sentence a real adult said to me in a real room.\" He plays the bridge twice, badly, cheerfully. \"I've never played it for anyone who could tell me the truth about it. So, uh. Awkward, but — you're the first person in eight years I'm scared of the opinion of.\"",
+          "heat": 1
+        },
+        {
+          "id": "b6_close",
+          "trigger": {"turns": 6},
+          "stub": false,
+          "event_en": "The song ends. He doesn't fill the gap after it, which for him is nearly unheard of.",
+          "text_en": "He sets the guitar down very carefully, which is how you know. \"Okay, so, I'm going to be direct, and if I'm wrong I'm going to be so normal about it that you won't even remember this by Thursday.\" He looks up. \"I don't want to be charming at you. I've got a whole kit for that and I don't want to use it on you, because then I'd never know.\" A breath. \"Tell me what you want to happen next. Actually tell me. I'll follow the instruction exactly, including if it's 'nothing'.\"",
+          "heat": 2
+        },
+        {
+          "id": "b7_answer",
+          "trigger": {"turns": 7},
+          "stub": false,
+          "event_en": "He listens the whole way through without interrupting, which takes him visible effort.",
+          "text_en": "\"Right,\" he says. \"Right. Okay.\" He laughs once, at himself. \"I've been on a stage in front of forty thousand people and my hands are doing something weird, look at that.\" He shows you, unembarrassed. \"Here's what I've got: eleven weeks, no schedule, no cameras, one guitar with five strings and a flat nobody knows about. That's the whole offer. It's not a fantasy, it's an apartment.\"",
+          "heat": 2
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "prompt_en": "His phone buzzes on the floor — the group chat, the company, the machine starting up early. \"I can turn this off,\" he says. \"But I want it to be your idea, because if it's mine I'll resent it by Tuesday. That's a thing I do.\"",
+          "options": [
+            {
+              "text_en": "\"Turn it off.\"",
+              "aff": 6,
+              "flag": "chose_him",
+              "reply_en": "He holds the power button down and shows you the black screen like a magic trick. \"Eleven weeks,\" he says. \"Starting now, apparently.\"",
+              "reply_lane": {
+                "anxious": "He turns it off without a beat of hesitation and puts it face-down on the far box, where you can both see it. \"It's off. It stays off. You're not going to have to ask me twice.\"",
+                "avoidant": "He turns it off with a shrug and immediately talks about something else, which is exactly the right size of moment to make of it."
+              }
+            },
+            {
+              "text_en": "\"Answer it. I want to see who you are on the phone.\"",
+              "aff": 4,
+              "flag": "curious",
+              "reply_en": "He answers, and you watch the other one arrive — a whole register up, bright as a lamp — for eleven seconds. Then he hangs up and looks slightly ill. \"Yeah,\" he says. \"That. That's the guy.\""
+            },
+            {
+              "text_en": "\"Not my call. It's your off-season.\"",
+              "aff": 3,
+              "flag": "guarded",
+              "reply_en": "\"Huh,\" he says, and sits with it. \"Nobody's given me one of those in a while. A thing that's just mine to decide.\" He turns it off anyway, but slower, and it means more."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title_en": "Nobody's Watching",
+      "aff_gate": 15,
+      "exit_aff": 35,
+      "scene_en": "the flat, a week later, boxes now used as furniture on purpose",
+      "goal_en": "Get through one whole day where he never once performs",
+      "opening_en": "[STUB — chapter opening to be written] A week in. The boxes have stopped being temporary.",
+      "cg": "cg_luxingye_ch2",
+      "beats": [
+        {"id": "b1_market", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] He goes out for food in a mask and nobody looks twice, which unsettles him.", "text_en": "[STUB] Beat: being unrecognised is both the prize and the wound.", "heat": 1},
+        {"id": "b2_shirt", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] He changes shirts mid-sentence, entirely unselfconscious about it.", "text_en": "[STUB] Beat: the shirt over the head, still talking through the fabric. — CG cg_luxingye_ch2 is earned at this chapter's clear.", "heat": 3},
+        {"id": "b3_fans", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] Someone posts a blurry photo of the stairwell. It is nothing. It is not nothing.", "text_en": "[STUB] Beat: the first crack of the outside world, and what it costs him.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] He adapts to the way you handle bad news.", "text_en": "[STUB] Lane beat (secure): he tells you the real risk without softening it.", "lane": {"anxious": "[STUB] Lane beat (anxious): he pre-empts every worry out loud, one at a time, until they run out.", "avoidant": "[STUB] Lane beat (avoidant): he makes it a joke and leaves you room to not be involved."}, "heat": 1},
+        {"id": "b5_song", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] He restrings the guitar. Badly.", "text_en": "[STUB] Beat: he writes a second verse in front of you and hates being watched doing it.", "heat": 2},
+        {"id": "b6_night", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] Two in the morning, the noodle shop shutter coming down downstairs.", "text_en": "[STUB] Beat: the flat at its most nobody's-business.", "heat": 2},
+        {"id": "b7_ask", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] He asks for something with none of the kit on.", "text_en": "[STUB] Beat: the un-charming ask, which is the whole route in one line.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c2",
+          "prompt_en": "[STUB] \"Stay,\" he says. \"Or go, and I'll walk you down and not be weird about it. Both are genuinely fine, I've rehearsed both.\"",
+          "options": [
+            {"text_en": "\"I'll stay.\"", "aff": 6, "flag": "stay_ch2", "reply_en": "[STUB] He doesn't make a performance of it, which is new."},
+            {"text_en": "\"Walk me down.\"", "aff": 4, "flag": "slow_ch2", "reply_en": "[STUB] He walks you down, hits the wall to make the stairwell light work, and the route goes on exactly as warmly."},
+            {"text_en": "\"Play me the second verse first.\"", "aff": 5, "flag": "bold", "reply_en": "[STUB] He goes red, which apparently still happens."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title_en": "The Blurry Photo",
+      "aff_gate": 35,
+      "exit_aff": 55,
+      "scene_en": "the flat under siege — the internet has half an address and a stairwell",
+      "goal_en": "Decide together what the outside world is allowed to have",
+      "opening_en": "[STUB — chapter opening to be written] The photo went up at nine. By noon there are people on the corner.",
+      "beats": [
+        {"id": "b1_corner", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] Three people on the corner with phones. Then six.", "text_en": "[STUB] Beat: the off-season ends early and neither of you says so.", "heat": 1},
+        {"id": "b2_manager", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] The manager calls. He answers this one.", "text_en": "[STUB] Beat: the machine, on speaker, discussing him in the third person.", "heat": 1},
+        {"id": "b3_choice", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] They want a statement. The statement would erase you.", "text_en": "[STUB] Beat: he refuses in a way that costs him money, and doesn't tell you what it cost.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] Under pressure he handles you the way you need handling.", "text_en": "[STUB] Lane beat (secure): straight facts, shared load.", "lane": {"anxious": "[STUB] Lane beat (anxious): constant contact, nothing left ambiguous, every silence explained.", "avoidant": "[STUB] Lane beat (avoidant): he gives you a clean way out and doesn't guilt it."}, "heat": 1},
+        {"id": "b5_leave", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] They leave the flat at four in the morning in a borrowed car.", "text_en": "[STUB] Beat: running away as a shared act rather than a solo one.", "heat": 2},
+        {"id": "b6_road", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] A service station at dawn, and he is laughing so hard he can't stand up.", "text_en": "[STUB] Beat: the relief, and the first kiss that isn't a scene from anything.", "heat": 3},
+        {"id": "b7_where", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Nowhere to go and seven weeks to do it in.", "text_en": "[STUB] Beat: he asks where you want to go and means it literally.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c3",
+          "prompt_en": "[STUB] \"I can end the off-season and go back and it all goes quiet,\" he says. \"Or we keep driving. I've got seven weeks and a car that isn't mine.\"",
+          "options": [
+            {"text_en": "\"Keep driving.\"", "aff": 7, "flag": "public", "reply_en": "[STUB] He turns the phone off again, and this time he doesn't need it to be your idea."},
+            {"text_en": "\"Go back. Don't set fire to it for me.\"", "aff": 6, "flag": "private", "reply_en": "[STUB] He hears it as the care it is, which is not how he'd have heard it a month ago."},
+            {"text_en": "\"You've never once chosen for yourself. Try it.\"", "aff": 5, "flag": "guarded", "reply_en": "[STUB] It stops him dead, and the answer takes him a long time."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "title_en": "Someone Else's Car",
+      "aff_gate": 55,
+      "exit_aff": 80,
+      "scene_en": "a motel room somewhere with a name he can't pronounce, curtains that don't close properly",
+      "goal_en": "Be with the private version and let him believe it is the real one",
+      "opening_en": "[STUB — chapter opening to be written] No staff, no schedule, no address, and a room with one lamp.",
+      "beats": [
+        {"id": "b1_room", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] One lamp, one bed, both of you ridiculous about it.", "text_en": "[STUB] Beat: the comedy before the heat, because he is funny and that doesn't stop.", "heat": 2},
+        {"id": "b2_heat", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] He stops performing entirely, and it is the most naked thing about him.", "text_en": "[STUB] Beat: being the only audience there is. CG cg_luxingye_heat fires when affection crosses 60.", "heat": 3},
+        {"id": "b3_ask", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] He asks clearly and badly and does not fill the pause.", "text_en": "[STUB] Beat: consent, unglamorous and specific.", "heat": 3},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] Even here he reads you and adjusts.", "text_en": "[STUB] Lane beat (secure): present, unhurried, entirely himself.", "lane": {"anxious": "[STUB] Lane beat (anxious): he keeps talking you through it, and it is reassurance rather than noise.", "avoidant": "[STUB] Lane beat (avoidant): he goes quiet and lets you lead every step."}, "heat": 3},
+        {"id": "b5_after", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] After, with his arm over his eyes, laughing at the ceiling.", "text_en": "[STUB] Beat: embarrassed, delighted, twenty-seven.", "heat": 3},
+        {"id": "b6_song", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] The third verse arrives at four in the morning and he writes it on a receipt.", "text_en": "[STUB] Beat: the song finally about something.", "heat": 2},
+        {"id": "b7_clock", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Four weeks left. He counts them out loud, which is a mistake.", "text_en": "[STUB] Beat: the off-season is finite and they both start knowing it.", "heat": 1}
+      ],
+      "choices": [
+        {
+          "id": "c4",
+          "prompt_en": "[STUB] \"When it starts again,\" he says, \"there's a version where you're a secret and a version where you're not, and both of them are hard, and I'm not picking for you.\"",
+          "options": [
+            {"text_en": "\"Not a secret.\"", "aff": 7, "flag": "public", "reply_en": "[STUB] He goes very quiet and then says the number out loud — what it would cost — and chooses anyway."},
+            {"text_en": "\"A secret. I don't want your whole industry in my inbox.\"", "aff": 7, "flag": "private", "reply_en": "[STUB] He is visibly relieved and then visibly ashamed of being relieved."},
+            {"text_en": "\"Slow down. You are four weeks from a stage.\"", "aff": 5, "flag": "slow_ch4", "reply_en": "[STUB] He takes it, and the route continues at the previous heat — declining is authored, not punished."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "title_en": "Back On",
+      "aff_gate": 80,
+      "exit_aff": 95,
+      "scene_en": "a venue corridor on the first night back, forty thousand people on the other side of a wall",
+      "goal_en": "Find out which version of him walks out of that corridor",
+      "opening_en": "[STUB — chapter opening to be written] Ninety minutes and two people, and the other guy is back in the room.",
+      "beats": [
+        {"id": "b1_corridor", "trigger": {"turns": 1}, "stub": true, "event_en": "[STUB] Hair, wardrobe, three staff, and his actual voice going away in real time.", "text_en": "[STUB] Beat: watching the sanding happen from four feet away.", "heat": 1},
+        {"id": "b2_mirror", "trigger": {"turns": 2}, "stub": true, "event_en": "[STUB] There are mirrors everywhere here. He took one down for you once.", "text_en": "[STUB] Beat: the callback to chapter one, in the worst possible room.", "heat": 1},
+        {"id": "b3_song", "trigger": {"turns": 3}, "stub": true, "event_en": "[STUB] The unreleased song is on the setlist. Nobody asked him to do that.", "text_en": "[STUB] Beat: 'insufficiently aspirational', played to forty thousand people.", "heat": 1},
+        {"id": "b4_lane", "trigger": {"turns": 4}, "stub": true, "lane_beat": true, "event_en": "[STUB] Two minutes before he goes on, he handles you and not himself.", "text_en": "[STUB] Lane beat (secure): straight, warm, brief, real.", "lane": {"anxious": "[STUB] Lane beat (anxious): he gives you a specific promise with a time on it.", "avoidant": "[STUB] Lane beat (avoidant): he tells you it's fine to not be here when he gets off stage, and means it."}, "heat": 1},
+        {"id": "b5_stage", "trigger": {"turns": 5}, "stub": true, "event_en": "[STUB] He goes on. It is enormous. It is not him.", "text_en": "[STUB] Beat: watching from the wing, knowing the difference now.", "heat": 1},
+        {"id": "b6_after", "trigger": {"turns": 6}, "stub": true, "event_en": "[STUB] He comes off soaked and finds you before he finds a towel.", "text_en": "[STUB] Beat: the register drops back within four seconds instead of four days.", "heat": 3},
+        {"id": "b7_dawn", "trigger": {"turns": 7}, "stub": true, "event_en": "[STUB] Dawn, an open shirt, a window, and no schedule until noon.", "text_en": "[STUB] Beat: the ending image — CG cg_luxingye_end.", "heat": 2}
+      ],
+      "choices": [
+        {
+          "id": "c5",
+          "prompt_en": "[STUB] \"I can keep two versions of myself going for years,\" he says. \"I'm world-class at it. Tell me not to.\"",
+          "options": [
+            {"text_en": "\"Don't. Be one person.\"", "aff": 6, "flag": "stay_ch5", "reply_en": "[STUB] It is the hardest thing anyone has ever asked him for, and he says yes."},
+            {"text_en": "\"Keep both. Just let me have the real one.\"", "aff": 4, "flag": "slow_ch5", "reply_en": "[STUB] He agrees, and the arrangement is honest, and it will be difficult, and you both know it."},
+            {"text_en": "\"I don't think you know which one is real anymore.\"", "aff": 1, "flag": "doubt", "reply_en": "[STUB] He doesn't argue, which is the worst possible answer."}
+          ]
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "off_season",
+      "priority": 1,
+      "aff_min": 85,
+      "flags_any": ["stay_ch5"],
+      "cg": "cg_luxingye_end",
+      "title_en": "Off-Season",
+      "text_en": "[STUB — ending prose to be written] One person, on and off the stage, in an open shirt at a window at dawn. Best ending: the sanding stops."
+    },
+    {
+      "id": "the_real_one",
+      "priority": 2,
+      "aff_min": 60,
+      "flags_any": ["slow_ch5", "private"],
+      "cg": "cg_luxingye_end",
+      "title_en": "The Real One",
+      "text_en": "[STUB — ending prose to be written] Two versions, and you get the one nobody else has ever met. Good ending, with its own quiet cost."
+    },
+    {
+      "id": "insufficiently_aspirational",
+      "priority": 9,
+      "aff_min": 0,
+      "title_en": "Insufficiently Aspirational",
+      "text_en": "[STUB — ending prose to be written] The song stays unreleased and the flat above the noodle shop reverts to the landlord. Bittersweet fallback — authored, never a failure screen."
+    }
+  ]
+}
