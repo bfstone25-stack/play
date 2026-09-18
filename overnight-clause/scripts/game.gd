@@ -479,11 +479,33 @@ func _advance(next_stage: int, obj_key: String, next_chapter: int, clock: String
 			prop.set("taken", true)
 			prop.set("collision_layer", 0)
 	stage = next_stage
+	var crossed := next_chapter != chapter_index
 	chapter_index = next_chapter
 	objective_key = obj_key
 	hud.set_objective(Loc.t(obj_key))
 	hud.set_chapter(_chapter(next_chapter), clock)
 	_spawn_stage(stage)
+	if crossed:
+		_board_break()
+
+## The break offer at a chapter crossing (shared/godot/gate.gd: silent on the 1st and 3rd).
+##
+## The board is HTML over the canvas and this game holds the mouse captured, so a board
+## drawn without releasing it is a board the player can look at and cannot click. Release
+## the mouse, lock the player while it is up, and take both back when they close it —
+## which is the same shape as the plate viewer above (_show_plate).
+func _board_break() -> void:
+	if not Gate.board_offer_break():
+		return
+	player.locked = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	while Gate.board_open():
+		# process_always: the board may be up while the game is paused.
+		await get_tree().create_timer(0.4, true, false, true).timeout
+	if ending or paused:
+		return
+	player.locked = false
+	player.capture_mouse()
 
 func _slice_end() -> void:
 	ending = true
@@ -493,6 +515,9 @@ func _slice_end() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	hud.set_prompt("")
 	drone.stop()
+	# End of the run. The mouse is already free here and the player is locked, so the
+	# board is clickable as drawn.
+	Gate.board_offer_more()
 	hud.show_ending(Loc.t("slice.end"), [
 		Loc.t("slice.beat.0"),
 		Loc.t("slice.beat.1"),
@@ -514,6 +539,9 @@ func _finish(id: String) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	hud.set_prompt("")
 	drone.stop()
+	# End of the run. The mouse is already free here and the player is locked, so the
+	# board is clickable as drawn.
+	Gate.board_offer_more()
 	var world := $World
 	if world.has_method("apply_ending"):
 		world.apply_ending(id)

@@ -314,7 +314,14 @@ func _gate(chapter: int) -> bool:
 	if DEMO and chapter == 2:
 		_finish("DEMO")
 		return false
-	return await Gate.require("act%d" % chapter, "Appraisal %d" % chapter)
+	var opened := await Gate.require("act%d" % chapter, "Appraisal %d" % chapter)
+	if opened:
+		# Offered after the unlock, never instead of it: the player has just earned the
+		# next appraisal, so this asks whether they would rather spend ten minutes on
+		# something lighter first. Gate.board_offer_break() says nothing on the 1st and
+		# 3rd crossing — see shared/godot/gate.gd.
+		Gate.board_offer_break()
+	return opened
 
 
 func advance() -> void:
@@ -338,6 +345,10 @@ func _finish(id: String) -> void:
 	awaiting_choice = false
 	plates.hide_plate()
 	_clear_actions()
+	if id != "DEMO":
+		# End of a run, and only a real ending: the demo stop is a price prompt and
+		# stacking a catalogue on top of it would bury the one thing it has to say.
+		Gate.board_offer_more()
 	if id == "DEMO":
 		title_label.text = "The free part ends here"
 		detail.clear()

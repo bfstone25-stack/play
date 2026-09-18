@@ -150,6 +150,12 @@ func _load_area() -> void:
 	# both are served from the same origin on the ads site and share localStorage.
 	if area_index >= FREE_FILES:
 		Gate.block("f13r_area%d" % area_index, str(area.chapter))   # dual-track (ops/DUAL_TRACK.md)
+	if area_index > 0:
+		# The break offer, on a file boundary rather than on the gate: the gate only exists
+		# from File 4, and the point of the offer is the crossing itself. It is silent on
+		# the 1st and 3rd crossing of a session (shared/godot/gate.gd), so the player is
+		# asked twice at most and never twice in a row.
+		Gate.board_offer_break()
 	world.build(area.id, flags)
 	hud.set_header(area.chapter, area.place, area.clock, area.objective)
 	_say(area.opening, false, "opening")
@@ -286,6 +292,9 @@ func on_dialogue_done() -> void:
 		"ending":
 			pending = ""
 			hud.show_ending_card(StoryData.live_endings()[ending_id][-1][1])
+			# End of the run: the rest of the adult catalogue, offered over the END card
+			# so the player can read it, dismiss it, and still be looking at their ending.
+			Gate.board_offer_more()
 
 ## [fork] Say a passage, honouring any ["CG", slot] marker inside it.
 ##

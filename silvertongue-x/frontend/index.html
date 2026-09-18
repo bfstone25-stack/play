@@ -1,4 +1,6 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#6f4f86"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>SILVERTONGUE · Persuasion RPG</title><script src="build.js"></script><script src="config.js"></script><script>window.GATE_CONFIG={directLink:"https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9",directLinkSeconds:20,price:"$2.99",buyUrl:"https://bfstone25-stack.itch.io/silvertongue/purchase"};</script><script src="gate.js"></script>
+<script>window.BOARD_FROM="silvertongue-after-hours";</script>
+<script src="board.js"></script>
 <script src="cg.js"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -961,9 +963,25 @@ async function win(n){
  b.innerHTML=`<h2 style="color:#f0cd88">${tr().win}</h2><div style="color:#c9b48f">${tr().winsub(n,pct)}</div>
    <div class="grid">${grid}</div><div style="color:#8a7860;font-size:.85em">${mode==="campaign"?("⚔️ "+(S.cleared+1)+"/"+S.total+" cleared"):tr().tomorrow}</div>
    <button class="share" onclick="share(${n},'${grid}')">${tr().share}</button>${mode==="campaign"?'<button class="share" style="margin-top:8px;background:linear-gradient(180deg,#7ac67a,#4a9a4a)" onclick="nextCampaign()">Next Challenge &rarr;</button><button class="share" style="margin-top:8px;background:linear-gradient(180deg,#888,#555)" onclick="replayCampaign()">Replay</button>':""}${fbHTML()}`;
+ // End of a run. The campaign has a "Next Challenge" button of its own, so the adult
+ // board is offered when there is nothing left to advance into: a daily duel, or the
+ // last campaign duel. Offered over the banner; the player can close it and still read it.
+ if(window.BOARD&&BOARD.offerMore&&(mode!=="campaign"||(S.cleared+1)>=S.total))setTimeout(()=>BOARD.offerMore("adult"),1200);
+}
+/* The cross-promotion board (play/_shared/board.js).
+   Between duels it offers the *casual* board: a player deep into an adult title is often
+   done with that, not done playing, and ten minutes of something light brings them back
+   to the catalogue for free. Not on every crossing — a thing that asks every time is a
+   thing players dismiss without reading — so the 2nd and 4th of a session, which is the
+   gating room-704 settled on (09_dist.rpy board_offer_break). */
+let boardCrossings=0;
+function boardBreak(){
+ if(!window.BOARD||!BOARD.offerBreak)return;
+ if(++boardCrossings!==2&&boardCrossings!==4)return;
+ BOARD.offerBreak();
 }
 function campaignLocked(i){return DEMO&&i>=DEMO_CAMPAIGN&&!(window.Gate&&(window.Gate.dist()==="paid"||window.Gate.has("duel"+i)));}
-async function nextCampaign(){const ni=(S.index||0)+1;if(campaignLocked(ni)){if(window.Gate&&window.Gate.dist()==="ads_web"){const r=await window.Gate.require("duel"+ni,{title:"Duel "+(ni+1),kind:"level"});if(r!=="unlocked")return;}else{showPaywall();return;}}document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
+async function nextCampaign(){const ni=(S.index||0)+1;if(campaignLocked(ni)){if(window.Gate&&window.Gate.dist()==="ads_web"){const r=await window.Gate.require("duel"+ni,{title:"Duel "+(ni+1),kind:"level"});if(r!=="unlocked")return;}else{showPaywall();return;}}document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();boardBreak();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
  showBubble(boss,tr().loseLine,{gray:true,ttl:3500});
  stopGameplayMusic();
  loseSound();

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER: AFTER HOURS — He remembers what you told him</title><script src="config.js"></script><script>window.GATE_CONFIG={price:"$8.99",buyUrl:"https://bfstone25-stack.itch.io/flutter-after-hours/purchase",seconds:30};/* No directLink on this build: an adult forum ban for exactly that is recorded in ops memory (f95-ban-direct-link-ads). The ad track uses the banner-in-iframe path only. */</script><script src="gate.js"></script><script src="cg.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER: AFTER HOURS — He remembers what you told him</title><script src="config.js"></script><script>window.GATE_CONFIG={price:"$8.99",buyUrl:"https://bfstone25-stack.itch.io/flutter-after-hours/purchase",seconds:30};/* No directLink on this build: an adult forum ban for exactly that is recorded in ops memory (f95-ban-direct-link-ads). The ad track uses the banner-in-iframe path only. */</script><script src="gate.js"></script><script>window.BOARD_FROM="flutter-after-hours";</script><script src="board.js"></script><script src="cg.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script>
 <style>
 :root{--accent:#e87aa8;--hue:320;--edition-bg0:#0c1720;--edition-bg1:#233343;--edition-bg2:#111a22;--edition-glowA:#d07c63;--edition-glowB:#547e99;--edition-ink:#f4eee8;--edition-muted:#c7bdba;--edition-font:'Avenir Next','Helvetica Neue',Inter,Arial,sans-serif}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -1575,7 +1575,19 @@ async function continueChapter(){
   clearChatlog();
   if(r.opening){hist.push({role:"assistant",content:r.opening});typeLine(r.opening);}
   if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("conversation");
+  boardBreak();
  }catch(e){console.error("[flutter/continue]",e);if(btn)btn.disabled=false;}
+}
+/* The cross-promotion board (play/_shared/board.js). Between chapters it offers the
+   *casual* board: arousal fatigues, and a player an hour in is usually done with this,
+   not done playing. Offered only once the next chapter has actually loaded, so a failed
+   /continue never produces a board instead of a story — and only on the 2nd and 4th
+   crossing of a session, the gating room-704 settled on (09_dist.rpy). */
+let boardCrossings=0;
+function boardBreak(){
+ if(!window.BOARD||!BOARD.offerBreak)return;
+ if(++boardCrossings!==2&&boardCrossings!==4)return;
+ setTimeout(()=>BOARD.offerBreak(),900);
 }
 function showEnding(end){
  if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("theme");
@@ -1589,6 +1601,9 @@ function showEnding(end){
    `<div class="etext">${esc(end.text||"")}</div>`+
    `<button class="ebtn" onclick="closeEnding()">${tr().back}</button>`;
  document.getElementById("endOv").classList.add("show");
+ // End of the run: the rest of the adult catalogue, after the ending card has had a
+ // moment to land. Offered, never forced — closing it leaves the ending on screen.
+ if(window.BOARD&&BOARD.offerMore)setTimeout(()=>BOARD.offerMore("adult"),2000);
 }
 function closeEnding(){document.getElementById("endOv").classList.remove("show");goSelect();if(R)renderRouteCards(R.routes);}
 async function say(){

@@ -29,6 +29,14 @@ if ls "$OUT"/cg/*.webp >/dev/null 2>&1; then
   done
 fi
 
+# The cross-promotion board has to BE in the package, not merely called by the game:
+# play/confession-room wired board_offer_break() and shipped no board.js, so the board has
+# never appeared in it. rsync brings it across from frontend/; this proves it did.
+grep -q 'src="board.js"' "$OUT/index.html" && [ -s "$OUT/board.js" ] || {
+  echo "FATAL: board.js missing from the free package (or index.html does not load it)" >&2
+  exit 1
+}
+
 echo "free build -> $OUT"
 du -sh "$OUT"
 echo "plates shipped: $(ls "$OUT"/cg/*_locked.webp 2>/dev/null | wc -l) covered, 0 uncensored"
