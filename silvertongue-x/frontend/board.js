@@ -280,7 +280,15 @@
    * adult title it is the rest of the adult catalogue. */
   function offerMore(kind) {
     var want = kind || "adult";
-    if (want === "adult" && !window.BOARD_ADULT_OK) return Promise.resolve(false);
+    // On a host where the adult board is vetoed (the AdSense domain), an "adult" request
+    // used to resolve false and draw nothing — silently, in every mainstream game, at the
+    // one moment the player is most open to trying something else. Fall through to the
+    // casual board instead: cross-promotion between our own casual titles is the whole
+    // point of the board on that domain.
+    if (want === "adult" && !window.BOARD_ADULT_OK) {
+      tel("board_adult_vetoed", location.hostname);
+      want = "casual";
+    }
     return load(want).then(function (cat) {
       var adult = want === "adult";
       var p = panel({
