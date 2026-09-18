@@ -152,7 +152,12 @@
     tel("board_close", (tag || "") + ":" + why);
   }
 
-  function tile(g) {
+  /* Adult tile media lives beside the adult catalogue on the game host, not on
+   * blazecore.dev — so the media base follows the catalogue the entry came from. Getting
+   * this wrong yields a board of broken images, which still opens and still counts as
+   * "shown". */
+  function tile(g, base) {
+    var MEDIA = base || MEDIA_BASE;
     var a = document.createElement("a");
     a.className = "bd-tile";
     a.href = g.url + (g.url.indexOf("?") < 0 ? "?" : "&") + "src=" + (window.BOARD_FROM || "board");
@@ -166,7 +171,7 @@
       var img = document.createElement("img");
       img.loading = "lazy";
       img.alt = "";
-      img.src = MEDIA_BASE + g.poster;
+      img.src = MEDIA + g.poster;
       m.appendChild(img);
     }
     if (g.clip) {
@@ -174,7 +179,7 @@
       // talking at once is how a player finds the close button.
       var v = document.createElement("video");
       v.muted = true; v.loop = true; v.playsInline = true; v.preload = "none";
-      v.src = MEDIA_BASE + g.clip;
+      v.src = MEDIA + g.clip;
       m.appendChild(v);
       a.addEventListener("mouseenter", function () { try { v.play(); } catch (e) {} });
       a.addEventListener("mouseleave", function () { try { v.pause(); } catch (e) {} });
@@ -233,10 +238,10 @@
     return { wrap: wrap, box: box };
   }
 
-  function grid(box, games, tag) {
+  function grid(box, games, tag, base) {
     var g = document.createElement("div");
     g.className = "bd-grid";
-    games.forEach(function (x) { g.appendChild(tile(x)); });
+    games.forEach(function (x) { g.appendChild(tile(x, base)); });
     box.appendChild(g);
     tel("board_shown", tag + ":" + games.length);
   }
@@ -287,7 +292,7 @@
       });
       var games = (adult ? cat.adult : cat.casual) || FALLBACK[adult ? "adult" : "casual"];
       if (adult && !window.BOARD_ADULT_OK) games = [];   // belt and braces: never render
-      grid(p.box, games, want);
+      grid(p.box, games, want, adult ? adultBase() : MEDIA_BASE);
       return true;
     });
   }
