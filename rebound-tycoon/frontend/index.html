@@ -228,6 +228,13 @@ window.API = window.API || window.TEL_API;
       }).catch(function () { /* keep the 2D renderer */ });
     }
   </script>
+  <!-- Cross-promotion board (play/_shared/board.js). The hostname decides, not the build,
+       so a copy of this folder handed to a portal (CrazyGames) or embedded on itch can
+       never carry adult promotion, however it got there. Our own game hosts + local QA. -->
+  <script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+          window.PROMO_FROM = "rebound-tycoon"; window.BOARD_FROM = "rebound-tycoon";</script>
+  <script src="promo.js"></script>
+  <script src="board.js"></script>
   <script src="js/game.js?v=6"></script>
 
 <script>

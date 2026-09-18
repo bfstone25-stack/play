@@ -433,7 +433,19 @@
       }
       if (ev.type === "drain") { REBOUND_AUDIO.miss(); setLine("drain"); banner(t().lines.drain); }
       if (ev.type === "save") { REBOUND_AUDIO.buy(); setLine("save"); banner(t().lines.save); }
-      if (ev.type === "nightover") { REBOUND_AUDIO.miss(); setLine("nightover"); banner(t().lines.nightover); }
+      if (ev.type === "nightover") {
+        REBOUND_AUDIO.miss(); setLine("nightover"); banner(t().lines.nightover);
+        // The night is over: that is the end of the run, and where this catalogue offers
+        // the rest of itself. Offered, never forced — the board is dismissable and the
+        // table is still there. Once per session; nights are short.
+        if (!window.__boardOffered) {
+          window.__boardOffered = 1;
+          setTimeout(function () {
+            if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+            else if (window.PROMO) PROMO.showAfterRun("nightover");
+          }, 900);
+        }
+      }
     });
   }
 

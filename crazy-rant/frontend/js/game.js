@@ -440,6 +440,16 @@
     }
     SFX.pulse(false);
     hud();
+    // KO either way: the run is over, and that is where this catalogue offers the rest of
+    // itself. Offered, never forced — the board is dismissable and the end card is still
+    // behind it. Once per session; a fight is short.
+    if (!window.__boardOffered) {
+      window.__boardOffered = 1;
+      setTimeout(function () {
+        if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+        else if (window.PROMO) PROMO.showAfterRun(kind === "win" ? "win" : "lose");
+      }, 900);
+    }
   }
 
   function downloadOmamoriCard() {

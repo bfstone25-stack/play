@@ -185,6 +185,13 @@
     const card = ECMG.buildCardFromRun(seed, state.chain, state.vault);
     ECMG.drawSanctuaryCard(card, true);
     mascotSay(t("mascot.sanctuary"), "兔");
+    // The sanctuary card is the end of the run, and that is where this catalogue offers
+    // the rest of itself. Offered, never forced — the board is dismissable and the card
+    // is still behind it.
+    setTimeout(function () {
+      if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+      else if (window.PROMO) PROMO.showAfterRun("sanctuary");
+    }, 900);
   }
 
   function applySigilPhysics() {

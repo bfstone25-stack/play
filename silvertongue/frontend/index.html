@@ -179,6 +179,13 @@ window.API = window.API || window.TEL_API;
 <div id="hint"></div>
 <div id="payOv" style="display:none;position:fixed;inset:0;z-index:200;align-items:center;justify-content:center;padding:18px;background:rgba(8,6,10,.92)"><div class="payCard" style="width:min(440px,100%);background:#1a1418;border:1px solid #514434;border-top:3px solid #f0cd88;padding:22px;border-radius:8px;color:#f0e9dd"><div id="payCard"></div></div></div>
 </div>
+<!-- Cross-promotion board (play/_shared/board.js). The hostname decides, not the build,
+     so a copy of this folder handed to a portal (CrazyGames) or embedded on itch can
+     never carry adult promotion, however it got there. Our own game hosts + local QA. -->
+<script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+        window.PROMO_FROM = "silvertongue"; window.BOARD_FROM = "silvertongue";</script>
+<script src="promo.js"></script>
+<script src="board.js"></script>
 <script>
 "use strict";
 /* ============ API 契约（与旧版完全一致） ============ */
@@ -954,6 +961,17 @@ async function win(n){
  b.innerHTML=`<h2 style="color:#f0cd88">${tr().win}</h2><div style="color:#c9b48f">${tr().winsub(n,pct)}</div>
    <div class="grid">${grid}</div><div style="color:#8a7860;font-size:.85em">${mode==="campaign"?("⚔️ "+(S.cleared+1)+"/"+S.total+" cleared"):tr().tomorrow}</div>
    <button class="share" onclick="share(${n},'${grid}')">${tr().share}</button>${mode==="campaign"?'<button class="share" style="margin-top:8px;background:linear-gradient(180deg,#7ac67a,#4a9a4a)" onclick="nextCampaign()">Next Challenge &rarr;</button><button class="share" style="margin-top:8px;background:linear-gradient(180deg,#888,#555)" onclick="replayCampaign()">Replay</button>':""}${fbHTML()}`;
+ offerBoard("win");
+}
+// The end of a duel is where this catalogue offers the rest of itself. Offered, never
+// forced: the board is dismissable and the banner is still behind it. Once per session,
+// because a duel is short.
+function offerBoard(tag){
+ if(window.__boardOffered)return;window.__boardOffered=1;
+ setTimeout(function(){
+  if(window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+  else if(window.PROMO) PROMO.showAfterRun(tag);
+ },900);
 }
 function campaignLocked(i){return DEMO&&i>=DEMO_CAMPAIGN&&!(window.Gate&&(window.Gate.dist()==="paid"||window.Gate.has("duel"+i)));}
 async function nextCampaign(){const ni=(S.index||0)+1;if(campaignLocked(ni)){if(window.Gate&&window.Gate.dist()==="ads_web"){const r=await window.Gate.require("duel"+ni,{title:"Duel "+(ni+1),kind:"level"});if(r!=="unlocked")return;}else{showPaywall();return;}}document.getElementById("banner").style.display="none";try{await fetch(API+"/campaign/advance",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pid:pid(),difficulty:difficulty})});}catch(e){}hist=[];turns=0;done=false;load();}function replayCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;load();}function lose(){
@@ -963,6 +981,7 @@ async function nextCampaign(){const ni=(S.index||0)+1;if(campaignLocked(ni)){if(
  setTimeout(()=>{exitDialog();
   const b=document.getElementById("banner");b.style.display="flex";
   b.innerHTML=`<h2 style="color:#b0684e">${tr().lost}</h2><div style="color:#8a7860">${tr().lostsub}</div>${fbHTML()}${mode==="campaign"?'<button class="share" style="margin-top:12px;background:linear-gradient(180deg,#e6b45c,#d0913c);color:#2a1c08" onclick="retryCampaign()">Retry</button>':""}`;
+  offerBoard("lose");
  },1800);
 }function retryCampaign(){document.getElementById("banner").style.display="none";hist=[];turns=0;done=false;if(inDialog)exitDialog();load();}
 /* ============ 游戏反馈（每日一次，fire-and-forget） ============ */

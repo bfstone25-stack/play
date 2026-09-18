@@ -145,6 +145,13 @@ window.API = window.API || window.TEL_API;
        window.TEL was overwritten by the shared SDK below, so it only produced failed requests -->
   <script>window.GATE_CONFIG={directLink:"https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9",directLinkSeconds:20,price:"$1.99",buyUrl:"https://bfstone25-stack.itch.io/ghost-channel/purchase"};</script>
   <script src="gate.js"></script>
+  <!-- Cross-promotion board (play/_shared/board.js). The hostname decides, not the build,
+       so a copy of this folder handed to a portal (CrazyGames) or embedded on itch can
+       never carry adult promotion, however it got there. Our own game hosts + local QA. -->
+  <script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+          window.PROMO_FROM = "ghost-channel"; window.BOARD_FROM = "ghost-channel";</script>
+  <script src="promo.js"></script>
+  <script src="board.js"></script>
   <script src="game.js"></script>
 
 <script>

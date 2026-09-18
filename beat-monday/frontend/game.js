@@ -681,6 +681,16 @@
       show("resultsOv", true);
       if (A) { if (s.verdict === "heroic") A.win(); else A.ko(); }
       tel("run_over", s);
+      // The results screen is the end of the run, and that is where this catalogue offers
+      // the rest of itself. Offered, never forced — the board is dismissable and the
+      // results are still behind it. Once per session; a match is a couple of minutes.
+      if (!window.__boardOffered) {
+        window.__boardOffered = 1;
+        setTimeout(function () {
+          if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+          else if (window.PROMO) PROMO.showAfterRun(s.verdict === "heroic" ? "win" : "lose");
+        }, 900);
+      }
     }
 
     function paintHud() {

@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#070304" />
     <title>The Extra Hook · 多出来的那一钩</title>
+    <!-- Cross-promotion board (play/_shared/board.js). The hostname decides, not the
+         build, so a copy of this folder handed to a portal (CrazyGames) or embedded on
+         itch can never carry adult promotion. Our own game hosts + local QA. -->
+    <script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+            window.PROMO_FROM = "extra-hook"; window.BOARD_FROM = "extra-hook";</script>
+    <script src="promo.js"></script>
+    <script src="board.js"></script>
+    <script>
+    /* This game ships as a minified Vite bundle with no source tree left on disk, so the
+       end of a run cannot be edited where it happens. The one thing the run-end does that
+       is observable from outside is its single localStorage write: finish() — and only
+       finish() — stores the unlocked endings under "extra-hook-endings". So that write is
+       the signal. Offered, never forced: the board is dismissable and the ending screen is
+       untouched behind it. */
+    (function () {
+      var KEY = "extra-hook-endings";
+      var setItem = Storage.prototype.setItem;
+      Storage.prototype.setItem = function (k, v) {
+        var r = setItem.apply(this, arguments);
+        if (k === KEY && !window.__boardOffered) {
+          window.__boardOffered = 1;
+          setTimeout(function () {
+            if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+            else if (window.PROMO) PROMO.showAfterRun("ending");
+          }, 900);
+        }
+        return r;
+      };
+    })();
+    </script>
     <script type="module" crossorigin src="/extra-hook/assets/index-KnSfjNuE.js"></script>
     <link rel="stylesheet" crossorigin href="/extra-hook/assets/index-CBfTdtX5.css">
   </head>

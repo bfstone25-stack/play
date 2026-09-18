@@ -867,6 +867,13 @@ window.API = window.API || window.TEL_API;
 <div class="endOv" id="endOv"><div class="endCard" id="endCard"></div></div>
 <div class="clearOv" id="clearOv"><div class="clearCard" id="clearCard"></div></div>
 <div class="archiveOv" id="archiveOv" onclick="if(event.target===this)closeArchive()"><div class="archiveCard" id="archiveCard"></div></div>
+<!-- Cross-promotion board (play/_shared/board.js). The hostname decides, not the build,
+     so a copy of this folder handed to a portal (CrazyGames) or embedded on itch can
+     never carry adult promotion, however it got there. Our own game hosts + local QA. -->
+<script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+        window.PROMO_FROM = "flutter"; window.BOARD_FROM = "flutter";</script>
+<script src="promo.js"></script>
+<script src="board.js"></script>
 <script>
 // API前缀自动推导: gateway下(/flutter/)用同前缀, 直连后端时用空
 const API = window.FLUTTER_API || window.APP_API ||
@@ -1543,6 +1550,15 @@ function showEnding(end){
    `<div class="etext">${esc(end.text||"")}</div>`+
    `<button class="ebtn" onclick="closeEnding()">${tr().back}</button>`;
  document.getElementById("endOv").classList.add("show");
+ // An ending is the end of the run, and that is where this catalogue offers the rest of
+ // itself. Offered, never forced: the board is dismissable and the ending stays behind it.
+ if(!window.__boardOffered){
+  window.__boardOffered=1;
+  setTimeout(function(){
+   if(window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+   else if(window.PROMO) PROMO.showAfterRun("ending");
+  },900);
+ }
 }
 function closeEnding(){document.getElementById("endOv").classList.remove("show");goSelect();if(R)renderRouteCards(R.routes);}
 async function say(){

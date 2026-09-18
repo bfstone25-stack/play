@@ -453,6 +453,13 @@
     });
     if (!win) GCAudio.warn();
     else GCAudio.winSting();
+    // The debrief is the end of the run, and the end of a run is where this catalogue
+    // offers the rest of itself. Offered, never forced: the board is dismissable and the
+    // debrief is still behind it.
+    setTimeout(function () {
+      if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+      else if (window.PROMO) PROMO.showAfterRun(win ? "win" : "lose");
+    }, 900);
   }
 
   function paintPortrait(cv, a, size) {

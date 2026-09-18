@@ -131,6 +131,16 @@
         }));
       } catch (e) { /* ignore */ }
       openKoan(true);
+      // A completed liturgy is this game's end of a run, and that is where the catalogue
+      // offers the rest of itself. Offered, never forced — the board is dismissable and
+      // the koan is still behind it. Once per session; a liturgy comes round often.
+      if (!window.__boardOffered) {
+        window.__boardOffered = 1;
+        setTimeout(function () {
+          if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+          else if (window.PROMO) PROMO.showAfterRun("liturgy");
+        }, 900);
+      }
     }
     hud();
     persist();

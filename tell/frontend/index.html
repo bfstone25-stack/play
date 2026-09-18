@@ -148,6 +148,13 @@ window.API = window.API || window.TEL_API;
 <div class="verdict" id="verdict"></div>
 <div id="payOv"><div class="payCard" id="payCard"></div></div>
 </div>
+<!-- Cross-promotion board (play/_shared/board.js). The hostname decides, not the build,
+     so a copy of this folder handed to a portal (CrazyGames) or embedded on itch can
+     never carry adult promotion, however it got there. Our own game hosts + local QA. -->
+<script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+        window.PROMO_FROM = "tell"; window.BOARD_FROM = "tell";</script>
+<script src="promo.js"></script>
+<script src="board.js"></script>
 <script>
 // A checked-out/file preview has no local API. Point previews at the live
 // service while keeping same-origin requests in production.
@@ -391,7 +398,17 @@ async function accuse(id,reason){done=true;
   <div class="rev">${tr().truth(r.culprit_name)}<br><span style="font-size:.9em;color:#8a8478">${h(r.reveal)}</span></div>${actualQuote}
   ${r.correct?`<div style="color:#b6b1a6;margin-top:6px">${mode==="run"?(FB[lang]||FB.en).unit(qUsed):tr().winsub(qUsed,pct)}</div><div class="grid">${grid}</div>
   ${mode==="run"?`<button class="share" onclick="nextCase()">${tr().next}</button>`:`<button class="share" onclick="share(${qUsed},'${grid}')">${tr().share}</button>`}`:
-  `<div class="grid">${grid}</div><div style="color:#877f72;font-size:.85em">${partial?tr().weakSub:(mode==="run"?tr().runHint:tr().tomorrow)}</div>${mode==="run"?`<button class="share" style="margin-top:14px" onclick="retryCase()">${tr().retry}</button>`:""}`}${fbHtml()}`;}
+  `<div class="grid">${grid}</div><div style="color:#877f72;font-size:.85em">${partial?tr().weakSub:(mode==="run"?tr().runHint:tr().tomorrow)}</div>${mode==="run"?`<button class="share" style="margin-top:14px" onclick="retryCase()">${tr().retry}</button>`:""}`}${fbHtml()}`;
+ // The verdict is the end of the case, and the end of a run is where this catalogue
+ // offers the rest of itself. Offered, never forced: the board is dismissable and the
+ // verdict is still behind it. Once per session — a case is short.
+ if(!window.__boardOffered){
+   window.__boardOffered=1;
+   setTimeout(function(){
+     if(window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+     else if(window.PROMO) PROMO.showAfterRun(r.correct?"win":"lose");
+   },900);
+ }}
 // ── 游戏反馈 game feedback ──
 function fbHtml(){
  const today=new Date().toISOString().slice(0,10);

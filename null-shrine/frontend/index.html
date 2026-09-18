@@ -247,6 +247,13 @@ window.API = window.API || window.TEL_API;
   <script src="js/collectibles.js?v=0.8.13"></script>
   <script src="js/ecmg.js?v=0.8.13"></script>
   <script src="js/personality.js?v=0.8.13"></script>
+  <!-- Cross-promotion board (play/_shared/board.js). The hostname decides, not the build,
+       so a copy of this folder handed to a portal (CrazyGames) or embedded on itch can
+       never carry adult promotion, however it got there. Our own game hosts + local QA. -->
+  <script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+          window.PROMO_FROM = "null-shrine"; window.BOARD_FROM = "null-shrine";</script>
+  <script src="promo.js"></script>
+  <script src="board.js"></script>
   <script src="js/game.js?v=0.8.13"></script>
 
 <script>

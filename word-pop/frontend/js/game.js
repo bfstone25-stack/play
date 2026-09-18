@@ -49,6 +49,15 @@
     if (navigator.share) {
       try { await navigator.share({ title: r.title, text }); } catch (e) { /* cancel */ }
     }
+    // Word Pop never ends on its own; asking for the parent report is the player saying
+    // "that was a session", so that is where the catalogue board is offered. Offered,
+    // never forced: it is dismissable and the board behind it is untouched.
+    if (!window.__boardOffered) {
+      window.__boardOffered = 1;
+      setTimeout(() => {
+        if (window.BOARD) BOARD.offerMore("casual");   // casual board only — see index.html
+      }, 900);
+    }
   };
   document.getElementById("pullBtn").onclick = () => {
     if (!Economy.spend(Gacha.PULL_COST)) { toast("星尘不够"); return; }

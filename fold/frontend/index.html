@@ -143,6 +143,13 @@ window.API = window.API || window.TEL_API;
   <div class="hint" id="hint"></div>
   <div class="support" id="support"></div>
 </div>
+<!-- Cross-promotion board (play/_shared/board.js). The hostname decides, not the build,
+     so a copy of this folder handed to a portal (CrazyGames) or embedded on itch can
+     never carry adult promotion, however it got there. Our own game hosts + local QA. -->
+<script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+        window.PROMO_FROM = "fold"; window.BOARD_FROM = "fold";</script>
+<script src="promo.js"></script>
+<script src="board.js"></script>
 <script>
 // ---------- 关卡(手工设计,确定性;后续RL无限生成) ----------
 // grid: 行数组; 数字=初始块值, 'x'=墙, 0=空. target=归一目标值. par=满星步数.
@@ -368,6 +375,16 @@ async function checkWin(){
      <button class="btn" style="margin-top:12px;max-width:200px" onclick="share(${stars},${moves})">🔗 ${tr().share}</button>
      ${fbHTML()}`;
    renderLevels();
+   // The end of a run is where this catalogue offers the rest of itself. Offered, never
+   // forced: the board is dismissable and the level is still there behind it. Once per
+   // session, because a level here is a few minutes.
+   if(!window.__boardOffered){
+     window.__boardOffered=1;
+     setTimeout(function(){
+       if(window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+       else if(window.PROMO) PROMO.showAfterRun("level");
+     }, 900);
+   }
  }
 }
 /* ---- lightweight feedback ---- */

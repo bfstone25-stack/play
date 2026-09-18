@@ -129,7 +129,19 @@
       hud();
       Save.persist({ smashed });
     });
-    if (blocks.every(b => b.hp <= 0)) blocks = resetBlocks();
+    if (blocks.every(b => b.hp <= 0)) {
+      // Clearing the wall is the only end this endless game has, so it is where the
+      // catalogue board is offered — once per session, and offered, never forced: the
+      // board is dismissable and the next wall is already racking up behind it.
+      if (!window.__boardOffered) {
+        window.__boardOffered = 1;
+        setTimeout(() => {
+          if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+          else if (window.PROMO) PROMO.showAfterRun("wall-clear");
+        }, 900);
+      }
+      blocks = resetBlocks();
+    }
     draw();
     requestAnimationFrame(frame);
   }
