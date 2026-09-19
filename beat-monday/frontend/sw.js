@@ -1,6 +1,8 @@
-const CACHE = 'beatmonday-v4';
+const CACHE = 'beatmonday-v5';
 const ASSETS = [
-  '.', 'index.html', 'game.js', 'audio.js', 'i18n.js', 'config.js', 'manifest.json',
+  '.', 'index.html', 'arcade.html', 'game.js',
+  'rpg/data.js', 'rpg/core.js', 'rpg/render.js', 'rpg/main.js', 'rpg/strings.js', 'rpg/phrases.js',
+  'kernel/pool.js', 'kernel/rant.js', 'kernel/economy.js', 'kernel/gacha.js', 'kernel/commerce.js', 'kernel/i18n.js', 'kernel/save.js', 'audio.js', 'i18n.js', 'config.js', 'manifest.json',
   'icon-192.png', 'icon-512.png', 'promo.jpg', 'assets/title.webp',
   'assets/fighters/hero.webp', 'assets/fighters/intern.webp', 'assets/fighters/pm.webp',
   'assets/fighters/hr.webp', 'assets/fighters/finance.webp', 'assets/fighters/boss.webp',

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>BEAT MONDAY — a work week RPG</title>
+<link rel="manifest" href="manifest.json">
+<script src="config.js"></script>
+<script>window.TEL_APP=window.TEL_APP||"beat-monday";window.TEL_API=window.TEL_API||"https://apps.blazecore.dev/beat-monday";window.APP_API=window.TEL_API;</script>
+<script src="tel.js"></script>
+<meta name="theme-color" content="#0a0b10">
+<link rel="canonical" href="https://apps.blazecore.dev/beat-monday/">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:title" content="BEAT MONDAY — a work week RPG">
+<meta property="og:description" content="Five days, five antagonists: the standup, the inbox, the all-hands, the review, the Friday deploy. Survive the week.">
+<meta property="og:image" content="https://apps.blazecore.dev/beat-monday/promo.jpg">
+<meta property="og:url" content="https://apps.blazecore.dev/beat-monday/">
+<style>
+:root{--red:#e23b2f;--cobalt:#1e4cff;--yellow:#f5d031;--black:#0a0b10;--ink:#f4f0e6;--dim:#8b8d99}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+html,body{margin:0;height:100%;overflow:hidden;background:#07080c;color:var(--ink);font-family:-apple-system,"PingFang SC","Segoe UI",sans-serif}
+#app{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:min(100vw,420px);height:min(100vh,640px);aspect-ratio:420/640;background:var(--black);overflow:hidden}
+#game{display:block;width:100%;height:100%;touch-action:none}
+.ov{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:22px;background:rgba(7,8,12,.94);z-index:10}
+.ov.show{display:flex}
+h1{margin:0;font:900 44px/.9 "Arial Black",Impact,sans-serif;color:#fff;text-shadow:4px 4px 0 var(--red),8px 8px 0 rgba(30,76,255,.55)}
+h2{margin:0 0 6px;font:800 22px "Arial Black",Impact,sans-serif;color:var(--yellow)}
+p{color:#c9c6bc;font:500 14px/1.55 -apple-system,sans-serif}
+small{color:var(--dim);font:700 10px ui-monospace,monospace;letter-spacing:1.5px}
+button{font-family:inherit;cursor:pointer}
+.go,.ghost{width:100%;min-height:46px;margin-top:10px;border:0;font:800 14px ui-monospace,monospace;letter-spacing:1.5px}
+.go{background:var(--yellow);color:#14110a}
+.ghost{background:transparent;border:1px solid #3a3148;color:#d4d0c6}
+#langDock{position:absolute;right:12px;top:12px;display:flex;gap:4px;z-index:20}
+#langDock button{border:0;background:transparent;color:var(--dim);min-height:44px;padding:8px;font:700 11px ui-monospace,monospace}
+.dayBtn,.eqBtn,.card{display:block;width:100%;text-align:left;margin:6px 0;padding:12px;border:1px solid #2c3348;background:linear-gradient(180deg,#171b28,#10131c);color:#fff;min-height:56px}
+.dayBtn em,.eqBtn em,.card em{display:block;font:800 16px "Arial Black",Impact,sans-serif;font-style:normal;color:var(--yellow)}
+.dayBtn span,.eqBtn span{display:block;margin-top:2px;color:#c9c6bc;font:500 12px -apple-system,sans-serif}
+.dayBtn.done{border-left:3px solid var(--yellow)}
+.dayBtn.locked{opacity:.38}
+.eqBtn.on{border-color:var(--yellow)}
+.card{font:800 15px -apple-system,sans-serif;color:#fff}
+.scroll{overflow-y:auto;max-height:58vh}
+</style>
+</head>
+<body>
+<div id="app"><div id="stage">
+  <canvas id="game" width="420" height="640"></canvas>
+  <div id="langDock"><button data-lang="en">EN</button><button data-lang="zh">中文</button></div>
+
+  <div class="ov show" id="titleOv">
+    <h1 id="tBrand">BEAT MONDAY</h1>
+    <small id="tSub"></small>
+    <p id="tHint"></p>
+    <button class="go" id="btnStart"></button>
+    <button class="ghost" id="btnDesk"></button>
+  </div>
+
+  <div class="ov" id="weekOv">
+    <h2 id="wTitle"></h2>
+    <small id="wStats"></small>
+    <div id="wDays" class="scroll"></div>
+  </div>
+
+  <div class="ov" id="briefOv">
+    <small id="bDay"></small>
+    <h2 id="bBoss"></h2>
+    <p id="bBody"></p>
+    <button class="go" id="bGo"></button>
+    <button class="ghost" id="bBack"></button>
+  </div>
+
+  <div class="ov" id="lvOv">
+    <h2 id="lvTitle"></h2>
+    <small id="lvPick"></small>
+    <div id="lvCards"></div>
+  </div>
+
+  <div class="ov" id="resOv">
+    <h2 id="rTitle"></h2>
+    <p id="rBody"></p>
+    <button class="go" id="rGo"></button>
+    <button class="ghost" id="rDesk"></button>
+  </div>
+
+  <div class="ov" id="deskOv">
+    <h2 id="dTitle">DESK</h2>
+    <small id="dStats"></small>
+    <div id="dList" class="scroll"></div>
+    <small id="dParty"></small><br>
+    <small id="dHint"></small>
+    <button class="ghost" id="dBack"></button>
+  </div>
+
+  <div class="ov" id="endOv">
+    <h2 id="eTitle"></h2>
+    <p id="eBody"></p>
+    <button class="go" id="eGo"></button>
+    <button class="ghost" id="eDesk"></button>
+  </div>
+</div></div>
+
+<script src="kernel/pool.js"></script>
+<script src="kernel/rant.js"></script>
+<script src="kernel/economy.js"></script>
+<script src="kernel/gacha.js"></script>
+<script src="kernel/commerce.js"></script>
+<script src="kernel/i18n.js"></script>
+<script src="kernel/save.js"></script>
+<script src="rpg/phrases.js"></script>
+<script src="rpg/data.js"></script>
+<script src="rpg/core.js"></script>
+<script src="rpg/strings.js"></script>
+<script src="rpg/render.js"></script>
+<script src="rpg/main.js"></script>
+<script>BMRPG.boot();</script>
+</body>
+</html>
