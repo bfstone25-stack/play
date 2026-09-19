@@ -154,7 +154,7 @@ label ending_clean:
         you "Nobody told you he was in the cooler."
         vee "..."
         you "The file says the office. The press says the office. Your own statement says you never went past the bar. And then you told me it was cold in there."
-        nar "Vee looks at their hands like the hands are the part that did it."
+        nar "Vee looks at their hands as though the hands were the part that did it."
         vee "He was already going. I only moved him so she wouldn't be the one to find him."
         scene cg closing at sodium_tint
         with dissolve
@@ -165,7 +165,7 @@ label ending_clean:
         you "The bay water is rain and diesel. Iris had neither in her."
         ade "..."
         you "You told me the mop room sink is the only clean basin in the building. The file doesn't say clean. Nobody said clean but you."
-        nar "She does not look away. She has never once looked away, and that is somehow the worst of it."
+        nar "She does not look away. She has not once looked away in three nights, and that is the worst of it."
         ade "She was going to hand me to an auditor and call it a kindness. Six years, and she thought the kind thing was to warn me it was coming."
         you "So you carried her out to the car."
         ade "I put her somewhere she would be found by a stranger. That was the kindness I had left."
@@ -178,7 +178,7 @@ label ending_clean:
         you "You told me the inner drawer was the thing. The file says nothing was missing."
         nik "The file is wrong. You knew the file was wrong before I opened my mouth."
         you "I knew. I didn't know you knew."
-        nar "He takes that the way he takes everything, as a line in a ledger he has already balanced."
+        nar "He takes it the way he takes everything: a line in a ledger he balanced weeks ago."
         nik "Nine months of names, Reyes. Marek started it and Iris kept it and Bo was going to carry it out of here in a folder at nine in the morning."
         you "And the two of them before him?"
         nik "You already cleared those. That is the part I would like you to sit with."
@@ -194,7 +194,7 @@ label ending_right_wrong_reason:
     $ cases_cleared.add(CASE["id"])
     scene bg room at cold_tint
     with fade
-    nar "You get the name right and the reason wrong, and a lawyer gets to spend a year on the difference."
+    nar "You get the name right and the reason wrong, and some lawyer gets a year out of the difference."
     nar "It holds. Barely. The captain signs it without looking at you."
     jump epilogue
 
@@ -222,6 +222,13 @@ label epilogue:
     if case_index + 1 < CASE_COUNT:
         $ _next = CASES[case_index + 1]
         nar "Reyes catches the next one [_next['night']]. There is always a next one."
+        ## The free download is case one only. Confession gates its case boundary with
+        ## ad_checkpoint rather than chapter_gate, and ad_checkpoint deliberately passes
+        ## straight through on offline_ads so that mid-case checkpoints are not gates -
+        ## which left this boundary ungated and handed the whole game away. The boundary
+        ## has to say so itself.
+        if dist_track() == "offline_ads":
+            jump offline_trial_end
         call ad_checkpoint("case_" + _next["id"], _next["title"]) from _call_ck_case
         ## Between cases, after the gate has been paid: the offer of ten minutes of
         ## something lighter. Silent on the first crossing (see board_offer_break).

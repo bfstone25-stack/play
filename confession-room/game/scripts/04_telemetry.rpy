@@ -241,7 +241,12 @@ init -1 python:
     def tel_cta_click(dest):
         tel_track("cta_click", {"dest": dest}, etype="click")
         tel_flush(force=True)
-        return True
+        # Deliberately returns None. A screen action that returns a value ends the
+        # interaction, and every CTA here sits in a `call screen` whose label jumps
+        # back to itself - so returning True re-showed the same screen and the button
+        # read as dead. 24 players clicked "continue on our site" between 2026-09-08
+        # and 09-17 and not one of them ever arrived.
+        return None
 
 label tel_boot:
     $ tel_ensure_session()

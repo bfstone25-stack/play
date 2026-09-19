@@ -341,9 +341,18 @@ screen cg_buy_screen(name):
                     action [Function(cg_buy_decide, name, "buy_click", t0), OpenURL(ITCH_BUY_URL)]
                     text_size 24 text_color "#ffffff" background Transform("#d95a43", alpha=0.95) padding (22, 12, 22, 12)
                 if dist_track() != "demo":
-                    textbutton _("▶ Unlock free with ads — on our site"):
+                    # A downloaded build has no browser engine, so the banner cannot play here
+                    # and a sponsor redirect is what got the F95 account banned. The only honest
+                    # offer is the one that opens nothing by itself: the same scene, free, on our
+                    # own site. The address is printed below because Ren'Py's OpenURL silently
+                    # fails on many desktops - 24 players clicked one of these and none arrived.
+                    textbutton _("▶ Unlock free — play this scene on our site"):
                         action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL("https://confession-room.flat404.workers.dev/?src=ingame")]
                         text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
+            text ("[[ https://confession-room.flat404.workers.dev/ ]") size 16 color "#8fb89a" xalign 0.5
+            text _("If that button does nothing, type the address above into your browser.") size 14 color "#7f8fa0" xalign 0.5
+            hbox:
+                xalign 0.5
                 textbutton _("Continue censored"):
                     action [Function(cg_buy_decide, name, "dismiss", t0), Return()]
                     text_size 20 text_color "#d99b66" background Transform("#24172a", alpha=0.92) padding (16, 10, 16, 10)
@@ -485,9 +494,21 @@ screen offline_trial_screen():
         textbutton _("▶ Keep playing free, with ads - in your browser"):
             action [Function(tel_cta_click, "trial_ads_site"), OpenURL("https://confession-room.flat404.workers.dev/?src=trial")]
             xalign 0.5 text_size 24 text_color "#ffffff" background Transform("#1f4a2a", alpha=0.95) padding (22, 12, 22, 12)
+        text ("[[ https://confession-room.flat404.workers.dev/ ]") size 17 color "#8fb89a" xalign 0.5
+        text _("If the button does not open your browser, type that address in yourself.") size 15 color "#7f8fa0" xalign 0.5
         textbutton _("★ Get the full case, no ads - $4.99 on itch"):
             action [Function(tel_cta_click, "trial_itch_buy"), OpenURL(ITCH_BUY_URL)]
             xalign 0.5 text_size 24 text_color "#ffffff" background Transform("#d95a43", alpha=0.95) padding (22, 12, 22, 12)
+        null height 10
+        # Arousal fatigues, and a player who has just finished a chapter is at the point
+        # where "something lighter" is a real want rather than an upsell. Offered small and
+        # last, below the two real exits: it is a way out that keeps them with us instead of
+        # closing the game. The web build does this through BOARD.offerBreak(); a downloaded
+        # build has no JS, so the same offer has to be a plain link.
+        textbutton _("Need a breather? Play something lighter - free, no ads"):
+            action [Function(tel_cta_click, "trial_boards"), OpenURL("https://free.blazecore.dev/?src=trial")]
+            xalign 0.5 text_size 18 text_color "#8fb89a" background Transform("#1a2430", alpha=0.92) padding (16, 9, 16, 9)
+        text ("[[ https://free.blazecore.dev/ ]") size 14 color "#6f7f90" xalign 0.5
         textbutton _("Back to title"):
             action MainMenu(confirm=False)
             xalign 0.5 text_size 18 text_color "#d99b66" background Transform("#24172a", alpha=0.92) padding (14, 8, 14, 8)
@@ -512,16 +533,17 @@ label offline_chapter_gate:
 ## Each one carries its beat name, so the reports can say *where* in the story people pay
 ## twenty seconds and where they leave — the closest thing we have to reading them.
 label ad_checkpoint(key, title):
-    # "demo" is the DLsite trial: no ads there, ever.
-    if dist_track() in ("paid", "itch_web", "demo") or is_ad_unlocked(key):
+    # "demo" is the DLsite trial: no ads there, ever. Neither in a downloaded build —
+    # offline_ads plays the whole first case and stops at the case boundary, so a
+    # checkpoint inside it would be a gate with nothing behind it. A short first case
+    # labelled v0.1.0 is the ordinary shape of an adult VN release; a build that cuts
+    # five minutes in is a demo, and a demo posted as a release gets a thread mocked.
+    if dist_track() in ("paid", "itch_web", "demo", "offline_ads") or is_ad_unlocked(key):
         return
     $ tel_track("checkpoint_seen", {"key": key, "dist": dist_track()})
     $ tel_flush(True)
-    if dist_track() == "ads_web":
-        jump checkpoint_clip
-    if dist_track() == "offline_ads":
-        jump offline_trial_end
-    jump checkpoint_link
+    # Only ads_web gets this far, and it has a banner.
+    jump checkpoint_clip
 
 label checkpoint_clip:
     $ started = __import__("time").time()
