@@ -46,7 +46,7 @@ func _run() -> void:
 
 
 func _t_scripts() -> void:
-	for s in ["palette", "studio_theme", "api", "sfx", "gate", "card", "chip", "gauge", "portrait", "hand",
+	for s in ["palette", "studio_theme", "symbols", "counter", "api", "sfx", "gate", "card", "chip", "gauge", "portrait", "hand",
 			"plate_view", "main", "home", "duel", "gacha", "affection", "deck"]:
 		var sc = load("res://scripts/%s.gd" % s)
 		check(sc != null and sc is GDScript and sc.can_instantiate(), "scripts/%s.gd loads" % s)
@@ -57,6 +57,87 @@ func _t_scripts() -> void:
 		if f.ends_with(".gd"):
 			src += FileAccess.get_file_as_string("res://scripts/" + f)
 	check(not src.contains("/" + "say") and not src.to_lower().contains("lla" + "ma"), "no typed-duel endpoint, no model name anywhere in the client")
+	print("== skin: UI_DIRECTION palette and type")
+	await _t_skin()
+
+
+## The base FontFile behind a theme font (a FontVariation wraps one).
+static func _base(f: Font) -> FontFile:
+	if f is FontVariation:
+		return _base((f as FontVariation).base_font)
+	return f as FontFile
+
+
+func _t_skin() -> void:
+	# the palette is the spec's hex table, exactly
+	var table := {"GROUND": "12080f", "PANEL": "1e1017", "PANEL_EDGE": "3a1f2e", "ACCENT": "ff3d8a", "GOLD": "ffb347",
+		"HEAT": "ff6f61", "SUCCESS": "4ade80", "TEXT": "fff4ec", "MUTED": "b78aa0", "COMMON": "9fb3c8", "RARE": "c084fc", "EPIC": "ffd166"}
+	var pal := load("res://scripts/palette.gd")
+	var wrong := []
+	for k in table:
+		if (pal.get(k) as Color).to_html(false) != table[k]:
+			wrong.append(k)
+	check(wrong.is_empty(), "palette.gd carries UI_DIRECTION's hex table (%s)" % str(wrong))
+	check(Palette.rarity_color("epic") == Palette.EPIC and Palette.rarity_color("rare") == Palette.RARE
+		and Palette.rarity_color("common") == Palette.COMMON and Palette.rarity_color("x", "coercion") == Palette.HEAT, "rarity frames: steel / violet / gold, coercion red-hot")
+	# the three OFL faces are bundled with their licences, and resolve
+	for f in ["LilitaOne-Regular.ttf", "Nunito.ttf", "PlayfairDisplay-Italic.ttf", "OFL-LilitaOne.txt", "OFL-Nunito.txt", "OFL-PlayfairDisplay.txt"]:
+		check(FileAccess.file_exists("res://assets/fonts/" + f), "assets/fonts/%s bundled" % f)
+	for old in ["serif.ttf", "serif_bold.ttf", "serif_italic.ttf", "mono_bold.ttf", "display_bold.ttf"]:
+		check(not FileAccess.file_exists("res://assets/fonts/" + old), "old face %s retired" % old)
+	Symbols.install()
+	var faces := {"display": "Lilita One", "ui": "Nunito", "bold": "Nunito", "italic": "Playfair Display"}
+	for which in faces:
+		var base := _base(StudioTheme.font(which))
+		check(base != null and base.font_name.begins_with(faces[which]), "font(%s) -> %s (got %s)" % [which, faces[which], base.font_name if base else "null"])
+	# every font the theme hands out, with its fallbacks: nothing monospace, nothing Times-like
+	var t := StudioTheme.build()
+	var names := []
+	var fonts: Array[Font] = [t.default_font, t.get_font("font", "Button"), t.get_font("normal_font", "RichTextLabel"),
+		t.get_font("italics_font", "RichTextLabel"), t.get_font("mono_font", "RichTextLabel"), t.get_font("font", "LineEdit"),
+		t.get_font("font", "Primary"), t.get_font("font", "Tag"), t.get_font("font", "Big"), t.get_font("normal_font", "Say")]
+	for f in fonts:
+		var base := _base(f)
+		if base == null:
+			continue
+		names.append(base.font_name)
+		for fb in base.fallbacks:
+			names.append(fb.font_name)
+	var bad := []
+	for n in names:
+		var l: String = str(n).to_lower()
+		if l.contains("mono") or l.contains("times") or l.contains("liberation") or l.contains("noto serif") or l.contains("courier"):
+			bad.append(n)
+	check(names.size() >= 10 and bad.is_empty(), "no monospace / Times fallback anywhere in the theme (%s)" % str(bad))
+	check(t.default_font != null and _base(t.default_font).font_name.begins_with("Nunito"), "theme default font is Nunito")
+	check(_base(t.get_font("normal_font", "Say")).font_name.begins_with("Playfair"), "the Say variation is the one serif")
+	check(_base(t.get_font("font", "Big")).font_name.begins_with("Lilita"), "Big numbers are the display face")
+	# the six symbol glyphs the client draws come through the one bundled fallback
+	var ui := _base(StudioTheme.font("ui"))
+	check(ui.fallbacks.size() == 1 and ui.fallbacks[0].font_name.begins_with("DejaVu Sans") and ui.fallbacks[0].has_char(0x2665) and ui.fallbacks[0].has_char(0x26A1),
+		"symbol fallback is DejaVu Sans and carries ♥ ⚡")
+	# a counter counts, overshoots, settles
+	var c := Counter.new()
+	add_child(c)
+	c.set_now(0)
+	c.set_target(120, 0.3)
+	var peak := 0.0
+	var moving := 0
+	for _i in 60:
+		await get_tree().process_frame
+		peak = maxf(peak, c.value)
+		if c.value > 0.0 and c.value < 120.0:
+			moving += 1
+		if not c._tw.is_valid():
+			break
+	check(peak > 120.0 and c.text == "120" and c.value == 120.0, "Counter counts up, overshoots (peak %d) and settles on 120" % int(peak))
+	c.queue_free()
+	# a gauge readout follows the momentum in the display face
+	var g := MomentumGauge.new()
+	add_child(g)
+	g.snap(0.42)
+	check(g._readout.text == "0.42" and _base(g._readout.get_theme_font("font")).font_name.begins_with("Lilita"), "gauge readout 0.42 in the display face")
+	g.queue_free()
 
 
 func _t_api() -> void:

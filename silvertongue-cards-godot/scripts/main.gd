@@ -19,7 +19,7 @@ var difficulty := "silver"
 var _room: Control
 var _bar: PanelContainer
 var _nav := {}
-var _gold: Label
+var _gold: Counter
 var _energy_n: Label
 var _energy_bar: ProgressBar
 var _energy_next: Label
@@ -35,6 +35,7 @@ var busy := false
 
 
 func _ready() -> void:
+	Symbols.install()
 	theme = StudioTheme.build()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_build_room()
@@ -58,12 +59,13 @@ func _build_room() -> void:
 	_room.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_room.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var bg := ColorRect.new()
-	bg.color = Palette.ROOM
+	bg.color = Palette.GROUND
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_room.add_child(bg)
-	# a warm lamp in the upper right, a plum pool lower left: GradientTexture2D radials
-	_room.add_child(_glow(Color(Palette.AMBER, 0.16), Vector2(0.86, 0.05), 1.15))
-	_room.add_child(_glow(Color(Palette.PLUM, 0.20), Vector2(0.08, 0.95), 1.0))
+	# dark ground, hot accents: a magenta lamp upper right, a plum pool lower left, both
+	# faint enough that the ground stays deep under the art
+	_room.add_child(_glow(Color(Palette.ACCENT, 0.13), Vector2(0.86, 0.05), 1.15))
+	_room.add_child(_glow(Color(Palette.PLUM, 0.28), Vector2(0.08, 0.95), 1.0))
 	add_child(_room)
 
 
@@ -97,7 +99,7 @@ func _build_bar() -> void:
 	_bar = PanelContainer.new()
 	_bar.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	_bar.offset_bottom = 52
-	var s := StudioTheme.flat(Palette.PANEL_TOP, Palette.LINE, 0, 0, Vector2(14, 0))
+	var s := StudioTheme.flat(Palette.PANEL_TOP, Palette.PANEL_EDGE, 0, 0, Vector2(14, 0))
 	s.border_width_bottom = 1
 	_bar.add_theme_stylebox_override("panel", s)
 	add_child(_bar)
@@ -106,18 +108,29 @@ func _build_bar() -> void:
 	_bar.add_child(row)
 	var wm := VBoxContainer.new()
 	wm.add_theme_constant_override("separation", -4)
-	var w1 := StudioTheme.display_label("SILVERTONGUE", 18, Palette.LAMP)
-	var w2 := StudioTheme.mono_label("AFTER HOURS · CARDS", 8, Palette.DIM)
+	var w1 := StudioTheme.display_label("SILVERTONGUE", 18, Palette.TEXT)
+	var w2 := StudioTheme.mono_label("AFTER HOURS · CARDS", 8, Palette.ACCENT_SOFT)
 	wm.add_child(w1)
 	wm.add_child(w2)
 	wm.mouse_filter = Control.MOUSE_FILTER_STOP
 	wm.gui_input.connect(func(ev): if ev is InputEventMouseButton and ev.pressed: go("home"))
 	row.add_child(wm)
 	row.add_child(_spacer(18))
-	# wallet
-	_gold = StudioTheme.mono_label("◆ 0 GOLD", 12, Palette.LAMP)
+	# wallet: a coin, the gold count in the display face (it counts up), "GOLD" as a tag
+	row.add_child(Coin.new())
+	_gold = Counter.new()
+	_gold.add_theme_font_override("font", StudioTheme.font("display"))
+	_gold.add_theme_font_size_override("font_size", 20)
+	_gold.add_theme_color_override("font_color", Palette.GOLD)
+	_gold.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	_gold.set_now(0)
 	row.add_child(_gold)
-	_energy_n = StudioTheme.mono_label("⚡ 15/15", 12, Color("d8c39a"))
+	var gold_tag := StudioTheme.mono_label("GOLD", 10, Palette.GOLD)
+	gold_tag.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(gold_tag)
+	row.add_child(_spacer(10))
+	# energy: coral, a bolt, the bar is heat
+	_energy_n = StudioTheme.mono_label("⚡ 15/15", 12, Palette.HEAT)
 	row.add_child(_energy_n)
 	_energy_bar = ProgressBar.new()
 	_energy_bar.show_percentage = false
@@ -125,9 +138,9 @@ func _build_bar() -> void:
 	_energy_bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	_energy_bar.max_value = 15
 	row.add_child(_energy_bar)
-	_energy_next = StudioTheme.mono_label("", 10, Palette.DIM)
+	_energy_next = StudioTheme.mono_label("", 10, Palette.MUTED)
 	row.add_child(_energy_next)
-	_daily_tag = StudioTheme.mono_label("", 10, Palette.GREEN)
+	_daily_tag = StudioTheme.mono_label("", 10, Palette.SUCCESS)
 	row.add_child(_daily_tag)
 	var fill := Control.new()
 	fill.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -150,7 +163,7 @@ func _spacer(w: float) -> Control:
 func render_wallet(eco: Dictionary) -> void:
 	if eco.is_empty():
 		return
-	_gold.text = "◆ %d GOLD" % int(eco.get("gold", 0))
+	_gold.set_target(float(int(eco.get("gold", 0))))
 	var e: Dictionary = eco.get("energy", {})
 	_energy_n.text = "⚡ %d/%d" % [int(e.get("energy", 0)), int(e.get("pool", 15))]
 	_energy_bar.max_value = int(e.get("pool", 15))
@@ -198,8 +211,7 @@ func go(name: String, args: Dictionary = {}) -> void:
 	current = name
 	for k in _nav:
 		var b: Button = _nav[k]
-		b.remove_theme_stylebox_override("normal")
-		b.remove_theme_color_override("font_color")
+		b.theme_type_variation = ""
 		if k == name:
 			StudioTheme.style_button(b, "active")
 	screen = load(SCREENS[name]).instantiate()
@@ -224,8 +236,8 @@ func scenario(id: String) -> Dictionary:
 # --- toast -----------------------------------------------------------------------------------
 func _build_toast() -> void:
 	_toast = PanelContainer.new()
-	_toast.add_theme_stylebox_override("panel", StudioTheme.flat(Color("2a1c10"), Palette.AMBER, 10, 1, Vector2(14, 8)))
-	_toast_label = StudioTheme.mono_label("", 12, Palette.LAMP)
+	_toast.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.PANEL_TOP, Palette.ACCENT, 10, 1, Vector2(14, 8)))
+	_toast_label = StudioTheme.mono_label("", 12, Palette.TEXT)
 	_toast.add_child(_toast_label)
 	_toast.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	_toast.grow_horizontal = Control.GROW_DIRECTION_BOTH
@@ -237,8 +249,10 @@ func _build_toast() -> void:
 	add_child(_toast)
 
 
-func toast(text: String, secs: float = 2.4) -> void:
+## `accent` colours the edge: magenta by default, coral for a dupe, gold for a gift.
+func toast(text: String, secs: float = 2.4, accent: Color = Palette.ACCENT) -> void:
 	_toast_label.text = text
+	_toast.add_theme_stylebox_override("panel", StudioTheme.glow(StudioTheme.flat(Palette.PANEL_TOP, accent, 10, 1, Vector2(14, 8)), accent, 10, 0.4))
 	if _toast_tween:
 		_toast_tween.kill()
 	_toast_tween = create_tween()
@@ -352,3 +366,20 @@ func start_duel(scenario_id: String, daily: bool) -> Dictionary:
 		return r
 	go("duel", {"start": r})
 	return {"ok": true, "resumed": r.get("resumed", false), "duel": r.get("duel", {})}
+
+
+## The coin beside the gold count: drawn, so it is gold on every platform and never a
+## font's idea of a diamond.
+class Coin extends Control:
+	func _ready() -> void:
+		custom_minimum_size = Vector2(20, 20)
+		size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	func _draw() -> void:
+		var c := size / 2.0
+		draw_circle(c + Vector2(0, 1.5), 9.0, Color(0, 0, 0, 0.35))
+		draw_circle(c, 9.0, Palette.GOLD_DEEP)
+		draw_circle(c, 7.4, Palette.GOLD)
+		draw_arc(c, 5.2, 0.0, TAU, 24, Palette.GOLD_DEEP, 1.2)
+		draw_circle(c + Vector2(-2.6, -2.6), 2.4, Color(Palette.GOLD_PALE, 0.9))

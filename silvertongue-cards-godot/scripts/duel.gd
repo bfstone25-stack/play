@@ -63,10 +63,10 @@ func _build() -> void:
 	var hud := PanelContainer.new()
 	hud.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	hud.offset_bottom = 60
-	var hs := StudioTheme.flat(Color(Palette.PANEL_TOP, 0.92), Palette.LINE, 0, 0, Vector2(14, 6))
+	var hs := StudioTheme.flat(Color(Palette.PANEL_TOP, 0.92), Palette.ACCENT, 0, 0, Vector2(14, 6))
 	hs.border_width_bottom = 1
 	hs.border_width_left = 4
-	hs.border_color = Palette.AMBER
+	hs.border_color = Palette.ACCENT
 	hud.add_theme_stylebox_override("panel", hs)
 	add_child(hud)
 	var hrow := HBoxContainer.new()
@@ -75,7 +75,7 @@ func _build() -> void:
 	var goalbox := VBoxContainer.new()
 	goalbox.add_theme_constant_override("separation", 0)
 	goalbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_goal = StudioTheme.serif_label("", 17, Palette.PARCHMENT, true)
+	_goal = StudioTheme.serif_label("", 17, Palette.TEXT, true)
 	_goal.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	goalbox.add_child(_goal)
 	goalbox.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -84,18 +84,18 @@ func _build() -> void:
 	counters.add_theme_constant_override("separation", 2)
 	counters.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	var c1 := HBoxContainer.new()
-	_turns = StudioTheme.mono_label("TURNS 0/15", 11, Color("d8c39a"))
+	_turns = StudioTheme.mono_label("TURNS 0/15", 11, Palette.MUTED)
 	_turn_pips = Control.new()
 	_turn_pips.custom_minimum_size = Vector2(150, 12)
 	_turn_pips.draw.connect(_draw_turn_pips)
 	c1.add_child(_turns)
 	c1.add_child(_turn_pips)
 	var c2 := HBoxContainer.new()
-	var nl := StudioTheme.mono_label("NERVE", 11, Color("d8c39a"))
+	var nl := StudioTheme.mono_label("NERVE", 11, Palette.MUTED)
 	_nerve_pips = Control.new()
 	_nerve_pips.custom_minimum_size = Vector2(46, 12)
 	_nerve_pips.draw.connect(_draw_nerve_pips)
-	_deck_left = StudioTheme.mono_label("DECK 15", 11, Color("d8c39a"))
+	_deck_left = StudioTheme.mono_label("DECK 15", 11, Palette.MUTED)
 	c2.add_child(nl)
 	c2.add_child(_nerve_pips)
 	c2.add_child(_deck_left)
@@ -117,7 +117,7 @@ func _build() -> void:
 	stage.offset_bottom = -262
 	stage.offset_left = 10
 	stage.offset_right = -10
-	stage.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.ROOM_DEEP, Palette.LINE, 12, 1, Vector2(0, 0)))
+	stage.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.GROUND_DEEP, Palette.PANEL_EDGE, 12, 1, Vector2(0, 0)))
 	stage.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(stage)
 
@@ -151,7 +151,7 @@ func _build() -> void:
 	talk.add_child(_needs)
 	_speech_panel = PanelContainer.new()
 	_speech_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_speech_panel.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.PAPER, Color(0, 0, 0, 0), 12, 0, Vector2(18, 12)))
+	_speech_panel.add_theme_stylebox_override("panel", _paper(Palette.PAPER))
 	talk.add_child(_speech_panel)
 	var sv := VBoxContainer.new()
 	sv.add_theme_constant_override("separation", 4)
@@ -164,14 +164,14 @@ func _build() -> void:
 	_speech.scroll_active = false
 	_speech.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_speech.add_theme_color_override("default_color", Palette.INK)
+	_speech.add_theme_font_override("normal_font", StudioTheme.font("italic"))
 	_speech.add_theme_font_size_override("normal_font_size", 22)
 	_speech.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	sv.add_child(_speech)
 	var scene_panel := PanelContainer.new()
 	scene_panel.add_theme_stylebox_override("panel", StudioTheme.flat(Color(Palette.PANEL, 0.7), Palette.LINE_SOFT, 10, 1, Vector2(14, 8)))
 	talk.add_child(scene_panel)
-	_brief = StudioTheme.serif_label("", 13, Color("c9b48f"))
-	_brief.add_theme_font_override("font", StudioTheme.font("italic"))
+	_brief = StudioTheme.serif_label("", 13, Palette.MUTED)
 	_brief.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_brief.max_lines_visible = 3
 	_brief.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -189,7 +189,7 @@ func _build() -> void:
 
 	# wild bar (over the hand)
 	_wild_bar = PanelContainer.new()
-	_wild_bar.add_theme_stylebox_override("panel", StudioTheme.flat(Color(Palette.PANEL, 0.96), Palette.AMBER, 14, 1, Vector2(14, 10)))
+	_wild_bar.add_theme_stylebox_override("panel", StudioTheme.glow(StudioTheme.flat(Color(Palette.PANEL, 0.96), Palette.ACCENT, 14, 1, Vector2(14, 10)), Palette.ACCENT, 14, 0.45))
 	_wild_bar.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	_wild_bar.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_wild_bar.grow_vertical = Control.GROW_DIRECTION_BEGIN
@@ -201,7 +201,7 @@ func _build() -> void:
 	var wrow := HBoxContainer.new()
 	wrow.add_theme_constant_override("separation", 8)
 	_wild_bar.add_child(wrow)
-	var wl := StudioTheme.mono_label("WILD", 11, Palette.AMBER)
+	var wl := StudioTheme.mono_label("WILD", 11, Palette.GOLD)
 	wl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	wrow.add_child(wl)
 	wild_input = LineEdit.new()
@@ -234,7 +234,7 @@ func _draw_turn_pips() -> void:
 	var used := int(duel.get("turns", 0))
 	for i in n:
 		var x := 4 + i * 9.0
-		_turn_pips.draw_circle(Vector2(x, 6), 3.2, Palette.AMBER if i < used else Color("3a3026"))
+		_turn_pips.draw_circle(Vector2(x, 6), 3.2, Palette.GOLD if i < used else Palette.LINE_STRONG)
 
 
 func _draw_nerve_pips() -> void:
@@ -242,8 +242,8 @@ func _draw_nerve_pips() -> void:
 	var have := int(duel.get("nerve", 1))
 	for i in cap:
 		var x := 6 + i * 14.0
-		_nerve_pips.draw_circle(Vector2(x, 6), 4.5, Palette.GREEN if i < have else Color("3a3026"))
-		_nerve_pips.draw_arc(Vector2(x, 6), 4.5, 0, TAU, 16, Palette.GREEN, 1.0)
+		_nerve_pips.draw_circle(Vector2(x, 6), 4.5, Palette.HEAT if i < have else Palette.PANEL_RAISED)
+		_nerve_pips.draw_arc(Vector2(x, 6), 4.5, 0, TAU, 16, Palette.HEAT, 1.0)
 
 
 # --- render from the backend's view ----------------------------------------------------------
@@ -308,14 +308,27 @@ func _render_needs(harms: Array) -> void:
 		existing[k].queue_free()
 
 
-func _say(who: String, text: String, style: String, instant: bool = false) -> void:
+## Warm paper at 92%, a hairline of gold.
+func _paper(bg: Color) -> StyleBoxFlat:
+	var s := StudioTheme.flat(Color(bg, Palette.PAPER_ALPHA), Color(Palette.GOLD, 0.5), 12, 1, Vector2(18, 12))
+	s.shadow_color = Color(0, 0, 0, 0.35)
+	s.shadow_size = 12
+	return s
+
+
+## `voice` = the line is spoken (hers, or the player's own typed words): Playfair Italic.
+## A printed card line the player plays is read out in the UI face — it is the card's,
+## not a voice.
+func _say(who: String, text: String, style: String, instant: bool = false, voice: bool = true) -> void:
 	_who.text = who.to_upper()
 	var bg := Palette.PAPER
 	if style == "player":
 		bg = Palette.PAPER_PLAYER
 	elif style == "gray":
 		bg = Palette.PAPER_GRAY
-	_speech_panel.add_theme_stylebox_override("panel", StudioTheme.flat(bg, Color(0, 0, 0, 0), 12, 0, Vector2(18, 12)))
+	_speech_panel.add_theme_stylebox_override("panel", _paper(bg))
+	_speech.add_theme_font_override("normal_font", StudioTheme.font("italic" if voice else "ui"))
+	_speech.add_theme_font_size_override("normal_font_size", 22 if voice else 20)
 	_speech.text = text
 	if _type_tween:
 		_type_tween.kill()
@@ -345,7 +358,7 @@ func _play_turn(id: String, text: String) -> void:
 		for c in duel.get("hand", []):
 			if c.get("id") == id:
 				line = str(c.get("line", ""))
-	_say("You", line, "player", true)
+	_say("You", line, "player", true, id == "wild")
 	var r := await Api.play(id, text)
 	_last_play = r
 	if r.has("error"):
@@ -436,8 +449,8 @@ func _show_end(r: Dictionary) -> void:
 	var dim := TextureRect.new()
 	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var g := Gradient.new()
-	g.set_color(0, Color("3c2c14", 0.94))
-	g.set_color(1, Color(0, 0, 0, 0.96))
+	g.set_color(0, Color(Palette.PLUM, 0.94))
+	g.set_color(1, Color(Palette.GROUND_DEEP, 0.97))
 	var gt := GradientTexture2D.new()
 	gt.gradient = g
 	gt.fill = GradientTexture2D.FILL_RADIAL
@@ -456,13 +469,17 @@ func _show_end(r: Dictionary) -> void:
 	col.add_theme_constant_override("separation", 10)
 	_banner.add_child(col)
 	var title := "PERSUADED" if won else ("CLOSED" if harmed else "OUT OF WORDS")
-	var tl := StudioTheme.display_label(title, 44, Palette.LAMP if won else Color("b0684e"))
+	var tl := StudioTheme.display_label(title, 60, Palette.GOLD if won else Palette.HEAT)
 	tl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(tl)
+	# the word lands: over-size, then settles
+	tl.pivot_offset = Vector2(320, 36)
+	tl.scale = Vector2(1.5, 1.5)
+	create_tween().tween_property(tl, "scale", Vector2.ONE, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	var sub := "in %d card%s" % [int(e.get("turns", 0)), "" if int(e.get("turns", 0)) == 1 else "s"]
 	if not won:
 		sub = "Coercion. She kept talking; nothing opened." if harmed else "The turns ran out."
-	var sl := StudioTheme.serif_label(sub, 16, Color("c9b48f"))
+	var sl := StudioTheme.serif_label(sub, 16, Palette.MUTED)
 	sl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(sl)
 	if won:
@@ -473,9 +490,21 @@ func _show_end(r: Dictionary) -> void:
 		col.add_child(rrow)
 		var stats := VBoxContainer.new()
 		stats.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		stats.add_child(StudioTheme.mono_label("♥ AFFECTION %d  (+%d)" % [int(rw.get("affection", 0)), int(rw.get("affection_gain", 0))], 12, Palette.AMBER))
-		stats.add_child(StudioTheme.mono_label("◆ GOLD +%d" % int(rw.get("gold", 0)), 12, Palette.LAMP))
-		stats.add_child(StudioTheme.mono_label("DROP →", 12, Palette.MUTED))
+		# the numbers count up in the display face: affection in coral, gold in gold
+		stats.add_theme_constant_override("separation", 2)
+		stats.add_child(StudioTheme.mono_label("♥ AFFECTION  (+%d)" % int(rw.get("affection_gain", 0)), 11, Palette.HEAT))
+		var aff_n := _counter(Palette.HEAT)
+		stats.add_child(aff_n)
+		stats.add_child(StudioTheme.mono_label("◆ GOLD", 11, Palette.GOLD))
+		var gold_n := _counter(Palette.GOLD)
+		gold_n.prefix = "+"
+		stats.add_child(gold_n)
+		stats.add_child(StudioTheme.mono_label("DROP →", 11, Palette.MUTED))
+		var ct := create_tween()
+		ct.tween_interval(0.35)
+		ct.tween_callback(func(): aff_n.set_target(float(int(rw.get("affection", 0))), 0.8))
+		ct.tween_interval(0.25)
+		ct.tween_callback(func(): gold_n.set_target(float(int(rw.get("gold", 0))), 0.9))
 		rrow.add_child(stats)
 		var drop := Card.new()
 		drop.interactive = false
@@ -485,12 +514,12 @@ func _show_end(r: Dictionary) -> void:
 		drop.set_face_down(true)
 		_flip(drop, 0.5)
 		Sfx.play("gold", -12.0)
-		var pct := StudioTheme.mono_label("", 12, Palette.GREEN)
+		var pct := StudioTheme.mono_label("", 12, Palette.SUCCESS)
 		pct.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		col.add_child(pct)
 		if e.get("daily", false):
 			_daily_percentile(pct)
-	var beat := StudioTheme.serif_label(str(e.get("beat", "")), 15, Color("d8c39a"))
+	var beat := StudioTheme.serif_label(str(e.get("beat", "")), 15, Palette.TEXT)
 	beat.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	beat.custom_minimum_size.x = 600
 	col.add_child(beat)
@@ -529,6 +558,15 @@ func _show_end(r: Dictionary) -> void:
 		brow.add_child(more)
 	_banner.modulate.a = 0.0
 	create_tween().tween_property(_banner, "modulate:a", 1.0, 0.4)
+
+
+func _counter(color: Color) -> Counter:
+	var n := Counter.new()
+	n.add_theme_font_override("font", StudioTheme.font("display"))
+	n.add_theme_font_size_override("font_size", 34)
+	n.add_theme_color_override("font_color", color)
+	n.set_now(0)
+	return n
 
 
 func _flip(c: Card, delay: float) -> void:

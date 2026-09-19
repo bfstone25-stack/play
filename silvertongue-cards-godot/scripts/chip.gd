@@ -1,5 +1,5 @@
-## Chip — a needs / signal pill. Lit = the engine has this signal in evidence; help =
-## dashed border (support, not path); harm = red, "closed".
+## Chip — a needs / signal pill. Lit = the engine has this signal in evidence (gold);
+## help = translucent (support, not path); harm = coral, "closed".
 class_name Chip
 extends PanelContainer
 
@@ -35,14 +35,16 @@ func set_lit(on: bool) -> void:
 
 
 func _style() -> void:
-	var bg := Color("2a2220")
-	var border := Color("4a3c30")
-	var fg := Color("c9b48f")
+	var bg := Palette.PANEL_RAISED
+	var border := Palette.LINE_STRONG
+	var fg := Palette.MUTED
 	if harm:
-		bg = Color("2a1a18"); border = Palette.RED_DIM; fg = Color("f0a090")
+		bg = Color(Palette.HEAT_DEEP, 0.3); border = Palette.HEAT; fg = Palette.HEAT
 	elif lit:
-		bg = Palette.AMBER; border = Palette.AMBER; fg = Color("1e1408")
+		bg = Palette.GOLD; border = Palette.GOLD_PALE; fg = Palette.GROUND
 	var s := StudioTheme.flat(bg, border, 9, 1, Vector2(7, 2))
+	if lit:
+		StudioTheme.glow(s, Palette.GOLD, 6, 0.35)
 	if help and not lit:
 		s.border_color = Color(border, 0.9)
 		s.set_border_width_all(1)

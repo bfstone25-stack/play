@@ -34,12 +34,11 @@ func _ready() -> void:
 	_img.offset_right = -40
 	_img.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_img)
-	_tag = StudioTheme.mono_label("", 10, Palette.AMBER)
+	_tag = StudioTheme.mono_label("", 10, Palette.GOLD)
 	_tag.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	_tag.position = Vector2(40, 14)
 	add_child(_tag)
-	_cap = StudioTheme.serif_label("", 17, Palette.PARCHMENT)
-	_cap.add_theme_font_override("font", StudioTheme.font("italic"))
+	_cap = StudioTheme.serif_label("", 17, Palette.TEXT)
 	_cap.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	_cap.offset_top = -70
 	_cap.offset_bottom = -20

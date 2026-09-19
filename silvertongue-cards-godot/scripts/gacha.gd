@@ -37,7 +37,7 @@ func _ready() -> void:
 	var tbox := VBoxContainer.new()
 	tbox.add_theme_constant_override("separation", 0)
 	tbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tbox.add_child(StudioTheme.display_label("GACHA", 30, Palette.LAMP))
+	tbox.add_child(StudioTheme.display_label("GACHA", 34, Palette.GOLD))
 	var sub := StudioTheme.serif_label("Common 70 · Rare 25 · Epic 5. A ten-pull always holds a rare; every thirtieth pull is an epic. Cards add sentences you can say. They do not change what she needs.", 13, Palette.MUTED)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tbox.add_child(sub)
@@ -47,11 +47,11 @@ func _ready() -> void:
 	btns.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	_pull1 = Button.new()
 	_pull1.focus_mode = Control.FOCUS_NONE
-	StudioTheme.style_button(_pull1, "primary")
+	StudioTheme.style_button(_pull1, "pull")
 	_pull1.pressed.connect(func(): drive_pull(1))
 	_pull10 = Button.new()
 	_pull10.focus_mode = Control.FOCUS_NONE
-	StudioTheme.style_button(_pull10, "primary")
+	StudioTheme.style_button(_pull10, "pull")
 	_pull10.pressed.connect(func(): drive_pull(10))
 	btns.add_child(_pull1)
 	btns.add_child(_pull10)
@@ -71,12 +71,12 @@ func _ready() -> void:
 			_render_prices())
 	btns.add_child(dev)
 	head.add_child(btns)
-	_pity = StudioTheme.mono_label("", 11, Palette.DIM)
+	_pity = StudioTheme.mono_label("", 11, Palette.MUTED)
 	col.add_child(_pity)
 	# the felt
 	var felt := PanelContainer.new()
 	felt.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	felt.add_theme_stylebox_override("panel", StudioTheme.flat(Color("17121a"), Palette.LINE, 14, 1, Vector2(16, 14)))
+	felt.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.GROUND_DEEP, Palette.PANEL_EDGE, 14, 1, Vector2(16, 14)))
 	col.add_child(felt)
 	var scroll := ScrollContainer.new()
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -179,7 +179,7 @@ func drive_pull(n: int) -> Dictionary:
 	for id in seen:
 		_owned[id] = int(_owned.get(id, 0)) + int(seen[id])
 	if dupes > 0:
-		main.toast("%d DUPE%s — already in your collection" % [dupes, "" if dupes == 1 else "S"])
+		main.toast("%d DUPE%s — already in your collection" % [dupes, "" if dupes == 1 else "S"], 2.4, Palette.HEAT)
 	_busy = false
 	return r
 
@@ -205,7 +205,7 @@ func _flip(c: Card, dupe: bool, pity: bool) -> void:
 			_burst(c, Palette.rarity_color(rar), 36 if epic else 16, 1.4 if epic else 0.8)
 		if dupe:
 			Sfx.play("dupe", -14.0)
-			_stamp(c, "DUPE", Palette.MUTED)
+			_stamp(c, "DUPE", Palette.HEAT)
 		if pity:
 			_stamp(c, "PITY", Palette.EPIC_TEXT, 22))
 	# come back over-size, settle
@@ -239,7 +239,7 @@ func _burst(c: Card, color: Color, amount: int, secs: float) -> void:
 	p.damping_max = 80.0
 	p.color = Color(color, 0.95)
 	var ramp := Gradient.new()
-	ramp.set_color(0, Color(Palette.LAMP, 1.0))
+	ramp.set_color(0, Color(Palette.GOLD_PALE, 1.0))
 	ramp.set_color(1, Color(color, 0.0))
 	p.color_ramp = ramp
 	p.emitting = true
@@ -248,7 +248,7 @@ func _burst(c: Card, color: Color, amount: int, secs: float) -> void:
 
 
 func _stamp(c: Card, text: String, color: Color, y: float = 0.0) -> void:
-	var l := StudioTheme.mono_label(text, 11, color)
-	l.position = Vector2(Card.W - 60, Card.H - 30 - y)
+	var l := StudioTheme.display_label(text, 13, color)
+	l.position = Vector2(Card.W - 62, Card.H - 32 - y)
 	l.rotation_degrees = -12
 	c.add_child(l)

@@ -25,7 +25,7 @@ func _ready() -> void:
 	col.add_theme_constant_override("separation", 8)
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(col)
-	col.add_child(StudioTheme.display_label("AFFECTION", 30, Palette.LAMP))
+	col.add_child(StudioTheme.display_label("AFFECTION", 34, Palette.GOLD))
 	var sub := StudioTheme.serif_label("Affection is the count of duels won against her. Plates unlock at 1, 3 and 6 wins; the fourth rung at 10 is a scene of Blaze's own and is a placeholder in this build. Nothing here unlocks from time.", 13, Palette.MUTED)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(sub)
@@ -56,7 +56,7 @@ func _load() -> void:
 
 func _row(who: String, a: Dictionary, index: int) -> void:
 	var row := PanelContainer.new()
-	row.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.PANEL, Palette.LINE, 12, 1, Vector2(12, 8)))
+	row.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.PANEL, Palette.PANEL_EDGE, 12, 1, Vector2(12, 8)))
 	_list.add_child(row)
 	var h := HBoxContainer.new()
 	h.add_theme_constant_override("separation", 14)
@@ -74,8 +74,8 @@ func _row(who: String, a: Dictionary, index: int) -> void:
 	var namebox := VBoxContainer.new()
 	namebox.custom_minimum_size.x = 120
 	namebox.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	namebox.add_child(StudioTheme.display_label(str(a.get("name", who)), 20, Palette.PARCHMENT))
-	namebox.add_child(StudioTheme.mono_label("♥ %d" % int(a.get("wins", 0)), 12, Palette.AMBER))
+	namebox.add_child(StudioTheme.display_label(str(a.get("name", who)), 22, Palette.TEXT))
+	namebox.add_child(StudioTheme.mono_label("♥ %d" % int(a.get("wins", 0)), 12, Palette.HEAT))
 	h.add_child(namebox)
 	var ladder := Ladder.new()
 	ladder.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -121,7 +121,7 @@ class Ladder extends Control:
 	var _font: Font
 
 	func _ready() -> void:
-		_font = StudioTheme.font("mono")
+		_font = StudioTheme.font("bold")
 		mouse_filter = Control.MOUSE_FILTER_STOP
 		resized.connect(_place)
 
@@ -182,32 +182,35 @@ class Ladder extends Control:
 
 	func _draw() -> void:
 		var rail_y := 66.0
-		draw_line(Vector2(20, rail_y), Vector2(size.x - 20, rail_y), Color("4a3c30"), 3.0)
+		draw_line(Vector2(20, rail_y), Vector2(size.x - 20, rail_y), Palette.LINE_STRONG, 3.0)
 		var lit_to := _x_for(minf(marker, 10.0))
-		draw_line(Vector2(20, rail_y), Vector2(lit_to, rail_y), Palette.AMBER, 3.0)
+		draw_line(Vector2(20, rail_y), Vector2(lit_to, rail_y), Palette.HEAT, 3.0)
 		for i in rungs.size():
 			var r: Dictionary = rungs[i]
 			var x := _rung_x(i)
 			var earned := bool(r.get("earned", false))
 			var ph := bool(r.get("placeholder", false))
 			var box := Rect2(x - 48, 4, 96, 56)
-			draw_rect(box, Color("151020"), true)
+			draw_rect(box, Palette.GROUND_DEEP, true)
 			if ph:
 				# dashed placeholder
 				for k in range(0, 96, 8):
-					draw_line(box.position + Vector2(k, 0), box.position + Vector2(k + 4, 0), Color("8a6a60"), 1.0)
-					draw_line(box.position + Vector2(k, 56), box.position + Vector2(k + 4, 56), Color("8a6a60"), 1.0)
-				draw_string(_font, box.position + Vector2(6, 24), "tier 4 · at 10", HORIZONTAL_ALIGNMENT_LEFT, 90, 8, Color("8a6a60"))
-				draw_string(_font, box.position + Vector2(6, 38), "Blaze's own", HORIZONTAL_ALIGNMENT_LEFT, 90, 8, Color("8a6a60"))
+					draw_line(box.position + Vector2(k, 0), box.position + Vector2(k + 4, 0), Palette.MUTED, 1.0)
+					draw_line(box.position + Vector2(k, 56), box.position + Vector2(k + 4, 56), Palette.MUTED, 1.0)
+				draw_string(_font, box.position + Vector2(6, 24), "tier 4 · at 10", HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.MUTED)
+				draw_string(_font, box.position + Vector2(6, 38), "Blaze's own", HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.MUTED)
 			else:
-				draw_rect(box, Palette.AMBER if earned else Color("3a2a44"), false, 1.5 if earned else 1.0)
+				if earned:
+					draw_rect(box.grow(2), Color(Palette.GOLD, 0.25), false, 3.0)
+				draw_rect(box, Palette.GOLD if earned else Palette.LINE_STRONG, false, 1.5 if earned else 1.0)
 				if not earned:
-					draw_string(_font, box.position + Vector2(6, 24), "tier %d" % int(r.get("tier", i + 1)), HORIZONTAL_ALIGNMENT_LEFT, 90, 8, Color("5c5468"))
-					draw_string(_font, box.position + Vector2(6, 38), "at %d wins" % int(r.get("at", 0)), HORIZONTAL_ALIGNMENT_LEFT, 90, 8, Color("5c5468"))
+					draw_string(_font, box.position + Vector2(6, 24), "tier %d" % int(r.get("tier", i + 1)), HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.DIM)
+					draw_string(_font, box.position + Vector2(6, 38), "at %d wins" % int(r.get("at", 0)), HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.DIM)
 			# rung peg
-			draw_circle(Vector2(x, rail_y), 5.0, Palette.AMBER if earned else Color("3a3026"))
-			draw_string(_font, Vector2(x - 8, rail_y + 16), str(int(r.get("at", 0))), HORIZONTAL_ALIGNMENT_LEFT, -1, 9, Palette.MUTED)
+			draw_circle(Vector2(x, rail_y), 5.0, Palette.GOLD if earned else Palette.LINE_STRONG)
+			draw_string(StudioTheme.font("display"), Vector2(x - 6, rail_y + 18), str(int(r.get("at", 0))), HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Palette.GOLD if earned else Palette.MUTED)
 		# the heart marker
 		var mx := _x_for(minf(marker, 10.0))
-		draw_circle(Vector2(mx, rail_y), 7.0, Palette.LAMP)
-		draw_string(_font, Vector2(mx - 4, rail_y + 4), "♥", HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Palette.INK)
+		draw_circle(Vector2(mx, rail_y), 10.0, Color(Palette.HEAT, 0.35))
+		draw_circle(Vector2(mx, rail_y), 7.0, Palette.HEAT)
+		draw_string(_font, Vector2(mx - 4, rail_y + 4), "♥", HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Palette.TEXT)

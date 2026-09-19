@@ -40,8 +40,16 @@ python3 play/silvertongue-cards-godot/tools/e2e_web.py                          
 
 ## Studio conventions (for play/overtime-idle-godot to reuse)
 
-- `scripts/palette.gd` — `Palette.*` colours (the parent's dark room / lamp / amber).
-- `scripts/studio_theme.gd` — `StudioTheme.build()` returns the Theme; `style_button(b, "primary"|"free"|"active"|"quiet")`; `mono_label / serif_label / display_label`.
+- `scripts/palette.gd` and `scripts/studio_theme.gd` are **shared verbatim** with play/overtime-idle-godot
+  (copy, never fork): `Palette.*` is ops/adult_forks/UI_DIRECTION.md's hex table — dark plum ground,
+  hot magenta / gold / coral accents — and `StudioTheme.build()` returns the Theme with the three
+  bundled OFL faces in `assets/fonts/` (Lilita One for display, Nunito for UI, Playfair Display Italic
+  for her spoken line only). `style_button(b, "primary"|"pull"|"free"|"active"|"quiet")`;
+  `mono_label` / `serif_label` both resolve to Nunito now; `display_label` is Lilita.
+- `scripts/symbols.gd` — this title's own: attaches `fallback_symbols.ttf` (DejaVu Sans Bold) to the three
+  faces for ♥ ◆ ⚡ ★ ◈ ✕, which none of them carry and the web has no system font for.
+- `scripts/counter.gd` — `Counter`, a Label whose number counts up, overshoots and settles (wallet,
+  momentum readout, the end banner).
 - Autoloads: `Gate` (shared/godot/gate.gd, copied by the build), `Api` (HTTP + identity), `Sfx` (cue names; drop `.ogg` files in `assets/sfx/<cue>.ogg` to replace the synthesised placeholders).
 - Headless tests are scenes (`tests/*.tscn`), never `--script`, so the autoloads are up.
 - Web test bridge: `window.stc.call(cmd, arg)` / `window.stc.result()` (see `main.gd::bridge_command`).

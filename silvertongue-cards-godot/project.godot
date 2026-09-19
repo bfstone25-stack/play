@@ -8,7 +8,7 @@ config/description="18+ card-battle harem. Every card is a sentence; the engine 
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
-boot_splash/bg_color=Color(0.078, 0.063, 0.098, 1)
+boot_splash/bg_color=Color(0.071, 0.031, 0.059, 1)
 boot_splash/show_image=false
 
 [display]
@@ -19,7 +19,7 @@ window/stretch/aspect="expand"
 window/handheld/orientation=4
 
 [gui]
-theme/custom_font="res://assets/fonts/serif.ttf"
+theme/custom_font="res://assets/fonts/Nunito.ttf"
 theme/default_font_antialiasing=1
 
 [input_devices]
@@ -30,7 +30,7 @@ pointing/emulate_mouse_from_touch=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.078, 0.063, 0.098, 1)
+environment/defaults/default_clear_color=Color(0.071, 0.031, 0.059, 1)
 
 [internationalization]
 locale/fallback="en"

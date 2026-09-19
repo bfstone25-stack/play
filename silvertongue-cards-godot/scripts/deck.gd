@@ -36,7 +36,7 @@ func _ready() -> void:
 	var tbox := VBoxContainer.new()
 	tbox.add_theme_constant_override("separation", 0)
 	tbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tbox.add_child(StudioTheme.display_label("DECK", 30, Palette.LAMP))
+	tbox.add_child(StudioTheme.display_label("DECK", 34, Palette.GOLD))
 	_sub = StudioTheme.serif_label("", 13, Palette.MUTED)
 	_sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tbox.add_child(_sub)
@@ -44,7 +44,8 @@ func _ready() -> void:
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 6)
 	actions.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	_count = StudioTheme.mono_label("0/18", 12, Palette.LAMP)
+	_count = StudioTheme.display_label("0/18", 20, Palette.GOLD)
+	_count.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	actions.add_child(_count)
 	var save := Button.new()
 	save.text = "SAVE DECK"
@@ -91,8 +92,7 @@ func _fit() -> void:
 func _load(auto: bool) -> void:
 	for k in _tabs:
 		var b: Button = _tabs[k]
-		b.remove_theme_stylebox_override("normal")
-		b.remove_theme_color_override("font_color")
+		b.theme_type_variation = ""
 		if k == scenario:
 			StudioTheme.style_button(b, "active")
 	var r := await Api.deck(scenario, auto)
@@ -123,7 +123,7 @@ func _render() -> void:
 		wrap.add_child(c)
 		c.setup(d, true)
 		c.set_selected(in_deck > 0)
-		var n := StudioTheme.mono_label("%d/%d in deck" % [in_deck, own], 10, Palette.LAMP if in_deck > 0 else Palette.MUTED)
+		var n := StudioTheme.mono_label("%d/%d in deck" % [in_deck, own], 10, Palette.GOLD if in_deck > 0 else Palette.MUTED)
 		n.position = Vector2(6, Card.H + 4)
 		wrap.add_child(n)
 		c.pressed.connect(func(_c):

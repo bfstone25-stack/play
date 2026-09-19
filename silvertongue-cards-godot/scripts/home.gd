@@ -29,7 +29,7 @@ func _ready() -> void:
 	var tbox := VBoxContainer.new()
 	tbox.add_theme_constant_override("separation", 0)
 	tbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tbox.add_child(StudioTheme.display_label("TONIGHT", 30, Palette.LAMP))
+	tbox.add_child(StudioTheme.display_label("TONIGHT", 34, Palette.GOLD))
 	var sub := StudioTheme.serif_label("Five people, one evening each. Bring a deck; every card is a sentence. The engine reads it. She answers. A duel costs 3 energy; today's is free and pays double affection.", 13, Palette.MUTED)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tbox.add_child(sub)
@@ -58,7 +58,7 @@ func _ready() -> void:
 	_roster.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_roster)
 	_render()
-	var foot := StudioTheme.mono_label("Nothing sold changes the turn count or what she needs.", 10, Palette.DIM)
+	var foot := StudioTheme.mono_label("Nothing sold changes the turn count or what she needs.", 10, Palette.MUTED)
 	col.add_child(foot)
 
 
@@ -66,8 +66,7 @@ func _set_rank(r: String) -> void:
 	main.difficulty = r
 	for k in _rank_buttons:
 		var b: Button = _rank_buttons[k]
-		b.remove_theme_stylebox_override("normal")
-		b.remove_theme_color_override("font_color")
+		b.theme_type_variation = ""
 		if k == r:
 			StudioTheme.style_button(b, "active")
 
@@ -86,10 +85,9 @@ func _render() -> void:
 		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		card.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		card.custom_minimum_size = Vector2(220, 0)
-		var s := StudioTheme.flat(Palette.PANEL_RAISED, Palette.AMBER if is_daily else Color("4a3c30"), 12, 1, Vector2(0, 0))
+		var s := StudioTheme.flat(Palette.PANEL_RAISED, Palette.GOLD if is_daily else Palette.PANEL_EDGE, 12, 1, Vector2(0, 0))
 		if is_daily:
-			s.shadow_color = Color(Palette.AMBER, 0.25)
-			s.shadow_size = 14
+			StudioTheme.glow(s, Palette.GOLD, 14, 0.35)
 		card.add_theme_stylebox_override("panel", s)
 		_roster.add_child(card)
 		var v := VBoxContainer.new()
@@ -120,8 +118,8 @@ func _render() -> void:
 		pw.add_child(shade)
 		if is_daily:
 			var tag := PanelContainer.new()
-			tag.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.AMBER, Palette.AMBER, 6, 0, Vector2(7, 3)))
-			tag.add_child(StudioTheme.mono_label("TODAY · FREE · ×2 AFFECTION", 9, Color("1e1408")))
+			tag.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.SUCCESS, Palette.SUCCESS, 6, 0, Vector2(7, 3)))
+			tag.add_child(StudioTheme.mono_label("TODAY · FREE · ×2 AFFECTION", 9, Palette.GROUND))
 			tag.position = Vector2(10, 10)
 			pw.add_child(tag)
 		var meta := VBoxContainer.new()
@@ -131,13 +129,17 @@ func _render() -> void:
 			mm.add_theme_constant_override("margin_" + side, 12)
 		mm.add_child(meta)
 		v.add_child(mm)
-		meta.add_child(StudioTheme.display_label(str(sc.get("name", "")), 20, Palette.PARCHMENT))
+		meta.add_child(StudioTheme.display_label(str(sc.get("name", "")), 22, Palette.TEXT))
 		var role := StudioTheme.serif_label(str(sc.get("character", "")), 12, Palette.MUTED)
 		role.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		role.max_lines_visible = 2
 		meta.add_child(role)
 		var wins := int(aff.get(who, {}).get("wins", 0))
-		meta.add_child(StudioTheme.mono_label("♥ %d   %s" % [wins, "★".repeat(int(sc.get("stars", 3)))], 11, Palette.AMBER))
+		var hs := HBoxContainer.new()
+		hs.add_theme_constant_override("separation", 10)
+		hs.add_child(StudioTheme.mono_label("♥ %d" % wins, 11, Palette.HEAT))
+		hs.add_child(StudioTheme.mono_label("★".repeat(int(sc.get("stars", 3))), 11, Palette.GOLD))
+		meta.add_child(hs)
 		var needs := HFlowContainer.new()
 		needs.add_theme_constant_override("h_separation", 4)
 		needs.add_theme_constant_override("v_separation", 4)
