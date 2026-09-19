@@ -6,7 +6,7 @@
   "stage": "opening",
   "emotion": "wry",
   "intensity": 3,
-  "instruct": "Say this bright and light, young and quick, smiling through it, wry, half a laugh in it, easy pace, light, full out.",
+  "instruct": "Say this bright and young, wry.",
   "text": "Professor Vance."
  },
  {
@@ -16,7 +16,7 @@
   "stage": "opening",
   "emotion": "asking",
   "intensity": 2,
-  "instruct": "Say this bright and light, young and quick, smiling through it, a real question, rising at the end, wanting the answer, even pace, open.",
+  "instruct": "Say this bright and young, rising at the end, even, open.",
   "text": "You're not going to ask what it is?"
  },
  {
@@ -26,7 +26,7 @@
   "stage": "rising",
   "emotion": "asking",
   "intensity": 3,
-  "instruct": "Say this bright but alert now, quicker, leaning in, a real question, rising at the end, wanting the answer, even pace, open, full out.",
+  "instruct": "Say this bright and alert, rising at the end.",
   "text": "And me?"
  },
  {
@@ -36,7 +36,7 @@
   "stage": "pressure",
   "emotion": "nervous",
   "intensity": 3,
-  "instruct": "Say this younger than she wants to sound, pushing through nerves, nervous, starting and restarting, not quite steady, uneven pace, small, full out.",
+  "instruct": "Say this young and pressed, nervous.",
   "text": "Maybe it was."
  },
  {
@@ -46,7 +46,7 @@
   "stage": "intimate",
   "emotion": "wounded",
   "intensity": 1,
-  "instruct": "Say this close and breath-forward, warm, wanting, never whispered, wounded, the voice thinning at the end, slow pace, quiet, held back.",
+  "instruct": "Say this close and breath-forward, wounded, slow, quiet, held back.",
   "text": "I've been alone with this for two years, Vance. I'm not going home tonight to be alone with it again."
  },
  {
@@ -56,7 +56,7 @@
   "stage": "intimate",
   "emotion": "breathless",
   "intensity": 2,
-  "instruct": "Say this close and breath-forward, warm, wanting, never whispered, breathless, close, the sentence breaking on a breath, slow pace, hushed.",
+  "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "text": "That's a very old-fashioned way to ask, Professor."
  },
  {
@@ -66,7 +66,7 @@
   "stage": "intimate",
   "emotion": "breathless",
   "intensity": 2,
-  "instruct": "Say this close and breath-forward, warm, wanting, never whispered, breathless, close, the sentence breaking on a breath, slow pace, hushed.",
+  "instruct": "Say this close and breath-forward, breathless.",
   "text": "Say it properly."
  },
  {
@@ -76,7 +76,7 @@
   "stage": "tender",
   "emotion": "tender",
   "intensity": 2,
-  "instruct": "Say this soft and unguarded, still smiling, slow because she wants to be, tender, warm, meaning it, unhurried pace, soft.",
+  "instruct": "Say this soft and unguarded, tender.",
   "text": "...You are staring."
  }
 ]
