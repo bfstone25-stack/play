@@ -65,11 +65,10 @@ func _row(who: String, a: Dictionary, index: int) -> void:
 	pw.custom_minimum_size = Vector2(72, 84)
 	pw.clip_contents = true
 	var img := TextureRect.new()
-	img.texture = load("res://assets/portraits/%s.webp" % who)
+	img.texture = Card.face_texture(who)
 	img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	img.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	img.offset_bottom = 40
 	pw.add_child(img)
 	h.add_child(pw)
 	var namebox := VBoxContainer.new()

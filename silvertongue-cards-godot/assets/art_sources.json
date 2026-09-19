@@ -1,0 +1,92 @@
+{
+ "assets/faces/ines.webp": {
+  "crop": [
+   506,
+   152,
+   806,
+   352
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_the_key.png"
+ },
+ "assets/faces/mara.webp": {
+  "crop": [
+   435,
+   50,
+   945,
+   390
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_closing_time.png"
+ },
+ "assets/faces/sanne.webp": {
+  "crop": [
+   415,
+   0,
+   925,
+   340
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_house_rule.png"
+ },
+ "assets/faces/teodora.webp": {
+  "crop": [
+   395,
+   10,
+   905,
+   350
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_last_night.png"
+ },
+ "assets/faces/yuenha.webp": {
+  "crop": [
+   405,
+   40,
+   915,
+   380
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_life_model.png"
+ },
+ "assets/portraits/ines.webp": {
+  "crop": [
+   476,
+   130,
+   836,
+   580
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_the_key.png"
+ },
+ "assets/portraits/mara.webp": {
+  "crop": [
+   430,
+   0,
+   950,
+   650
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_closing_time.png"
+ },
+ "assets/portraits/sanne.webp": {
+  "crop": [
+   400,
+   0,
+   920,
+   650
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_house_rule.png"
+ },
+ "assets/portraits/teodora.webp": {
+  "crop": [
+   390,
+   0,
+   910,
+   650
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_last_night.png"
+ },
+ "assets/portraits/yuenha.webp": {
+  "crop": [
+   410,
+   0,
+   930,
+   650
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_life_model.png"
+ }
+}

@@ -105,7 +105,6 @@ func _render() -> void:
 		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		img.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		img.offset_bottom = 80      # crop toward the face
 		pw.add_child(img)
 		var shade := TextureRect.new()
 		var g := Gradient.new()

@@ -23,10 +23,17 @@ On the web, `Api` uses `location.origin` (the dev server above, or the gateway p
 same `stc_pid` localStorage key as the prototype, so a player keeps their collection across
 the two clients. On a foreign host (itch, Nutaku) it uses `https://apps.blazecore.dev/silvertongue-cards`.
 
+## Art
+
+`python3 tools/sync_art.py` cuts the faces (`assets/faces/`) and busts (`assets/portraits/`) out of the
+installed tier-1 plates in `play/silvertongue-x/frontend/assets/cg/cg1_*.png`, using the rects in
+`tools/face_crops.json`; `assets/art_sources.json` records the provenance and the tests refuse
+anything that traces to `ops/`. Outputs are committed so the build needs no import step.
+
 ## Verify
 
 ```sh
-$GODOT --headless --path play/silvertongue-cards-godot res://tests/run_tests.tscn   # 69 checks: Api vs live backend, hand state machine, wild path, play to PERSUADED
+$GODOT --headless --path play/silvertongue-cards-godot res://tests/run_tests.tscn   # ~80 checks: Api vs live backend, hand state machine, wild path, play to PERSUADED
 DISPLAY=:0 $GODOT --path play/silvertongue-cards-godot res://tests/shots.tscn       # desktop screenshots -> shots/d*.png
 python3 play/silvertongue-cards-godot/tools/e2e_web.py                              # web export in headless Chromium -> shots/w*.png
 ```

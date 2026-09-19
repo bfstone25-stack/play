@@ -1,6 +1,8 @@
 ## Portrait — her, large. One image; the four phases are lighting and colour treatments
 ## on it (saturation, brightness, a cool or warm tint, lamp warmth), tweened between, plus
 ## a slow breathing motion. Never four faces. "lost" is the desaturated closed state.
+## The image is assets/portraits/<who>.webp — the bust cut from the installed tier-1 plate
+## by tools/sync_art.py — never the early ref renders in ops/.
 class_name Portrait
 extends Control
 
@@ -67,11 +69,19 @@ func _layout() -> void:
 	_tex.pivot_offset = size * Vector2(0.5, 0.35)
 
 
+static func portrait_path(id: String) -> String:
+	return "res://assets/portraits/%s.webp" % id
+
+
 func show_character(id: String) -> void:
 	who = id
-	var path := "res://assets/portraits/%s.webp" % id
+	var path := portrait_path(id)
 	if ResourceLoader.exists(path):
 		_tex.texture = load(path)
+
+
+func texture_path() -> String:
+	return _tex.texture.resource_path if _tex.texture else ""
 
 
 func set_phase(p: String, closed: bool = false, instant: bool = false) -> void:

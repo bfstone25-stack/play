@@ -33,6 +33,8 @@ func _run() -> void:
 	await _t_scripts()
 	print("== Api against the live backend (pid %s)" % pid)
 	await _t_api()
+	print("== art: every card has a face, no portrait comes from ops/")
+	await _t_art()
 	print("== hand state machine")
 	await _t_hand()
 	print("== duel scene: wild card path")
@@ -88,6 +90,53 @@ func _t_api() -> void:
 	check(a.get("affection", {}).has("mara") and a["affection"]["mara"]["ladder"].size() == 4, "affection ladder x4")
 	var bad := await Api.get_json("/cards/nope")
 	check(bad.has("error"), "404 surfaces as error, not a crash")
+
+
+func _t_art() -> void:
+	# every card in the full collection resolves to an existing face texture (house and
+	# wild have none by design: the coercion face and the dashed wild carry no picture)
+	var all := await Api.get_json("/cards/cards")
+	var cards: Array = all.get("cards", [])
+	var missing := []
+	var faced := 0
+	for c in cards:
+		var who := str(c.get("character", ""))
+		if who == "house" or who == "wild":
+			continue
+		if Card.face_texture(who) == null or not ResourceLoader.exists(Card.face_path(who)):
+			missing.append(str(c.get("id", "")))
+		else:
+			faced += 1
+	check(cards.size() > 20 and missing.is_empty(), "every character card resolves to a face texture (%d faced, missing %s)" % [faced, str(missing)])
+	for who in all.get("characters", {}).keys():
+		check(ResourceLoader.exists(Portrait.portrait_path(str(who))), "portrait exists for %s" % who)
+	# a rendered card shows the picture panel
+	var card := Card.new()
+	add_child(card)
+	card.setup(cards[0], true)
+	await get_tree().process_frame
+	check(card._pic_frame.visible and card._pic.texture != null, "card face shows the picture panel")
+	card.set_face_down(true)
+	check(not card._pic_frame.visible and card._back_mark.visible, "face-down hides the picture, shows the studio back")
+	card.queue_free()
+	# provenance: every asset came from the installed tier-1 plate, never from ops/
+	var src := FileAccess.get_file_as_string("res://assets/art_sources.json")
+	var prov = JSON.parse_string(src)
+	check(prov is Dictionary and prov.size() >= 10, "art_sources.json lists the faces and portraits")
+	var from_ops := false
+	var from_plates := 0
+	for k in prov:
+		var s := str(prov[k].get("source", ""))
+		if s.contains("ops/"):
+			from_ops = true
+		if s.contains("silvertongue-x/frontend/assets/cg/cg1_"):
+			from_plates += 1
+	check(not from_ops and from_plates == prov.size(), "no asset traces to ops/; all cut from cg1 plates")
+	var gd := ""
+	for f in DirAccess.get_files_at("res://scripts"):
+		if f.ends_with(".gd"):
+			gd += FileAccess.get_file_as_string("res://scripts/" + f)
+	check(not gd.contains("ops/silvertongue_art") and not gd.contains("/ref/"), "no script loads ops/silvertongue_art/ref")
 
 
 func _t_hand() -> void:
@@ -233,6 +282,7 @@ func _t_persuaded() -> void:
 	check(last.get("end", {}).get("won", false) == true, "PERSUADED")
 	check(last.get("read", {}).get("phase_after", "") == "breakthrough", "phase breakthrough")
 	check(duel.portrait.phase == "breakthrough", "portrait on the breakthrough treatment")
+	check(duel.portrait.texture_path().begins_with("res://assets/portraits/") and not duel.portrait.texture_path().contains("ops/"), "portrait texture is the packaged bust, not ops/")
 	check(abs(duel.gauge.value - float(last["duel"]["momentum"])) < 0.001, "gauge shows the backend's momentum")
 	check("win" in Sfx.log, "win cue fired")
 	await get_tree().create_timer(1.6).timeout

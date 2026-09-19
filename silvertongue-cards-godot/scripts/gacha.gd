@@ -1,5 +1,7 @@
-## Gacha — a moment, not a list. Cards land face-down on the felt, flip one by one, a
-## rarity glow on rares and epics, a DUPE toast when the collection already held one.
+## Gacha — a moment, not a list. Cards land face-down on the felt (the studio back), flip
+## one by one with a scale/rotate tween, a rarity glow burst on rares and epics, the epic
+## held back to the end of a ten-pull with a longer beat and its own cue, a DUPE toast when
+## the collection already held one.
 ## Pity and prices are the backend's; the client only reads them.
 extends Control
 
@@ -150,8 +152,16 @@ func drive_pull(n: int) -> Dictionary:
 		tw.tween_property(c, "modulate:a", 1.0, 0.16).set_delay(0.06 * i)
 		Sfx.play("flip", -20.0)
 	await get_tree().create_timer(0.06 * nodes.size() + 0.25).timeout
-	# flip, one by one
+	# flip, one by one — epics last, so a ten-pull ends on its best card
+	var order: Array[int] = []
+	var epics: Array[int] = []
 	for i in nodes.size():
+		if str(cards[i].get("rarity", "")) == "epic":
+			epics.append(i)
+		else:
+			order.append(i)
+	order.append_array(epics)
+	for i in order:
 		var c := nodes[i]
 		var d: Dictionary = cards[i]
 		var id := str(d.get("id", ""))
@@ -159,10 +169,13 @@ func drive_pull(n: int) -> Dictionary:
 		seen[id] = int(seen.get(id, 0)) + 1
 		var pity = d.get("pity")
 		var is_pity: bool = typeof(pity) == TYPE_STRING and pity != "" or typeof(pity) == TYPE_BOOL and pity
+		var epic := str(d.get("rarity", "")) == "epic"
+		if epic:
+			await get_tree().create_timer(0.45).timeout    # a breath before the epic
 		await _flip(c, had > 0, is_pity)
 		if had > 0:
 			dupes += 1
-		await get_tree().create_timer(0.12).timeout
+		await get_tree().create_timer(0.5 if epic else 0.12).timeout
 	for id in seen:
 		_owned[id] = int(_owned.get(id, 0)) + int(seen[id])
 	if dupes > 0:
@@ -174,28 +187,64 @@ func drive_pull(n: int) -> Dictionary:
 func _flip(c: Card, dupe: bool, pity: bool) -> void:
 	c.pivot_offset = Vector2(Card.W / 2, Card.H / 2)
 	var base := c.scale
+	var rar := str(c.data.get("rarity", "common"))
+	var epic := rar == "epic"
 	var tw := create_tween()
-	tw.tween_property(c, "scale:x", 0.0, 0.14).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	# lift and turn edge-on
+	tw.tween_property(c, "scale", Vector2(0.0, base.y * 1.08), 0.22 if epic else 0.14).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tw.parallel().tween_property(c, "rotation_degrees", -8.0 if epic else -4.0, 0.22 if epic else 0.14)
 	tw.tween_callback(func():
 		c.set_face_down(false)
-		var rar := str(c.data.get("rarity", "common"))
-		if rar == "epic":
+		if epic:
 			Sfx.play("epic")
 		elif rar == "rare":
 			Sfx.play("rare")
 		else:
 			Sfx.play("flip", -14.0)
+		if rar != "common":
+			_burst(c, Palette.rarity_color(rar), 36 if epic else 16, 1.4 if epic else 0.8)
 		if dupe:
 			Sfx.play("dupe", -14.0)
 			_stamp(c, "DUPE", Palette.MUTED)
 		if pity:
 			_stamp(c, "PITY", Palette.EPIC_TEXT, 22))
-	tw.tween_property(c, "scale:x", base.x, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	var rar := str(c.data.get("rarity", "common"))
+	# come back over-size, settle
+	tw.tween_property(c, "scale", base * (1.12 if epic else 1.06), 0.22 if epic else 0.16).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.parallel().tween_property(c, "rotation_degrees", 0.0, 0.22 if epic else 0.16).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	if rar != "common":
-		tw.parallel().tween_property(c, "glow", 1.0, 0.2)
-		tw.tween_property(c, "glow", 0.25 if rar == "epic" else 0.0, 1.0)
+		tw.parallel().tween_property(c, "glow", 1.0, 0.16)
+	tw.tween_property(c, "scale", base, 0.5 if epic else 0.22).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	if rar != "common":
+		tw.parallel().tween_property(c, "glow", 0.35 if epic else 0.0, 1.4 if epic else 0.9)
 	await tw.finished
+
+
+## A cheap one-shot spark burst behind the card, in the rarity colour.
+func _burst(c: Card, color: Color, amount: int, secs: float) -> void:
+	var p := CPUParticles2D.new()
+	p.position = Vector2(Card.W / 2, Card.H / 2)
+	p.z_index = -1
+	p.amount = amount
+	p.lifetime = secs
+	p.one_shot = true
+	p.explosiveness = 0.95
+	p.direction = Vector2(0, -1)
+	p.spread = 180.0
+	p.gravity = Vector2(0, 60)
+	p.initial_velocity_min = 90.0
+	p.initial_velocity_max = 220.0
+	p.scale_amount_min = 2.0
+	p.scale_amount_max = 4.5
+	p.damping_min = 40.0
+	p.damping_max = 80.0
+	p.color = Color(color, 0.95)
+	var ramp := Gradient.new()
+	ramp.set_color(0, Color(Palette.LAMP, 1.0))
+	ramp.set_color(1, Color(color, 0.0))
+	p.color_ramp = ramp
+	p.emitting = true
+	c.add_child(p)
+	get_tree().create_timer(secs + 0.2).timeout.connect(p.queue_free)
 
 
 func _stamp(c: Card, text: String, color: Color, y: float = 0.0) -> void:
