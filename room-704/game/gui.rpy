@@ -3,27 +3,28 @@
 init -1 python:
     gui.init(1920, 1080)
 
-## Colors
-define gui.accent_color = '#d99b66'
-define gui.idle_color = '#b0a8a0'
-define gui.idle_small_color = '#908880'
-define gui.hover_color = '#ffcc88'
-define gui.selected_color = '#f2be8d'
-define gui.insensitive_color = '#605855'
-define gui.muted_color = '#7d685c'
-define gui.hover_muted_color = '#a88c7c'
-define gui.text_color = '#f5f0eb'
-define gui.interface_text_color = '#f5f0eb'
+## Colors — brass, night blue, cream (ops/adult_forks/TITLE_SCREENS.md)
+define gui.accent_color = '#e8c878'
+define gui.idle_color = '#cbbfa2'
+define gui.idle_small_color = '#9c937c'
+define gui.hover_color = '#fff7e6'
+define gui.selected_color = '#eee2c8'
+define gui.insensitive_color = '#6b6350'
+define gui.muted_color = '#7d7660'
+define gui.hover_muted_color = '#aca38c'
+define gui.text_color = '#efe8d8'
+define gui.interface_text_color = '#efe8d8'
 
-## Fonts
-define gui.text_font = "DejaVuSans.ttf"
-define gui.name_text_font = "DejaVuSans.ttf"
-define gui.interface_text_font = "DejaVuSans.ttf"
+## Fonts — Josefin Sans for what is read, Marcellus for what is a heading or a button.
+## Both OFL, bundled in game/fonts (copied there by ops/keyvisual_art/logotype.py).
+define gui.text_font = "fonts/JosefinSans-Regular.ttf"
+define gui.name_text_font = "fonts/Marcellus-Regular.ttf"
+define gui.interface_text_font = "fonts/Marcellus-Regular.ttf"
 
 ## Font sizes
-define gui.text_size = 32
-define gui.name_text_size = 36
-define gui.interface_text_size = 28
+define gui.text_size = 31
+define gui.name_text_size = 26
+define gui.interface_text_size = 26
 define gui.label_text_size = 34
 define gui.notify_text_size = 24
 define gui.title_text_size = 64
@@ -90,21 +91,21 @@ define gui.navigation_xpos = 120
 ## seem to be any sliders/mute under the audio tab". Solid colours need no assets.
 style bar:
     ysize 26
-    left_bar Solid("#d99b66")
-    right_bar Solid("#2a2233")
+    left_bar Solid("#b08a42")
+    right_bar Solid("#141b2e")
     thumb None
     thumb_shadow None
 
 style slider:
     ysize 26
-    left_bar Solid("#d99b66")
-    right_bar Solid("#2a2233")
+    left_bar Solid("#b08a42")
+    right_bar Solid("#141b2e")
     thumb None
     thumb_shadow None
 
 style vbar:
     xsize 26
-    top_bar Solid("#d99b66")
-    bottom_bar Solid("#2a2233")
+    top_bar Solid("#b08a42")
+    bottom_bar Solid("#141b2e")
     thumb None
     thumb_shadow None

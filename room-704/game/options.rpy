@@ -35,7 +35,7 @@ define config.check_conflicting_properties = True
 
 init python:
     build.directory_name = "room-704-v0.1.0"
-    build.executable_name = "ElenaCrimsonArchives"
+    build.executable_name = "Room704"
     build.include_update = False
 
     build.classify('**~', None)
@@ -46,6 +46,10 @@ init python:
     build.classify('tools/**', None)
     build.classify('raw_assets/**', None)
     build.classify('dist/**', None)
+    ## The browser ad script must never ride along in a downloadable build: desktop
+    ## Ren'Py cannot run it, and a sponsor domain sitting inside a build we describe
+    ## as ad-free is exactly what got the F95 account banned on 2026-09-16.
+    build.classify('web/**', None)
     # Store-page art and writing must not ship inside the build (was ~8 MB of the web download).
     build.classify('promo/**', None)
     build.classify('f95_posts/**', None)
