@@ -19,14 +19,28 @@ func _ready() -> void:
 	#   godot --path play/flutter-godot -- --shot user://title.png --shot-after 2.6
 	var shot := ""
 	var after := 2.6
+	var hover := -1
 	var argv := OS.get_cmdline_user_args()
 	for i in argv.size():
 		if argv[i] == "--shot" and i + 1 < argv.size():
 			shot = argv[i + 1]
 		elif argv[i] == "--shot-after" and i + 1 < argv.size():
 			after = float(argv[i + 1])
+		elif argv[i] == "--hover" and i + 1 < argv.size():
+			hover = int(argv[i + 1])
 	if shot != "":
-		_shoot(shot, after)
+		# --hover forces a rail item into its hover state before the frame is taken.
+		# Hover and press are item 4 of TITLE_SCREENS.md and the only way to check them is
+		# to look at one; a mouse cannot be driven into a headless-ish capture run, so the
+		# state is entered directly. QA only — nothing in the game calls this.
+		if hover >= 0:
+			await get_tree().create_timer(max(0.1, after - 0.6)).timeout
+			var kids := title.rail.get_children()
+			if hover < kids.size():
+				title._hover(kids[hover] as Control, true)
+			_shoot(shot, 0.6)
+		else:
+			_shoot(shot, after)
 
 
 func _on_chose(action: String) -> void:
