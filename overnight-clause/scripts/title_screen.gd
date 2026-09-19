@@ -20,44 +20,20 @@ const LOGO_PATH := "res://assets/title/logotype.png"
 const FONT_REG := preload("res://assets/fonts/IBMPlexMono-Regular.ttf")
 const FONT_BOLD := preload("res://assets/fonts/IBMPlexMono-Bold.ttf")
 
-const KV_BLEND := """
-shader_type canvas_item;
-uniform float edge0 : hint_range(0.0, 1.0) = 0.06;
-uniform float edge1 : hint_range(0.0, 1.0) = 0.48;
-uniform float amount : hint_range(0.0, 1.0) = 1.0;
-uniform vec3 tint = vec3(0.86, 1.0, 0.90);
-void fragment() {
-	vec4 c = texture(TEXTURE, UV);
-	float a = smoothstep(edge0, edge1, UV.x) * amount;
-	a *= 1.0 - smoothstep(0.86, 1.0, UV.y) * 0.5;
-	COLOR = vec4(c.rgb * tint, c.a * a);
-}
-"""
-
-const VIGNETTE := """
-shader_type canvas_item;
-void fragment() {
-	vec2 d = (UV - vec2(0.5, 0.5)) * vec2(1.1, 1.0);
-	float v = smoothstep(0.34, 0.98, length(d));
-	float foot = smoothstep(0.70, 1.0, UV.y) * 0.5;
-	// damp: the edges go green-grey, not black
-	vec3 col = mix(vec3(0.02, 0.05, 0.03), vec3(0.0), foot);
-	COLOR = vec4(col, clamp(v * 0.72 + foot, 0.0, 0.94));
-}
-"""
-
-## The form column. Everything typed on this screen — the mark, the two lines of copy,
-## the enter button — sits in the left half, and the left half of the picture is a lit
-## corridor wall. This is the damp paper it is typed on: green-black, soft-edged, no
-## border. Without it the first shot had the copy lying straight on the wall, unreadable.
-const FORM_SCRIM := """
-shader_type canvas_item;
-void fragment() {
-	float a = smoothstep(0.62, 0.30, UV.x) * 0.86;
-	a *= 1.0 - smoothstep(0.88, 1.0, UV.y) * 0.4;
-	COLOR = vec4(0.020, 0.042, 0.030, a);
-}
-"""
+## The key visual's soft left edge and its green-damp tint are BAKED INTO THE IMAGE
+## (assets/title/keyvisual.webp carries alpha). They were a canvas_item shader, and on the
+## web export that shader did not run — which would have left an opaque plate covering
+## the 3D corridor this title dollies through, i.e. covering the idea.
+## The vignette and the type-scrim are ONE BAKED TEXTURE (assets/title/overlay.png,
+## made by ops/title_logotypes.py), not runtime shaders.
+##
+## They were shaders. On the WEB export they drew nothing at all, while a plain ColorRect
+## dropped in beside them at the same point in the child order drew fine — proven by
+## exporting a build with a red test rect in it. A TextureRect with an imported texture
+## paints on every renderer this project ships to, so the gradient is baked once by
+## Pillow and the game draws a picture. It is also faster and it is editable somewhere a
+## designer can see it.
+const OVERLAY_PATH := "res://assets/title/overlay.png"
 
 var cam: Camera3D
 var torch: SpotLight3D
@@ -72,6 +48,14 @@ var _fonts := [FONT_REG, FONT_BOLD]   # held: web frees an unreferenced FontFile
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# The title screen runs while the tree is PAUSED. Gate.require() pauses the tree
+	# (scripts/gate.gd) and the web build reaches the gate before the title is dismissed —
+	# gate.gd's own comment already records that floor-13-x sits paused behind its title
+	# card. A node on PROCESS_MODE_INHERIT gets no _process at all while paused, which is
+	# exactly what shipped: the live web title was frozen at frame one — no drift, no
+	# light, and the mark stuck at the alpha 0 it starts its fade from. Measured, not
+	# guessed: two canvas grabs 1.8 s apart differed by 0 pixels of 921600.
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build_2d()
 	audio = TitleAudio.new()
 	audio.name = "TitleAudio"
@@ -119,32 +103,18 @@ func _build_2d() -> void:
 	kv.pivot_offset = Vector2(640, 360)
 	kv.scale = Vector2(1.05, 1.05)
 	kv.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var sh := Shader.new()
-	sh.code = KV_BLEND
-	var mat := ShaderMaterial.new()
-	mat.shader = sh
-	kv.material = mat
 	add_child(kv)
 
-	var form := ColorRect.new()
-	form.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	form.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var fs := Shader.new()
-	fs.code = FORM_SCRIM
-	var fm := ShaderMaterial.new()
-	fm.shader = fs
-	form.material = fm
-	add_child(form)
-
-	var vig := ColorRect.new()
-	vig.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)   # see above
-	vig.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var vs := Shader.new()
-	vs.code = VIGNETTE
-	var vm := ShaderMaterial.new()
-	vm.shader = vs
-	vig.material = vm
-	add_child(vig)
+	var overlay := TextureRect.new()
+	overlay.name = "Overlay"
+	if ResourceLoader.exists(OVERLAY_PATH):
+		overlay.texture = load(OVERLAY_PATH)
+	overlay.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	overlay.stretch_mode = TextureRect.STRETCH_SCALE
+	overlay.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(overlay)
 
 	logo = TextureRect.new()
 	logo.name = "Logotype"
@@ -155,7 +125,7 @@ func _build_2d() -> void:
 	logo.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	logo.position = Vector2(64, 56)
 	logo.size = Vector2(660, 246)
-	logo.modulate.a = 0.0
+	logo.modulate.a = 1.0
 	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(logo)
 
@@ -190,11 +160,16 @@ func _mark(text: String, pos: Vector2, boxed: bool) -> void:
 func play_in() -> void:
 	if logo == null:
 		return
-	logo.modulate.a = 0.0
+	# The mark starts READABLE and the settle only finishes it. It used to start at
+	# alpha 0 and be brought up by a Tween — and a Tween does not advance while the tree
+	# is paused, which is exactly the state this card is shown in (Gate.require() pauses
+	# the tree). Live, that meant the title screen had no title on it. Motion is allowed
+	# to add to a finished screen; it is never allowed to be the thing that finishes it.
+	logo.modulate.a = 0.85
 	logo.position = Vector2(64, 56)
 	var tw := create_tween()
 	tw.tween_interval(0.7)
-	tw.tween_property(logo, "modulate:a", 0.35, 0.05)
+	tw.tween_property(logo, "modulate:a", 0.88, 0.05)
 	tw.tween_property(logo, "position:x", 66.0, 0.05)
 	tw.tween_interval(0.12)
 	tw.tween_property(logo, "modulate:a", 1.0, 0.06)

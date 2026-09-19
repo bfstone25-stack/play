@@ -14,7 +14,8 @@ class_name TitleScreen
 ##                whole room dips when the tube does
 ##   rain (x2)    two particle sheets at different speeds and sizes — the parallax; the
 ##                near sheet is faster and longer, the far one slower and faint
-##   vignette     a radial darkening so the eye lands on her and the logotype
+##   overlay      one baked plate: the radial darkening plus the ink column down the right
+##                third, where the logotype and the start button sit
 ##   logotype     the designed mark (ops/title_logotypes.py) settling in from below
 ##   marks        18+ and the studio line, small, fixed
 ##
@@ -38,32 +39,16 @@ const FONT_BOLD := preload("res://assets/fonts/WorkSans-Bold.ttf")
 const BG_SCALE := 1.10
 const BG_OFFSET := Vector2(-6.0, 4.0)
 
-const VIGNETTE := """
-shader_type canvas_item;
-uniform float strength : hint_range(0.0, 1.0) = 0.62;
-void fragment() {
-	vec2 d = (UV - vec2(0.36, 0.5)) * vec2(1.25, 1.0);
-	float v = smoothstep(0.30, 0.95, length(d));
-	// a cold band at the top where the tube is, a hard dark at the foot
-	float foot = smoothstep(0.62, 1.0, UV.y) * 0.55;
-	COLOR = vec4(0.01, 0.02, 0.03, clamp(v * strength + foot, 0.0, 0.92));
-}
-"""
-
-## The file panel. The logotype, the eyebrow and the start button all live in the right
-## third, and the key visual under them is a lit corridor wall — the first shot of this
-## screen had FLOOR 13 sitting across June's face and was unreadable. This is the ink
-## HR keeps its forms on: a soft-edged column down the right, no border, nothing that
-## reads as a dialog box. It is the scrim that makes the type a designed block rather
-## than words dropped on a picture.
-const FILE_PANEL := """
-shader_type canvas_item;
-void fragment() {
-	float a = smoothstep(0.40, 0.62, UV.x) * 0.80;
-	a *= 1.0 - smoothstep(0.80, 1.0, UV.y) * 0.45;
-	COLOR = vec4(0.012, 0.028, 0.030, a);
-}
-"""
+## The vignette and the type-scrim are ONE BAKED TEXTURE (assets/title/overlay.png,
+## made by ops/title_logotypes.py), not runtime shaders.
+##
+## They were shaders. On the WEB export they drew nothing at all, while a plain ColorRect
+## dropped in beside them at the same point in the child order drew fine — proven by
+## exporting a build with a red test rect in it. A TextureRect with an imported texture
+## paints on every renderer this project ships to, so the gradient is baked once by
+## Pillow and the game draws a picture. It is also faster and it is editable somewhere a
+## designer can see it.
+const OVERLAY_PATH := "res://assets/title/overlay.png"
 
 var bg: TextureRect
 var logo: TextureRect
@@ -83,6 +68,14 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	clip_contents = true
+	# The title screen runs while the tree is PAUSED. Gate.require() pauses the tree
+	# (scripts/gate.gd) and the web build reaches the gate before the title is dismissed —
+	# gate.gd's own comment already records that floor-13-x sits paused behind its title
+	# card. A node on PROCESS_MODE_INHERIT gets no _process at all while paused, which is
+	# exactly what shipped: the live web title was frozen at frame one — no drift, no
+	# light, and the mark stuck at the alpha 0 it starts its fade from. Measured, not
+	# guessed: two canvas grabs 1.8 s apart differed by 0 pixels of 921600.
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build()
 	if is_visible_in_tree():
 		call_deferred("play_in")
@@ -114,25 +107,17 @@ func _build() -> void:
 	rain_near = _rain(1, 14, 320.0, 0.20, 40)
 	add_child(rain_near)
 
-	var panel := ColorRect.new()
-	panel.set_anchors_preset(Control.PRESET_FULL_RECT)
-	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var psh := Shader.new()
-	psh.code = FILE_PANEL
-	var pmat := ShaderMaterial.new()
-	pmat.shader = psh
-	panel.material = pmat
-	add_child(panel)
-
-	var vig := ColorRect.new()
-	vig.set_anchors_preset(Control.PRESET_FULL_RECT)
-	vig.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var sh := Shader.new()
-	sh.code = VIGNETTE
-	var mat := ShaderMaterial.new()
-	mat.shader = sh
-	vig.material = mat
-	add_child(vig)
+	var overlay := TextureRect.new()
+	overlay.name = "Overlay"
+	if ResourceLoader.exists(OVERLAY_PATH):
+		overlay.texture = load(OVERLAY_PATH)
+	overlay.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	overlay.stretch_mode = TextureRect.STRETCH_SCALE
+	overlay.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	overlay.position = Vector2.ZERO
+	overlay.size = Vector2(640, 360)
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(overlay)
 
 	logo = TextureRect.new()
 	logo.name = "Logotype"
@@ -143,7 +128,7 @@ func _build() -> void:
 	logo.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	logo.position = Vector2(318, 30)
 	logo.size = Vector2(300, 103)
-	logo.modulate.a = 0.0
+	logo.modulate.a = 1.0
 	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(logo)
 
@@ -198,7 +183,7 @@ func _mark(text: String, pos: Vector2, boxed: bool) -> void:
 ## Called each time the title becomes visible. The logotype settles in from a little
 ## below over 1.3 s after a beat of the room alone, and the sting plays once per showing.
 func play_in() -> void:
-	logo.modulate.a = 0.0
+	logo.modulate.a = 0.6
 	logo.position.y = 40
 	var tw := create_tween()
 	tw.set_parallel(true)
