@@ -56,10 +56,12 @@ extends Control
 @export var hairline: Color = Color(Palette.PAPER, 0.35)
 
 ## The gloss riding the top of each stroke, and the shadow under the whole mark.
-## The `foil` plate, used as the fill of the mark's turned-paper plane — the one place a
-## rendered texture belongs in a vector logotype, because that plane *is* a sheet catching
-## the light. Null until the plate lands, and then it is a texture fill rather than a flat
-## colour. Nothing else in the mark samples it: a logo made of photographs is not a logo.
+## The `foil` plate. It used to fill the mark's turned-paper plane, on the theory that the
+## plane *is* a sheet catching the light and so is the one place a rendered texture belongs
+## in a vector logotype. `_draw` no longer samples it: at the size the flap actually
+## occupies the crinkle read as mottling, not as material. Kept resolved here so the plate
+## stays claimed by the mark that owns it, and so the decision is visible rather than a
+## silently deleted line — a logo made of photographs is not a logo, this one included.
 var foil: Texture2D = Art.plate("foil")
 
 @export var gloss: Color = Color("FFF6C9")
@@ -93,12 +95,11 @@ const PATHS := {
 		"strokes": [
 			["M38 22V146M38 24H126M38 82H112", "letter"],
 			["M218 20C176 20 154 45 154 84S176 148 218 148 282 123 282 84 260 20 218 20Z", "letter"],
-			["M320 22V146H397", "letter"],
+			["M320 22V146H356", "letter"],
 			["M429 22V146M429 23H466C512 23 532 47 532 84S512 145 466 145H429", "letter"],
 			["M20 84H540M218 9V159M411 10V158", "fine"],
 			["M38 22L112 82L38 146M154 84L218 20L282 84L218 148Z", "fine"],
-			["M183 139L253 29M457 23L501 84L457 145", "crease"],
-			["M218 20L253 29L238 53ZM466 23L501 84L476 73Z", "plane"],
+			["M356 154.5L356 137.5L385 103L385 120Z", "plane"],
 		],
 	},
 	# The Chinese mark: 归 built from its strokes, the 一 as a long axis to the right, the
@@ -109,8 +110,8 @@ const PATHS := {
 			["M58 24V116M34 72L58 54", "letter"],
 			["M88 28H190V118H84M94 72H184", "letter"],
 			["M71 18V128M79 136H206", "fine"],
-			["M215 75H399", "letter"],
-			["M308 75L322 59L337 75Z", "plane"],
+			["M215 75H366", "letter"],
+			["M366 83.5L366 66.5L395 32L395 49Z", "plane"],
 			["M350 91H396V137H350Z", "crease"],
 			["M359 109L373 99L387 109M363 111H383M361 118H385V130H361ZM373 111V118", "crease"],
 		],
@@ -121,13 +122,25 @@ const PATHS := {
 # the mark holds together as one solid object rather than a wire frame.
 const WIDTHS := {"letter": 17.0, "fine": 1.6, "crease": 7.0, "plane": 0.0}
 # The order the mark is drawn on in: grid first (it is the scaffolding), then the letters,
-# then the crease and the plane it turns.
-# The crease moved in front of "letter" on 2026-09-19 — meaning it is drawn *under* the
-# letters now. Drawn last, as it was, its two long diagonals ran straight across the O,
-# the L and the D and read in the captured frame as scratches on the logo rather than as
-# a fold. Under the letters it does what it was designed to do: the sheet creases, and
-# the letters sit on it. The reveal beat changes with it (the crease now arrives before
-# the letters rather than after), which is the price of the fix and worth it.
+# then the plane the corner turns.
+#
+# 2026-09-19, second pass. The first fix for the scratches was to move "crease" in front
+# of "letter" so the crease drew *under* the letters. It did nothing, and the captured
+# frame said so: the letters are not solid. `_stroke` draws each letter as a polyline of
+# width 17 — an outline with a hollow middle and open counters — so a line drawn beneath
+# it shows straight through, and the crease's own drop shadow (INK at 0.70) came through
+# with it as the thin dark diagonals across the F, the O, the L and the D. Draw order was
+# never the mechanism. Occlusion was, and there is none.
+#
+# So the long crease diagonals are gone from the EN mark entirely. What a fold mark needs
+# is a corner genuinely turned over, not a line laid across a letter, and the mark already
+# had the better idea in "plane": a filled triangle of turned paper. The two planes now
+# sit on the O's and the D's own right shoulders, hinged on the letter's vertical edge and
+# folding inward and down, and `_draw` gives each one a lit hinge and a shaded underside
+# so it reads as paper rather than as a coloured wedge. Nothing crosses a letterform.
+#
+# The ZH mark keeps its "crease" strokes: there they are the seal in the corner, they sit
+# clear of the characters, and the captured zh frame shows them reading correctly.
 const ORDER := ["fine", "crease", "letter", "plane"]
 
 var _cache := {}
@@ -188,11 +201,21 @@ static func parse_path(d: String) -> Array:
 	var cmd := ""
 	var i := 0
 
-	var flush := func():
-		if pts.size() > 1:
-			subs.append({"pts": pts, "closed": closed})
-		pts = PackedVector2Array()
-		closed = false
+	# `flush` takes the subpath as arguments and the caller does the clearing.
+	#
+	# 2026-09-19: it used to be `func():` closing over `pts` and `closed`, and that was
+	# the single bug under every complaint about this mark. A GDScript lambda captures a
+	# local by value, so `pts = PackedVector2Array()` inside the lambda rebound only the
+	# lambda's own copy and the outer `pts` never cleared: every subpath of a multi-`M`
+	# path was appended as an alias of one array that kept growing. The F's three strokes
+	# came out as one polyline that ran the stem, jumped diagonally to the top bar, then
+	# jumped diagonally again to the middle bar — the diagonal across the F. For the same
+	# reason the lambda's `closed` was always false, so `sub["closed"]` never became true
+	# and `_draw`'s filled-plane branch had never once executed: every "plane" fell
+	# through to the stroke path at WIDTHS 0.0, clamped to a 1 px hairline.
+	var flush := func(p: PackedVector2Array, c: bool) -> void:
+		if p.size() > 1:
+			subs.append({"pts": p.duplicate(), "closed": c})
 
 	while i < toks.size():
 		if toks[i] is String:
@@ -200,7 +223,9 @@ static func parse_path(d: String) -> Array:
 			i += 1
 			if cmd in "Zz":
 				closed = true
-				flush.call()
+				flush.call(pts, closed)
+				pts = PackedVector2Array()
+				closed = false
 				cur = start
 				had_curve = false
 			continue
@@ -210,7 +235,9 @@ static func parse_path(d: String) -> Array:
 		var rel := cmd == cmd.to_lower()
 		match cmd.to_upper():
 			"M":
-				flush.call()
+				flush.call(pts, closed)
+				pts = PackedVector2Array()
+				closed = false
 				var p := Vector2(toks[i], toks[i + 1])
 				cur = cur + p if rel else p
 				start = cur
@@ -268,7 +295,7 @@ static func parse_path(d: String) -> Array:
 				i += 4
 			_:
 				i += 1
-	flush.call()
+	flush.call(pts, closed)
 	return subs
 
 
@@ -381,22 +408,30 @@ func _draw() -> void:
 				for p in placed:
 					lift.append(p + Vector2(0, w_shadow))
 				draw_colored_polygon(lift, Color(shadow, shadow.a * 0.7 * t))
-				if foil != null:
-					# UVs across the plane's own bounding box, so the foil's crinkle
-					# scales with the mark instead of tiling at a fixed pixel size
-					var mn := placed[0]
-					var mx := placed[0]
-					for q in placed:
-						mn = Vector2(minf(mn.x, q.x), minf(mn.y, q.y))
-						mx = Vector2(maxf(mx.x, q.x), maxf(mx.y, q.y))
-					var span := (mx - mn)
-					span = Vector2(maxf(1.0, span.x), maxf(1.0, span.y))
-					var uv := PackedVector2Array()
-					for q in placed:
-						uv.append((q - mn) / span)
-					draw_colored_polygon(placed, Color(1, 1, 1, 0.95 * t), uv, foil)
-				else:
-					draw_colored_polygon(placed, Color(col, 0.95 * t))
+				# The underside of the sheet: the mark's own gold, taken down a step in
+				# value and saturation, because the back of a piece of paper is the same
+				# paper with less light on it. It is deliberately NOT the `foil` plate.
+				# The plate was here on the theory that a turned sheet is the one place a
+				# photograph belongs in a logotype; the captured frame disagreed. At the
+				# 24 px this flap occupies, the foil's crinkle is not a material, it is
+				# mottling, and a mottled wedge hanging off the L reads as dirt on the
+				# logo — the same complaint the crease diagonals earned, arriving by a
+				# different route. Flat fill, lit crease, shaded lifted edge.
+				var back := Color(col.r * 0.80, col.g * 0.74, col.b * 0.66, 0.97 * t)
+				draw_colored_polygon(placed, back)
+				# What makes a turned corner read as a fold rather than as a coloured
+				# wedge: the crease it hinges on catches the light, and the edge farthest
+				# from the hinge — the one that has lifted away from the page — carries
+				# the shade. Each plane is wound hinge-first, so placed[0]..placed[1] is
+				# always the crease and the opposite edge is the lifted one.
+				var hw: float = maxf(1.5, WIDTHS["letter"] * s * weight * 0.16)
+				if placed.size() >= 3:
+					var far_a: int = 2 if placed.size() == 3 else 2
+					var far_b: int = 0 if placed.size() == 3 else 3
+					draw_line(placed[far_a], placed[far_b],
+						Color(shadow, shadow.a * 0.55 * t), hw, true)
+					draw_line(placed[0], placed[1],
+						Color(gloss, 0.9 * t), hw, true)
 				continue
 			var drawn := _partial(placed, t)
 			if drawn.size() < 2:

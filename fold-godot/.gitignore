@@ -1,3 +1,4 @@
 build/
 .godot/
 shots/*.import
+shots/mark-probe.png
