@@ -362,9 +362,19 @@ screen cg_buy_screen(name):
                         action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL("https://room-704.flat404.workers.dev/?src=itch")]
                         text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
                 else:
-                    textbutton _("▶ Free with ads"):
+                    # A downloaded build has no browser engine, so the banner cannot play
+                    # here and a sponsor redirect is what got the F95 account banned. The
+                    # only honest offer is the one that opens nothing by itself: the same
+                    # scene, free, on our own site, where a browser can render the ad. The
+                    # address is printed underneath because Ren'Py's OpenURL silently fails
+                    # on a lot of desktops - 24 players clicked one of these and none arrived.
+                    textbutton _("▶ Unlock free — play this scene on our site"):
                         action [Function(cg_buy_decide, name, "ads_click", t0), OpenURL("https://room-704.flat404.workers.dev/?src=ingame")]
                         text_size 22 text_color "#70c080" background Transform("#1a2a1e", alpha=0.95) padding (18, 12, 18, 12)
+            text ("[[ https://room-704.flat404.workers.dev/ ]") size 16 color "#8fb89a" xalign 0.5
+            text _("If that button does nothing, type the address above into your browser.") size 14 color "#7f8fa0" xalign 0.5
+            hbox:
+                xalign 0.5
                 textbutton _("Continue censored"):
                     action [Function(cg_buy_decide, name, "dismiss", t0), Return()]
                     text_size 20 text_color "#d99b66" background Transform("#24172a", alpha=0.92) padding (16, 10, 16, 10)
@@ -519,9 +529,21 @@ screen offline_trial_screen():
         textbutton _("▶ Keep playing free, with ads - in your browser"):
             action [Function(tel_cta_click, "trial_ads_site"), OpenURL("https://room-704.flat404.workers.dev/?src=trial")]
             xalign 0.5 text_size 24 text_color "#ffffff" background Transform("#1f4a2a", alpha=0.95) padding (22, 12, 22, 12)
+        text ("[[ https://room-704.flat404.workers.dev/ ]") size 17 color "#8fb89a" xalign 0.5
+        text _("If the button does not open your browser, type that address in yourself.") size 15 color "#7f8fa0" xalign 0.5
         textbutton _("★ Get the full game, no ads - $2.49 on itch"):
             action [Function(tel_cta_click, "trial_itch_buy"), OpenURL(ITCH_BUY_URL)]
             xalign 0.5 text_size 24 text_color "#ffffff" background Transform("#c8503c", alpha=0.95) padding (22, 12, 22, 12)
+        null height 10
+        # Arousal fatigues, and a player who has just finished a chapter is at the point
+        # where "something lighter" is a real want rather than an upsell. Offered small and
+        # last, below the two real exits: it is a way out that keeps them with us instead of
+        # closing the game. The web build does this through BOARD.offerBreak(); a downloaded
+        # build has no JS, so the same offer has to be a plain link.
+        textbutton _("Need a breather? Play something lighter - free, no ads"):
+            action [Function(tel_cta_click, "trial_boards"), OpenURL("https://free.blazecore.dev/?src=trial")]
+            xalign 0.5 text_size 18 text_color "#8fb89a" background Transform("#1a2430", alpha=0.92) padding (16, 9, 16, 9)
+        text ("[[ https://free.blazecore.dev/ ]") size 14 color "#6f7f90" xalign 0.5
         textbutton _("Back to title"):
             action MainMenu(confirm=False)
             xalign 0.5 text_size 18 text_color "#d9a86b" background Transform("#24202e", alpha=0.92) padding (14, 8, 14, 8)

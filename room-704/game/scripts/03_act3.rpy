@@ -5,7 +5,7 @@ label act3:
     scene bg room
     with fade
     play music theme fadein 2.0
-    nar "At twenty past six the window is grey and the sign across the street has switched itself off, and the street looks like an ordinary street that owes nobody anything."
+    nar "At twenty past six the window is grey, the sign across the street has switched itself off, and the street below looks like an ordinary street that owes nobody anything."
 
     scene cg morning at dawn_tint
     with dissolve
@@ -13,7 +13,7 @@ label act3:
     m "The car's gone."
     you "He'll have gone to the station."
     m "Yes. He will."
-    nar "She sits on the edge of the bed with one stocking half on and thinks about that for a moment, and you watch her decide something."
+    nar "She sits on the edge of the bed with one stocking half on, thinking about that, and you watch her decide something."
 
     if trust >= 4:
         jump end_together
@@ -27,8 +27,8 @@ label end_train:
     m "Then I won't go to the station."
     you "There's a bus from the corner at seven. It goes the wrong way for an hour and then it meets the same line four stops up."
     m "How do you know that?"
-    you "Everyone who leaves this hotel at this hour needs to not be at the station."
-    nar "She laughs, and puts the other stocking on, and takes the key off the bedside table and puts it in your hand rather than on the desk downstairs."
+    you "Everyone who leaves this hotel at this hour has a reason to stay out of the station."
+    nar "She laughs, puts the other stocking on, and takes the key off the bedside table — and puts it in your hand instead of on the desk downstairs."
     m "Seven-oh-four."
     you "I'll put it back on the board."
     m "Don't write it in the book."
@@ -39,21 +39,21 @@ label end_together:
     $ tel_track("ending", {"ending": "together", "trust": trust})
     m "Come with me to the corner, at least. Not the station. The corner."
     nar "You walk her down four flights and out through the doors you have watched all night from the wrong side."
-    nar "The rain has stopped. The pavement is doing that thing where it steams slightly."
+    nar "The rain has stopped. The pavement has started to steam."
     m "If I write to the hotel, will it reach you?"
-    you "The hotel gets three letters a year and I open all of them."
+    you "The hotel gets three letters a year. I open all of them."
     m "Then I'll make it four."
-    nar "She goes left at the corner, which is the wrong way for the station, which is the point."
+    nar "She goes left at the corner. Wrong way for the station. That is the point."
     jump epilogue
 
 label end_alone:
     $ tel_track("ending", {"ending": "alone", "trust": trust})
     m "I'll take the station. He'll have given up by now, or he won't, and either way it stops being a thing I plan around."
-    nar "She puts the key on the bedside table, squarely, the way you leave a thing for someone you are not going to speak to again."
+    nar "She sets the key on the bedside table, squared to the edge, the way you leave a thing for someone you do not intend to speak to again."
     m "Thanks for the room."
     nar "At the door she stops, and does not turn around."
-    m "You could have told him nothing. It wasn't a hard thing to not do."
-    nar "Then she is gone, and you are holding a tooth glass with two inches of somebody else's whisky in it at half past six in the morning."
+    m "You could have told him nothing. It wasn't a hard thing to withhold."
+    nar "Then she is gone, and you are holding a tooth glass with two inches of somebody else's whisky in it, at half past six in the morning, in a room that is going to be cleaned by nine."
     jump epilogue
 
 label epilogue:
