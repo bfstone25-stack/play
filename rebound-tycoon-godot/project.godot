@@ -1,0 +1,47 @@
+; REBOUND TYCOON / 老王逆袭记 — Godot 4.7 rebuild of play/rebound-tycoon (the HTML build).
+config_version=5
+
+[application]
+
+config/name="Rebound Tycoon"
+config/description="老王逆袭记 — a night-shift guard, a water hose and a pinball table he turns into a skyline. The midlife/gig track of 情绪解药 / Emotional Catharsis."
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.047, 0.078, 0.125, 1)
+boot_splash/show_image=false
+
+[autoload]
+
+Gate="*res://scripts/gate.gd"
+Game="*res://scripts/game.gd"
+Sfx="*res://scripts/sfx.gd"
+
+[display]
+
+window/size/viewport_width=420
+window/size/viewport_height=640
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+window/handheld/orientation=1
+
+[gui]
+
+theme/default_font_antialiasing=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=true
+
+[internationalization]
+
+locale/fallback="en"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method.web="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.047, 0.078, 0.125, 1)
