@@ -6,21 +6,41 @@ extends Control
 ##  2. logotype       scripts/vector_mark.gd draws the page's own designed mark — the
 ##                    Latin FOLD or the Chinese 归一 — as vector strokes. Never a Label.
 ##  3. motion         three planes drifting at different rates against a slow camera and
-##                    the pointer; a hanging lamp that flickers; dust in the light cone;
-##                    the logotype drawing itself on over ~2.2 s, grid first, crease last
+##                    the pointer; a sun that pulses; sparkles rising through it; the
+##                    logotype drawing itself on over ~2.2 s, then breathing and taking a
+##                    shine sweep every few seconds
 ##  4. styled menu    Primary / Amber / Ghost from scripts/studio_theme.gd, set in the
 ##                    left third of the composition where the key visual is quiet, not
 ##                    stacked down the middle
 ##  5. rating + mark  ALL AGES and blazeCore Play, bottom left, small
 ##  6. sound          Sfx.logo() as the sting, the ambient bed under it
 ##
-## The lit half of the screen is a CanvasLayer of its own with a CanvasModulate and a
-## PointLight2D in it, because that is how the light gets to be real light: everything in
-## that canvas is darkened to the room's level and the lamp adds back. The UI is on a
-## second CanvasLayer so the text is not dimmed along with the room.
+## The lit half of the screen is a CanvasLayer of its own with a PointLight2D in it, and
+## the UI is on a second CanvasLayer so the text is never dimmed along with the scene.
+##
+## 2026-09-19 — this screen is the thing Blaze sent back. It was a dim brown study: the
+## planes were multiplied by ROOM_DIM 0.78, the left third was covered by a near-opaque
+## black scrim so the menu would read, and the only light in it was a hanging lamp. Every
+## one of those was a correct decision for a lamplit room and the wrong room.
+##
+## What changed, in order of how much it mattered:
+##
+##   * ROOM_DIM is gone. The planes are drawn at full brightness (PLANE_LIT), because the
+##     plates behind them are now daylight plates and dimming daylight is just fog.
+##   * the scrim flipped. It was black-at-94%-alpha on the left; it is now warm cream, so
+##     the left column is a *lit* ground for dark text rather than a hole for pale text.
+##   * the lamp became the sun: same PieceView.lamp node, high and warm, pulsing slowly
+##     instead of flickering, with no 7-second dip (a flicker is a horror-movie cue).
+##   * the dust became sparkles: gold, rising rather than falling, and drawn additively.
+##   * the mark breathes and takes a shine sweep every SHINE_EVERY seconds.
 
 const GAME := "res://scenes/game.tscn"
-const ROOM_DIM := 0.78
+## What the parallax planes are multiplied by. 1.0 — see the note above; this stays a
+## named constant rather than being deleted so the next person can see it was decided.
+const PLANE_LIT := 1.0
+## How often the logotype takes a shine sweep, and how long one takes.
+const SHINE_EVERY := 4.2
+const SHINE_TIME := 0.85
 const DEMO_LEVEL := 5           # 八合 / Octet — two rows of four, folds into one piece
 const DEMO_TILT := 0.80
 const DEMO_STEP := 1.15         # seconds between folds in the attract loop
@@ -36,7 +56,8 @@ var _menu: VBoxContainer
 var _rules: VBoxContainer
 var _t := 0.0
 var _aim := Vector2.ZERO
-var _lamp_base := 1.25
+var _lamp_base := 1.45
+var _shine_clock := 0.0
 var _demo: Node2D
 var _demo_pieces := {}
 var _demo_cs := 62.0
@@ -81,7 +102,7 @@ func _build_stage() -> void:
 	# three planes: the room, the drifting paper, the key visual itself
 	for slot in ["bg_far", "bg_mid", "key"]:
 		var tr := TextureRect.new()
-		tr.texture = Art.plate_or_stand_in(slot, Palette.GROUND if slot != "key" else Palette.PANEL, 40.0)
+		tr.texture = Art.plate_or_stand_in(slot, Palette.GROUND_DEEP if slot != "key" else Palette.TABLE, 40.0)
 		tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		tr.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -92,22 +113,24 @@ func _build_stage() -> void:
 		tr.offset_bottom = 70
 		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		if slot == "bg_far":
-			tr.modulate = Color(ROOM_DIM, ROOM_DIM, ROOM_DIM, 0.9)
+			tr.modulate = Color(PLANE_LIT, PLANE_LIT, PLANE_LIT, 1.0)
 		elif slot == "bg_mid":
-			tr.modulate = Color(ROOM_DIM, ROOM_DIM, ROOM_DIM, 0.5 if Art.has("bg_mid") else 0.2)
+			tr.modulate = Color(PLANE_LIT, PLANE_LIT, PLANE_LIT, 0.75 if Art.has("bg_mid") else 0.25)
 		else:
-			tr.modulate = Color(ROOM_DIM, ROOM_DIM, ROOM_DIM, 1.0 if Art.has("key") else 0.0)
+			tr.modulate = Color(PLANE_LIT, PLANE_LIT, PLANE_LIT, 1.0 if Art.has("key") else 0.0)
 		root.add_child(tr)
 		_planes.append(tr)
 
 	# The key visual is a composition, not a wallpaper: it sits right of centre and the
-	# left third is pulled down so the logotype and the menu have a ground to sit on.
-	var scrim := ColorRect.new()
-	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
-	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# left third is washed *up* — a warm cream veil — so the logotype and the menu have a
+	# lit ground to sit on. This gradient used to run the other way, to near-black, which
+	# is how a bright key visual still ended up looking like a study.
 	var grad := Gradient.new()
 	grad.offsets = PackedFloat32Array([0.0, 0.45, 1.0])
-	grad.colors = PackedColorArray([Color(Palette.GROUND_DEEP, 0.94), Color(Palette.GROUND_DEEP, 0.55), Color(Palette.GROUND_DEEP, 0.0)])
+	# 0.97 / 0.62, not 0.92 / 0.45: the key visual that landed is a dense candy field and
+	# the first capture had the tagline and the rule lines competing with pastel blocks
+	# right behind them. A title screen's copy column gets a clean ground.
+	grad.colors = PackedColorArray([Color(Palette.GROUND, 0.97), Color(Palette.GROUND, 0.62), Color(Palette.GROUND, 0.0)])
 	var gt := GradientTexture2D.new()
 	gt.gradient = grad
 	gt.fill_from = Vector2(0, 0)
@@ -120,26 +143,30 @@ func _build_stage() -> void:
 	scrim_tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(scrim_tex)
 
-	# the hanging lamp, over the right third where the board is
-	_lamp = PieceView.lamp(1500.0, Palette.GOLD_PALE, _lamp_base)
+	# the sun, high over the right third where the board is
+	_lamp = PieceView.lamp(1700.0, Palette.LAMP, _lamp_base)
 	root.add_child(_lamp)
 
-	# dust in the cone
+	# sparkles rising through the light
 	var dust := GPUParticles2D.new()
-	dust.amount = 90
-	dust.lifetime = 9.0
+	dust.amount = 110
+	dust.lifetime = 7.0
 	dust.preprocess = 6.0
 	dust.texture = PieceView.falloff(16, 0.1)
 	var pm := ParticleProcessMaterial.new()
 	pm.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
-	pm.emission_box_extents = Vector3(420, 300, 1)
-	pm.gravity = Vector3(0, -3, 0)
-	pm.initial_velocity_min = 2.0
-	pm.initial_velocity_max = 9.0
-	pm.scale_min = 0.12
-	pm.scale_max = 0.4
-	pm.color = Color(Palette.GOLD_PALE, 0.5)
+	pm.emission_box_extents = Vector3(520, 320, 1)
+	pm.gravity = Vector3(0, -14, 0)
+	pm.initial_velocity_min = 6.0
+	pm.initial_velocity_max = 22.0
+	pm.scale_min = 0.18
+	pm.scale_max = 0.7
+	pm.color = Color(Palette.GOLD, 0.85)
 	dust.process_material = pm
+	# additive, so a sparkle on a bright plate still reads as light and not as a grey dot
+	var dust_mat := CanvasItemMaterial.new()
+	dust_mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	dust.material = dust_mat
 	root.add_child(dust)
 	dust.position = Vector2(880, 380)
 
@@ -183,16 +210,18 @@ func _build_ui() -> void:
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	pad.add_child(col)
 
-	var kicker := StudioTheme.mono_label("", 11, Palette.GOLD)
+	var kicker := StudioTheme.mono_label("", 12, Palette.ACCENT_DEEP)
 	kicker.name = "Kicker"
 	col.add_child(kicker)
 
 	_mark = VectorMark.new()
-	_mark.custom_minimum_size = Vector2(420, 132)
+	# bigger than the old lockup: the mark is the key visual's partner, not a caption
+	_mark.custom_minimum_size = Vector2(470, 150)
 	_mark.reveal = 0.0
+	_mark.pivot_offset = Vector2(235, 75)
 	col.add_child(_mark)
 
-	_sub = StudioTheme.serif_label("", 16, Palette.MUTED)
+	_sub = StudioTheme.serif_label("", 17, Palette.TEXT, true)
 	_sub.name = "Tagline"
 	_sub.custom_minimum_size = Vector2(0, 26)
 	col.add_child(_sub)
@@ -262,15 +291,15 @@ func _build_ui() -> void:
 	var rating := Label.new()
 	rating.name = "Rating"
 	rating.theme_type_variation = "Tag"
-	rating.add_theme_color_override("font_color", Palette.FAINT)
+	rating.add_theme_color_override("font_color", Palette.MUTED)
 	foot.add_child(rating)
 
 	var bar := ColorRect.new()
-	bar.color = Color(Palette.GOLD, 0.35)
+	bar.color = Color(Palette.ACCENT, 0.6)
 	bar.custom_minimum_size = Vector2(1, 12)
 	foot.add_child(bar)
 
-	var studio := StudioTheme.display_label("blazeCore Play", 13, Color(Palette.MUTED, 0.85))
+	var studio := StudioTheme.display_label("blazeCore Play", 14, Palette.MUTED)
 	foot.add_child(studio)
 
 	# what is still a stand-in rather than a rendered plate — visible in a debug build so
@@ -292,9 +321,16 @@ func _sync() -> void:
 	for line in I18n.list("rules"):
 		var h := HBoxContainer.new()
 		h.add_theme_constant_override("separation", 8)
-		var dot := StudioTheme.display_label("◆", 10, Color(Palette.GOLD, 0.75))
+		# A drawn dot, not a glyph. "◆" was set in the display face and came out as a
+		# missing-glyph box in the captured frame once the face changed to Lilita One,
+		# which has no such character and whose CJK fallback does not either. A bullet
+		# is a shape; asking a font for it is what broke.
+		var dot := ColorRect.new()
+		dot.color = Palette.ACCENT
+		dot.custom_minimum_size = Vector2(9, 9)
+		dot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		h.add_child(dot)
-		h.add_child(StudioTheme.serif_label(str(line), 13, Color(Palette.MUTED, 0.9)))
+		h.add_child(StudioTheme.serif_label(str(line), 14, Palette.TEXT))
 		_rules.add_child(h)
 	var seen := Save.completed_count() > 0
 	(_menu.get_node("Play") as Button).text = I18n.t("continue") if seen else I18n.t("play")
@@ -341,14 +377,27 @@ func _process(delta: float) -> void:
 
 	_demo_tick(delta)
 
-	# a lamp that is never quite still: two slow waves and a rare dip
+	# The sun: two slow waves and no dip. The old lamp had a rare 0.82x flicker, which is
+	# a good cue in a thriller and reads as a fault in a children's game.
 	if _lamp:
-		var f := 1.0 + 0.045 * sin(_t * 2.3) + 0.03 * sin(_t * 0.7 + 1.1)
-		if fmod(_t, 7.3) < 0.09:
-			f *= 0.82
+		var f := 1.0 + 0.05 * sin(_t * 1.1) + 0.03 * sin(_t * 0.43 + 1.1)
 		(_lamp.get_node("Light") as PointLight2D).energy = _lamp_base * f
-		(_lamp.get_node("Glow") as Sprite2D).modulate.a = 0.26 * f
-		_lamp.position = Vector2(get_viewport_rect().size.x * 0.66, get_viewport_rect().size.y * 0.34) + _aim * 18.0
+		(_lamp.get_node("Glow") as Sprite2D).modulate.a = 0.34 * f
+		_lamp.position = Vector2(get_viewport_rect().size.x * 0.70, get_viewport_rect().size.y * 0.22) + _aim * 18.0
+
+	# The mark, once it has finished drawing on: a slow breath, and a shine sweeping
+	# across it every SHINE_EVERY seconds. Both are idle motion — the screen is never
+	# completely still, which is most of what separates a casual title from a poster.
+	if _mark and _mark.reveal >= 1.0:
+		var s := 1.0 + 0.012 * sin(_t * 1.35)
+		_mark.scale = Vector2(s, s)
+		_mark.rotation = 0.006 * sin(_t * 0.9 + 0.6)
+		_shine_clock += delta
+		if _shine_clock >= SHINE_EVERY:
+			_shine_clock = 0.0
+			var sw := create_tween()
+			sw.tween_method(func(v): _mark.shine = v, 0.0, 1.0, SHINE_TIME)
+			sw.tween_callback(func(): _mark.shine = -1.0)
 
 
 # --- going in ---------------------------------------------------------------------------------
@@ -404,12 +453,14 @@ func _demo_build() -> void:
 	for r in range(Fold.rows):
 		for c in range(Fold.cols):
 			var s := Sprite2D.new()
-			var tex := Art.plate_or_stand_in("wall" if Fold.is_wall(r, c) else "table",
-				Palette.WALL if Fold.is_wall(r, c) else Palette.CELL)
+			var wall := Fold.is_wall(r, c)
+			var tex := Art.surface_stand_in("wall" if wall else "table")
 			s.texture = tex
 			s.scale = Vector2(_demo_cs, _demo_cs * DEMO_TILT) / Vector2(tex.get_width(), tex.get_height())
 			s.position = _demo_pos(r, c)
-			s.modulate = Color((Palette.WALL if Fold.is_wall(r, c) else Palette.CELL) * ROOM_DIM, 0.85)
+			# surface_stand_in averages white, so this modulate is the colour it says it
+			# is — plate_or_stand_in would have multiplied it darker (see art.gd's note)
+			s.modulate = Color(Palette.WALL_FACE if wall else Palette.TABLE, 1.0)
 			_demo.add_child(s)
 			# the same hairline the board draws, so the demo grid reads as a grid
 			var edge := Line2D.new()
@@ -420,14 +471,14 @@ func _demo_build() -> void:
 				s.position + Vector2(hw, hh), s.position + Vector2(-hw, hh),
 				s.position + Vector2(-hw, -hh)])
 			edge.width = 1.0
-			edge.default_color = Color(Palette.GOLD, 0.22)
+			edge.default_color = Color(Palette.TABLE_RAIL, 0.55)
 			_demo.add_child(edge)
 	for t in Fold.tiles:
 		_demo_add(t)
 
 
 func _demo_add(t: Dictionary) -> void:
-	var holder := PieceView.make(int(t["v"]), _demo_cs, DEMO_TILT, ROOM_DIM, false)
+	var holder := PieceView.make(int(t["v"]), _demo_cs, DEMO_TILT, PLANE_LIT, false)
 	holder.position = _demo_pos(int(t["r"]), int(t["c"]))
 	holder.z_index = 10 + int(t["r"])
 	_demo.add_child(holder)
@@ -471,7 +522,7 @@ func _demo_tick(delta: float) -> void:
 		tw2.tween_property(node, "position", _demo_pos(int(t["r"]), int(t["c"])), 0.18)
 		if bool(t.get("merged", false)):
 			t["merged"] = false
-			PieceView.repaint(node, int(t["v"]), _demo_cs, ROOM_DIM, false)
+			PieceView.repaint(node, int(t["v"]), _demo_cs, PLANE_LIT, false)
 			var pop := create_tween()
 			pop.tween_property(node, "scale", Vector2(1.14, 1.14), 0.1).set_delay(0.1)
 			pop.tween_property(node, "scale", Vector2.ONE, 0.13).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)

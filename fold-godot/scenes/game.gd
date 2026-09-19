@@ -10,13 +10,24 @@ extends Control
 ##  - **A tilted plane.** The board is drawn as a shallow trapezoid: rows further back are
 ##    narrower and closer together (`_row_k`), so the grid recedes. A square grid drawn
 ##    square is the flat web build; this is the same grid on a table.
-##  - **Real light.** The whole board canvas sits under a CanvasModulate at about half
-##    brightness with a PointLight2D hanging over it, so the near edge of a piece is lit
-##    and the far edge is not, and a piece that has climbed into the gold end of the ramp
+##  - **Real light.** A PointLight2D hangs over the tray, so the near edge of a piece is
+##    lit and the far edge is not, and a piece that has climbed the ramp
 ##    (Palette.tile_glow) carries its own small light and throws it on its neighbours.
 ##  - **Lit pieces, not rectangles.** A piece is the `piece` plate — folded paper with a
 ##    crease in it — tinted to its value, with a drop shadow under it and a rim along the
 ##    top edge. Walls are the `wall` plate. Neither is a rounded rect drawn in code.
+##
+## 2026-09-19 — the bright repaint, and the juice. Two things changed here:
+##
+##   * the room came up. `ROOM_DIM` is gone: the page behind the tray is daylight, the
+##     lamp is a soft sun rather than a 2.1-energy spot, and the vignette went from a
+##     0.88 dark ring to a light warm one. The tray itself is deep teal, which is what
+##     keeps the candy pieces reading against it (the measured targets live in
+##     palette.gd) — a bright game with a dark board, like the reference build.
+##   * every interaction now answers. A slide squashes the pieces along the axis of the
+##     fold and springs back; a merge pops, sparkles and flashes its cell; a solved level
+##     throws a burst across the whole tray. `_sparkle()` is the one helper behind all of
+##     it. This is the difference Blaze named between a casual title and a static board.
 ##
 ## Kept from the web build, because they are the product and not the presentation: the ad
 ## gate at level 51 (Gate autoload, shared/godot/gate.gd), the casual promo board at the
@@ -25,7 +36,7 @@ extends Control
 const CELL_GAP := 10.0
 const TILT := 0.80          # how flat the board lies: 1.0 is straight down, 0 is edge-on
 const RECEDE := 0.14        # how much narrower the back row is than the front
-const ROOM_DIM := 0.78      # how dark the table and the pieces are before the lamp
+# No ROOM_DIM any more — see the note above. The page is lit; the tray is the dark thing.
 
 var open_picker := false
 var start_level := 0
@@ -33,6 +44,7 @@ var start_level := 0
 var _stage: CanvasLayer
 var _table: TextureRect
 var _table_edge: Sprite2D
+var _rail: Line2D
 var _vignette: TextureRect
 var _board: Node2D
 var _lamp: Node2D
@@ -98,32 +110,61 @@ func _build_stage() -> void:
 	# No CanvasModulate. The first build darkened the room with one, and it dimmed the HUD
 	# and the menu along with the table — the gold Primary button came out olive — because
 	# a CanvasModulate is not confined to the CanvasLayer it sits in the way the docs read
-	# as implying. The room is dark because the art is drawn dark (ROOM_DIM) and the lamp
-	# is an ADDITIVE Light2D on top, which needs no global tint and cannot touch the UI.
+	# as implying. Nothing global tints this scene; the lamp is an ADDITIVE Light2D.
 
 	# the room, well behind the table
 	var far := TextureRect.new()
-	far.texture = Art.plate_or_stand_in("bg_far", Palette.GROUND, 50.0)
+	far.texture = Art.plate_or_stand_in("bg_far", Palette.GROUND_DEEP, 50.0)
 	far.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	far.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	far.set_anchors_preset(Control.PRESET_FULL_RECT)
-	far.modulate = Color(ROOM_DIM * 0.9, ROOM_DIM * 0.95, ROOM_DIM * 0.92, 0.85)
+	# full daylight: the page behind the tray is the brightest thing on the screen, and
+	# the tray reads because it is deep teal, not because everything else is dark
+	far.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	far.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(far)
 
-	# the table the board sits on
+	# A cream wash over the room, and it is not decoration — it is the playfield rule.
+	# The bg_far plate that landed is a dense, high-contrast candy sky, and in the first
+	# captured frame of the bright build it was the loudest thing on the screen while the
+	# tray sat in the middle of it looking like a postage stamp. Atmosphere belongs to the
+	# title screen; here the room is a ground and has to behave like one, so it is washed
+	# back to about a third of its contrast and the board is what the eye lands on.
+	var wash := ColorRect.new()
+	wash.color = Color(Palette.GROUND, 0.62)
+	wash.set_anchors_preset(Control.PRESET_FULL_RECT)
+	wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(wash)
+
+	# The shadow the tray casts into the room. It is added BEFORE the tray, because it has
+	# to be under it: in the first build this node came after and drew on top, which is
+	# also why its alpha had been turned down to zero — the only way to stop it darkening
+	# the very surface it was meant to seat.
+	_table_edge = Sprite2D.new()
+	_table_edge.texture = PieceView.falloff(256, 0.2)
+	# a warm shadow under the tray, not a black one (same note as StudioTheme.drop)
+	_table_edge.modulate = Color(Palette.WALL_EDGE, 0.40)
+	root.add_child(_table_edge)
+
+	# The table the board sits on — the tray. TITLE_SCREENS.md's playfield rule asks for a
+	# surface of the board's own, in the game's idiom rather than a grey panel, and this is
+	# it: a deep teal tray with a bright mint lip around it. `surface_stand_in` rather than
+	# `plate_or_stand_in` so that Palette.TABLE is the colour that actually reaches the
+	# screen (see the note in art.gd); when ops/fold_art finally lands a `table` plate,
+	# both return the plate and nothing here changes.
 	_table = TextureRect.new()
-	_table.texture = Art.plate_or_stand_in("table", Palette.PANEL, 18.0)
+	_table.texture = Art.surface_stand_in("table", 0.16)
 	_table.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_table.stretch_mode = TextureRect.STRETCH_SCALE
 	_table.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(_table)
 
-	# a soft edge on the table, so it sits in the dark rather than being cut out of it
-	_table_edge = Sprite2D.new()
-	_table_edge.texture = PieceView.falloff(256, 0.2)
-	_table_edge.modulate = Color(Palette.GROUND_DEEP, 0.0)
-	root.add_child(_table_edge)
+	# the lit lip of the tray: where the board stops and the room starts
+	_rail = Line2D.new()
+	_rail.width = 5.0
+	_rail.closed = true
+	_rail.default_color = Palette.TABLE_RAIL
+	root.add_child(_rail)
 
 	_board = Node2D.new()
 	root.add_child(_board)
@@ -134,20 +175,25 @@ func _build_stage() -> void:
 
 	# the fold line: a bright crease that flashes across the board on the axis of the move
 	_crease = Line2D.new()
-	_crease.width = 3.0
-	_crease.default_color = Color(Palette.GOLD_PALE, 0.0)
+	_crease.width = 5.0
+	_crease.default_color = Color(Palette.CREAM, 0.0)
 	_crease.z_index = 40
 	_board.add_child(_crease)
 
-	_lamp = PieceView.lamp(1400.0, Palette.GOLD_PALE, 2.1)
+	# soft, not a spotlight: on a lit page a 2.1-energy lamp blows the near tiles out
+	_lamp = PieceView.lamp(1400.0, Palette.LAMP, 0.85)
 	root.add_child(_lamp)
 
-	# the room falls away at the edges: a dark ring over everything, under the HUD
+	# the page warms at the edges: a light ring over everything, under the HUD. It used to
+	# be a dark ring at 0.88 alpha, which is a cinema framing and read as grime here.
 	_vignette = TextureRect.new()
 	var vt := GradientTexture2D.new()
 	var vg := Gradient.new()
-	vg.offsets = PackedFloat32Array([0.0, 0.55, 1.0])
-	vg.colors = PackedColorArray([Color(Palette.GROUND_DEEP, 0.0), Color(Palette.GROUND_DEEP, 0.10), Color(Palette.GROUND_DEEP, 0.85)])
+	# The stops start later and stay clear for longer than they did: the old ramp put
+	# a 10% wash of GROUND_DEEP over the middle of the screen, which is exactly where
+	# the board is. A vignette frames the playfield; it does not tint it.
+	vg.offsets = PackedFloat32Array([0.0, 0.72, 1.0])
+	vg.colors = PackedColorArray([Color(Palette.GOLD_PALE, 0.0), Color(Palette.GOLD_PALE, 0.0), Color(Palette.GOLD_PALE, 0.35)])
 	vt.gradient = vg
 	vt.fill = GradientTexture2D.FILL_RADIAL
 	vt.fill_from = Vector2(0.5, 0.5)
@@ -182,27 +228,40 @@ func _cell_pos(r: float, c: float) -> Vector2:
 
 func _relayout() -> void:
 	var vp := get_viewport_rect().size
-	var avail := Vector2(vp.x * 0.62, vp.y * 0.70)
+	# 0.78 / 0.78, up from 0.62 / 0.70: measured off the captured frame, where the tray
+	# occupied about an eighth of the screen and the background the rest. The board is the
+	# product; it gets the middle of the picture.
+	var avail := Vector2(vp.x * 0.78, vp.y * 0.72)
 	_cs = maxf(34.0, minf(
 		(avail.x - CELL_GAP * (Fold.cols - 1)) / maxf(1, Fold.cols),
 		(avail.y / TILT - CELL_GAP * (Fold.rows - 1)) / maxf(1, Fold.rows)))
-	_cs = minf(_cs, 104.0)
-	_origin = Vector2(vp.x * 0.5, vp.y * 0.52)
+	_cs = minf(_cs, 112.0)
+	_origin = Vector2(vp.x * 0.5, vp.y * 0.55)
 	_swipe_px = maxf(18.0, _cs * 0.3)
 
 	# The table is a table, not a backdrop: it reaches a little past the board and stops.
 	# The first pass made it 1.9x the board wide and 2.3x tall, which at 1280x720 is most
 	# of the screen — a hard-edged grey rectangle with the game inside it.
 	var w := (Fold.cols * (_cs + CELL_GAP)) * 1.34
-	var h := (Fold.rows * (_cs + CELL_GAP)) * TILT * 1.55
+	# 1.40, not 1.55. Growing the board to 0.78 of the frame made the tray tall enough to
+	# ride up over the HUD — the captured zh frame has the stars row and the move counter
+	# cut in half by the tray's top edge. The tray's padding is what gave way, not the
+	# board: the pieces are the thing that had to get bigger.
+	var h := (Fold.rows * (_cs + CELL_GAP)) * TILT * 1.40
 	_table.size = Vector2(w, h)
 	_table.position = _origin - Vector2(w, h) * 0.5
-	_table.modulate = Color(Palette.PANEL_RAISED * ROOM_DIM, 0.98)
+	# Palette.TABLE, undimmed. This line used to read PANEL_RAISED * ROOM_DIM, which is
+	# #161A19 — measured off the captured frame, the table and the room came out at a
+	# contrast ratio of 1.01:1, i.e. the same colour. There was no table.
+	_table.modulate = Color(Palette.TABLE, 1.0)
+	var tl := _table.position
+	_rail.points = PackedVector2Array([
+		tl, tl + Vector2(w, 0), tl + Vector2(w, h), tl + Vector2(0, h)])
 
 	_lamp.position = _origin - Vector2(0, (Fold.rows * (_cs + CELL_GAP)) * TILT * 0.30)
 	# the pool of light has to be wider than the board or the far corners fall out of it
 	_table_edge.position = _origin
-	_table_edge.scale = Vector2(w, h) * 1.5 / 256.0
+	_table_edge.scale = Vector2(w, h) * 1.6 / 256.0
 	var pool := maxf(1500.0, (Fold.cols * (_cs + CELL_GAP)) * 3.2)
 	(_lamp.get_node("Light") as PointLight2D).texture_scale = pool / 512.0
 	(_lamp.get_node("Glow") as Sprite2D).scale = Vector2.ONE * (pool / 512.0)
@@ -218,27 +277,50 @@ func _draw_cells() -> void:
 		for c in range(Fold.cols):
 			var wall := Fold.is_wall(r, c)
 			var s := Sprite2D.new()
-			s.texture = Art.plate_or_stand_in("wall" if wall else "table",
-				Palette.WALL if wall else Palette.CELL, 8.0)
+			# Both are surfaces that get tinted, so both take the neutral stand-in — the
+			# old call tinted an already-dark gradient and lost a third of the value it
+			# asked for on top of asking for too little.
+			s.texture = Art.surface_stand_in("wall" if wall else "table", 0.10)
 			var k := _row_k(r)
 			var px := _cs * k
 			s.scale = Vector2(px, px * TILT) / Vector2(s.texture.get_width(), s.texture.get_height())
 			s.position = _cell_pos(r, c)
-			s.modulate = Palette.WALL if wall else Palette.CELL_DEEP
+			# An empty cell is a shadow cut into the tray (WELL, 2.38:1 under the table);
+			# a wall is a slate block standing proud of it (WALL_FACE, 3.70:1 over the
+			# table and 7.16:1 over a well). Before, both were near-black on near-black:
+			# an empty cell scored 1.01:1 against the table and a player could not see the
+			# grid at all, never mind tell a blocked cell from a free one.
+			s.modulate = Palette.WALL_FACE if wall else Palette.WELL
 			s.z_index = 0
 			_cells.add_child(s)
-			# a hairline around every well, so the grid reads as a grid under the light
-			var edge := Line2D.new()
 			var hw := px * 0.5
 			var hh := px * TILT * 0.5
+			# a hairline around every well, so the grid reads as a grid under the light
+			var edge := Line2D.new()
 			edge.points = PackedVector2Array([
 				s.position + Vector2(-hw, -hh), s.position + Vector2(hw, -hh),
 				s.position + Vector2(hw, hh), s.position + Vector2(-hw, hh),
 				s.position + Vector2(-hw, -hh)])
-			edge.width = 1.0
-			edge.default_color = Color(Palette.PANEL_EDGE, 0.85 if not wall else 0.4)
+			edge.width = maxf(1.0, px * 0.02)
+			edge.default_color = Color(Palette.WALL_EDGE if wall else Palette.TABLE_DEEP, 0.9)
 			edge.z_index = 1
 			_cells.add_child(edge)
+			# The lit lip. A recess is legible because light catches the edge nearest the
+			# lamp and the inside stays dark; a flat dark square is just a dark square. The
+			# lip goes on the *near* edge of a well and along the *top* of a wall, which is
+			# what tells the two apart at a glance even before their fills do.
+			var lip := Line2D.new()
+			var ly := hh if not wall else -hh
+			lip.points = PackedVector2Array([
+				s.position + Vector2(-hw, ly), s.position + Vector2(hw, ly)])
+			lip.width = maxf(1.5, px * 0.05)
+			# A well's lip is WELL_LIP (light caught on the near edge of a recess); a
+			# wall's is white, because a wall is a block standing proud and the light
+			# lands on its top. Using the dark outline colour here, as the first pass
+			# did, lit the block from underneath.
+			lip.default_color = Color(Palette.WELL_LIP if not wall else Palette.PAPER, 0.95)
+			lip.z_index = 2
+			_cells.add_child(lip)
 
 
 func _rebuild_pieces() -> void:
@@ -254,11 +336,58 @@ func _rebuild_pieces() -> void:
 func _make_piece(t: Dictionary) -> Node2D:
 	var r := int(t["r"])
 	var px := _cs * _row_k(r)
-	var holder := PieceView.make(int(t["v"]), px, TILT, ROOM_DIM, true)
+	# 1.0, not ROOM_DIM: see PieceView.make. The attract loop in scenes/title.gd still
+	# passes ROOM_DIM, because that board is scenery and this one is the game.
+	var holder := PieceView.make(int(t["v"]), px, TILT, 1.0, true)
 	holder.position = _cell_pos(r, int(t["c"]))
 	holder.z_index = 10 + r
 	_pieces.add_child(holder)
 	return holder
+
+
+## A one-shot burst of sparks at a board position. This is the whole juice budget: a
+## merge, a solved level and the promo board all call it, so there is one look for "good
+## thing happened" instead of three.
+##
+## GPUParticles2D with one_shot and explosiveness 1.0 fires the whole amount on the frame
+## it is added and then sits idle, so the node frees itself on a timer rather than being
+## pooled — at a dozen sparks a merge that is cheaper than keeping emitters around.
+func _sparkle(at: Vector2, color: Color, amount: int = 14, spread: float = 1.0) -> void:
+	var ps := GPUParticles2D.new()
+	ps.amount = maxi(1, amount)
+	ps.lifetime = 0.62
+	ps.one_shot = true
+	ps.explosiveness = 1.0
+	ps.texture = PieceView.falloff(24, 0.25)
+	ps.position = at
+	ps.z_index = 50
+	var pm := ParticleProcessMaterial.new()
+	pm.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
+	pm.emission_sphere_radius = _cs * 0.22 * spread
+	pm.direction = Vector3(0, -1, 0)
+	pm.spread = 180.0
+	pm.gravity = Vector3(0, 260, 0)
+	pm.initial_velocity_min = 90.0 * spread
+	pm.initial_velocity_max = 260.0 * spread
+	pm.scale_min = 0.25
+	pm.scale_max = 0.85
+	pm.color = color
+	# a spark should die out, not blink off
+	var fade := Gradient.new()
+	fade.offsets = PackedFloat32Array([0.0, 0.35, 1.0])
+	fade.colors = PackedColorArray([Color(color, 1.0), Color(color, 0.9), Color(color, 0.0)])
+	var ramp := GradientTexture1D.new()
+	ramp.gradient = fade
+	pm.color_ramp = ramp
+	ps.process_material = pm
+	# additive, so sparks read as light over both the tray and a candy tile
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	ps.material = mat
+	_board.add_child(ps)
+	get_tree().create_timer(1.4).timeout.connect(func():
+		if is_instance_valid(ps):
+			ps.queue_free())
 
 
 # --- the HUD ------------------------------------------------------------------------------------
@@ -290,8 +419,13 @@ func _build_hud() -> void:
 
 	var mark := VectorMark.new()
 	mark.mark = I18n.lang
-	mark.custom_minimum_size = Vector2(104, 34)
-	mark.weight = 0.8
+	# 116x38 at weight 1.15, up from 104x34 at 0.8. The small lockup is drawn from the
+	# same skeleton as the title mark, so at this size a sub-1.0 weight put the strokes
+	# under two pixels and the HUD logo came out of the capture as a thin orange outline
+	# rather than as the chunky mark it is on the title screen.
+	mark.custom_minimum_size = Vector2(116, 38)
+	mark.weight = 1.15
+	mark.shadow = Color(Palette.INK, 0.35)
 	top.add_child(mark)
 
 	var mid := VBoxContainer.new()
@@ -300,11 +434,16 @@ func _build_hud() -> void:
 	mid.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	top.add_child(mid)
 
-	_lvname = StudioTheme.display_label("", 15, Palette.MUTED)
+	# Every size in this block went up, and the dimmest colours came off it. The rule in
+	# TITLE_SCREENS.md asks that the HUD read "without effort": at 15/14/13/12 px in sage
+	# grey over a photographic room, none of these did, and at 390 px wide they were gone.
+	# ACCENT_DEEP, not GOLD_PALE. Pale gold on a pale sky is the same mistake as pale grey
+	# on walnut, and in the captured frame the level name was the one unreadable thing.
+	_lvname = StudioTheme.display_label("", 20, Palette.ACCENT_DEEP)
 	_lvname.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mid.add_child(_lvname)
 
-	_goal = StudioTheme.serif_label("", 14, Palette.TEXT)
+	_goal = StudioTheme.serif_label("", 21, Palette.TEXT, true)
 	_goal.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mid.add_child(_goal)
 
@@ -345,7 +484,7 @@ func _build_hud() -> void:
 	_stars_row.add_theme_constant_override("separation", 3)
 	sub.add_child(_stars_row)
 
-	_moves = StudioTheme.mono_label("", 13, Palette.MUTED)
+	_moves = StudioTheme.mono_label("", 17, Palette.TEXT)
 	sub.add_child(_moves)
 
 	# bottom: undo / reset / levels, and the one-line rule
@@ -390,7 +529,7 @@ func _build_hud() -> void:
 	lv.pressed.connect(func(): _show_picker(true))
 	btns.add_child(lv)
 
-	_hint = StudioTheme.serif_label("", 12, Color(Palette.FAINT, 0.95))
+	_hint = StudioTheme.serif_label("", 15, Palette.TEXT)
 	_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	bottom.add_child(_hint)
 
@@ -436,7 +575,7 @@ func _sync() -> void:
 		c.queue_free()
 	var best := Save.stars_at(Fold.level_index)
 	for i in range(3):
-		var s := StudioTheme.display_label("★" if i < best else "☆", 14, Palette.star_color(i < best))
+		var s := StudioTheme.display_label("★" if i < best else "☆", 20, Palette.star_color(i < best))
 		_stars_row.add_child(s)
 
 
@@ -477,6 +616,7 @@ func _on_moved(direction: Vector2i, merge_count: int) -> void:
 	else:
 		Sfx.slide()
 	_flash_crease(direction)
+	_fold_squash(direction)
 	_animate(direction)
 	_sync()
 	Tel.level_ev("move_made", {"move": Fold.moves, "direction": [direction.x, direction.y]})
@@ -513,15 +653,24 @@ func _animate(direction: Vector2i) -> void:
 			continue
 		var node: Node2D = _sprites[id]
 		var tw := create_tween()
-		tw.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-		tw.tween_property(node, "position", want, 0.14)
+		# TRANS_BACK, not CUBIC: a piece overshoots its cell by a hair and settles into
+		# it. That tiny bounce is most of what makes the board feel physical rather than
+		# animated, and it costs one enum.
+		tw.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tw.tween_property(node, "position", want, 0.17)
 		node.z_index = 10 + int(t["r"])
 		if bool(t.get("merged", false)):
 			t["merged"] = false
-			PieceView.repaint(node, int(t["v"]), _cs * _row_k(int(t["r"])), ROOM_DIM, true)
+			PieceView.repaint(node, int(t["v"]), _cs * _row_k(int(t["r"])), 1.0, true)
 			var pop := create_tween()
-			pop.tween_property(node, "scale", Vector2(1.16, 1.16), 0.09).set_delay(0.08)
-			pop.tween_property(node, "scale", Vector2.ONE, 0.12).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			pop.tween_property(node, "scale", Vector2(1.22, 1.22), 0.09).set_delay(0.08)
+			pop.tween_property(node, "scale", Vector2.ONE, 0.14).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+			# and it throws sparks in its own colour, so a merge is visible even if the
+			# player's eye was somewhere else on the board
+			var face := Palette.tile_face(int(t["v"]))
+			get_tree().create_timer(0.09).timeout.connect(func():
+				if is_instance_valid(self) and is_instance_valid(node):
+					_sparkle(node.position, face, 16))
 
 
 ## The crease: a bright line sweeping across the board along the axis of the fold. This is
@@ -534,20 +683,50 @@ func _flash_crease(direction: Vector2i) -> void:
 		_crease.points = PackedVector2Array([_origin + Vector2(-half_w, 0), _origin + Vector2(half_w, 0)])
 	else:
 		_crease.points = PackedVector2Array([_origin + Vector2(0, -half_h), _origin + Vector2(0, half_h)])
-	_crease.default_color = Color(Palette.GOLD_PALE, 0.0)
+	_crease.default_color = Color(Palette.CREAM, 0.0)
 	var from := Vector2(0, -half_h) if direction.x != 0 else Vector2(-half_w, 0)
 	var to := -from
 	_crease.position = from * float(direction.x + direction.y) * -1.0
 	var tw := create_tween().set_parallel(true)
 	tw.tween_property(_crease, "position", to * float(direction.x + direction.y) * -1.0, 0.22)
-	tw.tween_property(_crease, "default_color", Color(Palette.GOLD_PALE, 0.55), 0.06)
-	tw.chain().tween_property(_crease, "default_color", Color(Palette.GOLD_PALE, 0.0), 0.18)
+	tw.tween_property(_crease, "default_color", Color(Palette.CREAM, 0.95), 0.06)
+	tw.chain().tween_property(_crease, "default_color", Color(Palette.CREAM, 0.0), 0.18)
+
+
+## The win: a burst across the whole tray, one volley per star, in the ramp's own hot
+## colours. It fires before the win panel slides in, so the board is the thing celebrating
+## and the panel is the thing reporting.
+func _win_burst(stars: int) -> void:
+	var colors := [Palette.GOLD, Palette.ACCENT, Palette.HEAT, Palette.EPIC]
+	for i in range(maxi(1, stars) + 1):
+		var delay := 0.10 * i
+		var col: Color = colors[i % colors.size()]
+		get_tree().create_timer(delay).timeout.connect(func():
+			if not is_instance_valid(self):
+				return
+			for r in range(Fold.rows):
+				for c in range(Fold.cols):
+					if Fold.is_wall(r, c):
+						continue
+					_sparkle(_cell_pos(r, c), col, 7, 1.3))
+
+
+## The fold: the whole board squashes along the axis of the move and springs back. A fold
+## is a thing that happens to the *sheet*, not to eight independent tiles, and this is the
+## cheapest way to say so — it is also the motion Blaze asked for when he said the pieces
+## should feel foldable.
+func _fold_squash(direction: Vector2i) -> void:
+	var squash := Vector2(0.965, 1.035) if direction.x != 0 else Vector2(1.035, 0.965)
+	_board.scale = squash
+	var tw := create_tween()
+	tw.tween_property(_board, "scale", Vector2.ONE, 0.26).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 
 # --- winning -------------------------------------------------------------------------------------
 
 func _on_solved(stars: int, move_count: int, p: int) -> void:
 	Sfx.unity(stars)
+	_win_burst(stars)
 	Save.record(Fold.level_index, stars)
 	Tel.level_ev("level_completed", {"moves": move_count, "stars": stars, "par": p})
 	_sync()
@@ -569,7 +748,7 @@ func _show_win(stars: int, move_count: int, p: int) -> void:
 	col.add_theme_constant_override("separation", 12)
 	card.add_child(col)
 
-	var h := StudioTheme.display_label(I18n.t("win"), 40, Palette.GOLD)
+	var h := StudioTheme.display_label(I18n.t("win"), 44, Palette.ACCENT_DEEP)
 	h.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(h)
 
@@ -679,7 +858,7 @@ func _show_picker(show: bool) -> void:
 
 	var head := HBoxContainer.new()
 	col.add_child(head)
-	var title := StudioTheme.display_label("%s · %d %s" % [I18n.t("level"), Save.completed_count(), I18n.t("done")], 20, Palette.GOLD)
+	var title := StudioTheme.display_label("%s · %d %s" % [I18n.t("level"), Save.completed_count(), I18n.t("done")], 20, Palette.ACCENT_DEEP)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(title)
 	var x := Button.new()

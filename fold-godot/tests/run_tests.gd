@@ -52,6 +52,7 @@ func _run() -> void:
 	_undo()
 	_stars()
 	_fonts()
+	_legibility()
 	_conformance()
 	print("\n%d checks passed, %d failed" % [passed, failed])
 	if failed > 0:
@@ -215,6 +216,29 @@ func _no_floats(data: Dictionary) -> void:
 			if float(s["moves"]) != floor(float(s["moves"])) or float(s["stars"]) != floor(float(s["stars"])):
 				bad += 1
 	eq(bad, 0, "every pinned quantity is an integer, so no JS/C tie-rounding split exists")
+
+
+## The playfield's contrast targets, asserted rather than admired.
+##
+## TITLE_SCREENS.md says a legibility fix that is not visibly legible is not a fix, and
+## the two checks it names are done by looking. This is the third check, and it is here
+## because the failure it catches has now happened twice with two different palettes: a
+## near-black tile on a near-black table (1.01:1), and then a light mint table under light
+## candy tiles (1.00:1). Both times the board was "fine" to every test in this file.
+##
+## Palette.legibility_targets() carries the pairs and the minimums; this walks them.
+func _legibility() -> void:
+	var worst := 99.0
+	var worst_name := ""
+	for row in Palette.legibility_targets():
+		var label: String = row[0]
+		var got := Palette.contrast(row[1], row[2])
+		var want: float = row[3]
+		ok(got >= want, "%s: %.2f:1 (want %.2f)" % [label, got, want])
+		if got - want < worst:
+			worst = got - want
+			worst_name = label
+	print("  ..   tightest margin: %s, %.2f over target" % [worst_name, worst])
 
 
 func _conformance() -> void:

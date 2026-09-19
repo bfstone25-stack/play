@@ -18,8 +18,8 @@ or open `project.godot` in Godot 4.7 and press F5.
 | file | what |
 |---|---|
 | `scripts/fold.gd` | **the rules**, ported line for line from the shipped `play/fold/frontend/index.html`: `load`, `move`, `undo`, the win test, the star formula. No drawing, no sound, no storage. Autoload `Fold`. |
-| `scripts/palette.gd` | FOLD's own colours on the studio's role table (`play/overtime-idle-godot/scripts/palette.gd`'s API). Pine-black ground, gold leaf, paper — this title's hues, not the adult forks' plum and magenta. |
-| `scripts/studio_theme.gd` | the Theme, same API as the sibling's. Marcellus / Nunito / Playfair Italic, each with a Noto Sans CJK subset attached so the zh build is not tofu. |
+| `scripts/palette.gd` | FOLD's own colours on the studio's role table (`play/overtime-idle-godot/scripts/palette.gd`'s API). Sunlit cream, candy paper, tangerine — plus the playfield's measured contrast targets, which `run_tests.gd` asserts. |
+| `scripts/studio_theme.gd` | the Theme, same API as the sibling's. Lilita One / Nunito, each with a Noto Sans CJK subset attached so the zh build is not tofu. |
 | `scripts/vector_mark.gd` | the logotype. The page's own designed SVG mark (`FOLD`, `归一`) parsed and drawn as vector strokes, with a draw-on reveal. Never a Label. |
 | `scripts/piece_view.gd` | how a piece looks — the folded-paper plate, tinted, with shadow, rim, number and its own light once it is up the gold ramp. Shared by the board and the title's attract loop. |
 | `scripts/art.gd` | the rendered plates, and the stand-in a slot gets when its plate is not on disk yet. `Art.missing()` names them. |
@@ -28,13 +28,35 @@ or open `project.godot` in Godot 4.7 and press F5.
 | `scenes/game.gd` | the board: tilted plane, Light2D lamp, lit pieces, the crease, HUD, level picker, win card, the ad gate, the casual promo board. |
 | `tools/subset_cjk.py` | rebuilds the CJK font subset from this project's own strings. |
 
+## The palette is bright on purpose (2026-09-19)
+
+The first Godot build of this game was a lamplit study: pine-black room, walnut table, one
+gold lamp, Marcellus. Blaze sent it back — not to be polished, but redirected. FOLD is
+all-ages, it sits on the CrazyGames and phone-store shelf, and it should be cute, bright
+and energetic. `play/rebound-tycoon-godot` is the reference.
+
+What that means concretely, and what it cost:
+
+* **The page is bright; the board is not.** The tray is deep teal on a sunny cream page.
+  Bright and legible are different properties — the first attempt at the repaint put light
+  candy tiles on a light mint table and measured **1.00:1**, the identical defect to the
+  walnut build. `Palette.legibility_targets()` now carries the targets as data and
+  `run_tests.gd` asserts every one of them.
+* **A tinted surface is multiplied by its plate.** `derive --neutral` centres a plate for
+  a tinted slot on 0.92 of white, so `Palette.SURFACE_GAIN` is applied before anything is
+  measured. Measured with the ideal constants the board passed; measured with the plates
+  actually installed, two targets missed, and the colours were re-picked.
+* **Juice is a feature, not polish.** A slide squashes the board along the fold axis and
+  springs back, pieces settle with an overshoot, a merge pops and throws sparks in its own
+  colour, a win bursts across the tray, and the logotype takes a shine sweep on a timer.
+
 ## Tests
 
 ```bash
 ./tests/run.sh              # regenerates the JS fixture, then the headless Godot scene
 ```
 
-46 checks. The important one is the conformance replay: `tests/harness.cjs` lifts the
+70 checks. The important one is the conformance replay: `tests/harness.cjs` lifts the
 shipped game's inline `<script>` out of `play/fold/frontend/index.html` and runs it
 unmodified in Node; `tests/conformance_gen.cjs` drives it over all 201 levels with 7,643
 seeded moves, recording every tile's id/row/column/value after every move plus an undo

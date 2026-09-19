@@ -16,6 +16,26 @@
 ## stroke, which is the "logotype settles in" of item 3. It is a real draw-on, not an
 ## alpha fade: the crease arrives last, after the letters, because that is the beat the
 ## mark is built around.
+##
+## 2026-09-19 — the restyle. The skeleton is the same designed mark (the `d` strings are
+## still the page's), but it is no longer *drawn* the same way. It used to be a hairline
+## engraving: 9-unit strokes, a construction grid of 1.6-unit diagonals under it, flat
+## colour. Against a bright casual shelf that reads as a technical drawing, and Blaze's
+## note was specific — rounded, chunky, glossy, with a highlight, not an engraved serif.
+##
+## So each letter stroke is now drawn four times, back to front:
+##
+##   1. a drop shadow, offset down, which is what gives the mark a body;
+##   2. the body itself, in the fill colour;
+##   3. a gloss — a thin lighter stroke riding the top edge of the body;
+##   4. `shine`, a white band that sweeps left-to-right across the letters.
+##
+## Godot's `draw_polyline` has no round caps or joins, so every pass also stamps a circle
+## at each vertex; that is the whole trick behind the rounded ends, and it is why the
+## stroke weights can go up to chunky without the corners turning into spikes.
+##
+## The construction grid is off by default now (`show_grid`). It was the most "designed"
+## thing about the old mark and the most wrong for this one.
 class_name VectorMark
 extends Control
 
@@ -31,9 +51,32 @@ extends Control
 		reveal = clampf(v, 0.0, 1.0)
 		queue_redraw()
 
-@export var ink: Color = Palette.TEXT
-@export var accent: Color = Palette.GOLD
-@export var hairline: Color = Color(Palette.MUTED, 0.30)
+@export var ink: Color = Palette.GOLD
+@export var accent: Color = Palette.ACCENT
+@export var hairline: Color = Color(Palette.PAPER, 0.35)
+
+## The gloss riding the top of each stroke, and the shadow under the whole mark.
+## The `foil` plate, used as the fill of the mark's turned-paper plane — the one place a
+## rendered texture belongs in a vector logotype, because that plane *is* a sheet catching
+## the light. Null until the plate lands, and then it is a texture fill rather than a flat
+## colour. Nothing else in the mark samples it: a logo made of photographs is not a logo.
+var foil: Texture2D = Art.plate("foil")
+
+@export var gloss: Color = Color("FFF6C9")
+# Deep grape at 0.7, not a soft tangerine at 0.55: the mark has to hold against whatever
+# the key visual puts behind it, and the plate that landed is pale candy everywhere. A
+# logotype whose only dark is a darker version of its own fill has nothing to sit on.
+@export var shadow: Color = Color(Palette.INK, 0.70)
+
+## The hairline construction grid. Part of the old engraved mark; off by default now.
+@export var show_grid: bool = false
+
+## 0 .. 1 sweeps a white shine across the letters; anything outside that range is "no
+## shine", which is the resting state between sweeps.
+@export var shine: float = -1.0:
+	set(v):
+		shine = v
+		queue_redraw()
 
 ## Scale of the stroke weights relative to the design's own units.
 @export var weight: float = 1.0
@@ -74,10 +117,18 @@ const PATHS := {
 	},
 }
 
-const WIDTHS := {"letter": 9.0, "fine": 1.6, "crease": 4.0, "plane": 0.0}
+# Chunky: the letter body nearly doubles (9 -> 17) and the crease thickens with it, so
+# the mark holds together as one solid object rather than a wire frame.
+const WIDTHS := {"letter": 17.0, "fine": 1.6, "crease": 7.0, "plane": 0.0}
 # The order the mark is drawn on in: grid first (it is the scaffolding), then the letters,
 # then the crease and the plane it turns.
-const ORDER := ["fine", "letter", "crease", "plane"]
+# The crease moved in front of "letter" on 2026-09-19 — meaning it is drawn *under* the
+# letters now. Drawn last, as it was, its two long diagonals ran straight across the O,
+# the L and the D and read in the captured frame as scratches on the logo rather than as
+# a fold. Under the letters it does what it was designed to do: the sheet creases, and
+# the letters sit on it. The reveal beat changes with it (the crease now arrives before
+# the letters rather than after), which is the price of the fix and worth it.
+const ORDER := ["fine", "crease", "letter", "plane"]
 
 var _cache := {}
 
@@ -252,6 +303,40 @@ func _layer_color(layer: String) -> Color:
 	return ink
 
 
+## One stroke pass: a polyline plus a disc at every vertex, which is how a renderer with
+## no round joins still draws a rounded stroke.
+func _stroke(pts: PackedVector2Array, col: Color, w: float, offset: Vector2 = Vector2.ZERO) -> void:
+	if pts.size() < 2 or w <= 0.0:
+		return
+	var moved := pts
+	if offset != Vector2.ZERO:
+		moved = PackedVector2Array()
+		for p in pts:
+			moved.append(p + offset)
+	draw_polyline(moved, col, w, true)
+	var r := w * 0.5
+	for p in moved:
+		draw_circle(p, r, col)
+
+
+## The shine: the same stroke drawn again in white, segment by segment, each segment's
+## alpha falling off with its distance from a vertical band travelling across the mark.
+## Drawing it per-segment is what clips the shine to the letterforms without a mask.
+func _shine_pass(pts: PackedVector2Array, w: float, band_x: float, band: float) -> void:
+	if pts.size() < 2:
+		return
+	for i in range(pts.size() - 1):
+		var mid := (pts[i] + pts[i + 1]) * 0.5
+		var d := absf(mid.x - band_x)
+		if d > band:
+			continue
+		var a := (1.0 - d / band)
+		a = a * a * 0.85
+		if a <= 0.01:
+			continue
+		draw_line(pts[i], pts[i + 1], Color(1, 1, 1, a), w * 0.55, true)
+
+
 func _draw() -> void:
 	var box: Vector2 = _mark()["box"]
 	var s: float = minf(size.x / box.x, size.y / box.y)
@@ -262,9 +347,16 @@ func _draw() -> void:
 	# The hairline construction grid is part of the mark at title size and illegible mush
 	# at HUD size — at 104 px wide the diagonals cross the letterforms and the whole thing
 	# reads as a scribble. Below this width the mark is the letters, the crease and the
-	# plane, which is what a small lockup of a logo is.
-	var small := size.x < 190.0
+	# plane, which is what a small lockup of a logo is. It is also off entirely unless a
+	# caller asks for it.
+	var small := size.x < 190.0 or not show_grid
+	# where the shine band is, in local x, and how wide it is
+	var band := size.x * 0.22
+	var band_x := lerpf(-band, size.x + band, clampf(shine, 0.0, 1.0))
+	var shining := shine >= 0.0 and shine <= 1.0
 
+	# how far the body shadow is offset down, in pixels at this scale
+	var w_shadow: float = WIDTHS["letter"] * s * weight * 0.26
 	# The reveal runs through the layers in ORDER, each layer getting an equal share.
 	var per := 1.0 / float(ORDER.size())
 	for li in range(ORDER.size()):
@@ -285,11 +377,41 @@ func _draw() -> void:
 				placed.append(off + p * s)
 			if sub["closed"] and layer == "plane":
 				# the turned paper: filled, and it fades in rather than drawing on
-				draw_colored_polygon(placed, Color(col, 0.85 * t))
+				var lift := PackedVector2Array()
+				for p in placed:
+					lift.append(p + Vector2(0, w_shadow))
+				draw_colored_polygon(lift, Color(shadow, shadow.a * 0.7 * t))
+				if foil != null:
+					# UVs across the plane's own bounding box, so the foil's crinkle
+					# scales with the mark instead of tiling at a fixed pixel size
+					var mn := placed[0]
+					var mx := placed[0]
+					for q in placed:
+						mn = Vector2(minf(mn.x, q.x), minf(mn.y, q.y))
+						mx = Vector2(maxf(mx.x, q.x), maxf(mx.y, q.y))
+					var span := (mx - mn)
+					span = Vector2(maxf(1.0, span.x), maxf(1.0, span.y))
+					var uv := PackedVector2Array()
+					for q in placed:
+						uv.append((q - mn) / span)
+					draw_colored_polygon(placed, Color(1, 1, 1, 0.95 * t), uv, foil)
+				else:
+					draw_colored_polygon(placed, Color(col, 0.95 * t))
 				continue
 			var drawn := _partial(placed, t)
-			if drawn.size() > 1:
-				draw_polyline(drawn, col, maxf(1.0, w), true)
+			if drawn.size() < 2:
+				continue
+			var lw := maxf(1.0, w)
+			if layer == "fine":
+				draw_polyline(drawn, col, lw, true)
+				continue
+			# 1. body shadow, 2. body, 3. gloss along the top edge
+			_stroke(drawn, Color(shadow, shadow.a * t), lw * 1.02, Vector2(0, w_shadow))
+			_stroke(drawn, col, lw)
+			if layer == "letter":
+				_stroke(drawn, Color(gloss, 0.75 * t), lw * 0.30, Vector2(0, -lw * 0.30))
+				if shining:
+					_shine_pass(drawn, lw, band_x, band)
 
 
 ## The first `t` of a polyline by arc length, so a stroke draws on rather than appearing.

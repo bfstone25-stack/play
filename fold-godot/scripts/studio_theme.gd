@@ -5,15 +5,21 @@
 ## "Card"). A scene written for either title works against either file. No default Godot
 ## grey anywhere.
 ##
-## Type is this title's own. The adult forks use Lilita One — a poster face, loud, right
-## for a gacha counter and wrong for a board game about folding paper. FOLD's display face
-## is **Marcellus**: a Roman-capital serif with a chiselled stem and a wide letterfit,
-## which is what the logotype and the level names are set in. Body stays Nunito, because
-## it is the studio's UI face and a HUD is a HUD.
+## Type is this title's own, and on 2026-09-19 it changed hands. The file used to argue
+## that Lilita One was "a poster face, loud, right for a gacha counter and wrong for a
+## board game about folding paper", and set FOLD in Marcellus — a Roman-capital serif with
+## a chiselled stem. That was a good argument about a game we are no longer making. FOLD is
+## all-ages and sits on the casual shelf; a chiselled Roman capital is the voice of a
+## museum label. **Lilita One** is the display face now, the same one the reference build
+## (play/rebound-tycoon-godot) uses, because loud is the correct register here.
 ##
-##   display  Marcellus                  logotype, level names, the number on a piece
+## Playfair italic goes with Marcellus: there is no coach's aside in a toy box, and the
+## one caller of it now takes the UI face. Both files stay in assets/fonts with their OFL
+## notices, unreferenced, rather than being deleted in the same commit that repaints.
+##
+##   display  Lilita One                 logotype lockups, level names, the big number
 ##   ui/bold  Nunito 600 / 700           buttons, HUD, labels
-##   italic   Playfair Display Italic    the coach's line at the end of a level, only that
+##   italic   Nunito 700                 kept as a name so callers do not break
 ##
 ## Every face carries a Noto Sans CJK subset as a fallback (tools/subset_cjk.py), because
 ## the web export has no system font and half this game's text is Chinese. Without the
@@ -22,14 +28,14 @@
 ## actually attached and that a Chinese glyph measures non-zero.
 class_name StudioTheme
 
-const FONT_DISPLAY := "res://assets/fonts/Marcellus-Regular.ttf"
+const FONT_DISPLAY := "res://assets/fonts/LilitaOne-Regular.ttf"
 const FONT_UI := "res://assets/fonts/Nunito.ttf"                        # variable, wght 200-1000
 const FONT_ITALIC := "res://assets/fonts/PlayfairDisplay-Italic.ttf"    # variable, wght 400-900
 const FONT_CJK := "res://assets/fonts/NotoSansCJK-subset.otf"
 # the siblings' constant names, resolved onto the three faces above
-const FONT_SERIF := FONT_DISPLAY
-const FONT_SERIF_BOLD := FONT_DISPLAY
-const FONT_SERIF_ITALIC := FONT_ITALIC
+const FONT_SERIF := FONT_UI
+const FONT_SERIF_BOLD := FONT_UI
+const FONT_SERIF_ITALIC := FONT_UI
 const FONT_MONO := FONT_UI
 
 static var _cache: Theme
@@ -78,7 +84,7 @@ static func font(which: String) -> Font:
 		"display", "serif": f = _file(FONT_DISPLAY)
 		"bold", "mono": f = _weight(FONT_UI, 700)
 		"black": f = _weight(FONT_UI, 800)
-		"italic": f = _weight(FONT_ITALIC, 500)
+		"italic": f = _weight(FONT_UI, 700)
 		_: f = _weight(FONT_UI, 600)
 	_fonts[which] = f
 	return f
@@ -108,6 +114,16 @@ static func glow(s: StyleBoxFlat, color: Color, size: int = 14, alpha: float = 0
 	return s
 
 
+## A warm drop shadow under a box, offset down: what makes a pill on a sunny page read as
+## a physical thing you can press. Black shadows are for dark rooms; on cream they read as
+## dirt, which is half of why the first bright pass still looked heavy.
+static func drop(s: StyleBoxFlat, size: int = 8, alpha: float = 0.30) -> StyleBoxFlat:
+	s.shadow_color = Color(Palette.WALL_EDGE, alpha)
+	s.shadow_size = size
+	s.shadow_offset = Vector2(0, maxi(2, size / 3))
+	return s
+
+
 static func _variation(t: Theme, name: String, base: String) -> void:
 	t.add_type(name)
 	t.set_type_variation(name, base)
@@ -124,20 +140,24 @@ static func build() -> Theme:
 	t.set_font("font", "Button", font("bold"))
 	t.set_font_size("font_size", "Button", 14)
 	t.set_color("font_color", "Button", Palette.TEXT)
-	t.set_color("font_hover_color", "Button", Palette.GOLD_PALE)
-	t.set_color("font_pressed_color", "Button", Palette.GROUND)
+	t.set_color("font_hover_color", "Button", Palette.ACCENT_DEEP)
+	t.set_color("font_pressed_color", "Button", Palette.INK)
 	t.set_color("font_disabled_color", "Button", Palette.FAINT)
-	t.set_color("font_focus_color", "Button", Palette.GOLD_PALE)
-	t.set_stylebox("normal", "Button", flat(Palette.PANEL_RAISED, Palette.LINE_STRONG, 10, 1, Vector2(14, 9)))
-	t.set_stylebox("hover", "Button", flat(Palette.PANEL_TOP, Palette.ACCENT, 10, 1, Vector2(14, 9)))
-	t.set_stylebox("pressed", "Button", flat(Palette.ACCENT_DEEP, Palette.ACCENT, 10, 1, Vector2(14, 9)))
-	t.set_stylebox("disabled", "Button", flat(Palette.PANEL, Palette.LINE_SOFT, 10, 1, Vector2(14, 9)))
+	t.set_color("font_focus_color", "Button", Palette.ACCENT_DEEP)
+	# Radius 18 rather than 10: on the casual shelf a button is a pill, and the rounder it
+	# is the more tappable it reads. `drop` is what makes it a physical object instead of a
+	# coloured rectangle — a warm shadow, never a black one, on a sunny ground.
+	t.set_stylebox("normal", "Button", drop(flat(Palette.PANEL, Palette.LINE_STRONG, 18, 2, Vector2(16, 11))))
+	t.set_stylebox("hover", "Button", drop(flat(Palette.PANEL_TOP, Palette.ACCENT, 18, 2, Vector2(16, 11)), 10))
+	t.set_stylebox("pressed", "Button", flat(Palette.GOLD_PALE, Palette.ACCENT_DEEP, 18, 2, Vector2(16, 11)))
+	t.set_stylebox("disabled", "Button", flat(Palette.PAPER_GRAY, Palette.LINE_SOFT, 18, 2, Vector2(16, 11)))
 	t.set_stylebox("focus", "Button", StyleBoxEmpty.new())
 
 	# --- Panel / PanelContainer ---------------------------------------------------------
-	var panel := flat(Color(Palette.PANEL, 0.96), Palette.PANEL_EDGE, 14, 1, Vector2(16, 16))
-	panel.shadow_color = Color(0, 0, 0, 0.55)
-	panel.shadow_size = 22
+	var panel := flat(Color(Palette.PANEL, 0.98), Palette.PANEL_EDGE, 20, 2, Vector2(18, 18))
+	panel.shadow_color = Color(Palette.WALL_EDGE, 0.28)
+	panel.shadow_size = 18
+	panel.shadow_offset = Vector2(0, 5)
 	t.set_stylebox("panel", "Panel", panel)
 	t.set_stylebox("panel", "PanelContainer", panel)
 
@@ -157,7 +177,7 @@ static func build() -> Theme:
 	# --- ScrollContainer / scrollbars ----------------------------------------------------
 	t.set_stylebox("panel", "ScrollContainer", StyleBoxEmpty.new())
 	var grab := flat(Palette.LINE_STRONG, Color(0, 0, 0, 0), 4, 0, Vector2(0, 0))
-	var track := flat(Color(Palette.GROUND_DEEP, 0.6), Color(0, 0, 0, 0), 4, 0, Vector2(2, 2))
+	var track := flat(Color(Palette.GROUND_DEEP, 0.7), Color(0, 0, 0, 0), 4, 0, Vector2(2, 2))
 	for sb in ["VScrollBar", "HScrollBar"]:
 		t.set_stylebox("scroll", sb, track)
 		t.set_stylebox("grabber", sb, grab)
@@ -169,8 +189,8 @@ static func build() -> Theme:
 	t.set_stylebox("fill", "ProgressBar", flat(Palette.ACCENT, Color(0, 0, 0, 0), 5, 0, Vector2(0, 0)))
 
 	# --- Tooltip -------------------------------------------------------------------------
-	t.set_stylebox("panel", "TooltipPanel", flat(Palette.PANEL_TOP, Palette.GOLD, 8))
-	t.set_color("font_color", "TooltipLabel", Palette.GOLD_PALE)
+	t.set_stylebox("panel", "TooltipPanel", flat(Palette.PANEL_TOP, Palette.ACCENT, 12))
+	t.set_color("font_color", "TooltipLabel", Palette.TEXT)
 
 	t.set_constant("separation", "HBoxContainer", 10)
 	t.set_constant("separation", "VBoxContainer", 10)
@@ -178,40 +198,43 @@ static func build() -> Theme:
 	# --- named variations ----------------------------------------------------------------
 	# Primary: gold — the one thing on the screen to press.
 	_variation(t, "Primary", "Button")
-	t.set_stylebox("normal", "Primary", flat(Palette.ACCENT, Palette.GOLD_PALE, 12, 1, Vector2(20, 12)))
-	t.set_stylebox("hover", "Primary", glow(flat(Palette.ACCENT_SOFT, Palette.GOLD_PALE, 12, 1, Vector2(20, 12)), Palette.ACCENT, 16, 0.55))
-	t.set_stylebox("pressed", "Primary", flat(Palette.ACCENT_DEEP, Palette.ACCENT, 12, 1, Vector2(20, 12)))
-	t.set_stylebox("disabled", "Primary", flat(Palette.PANEL_RAISED, Palette.LINE_SOFT, 12, 1, Vector2(20, 12)))
-	t.set_color("font_color", "Primary", Palette.GROUND)
-	t.set_color("font_hover_color", "Primary", Palette.GROUND)
-	t.set_color("font_pressed_color", "Primary", Palette.GOLD_PALE)
+	t.set_stylebox("normal", "Primary", drop(flat(Palette.ACCENT, Palette.PAPER, 22, 3, Vector2(24, 15)), 14))
+	t.set_stylebox("hover", "Primary", drop(glow(flat(Palette.ACCENT_SOFT, Palette.PAPER, 22, 3, Vector2(24, 15)), Palette.GOLD, 20, 0.7), 18))
+	t.set_stylebox("pressed", "Primary", flat(Palette.ACCENT_DEEP, Palette.PAPER, 22, 3, Vector2(24, 15)))
+	t.set_stylebox("disabled", "Primary", flat(Palette.PAPER_GRAY, Palette.LINE_SOFT, 22, 3, Vector2(24, 15)))
+	# Ink on tangerine measures 6.37:1; white measures 2.59 and was the first thing tried.
+	t.set_color("font_color", "Primary", Palette.INK)
+	t.set_color("font_hover_color", "Primary", Palette.INK)
+	t.set_color("font_pressed_color", "Primary", Palette.INK)
 	t.set_font("font", "Primary", font("display"))
-	t.set_font_size("font_size", "Primary", 19)
+	t.set_font_size("font_size", "Primary", 24)
 
 	# Amber: gold edge on dark — a secondary action.
 	_variation(t, "Amber", "Button")
-	t.set_stylebox("normal", "Amber", flat(Color(Palette.PANEL_TOP, 0.85), Palette.GOLD, 10, 1, Vector2(16, 10)))
-	t.set_stylebox("hover", "Amber", glow(flat(Palette.PANEL_TOP, Palette.GOLD_PALE, 10, 1, Vector2(16, 10)), Palette.ACCENT, 12, 0.4))
-	t.set_stylebox("pressed", "Amber", flat(Palette.GOLD_DEEP, Palette.GOLD_PALE, 10, 1, Vector2(16, 10)))
-	t.set_color("font_color", "Amber", Palette.GOLD)
-	t.set_color("font_hover_color", "Amber", Palette.GOLD_PALE)
-	t.set_color("font_pressed_color", "Amber", Palette.GROUND)
+	t.set_stylebox("normal", "Amber", drop(flat(Palette.GOLD, Palette.PAPER, 18, 3, Vector2(18, 12)), 10))
+	t.set_stylebox("hover", "Amber", drop(glow(flat(Palette.GOLD_PALE, Palette.PAPER, 18, 3, Vector2(18, 12)), Palette.GOLD, 16, 0.6), 14))
+	t.set_stylebox("pressed", "Amber", flat(Palette.GOLD_DEEP, Palette.PAPER, 18, 3, Vector2(18, 12)))
+	t.set_color("font_color", "Amber", Palette.INK)
+	t.set_color("font_hover_color", "Amber", Palette.INK)
+	t.set_color("font_pressed_color", "Amber", Palette.INK)
 	t.set_font("font", "Amber", font("display"))
-	t.set_font_size("font_size", "Amber", 16)
+	t.set_font_size("font_size", "Amber", 18)
 
 	# Active: a picker chip that is on.
 	_variation(t, "Active", "Button")
-	t.set_stylebox("normal", "Active", flat(Palette.ACCENT, Palette.GOLD_PALE, 8, 1, Vector2(10, 7)))
-	t.set_stylebox("hover", "Active", flat(Palette.ACCENT_SOFT, Palette.GOLD_PALE, 8, 1, Vector2(10, 7)))
-	t.set_color("font_color", "Active", Palette.GROUND)
-	t.set_color("font_hover_color", "Active", Palette.GROUND)
+	t.set_stylebox("normal", "Active", flat(Palette.ACCENT, Palette.PAPER, 14, 2, Vector2(11, 8)))
+	t.set_stylebox("hover", "Active", flat(Palette.ACCENT_SOFT, Palette.PAPER, 14, 2, Vector2(11, 8)))
+	t.set_color("font_color", "Active", Palette.INK)
+	t.set_color("font_hover_color", "Active", Palette.INK)
 
 	_variation(t, "Ghost", "Button")
-	t.set_stylebox("normal", "Ghost", flat(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 8, 0, Vector2(10, 7)))
-	t.set_stylebox("hover", "Ghost", flat(Color(Palette.ACCENT, 0.12), Color(0, 0, 0, 0), 8, 0, Vector2(10, 7)))
-	t.set_stylebox("pressed", "Ghost", flat(Color(0, 0, 0, 0.3), Color(0, 0, 0, 0), 8, 0, Vector2(10, 7)))
-	t.set_color("font_color", "Ghost", Palette.MUTED)
-	t.set_color("font_hover_color", "Ghost", Palette.GOLD)
+	# 0.85, not 0.55: over a busy key visual a half-transparent chip had no ground and the
+	# language and sound buttons were the least readable things on the title screen.
+	t.set_stylebox("normal", "Ghost", flat(Color(Palette.PANEL, 0.85), Palette.PANEL_EDGE, 14, 1, Vector2(12, 9)))
+	t.set_stylebox("hover", "Ghost", flat(Color(Palette.ACCENT, 0.22), Color(0, 0, 0, 0), 14, 0, Vector2(12, 9)))
+	t.set_stylebox("pressed", "Ghost", flat(Color(Palette.ACCENT, 0.4), Color(0, 0, 0, 0), 14, 0, Vector2(12, 9)))
+	t.set_color("font_color", "Ghost", Palette.TEXT)
+	t.set_color("font_hover_color", "Ghost", Palette.ACCENT_DEEP)
 
 	# Tag: the small caps label over a value.
 	_variation(t, "Tag", "Label")
@@ -226,8 +249,8 @@ static func build() -> Theme:
 	# Big: the number that lands. Display face, gold.
 	_variation(t, "Big", "Label")
 	t.set_font("font", "Big", font("display"))
-	t.set_font_size("font_size", "Big", 32)
-	t.set_color("font_color", "Big", Palette.GOLD)
+	t.set_font_size("font_size", "Big", 38)
+	t.set_color("font_color", "Big", Palette.ACCENT_DEEP)
 
 	_variation(t, "Title", "Label")
 	t.set_font("font", "Title", font("display"))
@@ -244,15 +267,16 @@ static func build() -> Theme:
 
 	_variation(t, "Paper", "PanelContainer")
 	var paper := flat(Color(Palette.PAPER, Palette.PAPER_ALPHA), Color(Palette.GOLD, 0.5), 10, 1, Vector2(16, 13))
-	paper.shadow_color = Color(0, 0, 0, 0.35)
+	paper.shadow_color = Color(Palette.WALL_EDGE, 0.28)
 	paper.shadow_size = 14
+	paper.shadow_offset = Vector2(0, 4)
 	t.set_stylebox("panel", "Paper", paper)
 
 	_variation(t, "Glass", "PanelContainer")
-	t.set_stylebox("panel", "Glass", flat(Color(Palette.GROUND, 0.82), Color(Palette.PANEL_EDGE, 0.9), 12, 1, Vector2(14, 14)))
+	t.set_stylebox("panel", "Glass", flat(Color(Palette.PANEL, 0.88), Color(Palette.PANEL_EDGE, 0.9), 18, 2, Vector2(14, 14)))
 
 	_variation(t, "Card", "PanelContainer")
-	t.set_stylebox("panel", "Card", flat(Palette.PANEL_RAISED, Palette.PANEL_EDGE, 12, 1, Vector2(14, 14)))
+	t.set_stylebox("panel", "Card", drop(flat(Palette.PANEL_RAISED, Palette.PANEL_EDGE, 18, 2, Vector2(14, 14)), 10))
 
 	_cache = t
 	return t

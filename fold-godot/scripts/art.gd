@@ -21,10 +21,10 @@ const SLOTS := {
 	"key": "title screen key visual (1920x1080)",
 	"bg_far": "parallax: the room behind everything",
 	"bg_mid": "parallax: paper drifting between the room and the board",
-	"table": "the lacquered surface the board sits on",
+	"table": "the bright play surface the board's tray is cut from",
 	"piece": "the folded-paper face of a playing piece",
-	"wall": "the slate block that never moves",
-	"foil": "gold leaf, the logotype's fill",
+	"wall": "the toy block that never moves",
+	"foil": "candy foil, the logotype's fill",
 }
 
 static var _cache := {}
@@ -73,6 +73,40 @@ static func plate_or_stand_in(slot: String, tint: Color = Palette.PANEL, _detail
 	g.fill = GradientTexture2D.FILL_LINEAR
 	g.fill_from = Vector2(0.15, 0.0)
 	g.fill_to = Vector2(0.85, 1.0)
+	_cache[key] = g
+	return g
+
+
+## A stand-in whose *average is white*, so `modulate` means what it says.
+##
+## This exists because of a trap that cost the board its legibility. `plate_or_stand_in`
+## returns a gradient running from tint.lightened(0.10) to tint.darkened(0.30) — a mid
+## grey at best — and a caller then sets `modulate` to the colour it wants. Modulate
+## multiplies. So a surface asked to be Palette.PANEL_RAISED came out at roughly 0.7 of
+## PANEL_RAISED, and the board's pieces, which multiplied *twice* (the gradient, then
+## ROOM_DIM), landed near black while the source said "slate blue". Every colour on the
+## playfield was darker than the value written next to it, and no test could see it.
+##
+## So a surface that will be tinted asks for this instead: the same gentle gradient, but
+## swinging around 1.0 rather than around a colour, which leaves the modulate colour
+## itself as the surface's average. It still composites like the real plate will, and it
+## is still obviously not finished art.
+static func surface_stand_in(slot: String, grain: float = 0.12) -> Texture2D:
+	var t := plate(slot)
+	if t != null:
+		return t
+	var key := "surface:" + slot + ":" + str(grain)
+	if _cache.has(key):
+		return _cache[key]
+	var hi := 1.0 + grain
+	var lo := 1.0 - grain
+	var g := GradientTexture2D.new()
+	g.gradient = _ramp(Color(hi, hi, hi), Color(lo, lo, lo))
+	g.width = 256
+	g.height = 256
+	g.fill = GradientTexture2D.FILL_LINEAR
+	g.fill_from = Vector2(0.10, 0.0)
+	g.fill_to = Vector2(0.90, 1.0)
 	_cache[key] = g
 	return g
 
