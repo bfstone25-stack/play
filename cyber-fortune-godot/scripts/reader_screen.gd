@@ -302,17 +302,14 @@ func _princess() -> void:
 
 
 func _princess_turn(cards: Array, f: Dictionary) -> void:
-	print("PR turn start")
 	for cv in cards:
 		cv.flip()
 		await get_tree().create_timer(0.34).timeout
 	await get_tree().create_timer(0.7).timeout
 	_speak(Tx.pick(f["take"]), func(): _princess_take(cards, f), 0.7)
-	print("PR turn done -> take queued")
 
 
 func _princess_take(cards: Array, f: Dictionary) -> void:
-	print("PR take start")
 	# the face-down five gather into her hand: they draw together and go
 	var tw := create_tween().set_parallel(true)
 	for cv in cards:
@@ -321,7 +318,6 @@ func _princess_take(cards: Array, f: Dictionary) -> void:
 		tw.tween_property(cv, "scale", Vector2(0.7, 0.7), 0.55).set_trans(Tween.TRANS_SINE)
 	await tw.finished
 	Sfx.flip()
-	print("PR take gathered")
 	await get_tree().create_timer(0.45).timeout
 	step = 3
 	last_answer = "gone"
@@ -330,30 +326,27 @@ func _princess_take(cards: Array, f: Dictionary) -> void:
 	for cv in dealt:
 		cv.modulate.a = 0.0
 	_speak(Tx.pick(f["deal"]), func(): _princess_deal(dealt, f), 0.2)
-	print("PR take done -> deal queued")
 
 
 func _princess_deal(dealt: Array, f: Dictionary) -> void:
-	print("PR deal start")
 	for cv in dealt:
-		print("PR deal tick ", Time.get_ticks_msec(), " frame ", Engine.get_process_frames(), " fps ", Engine.get_frames_per_second())
 		Sfx.flip()
 		create_tween().tween_property(cv, "modulate:a", 1.0, 0.3)
 		await get_tree().create_timer(0.36).timeout
 	await get_tree().create_timer(0.5).timeout
-	_beat(func(): _princess_reveal(dealt, f))
-	print("PR deal done -> beat")
+	_princess_reveal(dealt, f)
 
 
 func _princess_reveal(dealt: Array, f: Dictionary) -> void:
-	print("PR reveal start")
 	for cv in dealt:
 		cv.flip()
 		await get_tree().create_timer(0.5).timeout
-	# the breath: four faces up, none of them yours, and she lets you see it first
+	# The breath: four faces up, none of them yours, and she lets you see that yourself
+	# before she says it. Then the same dim-and-hold every other force uses — it used to
+	# come *before* the cards turned, which put the hold in the middle of the deal instead
+	# of in front of the line.
 	await get_tree().create_timer(1.1).timeout
-	_reveal_line(Tx.pick(f["reveal"]), f)
-	print("PR reveal line issued")
+	_reveal(Tx.pick(f["reveal"]), f)
 
 
 func _equivoque() -> void:
@@ -406,9 +399,11 @@ func _equivoque() -> void:
 			_btn(Tx.pick(f["open"]).rstrip("。."), func():
 				step = 7
 				_clear_controls()
-				_beat(func():
-					_note_on_table(true)
-					_reveal_line(Tx.pick(f["reveal"]), f)), "Candle")
+				# The paper unfolds first and is allowed to be read on its own — it is in her
+				# hand and dated before you reached out — and only then does the force take
+				# the same beat line / dim-and-hold / spoken line the other three take.
+				_note_on_table(true)
+				_reveal(Tx.pick(f["reveal"]), f), "Candle")
 
 
 ## The folded note: "· · ·" while closed; opened, it shows what she wrote — in her hand,
@@ -478,14 +473,20 @@ func _beat(then: Callable) -> void:
 	tw.tween_callback(then)
 
 
+## The one way a reveal arrives, and the only one: a half-line while she goes quiet, then
+## _beat's dim-and-hold, then the line itself. All four forces end here — the Princess and
+## the equivoque used to reach _reveal_line by their own routes, with the hold in a
+## different place each time, so the four reveals did not share a rhythm.
 func _reveal(line: String, f: Dictionary) -> void:
 	var beats: Array = f.get("beat", [])
-	_speak(Tx.pick(beats[0]) if beats.size() > 0 else "…", func():
+	var b := "…"
+	if beats.size() > 0:
+		b = Tx.pick(beats[Fortune.reader_plays % beats.size()])
+	_speak(b, func():
 		_beat(func(): _reveal_line(line, f)), 0.5)
 
 
 func _reveal_line(line: String, f: Dictionary) -> void:
-	print("PR _reveal_line ", line)
 	revealed = true
 	teller.mood = "reveal"
 	Sfx.chime(1.25)

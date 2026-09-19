@@ -69,6 +69,12 @@ READER = {
    "turn": {"zh": "我把它们翻过去。", "en": "I will turn them over."},
    "take": {"zh": "现在，我拿走你的那张。", "en": "Now I take yours away."},
    "deal": {"zh": "再发一次。", "en": "And deal again."},
+   # Every force now ends through reader_screen._reveal, so every force needs its own
+   # half-line for the quiet before the hold. Without one it fell back to a bare "…".
+   "beat": [
+    {"zh": "……", "en": "…"},
+    {"zh": "你还在看你那张吗？", "en": "Are you still looking for yours?"},
+   ],
    "reveal": {"zh": "你的牌不见了。", "en": "Your card is gone."},
    "give": [
     {"zh": "你盯着一张牌，就没看见另外四张全换了。这周也是——你盯着一件事，周围已经变了。抬头看一眼。", "en": "You watched one card so closely you never saw the other four change. That is this week too. You are staring at one thing while everything around it moves. Look up once."},
@@ -93,6 +99,10 @@ READER = {
    "note_text": {"zh": "蜡烛", "en": "the candle"},
    "note_written": {"zh": "你会留下蜡烛。\n—— 写于你伸手之前", "en": "You will end with the candle.\n— written before you reached out"},
    "reveal": {"zh": "你碰任何东西之前，我就写好了。", "en": "I wrote it before you touched anything."},
+   "beat": [
+    {"zh": "……", "en": "…"},
+    {"zh": "纸条一直躺在那儿。", "en": "The note has been lying there the whole time."},
+   ],
    "items": [
     {"id": "candle", "zh": "蜡烛", "en": "candle"}, {"id": "key", "zh": "钥匙", "en": "key"},
     {"id": "coin", "zh": "铜钱", "en": "coin"}, {"id": "feather", "zh": "羽毛", "en": "feather"},

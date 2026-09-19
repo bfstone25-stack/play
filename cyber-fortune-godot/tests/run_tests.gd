@@ -290,6 +290,11 @@ func _pools() -> void:
 	# the free draw covers both instruments from the same pool of days
 	for k in ["binary", "math", "princess", "equivoque"]:
 		ok(Fortune.reader["forces"].has(k), "reader script has " + k)
+		# Every force ends through reader_screen._reveal, which speaks a half-line before
+		# the dim-and-hold. A force with no "beat" falls back to a bare "…" and its reveal
+		# stops sharing the rhythm — that is the regression this catches.
+		var bts: Array = Fortune.reader["forces"][k].get("beat", [])
+		ok(bts.size() > 0, "reader force has a beat line before the hold: " + k)
 
 
 func _persistence() -> void:
