@@ -1,0 +1,102 @@
+# The reader's script — four forces, honestly performed. Every line she speaks lives here
+# so the scene is a performer reading a script, not a form. {n} is the number she names.
+# "give": what she gives back after the reveal — a reading, a line for the day. Never
+# fear-and-comply.
+
+READER = {
+ "note": {  # shown once, lightly, on the reader's door
+  "zh": "她是表演者。她知道的，是魔术师那样知道的——但她给你的那句话是真的。",
+  "en": "She performs. What she knows, she knows the way a magician knows. What she gives back is still true.",
+ },
+ "door": {
+  "zh": "帘子后面有灯。她已经坐好了。",
+  "en": "There is a lamp behind the curtain. She is already seated.",
+ },
+ "forces": {
+  "binary": {
+   "title": {"zh": "六张牌", "en": "The Six Cards"},
+   "intro": [
+    {"zh": "想一个数，一到六十三之间。别说出来。握着它。", "en": "Think of a number, one to sixty-three. Do not say it. Hold it."},
+    {"zh": "我会给你看六张牌。每张你只回答：你的数在不在上面。", "en": "I will show you six cards. For each one you answer only this: is your number on it."},
+   ],
+   "ask": {"zh": "你的数，在这张牌上吗？", "en": "Is your number on this card?"},
+   "yes": {"zh": "在", "en": "It is"},
+   "no": {"zh": "不在", "en": "It is not"},
+   "beat": [
+    {"zh": "……", "en": "…"},
+    {"zh": "你握得很紧。", "en": "You are holding it tightly."},
+   ],
+   "reveal": {"zh": "是 {n}。", "en": "It is {n}."},
+   "give": [
+    {"zh": "六个「在」和「不在」，就够我找到它。你今天要做的决定，也只需要几个诚实的「在」和「不在」。", "en": "Six yeses and noes were enough to find it. The decision you are carrying today needs only a few honest yeses and noes too."},
+    {"zh": "数字没有藏起来，是你一直在告诉我。今天，说出你想要的，会比你以为的容易。", "en": "The number was never hidden. You were telling me the whole time. Saying what you want today will be easier than you think."},
+   ],
+  },
+  "math": {
+   "title": {"zh": "灯笼", "en": "The Lantern"},
+   "intro": [
+    {"zh": "想一个数。多大都行。", "en": "Think of a number. Any size."},
+   ],
+   "steps": [
+    {"zh": "把它翻一倍。", "en": "Double it."},
+    {"zh": "加八。", "en": "Add eight."},
+    {"zh": "减半。", "en": "Halve it."},
+    {"zh": "减去你一开始想的那个数。", "en": "Take away the number you started with."},
+    {"zh": "你手里现在有一个数。看桌上，从左数到它。", "en": "You are holding a number now. Look at the table and count to it from the left."},
+   ],
+   "done": {"zh": "好了", "en": "Done"},
+   "beat": [
+    {"zh": "……", "en": "…"},
+    {"zh": "别告诉我。", "en": "Do not tell me."},
+   ],
+   "reveal": {"zh": "你在看灯笼。", "en": "You are looking at the lantern."},
+   "symbols": [
+    {"zh": "钥匙", "en": "the key"}, {"zh": "羽毛", "en": "the feather"}, {"zh": "石头", "en": "the stone"},
+    {"zh": "灯笼", "en": "the lantern"}, {"zh": "铜钱", "en": "the coin"}, {"zh": "镜子", "en": "the mirror"},
+    {"zh": "蜡烛", "en": "the candle"}, {"zh": "线", "en": "the thread"}, {"zh": "杯子", "en": "the cup"},
+   ],
+   "give": [
+    {"zh": "不管你从哪个数开始，都走到了灯笼。今天不用担心起点。你已经在路上，而路会把你带到该去的地方。", "en": "Whatever number you started from, you arrived at the lantern. Do not worry about where you started today. You are on the road, and the road knows where it goes."},
+   ],
+  },
+  "princess": {
+   "title": {"zh": "五张牌", "en": "The Five Cards"},
+   "intro": [
+    {"zh": "五张牌。心里选一张，记住它。", "en": "Five cards. Choose one in your mind and remember it."},
+    {"zh": "记住了？看着它，再看一次。", "en": "Have you got it? Look at it once more."},
+   ],
+   "got": {"zh": "记住了", "en": "I have it"},
+   "turn": {"zh": "我把它们翻过去。", "en": "I will turn them over."},
+   "take": {"zh": "现在，我拿走你的那张。", "en": "Now I take yours away."},
+   "reveal": {"zh": "你的牌不见了。", "en": "Your card is gone."},
+   "give": [
+    {"zh": "你盯着一张牌，就没看见另外四张全换了。这周也是——你盯着一件事，周围已经变了。抬头看一眼。", "en": "You watched one card so closely you never saw the other four change. That is this week too. You are staring at one thing while everything around it moves. Look up once."},
+   ],
+  },
+  "equivoque": {
+   "title": {"zh": "桌上的四样", "en": "Four Things on the Table"},
+   "intro": [
+    {"zh": "桌上有四样东西。我先写下一样，折好，放在这。", "en": "Four things on the table. I have written one down, folded it, and set it here."},
+    {"zh": "你来选。怎么选都行。", "en": "You choose. However you like."},
+   ],
+   "push": {"zh": "推两样过来给我。", "en": "Push two of them toward me."},
+   "keep_pair": {"zh": "我们留下这两样。", "en": "We keep these two."},
+   "drop_pair": {"zh": "这两样先放到一边。", "en": "We set these two aside."},
+   "hand": {"zh": "把其中一样递给我。", "en": "Hand me one of them."},
+   "gave": {"zh": "你递给我的，是蜡烛。", "en": "You handed me the candle."},
+   "kept": {"zh": "你留下的，是蜡烛。", "en": "You kept the candle."},
+   "open": {"zh": "打开纸条。", "en": "Open the note."},
+   "note_text": {"zh": "蜡烛", "en": "the candle"},
+   "items": [
+    {"id": "candle", "zh": "蜡烛", "en": "candle"}, {"id": "key", "zh": "钥匙", "en": "key"},
+    {"id": "coin", "zh": "铜钱", "en": "coin"}, {"id": "feather", "zh": "羽毛", "en": "feather"},
+   ],
+   "give": [
+    {"zh": "你以为你在选，其实是我在带。但蜡烛是真的：今天你需要的不是更多的光，是一盏你自己点的。", "en": "You thought you were choosing; I was leading. But the candle is true: what you need today is not more light, but one lamp you lit yourself."},
+   ],
+  },
+ },
+ "again": {"zh": "再来一场", "en": "Another"},
+ "leave": {"zh": "谢过她，离开", "en": "Thank her and go"},
+ "next": {"zh": "继续", "en": "Go on"},
+}
