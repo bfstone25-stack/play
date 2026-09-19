@@ -421,7 +421,18 @@ func _layout() -> void:
 	var lw: float = vp.x * (0.98 if portrait else 0.62)
 	var lh: float = lw * la
 	logo.size = Vector2(lw, lh)
-	logo.position = Vector2((vp.x - lw) * 0.5, vp.y * (0.14 if portrait else 0.11))
+	# Off-centre in landscape. The installed frame has him left of centre with his head
+	# high, and the quiet part of the picture is the dark café window on the RIGHT — so a
+	# centred mark lands squarely across his eyes, which is where it was until this frame
+	# was captured and read. 0.60 puts the mark over the window and leaves his face clear,
+	# which is also item 4's "positioned in the composition" rather than centred by
+	# default. Portrait stays centred: that crop is his face, with no quiet side to use.
+	var lcx: float = 0.5 if portrait else 0.60
+	# The portrait crop is a tight face with no quiet side, so the mark goes ABOVE the eyes
+	# rather than beside them — at 0.14 it sat straight across them. The plate carries deep
+	# margins (the ink occupies roughly the middle half of it), so this is nearer the top
+	# of the frame than the number looks.
+	logo.position = Vector2(vp.x * lcx - lw * 0.5, vp.y * (0.03 if portrait else 0.09))
 	logo.pivot_offset = Vector2(lw * 0.5, lh * 0.5)
 
 	# The rail. Left-anchored in landscape, where the baked band is heaviest; centred in
