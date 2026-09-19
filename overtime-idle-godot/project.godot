@@ -1,0 +1,40 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="Overtime Landlord: Idle"
+config/description="18+ idle office with a staff gacha. The building keeps running when you leave. The adult F2P conversion of Overtime Landlord. Everyone depicted is an adult."
+run/main_scene="res://scenes/building.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.07, 0.086, 0.11, 1)
+
+[autoload]
+
+Gate="*res://scripts/gate.gd"
+Economy="*res://scripts/economy.gd"
+Ticker="*res://scripts/ticker.gd"
+Sfx="*res://scripts/sfx.gd"
+Look="*res://scripts/look.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=4
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method.web="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.07, 0.086, 0.11, 1)

@@ -1,0 +1,1 @@
+extends SimpleScreens.Daily
