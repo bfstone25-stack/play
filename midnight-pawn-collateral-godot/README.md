@@ -148,20 +148,44 @@ game: every label entered, every line rendered. The five routes land on the same
 Ren'Py fork reported, which is the strongest evidence the writing came across intact:
 
 ```
-  mercy      ending=collateral  lines=385  net=187  cgs=[collateral finial market ring veil]
+  mercy      ending=collateral  lines=393  net=242  cgs=[collateral finial market ring veil]
   ruthless   ending=solvent     lines=278  net=324  cgs=[collateral]
-  honest     ending=collateral  lines=383  net=235  fees=55
-  factor     ending=factor      lines=373  net=359  sold=veil
+  honest     ending=collateral  lines=391  net=290  fees paid+refunded=55
+  factor     ending=factor      lines=381  net=414  sold=veil
   demo       ending=DEMO        stops at the chapter-2 gate, two appraisals in
+  free-web   ending=collateral  lines=393  net=242  fees refunded=55
 ```
 
-Kind and broke at 187 against a debt of 200, or rich and blind at 324. Unchanged.
+The mercy net moved from 187 to 242 and it is not a rules change: `cg_ring` and `cg_veil`
+have no art yet, so the refund rule hands those two fees back on **every** track, paid
+included. That is the rule working. When the two plates land the numbers walk back down on
+their own, which is why `tests/playthrough.gd` now asserts
+`fees_paid + fees_refunded == 55` rather than a number that depends on which PNGs are in
+the checkout on the day.
 
-## What is waiting on art
+## What is waiting on art, and what happens while it waits
 
-Everything visual except the backgrounds, which are the base game's and are real.
-`assets/plates/` and `assets/plates_x/` are PIL placeholder cards that print their own slot
-name and unlock condition, so no placeholder can be mistaken for a finished plate.
+Nine of the thirteen slots hold real renders. The four that do not — `cg_tamsin`,
+`cg_ring`, `cg_veil`, `cg_veil_locked` — **have no file at all**, and that is deliberate.
+They used to hold PIL placeholder cards, which is how a file-size survey came to report
+every one of the six forks as fully illustrated when none of them had a single real plate
+(`ops/adult_forks/STATUS.md`). A placeholder that a survey counts is worse than an absence.
+
+So the plate layer degrades instead, permanently, in three steps
+(`scripts/plates.gd::pick`):
+
+1. the uncensored plate, if this package has it or the gateway delivered it;
+2. the `_locked` censored stand-in;
+3. **the pixel floor** — the item's curio sprite at 4x over the darkened shop, built in
+   code out of `assets/pixel/`, captioned *"The object goes quiet in her hand."*
+
+Step 3 cannot fail, because there is no file to be missing: it is drawn. A slot with no
+art is never a broken texture, never a black rectangle, and never an empty frame, and a
+floored slot is not written into the Reading Ledger as seen — the player did not see it.
+`tests/plates.gd` walks every slot in the table and asserts all three steps.
+
+`cg_veil` and `cg_veil_locked` are blocked on a Mara reference only Blaze can pick, so this
+is not a state that clears on its own.
 
 `ops/midnight_pawn_art/midnight_pawn_gen.py` now covers all of it: the six plates (including
 `cg_finial`, which the gating counted and the art list never had a prompt for) and one
@@ -201,7 +225,73 @@ nights the story is a cost."* — has been given a real home in the finial's bli
 branch. The narration line that went with it duplicated a sentence already in that branch
 and was dropped.
 
-Not carried across, and deliberately: the Ren'Py telemetry wrappers (`tel_track`), the
-Adsterra ad-clip gate and the cross-promo screen. The Godot side gets `Gate.require()`,
-which is the base game's own gate and what `ops/DUAL_TRACK.md` says Godot products use.
-Wiring telemetry and the ad track is the next job, not this one.
+Not carried across, and deliberately: the Ren'Py telemetry wrappers (`tel_track`). The
+page carries the telemetry SDK (`ops/godot_build.sh` injects it) but no GDScript call site
+posts an event, so this title reports nothing to the closed loop yet. That is the next job.
+
+The ad track and the cross-promo screen *are* wired now — see below.
+
+## The reveal, which was never connected
+
+`scripts/unlock.gd` shipped with this project from the port, with a `start()` and a
+`redeem()` that **nothing in the game ever called**. A browser player who cleared a gate
+got the censored plate every time; the fork's entire paid proposition was unreachable code.
+Two further faults were underneath it, and both only show up if you actually fetch:
+
+1. **The gateway serves webp; the client wrote png.** `gateway/app.py:309` returns
+   `image/webp`, and Godot picks its decoder from the file extension. The delivered bytes
+   landed at `user://unlocked/<id>.png`, cleared the 1024-byte "it arrived" test, suppressed
+   the refund, and could not be decoded by anything. The extension now comes from the
+   bytes, and a body that is not an image at all (a JSON error page) is refused rather than
+   stored.
+2. **The refund was decided before the fetch.** `reading_take()` asked
+   `Collateral.delivered()` while building the beat list — before the plate beat, therefore
+   before any ticket existed. It emits a `settle` beat instead, and `game.gd` resolves it
+   after the fetch has happened or failed.
+
+The order is: `/unlock/start` for the ticket (so the server's clock starts with the gate,
+not with the redeem), then `Gate.require()` hands the page its gate — the sponsor clip on
+the ad track, whose length is the gateway's 18-second wait — then `/unlock/fetch` spends the
+ticket. Off the web, `start()` returns false before making any request: a desktop download
+still asks the network for nothing.
+
+`tests/unlock_live.gd` runs that against the **live gateway**, through the shipping client:
+
+```
+$GODOT --headless -s res://tests/unlock_live.gd
+  ticket issued for midnight-pawn-collateral/cg_finial
+  immediate redeem refused          # 425, the wait is real
+  delivered cg_finial.webp  1152x768
+  plate layer resolves cg_finial uncensored
+  ticket reuse refused              # 403, single-use
+UNLOCK_LIVE_OK
+```
+
+It was made to fail first: restoring the `.png` extension turns the delivery into
+`ERR_FILE_CORRUPT`, which is exactly what the shipped build was doing silently.
+
+Only `cg_finial`, `cg_market` and `cg_collateral` are staged on the gateway, because
+`ops/export_gated.py` stages picks and the other two slots have none. Asking for an
+unstaged key returns 404 at `/unlock/start`, `start()` returns false, no gate is shown, and
+the fee is refunded — the same path as an offline player.
+
+## Hosting: why this is not on free.blazecore.dev
+
+The four mainstream Godot titles are proxied there by
+`ops/pages/flat404-play.worker.js`. This one is adult, and `play/_shared/board.js` treats
+every `*.blazecore.dev` host as the AdSense candidate domain and forces `BOARD_ADULT_OK = 0`
+— a veto a page cannot lift. Run against board.js directly:
+
+```
+midnight-pawn-collateral.flat404.workers.dev -> BOARD_ADULT_OK = 1, fetches catalog-adult.json
+free.blazecore.dev                           -> BOARD_ADULT_OK = 0, fetches catalog.json
+```
+
+So on free.blazecore.dev the end-of-run board this build is required to offer would have
+drawn nothing, silently — and an 18+ title would be sitting on the one domain
+`ops/check_adsense_isolation.py` exists to keep clean. The build still lives exactly where
+the Godot ad builds live (`build/godot-ads/<slug>`, served by the gateway as
+`/free-<slug>/`); only the public hostname differs, and it is the same
+`*.flat404.workers.dev` the other adult titles already use.
+
+**Live: https://midnight-pawn-collateral.flat404.workers.dev**

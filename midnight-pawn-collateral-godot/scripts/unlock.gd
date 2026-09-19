@@ -27,6 +27,17 @@ const SAVE_DIR := "user://unlocked/"
 ## path can be exercised from a desktop checkout where those files do exist.
 static var simulate_free := false
 
+## Test hook: let a desktop build make the two requests a browser would, so the reveal can
+## be exercised against the live gateway from a headless run. tests/unlock_live.gd is the
+## only thing that sets it. It cannot make a shipped download talk to the network — nothing
+## in the game ever assigns it — and the point of it is that the thing under test is this
+## file, not a re-implementation of it in curl.
+static var allow_network := false
+
+
+static func _networked() -> bool:
+	return OS.has_feature("web") or allow_network
+
 var _ticket := {}
 var _http: HTTPRequest
 
@@ -45,15 +56,50 @@ static func paid_package(id: String) -> bool:
 	return ResourceLoader.exists(PAID_DIR + id + ".png") or FileAccess.file_exists(PAID_DIR + id + ".png")
 
 
+## The gateway serves image/webp (gateway/app.py:309 — the bytes on disk are
+## ops/gated_assets/<app>/<key>.webp), and Godot picks its image decoder from the file
+## extension. Writing those bytes to "<id>.png", which is what this did until a live fetch
+## was actually run against apps.blazecore.dev, produces a file that is over the
+## 1024-byte "it arrived" threshold and cannot be decoded by anything: ready_for() says
+## yes, the fee is not refunded, and the player gets a blank. So the extension is decided
+## by the bytes.
+const EXTS := ["webp", "png", "jpg"]
+
+
+static func ext_of(data: PackedByteArray) -> String:
+	if data.size() >= 12 and data[0] == 0x52 and data[1] == 0x49 and data[2] == 0x46 and data[3] == 0x46 \
+			and data[8] == 0x57 and data[9] == 0x45 and data[10] == 0x42 and data[11] == 0x50:
+		return "webp"
+	if data.size() >= 4 and data[0] == 0x89 and data[1] == 0x50 and data[2] == 0x4E and data[3] == 0x47:
+		return "png"
+	if data.size() >= 3 and data[0] == 0xFF and data[1] == 0xD8 and data[2] == 0xFF:
+		return "jpg"
+	return ""
+
+
+## The delivered file for `id`, whatever it was encoded as, or "" if nothing landed.
 static func saved_path(id: String) -> String:
-	return SAVE_DIR + id + ".png"
+	for ext in EXTS:
+		var path := "%s%s.%s" % [SAVE_DIR, id, ext]
+		if FileAccess.file_exists(path):
+			return path
+	return ""
+
+
+## Remove every delivered encoding of `id`. Used by the tests and before a re-delivery.
+static func clear(id: String) -> void:
+	for ext in EXTS:
+		DirAccess.remove_absolute("%s%s.%s" % [SAVE_DIR, id, ext])
 
 
 ## True when the real bytes are available to this install, by either route.
 static func ready_for(id: String) -> bool:
 	if paid_package(id):
 		return true
-	var f := FileAccess.open(saved_path(id), FileAccess.READ)
+	var path := saved_path(id)
+	if path == "":
+		return false
+	var f := FileAccess.open(path, FileAccess.READ)
 	if f == null:
 		return false
 	var n := f.get_length()
@@ -64,7 +110,7 @@ static func ready_for(id: String) -> bool:
 ## Ask for a ticket when the gate opens, so the server clock starts with the gate and not
 ## with the redeem. Desktop downloads never reach here.
 func start(id: String) -> bool:
-	if not OS.has_feature("web"):
+	if not _networked():
 		return false
 	var body := JSON.stringify({"app": APP, "key": id})
 	var err := _http.request(API + "/unlock/start", ["Content-Type: application/json"], HTTPClient.METHOD_POST, body)
@@ -87,7 +133,7 @@ func start(id: String) -> bool:
 func redeem(id: String) -> bool:
 	if ready_for(id):
 		return true
-	if not OS.has_feature("web"):
+	if not _networked():
 		return false
 	if str(_ticket.get("key", "")) != id:
 		return false
@@ -108,12 +154,26 @@ func redeem(id: String) -> bool:
 ## the half that can silently fail on a read-only or full user dir.
 static func write_delivered(id: String, data: PackedByteArray) -> bool:
 	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
-	var f := FileAccess.open(saved_path(id), FileAccess.WRITE)
+	var ext := ext_of(data)
+	if ext == "":
+		# Not an image at all — an error page, a truncated body, a captive portal. Landing
+		# it on disk would make ready_for() lie and cost the player their reading fee.
+		return false
+	clear(id)
+	var f := FileAccess.open("%s%s.%s" % [SAVE_DIR, id, ext], FileAccess.WRITE)
 	if f == null:
 		return false
 	f.store_buffer(data)
 	f.close()
-	return ready_for(id)
+	# Decoding it here is the difference between "bytes arrived" and "there is a picture".
+	# The refund rule reads this answer.
+	if not ready_for(id):
+		return false
+	var img := Image.new()
+	if img.load(saved_path(id)) != OK or img.get_width() < 16:
+		clear(id)
+		return false
+	return true
 
 
 ## Where the plate layer should load a gated plate from, or "" when it must fall back to

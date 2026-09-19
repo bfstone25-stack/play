@@ -95,8 +95,13 @@ func _run() -> void:
 		return 0 if g.run.sold_reading == "" and not _is_calder(g) else 1)
 	if honest.run.net_worth() < C.DEBT:
 		_fail("the honest route could not clear the debt: %d" % honest.run.net_worth())
-	if honest.run.fees_paid != 55:
-		_fail("the honest route should have paid 55 in fees, paid %d" % honest.run.fees_paid)
+	# 55 of shop cash is asked for across the ring and the veil (the finial's fee is 0).
+	# How much of it stays asked-for depends on how much art is installed, and that is the
+	# point: a reading whose plate never arrives is refunded on every track, paid included.
+	# So the invariant is that the money is accounted for, not that it is kept.
+	if honest.run.fees_paid + honest.run.fees_refunded != 55:
+		_fail("the honest route lost track of the fees: paid %d refunded %d" % [
+			honest.run.fees_paid, honest.run.fees_refunded])
 	honest.free()
 
 	# 4. Factor: look at things, then sell one to Calder.
@@ -126,8 +131,31 @@ func _run() -> void:
 	print("  demo       ending=DEMO       taken=%s till=%d" % [str(demo.run.readings_taken), demo.run.till])
 	demo.free()
 
+	# 6. The free web package: no assets/plates_x/, no bytes delivered, no network. Every
+	#    gated plate falls back, every fee comes back, and the run still finishes. This is
+	#    the route the refund rule exists for, and it is the one the old synchronous code
+	#    answered before the fetch had happened rather than after it.
+	Unlock.simulate_free = true
+	for id in Collateral.PLATES.keys():
+		Unlock.clear(id)
+	var free_run := await _route("free-web", func(g: Node, n: int) -> int:
+		if _is_calder(g):
+			return 1
+		return 2 if n == 3 else 0)
+	if free_run.run.fees_paid != 0:
+		_fail("the free track kept %d in fees for plates it never showed" % free_run.run.fees_paid)
+	if free_run.run.fees_refunded != 55:
+		_fail("the free track refunded %d, expected 55" % free_run.run.fees_refunded)
+	if free_run.plates.current_source == free_run.plates.SRC_REAL:
+		_fail("a free package resolved a real plate")
+	# The ledger still credits what was earned; it just marks it censored.
+	if C.unlocked_cgs(free_run.run).size() != 5:
+		_fail("the free track lost ledger credit: %s" % [C.unlocked_cgs(free_run.run)])
+	free_run.free()
+	Unlock.simulate_free = false
+
 	if failures.is_empty():
-		print("PLAYTHROUGH_OK routes=5")
+		print("PLAYTHROUGH_OK routes=6")
 		quit(0)
 	else:
 		for f in failures:

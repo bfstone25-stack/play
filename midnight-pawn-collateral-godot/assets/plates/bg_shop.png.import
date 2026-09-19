@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blmk2driumemu"
-path="res://.godot/imported/cg_tamsin.png-b5966e7b06cb1945826c901608237075.ctex"
+uid="uid://by28io7u5dyp7"
+path="res://.godot/imported/bg_shop.png-3853a049b69bf5f4eecc3d81a37a55a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plates/cg_tamsin.png"
-dest_files=["res://.godot/imported/cg_tamsin.png-b5966e7b06cb1945826c901608237075.ctex"]
+source_file="res://assets/plates/bg_shop.png"
+dest_files=["res://.godot/imported/bg_shop.png-3853a049b69bf5f4eecc3d81a37a55a2.ctex"]
 
 [params]
 

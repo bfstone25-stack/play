@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3ttoy838lv6q"
-path="res://.godot/imported/cg_ring.png-4dc8c08caa2ed63b9b03b7f29c601743.ctex"
+uid="uid://l8klvrwaxhu7"
+path="res://.godot/imported/bg_market.png-96a42cbf7a454d13213ad3b89d34ceb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plates_x/cg_ring.png"
-dest_files=["res://.godot/imported/cg_ring.png-4dc8c08caa2ed63b9b03b7f29c601743.ctex"]
+source_file="res://assets/plates/bg_market.png"
+dest_files=["res://.godot/imported/bg_market.png-96a42cbf7a454d13213ad3b89d34ceb1.ctex"]
 
 [params]
 

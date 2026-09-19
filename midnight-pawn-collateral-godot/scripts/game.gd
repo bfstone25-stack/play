@@ -16,6 +16,17 @@ const C := preload("res://scripts/collateral_core.gd")
 const PixelStageScript = preload("res://scripts/pixel_stage.gd")
 const PlateLayerScript = preload("res://scripts/plates.gd")
 const PixelBodyFont = preload("res://assets/fonts/midnight_pixel_12.fnt")
+## The two painted rooms (assets/plates/bg_*.png). They were dropped into the project as
+## new files with no .import sidecar and nothing loading them, which meant a headless
+## export would not even have carried them. They are used as a darkened ground behind the
+## whole 640x360 frame — the room the pixel stage is a window into — and never at a weight
+## where they compete with the pixel art in front of them.
+const GROUNDS := {
+	"shop": preload("res://assets/plates/bg_shop.png"),
+	"title": preload("res://assets/plates/bg_shop.png"),
+	"dawn": preload("res://assets/plates/bg_shop.png"),
+	"market": preload("res://assets/plates/bg_market.png"),
+}
 const PixelDisplayFont = preload("res://assets/fonts/midnight_pixel_16.fnt")
 
 const BG := Color("#100d18")
@@ -63,12 +74,20 @@ var ledger_layer: ColorRect
 var ledger_box: VBoxContainer
 var ledger_open := false
 var ledger_from_beat := false
+var ground: TextureRect
+var splash: ColorRect
+var splash_open := false
 
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_build_ui()
 	start_night()
+	# The web build is the one that gets opened from a link by someone who has not read a
+	# store page, and it had no age wall of any kind. A download has already been bought
+	# from an 18+ listing, and the headless tests are not the web, so neither sees this.
+	if OS.has_feature("web"):
+		_show_splash()
 
 
 func start_night() -> void:
@@ -90,6 +109,17 @@ func _build_ui() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
+
+	ground = TextureRect.new()
+	ground.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	ground.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	ground.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	ground.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# 16% and pushed toward the shop's own ink. At full strength this is a second art style
+	# behind the first one; at this weight it is the dark of the room, with a lamp in it.
+	ground.modulate = Color(0.22, 0.20, 0.26, 1.0)
+	ground.texture = GROUNDS["shop"]
+	add_child(ground)
 
 	var margin := MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -130,6 +160,9 @@ func _build_ui() -> void:
 
 	var stage_panel := PanelContainer.new()
 	stage_panel.custom_minimum_size = Vector2(300, 240)
+	# The authored scene art is exactly 300x240. Left to fill, the panel grew to the height
+	# of the body row and left a dead strip of flat colour under the shop floor.
+	stage_panel.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	stage_panel.clip_contents = true
 	body.add_child(stage_panel)
 	stage = PixelStageScript.new()
@@ -239,10 +272,17 @@ func _step() -> void:
 			"scene":
 				plates.hide_plate()
 				stage.set_scene(str(beat["bg"]))
+				if GROUNDS.has(str(beat["bg"])):
+					ground.texture = GROUNDS[str(beat["bg"])]
 			"customer":
 				stage.set_customer(str(beat["id"]))
 			"plate":
-				_show_plate(str(beat["item"]))
+				await _show_plate(str(beat["item"]))
+			"settle":
+				# The refund rule, decided after the fetch rather than before it.
+				var extra: Array = Story.settle_reading(run, str(beat["item"]), str(beat["plate"]))
+				for i in extra.size():
+					beats.insert(beat_index + i, extra[i])
 			"goto":
 				_enter(str(beat["label"]))
 				return
@@ -303,8 +343,32 @@ func _show_menu(beat: Dictionary) -> void:
 
 func _show_plate(item: String) -> void:
 	var id := Collateral.plate_for(item)
+	if Collateral.is_gated(id) and not Unlock.ready_for(id):
+		await _reveal(id)
 	var delivered := plates.show_plate(id)
 	footer.text = "" if delivered else "This reading is censored in this build."
+
+
+## The web track's reveal, and the half of the dual-track model that was never wired.
+##
+## unlock.gd has been in this project since the port with a start() and a redeem() that
+## nothing called, so a browser player who cleared a gate got the censored plate every
+## time and the fork's whole paid proposition was unreachable. Verified against the live
+## gateway: /unlock/start issues a ticket and names a wait, a fetch inside that wait is
+## refused with 425, a fetch after it returns the webp, and the same ticket a second time
+## is 403.
+##
+## Ordered so the server's clock starts with the gate and not with the redeem — the wait
+## is the length of the sponsor clip, so the player spends it watching something rather
+## than looking at a spinner. Off the web, start() returns false before it makes any
+## request: a desktop download asks the network for nothing.
+func _reveal(id: String) -> bool:
+	if not await plates.unlock.start(id):
+		return false
+	var spec: Dictionary = Collateral.PLATES.get(id, {})
+	if not await Gate.require(id, str(spec.get("title", "A reading")), "cg"):
+		return false
+	return await plates.unlock.redeem(id)
 
 
 ## The chapter cut. On a desktop download Gate.require() returns true without touching the
@@ -325,7 +389,7 @@ func _gate(chapter: int) -> bool:
 
 
 func advance() -> void:
-	if finished or ledger_open:
+	if finished or ledger_open or splash_open:
 		return
 	_step()
 
@@ -445,8 +509,64 @@ func close_ledger() -> void:
 			_step()
 
 
+## The 18+ card. Not a legal document — a door, with the one sentence on it that the
+## content rules require the game to say in its own voice: everyone depicted is an adult.
+func _show_splash() -> void:
+	splash_open = true
+	splash = ColorRect.new()
+	splash.color = Color(0.04, 0.03, 0.07, 1.0)
+	splash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	splash.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(splash)
+	var box := VBoxContainer.new()
+	box.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	box.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	box.grow_vertical = Control.GROW_DIRECTION_BOTH
+	box.alignment = BoxContainer.ALIGNMENT_CENTER
+	box.add_theme_constant_override("separation", 6)
+	splash.add_child(box)
+	var lines := [
+		["MIDNIGHT PAWN: COLLATERAL", GOLD, 16],
+		["An adult fork of Midnight Pawn & Crypt.", CREAM, 12],
+		["18+ only. Everyone depicted is an adult and is written as one.", CREAM, 12],
+		["Sexual content, grief, and a shop that prices both.", MUTED, 12],
+		["The artwork is AI-assisted, directed and culled by hand. The writing is human.", MUTED, 12],
+	]
+	for spec in lines:
+		var l := Label.new()
+		l.text = str(spec[0])
+		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		l.add_theme_color_override("font_color", spec[1])
+		l.add_theme_font_size_override("font_size", int(spec[2]))
+		if int(spec[2]) == 16:
+			l.add_theme_font_override("font", PixelDisplayFont)
+		box.add_child(l)
+	var row := HBoxContainer.new()
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	row.add_theme_constant_override("separation", 8)
+	box.add_child(row)
+	var enter := Button.new()
+	enter.text = "I am 18 or older — open the shop"
+	enter.custom_minimum_size = Vector2(220, 26)
+	enter.pressed.connect(dismiss_splash)
+	row.add_child(enter)
+	var leave := Button.new()
+	leave.text = "Leave"
+	leave.custom_minimum_size = Vector2(60, 26)
+	leave.pressed.connect(func() -> void: JavaScriptBridge.eval("location.href='https://free.blazecore.dev/'"))
+	row.add_child(leave)
+
+
+func dismiss_splash() -> void:
+	if not splash_open:
+		return
+	splash_open = false
+	splash.queue_free()
+	splash = null
+
+
 func _unhandled_input(event: InputEvent) -> void:
-	if ledger_open or finished or awaiting_choice:
+	if ledger_open or finished or awaiting_choice or splash_open:
 		return
 	if event.is_action_pressed("interact"):
 		advance()

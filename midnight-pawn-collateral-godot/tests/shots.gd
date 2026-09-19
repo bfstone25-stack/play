@@ -57,4 +57,29 @@ func _run() -> void:
 	game.open_ledger()
 	await _shot("05_ledger")
 	game.close_ledger()
+
+	# ---- the three states a plate slot can be in, over the real shop ----
+	#
+	# This is the frame Blaze asked about: a 300x240 authored pixel room with a 1152x768
+	# painted illustration dropped into the same window. It cannot be judged from the
+	# plate file, only from the composite, and only against the pixel art it replaces.
+	game.stage.set_scene("shop")
+	game.plates.show_plate("cg_finial")        # installed, uncensored
+	await _shot("06_plate_real")
+	game.plates.show_plate("cg_ring")          # no uncensored art: the censored stand-in
+	await _shot("07_plate_locked")
+	game.plates.show_plate("cg_veil")          # no art at all: the pixel floor
+	await _shot("08_plate_pixel_floor")
+	game.plates.hide_plate()
+	await _shot("09_shop_no_plate")            # the same frame with the plate gone
+	game.stage.set_scene("market")
+	game.ground.texture = game.GROUNDS["market"]
+	game.plates.show_plate("cg_market")
+	await _shot("10_market_plate")
+	game.plates.hide_plate()
+	await _shot("11_market_pixel")
+	game.stage.set_scene("shop")
+	game.ground.texture = game.GROUNDS["shop"]
+	game.plates.show_plate("cg_collateral")
+	await _shot("12_plate_collateral")
 	quit(0)

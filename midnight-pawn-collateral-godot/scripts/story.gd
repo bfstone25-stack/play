@@ -126,15 +126,29 @@ static func reading_take(run: C.Run, item: String, plate_item := "") -> Array:
 		out.append(nar("She counts it out of the drawer before she touches anything, because Elsa's rule was that the shop pays first and looks second, and the one time Nara did it the other way round she saw a thing she could not afford to have seen."))
 	run.record_reading(item)
 	out.append(plate(plate_item))
-
-	# The refund rule. If the free track left the plate censored, the shop did not get
-	# what it paid for, and neither did the player.
-	if fee and not Collateral.delivered(plate_item):
-		var back := run.refund_reading(item)
-		out.append(nar("It does not come. Not all of it — a shape, a direction, the weather of the thing, and then the object goes quiet in her hand like a phone with the screen off."))
-		out.append(say("nara", "That's not a reading. That's a receipt for one."))
-		out.append(nar("She puts the %d back in the drawer. The shop does not charge for what it failed to show you." % back))
+	if fee:
+		# Whether the plate arrived cannot be known here. On the web track the bytes are
+		# fetched from the gateway *at the plate beat* — a ticket, a gate, a redeem — and
+		# this list is generated before any of that has happened. Asking the question here
+		# is how the first draft of the fork always answered "censored", even on a run that
+		# was about to unlock. game.gd resolves this beat after the fetch.
+		out.append({"t": "settle", "item": item, "plate": plate_item})
 	return out
+
+
+## The refund rule, resolved once the plate has actually been fetched or has failed to be.
+##
+## If the free track left the plate censored, the shop did not get what it paid for, and
+## neither did the player. Returns the lines to splice in, or [] when the art arrived.
+static func settle_reading(run: C.Run, item: String, plate_item: String) -> Array:
+	if Collateral.delivered(plate_item):
+		return []
+	var back := run.refund_reading(item)
+	return [
+		nar("It does not come. Not all of it — a shape, a direction, the weather of the thing, and then the object goes quiet in her hand like a phone with the screen off."),
+		say("nara", "That's not a reading. That's a receipt for one."),
+		nar("She puts the %d back in the drawer. The shop does not charge for what it failed to show you." % back),
+	]
 
 
 ## LOW / FAIR / HIGH. The base game's pricing verb, now aimed at a person whose worst or

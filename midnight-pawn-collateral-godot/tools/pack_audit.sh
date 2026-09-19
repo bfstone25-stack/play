@@ -53,15 +53,36 @@ else
     echo "   OK: no reference to assets/plates_x/ anywhere in the free web pack"
 fi
 
-# And the censored stand-ins must be present, or the free build shows nothing at all.
+# And every censored stand-in that exists must be present, or the free build shows
+# nothing at all where it could have shown a silhouette.
+#
+# Derived from assets/plates/, not from assets/plates_x/: a slot whose uncensored art has
+# not been rendered yet has no file in plates_x, so keying this off that directory quietly
+# stopped checking exactly the stand-ins that are doing the most work. cg_ring is the live
+# example — no uncensored plate, a real censored one, and it must ship.
+locked=()
+for f in assets/plates/*_locked.png; do
+    [ -e "$f" ] || continue
+    locked+=("$(basename "$f" .png)")
+done
 missing=0
-for n in "${names[@]}"; do
-    if ! grep -q "${n}_locked" "$WEB_STRINGS"; then
-        echo "FAIL: censored stand-in ${n}_locked is missing from the free web pack"
+for n in "${locked[@]}"; do
+    if ! grep -q "$n" "$WEB_STRINGS"; then
+        echo "FAIL: censored stand-in $n is missing from the free web pack"
         missing=1
     fi
 done
-[ "$missing" -eq 0 ] && echo "   OK: all ${#names[@]} censored stand-ins are in the free web pack"
+[ "$missing" -eq 0 ] && echo "   OK: all ${#locked[@]} censored stand-ins are in the free web pack"
+# The painted grounds are loaded by scripts/game.gd and were placed with no .import
+# sidecar, which is the one way a file can be in the checkout and not in the export.
+for n in bg_shop bg_market; do
+    if grep -q "$n" "$WEB_STRINGS"; then
+        echo "   OK: $n is in the free web pack"
+    else
+        echo "FAIL: $n is loaded by game.gd but did not make it into the pack"
+        fail=1
+    fi
+done
 fail=$((fail + missing))
 
 echo
