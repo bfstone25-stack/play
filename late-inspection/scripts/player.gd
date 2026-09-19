@@ -7,6 +7,31 @@ const GRAVITY := 18.0
 const SENS := 0.0022
 const BOB_FREQ := 8.4
 const BOB_AMP := 0.028
+## Is the player actually facing the prop? The InteractRay above is the precise aim — it
+## reaches 2.8 m straight down the middle of the screen. The 6.5 m radius below it is the
+## forgiving fallback, and it had its facing gate stubbed to `var face_ok := true`, so it
+## handed back the nearest prop in the room whether or not the player could see it. In a
+## game whose whole verb is looking at the right thing, props could be taken from behind.
+##
+## The shape below is the ancestor's (across-hall's player.gd still has it intact); what
+## did not survive is its number. There the fallback radius was 1.85 m, so a 0.12 dot — an
+## 83 degree half-angle, very nearly a hemisphere — was harmless: everything in range was
+## within arm's reach anyway. This game widened the radius to 6.5 m, which turns that same
+## cone into most of the flat, and the gate was stubbed out rather than renumbered.
+##
+## 0.80 is the number for a 6.5 m radius: a 36.9 degree half-angle. Chosen by looking
+## through it (tests/facing_probe.gd photographs the boundary). At 1280x720 the horizontal
+## half-frame is 51.2 degrees, so a prop entering the cone sits 60% of the way to the edge
+## of the picture — just outside the torch's 28 degree beam, still plainly in frame and
+## identifiable. Wider and props start being offered from the unlit corners and, past 0.62,
+## from off screen entirely, which is the stub again in a quieter form. Much tighter and it
+## stops being a fallback and starts duplicating the ray.
+const FACE_DOT := 0.80
+## Underfoot the horizontal direction to a prop is meaningless, and the pitch clamp means
+## a prop half a metre away cannot be centred at all. Inside this radius the test is the
+## full 3D one instead: look down at it and it is yours, turn your back and it is not.
+const FACE_NEAR := 0.35
+const FACE_UNDERFOOT := -0.35
 
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var head: Node3D = $Head
@@ -116,6 +141,10 @@ func interact_target() -> Node:
 	# A generous focus radius keeps small paper props usable on controllers and
 	# low-resolution Web builds; the nearest active story prop still wins.
 	var best_d := 6.5
+	var look := facing()
+	var look_flat := Vector3(look.x, 0.0, look.z)
+	if look_flat.length() > 0.001:
+		look_flat = look_flat.normalized()
 	for n in get_tree().get_nodes_in_group("interactable"):
 		if n.get("taken") == true:
 			continue
@@ -126,6 +155,12 @@ func interact_target() -> Node:
 				continue
 			var flat := Vector3(to.x, 0.0, to.z)
 			var face_ok := true
+			if flat.length() > FACE_NEAR:
+				# Across the room: it has to be in front of you, and in frame.
+				face_ok = look_flat.dot(flat.normalized()) >= FACE_DOT
+			else:
+				# Underfoot: looking down at it counts, having your back to it does not.
+				face_ok = look.dot(to.normalized()) > FACE_UNDERFOOT
 			if face_ok:
 				best_d = d
 				best = n
