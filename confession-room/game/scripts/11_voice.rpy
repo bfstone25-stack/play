@@ -68,14 +68,29 @@ init -4 python:
         parts = path.split("/")
         return parts[2] if len(parts) > 3 else ""
 
+    ## Every line ships twice, as .ogg and as .mp3, and the MP3 is tried first.
+    ##
+    ## Safari and iOS cannot decode Ogg Vorbis at all. In a web build that reaches an
+    ## HTML audio element, a .ogg on Apple hardware is not an error -- it is silence:
+    ## the player draws, the click does nothing, and nothing is logged. Every iPhone and
+    ## every Mac Safari would have played this game mute with no clue why, and neither
+    ## the build nor the browser would have said a word about it.
+    ##
+    ## Preferring MP3 costs a little disk and nothing else: `renpy.loadable` still picks
+    ## whichever format is actually in the build, so a tree with only .ogg keeps working.
+    def _vn_fmt(path):
+        if path.endswith(".ogg"):
+            mp3 = path[:-4] + ".mp3"
+            if renpy.loadable(mp3):
+                return mp3
+        return path if renpy.loadable(path) else None
+
     def _vn_pick(path):
         if not path:
             return None
         if not voice_enabled(_vn_character_of(path)):
             return None
-        if not renpy.loadable(path):
-            return None
-        return path
+        return _vn_fmt(path)
 
     def _vn_lang_table():
         """The voice table for the language the player is reading, if there is one.
