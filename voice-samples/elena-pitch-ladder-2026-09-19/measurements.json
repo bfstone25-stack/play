@@ -1,0 +1,379 @@
+{
+ "tag": "2026-09-19",
+ "metric": "librosa pyin, fmin 80 fmax 600, voiced frames only; range = 12*log2(p90/p10)",
+ "rungs": [
+  {
+   "hz": 260,
+   "f0_median": 261.8,
+   "f0_range": [
+    235.6,
+    285.9
+   ],
+   "semis_median": 8.61,
+   "semis_range": [
+    4.17,
+    12.88
+   ],
+   "centroid": 2515,
+   "hf_pct": 0.119,
+   "tonality_max": 0.0123,
+   "jump_max": 0.027,
+   "leaks": [],
+   "seed_hz": 371.9,
+   "seed_semis": 11.02
+  },
+  {
+   "hz": 300,
+   "f0_median": 293.1,
+   "f0_range": [
+    266.0,
+    376.2
+   ],
+   "semis_median": 9.29,
+   "semis_range": [
+    3.75,
+    26.68
+   ],
+   "centroid": 2218,
+   "hf_pct": 0.144,
+   "tonality_max": 0.0253,
+   "jump_max": 0.076,
+   "leaks": [],
+   "seed_hz": 394.0,
+   "seed_semis": 10.92
+  },
+  {
+   "hz": 317,
+   "f0_median": 316.4,
+   "f0_range": [
+    311.8,
+    382.8
+   ],
+   "semis_median": 5.89,
+   "semis_range": [
+    4.66,
+    7.22
+   ],
+   "centroid": 2355,
+   "hf_pct": 0.289,
+   "tonality_max": 0.0314,
+   "jump_max": 0.026,
+   "leaks": [],
+   "seed_hz": 398.5,
+   "seed_semis": 10.87
+  }
+ ],
+ "clips": [
+  {
+   "rung_hz": 260,
+   "file": "260hz_01_opening_wry.ogg",
+   "id": "start_fc09ad15",
+   "stage": "opening",
+   "emotion": "wry",
+   "intensity": 3,
+   "text": "Professor Vance.",
+   "instruct": "Say this bright and young, wry.",
+   "f0": 285.9,
+   "semis": 4.17,
+   "f0_jump": 0.027,
+   "hf_ratio": 0.01483,
+   "centroid": 3093.7,
+   "tonality": 0.01025,
+   "dur": 1.08,
+   "asr": "Professor Vance?",
+   "leak": []
+  },
+  {
+   "rung_hz": 260,
+   "file": "260hz_02_rising_asking.ogg",
+   "id": "chapter_2_467faa5d",
+   "stage": "rising",
+   "emotion": "asking",
+   "intensity": 3,
+   "text": "And me?",
+   "instruct": "Say this bright and alert, rising at the end.",
+   "f0": 241.8,
+   "semis": 12.88,
+   "f0_jump": 0.0,
+   "hf_ratio": 0.00048,
+   "centroid": 1916.7,
+   "tonality": 0.01233,
+   "dur": 0.72,
+   "asr": "And me?",
+   "leak": []
+  },
+  {
+   "rung_hz": 260,
+   "file": "260hz_03_pressure_nervous.ogg",
+   "id": "chapter_4_82165b44",
+   "stage": "pressure",
+   "emotion": "nervous",
+   "intensity": 3,
+   "text": "Maybe it was.",
+   "instruct": "Say this young and pressed, nervous.",
+   "f0": 281.8,
+   "semis": 10.37,
+   "f0_jump": 0.021,
+   "hf_ratio": 0.00114,
+   "centroid": 2466.0,
+   "tonality": 0.00647,
+   "dur": 2.04,
+   "asr": "Maybe it was?",
+   "leak": []
+  },
+  {
+   "rung_hz": 260,
+   "file": "260hz_04_intimate_breathless.ogg",
+   "id": "route_pact_a3ebdf33",
+   "stage": "intimate",
+   "emotion": "breathless",
+   "intensity": 2,
+   "text": "That's a very old-fashioned way to ask, Professor.",
+   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
+   "f0": 235.6,
+   "semis": 6.84,
+   "f0_jump": 0.021,
+   "hf_ratio": 0.00124,
+   "centroid": 2564.7,
+   "tonality": 0.00134,
+   "dur": 4.76,
+   "asr": "That's a very old-fashioned way to ask, Professor.",
+   "leak": []
+  },
+  {
+   "rung_hz": 300,
+   "file": "300hz_01_opening_wry.ogg",
+   "id": "start_fc09ad15",
+   "stage": "opening",
+   "emotion": "wry",
+   "intensity": 3,
+   "text": "Professor Vance.",
+   "instruct": "Say this bright and young, wry.",
+   "f0": 376.2,
+   "semis": 3.75,
+   "f0_jump": 0.0,
+   "hf_ratio": 0.00381,
+   "centroid": 2990.3,
+   "tonality": 0.00848,
+   "dur": 1.68,
+   "asr": "Professor Vance.",
+   "leak": []
+  },
+  {
+   "rung_hz": 300,
+   "file": "300hz_02_rising_asking.ogg",
+   "id": "chapter_2_467faa5d",
+   "stage": "rising",
+   "emotion": "asking",
+   "intensity": 3,
+   "text": "And me?",
+   "instruct": "Say this bright and alert, rising at the end.",
+   "f0": 266.0,
+   "semis": 7.44,
+   "f0_jump": 0.0,
+   "hf_ratio": 0.00077,
+   "centroid": 1831.3,
+   "tonality": 0.02526,
+   "dur": 0.56,
+   "asr": "and me?",
+   "leak": []
+  },
+  {
+   "rung_hz": 300,
+   "file": "300hz_03_pressure_nervous.ogg",
+   "id": "chapter_4_82165b44",
+   "stage": "pressure",
+   "emotion": "nervous",
+   "intensity": 3,
+   "text": "Maybe it was.",
+   "instruct": "Say this young and pressed, nervous.",
+   "f0": 275.4,
+   "semis": 26.68,
+   "f0_jump": 0.076,
+   "hf_ratio": 0.00101,
+   "centroid": 2213.0,
+   "tonality": 0.00527,
+   "dur": 1.68,
+   "asr": "Maybe it was",
+   "leak": []
+  },
+  {
+   "rung_hz": 300,
+   "file": "300hz_04_intimate_breathless.ogg",
+   "id": "route_pact_a3ebdf33",
+   "stage": "intimate",
+   "emotion": "breathless",
+   "intensity": 2,
+   "text": "That's a very old-fashioned way to ask, Professor.",
+   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
+   "f0": 310.9,
+   "semis": 11.14,
+   "f0_jump": 0.031,
+   "hf_ratio": 0.00186,
+   "centroid": 2222.6,
+   "tonality": 0.00205,
+   "dur": 4.04,
+   "asr": "That's a very old-fashioned way to ask professor.",
+   "leak": []
+  },
+  {
+   "rung_hz": 317,
+   "file": "317hz_01_opening_wry.ogg",
+   "id": "start_fc09ad15",
+   "stage": "opening",
+   "emotion": "wry",
+   "intensity": 3,
+   "text": "Professor Vance.",
+   "instruct": "Say this bright and young, wry.",
+   "f0": 320.0,
+   "semis": 7.22,
+   "f0_jump": 0.026,
+   "hf_ratio": 0.01117,
+   "centroid": 2675.6,
+   "tonality": 0.00555,
+   "dur": 1.76,
+   "asr": "Professor Vance",
+   "leak": []
+  },
+  {
+   "rung_hz": 317,
+   "file": "317hz_02_rising_asking.ogg",
+   "id": "chapter_2_467faa5d",
+   "stage": "rising",
+   "emotion": "asking",
+   "intensity": 3,
+   "text": "And me?",
+   "instruct": "Say this bright and alert, rising at the end.",
+   "f0": 382.8,
+   "semis": 4.66,
+   "f0_jump": 0.0,
+   "hf_ratio": 0.00286,
+   "centroid": 2224.2,
+   "tonality": 0.03145,
+   "dur": 0.84,
+   "asr": "and me.",
+   "leak": []
+  },
+  {
+   "rung_hz": 317,
+   "file": "317hz_03_pressure_nervous.ogg",
+   "id": "chapter_4_82165b44",
+   "stage": "pressure",
+   "emotion": "nervous",
+   "intensity": 3,
+   "text": "Maybe it was.",
+   "instruct": "Say this young and pressed, nervous.",
+   "f0": 311.8,
+   "semis": 6.55,
+   "f0_jump": 0.0,
+   "hf_ratio": 0.00293,
+   "centroid": 2485.1,
+   "tonality": 0.00563,
+   "dur": 1.36,
+   "asr": "Maybe it was.",
+   "leak": []
+  },
+  {
+   "rung_hz": 317,
+   "file": "317hz_04_intimate_breathless.ogg",
+   "id": "route_pact_a3ebdf33",
+   "stage": "intimate",
+   "emotion": "breathless",
+   "intensity": 2,
+   "text": "That's a very old-fashioned way to ask, Professor.",
+   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
+   "f0": 312.7,
+   "semis": 5.24,
+   "f0_jump": 0.0,
+   "hf_ratio": 0.00124,
+   "centroid": 2188.9,
+   "tonality": 0.00381,
+   "dur": 3.36,
+   "asr": "That's a very old-fashioned way to ask, Professor.",
+   "leak": []
+  }
+ ],
+ "ceiling_retake": {
+  "why": "A second, independent attempt to reach the 335 Hz the brief suggested. The seed was pushed to 455 Hz measured (+9.1 st over the raw clone) and the takes still came back at a 317 Hz median -- and far less coherent than the 317 rung in the ladder proper. A third attempt, from a seed asked for at 551 Hz, hung: the model ran away mid-line and was killed after 26 minutes on one four-word line.",
+  "seed": {
+   "f0": 455.2,
+   "semis": 9.2
+  },
+  "clips": [
+   {
+    "key": "retake_01_opening_wry",
+    "f0": 376.2,
+    "semis": 4.09,
+    "f0_jump": 0.027,
+    "hf_ratio": 0.00328,
+    "centroid": 2112.3,
+    "tonality": 0.01068,
+    "dur": 1.08,
+    "asr": "Professor Vance?",
+    "leak": []
+   },
+   {
+    "key": "retake_02_rising_asking",
+    "f0": 280.3,
+    "semis": 13.54,
+    "f0_jump": 0.0,
+    "hf_ratio": 0.00082,
+    "centroid": 1476.6,
+    "tonality": 0.07373,
+    "dur": 0.72,
+    "asr": "and me?",
+    "leak": []
+   },
+   {
+    "key": "retake_03_pressure_nervous",
+    "f0": 347.0,
+    "semis": 15.03,
+    "f0_jump": 0.064,
+    "hf_ratio": 0.00595,
+    "centroid": 1969.2,
+    "tonality": 0.0078,
+    "dur": 2.04,
+    "asr": "Maybe it was",
+    "leak": []
+   },
+   {
+    "key": "retake_04_intimate_breathless",
+    "f0": 262.2,
+    "semis": 11.05,
+    "f0_jump": 0.037,
+    "hf_ratio": 0.00433,
+    "centroid": 1980.8,
+    "tonality": 0.00132,
+    "dur": 4.76,
+    "asr": "That's a very old-fashioned way to ask, Professor.",
+    "leak": []
+   }
+  ]
+ },
+ "transfer": [
+  [
+   259,
+   222
+  ],
+  [
+   372,
+   262
+  ],
+  [
+   394,
+   293
+  ],
+  [
+   398,
+   316
+  ],
+  [
+   455,
+   317
+  ],
+  [
+   "551 (asked for)",
+   "the run hung"
+  ]
+ ]
+}
