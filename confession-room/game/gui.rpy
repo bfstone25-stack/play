@@ -3,27 +3,28 @@
 init -1 python:
     gui.init(1920, 1080)
 
-## Colors
-define gui.accent_color = '#d99b66'
-define gui.idle_color = '#b0a8a0'
-define gui.idle_small_color = '#908880'
-define gui.hover_color = '#ffcc88'
-define gui.selected_color = '#f2be8d'
-define gui.insensitive_color = '#605855'
-define gui.muted_color = '#7d685c'
-define gui.hover_muted_color = '#a88c7c'
-define gui.text_color = '#f5f0eb'
-define gui.interface_text_color = '#f5f0eb'
+## Colors — ink, bone white, red stamp (ops/adult_forks/TITLE_SCREENS.md)
+define gui.accent_color = '#c41e24'
+define gui.idle_color = '#c4bdae'
+define gui.idle_small_color = '#948d7e'
+define gui.hover_color = '#ffffff'
+define gui.selected_color = '#ece5d6'
+define gui.insensitive_color = '#5e5a52'
+define gui.muted_color = '#6e6960'
+define gui.hover_muted_color = '#a29b8c'
+define gui.text_color = '#ece5d6'
+define gui.interface_text_color = '#ece5d6'
 
-## Fonts
-define gui.text_font = "DejaVuSans.ttf"
-define gui.name_text_font = "DejaVuSans.ttf"
-define gui.interface_text_font = "DejaVuSans.ttf"
+## Fonts — Courier Prime throughout: the whole game is a case file. OFL, bundled in
+## game/fonts (copied there by ops/keyvisual_art/logotype.py).
+define gui.text_font = "fonts/CourierPrime-Regular.ttf"
+define gui.name_text_font = "fonts/CourierPrime-Bold.ttf"
+define gui.interface_text_font = "fonts/CourierPrime-Bold.ttf"
 
 ## Font sizes
-define gui.text_size = 32
-define gui.name_text_size = 36
-define gui.interface_text_size = 28
+define gui.text_size = 30
+define gui.name_text_size = 24
+define gui.interface_text_size = 24
 define gui.label_text_size = 34
 define gui.notify_text_size = 24
 define gui.title_text_size = 64
@@ -90,21 +91,21 @@ define gui.navigation_xpos = 120
 ## seem to be any sliders/mute under the audio tab". Solid colours need no assets.
 style bar:
     ysize 26
-    left_bar Solid("#d99b66")
-    right_bar Solid("#2a2233")
+    left_bar Solid("#c41e24")
+    right_bar Solid("#232326")
     thumb None
     thumb_shadow None
 
 style slider:
     ysize 26
-    left_bar Solid("#d99b66")
-    right_bar Solid("#2a2233")
+    left_bar Solid("#c41e24")
+    right_bar Solid("#232326")
     thumb None
     thumb_shadow None
 
 style vbar:
     xsize 26
-    top_bar Solid("#d99b66")
-    bottom_bar Solid("#2a2233")
+    top_bar Solid("#c41e24")
+    bottom_bar Solid("#232326")
     thumb None
     thumb_shadow None

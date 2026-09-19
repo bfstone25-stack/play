@@ -1,4 +1,11 @@
-## Screens configuration for Ren'Py 8
+## Screens for Confession Room — the skin described in ops/adult_forks/TITLE_SCREENS.md.
+##
+## One face, one treatment: Stardos Stencil for the mark (images/title/logo.png, drawn by
+## ops/keyvisual_art/logotype.py — bone-white stencil, ink bleed, a red case stamp),
+## Courier Prime for everything else, because everything else in this game is a police
+## file. Ink, bone white, red stamp. The title screen is the key visual — the suspect at
+## the table under the one lamp, her face half-lit — under a breathing camera, the lamp
+## swinging its light, haze drifting, the blinds' shadow across the wall.
 
 init -1:
     style default:
@@ -10,12 +17,13 @@ init -1:
         font gui.name_text_font
         size gui.name_text_size
         color gui.accent_color
-        bold True
+        bold False
 
     style say_dialogue:
         font gui.text_font
         size gui.text_size
         color gui.text_color
+        line_spacing 4
 
     style namebox:
         xalign 0.0
@@ -26,40 +34,106 @@ init -1:
         font gui.name_text_font
         size gui.name_text_size
         color gui.accent_color
-        bold True
 
     style say_thought:
         font gui.text_font
         size gui.text_size
-        color "#c8c0b8"
+        color "#cfc8b8"
         italic True
 
     style say_window:
-        background Transform("#100c14", alpha=0.88)
+        background Frame("images/ui/textbox.png", 0, 60, 0, 0)
         xalign 0.5
-        xsize 1800
-        yalign 0.98
-        ysize 260
-        padding (50, 30, 50, 30)
+        xsize 1920
+        yalign 1.0
+        ysize 290
+        padding (200, 62, 200, 30)
 
     style choice_vbox:
         xalign 0.5
         yalign 0.5
-        spacing 25
+        spacing 22
 
     style choice_button:
-        background Transform("#241a28", alpha=0.92)
-        hover_background Transform("#3d2238", alpha=0.95)
+        background Frame("images/ui/choice_idle.png", 14, 14)
+        hover_background Frame("images/ui/choice_hover.png", 14, 14)
         xsize 1100
-        ysize 75
+        ysize 78
         padding (30, 15, 30, 15)
+        hover_sound "audio/ui_hover.ogg"
+        activate_sound "audio/ui_click.ogg"
 
     style choice_button_text:
+        font gui.interface_text_font
         xalign 0.5
         yalign 0.5
+        size 26
+        idle_color "#ece5d6"
+        hover_color "#1a1a1c"
+
+    ## Every button in the game: the same face, the same two sounds.
+    style button:
+        hover_sound "audio/ui_hover.ogg"
+        activate_sound "audio/ui_click.ogg"
+
+    style button_text:
+        font gui.interface_text_font
+        size gui.interface_text_size
+        idle_color gui.idle_color
+        hover_color gui.hover_color
+        selected_color gui.selected_color
+        insensitive_color gui.insensitive_color
+
+    ## Title-screen menu entries: Cinzel, tracked out, a brass rule that grows on hover.
+    style title_button:
+        xsize 380
+        ysize 56
+        padding (18, 6, 18, 6)
+        background None
+        hover_background Frame("images/ui/title_hover.png", 6, 6)
+
+    style title_button_text:
+        font "fonts/CourierPrime-Bold.ttf"
+        size 28
+        kerning 2
+        idle_color "#e8e2d6"
+        hover_color "#ffffff"
+        insensitive_color "#5e5a52"
+        outlines [(3, "#060607", 0, 0), (1, "#060607", 0, 2)]
+        hover_outlines [(3, "#060607", 0, 0), (1, "#c41e24", 0, 0)]
+
+    style nav_button:
+        xsize 300
+        ysize 48
+        padding (10, 4, 10, 4)
+        background None
+        hover_background Frame("images/ui/title_hover.png", 6, 6)
+
+    style nav_button_text:
+        font "fonts/CourierPrime-Bold.ttf"
+        size 24
+        kerning 2
+        idle_color "#c4bdae"
+        hover_color "#ffffff"
+        selected_color "#ece5d6"
+
+    style pref_button:
+        background None
+        padding (10, 4, 10, 4)
+        hover_background Frame("images/ui/title_hover.png", 6, 6)
+
+    style pref_button_text:
+        font gui.text_font
+        size 26
+        idle_color "#b8b1a2"
+        hover_color "#ffffff"
+        selected_color "#ece5d6"
+
+    style heading_text:
+        font "fonts/CourierPrime-Bold.ttf"
         size 30
-        idle_color "#f0e6dc"
-        hover_color "#ffdfa0"
+        kerning 2
+        color gui.accent_color
 
 ## Say Screen
 screen say(who, what):
@@ -69,12 +143,17 @@ screen say(who, what):
         id "window"
 
         vbox:
-            spacing 10
+            spacing 6
             if who is not None:
                 window:
                     id "namebox"
                     style "namebox"
-                    text who id "who"
+                    background Frame("images/ui/namebox.png", 8, 8)
+                    xsize 420
+                    ysize 52
+                    padding (22, 8, 22, 8)
+                    yoffset -70
+                    text who id "who" yalign 0.5
 
             text what id "what"
 
@@ -96,19 +175,11 @@ screen choice(items):
     vbox:
         yalign 0.5
         xalign 0.5
-        spacing 25
+        spacing 22
 
         for i in items:
             textbutton i.caption action i.action:
-                xsize 1100
-                ysize 70
-                background Transform("#241a28", alpha=0.92)
-                hover_background Transform("#3d2238", alpha=0.95)
-                text_size 28
-                text_color "#f0e6dc"
-                text_hover_color "#ffdfa0"
-                text_xalign 0.5
-                text_yalign 0.5
+                style "choice_button"
 
 ## Quick Menu
 screen quick_menu():
@@ -117,9 +188,9 @@ screen quick_menu():
     if quick_menu:
         hbox:
             style_prefix "quick"
-            xalign 0.95
-            yalign 0.98
-            spacing 20
+            xalign 0.98
+            yalign 0.995
+            spacing 24
 
             textbutton _("Back") action Rollback()
             textbutton _("History") action ShowMenu('history')
@@ -130,48 +201,141 @@ screen quick_menu():
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
 
+style quick_button:
+    background None
+    padding (6, 2, 6, 2)
+    hover_sound None
+    activate_sound "audio/ui_click.ogg"
+
+style quick_button_text:
+    font "fonts/CourierPrime-Bold.ttf"
+    size 17
+    kerning 1
+    idle_color "#847e72"
+    hover_color "#ece5d6"
+    selected_color gui.accent_color
+
 default quick_menu = True
 
-## Main Menu Screen
+## ---- Title screen ------------------------------------------------------------------------
+## The key visual with a breathing camera: 18 seconds out, 18 seconds back, never still.
+transform kv_breathe:
+    subpixel True
+    xalign 0.5 yalign 0.5
+    zoom 1.03 xoffset 0 yoffset 0
+    block:
+        ease 18.0 zoom 1.08 xoffset -14 yoffset 6
+        ease 18.0 zoom 1.03 xoffset 0 yoffset 0
+        repeat
+
+## The one lamp, swinging: its pool of light slides a little and swells with it.
+transform lamp_swing:
+    subpixel True
+    alpha 0.62 xoffset -26
+    block:
+        ease 3.4 alpha 0.72 xoffset 26
+        ease 3.4 alpha 0.60 xoffset -26
+        repeat
+
+## Haze: two copies of a low-frequency sheet crossing each other slowly.
+transform haze_drift_a:
+    subpixel True
+    alpha 0.26 xoffset -80
+    block:
+        ease 26.0 xoffset 80 alpha 0.34
+        ease 26.0 xoffset -80 alpha 0.26
+        repeat
+
+transform haze_drift_b:
+    subpixel True
+    alpha 0.18 xoffset 60 yoffset 30
+    block:
+        ease 31.0 xoffset -60 yoffset -30
+        ease 31.0 xoffset 60 yoffset 30
+        repeat
+
+transform logo_settle:
+    subpixel True
+    alpha 0.0 zoom 1.06 yoffset -10
+    pause 0.7
+    ease 1.6 alpha 1.0 zoom 1.0 yoffset 0
+
+## The stamp lands after the mark: a hard snap, not a fade.
+transform fade_in_after(t):
+    alpha 0.0 xoffset -16
+    pause t
+    ease 0.7 alpha 1.0 xoffset 0
+
+transform scrim_in:
+    alpha 0.0
+    ease 1.2 alpha 1.0
+
 screen main_menu():
     tag menu
 
-    add "images/bg/bg_room.webp"   # was Room 704's lobby, which does not exist in this game
-    # The lobby art is bright on the left, where the title and the menu sit; without a scrim
-    # the title is unreadable at thumbnail size, which is the mistake Elena's cover made.
-    add Solid("#07070b") alpha 0.55
+    on "show" action Play("sound", "audio/title_sting.ogg")
+
+    add "#060607"
+    add "images/title/keyvisual.webp" at kv_breathe
+    # Blinds and haze were set before the key visual existed, against a placeholder that
+    # was nearly black. Over the real plate — whose back wall is a lit one-way mirror —
+    # they stacked into bright horizontal banding across the whole right half and flattened
+    # the room. They are atmosphere, not a second subject: enough to move, not enough to see.
+    add "images/title/blinds.png" alpha 0.22
+    add "images/title/light.png" at lamp_swing
+    add "images/title/haze.png" at haze_drift_a
+    add "images/title/haze.png" at haze_drift_b
+    add "images/title/vignette.png"
+    add "images/title/scrim.png" at scrim_in
 
     key "K_s" action Start()
     key "K_RETURN" action Start()
     key "K_SPACE" action Start()
 
-    # Dark Academia ambient decoration
-    vbox:
-        xalign 0.12
-        yalign 0.4
-        spacing 25
+    ## The mark, stencilled on the wall left of the table.
+    add "images/title/logo.png":
+        at logo_settle
+        xpos 70 ypos 90
+        zoom 0.5
 
-        text _("CONFESSION ROOM") size 76 color "#d9a86b" bold True
-        text _("Three suspects. Twelve questions. One detail only the killer could know.") size 28 color "#a89a8c"
-
-        null height 30
-
-        textbutton _("Start Game") action Start() text_size 32 text_hover_color "#ffdfa0"
-        textbutton _("Load Game") action ShowMenu("load") text_size 32 text_hover_color "#ffdfa0"
-        textbutton _("Preferences") action ShowMenu("preferences") text_size 32 text_hover_color "#ffdfa0"
-        textbutton _("About") action ShowMenu("about") text_size 32 text_hover_color "#ffdfa0"
-        textbutton _("Quit") action Quit(confirm=not main_menu) text_size 32 text_hover_color "#ffdfa0"
+    text _("Three suspects. Twelve questions. One detail only the killer could know."):
+        at fade_in_after(2.0)
+        font "fonts/CourierPrime-Regular.ttf"
+        size 24
+        color "#e8e2d6"
+        outlines [(3, "#060607", 0, 0)]
+        xpos 96 ypos 396
 
     vbox:
-        xalign 0.92
-        yalign 0.95
-        text _("v0.1.0 MVP | Ren'Py 8") size 20 color "#685850"
+        xpos 96 ypos 470
+        spacing 4
+        at fade_in_after(2.3)
+
+        textbutton _("Open the case") action Start() style "title_button"
+        textbutton _("Continue") action ShowMenu("load") style "title_button"
+        textbutton _("Preferences") action ShowMenu("preferences") style "title_button"
+        textbutton _("About") action ShowMenu("about") style "title_button"
+        textbutton _("Quit") action Quit(confirm=not main_menu) style "title_button"
+
+    ## Rating and studio mark: small, bottom left, always the same place.
+    hbox:
+        at fade_in_after(2.6)
+        xpos 60 yalign 0.955
+        spacing 22
+        add "images/ui/rating.png" zoom 0.72 yalign 0.5
+        vbox:
+            yalign 0.5
+            spacing 4
+            add "images/ui/studio.png"
+            text "v[config.version]" font "fonts/CourierPrime-Regular.ttf" size 15 color "#7e7970" outlines [(2, "#060607", 0, 0)]
 
 ## Game Menu Screen (Shell for Save/Load/Prefs)
 screen game_menu(title, scroll=None, yinitial=0.0):
     style_prefix "game_menu"
 
-    add "#120e18"
+    add "#060607"
+    add "images/title/keyvisual.webp" alpha 0.35 xalign 0.5 yalign 0.5 zoom 1.03
+    add "images/title/vignette.png"
 
     frame:
         style "game_menu_outer_frame"
@@ -183,20 +347,21 @@ screen game_menu(title, scroll=None, yinitial=0.0):
             # Navigation Left Column
             vbox:
                 xsize 340
-                yalign 0.15
-                spacing 20
+                yalign 0.14
+                spacing 8
                 xoffset 80
 
-                text title size 42 color "#d99b66" bold True
-                null height 20
+                text title style "heading_text" size 36
+                add "images/ui/rule.png" xsize 280 ysize 2
+                null height 16
 
-                textbutton _("Return") action Return() text_size 28
-                textbutton _("History") action ShowMenu("history") text_size 28
-                textbutton _("Save") action ShowMenu("save") text_size 28
-                textbutton _("Load") action ShowMenu("load") text_size 28
-                textbutton _("Preferences") action ShowMenu("preferences") text_size 28
-                textbutton _("Main Menu") action MainMenu() text_size 28
-                textbutton _("Quit") action Quit() text_size 28
+                textbutton _("Return") action Return() style "nav_button"
+                textbutton _("History") action ShowMenu("history") style "nav_button"
+                textbutton _("Save") action ShowMenu("save") style "nav_button"
+                textbutton _("Load") action ShowMenu("load") style "nav_button"
+                textbutton _("Preferences") action ShowMenu("preferences") style "nav_button"
+                textbutton _("Main Menu") action MainMenu() style "nav_button"
+                textbutton _("Quit") action Quit() style "nav_button"
 
             # Content Right Box
             frame:
@@ -204,7 +369,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
                 ysize 900
                 xalign 0.5
                 yalign 0.5
-                background Transform("#1d1522", alpha=0.9)
+                background Frame("images/ui/panel.png", 16, 16)
                 padding (40, 40, 40, 40)
                 transclude
 
@@ -225,30 +390,31 @@ screen history():
                         if h.who:
                             text h.who:
                                 style "history_name"
-                                color "#d99b66"
-                                bold True
+                                font gui.name_text_font
+                                color gui.accent_color
                         $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
                         text what:
                             style "history_text"
-                            color "#e0d8cf"
+                            color "#e2dccd"
 
 ## Preferences Screen
 screen preferences():
     tag menu
     use game_menu(_("Preferences")):
+        style_prefix "pref"
         vbox:
             spacing 30
             hbox:
                 spacing 60
                 vbox:
-                    spacing 15
-                    text _("Display") size 30 color "#d99b66"
+                    spacing 12
+                    text _("Display") style "heading_text"
                     textbutton _("Window") action Preference("display", "window")
                     textbutton _("Fullscreen") action Preference("display", "fullscreen")
 
                 vbox:
-                    spacing 15
-                    text _("Sound") size 30 color "#d99b66"
+                    spacing 12
+                    text _("Sound") style "heading_text"
                     textbutton _("Mute all") action Preference("all mute", "toggle")
 
             ## Second row: four columns, three of them 350px wide, overflowed 1920 next to
@@ -256,18 +422,18 @@ screen preferences():
             hbox:
                 spacing 60
                 vbox:
-                    spacing 15
-                    text _("Music Volume") size 30 color "#d99b66"
+                    spacing 12
+                    text _("Music Volume") style "heading_text"
                     bar value Preference("music volume") xsize 350
 
                 vbox:
-                    spacing 15
-                    text _("Sound Volume") size 30 color "#d99b66"
+                    spacing 12
+                    text _("Sound Volume") style "heading_text"
                     bar value Preference("sound volume") xsize 350
 
                 vbox:
-                    spacing 15
-                    text _("Text Speed") size 30 color "#d99b66"
+                    spacing 12
+                    text _("Text Speed") style "heading_text"
                     bar value Preference("text speed") xsize 350
 
 ## Save & Load Screens
@@ -291,16 +457,16 @@ screen file_slots(title):
                     action FileAction(slot)
                     xsize 400
                     ysize 320
-                    background Transform("#281c2e", alpha=0.9)
-                    hover_background Transform("#462b4c", alpha=0.95)
+                    background Frame("images/ui/slot_idle.png", 10, 10)
+                    hover_background Frame("images/ui/slot_hover.png", 10, 10)
 
                     vbox:
                         xalign 0.5
                         yalign 0.5
                         spacing 10
-                        text "Slot [slot]" size 26 color "#d99b66" xalign 0.5
+                        text _("Slot [slot]") style "heading_text" size 22 xalign 0.5
                         add FileScreenshot(slot) xalign 0.5 xsize 360 ysize 202
-                        text FileTime(slot, format=_("{#file_time}%Y-%m-%d %H:%M"), empty=_("empty slot")) size 18 color "#a09890" xalign 0.5
+                        text FileTime(slot, format=_("{#file_time}%Y-%m-%d %H:%M"), empty=_("empty slot")) size 18 color "#a29b8c" xalign 0.5
 
 ## About Screen
 screen about():
@@ -308,13 +474,14 @@ screen about():
     use game_menu(_("About")):
         vbox:
             spacing 20
-            text "[config.name!t]" size 38 color "#d99b66" bold True
-            text _("Version [config.version!t]") size 24 color "#b0a095"
+            add "images/title/logo.png" zoom 0.36
+            text _("Version [config.version!t]") size 24 color "#b8b1a2"
             null height 20
-            text _("A 15-minute branching narrative Suspense / Softcore Ecchi Visual Novel.") size 26 color "#e0d8d0"
-            text _("Designed for multi-platform release on F95zone, DLsite, Patreon, and Web portals.") size 26 color "#e0d8d0"
+            text _("An interrogation. Three suspects, twelve questions, and one detail only the killer could know.") size 26 color "#e2dccd"
+            text _("Designed for multi-platform release on F95zone, DLsite, Patreon, and Web portals.") size 26 color "#e2dccd"
             null height 30
-            text _("Engine: Ren'Py [renpy.version_only]") size 22 color "#807068"
+            add "images/ui/studio.png"
+            text _("Engine: Ren'Py [renpy.version_only]") size 22 color "#6e6960"
 
 ## Confirm Screen
 screen confirm(message, yes_action, no_action):
@@ -325,21 +492,21 @@ screen confirm(message, yes_action, no_action):
     frame:
         xalign 0.5
         yalign 0.5
-        xsize 700
-        ysize 300
-        background Transform("#1d1522", alpha=0.98)
+        xsize 720
+        ysize 320
+        background Frame("images/ui/confirm.png", 16, 16)
         padding (40, 40, 40, 40)
 
         vbox:
             xalign 0.5
             yalign 0.5
             spacing 40
-            text message size 28 color "#f0e6dc" xalign 0.5
+            text message size 28 color "#ece5d6" xalign 0.5 text_align 0.5
             hbox:
                 xalign 0.5
                 spacing 80
-                textbutton _("Yes") action yes_action text_size 30 text_hover_color "#d99b66"
-                textbutton _("No") action no_action text_size 30 text_hover_color "#d99b66"
+                textbutton _("Yes") action yes_action style "title_button" xsize 160 text_xalign 0.5
+                textbutton _("No") action no_action style "title_button" xsize 160 text_xalign 0.5
 
 ## Notify Screen
 screen notify(message):
@@ -349,8 +516,8 @@ screen notify(message):
     frame:
         xalign 0.5
         yalign 0.08
-        background Transform("#2b1b30", alpha=0.92)
+        background Frame("images/ui/namebox.png", 8, 8)
         padding (30, 15, 30, 15)
-        text message size 24 color "#ffdfa0"
+        text message size 24 color "#ece5d6"
 
     timer 3.25 action Hide('notify')
