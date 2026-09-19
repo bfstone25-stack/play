@@ -58,7 +58,7 @@ python3 tests/headless_web.py            # drives the web build in Chromium, scr
 | `scripts/palette.gd`, `studio_theme.gd` | this title's own palette (ink / lacquer / gold leaf / smoke; violet / silver / candle) and Theme; same API as the siblings' |
 | `scripts/gate.gd` | copy of `shared/godot/gate.gd`, refreshed by `ops/godot_build.sh` |
 | `pool/*.json` | the shipped text; rebuilt from `tools/pool_*.py` by `tools/build_pool.py` |
-| `assets/reader/reader_{calm,reveal,giveback}.webp` | the reader, 720×560 RGBA with faded edges, from `ops/fortune_art/fortune_gen.py` (refs on flat grey, then the three states with IP-Adapter, all tier 1; she is a Western woman per the design doc §2.6) via `tools/install_reader.py` |
+| `assets/reader/reader_{calm,reveal,giveback}.webp` | the reader, 448×520 RGBA with faded edges, from `ops/fortune_art/fortune_gen.py` (refs on flat grey, then the three states with IP-Adapter, all tier 1; she is a Western woman per the design doc §2.6) via `tools/install_reader.py` |
 | `tools/install_tarot.py` | picks JSON `{slug: stem}` → `assets/tarot/<slug>.webp` at the face frame's size (396×422); `--list` shows which of the 78 have candidates in `ops/tarot_art/out/faces/` |
 | `assets/fonts/` | Nunito, Playfair Display Italic, and `NotoSerifSC-subset.otf` (690 KB: Noto Serif CJK SC cut to exactly the characters the game has, by `tools/subset_font.py`); OFL licences beside them |
 
