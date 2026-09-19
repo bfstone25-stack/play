@@ -25,9 +25,28 @@ const PLATES := {
 
 const GATED := ["cg_hatch", "cg_403"]
 
+## Stand-ins for slots whose render has not landed. Only used when the slot's own file
+## and its `_locked` partner are both absent, and only for open plates — a gated slot
+## always falls to its censored partner, never to somebody else's picture.
+##
+## cg_complicit is the one that needed this. It is declared in PLATES above and in the
+## design's ending table, but it was never a slot in late_inspection_gen.py and has no
+## entry in picks.json, so the COMPLICIT ending — a whole third of the game's endings —
+## was showing the player a placeholder card that read "OVERNIGHT CLAUSE — PLACEHOLDER
+## PLATE". cg_renewal is the COMPLICIT route's own plate (the renewed flat, the morning
+## that should not exist), so it is the honest stand-in until the render lands, at which
+## point cg_complicit.png simply exists and the chain stops one step earlier.
+const SUBSTITUTE := {
+	"cg_complicit": "cg_renewal",
+}
+
 
 static func is_gated(id: String) -> bool:
 	return GATED.has(id)
+
+
+static func substitute(id: String) -> String:
+	return str(SUBSTITUTE.get(id, ""))
 
 
 static func gate_scene(id: String) -> String:

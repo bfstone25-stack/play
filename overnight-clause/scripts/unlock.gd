@@ -43,8 +43,17 @@ static func paid_package(id: String) -> bool:
 	return ResourceLoader.exists(PAID_DIR + id + ".png") or FileAccess.file_exists(PAID_DIR + id + ".png")
 
 
+## The gateway serves WEBP (gateway/app.py:304 reads ops/gated_assets/<app>/<key>.webp
+## and answers media_type="image/webp"). This used to write those bytes to "<id>.png" and
+## load them with Image.load(), which picks its decoder from the file extension — so a
+## redeemed ticket landed real bytes on disk and then failed to decode them, and the
+## player saw the censored plate after clearing the gate. Verified against the live
+## gateway on 2026-09-18: /unlock/fetch returns RIFF....WEBP, 104420 bytes.
+##
+## The extension is therefore not guessed. Bytes are stored under a neutral name and the
+## decoder is chosen from the file's magic number.
 static func saved_path(id: String) -> String:
-	return SAVE_DIR + id + ".png"
+	return SAVE_DIR + id + ".plate"
 
 
 ## True when the real bytes are available to this install, by either route.
@@ -89,16 +98,31 @@ func redeem(id: String) -> bool:
 	if _ticket.get("key", "") != id:
 		return false
 	var url := "%s/unlock/fetch?ticket=%s&app=%s&key=%s" % [API, _ticket["ticket"], APP, id]
-	var err := _http.request(url)
-	if err != OK:
-		return false
-	var res: Array = await _http.request_completed
-	if int(res[1]) != 200:
-		return false
-	var data: PackedByteArray = res[3]
-	if data.size() <= 1024:
-		return false
-	return write_delivered(id, data)
+	# The gateway will not spend a ticket less than _MIN_WAIT (18s) after issuing it
+	# (gateway/app.py:302) — it answers 425 with the seconds remaining, and a redeem that
+	# only accepted 200 could never succeed no matter how the gate behaved. Confirmed
+	# live on 2026-09-18: an immediate fetch is 425 {"error":"too soon","wait":17}; the
+	# same ticket 20s later is 200 image/webp. A 425 is not a failure, it is a clock.
+	for attempt in 4:
+		var err := _http.request(url)
+		if err != OK:
+			return false
+		var res: Array = await _http.request_completed
+		var code := int(res[1])
+		if code == 425:
+			var wait := 3.0
+			var parsed = JSON.parse_string((res[3] as PackedByteArray).get_string_from_utf8())
+			if typeof(parsed) == TYPE_DICTIONARY:
+				wait = clampf(float(parsed.get("wait", 3)) + 1.0, 1.0, 30.0)
+			await Engine.get_main_loop().create_timer(wait, true, false, true).timeout
+			continue
+		if code != 200:
+			return false
+		var data: PackedByteArray = res[3]
+		if data.size() <= 1024:
+			return false
+		return write_delivered(id, data)
+	return false
 
 
 ## Split out so the tests can deliver bytes without a network: the write-and-verify half
@@ -121,3 +145,24 @@ static func source_for(id: String) -> String:
 	if ready_for(id):
 		return saved_path(id)
 	return ""
+
+
+## Decode a delivered file without trusting its name. PNG, WEBP and JPEG all announce
+## themselves in their first bytes; anything else is treated as not delivered rather than
+## as a texture, so a gateway error page can never become a "plate".
+static func decode_delivered(path: String) -> Texture2D:
+	var data := FileAccess.get_file_as_bytes(path)
+	if data.size() <= 1024:
+		return null
+	var img := Image.new()
+	var err := ERR_FILE_UNRECOGNIZED
+	if data.size() > 12 and data[0] == 0x52 and data[1] == 0x49 and data[2] == 0x46 and data[3] == 0x46 \
+			and data[8] == 0x57 and data[9] == 0x45 and data[10] == 0x42 and data[11] == 0x50:
+		err = img.load_webp_from_buffer(data)
+	elif data[0] == 0x89 and data[1] == 0x50:
+		err = img.load_png_from_buffer(data)
+	elif data[0] == 0xFF and data[1] == 0xD8:
+		err = img.load_jpg_from_buffer(data)
+	if err != OK or img.is_empty():
+		return null
+	return ImageTexture.create_from_image(img)

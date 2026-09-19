@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bul5shv17tksm"
-path="res://.godot/imported/cg_hatch.png-bd30dc0b266aa5086b7f56a5c526bd8c.ctex"
+uid="uid://dgrga8cktg73a"
+path="res://.godot/imported/cg_mirror_locked.png-0fc4026b265688485420e93de58f38d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plates_x/cg_hatch.png"
-dest_files=["res://.godot/imported/cg_hatch.png-bd30dc0b266aa5086b7f56a5c526bd8c.ctex"]
+source_file="res://assets/plates/cg_mirror_locked.png"
+dest_files=["res://.godot/imported/cg_mirror_locked.png-0fc4026b265688485420e93de58f38d1.ctex"]
 
 [params]
 

@@ -320,9 +320,51 @@ func plate_scene(plate_id: String, scene_id: String, cont: Callable, lead := "")
 	if plate_id != "":
 		last_plate_unlocked = hud.show_plate(plate_id)
 		if Overnight.is_gated(plate_id) and not last_plate_unlocked:
-			# The censored plate is the one in this package. Say so in the scene rather
-			# than in a popup: the writing is not gated, only two of seven pictures are.
-			hud.append_story_page(OvernightScript.scene(Overnight.gate_scene(plate_id)))
+			await _offer_unlock(plate_id)
+
+
+## The ads/web track's half of the gate, and the half that was missing.
+##
+## Everything needed for this existed — unlock.gd could ticket and redeem, gate.gd could
+## put the sponsor clip on the page, the bytes are staged under ops/gated_assets — and
+## nothing called any of it. A web player reached a gated plate, was told in the scene
+## text that it was censored in this build, and had no way at all to clear the gate. The
+## whole ads track could gate and never reveal.
+##
+## The order matters. The ticket is asked for FIRST, so the gateway's 18-second minimum
+## (gateway/app.py:302 — a fetch sooner than that is 425, not 200) runs down while the
+## player is watching the clip, rather than starting when the clip ends. That is what the
+## "so the server clock starts with the gate and not with the redeem" comment on
+## Unlock.start() was always for; this is the first caller to honour it.
+##
+## No popup and no redirect: Gate.require hands the decision to gate.js, which draws over
+## the page. A refusal, a page without gate.js, a dead gateway and a redeem that returns
+## no bytes all land in the same place — the scene says the plate is censored in this
+## build and plays on. There is no path here that stops the run.
+func _offer_unlock(plate_id: String) -> void:
+	var censored := func() -> void:
+		# Said in the scene rather than in a popup: the writing is not gated, only two of
+		# seven pictures are.
+		hud.append_story_page(OvernightScript.scene(Overnight.gate_scene(plate_id)))
+	var u: Unlock = hud.plates.unlock if hud.plates else null
+	if u == null or not Gate.is_web():
+		censored.call()
+		return
+	if not await u.start(plate_id):
+		censored.call()
+		return
+	var title: String = str(Overnight.PLATES[plate_id]["title"])
+	if not await Gate.require("plate_" + plate_id, title, "unlock"):
+		censored.call()
+		return
+	if not await u.redeem(plate_id):
+		censored.call()
+		return
+	# Re-pick: source_for() now resolves to the delivered bytes, so this is the real
+	# plate rather than its censored partner.
+	last_plate_unlocked = hud.show_plate(plate_id)
+	if not last_plate_unlocked:
+		censored.call()
 
 
 func show_note(text: String) -> void:

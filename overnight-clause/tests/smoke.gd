@@ -1,6 +1,16 @@
 extends SceneTree
 
 func _init() -> void:
+	# The Gate autoload is not registered yet while a --script SceneTree is constructing,
+	# so loading main.tscn here fails to compile game.gd (game.gd:498 references Gate) and
+	# the scene instantiates as a bare Node3D. Worse, the resulting error is raised inside
+	# a coroutine _init, which kills the coroutine without ever calling quit() — the test
+	# hangs instead of failing. Deferring to after the tree is up is the whole fix, and it
+	# is what tests/playthrough.gd already did.
+	call_deferred("_run")
+
+
+func _run() -> void:
 	var packed := load("res://scenes/main.tscn")
 	if packed == null:
 		push_error("main.tscn failed to load")

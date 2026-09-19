@@ -34,12 +34,28 @@ func _drain() -> void:
 	if guard >= 800:
 		_fail("a scene never closed")
 
+## What the plate layer was showing while the scene was on screen. Sampled here because
+## the scene's continuation calls hide_plate() when the last page turns, so a check made
+## after _drain() reads a cleared layer and passes on an empty picture — which is exactly
+## the kind of check that reports fine while the thing is broken.
+var shown_plate := ""
+var shown_texture := false
+
 func _choose(id: String, i: int) -> void:
 	game.open_choice(id, "prompt", "A", "B", null)
 	await process_frame
 	hud._pick(i)
 	await process_frame
+	await process_frame
+	shown_plate = str(hud.plates.current)
+	shown_texture = hud.plates.art.texture != null
 	await _drain()
+
+## cg_hatch's render has not landed (ops/adult_forks/STATUS.md), so on that slot even a
+## delivered unlock resolves to the censored partner — there is nothing to reveal. The
+## route still has to reach it, play it, and carry on.
+const RENDERED := {"cg_hatch": false, "cg_403": true}
+
 
 func _route(expect_unlocked: bool) -> String:
 	await _fresh()
@@ -58,8 +74,11 @@ func _route(expect_unlocked: bool) -> String:
 	await _choose("pipe", 0)      # answer the pipe -> cg_hatch (gated)
 	if not game.flags["pipe_answered"]:
 		_fail("pipe_answered not set")
-	if game.last_plate_unlocked != expect_unlocked:
-		_fail("cg_hatch unlocked=%s, expected %s" % [game.last_plate_unlocked, expect_unlocked])
+	var want_hatch: bool = expect_unlocked and RENDERED["cg_hatch"]
+	if game.last_plate_unlocked != want_hatch:
+		_fail("cg_hatch unlocked=%s, expected %s" % [game.last_plate_unlocked, want_hatch])
+	if shown_plate != "cg_hatch" or not shown_texture:
+		_fail("cg_hatch showed no picture at all (plate=%s texture=%s)" % [shown_plate, shown_texture])
 	game.on_note("wardrobe")
 	game.on_note("cassette")      # -> cg_cavity, never gated
 	await _drain()
@@ -71,6 +90,8 @@ func _route(expect_unlocked: bool) -> String:
 		_fail("clause_refused not set")
 	if game.last_plate_unlocked != expect_unlocked:
 		_fail("cg_403 unlocked=%s, expected %s" % [game.last_plate_unlocked, expect_unlocked])
+	if shown_plate != "cg_403" or not shown_texture:
+		_fail("cg_403 showed no picture at all (plate=%s texture=%s)" % [shown_plate, shown_texture])
 	game.on_note("final_evidence")
 	await _choose("final", 0)
 	var id: String = game.ending_id
@@ -91,6 +112,8 @@ func _run() -> void:
 
 	# 2. deliver both unlocks the way a redeemed ticket does, and replay the same route
 	for id in Overnight.GATED:
+		if not RENDERED[id]:
+			continue
 		var bytes := FileAccess.get_file_as_bytes("res://assets/plates_x/%s.png" % id)
 		if not Unlock.write_delivered(id, bytes):
 			_fail("could not deliver %s" % id)

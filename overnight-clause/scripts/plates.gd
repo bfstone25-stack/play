@@ -67,15 +67,21 @@ static func _from_disk(path: String) -> Texture2D:
 				return res
 		if not FileAccess.file_exists(path):
 			return null
-	var img := Image.new()
-	if img.load(path) != OK:
-		return null
-	return ImageTexture.create_from_image(img)
+	# user:// deliveries carry whatever the gateway served (WEBP today), so the decoder
+	# is chosen from the bytes rather than from the file name. See unlock.gd.
+	return Unlock.decode_delivered(path)
 
 
 ## The one decision this layer makes, and the mirror of cg_pick() in 09_dist.rpy:141.
 ## Returns [texture, locked]. Locked is true when the player is looking at the censored
 ## plate because the real one is not in this package.
+##
+## Every path through this walks a chain and stops at the first file that is actually on
+## disk: real -> censored partner -> Overnight.SUBSTITUTE -> nothing. Slots whose render
+## has not landed yet have no file at all (the placeholder cards were moved out of the
+## project to ops/late_inspection_art/placeholders/ — shipping one meant a player reached
+## an ending and was shown a card reading "PLACEHOLDER PLATE"), so the chain is the thing
+## that keeps a not-yet-rendered slot from being a hole in the game.
 func pick(id: String) -> Array:
 	if Overnight.is_gated(id):
 		var src := Unlock.source_for(id)
@@ -83,8 +89,25 @@ func pick(id: String) -> Array:
 			var tex := _from_disk(src)
 			if tex != null:
 				return [tex, false]
-		return [_from_disk(DIR + id + "_locked.png"), true]
-	return [_from_disk(DIR + id + ".png"), false]
+		return [_fallback(id), true]
+	var open_tex := _from_disk(DIR + id + ".png")
+	if open_tex != null:
+		return [open_tex, false]
+	var sub := _fallback(id)
+	# A substituted open plate is not "locked": nothing is being withheld from the player,
+	# the render simply has not landed. Saying LOCKED there would be a lie in the badge.
+	return [sub, false]
+
+
+## Censored partner first, then the slot's declared stand-in.
+func _fallback(id: String) -> Texture2D:
+	var locked_tex := _from_disk(DIR + id + "_locked.png")
+	if locked_tex != null:
+		return locked_tex
+	var sub: String = Overnight.substitute(id)
+	if sub != "":
+		return _from_disk(DIR + sub + ".png")
+	return null
 
 
 func show_plate(id: String) -> bool:
