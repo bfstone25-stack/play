@@ -1,0 +1,47 @@
+; Engine configuration file.
+; Flutter 怦然 — the Godot 4.7 rebuild. See PORT_PLAN.md for what is and is not here yet.
+config_version=5
+
+[application]
+
+config/name="Flutter 怦然"
+config/description="LLM-native otome. Nine men who actually remember what you told them — server-side memory, affection that moves in stages, and no script to run out of."
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility", "Forward Plus")
+config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.11, 0.04, 0.086, 1)
+
+[display]
+
+; NOT the 640x360 of the pixel titles. Flutter is 2.5D: a rendered key visual, rendered
+; portraits, and type that has to stay smooth. 1280x720 is the design canvas and every
+; asset is authored at 1920x1080, so the picture is downsampled rather than invented.
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+; "expand" rather than "keep": a phone in portrait is a real target here (the web build is
+; a PWA people install), and "keep" would letterbox it into a stripe. The title screen
+; reflows instead — see _layout() in scripts/title_screen.gd.
+window/stretch/aspect="expand"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method.web="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.11, 0.04, 0.086, 1)
+rendering_device/fallback_to_opengl3=true
+; LINEAR, not NEAREST — the opposite of the pixel titles in this repo. Nothing in Flutter
+; is pixel art and NEAREST would alias the key visual's hair to pieces.
+textures/canvas_textures/default_texture_filter=1
+
+[internationalization]
+
+locale/fallback="en"
+; The zh, ja, es and pt-BR editions all ship from this one build (backend/app.py
+; SUPPORTED_EDITIONS), so the text server data has to come with it.
+locale/include_text_server_data=true
+
+[autoload]
+
+Gate="*res://scripts/gate.gd"
