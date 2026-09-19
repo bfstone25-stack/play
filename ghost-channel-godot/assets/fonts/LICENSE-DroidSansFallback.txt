@@ -1,0 +1,7 @@
+Droid Sans Fallback (DroidSansFallbackFull.ttf)
+Copyright (c) 2008 The Android Open Source Project
+Licensed under the Apache License, Version 2.0.
+http://www.apache.org/licenses/LICENSE-2.0
+
+Bundled as the CJK fallback so the zh build draws its own characters instead of
+borrowing whatever the player's browser happens to have.

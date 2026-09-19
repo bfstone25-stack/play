@@ -1,0 +1,5 @@
+# The renders live under ops/ghost_art/ and build.sh syncs the picked ones in; committing
+# them here would be the same megabytes twice.
+assets/art/
+build/
+.godot/

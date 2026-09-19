@@ -1,0 +1,14 @@
+{
+ "en": {
+  "viper": {
+   "qfail": "en/viper/qfail.ogg",
+   "qpass": "en/viper/qpass.ogg",
+   "quote": "en/viper/quote.ogg",
+   "tic_hex": "en/viper/tic_hex.ogg",
+   "tic_moth": "en/viper/tic_moth.ogg",
+   "tic_quill": "en/viper/tic_quill.ogg",
+   "tic_raven": "en/viper/tic_raven.ogg",
+   "type_accuse": "en/viper/type_accuse.ogg"
+  }
+ }
+}
