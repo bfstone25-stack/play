@@ -1,0 +1,14 @@
+[Unit]
+Description=Flutter: After Hours (adult fork) story backend
+After=network.target
+
+[Service]
+WorkingDirectory=%h/Products/play/flutter-after-hours
+ExecStart=%h/miniconda3/envs/hsm_lcr/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 8931
+Restart=on-failure
+# Static route: the fork never calls a model, so no LLAMACPP_URL and no GPU claim.
+# Set FLUTTER_SHOW_UNFINISHED=1 to expose the three routes whose plates are still
+# placeholders (fushen / liam / adrian) for art QA.
+
+[Install]
+WantedBy=default.target
