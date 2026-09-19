@@ -115,11 +115,22 @@ func _build_ui() -> void:
 	ground.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	ground.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	ground.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	# 16% and pushed toward the shop's own ink. At full strength this is a second art style
-	# behind the first one; at this weight it is the dark of the room, with a lamp in it.
-	ground.modulate = Color(0.22, 0.20, 0.26, 1.0)
+	# Was 22% of a painted room behind a 300x240 pixel stamp — the dark of the room, with a
+	# lamp in it. The pixel room now fills the whole canvas and is the room, so this sits
+	# under it at a quarter of that and only shows through where the stage does not reach.
+	ground.modulate = Color(0.10, 0.09, 0.12, 1.0)
 	ground.texture = GROUNDS["shop"]
 	add_child(ground)
+
+	# The stage is the canvas. Full bleed at 640x360, 1:1 with the logical pixel grid, and
+	# the UI below is drawn on top of it in translucent ink panels rather than beside it in
+	# a column. This is the single change that stops the game looking like a form with a
+	# picture stapled to it; everything else in the re-do is art feeding into it.
+	stage = PixelStageScript.new()
+	stage.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(stage)
+	plates = PlateLayerScript.new()
+	add_child(plates)
 
 	var margin := MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -132,9 +143,15 @@ func _build_ui() -> void:
 	column.add_theme_constant_override("separation", 6)
 	margin.add_child(column)
 
+	var top_panel := PanelContainer.new()
+	var top_style := StyleBoxFlat.new()
+	top_style.bg_color = Color(0.055, 0.045, 0.082, 0.62)
+	top_style.set_content_margin_all(2)
+	top_panel.add_theme_stylebox_override("panel", top_style)
+	column.add_child(top_panel)
 	var top := HBoxContainer.new()
-	top.custom_minimum_size.y = 24
-	column.add_child(top)
+	top.custom_minimum_size.y = 22
+	top_panel.add_child(top)
 	var brand := Label.new()
 	brand.text = "COLLATERAL"
 	brand.add_theme_color_override("font_color", GOLD)
@@ -153,28 +170,33 @@ func _build_ui() -> void:
 	ledger_button.pressed.connect(open_ledger)
 	top.add_child(ledger_button)
 
-	var body := HBoxContainer.new()
-	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	body.add_theme_constant_override("separation", 8)
-	column.add_child(body)
+	# The room gets the top of the frame to itself; the words take the bottom. The sky is
+	# the expanding child, so the text box sits on the floor of the frame at its own height
+	# whatever else the column is holding.
+	var sky := Control.new()
+	sky.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	sky.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	column.add_child(sky)
 
-	var stage_panel := PanelContainer.new()
-	stage_panel.custom_minimum_size = Vector2(300, 240)
-	# The authored scene art is exactly 300x240. Left to fill, the panel grew to the height
-	# of the body row and left a dead strip of flat colour under the shop floor.
-	stage_panel.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	stage_panel.clip_contents = true
-	body.add_child(stage_panel)
-	stage = PixelStageScript.new()
-	stage.custom_minimum_size = Vector2(300, 240)
-	stage_panel.add_child(stage)
-	plates = PlateLayerScript.new()
-	stage_panel.add_child(plates)
+	# The text box. A translucent ink slab pinned to the lower half of the frame, which is
+	# where an adventure game puts its words — over the room, not next to it. 0.86 alpha is
+	# the lowest that kept 12px bitmap type legible over the lamp; it was checked against
+	# the brightest frame in the game (dawn) rather than against the shop.
+	var box := PanelContainer.new()
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.custom_minimum_size.y = 126
+	var box_style := StyleBoxFlat.new()
+	box_style.bg_color = Color(0.055, 0.045, 0.082, 0.96)
+	box_style.border_color = Color(GOLD.r, GOLD.g, GOLD.b, 0.28)
+	box_style.set_border_width_all(1)
+	box_style.set_content_margin_all(7)
+	box.add_theme_stylebox_override("panel", box_style)
+	column.add_child(box)
 
 	var info := VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	info.add_theme_constant_override("separation", 4)
-	body.add_child(info)
+	box.add_child(info)
 	title_label = Label.new()
 	title_label.add_theme_color_override("font_color", GOLD)
 	title_label.add_theme_font_override("font", PixelDisplayFont)
@@ -186,18 +208,26 @@ func _build_ui() -> void:
 	detail.scroll_active = true
 	detail.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	detail.add_theme_font_size_override("normal_font_size", 12)
+	# Three lines of 12px type. Without a floor the label collapsed to nothing and the
+	# question sat under the buttons, which is the sort of thing a screenshot catches and
+	# a test never does.
+	detail.custom_minimum_size.y = 40
 	info.add_child(detail)
 
+	# Inside the slab, not under it. Loose buttons on the bare room left three separate
+	# strips of chrome eating the bottom third of the frame; one slab with the verbs in it
+	# gives the room back about sixty rows, which is the difference between seeing the
+	# counter the game is played across and not.
 	actions = HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 5)
-	actions.custom_minimum_size.y = 30
+	actions.custom_minimum_size.y = 28
 	actions.alignment = BoxContainer.ALIGNMENT_CENTER
-	column.add_child(actions)
+	info.add_child(actions)
 	footer = Label.new()
 	footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	footer.add_theme_color_override("font_color", MUTED)
 	footer.add_theme_font_size_override("font_size", 12)
-	column.add_child(footer)
+	info.add_child(footer)
 
 	ledger_layer = ColorRect.new()
 	ledger_layer.color = Color(0.04, 0.03, 0.07, 1.0)

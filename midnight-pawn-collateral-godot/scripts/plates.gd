@@ -43,22 +43,50 @@ var treatment: ShaderMaterial
 ## two-line scanline on the plate at the pixel canvas's own 240-row grid so it sits on the
 ## same lattice as everything else. It costs one shader and it applies to every plate that
 ## has landed and every plate that has not been rendered yet.
+## Added with the 2026-09-18 re-do: the treatment now *runs*.
+##
+## A plate is a psychometry vision, and a still painting hung in a moving room reads as a
+## painting. The motion is deliberately not a Ken Burns drift — a slow zoom resamples the
+## image every frame and softens exactly the grid the rest of the re-do fought for. It is
+## instead the same layered-deformation idea the pixel stage uses, done in UV:
+##
+## * **the waver** — a slow sine in x whose amplitude is a couple of pixels, snapped to the
+##   canvas lattice with floor(), so the picture shifts by whole pixels and never blurs.
+##   Two sines at 0.31 Hz and 0.11 Hz, so it breathes rather than oscillates.
+## * **the lamp** — the amber multiply flickers on the same two-period beat as the room's
+##   oil lamp (pixel_stage.gd::_draw_lamp), which is what ties the vision to the shop it is
+##   being seen in.
+## * **the read band** — one soft bright horizontal band drifting up the frame every eleven
+##   seconds. It is the only element that says *this is happening now, in her hand*, and it
+##   is what makes the plate read as psychometry rather than as a CG.
+## * the vignette now breathes a little with the lamp, so the edges of the frame move.
 const TREATMENT := """
 shader_type canvas_item;
 uniform float amount : hint_range(0.0, 1.0) = 1.0;
+uniform float motion : hint_range(0.0, 1.0) = 1.0;
+uniform vec2 canvas = vec2(640.0, 360.0);
 uniform vec3 ink = vec3(0.063, 0.051, 0.094);
 uniform vec3 lamp = vec3(1.0, 0.80, 0.52);
 void fragment() {
-	vec4 src = texture(TEXTURE, UV);
+	// Whole-pixel waver: compute the offset in canvas pixels, floor it, convert back.
+	float px = (sin(TIME * 1.95) * 1.6 + sin(TIME * 0.69) * 1.1) * motion;
+	float py = (sin(TIME * 1.31 + 1.7) * 1.2) * motion;
+	vec2 off = vec2(floor(px) / canvas.x, floor(py) / canvas.y);
+	vec4 src = texture(TEXTURE, UV + off);
 	vec3 col = src.rgb;
 	float l = dot(col, vec3(0.299, 0.587, 0.114));
 	col = mix(col, vec3(l), 0.28 * amount);
-	col = mix(col, col * lamp, 0.55 * amount);
+	float flick = 1.0 + (0.055 * sin(TIME * 3.7) + 0.030 * sin(TIME * 14.6)) * motion;
+	col = mix(col, col * lamp * flick, 0.55 * amount);
 	col = mix(ink, col * 0.88, mix(1.0, 0.90, amount));
+	// The read band: one soft rise travelling up the frame, eleven seconds a pass.
+	float band = fract(-TIME * 0.09);
+	float g = smoothstep(0.09, 0.0, abs(UV.y - band));
+	col += vec3(0.055, 0.046, 0.030) * g * motion * amount;
 	vec2 d = UV - vec2(0.5);
-	float v = smoothstep(0.80, 0.28, length(d) * 1.30);
+	float v = smoothstep(0.80 + 0.02 * sin(TIME * 0.8) * motion, 0.28, length(d) * 1.30);
 	col = mix(ink, col, mix(1.0, v, amount));
-	col *= 1.0 - 0.09 * amount * step(1.0, mod(floor(UV.y * 240.0), 2.0));
+	col *= 1.0 - 0.09 * amount * step(1.0, mod(floor(UV.y * canvas.y), 2.0));
 	COLOR = vec4(col, src.a);
 }
 """
@@ -76,7 +104,14 @@ func _ready() -> void:
 	art.set_anchors_preset(Control.PRESET_FULL_RECT)
 	art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	# Linear, and this is not a lapse in a pixel-art pass. A plate is a 1152x768 painting
+	# shown in a 640x360 frame, so it is *downscaled* 1.8x; nearest downsampling of a
+	# painting throws away five pixels in nine and returns aliasing and colour fringes —
+	# which is exactly what the first full-bleed screenshot showed. The pixel lattice on a
+	# plate comes from the treatment's scanline and its whole-pixel waver, not from the
+	# sampler. The pixel floor, which *is* game art at game resolution, sets NEAREST back
+	# in show_plate().
+	art.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var shader := Shader.new()
 	shader.code = TREATMENT
@@ -152,22 +187,22 @@ func pick(id: String) -> Array:
 ## thing and the vision did not come.
 static func _pixel_fallback(id: String) -> Texture2D:
 	var item := str(Collateral.PLATES.get(id, {}).get("item", ""))
-	var ground := Image.create(300, 240, false, Image.FORMAT_RGBA8)
+	var ground := Image.create(640, 360, false, Image.FORMAT_RGBA8)
 	ground.fill(Color(0.063, 0.051, 0.094))
 	var shop := _image_at(PIXEL_DIR + "scene_shop.png")
 	if shop != null:
 		# 22% of the shop, so it reads as the room she is standing in and never competes
 		# with the object in front of it.
-		for y in range(min(240, shop.get_height())):
-			for x in range(min(300, shop.get_width())):
+		for y in range(min(360, shop.get_height())):
+			for x in range(min(640, shop.get_width())):
 				ground.set_pixel(x, y, shop.get_pixel(x, y) * Color(0.22, 0.22, 0.26, 1.0))
 	var curios := _image_at(PIXEL_DIR + "curios.png")
 	var col: int = int(PixelStage.CURIO_COLUMNS.get(item, -1))
 	if curios != null and col >= 0:
 		var cell := Image.create(32, 32, false, Image.FORMAT_RGBA8)
 		cell.blit_rect(curios, Rect2i(col * 32, 32, 32, 32), Vector2i.ZERO)
-		cell.resize(128, 128, Image.INTERPOLATE_NEAREST)
-		ground.blend_rect(cell, Rect2i(0, 0, 128, 128), Vector2i(86, 48))
+		cell.resize(192, 192, Image.INTERPOLATE_NEAREST)
+		ground.blend_rect(cell, Rect2i(0, 0, 192, 192), Vector2i(224, 60))
 	return ImageTexture.create_from_image(ground)
 
 
@@ -194,6 +229,9 @@ func show_plate(id: String) -> bool:
 	# The pixel floor is already the shop's own palette at the shop's own resolution, so it
 	# gets the vignette and none of the grade.
 	treatment.set_shader_parameter("amount", 0.35 if current_source == SRC_PIXEL else 1.0)
+	treatment.set_shader_parameter("motion", 0.0 if current_source == SRC_PIXEL else 1.0)
+	art.texture_filter = (CanvasItem.TEXTURE_FILTER_NEAREST if current_source == SRC_PIXEL
+		else CanvasItem.TEXTURE_FILTER_LINEAR)
 	visible = true
 	match current_source:
 		SRC_LOCKED: badge.text = "CENSORED IN THIS BUILD"

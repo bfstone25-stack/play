@@ -275,6 +275,91 @@ Only `cg_finial`, `cg_market` and `cg_collateral` are staged on the gateway, bec
 unstaged key returns 404 at `/unlock/start`, `start()` returns false, no gate is shown, and
 the fee is refunded — the same path as an offline player.
 
+## The 2026-09-18 visual re-do
+
+Blaze's note: *一个完全不同于普通版本的、比较惊艳的像素风格的 NSFW 游戏 — 一看就是成人的感觉，
+但非常 stylish、有品味，不是那种偏低龄的普通版本游戏.* Two things have to be true at once —
+unmistakably adult, and stylish — and there are two ditches either side of the road: the
+8-bit nostalgia look (the palette-starved NES thing that says the hardware could not do
+better) and the cheap-porn look. The target is boutique: Katana Zero, Eastward, Sea of
+Stars sprite craft, pointed at an adult title. The market reference is DLsite, where the
+top two adult action games by a wide margin are both pixel art — pixel sells there, cheap
+pixel does not.
+
+What changed, in order of how much it matters:
+
+**1. The stage is the canvas.** It was a 300x240 picture in a panel with a form beside it;
+it is now the whole 640x360 frame, drawn 1:1 and integer-scaled 2x to the window, with the
+words in a translucent ink slab across the bottom. Nothing is resampled — the grid is
+exactly as honest as it was — there is 2.9x more of it, and the game stops looking like a
+spreadsheet with art stapled on. The action buttons and the footer moved *inside* the slab,
+which is worth about sixty rows of room.
+
+**2. One fixed palette**, `ops/palettes/midnight-pawn.json`, 64 colours, built by
+`ops/palettes/build_midnight_pawn.py` out of the title's own light — oil-lamp amber,
+violet-black ink, cold blue night — plus ramps for the things the game is made of (wood and
+brass, skin, ossuary teal, mourning violet, warm stone). Every asset quantises onto it, so
+the rooms and the cast agree about what black is. Before this, each image ran its own
+median-cut and the colours drifted between scenes.
+
+**3. Rooms rendered high and converted down** (`ops/pixelize.py`, driven by
+`ops/midnight_pawn_art/build_pixel_assets.py`). The candidate that becomes each asset is
+recorded in `pixel_picks.json`, with the vertical crop anchor, so a rebuild is reproducible.
+
+**4. 72x108 actors**, from mid-thigh up, on a 576x540 sheet. The old sheet was 32x48, which
+is a ten-pixel head, which is no face at all.
+
+**5. Animation by layered deformation** rather than by frames — see below.
+
+### The three prompt failures this pass went through, so nobody re-derives them
+
+Each one is recorded in `ops/midnight_pawn_art/midnight_pawn_gen.py` next to the code it
+broke, and all three were found by looking at a contact sheet, not by a check passing:
+
+- **Rooms, first try:** the fix for the 320px noise trial was written as `minimalist, flat
+  color, limited palette, bold shapes` and produced four flat vector posters — a bank's
+  landing page, no lamp, no depth. The real finding from the trial was narrower: the
+  painting was right and the *prop count* was wrong. `SIMPLE` now constrains density only,
+  and the negatives ban the vector ditch as hard as the cluttered one.
+- **Dawn:** asking for a counter and a window without the shop's own furniture got three
+  modern lobbies and a chapel. With the lamp out of the prompt nothing left in it said
+  *this room*. Dawn is now the shop's tags with the light changed.
+- **Sprites, twice:** the first pass inherited `NEG_REF`, which bans `full body` — while
+  the positive prompt asked for `(full body:1.4)`. Four renders of white fog with a face
+  suggested in it. The second pass fixed that and still fogged, because the bespoke
+  `SPRITE_STYLE` had piled up `soft even lighting, no harsh shadows, flat color, chroma
+  key, green background:1.5` into a prompt with no contrast left to draw. What works is
+  `STYLE_CHAR` — the same block the reference portraits use, which was known good — plus
+  three tags. A negative list is not reusable furniture; it belongs to the shot.
+
+### Does it move?
+
+Yes, and none of it is a second frame of authored art.
+
+`scripts/pixel_stage.gd` draws each actor as four horizontal bands of one sprite, offset
+by whole pixels on sines of different periods: hair drags behind the torso, the chest rises
+and falls, the hips take half the chest's offset so the body bends instead of hopping, the
+hem sways out of phase. Two clients in a room run on different phases so they are not one
+metronome. Around them the lamp breathes on two periods (1.7s and 0.43s, so the flicker
+never settles into a beat you can count), rain falls down the window in 1x5 streaks, and
+dust drifts up through the lamp cone one pixel at a time.
+
+`scripts/plates.gd` does the same idea in UV: the plate wavers by whole canvas pixels —
+`floor()`ed, so a painted vision never blurs — the amber multiply flickers on the room's
+own beat, and one soft band travels up the frame every eleven seconds, which is the element
+that makes a plate read as *a reading happening now* rather than as a CG.
+
+`tests/motion.gd` captures eight frames spaced in real time, writes a filmstrip to
+`user://motion/`, and **fails if nothing moved**. A one-pixel breath and a 5% flicker are
+precisely the things a typo can switch off while every other test still passes.
+
+Honestly, in motion: the room reads as alive — the lamp and the dust do most of that work,
+and the rain is the part you notice last. The actor deformation reads as breathing at the
+counter, and it does *not* read as walking or gesturing; it is presence, not performance.
+The plate's waver and read-band read as a vision. What is still missing is any authored
+second frame — a blink, a hand moving to the object — and that is the next thing worth
+buying, not more shader.
+
 ## Hosting: why this is not on free.blazecore.dev
 
 The four mainstream Godot titles are proxied there by
