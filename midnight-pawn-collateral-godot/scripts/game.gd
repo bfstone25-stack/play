@@ -36,6 +36,9 @@ const PANEL := Color("#201928")
 const GOLD := Color("#e8b84a")
 const CREAM := Color("#f1dfb0")
 const MUTED := Color("#9f94ac")
+## The gate copy sits over a lit key visual, not over the in-game slab: the secondary
+## lines get their own, lighter grey so they read on a phone. See title_screen.gd::_plaque.
+const TITLE_MUTED := Color("#c3b8d2")
 const RED := Color("#d45b68")
 const GREEN := Color("#7f9a7a")
 
@@ -566,6 +569,9 @@ func _show_splash() -> void:
 
 	title_audio = TitleAudioScript.new()
 	title_audio.name = "TitleAudio"
+	# Same reason as the title screen: the tree is paused behind this card, and a
+	# generator that is not processed pushes no frames.
+	title_audio.process_mode = Node.PROCESS_MODE_ALWAYS
 	splash.add_child(title_audio)
 
 	# The copy sits low-left under the mark, ranged left in the composition rather than
@@ -578,8 +584,8 @@ func _show_splash() -> void:
 	var lines := [
 		["An adult fork of Midnight Pawn & Crypt.", CREAM, 12],
 		["18+ only. Everyone depicted is an adult and is written as one.", CREAM, 12],
-		["Sexual content, grief, and a shop that prices both.", MUTED, 12],
-		["The artwork is AI-assisted, directed and culled by hand. The writing is human.", MUTED, 12],
+		["Sexual content, grief, and a shop that prices both.", TITLE_MUTED, 12],
+		["The artwork is AI-assisted, directed and culled by hand. The writing is human.", TITLE_MUTED, 12],
 	]
 	for spec in lines:
 		var l := Label.new()
@@ -614,7 +620,7 @@ func _show_splash() -> void:
 	var studio := Label.new()
 	studio.text = "FLAT 404  ·  blazeCore Play"
 	studio.position = Vector2(404, 334)
-	title_screen.style_label(studio, 12, MUTED)
+	title_screen.style_label(studio, 12, TITLE_MUTED)
 	splash.add_child(studio)
 
 	title_screen.play_in()
