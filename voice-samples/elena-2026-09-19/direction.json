@@ -1,0 +1,82 @@
+[
+ {
+  "file": "01_opening_wry_start_fc09ad15.ogg",
+  "id": "start_fc09ad15",
+  "character": "elena",
+  "stage": "opening",
+  "emotion": "wry",
+  "intensity": 3,
+  "instruct": "Say this bright and light, young and quick, smiling through it, wry, half a laugh in it, easy pace, light, full out.",
+  "text": "Professor Vance."
+ },
+ {
+  "file": "02_opening_asking_start_0e05d244.ogg",
+  "id": "start_0e05d244",
+  "character": "elena",
+  "stage": "opening",
+  "emotion": "asking",
+  "intensity": 2,
+  "instruct": "Say this bright and light, young and quick, smiling through it, a real question, rising at the end, wanting the answer, even pace, open.",
+  "text": "You're not going to ask what it is?"
+ },
+ {
+  "file": "03_rising_asking_chapter_2_467faa5d.ogg",
+  "id": "chapter_2_467faa5d",
+  "character": "elena",
+  "stage": "rising",
+  "emotion": "asking",
+  "intensity": 3,
+  "instruct": "Say this bright but alert now, quicker, leaning in, a real question, rising at the end, wanting the answer, even pace, open, full out.",
+  "text": "And me?"
+ },
+ {
+  "file": "04_pressure_nervous_chapter_4_82165b44.ogg",
+  "id": "chapter_4_82165b44",
+  "character": "elena",
+  "stage": "pressure",
+  "emotion": "nervous",
+  "intensity": 3,
+  "instruct": "Say this younger than she wants to sound, pushing through nerves, nervous, starting and restarting, not quite steady, uneven pace, small, full out.",
+  "text": "Maybe it was."
+ },
+ {
+  "file": "05_intimate_wounded_route_pact_cfdb7d41.ogg",
+  "id": "route_pact_cfdb7d41",
+  "character": "elena",
+  "stage": "intimate",
+  "emotion": "wounded",
+  "intensity": 1,
+  "instruct": "Say this close and breath-forward, warm, wanting, never whispered, wounded, the voice thinning at the end, slow pace, quiet, held back.",
+  "text": "I've been alone with this for two years, Vance. I'm not going home tonight to be alone with it again."
+ },
+ {
+  "file": "06_intimate_breathless_route_pact_a3ebdf33.ogg",
+  "id": "route_pact_a3ebdf33",
+  "character": "elena",
+  "stage": "intimate",
+  "emotion": "breathless",
+  "intensity": 2,
+  "instruct": "Say this close and breath-forward, warm, wanting, never whispered, breathless, close, the sentence breaking on a breath, slow pace, hushed.",
+  "text": "That's a very old-fashioned way to ask, Professor."
+ },
+ {
+  "file": "07_intimate_breathless_route_control_6f848d51.ogg",
+  "id": "route_control_6f848d51",
+  "character": "elena",
+  "stage": "intimate",
+  "emotion": "breathless",
+  "intensity": 2,
+  "instruct": "Say this close and breath-forward, warm, wanting, never whispered, breathless, close, the sentence breaking on a breath, slow pace, hushed.",
+  "text": "Say it properly."
+ },
+ {
+  "file": "08_tender_tender_scene_dawn_resolution_ca28ef3b.ogg",
+  "id": "scene_dawn_resolution_ca28ef3b",
+  "character": "elena",
+  "stage": "tender",
+  "emotion": "tender",
+  "intensity": 2,
+  "instruct": "Say this soft and unguarded, still smiling, slow because she wants to be, tender, warm, meaning it, unhurried pace, soft.",
+  "text": "...You are staring."
+ }
+]
