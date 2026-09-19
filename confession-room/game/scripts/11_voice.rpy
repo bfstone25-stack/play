@@ -70,14 +70,23 @@ init -4 python:
 
     ## Every line ships twice, as .ogg and as .mp3, and the MP3 is tried first.
     ##
-    ## Safari and iOS cannot decode Ogg Vorbis at all. In a web build that reaches an
-    ## HTML audio element, a .ogg on Apple hardware is not an error -- it is silence:
-    ## the player draws, the click does nothing, and nothing is logged. Every iPhone and
-    ## every Mac Safari would have played this game mute with no clue why, and neither
-    ## the build nor the browser would have said a word about it.
+    ## This is a convenience, NOT a bug fix, and the difference matters because the
+    ## wrong version of this note nearly fossilised here.
     ##
-    ## Preferring MP3 costs a little disk and nothing else: `renpy.loadable` still picks
-    ## whichever format is actually in the build, so a tree with only .ogg keeps working.
+    ## The true part: Safari and iOS cannot decode Ogg Vorbis, so a .ogg behind an HTML
+    ## <audio> element on Apple hardware is silence with no error -- which is exactly
+    ## what happened to a preview page of these samples.
+    ##
+    ## The part that does NOT follow, and was asserted here before anyone checked: that
+    ## the *games* have the same problem. They do not. Ren'Py's web build carries its own
+    ## Vorbis decoder and never touches an <audio> element -- `strings` on
+    ## build/pages/confession/renpy.wasm finds 24 Vorbis symbols, and a Godot index.wasm
+    ## 110. A real failure was generalised to a case that does not share the mechanism.
+    ##
+    ## So the MP3s are here for web previews, forum posts and platform sample
+    ## submissions, where a plain <audio> element really is the player. Removing them
+    ## would cost those, not the game. `renpy.loadable` still picks whichever format is
+    ## in the build, so a tree with only .ogg keeps working.
     def _vn_fmt(path):
         if path.endswith(".ogg"):
             mp3 = path[:-4] + ".mp3"
