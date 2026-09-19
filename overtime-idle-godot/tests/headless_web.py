@@ -88,13 +88,23 @@ with sync_playwright() as p:
     def state():
         return page.evaluate("() => window.__oi_state || null")
 
+    def wait_reveal(timeout=40.0):
+        # the reveal flips one card per 0.22 s of engine time; under SwiftShader a frame
+        # can take a second, so wait for the reveal's own done flag rather than a clock
+        t0 = time.time()
+        while time.time() - t0 < timeout:
+            if cmd("state").get("reveal_done"):
+                return True
+            time.sleep(0.2)
+        return False
+
     def board_open():
         return page.evaluate("() => !!document.querySelector('.bd-wrap')")
 
     def gate_open():
         return page.evaluate("() => !!document.querySelector('[data-tel-ad], .gate, #gateBox') || Array.from(document.querySelectorAll('div')).some(d => d.style.zIndex === '99999')")
 
-    page.goto(URL)
+    page.goto(URL, timeout=120000)   # a 45 MB wasm on a loaded box can outlast the 30 s default
     page.evaluate("() => { try { localStorage.clear(); } catch (e) {} }")
     # wait for the engine: the bridge answers once the main scene is up
     t0 = time.time()
@@ -158,12 +168,31 @@ with sync_playwright() as p:
     cmd("open", screen="roster")
     shot("roster", 0.6)
     cmd("gold", n=1000)
-    cmd("pull", n=10)
+    r = cmd("pull", n=10)
     shot("gacha-backs", 0.5)
-    shot("gacha-flipped", 3.2)
+    check(wait_reveal(), "ten cards flipped and the reveal finished (%s)" % ",".join(x[0] for x in r.get("pulled", [])))
+    shot("gacha-flipped", 0.4)
+    epic = "epic" in r.get("pulled", [])
+    if epic:
+        shot("gacha-epic", 0.1)
     st = state()
     check(st["tickets"] == 0 and st["gold"] <= 1000 - 270, "ten-pull spent 270 Gold and ten tickets")
+    # pity: an epic within 30 pulls — keep pulling ten until one is drawn, and shoot that
+    # reveal: the gold double-edge frame and the shine burst
     cmd("close")
+    for _ in range(3):
+        if epic:
+            break
+        cmd("open", screen="roster")
+        cmd("gold", n=1000)
+        r = cmd("pull", n=10)
+        check(wait_reveal(), "reveal finished (%s)" % ",".join(x[0] for x in r.get("pulled", [])))
+        epic = "epic" in r.get("pulled", [])
+        if epic:
+            shot("gacha-epic", 0.4)
+        cmd("close")
+        time.sleep(0.4)
+    check(epic, "an epic came within the pity window")
 
     cmd("open", screen="shop")
     shot("shop", 0.6)
@@ -189,8 +218,12 @@ with sync_playwright() as p:
     shot("daily-result", 0.8)
     check(not board_open(), "no board while the result is up")
     cmd("daily_back")
-    time.sleep(1.6)
-    check(board_open(), "the casual board is offered after the daily result's click")
+    # the offer sits behind a 0.9 s timer that needs an engine frame to fire; under load a
+    # frame is a second, so poll rather than sleep a fixed 1.6 s
+    t0 = time.time()
+    while time.time() - t0 < 8.0 and not board_open():
+        time.sleep(0.2)
+    check(board_open(), "the casual board is offered after the daily result's click (%.1fs)" % (time.time() - t0))
     shot("board-offer", 0.4)
     page.evaluate("() => { const w = document.querySelector('.bd-wrap'); w && w.remove(); }")
 

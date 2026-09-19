@@ -13,6 +13,7 @@ var reveal_row: HBoxContainer
 var reveal_done: Button
 var _cards: Array = []
 var _results: Array = []
+var _reveal_gen := 0   # a newer reveal retires the coroutine of the one before it
 
 
 func build() -> void:
@@ -26,13 +27,13 @@ func build() -> void:
 	t.theme_type_variation = "Title"
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(t)
-	head.add_child(button("PULL ×1 · 30", "Amber", func() -> void: _pull(1)))
-	head.add_child(button("PULL ×10 · 270", "Primary", func() -> void: _pull(10)))
+	head.add_child(button("PULL ×1 · 30", "Pull", func() -> void: _pull(1)))
+	head.add_child(button("PULL ×10 · 270", "Pull", func() -> void: _pull(10)))
 	head.add_child(button("CLOSE", "Ghost", close))
 	para("Everyone is a rule. Pull new people; a duplicate gives that person +5% per shift, capped at +50%. Pity: an epic within 30 pulls.", 14)
 	pity = Label.new()
-	pity.theme_type_variation = "Mono"
-	pity.add_theme_color_override("font_color", Look.AMBER)
+	pity.theme_type_variation = "Value"
+	pity.add_theme_color_override("font_color", Palette.GOLD)
 	body.add_child(pity)
 	var scroll := ScrollContainer.new()
 	scroll.custom_minimum_size = Vector2(0, 430)
@@ -52,7 +53,7 @@ func build() -> void:
 	add_child(reveal)
 	var rdim := ColorRect.new()
 	rdim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	rdim.color = Color(0.01, 0.01, 0.02, 0.9)
+	rdim.color = Color(Palette.GROUND_DEEP, 0.92)
 	reveal.add_child(rdim)
 	var rv := VBoxContainer.new()
 	rv.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
@@ -63,8 +64,9 @@ func build() -> void:
 	reveal.add_child(rv)
 	var rt := Label.new()
 	rt.text = "NEW HIRES"
-	rt.theme_type_variation = "Tag"
-	rt.add_theme_color_override("font_color", Look.AMBER)
+	rt.add_theme_font_override("font", Look.font_display)
+	rt.add_theme_font_size_override("font_size", 30)
+	rt.add_theme_color_override("font_color", Palette.GOLD)
 	rt.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	rv.add_child(rt)
 	reveal_row = HBoxContainer.new()
@@ -102,19 +104,13 @@ func _staff_card(p: Dictionary) -> Control:
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 10)
 	v.add_child(top)
-	var icon := Control.new()
-	icon.custom_minimum_size = Vector2(52, 52)
-	var pc := Piece.new()
-	pc.setup(p["id"], 60, 31)
-	pc.position = Vector2(26, 36)
-	pc.show_score = false
-	icon.add_child(pc)
-	top.add_child(icon)
+	top.add_child(_portrait(p["id"], p["rarity"]))
 	var nm := VBoxContainer.new()
 	top.add_child(nm)
 	var b := Label.new()
 	b.text = p["name"] if owned else "???"
-	b.add_theme_font_override("font", Look.font_ui_bold)
+	b.add_theme_font_override("font", Look.font_display)
+	b.add_theme_font_size_override("font_size", 18)
 	nm.add_child(b)
 	var rar := Label.new()
 	rar.text = str(p["rarity"]).to_upper()
@@ -124,13 +120,13 @@ func _staff_card(p: Dictionary) -> Control:
 	var rule := Label.new()
 	rule.text = p["rule"]
 	rule.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	rule.add_theme_color_override("font_color", Look.AMBER)
+	rule.add_theme_color_override("font_color", Palette.GOLD)
 	rule.add_theme_font_size_override("font_size", 13)
 	v.add_child(rule)
 	var bio := Label.new()
 	bio.text = p["bio"] if owned else "Not pulled yet."
 	bio.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	bio.add_theme_color_override("font_color", Look.MUTED)
+	bio.add_theme_color_override("font_color", Palette.MUTED)
 	bio.add_theme_font_size_override("font_size", 12)
 	v.add_child(bio)
 	var meta := Label.new()
@@ -145,7 +141,7 @@ func _staff_card(p: Dictionary) -> Control:
 	for i in range(4):
 		var pip := ColorRect.new()
 		pip.custom_minimum_size = Vector2(26, 5)
-		pip.color = Look.ROSE if tier > i else Look.LINE
+		pip.color = Palette.HEAT if tier > i else Palette.PANEL_EDGE
 		aff.add_child(pip)
 	var nxt := Label.new()
 	nxt.theme_type_variation = "Tag"
@@ -160,10 +156,37 @@ func _staff_card(p: Dictionary) -> Control:
 
 
 static func rarity_color(r: String) -> Color:
-	match r:
-		"epic": return Look.ROSE
-		"rare": return Look.AMBER
-	return Look.STEEL.lightened(0.3)
+	return Palette.rarity_color(r)
+
+
+## The card is the portrait: a frame sized for the piece sprite (piece_<id>.webp) with
+## the rarity edge; the vector block stands in until the sprite is installed.
+func _portrait(id: String, rarity: String) -> Control:
+	var rc := Palette.rarity_color(rarity)
+	var frame := PanelContainer.new()
+	frame.custom_minimum_size = Vector2(72, 96)
+	frame.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.PANEL, rc, 8, 2 if rarity != "common" else 1, Vector2(0, 0)))
+	if rarity == "epic":
+		frame.add_theme_stylebox_override("panel", StudioTheme.glow(StudioTheme.flat(Palette.PANEL, rc, 8, 2, Vector2(0, 0)), rc, 8, 0.45))
+	var inner := Control.new()
+	inner.custom_minimum_size = Vector2(72, 96)
+	inner.clip_contents = true
+	frame.add_child(inner)
+	var tex := Look.piece_portrait(id)
+	if tex != null:
+		var im := TextureRect.new()
+		im.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		im.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		im.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		im.texture = tex
+		inner.add_child(im)
+	else:
+		var pc := Piece.new()
+		pc.setup(id, 62, 32)
+		pc.position = Vector2(36, 62)
+		pc.show_score = false
+		inner.add_child(pc)
+	return frame
 
 
 func _pull(n: int) -> void:
@@ -186,29 +209,41 @@ func _pull(n: int) -> void:
 
 ## The moment: backs fan in, then flip one by one; rarity sets the glow; dupes toast.
 func _reveal(results: Array) -> void:
+	_reveal_gen += 1
+	var gen := _reveal_gen
 	reveal.visible = true
 	reveal_done.visible = false
 	clear(reveal_row)
 	_cards.clear()
+	# this reveal's own cards: a pull that lands while the last reveal is still flipping
+	# must not have the old coroutine flip the new cards at its leftover indices
+	var cards: Array = []
 	for i in range(results.size()):
 		var gc := GachaCard.new()
 		gc.setup(results[i])
 		gc.modulate.a = 0.0
 		gc.position.y = 40
 		reveal_row.add_child(gc)
-		_cards.append(gc)
+		cards.append(gc)
+	_cards = cards
 	await get_tree().process_frame
-	for i in range(_cards.size()):
-		var gc: GachaCard = _cards[i]
+	if gen != _reveal_gen:
+		return
+	for i in range(cards.size()):
+		var gc: GachaCard = cards[i]
 		var tw := gc.create_tween()
 		tw.tween_interval(0.06 * i)
 		tw.tween_property(gc, "modulate:a", 1.0, 0.18)
-	await get_tree().create_timer(0.35 + 0.06 * _cards.size()).timeout
-	for i in range(_cards.size()):
-		var gc: GachaCard = _cards[i]
+	await get_tree().create_timer(0.35 + 0.06 * cards.size()).timeout
+	for i in range(cards.size()):
+		if gen != _reveal_gen:
+			return
+		var gc: GachaCard = cards[i]
 		gc.flip()
 		Sfx.flip(str(results[i]["rarity"]))
-		await get_tree().create_timer(0.22 if _cards.size() > 1 else 0.4).timeout
+		await get_tree().create_timer(0.22 if cards.size() > 1 else 0.4).timeout
+	if gen != _reveal_gen:
+		return
 	reveal_done.visible = true
 	reveal_done.modulate.a = 0.0
 	var tw2 := create_tween()

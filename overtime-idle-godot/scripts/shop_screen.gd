@@ -31,8 +31,8 @@ func build() -> void:
 	head.add_child(button("CLOSE", "Ghost", close))
 	para("Objects and relics are bought with rent. Gold buys time, pulls and a shield — never a rule.", 14)
 	gold_tag = Label.new()
-	gold_tag.theme_type_variation = "Mono"
-	gold_tag.add_theme_color_override("font_color", Look.AMBER)
+	gold_tag.theme_type_variation = "Value"
+	gold_tag.add_theme_color_override("font_color", Palette.GOLD)
 	body.add_child(gold_tag)
 	var scroll := ScrollContainer.new()
 	scroll.custom_minimum_size = Vector2(0, 440)
@@ -89,14 +89,15 @@ func _card(kind: String, name: String, hint: String, price: String, off: bool, o
 	h.text = hint
 	h.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	h.add_theme_font_size_override("font_size", 12)
-	h.add_theme_color_override("font_color", Look.MUTED)
+	h.add_theme_color_override("font_color", Palette.MUTED)
 	h.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	h.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v.add_child(h)
 	var p := Label.new()
 	p.text = price
-	p.theme_type_variation = "Mono"
-	p.add_theme_color_override("font_color", Look.MUTED if off else Look.AMBER)
+	p.theme_type_variation = "Value"
+	p.add_theme_font_override("font", Look.font_display)
+	p.add_theme_color_override("font_color", Palette.MUTED if off else Palette.GOLD)
 	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v.add_child(p)
 	return b

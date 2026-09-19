@@ -31,7 +31,8 @@ reports, banks, evictions and pulls.
 | `scripts/economy.gd` | **Economy** autoload — Gold, gacha with pity, affection, idempotent SKU grants; JSON in `user://`; client-trusted, marked for the `shared/economy.py` swap |
 | `scripts/ticker.gd` | **Ticker** autoload — building state, skill + affection ladders, daily floor, shop, persistence, dev hooks, the web dev bridge |
 | `scripts/gate.gd` | **Gate** autoload — copy of `shared/godot/gate.gd` (refreshed by `ops/godot_build.sh`) |
-| `scripts/look.gd` | **Look** — palette, Theme, art loader |
+| `scripts/palette.gd`, `scripts/studio_theme.gd` | **Palette** / **StudioTheme** — the studio colours and Theme per `ops/adult_forks/UI_DIRECTION.md` (dark ground, hot accents; Lilita One / Nunito / Playfair Italic in `assets/fonts/`, OFL licences beside them). The same API as `play/silvertongue-cards-godot`'s, so either title can carry both files |
+| `scripts/look.gd` | **Look** autoload — the scenes' names for the palette (`Look.AMBER` → `Palette.GOLD`), the Theme, the art loader (`art`, `piece_portrait`, `portrait` with the mood alias) |
 | `scripts/sfx.gd` | **Sfx** — the audio.js cue points, synthesised placeholders |
 | `scenes/building.tscn` | the room: floor, HUD, tray, Mirei, overlays |
 | `scenes/floor.tscn` | the 5x4 isometric floor with dropping pieces, links, sparks |

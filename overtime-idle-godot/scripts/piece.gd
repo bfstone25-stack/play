@@ -59,7 +59,7 @@ func _process(_d: float) -> void:
 
 func _draw() -> void:
 	var top: Color = TOP.get(id, Color("#2a3a44"))
-	var acc: Color = ACCENT.get(id, Look.AMBER)
+	var acc: Color = ACCENT.get(id, Palette.GOLD)
 	var hw := tw * 0.38
 	var hh := th * 0.38
 	var h := th * 0.55 * squash
@@ -89,7 +89,7 @@ func _draw() -> void:
 		"printer":
 			draw_rect(Rect2(c + Vector2(-s * 1.3, -s * 0.6), Vector2(s * 2.6, s * 1.3)), acc.darkened(0.35))
 			draw_rect(Rect2(c + Vector2(-s * 0.8, -s * 1.3), Vector2(s * 1.6, s * 0.8)), Color(0.95, 0.95, 0.9))
-			draw_circle(c + Vector2(s * 0.9, -s * 0.1), s * 0.18, Look.EMERALD)
+			draw_circle(c + Vector2(s * 0.9, -s * 0.1), s * 0.18, Palette.SUCCESS)
 		"corner":
 			draw_rect(Rect2(c + Vector2(-s * 1.4, -s * 0.9), Vector2(s * 0.9, s * 1.9)), acc.darkened(0.25))
 			draw_rect(Rect2(c + Vector2(-s * 1.4, s * 0.2), Vector2(s * 2.8, s * 0.8)), acc.darkened(0.25))
@@ -103,7 +103,7 @@ func _draw() -> void:
 	if show_score and score != 0:
 		var f := Look.font_mono_bold
 		var txt := ("+" if score > 0 else "") + str(score)
-		var col := Look.AMBER if score > 0 else Look.EMBER
+		var col := Palette.GOLD if score > 0 else Palette.HEAT
 		# above the block, so it reads as this desk's number and not the next one's
 		var pos := Vector2(-20, y0 - h - hh - 8)
 		draw_string(f, pos + Vector2(1, 1), txt, HORIZONTAL_ALIGNMENT_CENTER, 40, 13, Color(0, 0, 0, 0.8))

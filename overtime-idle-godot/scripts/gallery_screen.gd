@@ -33,7 +33,7 @@ func build() -> void:
 	var l1 := Label.new()
 	l1.text = "SKILL — A BOARD YOU BUILT. NEVER FROM TIME."
 	l1.theme_type_variation = "Tag"
-	l1.add_theme_color_override("font_color", Look.AMBER)
+	l1.add_theme_color_override("font_color", Palette.GOLD)
 	v.add_child(l1)
 	skill_grid = GridContainer.new()
 	skill_grid.columns = 5
@@ -43,7 +43,7 @@ func build() -> void:
 	var l2 := Label.new()
 	l2.text = "AFFECTION — SHIFTS WORKED ON A SOLVENT FLOOR. THIS ONE IS TIME, AND SAYS SO."
 	l2.theme_type_variation = "Tag"
-	l2.add_theme_color_override("font_color", Look.ROSE)
+	l2.add_theme_color_override("font_color", Palette.HEAT)
 	v.add_child(l2)
 	aff_grid = GridContainer.new()
 	aff_grid.columns = 6
@@ -75,20 +75,20 @@ func _tile(art_id: String, name: String, hint: String, got: bool, on: Callable) 
 	im.texture = Look.art(art_id if got else "plate_unearned")
 	im.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	if not got:
-		im.modulate = Color(0.6, 0.6, 0.65)
+		im.modulate = Color(0.55, 0.45, 0.52)
 	v.add_child(im)
 	var n := Label.new()
 	n.text = name if got else "???"
 	n.add_theme_font_override("font", Look.font_ui_bold)
 	n.add_theme_font_size_override("font_size", 13)
-	n.add_theme_color_override("font_color", Look.AMBER if got else Look.MUTED)
+	n.add_theme_color_override("font_color", Palette.GOLD if got else Palette.MUTED)
 	n.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v.add_child(n)
 	var h := Label.new()
 	h.text = hint
 	h.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	h.add_theme_font_size_override("font_size", 11)
-	h.add_theme_color_override("font_color", Look.MUTED)
+	h.add_theme_color_override("font_color", Palette.MUTED)
 	h.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v.add_child(h)
 	return b

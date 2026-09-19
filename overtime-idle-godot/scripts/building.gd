@@ -40,6 +40,7 @@ var commit_btn: Button
 var reroll_btn: Button
 var banner_l: Label
 var gallery_btn: Button
+var tabs: Dictionary = {}
 var sound_btn: Button
 var mode_l: Label
 var _banner_tw: Tween
@@ -94,14 +95,14 @@ func _build_room() -> void:
 	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	bg.texture = Look.art("title")
-	bg.modulate = Color(0.55, 0.6, 0.68)
+	bg.modulate = Color(0.62, 0.46, 0.56)
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
 	if bg.texture == null:
 		bg.self_modulate = Color(0, 0, 0, 0)
 		var fallback := ColorRect.new()
 		fallback.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		fallback.color = Look.BG
+		fallback.color = Palette.GROUND
 		fallback.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		add_child(fallback)
 	# a warm lamp pool in the middle of the room, dark at the edges
@@ -113,8 +114,8 @@ func _build_room() -> void:
 	gt.fill_from = Vector2(0.46, 0.55)
 	gt.fill_to = Vector2(0.46, 1.15)
 	var g := Gradient.new()
-	g.set_color(0, Color(Look.LAMP, 0.16))
-	g.set_color(1, Color(0.02, 0.02, 0.03, 0.78))
+	g.set_color(0, Color(Palette.GOLD, 0.14))
+	g.set_color(1, Color(Palette.GROUND_DEEP, 0.82))
 	gt.gradient = g
 	gt.width = 256
 	gt.height = 144
@@ -136,7 +137,7 @@ func _build_room() -> void:
 
 # ---- HUD ------------------------------------------------------------------------------
 
-func _stat(parent: Control, label: String, big: bool = true) -> RollingLabel:
+func _stat(parent: Control, label: String, big: bool = true, color: Color = Palette.TEXT, coin: bool = false) -> RollingLabel:
 	var v := VBoxContainer.new()
 	v.add_theme_constant_override("separation", 0)
 	parent.add_child(v)
@@ -144,10 +145,16 @@ func _stat(parent: Control, label: String, big: bool = true) -> RollingLabel:
 	l.text = label
 	l.theme_type_variation = "Tag"
 	v.add_child(l)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 5)
+	v.add_child(row)
+	if coin:
+		row.add_child(Coin.new(9))
 	var n := RollingLabel.new()
-	n.theme_type_variation = "Big" if big else "Mono"
+	n.theme_type_variation = "Big" if big else "Value"
+	n.add_theme_color_override("font_color", color)
 	n.set_now(0)
-	v.add_child(n)
+	row.add_child(n)
 	return n
 
 
@@ -168,17 +175,17 @@ func _build_hud() -> void:
 	h.add_child(tv)
 	var t := Label.new()
 	t.text = "OVERTIME LANDLORD"
-	t.add_theme_font_override("font", Look.font_ui_bold)
-	t.add_theme_font_size_override("font_size", 17)
+	t.add_theme_font_override("font", Look.font_display)
+	t.add_theme_font_size_override("font_size", 19)
+	t.add_theme_color_override("font_color", Palette.ACCENT_SOFT)
 	tv.add_child(t)
 	mode_l = Label.new()
 	mode_l.text = "AFTER HOURS · IDLE · 18+"
 	mode_l.theme_type_variation = "Tag"
 	tv.add_child(mode_l)
-	rate_l = _stat(h, "RENT / HOUR")
-	bank_l = _stat(h, "BANK")
-	gold_l = _stat(h, "GOLD")
-	gold_l.add_theme_color_override("font_color", Look.LAMP)
+	rate_l = _stat(h, "RENT / HOUR", true, Palette.HEAT)
+	bank_l = _stat(h, "BANK", true, Palette.TEXT)
+	gold_l = _stat(h, "GOLD", true, Palette.GOLD, true)
 	var cv := VBoxContainer.new()
 	cv.add_theme_constant_override("separation", 3)
 	h.add_child(cv)
@@ -189,9 +196,9 @@ func _build_hud() -> void:
 	ct.theme_type_variation = "Tag"
 	cl.add_child(ct)
 	chain_l = Label.new()
-	chain_l.theme_type_variation = "Mono"
+	chain_l.theme_type_variation = "Value"
 	chain_l.text = "0"
-	chain_l.add_theme_color_override("font_color", Look.AMBER)
+	chain_l.add_theme_color_override("font_color", Palette.HEAT)
 	cl.add_child(chain_l)
 	var pr := HBoxContainer.new()
 	pr.add_theme_constant_override("separation", 4)
@@ -199,7 +206,7 @@ func _build_hud() -> void:
 	for i in range(6):
 		var p := ColorRect.new()
 		p.custom_minimum_size = Vector2(22, 6)
-		p.color = Look.LINE
+		p.color = Palette.PANEL_EDGE
 		p.pivot_offset = Vector2(11, 3)
 		pr.add_child(p)
 		pips.append(p)
@@ -212,28 +219,21 @@ func _build_hud() -> void:
 	nv.add_child(nt)
 	next_l = Label.new()
 	next_l.theme_type_variation = "Big"
-	next_l.add_theme_color_override("font_color", Look.INK)
+	next_l.add_theme_color_override("font_color", Palette.TEXT)
 	next_l.text = "10:00"
 	nv.add_child(next_l)
 	var sp := Control.new()
 	sp.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	h.add_child(sp)
-	var b1 := Button.new()
-	b1.text = "ROSTER"
-	b1.pressed.connect(func() -> void: roster.open())
-	h.add_child(b1)
-	var b2 := Button.new()
-	b2.text = "SHOP"
-	b2.pressed.connect(func() -> void: shop.open())
-	h.add_child(b2)
-	var b3 := Button.new()
-	b3.text = "DAILY"
-	b3.pressed.connect(func() -> void: daily_screen.open())
-	h.add_child(b3)
-	gallery_btn = Button.new()
-	gallery_btn.text = "PLATES 0/10"
-	gallery_btn.pressed.connect(func() -> void: gallery.open())
-	h.add_child(gallery_btn)
+	tabs = {}
+	for pair in [["roster", "ROSTER"], ["shop", "SHOP"], ["daily", "DAILY"], ["gallery", "PLATES 0/10"]]:
+		var b := Button.new()
+		b.text = pair[1]
+		var key: String = pair[0]
+		b.pressed.connect(func() -> void: _open_tab(key))
+		h.add_child(b)
+		tabs[key] = b
+	gallery_btn = tabs["gallery"]
 	sound_btn = Button.new()
 	sound_btn.theme_type_variation = "Ghost"
 	sound_btn.text = "SOUND ON"
@@ -250,9 +250,9 @@ func _build_hud() -> void:
 	banner_l.offset_left = -300
 	banner_l.offset_right = 300
 	banner_l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	banner_l.theme_type_variation = "Mono"
-	banner_l.add_theme_color_override("font_color", Look.LAMP)
-	banner_l.add_theme_font_size_override("font_size", 16)
+	banner_l.add_theme_font_override("font", Look.font_display)
+	banner_l.add_theme_color_override("font_color", Palette.GOLD_PALE)
+	banner_l.add_theme_font_size_override("font_size", 18)
 	banner_l.modulate.a = 0.0
 	banner_l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var blayer := CanvasLayer.new()
@@ -292,7 +292,7 @@ func _build_left() -> void:
 	relic_l = Label.new()
 	relic_l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	relic_l.add_theme_font_size_override("font_size", 12)
-	relic_l.add_theme_color_override("font_color", Look.MUTED)
+	relic_l.add_theme_color_override("font_color", Palette.MUTED)
 	v.add_child(relic_l)
 	var dv := Label.new()
 	dv.text = "DEV"
@@ -340,8 +340,8 @@ func _build_right() -> void:
 	a.theme_type_variation = "Tag"
 	g.add_child(a)
 	due_l = Label.new()
-	due_l.theme_type_variation = "Mono"
-	due_l.add_theme_color_override("font_color", Look.AMBER)
+	due_l.theme_type_variation = "Value"
+	due_l.add_theme_color_override("font_color", Palette.HEAT)
 	due_l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	due_l.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	g.add_child(due_l)
@@ -350,7 +350,7 @@ func _build_right() -> void:
 	b.theme_type_variation = "Tag"
 	g.add_child(b)
 	cover_l = Label.new()
-	cover_l.theme_type_variation = "Mono"
+	cover_l.theme_type_variation = "Value"
 	cover_l.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	g.add_child(cover_l)
 
@@ -378,8 +378,10 @@ func _build_tray() -> void:
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(t)
 	preview_l = Label.new()
-	preview_l.theme_type_variation = "Mono"
-	preview_l.add_theme_color_override("font_color", Look.AMBER)
+	preview_l.theme_type_variation = "Value"
+	preview_l.add_theme_color_override("font_color", Palette.GOLD)
+	preview_l.add_theme_font_override("font", Look.font_display)
+	preview_l.add_theme_font_size_override("font_size", 17)
 	top.add_child(preview_l)
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 10)
@@ -465,6 +467,33 @@ func _build_overlays() -> void:
 	add_child(layer)
 	for o in [return_screen, roster, shop, gallery, plate_view, daily_screen, daily_result, prestige, notice, intro]:
 		layer.add_child(o)
+	for key in tabs.keys():
+		(_tab_overlay(key) as Overlay).closed.connect(_mark_tabs)
+
+
+func _tab_overlay(key: String) -> Overlay:
+	match key:
+		"roster": return roster
+		"shop": return shop
+		"daily": return daily_screen
+		_: return gallery
+
+
+func _open_tab(key: String) -> void:
+	_tab_overlay(key).open()
+	_mark_tabs()
+
+
+## The active tab is magenta; the others fall back (PLATES keeps its gold once a plate is earned).
+func _mark_tabs() -> void:
+	for key in tabs.keys():
+		var b: Button = tabs[key]
+		if _tab_overlay(key).is_open():
+			b.theme_type_variation = "Active"
+		elif key == "gallery" and Ticker.cabinet["cg"].size() > 0:
+			b.theme_type_variation = "Amber"
+		else:
+			b.theme_type_variation = ""
 
 
 # ---- state helpers ------------------------------------------------------------------------
@@ -511,8 +540,8 @@ func _render_offers() -> void:
 	if offers.is_empty():
 		var l := Label.new()
 		l.text = "Out of pieces. Settle." if mode == "daily" else "The roster is empty — pull, or buy objects."
-		l.theme_type_variation = "Mono"
-		l.add_theme_color_override("font_color", Look.MUTED)
+		l.theme_type_variation = "Value"
+		l.add_theme_color_override("font_color", Palette.MUTED)
 		offer_row.add_child(l)
 		return
 	for i in range(offers.size()):
@@ -521,7 +550,7 @@ func _render_offers() -> void:
 		b.custom_minimum_size = Vector2(150, 92)
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		if selected == i:
-			b.theme_type_variation = "Amber"
+			b.theme_type_variation = "Active"
 		var idx := i
 		b.pressed.connect(func() -> void:
 			selected = idx
@@ -543,14 +572,16 @@ func _render_offers() -> void:
 		nm.position = Vector2(66, 22)
 		nm.add_theme_font_override("font", Look.font_ui_bold)
 		nm.add_theme_font_size_override("font_size", 14)
+		nm.add_theme_color_override("font_color", Palette.TEXT)
 		nm.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		b.add_child(nm)
 		var pay := Label.new()
 		var cat := Landlord.catalog_by_id(Roster.catalog())
 		pay.text = "+%d" % int(cat.get(id, {}).get("payout", 1))
 		pay.position = Vector2(66, 46)
-		pay.theme_type_variation = "Mono"
-		pay.add_theme_color_override("font_color", Look.AMBER)
+		pay.add_theme_font_override("font", Look.font_display)
+		pay.add_theme_font_size_override("font_size", 16)
+		pay.add_theme_color_override("font_color", Palette.GOLD)
 		pay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		b.add_child(pay)
 		offer_row.add_child(b)
@@ -563,10 +594,10 @@ func _render_floor_strip() -> void:
 	if mode == "daily":
 		var b := Button.new()
 		b.text = "DAILY · %s" % Ticker.daily_key()
-		b.theme_type_variation = "Amber"
+		b.theme_type_variation = "Active"
 		floor_strip.add_child(b)
 		var x := Button.new()
-		x.text = "← BUILDING"
+		x.text = "« BUILDING"
 		x.pressed.connect(leave_daily)
 		floor_strip.add_child(x)
 		return
@@ -576,7 +607,7 @@ func _render_floor_strip() -> void:
 		b.text = "F%d  ·  %d/shift" % [int(f["n"]), pay]
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		if f == view:
-			b.theme_type_variation = "Amber"
+			b.theme_type_variation = "Active"
 		elif not Idle._any(f["cells"]):
 			b.modulate.a = 0.6
 		var fd: Dictionary = f
@@ -599,8 +630,7 @@ func _render_floor_strip() -> void:
 func _mark_gallery() -> void:
 	var n: int = Ticker.cabinet["cg"].size()
 	gallery_btn.text = "PLATES %d/%d" % [n, Ticker.PLATES.size()]
-	if n > 0:
-		gallery_btn.theme_type_variation = "Amber"
+	_mark_tabs()
 
 
 # ---- HUD refresh -------------------------------------------------------------------------
@@ -617,7 +647,7 @@ func hud() -> void:
 	for i in range(pips.size()):
 		var p: ColorRect = pips[i]
 		var on := chain > i
-		var want := Look.AMBER if on else Look.LINE
+		var want := Palette.HEAT if on else Palette.PANEL_EDGE
 		if p.color != want:
 			var tw := p.create_tween()
 			tw.tween_property(p, "color", want, 0.18)
@@ -644,10 +674,10 @@ func hud() -> void:
 		var per_day := pay * (Idle.DAY_MS / Idle.SHIFT_MS)
 		if per_day >= need:
 			cover_l.text = "COVERS ×%.1f" % (float(per_day) / float(need))
-			cover_l.add_theme_color_override("font_color", Look.EMERALD.lightened(0.3))
+			cover_l.add_theme_color_override("font_color", Palette.SUCCESS)
 		else:
 			cover_l.text = "SHORT %d/d" % (need - per_day)
-			cover_l.add_theme_color_override("font_color", Look.EMBER)
+			cover_l.add_theme_color_override("font_color", Palette.HEAT)
 		mode_l.text = "AFTER HOURS · IDLE · 18+   ·   BUILDING %d" % int(Ticker.B["building"])
 		reroll_btn.text = "REROLL · %d" % Ticker.reroll_cost(view)
 		reroll_btn.disabled = false
@@ -856,6 +886,10 @@ func _bridge(cmd: Dictionary) -> Dictionary:
 				return_screen.collect_btn.pressed.emit()
 		"pull":
 			roster._pull(int(cmd.get("n", 1)))
+			var rarities: Array = []
+			for r in roster._results:
+				rarities.append(str(r["rarity"]))
+			return {"ok": true, "offers": offers, "mode": mode, "open": _open_names(), "pulled": rarities}
 		"daily_start":
 			if daily_screen.is_open():
 				daily_screen.close()
@@ -879,7 +913,7 @@ func _bridge(cmd: Dictionary) -> Dictionary:
 			hud()
 		_:
 			return {"ok": false, "why": "unknown_op"}
-	return {"ok": true, "offers": offers, "mode": mode, "open": _open_names()}
+	return {"ok": true, "offers": offers, "mode": mode, "open": _open_names(), "reveal_done": roster.reveal.visible and roster.reveal_done.visible}
 
 
 func _open_names() -> Array:

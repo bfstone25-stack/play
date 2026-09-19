@@ -8,7 +8,7 @@ config/description="18+ idle office with a staff gacha. The building keeps runni
 run/main_scene="res://scenes/building.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
-boot_splash/bg_color=Color(0.07, 0.086, 0.11, 1)
+boot_splash/bg_color=Color(0.0706, 0.0314, 0.0588, 1)
 
 [autoload]
 
@@ -37,4 +37,4 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 renderer/rendering_method.web="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.07, 0.086, 0.11, 1)
+environment/defaults/default_clear_color=Color(0.0706, 0.0314, 0.0588, 1)

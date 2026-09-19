@@ -15,9 +15,9 @@ const MOOD_TINT := {
 	"calm": Color(1.0, 0.96, 0.9),
 	"tense": Color(0.95, 0.85, 0.72),
 	"fail": Color(0.9, 0.62, 0.55),
-	"empty": Color(0.78, 0.82, 0.9),
+	"empty": Color(0.82, 0.74, 0.84),
 }
-const MOOD_LAMP := {"calm": Color("#ffb45c"), "tense": Color("#e0a14a"), "fail": Color("#c45c32"), "empty": Color("#4a6d8c")}
+const MOOD_LAMP := {"calm": Palette.GOLD, "tense": Palette.GOLD_DEEP, "fail": Palette.HEAT, "empty": Palette.MUTED}
 
 var portrait: TextureRect
 var frame: PanelContainer
@@ -76,23 +76,20 @@ func _ready() -> void:
 	var nm := Label.new()
 	nm.text = "MIREI, 36 · LANDLORD"
 	nm.theme_type_variation = "Tag"
-	nm.add_theme_color_override("font_color", Look.INK)
+	nm.add_theme_color_override("font_color", Palette.TEXT)
 	nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	name_row.add_child(nm)
 	mood_tag = Label.new()
 	mood_tag.theme_type_variation = "Tag"
 	mood_tag.text = "—"
 	name_row.add_child(mood_tag)
+	# her speech panel: warm paper, her line in the one serif
 	var speech := PanelContainer.new()
-	speech.theme_type_variation = "Glass"
+	speech.theme_type_variation = "Paper"
 	speech.custom_minimum_size = Vector2(0, 92)
 	add_child(speech)
-	say = RichTextLabel.new()
-	say.bbcode_enabled = true
-	say.fit_content = true
-	say.scroll_active = false
+	say = StudioTheme.say_label(17)
 	say.custom_minimum_size = Vector2(0, 60)
-	say.add_theme_font_size_override("normal_font_size", 15)
 	speech.add_child(say)
 	set_mood("empty", true)
 	set_line("empty")
@@ -106,7 +103,7 @@ func set_mood(m: String, instant: bool = false) -> void:
 	if tex != null:
 		portrait.texture = tex
 	var tint: Color = MOOD_TINT.get(m, Color.WHITE)
-	var lamp_c: Color = MOOD_LAMP.get(m, Look.AMBER)
+	var lamp_c: Color = MOOD_LAMP.get(m, Palette.GOLD)
 	mood_tag.text = m.to_upper()
 	mood_tag.add_theme_color_override("font_color", lamp_c)
 	if instant:

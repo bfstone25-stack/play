@@ -22,7 +22,7 @@ func build() -> void:
 	var row := HBoxContainer.new()
 	body.add_child(row)
 	cap = Label.new()
-	cap.theme_type_variation = "Mono"
+	cap.theme_type_variation = "Value"
 	cap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	cap.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	row.add_child(cap)

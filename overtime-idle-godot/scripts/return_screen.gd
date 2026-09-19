@@ -41,18 +41,17 @@ func build() -> void:
 	var t := Label.new()
 	t.text = "WHILE YOU WERE GONE"
 	t.theme_type_variation = "Tag"
-	t.add_theme_color_override("font_color", Look.AMBER)
+	t.add_theme_color_override("font_color", Palette.GOLD)
 	right.add_child(t)
 	dur_label = Label.new()
 	dur_label.theme_type_variation = "Title"
 	right.add_child(dur_label)
-	say = RichTextLabel.new()
-	say.bbcode_enabled = true
-	say.fit_content = true
-	say.scroll_active = false
-	say.custom_minimum_size = Vector2(0, 70)
-	say.add_theme_font_size_override("normal_font_size", 16)
-	right.add_child(say)
+	var paper := PanelContainer.new()
+	paper.theme_type_variation = "Paper"
+	right.add_child(paper)
+	say = StudioTheme.say_label(18)
+	say.custom_minimum_size = Vector2(0, 54)
+	paper.add_child(say)
 	var stats := HBoxContainer.new()
 	stats.add_theme_constant_override("separation", 10)
 	right.add_child(stats)
@@ -63,8 +62,8 @@ func build() -> void:
 	floors_box.add_theme_constant_override("separation", 2)
 	right.add_child(floors_box)
 	note = Label.new()
-	note.theme_type_variation = "Mono"
-	note.add_theme_color_override("font_color", Look.MUTED)
+	note.add_theme_color_override("font_color", Palette.MUTED)
+	note.add_theme_font_size_override("font_size", 13)
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	right.add_child(note)
 	var spacer := Control.new()
@@ -96,6 +95,13 @@ func _stat(parent: Control, label: String) -> RollingLabel:
 	v.add_child(l)
 	var n := RollingLabel.new()
 	n.theme_type_variation = "Big"
+	n.add_theme_font_size_override("font_size", 34)
+	if label == "RENT":
+		n.add_theme_color_override("font_color", Palette.GOLD)
+	elif label == "/ HOUR":
+		n.add_theme_color_override("font_color", Palette.HEAT)
+	else:
+		n.add_theme_color_override("font_color", Palette.TEXT)
 	n.set_now(0)
 	v.add_child(n)
 	return n
@@ -114,7 +120,7 @@ static func fmt_dur(ms: int) -> String:
 
 func show_report(rep: Dictionary) -> void:
 	_rep = rep
-	portrait.texture = Look.portrait("calm" if rep["evictions"].size() == 0 else "fail")
+	portrait.texture = Look.portrait("pleased" if rep["evictions"].size() == 0 else "fail")
 	dur_label.text = fmt_dur(int(rep["elapsed"]))
 	var bark := Ticker.bark(rep)
 	say.text = "[i]“" + bark + "”[/i]"
@@ -127,13 +133,14 @@ func show_report(rep: Dictionary) -> void:
 		var h := HBoxContainer.new()
 		var a := Label.new()
 		a.text = "Floor %d" % int(f["n"])
-		a.theme_type_variation = "Mono"
+		a.theme_type_variation = "Value"
 		a.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var ev: bool = rep["evictions"].has(int(f["n"]))
 		var b := Label.new()
-		b.theme_type_variation = "Mono"
+		b.theme_type_variation = "Value"
 		b.text = "EVICTED" if ev else "+" + str(int(rep["perFloor"].get(str(int(f["n"])), 0)))
-		b.add_theme_color_override("font_color", Look.EMBER if ev else Look.AMBER)
+		b.add_theme_font_override("font", Look.font_display)
+		b.add_theme_color_override("font_color", Palette.HEAT if ev else Palette.GOLD)
 		h.add_child(a)
 		h.add_child(b)
 		floors_box.add_child(h)

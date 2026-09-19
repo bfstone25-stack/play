@@ -9,7 +9,7 @@ class Intro extends Overlay:
 		card_width = 720
 		card.custom_minimum_size = Vector2(720, 0)
 		var t := tag("18+ · ADULTS ONLY")
-		t.add_theme_color_override("font_color", Look.EMBER)
+		t.add_theme_color_override("font_color", Palette.HEAT)
 		title("Overtime Landlord: Idle")
 		para("A 5×4 floor that keeps working after you close the tab. Every ten minutes each floor you built pays a shift — the board you place sets the rent per hour. Rent is due per floor, per day; a floor that cannot cover it is evicted and its people walk back to the roster. Staff are the gacha. Objects are bought with rent. Two ladders of plates: the skill ladder is a board you built and never comes from time; the affection ladder is time, and says so. Everyone in this building is an adult.", 15)
 		var b := button("OPEN THE BUILDING", "Primary", func() -> void:
@@ -27,8 +27,8 @@ class Daily extends Overlay:
 		title("Everyone gets the same pieces today")
 		para("One layout, the same for every landlord today. Score is your best single settle. The pieces are the building's, not your roster's.", 15)
 		best = Label.new()
-		best.theme_type_variation = "Mono"
-		best.add_theme_color_override("font_color", Look.AMBER)
+		best.theme_type_variation = "Value"
+		best.add_theme_color_override("font_color", Palette.GOLD)
 		body.add_child(best)
 		var row := HBoxContainer.new()
 		row.alignment = BoxContainer.ALIGNMENT_END
@@ -45,17 +45,27 @@ class Daily extends Overlay:
 
 class DailyResult extends Overlay:
 	signal back
-	var t1: Label
+	var t1: RollingLabel
 	var t2: Label
-	var pct: Label
+	var pct: RollingLabel
 	func build() -> void:
 		tag("DAILY FLOOR · SETTLED")
-		t1 = title("")
+		t1 = RollingLabel.new()
+		t1.theme_type_variation = "Big"
+		t1.add_theme_font_size_override("font_size", 44)
+		t1.suffix = " / shift"
+		t1.set_now(0)
+		body.add_child(t1)
 		t2 = Label.new()
-		t2.theme_type_variation = "Mono"
+		t2.theme_type_variation = "Value"
+		t2.add_theme_color_override("font_color", Palette.HEAT)
 		body.add_child(t2)
-		pct = Label.new()
+		pct = RollingLabel.new()
 		pct.theme_type_variation = "Big"
+		pct.add_theme_color_override("font_color", Palette.ACCENT_SOFT)
+		pct.prefix = "You beat "
+		pct.suffix = "% of landlords."
+		pct.set_now(0)
 		body.add_child(pct)
 		var b := button("BACK TO THE BUILDING", "Primary", func() -> void:
 			back.emit()
@@ -63,10 +73,13 @@ class DailyResult extends Overlay:
 		b.size_flags_horizontal = Control.SIZE_SHRINK_END
 		body.add_child(b)
 	func show_result(res: Dictionary) -> void:
-		t1.text = "%d / shift" % int(res["shift"])
+		t1.set_now(0)
+		pct.set_now(0)
 		t2.text = "Today's best %d · chain %d" % [int(res["best"]), int(res["chain"])]
-		pct.text = "You beat %d%% of landlords." % int(res["pct"])
 		open()
+		await get_tree().create_timer(0.2).timeout
+		t1.set_target(float(int(res["shift"])), 0.9)
+		pct.set_target(float(int(res["pct"])), 1.1)
 
 
 class Prestige extends Overlay:

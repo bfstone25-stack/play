@@ -37,10 +37,10 @@ func _ready() -> void:
 	coins.initial_velocity_max = 260.0
 	coins.scale_amount_min = 2.0
 	coins.scale_amount_max = 3.4
-	coins.color = Look.AMBER
+	coins.color = Palette.GOLD
 	var g := Gradient.new()
-	g.set_color(0, Color(Look.LAMP, 1.0))
-	g.set_color(1, Color(Look.AMBER, 0.0))
+	g.set_color(0, Color(Palette.GOLD_PALE, 1.0))
+	g.set_color(1, Color(Palette.GOLD, 0.0))
 	coins.color_ramp = g
 	add_child(coins)
 	resized.connect(_layout)
@@ -161,12 +161,12 @@ func _spark(a: int, b: int, kind: String, delay: float) -> void:
 
 static func _link_color(kind: String) -> Color:
 	if kind == "wes-tax":
-		return Look.EMBER
+		return Palette.HEAT
 	if kind.find("shield") >= 0:
-		return Look.STEEL.lightened(0.2)
+		return Palette.COMMON
 	if kind == "nia-audit" or kind == "sol-late":
-		return Look.ROSE
-	return Look.AMBER
+		return Palette.ACCENT
+	return Palette.GOLD
 
 
 func _process(delta: float) -> void:
@@ -205,8 +205,8 @@ func _draw() -> void:
 	var c := iso(Landlord.COLS - 0.15, Landlord.ROWS - 0.15)
 	var d := iso(-0.85, Landlord.ROWS - 0.15)
 	draw_colored_polygon(PackedVector2Array([a + Vector2(0, 10), b + Vector2(0, 10), c + Vector2(0, 10), d + Vector2(0, 10)]), Color(0, 0, 0, 0.45))
-	draw_colored_polygon(PackedVector2Array([a, b, c, d]), Color(0.06, 0.11, 0.125, 0.92))
-	draw_polyline(PackedVector2Array([a, b, c, d, a]), Look.LINE2, 1.2, true)
+	draw_colored_polygon(PackedVector2Array([a, b, c, d]), Color(Palette.GROUND_DEEP, 0.92))
+	draw_polyline(PackedVector2Array([a, b, c, d, a]), Palette.LINE_STRONG, 1.2, true)
 	# the desks: diamonds, back to front
 	var order: Array = range(Landlord.SIZE)
 	order.sort_custom(func(i: int, j: int) -> bool:
@@ -223,18 +223,18 @@ func _draw() -> void:
 		var top := cc.y - lift
 		var filled: bool = cells[i] != null
 		var checker := (p.x + p.y) % 2
-		var fill := Color("#1a3d34") if filled else (Color("#142c34") if checker else Color("#1a3840"))
+		var fill := Color("#3A1F2E") if filled else (Color("#1E1017") if checker else Color("#281521"))
 		if hv and selected_id != "" and not filled:
-			fill = Color("#2a5a44")
+			fill = Color("#5A2A48")
 		var poly := PackedVector2Array([Vector2(cc.x, top - hh), Vector2(cc.x + hw, top), Vector2(cc.x, top + hh), Vector2(cc.x - hw, top)])
 		# the slab side
 		draw_colored_polygon(PackedVector2Array([Vector2(cc.x - hw, top), Vector2(cc.x, top + hh), Vector2(cc.x, top + hh + 8), Vector2(cc.x - hw, top + 8)]), Color(0.04, 0.06, 0.08, 0.6))
 		draw_colored_polygon(PackedVector2Array([Vector2(cc.x + hw, top), Vector2(cc.x, top + hh), Vector2(cc.x, top + hh + 8), Vector2(cc.x + hw, top + 8)]), Color(0.03, 0.05, 0.07, 0.7))
 		draw_colored_polygon(poly, fill)
-		draw_polyline(PackedVector2Array([poly[0], poly[1], poly[2], poly[3], poly[0]]), Look.AMBER if filled else Look.STEEL, 1.4 if filled else 1.0, true)
+		draw_polyline(PackedVector2Array([poly[0], poly[1], poly[2], poly[3], poly[0]]), Palette.GOLD if filled else Color(Palette.MUTED, 0.6), 1.4 if filled else 1.0, true)
 		if not filled and selected_id != "":
 			# an open desk when something is in hand: a soft lamp pool
-			draw_colored_polygon(poly, Color(Look.LAMP, 0.06 + 0.04 * sin(t * 4.0 + i)))
+			draw_colored_polygon(poly, Color(Palette.ACCENT, 0.08 + 0.05 * sin(t * 4.0 + i)))
 	# link lines of the current settle
 	if result.has("links"):
 		var alpha := 0.55 + sin(t * 5.0) * 0.15
@@ -248,4 +248,4 @@ func _draw() -> void:
 			draw_circle(pb, 3.0, Color(col, alpha))
 	# caption
 	var cap := iso((Landlord.COLS - 1) / 2.0, Landlord.ROWS - 0.15)
-	draw_string(Look.font_mono, Vector2(cap.x - 150, cap.y + th + 22), caption, HORIZONTAL_ALIGNMENT_CENTER, 300, 12, Look.MUTED)
+	draw_string(Look.font_ui_bold, Vector2(cap.x - 150, cap.y + th + 22), caption, HORIZONTAL_ALIGNMENT_CENTER, 300, 12, Palette.MUTED)
