@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://c4jqpwav2m3o1"
+path="res://.godot/imported/floor13_font.fnt-0c8f4ce07e97e51cd7ebd330e26bafcf.fontdata"
+
+[deps]
+
+source_file="res://assets/pixel/floor13_font.fnt"
+dest_files=["res://.godot/imported/floor13_font.fnt-0c8f4ce07e97e51cd7ebd330e26bafcf.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

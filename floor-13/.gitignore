@@ -1,0 +1,27 @@
+# Godot 4 build output and editor caches — ignored.
+.godot/
+.import/
+build/
+export.cfg
+*.translation
+*.tmp
+__pycache__/
+
+# Exported packs / binaries
+*.pck
+*.zip
+*.apk
+*.aab
+*.exe
+*.x86_64
+*.app
+*.dmg
+
+# NOT ignored, deliberately:
+#   export_presets.cfg  - carries the include/exclude filters that decide which
+#                         fonts and assets reach a build; untracked it makes
+#                         builds unreproducible (has already cost us a silently
+#                         missing font on another title).
+#   *.gd.uid, *.import  - Godot 4 resource UIDs and per-asset import settings.
+#                         Dropping them makes script/asset references churn on
+#                         every fresh checkout and loses per-asset import params.
