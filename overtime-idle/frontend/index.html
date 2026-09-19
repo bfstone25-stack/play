@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#12161c">
+  <meta name="description" content="Overtime Landlord: Idle (18+) — the building keeps running when you leave. The board you built sets the rent per hour. Staff are the gacha.">
+  <meta name="rating" content="adult">
+  <meta name="RATING" content="RTA-5042-1996-1400-1577-RTA">
+  <title>Overtime Landlord · Idle · 加班房东 (18+)</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/idle.css">
+<!-- closed-loop telemetry bootstrap -->
+<script>
+window.TEL_APP = window.TEL_APP || 'overtime-idle';
+window.TEL_API = window.TEL_API || ('https://apps.blazecore.dev' + "/" + window.TEL_APP);
+window.APP_API = window.APP_API || window.TEL_API;
+window.API = window.API || window.TEL_API;
+</script>
+</head>
+<body>
+  <div class="void" aria-hidden="true">
+    <div class="glow a"></div>
+    <div class="glow b"></div>
+    <div class="haze"></div>
+  </div>
+
+  <div class="lang-bar" role="group" aria-label="Language, sound, drawers">
+    <button type="button" class="lang-btn active" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="zh">中</button>
+    <button type="button" class="lang-btn" id="soundBtn" aria-pressed="true">♪</button>
+    <button type="button" class="lang-btn" id="rosterBtn" aria-label="Roster">✦ ROSTER</button>
+    <button type="button" class="lang-btn" id="shopBtn" aria-label="Shop">▤ SHOP</button>
+    <button type="button" class="lang-btn" id="dailyBtn" aria-label="Daily floor">◷ DAILY</button>
+    <button type="button" class="lang-btn" id="galleryBtn" aria-label="Gallery">▣ 0/10</button>
+  </div>
+
+  <div class="arena">
+    <div class="fit-slot">
+      <div class="cabinet">
+        <div class="marquee">
+          <div class="landlord-plate" id="landlordPlate">
+            <img src="../../office-landlord-x/frontend/assets/landlord-portrait.webp" alt="" id="landlordFace" width="72" height="96">
+            <i id="moodDot"></i>
+          </div>
+          <div>
+            <small id="tagline">AFTER HOURS · IDLE · 18+</small>
+            <b>OVERTIME LANDLORD</b>
+            <em id="lore">The building keeps running when you leave.</em>
+          </div>
+          <span id="runState">OPEN</span>
+        </div>
+
+        <div class="floor-strip" id="floorStrip" role="tablist" aria-label="Floors"></div>
+
+        <div class="hood">
+          <div class="play-bay">
+            <aside class="side-rail" aria-label="Ledger">
+              <div class="plate">
+                <small id="lRate">RENT / HOUR</small>
+                <b id="rate">0</b>
+              </div>
+              <div class="plate">
+                <small id="lBank">BANK</small>
+                <b id="bank">0</b>
+              </div>
+              <div class="plate gold">
+                <small id="lGold">GOLD</small>
+                <b id="gold">0</b>
+              </div>
+              <div class="plate chain">
+                <small id="lChain">CHAIN</small>
+                <b id="chain">0</b>
+                <div id="chainTrack"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <article class="plate mission">
+                <small id="lFloor">FLOOR</small>
+                <b id="floorLabel">1</b>
+                <div class="bar"><i id="floorFill"></i></div>
+                <strong id="previewPay">SHIFT 0</strong>
+              </article>
+            </aside>
+
+            <div class="glass">
+              <canvas id="game" aria-label="Overtime Landlord floor"></canvas>
+              <div class="scan"></div>
+              <div class="banner" id="banner"></div>
+            </div>
+
+            <aside class="side-rail right" aria-label="Clock, relics, landlord">
+              <div class="plate">
+                <small id="lNext">NEXT SHIFT</small>
+                <b id="nextShift">10:00</b>
+              </div>
+              <div class="plate">
+                <small id="lDue">RENT DUE / DAY</small>
+                <b id="rentDue">192</b>
+                <strong id="dueCover" class="cover"></strong>
+              </div>
+              <article class="plate relics" id="relicBox">
+                <small id="lRelics">RELICS</small>
+                <div id="relicList" class="relic-list"></div>
+              </article>
+              <div class="plate line">
+                <small id="lLine">LANDLORD</small>
+                <p id="landlordLine">The floor is empty. That is not a strategy.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="deck">
+          <div class="offers" id="offers"></div>
+          <div class="deck-actions">
+            <button type="button" class="ghost" id="rerollBtn"><small id="lReroll">REROLL</small><b id="rerollCost">4</b></button>
+            <button type="button" class="launch" id="settleBtn"><small id="lHold">COMMIT</small><b id="lSettle">SETTLE</b></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay show" id="intro" role="dialog" aria-modal="true">
+    <div class="sheet title-sheet">
+      <img src="../../office-landlord-x/frontend/assets/title.webp" alt="" class="title-art">
+      <small id="introTag">18+ · ADULTS ONLY</small>
+      <h1>Overtime Landlord</h1>
+      <p id="introBody"></p>
+      <button type="button" class="launch" id="startBtn"><b id="lStart">OPEN THE BUILDING</b></button>
+    </div>
+  </div>
+
+  <!-- The return screen: the one every returning player sees. -->
+  <div class="overlay" id="return" role="dialog" aria-modal="true">
+    <div class="sheet return-sheet">
+      <div class="return-head">
+        <img src="../../office-landlord-x/frontend/assets/landlord-portrait.webp" alt="" class="return-face">
+        <div>
+          <small id="returnTag">WHILE YOU WERE GONE</small>
+          <h2 id="returnTitle">3 h 40 min</h2>
+          <p id="returnSay" class="say"></p>
+        </div>
+      </div>
+      <div class="return-stats">
+        <div><b id="retShifts">0</b><small id="lRetShifts">SHIFTS</small></div>
+        <div><b id="retRent">0</b><small id="lRetRent">RENT</small></div>
+        <div><b id="retRate">0</b><small id="lRetRate">/ HOUR</small></div>
+      </div>
+      <ul class="return-floors" id="returnFloors"></ul>
+      <p class="return-note" id="returnNote"></p>
+      <div class="return-actions">
+        <button type="button" class="ghost" id="returnCap" hidden><small>GOLD 120</small><b id="lReturnCap">EXTEND TO 24 H</b></button>
+        <button type="button" class="launch" id="returnBtn"><b id="lCollect">COLLECT</b></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="roster" role="dialog" aria-modal="true">
+    <div class="sheet wide">
+      <small id="rosterTag">STAFF · THE GACHA</small>
+      <h2 id="rosterTitle">Roster</h2>
+      <p id="rosterBody"></p>
+      <div class="pull-row">
+        <button type="button" class="launch" id="pull1"><small>GOLD 30</small><b id="lPull1">PULL ×1</b></button>
+        <button type="button" class="launch" id="pull10"><small>GOLD 270</small><b id="lPull10">PULL ×10</b></button>
+        <span class="pity" id="pity"></span>
+      </div>
+      <div class="pull-result" id="pullResult"></div>
+      <div class="roster-grid" id="rosterGrid"></div>
+      <button type="button" class="ghost full" id="rosterClose"><b id="lClose1">CLOSE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="shop" role="dialog" aria-modal="true">
+    <div class="sheet wide">
+      <small id="shopTag">PROCUREMENT · PAID IN RENT</small>
+      <h2 id="shopTitle">Shop</h2>
+      <p id="shopBody"></p>
+      <div class="shop-grid" id="shopRow"></div>
+      <small id="goldTag" class="section">GOLD</small>
+      <div class="shop-grid" id="goldRow"></div>
+      <button type="button" class="ghost full" id="shopClose"><b id="lClose2">CLOSE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="daily" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <small id="dailyTag">DAILY FLOOR</small>
+      <h2 id="dailyTitle">Everyone gets the same pieces today</h2>
+      <p id="dailyBody"></p>
+      <strong id="dailyBest" class="stat"></strong>
+      <button type="button" class="launch" id="dailyStart"><b id="lDailyStart">PLAY TODAY'S FLOOR</b></button>
+      <button type="button" class="ghost full" id="dailyClose"><b id="lClose3">CLOSE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="dailyEnd" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <small id="dailyEndTag">DAILY FLOOR · SETTLED</small>
+      <h2 id="dailyEndTitle">0</h2>
+      <p id="dailyEndBody"></p>
+      <strong id="dailyPct" class="stat"></strong>
+      <button type="button" class="launch" id="dailyEndBtn"><b id="lDailyEnd">BACK TO THE BUILDING</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="notice" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <small id="noticeTag">NOTICE</small>
+      <h2 id="noticeTitle">Eviction</h2>
+      <p id="noticeBody"></p>
+      <button type="button" class="launch" id="noticeBtn"><b id="lNotice">UNDERSTOOD</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="prestige" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <small id="prestigeTag">ACQUISITION</small>
+      <h2 id="prestigeTitle">A second building</h2>
+      <p id="prestigeBody"></p>
+      <button type="button" class="launch" id="prestigeBtn"><b id="lPrestige">SIGN FOR IT</b></button>
+      <button type="button" class="ghost full" id="prestigeClose"><b id="lClose4">NOT YET</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="gallery" role="dialog" aria-modal="true">
+    <div class="sheet wide">
+      <small id="galleryTag">18+ · TWO LADDERS</small>
+      <h2 id="galleryTitle">Plates</h2>
+      <p id="galleryBody"></p>
+      <small class="section" id="lSkill">SKILL — A BOARD YOU BUILT. NEVER FROM TIME.</small>
+      <div class="plate-grid" id="galleryGrid"></div>
+      <small class="section" id="lAff">AFFECTION — SHIFTS WORKED ON A SOLVENT FLOOR. THIS ONE IS TIME, AND SAYS SO.</small>
+      <div class="plate-grid" id="affGrid"></div>
+      <button type="button" class="launch" id="galleryClose"><b id="lClose5">CLOSE</b></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="plateView" role="dialog" aria-modal="true">
+    <div class="sheet wide">
+      <img id="plateImg" alt="" class="plate-full">
+      <p id="plateCap"></p>
+      <button type="button" class="launch" id="plateClose"><b id="lClose6">CLOSE</b></button>
+    </div>
+  </div>
+
+  <div class="dev" id="dev">
+    <small>DEV</small>
+    <button type="button" id="devGold">+500 Gold</button>
+    <button type="button" id="devH1">+1 h</button>
+    <button type="button" id="devH8">+8 h</button>
+    <button type="button" id="devD1">+1 day</button>
+    <button type="button" id="devPrestige">force prestige</button>
+    <button type="button" id="devReset">reset</button>
+  </div>
+
+  <script src="js/landlord.js"></script>
+  <script>window.GATE_CONFIG={price:"$2.49",buyUrl:"https://bfstone25-stack.itch.io/overtime-landlord/purchase"};</script>
+  <script src="gate.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/roster.js"></script>
+  <script src="js/economy.js"></script>
+  <script src="js/idle.js"></script>
+  <!-- This title is an adult one, so the board it offers is the casual one (arousal fatigues;
+       see board.js). Adult board off, never a portal build. No popups, no redirects: every
+       tile on the board is a link the player clicks, in the page. -->
+  <script>window.PROMO_ADULT_OK = 0;
+          window.BOARD_ADULT_OK = 0;
+          window.PROMO_FROM = "overtime-idle";</script>
+  <script src="../../_shared/board.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
