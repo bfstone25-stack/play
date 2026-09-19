@@ -20,6 +20,11 @@
 ## Both tables live in game/audio/voice/manifest.json, written by ops/vn_voice.py. A file
 ## that is missing simply does not play -- a part-voiced build is a normal state here, not
 ## an error, because the heroines are generated first and the rest arrives later.
+##
+## Language: a translated line keeps the same identifier as its English original, so the
+## Japanese take is that same key in manifest["by_lang"]["japanese"]. The lookup tries the
+## player's language first and falls back to English, which means a half-translated voice
+## track sounds half-translated rather than half-silent.
 
 init -5 python:
     import json as _vn_json
@@ -72,9 +77,23 @@ init -4 python:
             return None
         return path
 
+    def _vn_lang_table():
+        """The voice table for the language the player is reading, if there is one.
+
+        A translated line keeps the *same* translation identifier as its English
+        original, so the Japanese take is the same key in a different table. Anything
+        missing from that table falls through to the English take rather than to
+        silence -- a partly-voiced language should sound part-voiced, not broken.
+        """
+        try:
+            return _vn_voice.get("by_lang", {}).get(_preferences.language) or {}
+        except Exception:
+            return {}
+
     def vn_auto_voice(voice_id):
         """config.auto_voice: translation identifier -> voice file, or None."""
-        return _vn_pick(_vn_voice["by_id"].get(voice_id))
+        return (_vn_pick(_vn_lang_table().get(voice_id))
+                or _vn_pick(_vn_voice["by_id"].get(voice_id)))
 
     config.auto_voice = vn_auto_voice
 
