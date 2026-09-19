@@ -182,6 +182,15 @@ var BMRPG = (() => {
     $("rDesk").textContent = t("locker");
     $("rDesk").onclick = renderDesk;
     show("resOv");
+    // Cross-promotion, once per session, after a day ends: offered, never forced —
+    // the board is dismissable and the result screen is still behind it.
+    if (!window.__boardOffered) {
+      window.__boardOffered = 1;
+      setTimeout(function () {
+        if (window.BOARD && BOARD.adultAllowed()) BOARD.offerMore("adult");
+        else if (window.PROMO) PROMO.showAfterRun(won ? "win" : "lose");
+      }, 900);
+    }
   }
 
   function weekend() {

@@ -110,14 +110,23 @@ GAMES: dict[str, dict] = {
     },
     "beat-monday": {
         "path": "beat-monday/frontend/index.html",
+        # Work week RPG: title -> Monday briefing -> the day. The day itself is played
+        # by the game's own autopilot; the boss HP is zeroed so the day ends in seconds
+        # and the result screen (which offers the board) is reached by the real code path.
         "drive": """async () => {
             const click = id => { const e = document.getElementById(id); if (e) e.click(); };
-            click('btnDaily');                                   // home -> story card
-            await new Promise(r => setTimeout(r, 400));
-            click('storyGo');                                    // story -> match
-            await new Promise(r => setTimeout(r, 1200));
-            click('btnPause'); await new Promise(r => setTimeout(r, 400));
-            click('btnQuit');                                    // quit == run over
+            click('btnStart');                                   // title -> Monday brief
+            await new Promise(r => setTimeout(r, 300));
+            click('bGo');                                        // brief -> the day
+            BMRPG.setAuto(true);
+            for (let i = 0; i < 400; i++) {
+              await new Promise(r => setTimeout(r, 50));
+              const run = BMRPG.run;
+              if (!run) continue;
+              run.t = Math.max(run.t, run.day.dur);              // fast-forward to the boss
+              if (run.boss) run.boss.hp = 0;                     // end the day, keep the code path
+              if (run.over) break;
+            }
         }""",
     },
     "word-pop": {

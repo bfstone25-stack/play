@@ -44,6 +44,13 @@ button{font-family:inherit;cursor:pointer}
 .card{font:800 15px -apple-system,sans-serif;color:#fff}
 .scroll{overflow-y:auto;max-height:58vh}
 </style>
+<!-- closed-loop telemetry bootstrap -->
+<script>
+window.TEL_APP = window.TEL_APP || 'beat-monday';
+window.TEL_API = window.TEL_API || ('https://apps.blazecore.dev' + "/" + window.TEL_APP);
+window.APP_API = window.APP_API || window.TEL_API;
+window.API = window.API || window.TEL_API;
+</script>
 </head>
 <body>
 <div id="app"><div id="stage">
@@ -109,6 +116,10 @@ button{font-family:inherit;cursor:pointer}
 <script src="kernel/commerce.js"></script>
 <script src="kernel/i18n.js"></script>
 <script src="kernel/save.js"></script>
+<script>window.PROMO_ADULT_OK = /(^|\.)workers\.dev$|^127\.0\.0\.1$|^localhost$/.test(location.hostname) ? 1 : 0;
+        window.PROMO_FROM = "beat-monday"; window.BOARD_FROM = "beat-monday";</script>
+<script src="promo.js"></script>
+<script src="board.js"></script>
 <script src="rpg/phrases.js"></script>
 <script src="rpg/data.js"></script>
 <script src="rpg/core.js"></script>
@@ -116,5 +127,190 @@ button{font-family:inherit;cursor:pointer}
 <script src="rpg/render.js"></script>
 <script src="rpg/main.js"></script>
 <script>BMRPG.boot();</script>
+
+<script>
+(function(){
+  if (window.__TEL_BOOTED__) return;
+  window.__TEL_BOOTED__ = true;
+  var API = window.TEL_API || window.API || "https://apps.blazecore.dev";
+  var APP = window.TEL_APP || window.APP_SLUG || "";
+  try {
+    if (!APP) {
+      var m = (location.pathname || "").match(/^\/([^\/]+)/);
+      if (m && m[1] && m[1] !== "tel_batch" && m[1] !== "tel") APP = m[1];
+    }
+  } catch (e) {}
+  if (API && APP && !/\/[a-z0-9_-]+$/i.test(API.replace(/\/+$/,"")) && API.indexOf(APP) < 0) {
+    API = API.replace(/\/+$/, "") + "/" + APP;
+  }
+  window.TEL_API = API;
+  window.TEL_APP = APP;
+  var pid = (function(){
+    // Our own recording and screenshot runs were showing up as players — arrivals, rage
+    // clicks, even a 1421-second "ad watched". Automation gets a bot_ id the reports drop.
+    var bot = false;
+    try { bot = !!navigator.webdriver || / HeadlessChrome\//.test(navigator.userAgent || ""); } catch (e) {}
+    if (bot) return "bot_" + Math.random().toString(36).slice(2, 8);
+    var p = localStorage.getItem("tel_pid");
+    if (!p) { p = "u" + Math.random().toString(36).slice(2, 10); localStorage.setItem("tel_pid", p); }
+    return p;
+  })();
+  var sid = "s" + Math.random().toString(36).slice(2, 10);
+  var t0 = Date.now();
+  var queue = [];
+  function push(etype, name, value, dur){
+    queue.push({
+      app: APP || undefined,
+      pid: pid,
+      sid: sid,
+      etype: etype,
+      name: String(name || "").slice(0, 120),
+      value: typeof value === "string" ? value : JSON.stringify(value || ""),
+      dur: dur || 0
+    });
+    if (queue.length >= 8) flush();
+  }
+  function flush(useBeacon){
+    if (!queue.length || !API) return;
+    var batch = queue.splice(0, 50);
+    var body = JSON.stringify(batch);
+    var url = API.replace(/\/+$/, "") + "/tel_batch";
+    try {
+      if (useBeacon && navigator.sendBeacon) {
+        navigator.sendBeacon(url, new Blob([body], {type: "application/json"}));
+      } else {
+        fetch(url, {method: "POST", headers: {"Content-Type": "application/json"}, body: body, mode: "cors", keepalive: true}).catch(function(){});
+      }
+    } catch (e) {}
+  }
+  push("pageview", location.pathname || "/", document.title || "");
+  document.addEventListener("click", function(e){
+    var el = e.target && e.target.closest && e.target.closest("button,a,[data-tel],.card,.chip,[role=button],canvas");
+    if (!el) return;
+    if (!lastCustom) { lastCustomAt = Date.now(); }
+    push("click", el.id || el.getAttribute("data-tel") || el.className || el.tagName,
+         ((el.innerText || el.getAttribute("aria-label") || "") + "").trim().slice(0, 60));
+  }, true);
+  window.addEventListener("beforeunload", function(){
+    if (pwSeenAt && !pwDecided) push("paywall_decision", "leave", "", Math.round((Date.now() - pwSeenAt) / 1000));
+    push("session_end", "session", window.__TEL_SESSION_SUMMARY__(), Math.round((Date.now() - t0) / 1000));
+    flush(true);
+  });
+  document.addEventListener("visibilitychange", function(){ if (document.hidden) flush(true); });
+  setInterval(function(){ flush(); }, 20000);
+
+  // ---- psychology layer -------------------------------------------------
+  // Counting heads told us "75 plays, 0 buys" and nothing about why. These events
+  // are chosen to answer why: where people came from, how long they hesitated at
+  // the door, whether they were actually paying attention, where they got
+  // frustrated, what they did when they saw a price, and whether they came back.
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem("tel_me") || "{}") || {}; } catch (e) {}
+  var nowS = Math.round(Date.now() / 1000);
+  var visits = (store.visits || 0) + 1;
+  var firstSeen = store.first || nowS;
+  var daysSince = store.last ? Math.round((nowS - store.last) / 86400) : 0;
+  var src = "";
+  try { src = new URLSearchParams(location.search).get("src") || ""; } catch (e) {}
+  var refHost = "";
+  try { refHost = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+  if (!store.src && (src || refHost)) store.src = src || refHost;   // first touch wins
+  store.visits = visits; store.first = firstSeen; store.last = nowS;
+  try { localStorage.setItem("tel_me", JSON.stringify(store)); } catch (e) {}
+  // arrive: referral_source + return behaviour + device, once per session
+  push("arrive", src || refHost || "direct", {
+    src: src, ref: refHost, first_src: store.src || "", visit: visits,
+    days_since_last: daysSince, returning: visits > 1,
+    w: window.innerWidth, h: window.innerHeight, touch: "ontouchstart" in window,
+    lang: navigator.language || "", embedded: window.top !== window.self
+  });
+  // engaged: seconds of hesitation before the first real interaction
+  var engaged = false;
+  function onFirst(){ if (engaged) return; engaged = true; push("engaged", "first_input", "", Math.round((Date.now() - t0) / 1000)); }
+  ["pointerdown", "keydown", "touchstart"].forEach(function(n){ window.addEventListener(n, onFirst, {once: true, capture: true}); });
+  // attention: active seconds (input in last 30s) vs merely-open seconds, reported at session_end
+  var lastInput = Date.now(), active = 0, hiddenAt = 0, hiddenTotal = 0, awayCount = 0;
+  ["pointerdown", "pointermove", "keydown", "wheel", "touchstart", "scroll"].forEach(function(n){
+    window.addEventListener(n, function(){ lastInput = Date.now(); }, {passive: true, capture: true});
+  });
+  setInterval(function(){ if (!document.hidden && Date.now() - lastInput < 30000) active += 5; }, 5000);
+  document.addEventListener("visibilitychange", function(){
+    if (document.hidden) { hiddenAt = Date.now(); awayCount++; }
+    else if (hiddenAt) { var away = Math.round((Date.now() - hiddenAt) / 1000); hiddenTotal += away; hiddenAt = 0;
+      push("focus_back", lastCustom || "", {away_s: away}); }
+  });
+  // rage: 4+ clicks on the same thing inside 1.2s = frustration or a dead control
+  var rc = 0, rt = 0, rk = "";
+  document.addEventListener("pointerdown", function(e){
+    var k = (e.target && (e.target.id || e.target.className || e.target.tagName)) + "";
+    var now = Date.now();
+    if (k === rk && now - rt < 1200) { rc++; if (rc === 4) push("rage", k.slice(0, 80), {last: lastCustom || ""}); }
+    else { rk = k; rc = 1; }
+    rt = now;
+  }, true);
+  // scroll depth: how far down a store/landing page they actually read
+  var maxScroll = 0;
+  window.addEventListener("scroll", function(){
+    var d = document.documentElement, h = Math.max(1, d.scrollHeight - d.clientHeight);
+    maxScroll = Math.max(maxScroll, Math.round(100 * (window.scrollY || d.scrollTop) / h));
+  }, {passive: true});
+  // last custom event = "where they stopped"; attached to session_end so exit point needs no join
+  var lastCustom = "", lastCustomAt = Date.now();
+  // paywall: seen (auto, when [data-tel-paywall] scrolls into view), then the decision and how long it took
+  var pwSeenAt = 0, pwDecided = false;
+  function paywallSeen(where){ if (pwSeenAt) return; pwSeenAt = Date.now(); push("paywall_seen", where || "", {last: lastCustom || ""}); }
+  function paywallDecision(what, meta){
+    if (!pwSeenAt || pwDecided) return; pwDecided = true;
+    push("paywall_decision", what, meta || "", Math.round((Date.now() - pwSeenAt) / 1000));
+  }
+  try {
+    if (window.IntersectionObserver) {
+      var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting) paywallSeen(x.target.getAttribute("data-tel-paywall") || "page"); }); }, {threshold: 0.5});
+      var scan = function(){ document.querySelectorAll("[data-tel-paywall]").forEach(function(el){ io.observe(el); }); };
+      scan(); new MutationObserver(scan).observe(document.documentElement, {childList: true, subtree: true});
+    }
+  } catch (e) {}
+  document.addEventListener("click", function(e){
+    var el = e.target && e.target.closest && e.target.closest("[data-tel-buy],[data-tel-promo],[data-tel-dismiss]");
+    if (!el) return;
+    if (el.hasAttribute("data-tel-buy")) { paywallSeen("buy_button"); paywallDecision("buy_click", {price: el.getAttribute("data-tel-buy") || ""}); flush(true); }
+    else if (el.hasAttribute("data-tel-dismiss")) paywallDecision("dismiss", "");
+    else push("cross_promo_click", el.getAttribute("data-tel-promo") || el.href || "", {from: lastCustom || ""});
+  }, true);
+  // ads: only meaningful once a network is wired in; adblock is detected by the provider script never defining its global
+  window.addEventListener("load", function(){
+    setTimeout(function(){
+      var slot = document.querySelector("[data-tel-ad]");
+      if (!slot) return;
+      var filled = slot.querySelector("iframe,img,ins") || slot.offsetHeight > 20;
+      push(filled ? "ad_shown" : "ad_blocked", slot.getAttribute("data-tel-ad") || "slot", "");
+    }, 4000);
+  });
+  var _sessionEndBase = null;
+  window.__TEL_SESSION_SUMMARY__ = function(){
+    return {active_s: active, away_s: hiddenTotal, away_n: awayCount, scroll: maxScroll,
+            last: lastCustom, since_last_s: Math.round((Date.now() - lastCustomAt) / 1000),
+            engaged: engaged, paywall: pwSeenAt ? (pwDecided ? "decided" : "left") : "no",
+            visit: visits, src: store.src || ""};
+  };
+  window.TEL = {
+    chat: function(userMsg, reply, meta){
+      push("chat", "message", {u: String(userMsg).slice(0, 800), r: String(reply).slice(0, 1200), ...(meta || {})});
+    },
+    feedback: function(score, note){
+      push("feedback", "rating", {score: score, note: String(note || "").slice(0, 500)});
+    },
+    ev: function(name, value){ lastCustom = String(name || ""); lastCustomAt = Date.now(); push("custom", name, value); },
+    paywall_seen: paywallSeen,
+    paywall: paywallDecision,
+    ad: function(state, meta){ push("ad_" + state, meta && meta.slot || "slot", meta || ""); },
+    promo: function(dest){ push("cross_promo_click", dest, {from: lastCustom || ""}); },
+    play_start: function(meta){ push("play_start", "play", meta || ""); },
+    play_end: function(meta, dur){ push("play_end", "play", meta || "", dur || 0); },
+    flush: flush
+  };
+})();
+</script>
+
 </body>
 </html>
