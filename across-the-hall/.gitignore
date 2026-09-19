@@ -1,0 +1,11 @@
+# Godot build output and import caches. Matches the other *-godot trees; see
+# ops/adult_forks/TITLE_SCREENS.md for why export_presets.cfg, *.gd.uid and *.import
+# are deliberately NOT here.
+.godot/
+.import/
+build/
+*.pck
+*.zip
+*.translation
+export.cfg
+__pycache__/
