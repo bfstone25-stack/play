@@ -12,6 +12,8 @@ Shrine kernel rewire. `play/null-shrine/frontend/js/physics.js` now references `
 
 ## Done
 
+- 2026-09-18: Crazy Rant absorbed into Beat Monday (Wednesday breakdown level) and deleted. Beat Monday is now a work week RPG; see `play/beat-monday/DESIGN.md`. Seven titles → six.
+
 - Waves 0–5. Seven titles + shrine seed on `play/catharsis-series`.
 - Dual-smoke gate for shrine→kernel: failed; local shrine physics kept.
 

@@ -37,7 +37,7 @@ Do **not** rewrite shrine in Matter.js / Box2D. Extract its custom 2D engine int
 | 2 | `office-landlord` | 职场大赢家 / Office Landlord | Workplace | 5×4 symbol builder | None — grid sim |
 | 3 | `beat-monday` | 击溃星期一 / Beat the Monday | Workplace | One-thumb survivor-like | Low — circle vs circle |
 | 4 | `cyber-merit` | 赛博木鱼 / Cyber Merit | Z-Gen emptiness | Clicker + ASMR | None |
-| 5 | `crazy-rant` | 发疯文学 / Crazy Rant | Z-Gen metaphysics | Phrase auto-battler | None — particles |
+| 5 | — | *(发疯文学 / Crazy Rant — absorbed into `beat-monday` as its Wednesday level, 2026-09-18; source deleted)* | — | — | — |
 | 6 | `rebound-tycoon` | 老王逆袭记 / Rebound Tycoon | Midlife / gig | Idle tycoon | None |
 | 7 | `word-pop` | 单词弹珠英雄 / Word Pop Quest | Edutainment | Quiz-charged pegs | High — shrine physics + quiz overlay |
 

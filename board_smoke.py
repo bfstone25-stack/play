@@ -140,18 +140,6 @@ GAMES: dict[str, dict] = {
             window.dispatchEvent(new PointerEvent('pointerup', {bubbles:true}));
         }""",
     },
-    "crazy-rant": {
-        "path": "crazy-rant/frontend/index.html",
-        "drive": """async () => {
-            const real = COMBAT.update;
-            COMBAT.update = function (state, dt) { const r = real.call(this, state, dt);
-              state.outcome = state.outcome || 'lose'; return r; };
-            document.getElementById('startBtn').click();         // title -> loadout
-            await new Promise(r => setTimeout(r, 300));
-            document.querySelectorAll('#bank > *').forEach(e => e.click());
-            document.getElementById('fightBtn').click();          // loadout -> fight
-        }""",
-    },
     "cyber-merit": {
         "path": "cyber-merit/frontend/index.html",
         "drive": """async () => {
