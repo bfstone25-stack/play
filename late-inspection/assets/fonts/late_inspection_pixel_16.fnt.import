@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://y346c5kj5eja"
+path="res://.godot/imported/late_inspection_pixel_16.fnt-b9a846c945bc1530d77e94320189aa8c.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/late_inspection_pixel_16.fnt"
+dest_files=["res://.godot/imported/late_inspection_pixel_16.fnt-b9a846c945bc1530d77e94320189aa8c.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
