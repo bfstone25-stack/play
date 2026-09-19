@@ -183,6 +183,10 @@
 "zh": "现在，我拿走你的那张。",
 "en": "Now I take yours away."
 },
+"deal": {
+"zh": "再发一次。",
+"en": "And deal again."
+},
 "reveal": {
 "zh": "你的牌不见了。",
 "en": "Your card is gone."
@@ -240,6 +244,14 @@
 "note_text": {
 "zh": "蜡烛",
 "en": "the candle"
+},
+"note_written": {
+"zh": "你会留下蜡烛。\n—— 写于你伸手之前",
+"en": "You will end with the candle.\n— written before you reached out"
+},
+"reveal": {
+"zh": "你碰任何东西之前，我就写好了。",
+"en": "I wrote it before you touched anything."
 },
 "items": [
 {

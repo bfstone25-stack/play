@@ -25,7 +25,7 @@ python3 tests/headless_web.py            # drives the web build in Chromium, scr
 |---|---|
 | **求签, the slip tube** | Tap the wooden fish (merit.js curve, ported exactly), the lacquer band rises; at 100 the tube shakes — sticks rattle, one rises and falls out — and the slip is read on paper: rank, four-character 签文, plain reading, one thing to do today. Six subjects. Keep / burn / 化解. |
 | **The deck** | Cut, turn one of the 78, upright or reversed, in one of four positions. Procedural card back and a typographic face; art slots in later as `assets/tarot/<slug>.webp` by filename, nothing else changes. Keep / burn / integrate. |
-| **读心术, the reader** | Four forces, each a scene at her table with a beat before the reveal, then a line she gives back: the six-card binary force (any 1–63), the mathematical force (always the lantern), the Princess card trick (yours is gone), and an equivoque (always the candle). The door says once, lightly, that she performs. |
+| **读心术, the reader** | Four forces, each a scene at her table with the same dim-and-hold beat before the reveal, then a line she gives back: the six-card binary force (any 1–63), the mathematical force (always the lantern), the Princess card trick (turned one at a time, gathered, dealt again face down, turned one at a time, a breath, *yours is gone*), and an equivoque (the four things are drawn objects on her cloth — tap or drag one up the table to push it; the note she opens is in her hand, dated before you chose, and is not the line she speaks). She is a rendered portrait in three states (calm / eyes closed on the reveal / a small smile after), breathing, lit by the candle's flicker; the drawn hooded figure is the fallback for any state whose texture is missing. The door says once, lightly, that she performs. |
 | **The rack** | One collection for both: tied 凶 / reversed cards converting on a real-time delay (20 min / 60 min) into +1 merit per tap; the slips by rank × subject; the 78 with their reversals. |
 | **Offerings** | The four SKUs, mocked; "a paid draw is never a luckier draw" is the first line. |
 | **Shared** | One merit currency (named *focus* on the West side), one free draw a day per account, pity ladder, `user://fortune.json`, zh-Hans / en toggle, the casual board offered after the daily read via `Gate`. |
@@ -58,6 +58,8 @@ python3 tests/headless_web.py            # drives the web build in Chromium, scr
 | `scripts/palette.gd`, `studio_theme.gd` | this title's own palette (ink / lacquer / gold leaf / smoke; violet / silver / candle) and Theme; same API as the siblings' |
 | `scripts/gate.gd` | copy of `shared/godot/gate.gd`, refreshed by `ops/godot_build.sh` |
 | `pool/*.json` | the shipped text; rebuilt from `tools/pool_*.py` by `tools/build_pool.py` |
+| `assets/reader/reader_{calm,reveal,giveback}.webp` | the reader, 720×560 RGBA with faded edges, from `ops/fortune_art/fortune_gen.py` (refs on flat grey, then the three states with IP-Adapter, all tier 1) via `tools/install_reader.py` |
+| `tools/install_tarot.py` | picks JSON `{slug: stem}` → `assets/tarot/<slug>.webp` at the face frame's size (396×422); `--list` shows which of the 78 have candidates in `ops/tarot_art/out/faces/` |
 | `assets/fonts/` | Nunito, Playfair Display Italic, and `NotoSerifSC-subset.otf` (690 KB: Noto Serif CJK SC cut to exactly the characters the game has, by `tools/subset_font.py`); OFL licences beside them |
 
 ## Verified by running
@@ -76,7 +78,7 @@ python3 tests/headless_web.py            # drives the web build in Chromium, scr
 
 ## Not done / stubbed
 
-- Card art: none rendered; typographic faces. The 78 slots are `assets/tarot/<slug>.webp`.
+- Card art: the 78 faces are rendering on the local card (two candidates each, `ops/tarot_art/out/faces/<slug>/`); none picked or installed yet — `tools/install_tarot.py` is ready, picking waits for the full set.
 - Slip pool is 150 of the ~600 the spec wants at launch.
 - Audio is synthesised placeholders (`scripts/sfx.gd`); no samples.
 - Festival racks, streak rewards, share cards: not started.

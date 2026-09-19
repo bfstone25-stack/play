@@ -19,6 +19,41 @@ const PAPER := Color("EEF1F5")
 const PAPER_LINE := Color("B9C2D0")
 const INK := Color("1B1F27")
 
+# ==== rendered actors =============================================================================
+## 2026-09-18: the player, the colleagues and the bosses are rendered sprites when
+## assets/art/sprite_<id>.webp exists (ops/beat_monday_art/beat_monday_gen.py sprites +
+## pick), keyed out and cropped by the pipeline. The vector rigs below stay as the
+## fallback so a missing render never leaves a hole on the plate. actor() draws the
+## sprite to a height in px, feet at `p`, and tells the caller whether it did.
+static var _tex: Dictionary = {}
+
+static func tex(id: String) -> Texture2D:
+	if _tex.has(id):
+		return _tex[id]
+	var path := "res://assets/art/sprite_%s.webp" % id
+	var t: Texture2D = load(path) if ResourceLoader.exists(path) else null
+	_tex[id] = t
+	return t
+
+
+static func has_actor(id: String) -> bool:
+	return tex(id) != null
+
+
+static func actor(ci: CanvasItem, id: String, p: Vector2, height: float, face: float = 1.0,
+		tint := Color(1, 1, 1), bob := 0.0) -> bool:
+	var tx := tex(id)
+	if tx == null:
+		return false
+	var sz := tx.get_size()
+	var s := height / sz.y
+	var w := sz.x * s
+	shadow(ci, p + Vector2(0, 2), w * 0.36, height * 0.06)
+	ci.draw_set_transform(p + Vector2(0, -bob), 0.0, Vector2(s * (1.0 if face >= 0 else -1.0), s))
+	ci.draw_texture_rect(tx, Rect2(Vector2(-sz.x / 2, -sz.y), sz), false, tint)
+	ci.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+	return true
+
 
 static func shadow(ci: CanvasItem, p: Vector2, rx: float, ry: float, a: float = 0.28) -> void:
 	ci.draw_set_transform(p, 0.0, Vector2(rx, ry))

@@ -68,6 +68,7 @@ READER = {
    "got": {"zh": "记住了", "en": "I have it"},
    "turn": {"zh": "我把它们翻过去。", "en": "I will turn them over."},
    "take": {"zh": "现在，我拿走你的那张。", "en": "Now I take yours away."},
+   "deal": {"zh": "再发一次。", "en": "And deal again."},
    "reveal": {"zh": "你的牌不见了。", "en": "Your card is gone."},
    "give": [
     {"zh": "你盯着一张牌，就没看见另外四张全换了。这周也是——你盯着一件事，周围已经变了。抬头看一眼。", "en": "You watched one card so closely you never saw the other four change. That is this week too. You are staring at one thing while everything around it moves. Look up once."},
@@ -86,7 +87,12 @@ READER = {
    "gave": {"zh": "你递给我的，是蜡烛。", "en": "You handed me the candle."},
    "kept": {"zh": "你留下的，是蜡烛。", "en": "You kept the candle."},
    "open": {"zh": "打开纸条。", "en": "Open the note."},
+   # The note is in her hand, written before you touched anything — so it does not
+   # repeat her line. She has just said "you kept the candle"; the paper says what
+   # she knew, and her reveal is about the *when*, not the *what*.
    "note_text": {"zh": "蜡烛", "en": "the candle"},
+   "note_written": {"zh": "你会留下蜡烛。\n—— 写于你伸手之前", "en": "You will end with the candle.\n— written before you reached out"},
+   "reveal": {"zh": "你碰任何东西之前，我就写好了。", "en": "I wrote it before you touched anything."},
    "items": [
     {"id": "candle", "zh": "蜡烛", "en": "candle"}, {"id": "key", "zh": "钥匙", "en": "key"},
     {"id": "coin", "zh": "铜钱", "en": "coin"}, {"id": "feather", "zh": "羽毛", "en": "feather"},

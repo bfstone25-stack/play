@@ -14,6 +14,7 @@ var puffs: Array = []    # kill puffs: {p, life, kind}
 var plate: Texture2D
 var plate_day := ""
 var display_font: Font
+var placement: Dictionary = {}   # the deploy node's tiles (BMDeploy), drawn under the play
 
 
 func _ready() -> void:
@@ -130,6 +131,16 @@ func _draw() -> void:
 		draw_rect(Rect2(Vector2(0, size.y - 8 * (i + 1)), Vector2(size.x, 8 * (i + 1))), Color(0, 0, 0, 0.12 * k))
 	if run.is_empty():
 		return
+	# the deploy node's placement: colleagues at their tiles, gear as a lit tile
+	for k in placement.get("tiles", {}):
+		var it: Dictionary = placement["tiles"][k]
+		var tp: Vector2 = BMDeploy.TILES[int(k)]
+		draw_circle(tp + Vector2(0, 6), 26.0, Color(Palette.TUBE, 0.10))
+		if it["kind"] == "party":
+			if not Sprites.actor(self, it["id"], tp + Vector2(0, 14), 44.0, 1.0, Color(1, 1, 1), absf(sin(clock * 3.0)) * 1.5):
+				Sprites.colleague(self, tp, clock, it["id"])
+		else:
+			Sprites.equip_icon(self, it["id"], tp, 30)
 	for pk in run["picks"]:
 		Sprites.pick(self, pk, clock)
 	for pf in puffs:
@@ -141,17 +152,30 @@ func _draw() -> void:
 	for f in foes:
 		Sprites.foe(self, f, clock)
 	if run["boss"] != null:
-		Sprites.boss(self, run["boss"], day_id, clock)
+		var b: Dictionary = run["boss"]
+		var boss_id: String = run["day"]["boss"]
+		if not Sprites.actor(self, boss_id, Vector2(b["x"], b["y"] + b["r"] * 0.9), b["r"] * 2.6, 1.0,
+				Color(1, 1, 1).lerp(Palette.HEAT, b["hit"] * 0.8), absf(sin(clock * 2.0)) * 3.0):
+			Sprites.boss(self, b, day_id, clock)
 	for s in run["foeShots"]:
 		Sprites.foe_shot(self, s, clock)
 	var p := Vector2(run["px"], run["py"])
 	var party: Array = run["profile"].get("party", [])
+	var placed: Dictionary = placement.get("tiles", {})
+	var placed_ids: Array = []
+	for k in placed:
+		placed_ids.append(placed[k]["id"])
 	for i in party.size():
+		if placed_ids.has(party[i]):
+			continue
 		var a := clock * 1.6 + i * 2.1
-		Sprites.colleague(self, p + Vector2(cos(a) * 34, sin(a) * 34), clock, party[i])
+		var cp: Vector2 = p + Vector2(cos(a) * 34, sin(a) * 34)
+		if not Sprites.actor(self, party[i], cp + Vector2(0, 14), 44.0, 1.0 if cos(a) < 0 else -1.0, Color(1, 1, 1), absf(sin(clock * 6.0 + i)) * 2.0):
+			Sprites.colleague(self, cp, clock, party[i])
 	var stats: Dictionary = run["stats"]
 	var eq: Dictionary = run["profile"].get("equipped", {})
-	Sprites.player(self, p, clock, moving, face, hurt, eq.get("wear") == "lanyard", eq.get("wear") == "headphones")
+	if not Sprites.actor(self, "player", p + Vector2(0, 16), 52.0, face, Color(1, 1, 1).lerp(Palette.HEAT, hurt * 0.8), absf(sin(clock * 14.0)) * 2.0 * moving):
+		Sprites.player(self, p, clock, moving, face, hurt, eq.get("wear") == "lanyard", eq.get("wear") == "headphones")
 	for s in run["shots"]:
 		if s["text"] != "":
 			Sprites.rant_shot(self, s, display_font)
