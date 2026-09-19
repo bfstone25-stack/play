@@ -1,1 +1,32 @@
-{"by_id":{},"by_text":{},"characters":[]}
+{
+ "by_id": {
+  "act1_end_95a74821": "audio/voice/mira/act1_end_95a74821.ogg",
+  "act1_end_d56c8b06": "audio/voice/mira/act1_end_d56c8b06.ogg",
+  "act2_1d6cf592": "audio/voice/mira/act2_1d6cf592.ogg",
+  "act2_471bbdbd": "audio/voice/mira/act2_471bbdbd.ogg",
+  "act2_4ff83c39": "audio/voice/mira/act2_4ff83c39.ogg",
+  "act2_6f8ba988": "audio/voice/mira/act2_6f8ba988.ogg",
+  "act2_8e0e450a": "audio/voice/mira/act2_8e0e450a.ogg",
+  "act2_97067f46": "audio/voice/mira/act2_97067f46.ogg",
+  "act2_b55cc48e": "audio/voice/mira/act2_b55cc48e.ogg",
+  "act2_ed24bcfd": "audio/voice/mira/act2_ed24bcfd.ogg",
+  "act2_fdcded8b": "audio/voice/mira/act2_fdcded8b.ogg",
+  "ask_why_14ea3e3d": "audio/voice/mira/ask_why_14ea3e3d.ogg",
+  "ask_why_3912378d": "audio/voice/mira/ask_why_3912378d.ogg",
+  "ask_why_b396459b": "audio/voice/mira/ask_why_b396459b.ogg",
+  "ask_why_f6ab7d4b": "audio/voice/mira/ask_why_f6ab7d4b.ogg",
+  "by_the_book_98ce8bb1": "audio/voice/mira/by_the_book_98ce8bb1.ogg",
+  "by_the_book_c500fc8f": "audio/voice/mira/by_the_book_c500fc8f.ogg",
+  "gives_key_6593f0e7": "audio/voice/mira/gives_key_6593f0e7.ogg",
+  "gives_key_756c2108": "audio/voice/mira/gives_key_756c2108.ogg",
+  "gives_key_f86e94d0": "audio/voice/mira/gives_key_f86e94d0.ogg",
+  "start_2ca0cc24": "audio/voice/mira/start_2ca0cc24.ogg",
+  "start_337c7251": "audio/voice/mira/start_337c7251.ogg",
+  "take_cash_e676f029": "audio/voice/mira/take_cash_e676f029.ogg"
+ },
+ "by_lang": {},
+ "by_text": {},
+ "characters": [
+  "mira"
+ ]
+}
