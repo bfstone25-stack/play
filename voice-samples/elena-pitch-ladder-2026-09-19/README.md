@@ -32,6 +32,41 @@ Method: librosa `pyin`, fmin 80 Hz, fmax 600 Hz, voiced frames only; range is
 `12*log2(p90/p10)` of the voiced f0, so it stays in semitones and a rung does
 not score as more expressive merely for being higher.
 
+## Chosen: the 260 Hz rung -- and what its name does not mean
+
+Blaze picked this rung on 2026-09-19: "I think the 260 hertz version is the
+best." The cast was re-aimed to it the same day, and `seed_260hz.wav` -- the
+reference clip that produced these four takes -- is now checked in and copied
+byte-for-byte into `ops/vn_voice_seeds/f_young_warm.wav` rather than re-derived,
+because re-deriving it means hoping a second pitch shift lands on the same voice.
+
+**The rung's name is the median of four lines, not a target for the corpus.**
+Those four measure 285.9, 241.8, 281.8 and 235.6 Hz: a two-semitone spread, and
+the two low readings are a two-word question and a breath-forward intimate line,
+which are exactly the two lines chosen for being awkward. Cloned from the same
+clip, the full corpus medians **285.5 Hz**, not 261.8 -- stable, 284.2 at 24
+lines and 285.5 at 40, measured on shipped `.ogg` across the whole arc:
+
+| stage | median f0 |
+|---|---|
+| pressure | 263 Hz |
+| intimate | 267 Hz |
+| tender | 282 Hz |
+| rising | 289 Hz |
+| opening | 295 Hz |
+
+The arc is intact and nothing is chipmunked: range 9.05 semitones, wider than
+this rung's own 8.61 and than the approved sample's 7.6, with the spectral
+centroid at 2306 Hz against the rung's 2515.
+
+So the thing that was approved is the *clip*, and the corpus that follows from
+it sits about a semitone and a half above the number in the label. Do not read
+"260 Hz" as a specification and re-aim a correct seed down to meet it -- that
+would put the voice below what Blaze actually heard, in the direction of the
+read he rejected. `ops/vn_voice_register.py` measures the real thing, stratified
+by stage, which an unstratified sample gets wrong: the first ten lines off the
+renderer are all openings and read 299 Hz.
+
 ## What it is being compared against
 
 On this same measurement:
