@@ -1,282 +1,750 @@
 {
+ "auditor/act2_13e0b014.ogg": {
+  "at": "2026-09-19T16:30:19",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, sharp.",
+  "instruct_sha": "bf58edcc2845a86f",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_1f6605b7.ogg": {
+  "at": "2026-09-19T16:30:01",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, sharp.",
+  "instruct_sha": "bf58edcc2845a86f",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_465a44fe.ogg": {
+  "at": "2026-09-19T16:30:17",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, sharp.",
+  "instruct_sha": "bf58edcc2845a86f",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_7ff2fe80.ogg": {
+  "at": "2026-09-19T16:30:06",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, sharp, clipped, hard.",
+  "instruct_sha": "e85db5f5fc37273e",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_905447cf.ogg": {
+  "at": "2026-09-19T16:30:15",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, sharp, clipped, hard.",
+  "instruct_sha": "e85db5f5fc37273e",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_909cb681.ogg": {
+  "at": "2026-09-19T16:29:55",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, sharp.",
+  "instruct_sha": "bf58edcc2845a86f",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_bed_b4c2d737.ogg": {
+  "at": "2026-09-19T16:30:39",
+  "instruct": "Say this flat and tired, polite out of habit, closer and unguarded, tender, unhurried, soft.",
+  "instruct_sha": "e11d1f576d5afc58",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_bed_ec842a4a.ogg": {
+  "at": "2026-09-19T16:30:32",
+  "instruct": "Say this flat and tired, polite out of habit, closer and unguarded, tender, unhurried, soft.",
+  "instruct_sha": "e11d1f576d5afc58",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_chair_32e33182.ogg": {
+  "at": "2026-09-19T16:30:26",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, rising at the end.",
+  "instruct_sha": "265fb9b8b411d41f",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_e1e72ab4.ogg": {
+  "at": "2026-09-19T16:30:23",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, sharp, clipped, hard.",
+  "instruct_sha": "e85db5f5fc37273e",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_window_08ec6ae1.ogg": {
+  "at": "2026-09-19T16:30:44",
+  "instruct": "Say this flat and tired, polite out of habit, closer and unguarded, tender, unhurried, soft.",
+  "instruct_sha": "e11d1f576d5afc58",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act2_window_b7235d90.ogg": {
+  "at": "2026-09-19T16:30:58",
+  "instruct": "Say this flat and tired, polite out of habit, closer and unguarded, sharp, clipped, hard.",
+  "instruct_sha": "46b5ac06c7ca7f2f",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/act3_dff1b552.ogg": {
+  "at": "2026-09-19T16:31:04",
+  "instruct": "Say this flat and tired, polite out of habit, tighter, sharp, clipped, hard.",
+  "instruct_sha": "e85db5f5fc37273e",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/ask_why_7f24530e.ogg": {
+  "at": "2026-09-19T16:28:53",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural.",
+  "instruct_sha": "3043658f6f36a38c",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/ask_why_f597369e.ogg": {
+  "at": "2026-09-19T16:28:59",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural.",
+  "instruct_sha": "3043658f6f36a38c",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/by_the_book_79ae07b0.ogg": {
+  "at": "2026-09-19T16:29:12",
+  "instruct": "Say this flat and tired, polite out of habit, nervous, uneven, small.",
+  "instruct_sha": "8b8d273fc149a61a",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/end_together_4c1a3664.ogg": {
+  "at": "2026-09-19T16:31:34",
+  "instruct": "Say this flat and tired, polite out of habit, gentler, tender, unhurried, soft.",
+  "instruct_sha": "463a6679f40eeb28",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/end_train_0ad5afee.ogg": {
+  "at": "2026-09-19T16:31:13",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural, held back.",
+  "instruct_sha": "3977aacd925c113f",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/end_train_53054264.ogg": {
+  "at": "2026-09-19T16:31:22",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural.",
+  "instruct_sha": "3043658f6f36a38c",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/end_train_b716a301.ogg": {
+  "at": "2026-09-19T16:31:26",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural.",
+  "instruct_sha": "3043658f6f36a38c",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/gives_key_29e719a9.ogg": {
+  "at": "2026-09-19T16:29:25",
+  "instruct": "Say this flat and tired, polite out of habit, plainly.",
+  "instruct_sha": "0a64be5aad183ec5",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/gives_key_adbac9cb.ogg": {
+  "at": "2026-09-19T16:29:23",
+  "instruct": "Say this flat and tired, polite out of habit, sharp, clipped, hard, held back.",
+  "instruct_sha": "8ea3a76f50fd399b",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/lie_to_him_9fa7eab9.ogg": {
+  "at": "2026-09-19T16:29:35",
+  "instruct": "Say this flat and tired, polite out of habit, plainly.",
+  "instruct_sha": "0a64be5aad183ec5",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/lie_to_him_c8b448f7.ogg": {
+  "at": "2026-09-19T16:29:32",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural.",
+  "instruct_sha": "3043658f6f36a38c",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/scene_window_e5b0b3b1.ogg": {
+  "at": "2026-09-19T16:31:00",
+  "instruct": "Say this flat and tired, polite out of habit, closer and unguarded, tender.",
+  "instruct_sha": "4a6b7c59dc847473",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/show_register_28cde616.ogg": {
+  "at": "2026-09-19T16:29:39",
+  "instruct": "Say this flat and tired, polite out of habit, wry.",
+  "instruct_sha": "bdf5e81a47d16f00",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/start_2e2c3fb4.ogg": {
+  "at": "2026-09-19T16:28:42",
+  "instruct": "Say this flat and tired, polite out of habit, teasing.",
+  "instruct_sha": "55047d589d19554a",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/start_6d67804f.ogg": {
+  "at": "2026-09-19T16:28:46",
+  "instruct": "Say this flat and tired, polite out of habit, teasing.",
+  "instruct_sha": "55047d589d19554a",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/stonewall_3cb0d4c4.ogg": {
+  "at": "2026-09-19T16:29:44",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural.",
+  "instruct_sha": "3043658f6f36a38c",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/stonewall_a2e036d0.ogg": {
+  "at": "2026-09-19T16:29:52",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural.",
+  "instruct_sha": "3043658f6f36a38c",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
+ "auditor/take_cash_ac776f5e.ogg": {
+  "at": "2026-09-19T16:29:06",
+  "instruct": "Say this flat and tired, polite out of habit, plainly, even, natural.",
+  "instruct_sha": "3043658f6f36a38c",
+  "seed": "m_flat_tired",
+  "seed_sha": "e8909a731b9d6fd3"
+ },
  "mira/act1_end_44026d3a.ogg": {
-  "at": "2026-09-19T15:28:14",
+  "at": "2026-09-19T15:49:15",
   "instruct": "Say this bright and alert, wounded, slow, quiet, held back.",
   "instruct_sha": "a3218f2e4a296f3c",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act1_end_95a74821.ogg": {
-  "at": "2026-09-19T15:28:31",
+  "at": "2026-09-19T15:49:25",
   "instruct": "Say this bright and alert, plainly, even, natural, held back.",
   "instruct_sha": "1dac795bbf39557b",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act1_end_d56c8b06.ogg": {
-  "at": "2026-09-19T15:27:45",
+  "at": "2026-09-19T15:48:54",
   "instruct": "Say this bright and alert, plainly, even, natural.",
   "instruct_sha": "9b9ad948a818cea2",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "48e72582d60e63d3"
  },
  "mira/act2_1d6cf592.ogg": {
-  "at": "2026-09-19T15:29:26",
+  "at": "2026-09-19T15:49:53",
   "instruct": "Say this young and pressed, sharp, clipped, hard.",
   "instruct_sha": "2964ade386da91b5",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_471bbdbd.ogg": {
-  "at": "2026-09-19T15:29:15",
+  "at": "2026-09-19T15:49:47",
   "instruct": "Say this young and pressed, wounded, slow, quiet.",
   "instruct_sha": "d39deb049898b824",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_4ff83c39.ogg": {
-  "at": "2026-09-19T15:29:34",
+  "at": "2026-09-19T15:49:58",
   "instruct": "Say this young and pressed, sharp, clipped, hard.",
   "instruct_sha": "2964ade386da91b5",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_54351b94.ogg": {
-  "at": "2026-09-19T15:31:02",
+  "at": "2026-09-19T15:51:26",
   "instruct": "Say this young and pressed, resolute, even, firm, held back.",
   "instruct_sha": "96b473b2d1b654dd",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_5df2544b.ogg": {
-  "at": "2026-09-19T15:30:23",
+  "at": "2026-09-19T15:50:45",
   "instruct": "Say this young and pressed, small and quiet, slow, faint.",
   "instruct_sha": "a8a99fe5326ab69e",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_6f8ba988.ogg": {
-  "at": "2026-09-19T15:28:44",
+  "at": "2026-09-19T15:49:31",
   "instruct": "Say this young and pressed, sharp, clipped, hard.",
   "instruct_sha": "2964ade386da91b5",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_8cf08b3a.ogg": {
-  "at": "2026-09-19T15:30:16",
+  "at": "2026-09-19T15:50:37",
   "instruct": "Say this young and pressed, urgent, fast, hard, held back.",
   "instruct_sha": "636a5039d2ae4fa5",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act2_8e0e450a.ogg": {
+  "at": "2026-09-19T16:00:58",
+  "best_of": 3,
+  "instruct": "Say this young and pressed, sharp.",
+  "instruct_sha": "99815028f5df37dd",
+  "picked": "1",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_97067f46.ogg": {
-  "at": "2026-09-19T15:28:55",
+  "at": "2026-09-19T15:49:36",
   "instruct": "Say this young and pressed, sharp, clipped, hard.",
   "instruct_sha": "2964ade386da91b5",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_a5242f1c.ogg": {
-  "at": "2026-09-19T15:29:59",
+  "at": "2026-09-19T15:50:23",
   "instruct": "Say this young and pressed, resolute, even, firm, held back.",
   "instruct_sha": "96b473b2d1b654dd",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act2_b55cc48e.ogg": {
+  "at": "2026-09-19T16:00:59",
+  "best_of": 3,
+  "instruct": "Say this young and pressed, sharp.",
+  "instruct_sha": "99815028f5df37dd",
+  "picked": "2",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_bed_0e38c0f7.ogg": {
-  "at": "2026-09-19T15:31:54",
+  "at": "2026-09-19T15:52:22",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed, held back.",
   "instruct_sha": "a1dc94f12351cf72",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_bed_10b72939.ogg": {
-  "at": "2026-09-19T15:33:17",
+  "at": "2026-09-19T15:53:31",
   "instruct": "Say this close and breath-forward, small and quiet, slow, faint, held back.",
   "instruct_sha": "0e60522ef64d767e",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_bed_26c308f1.ogg": {
-  "at": "2026-09-19T15:32:49",
+  "at": "2026-09-19T15:53:04",
   "instruct": "Say this close and breath-forward, delighted, quick, bright.",
   "instruct_sha": "cbc4376c352ecc79",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act2_bed_2aca18d2.ogg": {
+  "at": "2026-09-19T16:01:00",
+  "best_of": 3,
+  "instruct": "Say this close and breath-forward, breathless.",
+  "instruct_sha": "38b8884c0b75ad2d",
+  "picked": "1",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_bed_2dc1990e.ogg": {
-  "at": "2026-09-19T15:31:31",
+  "at": "2026-09-19T15:52:04",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_bed_b1381ef4.ogg": {
-  "at": "2026-09-19T15:32:28",
+  "at": "2026-09-19T15:52:47",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed, held back.",
   "instruct_sha": "a1dc94f12351cf72",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_bed_e25eede6.ogg": {
-  "at": "2026-09-19T15:32:42",
+  "at": "2026-09-19T15:52:57",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_chair_05ffe937.ogg": {
-  "at": "2026-09-19T15:31:07",
+  "at": "2026-09-19T15:51:32",
   "instruct": "Say this young and pressed, tender, unhurried, soft.",
   "instruct_sha": "a6bfc8950ccdf2bd",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_chair_3774e5ee.ogg": {
-  "at": "2026-09-19T15:31:18",
+  "at": "2026-09-19T15:51:48",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_chair_acd8b322.ogg": {
-  "at": "2026-09-19T15:31:24",
+  "at": "2026-09-19T15:51:55",
   "instruct": "Say this young and pressed, sharp, clipped, hard.",
   "instruct_sha": "2964ade386da91b5",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act2_chair_c08bc8f4.ogg": {
+  "at": "2026-09-19T16:01:00",
+  "best_of": 3,
+  "instruct": "Say this young and pressed, sharp.",
+  "instruct_sha": "99815028f5df37dd",
+  "picked": "1",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_dd0c2740.ogg": {
-  "at": "2026-09-19T15:30:33",
+  "at": "2026-09-19T15:50:54",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act2_decline_51cf8148.ogg": {
+  "at": "2026-09-19T16:01:02",
+  "best_of": 3,
+  "instruct": "Say this young and pressed, sharp.",
+  "instruct_sha": "99815028f5df37dd",
+  "picked": "2",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act2_ed24bcfd.ogg": {
+  "at": "2026-09-19T16:01:00",
+  "best_of": 3,
+  "instruct": "Say this young and pressed, sharp.",
+  "instruct_sha": "99815028f5df37dd",
+  "picked": "1",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act2_fdcded8b.ogg": {
+  "at": "2026-09-19T16:00:59",
+  "best_of": 3,
+  "instruct": "Say this young and pressed, rising at the end.",
+  "instruct_sha": "4751b16dff3d72c6",
+  "picked": "1",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_window_1501b845.ogg": {
-  "at": "2026-09-19T15:33:52",
+  "at": "2026-09-19T15:54:06",
   "instruct": "Say this close and breath-forward, sharp, clipped, hard.",
   "instruct_sha": "42d083973668a634",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act2_window_4e9213fe.ogg": {
+  "at": "2026-09-19T16:01:01",
+  "best_of": 3,
+  "instruct": "Say this close and breath-forward, breathless.",
+  "instruct_sha": "38b8884c0b75ad2d",
+  "picked": "2",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_window_5aa547ca.ogg": {
-  "at": "2026-09-19T15:33:26",
+  "at": "2026-09-19T15:53:41",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_window_8d37aecb.ogg": {
-  "at": "2026-09-19T15:33:41",
+  "at": "2026-09-19T15:53:57",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/act2_window_b6192088.ogg": {
-  "at": "2026-09-19T15:33:33",
+  "at": "2026-09-19T15:53:49",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act3_6cee9f47.ogg": {
+  "at": "2026-09-19T16:01:04",
+  "best_of": 3,
+  "instruct": "Say this young and pressed, sharp.",
+  "instruct_sha": "99815028f5df37dd",
+  "picked": "2",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/act3_d3e444e7.ogg": {
+  "at": "2026-09-19T16:01:04",
+  "best_of": 3,
+  "instruct": "Say this young and pressed, delighted.",
+  "instruct_sha": "0ffda61db82b1d3d",
+  "picked": "0",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/ask_why_14ea3e3d.ogg": {
-  "at": "2026-09-19T15:27:08",
+  "at": "2026-09-19T16:05:31",
   "instruct": "Say this bright and young, plainly, even, natural, held back.",
   "instruct_sha": "494447bd575463ca",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "eeee97e4cfebdfd4"
  },
  "mira/ask_why_3912378d.ogg": {
-  "at": "2026-09-19T15:27:22",
+  "at": "2026-09-19T16:05:41",
   "instruct": "Say this bright and young, plainly, even, natural.",
   "instruct_sha": "c5b0ae42eda3d2f0",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "eeee97e4cfebdfd4"
  },
  "mira/ask_why_b396459b.ogg": {
-  "at": "2026-09-19T15:26:44",
+  "at": "2026-09-19T16:05:16",
   "instruct": "Say this bright and young, urgent, fast, hard, held back.",
   "instruct_sha": "7246c9c51dd0aa38",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "eeee97e4cfebdfd4"
  },
  "mira/ask_why_f6ab7d4b.ogg": {
-  "at": "2026-09-19T15:26:22",
+  "at": "2026-09-19T16:05:01",
   "instruct": "Say this bright and young, small and quiet, slow, faint.",
   "instruct_sha": "82ba6624e54e0141",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "eeee97e4cfebdfd4"
+ },
+ "mira/by_the_book_98ce8bb1.ogg": {
+  "at": "2026-09-19T16:05:52",
+  "instruct": "Say this bright and alert, wry.",
+  "instruct_sha": "48269cdedc580da0",
+  "seed": "f_low_dry",
+  "seed_sha": "eeee97e4cfebdfd4"
  },
  "mira/by_the_book_c500fc8f.ogg": {
-  "at": "2026-09-19T15:27:32",
+  "at": "2026-09-19T15:48:49",
   "instruct": "Say this bright and alert, urgent, fast, hard.",
   "instruct_sha": "31b55e5f728ec4c7",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "48e72582d60e63d3"
+ },
+ "mira/end_alone_1f5d6182.ogg": {
+  "at": "2026-09-19T15:55:12",
+  "instruct": "Say this settled and clear, urgent, fast, hard, held back.",
+  "instruct_sha": "005aec62e950e43b",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/end_alone_abfc49c8.ogg": {
+  "at": "2026-09-19T15:55:21",
+  "instruct": "Say this settled and clear, small and quiet, slow, faint.",
+  "instruct_sha": "3ca4f7619bd5410e",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/end_alone_c1305e19.ogg": {
+  "at": "2026-09-19T16:01:05",
+  "best_of": 3,
+  "instruct": "Say this settled and clear, plainly.",
+  "instruct_sha": "d874393ffcd20a03",
+  "picked": "0",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/end_together_003306e9.ogg": {
-  "at": "2026-09-19T15:34:29",
+  "at": "2026-09-19T15:54:42",
   "instruct": "Say this soft and unguarded, tender, unhurried, soft.",
   "instruct_sha": "472d4b78d57105e7",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/end_together_cb9fa211.ogg": {
-  "at": "2026-09-19T15:34:42",
+  "at": "2026-09-19T15:54:57",
   "instruct": "Say this soft and unguarded, tender, unhurried, soft.",
   "instruct_sha": "472d4b78d57105e7",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/end_together_db9e9c48.ogg": {
-  "at": "2026-09-19T15:34:37",
+  "at": "2026-09-19T15:54:48",
   "instruct": "Say this soft and unguarded, rising at the end, even, open.",
   "instruct_sha": "b7bd776c5f9f251e",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/end_train_22f8f170.ogg": {
-  "at": "2026-09-19T15:34:06",
+  "at": "2026-09-19T15:54:18",
   "instruct": "Say this settled and clear, resolute, even, firm.",
   "instruct_sha": "aad07afcce4e9175",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/end_train_ab978939.ogg": {
-  "at": "2026-09-19T15:34:18",
+  "at": "2026-09-19T15:54:28",
   "instruct": "Say this settled and clear, sharp, clipped, hard.",
   "instruct_sha": "8a97d57fb012065a",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/end_train_c3aae7de.ogg": {
-  "at": "2026-09-19T15:34:11",
+  "at": "2026-09-19T15:54:24",
   "instruct": "Say this settled and clear, rising at the end, even, open.",
   "instruct_sha": "066fc01e5a1495e4",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/end_train_d1686792.ogg": {
+  "at": "2026-09-19T16:01:05",
+  "best_of": 3,
+  "instruct": "Say this settled and clear, plainly.",
+  "instruct_sha": "d874393ffcd20a03",
+  "picked": "2",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/gives_key_6593f0e7.ogg": {
+  "at": "2026-09-19T16:00:58",
+  "best_of": 3,
+  "instruct": "Say this bright and alert, plainly.",
+  "instruct_sha": "1ebcefabc5eb194a",
+  "picked": "1",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/gives_key_756c2108.ogg": {
+  "at": "2026-09-19T16:00:57",
+  "best_of": 3,
+  "instruct": "Say this bright and alert, plainly.",
+  "instruct_sha": "1ebcefabc5eb194a",
+  "picked": "0",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/gives_key_f86e94d0.ogg": {
+  "at": "2026-09-19T16:00:57",
+  "best_of": 3,
+  "instruct": "Say this bright and alert, plainly.",
+  "instruct_sha": "1ebcefabc5eb194a",
+  "picked": "1",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/scene_bed_80f01d26.ogg": {
+  "at": "2026-09-19T16:01:02",
+  "best_of": 3,
+  "instruct": "Say this close and breath-forward, breathless.",
+  "instruct_sha": "38b8884c0b75ad2d",
+  "picked": "2",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/scene_window_99a61c12.ogg": {
-  "at": "2026-09-19T15:34:00",
+  "at": "2026-09-19T15:54:13",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "4ef2f5cc0f6c7cdd"
+ },
+ "mira/scene_window_c08bc8f4.ogg": {
+  "at": "2026-09-19T16:01:03",
+  "best_of": 3,
+  "instruct": "Say this close and breath-forward, breathless.",
+  "instruct_sha": "38b8884c0b75ad2d",
+  "picked": "0",
+  "seed": "f_low_dry",
+  "seed_sha": "4ef2f5cc0f6c7cdd"
  },
  "mira/start_2ca0cc24.ogg": {
-  "at": "2026-09-19T15:26:06",
+  "at": "2026-09-19T16:04:40",
   "instruct": "Say this bright and young, plainly, even, natural.",
   "instruct_sha": "c5b0ae42eda3d2f0",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "eeee97e4cfebdfd4"
  },
  "mira/start_337c7251.ogg": {
-  "at": "2026-09-19T15:25:58",
+  "at": "2026-09-19T16:04:31",
   "instruct": "Say this bright and young, wry, easy, light.",
   "instruct_sha": "eebbb1130bd6e65d",
   "seed": "f_low_dry",
-  "seed_sha": "9bd26c9bc4ab3ac6"
+  "seed_sha": "eeee97e4cfebdfd4"
+ },
+ "mira/start_69e457fa.ogg": {
+  "at": "2026-09-19T16:04:44",
+  "instruct": "Say this bright and young, wry.",
+  "instruct_sha": "107e2587ebd64c5a",
+  "seed": "f_low_dry",
+  "seed_sha": "eeee97e4cfebdfd4"
+ },
+ "mira/start_89cbf08f.ogg": {
+  "at": "2026-09-19T16:04:49",
+  "instruct": "Say this bright and young, wry.",
+  "instruct_sha": "107e2587ebd64c5a",
+  "seed": "f_low_dry",
+  "seed_sha": "eeee97e4cfebdfd4"
+ },
+ "mira/take_cash_e676f029.ogg": {
+  "at": "2026-09-19T16:05:46",
+  "instruct": "Say this bright and alert, plainly.",
+  "instruct_sha": "1ebcefabc5eb194a",
+  "seed": "f_low_dry",
+  "seed_sha": "eeee97e4cfebdfd4"
+ },
+ "visitor/gives_key_2e808a9e.ogg": {
+  "at": "2026-09-19T16:32:08",
+  "instruct": "Say this quiet and patient, unbothered, plainly.",
+  "instruct_sha": "6d2c28db1bec4aca",
+  "seed": "m_heavy",
+  "seed_sha": "5f501f18963c4cf8"
+ },
+ "visitor/gives_key_9a0e5cc6.ogg": {
+  "at": "2026-09-19T16:32:18",
+  "instruct": "Say this quiet and patient, unbothered, plainly, even, natural.",
+  "instruct_sha": "34f8ac9b94c26ce5",
+  "seed": "m_heavy",
+  "seed_sha": "5f501f18963c4cf8"
+ },
+ "visitor/lie_to_him_53daf583.ogg": {
+  "at": "2026-09-19T16:32:21",
+  "instruct": "Say this quiet and patient, unbothered, plainly.",
+  "instruct_sha": "6d2c28db1bec4aca",
+  "seed": "m_heavy",
+  "seed_sha": "5f501f18963c4cf8"
+ },
+ "visitor/lie_to_him_72f1ee46.ogg": {
+  "at": "2026-09-19T16:32:26",
+  "instruct": "Say this quiet and patient, unbothered, plainly, even, natural.",
+  "instruct_sha": "34f8ac9b94c26ce5",
+  "seed": "m_heavy",
+  "seed_sha": "5f501f18963c4cf8"
+ },
+ "visitor/show_register_3c9aa7e1.ogg": {
+  "at": "2026-09-19T16:32:34",
+  "instruct": "Say this quiet and patient, unbothered, plainly, even, natural.",
+  "instruct_sha": "34f8ac9b94c26ce5",
+  "seed": "m_heavy",
+  "seed_sha": "5f501f18963c4cf8"
+ },
+ "visitor/show_register_bc8ded72.ogg": {
+  "at": "2026-09-19T16:32:28",
+  "instruct": "Say this quiet and patient, unbothered, teasing.",
+  "instruct_sha": "25b0b1e452ec6382",
+  "seed": "m_heavy",
+  "seed_sha": "5f501f18963c4cf8"
+ },
+ "visitor/stonewall_b3f42fe9.ogg": {
+  "at": "2026-09-19T16:32:41",
+  "instruct": "Say this quiet and patient, unbothered, sharp.",
+  "instruct_sha": "ce07b118e693e0df",
+  "seed": "m_heavy",
+  "seed_sha": "5f501f18963c4cf8"
+ },
+ "visitor/stonewall_fe30bbe5.ogg": {
+  "at": "2026-09-19T16:32:38",
+  "instruct": "Say this quiet and patient, unbothered, plainly, even, natural.",
+  "instruct_sha": "34f8ac9b94c26ce5",
+  "seed": "m_heavy",
+  "seed_sha": "5f501f18963c4cf8"
  }
 }
