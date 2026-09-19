@@ -60,7 +60,12 @@ init -2 python:
                     store._r704_dist = "paid"
             return store._r704_dist
         if getattr(store, "_r704_dist", None) is None:
-            d = _js_str("(window.ROOM704_DIST || 'itch_web')")
+            # This read ROOM704_DIST — a copy-paste leftover from the game this file came
+            # from. The page stamps CONFESSION_DIST, so the read always missed and every
+            # web player fell through to "itch_web": no ad gate, no sponsor clip, not one
+            # impression, for the life of the build. Found 2026-09-19 by the title-screen
+            # agent; the variable is read in exactly one place.
+            d = _js_str("(window.CONFESSION_DIST || window.ROOM704_DIST || 'itch_web')")
             store._r704_dist = d if d in ("itch_web", "ads_web", "paid") else "itch_web"
         return store._r704_dist
 
