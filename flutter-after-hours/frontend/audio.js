@@ -10,20 +10,25 @@
     es:      {tempo:88, scale:[0,3,7,8], root:123.47, wave:"triangle", texture:"pulse"},
     "pt-BR": {tempo:78, scale:[0,4,7,9], root:130.81, wave:"sine", texture:"sun"}
   };
+  // Flutter: After Hours has no vocal theme. The mainstream game's theme and resolution
+  // tracks are its vocal masters ("my-moment-vocal-pilot", "zh-theme-native-v4") and they
+  // were reaching this build through a symlink — frontend/audio pointed at
+  // ../../flutter/frontend/audio, so the fork was literally playing the romance game's
+  // songs. The symlink is gone (ops/afterhours_audio.py --unlink) and these are the fork's
+  // own beds. One pair for every edition: the fork's music has no language in it.
   const themeTracks = {
-    en: "audio/bgm/en-my-moment-vocal-pilot.mp3",
-    zh: "audio/bgm/zh-theme-native-v4.mp3",
-    ja: "audio/bgm/ja-my-moment-vocal.mp3",
-    es: "audio/bgm/es-my-moment-vocal.mp3",
-    "pt-BR": "audio/bgm/pt-BR-my-moment-vocal.mp3"
+    en: "audio/bgm/afterhours-theme.mp3",
+    zh: "audio/bgm/afterhours-theme.mp3",
+    ja: "audio/bgm/afterhours-theme.mp3",
+    es: "audio/bgm/afterhours-theme.mp3",
+    "pt-BR": "audio/bgm/afterhours-theme.mp3"
   };
   const resolutionTracks = {
-    en: "audio/bgm/en-my-moment.mp3",
-    zh: "audio/bgm/zh-my-moment.mp3",
-    ja: "audio/bgm/ja-my-moment.mp3",
-    es: "audio/bgm/es-my-moment.mp3",
-    // The Brazilian vocal master has no separate instrumental export yet.
-    "pt-BR": "audio/bgm/pt-BR-intimate.mp3"
+    en: "audio/bgm/afterhours-resolution.mp3",
+    zh: "audio/bgm/afterhours-resolution.mp3",
+    ja: "audio/bgm/afterhours-resolution.mp3",
+    es: "audio/bgm/afterhours-resolution.mp3",
+    "pt-BR": "audio/bgm/afterhours-resolution.mp3"
   };
   const labels = {
     en:{title:"SOUND",music:"Atmosphere",voice:"Dialogue voice",off:"Off",system:"Device voice",edge:"Immersive · on device",edgeNote:"Requires a compatible native NPU voice pack.",privacy:"Generated on this device. Dialogue is not uploaded.",rate:"Voice pace"},

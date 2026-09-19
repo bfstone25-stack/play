@@ -56,11 +56,14 @@
   let ambientSources = [];
   let ambientRecording = null;
   const fieldRecordings = {
-    en:"audio/ambience/en-city-morning.mp3",
-    zh:"audio/ambience/zh-night-city.mp3",
-    ja:"audio/ambience/ja-rain-train.mp3",
-    es:"audio/ambience/es-night-plaza.mp3",
-    "pt-BR":"audio/ambience/pt-ocean-sunset.mp3"
+    // The fork's ambience is one room, not five cities: the mainstream game opens on a
+    // city morning / a night plaza / a train in the rain, because it is about being out in
+    // the world with your phone. After Hours opens in the room the rest of it happens in.
+    en:"audio/ambience/en-room.mp3",
+    zh:"audio/ambience/zh-room.mp3",
+    ja:"audio/ambience/ja-room.mp3",
+    es:"audio/ambience/es-room.mp3",
+    "pt-BR":"audio/ambience/pt-room.mp3"
   };
 
   function clearTimers() {

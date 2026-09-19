@@ -294,9 +294,16 @@
       "aff_min": 36
      },
      "added_by_fork": true,
-     "event_en": "The car doesn't go to your building. Neither of you says anything about that until the lift doors close on the forty-first floor.",
-     "text_en": "\"I'm going to say this badly.\" He hasn't let go of your hand since the gala floor. \"I have spent eleven years being extremely careful about what I want, and I'd like to stop, tonight, with you, if that's something you also want. Say no and I'll take you home and nothing about tomorrow changes.\" You don't say no. He exhales like a man setting down something heavy, and the last thing you see before the lights go is the city, forty-one floors down, doing its work without either of you.",
-     "heat": 2
+     "event_en": "He stops performing. What he says next is the thing the game has known about you since chapter two, said out loud in his voice.",
+     "text_en": "He doesn't let go of your hand. \"I'm going to say something you didn't give me permission to notice.\"\n\n\"In February you told me your father called on a Sunday and you let it ring. You said it like it was nothing. You've mentioned Sundays four times since and never once said why.\" His thumb moves across your knuckles, absently, the way a man does when he is concentrating on something else. \"I've been keeping track. I want you to know that I have, before anything else happens tonight, because I don't want to be one more person in your life who's managing you quietly.\"\n\nThe building hums. Eleven floors down, a lift door closes.\n\n\"So. No more of that.\" He looks up. \"I want you in my bed. Not tonight-because-it's-late, not because you're here and it's convenient — I've wanted it since you stood in my doorway on the wrong floor and didn't apologise for it. I'd like to hear you say it back or tell me no, and I'd like it in words, because I've spent eleven years reading people and I'm done guessing with you.\"",
+     "heat": 2,
+     "lane": {
+      "secure": "\"I'm going to say something you didn't give me permission to notice.\" He says it level, because you've never once needed him to soften a landing. \"You talk to me like I'm a person and not a position. Do you know how rare that is at my altitude? I've been keeping track of that too.\" Then the rest — the Sundays, the ringing phone, the four times — and then: \"I want you in my bed, and I'd like it in words, because I'm done guessing with you.\"",
+      "anxious": "\"Before I say the rest — no, look at me. You've asked me three different ways tonight whether I'm still choosing this.\" He doesn't sound impatient; he sounds like a man who has counted. \"You asked at the car, you asked in the lift, and you asked just now by telling me you'd understand if I didn't. I'm going to answer the question under all three of them once, and then I'm not going to make you ask again.\" He waits until you're actually looking. \"Yes. I want you. In my bed, tonight, and tomorrow when it's unglamorous and Tuesday. Say yes or say no, out loud — I'm not going to read it off your face and decide for you.\"",
+      "avoidant": "\"You've gone quiet in the specific way you go quiet — not bored, further away. You did it in February when I asked about Sunday, and you did it in the car.\" He doesn't step closer. \"I'm not going to follow you in there. I'm going to tell you where I am and let you come back at whatever speed you come back at.\" A pause; he lets it be an ugly one. \"I want you in my bed. That's where I am. Nothing here needs an answer in the next minute, and nothing about it gets worse if the answer's no.\""
+     },
+     "lane_beat": true,
+     "rule_note": "This is the fork's rule in one beat: the memories table and attachment.detect() are no longer invisible tuning, they are what he says. The three lanes are three different scenes rather than three tones of one scene — see ops/adult_forks/flutter-after-hours.md."
     }
    ],
    "choices": [
@@ -338,7 +345,37 @@
       }
      ]
     }
-   ]
+   ],
+   "choices_x": [
+    {
+     "id": "c4x",
+     "prompt_en": "He's asked. He's waiting, and he is not going to ask twice.",
+     "options": [
+      {
+       "text_en": "\"Yes. Say the rest of it.\"",
+       "aff": 8,
+       "flag": "yes_x",
+       "heat": 3,
+       "reply_en": "\"The rest of it is that I've thought about it at meetings.\" He says it without a shred of embarrassment, which is somehow worse. \"Your mouth, mostly. What you'd sound like if you stopped being polite.\" His hand finds the small of your back and stays there, flat and deliberate. \"Tell me if you want the lights off.\""
+      },
+      {
+       "text_en": "\"Yes — but slowly. I want to keep up.\"",
+       "aff": 7,
+       "flag": "yes_slow",
+       "heat": 2,
+       "reply_en": "\"Slowly,\" he agrees, and means it: he takes his hand off you entirely and puts it back only when you've said so. \"Tell me when. I've got nowhere to be and I've waited seven months; another hour isn't going to kill me.\""
+      },
+      {
+       "text_en": "\"No. Not tonight.\"",
+       "aff": 4,
+       "flag": "decline_x",
+       "heat": 0,
+       "reply_en": "\"Alright.\" No pause to make you feel it, no second attempt. He lets go of your hand, and then, deliberately, takes it again — differently. \"Stay anyway. There's a terrible sofa and I'll make you a coffee you'll hate.\" It is the least performed thing he has done all night, and it is the reason you will think about this for a week."
+      }
+     ]
+    }
+   ],
+   "choices_x_note": "Declining is a route, not a wall: flag decline_x carries forward and ch5 has its own authored morning for it. Every Western adult channel we sell on bans non-consent, and the rule makes asking the natural move — memory `adult-platform-content-rules`."
   },
   {
    "id": "ch5",
@@ -387,8 +424,9 @@
      },
      "added_by_fork": true,
      "event_en": "Six a.m. The top-floor light is off for the first time in eleven years, and he is still asleep.",
-     "text_en": "He wakes up slowly, which you would not have thought he knew how to do. \"Don't,\" he says, when you reach for your phone, and pulls you back under his arm without opening his eyes. \"Nine minutes. The building has survived worse.\" It is the most extravagant thing you have ever watched him spend.",
-     "heat": 2
+     "text_en": "He wakes up slowly, which you would not have guessed he knew how to do.\n\n\"Don't,\" he says, when you reach for your phone, and pulls you back under his arm without opening his eyes. \"Nine minutes. The building doesn't need me for nine minutes.\"\n\nSomewhere past the seventh he says, into your shoulder and not quite awake: \"I know what you're doing. You're deciding how to be normal about this before I'm up, so that whichever way I go, you got there first.\" His arm doesn't move. \"You don't have to arrive anywhere ahead of me. I'm not going anywhere at speed.\"",
+     "heat": 2,
+     "rule_note": "The same rule at rest: he narrates her strategy back to her, and stays."
     }
    ],
    "choices": [

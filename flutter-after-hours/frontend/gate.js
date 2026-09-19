@@ -37,28 +37,81 @@
   var primary = {marginTop: "14px", padding: "12px 28px", fontSize: "18px", background: "#d95a43", color: "#fff", border: "0", borderRadius: "6px", cursor: "pointer"};
   var quiet = {marginTop: "10px", background: "none", border: "0", color: "#998", textDecoration: "underline", cursor: "pointer", fontSize: "14px"};
 
+  // How long to wait for the creative to actually render before deciding it is not coming.
+  // An ad blocker fails fast; a slow network does not, and treating the two the same is how
+  // a real player on a bad connection gets punished for our impatience.
+  var AD_LOAD_GRACE_MS = 8000;
+
   function adGate(key, opts) {
     return new Promise(function (resolve) {
       var seconds = cfg().seconds || 30, box = el("div", overlayStyle), t0 = Date.now(), timer = null;
       box.appendChild(el("div", {fontSize: "22px", color: "#d99b66", marginBottom: "12px"}, (opts.title || "This part") + " unlocks after one sponsor clip"));
       var slot = el("div", {width: "min(90vw, 728px)", minHeight: "250px", background: "#151020", border: "1px solid #3a2a44", display: "flex", alignItems: "center", justifyContent: "center", color: "#665"});
       slot.setAttribute("data-tel-ad", "gate");
-      if (window.AD_HTML && !isBot()) { var f = document.createElement("iframe"); f.width = "300"; f.height = "250"; f.style.border = "0"; f.style.background = "#000";
-        f.setAttribute("scrolling", "no"); f.srcdoc = '<body style="margin:0;background:#000">' + window.AD_HTML + "</body>"; slot.appendChild(f); } else slot.textContent = "Sponsor slot";
+
+      // ---- whether a sponsor creative actually rendered ----------------------
+      // Until 2026-09-19 this block appended the iframe and started a countdown, and the
+      // countdown reached zero and unlocked the key whether or not anything had rendered in
+      // it — no AD_HTML shipped, an ad blocker, a network failure, all unlocked. The gate
+      // was decorative, and the memory note `ad-gate-rules` records the same bug being
+      // fixed on the Ren'Py side (ad_gate_poll returning "unavailable") without this shared
+      // web gate ever getting the same treatment. `verification-that-lies`: the flow looked
+      // right every time it was tested, because it was tested with the ad present.
+      //
+      // Now: the clock runs only while a creative has fired `load` AND the tab is visible,
+      // and if nothing renders within the grace period the gate resolves "unavailable"
+      // *without remembering the key*. A chapter may pass on unavailable — refusing to let
+      // someone read on because our ad partner is down is a worse trade than the lost
+      // impression — but a CG stays locked, which is the asset with the revenue on it.
+      var adReady = false, adDead = false;
+      if (window.AD_HTML && !isBot()) {
+        var f = document.createElement("iframe");
+        f.width = "300"; f.height = "250"; f.style.border = "0"; f.style.background = "#000";
+        f.setAttribute("scrolling", "no");
+        f.addEventListener("load", function () {
+          // srcdoc fires `load` for the document itself, so also require that the frame put
+          // something of its own height into the page. A blocked invoke.js leaves it empty.
+          var painted = true;
+          try { painted = !!(f.contentDocument && f.contentDocument.body && f.contentDocument.body.childElementCount > 1); } catch (e) { painted = true; }  // cross-origin creative: trust the load
+          if (painted) { adReady = true; slot.removeAttribute("data-ad-empty"); }
+        });
+        f.srcdoc = '<body style="margin:0;background:#000">' + window.AD_HTML + "</body>";
+        slot.appendChild(f);
+      } else {
+        slot.textContent = isBot() ? "Sponsor slot (QA)" : "Sponsor slot";
+        if (isBot()) adReady = true;    // our own test runs must never request a real ad
+      }
       var count = el("div", {fontSize: "18px", marginTop: "14px", color: "#c8b8b0"}, seconds + "s");
       var btn = el("button", primary, "Continue"); btn.disabled = true; css(btn, {background: "#3a2a44", color: "#887", cursor: "not-allowed"});
       var quit = el("button", quiet, "Not now");
       box.appendChild(slot); box.appendChild(count); box.appendChild(btn); box.appendChild(quit);
       document.body.appendChild(box);
       tel("ad_prompt_shown", {key: key, kind: opts.kind || "", dist: "ads_web"});
+
+      function unavailable() {
+        adDead = true;
+        clearInterval(timer);
+        var isCG = (opts.kind || "") === "cg";
+        tel(isCG ? "ad_unavailable_censored" : "ad_unavailable_passed",
+            {key: key, kind: opts.kind || "", s: Math.round((Date.now() - t0) / 1000)}, true);
+        count.textContent = isCG ? "Sponsor unavailable" : "Sponsor unavailable — continuing";
+        // Note the absence of remember(key): an unlock that was never earned must not
+        // persist into the next session.
+        setTimeout(function () { box.remove(); resolve(isCG ? "unavailable" : "unlocked"); }, isCG ? 1800 : 900);
+      }
+      var graceTimer = setTimeout(function () { if (!adReady) unavailable(); }, AD_LOAD_GRACE_MS);
+
       var left = seconds;
       timer = setInterval(function () {
+        if (adDead) return;
         if (document.hidden) return;                       // the clock only runs while they are looking
+        if (!adReady) return;                              // ...and only while there is something to look at
+        clearTimeout(graceTimer);
         left--; count.textContent = left > 0 ? left + "s" : "Unlocked";
         if (left <= 0) { clearInterval(timer); btn.disabled = false; css(btn, primary); tel("ad_watched", {key: key, s: Math.round((Date.now() - t0) / 1000)}); }
       }, 1000);
-      function close(r) { clearInterval(timer); box.remove(); resolve(r); }
-      btn.onclick = function () { remember(key); tel("ad_completed", {key: key, kind: opts.kind || "", s: Math.round((Date.now() - t0) / 1000)}, true); close("unlocked"); };
+      function close(r) { clearInterval(timer); clearTimeout(graceTimer); box.remove(); resolve(r); }
+      btn.onclick = function () { if (left > 0 || !adReady) return; remember(key); tel("ad_completed", {key: key, kind: opts.kind || "", s: Math.round((Date.now() - t0) / 1000)}, true); close("unlocked"); };
       quit.onclick = function () { tel("ad_quit", {key: key, kind: opts.kind || "", s: Math.round((Date.now() - t0) / 1000)}, true); close("closed"); };
     });
   }
