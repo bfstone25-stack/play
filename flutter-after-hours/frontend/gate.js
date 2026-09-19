@@ -63,18 +63,41 @@
       // *without remembering the key*. A chapter may pass on unavailable — refusing to let
       // someone read on because our ad partner is down is a worse trade than the lost
       // impression — but a CG stays locked, which is the asset with the revenue on it.
+      // Counting the frame's child elements cannot answer this. A blocked invoke.js leaves
+      // the <script> tag itself sitting in the body, so "has children" says yes to a dead
+      // slot; and a creative that is a single <div>/<ins>/<img> — most of them — has exactly
+      // one child, so "more than one child" says no to a live one. Verified in a browser:
+      // a 300x250 creative that was plainly visible on screen was called unavailable.
+      // Ask the only question that matters instead: is any non-markup element actually
+      // drawing at a real size?
+      //
+      // And ask it repeatedly. Adsterra's invoke.js injects the creative well after the
+      // frame's own `load` fires, so a one-shot check at `load` reads an empty body and
+      // condemns a slot that fills in 200ms later. Poll until the grace period is out.
       var adReady = false, adDead = false;
+      function looksPainted(f) {
+        try {
+          var d = f.contentDocument;
+          if (!d || !d.body) return true;                  // cross-origin creative: trust the load
+          var kids = d.body.children;
+          for (var i = 0; i < kids.length; i++) {
+            var t = kids[i].tagName;
+            if (t === "SCRIPT" || t === "STYLE" || t === "LINK" || t === "META") continue;  // draws nothing
+            var r = kids[i].getBoundingClientRect();
+            if (r.width >= 10 && r.height >= 10) return true;
+          }
+          return (d.body.textContent || "").replace(/\s+/g, "") !== "";
+        } catch (e) { return true; }                       // cross-origin: we are not allowed to look, so trust it
+      }
       if (window.AD_HTML && !isBot()) {
         var f = document.createElement("iframe");
         f.width = "300"; f.height = "250"; f.style.border = "0"; f.style.background = "#000";
         f.setAttribute("scrolling", "no");
-        f.addEventListener("load", function () {
-          // srcdoc fires `load` for the document itself, so also require that the frame put
-          // something of its own height into the page. A blocked invoke.js leaves it empty.
-          var painted = true;
-          try { painted = !!(f.contentDocument && f.contentDocument.body && f.contentDocument.body.childElementCount > 1); } catch (e) { painted = true; }  // cross-origin creative: trust the load
-          if (painted) { adReady = true; slot.removeAttribute("data-ad-empty"); }
-        });
+        var paintPoll = setInterval(function () {
+          if (adReady || adDead) { clearInterval(paintPoll); return; }
+          if (looksPainted(f)) { adReady = true; clearInterval(paintPoll); slot.removeAttribute("data-ad-empty"); }
+        }, 250);
+        f.addEventListener("load", function () { if (!adDead && looksPainted(f)) adReady = true; });
         f.srcdoc = '<body style="margin:0;background:#000">' + window.AD_HTML + "</body>";
         slot.appendChild(f);
       } else {
@@ -110,7 +133,7 @@
         left--; count.textContent = left > 0 ? left + "s" : "Unlocked";
         if (left <= 0) { clearInterval(timer); btn.disabled = false; css(btn, primary); tel("ad_watched", {key: key, s: Math.round((Date.now() - t0) / 1000)}); }
       }, 1000);
-      function close(r) { clearInterval(timer); clearTimeout(graceTimer); box.remove(); resolve(r); }
+      function close(r) { adDead = true; clearInterval(timer); clearTimeout(graceTimer); box.remove(); resolve(r); }
       btn.onclick = function () { if (left > 0 || !adReady) return; remember(key); tel("ad_completed", {key: key, kind: opts.kind || "", s: Math.round((Date.now() - t0) / 1000)}, true); close("unlocked"); };
       quit.onclick = function () { tel("ad_quit", {key: key, kind: opts.kind || "", s: Math.round((Date.now() - t0) / 1000)}, true); close("closed"); };
     });
