@@ -441,12 +441,6 @@ static func live() -> Array:
 	match Loc.current():
 		"zh":
 			return StoryZh.AREAS
-		"ja":
-			return StoryJa.AREAS
-		"es":
-			return StoryEs.AREAS
-		"ko":
-			return StoryKo.AREAS
 		_:
 			return AREAS
 
@@ -455,12 +449,6 @@ static func live_endings() -> Dictionary:
 	match Loc.current():
 		"zh":
 			return StoryZh.ENDINGS
-		"ja":
-			return StoryJa.ENDINGS
-		"es":
-			return StoryEs.ENDINGS
-		"ko":
-			return StoryKo.ENDINGS
 		_:
 			return ENDINGS
 
@@ -469,12 +457,6 @@ static func conditional_line(key: String, flags: Dictionary) -> Array:
 	match Loc.current():
 		"zh":
 			return StoryZh.conditional(key, flags)
-		"ja":
-			return StoryJa.conditional(key, flags)
-		"es":
-			return StoryEs.conditional(key, flags)
-		"ko":
-			return StoryKo.conditional(key, flags)
 		_:
 			pass
 	match key:

@@ -70,8 +70,16 @@ func _run() -> void:
 	check(StoryX.word_count() > 1500, "fork word count unexpectedly low: %d" % StoryX.word_count())
 	print("fork adds ~%d words of English" % StoryX.word_count())
 
+	# ---- the shipped locale list is the corrected one ------------------------
+	# The source used to sell ja/ko/es tables that are ~95% Chinese text; the mainstream
+	# game was corrected to ["en","zh"] and the fork carries the correction.
+	check(Loc.ALLOWED == ["en", "zh"], "locale list is %s, not the corrected [en, zh]" % [Loc.ALLOWED])
+	for dead in ["ja", "ko", "es"]:
+		check(not ResourceLoader.exists("res://scripts/story_%s.gd" % dead),
+			"story_%s.gd is still in the package" % dead)
+
 	# ---- Eli reads as an adult in every locale ------------------------------
-	for script_name in ["story_data.gd", "story_zh.gd", "story_ja.gd", "story_ko.gd", "story_es.gd"]:
+	for script_name in ["story_data.gd", "story_zh.gd"]:
 		var text := FileAccess.get_file_as_string("res://scripts/" + script_name)
 		check(not ("twenty-two" in text), "%s still says 'twenty-two'" % script_name)
 		check(not ("二十二岁" in text), "%s still says '二十二岁'" % script_name)

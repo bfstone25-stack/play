@@ -804,10 +804,15 @@ func show_cg(slot: String) -> void:
 
 func _refresh_cg() -> void:
 	var path := CgGate.plate_path(_cg_slot)
-	cg_plate.texture = load(path) if path != "" else null
+	# plate_texture(), not load(): a plate delivered by the gateway lives in user:// as raw
+	# WebP bytes, and load() only resolves res:// resources — it would have drawn nothing.
+	cg_plate.texture = CgGate.plate_texture(_cg_slot)
 	var censored := CgGate.is_showing_censored(_cg_slot)
 	cg_caption.text = CgGate.slot_title(_cg_slot) + ("  ·  RECORD WITHHELD" if censored else "")
-	cg_unlock.visible = censored and not CgGate.is_paid_build()
+	# Only offer the trade when there is art on the other side of it. cg_desk_x has no
+	# render installed yet (ops/adult_forks/STATUS.md), so nothing is staged on the
+	# gateway for it either and a clip spent on it would buy the same censored plate.
+	cg_unlock.visible = censored and CgGate.can_unlock(_cg_slot)
 	cg_notice.visible = censored and _cg_unavailable
 	if cg_notice.visible:
 		# Named for what happened, not blamed on the player: no creative was served, so
@@ -889,7 +894,7 @@ func show_gallery() -> void:
 		thumb.tooltip_text = CgGate.slot_title(slot) + ("  (withheld)" if CgGate.is_showing_censored(slot) else "")
 		var path := CgGate.plate_path(slot)
 		if path != "":
-			thumb.icon = load(path)
+			thumb.icon = CgGate.plate_texture(slot)
 			thumb.expand_icon = true
 		thumb.text = "" if path != "" else CgGate.slot_title(slot)
 		_format_button(thumb, 8)

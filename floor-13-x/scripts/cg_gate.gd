@@ -55,6 +55,9 @@ const EARN := {
 }
 
 const ART_DIR := "res://assets/cg/"
+## Which plate files are real renders rather than tools/make_placeholder_plates.py cards.
+## Written by tools/plate_manifest.py; see that file for why the game has to be told.
+const MANIFEST := "res://assets/cg/installed.json"
 
 signal earned(slot: String)
 
@@ -62,9 +65,38 @@ var _earned: Dictionary = {}
 ## Slots whose gate came back "sponsor unavailable" this session. Separate from "not
 ## unlocked" so telemetry and QA can tell a blocked ad from a player who said no.
 var _unavailable: Dictionary = {}
+## The gateway client. Only ever does anything on the web builds.
+var unlock: Unlock
+var _installed: Dictionary = {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	unlock = Unlock.new()
+	unlock.name = "Unlock"
+	add_child(unlock)
+	_load_manifest()
+
+func _load_manifest() -> void:
+	_installed.clear()
+	var raw := FileAccess.get_file_as_string(MANIFEST)
+	if raw == "":
+		# No manifest in the package: trust the files, which is the pre-manifest behaviour.
+		# Recorded rather than silent, because it changes what a player sees.
+		push_warning("cg_gate: no installed.json in this package; every plate file is trusted")
+		return
+	var parsed = JSON.parse_string(raw)
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return
+	for name in parsed.get("installed", []):
+		_installed[str(name)] = true
+
+## Is this plate file a real render? A slot that only has a placeholder card behind it must
+## fall back to its censored partner — a grey card with the slot name printed on it is a
+## worse thing to show a paying player than the locked plate, which is at least in-fiction.
+func installed(name: String) -> bool:
+	if _installed.is_empty():
+		return true
+	return _installed.has(name)
 
 func reset() -> void:
 	_earned.clear()
@@ -112,14 +144,18 @@ func is_web() -> bool:
 
 ## True when this build is the paid download: no gate, no network, everything open.
 func is_paid_build() -> bool:
-	return not is_web()
+	return not is_web() and not Unlock.simulate_free
 
+## "Unlocked" means the real bytes are available to this install — never that a boolean was
+## set. Gate.has() only says the page's gate was satisfied; on the free web packages the
+## uncensored plate is not in the pack at all, so a cleared gate with no delivered bytes is
+## still a censored plate and must say so.
 func is_unlocked(slot: String) -> bool:
 	if not SLOTS.has(slot):
 		return false
 	if is_paid_build():
-		return true
-	return Gate.has(slot)
+		return installed(slot)
+	return Unlock.delivered(slot)
 
 func was_unavailable(slot: String) -> bool:
 	return _unavailable.has(slot)
@@ -128,11 +164,26 @@ func was_unavailable(slot: String) -> bool:
 ##   "unlocked"     paid, or a sponsor clip that actually showed a creative
 ##   "unavailable"  the gate ran but no creative was served — art stays censored
 ##   "closed"       the player declined
+## True when there is something behind this slot to reveal at all. A slot whose render has
+## not been installed yet (STATUS.md: cg_desk_x was still re-rendering) has nothing staged
+## on the gateway either, so offering an UNLOCK button for it would take a sponsor clip and
+## hand back the same censored plate.
+func can_unlock(slot: String) -> bool:
+	return SLOTS.has(slot) and installed(slot) and not is_unlocked(slot)
+
 func request_unlock(slot: String) -> String:
 	if not SLOTS.has(slot):
 		return "closed"
-	if is_paid_build() or Gate.has(slot):
+	if is_unlocked(slot):
 		return "unlocked"
+	if not installed(slot):
+		return "unavailable"   # nothing rendered yet: never charge for a plate we cannot serve
+	if is_paid_build():
+		return "unlocked"
+	# The ticket is taken now, with the gate, so the server's clock runs alongside the
+	# player's. A failure here is not fatal — redeem() will simply have nothing to spend
+	# and the result becomes "unavailable" rather than a lie.
+	var ticketed := await unlock.start(slot)
 	if not JavaScriptBridge.eval("window.Gate ? 1 : 0"):
 		return "closed"   # a page without gate.js (local test) reveals nothing extra
 	var title: String = str(SLOTS[slot].title)
@@ -161,6 +212,13 @@ func request_unlock(slot: String) -> String:
 		await get_tree().create_timer(0.4, true, false, true).timeout   # runs while paused
 		var r = JavaScriptBridge.eval("(window.__cggate && window.__cggate[%s]) || ''" % JSON.stringify(slot))
 		result = str(r) if r != null else ""
+	if result == "unlocked":
+		# The gate cleared. Now go and get the art — and if the art does not arrive, this
+		# was NOT an unlock, whatever the page said. The whole reason this fork had a gate
+		# and no reveal is that nothing ever made this call.
+		var got := ticketed and await unlock.redeem(slot)
+		if not got:
+			result = "unavailable"
 	if result == "unavailable":
 		_unavailable[slot] = true
 	elif result != "unlocked":
@@ -179,11 +237,15 @@ func request_unlock(slot: String) -> String:
 func plate_path(slot: String) -> String:
 	if not SLOTS.has(slot):
 		return ""
+	if is_unlocked(slot) and not is_paid_build() and Unlock.delivered(slot):
+		return Unlock.saved_path(slot)
 	var open_path := ART_DIR + slot + ".png"
-	if is_unlocked(slot) and ResourceLoader.exists(open_path):
+	# installed() is the placeholder guard: a slot whose render has not landed yet has a
+	# labelled PIL card sitting at exactly this path, and load() is perfectly happy with it.
+	if is_unlocked(slot) and installed(slot) and ResourceLoader.exists(open_path):
 		return open_path
 	var locked_path := ART_DIR + slot + "_locked.png"
-	if ResourceLoader.exists(locked_path):
+	if installed(slot + "_locked") and ResourceLoader.exists(locked_path):
 		return locked_path
 	# Tier 2 has no censored counterpart of its own — ART_DIRECTION.md puts it at "free web
 	# after an ad watch", so there is nothing to censor, only something not yet earned the
@@ -192,6 +254,21 @@ func plate_path(slot: String) -> String:
 	if ResourceLoader.exists(withheld):
 		return withheld
 	return ""
+
+## The texture to draw for a slot right now, or null when there is nothing at all.
+##
+## Separate from plate_path() because a delivered plate lives in user:// as raw WebP and
+## load() does not read those — it resolves res:// resources. The HUD called load() on
+## whatever plate_path() returned, which would have silently drawn nothing for every
+## plate the gateway delivers.
+func plate_texture(slot: String) -> Texture2D:
+	var path := plate_path(slot)
+	if path == "":
+		return null
+	if path.begins_with("res://"):
+		var res := load(path)
+		return res if res is Texture2D else null
+	return Unlock.delivered_texture(slot)
 
 func is_showing_censored(slot: String) -> bool:
 	return not is_unlocked(slot)
