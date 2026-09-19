@@ -92,9 +92,31 @@ The service hatch in the bathroom is still a hatch. That is the route now, and t
 	return []
 
 
+## The fork's evidence goes in ahead of the stage's closer, not after it.
+##
+## Every base stage ends with the one prop whose on_note() (or choice) calls _advance:
+## stage 1 ends with 'notice', stage 5 with 'service', stage 11 with 'final_evidence'.
+## That is an invariant of the base content, and game.gd:_advance leans on it — when it
+## fires it marks every prop still standing as taken and zeroes its collision layer, so
+## the flat can be re-dressed for the next stage.
+##
+## extra() used to be append_array'd onto the end, which put the fork's own evidence on
+## the far side of that sweep: 'tickets' spawned into stage 1 behind 'notice' and was
+## dead the moment the stage turned over. From the floor it looked like geometry — a prop
+## standing there, visible, lit, on a real corridor floor, that the game would not offer
+## from any angle — which is how tests/walkthrough.gd reported it for three runs.
+## Inserting ahead of the closer keeps the base positions and ordering untouched and puts
+## the fork's props inside the stage they belong to.
 static func stage(s: int, flags: Dictionary) -> Array[Dictionary]:
-	var out: Array[Dictionary] = StoryContent.stage(s, flags)
-	out.append_array(extra(s, flags))
+	var base: Array[Dictionary] = StoryContent.stage(s, flags)
+	var add: Array[Dictionary] = extra(s, flags)
+	if add.is_empty():
+		return base
+	if base.is_empty():
+		return add
+	var out: Array[Dictionary] = base.slice(0, base.size() - 1)
+	out.append_array(add)
+	out.append(base[base.size() - 1])
 	return out
 
 

@@ -67,7 +67,8 @@ func _drain() -> void:
 	player.locked = false
 
 
-## Find somewhere a player could actually stand and use this prop, and stand there.
+## Find somewhere a player could actually stand and use this prop, stand there, and look
+## at it.
 ##
 ## Props are not all free-standing: a thermostat, a wall stain, a taped invoice and a
 ## kitchen kettle sit against the walls at z=0.3, and a fixed "half a metre behind it"
@@ -77,7 +78,32 @@ func _drain() -> void:
 ## least one of them is a place to stand with the prop in range. Returns the distance at
 ## the spot it settled on, or -1.0 when there is no such spot — which is what "a prop you
 ## cannot get to" looks like from the floor.
+##
+## Standing is only half of it. player.gd's fallback focus has a facing cone (FACE_DOT,
+## a 36.9 degree half-angle) so that props cannot be taken from behind, and this driver
+## used to teleport the player around the ring without ever turning the body — whatever
+## yaw the last prop left behind was the yaw every candidate spot was judged at. Of eight
+## ring points spaced 45 degrees apart at most one can fall inside a 36.9 degree cone, so
+## whether a prop passed came down to whether that one point happened to be the lucky one.
+## 'clock' and 'letters' sit 3 cm apart on the same bedside table and only one of them was
+## failing, which is the tell: nothing about the floor differs between two props at the
+## same spot. Aim at the prop from each spot, the way the player would, and the check
+## measures the game instead of the leftover yaw.
 const APPROACH := 0.85
+
+## Turn to face a point, body for yaw and head for pitch, exactly as the mouse would.
+func _look_at_point(target: Vector3) -> void:
+	var flat := Vector3(target.x - player.global_position.x, 0.0, target.z - player.global_position.z)
+	if flat.length() > 0.001:
+		# -basis.z is forward, so yaw theta gives forward (-sin theta, 0, -cos theta).
+		player.rotation.y = atan2(-flat.x, -flat.z)
+	var head: Node3D = player.get_node("Head")
+	var cam: Node3D = head.get_node("Camera3D")
+	var to_cam := target - cam.global_position
+	if to_cam.length() > 0.001:
+		player.pitch = clampf(asin(clampf(to_cam.normalized().y, -1.0, 1.0)), -1.25, 1.25)
+		head.rotation.x = player.pitch
+
 
 func _walk_to(prop: Node3D) -> float:
 	var here := prop.global_position
@@ -91,6 +117,8 @@ func _walk_to(prop: Node3D) -> float:
 			await physics_frame
 		if not player.is_on_floor():
 			continue
+		_look_at_point(here)
+		await process_frame
 		var d: float = player.global_position.distance_to(here)
 		if d < 6.5 and player.interact_target() != null:
 			return d
@@ -122,7 +150,10 @@ func _play(route: String) -> String:
 			var label: String = str(prop.get("note_id") if prop.get("note_id") else prop.get("choice_id"))
 			var reach: float = await _walk_to(prop)
 			if reach < 0.0:
-				_fail("%s: no floor to stand on within reach of '%s' at %s — unreachable prop" % [
+				# Both halves of _walk_to fail the same way, so name both: nowhere on the
+				# ring is floor, or nowhere on it does the game offer the prop to a player
+				# standing there looking straight at it.
+				_fail("%s: nowhere to stand and use '%s' at %s — no floor on the approach ring, or the game offers nothing from any of it" % [
 					route, label, prop.global_position])
 			var choice_id: String = str(prop.get("choice_id")) if prop.get("choice_id") != null else ""
 			prop.interact(game)
