@@ -17,7 +17,14 @@ import urllib.request
 
 def post(base, path, body):
     req = urllib.request.Request(base + path, data=json.dumps(body).encode(),
-                                 headers={"Content-Type": "application/json"})
+                                 headers={"Content-Type": "application/json",
+                                          # apps.blazecore.dev sits behind Cloudflare, which
+                                          # 403s (error 1010) the default Python-urllib agent.
+                                          # Without this the live run fails as if the backend
+                                          # were down.
+                                          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) "
+                                                        "AppleWebKit/537.36 (KHTML, like Gecko) "
+                                                        "Chrome/140.0 Safari/537.36"})
     return json.loads(urllib.request.urlopen(req, timeout=30).read())
 
 
@@ -42,8 +49,11 @@ def main():
     ap.add_argument("--route", default="ethan")
     ap.add_argument("--lane", default="secure", choices=list(LINES))
     ap.add_argument("--pick", type=int, default=0)
+    ap.add_argument("--base", default="",
+                    help="full API base, e.g. https://apps.blazecore.dev/flutter-after-hours; "
+                         "overrides --port, so the DEPLOYED backend can be played, not just a local one")
     args = ap.parse_args()
-    base = f"http://127.0.0.1:{args.port}"
+    base = args.base.rstrip("/") or f"http://127.0.0.1:{args.port}"
 
     pid = f"probe-{int(time.time())}"
     hist, state, aff = [], {}, 0

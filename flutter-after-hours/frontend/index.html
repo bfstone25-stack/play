@@ -855,10 +855,13 @@ window.API = window.API || window.TEL_API;
   <div id="cards"></div>
   <button id="opReplay" onclick="FLUTTER_OPENING.play(edition.id,{full:true})" aria-label="Replay opening" style="border:0;background:transparent;color:var(--edition-muted);font:500 .68em/1 var(--edition-font);letter-spacing:.12em;min-height:38px;cursor:pointer">▶ OPENING</button>
   <button class="archiveBtn" id="archiveBtn" onclick="openArchive()">◇ MEMORIES</button>
-  <nav class="xpromo" aria-label="More games">
-    <a href="https://apps.blazecore.dev/tell/" target="_blank" rel="noopener noreferrer">TELL · 破绽 ↗</a>
-    <a href="https://apps.blazecore.dev/silvertongue/" target="_blank" rel="noopener noreferrer">SILVERTONGUE ↗</a>
-  </nav>
+  <!-- The parent's hardcoded cross-promo to two SFW titles on apps.blazecore.dev
+       is deliberately NOT carried into the fork. Two reasons, either sufficient:
+       blazecore.dev is the AdSense candidate and an adult page should not be
+       walking traffic onto it by name (ops/check_adsense_isolation.py keeps the
+       other direction clean; this is the same rule applied by hand), and the
+       fork already has a cross-promo mechanism in play/_shared/board.js, which
+       serves the adult catalogue and is offered at the run end. -->
 </div>
 
 <div id="game">
@@ -1037,6 +1040,8 @@ function syncBrand(){
    const e=FLUTTER_EDITIONS.editions[id];return `<option value="${id}">${e.label}</option>`;
  }).join("");
  if(sel)sel.value=edition.id;
+ // One shipped edition means the picker is a control with nothing to pick.
+ if(sel)sel.style.display=FLUTTER_EDITIONS.order.length>1?"":"none";
  const opLabels={
   zh:{skip:"跳过",replay:"▶ 重播开场"},en:{skip:"SKIP",replay:"▶ OPENING"},
   es:{skip:"SALTAR",replay:"▶ APERTURA"},"pt-BR":{skip:"PULAR",replay:"▶ ABERTURA"},
@@ -1074,6 +1079,7 @@ function petals(hue){
    e.style.opacity=edition.id==="ja"?".35":".7";p.appendChild(e);}
 }
 function startRoute(id){
+ answeredChoices={};   // per-run: replaying a route must be able to answer its choices again
  fetch(API+"/gpu/warmup",{method:"POST"}).catch(()=>{});
  if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("conversation");
  route=R.routes.find(r=>r.id===id);
@@ -1501,6 +1507,17 @@ function showAttach(a){
  el.title=(ATTACH_LABEL[lang]||ATTACH_LABEL.en)[a.type]||"";
 }
 function showChoice(c){
+ // A chapter's choice is offered by /say, and more than one /say can carry it:
+ // the server only stops offering once `choice_done_<chapter>` is in the state,
+ // and that is not set until /choose returns. Any turn already in flight when
+ // the choice first appeared therefore re-offers the same choice, the card is
+ // shown a second time, and answering it a second time made the server re-apply
+ // the flag and the affection — every chapter cleared twice, with its reward
+ // card and its CG shown twice. Found by logging showChoice/pickChoice across a
+ // scripted playthrough; invisible in the HTTP test, which only ever reads the
+ // choice once because it drives the turns itself.
+ if(!c||answeredChoices[c.chapter+"/"+c.id])return;
+ if(curChoice&&curChoice.chapter===c.chapter&&curChoice.id===c.id)return;  // already on screen
  directMusic({kind:"choice",text:c.prompt});
  curChoice=c;
  const card=document.getElementById("choiceCard");
@@ -1508,9 +1525,11 @@ function showChoice(c){
    c.options.map(o=>`<button class="copt" onclick="pickChoice(${o.index})">${esc(o.text)}</button>`).join("");
  document.getElementById("choiceOv").classList.add("show");
 }
+let answeredChoices={};
 async function pickChoice(idx){
  if(!curChoice)return;
  const c=curChoice;curChoice=null;
+ answeredChoices[c.chapter+"/"+c.id]=true;
  document.getElementById("choiceOv").classList.remove("show");
  const chosen=c.options[idx];
  // 把玩家的选择作为一条 user 消息进历史(让剧情连贯)

@@ -98,13 +98,44 @@ new telemetry.
 
 ## Run it
 
-    python3 tools/derive_from_parent.py --report             # rebuild stories_x
-    python3 -m uvicorn backend.app:app --port 8931           # from this directory
-    python3 tests/test_static_story.py                       # 18 offline tests
-    python3 tests/http_playthrough.py --route ethan --lane anxious --pick 1
+`python3` on this box has no uvicorn; the interpreter that does is the conda env
+every other backend service here uses.
 
-The frontend needs `/flutter-after-hours/*` proxied to that backend (the gateway
-does this in production; any small dev proxy does locally).
+    PY=~/miniconda3/envs/hsm_lcr/bin/python
+    $PY tools/derive_from_parent.py --report               # rebuild stories_x
+    $PY tests/test_static_story.py                         # 18 offline tests
+    systemctl --user status flutter-after-hours            # the service, :8931
+    $PY tests/http_playthrough.py --route ethan --lane anxious --pick 1
+    $PY tests/http_playthrough.py --base https://apps.blazecore.dev/flutter-after-hours \
+        --route guyan                                      # play the DEPLOYED backend
+
+In production the backend runs as `flutter-after-hours.service` on :8931 and the
+gateway proxies `/flutter-after-hours/*` to it — **API only**: the gateway will
+not serve this game's pages, because apps.blazecore.dev is the AdSense candidate
+domain and an 18+ page does not belong on it (`API_ONLY` in `gateway/app.py`).
+The page is served from Cloudflare instead.
+
+Locally the frontend needs `/flutter-after-hours/*` proxied to :8931 and
+`/unlock/*` proxied to apps.blazecore.dev. Any small dev proxy does, but it must
+send a browser User-Agent: Cloudflare 403s the default `Python-urllib` one
+(error 1010), and that failure looks exactly like a broken unlock endpoint.
+
+## Build and deploy
+
+    tools/build_free.sh [outdir] [itch_web|ads_web]
+
+`ads_web` stamps `window.DIST` and copies the **adult** Adsterra unit. Both are
+load-bearing: `gate.js` only auto-detects `*.pages.dev`, so an unstamped build on
+workers.dev shows the $8.99 buy paywall where the free track should be, and the
+mainstream ad unit is both domain-locked to free.blazecore.dev and a policy
+violation on an 18+ page. The script fails the build on either mistake, and on a
+`directLink:` in an adult package.
+
+    tools/build_free.sh $PWD/dist/ads ads_web
+    rsync -a --delete dist/ads/ ../../build/pages/flutter-after-hours/
+    ops/pages_deploy.sh flutter-after-hours
+
+Live: **https://flutter-after-hours.flat404.workers.dev**
 
 ## Known gaps
 
@@ -112,11 +143,31 @@ does this in production; any small dev proxy does locally).
   consent explicitly, name both adults, and then close the scene. If the channel
   turns out to want the explicit version, it is two beats per route to extend —
   which is the point of deriving rather than authoring.
-- **The server-gated CG fetch is a stub.** `cg.js:cgSource()` implements the paid
-  path (bytes in the package) and the ticket call, but the
-  `apps.blazecore.dev` endpoint for it does not exist yet, so the web tracks fall
-  back to the covered plate rather than 404-ing. Set `window.GATED_CG_URL` when it
-  lands; nothing else changes.
+- ~~**The server-gated CG fetch is a stub.**~~ **Wired and verified 2026-09-18.**
+  `cg.js` now does the Room 704 ticket flow against the gateway root
+  (`/unlock/start` + `/unlock/fetch`, app `flutter-after-hours`), with the bytes
+  staged in `ops/gated_assets/flutter-after-hours/`. Verified against the live
+  gateway rather than read off the source: 425 before the 18-second minimum,
+  then 200 with ~59-91 KB of real WEBP, then 403 on any reuse of the ticket.
+  Three things that flow needs which reading the code would not give you: the
+  ticket is taken **when the sponsor clip starts**, so its 18 seconds run under
+  the 30 the player is already watching instead of after them; the bytes are
+  cached as an object URL, because the ticket is single-use and a re-opened plate
+  must never ask again; and every failure degrades to the covered plate.
+- **Only three of the six routes are offered.** All six derive and play to an
+  ending, but `ops/flutter_art/picks.json` holds 12 picks — ethan, luxingye and
+  guyan. fushen, liam and adrian still have the PIL stand-ins from
+  `tools/gen_placeholder_cg.py` in all three of their slots, so they are held
+  back by `art: "placeholder"` in `chars.json`; `FLUTTER_SHOW_UNFINISHED=1` shows
+  them for art QA. Flip the tag when the plates land; nothing else changes.
+- **English only.** The picker used to offer zh/ja/es/pt and every one of them
+  returned an empty route list from `/routes` — a dead end with no way back.
+  `editions.js` now clamps to what the content pack has. The zh pack is mostly a
+  matter of deriving the parent's `*_zh`, which is already written.
+- **No ad unit of its own.** The build ships the shared adult Adsterra unit
+  (Elena / Room 704 / Confession Room). Adsterra units are domain-locked, so this
+  needs its own approved entry for `flutter-after-hours.flat404.workers.dev`
+  before the ad track earns anything — the banner does render there today.
 - **Channel risk, which is still the biggest thing here and is unchanged.** This
   is otome, and the channel for it is DLsite 女性向け, which is not validated:
   no submission has gone through it, and the ratio work that picked LewdCorner

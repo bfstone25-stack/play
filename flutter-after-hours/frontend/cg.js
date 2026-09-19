@@ -15,13 +15,15 @@
  * SHIPPING RULE (copied from play/room-704/game/scripts/09_dist.rpy):
  * a free build contains only <slot>_locked.webp. Clearing the gate fetches the
  * uncensored bytes; forging a localStorage flag reveals nothing, because on a
- * free build the uncensored file is not on the device. See cgSource() for the
- * one piece of that which is still a stub.
+ * free build the uncensored file is not on the device.
  */
 (function () {
   var LOCKED = "cg/";            // covered plates + thumbs — in every build
   var FULL = "cg/full/";         // uncensored — paid package only
   var KEY = "fah_cg_unlocked";
+  var APP = window.GATED_CG_APP || "flutter-after-hours";
+  var fetched = {};              // slot -> objectURL of bytes we actually retrieved
+  var probed = {};               // slot -> does FULL+slot exist in THIS package?
 
   function unlocked() {
     try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; }
@@ -36,31 +38,117 @@
   function lockedSrc(slot) { return LOCKED + slot + "_locked.webp"; }
   function thumbSrc(slot) { return LOCKED + slot + "_thumb.webp"; }
 
-  /* Where the uncensored bytes come from once the gate is cleared.
+  /* Does this package actually carry the uncensored file?
    *
-   * paid build  — they are in the package, next to the covered plates.
-   * web tracks  — NOT BUILT YET. The design (ops/adult_forks/flutter.md §4.6)
-   *   is the Room 704 ticket flow: POST a single-use time-locked ticket to
-   *   apps.blazecore.dev, write the bytes locally. That endpoint does not exist
-   *   for this client yet, so the web tracks fall back to the covered plate and
-   *   say so rather than 404-ing into a broken image. Wire GATED_CG_URL when
-   *   the gateway endpoint lands; nothing else here has to change.
-   */
-  var GATED_CG_URL = window.GATED_CG_URL || "";
+   * `dist() === "paid"` is a FLAG, and the bytes are a FACT, and they came
+   * apart: tools/build_free.sh strips cg/full/ from the package, so a free
+   * package opened with the paid flag set (a local run, a mislabelled build)
+   * pointed every plate at a file that was not there and drew three broken
+   * images — found by reading naturalWidth after a scripted playthrough, which
+   * is the only way this shows up: the img tag looks perfectly correct in the
+   * DOM. So ask the file, do not trust the flag. */
+  function probe(slot) {
+    if (slot in probed) return Promise.resolve(probed[slot]);
+    return new Promise(function (resolve) {
+      var im = new Image();
+      im.onload = function () { probed[slot] = true; resolve(true); };
+      im.onerror = function () { probed[slot] = false; resolve(false); };
+      im.src = FULL + slot + ".webp";
+    });
+  }
+
+  /* The gated fetch, as play/silvertongue-x/frontend/cg.js does it and as
+   * gateway/app.py serves it:
+   *
+   *   POST /unlock/start  {app, key}      -> {ok, ticket, wait}
+   *   GET  /unlock/fetch  ?ticket&app&key -> the webp bytes
+   *
+   * Three properties of that endpoint this code has to respect, all verified
+   * against the live gateway rather than read off the source:
+   *   - the ticket is refused with 425 for `wait` seconds after it is issued
+   *     (_MIN_WAIT = 18), so a client that fetches immediately gets nothing;
+   *   - it is single-use, so the bytes must be cached here (`fetched`) and a
+   *     re-open must never call /unlock/fetch again;
+   *   - it 403s an unknown/none ticket, so a failure has to degrade to the
+   *     covered plate rather than to a broken image.
+   *
+   * UNLOCK_API is the gateway ROOT. /unlock/* is declared above the catch-all
+   * /{name}/{path} proxy in gateway/app.py, so putting the app slug in the
+   * base URL sends the call into the proxy and gets "unknown app" instead. */
+  function unlockBase() { return window.UNLOCK_API || ""; }
+
+  /* Ask for the ticket EARLY — at the moment the gate opens, not after it
+   * closes. The gateway's 18-second minimum exists to stop a client that never
+   * watched anything; a player who is watching a 30-second clip has already
+   * served it. Starting the ticket when the clip starts means the wait runs
+   * underneath the thing the player is already doing and the plate is ready the
+   * instant they click Continue. Starting it afterwards would make every reveal
+   * sit on a covered plate for a further 19 seconds, which reads as "broken",
+   * not as "loading". */
+  var pending = {};      // slot -> Promise<{ticket, ready_at} | null>
+  function startTicket(slot) {
+    if (fetched[slot]) return Promise.resolve(null);
+    if (pending[slot]) return pending[slot];
+    var base = unlockBase();
+    if (!base) return Promise.resolve(null);
+    pending[slot] = fetch(base + "/unlock/start", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({app: APP, key: slot})
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (!d || !d.ok || !d.ticket) return null;
+      var wait = (typeof d.wait === "number" ? d.wait : 18);
+      return {ticket: d.ticket, ready_at: Date.now() + wait * 1000 + 600};
+    }).catch(function () { return null; });
+    return pending[slot];
+  }
+
+  /* Redeem it. Single-use: the bytes are cached in `fetched` and the ticket is
+   * dropped, so re-opening a plate never calls /unlock/fetch a second time —
+   * which the gateway would refuse with 403 anyway. */
+  function redeem(slot) {
+    if (fetched[slot]) return Promise.resolve(true);
+    var base = unlockBase();
+    if (!base) return Promise.resolve(false);
+    return startTicket(slot).then(function (t) {
+      if (!t) return false;
+      var url = base + "/unlock/fetch?ticket=" + encodeURIComponent(t.ticket) +
+                "&app=" + encodeURIComponent(APP) + "&key=" + encodeURIComponent(slot);
+      return new Promise(function (res) { setTimeout(res, Math.max(0, t.ready_at - Date.now())); })
+        .then(function () { return fetch(url); })
+        .then(function (r) {
+          if (r.status === 425) {            // clock skew: one retry, then give up
+            return new Promise(function (res) { setTimeout(res, 4000); })
+              .then(function () { return fetch(url); });
+          }
+          return r;
+        })
+        .then(function (r) { return r && r.ok ? r.blob() : null; })
+        .then(function (b) {
+          delete pending[slot];              // spent either way
+          if (!b || b.size < 1024) return false;
+          fetched[slot] = URL.createObjectURL(b);
+          if (window.TEL) { try { TEL.ev("unlock_delivered", {slot: slot, bytes: b.size}); } catch (e) {} }
+          return true;
+        });
+    }).catch(function () { delete pending[slot]; return false; });
+  }
+
+  /* Where the bytes for a revealed plate come from, in order of cheapness.
+   * Never returns a path this package might not have. */
   async function cgSource(slot) {
-    if (isPaid()) return FULL + slot + ".webp";
-    if (!GATED_CG_URL) return lockedSrc(slot);
-    try {
-      var res = await fetch(GATED_CG_URL + "?slot=" + encodeURIComponent(slot), {method: "POST"});
-      var j = await res.json();
-      return j && j.url ? j.url : lockedSrc(slot);
-    } catch (e) { return lockedSrc(slot); }
+    if (fetched[slot]) return fetched[slot];
+    if (isPaid() && await probe(slot)) return FULL + slot + ".webp";
+    if (await redeem(slot)) return fetched[slot];
+    return lockedSrc(slot);
   }
 
   /* One tap on a covered plate. Same Gate call shape as continueChapter(). */
   async function reveal(slot, imgEl) {
     if (!has(slot)) {
       if (!window.Gate) return false;
+      // Fire the ticket request first so its 18-second minimum runs underneath
+      // the sponsor clip instead of after it. Deliberately not awaited.
+      if (!isPaid()) { try { startTicket(slot); } catch (e) {} }
       var r = await window.Gate.require("cg:" + slot, {title: "This memory", kind: "cg"});
       if (r !== "unlocked") return false;
       remember(slot);
@@ -71,12 +159,28 @@
     return true;
   }
 
-  /* The markup a chapter-clear card / ending card embeds. */
+  /* The markup a chapter-clear card / ending card embeds.
+   *
+   * Always renders the covered plate, which is the one file every build is
+   * guaranteed to carry, and upgrades it afterwards if this package really does
+   * have the uncensored bytes. The previous version picked the path from
+   * dist()==="paid" alone and drew a broken image on every free package opened
+   * with that flag — three of them per playthrough, silently, because a broken
+   * <img> and a correct one look identical in the DOM. */
   function plateHtml(slot, caption) {
     if (!slot) return "";
-    var src = has(slot) ? (isPaid() ? FULL + slot + ".webp" : lockedSrc(slot)) : lockedSrc(slot);
+    var id = "cgp" + Math.random().toString(36).slice(2, 9);
+    if (has(slot)) {
+      setTimeout(function () {
+        cgSource(slot).then(function (src) {
+          var im = document.getElementById(id);
+          if (im && src !== lockedSrc(slot)) { im.src = src; im.dataset.revealed = "1"; }
+        });
+      }, 0);
+    }
     return '<div class="cgPlate" data-slot="' + slot + '">' +
-      '<img class="cgImg" alt="" src="' + src + '" onclick="FAH_CG.tap(this)">' +
+      '<img class="cgImg" id="' + id + '" alt="" src="' + lockedSrc(slot) +
+      '" onerror="this.style.opacity=.25" onclick="FAH_CG.tap(this)">' +
       '<div class="cgCap">' + (caption || "") + '</div></div>';
   }
 

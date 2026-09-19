@@ -1,143 +1,149 @@
 {
- "pet": {
-  "name_zh": "团子",
-  "name_en": "Dango",
-  "emoji": "🐱"
- },
- "routes": [
-  {
-   "id": "guyan",
-   "langs": [
-    "en"
-   ],
-   "name_zh": "顾言",
-   "name_en": "Gu Yan",
-   "title_zh": "把打烊牌留着没翻回来的书店老板",
-   "title_en": "the bookshop owner who left the sign turned around",
-   "tag_zh": "慢热 · 不赶时间",
-   "tag_en": "Slow burn · Unhurried",
-   "emoji": "📚",
-   "hue": 28,
-   "accent": "#e8b06a",
-   "portrait": "portraits/v2/masters/guyan-master-v1.webp",
-   "portrait_expressions": true,
-   "scene_zh": "打烊后的旧书店，窗上有雨，后面留着一盏灯",
-   "scene_en": "the bookshop after closing, rain on the window, one lamp at the back",
-   "persona": "Gu Yan is 33 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
-   "age": 33,
-   "adult": true
+  "pet": {
+    "name_zh": "团子",
+    "name_en": "Dango",
+    "emoji": "🐱"
   },
-  {
-   "id": "luxingye",
-   "langs": [
-    "en"
-   ],
-   "name_zh": "陆星野",
-   "name_en": "Lu Xingye",
-   "title_zh": "无人知晓的休季偶像",
-   "title_en": "the idol in an off-season nobody knows about",
-   "tag_zh": "偶像 · 私下的那个他",
-   "tag_en": "Idol · The private version",
-   "emoji": "🎤",
-   "hue": 320,
-   "accent": "#e87aa8",
-   "portrait": "portraits/v2/masters/luxingye-master-v1.webp",
-   "portrait_expressions": true,
-   "scene_zh": "面馆楼上的出租屋，没有工作人员，没有行程",
-   "scene_en": "a rented flat above a noodle shop, no staff, no schedule",
-   "persona": "Lu Xingye is 27 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
-   "age": 27,
-   "adult": true
-  },
-  {
-   "id": "ethan",
-   "langs": [
-    "en"
-   ],
-   "name_zh": "Ethan Cole",
-   "name_en": "Ethan Cole",
-   "title_zh": "终于把手机扣下的男人",
-   "title_en": "the man who finally put the phone face-down",
-   "tag_zh": "办公室 · 收得住的掌控",
-   "tag_en": "Office · Control that stops",
-   "emoji": "🥃",
-   "hue": 215,
-   "accent": "#6f9bd8",
-   "portrait": "portraits/v2/masters/ethan-master-v1.webp",
-   "portrait_expressions": true,
-   "scene_zh": "写字楼顶层的公寓，一个后面什么都没有的周五夜",
-   "scene_en": "his apartment above the office tower, a Friday with nothing behind it",
-   "persona": "Ethan Cole is 38 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
-   "age": 38,
-   "adult": true
-  },
-  {
-   "id": "fushen",
-   "langs": [
-    "en"
-   ],
-   "name_zh": "傅深",
-   "name_en": "Fu Shen",
-   "title_zh": "矜贵疏离的财阀继承人",
-   "title_en": "the aloof wealthy heir",
-   "tag_zh": "奢华 · 反差",
-   "tag_en": "Luxury · Melting Ice",
-   "emoji": "🥂",
-   "hue": 210,
-   "accent": "#7aa8e8",
-   "portrait": "portraits/v2/masters/fushen-master-v1.webp",
-   "portrait_expressions": true,
-   "scene_zh": "高层公寓的落地窗前，城市夜景在脚下，红酒在杯中摇晃",
-   "scene_en": "by the floor-to-ceiling window of a penthouse, the city glittering below, wine in hand",
-   "persona": "Fu Shen is 36 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
-   "age": 36,
-   "adult": true
-  },
-  {
-   "id": "liam",
-   "langs": [
-    "en"
-   ],
-   "name_zh": "Liam Brody",
-   "name_en": "Liam Brody",
-   "title_zh": "the firefighter next door",
-   "title_en": "the firefighter next door",
-   "tag_zh": "Warm · Protective",
-   "tag_en": "Warm · Protective",
-   "emoji": "🔥",
-   "hue": 20,
-   "accent": "#e08a5a",
-   "portrait": "portraits/v2/masters/liam-master-v1.webp",
-   "portrait_expressions": true,
-   "scene_zh": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
-   "scene_en": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
-   "persona": "Liam Brody is 34 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
-   "age": 34,
-   "adult": true
-  },
-  {
-   "id": "adrian",
-   "langs": [
-    "en"
-   ],
-   "name_zh": "Adrian Vale",
-   "name_en": "Adrian Vale",
-   "title_zh": "the rockstar who writes about you",
-   "title_en": "the rockstar who writes about you",
-   "tag_zh": "Bad Boy · Intense",
-   "tag_en": "Bad Boy · Intense",
-   "emoji": "🎸",
-   "hue": 275,
-   "accent": "#a879e0",
-   "portrait": "portraits/v2/masters/adrian-master-v1.webp",
-   "portrait_expressions": true,
-   "scene_zh": "an empty stage after the show, one spotlight left on, his guitar still humming",
-   "scene_en": "an empty stage after the show, one spotlight left on, his guitar still humming",
-   "persona": "Adrian Vale is 31 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
-   "age": 31,
-   "adult": true
-  }
- ],
- "adult": true,
- "content_notice_en": "18+. Everyone depicted is an adult and is written as one. Consensual only. No minors, no violence, no non-consent."
+  "routes": [
+    {
+      "id": "guyan",
+      "langs": [
+        "en"
+      ],
+      "name_zh": "顾言",
+      "name_en": "Gu Yan",
+      "title_zh": "把打烊牌留着没翻回来的书店老板",
+      "title_en": "the bookshop owner who left the sign turned around",
+      "tag_zh": "慢热 · 不赶时间",
+      "tag_en": "Slow burn · Unhurried",
+      "emoji": "📚",
+      "hue": 28,
+      "accent": "#e8b06a",
+      "portrait": "portraits/v2/masters/guyan-master-v1.webp",
+      "portrait_expressions": true,
+      "scene_zh": "打烊后的旧书店，窗上有雨，后面留着一盏灯",
+      "scene_en": "the bookshop after closing, rain on the window, one lamp at the back",
+      "persona": "Gu Yan is 33 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+      "age": 33,
+      "adult": true,
+      "art": "installed"
+    },
+    {
+      "id": "luxingye",
+      "langs": [
+        "en"
+      ],
+      "name_zh": "陆星野",
+      "name_en": "Lu Xingye",
+      "title_zh": "无人知晓的休季偶像",
+      "title_en": "the idol in an off-season nobody knows about",
+      "tag_zh": "偶像 · 私下的那个他",
+      "tag_en": "Idol · The private version",
+      "emoji": "🎤",
+      "hue": 320,
+      "accent": "#e87aa8",
+      "portrait": "portraits/v2/masters/luxingye-master-v1.webp",
+      "portrait_expressions": true,
+      "scene_zh": "面馆楼上的出租屋，没有工作人员，没有行程",
+      "scene_en": "a rented flat above a noodle shop, no staff, no schedule",
+      "persona": "Lu Xingye is 27 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+      "age": 27,
+      "adult": true,
+      "art": "installed"
+    },
+    {
+      "id": "ethan",
+      "langs": [
+        "en"
+      ],
+      "name_zh": "Ethan Cole",
+      "name_en": "Ethan Cole",
+      "title_zh": "终于把手机扣下的男人",
+      "title_en": "the man who finally put the phone face-down",
+      "tag_zh": "办公室 · 收得住的掌控",
+      "tag_en": "Office · Control that stops",
+      "emoji": "🥃",
+      "hue": 215,
+      "accent": "#6f9bd8",
+      "portrait": "portraits/v2/masters/ethan-master-v1.webp",
+      "portrait_expressions": true,
+      "scene_zh": "写字楼顶层的公寓，一个后面什么都没有的周五夜",
+      "scene_en": "his apartment above the office tower, a Friday with nothing behind it",
+      "persona": "Ethan Cole is 38 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+      "age": 38,
+      "adult": true,
+      "art": "installed"
+    },
+    {
+      "id": "fushen",
+      "langs": [
+        "en"
+      ],
+      "name_zh": "傅深",
+      "name_en": "Fu Shen",
+      "title_zh": "矜贵疏离的财阀继承人",
+      "title_en": "the aloof wealthy heir",
+      "tag_zh": "奢华 · 反差",
+      "tag_en": "Luxury · Melting Ice",
+      "emoji": "🥂",
+      "hue": 210,
+      "accent": "#7aa8e8",
+      "portrait": "portraits/v2/masters/fushen-master-v1.webp",
+      "portrait_expressions": true,
+      "scene_zh": "高层公寓的落地窗前，城市夜景在脚下，红酒在杯中摇晃",
+      "scene_en": "by the floor-to-ceiling window of a penthouse, the city glittering below, wine in hand",
+      "persona": "Fu Shen is 36 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+      "age": 36,
+      "adult": true,
+      "art": "placeholder"
+    },
+    {
+      "id": "liam",
+      "langs": [
+        "en"
+      ],
+      "name_zh": "Liam Brody",
+      "name_en": "Liam Brody",
+      "title_zh": "the firefighter next door",
+      "title_en": "the firefighter next door",
+      "tag_zh": "Warm · Protective",
+      "tag_en": "Warm · Protective",
+      "emoji": "🔥",
+      "hue": 20,
+      "accent": "#e08a5a",
+      "portrait": "portraits/v2/masters/liam-master-v1.webp",
+      "portrait_expressions": true,
+      "scene_zh": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
+      "scene_en": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
+      "persona": "Liam Brody is 34 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+      "age": 34,
+      "adult": true,
+      "art": "placeholder"
+    },
+    {
+      "id": "adrian",
+      "langs": [
+        "en"
+      ],
+      "name_zh": "Adrian Vale",
+      "name_en": "Adrian Vale",
+      "title_zh": "the rockstar who writes about you",
+      "title_en": "the rockstar who writes about you",
+      "tag_zh": "Bad Boy · Intense",
+      "tag_en": "Bad Boy · Intense",
+      "emoji": "🎸",
+      "hue": 275,
+      "accent": "#a879e0",
+      "portrait": "portraits/v2/masters/adrian-master-v1.webp",
+      "portrait_expressions": true,
+      "scene_zh": "an empty stage after the show, one spotlight left on, his guitar still humming",
+      "scene_en": "an empty stage after the show, one spotlight left on, his guitar still humming",
+      "persona": "Adrian Vale is 31 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+      "age": 31,
+      "adult": true,
+      "art": "placeholder"
+    }
+  ],
+  "adult": true,
+  "content_notice_en": "18+. Everyone depicted is an adult and is written as one. Consensual only. No minors, no violence, no non-consent."
 }

@@ -1,7 +1,7 @@
 """怦然 Flutter — LLM原生乙女恋爱游戏. 后端 :8919.
 卖点=角色真记得你(服务端结构化记忆) + 不崩人设(负面约束+关系分期推拉).
 v2: memories表(事实级记忆,注入召回) / affection关系分期(疏离-试探-交心-热恋,推拉尺度随期变) / 人设负面约束."""
-import os, json, time, sqlite3, urllib.request, re, subprocess, threading
+import os, json, time, sqlite3, urllib.request, re, subprocess, threading, copy
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -342,7 +342,24 @@ def routes(lang: str = "en", edition: str = ""):
          "portrait": r.get("portrait", f"portraits/{r['id']}.jpg"),
          "portrait_expressions": r.get("portrait_expressions", True),
          "edition": market, "content_lang": content_lang}
-        for r in CH["routes"] if content_lang in r.get("langs", ["zh", "en"])]}
+        for r in CH["routes"]
+        if content_lang in r.get("langs", ["zh", "en"]) and _art_ready(r)]}
+
+
+# Six routes are derived and playable end to end, but only three have real
+# plates installed: ops/flutter_art/picks.json holds 12 picks, which is
+# ethan/luxingye/guyan x (ch2, heat, end) plus their three _heat_locked teasers.
+# The other three routes' plates are still the PIL stand-ins from
+# tools/gen_placeholder_cg.py — ~15 KB, ~6k colours against ~50-70 KB and
+# 30-90k for a render. A route whose three CG rewards are grey cards is a worse
+# product than a route that is not offered, so they are held back here rather
+# than shipped as if finished. `art: "installed"` in chars.json is the switch;
+# flip it when ops/install_plates.py --check reports those slots filled.
+# FLUTTER_SHOW_UNFINISHED=1 shows them anyway, for art QA.
+def _art_ready(route):
+    if os.environ.get("FLUTTER_SHOW_UNFINISHED") == "1":
+        return True
+    return route.get("art", "installed") == "installed"
 
 MOOD = ["🥰", "😊", "😳", "☺️", "💗", "😌"]
 
@@ -765,8 +782,28 @@ def choose(r: ChooseReq):
     if not _story or not _story.has_story(r.route):
         return {"error": "no story"}
     st_obj = _story.load_story(r.route)
+    # A chapter's choice must apply exactly once. story_engine.apply_choice() is the
+    # parent's and is not idempotent — it appends the flag, re-arms awaiting_continue
+    # and returns the affection delta again — and the client can genuinely send the
+    # same choice twice: /say goes on offering a chapter's choice until
+    # `choice_done_<chapter>` is in the state, which only /choose sets, so any turn
+    # in flight when the card first appeared re-offers it. The client no longer
+    # shows it twice, but the guard belongs here too: a double-tap, a retry or a
+    # flaky connection would otherwise double a flag and up to +8 affection, and
+    # flags are what match_ending() reads.
+    already = bool((r.story_state or {}).get("choice_done_" + r.chapter))
+    # apply_choice() does `dict(state)` — a SHALLOW copy — and then appends to
+    # state["flags"], so it mutates the caller's list in place. Handing it a deep
+    # copy is what makes the guard below actually hold: the first version of this
+    # returned d_aff = 0 and still shipped a duplicated flag, and it looked fixed.
+    incoming = copy.deepcopy(r.story_state or {})
     d_aff, reply, new_state = _story.apply_choice(
-        st_obj, r.story_state, r.chapter, r.choice, r.option, _content_lang(r.lang))
+        st_obj, incoming, r.chapter, r.choice, r.option, _content_lang(r.lang))
+    if already:
+        # Re-answer: keep the state the player already has and give back the same
+        # reply/reward, but move nothing.
+        new_state = copy.deepcopy(r.story_state or {})
+        d_aff = 0
     _static = bool(st_obj.get("static"))
     if _static:
         _ch = next((c for c in st_obj["chapters"] if c["id"] == r.chapter), None)

@@ -4,8 +4,8 @@
   const editions = {
     en: {
       id: "en", locale: "en", label: "EN", contentSet: "en",
-      localTitle: "", title: "FLUTTER — He remembers you",
-      tagline: "He remembers you",
+      localTitle: "AFTER HOURS", title: "FLUTTER: AFTER HOURS — He remembers what you told him",
+      tagline: "He remembers what you told him",
       palette: {bg0:"#130a0f", bg1:"#4b1728", bg2:"#211019", glowA:"#d59a82", glowB:"#955069", ink:"#f8eee9", muted:"#d1b9b6", cardA:"#572033", cardB:"#29131e"},
       typography: "'Avenir Next','Helvetica Neue',Inter,Arial,sans-serif",
       motion: "cinematic", feedback: "restrained"
@@ -43,16 +43,34 @@
       motion: "quiet", feedback: "subtle"
     }
   };
-  const order = ["en", "es", "pt-BR", "zh", "ja"];
+  /* The parent ships five market editions. This fork's content pack is English
+   * only — backend/stories_x/*.json carries `*_en` and the route list is
+   * filtered by content language in app.py:routes(), so asking the backend for
+   * any other edition returns ZERO routes and the player lands on an empty
+   * route grid with no way back. Verified against the running backend:
+   *   en -> 6 routes, zh/ja/es/pt-BR -> 0.
+   * So the picker offers only what the content pack actually has. The other
+   * four definitions stay (palette, typography, motion) because the zh pack is
+   * mostly a matter of deriving it from the parent's `*_zh`, which is already
+   * written — when that lands, add the id back to this list and nothing else
+   * changes. */
+  const SHIPPED = ["en"];
+  const order = SHIPPED.slice();
   const aliases = {pt:"pt-BR", "pt-br":"pt-BR", "zh-cn":"zh", "zh-hans":"zh"};
 
   function normalize(value) {
     const raw = String(value || "").trim();
-    if (editions[raw]) return raw;
-    const low = raw.toLowerCase();
-    if (aliases[low]) return aliases[low];
-    const base = low.split("-")[0];
-    return aliases[base] || (editions[base] ? base : "en");
+    let id;
+    if (editions[raw]) id = raw;
+    else {
+      const low = raw.toLowerCase();
+      const base = low.split("-")[0];
+      id = aliases[low] || aliases[base] || (editions[base] ? base : "en");
+    }
+    // Clamp to a shipped edition. detect() reads navigator.language, so a
+    // zh-CN or ja browser would otherwise be sent straight to the empty grid
+    // without ever touching the picker.
+    return SHIPPED.indexOf(id) === -1 ? "en" : id;
   }
   function detect() {
     try {
@@ -75,5 +93,5 @@
     return edition;
   }
 
-  window.FLUTTER_EDITIONS = {editions, order, normalize, detect, apply};
+  window.FLUTTER_EDITIONS = {editions, order, normalize, detect, apply, SHIPPED};
 })();
