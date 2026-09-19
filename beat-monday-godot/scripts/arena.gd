@@ -118,8 +118,9 @@ func _draw() -> void:
 	var size := Vector2(BMCore.W, BMCore.H)
 	var day_id: String = run["day"]["id"] if not run.is_empty() else "mon"
 	if plate:
-		draw_texture_rect(plate, Rect2(Vector2.ZERO, size), false)
-		draw_rect(Rect2(Vector2.ZERO, size), Color(Palette.GROUND, 0.42))
+		# the plate is cooled and pushed back so the drawn things in front of it read
+		draw_texture_rect(plate, Rect2(Vector2.ZERO, size), false, Color(0.78, 0.84, 0.95))
+		draw_rect(Rect2(Vector2.ZERO, size), Color(Palette.GROUND, 0.38))
 	else:
 		Sprites.office(self, size, day_id, clock)
 	# vignette: the room falls off at the edges so the play reads in the middle

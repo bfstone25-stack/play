@@ -89,3 +89,11 @@ frontend/arcade.html     the previous 2D fighter, kept playable, no longer the e
 
 Run: `python3 -m http.server 8765 --directory frontend` → http://127.0.0.1:8765/
 Tests: `node rpg-smoke.cjs` (whole week headless), `node monday-smoke.cjs` (kernel pool).
+
+## The Godot rebuild (2026-09-18)
+
+Blaze's decision: every title goes through an engine — the HTML builds read as web forms.
+`play/beat-monday-godot/` is this design in Godot 4.7 with a drawn office; this directory
+stays as the spec, and `beat-monday-godot/tests/conformance_gen.cjs` runs the core here to
+hold the port to the same numbers. The "Form (locked by PLAN.md)" section above describes
+the HTML version only.

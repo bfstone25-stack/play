@@ -22,7 +22,6 @@ SHOTS = PROJ / "shots"
 SHOTS.mkdir(exist_ok=True)
 for old in SHOTS.glob("*.png"):
     old.unlink()
-PORT = 8810 + (os.getpid() % 200)
 if not (WEB / "index.html").exists():
     sys.exit("no web build at %s — run ./build.sh" % WEB)
 
@@ -44,7 +43,8 @@ class Quiet(http.server.SimpleHTTPRequestHandler):
 
 
 socketserver.TCPServer.allow_reuse_address = True
-srv = socketserver.TCPServer(("127.0.0.1", PORT), Quiet)
+srv = socketserver.TCPServer(("127.0.0.1", 0), Quiet)   # port 0: the OS picks a free one
+PORT = srv.server_address[1]
 threading.Thread(target=srv.serve_forever, daemon=True).start()
 URL = "http://127.0.0.1:%d/index.html?dist=itch_web" % PORT
 fails = []
