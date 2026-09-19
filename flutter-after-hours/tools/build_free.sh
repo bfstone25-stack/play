@@ -24,8 +24,13 @@ OUT="${1:-$HERE/dist/free}"
 TRACK="${2:-itch_web}"
 case "$TRACK" in itch_web|ads_web) ;; *) echo "unknown track: $TRACK" >&2; exit 1 ;; esac
 
-rm -rf "$OUT"
-mkdir -p "$OUT"
+# Every FATAL below — the track stamp, the mainstream-Adsterra check, directLink, the
+# service-worker stamp, cg/full, the plate sweep, board.js — used to run AFTER this
+# directory had already been deleted, so a refusal destroyed the last good package it was
+# refusing to replace. Staged beside it and swapped in at the end instead.
+source "$ROOT/ops/build_guard.sh"
+OUT_FINAL="$OUT"
+OUT=$(stage_for "$OUT_FINAL")
 # -L resolves the portraits/audio symlinks into the package.
 rsync -aL --exclude 'cg/full' --exclude 'dist' "$HERE/frontend/" "$OUT/"
 
@@ -127,6 +132,9 @@ grep -q 'src="board.js"' "$OUT/index.html" && [ -s "$OUT/board.js" ] || {
   echo "FATAL: board.js missing from the free package (or index.html does not load it)" >&2
   exit 1
 }
+
+publish_stage "$OUT_FINAL" "$OUT"
+OUT="$OUT_FINAL"
 
 echo "free build -> $OUT"
 du -sh "$OUT"
