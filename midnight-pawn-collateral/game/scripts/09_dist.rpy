@@ -176,10 +176,24 @@ init -2 python:
             persistent.ad_unlocks = set()
         return persistent.ad_unlocks
 
+    def _ad_session_pass():
+        """Chapter keys passed without a sponsor impression, for this session only.
+
+        Deliberately NOT persistent.ad_unlocks and deliberately underscore-prefixed, so
+        Ren'Py neither saves it into a save file nor carries it to the next launch. See
+        ad_gate_finish(): a sponsor that never rendered lets the story continue but earns
+        nothing that outlives the session. shared/gate.js takes the same line.
+        """
+        s = getattr(store, "_ad_session_pass_set", None)
+        if s is None:
+            s = set()
+            store._ad_session_pass_set = s
+        return s
+
     def is_ad_unlocked(key):
         # localStorage is the source of truth on the web; persistent mirrors it so the
         # gallery can ask without touching JS.
-        if key in _ad_unlocks():
+        if key in _ad_unlocks() or key in _ad_session_pass():
             return True
         if getattr(renpy, "emscripten", False) and _js_int("(window.CollateralAds && window.CollateralAds.has(%r)) ? 1 : 0" % key):
             _ad_unlocks().add(key)
@@ -317,7 +331,14 @@ init -2 python:
             if kind == "cg":
                 tel_track("ad_unavailable_censored", {"key": key, "kind": kind}, dur=dur)
             else:
-                _ad_unlocks().add(key)
+                # Passed for THIS SESSION only, not remembered. The web gate
+                # (shared/gate.js, outer 0de7015) resolves "unlocked" here and pointedly
+                # does not call remember(key); this is the same rule on the Ren'Py side.
+                # An unlock nobody paid for -- with an ad, not money -- must not persist,
+                # or an adblocked player accumulates the whole ad track permanently and
+                # the sponsor is never asked again. A chapter still passes, so nobody is
+                # ever bricked; they are simply offered the sponsor again next session.
+                _ad_session_pass().add(key)
                 tel_track("ad_unavailable_passed", {"key": key, "kind": kind}, dur=dur)
         else:
             tel_track("ad_abandoned", {"key": key, "kind": kind}, dur=dur)
