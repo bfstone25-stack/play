@@ -109,12 +109,18 @@ func board_offer_break() -> bool:
 	JavaScriptBridge.eval("BOARD.offerBreak()")
 	return true
 
-## End of a run: the rest of the adult catalogue. board.js itself refuses to draw this
-## anywhere the adult board is not allowed, so the call site does not have to remember.
-func board_offer_more() -> void:
+## End of a run. `kind` is which catalogue: "adult" (the default — the rest of the adult
+## catalogue, offered by the adult forks) or "casual" (the other small games, offered by
+## the mainstream titles). board.js refuses to draw the adult board anywhere it is not
+## allowed, so the call site does not have to remember — but a mainstream title on
+## free.blazecore.dev that asks for "adult" gets exactly nothing, silently, which is why
+## the four mainstream Godot games pass "casual" explicitly.
+func board_offer_more(kind: String = "adult") -> void:
 	if not is_web():
 		return
-	JavaScriptBridge.eval("window.BOARD && BOARD.offerMore && BOARD.offerMore('adult')")
+	if kind != "casual":
+		kind = "adult"
+	JavaScriptBridge.eval("window.BOARD && BOARD.offerMore && BOARD.offerMore(%s)" % JSON.stringify(kind))
 
 
 ## Is a board panel on screen right now? board.js draws exactly one .bd-wrap and removes
@@ -134,6 +140,9 @@ func board_open() -> bool:
 ## entry points — including the 2nd-and-4th gating, so a run of it also proves the first
 ## offer stays silent — against the real wasm build on the real page.
 ##
+## `&more=casual` makes the end-of-run step offer the casual board instead of the adult
+## one — the mainstream titles' call, and the only one that can draw on the AdSense host.
+##
 ## Costs nothing in a normal session: no query string, no work.
 func _board_warp() -> void:
 	if not is_web():
@@ -141,6 +150,7 @@ func _board_warp() -> void:
 	var q = JavaScriptBridge.eval("new URLSearchParams(location.search).get('warp') || ''")
 	if str(q) != "board":
 		return
+	var more_kind := str(JavaScriptBridge.eval("new URLSearchParams(location.search).get('more') || 'adult'"))
 	# Set before the first await, so a run that never gets past it is distinguishable from
 	# a run where the hook was not in the build at all.
 	JavaScriptBridge.eval("window.__board_warp = {started: 1}")
@@ -154,8 +164,8 @@ func _board_warp() -> void:
 	JavaScriptBridge.eval("window.__board_warp.second = document.querySelector('.bd-wrap') ? 1 : 0")
 	JavaScriptBridge.eval("window.__board_warp.open_probe = %d" % (1 if board_open() else 0))
 	JavaScriptBridge.eval("var w = document.querySelector('.bd-wrap'); w && w.remove()")
-	# end of a run: the adult catalogue
-	board_offer_more()
+	# end of a run: the adult catalogue, or the casual one when asked
+	board_offer_more(more_kind)
 	await _warp_wait(90)
 	JavaScriptBridge.eval("window.__board_warp.more = document.querySelector('.bd-wrap') ? 1 : 0;"
 		+ "window.__board_warp.tiles = document.querySelectorAll('.bd-tile').length;"

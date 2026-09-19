@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER: AFTER HOURS — He remembers what you told him</title><script src="config.js"></script><script>window.GATE_CONFIG={price:"$8.99",buyUrl:"https://bfstone25-stack.itch.io/flutter-after-hours/purchase",seconds:30};/* No directLink on this build: an adult forum ban for exactly that is recorded in ops memory (f95-ban-direct-link-ads). The ad track uses the banner-in-iframe path only. */</script><script src="gate.js"></script><script>window.BOARD_FROM="flutter-after-hours";</script><script src="board.js"></script><script src="cg.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER: AFTER HOURS — He remembers what you told him</title><script src="config.js"></script><script>window.GATE_CONFIG={price:"$8.99",buyUrl:"https://bfstone25-stack.itch.io/flutter-after-hours/purchase",seconds:30};/* No directLink on this build: an adult forum ban for exactly that is recorded in ops memory (f95-ban-direct-link-ads). The ad track uses the banner-in-iframe path only. */</script><script src="gate.js"></script><script>window.BOARD_FROM="flutter-after-hours";</script><script src="board.js"></script><script src="cg.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script><script defer src="title.js"></script>
 <style>
 :root{--accent:#e87aa8;--hue:320;--edition-bg0:#0c1720;--edition-bg1:#233343;--edition-bg2:#111a22;--edition-glowA:#d07c63;--edition-glowB:#547e99;--edition-ink:#f4eee8;--edition-muted:#c7bdba;--edition-font:'Avenir Next','Helvetica Neue',Inter,Arial,sans-serif}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -19,10 +19,81 @@ html[data-edition="ja"] .sound-btn,html[data-edition="ja"] .sound-panel,html[dat
   background:linear-gradient(150deg,var(--edition-bg0) 0%,var(--edition-bg1) 45%,var(--edition-bg2) 100%);isolation:isolate;font-family:var(--edition-font)}
 #select.reveal{display:flex;animation:selectionArrive .85s cubic-bezier(.16,.8,.2,1) both}
 #select.leaving{pointer-events:none;animation:selectionLeave .72s cubic-bezier(.65,0,.85,.25) both}
-#select::before{content:"";position:absolute;inset:-20%;z-index:-3;background:
+#select::before{content:"";position:absolute;inset:-20%;z-index:-6;background:
   radial-gradient(ellipse at 20% 20%,color-mix(in srgb,var(--edition-glowA) 34%,transparent),transparent 34%),
   radial-gradient(ellipse at 80% 75%,color-mix(in srgb,var(--edition-glowB) 28%,transparent),transparent 38%);
   animation:titleAurora 11s ease-in-out infinite alternate}
+
+/* ---------- the title screen (ops/adult_forks/TITLE_SCREENS.md) ----------
+   What stood here was a gradient, an orbiting dot and the word FLUTTER — the "a room and
+   a name" look. The screen is now a composition in four layers:
+
+     .kv-layer   the key visual: Lu Xingye in the doorway with the second figure
+                 silhouetted in the light behind him, rendered through the generator's
+                 keyvisual slot and graded to plum/gold/dusk. It breathes and takes a
+                 little parallax from the pointer (title.js).
+     .kv-light   the doorway light, sweeping slowly across him — the moving light.
+     .kv-scrim   plum ink at the head and the foot so the mark, the copy and the route
+                 cards are readable over a lit face.
+     .brand-mark the designed logotype (ops/title_logotypes.py: Lora Italic, gold on
+                 plum), settling in from below.
+
+   Everything is behind the existing content, which keeps its own animations. */
+.kv-layer{position:absolute;inset:-4%;z-index:-5;background-image:url("title/keyvisual.webp");
+  background-size:cover;background-position:46% 42%;
+  transform:translate3d(var(--kvx,0),var(--kvy,0),0) scale(var(--kvs,1.06));
+  transition:transform .6s cubic-bezier(.2,.8,.2,1);will-change:transform}
+@media (orientation:portrait){.kv-layer{background-image:url("title/keyvisual_portrait.webp");background-position:50% 36%}}
+.kv-light{position:absolute;inset:0;z-index:-4;pointer-events:none;mix-blend-mode:screen;opacity:.42;
+  background:radial-gradient(ellipse 42% 60% at var(--lightx,64%) 30%,rgba(255,214,140,.55),transparent 70%);
+  animation:kvLight 15s ease-in-out infinite alternate}
+.kv-scrim{position:absolute;inset:0;z-index:-3;pointer-events:none;background:
+  radial-gradient(ellipse 34% 22% at 26% 22%,rgba(26,6,24,.86),transparent 78%),
+  linear-gradient(180deg,rgba(30,10,26,.88) 0%,rgba(30,10,26,.52) 26%,rgba(24,8,22,.22) 44%,
+                  rgba(24,8,22,.62) 68%,rgba(18,6,18,.94) 100%),
+  linear-gradient(90deg,rgba(28,10,26,.58),transparent 34%,transparent 66%,rgba(28,10,26,.58))}
+.brand-mark{display:block;width:min(74vw,560px);height:auto;margin:0 auto;
+  filter:drop-shadow(0 6px 26px rgba(24,6,20,.75));
+  animation:markSettle 1.5s cubic-bezier(.16,.85,.2,1) .45s both}
+@keyframes markSettle{from{opacity:0;transform:translateY(22px) scale(.985);filter:blur(6px) drop-shadow(0 6px 26px rgba(24,6,20,.75))}
+  to{opacity:1;transform:none;filter:blur(0) drop-shadow(0 6px 26px rgba(24,6,20,.75))}}
+@keyframes kvLight{to{--lightx:38%;opacity:.26}}
+/* Both marks sit bottom-RIGHT together: the bottom-left corner already belongs to
+   ◇ MEMORIES and ▶ OPENING, and 18+ was landing on top of them. */
+.title-marks{position:absolute;right:0;bottom:12px;z-index:5;display:flex;justify-content:flex-end;
+  align-items:center;gap:12px;padding:0 clamp(14px,3vw,34px);pointer-events:none;
+  font:600 .62em/1 var(--edition-font);letter-spacing:.2em;color:rgba(243,221,226,.72)}
+.title-marks .rating{border:1px solid rgba(243,221,226,.52);border-radius:3px;padding:4px 8px;letter-spacing:.1em}
+/* The logotype image says FLUTTER and it says AFTER HOURS. The old typographic brand said
+   both again underneath it, which is the same words three times on one screen. */
+#select .brand-local,#launchGate .gate-local{display:none}
+/* The edition sheets place .brand, .sub, .brand-category and ▶ OPENING absolutely down
+   the left edge, where the route cards now cut across them — half a word of each was
+   showing from behind a card. The genre line belongs to the gate, which already says it;
+   here the mark and one line of copy are enough, and OPENING moves beside MEMORIES. */
+#select .brand-category{display:none}
+#select .brand,#select .sub{z-index:4}
+#select #opReplay{bottom:8px;top:auto;left:auto;right:clamp(14px,3vw,34px);
+  transform:translateY(-26px);z-index:6}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* The launch gate is the first frame of the game, so it carries the composition too —
+   the same key visual and the same mark, framed wider and held longer. */
+#launchGate .kv-layer{inset:-3%;z-index:0;background-position:46% 38%;transform:scale(1.04);
+  animation:gateDrift 26s ease-in-out infinite alternate}
+#launchGate .kv-light{z-index:1;opacity:.5}
+/* The mark is gold and so is the lit half of his face; the first pass put one on the
+   other and the logotype disappeared. The plum under the type is not decoration, it is
+   what makes a gold mark a mark. */
+#launchGate .kv-scrim{z-index:2;background:
+  radial-gradient(ellipse 46% 30% at 50% 44%,rgba(26,6,24,.90),rgba(26,6,24,.55) 62%,transparent 84%),
+  linear-gradient(180deg,rgba(30,10,26,.82) 0%,rgba(30,10,26,.42) 28%,rgba(24,8,22,.46) 58%,rgba(18,6,18,.96) 100%)}
+#launchGate .gate-inner{position:relative;z-index:3}
+#launchGate .gate-prompt{z-index:3}
+.gate-mark{display:block;width:min(78vw,640px);height:auto;margin:0 auto 6px;
+  filter:drop-shadow(0 8px 34px rgba(18,4,16,.85));
+  animation:markSettle 1.8s cubic-bezier(.16,.85,.2,1) .6s both}
+@keyframes gateDrift{to{transform:scale(1.10) translate3d(-1.6%,1.1%,0)}}
 .title-noise{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.16;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E")}
 .title-orbit{position:absolute;width:74vw;max-width:390px;aspect-ratio:1;top:-16%;right:-34%;border:1px solid rgba(247,197,207,.18);
@@ -300,7 +371,8 @@ html[data-edition="pt-BR"] #brandIntro{color:#fff5dd;background:
 .back{position:absolute;top:12px;left:12px;z-index:8;background:rgba(255,255,255,.55);border:0;border-radius:20px;padding:5px 12px;min-height:44px;min-width:44px;font-size:1em;cursor:pointer}
 .card .hk{font-size:.76em;margin-top:6px;color:#a8798d;font-style:italic;line-height:1.4}
 @media (prefers-reduced-motion:reduce){
-  .title-orbit,#select::before,.pulse-line path{animation:none}
+  .title-orbit,#select::before,.pulse-line path,.kv-light,.brand-mark,.gate-mark,#launchGate .kv-layer{animation:none}
+  .kv-layer{transition:none;transform:scale(1.02)}
   .pulse-line path{stroke-dashoffset:0}
   .brand,#select .sub,#cards{animation-duration:.01ms;animation-delay:0s}
 }
@@ -796,15 +868,18 @@ window.API = window.API || window.TEL_API;
   <div class="op-frame"></div>
 </div>
 <div id="launchGate" role="button" tabindex="0" aria-hidden="true" onclick="enterSelection()">
+  <div class="kv-layer"></div><div class="kv-light"></div><div class="kv-scrim"></div>
   <div class="gate-inner">
     <div class="gate-kicker" id="gateKicker">DESIRE · MEMORY · BECOMING</div>
     <svg class="pulse-line gate-pulse" viewBox="0 0 230 20" aria-hidden="true"><path d="M1 11h73l8-1 5-8 8 17 7-14 7 6h120"/></svg>
-    <div class="gate-title">FLUTTER</div>
+    <img class="gate-mark" src="title/logotype.webp" alt="Flutter: After Hours" decoding="async">
+    <div class="gate-title sr-only">FLUTTER</div>
     <div class="gate-local" id="gateLocal"></div>
     <div class="gate-category">HER · PSYCHE · RPG</div>
     <div class="gate-tagline" id="gateTagline"></div>
   </div>
   <div class="gate-prompt" id="gatePrompt">PRESS ANY KEY · CLICK TO ENTER</div>
+  <div class="title-marks"><span class="rating">18+</span><span class="studio">FLAT 404 · blazeCore Play</span></div>
 </div>
 <div id="brandIntro" aria-hidden="true" onclick="advanceBrandIntro(event)">
   <div class="bi-grain"></div>
@@ -845,9 +920,11 @@ window.API = window.API || window.TEL_API;
 </div>
 
 <div id="select">
+  <div class="kv-layer" id="kvLayer"></div><div class="kv-light"></div><div class="kv-scrim"></div>
   <div class="title-noise"></div><div class="title-orbit"></div>
   <div class="brand">
-    <h1>FLUTTER</h1><div class="brand-local" id="brandLocal">怦然</div>
+    <img class="brand-mark" src="title/logotype.webp" alt="Flutter: After Hours" decoding="async">
+    <h1 class="sr-only">FLUTTER</h1><div class="brand-local" id="brandLocal">怦然</div>
     <svg class="pulse-line" viewBox="0 0 230 20" aria-hidden="true"><path d="M1 11h73l8-1 5-8 8 17 7-14 7 6h120"/></svg>
     <div class="brand-category">HER · PSYCHE · RPG</div>
   </div>
@@ -855,6 +932,7 @@ window.API = window.API || window.TEL_API;
   <div id="cards"></div>
   <button id="opReplay" onclick="FLUTTER_OPENING.play(edition.id,{full:true})" aria-label="Replay opening" style="border:0;background:transparent;color:var(--edition-muted);font:500 .68em/1 var(--edition-font);letter-spacing:.12em;min-height:38px;cursor:pointer">▶ OPENING</button>
   <button class="archiveBtn" id="archiveBtn" onclick="openArchive()">◇ MEMORIES</button>
+  <div class="title-marks"><span class="rating">18+</span><span class="studio">FLAT 404 · blazeCore Play</span></div>
   <!-- The parent's hardcoded cross-promo to two SFW titles on apps.blazecore.dev
        is deliberately NOT carried into the fork. Two reasons, either sufficient:
        blazecore.dev is the AdSense candidate and an adult page should not be

@@ -11,6 +11,8 @@ var clock: Label
 var title: Label
 var grain: ColorRect
 var splash: Control
+var title_screen: TitleScreen
+var _title_up := false   # the title screen owns the screen; the game HUD keeps quiet
 var vn: VnChrome
 var choice_panel: Control
 var choice_prompt: Label
@@ -227,54 +229,56 @@ func _ending_ui() -> void:
 	add_child(ending_panel)
 
 func _splash() -> void:
+	# The composition is TitleScreen (scripts/title_screen.gd): the corridor dolly, the key
+	# visual, the typewriter mark, the marks and the sound. This keeps the HUD's own nodes
+	# — splash_title (hidden; the logotype is the name), the language buttons, EnterBuilding
+	# — and sets them in the title's face, so hide_splash()/splash_enter keep working for
+	# every test and for game.gd.
 	splash = Control.new()
 	splash.name = "Splash"
 	splash.set_anchors_preset(Control.PRESET_FULL_RECT)
 	splash.mouse_filter = Control.MOUSE_FILTER_STOP
-	var bg := ColorRect.new()
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	bg.color = Color(0.05, 0.035, 0.025, 1)
-	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	splash.add_child(bg)
+	title_screen = TitleScreen.new()
+	title_screen.name = "TitleScreen"
+	splash.add_child(title_screen)
 	splash_title = Label.new()
-	splash_title.set_anchors_preset(Control.PRESET_CENTER)
-	splash_title.offset_left = -440.0
-	splash_title.offset_right = 440.0
-	splash_title.offset_top = -140.0
-	splash_title.offset_bottom = 20.0
-	splash_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	splash_title.add_theme_font_size_override("font_size", 24)
-	splash_title.add_theme_color_override("font_color", Color(0.93, 0.86, 0.72, 1))
+	splash_title.visible = false
 	UiFont.apply_label(splash_title)
 	splash.add_child(splash_title)
 	lang_caption = Label.new()
-	lang_caption.set_anchors_preset(Control.PRESET_CENTER)
-	lang_caption.offset_left = -430
-	lang_caption.offset_right = 430
-	lang_caption.offset_top = 16
-	lang_caption.offset_bottom = 40
-	lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lang_caption.add_theme_font_size_override("font_size", 13)
+	lang_caption.visible = false   # the `info` label below says this; two 18+ paragraphs
+	                               # stacked on one title screen is the AI look, not design
+	lang_caption.position = Vector2(64, 318)
+	lang_caption.size = Vector2(640, 24)
 	lang_caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	lang_caption.add_theme_color_override("font_color", Color(0.7, 0.62, 0.5, 1))
-	UiFont.apply_label(lang_caption)
+	title_screen.style_label(lang_caption, 13, Color(0.7, 0.72, 0.6, 1))
 	splash.add_child(lang_caption)
 	var codes := Loc.ALLOWED if Loc.ALLOWED.size() > 1 else []
 	for i in codes.size():
 		var code := str(codes[i])
 		var col := i % 3
 		var row := int(i / 3)
-		var b := _mk_btn("Lang_%s" % code, Vector2(-270 + col * 186, 48 + row * 50), Vector2(174, 44))
+		var b := _mk_btn("Lang_%s" % code, Vector2(-576 + col * 186, 0 + row * 50), Vector2(174, 44))
 		b.text = str(Loc.NATIVE[code])
 		b.pressed.connect(func() -> void: Loc.set_code(code))
+		title_screen.style_button(b)
 		splash.add_child(b)
 		lang_buttons[code] = b
 		if code == "en":
 			lang_en = b
 		elif code == "zh":
 			lang_zh = b
-	splash_enter = _mk_btn("Enter", Vector2(-180, 156), Vector2(360, 52))
+	# The one line the form needs said: what this is, and that it is for adults.
+	var info := Label.new()
+	info.position = Vector2(64, 470)
+	info.size = Vector2(620, 60)
+	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	info.text = "18+  ·  A night inspection in first person, 40 minutes, three endings.\nEveryone in the building is an adult. Headphones recommended."
+	title_screen.style_label(info, 13, Color(0.78, 0.8, 0.7, 1))
+	splash.add_child(info)
+	splash_enter = _mk_btn("Enter", Vector2(-576, 190), Vector2(400, 54))
 	splash_enter.name = "EnterBuilding"
+	title_screen.style_button(splash_enter)
 	splash_enter.pressed.connect(func() -> void:
 		hide_splash()
 		var p := get_tree().get_first_node_in_group("player")
@@ -283,6 +287,19 @@ func _splash() -> void:
 	)
 	splash.add_child(splash_enter)
 	add_child(splash)
+	_hide_gameplay_hud(true)
+
+
+## While the title is up, the game's own HUD is not. The first shot of the new title
+## screen had the prompt, the clock, the chapter line and the "401" door label printed
+## across the key visual — the game talking over its own cover. These are hidden for the
+## splash and put back by hide_splash(); nothing is freed, so every test that reaches for
+## hud.prompt or hud.clock still finds the node.
+func _hide_gameplay_hud(hidden: bool) -> void:
+	_title_up = hidden
+	for n in [prompt, note, objective, clock, title, chapter, evidence_label]:
+		if n:
+			n.visible = not hidden
 
 func _on_splash_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -292,9 +309,12 @@ func _on_splash_input(event: InputEvent) -> void:
 			p.capture_mouse()
 
 func hide_splash() -> void:
+	_hide_gameplay_hud(false)
 	if splash:
 		splash.visible = false
 		splash.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if title_screen:
+			title_screen.leave()
 	if not is_blocking():
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -321,7 +341,9 @@ func add_evidence(id: String) -> void:
 
 func show_title(t: String) -> void:
 	title.text = t
-	title.visible = true
+	# game.gd shows the place card as the level starts, which is while the title screen is
+	# still up — the card was printing over the key visual. It waits its turn.
+	title.visible = not _title_up
 
 func hide_title() -> void:
 	if title:

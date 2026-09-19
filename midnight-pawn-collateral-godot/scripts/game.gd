@@ -28,6 +28,8 @@ const GROUNDS := {
 	"market": preload("res://assets/plates/bg_market.png"),
 }
 const PixelDisplayFont = preload("res://assets/fonts/midnight_pixel_16.fnt")
+const TitleScreenScript = preload("res://scripts/title_screen.gd")
+const TitleAudioScript = preload("res://scripts/title_audio.gd")
 
 const BG := Color("#100d18")
 const PANEL := Color("#201928")
@@ -77,6 +79,8 @@ var ledger_from_beat := false
 var ground: TextureRect
 var splash: ColorRect
 var splash_open := false
+var title_screen: TitleScreen
+var title_audio: TitleAudio
 
 
 func _ready() -> void:
@@ -539,24 +543,39 @@ func close_ledger() -> void:
 			_step()
 
 
-## The 18+ card. Not a legal document — a door, with the one sentence on it that the
+## The title screen. It is also the 18+ card — a door, with the one sentence on it the
 ## content rules require the game to say in its own voice: everyone depicted is an adult.
+##
+## What stood here was a flat ColorRect with a centred column of Labels on it, which is
+## exactly the "a room and a name" look this pass exists to kill. The composition now
+## lives in scripts/title_screen.gd (the key visual, the lamps, the dust, the brass mark);
+## this function only places the copy and the two buttons INTO that composition and lends
+## them its type family. The gate is unchanged: `dismiss_splash` is still the only way
+## through and the web build is still the only thing that shows it.
 func _show_splash() -> void:
 	splash_open = true
 	splash = ColorRect.new()
-	splash.color = Color(0.04, 0.03, 0.07, 1.0)
+	splash.color = Color(0, 0, 0, 0)
 	splash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	splash.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(splash)
+
+	title_screen = TitleScreenScript.new()
+	title_screen.name = "TitleScreen"
+	splash.add_child(title_screen)
+
+	title_audio = TitleAudioScript.new()
+	title_audio.name = "TitleAudio"
+	splash.add_child(title_audio)
+
+	# The copy sits low-left under the mark, ranged left in the composition rather than
+	# stacked down the middle of the screen.
 	var box := VBoxContainer.new()
-	box.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	box.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	box.grow_vertical = Control.GROW_DIRECTION_BOTH
-	box.alignment = BoxContainer.ALIGNMENT_CENTER
-	box.add_theme_constant_override("separation", 6)
+	box.position = Vector2(24, 226)
+	box.custom_minimum_size = Vector2(500, 0)
+	box.add_theme_constant_override("separation", 3)
 	splash.add_child(box)
 	var lines := [
-		["MIDNIGHT PAWN: COLLATERAL", GOLD, 16],
 		["An adult fork of Midnight Pawn & Crypt.", CREAM, 12],
 		["18+ only. Everyone depicted is an adult and is written as one.", CREAM, 12],
 		["Sexual content, grief, and a shop that prices both.", MUTED, 12],
@@ -565,14 +584,12 @@ func _show_splash() -> void:
 	for spec in lines:
 		var l := Label.new()
 		l.text = str(spec[0])
-		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		l.add_theme_color_override("font_color", spec[1])
-		l.add_theme_font_size_override("font_size", int(spec[2]))
-		if int(spec[2]) == 16:
-			l.add_theme_font_override("font", PixelDisplayFont)
+		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		title_screen.style_label(l, int(spec[2]), spec[1])
 		box.add_child(l)
+
 	var row := HBoxContainer.new()
-	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	row.alignment = BoxContainer.ALIGNMENT_BEGIN
 	row.add_theme_constant_override("separation", 8)
 	box.add_child(row)
 	var enter := Button.new()
@@ -585,14 +602,42 @@ func _show_splash() -> void:
 	leave.custom_minimum_size = Vector2(60, 26)
 	leave.pressed.connect(func() -> void: JavaScriptBridge.eval("location.href='https://free.blazecore.dev/'"))
 	row.add_child(leave)
+	title_screen.style_button(enter)
+	title_screen.style_button(leave)
+
+	# The rating and the studio line, small and fixed, bottom corners.
+	var rating := Label.new()
+	rating.text = "18+"
+	rating.position = Vector2(12, 332)
+	title_screen.style_label(rating, 12, GOLD)
+	splash.add_child(rating)
+	var studio := Label.new()
+	studio.text = "FLAT 404  ·  blazeCore Play"
+	studio.position = Vector2(404, 334)
+	title_screen.style_label(studio, 12, MUTED)
+	splash.add_child(studio)
+
+	title_screen.play_in()
+
+
+## The title screen's sound hook. Synthesised, not an asset — see scripts/title_audio.gd.
+func title_sound(kind: String) -> void:
+	if title_audio == null:
+		return
+	if kind == "sting":
+		title_audio.sting()
+	else:
+		title_audio.ui(kind)
 
 
 func dismiss_splash() -> void:
 	if not splash_open:
 		return
 	splash_open = false
-	splash.queue_free()
+	splash.queue_free()   # takes the title screen and its generator with it
 	splash = null
+	title_screen = null
+	title_audio = null
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -27,6 +27,7 @@ var overlay: PanelContainer
 var overlay_title: Label
 var overlay_body: Label
 var title_panel: TextureRect
+var title_screen: TitleScreen
 var title_start: Button
 var title_eyebrow: Label
 var title_name: Label
@@ -306,42 +307,33 @@ func _build_overlay() -> void:
 	root_ui.add_child(overlay)
 
 func _build_title() -> void:
+	# The composition lives in TitleScreen (scripts/title_screen.gd); this function keeps
+	# the HUD's own nodes — the localised lines, the start button, the language buttons —
+	# and places them in it. title_panel stays the switch the rest of the HUD and the
+	# tests flip; it no longer carries a picture of its own.
 	title_panel = TextureRect.new()
-	title_panel.texture = load("res://assets/pixel/title_backdrop.png")
-	title_panel.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	title_panel.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	title_panel.stretch_mode = TextureRect.STRETCH_SCALE
-	title_panel.modulate = Color("#d5e5ff")
+	title_panel.name = "TitlePanel"
 	title_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	title_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	title_panel.z_index = 30
 	root_ui.add_child(title_panel)
-	var veil := ColorRect.new()
-	veil.position = Vector2(0, 0)
-	veil.size = Vector2(640, 360)
-	veil.color = Color("#02050a77")
-	veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	title_panel.add_child(veil)
+	title_screen = TitleScreen.new()
+	title_screen.name = "TitleScreen"
+	title_panel.add_child(title_screen)
 	title_eyebrow = Label.new()
-	title_eyebrow.position = Vector2(0, 48)
-	title_eyebrow.size = Vector2(640, 22)
-	title_eyebrow.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_format_label(title_eyebrow, 9, Color("#667b9a"))
+	title_eyebrow.position = Vector2(322, 136)
+	title_eyebrow.size = Vector2(300, 14)
+	title_eyebrow.clip_text = false
 	title_panel.add_child(title_eyebrow)
 	title_name = Label.new()
-	title_name.position = Vector2(0, 68)
-	title_name.size = Vector2(640, 90)
-	title_name.clip_text = false
-	title_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_format_label(title_name, 31, Color("#ff4054"))
+	title_name.visible = false   # the logotype image is the name now
 	title_panel.add_child(title_name)
 	title_info = Label.new()
-	title_info.position = Vector2(70, 160)
-	title_info.size = Vector2(500, 48)
+	title_info.position = Vector2(322, 154)
+	title_info.size = Vector2(300, 40)
 	title_info.clip_text = false
 	title_info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	title_info.max_lines_visible = 3
-	title_info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_format_label(title_info, 8, Color("#929db1"))
 	title_panel.add_child(title_info)
 	title_lang_caption = Label.new()
 	title_lang_caption.position = Vector2(0, 204)
@@ -372,12 +364,24 @@ func _build_title() -> void:
 	Loc.set_code("en")
 	title_start = Button.new()
 	title_start.name = "TitleStart"
-	title_start.position = Vector2(150, 286)
-	title_start.size = Vector2(340, 52)
-	_format_button(title_start, 12)
+	title_start.position = Vector2(322, 214)
+	title_start.size = Vector2(250, 46)
 	title_start.pressed.connect(_emit_start)
 	title_panel.add_child(title_start)
 	title_panel.gui_input.connect(_on_title_gui)
+	title_panel.visibility_changed.connect(func() -> void:
+		if title_panel.visible and title_screen:
+			title_screen.play_in())
+	_style_title_text()
+
+func _style_title_text() -> void:
+	# Re-applied after apply_locale(), which sets the pixel BMFont on every HUD node; the
+	# title screen is the one place set in the logotype's own face.
+	if title_screen == null:
+		return
+	title_screen.style_label(title_eyebrow, 7, Color("#8fb8a8"))
+	title_screen.style_label(title_info, 7, Color("#b9c9c2"))
+	title_screen.style_button(title_start)
 
 func _build_ending() -> void:
 	ending_panel = PanelContainer.new()
@@ -671,6 +675,7 @@ func apply_locale() -> void:
 			UiFont.apply_button(node)
 	for code in lang_buttons.keys():
 		UiFont.apply_button(lang_buttons[code])
+	_style_title_text()
 	if title_eyebrow:
 		title_eyebrow.text = Loc.t("title.eyebrow")
 	if title_name:
