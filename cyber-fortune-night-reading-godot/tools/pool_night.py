@@ -257,4 +257,8 @@ UI_NIGHT = {
     "night.placeholder": {"zh": "占位图 · 未完成", "en": "PLACEHOLDER ART"},
     "night.consent": {"zh": "她接了，才算数。", "en": "It only counts if she takes it."},
     "rank.strength": {"zh": "力度 {n}", "en": "strength {n}"},
+    # The parent's toasts talk about the rack and the 签筒; on this side of the table a
+    # draw is something you did to someone, so it says what happened to her instead.
+    "kept.toast": {"zh": "你把这一签读给了她", "en": "You read it to her"},
+    "burned.toast": {"zh": "你没有说出口（+{n} 功德）", "en": "You did not say it (+{n} merit)"},
 }

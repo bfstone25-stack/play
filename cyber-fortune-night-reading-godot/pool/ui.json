@@ -332,12 +332,12 @@
 "en": "Resolved. Every tap now gives +1 more."
 },
 "burned.toast": {
-"zh": "焚化，+{n} 功德",
-"en": "Burned, +{n} merit"
+"zh": "你没有说出口（+{n} 功德）",
+"en": "You did not say it (+{n} merit)"
 },
 "kept.toast": {
-"zh": "留在架上",
-"en": "Kept on the rack"
+"zh": "你把这一签读给了她",
+"en": "You read it to her"
 },
 "reader.begin": {
 "zh": "开始",

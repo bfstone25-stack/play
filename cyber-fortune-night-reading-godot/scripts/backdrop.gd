@@ -27,22 +27,28 @@ func _draw() -> void:
 	var s := size
 	match mode:
 		"east":
-			draw_rect(Rect2(Vector2.ZERO, s), Palette.INK)
-			# a warm floor and a faint lacquer band up the centre
-			draw_rect(Rect2(0, s.y * 0.62, s.x, s.y * 0.38), Color("1A1210"))
-			draw_rect(Rect2(s.x * 0.5 - 120, 0, 240, s.y), Color(Palette.LACQUER_DEEP, 0.08))
+			# The fork lifts both of the parent's rooms: the day game could sit at 0.12 and
+			# still read on a phone in a dark room, and the shelf and the legibility floor
+			# (ops/check_brightness.py --scene, 0.22) both say that is not good enough here.
+			draw_rect(Rect2(Vector2.ZERO, s), Color("2B1A16"))
+			draw_rect(Rect2(0, s.y * 0.58, s.x, s.y * 0.42), Color("3C251C"))
+			draw_rect(Rect2(s.x * 0.5 - 140, 0, 280, s.y), Color(Palette.LACQUER_DEEP, 0.22))
+			for i in range(6, 0, -1):
+				draw_circle(Vector2(s.x * 0.5, s.y * 0.62), 70.0 * i, Color(Palette.GOLD, 0.030))
 			_smoke(Vector2(s.x * 0.5 - 150, s.y * 0.6), 0.0)
 			_smoke(Vector2(s.x * 0.5 + 170, s.y * 0.58), 1.7)
 		"west", "reader":
-			draw_rect(Rect2(Vector2.ZERO, s), Palette.VIOLET_DEEP)
+			draw_rect(Rect2(Vector2.ZERO, s), Color("2A1E44"))
+			draw_rect(Rect2(0, s.y * 0.58, s.x, s.y * 0.42), Color("3A2A56"))
 			for st in _stars:
 				var a := 0.25 + 0.25 * sin(_t * 1.5 + st.z * 10.0)
 				draw_circle(Vector2(st.x * s.x, st.y * s.y), 1.2 + st.z, Color(Palette.SILVER, a))
 			var cy := s.y * (0.78 if mode == "west" else 0.62)
 			var flick := 1.0 + 0.04 * sin(_t * 9.0) + 0.02 * sin(_t * 23.0)
-			for i in range(6, 0, -1):
-				var rr := 90.0 * i * flick
-				draw_circle(Vector2(s.x * 0.5, cy), rr, Color(Palette.CANDLE, 0.035))
+			for i in range(7, 0, -1):
+				var rr := 84.0 * i * flick
+				draw_circle(Vector2(s.x * 0.5, cy), rr, Color(Palette.CANDLE, 0.055))
+			draw_circle(Vector2(s.x * 0.5, cy), 30.0 * flick, Color(Palette.CANDLE, 0.22))
 		"night":
 			# The night fork's ground: plum-black, one hot pool of light low in the frame
 			# where the table is, and the candle's flicker on it.

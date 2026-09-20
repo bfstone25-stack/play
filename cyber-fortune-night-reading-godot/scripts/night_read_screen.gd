@@ -64,6 +64,12 @@ func relayout() -> void:
 	else:
 		root.add_child(_offer_panel())
 
+	# The column is top-aligned; without this the buttons float in the middle of an empty
+	# lower half on a tall phone.
+	var tail := Control.new()
+	tail.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	root.add_child(tail)
+
 	if Night.scene_ready() and not Night.scene_seen() and Night.offer.is_empty():
 		var stay := StudioTheme.button(Tx.t("night.scene"), "Gold")
 		stay.pressed.connect(func(): get_parent().open("scene"))
