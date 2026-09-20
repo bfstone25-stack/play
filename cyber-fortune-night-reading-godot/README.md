@@ -21,8 +21,11 @@ $GODOT --headless --path . --import          # once, and after any new or replac
 $GODOT --path .                              # desktop  (NOT on the work box: ops/on_game_monitor.sh)
 bash tests/run.sh                            # 217 headless checks; fails on any engine error
 ops/cyber_fortune_night_build.sh             # pools + web/linux/windows + the ad track
-python3 tests/headless_web.py                # drives the real web build in headless Chromium -> shots/
-python3 tests/headless_web.py --ads          # the same, against the ad track
+# The browser runs on the GPU box: local browser tests are disabled on Blaze's desktop
+# (they cost four cores of the machine he works on) and the local browser has no WebGL2.
+ops/remote_playtest.sh build/godot-ads/cyber-fortune-night-reading \
+    play/cyber-fortune-night-reading-godot/tests/headless_web.py   # shots -> ops/remote_shots/
+python3 tests/headless_web.py                # only where a local browser is allowed
 python3 -m http.server -d ../../build/godot-ads/cyber-fortune-night-reading 8765
 ```
 
