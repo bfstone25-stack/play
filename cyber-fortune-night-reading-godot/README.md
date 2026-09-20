@@ -53,6 +53,18 @@ python3 -m http.server -d ../../build/godot-ads/cyber-fortune-night-reading 8765
 | `tools/install_night.py` | install a rendered plate over a placeholder (`--list` shows what is real) |
 | `ops/night_reading_art/night_gen.py` | the art: three casting refs, then four plates each plus the title |
 
+## Measured
+
+| | |
+|---|---|
+| `tests/run.sh` | **217 checks, 0 failed** — the ladder, the daily draw, the consent gate, a refusal writing nothing, the lock at 3, the scene at 9, the JSON round-trip, and that every art slot the game asks for exists |
+| `tests/headless_web.py` | drives the real web export through the table → a reading → a refusal → all nine → the gate refused → the gate completed → the three beats → clear → reload |
+| `ops/check_adsense_isolation.py` | green, run inside the build |
+| `ops/check_two_worlds.py` | 0/13 of the fork's images are the parent's bytes |
+| `ops/check_art_ceiling.py` | green on `ops/night_reading_art/night_gen.py` |
+| brightness, in-game (`--scene`, floor 0.22) | the table 0.23/0.48, her room 0.35/0.37, a reading drawn 0.31/0.35 — all read |
+| brightness, the shelf (floor 0.45/0.30) | the title screen is **0.23/0.48**, under the floor, because its key visual is still a placeholder. The home screen already uses `title_kv` as its ground the moment that slot is real |
+
 ## Honest list — what is a placeholder
 
 Every art slot in this build is a **labelled placeholder**: a hatched plum frame with
