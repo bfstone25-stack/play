@@ -54,7 +54,7 @@ var daily_screen: Overlay
 var daily_result: SimpleScreens.DailyResult
 var prestige: Overlay
 var notice: SimpleScreens.Notice
-var intro: SimpleScreens.Intro
+var intro: TitleScreen
 
 
 func _ready() -> void:
@@ -452,7 +452,7 @@ func _build_overlays() -> void:
 	notice.understood.connect(func() -> void:
 		await get_tree().create_timer(0.9).timeout
 		Gate.board_offer_break())
-	intro = SimpleScreens.Intro.new()
+	intro = TitleScreen.new()
 	intro.start.connect(func() -> void:
 		Sfx.set_muted(not bool(Ticker.cabinet.get("sound", true)))
 		Sfx.unlock()

@@ -1,22 +1,12 @@
 class_name SimpleScreens
-## The small dialogs: intro, daily floor (start + result), prestige, eviction notice.
+## The small dialogs: daily floor (start + result), prestige, eviction notice.
 ## Each is an Overlay subclass built here so scenes/*.tscn can carry one root each.
-
-
-class Intro extends Overlay:
-	signal start
-	func build() -> void:
-		card_width = 720
-		card.custom_minimum_size = Vector2(720, 0)
-		var t := tag("18+ · ADULTS ONLY")
-		t.add_theme_color_override("font_color", Palette.HEAT)
-		title("Overtime Landlord: Idle")
-		para("A 5×4 floor that keeps working after you close the tab. Every ten minutes each floor you built pays a shift — the board you place sets the rent per hour. Rent is due per floor, per day; a floor that cannot cover it is evicted and its people walk back to the roster. Staff are the gacha. Objects are bought with rent. Two ladders of plates: the skill ladder is a board you built and never comes from time; the affection ladder is time, and says so. Everyone in this building is an adult.", 15)
-		var b := button("OPEN THE BUILDING", "Primary", func() -> void:
-			start.emit()
-			close())
-		b.size_flags_horizontal = Control.SIZE_SHRINK_END
-		body.add_child(b)
+##
+## `Intro` used to live here and is gone: a card with a Tag, a Title, a 90-word
+## paragraph and one themed Button was the game's title screen, and it broke four
+## lines of ops/adult_forks/TITLE_SCREENS.md at once. It is replaced by
+## scripts/title_screen.gd, which keeps the same Overlay contract — open/close/
+## is_open and a `start` signal — so building.gd and the web dev bridge did not move.
 
 
 class Daily extends Overlay:
