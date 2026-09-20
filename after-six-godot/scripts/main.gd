@@ -537,7 +537,8 @@ func _result(won: bool, head: String, sub: String, r: Dictionary, retry: Callabl
 		var h := HBoxContainer.new()
 		h.alignment = BoxContainer.ALIGNMENT_CENTER
 		h.add_child(IconBox.new(func(ci): Sprites.equip_icon(ci, rid, Vector2(24, 24), 40), Vector2(48, 48)))
-		var l := _label(t("got", {"item": t("eq_" + rid)}), "Value", 15)
+		var l := _label(t("got", {"item": t("eq_" + rid)}), "Value", 15, Color(0, 0, 0, 0), true)
+		l.custom_minimum_size.x = 250   # the night's lines run long; wrap inside the 340 panel
 		l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		h.add_child(l)
 		v.add_child(h)
@@ -548,7 +549,8 @@ func _result(won: bool, head: String, sub: String, r: Dictionary, retry: Callabl
 				var h2 := HBoxContainer.new()
 				h2.alignment = BoxContainer.ALIGNMENT_CENTER
 				h2.add_child(IconBox.new(func(ci): if not Sprites.actor(ci, pid, Vector2(24, 46), 44.0): Sprites.colleague(ci, Vector2(24, 30), arena.clock, pid, 1.0), Vector2(48, 48)))
-				var l2 := _label(t("joined", {"who": t("pt_" + pid)}), "Value", 15, Palette.SUCCESS)
+				var l2 := _label(t("joined", {"who": t("pt_" + pid)}), "Value", 15, Palette.SUCCESS, true)
+				l2.custom_minimum_size.x = 250
 				l2.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 				h2.add_child(l2)
 				v.add_child(h2)
@@ -764,11 +766,11 @@ func _draw_review() -> void:
 	# the rule: the row, with what is already held lit
 	var want: Array = []
 	for s in pr["path"]:
-		want.append(("✓ " if pr["have"][s] else "") + t("sig_" + str(s)))
+		want.append(("• " if pr["have"][s] else "") + t("sig_" + str(s)))
 	head.add_child(_label(t("rv_rule", {"path": " + ".join(want)}), "Tag", 11, Palette.GOLD))
 	var help: Array = []
 	for s in pr["help"]:
-		help.append(("✓ " if pr["help"][s] else "") + t("sig_" + str(s)))
+		help.append(("• " if pr["help"][s] else "") + t("sig_" + str(s)))
 	if help.size():
 		head.add_child(_label(t("rv_help", {"help": " + ".join(help)}), "Tag", 10, Palette.TUBE))
 	if pr["harms"].size():
@@ -1352,6 +1354,15 @@ func _bridge(cmd: Dictionary) -> Dictionary:
 				_return_done()
 		"clear":
 			show_clear()
+		"snap":
+			# the engine's own frame, as PNG base64 on the page: Playwright's compositor
+			# screenshot times out on the Light2D map under swiftshader, and a driver that
+			# cannot capture the map cannot prove the map. The last drawn frame is enough.
+			var img := get_viewport().get_texture().get_image()
+			var b64 := Marshalls.raw_to_base64(img.save_png_to_buffer())
+			if OS.has_feature("web"):
+				JavaScriptBridge.eval("window.__bm_snap=%s" % JSON.stringify(b64))
+			out["bytes"] = b64.length()
 		"buy":
 			_buy(str(cmd.get("what", "coffee")))
 		"auto":
