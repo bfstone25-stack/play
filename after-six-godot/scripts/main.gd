@@ -237,26 +237,32 @@ func _has_progress() -> bool:
 
 
 # ---------- title ------------------------------------------------------------------------------
+## The title is the one screen in this game that is not built out of _panel/_label/_button.
+## It is a composition — key visual, engraved brass door plate, the open case file the menu
+## is typed on, and motion — and it lives in its own node (scripts/as_title.gd), which
+## owns its layout. This function only supplies the strings and the actions.
+##
+## What used to be here was the panel stack: a plate, a 0.35 dim, two Glass panels and
+## three stacked buttons. That is the screen Blaze rejected, and rebuilding it out of the
+## same helpers would have produced it again. See as_title.gd's header, and
+## ops/adult_forks/TITLE_SCREENS.md.
+##
+## The rating and the studio mark are not passed in: they are struck into the file card as
+## a rubber stamp by ops/aftersix_title.py, which is where an 18+ badge belongs on a screen
+## that is trying not to look like a settings page.
 func show_title() -> void:
 	_clear_overlay()
 	_stop_run()
 	map.visible = false
-	_plate("title")
-	_dim(0.35)
-	var top := _panel(150, 340, "Glass")
-	top.add_child(_label(t("brand"), "Title", 44, Palette.ACCENT))
-	var sub := _label(t("sub"), "Tag", 12, Palette.GOLD, true)
-	sub.custom_minimum_size.x = 300
-	top.add_child(sub)
-	top.add_child(_label(t("rating"), "Tag", 10, Palette.MUTED))
-	var v := _panel(330, 260, "Glass")
-	v.add_child(_button(t("cont") if _has_progress() else t("start"), "Primary", show_map))
-	v.add_child(_button(t("locker"), "Amber", show_desk))
-	v.add_child(_button(t("lang"), "Ghost", func(): Game.set_lang("en" if Game.lang == "zh" else "zh"); show_title(), 120))
-	var hint := _label(t("drag"), "Tag", 12, Palette.MUTED)
-	hint.position = Vector2(0, 590)
-	hint.size.x = BMCore.W
-	overlay.add_child(hint)
+	var title := AsTitle.new()
+	overlay.add_child(title)
+	title.compose(
+		t("sub"),
+		[{"text": t("cont") if _has_progress() else t("start"), "fn": show_map},
+		 {"text": t("locker"), "fn": show_desk}],
+		t("lang"),
+		func(): Game.set_lang("en" if Game.lang == "zh" else "zh"); show_title(),
+		t("drag"))
 	_show("title")
 
 

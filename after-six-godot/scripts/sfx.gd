@@ -157,3 +157,13 @@ func tap() -> void:
 	if _cue("tap"):
 		return
 	_play(_tone(1200.0, "sine", 0.03, 0.2), 0.0, -10.0)
+
+
+## The title menu's hover: a single short, quiet tick, well under the tap it precedes.
+## TITLE_SCREENS.md item 4 asks for hover AND press states with sound, and a hover that
+## reuses tap() makes moving the mouse across the menu sound like pressing everything.
+## Rate-limited at 0.08 s so dragging across two rows does not machine-gun.
+func hover() -> void:
+	if _cue("hover", 0.08):
+		return
+	_play(_tone(1560.0, "sine", 0.022, 0.10), 0.0, -18.0)

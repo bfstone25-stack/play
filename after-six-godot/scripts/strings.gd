@@ -12,9 +12,9 @@
 class_name BMStrings
 
 const EN := {
-	"brand": "AFTER SIX", "sub": "BY DAY YOU SURVIVE THEM. AFTER SIX YOU GET EVEN.",
+	"brand": "AFTER SIX", "sub": "AFTER SIX, THEY ANSWER TO YOU.",
 	"rating": "18+ · FLAT 404",
-	"start": "STAY LATE", "cont": "BACK INTO THE BUILDING", "locker": "THE DRAWER", "how": "HOW IT WORKS",
+	"start": "TAKE THE CHAIR", "cont": "BACK INTO THE BUILDING", "locker": "WHAT YOU KEPT ON THEM", "how": "HOW IT WORKS",
 	"week": "NIGHT {n}", "day_mon": "THE SECURITY ROUND", "day_tue": "HER DESK", "day_wed": "THE LAST TRAIN",
 	"day_thu": "THE CONFRONTATION", "day_fri": "THE SERVER ROOM, 2AM",
 	"boss_standup": "THE NIGHT GUARD", "boss_inbox": "HER DESK", "boss_allhands": "THE LAST TRAIN",
@@ -129,9 +129,9 @@ const EN := {
 }
 
 const ZH := {
-	"brand": "六点之后", "sub": "白天你熬过他们。六点之后，你讨回来。",
+	"brand": "六点之后", "sub": "六点之后，他们听你的。",
 	"rating": "18+ · FLAT 404",
-	"start": "留下来", "cont": "回到楼里", "locker": "抽屉", "how": "怎么玩",
+	"start": "坐上那把椅子", "cont": "回到楼里", "locker": "你攥着的东西", "how": "怎么玩",
 	"week": "第 {n} 夜", "day_mon": "保安巡楼", "day_tue": "她的桌子", "day_wed": "末班车",
 	"day_thu": "对质", "day_fri": "凌晨两点的机房",
 	"boss_standup": "夜班保安", "boss_inbox": "她的桌子", "boss_allhands": "末班车",
