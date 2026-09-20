@@ -5,6 +5,7 @@
 extends Control
 
 const SCREENS := {
+	"title": "res://scenes/title.tscn",
 	"home": "res://scenes/home.tscn",
 	"duel": "res://scenes/duel.tscn",
 	"gacha": "res://scenes/gacha.tscn",
@@ -50,7 +51,11 @@ func _ready() -> void:
 	Api.request_failed.connect(func(_p, e): toast("Backend unreachable: " + e))
 	_install_bridge()
 	await refresh()
-	go("duel" if state.get("duel") else "home")
+	# The title screen goes in FRONT of the game, and it does not change what the game
+	# does when it starts: the resume-aware expression that used to live here is now
+	# scripts/title.gd's _start(), unchanged, so a player with a duel in flight still
+	# lands back in that duel when they press the first row.
+	go("title")
 
 
 # --- the room ---------------------------------------------------------------------------------
@@ -222,8 +227,13 @@ func go(name: String, args: Dictionary = {}) -> void:
 	screen.modulate.a = 0.0
 	var tw2 := create_tween()
 	tw2.tween_property(screen, "modulate:a", 1.0, 0.18)
-	_bar.visible = name != "duel"
-	_host.offset_top = 0 if name == "duel" else 52
+	# The top bar is the loop's furniture — the wordmark, the nav, the wallet. Drawing it
+	# over a title screen's key visual is the "a panel stacked on a picture" read that
+	# ops/adult_forks/TITLE_SCREENS.md exists to remove, so the title gets the same
+	# full-bleed treatment a duel does.
+	var chrome_off := name == "duel" or name == "title"
+	_bar.visible = not chrome_off
+	_host.offset_top = 0 if chrome_off else 52
 
 
 func scenario(id: String) -> Dictionary:
