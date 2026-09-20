@@ -23,6 +23,13 @@ Sfx="*res://scripts/sfx.gd"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+# Desktop window size. The canvas is 720x1280 because this line is phone-shaped, but
+# Blaze's built-in panel is 1080 tall: an un-overridden window is clamped by the window
+# manager and the layout lands shifted, with the wordmark and the menu cut off at the left
+# edge. That is not a capture artifact -- it is what he would see at 5am. 594x1056 is the
+# same 9:16 with room for a titlebar. The web and mobile exports are untouched.
+window/size/window_width_override=594
+window/size/window_height_override=1056
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
