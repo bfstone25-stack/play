@@ -120,7 +120,23 @@ func board_offer_more(kind: String = "adult") -> void:
 		return
 	if kind != "casual":
 		kind = "adult"
-	JavaScriptBridge.eval("window.BOARD && BOARD.offerMore && BOARD.offerMore(%s)" % JSON.stringify(kind))
+	# Guard first, then call plainly — the same two steps as board_offer_break() above.
+	#
+	# This used to be one expression: `window.BOARD && BOARD.offerMore && BOARD.offerMore(k)`.
+	# It drew nothing, in every title, at the end of every run. Isolated 2026-09-20 with
+	# ?warp=board on The Other Side's web build: `second: 1` (offerBreak draws) and
+	# `more: 0, tiles: 0` (offerMore does not), while calling BOARD.offerMore("adult")
+	# straight from the page on the same build draws the board in under five seconds. The
+	# bridge works and board.js works; only the compound form does not — offerMore returns
+	# a Promise, and a short-circuit chain whose value is a Promise is not something to
+	# hand JavaScriptBridge.eval when the plain call is right there.
+	#
+	# This is the failure the ?warp=board hook exists to catch, and it is worth saying that
+	# it only showed up because someone ran the hook rather than reading the source: the
+	# call was wired, the script shipped, the host allowed it, and the board never appeared.
+	if not JavaScriptBridge.eval("(window.BOARD && window.BOARD.offerMore) ? 1 : 0"):
+		return
+	JavaScriptBridge.eval("BOARD.offerMore(%s)" % JSON.stringify(kind))
 
 
 ## Is a board panel on screen right now? board.js draws exactly one .bd-wrap and removes
