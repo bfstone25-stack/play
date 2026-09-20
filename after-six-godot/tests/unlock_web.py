@@ -46,19 +46,34 @@ PROJ = HERE.parent
 ROOT = PROJ.parent.parent
 WEB = ROOT / "build" / "godot-ads" / "after-six"
 SLOT = "cg_return_x"
+
+# Driven remotely when given a URL, the same way tests/night_web.py is — Blaze's desktop no
+# longer allows local browser tests. The stub gateway below still runs in *this* process,
+# which is the remote box when the runner is driving, so the page reaches it on 127.0.0.1
+# exactly as it would reach the real one. Send the plate over first, next to the driver:
+#
+#     scp play/after-six-godot/assets/cg_open/cg_return_x.webp \
+#         bfs@100.121.195.19:~/playtest/cg_return_x.webp
+#     PORT=8795 ops/remote_playtest.sh build/godot-ads/after-six \
+#         play/after-six-godot/tests/unlock_web.py
+#
+# It has to be carried over rather than read out of the build, because the open plate is
+# excluded from every web pack — which is the thing being tested.
+REMOTE_URL = next((a for a in sys.argv[1:] if a.startswith("http")), "")
+
 # The bytes the stub gateway serves: the staged gated asset if it exists, else the open
 # plate out of the project. Never the _locked plate — serving the censored art as the
 # delivered art would make this test pass while showing the player nothing new.
 STAGED = ROOT / "ops/gated_assets/after-six" / (SLOT + ".webp")
 OPEN = PROJ / "assets/cg_open" / (SLOT + ".webp")
+CARRIED = Path("..") / (SLOT + ".webp")          # beside driver.py on the remote box
 
-if not (WEB / "index.html").exists():
+if not REMOTE_URL and not (WEB / "index.html").exists():
     sys.exit("no web build at %s — run ./build.sh" % WEB)
-SRC = STAGED if STAGED.exists() else OPEN
-if not SRC.exists():
-    sys.exit("no open plate to deliver (looked for %s and %s).\n"
-             "The tier-3 render has not landed yet; this test needs real bytes and will\n"
-             "not invent them." % (STAGED, OPEN))
+SRC = next((p for p in (CARRIED, STAGED, OPEN) if p.exists()), None)
+if SRC is None:
+    sys.exit("no open plate to deliver (looked for %s, %s and %s).\n"
+             "This test needs real bytes and will not invent them." % (CARRIED, STAGED, OPEN))
 PLATE = SRC.read_bytes()
 fails = []
 
@@ -147,13 +162,20 @@ class Gateway(http.server.BaseHTTPRequestHandler):
 
 
 socketserver.TCPServer.allow_reuse_address = True
-srv = socketserver.TCPServer(("127.0.0.1", 0), Quiet)
-PORT = srv.server_address[1]
-threading.Thread(target=srv.serve_forever, daemon=True).start()
+srv = None
+if REMOTE_URL:
+    # The runner already serves the build, with the cross-origin headers Godot needs.
+    URL = REMOTE_URL if REMOTE_URL.endswith((".html", "/")) else REMOTE_URL + "/"
+else:
+    srv = socketserver.TCPServer(("127.0.0.1", 0), Quiet)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    URL = "http://127.0.0.1:%d/index.html" % srv.server_address[1]
+# The stub gateway is always ours, and always in this process — on the remote box that is
+# still 127.0.0.1 from the page's point of view, which is what as_unlock.api_base() will
+# accept an override for.
 gw = socketserver.TCPServer(("127.0.0.1", 0), Gateway)
 GW_PORT = gw.server_address[1]
 threading.Thread(target=gw.serve_forever, daemon=True).start()
-URL = "http://127.0.0.1:%d/index.html" % PORT
 GW = "http://127.0.0.1:%d" % GW_PORT
 print("== serving build on %s, stub gateway on %s (%d bytes of plate)" % (URL, GW, len(PLATE)))
 
@@ -225,9 +247,13 @@ with sync_playwright() as p:
     print("== reach the return, censored")
     cmd("open", screen="offer")
     st = cmd("offer", c="refuse")
+    # Refusing lands on offer_done, which waits on its GO button — it is not on a timer, and
+    # a harness that only sleeps here sits on the wrong screen while the CG state changes
+    # underneath it. That is exactly what the pixel check at the end caught the first time.
     t0 = time.time()
-    while time.time() - t0 < 20 and cmd("state").get("screen") != "return":
-        time.sleep(0.3)
+    while time.time() - t0 < 30 and cmd("state").get("screen") != "return":
+        cmd("go")
+        time.sleep(0.4)
     st = cmd("state")
     check(st.get("screen") == "return", "refusing the offer reaches the return (screen=%s)" % st.get("screen"))
     check(st["case"].get("case_won") and st["case"].get("offer") == "refuse",
@@ -254,13 +280,15 @@ with sync_playwright() as p:
     check(len(after) > 20000, "captured the revealed frame (%d bytes)" % len(after))
     # The check that cannot be satisfied by a boolean.
     check(after != before, "the frame actually changed: the delivered image is on screen")
-    (PROJ / "shots").mkdir(exist_ok=True)
-    (PROJ / "shots" / "unlock-delivered.png").write_bytes(after)
+    # "shots" relative when driven remotely: the runner rsyncs that directory back.
+    out_dir = Path("shots") if REMOTE_URL else PROJ / "shots"
+    out_dir.mkdir(exist_ok=True, parents=True)
+    (out_dir / "unlock-delivered.png").write_bytes(after)
 
     check(not errors, "no page errors (%s)" % (errors[:2] or "none"))
     browser.close()
 
-srv.shutdown()
+srv and srv.shutdown()
 gw.shutdown()
 print("\n%s" % ("UNLOCK_OK" if not fails else "UNLOCK_FAILED: %d" % len(fails)))
 sys.exit(1 if fails else 0)

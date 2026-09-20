@@ -66,13 +66,20 @@ socketserver.TCPServer.allow_reuse_address=True; socketserver.TCPServer(('127.0.
    `FALLBACK` map in `map_screen.gd`, so a room whose render has not landed degrades to
    the day plate instead of disappearing. `night_title` and `night_tue` in the day
    generator are now unused by this game and can go when the title pass lands.
-2. **`cg_return_x` — the render pipeline exists; the plate is still a placeholder.**
-   The blocker named here is gone: the fork has its own generator
-   (`ops/after_six_art/after_six_gen.py`, queued as `after_six`) with Mira's cast bible, a
-   tier-3 slot whose negative bans the genitals rather than the whole of `nude`, and a
-   tier-2 `cg_return_x_locked` to replace the labelled PIL card. Until a candidate has been
-   picked *at native resolution* into `ref/mira.png` and `assets/cg_open/`, the censored
-   placeholder is what draws — which is the honest state, not a silent one.
+2. **`cg_return_x` is rendered. Its censored partner is not.**
+   The fork has its own generator (`ops/after_six_art/after_six_gen.py`, queued as
+   `after_six`) with Mira's cast bible, a refs step, and a tier-3 slot whose negative bans
+   the genitals rather than the whole of `nude`. `ref/mira.png` is candidate 02 of six,
+   picked at native resolution; the open plate is installed at
+   `assets/cg_open/cg_return_x.webp` (0.61 brightness) and excluded from every web pack.
+
+   **Still placeholder:** `assets/art/cg_return_x_locked.webp` is the labelled PIL card.
+   The tier-2 render of it ripples across the blouse and the hands — 8 of 8 candidates over
+   two different seed bases, while the slot beside it that shares its negative, reference,
+   size and scene renders clean. The seed is ruled out; the hypothesis and the next thing to
+   try are recorded at the slot. A rippled frame is not shipped as the censored plate,
+   because the censored plate is the advertisement for the paid one. This is why the three
+   `return`/`gate` frames in `shots/` are the only ones below the legibility floor.
 3. ~~Web delivery of the open plate is not wired~~ **Wired 2026-09-19.**
    `scripts/as_unlock.gd` is the port of Floor 13 X's `unlock.gd`: a ticket is taken when
    the gate opens, the bytes are fetched when it clears, and they land in `user://unlocked/`.
@@ -82,8 +89,15 @@ socketserver.TCPServer.allow_reuse_address=True; socketserver.TCPServer(('127.0.
    answer survives unchanged: a gate that clears with nothing staged still draws censored.
    `tests/unlock_web.py` proves the positive in a real browser against a local stub gateway
    (nothing is deployed), and it fails unless the *frame pixels actually change* — a
-   flipped boolean is not a reveal. It needs real open bytes and refuses to invent them, so
-   it is skipped until item 2's render lands.
+   flipped boolean is not a reveal. **Green on 2026-09-20**, driven on the GPU box:
+   ticket → 425 retry → fetch → decode → `user://unlocked/cg_return_x.webp` → drawn, with
+   `shots/unlock-delivered.png` as the evidence. That pixel check earned itself on the
+   first run: every boolean was already correct while the harness sat on `offer_done` and
+   nothing had been redrawn.
+
+   Not staged on the live gateway: `ops/export_gated.py` has no `after-six` entry, so a
+   real unlock in production will still answer `unavailable` until the plate is staged
+   there. The client half is done; the serving half is a deploy and this pass did not do it.
 4. **Sprites**: the actor sprites are the day game's rendered office workers; the reflex
    arena's foes and the triage cards' actors fall back to the day game's vector rigs where
    no render exists (the same code-drawn fallback the day game has; the triage cards' icon
