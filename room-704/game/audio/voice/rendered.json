@@ -691,6 +691,286 @@
   "seed": "f_low_dry",
   "seed_sha": "eeee97e4cfebdfd4"
  },
+ "narrator_704/act1_end_0b31b424.ogg": {
+  "at": "2026-09-19T17:09:08",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/act2_1b5aebf7.ogg": {
+  "at": "2026-09-19T17:11:46",
+  "instruct": "Say this even and unhurried, no performance, small and quiet.",
+  "instruct_sha": "7332bd2e4d74657a",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/act2_30d12ae8.ogg": {
+  "at": "2026-09-19T17:09:56",
+  "instruct": "Say this even and unhurried, no performance, resolute.",
+  "instruct_sha": "c54d5c505726f035",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/act2_3615ad1e.ogg": {
+  "at": "2026-09-19T17:10:10",
+  "instruct": "Say this even and unhurried, no performance, resolute.",
+  "instruct_sha": "c54d5c505726f035",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/act2_8adbfac8.ogg": {
+  "at": "2026-09-19T17:10:36",
+  "instruct": "Say this even and unhurried, no performance, resolute.",
+  "instruct_sha": "c54d5c505726f035",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/act2_e27cd5d9.ogg": {
+  "at": "2026-09-19T17:12:11",
+  "instruct": "Say this even and unhurried, no performance, resolute.",
+  "instruct_sha": "c54d5c505726f035",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/act2_e539f638.ogg": {
+  "at": "2026-09-19T17:11:55",
+  "instruct": "Say this even and unhurried, no performance, sharp.",
+  "instruct_sha": "c321a5d6dafb01fa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/act2_e95efd8d.ogg": {
+  "at": "2026-09-19T17:11:13",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/ask_why_1bc60693.ogg": {
+  "at": "2026-09-19T17:01:36",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/ask_why_b64b0b9a.ogg": {
+  "at": "2026-09-19T17:01:04",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/by_the_book_76f9b880.ogg": {
+  "at": "2026-09-19T17:02:55",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/by_the_book_ddad076e.ogg": {
+  "at": "2026-09-19T17:02:25",
+  "instruct": "Say this even and unhurried, no performance, sharp.",
+  "instruct_sha": "c321a5d6dafb01fa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/gives_key_13624b3a.ogg": {
+  "at": "2026-09-19T17:05:13",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/gives_key_570a86d0.ogg": {
+  "at": "2026-09-19T17:03:33",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/gives_key_61f6631b.ogg": {
+  "at": "2026-09-19T17:03:55",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/gives_key_a6a6bc80.ogg": {
+  "at": "2026-09-19T17:04:51",
+  "instruct": "Say this even and unhurried, no performance, resolute.",
+  "instruct_sha": "c54d5c505726f035",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/gives_key_d770c18c.ogg": {
+  "at": "2026-09-19T17:04:08",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/lie_to_him_2b730407.ogg": {
+  "at": "2026-09-19T17:05:28",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/lie_to_him_36359119.ogg": {
+  "at": "2026-09-19T17:06:03",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/lie_to_him_38bad291.ogg": {
+  "at": "2026-09-19T17:06:27",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/lie_to_him_a26a84d4.ogg": {
+  "at": "2026-09-19T17:06:17",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/show_register_02c7c801.ogg": {
+  "at": "2026-09-19T17:07:03",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/show_register_2209d9d8.ogg": {
+  "at": "2026-09-19T17:07:55",
+  "instruct": "Say this even and unhurried, no performance, resolute.",
+  "instruct_sha": "c54d5c505726f035",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/show_register_9d0f83cf.ogg": {
+  "at": "2026-09-19T17:06:46",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/show_register_e32fbe01.ogg": {
+  "at": "2026-09-19T17:07:30",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_124ceb3a.ogg": {
+  "at": "2026-09-19T17:00:39",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_36694ba9.ogg": {
+  "at": "2026-09-19T16:57:05",
+  "instruct": "Say this even and unhurried, no performance, resolute.",
+  "instruct_sha": "c54d5c505726f035",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_36f8d542.ogg": {
+  "at": "2026-09-19T16:59:36",
+  "instruct": "Say this even and unhurried, no performance, wry.",
+  "instruct_sha": "f84066c3809c60a7",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_722c789e.ogg": {
+  "at": "2026-09-19T16:56:29",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_93d35296.ogg": {
+  "at": "2026-09-19T16:58:01",
+  "instruct": "Say this even and unhurried, no performance, resolute.",
+  "instruct_sha": "c54d5c505726f035",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_a299de3f.ogg": {
+  "at": "2026-09-19T16:58:56",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_c697871d.ogg": {
+  "at": "2026-09-19T16:57:25",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_d0736171.ogg": {
+  "at": "2026-09-19T17:00:12",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_de38a20d.ogg": {
+  "at": "2026-09-19T16:57:34",
+  "instruct": "Say this even and unhurried, no performance, wry.",
+  "instruct_sha": "f84066c3809c60a7",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_e0f47faa.ogg": {
+  "at": "2026-09-19T16:58:30",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/start_f48da2e1.ogg": {
+  "at": "2026-09-19T16:55:51",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/stonewall_d3f83a36.ogg": {
+  "at": "2026-09-19T17:08:07",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/stonewall_e058ac12.ogg": {
+  "at": "2026-09-19T17:08:40",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/take_cash_17b4330d.ogg": {
+  "at": "2026-09-19T17:02:00",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_704/take_cash_9aefc7d5.ogg": {
+  "at": "2026-09-19T17:02:12",
+  "instruct": "Say this even and unhurried, no performance, plainly.",
+  "instruct_sha": "52d49bc80717cf41",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
  "visitor/gives_key_2e808a9e.ogg": {
   "at": "2026-09-19T16:32:08",
   "instruct": "Say this quiet and patient, unbothered, plainly.",
