@@ -57,10 +57,19 @@ const W := 420.0
 const H := 640.0
 
 ## The brand block, over the glass.
-## The brass plate rides high and small so it crosses her hair, not her face: the rendered
-## key visual puts her eyes at ~20% of the picture and the picture is full bleed at 1:1
-## vertically, so the type is what moves. Found by capturing the real frame and looking —
-## on paper the old 60,48,300,89 was a perfectly reasonable rectangle.
+## The brass plate rides high and small so it crosses the window and her hair, never her
+## face. The picture is full bleed at 1:1 vertically, so when the key visual is replaced
+## the type is what moves, not the crop — on paper the old 60,48,300,89 was a perfectly
+## reasonable rectangle and it landed squarely on her face.
+##
+## Re-checked 2026-09-19 against the v3 key visual (as_title_kv_00), and this time by
+## arithmetic rather than by eye, because the breathing camera means no single capture is
+## the worst case. _process drifts bg.position.y over ±3.5 and swells bg.scale over
+## 1.046–1.074 about the canvas centre. Measuring her hairline in a capture and inverting
+## both puts it at y≈99.5 unmoved, and never above y≈95 at the extreme of the swell. The
+## plate's bottom edge is at 88. Seven pixels, at the one moment of the cycle that is
+## tightest — so the rect stands as it is. If the next key visual is framed any closer,
+## redo this sum before trusting the screenshot.
 const PLATE_RECT := Rect2(78, 10, 264, 78)
 
 ## The file card, and its menu rows. These four numbers are the contract with
@@ -215,10 +224,16 @@ func _vignette() -> ImageTexture:
 		for x in n:
 			var u := Vector2(x / float(n - 1) - 0.5, y / float(n - 1) - 0.5) * 2.0
 			var r: float = clampf(u.length() / 1.42, 0.0, 1.0)
-			# darker at the corners, and darker again along the very top and bottom, where
-			# the type lives
-			var edge: float = maxf(0.0, absf(u.y) - 0.52) * 1.5
-			img.set_pixel(x, y, Color(0.035, 0.027, 0.06, clampf(r * r * 0.74 + edge, 0.0, 0.88)))
+			# Darker at the corners, and a little darker again along the very top and
+			# bottom. Both terms are lighter than they were: the old 0.74/1.5 pair was
+			# written to buy contrast for type set directly on the picture, and there is
+			# no longer any such type — the mark is engraved brass and the menu is ink on
+			# a manila card, each carrying its own ground. Measured, the old vignette cost
+			# the composed frame ~0.06 brightness for nothing, and
+			# ops/adult_forks/UI_DIRECTION.md is explicit that darkness spent on wallpaper
+			# is the failure this studio keeps shipping.
+			var edge: float = maxf(0.0, absf(u.y) - 0.58) * 0.9
+			img.set_pixel(x, y, Color(0.035, 0.027, 0.06, clampf(r * r * 0.56 + edge, 0.0, 0.74)))
 	return ImageTexture.create_from_image(img)
 
 
