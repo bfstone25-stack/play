@@ -228,23 +228,36 @@ func _has_progress() -> bool:
 
 
 # ---------- title ------------------------------------------------------------------------------
+## 2026-09-20: this screen is now scripts/bm_title.gd, and what it replaces is worth
+## keeping a description of, because it is the shape every screen in this file still has
+## and only this one has been pulled out of it.
+##
+## It was: _plate("title") — which resolved through map_screen.FALLBACK to the *corridor*
+## plate, an unlit office corridor — then _dim(0.35) over the top of it, then two rounded
+## navy "Glass" PanelContainers, the wordmark a plain Label inside the upper one. Captured
+## and measured it scored 0.31 brightness against the shelf floor of 0.45.
+##
+## Two rules broken, both named in bm_title.gd's own header: studio rule 2 (the two Glass
+## panels *were* the design, and a StyleBoxFlat rectangle is not a design) and the
+## all-ages direction (kids play this; the night-office mood belongs to the adult forks).
+##
+## The title node owns its own layout, motion and marks and emits three signals; this
+## function only wires them to the screens that already existed. Everything else in the
+## flow — show_map, show_desk, the language toggle, the tests/headless_web.py bridge's
+## "open title" — is untouched and still calls this.
 func show_title() -> void:
 	_clear_overlay()
 	_stop_run()
 	map.visible = false
-	_plate("title")
-	_dim(0.35)
-	var top := _panel(150, 340, "Glass")
-	top.add_child(_label(t("brand"), "Title", 40, Palette.TEXT))
-	top.add_child(_label(t("sub"), "Tag", 13, Palette.TUBE))
-	var v := _panel(330, 260, "Glass")
-	v.add_child(_button(t("cont") if _has_progress() else t("start"), "Primary", show_map))
-	v.add_child(_button(t("locker"), "Amber", show_desk))
-	v.add_child(_button(t("lang"), "Ghost", func(): Game.set_lang("en" if Game.lang == "zh" else "zh"); show_title(), 120))
-	var hint := _label(t("drag"), "Tag", 12, Palette.MUTED)
-	hint.position = Vector2(0, 590)
-	hint.size.x = BMCore.W
-	overlay.add_child(hint)
+	var title := Control.new()
+	title.set_script(load("res://scripts/bm_title.gd"))
+	title.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.add_child(title)
+	title.start_pressed.connect(show_map)
+	title.desk_pressed.connect(show_desk)
+	title.lang_pressed.connect(func():
+		Game.set_lang("en" if Game.lang == "zh" else "zh")
+		show_title())
 	_show("title")
 
 
