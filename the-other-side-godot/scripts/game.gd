@@ -112,14 +112,18 @@ func _unhandled_input(event: InputEvent) -> void:
 ## Web drive hook for playing the build from a script: window.__cmd = "goto x z yaw" |
 ## "use" | "look dx". Read once a frame, cleared after. Costs nothing without it and does
 ## nothing off the web — the same shape as Gate's ?warp=board.
+var _last_cmd := ""
+
 func _drive() -> void:
 	if not OS.has_feature("web"):
 		return
-	var c = JavaScriptBridge.eval("(function(){var c=window.__cmd||'';window.__cmd='';return c;})()")
+	var c = JavaScriptBridge.eval("window.__cmd||''")
 	var cmd := str(c) if c != null else ""
-	if cmd == "":
+	if cmd == "" or cmd == _last_cmd:
 		return
-	var parts := cmd.split(" ")
+	_last_cmd = cmd
+	# Commands are "<seq> <verb> ..." so the same verb can be sent twice.
+	var parts := cmd.split(" ").slice(1)
 	match parts[0]:
 		"goto":
 			player.global_position = Vector3(float(parts[1]), 0.05, float(parts[2]))
