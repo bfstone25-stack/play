@@ -84,8 +84,11 @@ func _ready() -> void:
 		env.ssao_enabled = false
 		env.glow_enabled = false
 		env.fog_density = 0.0035
-		env.ambient_light_energy = 0.11
-		env.tonemap_exposure = 1.0
+		# Measured on the GPU box (real WebGL2), not in a software rasteriser: compat's
+		# own output is DARKER than both the desktop renderer and headless SwiftShader,
+		# so the web branch lifts rather than cuts.
+		env.ambient_light_energy = 0.24
+		env.tonemap_exposure = 1.28
 		# The saturation lift was added to stop the desktop frames reading washed. Compat
 		# has no glow to bleed a highlight's hue back toward white, so the same lift here
 		# renders the whole flat as one pink. The lights carry the colour; the grade does
@@ -129,8 +132,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			t.interact(self)
 
 ## Web drive hook for playing the build from a script: window.__cmd =
-## "goto x z yaw [pitch]" | "use" | "look dx" | "state". Read once a frame, cleared after. Costs nothing without it and does
-## nothing off the web — the same shape as Gate's ?warp=board.
+## "goto x z yaw [pitch]" | "lookat x z tx ty tz" | "use" | "look dx" | "state". Read
+## once a frame, cleared after. Costs nothing without it and does nothing off the web — the same shape as Gate's ?warp=board.
 var _last_cmd := ""
 
 func _drive() -> void:
@@ -147,15 +150,34 @@ func _drive() -> void:
 		"goto":
 			player.global_position = Vector3(float(parts[1]), 0.05, float(parts[2]))
 			player.rotation.y = float(parts[3])
-			# Optional fourth argument: head pitch in radians. Without it every driven
-			# frame is shot dead level, and the two frames this game is actually about —
-			# the mirror, and the person standing in a doorway — are framed at the wrong
-			# height. tests/walkthrough.gd aims at a point; over the bridge a string is
-			# cheaper than a raycast, so the caller does the arithmetic.
-			var p := 0.0 if parts.size() < 5 else float(parts[4])
-			player.pitch = p
-			player.head.rotation.x = p
+			# Optional fourth argument: head pitch in radians. Without it every driven frame
+			# is shot dead level.
+			var gp := 0.0 if parts.size() < 5 else float(parts[4])
+			player.pitch = gp
+			player.head.rotation.x = gp
 			player.velocity = Vector3.ZERO
+		"lookat":
+			# "lookat x z tx ty tz" — stand at (x, z) and aim at a point, which is exactly what
+			# tests/walkthrough.gd::_place does in the engine.
+			#
+			# The angle form above makes the CALLER turn a target into a yaw, and a caller that
+			# gets the convention wrong does not get an error — it gets a photograph of a wall.
+			# That is what the first web capture of the beat-1 mirror was, and it took a
+			# side-by-side with the desktop frame to see it, because a wall lit by the bathroom
+			# bulb looks like a deliberately abstract shot. Same arithmetic, in the one place
+			# that already knows it.
+			player.global_position = Vector3(float(parts[1]), 0.05, float(parts[2]))
+			player.velocity = Vector3.ZERO
+			var tgt := Vector3(float(parts[3]), float(parts[4]), float(parts[5]))
+			var flat := Vector3(tgt.x, player.global_position.y, tgt.z)
+			if flat.distance_to(player.global_position) > 0.05:
+				player.look_at(flat, Vector3.UP)
+				player.rotation.x = 0.0
+				player.rotation.z = 0.0
+			var lp := clampf(atan2(tgt.y - (player.global_position.y + 1.55),
+				Vector2(tgt.x - player.global_position.x, tgt.z - player.global_position.z).length()), -1.2, 1.2)
+			player.pitch = lp
+			player.head.rotation.x = lp
 		"look":
 			player.rotate_y(float(parts[1]))
 		"use":

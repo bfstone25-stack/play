@@ -24,9 +24,19 @@ and carries its own environment tweaks (game.gd, `if OS.has_feature("web")`). Th
 what a browser player sees, and they are NOT identical to the desktop paid build.
 
     ops/other_side_build.sh
-    python3 play/the-other-side-godot/tests/web_walkthrough.py --out ops/adult_forks/shots/other-side
+    ops/remote_playtest.sh build/godot-ads/the-other-side \\
+        play/the-other-side-godot/tests/web_walkthrough.py
 
-localhost is an adult-board host (board.js ADULT_HOST), so the board draws here.
+**Run it through ops/remote_playtest.sh, not here.** Local headless browsers are disabled
+on Blaze's desktop (2026-09-19): the only browser an agent could start locally had no
+WebGL2, so Godot fell back to software rasterising and took four to five cores of the
+machine he works on. The GPU box reports WebGL2 true, has no GUI and nobody sitting at
+it. The wrapper rsyncs the build, serves it, runs this file as its driver with the URL as
+argv[1], and brings back whatever lands in ./shots/.
+
+It still runs standalone (`--out DIR`) for anyone with a local browser; that path serves
+the build itself. Either way 127.0.0.1 is an adult-board host (board.js ADULT_HOST), so
+the cross-promotion board draws.
 """
 from __future__ import annotations
 
@@ -47,27 +57,26 @@ PORT = 8061
 # ops/check_gate_fresh.py, not here.
 UNLOCK_KEYS = ["ch3", "ch4", "cg"]
 
-# "goto x z yaw pitch", one per camera position in tests/walkthrough.gd, so a frame here
-# is comparable with a frame from there. The engine test aims with look_at(); the drive
-# hook takes angles, so the yaw/pitch are precomputed from the same (position, target)
-# pairs. Eye height is 1.60 (floor 0.05 + the player's 1.55 head).
-#
-# Getting this wrong is not a subtle failure and it does not announce itself: the first
-# run sent three-number gotos, every frame was shot dead level at an invented yaw, and
-# the captures were of walls. They looked like renders.
+# One entry per camera position in tests/walkthrough.gd, as the same (x, z, target)
+# triples that file uses, sent through the `lookat` drive verb so the ENGINE does the
+# aiming. An earlier version of this file converted each target into a yaw and a pitch
+# here and sent `goto`; the conversion was wrong and nothing said so — the beat-1 mirror
+# came out as a photograph of the wall beside it, which at a glance reads as an arty
+# frame rather than a broken one. Never re-derive the camera maths on this side.
 CAM = {
-    "01_wake":          "-4.600 1.600 2.309 -0.067",
-    "02_bathroom_door": "-6.800 3.400 2.516 -0.112",
-    "03_mirror":        "-7.550 4.800 2.159 -0.116",
-    "at_401_door":      "-0.900 2.400 1.571 -0.452",
-    "05_401_open":      "-0.300 3.600 0.879 -0.132",
-    "06_402_closed":    "0.000 6.400 -2.372 -0.108",
-    "at_402_door":      "0.900 8.050 -1.571 -0.452",
-    "08_402_inside":    "2.600 8.050 -1.571 -0.087",
-    "09_402_print":     "4.500 5.600 0.067 -0.165",
-    "approach_far":     "7.590 6.830 -3.142 -0.069",
-    "approach_near":    "7.590 7.830 -3.142 -0.096",
-    "confront":         "7.590 9.080 -3.142 -0.183",
+    "01_wake":          ("-4.6 1.6",   "-7.9 1.3 4.6"),
+    "02_bathroom_door": ("-6.8 3.4",   "-8.1 1.35 5.2"),
+    "03_mirror":        ("-7.55 4.8",  "-8.84 1.42 5.66"),
+    "at_401_door":      ("-0.9 2.4",   "-1.62 1.25 2.4"),
+    "05_401_open":      ("-0.3 3.6",   "-1.75 1.35 2.4"),
+    "06_402_closed":    ("0.0 6.4",    "1.6 1.35 8.05"),
+    "at_402_door":      ("0.9 8.05",   "1.62 1.25 8.05"),
+    "08_402_inside":    ("2.6 8.05",   "6.6 1.25 8.05"),
+    "09_402_print":     ("4.5 5.6",    "4.4 1.35 4.1"),
+    # The approach on her post in 402's bathroom doorway (tenant.gd DOORWAY_402).
+    "approach_far":     ("7.59 6.83",  "7.59 1.35 10.43"),
+    "approach_near":    ("7.59 7.83",  "7.59 1.35 10.43"),
+    "confront":         ("7.59 9.08",  "7.59 1.35 10.43"),
 }
 
 
@@ -86,6 +95,15 @@ def state(page) -> dict:
 
 
 def main() -> int:
+    # ops/remote_playtest.sh invokes a driver as `driver.py <url>`, from inside the
+    # served directory. No flags, no server of our own, and shots go to ./shots/ so the
+    # wrapper's rsync finds them.
+    if len(sys.argv) == 2 and sys.argv[1].startswith("http"):
+        a = argparse.Namespace(out=Path("shots"), port=0, quick=False,
+                               url=sys.argv[1].rstrip("/"))
+        a.out.mkdir(parents=True, exist_ok=True)
+        return run(a)
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=Path("/tmp/other-side-web"))
     ap.add_argument("--quick", action="store_true",
@@ -94,6 +112,7 @@ def main() -> int:
                          "a loop anyone will actually run twice.")
     ap.add_argument("--port", type=int, default=PORT)
     a = ap.parse_args()
+    a.url = None
     a.out.mkdir(parents=True, exist_ok=True)
 
     if not (BUILD / "index.html").is_file():
@@ -115,9 +134,10 @@ def run(a) -> int:
     from playwright.sync_api import sync_playwright
     shots: list[tuple[str, Path]] = []
     with sync_playwright() as pw:
-        br = pw.chromium.launch(headless=True, args=[
-            "--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader",
-            "--disable-gpu-sandbox"])
+        # No SwiftShader flags when the host has a real GL: the GPU box reports WebGL2
+        # true and forcing software rendering there would throw away the whole reason the
+        # test moved off Blaze's desktop.
+        br = pw.chromium.launch(headless=True, args=["--enable-unsafe-swiftshader"])
         # 960x540, not 1280x720. There is no GPU in this browser — SwiftShader software
         # rasterises the whole 3D scene, and at 720p a single page.screenshot() runs past
         # its default 30 s timeout waiting for a frame. Same 16:9, a third of the pixels.
@@ -129,7 +149,14 @@ def run(a) -> int:
         # 127.0.0.1 rather than localhost: board.js's ADULT_HOST accepts both, but the
         # gate's dist() sniffing keys off the hostname and this is the one the build note
         # documents.
-        url = "http://127.0.0.1:%d/" % a.port
+        # Cache-busted. The pack is 8 MB and the page is reloaded many times across a
+        # tuning session; a stale index.pck renders the PREVIOUS build's prose and
+        # lighting and looks exactly like a successful run of the current one.
+        url = a.url or ("http://127.0.0.1:%d" % a.port)
+        # Cache-busted. The pack is 8 MB and the page is reloaded many times across a
+        # tuning session; a stale index.pck renders the PREVIOUS build's prose and
+        # lighting and looks exactly like a successful run of the current one.
+        url = "%s/?t=%d" % (url, int(time.time()))
         page.add_init_script(
             "try{localStorage.setItem('gate_unlocks',JSON.stringify(%s))}catch(e){}"
             % ("{" + ",".join('"%s":1' % k for k in UNLOCK_KEYS) + "}"))
@@ -146,8 +173,16 @@ def run(a) -> int:
             print("the game never started; console: %s" % errs[:5], file=sys.stderr)
             return 1
 
-        def shot(name: str) -> None:
+        def shot(name: str, clear: bool = True) -> None:
             page.wait_for_timeout(900)
+            if clear:
+                clear_of_her()
+                # Re-aim: waiting her out costs seconds of game time, and the camera has
+                # to be back where the frame is supposed to be taken from.
+                if _last_go[0]:
+                    pos, look = CAM[_last_go[0]]
+                    cmd(page, "lookat", "%s %s" % (pos, look))
+                    page.wait_for_timeout(400)
             p = a.out / ("%s.png" % name)
             # page.screenshot(clip=...) rather than canvas.screenshot(): an element
             # screenshot first waits for the element to be "stable", and this canvas is
@@ -165,7 +200,42 @@ def run(a) -> int:
         page.wait_for_timeout(1200)
 
         def go(key: str) -> None:
-            cmd(page, "goto", CAM[key])
+            pos, look = CAM[key]
+            cmd(page, "lookat", "%s %s" % (pos, look))
+            _last_go[0] = key
+
+        _last_go = [None]
+
+        def clear_of_her(limit: float = 6.0, secs: int = 60) -> float:
+            """Wait until she is not standing in the lens.
+
+            She hunts you in 401 in the corner of your eye — that is the design, and in
+            the engine test it never shows up because the whole capture takes a quarter of
+            a second per frame. Here a single screenshot is tens of real seconds of
+            software rasterising, and she uses them: the first run's beat-1 frames are a
+            grey capsule head filling the screen, at both camera positions, which read as
+            a broken camera rather than as her.
+
+            So the beat-1 and beat-2 frames wait her out. Beat 3 does NOT call this — she
+            is the subject there.
+            """
+            d = 99.0
+            for _ in range(secs * 2):
+                st = state(page)
+                t = st.get("tenant") or []
+                if len(t) < 2:
+                    return 99.0
+                # Deliberately NOT gated on her `visible` flag. She is only drawn in the
+                # corner of the eye, so that flag flickers, and a check that trusts it
+                # returns "clear" on whichever frame it happens to be false — which is how
+                # the first version of this wait reported a clear lens while she was
+                # filling it. Her position is the thing that is true every frame.
+                d = ((t[0] - st.get("x", 0.0)) ** 2 + (t[1] - st.get("z", 0.0)) ** 2) ** 0.5
+                if d > limit:
+                    return d
+                page.wait_for_timeout(500)
+            print("  !! she never cleared the lens (%.2f m)" % d, file=sys.stderr)
+            return d
 
         # ---- Beat 1 ------------------------------------------------------------------
         for name in ("01_wake", "02_bathroom_door", "03_mirror"):
@@ -210,7 +280,7 @@ def run(a) -> int:
         go("approach_near")
         page.wait_for_timeout(3000)
         print("  she is at %s" % (state(page).get("tenant"),))
-        shot("10_tenant_resolving")
+        shot("10_tenant_resolving", clear=False)
         go("confront")
         page.wait_for_timeout(1500)
         for _ in range(40):
@@ -220,22 +290,22 @@ def run(a) -> int:
         s = state(page)
         if not s.get("confronting"):
             print("!! she never triggered confront(); state=%s" % s, file=sys.stderr)
-        shot("11_confront")
+        shot("11_confront", clear=False)
 
         # Four lines, click-advanced, then the choice on the last one. Real key events at
         # the page, which is the whole point of driving it here.
         for _ in range(3):
             page.keyboard.press("Space")
             page.wait_for_timeout(700)
-        shot("12_choice")
+        shot("12_choice", clear=False)
         page.keyboard.press("Digit1")           # 1 = keep her in the mirror
         page.wait_for_timeout(2500)
-        shot("13_after_choice")
+        shot("13_after_choice", clear=False)
 
         # ---- Beat 4 ------------------------------------------------------------------
         go("03_mirror")                        # deliberately the beat-1 framing again
         page.wait_for_timeout(2000)
-        shot("14_mirror_after_kept")
+        shot("14_mirror_after_kept", clear=False)
         for _ in range(60):
             page.wait_for_timeout(1000)
             if state(page).get("ending"):
@@ -244,22 +314,35 @@ def run(a) -> int:
             print("!! the ending never began", file=sys.stderr)
             return 1
         page.wait_for_timeout(2500)
-        shot("15_end")
+        shot("15_end", clear=False)
 
         # ---- The beat the desktop run cannot have ------------------------------------
         # Gate.board_offer_more("adult") -> BOARD.offerMore() in board.js, drawn as DOM on
         # top of the canvas. A full-page screenshot, not a canvas one: the board is not in
         # the canvas at all, which is precisely why it was never verified before.
-        for _ in range(30):
+        # Ninety seconds, not fifteen. offerMore() does not draw until load() settles,
+        # and load() fetches the adult catalogue from free.blazecore.dev — on the GPU box,
+        # which has no general internet, that request does not fail fast, it hangs until
+        # the browser gives up and only then falls through to board.js's baked-in
+        # FALLBACK. A short wait here reports "the adult board did not draw" about a board
+        # that draws forty seconds later.
+        for _ in range(180):
             page.wait_for_timeout(500)
-            if page.evaluate("!!document.querySelector('#bc-board, .bc-board, [id*=board]')"):
+            # board.js gives its wrapper a CLASS, not an id: .bd-wrap (play/_shared/board.js,
+            # `wrap.className = "bd-wrap"`). The first version of this check looked for an
+            # id and reported "the adult board did not draw" against a board that had.
+            if page.evaluate("!!document.querySelector('.bd-wrap')"):
                 break
         p = a.out / "16_board.png"
         page.screenshot(path=str(p))
+        print("  BOARD=%s BOARD_ADULT_OK=%s host=%s" % tuple(page.evaluate(
+            "[typeof window.BOARD, window.BOARD_ADULT_OK, location.hostname]")))
         drawn = page.evaluate(
-            "(function(){var e=document.querySelector('#bc-board, .bc-board, [id*=board]');"
+            "(function(){var e=document.querySelector('.bd-wrap');"
             "if(!e)return null;var t=e.querySelectorAll('a').length;"
-            "return {tiles:t, adult_ok:window.BOARD_ADULT_OK, text:(e.innerText||'').slice(0,200)};})()")
+            "return {tiles:t, adult_ok:window.BOARD_ADULT_OK,"
+            " slugs:Array.prototype.map.call(e.querySelectorAll('a'),function(x){return x.href}),"
+            " text:(e.innerText||'').replace(/\\s+/g,' ').slice(0,220)};})()")
         print("SHOT %s  board=%s" % (p, drawn))
         if not drawn:
             print("!! the adult board did not draw", file=sys.stderr)

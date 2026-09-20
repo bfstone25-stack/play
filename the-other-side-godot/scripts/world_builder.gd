@@ -57,25 +57,29 @@ func _ready() -> void:
 ## the beat-1 mirror is a single white ellipse across the bathroom wall with the mirror
 ## somewhere underneath it, and every flat reads as one hot pink.
 ##
-## So the web build trims its own lights rather than the two builds keeping two copies of
-## the numbers. The scale is deliberately not applied to `base_energy` alone: game.gd's
-## _dim_hall() multiplies against that meta, so the meta has to come down with it or the
-## first dim puts the energy straight back up.
+## So the web build shapes its own lights rather than the two builds keeping two copies of
+## the numbers.
+##
+## What it does NOT do any more is cut their energy. The first version scaled every light
+## by 0.55, measured against frames captured in headless SwiftShader on this desktop — and
+## SwiftShader is brighter than the real GL path. On the GPU box, which reports WebGL2
+## true and is what a player actually has, the same build measured 0.01-0.14 against
+## check_brightness.py --scene: fourteen of sixteen frames under the legibility floor and
+## 09_402_print effectively black. A software rasteriser is not a preview of the renderer;
+## it is a different renderer that happens to agree about geometry.
+##
+## So the trim is shape only. Falloff comes in a little, which is what makes "one light
+## source, the doorway spill doing the work" read as a shape rather than a wall-sized
+## wash; the amount of light is left to the one set of numbers above.
 func _compat_trim() -> void:
 	for c in get_children():
 		if not (c is Light3D):
 			continue
 		var l := c as Light3D
-		l.light_energy *= 0.55
-		if l.has_meta("base_energy"):
-			l.set_meta("base_energy", float(l.get_meta("base_energy")) * 0.55)
-		# Tighter falloff as well as less of it: on compat a pool that is merely dimmer is
-		# still a pool the size of the wall, and "one light source, the doorway spill doing
-		# the work" is a shape before it is a brightness.
 		if l is OmniLight3D:
-			(l as OmniLight3D).omni_attenuation = 1.8
+			(l as OmniLight3D).omni_attenuation = 1.25
 		elif l is SpotLight3D:
-			(l as SpotLight3D).spot_attenuation = 1.7
+			(l as SpotLight3D).spot_attenuation = 1.25
 
 func _make_materials() -> void:
 	_plaster = _plaster_mat()
@@ -239,10 +243,13 @@ func _build() -> void:
 	# ONE fixture at the far end of the hall, where it is a colour note instead of a wash.
 	# Energies re-cut for the --scene floor (see the palette note at the top): the hall is
 	# a corridor at 02:17 lit by whatever is still on, not a lobby.
+	# The two flat practicals carry their whole room, so they sit above the hall's: the
+	# frames that measured lowest on the GPU box were the two that see nothing else —
+	# 01_wake (0.16) and 09_402_print (0.14), both lit by one bulb and a wall.
 	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.78, 0.55), 3.6, 11.0)
 	_fixture(Vector3(0, 2.46, 9.4), Color(1.0, 0.58, 0.72), 2.4, 9.0, true)
-	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.8, 0.6), 4.4, 12.0)
-	_fixture(Vector3(-4.6, 2.46, 2.4), Color(1.0, 0.77, 0.56), 3.4, 11.0)
+	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.8, 0.6), 6.4, 12.0)
+	_fixture(Vector3(-4.6, 2.46, 2.4), Color(1.0, 0.77, 0.56), 4.9, 11.0)
 	_bathroom_light(Vector3(-8.25, 2.3, 5.7), Vector3(-8.7, 1.15, 5.7))
 	_bathroom_light(Vector3(8.15, 2.3, 11.3), Vector3(8.6, 1.15, 11.3), 0.85)
 

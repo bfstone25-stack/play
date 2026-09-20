@@ -63,23 +63,33 @@ Web drive hook (test only): `window.__cmd = "goto x z yaw [pitch]" | "use" | "lo
 
 ## Placeholders (honest list)
 
-Rendered and installed (2026-09-19):
+Rendered and installed (2026-09-20, all of it re-rendered for the recast — the previous
+pass's plates were a man and none of them survive):
 
-- `assets/plates_x/cg_mirror.png` — Ray in the 401 mirror, the real plate. Picked from
-  eight candidates read at native 832x1216; `ops/other_side_art/ref/ray.png` is ray_04.
-- `assets/plates/cg_mirror_locked.png` — the censored partner. Same face, same framing,
-  clothed; a real render, not a blur of the uncensored one.
-- `assets/plates/tenant.png` — the tenant, cut to an RGBA sprite by
-  `ops/other_side_art/cut_sprite.py`.
+- `assets/plates_x/cg_mirror.png` — Iris in the 401 mirror, the real plate, tier 3.
+  Picked from six candidates read at native 832x1216; the pick is the one with her palm
+  raised against the glass, because that is what `NOTES["kept"]` describes.
+  `ops/other_side_art/ref/iris.png` is iris_03 of eight.
+- `assets/plates/cg_mirror_locked.png` — the censored partner. Same face, same bathroom,
+  same bulb, oversized shirt; a real render, not a blur of the uncensored one.
+- `assets/plates/tenant.png` — cut to an RGBA sprite by `ops/other_side_art/cut_sprite.py`
+  (kept 20.2% of the frame). The slot is lit flat on white specifically so it keys.
+- `splash.png` — the key visual: her in 402's open doorway, the corridor the colour of a
+  bruise. Graded up to the SHELF floor by `ops/other_side_art/grade_keyvisual.py`, which
+  re-runs `check_brightness.py` on what it wrote. The render measured 0.59/0.24 — bright
+  but *washed*, the checker's other failure mode — and the graded file is 0.64/0.35.
 
 Still placeholder:
 
-- `assets/plates/obj_402.png` is still an Overnight Clause room plate.
-- `splash.png` is still the parent's splash. There is no key visual and no logotype
-  (TITLE_SCREENS.md items 1 and 2 are both open); the title card in-game is a drawn plate,
-  not a designed mark.
+- **There is still no logotype.** `splash.png` is a key visual, not a designed mark;
+  TITLE_SCREENS.md item 2 is open. The in-game title card is type on a drawn plate.
+- `assets/plates/obj_402.png` is still an Overnight Clause room plate — the one figure-free
+  slot, and the only plate in the game that is still another title's.
+- `PLATES["cg_doorway"]` (the ending plate, rear nudity) is written and NOT rendered.
 - No sound of its own beyond the parent's synthesised drone and clicks.
 - No downloads, no itch page, not deployed.
+- The DESKTOP build's palette is unverified. Everything below is measured on the web
+  build, because the desktop renderer cannot be photographed on this machine at all.
 
 ## What is verified on camera, and what is not
 
@@ -106,9 +116,28 @@ environment tweaks in `game.gd`, and `world_builder._compat_trim()`. They are wh
 browser player sees on the ads track. They are not the desktop paid build, and the
 desktop build is currently unphotographable.
 
-The one beat this buys that the desktop run never could: `Gate.board_offer_more("adult")`
-is drawn by `play/_shared/board.js` ON THE PAGE, so it does not exist in a desktop run at
-all. `localhost` is an adult-board host (board.js `ADULT_HOST`), so it draws here.
+**Verified (2026-09-20, sixteen frames in `ops/adult_forks/shots/other-side/`):** beat 1
+(a bathroom you can see you are standing in, the plate seated in the bezel under the
+room's own light), beat 2 (401 opens, 402 knocks open, the mirrored flat), beat 3 (she
+resolves from capsule to rendered person in 402's bathroom doorway, the four-line
+exchange, the choice), beat 4 (the choice keeping the image in the glass, the clear
+state) — and, for the first time, **the adult cross-promotion board**: two tiles, Elena
+and Room 704, on `*.flat404.workers.dev` with `?src=the-other-side`.
+
+Getting there found a bug that had nothing to do with this game.
+`Gate.board_offer_more()` drew nothing, in every title, at the end of every run.
+`?warp=board` isolated it: `second: 1` (the break board draws) against `more: 0, tiles: 0`,
+while calling `BOARD.offerMore("adult")` straight from the page on the same build drew it
+in under five seconds. The bridge worked and board.js worked; only gate.gd's compound
+`window.BOARD && BOARD.offerMore && BOARD.offerMore(k)` form did not. Fixed in
+`shared/godot/gate.gd` to the guard-then-call shape `board_offer_break()` already used.
+It only surfaced because someone RAN the hook: the call was wired, the script shipped,
+the host allowed it, and nothing appeared.
+
+Two frames sit on the floor rather than above it (`01_wake` and `09_402_print`, both
+0.22) and `15_end` measures anywhere from 0.09 to 0.26 depending on where the shot lands
+relative to `_dim_hall(0.35)` — the ending is deliberately the darkest beat, and that is
+the one number worth watching rather than chasing.
 
 ## Capturing the frames
 
