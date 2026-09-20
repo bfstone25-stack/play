@@ -62,48 +62,35 @@ func _grain() -> void:
 	add_child(grain)
 	move_child(grain, 1)
 
+## The title screen. 2026-09-20.
+##
+## What was here: splash.png behind a 38%-black ColorRect, with ONE plain Label carrying
+## the title, the call to action and the keyboard map as three lines of the same 26 px
+## system font in the middle of the screen. splash.png measures 0.08 brightness against a
+## shelf floor of 0.45, so captured through ops/capture_title.sh the whole frame came back
+## effectively black — the worst of the four all-ages titles, and worst because nobody had
+## ever looked at it.
+##
+## It is now scripts/ath_title.gd, which owns the key visual, the logotype, the motion and
+## the marks. The splash VARIABLE and hide_splash() keep their names and their behaviour,
+## because game.gd drives both of them (its _unhandled_input checks hud.splash.visible to
+## decide whether a click enters the game or interacts with the world) and this pass is a
+## title screen, not a refactor of the input flow.
 func _splash() -> void:
 	splash = Control.new()
 	splash.name = "Splash"
 	splash.set_anchors_preset(Control.PRESET_FULL_RECT)
-	splash.mouse_filter = Control.MOUSE_FILTER_STOP
-	var bg := TextureRect.new()
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var tex := load("res://splash.png")
-	if tex:
-		bg.texture = tex
-	else:
-		bg.modulate = Color(0.12, 0.09, 0.07, 1)
-	splash.add_child(bg)
-	var dim := ColorRect.new()
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
-	dim.color = Color(0.02, 0.015, 0.01, 0.38)
-	dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	splash.add_child(dim)
-	var lab := Label.new()
-	lab.set_anchors_preset(Control.PRESET_CENTER)
-	lab.offset_left = -420.0
-	lab.offset_right = 420.0
-	lab.offset_top = -70.0
-	lab.offset_bottom = 110.0
-	lab.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lab.add_theme_font_size_override("font_size", 26)
-	lab.add_theme_color_override("font_color", Color(0.93, 0.86, 0.72, 1))
-	lab.text = "Across the Hall\nClick to enter the fourth floor\nWASD  mouse look  E interact  F light  Esc"
-	UiFont.apply_label(lab)
-	splash.add_child(lab)
-	splash.gui_input.connect(_on_splash_input)
+	splash.set_script(load("res://scripts/ath_title.gd"))
+	splash.enter_pressed.connect(_enter)
 	add_child(splash)
 
-func _on_splash_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		hide_splash()
-		var p := get_tree().get_first_node_in_group("player")
-		if p and p.has_method("capture_mouse"):
-			p.capture_mouse()
+
+func _enter() -> void:
+	hide_splash()
+	var p := get_tree().get_first_node_in_group("player")
+	if p and p.has_method("capture_mouse"):
+		p.capture_mouse()
+
 
 func hide_splash() -> void:
 	if splash:
