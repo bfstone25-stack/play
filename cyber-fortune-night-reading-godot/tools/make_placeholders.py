@@ -34,7 +34,12 @@ for cid, who in (("mirren", "the tarot reader — auburn, green eyes, the hood")
     SLOTS["%s_turn" % cid] = ((448, 560), 2, "%s · the reading lands: a garment doing work" % who)
     SLOTS["%s_night" % cid] = ((896, 560), 3, "%s · the payoff, tier 3" % who)
     SLOTS["%s_night_locked" % cid] = ((896, 560), 2, "%s · the censored plate behind the gate" % who)
-SLOTS["title_kv"] = ((1024, 1024), 1, "the night table, two instruments — the shelf frame")
+# Portrait, and 896x1152 rather than the old square 1024x1024, because the slot changed
+# meaning on 2026-09-20. It used to be a square still life of the table and the two
+# instruments — no subject — which is the title ops/adult_forks/TITLE_SCREENS.md opens by
+# rejecting. It is now the key visual the title screen is built on: Mirren at the table,
+# full bleed behind a 720x1280 portrait canvas. A square crop of that cuts her head off.
+SLOTS["title_kv"] = ((896, 1152), 1, "Mirren at the night table — the title screen's key visual")
 
 PLUM = (18, 8, 15)
 HOT = (255, 61, 138)

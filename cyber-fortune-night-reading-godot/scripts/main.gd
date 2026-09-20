@@ -7,6 +7,7 @@ extends Control
 ## draw is something you do *to someone*, never a thing you do alone with a tube.
 
 const SCREENS := {
+	"title": preload("res://scripts/night_title_screen.gd"),
 	"home": preload("res://scripts/night_home_screen.gd"),
 	"read": preload("res://scripts/night_read_screen.gd"),
 	"scene": preload("res://scripts/night_scene_screen.gd"),
@@ -30,7 +31,7 @@ func _ready() -> void:
 	Fortune.toast.connect(toast)
 	Tx.changed.connect(_on_lang)
 	Fortune.bridge_handler = Callable(self, "_bridge")
-	open("home")
+	open("title")
 
 
 func _build_hud() -> void:
@@ -82,8 +83,12 @@ func _refresh_hud() -> void:
 	merit_label.text = str(Fortune.merit.merit)
 	merit_tag.text = " " + Tx.t("focus" if Night.instrument != "slip" else "merit")
 	lang_btn.text = Tx.t("lang")
-	back_btn.visible = current_name != "home"
+	back_btn.visible = current_name != "home" and current_name != "title"
 	merit_label.add_theme_color_override("font_color", Palette.AMBER)
+	# The title screen carries its own language chip and its own mark; the HUD is the
+	# loop's furniture and drawing it over the key visual is exactly the "panel stacked on
+	# a picture" look ops/adult_forks/TITLE_SCREENS.md exists to remove.
+	hud.visible = current_name != "title"
 
 
 func _on_lang() -> void:
@@ -98,6 +103,8 @@ func open(name: String) -> void:
 		current = null
 	current_name = name
 	current = SCREENS[name].new()
+	if "main" in current:
+		current.set("main", self)
 	current.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(current)
 	move_child(current, 0)
