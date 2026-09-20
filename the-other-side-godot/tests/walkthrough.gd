@@ -175,7 +175,7 @@ func _run() -> void:
 	if tenant == null:
 		push_error("no tenant in the scene")
 		return
-	# Let him take up his post in 402's doorway before reading his position off him.
+	# Let her take up her post in 402's doorway before reading her position off her.
 	await _settle(30)
 	for step in [3.6, 2.6]:
 		var from: Vector3 = tenant.global_position - Vector3(0, 0, 1) * step
@@ -201,11 +201,11 @@ func _run() -> void:
 	# something to assume — a dot product below zero means the exchange is playing out
 	# behind the camera, which is what the first run of this script captured.
 	await _settle(20)
-	var to_him: Vector3 = tenant.global_position - player.global_position
-	to_him.y = 0.0
-	var dot: float = player.facing().dot(to_him.normalized())
+	var to_her: Vector3 = tenant.global_position - player.global_position
+	to_her.y = 0.0
+	var dot: float = player.facing().dot(to_her.normalized())
 	print("  confront facing dot=%.2f dist=%.2f tenant=(%.1f, %.1f) player=(%.1f, %.1f)"
-		% [dot, to_him.length(), tenant.global_position.x, tenant.global_position.z,
+		% [dot, to_her.length(), tenant.global_position.x, tenant.global_position.z,
 		   player.global_position.x, player.global_position.z])
 	if dot < 0.6:
 		push_error("the tenant is not in frame at the confrontation (dot=%.2f)" % dot)
@@ -219,7 +219,7 @@ func _run() -> void:
 		await _settle(6)
 	await _shot("choice")
 
-	# 1 = keep him in the mirror. The branch that has to leave the plate in the glass.
+	# 1 = keep her in the mirror. The branch that has to leave the plate in the glass.
 	await _key(KEY_1)
 	await _settle(40)
 	await _shot("after_choice")

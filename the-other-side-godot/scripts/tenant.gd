@@ -10,7 +10,7 @@ extends CharacterBody3D
 @onready var mesh: MeshInstance3D = $Mesh
 
 ## The opening in 402's bathroom partition (world_builder._bathroom): x 7.09..8.09 at
-## z=10.43. Standing in it puts the lit bathroom behind him and the front room in front.
+## z=10.43. Standing in it puts the lit bathroom behind her and the front room in front.
 const DOORWAY_402 := Vector3(7.59, 0.95, 10.43)
 
 var home := Vector3(7.1, 0.95, 11.15)
@@ -100,9 +100,9 @@ func _physics_process(delta: float) -> void:
 			return
 	# Beat 1 happens in 401, so the tenant activates there and hunts you in the corner of
 	# your eye — that is the design. But `activated` is sticky, and nothing afterwards ever
-	# moved him: cross to 402 and the whole confrontation played out back in 401, against
+	# moved her: cross to 402 and the whole confrontation played out back in 401, against
 	# your own bathroom, which is the one room the beat is not about. Once you are in 402
-	# and the chapter has turned, he is waiting in 402's bathroom doorway, which is what
+	# and the chapter has turned, she is waiting in 402's bathroom doorway, which is what
 	# NOTES["flat402"] has been telling the player all along.
 	if phase >= 2 and in_402 and global_position.x < 1.85 and not confronted:
 		global_position = DOORWAY_402

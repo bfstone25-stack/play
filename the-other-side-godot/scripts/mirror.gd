@@ -1,8 +1,9 @@
 extends StaticBody3D
 
 ## The bathroom mirror. In Across the Hall this was a metallic box; here it is a
-## mirror-shaped surface carrying a rendered plate of the neighbour — the half of you
-## that claimed what it wanted — and the figure moves only while you stand still.
+## mirror-shaped surface carrying a rendered plate of the neighbour — the woman across
+## the hall, the life you did not claim standing in it — and she moves only while you
+## stand still.
 ##
 ## The plate is gated art (assets/plates_x/cg_mirror.png, absent from every web pack).
 ## What ships is the censored partner; the real bytes arrive through scripts/unlock.gd

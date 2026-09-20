@@ -18,13 +18,23 @@ extends Node3D
 ## the lights rather than from the paint, and the darkness is spent where it means
 ## something — the unlit half of the bathroom, the far end of the hall — instead of on
 ## wallpaper. UI_DIRECTION.md's "dark ground, hot accents" is a scene, not a basis.
-const WALL := Color(0.4, 0.355, 0.375)
-const FLOOR := Color(0.28, 0.185, 0.205)
-const WOOD := Color(0.33, 0.21, 0.14)
+##
+## Third pass, 2026-09-19. The second pass was tuned to ops/check_brightness.py's 0.45
+## floor applied to every capture, and hitting that floor took the flats from 02:17 to a
+## warm lit interior — a horror game at two in the morning with the big light on. Blaze
+## has since split the rule: the floor is for STORE ART and TITLE SCREENS, which compete
+## as thumbnails, and an in-game frame answers to legibility instead
+## (`check_brightness.py --scene`, 0.22/0.18). So the grounds come back down toward
+## plum-black and the room is lit by ONE source with the doorway spill doing the work.
+## The principle above survives unchanged: the colour still comes from the lights, the
+## darkness is still spent where it means something. There is simply less light.
+const WALL := Color(0.29, 0.25, 0.275)
+const FLOOR := Color(0.2, 0.13, 0.15)
+const WOOD := Color(0.24, 0.15, 0.1)
 # Tile is the one surface the bathroom bulb hits square on, so it carries the highlight —
 # and it stays COOL, or a warm bulb on a warm tile renders the bathroom as brown wood.
-const TILE := Color(0.5, 0.53, 0.6)
-const TRIM := Color(0.48, 0.38, 0.26)
+const TILE := Color(0.4, 0.43, 0.5)
+const TRIM := Color(0.35, 0.28, 0.19)
 
 var _plaster: StandardMaterial3D
 var _floor_mat: StandardMaterial3D
@@ -36,6 +46,36 @@ func _ready() -> void:
 	_make_materials()
 	_build()
 	_dust()
+	if OS.has_feature("web"):
+		_compat_trim()
+
+## The web build renders on GL compatibility, and it is not the same picture.
+##
+## Compat has no SSAO and no glow, and — the part that actually breaks the frame — its
+## light falloff is softer and it has no bloom to absorb a highlight. The energies tuned
+## against the desktop renderer arrive here as blown pools: the 2026-09-19 web capture of
+## the beat-1 mirror is a single white ellipse across the bathroom wall with the mirror
+## somewhere underneath it, and every flat reads as one hot pink.
+##
+## So the web build trims its own lights rather than the two builds keeping two copies of
+## the numbers. The scale is deliberately not applied to `base_energy` alone: game.gd's
+## _dim_hall() multiplies against that meta, so the meta has to come down with it or the
+## first dim puts the energy straight back up.
+func _compat_trim() -> void:
+	for c in get_children():
+		if not (c is Light3D):
+			continue
+		var l := c as Light3D
+		l.light_energy *= 0.55
+		if l.has_meta("base_energy"):
+			l.set_meta("base_energy", float(l.get_meta("base_energy")) * 0.55)
+		# Tighter falloff as well as less of it: on compat a pool that is merely dimmer is
+		# still a pool the size of the wall, and "one light source, the doorway spill doing
+		# the work" is a shape before it is a brightness.
+		if l is OmniLight3D:
+			(l as OmniLight3D).omni_attenuation = 1.8
+		elif l is SpotLight3D:
+			(l as SpotLight3D).spot_attenuation = 1.7
 
 func _make_materials() -> void:
 	_plaster = _plaster_mat()
@@ -197,16 +237,18 @@ func _build() -> void:
 	# Warm white bulbs, not amber and magenta gels. A saturated light on a saturated wall
 	# is how every frame came out at 0.8+ saturation in one hue; the magenta survives as
 	# ONE fixture at the far end of the hall, where it is a colour note instead of a wash.
-	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.78, 0.55), 7.0, 12.0)
-	_fixture(Vector3(0, 2.46, 9.4), Color(1.0, 0.58, 0.72), 4.4, 10.0, true)
-	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.8, 0.6), 8.5, 13.0)
-	_fixture(Vector3(-4.6, 2.46, 2.4), Color(1.0, 0.77, 0.56), 6.6, 12.0)
+	# Energies re-cut for the --scene floor (see the palette note at the top): the hall is
+	# a corridor at 02:17 lit by whatever is still on, not a lobby.
+	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.78, 0.55), 3.6, 11.0)
+	_fixture(Vector3(0, 2.46, 9.4), Color(1.0, 0.58, 0.72), 2.4, 9.0, true)
+	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.8, 0.6), 4.4, 12.0)
+	_fixture(Vector3(-4.6, 2.46, 2.4), Color(1.0, 0.77, 0.56), 3.4, 11.0)
 	_bathroom_light(Vector3(-8.25, 2.3, 5.7), Vector3(-8.7, 1.15, 5.7))
 	_bathroom_light(Vector3(8.15, 2.3, 11.3), Vector3(8.6, 1.15, 11.3), 0.85)
 
 	var moon := DirectionalLight3D.new()
 	moon.light_color = Color(0.4, 0.5, 0.78)
-	moon.light_energy = 0.12
+	moon.light_energy = 0.08
 	moon.shadow_enabled = false
 	moon.rotation_degrees = Vector3(-35, 110, 0)
 	add_child(moon)
@@ -239,7 +281,7 @@ func _bathroom_light(pos: Vector3, target: Vector3, energy := 1.0) -> void:
 	li.position = pos + Vector3(0, -0.08, 0)
 	# Warm white with the magenta pulled through it, not magenta with a bulb behind it.
 	li.light_color = Color(1.0, 0.87, 0.78)
-	li.light_energy = 5.2 * energy
+	li.light_energy = 4.6 * energy
 	li.spot_range = 6.5
 	li.spot_angle = 68.0
 	li.spot_angle_attenuation = 0.9
@@ -259,11 +301,11 @@ func _bathroom_light(pos: Vector3, target: Vector3, energy := 1.0) -> void:
 	var fill := OmniLight3D.new()
 	fill.position = pos + Vector3(0, -0.9, 0)
 	fill.light_color = Color(0.58, 0.66, 0.95)
-	fill.light_energy = 1.05 * energy
+	fill.light_energy = 0.6 * energy
 	fill.omni_range = 3.4
 	fill.omni_attenuation = 1.4
 	fill.shadow_enabled = false
-	fill.set_meta("base_energy", 1.05 * energy)
+	fill.set_meta("base_energy", 0.6 * energy)
 	fill.add_to_group("hall_light")
 	add_child(fill)
 
@@ -435,8 +477,11 @@ func _window(pos: Vector3) -> void:
 	m.albedo_color = Color(0.04, 0.055, 0.085, 0.72)
 	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	m.emission_enabled = true
-	m.emission = Color(0.1, 0.17, 0.34)
-	m.emission_energy_multiplier = 0.45
+	# The window is the only cool thing in the flat and it must stay the SECOND brightest.
+	# At 0.45 on compat it renders as a pale blue panel that out-shouts the bathroom bulb,
+	# which makes the one light source two and takes the doorway spill out of the frame.
+	m.emission = Color(0.08, 0.13, 0.27)
+	m.emission_energy_multiplier = 0.2
 	m.roughness = 0.08
 	glass.material_override = m
 	add_child(glass)

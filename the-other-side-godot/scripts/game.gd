@@ -3,34 +3,41 @@ extends Node3D
 ## The Other Side — the adult night twin of Across the Hall (ops/adult_forks/across-the-hall.md §2).
 ##
 ## The one rule that makes it a different world (ops/adult_forks/TWO_WORLDS.md): in Across
-## the Hall there was never anyone across the hall. Here the mirror shows the neighbour,
-## and the neighbour is you as you would be if you claimed what you want — a rendered
-## adult, and the game is walking toward them. Cut the figure and the rule has no payoff.
+## the Hall there was never anyone across the hall. Here there was never anyone, and then
+## there was. Across the hall is a woman — not your face rested, not a version of you, but
+## the life you did not claim, standing in it. The mirror shows her because at 02:17 the
+## glass stops showing you what you settled for, and the game is walking toward her. Cut
+## the figure and the rule has no payoff.
+##
+## Recast 2026-09-19 (Blaze). The neighbour was a man, and the payoff was a half-dressed
+## man in a doorway on a shelf whose payers are men. Changing the premise's gender cost the
+## premise nothing; every line below was rewritten, not pronoun-swapped, because she is a
+## different person from the player rather than a copy of him.
 ##
 ## Four beats, playable end to end:
-##   1. wake in 401, reach the bathroom mirror — it shows a figure that moves when you do not
+##   1. wake in 401, reach the bathroom mirror — it shows a woman who moves when you do not
 ##   2. cross the hall — 402 opens this time; it is 401 mirrored, one real thing per room
-##   3. the tenant resolves into a rendered person as you approach; an exchange, a choice
+##   3. the neighbour resolves into a rendered person as you approach; an exchange, a choice
 ##   4. the choice decides whether the mirror keeps its image; the clear state; the board
 
 const NOTES := {
 	"wake": "02:17. You are on your own couch in your own coat.\nThe bathroom light is on. You did not leave it on.",
-	"mirror1": "It is not you. It is what you would look like if you had said yes.\nIt is not moving. It only moves when you stop.",
-	"mirror2": "It turned its head toward the door.\nIt wants you to go across the hall.",
-	"door402": "The door opens this time.\nThe air inside already knows your shampoo.",
-	"flat402": "It is your flat, laid out backwards.\nEverything you own is here. One thing in each room is not yours.\nHe is in the bathroom doorway. Walk to him.",
-	"kept": "You go back to 401. The mirror still shows him.\nHe raises a hand when you do, half a second late.\nYou are two people now, and you both live here.",
-	"refused": "You go back to 401. The mirror is glass again.\nIt shows the wall behind you and nothing in front of it.\nThe half of you that wanted things is across the hall, with the door shut.",
+	"mirror1": "The glass has stopped showing you.\nThere is a woman standing in your bathroom, and she is not moving.\nShe only moves when you do not.",
+	"mirror2": "She turned her head toward the door.\nShe is waiting for you to come across the hall.",
+	"door402": "The door opens this time.\nInside, it smells of a kitchen someone actually cooked in tonight.",
+	"flat402": "It is your flat, laid out backwards.\nEverything you own is here, and all of it has been used.\nShe is in the bathroom doorway. Walk to her.",
+	"kept": "You go back to 401. The mirror still shows her.\nShe raises a hand when you do, half a second late.\nThere was never anyone across the hall. And now there is.",
+	"refused": "You go back to 401. The mirror is glass again.\nIt shows the wall behind you and nothing in front of it.\nThe life you did not claim is across the hall, with the door shut.",
 }
 
 ## Three lines and a choice, through the click-to-advance panel (hud.show_dialogue).
 const CONFRONT_LINES := [
-	"He has your face, rested. He has your hands, not shaking. He is not wearing your coat.",
+	"She does not have your face. She has your hours — the ones you signed away — and she has spent every one of them. She is not wearing your coat.",
 	"\"You came across. Six years, and you finally came across.\"",
-	"\"I am not a stranger. I am the half you left on this side of the door. Everything you wanted and did not take — it is all still here, and it is warm.\"",
+	"\"I am not a stranger. I am the door you did not open, and I have been living behind it the whole time. Everything you wanted and did not take is in here, and it is warm.\"",
 	"\"So. Do you want to stay on this side tonight, or do you want your mirror back?\"",
 ]
-const CONFRONT_CHOICES := ["Stay. Keep him in the mirror.", "Go home. Make the glass empty."]
+const CONFRONT_CHOICES := ["Stay. Keep her in the mirror.", "Go home. Make the glass empty."]
 ## How far back the camera settles for the exchange, in metres.
 const CONFRONT_STANDOFF := 2.3
 
@@ -77,8 +84,14 @@ func _ready() -> void:
 		env.ssao_enabled = false
 		env.glow_enabled = false
 		env.fog_density = 0.0035
-		env.ambient_light_energy = 0.19
-		env.tonemap_exposure = 1.05
+		env.ambient_light_energy = 0.11
+		env.tonemap_exposure = 1.0
+		# The saturation lift was added to stop the desktop frames reading washed. Compat
+		# has no glow to bleed a highlight's hue back toward white, so the same lift here
+		# renders the whole flat as one pink. The lights carry the colour; the grade does
+		# not need to help them. (The lights themselves are trimmed in
+		# world_builder._compat_trim.)
+		env.adjustment_saturation = 0.92
 	else:
 		player.capture_mouse()
 	# The mirror is the first thing lit: the plum room, one hot bulb through the bathroom door.
@@ -115,8 +128,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if t:
 			t.interact(self)
 
-## Web drive hook for playing the build from a script: window.__cmd = "goto x z yaw" |
-## "use" | "look dx". Read once a frame, cleared after. Costs nothing without it and does
+## Web drive hook for playing the build from a script: window.__cmd =
+## "goto x z yaw [pitch]" | "use" | "look dx" | "state". Read once a frame, cleared after. Costs nothing without it and does
 ## nothing off the web — the same shape as Gate's ?warp=board.
 var _last_cmd := ""
 
@@ -134,8 +147,14 @@ func _drive() -> void:
 		"goto":
 			player.global_position = Vector3(float(parts[1]), 0.05, float(parts[2]))
 			player.rotation.y = float(parts[3])
-			player.pitch = 0.0
-			player.head.rotation.x = 0.0
+			# Optional fourth argument: head pitch in radians. Without it every driven
+			# frame is shot dead level, and the two frames this game is actually about —
+			# the mirror, and the person standing in a doorway — are framed at the wrong
+			# height. tests/walkthrough.gd aims at a point; over the bridge a string is
+			# cheaper than a raycast, so the caller does the arithmetic.
+			var p := 0.0 if parts.size() < 5 else float(parts[4])
+			player.pitch = p
+			player.head.rotation.x = p
 			player.velocity = Vector3.ZERO
 		"look":
 			player.rotate_y(float(parts[1]))
@@ -147,7 +166,15 @@ func _drive() -> void:
 			JavaScriptBridge.eval("window.__state=%s" % JSON.stringify({
 				"phase": phase, "chapter": chapter, "choice": choice, "ending": ending,
 				"x": player.global_position.x, "z": player.global_position.z,
-				"confronting": confronting, "prompt": hud.prompt.text, "objective": hud.objective.text}))
+				"confronting": confronting, "prompt": hud.prompt.text, "objective": hud.objective.text,
+				# Where she actually is. tests/web_walkthrough.py has to walk in on her to
+				# let tenant.gd resolve by distance, and a hard-coded doorway would go on
+				# reporting success after the doorway moved.
+				"tenant": _tenant_xz()}))
+
+func _tenant_xz() -> Array:
+	var t := get_tree().get_first_node_in_group("tenant") as Node3D
+	return [] if t == null else [t.global_position.x, t.global_position.z, t.visible]
 
 func _process(delta: float) -> void:
 	_drive()
@@ -243,7 +270,7 @@ func inspect(id: String, text: String) -> void:
 	show_note(text)
 	click_sfx()
 
-## Beat 1. Looking is the first act. On the web the figure is the censored plate until the
+## Beat 1. Looking is the first act. On the web she is the censored plate until the
 ## page's gate reports a rendered sponsor creative AND the gateway ticket lands the bytes
 ## (scripts/mirror.gd, scripts/unlock.gd); a gate that passes with no creative unlocks nothing.
 func look_in_mirror(mirror: Node) -> void:
@@ -291,7 +318,7 @@ func open_402() -> void:
 	if world and world.has_method("open_door"):
 		world.open_door("402")
 	show_note(NOTES["door402"])
-	_set_chapter(3, "III  402. Your flat, mirrored. Find him.")
+	_set_chapter(3, "III  402. Your flat, mirrored. Find her.")
 
 func _track_402() -> void:
 	if player.global_position.x > 1.9 and not visited_402:
@@ -299,7 +326,7 @@ func _track_402() -> void:
 		show_note(NOTES["flat402"])
 		hud.note_t = 9.0
 
-## Beat 3. The tenant has resolved and is within arm's reach.
+## Beat 3. The neighbour has resolved and is within arm's reach.
 func confront() -> void:
 	if confronting or choice >= 0 or ending:
 		return
@@ -315,10 +342,10 @@ func confront() -> void:
 		player.look_at(Vector3(tenant.global_position.x, player.global_position.y, tenant.global_position.z), Vector3.UP)
 		player.rotation.x = 0.0
 		player.rotation.z = 0.0
-		# Take a step back before he speaks. The trigger fires at 1.7 m and the walk
+		# Take a step back before she speaks. The trigger fires at 1.7 m and the walk
 		# usually closes to about 1.3 — at which range a full-height figure is a face
 		# filling the screen and the exchange has no staging at all. 2.3 m puts a whole
-		# person in frame with the doorway behind him, which is the shot the beat wants.
+		# person in frame with the doorway behind her, which is the shot the beat wants.
 		var away: Vector3 = player.global_position - tenant.global_position
 		away.y = 0.0
 		if away.length() > 0.05 and away.length() < CONFRONT_STANDOFF:
@@ -342,11 +369,11 @@ func _resolve(picked: int) -> void:
 	for m in get_tree().get_nodes_in_group("mirror"):
 		m.set_kept(picked == 0)
 	if picked == 0:
-		_set_chapter(4, "IV  Kept. He stays in the glass. Go home and look.")
-		show_note("\"Good.\" He does not touch you. He does not have to.\nThe bathroom light in 401 goes on by itself.")
+		_set_chapter(4, "IV  Kept. She stays in the glass. Go home and look.")
+		show_note("\"Good.\" She does not touch you. She does not have to.\nThe bathroom light in 401 goes on by itself.")
 	else:
 		_set_chapter(4, "IV  Refused. The glass empties. Go home and look.")
-		show_note("\"All right.\" He steps back into the doorway.\nBehind you, across the hall, something in 401 goes quiet.")
+		show_note("\"All right.\" She steps back into the doorway.\nBehind you, across the hall, something in 401 goes quiet.")
 	hud.note_t = 8.0
 	await get_tree().create_timer(6.0).timeout
 	_begin_ending()
@@ -370,7 +397,7 @@ func _begin_ending() -> void:
 	drone.volume_db = -6.0
 	hud.set_objective("Episode I-X complete. " + ("Two of you live here now." if choice == 0 else "One of you lives here now."))
 	hud.set_prompt("R restart")
-	hud.show_title("The Other Side\n" + ("He is in the mirror." if choice == 0 else "The mirror is empty."))
+	hud.show_title("The Other Side\n" + ("She is in the mirror." if choice == 0 else "The mirror is empty."))
 	await_restart = true
 	# End of the run: the cross-promotion board (play/_shared/board.js). Adult fork, adult
 	# host only — board.js refuses to draw the adult board anywhere else, and this build is
@@ -396,13 +423,13 @@ func caught() -> void:
 		return
 	caught_t = 2.2
 	player.locked = true
-	hud.show_note("Someone covers your eyes from behind.\nThe hands are the same temperature as yours.")
+	hud.show_note("Someone covers your eyes from behind.\nThe hands are smaller than yours, and much warmer.")
 	drone.volume_db = -3.0
 
 func _reset_catch() -> void:
 	player.locked = false
 	drone.volume_db = -20.0
-	hud.set_objective("He let go. He is waiting where you were going anyway.")
+	hud.set_objective("She let go. She is waiting where you were going anyway.")
 
 ## A scale on each fixture's own energy, not an assignment. Assigning flattened six lights
 ## that had been balanced against each other to a single value, which is half of why the
