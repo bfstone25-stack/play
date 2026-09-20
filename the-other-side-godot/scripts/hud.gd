@@ -6,6 +6,7 @@ extends Control
 @onready var vignette: ColorRect = $Vignette
 
 var note_t := 0.0
+var _note_pending := false
 var fear := 0.0
 var clock: Label
 var title: Label
@@ -155,18 +156,17 @@ func _splash() -> void:
 	dim.color = Color(0.02, 0.015, 0.01, 0.38)
 	dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	splash.add_child(dim)
-	var lab := Label.new()
-	lab.set_anchors_preset(Control.PRESET_CENTER)
-	lab.offset_left = -420.0
-	lab.offset_right = 420.0
-	lab.offset_top = -70.0
-	lab.offset_bottom = 110.0
-	lab.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lab.add_theme_font_size_override("font_size", 26)
-	lab.add_theme_color_override("font_color", Color(1.0, 0.96, 0.92, 1))
-	lab.text = "The Other Side\nClick to wake up. It is 02:17.\n18+  ·  Flat 404\nWASD  mouse look  E interact  F light  Esc"
-	UiFont.apply_label(lab)
-	splash.add_child(lab)
+	# The splash HAS a key visual (splash.png) and always did; what failed was the type.
+	# Four lines — the game's name, an instruction, the rating, and the keyboard map — were
+	# set in one Label, one size, one weight, centred. Blaze's word for that look is 学术:
+	# it reads as a slide. ops/check_title_has_art.py passes this screen and is right to,
+	# because the picture is real; no pixel statistic can see that the TYPE is a default.
+	#
+	# So the fix here is entirely typographic, and the hierarchy is the whole of it: the
+	# name is the only thing set large, the line under it is the hook, the action is the
+	# only thing that looks clickable, and the rating and controls are reference at the
+	# foot. Nothing gains a fill, a border or a corner radius — studio rule 2.
+	_splash_type(splash)
 	splash.gui_input.connect(_on_splash_input)
 	add_child(splash)
 
@@ -330,6 +330,10 @@ func _on_splash_input(event: InputEvent) -> void:
 			p.capture_mouse()
 
 func hide_splash() -> void:
+	if _note_pending and note_card:
+		note_card.visible = true
+		note_t = 9.0
+		_note_pending = false
 	if splash:
 		splash.visible = false
 		splash.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -359,6 +363,79 @@ func show_title(t: String, sub := "") -> void:
 	title_rule.visible = sub != ""
 	title_card.visible = true
 
+## The splash's typography. Godot's Label has no letter-spacing, so the tracking on the
+## name IS the separation between one-glyph Labels in an HBox — that is the difference
+## between a title and a caption and it cannot be had from font_size.
+func _splash_type(root: Control) -> void:
+	var ink := Color(0.95, 0.93, 0.92)
+	var dim := Color(0.66, 0.60, 0.62)
+	var bruise := Color(0.72, 0.17, 0.30)
+
+	var col := VBoxContainer.new()
+	col.set_anchors_preset(Control.PRESET_CENTER)
+	col.offset_left = -460.0
+	col.offset_right = 460.0
+	col.offset_top = -150.0
+	col.offset_bottom = 170.0
+	col.alignment = BoxContainer.ALIGNMENT_CENTER
+	col.add_theme_constant_override("separation", 10)
+	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(col)
+
+	col.add_child(_tracked("THE OTHER SIDE", 52, 7, ink))
+
+	var rule := ColorRect.new()
+	rule.color = bruise
+	rule.custom_minimum_size = Vector2(0, 2)
+	rule.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	rule.custom_minimum_size.x = 200.0
+	rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	col.add_child(rule)
+
+	col.add_child(_splash_line("Someone else is awake on this floor.", 16, dim))
+	var spacer := Control.new()
+	spacer.custom_minimum_size = Vector2(0, 26)
+	col.add_child(spacer)
+	col.add_child(_splash_line("CLICK TO WAKE UP", 22, ink))
+	col.add_child(_splash_line("02:17   ·   18+   ·   Flat 404", 13, dim))
+	col.add_child(_splash_line(
+		"WASD move    mouse look    E interact    F light    Esc release", 12,
+		Color(0.52, 0.48, 0.50)))
+
+
+func _tracked(text: String, size: int, track: int, col: Color) -> HBoxContainer:
+	var row := HBoxContainer.new()
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	row.add_theme_constant_override("separation", track)
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	for i in text.length():
+		if text[i] == " ":
+			var gap := Control.new()
+			gap.custom_minimum_size = Vector2(size * 0.40, 0)
+			row.add_child(gap)
+			continue
+		row.add_child(_splash_line(text[i], size, col, true))
+	return row
+
+
+func _splash_line(text: String, size: int, col: Color, display := false) -> Label:
+	var l := Label.new()
+	l.text = text
+	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	l.add_theme_font_size_override("font_size", size)
+	l.add_theme_color_override("font_color", col)
+	# An outline, not a panel: the type has to survive a lit bathroom behind it without
+	# putting a box between the player and the picture.
+	l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+	l.add_theme_constant_override("outline_size", 5)
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if display:
+		UiFont.apply_display(l)
+	else:
+		UiFont.apply_label(l)
+	return l
+
+
 func hide_title() -> void:
 	if title_card:
 		title_card.visible = false
@@ -368,9 +445,16 @@ func set_fear(v: float) -> void:
 
 func show_note(t: String) -> void:
 	note.text = t
+	note_t = 9.0
+	# Not while the title is up. The game's first line of prose was drawing across the
+	# splash's footer, which is how the keyboard map ended up half behind a black box in
+	# the capture. It is held and shown the moment the player wakes up, so nothing is lost
+	# -- and its nine-second timer starts then too, rather than expiring behind the title.
+	if splash and splash.visible:
+		_note_pending = true
+		return
 	if note_card:
 		note_card.visible = true
-	note_t = 9.0
 
 func _process(delta: float) -> void:
 	if note_t > 0.0:
