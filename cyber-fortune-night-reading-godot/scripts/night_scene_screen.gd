@@ -90,7 +90,11 @@ func _ask() -> void:
 		return
 	asking = true
 	relayout()
-	var ok: bool = await Gate.require(_key(), Tx.field(Night.client(), "name"), "scene")
+	# "cg", not "scene". gate.js decides the ad-unavailable outcome on `kind === "cg"`
+	# alone: a cg resolves "unavailable" and stays locked, anything else resolves
+	# "unlocked". The night reading IS this fork's paid content, and until 2026-09-20 it
+	# was handed out free to anyone whose sponsor slot failed to paint.
+	var ok: bool = await Gate.require(_key(), Tx.field(Night.client(), "name"), "cg")
 	asking = false
 	if ok:
 		unlocked = true

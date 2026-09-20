@@ -354,7 +354,12 @@ func _offer_unlock(plate_id: String) -> void:
 		censored.call()
 		return
 	var title: String = str(Overnight.PLATES[plate_id]["title"])
-	if not await Gate.require("plate_" + plate_id, title, "unlock"):
+	# The kind MUST be "cg". gate.js reads it as `isCG = (kind === "cg")` and that single
+	# comparison decides what happens when the sponsor never paints: a "cg" resolves
+	# "unavailable" (no ad, no picture) while anything else resolves "unlocked" and the
+	# plate is given away. This said "unlock" until 2026-09-20, which meant every adult
+	# plate in this fork was free to anyone running an ad blocker.
+	if not await Gate.require("plate_" + plate_id, title, "cg"):
 		censored.call()
 		return
 	if not await u.redeem(plate_id):
