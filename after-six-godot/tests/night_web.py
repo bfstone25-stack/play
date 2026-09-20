@@ -27,11 +27,23 @@ PROJ = HERE.parent
 ROOT = PROJ.parent.parent
 ITCH = "--itch" in sys.argv
 WEB = ROOT / "build" / ("godot/after-six/web" if ITCH else "godot-ads/after-six")
-SHOTS = PROJ / "shots"
-SHOTS.mkdir(exist_ok=True)
+
+# Driven remotely when given a URL. Blaze's desktop stopped allowing local browser tests on
+# 2026-09-19 — headless Chromium on software rendering was taking four or five of his cores
+# for a job that had no business being on his machine — so ops/remote_playtest.sh rsyncs the
+# build to the GPU box, serves it there, and runs this file there with the URL as argv[1]:
+#
+#     ops/remote_playtest.sh build/godot-ads/after-six tests/night_web.py
+#
+# That box reports WebGL2 true, so Godot renders on the card instead of in software, which
+# is also why the Light2D map stops stalling on ReadPixels. With no URL the old local path
+# is unchanged, for whenever a machine is allowed to run it.
+REMOTE_URL = next((a for a in sys.argv[1:] if a.startswith("http")), "")
+SHOTS = Path("shots") if REMOTE_URL else PROJ / "shots"
+SHOTS.mkdir(exist_ok=True, parents=True)
 for old in SHOTS.glob("*.png"):
     old.unlink()
-if not (WEB / "index.html").exists():
+if not REMOTE_URL and not (WEB / "index.html").exists():
     sys.exit("no web build at %s — run ./build.sh" % WEB)
 
 
@@ -48,11 +60,16 @@ class Quiet(http.server.SimpleHTTPRequestHandler):
         pass
 
 
-socketserver.TCPServer.allow_reuse_address = True
-srv = socketserver.TCPServer(("127.0.0.1", 0), Quiet)
-PORT = srv.server_address[1]
-threading.Thread(target=srv.serve_forever, daemon=True).start()
-URL = "http://127.0.0.1:%d/index.html" % PORT
+if REMOTE_URL:
+    # The remote runner is already serving the build with the cross-origin headers Godot
+    # needs; starting a second server here would serve a build directory that is not there.
+    URL = REMOTE_URL if REMOTE_URL.endswith((".html", "/")) else REMOTE_URL + "/"
+else:
+    socketserver.TCPServer.allow_reuse_address = True
+    srv = socketserver.TCPServer(("127.0.0.1", 0), Quiet)
+    PORT = srv.server_address[1]
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    URL = "http://127.0.0.1:%d/index.html" % PORT
 fails = []
 
 
@@ -74,7 +91,14 @@ def room_xy(node):
 
 with sync_playwright() as p:
     browser = p.chromium.launch(args=["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"])
-    page = browser.new_page(viewport={"width": 420, "height": 640}, device_scale_factor=2)
+    # SHOT_SCALE=1 halves each axis of every captured frame. The capture goes through
+    # ReadPixels under swiftshader, which is pure CPU, and on a loaded box a 840x1280
+    # readback of the Light2D map stalls long enough for Chromium to kill the renderer —
+    # "GPU stall due to ReadPixels", then TargetClosedError on the next evaluate. At scale
+    # 1 the readback is a quarter of the work and the run completes. Default stays 2 so a
+    # quiet box still produces the full-resolution set.
+    page = browser.new_page(viewport={"width": 420, "height": 640},
+                            device_scale_factor=float(os.environ.get("SHOT_SCALE", "2")))
     errors, popups = [], []
     page.on("pageerror", lambda e: errors.append(str(e)))
     page.on("popup", lambda pp: popups.append(pp.url))

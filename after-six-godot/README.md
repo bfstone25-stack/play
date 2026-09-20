@@ -60,19 +60,30 @@ socketserver.TCPServer.allow_reuse_address=True; socketserver.TCPServer(('127.0.
 
 ## What is placeholder (honest list, 2026-09-19)
 
-1. **Every plate is the day plate relit** by `tools/night_tint.py`. Night-specific renders
-   are queued (`ops/render_queue.py`: `beat_monday plates --only night_map_sky | night_thu |
-   night_mon`; `night_title`, `night_tue` are in the generator, not yet queued). Install by
-   writing `assets/art/plate_<name>.webp`.
-2. **`cg_return_x` is a labelled PLACEHOLDER card** (`assets/art/cg_return_x_locked.webp`),
-   wired through the gate as the censored plate. The tier-3 render is NOT queued: the day
-   generator bans nude in its negative and has no reference for Mira; it needs the fork's
-   own slot (character reference, tier-3 negative) before it goes to the queue. There is no
-   open plate in `assets/cg_open/` yet.
-3. **Web delivery of the open plate is not wired.** `as_cg.gd` runs the gate and records
-   the answer, but Floor 13 X's `unlock.gd` (gateway ticket + fetch) is not ported, so on
-   the web tracks even a real unlock draws the locked plate today. The paid desktop build
-   would show the open plate once it exists.
+1. ~~Every plate is the day plate relit~~ **Done 2026-09-19.** Every gameplay screen now
+   draws After Six's own rendered night interior (`plate_as_room_*`), not a day plate
+   pushed two stops down by `tools/night_tint.py`. The stopgap is kept only as the
+   `FALLBACK` map in `map_screen.gd`, so a room whose render has not landed degrades to
+   the day plate instead of disappearing. `night_title` and `night_tue` in the day
+   generator are now unused by this game and can go when the title pass lands.
+2. **`cg_return_x` — the render pipeline exists; the plate is still a placeholder.**
+   The blocker named here is gone: the fork has its own generator
+   (`ops/after_six_art/after_six_gen.py`, queued as `after_six`) with Mira's cast bible, a
+   tier-3 slot whose negative bans the genitals rather than the whole of `nude`, and a
+   tier-2 `cg_return_x_locked` to replace the labelled PIL card. Until a candidate has been
+   picked *at native resolution* into `ref/mira.png` and `assets/cg_open/`, the censored
+   placeholder is what draws — which is the honest state, not a silent one.
+3. ~~Web delivery of the open plate is not wired~~ **Wired 2026-09-19.**
+   `scripts/as_unlock.gd` is the port of Floor 13 X's `unlock.gd`: a ticket is taken when
+   the gate opens, the bytes are fetched when it clears, and they land in `user://unlocked/`.
+   `AsCg.is_unlocked()` on the web now means *those bytes are on this machine* — never that
+   a boolean was set — and `AsCg.plate_texture()` is what callers must use, because a
+   delivered plate is a `user://` file that `load()` will not open. The honest "unavailable"
+   answer survives unchanged: a gate that clears with nothing staged still draws censored.
+   `tests/unlock_web.py` proves the positive in a real browser against a local stub gateway
+   (nothing is deployed), and it fails unless the *frame pixels actually change* — a
+   flipped boolean is not a reveal. It needs real open bytes and refuses to invent them, so
+   it is skipped until item 2's render lands.
 4. **Sprites**: the actor sprites are the day game's rendered office workers; the reflex
    arena's foes and the triage cards' actors fall back to the day game's vector rigs where
    no render exists (the same code-drawn fallback the day game has; the triage cards' icon

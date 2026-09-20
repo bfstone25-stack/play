@@ -45,6 +45,10 @@
 ## Reads BMMap for the graph and the profile for state; owns only presentation (the walk
 ## tween, the drift, the bob). Emits `arrived(node_id)` when a walk ends and `tapped(node_id)`
 ## when a room is tapped; main.gd decides what a tap means.
+## Named so the other screens can reach `plate_path()` — it is the one place that knows how
+## a slot name resolves to a file and which day plate a missing night room falls back to,
+## and the arena and the overlay screens both need that answer.
+class_name MapScreen
 extends Node2D
 
 signal tapped(node_id: String)
@@ -91,20 +95,26 @@ const FALLBACK := {
 ## A dark room is an unlit interior, not a black rectangle: low, cool, and still legible as
 ## furniture. A lit room is at full exposure and warm. A cleared room keeps its lamp on and
 ## nobody in it.
-const TONE_DARK := Color(0.34, 0.32, 0.44)
+## Raised 2026-09-19 against ops/check_brightness.py. The *contrast* between an unlit and a
+## lit cell is the mechanic — progress is how much of the section is lit — but the mechanic
+## only ever needed the ratio, and the floor it was sitting on put the whole frame at 0.13
+## against a shelf at 0.63. So every tone below is lifted and the ratio between them kept:
+## an unlit room is now dim furniture rather than a black rectangle, which is what the
+## comment above already said it should be.
+const TONE_DARK := Color(0.66, 0.62, 0.80)
 ## The night interiors are rendered under blue-ish ambient with one warm lamp. A lit cell
 ## has to read WARM against the concrete, so the lit tone pushes the lamp and pulls the
 ## ambient: this plus the gold PointLight2D is the whole of the "hot accent".
-const TONE_LIT := Color(1.22, 0.96, 0.74)
-const TONE_DONE := Color(0.62, 0.50, 0.40)
+const TONE_LIT := Color(1.34, 1.06, 0.82)
+const TONE_DONE := Color(0.94, 0.82, 0.68)
 ## The concrete of the section, and the brighter cut faces of a slab.
 ## The section has to be *visible* concrete, or the cells read as floating cards again:
-## the first pass put the mass at 0.13 and it disappeared into the sky. The band is
-## 0.10-0.34 — still nearly black beside a lit room at 1.0, but a building.
-const CONCRETE := Color(0.15, 0.135, 0.175)
-const CONCRETE_SLAB := Color(0.225, 0.20, 0.25)
-const CONCRETE_CUT := Color(0.27, 0.24, 0.30)
-const CONCRETE_SIDE := Color(0.075, 0.065, 0.095)
+## the first pass put the mass at 0.13 and it disappeared into the sky. Lifted with the
+## tones above: still clearly darker than a lit room, but concrete someone could touch.
+const CONCRETE := Color(0.34, 0.31, 0.39)
+const CONCRETE_SLAB := Color(0.46, 0.42, 0.51)
+const CONCRETE_CUT := Color(0.54, 0.49, 0.58)
+const CONCRETE_SIDE := Color(0.22, 0.19, 0.27)
 
 var art: Node2D          # the parallax group: everything that is not a label
 var sky: Sprite2D
@@ -213,8 +223,10 @@ func _ready() -> void:
 		var ss := sky.texture.get_size()
 		sky.scale = Vector2((BMCore.W + 96.0) / ss.x, (BMCore.H + 96.0) / ss.y)
 		sky.position = Vector2(-48, -48)
-		# deep, and not pink: the sky is the dark the lit rooms are read against
-		sky.modulate = Color(0.24, 0.21, 0.34)
+		# Not pink: the sky is what the lit rooms are read against. It was at 0.24, which
+		# made the largest single area of the map nearly black; the city is a night city
+		# with its own lights on, so it carries colour and the rooms still out-read it.
+		sky.modulate = Color(0.72, 0.64, 0.88)
 	art.add_child(sky)
 
 	# --- the mass: one block of concrete, cut through ---------------------------------------

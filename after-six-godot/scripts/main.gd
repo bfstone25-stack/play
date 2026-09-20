@@ -17,8 +17,15 @@ extends Control
 
 const CJK := "res://assets/fonts/NotoSansCJK-subset.otf"
 ## node id -> which plate the brief and the node play on
-const NODE_PLATE := {"lobby": "lobby", "breakroom": "breakroom", "standup": "mon", "corridor1": "corridor",
-	"inbox": "tue", "allhands": "wed", "review": "thu", "corridor2": "corridor", "deploy": "fri"}
+## Every node opens on its own room, at night. These used to name the *day* game's plates
+## (mon/tue/wed/thu/fri), which the night-tint stopgap had already pushed two stops down —
+## so a node screen was a text card on a near-black gradient. They now name After Six's own
+## rendered night interiors; map_screen.FALLBACK still resolves a missing one to the day
+## plate, so a slot that has not been rendered degrades instead of disappearing.
+const NODE_PLATE := {"lobby": "as_room_lobby", "breakroom": "as_room_breakroom",
+	"standup": "as_room_standup", "corridor1": "as_room_corridor", "inbox": "as_room_inbox",
+	"allhands": "as_room_allhands", "review": "as_room_review", "corridor2": "as_room_corridor",
+	"deploy": "as_room_deploy"}
 const NODE_ACTOR := {"standup": "standup", "inbox": "inbox", "allhands": "allhands", "review": "review", "deploy": "deploy"}
 
 var arena: Node2D
@@ -126,9 +133,19 @@ func _show(name: String) -> void:
 	Game.tel("screen", {"screen": name})
 
 
+## How far a full-screen scrim is allowed to go. The call sites ask for 0.35-0.62, which was
+## tuned when the plate behind them was the day art at full brightness; over the night plates
+## it took every gameplay screen to 0.13-0.18 against a shelf at 0.63 (ops/check_brightness.py).
+## The intent of each call site — this screen wants more knock-back than that one — is worth
+## keeping, so the requested value is scaled rather than replaced, and capped. Text legibility
+## is carried by the Glass panel the copy actually sits on, not by darkening the whole frame.
+const DIM_SCALE := 0.42
+const DIM_MAX := 0.30
+
+
 func _dim(alpha: float) -> ColorRect:
 	var d := ColorRect.new()
-	d.color = Color(Palette.GROUND_DEEP, alpha)
+	d.color = Color(Palette.GROUND_DEEP, minf(alpha * DIM_SCALE, DIM_MAX))
 	d.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	d.mouse_filter = Control.MOUSE_FILTER_STOP
 	overlay.add_child(d)
@@ -329,7 +346,7 @@ func show_node(id: String) -> void:
 	var n := BMMap.node(id)
 	var st := BMMap.state(Game.profile, id)
 	arena.set_run({})
-	_plate(NODE_PLATE.get(id, "mon"))
+	_plate(NODE_PLATE.get(id, "as_room_standup"))
 	_dim(0.5)
 	var v := _panel(110, 340, "Glass")
 	v.add_child(_label(t("floor_%d" % int(n["floor"])) + " · " + t("kind_" + n["type"]).to_upper(), "Tag", 11, Palette.TUBE))
@@ -605,7 +622,7 @@ func show_triage() -> void:
 
 func _draw_triage() -> void:
 	_clear_overlay()
-	_plate("tue")
+	_plate("as_room_inbox")
 	_dim(0.55)
 	var tr := triage
 	# the strip: turn, actions, stress
@@ -710,7 +727,7 @@ func _tri_over() -> void:
 		Sfx.clear()
 		case_flags = {"leverage_xp": int(triage["xp"])}
 		_clear_overlay()
-		_plate("tue")
+		_plate("as_room_inbox")
 		_dim(0.55)
 		var v := _panel(200, 340, "Glass")
 		v.add_child(_label(t("tri_clear"), "Title", 26, Palette.GOLD))
@@ -742,7 +759,7 @@ func _sig_names(list: Array, prefix := "sig_") -> String:
 
 func _draw_review() -> void:
 	_clear_overlay()
-	_plate("thu")
+	_plate("as_room_review")
 	_dim(0.55)
 	var rv := review
 	var pr := BMReview.progress(rv)
@@ -839,7 +856,7 @@ func show_offer() -> void:
 	_clear_overlay()
 	_stop_run()
 	map.visible = false
-	_plate("thu")
+	_plate("as_room_review")
 	_dim(0.6)
 	Game.tel("offer_open", {"node": node_id})
 	var v := _panel(40, 380, "Glass")
@@ -864,7 +881,7 @@ func _offer_choose(choice: String) -> void:
 	case_flags["offer"] = choice
 	Game.tel("offer", {"choice": choice})
 	_clear_overlay()
-	_plate("thu")
+	_plate("as_room_review")
 	_dim(0.6)
 	var v := _panel(120, 360, "Glass")
 	v.add_theme_constant_override("separation", 10)
@@ -889,10 +906,12 @@ func show_return() -> void:
 	var first := AsCg.earn(slot, case_flags)
 	if first:
 		Game.tel("cg_earned", {"slot": slot, "offer": case_flags.get("offer", "")})
-	var path := AsCg.plate_path(slot)
-	if path != "":
+	# plate_texture, not load(plate_path(...)): a gateway-delivered plate is a user:// file
+	# and ResourceLoader will not open it.
+	var tex := AsCg.plate_texture(slot)
+	if tex != null:
 		var tr := TextureRect.new()
-		tr.texture = load(path)
+		tr.texture = tex
 		tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -942,7 +961,7 @@ func show_clear() -> void:
 	_clear_overlay()
 	_stop_run()
 	map.visible = false
-	_plate("sat")
+	_plate("as_room_allhands")
 	_dim(0.45)
 	Game.tel("night_clear", {"week": Game.profile["week"]})
 	var v := _panel(140, 340, "Glass")
@@ -968,7 +987,7 @@ func show_placement() -> void:
 
 func _draw_placement() -> void:
 	_clear_overlay()
-	_plate("fri")
+	_plate("as_room_deploy")
 	_dim(0.45)
 	var top := _panel(6, 400, "Glass")
 	top.add_theme_constant_override("separation", 2)
@@ -1042,7 +1061,7 @@ func show_event(id: String) -> void:
 	map.visible = false
 	node_id = id
 	var e := BMEvents.pick(Game.profile, id)
-	_plate("corridor")
+	_plate("as_room_corridor")
 	_dim(0.5)
 	var v := _panel(150, 340, "Glass")
 	v.add_child(_label(t("ev_title"), "Tag", 12, Palette.TUBE))
@@ -1075,7 +1094,7 @@ func _ev_choose(choice: String) -> void:
 		lines.append(t("fx_none"))
 	var show := func():
 		_clear_overlay()
-		_plate("corridor")
+		_plate("as_room_corridor")
 		_dim(0.5)
 		var v := _panel(200, 340, "Glass")
 		v.add_child(_label(t("ev_title"), "Tag", 12, Palette.TUBE))
@@ -1094,7 +1113,7 @@ func show_breakroom() -> void:
 	_clear_overlay()
 	_stop_run()
 	map.visible = false
-	_plate("breakroom")
+	_plate("as_room_breakroom")
 	_dim(0.45)
 	var p: Dictionary = Game.profile
 	var m := BMMap.ensure(p)
@@ -1161,7 +1180,7 @@ func show_weekend() -> void:
 	_clear_overlay()
 	_stop_run()
 	map.visible = false
-	_plate("sat")
+	_plate("as_room_allhands")
 	_dim(0.4)
 	var v := _panel(160, 340, "Glass")
 	v.add_child(_label(t("weekend"), "Title", 32, Palette.GOLD))

@@ -32,25 +32,49 @@ DST = PROJ / "assets/art"
 #   as_sky        01  the far city glow with a lit horizon; 00 is empty haze and 02's
 #                     towers compete with the section standing in front of them
 #   as_shell      02  plain poured concrete; 00 cracks too hard, 01 is a riveted plate
-# The rooms, all chosen on one rule: the frame where the ONE light source is doing the
-# work, because at 80 px a lit cell has to read as a lit cell and nothing else.
-#   lobby      01  reception desks with their lamps on, a lit door at the end of the hall
-#   breakroom  02  the vending machine glowing and two warm ceiling lamps: Riley stayed
-#   standup    01  rows of dark desks with window-light bars across the carpet
-#   corridor   00  doors closed and light spilling under one of them
-#   inbox      00  one desk lamp over papers and an open drawer — Mira's lamp is on
-#   allhands   00  the window wall, benches, warm lamps: everyone waiting on the last train
-#   review     02  two chairs across a small table, one lamp, the city behind the glass
-#   deploy     00  the server aisle, amber racks, one lit door
+#
+# ---- the rooms, re-picked 2026-09-19 (the brightness pass) --------------------------------
+# The old rule here was "the frame where the ONE light source is doing the work". That rule
+# is what produced a set measuring 0.22-0.44 brightness, and screens built on it measured
+# 0.13-0.18 against a market at 0.63/0.38 (ops/check_brightness.py). The generator's style
+# block has been rewritten (beat_monday_gen.py, STYLE_AS_ROOM) and every room re-rendered.
+#
+# The new rule: **the frame that is an office at night, lit, that a player could work in.**
+# The night is carried by the windows and by what is switched off, not by underexposure.
+#
+# Two corrections are worth keeping, because both cost a re-render:
+#   * v1 of the new style stacked "colorful / vivid / saturated" on neon-through-the-glass
+#     and every room came back a magenta wash at saturation 0.55-0.63 — bright, and dyed.
+#     Caught only by looking at native resolution; the meter was perfectly happy.
+#   * Where two candidates both read, the pick goes to the one NEARER the market's 0.38
+#     saturation rather than the brightest or the most colourful. Over-shooting the shelf
+#     is its own failure — UI_DIRECTION was amended the same night after The Other Side's
+#     02:17 interiors were lit until they stopped being 02:17.
+#
+#   lobby      02  the lit reception hall; 00 and 01 read the same, 02 has the cleanest floor
+#   breakroom  01  vending machine glowing, ceiling lamps on, a laptop left open on the
+#                  counter. 0.63/0.40, the closest frame in the whole set to the market
+#   standup    00  open-plan at night: fluorescents on, monitors dark, the exit sign green,
+#                  one desk lamp still burning. 01 is the one frame that still measures dark
+#   corridor   00  PENDING the re-render — this index is still v1 and v1 of corridor is the
+#                  worst of the magenta-wash frames. See the honest list in README.md
+#   inbox      00  desks, stacked paper, one lamp on over them — Mira's lamp. 01 is brighter
+#                  but its saturation runs to 0.59
+#   allhands   01  the window wall at 0.62/0.43; 00 and 02 read the same scene at 0.60 sat
+#   review     02  the executive room: two chairs at the table, a document and a glass on
+#                  it, lamps, the night city filling the glass wall. This is the room the
+#                  offer and the confrontation happen in and it has to read as that room —
+#                  00 lost the table entirely and 01 is brighter but emptier
+#   deploy     00  the server aisle: racks both sides, blue status lights, a lit far wall
 PICK = {
     "as_sky": (1, (512, 768)),
     "as_shell": (2, (512, 512)),
-    "as_room_lobby": (1, (512, 384)),
-    "as_room_breakroom": (2, (512, 384)),
-    "as_room_standup": (1, (512, 384)),
+    "as_room_lobby": (2, (512, 384)),
+    "as_room_breakroom": (1, (512, 384)),
+    "as_room_standup": (0, (512, 384)),
     "as_room_corridor": (0, (512, 384)),
     "as_room_inbox": (0, (512, 384)),
-    "as_room_allhands": (0, (512, 384)),
+    "as_room_allhands": (1, (512, 384)),
     "as_room_review": (2, (512, 384)),
     "as_room_deploy": (0, (512, 384)),
 }

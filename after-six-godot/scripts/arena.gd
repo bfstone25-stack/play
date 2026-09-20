@@ -36,12 +36,22 @@ func set_run(r: Dictionary) -> void:
 		_combo_seen = r["rantCombo"].size()
 
 
+## The room a day's round is fought in. The day ids are inherited from the day game
+## (mon..fri); After Six fights each of them in the night interior of the room that day's
+## boss occupies, so the arena is a place rather than a gradient. Falls back to the day
+## plate through map_screen.FALLBACK if a night room has not been installed yet.
+const DAY_ROOM := {
+	"mon": "as_room_standup", "tue": "as_room_inbox", "wed": "as_room_allhands",
+	"thu": "as_room_review", "fri": "as_room_deploy", "sat": "as_room_breakroom",
+}
+
+
 func _load_plate(day_id: String) -> void:
 	if plate_day == day_id:
 		return
 	plate_day = day_id
-	var path := "res://assets/art/plate_%s.webp" % day_id
-	plate = load(path) if ResourceLoader.exists(path) else null
+	var path: String = MapScreen.plate_path(DAY_ROOM.get(day_id, day_id))
+	plate = load(path) if path != "" else null
 
 
 var _shots_seen := 0
@@ -119,9 +129,14 @@ func _draw() -> void:
 	var size := Vector2(BMCore.W, BMCore.H)
 	var day_id: String = run["day"]["id"] if not run.is_empty() else "mon"
 	if plate:
-		# the plate is cooled and pushed back so the drawn things in front of it read
-		draw_texture_rect(plate, Rect2(Vector2.ZERO, size), false, Color(0.78, 0.84, 0.95))
-		draw_rect(Rect2(Vector2.ZERO, size), Color(Palette.GROUND, 0.38))
+		# The plate is pushed back only as far as the playfield actually needs. It used to
+		# be multiplied by (0.78, 0.84, 0.95) AND covered by GROUND at 0.38, which together
+		# took a 0.4-brightness room down past 0.15 — the room stopped being a picture and
+		# became a gradient. The separation the sprites need comes from the vignette below
+		# and from their own outlines, not from drowning the room: barely cooled, and a
+		# scrim light enough that the furniture still reads.
+		draw_texture_rect(plate, Rect2(Vector2.ZERO, size), false, Color(0.94, 0.96, 1.0))
+		draw_rect(Rect2(Vector2.ZERO, size), Color(Palette.GROUND, 0.16))
 	else:
 		Sprites.office(self, size, day_id, clock)
 	# vignette: the room falls off at the edges so the play reads in the middle

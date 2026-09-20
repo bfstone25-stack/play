@@ -12,9 +12,12 @@
 ##                   script is not a watched ad (memory ad-gate-rules).
 ##   3. The pack.    The open tier-3 plate never ships in a web pack (export_presets.cfg
 ##                   excludes assets/cg_open/); a boolean hides nothing. Delivery of the open
-##                   bytes through the gateway (Floor 13 X's unlock.gd) is NOT wired yet —
-##                   see the honest list in README.md — so on the web tracks an unlock today
-##                   still draws the locked plate.
+##                   bytes through the gateway IS wired (2026-09-19): as_unlock.gd takes a
+##                   ticket when the gate opens and fetches the real bytes when it clears,
+##                   and `is_unlocked` on the web means those bytes are on this machine.
+##                   A gate that clears against a gateway with nothing staged still answers
+##                   "unavailable" and still draws the censored plate — the honest answer
+##                   survives, it is only the *silent* failure that is gone.
 ##   4. Downloads carry no third-party call: every branch returns before touching
 ##                   JavaScriptBridge when OS.has_feature("web") is false.
 extends Node
@@ -38,10 +41,14 @@ signal earned(slot: String)
 var _earned: Dictionary = {}
 var _unavailable: Dictionary = {}
 var _unlocked: Dictionary = {}
+var unlock: AsUnlock
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	unlock = AsUnlock.new()
+	unlock.name = "AsUnlock"
+	add_child(unlock)
 
 
 func reset() -> void:
@@ -88,7 +95,7 @@ func is_web() -> bool:
 
 
 func is_paid_build() -> bool:
-	return not is_web()
+	return not is_web() and not AsUnlock.simulate_free
 
 
 func has_open_plate(slot: String) -> bool:
@@ -104,7 +111,10 @@ func is_unlocked(slot: String) -> bool:
 		return false
 	if is_paid_build():
 		return has_open_plate(slot)
-	return _unlocked.has(slot) and has_open_plate(slot)
+	# On the web the open bytes are not in the pack at all, so the only thing that can make
+	# this true is a real delivery. `_unlocked` (the page gate's answer) is deliberately NOT
+	# consulted here: the gate clearing is the permission, the bytes arriving is the unlock.
+	return AsUnlock.delivered(slot)
 
 
 func was_unavailable(slot: String) -> bool:
@@ -121,6 +131,10 @@ func request_unlock(slot: String) -> String:
 		return "unlocked" if has_open_plate(slot) else "unavailable"
 	if not JavaScriptBridge.eval("window.Gate ? 1 : 0"):
 		return "closed"   # a page without gate.js (local test) reveals nothing extra
+	# The ticket is taken BEFORE the gate runs, so the gateway's dwell clock starts with
+	# the gate rather than with the redeem. A failure here is not fatal: the gate still
+	# runs, and redeem() below will simply find no ticket and answer "unavailable".
+	await unlock.start(slot)
 	var title: String = str(SLOTS[slot].title)
 	var has_x: bool = bool(JavaScriptBridge.eval("window.AfterSixGate ? 1 : 0"))
 	var js := ""
@@ -148,7 +162,11 @@ func request_unlock(slot: String) -> String:
 		result = str(r) if r != null else ""
 	if result == "unlocked":
 		_unlocked[slot] = true
-		if not has_open_plate(slot):
+		# The gate said yes; now go and get the art. This is the step that was missing —
+		# without it the next line found no bytes and every real unlock degraded to
+		# "unavailable", which is how a cleared gate drew the locked plate.
+		await unlock.redeem(slot)
+		if not is_unlocked(slot):
 			# the gate cleared and there are no bytes to show: that is not an unlock
 			result = "unavailable"
 	if result == "unavailable":
@@ -165,9 +183,28 @@ func plate_path(slot: String) -> String:
 	if not SLOTS.has(slot):
 		return ""
 	if is_unlocked(slot):
-		return OPEN_DIR + slot + ".webp"
+		# On the web the bytes live in user://, delivered by the gateway; in the paid build
+		# they are in the pack. Both are "the open plate", and the caller must go through
+		# plate_texture() rather than load(), because load() only understands res://.
+		if not is_paid_build() and AsUnlock.delivered(slot):
+			return AsUnlock.saved_path(slot)
+		if has_open_plate(slot):
+			return OPEN_DIR + slot + ".webp"
 	var locked := LOCKED_DIR + slot + "_locked.webp"
 	return locked if ResourceLoader.exists(locked) else ""
+
+
+## The plate to draw right now, decoded. Use this rather than load(plate_path(...)): a
+## delivered plate is a user:// file that ResourceLoader will not touch, and a silent null
+## there is exactly the "cleared gate draws nothing" bug this all exists to prevent.
+func plate_texture(slot: String) -> Texture2D:
+	var path := plate_path(slot)
+	if path == "":
+		return null
+	if path.begins_with("res://"):
+		var res := load(path)
+		return res if res is Texture2D else null
+	return AsUnlock.delivered_texture(slot)
 
 
 func is_showing_censored(slot: String) -> bool:
