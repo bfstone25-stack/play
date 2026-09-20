@@ -126,11 +126,27 @@ func _build_stage() -> void:
 	# lit ground to sit on. This gradient used to run the other way, to near-black, which
 	# is how a bright key visual still ended up looking like a study.
 	var grad := Gradient.new()
-	grad.offsets = PackedFloat32Array([0.0, 0.45, 1.0])
-	# 0.97 / 0.62, not 0.92 / 0.45: the key visual that landed is a dense candy field and
-	# the first capture had the tagline and the rule lines competing with pastel blocks
-	# right behind them. A title screen's copy column gets a clean ground.
-	grad.colors = PackedColorArray([Color(Palette.GROUND, 0.97), Color(Palette.GROUND, 0.62), Color(Palette.GROUND, 0.0)])
+	# 2026-09-20, the saturation pass. The captured frame measured 0.90 brightness and
+	# **0.20 saturation** against the shelf floor of 0.45/0.30 — the "bright and washed"
+	# failure named in ops/adult_forks/UI_DIRECTION.md, which is the same kind of miss as
+	# a frame that is too dark, arrived at from the other side. Half the screen was a flat
+	# near-opaque field of GROUND (#FFF1D6, a cream two points off white), so half the
+	# pixels contributed almost no chroma at all and dragged the mean down on their own.
+	#
+	# Two changes, both aimed at that number rather than at the mood:
+	#
+	#   the scrim is tinted, not bleached. GROUND_DEEP (#FFE0A8) is the warm end of the
+	#   same daylight gradient and carries real chroma while staying a lit ground for dark
+	#   text — the copy column loses none of its contrast (MUTED and TEXT are both
+	#   measured against GROUND, and GROUND_DEEP is the darker of the pair, so both ratios
+	#   go up rather than down).
+	#
+	#   the falloff is tighter. 0.34 instead of 0.45 for the midpoint, so the opaque zone
+	#   covers the copy column and stops, and the key visual keeps a third more of the
+	#   frame. The picture is the most saturated thing on the screen; giving it area is
+	#   the cheapest chroma there is.
+	grad.offsets = PackedFloat32Array([0.0, 0.34, 1.0])
+	grad.colors = PackedColorArray([Color(Palette.GROUND_DEEP, 0.96), Color(Palette.GROUND_DEEP, 0.55), Color(Palette.GROUND_DEEP, 0.0)])
 	var gt := GradientTexture2D.new()
 	gt.gradient = grad
 	gt.fill_from = Vector2(0, 0)
@@ -448,7 +464,23 @@ func _demo_build() -> void:
 		c.queue_free()
 	_demo_pieces.clear()
 	var vp := get_viewport_rect().size
-	_demo_cs = clampf(vp.x * 0.24 / maxf(1, Fold.cols), 30.0, 62.0)
+	# 2026-09-20, the saturation pass. This was `vp.x * 0.24` capped at 62, which on a
+	# 1280-wide frame clamped a four-column board to 62 px cells — a small dark postage
+	# stamp floating on the right of the picture.
+	#
+	# It is worth making big for two separate reasons that happen to agree. The composition
+	# one: this board is the only place the title screen shows the player what the game
+	# actually is, and it was reading as a decoration rather than as the subject. The
+	# measured one: the captured frame failed the shelf on SATURATION (0.20 against 0.30),
+	# and the three rendered plates behind it are all washed too (0.24-0.29 measured), so
+	# the chroma cannot come from the picture. It has to come from the board — the deep
+	# teal tray and the candy tile ramp are by a wide margin the most saturated pixels on
+	# the screen, and the cheapest way to raise a mean is to give those pixels area.
+	#
+	# 0.34 of the width at a 92 px ceiling. Still clamped, because the attract board must
+	# never grow into the copy column on a wide window, and still floored at 30 for the
+	# phone read.
+	_demo_cs = clampf(vp.x * 0.34 / maxf(1, Fold.cols), 30.0, 92.0)
 	# the wells the pieces sit in
 	for r in range(Fold.rows):
 		for c in range(Fold.cols):
@@ -460,7 +492,16 @@ func _demo_build() -> void:
 			s.position = _demo_pos(r, c)
 			# surface_stand_in averages white, so this modulate is the colour it says it
 			# is — plate_or_stand_in would have multiplied it darker (see art.gd's note)
-			s.modulate = Color(Palette.WALL_FACE if wall else Palette.TABLE, 1.0)
+			#
+			# 2026-09-20: this was Palette.TABLE — the *tray* colour, the darkest value the
+			# board owns — for every empty cell. Palette.WELL exists precisely for this and
+			# its own note says why: "a well is now a lit recess: lighter than the tray,
+			# desaturated against the candy... the board stopped looking perforated." That
+			# fix was made for the playfield and never reached the title screen, so the
+			# attract board went on drawing its empty cells as holes. It shows worst late
+			# in the loop, when most tiles have merged away and the composition is eight
+			# dark squares and one candy one punched into the key visual.
+			s.modulate = Color(Palette.WALL_FACE if wall else Palette.WELL, 1.0)
 			_demo.add_child(s)
 			# the same hairline the board draws, so the demo grid reads as a grid
 			var edge := Line2D.new()
