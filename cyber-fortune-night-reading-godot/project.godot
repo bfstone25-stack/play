@@ -1,0 +1,45 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="Night Reading"
+config/description="夜读 / Cyber Fortune: Night Reading. By day you read people; after dark, what you read becomes true. The adult fork of 赛博求签 (ops/adult_forks/cyber_fortune_night_reading.md). 18+ — adult track only on *.flat404.workers.dev."
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.071, 0.031, 0.059, 1)
+boot_splash/show_image=false
+
+[autoload]
+
+Gate="*res://scripts/gate.gd"
+Tx="*res://scripts/i18n.gd"
+Fortune="*res://scripts/fortune.gd"
+Night="*res://scripts/night.gd"
+Sfx="*res://scripts/sfx.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[gui]
+
+theme/default_font_antialiasing=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method.web="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.071, 0.031, 0.059, 1)
