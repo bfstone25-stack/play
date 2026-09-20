@@ -92,8 +92,13 @@ func _ready() -> void:
 	start_night()
 	# The web build is the one that gets opened from a link by someone who has not read a
 	# store page, and it had no age wall of any kind. A download has already been bought
-	# from an 18+ listing, and the headless tests are not the web, so neither sees this.
-	if OS.has_feature("web"):
+	# from an 18+ listing -- but the title screen is not only an age wall, it is the game's
+	# face, and on 2026-09-20 that reasoning had cost this fork its face everywhere except
+	# the web: a desktop window opened straight onto the intro paragraph over flat black,
+	# which is the "office software" screen Blaze rejected by name. Every build now shows
+	# it. The headless tests still do not -- they have no display and dismiss_splash is
+	# still the only way through.
+	if not OS.has_feature("headless"):
 		_show_splash()
 
 
