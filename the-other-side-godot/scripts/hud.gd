@@ -9,6 +9,10 @@ var note_t := 0.0
 var fear := 0.0
 var clock: Label
 var title: Label
+var title_card: Control
+var title_sub: Label
+var title_rule: ColorRect
+var note_card: Control
 var grain: ColorRect
 var splash: Control
 var dlg: Control
@@ -45,20 +49,77 @@ func _clock() -> void:
 	UiFont.apply_label(clock)
 	add_child(clock)
 
+## The title / chapter card, as a door plate.
+##
+## The first capture had this as one centred two-line Label at the vertical middle of the
+## screen, where it landed on top of the mirror's billboard prompt and its own second line
+## — three pieces of text inside eighty pixels. Two things fix it and both are needed: the
+## card moves to a band at the TOP that nothing else in the HUD occupies, and it becomes
+## an object instead of floating letters. The object is the brass door plate off 401 and
+## 402, which is the one piece of furniture this game is actually about.
 func _title() -> void:
+	title_card = Control.new()
+	title_card.name = "TitleCard"
+	title_card.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	title_card.offset_left = -330.0
+	title_card.offset_right = 330.0
+	title_card.offset_top = 92.0
+	title_card.offset_bottom = 196.0
+	title_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	title_card.visible = false
+	add_child(title_card)
+
+	var plate := ColorRect.new()
+	plate.set_anchors_preset(Control.PRESET_FULL_RECT)
+	plate.color = Color(0.072, 0.036, 0.056, 0.86)
+	plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	title_card.add_child(plate)
+	# Two edges, not a border: a hot rule along the top and a dull brass one along the
+	# bottom, so the plate has a lit side and reads as metal rather than as a rectangle.
+	var top_edge := ColorRect.new()
+	top_edge.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	top_edge.offset_bottom = 3.0
+	top_edge.color = Color(1.0, 0.24, 0.54, 1)
+	top_edge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	title_card.add_child(top_edge)
+	var bot_edge := ColorRect.new()
+	bot_edge.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	bot_edge.offset_top = -1.0
+	bot_edge.color = Color(1.0, 0.7, 0.28, 0.5)
+	bot_edge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	title_card.add_child(bot_edge)
+
 	title = Label.new()
 	title.name = "Title"
-	title.set_anchors_preset(Control.PRESET_CENTER)
-	title.offset_left = -280.0
-	title.offset_right = 280.0
-	title.offset_top = -250.0
-	title.offset_bottom = -170.0
+	title.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	title.offset_top = 16.0
+	title.offset_bottom = 62.0
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 26)
-	title.add_theme_color_override("font_color", Color(1.0, 0.24, 0.54, 1))
-	title.visible = false
-	UiFont.apply_label(title)
-	add_child(title)
+	title.add_theme_font_size_override("font_size", 33)
+	title.add_theme_color_override("font_color", Color(1.0, 0.96, 0.92, 1))
+	UiFont.apply_display(title)
+	title_card.add_child(title)
+
+	title_rule = ColorRect.new()
+	title_rule.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	title_rule.offset_left = -46.0
+	title_rule.offset_right = 46.0
+	title_rule.offset_top = 66.0
+	title_rule.offset_bottom = 67.0
+	title_rule.color = Color(1.0, 0.7, 0.28, 0.65)
+	title_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	title_card.add_child(title_rule)
+
+	title_sub = Label.new()
+	title_sub.name = "TitleSub"
+	title_sub.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	title_sub.offset_top = 74.0
+	title_sub.offset_bottom = 98.0
+	title_sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title_sub.add_theme_font_size_override("font_size", 16)
+	title_sub.add_theme_color_override("font_color", Color(0.72, 0.54, 0.63, 1))
+	UiFont.apply_label(title_sub)
+	title_card.add_child(title_sub)
 
 func _grain() -> void:
 	grain = ColorRect.new()
@@ -110,11 +171,55 @@ func _splash() -> void:
 	add_child(splash)
 
 ## UI_DIRECTION.md: dark ground, hot accents. Text warm off-white, never grey.
+##
+## The note also gets moved out of the centre of the screen and onto a surface. It used to
+## be centred white prose floating over the room at exactly the height of the mirror, so it
+## sat on the plate AND under the title card; and unbacked body text over a lit bathroom
+## fails the TITLE_SCREENS.md legibility check at 390 px whatever colour it is.
 func _palette() -> void:
 	prompt.add_theme_color_override("font_color", Color(1.0, 0.96, 0.92, 1))
 	objective.add_theme_color_override("font_color", Color(1.0, 0.7, 0.28, 0.95))
-	note.add_theme_color_override("font_color", Color(1.0, 0.96, 0.92, 1))
 	vignette.color = Color(0.07, 0.03, 0.06, 0.04)
+
+	note_card = Control.new()
+	note_card.name = "NoteCard"
+	note_card.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	note_card.offset_left = -400.0
+	note_card.offset_right = 400.0
+	note_card.offset_top = -258.0
+	note_card.offset_bottom = -104.0
+	note_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	note_card.visible = false
+	add_child(note_card)
+	var bg := ColorRect.new()
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(0.072, 0.036, 0.056, 0.9)
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	note_card.add_child(bg)
+	# One hot bar down the left, the way a margin rule marks a passage. The panel is the
+	# only lit-looking thing in the lower half, so the eye goes to the words.
+	var bar := ColorRect.new()
+	bar.set_anchors_preset(Control.PRESET_LEFT_WIDE)
+	bar.offset_right = 3.0
+	bar.color = Color(1.0, 0.24, 0.54, 1)
+	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	note_card.add_child(bar)
+
+	# Reparent the scene's Note label into the panel, left-aligned: centred prose of three
+	# uneven lines reads as a credits roll, not as something the character is noticing.
+	note.reparent(note_card)
+	note.set_anchors_preset(Control.PRESET_FULL_RECT)
+	note.offset_left = 26.0
+	note.offset_right = -26.0
+	note.offset_top = 18.0
+	note.offset_bottom = -18.0
+	note.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	note.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	note.add_theme_font_size_override("font_size", 19)
+	note.add_theme_color_override("font_color", Color(1.0, 0.96, 0.92, 1))
+	# The label itself is always shown from here on; note_card carries the visibility, so
+	# the _ready() hide above must be undone or show_note() would raise an empty panel.
+	note.visible = true
 
 func _dialogue() -> void:
 	dlg = Control.new()
@@ -126,7 +231,7 @@ func _dialogue() -> void:
 	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	panel.offset_top = -210.0
 	panel.offset_bottom = 0.0
-	panel.color = Color(0.118, 0.063, 0.09, 0.94)
+	panel.color = Color(0.2, 0.115, 0.16, 0.95)
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	dlg.add_child(panel)
 	var edge := ColorRect.new()
@@ -172,7 +277,8 @@ func show_dialogue(lines: Array, choices: Array) -> int:
 	dlg_result = -1
 	dlg_open = true
 	dlg.visible = true
-	note.visible = false
+	if note_card:
+		note_card.visible = false
 	_dlg_draw()
 	var r: int = await dialogue_done
 	dlg.visible = false
@@ -239,27 +345,38 @@ func set_clock(t: String) -> void:
 	if clock:
 		clock.text = t
 
-func show_title(t: String) -> void:
-	title.text = t
-	title.visible = true
+## Callers pass "Name\nsubtitle"; the two lines are set in two different faces and sizes
+## on the plate rather than stacked in one Label, which is what let them collide.
+func show_title(t: String, sub := "") -> void:
+	var head := t
+	if sub == "" and t.contains("\n"):
+		var parts := t.split("\n", true, 1)
+		head = parts[0]
+		sub = parts[1]
+	title.text = head
+	title_sub.text = sub
+	title_sub.visible = sub != ""
+	title_rule.visible = sub != ""
+	title_card.visible = true
 
 func hide_title() -> void:
-	if title:
-		title.visible = false
+	if title_card:
+		title_card.visible = false
 
 func set_fear(v: float) -> void:
 	fear = v
 
 func show_note(t: String) -> void:
 	note.text = t
-	note.visible = true
+	if note_card:
+		note_card.visible = true
 	note_t = 9.0
 
 func _process(delta: float) -> void:
 	if note_t > 0.0:
 		note_t -= delta
-		if note_t <= 0.0:
-			note.visible = false
+		if note_t <= 0.0 and note_card:
+			note_card.visible = false
 	vignette.color.a = 0.04 + fear * 0.28
 	if grain and grain.material is ShaderMaterial:
 		(grain.material as ShaderMaterial).set_shader_parameter("grain", 0.05 + fear * 0.1)

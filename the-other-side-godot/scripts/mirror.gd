@@ -11,8 +11,11 @@ extends StaticBody3D
 const SLOT := "cg_mirror"
 
 @export var prompt := "Look in the mirror"
+## Which way the glass faces. 402 is 401 mirrored in x, so it cannot be assumed to be +x.
+@export var face_x := 1.0
 
 var quad: MeshInstance3D
+var steam: MeshInstance3D
 var mat: StandardMaterial3D
 var glass: MeshInstance3D
 var kept := true
@@ -28,56 +31,105 @@ func _ready() -> void:
 	add_to_group("mirror")
 	collision_layer = 1
 	collision_mask = 0
-	var frame := MeshInstance3D.new()
-	var fb := BoxMesh.new()
-	fb.size = Vector3(0.04, 0.78, 0.53)
-	frame.mesh = fb
+	var sx := signf(face_x)
+	# A bezel with an actual rebate, built as four sides rather than one slab, so the
+	# plate sits INSIDE a recess and the frame crops its edges. The first pass hung a
+	# 0.43x0.68 quad in front of a 0.45x0.70 slab: every edge of the render was visible,
+	# which is what made it read as a photograph taped to the wall.
 	var fm := StandardMaterial3D.new()
-	fm.albedo_color = Color(0.12, 0.06, 0.09)
-	fm.metallic = 0.6
-	fm.roughness = 0.3
-	frame.material_override = fm
-	add_child(frame)
+	fm.albedo_color = Color(0.13, 0.07, 0.1)
+	fm.metallic = 0.55
+	fm.roughness = 0.34
+	# The opening is 0.44 x 0.66 and the plate quad behind it is 0.48 x 0.70, so every edge
+	# of the render is under a rail or a stile by 20 mm. That overlap is the whole trick:
+	# a plate whose own border is visible reads as a picture ON the wall no matter how well
+	# it is lit.
+	for side in [
+		{"p": Vector3(0, 0.355, 0), "s": Vector3(0.07, 0.05, 0.6)},    # top rail
+		{"p": Vector3(0, -0.355, 0), "s": Vector3(0.07, 0.05, 0.6)},   # bottom rail
+		{"p": Vector3(0, 0, 0.245), "s": Vector3(0.07, 0.76, 0.05)},   # near stile
+		{"p": Vector3(0, 0, -0.245), "s": Vector3(0.07, 0.76, 0.05)},  # far stile
+	]:
+		var r := MeshInstance3D.new()
+		var rb := BoxMesh.new()
+		rb.size = side["s"]
+		r.mesh = rb
+		r.position = side["p"]
+		r.material_override = fm
+		add_child(r)
+	# The glass, set back behind the bezel face. Dark and sharp: it is what the plate is
+	# seen *through*, and what is left when the choice empties it.
 	glass = MeshInstance3D.new()
 	var gb := BoxMesh.new()
-	gb.size = Vector3(0.03, 0.7, 0.45)
+	gb.size = Vector3(0.025, 0.72, 0.5)
 	glass.mesh = gb
-	glass.position.x = 0.012
+	glass.position.x = sx * -0.012
 	var gm := StandardMaterial3D.new()
-	gm.albedo_color = Color(0.06, 0.03, 0.05)
-	gm.metallic = 0.9
-	gm.roughness = 0.05
+	gm.albedo_color = Color(0.05, 0.025, 0.045)
+	gm.metallic = 0.92
+	gm.roughness = 0.06
 	glass.material_override = gm
 	add_child(glass)
 	quad = MeshInstance3D.new()
 	var qm := QuadMesh.new()
-	qm.size = Vector2(0.43, 0.68)
+	qm.size = Vector2(0.48, 0.70)
 	quad.mesh = qm
-	quad.rotation.y = PI * 0.5
-	quad.position.x = 0.035
+	quad.rotation.y = sx * PI * 0.5
+	quad.position.x = sx * 0.004
 	mat = StandardMaterial3D.new()
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	# Lit, not unshaded. An unshaded plate is drawn at full brightness no matter how dark
+	# the room is, which is exactly the "floating" read — the figure has to be standing in
+	# the same light as the tiles around it. Emission carries it in the dark without
+	# letting it ignore the bulb.
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_PER_PIXEL
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
-	mat.albedo_color = Color(0.85, 0.72, 0.8, 0.96)
+	mat.albedo_color = Color(0.82, 0.79, 0.83, 0.97)
+	mat.roughness = 0.8
+	mat.metallic = 0.0
+	mat.emission_enabled = true
+	mat.emission_energy_multiplier = 0.05
 	quad.material_override = mat
 	add_child(quad)
 	base_pos = quad.position
+	_steam(sx)
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
 	sh.size = Vector3(0.4, 0.9, 0.7)
 	col.shape = sh
 	add_child(col)
-	var tag := Label3D.new()
-	tag.text = prompt
-	tag.font_size = 24
-	tag.pixel_size = 0.0022
-	tag.position = Vector3(0.1, 0.52, 0)
-	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	tag.modulate = Color(1.0, 0.24, 0.54)
-	UiFont.apply_3d(tag)
-	add_child(tag)
+	# No Label3D tag. The HUD already prints "E / click  Look in the mirror" along the
+	# bottom, and the billboard copy of it landed dead centre of frame on top of the
+	# title card — two pieces of text in the same 80 px, neither readable.
 	_load_plate()
+
+## Condensation on the glass, in front of the plate: a breath of haze that belongs to a
+## bathroom with the light left on, and the thing that makes the plate read as behind
+## glass rather than printed on the wall.
+func _steam(sx: float) -> void:
+	steam = MeshInstance3D.new()
+	var qm := QuadMesh.new()
+	qm.size = Vector2(0.44, 0.66)
+	steam.mesh = qm
+	steam.rotation.y = sx * PI * 0.5
+	steam.position.x = sx * 0.016
+	var img := Image.create(64, 96, false, Image.FORMAT_RGBA8)
+	for y in 96:
+		for x in 64:
+			var dx := (x - 32) / 32.0
+			var dy := (y - 48) / 48.0
+			# Heavier at the edges, clear in the middle — wiped, or breathed around.
+			var edge := clampf((dx * dx + dy * dy) * 0.9 - 0.12, 0.0, 1.0)
+			var mott := 0.35 + 0.65 * float((x * 13 + y * 7) % 11) / 11.0
+			img.set_pixel(x, y, Color(0.92, 0.84, 0.86, edge * 0.5 * mott))
+	var m := StandardMaterial3D.new()
+	m.albedo_texture = ImageTexture.create_from_image(img)
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	m.cull_mode = BaseMaterial3D.CULL_DISABLED
+	m.albedo_color = Color(1, 1, 1, 0.3)
+	steam.material_override = m
+	add_child(steam)
 
 
 ## The plate chain, the same shape as play/overnight-clause/scripts/plates.gd pick():
@@ -97,7 +149,12 @@ func _load_plate() -> void:
 		if ResourceLoader.exists(locked):
 			tex = load(locked)
 	mat.albedo_texture = tex
+	# Emission carries the same image, not a flat wash, so the figure stays readable in a
+	# near-dark room without being lit from nowhere.
+	mat.emission_texture = tex
 	quad.visible = tex != null
+	if steam:
+		steam.visible = tex != null
 
 
 func _process(delta: float) -> void:

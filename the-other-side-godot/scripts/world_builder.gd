@@ -5,11 +5,26 @@ extends Node3D
 ## night palette (ops/adult_forks/UI_DIRECTION.md) — plum ground, hot accents. Each room of
 ## 402 holds one real thing where 401 holds a primitive.
 
-const WALL := Color(0.5, 0.36, 0.44)
-const FLOOR := Color(0.22, 0.12, 0.16)
-const WOOD := Color(0.32, 0.18, 0.10)
-const TILE := Color(0.5, 0.42, 0.5)
-const TRIM := Color(0.45, 0.38, 0.28)
+## Albedo is the *unlit* colour, and these went round the houses twice.
+##
+## The first pass used a mid mauve (0.50/0.36/0.44) under a saturated magenta bulb and the
+## screen came out a flat hot pink with no dark in it. The correction took the grounds to
+## plum-black — and then ops/check_brightness.py, against the cached Nutaku top-100, said
+## every frame of the game sat at 0.06-0.16 brightness and 0.68-0.92 saturation where the
+## shelf reads 0.63 / 0.38. Both passes failed the same test from opposite ends: one hue,
+## everywhere, doing all the work.
+##
+## So: surfaces are LIGHTER and LESS saturated than either attempt, the colour comes from
+## the lights rather than from the paint, and the darkness is spent where it means
+## something — the unlit half of the bathroom, the far end of the hall — instead of on
+## wallpaper. UI_DIRECTION.md's "dark ground, hot accents" is a scene, not a basis.
+const WALL := Color(0.4, 0.355, 0.375)
+const FLOOR := Color(0.28, 0.185, 0.205)
+const WOOD := Color(0.33, 0.21, 0.14)
+# Tile is the one surface the bathroom bulb hits square on, so it carries the highlight —
+# and it stays COOL, or a warm bulb on a warm tile renders the bathroom as brown wood.
+const TILE := Color(0.5, 0.53, 0.6)
+const TRIM := Color(0.48, 0.38, 0.26)
 
 var _plaster: StandardMaterial3D
 var _floor_mat: StandardMaterial3D
@@ -39,21 +54,35 @@ func _tex_from(img: Image, rough: float, uv: Vector3) -> StandardMaterial3D:
 	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	return m
 
+## Plaster. The noise has to be ISOTROPIC or the walls do not read as plaster.
+##
+## The first version summed (x*19 + y*11) % 23 with an xor term, and both of those are
+## linear in x and y, so their level sets are straight diagonal lines: the texture was a
+## diagonal corduroy. Stretched across a 7 m wall at uv 1.6 and then mipmapped, it
+## photographed as brushed wood panelling, which is why the flat looked like a sauna.
+## A hash of the coordinates has no preferred direction, and a tighter uv scale keeps the
+## grain at plaster size instead of smearing it the length of the room.
 func _plaster_mat() -> StandardMaterial3D:
 	var dim := 128 if OS.has_feature("web") else 256
 	var img := Image.create(dim, dim, false, Image.FORMAT_RGB8)
 	for y in dim:
 		for x in dim:
-			var speck := float((x * 19 + y * 11) % 23) / 90.0
-			var mott := 0.1 * (((x * 13) ^ (y * 7)) % 17) / 17.0
-			var n := mott + speck * 0.25 - 0.08
+			var h := (x * 374761393 + y * 668265263) & 0x7fffffff
+			h = (h ^ (h >> 13)) * 1274126177
+			var fine := float((h >> 8) & 255) / 255.0
+			# A smooth two-frequency mottle rather than a second hash: hashing a shifted
+			# coordinate quantises into visible 8 px squares, which read as mosaic tiling
+			# across a whole wall. The product of two sines at different frequencies in x
+			# and y has no straight level sets and no blocks.
+			var mott := sin(x * 0.051 + 1.7) * sin(y * 0.043) + 0.5 * sin(x * 0.017) * sin(y * 0.023 + 0.9)
+			var n := (fine - 0.5) * 0.05 + mott * 0.035
 			var c := Color(
 				clampf(WALL.r + n, 0.0, 1.0),
-				clampf(WALL.g + n * 0.85, 0.0, 1.0),
-				clampf(WALL.b + n * 0.6, 0.0, 1.0)
+				clampf(WALL.g + n * 0.9, 0.0, 1.0),
+				clampf(WALL.b + n * 0.75, 0.0, 1.0)
 			)
 			img.set_pixel(x, y, c)
-	return _tex_from(img, 0.93, Vector3(1.6, 1.4, 1.6))
+	return _tex_from(img, 0.95, Vector3(3.4, 3.0, 3.4))
 
 func _plank_mat(base: Color, rough: float) -> StandardMaterial3D:
 	var dim := 128 if OS.has_feature("web") else 256
@@ -72,7 +101,10 @@ func _plank_mat(base: Color, rough: float) -> StandardMaterial3D:
 				clampf(base.b + n * 0.55, 0.0, 1.0)
 			)
 			img.set_pixel(x, y, c)
-	return _tex_from(img, rough, Vector3(2.2, 0.45, 6.0))
+	# Near-isotropic. The old (2.2, 0.45, 6.0) stretched the texture thirteen times harder
+	# along one axis than the other, and on a floor box that is one long smear from wall to
+	# wall — the planks are in the texture already and do not need the UVs to make them.
+	return _tex_from(img, rough, Vector3(1.9, 1.9, 1.9))
 
 func _tile_mat() -> StandardMaterial3D:
 	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
@@ -88,7 +120,7 @@ func _tile_mat() -> StandardMaterial3D:
 				clampf(TILE.b + n, 0.0, 1.0)
 			)
 			img.set_pixel(x, y, c)
-	return _tex_from(img, 0.35, Vector3(6, 6, 6))
+	return _tex_from(img, 0.35, Vector3(2.4, 2.4, 2.4))
 
 func _noisy(base: Color, rough: float, uv: Vector3, amp: float) -> StandardMaterial3D:
 	var img := Image.create(256, 256, false, Image.FORMAT_RGB8)
@@ -131,19 +163,16 @@ func _build() -> void:
 	_box(Vector3(5.3, 1.3, 3.8), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(5.3, 1.3, 12.25), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(8.9, 1.3, 8.05), Vector3(0.18, 2.7, 8.6), _plaster)
-	_box(Vector3(6.5, 1.3, 10.4), Vector3(2.6, 2.7, 0.14), _plaster)
-	_box(Vector3(7.7, 1.3, 11.3), Vector3(0.14, 2.7, 1.9), _plaster)
+	# 402's bathroom is 401's mirrored in x: outer wall inner face 8.81, interior toward -x.
+	_bathroom(8.81, -1.0, 10.43, 12.16, false)
+	_box(Vector3(6.02, 1.3, 10.43), Vector3(1.55, 2.7, 0.14), _plaster)
 	_box(Vector3(6.7, 1.3, 5.65), Vector3(2.9, 2.7, 0.14), _plaster)
-	_box(Vector3(7.5, 0.02, 11.3), Vector3(2.5, 0.04, 1.85), _tile)
 
 	_window(Vector3(8.78, 1.5, 8.05))
 	_couch(Vector3(5.9, 0.32, 6.35))
 	_table(Vector3(3.25, 0.38, 8.05))
-	_sink(Vector3(8.25, 0.48, 11.4))
 	_shoes(Vector3(2.25, 0.06, 8.05))
 	_wardrobe(Vector3(3.55, 1.05, 4.85))
-	_toothbrush(Vector3(8.05, 0.62, 11.15))
-	_mirror(Vector3(8.72, 1.45, 11.35), false)
 	_print(Vector3(4.4, 1.35, 4.05))
 	_sign(Vector3(-1.52, 1.55, 6.2), "Do not knock after midnight")
 	_wet(Vector3(7.4, 0.03, 10.6))
@@ -152,19 +181,91 @@ func _build() -> void:
 
 	_apt401()
 
-	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.72, 0.35), 2.6, 9.0)
-	_fixture(Vector3(0, 2.46, 9.4), Color(0.95, 0.98, 0.75), 1.4, 7.0, true)
-	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.86, 0.62), 3.2, 8.0)
-	_fixture(Vector3(7.4, 2.46, 11.3), Color(1.0, 0.35, 0.62), 1.8, 5.5)
-	_fixture(Vector3(-4.6, 2.46, 2.4), Color(1.0, 0.7, 0.45), 2.8, 7.5)
-	_fixture(Vector3(-7.4, 2.46, 5.65), Color(1.0, 0.3, 0.55), 2.0, 5.5, true)
+	# Light, re-weighted to UI_DIRECTION.md's actual rule: most of the frame near-dark, and
+	# the accent earned by contrast. The first pass hung a saturated magenta omni at energy
+	# 2.0 inside a 1.1 m closet, which is how a night palette became a flat pink wash —
+	# nothing dark and, because everything was the accent, nothing hot either.
+	#
+	# So the flats are lit by one dim warm practical each, and the ONE bright thing in the
+	# game is the bulb over the 401 mirror: the bathroom light that is on when it should
+	# not be. It is a spot, not an omni, because it is the only light that needs to throw a
+	# shadow — the doorway spill is what makes the beat-1 frame read as a room.
+	# Bright enough to read the room, which TITLE_SCREENS.md's playfield rule requires:
+	# "dark is a choice, not a default". The corrective pass for the pink wash first took
+	# these to 0.7-0.95 and the flats went to near-black — legibly dark and actually dark
+	# are different pictures, and only the capture can tell you which one you made.
+	# Warm white bulbs, not amber and magenta gels. A saturated light on a saturated wall
+	# is how every frame came out at 0.8+ saturation in one hue; the magenta survives as
+	# ONE fixture at the far end of the hall, where it is a colour note instead of a wash.
+	_fixture(Vector3(0, 2.46, 3.2), Color(1.0, 0.78, 0.55), 7.0, 12.0)
+	_fixture(Vector3(0, 2.46, 9.4), Color(1.0, 0.58, 0.72), 4.4, 10.0, true)
+	_fixture(Vector3(4.6, 2.46, 8.05), Color(1.0, 0.8, 0.6), 8.5, 13.0)
+	_fixture(Vector3(-4.6, 2.46, 2.4), Color(1.0, 0.77, 0.56), 6.6, 12.0)
+	_bathroom_light(Vector3(-8.25, 2.3, 5.7), Vector3(-8.7, 1.15, 5.7))
+	_bathroom_light(Vector3(8.15, 2.3, 11.3), Vector3(8.6, 1.15, 11.3), 0.85)
 
 	var moon := DirectionalLight3D.new()
-	moon.light_color = Color(0.45, 0.55, 0.75)
-	moon.light_energy = 0.08
+	moon.light_color = Color(0.4, 0.5, 0.78)
+	moon.light_energy = 0.12
 	moon.shadow_enabled = false
 	moon.rotation_degrees = Vector3(-35, 110, 0)
 	add_child(moon)
+
+## The bulb over the mirror: the hot accent, and the only shadow-caster in the game.
+## A SpotLight3D rather than an OmniLight3D — omni shadows on a box hall starburst (see
+## _fixture), a single downward projection does not, and the cone is what puts a hard
+## bar of light through the bathroom doorway and onto the front-room floor.
+func _bathroom_light(pos: Vector3, target: Vector3, energy := 1.0) -> void:
+	var shade := MeshInstance3D.new()
+	var cyl := CylinderMesh.new()
+	cyl.top_radius = 0.05
+	cyl.bottom_radius = 0.075
+	cyl.height = 0.1
+	shade.mesh = cyl
+	shade.position = pos
+	var sm := StandardMaterial3D.new()
+	# Dark albedo, bright emission. A pale shade catches the cool fill from below and
+	# renders as a blue disc stuck to the ceiling; the fitting should only ever be the
+	# light it emits.
+	sm.albedo_color = Color(0.16, 0.135, 0.12)
+	sm.emission_enabled = true
+	sm.emission = Color(1.0, 0.88, 0.78)
+	# Kept under the glow threshold set in main.tscn: the bulb should read as a bulb, not
+	# as the soft white blob that ate a third of the first frame.
+	sm.emission_energy_multiplier = 0.9
+	shade.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(shade)
+	var li := SpotLight3D.new()
+	li.position = pos + Vector3(0, -0.08, 0)
+	# Warm white with the magenta pulled through it, not magenta with a bulb behind it.
+	li.light_color = Color(1.0, 0.87, 0.78)
+	li.light_energy = 5.2 * energy
+	li.spot_range = 6.5
+	li.spot_angle = 68.0
+	li.spot_angle_attenuation = 0.9
+	li.spot_attenuation = 1.1
+	li.shadow_enabled = true
+	li.shadow_bias = 0.035
+	li.shadow_normal_bias = 1.4
+	add_child(li)
+	# Aimed at the mirror rather than straight down. A vertical mirror under a vertical
+	# cone gets grazing light and stays black; leaning the cone into the wall is what puts
+	# the room's light ON the plate, which is the difference between a picture seated in
+	# the glass and a picture floating in front of it.
+	li.look_at(target, Vector3.UP)
+	# A weak, shadowless, cool fill so the tiles the spot does not reach are dark rather
+	# than absent. Without it the bathroom is a lit mirror floating in a black void: the
+	# spot is a narrow cone and nothing else in the room bounces.
+	var fill := OmniLight3D.new()
+	fill.position = pos + Vector3(0, -0.9, 0)
+	fill.light_color = Color(0.58, 0.66, 0.95)
+	fill.light_energy = 1.05 * energy
+	fill.omni_range = 3.4
+	fill.omni_attenuation = 1.4
+	fill.shadow_enabled = false
+	fill.set_meta("base_energy", 1.05 * energy)
+	fill.add_to_group("hall_light")
+	add_child(fill)
 
 	_stain(Vector3(0.2, 0.02, 6.8), Vector3(1.4, 1, 0.7))
 	_stain(Vector3(6.2, 0.02, 9.6), Vector3(1.1, 1, 0.8))
@@ -192,18 +293,15 @@ func _apt401() -> void:
 	_box(Vector3(-5.3, 1.3, -1.9), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(-5.3, 1.3, 6.7), Vector3(7.4, 2.7, 0.18), _plaster)
 	_box(Vector3(-9.0, 1.3, 2.4), Vector3(0.18, 2.7, 8.6), _plaster)
-	_box(Vector3(-6.5, 1.3, 4.75), Vector3(2.6, 2.7, 0.14), _plaster)
-	_box(Vector3(-7.7, 1.3, 5.65), Vector3(0.14, 2.7, 1.9), _plaster)
+	# 401's bathroom: outer wall inner face -8.91, interior toward +x. The one with the plate.
+	_bathroom(-8.91, 1.0, 4.78, 6.61, true)
+	_box(Vector3(-6.12, 1.3, 4.78), Vector3(1.55, 2.7, 0.14), _plaster)
 	_box(Vector3(-6.7, 1.3, 0.0), Vector3(2.9, 2.7, 0.14), _plaster)
-	_box(Vector3(-7.5, 0.02, 5.65), Vector3(2.5, 0.04, 1.85), _tile)
 	_window(Vector3(-8.78, 1.5, 2.4))
 	_couch(Vector3(-5.9, 0.32, 0.7))
 	_table(Vector3(-3.25, 0.38, 2.4))
-	_sink(Vector3(-8.25, 0.48, 5.75))
 	_shoes(Vector3(-2.25, 0.06, 2.4))
 	_wardrobe(Vector3(-3.55, 1.05, -0.8))
-	_toothbrush(Vector3(-8.05, 0.62, 5.5))
-	_mirror(Vector3(-8.72, 1.45, 5.7), true)
 	_sign(Vector3(-4.4, 1.35, -1.65), "401 · YOU LIVE HERE")
 	_wet(Vector3(-7.4, 0.03, 5.0))
 	_wet(Vector3(-3.4, 0.03, 2.5))
@@ -316,9 +414,12 @@ func _fixture(pos: Vector3, color: Color, energy: float, rng: float, flicker := 
 	li.light_color = color
 	li.light_energy = energy
 	li.omni_range = rng
-	li.omni_attenuation = 1.35
+	li.omni_attenuation = 1.0
 	# Omni dual-paraboloid shadows on box halls look like starbursts.
 	li.shadow_enabled = false
+	# game._dim_hall() scales against this rather than assigning an absolute, so dimming
+	# the hall no longer flattens every fixture in the building to one energy.
+	li.set_meta("base_energy", energy)
 	li.add_to_group("hall_light")
 	if flicker:
 		li.set_script(preload("res://scripts/flicker_light.gd"))
@@ -331,11 +432,11 @@ func _window(pos: Vector3) -> void:
 	glass.mesh = mesh
 	glass.position = pos
 	var m := StandardMaterial3D.new()
-	m.albedo_color = Color(0.08, 0.12, 0.18, 0.55)
+	m.albedo_color = Color(0.04, 0.055, 0.085, 0.72)
 	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	m.emission_enabled = true
-	m.emission = Color(0.25, 0.4, 0.7)
-	m.emission_energy_multiplier = 1.6
+	m.emission = Color(0.1, 0.17, 0.34)
+	m.emission_energy_multiplier = 0.45
 	m.roughness = 0.08
 	glass.material_override = m
 	add_child(glass)
@@ -353,8 +454,58 @@ func _table(pos: Vector3) -> void:
 	_box(pos + Vector3(0.46, -0.22, -0.26), Vector3(0.07, 0.36, 0.07), _wood)
 	_box(pos + Vector3(-0.46, -0.22, -0.26), Vector3(0.07, 0.36, 0.07), _wood)
 
-func _sink(pos: Vector3) -> void:
-	_box(pos, Vector3(0.72, 0.1, 0.46), _tile)
+## The bathroom, built as a room you can stand in and see.
+##
+## It used to be a 1.14 m closet with the mirror 0.7 m from your face and no doorway
+## header, so the beat-1 frame was a wall with a picture on it — the "there is no room"
+## complaint. It is now 1.95 m across with a real 1.0 m doorway you look through from the
+## front room: jamb, header, tiled floor, a vanity under the mirror. That doorway is what
+## gives the shot depth, and it is what the bulb spills through.
+##
+## `wall_x` is the inner face of the flat's outer wall; `sx` points into the flat (+1 in
+## 401, -1 in 402, which is 401 mirrored in x). `z0` is the partition wall, `z1` the back.
+const BATH_W := 1.95
+const BATH_DOOR := 1.0
+
+func _bathroom(wall_x: float, sx: float, z0: float, z1: float, plate: bool) -> void:
+	var zc := (z0 + z1) * 0.5
+	var depth := z1 - z0
+	# Side wall, floor to ceiling, closing the bathroom off from the rest of the flat.
+	_box(Vector3(wall_x + sx * BATH_W, 1.3, zc), Vector3(0.14, 2.7, depth), _plaster)
+	# Front partition: a jamb, a 1.0 m opening, a return, and a header over the opening.
+	var d0 := 0.72                      # opening starts this far from the outer wall
+	var d1 := d0 + BATH_DOOR
+	_box(Vector3(wall_x + sx * d0 * 0.5, 1.3, z0), Vector3(d0, 2.7, 0.14), _plaster)
+	_box(Vector3(wall_x + sx * (d1 + BATH_W) * 0.5, 1.3, z0), Vector3(BATH_W - d1, 2.7, 0.14), _plaster)
+	_box(Vector3(wall_x + sx * (d0 + d1) * 0.5, 2.33, z0), Vector3(BATH_DOOR, 0.64, 0.14), _plaster)
+	_box(Vector3(wall_x + sx * (d0 + d1) * 0.5, 0.06, z0), Vector3(BATH_DOOR, 0.12, 0.2), _trim)
+	# Tiled floor, actually the size of the room this time.
+	_box(Vector3(wall_x + sx * BATH_W * 0.5, 0.02, zc), Vector3(BATH_W - 0.06, 0.04, depth - 0.06), _tile)
+	# Tiled splashback behind the vanity, so the wall under the bulb is not bare plaster.
+	_box(Vector3(wall_x + sx * 0.03, 1.15, zc), Vector3(0.05, 1.5, depth - 0.3), _tile)
+	_vanity(Vector3(wall_x + sx * 0.28, 0.45, zc), sx)
+	_mirror(Vector3(wall_x + sx * 0.07, 1.48, zc), plate, sx)
+	_toothbrush(Vector3(wall_x + sx * 0.2, 0.96, zc + 0.36))
+
+## A basin on a cabinet, against the outer wall under the mirror. Gives the bulb something
+## with a top surface to land on — a lit horizontal is most of what says "room" in a frame.
+func _vanity(pos: Vector3, sx: float) -> void:
+	_box(pos + Vector3(0, 0.42, 0), Vector3(0.52, 0.06, 1.0), _tile)          # counter
+	_box(pos + Vector3(sx * -0.02, 0.06, 0), Vector3(0.46, 0.66, 0.88), _wood) # cabinet
+	_box(pos + Vector3(sx * 0.04, 0.47, 0), Vector3(0.34, 0.05, 0.42), _tile)  # basin lip
+	var tap := MeshInstance3D.new()
+	var cyl := CylinderMesh.new()
+	cyl.top_radius = 0.018
+	cyl.bottom_radius = 0.022
+	cyl.height = 0.2
+	tap.mesh = cyl
+	tap.position = pos + Vector3(sx * -0.16, 0.55, 0)
+	var tm := StandardMaterial3D.new()
+	tm.albedo_color = Color(0.32, 0.3, 0.31)
+	tm.metallic = 0.85
+	tm.roughness = 0.22
+	tap.material_override = tm
+	add_child(tap)
 
 func _wardrobe(pos: Vector3) -> void:
 	_box(pos, Vector3(0.55, 2.05, 1.15), _wood)
@@ -364,12 +515,14 @@ func _toothbrush(pos: Vector3) -> void:
 	_box(pos, Vector3(0.08, 0.16, 0.08), _noisy(Color(0.75, 0.75, 0.78), 0.3, Vector3(1, 1, 1), 0.02))
 	_box(pos + Vector3(0, 0.14, 0), Vector3(0.02, 0.18, 0.02), _noisy(Color(0.2, 0.45, 0.55), 0.4, Vector3(1, 1, 1), 0.01))
 
-func _mirror(pos: Vector3, plate: bool) -> void:
+func _mirror(pos: Vector3, plate: bool, sx: float = 1.0) -> void:
 	if plate:
 		# 401's mirror: the rendered figure on a mirror-shaped surface (scripts/mirror.gd).
+		# `sx` is which way the glass faces — 402 is mirrored in x, so it cannot be assumed.
 		var m := StaticBody3D.new()
 		m.set_script(preload("res://scripts/mirror.gd"))
 		m.position = pos
+		m.set("face_x", sx)
 		add_child(m)
 		return
 	var glass := MeshInstance3D.new()

@@ -31,6 +31,8 @@ const CONFRONT_LINES := [
 	"\"So. Do you want to stay on this side tonight, or do you want your mirror back?\"",
 ]
 const CONFRONT_CHOICES := ["Stay. Keep him in the mirror.", "Go home. Make the glass empty."]
+## How far back the camera settles for the exchange, in metres.
+const CONFRONT_STANDOFF := 2.3
 
 var items := {}
 var phase := 0
@@ -68,11 +70,15 @@ func _ready() -> void:
 	hud.set_objective("I  Home. The bathroom light is on. Go and look in the mirror.")
 	if OS.has_feature("web"):
 		var env: Environment = $WorldEnvironment.environment
+		# GL compatibility has no SSAO and no glow, so the web build loses the contact
+		# shadows and the bulb's bloom and needs a little lift to compensate — a LITTLE.
+		# The old values (ambient 0.62, exposure 1.28) lifted it by 5.6x and 1.35x, which
+		# is most of how the night palette became a pink wash on the web.
 		env.ssao_enabled = false
 		env.glow_enabled = false
-		env.fog_density = 0.004
-		env.ambient_light_energy = 0.62
-		env.tonemap_exposure = 1.28
+		env.fog_density = 0.0035
+		env.ambient_light_energy = 0.19
+		env.tonemap_exposure = 1.05
 	else:
 		player.capture_mouse()
 	# The mirror is the first thing lit: the plum room, one hot bulb through the bathroom door.
@@ -185,16 +191,9 @@ func _inspect(pos: Vector3, id: String, prompt: String, note: String, color: Col
 	mat.albedo_color = color
 	mesh.material_override = mat
 	p.add_child(mesh)
-	var tag := Label3D.new()
-	tag.text = prompt
-	tag.font_size = 36
-	tag.pixel_size = 0.0035
-	tag.width = 400
-	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
-	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	tag.modulate = Color(0.9, 0.8, 0.58)
-	UiFont.apply_3d(tag)
-	p.add_child(tag)
+	# No billboard label. Interaction is announced once, at the bottom of the screen, by
+	# hud.set_prompt(); a second copy floating in the world only ever collides with
+	# something (it landed on the title card in the first capture) and reads as scaffolding.
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
 	sh.size = size + Vector3(0.22, 0.22, 0.22)
@@ -219,15 +218,9 @@ func _pickup(pos: Vector3, id: String, prompt: String, note: String, color: Colo
 	mat.albedo_color = color
 	mesh.material_override = mat
 	p.add_child(mesh)
-	var tag := Label3D.new()
-	tag.text = prompt
-	tag.font_size = 52
-	tag.pixel_size = 0.004
-	tag.position = Vector3(0, size.y * 0.5 + 0.14, 0)
-	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	tag.modulate = Color(0.95, 0.86, 0.62)
-	UiFont.apply_3d(tag)
-	p.add_child(tag)
+	# No billboard label. Interaction is announced once, at the bottom of the screen, by
+	# hud.set_prompt(); a second copy floating in the world only ever collides with
+	# something (it landed on the title card in the first capture) and reads as scaffolding.
 	var col := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
 	sh.size = size + Vector3(0.25, 0.25, 0.25)
@@ -314,13 +307,25 @@ func confront() -> void:
 	player.locked = true
 	hud.set_prompt("")
 	drone.volume_db = -8.0
-	hud.show_title("III — The other side of your door")
-	title_t = 3.0
+	# No title card here. _set_chapter(3) already raised one on entering 402, and a second
+	# card at the confrontation lands squarely on the face of the person you crossed the
+	# hall to look at.
 	var tenant := get_tree().get_first_node_in_group("tenant") as Node3D
 	if tenant:
 		player.look_at(Vector3(tenant.global_position.x, player.global_position.y, tenant.global_position.z), Vector3.UP)
 		player.rotation.x = 0.0
 		player.rotation.z = 0.0
+		# Take a step back before he speaks. The trigger fires at 1.7 m and the walk
+		# usually closes to about 1.3 — at which range a full-height figure is a face
+		# filling the screen and the exchange has no staging at all. 2.3 m puts a whole
+		# person in frame with the doorway behind him, which is the shot the beat wants.
+		var away: Vector3 = player.global_position - tenant.global_position
+		away.y = 0.0
+		if away.length() > 0.05 and away.length() < CONFRONT_STANDOFF:
+			player.global_position = tenant.global_position \
+				+ away.normalized() * CONFRONT_STANDOFF
+			player.global_position.y = 0.05
+			player.velocity = Vector3.ZERO
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	player.captured = false
 	var picked: int = await hud.show_dialogue(CONFRONT_LINES, CONFRONT_CHOICES)
@@ -399,10 +404,13 @@ func _reset_catch() -> void:
 	drone.volume_db = -20.0
 	hud.set_objective("He let go. He is waiting where you were going anyway.")
 
-func _dim_hall(energy: float) -> void:
+## A scale on each fixture's own energy, not an assignment. Assigning flattened six lights
+## that had been balanced against each other to a single value, which is half of why the
+## night palette stopped having any range in it.
+func _dim_hall(scale: float) -> void:
 	for n in get_tree().get_nodes_in_group("hall_light"):
 		if n is OmniLight3D:
-			(n as OmniLight3D).light_energy = energy
+			(n as OmniLight3D).light_energy = float(n.get_meta("base_energy", 1.0)) * scale
 
 func footstep(pos: Vector3) -> void:
 	sfx.global_position = pos

@@ -45,11 +45,63 @@ Web drive hook (test only): `window.__cmd = "goto x z yaw" | "use" | "look dx" |
 
 ## Placeholders (honest list)
 
-- Every plate. `cg_mirror.png` / `tenant.png` are the Overnight Clause *Dane* reference
-  render (a rendered adult man, not Ray); `obj_402.png` is an Overnight Clause room plate;
-  `cg_mirror_locked.png` is a blurred copy, not a `censor.py` plate. Real plates come from
-  `ops/other_side_art/other_side_gen.py` via `ops/render_queue.py add other_side refs|plates`.
-- `splash.png` is the parent's splash; no key visual or logotype yet (TITLE_SCREENS.md).
-- The tenant cut-out is a colour-key of a flat-grey studio render; edges are rough.
-- No sound of its own beyond the parent's synthesised drone/clicks.
+Rendered and installed (2026-09-19):
+
+- `assets/plates_x/cg_mirror.png` — Ray in the 401 mirror, the real plate. Picked from
+  eight candidates read at native 832x1216; `ops/other_side_art/ref/ray.png` is ray_04.
+- `assets/plates/cg_mirror_locked.png` — the censored partner. Same face, same framing,
+  clothed; a real render, not a blur of the uncensored one.
+- `assets/plates/tenant.png` — the tenant, cut to an RGBA sprite by
+  `ops/other_side_art/cut_sprite.py`.
+
+Still placeholder:
+
+- `assets/plates/obj_402.png` is still an Overnight Clause room plate.
+- `splash.png` is still the parent's splash. There is no key visual and no logotype
+  (TITLE_SCREENS.md items 1 and 2 are both open); the title card in-game is a drawn plate,
+  not a designed mark.
+- No sound of its own beyond the parent's synthesised drone and clicks.
 - No downloads, no itch page, not deployed.
+
+## What is verified on camera, and what is not
+
+`tests/walkthrough.gd` drives the real game and photographs it — see below. Fifteen frames
+in `ops/adult_forks/shots/other-side/`, all read at full size and again at 390 px.
+
+Verified: beat 1 (the mirror in a bathroom you can see you are standing in, the plate
+seated in the bezel under the room's own light), beat 2 (401 opens, 402 knocks open, the
+mirrored flat), beat 3 (the tenant resolving from capsule to rendered person in 402's
+bathroom doorway, the four-line exchange, the choice), beat 4 (the choice keeping the
+image in the glass, the clear state).
+
+NOT verified on camera: the adult cross-promotion board. `Gate.board_offer_more("adult")`
+is drawn by `play/_shared/board.js` on the page, so it does not exist in a desktop run at
+all; the ending frame shows the clear state and nothing else. Verifying it needs the web
+build served and driven in a browser.
+
+## Capturing the frames
+
+    ops/on_game_monitor.sh ~/bin/godot/Godot_v4.7-stable_linux.x86_64 \
+      --path play/the-other-side-godot res://tests/walkthrough.tscn
+
+Run it as a SCENE. `--script` mode does not build the autoload list, so every script that
+mentions `Gate` fails to compile and the capture photographs an empty viewport while
+reporting success. After replacing any plate, run `--headless --import` first: the game
+loads the cached `.ctex`, so a new PNG on disk with a new hash will still render as the old
+image until it is re-imported.
+
+Frames are checked two ways and both must be run by looking:
+
+    ops/check_brightness.py ops/adult_forks/shots/other-side/*.png
+
+12 of 15 frames sit inside the shelf band (UI_DIRECTION.md, 2026-09-19). `01_wake` (0.44),
+`09_402_print` (0.44) and `15_end` (0.39) flag against the 0.45 floor. The first two are a
+hair under and are the two frames the opening note panel covers a third of; the ending is
+deliberately the darkest beat in the game. All three are open, not resolved.
+
+The palette here is a genuine tension and it is Blaze's call, not settled by this pass:
+UI_DIRECTION's 2026-09-19 numbers (0.63 brightness / 0.38 saturation, from the Nutaku
+top-100) and a first-person horror game set at 02:17 pull in opposite directions. Hitting
+the shelf floor took the flats from plum-night to a warm lit interior. The frames read as
+rooms and pass the check; they do not read as a night palette with hot accents, which is
+what the same document asks for higher up.
