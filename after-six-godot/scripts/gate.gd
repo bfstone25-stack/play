@@ -134,6 +134,16 @@ func board_offer_more(kind: String = "adult") -> void:
 	# This is the failure the ?warp=board hook exists to catch, and it is worth saying that
 	# it only showed up because someone ran the hook rather than reading the source: the
 	# call was wired, the script shipped, the host allowed it, and the board never appeared.
+	#
+	# Re-measured AFTER the fix, 2026-09-20 ~03:30, on the GPU box's real WebGL2 rather
+	# than a software rasteriser: a cold load of build/godot-ads/the-other-side with
+	# ?warp=board gives `wraps=1 tiles=3`, no page errors. The record above was the
+	# before; this is the after, and a fix with only a "before" is an argument.
+	#
+	# How that was measured matters as much as the number. offerMore is async on top of a
+	# catalogue fetch, so the driver POLLS for up to 60s instead of sampling once: "it
+	# drew nothing" and "it has not drawn YET" are the same observation at t=0, and two
+	# other checks were caught lying that way the same night.
 	if not JavaScriptBridge.eval("(window.BOARD && window.BOARD.offerMore) ? 1 : 0"):
 		return
 	JavaScriptBridge.eval("BOARD.offerMore(%s)" % JSON.stringify(kind))
