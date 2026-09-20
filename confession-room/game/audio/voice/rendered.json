@@ -1,1227 +1,1654 @@
 {
  "adaeze/ade2_audit.ogg": {
-  "at": "2026-09-19T16:10:26",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "ce4284622c05c50f",
+  "at": "2026-09-19T20:10:12",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade2_basin.ogg": {
-  "at": "2026-09-19T16:11:00",
-  "instruct": "Say this controlled and level, every word placed, tighter, sharp, clipped, hard, held back.",
-  "instruct_sha": "0d8f45aa2f754ac7",
+  "at": "2026-09-19T20:10:36",
+  "instruct": "Say this controlled and level, tighter, sharp.",
+  "instruct_sha": "1aac08f9b46f9d95",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade2_bay.ogg": {
-  "at": "2026-09-19T16:11:11",
-  "instruct": "Say this controlled and level, every word placed, tighter, urgent, fast, hard.",
-  "instruct_sha": "917d3d6e96cf0128",
+  "at": "2026-09-19T20:10:46",
+  "instruct": "Say this controlled and level, tighter, urgent.",
+  "instruct_sha": "603284d210024bdf",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade2_four.ogg": {
-  "at": "2026-09-19T16:11:26",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:10:59",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade2_iris.ogg": {
-  "at": "2026-09-19T16:11:36",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:11:12",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade2_mop.ogg": {
-  "at": "2026-09-19T16:11:51",
-  "instruct": "Say this controlled and level, every word placed, tighter, urgent, fast, hard, held back.",
-  "instruct_sha": "89efa5df45af99ca",
+  "at": "2026-09-19T20:11:23",
+  "instruct": "Say this controlled and level, tighter, urgent.",
+  "instruct_sha": "603284d210024bdf",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade2_night.ogg": {
-  "at": "2026-09-19T16:12:05",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "ce4284622c05c50f",
+  "at": "2026-09-19T20:11:35",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade2_sign.ogg": {
-  "at": "2026-09-19T16:12:17",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:11:47",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade3_after.ogg": {
-  "at": "2026-09-19T16:12:28",
-  "instruct": "Say this controlled and level, every word placed, tighter, urgent, fast, hard.",
-  "instruct_sha": "917d3d6e96cf0128",
+  "at": "2026-09-19T20:11:58",
+  "instruct": "Say this controlled and level, tighter, urgent.",
+  "instruct_sha": "603284d210024bdf",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade3_bo.ogg": {
-  "at": "2026-09-19T16:12:35",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:12:06",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade3_lease.ogg": {
-  "at": "2026-09-19T16:12:40",
-  "instruct": "Say this controlled and level, every word placed, tighter, sharp.",
-  "instruct_sha": "4b1f76ba81adb8f0",
+  "at": "2026-09-19T20:12:13",
+  "instruct": "Say this controlled and level, tighter, sharp.",
+  "instruct_sha": "1aac08f9b46f9d95",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade3_night.ogg": {
-  "at": "2026-09-19T16:12:53",
-  "instruct": "Say this controlled and level, every word placed, tighter, small and quiet, slow, faint.",
-  "instruct_sha": "704c7fca52d644e2",
+  "at": "2026-09-19T20:12:22",
+  "instruct": "Say this controlled and level, small and quiet.",
+  "instruct_sha": "fe0db042c1aeb6ce",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade3_nik.ogg": {
-  "at": "2026-09-19T16:13:05",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:12:33",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade3_office.ogg": {
-  "at": "2026-09-19T16:13:39",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "ce4284622c05c50f",
+  "at": "2026-09-19T20:12:49",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade3_owe.ogg": {
-  "at": "2026-09-19T16:13:51",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:12:57",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade3_report.ogg": {
-  "at": "2026-09-19T16:14:20",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "ce4284622c05c50f",
+  "at": "2026-09-19T20:13:09",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade_alarm.ogg": {
-  "at": "2026-09-19T16:14:44",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "ce4284622c05c50f",
+  "at": "2026-09-19T20:13:20",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade_drawer.ogg": {
-  "at": "2026-09-19T16:14:54",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:13:31",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade_kitchen.ogg": {
-  "at": "2026-09-19T16:15:09",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:13:44",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade_lease.ogg": {
-  "at": "2026-09-19T16:15:24",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:13:54",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade_marek.ogg": {
-  "at": "2026-09-19T16:15:35",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:14:09",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade_seal.ogg": {
-  "at": "2026-09-19T16:15:53",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "ce4284622c05c50f",
+  "at": "2026-09-19T20:14:24",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade_staff.ogg": {
-  "at": "2026-09-19T16:16:06",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:14:33",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ade_vee.ogg": {
-  "at": "2026-09-19T16:16:25",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:14:43",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ending_clean_223f8c9a.ogg": {
-  "at": "2026-09-19T16:22:55",
-  "instruct": "Say this controlled and level, every word placed, plainly, even, natural, held back.",
-  "instruct_sha": "ba7fe636ca5eb142",
+  "at": "2026-09-19T20:19:00",
+  "instruct": "Say this controlled and level, plainly, even, natural.",
+  "instruct_sha": "ddf0b05e34fb8d3c",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/ending_clean_98ebc8d6.ogg": {
-  "at": "2026-09-19T16:23:08",
-  "instruct": "Say this controlled and level, every word placed, plainly, even, natural, held back.",
-  "instruct_sha": "ba7fe636ca5eb142",
+  "at": "2026-09-19T20:19:15",
+  "instruct": "Say this controlled and level, plainly, even, natural.",
+  "instruct_sha": "ddf0b05e34fb8d3c",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/open1_adaeze.ogg": {
-  "at": "2026-09-19T16:16:42",
-  "instruct": "Say this controlled and level, every word placed, plainly, even, natural.",
-  "instruct_sha": "50d86367d2288c9f",
+  "at": "2026-09-19T20:14:54",
+  "instruct": "Say this controlled and level, plainly, even, natural.",
+  "instruct_sha": "ddf0b05e34fb8d3c",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/open2_adaeze.ogg": {
-  "at": "2026-09-19T16:16:57",
-  "instruct": "Say this controlled and level, every word placed, wounded, slow, quiet.",
-  "instruct_sha": "4ebe47c96f11d731",
+  "at": "2026-09-19T20:15:07",
+  "instruct": "Say this controlled and level, wounded, slow, quiet.",
+  "instruct_sha": "dc1de87e6d493598",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/open3_adaeze.ogg": {
-  "at": "2026-09-19T16:17:13",
-  "instruct": "Say this controlled and level, every word placed, tighter, resolute, even, firm.",
-  "instruct_sha": "dd1654e90fe846aa",
+  "at": "2026-09-19T20:15:19",
+  "instruct": "Say this controlled and level, tighter, resolute.",
+  "instruct_sha": "9c1df36466e42e0b",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_bay_396b0d51.ogg": {
-  "at": "2026-09-19T16:20:15",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, rising at the end, even, open, held back.",
-  "instruct_sha": "d385a9b3af2a172c",
+  "at": "2026-09-19T20:16:58",
+  "instruct": "Say this controlled and level, rising at the end.",
+  "instruct_sha": "a2572387100c29cf",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_bay_4572707f.ogg": {
-  "at": "2026-09-19T16:20:27",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "948ed19464d2deea",
+  "at": "2026-09-19T20:17:06",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_bay_720b1925.ogg": {
-  "at": "2026-09-19T16:20:49",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, urgent, fast, hard.",
-  "instruct_sha": "43da101b7b3b05f2",
+  "at": "2026-09-19T20:17:18",
+  "instruct": "Say this controlled and level, urgent.",
+  "instruct_sha": "f2805506a693cfd2",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_bay_977d4e91.ogg": {
-  "at": "2026-09-19T16:21:02",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "948ed19464d2deea",
+  "at": "2026-09-19T20:17:27",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_bay_9bc8340e.ogg": {
-  "at": "2026-09-19T16:19:34",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "948ed19464d2deea",
+  "at": "2026-09-19T20:16:42",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_bay_e623fd47.ogg": {
-  "at": "2026-09-19T16:19:15",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "948ed19464d2deea",
+  "at": "2026-09-19T20:16:34",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_stairs_2c6aeed6.ogg": {
-  "at": "2026-09-19T16:22:34",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "f0ba64f624aa3430",
+  "at": "2026-09-19T20:18:40",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_stairs_48985287.ogg": {
-  "at": "2026-09-19T16:22:17",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "f0ba64f624aa3430",
+  "at": "2026-09-19T20:18:23",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_stairs_5ddbc214.ogg": {
-  "at": "2026-09-19T16:21:55",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, rising at the end, even, open, held back.",
-  "instruct_sha": "d385a9b3af2a172c",
+  "at": "2026-09-19T20:18:04",
+  "instruct": "Say this controlled and level, rising at the end.",
+  "instruct_sha": "a2572387100c29cf",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_stairs_657aedc7.ogg": {
-  "at": "2026-09-19T16:21:36",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "f0ba64f624aa3430",
+  "at": "2026-09-19T20:17:47",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/route_stairs_6f7f7a3b.ogg": {
-  "at": "2026-09-19T16:21:14",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, small and quiet, slow, faint.",
-  "instruct_sha": "2b636a29058794e0",
+  "at": "2026-09-19T20:17:34",
+  "instruct": "Say this controlled and level, small and quiet.",
+  "instruct_sha": "fe0db042c1aeb6ce",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/suspect_route_2a5ef06b.ogg": {
-  "at": "2026-09-19T16:18:34",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, urgent, fast, hard, held back.",
-  "instruct_sha": "c5546ed625ec7d3a",
+  "at": "2026-09-19T20:15:58",
+  "instruct": "Say this controlled and level, urgent.",
+  "instruct_sha": "f2805506a693cfd2",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/suspect_route_5430dd22.ogg": {
-  "at": "2026-09-19T16:18:49",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "f0ba64f624aa3430",
+  "at": "2026-09-19T20:16:16",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/suspect_route_57760552.ogg": {
-  "at": "2026-09-19T16:17:24",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, rising at the end, even, open.",
-  "instruct_sha": "44c152b2704e034f",
+  "at": "2026-09-19T20:15:27",
+  "instruct": "Say this controlled and level, rising at the end.",
+  "instruct_sha": "a2572387100c29cf",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/suspect_route_93486345.ogg": {
-  "at": "2026-09-19T16:18:12",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, rising at the end, even, open, held back.",
-  "instruct_sha": "d385a9b3af2a172c",
+  "at": "2026-09-19T20:15:47",
+  "instruct": "Say this controlled and level, rising at the end.",
+  "instruct_sha": "a2572387100c29cf",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/suspect_route_9cde9466.ogg": {
-  "at": "2026-09-19T16:17:31",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "948ed19464d2deea",
+  "at": "2026-09-19T20:15:34",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "adaeze/suspect_route_b626bed6.ogg": {
-  "at": "2026-09-19T16:19:03",
-  "instruct": "Say this controlled and level, every word placed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "948ed19464d2deea",
+  "at": "2026-09-19T20:16:24",
+  "instruct": "Say this controlled and level, tender.",
+  "instruct_sha": "6f355ac1a161016f",
   "seed": "f_low_controlled",
-  "seed_sha": "12963118a66f30c1"
+  "seed_sha": "8edf4c4139f6fcf6"
  },
  "dispatch/ending_wrong_60785ae0.ogg": {
-  "at": "2026-09-19T16:33:25",
-  "instruct": "Say this clipped, procedural, over a radio, plainly, even, natural.",
-  "instruct_sha": "814ebb470345b386",
+  "at": "2026-09-19T20:30:55",
+  "instruct": "Say this clipped and procedural, plainly, even, natural.",
+  "instruct_sha": "87e8f45504a05b1a",
   "seed": "m_flat_tired",
-  "seed_sha": "e8909a731b9d6fd3"
+  "seed_sha": "1a56192e2d8256cd"
  },
  "dispatch/out_of_questions_e810fef3.ogg": {
-  "at": "2026-09-19T16:33:19",
-  "instruct": "Say this clipped, procedural, over a radio, tighter, resolute, even, firm.",
-  "instruct_sha": "7a8b2fe59442aa7f",
+  "at": "2026-09-19T20:30:47",
+  "instruct": "Say this clipped and procedural, tighter, resolute.",
+  "instruct_sha": "91985777d07a5bb8",
   "seed": "m_flat_tired",
-  "seed_sha": "e8909a731b9d6fd3"
+  "seed_sha": "1a56192e2d8256cd"
  },
  "dispatch/start_2a98dc11.ogg": {
-  "at": "2026-09-19T16:33:36",
-  "instruct": "Say this clipped, procedural, over a radio, urgent, fast, hard, held back.",
-  "instruct_sha": "5d0be347f6c9c9c3",
+  "at": "2026-09-19T20:31:13",
+  "instruct": "Say this clipped and procedural, urgent, fast, hard.",
+  "instruct_sha": "b938eae8e64612a9",
   "seed": "m_flat_tired",
-  "seed_sha": "e8909a731b9d6fd3"
+  "seed_sha": "1a56192e2d8256cd"
+ },
+ "narrator_cr/case_file_a0757440.ogg": {
+  "at": "2026-09-19T22:20:24",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/case_open_4d107532.ogg": {
+  "at": "2026-09-19T22:24:07",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/case_open_bbe32114.ogg": {
+  "at": "2026-09-19T22:24:14",
+  "instruct": "Say this even and unhurried, sharp.",
+  "instruct_sha": "61e9c7215e87b71a",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_clean_06819f90.ogg": {
+  "at": "2026-09-19T22:21:00",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_clean_22e1c907.ogg": {
+  "at": "2026-09-19T22:20:34",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_clean_295ab6c3.ogg": {
+  "at": "2026-09-19T22:21:30",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_clean_298cd53a.ogg": {
+  "at": "2026-09-19T22:20:47",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_clean_33f5a299.ogg": {
+  "at": "2026-09-19T22:21:46",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_clean_d0f00517.ogg": {
+  "at": "2026-09-19T22:21:17",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_right_wrong_reason_1c4d0321.ogg": {
+  "at": "2026-09-19T22:22:12",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_right_wrong_reason_4e147ff0.ogg": {
+  "at": "2026-09-19T22:21:59",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/ending_wrong_0b4075e7.ogg": {
+  "at": "2026-09-19T22:22:30",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/epilogue_232a2fb8.ogg": {
+  "at": "2026-09-19T22:22:39",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/epilogue_84ab586a.ogg": {
+  "at": "2026-09-19T22:22:49",
+  "instruct": "Say this even and unhurried, sharp.",
+  "instruct_sha": "61e9c7215e87b71a",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/epilogue_aca7f464.ogg": {
+  "at": "2026-09-19T22:22:55",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/evidence_locker_0a753e52.ogg": {
+  "at": "2026-09-19T22:25:34",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/evidence_locker_435caae0.ogg": {
+  "at": "2026-09-19T22:24:36",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/evidence_locker_72bc3b71.ogg": {
+  "at": "2026-09-19T22:25:57",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/evidence_locker_8ba511ae.ogg": {
+  "at": "2026-09-19T22:24:26",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/evidence_locker_8ee51d4b.ogg": {
+  "at": "2026-09-19T22:24:58",
+  "instruct": "Say this even and unhurried, sharp.",
+  "instruct_sha": "61e9c7215e87b71a",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/evidence_locker_948117fd.ogg": {
+  "at": "2026-09-19T22:25:12",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/evidence_locker_a22f2103.ogg": {
+  "at": "2026-09-19T22:25:43",
+  "instruct": "Say this even and unhurried, small and quiet.",
+  "instruct_sha": "9d53e7319c2ec34c",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/evidence_locker_ebdaed40.ogg": {
+  "at": "2026-09-19T22:24:45",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/press_beat_48e762ae.ogg": {
+  "at": "2026-09-19T22:10:01",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/press_beat_f48708b3.ogg": {
+  "at": "2026-09-19T22:09:44",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_03ab99f6.ogg": {
+  "at": "2026-09-19T22:16:25",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_12e10ec1.ogg": {
+  "at": "2026-09-19T22:16:11",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_1c094d8e.ogg": {
+  "at": "2026-09-19T22:15:49",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_231f06b2.ogg": {
+  "at": "2026-09-19T22:14:12",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_31e3457f.ogg": {
+  "at": "2026-09-19T22:16:46",
+  "instruct": "Say this even and unhurried, small and quiet.",
+  "instruct_sha": "9d53e7319c2ec34c",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_32a48924.ogg": {
+  "at": "2026-09-19T22:17:21",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_4d99c9d3.ogg": {
+  "at": "2026-09-19T22:14:42",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_5044a7be.ogg": {
+  "at": "2026-09-19T22:15:03",
+  "instruct": "Say this even and unhurried, wry.",
+  "instruct_sha": "8447dfd9037d956c",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_77faf409.ogg": {
+  "at": "2026-09-19T22:17:11",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_bay_d62a9c27.ogg": {
+  "at": "2026-09-19T22:15:27",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_1267d2f8.ogg": {
+  "at": "2026-09-19T22:18:02",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_24fa9bbb.ogg": {
+  "at": "2026-09-19T22:19:05",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_2e2ddc9e.ogg": {
+  "at": "2026-09-19T22:19:50",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_3efc30a5.ogg": {
+  "at": "2026-09-19T22:18:50",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_4b045fdd.ogg": {
+  "at": "2026-09-19T22:18:14",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_612adaca.ogg": {
+  "at": "2026-09-19T22:19:22",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_6901840f.ogg": {
+  "at": "2026-09-19T22:20:07",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_efdfca1e.ogg": {
+  "at": "2026-09-19T22:18:30",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_fcb9f36b.ogg": {
+  "at": "2026-09-19T22:19:39",
+  "instruct": "Say this even and unhurried, small and quiet.",
+  "instruct_sha": "9d53e7319c2ec34c",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/route_stairs_fefff805.ogg": {
+  "at": "2026-09-19T22:17:40",
+  "instruct": "Say this even and unhurried, wry.",
+  "instruct_sha": "8447dfd9037d956c",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/start_3cf6bca8.ogg": {
+  "at": "2026-09-19T22:23:50",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/start_77e9dd9a.ogg": {
+  "at": "2026-09-19T22:23:26",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/start_a5e52d22.ogg": {
+  "at": "2026-09-19T22:23:38",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/start_fa780872.ogg": {
+  "at": "2026-09-19T22:23:07",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_10266282.ogg": {
+  "at": "2026-09-19T22:13:32",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_15a205b7.ogg": {
+  "at": "2026-09-19T22:12:30",
+  "instruct": "Say this even and unhurried, small and quiet.",
+  "instruct_sha": "9d53e7319c2ec34c",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_1dcdee74.ogg": {
+  "at": "2026-09-19T22:11:29",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_21edd596.ogg": {
+  "at": "2026-09-19T22:11:53",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_28a06f12.ogg": {
+  "at": "2026-09-19T22:10:14",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_28a06f12_1.ogg": {
+  "at": "2026-09-19T22:10:27",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_28a06f12_2.ogg": {
+  "at": "2026-09-19T22:13:54",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_2e4bd86e.ogg": {
+  "at": "2026-09-19T22:12:39",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_38af37db.ogg": {
+  "at": "2026-09-19T22:10:53",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_5d4ecd29.ogg": {
+  "at": "2026-09-19T22:12:10",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_c49b4238.ogg": {
+  "at": "2026-09-19T22:13:42",
+  "instruct": "Say this even and unhurried, plainly.",
+  "instruct_sha": "2a399a53d211c39d",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
+ },
+ "narrator_cr/suspect_route_f9716aca.ogg": {
+  "at": "2026-09-19T22:12:58",
+  "instruct": "Say this even and unhurried, resolute.",
+  "instruct_sha": "cff736d731c04dfa",
+  "seed": "m_narr_low",
+  "seed_sha": "c4df7b7d8d2f67bb"
  },
  "nikolai/ending_clean_3b7c5569.ogg": {
-  "at": "2026-09-19T16:41:15",
-  "instruct": "Say this unhurried and transactional, faintly amused, plainly, even, natural.",
-  "instruct_sha": "a770548fa64dd19e",
+  "at": "2026-09-19T20:42:24",
+  "instruct": "Say this unhurried, faintly amused, plainly, even, natural.",
+  "instruct_sha": "b4a86d9e35487218",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/ending_clean_3d9d96a9.ogg": {
-  "at": "2026-09-19T16:40:55",
-  "instruct": "Say this unhurried and transactional, faintly amused, wounded, slow, quiet.",
-  "instruct_sha": "d488b50553cb906d",
+  "at": "2026-09-19T20:41:52",
+  "instruct": "Say this unhurried, faintly amused, wounded, slow, quiet.",
+  "instruct_sha": "3293c02718e9bef2",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/ending_clean_87c31158.ogg": {
-  "at": "2026-09-19T16:41:08",
-  "instruct": "Say this unhurried and transactional, faintly amused, plainly, even, natural, held back.",
-  "instruct_sha": "252feba25ab7b6a1",
+  "at": "2026-09-19T20:42:11",
+  "instruct": "Say this unhurried, faintly amused, plainly, even, natural.",
+  "instruct_sha": "b4a86d9e35487218",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik2_ade.ogg": {
-  "at": "2026-09-19T16:34:14",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:32:07",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik2_books.ogg": {
-  "at": "2026-09-19T16:34:19",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:32:17",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik2_car.ogg": {
-  "at": "2026-09-19T16:34:26",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, urgent, fast, hard.",
-  "instruct_sha": "84af19e67cbed0ba",
+  "at": "2026-09-19T20:32:29",
+  "instruct": "Say this unhurried, faintly amused, tighter, urgent.",
+  "instruct_sha": "25e98319bb2e7e0f",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik2_iris.ogg": {
-  "at": "2026-09-19T16:34:35",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:32:41",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik2_light.ogg": {
-  "at": "2026-09-19T16:34:43",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "33a0dac1e1d3857a",
+  "at": "2026-09-19T20:32:57",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik2_offer.ogg": {
-  "at": "2026-09-19T16:34:53",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "33a0dac1e1d3857a",
+  "at": "2026-09-19T20:33:09",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik2_rain.ogg": {
-  "at": "2026-09-19T16:34:59",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:33:21",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik2_second.ogg": {
-  "at": "2026-09-19T16:35:06",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:33:29",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik3_bo.ogg": {
-  "at": "2026-09-19T16:35:15",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:33:46",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik3_drawer.ogg": {
-  "at": "2026-09-19T16:35:41",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, small and quiet, slow, faint, held back.",
-  "instruct_sha": "23d3ffe3e7327848",
+  "at": "2026-09-19T20:34:17",
+  "instruct": "Say this unhurried, faintly amused, small and quiet.",
+  "instruct_sha": "86dfc30444f3fd3f",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik3_folder.ogg": {
-  "at": "2026-09-19T16:35:50",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:34:31",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik3_morning.ogg": {
-  "at": "2026-09-19T16:35:57",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:34:44",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik3_paloma.ogg": {
-  "at": "2026-09-19T16:36:06",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, urgent, fast, hard, held back.",
-  "instruct_sha": "a215b6865a1f916d",
+  "at": "2026-09-19T20:35:01",
+  "instruct": "Say this unhurried, faintly amused, tighter, urgent.",
+  "instruct_sha": "25e98319bb2e7e0f",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik3_safe.ogg": {
-  "at": "2026-09-19T16:36:17",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "33a0dac1e1d3857a",
+  "at": "2026-09-19T20:35:22",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik3_stairs.ogg": {
-  "at": "2026-09-19T16:36:29",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "33a0dac1e1d3857a",
+  "at": "2026-09-19T20:35:38",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik3_tired.ogg": {
-  "at": "2026-09-19T16:36:40",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "33a0dac1e1d3857a",
+  "at": "2026-09-19T20:35:53",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik_curtain.ogg": {
-  "at": "2026-09-19T16:36:49",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "33a0dac1e1d3857a",
+  "at": "2026-09-19T20:36:10",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik_job.ogg": {
-  "at": "2026-09-19T16:36:55",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:36:19",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik_keys.ogg": {
-  "at": "2026-09-19T16:37:06",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:36:33",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik_list.ogg": {
-  "at": "2026-09-19T16:37:15",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:36:45",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik_marek.ogg": {
-  "at": "2026-09-19T16:37:23",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:36:58",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik_money.ogg": {
-  "at": "2026-09-19T16:37:31",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, small and quiet, slow, faint.",
-  "instruct_sha": "9c8f930d98ee0f4a",
+  "at": "2026-09-19T20:37:11",
+  "instruct": "Say this unhurried, faintly amused, small and quiet.",
+  "instruct_sha": "86dfc30444f3fd3f",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik_room.ogg": {
-  "at": "2026-09-19T16:37:39",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, sharp, clipped, hard.",
-  "instruct_sha": "57f45fa02f7ec25b",
+  "at": "2026-09-19T20:37:22",
+  "instruct": "Say this unhurried, faintly amused, tighter, sharp.",
+  "instruct_sha": "6d46a8388ccdab5a",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/nik_two.ogg": {
-  "at": "2026-09-19T16:37:50",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:37:38",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/open1_nikolai.ogg": {
-  "at": "2026-09-19T16:37:57",
-  "instruct": "Say this unhurried and transactional, faintly amused, plainly, even, natural.",
-  "instruct_sha": "a770548fa64dd19e",
+  "at": "2026-09-19T20:37:46",
+  "instruct": "Say this unhurried, faintly amused, plainly, even, natural.",
+  "instruct_sha": "b4a86d9e35487218",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/open2_nikolai.ogg": {
-  "at": "2026-09-19T16:38:05",
-  "instruct": "Say this unhurried and transactional, faintly amused, small and quiet, slow, faint.",
-  "instruct_sha": "de9079f337e06598",
+  "at": "2026-09-19T20:37:58",
+  "instruct": "Say this unhurried, faintly amused, small and quiet.",
+  "instruct_sha": "86dfc30444f3fd3f",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/open3_nikolai.ogg": {
-  "at": "2026-09-19T16:38:15",
-  "instruct": "Say this unhurried and transactional, faintly amused, tighter, resolute, even, firm.",
-  "instruct_sha": "3fdf735e4a322d42",
+  "at": "2026-09-19T20:38:14",
+  "instruct": "Say this unhurried, faintly amused, tighter, resolute.",
+  "instruct_sha": "a8dd433c8ff0e462",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_bay_28bbdd9c.ogg": {
-  "at": "2026-09-19T16:39:47",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "8ef5a1269bf7d9e7",
+  "at": "2026-09-19T20:40:29",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_bay_4dc6d225.ogg": {
-  "at": "2026-09-19T16:39:10",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "bac73aae1a959175",
+  "at": "2026-09-19T20:39:22",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_bay_527427b4.ogg": {
-  "at": "2026-09-19T16:39:28",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "8ef5a1269bf7d9e7",
+  "at": "2026-09-19T20:39:53",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_bay_63b32b00.ogg": {
-  "at": "2026-09-19T16:39:37",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "bac73aae1a959175",
+  "at": "2026-09-19T20:40:01",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_bay_ca3e7afc.ogg": {
-  "at": "2026-09-19T16:39:17",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "bac73aae1a959175",
+  "at": "2026-09-19T20:39:34",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_stairs_12a79c5c.ogg": {
-  "at": "2026-09-19T16:40:13",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, teasing, easy, light, held back.",
-  "instruct_sha": "6a8c811bf426fc88",
+  "at": "2026-09-19T20:40:59",
+  "instruct": "Say this unhurried, faintly amused, teasing.",
+  "instruct_sha": "4e1415c537a4856d",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_stairs_4c45a468.ogg": {
-  "at": "2026-09-19T16:39:51",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender.",
-  "instruct_sha": "7021f455f4d82b61",
+  "at": "2026-09-19T20:40:35",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_stairs_59ed2d3b.ogg": {
-  "at": "2026-09-19T16:40:47",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, small and quiet, slow, faint, held back.",
-  "instruct_sha": "291ae64cabdbdbe1",
+  "at": "2026-09-19T20:41:36",
+  "instruct": "Say this unhurried, faintly amused, small and quiet.",
+  "instruct_sha": "86dfc30444f3fd3f",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_stairs_673424b6.ogg": {
-  "at": "2026-09-19T16:40:00",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "8ef5a1269bf7d9e7",
+  "at": "2026-09-19T20:40:43",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/route_stairs_ebdc8549.ogg": {
-  "at": "2026-09-19T16:40:37",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "8ef5a1269bf7d9e7",
+  "at": "2026-09-19T20:41:21",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/suspect_route_36c3c962.ogg": {
-  "at": "2026-09-19T16:38:49",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "8ef5a1269bf7d9e7",
+  "at": "2026-09-19T20:39:01",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/suspect_route_44d13857.ogg": {
-  "at": "2026-09-19T16:38:37",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "bac73aae1a959175",
+  "at": "2026-09-19T20:38:43",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/suspect_route_47f523d3.ogg": {
-  "at": "2026-09-19T16:38:31",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "bac73aae1a959175",
+  "at": "2026-09-19T20:38:35",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/suspect_route_49b9a864.ogg": {
-  "at": "2026-09-19T16:39:01",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft, held back.",
-  "instruct_sha": "8ef5a1269bf7d9e7",
+  "at": "2026-09-19T20:39:14",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "nikolai/suspect_route_b5335a12.ogg": {
-  "at": "2026-09-19T16:38:22",
-  "instruct": "Say this unhurried and transactional, faintly amused, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "bac73aae1a959175",
+  "at": "2026-09-19T20:38:28",
+  "instruct": "Say this unhurried, faintly amused, tender.",
+  "instruct_sha": "fa375ec11d0b7813",
   "seed": "m_heavy",
-  "seed_sha": "5f501f18963c4cf8"
+  "seed_sha": "6674fd024064c48c"
  },
  "reyes/ending_clean_22576a8f.ogg": {
-  "at": "2026-09-19T16:27:24",
-  "instruct": "Say this low and flat, patient, unimpressed, small and quiet, slow, faint.",
-  "instruct_sha": "ea43c7394aec98f5",
+  "at": "2026-09-19T20:24:08",
+  "instruct": "Say this low and flat, unimpressed, small and quiet.",
+  "instruct_sha": "2c90a73fc12c74da",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/ending_clean_25922e5f.ogg": {
-  "at": "2026-09-19T16:27:29",
-  "instruct": "Say this low and flat, patient, unimpressed, wounded, slow, quiet.",
-  "instruct_sha": "32cae41ddfc0c3dc",
+  "at": "2026-09-19T20:24:16",
+  "instruct": "Say this low and flat, unimpressed, wounded.",
+  "instruct_sha": "bb9a1464e45c2a5c",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/ending_clean_27094537.ogg": {
-  "at": "2026-09-19T16:27:11",
-  "instruct": "Say this low and flat, patient, unimpressed, plainly, even, natural, held back.",
-  "instruct_sha": "13f8b6e4d69d3333",
+  "at": "2026-09-19T20:23:48",
+  "instruct": "Say this low and flat, unimpressed, plainly.",
+  "instruct_sha": "c1d1b12f60c6ddcf",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/ending_clean_43023181.ogg": {
-  "at": "2026-09-19T16:26:55",
-  "instruct": "Say this low and flat, patient, unimpressed, plainly, even, natural.",
-  "instruct_sha": "88e2ba78451ab199",
+  "at": "2026-09-19T20:23:31",
+  "instruct": "Say this low and flat, unimpressed, plainly.",
+  "instruct_sha": "c1d1b12f60c6ddcf",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/ending_clean_79deba0e.ogg": {
-  "at": "2026-09-19T16:26:29",
-  "instruct": "Say this low and flat, patient, unimpressed, plainly, even, natural.",
-  "instruct_sha": "88e2ba78451ab199",
+  "at": "2026-09-19T20:23:03",
+  "instruct": "Say this low and flat, unimpressed, plainly.",
+  "instruct_sha": "c1d1b12f60c6ddcf",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/ending_clean_a05c248e.ogg": {
-  "at": "2026-09-19T16:27:15",
-  "instruct": "Say this low and flat, patient, unimpressed, plainly, even, natural.",
-  "instruct_sha": "88e2ba78451ab199",
+  "at": "2026-09-19T20:23:55",
+  "instruct": "Say this low and flat, unimpressed, plainly.",
+  "instruct_sha": "c1d1b12f60c6ddcf",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/ending_clean_d6f48abd.ogg": {
-  "at": "2026-09-19T16:26:48",
-  "instruct": "Say this low and flat, patient, unimpressed, teasing, easy, light, held back.",
-  "instruct_sha": "0496478e57ef0e65",
+  "at": "2026-09-19T20:23:23",
+  "instruct": "Say this low and flat, unimpressed, teasing.",
+  "instruct_sha": "2dea737f5c3545e7",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/ending_clean_f85a803d.ogg": {
-  "at": "2026-09-19T16:27:34",
-  "instruct": "Say this low and flat, patient, unimpressed, rising at the end, even, open.",
-  "instruct_sha": "8d987c892e2434f5",
+  "at": "2026-09-19T20:24:23",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/evidence_locker_1d6252e4.ogg": {
-  "at": "2026-09-19T16:28:06",
-  "instruct": "Say this low and flat, patient, unimpressed, tighter, resolute, even, firm.",
-  "instruct_sha": "e83ea65c4d701aa4",
+  "at": "2026-09-19T20:24:49",
+  "instruct": "Say this low and flat, unimpressed, tighter, resolute.",
+  "instruct_sha": "43b12aade4cbc4d5",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/evidence_locker_4463846f.ogg": {
-  "at": "2026-09-19T16:27:57",
-  "instruct": "Say this low and flat, patient, unimpressed, tighter, resolute, even, firm.",
-  "instruct_sha": "e83ea65c4d701aa4",
+  "at": "2026-09-19T20:24:40",
+  "instruct": "Say this low and flat, unimpressed, tighter, resolute.",
+  "instruct_sha": "43b12aade4cbc4d5",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/evidence_locker_644ae154.ogg": {
-  "at": "2026-09-19T16:27:45",
-  "instruct": "Say this low and flat, patient, unimpressed, tighter, sharp, clipped, hard.",
-  "instruct_sha": "fd5a872fe1d09cdb",
+  "at": "2026-09-19T20:24:31",
+  "instruct": "Say this low and flat, unimpressed, tighter, sharp.",
+  "instruct_sha": "c89761f92313ebde",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/press_beat_3d47aec2.ogg": {
-  "at": "2026-09-19T16:24:03",
-  "instruct": "Say this low and flat, patient, unimpressed, tighter, resolute, even, firm.",
-  "instruct_sha": "e83ea65c4d701aa4",
+  "at": "2026-09-19T20:19:58",
+  "instruct": "Say this low and flat, unimpressed, tighter, resolute.",
+  "instruct_sha": "43b12aade4cbc4d5",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/press_beat_b41e2b8a.ogg": {
-  "at": "2026-09-19T16:24:19",
-  "instruct": "Say this low and flat, patient, unimpressed, tighter, resolute, even, firm.",
-  "instruct_sha": "e83ea65c4d701aa4",
+  "at": "2026-09-19T20:20:09",
+  "instruct": "Say this low and flat, unimpressed, tighter, resolute.",
+  "instruct_sha": "43b12aade4cbc4d5",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/press_beat_f66f1531.ogg": {
-  "at": "2026-09-19T16:24:28",
-  "instruct": "Say this low and flat, patient, unimpressed, tighter, resolute, even, firm, held back.",
-  "instruct_sha": "2781fe6f5096842f",
+  "at": "2026-09-19T20:20:22",
+  "instruct": "Say this low and flat, unimpressed, tighter, resolute.",
+  "instruct_sha": "43b12aade4cbc4d5",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_07e7707d.ogg": {
-  "at": "2026-09-19T16:25:41",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end, even, open.",
-  "instruct_sha": "bdb752f57518c41d",
+  "at": "2026-09-19T20:21:50",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_3140f824.ogg": {
-  "at": "2026-09-19T16:25:14",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end.",
-  "instruct_sha": "409ba7091d2e69b1",
+  "at": "2026-09-19T20:21:23",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_9973e359.ogg": {
-  "at": "2026-09-19T16:25:46",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender.",
-  "instruct_sha": "2ad2899327327809",
+  "at": "2026-09-19T20:21:56",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_a2d897c1.ogg": {
-  "at": "2026-09-19T16:25:51",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end.",
-  "instruct_sha": "409ba7091d2e69b1",
+  "at": "2026-09-19T20:22:02",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_b9398228.ogg": {
-  "at": "2026-09-19T16:25:34",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "20671a9f4924fdf0",
+  "at": "2026-09-19T20:21:39",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_d0abb07e.ogg": {
-  "at": "2026-09-19T16:25:11",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "20671a9f4924fdf0",
+  "at": "2026-09-19T20:21:19",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_de6972ab.ogg": {
-  "at": "2026-09-19T16:25:54",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end.",
-  "instruct_sha": "409ba7091d2e69b1",
+  "at": "2026-09-19T20:22:08",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_f6d0edd6.ogg": {
-  "at": "2026-09-19T16:25:37",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender.",
-  "instruct_sha": "2ad2899327327809",
+  "at": "2026-09-19T20:21:44",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_bay_f96b71ae.ogg": {
-  "at": "2026-09-19T16:25:27",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end, even, open.",
-  "instruct_sha": "bdb752f57518c41d",
+  "at": "2026-09-19T20:21:31",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_stairs_201ba993.ogg": {
-  "at": "2026-09-19T16:26:04",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender.",
-  "instruct_sha": "2ad2899327327809",
+  "at": "2026-09-19T20:22:25",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_stairs_340b5f29.ogg": {
-  "at": "2026-09-19T16:25:57",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender.",
-  "instruct_sha": "2ad2899327327809",
+  "at": "2026-09-19T20:22:15",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_stairs_403ed01e.ogg": {
-  "at": "2026-09-19T16:26:19",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end.",
-  "instruct_sha": "409ba7091d2e69b1",
+  "at": "2026-09-19T20:22:49",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_stairs_44700484.ogg": {
-  "at": "2026-09-19T16:26:09",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender.",
-  "instruct_sha": "2ad2899327327809",
+  "at": "2026-09-19T20:22:33",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_stairs_bc6efe71.ogg": {
-  "at": "2026-09-19T16:26:13",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "20671a9f4924fdf0",
+  "at": "2026-09-19T20:22:39",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_stairs_c9602627.ogg": {
-  "at": "2026-09-19T16:26:16",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender.",
-  "instruct_sha": "2ad2899327327809",
+  "at": "2026-09-19T20:22:44",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_stairs_cf031d5c.ogg": {
-  "at": "2026-09-19T16:26:00",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender.",
-  "instruct_sha": "2ad2899327327809",
+  "at": "2026-09-19T20:22:20",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/route_stairs_fb713c28.ogg": {
-  "at": "2026-09-19T16:26:23",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end.",
-  "instruct_sha": "409ba7091d2e69b1",
+  "at": "2026-09-19T20:22:56",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/suspect_route_1ed31a37.ogg": {
-  "at": "2026-09-19T16:25:05",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end, even, open.",
-  "instruct_sha": "bdb752f57518c41d",
+  "at": "2026-09-19T20:20:59",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/suspect_route_20874c7d.ogg": {
-  "at": "2026-09-19T16:24:42",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "20671a9f4924fdf0",
+  "at": "2026-09-19T20:20:35",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/suspect_route_31d8d6eb.ogg": {
-  "at": "2026-09-19T16:14:16",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end.",
-  "instruct_sha": "409ba7091d2e69b1",
+  "at": "2026-09-19T20:21:04",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/suspect_route_7d4446b1.ogg": {
-  "at": "2026-09-19T16:24:54",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender.",
-  "instruct_sha": "2ad2899327327809",
+  "at": "2026-09-19T20:20:51",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/suspect_route_8f76fec1.ogg": {
-  "at": "2026-09-19T16:24:46",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, tender, unhurried, soft.",
-  "instruct_sha": "20671a9f4924fdf0",
+  "at": "2026-09-19T20:20:42",
+  "instruct": "Say this low and flat, unimpressed, tender.",
+  "instruct_sha": "c685aaacba0ff999",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/suspect_route_aaa1c85e.ogg": {
-  "at": "2026-09-19T16:24:37",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, wounded, slow, quiet.",
-  "instruct_sha": "2afb925b7613d8fc",
+  "at": "2026-09-19T20:20:29",
+  "instruct": "Say this low and flat, unimpressed, wounded.",
+  "instruct_sha": "bb9a1464e45c2a5c",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "reyes/suspect_route_c54ffce0.ogg": {
-  "at": "2026-09-19T16:14:32",
-  "instruct": "Say this low and flat, patient, unimpressed, closer and unguarded, rising at the end, even, open.",
-  "instruct_sha": "bdb752f57518c41d",
+  "at": "2026-09-19T20:21:11",
+  "instruct": "Say this low and flat, unimpressed, rising at the end.",
+  "instruct_sha": "efeada378f83948f",
   "seed": "f_low_flat",
-  "seed_sha": "3381f23650817281"
+  "seed_sha": "3a7de2d4a420fac5"
  },
  "vee/ending_clean_2989a204.ogg": {
-  "at": "2026-09-19T18:11:38",
+  "at": "2026-09-19T20:09:29",
   "instruct": "Say this settled and clear, plainly, even, natural.",
   "instruct_sha": "66791e13e79d0299",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/open1_vee.ogg": {
-  "at": "2026-09-19T17:45:55",
+  "at": "2026-09-19T20:00:10",
   "instruct": "Say this bright and young, plainly, even, natural.",
   "instruct_sha": "c5b0ae42eda3d2f0",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/open2_vee.ogg": {
-  "at": "2026-09-19T17:46:14",
-  "instruct": "Say this bright and alert, nervous, uneven, small, held back.",
-  "instruct_sha": "a06220ada2e18f1b",
+  "at": "2026-09-19T20:00:29",
+  "instruct": "Say this bright and alert, nervous, uneven, small.",
+  "instruct_sha": "2a0c330700774e10",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/open3_vee.ogg": {
-  "at": "2026-09-19T17:46:31",
+  "at": "2026-09-19T20:00:40",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/route_bay_4cc50107.ogg": {
-  "at": "2026-09-19T18:07:35",
+  "at": "2026-09-19T20:07:01",
   "instruct": "Say this close and breath-forward, teasing, easy, light.",
   "instruct_sha": "a33cb26a151bcd24",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_bay_61fe66f9.ogg": {
-  "at": "2026-09-19T18:08:56",
+  "at": "2026-09-19T20:07:43",
   "instruct": "Say this close and breath-forward, nervous, uneven, small.",
   "instruct_sha": "1bfe348af620c2a6",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_bay_a767fadb.ogg": {
-  "at": "2026-09-19T18:09:20",
+  "at": "2026-09-19T20:07:58",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_bay_ac95b041.ogg": {
-  "at": "2026-09-19T18:08:29",
-  "instruct": "Say this close and breath-forward, breathless, slow, hushed, held back.",
-  "instruct_sha": "a1dc94f12351cf72",
+  "at": "2026-09-19T20:07:26",
+  "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
+  "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_bay_c356ee19.ogg": {
-  "at": "2026-09-19T18:07:54",
+  "at": "2026-09-19T20:07:12",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_bay_ee3207db.ogg": {
-  "at": "2026-09-19T18:09:37",
+  "at": "2026-09-19T20:08:12",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_stairs_3524760b.ogg": {
-  "at": "2026-09-19T18:11:26",
+  "at": "2026-09-19T20:09:17",
   "instruct": "Say this close and breath-forward, urgent, fast, hard.",
   "instruct_sha": "3341a50db4f98fc6",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_stairs_4818ed1b.ogg": {
-  "at": "2026-09-19T18:11:16",
+  "at": "2026-09-19T20:09:07",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_stairs_5bcee76d.ogg": {
-  "at": "2026-09-19T18:10:16",
+  "at": "2026-09-19T20:08:37",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_stairs_7ae8d735.ogg": {
-  "at": "2026-09-19T18:09:54",
+  "at": "2026-09-19T20:08:21",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/route_stairs_f55e49da.ogg": {
-  "at": "2026-09-19T18:10:58",
-  "instruct": "Say this close and breath-forward, breathless, slow, hushed, held back.",
-  "instruct_sha": "a1dc94f12351cf72",
-  "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
- },
- "vee/suspect_route_4f591432.ogg": {
-  "at": "2026-09-19T18:06:16",
+  "at": "2026-09-19T20:08:56",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
+ },
+ "vee/suspect_route_4f591432.ogg": {
+  "at": "2026-09-19T20:06:16",
+  "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
+  "instruct_sha": "0b280122a5645554",
+  "seed": "f_young_frayed",
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/suspect_route_50c17620.ogg": {
-  "at": "2026-09-19T18:07:22",
+  "at": "2026-09-19T20:06:53",
   "instruct": "Say this close and breath-forward, sharp, clipped, hard.",
   "instruct_sha": "42d083973668a634",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/suspect_route_50f9d9a2.ogg": {
-  "at": "2026-09-19T18:07:09",
-  "instruct": "Say this close and breath-forward, breathless, slow, hushed, held back.",
-  "instruct_sha": "a1dc94f12351cf72",
-  "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
- },
- "vee/suspect_route_9a2164ce.ogg": {
-  "at": "2026-09-19T18:06:34",
+  "at": "2026-09-19T20:06:46",
   "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
   "instruct_sha": "0b280122a5645554",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
+ },
+ "vee/suspect_route_9a2164ce.ogg": {
+  "at": "2026-09-19T20:06:27",
+  "instruct": "Say this close and breath-forward, breathless, slow, hushed.",
+  "instruct_sha": "0b280122a5645554",
+  "seed": "f_young_frayed",
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee2_bail.ogg": {
-  "at": "2026-09-19T17:46:47",
+  "at": "2026-09-19T20:00:55",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee2_cold.ogg": {
-  "at": "2026-09-19T17:47:05",
+  "at": "2026-09-19T20:01:07",
   "instruct": "Say this young and pressed, nervous, uneven, small.",
   "instruct_sha": "f574723436adce19",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee2_iris.ogg": {
-  "at": "2026-09-19T17:47:24",
+  "at": "2026-09-19T20:01:19",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee2_kind.ogg": {
-  "at": "2026-09-19T17:47:40",
-  "instruct": "Say this young and pressed, nervous, uneven, small, held back.",
-  "instruct_sha": "0b427f2b6220fe2b",
+  "at": "2026-09-19T20:01:33",
+  "instruct": "Say this young and pressed, nervous, uneven, small.",
+  "instruct_sha": "f574723436adce19",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee2_paid.ogg": {
-  "at": "2026-09-19T17:47:55",
+  "at": "2026-09-19T20:01:46",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee2_scared.ogg": {
-  "at": "2026-09-19T17:48:30",
-  "instruct": "Say this young and pressed, small and quiet, slow, faint, held back.",
-  "instruct_sha": "6b5a7ab52651f7be",
+  "at": "2026-09-19T20:02:05",
+  "instruct": "Say this young and pressed, small and quiet.",
+  "instruct_sha": "6d8c6baa75d42f08",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee2_seen.ogg": {
-  "at": "2026-09-19T17:48:58",
-  "instruct": "Say this young and pressed, resolute, even, firm, held back.",
-  "instruct_sha": "96b473b2d1b654dd",
+  "at": "2026-09-19T20:02:28",
+  "instruct": "Say this young and pressed, resolute, even, firm.",
+  "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee2_where.ogg": {
-  "at": "2026-09-19T17:49:12",
+  "at": "2026-09-19T20:02:39",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee3_believe.ogg": {
-  "at": "2026-09-19T17:49:28",
-  "instruct": "Say this young and pressed, resolute, even, firm, held back.",
-  "instruct_sha": "96b473b2d1b654dd",
+  "at": "2026-09-19T20:02:50",
+  "instruct": "Say this young and pressed, resolute, even, firm.",
+  "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee3_bo.ogg": {
-  "at": "2026-09-19T17:49:48",
-  "instruct": "Say this young and pressed, resolute, even, firm, held back.",
-  "instruct_sha": "96b473b2d1b654dd",
+  "at": "2026-09-19T20:03:00",
+  "instruct": "Say this young and pressed, resolute, even, firm.",
+  "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee3_heard.ogg": {
-  "at": "2026-09-19T17:50:12",
-  "instruct": "Say this young and pressed, resolute, even, firm, held back.",
-  "instruct_sha": "96b473b2d1b654dd",
+  "at": "2026-09-19T20:03:18",
+  "instruct": "Say this young and pressed, resolute, even, firm.",
+  "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee3_here.ogg": {
-  "at": "2026-09-19T17:50:27",
+  "at": "2026-09-19T20:03:30",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee3_night.ogg": {
-  "at": "2026-09-19T17:50:57",
-  "instruct": "Say this young and pressed, resolute, even, firm, held back.",
-  "instruct_sha": "96b473b2d1b654dd",
+  "at": "2026-09-19T20:03:39",
+  "instruct": "Say this young and pressed, resolute, even, firm.",
+  "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "db43f7e123984e0b"
  },
  "vee/vee3_slow.ogg": {
-  "at": "2026-09-19T17:51:12",
+  "at": "2026-09-19T20:03:52",
   "instruct": "Say this young and pressed, urgent, fast, hard.",
   "instruct_sha": "95b8ed4b111fb09f",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee3_tell.ogg": {
-  "at": "2026-09-19T17:51:31",
-  "instruct": "Say this young and pressed, resolute, even, firm, held back.",
-  "instruct_sha": "96b473b2d1b654dd",
+  "at": "2026-09-19T20:04:06",
+  "instruct": "Say this young and pressed, resolute, even, firm.",
+  "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee3_yard.ogg": {
-  "at": "2026-09-19T17:51:48",
-  "instruct": "Say this young and pressed, resolute, even, firm, held back.",
-  "instruct_sha": "96b473b2d1b654dd",
+  "at": "2026-09-19T20:04:21",
+  "instruct": "Say this young and pressed, resolute, even, firm.",
+  "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee_bar.ogg": {
-  "at": "2026-09-19T17:52:04",
+  "at": "2026-09-19T20:04:32",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee_cold.ogg": {
-  "at": "2026-09-19T18:03:10",
-  "instruct": "Say this young and pressed, resolute, even, firm, held back.",
-  "instruct_sha": "96b473b2d1b654dd",
-  "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
- },
- "vee/vee_crate.ogg": {
-  "at": "2026-09-19T18:03:33",
+  "at": "2026-09-19T20:04:50",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
+ },
+ "vee/vee_crate.ogg": {
+  "at": "2026-09-19T20:05:03",
+  "instruct": "Say this young and pressed, resolute, even, firm.",
+  "instruct_sha": "cfde38cafb9820f1",
+  "seed": "f_young_frayed",
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee_hands.ogg": {
-  "at": "2026-09-19T18:04:00",
+  "at": "2026-09-19T20:05:19",
   "instruct": "Say this young and pressed, sharp, clipped, hard.",
   "instruct_sha": "2964ade386da91b5",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee_leave.ogg": {
-  "at": "2026-09-19T18:04:15",
+  "at": "2026-09-19T20:05:29",
   "instruct": "Say this young and pressed, urgent, fast, hard.",
   "instruct_sha": "95b8ed4b111fb09f",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee_marek.ogg": {
-  "at": "2026-09-19T18:04:48",
+  "at": "2026-09-19T20:05:42",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee_name.ogg": {
-  "at": "2026-09-19T18:05:18",
+  "at": "2026-09-19T20:05:51",
   "instruct": "Say this young and pressed, resolute, even, firm.",
   "instruct_sha": "cfde38cafb9820f1",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  },
  "vee/vee_van.ogg": {
-  "at": "2026-09-19T18:05:45",
+  "at": "2026-09-19T20:06:03",
   "instruct": "Say this young and pressed, sharp, clipped, hard.",
   "instruct_sha": "2964ade386da91b5",
   "seed": "f_young_frayed",
-  "seed_sha": "ac7eb3163a5839c0"
+  "seed_sha": "449c4743f234bd5a"
  }
 }
