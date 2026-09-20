@@ -245,9 +245,14 @@ static func build() -> Theme:
 	paper.shadow_size = 12
 	t.set_stylebox("panel", "Paper", paper)
 
-	# Glass: a translucent panel over the room.
+	# Glass: a translucent panel over the room. At 0.8 it was not glass — it was a lid, and
+	# on the screens where it fills most of the frame (the offer, the brief, the triage) the
+	# room behind it may as well not have been rendered. 0.66 still puts warm off-white text
+	# on a ground around 0.25 against a lit plate, which is a wide contrast margin, while the
+	# furniture and the window actually read through it. This is the one number that decides
+	# whether those screens are a picture with type on it or a card with a picture round it.
 	_variation(t, "Glass", "PanelContainer")
-	t.set_stylebox("panel", "Glass", flat(Color(Palette.GROUND, 0.8), Color(Palette.PANEL_EDGE, 0.9), 10, 1, Vector2(12, 12)))
+	t.set_stylebox("panel", "Glass", flat(Color(Palette.GROUND, 0.66), Color(Palette.PANEL_EDGE, 0.9), 10, 1, Vector2(12, 12)))
 
 	_variation(t, "Card", "PanelContainer")
 	t.set_stylebox("panel", "Card", flat(Palette.PANEL_RAISED, Palette.PANEL_EDGE, 10, 1, Vector2(12, 12)))
