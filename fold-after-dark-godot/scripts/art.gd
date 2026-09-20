@@ -25,6 +25,12 @@ const SLOTS := {
 	"piece": "the folded-paper face of a playing piece",
 	"wall": "the toy block that never moves",
 	"foil": "candy foil, the logotype's fill",
+	# The menu's two buttons, baked rather than rendered (ops/fold_dark_title.py): folded
+	# paper tabs, nine-patch. They are SLOTS so that Art.missing() names them if they are
+	# ever lost — a title screen whose buttons silently fall back to a StyleBoxFlat is
+	# studio rule 2 broken again with nothing to show for it.
+	"btn_play": "the lead menu action, as a folded magenta paper tab",
+	"btn_second": "the second menu action, as a folded gold paper tab",
 }
 
 static var _cache := {}

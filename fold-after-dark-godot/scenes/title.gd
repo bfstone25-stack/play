@@ -8,33 +8,51 @@ extends Control
 ##  2. logotype       scripts/vector_mark.gd draws the page's own designed mark — the
 ##                    Latin FOLD or the Chinese 归一 — as vector strokes. Never a Label.
 ##  3. motion         three planes drifting at different rates against a slow camera and
-##                    the pointer; a sun that pulses; sparkles rising through it; the
+##                    the pointer; a low pink lamp that breathes; motes falling through
+##                    it; the
 ##                    logotype drawing itself on over ~2.2 s, then breathing and taking a
 ##                    shine sweep every few seconds
 ##  4. styled menu    Primary / Amber / Ghost from scripts/studio_theme.gd, set in the
 ##                    left third of the composition where the key visual is quiet, not
 ##                    stacked down the middle
-##  5. rating + mark  ALL AGES and blazeCore Play, bottom left, small
+##  5. rating + mark  18+ · ADULTS ONLY and Flat 404, bottom left, small. Flat 404 is the
+##                    ADULT label and is correct here; ops/adult_forks/TITLE_SCREENS.md
+##                    reserves "blazeCore Play alone, no 18+ badge" for the mainstream
+##                    parent, which is a different tree (play/fold-godot)
 ##  6. sound          Sfx.logo() as the sting, the ambient bed under it
 ##
 ## The lit half of the screen is a CanvasLayer of its own with a PointLight2D in it, and
 ## the UI is on a second CanvasLayer so the text is never dimmed along with the scene.
 ##
-## 2026-09-19 — this screen is the thing Blaze sent back. It was a dim brown study: the
+## 2026-09-19 — the PARENT's screen was the thing Blaze sent back. It was a dim brown
+## study: the
 ## planes were multiplied by ROOM_DIM 0.78, the left third was covered by a near-opaque
 ## black scrim so the menu would read, and the only light in it was a hanging lamp. Every
 ## one of those was a correct decision for a lamplit room and the wrong room.
 ##
 ## What changed, in order of how much it mattered:
 ##
-##   * ROOM_DIM is gone. The planes are drawn at full brightness (PLANE_LIT), because the
-##     plates behind them are now daylight plates and dimming daylight is just fog.
-##   * the scrim flipped. It was black-at-94%-alpha on the left; it is now warm cream, so
-##     the left column is a *lit* ground for dark text rather than a hole for pale text.
-##   * the lamp became the sun: same PieceView.lamp node, high and warm, pulsing slowly
-##     instead of flickering, with no 7-second dip (a flicker is a horror-movie cue).
-##   * the dust became sparkles: gold, rising rather than falling, and drawn additively.
+##   * ROOM_DIM is gone. The planes are drawn at full brightness (PLANE_LIT), because
+##     dimming a plate that was rendered dark is just fog — the light belongs in the
+##     render, not in a multiply.
 ##   * the mark breathes and takes a shine sweep every SHINE_EVERY seconds.
+##
+## 2026-09-20 — and this fork then inherited that screen wholesale, which is how an adult
+## title came to be lit by a SUN. The palette, the scrim and the mark had all been carried
+## over to night; three things had not, and each of them was a cue written on purpose for
+## a children's game:
+##
+##   * the sun became a lamp again — low, pink (Palette.LAMP is already #FF9AC4), and
+##     dimmer. It sat at 22% of the screen height at energy 1.15, which is where you put
+##     a sun; a room at 1 a.m. has a light source in it, not above it.
+##   * the sparkles became motes. Gold sparks RISING is the single most legible "this game
+##     is for children" cue on the screen, and it was drawn additively over an adult key
+##     visual. They now fall, slowly, in the lamp's own pink and gold, the way dust does
+##     in a beam.
+##   * the comments. Four of them still explained decisions in terms of "a children's
+##     game" and "daylight plates", and one line of the header still said ALL AGES while
+##     the code rendered 18+ · ADULTS ONLY. A comment that contradicts its own code is
+##     worse than no comment: it is the next person's false premise.
 
 const GAME := "res://scenes/map.tscn"      # the tier map, not the board: the loop starts at a locked card
 ## What the parallax planes are multiplied by. 1.0 — see the note above; this stays a
@@ -58,7 +76,7 @@ var _menu: VBoxContainer
 var _rules: VBoxContainer
 var _t := 0.0
 var _aim := Vector2.ZERO
-var _lamp_base := 1.15
+var _lamp_base := 0.96        # a lamp in a room, not a sun over one (was 1.15)
 var _shine_clock := 0.0
 var _demo: Node2D
 var _demo_pieces := {}
@@ -101,7 +119,22 @@ func _build_stage() -> void:
 	# No CanvasModulate — see the note in scenes/game.gd. The room is dark because the
 	# planes are drawn dark and the lamp is additive on top.
 
-	# three planes: the room, the drifting paper, the key visual itself
+	# Three planes: the room, the drifting paper, the key visual itself — and a finding
+	# worth writing down rather than quietly restructuring at 03:00.
+	#
+	# **The parallax is currently defeated by the key plane.** `key` is drawn last, at
+	# alpha 1.0, with STRETCH_KEEP_ASPECT_COVERED over a rect oversized by 90x70 — so it
+	# is opaque and it covers the whole viewport, and bg_far and bg_mid are behind it
+	# where nothing can see them. The depth the pointer-parallax produces is real in the
+	# code and invisible on the screen; what reads as depth in a capture is the bokeh
+	# inside the key plate itself.
+	#
+	# Both plates are still worth having and both are now After Dark's own: bg_far is
+	# used by the PLAYFIELD (scenes/game.gd:127), where it is not covered, and bg_mid
+	# completes the slot set. Making the parallax actually visible means either a key
+	# plate with real transparency or drawing `key` inset rather than full-bleed — and
+	# full-bleed is what ops/adult_forks/TITLE_SCREENS.md requires of a key visual, so
+	# that is a composition decision for Blaze rather than a bug to fix in passing.
 	for slot in ["bg_far", "bg_mid", "key"]:
 		var tr := TextureRect.new()
 		tr.texture = Art.plate_or_stand_in(slot, Palette.GROUND_DEEP if slot != "key" else Palette.TABLE, 40.0)
@@ -124,18 +157,19 @@ func _build_stage() -> void:
 		_planes.append(tr)
 
 	# The key visual is a composition, not a wallpaper: it sits right of centre and the
-	# left third is washed *up* — a warm cream veil — so the logotype and the menu have a
-	# lit ground to sit on. This gradient used to run the other way, to near-black, which
-	# is how a bright key visual still ended up looking like a study.
+	# left third is veiled so the logotype and the menu have a ground to sit on.
 	var grad := Gradient.new()
 	grad.offsets = PackedFloat32Array([0.0, 0.45, 1.0])
-	# 0.97 / 0.62, not 0.92 / 0.45: the key visual that landed is a dense candy field and
-	# the first capture had the tagline and the rule lines competing with pastel blocks
-	# right behind them. A title screen's copy column gets a clean ground.
-	# After Dark: the veil is plum-black, not cream. The key visual stays full bleed and
+	# After Dark: the veil is plum-black, not the parent's cream. The key visual stays full bleed and
 	# visible through the left column (TITLE_SCREENS.md, "the surface must not eat the
 	# picture") — 0.90 at the edge, gone by the right third.
-	grad.colors = PackedColorArray([Color(Palette.GROUND, 0.90), Color(Palette.GROUND, 0.55), Color(Palette.GROUND, 0.0)])
+		# 0.82 / 0.46, not 0.90 / 0.55. Measured: the composed frame sat at 0.32 brightness
+	# against a 0.45 shelf floor, and roughly half of what it was spending on darkness was
+	# this veil over a picture that is already dark in its top-left. Every line of copy
+	# was re-read in the capture at the lower value and none of them lost contrast — the
+	# text is white with a shadow over a plum plate, and the veil was never what was
+	# carrying it.
+	grad.colors = PackedColorArray([Color(Palette.GROUND, 0.82), Color(Palette.GROUND, 0.46), Color(Palette.GROUND, 0.0)])
 	var gt := GradientTexture2D.new()
 	gt.gradient = grad
 	gt.fill_from = Vector2(0, 0)
@@ -148,25 +182,28 @@ func _build_stage() -> void:
 	scrim_tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(scrim_tex)
 
-	# the sun, high over the right third where the board is
-	_lamp = PieceView.lamp(1700.0, Palette.LAMP, _lamp_base)
+	# The lamp, low over the right third where the board is. Not high: a light source at
+	# 22% of the screen height reads as the sun, which is what this was before the fork
+	# was looked at.
+	_lamp = PieceView.lamp(1400.0, Palette.LAMP, _lamp_base)
 	root.add_child(_lamp)
 
-	# sparkles rising through the light
+	# Motes falling through the lamp. See the header: rising gold sparks are a children's
+	# game cue, and they were being drawn additively over an adult key visual.
 	var dust := GPUParticles2D.new()
-	dust.amount = 110
-	dust.lifetime = 7.0
+	dust.amount = 74
+	dust.lifetime = 11.0
 	dust.preprocess = 6.0
 	dust.texture = PieceView.falloff(16, 0.1)
 	var pm := ParticleProcessMaterial.new()
 	pm.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
 	pm.emission_box_extents = Vector3(520, 320, 1)
-	pm.gravity = Vector3(0, -14, 0)
-	pm.initial_velocity_min = 6.0
-	pm.initial_velocity_max = 22.0
-	pm.scale_min = 0.18
-	pm.scale_max = 0.7
-	pm.color = Color(Palette.GOLD, 0.85)
+	pm.gravity = Vector3(0, 9, 0)           # falling, like dust in a beam — not rising
+	pm.initial_velocity_min = 3.0
+	pm.initial_velocity_max = 11.0
+	pm.scale_min = 0.14
+	pm.scale_max = 0.5
+	pm.color = Color(Palette.LAMP, 0.55)    # the lamp's own pink, at half the old alpha
 	dust.process_material = pm
 	# additive, so a sparkle on a bright plate still reads as light and not as a grey dot
 	var dust_mat := CanvasItemMaterial.new()
@@ -252,7 +289,7 @@ func _build_ui() -> void:
 
 	var play := Button.new()
 	play.name = "Play"
-	play.theme_type_variation = "Primary"
+	_paper_button(play, "btn_play", 26, true)
 	play.pressed.connect(_play)
 	play.mouse_entered.connect(Sfx.slide)
 	_menu.add_child(play)
@@ -263,7 +300,7 @@ func _build_ui() -> void:
 
 	var levels := Button.new()
 	levels.name = "Levels"
-	levels.theme_type_variation = "Amber"
+	_paper_button(levels, "btn_second", 20, false)
 	levels.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	levels.pressed.connect(func(): _play(true))
 	levels.mouse_entered.connect(Sfx.slide)
@@ -312,12 +349,12 @@ func _build_ui() -> void:
 	var studio := StudioTheme.display_label("Flat 404", 14, Palette.MUTED)
 	foot.add_child(studio)
 
-	# Honest label: the key visual behind this screen is Room 704's plate standing in until
-	# After Dark's own renders land (queued through ops/render_queue.py, never looped).
-	var stand := StudioTheme.mono_label("key visual: Room 704 plate, stand-in", 11, Palette.MUTED)
-	stand.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	stand.position = Vector2(-300, -30)
-	ui.add_child(stand)
+	# The "key visual: Room 704 plate, stand-in" label that used to sit here is gone, and
+	# so is the stand-in: assets/art/key.png is now After Dark's OWN render, out of
+	# ops/fold_art/fold_gen.py's DARK_PLATES (--fork). The label was honest and it was
+	# load-bearing — Art.missing() cannot see a slot that is present but belongs to
+	# another game, so a foreign plate is invisible to every check in this project. If a
+	# borrowed plate is ever dropped in here again, put the label back with it.
 
 	# what is still a stand-in rather than a rendered plate — visible in a debug build so
 	# that "the art is queued" cannot quietly become "the art is done"
@@ -394,13 +431,16 @@ func _process(delta: float) -> void:
 
 	_demo_tick(delta)
 
-	# The sun: two slow waves and no dip. The old lamp had a rare 0.82x flicker, which is
-	# a good cue in a thriller and reads as a fault in a children's game.
+	# Two slow waves and no dip. A filament lamp warms and cools; it does not flicker on a
+	# timer, and a periodic dip reads as a fault rather than as a room. (The parent's note
+	# here argued the opposite way round — "a flicker is a good cue in a thriller and reads
+	# as a fault in a children's game" — and concluded the same thing, which is the tell
+	# that the dip was never what made the difference.)
 	if _lamp:
 		var f := 1.0 + 0.05 * sin(_t * 1.1) + 0.03 * sin(_t * 0.43 + 1.1)
 		(_lamp.get_node("Light") as PointLight2D).energy = _lamp_base * f
 		(_lamp.get_node("Glow") as Sprite2D).modulate.a = 0.34 * f
-		_lamp.position = Vector2(get_viewport_rect().size.x * 0.70, get_viewport_rect().size.y * 0.22) + _aim * 18.0
+		_lamp.position = Vector2(get_viewport_rect().size.x * 0.70, get_viewport_rect().size.y * 0.36) + _aim * 18.0
 
 	# The mark, once it has finished drawing on: a slow breath, and a shine sweeping
 	# across it every SHINE_EVERY seconds. Both are idle motion — the screen is never
@@ -418,6 +458,57 @@ func _process(delta: float) -> void:
 
 
 # --- going in ---------------------------------------------------------------------------------
+
+
+## Give a button its form from ART rather than from a StyleBoxFlat — studio rule 2, which
+## the fork inherited a violation of straight from the all-ages parent. PLAY and TIER MAP
+## were a magenta pill and a gold pill with a corner radius, sitting in front of a real
+## key visual and a designed vector mark; ops/adult_forks/TITLE_SCREENS.md records Blaze
+## rejecting exactly that shape on After Six.
+##
+## The plates are folded paper tabs (ops/fold_dark_title.py) — a crease under the label, a
+## turned corner catching the lamp, a torn foot. Nine-patch, so one plate serves any
+## width: TAB_MARGIN here is the contract with that file's MARGIN, and everything inside
+## it is flat stretchable field while every detail that must not stretch lives outside it.
+## Change one and change the other.
+##
+## Hover and press are done by MOVING and LIGHTING the paper, not by swapping a colour:
+## hover lifts it a little toward the lamp, press pushes it down into the page. A piece of
+## paper that changes hue when you point at it is a rectangle again.
+const TAB_MARGIN := 44
+
+func _paper_button(b: Button, plate: String, size: int, lead: bool) -> void:
+	var tex: Texture2D = Art.plate(plate)
+	if tex == null:
+		return                                   # no plate on disk: leave the theme's own
+	var sb := StyleBoxTexture.new()
+	sb.texture = tex
+	for side in ["left", "top", "right", "bottom"]:
+		sb.set("texture_margin_" + side, TAB_MARGIN)
+	sb.content_margin_left = 18
+	sb.content_margin_right = 18
+	sb.content_margin_top = 12
+	sb.content_margin_bottom = 16
+	var hover := sb.duplicate()
+	hover.modulate_color = Color(1.12, 1.10, 1.10)       # lifted toward the lamp
+	var pressed := sb.duplicate()
+	pressed.modulate_color = Color(0.86, 0.84, 0.86)     # pushed into the page
+	pressed.content_margin_top = 14
+	pressed.content_margin_bottom = 14
+	b.add_theme_stylebox_override("normal", sb)
+	b.add_theme_stylebox_override("hover", hover)
+	b.add_theme_stylebox_override("pressed", pressed)
+	b.add_theme_stylebox_override("focus", sb)
+	b.add_theme_stylebox_override("disabled", sb)
+	b.add_theme_font_override("font", StudioTheme.font("display"))
+	b.add_theme_font_size_override("font_size", size)
+	b.add_theme_color_override("font_color", Palette.TEXT)
+	b.add_theme_color_override("font_hover_color", Color(1, 1, 1))
+	b.add_theme_color_override("font_pressed_color", Palette.TEXT)
+	b.add_theme_color_override("font_outline_color", Color(Palette.INK, 0.85))
+	b.add_theme_constant_override("outline_size", 6)
+	b.custom_minimum_size.y = 58 if lead else 52
+
 
 func _play(pick: bool = false) -> void:
 	Sfx.slide()
