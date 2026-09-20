@@ -84,6 +84,60 @@ func _ready() -> void:
 	_mark_gallery()
 	hud()
 	intro.open()
+	_qa_shots()
+
+
+## QA only — nothing in the game calls this, and it does nothing without the flag.
+##
+##     DISPLAY=:0 godot --path . -- --title-shots
+##
+## Writes shots/title.png and shots/after-title.png and quits. It exists because the
+## title screen rebuild left two claims and only one way to check them. `capture_title.sh`
+## proves the title DRAWS, because the title is open when the main scene loads. Nothing
+## proved it still CLOSES into the game — and since the screen is an Overlay subclass that
+## this file and the JS dev bridge both reach through `start` / `close()` / `is_open()`, a
+## presentation rewrite that quietly broke one of those would look perfect in every
+## screenshot ever taken of it.
+##
+## `tests/headless_web.py` does cover it, through the bridge's `start` op, but it drives a
+## browser: it resolves the build from the repo layout and stands up its own server, so
+## `ops/remote_playtest.sh` cannot run it (that script rsyncs only `web/` to the GPU box),
+## and running it here means headless Chromium on Blaze's desktop. This is the
+## thirty-second version, in the engine, with the real signal. It does not replace it.
+##
+## A real display is required. `--headless` renders nothing, and a headless "capture" is a
+## blank picture that passes for a screenshot.
+func _qa_shots() -> void:
+	if not OS.get_cmdline_user_args().has("--title-shots"):
+		return
+	# past the entrance: the mark settles at 0.35 + 1.2 s, the action at 1.25 + 0.7
+	await get_tree().create_timer(2.8).timeout
+	if not intro.is_open():
+		push_error("title-shots: the title is not open on load; it should be")
+		get_tree().quit(2)
+		return
+	await _qa_shoot("title")
+	# the thing no screenshot has ever checked: that it goes away, and that the game is
+	# underneath it. `start` is the signal this file and the bridge both use.
+	intro.start.emit()
+	intro.close()
+	await get_tree().create_timer(1.4).timeout
+	if intro.is_open():
+		push_error("title-shots: close() did not close the title")
+		get_tree().quit(2)
+		return
+	await _qa_shoot("after-title")
+	print("title-shots: ok — the title drew, and closed into the building")
+	get_tree().quit(0)
+
+
+func _qa_shoot(name: String) -> void:
+	await RenderingServer.frame_post_draw
+	var img := get_viewport().get_texture().get_image()
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://shots"))
+	var path := "res://shots/%s.png" % name
+	img.save_png(path)
+	print("  %s  %dx%d" % [ProjectSettings.globalize_path(path), img.get_width(), img.get_height()])
 
 
 # ---- the room -------------------------------------------------------------------------
