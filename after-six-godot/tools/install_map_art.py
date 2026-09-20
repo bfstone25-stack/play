@@ -56,8 +56,11 @@ DST = PROJ / "assets/art"
 #                  counter. 0.63/0.40, the closest frame in the whole set to the market
 #   standup    00  open-plan at night: fluorescents on, monitors dark, the exit sign green,
 #                  one desk lamp still burning. 01 is the one frame that still measures dark
-#   corridor   00  PENDING the re-render — this index is still v1 and v1 of corridor is the
-#                  worst of the magenta-wash frames. See the honest list in README.md
+#   corridor   00  doors closed down one wall, a water cooler, notice boards, the ceiling
+#                  lights on and light spilling across the floor. 0.68/0.36, the nearest
+#                  frame in the set to the market's saturation. (This slot was the last to
+#                  land: its first v2 job was marked done having written nothing, which the
+#                  queue warns about, so it sat on the v1 magenta wash until re-queued.)
 #   inbox      00  desks, stacked paper, one lamp on over them — Mira's lamp. 01 is brighter
 #                  but its saturation runs to 0.59
 #   allhands   01  the window wall at 0.62/0.43; 00 and 02 read the same scene at 0.60 sat
