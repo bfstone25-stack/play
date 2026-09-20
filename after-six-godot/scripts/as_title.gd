@@ -77,10 +77,16 @@ const PLATE_RECT := Rect2(78, 10, 264, 78)
 ## drawn at half its authored size, so ROW_TOP/ROW_H here are that file's values halved.
 ## Change one side and change the other — a button floating off its own rule is exactly
 ## the "code-drawn shape" look this screen exists to remove.
-const CARD_RECT := Rect2(20, 352, 380, 260)
-const TAGLINE_Y := 352.0 + 120.0 / 2.0    # 412 — the card's tagline band
-const ROW_TOP := 352.0 + 190.0 / 2.0      # 447
-const ROW_H := 78.0 / 2.0                 # 39
+## The menu, set straight on the picture. 2026-09-20: Blaze had the file card removed —
+## a 380x260 manila rectangle starting at 55% of the height covered the key visual, which
+## is the one thing the screen is for. What replaces it is not another panel: a generated
+## bottom gradient (an Image, like the vignette — a shader draws nothing on the web export)
+## darkens the foot of the picture just enough that light type reads on it, and the type
+## carries its own outline. Nothing has an edge of its own.
+const SCRIM_TOP := 424.0
+const TAGLINE_Y := 452.0
+const ROW_TOP := 492.0
+const ROW_H := 44.0
 const ROW_X := 42.0
 const ROW_W := 336.0
 
@@ -167,7 +173,7 @@ func _build() -> void:
 	add_child(vig)
 
 	plate = _picture(PLATE, PLATE_RECT)
-	card = _picture(FILE, CARD_RECT)
+	card = _scrim()
 
 
 func _picture(path: String, rect: Rect2) -> TextureRect:
@@ -217,6 +223,27 @@ func _lights(size: int, speed: float, alpha: float, count: int, tint: Color) -> 
 ## A radial darkening, baked once into a small Image and scaled up. Deliberately not a
 ## shader: on the sibling's web export a shader drew nothing at all while a plain texture
 ## dropped in beside it painted fine.
+## The bottom gradient the menu is set on. Transparent at SCRIM_TOP, opaque-ish at the
+## foot, so the picture runs out rather than stopping at an edge. Generated into an Image
+## for the same reason the vignette is: shaders drew nothing on the web export.
+func _scrim() -> TextureRect:
+	var h := int(H - SCRIM_TOP)
+	var img := Image.create(1, h, false, Image.FORMAT_RGBA8)
+	for y in h:
+		var t := float(y) / float(h - 1)
+		img.set_pixel(0, y, Color(0.03, 0.02, 0.05, t * t * 0.86))
+	var tr := TextureRect.new()
+	tr.texture = ImageTexture.create_from_image(img)
+	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	tr.stretch_mode = TextureRect.STRETCH_SCALE
+	tr.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	tr.position = Vector2(0, SCRIM_TOP)
+	tr.size = Vector2(W, h)
+	tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(tr)
+	return tr
+
+
 func _vignette() -> ImageTexture:
 	var n := 96
 	var img := Image.create(n, n, false, Image.FORMAT_RGBA8)
@@ -246,16 +273,17 @@ func _vignette() -> ImageTexture:
 func compose(tag: String, items: Array, lang_text: String, lang_fn: Callable, hint: String) -> void:
 	tagline = Label.new()
 	tagline.text = tag
-	tagline.position = Vector2(CARD_RECT.position.x, TAGLINE_Y)
-	tagline.size.x = CARD_RECT.size.x
+	tagline.position = Vector2(ROW_X - 22.0, TAGLINE_Y)
+	tagline.size.x = W - (ROW_X - 22.0) * 2.0
 	tagline.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tagline.add_theme_font_override("font", _font())
 	tagline.add_theme_font_size_override("font_size", 12)
 	# Ink on the file, not lit type over the window. The first pass outlined it against the
 	# picture; with the real key visual in, that band is a bright city and an outlined line
 	# floating on it is the "text on a photo" look the whole pass is removing.
-	tagline.add_theme_color_override("font_color", Color("#3c2a22"))
-	tagline.add_theme_constant_override("outline_size", 0)
+	tagline.add_theme_color_override("font_color", Color("#cdbdaa"))
+	tagline.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.78))
+	tagline.add_theme_constant_override("outline_size", 4)
 	tagline.add_theme_constant_override("line_spacing", 0)
 	tagline.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(tagline)
@@ -327,13 +355,14 @@ func _row(text: String, fn: Callable, index: int, lead: bool) -> Button:
 	b.clip_text = false
 	b.focus_mode = Control.FOCUS_NONE
 	b.add_theme_font_override("font", _font())
-	b.add_theme_font_size_override("font_size", 17 if lead else 14)
+	b.add_theme_font_size_override("font_size", 20 if lead else 16)
 	# Ink on manila. The lead action takes the stamp's red, the second stays in ink, so the
 	# eye lands on the one that starts the night.
-	b.add_theme_color_override("font_color", Color("#8c1c2c") if lead else Color("#241a16"))
-	b.add_theme_color_override("font_hover_color", Color("#b02030") if lead else Color("#3a1420"))
-	b.add_theme_color_override("font_pressed_color", Color("#5e1220"))
-	b.add_theme_constant_override("outline_size", 0)
+	b.add_theme_color_override("font_color", Color("#ff5f7a") if lead else Color("#ece2d6"))
+	b.add_theme_color_override("font_hover_color", Color("#ff8497") if lead else Color("#ffffff"))
+	b.add_theme_color_override("font_pressed_color", Color("#d8405c"))
+	b.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.82))
+	b.add_theme_constant_override("outline_size", 5)
 
 	var flat := StyleBoxFlat.new()
 	flat.bg_color = Color(0, 0, 0, 0)
@@ -388,8 +417,8 @@ func play_in() -> void:
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tw.tween_property(card, "modulate:a", 1.0, 1.0).from(0.0).set_delay(1.0) \
 		.set_trans(Tween.TRANS_SINE)
-	tw.tween_property(card, "position:y", CARD_RECT.position.y, 1.2) \
-		.from(CARD_RECT.position.y + 16.0).set_delay(1.0) \
+	tw.tween_property(card, "position:y", SCRIM_TOP, 1.2) \
+		.from(SCRIM_TOP + 16.0).set_delay(1.0) \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	# The rows and the tagline are siblings of the card, not children, so they have to be
 	# brought up with it by hand — otherwise the menu hangs in the air for a second before
