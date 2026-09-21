@@ -2,12 +2,22 @@ class_name Loc
 extends Object
 
 const SETTINGS_PATH := "user://settings.cfg"
-# ja/es/ko are NOT translated. story_ja.gd is 220 of 221 body strings in Chinese,
-# story_ko.gd and story_es.gd 211 of 221 — only the speaker names were localised, so a
-# buyer choosing any of the three gets Chinese prose under a Japanese or Korean name.
-# Offering a language we did not translate is worse than not offering it. Re-add each
-# one when its story file actually holds that language.
-const ALLOWED := ["en", "zh"]
+# Which languages this build is allowed to offer.
+#
+# Floor 13 once offered ja/es/ko whose story files held Chinese prose — only the speaker
+# names had been localised — and someone had to switch all three off. Japanese is back on
+# because it was actually translated, and because the proof is a script anyone can re-run:
+#
+#     python3 tools/lang_audit.py      # every body string in its own writing system
+#     python3 tools/font_audit.py      # every character those strings need has a glyph
+#
+# Both had to be repaired before they were worth trusting. The language check carried a
+# hand-typed "simplified-only" list that contained 机 着 当 数 — ordinary Japanese kanji —
+# so it called 92 correct Japanese lines Chinese; it now asks the euc_jp codec, for which
+# 这 说 电 are unencodable and 机 着 当 数 are not. Its parser also stopped at the last
+# blank-line run, so it never read conditional(), which is where the final 17 Chinese
+# lines were hiding. ko and es are still the old half-translation and stay off.
+const ALLOWED := ["en", "zh", "ja"]
 const NATIVE := {
 	"en": "English",
 	"zh": "简体中文",

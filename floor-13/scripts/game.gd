@@ -17,6 +17,8 @@ var world: OfficeBuilder
 var hud: HorrorHud
 var hotspot_layer: Control
 var soundscape: Soundscape
+var _bark_streak := 0
+var _idle_for := 0.0
 
 const NVL_HOTSPOTS := ["coffee", "drawer", "ledger", "camera", "intercom", "alarm"]
 
@@ -49,6 +51,7 @@ func start_game() -> void:
 		return
 	started = true
 	area_index = 0
+	soundscape.bark("greet")
 	_load_area()
 
 func restart() -> void:
@@ -56,6 +59,8 @@ func restart() -> void:
 	flags = {"eli_stance": "", "compliance": "", "escape_route": "", "contract": ""}
 	discoveries.clear()
 	completed_hotspots.clear()
+	_bark_streak = 0
+	_idle_for = 0.0
 	current_hotspot = ""
 	pending = ""
 	started = false
@@ -70,8 +75,11 @@ func _load_area() -> void:
 	var area: Dictionary = StoryData.live()[area_index]
 	if area_index >= 2:   # Files 1-2 are the advertised free slice; the gate opens on File 3
 		Gate.block("area%d" % area_index, str(area.chapter))   # dual-track (ops/DUAL_TRACK.md)
+		soundscape.bark("fail")   # "withheld, pending review" — the gate IS the refusal
 	world.build(area.id, flags)
 	hud.set_header(area.chapter, area.place, area.clock, area.objective)
+	# stage: one line per area, so the voice tracks where June is rather than repeating.
+	soundscape.bark("stage")
 	pending = "opening"
 	hud.show_dialogue(_expand(area.opening), false)
 
@@ -139,6 +147,20 @@ func on_dialogue_done() -> void:
 			discoveries.append("%s — %s" % [StoryData.live()[area_index].place, _hotspot_label(current_hotspot)])
 			current_hotspot = ""
 			pending = ""
+			# The bark slots, in the order they beat each other. A completed hotspot is
+			# evidence going into the case log, which is "unlock"; the last one before an
+			# area closes is the "near" tease; three in a row is "streak". bark() drops a
+			# line that would overlap a line already speaking, so ordering them here is
+			# what decides which one the player actually hears.
+			_bark_streak += 1
+			if _area_complete():
+				soundscape.bark("win")
+			elif _remaining_hotspots() == 1:
+				soundscape.bark("near")
+			elif _bark_streak % 3 == 0:
+				soundscape.bark("streak")
+			else:
+				soundscape.bark("unlock")
 			_show_hotspots()
 			if _area_complete():
 				_clear_hotspots()
@@ -185,10 +207,21 @@ func _begin_ending() -> void:
 	discoveries.append(Loc.t("log.ending", [ending_id.replace("_", " ")]))
 	pending = "ending"
 	soundscape.cue("ending")
+	soundscape.bark("win_big")
 	world.show_ending(ending_id)
 	var lines: Array = StoryData.live_endings()[ending_id].duplicate(true)
 	lines.pop_back()
 	hud.show_dialogue(_expand(lines), true)
+
+## How many hotspots in this area are still untouched.
+func _remaining_hotspots() -> int:
+	var area: Dictionary = StoryData.live()[area_index]
+	var left := 0
+	for hotspot in area.hotspots:
+		if not completed_hotspots.has(_area_key(hotspot[0])):
+			left += 1
+	return left
+
 
 func _area_complete() -> bool:
 	var area: Dictionary = StoryData.live()[area_index]
@@ -260,3 +293,61 @@ static func simulate_route(route: Dictionary) -> Dictionary:
 	delayed.append("ledger_preserved" if route.get("compliance") == "REFUSE" else "permanent_badge")
 	delayed.append("replacement_list" if route.get("escape_route") == "STAIRS" else "rusk_keycard")
 	return {"ending": StoryData.resolve(route), "delayed": delayed, "areas": StoryData.AREAS.size(), "hotspots": StoryData.total_hotspots()}
+
+
+## The idle nudge: 30 s with nothing pressed and no line speaking. Reset by any input, and
+## only while the player is actually in a room — not during dialogue, and not on the title.
+func _process(delta: float) -> void:
+	if not started or hud.is_busy():
+		_idle_for = 0.0
+		return
+	_idle_for += delta
+	if _idle_for >= 30.0:
+		_idle_for = 0.0
+		soundscape.bark("idle")
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton or event is InputEventKey:
+		_idle_for = 0.0
+	# The number keys open the hotspot with that number.
+	#
+	# Every hotspot already wears a "◆ 01" marker drawn next to it, so the numbering is
+	# the player's, not an invention — it was simply not bound to anything. Binding it is
+	# an accessibility fix first: this is a point-and-click whose targets are small
+	# rectangles over a 640x360 pixel room, and until now a player who could not aim at
+	# them could not finish a 25-minute game.
+	#
+	# It is also what makes the game provable. ops/play_driver.py walks an unfamiliar
+	# build by pressing the conventions these builds share — the number row among them —
+	# and without this the matrix stopped in File 1 with five stages, because no fixed
+	# coordinate list can pixel-hunt four story-placed rectangles per room.
+	if not started or hud.is_busy():
+		return
+	if event is InputEventKey and event.pressed and not event.echo:
+		var key := (event as InputEventKey).keycode
+		if key >= KEY_1 and key <= KEY_9:
+			_open_numbered(key - KEY_1)
+			get_viewport().set_input_as_handled()
+
+
+## Open the nth hotspot of this area, counting the way the "◆ NN" markers count.
+##
+## If that one has already been read, open the first one that has not. A hotspot's marker
+## disappears when it is done, so "press 2" on a room whose 2 is gone is a player asking
+## for the next thing, not for nothing — and the first version did nothing, which is also
+## how ops/play_driver.py's number-row walk came back with five stages: it pressed 1 on a
+## hotspot the click list had already opened.
+func _open_numbered(index: int) -> void:
+	var area: Dictionary = StoryData.live()[area_index]
+	if index < 0 or index >= area.hotspots.size():
+		return
+	var id := str(area.hotspots[index][0])
+	if not completed_hotspots.has(_area_key(id)):
+		_on_hotspot(id)
+		return
+	for hotspot in area.hotspots:
+		var next := str(hotspot[0])
+		if not completed_hotspots.has(_area_key(next)):
+			_on_hotspot(next)
+			return

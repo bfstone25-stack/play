@@ -45,6 +45,12 @@ const FONT_BOLD := preload("res://assets/fonts/WorkSans-Bold.ttf")
 ## and the right third is the dark corridor wall her ponytail falls against. Flipping it
 ## would drag the bright corridor under the type and put her face against the ink.
 ## So: no flip. The cover scale is only what the breathing camera needs.
+## The picture layer's tint, in ONE place: _build() sets it and _process() multiplies the
+## fluorescent flicker into it. See the note at its use in _build().
+## Updated when keyvisual_main_bright_03 was installed: the plate now carries its own warm
+## key (warm 0.23 against the old plate's 0.05), so this is a near-neutral LIFT rather than
+## a warm filter. Warming an already-warm plate on top of that pushed the skin orange.
+const BASE_TINT := Color(1.14, 1.09, 1.04)
 const BG_SCALE := 1.10
 const BG_OFFSET := Vector2(-6.0, 3.0)
 
@@ -109,7 +115,21 @@ func _build() -> void:
 	bg.size = Vector2(640, 360)
 	bg.pivot_offset = Vector2(320, 180)
 	bg.scale = Vector2(BG_SCALE, BG_SCALE)
-	bg.modulate = Color(0.88, 0.96, 1.0)
+	# The picture layer is LIFTED, not cooled.
+	#
+	# Measured on the composed screen: the plate itself is 0.39 brightness and the screen
+	# it composes into was 0.23. Two thirds of that loss is this node and the scrims over
+	# it. This multiply was (0.88, 0.96, 1.0) — a cold filter that took 12% off the red
+	# channel of a frame whose whole problem is that it has no warm hue anywhere, and
+	# shelf_style.py finds a figure by looking for warm skin. It measured 0.002 figure
+	# share against a 0.25 floor: the woman filling the left half of the frame did not
+	# register as a person at all.
+	#
+	# So this warms and lifts instead. It is not a fix for the artwork — the plate is blue
+	# to its bones and the real lever is a warm key light, which is queued as
+	# floor13/keyvisual_main_bright. It is a fix for the composition making the artwork
+	# worse than it is.
+	bg.modulate = BASE_TINT
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
 
@@ -144,7 +164,7 @@ func _build() -> void:
 	# flat surface of its own — TITLE_SCREENS.md, "the interface gets a surface".
 	var plate := ColorRect.new()
 	plate.name = "TypePlate"
-	plate.color = Color(0.016, 0.027, 0.047, 0.62)
+	plate.color = Color(0.016, 0.027, 0.047, 0.52)
 	plate.position = Vector2(COL_X - 12.0, 24.0)
 	plate.size = Vector2(COL_W + 24.0, 312.0)
 	plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -239,7 +259,10 @@ func _process(delta: float) -> void:
 		next_glitch = randf_range(0.04, 0.16) if flick < 0.8 else randf_range(0.9, 3.4)
 	var target := 1.0 + 0.025 * sin(t * 37.0)
 	flick = lerpf(flick, target, delta * 9.0)
-	bg.modulate = Color(0.88 * flick, 0.96 * flick, 1.0 * flick)
+	# Reads BASE_TINT rather than repeating its numbers. The flicker used to carry its own
+	# copy of the cold multiply, so changing the one in _build() changed the frame for a
+	# fraction of a second and _process painted it back every frame after.
+	bg.modulate = Color(BASE_TINT.r * flick, BASE_TINT.g * flick, BASE_TINT.b * flick)
 	sweep.position.y = fmod(t * 34.0, 420.0) - 50.0
 
 
@@ -262,8 +285,25 @@ func _snd(kind: String) -> void:
 ## already fixed once), and the 5 MB wqy-microhei.ttc is deliberately excluded from the
 ## web pack. So in zh the column's localised lines are set in the game's own display
 ## BMFont, one size up. Verified by looking at a zh capture: no tofu.
+## Does this string need the CJK face?
+##
+## The two stylers below chose the packed BMFont on `Loc.is_zh()` — the locale, not the
+## text. That was right while the only CJK language was Chinese and wrong the moment
+## Japanese was turned on: a Japanese title would have been typed in WorkSans, which has
+## no kana, and Godot cannot fall through to a browser face on the web export. It was in
+## fact already wrong in English, because the language button that says 日本語 says it in
+## every locale. Ask the string.
+static func _cjk(text: String) -> bool:
+	for c in text:
+		var u := c.unicode_at(0)
+		if (u >= 0x2E80 and u <= 0x9FFF) or (u >= 0xAC00 and u <= 0xD7AF) \
+				or (u >= 0xFF00 and u <= 0xFF60):
+			return true
+	return false
+
+
 func style_label(l: Label, size: int, color: Color, bold := false) -> void:
-	if Loc.is_zh():
+	if _cjk(l.text):
 		UiFont.apply_label(l, size >= 10)
 	else:
 		l.add_theme_font_override("font", FONT_BOLD if bold else FONT_REG)
@@ -274,7 +314,7 @@ func style_label(l: Label, size: int, color: Color, bold := false) -> void:
 
 
 func style_button(b: Button, size := 13) -> void:
-	if Loc.is_zh():
+	if _cjk(b.text) or (b is ShapedButton and _cjk((b as ShapedButton).label)):
 		# the display BMFont for the primary action, the body one for the small pair
 		b.add_theme_font_override("font", UiFont.display() if size >= 13 else UiFont.body())
 		b.add_theme_font_size_override("font_size", 16 if size >= 13 else 12)

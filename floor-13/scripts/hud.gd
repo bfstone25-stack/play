@@ -112,6 +112,30 @@ func _format_label(node: Label, size: int, color: Color) -> void:
 	node.add_theme_color_override("font_outline_color", Color("#05070d"))
 	node.add_theme_constant_override("outline_size", 2)
 
+## Floor 13's control is a PAYROLL TIME CARD, not a rectangle.
+##
+## The whole game is one overtime ticket that will not close: the fiction's only physical
+## object is the card the clock punches, and Mara's 168 hours are what a punched card
+## looks like when nobody stops punching. ShapedButton.TIMECARD was written for this game
+## (shared/godot/shaped_button.gd names it "Floor 13 / Floor 13 X") and the game then
+## shipped eleven plain Buttons anyway.
+##
+## compact = true, always: that script's 220x56 floor is sized for a 1280x720 title, and
+## this canvas is 640x360 — a 56px button is a sixth of the screen and the action row does
+## not fit three of them. The sizes already measured in this file are kept.
+func _timecard(size_px: Vector2, font_size := 10) -> ShapedButton:
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.TIMECARD
+	b.compact = true
+	b.tint = Color("#243343")
+	b.ink = Color("#e7edf5")
+	b.custom_minimum_size = size_px
+	b.size = size_px
+	b.add_theme_color_override("font_color", Color("#e7edf5"))
+	UiFont.apply_button(b)
+	b.add_theme_font_size_override("font_size", font_size)
+	return b
+
 func _format_button(node: Button, _size := 11) -> void:
 	node.add_theme_color_override("font_color", Color("#e7edf5"))
 	node.add_theme_stylebox_override("normal", _pixel_style(Rect2(64, 64, 64, 32)))
@@ -185,10 +209,8 @@ func _build_dialogue() -> void:
 	body_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	_format_label(body_label, 10, Color("#e1e6ee"))
 	stack.add_child(body_label)
-	continue_button = Button.new()
+	continue_button = _timecard(Vector2(0, 36), 10)
 	continue_button.text = Loc.t("btn.continue")
-	continue_button.custom_minimum_size = Vector2(0, 36)
-	_format_button(continue_button, 10)
 	continue_button.pressed.connect(_advance_dialogue)
 	stack.add_child(continue_button)
 	root_ui.add_child(dialogue_panel)
@@ -211,40 +233,30 @@ func _build_choices() -> void:
 	choice_prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_format_label(choice_prompt, 11, Color("#f0eee6"))
 	stack.add_child(choice_prompt)
-	choice_a = Button.new()
-	choice_a.custom_minimum_size = Vector2(0, 44)
-	_format_button(choice_a, 11)
+	choice_a = _timecard(Vector2(0, 44), 11)
 	choice_a.pressed.connect(func() -> void: _pick(0))
 	stack.add_child(choice_a)
-	choice_b = Button.new()
-	choice_b.custom_minimum_size = Vector2(0, 44)
-	_format_button(choice_b, 11)
+	choice_b = _timecard(Vector2(0, 44), 11)
 	choice_b.pressed.connect(func() -> void: _pick(1))
 	stack.add_child(choice_b)
 	root_ui.add_child(choice_panel)
 
 func _build_controls() -> void:
-	log_button = Button.new()
+	log_button = _timecard(Vector2(80, 28), 8)
 	log_button.position = Vector2(430, 6)
-	log_button.size = Vector2(80, 28)
 	log_button.text = Loc.t("btn.case_log")
-	_format_button(log_button, 8)
 	log_button.pressed.connect(show_log)
 	root_ui.add_child(log_button)
-	pause_button = Button.new()
+	pause_button = _timecard(Vector2(104, 28), 8)
 	pause_button.position = Vector2(524, 6)
-	pause_button.size = Vector2(104, 28)
 	pause_button.text = Loc.t("btn.pause")
-	_format_button(pause_button, 8)
 	pause_button.pressed.connect(show_pause)
 	root_ui.add_child(pause_button)
-	route_button = Button.new()
+	route_button = _timecard(Vector2(220, 32), 10)
 	route_button.position = Vector2(210, 214)
-	route_button.size = Vector2(220, 32)
 	route_button.text = Loc.t("btn.proceed")
 	route_button.visible = false
-	_format_button(route_button, 10)
-	route_button.add_theme_stylebox_override("normal", _panel_style(Color("#192e36ed"), Color("#62d6e9"), 2))
+	route_button.tint = Color("#1d3b46")
 	route_button.pressed.connect(func() -> void: route_requested.emit())
 	root_ui.add_child(route_button)
 
@@ -321,10 +333,10 @@ func _build_title() -> void:
 	title_info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	title_info.max_lines_visible = 4
 	title_panel.add_child(title_info)
-	title_start = Button.new()
+	title_start = _timecard(Vector2(colw, 46), 11)
 	title_start.name = "TitleStart"
 	title_start.position = Vector2(col, 228)
-	title_start.size = Vector2(colw, 46)
+	title_start.tint = Color("#2c3d50")
 	title_start.pressed.connect(_emit_start)
 	title_panel.add_child(title_start)
 	title_lang_caption = Label.new()
@@ -332,14 +344,18 @@ func _build_title() -> void:
 	title_lang_caption.size = Vector2(colw, 14)
 	title_lang_caption.clip_text = false
 	title_panel.add_child(title_lang_caption)
+	# The language row was laid out as a 2-wide grid at ONE y (i % 2, y = 302), which was
+	# correct for exactly the two languages Floor 13 was allowed to offer. Turning Japanese
+	# on made the third button land underneath the first. It divides the column by however
+	# many languages there actually are.
 	var codes := Loc.ALLOWED
+	var gap := 4.0
+	var lang_w: float = (colw - gap * float(codes.size() - 1)) / float(codes.size())
 	for i in codes.size():
 		var code := str(codes[i])
-		var b := Button.new()
+		var b := _timecard(Vector2(lang_w, 30), 9)
 		b.name = "Lang_%s" % code
-		b.position = Vector2(col + (i % 2) * ((colw + 6) / 2.0), 302)
-		b.size = Vector2((colw - 6) / 2.0, 30)
-		b.clip_text = false
+		b.position = Vector2(col + float(i) * (lang_w + gap), 302)
 		b.text = str(Loc.NATIVE[code])
 		b.pressed.connect(_on_lang_pressed.bind(code))
 		title_panel.add_child(b)
@@ -395,10 +411,8 @@ func _build_ending() -> void:
 	ending_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_format_label(ending_label, 18, Color("#f1e9dc"))
 	stack.add_child(ending_label)
-	ending_restart = Button.new()
+	ending_restart = _timecard(Vector2(0, 38), 10)
 	ending_restart.text = Loc.t("btn.restart_shift")
-	ending_restart.custom_minimum_size = Vector2(0, 38)
-	_format_button(ending_restart, 10)
 	ending_restart.pressed.connect(func() -> void: restart_requested.emit())
 	stack.add_child(ending_restart)
 	root_ui.add_child(ending_panel)
@@ -564,6 +578,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		if _is_advance(event):
 			_advance_dialogue()
 			get_viewport().set_input_as_handled()
+		return
+	# The room's one forward verb, on the keyboard.
+	#
+	# When an area is finished, PROCEED is the only thing left to press and it was
+	# mouse-only, so a keyboard player stopped at the end of File 1 and so did the matrix.
+	# Choice panels are excluded above: a decision that persists for the rest of the game
+	# is not something Enter should make by accident.
+	if route_button and route_button.visible and _is_advance(event) \
+			and not (event is InputEventMouseButton):
+		route_requested.emit()
+		hide_route()
+		get_viewport().set_input_as_handled()
 
 func show_choice(data: Dictionary) -> void:
 	_busy = true
