@@ -4,7 +4,9 @@
 extends Node
 
 const SAVE := "user://beatmonday.json"
-const LANGS := ["en", "zh"]
+## en + zh + ja. ja added 2026-09-21 (ops/STANDARD.md §7: 507 of 581 DLsite works are
+## Japanese). The order here is the order the title's language button cycles through.
+const LANGS := ["en", "zh", "ja"]
 
 var profile: Dictionary = BMCore.new_profile()
 var lang := "en"
@@ -73,7 +75,11 @@ func _detect_lang() -> String:
 		var r = JavaScriptBridge.eval("(navigator.language||'en').toLowerCase()")
 		if r != null:
 			loc = str(r)
-	return "zh" if loc.begins_with("zh") else "en"
+	if loc.begins_with("zh"):
+		return "zh"
+	if loc.begins_with("ja"):
+		return "ja"
+	return "en"
 
 
 # ---------- telemetry: the page's TEL SDK (stamped in by ops/godot_build.sh) ------------

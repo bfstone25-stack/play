@@ -38,6 +38,8 @@ func _run() -> void:
 	_week()
 	_conformance()
 	_scripts_compile()
+	_locales()
+	_font_covers_cjk()
 	_map()
 	_triage()
 	_review_conformance()
@@ -400,11 +402,89 @@ static func _fix_profile(p: Dictionary) -> Dictionary:
 ## The scene scripts are not loaded by this test scene; loading them here compiles them,
 ## so a parse error in main.gd / map_screen.gd / arena.gd fails the run instead of
 ## surfacing only in the web build.
+## ops/STANDARD.md §7: never offer a language you did not actually translate. Floor 13
+## shipped ja/ko/es whose story files held Chinese prose because nothing checked. So:
+## every bank offered in Game.LANGS exists, has every EN key, and none of its values is
+## still the English string (a handful of proper nouns and format-only strings excepted).
+func _locales() -> void:
+	print("\n-- locales: every offered language is actually translated")
+	for code in Game.LANGS:
+		ok(BMStrings.BANKS.has(code), "%s has a bank" % code)
+	ok(BMStrings.BANKS.size() == Game.LANGS.size(), "no bank is offered that LANGS omits")
+	for code in Game.LANGS:
+		if code == "en":
+			continue
+		var bank: Dictionary = BMStrings.BANKS[code]
+		var missing: Array = []
+		var untranslated: Array = []
+		for k in BMStrings.EN:
+			if not bank.has(k):
+				missing.append(k)
+			elif str(bank[k]) == str(BMStrings.EN[k]) and not _format_only(str(BMStrings.EN[k])):
+				untranslated.append(k)
+		eq(missing, [], "%s covers every EN key" % code)
+		eq(untranslated, [], "%s leaves no EN string in place" % code)
+
+
+## Every CJK character the zh and ja banks use is actually IN the shipped font subset.
+##
+## This is the failure that has no symptom in the log: the web export has no system font,
+## a missing glyph draws a tofu box, and nothing anywhere reports it. SilverTongue shipped
+## zh in the picker for weeks with no CJK font in the package at all; this build's subset
+## was two years of strings out of date. Rebuild with tools/subset_cjk.py.
+func _font_covers_cjk() -> void:
+	print("\n-- the CJK subset covers every zh/ja glyph we ship")
+	var f: Font = load("res://assets/fonts/NotoSansCJK-subset.otf")
+	ok(f != null, "the subset font loads")
+	if f == null:
+		return
+	var missing: Array = []
+	for code in ["zh", "ja"]:
+		var bank: Dictionary = BMStrings.BANKS[code]
+		for k in bank:
+			for ch in str(bank[k]):
+				if ch.unicode_at(0) > 0x2000 and not f.has_char(ch.unicode_at(0)) \
+						and not (ch in missing):
+					missing.append(ch)
+	eq(missing, [], "no zh/ja glyph is missing from the subset")
+
+
+## A value that is only placeholders, punctuation and digits is the same in every language
+## ("{n}x", "LV {lv} · HP {hp}"), so it is not evidence of a missed translation.
+func _format_only(v: String) -> bool:
+	var stripped := ""
+	var skip := false
+	for ch in v:
+		if ch == "{":
+			skip = true
+		elif ch == "}":
+			skip = false
+		elif not skip and not (ch in " ·-/%0123456789+.:"):
+			stripped += ch
+	return stripped == ""
+
+
 func _scripts_compile() -> void:
 	print("\n-- scene scripts compile")
-	for s in ["main", "map_screen", "arena", "hud", "game", "gate", "sfx"]:
-		var scr = load("res://scripts/%s.gd" % s)
-		ok(scr != null and scr.can_instantiate(), "%s.gd compiles" % s)
+	# EVERY script, not a hand-kept list: a title screen and a button shape were added
+	# after this list was written and neither was in it. scripts/shaped_button.gd shipped
+	# referencing a Shape member it did not declare, main.gd depended on it, and the whole
+	# main scene failed to load in the web build -- a black canvas that measured 0.12
+	# brightness with no figure in it, while this test printed "main.gd compiles  ok".
+	#
+	# It printed ok because load() hands back the CACHED resource for a script whose
+	# reload failed, and that husk is non-null and can_instantiate(). CACHE_MODE_IGNORE
+	# forces a real compile, and a script that failed to compile has no methods on it.
+	var names: Array = []
+	for f in DirAccess.get_files_at("res://scripts"):
+		if f.ends_with(".gd"):
+			names.append(f)
+	names.sort()
+	for f in names:
+		var path: String = "res://scripts/" + str(f)
+		var scr = ResourceLoader.load(path, "Script", ResourceLoader.CACHE_MODE_IGNORE)
+		ok(scr != null and scr.can_instantiate()
+				and not scr.get_script_method_list().is_empty(), "%s compiles" % f)
 
 
 func _map() -> void:

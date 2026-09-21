@@ -126,7 +126,7 @@ const ZH := {
 	"nextweek": "开始第 {n} 周", "stats": "等级 {lv} · 血 {hp} · 攻 {atk} · 攻速 {rate}",
 	"rant_hint": "发疯就是武器。捡起新句子。",
 	"equipped": "已装备", "tap_equip": "点一下装备／卸下", "party": "你的人", "nobody": "还没有人。先挺过一天。",
-	"boss": "BOSS", "left": "{s}秒", "kills": "处理了 {n} 个", "lang": "EN",
+	"boss": "首领", "left": "{s}秒", "kills": "处理了 {n} 个", "lang": "EN",
 	"empty_desk": "桌上还什么都没有。BOSS 会掉东西。",
 	# ---- 地图 ----
 	"map_title": "第 {n} 周 · 这栋楼", "map_hint": "点一个房间走过去。打通的房间可以再来。",
@@ -198,8 +198,125 @@ const ZH := {
 }
 
 
+## ja — added 2026-09-21. Written as a translation of EN, key for key: ops/STANDARD.md §7
+## ("never offer a language you did not actually translate" — Floor 13 shipped three
+## locales holding Chinese prose). Parity with EN is asserted in tests/run_tests.gd, and
+## the CJK subset (tools/subset_cjk.py) is rebuilt from THESE strings, not from the old
+## HTML spec: before this pass the shipped subset was 342 glyphs against 696 the scripts
+## actually use, so zh had been rendering tofu wherever the map, the inbox or the review
+## spoke. Register: the comedy is dry and workplace-polite, which is the joke.
+const JA := {
+	"brand": "ビート・ザ・マンデー", "sub": "お仕事一週間RPG",
+	"start": "出勤する", "cont": "続きから", "locker": "デスク", "how": "あそびかた",
+	"week": "第 {n} 週", "day_mon": "月曜日", "day_tue": "火曜日", "day_wed": "水曜日",
+	"day_thu": "木曜日", "day_fri": "金曜日",
+	"boss_standup": "朝会", "boss_inbox": "受信トレイ", "boss_allhands": "全体会議",
+	"boss_review": "評価面談", "boss_deploy": "金曜のリリース",
+	"brief_mon": "九分、九人、決定ゼロ。終わるまで生き延びろ。",
+	"brief_tue": "夜のうちに埋まった。今も埋まり続けている。",
+	"brief_wed": "もう遠慮はしない。飲み込んできた言葉が、全部弾になって出てくる。",
+	"brief_thu": "あなたについての書類がある。書いたのはあなたではない。",
+	"brief_fri": "誰かが十七時にリリースした。ポケベルはあなたのものだ。",
+	"go": "いく", "back": "もどる", "drag": "ドラッグで移動。攻撃は自動。",
+	"lvup": "レベル {n}", "pick": "ひとつ選ぶ",
+	"sk_overtime": "意地", "skd_overtime": "攻撃力 +2",
+	"sk_boundary": "境界線", "skd_boundary": "最大HP +18",
+	"sk_caffeine": "水出しコーヒー", "skd_caffeine": "攻撃が速くなる",
+	"sk_sneakers": "スニーカー", "skd_sneakers": "移動が速くなる",
+	"sk_delegate": "権限委譲", "skd_delegate": "攻撃が貫通する",
+	"sk_mute": "スレッドをミュート", "skd_mute": "すべてが遅くなる",
+	"sk_ccall": "全員をCC", "skd_ccall": "弾がもう一発",
+	"eq_stapler": "ホチキス", "eq_headphones": "ノイズキャンセリングヘッドホン",
+	"eq_lanyard": "ネックストラップ", "eq_chair": "エルゴノミクスチェア", "eq_badge": "入館バッジ",
+	"eq_coldbrew": "水出しコーヒー",
+	"slot_hand": "手に持つ", "slot_desk": "デスクに置く", "slot_wear": "身につける",
+	"pt_intern": "リリー（インターン）", "pt_pm": "モーガン（PM）", "pt_hr": "パット（人事）",
+	"cleared": "今日を乗り切った", "dead": "早退しました", "retry": "もう一度この日をやる",
+	"got": "手に入れた：{item}", "joined": "{who} が味方になった",
+	"weekend": "土曜日だ", "weekend_body": "一週間が終わった。何も燃えていない。来週はもっと厳しい。",
+	"nextweek": "第 {n} 週をはじめる", "stats": "Lv {lv} · HP {hp} · 攻 {atk} · 速 {rate}",
+	"rant_hint": "あなたの愚痴が武器。新しい言葉を拾おう。",
+	"equipped": "装備中", "tap_equip": "タップで装備／解除", "party": "あなたの味方", "nobody": "まだ誰もいない。一日を片づけよう。",
+	"boss": "ボス", "left": "{s}秒", "kills": "{n} 件さばいた", "lang": "EN",
+	"empty_desk": "デスクにはまだ何もない。ボスが落とす。",
+	# ---- the map ----
+	"map_title": "第 {n} 週 · 社屋", "map_hint": "部屋をタップして歩く。片づけた部屋はもう一度入れる。",
+	"node_lobby": "ロビー", "node_breakroom": "休憩室", "node_standup": "朝会", "node_corridor1": "廊下",
+	"node_inbox": "受信トレイ", "node_allhands": "全体会議", "node_review": "評価面談", "node_corridor2": "廊下",
+	"node_deploy": "金曜のリリース",
+	"floor_0": "1階", "floor_1": "2階", "floor_2": "3階", "floor_3": "4階",
+	"kind_start": "週のはじまり", "kind_break": "装備・勧誘・買い物・セーブ",
+	"kind_standup": "反射 · 動いて生き延びる", "kind_allhands": "反射 · 愚痴を弾にする",
+	"kind_inbox": "思考 · デスクをさばく", "kind_review": "思考 · 刺さる言葉を選ぶ",
+	"kind_deploy": "ボス · 味方を配置して耐える", "kind_event": "廊下での出来事",
+	"locked": "施錠中", "cleared_tag": "クリア済", "rerun": "もう一度", "enter": "入る", "runs": "{n} 回",
+	"credits": "コーヒー券 {n} 枚", "back_map": "社屋にもどる", "node_cleared": "この部屋は片づいた", "node_lost": "今日は無理だった",
+	"lobby_body": "入館。社屋がそのまま一週間だ。四つのフロア、一つの金曜。部屋を選ぼう。",
+	# ---- the inbox: triage ----
+	"tri_hint": "デスクに五通、一ターンに三アクション。返信は相応に高い。アーカイブは安いが戻ってくるものもある。同僚に一通渡せる。スヌーズは一度だけ無料。",
+	"tri_turn": "ターン {t} / {max}", "tri_actions": "残り {n} アクション", "tri_stress": "ストレス", "tri_pile": "山に {n} 通",
+	"tri_cost": "{n} アクション", "tri_urg": "あと {n} ターン", "tri_esc": "エスカレート", "tri_clear": "デスクが片づいた", "tri_lost": "デスクの勝ち",
+	"act_reply": "返信", "act_archive": "アーカイブ", "act_delegate": "任せる", "act_snooze": "スヌーズ", "act_end": "ターン終了",
+	"msg_ping": "チャット", "msg_invite": "招待", "msg_thread": "スレッド", "msg_cc": "CC", "msg_metric": "数値", "msg_pager": "アラート",
+	"msgs_ping": "「ちょっといいですか」", "msgs_invite": "同期（アジェンダなし）", "msgs_thread": "RE: RE: RE: 例の件",
+	"msgs_cc": "FYI（47人）", "msgs_metric": "ダッシュボードが真っ赤", "msgs_pager": "本番が落ちた",
+	"why_not_enough_actions": "アクションが足りない。", "why_already_snoozed": "スヌーズは一ターンに一度。", "why_nobody_to_delegate_to": "渡せる相手がいない。",
+	# ---- the review ----
+	"rv_hint": "彼女には型がある。勝つのは声の大きさではなく、言葉の順番。罠の札もある。",
+	"rv_rule": "彼女が求めているもの：{path}", "rv_help": "効くもの：{help}", "rv_turn": "ターン {t} / {max}", "rv_momentum": "流れ",
+	"rv_clear": "署名をもらった", "rv_lost": "今期は見送り", "rv_say": "言う", "rv_face_coerce": "流れ +0.40",
+	"rv_small": "彼女は話し続ける。考えは変えない。このうちのどれかが、これを終わらせる。",
+	"rv_reply_start": "「座って。書類はある。説得してみて」", "rv_reply_guarded": "「ふうん。続けて」",
+	"rv_reply_engaged": "「それは……一理あるわね。続けて」", "rv_reply_wavering": "「上に通す必要はあるけれど。でも」",
+	"rv_reply_breakthrough": "「わかった。金曜までに書面にする」", "rv_reply_coerced": "「……この話は終わり。ドアは閉めて出て」",
+	"rv_reply_flat": "「それ、さっきも聞いた」",
+	"sig_evidence": "根拠", "sig_direct_request": "はっきり頼む", "sig_precision": "具体性", "sig_accountability": "非を認める",
+	"sig_exchange": "取引", "sig_respect": "敬意", "sig_empathy": "共感", "sig_warmth": "あたたかさ",
+	"harm_threat": "脅し", "harm_bribe": "買収", "harm_insult": "侮辱", "harm_entitlement": "当然という顔",
+	# ---- the deploy ----
+	"dp_title": "配置", "dp_hint": "マスをタップしてから、同僚か装備を選ぶ。同僚はそのマスを守り、装備は周囲に効く。装備は二つまで。",
+	"dp_go": "リリースする", "dp_clear": "マスを空ける", "dp_gear_full": "装備は二つまで。",
+	"aura_damage": "近づいたものを叩く", "aura_slow": "近づいたものを遅くする", "aura_heal": "ここに立つと回復する", "aura_turret": "このマスを守る",
+	# ---- the break room ----
+	"br_hint": "コーヒー券は片づけた部屋から出る。ここで使ってもいいし、貯めてもいい。",
+	"br_coffee": "コーヒー · 3", "br_coffee_d": "次の一局だけHP +20%", "br_coldbrew": "水出しコーヒー · 8", "br_coldbrew_d": "誰も落とさない手持ち品",
+	"br_recruit": "{who} を勧誘 · 10", "br_recruit_d": "いま仲間になる", "br_save": "セーブして退勤", "br_saved": "保存した。では月曜に。",
+	"br_broke": "コーヒー券が足りない。", "br_owned": "もう持っている。",
+	# ---- the corridor ----
+	"ev_title": "廊下にて",
+	"ev_lift_text": "エレベーターが階と階の間で止まった。CFOと二人きり。四十秒、いやもっと。",
+	"ev_lift_a": "企画を売り込む", "ev_lift_b": "天気の話をする",
+	"ev_cake_text": "廊下の机にケーキ。誰かの誕生日。見ている人はいない。",
+	"ev_cake_a": "一切れもらう", "ev_cake_b": "カードに署名して通り過ぎる",
+	"ev_printer_text": "通りかかった拍子にプリンタが詰まる。三人が顔を上げる。あなたを見る。",
+	"ev_printer_a": "直す", "ev_printer_b": "自分のプリンタではない",
+	"ev_recruiter_text": "スマホが光る。転職エージェント。件名は「少しお話しませんか？」",
+	"ev_recruiter_a": "読む", "ev_recruiter_b": "ミュートする",
+	"ev_plant_text": "廊下の観葉植物が枯れかけている。じょうろはすぐそこにある。",
+	"ev_plant_a": "水をやる", "ev_plant_b": "自分の植物ではない",
+	"fx_xp": "+{n} 経験値", "fx_credits": "コーヒー券 {n} 枚", "fx_hp": "次の一局はHP {n}%", "fx_none": "何も起きない",
+	# ---- the review hand (the engine reads the English line; this is display only) ----
+	"rv_ev_01": "ローンチは出た。チケットには私の名前がある。", "rv_ev_02": "たとえば、二期の数字は私のものです。", "rv_ev_03": "私が直してから売上が伸びました。",
+	"rv_ev_04": "結果として、夜間の呼び出しが四割減りました。", "rv_dr_01": "昇給を書面にしていただけますか。", "rv_dr_02": "新しい等級を承認していただけますか。",
+	"rv_dr_03": "今日、数字をいただけますか。", "rv_pr_01": "ちょうど十パーセント、曖昧なしで。", "rv_pr_02": "今期から始まる場合に限ります。",
+	"rv_pr_03": "日付がなければ、それは提示ではありません。", "rv_ac_01": "あの障害は私の責任です。引き受けます。", "rv_ac_02": "納期を落としたことに言い訳はありません。",
+	"rv_ex_01": "その代わり、当番は私が持ちます。", "rv_ex_02": "六月までに移行を終わらせられます。", "rv_rs_01": "お時間をいただき、ありがとうございます。",
+	"rv_rs_02": "予算が厳しいのは理解しています。", "rv_em_01": "あなたにとっても、きつい一年だったはずです。",
+	"rv_cb_01": "売上が伸びたので、署名していただけますか。", "rv_cb_02": "この一点だけ、等級を確認していただけますか。", "rv_cb_03": "ありがとうございます。その代わり、ローンチまでは残ります。",
+	"rv_cb_04": "私の責任です。慎重になる理由も分かります。", "rv_cb_05": "書面にある場合に限ります。見せていただけますか。",
+	"rv_ep_01": "ローンチは持ちこたえました。だから明確に、署名していただけますか。", "rv_ep_02": "先日は私の責任でした。その代わり当番を。ありがとうございます。",
+	"rv_x_threat": "出せないなら、辞めます。", "rv_x_entitle": "あなたの仕事は私にイエスと言うことでしょう。", "rv_x_insult": "馬鹿なことを言わないでください、小さな話です。", "rv_x_bribe": "通ったら、あなたにも分け前を。",
+}
+
+
+## Every bank by code, so a new language is one entry and nothing else. `t()` falls back
+## to EN key by key rather than whole-bank, which is what lets the ZH review lines exist
+## in only one bank without every other key going missing with them.
+const BANKS := {"en": EN, "zh": ZH, "ja": JA}
+
+
 static func t(key: String, vars: Dictionary = {}) -> String:
-	var bank: Dictionary = ZH if Game.lang == "zh" else EN
+	var bank: Dictionary = BANKS.get(Game.lang, EN)
 	var s: String = bank.get(key, EN.get(key, key))
 	for k in vars:
 		s = s.replace("{" + k + "}", str(vars[k]))

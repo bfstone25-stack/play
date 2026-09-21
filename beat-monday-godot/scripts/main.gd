@@ -105,10 +105,92 @@ func t(k: String, v: Dictionary = {}) -> String:
 	return BMStrings.t(k, v)
 
 
+# ---------- the voice ---------------------------------------------------------------------
+#
+# The lines were written, rendered and wired into Sfx (ops/bark_wire.py) and then nothing
+# ever said them: 22 mp3s shipped in the .pck for three weeks and the game was mute. The
+# moments are per-game and belong here, so here they are, one per thing that happens:
+#
+#   greet     the title, once a session -- not on every bounce back to the title
+#   stage     walking into a room, naming the day you are about to have
+#   near      the boss is nearly down, or you nearly are
+#   win/big   a node cleared; "big" is clearing it without being touched
+#   fail      a node lost
+#   unlock    clearing opened a room that was locked a moment ago
+#   streak    three nodes cleared in a row, no loss between them
+#   idle      you have been standing on the map doing nothing
+#
+# Sfx.bark drops a bark that would overlap another, so these can be fired freely.
+var _greeted := false
+var _streak := 0
+var _idle_at := 0.0
+var _barked_near := false
+
+var _unlocked_before := 0
+
+
+## Standing on the map, going nowhere. Nudged once every 22 s, and only on the map: an
+## idle line over a result panel reads as the game talking over itself.
+func _idle_tick(dt: float) -> void:
+	if screen != "map" or map.walking:
+		_idle_at = 0.0
+		return
+	_idle_at += dt
+	if _idle_at >= 22.0:
+		_idle_at = 0.0
+		_bark("idle")
+
+
+func _bark(slot: String) -> void:
+	Sfx.bark(slot)
+
+
+func _unlocked_count() -> int:
+	var n := 0
+	for node_def in BMMap.NODES:
+		if BMMap.unlocked(Game.profile, node_def["id"]):
+			n += 1
+	return n
+
+
+## One bark per result, chosen in priority order: a new floor beats a streak beats the
+## plain win, because the player only hears one line and it should be the biggest news.
+## "Big" is clearing a node without being touched -- a perfect day, which is the joke.
+func _bark_result(won: bool, r: Dictionary) -> void:
+	if not won:
+		_streak = 0
+		_bark("fail")
+		return
+	_streak += 1
+	var untouched: bool = r.has("hp") and r.has("maxHp") \
+		and float(r["hp"]) >= float(r["maxHp"]) * 0.98
+	if _unlocked_count() > _unlocked_before:
+		_bark("unlock")
+	elif _streak >= 3 and _streak % 3 == 0:
+		_bark("streak")
+	elif untouched:
+		_bark("win_big")
+	else:
+		_bark("win")
+
+
+## The number-key hand: every screen whose choices are tappable CARDS rather than buttons
+## registers them here, and 1..9 plays the nth. A Card is a PanelContainer with a
+## gui_input handler -- it cannot take focus, so Enter and Tab do nothing on it, and the
+## three screens that matter most (the level-up fan, the inbox hand, the review hand) were
+## mouse-only. A player on a keyboard reached the level-up and stopped there, and so did
+## every automated walk of this build.
+var _choices: Array = []
+
+func _choice(fn: Callable) -> void:
+	_choices.append(fn)
+
+
 func _clear_overlay() -> void:
 	for c in overlay.get_children():
 		c.queue_free()
 	lvl_cards.clear()
+	_choices.clear()
 	toast_label = null
 
 
@@ -155,13 +237,28 @@ func _label(text: String, variation: String = "", size: int = 0, color := Color(
 	return l
 
 
+## Every button in the game is the same object the title is: a payroll time card. See the
+## note over bm_title._btn. One shape for the whole game, per ops/STANDARD.md §4 -- a
+## studio with one shape per game reads as a studio.
 func _button(text: String, variation: String, fn: Callable, min_w := 220.0) -> Button:
-	var b := Button.new()
-	b.text = text
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.TIMECARD
+	b.label = text
+	b.compact = true
+	b.tint = Palette.GOLD_PALE if variation == "Primary" else Palette.GOLD
+	b.ink = Palette.INK
 	b.theme_type_variation = variation
 	b.custom_minimum_size = Vector2(min_w, 46)
 	b.pressed.connect(Sfx.tap)
 	b.pressed.connect(fn)
+	# The primary verb of every screen takes keyboard focus, so Enter and Space play the
+	# game. Two reasons, and the second is the one that was costing us: CrazyGames players
+	# play with a hand on the keyboard, and a build whose only input is a tap on an
+	# unlabelled coordinate is a build no automated prober -- ours included -- can walk. The
+	# matrix read "never left the title" for a title screen that was working perfectly and
+	# simply had no button under the prober's mouse.
+	if variation == "Primary":
+		b.tree_entered.connect(func() -> void: b.call_deferred("grab_focus"))
 	return b
 
 
@@ -256,9 +353,16 @@ func show_title() -> void:
 	title.start_pressed.connect(show_map)
 	title.desk_pressed.connect(show_desk)
 	title.lang_pressed.connect(func():
-		Game.set_lang("en" if Game.lang == "zh" else "zh")
+		# A CYCLE, not a toggle: en -> zh -> ja -> en, in Game.LANGS order. It was a
+		# two-way flip and ja would have been unreachable from the title even though the
+		# bank is complete.
+		var codes: Array = Game.LANGS
+		Game.set_lang(str(codes[(codes.find(Game.lang) + 1) % codes.size()]))
 		show_title())
 	_show("title")
+	if not _greeted:
+		_greeted = true
+		get_tree().create_timer(1.1).timeout.connect(func(): _bark("greet"))
 
 
 # ---------- the map ----------------------------------------------------------------------------
@@ -284,6 +388,95 @@ func show_map() -> void:
 	hint.size.x = BMCore.W
 	overlay.add_child(hint)
 	_show("map")
+
+
+## The map by keyboard: left/right walk the rooms you can actually reach, Enter goes.
+##
+## The map is a picture with lit windows in it, so every room is a coordinate and nothing
+## on it is a focusable control -- which means that without this, a player who has just
+## started the game with the Enter key has no key that does anything, and a prober walking
+## the build stops at the first screen. Left/right name the room (the toast) before Enter
+## commits to the walk, so the keyboard sees the same choice the tap does.
+var _map_sel := 0
+
+## Reachable rooms, with the week's actual objectives first.
+##
+## Order matters because this list is what Enter commits to before anything has been
+## named. NODES is authored in building order, which puts the break room second, so the
+## keyboard's first Enter went shopping. A player who presses the obvious key on the map
+## means "get on with the week": an uncleared room that is a day comes first, then the
+## corridors, then the rooms that are only ever furniture.
+func _map_reachable() -> Array:
+	var here := BMMap.at(Game.profile)
+	var todo: Array = []
+	var side: Array = []
+	var rest: Array = []
+	for n in BMMap.NODES:
+		var id: String = str(n["id"])
+		if id == here or BMMap.path(Game.profile, here, id).is_empty():
+			continue
+		var cleared: bool = id in Game.profile["cleared"]
+		if int(n["day"]) >= 0 and not cleared:
+			todo.append(id)
+		elif str(n["type"]) == "event" and not cleared:
+			side.append(id)
+		else:
+			rest.append(id)
+	return todo + side + rest
+
+
+func _unhandled_input(e: InputEvent) -> void:
+	if not e.is_pressed():
+		return
+	# Escape leaves whatever room you are in, from anywhere that is not a live run. Every
+	# screen already has a BACK TO THE MAP button, but only one of them ever has the
+	# keyboard focus, so a keyboard player could enter a room and not get out of it --
+	# which is also exactly how an automated walk of the build stops dead after two
+	# screens (ops/play_driver.py's note about a menu game being a tree, not a line).
+	if e.is_action("ui_cancel") and screen != "" and screen != "map" and run.is_empty():
+		Sfx.tap()
+		show_map()
+		get_viewport().set_input_as_handled()
+		return
+	# 1..9 plays the nth registered choice on screens whose choices are cards.
+	if e is InputEventKey and not _choices.is_empty():
+		var code: int = (e as InputEventKey).keycode
+		var idx := -1
+		if code >= KEY_1 and code <= KEY_9:
+			idx = code - KEY_1
+		elif code >= KEY_KP_1 and code <= KEY_KP_9:
+			idx = code - KEY_KP_1
+		if idx >= 0 and idx < _choices.size():
+			var fn: Callable = _choices[idx]
+			get_viewport().set_input_as_handled()
+			fn.call()
+			return
+		# and Enter plays the first one, when nothing else has claimed the key -- the
+		# level-up screen has no button at all, so without this the game ends there for a
+		# keyboard.
+		if e.is_action("ui_accept") and get_viewport().gui_get_focus_owner() == null:
+			var first: Callable = _choices[0]
+			get_viewport().set_input_as_handled()
+			first.call()
+			return
+	if screen != "map" or map == null or map.walking:
+		return
+	var rooms := _map_reachable()
+	if rooms.is_empty():
+		return
+	if e.is_action("ui_right") or e.is_action("ui_down"):
+		_map_sel = (_map_sel + 1) % rooms.size()
+	elif e.is_action("ui_left") or e.is_action("ui_up"):
+		_map_sel = (_map_sel - 1 + rooms.size()) % rooms.size()
+	elif e.is_action("ui_accept"):
+		_on_map_tap(str(rooms[_map_sel % rooms.size()]))
+		get_viewport().set_input_as_handled()
+		return
+	else:
+		return
+	Sfx.pickup()
+	_toast(t("node_" + str(rooms[_map_sel])))
+	get_viewport().set_input_as_handled()
 
 
 func _on_map_tap(id: String) -> void:
@@ -352,6 +545,10 @@ func enter_node(id: String) -> void:
 	node_id = id
 	var n := BMMap.node(id)
 	Game.tel("node", {"id": id, "type": n["type"], "week": Game.profile["week"]})
+	_barked_near = false
+	_unlocked_before = _unlocked_count()
+	if int(n.get("day", -1)) >= 0:
+		_bark("stage")
 	match n["type"]:
 		"standup", "allhands":
 			start_day(int(n["day"]))
@@ -393,6 +590,7 @@ func start_day(i: int) -> void:
 
 
 func _process(dt: float) -> void:
+	_idle_tick(dt)
 	if run.is_empty() or screen != "":
 		return
 	dt = minf(0.05, dt)
@@ -407,7 +605,27 @@ func _process(dt: float) -> void:
 			var pull := (Vector2(BMCore.W / 2, BMCore.H * 0.6) - Vector2(run["px"], run["py"])) * 0.5
 			target = {"x": maxf(30, minf(BMCore.W - 30, run["px"] + dx / m * 120 + pull.x)),
 				"y": maxf(90, minf(BMCore.H - 30, run["py"] + dy / m * 120 + pull.y))}
+	else:
+		# Keyboard steering, arrows or WASD, additive to the drag. Beat the Monday is a
+		# CrazyGames title: that shelf is played on a desktop keyboard as often as on a
+		# thumb, and "drag to move" with no key that does anything is how a player decides
+		# in the first four seconds that the page is broken. The keys push the target
+		# ahead of the player rather than setting a velocity, so both inputs mean the same
+		# thing to BMCore.step and neither has to know about the other.
+		var kv := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		if kv != Vector2.ZERO:
+			target = {"x": clampf(run["px"] + kv.x * 110.0, 30.0, BMCore.W - 30.0),
+				"y": clampf(run["py"] + kv.y * 110.0, 90.0, BMCore.H - 30.0)}
 	BMCore.step(run, dt, target)
+	# the near-miss: either the boss is nearly down or you are. Once per run either way.
+	if not _barked_near:
+		var boss = run.get("boss")
+		var boss_low: bool = boss != null and boss is Dictionary \
+			and float(boss.get("hp", 1.0)) <= float(boss.get("maxHp", 1.0)) * 0.22
+		var me_low: bool = float(run["hp"]) <= float(run["maxHp"]) * 0.25
+		if boss_low or me_low:
+			_barked_near = true
+			_bark("near")
 	if not arena.placement.is_empty():
 		BMDeploy.apply(run, arena.placement, dt)
 	if run["pending"] != null:
@@ -465,6 +683,7 @@ func show_levelup(r: Dictionary, after: Callable = Callable()) -> void:
 		h.add_child(vb)
 		card.mouse_filter = Control.MOUSE_FILTER_STOP
 		card.gui_input.connect(func(e): if e is InputEventMouseButton and e.pressed: pick_skill(id))
+		_choice(func(): pick_skill(id))
 		overlay.add_child(card)
 		lvl_cards.append(card)
 		# the fan: from below, tilted, one after another
@@ -509,6 +728,7 @@ func finish() -> void:
 
 ## The result panel shared by every node: what was picked up, who joined, where next.
 func _result(won: bool, head: String, sub: String, r: Dictionary, retry: Callable) -> void:
+	_bark_result(won, r)
 	_clear_overlay()
 	map.visible = false
 	_dim(0.55)
@@ -619,6 +839,7 @@ func _draw_triage() -> void:
 		card.mouse_filter = Control.MOUSE_FILTER_STOP
 		var uid: int = int(m["uid"])
 		card.gui_input.connect(func(e): if e is InputEventMouseButton and e.pressed: tri_selected = i; Sfx.tap(); _draw_triage())
+		_choice(func(): tri_selected = i; Sfx.tap(); _draw_triage())
 		var h := HBoxContainer.new()
 		h.add_theme_constant_override("separation", 10)
 		var icon := IconBox.new(func(ci): Sprites.foe(ci, {"x": 22.0, "y": 24.0, "r": float(BMData.FOES[kind]["r"]), "kind": kind, "hit": 0.0, "vx": 1.0, "vy": 0.0}, arena.clock), Vector2(44, 48))
@@ -756,9 +977,10 @@ func _draw_review() -> void:
 		card.custom_minimum_size = Vector2(380, 76)
 		card.mouse_filter = Control.MOUSE_FILTER_STOP
 		card.gui_input.connect(func(e): if e is InputEventMouseButton and e.pressed: _rv_play(cid))
+		_choice(func(): _rv_play(cid))
 		var v := VBoxContainer.new()
 		v.add_theme_constant_override("separation", 2)
-		var line := _label(t("rv_" + cid) if Game.lang == "zh" else c["line"], "", 14, Palette.TEXT, true)
+		var line := _label(_rv_line(cid, c), "", 14, Palette.TEXT, true)
 		line.custom_minimum_size.x = 350
 		line.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		v.add_child(line)
@@ -780,6 +1002,18 @@ func _draw_review() -> void:
 	small.position = Vector2(20, 556)
 	overlay.add_child(small)
 	_show("review")
+
+
+## The review card's face, in the player's language.
+##
+## The persuasion engine reads the ENGLISH line (bm_persuasion.decompose() matches English
+## needles), so a localised face is display only and must never be fed back to the engine.
+## Was `if Game.lang == "zh"`, which silently left ja showing English cards in an otherwise
+## Japanese screen.
+func _rv_line(cid: String, c: Dictionary) -> String:
+	var k := "rv_" + cid
+	var s := t(k)
+	return str(c["line"]) if s == k else s
 
 
 func _rv_play(cid: String) -> void:
@@ -825,6 +1059,7 @@ func _draw_placement() -> void:
 		tile.mouse_filter = Control.MOUSE_FILTER_STOP
 		var ti := i
 		tile.gui_input.connect(func(e): if e is InputEventMouseButton and e.pressed: dp_tile = ti; Sfx.tap(); _draw_placement())
+		_choice(func(): dp_tile = ti; Sfx.tap(); _draw_placement())
 		var it = placement["tiles"].get(i)
 		if it != null:
 			var iid: String = it["id"]
@@ -968,8 +1203,12 @@ func show_breakroom() -> void:
 		h.add_child(d)
 		v.add_child(h)
 	v.add_child(_button(t("locker"), "Button", show_desk, 200.0))
-	v.add_child(_button(t("br_save"), "Primary", func(): Game.save(); _toast(t("br_saved")); Sfx.pickup(), 200.0))
-	v.add_child(_button(t("back_map"), "Ghost", show_map, 160.0))
+	# SAVE was the Primary here, which made the break room a dead end for anyone playing
+	# with the keyboard: the focused verb saved the game and left you standing in the same
+	# room, and pressing it again did the same thing forever. The primary verb of a shop
+	# is leaving it with what you bought.
+	v.add_child(_button(t("br_save"), "Button", func(): Game.save(); _toast(t("br_saved")); Sfx.pickup(), 200.0))
+	v.add_child(_button(t("back_map"), "Primary", show_map, 200.0))
 	_show("breakroom")
 
 

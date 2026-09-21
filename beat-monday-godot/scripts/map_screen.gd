@@ -39,6 +39,33 @@ var clock := 0.0
 var face := 1.0
 var _tween: Tween
 var _fonts_font: Font
+var _catcher: Control
+## How far a missed tap may be from a room's centre and still count as that room. 120 is
+## a little over one marker's width, so the map reads as "press a room", not "press this
+## 84-pixel box"; past that the tap is empty space and stays empty space.
+const TAP_SLACK := 120.0
+
+
+## A tap that hit no marker: walk to the nearest room the player is allowed into. The
+## profile is not reachable from here, so main.gd's `tapped` handler does the unlocking
+## check as it always did -- this only decides WHICH room the tap meant.
+func _on_catcher_input(e: InputEvent) -> void:
+	if not (e is InputEventMouseButton and e.pressed) or walking:
+		return
+	var p: Vector2 = (e as InputEventMouseButton).position
+	var best := ""
+	var best_d := TAP_SLACK
+	for n in BMMap.NODES:
+		var id: String = n["id"]
+		if id == at:
+			continue
+		# the marker sits above the floor line, so measure to the card, not the feet
+		var d := p.distance_to(BMMap.pos(id) + Vector2(0, -44))
+		if d < best_d:
+			best_d = d
+			best = id
+	if best != "":
+		tapped.emit(best)
 
 
 static func plate_path(name: String) -> String:
@@ -149,6 +176,20 @@ func _ready() -> void:
 	walker_light.position = Vector2(0, -20)
 	walker.add_child(walker_light)
 	walker.position = BMMap.pos(at)
+	# --- the forgiving tap ---------------------------------------------------------------
+	# The markers are 84x96 boxes on a 420x640 canvas. A thumb is wider than that, and a
+	# tap that lands two pixels outside one used to do NOTHING -- no walk, no toast, no
+	# clue that the rooms were the thing to press. That is how the whole second half of
+	# this game (the reflex days, triage, review, deploy) stayed invisible: they are all
+	# behind a tap that was too small to hit. So the map catches every tap that missed a
+	# marker and routes it to the nearest room, if one is anywhere near.
+	_catcher = Control.new()
+	_catcher.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_catcher.size = Vector2(BMCore.W, BMCore.H)
+	_catcher.mouse_filter = Control.MOUSE_FILTER_STOP
+	_catcher.gui_input.connect(_on_catcher_input)
+	add_child(_catcher)
+	move_child(_catcher, 0)      # every marker is a later sibling, so markers still win
 	# the floor tags
 	for f in 4:
 		var l := Label.new()

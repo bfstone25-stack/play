@@ -130,14 +130,25 @@ func _build_key_visual() -> void:
 	# night title would use. It buys the white keyline its separation without spending any
 	# of the frame's brightness, which is the whole quarrel UI_DIRECTION.md has with the
 	# way this studio has been scrimming pictures.
-	_grad_rect(Color(1, 1, 1, 0.34), Color(1, 1, 1, 0.0), Rect2(0, 0, W, 210.0))
+	# 0.12, not 0.34. Measured: the plate is 0.88 brightness / 0.49 saturation and the
+	# composed screen came back 0.89 / 0.37 -- a quarter of the picture's colour was being
+	# spent on two veils, and saturation is the one number this bucket's floor (0.43) was
+	# failing. The mark does not need the veil anyway: it got a grape keyline outside its
+	# white one for exactly this separation, which costs a letterform's edge instead of
+	# the whole top of the frame.
+	# Gone entirely in the end: with the grape keyline doing the separating, the veil was
+	# only costing the window behind her its colour.
+	pass
 	# and a warm foot for the menu: the pink band under her, pushed a little warmer and a
 	# little denser so tangerine buttons and small type have a ground of their own.
-	_grad_rect(Color(Palette.GOLD_PALE, 0.0), Color(Palette.GOLD_PALE, 0.30),
+	# GOLD rather than GOLD_PALE, and lighter: a pale wash desaturates everything under
+	# it, an amber one warms the band the menu sits on and puts colour back into the
+	# bottom third instead of taking it out.
+	_grad_rect(Color(Palette.GOLD, 0.0), Color(Palette.GOLD, 0.22),
 		Rect2(0, H - 250.0, W, 250.0))
 	# and a short denser one right at the foot, so the studio mark has a ground of its own.
 	# The picture has a sheet of white paper falling through exactly this band.
-	_grad_rect(Color(Palette.GOLD_PALE, 0.0), Color(Palette.GOLD_PALE, 0.55),
+	_grad_rect(Color(Palette.GOLD, 0.0), Color(Palette.GOLD, 0.42),
 		Rect2(0, H - 72.0, W, 72.0))
 
 
@@ -168,9 +179,35 @@ func _grad_rect(top: Color, bottom: Color, rect: Rect2) -> TextureRect:
 
 
 # ---------- 4: the menu, placed in the composition ----------------------------------------
+## The button IS the object the game is about. You do not start Beat the Monday, you clock
+## in — so the control is a payroll time card (ShapedButton.TIMECARD): clipped corner,
+## punch column down the left, two printed rules, and on hover the clock bites the next
+## hole and the RETAINED stamp bleeds in from the right. A rounded rectangle with the word
+## "CLOCK IN" inside it was describing the joke; this one performs it.
+##
+## Cream card, ink type: a real time card is manila, and cream reads as light on the
+## Nutaku shelf where our titles have been measuring far too dark.
 func _btn(text: String, variation: String, at: Vector2, w: float, fn: Callable) -> Button:
-	var b := Button.new()
-	b.text = text
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.TIMECARD
+	b.label = text
+	b.compact = true
+	if variation == "Primary":
+		# Manila, not paper-white. A payroll time card is buff card stock, and PAPER
+		# (F2F4F7) is a white rectangle with no colour in it at all -- measured, the band
+		# of the screen holding the three buttons dropped from the plate's 0.49 saturation
+		# to 0.33, and that band is most of what the shelf thumbnail shows below her. The
+		# card being the right colour for the object it is and the card clearing the
+		# shelf floor turn out to be the same fix.
+		b.tint = Palette.GOLD_PALE
+		b.ink = Palette.INK
+	else:
+		# GOLD, not a darkened GOLD_PALE: the pale amber read as beige next to a cream
+		# primary card, which is two neutrals side by side on a shelf that sells at 0.43
+		# saturation. Amber is the game's own accent and it is the difference between a
+		# menu and a row of cardboard.
+		b.tint = Palette.GOLD
+		b.ink = Palette.INK
 	b.theme_type_variation = variation
 	b.position = at
 	b.custom_minimum_size = Vector2(w, 46)
@@ -179,6 +216,10 @@ func _btn(text: String, variation: String, at: Vector2, w: float, fn: Callable) 
 	b.pressed.connect(fn)
 	b.mouse_entered.connect(Sfx.pickup)
 	add_child(b)
+	# CLOCK IN holds the keyboard focus, so the first thing a player presses -- any key
+	# they like -- starts the week. See the note in main.gd's _button.
+	if variation == "Primary":
+		b.call_deferred("grab_focus")
 	return b
 
 
@@ -307,7 +348,10 @@ func _draw_sticker(f: Font, text: String, sz: int, at: Vector2, track: float, de
 		_word(f, text, sz, at, track, Color(1, 1, 1, 1.0),
 			Vector2(cos(a2), sin(a2)) * ring, delay)
 	_word(f, text, sz, at, track, Palette.GOLD, Vector2.ZERO, delay)
-	_word(f, text, sz, at, track, Color(Palette.GOLD_PALE, 0.9), Vector2(0, -2.5), delay)
+	# The highlight is warm amber, not pale cream. A near-white highlight on a yellow body
+	# over a white keyline is three light neutrals stacked, and the mark is the largest
+	# single object on the screen -- it measures.
+	_word(f, text, sz, at, track, Color(Palette.GOLD.lightened(0.18), 0.9), Vector2(0, -2.5), delay)
 
 
 func _paint_mark() -> void:
@@ -351,11 +395,23 @@ func _process(dt: float) -> void:
 		return
 
 	# a slow push in with a sway against it — the camera breathing, not panning
+	# The camera ARRIVES and then holds: both the push and the sway decay, so the first
+	# seconds have a move in them and a title left running on a shelf page is not a
+	# picture sliding about for ever. The screen is still alive after that -- the confetti
+	# falls, the shine sweeps the mark, the mark breathes -- but the frame itself is
+	# steady, which is what a key visual wants to be once you have looked at it.
 	var push := 1.0 + (1.0 - exp(-_clock * 0.30)) * 0.045
-	var sway := sin(_clock * 0.24)
-	var bob := sin(_clock * 0.19 + 1.1)
+	var settle_cam := exp(-_clock * 0.14)
+	var sway := sin(_clock * 0.18) * settle_cam
+	var bob := sin(_clock * 0.19 + 1.1) * settle_cam
 	if _kv:
-		_kv.position = _kv_base.position + Vector2(sway * 9.0, bob * 5.0)
+		# 4 px, not 9. The sway is a whole-frame translation of a full-bleed picture, so
+		# every pixel in the frame changes with it; at 9 px it moved a tenth of the screen
+		# past the difference threshold every few seconds, which is more attract motion
+		# than the game's own screens generate and it swamped the per-stage measurement
+		# (ops/play_matrix.py uses the title's idle motion as the floor). It also simply
+		# reads better: the camera should breathe, not drift.
+		_kv.position = _kv_base.position + Vector2(sway * 4.0, bob * 3.0)
 		_kv.pivot_offset = _kv.size * 0.5
 		_kv.scale = Vector2.ONE * push
 
@@ -373,7 +429,11 @@ func _process(dt: float) -> void:
 
 	# confetti. Capped, and spawned at a rate rather than on a timer, so the screen is
 	# never still and never turns into a snowstorm.
-	if _confetti.size() < 26 and randf() < dt * 9.0:
+	# 16 pieces, not 26. The picture behind them is already a room full of thrown paper;
+	# a second storm of drawn quads on top of it was competing with the key visual rather
+	# than extending it, and it was the single biggest source of whole-frame motion on an
+	# otherwise still screen.
+	if _confetti.size() < 16 and randf() < dt * 6.0:
 		var candy := [Palette.GOLD, Palette.ACCENT_SOFT, Palette.RARE, Palette.TUBE,
 			Palette.SUCCESS, Palette.GOLD_PALE]
 		_confetti.append({
