@@ -57,7 +57,15 @@ def _is_zht(lang):
     n = (lang or "").lower().replace("_", "-")
     return n in ("zht", "zh-tw", "zh-hk", "zh-hant", "zh-mo") or n.endswith("-hant")
 
+def _is_ja(lang):
+    return (lang or "").lower().replace("_", "-").startswith("ja")
+
 def _field(s, key, lang="en"):
+    # ja first, and only when the row actually carries it: STANDARD §7's rule is that a
+    # language is never offered over another language's prose, so the fallback here is
+    # English and never zh.
+    if _is_ja(lang) and s.get(f"{key}_ja"):
+        return s[f"{key}_ja"]
     if _is_zht(lang) and s.get(f"{key}_zht"):
         return s[f"{key}_zht"]
     if (lang or "").lower().startswith("zh") and s.get(f"{key}_zh"):
@@ -286,7 +294,7 @@ def state(request: Request, pid: str = "", lang: str = "en"):
                       "available": ECO.daily_available(player)},
             "scenarios": [_scen_ui(s, lang) for s in SCEN],
             "affection": _affection_view(player),
-            "duel": d.view() if d and not d.over else None,
+            "duel": d.view(lang) if d and not d.over else None,
             "tuning": {"deck_size": C.DECK_SIZE, "hand_size": C.HAND_SIZE, "max_turns": C.MAX_TURNS,
                        "duel_cost": DUEL_COST}}
 
@@ -345,7 +353,7 @@ def start(r: StartReq, request: Request):
     difficulty = r.difficulty if r.difficulty in C.MAX_TURNS else "silver"
     existing = _load_duel(player)
     if existing and not existing.over:
-        return {"ok": True, "resumed": True, "duel": existing.view(), "opening": R.opening(existing.scenario),
+        return {"ok": True, "resumed": True, "duel": existing.view(r.lang), "opening": R.opening(existing.scenario, r.lang),
                 "scen": _scen_ui(SCEN_BY_ID[existing.scenario], r.lang), "economy": ECO.summary(player)}
     if r.daily:
         if not ECO.use_daily(player):
@@ -354,7 +362,7 @@ def start(r: StartReq, request: Request):
         return {"error": "not enough energy", "economy": ECO.summary(player)}
     d = C.new_duel(scen, difficulty, _deck_for(player, scen), daily=r.daily)
     _save_duel(player, d)
-    return {"ok": True, "resumed": False, "duel": d.view(), "opening": R.opening(scen),
+    return {"ok": True, "resumed": False, "duel": d.view(r.lang), "opening": R.opening(scen, r.lang),
             "scen": _scen_ui(SCEN_BY_ID[scen], r.lang), "economy": ECO.summary(player)}
 
 class PlayReq(BaseModel):
@@ -375,10 +383,10 @@ def play(r: PlayReq, request: Request):
     try:
         read = C.play_card(d, r.card, r.text)
     except C.PlayError as e:
-        return {"error": str(e), "duel": d.view()}
+        return {"error": str(e), "duel": d.view(r.lang)}
     rng = random.Random(d.seed + d.turns * 31)
-    line = R.reply(d.scenario, read["phase_before"], read["phase_after"], read["kind"], harmed_before, rng)
-    out = {"ok": True, "reply": line, "read": read, "duel": d.view()}
+    line = R.reply(d.scenario, read["phase_before"], read["phase_after"], read["kind"], harmed_before, rng, r.lang)
+    out = {"ok": True, "reply": line, "read": read, "duel": d.view(r.lang)}
     rows = [("INSERT INTO turn_log VALUES(?,?,?,?,?,?,?,?,?)",
              (time.time(), player, d.scenario, d.difficulty, read["card"], read["kind"],
               read["phase_before"], read["phase_after"], int(read["card"] == "wild")))]
@@ -402,8 +410,8 @@ def play(r: PlayReq, request: Request):
                       "drop": C.card_public(drop), "cg_unlocked": [k for k in fresh if not k.startswith("cg4")],
                       "tier4_reached": any(k.startswith("cg4") for k in fresh)}
         else:
-            out["refusal_line"] = R.refusal_line(d.scenario) if not read["harms"] else None
-        out["end"] = {"won": d.won, "turns": d.turns, "beat": R.beat(s, d.won), "reward": reward,
+            out["refusal_line"] = R.refusal_line(d.scenario, r.lang) if not read["harms"] else None
+        out["end"] = {"won": d.won, "turns": d.turns, "beat": R.beat(s, d.won, r.lang), "reward": reward,
                       "harmed": bool(read["harms"]), "daily": d.daily}
         _clear_duel(player)
     else:

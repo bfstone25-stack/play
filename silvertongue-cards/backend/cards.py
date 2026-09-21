@@ -183,10 +183,27 @@ SMALL_PRINT = ("She keeps talking. She does not change her mind. "
                "One of these ends the duel as a win, for good.")
 
 
-def card_public(cid: str) -> dict:
+# The Japanese printed faces. Display only -- see cards_ja.py for why `line` itself is
+# never translated. Imported defensively so a broken translation degrades to English
+# rather than taking the card table down.
+try:
+    from .cards_ja import LINES_JA
+except ImportError:  # pragma: no cover - direct-script use and the tests' sys.path
+    try:
+        from cards_ja import LINES_JA
+    except ImportError:
+        LINES_JA = {}
+
+
+def card_public(cid: str, lang: str = "en") -> dict:
     d = BY_ID[cid].public()
     if d["kind"] == "coercion":
         d["small_print"] = SMALL_PRINT
+    # `line` stays the engine's English in every language; `line_ja` rides alongside it so
+    # the client can PRINT Japanese while still sending the card's id back. Nothing here
+    # changes what a card means.
+    if (lang or "").lower().startswith("ja") and cid in LINES_JA:
+        d["line_ja"] = LINES_JA[cid]
     return d
 
 
@@ -268,7 +285,7 @@ class Duel:
     def from_dict(cls, d: dict) -> "Duel":
         return cls(**{k: d[k] for k in cls.__dataclass_fields__ if k in d})
 
-    def view(self) -> dict:
+    def view(self, lang: str = "en") -> dict:
         """What the client may see. Never the deck order."""
         rule = RULES.get(self.scenario, {})
         return {
@@ -277,7 +294,7 @@ class Duel:
             "phase": self.phase, "momentum": self.state.get("momentum", 0.0),
             "evidence": self.state.get("evidence", []), "harms": self.state.get("harms", []),
             "eligible": bool(self.state.get("eligible")),
-            "hand": [card_public(i) for i in self.hand],
+            "hand": [card_public(i, lang) for i in self.hand],
             "deck_left": len(self.deck), "nerve": self.nerve, "nerve_cap": NERVE_CAP,
             "wild_left": self.wild_left, "over": self.over, "won": self.won, "daily": self.daily,
             "needs": {"paths": [sorted(p) for p in rule.get("paths", [])],

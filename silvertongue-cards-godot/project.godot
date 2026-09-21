@@ -38,5 +38,7 @@ locale/fallback="en"
 [autoload]
 
 Gate="*res://scripts/gate.gd"
+Loc="*res://scripts/loc.gd"
+Offline="*res://scripts/offline.gd"
 Api="*res://scripts/api.gd"
 Sfx="*res://scripts/sfx.gd"

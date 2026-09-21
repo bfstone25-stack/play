@@ -116,5 +116,11 @@ static func glyph(key: String) -> String:
 	return GLYPH.get(key, "•")
 
 
+## The printed name of a persuasion signal. These are the words on every card chip and in
+## the SHE NEEDS row, so they are the most-read vocabulary in the game after her replies —
+## and they were the last thing still in English on a Japanese screen. The underscore
+## de-escaping stays as the English fallback, so a signal added to the engine shows up as
+## readable English in every language rather than as a blank.
 static func label(key: String) -> String:
-	return key.replace("_", " ")
+	var t := Loc.t(key)
+	return t if t != key else key.replace("_", " ")

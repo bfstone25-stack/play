@@ -5,6 +5,65 @@ extends Control
 var main: Node
 var _roster: HBoxContainer
 var _rank_buttons := {}
+var _cards: Array[Control] = []
+var _ids: Array[String] = []
+var _sel := 0
+
+
+## Keyboard, for the same reason the title has one: this screen's verbs sit in the last
+## twelfth of five side-by-side panels and nothing here answered a key at all. Digits pick
+## a person the way a roster on a phone would, the arrows walk the row, Enter or Space
+## opens whoever is selected.
+func _unhandled_key_input(ev: InputEvent) -> void:
+	if not (ev is InputEventKey) or not ev.pressed or ev.echo or _ids.is_empty():
+		return
+	var k: int = (ev as InputEventKey).keycode
+	if k >= KEY_1 and k <= KEY_9:
+		var n: int = k - KEY_1
+		if n < _ids.size():
+			_select(n)
+			_open(_ids[n])
+			get_viewport().set_input_as_handled()
+		return
+	match k:
+		KEY_LEFT, KEY_UP:
+			_select(_sel - 1)
+		KEY_RIGHT, KEY_DOWN:
+			_select(_sel + 1)
+		KEY_ENTER, KEY_KP_ENTER, KEY_SPACE:
+			_open(_ids[_sel])
+		_:
+			return
+	get_viewport().set_input_as_handled()
+
+
+func _card_input(ev: InputEvent, id: String) -> void:
+	if ev is InputEventMouseButton and ev.pressed and ev.button_index == MOUSE_BUTTON_LEFT:
+		_open(id)
+
+
+func _card_hover(c: Control) -> void:
+	_select(_cards.find(c))
+
+
+func _select(i: int) -> void:
+	if _cards.is_empty() or i < 0:
+		return
+	_sel = wrapi(i, 0, _cards.size())
+	for n in _cards.size():
+		var lift: float = 1.0 if n == _sel else 0.86
+		_cards[n].modulate = Color(lift, lift, lift, _cards[n].modulate.a)
+
+
+## One way in, whatever pressed it. `main.start_duel` is the same call the DUEL card makes,
+## so the panel, the key and the button cannot drift apart.
+func _open(id: String) -> void:
+	if id == "":
+		return
+	Sfx.play("ui_click")
+	var daily: Dictionary = main.state.get("daily", {})
+	var free: bool = str(daily.get("scenario", "")) == id and bool(daily.get("available", false))
+	main.start_duel(id, free)
 
 
 func setup(_args: Dictionary) -> void:
@@ -29,18 +88,18 @@ func _ready() -> void:
 	var tbox := VBoxContainer.new()
 	tbox.add_theme_constant_override("separation", 0)
 	tbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tbox.add_child(StudioTheme.display_label("TONIGHT", 34, Palette.GOLD))
-	var sub := StudioTheme.serif_label("Five people, one evening each. Bring a deck; every card is a sentence. The engine reads it. She answers. A duel costs 3 energy; today's is free and pays double affection.", 13, Palette.MUTED)
+	tbox.add_child(StudioTheme.display_label(Loc.t("TONIGHT"), 34, Palette.GOLD))
+	var sub := StudioTheme.serif_label(Loc.t("Five people, one evening each. Bring a deck; every card is a sentence. The engine reads it. She answers. A duel costs 3 energy; today's is free and pays double affection."), 13, Palette.MUTED)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tbox.add_child(sub)
 	head.add_child(tbox)
 	var rank := HBoxContainer.new()
 	rank.add_theme_constant_override("separation", 6)
 	rank.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	rank.add_child(StudioTheme.mono_label("RANK", 11, Palette.MUTED))
+	rank.add_child(StudioTheme.mono_label(Loc.t("RANK"), 11, Palette.MUTED))
 	for pair in [["gentle", "GENTLE · 18"], ["silver", "SILVER · 15"], ["gold", "GOLD · 10"]]:
 		var b := Button.new()
-		b.text = pair[1]
+		b.text = Loc.t(str(pair[1]))
 		b.focus_mode = Control.FOCUS_NONE
 		b.pressed.connect(func(): Sfx.play("ui_click"); _set_rank(pair[0]))
 		rank.add_child(b)
@@ -58,7 +117,7 @@ func _ready() -> void:
 	_roster.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_roster)
 	_render()
-	var foot := StudioTheme.mono_label("Nothing sold changes the turn count or what she needs.", 10, Palette.MUTED)
+	var foot := StudioTheme.mono_label(Loc.t("Nothing sold changes the turn count or what she needs."), 10, Palette.MUTED)
 	col.add_child(foot)
 
 
@@ -74,6 +133,9 @@ func _set_rank(r: String) -> void:
 func _render() -> void:
 	for c in _roster.get_children():
 		c.queue_free()
+	_cards.clear()
+	_ids.clear()
+	_sel = 0
 	var st: Dictionary = main.state
 	var daily: Dictionary = st.get("daily", {})
 	var aff: Dictionary = st.get("affection", {})
@@ -89,6 +151,22 @@ func _render() -> void:
 		if is_daily:
 			StudioTheme.glow(s, Palette.GOLD, 14, 0.35)
 		card.add_theme_stylebox_override("panel", s)
+		# The portrait IS the button. A roster where the only way in is a 150x42 control
+		# in the bottom twelfth of a panel is a roster a player misses and a driver cannot
+		# reach at all: the board's twenty interactions included three along the bottom
+		# action row and every one of them passed just under the duel cards. Clicking the
+		# person you want to talk to is also simply what a player tries first.
+		var sid := str(sc.get("id", ""))
+		card.mouse_filter = Control.MOUSE_FILTER_STOP
+		card.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		# .bind(), not a capturing lambda: both `sid` and `card` are rebound every turn of
+		# this loop, and a lambda that closes over a rebound loop local is the defect
+		# ops/gd_lambda_capture.py exists to catch (it compiles, runs, and renders almost
+		# right — FOLD shipped two exports that way).
+		card.gui_input.connect(_card_input.bind(sid))
+		card.mouse_entered.connect(_card_hover.bind(card))
+		_cards.append(card)
+		_ids.append(sid)
 		_roster.add_child(card)
 		var v := VBoxContainer.new()
 		v.add_theme_constant_override("separation", 0)
@@ -119,7 +197,7 @@ func _render() -> void:
 		if is_daily:
 			var tag := PanelContainer.new()
 			tag.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.SUCCESS, Palette.SUCCESS, 6, 0, Vector2(7, 3)))
-			tag.add_child(StudioTheme.mono_label("TODAY · FREE · ×2 AFFECTION", 9, Palette.GROUND))
+			tag.add_child(StudioTheme.mono_label(Loc.t("TODAY · FREE · ×2 AFFECTION"), 9, Palette.GROUND))
 			tag.position = Vector2(10, 10)
 			pw.add_child(tag)
 		var meta := VBoxContainer.new()
@@ -154,19 +232,17 @@ func _render() -> void:
 		var btns := HBoxContainer.new()
 		btns.add_theme_constant_override("separation", 6)
 		meta.add_child(btns)
-		var duel := Button.new()
-		duel.text = "DUEL · 3⚡"
+		# The verb is a playing card (STANDARD §4, ShapedButton.Shape.CARD — named for
+		# this title). The nav and the quiet controls stay flat; see card_button().
+		var duel := StudioTheme.card_button(Loc.t("DUEL · 3⚡"), "primary")
 		duel.focus_mode = Control.FOCUS_NONE
-		StudioTheme.style_button(duel, "primary")
 		duel.pressed.connect(func(): Sfx.play("ui_click"); main.start_duel(str(sc.get("id", "")), false))
 		btns.add_child(duel)
 		if is_daily:
-			var d := Button.new()
-			d.focus_mode = Control.FOCUS_NONE
 			var avail := bool(daily.get("available", false))
-			d.text = "DAILY · FREE" if avail else "DAILY DONE"
+			var d := StudioTheme.card_button(Loc.t("DAILY · FREE") if avail else Loc.t("DAILY DONE"), "free")
+			d.focus_mode = Control.FOCUS_NONE
 			d.disabled = not avail
-			StudioTheme.style_button(d, "free")
 			d.pressed.connect(func(): Sfx.play("ui_click"); main.start_duel(str(sc.get("id", "")), true))
 			btns.add_child(d)
 		# stagger in

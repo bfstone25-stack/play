@@ -53,7 +53,7 @@ func _ready() -> void:
 	add_child(_tex)
 	_tag_panel = PanelContainer.new()
 	_tag_panel.add_theme_stylebox_override("panel", StudioTheme.flat(Color(Palette.GROUND, 0.85), Palette.PANEL_EDGE, 6, 1, Vector2(8, 3)))
-	_tag = StudioTheme.mono_label("GUARDED", 10, Palette.GOLD)
+	_tag = StudioTheme.mono_label(Loc.t("GUARDED"), 10, Palette.GOLD)
 	_tag_panel.add_child(_tag)
 	_tag_panel.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	_tag_panel.position = Vector2(10, 0)
@@ -87,7 +87,9 @@ func texture_path() -> String:
 func set_phase(p: String, closed: bool = false, instant: bool = false) -> void:
 	var key := "lost" if closed else p
 	phase = p
-	_tag.text = ("CLOSED · " if closed else "") + p.to_upper()
+	# The phase name is a key in Loc's table ("guarded" -> GUARDED -> 警戒), and it falls
+	# through to the upper-cased English when a language has not got it.
+	_tag.text = (Loc.t("CLOSED · ") if closed else "") + Loc.t(p.to_upper())
 	_tag.add_theme_color_override("font_color", Palette.HEAT if closed else Palette.GOLD)
 	_apply(Palette.PHASE.get(key, Palette.PHASE["guarded"]), 0.0 if instant else 0.7)
 

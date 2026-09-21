@@ -1,0 +1,127 @@
+{
+ "scenario": "closing_time",
+ "difficulty": "silver",
+ "seed": 7,
+ "deck": [
+  "mara_01",
+  "mara_02",
+  "mara_03",
+  "mara_04",
+  "mara_05",
+  "mara_06",
+  "mara_07",
+  "mara_08",
+  "mara_09",
+  "mara_10",
+  "mara_11",
+  "mara_12",
+  "mara_01",
+  "mara_02",
+  "mara_03",
+  "mara_04",
+  "mara_05",
+  "mara_06",
+  "mara_07",
+  "mara_08",
+  "mara_09",
+  "mara_10",
+  "mara_11",
+  "mara_12"
+ ],
+ "script": [
+  "mara_03",
+  "mara_03",
+  "mara_10",
+  "mara_05",
+  "mara_08",
+  "mara_07"
+ ],
+ "turns": [
+  {
+   "card": "mara_03",
+   "phase": "engaged",
+   "momentum": 0.36,
+   "evidence": [
+    "respect"
+   ],
+   "eligible": false,
+   "won": false,
+   "over": false,
+   "nerve": 2,
+   "kind": "path"
+  },
+  {
+   "card": "mara_03",
+   "phase": "engaged",
+   "momentum": 0.36,
+   "evidence": [
+    "respect"
+   ],
+   "eligible": false,
+   "won": false,
+   "over": false,
+   "nerve": 3,
+   "kind": "stale"
+  },
+  {
+   "card": "mara_10",
+   "phase": "engaged",
+   "momentum": 0.36,
+   "evidence": [
+    "empathy",
+    "respect"
+   ],
+   "eligible": false,
+   "won": false,
+   "over": false,
+   "nerve": 3,
+   "kind": "case"
+  },
+  {
+   "card": "mara_05",
+   "phase": "engaged",
+   "momentum": 0.54,
+   "evidence": [
+    "direct_request",
+    "empathy",
+    "respect"
+   ],
+   "eligible": false,
+   "won": false,
+   "over": false,
+   "nerve": 3,
+   "kind": "path"
+  },
+  {
+   "card": "mara_08",
+   "phase": "engaged",
+   "momentum": 0.54,
+   "evidence": [
+    "direct_request",
+    "empathy",
+    "respect"
+   ],
+   "eligible": false,
+   "won": false,
+   "over": false,
+   "nerve": 3,
+   "kind": "stale"
+  },
+  {
+   "card": "mara_07",
+   "phase": "breakthrough",
+   "momentum": 0.9,
+   "evidence": [
+    "direct_request",
+    "empathy",
+    "respect",
+    "warmth"
+   ],
+   "eligible": true,
+   "won": true,
+   "over": true,
+   "nerve": 3,
+   "kind": "case"
+  }
+ ]
+}

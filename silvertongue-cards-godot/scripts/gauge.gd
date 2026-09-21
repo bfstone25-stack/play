@@ -90,7 +90,7 @@ func _draw() -> void:
 		draw_rect(Rect2(fw - 10, 15, 10, 20), Color(Palette.HEAT, 0.35), true)
 		draw_rect(Rect2(fw - 4, 16, 4, 18), Color(Palette.GOLD_PALE, 0.5), true)
 	# gold ticks at the phase thresholds
-	for t in [[0.30, "ENGAGED"], [0.68, "WAVERING"]]:
+	for t in [[0.30, Loc.t("ENGAGED")], [0.68, Loc.t("WAVERING")]]:
 		var x := w * float(t[0])
 		draw_line(Vector2(x, 12), Vector2(x, 38), Palette.GOLD, 1.5)
 		draw_string(_font, Vector2(x + 4, 10), str(t[1]), HORIZONTAL_ALIGNMENT_LEFT, -1, 9, Palette.GOLD)

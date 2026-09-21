@@ -37,21 +37,19 @@ func _ready() -> void:
 	var tbox := VBoxContainer.new()
 	tbox.add_theme_constant_override("separation", 0)
 	tbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tbox.add_child(StudioTheme.display_label("GACHA", 34, Palette.GOLD))
-	var sub := StudioTheme.serif_label("Common 70 · Rare 25 · Epic 5. A ten-pull always holds a rare; every thirtieth pull is an epic. Cards add sentences you can say. They do not change what she needs.", 13, Palette.MUTED)
+	tbox.add_child(StudioTheme.display_label(Loc.t("GACHA"), 34, Palette.GOLD))
+	var sub := StudioTheme.serif_label(Loc.t("Common 70 · Rare 25 · Epic 5. A ten-pull always holds a rare; every thirtieth pull is an epic. Cards add sentences you can say. They do not change what she needs."), 13, Palette.MUTED)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tbox.add_child(sub)
 	head.add_child(tbox)
 	var btns := HBoxContainer.new()
 	btns.add_theme_constant_override("separation", 8)
 	btns.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	_pull1 = Button.new()
+	_pull1 = StudioTheme.card_button("", "pull")
 	_pull1.focus_mode = Control.FOCUS_NONE
-	StudioTheme.style_button(_pull1, "pull")
 	_pull1.pressed.connect(func(): drive_pull(1))
-	_pull10 = Button.new()
+	_pull10 = StudioTheme.card_button("", "pull")
 	_pull10.focus_mode = Control.FOCUS_NONE
-	StudioTheme.style_button(_pull10, "pull")
 	_pull10.pressed.connect(func(): drive_pull(10))
 	btns.add_child(_pull1)
 	btns.add_child(_pull10)
@@ -100,10 +98,10 @@ func _fit_columns() -> void:
 func _render_prices() -> void:
 	var eco: Dictionary = Api.last_economy
 	var pp: Dictionary = eco.get("pull_price", {"1": 100, "10": 900})
-	_pull1.text = "1 PULL · %d" % int(pp.get("1", 100))
-	_pull10.text = "10 PULL · %d" % int(pp.get("10", 900))
+	_pull1.text = Loc.t("1 PULL · %d") % int(pp.get("1", 100))
+	_pull10.text = Loc.t("10 PULL · %d") % int(pp.get("10", 900))
 	var p: Dictionary = eco.get("pity", {})
-	_pity.text = "PULLS %d · EPIC PITY IN %d · CREDITS %d" % [int(p.get("pulls", 0)), int(p.get("epic_pity_in", 30)), int(p.get("pull_credits", 0))]
+	_pity.text = Loc.t("PULLS %d · EPIC PITY IN %d · CREDITS %d") % [int(p.get("pulls", 0)), int(p.get("epic_pity_in", 30)), int(p.get("pull_credits", 0))]
 
 
 func _load_owned() -> void:

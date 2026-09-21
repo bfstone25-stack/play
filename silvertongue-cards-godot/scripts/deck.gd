@@ -36,7 +36,7 @@ func _ready() -> void:
 	var tbox := VBoxContainer.new()
 	tbox.add_theme_constant_override("separation", 0)
 	tbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tbox.add_child(StudioTheme.display_label("DECK", 34, Palette.GOLD))
+	tbox.add_child(StudioTheme.display_label(Loc.t("DECK"), 34, Palette.GOLD))
 	_sub = StudioTheme.serif_label("", 13, Palette.MUTED)
 	_sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tbox.add_child(_sub)
@@ -48,13 +48,13 @@ func _ready() -> void:
 	_count.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	actions.add_child(_count)
 	var save := Button.new()
-	save.text = "SAVE DECK"
+	save.text = Loc.t("SAVE DECK")
 	save.focus_mode = Control.FOCUS_NONE
 	StudioTheme.style_button(save, "primary")
 	save.pressed.connect(_save)
 	actions.add_child(save)
 	var auto := Button.new()
-	auto.text = "AUTO"
+	auto.text = Loc.t("AUTO")
 	auto.focus_mode = Control.FOCUS_NONE
 	auto.pressed.connect(func(): Sfx.play("ui_click"); _load(true))
 	actions.add_child(auto)
@@ -102,7 +102,7 @@ func _load(auto: bool) -> void:
 	collection = r.get("collection", [])
 	deck = r.get("deck", []).duplicate()
 	deck_size = int(r.get("deck_size", 18))
-	_sub.text = "Pick up to %d. Copies count. The wild card is always in the deck and never counts." % deck_size
+	_sub.text = Loc.t("Pick up to %d. Copies count. The wild card is always in the deck and never counts.") % deck_size
 	_render()
 
 
@@ -123,7 +123,7 @@ func _render() -> void:
 		wrap.add_child(c)
 		c.setup(d, true)
 		c.set_selected(in_deck > 0)
-		var n := StudioTheme.mono_label("%d/%d in deck" % [in_deck, own], 10, Palette.GOLD if in_deck > 0 else Palette.MUTED)
+		var n := StudioTheme.mono_label(Loc.t("%d/%d in deck") % [in_deck, own], 10, Palette.GOLD if in_deck > 0 else Palette.MUTED)
 		n.position = Vector2(6, Card.H + 4)
 		wrap.add_child(n)
 		c.pressed.connect(func(_c):

@@ -131,6 +131,19 @@ func _build() -> void:
 	add_child(_back_mark)
 
 
+## The printed face, in the player's language.
+##
+## `line` is the ENGINE's text and is English in every language on purpose: the backend
+## decomposes that exact string to decide which signals the card carries, so translating
+## it would make a ja duel a different game from an en duel. `line_ja` rides alongside it
+## purely to be printed, and the client always sends the card's id — never its text — so
+## there is no way for the two to disagree about what was played. See backend/cards_ja.py.
+func printed_line() -> String:
+	var key := "line_" + Loc.code().split("-")[0]
+	var s := str(data.get(key, ""))
+	return s if s != "" else str(data.get("line", ""))
+
+
 func refresh() -> void:
 	for c in _chips.get_children():
 		c.queue_free()
@@ -138,7 +151,7 @@ func refresh() -> void:
 	var rarity := str(data.get("rarity", "common"))
 	var coercion := kind == "coercion"
 	var wild := rarity == "wild"
-	_who.text = ("%s · %s" % [rarity.to_upper(), str(data.get("character", ""))]) if not wild else "WILD · once"
+	_who.text = ("%s · %s" % [Loc.t(rarity.to_upper()), str(data.get("character", ""))]) if not wild else Loc.t("WILD · once")
 	_who.add_theme_color_override("font_color", Palette.rarity_text(rarity, kind))
 	_cost.text = "%d◈" % int(data.get("cost", 1))
 	_cost.add_theme_color_override("font_color", Palette.HEAT if affordable else Palette.FAINT)
@@ -150,25 +163,25 @@ func refresh() -> void:
 	_line.remove_theme_color_override("font_color")
 	if coercion:
 		_big.text = str(data.get("face", "MOMENTUM +0.40"))
-		_line.text = str(data.get("line", ""))
+		_line.text = printed_line()
 		_line.position.y = 96
 		_line.size.y = 76
 		_line.add_theme_font_size_override("font_size", 13)
 		_small.text = str(data.get("small_print", ""))
 		_chips.visible = false
 	elif wild:
-		_line.text = "Say it in your own words."
+		_line.text = Loc.t("Say it in your own words.")
 		_line.add_theme_color_override("font_color", Palette.GOLD)
 		_line.position.y = 44
 		_line.size.y = 120
 		_line.add_theme_font_size_override("font_size", 15)
 		_chips.visible = true
-		_add_chip("the engine reads it", false)
+		_add_chip(Loc.t("the engine reads it"), false)
 	else:
-		_line.text = "“%s”" % str(data.get("line", ""))
+		_line.text = "“%s”" % printed_line()
 		_line.position.y = 130 if face != null else 44
 		_line.size.y = 62 if face != null else 120
-		_line.add_theme_font_size_override("font_size", 13 if str(data.get("line", "")).length() < 40 else 11)
+		_line.add_theme_font_size_override("font_size", 13 if printed_line().length() < 40 else 11)
 		_chips.visible = true
 		for s in data.get("signals", []):
 			_add_chip("%s %s" % [Palette.glyph(str(s)), Palette.label(str(s))], false)

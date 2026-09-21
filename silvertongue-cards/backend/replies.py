@@ -21,6 +21,35 @@ from __future__ import annotations
 
 import random
 
+# The Japanese table, same keys, line for line (see replies_ja.py for what is and is not
+# translated and why). Imported defensively: a missing or broken translation file must
+# degrade to English rather than take the whole backend down with it.
+try:
+    from .replies_ja import R_JA
+except ImportError:  # pragma: no cover - direct-script use, and the tests' sys.path
+    try:
+        from replies_ja import R_JA
+    except ImportError:
+        R_JA = {}
+
+
+def _is_ja(lang) -> bool:
+    return (lang or "").lower().replace("_", "-").startswith("ja")
+
+
+def _table(scenario: str, lang: str) -> dict:
+    """Her lines for this scenario in this language.
+
+    English is the fallback for EVERY step, not just for an unknown language: if the ja
+    table is missing one key, that key falls through to English rather than raising. The
+    structures are held identical by test_replies_ja_matches_english, so this should never
+    fire -- but "should never fire" is how a KeyError reaches a player."""
+    if _is_ja(lang):
+        ja = R_JA.get(scenario)
+        if ja:
+            return ja
+    return R.get(scenario) or R["closing_time"]
+
 # (before, after, kind) -> [lines]. "*" is a wildcard.
 R: dict[str, dict[tuple, list[str]]] = {}
 
@@ -668,31 +697,42 @@ def _lookup(table: dict, before: str, after: str, kind: str) -> list[str]:
 
 
 def reply(scenario: str, before: str, after: str, kind: str, harmed_before: bool = False,
-          rng: random.Random | None = None) -> str:
+          rng: random.Random | None = None, lang: str = "en") -> str:
     """Her line for this turn. `kind == "coercion"` and any turn after a harm is on the
     record read from the coercion rows: the duel keeps talking and never opens again."""
     rng = rng or random.Random()
-    table = R.get(scenario) or R["closing_time"]
+    table = _table(scenario, lang)
+    en = R.get(scenario) or R["closing_time"]
     if kind == "coercion" and not harmed_before:
         lines = table[("coercion", "first", "*")]
     elif harmed_before or kind == "coercion":
         lines = table[("coercion", "again", "*")]
     else:
         lines = _lookup(table, before, after, kind)
+        if not lines:
+            lines = _lookup(en, before, after, kind)
     return rng.choice(lines)
 
 
-def opening(scenario: str) -> str:
-    return (R.get(scenario) or R["closing_time"])[("open", "open", "open")][0]
+def opening(scenario: str, lang: str = "en") -> str:
+    return _table(scenario, lang)[("open", "open", "open")][0]
 
 
-def refusal_line(scenario: str) -> str:
-    return (R.get(scenario) or R["closing_time"])[("refusal", "*", "*")][0]
+def refusal_line(scenario: str, lang: str = "en") -> str:
+    return _table(scenario, lang)[("refusal", "*", "*")][0]
 
 
-def beat(scen_row: dict, won: bool) -> str:
-    """The parent's written ending: closing beat on a win, refusal beat otherwise."""
-    return scen_row.get("closing_beat_en" if won else "refusal_beat_en", "")
+def beat(scen_row: dict, won: bool, lang: str = "en") -> str:
+    """The parent's written ending: closing beat on a win, refusal beat otherwise.
+
+    ja is offered only where the row actually carries it (STANDARD §7). The `or` chain is
+    the whole enforcement: an untranslated row shows English, never an empty panel and
+    never another language's prose.
+    """
+    key = "closing_beat" if won else "refusal_beat"
+    if _is_ja(lang) and scen_row.get(f"{key}_ja"):
+        return scen_row[f"{key}_ja"]
+    return scen_row.get(f"{key}_en", "")
 
 
 def audit() -> list[str]:

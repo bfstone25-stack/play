@@ -25,8 +25,8 @@ func _ready() -> void:
 	col.add_theme_constant_override("separation", 8)
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(col)
-	col.add_child(StudioTheme.display_label("AFFECTION", 34, Palette.GOLD))
-	var sub := StudioTheme.serif_label("Affection is the count of duels won against her. Plates unlock at 1, 3 and 6 wins; the fourth rung at 10 is a scene of Blaze's own and is a placeholder in this build. Nothing here unlocks from time.", 13, Palette.MUTED)
+	col.add_child(StudioTheme.display_label(Loc.t("AFFECTION"), 34, Palette.GOLD))
+	var sub := StudioTheme.serif_label(Loc.t("Affection is the count of duels won against her. Plates unlock at 1, 3 and 6 wins; the fourth rung at 10 is a scene of Blaze's own and is a placeholder in this build. Nothing here unlocks from time."), 13, Palette.MUTED)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(sub)
 	var scroll := ScrollContainer.new()

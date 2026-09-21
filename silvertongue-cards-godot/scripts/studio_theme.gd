@@ -306,3 +306,41 @@ static func say_label(size: int = 17) -> RichTextLabel:
 	r.scroll_active = false
 	r.add_theme_font_size_override("normal_font_size", size)
 	return r
+
+
+## STANDARD §4: "Buttons are not rectangles. The shape comes from your game's world."
+## This game's world is a deck of cards, and `shared/godot/shaped_button.gd` names
+## `Shape.CARD` — a playing card with its opposite corners clipped — as this title's shape
+## in so many words. Ghost Channel is the worked example; this is the same wiring.
+##
+## Only the VERBS take a card. The chrome — the nav in the top bar, a ✕, a "back" — stays
+## flat, because a screen where everything is a playing card is a screen where nothing
+## reads as one. The rule is that the thing the player presses to act is an object from
+## the fiction, not that every control is.
+##
+## BOTH `label` and `text`, and the first build of this shipped five blank cards because
+## it set only `text`. ShapedButton._draw() does adopt `text` — but ShapedButton._ready()
+## clears `text` first, and a button built by this helper has its text assigned BEFORE it
+## enters the tree, so _ready() wiped it before _draw() ever saw it. `label` is the field
+## _draw() actually reads and is documented as the one to set pre-tree; `text` is kept as
+## well so a caller that re-labels later (gacha's "1 PULL · 100") still works.
+static func card_button(text: String, kind: String = "primary") -> ShapedButton:
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.CARD
+	match kind:
+		"pull":
+			b.tint = Palette.GOLD
+			b.ink = Palette.GROUND_DEEP
+		"free":
+			b.tint = Palette.SUCCESS
+			b.ink = Palette.GROUND_DEEP
+		_:
+			b.tint = Palette.ACCENT
+			b.ink = Palette.CREAM
+	b.compact = true
+	b.custom_minimum_size = Vector2(150, 42)
+	b.add_theme_font_override("font", font("display"))
+	b.add_theme_font_size_override("font_size", 15)
+	b.label = text
+	b.text = text
+	return b

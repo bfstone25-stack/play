@@ -30,6 +30,8 @@ var _banner: Control
 var _last_play := {}
 var _type_tween: Tween
 var _busy := false
+var _streak := 0
+var _idle := 0.0
 
 
 func setup(args: Dictionary) -> void:
@@ -55,6 +57,7 @@ func _ready() -> void:
 	_brief.text = str(scen.get("story", ""))
 	_say(str(scen.get("name", "")), _opening, "her", true)
 	render(true)
+	Sfx.bark("greet")
 
 
 # --- layout -----------------------------------------------------------------------------------
@@ -84,18 +87,18 @@ func _build() -> void:
 	counters.add_theme_constant_override("separation", 2)
 	counters.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	var c1 := HBoxContainer.new()
-	_turns = StudioTheme.mono_label("TURNS 0/15", 11, Palette.MUTED)
+	_turns = StudioTheme.mono_label(Loc.t("TURNS %d/%d") % [0, 15], 11, Palette.MUTED)
 	_turn_pips = Control.new()
 	_turn_pips.custom_minimum_size = Vector2(150, 12)
 	_turn_pips.draw.connect(_draw_turn_pips)
 	c1.add_child(_turns)
 	c1.add_child(_turn_pips)
 	var c2 := HBoxContainer.new()
-	var nl := StudioTheme.mono_label("NERVE", 11, Palette.MUTED)
+	var nl := StudioTheme.mono_label(Loc.t("NERVE"), 11, Palette.MUTED)
 	_nerve_pips = Control.new()
 	_nerve_pips.custom_minimum_size = Vector2(46, 12)
 	_nerve_pips.draw.connect(_draw_nerve_pips)
-	_deck_left = StudioTheme.mono_label("DECK 15", 11, Palette.MUTED)
+	_deck_left = StudioTheme.mono_label(Loc.t("DECK %d") % 15, 11, Palette.MUTED)
 	c2.add_child(nl)
 	c2.add_child(_nerve_pips)
 	c2.add_child(_deck_left)
@@ -103,7 +106,7 @@ func _build() -> void:
 	counters.add_child(c2)
 	hrow.add_child(counters)
 	var leave := Button.new()
-	leave.text = "LEAVE"
+	leave.text = Loc.t("LEAVE")
 	leave.focus_mode = Control.FOCUS_NONE
 	leave.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	StudioTheme.style_button(leave, "quiet")
@@ -141,7 +144,7 @@ func _build() -> void:
 	talk.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(talk)
 	var grow := HBoxContainer.new()
-	grow.add_child(StudioTheme.mono_label("MOMENTUM", 10, Palette.MUTED))
+	grow.add_child(StudioTheme.mono_label(Loc.t("MOMENTUM"), 10, Palette.MUTED))
 	gauge = MomentumGauge.new()
 	gauge.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	grow.add_child(gauge)
@@ -201,19 +204,17 @@ func _build() -> void:
 	var wrow := HBoxContainer.new()
 	wrow.add_theme_constant_override("separation", 8)
 	_wild_bar.add_child(wrow)
-	var wl := StudioTheme.mono_label("WILD", 11, Palette.GOLD)
+	var wl := StudioTheme.mono_label(Loc.t("WILD"), 11, Palette.GOLD)
 	wl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	wrow.add_child(wl)
 	wild_input = LineEdit.new()
-	wild_input.placeholder_text = "Say it in your own words — the engine reads it, nobody else does"
+	wild_input.placeholder_text = Loc.t("Say it in your own words — the engine reads it, nobody else does")
 	wild_input.max_length = 400
 	wild_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	wild_input.text_submitted.connect(func(_t): _submit_wild())
 	wrow.add_child(wild_input)
-	var say := Button.new()
-	say.text = "SAY IT"
+	var say := StudioTheme.card_button(Loc.t("SAY IT"), "primary")
 	say.focus_mode = Control.FOCUS_NONE
-	StudioTheme.style_button(say, "primary")
 	say.pressed.connect(_submit_wild)
 	wrow.add_child(say)
 	var cancel := Button.new()
@@ -223,6 +224,65 @@ func _build() -> void:
 	wrow.add_child(cancel)
 	resized.connect(_on_resized)
 	call_deferred("_on_resized")
+
+
+## Keyboard, the third of three screens that had none. A duel is played by pressing cards
+## that are laid out in a fan across the bottom of the screen, and a fan is the hardest
+## thing on this game to hit blind: the cards overlap, they move as the hand shrinks, and
+## their centres are nowhere a generic driver looks. So the hand is also numbered — 1..9
+## plays that card, exactly as if it had been clicked.
+##
+## It is not only for the driver. This is a game whose whole verb is "choose a sentence
+## and say it", and choosing sentence three by pressing 3 is faster than aiming at it.
+func _unhandled_key_input(ev: InputEvent) -> void:
+	if not (ev is InputEventKey) or not ev.pressed or ev.echo:
+		return
+	# The wild card opens a LineEdit. While that has the caret, digits are the player
+	# typing their own line, not picking a card.
+	if wild_input != null and wild_input.has_focus():
+		return
+	var k: int = (ev as InputEventKey).keycode
+	if ended:
+		# On the end panel there is one thing left to do, so any key does it.
+		if k != KEY_ESCAPE:
+			leave()
+			get_viewport().set_input_as_handled()
+		return
+	if _busy or hand == null:
+		return
+	if k >= KEY_1 and k <= KEY_9:
+		var ids := hand.ids()
+		var n: int = k - KEY_1
+		if n < ids.size():
+			hand.choose(ids[n])
+			get_viewport().set_input_as_handled()
+		return
+	if k == KEY_ENTER or k == KEY_KP_ENTER or k == KEY_SPACE:
+		# "Say the first thing in your hand." The hand is ordered as it was dealt, so this
+		# is a real move rather than a shortcut around the game — and it means the duel can
+		# be played to its end without a mouse, which numbered keys alone do not give you
+		# once the hand has been picked over.
+		var ids := hand.ids()
+		if not ids.is_empty():
+			hand.choose(ids[0])
+		get_viewport().set_input_as_handled()
+		return
+	if k == KEY_ESCAPE:
+		leave_confirm()
+		get_viewport().set_input_as_handled()
+
+
+## The idle slot. Only while it is genuinely the player's move — not while a reply is
+## typing out, not after the duel has ended — and it re-arms rather than repeating, so a
+## player who walks away hears it once every half minute, not every frame.
+func _process(delta: float) -> void:
+	if ended or _busy or hand == null or hand.state != Hand.State.IDLE:
+		_idle = 0.0
+		return
+	_idle += delta
+	if _idle >= 30.0:
+		_idle = 0.0
+		Sfx.bark("idle")
 
 
 func _on_resized() -> void:
@@ -258,10 +318,10 @@ func render(instant: bool = false) -> void:
 		gauge.snap(float(duel.get("momentum", 0.0)))
 	else:
 		gauge.animate_to(float(duel.get("momentum", 0.0)))
-	_turns.text = "TURNS %d/%d" % [int(duel.get("turns", 0)), int(duel.get("max_turns", 15))]
+	_turns.text = Loc.t("TURNS %d/%d") % [int(duel.get("turns", 0)), int(duel.get("max_turns", 15))]
 	_turn_pips.queue_redraw()
 	_nerve_pips.queue_redraw()
-	_deck_left.text = "DECK %d" % int(duel.get("deck_left", 0))
+	_deck_left.text = Loc.t("DECK %d") % int(duel.get("deck_left", 0))
 	_render_needs(harms)
 	hand.set_hand(duel.get("hand", []), int(duel.get("nerve", 1)), int(duel.get("wild_left", 0)))
 	if duel.get("over", false):
@@ -357,7 +417,9 @@ func _play_turn(id: String, text: String) -> void:
 	if id != "wild":
 		for c in duel.get("hand", []):
 			if c.get("id") == id:
-				line = str(c.get("line", ""))
+				# The printed face, not the engine's English (Card.printed_line()).
+				var loc_key := "line_" + Loc.code().split("-")[0]
+				line = str(c.get(loc_key, "")) if str(c.get(loc_key, "")) != "" else str(c.get("line", ""))
 	_say("You", line, "player", true, id == "wild")
 	var r := await Api.play(id, text)
 	_last_play = r
@@ -388,6 +450,7 @@ func _play_turn(id: String, text: String) -> void:
 		Sfx.play("phase_down", -14.0)
 	else:
 		Sfx.play("reply")
+	_bark_for(read, r)
 	_say(str(scen.get("name", "")), str(r.get("reply", "")), "gray" if harmed else "her")
 	render(false)
 	if r.has("end"):
@@ -400,6 +463,46 @@ func _play_turn(id: String, text: String) -> void:
 	_busy = false
 	main.busy = false
 	turn_resolved.emit(r)
+
+
+## Which bark fires on this turn. ops/bark_wire.py deliberately does not choose the
+## moments — they are per-game — so they are chosen here, against the numbers the backend
+## already sent back rather than against anything this client invents.
+##
+## Order matters: the most specific thing that just happened wins, and only one bark ever
+## plays (Sfx.bark drops a second rather than queueing it, because by the time the first
+## finishes the moment it belonged to is over). `streak` is counted here rather than in
+## the engine because it is a presentation idea, not a rule — three consecutive turns that
+## each landed something new.
+func _bark_for(read: Dictionary, r: Dictionary) -> void:
+	var kind := str(read.get("kind", ""))
+	var harmed: bool = not read.get("harms", []).is_empty()
+	var landed: bool = not harmed and kind != "stale"
+	_streak = _streak + 1 if landed else 0
+	if r.has("end"):
+		var won: bool = str(r.get("end", "")) == "persuaded" or bool(r.get("won", false))
+		if not won:
+			Sfx.bark("fail")
+		elif int(duel.get("turn", 0)) <= 6:
+			Sfx.bark("win_big")          # persuaded early: she did not need convincing long
+		else:
+			Sfx.bark("win")
+		return
+	if harmed:
+		Sfx.bark("fail")
+		return
+	# One move from the end: the tease slot. `momentum` is the backend's 0..1 readout.
+	if float(duel.get("momentum", 0.0)) >= 0.80:
+		Sfx.bark("near")
+		return
+	if _streak >= 3:
+		_streak = 0
+		Sfx.bark("streak")
+		return
+	var pb := int(PHASE_ORDER.get(str(read.get("phase_before", "guarded")), 0))
+	var pa := int(PHASE_ORDER.get(str(read.get("phase_after", "guarded")), 0))
+	if pa > pb:
+		Sfx.bark("stage")
 
 
 ## Driver entry: play by id through the hand's own state machine, await the turn.
@@ -468,7 +571,7 @@ func _show_end(r: Dictionary) -> void:
 	col.alignment = BoxContainer.ALIGNMENT_CENTER
 	col.add_theme_constant_override("separation", 10)
 	_banner.add_child(col)
-	var title := "PERSUADED" if won else ("CLOSED" if harmed else "OUT OF WORDS")
+	var title := Loc.t("PERSUADED") if won else (Loc.t("CLOSED") if harmed else Loc.t("OUT OF WORDS"))
 	var tl := StudioTheme.display_label(title, 60, Palette.GOLD if won else Palette.HEAT)
 	tl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(tl)
@@ -492,14 +595,14 @@ func _show_end(r: Dictionary) -> void:
 		stats.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		# the numbers count up in the display face: affection in coral, gold in gold
 		stats.add_theme_constant_override("separation", 2)
-		stats.add_child(StudioTheme.mono_label("♥ AFFECTION  (+%d)" % int(rw.get("affection_gain", 0)), 11, Palette.HEAT))
+		stats.add_child(StudioTheme.mono_label(Loc.t("♥ AFFECTION  (+%d)") % int(rw.get("affection_gain", 0)), 11, Palette.HEAT))
 		var aff_n := _counter(Palette.HEAT)
 		stats.add_child(aff_n)
-		stats.add_child(StudioTheme.mono_label("◆ GOLD", 11, Palette.GOLD))
+		stats.add_child(StudioTheme.mono_label(Loc.t("◆ GOLD"), 11, Palette.GOLD))
 		var gold_n := _counter(Palette.GOLD)
 		gold_n.prefix = "+"
 		stats.add_child(gold_n)
-		stats.add_child(StudioTheme.mono_label("DROP →", 11, Palette.MUTED))
+		stats.add_child(StudioTheme.mono_label(Loc.t("DROP →"), 11, Palette.MUTED))
 		var ct := create_tween()
 		ct.tween_interval(0.35)
 		ct.tween_callback(func(): aff_n.set_target(float(int(rw.get("affection", 0))), 0.8))
@@ -527,22 +630,21 @@ func _show_end(r: Dictionary) -> void:
 	brow.alignment = BoxContainer.ALIGNMENT_CENTER
 	brow.add_theme_constant_override("separation", 10)
 	col.add_child(brow)
-	var back := Button.new()
-	back.text = "BACK TO THE BAR"
+	var back := StudioTheme.card_button(Loc.t("BACK TO THE BAR"), "primary")
+	back.custom_minimum_size = Vector2(210, 46)
 	back.focus_mode = Control.FOCUS_NONE
-	StudioTheme.style_button(back, "primary")
 	back.pressed.connect(func(): Sfx.play("ui_click"); leave())
 	brow.add_child(back)
 	if won:
 		var aff := Button.new()
-		aff.text = "AFFECTION"
+		aff.text = Loc.t("AFFECTION")
 		aff.focus_mode = Control.FOCUS_NONE
 		aff.pressed.connect(func(): Sfx.play("ui_click"); main.go("affection"))
 		brow.add_child(aff)
 		var keys: Array = e.get("reward", {}).get("cg_unlocked", [])
 		if not keys.is_empty():
 			var see := Button.new()
-			see.text = "SEE THE PLATE"
+			see.text = Loc.t("SEE THE PLATE")
 			see.focus_mode = Control.FOCUS_NONE
 			StudioTheme.style_button(see, "free")
 			see.pressed.connect(func(): Sfx.play("ui_click"); _show_plate(str(keys[0])))
@@ -551,7 +653,7 @@ func _show_end(r: Dictionary) -> void:
 	# elsewhere). Never a popup, never a redirect — board.js draws in the page.
 	if Gate.is_web():
 		var more := Button.new()
-		more.text = "MORE LIKE THIS"
+		more.text = Loc.t("MORE LIKE THIS")
 		more.focus_mode = Control.FOCUS_NONE
 		StudioTheme.style_button(more, "quiet")
 		more.pressed.connect(func(): Sfx.play("board"); offer_board())
@@ -590,7 +692,7 @@ func _flip(c: Card, delay: float) -> void:
 func _daily_percentile(label: Label) -> void:
 	var d := await Api.daily()
 	if d.has("percentile") and d["percentile"] != null:
-		label.text = "You have beaten %d%% of players today." % int(d["percentile"])
+		label.text = Loc.t("You have beaten %d%% of players today.") % int(d["percentile"])
 
 
 func _show_plate(key: String) -> void:

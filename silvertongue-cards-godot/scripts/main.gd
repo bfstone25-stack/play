@@ -25,6 +25,8 @@ var _energy_n: Label
 var _energy_bar: ProgressBar
 var _energy_next: Label
 var _daily_tag: Label
+var _offline_chip: Label
+var _lang_button: Button
 var _host: Control
 var _toast: PanelContainer
 var _toast_label: Label
@@ -36,7 +38,7 @@ var busy := false
 
 
 func _ready() -> void:
-	Symbols.install()
+	Symbols.install(Loc.code())
 	theme = StudioTheme.build()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_build_room()
@@ -48,14 +50,43 @@ func _ready() -> void:
 	add_child(_host)
 	_build_toast()
 	Api.economy_changed.connect(render_wallet)
-	Api.request_failed.connect(func(_p, e): toast("Backend unreachable: " + e))
+	# Online, a dropped request is worth a toast. Offline it is the normal condition and
+	# saying so every few seconds would be noise, so the banner says it once instead.
+	Api.request_failed.connect(func(_p, e): if not Api.offline: toast("Backend unreachable: " + e))
+	# The font stack is part of the language: switching to ja without reinstalling it
+	# leaves three Latin faces in front of the Japanese one and the whole screen draws as
+	# empty boxes. Rebuild first, THEN re-text and rebuild the screen.
+	# Three things have to happen, in this order, and the first build of the language
+	# switch did only the middle one:
+	#   1. the font stack, or ja draws as empty boxes behind three Latin faces;
+	#   2. the top bar's own labels;
+	#   3. a REFETCH. `state` holds the scenario rows already resolved to a locale, so
+	#      rebuilding the screen without this redraws the roster in the old language --
+	#      which is what the first ja capture showed: a Japanese top bar over five
+	#      English character cards.
+	Loc.changed.connect(func(c):
+		Symbols.install(str(c))
+		_relabel()
+		_relocalise())
 	_install_bridge()
+	# Ask once whether there is a backend, BEFORE any screen is built. Without this the
+	# first screen renders against a state that came back empty, which is how a build with
+	# no server reachable showed a roster with nothing in it to press.
+	await Api.probe()
 	await refresh()
 	# The title screen goes in FRONT of the game, and it does not change what the game
 	# does when it starts: the resume-aware expression that used to live here is now
 	# scripts/title.gd's _start(), unchanged, so a player with a duel in flight still
 	# lands back in that duel when they press the first row.
 	go("title")
+
+
+## Refetch in the new language, then rebuild whatever screen is up. Separate from the
+## lambda above only because `await` needs a real function.
+func _relocalise() -> void:
+	await refresh()
+	if current != "":
+		go(current)
 
 
 # --- the room ---------------------------------------------------------------------------------
@@ -150,13 +181,40 @@ func _build_bar() -> void:
 	var fill := Control.new()
 	fill.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(fill)
+	# Offline is a state the player is entitled to know about: their collection lives in
+	# this browser rather than in their account. One quiet chip, not a toast every request.
+	_offline_chip = StudioTheme.mono_label("", 9, Palette.MUTED)
+	_offline_chip.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(_offline_chip)
+	row.add_child(_spacer(10))
+	_lang_button = Button.new()
+	_lang_button.focus_mode = Control.FOCUS_NONE
+	_lang_button.tooltip_text = "Language"
+	_lang_button.pressed.connect(func(): Sfx.play("ui_click"); Loc.next())
+	StudioTheme.style_button(_lang_button, "quiet")
+	row.add_child(_lang_button)
 	for pair in [["home", "DUELS"], ["gacha", "GACHA"], ["affection", "AFFECTION"], ["deck", "DECK"]]:
 		var b := Button.new()
-		b.text = pair[1]
+		b.text = Loc.t(pair[1])
+		b.set_meta("key", pair[1])
 		b.focus_mode = Control.FOCUS_NONE
 		b.pressed.connect(func(): Sfx.play("ui_click"); go(pair[0]))
 		row.add_child(b)
 		_nav[pair[0]] = b
+	_relabel()
+
+
+## Re-text every label the top bar owns. Called on boot and whenever Loc changes, so the
+## language switch does not need the bar rebuilt (which would lose the wallet's animation).
+func _relabel() -> void:
+	for k in _nav:
+		var b: Button = _nav[k]
+		if b.has_meta("key"):
+			b.text = Loc.t(str(b.get_meta("key")))
+	if _lang_button:
+		_lang_button.text = Loc.name_of(Loc.code())
+	if _offline_chip:
+		_offline_chip.text = Loc.t("NO BACKEND — PLAYING OFFLINE") if Api.offline else ""
 
 
 func _spacer(w: float) -> Control:
