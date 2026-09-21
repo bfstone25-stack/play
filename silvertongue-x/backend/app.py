@@ -48,7 +48,16 @@ app = FastAPI(title="Silvertongue: After Hours")
 # 统一埋点
 try:
     import sys as _s, os as _o
-    _s.path.insert(0, _o.path.dirname(_o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))))
+    # Three dirnames lands on Products/play or Products/app; shared/ is one
+    # level above either. The import is wrapped, so the failure only ever
+    # printed '[telemetry] No module named shared' once at startup and the
+    # backend served happily with no server-side telemetry at all. Walk up
+    # until shared/ is actually there, so a product at any depth is wired.
+    _d = _o.path.dirname(_o.path.abspath(__file__))
+    while _d != _o.path.dirname(_d) and not _o.path.exists(
+            _o.path.join(_d, 'shared', 'telemetry.py')):
+        _d = _o.path.dirname(_d)
+    _s.path.insert(0, _d)
     from shared.telemetry import mount_telemetry as _mt
     _mt(app, "silvertongue-ah")
 except Exception as _e:
