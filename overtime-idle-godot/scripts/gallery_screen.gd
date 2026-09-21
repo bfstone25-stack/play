@@ -13,15 +13,15 @@ var aff_grid: GridContainer
 func build() -> void:
 	card_width = 1040
 	card.custom_minimum_size = Vector2(1040, 0)
-	tag("PLATES")
+	tag(I18n.t("gal_tag"))
 	var head := HBoxContainer.new()
 	body.add_child(head)
 	var t := Label.new()
-	t.text = "Gallery"
+	t.text = I18n.t("gal_title")
 	t.theme_type_variation = "Title"
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(t)
-	head.add_child(button("CLOSE", "Ghost", close))
+	head.add_child(button(I18n.t("close"), "Ghost", close))
 	var scroll := ScrollContainer.new()
 	scroll.custom_minimum_size = Vector2(0, 540)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -31,7 +31,7 @@ func build() -> void:
 	v.add_theme_constant_override("separation", 10)
 	scroll.add_child(v)
 	var l1 := Label.new()
-	l1.text = "SKILL — A BOARD YOU BUILT. NEVER FROM TIME."
+	l1.text = I18n.t("gal_skill")
 	l1.theme_type_variation = "Tag"
 	l1.add_theme_color_override("font_color", Palette.GOLD)
 	v.add_child(l1)
@@ -41,7 +41,7 @@ func build() -> void:
 	skill_grid.add_theme_constant_override("v_separation", 8)
 	v.add_child(skill_grid)
 	var l2 := Label.new()
-	l2.text = "AFFECTION — SHIFTS WORKED ON A SOLVENT FLOOR. THIS ONE IS TIME, AND SAYS SO."
+	l2.text = I18n.t("gal_aff")
 	l2.theme_type_variation = "Tag"
 	l2.add_theme_color_override("font_color", Palette.HEAT)
 	v.add_child(l2)
@@ -78,7 +78,7 @@ func _tile(art_id: String, name: String, hint: String, got: bool, on: Callable) 
 		im.modulate = Color(0.55, 0.45, 0.52)
 	v.add_child(im)
 	var n := Label.new()
-	n.text = name if got else "???"
+	n.text = name if got else I18n.t("unknown")
 	n.add_theme_font_override("font", Look.font_ui_bold)
 	n.add_theme_font_size_override("font_size", 13)
 	n.add_theme_color_override("font_color", Palette.GOLD if got else Palette.MUTED)
@@ -101,19 +101,21 @@ func render() -> void:
 		var slot: String = p["slot"]
 		var got := Ticker.earned(slot)
 		var free_or_open := bool(p.get("free", false)) or not Gate.is_web() or Gate.has(slot)
-		skill_grid.add_child(_tile(slot if free_or_open else slot + "_locked", p["who"], p["en"], got, func() -> void:
+		var who: String = I18n.t(str(p["who"]))
+		var cond: String = I18n.t(str(p["cond"]))
+		skill_grid.add_child(_tile(slot if free_or_open else slot + "_locked", who, cond, got, func() -> void:
 			if got:
-				view_plate.emit(slot, "%s — %s" % [p["who"], p["en"]], not bool(p.get("free", false)), slot)))
+				view_plate.emit(slot, "%s — %s" % [who, cond], not bool(p.get("free", false)), slot)))
 	for p in Roster.ROSTER:
 		var id: String = p["id"]
 		var tier := Economy.affection_tier(id)
 		for k in range(1, 5):
 			var open_k: bool = tier >= k or (k == 4 and Economy.can_see_scene(id))
-			var label := "%s · cg%d" % [str(p["name"]).split(",")[0], k]
-			var hint := ("%d shifts" % int(Economy.AFF_TIERS[k - 1])) if k < 4 else ("TIER 4 · PLACEHOLDER" if Economy.can_see_scene(id) else "300 shifts · or scene_skip at 150 (80 Gold)")
+			var label := "%s · cg%d" % [I18n.t(str(p["nameKey"])).split(",")[0].split("、")[0], k]
+			var hint := I18n.f("gal_shifts", int(Economy.AFF_TIERS[k - 1])) if k < 4 else (I18n.t("gal_tier4") if Economy.can_see_scene(id) else I18n.t("gal_tier4_locked"))
 			aff_grid.add_child(_tile(Ticker.aff_plate(id, k), label, hint, open_k, func() -> void:
 				if open_k:
-					view_plate.emit(Ticker.aff_plate(id, k), label + (" (tier-4 scene: placeholder, Blaze's own)" if k == 4 else ""), false, "")
+					view_plate.emit(Ticker.aff_plate(id, k), label + (I18n.t("gal_placeholder") if k == 4 else ""), false, "")
 				elif k == 4 and tier >= 3:
 					var r := Economy.buy("scene_skip_" + id)
 					if not r["ok"]:

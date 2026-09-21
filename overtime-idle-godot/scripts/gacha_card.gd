@@ -61,13 +61,13 @@ func setup(r: Dictionary) -> void:
 	face.add_child(v)
 	v.add_child(_portrait(str(r["id"]), rc))
 	var nm := Label.new()
-	nm.text = str(Roster.by(r["id"]).get("name", r["id"])).split(",")[0]
+	nm.text = I18n.t(str(Roster.by(r["id"]).get("nameKey", r["id"]))).split(",")[0].split("、")[0]
 	nm.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	nm.add_theme_font_override("font", StudioTheme.font("display"))
 	nm.add_theme_font_size_override("font_size", 16)
 	v.add_child(nm)
 	var rr := Label.new()
-	rr.text = rarity.to_upper()
+	rr.text = I18n.t(rarity)
 	rr.theme_type_variation = "Tag"
 	rr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	rr.add_theme_color_override("font_color", Palette.rarity_text(rarity))
@@ -103,7 +103,7 @@ func setup(r: Dictionary) -> void:
 		shine.color_ramp = g
 		add_child(shine)
 	toast = Label.new()
-	toast.text = "DUPE  +5%"
+	toast.text = I18n.t("dupe_bonus")
 	toast.add_theme_font_override("font", StudioTheme.font("display"))
 	toast.add_theme_font_size_override("font_size", 13)
 	toast.add_theme_color_override("font_color", Palette.HEAT)

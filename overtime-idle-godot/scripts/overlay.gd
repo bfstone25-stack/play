@@ -69,11 +69,15 @@ func para(txt: String, size: int = 15) -> RichTextLabel:
 	return r
 
 
+## Every button in every panel, which is why studio rule 4 is enforced HERE rather than in
+## seventeen call sites. It returns a rent stub (StudioTheme.stub) instead of a rounded
+## rectangle; the signature is unchanged, so no caller had to move.
+##
+## The Theme variation is still taken and still used -- it now picks the stub's TINT rather
+## than a StyleBox, because a shaped button draws its own fill and the StyleBox it no
+## longer reads cannot colour it. "Primary" is still the magenta one.
 func button(txt: String, variation: String = "", on: Callable = Callable()) -> Button:
-	var b := Button.new()
-	b.text = txt
-	if variation != "":
-		b.theme_type_variation = variation
+	var b := StudioTheme.stub(txt, variation)
 	if on.is_valid():
 		b.pressed.connect(on)
 	return b

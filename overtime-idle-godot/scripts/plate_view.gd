@@ -45,7 +45,7 @@ func _show(open_now: bool) -> void:
 	img.texture = Look.art(_id if open_now else _id + "_locked")
 	if img.texture == null:
 		img.texture = Look.art("plate_unearned")
-	cap.text = _caption + ("" if open_now else "  ·  LOCKED · IN THE FULL VERSION")
+	cap.text = _caption + ("" if open_now else I18n.t("locked_caption"))
 	unlock_btn.visible = not open_now
 
 

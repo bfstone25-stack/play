@@ -13,9 +13,9 @@ class Daily extends Overlay:
 	signal start
 	var best: Label
 	func build() -> void:
-		tag("DAILY FLOOR")
-		title("Everyone gets the same pieces today")
-		para("One layout, the same for every landlord today. Score is your best single settle. The pieces are the building's, not your roster's.", 15)
+		tag(I18n.t("daily_tag"))
+		title(I18n.t("daily_title"))
+		para(I18n.t("daily_para"), 15)
 		best = Label.new()
 		best.theme_type_variation = "Value"
 		best.add_theme_color_override("font_color", Palette.GOLD)
@@ -24,13 +24,13 @@ class Daily extends Overlay:
 		row.alignment = BoxContainer.ALIGNMENT_END
 		row.add_theme_constant_override("separation", 8)
 		body.add_child(row)
-		row.add_child(button("CLOSE", "Ghost", close))
-		row.add_child(button("PLAY TODAY'S FLOOR", "Primary", func() -> void:
+		row.add_child(button(I18n.t("close"), "Ghost", close))
+		row.add_child(button(I18n.t("daily_play"), "Primary", func() -> void:
 			start.emit()
 			close()))
 	func on_open() -> void:
 		var b := int(Ticker.B["daily"].get(Ticker.daily_key(), 0))
-		best.text = ("Today's best: %d" % b) if b > 0 else "Not played today."
+		best.text = I18n.f("daily_best", b) if b > 0 else I18n.t("daily_none")
 
 
 class DailyResult extends Overlay:
@@ -39,11 +39,11 @@ class DailyResult extends Overlay:
 	var t2: Label
 	var pct: RollingLabel
 	func build() -> void:
-		tag("DAILY FLOOR · SETTLED")
+		tag(I18n.t("daily_settled"))
 		t1 = RollingLabel.new()
 		t1.theme_type_variation = "Big"
 		t1.add_theme_font_size_override("font_size", 44)
-		t1.suffix = " / shift"
+		t1.suffix = I18n.t("daily_per_shift")
 		t1.set_now(0)
 		body.add_child(t1)
 		t2 = Label.new()
@@ -53,11 +53,11 @@ class DailyResult extends Overlay:
 		pct = RollingLabel.new()
 		pct.theme_type_variation = "Big"
 		pct.add_theme_color_override("font_color", Palette.ACCENT_SOFT)
-		pct.prefix = "You beat "
-		pct.suffix = "% of landlords."
+		pct.prefix = I18n.t("daily_beat")
+		pct.suffix = I18n.t("daily_beat_end")
 		pct.set_now(0)
 		body.add_child(pct)
-		var b := button("BACK TO THE BUILDING", "Primary", func() -> void:
+		var b := button(I18n.t("daily_back"), "Primary", func() -> void:
 			back.emit()
 			close())
 		b.size_flags_horizontal = Control.SIZE_SHRINK_END
@@ -65,7 +65,7 @@ class DailyResult extends Overlay:
 	func show_result(res: Dictionary) -> void:
 		t1.set_now(0)
 		pct.set_now(0)
-		t2.text = "Today's best %d · chain %d" % [int(res["best"]), int(res["chain"])]
+		t2.text = I18n.f("daily_result", [int(res["best"]), int(res["chain"])])
 		open()
 		await get_tree().create_timer(0.2).timeout
 		t1.set_target(float(int(res["shift"])), 0.9)
@@ -75,15 +75,15 @@ class DailyResult extends Overlay:
 class Prestige extends Overlay:
 	signal sign
 	func build() -> void:
-		tag("ACQUISITION")
-		title("A second building")
-		para("Seven days with every floor solvent. Mirei has found a bigger building. You start it empty — the roster comes with you — and every shift in it pays ×1.5.", 15)
+		tag(I18n.t("pres_tag"))
+		title(I18n.t("pres_title"))
+		para(I18n.t("pres_para"), 15)
 		var row := HBoxContainer.new()
 		row.alignment = BoxContainer.ALIGNMENT_END
 		row.add_theme_constant_override("separation", 8)
 		body.add_child(row)
-		row.add_child(button("NOT YET", "Ghost", close))
-		row.add_child(button("SIGN", "Primary", func() -> void:
+		row.add_child(button(I18n.t("pres_no"), "Ghost", close))
+		row.add_child(button(I18n.t("pres_yes"), "Primary", func() -> void:
 			sign.emit()
 			close()))
 
@@ -92,10 +92,10 @@ class Notice extends Overlay:
 	signal understood
 	var msg: RichTextLabel
 	func build() -> void:
-		tag("NOTICE")
-		title("Evicted")
+		tag(I18n.t("notice_tag"))
+		title(I18n.t("notice_title"))
 		msg = para("", 15)
-		var b := button("UNDERSTOOD", "Amber", func() -> void:
+		var b := button(I18n.t("understood"), "Amber", func() -> void:
 			understood.emit()
 			close())
 		b.size_flags_horizontal = Control.SIZE_SHRINK_END
@@ -104,5 +104,5 @@ class Notice extends Overlay:
 		var names: Array = []
 		for n in floors:
 			names.append(str(n))
-		msg.text = "Floor %s did not cover the day's rent. Cleared. The people are back in the roster; the objects are gone." % ", ".join(names)
+		msg.text = I18n.f("notice_body", ", ".join(names))
 		open()

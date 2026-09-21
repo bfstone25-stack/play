@@ -28,14 +28,39 @@ static var _files := {}
 
 static func _file(path: String) -> Font:
 	if not _files.has(path):
-		_files[path] = load(path)
+		var f: FontFile = load(path)
+		# The CJK face hangs off the Latin one rather than replacing it, so a mixed line
+		# ("ゴールド 120", "家賃 +10%") keeps Lilita/Nunito for its Latin runs and picks up
+		# Noto only for the glyphs the Latin face does not have. Set here, once per face,
+		# so every `add_theme_font_override("font", Look.font_display)` in the game inherits
+		# it without being edited -- see scripts/cjk.gd for why that matters.
+		var cjk := Cjk.face()
+		if cjk:
+			f.fallbacks = [cjk]
+		_files[path] = f
 	return _files[path]
+
+
+## Drop every cached face and the built Theme, so the next `font()` / `build()` picks up
+## the new language's CJK fallback. These caches are `static var`s, which survive a scene
+## reload -- without this, switching to Japanese and reloading would rebuild the Theme out
+## of the same Latin-only FontFiles and draw boxes.
+static func reset_fonts() -> void:
+	_fonts.clear()
+	_files.clear()
+	_cache = null
 
 
 static func _weight(path: String, wght: int) -> Font:
 	var fv := FontVariation.new()
 	fv.base_font = _file(path)
 	fv.variation_opentype = {TextServerManager.get_primary_interface().name_to_tag("wght"): wght}
+	# Belt and braces: `fallbacks` is a property of Font, so a FontVariation carries its own
+	# list rather than reading the base font's. Setting it on the base alone left the bold
+	# and black weights -- i.e. every Tag, Value and Button in the game -- without CJK.
+	var cjk := Cjk.face()
+	if cjk:
+		fv.fallbacks = [cjk]
 	return fv
 
 
@@ -306,3 +331,57 @@ static func say_label(size: int = 17) -> RichTextLabel:
 	r.scroll_active = false
 	r.add_theme_font_size_override("normal_font_size", size)
 	return r
+
+
+# ---- the stub ----------------------------------------------------------------------------
+#
+# Studio rule 4: a button's shape comes from the game's world. This game is a landlord
+# collecting rent, so its control is the RENT STUB -- the torn ticket with the perforated
+# edge that a tenant gets back across the desk. `shared/godot/shaped_button.gd` earmarks
+# Shape.TICKET for exactly this title.
+#
+# Every button in the game goes through one of two places (Overlay.button() for the panels,
+# _build_hud/_build_tray for the room), and both now call this, so there is no second
+# treatment to drift away from the first.
+#
+# The tint carries the meaning the Theme variation used to carry, because a shaped button
+# draws its own fill and a StyleBox it no longer uses cannot colour it:
+#
+#   primary / pull  ACCENT       the one thing to press
+#   amber           GOLD         a lit secondary
+#   free            SUCCESS      earned, confirmed, costs nothing
+#   ghost / quiet   PANEL_TOP    a stub printed on the panel it sits on
+#   (default)       GOLD_DEEP    a plain stub
+const STUB_TINT := {
+	"Primary": Palette.ACCENT, "Pull": Palette.ACCENT, "Amber": Palette.GOLD,
+	"Free": Palette.SUCCESS, "Active": Palette.HEAT, "Ghost": Palette.PANEL_TOP,
+}
+
+
+## Turn a plain Button's job into a rent stub. Returns a ShapedButton carrying the same
+## text, the same tooltip and nothing else -- the caller connects `pressed` itself, so this
+## can be used both on a button being built and on one already wired.
+## `compact` skips ShapedButton's 220x56 floor, and every caller that sets its own
+## custom_minimum_size MUST pass it. That floor is sized for a title screen's one big
+## verb; applied to a button a layout has already measured, it silently makes the button
+## wider than the panel holding it, and a Godot container does not clip -- it draws the
+## overflow over whatever is next to it. On this game's 1280x720 room that shipped as
+## three separate bugs from one cause: the HUD tab strip ran off the right edge of the
+## screen (DAILY and PLATES were not on screen at all, so nothing could open them), the
+## tray's REROLL and COMMIT crossed into Mirei's portrait column and sat on top of her
+## speech panel, and the floor strip overhung the FLOORS panel it lives in. All three were
+## in every screenshot taken of this build and none of them is visible in the code.
+static func stub(txt: String, variation: String = "", compact: bool = false) -> ShapedButton:
+	var b := ShapedButton.new()
+	b.compact = compact
+	b.shape = ShapedButton.Shape.TICKET
+	b.tint = STUB_TINT.get(variation, Palette.GOLD_DEEP)
+	# Ink is the paper-dark on every fill except Ghost, whose fill IS the panel: dark ink
+	# on a dark panel is an unreadable button, and an unreadable button is the studio's
+	# most-repeated bug (three dials with no words on them, and counting).
+	b.ink = Palette.GOLD_PALE if variation == "Ghost" else Palette.INK
+	b.label = txt
+	b.text = ""
+	b.add_theme_font_override("font", font("display"))
+	b.add_theme_font_size_override("font_size", 16)
+	return b

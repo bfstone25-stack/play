@@ -39,7 +39,7 @@ func build() -> void:
 	right.add_theme_constant_override("separation", 8)
 	row.add_child(right)
 	var t := Label.new()
-	t.text = "WHILE YOU WERE GONE"
+	t.text = I18n.t("while_gone")
 	t.theme_type_variation = "Tag"
 	t.add_theme_color_override("font_color", Palette.GOLD)
 	right.add_child(t)
@@ -55,9 +55,9 @@ func build() -> void:
 	var stats := HBoxContainer.new()
 	stats.add_theme_constant_override("separation", 10)
 	right.add_child(stats)
-	shifts_l = _stat(stats, "SHIFTS")
-	rent_l = _stat(stats, "RENT")
-	rate_l = _stat(stats, "/ HOUR")
+	shifts_l = _stat(stats, "shifts")
+	rent_l = _stat(stats, "rent")
+	rate_l = _stat(stats, "per_hour")
 	floors_box = VBoxContainer.new()
 	floors_box.add_theme_constant_override("separation", 2)
 	right.add_child(floors_box)
@@ -72,12 +72,12 @@ func build() -> void:
 	var btns := HBoxContainer.new()
 	btns.add_theme_constant_override("separation", 10)
 	right.add_child(btns)
-	collect_btn = button("COLLECT", "Primary", func() -> void:
+	collect_btn = button(I18n.t("collect"), "Primary", func() -> void:
 		collect.emit()
 		close())
 	collect_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	btns.add_child(collect_btn)
-	cap_btn = button("EXTEND TO 24 HOURS · 120 GOLD", "Amber", func() -> void: extend_cap.emit())
+	cap_btn = button(I18n.t("extend_cap"), "Amber", func() -> void: extend_cap.emit())
 	cap_btn.visible = false
 	btns.add_child(cap_btn)
 
@@ -90,13 +90,13 @@ func _stat(parent: Control, label: String) -> RollingLabel:
 	var v := VBoxContainer.new()
 	p.add_child(v)
 	var l := Label.new()
-	l.text = label
+	l.text = I18n.t(label)
 	l.theme_type_variation = "Tag"
 	v.add_child(l)
 	var n := RollingLabel.new()
 	n.theme_type_variation = "Big"
 	n.add_theme_font_size_override("font_size", 34)
-	if label == "RENT":
+	if label == "rent":
 		n.add_theme_color_override("font_color", Palette.GOLD)
 	elif label == "/ HOUR":
 		n.add_theme_color_override("font_color", Palette.HEAT)
@@ -132,23 +132,23 @@ func show_report(rep: Dictionary) -> void:
 	for f in Ticker.B["floors"]:
 		var h := HBoxContainer.new()
 		var a := Label.new()
-		a.text = "Floor %d" % int(f["n"])
+		a.text = I18n.f("floor_n", int(f["n"]))
 		a.theme_type_variation = "Value"
 		a.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var ev: bool = rep["evictions"].has(int(f["n"]))
 		var b := Label.new()
 		b.theme_type_variation = "Value"
-		b.text = "EVICTED" if ev else "+" + str(int(rep["perFloor"].get(str(int(f["n"])), 0)))
+		b.text = I18n.t("evicted_tag") if ev else "+" + str(int(rep["perFloor"].get(str(int(f["n"])), 0)))
 		b.add_theme_font_override("font", Look.font_display)
 		b.add_theme_color_override("font_color", Palette.HEAT if ev else Palette.GOLD)
 		h.add_child(a)
 		h.add_child(b)
 		floors_box.add_child(h)
 	if bool(rep["capped"]):
-		note.text = "The building froze after %d h. Offline shifts stop at the cap — extend it once, for good." % (Economy.offline_cap_ms() / 3600000)
+		note.text = I18n.f("froze_note", Economy.offline_cap_ms() / 3600000)
 		cap_btn.visible = not Economy.is_owned("offline_cap_24h")
 	else:
-		note.text = ("Daily rent taken: %d" % int(rep["rentPaid"])) if int(rep["rentPaid"]) > 0 else ""
+		note.text = I18n.f("rent_taken", int(rep["rentPaid"])) if int(rep["rentPaid"]) > 0 else ""
 		cap_btn.visible = false
 	open()
 	var tw := create_tween()

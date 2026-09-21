@@ -10,12 +10,17 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 boot_splash/bg_color=Color(0.0706, 0.0314, 0.0588, 1)
 
+; I18n is listed BEFORE Look on purpose: Look._ready() builds the Theme, and
+; StudioTheme.font() asks Cjk which language is current so it can hang the right CJK
+; fallback off the Latin faces. Registered after Look, that lookup finds no I18n node,
+; falls back to "en", and the whole game draws Japanese as empty boxes with no error.
 [autoload]
 
 Gate="*res://scripts/gate.gd"
 Economy="*res://scripts/economy.gd"
 Ticker="*res://scripts/ticker.gd"
 Sfx="*res://scripts/sfx.gd"
+I18n="*res://scripts/i18n.gd"
 Look="*res://scripts/look.gd"
 
 [display]

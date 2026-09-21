@@ -7,10 +7,12 @@ signal bought(sku: String)
 signal timeskip_report(rep: Dictionary)
 signal need(what: String)
 
-const OBJECT_HINT := {"coffee": "Triples Dan beside it.", "mute": "Covers staff beside it from Wes's tax.", "printer": "+1 per occupied desk in its row.", "corner": "3, but only in a corner."}
-const RELIC_NAME := {"severance": "Severance", "quiet": "Quiet Floor", "pto": "Unlimited PTO", "glass": "Glass Office", "badge": "Badge Reel", "army": "Intern Army"}
-const RELIC_HINT := {"severance": "Empty desks pay 1 each.", "quiet": "Headphones cover diagonals too.", "pto": "First reroll per floor is free.", "glass": "Meetings no longer tax. Rent +10%.", "badge": "+1 per chain event.", "army": "Priya takes the best settled score beside her."}
-const NAMES := {"coffee": "Coffee machine", "mute": "Headphones", "printer": "Printer", "corner": "Corner desk"}
+## Every display string here is an I18n key (scripts/i18n.gd). The English of record for
+## each one lives in that table's "en" block, so there is exactly one place to edit a line.
+const OBJECT_HINT := {"coffee": "h_coffee", "mute": "h_mute", "printer": "h_printer", "corner": "h_corner"}
+const RELIC_NAME := {"severance": "rl_severance", "quiet": "rl_quiet", "pto": "rl_pto", "glass": "rl_glass", "badge": "rl_badge", "army": "rl_army"}
+const RELIC_HINT := {"severance": "rh_severance", "quiet": "rh_quiet", "pto": "rh_pto", "glass": "rh_glass", "badge": "rh_badge", "army": "rh_army"}
+const NAMES := {"coffee": "n_coffee_shop", "mute": "n_mute", "printer": "n_printer", "corner": "n_corner"}
 
 var gold_tag: Label
 var rent_row: GridContainer
@@ -20,16 +22,16 @@ var gold_row: GridContainer
 func build() -> void:
 	card_width = 980
 	card.custom_minimum_size = Vector2(980, 0)
-	tag("PROCUREMENT · PAID IN RENT")
+	tag(I18n.t("shop_tag"))
 	var head := HBoxContainer.new()
 	body.add_child(head)
 	var t := Label.new()
-	t.text = "Shop"
+	t.text = I18n.t("shop_title")
 	t.theme_type_variation = "Title"
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(t)
-	head.add_child(button("CLOSE", "Ghost", close))
-	para("Objects and relics are bought with rent. Gold buys time, pulls and a shield — never a rule.", 14)
+	head.add_child(button(I18n.t("close"), "Ghost", close))
+	para(I18n.t("shop_para"), 14)
 	gold_tag = Label.new()
 	gold_tag.theme_type_variation = "Value"
 	gold_tag.add_theme_color_override("font_color", Palette.GOLD)
@@ -48,7 +50,7 @@ func build() -> void:
 	rent_row.add_theme_constant_override("v_separation", 8)
 	v.add_child(rent_row)
 	var gt := Label.new()
-	gt.text = "GOLD · TIME, PULLS, A SHIELD.  IAP ROW IS MOCKED IN THIS BUILD."
+	gt.text = I18n.t("shop_gold_row")
 	gt.theme_type_variation = "Tag"
 	v.add_child(gt)
 	gold_row = GridContainer.new()
@@ -104,12 +106,12 @@ func _card(kind: String, name: String, hint: String, price: String, off: bool, o
 
 
 func render() -> void:
-	gold_tag.text = "GOLD %d  ·  bank %d  ·  tickets %d  ·  shields %d" % [Economy.gold(), int(Ticker.B["bank"]), Economy.tickets(), Economy.shields()]
+	gold_tag.text = I18n.f("shop_gold_tag", [Economy.gold(), int(Ticker.B["bank"]), Economy.tickets(), Economy.shields()])
 	clear(rent_row)
 	clear(gold_row)
 	for id in Roster.OBJECTS:
 		var price: int = Ticker.OBJECT_PRICE[id]
-		rent_row.add_child(_card("OBJECT", "%s  ×%d" % [NAMES[id], int(Ticker.B["inventory"].get(id, 0))], OBJECT_HINT[id], "rent %d" % price, false, func() -> void:
+		rent_row.add_child(_card(I18n.t("k_object"), "%s  ×%d" % [I18n.t(str(NAMES[id])), int(Ticker.B["inventory"].get(id, 0))], I18n.t(str(OBJECT_HINT[id])), I18n.f("price_rent", price), false, func() -> void:
 			if Ticker.buy_object(id):
 				Sfx.shop()
 				bought.emit(id)
@@ -118,7 +120,7 @@ func render() -> void:
 				need.emit("rent")))
 	for rid in Landlord.RELICS:
 		var have: bool = Ticker.B["relics"].has(rid)
-		rent_row.add_child(_card("RELIC", RELIC_NAME[rid], RELIC_HINT[rid], "owned" if have else "rent %d" % Ticker.RELIC_PRICE, have, func() -> void:
+		rent_row.add_child(_card(I18n.t("k_relic"), I18n.t(str(RELIC_NAME[rid])), I18n.t(str(RELIC_HINT[rid])), I18n.t("owned") if have else I18n.f("price_rent", Ticker.RELIC_PRICE), have, func() -> void:
 			if Ticker.buy_relic(rid):
 				Sfx.shop()
 				bought.emit(rid)
@@ -128,7 +130,7 @@ func render() -> void:
 	for sku in ["timeskip_4h", "offline_cap_24h", "rent_shield", "pull_1", "pull_10"]:
 		var d: Dictionary = Economy.SKUS[sku]
 		var owned := Economy.is_owned(sku)
-		gold_row.add_child(_card("GOLD SKU", sku, d["en"], "owned" if owned else "Gold %d" % int(d["gold"]), owned, func() -> void:
+		gold_row.add_child(_card(I18n.t("k_sku"), sku, I18n.t("sku_" + sku), I18n.t("owned") if owned else I18n.f("price_gold", int(d["gold"])), owned, func() -> void:
 			var r := Economy.buy(sku)
 			if not r["ok"]:
 				need.emit("gold" if r["why"] == "gold" else str(r["why"]))
@@ -143,7 +145,7 @@ func render() -> void:
 			render()))
 	for sku in ["gold_s", "gold_m", "gold_l"]:
 		var d: Dictionary = Economy.SKUS[sku]
-		gold_row.add_child(_card("IAP (MOCKED)", d["en"], "Prototype: the store call is simulated. On Nutaku the GPHS PUT grants this.", d["iap"], false, func() -> void:
+		gold_row.add_child(_card(I18n.t("k_iap"), I18n.t("sku_" + sku), I18n.t("iap_note"), d["iap"], false, func() -> void:
 			Economy.purchase(sku)
 			Sfx.shop()
 			bought.emit(sku)

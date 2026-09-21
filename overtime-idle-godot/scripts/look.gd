@@ -48,6 +48,20 @@ func _ready() -> void:
 	get_tree().root.theme = theme
 
 
+## Rebuild every face and the Theme after a language change, and put the new Theme on the
+## tree root. `StudioTheme.reset_fonts()` has to have been called first — it drops the
+## static caches the old (Latin-only, or wrong-script) FontFiles live in.
+func rebuild() -> void:
+	font_ui = StudioTheme.font("ui")
+	font_ui_bold = StudioTheme.font("bold")
+	font_display = StudioTheme.font("display")
+	font_italic = StudioTheme.font("italic")
+	font_mono = font_ui
+	font_mono_bold = font_display
+	theme = StudioTheme.build()
+	get_tree().root.theme = theme
+
+
 ## The scenes' StyleBox helper (integer padding); StudioTheme.flat takes a Vector2.
 static func flat(bg: Color, border: Color = Color(0, 0, 0, 0), radius: int = 6, bw: int = 1, pad: int = 10) -> StyleBoxFlat:
 	return StudioTheme.flat(bg, border, radius, bw, Vector2(pad, pad))

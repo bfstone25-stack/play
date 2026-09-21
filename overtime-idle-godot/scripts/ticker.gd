@@ -12,17 +12,19 @@ const OBJECT_PRICE := {"coffee": 12, "mute": 20, "printer": 16, "corner": 16}
 const RELIC_PRICE := 150
 
 ## The skill ladder — the parent's ten predicates, verbatim in meaning (game.js PLATES).
+## "who" and "cond" are I18n keys; "en" is kept as the English of record, so a reader of
+## this file can still see what a plate asks for without opening the translation table.
 const PLATES: Array = [
-	{"slot": "cg_mirei_lease", "who": "Mirei", "en": "Make rent on any floor with a surplus.", "free": true},
-	{"slot": "cg_dan_x", "who": "Dan", "en": "Three coffee->Dan multipliers in one settle."},
-	{"slot": "cg_priya_x", "who": "Priya", "en": "Settle with 3+ staff placed, someone shielded, and no tax from Wes."},
-	{"slot": "cg_mara_corners", "who": "Mara", "en": "Hold all four corners with corner desks."},
-	{"slot": "cg_wes_x", "who": "Wes", "en": "With the Intern Army relic, four copies in one settle."},
-	{"slot": "cg_quiet_floor", "who": "Mirei & Priya", "en": "With Quiet Floor, clear a settle with a six-link chain."},
-	{"slot": "cg_glass_office", "who": "Mirei", "en": "With Glass Office, make rent on floor 6 or later."},
-	{"slot": "cg_vault_x", "who": "Mirei", "en": "Bank 40 or more."},
-	{"slot": "cg_floor9", "who": "The ninth floor", "en": "Reach floor nine."},
-	{"slot": "cg_evicted", "who": "The badge", "en": "Get evicted. It happens."},
+	{"slot": "cg_mirei_lease", "who": "who_mirei", "cond": "p_lease", "en": "Make rent on any floor with a surplus.", "free": true},
+	{"slot": "cg_dan_x", "who": "who_dan", "cond": "p_dan", "en": "Three coffee->Dan multipliers in one settle."},
+	{"slot": "cg_priya_x", "who": "who_priya", "cond": "p_priya", "en": "Settle with 3+ staff placed, someone shielded, and no tax from Wes."},
+	{"slot": "cg_mara_corners", "who": "who_mara", "cond": "p_mara", "en": "Hold all four corners with corner desks."},
+	{"slot": "cg_wes_x", "who": "who_wes", "cond": "p_wes", "en": "With the Intern Army relic, four copies in one settle."},
+	{"slot": "cg_quiet_floor", "who": "who_mirei_priya", "cond": "p_quiet", "en": "With Quiet Floor, clear a settle with a six-link chain."},
+	{"slot": "cg_glass_office", "who": "who_mirei", "cond": "p_glass", "en": "With Glass Office, make rent on floor 6 or later."},
+	{"slot": "cg_vault_x", "who": "who_mirei", "cond": "p_vault", "en": "Bank 40 or more."},
+	{"slot": "cg_floor9", "who": "who_ninth", "cond": "p_floor9", "en": "Reach floor nine."},
+	{"slot": "cg_evicted", "who": "who_badge", "cond": "p_evicted", "en": "Get evicted. It happens."},
 ]
 ## Affection tier plates reuse the parent's installed art by path (game.js AFF_PLATE).
 const AFF_PLATE := {"dan": "cg_dan_x", "priya": "cg_priya_x", "mara": "cg_mara_corners", "wes": "cg_wes_x", "nia": "cg_glass_office", "sol": "cg_quiet_floor"}
@@ -213,7 +215,7 @@ func check_affection() -> void:
 			cabinet["affSeen"][id] = tier
 			save_cabinet()
 			tier_up.emit(id, tier)
-			banner.emit(Roster.by(id).get("name", id) + " · affection " + str(tier))
+			banner.emit(I18n.f("aff_caption", [I18n.t(str(Roster.by(id).get("nameKey", id))), tier]))
 
 
 func aff_plate(id: String, tier: int) -> String:
@@ -466,21 +468,21 @@ func mood_for(f: Dictionary, pay: int) -> String:
 
 func bark(rep: Dictionary) -> String:
 	if rep["evictions"].size() > 0:
-		return "A floor missed rent. I cleared it. The people are fine; the furniture is not."
+		return I18n.t("r_evicted")
 	if int(rep["shielded"]) > 0:
-		return "A floor missed rent and your shield covered it. Once."
+		return I18n.t("r_shielded")
 	if bool(rep["capped"]) and int(rep["shifts"]) > 0:
-		return "It stopped after the cap. I am a landlord, not a charity — extend it if you want it to keep going."
+		return I18n.t("r_capped")
 	if int(rep["shifts"]) == 0:
-		return "Nothing happened, because nothing was placed. An empty floor is not a strategy."
+		return I18n.t("r_nothing")
 	if int(cabinet.get("visits", 0)) <= 1:
-		return "You came back. Most do not. The floor ran without you, which is the whole point."
+		return I18n.t("r_first")
 	var per_shift := float(rep["rent"]) / float(rep["shifts"])
 	if per_shift >= 60:
-		return "The building made more while you were gone than you did while you were here. Do not take it personally."
+		return I18n.t("r_rich")
 	if per_shift >= 12:
-		return "Shifts ran. Rent came in. I did not have to call anyone."
-	return "It ran. Barely. Put something next to something."
+		return I18n.t("r_ok")
+	return I18n.t("r_thin")
 
 
 # ---- dev hooks --------------------------------------------------------------------------------

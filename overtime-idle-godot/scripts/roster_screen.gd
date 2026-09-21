@@ -19,18 +19,18 @@ var _reveal_gen := 0   # a newer reveal retires the coroutine of the one before 
 func build() -> void:
 	card_width = 980
 	card.custom_minimum_size = Vector2(980, 0)
-	tag("STAFF · THE GACHA")
+	tag(I18n.t("roster_tag"))
 	var head := HBoxContainer.new()
 	body.add_child(head)
 	var t := Label.new()
-	t.text = "Roster"
+	t.text = I18n.t("roster_title")
 	t.theme_type_variation = "Title"
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(t)
-	head.add_child(button("PULL ×1 · 30", "Pull", func() -> void: _pull(1)))
-	head.add_child(button("PULL ×10 · 270", "Pull", func() -> void: _pull(10)))
-	head.add_child(button("CLOSE", "Ghost", close))
-	para("Everyone is a rule. Pull new people; a duplicate gives that person +5% per shift, capped at +50%. Pity: an epic within 30 pulls.", 14)
+	head.add_child(button(I18n.t("pull_1_btn"), "Pull", func() -> void: _pull(1)))
+	head.add_child(button(I18n.t("pull_10_btn"), "Pull", func() -> void: _pull(10)))
+	head.add_child(button(I18n.t("close"), "Ghost", close))
+	para(I18n.t("roster_para"), 14)
 	pity = Label.new()
 	pity.theme_type_variation = "Value"
 	pity.add_theme_color_override("font_color", Palette.GOLD)
@@ -63,7 +63,7 @@ func build() -> void:
 	rv.add_theme_constant_override("separation", 18)
 	reveal.add_child(rv)
 	var rt := Label.new()
-	rt.text = "NEW HIRES"
+	rt.text = I18n.t("new_hires")
 	rt.add_theme_font_override("font", Look.font_display)
 	rt.add_theme_font_size_override("font_size", 30)
 	rt.add_theme_color_override("font_color", Palette.GOLD)
@@ -73,7 +73,7 @@ func build() -> void:
 	reveal_row.alignment = BoxContainer.ALIGNMENT_CENTER
 	reveal_row.add_theme_constant_override("separation", 10)
 	rv.add_child(reveal_row)
-	reveal_done = button("TAKE THEM TO THE FLOOR", "Primary", func() -> void:
+	reveal_done = button(I18n.t("take_them"), "Primary", func() -> void:
 		reveal.visible = false
 		render())
 	reveal_done.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
@@ -85,7 +85,7 @@ func on_open() -> void:
 
 
 func render() -> void:
-	pity.text = "Epic guaranteed within %d pulls  ·  Gold %d  ·  tickets %d" % [Roster.PITY - Economy.since_epic(), Economy.gold(), Economy.tickets()]
+	pity.text = I18n.f("pity", [Roster.PITY - Economy.since_epic(), Economy.gold(), Economy.tickets()])
 	clear(grid)
 	for p in Roster.ROSTER:
 		grid.add_child(_staff_card(p))
@@ -108,23 +108,23 @@ func _staff_card(p: Dictionary) -> Control:
 	var nm := VBoxContainer.new()
 	top.add_child(nm)
 	var b := Label.new()
-	b.text = p["name"] if owned else "???"
+	b.text = I18n.t(str(p["nameKey"])) if owned else I18n.t("unknown")
 	b.add_theme_font_override("font", Look.font_display)
 	b.add_theme_font_size_override("font_size", 18)
 	nm.add_child(b)
 	var rar := Label.new()
-	rar.text = str(p["rarity"]).to_upper()
+	rar.text = I18n.t(str(p["rarity"]))
 	rar.theme_type_variation = "Tag"
 	rar.add_theme_color_override("font_color", rarity_color(p["rarity"]))
 	nm.add_child(rar)
 	var rule := Label.new()
-	rule.text = p["rule"]
+	rule.text = I18n.t(str(p["ruleKey"]))
 	rule.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	rule.add_theme_color_override("font_color", Palette.GOLD)
 	rule.add_theme_font_size_override("font_size", 13)
 	v.add_child(rule)
 	var bio := Label.new()
-	bio.text = p["bio"] if owned else "Not pulled yet."
+	bio.text = I18n.t(str(p["bioKey"])) if owned else I18n.t("not_pulled")
 	bio.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	bio.add_theme_color_override("font_color", Palette.MUTED)
 	bio.add_theme_font_size_override("font_size", 12)
@@ -132,7 +132,7 @@ func _staff_card(p: Dictionary) -> Control:
 	var meta := Label.new()
 	meta.theme_type_variation = "Tag"
 	var d := Economy.dupes(p["id"])
-	meta.text = "on floor %d/%d · dupes %d (+%d%%) · shifts %d" % [Ticker.placed_count(p["id"]), int(p["slots"]), d, int(round((Roster.dupe_bonus(d) - 1.0) * 100.0)), Economy.affection(p["id"])]
+	meta.text = I18n.f("on_floor", [Ticker.placed_count(p["id"]), int(p["slots"]), d, int(round((Roster.dupe_bonus(d) - 1.0) * 100.0)), Economy.affection(p["id"])])
 	v.add_child(meta)
 	var aff := HBoxContainer.new()
 	aff.add_theme_constant_override("separation", 4)
@@ -150,7 +150,7 @@ func _staff_card(p: Dictionary) -> Control:
 		if int(x) > Economy.affection(p["id"]):
 			next_t = int(x)
 			break
-	nxt.text = ("%d/%d" % [Economy.affection(p["id"]), next_t]) if next_t > 0 else "MAX"
+	nxt.text = ("%d/%d" % [Economy.affection(p["id"]), next_t]) if next_t > 0 else I18n.t("max")
 	aff.add_child(nxt)
 	return c
 

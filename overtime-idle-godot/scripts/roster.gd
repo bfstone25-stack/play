@@ -3,23 +3,26 @@ class_name Roster
 ## the gacha extends the catalogue. settle_idle() wraps Landlord.settle_grid() and adds one
 ## named event per gacha character on top of the same result shape.
 
+## `nameKey` / `ruleKey` / `bioKey` are I18n keys (scripts/i18n.gd); `name` / `rule` / `bio`
+## are kept as the English of record so this file still reads as the design document it
+## is. Screens go through I18n; nothing displays these three directly.
 const ROSTER: Array = [
-	{"id": "dan", "rarity": "rare", "slots": 2, "age": 41, "launch": true,
+	{"id": "dan", "nameKey": "n_dan", "ruleKey": "rule_dan", "bioKey": "bio_dan", "rarity": "rare", "slots": 2, "age": 41, "launch": true,
 		"name": "Dan, 41", "rule": "Coffee beside him triples. Headphones beside him +2.",
 		"bio": "The last engineer who never goes home. He says the build is green and the trains have stopped, and both are true. The coffee chain runs through him because he is the only one still drinking it at two in the morning."},
-	{"id": "priya", "rarity": "common", "slots": 3, "age": 29, "launch": true,
+	{"id": "priya", "nameKey": "n_priya", "ruleKey": "rule_priya", "bioKey": "bio_priya", "rarity": "common", "slots": 3, "age": 29, "launch": true,
 		"name": "Priya, 29", "rule": "Copies the best base beside her.",
 		"bio": "Facilities contractor, three nights a week. Covers whoever she is standing next to — it is her mechanic and her joke. She has keys she is not supposed to have and a very good reason for each."},
-	{"id": "mara", "rarity": "common", "slots": 1, "age": 34, "launch": true,
+	{"id": "mara", "nameKey": "n_mara", "ruleKey": "rule_mara", "bioKey": "bio_mara", "rarity": "common", "slots": 1, "age": 34, "launch": true,
 		"name": "Mara, 34", "rule": "Every neighbour +1.",
 		"bio": "Night-shift building manager. Keys to every floor, opinions about every tenant. Lifts everyone around her by one because she has already done their job once, quietly, before they got in."},
-	{"id": "wes", "rarity": "rare", "slots": 1, "age": 36, "launch": true,
+	{"id": "wes", "nameKey": "n_wes", "ruleKey": "rule_wes", "bioKey": "bio_wes", "rarity": "rare", "slots": 1, "age": 36, "launch": true,
 		"name": "Wes, 36", "rule": "Taxes unshielded Dan and Priya beside him. Tag: noise.",
 		"bio": "The tenant on 7 who sublets space he does not have. His meetings are a tax on anyone who cannot put headphones on. He is charming for exactly as long as it takes."},
-	{"id": "nia", "rarity": "rare", "slots": 1, "age": 33, "payout": 2, "tag": "staff", "event": "nia-audit",
+	{"id": "nia", "nameKey": "n_nia", "ruleKey": "rule_nia", "bioKey": "bio_nia", "rarity": "rare", "slots": 1, "age": 33, "payout": 2, "tag": "staff", "event": "nia-audit",
 		"name": "Nia, 33", "rule": "Audits Wes: each Wes beside her pays her his 2.",
 		"bio": "Forensic accountant, brought in by Mirei to find out what the tenant on 7 is actually paying for. Sits down next to him on purpose. Wes has never once finished a sentence in her presence."},
-	{"id": "sol", "rarity": "epic", "slots": 1, "age": 38, "payout": 3, "tag": "staff", "event": "sol-late", "floorEvent": "sol-floor",
+	{"id": "sol", "nameKey": "n_sol", "ruleKey": "rule_sol", "bioKey": "bio_sol", "rarity": "epic", "slots": 1, "age": 38, "payout": 3, "tag": "staff", "event": "sol-late", "floorEvent": "sol-floor",
 		"name": "Sol, 38", "rule": "Coffee beside her +2 to her. Floor: every other staff +1.",
 		"bio": "Night editor for a paper that stopped printing. Still files at four. The whole floor works later when she is on it, and nobody can say why, and nobody has asked her to leave."},
 ]

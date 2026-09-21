@@ -129,6 +129,7 @@ var key: TextureRect
 var scrim: TextureRect
 var primary: Button
 var t := 0.0
+var _ready_to_start := false
 var _kept: Array = []                    # held fonts: the web export frees unreferenced ones
 var _built := false
 
@@ -148,10 +149,20 @@ func build() -> void:
 	_built = true
 
 
+## This screen loads its own faces rather than going through the Theme, because the mark
+## and the promise are set in Lilita/Nunito at sizes the Theme does not define. That meant
+## it also missed the CJK fallback StudioTheme hangs off those same files, so the Japanese
+## tagline and the Japanese start button drew as empty boxes while every panel behind them
+## was fine -- the one screen every player sees, and the one the shelf screenshot is of.
+## The fallback is attached here too, and both resources go into `_kept`.
 func _font(path: String) -> Font:
 	var f: Font = load(path)
 	if f == null:
 		return ThemeDB.fallback_font
+	var cjk := Cjk.face()
+	if cjk and f is FontFile:
+		f.fallbacks = [cjk]
+		_kept.append(cjk)
 	_kept.append(f)
 	return f
 
@@ -196,6 +207,7 @@ func _compose() -> void:
 	_menu()
 	_badge()
 	_studio()
+	_lang()
 
 
 func _picture(path: String, rect: Rect2) -> TextureRect:
@@ -291,7 +303,7 @@ func _motes(size: int, speed: float, alpha: float, count: int, tint: Color) -> C
 ## actions, and the compliance line at the foot where it belongs.
 func _menu() -> void:
 	var tag := Label.new()
-	tag.text = "THE BUILDING KEEPS EARNING WHILE YOU ARE AWAY"
+	tag.text = I18n.t("tagline")
 	tag.position = Vector2(ROW_X, TAG_Y)
 	tag.size.x = W - ROW_X * 2
 	tag.add_theme_font_override("font", _font(TEXT))
@@ -306,7 +318,7 @@ func _menu() -> void:
 	# itself has no fill, no border and no corner radius in any state, which is studio
 	# rule 2: a button on a title screen takes its shape from art or it has no shape.
 	primary = Button.new()
-	primary.text = "OPEN THE BUILDING"
+	primary.text = I18n.t("start")
 	primary.position = KEY_RECT.position + Vector2(38, 8)
 	primary.custom_minimum_size = Vector2(KEY_RECT.size.x - 52, KEY_RECT.size.y - 16)
 	primary.size = primary.custom_minimum_size
@@ -322,10 +334,7 @@ func _menu() -> void:
 	_shapeless(primary)
 	primary.mouse_entered.connect(func() -> void: _lift(key, 1.045))
 	primary.mouse_exited.connect(func() -> void: _lift(key, 1.0))
-	primary.pressed.connect(func() -> void:
-		Sfx.unlock()
-		start.emit()
-		close())
+	primary.pressed.connect(_begin)
 	add_child(primary)
 
 	# There is no second row, and that is a decision rather than an omission.
@@ -389,7 +398,7 @@ func _studio() -> void:
 	# compliance line for Nutaku and DLsite, it was in the Intro's body copy, and dropping
 	# it while deleting that paragraph would have been a quiet regression — so it is here,
 	# small, permanent, and on the screen every player sees.
-	s.text = "FLAT 404   ·   Everyone depicted is an adult."
+	s.text = I18n.t("footer")
 	s.position = Vector2(0, H - 30)
 	s.size.x = W - 28
 	s.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
@@ -433,6 +442,9 @@ func on_open() -> void:
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	if primary != null:
 		tw.tween_property(primary, "modulate:a", 1.0, 0.7).from(0.0).set_delay(1.25)
+	# Armed when the key fob has finished arriving -- see _begin() for why the whole screen
+	# is a hit box from that moment on.
+	tw.chain().tween_callback(func() -> void: _ready_to_start = true)
 
 
 func _process(delta: float) -> void:
@@ -448,3 +460,103 @@ func _process(delta: float) -> void:
 	# dip is brightness spent for nothing.
 	var sun := 1.0 + 0.030 * sin(t * 0.43) + 0.012 * sin(t * 1.3)
 	bg.modulate = Color(sun, sun * 0.995, sun * 0.975)
+
+
+# ---------------------------------------------------------------------------------------
+## The language control.
+##
+## It is a rent stub like every other button in this game (studio rule 4), and it is small
+## and in the corner opposite the key: the player who needs it is looking for it, and the
+## player who does not should not have a second lit object competing with OPEN THE
+## BUILDING. It shows the language it will switch TO, in that language's own name -- a
+## picker labelled in a script you cannot read is not a picker.
+##
+## Changing language RELOADS THE SCENE, and that is deliberate rather than lazy. Half this
+## game's text is baked into Labels at build time: the HUD bar, the floor strip, the tray,
+## the six overlays' tags and titles. A `changed` signal that only repainted what it could
+## reach would leave a Japanese title screen in front of an English HUD, which is worse
+## than not offering the language. The building's whole state lives in user:// (Ticker and
+## Economy both save on every change), so a reload costs nothing but this animation, and it
+## lands the player back on the title screen in the language they just picked -- which is
+## where they were standing when they pressed it.
+func _lang() -> void:
+	var b := StudioTheme.stub(I18n.ENDONYM[_next_lang()], "Ghost")
+	b.compact = true
+	b.custom_minimum_size = Vector2(150, 40)
+	b.add_theme_font_size_override("font_size", 14)
+	b.position = Vector2(W - 178, H - 82)
+	b.size = b.custom_minimum_size
+	b.pressed.connect(func() -> void:
+		Sfx.tick()
+		I18n.set_lang(_next_lang())
+		StudioTheme.reset_fonts()
+		# The Theme is the tree root's, so it has to be replaced as well as rebuilt: the
+		# old one holds the old language's FontFiles and nothing else would drop them.
+		Look.rebuild()
+		get_tree().reload_current_scene())
+	add_child(b)
+
+
+func _next_lang() -> String:
+	var l: Array = I18n.LANGS
+	return str(l[(l.find(I18n.lang) + 1) % l.size()])
+
+
+# ---------------------------------------------------------------------------------------
+## Starting the game, from the key fob OR from anywhere on the picture.
+##
+## This is the most expensive thing learned on this title, so it is written down in full.
+##
+## The per-game matrix (ops/play_driver.py + ops/play_matrix.py) came back with EIGHTEEN
+## distinct stages, and all eighteen were this title screen: the parallax swell moves
+## enough pixels between captures to clear the 6% "this is a new stage" threshold, so a
+## game that never started photographed as a game with eighteen stages. Item 1 of
+## STANDARD.md says one tile means broken; it does not say that eighteen tiles of the same
+## tile means broken, and it does. The number was not evidence of anything.
+##
+## The cause was geometry. KEY_RECT sits at (92, 592) — the lower-LEFT corner, because the
+## wordmark and the promise live in the one band of this picture that the sampler does not
+## put the subject in. The driver presses the centre column and the bottom action row,
+## which is where every other game in the studio keeps its verbs, and there is nothing
+## under any of those points here. It pressed the picture eleven times and photographed a
+## woman standing in an office.
+##
+## The fix is not to move the key fob into the middle of her face. A browser player who
+## sees a still picture with a start button on it clicks the PICTURE — that is what a
+## title screen is for — and an idle game that answers a click on the picture with nothing
+## at all has spent its first five seconds teaching the player that the game is not
+## responding. So: the whole screen takes the press, Enter and Space take it too, and the
+## key fob stays exactly where the composition wants it as the thing that SAYS so.
+##
+## The guard is the entrance animation, not a timer someone picked: `_ready_to_start` is
+## armed when on_open()'s tween finishes, which is the moment the key fob has finished
+## arriving. Before that a press would cut off the two seconds of life that TITLE_SCREENS
+## item 3 asks for; after it, every input opens the building.
+func _begin() -> void:
+	if not _open or not _ready_to_start:
+		return
+	_ready_to_start = false
+	Sfx.unlock()
+	start.emit()
+	close()
+
+
+## The mouse and the keyboard arrive by two different doors, and the mouse's is the one
+## that is easy to get wrong. `Overlay._ready()` sets `mouse_filter = STOP` on this
+## Control, so a click on the picture is consumed as GUI input and NEVER reaches
+## `_unhandled_input` -- an any-click handler written only there compiles, runs, and does
+## nothing, which is the same silent-success shape as everything else in this file's
+## history. Clicks are taken in `_gui_input`; keys, which are not routed by mouse_filter,
+## in `_unhandled_input`. The Buttons on this screen (the key fob, the language stub) are
+## children and consume their own presses first, so neither path double-fires.
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed \
+			and event.button_index == MOUSE_BUTTON_LEFT:
+		_begin()
+		accept_event()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo \
+			and event.keycode in [KEY_ENTER, KEY_KP_ENTER, KEY_SPACE]:
+		_begin()

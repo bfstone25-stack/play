@@ -3,13 +3,15 @@ extends VBoxContainer
 ## Mirei on screen: her portrait, swapped by mood (calm/tense/fail/empty — the parent's
 ## moodFrom()), a lamp that warms or cools with it, and her line in a speech panel.
 
+## The six floor lines, as I18n keys (scripts/i18n.gd holds the English, Chinese and
+## Japanese). She is the same character in all three: clipped, never warm.
 const LINES := {
-	"empty": "Empty is not a strategy.",
-	"calm": "Rent is covered. Do not redecorate.",
-	"tense": "Close. The day is long.",
-	"fail": "That floor will not make the day.",
-	"chain": "Who authorized this synergy?",
-	"place": "Put it where it earns.",
+	"empty": "m_empty",
+	"calm": "m_calm",
+	"tense": "m_tense",
+	"fail": "m_fail",
+	"chain": "m_chain",
+	"place": "m_place",
 }
 const MOOD_TINT := {
 	"calm": Color(1.0, 0.96, 0.9),
@@ -74,7 +76,7 @@ func _ready() -> void:
 	name_row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	stack.add_child(name_row)
 	var nm := Label.new()
-	nm.text = "MIREI, 36 · LANDLORD"
+	nm.text = I18n.t("mirei_card")
 	nm.theme_type_variation = "Tag"
 	nm.add_theme_color_override("font_color", Palette.TEXT)
 	nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -104,7 +106,7 @@ func set_mood(m: String, instant: bool = false) -> void:
 		portrait.texture = tex
 	var tint: Color = MOOD_TINT.get(m, Color.WHITE)
 	var lamp_c: Color = MOOD_LAMP.get(m, Palette.GOLD)
-	mood_tag.text = m.to_upper()
+	mood_tag.text = I18n.t("mood_" + m)
 	mood_tag.add_theme_color_override("font_color", lamp_c)
 	if instant:
 		portrait.modulate = tint
@@ -124,7 +126,7 @@ func set_line(key: String, lock: bool = false) -> void:
 	if _line_lock and not lock:
 		return
 	_line_lock = lock
-	speak(LINES.get(key, LINES["empty"]))
+	speak(I18n.t(str(LINES.get(key, LINES["empty"]))))
 
 
 func unlock_line() -> void:
