@@ -51,7 +51,10 @@ const KV_FALLBACK := "res://assets/art/plate_title.webp"
 const PLATE := "res://assets/title/plate.png"
 const FILE := "res://assets/title/file.png"
 const FONT := "res://assets/fonts/WorkSans-Bold.ttf"
-const CJK := "res://assets/fonts/NotoSansCJK-subset.otf"
+## Per-language, for the reason in main.gd's CJK_BY_LANG: the retired shared subset
+## carried no kana at all, so a Japanese title screen drew as boxes.
+const CJK := "res://assets/fonts/NotoSansCJKsc-subset.ttf"
+const CJK_JA := "res://assets/fonts/NotoSansCJKjp-subset.ttf"
 
 const W := 420.0
 const H := 640.0
@@ -119,8 +122,8 @@ func _font() -> Font:
 	var f: Font = load(FONT)
 	if f == null:
 		return ThemeDB.fallback_font
-	if f is FontFile and (f as FontFile).fallbacks.is_empty():
-		var cjk: Font = load(CJK)
+	if f is FontFile:
+		var cjk: Font = load(CJK_JA if Game.lang == "ja" else CJK)
 		if cjk != null:
 			(f as FontFile).fallbacks = [cjk]
 			_kept.append(cjk)
@@ -231,7 +234,10 @@ func _scrim() -> TextureRect:
 	var img := Image.create(1, h, false, Image.FORMAT_RGBA8)
 	for y in h:
 		var t := float(y) / float(h - 1)
-		img.set_pixel(0, y, Color(0.03, 0.02, 0.05, t * t * 0.86))
+		# 0.86 was sized for type set straight on the picture. The only thing left on the
+		# bare frame is the tagline, which carries a 4 px outline of its own, so the rest of
+		# that darkness was being spent on the key visual for nothing.
+		img.set_pixel(0, y, Color(0.03, 0.02, 0.05, t * t * 0.52))
 	var tr := TextureRect.new()
 	tr.texture = ImageTexture.create_from_image(img)
 	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -259,8 +265,17 @@ func _vignette() -> ImageTexture:
 			# the composed frame ~0.06 brightness for nothing, and
 			# ops/adult_forks/UI_DIRECTION.md is explicit that darkness spent on wallpaper
 			# is the failure this studio keeps shipping.
-			var edge: float = maxf(0.0, absf(u.y) - 0.58) * 0.9
-			img.set_pixel(x, y, Color(0.035, 0.027, 0.06, clampf(r * r * 0.56 + edge, 0.0, 0.74)))
+			#
+			# Eased again 2026-09-21, and this time against a measurement rather than by
+			# eye. Composing the key visual with the vignette and the scrim in Python and
+			# running ops/market/shelf_style.py over the result: the 0.56/0.74/0.9 pair cost
+			# the frame 0.043 brightness and 0.046 figure share, on a title that is already
+			# under its bucket's floor for both. The numbers below give that back. What made
+			# it safe is item 4's fix landing first -- the menu rows are opaque manila
+			# folders now and carry their own ground, so the vignette is no longer holding
+			# up anybody's legibility.
+			var edge: float = maxf(0.0, absf(u.y) - 0.58) * 0.5
+			img.set_pixel(x, y, Color(0.035, 0.027, 0.06, clampf(r * r * 0.34 + edge, 0.0, 0.46)))
 	return ImageTexture.create_from_image(img)
 
 
@@ -338,52 +353,57 @@ func compose(tag: String, items: Array, lang_text: String, lang_fn: Callable, hi
 	add_child(h)
 
 
-## One menu entry: a line typed on the file, landing exactly on its printed rule.
+## One menu entry: the case file itself, as a control.
 ##
-## The button has NO shape of its own in the normal state — no fill, no border, no corner
-## radius. Its form is the ruled row already drawn on the card. Hover lights the paper the
-## way a hand moving over a desk lamp does and thickens the magenta rule at the left; press
-## sinks it. That is the whole treatment, and it is the difference between a menu placed in
-## a composition and two pills floating on a photo.
+## What this replaced, and why it had to change. The rows used to have no shape at all —
+## no fill, no border, nothing — because their form was the ruled line printed on the
+## manila card behind them. That was a good design and it stopped being true on
+## 2026-09-20, when Blaze had the card removed: a 380x260 rectangle starting at 55% of the
+## height was covering the key visual, which is the one thing the screen is for. The rows
+## were left standing on the gradient that replaced it, which means the menu became two
+## lines of type on a photograph with no object under them.
+##
+## STANDARD.md item 4 is that a button is not a rectangle and that its shape comes from
+## the game's world. After Six's world has exactly one object in it that the whole game is
+## about: the case file — the leverage, the thing on the desk in the key visual, the thing
+## the player is pressing when he takes the chair. So each row is that folder
+## (ShapedButton.Shape.DOSSIER), manila with an index tab, and on hover the page inside
+## slides out and shows the stamp's red edge. The file opens. Nothing is a pill.
+##
+## The two rows are not the same weight: the lead action is the full folder in manila with
+## the red type, and the second is the same folder held back — smaller, cooler, quieter —
+## so the eye still lands on the one that starts the night.
 func _row(text: String, fn: Callable, index: int, lead: bool) -> Button:
-	var b := Button.new()
-	b.text = text
-	b.position = Vector2(ROW_X, ROW_TOP + index * ROW_H + 2.0)
-	b.custom_minimum_size = Vector2(ROW_W, ROW_H - 5.0)
-	b.size = Vector2(ROW_W, ROW_H - 5.0)
-	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	b.clip_text = false
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.DOSSIER
+	b.compact = true                    # this canvas is 420 wide; the 220x56 floor is for 1280
+	b.label = text
+	b.tint = Color("#cdb78d") if lead else Color("#8d8577")
+	b.ink = Color("#7d1224") if lead else Color("#1b1712")
+	b.position = Vector2(ROW_X, ROW_TOP + index * ROW_H - 2.0)
+	b.custom_minimum_size = Vector2(ROW_W, ROW_H - 4.0)
+	b.size = Vector2(ROW_W, ROW_H - 4.0)
 	b.focus_mode = Control.FOCUS_NONE
 	b.add_theme_font_override("font", _font())
-	b.add_theme_font_size_override("font_size", 20 if lead else 16)
-	# Ink on manila. The lead action takes the stamp's red, the second stays in ink, so the
-	# eye lands on the one that starts the night.
-	b.add_theme_color_override("font_color", Color("#ff5f7a") if lead else Color("#ece2d6"))
-	b.add_theme_color_override("font_hover_color", Color("#ff8497") if lead else Color("#ffffff"))
-	b.add_theme_color_override("font_pressed_color", Color("#d8405c"))
-	b.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.82))
-	b.add_theme_constant_override("outline_size", 5)
-
-	var flat := StyleBoxFlat.new()
-	flat.bg_color = Color(0, 0, 0, 0)
-	flat.content_margin_left = 14
-	flat.content_margin_right = 10
-	flat.content_margin_top = 4
-	flat.content_margin_bottom = 4
-	var hover := flat.duplicate()
-	hover.bg_color = Color(1.0, 0.92, 0.76, 0.16)      # the lamp falling on the page
-	hover.border_color = Color("#ff3d8a")
-	hover.border_width_left = 4
-	var pressed := hover.duplicate()
-	pressed.bg_color = Color(0.25, 0.10, 0.06, 0.20)
-	b.add_theme_stylebox_override("normal", flat)
-	b.add_theme_stylebox_override("hover", hover)
-	b.add_theme_stylebox_override("pressed", pressed)
-	b.add_theme_stylebox_override("focus", flat)
+	b.add_theme_font_size_override("font_size", 17 if lead else 14)
 	b.mouse_entered.connect(_hover)
 	b.pressed.connect(Sfx.tap)
 	b.pressed.connect(fn)
 	return b
+
+
+## Enter / Space takes the chair.
+##
+## main.gd's _press_primary asks for this rather than hunting the tree for a button with a
+## "Primary" theme variation, because these rows deliberately carry no variation — they are
+## folders, not themed pills. See that function's note: the shared play driver pressed
+## twelve times on this screen and hit neither row, and the reason it could not is that
+## until now there was no key that started the game.
+func press_lead() -> void:
+	if rows.is_empty():
+		return
+	Sfx.tap()
+	rows[0].pressed.emit()
 
 
 func _hover() -> void:

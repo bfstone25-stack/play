@@ -4,7 +4,10 @@
 extends Node
 
 const SAVE := "user://aftersix.json"
-const LANGS := ["en", "zh"]
+## en -> zh -> ja -> en. ja is here because this title sells on DLsite, where 507 of the
+## 581 works we scraped are Japanese (STANDARD.md item 7). Every key is translated in
+## BMStrings.JA and the font pack carries a Noto Sans CJK JP subset for it.
+const LANGS := ["en", "zh", "ja"]
 
 var profile: Dictionary = BMCore.new_profile()
 var lang := "en"

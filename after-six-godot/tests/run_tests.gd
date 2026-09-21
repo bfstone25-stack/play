@@ -43,6 +43,7 @@ func _run() -> void:
 	_review_conformance()
 	_review_node()
 	_deploy_and_events()
+	_languages()
 	print("\n%d checks passed, %d failed" % [passed, failed])
 	print("TESTS_OK" if failed == 0 else "TESTS_FAILED")
 	get_tree().quit(0 if failed == 0 else 1)
@@ -749,3 +750,65 @@ func _deploy_and_events() -> void:
 	e2["week"] = 1
 	BMMap.clear(e2, "standup")
 	ok(BMEvents.pick(e2, "corridor1")["id"] != ev["id"] or BMEvents.pick(e2, "corridor2")["id"] != BMEvents.pick(e, "corridor2")["id"], "another week or corridor can show another event")
+
+
+## The languages, and the two ways a translation lies on disk.
+##
+## Both of these were real on 2026-09-21 and neither produced an error of any kind:
+##
+##   * a language offered in LANGS with no table behind it falls through to EN, so the
+##     game "supports" it and shows English -- STANDARD.md item 7, the Floor 13 failure;
+##   * a language whose table is complete but whose FONT has none of its glyphs draws the
+##     whole language as blank boxes. The shipped CJK face was a 342-character subset cut
+##     for the Chinese strings and contained no kana at all, while every string check
+##     passed. That is the studio memory `verification-that-lies`, so the font is checked
+##     here against the actual strings rather than assumed.
+##
+## Both checks were confirmed to FAIL before they were trusted: dropping one key from JA
+## reports the key, and pointing BMStrings.CJK_FONT at the retired subset reports the kana.
+func _languages() -> void:
+	# Every code the chip can cycle to must have a table behind it, or the game "supports"
+	# a language by falling through to English.
+	var tables := {"en": BMStrings.EN, "zh": BMStrings.ZH, "ja": BMStrings.JA}
+	for code in Game.LANGS:
+		ok(tables.has(code) and (tables[code] as Dictionary).size() > 0,
+			"a table exists for every language in LANGS: " + str(code))
+	var missing: Array = []
+	for k in BMStrings.EN:
+		if not BMStrings.JA.has(k):
+			missing.append(k)
+	ok(missing.is_empty(), "every EN key is translated in JA (missing: %s)" % [missing.slice(0, 8)])
+	eq(BMStrings.JA.size(), BMStrings.EN.size(), "JA has exactly the EN key set, no strays")
+
+	# Placeholders are substituted by literal match, so a translated brace prints raw.
+	var bad_ph: Array = []
+	for k in BMStrings.EN:
+		var want := 0
+		for part in str(BMStrings.EN[k]).split("{"):
+			want += 1
+		var got := 0
+		for part in str(BMStrings.JA.get(k, "")).split("{"):
+			got += 1
+		if want != got:
+			bad_ph.append(k)
+	ok(bad_ph.is_empty(), "JA keeps every {placeholder} verbatim (bad: %s)" % [bad_ph.slice(0, 8)])
+
+	# The font actually has the glyphs. A FontFile reports per-character coverage, which is
+	# the only way to tell a real subset from one that silently dropped a script.
+	for code in ["zh", "ja"]:
+		var f: Font = load(BMStrings.font_for(code))
+		ok(f != null, "the %s CJK subset loads" % code)
+		if f == null:
+			continue
+		var bank: Dictionary = BMStrings.ZH if code == "zh" else BMStrings.JA
+		var absent := ""
+		for k in bank:
+			for ch in str(bank[k]):
+				if ch == "\n" or ch == " ":
+					continue
+				if not f.has_char(ch.unicode_at(0)) and not absent.contains(ch):
+					absent += ch
+			if absent.length() > 12:
+				break
+		ok(absent == "", "the %s font draws every character the %s table uses (missing: %s)"
+			% [code, code, absent])

@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
-"""Rebuild assets/fonts/NotoSansCJK-subset.otf: every CJK character the zh/ja strings and
-the rant corpus use (from the HTML spec's strings.js + phrases.js), nothing else. The web
-export has no system font, and the full Noto CJK is 16 MB."""
-import pathlib, subprocess, tempfile
-HERE = pathlib.Path(__file__).resolve().parent.parent
-SRC = HERE.parent / "room-704/game/fonts/NotoSansCJKjp-Regular.otf"
-chars = set()
-for p in ["frontend/rpg/strings.js", "frontend/rpg/phrases.js"]:
-    chars |= set((HERE.parent / "beat-monday" / p).read_text())
-for p in HERE.glob("scripts/*.gd"):
-    chars |= set(p.read_text())
-chars |= set("0123456789×·—…：；！？，。（）「」")
-cjk = "".join(sorted(c for c in chars if ord(c) > 0x2000))
-with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
-    f.write(cjk)
-subprocess.run(["pyftsubset", str(SRC), "--text-file=" + f.name, "--layout-features=*", "--no-hinting",
-                "--output-file=" + str(HERE / "assets/fonts/NotoSansCJK-subset.otf")], check=True)
-print(len(cjk), "glyphs")
+"""Retired. Use the studio tool instead:
+
+    python3 ops/subset_cjk.py play/after-six-godot/scripts/strings.gd \\
+        --out play/after-six-godot/assets/fonts
+
+What this file used to do was cut ONE face -- assets/fonts/NotoSansCJK-subset.otf -- from a
+Japanese Noto and use it for both languages. Two things were wrong with that, and running
+it again would put both of them back:
+
+  * It built the character set from `scripts/*.gd` read as raw text plus the old HTML
+    game's strings.js, so the set was whatever those files happened to contain. When the
+    Japanese table was added, the shipped face held 342 characters and not one kana; the
+    zh strings all rendered, so nothing looked broken anywhere.
+  * One face cannot serve zh and ja. Every regional Noto CJK covers the full unified
+    repertoire, so a shared face throws no error and simply draws the shared kanji in one
+    region's glyph forms -- Chinese forms to a Japanese reader, which no check on disk can
+    see. ops/subset_cjk.py writes one subset per script family from its own regional face
+    for exactly this reason, and main.gd picks between them by Game.lang.
+"""
+raise SystemExit(__doc__)

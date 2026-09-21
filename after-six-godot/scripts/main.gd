@@ -15,7 +15,16 @@
 ## screen leads back to a fresh map.
 extends Control
 
-const CJK := "res://assets/fonts/NotoSansCJK-subset.otf"
+## One subset per script family, NOT one shared CJK face -- ops/subset_cjk.py's own note
+## and the reason it writes three files. Every regional Noto CJK face covers the whole
+## unified repertoire, so a single file renders both languages with no missing glyph and no
+## error of any kind; it also draws the shared kanji in Chinese glyph forms, which a
+## Japanese reader sees at once and which nothing on disk can detect.
+##
+## The face that used to be here was worse than merely regional: NotoSansCJK-subset.otf was
+## cut down to the 342 characters the Chinese table uses and contains no kana whatsoever, so
+## the Japanese table would have drawn as boxes.
+## The paths themselves live in BMStrings.CJK_FONT, beside the tables they draw.
 ## node id -> which plate the brief and the node play on
 ## Every node opens on its own room, at night. These used to name the *day* game's plates
 ## (mon/tue/wed/thu/fri), which the night-tint stopgap had already pushed two stops down —
@@ -39,6 +48,7 @@ var screen := "title"
 var down := false
 var day_started := 0.0
 var lvl_cards: Array = []
+var _greeted := false
 var node_id := ""             # the room the current node belongs to
 var xrun: Dictionary = {}     # a thinking node's pseudo-run (level-ups, the result)
 var triage: Dictionary = {}
@@ -104,15 +114,36 @@ func _ready() -> void:
 ## cache keeps the instances) and the fonts are kept here too.
 var _kept_fonts: Array = []
 
+## Re-run on every language change, not only at boot.
+##
+## The old body bailed out when `fallbacks` was already non-empty, which was right while
+## there was one CJK face for the whole game and wrong the moment there are two: the face
+## installed at boot would stay installed after a switch to Japanese, and ja would render
+## in the Chinese subset -- every kana missing, so boxes. The fallback list is therefore
+## ASSIGNED each time rather than filled in once.
+## Everything a language change has to touch, in one place.
+##
+## It used to be just show_title(), and that was enough only because every other screen is
+## rebuilt from BMStrings each time it is shown. The map is not: MapScreen builds its nine
+## room tiles once and afterwards only re-colours them, so its names stayed in the language
+## the game booted in. A ja capture showed a Japanese title, a Japanese HUD and nine
+## English room names.
+func _relang() -> void:
+	_install_cjk()
+	if map != null:
+		map.relabel()
+
+
 func _install_cjk() -> void:
-	var fb: Font = load(CJK)
+	var path_cjk: String = BMStrings.font_for(Game.lang)
+	var fb: Font = load(path_cjk)
 	if fb == null:
 		return
 	_kept_fonts.append(fb)
 	for path in [StudioTheme.FONT_DISPLAY, StudioTheme.FONT_UI, StudioTheme.FONT_ITALIC]:
 		var f: Font = load(path)
 		_kept_fonts.append(f)
-		if f is FontFile and (f as FontFile).fallbacks.is_empty():
+		if f is FontFile:
 			(f as FontFile).fallbacks = [fb]
 
 
@@ -181,11 +212,44 @@ func _label(text: String, variation: String = "", size: int = 0, color := Color(
 	return l
 
 
+## Every verb in the game, and the one place its shape is decided.
+##
+## STANDARD.md item 4: a button is not a rectangle, and its shape comes from the game's
+## world. as_title.gd had already done this for the two title rows — they are the case
+## file, ShapedButton.Shape.DOSSIER — but every other screen in the night still built a
+## plain Button with a theme variation on it, which is the studio's rounded rectangle with
+## a word in it. So the title was the game's object and the other twenty screens were the
+## template: "GO", "BACK TO THE BUILDING", "NIGHT 2" were all pills.
+##
+## This is the only factory those screens use, so the shape changes in one place and the
+## callers keep passing the variation they always passed. The variation is still set on the
+## node, because it is not only a look — _press_primary finds this screen's forward action
+## by asking for "Primary", and the deploy tray reads "Active" to mean placed.
+##
+## The two weights are the title's two weights, deliberately: the lead action is the full
+## manila folder with the red stamp ink, and everything else is the same folder held back.
+## Amber keeps its own tint because the CG return screen uses it as a third, warmer state
+## and reading it as "secondary" would lose that.
+const _BTN_TINT := {
+	"Primary": Color("#cdb78d"), "Amber": Color("#d0a349"), "Active": Color("#cdb78d"),
+}
+const _BTN_INK := {
+	"Primary": Color("#7d1224"), "Amber": Color("#2a1d08"), "Active": Color("#7d1224"),
+}
+
+
 func _button(text: String, variation: String, fn: Callable, min_w := 220.0) -> Button:
-	var b := Button.new()
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.DOSSIER
+	# The 220x56 floor in ShapedButton is sized for a 1280x720 title screen. This canvas is
+	# 420 wide and these rows sit two and three to a panel, so the game sets its own size.
+	b.compact = true
 	b.text = text
 	b.theme_type_variation = variation
+	b.tint = _BTN_TINT.get(variation, Color("#8d8577"))
+	b.ink = _BTN_INK.get(variation, Color("#1b1712"))
 	b.custom_minimum_size = Vector2(min_w, 46)
+	b.focus_mode = Control.FOCUS_NONE
 	b.pressed.connect(Sfx.tap)
 	b.pressed.connect(fn)
 	return b
@@ -278,7 +342,9 @@ func show_title() -> void:
 		[{"text": t("cont") if _has_progress() else t("start"), "fn": show_map},
 		 {"text": t("locker"), "fn": show_desk}],
 		t("lang"),
-		func(): Game.set_lang("en" if Game.lang == "zh" else "zh"); show_title(),
+		# The chip advertises the language it switches TO, so the label and the step have
+		# to stay in the same order: en shows 中文, zh shows 日本語, ja shows EN.
+		func(): Game.set_lang(Game.LANGS[(Game.LANGS.find(Game.lang) + 1) % Game.LANGS.size()]); _relang(); show_title(),
 		t("drag"))
 	_show("title")
 
@@ -288,6 +354,12 @@ func show_map() -> void:
 	_clear_overlay()
 	_stop_run()
 	BMMap.ensure(Game.profile)
+	# Her greeting belongs to arriving in the building, not to every return to the map --
+	# the map is where this game goes between rooms, so greeting on each visit would make
+	# the same two lines the soundtrack of the whole night.
+	if BMMap.ensure(Game.profile)["cleared"].is_empty() and not _greeted:
+		_greeted = true
+		Sfx.bark("greet")
 	map.visible = true
 	map.refresh(Game.profile)
 	var strip := PanelContainer.new()
@@ -406,6 +478,7 @@ func enter_node(id: String) -> void:
 func start_day(i: int) -> void:
 	_clear_overlay()
 	map.visible = false
+	Sfx.bark("stage")
 	run = BMCore.create_run(Game.profile, i, Time.get_ticks_msec() & 0xffff)
 	run["lang"] = Game.lang
 	# the corridor's consequence: the next run's starting HP
@@ -477,27 +550,55 @@ func show_levelup(r: Dictionary, after: Callable = Callable()) -> void:
 	var ids: Array = r["pending"]
 	for i in ids.size():
 		var id: String = ids[i]
-		var card := PanelContainer.new()
-		card.theme_type_variation = "Card"
+		# Each choice is the case file again (ShapedButton.Shape.DOSSIER), for two separate
+		# reasons that happened to have one fix.
+		#
+		# It was a PanelContainer on the "Card" theme variation: a rounded rectangle, which
+		# is STANDARD.md item 4, and these three are the most-looked-at controls in the game
+		# because the run stops dead until one is pressed.
+		#
+		# And a PanelContainer is not a Button, so _press_primary -- which walks the overlay
+		# looking for one -- found nothing here at all. The re-shot matrix caught that: six
+		# of the twenty-one frames were this screen, unchanged, with the arena clock still
+		# running behind it. Enter, Space and the gamepad did nothing, so a player without a
+		# mouse could reach level 2 and never get past it. Being a real Button fixes the
+		# shape and the dead end in the same line.
+		var card := ShapedButton.new()
+		card.shape = ShapedButton.Shape.DOSSIER
+		card.compact = true
+		card.tint = Color("#cdb78d") if i == 0 else Color("#a8997c")
+		card.ink = Color("#7d1224")
+		card.theme_type_variation = "Primary" if i == 0 else "Button"
+		card.focus_mode = Control.FOCUS_NONE
 		card.custom_minimum_size = Vector2(300, 78)
+		card.size = Vector2(300, 78)
 		card.position = Vector2(60, 250 + i * 96)
 		card.pivot_offset = Vector2(150, 39)
 		var h := HBoxContainer.new()
 		h.add_theme_constant_override("separation", 14)
+		# The folder draws its own face; the icon and the two lines sit on it. They must not
+		# take the press, or the middle of the card would be dead to the mouse.
+		h.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		h.position = Vector2(16, 13)
 		card.add_child(h)
 		h.add_child(IconBox.new(func(ci): Sprites.skill_icon(ci, id, Vector2(26, 26), 44), Vector2(52, 52)))
 		var vb := VBoxContainer.new()
 		vb.add_theme_constant_override("separation", 2)
 		vb.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		var n := _label(t("sk_" + id), "Value", 18, Palette.TEXT)
+		vb.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		# The folder is dark manila now, not the Card panel's near-black, so the two lines
+		# are ink on paper rather than light type on a plate.
+		var n := _label(t("sk_" + id), "Value", 18, Color("#1b1712"))
 		n.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-		var dsc := _label(t("skd_" + id), "Tag", 12, Palette.MUTED)
+		n.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var dsc := _label(t("skd_" + id), "Tag", 12, Color("#5c5142"))
 		dsc.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		dsc.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		vb.add_child(n)
 		vb.add_child(dsc)
 		h.add_child(vb)
 		card.mouse_filter = Control.MOUSE_FILTER_STOP
-		card.gui_input.connect(func(e): if e is InputEventMouseButton and e.pressed: pick_skill(id))
+		card.pressed.connect(func(): Sfx.tap(); pick_skill(id))
 		overlay.add_child(card)
 		lvl_cards.append(card)
 		# the fan: from below, tilted, one after another
@@ -517,6 +618,7 @@ func pick_skill(id: String) -> void:
 		return
 	if BMCore.apply_skill(_lvl_run, id):
 		Game.tel("skill", {"id": id, "level": _lvl_run["level"]})
+		Sfx.bark("unlock")
 		_clear_overlay()
 		if _lvl_after.is_valid():
 			_lvl_after.call()
@@ -537,6 +639,19 @@ func finish() -> void:
 	Game.save()
 	Game.tel_play_end({"day": BMData.DAYS[idx]["id"], "won": won, "kills": run["kills"], "node": node_id}, int(Time.get_ticks_msec() / 1000.0 - day_started))
 	var retry := func(): start_day(idx)
+	# Her voice on the outcome (ops/barks/lines.json, "after-six"). win_big is not "a big
+	# score" in this game -- the night has one shape and the room that ends it is the one
+	# that closes the case, so the CFO's room is the big one and a cleared corridor is not.
+	if won:
+		var done: int = BMMap.ensure(Game.profile)["cleared"].size()
+		if node_id == "deploy":
+			Sfx.bark("win_big")
+		elif done >= 3:
+			Sfx.bark("streak")
+		else:
+			Sfx.bark("win")
+	else:
+		Sfx.bark("fail")
 	_result(won, t("cleared") if won else t("dead"), t("kills", {"n": run["kills"]}), run, retry)
 
 
@@ -964,6 +1079,7 @@ func show_clear() -> void:
 	_plate("as_room_allhands")
 	_dim(0.45)
 	Game.tel("night_clear", {"week": Game.profile["week"]})
+	Sfx.bark("win_big")
 	var v := _panel(140, 340, "Glass")
 	v.add_child(_label(t("cl_title"), "Title", 30, Palette.GOLD))
 	v.add_child(_label(t("cl_body"), "", 15, Palette.TEXT, true))
@@ -1269,9 +1385,14 @@ func _bridge(cmd: Dictionary) -> Dictionary:
 		"state":
 			pass
 		"diag":
-			var fb: Font = load(CJK)
+			# 0x522B is 别, a zh character; 0x3042 is あ, which only the JP subset has.
+			# Reporting both per language is the point -- one shared face answering yes to
+			# everything is exactly the state this diagnostic failed to reveal.
+			var fb: Font = load(BMStrings.font_for(Game.lang))
 			out["cjk_loaded"] = fb != null
-			out["cjk_has"] = fb.has_char(0x522B) if fb else false
+			out["cjk_font"] = BMStrings.font_for(Game.lang)
+			out["cjk_has_zh"] = fb.has_char(0x522B) if fb else false
+			out["cjk_has_kana"] = fb.has_char(0x3042) if fb else false
 			out["display_has"] = StudioTheme.font("display").has_char(0x522B)
 			out["ui_has"] = StudioTheme.font("ui").has_char(0x522B)
 			out["sprites"] = {}
@@ -1285,6 +1406,7 @@ func _bridge(cmd: Dictionary) -> Dictionary:
 			show_title()
 		"lang":
 			Game.set_lang(str(cmd.get("code", "en")))
+			_relang()
 			if screen == "title":
 				show_title()
 			elif screen == "map":
@@ -1430,9 +1552,72 @@ func _bridge(cmd: Dictionary) -> Dictionary:
 	return out
 
 
+## Enter / Space presses whatever this screen's forward action is.
+##
+## 2026-09-21, and it is a bug report rather than a feature. `ops/play_driver.py` walks
+## every one of the 26 builds with one fixed ladder of clicks and keys, and After Six came
+## back with TWO distinct stages out of twelve frames: the matrix said the game was broken
+## to an ending. It was not. The flow is whole -- driven by hand at the right pixels it
+## goes title -> night map -> room -> brief without a stumble. What happened is that the
+## title's menu is two 44 px ruled rows in the middle of a PORTRAIT canvas letterboxed
+## inside a 1280x720 viewport, and not one of the driver's twelve steps landed on either
+## row: its centre-column clicks fell in the gaps above and below them, and its far-column
+## clicks (900, 400) and (400, 300) landed on the browser's black pillars, outside the game
+## entirely. Twelve presses, zero buttons.
+##
+## The tempting fix is to widen the driver's ladder. That is the wrong file: the driver is
+## shared by 26 games and tuning it to this one's pixel layout only moves the coincidence
+## around. The honest reading is that a build which can only be started by hitting one of
+## two thin rows offers no keyboard way in at all -- which is a real defect for a real
+## player on a keyboard, not merely for a robot. `_press_primary` already existed and did
+## exactly the right thing; it was reachable only from the JS bridge's "go" command, so
+## nothing a person could press ever called it.
+##
+## So: ui_accept (Enter, Space, gamepad A) presses this screen's forward action, on every
+## screen. The driver's `space` and `enter` steps now advance the game because a player's
+## would.
+func _unhandled_input(e: InputEvent) -> void:
+	if e.is_action_pressed("ui_accept"):
+		_press_primary()
+		get_viewport().set_input_as_handled()
+
+
 func _press_primary() -> void:
+	# The title screen's menu is not built from the "Primary" variation -- its rows are
+	# transparent Buttons whose form is the ruled line they sit on (as_title.gd). It knows
+	# which of its rows leads, so it is asked rather than guessed at.
+	for c in _all_controls(overlay):
+		if c is AsTitle:
+			(c as AsTitle).press_lead()
+			return
+	# The map is the other screen whose forward action cannot be found by walking the tree.
+	# Its "buttons" are the rooms themselves, in NODES order, and the first of those is the
+	# lobby -- a room with one BACK button in it. So the generic "press the first visible
+	# button" rule below sent Enter into the lobby and Enter back out of it, forever: the
+	# re-shot matrix was title, map, lobby, map, and then sixteen frames of that same pair.
+	#
+	# The night's forward action is the next room that is open and not yet cleared, which
+	# is what a player means by Enter here. It is routed through the ordinary tap handler
+	# rather than jumping straight to show_node, so the walk down the building still plays
+	# and the keyboard path is the same path the mouse takes -- except when she is already
+	# standing there, where BMMap.path returns [at] and the tap handler would walk nowhere.
+	if screen == "map" and not map.walking:
+		var nxt := BMMap.next_room(Game.profile)
+		if nxt != "":
+			if BMMap.at(Game.profile) == nxt:
+				show_node(nxt)
+			else:
+				_on_map_tap(nxt)
+			return
 	for c in _all_controls(overlay):
 		if c is Button and c.theme_type_variation == "Primary" and not c.disabled:
+			c.pressed.emit()
+			return
+	# Screens whose only way on is a plain button (the room brief's "back to the building"
+	# is a Ghost, not a Primary) still have to answer the key, or the flow stops dead one
+	# screen after the title and the matrix is no better than it was.
+	for c in _all_controls(overlay):
+		if c is Button and c.visible and not c.disabled:
 			c.pressed.emit()
 			return
 

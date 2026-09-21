@@ -157,6 +157,29 @@ static func at(profile: Dictionary) -> String:
 	return str(ensure(profile).get("at", START))
 
 
+## The room the night should go to next: the first unlocked room that has not been
+## cleared and that actually runs something.
+##
+## ALWAYS_OPEN types are skipped deliberately. The lobby is "where the night starts" and
+## its brief has one button on it, BACK — it is a place, not a stage. It is also the first
+## entry in NODES and therefore the first Button in the map's tree, which is how the
+## keyboard forward action used to land on it: pressing Enter on the map opened the lobby,
+## pressing Enter again went back to the map, and a player on a keyboard could ride that
+## loop forever without ever entering a room. The matrix showed exactly that — title, map,
+## lobby, map, and then sixteen more frames of the same two screens.
+##
+## Returns "" when the night has nothing left, which is the caller's cue to leave the key
+## alone rather than invent a destination.
+static func next_room(profile: Dictionary) -> String:
+	for n in NODES:
+		var id: String = n["id"]
+		if ALWAYS_OPEN.has(str(n["type"])):
+			continue
+		if unlocked(profile, id) and not is_cleared(profile, id):
+			return id
+	return ""
+
+
 ## Nodes the week needs before Friday: everything with a day, in day order, for the
 ## screens that list what is left.
 static func day_nodes() -> Array:

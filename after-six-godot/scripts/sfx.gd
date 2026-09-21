@@ -17,8 +17,7 @@ func _ready() -> void:
 		p.bus = "Master"
 		add_child(p)
 		_players.append(p)
-
-
+	_bark_ready()
 func _wav(samples: PackedFloat32Array) -> AudioStreamWAV:
 	var s := AudioStreamWAV.new()
 	s.format = AudioStreamWAV.FORMAT_16_BITS
@@ -167,3 +166,61 @@ func hover() -> void:
 	if _cue("hover", 0.08):
 		return
 	_play(_tone(1560.0, "sine", 0.022, 0.10), 0.0, -18.0)
+
+# --- barks -------------------------------------------------------------------------------
+#
+# The spoken lines (ops/barks/lines.json, rendered by ops/barks/render_barks.py). They ride
+# the same mute switch as every other cue here, because a player who muted the game meant
+# all of it, and they get their own AudioStreamPlayer so a bark never steals a cue's voice.
+#
+# Three rules, each one the reason a bark set stops being charming:
+#   * rotate, and never repeat back to back;
+#   * never overlap a bark with a bark -- the second is DROPPED, not queued, because by
+#     the time the first ends the moment it belonged to is gone;
+#   * one voice per game, so the title has an identity.
+const BARKS := "res://assets/voice/"
+
+var _bark: AudioStreamPlayer
+var _bark_map: Dictionary = {}
+var _bark_last: Dictionary = {}
+
+
+func _bark_ready() -> void:
+	_bark = AudioStreamPlayer.new()
+	_bark.bus = "Master"
+	_bark.volume_db = 2.0
+	add_child(_bark)
+	var f := FileAccess.open(BARKS + "barks.json", FileAccess.READ)
+	if f == null:
+		return                      # no barks installed in this build; stay silent
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if parsed is Dictionary:
+		_bark_map = parsed
+
+
+## Say one line from `slot`. False when nothing was said, so a caller can fall back.
+func bark(slot: String) -> bool:
+	if _bark == null or not _bark_map.has(slot):
+		return false
+	if _muted():
+		return false
+	if _bark.playing:
+		return false                # one voice at a time; see the header
+	var files: Array = _bark_map[slot]
+	if files.is_empty():
+		return false
+	var i := randi() % files.size()
+	if files.size() > 1 and i == int(_bark_last.get(slot, -1)):
+		i = (i + 1) % files.size()
+	_bark_last[slot] = i
+	var path: String = BARKS + str(files[i])
+	if not ResourceLoader.exists(path):
+		return false
+	_bark.stream = load(path)
+	_bark.play()
+	return true
+
+
+## Whatever this game calls "the player turned sound off".
+func _muted() -> bool:
+	return muted

@@ -134,6 +134,7 @@ var at := BMMap.START
 var clock := 0.0
 var face := 1.0
 var _tween: Tween
+var floor_labels: Array = []
 var _fonts_font: Font
 var _shell: Texture2D
 
@@ -297,6 +298,7 @@ func _ready() -> void:
 		l.position = Vector2(MASS_L + 3, floor_y(f) + 7)
 		l.light_mask = 0
 		labels.add_child(l)
+		floor_labels.append({"label": l, "floor": f})
 
 
 class IconBoxVec extends Control:
@@ -371,6 +373,12 @@ func _marker(n: Dictionary) -> void:
 	labels.add_child(who_panel)
 	var tag := Label.new()
 	tag.theme_type_variation = "Tag"
+	# The font is named rather than inherited from the "Tag" variation. That variation
+	# resolves to a FontVariation built once when the Theme was made, and main.gd installs
+	# the CJK fallback on the FontFile underneath it; the tags on this screen came out as
+	# tofu boxes in both zh and ja while every other Tag label in the game rendered. Naming
+	# the face that _install_cjk actually touches removes the question.
+	tag.add_theme_font_override("font", _fonts_font)
 	tag.add_theme_font_size_override("font_size", 8)
 	tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tag.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -411,6 +419,32 @@ func _marker(n: Dictionary) -> void:
 	markers[id] = {"win": win, "reveal": reveal, "floor": floor_face, "name": name_l,
 		"plaque": plaque, "tag": tag, "who": who_panel}
 	lights[id] = light
+
+
+## Re-read every string on this screen, after the language changed.
+##
+## The tiles are built once in _ready and then only re-coloured by refresh(), so the room
+## names -- set from BMStrings at build time and never touched again -- kept whatever
+## language the game started in. Switching to Japanese gave a map whose header, HUD and
+## hint line were Japanese and whose nine room names were all still English, which is
+## STANDARD.md item 7's "never offer a language you did not actually translate" arriving
+## through the back door: the table was complete and the screen was not.
+##
+## The fonts are re-applied at the same time because the face that can draw the text is a
+## property of the language too -- main.gd points the fallback at a different subset per
+## language, and a label built under the previous one keeps its old shaping.
+func relabel() -> void:
+	_fonts_font = StudioTheme.font("display")
+	for id in markers:
+		var m: Dictionary = markers[id]
+		m["name"].add_theme_font_override("font", _fonts_font)
+		m["name"].text = BMStrings.t("node_" + str(id))
+		m["tag"].add_theme_font_override("font", _fonts_font)
+		m["tag"].text = BMStrings.t("who_" + str(id))
+	for e in floor_labels:
+		var l: Label = e["label"]
+		l.add_theme_font_override("font", _fonts_font)
+		l.text = BMStrings.t("floor_%d" % int(e["floor"]))
 
 
 ## Re-read the profile: which rooms are lit, cleared, dark; where the character stands.
