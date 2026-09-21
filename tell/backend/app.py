@@ -753,6 +753,29 @@ def _chat(system, messages, max_tokens=160, temperature=0.45):
                                  headers={"Content-Type": "application/json"})
     return json.loads(urllib.request.urlopen(req, timeout=120).read())["choices"][0]["message"]["content"].strip()
 
+def _chat_or_none(tag, system, messages):
+    """Ask the model, and return "" instead of raising when it is not there.
+
+    The model is remote and shared, so an outage is a normal event and has to
+    degrade rather than 500. On 2026-09-16 at 01:44 it was unavailable for two
+    consecutive turns (distill_log, fallback_reason=timeline_model_unavailable).
+    Those two landed on the timeline branch, which caught the exception, so the
+    player got the authored statement and then the pressed-ladder line - the
+    routing, the boundary replies and the repeat guard all behaved correctly.
+    The general branch below had no such guard, so the same outage would have
+    raised straight out of ask(), which has no handler, and returned HTTP 500 to
+    any player who happened to ask about method or evidence in that window.
+    Both paths now go through here so they cannot drift apart again.
+    """
+    try:
+        return _chat(system, messages)
+    except Exception as exc:
+        # The reason never reached the database, only stdout, so a repeat was
+        # indistinguishable from any other. At least name the failure.
+        print(f"[{tag}] {type(exc).__name__}: {exc}")
+        return ""
+
+
 def _claim_tell_gpu(wait=False):
     """Refresh TELL's GPU lease; the shared scheduler may pack two fitting models."""
     try:
@@ -898,11 +921,8 @@ def ask(r: AskReq):
         # player is re-shown a line already on screen and learns nothing. Let the
         # character elaborate under the same verifier, and keep the authored
         # statement as the fallback rather than the default.
-        candidate = ""
-        try:
-            candidate = _chat(sysp + _TIMELINE_NOTE, r.history[-8:] + [{"role": "user", "content": msg}])
-        except Exception as exc:
-            print("[ask-timeline]", exc)
+        candidate = _chat_or_none("ask-timeline", sysp + _TIMELINE_NOTE,
+                                  r.history[-8:] + [{"role": "user", "content": msg}])
         valid, verifier = (_verify_candidate(candidate, c, r.suspect, intent, allow_tell)
                            if candidate else (False, "timeline_model_unavailable"))
         if valid and candidate not in delivered:
@@ -911,8 +931,10 @@ def ask(r: AskReq):
             fallback_reason = verifier if not valid else "timeline_repeat"
             reply, verifier = _opening(c, r.suspect, r.lang), "authored_timeline"
     else:
-        candidate = _chat(sysp, r.history[-8:] + [{"role": "user", "content": msg}])
-        valid, verifier = _verify_candidate(candidate, c, r.suspect, intent, allow_tell)
+        candidate = _chat_or_none("ask-llm", sysp,
+                                  r.history[-8:] + [{"role": "user", "content": msg}])
+        valid, verifier = (_verify_candidate(candidate, c, r.suspect, intent, allow_tell)
+                           if candidate else (False, "model_unavailable"))
         if valid:
             reply = candidate
         elif intent == "timeline":
