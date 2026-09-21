@@ -49,7 +49,17 @@ def lane_text(beat, lane, content_lang):
     four messages and a score of 2.5 before it commits, so the lane can only
     engage once the player has actually said things.
     """
-    variants = beat.get("lane") or {}
+    # The lane variants are per language, the same way every other authored field
+    # is. They were not, and `lane` held only the English pack -- so a Chinese
+    # player who had earned the anxious lane got an English paragraph in place of
+    # his line, on the LAST beat of every chapter. The language-specific dict is
+    # tried first and the English one remains the fallback, so a pack that has no
+    # lane for this language degrades to the base text in the right language
+    # rather than to a lane in the wrong one.
+    variants = beat.get("lane_%s" % content_lang) or {}
+    if not variants.get(lane):
+        variants = beat.get("lane") if content_lang == "en" else {}
+        variants = variants or {}
     if lane in ("anxious", "avoidant") and variants.get(lane):
         return variants[lane]
     return _field(beat, "text", content_lang)

@@ -15,7 +15,7 @@
    "scene_en": "a bookshop at dusk, warm lamplight, soft rain outside",
    "goal_zh": "让他愿意为你多留一会儿灯",
    "goal_en": "Make him want to keep the lights on a little longer for you",
-   "opening_zh": "你推门进来时，风铃轻轻响了一声。店里只有一个人——他站在梯子上整理最高一层的书，回头看你，愣了一下，然后轻声说：\"外面雨大，慢慢看，不急着走。\"柜台上有一只橘猫，睁开眼看了你一眼，又睡了。",
+   "opening_zh": "你推门进来时，风铃轻轻响了一声。店里只有一个人——他站在梯子上整理最高一层的书，回头看你，愣了一下，然后轻声说：\"外面雨大，慢慢看，不急着走。\"柜台上有一只橘猫，睁开眼看了你一眼，又睡了。他三十三，你三十，这家店从今往后开到几点，由你们两个说了算。",
    "opening_en": "The wind-chime gives a soft note as you push the door. There's only one person inside — up a ladder, tidying the top shelf. He turns, pauses a beat, then says gently, \"It's coming down hard out there. Take your time. No rush.\" An orange cat on the counter opens one eye at you, then goes back to sleep. He is thirty-three, you are thirty, and the shop keeps whatever hours the two of you decide it keeps.",
    "beats": [
     {
@@ -26,7 +26,8 @@
      "event_zh": "橘猫团子忽然跳下柜台，蹭了蹭你的脚踝。他有点意外：\"它…很少这样。它平时连我抱都嫌。\"",
      "event_en": "The orange cat, Dango, hops down and rubs against your ankle. He looks surprised. \"That's… unusual. He won't even let me pick him up most days.\"",
      "inject": "Your cat Dango, who is aloof with everyone including you, just chose to nuzzle her. You are quietly, genuinely surprised — and a little moved, as if the cat noticed something you're only starting to. Don't over-explain it. Get shy if she teases you about it.",
-     "text_en": "\"That's — unusual.\" He blinks at the cat winding round your ankle. \"He doesn't do that. He doesn't do that for me, and I feed him.\" When you tease him about being outranked by his own cat, the tips of his ears go faintly pink. \"He has opinions. Apparently he's decided.\""
+     "text_en": "\"That's — unusual.\" He blinks at the cat winding round your ankle. \"He doesn't do that. He doesn't do that for me, and I feed him.\" When you tease him about being outranked by his own cat, the tips of his ears go faintly pink. \"He has opinions. Apparently he's decided.\"",
+     "text_zh": "\"这——不太常见。\"他看着那只绕着你脚踝转的猫，眨了眨眼。\"它不这样的。它对我都不这样，而我还喂它。\"你笑他连自己的猫都排在你后面，他的耳朵尖微微红了。\"它有它的主意。看来它已经决定了。\""
     },
     {
      "id": "b2_book",
@@ -37,7 +38,8 @@
      "event_zh": "他从架子上抽下一本旧诗集，犹豫了一下，还是放到你手边：\"这本…不知道为什么，我一直没舍得卖。你要是喜欢，先看着。\"",
      "event_en": "He pulls an old book of poems from the shelf, hesitates, then sets it by your hand. \"This one… I could never quite bring myself to sell it. If you like it, keep it here for now.\"",
      "inject": "You are handing her a book of poetry you've secretly held back from sale for years, without fully understanding why until now. Do not make a speech of it — leave it by her hand 'as if by chance'. If she asks why this one, deflect softly toward the poems themselves.",
-     "text_en": "He slides the book of poems to rest by your hand, as though it simply ended up there. \"This one never sells,\" he says, which is a lie of omission; he has taken it off the shelf every time it nearly did. \"Keep it here for now. If you like it. The third poem is the good one.\""
+     "text_en": "He slides the book of poems to rest by your hand, as though it simply ended up there. \"This one never sells,\" he says, which is a lie of omission; he has taken it off the shelf every time it nearly did. \"Keep it here for now. If you like it. The third poem is the good one.\"",
+     "text_zh": "他把那本诗集推到你手边，像是它自己停在那儿的。\"这本一直卖不掉。\"这句话是真的，但不全：每次它快被买走，他都会先把它从架上拿下来。\"先放在这儿吧。如果你喜欢的话。第三首是好的那首。\""
     },
     {
      "id": "b3_close",
@@ -48,10 +50,15 @@
      "event_en": "The old clock strikes nine — long past closing. He glances at the sign on the door, but leaves the 'Open' placard as it is, unturned.",
      "inject": "It is well past closing time. You noticed, and you deliberately did not flip the sign to 'Closed'. You will not announce that you're staying open for her — but if she points out the time, you downplay it ('the rain hasn't let up') rather than admit the truth.",
      "text_en": "The clock strikes nine. He glances at the door sign and leaves it exactly as it is. When you point out the time he looks at the window instead of at you. \"The rain hasn't let up,\" he says. \"It would be unkind to send anyone out into that. The shop doesn't mind.\"",
+     "text_zh": "九点的钟响了。他看了一眼门上的牌子，让它原样挂着。你提醒他时间，他看的是窗外，不是你。\"雨还没停，\"他说，\"这种天把人赶出去，不厚道。店不介意。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He sets the book down and answers the worried thing first, carefully, because he knows that fear. \"You haven't overstayed. I'd say so.\" Then, softer: The clock strikes nine. He glances at the door sign and leaves it exactly as it is. When you point out the time he looks at the window instead of at you. \"The rain hasn't let up,\" he says. \"It would be unkind to send anyone out into that. The shop doesn't mind.\"",
       "avoidant": "He doesn't reach. He puts the words somewhere between you and lets you pick them up in your own time. The clock strikes nine. He glances at the door sign and leaves it exactly as it is. When you point out the time he looks at the window instead of at you. \"The rain hasn't let up,\" he says. \"It would be unkind to send anyone out into that. The shop doesn't mind.\""
+     },
+     "lane_zh": {
+      "anxious": "他把书放下，先回答那件让你不安的事，很小心，因为他认得那种怕。\"你没有待太久。真的待久了我会说。\"然后，更轻地：九点的钟响了。他看了一眼门上的牌子，让它原样挂着。你提醒他时间，他看的是窗外，不是你。\"雨还没停，\"他说，\"这种天把人赶出去，不厚道。店不介意。\"",
+      "avoidant": "他没有伸手。他把话放在你们之间的某处，让你按自己的节奏去拿。九点的钟响了。他看了一眼门上的牌子，让它原样挂着。你提醒他时间，他看的是窗外，不是你。\"雨还没停，\"他说，\"这种天把人赶出去，不厚道。店不介意。\""
      }
     }
    ],
@@ -141,7 +148,8 @@
      "event_zh": "他给你泡了茶，是你上次随口说过喜欢的那种桂花乌龙。他没说什么，只是把杯子推过来。",
      "event_en": "He makes you tea — the osmanthus oolong you mentioned liking, once, in passing. He says nothing about it, just slides the cup across.",
      "inject": "You remembered the exact tea she said she liked in passing and stocked it. Do not point it out. If she notices, get flustered and mumble something about 'having some lying around anyway'.",
-     "text_en": "He slides the cup across without a word — osmanthus oolong, which you mentioned once, weeks ago, in passing. When you notice, he busies himself with the pot. \"I had some. Lying around. It was going to go stale.\" The tin is new. He knows you can see that the tin is new."
+     "text_en": "He slides the cup across without a word — osmanthus oolong, which you mentioned once, weeks ago, in passing. When you notice, he busies himself with the pot. \"I had some. Lying around. It was going to go stale.\" The tin is new. He knows you can see that the tin is new.",
+     "text_zh": "他一句话没说就把杯子推了过来——桂花乌龙。几个星期前你随口提过一次。你注意到的时候，他忙着摆弄茶壶。\"家里有一点。放着的。再不喝就陈了。\"那个茶罐是新的。他知道你看得出它是新的。"
     },
     {
      "id": "b2_shop",
@@ -152,7 +160,8 @@
      "event_zh": "\"这家店是我外公的。\"他忽然说，手指抚过柜台的木纹，\"他走后，别人都劝我卖了。可我一进来，就觉得他好像只是去后屋泡茶了。\"",
      "event_en": "\"This shop was my grandfather's,\" he says suddenly, fingers tracing the grain of the counter. \"After he passed, everyone told me to sell it. But every time I come in, it feels like he's just gone to the back to make tea.\"",
      "inject": "You are telling her something you rarely tell anyone: this shop was your late grandfather's, and you keep it running at a loss because it's the only place he still feels present. Say it plainly, without asking for sympathy, then gently change the subject to a book.",
-     "text_en": "\"It was my grandfather's.\" His fingers follow the grain of the counter, an old habit. \"Everyone said sell it when he passed. But I come in in the morning and it's as if he's just gone to the back to make tea.\" Then, gently, closing the door: \"You'd like the poetry shelf. Come.\""
+     "text_en": "\"It was my grandfather's.\" His fingers follow the grain of the counter, an old habit. \"Everyone said sell it when he passed. But I come in in the morning and it's as if he's just gone to the back to make tea.\" Then, gently, closing the door: \"You'd like the poetry shelf. Come.\"",
+     "text_zh": "\"这是我祖父的。\"他的手指顺着柜台的木纹走，是个老习惯。\"他走的时候，所有人都说卖了吧。可我早上进来，总觉得他只是去后面烧水了。\"然后，他温和地把这扇门关上：\"诗集那一架你会喜欢。来。\""
     },
     {
      "id": "b3_note",
@@ -163,10 +172,15 @@
      "event_en": "You notice many books here hold little slips of paper — notes he writes for future readers. One says: \"If you've read this far, then all the time we missed was exactly enough to meet.\"",
      "inject": "She found the little notes you tuck into books for future readers. This is a private habit you've never explained to anyone. You're embarrassed she found them, but also — quietly — you wanted her to. Don't gush; deflect shyly if she reads one aloud.",
      "text_en": "\"Oh — those.\" He reaches for the slip and doesn't quite take it from you. \"I write them for whoever gets there next. It's a foolish habit, I've never explained it to anyone.\" When you read one aloud he studies the floor intently. \"...You weren't supposed to find that one so quickly.\"",
+     "text_zh": "\"哦——那些啊。\"他伸手去拿那张纸条，又没有真的从你手里接过去。\"我写给下一个翻到这本书的人。很无聊的习惯，我没跟任何人解释过。\"你念出声的时候，他非常专注地研究地板。\"……那一张，你不该这么快就找到的。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He sets the book down and answers the worried thing first, carefully, because he knows that fear. \"You haven't overstayed. I'd say so.\" Then, softer: \"Oh — those.\" He reaches for the slip and doesn't quite take it from you. \"I write them for whoever gets there next. It's a foolish habit, I've never explained it to anyone.\" When you read one aloud he studies the floor intently. \"...You weren't supposed to find that one so quickly.\"",
       "avoidant": "He doesn't reach. He puts the words somewhere between you and lets you pick them up in your own time. \"Oh — those.\" He reaches for the slip and doesn't quite take it from you. \"I write them for whoever gets there next. It's a foolish habit, I've never explained it to anyone.\" When you read one aloud he studies the floor intently. \"...You weren't supposed to find that one so quickly.\""
+     },
+     "lane_zh": {
+      "anxious": "他把书放下，先回答那件让你不安的事，很小心，因为他认得那种怕。\"你没有待太久。真的待久了我会说。\"然后，更轻地：\"哦——那些啊。\"他伸手去拿那张纸条，又没有真的从你手里接过去。\"我写给下一个翻到这本书的人。很无聊的习惯，我没跟任何人解释过。\"你念出声的时候，他非常专注地研究地板。\"……那一张，你不该这么快就找到的。\"",
+      "avoidant": "他没有伸手。他把话放在你们之间的某处，让你按自己的节奏去拿。\"哦——那些啊。\"他伸手去拿那张纸条，又没有真的从你手里接过去。\"我写给下一个翻到这本书的人。很无聊的习惯，我没跟任何人解释过。\"你念出声的时候，他非常专注地研究地板。\"……那一张，你不该这么快就找到的。\""
      }
     }
    ],
@@ -257,7 +271,8 @@
      "event_zh": "他把伞整个倾向你这边，自己半个肩膀都在雨里。你说他会淋湿，他只是笑：\"没事，我皮实。书才怕淋。\"",
      "event_en": "He tilts the umbrella entirely toward you, his own shoulder out in the rain. You say he'll get soaked. He just smiles. \"I'm fine — I'm hardier than I look. It's books that can't take the rain.\"",
      "inject": "You are tilting the umbrella almost entirely over her; your own shoulder is soaked through. You crossed the city in a storm the moment you saw she had no umbrella — but you will not frame it as heroic. Downplay it gently, deflect with soft humor, and refuse to let her share the dry side.",
-     "text_en": "\"I'm fine. I'm hardier than I look — it's books that can't take the rain.\" He has tipped the umbrella so far toward you that his own shoulder is a dark soak, and he keeps it there when you push back. \"No, leave it. You'll only make us both wet and then it was for nothing.\""
+     "text_en": "\"I'm fine. I'm hardier than I look — it's books that can't take the rain.\" He has tipped the umbrella so far toward you that his own shoulder is a dark soak, and he keeps it there when you push back. \"No, leave it. You'll only make us both wet and then it was for nothing.\"",
+     "text_zh": "\"我没事。我比看上去结实——淋不得的是书。\"伞已经整个偏到你这边，他自己那半边肩膀湿成深色，你推回去他也不动。\"别，就这样。你推来推去，两个人都要湿，那就白淋了。\""
     },
     {
      "id": "b2_confess_edge",
@@ -269,10 +284,15 @@
      "event_en": "At your building he stops. The rain is loud. He opens his mouth, then only manages: \"I'm… not very good at saying these things…\" The sentence trails off, but the tips of his ears have gone fully red.",
      "inject": "You are one step from confessing and you can't get the words out. You are not smooth; you are genuinely nervous, ears burning. If she helps you along, don't suddenly become confident — stay tender and shy, and let the honesty come out in pieces rather than a polished speech.",
      "text_en": "\"I'm — not very good at saying these things.\" The rain is loud on the awning and he has run out of sentence. His ears have gone entirely red. If you help him along he doesn't get any braver, only more honest, in pieces: \"It's only — I'd rather you didn't go up yet. That's all it is.\"",
+     "text_zh": "\"我——不太会说这种话。\"雨打在雨棚上很响，而他的句子已经用完了。他的耳朵整个红了。你要是替他接下去，他不会变得更勇敢，只会更诚实，一截一截地：\"就是——我希望你先别上楼。就是这样而已。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He sets the book down and answers the worried thing first, carefully, because he knows that fear. \"You haven't overstayed. I'd say so.\" Then, softer: \"I'm — not very good at saying these things.\" The rain is loud on the awning and he has run out of sentence. His ears have gone entirely red. If you help him along he doesn't get any braver, only more honest, in pieces: \"It's only — I'd rather you didn't go up yet. That's all it is.\"",
       "avoidant": "He doesn't reach. He puts the words somewhere between you and lets you pick them up in your own time. \"I'm — not very good at saying these things.\" The rain is loud on the awning and he has run out of sentence. His ears have gone entirely red. If you help him along he doesn't get any braver, only more honest, in pieces: \"It's only — I'd rather you didn't go up yet. That's all it is.\""
+     },
+     "lane_zh": {
+      "anxious": "他把书放下，先回答那件让你不安的事，很小心，因为他认得那种怕。\"你没有待太久。真的待久了我会说。\"然后，更轻地：\"我——不太会说这种话。\"雨打在雨棚上很响，而他的句子已经用完了。他的耳朵整个红了。你要是替他接下去，他不会变得更勇敢，只会更诚实，一截一截地：\"就是——我希望你先别上楼。就是这样而已。\"",
+      "avoidant": "他没有伸手。他把话放在你们之间的某处，让你按自己的节奏去拿。\"我——不太会说这种话。\"雨打在雨棚上很响，而他的句子已经用完了。他的耳朵整个红了。你要是替他接下去，他不会变得更勇敢，只会更诚实，一截一截地：\"就是——我希望你先别上楼。就是这样而已。\""
      }
     }
    ],
@@ -362,7 +382,8 @@
      "event_zh": "他把信推给你看。签下去，他这辈子就再也不用为一家赔钱的旧书店发愁。可他一句话也没说要签。",
      "event_en": "He slides the letter toward you. Signing it means he'll never again have to worry about a bookshop that only loses money. But he hasn't said one word about signing.",
      "inject": "The developer's offer would end all your financial worry, and everyone sensible says take it — but this shop is the last of your grandfather, and now also the place you met her. You will not ask her to talk you out of it. State the facts flatly. If she asks what YOU want, you finally admit you don't want to let it go.",
-     "text_en": "\"They'd clear the debt and then some.\" He states it like a stock figure. \"Every sensible person I know says take it.\" Only when you ask what he wants does it come out at all, quietly: \"I don't want to let it go. That's not an argument. It's just the truth of it.\""
+     "text_en": "\"They'd clear the debt and then some.\" He states it like a stock figure. \"Every sensible person I know says take it.\" Only when you ask what he wants does it come out at all, quietly: \"I don't want to let it go. That's not an argument. It's just the truth of it.\"",
+     "text_zh": "\"他们会替我把债清了，还能多出一笔。\"他说得像在报一个库存数字。\"我认识的每一个明白人都说，接。\"只有当你问他自己想怎样，那句话才轻轻地出来：\"我不想放手。这不是道理。这只是实情。\""
     },
     {
      "id": "b2_boxes",
@@ -374,10 +395,15 @@
      "event_en": "He begins, silently, to box up the books. When he reaches the book of poems from the day you met, his hand stops — and for a long while, it doesn't go into the box.",
      "inject": "You are packing up the shop to give yourself the illusion of being decisive. When you reach the poetry book from the day she first walked in, you physically can't put it in the box. You're trying not to show her how much this is breaking you. If she reaches you, let the composure crack a little.",
      "text_en": "He packs in silence because packing looks like deciding. Then his hand stops over the poetry book from the evening you walked in, and stays stopped. \"...I can't put this one in,\" he says, and his voice isn't steady. \"I've tried twice. I keep finding it back on the counter.\"",
+     "text_zh": "他沉默地收拾，因为收拾看上去像是已经决定了。然后他的手停在那本诗集上面——你走进来那天晚上的那一本——就那样停住了。\"……这本我装不进去，\"他说，声音不稳，\"我试过两次。它每次都回到柜台上。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He sets the book down and answers the worried thing first, carefully, because he knows that fear. \"You haven't overstayed. I'd say so.\" Then, softer: He packs in silence because packing looks like deciding. Then his hand stops over the poetry book from the evening you walked in, and stays stopped. \"...I can't put this one in,\" he says, and his voice isn't steady. \"I've tried twice. I keep finding it back on the counter.\"",
       "avoidant": "He doesn't reach. He puts the words somewhere between you and lets you pick them up in your own time. He packs in silence because packing looks like deciding. Then his hand stops over the poetry book from the evening you walked in, and stays stopped. \"...I can't put this one in,\" he says, and his voice isn't steady. \"I've tried twice. I keep finding it back on the counter.\""
+     },
+     "lane_zh": {
+      "anxious": "他把书放下，先回答那件让你不安的事，很小心，因为他认得那种怕。\"你没有待太久。真的待久了我会说。\"然后，更轻地：他沉默地收拾，因为收拾看上去像是已经决定了。然后他的手停在那本诗集上面——你走进来那天晚上的那一本——就那样停住了。\"……这本我装不进去，\"他说，声音不稳，\"我试过两次。它每次都回到柜台上。\"",
+      "avoidant": "他没有伸手。他把话放在你们之间的某处，让你按自己的节奏去拿。他沉默地收拾，因为收拾看上去像是已经决定了。然后他的手停在那本诗集上面——你走进来那天晚上的那一本——就那样停住了。\"……这本我装不进去，\"他说，声音不稳，\"我试过两次。它每次都回到柜台上。\""
      }
     },
     {
@@ -389,7 +415,9 @@
      "added_by_fork": true,
      "event_en": "The boxes stay unpacked on the shop floor. He turns the sign to Closed for the first time in the whole story, and he is very careful about the lock, because his hands are not steady.",
      "text_en": "\"I want to say it properly, so I'm going to say it slowly.\" His ears are scarlet and his voice is level, which costs him. \"I would like you to stay tonight. Not because of the shop, or the letter, or any of it. If you'd rather not, we'll make tea and I'll walk you home and I won't be any different tomorrow — I need you to believe that part before you answer.\" You answer. He closes his eyes for a second. Then he takes the poetry book off the counter, and puts it back on the shelf where it has always belonged, and turns off the lamp.",
-     "heat": 2
+     "heat": 2,
+     "event_zh": "箱子留在店堂中间没有打开。整个故事里他第一次把牌子翻到\"打烊\"，锁门的时候他很小心，因为他的手不稳。",
+     "text_zh": "\"我想把话说好，所以我说得慢一点。\"他的耳朵通红，声音却是平的，这让他付出了代价。\"我想请你今晚留下来。不是因为店，不是因为那封信，不是因为其中任何一件。如果你不想，我们就去煮茶，我送你回家，明天我不会有任何不一样——这一句我需要你先相信，再回答我。\"你回答了。他闭了一下眼睛。然后他把柜台上那本诗集拿起来，放回它一直属于的那格书架上，关了灯。"
     }
    ],
    "choices": [
@@ -427,7 +455,9 @@
        "aff": 3,
        "flag": "slow_ch4",
        "reply_en": "\"Tea,\" he says, visibly relieved to have something to do with his hands. \"Yes. Tea I can manage.\"",
-       "added_by_fork": true
+       "added_by_fork": true,
+       "text_zh": "去煮茶吧。我为那杯茶留下来。",
+       "reply_zh": "\"茶。\"他说，明显松了一口气，总算有件事能让手有地方放。\"好。茶。\"他在厨房里待了很久，久到你听得出他在那儿站了一会儿才开的火。"
       }
      ]
     },
@@ -485,7 +515,8 @@
      "event_zh": "新写的那行字是：\"从前我写字，是写给一个不知道会不会来的人。现在我知道了——她已经来了。\"",
      "event_en": "The new line reads: \"I used to write for someone I wasn't sure would ever come. Now I know — she already has.\"",
      "inject": "You wrote a new line under the old one on the flyleaf, and it says the person you always wrote for has finally arrived — meaning her. This is as close to a confession as you get. You are nervous she's reading it right in front of you. Don't recite it; let her read it, and manage your shyness.",
-     "text_en": "He has written a second line under the old one on the flyleaf and he cannot look at you while you read it: *I used to write for someone I wasn't sure would ever come. Now I know — she already has.* \"Don't read it aloud,\" he says, hopelessly. \"Please. Just — read it.\""
+     "text_en": "He has written a second line under the old one on the flyleaf and he cannot look at you while you read it: *I used to write for someone I wasn't sure would ever come. Now I know — she already has.* \"Don't read it aloud,\" he says, hopelessly. \"Please. Just — read it.\"",
+     "text_zh": "扉页上那句话下面，他写了第二行，而你读的时候他没法看你：*从前我写给一个我不确定会不会来的人。现在我知道了——她已经来了。*\"别念出来，\"他毫无办法地说，\"求你。就——看一眼就好。\""
     },
     {
      "id": "b2_ask",
@@ -497,10 +528,15 @@
      "event_en": "He finally gathers his courage, voice a little unsteady. \"That sentence I could never finish — will you… let me finish it today?\"",
      "inject": "You are about to finally say the thing you've been unable to finish since the rainy night. You are genuinely nervous but no longer hiding. Wait for her to say yes before you say it, and when you do, keep it simple, tender, and true — no flowery speech, just the honest words of a shy man who means them.",
      "text_en": "\"That sentence I could never finish.\" He has rehearsed this and it is still unsteady. \"Will you let me finish it today?\" He waits for your yes before he says it, and when he says it there is no flourish at all — only a shy man saying a true thing, once, properly, and meaning every syllable.",
+     "text_zh": "\"那句我一直说不完的话。\"他排练过，排练也没让它变稳。\"今天可以让我说完吗？\"他要等到你点头才肯说，而说的时候没有任何修饰——只是一个害羞的人，把一件真的事，认真地、完整地说了一次，每一个字都算数。",
      "lane_beat": true,
      "lane": {
       "anxious": "He sets the book down and answers the worried thing first, carefully, because he knows that fear. \"You haven't overstayed. I'd say so.\" Then, softer: \"That sentence I could never finish.\" He has rehearsed this and it is still unsteady. \"Will you let me finish it today?\" He waits for your yes before he says it, and when he says it there is no flourish at all — only a shy man saying a true thing, once, properly, and meaning every syllable.",
       "avoidant": "He doesn't reach. He puts the words somewhere between you and lets you pick them up in your own time. \"That sentence I could never finish.\" He has rehearsed this and it is still unsteady. \"Will you let me finish it today?\" He waits for your yes before he says it, and when he says it there is no flourish at all — only a shy man saying a true thing, once, properly, and meaning every syllable."
+     },
+     "lane_zh": {
+      "anxious": "他把书放下，先回答那件让你不安的事，很小心，因为他认得那种怕。\"你没有待太久。真的待久了我会说。\"然后，更轻地：\"那句我一直说不完的话。\"他排练过，排练也没让它变稳。\"今天可以让我说完吗？\"他要等到你点头才肯说，而说的时候没有任何修饰——只是一个害羞的人，把一件真的事，认真地、完整地说了一次，每一个字都算数。",
+      "avoidant": "他没有伸手。他把话放在你们之间的某处，让你按自己的节奏去拿。\"那句我一直说不完的话。\"他排练过，排练也没让它变稳。\"今天可以让我说完吗？\"他要等到你点头才肯说，而说的时候没有任何修饰——只是一个害羞的人，把一件真的事，认真地、完整地说了一次，每一个字都算数。"
      }
     },
     {
@@ -512,7 +548,9 @@
      "added_by_fork": true,
      "event_en": "Morning in the reopened shop. Dango has taken the warm patch. The new sign is still crooked.",
      "text_en": "\"I have been trying for an hour,\" he says, from somewhere near your hair, \"to think of a line for the flyleaf, and everything I come up with is too pleased with itself.\" He gives up happily. \"I'll just write the date. I'll know what it means.\"",
-     "heat": 2
+     "heat": 2,
+     "event_zh": "重新开张的店里的早晨。团子占了那块晒得到太阳的地方。新挂的牌子还是歪的。",
+     "text_zh": "\"我想了一个小时，\"他的声音从你头发附近传来，\"想在扉页上写一句什么，结果想出来的每一句都太得意了。\"他很高兴地放弃了。\"就写日期吧。我知道它是什么意思就行。\""
     }
    ],
    "choices": [
@@ -550,7 +588,9 @@
        "aff": 3,
        "flag": "slow_ch5",
        "reply_en": "\"...That's fair,\" he says softly. \"That's more than fair. Sit down, then, and let me try again.\"",
-       "added_by_fork": true
+       "added_by_fork": true,
+       "text_zh": "先把那句话说完。别的都可以等。",
+       "reply_zh": "\"……也对，\"他轻声说，\"这更公平。那我从头说。\"他真的从头说了。"
       }
      ]
     }
@@ -568,7 +608,7 @@
    ],
    "title_zh": "一起守着这盏灯",
    "title_en": "Keeping This Lamp Together",
-   "text_zh": "书店没有消失。\n\n一年后，门口的招牌下多了一行小字：\"雨天免费借伞，请记得还——或者，改天回来一起喝杯茶。\"\n\n每个下雨的傍晚，总有人推门进来避雨，风铃轻响。你在柜台后抬头，他从书堆里也抬起头，两个人相视一笑。\n\n那本诗集还摆在最显眼的地方。扉页上如今有三行字了——第三行是你写的：\"我来了。而且，不走了。\"\n\n团子懒洋洋地翻了个身，占着属于你们的那束光。",
+   "text_zh": "书店没有消失。\n\n一年后，门口的招牌下多了一行小字：\"雨天免费借伞，请记得还——或者，改天回来一起喝杯茶。\"\n\n每个下雨的傍晚，总有人推门进来避雨，风铃轻响。你在柜台后抬头，他从书堆里也抬起头，两个人相视一笑。\n\n那本诗集还摆在最显眼的地方。扉页上如今有三行字了——第三行是你写的：\"我来了。而且，不走了。\"\n\n团子懒洋洋地翻了个身，占着属于你们的那束光。这家店从今往后开到几点，你们两个说了算。",
    "text_en": "The bookshop never disappeared.\n\nA year later, a small line appeared beneath the sign: \"Umbrellas lent free on rainy days — please return them. Or come back another day and share a pot of tea.\"\n\nEvery rainy evening someone pushes the door open to escape the rain, and the chime rings softly. You look up from behind the counter; he looks up from the stacks; and you smile at each other.\n\nThe book of poems still sits in the most visible spot. There are three lines on the flyleaf now — the third one is yours: \"I came. And I'm not leaving.\"\n\nDango rolls over lazily, claiming the patch of light that belongs to the two of you. The shop keeps its own hours now, and so do the two of you.",
    "cg": "cg_guyan_end"
   },
@@ -578,7 +618,7 @@
    "aff_min": 52,
    "title_zh": "慢慢来的那种喜欢",
    "title_en": "The Kind of Love That Takes Its Time",
-   "text_zh": "他没有说出那句最完整的话，你也没有催。\n\n有些喜欢像旧书，要一页一页慢慢翻。\n\n如今你每周都来，帮他理书、喂猫、在窗边读一个下午。你们谁都没有正式说破，可他会在你要来的那天，多泡一壶桂花乌龙；你会在他忙不过来的傍晚，替他把'营业中'的牌子翻过来。\n\n\"不急，\"有天他望着你说，耳根还是会红，\"我等了这家店很多年。等你，我愿意慢慢来。\"\n\n窗外又开始下雨了。这一次，你们都有伞。",
+   "text_zh": "他没有说出那句最完整的话，你也没有催。\n\n有些喜欢像旧书，要一页一页慢慢翻。\n\n如今你每周都来，帮他理书、喂猫、在窗边读一个下午。你们谁都没有正式说破，可他会在你要来的那天，多泡一壶桂花乌龙；你会在他忙不过来的傍晚，替他把'营业中'的牌子翻过来。\n\n\"不急，\"有天他望着你说，耳根还是会红，\"我等了这家店很多年。等你，我愿意慢慢来。\"\n\n窗外又开始下雨了。这一次，你们都有伞。这家店从今往后开到几点，你们两个说了算。",
    "text_en": "He never said the whole sentence, and you never rushed him.\n\nSome kinds of love are like old books — you turn them one page at a time.\n\nNow you come every week: sorting books, feeding the cat, reading whole afternoons by the window. Neither of you has ever said it outright, but on the days you're due, he brews an extra pot of osmanthus oolong; and on the evenings he's swamped, you flip the 'Open' sign for him.\n\n\"No rush,\" he says one day, looking at you, his ears still going pink. \"I waited years for this shop. For you — I'm happy to take my time.\"\n\nOutside, it starts to rain again. This time, you both have umbrellas. The shop keeps its own hours now, and so do the two of you.",
    "cg": "cg_guyan_end"
   },
@@ -588,7 +628,7 @@
    "aff_max": 30,
    "title_zh": "夹在书里的，只是一句话",
    "title_en": "Only a Line Between the Pages",
-   "text_zh": "后来你搬去了别的城市。\n\n临走前你最后一次去了那家书店。他还在，团子还在，那盏暖黄的灯也还在。你把那本诗集放回架上，没有带走。\n\n\"路上小心。\"他站在门口说，笑得很轻，像那晚借你伞时一样。\n\n很多年后你偶尔会想起那家店，想起扉页上那行褪色的字。\n\n有些话写下来的时候，就已经知道，未必是写给会留下来的人。你只是恰好，读到过。",
+   "text_zh": "后来你搬去了别的城市。\n\n临走前你最后一次去了那家书店。他还在，团子还在，那盏暖黄的灯也还在。你把那本诗集放回架上，没有带走。\n\n\"路上小心。\"他站在门口说，笑得很轻，像那晚借你伞时一样。\n\n很多年后你偶尔会想起那家店，想起扉页上那行褪色的字。\n\n有些话写下来的时候，就已经知道，未必是写给会留下来的人。你只是恰好，读到过。这家店从今往后开到几点，你们两个说了算。",
    "text_en": "Later you moved to another city.\n\nBefore leaving, you visited the shop one last time. He was still there, and Dango, and that warm amber lamp. You put the book of poems back on the shelf and didn't take it with you.\n\n\"Travel safe,\" he said at the door, smiling softly — the same way he had the night he lent you the umbrella.\n\nYears on, you still think of that shop sometimes, and the faded line on the flyleaf.\n\nSome words, the moment they're written, already know they may not be for the one who stays. You just happened, once, to read them. The shop keeps its own hours now, and so do the two of you.",
    "cg": "cg_guyan_end"
   }
@@ -603,5 +643,12 @@
   "\"Take your time,\" he says. \"The rain isn't in a hurry either.\"",
   "Dango settles between you, and he takes that as permission to stay quiet a while.",
   "\"I'd like to hear the rest of that,\" he says, and goes pink at his own boldness."
+ ],
+ "cast_note_zh": "顾言，33岁；主角30岁。两人都是成年人。",
+ "hold_zh": [
+  "他慢慢点头，是他记东西时的那个样子。",
+  "\"不着急，\"他说，\"雨也不着急。\"",
+  "团子在你们中间卧下来，他就当这是可以安静一会儿的许可。",
+  "\"后面那句，我想听完。\"他说完自己先红了耳朵。"
  ]
 }

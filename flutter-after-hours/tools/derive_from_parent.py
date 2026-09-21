@@ -29,6 +29,13 @@ import argparse
 import json
 import os
 import shutil
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# The Chinese half of everything this file adds. Four routes, not six -- see
+# derive_zh's docstring for the measurement that decided which four.
+from derive_zh import (ZH_ROUTES, CAST_ZH, FRAME_ZH, HOLD_ZH, LANE_ZH, TEXT_ZH,
+                       ADULT_ZH, DECLINE_ZH, CODA_ZH)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PARENT = os.path.join(os.path.dirname(os.path.dirname(ROOT)), "play", "flutter",
@@ -322,21 +329,32 @@ def derive(route):
     st["cast_note_en"] = CAST[route]
     st["cg_heat"] = "cg_%s_heat" % route
     st["hold_en"] = HOLD[route]
+    zh = route in ZH_ROUTES
+    if zh:
+        st["cast_note_zh"] = CAST_ZH[route]
+        st["hold_zh"] = HOLD_ZH[route]
 
     chs = st["chapters"]
     for i, ch in enumerate(chs):
         if i == 0:
             ch["opening_en"] = ch["opening_en"].rstrip() + " " + FRAME[route]
+            if zh and ch.get("opening_zh"):
+                ch["opening_zh"] = ch["opening_zh"].rstrip() + FRAME_ZH[route]
         if ch["id"] == "ch2":
             ch["cg"] = "cg_%s_ch2" % route
 
         beats = ch["beats"]
         for b in beats:
             b["text_en"] = TEXT[route][b["id"]]
+            if zh:
+                b["text_zh"] = TEXT_ZH[route][b["id"]]
         # the chapter's last parent beat carries the attachment lanes
         last = beats[-1]
         last["lane_beat"] = True
         last["lane"] = {k: LANE[route][k] + last["text_en"] for k in ("anxious", "avoidant")}
+        if zh:
+            last["lane_zh"] = {k: LANE_ZH[route][k] + last["text_zh"]
+                               for k in ("anxious", "avoidant")}
 
         for n, o in enumerate(ch["choices"][0]["options"]):
             if not o.get("reply_en"):
@@ -345,28 +363,36 @@ def derive(route):
     by_id = {c["id"]: c for c in chs}
     for bid, chid, event, text in ADULT[route]:
         ch = by_id[chid]
-        ch["beats"].append({
+        beat = {
             "id": bid,
             "trigger": {"turns": len(ch["beats"]) * 3 + 3, "aff_min": ch["aff_gate"]},
             "added_by_fork": True,
             "event_en": event,
             "text_en": text,
             "heat": 2,
-        })
+        }
+        if zh:
+            beat["event_zh"], beat["text_zh"] = ADULT_ZH[route][bid]
+        ch["beats"].append(beat)
 
     for n, chid in enumerate(("ch4", "ch5")):
         text, reply = DECLINE[route][n]
-        by_id[chid]["choices"][0]["options"].append({
+        opt = {
             "text_en": text,
             "aff": 3,
             "flag": "slow_" + chid,
             "reply_en": reply,
             "added_by_fork": True,
-        })
+        }
+        if zh:
+            opt["text_zh"], opt["reply_zh"] = DECLINE_ZH[route][n]
+        by_id[chid]["choices"][0]["options"].append(opt)
 
     for e in st["endings"]:
         e["cg"] = "cg_%s_end" % route
         e["text_en"] = e["text_en"].rstrip() + " " + CODA[route]
+        if zh and e.get("text_zh"):
+            e["text_zh"] = e["text_zh"].rstrip() + CODA_ZH[route]
 
     return st
 

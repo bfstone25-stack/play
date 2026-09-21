@@ -15,7 +15,7 @@
    "scene_en": "backstage after a concert, neon signs still glowing, just the two of you",
    "goal_zh": "让他放下'偶像'的面具一分钟",
    "goal_en": "Make him drop the idol mask for one minute",
-   "opening_zh": "你举着写错工作证的通行牌，稀里糊涂被保安放进了后台。转过一个转角——他就坐在那儿，摘了耳返，妆有点花，一个人抱着膝盖坐在道具箱上，正偷偷啃一根便利店饭团。看见你，他手一抖，饭团差点掉了。\"…你、你看见的这一幕，能不能当没发生？\"",
+   "opening_zh": "你举着写错工作证的通行牌，稀里糊涂被保安放进了后台。转过一个转角——他就坐在那儿，摘了耳返，妆有点花，一个人抱着膝盖坐在道具箱上，正偷偷啃一根便利店饭团。看见你，他手一抖，饭团差点掉了。\"…你、你看见的这一幕，能不能当没发生？\"他二十七，你二十六，今晚在等对方回家的，只有彼此。",
    "opening_en": "Holding a mis-issued staff pass, you get waved backstage by security in the confusion. Round a corner — and there he is: in-ears out, makeup a little smudged, hugging his knees on a prop crate, secretly eating a convenience-store rice ball. He sees you and jumps; the rice ball nearly hits the floor. \"…Th-that thing you just saw — can we pretend it didn't happen?\" He is twenty-seven, you are twenty-six, and the only person waiting up for either of you tonight is the other one.",
    "beats": [
     {
@@ -26,7 +26,8 @@
      "event_zh": "他慌忙想把饭团藏到背后，结果酱汁蹭到了脸上。他自己没发现，还在努力维持顶流的形象。",
      "event_en": "He tries to hide the rice ball behind his back — and smears sauce on his cheek. He hasn't noticed, and is still valiantly trying to project top-idol composure.",
      "inject": "She caught you, the nation's top idol, secretly eating a cheap rice ball backstage with sauce on your face. You are mortified and trying to save face by acting cool, which is failing badly. Play it playful and a little bratty, not vulnerable yet — bribe her into silence, tease, deflect.",
-     "text_en": "\"Okay. Okay!\" He shoves the rice ball behind his back and lifts his chin like a man with dignity, sauce on his cheek. \"You saw nothing. Nation's top idol, impeccable diet, photographed for magazines.\" A beat. \"...There's a second one in the bag. It's yours if you never speak of this.\""
+     "text_en": "\"Okay. Okay!\" He shoves the rice ball behind his back and lifts his chin like a man with dignity, sauce on his cheek. \"You saw nothing. Nation's top idol, impeccable diet, photographed for magazines.\" A beat. \"...There's a second one in the bag. It's yours if you never speak of this.\"",
+     "text_zh": "\"好——好！\"他把饭团藏到背后，抬起下巴，一副很有尊严的样子，脸颊上还沾着酱。\"你什么都没看见。全国顶流，饮食精致，常年上杂志。\"停了一秒。\"……袋子里还有一个。你要是能守住这个秘密，它就是你的。\""
     },
     {
      "id": "b2_deal",
@@ -37,7 +38,8 @@
      "event_zh": "\"这样吧，\"他忽然凑近，眼睛亮亮的，\"你替我保密，我就…让你看一个别人都没看过的我。成交？\"",
      "event_en": "\"Tell you what,\" he leans in suddenly, eyes bright, \"you keep my secret, and I'll… show you a side of me nobody else has seen. Deal?\"",
      "inject": "You are striking a playful bargain: her silence in exchange for showing her the real you. You frame it as a cheeky deal, but underneath you're oddly hoping she takes it — you rarely offer this to anyone. Keep the surface flirty and confident; let only a flicker of sincerity slip.",
-     "text_en": "\"Tell you what.\" He leans in, bright-eyed, all mischief on the surface. \"Your silence, and I show you a version of me that hasn't been on a single broadcast. Fair trade.\" He says it like a game. He is, quietly, hoping very much that you say yes, and he would deny that under oath."
+     "text_en": "\"Tell you what.\" He leans in, bright-eyed, all mischief on the surface. \"Your silence, and I show you a version of me that hasn't been on a single broadcast. Fair trade.\" He says it like a game. He is, quietly, hoping very much that you say yes, and he would deny that under oath.",
+     "text_zh": "\"这样吧。\"他凑过来，眼睛很亮，表面上全是胡闹。\"你替我保密，我给你看一个没上过任何节目的版本。公平交易。\"他说得像在玩。可他心里非常、非常希望你答应，而这一点他打死也不会承认。"
     },
     {
      "id": "b3_name",
@@ -48,10 +50,15 @@
      "event_en": "Staff outside are calling his name, rushing him. He doesn't move — instead he asks, \"…And you? What's your name? I want to remember who's keeping my secret.\"",
      "inject": "Staff are urgently calling you to the next thing, but you're stalling to ask her name. Frame it as part of the 'deal', keep it light — but you genuinely want to know it, more than you'd admit. Once she tells you, repeat it once with a grin, like you've filed it away.",
      "text_en": "Someone outside is shouting his name for the third time and he does not move. \"Hang on, hang on — what's yours? I can't have a secret-keeper I can't file under anything.\" You tell him, and he repeats it once, grinning, tasting it. \"Right. Noted. Permanently.\"",
+     "text_zh": "外面已经第三次喊他的名字了，他一动不动。\"等等、等等——你叫什么？我不能有一个连归档都归不了的保密人。\"你告诉他，他咧着嘴重复了一遍，像在尝味道。\"行。记下了。永久的。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: Someone outside is shouting his name for the third time and he does not move. \"Hang on, hang on — what's yours? I can't have a secret-keeper I can't file under anything.\" You tell him, and he repeats it once, grinning, tasting it. \"Right. Noted. Permanently.\"",
       "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" Someone outside is shouting his name for the third time and he does not move. \"Hang on, hang on — what's yours? I can't have a secret-keeper I can't file under anything.\" You tell him, and he repeats it once, grinning, tasting it. \"Right. Noted. Permanently.\""
+     },
+     "lane_zh": {
+      "anxious": "\"哎——哎。看我一下。\"那个笑容掉了下来，只掉了一瞬。\"你对我来说不是什么绯闻。好吗？\"然后他又亮起来：外面已经第三次喊他的名字了，他一动不动。\"等等、等等——你叫什么？我不能有一个连归档都归不了的保密人。\"你告诉他，他咧着嘴重复了一遍，像在尝味道。\"行。记下了。永久的。\"",
+      "avoidant": "他读懂了那一步后退，于是自己也退了一步，退得很欢快，像这本来就是他的主意。\"不急啊。反正我一个人能说两个人的话。\"外面已经第三次喊他的名字了，他一动不动。\"等等、等等——你叫什么？我不能有一个连归档都归不了的保密人。\"你告诉他，他咧着嘴重复了一遍，像在尝味道。\"行。记下了。永久的。\""
      }
     }
    ],
@@ -141,7 +148,8 @@
      "event_zh": "他随手弹了一段旋律，很轻很好听，是没发过的。\"这段…是我自己乱写的。公司说不够'商业'。\"",
      "event_en": "He idly plays a melody — soft, lovely, unreleased. \"This bit… is something I wrote myself. The label says it's not 'commercial' enough.\"",
      "inject": "You play her a fragment of a song you wrote yourself, that your label rejected for not being marketable. You act casual about it but you actually care a lot. If she likes it, cover your pleasure with teasing; if she's honest, let it land.",
-     "text_en": "\"This bit's mine. I wrote it.\" The melody wanders on under his hands, unhurried. \"Label says it's not commercial. They're probably right, they usually are.\" He's watching your face while pretending not to. \"...You can say if it's bad. People don't, and it makes me insane.\""
+     "text_en": "\"This bit's mine. I wrote it.\" The melody wanders on under his hands, unhurried. \"Label says it's not commercial. They're probably right, they usually are.\" He's watching your face while pretending not to. \"...You can say if it's bad. People don't, and it makes me insane.\"",
+     "text_zh": "\"这一段是我的。我写的。\"旋律在他手底下不紧不慢地往前走。\"公司说不商业。他们大概是对的，他们通常都对。\"他假装没在看你的脸，其实一直在看。\"……不好听你可以直说。没人肯说，这才真的让我发疯。\""
     },
     {
      "id": "b2_cage",
@@ -152,7 +160,8 @@
      "event_zh": "\"你知道吗，\"他抱着膝盖，\"上一次有人问我'你今天累不累'，是三年前。大家只问我'今天状态好不好'。\"",
      "event_en": "\"You know,\" he says, hugging his knees, \"the last time anyone asked if I was tired was three years ago. Everyone only asks if I'm 'in good form today'.\"",
      "inject": "You are admitting, rarely and quietly, that being a top idol is lonely — people care about your 'condition', not you. Do not wallow; you say it almost lightly, then immediately deflect with a joke because you're not used to being seen. If she asks the tired question sincerely, it hits you harder than you show.",
-     "text_en": "\"Three years since anyone asked if I was tired,\" he says, chin on his knees, light as a shrug. \"They ask if I'm in good form. Different question.\" Then, immediately, because being seen makes his skin itch: \"Anyway — tragic idol backstory, very on-brand, please clap.\""
+     "text_en": "\"Three years since anyone asked if I was tired,\" he says, chin on his knees, light as a shrug. \"They ask if I'm in good form. Different question.\" Then, immediately, because being seen makes his skin itch: \"Anyway — tragic idol backstory, very on-brand, please clap.\"",
+     "text_zh": "\"三年了，没人问过我累不累，\"他把下巴搁在膝盖上说，语气轻得像耸肩，\"他们问我状态好不好。那是另一个问题。\"然后他立刻接了下去，因为被看穿让他浑身发痒：\"总之——悲情偶像前史，非常符合人设，鼓掌吧。\""
     },
     {
      "id": "b3_photo",
@@ -163,10 +172,15 @@
      "event_en": "His phone lights up — a trending topic: '#LuXingye's late-night secret rendezvous'. He glances at it, but watches your reaction first.",
      "inject": "A tabloid rumor about you meeting a 'mystery person' is trending. You are used to this and unbothered for yourself — but you're watching to see if it scares her off. Don't apologize dramatically; test the waters with humor, while secretly bracing for her to pull away.",
      "text_en": "He tilts the screen so you can read the trending tag, watching you and not it. \"Late-night secret rendezvous. They'll have me engaged by Thursday.\" A grin that's doing a lot of work. \"This is the part where most people remember an early morning. I'm just saying. In case you were about to.\"",
+     "text_zh": "他把屏幕转过来让你看那个热搜词条，看的却是你，不是屏幕。\"深夜密会。照这个速度，周四我就订婚了。\"那个笑容承担了很多工作。\"一般人到这一步会忽然想起明天有个早班。我就是说一下。万一你正准备想起来。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: He tilts the screen so you can read the trending tag, watching you and not it. \"Late-night secret rendezvous. They'll have me engaged by Thursday.\" A grin that's doing a lot of work. \"This is the part where most people remember an early morning. I'm just saying. In case you were about to.\"",
       "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" He tilts the screen so you can read the trending tag, watching you and not it. \"Late-night secret rendezvous. They'll have me engaged by Thursday.\" A grin that's doing a lot of work. \"This is the part where most people remember an early morning. I'm just saying. In case you were about to.\""
+     },
+     "lane_zh": {
+      "anxious": "\"哎——哎。看我一下。\"那个笑容掉了下来，只掉了一瞬。\"你对我来说不是什么绯闻。好吗？\"然后他又亮起来：他把屏幕转过来让你看那个热搜词条，看的却是你，不是屏幕。\"深夜密会。照这个速度，周四我就订婚了。\"那个笑容承担了很多工作。\"一般人到这一步会忽然想起明天有个早班。我就是说一下。万一你正准备想起来。\"",
+      "avoidant": "他读懂了那一步后退，于是自己也退了一步，退得很欢快，像这本来就是他的主意。\"不急啊。反正我一个人能说两个人的话。\"他把屏幕转过来让你看那个热搜词条，看的却是你，不是屏幕。\"深夜密会。照这个速度，周四我就订婚了。\"那个笑容承担了很多工作。\"一般人到这一步会忽然想起明天有个早班。我就是说一下。万一你正准备想起来。\""
      }
     }
    ],
@@ -257,7 +271,8 @@
      "event_zh": "\"最后这首歌，\"他对着全场，眼睛却看着你，\"公司说它不够商业，没让我发。但今晚，我想唱给一个人听。\"——是那首他在排练室弹给你的、没发过的歌。",
      "event_en": "\"This last song,\" he tells the whole arena, but his eyes are on you, \"the label said it wasn't commercial enough to release. But tonight, I want to sing it for one person.\" — It's the unreleased song he played you in the rehearsal room.",
      "inject": "You are about to sing, in front of tens of thousands, the private song you wrote and were forbidden to release — and you're dedicating it to her, in row seven, without saying her name. You are nervous but resolved. Speak to the crowd but mean it for her. Do not be smooth; let real feeling break through the idol polish.",
-     "text_en": "\"This last one,\" he tells forty thousand people, and it is not forty thousand people he's telling, \"the label said it wasn't commercial enough to put out.\" His hand isn't quite steady on the mic. \"So tonight I'm going to sing it for one person, and they know who they are.\""
+     "text_en": "\"This last one,\" he tells forty thousand people, and it is not forty thousand people he's telling, \"the label said it wasn't commercial enough to put out.\" His hand isn't quite steady on the mic. \"So tonight I'm going to sing it for one person, and they know who they are.\"",
+     "text_zh": "\"最后这一首，\"他对着四万个人说，而他要说的对象不是那四万个人，\"公司说它不够商业，不给发。\"他握着麦克风的手不太稳。\"所以今晚我把它唱给一个人听，那个人知道我说的是谁。\""
     },
     {
      "id": "b2_confession",
@@ -269,10 +284,15 @@
      "event_en": "As the last note fades, he doesn't take his usual bow. He looks straight at row seven, his voice echoing through the arena: \"The person in row seven — I don't care how many headlines this makes tomorrow. I like you.\" First dead silence, then a tsunami of screams.",
      "inject": "You just publicly confessed to her from the stage — 'the person in row seven, I like you' — in front of tens of thousands and every camera, knowing exactly the storm it will cause. You did it anyway. You are terrified and exhilarated. You are now waiting, on stage, for any sign from her seat. Everything else is noise.",
      "text_en": "He doesn't bow. The last note is still ringing and he is looking at row seven with the whole arena holding its breath. \"The person in row seven.\" His voice cracks the arena open. \"I don't care how many headlines this makes tomorrow. I like you.\" Then silence. Then a tsunami.",
+     "text_zh": "他没有鞠躬。最后一个音还在响，他看着第七排，整座场馆屏住了呼吸。\"第七排的那个人。\"他的声音把整座场馆劈开了。\"我不在乎明天会有多少标题。我喜欢你。\"然后是死寂。然后是海啸。",
      "lane_beat": true,
      "lane": {
       "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: He doesn't bow. The last note is still ringing and he is looking at row seven with the whole arena holding its breath. \"The person in row seven.\" His voice cracks the arena open. \"I don't care how many headlines this makes tomorrow. I like you.\" Then silence. Then a tsunami.",
       "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" He doesn't bow. The last note is still ringing and he is looking at row seven with the whole arena holding its breath. \"The person in row seven.\" His voice cracks the arena open. \"I don't care how many headlines this makes tomorrow. I like you.\" Then silence. Then a tsunami."
+     },
+     "lane_zh": {
+      "anxious": "\"哎——哎。看我一下。\"那个笑容掉了下来，只掉了一瞬。\"你对我来说不是什么绯闻。好吗？\"然后他又亮起来：他没有鞠躬。最后一个音还在响，他看着第七排，整座场馆屏住了呼吸。\"第七排的那个人。\"他的声音把整座场馆劈开了。\"我不在乎明天会有多少标题。我喜欢你。\"然后是死寂。然后是海啸。",
+      "avoidant": "他读懂了那一步后退，于是自己也退了一步，退得很欢快，像这本来就是他的主意。\"不急啊。反正我一个人能说两个人的话。\"他没有鞠躬。最后一个音还在响，他看着第七排，整座场馆屏住了呼吸。\"第七排的那个人。\"他的声音把整座场馆劈开了。\"我不在乎明天会有多少标题。我喜欢你。\"然后是死寂。然后是海啸。"
      }
     }
    ],
@@ -362,7 +382,8 @@
      "event_zh": "高管把那份声明推到他面前，笔也递了过去。签下去，他的事业毫发无损。他盯着那张纸，一动没动。",
      "event_en": "An executive pushes the statement in front of him, pen extended. Sign it, and his career is untouched. He stares at the page and doesn't move.",
      "inject": "The label wants you to publicly call the confession a 'stage gimmick' to save your career. Signing means denying her in front of the world. You have not picked up the pen. You will not perform anguish for the executives — but if she is near, everything in you is asking her, silently, whether she'd forgive you for refusing to lie. Say little; mean everything.",
-     "text_en": "The statement says it was a stage gimmick. The pen is being held out. He looks at it for a long moment and does not take it. \"They want me to say it was a bit,\" he says, to you, not to them, and very quietly. \"I'm not going to say it was a bit.\""
+     "text_en": "The statement says it was a stage gimmick. The pen is being held out. He looks at it for a long moment and does not take it. \"They want me to say it was a bit,\" he says, to you, not to them, and very quietly. \"I'm not going to say it was a bit.\"",
+     "text_zh": "声明上写着那是一个舞台设计。笔递了过来。他看了它很久，没有接。\"他们要我说那是个梗，\"他说，对你说的，不是对他们说的，声音很轻，\"我不打算说那是个梗。\""
     },
     {
      "id": "b2_walk",
@@ -374,10 +395,15 @@
      "event_en": "He suddenly stands, pushes open the boardroom door, and — in front of every executive — walks straight toward you outside the glass. The whole room falls silent.",
      "inject": "You just stood up mid-meeting and walked out toward her in front of the entire label leadership, knowing it may cost you everything. You are done performing for anyone but her. You are aware of exactly what this looks like and what it will cost. You do it anyway.",
      "text_en": "He stands up mid-sentence, walks out through the glass door, and crosses to you in front of every executive who has ever owned a piece of him. \"That's it. That's the whole meeting.\" He's shaking slightly and grinning like an idiot. \"Ask me later if it was worth it. I'll say yes.\"",
+     "text_zh": "他说到一半站了起来，从玻璃门走出去，当着每一个曾经握有他一部分的人的面，径直走到你面前。\"就这样。整个会就到这儿。\"他微微发着抖，笑得像个傻子。\"以后再问我值不值。我会说值。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: He stands up mid-sentence, walks out through the glass door, and crosses to you in front of every executive who has ever owned a piece of him. \"That's it. That's the whole meeting.\" He's shaking slightly and grinning like an idiot. \"Ask me later if it was worth it. I'll say yes.\"",
       "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" He stands up mid-sentence, walks out through the glass door, and crosses to you in front of every executive who has ever owned a piece of him. \"That's it. That's the whole meeting.\" He's shaking slightly and grinning like an idiot. \"Ask me later if it was worth it. I'll say yes.\""
+     },
+     "lane_zh": {
+      "anxious": "\"哎——哎。看我一下。\"那个笑容掉了下来，只掉了一瞬。\"你对我来说不是什么绯闻。好吗？\"然后他又亮起来：他说到一半站了起来，从玻璃门走出去，当着每一个曾经握有他一部分的人的面，径直走到你面前。\"就这样。整个会就到这儿。\"他微微发着抖，笑得像个傻子。\"以后再问我值不值。我会说值。\"",
+      "avoidant": "他读懂了那一步后退，于是自己也退了一步，退得很欢快，像这本来就是他的主意。\"不急啊。反正我一个人能说两个人的话。\"他说到一半站了起来，从玻璃门走出去，当着每一个曾经握有他一部分的人的面，径直走到你面前。\"就这样。整个会就到这儿。\"他微微发着抖，笑得像个傻子。\"以后再问我值不值。我会说值。\""
      }
     },
     {
@@ -389,7 +415,9 @@
      "added_by_fork": true,
      "event_en": "The car is a decoy and the flat is borrowed and nobody on earth knows where either of you is. He locks the door and puts his back against it, laughing, out of breath.",
      "text_en": "\"Okay. Okay.\" He's grinning and it keeps slipping into something less practised. \"Full disclosure: I've been famous since I was nineteen and I have no idea how to do this part without it being a bit. So tell me if it's too fast, tell me if you want to just eat noodles and sit on the floor, tell me anything —\" You tell him. He stops talking, which almost never happens, and the borrowed flat is very quiet for a long time after that.",
-     "heat": 2
+     "heat": 2,
+     "event_zh": "那辆车是幌子，这间公寓是借的，地球上没有一个人知道你们两个在哪里。他把门锁上，背靠着门，笑着，喘着气。",
+     "text_zh": "\"好。好。\"他还在笑，那个笑一次又一次地滑进某种不那么熟练的东西里。\"我坦白：我十九岁就出名了，我完全不知道这一段该怎么演才不像在演。所以太快了你要告诉我，你想只吃碗面坐地板上也要告诉我，你想说什么都——\"你说了。他不说话了，这在他身上几乎从不发生，而那间借来的公寓在那之后安静了很久。"
     }
    ],
    "choices": [
@@ -427,7 +455,9 @@
        "aff": 3,
        "flag": "slow_ch4",
        "reply_en": "\"Oh thank God,\" he says, sliding down the door. \"Noodles. I'm so much better at noodles.\"",
-       "added_by_fork": true
+       "added_by_fork": true,
+       "text_zh": "今晚不要。坐地上陪我吃碗面。",
+       "reply_zh": "\"谢天谢地，\"他顺着门滑坐到地上，\"面。面我会。我这辈子最拿手的就是面。\""
       }
      ]
     },
@@ -485,7 +515,8 @@
      "event_zh": "\"这首歌，\"他调着弦，\"是我写完那首之后，又写的一首新的。名字叫《第七排》。\"台下几十个人安静下来，他开始唱——每一句都是关于你的。",
      "event_en": "\"This song,\" he says, tuning a string, \"is a new one I wrote after that last one. It's called 'Row Seven'.\" The few dozen people go quiet, and he begins to sing — every line is about you.",
      "inject": "You wrote a brand-new song called 'Row Seven', entirely about her, and you're performing it for the first time to a tiny room. This is the freest and most honest you've ever felt on a stage. Sing it to her, not to the room. You are no longer hiding behind the idol mask at all.",
-     "text_en": "\"New one,\" he says, tuning a string. \"It's called Row Seven.\" Forty people go quiet instead of forty thousand, and he prefers it. Every line is you. He sings it straight at you and doesn't perform a single bar of it, which is the most naked he has ever been on a stage."
+     "text_en": "\"New one,\" he says, tuning a string. \"It's called Row Seven.\" Forty people go quiet instead of forty thousand, and he prefers it. Every line is you. He sings it straight at you and doesn't perform a single bar of it, which is the most naked he has ever been on a stage.",
+     "text_zh": "\"新歌，\"他说，拧着一根弦，\"叫《第七排》。\"安静下来的是四十个人，不是四万个，而他更喜欢这样。每一句都是你。他直直地唱给你听，一个小节都没有表演，这是他站在台上最赤裸的一次。"
     },
     {
      "id": "b2_ask_forever",
@@ -497,10 +528,15 @@
      "event_en": "The song ends. He sets down the guitar, steps off the little stage, and — in front of a few dozen watching people — kneels on one knee on the floor before you. \"I confessed to you in front of tens of thousands. Today, in front of a few dozen, I want to ask you something more important.\"",
      "inject": "You are about to ask her to be with you for good, kneeling in a tiny livehouse. You gave up an empire of fame and you have never been surer of anything. Be earnest, a little vulnerable, and let the playful star finally speak with his whole heart. Wait for her answer before you say the biggest words.",
      "text_en": "He sets the guitar down, steps off the little stage and goes down on one knee on a floor that is definitely sticky. \"I said it to tens of thousands. Now I'm asking something bigger in front of about forty.\" His hands are unsteady. \"I gave up the empire. I'd like to keep you.\"",
+     "text_zh": "他把吉他放下，从那个小舞台上走下来，在一块肯定黏脚的地板上单膝跪了下去。\"我对着几万人说过一次。现在我要在大概四十个人面前，问一件更大的事。\"他的手不稳。\"我把那座帝国放掉了。我想留住你。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "\"Hey — hey. Look at me a sec.\" The grin drops, just for a moment. \"You're not a rumour to me. Okay?\" Then he's bright again: He sets the guitar down, steps off the little stage and goes down on one knee on a floor that is definitely sticky. \"I said it to tens of thousands. Now I'm asking something bigger in front of about forty.\" His hands are unsteady. \"I gave up the empire. I'd like to keep you.\"",
       "avoidant": "He reads the step back and takes one of his own, cheerfully, like it was his idea. \"No pressure. I talk enough for two anyway.\" He sets the guitar down, steps off the little stage and goes down on one knee on a floor that is definitely sticky. \"I said it to tens of thousands. Now I'm asking something bigger in front of about forty.\" His hands are unsteady. \"I gave up the empire. I'd like to keep you.\""
+     },
+     "lane_zh": {
+      "anxious": "\"哎——哎。看我一下。\"那个笑容掉了下来，只掉了一瞬。\"你对我来说不是什么绯闻。好吗？\"然后他又亮起来：他把吉他放下，从那个小舞台上走下来，在一块肯定黏脚的地板上单膝跪了下去。\"我对着几万人说过一次。现在我要在大概四十个人面前，问一件更大的事。\"他的手不稳。\"我把那座帝国放掉了。我想留住你。\"",
+      "avoidant": "他读懂了那一步后退，于是自己也退了一步，退得很欢快，像这本来就是他的主意。\"不急啊。反正我一个人能说两个人的话。\"他把吉他放下，从那个小舞台上走下来，在一块肯定黏脚的地板上单膝跪了下去。\"我对着几万人说过一次。现在我要在大概四十个人面前，问一件更大的事。\"他的手不稳。\"我把那座帝国放掉了。我想留住你。\""
      }
     },
     {
@@ -512,7 +548,9 @@
      "added_by_fork": true,
      "event_en": "Morning. No call time, no car, no manager. He has been awake for an hour and has not once picked up his phone.",
      "text_en": "\"I worked out what's different,\" he says into your shoulder. \"Nobody's waiting for me to come out and be someone.\" He thinks about it. \"Terrifying. Ten out of ten. I'd like to do it every day for a while and then see.\"",
-     "heat": 2
+     "heat": 2,
+     "event_zh": "早上。没有通告时间，没有车，没有经纪人。他已经醒了一个小时，一次也没有碰过手机。",
+     "text_zh": "\"我想明白哪里不一样了，\"他把脸埋在你肩膀上说，\"没有人在外面等我出去当某个人。\"他想了想。\"吓人。满分十分。我想先这么过一阵子，再说。\""
     }
    ],
    "choices": [
@@ -550,7 +588,9 @@
        "aff": 3,
        "flag": "slow_ch5",
        "reply_en": "\"Deal.\" He grins, and for once it's the unrehearsed one. \"I'm very good at waiting. I'll be terrible at it. Both things are true.\"",
-       "added_by_fork": true
+       "added_by_fork": true,
+       "text_zh": "等这阵风过去了，你再问我一次。",
+       "reply_zh": "\"成交。\"他笑了，这一次是没有排练过的那个笑。\"那我天天问，一直问到风停。\""
       }
      ]
     }
@@ -569,7 +609,7 @@
    ],
    "title_zh": "从第七排到台上",
    "title_en": "From Row Seven to the Stage",
-   "text_zh": "两年后，他的独立工作室办了第一场万人演唱会。\n\n还是唱到最后一首安可，他忽然让乐队停下。全场安静，几万人屏息——所有老粉都知道要发生什么了。\n\n可这一次，他没有看向第七排。\n\n他转过身，对着舞台后方伸出手——你从侧台走出来，牵住了他。\n\n\"以前我对第七排的人告白，\"他对着全场笑，眼睛却只看你，\"现在，我请她上台了。\"\n\n几万人的星海为你们亮起。那首《第七排》的前奏响起时，你终于明白：有些人从台下走到台上，走了整整两年，可每一步都值得。",
+   "text_zh": "两年后，他的独立工作室办了第一场万人演唱会。\n\n还是唱到最后一首安可，他忽然让乐队停下。全场安静，几万人屏息——所有老粉都知道要发生什么了。\n\n可这一次，他没有看向第七排。\n\n他转过身，对着舞台后方伸出手——你从侧台走出来，牵住了他。\n\n\"以前我对第七排的人告白，\"他对着全场笑，眼睛却只看你，\"现在，我请她上台了。\"\n\n几万人的星海为你们亮起。那首《第七排》的前奏响起时，你终于明白：有些人从台下走到台上，走了整整两年，可每一步都值得。第七排的那个位子从此空着，因为坐在那里的人已经不必再买票了。",
    "text_en": "Two years later, his independent studio held its first arena show.\n\nAgain, on the last encore, he suddenly stopped the band. The arena went silent; tens of thousands held their breath — every longtime fan knew what was coming.\n\nBut this time, he didn't look toward row seven.\n\nHe turned around and reached a hand toward the back of the stage — and you walked out from the wings and took it.\n\n\"I used to confess to the person in row seven,\" he told the whole arena, smiling, but his eyes only on you. \"Now, I've invited her up on stage.\"\n\nA galaxy of light rose for the two of you. As the intro to 'Row Seven' began, you finally understood: some people take two whole years to walk from the seats to the stage — and every step is worth it. No call time, no cameras, no one waiting for either of you to be someone else.",
    "cg": "cg_luxingye_end"
   },
@@ -579,7 +619,7 @@
    "aff_min": 52,
    "title_zh": "只有你的那场演出",
    "title_en": "The Show With an Audience of One",
-   "text_zh": "他没有再回到万人舞台，也不觉得可惜。\n\n那间小小的livehouse成了他的主场。粉丝少了，但每一个都是真的懂他的人。\n\n你们没有大张旗鼓地公开，也没有刻意隐瞒。他会在每场演出的最后，弹一首没报过名的歌，然后看向台下固定的那个位置——第七排，永远为你留着。\n\n\"你知道我最喜欢哪场演出吗？\"有天散场后他问你。\n\n\"哪场？\"\n\n他把吉他往身后一背，凑近你，坏笑：\"回家给你一个人唱的那些。零差评。\"",
+   "text_zh": "他没有再回到万人舞台，也不觉得可惜。\n\n那间小小的livehouse成了他的主场。粉丝少了，但每一个都是真的懂他的人。\n\n你们没有大张旗鼓地公开，也没有刻意隐瞒。他会在每场演出的最后，弹一首没报过名的歌，然后看向台下固定的那个位置——第七排，永远为你留着。\n\n\"你知道我最喜欢哪场演出吗？\"有天散场后他问你。\n\n\"哪场？\"\n\n他把吉他往身后一背，凑近你，坏笑：\"回家给你一个人唱的那些。零差评。\"第七排的那个位子从此空着，因为坐在那里的人已经不必再买票了。",
    "text_en": "He never returned to the arena stage, and he never missed it.\n\nThat tiny livehouse became his home turf. Fewer fans — but every one of them truly understood him.\n\nYou never made a grand public announcement, and never hid, either. At the end of every show he'd play a song he never named, then look toward one fixed spot in the crowd — row seven, always kept for you.\n\n\"Know which show is my favorite?\" he asked one night after closing.\n\n\"Which one?\"\n\nHe slung the guitar onto his back, leaned in, and grinned. \"The ones I play just for you at home. Zero bad reviews.\" No call time, no cameras, no one waiting for either of you to be someone else.",
    "cg": "cg_luxingye_end"
   },
@@ -589,7 +629,7 @@
    "aff_max": 30,
    "title_zh": "散场之后",
    "title_en": "After the Lights Go Down",
-   "text_zh": "那场告白后来被公司压了下去，官方声明说：那只是一个即兴的舞台桥段。\n\n你没有出现在任何镜头里，也再没去过第七排。\n\n他依然是万人追捧的顶流，笑容依旧完美。只是偶尔在某场演唱会的安可，他会看向观众席某个方向，停顿半秒，然后若无其事地继续。\n\n很多年后你还留着那张第七排的票根。\n\n有些歌你曾经听过原声——在没有灯、没有妆、只有一根便利店饭团的深夜后台。那个版本，全世界只有你听过。这就够了。",
+   "text_zh": "那场告白后来被公司压了下去，官方声明说：那只是一个即兴的舞台桥段。\n\n你没有出现在任何镜头里，也再没去过第七排。\n\n他依然是万人追捧的顶流，笑容依旧完美。只是偶尔在某场演唱会的安可，他会看向观众席某个方向，停顿半秒，然后若无其事地继续。\n\n很多年后你还留着那张第七排的票根。\n\n有些歌你曾经听过原声——在没有灯、没有妆、只有一根便利店饭团的深夜后台。那个版本，全世界只有你听过。这就够了。第七排的那个位子从此空着，因为坐在那里的人已经不必再买票了。",
    "text_en": "The confession was quietly buried by the label; the official statement called it an improvised stage moment.\n\nYou never appeared on any camera, and you never went back to row seven.\n\nHe's still the top idol adored by millions, his smile still flawless. Only sometimes, on an encore, he looks toward one direction in the crowd, pauses for half a second, then carries on as if nothing happened.\n\nYears later you still keep that row-seven ticket stub.\n\nYou once heard a song in its raw form — backstage at midnight, no lights, no makeup, just a convenience-store rice ball. That version, no one in the world heard but you. And that's enough. No call time, no cameras, no one waiting for either of you to be someone else.",
    "cg": "cg_luxingye_end"
   }
@@ -604,5 +644,12 @@
   "\"You know nobody talks to me like this,\" he says. \"Don't stop on my account.\"",
   "He plays two notes, stops, and looks at you instead of the strings.",
   "\"Say more things,\" he says. \"I like your voice better than the room.\""
+ ],
+ "cast_note_zh": "陆星野，27岁；主角26岁。两人都是成年人。",
+ "hold_zh": [
+  "他把下巴搁在椅背上，仰头冲你笑：\"说啊，我听着呢。\"",
+  "\"你知道没人敢这么跟我说话吧，\"他说，\"别因为我停下来。\"",
+  "他弹了两个音，停住，然后看的是你，不是琴弦。",
+  "\"多说点，\"他说，\"你的声音比这屋子好听。\""
  ]
 }

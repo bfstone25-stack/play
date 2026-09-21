@@ -137,6 +137,30 @@ violation on an 18+ page. The script fails the build on either mistake, and on a
 
 Live: **https://flutter-after-hours.flat404.workers.dev**
 
+## Voice barks
+
+`ops/barks/lines.json` carries a `flutter-after-hours` set: 21 lines across the
+nine slots STANDARD.md names, on seed `f_low_controlled` — **not** the parent's
+`f_young_warm`. One voice per game, and an adult fork does not share its parent's:
+the all-ages read is "warm and bright, young, gently amused" and this one is the
+same woman lower and closer.
+
+`ops/bark_wire.py` could not be used — it appends a GDScript layer to a Godot
+`Sfx` autoload and this game is the web PWA — so `frontend/barks.js` re-states its
+three rules in JS (rotate without repeating; never overlap, drop the second; ride
+the player's own mute switch) and the triggers hang off moments `index.html`
+already fires: `startRoute` → greet, a tier crossing → stage, `heartGain` → win /
+fail / streak, `showChapterClear` → unlock, `showEnding` → win_big, and a 40-second
+clock for idle, which is the one slot with no event of its own.
+
+**The audio is not rendered yet.** `render_barks.py --only flutter-after-hours`
+wants the local card, and the two Flutter llama-servers hold 9.4 of its 12 GB, so
+it would fall back to CPU across every core of Blaze's desktop — the thing
+STANDARD.md's last section exists to prevent. `barks.js` fetches
+`voice/barks.json` and stays silent when it is absent, so the build ships correct
+and lights up the moment the render lands. No manifest is checked in ahead of the
+audio on purpose: that would report "wired" while every `play()` 404s.
+
 ## Known gaps
 
 - **The adult turn fades at the door.** The two added beats per route establish
@@ -154,16 +178,64 @@ Live: **https://flutter-after-hours.flat404.workers.dev**
   the 30 the player is already watching instead of after them; the bytes are
   cached as an object URL, because the ticket is single-use and a re-opened plate
   must never ask again; and every failure degrades to the covered plate.
-- **Only three of the six routes are offered.** All six derive and play to an
-  ending, but `ops/flutter_art/picks.json` holds 12 picks — ethan, luxingye and
-  guyan. fushen, liam and adrian still have the PIL stand-ins from
-  `tools/gen_placeholder_cg.py` in all three of their slots, so they are held
-  back by `art: "placeholder"` in `chars.json`; `FLUTTER_SHOW_UNFINISHED=1` shows
-  them for art QA. Flip the tag when the plates land; nothing else changes.
-- **English only.** The picker used to offer zh/ja/es/pt and every one of them
-  returned an empty route list from `/routes` — a dead end with no way back.
-  `editions.js` now clamps to what the content pack has. The zh pack is mostly a
-  matter of deriving the parent's `*_zh`, which is already written.
+- ~~**Only three of the six routes are offered.**~~ **All six, 2026-09-21.** The
+  nine adrian/liam/fushen plates were rendered, judged by eye at native
+  resolution, picked and installed (`ops/flutter_art/out/plates/JUDGED.md` has the
+  per-slot verdicts), and `chars.json` now has every route at `art: "installed"`.
+  `/routes` returns 6 in en and 4 in zh.
+
+  Two things that came out of doing it, both worse than the thing it fixed:
+
+  **`cg_ethan_heat` was fog.** Not one of the nine — already picked, already
+  installed, already on the gateway, on a route the game was already OFFERING,
+  behind the affection-60 gate. A pink and blue smear with a face suggested in it:
+  4,833 distinct colours in a 1024x576 frame, fewer than the placeholder card it
+  replaced. `check_shelf_floor` had been saying "flat, spread 0.07" the whole time.
+  Re-rendered and replaced.
+
+  **The covered plates were debug assets.** `tools/gen_placeholder_cg.py` builds
+  the locked plate and the gallery thumb out of the same PIL card as the full
+  plate, which was right before any art existed — but once real renders land in
+  `cg/full/` nothing regenerates the covers, so fifteen of eighteen `_locked.webp`
+  in the tree were 5-7 KB grey cards reading "not final art", including all nine
+  slots of the three routes that were live. That is what every player saw the
+  moment the gallery opened. `tools/cover_plates.py` now builds the cover from the
+  installed plate (blur + band), skipping the three slots that have their own
+  separately rendered `_locked` teaser, and `--check` fails if a cover is stale.
+
+- **Every CG is under its bucket's saturation floor.** Measured across all
+  eighteen: brightness is fine or high (0.61-0.88), saturation is 0.14-0.31
+  against a 0.41 floor for slice-of-life. Bright but bleached, which is
+  `bright-is-what-sells` read backwards. Weighting the colour in `STYLE_X` was
+  tested at n=3 on four slots and is **not** the general fix: it rescued
+  `cg_ethan_heat` outright and got `cg_fushen_heat` to 0.80/0.42 (the only plate
+  in the set that clears), did nothing for `cg_guyan_heat`, and made
+  `cg_luxingye_end` worse (0.95/0.15, spread 0.07 — a whiteout). It tracks the
+  slot, not the style block, which points at the IP-Adapter reference. Needs an
+  art call, not more re-rolls.
+- ~~**English only.**~~ **en + zh, 2026-09-21.** The Chinese hole was never the
+  UI strings or the palette — both were inherited from the parent — it was that
+  every one of the fork's OWN additions (`beat.text`, the adult turn, the lane
+  openers, the holds, the declines, the cast note, the coda) had been written in
+  English only. `_field()` falls back to `_en`, so a Chinese player would have met
+  an English paragraph at every beat while the game looked fine.
+  `tools/derive_zh.py` is that missing pack, authored in Chinese rather than
+  machine-translated, and the deriver emits it. Measured after re-deriving:
+  ethan/guyan/luxingye/fushen are 100% real Chinese on every localized field.
+
+  **liam and adrian are NOT offered in zh, and that is the parent's fault, not an
+  oversight.** Their `_zh` fields in `play/flutter` hold ENGLISH — liam's
+  `title_zh` is the literal string "the firefighter next door", and 25 of its 123
+  localized fields contain no CJK at all. Offering them would be Floor 13's
+  ja/ko/es failure with the languages swapped, so `chars.json` gates zh to the
+  four routes whose base prose is genuinely Chinese. **The parent needs repairing
+  before those two can join** — that is a `play/flutter` job.
+
+  `ops/check_flutter_languages.py --game flutter-after-hours` now covers this
+  game, and it was taught to READ a field rather than only count it: a `_zh` key
+  holding English used to pass, which is exactly how liam and adrian got this far.
+  Proved by making it fail — adding liam to the zh list reports 62 wrong-script
+  fields and exits 1.
 - **No ad unit of its own.** The build ships the shared adult Adsterra unit
   (Elena / Room 704 / Confession Room). Adsterra units are domain-locked, so this
   needs its own approved entry for `flutter-after-hours.flat404.workers.dev`

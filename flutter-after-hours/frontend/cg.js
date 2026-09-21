@@ -245,18 +245,44 @@
       '<h2>Flutter: After Hours</h2>' +
       '<p>An adult visual novel. Everyone depicted is an adult and is written as one. ' +
       'Consensual only — no minors, no violence, no non-consent.</p>' +
-      '<p class="adultAi">Artwork is AI-assisted: directed, culled and retouched by hand. ' +
-      'The writing is human, every line.</p>' +
-      '<button class="adultYes">I am 18 or older — enter</button>' +
-      '<button class="adultNo">Leave</button></div>';
+      // 2026-09-21: this said "the writing is human, every line". Blaze retracted that
+      // claim everywhere it had been published (commit 8ae5eab) -- our own itch listings
+      // carried ai-generated-text at the same time. The house line is now the one below,
+      // which overclaims neither half.
+      '<p class="adultAi">Made with AI in the loop and a person steering it: the art is ' +
+      'generated and then culled, retouched and composited by hand, and the writing and ' +
+      'scripting were worked out the same way.</p>' +
+      '<button class="adultYes" type="button">I am 18 or older — enter</button>' +
+      // Below the primary action, not above it: the decline used to be absolutely
+      // positioned in the overlay's corner, and once the card gained a panel it landed
+      // on top of the 18+ kicker.
+      '<button class="adultNo" type="button">Leave</button></div>';
     document.body.appendChild(ov);
     ov.querySelector(".adultYes").onclick = function () {
       try { localStorage.setItem(KEY, "1"); } catch (e) {}
       if (window.TEL) { try { TEL.ev("adult_ack", {}); } catch (e) {} }
       ov.remove();
     };
+    // Declining used to run `location.href = "https://www.google.com"`, which is a
+    // destructive, irreversible navigation fired by a single click -- and the button sat
+    // directly beneath the primary one, so a stray tap ejected a paying player off the
+    // product. It also destroyed every automated play-through: ops/play_driver.py's first
+    // click is (640, 500), which landed exactly on this button, and the session was gone
+    // before the game had been touched once. Decline now ends in the page, reversibly.
     ov.querySelector(".adultNo").onclick = function () {
-      location.href = "https://www.google.com";
+      var card = ov.querySelector(".adultCard");
+      if (!card) return;
+      card.innerHTML =
+        '<div class="adultKicker">18+</div>' +
+        '<h2>Come back when you are 18.</h2>' +
+        '<p>This title is for adults only. Nothing here has loaded.</p>' +
+        '<button class="adultBack" type="button">Back</button>';
+      card.querySelector(".adultBack").onclick = function () { window.FAH_ADULT_GATE_REOPEN(); };
     };
+  };
+  window.FAH_ADULT_GATE_REOPEN = function () {
+    var old = document.getElementById("adultOv");
+    if (old) old.remove();
+    window.FAH_ADULT_GATE();
   };
 })();

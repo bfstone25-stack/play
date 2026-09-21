@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER: AFTER HOURS — He remembers what you told him</title><script src="config.js"></script><script>window.GATE_CONFIG={price:"$8.99",buyUrl:"https://bfstone25-stack.itch.io/flutter-after-hours/purchase",seconds:30};/* No directLink on this build: an adult forum ban for exactly that is recorded in ops memory (f95-ban-direct-link-ads). The ad track uses the banner-in-iframe path only. */</script><script src="gate.js"></script><script>window.BOARD_FROM="flutter-after-hours";</script><script src="board.js"></script><script src="cg.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script><script defer src="title.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4b1628"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>FLUTTER: AFTER HOURS — He remembers what you told him</title><script src="config.js"></script><script>window.GATE_CONFIG={price:"$8.99",buyUrl:"https://bfstone25-stack.itch.io/flutter-after-hours/purchase",seconds:30};/* No directLink on this build: an adult forum ban for exactly that is recorded in ops memory (f95-ban-direct-link-ads). The ad track uses the banner-in-iframe path only. */</script><script src="gate.js"></script><script>window.BOARD_FROM="flutter-after-hours";</script><script src="board.js"></script><script src="cg.js"></script><script src="editions.js"></script><script src="audio.js"></script><script src="opening.js"></script><script src="barks.js"></script><script defer src="title.js"></script>
 <style>
 :root{--accent:#e87aa8;--hue:320;--edition-bg0:#0c1720;--edition-bg1:#233343;--edition-bg2:#111a22;--edition-glowA:#d07c63;--edition-glowB:#547e99;--edition-ink:#f4eee8;--edition-muted:#c7bdba;--edition-font:'Avenir Next','Helvetica Neue',Inter,Arial,sans-serif}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -47,11 +47,20 @@ html[data-edition="ja"] .sound-btn,html[data-edition="ja"] .sound-panel,html[dat
 .kv-light{position:absolute;inset:0;z-index:-4;pointer-events:none;mix-blend-mode:screen;opacity:.42;
   background:radial-gradient(ellipse 42% 60% at var(--lightx,64%) 30%,rgba(255,214,140,.55),transparent 70%);
   animation:kvLight 15s ease-in-out infinite alternate}
+/* This is the route-selection screen's scrim, and it had the treatment the launch
+   gate's scrim was given earlier today but never got itself: an .86 ellipse over the
+   upper left, a vertical wash running .88 at the top to .94 at the bottom, and .58
+   down both sides -- something like 0.6 effective alpha of near-black plum over a
+   plate that measures 0.635 brightness. `bright-is-what-sells`: Nutaku's top 100
+   average 0.63, and darkening is not what makes an adult title read as adult.
+   Same principle as the gate: the scrim exists to keep type legible, so it is a band
+   where the type is (the brand block up top, the card row along the bottom) and not a
+   lid over the middle, where the art is. */
 .kv-scrim{position:absolute;inset:0;z-index:-3;pointer-events:none;background:
-  radial-gradient(ellipse 34% 22% at 26% 22%,rgba(26,6,24,.86),transparent 78%),
-  linear-gradient(180deg,rgba(30,10,26,.88) 0%,rgba(30,10,26,.52) 26%,rgba(24,8,22,.22) 44%,
-                  rgba(24,8,22,.62) 68%,rgba(18,6,18,.94) 100%),
-  linear-gradient(90deg,rgba(28,10,26,.58),transparent 34%,transparent 66%,rgba(28,10,26,.58))}
+  radial-gradient(ellipse 34% 22% at 26% 22%,rgba(26,6,24,.48),transparent 78%),
+  linear-gradient(180deg,rgba(30,10,26,.62) 0%,rgba(30,10,26,.30) 26%,rgba(24,8,22,.10) 46%,
+                  rgba(24,8,22,.34) 70%,rgba(18,6,18,.72) 100%),
+  linear-gradient(90deg,rgba(28,10,26,.30),transparent 30%,transparent 70%,rgba(28,10,26,.30))}
 .brand-mark{display:block;width:min(74vw,560px);height:auto;margin:0 auto;
   filter:drop-shadow(0 6px 26px rgba(24,6,20,.75));
   animation:markSettle 1.5s cubic-bezier(.16,.85,.2,1) .45s both}
@@ -85,9 +94,18 @@ html[data-edition="ja"] .sound-btn,html[data-edition="ja"] .sound-panel,html[dat
 /* The mark is gold and so is the lit half of his face; the first pass put one on the
    other and the logotype disappeared. The plum under the type is not decoration, it is
    what makes a gold mark a mark. */
+/* 2026-09-21. The plate under this scrim measures 0.635 brightness / 0.50 saturation and
+   puts a face across 60% of the frame. The composed title screen measured 0.27 against a
+   0.65 floor for its bucket -- the whole loss was here: an ellipse at .90 alpha sitting
+   directly on the lit half of his face, and a vertical wash running .82 at the top to .96
+   at the bottom. That is roughly 0.66 effective alpha of near-black plum over the art, so
+   two thirds of what we rendered never reached the player. `bright-is-what-sells`.
+   The scrim's job is to keep a gold logotype legible over a gold-lit face. It only has to
+   do that where the type is, so it is now a band behind the type rather than a lid on the
+   picture, and the face is no longer the darkest thing on screen. */
 #launchGate .kv-scrim{z-index:2;background:
-  radial-gradient(ellipse 46% 30% at 50% 44%,rgba(26,6,24,.90),rgba(26,6,24,.55) 62%,transparent 84%),
-  linear-gradient(180deg,rgba(30,10,26,.82) 0%,rgba(30,10,26,.42) 28%,rgba(24,8,22,.46) 58%,rgba(18,6,18,.96) 100%)}
+  radial-gradient(ellipse 52% 19% at 50% 52%,rgba(26,6,24,.62),rgba(26,6,24,.28) 64%,transparent 86%),
+  linear-gradient(180deg,rgba(30,10,26,.24) 0%,rgba(30,10,26,.06) 26%,rgba(24,8,22,.08) 56%,rgba(18,6,18,.50) 100%)}
 #launchGate .gate-inner{position:relative;z-index:3}
 #launchGate .gate-prompt{z-index:3}
 .gate-mark{display:block;width:min(78vw,640px);height:auto;margin:0 auto 6px;
@@ -121,21 +139,28 @@ html[data-edition="ja"] .sound-btn,html[data-edition="ja"] .sound-panel,html[dat
 @keyframes selectionLeave{to{opacity:0;filter:blur(12px);transform:scale(1.035)}}
 
 /* ---------- Edition art direction: shared soul, different markets ---------- */
-/* 中文《怦然》：柔软、被偏爱、糖度高，但以光和触感代替廉价贴纸感 */
-html[data-edition="zh"] #select{background:
-  radial-gradient(circle at 50% 14%,rgba(255,255,255,.82),transparent 24%),
-  linear-gradient(155deg,#fbe4ec 0%,#eec5d6 48%,#cfaecf 100%)}
+/* 中文《熄灯之后》。
+   This block used to be the PARENT game's zh skin, inherited whole: an OPAQUE candy
+   gradient (#fbe4ec -> #cfaecf) painted over #select, with two white bloom circles on
+   top of it. On the parent that is right -- it is an all-ages otome. Here it covered
+   the fork's key visual completely, so choosing 中文 on the 18+ build replaced the art
+   with pastel and the type with the parent's plum-on-pink. Two of the four ways
+   STANDARD.md says a fork must differ from its parent -- palette and composition --
+   undone by one CSS rule.
+   The en edition has no #select background at all, because the key visual is the
+   background. zh now does the same, and the type is re-tuned for a dark plate instead
+   of a light one. The typography and the pacing stay Chinese; only the candy goes. */
 html[data-edition="zh"] #select::before{background:
-  radial-gradient(circle at 12% 24%,rgba(255,255,255,.7),transparent 21%),
-  radial-gradient(circle at 84% 70%,rgba(255,217,232,.72),transparent 25%);animation:zhDream 7s ease-in-out infinite alternate}
+  radial-gradient(circle at 14% 22%,rgba(255,190,214,.20),transparent 24%),
+  radial-gradient(circle at 84% 70%,rgba(198,120,160,.22),transparent 28%);animation:zhDream 7s ease-in-out infinite alternate}
 html[data-edition="zh"] .title-noise{opacity:.05}
-html[data-edition="zh"] .title-orbit{width:260px;top:-70px;right:-100px;border-color:rgba(147,72,111,.15);animation-duration:26s}
-html[data-edition="zh"] #select h1{font-size:1.05em;font-weight:600;letter-spacing:.48em;color:#92506d;text-shadow:none}
-html[data-edition="zh"] .brand-local{font-size:2.5em;font-weight:600;letter-spacing:.28em;text-indent:.28em;margin-top:7px;color:#a84470;
-  text-shadow:0 8px 28px rgba(198,79,127,.25)}
-html[data-edition="zh"] .pulse-line path{stroke:#bc527e}
-html[data-edition="zh"] #select .sub{color:#7c5367}
-html[data-edition="zh"] .lang{color:#814d66;background:rgba(255,255,255,.44);border-color:rgba(121,69,94,.18)}
+html[data-edition="zh"] .title-orbit{width:260px;top:-70px;right:-100px;border-color:rgba(247,197,207,.16);animation-duration:26s}
+html[data-edition="zh"] #select h1{font-size:1.05em;font-weight:600;letter-spacing:.48em;color:#efc9d7;text-shadow:0 2px 18px rgba(20,6,16,.7)}
+html[data-edition="zh"] .brand-local{font-size:2.5em;font-weight:600;letter-spacing:.28em;text-indent:.28em;margin-top:7px;color:#f4d8c6;
+  text-shadow:0 8px 28px rgba(22,6,18,.75)}
+html[data-edition="zh"] .pulse-line path{stroke:#e29ab6}
+html[data-edition="zh"] #select .sub{color:#e3c2cc}
+html[data-edition="zh"] .lang{color:#f0d9e0;background:rgba(40,16,30,.42);border-color:rgba(240,200,214,.22)}
 html[data-edition="zh"] #cards{animation-name:zhCards}
 @keyframes zhDream{to{transform:translate3d(3%,-2%,0) scale(1.08)}}
 @keyframes zhCards{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
@@ -330,7 +355,17 @@ html[data-edition="pt-BR"] #brandIntro{color:#fff5dd;background:
 .pet{position:absolute;bottom:6px;left:14px;z-index:4;font-size:2em;animation:bob 3.4s ease-in-out infinite}
 
 /* 对话框 VN */
-.chatlog{position:relative;z-index:6;margin:0 12px 8px;padding:4px 4px;overflow-y:auto;flex:1 1 auto;min-height:80px;
+/* `min-height:80px` here was the reason the bottom of the game was being cut off.
+   #game is a fixed-height flex column: hud + chapbar + stage (42vh in the en edition)
+   + chatlog + dbox. At 1280x720 that adds up to about 732px of content in a 720px
+   box, so the overflow came off the END of the column -- the act row and its labels,
+   sliced in half by the viewport edge, which is exactly what the 2026-09-21 play
+   matrix photographed. A flex child with a min-height cannot give the space back, so
+   the log kept its 80px and the dialogue box lost its feet.
+   The log is now allowed to shrink to nothing (it scrolls; it is the one element
+   here that loses nothing by being short) and takes a flex-basis instead, so it
+   still gets the room on a tall window and yields it on a short one. */
+.chatlog{position:relative;z-index:6;margin:0 12px 8px;padding:4px 4px;overflow-y:auto;flex:1 1 80px;min-height:0;
   display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
 .chatlog::-webkit-scrollbar{width:4px}.chatlog::-webkit-scrollbar-thumb{background:rgba(150,90,120,.25);border-radius:4px}
 .msg{max-width:78%;padding:9px 14px;border-radius:16px;font-size:1.02em;line-height:1.5;word-wrap:break-word;
@@ -355,7 +390,9 @@ html[data-edition="pt-BR"] #brandIntro{color:#fff5dd;background:
 #send{background:linear-gradient(135deg,#f4cfa6,var(--accent) 70%);border:0;border-radius:22px;padding:0 18px;min-width:56px;min-height:44px;color:#fff;font-size:1em;font-weight:700;letter-spacing:1px;cursor:pointer;transition:transform .12s;box-shadow:0 3px 10px rgba(232,122,168,.35),inset 0 1px 0 rgba(255,255,255,.45)}
 #send:active{transform:scale(.9)}#send:disabled{opacity:.45}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.acts{display:flex;gap:8px;justify-content:space-around;margin-top:10px;padding:6px 0}
+/* `.act .lbl` hangs 16px BELOW its button (bottom:-16px), so a row with no bottom
+   padding puts the labels outside the box that is measuring the layout. */
+.acts{display:flex;gap:8px;justify-content:space-around;margin-top:10px;padding:6px 0 26px}
 .act{cursor:pointer;font-size:1.55em;padding:6px 10px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,120,170,.25);transition:transform .15s ease,background .2s ease;user-select:none;position:relative}
 .act:active{transform:scale(.88)}
 .act:hover{background:rgba(255,120,170,.15)}
@@ -531,14 +568,49 @@ html[data-edition="pt-BR"] .chapter-wish{background:radial-gradient(circle at 17
 .cgCell.got img{opacity:1;filter:none;cursor:pointer}
 .cgCell span{position:absolute;left:0;right:0;bottom:0;padding:5px 7px;font-size:.62em;letter-spacing:.08em;background:rgba(8,6,12,.72);color:#e9dfe2}
 /* ── 18+ interstitial (cg.js) ── */
-#adultOv{position:fixed;inset:0;z-index:99999;background:#0b070e;display:flex;align-items:center;justify-content:center;padding:20px;font-family:system-ui,sans-serif}
+/* The 18+ interstitial is the FIRST frame of this product -- it is what the readiness
+   audit photographs and what a player sees before anything else, and it was a flat
+   #0b070e ground with type on it: brightness 0.08, figure share 0.01, which is exactly
+   what STANDARD.md item 2 forbids of a title. The key visual now sits behind it under a
+   scrim heavy enough to keep the consent copy legible, and breathes so the first frame
+   is not a still. */
+#adultOv{position:fixed;inset:0;z-index:99999;background:#0b070e;display:flex;align-items:center;justify-content:center;padding:20px;font-family:system-ui,sans-serif;overflow:hidden}
+/* inset:-6% plus a 1.04-1.10 breath cropped about a fifth off every edge of the
+    plate, and those edges are where its light is: the 1920x1080 key visual measures
+    0.636 mean V whole, and this frame came back at 0.26. The plate is already 16:9,
+    so it wants to be shown, not zoomed -- the scale range now only covers the
+    parallax drift (1.03 gives 1.5% of bleed per side against a 1.2% translate, so
+    the edge still never enters frame). */
+#adultOv::before{content:"";position:absolute;inset:0;z-index:0;background:url("title/keyvisual.webp") center/cover no-repeat;
+  animation:adultBreath 24s ease-in-out infinite alternate}
+/* The scrim was a full-frame radial at .62-.86 alpha, which made the consent copy
+   legible by making the whole first frame dark: measured 0.26 brightness against a
+   0.65 floor for this bucket. Legibility does not need the FRAME dark, it needs the
+   TEXT's own ground dark -- so the frame keeps only enough veil to sit the card on
+   (and a stronger one at the edges, where the plate is busiest), and the card below
+   carries its own panel. */
+#adultOv::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(80% 70% at 50% 50%,rgba(12,6,14,.04),rgba(12,6,14,.14) 62%,rgba(10,5,12,.34) 100%)}
+@keyframes adultBreath{from{transform:scale(1.03) translate3d(0,0,0)}to{transform:scale(1.07) translate3d(-1.2%,-0.8%,0)}}
+@media (prefers-reduced-motion: reduce){#adultOv::before{animation:none}}
+.adultCard{position:relative;z-index:2;padding:30px 30px 26px;border-radius:18px;
+  background:linear-gradient(165deg,rgba(24,10,20,.90),rgba(14,6,14,.94));
+  border:1px solid rgba(233,180,160,.24);
+  box-shadow:0 0 60px rgba(0,0,0,.55),0 24px 60px rgba(0,0,0,.45);
+  backdrop-filter:blur(10px)}
 .adultCard{max-width:460px;color:#eee;text-align:center;line-height:1.6}
 .adultKicker{color:#e87aa8;letter-spacing:.34em;font-size:.9em;margin-bottom:8px}
 .adultCard h2{margin:.2em 0 .8em;font-weight:500}
 .adultCard p{font-size:.88em;color:#cbbfc4}
 .adultAi{font-size:.8em!important;color:#9e9299!important}
-.adultYes{margin-top:18px;display:block;width:100%;padding:13px;background:#d95a43;color:#fff;border:0;border-radius:6px;font-size:1em;cursor:pointer}
-.adultNo{margin-top:10px;background:none;border:0;color:#8b8189;text-decoration:underline;cursor:pointer;font-size:.82em}
+.adultYes{margin-top:22px;display:block;width:100%;padding:16px;background:#d95a43;color:#fff;border:0;border-radius:6px;font-size:1em;cursor:pointer}
+/* "Leave" is a one-click irreversible exit, so it does not sit in the centre column
+   under the primary button where a stray tap finds it. It lives in the corner. */
+/* "Leave" used to sit at the overlay's top-left; once the card became a panel it
+    landed on top of the 18+ kicker. It belongs below the primary action anyway --
+    far from the thumb that is reaching for "enter". */
+.adultNo{position:static;display:block;margin:14px auto 0;background:none;border:0;color:#8b8189;text-decoration:underline;cursor:pointer;font-size:.82em;padding:8px}
+.adultBack{margin-top:22px;display:block;width:100%;padding:14px;background:none;color:#cbbfc4;border:1px solid #4a3d46;border-radius:6px;font-size:.92em;cursor:pointer}
 .archiveGrid{display:grid;gap:10px;text-align:left;margin-top:18px}.archiveItem{padding:13px;border-left:2px solid var(--edition-glowA);background:rgba(255,255,255,.06)}
 .archiveEmpty{padding:34px 0;color:var(--edition-muted)}.routeProgress{position:absolute;top:14px;right:14px;z-index:4;padding:5px 9px;border-radius:999px;
   background:rgba(8,5,10,.56);color:#fff;font-size:.64em;letter-spacing:.06em;backdrop-filter:blur(8px)}
@@ -553,7 +625,16 @@ html[data-edition="en"] #inp{background:rgba(255,244,240,.09);border-color:rgba(
 html[data-edition="en"] #inp::placeholder{color:rgba(255,255,255,.48)}
 
 html[data-edition="zh"] .portrait{border-radius:25px;box-shadow:0 0 0 4px rgba(255,255,255,.5),0 0 48px 7px var(--accent),0 16px 44px rgba(80,34,58,.22)}
-html[data-edition="zh"] .dbox{background:rgba(255,250,252,.88);box-shadow:0 -5px 28px rgba(181,91,132,.2)}
+/* The in-game chrome had the same inheritance problem as the title screen: the zh
+   dialogue box was near-white candy (rgba(255,250,252,.88)) and its beat cards a
+   pink-white gradient, while the en edition of this same fork runs dark plum. One
+   game in two skins is fine; one 18+ game whose Chinese half wears the all-ages
+   skin is not. Re-tuned to the fork register, keeping zh's softer radii. */
+html[data-edition="zh"] .dbox{background:rgba(36,15,26,.86);border:1px solid rgba(240,155,185,.16);box-shadow:0 -8px 34px rgba(22,4,14,.4)}
+html[data-edition="zh"] .line{color:#f6ecef}
+html[data-edition="zh"] #inp{background:rgba(255,240,246,.09);border-color:rgba(240,155,185,.22);color:#fff}
+html[data-edition="zh"] #inp::placeholder{color:rgba(255,255,255,.46)}
+html[data-edition="zh"] .chip{background:rgba(255,240,246,.10);border-color:rgba(240,155,185,.26);color:#f0c8d8}
 
 html[data-edition="ja"] .portrait{border-radius:2px;box-shadow:12px 14px 0 rgba(255,255,255,.18),0 20px 42px rgba(25,30,34,.25)}
 html[data-edition="ja"] .dbox{border-radius:2px;background:rgba(239,238,233,.9);box-shadow:0 -1px 0 rgba(50,55,58,.16)}
@@ -591,10 +672,10 @@ html[data-edition="en"] #game .chap{letter-spacing:.06em;text-transform:uppercas
 /* ZH — central romantic stage, soft layering and visible emotional reward */
 html[data-edition="zh"] #game .stage{height:39vh}
 html[data-edition="zh"] #game .hud{padding-top:16px}
-html[data-edition="zh"] #game .msg.them{border-radius:18px 18px 18px 5px}
+html[data-edition="zh"] #game .msg.them{border-radius:18px 18px 18px 5px;background:rgba(32,13,23,.86);color:#f6ebef;border:1px solid rgba(240,155,185,.15)}
 html[data-edition="zh"] #game .msg.me{border-radius:18px 18px 5px 18px;background:linear-gradient(135deg,#d95d8d,var(--accent))}
 html[data-edition="zh"] #game .dbox{border-radius:24px}
-html[data-edition="zh"] #game .beat{border-radius:18px;background:linear-gradient(135deg,rgba(255,247,250,.95),rgba(250,224,233,.92))}
+html[data-edition="zh"] #game .beat{border-radius:18px;background:linear-gradient(135deg,rgba(44,18,31,.92),rgba(30,12,22,.94));color:#f6ecef;border:1px solid rgba(240,155,185,.14)}
 
 /* JA — the environment leads; quiet editorial panels and deliberate whitespace */
 html[data-edition="ja"] #game .hud{padding:18px 20px 10px;border-bottom:1px solid rgba(55,60,63,.12)}
@@ -855,6 +936,33 @@ html[data-edition="pt-BR"] #game .chip{background:rgba(255,248,222,.75);border-c
   .op-frame,.op-world,.op-caption,.op-wordmark,.op-local,.op-tagline{animation:none!important}
   #opening .op-scene-image{animation:none!important}
 }
+
+/* Short viewports: give the dialogue box its feet back.
+   #game is a fixed-height flex column -- hud, chapter bar, stage, chat log, dialogue
+   box -- and the stage is sized in vh (42vh in the en edition, 39vh in zh). On a 720px
+   window that is 302px, and hud + bar + stage + the dialogue box's own min-content
+   height comes to more than 720: the overflow falls off the END of the column, so the
+   act row's labels are sliced by the viewport edge. Letting the chat log shrink to
+   nothing recovered most of it and not all of it, because the stage cannot shrink at
+   all while its height is a vh.
+   1280x720 is the size ops/play_driver.py photographs at and the size of a laptop in
+   a browser with chrome, so it is not an edge case. This trims the stage -- the one
+   element here with room to spare, it is a portrait card on a gradient -- rather than
+   the dialogue box, which is where the game is. Placed last so it wins over the
+   per-edition heights above it without !important. */
+@media (max-height: 800px){
+  #game .stage,
+  html[data-edition="en"] #game .stage,
+  html[data-edition="zh"] #game .stage,
+  html[data-edition="ja"] #game .stage,
+  html[data-edition="es"] #game .stage,
+  html[data-edition="pt-BR"] #game .stage{height:26vh}
+  #game[data-portrait-mode="scene"] .stage,
+  html[data-edition="ja"] #game[data-portrait-mode="scene"] .stage,
+  html[data-edition="es"] #game[data-portrait-mode="scene"] .stage,
+  html[data-edition="pt-BR"] #game[data-portrait-mode="scene"] .stage{height:25vh}
+  #game .hud{padding-top:10px;padding-bottom:4px}
+}
 </style><!-- closed-loop telemetry bootstrap -->
 <script>
 window.TEL_APP = window.TEL_APP || 'flutter';
@@ -924,7 +1032,9 @@ window.API = window.API || window.TEL_API;
   <div class="title-noise"></div><div class="title-orbit"></div>
   <div class="brand">
     <img class="brand-mark" src="title/logotype.webp" alt="Flutter: After Hours" decoding="async">
-    <h1 class="sr-only">FLUTTER</h1><div class="brand-local" id="brandLocal">怦然</div>
+    <h1 class="sr-only">FLUTTER: AFTER HOURS</h1><!-- filled from edition.localTitle by
+      syncBrand(); the static default was the PARENT game's name, 怦然, which is what
+      the first frame showed before the script ran. --><div class="brand-local" id="brandLocal">AFTER HOURS</div>
     <svg class="pulse-line" viewBox="0 0 230 20" aria-hidden="true"><path d="M1 11h73l8-1 5-8 8 17 7-14 7 6h120"/></svg>
     <div class="brand-category">HER · PSYCHE · RPG</div>
   </div>
@@ -1157,6 +1267,7 @@ function petals(hue){
    e.style.opacity=edition.id==="ja"?".35":".7";p.appendChild(e);}
 }
 function startRoute(id){
+ bark("greet"); idleWatch(true);
  answeredChoices={};   // per-run: replaying a route must be able to answer its choices again
  fetch(API+"/gpu/warmup",{method:"POST"}).catch(()=>{});
  if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("conversation");
@@ -1377,6 +1488,18 @@ function doAct(k){
  if(ms[aff]) celebrate(zh?ms[aff][0]:ms[aff][1]);
  save();
 }
+/* The idle bark. The other eight ride an event this file already fires; "idle" by
+ * definition fires when nothing happens, so it needs a clock of its own. It is armed when
+ * a route opens, re-armed on every bubble, and disarmed when the story ends -- an idle
+ * line over an ending card would talk across the credits. Forty seconds, and at most one
+ * per quiet stretch: the point is a nudge, not a nag. */
+let _idleTimer=null,_idleSaid=false;
+function idleWatch(on){
+ clearTimeout(_idleTimer); _idleTimer=null;
+ if(!on)return;
+ _idleTimer=setTimeout(()=>{ if(!storyDone&&!_idleSaid){_idleSaid=true;bark("idle");} },40000);
+}
+function bark(slot){ try{ window.FAH_BARK&&FAH_BARK.play(slot); }catch(_){} }
 function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
 // 轻量markdown->HTML: 转义后还原行内标记(**粗**/*斜*/_斜_/`码`),换行->br
 function mdInline(s){
@@ -1391,6 +1514,7 @@ function mdInline(s){
 
 // ── 聊天流: 每句话累积成气泡, 可上滑回看之前的对话 ──
 function pushBubble(text, who){ // who: 'me' | 'them' | 'ev'
+ _idleSaid=false; idleWatch(!storyDone);
  const log=document.getElementById("chatlog");
  const b=document.createElement("div");
  b.className="msg "+who;
@@ -1488,15 +1612,25 @@ function updateAff(anim){ if(route) updatePortrait();
  document.getElementById("affpct").textContent=t.nxt?(aff+" → "+t.hi):(complete+" "+aff);
  // 跨段位: 徽章脉冲 + 进度条发光
  if(t.idx>_lastTierIdx && _lastTierIdx>=0 && anim){
+   bark("stage");
    badge.classList.remove("tierpulse");void badge.offsetWidth;badge.classList.add("tierpulse");
    const g=document.getElementById("barglow");g.style.width="100%";g.style.opacity="1";
    setTimeout(()=>{g.style.opacity="0";},900);
  }
+ else if(anim&&t.nxt&&t.pct>=82)bark("near");
  _lastTierIdx=t.idx;
  document.getElementById("fill").parentNode.querySelector("#barglow").style.width=t.pct+"%";
 }
 // +N ♥ 飘字: 说得好飘大金心,敷衍飘小灰字。用 CSS @keyframes 播,不依赖 transition 触发时机
+/* Barks ride the moments the game already recognises rather than new ones invented for
+ * them -- STANDARD.md item 5 lists the slots, and every one of them already had a place
+ * in this file. `n` here is the game's own verdict on the line just sent, so it is what
+ * separates a win from a miss; three strong ones running is the streak. */
+let _barkStreak=0;
 function heartGain(n){
+ if(n>=3){ _barkStreak++; bark(_barkStreak>=3?"streak":"win"); if(_barkStreak>=3)_barkStreak=0; }
+ else if(n<=1){ _barkStreak=0; bark("fail"); }
+ else _barkStreak=0;
  const st=document.querySelector(".stage");
  const r=st?st.getBoundingClientRect():{left:window.innerWidth/2-40,top:window.innerHeight*0.35,width:80,height:120};
  const el=document.createElement("div");el.className="heartgain";
@@ -1643,6 +1777,7 @@ function showCgMoment(slot){
  document.body.appendChild(ov);
 }
 function showChapterClear(clear){
+ bark("unlock");
  const ui=gameUi(),reward=clear.reward||{};
  directMusic({kind:"clear",text:(reward.title||"")+" "+(reward.text||"")});
  collect("reward",reward);
@@ -1687,6 +1822,7 @@ function boardBreak(){
  setTimeout(()=>BOARD.offerBreak(),900);
 }
 function showEnding(end){
+ bark("win_big"); idleWatch(false);
  if(window.FLUTTER_AUDIO)FLUTTER_AUDIO.setScene("theme");
  storyDone=true;
  collect("ending",end);
@@ -1841,7 +1977,7 @@ const BRAND_INTROS={en:[
  "每一章，都需要你更诚实一点。",
  "每一次选择，都会留下回声。",
  "同一个夜晚，可能成为偏爱、遗憾，<br>或者终于说出口的喜欢。",
- "《怦然》不是旁观别人的爱情。<br>这是一次被认真记住的人生。"
+ "《熄灯之后》不是旁观别人的爱情。<br>这是一次被认真记住的人生。"
 ],ja:[
  "言葉より先に、<br>沈黙があなたを語っている。",
  "彼が覚えているのは、<br>あなたが目をそらした、その一瞬。",

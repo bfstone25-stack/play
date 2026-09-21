@@ -69,27 +69,62 @@ fi
 
 # Drop the music for editions this build does not ship.
 #
-# The fork's content pack is English only (frontend/editions.js SHIPPED), but the
-# audio symlink resolves the parent's whole five-edition BGM library into the
-# package: 108 files and 167 MiB of zh/ja/es/pt tracks that nothing in this build
-# can ever reach, on a 219 MB package going to a Cloudflare Workers asset upload.
-# Keep this in step with editions.js: a language added there must be removed here.
-for pre in zh ja es pt pt-BR; do
+# The audio symlink resolves the parent's whole five-edition BGM library into the
+# package: 167 MiB of tracks that nothing in this build can ever reach, on a
+# package going to a Cloudflare Workers asset upload. So the unshipped ones go.
+#
+# This USED TO BE a hardcoded `for pre in zh ja es pt pt-BR`, under a comment saying
+# "keep this in step with editions.js: a language added there must be removed here".
+# On 2026-09-21 zh was added to editions.js and this list was not updated, and the
+# result was a package offering a Chinese edition with every Chinese track deleted
+# out of it -- silently, because the verification below skipped exactly the prefixes
+# this loop deletes, so it had nothing to say. Degrading to silence is
+# indistinguishable from "the music has not started yet".
+#
+# So the list is no longer written twice. editions.js is the single source of truth
+# and this reads SHIPPED out of it.
+SHIPPED_EDITIONS=$(python3 - "$HERE/frontend/editions.js" <<'PY'
+import re, sys, pathlib
+src = pathlib.Path(sys.argv[1]).read_text(encoding="utf-8")
+m = re.search(r"const\s+SHIPPED\s*=\s*\[([^\]]*)\]", src)
+if not m:
+    sys.exit("FATAL: could not read SHIPPED out of editions.js")
+ids = re.findall(r"['\"]([A-Za-z-]+)['\"]", m.group(1))
+if not ids:
+    sys.exit("FATAL: SHIPPED in editions.js is empty")
+# audio files are named by the CONTENT pack prefix, which is "pt" for pt-BR.
+print(" ".join(dict.fromkeys({"pt-BR": "pt"}.get(i, i) for i in ids)))
+PY
+)
+[ -n "$SHIPPED_EDITIONS" ] || { echo "FATAL: no shipped editions resolved" >&2; exit 1; }
+echo "editions shipped: $SHIPPED_EDITIONS"
+TRIMMED=""
+for pre in zh ja es pt; do
+  case " $SHIPPED_EDITIONS " in
+    *" $pre "*) continue ;;
+  esac
+  TRIMMED="$TRIMMED $pre"
   find "$OUT/audio" -type f \( -name "$pre-*" -o -name "$pre.ogg" -o -name "$pre.mp3" \) -delete
+  [ "$pre" = "pt" ] && find "$OUT/audio" -type f -name "pt-BR-*" -delete
 done
 
 # ...and prove the edition that IS shipped still has every file it names. A trim
 # that quietly removes a track the game asks for degrades to silence, which is
 # indistinguishable from "the music has not started yet".
-python3 - "$HERE/frontend/audio.js" "$OUT" <<'PY'
+# shellcheck disable=SC2086
+python3 - "$HERE/frontend/audio.js" "$OUT" $TRIMMED <<'PY'
 import re, sys, pathlib
 src, out = pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"), pathlib.Path(sys.argv[2])
+# The prefixes to skip are the ones this build actually TRIMMED, passed in. They used
+# to be hardcoded as zh/ja/es/pt, which meant that the moment zh became a shipped
+# edition this check went blind to precisely the files that had just been deleted by
+# mistake -- a verification that could only ever agree with the bug.
+trimmed = tuple("audio/bgm/" + p for p in sys.argv[3:])
 missing = []
 for m in re.findall(r"audio/[A-Za-z0-9_./${}-]+\.(?:mp3|ogg|opus)", src):
     if "${" in m:           # template paths are resolved per edition at runtime
         continue
-    if not m.startswith(("audio/bgm/zh", "audio/bgm/ja", "audio/bgm/es", "audio/bgm/pt")) \
-       and not (out / m).is_file():
+    if not (trimmed and m.startswith(trimmed)) and not (out / m).is_file():
         missing.append(m)
 if missing:
     print("FATAL: the shipped edition references files the trim removed:", file=sys.stderr)

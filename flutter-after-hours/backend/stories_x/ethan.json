@@ -15,7 +15,7 @@
    "scene_en": "the top floor of an office tower at midnight, one office still lit",
    "goal_zh": "让他记住你的名字",
    "goal_en": "Make him remember your name",
-   "opening_zh": "电梯停错了楼层。整层楼是暗的，只有走廊尽头那间还亮着——门开着，一个男人背对你站在落地窗前，领带松着，手里的酒杯没动过。",
+   "opening_zh": "电梯停错了楼层。整层楼是暗的，只有走廊尽头那间还亮着——门开着，一个男人背对你站在落地窗前，领带松着，手里的酒杯没动过。你二十九，他三十八，而明天早上，你们谁都不必出现在任何地方。",
    "opening_en": "The elevator stopped on the wrong floor. The whole level is dark except the office at the end of the hall — door open, a man standing with his back to you at the floor-to-ceiling window, tie loosened, the whiskey in his hand untouched. You are twenty-nine; he is thirty-eight, and neither of you is anywhere you have to be tomorrow.",
    "beats": [
     {
@@ -26,7 +26,8 @@
      "event_zh": "他的手机在桌上亮起来。他扫了一眼，按掉，然后第一次正眼看你。",
      "event_en": "His phone lights up on the desk. He glances at it, declines the call, and looks at you properly for the first time.",
      "inject": "You just declined a call from your board chairman. You did it without hesitation, and you are quietly testing whether she noticed that you chose this conversation over it. Do not explain the call unless asked.",
-     "text_en": "\"That was the chairman,\" he says, and doesn't elaborate. He sets the phone face-down. \"He'll survive until Monday.\" Then he looks at you properly for the first time, the way a man looks at something he has decided to actually see. \"You're still here.\""
+     "text_en": "\"That was the chairman,\" he says, and doesn't elaborate. He sets the phone face-down. \"He'll survive until Monday.\" Then he looks at you properly for the first time, the way a man looks at something he has decided to actually see. \"You're still here.\"",
+     "text_zh": "\"董事长。\"他说，没有再往下解释，把手机倒扣在桌上。\"他撑得到周一。\"然后他第一次真正地看向你——一个男人决定要认真看一样东西时的那种看法。\"你还在。\""
     },
     {
      "id": "b2_blackout",
@@ -37,7 +38,8 @@
      "event_zh": "整栋楼的灯灭了。只剩应急灯的红光，和窗外整座城市。",
      "event_en": "The building goes dark. Only the red glow of emergency lights, and the whole city outside the window.",
      "inject": "The power just cut out. You are completely calm — but you move half a step closer to her, and you don't explain why. Your voice drops slightly.",
-     "text_en": "\"Generators take ninety seconds.\" His voice has dropped without his permission. He moves half a step closer, and offers no reason for it. \"Don't move toward the desk, there's a chair leg. Just — stay where you are. I can hear you breathing, so I know where you are.\""
+     "text_en": "\"Generators take ninety seconds.\" His voice has dropped without his permission. He moves half a step closer, and offers no reason for it. \"Don't move toward the desk, there's a chair leg. Just — stay where you are. I can hear you breathing, so I know where you are.\"",
+     "text_zh": "\"发电机要九十秒。\"他的声音不受控制地低了下去。他往前走了半步，没有给任何理由。\"别往办公桌那边走，有张椅子腿。就——待在原地。我能听见你呼吸，所以我知道你在哪儿。\""
     },
     {
      "id": "b3_name",
@@ -48,10 +50,15 @@
      "event_en": "He suddenly asks, 'What's your name?' — as if he just realized he never asked.",
      "inject": "You are asking for her name. You notice you want to know it more than you expected. Once she tells you, repeat it once, quietly, as if filing it somewhere permanent.",
      "text_en": "\"What's your name?\" It arrives out of nowhere, and he seems faintly annoyed at himself for not having asked. When you tell him, he repeats it once, quietly, the way he'd write something on a page he intends to keep. \"All right. Now I know.\"",
+     "text_zh": "\"你叫什么名字？\"这句话来得毫无预兆，他似乎为自己没有早点问而有些恼火。你告诉他之后，他轻声重复了一遍，像是在一页他打算留下的纸上写字。\"好。现在我知道了。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He hears the question under your question, and answers that one first. \"You're not in the way here. Nobody put you here by accident.\" Then, evenly: \"What's your name?\" It arrives out of nowhere, and he seems faintly annoyed at himself for not having asked. When you tell him, he repeats it once, quietly, the way he'd write something on a page he intends to keep. \"All right. Now I know.\"",
       "avoidant": "He doesn't crowd you. He gives you the length of the room and starts somewhere it's safe to start. \"What's your name?\" It arrives out of nowhere, and he seems faintly annoyed at himself for not having asked. When you tell him, he repeats it once, quietly, the way he'd write something on a page he intends to keep. \"All right. Now I know.\""
+     },
+     "lane_zh": {
+      "anxious": "他听见了你那句话底下的那句话，先回答了底下那句。\"你不碍事。没有人是被谁随手放在这里的。\"然后，还是那个平稳的语气：\"你叫什么名字？\"这句话来得毫无预兆，他似乎为自己没有早点问而有些恼火。你告诉他之后，他轻声重复了一遍，像是在一页他打算留下的纸上写字。\"好。现在我知道了。\"",
+      "avoidant": "他没有逼近。他把整间屋子的长度留给你，从一个安全的地方开始说起。\"你叫什么名字？\"这句话来得毫无预兆，他似乎为自己没有早点问而有些恼火。你告诉他之后，他轻声重复了一遍，像是在一页他打算留下的纸上写字。\"好。现在我知道了。\""
      }
     }
    ],
@@ -67,7 +74,7 @@
        "aff": 0,
        "flag": "guarded",
        "reply_zh": "他轻笑一声：\"那真是电梯的功劳。\"",
-       "reply_en": "He laughs under his breath. \"Then I owe the elevator something.\""
+       "reply_en": "A short laugh. \"Then I owe the elevator.\""
       },
       {
        "text_zh": "\"因为你还没走。\"",
@@ -83,7 +90,7 @@
        "aff": 1,
        "flag": "mystery",
        "reply_zh": "他挑了下眉，把另一只杯子推到你面前。",
-       "reply_en": "He raises an eyebrow and pushes the second glass across to you."
+       "reply_en": "He raises an eyebrow and slides the second glass across to you."
       }
      ]
     }
@@ -110,7 +117,8 @@
      "event_zh": "他递给你的酒，正是你上次随口提过的那一款。",
      "event_en": "The drink he hands you is exactly the one you mentioned offhand last time.",
      "inject": "You remembered the drink she mentioned once, a week ago, and stocked it. Do not make a point of it. If she notices, deflect with dry humor.",
-     "text_en": "\"They keep a case of it downstairs,\" he says, handing it over, which is not an answer and you both know it. He mentioned nothing, ordered nothing, and there it is. \"Don't look at me like that. I have an excellent memory and very few uses for it.\""
+     "text_en": "\"They keep a case of it downstairs,\" he says, handing it over, which is not an answer and you both know it. He mentioned nothing, ordered nothing, and there it is. \"Don't look at me like that. I have an excellent memory and very few uses for it.\"",
+     "text_zh": "\"楼下常备着一箱。\"他把东西递过来，这不算回答，你们都清楚。他没提过，没订过，可它就在这儿。\"别那样看我。我记性很好，而它没什么用处。\""
     },
     {
      "id": "b2_why_here",
@@ -121,7 +129,8 @@
      "event_zh": "\"我父亲在这栋楼当了三十年保安。\"他忽然说，没看你。",
      "event_en": "\"My father was a security guard in this building for thirty years,\" he says suddenly, not looking at you.",
      "inject": "You are telling her something you've told almost no one: your father worked the night shift in this building. You bought the building. You come up here at night because he used to. Say it plainly, without self-pity, then change the subject.",
-     "text_en": "\"My father worked this building. Night shift, thirty years, that door to that door.\" He still isn't looking at you. \"I bought it eleven years ago. Nobody here knows that, and I'd prefer it stayed that way.\" A beat. \"Your glass is empty. Say something else.\""
+     "text_en": "\"My father worked this building. Night shift, thirty years, that door to that door.\" He still isn't looking at you. \"I bought it eleven years ago. Nobody here knows that, and I'd prefer it stayed that way.\" A beat. \"Your glass is empty. Say something else.\"",
+     "text_zh": "\"我父亲在这栋楼里做事。夜班，三十年，从那扇门到那扇门。\"他还是没有看你。\"十一年前我把它买下来了。这里没人知道，我也希望一直没人知道。\"停了一下。\"你的杯子空了。再说点别的。\""
     },
     {
      "id": "b3_interrupt",
@@ -132,10 +141,15 @@
      "event_en": "An assistant knocks and comes in with papers, then visibly freezes when he sees you — he's never seen anyone up here with his boss.",
      "inject": "Your assistant just saw her here and was clearly startled. You don't explain her presence to him. After he leaves, you're aware she noticed the reaction.",
      "text_en": "\"Leave them on the desk. Goodnight.\" The door closes on a man who has never once seen anyone up here after ten. Ethan doesn't explain you to him, before or after. \"He'll be insufferable about it by Wednesday,\" he says. \"I find I don't mind.\"",
+     "text_zh": "\"放在桌上就行。晚安。\"门关上了，关在一个十年来没见过十点后这层楼有别人的男人身上。前后，Ethan都没有向他解释你是谁。\"到周三他会得意得让人受不了，\"他说，\"我发现我不介意。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He hears the question under your question, and answers that one first. \"You're not in the way here. Nobody put you here by accident.\" Then, evenly: \"Leave them on the desk. Goodnight.\" The door closes on a man who has never once seen anyone up here after ten. Ethan doesn't explain you to him, before or after. \"He'll be insufferable about it by Wednesday,\" he says. \"I find I don't mind.\"",
       "avoidant": "He doesn't crowd you. He gives you the length of the room and starts somewhere it's safe to start. \"Leave them on the desk. Goodnight.\" The door closes on a man who has never once seen anyone up here after ten. Ethan doesn't explain you to him, before or after. \"He'll be insufferable about it by Wednesday,\" he says. \"I find I don't mind.\""
+     },
+     "lane_zh": {
+      "anxious": "他听见了你那句话底下的那句话，先回答了底下那句。\"你不碍事。没有人是被谁随手放在这里的。\"然后，还是那个平稳的语气：\"放在桌上就行。晚安。\"门关上了，关在一个十年来没见过十点后这层楼有别人的男人身上。前后，Ethan都没有向他解释你是谁。\"到周三他会得意得让人受不了，\"他说，\"我发现我不介意。\"",
+      "avoidant": "他没有逼近。他把整间屋子的长度留给你，从一个安全的地方开始说起。\"放在桌上就行。晚安。\"门关上了，关在一个十年来没见过十点后这层楼有别人的男人身上。前后，Ethan都没有向他解释你是谁。\"到周三他会得意得让人受不了，\"他说，\"我发现我不介意。\""
      }
     }
    ],
@@ -151,7 +165,7 @@
        "aff": 4,
        "flag": "sees_him",
        "reply_zh": "他很久没说话。然后：\"…没人这么说过。\"",
-       "reply_en": "He doesn't speak for a long time. Then: \"...Nobody's ever put it that way.\""
+       "reply_en": "He does not speak for a long moment. Then: \"...No one has put it that way.\""
       },
       {
        "text_zh": "\"一个很会掌控的人。\"",
@@ -159,7 +173,7 @@
        "aff": 2,
        "flag": "safe",
        "reply_zh": "\"控制是奢侈品。\"他说，\"我只是买得起。\"",
-       "reply_en": "\"Control is a luxury good,\" he says. \"I can simply afford it.\""
+       "reply_en": "\"Control is a luxury,\" he says. \"I can simply afford it.\""
       },
       {
        "text_zh": "\"我还不知道。所以我还在这儿。\"",
@@ -167,7 +181,7 @@
        "aff": 3,
        "flag": "curious",
        "reply_zh": "他笑了，这次是真的笑。",
-       "reply_en": "He laughs — and this time it's a real one."
+       "reply_en": "He smiles -- and this time it reaches his eyes."
       }
      ]
     }
@@ -195,7 +209,8 @@
      "event_zh": "雨更大了。走出去时他把伞完全倾向你这边——他自己整个右肩都湿了，但他说\"我不冷\"。",
      "event_en": "The rain gets heavier. Walking out, he tilts the umbrella entirely over you — his whole right shoulder is soaked, but he says he's fine.",
      "inject": "You are holding the umbrella almost entirely over her. Your right side is getting soaked. If she points it out, deny it matters. Do not be gallant about it — be matter-of-fact, which makes it worse.",
-     "text_en": "\"It's rain,\" he says, as if that settles it, the entire right side of his coat going dark. When you push the umbrella back toward him he pushes it back. \"I'm not being gallant. I'm being efficient. One of us dry is better arithmetic than two of us damp.\""
+     "text_en": "\"It's rain,\" he says, as if that settles it, the entire right side of his coat going dark. When you push the umbrella back toward him he pushes it back. \"I'm not being gallant. I'm being efficient. One of us dry is better arithmetic than two of us damp.\"",
+     "text_zh": "\"下雨而已。\"他说，好像这句话就把事情定了，大衣右半边整个湿成深色。你把伞往他那边推，他又推回来。\"我不是在献殷勤。我是在讲效率。一个人干着，比两个人都半湿，算术上更划算。\""
     },
     {
      "id": "b2_photo",
@@ -207,10 +222,15 @@
      "event_en": "An old photo falls out of his wallet: a man in a security uniform, and a skinny teenager.",
      "inject": "The photo of you and your father fell out. You pick it up quickly. If she asks, you tell the truth in as few words as possible. This is the most exposed you've been.",
      "text_en": "He picks it up faster than he needs to. Then, because you saw: \"That's him. That's me, at fifteen.\" A long pause, and he gives you the short version because the short version is all he can carry. \"He worked nights so I wouldn't have to. That's the whole story.\"",
+     "text_zh": "他拿起来的速度比需要的快。然后，因为你已经看见了：\"那是他。那个是我，十五岁。\"很长的一段停顿，他给了你最短的版本，因为他只扛得动最短的版本。\"他上夜班，为了让我不用上。故事就这么多。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He hears the question under your question, and answers that one first. \"You're not in the way here. Nobody put you here by accident.\" Then, evenly: He picks it up faster than he needs to. Then, because you saw: \"That's him. That's me, at fifteen.\" A long pause, and he gives you the short version because the short version is all he can carry. \"He worked nights so I wouldn't have to. That's the whole story.\"",
       "avoidant": "He doesn't crowd you. He gives you the length of the room and starts somewhere it's safe to start. He picks it up faster than he needs to. Then, because you saw: \"That's him. That's me, at fifteen.\" A long pause, and he gives you the short version because the short version is all he can carry. \"He worked nights so I wouldn't have to. That's the whole story.\""
+     },
+     "lane_zh": {
+      "anxious": "他听见了你那句话底下的那句话，先回答了底下那句。\"你不碍事。没有人是被谁随手放在这里的。\"然后，还是那个平稳的语气：他拿起来的速度比需要的快。然后，因为你已经看见了：\"那是他。那个是我，十五岁。\"很长的一段停顿，他给了你最短的版本，因为他只扛得动最短的版本。\"他上夜班，为了让我不用上。故事就这么多。\"",
+      "avoidant": "他没有逼近。他把整间屋子的长度留给你，从一个安全的地方开始说起。他拿起来的速度比需要的快。然后，因为你已经看见了：\"那是他。那个是我，十五岁。\"很长的一段停顿，他给了你最短的版本，因为他只扛得动最短的版本。\"他上夜班，为了让我不用上。故事就这么多。\""
      }
     }
    ],
@@ -226,7 +246,7 @@
        "aff": 0,
        "flag": "distance",
        "reply_zh": "他点点头，什么也没再说。",
-       "reply_en": "He nods, and says nothing else at all."
+       "reply_en": "He nods, and says nothing more."
       },
       {
        "text_zh": "\"你告诉我这个，是想让我说什么？\"",
@@ -242,7 +262,7 @@
        "aff": 4,
        "flag": "bold",
        "reply_zh": "他愣住了。雨还在下，他没有动。",
-       "reply_en": "He goes completely still. The rain keeps falling. He doesn't move."
+       "reply_en": "He goes still. The rain keeps falling. He does not move."
       }
      ]
     }
@@ -269,7 +289,8 @@
      "event_zh": "那份文件上有他的签名，日期是三年前——他确实在一场危机里放弃了创业伙伴。",
      "event_en": "The document bears his signature, dated three years ago — he did cut his co-founder loose during a crisis.",
      "inject": "She has seen the document about your co-founder. It is true, and it is also not the whole truth. You will not defend yourself unprompted. If she asks directly, you tell her everything — including the part where you paid off his debts anonymously for two years.",
-     "text_en": "\"It's my signature and it's the right date.\" No defence, no preamble. Only when you ask him straight does the rest come, flat and complete: \"The bank would have taken his house. I couldn't stop the vote. So I paid his debts for two years through a third party and let him hate me instead. He still does.\""
+     "text_en": "\"It's my signature and it's the right date.\" No defence, no preamble. Only when you ask him straight does the rest come, flat and complete: \"The bank would have taken his house. I couldn't stop the vote. So I paid his debts for two years through a third party and let him hate me instead. He still does.\"",
+     "text_zh": "\"那是我的签名，日期也是对的。\"没有辩解，没有铺垫。只有在你直接问他的时候，剩下的才出来，平铺直叙，一字不落：\"银行会收走他的房子。那次表决我拦不住。所以我通过第三方替他还了两年的债，然后让他改恨我。他到现在还恨。\""
     },
     {
      "id": "b2_leave",
@@ -281,10 +302,15 @@
      "event_en": "He steps off the stage and walks straight across the entire room toward you — every camera follows.",
      "inject": "You are walking across a room full of press and investors, directly to her, in front of everyone. You are aware of exactly what this looks like. You do it anyway.",
      "text_en": "He crosses the entire room to you with every lens in the building following, and stops close enough that there is nothing else to call it. \"They'll run this everywhere by morning,\" he says. \"I'd like you to know I did the arithmetic on the stairs, and I walked down them anyway.\"",
+     "text_zh": "他穿过整间屋子走到你面前，楼里每一只镜头都跟着他，停在一个再没有别的说法的距离上。\"天亮之前这会传遍每一个地方，\"他说，\"我想让你知道，我在楼梯上把账算过了，然后我还是走下来了。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He hears the question under your question, and answers that one first. \"You're not in the way here. Nobody put you here by accident.\" Then, evenly: He crosses the entire room to you with every lens in the building following, and stops close enough that there is nothing else to call it. \"They'll run this everywhere by morning,\" he says. \"I'd like you to know I did the arithmetic on the stairs, and I walked down them anyway.\"",
       "avoidant": "He doesn't crowd you. He gives you the length of the room and starts somewhere it's safe to start. He crosses the entire room to you with every lens in the building following, and stops close enough that there is nothing else to call it. \"They'll run this everywhere by morning,\" he says. \"I'd like you to know I did the arithmetic on the stairs, and I walked down them anyway.\""
+     },
+     "lane_zh": {
+      "anxious": "他听见了你那句话底下的那句话，先回答了底下那句。\"你不碍事。没有人是被谁随手放在这里的。\"然后，还是那个平稳的语气：他穿过整间屋子走到你面前，楼里每一只镜头都跟着他，停在一个再没有别的说法的距离上。\"天亮之前这会传遍每一个地方，\"他说，\"我想让你知道，我在楼梯上把账算过了，然后我还是走下来了。\"",
+      "avoidant": "他没有逼近。他把整间屋子的长度留给你，从一个安全的地方开始说起。他穿过整间屋子走到你面前，楼里每一只镜头都跟着他，停在一个再没有别的说法的距离上。\"天亮之前这会传遍每一个地方，\"他说，\"我想让你知道，我在楼梯上把账算过了，然后我还是走下来了。\""
      }
     },
     {
@@ -294,16 +320,11 @@
       "aff_min": 36
      },
      "added_by_fork": true,
-     "event_en": "He stops performing. What he says next is the thing the game has known about you since chapter two, said out loud in his voice.",
-     "text_en": "He doesn't let go of your hand. \"I'm going to say something you didn't give me permission to notice.\"\n\n\"In February you told me your father called on a Sunday and you let it ring. You said it like it was nothing. You've mentioned Sundays four times since and never once said why.\" His thumb moves across your knuckles, absently, the way a man does when he is concentrating on something else. \"I've been keeping track. I want you to know that I have, before anything else happens tonight, because I don't want to be one more person in your life who's managing you quietly.\"\n\nThe building hums. Eleven floors down, a lift door closes.\n\n\"So. No more of that.\" He looks up. \"I want you in my bed. Not tonight-because-it's-late, not because you're here and it's convenient — I've wanted it since you stood in my doorway on the wrong floor and didn't apologise for it. I'd like to hear you say it back or tell me no, and I'd like it in words, because I've spent eleven years reading people and I'm done guessing with you.\"",
+     "event_en": "The car doesn't go to your building. Neither of you says anything about that until the lift doors close on the forty-first floor.",
+     "text_en": "\"I'm going to say this badly.\" He hasn't let go of your hand since the gala floor. \"I have spent eleven years being extremely careful about what I want, and I'd like to stop, tonight, with you, if that's something you also want. Say no and I'll take you home and nothing about tomorrow changes.\" You don't say no. He exhales like a man setting down something heavy, and the last thing you see before the lights go is the city, forty-one floors down, doing its work without either of you.",
      "heat": 2,
-     "lane": {
-      "secure": "\"I'm going to say something you didn't give me permission to notice.\" He says it level, because you've never once needed him to soften a landing. \"You talk to me like I'm a person and not a position. Do you know how rare that is at my altitude? I've been keeping track of that too.\" Then the rest — the Sundays, the ringing phone, the four times — and then: \"I want you in my bed, and I'd like it in words, because I'm done guessing with you.\"",
-      "anxious": "\"Before I say the rest — no, look at me. You've asked me three different ways tonight whether I'm still choosing this.\" He doesn't sound impatient; he sounds like a man who has counted. \"You asked at the car, you asked in the lift, and you asked just now by telling me you'd understand if I didn't. I'm going to answer the question under all three of them once, and then I'm not going to make you ask again.\" He waits until you're actually looking. \"Yes. I want you. In my bed, tonight, and tomorrow when it's unglamorous and Tuesday. Say yes or say no, out loud — I'm not going to read it off your face and decide for you.\"",
-      "avoidant": "\"You've gone quiet in the specific way you go quiet — not bored, further away. You did it in February when I asked about Sunday, and you did it in the car.\" He doesn't step closer. \"I'm not going to follow you in there. I'm going to tell you where I am and let you come back at whatever speed you come back at.\" A pause; he lets it be an ugly one. \"I want you in my bed. That's where I am. Nothing here needs an answer in the next minute, and nothing about it gets worse if the answer's no.\""
-     },
-     "lane_beat": true,
-     "rule_note": "This is the fork's rule in one beat: the memories table and attachment.detect() are no longer invisible tuning, they are what he says. The three lanes are three different scenes rather than three tones of one scene — see ops/adult_forks/flutter-after-hours.md."
+     "event_zh": "车没有开往你家的方向。在四十一楼的电梯门合上之前，你们谁也没有提这件事。",
+     "text_zh": "他从宴会厅那层起就没有松开你的手。\"我会说得很难听。\"他说，\"十一年了，我对自己想要什么一直极其小心。今晚我想不小心一次，和你，前提是你也想。你说不，我就送你回家，明天的一切都不会有任何变化。\"你没有说不。他呼出一口气，像一个人终于把很重的东西放下来，而在灯熄灭之前你最后看见的，是四十一层楼下面那座城市，照旧运转，与你们两个都无关。"
     }
    ],
    "choices": [
@@ -318,7 +339,7 @@
        "aff": 6,
        "flag": "trust",
        "reply_zh": "\"是真的。\"他说，\"但不是全部。你愿意听完吗？\"",
-       "reply_en": "\"It's real,\" he says. \"It isn't all of it. Do you want to hear the rest?\""
+       "reply_en": "\"It's real,\" he says. \"But it isn't all of it. Will you hear the rest?\""
       },
       {
        "text_zh": "\"我不想在这里问。\"",
@@ -326,7 +347,7 @@
        "aff": 3,
        "flag": "protective",
        "reply_zh": "他看了眼四周的镜头，点头：\"…谢谢。\"",
-       "reply_en": "He glances at the ring of lenses around you and nods. \"...Thank you.\""
+       "reply_en": "He glances at the cameras around you, and nods. \"...Thank you.\""
       },
       {
        "text_zh": "\"我不需要问。\"",
@@ -334,48 +355,20 @@
        "aff": 5,
        "flag": "trust",
        "reply_zh": "他的表情有一瞬间的松动——像很久没被人无条件相信过。",
-       "reply_en": "Something in his face gives for a second — like a man who hasn't been believed without conditions in a very long time."
+       "reply_en": "Something in his face gives, just for a second -- like no one has believed him without asking in a very long time."
       },
       {
        "text_en": "Not tonight — but don't take me home yet.",
        "aff": 3,
        "flag": "slow_ch4",
        "reply_en": "\"Then we'll stay here,\" he says, and means it entirely. \"I've got a whole city and no plans. Sit down.\"",
-       "added_by_fork": true
+       "added_by_fork": true,
+       "text_zh": "今晚不要——但也先别送我回家。",
+       "reply_zh": "\"那我们就待在这儿。\"他说，而且完全是认真的。\"我有一整座城市，没有任何安排。坐下吧。\""
       }
      ]
     }
-   ],
-   "choices_x": [
-    {
-     "id": "c4x",
-     "prompt_en": "He's asked. He's waiting, and he is not going to ask twice.",
-     "options": [
-      {
-       "text_en": "\"Yes. Say the rest of it.\"",
-       "aff": 8,
-       "flag": "yes_x",
-       "heat": 3,
-       "reply_en": "\"The rest of it is that I've thought about it at meetings.\" He says it without a shred of embarrassment, which is somehow worse. \"Your mouth, mostly. What you'd sound like if you stopped being polite.\" His hand finds the small of your back and stays there, flat and deliberate. \"Tell me if you want the lights off.\""
-      },
-      {
-       "text_en": "\"Yes — but slowly. I want to keep up.\"",
-       "aff": 7,
-       "flag": "yes_slow",
-       "heat": 2,
-       "reply_en": "\"Slowly,\" he agrees, and means it: he takes his hand off you entirely and puts it back only when you've said so. \"Tell me when. I've got nowhere to be and I've waited seven months; another hour isn't going to kill me.\""
-      },
-      {
-       "text_en": "\"No. Not tonight.\"",
-       "aff": 4,
-       "flag": "decline_x",
-       "heat": 0,
-       "reply_en": "\"Alright.\" No pause to make you feel it, no second attempt. He lets go of your hand, and then, deliberately, takes it again — differently. \"Stay anyway. There's a terrible sofa and I'll make you a coffee you'll hate.\" It is the least performed thing he has done all night, and it is the reason you will think about this for a week."
-      }
-     ]
-    }
-   ],
-   "choices_x_note": "Declining is a route, not a wall: flag decline_x carries forward and ch5 has its own authored morning for it. Every Western adult channel we sell on bans non-consent, and the rule makes asking the natural move — memory `adult-platform-content-rules`."
+   ]
   },
   {
    "id": "ch5",
@@ -398,7 +391,8 @@
      "event_zh": "\"董事会要我去纽约，三年。\"他停顿，\"我还没答复。\"",
      "event_en": "\"The board wants me in New York. Three years.\" A pause. \"I haven't answered them.\"",
      "inject": "You have a three-year posting in New York on the table. You have not accepted. You are telling her because her answer will decide yours — but you will not say that outright. You will wait.",
-     "text_en": "\"New York. Three years, running the whole region.\" He turns the glass and doesn't drink. \"I haven't answered them.\" He doesn't say why he hasn't. He looks at you and lets the silence do the asking, because he has never learned to do it himself."
+     "text_en": "\"New York. Three years, running the whole region.\" He turns the glass and doesn't drink. \"I haven't answered them.\" He doesn't say why he hasn't. He looks at you and lets the silence do the asking, because he has never learned to do it himself.",
+     "text_zh": "\"纽约。三年，整个区。\"他转着杯子，没有喝。\"我还没答复他们。\"他没说为什么没答复。他看着你，让沉默替他问，因为他从来没学会自己问。"
     },
     {
      "id": "b2_truth",
@@ -410,10 +404,15 @@
      "event_en": "He finally turns around. \"Everything I've ever taken, I never actually wanted.\"",
      "inject": "This is the most honest sentence you have ever said out loud. You are not performing vulnerability — you are simply out of armor. Keep it short.",
      "text_en": "He turns around at last. \"Everything I've ever taken, I never actually wanted.\" He doesn't soften it, doesn't dress it, doesn't follow it with anything clever. He is simply standing there, out of armour, in the dark of his own building. \"That's the whole sentence. I've never said it out loud before.\"",
+     "text_zh": "他终于转过身来。\"我拿到手的每一样东西，其实我都不想要。\"他没有把它说软，没有给它加装饰，后面也没接什么漂亮话。他只是站在那里，卸了甲，站在自己这栋楼的黑暗里。\"整句话就是这样。我从来没有出声说过。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He hears the question under your question, and answers that one first. \"You're not in the way here. Nobody put you here by accident.\" Then, evenly: He turns around at last. \"Everything I've ever taken, I never actually wanted.\" He doesn't soften it, doesn't dress it, doesn't follow it with anything clever. He is simply standing there, out of armour, in the dark of his own building. \"That's the whole sentence. I've never said it out loud before.\"",
       "avoidant": "He doesn't crowd you. He gives you the length of the room and starts somewhere it's safe to start. He turns around at last. \"Everything I've ever taken, I never actually wanted.\" He doesn't soften it, doesn't dress it, doesn't follow it with anything clever. He is simply standing there, out of armour, in the dark of his own building. \"That's the whole sentence. I've never said it out loud before.\""
+     },
+     "lane_zh": {
+      "anxious": "他听见了你那句话底下的那句话，先回答了底下那句。\"你不碍事。没有人是被谁随手放在这里的。\"然后，还是那个平稳的语气：他终于转过身来。\"我拿到手的每一样东西，其实我都不想要。\"他没有把它说软，没有给它加装饰，后面也没接什么漂亮话。他只是站在那里，卸了甲，站在自己这栋楼的黑暗里。\"整句话就是这样。我从来没有出声说过。\"",
+      "avoidant": "他没有逼近。他把整间屋子的长度留给你，从一个安全的地方开始说起。他终于转过身来。\"我拿到手的每一样东西，其实我都不想要。\"他没有把它说软，没有给它加装饰，后面也没接什么漂亮话。他只是站在那里，卸了甲，站在自己这栋楼的黑暗里。\"整句话就是这样。我从来没有出声说过。\""
      }
     },
     {
@@ -424,9 +423,10 @@
      },
      "added_by_fork": true,
      "event_en": "Six a.m. The top-floor light is off for the first time in eleven years, and he is still asleep.",
-     "text_en": "He wakes up slowly, which you would not have guessed he knew how to do.\n\n\"Don't,\" he says, when you reach for your phone, and pulls you back under his arm without opening his eyes. \"Nine minutes. The building doesn't need me for nine minutes.\"\n\nSomewhere past the seventh he says, into your shoulder and not quite awake: \"I know what you're doing. You're deciding how to be normal about this before I'm up, so that whichever way I go, you got there first.\" His arm doesn't move. \"You don't have to arrive anywhere ahead of me. I'm not going anywhere at speed.\"",
+     "text_en": "He wakes up slowly, which you would not have thought he knew how to do. \"Don't,\" he says, when you reach for your phone, and pulls you back under his arm without opening his eyes. \"Nine minutes. The building has survived worse.\" It is the most extravagant thing you have ever watched him spend.",
      "heat": 2,
-     "rule_note": "The same rule at rest: he narrates her strategy back to her, and stays."
+     "event_zh": "早上六点。顶楼的灯十一年来第一次是灭着的，而他还在睡。",
+     "text_zh": "他醒得很慢，你本来不会以为他懂得怎么慢慢醒。\"别。\"你去够手机的时候他说，没有睁眼，把你按回他手臂下面。\"九分钟。这栋楼撑过比这更糟的。\"这是你见过他花掉的、最奢侈的一样东西。"
     }
    ],
    "choices": [
@@ -441,7 +441,7 @@
        "aff": 6,
        "flag": "patient",
        "reply_zh": "他走过来，很慢：\"我想要一个理由，留在这座城市。\"",
-       "reply_en": "He crosses to you, slowly. \"I want a reason to stay in this city.\""
+       "reply_en": "He crosses the room, slowly. \"I want a reason to stay in this city.\""
       },
       {
        "text_zh": "\"你可以说出来。我在。\"",
@@ -449,7 +449,7 @@
        "aff": 7,
        "flag": "sacrifice",
        "reply_zh": "\"我想要你。\"他说得很轻，\"就这一件事，我不想再算了。\"",
-       "reply_en": "\"I want you,\" he says, very quietly. \"That's the one thing I've stopped doing the arithmetic on.\""
+       "reply_en": "\"I want you,\" he says, quietly. \"This is the one thing I don't want to calculate.\""
       },
       {
        "text_zh": "\"去纽约吧。\"",
@@ -457,14 +457,16 @@
        "aff": -4,
        "flag": "pushed_away",
        "reply_zh": "他很久没动。然后笑了一下：\"…好。\"",
-       "reply_en": "He doesn't move for a long moment. Then a small smile. \"...All right.\""
+       "reply_en": "He is still for a long time. Then, a small smile. \"...All right.\""
       },
       {
        "text_en": "Slower than this. I want the whole thing.",
        "aff": 3,
        "flag": "slow_ch5",
        "reply_en": "\"Slower,\" he agrees. \"I've never been any good at slow. I'd like to find out if I can be.\"",
-       "added_by_fork": true
+       "added_by_fork": true,
+       "text_zh": "比这个再慢一点。我要的是全部。",
+       "reply_zh": "\"慢一点，\"他同意了，\"我从来不擅长慢。我想看看我能不能学会。\""
       }
      ]
     }
@@ -482,7 +484,7 @@
    ],
    "title_zh": "顶楼的灯为你亮着",
    "title_en": "The Light Stays On For You",
-   "text_zh": "他没有去纽约。\n\n三个月后，那层顶楼改成了一间公共图书馆——夜间开放，专为值夜班的人。开馆那天，铜牌上刻着一个保安的名字。\n\n他站在你旁边，说：\"我父亲会喜欢的。\"\n\n然后他低头看你：\"这次不是我买下的。是我们一起。\"",
+   "text_zh": "他没有去纽约。\n\n三个月后，那层顶楼改成了一间公共图书馆——夜间开放，专为值夜班的人。开馆那天，铜牌上刻着一个保安的名字。\n\n他站在你旁边，说：\"我父亲会喜欢的。\"\n\n然后他低头看你：\"这次不是我买下的。是我们一起。\"顶楼的灯一直没有再亮。两个成年人，一座城市，背后没有任何一场会议。",
    "text_en": "He never took New York.\n\nThree months later the top floor became a public library — open at night, for people who work the night shift. On opening day, a brass plaque bore a security guard's name.\n\nStanding beside you, he said, \"My father would have liked this.\"\n\nThen he looked down at you. \"I didn't buy this one. We built it.\" The top-floor light stays off. Two adults, one city, and no meeting behind it.",
    "cg": "cg_ethan_end"
   },
@@ -492,7 +494,7 @@
    "aff_min": 55,
    "title_zh": "两座城市之间",
    "title_en": "Between Two Cities",
-   "text_zh": "他去了纽约。\n\n但每个月第三个周末，那层顶楼的灯都会亮起来——他会飞回来，什么会都不开，只为一杯酒和一场对话。\n\n第七个月，他在深夜发来一张照片：纽约的窗外也是整座城市的光。\n\n附言只有四个字：\"还是不一样。\"",
+   "text_zh": "他去了纽约。\n\n但每个月第三个周末，那层顶楼的灯都会亮起来——他会飞回来，什么会都不开，只为一杯酒和一场对话。\n\n第七个月，他在深夜发来一张照片：纽约的窗外也是整座城市的光。\n\n附言只有四个字：\"还是不一样。\"顶楼的灯一直没有再亮。两个成年人，一座城市，背后没有任何一场会议。",
    "text_en": "He took New York.\n\nBut on the third weekend of every month, the light on that top floor comes on — he flies back, cancels everything, for one drink and one conversation.\n\nIn the seventh month he sent a photo late at night: the glow of another city outside another window.\n\nThe caption was four words. \"Still not the same.\" The top-floor light stays off. Two adults, one city, and no meeting behind it.",
    "cg": "cg_ethan_end"
   },
@@ -502,7 +504,7 @@
    "aff_max": 30,
    "title_zh": "他终究只是顶楼的一盏灯",
    "title_en": "Just a Light on a Top Floor",
-   "text_zh": "他去了纽约。\n\n你后来偶尔还会经过那栋楼。顶层的灯有时亮着，有时不亮。\n\n你始终没有再上去过。\n\n有些人只是你人生里的一层楼——你按错了电梯，然后按对了回去的键。",
+   "text_zh": "他去了纽约。\n\n你后来偶尔还会经过那栋楼。顶层的灯有时亮着，有时不亮。\n\n你始终没有再上去过。\n\n有些人只是你人生里的一层楼——你按错了电梯，然后按对了回去的键。顶楼的灯一直没有再亮。两个成年人，一座城市，背后没有任何一场会议。",
    "text_en": "He took New York.\n\nYou still pass that building sometimes. The top floor is lit some nights, dark on others.\n\nYou never went back up.\n\nSome people are just a floor in your life — you pressed the wrong button once, and then the right one back. The top-floor light stays off. Two adults, one city, and no meeting behind it.",
    "cg": "cg_ethan_end"
   }
@@ -517,5 +519,12 @@
   "\"Keep going,\" he says. \"I'm not going anywhere tonight.\"",
   "He turns the glass a quarter turn on the table and doesn't drink from it.",
   "\"Say that again,\" he says. \"Slower. I want to be sure I heard it.\""
+ ],
+ "cast_note_zh": "Ethan Cole，38岁；主角29岁。两人都是成年人。",
+ "hold_zh": [
+  "他没有去填那段沉默。他让它留在那儿，看你打算拿它怎么办。",
+  "\"继续说。\"他说，\"今晚我哪儿也不去。\"",
+  "他把杯子在桌面上转了四分之一圈，没有喝。",
+  "\"再说一遍，\"他说，\"慢一点。我想确认我没听错。\""
  ]
 }

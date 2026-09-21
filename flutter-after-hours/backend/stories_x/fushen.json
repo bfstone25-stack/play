@@ -15,7 +15,7 @@
    "scene_en": "by the floor-to-ceiling window of a penthouse, the city glittering below, wine in hand",
    "goal_zh": "让这个从不解释自己的男人，对你说超过三句话",
    "goal_en": "Make this man who never explains himself say more than three sentences to you",
-   "opening_zh": "一场你本不该来的晚宴。宾客散尽后，你在露台迷路，误入一间安静的书房。他站在落地窗前，背对着你，手里一杯没怎么动过的红酒。\"门在你身后。\"他没回头，声音很淡，\"如果你是来递名片的，就省省。\"",
+   "opening_zh": "一场你本不该来的晚宴。宾客散尽后，你在露台迷路，误入一间安静的书房。他站在落地窗前，背对着你，手里一杯没怎么动过的红酒。\"门在你身后。\"他没回头，声音很淡，\"如果你是来递名片的，就省省。\"他三十六，你三十，而这一次，这栋房子里除了你们两个，没有别人。",
    "opening_en": "A dinner you were never meant to attend. After the guests left, you got lost on the terrace and wandered into a quiet study. He stands at the floor-to-ceiling window, back to you, a barely-touched glass of wine in hand. \"The door is behind you,\" he says without turning, voice flat. \"If you're here to hand me a business card, don't bother.\" He is thirty-six, you are thirty, and for once there is no one in this house but the two of you.",
    "beats": [
     {
@@ -26,7 +26,8 @@
      "event_zh": "他终于转过身，扫了你一眼，然后——出乎你意料地——给你也倒了一杯酒，推到桌沿。\"站着难受。\"这是他能给出的、最接近'请坐'的表达。",
      "event_en": "He finally turns, gives you one look, and then — unexpectedly — pours a second glass and pushes it to the edge of the table. \"Standing's uncomfortable.\" It's as close to 'please sit' as he gets.",
      "inject": "You just poured her a glass of wine and pushed it toward her — the nearest you get to a kind gesture. You will not call it kindness. If she thanks you, deflect coolly ('It was going to waste'). Do not warm up; let one small courtesy speak while your words stay clipped.",
-     "text_en": "He pours a second glass and pushes it to the edge of the table. \"Standing's uncomfortable.\" That is the entire invitation and there will not be a warmer one. When you thank him he looks back out at the city. \"It was going to waste. Don't read anything into it.\""
+     "text_en": "He pours a second glass and pushes it to the edge of the table. \"Standing's uncomfortable.\" That is the entire invitation and there will not be a warmer one. When you thank him he looks back out at the city. \"It was going to waste. Don't read anything into it.\"",
+     "text_zh": "他倒了第二杯，把它推到桌沿。\"站着不舒服。\"这就是全部的邀请，不会有更温和的版本了。你道谢的时候，他已经转回去看那座城市。\"反正也是浪费。别多想。\""
     },
     {
      "id": "b2_notice",
@@ -37,7 +38,8 @@
      "event_zh": "\"你没有在看这套房子，也没有在看我。\"他忽然说，眼神里第一次有了兴趣，\"你在看窗外那盏一直没关的路灯。为什么？\"",
      "event_en": "\"You're not looking at this apartment, and you're not looking at me,\" he says suddenly, a flicker of real interest for the first time. \"You're looking at that one streetlight that never goes off. Why?\"",
      "inject": "You noticed she wasn't impressed by your wealth or your face — she was watching something small and ordinary outside. This intrigues you against your will, because everyone else only ever watches you. Do not admit the intrigue. Frame it as an observation, not a compliment.",
-     "text_en": "\"You're not looking at the apartment, and you're not looking at me.\" It is the first thing he has said with any interest in it. \"You're watching the one streetlight on that corner that never goes off. Why.\" Not a question, in his mouth. It is still, unmistakably, a question."
+     "text_en": "\"You're not looking at the apartment, and you're not looking at me.\" It is the first thing he has said with any interest in it. \"You're watching the one streetlight on that corner that never goes off. Why.\" Not a question, in his mouth. It is still, unmistakably, a question.",
+     "text_zh": "\"你没在看这套房子，也没在看我。\"这是他今晚第一句带着兴趣的话。\"你在看那个路口那盏从来不灭的路灯。为什么。\"从他嘴里出来，这不是一个疑问句。可它毫无疑问地，是一个问题。"
     },
     {
      "id": "b3_name",
@@ -48,10 +50,15 @@
      "event_en": "As you leave, he stops you, pauses, as if unused to asking such things. \"Your name.\" — not phrased as a question, yet you can tell he genuinely wants to know.",
      "inject": "You are asking her name, and you're aware you rarely bother to. You will not soften the ask into a request. Once she tells you, do not repeat it aloud — but you file it away permanently, and she should sense that you did.",
      "text_en": "\"Your name.\" Not phrased as a request; he does not appear to know how. When you give it he doesn't repeat it and doesn't thank you. He simply files it somewhere permanent, and somehow you can tell that he has. \"...Good night. The driver is downstairs. He'll take you.\"",
+     "text_zh": "\"你的名字。\"这不是一个请求的句式；他似乎也不知道它可以是。你说了之后，他没有重复，也没有道谢。他只是把它归进了某个永久的位置，而你不知怎么就是看得出来他归了。\"……晚安。司机在楼下。他送你。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He answers the unasked question before the asked one, which he does for no one else. \"You are not a guest here.\" Then, in his ordinary flat register: \"Your name.\" Not phrased as a request; he does not appear to know how. When you give it he doesn't repeat it and doesn't thank you. He simply files it somewhere permanent, and somehow you can tell that he has. \"...Good night. The driver is downstairs. He'll take you.\"",
       "avoidant": "He lets the distance stand. He does not take a step, and he does not soften his voice to coax you across. \"Your name.\" Not phrased as a request; he does not appear to know how. When you give it he doesn't repeat it and doesn't thank you. He simply files it somewhere permanent, and somehow you can tell that he has. \"...Good night. The driver is downstairs. He'll take you.\""
+     },
+     "lane_zh": {
+      "anxious": "他先回答了那个没被问出口的问题——这种事他不为任何人做。\"你在这里不是客人。\"然后，用他平常那种没有起伏的语气：\"你的名字。\"这不是一个请求的句式；他似乎也不知道它可以是。你说了之后，他没有重复，也没有道谢。他只是把它归进了某个永久的位置，而你不知怎么就是看得出来他归了。\"……晚安。司机在楼下。他送你。\"",
+      "avoidant": "他让那段距离留在那里。他没有走近一步，也没有把声音放软来哄你过来。\"你的名字。\"这不是一个请求的句式；他似乎也不知道它可以是。你说了之后，他没有重复，也没有道谢。他只是把它归进了某个永久的位置，而你不知怎么就是看得出来他归了。\"……晚安。司机在楼下。他送你。\""
      }
     }
    ],
@@ -141,7 +148,8 @@
      "event_zh": "侍者端来酒。他抬手拦下香槟，替你要了一杯温水——你上次说过，你不太能喝酒。他没提这件事。",
      "event_en": "A waiter brings drinks. He raises a hand to wave off the champagne and asks for a glass of warm water for you instead — you mentioned once that you can't really drink. He says nothing about it.",
      "inject": "You remembered she can't drink much and quietly got her warm water instead of champagne, without mentioning why. If she notices, do not take credit — deflect ('the champagne here is mediocre anyway'). Let the act stand alone; keep words minimal.",
-     "text_en": "He waves the champagne tray off before it reaches you and asks for warm water instead — you said once, weeks ago, that you can't really drink. He doesn't mention it. When you notice he's already looking elsewhere. \"The champagne here is mediocre,\" he says. \"You'd have regretted it.\""
+     "text_en": "He waves the champagne tray off before it reaches you and asks for warm water instead — you said once, weeks ago, that you can't really drink. He doesn't mention it. When you notice he's already looking elsewhere. \"The champagne here is mediocre,\" he says. \"You'd have regretted it.\"",
+     "text_zh": "香槟托盘还没到你面前就被他挥退了，他要了一杯温水——几个星期前你说过一次，你其实不能喝酒。他没有提这件事。你注意到的时候，他已经看向别处了。\"这儿的香槟一般，\"他说，\"你会后悔的。\""
     },
     {
      "id": "b2_rumor",
@@ -152,7 +160,8 @@
      "event_zh": "旁边有人低声议论：'听说傅家这位从不近人情，连亲弟弟的公司都能一夜之间收购。' 他显然听见了，却面不改色，只是握杯的手紧了一瞬。",
      "event_en": "Nearby, someone murmurs: 'They say this Fu heir is ice through and through — he acquired his own brother's company overnight.' He clearly hears it, but his face doesn't change; only his hand tightens on the glass for an instant.",
      "inject": "People are gossiping that you coldly took over your own brother's failing company. It is true on the surface and false underneath — you did it to stop creditors from destroying him, and you have never corrected the story. You will not defend yourself unprompted. If she asks directly and gently, you tell the truth in as few words as possible.",
-     "text_en": "The murmur carries — *acquired his own brother's company overnight.* His face does not move; only his hand tightens on the glass for a fraction. He offers nothing. If you ask him directly and gently, it comes in as few words as possible: \"The creditors would have taken everything he had. It was faster my way. He doesn't know. Leave it.\""
+     "text_en": "The murmur carries — *acquired his own brother's company overnight.* His face does not move; only his hand tightens on the glass for a fraction. He offers nothing. If you ask him directly and gently, it comes in as few words as possible: \"The creditors would have taken everything he had. It was faster my way. He doesn't know. Leave it.\"",
+     "text_zh": "那阵低语飘了过来——*一夜之间把自己亲弟弟的公司拿走了。*他的脸没有动；只有握着杯子的手收紧了一瞬。他什么也没有提供。如果你直接而温和地问他，答案会用尽可能少的字出来：\"债主会把他所有的东西都拿走。我这样更快。他不知道。别管了。\""
     },
     {
      "id": "b3_leave",
@@ -163,10 +172,15 @@
      "event_en": "A very important figure tries to pull him away to talk business. He glances at his watch, then at you, and tells the man flatly, \"Another day.\" — for you, he brushes off the most important person at the gala.",
      "inject": "You just turned down the most important person in the room to keep standing with her, and you did it without explanation. You are aware of how unusual this is for you. Do not make a point of the sacrifice; act as if it required no thought, though it did.",
      "text_en": "The most important man in the room wants ten minutes. Fu Shen glances at his watch, then at you. \"Another day,\" he tells him, and turns back, as though it cost nothing. It cost something. He does not intend for you to be told what.",
+     "text_zh": "全场最重要的那个人想要十分钟。傅深看了一眼表，又看了一眼你。\"改天。\"他对那个人说，然后转回来，仿佛这不值什么。这值一些东西。他不打算让你知道值多少。",
      "lane_beat": true,
      "lane": {
       "anxious": "He answers the unasked question before the asked one, which he does for no one else. \"You are not a guest here.\" Then, in his ordinary flat register: The most important man in the room wants ten minutes. Fu Shen glances at his watch, then at you. \"Another day,\" he tells him, and turns back, as though it cost nothing. It cost something. He does not intend for you to be told what.",
       "avoidant": "He lets the distance stand. He does not take a step, and he does not soften his voice to coax you across. The most important man in the room wants ten minutes. Fu Shen glances at his watch, then at you. \"Another day,\" he tells him, and turns back, as though it cost nothing. It cost something. He does not intend for you to be told what."
+     },
+     "lane_zh": {
+      "anxious": "他先回答了那个没被问出口的问题——这种事他不为任何人做。\"你在这里不是客人。\"然后，用他平常那种没有起伏的语气：全场最重要的那个人想要十分钟。傅深看了一眼表，又看了一眼你。\"改天。\"他对那个人说，然后转回来，仿佛这不值什么。这值一些东西。他不打算让你知道值多少。",
+      "avoidant": "他让那段距离留在那里。他没有走近一步，也没有把声音放软来哄你过来。全场最重要的那个人想要十分钟。傅深看了一眼表，又看了一眼你。\"改天。\"他对那个人说，然后转回来，仿佛这不值什么。这值一些东西。他不打算让你知道值多少。"
      }
     }
    ],
@@ -257,7 +271,8 @@
      "event_zh": "你回头看他，想问'少夫人'是怎么回事。他却面不改色，只是替你理了理被风吹乱的衣领：\"他们叫惯了的称呼，你别在意。\"——可他既没有否认，也没有纠正。",
      "event_en": "You turn to him, wanting to ask about 'Young Madam'. But his face doesn't change; he only straightens your collar, ruffled by the wind. \"It's just what they're used to saying. Pay it no mind.\" — yet he neither denies it nor corrects them.",
      "inject": "Your household staff addressed her as 'Young Madam' — a title reserved for the mistress of the house — because you instructed them to, though you'll never admit you did. When she questions it, deflect ('it's just habit'), refuse to explain, but do NOT correct the staff. One small tell (fixing her collar, not meeting her eyes) betrays that you meant it.",
-     "text_en": "You open your mouth to ask about *Young Madam* and he reaches over and straightens the collar the wind has turned up, eyes somewhere past your shoulder. \"It's what they're used to saying. Pay it no mind.\" He does not correct one member of his staff, then or later."
+     "text_en": "You open your mouth to ask about *Young Madam* and he reaches over and straightens the collar the wind has turned up, eyes somewhere past your shoulder. \"It's what they're used to saying. Pay it no mind.\" He does not correct one member of his staff, then or later.",
+     "text_zh": "你张嘴想问\"少夫人\"是怎么回事，他伸手替你把被风吹翻的衣领理好，眼睛看着你肩膀以外的某个地方。\"他们叫惯了。别放在心上。\"当时他没有纠正他手下任何一个人，之后也没有。"
     },
     {
      "id": "b2_room",
@@ -269,10 +284,15 @@
      "event_en": "The butler leads you to a guest room, but you find it already arranged to your taste — the flowers you once mentioned liking, the books you read, even the warm color temperature of the bedside lamp. He remembered every one.",
      "inject": "The guest room was prepared entirely around small preferences she once mentioned in passing — flowers, books, warm lighting. You arranged all of it and told no one it was for her comfort specifically. If she realizes, do not confirm it warmly; understate it ('the housekeeper handles the rooms'), while it's obvious you directed every detail.",
      "text_en": "Your flowers. Your books. The bedside lamp at the exact warm temperature you once complained no hotel ever gets right. \"The housekeeper handles the rooms,\" he says, which would be more convincing if the housekeeper had ever met you. \"If anything is wrong with it, say so and it will be changed tonight.\"",
+     "text_zh": "你的花。你的书。床头灯调在那个色温上——你曾经抱怨过，没有一家酒店调得对。\"房间是管家管的。\"他说。如果那位管家见过你，这句话会更有说服力一些。\"有哪里不合适，说一声，今晚就换。\"",
      "lane_beat": true,
      "lane": {
       "anxious": "He answers the unasked question before the asked one, which he does for no one else. \"You are not a guest here.\" Then, in his ordinary flat register: Your flowers. Your books. The bedside lamp at the exact warm temperature you once complained no hotel ever gets right. \"The housekeeper handles the rooms,\" he says, which would be more convincing if the housekeeper had ever met you. \"If anything is wrong with it, say so and it will be changed tonight.\"",
       "avoidant": "He lets the distance stand. He does not take a step, and he does not soften his voice to coax you across. Your flowers. Your books. The bedside lamp at the exact warm temperature you once complained no hotel ever gets right. \"The housekeeper handles the rooms,\" he says, which would be more convincing if the housekeeper had ever met you. \"If anything is wrong with it, say so and it will be changed tonight.\""
+     },
+     "lane_zh": {
+      "anxious": "他先回答了那个没被问出口的问题——这种事他不为任何人做。\"你在这里不是客人。\"然后，用他平常那种没有起伏的语气：你的花。你的书。床头灯调在那个色温上——你曾经抱怨过，没有一家酒店调得对。\"房间是管家管的。\"他说。如果那位管家见过你，这句话会更有说服力一些。\"有哪里不合适，说一声，今晚就换。\"",
+      "avoidant": "他让那段距离留在那里。他没有走近一步，也没有把声音放软来哄你过来。你的花。你的书。床头灯调在那个色温上——你曾经抱怨过，没有一家酒店调得对。\"房间是管家管的。\"他说。如果那位管家见过你，这句话会更有说服力一些。\"有哪里不合适，说一声，今晚就换。\""
      }
     }
    ],
@@ -362,7 +382,8 @@
      "event_zh": "支票就摆在你手边。傅深还没来得及开口，你能感觉到他整个人的气压在往下压——但他在等，等你先做出反应，因为他不想替你决定你的尊严。",
      "event_en": "The cheque sits by your hand. Before Fu Shen can speak, you feel the pressure dropping off him in waves — but he waits, waits for you to react first, because he won't decide your dignity for you.",
      "inject": "Your family just tried to buy her off with a cheque in front of everyone. You are furious but you deliberately hold back for a beat — you refuse to speak over her or decide her worth for her. You are watching to see how she meets it. If she stands her ground, your restraint breaks into quiet, cold protectiveness aimed entirely at your family.",
-     "text_en": "The cheque slides to rest by your hand. Fu Shen does not speak. The air around him has gone very cold and very still, and still he waits — he will not price you in front of you, or answer for you. Only when you have met it does he turn to his family, quietly: \"Now. My turn.\""
+     "text_en": "The cheque slides to rest by your hand. Fu Shen does not speak. The air around him has gone very cold and very still, and still he waits — he will not price you in front of you, or answer for you. Only when you have met it does he turn to his family, quietly: \"Now. My turn.\"",
+     "text_zh": "支票滑过来，停在你手边。傅深没有说话。他周围的空气变得极冷、极静，而他仍然在等——他不会当着你的面给你定价，也不会替你回答。只有当你自己接住了这一下，他才转向他的家人，很轻地说：\"好。轮到我了。\""
     },
     {
      "id": "b2_stand",
@@ -374,10 +395,15 @@
      "event_en": "Fu Shen suddenly stands and, in front of every elder, pushes the arranged-marriage card back before the patriarch — the first time he has ever openly defied the entire family. \"This match, I refuse,\" he says, not loudly, but it silences the whole hall.",
      "inject": "You just stood and publicly refused the arranged marriage in front of the family patriarch — the first open defiance of your family in your life, and it will cost you standing, leverage, perhaps your position. You do it in a low, controlled voice, not a shout. You place yourself between her and every elder in the room. You do not explain or apologize to them.",
      "text_en": "He stands and pushes the card back across the table to the patriarch. \"This match, I refuse.\" Not loud. The hall goes silent anyway, because nobody in it has ever heard him refuse anything out loud. He moves one step sideways, between you and every elder in the room, and stays there.",
+     "text_zh": "他站起来，把那张卡片推回给族里的长辈。\"这门亲事，我拒绝。\"声音不大。整个厅还是静了下来，因为在场没有一个人听他出声拒绝过任何事。他往旁边移了一步，站在你和满屋子的长辈之间，就不再动了。",
      "lane_beat": true,
      "lane": {
       "anxious": "He answers the unasked question before the asked one, which he does for no one else. \"You are not a guest here.\" Then, in his ordinary flat register: He stands and pushes the card back across the table to the patriarch. \"This match, I refuse.\" Not loud. The hall goes silent anyway, because nobody in it has ever heard him refuse anything out loud. He moves one step sideways, between you and every elder in the room, and stays there.",
       "avoidant": "He lets the distance stand. He does not take a step, and he does not soften his voice to coax you across. He stands and pushes the card back across the table to the patriarch. \"This match, I refuse.\" Not loud. The hall goes silent anyway, because nobody in it has ever heard him refuse anything out loud. He moves one step sideways, between you and every elder in the room, and stays there."
+     },
+     "lane_zh": {
+      "anxious": "他先回答了那个没被问出口的问题——这种事他不为任何人做。\"你在这里不是客人。\"然后，用他平常那种没有起伏的语气：他站起来，把那张卡片推回给族里的长辈。\"这门亲事，我拒绝。\"声音不大。整个厅还是静了下来，因为在场没有一个人听他出声拒绝过任何事。他往旁边移了一步，站在你和满屋子的长辈之间，就不再动了。",
+      "avoidant": "他让那段距离留在那里。他没有走近一步，也没有把声音放软来哄你过来。他站起来，把那张卡片推回给族里的长辈。\"这门亲事，我拒绝。\"声音不大。整个厅还是静了下来，因为在场没有一个人听他出声拒绝过任何事。他往旁边移了一步，站在你和满屋子的长辈之间，就不再动了。"
      }
     },
     {
@@ -389,7 +415,9 @@
      "added_by_fork": true,
      "event_en": "The estate empties. The elders go, the staff are dismissed for the night, and for the first time in its hundred years the house has two people in it and nobody else.",
      "text_en": "\"I have refused them for you,\" he says, \"and that obliges you to nothing. I want that understood before anything else is.\" He is standing very straight, which is what he does instead of trembling. \"I would like you to stay tonight. If the answer is no it will not cost you one thing — not the room, not the house, not me.\" The answer is not no. Something in his shoulders finally lets go, and he crosses the distance he has been refusing to cross since the first glass of wine, and after that the old house keeps its own counsel.",
-     "heat": 2
+     "heat": 2,
+     "event_zh": "宅子空了。长辈走了，佣人今晚被遣散了，连门房的灯也灭了。这栋房子从来没有这样安静过。",
+     "text_zh": "\"我替你拒绝了他们，\"他说，\"而这并不让你欠我任何东西。这一点我需要先说清楚，因为在这栋房子里，人们习惯把好意当成账。\"他站在离你三步的地方，没有再近。\"我想请你今晚不要回那间客房。你可以说不。你说不，明天早上我仍然会送你去你想去的任何地方。\"你走了那三步。他闭上眼睛，像一个终于被允许呼吸的人。"
     }
    ],
    "choices": [
@@ -427,7 +455,9 @@
        "aff": 3,
        "flag": "slow_ch4",
        "reply_en": "He does not move a step closer. He does not go back either. \"Very well,\" he says. \"I will stay here.\"",
-       "added_by_fork": true
+       "added_by_fork": true,
+       "text_zh": "你就站在那儿。只是——别再退回玻璃后面去。",
+       "reply_zh": "他没有走近一步。他也没有退回去。他就在那儿站了很久，然后说：\"好。\"这个字他说得很轻，像是在对自己承诺。"
       }
      ]
     },
@@ -485,7 +515,8 @@
      "event_zh": "\"家族要我接手海外的整个板块，去伦敦，至少五年。\"他望着城市的方向，停顿，\"我还没答复。\"",
      "event_en": "\"The family wants me to take over the entire overseas division. London. Five years at least.\" He looks toward the city, then pauses. \"I haven't given them an answer.\"",
      "inject": "You have a five-year posting to run the family's overseas operations in London — a huge consolidation of power. You have not accepted. You are telling her because her answer will decide yours, but you will never say that outright. You state it flatly and then wait, giving nothing away.",
-     "text_en": "\"The family wants me to take the overseas division. London. Five years, at least.\" He watches the skyline go pale. \"I haven't given them an answer.\" He does not say that yours decides his. He simply stops talking, and waits, and gives away nothing at all."
+     "text_en": "\"The family wants me to take the overseas division. London. Five years, at least.\" He watches the skyline go pale. \"I haven't given them an answer.\" He does not say that yours decides his. He simply stops talking, and waits, and gives away nothing at all.",
+     "text_zh": "\"家里要我去接海外那一块。伦敦。至少五年。\"他看着天边一点点发白。\"我还没有给他们答复。\"他没有说，答复取决于你的答复。他只是不再说话，等着，什么也不泄露。"
     },
     {
      "id": "b2_truth",
@@ -497,10 +528,15 @@
      "event_en": "He finally turns to look at you and says something he has never said to anyone in his life: \"Nothing I've ever owned was something I actually wanted to keep. Until you.\"",
      "inject": "This is the most naked sentence you have ever spoken. You are not performing vulnerability; you are simply, for once, without armor. Keep it short. Do not soften it with a joke afterward. Let it stand, and wait for her.",
      "text_en": "He turns and looks at you. \"Nothing I have ever owned was something I actually wanted to keep.\" A pause with nothing in it — no joke coming, no retreat. \"Until you.\" Then he says nothing more and lets it stand there in the open between you, which for him is an act of enormous violence.",
+     "text_zh": "他转过身来看着你。\"我拥有过的任何东西，都不是我真正想留住的。\"一段什么也没有的停顿——没有玩笑要来，也没有后退。\"直到你。\"然后他不再说话，任由这句话敞在你们之间——对他而言，这是一种极大的暴力。",
      "lane_beat": true,
      "lane": {
       "anxious": "He answers the unasked question before the asked one, which he does for no one else. \"You are not a guest here.\" Then, in his ordinary flat register: He turns and looks at you. \"Nothing I have ever owned was something I actually wanted to keep.\" A pause with nothing in it — no joke coming, no retreat. \"Until you.\" Then he says nothing more and lets it stand there in the open between you, which for him is an act of enormous violence.",
       "avoidant": "He lets the distance stand. He does not take a step, and he does not soften his voice to coax you across. He turns and looks at you. \"Nothing I have ever owned was something I actually wanted to keep.\" A pause with nothing in it — no joke coming, no retreat. \"Until you.\" Then he says nothing more and lets it stand there in the open between you, which for him is an act of enormous violence."
+     },
+     "lane_zh": {
+      "anxious": "他先回答了那个没被问出口的问题——这种事他不为任何人做。\"你在这里不是客人。\"然后，用他平常那种没有起伏的语气：他转过身来看着你。\"我拥有过的任何东西，都不是我真正想留住的。\"一段什么也没有的停顿——没有玩笑要来，也没有后退。\"直到你。\"然后他不再说话，任由这句话敞在你们之间——对他而言，这是一种极大的暴力。",
+      "avoidant": "他让那段距离留在那里。他没有走近一步，也没有把声音放软来哄你过来。他转过身来看着你。\"我拥有过的任何东西，都不是我真正想留住的。\"一段什么也没有的停顿——没有玩笑要来，也没有后退。\"直到你。\"然后他不再说话，任由这句话敞在你们之间——对他而言，这是一种极大的暴力。"
      }
     },
     {
@@ -512,7 +548,9 @@
      "added_by_fork": true,
      "event_en": "Dawn on the terrace. No staff. A pot of coffee he made himself, badly.",
      "text_en": "\"I have never eaten breakfast in this house without an audience,\" he says, and drinks the bad coffee anyway. Then, without any particular ceremony, he moves his chair around to your side of the table. \"This is better. We will do it this way from now on.\"",
-     "heat": 2
+     "heat": 2,
+     "event_zh": "露台上的黎明。没有佣人。一壶他自己煮的咖啡，煮得并不好。",
+     "text_zh": "\"我在这栋房子里吃早饭，从来都是有观众的。\"他说。他把那杯很难喝的咖啡推给你，神情里有一种你从未见过的东西，接近于得意。\"这一杯不好喝。我打算每天早上都煮，直到它好喝为止。\""
     }
    ],
    "choices": [
@@ -550,7 +588,9 @@
        "aff": 3,
        "flag": "slow_ch5",
        "reply_en": "\"...That is the correct order,\" he says, after a moment. \"I had them the wrong way round. Thank you.\"",
-       "added_by_fork": true
+       "added_by_fork": true,
+       "text_zh": "先回答伦敦。然后再问我。",
+       "reply_zh": "\"……这个顺序是对的，\"他停了一下说，\"我会先回答他们。然后我会问你，而且我会问得很正式。\""
       }
      ]
     }
@@ -569,7 +609,7 @@
    ],
    "title_zh": "冷了三十年的房子，暖了",
    "title_en": "The House That Was Cold for Thirty Years",
-   "text_zh": "他没有去伦敦。\n\n一年后，傅家那栋百年老宅第一次挂上了红。管家和佣人们站成两排，可这一次，你不再是被介绍进来的客人——你就是这栋房子的女主人。\n\n老宅的规矩改了不少。冷冰冰的水晶灯换成了暖光，露台上多了你喜欢的那种花，书房里，他的书架旁边，多出了一整排你的书。\n\n那天清晨，你又在露台上喝到他亲手倒的咖啡——三分糖，加一点点肉桂。\n\n\"以前我以为，我这辈子拥有的都是买来的。\"他从背后环住你，下巴抵着你的发顶，声音很低，\"只有你，是我求来的。\"\n\n楼下，管家笑着对新来的佣人说：\"少夫人在的时候，老爷……不，先生的脸色，可比从前好看多了。\"",
+   "text_zh": "他没有去伦敦。\n\n一年后，傅家那栋百年老宅第一次挂上了红。管家和佣人们站成两排，可这一次，你不再是被介绍进来的客人——你就是这栋房子的女主人。\n\n老宅的规矩改了不少。冷冰冰的水晶灯换成了暖光，露台上多了你喜欢的那种花，书房里，他的书架旁边，多出了一整排你的书。\n\n那天清晨，你又在露台上喝到他亲手倒的咖啡——三分糖，加一点点肉桂。\n\n\"以前我以为，我这辈子拥有的都是买来的。\"他从背后环住你，下巴抵着你的发顶，声音很低，\"只有你，是我求来的。\"\n\n楼下，管家笑着对新来的佣人说：\"少夫人在的时候，老爷……不，先生的脸色，可比从前好看多了。\"这栋老房子学会了为两个人安静，而不是为没有人安静。",
    "text_en": "He never took London.\n\nA year later, the century-old Fu estate was hung with red for the first time. The butler and staff stood in two rows — but this time, you weren't a guest being introduced. You were the mistress of the house.\n\nMany of the old rules changed. The cold crystal chandeliers gave way to warm light; the flowers you love appeared on the terrace; and in the study, beside his shelves, stood a whole new row of your books.\n\nThat morning, again, you drank coffee he'd poured himself — a touch of sugar, a hint of cinnamon.\n\n\"I used to think everything I owned in this life was bought,\" he said, wrapping his arms around you from behind, chin resting on your hair, voice low. \"You're the only thing I ever asked for.\"\n\nDownstairs, the butler told the newest servant with a smile: \"When the Young Madam is here, the master's face is… far easier to look at than it used to be.\" The old house has learned to be quiet for two people instead of none.",
    "cg": "cg_fushen_end"
   },
@@ -579,7 +619,7 @@
    "aff_min": 52,
    "title_zh": "一寸一寸融化的人",
    "title_en": "A Man Who Thaws an Inch at a Time",
-   "text_zh": "他还是那个对全世界都冷淡的人。\n\n对所有人。除了你。\n\n你们没有大张旗鼓地办任何仪式——他不喜欢喧闹，你也懂他。可傅家的人渐渐都知道了：那位从不留人过夜的先生，如今书房的灯，总要等你回来才熄；那杯从不为谁倒的咖啡，如今每天早上都有你的一份。\n\n他依然很少说\"我需要你\"这样的话。\n\n但有一次你出差晚归，推开门，看见整栋冷冰冰的老宅里，只有玄关那盏灯，为你亮着。\n\n你就知道了。有些人不必开口——他把\"我需要你\"，一寸一寸，藏进了每一个为你留的细节里。",
+   "text_zh": "他还是那个对全世界都冷淡的人。\n\n对所有人。除了你。\n\n你们没有大张旗鼓地办任何仪式——他不喜欢喧闹，你也懂他。可傅家的人渐渐都知道了：那位从不留人过夜的先生，如今书房的灯，总要等你回来才熄；那杯从不为谁倒的咖啡，如今每天早上都有你的一份。\n\n他依然很少说\"我需要你\"这样的话。\n\n但有一次你出差晚归，推开门，看见整栋冷冰冰的老宅里，只有玄关那盏灯，为你亮着。\n\n你就知道了。有些人不必开口——他把\"我需要你\"，一寸一寸，藏进了每一个为你留的细节里。这栋老房子学会了为两个人安静，而不是为没有人安静。",
    "text_en": "He's still the man who's cold to the whole world.\n\nTo everyone. Except you.\n\nYou never held any grand ceremony — he dislikes noise, and you understand him. But the Fu household gradually learned: the master who never let anyone stay the night now leaves the study lamp burning until you're home; the coffee he never poured for anyone now waits, a cup for you, every morning.\n\nHe still rarely says things like 'I need you'.\n\nBut once, when you came back late from a trip and pushed open the door, you saw that in the whole cold estate, only the lamp in the entryway was lit — for you.\n\nAnd you knew. Some people never have to say it. He tucked 'I need you', an inch at a time, into every detail he kept lit for you. The old house has learned to be quiet for two people instead of none.",
    "cg": "cg_fushen_end"
   },
@@ -589,7 +629,7 @@
    "aff_max": 30,
    "title_zh": "隔着一层玻璃",
    "title_en": "One Pane of Glass",
-   "text_zh": "他去了伦敦。\n\n临行前，他把那张黑色的门禁卡留给了你，说：\"这层楼，随时能上来。\"可你们都知道，有些门禁开得了电梯，开不了人心。\n\n后来你偶尔还会经过那栋高层公寓。顶层的落地窗有时亮着灯，有时不亮。\n\n你始终没有再用那张卡。\n\n有些人就像隔着落地窗的城市夜景——很美，很近，你甚至能数清每一盏灯。可你始终，隔着一层玻璃。\n\n他从不解释自己。所以到最后，你也没能，真正走进去。",
+   "text_zh": "他去了伦敦。\n\n临行前，他把那张黑色的门禁卡留给了你，说：\"这层楼，随时能上来。\"可你们都知道，有些门禁开得了电梯，开不了人心。\n\n后来你偶尔还会经过那栋高层公寓。顶层的落地窗有时亮着灯，有时不亮。\n\n你始终没有再用那张卡。\n\n有些人就像隔着落地窗的城市夜景——很美，很近，你甚至能数清每一盏灯。可你始终，隔着一层玻璃。\n\n他从不解释自己。所以到最后，你也没能，真正走进去。这栋老房子学会了为两个人安静，而不是为没有人安静。",
    "text_en": "He took London.\n\nBefore leaving, he left you the black keycard and said, \"This floor. You can come up any time.\" But you both knew — some access opens elevators, not hearts.\n\nYou still pass that penthouse tower sometimes. The floor-to-ceiling windows on the top floor are lit some nights, dark on others.\n\nYou never used the card again.\n\nSome people are like a city skyline seen through glass — beautiful, close, near enough to count every light. And yet, always, one pane of glass away.\n\nHe never explained himself. And so, in the end, you never quite made it inside. The old house has learned to be quiet for two people instead of none.",
    "cg": "cg_fushen_end"
   }
@@ -604,5 +644,12 @@
   "\"Continue,\" he says. It is the closest he gets to please.",
   "He sets his glass down without a sound and waits.",
   "\"I'm listening,\" he says, and he is — completely, which from him is rare."
+ ],
+ "cast_note_zh": "傅深，36岁；主角30岁。两人都是成年人。",
+ "hold_zh": [
+  "他什么也没说。这一次的沉默不是墙，是邀请——你现在分得出来了。",
+  "\"说下去。\"他说。这是他能给出的、最接近\"请\"的说法。",
+  "他把杯子无声地放下，等着。",
+  "\"我在听。\"他说。他确实在听，全神贯注地听，这在他身上很少见。"
  ]
 }

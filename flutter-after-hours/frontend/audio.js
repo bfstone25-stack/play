@@ -41,6 +41,10 @@
   let state = load(), musicPlayer = null, cuePlayer = null, currentEdition = "en", currentScene = "main", musicBlocked = true, introThemeMode = false;
   let voices = [], duckTimer, cueStartTimer, cueFadeFrame, lastCueAt = 0;
 
+  function clampVol(v) {
+    return v > 1 ? 1 : v > 0 ? v : 0;      // also catches NaN, which throws the same way
+  }
+
   function fadePlayer(player, target, duration, done) {
     if (!player) { if (done) done(); return; }
     if (cueFadeFrame) cancelAnimationFrame(cueFadeFrame);
@@ -50,8 +54,20 @@
         cueFadeFrame = null;
         return;
       }
-      const p = Math.min(1, (now - started) / duration);
-      player.volume = from + (target - from) * (p * (2 - p));
+      // `Math.min(1, ...)` alone was not a clamp. rAF's timestamp is the time of the
+      // frame's start, which can be EARLIER than the performance.now() read a moment
+      // before it was scheduled, so the first step of a fade can see a negative p --
+      // and the ease p*(2-p) is then negative too, which carries the value below
+      // `from` and, on a fade to zero, below zero. That is the -0.0015455 the play
+      // matrix caught. Clamped at both ends, and again on the write below.
+      const p = Math.max(0, Math.min(1, (now - started) / duration));
+      // Clamped. The eased value is mathematically inside [from, target], but it is
+      // floating point and `from` is read back off the element, so the last frame of a
+      // fade-out can land a few ten-thousandths under zero -- and HTMLMediaElement
+      // throws on that rather than clamping, which killed the whole rAF chain and left
+      // the track stuck at whatever volume it had reached. Seen as a page error in the
+      // 2026-09-21 play matrix: volume -0.0015455 is outside the range [0, 1].
+      player.volume = clampVol(from + (target - from) * (p * (2 - p)));
       if (p < 1) cueFadeFrame = requestAnimationFrame(step);
       else {
         cueFadeFrame = null;
@@ -251,7 +267,7 @@
   function duck(on) {
     clearTimeout(duckTimer);
     if (!musicPlayer || !state.music) return;
-    musicPlayer.volume = on ? state.musicVolume * .28 : state.musicVolume;
+    musicPlayer.volume = clampVol(on ? state.musicVolume * .28 : state.musicVolume);
     if (on) duckTimer = setTimeout(()=>duck(false), 30000);
   }
   function nativeEdgeAvailable() {
