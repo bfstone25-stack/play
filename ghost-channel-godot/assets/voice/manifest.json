@@ -1,5 +1,60 @@
 {
  "en": {
+  "hex": {
+   "qfail": "en/hex/qfail.ogg",
+   "qpass": "en/hex/qpass.ogg",
+   "quote": "en/hex/quote.ogg",
+   "tic_moth": "en/hex/tic_moth.ogg",
+   "tic_quill": "en/hex/tic_quill.ogg",
+   "tic_raven": "en/hex/tic_raven.ogg",
+   "tic_viper": "en/hex/tic_viper.ogg",
+   "type_accuse": "en/hex/type_accuse.ogg",
+   "type_fire": "en/hex/type_fire.ogg",
+   "type_move": "en/hex/type_move.ogg",
+   "type_resupply": "en/hex/type_resupply.ogg"
+  },
+  "moth": {
+   "qfail": "en/moth/qfail.ogg",
+   "qpass": "en/moth/qpass.ogg",
+   "quote": "en/moth/quote.ogg",
+   "tic_hex": "en/moth/tic_hex.ogg",
+   "tic_quill": "en/moth/tic_quill.ogg",
+   "tic_raven": "en/moth/tic_raven.ogg",
+   "tic_viper": "en/moth/tic_viper.ogg",
+   "type_accuse": "en/moth/type_accuse.ogg",
+   "type_codebook": "en/moth/type_codebook.ogg",
+   "type_extract": "en/moth/type_extract.ogg",
+   "type_fire": "en/moth/type_fire.ogg",
+   "type_move": "en/moth/type_move.ogg",
+   "type_resupply": "en/moth/type_resupply.ogg"
+  },
+  "quill": {
+   "quote": "en/quill/quote.ogg",
+   "tic_hex": "en/quill/tic_hex.ogg",
+   "tic_moth": "en/quill/tic_moth.ogg",
+   "tic_raven": "en/quill/tic_raven.ogg",
+   "tic_viper": "en/quill/tic_viper.ogg",
+   "type_accuse": "en/quill/type_accuse.ogg",
+   "type_extract": "en/quill/type_extract.ogg",
+   "type_fire": "en/quill/type_fire.ogg",
+   "type_move": "en/quill/type_move.ogg",
+   "type_resupply": "en/quill/type_resupply.ogg"
+  },
+  "raven": {
+   "qfail": "en/raven/qfail.ogg",
+   "qpass": "en/raven/qpass.ogg",
+   "quote": "en/raven/quote.ogg",
+   "tic_hex": "en/raven/tic_hex.ogg",
+   "tic_moth": "en/raven/tic_moth.ogg",
+   "tic_quill": "en/raven/tic_quill.ogg",
+   "tic_viper": "en/raven/tic_viper.ogg",
+   "type_accuse": "en/raven/type_accuse.ogg",
+   "type_codebook": "en/raven/type_codebook.ogg",
+   "type_extract": "en/raven/type_extract.ogg",
+   "type_fire": "en/raven/type_fire.ogg",
+   "type_move": "en/raven/type_move.ogg",
+   "type_resupply": "en/raven/type_resupply.ogg"
+  },
   "viper": {
    "qfail": "en/viper/qfail.ogg",
    "qpass": "en/viper/qpass.ogg",
@@ -8,7 +63,12 @@
    "tic_moth": "en/viper/tic_moth.ogg",
    "tic_quill": "en/viper/tic_quill.ogg",
    "tic_raven": "en/viper/tic_raven.ogg",
-   "type_accuse": "en/viper/type_accuse.ogg"
+   "type_accuse": "en/viper/type_accuse.ogg",
+   "type_codebook": "en/viper/type_codebook.ogg",
+   "type_extract": "en/viper/type_extract.ogg",
+   "type_fire": "en/viper/type_fire.ogg",
+   "type_move": "en/viper/type_move.ogg",
+   "type_resupply": "en/viper/type_resupply.ogg"
   }
  }
 }

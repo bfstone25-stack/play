@@ -26,7 +26,14 @@ uniform float t = 0.0;
 uniform float level = 0.10;        // noise floor, 0..1
 uniform float tear = 0.0;          // 0..1, a band displaced sideways
 uniform float tear_y = 0.5;
-uniform float scan = 0.22;
+uniform float scan = 0.11;         // was 0.22
+// 2026-09-21. The title measured 0.17 brightness against a 0.50 floor, and only part of
+// that was the plate. Three multiplicative darkeners sit on top of whatever art lands:
+// station.gd's CanvasModulate (x0.75), these scanlines (x0.89 on average at 0.22) and the
+// vignette below (x0.82 on average at 0.85). Together they take a third off the frame
+// before a single pixel of art is judged, so a plate that clears 0.50 on disk composes to
+// 0.34 on screen. Halved rather than removed: the CRT treatment IS this game's look, and
+// at 0.11 the scanlines are still plainly there in a still.
 uniform vec4 tint : source_color = vec4(0.18, 0.94, 0.94, 1.0);
 
 float hash(vec2 p) {
@@ -65,7 +72,7 @@ void fragment() {
 
 	// vignette
 	vec2 v = uv - 0.5;
-	col *= 1.0 - dot(v, v) * 0.85;
+	col *= 1.0 - dot(v, v) * 0.34;   // was 0.85; see the note on `scan`
 
 	COLOR = vec4(col, 1.0);
 }

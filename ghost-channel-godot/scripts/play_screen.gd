@@ -46,6 +46,7 @@ var _names: HBoxContainer
 var _labels := {}
 var _tick := 0.0
 var _busy := false                 # the 650 ms beat, or the op is over
+var _pick := 0                     # the keyboard highlight during the naming round
 
 
 func _ready() -> void:
@@ -320,8 +321,12 @@ func _render_all() -> void:
 		Palette.HEAT if int(state.ff) > 0 else Palette.MUTED)
 	_hud["score"].text = str(state.hud.score)
 	_clock.value = clampf(float(state.time) / float(state.op.time), 0.0, 1.0)
-	_clock.get_theme_stylebox("fill").bg_color = (
-		Palette.HEAT if state.time <= 20 else (Palette.GOLD if state.time <= 45 else Palette.ACCENT))
+	# an override on this node, not a write into the shared Theme's StyleBox — colouring
+	# the clock must not repaint every other ProgressBar the theme will ever style
+	var fill: StyleBoxFlat = _clock.get_theme_stylebox("fill").duplicate()
+	fill.bg_color = (Palette.HEAT if state.time <= 20
+		else (Palette.GOLD if state.time <= 45 else Palette.ACCENT))
+	_clock.add_theme_stylebox_override("fill", fill)
 	_render_panel()
 	_render_roster()
 	_render_log()
@@ -377,7 +382,13 @@ func _render_roster() -> void:
 		r.st.add_theme_color_override("font_color",
 			Palette.HEAT if bool(a.suspect) or not bool(a.alive) else Palette.MUTED)
 		r.qt.text = "「" + str(GCStrings.agent(Game.lang, str(a.id)).quote) + "」"
-		r.btn.theme_type_variation = "Active" if state.awaitingName and a.alive else "Ghost"
+		# During the naming round the roster is the answer sheet, so the keyboard highlight
+		# has to be visible on it -- an arrow key that moves nothing you can see is the
+		# same as an arrow key that does nothing.
+		var picked: bool = state.awaitingName and a.alive and i == _pick
+		r.btn.theme_type_variation = ("Alarm" if picked
+			else ("Active" if state.awaitingName and a.alive else "Ghost"))
+		r.face.picked = picked
 
 
 func _render_log() -> void:
@@ -459,6 +470,12 @@ func _resolve(choice: String) -> void:
 		return
 	_busy = false
 	GCRules.next_request(state)
+	if state.awaitingName:
+		# park the keyboard highlight on the first agent still alive before the first draw,
+		# so it never opens pointing at a struck-through name
+		_pick = 0
+		while _pick < state.agents.size() - 1 and not bool(state.agents[_pick].alive):
+			_pick += 1
 	_render_all()
 	if state.awaitingName:
 		main.crt.tear(false)
@@ -533,6 +550,19 @@ func _process(delta: float) -> void:
 			return
 
 
+## Every screen in this game answers Enter and the arrow keys, and this one did not.
+##
+## 2026-09-21: the play-matrix showed Ghost Channel reaching 2 stages of 12 frames, and the
+## frames say why. The driver DID get past the title (the title takes Enter), sat down at
+## the first request -- and then pressed Space, Enter and ArrowRight into a screen whose
+## only inputs were A, D, Q and three buttons in the bottom eighth of the frame. The clock
+## ran down from 144 to 137 across four interactions and nothing moved. The flow was never
+## broken; the controls were unreachable by anything but three unlabelled letters.
+##
+## That is a real player's problem too, not a harness one: the naming round in particular
+## could only be answered with the number row or a mouse, with nothing on screen saying so.
+## So: Enter/Space is the primary verb (authorize a request, confirm an accusation), and
+## the arrows move a highlight through the roster during the naming round.
 func on_key(k: InputEventKey) -> bool:
 	if state.is_empty() or state.ended:
 		return false
@@ -541,9 +571,20 @@ func on_key(k: InputEventKey) -> bool:
 		if n >= 0 and n < state.agents.size():
 			_accuse(n)
 			return true
+		match k.keycode:
+			KEY_RIGHT, KEY_DOWN:
+				_move_pick(1)
+				return true
+			KEY_LEFT, KEY_UP:
+				_move_pick(-1)
+				return true
+			KEY_ENTER, KEY_KP_ENTER, KEY_SPACE:
+				_accuse(_pick)
+				return true
 		return false
 	match k.keycode:
-		KEY_A:
+		KEY_A, KEY_ENTER, KEY_KP_ENTER, KEY_SPACE:
+			# Enter is the primary verb, and authorizing is what a Net Control does most.
 			_resolve("auth")
 			return true
 		KEY_D:
@@ -553,6 +594,25 @@ func on_key(k: InputEventKey) -> bool:
 			_interrogate()
 			return true
 	return false
+
+
+## Step the naming-round highlight to the next agent who is still alive. Wraps, and gives
+## up rather than spinning if nobody is (which _accuse already refuses anyway).
+func _move_pick(step: int) -> void:
+	# `var n := ...` here is a PARSE error, not a warning: `state` is untyped, so
+	# state.agents is a Variant and := has nothing to infer from. It took the whole game
+	# down and left no trace a player or a play-test could see -- main.gd depends on this
+	# script, so main.gd failed to compile, so the scene's root script never loaded; the
+	# title screen still drew (its own script is fine) and every button on it did nothing
+	# for ever. That is the 2-stages-of-21-frames matrix: not a flow problem and not the
+	# driver's reach, a compile error that only says so in the browser console.
+	var n: int = state.agents.size()
+	for _i in range(n):
+		_pick = (_pick + step + n) % n
+		if bool(state.agents[_pick].alive):
+			break
+	Sfx.squelch_open()
+	_render_roster()
 
 
 func relocalise() -> void:

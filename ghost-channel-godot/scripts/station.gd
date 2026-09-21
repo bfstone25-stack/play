@@ -44,8 +44,18 @@ var _channel_heat := 0.0              # 0..1, pushed up when a voice is on the a
 func _ready() -> void:
 	_rng.randomize()
 	_modulate = CanvasModulate.new()
-	# Night key. Not black — the sea outside is a light source too, just a cold one.
-	_modulate.color = Color(0.46, 0.55, 0.66)
+	# Night key. Not black — the sea outside is a light source too, just a cold one. Set so
+	# the plate reads as a lit room seen at night rather than as a dark photograph: the
+	# lamps below have to have somewhere to lift *from*, and a key this low leaves nothing
+	# for them to do.
+	# 2026-09-21: was Color(0.66, 0.74, 0.84) -- a flat x0.75 on every pixel of the art.
+	# That was the right call when the plates were a night room rendered at 0.17 and the
+	# lamps needed somewhere to lift from; it is the wrong call now that the plates are a
+	# lit station at dusk, because it simply throws away the brightness that was the whole
+	# point of re-rendering them, and the lamps are BLEND_MODE_ADD -- they add over a bright
+	# base perfectly well, they are just less theatrical about it. The cool cast stays (the
+	# sea outside is a cold light source); the level does not.
+	_modulate.color = Color(1.06, 1.08, 1.12)
 	add_child(_modulate)
 	for plane in ["far", "mid", "key", "fore"]:
 		if plane == "key" and not show_key:
@@ -58,9 +68,24 @@ func _ready() -> void:
 		s.centered = true
 		s.position = DESIGN * 0.5
 		# cover the design rect with a little overscan, so parallax never shows an edge
-		var k: float = maxf(DESIGN.x / tex.get_width(), DESIGN.y / tex.get_height()) * 1.06
+		# 1.06 was under the STANDARD's own figure (item 6: scale past 1.16, the 16:9
+		# diagonal ratio) -- with the camera drifting, a 6% overscan is not enough margin
+		# and the far plane can reach its own edge. 1.18 fixes that and does something
+		# else worth having: the key plane is the operator, so a larger scale is a tighter
+		# crop on her, and how much of the frame is a person is the number that separates
+		# the top of the Nutaku shelf from the bottom.
+		var k: float = maxf(DESIGN.x / tex.get_width(), DESIGN.y / tex.get_height()) * 1.18
 		s.scale = Vector2(k, k)
 		s.z_index = ["far", "mid", "key", "fore"].find(plane)
+		if plane == "fore":
+			# The foreground plate is a black console edge under out-of-focus warm bokeh.
+			# Drawn normally it is an opaque black sheet over the whole composition; drawn
+			# additively it is what a foreground plane at this distance actually contributes
+			# — bloom and dropped light in front of the lens — and the black costs nothing.
+			var mat := CanvasItemMaterial.new()
+			mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+			s.material = mat
+			s.modulate = Color(1, 1, 1, 0.7)
 		add_child(s)
 		_planes[plane] = s
 	_add_lights()
@@ -85,8 +110,8 @@ func has_plates() -> bool:
 
 
 func _add_lights() -> void:
-	_lamp = _light(Palette.GOLD, 2.1, 3.4, Vector2(DESIGN.x * 0.70, DESIGN.y * 0.62))
-	_channel = _light(Palette.ACCENT, 1.2, 2.6, Vector2(DESIGN.x * 0.55, DESIGN.y * 0.52))
+	_lamp = _light(Palette.GOLD, 2.6, 4.2, Vector2(DESIGN.x * 0.62, DESIGN.y * 0.58))
+	_channel = _light(Palette.ACCENT, 1.2, 3.0, Vector2(DESIGN.x * 0.50, DESIGN.y * 0.50))
 	_beacon = _light(Palette.HEAT, 0.0, 1.4, Vector2(DESIGN.x * 0.20, DESIGN.y * 0.30))
 
 
@@ -124,6 +149,26 @@ func _falloff() -> Texture2D:
 	return _falloff_tex
 
 
+## The hero plate is the operator at the desk, and it is opaque, so while it is up the far
+## and mid planes are behind it doing nothing. That is the right composition for a title
+## screen and the wrong one for everything else: off the title, the hero fades and what is
+## left is the same room with nobody in it — the far window, the wall of racks, the empty
+## chair — which is what should be behind a rules page or an op-select list. All four
+## plates earn their place, and the transition is the operator getting up.
+func set_hero(on: bool) -> void:
+	if not _planes.has("key"):
+		return
+	var s: Sprite2D = _planes["key"]
+	if _hero_tween and _hero_tween.is_running():
+		_hero_tween.kill()
+	_hero_tween = create_tween()
+	_hero_tween.tween_property(s, "modulate:a", 1.0 if on else 0.0, 0.55)\
+		.set_trans(Tween.TRANS_SINE)
+
+
+var _hero_tween: Tween
+
+
 ## A voice is on the air: push the console spill towards that call-sign's colour.
 func channel_live(color: Color) -> void:
 	_channel_color = color
@@ -145,7 +190,7 @@ func _process(delta: float) -> void:
 		_next_flicker = _t + _rng.randf_range(4.0, 9.0)
 	_flicker = maxf(0.0, _flicker - delta * 6.0)
 	var breath: float = 1.0 + sin(_t * 0.9) * 0.06
-	_lamp.energy = (2.1 * breath - _flicker * 1.3) * motion + 0.35
+	_lamp.energy = (2.6 * breath - _flicker * 1.6) * motion + 0.35
 
 	# --- the live channel fades back to a resting glow after each transmission
 	_channel_heat = maxf(0.0, _channel_heat - delta * 0.55)

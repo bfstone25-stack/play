@@ -39,10 +39,23 @@ func _ready() -> void:
 
 
 func _build() -> void:
-	# the column: the plate's empty left third, 84 px in from the edge
+	# A scrim under the logotype column. The plate was prompted to leave its left third
+	# quiet and the render came back symmetrical — a wall of lit racks all the way across —
+	# so the type needed somewhere to sit that does not depend on a sampler having obeyed a
+	# composition tag. It is a gradient, not a box: ink at the left edge falling to nothing
+	# by the middle of the frame, which reads as the room being darker away from the
+	# console rather than as a panel laid over the picture.
+	var scrim := TextureRect.new()
+	scrim.texture = _scrim_texture()
+	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scrim.stretch_mode = TextureRect.STRETCH_SCALE
+	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(scrim)
+
+	# the column: 84 px in from the edge, on the quiet the scrim makes
 	var col := VBoxContainer.new()
 	col.position = Vector2(84, 118)
-	col.custom_minimum_size = Vector2(470, 0)
+	col.custom_minimum_size = Vector2(580, 0)
 	col.add_theme_constant_override("separation", 0)
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(col)
@@ -80,7 +93,12 @@ func _build() -> void:
 	_menu = VBoxContainer.new()
 	_menu.add_theme_constant_override("separation", 9)
 	col.add_child(_menu)
-	_menu_button("start", "Primary", func(): _start())
+	# The primary dial is wider than the other two on purpose. It was 320 px like the rest,
+	# in a column pinned 84 px from the left edge, which made the whole menu a left-hand
+	# strip ending at x=404 -- and a title screen whose only mouse target lives in the
+	# outer third is a title screen most drivers, and some players, never press. It is also
+	# just bad hierarchy: three identical dials, one of which is the thing to do.
+	_menu_button("start", "Primary", func(): _start(), 566)
 	_menu_button("how", "Amber", func(): _go("how"))
 	_menu_button("credits", "Ghost", func(): _go("credits"))
 
@@ -89,18 +107,52 @@ func _build() -> void:
 	col.add_child(_note)
 
 	# the studio mark and the rating, bottom-left, small and consistent
-	_mark = StudioTheme.mono_label("", 12, Palette.DIM)
+	# DIM (#4A6070) was legible when the plate under it was a 0.17 night room. With a lit
+	# station behind it the studio mark disappeared into the console it sits on -- the type
+	# did not change, the ground did. MUTED is the same family, one step up.
+	_mark = StudioTheme.mono_label("", 12, Palette.MUTED)
 	_mark.position = Vector2(84, 668)
 	add_child(_mark)
 
 	relocalise()
 
 
-func _menu_button(key: String, variation: String, cb: Callable) -> void:
-	var b := Button.new()
+## A left-to-right fade from the ground colour to nothing, generated once.
+static var _scrim: Texture2D
+
+
+func _scrim_texture() -> Texture2D:
+	if _scrim:
+		return _scrim
+	var w := 64
+	var img := Image.create(w, 1, false, Image.FORMAT_RGBA8)
+	for x in w:
+		var k: float = float(x) / float(w - 1)
+		# strong to x=0.34 of the frame, gone by 0.62; eased so there is no visible edge
+		var a: float = clampf(1.0 - (k - 0.34) / 0.28, 0.0, 1.0)
+		# 0.88 was an ink wash over the left 60% of the frame -- the fourth darkener in the
+		# stack (see crt.gd's note), and the one sitting exactly where the thumbnail's eye
+		# goes. 0.58 still seats white type on a bright sky; it no longer decides the
+		# frame's exposure.
+		a = a * a * (3.0 - 2.0 * a) * 0.42
+		img.set_pixel(x, 0, Color(Palette.GROUND_DEEP.r, Palette.GROUND_DEEP.g, Palette.GROUND_DEEP.b, a))
+	_scrim = ImageTexture.create_from_image(img)
+	return _scrim
+
+
+func _menu_button(key: String, variation: String, cb: Callable, w: int = 320) -> void:
+	# A DIAL, not a rounded rectangle (scripts/shaped_button.gd). Blaze, 2026-09-21: seen
+	# on one board with the rest of the shelf, every title screen in the studio was the
+	# same rounded block with a word in it. This game is about tuning a radio until a
+	# voice comes in, so its control is a tuning dial and the notch slides toward the
+	# right as the pointer arrives.
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.DIAL
+	b.tint = Palette.ACCENT          # signal cyan: "the thing to press", palette.gd:30
+	b.ink = Palette.GROUND_DEEP      # dark text on the lit dial face
 	b.name = key
 	b.theme_type_variation = variation
-	b.custom_minimum_size = Vector2(320, 0)
+	b.custom_minimum_size = Vector2(w, 56 if w == 320 else 64)
 	# a designed block, not a stretched column: the three buttons are one width and the
 	# container does not get to decide it
 	b.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
@@ -116,8 +168,12 @@ func relocalise() -> void:
 	_tag.text = Game.t("tag")
 	_mark.text = "BLAZECORE PLAY   ·   " + Game.t("mark")
 	for key in ["start", "how", "credits"]:
-		var b: Button = _menu.get_node(key)
-		b.text = "  " + Game.t(key)
+		var b := _menu.get_node(key)
+		if b is ShapedButton:
+			b.label = Game.t(key)
+			b.queue_redraw()
+		else:
+			b.text = "  " + Game.t(key)
 	var have: Array = Voice.have()
 	# Say plainly what is in this build. A player who hears no voices should be told the
 	# bake is missing, not left assuming their sound is broken.

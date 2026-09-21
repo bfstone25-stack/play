@@ -195,8 +195,11 @@ static func build() -> Theme:
 	t.set_color("font_hover_color", "Active", Palette.TEXT)
 
 	# Ghost: a quiet action — BACK, the language chip that is off.
+	# Tertiary, but not invisible: on a photographic ground a fully transparent button
+	# reads as a caption. A hair of the panel behind it is enough to say "this is a
+	# control" without competing with the two above it.
 	_variation(t, "Ghost", "Button")
-	t.set_stylebox("normal", "Ghost", flat(Color(0, 0, 0, 0), Palette.LINE_SOFT, 3, 1, Vector2(12, 7)))
+	t.set_stylebox("normal", "Ghost", flat(Color(Palette.PANEL, 0.55), Palette.LINE_STRONG, 3, 1, Vector2(12, 7)))
 	t.set_stylebox("hover", "Ghost", flat(Color(Palette.ACCENT, 0.1), Palette.LINE_STRONG, 3, 1, Vector2(12, 7)))
 	t.set_stylebox("pressed", "Ghost", flat(Color(0, 0, 0, 0.35), Palette.LINE_STRONG, 3, 1, Vector2(12, 7)))
 	t.set_color("font_color", "Ghost", Palette.MUTED)

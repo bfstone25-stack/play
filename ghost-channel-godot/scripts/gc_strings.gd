@@ -1,10 +1,10 @@
 ## GCStrings — the prototype's GCi18n (play/ghost-channel/i18n.js) over the generated
-## packs in gc_strings_data.gd. en and zh; anything missing in zh falls through to en,
-## exactly as the JS did.
+## packs in gc_strings_data.gd. en, zh and ja; anything missing in a pack falls through to
+## en, exactly as the JS did.
 class_name GCStrings
 
-const LANGS := ["en", "zh"]
-const LANG_LABEL := {"en": "EN", "zh": "中文"}
+const LANGS := ["en", "zh", "ja"]
+const LANG_LABEL := {"en": "EN", "zh": "中文", "ja": "日本語"}
 
 ## Keys this build needs that the prototype's packs do not have, because the prototype
 ## never had the thing they describe. Consulted before the generated packs, so regenerating
@@ -25,6 +25,14 @@ const EXTRA := {
 		"incoming": "来话",
 		"opsHint": "第一场免费。第二、三场随完整版开启。",
 		"rating": "全年龄",
+	},
+	"ja": {
+		"noVoiceNote": "このビルドに音声パックはありません。五人は文字とコールサイン音だけで伝えます。",
+		"voiceNote": "音声：CosyVoice2、無線機のバンドパスを通して。",
+		"logLabel": "通信記録",
+		"incoming": "受信",
+		"opsHint": "第一作戦は無料。第二・第三は製品版で開きます。",
+		"rating": "全年齢",
 	},
 }
 

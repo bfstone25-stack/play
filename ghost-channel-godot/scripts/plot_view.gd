@@ -43,7 +43,10 @@ func _draw() -> void:
 	# the bed: the console's own surface, under everything
 	var bed := "res://assets/art/console_bed.png"
 	if ResourceLoader.exists(bed):
-		draw_texture_rect(load(bed), Rect2(Vector2.ZERO, size), false, Color(0.5, 0.58, 0.66, 1.0))
+		# The bed is the console's steel, not a picture to look at: pushed well down so the
+		# phosphor drawn on top of it is the brightest thing in the panel, which is the
+		# whole point of a plot.
+		draw_texture_rect(load(bed), Rect2(Vector2.ZERO, size), false, Color(0.30, 0.35, 0.40, 1.0))
 	else:
 		draw_rect(Rect2(Vector2.ZERO, size), Palette.GROUND_DEEP, true)
 	draw_rect(grid, Color(Palette.GROUND_DEEP, 0.55), true)

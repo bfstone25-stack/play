@@ -67,8 +67,11 @@ func show_screen(name: String) -> void:
 	# so the instrument readouts are the brightest thing on the tube, which is how a
 	# console at night actually looks.
 	var playing := name == "play" or name == "debrief"
+	# The operator is the title's hero image; behind a rules page or the op list the room
+	# is the same room with the chair empty.
+	station.set_hero(name == "title")
 	station.motion = 0.25 if playing else 1.0
-	station.modulate = Color(1, 1, 1, 0.30 if playing else 1.0)
+	station.modulate = Color(1, 1, 1, 0.20 if playing else 1.0)
 	crt.set_floor(0.07 if playing else 0.11)
 	if screens[name].has_method("on_show"):
 		screens[name].on_show()
@@ -79,11 +82,12 @@ func title() -> void:
 
 
 # ---- the language dock ------------------------------------------------------------------
-## Bottom-right, on every screen, the way the prototype's #lang-dock was. Two chips.
+## Bottom-right, on every screen, the way the prototype's #lang-dock was. One chip per
+## entry in GCStrings.LANGS -- three since ja was wired in, hence the wider offset.
 func _build_lang_dock() -> void:
 	_lang_dock = HBoxContainer.new()
 	_lang_dock.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	_lang_dock.position = Vector2(-150, -44)
+	_lang_dock.position = Vector2(-238, -44)
 	_lang_dock.add_theme_constant_override("separation", 6)
 	add_child(_lang_dock)
 	for code in GCStrings.LANGS:

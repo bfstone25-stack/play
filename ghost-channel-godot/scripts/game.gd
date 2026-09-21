@@ -58,14 +58,17 @@ func returning_player() -> bool:
 
 # ---- language ----------------------------------------------------------------------------
 ## The prototype's detect(): a saved choice wins, then the browser/OS locale, then en.
-## Only en and zh ship in this build (the brief), so es/pt/ja fall back to en rather than
-## silently drawing English under a Spanish flag.
+## en, zh and ja ship in this build; es and pt exist in the prototype's i18n.js but are not
+## pulled into the port, so they fall back to en rather than silently drawing English under
+## a Spanish flag. Never offer a language whose pack you have not checked -- STANDARD item 7.
 func _detect_lang() -> String:
 	if _lang_forced:
 		return lang
 	var l := OS.get_locale().to_lower()
 	if l.begins_with("zh"):
 		return "zh"
+	if l.begins_with("ja"):
+		return "ja"
 	return "en"
 
 

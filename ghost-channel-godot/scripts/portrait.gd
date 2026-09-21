@@ -15,6 +15,11 @@ extends Control
 @export var alive := true
 @export var suspect := false
 @export var live := false             # this person is on the air right now
+@export var picked := false:          # the keyboard highlight during the naming round
+	set(v):
+		if v != picked:
+			picked = v
+			queue_redraw()
 
 var _tex: Texture2D
 var _t := 0.0
@@ -82,7 +87,12 @@ func _draw() -> void:
 
 	var edge := col if alive else Palette.FAINT
 	var width := 1.0
-	if live:
+	if picked:
+		# the arrow keys are pointing here; a thick white frame reads at a glance and does
+		# not collide with either of the two meanings already on this border
+		edge = Palette.TEXT
+		width = 3.0
+	elif live:
 		# on air: the frame breathes
 		edge = Palette.ACCENT
 		width = 2.0 + sin(_t * 6.0) * 0.6

@@ -47,14 +47,26 @@ func _ready() -> void:
 	add_child(_tic_player)
 
 
+## Read the manifest by whichever route the build left open. A .json under res:// can
+## arrive two ways — as the plain file (FileAccess) or, if Godot's JSON importer claimed
+## it, as a JSON *resource* with no file behind it — and which one happens depends on the
+## export preset rather than on anything this project controls. Getting this wrong is
+## silent: the game plays the call-sign tone and nobody speaks. So it tries both.
 func _read_manifest() -> void:
 	var p := DIR + "/manifest.json"
-	if not ResourceLoader.exists(p) and not FileAccess.file_exists(p):
+	var text := ""
+	if FileAccess.file_exists(p):
+		var f := FileAccess.open(p, FileAccess.READ)
+		if f != null:
+			text = f.get_as_text()
+	if text == "" and ResourceLoader.exists(p):
+		var res = load(p)
+		if res is JSON:
+			_manifest = (res as JSON).data if (res as JSON).data is Dictionary else {}
+			return
+	if text == "":
 		return
-	var f := FileAccess.open(p, FileAccess.READ)
-	if f == null:
-		return
-	var d = JSON.parse_string(f.get_as_text())
+	var d = JSON.parse_string(text)
 	if d is Dictionary:
 		_manifest = d
 
