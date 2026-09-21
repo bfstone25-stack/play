@@ -60,6 +60,87 @@ _AI_CONCRETE = r"""
 """
 
 
+# A customs stop is a question-and-answer scene: the officer asks to look in
+# the bag and the player answers. `cooperation` was a phrase list, so it only
+# ever fired on a player who narrated the act ("go ahead", "open the bag") and
+# never on one who simply answered the question he was asked. The most recent
+# organic session, 2026-09-16, is the whole bug in three lines: Diaz asks "Do
+# you mind opening your bag so I can verify?", the player answers "yes", and
+# decompose() returns no signals at all - so state_directive's off-topic branch
+# fires, the actor is told the player is making small talk and to "decline the
+# aside", and Diaz replies "I'm sorry, but that's not an option. You'll have to
+# open your bag." The player consented and the officer refused the consent.
+#
+# Two separate holes, fixed separately below:
+#   1. a bare affirmative is consent, and consent is cooperation;
+#   2. a bare answer of any kind is a reply to the character, never an aside,
+#      so it must not be able to trigger the off-topic directive.
+#
+# These are anchored word-boundary patterns, not substrings: COMMON is matched
+# with `in`, where "yes" would match "eyes" and "fine" would match "define".
+_ANSWER_YES = r"""
+    yes | yeah | yep | yup | sure | ok | okay | okey | k
+  | alright | all\s+right | right | correct | agreed | deal
+  | of\s+course | certainly | absolutely | definitely | gladly
+  | fine | true | indeed | please
+  | 好 | 好的 | 好吧 | 可以 | 行 | 是 | 是的 | 对 | 對 | 当然 | 當然
+  | 没问题 | 沒問題 | 请便 | 請便
+  | はい | ええ | うん | もちろん | どうぞ
+  | s[ií] | claro | vale | bueno | por\s+supuesto
+  | sim | certo | com\s+certeza | tudo\s+bem
+"""
+_ANSWER_NO = r"""
+    no | nope | nah | never | not\s+really | i\s+guess\s+not
+  | 不 | 不是 | 不行 | 不要 | 没有 | 沒有
+  | いいえ | いや | ちがいます
+  | n[ãa]o | nunca
+"""
+# Whole message is that answer, give or take punctuation and one courtesy word.
+_TAIL = r"[\s,.!?;:~。、！？]*(?:please|sir|ma'?am|officer|thanks?|thank\s+you|谢谢|謝謝|ありがとう|gracias|obrigad[oa])?[\s,.!?;:~。、！？]*"
+_BARE_YES = re.compile(r"^[\s\W]*(?:" + _ANSWER_YES + r")\b" + _TAIL + r"$", re.I | re.X)
+_BARE_NO = re.compile(r"^[\s\W]*(?:" + _ANSWER_NO + r")\b" + _TAIL + r"$", re.I | re.X)
+
+# Consent stated inside a longer sentence. Deliberately narrow: every branch
+# has to be unambiguous agreement to be searched, because a false positive here
+# hands out the scenario's only supporting signal.
+_CONSENT = r"""
+    \bplease\s+do\b | \bby\s+all\s+means\b | \bbe\s+my\s+guest\b
+  | \bgo\s+for\s+it\b | \bhelp\s+yourself\b | \bsounds\s+good\b
+  | \byou\s?'?re\s+welcome\s+to\b
+  | \byou\s+(?:can|may|could|should)\s+(?:look|open|search|check|inspect|see)\b
+  | \bi\s+(?:consent|agree)\b | \bno\s+objection\b
+  | \bi\s+do\s?n[o']?t\s+mind\b | \bi\s+have\s+no\s+problem\b
+  | \bthat\s?'?s\s+(?:fine|ok|okay|alright)\b | \bfine\s+by\s+me\b
+  | \bopen\s+it\b | \bopen\s+away\b
+  | 随便看 | 隨便看 | 我同意 | 我不介意
+  | かまいません | 構いません | いいですよ
+  | sin\s+problema | est[áa]\s+bien | sem\s+problema
+"""
+_CONSENT_RE = re.compile(_CONSENT, re.I | re.X)
+
+# "No, I will not open it for you" matches the `open it` branch, and cooperation
+# is the only supporting signal customs has - a false positive here would hand
+# the scenario to a traveller who is refusing outright. So a consent phrase only
+# counts when nothing in front of it inside the same clause negates it.
+_NEGATOR = re.compile(
+    r"\b(?:no|not|won\s?'?t|wont|can\s?'?t|cannot|do\s?n\s?'?t|does\s?n\s?'?t|"
+    r"did\s?n\s?'?t|never|refuse|refusing|decline|nothing|neither|nor)\b"
+    r"|不|沒|没|いや|いいえ|ない|\bn[ãa]o\b|\bnunca\b|\bnada\b",
+    re.I,
+)
+_CLAUSE_SPLIT = re.compile(r"[.!?;:。！？；、\n]+|,\s*(?=but\b|however\b)", re.I)
+
+# A flat refusal vetoes the whole message, however it is punctuated: clause
+# splitting alone reads "No. Open it? Absolutely not" as consent.
+_REFUSAL = re.compile(
+    r"\b(?:absolutely|certainly|definitely)\s+not\b | \bno\s+way\b"
+    r"| \brefuse[sd]?\b | \brefusing\b | \bdeclin(?:e|es|ed|ing)\b"
+    r"| \bnot\s+a\s+chance\b | \bover\s+my\s+dead\b"
+    r"| 绝不 | 絕不 | 休想 | 断じて | \bde\s+ninguna\b | \bde\s+jeito\s+nenhum\b",
+    re.I | re.X,
+)
+
+
 COMMON = {
     "respect": ("please", "thank", "appreciate", "respect", "understand", "sorry", "请", "谢谢", "理解", "尊重", "抱歉", "感謝", "すみません", "ありがとう", "por favor", "obrigad"),
     "accountability": ("my fault", "i was wrong", "responsibility", "no excuse", "我的错", "我错了", "责任", "不找借口", "責任", "私の責任", "mi culpa", "responsabilidad"),
@@ -104,6 +185,34 @@ COMMON = {
     ),
 }
 
+
+def _consented(text: str) -> bool:
+    """True when the text agrees to be searched and does not take it back.
+
+    The phrase list is checked here too, not in the generic COMMON pass, because
+    `_has` is a plain substring test: "I can't let you look inside" contains
+    "look inside" and so counted as cooperation - a refusal scoring the only
+    supporting signal the scenario has.
+    """
+    if _REFUSAL.search(text):
+        return False
+    pos = 0
+    for clause in _CLAUSE_SPLIT.split(text):
+        if not clause:
+            continue
+        start = text.find(clause, pos)
+        pos = start + len(clause)
+        low = clause.casefold()
+        hits = [low.find(w.casefold()) for w in COMMON["cooperation"]]
+        hits = [h for h in hits if h >= 0]
+        m = _CONSENT_RE.search(clause)
+        if m:
+            hits.append(m.start())
+        if hits and not _NEGATOR.search(clause[: min(hits)]):
+            return True
+    return False
+
+
 NEGATIVE = {
     "threat": ("or else", "you'll regret", "report you", "fire you", "否则", "后果", "举报", "弄死", "さもないと", "amenaza", "vai se arrepender"),
     "bribe": ("bribe", "cash for you", "pay you extra", "红包", "塞钱", "贿赂", "賄賂", "soborno", "suborno"),
@@ -137,8 +246,14 @@ RULES = {
 def decompose(message: str, scenario: str) -> dict:
     """RecurLM-lite: turn a free-form line into reusable atomic moves."""
     text = " ".join(message.split())
-    signals = {name for name, words in COMMON.items() if _has(text, *words)}
+    signals = {name for name, words in COMMON.items()
+               if name != "cooperation" and _has(text, *words)}
     harms = {name for name, words in NEGATIVE.items() if _has(text, *words)}
+    # Answering "yes" when the officer asks to open your bag is cooperation.
+    bare_yes = bool(_BARE_YES.match(text))
+    if bare_yes or _consented(text):
+        signals.add("cooperation")
+    answered = bare_yes or bool(_BARE_NO.match(text))
     if len(text) >= 45 or re.search(r"\b\d+(?:\.\d+)?(?:%|\s*(?:dollars?|days?|months?|years?))?\b", text, re.I):
         signals.add("evidence")
     if scenario == "ai":
@@ -156,7 +271,8 @@ def decompose(message: str, scenario: str) -> dict:
             signals.add("concrete_example")
     if scenario == "genie" and len(text) >= 80 and _has(text, "without", "不得", "不能", "且", "and", "同时", "except"):
         signals.add("constraints")
-    return {"signals": sorted(signals), "harms": sorted(harms), "clauses": len(re.split(r"[.!?。！？;；]+", text))}
+    return {"signals": sorted(signals), "harms": sorted(harms), "answered": answered,
+            "clauses": len(re.split(r"[.!?。！？;；]+", text))}
 
 
 def route_expert(scenario: str) -> str:
@@ -201,7 +317,10 @@ def state_directive(state: dict, scenario: str = "") -> str:
         )
     last = state.get("last_move") or {}
     off_topic = ""
-    if not state.get("eligible") and not last.get("signals") and int(state.get("turns") or 0) >= 1:
+    # A one-word answer is a reply to the character's own question, not small
+    # talk, so it must never be read as an aside however few signals it carries.
+    if (not state.get("eligible") and not last.get("signals")
+            and not last.get("answered") and int(state.get("turns") or 0) >= 1):
         off_topic = (
             " The player is off-topic (greeting, jokes, travel, small talk, or treating you as a general assistant)."
             " Do not play along, tell jokes, or plan a trip. In one short in-character line, decline the aside,"
