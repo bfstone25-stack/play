@@ -16,6 +16,7 @@ boot_splash/show_image=false
 Gate="*res://scripts/gate.gd"
 
 Fold="*res://scripts/fold.gd"
+Origami="*res://scripts/origami.gd"
 Save="*res://scripts/save.gd"
 I18n="*res://scripts/i18n.gd"
 Sfx="*res://scripts/sfx.gd"

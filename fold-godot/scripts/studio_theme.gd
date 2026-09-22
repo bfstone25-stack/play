@@ -290,6 +290,28 @@ static func style_button(b: Button, variant: String) -> void:
 		"quiet": b.theme_type_variation = "Ghost"
 
 
+## A button that is a SHEET OF PAPER WITH ONE CORNER FOLDED BACK, and the fold opens as
+## the pointer arrives — ops/STANDARD.md item 4: the shape comes from the game's world,
+## and this game's world is folding paper. scripts/shaped_button.gd is the studio's copy
+## (shared/godot/shaped_button.gd); Shape.FOLD is drawn by _draw_fold().
+##
+## The font is overridden rather than inherited: ShapedButton draws its own label with
+## get_theme_font("font"), which returns null on a variation the theme does not define and
+## draws NOTHING at all, and the fallback it then takes has no CJK — a zh/ja build would
+## show a blank button or tofu. font("display") carries the Noto CJK fallback chain.
+static func fold_button(name_: String, tint: Color, ink: Color, size: int = 20) -> ShapedButton:
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.FOLD
+	b.name = name_
+	b.tint = tint
+	b.ink = ink
+	b.flat = true
+	b.add_theme_font_override("font", font("display"))
+	b.add_theme_font_size_override("font_size", size)
+	b.add_theme_color_override("font_color", ink)
+	return b
+
+
 static func mono_label(text: String, size: int = 11, color: Color = Palette.MUTED) -> Label:
 	var l := Label.new()
 	l.text = text

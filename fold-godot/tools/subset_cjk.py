@@ -32,7 +32,13 @@ OUT = HERE / "assets/fonts/NotoSansCJK-subset.otf"
 
 chars: set[str] = set()
 
-for name in ("levels.json", "coach_tips.json"):
+# steps.json and models.json joined this list on 2026-09-21 with the origami bridge and the
+# ja/zh-Hant pass: the model names and the diagram steps are the MOST visible CJK in the
+# game (they are the level's title and the line under the board) and they were not in the
+# subset at all. Japanese also brings kana, which no previous string in this game needed --
+# exactly the failure in the memory note about font atlases passing on-disk checks while
+# missing kana, so tests/run_tests.gd measures a kana string as well as 归一.
+for name in ("levels.json", "coach_tips.json", "steps.json", "models.json"):
     chars |= set((HERE / "data" / name).read_text(encoding="utf-8"))
 
 for p in list(HERE.glob("scripts/*.gd")) + list(HERE.glob("scenes/*.gd")):
@@ -42,7 +48,7 @@ for p in list(HERE.glob("scripts/*.gd")) + list(HERE.glob("scenes/*.gd")):
 # the wordmark and every non-Latin symbol the UI sets: the star row, the bullet in the
 # rules, the sound and close glyphs, the arrow on "Next". None of these is in Nunito or
 # Marcellus either, so they ride in the same fallback.
-chars |= set("归一帰0123456789×·—…：；！？，。、（）「」★☆◆♪✕✓‹›→←↑↓")
+chars |= set("归一帰折り紙0123456789×·—…：；！？，。、（）「」★☆◆♪✕✓‹›→←↑↓")
 
 cjk = "".join(sorted(c for c in chars if ord(c) > 0x2000))
 

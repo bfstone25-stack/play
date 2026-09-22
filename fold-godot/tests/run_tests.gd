@@ -47,11 +47,13 @@ func _ready() -> void:
 
 func _run() -> void:
 	_levels()
+	_origami()
 	_loader()
 	_order()
 	_undo()
 	_stars()
 	_fonts()
+	_languages()
 	_legibility()
 	_conformance()
 	print("\n%d checks passed, %d failed" % [passed, failed])
@@ -68,6 +70,42 @@ func _levels() -> void:
 	eq(Fold.level_name(0, "zh"), "入门", "Chinese half of the name")
 	eq(Fold.CURATED, 51, "the picker splits curated from endless at 51")
 	eq(Fold.FREE_LEVELS, 50, "levels 1-50 are the free track")
+
+
+## The origami bridge, ops/fold/BRIDGE.md. The load-bearing claim is that the tile value
+## is the layer count and the level's `target` is therefore the LAST fold of its model —
+## so a level whose model finishes one fold early or late would show the player a crane
+## they had not finished, or win before the crane existed. That is checked over all 201
+## levels rather than spot-checked, because the mapping is data and data drifts.
+func _origami() -> void:
+	print("origami bridge")
+	var covered := 0
+	var wrong_finish := 0
+	var no_steps := 0
+	for i in range(Fold.level_count()):
+		if not Origami.has_model(i):
+			continue
+		covered += 1
+		var st := Origami.steps_of(Origami.model_for(i))
+		if st.is_empty():
+			no_steps += 1
+			continue
+		if int(st[-1]["at"]) != int(Fold.level(i)["target"]):
+			wrong_finish += 1
+	eq(covered, 201, "every shipped level folds a named model")
+	eq(no_steps, 0, "every model has diagram steps")
+	eq(wrong_finish, 0, "every model's last step is the level's target — the win IS the last fold")
+	# the arithmetic the whole bridge rests on: 2^k layers after k folds
+	eq(Origami.folds_for_value(2), 1, "a 2 is one fold")
+	eq(Origami.folds_for_value(8), 3, "an 8 is three folds")
+	eq(Origami.folds_for_value(256), 8, "a 256 is eight folds")
+	eq(Origami.folds_for_value(0), 0, "an empty cell is no folds at all")
+	# both languages, since the header and the win card print them
+	eq(Origami.model_name("crane", "en"), "Paper crane", "the crane in English")
+	eq(Origami.model_name("crane", "zh"), "纸鹤", "the crane in Chinese")
+	ok(Origami.step_text("crane", 32, "en").length() > 0, "the crane's 32 names a diagram step")
+	eq(Origami.step_text("crane", 2, "en"), "", "a lone 2 is below the first named step")
+	eq(Origami.model_name("no_such_model", "en"), "", "an unknown model names nothing rather than crashing")
 
 
 func _loader() -> void:
@@ -173,7 +211,48 @@ func _fonts() -> void:
 	ok(w > 10.0, "a Chinese glyph measures non-zero in the display face (%.1f px)" % w)
 	var ui := StudioTheme.font("ui")
 	ok(ui.get_string_size("关卡", HORIZONTAL_ALIGNMENT_LEFT, -1, 20).x > 5.0, "and in the UI face")
+	# KANA. Japanese joined the switch on 2026-09-21 and brought a script no string in this
+	# game had ever used: the subset was built from levels.json and coach_tips.json only, so
+	# every hiragana and katakana in the ja table would have been tofu while every existing
+	# font check still passed (memory: font atlases pass on-disk checks while missing kana).
+	# Measured in both faces, because the display face and the UI face carry the fallback
+	# chain separately.
+	ok(disp.get_string_size("折り鶴ステージ", HORIZONTAL_ALIGNMENT_LEFT, -1, 40).x > 10.0,
+		"kana measure in the display face")
+	ok(ui.get_string_size("もう一度", HORIZONTAL_ALIGNMENT_LEFT, -1, 20).x > 5.0,
+		"kana measure in the UI face")
 	ok(StudioTheme.build() != null, "the theme builds")
+
+
+## Every language on the switch is a language that was really translated — ops/STANDARD.md
+## item 7, and the Floor 13 failure it names (ja/ko/es offered with Chinese prose behind
+## them). So: every LANGS key has its own UI table, its own coach pool, and its own text on
+## every model and every diagram step, and none of it falls through to English.
+func _languages() -> void:
+	print("languages (a language on the switch was really translated)")
+	for l in I18n.LANGS:
+		ok(I18n.T.has(l), "%s has a UI table" % l)
+		var missing := []
+		for key in I18n.T["en"].keys():
+			if not I18n.T[l].has(key):
+				missing.append(key)
+		eq(missing.size(), 0, "%s translates every key (missing: %s)" % [l, ", ".join(missing)])
+		ok(I18n.LANG_LABEL.has(l), "%s names itself on the language button" % l)
+	var tips = JSON.parse_string(FileAccess.get_file_as_string("res://data/coach_tips.json"))
+	for l in I18n.LANGS:
+		ok(tips is Dictionary and tips.has(l), "%s has its own coach lines" % l)
+	var gaps := 0
+	for i in range(Fold.level_count()):
+		var m := Origami.model_for(i)
+		if m == "":
+			continue
+		for l in I18n.LANGS:
+			if Origami.model_name(m, l) == "":
+				gaps += 1
+			for st in Origami.steps_of(m):
+				if str(st.get(l, "")) == "":
+					gaps += 1
+	eq(gaps, 0, "every model and every diagram step is written in all %d languages" % I18n.LANGS.size())
 
 
 # --- conformance ---------------------------------------------------------------------------

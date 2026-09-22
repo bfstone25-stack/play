@@ -57,6 +57,7 @@ var _hud: CanvasLayer
 var _goal: Label
 var _moves: Label
 var _lvname: Label
+var _step: Label        # the diagram step the tallest piece has just reached
 var _stars_row: HBoxContainer
 var _undo_btn: Button
 var _reset_btn: Button
@@ -70,6 +71,10 @@ var _t := 0.0
 var _drag_from := Vector2.ZERO
 var _dragging := false
 var _board_offered := false
+# The tallest piece the board has ever held this level, so a NEW fold can be told from a
+# move that merely rearranged. Not "the tallest piece right now": undo lowers that, and a
+# step the player has already seen should not announce itself twice.
+var _high := 0
 var _swipe_px := 26.0
 
 
@@ -447,6 +452,15 @@ func _build_hud() -> void:
 	_goal.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mid.add_child(_goal)
 
+	# The diagram step. This is the answer to Blaze's question -- 第一折的话折的是哪个地方 --
+	# and it is the one line on screen that says WHICH part of the paper just moved:
+	# "Opened and squashed — the preliminary base". It is quiet by default and brightens
+	# for a beat when a merge reaches the next step (_announce_step).
+	_step = StudioTheme.serif_label("", 14, Palette.MUTED, true)
+	_step.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_step.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	mid.add_child(_step)
+
 	var back := Button.new()
 	back.theme_type_variation = "Ghost"
 	back.text = "‹"
@@ -560,13 +574,24 @@ func _overlay() -> Control:
 func _sync() -> void:
 	_goal.text = I18n.f("goal", Fold.target())
 	_moves.text = I18n.f("moves", Fold.moves) + "   ·   " + I18n.f("parhint", Fold.par())
-	_lvname.text = "%d · %s" % [Fold.level_index + 1, Fold.level_name(Fold.level_index, I18n.lang)]
+	# THE MODEL, in the header. ops/fold/BRIDGE.md: the level's name IS the thing it folds,
+	# and the fold count is log2(target) because the tile value is the layer count. A level
+	# the model data does not cover falls back to the shipped level name rather than
+	# showing an empty header.
+	var model := Origami.model_for(Fold.level_index)
+	if Origami.has_model(Fold.level_index):
+		_lvname.text = "%d · %s · %s" % [Fold.level_index + 1,
+			Origami.model_name(model, I18n.lang),
+			I18n.f("folds", Origami.folds_to_finish(Fold.level_index))]
+	else:
+		_lvname.text = "%d · %s" % [Fold.level_index + 1, Fold.level_name(Fold.level_index, I18n.lang)]
+	_step.text = Origami.step_text(model, _high, I18n.lang)
 	_undo_btn.text = I18n.t("undo")
 	_undo_btn.disabled = Fold.history.is_empty() or Fold.done
 	_reset_btn.text = I18n.t("reset")
 	_hint.text = I18n.t("hint")
 	var top := _hud.get_child(0).get_child(0).get_child(0)
-	(top.get_node("Lang") as Button).text = "中文" if I18n.lang == "en" else "EN"
+	(top.get_node("Lang") as Button).text = I18n.next_lang_label()
 	(top.get_node("Sound") as Button).text = "♪" if Sfx.sfx_on else "✕"
 	var lvb := _undo_btn.get_parent().get_node("Levels") as Button
 	lvb.text = "%s %d/%d" % [I18n.t("level"), Fold.level_index + 1, Fold.level_count()]
@@ -593,6 +618,7 @@ func _open(i: int) -> void:
 				return
 	Fold.load_level(i)
 	Save.set_current_level(i)
+	_high = _tallest()
 	_win.visible = false
 	_relayout()
 	_sync()
@@ -610,8 +636,37 @@ func _to_title() -> void:
 
 # --- a fold ------------------------------------------------------------------------------------
 
+func _tallest() -> int:
+	var best := 0
+	for t in Fold.tiles:
+		best = maxi(best, int(t["v"]))
+	return best
+
+
+## A merge that reached the next layer count has completed a real diagram step, so say
+## which one. Everything below the first named step (a lone 2, which is one fold of a
+## square and not yet a shape) passes silently.
+func _announce_step() -> void:
+	var v := _tallest()
+	if v <= _high:
+		return
+	_high = v
+	var text := Origami.step_text(Origami.model_for(Fold.level_index), v, I18n.lang)
+	if text == "":
+		return
+	_step.text = text
+	_step.add_theme_color_override("font_color", Palette.ACCENT_DEEP)
+	var tw := create_tween()
+	tw.tween_property(_step, "modulate:a", 1.0, 0.18).from(0.0)
+	tw.tween_callback(func():
+		if is_instance_valid(_step):
+			_step.add_theme_color_override("font_color", Palette.MUTED)).set_delay(1.4)
+
+
 func _on_moved(direction: Vector2i, merge_count: int) -> void:
 	if merge_count > 0:
+		# a merge doubled the layer count, which is one more fold of the paper: say which
+		_announce_step()
 		Sfx.merge(merge_count)
 	else:
 		Sfx.slide()
@@ -624,6 +679,11 @@ func _on_moved(direction: Vector2i, merge_count: int) -> void:
 
 func _on_refused(direction: Vector2i) -> void:
 	Sfx.invalid()
+	_bad_moves += 1
+	# Not on every rejected move -- that is nagging. Every fourth one, which is roughly
+	# where a player has stopped experimenting and started being stuck.
+	if _bad_moves % 4 == 0:
+		Sfx.bark("fail")
 	# the board leans into the wall and comes back — the page's "boardFollow" nudge
 	var d := Vector2(direction.y, direction.x * TILT) * 7.0
 	var tw := create_tween()
@@ -661,7 +721,7 @@ func _animate(direction: Vector2i) -> void:
 		node.z_index = 10 + int(t["r"])
 		if bool(t.get("merged", false)):
 			t["merged"] = false
-			PieceView.repaint(node, int(t["v"]), _cs * _row_k(int(t["r"])), 1.0, true)
+			PieceView.repaint(node, int(t["v"]), _cs * _row_k(int(t["r"])), TILT, 1.0, true)
 			var pop := create_tween()
 			pop.tween_property(node, "scale", Vector2(1.22, 1.22), 0.09).set_delay(0.08)
 			pop.tween_property(node, "scale", Vector2.ONE, 0.14).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
@@ -724,14 +784,56 @@ func _fold_squash(direction: Vector2i) -> void:
 
 # --- winning -------------------------------------------------------------------------------------
 
+var _bad_moves: int = 0
+
+
 func _on_solved(stars: int, move_count: int, p: int) -> void:
 	Sfx.unity(stars)
+	# Three stars is the minimum-fold clear, so it gets the bigger line. The bark waits
+	# for the burst: a voice that starts on the same frame as the sting is heard as noise.
+	var _slot := "win_big" if stars >= 3 else "win"
+	get_tree().create_timer(0.7).timeout.connect(func() -> void: Sfx.bark(_slot))
 	_win_burst(stars)
 	Save.record(Fold.level_index, stars)
 	Tel.level_ev("level_completed", {"moves": move_count, "stars": stars, "par": p})
 	_sync()
 	await get_tree().create_timer(0.55).timeout
 	_show_win(stars, move_count, p)
+
+
+## The finished model on the win card: the plate, the model's name, and the fold count it
+## took. Silent when the level has no model in data/models.json.
+func _add_reveal(col: VBoxContainer) -> void:
+	var model := Origami.model_for(Fold.level_index)
+	if not Origami.has_model(Fold.level_index):
+		return
+	var plate := Art.plate("reveal_" + model)
+	if plate != null:
+		var frame := PanelContainer.new()
+		frame.theme_type_variation = "Paper"
+		col.add_child(frame)
+		var pic := TextureRect.new()
+		pic.name = "Reveal"
+		pic.texture = plate
+		pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		pic.custom_minimum_size = Vector2(0, 220)
+		frame.add_child(pic)
+		# it unfolds into view rather than appearing: a squash along the vertical, which
+		# is the last fold opening out
+		pic.pivot_offset = Vector2(0, 110)
+		var tw := create_tween()
+		tw.tween_property(pic, "scale", Vector2.ONE, 0.45).from(Vector2(1.0, 0.04)) \
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).set_delay(0.12)
+
+	var line := StudioTheme.display_label("%s %s · %s" % [
+		I18n.t("folded"),
+		Origami.model_name(model, I18n.lang),
+		I18n.f("folds", Origami.folds_to_finish(Fold.level_index))],
+		20, Palette.ACCENT_DEEP)
+	line.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	col.add_child(line)
 
 
 func _show_win(stars: int, move_count: int, p: int) -> void:
@@ -751,6 +853,18 @@ func _show_win(stars: int, move_count: int, p: int) -> void:
 	var h := StudioTheme.display_label(I18n.t("win"), 44, Palette.ACCENT_DEEP)
 	h.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(h)
+
+	# THE REVEAL. ops/fold/BRIDGE.md, and the point of the whole bridge: the last merge
+	# was the last fold, so the model is finished, and the card shows the finished object
+	# by name. "You did not clear a grid, you folded a crane."
+	#
+	# The plate is assets/art/reveal_<model>.png, one per model, rendered by the
+	# reveal_* slots in ops/fold_art/fold_gen.py. If that plate has not landed the card
+	# shows the NAME and the fold count and no picture — Art.plate() returns null and is
+	# checked, deliberately, rather than taking a stand-in: a flat gradient presented as
+	# "the crane you folded" is worse than words alone, and it is the exact failure mode
+	# in the memory note about placeholder art passing review by file size.
+	_add_reveal(col)
 
 	var row := HBoxContainer.new()
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -782,19 +896,20 @@ func _show_win(stars: int, move_count: int, p: int) -> void:
 	btns.add_theme_constant_override("separation", 10)
 	col.add_child(btns)
 
-	var retry := Button.new()
+	# The win card's two actions are sheets of paper with a folded corner, not rounded
+	# blocks (ops/STANDARD.md item 4, StudioTheme.fold_button).
+	var retry := StudioTheme.fold_button("Retry", Palette.GOLD, Palette.INK, 18)
+	retry.custom_minimum_size = Vector2(150, 52)
 	retry.text = I18n.t("retry")
-	retry.theme_type_variation = "Amber"
 	retry.pressed.connect(func():
 		_offer_board()
 		_open(Fold.level_index))
 	btns.add_child(retry)
 
 	if Fold.level_index < Fold.level_count() - 1:
-		var next := Button.new()
-		next.name = "Next"
+		var next := StudioTheme.fold_button("Next", Palette.ACCENT, Palette.PAPER, 18)
+		next.custom_minimum_size = Vector2(150, 52)
 		next.text = I18n.t("next") + " →"
-		next.theme_type_variation = "Primary"
 		next.pressed.connect(func():
 			_offer_board()
 			_open(Fold.level_index + 1))
@@ -827,7 +942,11 @@ func _offer_board() -> void:
 
 
 func _share(stars: int, move_count: int) -> void:
+	# what you share is what you folded, not a level number
 	var name := Fold.level_name(Fold.level_index, I18n.lang)
+	if Origami.has_model(Fold.level_index):
+		name = "%s · %s" % [Origami.level_model_name(Fold.level_index, I18n.lang),
+			I18n.f("folds", Origami.folds_to_finish(Fold.level_index))]
 	var txt := "%s · %s\n%s%s  %s\napps.blazecore.dev/fold/" % [
 		I18n.WORDMARK[I18n.lang] + (" FOLD" if I18n.lang == "zh" else ""),
 		name, "★".repeat(stars), "☆".repeat(3 - stars),
@@ -897,8 +1016,14 @@ func _show_picker(show: bool) -> void:
 				b.theme_type_variation = "Amber"
 			else:
 				b.theme_type_variation = "Ghost"
+			# The grid is 201 numbers; the number is not what the player is choosing. Say
+			# which model the level folds and how many folds it takes (ops/fold/BRIDGE.md),
+			# with the lock appended rather than replacing it.
+			if Origami.has_model(i):
+				b.tooltip_text = "%s · %s" % [Origami.level_model_name(i, I18n.lang),
+					I18n.f("folds", Origami.folds_to_finish(i))]
 			if i >= Fold.FREE_LEVELS:
-				b.tooltip_text = "🔒"
+				b.tooltip_text = ("🔒 " + b.tooltip_text) if b.tooltip_text != "" else "🔒"
 			b.pressed.connect(func():
 				_show_picker(false)
 				_open(i))

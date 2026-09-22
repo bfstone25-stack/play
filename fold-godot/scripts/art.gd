@@ -27,6 +27,14 @@ const SLOTS := {
 	"foil": "candy foil, the logotype's fill",
 }
 
+## One finished model per win card, ops/fold/BRIDGE.md. These are listed separately from
+## SLOTS because they are per-model rather than per-surface and because a game with none
+## of them still plays — the win card falls back to the model's name in words. They are
+## still counted by `missing()`: a reveal that never landed is the difference between
+## "you folded a crane" and a card that says so and shows nothing.
+const REVEAL_SLOTS := ["hat", "fan", "cup", "envelope", "boat", "heart", "star", "fox",
+	"tulip", "cat", "house", "lily", "frog", "butterfly", "crane", "lotus", "dragon"]
+
 static var _cache := {}
 
 
@@ -39,6 +47,9 @@ static func missing() -> Array:
 	for s in SLOTS.keys():
 		if not has(s):
 			out.append(s)
+	for m in REVEAL_SLOTS:
+		if not has("reveal_" + m):
+			out.append("reveal_" + m)
 	return out
 
 

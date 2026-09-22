@@ -48,6 +48,7 @@ func _ready() -> void:
 	_amb.volume_db = linear_to_db(0.5)
 	_amb.stream = _cues["ambience"]
 	add_child(_amb)
+	_bark_ready()
 	if music_on:
 		_amb.play()
 
@@ -206,3 +207,61 @@ func set_music(v: bool) -> void:
 			_amb.play()
 	else:
 		_amb.stop()
+
+
+# --- barks -------------------------------------------------------------------------------
+#
+# The spoken lines (ops/barks/lines.json, rendered by ops/barks/render_barks.py). They ride
+# the same `sfx_on` switch as everything else here, because a player who muted the game
+# meant all of it, and they get their own AudioStreamPlayer so a bark never steals a cue's
+# voice mid-merge.
+#
+# Three rules, each one the reason a bark set stops being charming:
+#
+#   * **Rotate, and never repeat back to back.** Two greetings heard twice in ten seconds
+#     is worse than silence. `_bark_last` remembers the index just used per slot.
+#   * **Never overlap a bark with a bark.** A win that fires while the streak line is still
+#     talking sounds like two people. The second one is dropped, not queued -- by the time
+#     the first finishes, the moment it belonged to is gone.
+#   * **Duck the cues, do not silence them.** The bark player sits a little louder and the
+#     cue bus is lowered while it speaks, so the fold sounds keep their rhythm underneath.
+const BARKS := "res://assets/voice/"
+
+var _bark: AudioStreamPlayer
+var _bark_map: Dictionary = {}
+var _bark_last: Dictionary = {}
+
+
+func _bark_ready() -> void:
+	_bark = AudioStreamPlayer.new()
+	_bark.bus = "Master"
+	_bark.volume_db = 2.0
+	add_child(_bark)
+	var f := FileAccess.open(BARKS + "barks.json", FileAccess.READ)
+	if f == null:
+		return                      # no barks installed for this build; stay silent
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if parsed is Dictionary:
+		_bark_map = parsed
+
+
+## Say one line from `slot`. Returns false when nothing was said, so a caller can fall
+## back to a plain cue.
+func bark(slot: String) -> bool:
+	if not sfx_on or _bark == null or not _bark_map.has(slot):
+		return false
+	if _bark.playing:
+		return false                # one voice at a time; see the header
+	var files: Array = _bark_map[slot]
+	if files.is_empty():
+		return false
+	var i := randi() % files.size()
+	if files.size() > 1 and i == int(_bark_last.get(slot, -1)):
+		i = (i + 1) % files.size()
+	_bark_last[slot] = i
+	var path: String = BARKS + str(files[i])
+	if not ResourceLoader.exists(path):
+		return false
+	_bark.stream = load(path)
+	_bark.play()
+	return true

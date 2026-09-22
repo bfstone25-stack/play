@@ -62,6 +62,12 @@ static func make(v: int, px: float, tilt: float, room: float = 1.0, lit: bool = 
 	face.modulate = col
 	holder.add_child(face)
 
+	# THE CREASES. ops/fold/BRIDGE.md: the number on a piece is how many layers of paper
+	# it is, and a sheet is 2^k layers after k folds — so a 2 has been folded once, a 256
+	# eight times. This draws that, and it is the whole reason the board now looks like
+	# folding: every merge adds a crease to the paper in front of you.
+	_add_creases(holder, v, px, tilt)
+
 	var rim := Line2D.new()
 	rim.name = "Rim"
 	rim.points = PackedVector2Array([
@@ -97,8 +103,52 @@ static func make(v: int, px: float, tilt: float, room: float = 1.0, lit: bool = 
 	return holder
 
 
+## The crease pattern of a square folded `folds` times, which is not decoration — it is
+## what the fold sequence of a real sheet actually leaves behind. Fold 1 creases the
+## centre line; fold 2 creases the other centre line; fold 3 halves again and leaves two
+## creases at the quarters; and so on, alternating axis. Eight folds (a 256) is a 16x16
+## lattice, which is exactly the dense grid of creases an over-folded sheet has.
+##
+## Drawn newest-brightest: the crease the last merge just made is the one that reads, so
+## a merge is visible as a NEW line rather than as a slightly busier tile.
+static func _add_creases(holder: Node2D, v: int, px: float, tilt: float) -> void:
+	var folds := Origami.folds_for_value(v)
+	if folds <= 0:
+		return
+	var creases := Node2D.new()
+	creases.name = "Creases"
+	creases.z_index = 1
+	holder.add_child(creases)
+	var w := px * 0.92
+	var h := px * tilt * 0.92
+	for j in range(1, folds + 1):
+		var vertical := (j % 2) == 1
+		# fold j halves what fold j-2 left, so it creases the odd 1/2^m positions
+		var m := (j + 1) / 2                    # 1,1,2,2,3,3,4,4
+		var denom := 1 << m                     # 2,2,4,4,8,8,16,16
+		# how strongly this generation reads: the newest fold is full strength
+		var age := float(folds - j)
+		var alpha: float = clampf(0.42 - age * 0.045, 0.10, 0.42)
+		var width: float = maxf(1.0, px * (0.030 if j == folds else 0.018))
+		for k in range(1, denom, 2):
+			var f := float(k) / float(denom)
+			var line := Line2D.new()
+			if vertical:
+				var x := -w * 0.5 + w * f
+				line.points = PackedVector2Array([Vector2(x, -h * 0.5), Vector2(x, h * 0.5)])
+			else:
+				var y := -h * 0.5 + h * f
+				line.points = PackedVector2Array([Vector2(-w * 0.5, y), Vector2(w * 0.5, y)])
+			line.width = width
+			# A crease is a highlight on one side and a shadow on the other; at this size
+			# one line has to be both, so it is white at low alpha — paper catching the
+			# lamp along the ridge. A dark crease on a candy tile reads as a scratch.
+			line.default_color = Color(1, 1, 1, alpha)
+			creases.add_child(line)
+
+
 ## A piece that has just doubled: new colour, number, rim and light.
-static func repaint(holder: Node2D, v: int, px: float, room: float = 1.0, lit: bool = true) -> void:
+static func repaint(holder: Node2D, v: int, px: float, tilt: float, room: float = 1.0, lit: bool = true) -> void:
 	var col := Palette.tile_face(v) * room
 	col.a = 1.0
 	(holder.get_node("Face") as Sprite2D).modulate = col
@@ -110,6 +160,12 @@ static func repaint(holder: Node2D, v: int, px: float, room: float = 1.0, lit: b
 	num.add_theme_font_size_override("font_size", int(maxf(17.0, size)))
 	num.add_theme_color_override("font_color", Palette.tile_number_ink(v))
 	(holder.get_node("Rim") as Line2D).default_color = Color(1, 1, 1, 0.45 + 0.4 * Palette.tile_glow(v))
+	# the merge just folded the paper once more, so the crease pattern is rebuilt, not
+	# kept: a doubled piece with its old creases is the bug this whole bridge is about
+	var old := holder.get_node_or_null("Creases")
+	if old:
+		old.free()
+	_add_creases(holder, v, px, tilt)
 	for c in holder.get_children():
 		if c is PointLight2D:
 			c.queue_free()

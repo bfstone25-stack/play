@@ -256,9 +256,8 @@ func _build_ui() -> void:
 	_menu.custom_minimum_size = Vector2(300, 0)
 	col.add_child(_menu)
 
-	var play := Button.new()
-	play.name = "Play"
-	play.theme_type_variation = "Primary"
+	var play := StudioTheme.fold_button("Play", Palette.ACCENT, Palette.PAPER, 22)
+	play.custom_minimum_size = Vector2(300, 60)
 	play.pressed.connect(_play)
 	play.mouse_entered.connect(Sfx.slide)
 	_menu.add_child(play)
@@ -267,9 +266,8 @@ func _build_ui() -> void:
 	row.add_theme_constant_override("separation", 10)
 	_menu.add_child(row)
 
-	var levels := Button.new()
-	levels.name = "Levels"
-	levels.theme_type_variation = "Amber"
+	var levels := StudioTheme.fold_button("Levels", Palette.GOLD, Palette.INK, 18)
+	levels.custom_minimum_size = Vector2(160, 52)
 	levels.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	levels.pressed.connect(func(): _play(true))
 	levels.mouse_entered.connect(Sfx.slide)
@@ -352,7 +350,7 @@ func _sync() -> void:
 	(_menu.get_node("Play") as Button).text = I18n.t("continue") if seen else I18n.t("play")
 	var row := _menu.get_child(1)
 	(row.get_node("Levels") as Button).text = I18n.t("levels_btn")
-	(row.get_node("Lang") as Button).text = "中文" if I18n.lang == "en" else "EN"
+	(row.get_node("Lang") as Button).text = I18n.next_lang_label()
 	(row.get_node("Sound") as Button).text = ("♪ " + I18n.t("on")) if Sfx.music_on else ("♪ " + I18n.t("off"))
 	var foot := get_node("CanvasLayer2/Foot") if has_node("CanvasLayer2/Foot") else null
 	if foot == null:
@@ -367,6 +365,9 @@ func _sync() -> void:
 
 func _enter() -> void:
 	Sfx.logo()
+	# The greeting rides a timer rather than the sting: spoken over the logo tone they
+	# fight, and the first thing a player hears should be the game, not a voice.
+	get_tree().create_timer(1.1).timeout.connect(func() -> void: Sfx.bark("greet"))
 	var tw := create_tween()
 	tw.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tw.tween_property(_mark, "reveal", 1.0, 2.2)
@@ -563,7 +564,7 @@ func _demo_tick(delta: float) -> void:
 		tw2.tween_property(node, "position", _demo_pos(int(t["r"]), int(t["c"])), 0.18)
 		if bool(t.get("merged", false)):
 			t["merged"] = false
-			PieceView.repaint(node, int(t["v"]), _demo_cs, PLANE_LIT, false)
+			PieceView.repaint(node, int(t["v"]), _demo_cs, DEMO_TILT, PLANE_LIT, false)
 			var pop := create_tween()
 			pop.tween_property(node, "scale", Vector2(1.14, 1.14), 0.1).set_delay(0.1)
 			pop.tween_property(node, "scale", Vector2.ONE, 0.13).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
