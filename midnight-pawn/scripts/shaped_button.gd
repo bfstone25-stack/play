@@ -342,7 +342,10 @@ func _draw_tag(r: Rect2, lift: float) -> void:
 	draw_circle(Vector2(ex, ey), rr, ink)
 	# The string, going up and off the control: what the tag hangs from, and the reason
 	# the far end swings rather than sliding.
-	draw_line(Vector2(ex, ey - rr), Vector2(ex - h * 0.12 - sway, -h * 0.3),
+	# It leaves the control, because that is what sells "hung from something" — but only
+	# just. At -0.3h it reached up into the line of copy above the button and read as a
+	# scratch through the text, in every locale.
+	draw_line(Vector2(ex, ey - rr), Vector2(ex - h * 0.10 - sway, -h * 0.10),
 			tint.lightened(0.18), maxf(h * 0.035, 1.0))
 	# The light on the top edge, so the card reads as a card and not as a swatch.
 	draw_line(Vector2(point, -sway * 0.35), Vector2(w, -sway),
