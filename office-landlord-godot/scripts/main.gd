@@ -1,29 +1,52 @@
 extends Control
-## Office Landlord's whole loop in one screen tree: title -> floor -> panels -> report.
+## Office Landlord's whole loop in one screen tree: title -> floor -> panels.
 ##
-## Deliberately self-contained (no shared Overlay/Theme classes) so this small game builds
-## and runs on its own. Stages a player (and ops/play_driver.py) can reach, in order:
-##   1. TITLE   - "OPEN FOR BUSINESS"
-##   2. FLOOR   - desks fill in, rent ticks up, hire tenants
-##   3. SHOP    (key 1) - office shop panel
-##   4. STAFF   (key 2) - staff directory panel
-##   5. REPORT  (key 3, or "move to a bigger building" once full) - weekly report
-##   6. FLOOR at floor_level 2+ - visibly different (desk count reset, label bumped)
+## Rewritten 2026-09-21 to run on the REAL kernel (scripts/landlord.gd, ported from
+## play/catharsis/kernel/landlord.js) via the `Grid` autoload (scripts/grid.gd), replacing
+## the old six-flat-rectangle desk row and its fake per-second income tick. The title
+## screen is now its own class (scripts/title_screen.gd) rather than built inline here —
+## splitting it out matches the studio's per-screen-class convention (overtime's
+## title_screen.gd) and keeps this file to the floor loop and its three panels.
+##
+## Stages a player (and ops/play_driver.py) can reach, in order:
+##   1. TITLE   - OfficeTitle: "OPEN FOR BUSINESS"
+##   2. FLOOR   - the real 5x4 grid: a tray of rollable symbols, live per-cell scores from
+##                Landlord.settle_grid(), rent due for the current floor, a "collect rent"
+##                action
+##   3. SHOP    (key 1) - real offers from Grid.shop_offers() / Landlord.pick_shop()
+##   4. STAFF   (key 2) - staff-tagged symbols actually on the board right now
+##   5. REPORT  (key 3, or automatically after collecting rent) - the real settle_grid
+##                breakdown: payout, rent, met/evicted, top scored events
+##   6. FLOOR again, visibly different once rent is paid (grid clears, floor number bumps,
+##      rent target grows per Landlord.rent_for_floor's RENT_GROWTH curve)
 
 const ShapedButtonScript := preload("res://scripts/shaped_button.gd")
+const GridCellScript := preload("res://scripts/grid_cell.gd")
+const TitleScript := preload("res://scripts/title_screen.gd")
 
-var title_layer: Control
+const COLS := 5
+const ROWS := 4
+const CELL_W := 104.0
+const CELL_H := 92.0
+const CELL_GAP := 8.0
+const GRID_ORIGIN := Vector2(108, 96)
+
+var title_screen: Control
 var floor_layer: Control
-var panel_layer: Control
 
-var rent_label: Label
 var floor_label: Label
-var desk_row: HBoxContainer
-var hire_button: Button
-var move_up_button: Button
-var desk_nodes: Array = []
+var rent_label: Label
+var payout_label: Label
+var banked_label: Label
+var met_label: Label
+var collect_button
+var cell_nodes: Array = []
+var tray_nodes: Array = []
+var selected_tray_index := -1
 
 var active_panel: Panel = null
+var active_panel_kind := ""
+
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(1280, 720)
@@ -33,54 +56,21 @@ func _ready() -> void:
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
-	_build_title()
+	title_screen = TitleScript.new()
+	title_screen.set_anchors_preset(Control.PRESET_FULL_RECT)
+	title_screen.start.connect(_show_floor)
+	add_child(title_screen)
+
 	_build_floor()
-	Economy.changed.connect(_refresh)
+
+	Grid.changed.connect(_refresh)
+	Grid.rent_paid.connect(_on_rent_paid)
+	Grid.evicted.connect(_on_evicted)
 	I18n.changed.connect(func(_l): _relabel())
+
 	_refresh()
 	_show_title()
 
-# ---------------------------------------------------------------------------- title ----
-func _build_title() -> void:
-	title_layer = Control.new()
-	title_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(title_layer)
-
-	var v := VBoxContainer.new()
-	v.set_anchors_preset(Control.PRESET_CENTER)
-	v.position = Vector2(340, 220)
-	v.add_theme_constant_override("separation", 18)
-	title_layer.add_child(v)
-
-	var t := Label.new()
-	t.name = "TitleLabel"
-	t.text = I18n.t("title")
-	t.add_theme_font_size_override("font_size", 56)
-	t.add_theme_color_override("font_color", Palette.ACCENT)
-	v.add_child(t)
-
-	var sub := Label.new()
-	sub.name = "SubtitleLabel"
-	sub.text = I18n.t("subtitle")
-	sub.add_theme_font_size_override("font_size", 20)
-	sub.add_theme_color_override("font_color", Palette.TEXT)
-	v.add_child(sub)
-
-	var start := ShapedButtonScript.new()
-	start.shape = ShapedButtonScript.Shape.TICKET
-	start.tint = Palette.ACCENT
-	start.custom_minimum_size = Vector2(320, 90)
-	start.text = I18n.t("start")
-	start.pressed.connect(_show_floor)
-	v.add_child(start)
-
-	var lang_btn := Button.new()
-	lang_btn.text = I18n.ENDONYM[I18n.lang]
-	lang_btn.position = Vector2(1120, 20)
-	lang_btn.pressed.connect(func():
-		I18n.cycle()
-		lang_btn.text = I18n.ENDONYM[I18n.lang])
-	title_layer.add_child(lang_btn)
 
 # ---------------------------------------------------------------------------- floor ----
 func _build_floor() -> void:
@@ -90,70 +80,129 @@ func _build_floor() -> void:
 	add_child(floor_layer)
 
 	floor_label = Label.new()
-	floor_label.position = Vector2(40, 24)
-	floor_label.add_theme_font_size_override("font_size", 28)
+	floor_label.position = Vector2(40, 20)
+	floor_label.add_theme_font_size_override("font_size", 26)
 	floor_label.add_theme_color_override("font_color", Palette.TEXT)
 	floor_layer.add_child(floor_label)
 
 	rent_label = Label.new()
-	rent_label.position = Vector2(40, 66)
-	rent_label.add_theme_font_size_override("font_size", 24)
+	rent_label.position = Vector2(260, 22)
+	rent_label.add_theme_font_size_override("font_size", 18)
 	rent_label.add_theme_color_override("font_color", Palette.GOLD_DEEP)
 	floor_layer.add_child(rent_label)
 
-	desk_row = HBoxContainer.new()
-	desk_row.position = Vector2(80, 220)
-	desk_row.add_theme_constant_override("separation", 24)
-	floor_layer.add_child(desk_row)
-	for i in Economy.MAX_DESKS:
-		var d := Panel.new()
-		d.custom_minimum_size = Vector2(150, 180)
-		var sb := StyleBoxFlat.new()
-		sb.bg_color = Palette.MUTED
-		sb.corner_radius_top_left = 10
-		sb.corner_radius_top_right = 10
-		sb.corner_radius_bottom_left = 10
-		sb.corner_radius_bottom_right = 10
-		d.add_theme_stylebox_override("panel", sb)
-		desk_row.add_child(d)
-		desk_nodes.append(sb)
+	payout_label = Label.new()
+	payout_label.position = Vector2(500, 22)
+	payout_label.add_theme_font_size_override("font_size", 18)
+	payout_label.add_theme_color_override("font_color", Palette.HEAT)
+	floor_layer.add_child(payout_label)
 
-	# bottom action row: hire (left), shop hint (mid), move-up (right) — matches
-	# ops/play_driver.py's bottom-row probe at y=671 across three x positions.
-	hire_button = ShapedButtonScript.new()
-	hire_button.shape = ShapedButtonScript.Shape.TICKET
-	hire_button.tint = Palette.HEAT
-	hire_button.custom_minimum_size = Vector2(260, 80)
-	hire_button.position = Vector2(200, 610)
-	hire_button.pressed.connect(func(): Economy.hire())
-	floor_layer.add_child(hire_button)
+	banked_label = Label.new()
+	banked_label.position = Vector2(740, 22)
+	banked_label.add_theme_font_size_override("font_size", 18)
+	banked_label.add_theme_color_override("font_color", Palette.MUTED)
+	floor_layer.add_child(banked_label)
+
+	met_label = Label.new()
+	met_label.position = Vector2(960, 20)
+	met_label.add_theme_font_size_override("font_size", 22)
+	floor_layer.add_child(met_label)
+
+	# the 5x4 desk grid -- one GridCell per Landlord cell index, positioned to match
+	# Landlord.idx()'s row-major layout so cell i sits at (i % COLS, i / COLS)
+	for i in range(COLS * ROWS):
+		var cell := GridCellScript.new()
+		var p := Landlord.xy_of(i)
+		cell.position = GRID_ORIGIN + Vector2(p.x * (CELL_W + CELL_GAP), p.y * (CELL_H + CELL_GAP))
+		cell.size = Vector2(CELL_W, CELL_H)
+		cell.pressed.connect(func(): _on_cell_pressed(i))
+		floor_layer.add_child(cell)
+		cell_nodes.append(cell)
+
+	# the tray: rolled symbols waiting to be placed. Below the grid, same cell width.
+	var tray_y: float = GRID_ORIGIN.y + ROWS * (CELL_H + CELL_GAP) + 18.0
+	for i in range(Grid.TRAY_SIZE):
+		var slot := GridCellScript.new()
+		slot.show_score = false
+		slot.position = Vector2(GRID_ORIGIN.x + i * (CELL_W + CELL_GAP), tray_y)
+		slot.size = Vector2(CELL_W, CELL_H)
+		slot.pressed.connect(func(): _on_tray_pressed(i))
+		floor_layer.add_child(slot)
+		tray_nodes.append(slot)
+
+	var tray_hint := Label.new()
+	tray_hint.text = I18n.t("tray_label")
+	tray_hint.position = Vector2(GRID_ORIGIN.x, tray_y - 22)
+	tray_hint.add_theme_font_size_override("font_size", 14)
+	tray_hint.add_theme_color_override("font_color", Palette.MUTED)
+	tray_hint.name = "TrayHintLabel"
+	floor_layer.add_child(tray_hint)
+
+	# bottom action row: collect (right) -- matches ops/play_driver.py's bottom-row probe
+	# at y=671 across three x positions, same convention the old scaffold used.
+	collect_button = ShapedButtonScript.new()
+	collect_button.shape = ShapedButtonScript.Shape.TICKET
+	collect_button.tint = Palette.HEAT
+	collect_button.custom_minimum_size = Vector2(280, 80)
+	collect_button.position = Vector2(780, 610)
+	collect_button.pressed.connect(_on_collect)
+	floor_layer.add_child(collect_button)
 
 	var hint := Label.new()
-	hint.text = "1: shop   2: staff   3: report"
+	hint.text = I18n.t("shop_hint")
+	hint.name = "PanelHintLabel"
 	hint.position = Vector2(540, 630)
 	hint.add_theme_color_override("font_color", Palette.MUTED)
 	floor_layer.add_child(hint)
 
-	move_up_button = ShapedButtonScript.new()
-	move_up_button.shape = ShapedButtonScript.Shape.TICKET
-	move_up_button.tint = Palette.GOLD
-	move_up_button.custom_minimum_size = Vector2(300, 80)
-	move_up_button.position = Vector2(780, 610)
-	move_up_button.pressed.connect(_do_prestige)
-	floor_layer.add_child(move_up_button)
+	var lang_btn := Button.new()
+	lang_btn.text = I18n.ENDONYM[I18n.lang]
+	lang_btn.position = Vector2(1120, 20)
+	lang_btn.pressed.connect(func():
+		I18n.cycle()
+		lang_btn.text = I18n.ENDONYM[I18n.lang])
+	lang_btn.name = "FloorLangButton"
+	floor_layer.add_child(lang_btn)
 
-func _do_prestige() -> void:
-	if not Economy.floor_full():
+
+func _on_cell_pressed(i: int) -> void:
+	if selected_tray_index < 0:
 		return
-	_show_report()
-	Economy.prestige()
+	if Grid.place(selected_tray_index, i):
+		Sfx.place()
+		selected_tray_index = -1
+	_refresh()
+
+
+func _on_tray_pressed(i: int) -> void:
+	if i >= Grid.tray.size():
+		return
+	selected_tray_index = -1 if selected_tray_index == i else i
+	_refresh()
+
+
+func _on_collect() -> void:
+	Grid.collect_rent()
+
+
+func _on_rent_paid(_report: Dictionary) -> void:
+	Sfx.rent_paid()
+	Sfx.bark("win_big" if _report.get("payout", 0) - _report.get("rent", 0) >= 6 else "win")
+	_open_report()
+
+
+func _on_evicted(_report: Dictionary) -> void:
+	Sfx.evict()
+	Sfx.bark("fail")
+	_open_report()
+
 
 # --------------------------------------------------------------------------- panels ----
-func _open_panel(title_key: String, body_key: String) -> void:
+func _open_panel_shell(title_text: String) -> VBoxContainer:
 	_close_panel()
 	var p := Panel.new()
-	p.custom_minimum_size = Vector2(700, 420)
-	p.position = Vector2(290, 150)
+	p.custom_minimum_size = Vector2(760, 460)
+	p.position = Vector2(260, 130)
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Palette.PANEL
 	sb.border_color = Palette.PANEL_EDGE
@@ -167,115 +216,225 @@ func _open_panel(title_key: String, body_key: String) -> void:
 	sb.corner_radius_bottom_right = 14
 	p.add_theme_stylebox_override("panel", sb)
 	add_child(p)
+	active_panel = p
 
 	var v := VBoxContainer.new()
-	v.position = Vector2(36, 30)
-	v.add_theme_constant_override("separation", 16)
+	v.position = Vector2(36, 26)
+	v.custom_minimum_size = Vector2(690, 410)
+	v.add_theme_constant_override("separation", 12)
 	p.add_child(v)
 
 	var t := Label.new()
-	t.text = I18n.t(title_key)
-	t.add_theme_font_size_override("font_size", 32)
+	t.text = title_text
+	t.add_theme_font_size_override("font_size", 30)
 	t.add_theme_color_override("font_color", Palette.ACCENT_DEEP)
 	v.add_child(t)
 
-	var body := Label.new()
-	body.text = I18n.t(body_key)
-	body.add_theme_font_size_override("font_size", 18)
-	body.add_theme_color_override("font_color", Palette.TEXT)
-	body.custom_minimum_size = Vector2(620, 200)
-	body.autowrap_mode = TextServer.AUTOWRAP_WORD
-	v.add_child(body)
+	return v
 
+
+func _panel_close_button(v: VBoxContainer) -> void:
 	var close := ShapedButtonScript.new()
 	close.shape = ShapedButtonScript.Shape.TICKET
 	close.tint = Palette.MUTED
-	close.custom_minimum_size = Vector2(180, 60)
+	close.custom_minimum_size = Vector2(160, 56)
 	close.text = I18n.t("close")
 	close.pressed.connect(_close_panel)
 	v.add_child(close)
 
-	active_panel = p
 
+## Real shop offers (Landlord.pick_shop via Grid.shop_offers), not static text. Buying a
+## relic applies it to every future settle_grid() call; buying a symbol adds a copy to the
+## deck, which only changes future tray odds -- see grid.gd's header for why.
+func _open_shop() -> void:
+	active_panel_kind = "shop"
+	var v := _open_panel_shell(I18n.t("shop_title"))
+	var offers: Array = Grid.shop_offers(3)
+	for offer in offers:
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 16)
+		v.add_child(row)
+
+		var name_lbl := Label.new()
+		var id: String = offer["id"]
+		var label_text: String = I18n.relic(id) if offer["kind"] == "relic" else I18n.symbol(id)
+		var desc: String = I18n.relic_desc(id) if offer["kind"] == "relic" else ""
+		name_lbl.text = label_text
+		name_lbl.custom_minimum_size = Vector2(220, 0)
+		name_lbl.add_theme_color_override("font_color", Palette.TEXT)
+		row.add_child(name_lbl)
+
+		if desc != "":
+			var desc_lbl := Label.new()
+			desc_lbl.text = desc
+			desc_lbl.custom_minimum_size = Vector2(280, 0)
+			desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD
+			desc_lbl.add_theme_font_size_override("font_size", 14)
+			desc_lbl.add_theme_color_override("font_color", Palette.MUTED)
+			row.add_child(desc_lbl)
+
+		var buy_btn := ShapedButtonScript.new()
+		buy_btn.shape = ShapedButtonScript.Shape.TAG
+		buy_btn.tint = Palette.GOLD if Grid.can_buy(offer) else Palette.MUTED
+		buy_btn.custom_minimum_size = Vector2(150, 52)
+		buy_btn.text = "%s (%d)" % [I18n.t("buy_button"), Grid.price(offer)]
+		buy_btn.disabled = not Grid.can_buy(offer)
+		buy_btn.pressed.connect(func():
+			if Grid.buy(offer):
+				Sfx.buy()
+				_open_shop())
+		row.add_child(buy_btn)
+
+	_panel_close_button(v)
+
+
+## Which staff-tagged symbols (dev/intern/standup) are on the board RIGHT NOW, from live
+## Grid state -- not a canned roster string.
+func _open_staff() -> void:
+	active_panel_kind = "staff"
+	var v := _open_panel_shell(I18n.t("staff_title"))
+	var staff: Array = Grid.staff_on_board()
+	if staff.is_empty():
+		var empty_lbl := Label.new()
+		empty_lbl.text = I18n.t("staff_empty")
+		empty_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD
+		empty_lbl.custom_minimum_size = Vector2(660, 0)
+		empty_lbl.add_theme_color_override("font_color", Palette.TEXT)
+		v.add_child(empty_lbl)
+	else:
+		for entry in staff:
+			var row := Label.new()
+			row.text = I18n.f("staff_row", [int(entry["index"]) + 1, I18n.symbol(entry["id"])])
+			row.add_theme_color_override("font_color", Palette.TEXT)
+			v.add_child(row)
+	_panel_close_button(v)
+
+
+## The real settle_grid breakdown for the CURRENT board: payout, rent, met/evicted, and
+## the top scored events (translated via I18n.ev()) -- not a canned string. Shows the
+## last collect_rent() result when one exists (so the panel that pops up automatically
+## after collecting reads as a report of what just happened), otherwise a live preview of
+## the board as it stands.
 func _open_report() -> void:
-	_close_panel()
-	var p := Panel.new()
-	p.custom_minimum_size = Vector2(700, 420)
-	p.position = Vector2(290, 150)
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = Palette.PANEL
-	sb.border_color = Palette.GOLD
-	sb.border_width_left = 4
-	sb.border_width_right = 4
-	sb.border_width_top = 4
-	sb.border_width_bottom = 4
-	p.add_theme_stylebox_override("panel", sb)
-	add_child(p)
+	active_panel_kind = "report"
+	var v := _open_panel_shell(I18n.t("report_title"))
+	var report: Dictionary = Grid.last_report if not Grid.last_report.is_empty() else Grid.settle()
+	var rent: int = report.get("rent", Grid.current_rent())
+	var payout: int = report.get("payout", 0)
 
-	var v := VBoxContainer.new()
-	v.position = Vector2(36, 30)
-	v.add_theme_constant_override("separation", 16)
-	p.add_child(v)
+	var payout_lbl := Label.new()
+	payout_lbl.text = I18n.f("report_payout", [payout])
+	payout_lbl.add_theme_font_size_override("font_size", 20)
+	payout_lbl.add_theme_color_override("font_color", Palette.HEAT)
+	v.add_child(payout_lbl)
 
-	var t := Label.new()
-	t.text = I18n.t("result_title")
-	t.add_theme_font_size_override("font_size", 32)
-	t.add_theme_color_override("font_color", Palette.ACCENT_DEEP)
-	v.add_child(t)
+	var rent_lbl := Label.new()
+	rent_lbl.text = I18n.f("report_rent", [rent])
+	rent_lbl.add_theme_font_size_override("font_size", 20)
+	rent_lbl.add_theme_color_override("font_color", Palette.GOLD_DEEP)
+	v.add_child(rent_lbl)
 
-	var body := Label.new()
-	body.text = I18n.f("result_body", [int(Economy.rent), Economy.desks_filled, Economy.floor_level])
-	body.add_theme_font_size_override("font_size", 20)
-	body.add_theme_color_override("font_color", Palette.TEXT)
-	v.add_child(body)
+	if report.has("met"):
+		var status_lbl := Label.new()
+		if report["met"]:
+			status_lbl.text = I18n.f("report_met", [Grid.floor_level])
+			status_lbl.add_theme_color_override("font_color", Palette.SUCCESS)
+		else:
+			status_lbl.text = I18n.f("report_evicted", [rent - payout, int(report.get("penalty", 0))])
+			status_lbl.add_theme_color_override("font_color", Palette.ACCENT_DEEP)
+		status_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD
+		status_lbl.custom_minimum_size = Vector2(660, 0)
+		v.add_child(status_lbl)
 
-	var close := ShapedButtonScript.new()
-	close.shape = ShapedButtonScript.Shape.TICKET
-	close.tint = Palette.MUTED
-	close.custom_minimum_size = Vector2(180, 60)
-	close.text = I18n.t("close")
-	close.pressed.connect(_close_panel)
-	v.add_child(close)
+	var events_lbl := Label.new()
+	events_lbl.text = I18n.t("report_events_label")
+	events_lbl.add_theme_font_size_override("font_size", 16)
+	events_lbl.add_theme_color_override("font_color", Palette.MUTED)
+	v.add_child(events_lbl)
 
-	active_panel = p
+	var events: Array = report.get("events", [])
+	if events.is_empty():
+		var none_lbl := Label.new()
+		none_lbl.text = I18n.t("report_no_events")
+		none_lbl.add_theme_color_override("font_color", Palette.TEXT)
+		v.add_child(none_lbl)
+	else:
+		# top 3, counted by frequency, so a board with six "tag-staff" links reads as one
+		# line rather than six -- landlord.js's own `events` array logs one entry per
+		# trigger, not per kind.
+		var counts := {}
+		for e in events:
+			counts[e] = int(counts.get(e, 0)) + 1
+		var kinds: Array = counts.keys()
+		kinds.sort_custom(func(a, b): return counts[a] > counts[b])
+		for i in range(min(3, kinds.size())):
+			var k: String = kinds[i]
+			var row := Label.new()
+			row.text = "%s x%d" % [I18n.ev(k), counts[k]]
+			row.add_theme_color_override("font_color", Palette.TEXT)
+			v.add_child(row)
+
+	_panel_close_button(v)
+
 
 func _close_panel() -> void:
 	if active_panel:
 		active_panel.queue_free()
 		active_panel = null
+	active_panel_kind = ""
 
-func _show_report() -> void:
-	_open_report()
 
 func _show_title() -> void:
-	title_layer.visible = true
+	title_screen.visible = true
 	floor_layer.visible = false
 	_close_panel()
 
+
 func _show_floor() -> void:
-	title_layer.visible = false
+	title_screen.visible = false
 	floor_layer.visible = true
 	_close_panel()
+	Sfx.bark("greet")
 
+
+# --------------------------------------------------------------------------- refresh ----
 func _refresh() -> void:
-	if not is_instance_valid(rent_label):
+	if not is_instance_valid(floor_label):
 		return
-	rent_label.text = "%s: %d" % [I18n.t("rent_label"), int(Economy.rent)]
-	floor_label.text = I18n.f("floor_label", [Economy.floor_level])
-	for i in desk_nodes.size():
-		var sb: StyleBoxFlat = desk_nodes[i]
-		sb.bg_color = Palette.SUCCESS if i < Economy.desks_filled else Palette.MUTED
-	if Economy.can_hire():
-		hire_button.text = "%s\n%s" % [I18n.t("hire"), I18n.f("hire_cost", [Economy.hire_cost()])]
-		hire_button.disabled = false
-	else:
-		hire_button.text = I18n.t("floor_full") if Economy.floor_full() else I18n.t("hire")
-		hire_button.disabled = Economy.floor_full()
-	move_up_button.text = I18n.t("move_up")
-	move_up_button.disabled = not Economy.floor_full()
+	floor_label.text = I18n.f("floor_label", [Grid.floor_level])
+	var rent := Grid.current_rent()
+	var report := Grid.settle()
+	var payout: int = report["payout"]
+	rent_label.text = "%s: %d" % [I18n.t("rent_due_label"), rent]
+	payout_label.text = "%s: %d" % [I18n.t("payout_label"), payout]
+	banked_label.text = "%s: %d" % [I18n.t("banked_label"), Grid.banked]
+	var met := payout >= rent
+	met_label.text = I18n.t("met_label") if met else I18n.t("not_met_label")
+	met_label.add_theme_color_override("font_color", Palette.SUCCESS if met else Palette.ACCENT_DEEP)
+
+	var scores: Array = report["cellScore"]
+	for i in range(cell_nodes.size()):
+		var cell = cell_nodes[i]
+		cell.symbol_id = Landlord._id(Grid.cells, i)
+		cell.score = int(scores[i]) if i < scores.size() else 0
+
+	for i in range(tray_nodes.size()):
+		var slot = tray_nodes[i]
+		slot.symbol_id = Grid.tray[i] if i < Grid.tray.size() else ""
+		slot.selected = (i == selected_tray_index)
+
+	if active_panel_kind == "shop":
+		_open_shop()
+	elif active_panel_kind == "staff":
+		_open_staff()
+	elif active_panel_kind == "report":
+		pass  # the report panel is a snapshot of the moment it opened; live board changes
+	          # don't rewrite it out from under the player mid-read
+
 
 func _relabel() -> void:
 	_refresh()
+
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not event is InputEventKey or not event.pressed:
@@ -284,9 +443,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		return
 	match event.keycode:
 		KEY_1:
-			_open_panel("shop_title", "shop_body")
+			_open_shop()
 		KEY_2:
-			_open_panel("staff_title", "staff_body")
+			_open_staff()
 		KEY_3:
 			_open_report()
 		KEY_ESCAPE:

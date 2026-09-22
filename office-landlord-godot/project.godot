@@ -13,8 +13,9 @@ boot_splash/bg_color=Color(1.0, 0.949, 0.831, 1)
 [autoload]
 
 Gate="*res://scripts/gate.gd"
-Economy="*res://scripts/economy.gd"
+Grid="*res://scripts/grid.gd"
 I18n="*res://scripts/i18n.gd"
+Sfx="*res://scripts/sfx.gd"
 
 [display]
 
