@@ -295,8 +295,8 @@ screen main_menu():
     ## The mark, stencilled on the wall left of the table.
     add "images/title/logo.png":
         at logo_settle
-        xpos 70 ypos 90
-        zoom 0.5
+        xpos 60 ypos 60
+        zoom 0.4
 
     text _("Three suspects. Twelve questions. One detail only the killer could know."):
         at fade_in_after(2.0)
