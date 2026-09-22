@@ -182,6 +182,23 @@ func roll_rank() -> String:
 	return rank
 
 
+## Which spoken line a finished draw deserves. One place, because the tube and the deck
+## must not drift into two different opinions of what counts as a good day.
+func bark_slot(r: Dictionary) -> String:
+	var rank := str(r.get("rank", ""))
+	if rank == "daji":
+		return "win_big"
+	if is_ill(rank):
+		return "fail"
+	if good_streak >= 3 and good_streak % 3 == 0:
+		return "streak"
+	return "win"
+
+
+## Consecutive draws this session that were not 凶 / 大凶. Not saved; see draw().
+var good_streak := 0
+
+
 func is_ill(rank: String) -> bool:
 	return rank == "xiong" or rank == "daxiong"
 
@@ -203,6 +220,11 @@ func draw(instrument: String, subject: String = "") -> Dictionary:
 	else:
 		return {}
 	var rank := roll_rank()
+	# Session-only, deliberately: "three good readings" is something that happens while you
+	# are sitting with the machine. Reloading tomorrow and being told you are on a streak
+	# from last week would be the machine flattering you, and the first line in the shop
+	# is that a paid draw is never a luckier draw.
+	good_streak = 0 if is_ill(rank) else good_streak + 1
 	var r := {"kind": instrument, "rank": rank, "free": free, "at": now_ms()}
 	if instrument == "slip":
 		if not (subject in SUBJECTS):

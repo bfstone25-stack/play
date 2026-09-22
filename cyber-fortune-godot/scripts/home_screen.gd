@@ -4,10 +4,34 @@ const KV := "res://assets/title/keyvisual.webp"
 ## curtain, each in its own light; the rack and the offerings below.
 
 var root: VBoxContainer
+var sky: TextureRect
+var _t := 0.0
+
+## Standard #6: the title moves, and NEVER shows the plate's edge. 1.22 is past the 1.16
+## the 16:9 diagonal needs, and DRIFT is the remaining 3% of headroom, so the picture can
+## wander for the whole cycle without an edge ever entering the frame.
+const SKY_SCALE := 1.22
+const DRIFT := 0.03
 
 
 func _ready() -> void:
 	relayout()
+
+
+## A slow drift across the key visual: 47 seconds one way and 31 the other, two periods
+## that do not divide into each other, so the picture never visibly returns to a pose. A
+## rotation was the alternative and is wrong here -- the sky has a horizon in it, and a
+## horizon that tilts reads as a bug.
+func _process(dt: float) -> void:
+	_t += dt
+	if sky == null or not is_instance_valid(sky):
+		return
+	var w: float = size.x
+	var h: float = size.y
+	sky.size = Vector2(w, h) * SKY_SCALE
+	sky.position = Vector2(
+			-w * (SKY_SCALE - 1.0) * 0.5 + sin(_t * TAU / 47.0) * w * DRIFT,
+			-h * (SKY_SCALE - 1.0) * 0.5 + sin(_t * TAU / 31.0) * h * DRIFT)
 
 
 func relayout() -> void:
@@ -58,13 +82,16 @@ func relayout() -> void:
 	nav.alignment = BoxContainer.ALIGNMENT_CENTER
 	nav.add_theme_constant_override("separation", 16)
 	root.add_child(nav)
+	# The two nav buttons are the same 签 the three rows are, at a smaller size: one shape
+	# for the whole title, which is the point of shared/godot/shaped_button.gd. They were
+	# the studio's default rounded rectangle.
 	var counts := Fortune.collection_counts()
-	var rack := StudioTheme.button("%s  %d/%d" % [Tx.t("home.collection"), counts["slips"] + counts["cards"], counts["slips_all"] + counts["cards_all"]], "Gold")
-	rack.pressed.connect(func(): get_parent().open("rack"))
-	nav.add_child(rack)
-	var shop := StudioTheme.button(Tx.t("home.shop"))
-	shop.pressed.connect(func(): get_parent().open("shop"))
-	nav.add_child(shop)
+	nav.add_child(_slip_button(
+			"%s  %d/%d" % [Tx.t("home.collection"), counts["slips"] + counts["cards"],
+					counts["slips_all"] + counts["cards_all"]],
+			Palette.GOLD_DEEP, func(): get_parent().open("rack")))
+	nav.add_child(_slip_button(Tx.t("home.shop"), Palette.LACQUER,
+			func(): get_parent().open("shop")))
 
 
 ## The sky behind the home screen.
@@ -84,7 +111,8 @@ func relayout() -> void:
 ## stopped being a rectangle.
 func _build_sky() -> void:
 	var kv := TextureRect.new()
-	kv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# Positioned by _process, not anchored: it is bigger than the screen on purpose (see
+	# SKY_SCALE) and an anchored FULL_RECT would pin it back to the viewport every frame.
 	kv.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	kv.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	kv.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -96,6 +124,8 @@ func _build_sky() -> void:
 		# exists to fix shipped for a day because a dark screen looks like a decision.
 		kv.modulate = Palette.PAPER
 	add_child(kv)
+	sky = kv
+	_t = 0.0
 	# A warm foot for the rows and the nav, generated into an Image and shown through a
 	# TextureRect. NOT a shader: shaders draw nothing at all on the Godot web export — no
 	# error, no warning, the element is simply absent.
@@ -147,6 +177,19 @@ func _paper_band() -> Control:
 	return c
 
 
+func _slip_button(text: String, tint: Color, on_press: Callable) -> ShapedButton:
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.SLIP
+	b.tint = tint
+	b.ink = Palette.PAPER
+	b.label = text
+	b.custom_minimum_size = Vector2(300, 64)
+	b.add_theme_font_override("font", StudioTheme.font("bold"))
+	b.add_theme_font_size_override("font_size", 19)
+	b.pressed.connect(on_press)
+	return b
+
+
 func _spacer(h: int) -> Control:
 	var c := Control.new()
 	c.custom_minimum_size = Vector2(0, h)
@@ -174,6 +217,9 @@ class Door extends Button:
 	var title := ""
 	var sub := ""
 	var _t := 0.0
+	var _rise := 0.0
+	var _rise_to := 0.0
+	var _was_hover := false
 
 	func _ready() -> void:
 		focus_mode = Control.FOCUS_NONE
@@ -211,8 +257,12 @@ class Door extends Button:
 	const INSET := 66.0
 
 	func _draw() -> void:
-		var r := Rect2(Vector2(INSET, 0), Vector2(maxf(40.0, size.x - INSET * 2.0), size.y))
+		var w: float = maxf(40.0, size.x - INSET * 2.0)
 		var hover := is_hovered()
+		if hover != _was_hover:
+			_was_hover = hover
+			_rise_to = 5.0 if hover else 0.0
+		_rise = lerpf(_rise, _rise_to, 0.22)
 		var bg: Color
 		var edge: Color
 		var accent: Color
@@ -231,18 +281,46 @@ class Door extends Button:
 				accent = Palette.CANDLE
 		if hover:
 			edge = edge.lightened(0.25)
-		# Translucent, and a tighter shadow. Both are because there is a rendered sky
-		# behind this row now rather than a flat ink ground. An opaque panel with a 14 px
-		# black shadow bled past the 36 px page margin and read as a full-bleed bar; at
-		# 0.88 the lantern light shows through the lacquer, which is what a lacquered
-		# surface in daylight actually does, and the row still carries its own type at
-		# full contrast because the type is drawn on top of it and not through it.
-		var sb := StudioTheme.flat(Color(bg, 0.88), edge, 16, 1, Vector2.ZERO)
-		sb.shadow_color = Color(0, 0, 0, 0.30)
-		sb.shadow_size = 7
-		draw_style_box(sb, r)
-		# the mark on the left
-		var c := Vector2(INSET + 56, size.y * 0.5)
+		# THE ROW IS A 签 -- a fortune slip: a turned, lacquered head at the left end and a
+		# torn tail at the right. It was a rounded rectangle with a picture in it, which is
+		# studio rule 4 ("buttons are not rectangles") and, worse, is the same rounded
+		# rectangle eighteen other titles use. The silhouette is
+		# scripts/shaped_button.gd's SLIP, shared with the two buttons in the nav below, so
+		# the row and the button are demonstrably the same object at two sizes rather than
+		# two drawings that happen to look alike.
+		#
+		# Hover makes the slip RISE. That is not a highlight: rising out of the tube is the
+		# one gesture this whole game is built on, and the row does in miniature what the
+		# tube does when you shake it.
+		var pts := ShapedButton.slip_points(Vector2(w, size.y), _rise)
+		var body := PackedVector2Array()
+		for pt in pts:
+			body.append(pt + Vector2(INSET, 0))
+		# Translucent, as before: there is a rendered sky behind this row, and at 0.88 the
+		# lantern light shows through the lacquer the way it does on a lacquered surface in
+		# daylight. The type is drawn on top of the panel, not through it, so it keeps full
+		# contrast.
+		draw_colored_polygon(body, Color(bg, 0.88))
+		var outline := body.duplicate()
+		outline.append(body[0])
+		draw_polyline(outline, edge, 2.0)
+		# the turned head, and the instrument's own mark inside it
+		var c := Vector2(INSET + size.y * 0.5, size.y * 0.5 - _rise)
+		draw_circle(c, size.y * 0.42, Color(edge, 0.16))
+		draw_arc(c, size.y * 0.42, 0.0, TAU, 48, Color(edge, 0.55), 1.5)
+		var mark_scale: float = 0.62
+		draw_set_transform(c, 0.0, Vector2(mark_scale, mark_scale))
+		_draw_mark(Vector2.ZERO, accent)
+		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+		var f := StudioTheme.font("serif")
+		var fi := StudioTheme.font("italic" if Tx.lang == "en" else "serif")
+		var tx: float = INSET + size.y * 1.02
+		var avail: float = w - size.y * 1.02 - size.y * 0.45
+		draw_string(f, Vector2(tx, size.y * 0.5 - 8 - _rise), title, HORIZONTAL_ALIGNMENT_LEFT, avail, 40, Palette.TEXT if kind != "reader" else Palette.CANDLE)
+		draw_string(fi, Vector2(tx + 2, size.y * 0.5 + 30 - _rise), sub, HORIZONTAL_ALIGNMENT_LEFT, avail, 19, Palette.MUTED if kind != "west" else Palette.SILVER_DIM)
+
+	## The instrument, drawn around a local origin so the head can scale it.
+	func _draw_mark(c: Vector2, accent: Color) -> void:
 		match kind:
 			"east":
 				# the tube: a wooden cylinder with sticks
@@ -270,7 +348,3 @@ class Door extends Button:
 				draw_rect(Rect2(c + Vector2(4, -60), Vector2(40, 120)), Color("3A2544"))
 				draw_line(c + Vector2(-44, -60), c + Vector2(44, -60), Palette.CANDLE_DEEP, 3.0)
 				draw_circle(c + Vector2(0, 8), 6.0, Palette.CANDLE)
-		var f := StudioTheme.font("serif")
-		var fi := StudioTheme.font("italic" if Tx.lang == "en" else "serif")
-		draw_string(f, Vector2(INSET + 122, size.y * 0.5 - 8), title, HORIZONTAL_ALIGNMENT_LEFT, -1, 40, Palette.TEXT if kind != "reader" else Palette.CANDLE)
-		draw_string(fi, Vector2(INSET + 124, size.y * 0.5 + 30), sub, HORIZONTAL_ALIGNMENT_LEFT, size.x - INSET * 2.0 - 170, 19, Palette.MUTED if kind != "west" else Palette.SILVER_DIM)

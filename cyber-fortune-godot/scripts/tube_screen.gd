@@ -17,6 +17,11 @@ var busy := false
 var shake_done := true
 var last_result: Dictionary = {}
 
+## How full the tube has to be before she says you are nearly there. 0.85 and not 0.95:
+## at 0.95 the line lands after the shake button has already lit, which makes it a
+## commentary on the past rather than an encouragement.
+const NEAR := 0.85
+
 
 func _ready() -> void:
 	relayout()
@@ -25,11 +30,6 @@ func _ready() -> void:
 
 func _process(dt: float) -> void:
 	Fortune.tick(dt)
-
-
-func _unhandled_input(e: InputEvent) -> void:
-	if e is InputEventKey and e.pressed and not e.echo and e.keycode == KEY_SPACE:
-		_tap()
 
 
 func relayout() -> void:
@@ -106,7 +106,8 @@ func relayout() -> void:
 	upgrade_btn = StudioTheme.button("", "Gold")
 	upgrade_btn.pressed.connect(func():
 		if Fortune.upgrade():
-			Sfx.chime(1.5))
+			Sfx.chime(1.5)
+			Sfx.bark("unlock"))
 	row.add_child(upgrade_btn)
 	panel_host = Control.new()
 	panel_host.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -137,9 +138,13 @@ func _refresh() -> void:
 func _tap() -> void:
 	if busy:
 		return
+	var was := Fortune.fill()
 	var g := Fortune.tap()
 	fish.knock(g)
 	Sfx.knock()
+	# "One card left." -- said once as the tube comes up to full, not every tap after it.
+	if was < NEAR and Fortune.fill() >= NEAR:
+		Sfx.bark("near")
 
 
 func shake() -> void:
@@ -188,6 +193,30 @@ func _show_result(r: Dictionary) -> void:
 	tw.tween_property(p, "modulate:a", 1.0, 0.35)
 	tw.tween_property(p, "scale", Vector2.ONE, 0.35).set_trans(Tween.TRANS_BACK)
 	Sfx.chime(1.0 if not Fortune.is_ill(r["rank"]) else 0.75)
+	# She reads the rank out. 大吉 is the once-in-thirty-draws line, so it gets its own
+	# slot; 凶 / 大凶 get the fail line, which in an all-ages fortune game is a shrug and
+	# not a defeat. Fired here rather than on the keep/burn press: the bark belongs to the
+	# moment the slip is turned over.
+	Sfx.bark(Fortune.bark_slot(r))
+
+
+## Space / Enter / a tap on the shrine floor. In order: read the slip that is waiting,
+## then spend the free daily draw, then knock the fish. Only the FREE draw is spent this
+## way -- a paid shake stays on its own button, because a stray tap must never cost merit.
+## Returns false only when there is genuinely nothing left here, which hands the player on
+## to the deck.
+func screen_advance() -> bool:
+	if busy:
+		return true                      # the tube is mid-shake; the press is not lost
+	for panel in panel_host.find_children("*", "ResultPanel", true, false):
+		return panel.choose("keep")
+	if Fortune.free_available():
+		shake()
+		return true
+	if Fortune.merit.merit < Fortune.TUBE:
+		_tap()
+		return true
+	return false
 
 
 # ---- dev bridge --------------------------------------------------------------------------

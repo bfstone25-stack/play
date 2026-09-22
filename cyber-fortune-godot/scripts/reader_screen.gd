@@ -514,6 +514,27 @@ func _reveal_line(line: String, f: Dictionary) -> void:
 		row.add_child(leave), 1.1)
 
 
+## Space / Enter / a tap on the dark of her room. She is a sequence of beats with one
+## control live at a time, so "the obvious next thing" is literally the first live control
+## -- which is what dev_cmd's `press` already means, reused rather than re-derived.
+##
+## When the reveal is on the table there is nothing further to press, so this returns
+## false and the player is handed on to the rack.
+func screen_advance() -> bool:
+	if revealed:
+		return false
+	var btns := _buttons(controls) + _buttons(table)
+	for b in btns:
+		if b is Button and b.disabled:
+			continue
+		if b is TableObject and not b.enabled:
+			continue
+		b.pressed.emit()
+		Sfx.bark("stage" if force != "" else "greet")
+		return true
+	return false
+
+
 # ---- dev bridge --------------------------------------------------------------------------
 func dev_state() -> Dictionary:
 	return {"force": force, "step": step, "revealed": revealed, "answer": last_answer, "line": say.text, "sprite": teller.has_sprite() if teller else false}

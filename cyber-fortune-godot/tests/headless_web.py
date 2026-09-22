@@ -235,6 +235,10 @@ with sync_playwright() as p:
             shot("reader-binary-card", 0.5)
         press_text("It is" if (37 >> k) & 1 else "It is not")
         time.sleep(0.25)
+    # The dim-and-hold, caught mid-beat: after the last answer she speaks a half-line,
+    # then the room dims a shade and she goes still — eyes closed — before the number.
+    # All four forces pass through this same beat; this is the shot that shows it.
+    shot("reader-hold", 1.8)
     check(wait_reveal("binary"), "binary: she revealed")
     st = state()
     check(st.get("answer") == "37", "binary force landed on 37 (got %s)" % st.get("answer"))

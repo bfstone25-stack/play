@@ -198,8 +198,29 @@ func _show_result(r: Dictionary) -> void:
 	col.modulate.a = 0.0
 	create_tween().tween_property(col, "modulate:a", 1.0, 0.35)
 	Sfx.chime(1.0 if not r["reversed"] else 0.75)
+	# Same moment as the tube's: the card is face up and she says what she sees.
+	Sfx.bark(Fortune.bark_slot(r))
 
 
+## Space / Enter / a tap on the felt: read the reading that is open, else cut the deck,
+## else turn the free card. As on the tube, only the FREE draw is spent by a tap -- a
+## stray press must never cost merit.
+func screen_advance() -> bool:
+	if busy:
+		return true
+	for panel in panel_host.find_children("*", "ResultPanel", true, false):
+		return panel.choose("keep")
+	if not cut:
+		cut = true
+		do_cut()
+		return true
+	if Fortune.free_available():
+		turn()
+		return true
+	return false
+
+
+# ---- dev bridge --------------------------------------------------------------------------
 func dev_state() -> Dictionary:
 	return {"turn_done": turn_done, "cut": cut, "result_open": panel_host.get_child_count() > 0}
 

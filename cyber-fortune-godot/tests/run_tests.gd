@@ -39,6 +39,7 @@ func _run() -> void:
 	_resolve()
 	_reader()
 	_pools()
+	_teller_states()
 	_persistence()
 	print("\n%d checks passed, %d failed" % [passed, failed])
 	print("TESTS_OK" if failed == 0 else "TESTS_FAILED")
@@ -311,3 +312,38 @@ func _persistence() -> void:
 	eq(int(Fortune.have_slips.get("x", 0)), 2, "collection round-trips")
 	eq(Fortune.rack.size(), 1, "the rack round-trips")
 	Fortune.reset()
+
+
+## The reader's three states, checked on the class the game actually draws.
+##
+## The browser drive cannot pin this down: whether the eyes-closed plate is on screen
+## depends on catching a 1-second hold at the right millisecond, and a shot taken a beat
+## late shows the calm face and looks like a pass. So the swap is checked here instead —
+## a Teller in a headless tree, each mood set, each resulting texture named.
+func _teller_states() -> void:
+	print("the reader's sprite")
+	var Teller = load("res://scripts/reader_screen.gd").Teller
+	var t = Teller.new()
+	add_child(t)
+	var want := {"waiting": "calm", "listening": "calm", "reveal": "reveal", "warm": "giveback"}
+	ok(t.has_sprite(), "the reader has a rendered portrait (else the drawn figure is the fallback)")
+	var seen := {}
+	for mood in want:
+		t.mood = mood
+		var tex: Texture2D = t._cur
+		ok(tex != null, "mood %s has a texture" % mood)
+		if tex != null:
+			var path := tex.resource_path
+			ok(path.ends_with("reader_%s.webp" % want[mood]),
+				"mood %s draws reader_%s (got %s)" % [mood, want[mood], path.get_file()])
+			seen[want[mood]] = true
+	eq(seen.size(), 3, "the three states are three named plates")
+	# By path alone this passes when the same picture is installed three times — which is
+	# exactly what a mis-typed picks JSON produces. Compare the pixels.
+	var hashes := {}
+	for st in ["calm", "reveal", "giveback"]:
+		var tex: Texture2D = t._tex.get(st)
+		if tex != null:
+			hashes[tex.get_image().get_data().hash()] = st
+	eq(hashes.size(), 3, "the three states are three different pictures")
+	t.queue_free()
