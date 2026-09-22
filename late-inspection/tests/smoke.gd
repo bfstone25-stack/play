@@ -1,6 +1,19 @@
 extends SceneTree
 
 func _init() -> void:
+	# One frame BEFORE the load, and it is load-bearing.
+	#
+	# game.gd calls `Gate.block(...)` and `Gate.board_offer_more(...)`. `Gate` is an
+	# autoload, and autoloads are added to the tree on the first idle frame -- so a
+	# `load()` issued from _init compiles game.gd while the name `Gate` does not yet
+	# resolve, and the script fails to compile. The error is a CONSOLE line; the test then
+	# carried on against a scene whose root script was null and reported the real symptom
+	# ("expected initial inspection interaction"), which sends you looking at the game.
+	#
+	# tests/progression.gd has always passed for exactly this reason: it awaits a frame
+	# first. This is the same failure class as the studio's finding 1 -- a script that
+	# never compiled, and a harness that blamed the game for it.
+	await process_frame
 	var packed := load("res://scenes/main.tscn")
 	if packed == null:
 		push_error("main.tscn failed to load")

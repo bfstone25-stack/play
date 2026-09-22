@@ -158,8 +158,14 @@ func show_lines(parsed: Array, use_nvl: bool, cb: Callable = Callable(), keep :=
 func open_choice(text: String, a: String, b: String, cb: Callable) -> void:
 	_choice_cb = cb
 	choice_prompt.text = text
-	btn_a.text = "A  " + a
-	btn_b.text = "B  " + b
+	# .label, NOT .text. A ShapedButton draws its own words from `label` and clears
+	# Button.text in _ready so the shape can place them; assigning .text is not an error,
+	# it just draws NOTHING -- which is the silent-failure class this repo keeps meeting
+	# (Ghost Channel shipped three dials with no words on them and no line in the log).
+	# There is an adoption path in _draw() that copies text->label, but it only runs when
+	# the control is actually redrawn, so it is not something to depend on.
+	_set_label(btn_a, "A  " + a)
+	_set_label(btn_b, "B  " + b)
 	if not adv_root.visible:
 		adv_root.visible = true
 		adv_root.modulate.a = 1.0
@@ -366,9 +372,32 @@ func _build_choice() -> void:
 	add_child(choice_root)
 
 
-func _choice_btn(n: String, top: float) -> Button:
-	var b := Button.new()
+## The two choice buttons, and they are condemnation tags like every other control in this
+## game (ops/STANDARD.md item 4; scripts/shaped_button.gd Shape.TAG).
+##
+## The fiction earns it here more than anywhere else on the screen. A building condition
+## survey does not present the inspector with options -- it presents findings, and the
+## inspector decides which tag to hang on each one. So the two things the player weighs at
+## a choice point ARE two tags, and the one under the cursor swings on its wire.
+##
+## `compact` because these are 42 px tall against ShapedButton's 56 px default minimum,
+## and the choice stack sits on a 48 px pitch above the ADV bar.
+## Set the visible words on a button whether or not it is a ShapedButton.
+static func _set_label(b: Button, s: String) -> void:
+	if b is ShapedButton:
+		(b as ShapedButton).label = s
+		b.queue_redraw()
+	else:
+		b.text = s
+
+
+func _choice_btn(n: String, top: float) -> ShapedButton:
+	var b := ShapedButton.new()
 	b.name = n
+	b.compact = true
+	b.shape = ShapedButton.Shape.TAG
+	b.tint = Color("#9fb6a1")
+	b.ink = Color("#11150f")
 	b.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	b.offset_top = top
 	b.offset_bottom = top + 42.0

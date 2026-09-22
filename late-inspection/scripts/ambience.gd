@@ -18,6 +18,7 @@ func _ready() -> void:
 	drip.stream = _tone(1680.0, 0.03, 0.42)
 	hum.stream = _rumble(38.0, 0.6, 0.32)
 	hum.volume_db = -20.0
+	_bark_ready()
 
 func _bus(n: String, pos: Vector3, dist: float) -> AudioStreamPlayer3D:
 	var a := AudioStreamPlayer3D.new()
@@ -93,3 +94,67 @@ func _rumble(hz: float, dur: float, amp: float) -> AudioStreamWAV:
 	st.stereo = false
 	st.data = data
 	return st
+
+
+# --- barks -------------------------------------------------------------------------------
+#
+# Mara's spoken findings (ops/barks/lines.json -> "late-inspection", seed f_low_dry,
+# all-ages, no innuendo). Rendered by ops/barks/render_barks.py into assets/voice/.
+#
+# This is ops/bark_wire.py's layer, written here by hand rather than by the tool: that tool
+# appends to a game's `sfx.gd` autoload and this game has no sfx.gd -- its audio lives on
+# this node, which is already a child of the game and already owns the mute-able cues.
+#
+# EVERYTHING BELOW NO-OPS UNTIL assets/voice/barks.json EXISTS. That is deliberate and is
+# how the other titles in this wave are wired: the lines are written, the moments are
+# chosen and called, and the GPU window only has to drop files in. It is also why
+# `_bark_map` is loaded from the manifest rather than from a hardcoded list -- a bark set
+# that is half-rendered must never pick a file that is not there.
+#
+# Three rules, each one the reason a bark set stops being charming:
+#   * rotate, and never repeat back to back;
+#   * never overlap a bark with a bark -- the second is DROPPED, not queued, because by
+#     the time the first ends the moment it belonged to is gone;
+#   * one voice per game.
+const BARKS := "res://assets/voice/"
+
+var _bark: AudioStreamPlayer
+var _bark_map: Dictionary = {}
+var _bark_last: Dictionary = {}
+
+
+func _bark_ready() -> void:
+	_bark = AudioStreamPlayer.new()
+	_bark.name = "Bark"
+	_bark.bus = "Master"
+	_bark.volume_db = -4.0
+	add_child(_bark)
+	var path := BARKS + "barks.json"
+	if not ResourceLoader.exists(path) and not FileAccess.file_exists(path):
+		return
+	var f := FileAccess.open(path, FileAccess.READ)
+	if f == null:
+		return
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if parsed is Dictionary:
+		_bark_map = parsed
+
+
+## Say one line from `slot`. Silent and harmless if the set was never rendered.
+func bark(slot: String) -> void:
+	if _bark == null or _bark.playing:
+		return
+	var files: Variant = _bark_map.get(slot)
+	if not (files is Array) or (files as Array).is_empty():
+		return
+	var list: Array = files
+	var pick: String = str(list[randi() % list.size()])
+	# never twice running in the same slot, when there is another option
+	if list.size() > 1 and pick == str(_bark_last.get(slot, "")):
+		pick = str(list[(list.find(pick) + 1) % list.size()])
+	_bark_last[slot] = pick
+	var stream: AudioStream = load(BARKS + pick) as AudioStream
+	if stream == null:
+		return
+	_bark.stream = stream
+	_bark.play()

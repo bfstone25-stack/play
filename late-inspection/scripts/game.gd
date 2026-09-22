@@ -3,6 +3,22 @@ extends Node3D
 ## Flat 404 production episode. The same flag resolver is used by play,
 ## deterministic route verification, and automated progression tests.
 
+## Say one of Mara's lines. Routed through here rather than called on the node directly so
+## that a missing ambience node (the headless tests build the game without one) is a no-op
+## rather than a nil-method crash mid-run.
+func bark(slot: String) -> void:
+	if ambience and ambience.has_method("bark"):
+		ambience.call("bark", slot)
+
+
+## Say a line in `wait` seconds. Only one can be pending: a second request replaces the
+## first, because two barks that were both worth saying a moment ago are one bark and one
+## interruption by the time they arrive.
+func _bark_after(wait: float, slot: String) -> void:
+	_bark_delay = wait
+	_bark_pending = slot
+
+
 func _chapter(i: int) -> String:
 	return Loc.t("ch.%d" % i)
 
@@ -65,6 +81,31 @@ func _refresh_prop_locale() -> void:
 var ending := false
 var ending_id := ""
 var stage := 0
+## The ambience node, kept so the nine bark moments below can reach it. See
+## scripts/ambience.gd for the layer itself; every call here is silent until
+## assets/voice/barks.json exists.
+var ambience: Node = null
+## How many findings have gone into the folio without a denial in between. Three in a row
+## is the 'streak' bark -- the point at which Mara stops treating the night as a series of
+## accidents and starts treating it as a procedure.
+var _run_of_findings := 0
+## Seconds since the player last did anything. The 'idle' bark is the only one that fires
+## without an action, so it needs its own clock and a long fuse: a bark that arrives while
+## the player is reading is an interruption, not a character.
+var _idle_t := 0.0
+## How many props the current zone spawned, and whether its 'near' line has been used.
+## 'near' fires once per zone, when one finding is left in the room.
+var _stage_props := 0
+var _near_said := false
+## Every stage the run has actually entered, with what the world spawned for it, recorded
+## at spawn time. This is the evidence tests/stage_walk.gd reports on: a stage counter that
+## increments is not proof the room changed, and ops/play_matrix.py's "six distinct stages"
+## rule exists precisely because a game can advance its own variable over an empty room.
+## Cheap (one small dictionary per stage) and it makes the claim checkable after the fact.
+var visited_stages: Array[Dictionary] = []
+var _bark_delay := 0.0
+var _bark_pending := ""
+
 var objective_key := "obj.0"
 var chapter_index := 0
 var paused := false
@@ -110,6 +151,8 @@ func _ready() -> void:
 	var amb := Node.new()
 	amb.set_script(preload("res://scripts/ambience.gd"))
 	add_child(amb)
+	ambience = amb
+	bark("greet")
 	hud.show_title(Loc.t("title.card"))
 	hud.set_chapter(_chapter(0), "01:47")
 	objective_key = "obj.0"
@@ -130,6 +173,11 @@ func _setup_audio() -> void:
 	drone.play()
 
 func _spawn_stage(s: int) -> void:
+	visited_stages.append({
+		"stage": s,
+		"objective": objective_key,
+		"props": _stage_items(s).size(),
+	})
 	for item in _stage_items(s):
 		var pos: Vector3 = item["pos"]
 		if item["kind"] == "choice":
@@ -275,6 +323,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if not paused:
 		elapsed += delta
+	_bark_tick(delta)
 	if title_t > 0.0:
 		title_t -= delta
 		if title_t <= 0.0:
@@ -291,10 +340,38 @@ func _process(delta: float) -> void:
 		hud.set_prompt(Loc.t("prompt.prefix") + str(t.prompt))
 	else:
 		hud.set_prompt("")
+	# 'near': one finding left in this zone. Once per zone, and not on a zone that only
+	# ever had one thing in it -- "one thing left" is only a nudge if there were several.
+	var left := 0
+	for p in active_ids.values():
+		if is_instance_valid(p) and p.get("taken") != true:
+			left += 1
+	if left == 1 and _stage_props > 1 and not _near_said:
+		_near_said = true
+		bark("near")
+	# 'idle': the one bark nothing the player does can trigger, so it needs a long fuse and
+	# its own clock. Reset by every finding and by every interaction prompt the player is
+	# actually standing in front of.
+	_idle_t += delta
+	if _idle_t > 34.0:
+		_idle_t = 0.0
+		bark("idle")
 	var fear := 0.12 + float(stage) * 0.055
 	if flags["pipe_answered"]:
 		fear += 0.12
 	hud.set_fear(fear)
+
+## Runs even while the game is paused-for-reading, because the delay it counts down was
+## started precisely so the line would land AFTER the document that triggered it.
+func _bark_tick(delta: float) -> void:
+	if _bark_pending == "":
+		return
+	_bark_delay -= delta
+	if _bark_delay <= 0.0:
+		var slot := _bark_pending
+		_bark_pending = ""
+		bark(slot)
+
 
 func show_note(text: String) -> void:
 	player.locked = true
@@ -313,6 +390,20 @@ func on_note(id: String) -> void:
 	if not collected.has(id):
 		collected.append(id)
 		interaction_count += 1
+		# The three findings barks, and the order matters. A new document is a 'win'
+		# (Mara has something the case system cannot quietly correct); it is also an
+		# 'unlock' because it goes into the folio; and three of them with no denial in
+		# between is the 'streak', the point at which she stops calling it a coincidence.
+		# Only one line can play at a time (ambience.bark drops rather than queues), so
+		# the rarest is asked for first and the common one is the fallback.
+		_run_of_findings += 1
+		_idle_t = 0.0
+		if _run_of_findings % 3 == 0:
+			bark("streak")
+		elif collected.size() % 2 == 0:
+			bark("unlock")
+		else:
+			bark("win")
 	hud.add_evidence(id)
 	match id:
 		"order":
@@ -382,6 +473,8 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 				hud.show_note(Loc.t("note.stain_keep"))
 			else:
 				flags["photo_deleted"] = true
+				_run_of_findings = 0
+				bark("fail")
 				hud.show_note(Loc.t("note.stain_wipe"))
 			_advance(5, "obj.stain", 3, "02:06")
 		"pipe":
@@ -390,11 +483,15 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 				hud.show_note(Loc.t("note.pipe_yes"))
 			else:
 				flags["pipe_silenced"] = true
+				_run_of_findings = 0
+				bark("fail")
 				hud.show_note(Loc.t("note.pipe_no"))
 			_advance(7, "obj.pipe", 4, "02:13")
 		"clause":
 			if i == 0:
 				flags["clause_signed"] = true
+				_run_of_findings = 0
+				bark("fail")
 				hud.show_note(Loc.t("note.clause_yes"))
 			else:
 				flags["clause_refused"] = true
@@ -422,6 +519,16 @@ func _advance(next_stage: int, obj_key: String, next_chapter: int, clock: String
 	hud.set_objective(Loc.t(obj_key))
 	hud.set_chapter(_chapter(next_chapter), clock)
 	_spawn_stage(stage)
+	# The zone bark. Deferred by a beat because _advance is called from inside the note
+	# that triggered it: firing here directly would talk over the 'win' line that the same
+	# interaction just started, and ambience.bark DROPS an overlapping line rather than
+	# queueing it -- so the zone line would simply never be heard.
+	_bark_after(2.4, "stage")
+	# One prop left in the room is the 'near' slot. Counted from the stage's own item list
+	# rather than from a hand-maintained number, so adding a prop to a zone cannot make
+	# this lie.
+	_stage_props = _stage_items(stage).size()
+	_near_said = false
 
 func _resolve_ending() -> String:
 	if flags["final_open"] and flags["photo_kept"] and flags["pipe_answered"] and flags["iris_record"]:
@@ -443,6 +550,7 @@ func _finish(id: String) -> void:
 		world.apply_ending(id)
 	match id:
 		"WITNESS":
+			bark("win_big")
 			hud.show_ending(Loc.t("end.witness"), [Loc.t("beat.witness.0"), Loc.t("beat.witness.1"), Loc.t("beat.witness.2"), Loc.t("beat.witness.3")])
 		"COMPLICIT":
 			hud.show_ending(Loc.t("end.complicit"), [Loc.t("beat.complicit.0"), Loc.t("beat.complicit.1"), Loc.t("beat.complicit.2"), Loc.t("beat.complicit.3")])

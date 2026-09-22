@@ -81,7 +81,12 @@ const CANVAS := Vector2(1280, 720)
 ## far figure walking away down the left — the figure lands just clear of the sheet's
 ## right edge, which is the best place for her — so the install needs no flip and no
 ## crop: cover scale is only what the breathing camera eats.
-const BG_SCALE := 1.06
+## 1.18, not 1.06 (ops/STANDARD.md item 6: "never shows the plate's edge — scale past
+## 1.16, the 16:9 diagonal ratio"). At 1.06 the overscan is 38 px across and 21 down; the
+## breathing drift is ±9 and ±5 and the swell subtracts 0.012, which leaves single-digit
+## margins. It survived, but it survived by arithmetic, and the drift numbers are the kind
+## of thing a later pass raises without re-deriving the headroom. 1.18 has the margin.
+const BG_SCALE := 1.18
 const BG_OFFSET := Vector2(-8.0, 0.0)
 
 ## The survey sheet. These four numbers and hud.gd's COL_X/COL_W are one layout; the HUD
@@ -92,8 +97,17 @@ const BG_OFFSET := Vector2(-8.0, 0.0)
 ## button's row — the language grid's last row is 490..532 — so it read as a strike
 ## through the interface rather than a division of the form. The primary button already
 ## has a surface of its own; the rule is gone rather than nudged.
+##
+## Narrowed and shortened on 2026-09-21, and the reason is a measurement rather than a
+## taste: the composite of this screen measured **0.41 brightness / 0.17 saturation**
+## against the horror/occult floor of 0.60/0.38 (ops/SHELF_STYLE.md, ops/check_shelf_floor
+## .py) — the lowest saturation of the 26. The key visual under it measures 0.80. So the
+## picture was not the problem; the three things stacked on it were, and the sheet was the
+## largest: 548x606 is 36% of a 1280x720 canvas held at about half opacity in ink.
+## 418x474 keeps the paper the type needs and gives the rest of the frame back to the
+## corridor. The primary control moved out of this column entirely (hud.gd ENTER_RECT).
 const FORM_POS := Vector2(14.0, 22.0)
-const FORM_SIZE := Vector2(548.0, 606.0)
+const FORM_SIZE := Vector2(418.0, 474.0)
 const FORM_RULES := [228.0, 330.0]
 
 ## Palette: the damp green of the building, the amber of the torch, ink for everything
@@ -156,7 +170,12 @@ func _build() -> void:
 	bg.size = CANVAS
 	bg.pivot_offset = CANVAS * 0.5
 	bg.scale = Vector2(BG_SCALE, BG_SCALE)
-	bg.modulate = Color(0.82, 0.90, 0.86)
+	# Was Color(0.82, 0.90, 0.86): a multiply that cost 10-18% of every channel before the
+	# vignette and the sheet had taken their share, on a frame already measured 0.19 below
+	# its bucket's brightness floor. The corridor's colour belongs to the render, not to a
+	# tint applied on top of it. What remains is the torch's live exposure in _process,
+	# which is the flicker and has to stay.
+	bg.modulate = Color(1.0, 1.0, 1.0)
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
 
@@ -198,8 +217,10 @@ func _build() -> void:
 	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 	logo.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	logo.position = Vector2(26, 46)
-	logo.size = Vector2(468, 175)
+	# Fitted to the narrowed sheet: 468 was wider than the 418-wide paper it is struck on,
+	# so the mark hung over the right edge onto the corridor.
+	logo.position = Vector2(26, 40)
+	logo.size = Vector2(398, 150)
 	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(logo)
 
@@ -290,7 +311,11 @@ func _stamp() -> void:
 	var s := Control.new()
 	s.name = "Stamp"
 	s.size = Vector2(268, 62)
-	s.position = Vector2(352, 586)
+	# Straddling the sheet's new bottom edge (y=496) and its right edge (x=432), which is
+	# the whole point of the stamp: half on the paper, half on the wet floor behind it. At
+	# the old (352, 586) it was clear of the shortened sheet entirely — a stamp floating on
+	# the corridor — and it landed on the language row's new position as well.
+	s.position = Vector2(232, 462)
 	s.pivot_offset = s.size * 0.5
 	s.rotation = deg_to_rad(-8.0)
 	s.modulate = Color(1, 1, 1, 0.62)
@@ -439,7 +464,11 @@ func _process(delta: float) -> void:
 	flick = lerpf(flick, target, delta * 8.0)
 	torch.position = Vector2(700.0 + sin(t * 0.37) * 26.0, 330.0 + cos(t * 0.29) * 18.0)
 	torch.modulate.a = clampf(0.36 * flick, 0.0, 1.0)
-	bg.modulate = Color(0.82 * flick, 0.90 * flick, 0.86 * flick)
+	# Centred on 1.0 rather than on the old 0.82/0.90/0.86 tint, and floored: `flick`
+	# drops to 0.62 on a gutter, and a title frame is judged on every phase it shows
+	# (see _paper), so the dark phase may not take the picture back under its floor.
+	var expo := maxf(flick, 0.86)
+	bg.modulate = Color(expo, expo, expo)
 
 
 func _snd(kind: String) -> void:
@@ -483,6 +512,16 @@ func style_button(b: Button, primary := false) -> void:
 	b.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	b.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	b.clip_text = false
+	# A ShapedButton IS the shape — it draws a condemnation tag in _draw() and hovers by
+	# swaying it. Handing it the StyleBoxFlat set below would frame that tag in the exact
+	# rounded rectangle the shape exists to replace, so the fonts and colours above apply
+	# and the boxes do not. ShapedButton also draws its own words (`label`), which is why
+	# the colour that matters to it is `ink`/`tint` and not font_color.
+	if b is ShapedButton:
+		if not b.mouse_entered.is_connected(_on_hover):
+			b.mouse_entered.connect(_on_hover)
+			b.button_down.connect(_on_press)
+		return
 	var normal := StyleBoxFlat.new()
 	normal.bg_color = Color(0.05, 0.07, 0.06, 0.88)
 	normal.border_color = Color(DAMP.r, DAMP.g, DAMP.b, 0.8)

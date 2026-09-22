@@ -46,8 +46,32 @@ var splash_enter: Button
 var title_screen: TitleScreen
 var title_panel: Control
 var title_mark: TextureRect
+## The title column: the form sheet down the left of the composition
+## (scripts/title_screen.gd FORM_POS/FORM_SIZE) and the type inside it. These two numbers
+## and the sheet's are ONE layout — move one without the other and the type walks off the
+## paper.
+##
+## Narrowed from 520 on 2026-09-21. The sheet used to be 548 wide and 606 tall: a slab
+## over 44% of a 1280x720 canvas at about half opacity, plus a vignette, plus a 0.82/0.90/
+## 0.86 multiply on the picture itself. Measured, the composite took a 0.80-brightness key
+## visual down to **0.41 brightness / 0.17 saturation** — the lowest saturation on the
+## studio shelf, against a horror floor of 0.60/0.38. The picture is now mostly picture.
 const COL_X := 26.0
-const COL_W := 520.0
+const COL_W := 418.0
+
+## The primary control lives in the MIDDLE of the canvas, not at the foot of the left
+## column, and the languages are one row across the bottom.
+##
+## This is a composition fix that happens to also be a reachability fix. ops/play_driver.py
+## walks every game in the studio by pressing the obvious places — (640, 500), (640, 400),
+## (640, 360) — and ENTER THE BUILDING was a 520-wide button at x=26, its centre at
+## (286, 569). The driver never touched it, so the matrix for this game was three tiles of
+## the title screen and read as "broken". Nothing was broken; the only door in was in the
+## corner. A primary action a generic prober cannot find is one a player has to hunt for.
+const ENTER_RECT := Rect2(Vector2(420.0, 470.0), Vector2(440.0, 86.0))
+const LANG_ROW_Y := 596.0
+const LANG_SIZE := Vector2(232.0, 46.0)
+const LANG_GAP := 8.0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -162,9 +186,27 @@ func _vn_ui() -> void:
 	document_button.visible = false
 	add_child(document_button)
 
-func _mk_btn(n: String, off: Vector2, size: Vector2) -> Button:
-	var b := Button.new()
+## The pause menu's and the ending screen's buttons, and they are the SAME condemnation
+## tag the title menu is made of (see _col_btn, and ops/STANDARD.md item 4).
+##
+## They were plain `Button.new()` rectangles until 2026-09-21 -- the title screen had been
+## given the game's shape and the two screens behind it had not, which is worse than
+## neither having it: the player meets the fiction on the first screen and then presses a
+## stock grey box for the rest of the game.
+##
+## `compact` matters and is not cosmetic: ShapedButton forces a 220x56 minimum on anything
+## that does not set it, and these are 360x48 and 360x50. Without it the pause menu's two
+## rows grow past their 62 px pitch and overlap.
+func _mk_btn(n: String, off: Vector2, size: Vector2) -> ShapedButton:
+	var b := ShapedButton.new()
 	b.name = n
+	b.compact = true
+	b.shape = ShapedButton.Shape.TAG
+	# Buff card stock, the same tag the title menu hands out. The pause and ending screens
+	# both sit on near-black scrims, so this is the un-lit tag rather than the amber one:
+	# the amber is reserved for the single control the player must find on the title.
+	b.tint = Color("#9fb6a1")
+	b.ink = Color("#11150f")
 	b.set_anchors_preset(Control.PRESET_CENTER)
 	b.offset_left = off.x
 	b.offset_top = off.y
@@ -233,7 +275,7 @@ func _ending_ui() -> void:
 	UiFont.apply_label(ending_text)
 	ending_panel.add_child(ending_text)
 	ending_button = _mk_btn("EndingNext", Vector2(-180, 185), Vector2(360, 50))
-	ending_button.text = Loc.t("btn.continue")
+	_btn_text(ending_button, Loc.t("btn.continue"))
 	ending_button.pressed.connect(_next_ending_beat)
 	ending_panel.add_child(ending_button)
 	add_child(ending_panel)
@@ -263,17 +305,24 @@ func _splash() -> void:
 
 	lang_caption = Label.new()
 	lang_caption.name = "LangCaption"
-	lang_caption.position = Vector2(COL_X, 342)
-	lang_caption.size = Vector2(COL_W, 26)
+	# The caption follows its field. The languages are a row across the foot of the picture
+	# now, so their label goes with them rather than staying at y=342 captioning air.
+	lang_caption.position = Vector2(0.0, LANG_ROW_Y - 30.0)
+	lang_caption.size = Vector2(1280.0, 26)
+	lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	splash.add_child(lang_caption)
 
+	# One row across the foot of the picture, centred. A 2x3 grid in the left column meant
+	# the last row sat at y=490 and a form rule ran through it; a row also makes the five
+	# tags read as one row of tags on a hook, which is what they now look like.
 	var codes := Loc.ALLOWED
+	var row_w := codes.size() * LANG_SIZE.x + (codes.size() - 1) * LANG_GAP
+	var row_x := (1280.0 - row_w) * 0.5
 	for i in codes.size():
 		var code := str(codes[i])
-		var col := i % 2
-		var row := int(i / 2)
-		var b := _col_btn("Lang_%s" % code, Vector2(COL_X + col * 268, 370 + row * 50), Vector2(252, 42))
-		b.text = str(Loc.NATIVE[code])
+		var b := _col_btn("Lang_%s" % code,
+			Vector2(row_x + i * (LANG_SIZE.x + LANG_GAP), LANG_ROW_Y), LANG_SIZE)
+		_btn_text(b, str(Loc.NATIVE[code]))
 		b.pressed.connect(func() -> void: Loc.set_code(code))
 		splash.add_child(b)
 		lang_buttons[code] = b
@@ -282,7 +331,7 @@ func _splash() -> void:
 		elif code == "zh":
 			lang_zh = b
 
-	splash_enter = _col_btn("Enter", Vector2(COL_X, 536), Vector2(COL_W, 66), true)
+	splash_enter = _col_btn("Enter", ENTER_RECT.position, ENTER_RECT.size, true)
 	splash_enter.name = "EnterBuilding"
 	splash_enter.pressed.connect(func() -> void:
 		hide_splash()
@@ -295,18 +344,46 @@ func _splash() -> void:
 	title_panel = splash
 
 
-## A button placed by its top-left corner in the title column, styled by the title screen
-## so the menu is set in the same family as the mark.
-func _col_btn(n: String, pos: Vector2, size: Vector2, primary := false) -> Button:
-	var b := Button.new()
+## A button placed by its top-left corner in the title composition, styled by the title
+## screen so the menu is set in the same family as the mark.
+##
+## It is a CONDEMNATION TAG, not a rectangle (ops/STANDARD.md item 4, and
+## scripts/shaped_button.gd Shape.TAG). A building condition survey ends with a tag wired
+## to the meter or the door of a unit that failed: punched eyelet, one pointed end, a
+## number written on it. That is the object this game's fiction hands the player, so it is
+## the object they press — and it sways off its eyelet on hover, which is what a tag on a
+## wire does when you touch it.
+##
+## ShapedButton draws its own text from `label` and clears Button.text in _ready, so the
+## localiser has to go through _btn_text below rather than assigning .text. Assigning
+## .text on one of these is not an error, it just draws nothing — which is precisely the
+## silent-failure class this repo keeps meeting, so there is one helper and nothing
+## assigns .text directly.
+func _col_btn(n: String, pos: Vector2, size: Vector2, primary := false) -> ShapedButton:
+	var b := ShapedButton.new()
 	b.name = n
+	b.shape = ShapedButton.Shape.TAG
+	# The tag is buff card stock; the primary one is the amber of the torch, because it is
+	# the only thing on the screen the player must find.
+	b.tint = Color("#d8a24e") if primary else Color("#9fb6a1")
+	b.ink = Color("#11150f")
 	b.position = pos
 	b.size = size
+	b.custom_minimum_size = size
 	if title_screen:
 		title_screen.style_button(b, primary)
 	else:
 		UiFont.apply_button(b)
 	return b
+
+
+## Set the visible words on a title button whether or not it is a ShapedButton.
+func _btn_text(b: Button, s: String) -> void:
+	if b is ShapedButton:
+		(b as ShapedButton).label = s
+		b.queue_redraw()
+	else:
+		b.text = s
 
 
 func _on_splash_input(event: InputEvent) -> void:
@@ -454,7 +531,7 @@ func show_ending(t: String, beats: Array) -> void:
 	ending_panel.modulate = Color(1, 1, 1, 0)
 	ending_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ending_text.text = str(ending_beats[0])
-	ending_button.text = Loc.t("btn.continue")
+	_btn_text(ending_button, Loc.t("btn.continue"))
 	var pages: Array = [{"speaker": "SYSTEM", "body": t}]
 	for beat in beats:
 		pages.append_array(VnChrome.parse_text(str(beat)))
@@ -468,18 +545,18 @@ func _next_ending_beat() -> void:
 		vn.advance(true)
 		ending_index = vn.line_index
 		if ending_index >= vn.lines.size() - 1:
-			ending_button.text = Loc.t("btn.restart")
+			_btn_text(ending_button, Loc.t("btn.restart"))
 		return
 	ending_index += 1
 	if ending_index >= ending_beats.size():
 		ending_text.text = Loc.t("ending.thanks")
-		ending_button.text = Loc.t("btn.restart")
+		_btn_text(ending_button, Loc.t("btn.restart"))
 		ending_button.pressed.disconnect(_next_ending_beat)
 		ending_button.pressed.connect(func() -> void: get_tree().call_group("game", "restart"))
 		return
 	ending_text.text = str(ending_beats[ending_index])
 	if ending_index == ending_beats.size() - 1:
-		ending_button.text = Loc.t("btn.credits")
+		_btn_text(ending_button, Loc.t("btn.credits"))
 
 func _pick(i: int) -> void:
 	if vn:
@@ -516,15 +593,15 @@ func apply_locale() -> void:
 		else:
 			UiFont.apply_label(splash_title)
 	if splash_enter:
-		splash_enter.text = Loc.t("splash.start")
+		_btn_text(splash_enter, Loc.t("splash.start"))
 		if title_screen:
 			title_screen.style_button(splash_enter, true)
 	if pause_lab:
 		pause_lab.text = Loc.t("pause.title")
 	if pause_resume:
-		pause_resume.text = Loc.t("pause.resume")
+		_btn_text(pause_resume, Loc.t("pause.resume"))
 	if pause_restart:
-		pause_restart.text = Loc.t("pause.restart")
+		_btn_text(pause_restart, Loc.t("pause.restart"))
 	if lang_caption:
 		lang_caption.text = Loc.t("lang.caption")
 		if title_screen:
@@ -538,7 +615,7 @@ func apply_locale() -> void:
 			UiFont.apply_label(lang_caption)
 	for code in lang_buttons.keys():
 		var b: Button = lang_buttons[code]
-		b.text = str(Loc.NATIVE[code])
+		_btn_text(b, str(Loc.NATIVE[code]))
 		if title_screen:
 			title_screen.style_button(b)
 		else:
