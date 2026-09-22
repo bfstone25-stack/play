@@ -1,4 +1,29 @@
-# Floor 13: Retention — the adult fork of Floor 13: Night Shift
+# HOLDOVER — the adult fork of Floor 13: Night Shift
+
+**Renamed by Blaze, 2026-09-21.** It was *HOLDOVER*, and a suffix tells the
+shelf it is a variant of something else (`ops/STANDARD.md`, "Adult fork vs all-ages
+parent"). A holdover is a tenant who stays past the lease, which is the game.
+
+The **slug stays `floor-13-retention`** and the ad track stays `floor-13-x.flat404.workers.dev`:
+both are live URLs on DLsite, Nutaku and flat404. The name is everywhere a player reads it
+— the wordmark, `project.godot`, the desktop binaries (`holdover.exe`, `holdover.x86_64`),
+the SEO entry, the itch copy and the forum templates.
+
+## What makes it a different game from its parent, and not the same build with the lights down
+
+On 2026-09-21, 20 of the 32 files the two share names for were byte-identical, including
+the entire scene tree and every pixel plate. What changed:
+
+| | Floor 13: Night Shift | HOLDOVER |
+|---|---|---|
+| light | 11:59 PM, fluorescent. Blue-steel shadows, cyan terminals, one red wound | the lease has run out and the floor is on emergency power. Sodium from the lift and the stairwell, magenta terminals, no blue anywhere |
+| wordmark | FLOOR 13 set in Work Sans Bold over the plate | the lift's floor indicator: a dot-matrix panel with the word burning in it and the car stopped at 13, its direction arrow dead. `ops/title_logotypes.py :: holdover` |
+| palette | its own | `scripts/palette.gd` + `tools/palette_holdover.py` — the parent's geometry under a different lamp |
+| buttons | ShapedButton.TIMECARD | the same card, in manila against sodium rather than against blue |
+| title | bright 0.27 / sat 0.36 — under the horror bucket's floor on both | bright 0.62 / sat 0.50 — clears it |
+
+`ops/check_two_worlds.py` measured 9% shared after this pass, and the three remaining
+files are font ATLASES, which are white-on-transparent masks the game tints at runtime.
 
 Slug `floor-13-retention`. Built 2026-09-17 from the design in
 [`ops/adult_forks/floor-13.md`](../../ops/adult_forks/floor-13.md), the house art rule in

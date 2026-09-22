@@ -2,8 +2,8 @@
 config_version=5
 
 [application]
-config/name="Floor 13: Retention"
-config/description="Adult (18+) fork of Floor 13: Night Shift. Retention takes the record of having been touched before it takes the name; three erased adults spend one night witnessing each other back into bodies. English only. All characters are adults."
+config/name="HOLDOVER"
+config/description="HOLDOVER — the adult fork of Floor 13: Night Shift, and its own game, not the same build with the lights down. Retention takes the record of having been touched before it takes the name; three erased adults spend one night witnessing each other back into bodies. English only. All characters are adults."
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility", "Forward Plus")
 config/icon="res://icon.svg"

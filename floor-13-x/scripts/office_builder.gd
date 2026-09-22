@@ -73,7 +73,7 @@ func _add_location_animation() -> void:
 		scanner = Line2D.new()
 		scanner.name = "AuditorScan"
 		scanner.width = 2.0
-		scanner.default_color = Color("#ef3b4f")
+		scanner.default_color = Color("#f21d70")
 		scanner.antialiased = false
 		scanner.z_index = 8
 		add_child(scanner)
@@ -83,7 +83,7 @@ func _add_location_animation() -> void:
 		light.position = {"cubicle": Vector2(160, 45), "breakroom": Vector2(320, 48), "lobby": Vector2(320, 42)}[area_id]
 		light.texture = _light_texture()
 		light.texture_scale = 4.0
-		light.color = Color("#b9d6c0" if area_id == "breakroom" else "#b6cfe1")
+		light.color = Color("#ddcdb2" if area_id == "breakroom" else "#e6c3a8")
 		light.energy = 0.65
 		light.blend_mode = Light2D.BLEND_MODE_ADD
 		add_child(light)
@@ -117,11 +117,11 @@ func _add_coworker() -> void:
 func _apply_story_palette() -> void:
 	var compliance := str(state.get("compliance", ""))
 	if compliance == "REFUSE":
-		scene_sprite.modulate = Color("#c4e8ff")
+		scene_sprite.modulate = Color("#f7caa6")
 	elif compliance == "OBEY":
-		scene_sprite.modulate = Color("#ffb0a7")
+		scene_sprite.modulate = Color("#f77ea2")
 	if str(state.get("contract", "")) == "SIGN":
-		scene_sprite.modulate = Color("#ff8c83")
+		scene_sprite.modulate = Color("#f74d83")
 
 func _light_texture() -> Texture2D:
 	# Authored four-band 48x24 alpha ramp with a dithered edge. Keeping this

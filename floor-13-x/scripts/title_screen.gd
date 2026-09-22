@@ -16,7 +16,12 @@ class_name TitleScreen
 ##                near sheet is faster and longer, the far one slower and faint
 ##   overlay      one baked plate: the radial darkening plus the ink column down the right
 ##                third, where the logotype and the start button sit
-##   logotype     the designed mark (ops/title_logotypes.py) settling in from below
+##   logotype     HOLDOVER's mark: the lift's floor indicator, a dot-matrix panel with
+##                the word burning in it and the car stopped at 13, its direction arrow
+##                dead. Drawn by ops/title_logotypes.py :: holdover(). It settles in from
+##                below. This is NOT the parent's FLOOR 13 wordmark recoloured — the two
+##                games must not share a mark (ops/STANDARD.md, "Adult fork vs all-ages
+##                parent").
 ##   marks        18+ and the studio line, small, fixed
 ##
 ## The HUD owns the buttons and the localised lines; it places them over this. The sound
@@ -83,7 +88,7 @@ func _ready() -> void:
 
 func _build() -> void:
 	var ink := ColorRect.new()
-	ink.color = Color("#04070a")
+	ink.color = Color("#0a0603")
 	ink.set_anchors_preset(Control.PRESET_FULL_RECT)
 	ink.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(ink)
@@ -98,7 +103,7 @@ func _build() -> void:
 	bg.size = Vector2(640, 360)
 	bg.pivot_offset = Vector2(320, 180)
 	bg.scale = Vector2(BG_SCALE, BG_SCALE)
-	bg.modulate = Color(0.86, 0.96, 0.98)
+	bg.modulate = Color(1.04, 0.93, 0.80)   # sodium, not fluorescent — HOLDOVER's ramp
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
 
@@ -126,8 +131,13 @@ func _build() -> void:
 	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 	logo.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	logo.position = Vector2(318, 30)
-	logo.size = Vector2(300, 103)
+	# The mark is the lift's floor indicator (ops/title_logotypes.py :: holdover), 1500x430.
+	# Sized to that ratio: KEEP_ASPECT letterboxes inside the rect, so a rect cut for the
+	# old 1400x480 mark would have shrunk the panel and left a dead band under it.
+	# Pushed right off June's hair. The mirrored key visual puts her left-of-centre and at
+	# x=318 the panel's first column of LEDs landed on her fringe, which ate the H.
+	logo.position = Vector2(352, 26)
+	logo.size = Vector2(272, 78)
 	logo.modulate.a = 1.0
 	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(logo)
@@ -141,7 +151,7 @@ func _rain(w: int, h: int, speed: float, alpha: float, count: int) -> CPUParticl
 	var img := Image.create(w, h, false, Image.FORMAT_RGBA8)
 	for y in h:
 		var a: float = 1.0 - absf(float(y) / float(h - 1) - 0.5) * 2.0
-		img.set_pixel(0, y, Color(0.8, 0.95, 1.0, a))
+		img.set_pixel(0, y, Color(1.0, 0.86, 0.62, a))   # rain lit by the sodium lamp
 	p.texture = ImageTexture.create_from_image(img)
 	p.amount = count
 	p.lifetime = 1.6
@@ -164,14 +174,14 @@ func _mark(text: String, pos: Vector2, boxed: bool) -> void:
 	l.position = pos
 	l.add_theme_font_override("font", FONT_BOLD if boxed else FONT_REG)
 	l.add_theme_font_size_override("font_size", 9 if boxed else 8)
-	l.add_theme_color_override("font_color", Color("#c9d8d2"))
-	l.add_theme_color_override("font_outline_color", Color("#04070a"))
+	l.add_theme_color_override("font_color", Color("#e8d3b4"))
+	l.add_theme_color_override("font_outline_color", Color("#0a0603"))
 	l.add_theme_constant_override("outline_size", 2)
 	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	if boxed:
 		var box := StyleBoxFlat.new()
-		box.bg_color = Color("#04070a99")
-		box.border_color = Color("#c9d8d2")
+		box.bg_color = Color("#0a060399")
+		box.border_color = Color("#e8d3b4")
 		box.set_border_width_all(1)
 		box.set_content_margin_all(3)
 		box.content_margin_left = 5
@@ -184,11 +194,11 @@ func _mark(text: String, pos: Vector2, boxed: bool) -> void:
 ## below over 1.3 s after a beat of the room alone, and the sting plays once per showing.
 func play_in() -> void:
 	logo.modulate.a = 0.6
-	logo.position.y = 40
+	logo.position.y = 36
 	var tw := create_tween()
 	tw.set_parallel(true)
 	tw.tween_property(logo, "modulate:a", 1.0, 1.3).set_delay(0.55).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tw.tween_property(logo, "position:y", 30.0, 1.4).set_delay(0.55).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tw.tween_property(logo, "position:y", 26.0, 1.4).set_delay(0.55).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	_snd("sting")
 	_played_in = true
 
@@ -208,7 +218,7 @@ func _process(delta: float) -> void:
 		next_glitch = randf_range(0.04, 0.16) if flick < 0.8 else randf_range(0.9, 3.4)
 	var target := 1.0 + 0.025 * sin(t * 37.0)
 	flick = lerpf(flick, target, delta * 9.0)
-	bg.modulate = Color(0.86 * flick, 0.96 * flick, 0.98 * flick)
+	bg.modulate = Color(1.04 * flick, 0.93 * flick, 0.80 * flick)
 
 
 func _snd(kind: String) -> void:
@@ -245,6 +255,17 @@ func style_button(b: Button) -> void:
 	b.add_theme_color_override("font_outline_color", Color("#04070a"))
 	b.add_theme_constant_override("outline_size", 2)
 	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	# [fork] The START button is a ShapedButton — a payroll time card it draws itself
+	# (STANDARD.md rule 4). It still wants this function's TYPE (Work Sans, cold, the red
+	# pressed state) so the title screen is set in one face, but it must not be given
+	# styleboxes: a StyleBoxFlat paints a filled rectangle behind the card, which is
+	# exactly the rounded-rectangle-with-a-word-in-it the shape exists to replace. Return
+	# before the boxes and let the card draw.
+	if b is ShapedButton:
+		if not b.mouse_entered.is_connected(_on_hover):
+			b.mouse_entered.connect(_on_hover)
+			b.button_down.connect(_on_press)
+		return
 	var normal := StyleBoxFlat.new()
 	normal.bg_color = Color("#04070a66")
 	normal.border_color = Color("#8fb8a8")

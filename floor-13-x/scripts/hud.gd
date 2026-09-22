@@ -125,15 +125,43 @@ func _pixel_style(region: Rect2, margin := 3.0) -> StyleBoxTexture:
 func _format_label(node: Label, size: int, color: Color) -> void:
 	UiFont.apply_label(node, size >= 14)
 	node.add_theme_color_override("font_color", color)
-	node.add_theme_color_override("font_outline_color", Color("#05070d"))
+	node.add_theme_color_override("font_outline_color", Color("#160903"))
 	node.add_theme_constant_override("outline_size", 2)
 
+## [fork] Every control the player presses is a PAYROLL TIME CARD (STANDARD.md rule 4).
+##
+## The game is about a company that keeps people by keeping their hours, so the object the
+## player presses is the object the story is about: a manila card with a punch column down
+## the left, and on hover the clock bites one more hole and a red RETAINED stamp bleeds in
+## from the right. ShapedButton.Shape.TIMECARD draws it; nothing here is a stylebox.
+##
+## Manila, not the UI's blue. The shelf data says the top twenty covers on Nutaku are the
+## warm ones (ops/SHELF_STYLE.md), and on this screen the cards are the only warm thing —
+## which also makes them the thing the eye finds first, which is what a button is for.
+const CARD_TINT := Color("#cc9772")
+const CARD_INK := Color("#2d1f16")
+
+func _card_button(text: String, sz: Vector2, font_size := 8) -> ShapedButton:
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.TIMECARD
+	b.compact = true          # 640x360 canvas: these are 80x28, not 220x56
+	b.tint = CARD_TINT
+	b.ink = CARD_INK
+	b.label = text
+	b.custom_minimum_size = sz
+	b.add_theme_color_override("font_outline_color", Color("#160903"))
+	b.add_theme_constant_override("outline_size", 2)
+	UiFont.apply_button(b)
+	b.add_theme_font_size_override("font_size", font_size)
+	return b
+
+
 func _format_button(node: Button, _size := 11) -> void:
-	node.add_theme_color_override("font_color", Color("#e7edf5"))
+	node.add_theme_color_override("font_color", Color("#f7eae3"))
 	node.add_theme_stylebox_override("normal", _pixel_style(Rect2(64, 64, 64, 32)))
 	node.add_theme_stylebox_override("hover", _pixel_style(Rect2(192, 64, 64, 32)))
 	node.add_theme_stylebox_override("pressed", _pixel_style(Rect2(128, 64, 64, 32)))
-	node.add_theme_color_override("font_outline_color", Color("#05070d"))
+	node.add_theme_color_override("font_outline_color", Color("#160903"))
 	node.add_theme_constant_override("outline_size", 2)
 	UiFont.apply_button(node)
 
@@ -141,31 +169,31 @@ func _build_top() -> void:
 	var bar := ColorRect.new()
 	bar.position = Vector2(0, 0)
 	bar.size = Vector2(640, 40)
-	bar.color = Color("#080d17cc")
+	bar.color = Color("#230f04cc")
 	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root_ui.add_child(bar)
 	chapter_label = Label.new()
 	chapter_label.position = Vector2(14, 7)
 	chapter_label.size = Vector2(72, 16)
-	_format_label(chapter_label, 8, Color("#ef4455"))
+	_format_label(chapter_label, 8, Color("#f21d6f"))
 	root_ui.add_child(chapter_label)
 	place_label = Label.new()
 	place_label.position = Vector2(88, 5)
 	place_label.size = Vector2(360, 19)
-	_format_label(place_label, 12, Color("#e7edf5"))
+	_format_label(place_label, 12, Color("#f7eae3"))
 	root_ui.add_child(place_label)
 	clock_label = Label.new()
 	clock_label.position = Vector2(368, 7)
 	clock_label.size = Vector2(56, 18)
 	clock_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	_format_label(clock_label, 9, Color("#6fdcef"))
+	_format_label(clock_label, 9, Color("#f2a83a"))
 	root_ui.add_child(clock_label)
 	objective_label = Label.new()
 	objective_label.position = Vector2(88, 22)
 	objective_label.size = Vector2(528, 22)
 	objective_label.clip_text = false
 	objective_label.autowrap_mode = TextServer.AUTOWRAP_OFF
-	_format_label(objective_label, 8, Color("#8e9bb0"))
+	_format_label(objective_label, 8, Color("#bc9b89"))
 	root_ui.add_child(objective_label)
 
 func _build_dialogue() -> void:
@@ -192,19 +220,16 @@ func _build_dialogue() -> void:
 	stack.add_theme_constant_override("separation", 4)
 	row.add_child(stack)
 	speaker_label = Label.new()
-	_format_label(speaker_label, 9, Color("#ef5262"))
+	_format_label(speaker_label, 9, Color("#f21d70"))
 	stack.add_child(speaker_label)
 	body_label = Label.new()
 	body_label.custom_minimum_size = Vector2(0, 52)
 	body_label.clip_text = false
 	body_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	body_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
-	_format_label(body_label, 10, Color("#e1e6ee"))
+	_format_label(body_label, 10, Color("#f1e5de"))
 	stack.add_child(body_label)
-	continue_button = Button.new()
-	continue_button.text = Loc.t("btn.continue")
-	continue_button.custom_minimum_size = Vector2(0, 36)
-	_format_button(continue_button, 10)
+	continue_button = _card_button(Loc.t("btn.continue"), Vector2(0, 36), 10)
 	continue_button.pressed.connect(_advance_dialogue)
 	stack.add_child(continue_button)
 	root_ui.add_child(dialogue_panel)
@@ -220,57 +245,44 @@ func _build_choices() -> void:
 	choice_panel.add_child(stack)
 	var label := Label.new()
 	choice_banner = Label.new()
-	_format_label(choice_banner, 8, Color("#ef4455"))
+	_format_label(choice_banner, 8, Color("#f21d6f"))
 	stack.add_child(choice_banner)
 	choice_prompt = Label.new()
 	choice_prompt.custom_minimum_size = Vector2(0, 20)
 	choice_prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_format_label(choice_prompt, 11, Color("#f0eee6"))
+	_format_label(choice_prompt, 11, Color("#f3e1d0"))
 	stack.add_child(choice_prompt)
-	choice_a = Button.new()
-	choice_a.custom_minimum_size = Vector2(0, 44)
-	_format_button(choice_a, 11)
+	choice_a = _card_button("", Vector2(0, 44), 11)
 	choice_a.pressed.connect(func() -> void: _pick(0))
 	stack.add_child(choice_a)
-	choice_b = Button.new()
-	choice_b.custom_minimum_size = Vector2(0, 44)
-	_format_button(choice_b, 11)
+	choice_b = _card_button("", Vector2(0, 44), 11)
 	choice_b.pressed.connect(func() -> void: _pick(1))
 	stack.add_child(choice_b)
 	root_ui.add_child(choice_panel)
 
 func _build_controls() -> void:
-	log_button = Button.new()
+	log_button = _card_button(Loc.t("btn.case_log"), Vector2(80, 28))
 	log_button.position = Vector2(430, 6)
 	log_button.size = Vector2(80, 28)
-	log_button.text = Loc.t("btn.case_log")
-	_format_button(log_button, 8)
 	log_button.pressed.connect(show_log)
 	root_ui.add_child(log_button)
 	# [fork] The gallery drawer. Kept out of the top bar's crowded right end by moving the
 	# case-log row left; the base game's log and pause keep their own positions relative to
 	# each other so nothing else in apply_locale() has to move.
-	gallery_button = Button.new()
+	gallery_button = _card_button("GALLERY", Vector2(78, 28))
 	gallery_button.position = Vector2(348, 6)
 	gallery_button.size = Vector2(78, 28)
-	gallery_button.text = "GALLERY"
-	_format_button(gallery_button, 8)
 	gallery_button.pressed.connect(show_gallery)
 	root_ui.add_child(gallery_button)
-	pause_button = Button.new()
+	pause_button = _card_button(Loc.t("btn.pause"), Vector2(104, 28))
 	pause_button.position = Vector2(524, 6)
 	pause_button.size = Vector2(104, 28)
-	pause_button.text = Loc.t("btn.pause")
-	_format_button(pause_button, 8)
 	pause_button.pressed.connect(show_pause)
 	root_ui.add_child(pause_button)
-	route_button = Button.new()
+	route_button = _card_button(Loc.t("btn.proceed"), Vector2(220, 32), 10)
 	route_button.position = Vector2(210, 214)
 	route_button.size = Vector2(220, 32)
-	route_button.text = Loc.t("btn.proceed")
 	route_button.visible = false
-	_format_button(route_button, 10)
-	route_button.add_theme_stylebox_override("normal", _panel_style(Color("#192e36ed"), Color("#62d6e9"), 2))
 	route_button.pressed.connect(func() -> void: route_requested.emit())
 	root_ui.add_child(route_button)
 
@@ -284,12 +296,12 @@ func _build_overlay() -> void:
 	stack.add_theme_constant_override("separation", 8)
 	overlay.add_child(stack)
 	overlay_title = Label.new()
-	_format_label(overlay_title, 14, Color("#6fdcef"))
+	_format_label(overlay_title, 14, Color("#f2a83a"))
 	stack.add_child(overlay_title)
 	overlay_body = Label.new()
 	overlay_body.custom_minimum_size = Vector2(0, 175)
 	overlay_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_format_label(overlay_body, 9, Color("#d9dfe8"))
+	_format_label(overlay_body, 9, Color("#ecded6"))
 	stack.add_child(overlay_body)
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 8)
@@ -340,7 +352,7 @@ func _build_title() -> void:
 	title_lang_caption.size = Vector2(640, 18)
 	title_lang_caption.clip_text = false
 	title_lang_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_format_label(title_lang_caption, 8, Color("#8e9bb0"))
+	_format_label(title_lang_caption, 8, Color("#bc9b89"))
 	title_panel.add_child(title_lang_caption)
 	# [fork] English only. The base game ships five locales; translating ~3,000 new words
 	# four ways is a bigger job than writing them, and the fork's store copy does not claim
@@ -362,7 +374,7 @@ func _build_title() -> void:
 		lang_buttons[code] = b
 	title_lang_caption.visible = false   # [fork] see above
 	Loc.set_code("en")
-	title_start = Button.new()
+	title_start = _card_button(Loc.t("title.start"), Vector2(190, 34), 12)
 	title_start.name = "TitleStart"
 	title_start.position = Vector2(322, 214)
 	title_start.size = Vector2(250, 46)
@@ -379,8 +391,8 @@ func _style_title_text() -> void:
 	# title screen is the one place set in the logotype's own face.
 	if title_screen == null:
 		return
-	title_screen.style_label(title_eyebrow, 7, Color("#8fb8a8"))
-	title_screen.style_label(title_info, 7, Color("#b9c9c2"))
+	title_screen.style_label(title_eyebrow, 7, Color("#c3a785"))
+	title_screen.style_label(title_info, 7, Color("#d2c7ba"))
 	title_screen.style_button(title_start)
 
 func _build_ending() -> void:
@@ -397,7 +409,7 @@ func _build_ending() -> void:
 	ending_label.custom_minimum_size = Vector2(0, 146)
 	ending_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	ending_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_format_label(ending_label, 18, Color("#f1e9dc"))
+	_format_label(ending_label, 18, Color("#f3e2d5"))
 	stack.add_child(ending_label)
 	ending_restart = Button.new()
 	ending_restart.text = Loc.t("btn.restart_shift")
@@ -426,7 +438,7 @@ func _build_nvl() -> void:
 	nvl_name.position = Vector2(40, 48)
 	nvl_name.size = Vector2(560, 22)
 	nvl_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_format_label(nvl_name, 10, Color("#ff6a6a"))
+	_format_label(nvl_name, 10, Color("#f72a75"))
 	nvl_root.add_child(nvl_name)
 	nvl_body = Label.new()
 	nvl_body.position = Vector2(36, 78)
@@ -434,7 +446,7 @@ func _build_nvl() -> void:
 	nvl_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	nvl_body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	nvl_body.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_format_label(nvl_body, 14, Color("#f3c8c0"))
+	_format_label(nvl_body, 14, Color("#f5acbf"))
 	var sh := load("res://shaders/nvl_shake.gdshader")
 	if sh:
 		var mat := ShaderMaterial.new()
@@ -445,13 +457,13 @@ func _build_nvl() -> void:
 	nvl_hint.position = Vector2(200, 322)
 	nvl_hint.size = Vector2(240, 18)
 	nvl_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_format_label(nvl_hint, 8, Color("#c56b66"))
+	_format_label(nvl_hint, 8, Color("#ce4170"))
 	nvl_root.add_child(nvl_hint)
 	pressure = Label.new()
 	pressure.position = Vector2(14, 42)
 	pressure.size = Vector2(120, 14)
 	pressure.visible = false
-	_format_label(pressure, 8, Color("#ef4455"))
+	_format_label(pressure, 8, Color("#f21d6f"))
 	root_ui.add_child(nvl_root)
 	root_ui.add_child(pressure)
 
@@ -690,7 +702,7 @@ func apply_locale() -> void:
 		var b: Button = lang_buttons[code]
 		b.text = str(Loc.NATIVE[code])
 		if str(code) == Loc.current():
-			b.add_theme_color_override("font_color", Color("#6fdcef"))
+			b.add_theme_color_override("font_color", Color("#f2a83a"))
 		else:
 			b.remove_theme_color_override("font_color")
 	if continue_button and not dialogue_panel.visible:
@@ -764,13 +776,13 @@ func _build_cg() -> void:
 	cg_caption = Label.new()
 	cg_caption.position = Vector2(32, 306)
 	cg_caption.size = Vector2(400, 18)
-	_format_label(cg_caption, 9, Color("#6fdcef"))
+	_format_label(cg_caption, 9, Color("#f2a83a"))
 	cg_root.add_child(cg_caption)
 	cg_notice = Label.new()
 	cg_notice.position = Vector2(32, 322)
 	cg_notice.size = Vector2(420, 18)
 	cg_notice.visible = false
-	_format_label(cg_notice, 8, Color("#ef4455"))
+	_format_label(cg_notice, 8, Color("#f21d6f"))
 	cg_root.add_child(cg_notice)
 	cg_unlock = Button.new()
 	cg_unlock.position = Vector2(400, 316)
@@ -861,7 +873,7 @@ func _build_gallery() -> void:
 	title.name = "GalleryTitle"
 	title.position = Vector2(26, 18)
 	title.size = Vector2(400, 22)
-	_format_label(title, 14, Color("#6fdcef"))
+	_format_label(title, 14, Color("#f2a83a"))
 	title.text = "RECOVERED RECORDS"
 	gallery_root.add_child(title)
 	gallery_grid = GridContainer.new()
@@ -912,7 +924,7 @@ func show_gallery() -> void:
 		var empty := Label.new()
 		empty.custom_minimum_size = Vector2(560, 60)
 		empty.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		_format_label(empty, 9, Color("#8e9bb0"))
+		_format_label(empty, 9, Color("#bc9b89"))
 		# The rule, said in the game rather than only in the store copy.
 		empty.text = "Nothing recovered yet. Records are not recovered by staying on the floor longer. They are recovered by what you decided about the other two people who are still in this building."
 		gallery_grid.add_child(empty)
