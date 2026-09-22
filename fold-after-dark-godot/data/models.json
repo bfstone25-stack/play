@@ -1,0 +1,809 @@
+{
+ "_note": "Which model each level folds, and therefore which step sequence its merges walk (data/steps.json). A model is only offered on a level whose `target` equals the layer count its LAST step reaches, so the level is won on the fold that finishes it -- never one fold early or late. Generated, not hand-typed: tiers 1-2 draw from the paper band and every tier after from the her band, rotating within the band so two levels running never fold the same thing.",
+ "levels": [
+  {
+   "level": 0,
+   "model": "note"
+  },
+  {
+   "level": 1,
+   "model": "fan"
+  },
+  {
+   "level": 2,
+   "model": "envelope"
+  },
+  {
+   "level": 3,
+   "model": "fan"
+  },
+  {
+   "level": 4,
+   "model": "envelope"
+  },
+  {
+   "level": 5,
+   "model": "boat"
+  },
+  {
+   "level": 6,
+   "model": "fan"
+  },
+  {
+   "level": 7,
+   "model": "envelope"
+  },
+  {
+   "level": 8,
+   "model": "fan"
+  },
+  {
+   "level": 9,
+   "model": "envelope"
+  },
+  {
+   "level": 10,
+   "model": "fan"
+  },
+  {
+   "level": 11,
+   "model": "boat"
+  },
+  {
+   "level": 12,
+   "model": "crane"
+  },
+  {
+   "level": 13,
+   "model": "collar"
+  },
+  {
+   "level": 14,
+   "model": "strap"
+  },
+  {
+   "level": 15,
+   "model": "wrap"
+  },
+  {
+   "level": 16,
+   "model": "stocking"
+  },
+  {
+   "level": 17,
+   "model": "strap"
+  },
+  {
+   "level": 18,
+   "model": "cuff"
+  },
+  {
+   "level": 19,
+   "model": "sash"
+  },
+  {
+   "level": 20,
+   "model": "cuff"
+  },
+  {
+   "level": 21,
+   "model": "cuff"
+  },
+  {
+   "level": 22,
+   "model": "hem"
+  },
+  {
+   "level": 23,
+   "model": "sleeve"
+  },
+  {
+   "level": 24,
+   "model": "stocking"
+  },
+  {
+   "level": 25,
+   "model": "hem"
+  },
+  {
+   "level": 26,
+   "model": "sleeve"
+  },
+  {
+   "level": 27,
+   "model": "collar"
+  },
+  {
+   "level": 28,
+   "model": "hem"
+  },
+  {
+   "level": 29,
+   "model": "recline"
+  },
+  {
+   "level": 30,
+   "model": "hem"
+  },
+  {
+   "level": 31,
+   "model": "wrap"
+  },
+  {
+   "level": 32,
+   "model": "cuff"
+  },
+  {
+   "level": 33,
+   "model": "sash"
+  },
+  {
+   "level": 34,
+   "model": "sleeve"
+  },
+  {
+   "level": 35,
+   "model": "stocking"
+  },
+  {
+   "level": 36,
+   "model": "kneel"
+  },
+  {
+   "level": 37,
+   "model": "kneel"
+  },
+  {
+   "level": 38,
+   "model": "hem"
+  },
+  {
+   "level": 39,
+   "model": "sleeve"
+  },
+  {
+   "level": 40,
+   "model": "collar"
+  },
+  {
+   "level": 41,
+   "model": "hem"
+  },
+  {
+   "level": 42,
+   "model": "sash"
+  },
+  {
+   "level": 43,
+   "model": "collar"
+  },
+  {
+   "level": 44,
+   "model": "strap"
+  },
+  {
+   "level": 45,
+   "model": "stocking"
+  },
+  {
+   "level": 46,
+   "model": "kneel"
+  },
+  {
+   "level": 47,
+   "model": "sash"
+  },
+  {
+   "level": 48,
+   "model": "collar"
+  },
+  {
+   "level": 49,
+   "model": "hem"
+  },
+  {
+   "level": 50,
+   "model": "cuff"
+  },
+  {
+   "level": 51,
+   "model": "sash"
+  },
+  {
+   "level": 52,
+   "model": "strap"
+  },
+  {
+   "level": 53,
+   "model": "collar"
+  },
+  {
+   "level": 54,
+   "model": "hem"
+  },
+  {
+   "level": 55,
+   "model": "sleeve"
+  },
+  {
+   "level": 56,
+   "model": "stocking"
+  },
+  {
+   "level": 57,
+   "model": "strap"
+  },
+  {
+   "level": 58,
+   "model": "sash"
+  },
+  {
+   "level": 59,
+   "model": "collar"
+  },
+  {
+   "level": 60,
+   "model": "strap"
+  },
+  {
+   "level": 61,
+   "model": "collar"
+  },
+  {
+   "level": 62,
+   "model": "hem"
+  },
+  {
+   "level": 63,
+   "model": "wrap"
+  },
+  {
+   "level": 64,
+   "model": "cuff"
+  },
+  {
+   "level": 65,
+   "model": "sash"
+  },
+  {
+   "level": 66,
+   "model": "cuff"
+  },
+  {
+   "level": 67,
+   "model": "collar"
+  },
+  {
+   "level": 68,
+   "model": "hem"
+  },
+  {
+   "level": 69,
+   "model": "stocking"
+  },
+  {
+   "level": 70,
+   "model": "sash"
+  },
+  {
+   "level": 71,
+   "model": "wrap"
+  },
+  {
+   "level": 72,
+   "model": "collar"
+  },
+  {
+   "level": 73,
+   "model": "hem"
+  },
+  {
+   "level": 74,
+   "model": "sleeve"
+  },
+  {
+   "level": 75,
+   "model": "kneel"
+  },
+  {
+   "level": 76,
+   "model": "strap"
+  },
+  {
+   "level": 77,
+   "model": "collar"
+  },
+  {
+   "level": 78,
+   "model": "strap"
+  },
+  {
+   "level": 79,
+   "model": "wrap"
+  },
+  {
+   "level": 80,
+   "model": "stocking"
+  },
+  {
+   "level": 81,
+   "model": "unfolded"
+  },
+  {
+   "level": 82,
+   "model": "sleeve"
+  },
+  {
+   "level": 83,
+   "model": "collar"
+  },
+  {
+   "level": 84,
+   "model": "strap"
+  },
+  {
+   "level": 85,
+   "model": "stocking"
+  },
+  {
+   "level": 86,
+   "model": "hem"
+  },
+  {
+   "level": 87,
+   "model": "kneel"
+  },
+  {
+   "level": 88,
+   "model": "collar"
+  },
+  {
+   "level": 89,
+   "model": "kneel"
+  },
+  {
+   "level": 90,
+   "model": "recline"
+  },
+  {
+   "level": 91,
+   "model": "stocking"
+  },
+  {
+   "level": 92,
+   "model": "strap"
+  },
+  {
+   "level": 93,
+   "model": "recline"
+  },
+  {
+   "level": 94,
+   "model": "hem"
+  },
+  {
+   "level": 95,
+   "model": "wrap"
+  },
+  {
+   "level": 96,
+   "model": "collar"
+  },
+  {
+   "level": 97,
+   "model": "strap"
+  },
+  {
+   "level": 98,
+   "model": "wrap"
+  },
+  {
+   "level": 99,
+   "model": "collar"
+  },
+  {
+   "level": 100,
+   "model": "kneel"
+  },
+  {
+   "level": 101,
+   "model": "stocking"
+  },
+  {
+   "level": 102,
+   "model": "recline"
+  },
+  {
+   "level": 103,
+   "model": "unfolded"
+  },
+  {
+   "level": 104,
+   "model": "recline"
+  },
+  {
+   "level": 105,
+   "model": "kneel"
+  },
+  {
+   "level": 106,
+   "model": "wrap"
+  },
+  {
+   "level": 107,
+   "model": "kneel"
+  },
+  {
+   "level": 108,
+   "model": "strap"
+  },
+  {
+   "level": 109,
+   "model": "stocking"
+  },
+  {
+   "level": 110,
+   "model": "hem"
+  },
+  {
+   "level": 111,
+   "model": "wrap"
+  },
+  {
+   "level": 112,
+   "model": "cuff"
+  },
+  {
+   "level": 113,
+   "model": "sash"
+  },
+  {
+   "level": 114,
+   "model": "sleeve"
+  },
+  {
+   "level": 115,
+   "model": "stocking"
+  },
+  {
+   "level": 116,
+   "model": "hem"
+  },
+  {
+   "level": 117,
+   "model": "collar"
+  },
+  {
+   "level": 118,
+   "model": "recline"
+  },
+  {
+   "level": 119,
+   "model": "sleeve"
+  },
+  {
+   "level": 120,
+   "model": "stocking"
+  },
+  {
+   "level": 121,
+   "model": "kneel"
+  },
+  {
+   "level": 122,
+   "model": "sleeve"
+  },
+  {
+   "level": 123,
+   "model": "stocking"
+  },
+  {
+   "level": 124,
+   "model": "hem"
+  },
+  {
+   "level": 125,
+   "model": "collar"
+  },
+  {
+   "level": 126,
+   "model": "unfolded"
+  },
+  {
+   "level": 127,
+   "model": "recline"
+  },
+  {
+   "level": 128,
+   "model": "kneel"
+  },
+  {
+   "level": 129,
+   "model": "strap"
+  },
+  {
+   "level": 130,
+   "model": "kneel"
+  },
+  {
+   "level": 131,
+   "model": "recline"
+  },
+  {
+   "level": 132,
+   "model": "strap"
+  },
+  {
+   "level": 133,
+   "model": "stocking"
+  },
+  {
+   "level": 134,
+   "model": "strap"
+  },
+  {
+   "level": 135,
+   "model": "wrap"
+  },
+  {
+   "level": 136,
+   "model": "recline"
+  },
+  {
+   "level": 137,
+   "model": "hem"
+  },
+  {
+   "level": 138,
+   "model": "wrap"
+  },
+  {
+   "level": 139,
+   "model": "kneel"
+  },
+  {
+   "level": 140,
+   "model": "strap"
+  },
+  {
+   "level": 141,
+   "model": "stocking"
+  },
+  {
+   "level": 142,
+   "model": "hem"
+  },
+  {
+   "level": 143,
+   "model": "sleeve"
+  },
+  {
+   "level": 144,
+   "model": "kneel"
+  },
+  {
+   "level": 145,
+   "model": "strap"
+  },
+  {
+   "level": 146,
+   "model": "sleeve"
+  },
+  {
+   "level": 147,
+   "model": "recline"
+  },
+  {
+   "level": 148,
+   "model": "kneel"
+  },
+  {
+   "level": 149,
+   "model": "kneel"
+  },
+  {
+   "level": 150,
+   "model": "recline"
+  },
+  {
+   "level": 151,
+   "model": "wrap"
+  },
+  {
+   "level": 152,
+   "model": "unfolded"
+  },
+  {
+   "level": 153,
+   "model": "hem"
+  },
+  {
+   "level": 154,
+   "model": "sleeve"
+  },
+  {
+   "level": 155,
+   "model": "kneel"
+  },
+  {
+   "level": 156,
+   "model": "strap"
+  },
+  {
+   "level": 157,
+   "model": "stocking"
+  },
+  {
+   "level": 158,
+   "model": "strap"
+  },
+  {
+   "level": 159,
+   "model": "wrap"
+  },
+  {
+   "level": 160,
+   "model": "kneel"
+  },
+  {
+   "level": 161,
+   "model": "hem"
+  },
+  {
+   "level": 162,
+   "model": "wrap"
+  },
+  {
+   "level": 163,
+   "model": "stocking"
+  },
+  {
+   "level": 164,
+   "model": "cuff"
+  },
+  {
+   "level": 165,
+   "model": "stocking"
+  },
+  {
+   "level": 166,
+   "model": "strap"
+  },
+  {
+   "level": 167,
+   "model": "wrap"
+  },
+  {
+   "level": 168,
+   "model": "stocking"
+  },
+  {
+   "level": 169,
+   "model": "hem"
+  },
+  {
+   "level": 170,
+   "model": "unfolded"
+  },
+  {
+   "level": 171,
+   "model": "stocking"
+  },
+  {
+   "level": 172,
+   "model": "strap"
+  },
+  {
+   "level": 173,
+   "model": "stocking"
+  },
+  {
+   "level": 174,
+   "model": "kneel"
+  },
+  {
+   "level": 175,
+   "model": "sleeve"
+  },
+  {
+   "level": 176,
+   "model": "collar"
+  },
+  {
+   "level": 177,
+   "model": "strap"
+  },
+  {
+   "level": 178,
+   "model": "unfolded"
+  },
+  {
+   "level": 179,
+   "model": "stocking"
+  },
+  {
+   "level": 180,
+   "model": "strap"
+  },
+  {
+   "level": 181,
+   "model": "collar"
+  },
+  {
+   "level": 182,
+   "model": "strap"
+  },
+  {
+   "level": 183,
+   "model": "wrap"
+  },
+  {
+   "level": 184,
+   "model": "recline"
+  },
+  {
+   "level": 185,
+   "model": "strap"
+  },
+  {
+   "level": 186,
+   "model": "recline"
+  },
+  {
+   "level": 187,
+   "model": "collar"
+  },
+  {
+   "level": 188,
+   "model": "unfolded"
+  },
+  {
+   "level": 189,
+   "model": "collar"
+  },
+  {
+   "level": 190,
+   "model": "hem"
+  },
+  {
+   "level": 191,
+   "model": "recline"
+  },
+  {
+   "level": 192,
+   "model": "kneel"
+  },
+  {
+   "level": 193,
+   "model": "hem"
+  },
+  {
+   "level": 194,
+   "model": "unfolded"
+  },
+  {
+   "level": 195,
+   "model": "collar"
+  },
+  {
+   "level": 196,
+   "model": "kneel"
+  },
+  {
+   "level": 197,
+   "model": "stocking"
+  },
+  {
+   "level": 198,
+   "model": "unfolded"
+  },
+  {
+   "level": 199,
+   "model": "wrap"
+  },
+  {
+   "level": 200,
+   "model": "recline"
+  }
+ ]
+}

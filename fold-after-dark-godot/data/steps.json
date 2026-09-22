@@ -1,0 +1,471 @@
+{
+ "_note": "The diagram steps, per model. ops/fold/BRIDGE.md is the argument: the number on a tile is the layer count of the sheet, so step k completes when the board reaches 2^(k+1), and the level's `target` is the fold that finishes the model. PLICATA takes the parent's verb and aims it somewhere else -- STANDARD's line is 'tiers 1-2 fold paper, tier 3+ folds her'. So `band` is paper for the first two tiers and her for every tier after, and the reveal at the end of a tier is the CG scripts/unlock.gd already protects (kind: \"cg\"), not a picture of a crane. The her-band lines are written to the same rule as this game's barks: suggestive, never explicit, because a human at Nutaku and DLsite reads them.",
+ "models": {
+  "note": {
+   "en": "A folded note",
+   "zh": "折好的字条",
+   "ja": "折りたたんだ書き置き",
+   "band": "paper",
+   "steps": [
+    {
+     "at": 4,
+     "en": "The sheet halved, corner to corner",
+     "zh": "整张纸对角对折",
+     "ja": "紙を角から角へ半分に"
+    }
+   ]
+  },
+  "fan": {
+   "en": "A paper fan",
+   "zh": "纸扇",
+   "ja": "紙の扇",
+   "band": "paper",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Edge to edge — the first pleat",
+     "zh": "对边对折，第一道褶",
+     "ja": "端から端へ、最初のひだ"
+    },
+    {
+     "at": 8,
+     "en": "Pleated back the other way — it opens",
+     "zh": "反向折回，扇面展开",
+     "ja": "逆に折り返すと扇が開く"
+    }
+   ]
+  },
+  "envelope": {
+   "en": "An envelope",
+   "zh": "信封",
+   "ja": "封筒",
+   "band": "paper",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Two corners in to the centre line",
+     "zh": "两角折向中线",
+     "ja": "両角を中心線へ"
+    },
+    {
+     "at": 8,
+     "en": "The flap turned down and tucked",
+     "zh": "封口折下掖进去",
+     "ja": "ふたを折り下げて差し込む"
+    }
+   ]
+  },
+  "boat": {
+   "en": "A paper boat",
+   "zh": "纸船",
+   "ja": "紙の舟",
+   "band": "paper",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Halved, then halved across",
+     "zh": "先对折，再横对折",
+     "ja": "半分に、そしてもう半分に"
+    },
+    {
+     "at": 8,
+     "en": "Top corners in — a peak",
+     "zh": "上两角折进，成尖顶",
+     "ja": "上の両角を折り込んで山形に"
+    },
+    {
+     "at": 16,
+     "en": "The brim opened and pulled square",
+     "zh": "翻开帽檐，拉成方形",
+     "ja": "つばを開いて四角に引く"
+    }
+   ]
+  },
+  "shade": {
+   "en": "A lamp shade",
+   "zh": "灯罩",
+   "ja": "ランプシェード",
+   "band": "paper",
+   "steps": [
+    {
+     "at": 4,
+     "en": "The long side pleated once",
+     "zh": "长边折一道",
+     "ja": "長辺を一度折る"
+    },
+    {
+     "at": 8,
+     "en": "Pleated again, and again",
+     "zh": "再折，再折",
+     "ja": "さらに折り、また折る"
+    },
+    {
+     "at": 16,
+     "en": "The pleats closed into a ring",
+     "zh": "折痕合成一圈",
+     "ja": "ひだを輪に閉じる"
+    }
+   ]
+  },
+  "crane": {
+   "en": "A paper crane",
+   "zh": "纸鹤",
+   "ja": "折り鶴",
+   "band": "paper",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Both diagonals creased",
+     "zh": "两条对角线压痕",
+     "ja": "対角線を両方つける"
+    },
+    {
+     "at": 8,
+     "en": "Squashed into the bird base",
+     "zh": "压折成鸟形基本型",
+     "ja": "つぶして鶴の基本形に"
+    },
+    {
+     "at": 16,
+     "en": "Neck and tail pulled out",
+     "zh": "拉出头颈与尾",
+     "ja": "首と尾を引き出す"
+    }
+   ]
+  },
+  "sash": {
+   "en": "The sash",
+   "zh": "腰带",
+   "ja": "帯",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Drawn once around and held",
+     "zh": "绕身一圈，握住",
+     "ja": "一度巻きつけて手に留める"
+    },
+    {
+     "at": 8,
+     "en": "The knot given back its slack",
+     "zh": "结扣松开",
+     "ja": "結び目をゆるめる"
+    }
+   ]
+  },
+  "cuff": {
+   "en": "The cuff",
+   "zh": "袖口",
+   "ja": "袖口",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Turned back once at the wrist",
+     "zh": "在腕上翻起一折",
+     "ja": "手首で一度折り返す"
+    },
+    {
+     "at": 8,
+     "en": "And again, to the forearm",
+     "zh": "再翻一折，到小臂",
+     "ja": "もう一度、前腕まで"
+    }
+   ]
+  },
+  "collar": {
+   "en": "The collar",
+   "zh": "衣领",
+   "ja": "襟",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "The top fastening given up",
+     "zh": "最上一颗松开",
+     "ja": "一番上を外す"
+    },
+    {
+     "at": 8,
+     "en": "The collar laid open",
+     "zh": "领口摊开",
+     "ja": "襟を開く"
+    },
+    {
+     "at": 16,
+     "en": "Folded flat to the shoulder",
+     "zh": "折平贴到肩上",
+     "ja": "肩まで平らに折る"
+    }
+   ]
+  },
+  "sleeve": {
+   "en": "The sleeve",
+   "zh": "衣袖",
+   "ja": "袖",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Gathered at the elbow",
+     "zh": "在肘间收起",
+     "ja": "肘でたくし上げる"
+    },
+    {
+     "at": 8,
+     "en": "Rolled to the shoulder",
+     "zh": "卷到肩头",
+     "ja": "肩まで巻き上げる"
+    },
+    {
+     "at": 16,
+     "en": "Slipped off it entirely",
+     "zh": "整条从肩上滑落",
+     "ja": "肩からすべて落ちる"
+    }
+   ]
+  },
+  "hem": {
+   "en": "The hem",
+   "zh": "衣摆",
+   "ja": "裾",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Turned up a hand's width",
+     "zh": "翻起一掌宽",
+     "ja": "手のひら分だけ折り上げる"
+    },
+    {
+     "at": 8,
+     "en": "Turned up again",
+     "zh": "再翻一折",
+     "ja": "もう一度折り上げる"
+    },
+    {
+     "at": 16,
+     "en": "Held there, and let go",
+     "zh": "停住，再放开",
+     "ja": "そこで止め、そして放す"
+    }
+   ]
+  },
+  "wrap": {
+   "en": "The wrap",
+   "zh": "罩衫",
+   "ja": "羽織り",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Crossed left over right",
+     "zh": "左襟压右襟",
+     "ja": "左を右に重ねる"
+    },
+    {
+     "at": 8,
+     "en": "The crossing loosened",
+     "zh": "交叠处松开",
+     "ja": "重なりをゆるめる"
+    },
+    {
+     "at": 16,
+     "en": "One side folded back",
+     "zh": "一侧折向身后",
+     "ja": "片側を後ろへ折る"
+    },
+    {
+     "at": 32,
+     "en": "The other follows it",
+     "zh": "另一侧跟着",
+     "ja": "もう片側も続く"
+    }
+   ]
+  },
+  "stocking": {
+   "en": "The stocking",
+   "zh": "长袜",
+   "ja": "ストッキング",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Creased once above the knee",
+     "zh": "膝上压出一道折痕",
+     "ja": "膝の上に一度折り目"
+    },
+    {
+     "at": 8,
+     "en": "Rolled to the knee",
+     "zh": "卷到膝盖",
+     "ja": "膝まで巻く"
+    },
+    {
+     "at": 16,
+     "en": "Rolled to the ankle",
+     "zh": "卷到脚踝",
+     "ja": "足首まで巻く"
+    },
+    {
+     "at": 32,
+     "en": "Folded into the palm",
+     "zh": "折进掌心",
+     "ja": "手のひらに折りこむ"
+    }
+   ]
+  },
+  "strap": {
+   "en": "The strap",
+   "zh": "肩带",
+   "ja": "肩紐",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Lifted off the shoulder",
+     "zh": "从肩上挑起",
+     "ja": "肩から持ち上げる"
+    },
+    {
+     "at": 8,
+     "en": "Let down the arm",
+     "zh": "顺着手臂落下",
+     "ja": "腕を伝って下ろす"
+    },
+    {
+     "at": 16,
+     "en": "The second one after it",
+     "zh": "第二根跟着",
+     "ja": "二本目も続く"
+    },
+    {
+     "at": 32,
+     "en": "Both folded under",
+     "zh": "两根折到身下",
+     "ja": "二本とも下へ折りこむ"
+    }
+   ]
+  },
+  "kneel": {
+   "en": "Folded to kneel",
+   "zh": "折身跪坐",
+   "ja": "膝をついて折る",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "Weight carried onto one knee",
+     "zh": "重心压到一膝",
+     "ja": "重心を片膝へ"
+    },
+    {
+     "at": 8,
+     "en": "The other knee brought in",
+     "zh": "另一膝并上",
+     "ja": "もう片膝を寄せる"
+    },
+    {
+     "at": 16,
+     "en": "The back curved forward",
+     "zh": "背向前弯",
+     "ja": "背を前へ丸める"
+    },
+    {
+     "at": 32,
+     "en": "The shoulders folded down",
+     "zh": "肩折下去",
+     "ja": "肩を折り下げる"
+    },
+    {
+     "at": 64,
+     "en": "Held, and still",
+     "zh": "停住，不动",
+     "ja": "そのまま、静かに"
+    }
+   ]
+  },
+  "recline": {
+   "en": "Folded to recline",
+   "zh": "折身斜倚",
+   "ja": "身を横たえて折る",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "One arm folded behind her",
+     "zh": "一臂折到身后",
+     "ja": "片腕を背に折る"
+    },
+    {
+     "at": 8,
+     "en": "The waist turned",
+     "zh": "腰转过去",
+     "ja": "腰をひねる"
+    },
+    {
+     "at": 16,
+     "en": "One knee drawn up",
+     "zh": "一膝收起",
+     "ja": "片膝を立てる"
+    },
+    {
+     "at": 32,
+     "en": "The other laid across it",
+     "zh": "另一腿搭上去",
+     "ja": "もう片脚を重ねる"
+    },
+    {
+     "at": 64,
+     "en": "Settled, and not moving",
+     "zh": "落定，不动",
+     "ja": "落ち着いて、動かない"
+    }
+   ]
+  },
+  "unfolded": {
+   "en": "Unfolded",
+   "zh": "全然展开",
+   "ja": "すべて開く",
+   "band": "her",
+   "steps": [
+    {
+     "at": 4,
+     "en": "The first crease, and she lets it",
+     "zh": "第一道折痕，她由着",
+     "ja": "最初の折り目、彼女は許す"
+    },
+    {
+     "at": 8,
+     "en": "The second",
+     "zh": "第二道",
+     "ja": "二つ目"
+    },
+    {
+     "at": 16,
+     "en": "The third — nothing is being hidden now",
+     "zh": "第三道——已无可藏",
+     "ja": "三つ目——もう隠すものはない"
+    },
+    {
+     "at": 32,
+     "en": "The fourth",
+     "zh": "第四道",
+     "ja": "四つ目"
+    },
+    {
+     "at": 64,
+     "en": "The fifth, and she is laughing",
+     "zh": "第五道，她笑了",
+     "ja": "五つ目、彼女は笑う"
+    },
+    {
+     "at": 128,
+     "en": "Open. Every layer of her counted",
+     "zh": "完全展开，每一层都数过了",
+     "ja": "全開。層の一枚まで数えた"
+    }
+   ]
+  }
+ }
+}
