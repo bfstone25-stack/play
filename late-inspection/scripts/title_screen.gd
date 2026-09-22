@@ -205,6 +205,12 @@ func _build() -> void:
 	overlay.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	overlay.position = Vector2.ZERO
 	overlay.size = CANVAS
+	# 2026-09-22. Fifth title with the same shape: a baked 0.05-brightness plate drawn
+	# opaque over a key visual that is nearly on shelf on its own (0.61/0.40 here against
+	# a sim shelf at 0.69/0.53), composing down to 0.47. PLICATA's veil, Night Reading's
+	# scrim, HOLDOVER's and Overnight Clause's overlays were all this. The darkness is
+	# being added after the art, not rendered into it -- ops/market/CRAZYGAMES_SHELF.md.
+	overlay.modulate.a = 0.75
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(overlay)
 
