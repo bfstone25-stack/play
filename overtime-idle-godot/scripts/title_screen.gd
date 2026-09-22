@@ -327,10 +327,15 @@ func _menu() -> void:
 	primary.add_theme_font_size_override("font_size", 19)
 	# Dark ink ON the gold key, not light type over it: the fob is the bright object on
 	# this screen and light-on-light is how the whole shelf's buttons vanish.
+	# 2026-09-22. #4a2408 on the gold fob was a brown-on-gold pair with too little
+	# separation, and the cream outline at 0.55 alpha was too faint to rescue it: zoomed
+	# in on a live capture, OPEN THE BUILDING is barely readable, and it is the screen's
+	# only action. Near-black type with an opaque bright halo instead, which reads on the
+	# fob and would read on anything else the plate puts behind it.
 	for role in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
-		primary.add_theme_color_override(role, Color("#4a2408"))
-	primary.add_theme_color_override("font_outline_color", Color(1, 0.94, 0.80, 0.55))
-	primary.add_theme_constant_override("outline_size", 3)
+		primary.add_theme_color_override(role, Color("#2a1204"))
+	primary.add_theme_color_override("font_outline_color", Color(1, 0.95, 0.82, 1.0))
+	primary.add_theme_constant_override("outline_size", 6)
 	_shapeless(primary)
 	primary.mouse_entered.connect(func() -> void: _lift(key, 1.045))
 	primary.mouse_exited.connect(func() -> void: _lift(key, 1.0))
