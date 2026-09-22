@@ -439,6 +439,26 @@
 "en": "By day you read people. After dark, what you read becomes true.",
 "ja": "昼はあなたが人を読む。夜になれば、読んだことが本当になる。"
 },
+"title.tagline": {
+"zh": "你读出来的，都会成真。",
+"en": "What you read becomes true.",
+"ja": "あなたが読んだとおりに、彼女は生き始める。"
+},
+"title.read": {
+"zh": "开始读牌",
+"en": "Begin a reading",
+"ja": "今夜、彼女のために引く"
+},
+"title.again": {
+"zh": "回到桌边",
+"en": "Back to the table",
+"ja": "まだ待っているのは誰"
+},
+"title.hint": {
+"zh": "18+ · 仅限成人",
+"en": "18+ · Adults only",
+"ja": "彼女が受け取って、はじめてこの一回は効く。"
+},
 "night.who": {
 "zh": "今晚读谁？",
 "en": "Who are you reading tonight?",

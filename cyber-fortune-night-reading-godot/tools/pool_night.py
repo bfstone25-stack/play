@@ -227,6 +227,15 @@ UI_NIGHT = {
     "series": {"zh": "blazeCore Play · 18+", "en": "blazeCore Play · 18+"},
     "night.rule": {"zh": "白天你读人。入夜之后，你读出来的就成真。",
                    "en": "By day you read people. After dark, what you read becomes true."},
+    # The title screen's own copy -- missing from here entirely until this pass, so every
+    # player on every language saw the literal keys "title.tagline"/"title.read"/
+    # "title.again"/"title.hint" instead of text. Caught by tests/headless_web.py's
+    # screenshot, not by run_tests.gd (which never asserts UI copy renders, only that the
+    # engine boots and the mechanics work).
+    "title.tagline": {"zh": "你读出来的，都会成真。", "en": "What you read becomes true."},
+    "title.read": {"zh": "开始读牌", "en": "Begin a reading"},
+    "title.again": {"zh": "回到桌边", "en": "Back to the table"},
+    "title.hint": {"zh": "18+ · 仅限成人", "en": "18+ · Adults only"},
     "night.who": {"zh": "今晚读谁？", "en": "Who are you reading tonight?"},
     "night.tracks": {"zh": "{n}/9", "en": "{n}/9"},
     "night.done": {"zh": "已读完", "en": "read"},
