@@ -1,13 +1,20 @@
 extends Control
 
-## The root of the Godot rebuild. Today it is a title screen and four menu items that have
-## nowhere to go yet — see PORT_PLAN.md. That is deliberate: the title screen is the piece
-## Blaze asked for, and the rest of the game is days of work he has not yet agreed to.
+## The root of the Godot rebuild. The title screen is Step 0; route select (step 2) and
+## the chat loop (step 1) are wired below it — see PORT_PLAN.md. Editions (step 3), the
+## memory archive/opening (step 6), the promo board (step 7) and PWA install (step 8) are
+## not ported yet; PUNCHLIST.md tracks the gap.
 ##
-## The signal handler below is the seam. Every one of the four items already emits, so
-## when a screen exists to show, it is wired here and nowhere else.
+## The signal handler below is the seam every menu item plugs into. "begin" now goes
+## somewhere; the other three still don't.
+
+const RouteSelectScene := preload("res://scenes/route_select.tscn")
+const ChatScene := preload("res://scenes/chat.tscn")
 
 @onready var title: TitleScreen = $TitleScreen
+
+var route_select: Control = null
+var chat: Control = null
 
 
 func _ready() -> void:
@@ -31,6 +38,21 @@ func _ready() -> void:
 		elif argv[i] == "--motion-probe":
 			_motion_probe()
 			return
+	var goto_screen := ""
+	for a in argv:
+		if a.begins_with("--goto="):
+			goto_screen = a.substr(7)
+	# QA-only screen jump: the shot hook above only ever saw the title, and route select /
+	# chat have no way to get in front of the camera on a headless capture without a mouse
+	# to click "begin" with. Nothing in the game calls this.
+	if goto_screen == "route_select":
+		_show_route_select()
+	elif goto_screen == "chat":
+		_show_route_select()
+		_on_route_picked({
+			"id": "ethan", "name": "Ethan Cole", "title": "the quiet architect",
+			"tag": "Slow burn", "emoji": "🏛", "hue": 210,
+		})
 	if shot != "":
 		# --hover forces a rail item into its hover state before the frame is taken.
 		# Hover and press are item 4 of TITLE_SCREENS.md and the only way to check them is
@@ -49,13 +71,44 @@ func _ready() -> void:
 func _on_chose(action: String) -> void:
 	match action:
 		"begin":
-			push_warning("route select is not ported yet — PORT_PLAN.md step 4")
+			_show_route_select()
 		"memories":
 			push_warning("memory archive is not ported yet — PORT_PLAN.md step 6")
 		"opening":
 			push_warning("opening is not ported yet — PORT_PLAN.md step 5")
 		"language":
 			push_warning("edition switch is not ported yet — PORT_PLAN.md step 3")
+
+
+func _show_title() -> void:
+	if route_select:
+		route_select.hide()
+	if chat:
+		chat.hide()
+	title.show()
+
+
+func _show_route_select() -> void:
+	title.hide()
+	if chat:
+		chat.hide()
+	if route_select == null:
+		route_select = RouteSelectScene.instantiate()
+		route_select.picked.connect(_on_route_picked)
+		route_select.back.connect(_show_title)
+		add_child(route_select)
+	route_select.show()
+	route_select.reload()
+
+
+func _on_route_picked(route: Dictionary) -> void:
+	route_select.hide()
+	if chat == null:
+		chat = ChatScene.instantiate()
+		chat.back.connect(_show_route_select)
+		add_child(chat)
+	chat.show()
+	chat.start(route)
 
 
 func _motion_probe() -> void:

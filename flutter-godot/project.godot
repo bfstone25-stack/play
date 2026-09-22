@@ -45,3 +45,4 @@ locale/include_text_server_data=true
 [autoload]
 
 Gate="*res://scripts/gate.gd"
+Api="*res://scripts/api.gd"
