@@ -173,6 +173,10 @@ def run(a) -> int:
             print("the game never started; console: %s" % errs[:5], file=sys.stderr)
             return 1
 
+        def box_centre(loc):
+            b = loc.bounding_box()
+            return (b["x"] + b["width"] / 2.0, b["y"] + b["height"] / 2.0)
+
         def shot(name: str, clear: bool = True) -> None:
             page.wait_for_timeout(900)
             if clear:
@@ -183,7 +187,11 @@ def run(a) -> int:
                     pos, look = CAM[_last_go[0]]
                     cmd(page, "lookat", "%s %s" % (pos, look))
                     page.wait_for_timeout(400)
-            p = a.out / ("%s.png" % name)
+            # "s" prefix so ops/play_matrix.py can see these at all: it globs s*.png and
+            # this driver wrote 01_wake.png, so its frames -- the only real proof this
+            # first-person game reaches an ending -- never reached a matrix or the board.
+            # Same fix as the nine bespoke drivers corrected 2026-09-22.
+            p = a.out / ("s%s.png" % name)
             # page.screenshot(clip=...) rather than canvas.screenshot(): an element
             # screenshot first waits for the element to be "stable", and this canvas is
             # NEVER stable — shaders/grain.gdshader animates every frame, so the wait
@@ -191,13 +199,43 @@ def run(a) -> int:
             box = canvas.bounding_box()
             page.screenshot(path=str(p), clip=box, timeout=180_000)
             s = state(page)
+            if s.get("splash"):
+                raise SystemExit("%s was shot with the title screen up" % name)
             print("SHOT %s  phase=%s chapter=%s choice=%s ending=%s"
                   % (p, s.get("phase"), s.get("chapter"), s.get("choice"), s.get("ending")))
             shots.append((name, p))
 
         # The splash is a click-to-start overlay on the canvas.
-        canvas.click(position={"x": 480, "y": 270})
-        page.wait_for_timeout(1200)
+        #
+        # 2026-09-21: this was one canvas.click() and no check, and when the click stopped
+        # landing every frame below was photographed THROUGH the title screen -- eight
+        # files named 01_wake .. 08_402_inside, all of them the splash, and the run
+        # reported success. The drive hook kept answering the whole time, because
+        # window.__cmd moves the player perfectly well behind an overlay; only the camera
+        # is somewhere the player cannot see.
+        #
+        # So: try the ways a player can start, and then CHECK, and fail loudly instead of
+        # shooting the rest of the list. game.gd's "state" now reports `splash`.
+        def splash_up() -> bool:
+            return bool(state(page).get("splash"))
+
+        for attempt in (
+                lambda: canvas.click(position={"x": 480, "y": 270}),
+                lambda: page.mouse.click(box_centre(canvas)[0], box_centre(canvas)[1]),
+                lambda: page.keyboard.press("Space"),
+                lambda: page.keyboard.press("Enter")):
+            if not splash_up():
+                break
+            try:
+                attempt()
+            except Exception:
+                pass
+            page.wait_for_timeout(1500)
+        if splash_up():
+            print("the splash never came down -- every frame below would have been the "
+                  "title screen. Refusing to shoot it.", file=sys.stderr)
+            return 1
+        page.wait_for_timeout(800)
 
         def go(key: str) -> None:
             pos, look = CAM[key]
