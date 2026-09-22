@@ -39,9 +39,12 @@ func _ready() -> void:
 			_motion_probe()
 			return
 	var goto_screen := ""
+	var say_text := ""
 	for a in argv:
 		if a.begins_with("--goto="):
 			goto_screen = a.substr(7)
+		elif a.begins_with("--say="):
+			say_text = a.substr(6)
 	# QA-only screen jump: the shot hook above only ever saw the title, and route select /
 	# chat have no way to get in front of the camera on a headless capture without a mouse
 	# to click "begin" with. Nothing in the game calls this.
@@ -53,6 +56,12 @@ func _ready() -> void:
 			"id": "ethan", "name": "Ethan Cole", "title": "the quiet architect",
 			"tag": "Slow burn", "emoji": "🏛", "hue": 210,
 		})
+		if say_text != "":
+			# Proves the real thing api.gd exists for: a real HTTPClient SSE round trip
+			# against the live backend, not just that the chat screen can draw itself.
+			# --shot-after has to clear the LLM's actual generation time, not a frame or
+			# two — the caller is expected to pass something like 20-30 for this.
+			chat.debug_send(say_text)
 	if shot != "":
 		# --hover forces a rail item into its hover state before the frame is taken.
 		# Hover and press are item 4 of TITLE_SCREENS.md and the only way to check them is

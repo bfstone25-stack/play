@@ -243,6 +243,13 @@ func start(r: Dictionary) -> void:
 	_input.grab_focus()
 
 
+## QA-only: drive a real send() without a mouse, for main.gd's --goto=chat --say= hook.
+## Nothing in the game calls this.
+func debug_send(text: String) -> void:
+	_input.text = text
+	_send()
+
+
 func _send() -> void:
 	if busy:
 		return
