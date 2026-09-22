@@ -48,25 +48,45 @@ const GOLD := Color("#e8b84a")
 const CREAM := Color("#f1dfb0")
 ## Was #9f94ac in the game's palette: too dim to carry the copy on a phone.
 const MUTED := Color("#c3b8d2")
-const INK := Color("#08050b")
+## The ground behind the picture — the shop's dark ceiling, not a void. #08050b is
+## effectively black and the 40 px band above the key visual is a tenth of the frame.
+const INK := Color("#3c2749")
 
 ## The key visual sits this far down the frame; the band above it is the sign's ceiling.
 const KV_OFFSET_Y := 40
+
+## How much brighter the shop is lit than the plate was baked. See _process().
+const LAMP := 1.34
 
 ## The scrim is BANDS OF PLAIN ColorRect, not a gradient and not a shader. This screen
 ## wanted a banded falloff anyway: a smooth ramp over a 640x360 pixel lattice is the one
 ## thing a pixel title must not have. It holds most of its ink the whole way down the mark
 ## and feathers out below it, before the picture opens up.
-const SCRIM_TOP := [0.94, 0.92, 0.88, 0.83, 0.76, 0.66]
-const SCRIM_TAIL := [0.50, 0.34, 0.20, 0.09]
+## Eased hard, 2026-09-21. The scrim existed to make a flat vector wordmark legible over a
+## lit shop. The mark is now an OPAQUE BRASS TICKET that carries its own contrast, so the
+## ink under it was doing nothing but hiding the shelves and costing the frame a third of
+## its brightness: 0.42 against the fantasy/battle floor of 0.60, with a key visual that
+## measures 0.63 on its own. What is left is enough to seat the ticket in the room and to
+## keep the head of the frame from competing with Nara's face.
+const SCRIM_TOP := [0.46, 0.40, 0.34, 0.27, 0.20, 0.13]
+const SCRIM_TAIL := [0.09, 0.06, 0.03, 0.01]
 const INK_SCRIM := Color(0.030, 0.020, 0.042)
 
 var bg: TextureRect
+## The mirrored strip of ceiling above the key visual — see _build().
+var ceiling: TextureRect
 var logo: TextureRect
 var motes: Array[Dictionary] = []
 var t := 0.0
 var _logo_y := 0
-var _logo_target := -22
+## The mark HANGS. Its string is drawn in the top of the plate image and runs off the top
+## of the frame into the shop's ceiling beam, so the plate itself lands inside the scrim
+## band and the string crosses the dark ceiling above the key visual. -22 was the old
+## flat-mark offset, which cropped the string away entirely.
+var _logo_target := -6
+## One pixel of sway, on a slow beat, in WHOLE pixels. A tag on a string is never quite
+## still; a sub-pixel sway on a 640x360 lattice is the grid coming apart.
+var _logo_x := 80.0
 
 ## The web export frees a FontFile nobody is holding, and the title loses its type — a
 ## defect that once destroyed a title screen silently. These are the references that keep
@@ -107,6 +127,26 @@ func _build() -> void:
 	bg.size = Vector2(640, 360)
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
+
+	# The 40 px above the picture used to be a flat rectangle of ink — a ninth of the frame
+	# carrying no image at all, and the single darkest thing in every measurement of this
+	# screen. It is now the CEILING: the picture's own top rows, mirrored upward, so the
+	# beams and the lantern chains carry on above the key visual instead of stopping at a
+	# hard line. A vertical flip of a NEAREST texture drawn at 1:1 is exact — no
+	# resampling, no drift, which a scale or a blur would both have cost.
+	if bg.texture:
+		ceiling = TextureRect.new()
+		ceiling.name = "Ceiling"
+		ceiling.texture = bg.texture
+		ceiling.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		ceiling.stretch_mode = TextureRect.STRETCH_KEEP
+		ceiling.flip_v = true
+		ceiling.position = Vector2(0, KV_OFFSET_Y - 360)
+		ceiling.size = Vector2(640, 360)
+		ceiling.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		# Behind the picture in z, so the seam is the picture's own edge either way.
+		add_child(ceiling)
+		move_child(ceiling, bg.get_index())
 
 	# The moving light is the picture's OWN lantern, brightened and warmed on a slow
 	# breath in _process. Not an additive blob drawn over it: the light that moves is the
@@ -164,10 +204,10 @@ func _bands(y: int, total: int, alphas: Array) -> void:
 func _edges() -> void:
 	for step in 5:
 		var w := 26 - step * 4
-		var a := 0.26 - step * 0.05
+		var a := 0.085 - step * 0.017
 		for x in [step * 26, 640 - step * 26 - w]:
 			var r := ColorRect.new()
-			r.color = Color(0.030, 0.018, 0.048, a)
+			r.color = Color(0.055, 0.032, 0.080, a)
 			r.position = Vector2(x, 0)
 			r.size = Vector2(w, 360)
 			r.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -200,7 +240,9 @@ func make_plaque(x: int, y: int, w: int, h: int, fade_r: int, fade_t: int, fade_
 	]
 	var img := Image.create(w, h, false, Image.FORMAT_RGBA8)
 	img.fill(Color(0, 0, 0, 0))
-	var face := Color(0.043, 0.031, 0.063, 0.965)   # palette ink, near-solid
+	# A warm brown plate rather than a near-black hole. Cream type at #f1dfb0 on this is
+	# still a 9:1 contrast, and 27% of the frame stops reading as zero.
+	var face := Color(0.205, 0.130, 0.076, 0.78)
 	for py in h:
 		for px in w:
 			var c := 1.0
@@ -253,12 +295,32 @@ func _process(delta: float) -> void:
 	# The lantern breathes, as a warm lift on the plate itself. Value only — no scale, or
 	# the grid resamples.
 	if bg:
+		# LAMP is a value-only lift on the plate, not a scale and not a shader: the shop is
+		# lit brighter than the plate was baked. The composed screen measured 0.42 against
+		# the fantasy/battle floor of 0.60 with the raw plate at 0.63, and after the scrim
+		# and the plaque were eased the rest of the gap is simply how much light is in the
+		# room. Value only, so the 640x360 grid is untouched.
 		var k := 0.06 * sin(t * 0.85) + 0.016 * sin(t * 4.3)
-		bg.modulate = Color(1.0 + k * 1.3, 1.0 + k, 1.0 + k * 0.4)
+		bg.modulate = Color(LAMP + k * 1.3, LAMP + k, LAMP * 0.985 + k * 0.4)
 		# The key visual drifts, but only ever by an integer — the parallax a pixel game
 		# is allowed to have.
-		bg.position = Vector2(roundf(sin(t * 0.17) * 3.0),
-							  KV_OFFSET_Y + roundf(cos(t * 0.11) * 2.0))
+		# Vertical drift ONLY, and this is the pixel-game form of STANDARD item 6's
+		# "never shows the plate's edge". A 16:9 title normally buys its parallax by
+		# scaling the plate past 1.16 so the edge is always outside the frame — which this
+		# screen cannot do, because a non-integer scale resamples a 640x360 lattice and the
+		# picture stops being pixel art. The plate is therefore exactly frame-sized, and
+		# any HORIZONTAL drift opens a sliver of ground at one side. Vertically there is
+		# cover on both axes: the mirrored ceiling above and the frame edge below, so the
+		# picture can breathe up and down for ever without an edge ever appearing.
+		bg.position = Vector2(0, KV_OFFSET_Y + roundf(cos(t * 0.11) * 2.0))
+		if ceiling:
+			ceiling.modulate = bg.modulate
+			ceiling.position = Vector2(bg.position.x, bg.position.y - 360)
+
+	# The ticket sways on its string, a pixel either way, out of phase with the lantern so
+	# the two motions never lock into one beat.
+	if logo:
+		logo.position.x = _logo_x + roundf(sin(t * 0.43 + 1.2))
 
 	for m in motes:
 		m["x"] += m["vx"] * delta

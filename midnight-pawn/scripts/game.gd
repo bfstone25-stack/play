@@ -69,6 +69,7 @@ func _ready() -> void:
 	stage.floor_risk_triggered.connect(_on_floor_risk)
 	get_viewport().size_changed.connect(_on_viewport_changed)
 	Loc.on_change(_on_locale_changed)
+	_bark_ready()
 	_show_title()
 
 
@@ -206,19 +207,53 @@ func _build_ui() -> void:
 	pause_title.add_theme_font_override("font", PixelDisplayFont)
 	pause_title.add_theme_font_size_override("font_size", 16)
 	pause_box.add_child(pause_title)
-	pause_resume = Button.new()
+	pause_resume = _ticket("", Callable(self, "_resume"), 16)
 	pause_resume.custom_minimum_size = Vector2(220, 44)
-	pause_resume.pressed.connect(_resume)
 	pause_box.add_child(pause_resume)
-	pause_restart = Button.new()
+	pause_restart = _ticket("", Callable(self, "_restart"), 16)
 	pause_restart.custom_minimum_size = Vector2(220, 44)
-	pause_restart.pressed.connect(_restart)
 	pause_box.add_child(pause_restart)
-	pause_title_btn = Button.new()
+	pause_title_btn = _ticket("", Callable(self, "_title"), 16)
 	pause_title_btn.custom_minimum_size = Vector2(220, 44)
-	pause_title_btn.pressed.connect(_title)
 	pause_box.add_child(pause_title_btn)
 	_refresh_pause_labels()
+
+
+
+## ---- the control the player presses is a PAWN TICKET ---------------------------------
+##
+## STANDARD.md item 4: buttons are not rectangles, and the shape comes from the game's own
+## world. This game's world hands you one object over and over — a numbered ticket tied to
+## the thing you pledged — so that is the control. `ShapedButton.Shape.TAG` draws it:
+## punched eyelet, string, printed rule, and the broker's stub past the perforation, and
+## on hover it swings on the string and the stub starts to come away.
+##
+## Ticket card and ticket ink come from ops/palettes/midnight-pawn.json, so the buttons
+## quantise onto the same 64 colours as every plate in the game.
+const TICKET_CARD := Color("#caa569")
+const TICKET_CARD_HOT := Color("#e4cb97")
+const TICKET_INK := Color("#1c140c")
+
+
+## `size` is the FONT size. compact is on everywhere: the canvas is 640x360 and
+## ShapedButton's un-compact floor is a 56px control, a sixth of the screen.
+func _ticket(text_: String, callback: Callable, size := 12, accent := false) -> ShapedButton:
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.TAG
+	b.compact = true
+	b.tint = TICKET_CARD_HOT if accent else TICKET_CARD
+	b.ink = TICKET_INK
+	b.text = text_
+	b.add_theme_font_override("font", PixelDisplayFont if size >= 16 else PixelBodyFont)
+	b.add_theme_font_size_override("font_size", size)
+	if callback.is_valid():
+		b.pressed.connect(callback)
+	# The hover tick and the press thud used to come from title_screen.style_button(),
+	# which these tickets no longer go through. Without this the title's buttons went
+	# silent — a regression that makes no error and that nobody notices in a screenshot.
+	b.mouse_entered.connect(func() -> void: title_sound("hover"))
+	b.button_down.connect(func() -> void: title_sound("press"))
+	return b
 
 
 func _atlas(source: Texture2D, region: Rect2) -> AtlasTexture:
@@ -259,12 +294,19 @@ func _apply_theme() -> void:
 
 
 func _button(text: String, callback: Callable, accent := false) -> Button:
-	var b := Button.new()
-	b.text = text
+	var b := _ticket(text, callback, 12, accent)
 	b.custom_minimum_size = Vector2(92, 40)
 	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	if accent:
-		b.add_theme_color_override("font_color", GOLD)
+	actions.add_child(b)
+	return b
+
+
+## The action row's plain control, for the four D-pad keys. Everything with a WORD on it
+## goes through _button() and comes out a ticket.
+func _plain_button(callback: Callable) -> Button:
+	var b := Button.new()
+	b.custom_minimum_size = Vector2(92, 40)
+	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	b.pressed.connect(callback)
 	actions.add_child(b)
 	return b
@@ -330,11 +372,9 @@ func _add_language_picker() -> void:
 	lang_box.add_child(row2)
 	for i in Loc.ALLOWED.size():
 		var code := str(Loc.ALLOWED[i])
-		var b := Button.new()
-		b.text = str(Loc.NATIVE[code])
+		var b := _ticket(str(Loc.NATIVE[code]), func() -> void: Loc.set_code(code))
 		b.custom_minimum_size = Vector2(88, 36)
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		b.pressed.connect(func() -> void: Loc.set_code(code))
 		(row if i < 3 else row2).add_child(b)
 		lang_buttons[code] = b
 		if code == "en":
@@ -348,10 +388,17 @@ func _add_language_picker() -> void:
 func _mark_language_buttons() -> void:
 	if lang_caption:
 		lang_caption.text = Loc.t("lang.caption")
+	# The chosen language is marked on the TICKET, not with a font colour: a ShapedButton
+	# draws its own label in its own ink and ignores font_color overrides entirely, so the
+	# old marking was invisible the moment these became tickets. The current locale's
+	# ticket is the bright card — the one that has been stamped.
 	for code in lang_buttons.keys():
 		var b: Button = lang_buttons[code]
 		b.text = str(Loc.NATIVE[code])
-		if str(code) == Loc.current():
+		if b is ShapedButton:
+			(b as ShapedButton).tint = TICKET_CARD_HOT if str(code) == Loc.current() else TICKET_CARD
+			b.queue_redraw()
+		elif str(code) == Loc.current():
 			b.add_theme_color_override("font_color", GOLD)
 		else:
 			b.remove_theme_color_override("font_color")
@@ -432,20 +479,16 @@ func _open_title_card() -> void:
 	title_nodes["tag"] = tag
 	title_nodes["controls"] = controls
 
-	var begin := Button.new()
-	begin.position = Vector2(20, 228)
-	begin.size = Vector2(212, 30)
-	begin.pressed.connect(_title_begin)
+	var begin := _ticket("", Callable(self, "_title_begin"), 16, true)
+	begin.position = Vector2(20, 226)
+	begin.size = Vector2(212, 34)
 	title_card.add_child(begin)
-	title_screen.style_button(begin, 16)
 	title_nodes["begin"] = begin
 
-	var how := Button.new()
+	var how := _ticket("", Callable(self, "_title_how_to_play"), 12)
 	how.position = Vector2(20, 264)
-	how.size = Vector2(212, 26)
-	how.pressed.connect(_title_how_to_play)
+	how.size = Vector2(212, 28)
 	title_card.add_child(how)
-	title_screen.style_button(how)
 	title_nodes["how"] = how
 
 	title_nodes["lang_caption"] = _title_label("lang", Vector2(20, 294), 12, TITLE_MUTED)
@@ -453,12 +496,10 @@ func _open_title_card() -> void:
 	var lang_btns := {}
 	for i in Loc.ALLOWED.size():
 		var code := str(Loc.ALLOWED[i])
-		var b := Button.new()
-		b.position = Vector2(20 + (i % 3) * 100, 310 + (i / 3) * 25)
-		b.size = Vector2(96, 22)
-		b.pressed.connect(func() -> void: Loc.set_code(code))
+		var b := _ticket("", func() -> void: Loc.set_code(code))
+		b.position = Vector2(20 + (i % 3) * 100, 308 + (i / 3) * 26)
+		b.size = Vector2(96, 24)
 		title_card.add_child(b)
-		title_screen.style_button(b)
 		lang_btns[code] = b
 	title_nodes["lang"] = lang_btns
 
@@ -495,10 +536,9 @@ func _refresh_title_card() -> void:
 	for code in title_nodes["lang"].keys():
 		var b: Button = title_nodes["lang"][code]
 		b.text = str(Loc.NATIVE[code])
-		if str(code) == Loc.current():
-			b.add_theme_color_override("font_color", GOLD)
-		else:
-			b.add_theme_color_override("font_color", CREAM)
+		if b is ShapedButton:
+			(b as ShapedButton).tint = TICKET_CARD_HOT if str(code) == Loc.current() else TICKET_CARD
+			b.queue_redraw()
 
 
 func _close_title_card() -> void:
@@ -539,6 +579,7 @@ func _show_help() -> void:
 func _start_run() -> void:
 	state.reset()
 	_play("bell")
+	bark("greet")
 	stage.set_scene("shop")
 	_show_opening()
 
@@ -583,6 +624,9 @@ func _show_shop() -> void:
 	stage.set_customer_expression(0)
 	var day_text := Loc.t("shop.day1") if state.day == 1 else Loc.t("shop.day2")
 	phase_label.text = day_text
+	if _bark_area != state.day:
+		_bark_area = state.day
+		bark("stage", state.day - 1)
 	header.text = Loc.t("shop.header", [state.gold, state.health, state.resolve, state.curse, state.marks_bank])
 	var customer: Dictionary = state.current_customer()
 	_set_customer_portrait(customer, 0)
@@ -703,6 +747,7 @@ func _appraise_selected() -> void:
 		_play("appraise")
 		var identified: Dictionary = state.get_item(state.selected_id)
 		_log(Loc.t("log.identified", [_item_label(identified), _item_clue(identified)]))
+		bark("unlock")
 	_show_shop()
 
 
@@ -763,8 +808,18 @@ func _resolve_offer(accept: bool, honest: bool) -> void:
 	_play("coin" if sold else "tick")
 	if sold:
 		_log(Loc.t("log.sale_warn" if honest else "log.sale_hide", [amount, customer_name, item_name]))
+		# The streak is HONEST sales in a row, not sales in a row: concealing the curse
+		# breaks it, which is the one thing the shop's voice is allowed to care about.
+		_honest_run = _honest_run + 1 if honest else 0
+		if amount >= 40:
+			bark("win_big")
+		elif _honest_run >= 3:
+			bark("streak")
+		else:
+			bark("win")
 	else:
 		_log(Loc.t("log.reject", [customer_name, item_name]))
+		bark("near")
 	_show_shop()
 
 
@@ -784,6 +839,9 @@ func _start_room() -> void:
 	item_grid.visible = false
 	log_label.visible = true
 	phase_label.text = Loc.t("night.phase", [state.night, state.room_index + 1])
+	if _bark_area != 10 + state.room_index:
+		_bark_area = 10 + state.room_index
+		bark("stage", 2 + state.room_index)
 	header.text = Loc.t("night.header", [state.gold, state.health, state.resolve, state.curse, state.marks_unbanked])
 	title.text = Loc.t("room.%d" % state.room_index)
 	subtitle.text = Loc.t("risk.%d" % state.room_index)
@@ -796,7 +854,9 @@ func _start_room() -> void:
 		[Vector2.DOWN, Rect2(128, 32, 64, 40)],
 		[Vector2.RIGHT, Rect2(192, 32, 64, 40)],
 	]:
-		var move_button := _button("", func(direction = spec[0]): stage.nudge(direction))
+		# Not a ticket: these four carry an ARROW, not a word, and a pawn ticket with a
+		# chevron stamped on it is a costume. A D-pad should look like a D-pad.
+		var move_button := _plain_button(func(direction = spec[0]): stage.nudge(direction))
 		move_button.icon = _atlas(UI_ATLAS, spec[1])
 		move_button.add_theme_constant_override("icon_max_width", 30)
 		move_button.expand_icon = true
@@ -850,16 +910,20 @@ func _combat(action: String) -> void:
 	_play("hit" if not result.get("won", false) else "loot")
 	if state.phase == MidnightStateScript.Phase.DAY_2:
 		_log(Loc.t("log.defeat_day"))
+		bark("fail")
 		_show_shop()
 		return
 	if state.phase == MidnightStateScript.Phase.FINAL:
 		_log(Loc.t("log.defeat_final"))
+		bark("fail")
 		_show_final()
 		return
 	_log(Loc.t("log.combat", [Loc.t("btn." + action) if action != "item" else Loc.t("btn.item"), result.get("dealt", 0), result.get("damage", 0), state.enemy_hp, state.health]))
 	if result.get("won", false):
 		_room_cleared()
 	else:
+		if state.health <= 3 or state.enemy_hp <= 2:
+			bark("near")
 		_on_objective_reached_refresh()
 
 
@@ -870,6 +934,7 @@ func _on_objective_reached_refresh() -> void:
 
 func _room_cleared() -> void:
 	stage.mark_enemy_defeated()
+	bark("win")
 	var room: Dictionary = MidnightStateScript.ROOMS[state.room_index]
 	title.text = Loc.t("clear.title")
 	subtitle.text = Loc.t("clear.sub", [Loc.t("enemy.%d" % state.room_index)])
@@ -970,6 +1035,76 @@ func _refresh_log() -> void:
 	log_label.scroll_to_line(maxi(0, log_lines.size() - 1))
 
 
+
+# --- barks -------------------------------------------------------------------------------
+#
+# STANDARD.md item 5. Nara's voice (ops/barks/lines.json -> "midnight-pawn", seed
+# f_young_warm, all-ages, 25 lines), rendered by ops/barks/render_barks.py into
+# assets/voice/. One voice for the whole game.
+#
+# It is written to NO-OP when assets/voice/barks.json is absent, which is the state the
+# build ships in until a GPU window renders the set: no error, no silence-with-a-warning,
+# just no bark. That is deliberate -- the alternative is a game that refuses to run
+# because a sound file is missing.
+#
+# Three rules, each one the reason a bark set stops being charming:
+#   * rotate, and never repeat a slot's line back to back;
+#   * never overlap a bark with a bark -- the second is DROPPED, not queued, because by
+#     the time the first has finished the moment it belonged to is over;
+#   * every bark rides the same volume as the rest of the audio.
+const BARK_DIR := "res://assets/voice/"
+
+var bark_player: AudioStreamPlayer
+var _bark_map: Dictionary = {}
+var _bark_last: Dictionary = {}
+## Which place the player is standing in, so a "stage" line fires once when they arrive
+## and not again on every redraw of the same room. 1..2 are the shop days, 10.. the crypt
+## rooms.
+var _bark_area := -1
+## Honest sales in a row. Concealing a curse resets it.
+var _honest_run := 0
+var _idle_since := 0.0
+
+
+func _bark_ready() -> void:
+	bark_player = AudioStreamPlayer.new()
+	bark_player.volume_db = -4.0
+	add_child(bark_player)
+	var f := FileAccess.open(BARK_DIR + "barks.json", FileAccess.READ)
+	if f == null:
+		return
+	var parsed = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) == TYPE_DICTIONARY:
+		_bark_map = parsed
+
+
+## `slot` is one of greet/stage/near/win/win_big/fail/idle/streak/unlock. `index` lets a
+## caller ask for a PARTICULAR line rather than a rotated one -- "stage" is one line per
+## area, so the receipt stair must always say the receipt stair's line and never the
+## chapel's.
+func bark(slot: String, index := -1) -> void:
+	if bark_player == null or not _bark_map.has(slot):
+		return
+	if bark_player.playing:
+		return                      # dropped, not queued
+	var files: Array = _bark_map[slot]
+	if files.is_empty():
+		return
+	var pick := 0
+	if index >= 0:
+		pick = index % files.size()
+	else:
+		pick = randi() % files.size()
+		if files.size() > 1 and _bark_last.get(slot, -1) == pick:
+			pick = (pick + 1) % files.size()
+	_bark_last[slot] = pick
+	var path: String = BARK_DIR + str(files[pick])
+	if not ResourceLoader.exists(path):
+		return
+	bark_player.stream = load(path)
+	bark_player.play()
+
+
 func _play(kind: String) -> void:
 	var specs := {
 		"bell": [660.0, 0.22, 0.42],
@@ -1047,6 +1182,34 @@ func _on_viewport_changed() -> void:
 	var split := find_children("*", "HSplitContainer", true, false)
 	if not split.is_empty():
 		(split[0] as HSplitContainer).split_offset = 250 if narrow else 300
+
+
+## The idle bark. Nara talks to herself when the shop is quiet — which is the point of
+## the slot, and the reason it is timed off the last INPUT rather than off a Timer: a bark
+## that fires while the player is mid-click is an interruption, not an idle line.
+##
+## Only in the shop, and never while paused or on the title: an idle line over a paused
+## game is the studio's own "verification that lies" in audio form — it says somebody is
+## there when nobody is.
+const IDLE_AFTER := 26.0
+
+
+func _process(delta: float) -> void:
+	if state == null or get_tree().paused:
+		return
+	if state.phase != MidnightStateScript.Phase.DAY_1 and state.phase != MidnightStateScript.Phase.DAY_2:
+		_idle_since = 0.0
+		return
+	_idle_since += delta
+	if _idle_since >= IDLE_AFTER:
+		_idle_since = 0.0
+		bark("idle")
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		return
+	_idle_since = 0.0
 
 
 func _unhandled_input(event: InputEvent) -> void:
