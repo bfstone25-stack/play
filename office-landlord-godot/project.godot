@@ -1,0 +1,38 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="Office Landlord"
+config/description="All-ages idle office tycoon. Place staff on the desk grid, chase adjacency combos, keep the rent paid as floors escalate. Godot rebuild of the office-landlord HTML prototype; candy-bright CrazyGames-grade skin, not the OCCUPANCY office-tower mood."
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+boot_splash/bg_color=Color(1.0, 0.949, 0.831, 1)
+
+[autoload]
+
+Gate="*res://scripts/gate.gd"
+Economy="*res://scripts/economy.gd"
+I18n="*res://scripts/i18n.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=4
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method.web="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(1.0, 0.949, 0.831, 1)
