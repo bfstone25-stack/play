@@ -81,6 +81,12 @@ func _build_3d() -> void:
 	torch.light_color = Color(1.0, 0.86, 0.62)
 	torch.light_energy = 2.6
 	torch.spot_range = 13.0
+	# Left at 24. Widening this to 34 was tried on 2026-09-22 to lift the title's
+	# brightness (0.43 against a shelf averaging 0.63) and changed the composed frame by
+	# exactly nothing -- so the corridor you see behind the key visual is the plate's own
+	# opaque 48%, not this 3D scene. Recorded because the next person will have the same
+	# idea: the darkness here is in the art, not in the lighting or in an overlay, and it
+	# needs a re-render rather than a dial.
 	torch.spot_angle = 24.0
 	torch.spot_angle_attenuation = 0.7
 	torch.shadow_enabled = true
@@ -113,6 +119,12 @@ func _build_2d() -> void:
 	overlay.stretch_mode = TextureRect.STRETCH_SCALE
 	overlay.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# 2026-09-22. Fourth title with the same shape: a key visual that is already on shelf
+	# (0.73/0.38 here, against a Nutaku average of 0.63/0.38) composited down to 0.40 by a
+	# baked 0.05-brightness overlay drawn opaque on top. PLICATA's veil, Night Reading's
+	# scrim and HOLDOVER's overlay were all this. The plates are fine; the darkness is
+	# added afterwards, and the shelf does not sell noir. See ops/market/CRAZYGAMES_SHELF.md.
+	overlay.modulate.a = 0.75
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(overlay)
 
