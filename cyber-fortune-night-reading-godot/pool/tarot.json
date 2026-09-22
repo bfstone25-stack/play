@@ -14,7 +14,12 @@
 "rev_zh": "开始得太随便，或者根本不敢开始。",
 "rev_en": "Started too carelessly, or not at all.",
 "rev_do_zh": "把第一步写下来，做它，只做它。",
-"rev_do_en": "Write the first step. Do it. Only it."
+"rev_do_en": "Write the first step. Do it. Only it.",
+"name_ja": "愚者",
+"up_ja": "始まり。まだ何も決まっていない。分からないのが普通だ。歩け。",
+"up_do_ja": "やったことのない小さなことを一つやる。",
+"rev_ja": "軽く始めすぎたか、まったく始めていない。",
+"rev_do_ja": "最初の一歩を書く。それだけをやる。"
 },
 {
 "slug": "the-magician",
@@ -31,7 +36,12 @@
 "rev_zh": "工具都在，手停着。缺的是一个动作。",
 "rev_en": "The tools are all there and the hands are idle. One motion is missing.",
 "rev_do_zh": "今天做十分钟，不管做得好不好。",
-"rev_do_en": "Work ten minutes today, quality irrelevant."
+"rev_do_en": "Work ten minutes today, quality irrelevant.",
+"name_ja": "魔術師",
+"up_ja": "必要な道具はもう手の中にある。資源ではなく、始めるための道具が。",
+"up_do_ja": "やりたいことを第一歩まで削って、それだけをやる。",
+"rev_ja": "道具は揃っているのに手が動いていない。足りないのは一つの動作だ。",
+"rev_do_ja": "今日は十分だけ手を動かす。出来は問わない。"
 },
 {
 "slug": "the-high-priestess",
@@ -48,7 +58,12 @@
 "rev_zh": "你在忽略自己知道的事。停止问别人。",
 "rev_en": "You are ignoring what you know. Stop asking others.",
 "rev_do_zh": "今天不征求任何意见。",
-"rev_do_en": "Ask nobody's opinion today."
+"rev_do_en": "Ask nobody's opinion today.",
+"name_ja": "女教皇",
+"up_ja": "答えはもう知っている。認めていないだけだ。しばらく黙っていよう。",
+"up_do_ja": "今日は十分、画面を見ずにただ座る。",
+"rev_ja": "知っていることから目を逸らしている。人に訊くのをやめよう。",
+"rev_do_ja": "今日は誰の意見も訊かない。"
 },
 {
 "slug": "the-empress",
@@ -65,7 +80,12 @@
 "rev_zh": "给太多，或者给错了对象。先给自己。",
 "rev_en": "Giving too much, or to the wrong one. Give to yourself first.",
 "rev_do_zh": "今天为自己做一件平时替别人做的事。",
-"rev_do_en": "Do for yourself today what you usually do for others."
+"rev_do_en": "Do for yourself today what you usually do for others.",
+"name_ja": "女帝",
+"up_ja": "育っているものがある。急かさず、水と時間をやること。",
+"up_do_ja": "生きているものを一つ世話する。植物でも、人でも、自分でも。",
+"rev_ja": "与えすぎているか、相手が違う。まず自分に与えること。",
+"rev_do_ja": "いつも人にしてやっていることを、今日は自分にする。"
 },
 {
 "slug": "the-emperor",
@@ -82,7 +102,12 @@
 "rev_zh": "规矩定得太死，或者一条没有。找中间。",
 "rev_en": "Rules too rigid, or none at all. Find the middle.",
 "rev_do_zh": "今天只守一条规矩。",
-"rev_do_en": "Keep exactly one rule today."
+"rev_do_en": "Keep exactly one rule today.",
+"name_ja": "皇帝",
+"up_ja": "決まりを作る時だ。人のためではなく、自分の一日のために。",
+"up_do_ja": "今日に開始時刻と終了時刻を決めて、両方守る。",
+"rev_ja": "決まりが固すぎるか、まるでない。中間を探すこと。",
+"rev_do_ja": "今日は決まりを一つだけ守る。"
 },
 {
 "slug": "the-hierophant",
@@ -99,7 +124,12 @@
 "rev_zh": "老办法这次不管用。可以破，先知道你在破什么。",
 "rev_en": "The old way does not work this time. Break it; know what you are breaking.",
 "rev_do_zh": "写下你不再遵守的那条规矩和理由。",
-"rev_do_en": "Write down the rule you are dropping, and why."
+"rev_do_en": "Write down the rule you are dropping, and why.",
+"name_ja": "教皇",
+"up_ja": "今回は古いやり方が正しい。崩す前に、まず作法を覚えること。",
+"up_do_ja": "すでにある手順か手引きを見つけて、一度そのとおりにやる。",
+"rev_ja": "今回は古いやり方では通らない。壊していい。ただし何を壊すかは分かっていること。",
+"rev_do_ja": "捨てる決まりと、その理由を書く。"
 },
 {
 "slug": "the-lovers",
@@ -116,7 +146,12 @@
 "rev_zh": "选择做了，心没跟上。或者一直没选。",
 "rev_en": "Chosen, but the heart did not follow. Or never chosen at all.",
 "rev_do_zh": "给那个选择再一周，然后不再拖。",
-"rev_do_en": "Give the choice one more week, then no more delay."
+"rev_do_en": "Give the choice one more week, then no more delay.",
+"name_ja": "恋人",
+"up_ja": "人が絡む選択。一年一緒に暮らせるほうを選ぶこと。",
+"up_do_ja": "それぞれの選択肢について三行書く。すらすら書けたほうが答えだ。",
+"rev_ja": "選んだのに心がついてこない。あるいは、まだ選んでいない。",
+"rev_do_ja": "あと一週間だけ猶予をやる。そのあとは延ばさない。"
 },
 {
 "slug": "the-chariot",
@@ -133,7 +168,12 @@
 "rev_zh": "方向没定，油门踩着。先停车。",
 "rev_en": "No direction, foot on the gas. Stop first.",
 "rev_do_zh": "今天不推进，只写下你要去哪。",
-"rev_do_en": "Push nothing today. Write only where you are going."
+"rev_do_en": "Push nothing today. Write only where you are going.",
+"name_ja": "戦車",
+"up_ja": "方向はもう決まっている。考え直すのをやめること。速さは振り返らないことから出る。",
+"up_do_ja": "今日は一時間、その一つだけを進める。他は見ない。",
+"rev_ja": "方向がないのにアクセルを踏んでいる。まず止まること。",
+"rev_do_ja": "今日は何も進めない。どこへ行くのかだけを書く。"
 },
 {
 "slug": "strength",
@@ -150,7 +190,12 @@
 "rev_zh": "硬来了，或者没敢来。软，不是弱。",
 "rev_en": "Forced it, or did not dare. Soft is not weak.",
 "rev_do_zh": "对一件难事，今天用最温和的方式碰一下。",
-"rev_do_en": "Touch one hard thing today in the gentlest way."
+"rev_do_en": "Touch one hard thing today in the gentlest way.",
+"name_ja": "力",
+"up_ja": "あなたのほうが強い。ただしやり方は柔らかく。力ずくは負ける。",
+"up_do_ja": "今日いちばん手強い相手に、優しいことを一つ言う。",
+"rev_ja": "力ずくでやったか、怖くて触れなかった。柔らかいことは弱いことではない。",
+"rev_do_ja": "今日、いちばん硬いものに、いちばん柔らかい触り方で触れる。"
 },
 {
 "slug": "the-hermit",
@@ -167,7 +212,12 @@
 "rev_zh": "躲太久了。补给完了该出来。",
 "rev_en": "Hidden too long. Resupply is done; come out.",
 "rev_do_zh": "今天联系一个人。",
-"rev_do_en": "Contact one person today."
+"rev_do_en": "Contact one person today.",
+"name_ja": "隠者",
+"up_ja": "しばらく一人になる必要がある。逃げではなく、補給だ。",
+"up_do_ja": "今夜は一人で、携帯を見ずに食べる。",
+"rev_ja": "隠れすぎた。補給は済んだ。出てくること。",
+"rev_do_ja": "今日、誰か一人に連絡する。"
 },
 {
 "slug": "wheel-of-fortune",
@@ -184,7 +234,12 @@
 "rev_zh": "转得不顺，你在跟它较劲。松手。",
 "rev_en": "The wheel turns against you and you are fighting it. Let go.",
 "rev_do_zh": "把不受你控制的事写下来，然后合上。",
-"rev_do_en": "Write down what you do not control, then close the page."
+"rev_do_en": "Write down what you do not control, then close the page.",
+"name_ja": "運命の輪",
+"up_ja": "輪は回っている。操ることはできないが、どこに立つかは選べる。",
+"up_do_ja": "自分で決められることを三つ書く。それだけを管理する。",
+"rev_ja": "輪が逆に回っていて、あなたはそれと闘っている。手を離すこと。",
+"rev_do_ja": "自分では決められないことを書き出して、そのページを閉じる。"
 },
 {
 "slug": "justice",
@@ -201,7 +256,12 @@
 "rev_zh": "觉得不公平。可能是，也可能只是不满意。分清。",
 "rev_en": "It feels unfair. Maybe it is; maybe it is just unwelcome. Tell them apart.",
 "rev_do_zh": "写下这件事里哪一部分真的不公平。",
-"rev_do_en": "Write which part of this is actually unfair."
+"rev_do_en": "Write which part of this is actually unfair.",
+"name_ja": "正義",
+"up_ja": "公平な結果が出る。公平と、うれしいことは別だ。",
+"up_do_ja": "今日、誰かへの借りを一つ清算する。",
+"rev_ja": "不公平に感じる。本当に不公平かもしれないし、ただ不都合なだけかもしれない。見分けること。",
+"rev_do_ja": "この件のどこが本当に不公平なのかを書く。"
 },
 {
 "slug": "the-hanged-man",
@@ -218,7 +278,12 @@
 "rev_zh": "挂太久，成了借口。可以下来了。",
 "rev_en": "Hung too long; it became an excuse. Come down.",
 "rev_do_zh": "今天做一个小决定，结束一次悬而未决。",
-"rev_do_en": "Make one small decision today and end one hanging matter."
+"rev_do_en": "Make one small decision today and end one hanging matter.",
+"name_ja": "吊るされた男",
+"up_ja": "動けない。そしてその動けなさは役に立っている。別の角度から見ること。もがかない。",
+"up_do_ja": "問いを逆から立てる。何もしなければどうなるか。",
+"rev_ja": "吊られたまま長すぎて、言い訳になった。降りること。",
+"rev_do_ja": "今日、小さな決定を一つして、宙吊りの件を一つ終わらせる。"
 },
 {
 "slug": "death",
@@ -235,7 +300,12 @@
 "rev_zh": "该结束的没结束。你在给它做人工呼吸。",
 "rev_en": "What should end has not. You are keeping it breathing.",
 "rev_do_zh": "停止维护一件早该结束的事。",
-"rev_do_en": "Stop maintaining one thing that should already be over."
+"rev_do_en": "Stop maintaining one thing that should already be over.",
+"name_ja": "死神",
+"up_ja": "何かが終わった。止まったのではなく、本当に終わった。空いた場所は次のためのものだ。",
+"up_do_ja": "もう役に立たないのに取ってあるものを一つ捨てる。",
+"rev_ja": "終わるべきものが終わっていない。あなたが息をさせ続けている。",
+"rev_do_ja": "とっくに終わっているものの世話を、一つやめる。"
 },
 {
 "slug": "temperance",
@@ -252,7 +322,12 @@
 "rev_zh": "比例失衡。全是工作，或全是躺。",
 "rev_en": "Out of proportion: all work, or all lying down.",
 "rev_do_zh": "今天加回缺的那一半，哪怕只有半小时。",
-"rev_do_en": "Add back the missing half today, even for thirty minutes."
+"rev_do_en": "Add back the missing half today, even for thirty minutes.",
+"name_ja": "節制",
+"up_ja": "配合を直す。多い少ないではなく、二つのものの比率の話だ。",
+"up_do_ja": "今日を半分仕事、半分休みで組んで、実際に守れたほうを見る。",
+"rev_ja": "比率が崩れている。仕事だけか、寝ているだけか。",
+"rev_do_ja": "足りないほうの半分を、三十分でいいから今日に戻す。"
 },
 {
 "slug": "the-devil",
@@ -269,7 +344,12 @@
 "rev_zh": "你看见那个习惯了。看见就是松动的开始。",
 "rev_en": "You have seen the habit. Seeing is where it starts to loosen.",
 "rev_do_zh": "今天少做那个习惯一次。",
-"rev_do_en": "Do the habit one time fewer today."
+"rev_do_en": "Do the habit one time fewer today.",
+"name_ja": "悪魔",
+"up_ja": "習慣に動かされている。怖いものではないが、主導権はあちらにある。見えたなら、それで十分だ。",
+"up_do_ja": "いちばん認めたくない習慣を今日、書き出す。",
+"rev_ja": "習慣が見えた。見えたところから緩みはじめる。",
+"rev_do_ja": "今日はその習慣を、一回だけ減らす。"
 },
 {
 "slug": "the-tower",
@@ -286,7 +366,12 @@
 "rev_zh": "塌完了。灰尘落定，可以看地基了。",
 "rev_en": "It has finished falling. The dust settles; you can see the foundation.",
 "rev_do_zh": "写下塌掉的东西里，哪一块还能用。",
-"rev_do_en": "Write down which piece of what fell can still be used."
+"rev_do_en": "Write down which piece of what fell can still be used.",
+"name_ja": "塔",
+"up_ja": "構造が崩れている。もともと保たないものだった。崩落は罰ではなく、清算だ。",
+"up_do_ja": "今日はそれを繕わない。崩れきらせること。",
+"rev_ja": "崩れ終わった。埃が落ちて、土台が見える。",
+"rev_do_ja": "崩れたもののうち、まだ使える部分を書き出す。"
 },
 {
 "slug": "the-star",
@@ -303,7 +388,12 @@
 "rev_zh": "希望有点弱。不是没有，是累。",
 "rev_en": "Hope is thin. Not gone; tired.",
 "rev_do_zh": "今晚早睡，明天再看希望。",
-"rev_do_en": "Sleep early tonight. Check on hope tomorrow."
+"rev_do_en": "Sleep early tonight. Check on hope tomorrow.",
+"name_ja": "星",
+"up_ja": "いちばん苦しいところは過ぎた。短い静かな区間だ。回復に使うこと。",
+"up_do_ja": "見返りを期待せず、未来の自分のために小さなことを一つする。",
+"rev_ja": "希望が薄い。消えてはいない。疲れているだけだ。",
+"rev_do_ja": "今夜は早く寝る。希望の具合は明日見る。"
 },
 {
 "slug": "the-moon",
@@ -320,7 +410,12 @@
 "rev_zh": "雾在散。你之前怕的东西，多半没那么大。",
 "rev_en": "The fog is lifting. What you feared is likely smaller than it looked.",
 "rev_do_zh": "把上周害怕的事重新看一眼。",
-"rev_do_en": "Look again at what frightened you last week."
+"rev_do_en": "Look again at what frightened you last week.",
+"name_ja": "月",
+"up_ja": "よく見えていない。見えない隙間を想像が埋めている。夜に決めないこと。",
+"up_do_ja": "今日の判断を明日の朝に回す。",
+"rev_ja": "霧が晴れてきた。恐れていたものは、見えていたより小さいはずだ。",
+"rev_do_ja": "先週こわかったものを、もう一度見てみる。"
 },
 {
 "slug": "the-sun",
@@ -337,7 +432,12 @@
 "rev_zh": "好日子，但你没在场。抬头。",
 "rev_en": "A good day, and you were not present for it. Look up.",
 "rev_do_zh": "今天在外面待十分钟，什么都不做。",
-"rev_do_en": "Spend ten minutes outside today doing nothing."
+"rev_do_en": "Spend ten minutes outside today doing nothing.",
+"name_ja": "太陽",
+"up_ja": "ただの良い一日。解釈するものは何もない。外へ出ること。",
+"up_do_ja": "二十分、日に当たる。",
+"rev_ja": "良い一日だったのに、あなたがそこにいなかった。顔を上げること。",
+"rev_do_ja": "今日、十分だけ外で何もしない。"
 },
 {
 "slug": "judgement",
@@ -354,7 +454,12 @@
 "rev_zh": "听见了叫声，没应。或者应了别人的。",
 "rev_en": "You heard the call and did not answer. Or answered someone else's.",
 "rev_do_zh": "问自己一次：这是我要的，还是别人要的？",
-"rev_do_en": "Ask once: is this what I want, or what someone else wants?"
+"rev_do_en": "Ask once: is this what I want, or what someone else wants?",
+"name_ja": "審判",
+"up_ja": "呼ばれている仕事がある。もう聞こえている。聞こえないふりは通らない。",
+"up_do_ja": "ずっと必要だと分かっていたことに応える。第一歩を踏む。",
+"rev_ja": "呼ばれたのに答えなかった。あるいは、他人の呼び声に答えた。",
+"rev_do_ja": "一度だけ訊く。これは自分が望むことか、誰かが望むことか。"
 },
 {
 "slug": "the-world",
@@ -371,7 +476,12 @@
 "rev_zh": "圈没画完，你已经在画下一个。回去补一笔。",
 "rev_en": "The circle is unfinished and you are drawing the next. Go back for one stroke.",
 "rev_do_zh": "把一件差最后一步的事做完。",
-"rev_do_en": "Finish one thing that is one step from done."
+"rev_do_en": "Finish one thing that is one step from done.",
+"name_ja": "世界",
+"up_ja": "一巡が閉じた。次を始める前に、まず祝うこと。",
+"up_do_ja": "この区間で終わらせた三つを書き出す。",
+"rev_ja": "円が閉じていないのに、次の円を描きはじめている。一画だけ戻ること。",
+"rev_do_ja": "あと一歩で終わるものを一つ、終わらせる。"
 },
 {
 "slug": "ace-of-wands",
@@ -388,7 +498,12 @@
 "rev_zh": "念头有了，火没点着。不是没能力，是没时间表。",
 "rev_en": "The idea is there; the fire is not lit. Not ability; a missing schedule.",
 "rev_do_zh": "给那个念头定一个开始日期。",
-"rev_do_en": "Give the idea a start date."
+"rev_do_en": "Give the idea a start date.",
+"name_ja": "ワンドのエース",
+"up_ja": "新しい思いつき。まだ熱い。熱いうちに書きとめること。",
+"up_do_ja": "その思いつきを一文にして、自分宛に送る。",
+"rev_ja": "思いつきはある。火がついていない。能力ではなく、予定が入っていないだけだ。",
+"rev_do_ja": "その思いつきに開始日をつける。"
 },
 {
 "slug": "two-of-wands",
@@ -405,7 +520,12 @@
 "rev_zh": "计划做了三遍，没出发过一次。",
 "rev_en": "Planned three times, never left once.",
 "rev_do_zh": "把计划关上，做第一步。",
-"rev_do_en": "Close the plan and do step one."
+"rev_do_en": "Close the plan and do step one.",
+"name_ja": "ワンドの2",
+"up_ja": "戸口に立って外を見ている。今は計画の時。まだ出発しない。",
+"up_do_ja": "三か月分の地図を描く。",
+"rev_ja": "計画を三回立てて、一度も出ていない。",
+"rev_do_ja": "計画を閉じて、第一歩をやる。"
 },
 {
 "slug": "three-of-wands",
@@ -422,7 +542,12 @@
 "rev_zh": "等的东西不来，因为没发出去。",
 "rev_en": "What you wait for is not coming, because it was never sent.",
 "rev_do_zh": "检查你以为发出去的那件事。",
-"rev_do_en": "Check the thing you think you sent."
+"rev_do_en": "Check the thing you think you sent.",
+"name_ja": "ワンドの3",
+"up_ja": "船はもう出た。あとは待つ時間で、待つあいだに別のことをやる。",
+"up_do_ja": "待ち時間を二つ目の企てに充てる。",
+"rev_ja": "待っているものは来ない。そもそも送られていないからだ。",
+"rev_do_ja": "送ったつもりのものを、確認する。"
 },
 {
 "slug": "four-of-wands",
@@ -439,7 +564,12 @@
 "rev_zh": "庆祝早了，或者根本没庆祝。补上。",
 "rev_en": "The celebration came too early, or not at all. Make it up.",
 "rev_do_zh": "为一件已经做成的事，今天补一顿饭。",
-"rev_do_en": "Mark one finished thing with a meal today."
+"rev_do_en": "Mark one finished thing with a meal today.",
+"name_ja": "ワンドの4",
+"up_ja": "小さな完成。一晩だけ手を止めて、印をつけること。",
+"up_do_ja": "今夜は誰かと食事をする。",
+"rev_ja": "祝いが早すぎたか、まるでなかった。埋め合わせること。",
+"rev_do_ja": "今日、終わったことを一つ、食事で祝う。"
 },
 {
 "slug": "five-of-wands",
@@ -456,7 +586,12 @@
 "rev_zh": "吵得没有意义，而且越吵越累。",
 "rev_en": "The argument has no point and it is wearing you down.",
 "rev_do_zh": "今天退出一场争论，不需要赢。",
-"rev_do_en": "Leave one argument today. No need to win."
+"rev_do_en": "Leave one argument today. No need to win.",
+"name_ja": "ワンドの5",
+"up_ja": "騒がしいが、誰も本気で争ってはいない。稽古であって戦ではない。",
+"up_do_ja": "今日の言い合いでは、一点だけ述べて、あとは聞く。",
+"rev_ja": "その言い合いには論点がなく、あなたを削っている。",
+"rev_do_ja": "今日はひとつ、言い合いから降りる。勝たなくていい。"
 },
 {
 "slug": "six-of-wands",
@@ -473,7 +608,12 @@
 "rev_zh": "想被看见，没被看见。这一次的功劳会晚到。",
 "rev_en": "Wanting to be seen, and not being. The credit comes late this time.",
 "rev_do_zh": "把你做的事写在一个自己的记录里。",
-"rev_do_en": "Record what you did in a log that is yours."
+"rev_do_en": "Record what you did in a log that is yours.",
+"name_ja": "ワンドの6",
+"up_ja": "見られている。受け取ること。説明して打ち消さない。",
+"up_do_ja": "褒められたら「ありがとう」とだけ言う。",
+"rev_ja": "見られたいのに見られていない。今回は評価が遅れて来る。",
+"rev_do_ja": "やったことを、自分の記録に書いておく。"
 },
 {
 "slug": "seven-of-wands",
@@ -490,7 +630,12 @@
 "rev_zh": "防守太久，忘了为什么守。",
 "rev_en": "Defending so long you forgot what for.",
 "rev_do_zh": "问自己：这件事值得再守一周吗？",
-"rev_do_en": "Ask: is this worth another week of holding?"
+"rev_do_en": "Ask: is this worth another week of holding?",
+"name_ja": "ワンドの7",
+"up_ja": "守りきれる。ただし守り続けなければならない。防戦の一週間だ。",
+"up_do_ja": "時間を取りにくるものに、一つ断りを入れる。",
+"rev_ja": "守りが長すぎて、何のために守っているのか忘れた。",
+"rev_do_ja": "訊く。もう一週間守る価値があるか。"
 },
 {
 "slug": "eight-of-wands",
@@ -507,7 +652,12 @@
 "rev_zh": "太快了，飞过头了。有东西没跟上。",
 "rev_en": "Too fast; overshot. Something did not keep up.",
 "rev_do_zh": "把今天的速度减半。",
-"rev_do_en": "Halve today's speed."
+"rev_do_en": "Halve today's speed.",
+"name_ja": "ワンドの8",
+"up_ja": "急に速くなる。ついていくこと。理由は訊かない。",
+"up_do_ja": "待たせている連絡すべてに、一行ずつ返す。",
+"rev_ja": "速すぎて行き過ぎた。ついてこられなかったものがある。",
+"rev_do_ja": "今日は速度を半分にする。"
 },
 {
 "slug": "nine-of-wands",
@@ -524,7 +674,12 @@
 "rev_zh": "累到怀疑值不值得。答案不在今天。",
 "rev_en": "Tired enough to doubt it is worth it. The answer is not today's.",
 "rev_do_zh": "今天不做判断，只休息。",
-"rev_do_en": "No judgement today. Only rest."
+"rev_do_en": "No judgement today. Only rest.",
+"name_ja": "ワンドの9",
+"up_ja": "疲れていて、それでも立っている。最後の一区間はいちばん苦しく、いちばん短い。",
+"up_do_ja": "終点を書いて、目に入るところに貼る。",
+"rev_ja": "疲れて、意味があるのか疑いはじめている。その答えは今日出すものではない。",
+"rev_do_ja": "今日は判断しない。休むだけ。"
 },
 {
 "slug": "ten-of-wands",
@@ -541,7 +696,12 @@
 "rev_zh": "压垮了。放下一件是不够的，放下三件。",
 "rev_en": "Crushed. One thing down is not enough; put down three.",
 "rev_do_zh": "写下你背的所有事，划掉三件。",
-"rev_do_en": "List everything you carry and cross out three."
+"rev_do_en": "List everything you carry and cross out three.",
+"name_ja": "ワンドの10",
+"up_ja": "背負いすぎだ。できないのではなく、背負うべきではない。",
+"up_do_ja": "一つ下ろす。今日。",
+"rev_ja": "潰れている。一つでは足りない。三つ下ろすこと。",
+"rev_do_ja": "背負っているものを全部書いて、三つ消す。"
 },
 {
 "slug": "page-of-wands",
@@ -558,7 +718,12 @@
 "rev_zh": "消息来了，你没当回事。回头看一眼。",
 "rev_en": "The message came and you dismissed it. Look again.",
 "rev_do_zh": "重新读一遍你昨天忽略的那条消息。",
-"rev_do_en": "Reread the message you ignored yesterday."
+"rev_do_en": "Reread the message you ignored yesterday.",
+"name_ja": "ワンドのペイジ",
+"up_ja": "動きたくなる知らせ。動いていい。ただし小さく。",
+"up_do_ja": "その衝動を二十分の実験に変える。",
+"rev_ja": "知らせは来たのに、あなたが流した。もう一度見ること。",
+"rev_do_ja": "昨日流した知らせを読み直す。"
 },
 {
 "slug": "knight-of-wands",
@@ -575,7 +740,12 @@
 "rev_zh": "冲了，撞了，没方向。停一天。",
 "rev_en": "Charged, hit the wall, no direction. Stop for a day.",
 "rev_do_zh": "今天不推进任何事，只定方向。",
-"rev_do_en": "Push nothing today. Only set direction."
+"rev_do_en": "Push nothing today. Only set direction.",
+"name_ja": "ワンドのナイト",
+"up_ja": "勢いはある。方向が曖昧だ。まず方向を決めること。",
+"up_do_ja": "始める前に、どこへ行くのかを一行書く。",
+"rev_ja": "突っ込んで壁に当たり、方向がない。一日止まること。",
+"rev_do_ja": "今日は進めない。方向を決めるだけ。"
 },
 {
 "slug": "queen-of-wands",
@@ -592,7 +762,12 @@
 "rev_zh": "你在带的人没跟上，因为你没回头看。",
 "rev_en": "The people you lead are behind, because you did not look back.",
 "rev_do_zh": "今天问一个跟你做事的人：你需要什么？",
-"rev_do_en": "Ask someone who works with you: what do you need?"
+"rev_do_en": "Ask someone who works with you: what do you need?",
+"name_ja": "ワンドのクイーン",
+"up_ja": "今のあなたは人がついてきたくなる人だ。うまく使うこと。",
+"up_do_ja": "今日、一つのことに誰かを連れていく。命令ではなく、一緒に。",
+"rev_ja": "率いている人たちが後ろで遅れている。振り返らなかったからだ。",
+"rev_do_ja": "一緒に働く人に訊く。何が要る？"
 },
 {
 "slug": "king-of-wands",
@@ -609,7 +784,12 @@
 "rev_zh": "看得远，做得少。方向说了三次，还没动。",
 "rev_en": "Far sight, little action. The direction said three times, nothing moved.",
 "rev_do_zh": "把大方向的第一步，今天亲手做。",
-"rev_do_en": "Do the first step of the big direction yourself, today."
+"rev_do_en": "Do the first step of the big direction yourself, today.",
+"name_ja": "ワンドのキング",
+"up_ja": "遠くが見えている時だ。大きな方向を決めて、細部は人に渡すこと。",
+"up_do_ja": "一年後にどこにいたいかを、一段落書く。",
+"rev_ja": "遠くは見えるが動いていない。方向を三度言って、何も動いていない。",
+"rev_do_ja": "その大きな方向の第一歩を、今日、自分の手でやる。"
 },
 {
 "slug": "ace-of-cups",
@@ -626,7 +806,12 @@
 "rev_zh": "感觉堵住了。不是没有，是出不来。",
 "rev_en": "The feeling is blocked. Not absent; unable to get out.",
 "rev_do_zh": "今天对一个人说一句心里话，小的。",
-"rev_do_en": "Tell one person one true thing today. A small one."
+"rev_do_en": "Tell one person one true thing today. A small one.",
+"name_ja": "カップのエース",
+"up_ja": "新しい感情が浮かび上がってくる。分析しないで、まず感じること。",
+"up_do_ja": "今日、誰か一人に、本気で礼を言う。",
+"rev_ja": "感情が詰まっている。無いのではなく、出られないだけだ。",
+"rev_do_ja": "今日、誰か一人に本当のことを一つ言う。小さなことでいい。"
 },
 {
 "slug": "two-of-cups",
@@ -643,7 +828,12 @@
 "rev_zh": "两个人错开了。不是分开，是没对上。",
 "rev_en": "Two people out of step. Not apart; just not aligned.",
 "rev_do_zh": "约一次只聊天、不解决问题的见面。",
-"rev_do_en": "Arrange a meeting that is only talk, no problem-solving."
+"rev_do_en": "Arrange a meeting that is only talk, no problem-solving.",
+"name_ja": "カップの2",
+"up_ja": "二人が真ん中で出会う。どんな関係でも、大事にすること。",
+"up_do_ja": "用件のない約束を一つ取る。",
+"rev_ja": "二人の歩調がずれている。離れたのではなく、合っていないだけだ。",
+"rev_do_ja": "解決しなくていい、話すだけの約束を取る。"
 },
 {
 "slug": "three-of-cups",
@@ -660,7 +850,12 @@
 "rev_zh": "朋友太多，或者太少。你需要的是一个。",
 "rev_en": "Too many friends, or too few. What you need is one.",
 "rev_do_zh": "给一个朋友打电话，不发消息。",
-"rev_do_en": "Call one friend. Do not text."
+"rev_do_en": "Call one friend. Do not text.",
+"name_ja": "カップの3",
+"up_ja": "友達といる良い日。取り消さないこと。",
+"up_do_ja": "会いたい友達に連絡して、日を決める。",
+"rev_ja": "友達が多すぎるか、少なすぎる。要るのは一人だ。",
+"rev_do_ja": "友達に電話する。文字ではなく。"
 },
 {
 "slug": "four-of-cups",
@@ -677,7 +872,12 @@
 "rev_zh": "拒绝了太多次，别人不递了。",
 "rev_en": "You refused so often that people stopped offering.",
 "rev_do_zh": "主动约一个人，别等被约。",
-"rev_do_en": "Invite someone. Stop waiting to be invited."
+"rev_do_en": "Invite someone. Stop waiting to be invited.",
+"name_ja": "カップの4",
+"up_ja": "差し出されているのに、あなたが見ていない。顔を上げること。",
+"up_do_ja": "流すつもりだった誘いに、きちんと返事をする。",
+"rev_ja": "断りすぎて、誰も誘ってこなくなった。",
+"rev_do_ja": "自分から誘う。誘われるのを待たない。"
 },
 {
 "slug": "five-of-cups",
@@ -694,7 +894,12 @@
 "rev_zh": "终于转身看到剩下的两样了。可以走了。",
 "rev_en": "You have finally turned and seen the two remaining. You can go now.",
 "rev_do_zh": "带着那两样东西，做一件小的新事。",
-"rev_do_en": "Take those two things and do one small new thing."
+"rev_do_en": "Take those two things and do one small new thing.",
+"name_ja": "カップの5",
+"up_ja": "三つ失って、二つ残っている。あなたが見ているのは三つのほうだ。",
+"up_do_ja": "まだ残っている二つを書き出す。",
+"rev_ja": "やっと振り返って、残った二つが見えた。もう行ける。",
+"rev_do_ja": "その二つを持って、小さな新しいことを一つやる。"
 },
 {
 "slug": "six-of-cups",
@@ -711,7 +916,12 @@
 "rev_zh": "困在过去。怀念变成了住址。",
 "rev_en": "Stuck in the past. Nostalgia became an address.",
 "rev_do_zh": "今天做一件只属于现在的事。",
-"rev_do_en": "Do one thing today that belongs only to now."
+"rev_do_en": "Do one thing today that belongs only to now.",
+"name_ja": "カップの6",
+"up_ja": "古いものが心をやわらかくする。思い出すのはいい。住み戻らないこと。",
+"up_do_ja": "古い写真を一枚だけ見て、しまう。",
+"rev_ja": "過去に留まっている。懐かしさが住所になった。",
+"rev_do_ja": "今日、今にしか属さないことを一つやる。"
 },
 {
 "slug": "seven-of-cups",
@@ -728,7 +938,12 @@
 "rev_zh": "幻想散了，看到了实际。有点失望，但能用。",
 "rev_en": "The fantasies clear and the real shows. Disappointing, but usable.",
 "rev_do_zh": "从实际的选项里挑一个，今天做第一步。",
-"rev_do_en": "Pick one real option and take its first step today."
+"rev_do_en": "Pick one real option and take its first step today.",
+"name_ja": "カップの7",
+"up_ja": "選択肢が多すぎて、どれも空想だ。明日から始められるものを選ぶこと。",
+"up_do_ja": "選択肢を並べて、明日始められないものを消す。",
+"rev_ja": "空想が晴れて、現実が出てきた。がっかりするが、使える。",
+"rev_do_ja": "現実的な選択肢を一つ選んで、今日その第一歩を踏む。"
 },
 {
 "slug": "eight-of-cups",
@@ -745,7 +960,12 @@
 "rev_zh": "该走没走。留下来不是忠诚，是怕。",
 "rev_en": "Should have left, did not. Staying is not loyalty; it is fear.",
 "rev_do_zh": "写下你留下的真实原因。",
-"rev_do_en": "Write down the real reason you are staying."
+"rev_do_en": "Write down the real reason you are staying.",
+"name_ja": "カップの8",
+"up_ja": "出ていく時だ。置いていくものが悪いのではない。もうあなたのものではないだけだ。",
+"up_do_ja": "もう行っていない集まりや約束を、正式に一つ抜ける。",
+"rev_ja": "出るべきだったのに出なかった。留まるのは忠義ではなく、怖さだ。",
+"rev_do_ja": "留まっている本当の理由を書く。"
 },
 {
 "slug": "nine-of-cups",
@@ -762,7 +982,12 @@
 "rev_zh": "满足是假的，是撑的。少要一点。",
 "rev_en": "The satisfaction is faked, or forced. Want less.",
 "rev_do_zh": "今天取消一样你其实不需要的东西。",
-"rev_do_en": "Cancel one thing today that you do not actually need."
+"rev_do_en": "Cancel one thing today that you do not actually need.",
+"name_ja": "カップの9",
+"up_ja": "満足。望んでいたもので、それが手にある。認めること。",
+"up_do_ja": "今日、満たされたことを一つ書く。",
+"rev_ja": "満足を装っているか、無理に作っている。望む量を減らすこと。",
+"rev_do_ja": "本当は要らないものを、今日一つ解約する。"
 },
 {
 "slug": "ten-of-cups",
@@ -779,7 +1004,12 @@
 "rev_zh": "家里的问题，没人说。你先说。",
 "rev_en": "A problem at home nobody names. You name it.",
 "rev_do_zh": "今天在家问一句「最近怎么样」，然后等。",
-"rev_do_en": "Ask at home 'how are things lately', then wait."
+"rev_do_en": "Ask at home 'how are things lately', then wait.",
+"name_ja": "カップの10",
+"up_ja": "家での良い一日。することはない。ただそこにいること。",
+"up_do_ja": "今夜は残業しない。夕飯に帰る。",
+"rev_ja": "家の中に、誰も口に出さない問題がある。あなたが口にすること。",
+"rev_do_ja": "家で「最近どう」と訊いて、そのあと待つ。"
 },
 {
 "slug": "page-of-cups",
@@ -796,7 +1026,12 @@
 "rev_zh": "情绪像小孩，不讲道理。哄一下，别讲道理。",
 "rev_en": "The feeling is a child and will not reason. Soothe it; do not argue.",
 "rev_do_zh": "今天允许自己不讲道理一小时。",
-"rev_do_en": "Allow yourself one unreasonable hour today."
+"rev_do_en": "Allow yourself one unreasonable hour today.",
+"name_ja": "カップのペイジ",
+"up_ja": "小さくて、少し子どもじみた感情。それで合っている。",
+"up_do_ja": "子どもの頃に好きだったことを、十分だけやる。",
+"rev_ja": "その感情は子どもで、理屈が通じない。なだめること。言い負かさない。",
+"rev_do_ja": "今日、一時間だけ理屈に合わないことを自分に許す。"
 },
 {
 "slug": "knight-of-cups",
@@ -813,7 +1048,12 @@
 "rev_zh": "承诺得太快。不是撒谎，是没算。",
 "rev_en": "Promised too fast. Not a lie; just uncounted.",
 "rev_do_zh": "收回一个你兑现不了的承诺，今天说。",
-"rev_do_en": "Withdraw one promise you cannot keep. Say so today."
+"rev_do_en": "Withdraw one promise you cannot keep. Say so today.",
+"name_ja": "カップのナイト",
+"up_ja": "ロマンチックな申し出。あるいはしたくなっている。していい。ただし相手の予定を確かめること。",
+"up_do_ja": "具体的な日時と場所を出す。「そのうち」は禁物。",
+"rev_ja": "早く約束しすぎた。嘘ではなく、数えていなかっただけだ。",
+"rev_do_ja": "守れない約束を一つ、今日撤回する。"
 },
 {
 "slug": "queen-of-cups",
@@ -830,7 +1070,12 @@
 "rev_zh": "接了太多别人的情绪，自己的漏了。",
 "rev_en": "Caught too many other people's feelings; your own leaked out.",
 "rev_do_zh": "今天对一个人说「我今天接不住」。",
-"rev_do_en": "Tell one person today: 'I can't take that on today'."
+"rev_do_en": "Tell one person today: 'I can't take that on today'.",
+"name_ja": "カップのクイーン",
+"up_ja": "人の感情を拾っている。それでいい。今日は自分の分も拾うこと。",
+"up_do_ja": "一度「自分はどうか」と訊いて、正直に答える。",
+"rev_ja": "人の感情を拾いすぎて、自分の分が漏れ出した。",
+"rev_do_ja": "今日、誰か一人に言う。「それは今日は引き受けられない」"
 },
 {
 "slug": "king-of-cups",
@@ -847,7 +1092,12 @@
 "rev_zh": "稳过头，变冷了。稳和冷差一句话。",
 "rev_en": "Steady to the point of cold. The difference is one sentence.",
 "rev_do_zh": "对一个人说一句有温度的话。",
-"rev_do_en": "Say one warm thing to one person."
+"rev_do_en": "Say one warm thing to one person.",
+"name_ja": "カップのキング",
+"up_ja": "感じてはいるが、流されてはいない。今週のあなたは落ち着いているほうだ。",
+"up_do_ja": "誰かが熱くなったら、半拍待ってから答える。",
+"rev_ja": "落ち着きすぎて冷たい。その差は一文だ。",
+"rev_do_ja": "誰か一人に、あたたかいことを一つ言う。"
 },
 {
 "slug": "ace-of-swords",
@@ -864,7 +1114,12 @@
 "rev_zh": "想清楚了，说错了。清楚不等于说得出来。",
 "rev_en": "Thought clearly, said it wrong. Clear is not the same as sayable.",
 "rev_do_zh": "把那件事重新说一遍，换一种说法。",
-"rev_do_en": "Say it again, another way."
+"rev_do_en": "Say it again, another way.",
+"name_ja": "ソードのエース",
+"up_ja": "一つ、はっきりする。はっきりすることは痛むこともあるが、良いことだ。",
+"up_do_ja": "はっきりしたことを一文で書く。",
+"rev_ja": "考えははっきりしたのに、言い方を間違えた。明晰と、言えることは別だ。",
+"rev_do_ja": "もう一度、別の言い方で言う。"
 },
 {
 "slug": "two-of-swords",
@@ -881,7 +1136,12 @@
 "rev_zh": "拖到别人替你选了。下次早一点。",
 "rev_en": "Stalled until someone chose for you. Earlier next time.",
 "rev_do_zh": "把下一个要做的决定的截止日写下来。",
-"rev_do_en": "Write the deadline for your next decision."
+"rev_do_en": "Write the deadline for your next decision.",
+"name_ja": "ソードの2",
+"up_ja": "二つの選択肢の前で引き延ばしている。引き延ばしも選択で、しかも最悪のものだ。",
+"up_do_ja": "いつまでに決めるか、期限を切る。",
+"rev_ja": "引き延ばしているうちに、誰かが代わりに決めた。次はもっと早く。",
+"rev_do_ja": "次の決定の期限を書く。"
 },
 {
 "slug": "three-of-swords",
@@ -898,7 +1158,12 @@
 "rev_zh": "疼在过去，慢慢在好。别去揭。",
 "rev_en": "The hurt is easing. Do not pick at it.",
 "rev_do_zh": "今天不看那个人的动态。",
-"rev_do_en": "Do not look at that person's feed today."
+"rev_do_en": "Do not look at that person's feed today.",
+"name_ja": "ソードの3",
+"up_ja": "本当に痛むものがある。説明はいらない。一日、痛ませておくこと。",
+"up_do_ja": "今日、誰か一人に言う。「今日はあまり調子がよくない」",
+"rev_ja": "痛みは引いてきている。かさぶたをいじらないこと。",
+"rev_do_ja": "今日はあの人の投稿を見ない。"
 },
 {
 "slug": "four-of-swords",
@@ -915,7 +1180,12 @@
 "rev_zh": "休息不下来，因为你在假装休息。",
 "rev_en": "You cannot rest because you are performing rest.",
 "rev_do_zh": "关掉所有通知一小时，真的关。",
-"rev_do_en": "Turn off every notification for an hour. Actually off."
+"rev_do_en": "Turn off every notification for an hour. Actually off.",
+"name_ja": "ソードの4",
+"up_ja": "今は休むこと。怠けではなく、修理だ。",
+"up_do_ja": "午後の一時間を空けておく。",
+"rev_ja": "休めないのは、休むことを演じているからだ。",
+"rev_do_ja": "一時間、通知を全部切る。本当に切る。"
 },
 {
 "slug": "five-of-swords",
@@ -932,7 +1202,12 @@
 "rev_zh": "一场架的余波。放它过去。",
 "rev_en": "The aftershock of a fight. Let it pass.",
 "rev_do_zh": "不给那件事补最后一句。",
-"rev_do_en": "Add no last word to that argument."
+"rev_do_en": "Add no last word to that argument.",
+"name_ja": "ソードの5",
+"up_ja": "勝つ値打ちのない争いに勝った。あるいは負けた。同じことだ。",
+"up_do_ja": "今日、その話を蒸し返さない。",
+"rev_ja": "争いの余震。過ぎるに任せること。",
+"rev_do_ja": "あの言い合いに、最後の一言を足さない。"
 },
 {
 "slug": "six-of-swords",
@@ -949,7 +1224,12 @@
 "rev_zh": "想走，走不了。不是路的问题，是行李。",
 "rev_en": "Want to leave, cannot. Not the road; the luggage.",
 "rev_do_zh": "写下你不能走的真实原因，只写一条。",
-"rev_do_en": "Write the real reason you cannot leave. One line."
+"rev_do_en": "Write the real reason you cannot leave. One line.",
+"name_ja": "ソードの6",
+"up_ja": "静かな水域へ移っている。遅いが、向きは正しい。",
+"up_do_ja": "明日を楽にすることを一つ、先に用意する。",
+"rev_ja": "出たいのに出られない。道ではなく、荷物の問題だ。",
+"rev_do_ja": "出られない本当の理由を、一行で書く。"
 },
 {
 "slug": "seven-of-swords",
@@ -966,7 +1246,12 @@
 "rev_zh": "绕的路被看穿了。直说吧，还来得及。",
 "rev_en": "The detour has been seen through. Say it straight; there is still time.",
 "rev_do_zh": "今天主动承认一件绕开的小事。",
-"rev_do_en": "Own up to one small thing you went around."
+"rev_do_en": "Own up to one small thing you went around.",
+"name_ja": "ソードの7",
+"up_ja": "誰かが正面からではなく、回り道をしている。たぶんあなただ。まっすぐのほうが安い。",
+"up_do_ja": "ずっと遠回しに言っていたことを、一つまっすぐ言う。",
+"rev_ja": "回り道はもう見抜かれている。まっすぐ言えば、まだ間に合う。",
+"rev_do_ja": "回り道した小さなことを一つ、自分から認める。"
 },
 {
 "slug": "eight-of-swords",
@@ -983,7 +1268,12 @@
 "rev_zh": "绳子松了。你现在可以动了，只是还不习惯。",
 "rev_en": "The rope has loosened. You can move now; you are just not used to it.",
 "rev_do_zh": "今天做一件上周「不能做」的事。",
-"rev_do_en": "Do one thing today that was 'impossible' last week."
+"rev_do_en": "Do one thing today that was 'impossible' last week.",
+"name_ja": "ソードの8",
+"up_ja": "縛られている気がするが、縄は実はゆるい。動いてみること。",
+"up_do_ja": "「できない」と思っていた小さなことを一つやって、本当かどうか確かめる。",
+"rev_ja": "縄はゆるんだ。もう動ける。慣れていないだけだ。",
+"rev_do_ja": "先週「無理」だったことを、今日一つやる。"
 },
 {
 "slug": "nine-of-swords",
@@ -1000,7 +1290,12 @@
 "rev_zh": "焦虑过了最高点。睡一觉，明天小一号。",
 "rev_en": "The worry passed its peak. Sleep; tomorrow it is a size smaller.",
 "rev_do_zh": "今晚早睡半小时。",
-"rev_do_en": "Sleep half an hour earlier tonight."
+"rev_do_en": "Sleep half an hour earlier tonight.",
+"name_ja": "ソードの9",
+"up_ja": "夜の心配は朝日で縮む。朝まで待つこと。",
+"up_do_ja": "心配を書いておいて、明日の朝に読む。",
+"rev_ja": "心配は山を越えた。寝ること。明日には一回り小さい。",
+"rev_do_ja": "今夜は三十分早く寝る。"
 },
 {
 "slug": "ten-of-swords",
@@ -1017,7 +1312,12 @@
 "rev_zh": "最坏的过去了。你还在。",
 "rev_en": "The worst is over. You are still here.",
 "rev_do_zh": "今天做一件微小的、向上的事。",
-"rev_do_en": "Do one tiny thing today that points up."
+"rev_do_en": "Do one tiny thing today that points up.",
+"name_ja": "ソードの10",
+"up_ja": "どん底。底の良いところは、これ以上下がらないことだ。",
+"up_do_ja": "今日は一つだけやる。ちゃんとした食事を一回とる。",
+"rev_ja": "最悪は過ぎた。あなたはまだここにいる。",
+"rev_do_ja": "今日、上を向く小さなことを一つやる。"
 },
 {
 "slug": "page-of-swords",
@@ -1034,7 +1334,12 @@
 "rev_zh": "话说太多，事做太少。",
 "rev_en": "Too many words, too little done.",
 "rev_do_zh": "今天少说一半，多做一件。",
-"rev_do_en": "Say half as much today and do one more thing."
+"rev_do_en": "Say half as much today and do one more thing.",
+"name_ja": "ソードのペイジ",
+"up_ja": "好奇心が強い。詮索ではなく、問いに使うこと。",
+"up_do_ja": "今日「なぜ」を三回訊く。",
+"rev_ja": "言葉が多くて、手が動いていない。",
+"rev_do_ja": "今日は口数を半分にして、一つ多くやる。"
 },
 {
 "slug": "knight-of-swords",
@@ -1051,7 +1356,12 @@
 "rev_zh": "冲动的话已经说出去了。补一句，不解释。",
 "rev_en": "The sharp words are already out. Add one line; do not explain.",
 "rev_do_zh": "给那个人发一句「我说重了」。",
-"rev_do_en": "Send them: 'I put that too hard'."
+"rev_do_en": "Send them: 'I put that too hard'.",
+"name_ja": "ソードのナイト",
+"up_ja": "突っ込みすぎ、言い方が鋭すぎる。半拍だけ落とすこと。",
+"up_do_ja": "送る前に、全部読み返す。",
+"rev_ja": "鋭い言葉はもう出てしまった。一行だけ足す。説明はしない。",
+"rev_do_ja": "送る。「言い方がきつかった」"
 },
 {
 "slug": "queen-of-swords",
@@ -1068,7 +1378,12 @@
 "rev_zh": "准，但冷。这周有人需要你的温度，不是判断。",
 "rev_en": "Exact, but cold. Someone needs your warmth this week, not your verdict.",
 "rev_do_zh": "忍住一次纠正别人的冲动。",
-"rev_do_en": "Hold back one urge to correct someone."
+"rev_do_en": "Hold back one urge to correct someone.",
+"name_ja": "ソードのクイーン",
+"up_ja": "よく見えていて、言葉も正確だ。決めて、本当のことを言う日。",
+"up_do_ja": "先延ばしにしていた決定をして、今日それを伝える。",
+"rev_ja": "正確だが、冷たい。今週、誰かが必要としているのは判定ではなく体温だ。",
+"rev_do_ja": "人を正したくなる気持ちを、一回こらえる。"
 },
 {
 "slug": "king-of-swords",
@@ -1085,7 +1400,12 @@
 "rev_zh": "逻辑被拿来当武器了。放下。",
 "rev_en": "Logic is being used as a weapon. Put it down.",
 "rev_do_zh": "今天输一次辩论。",
-"rev_do_en": "Lose one argument today."
+"rev_do_en": "Lose one argument today.",
+"name_ja": "ソードのキング",
+"up_ja": "論理が強く、情が薄い。役には立つが、人に向けないこと。",
+"up_do_ja": "論理は仕事に使う。人にはまず「大丈夫か」と訊く。",
+"rev_ja": "論理が武器になっている。置くこと。",
+"rev_do_ja": "今日、一つの議論でわざと負ける。"
 },
 {
 "slug": "ace-of-pentacles",
@@ -1102,7 +1422,12 @@
 "rev_zh": "机会来了，你没接。可能还能捡。",
 "rev_en": "The chance came and you did not catch it. It may still be on the floor.",
 "rev_do_zh": "回那条你没回的机会，今天。",
-"rev_do_en": "Answer the opportunity you left unanswered. Today."
+"rev_do_en": "Answer the opportunity you left unanswered. Today.",
+"name_ja": "ペンタクルのエース",
+"up_ja": "具体的な機会。仕事か、金額か、土地か。掴むこと。",
+"up_do_ja": "その話に今日返事をする。",
+"rev_ja": "機会は来たのに、掴まなかった。まだ床に落ちているかもしれない。",
+"rev_do_ja": "返していない話に、今日返事をする。"
 },
 {
 "slug": "two-of-pentacles",
@@ -1119,7 +1444,12 @@
 "rev_zh": "两头都掉了。先捡一头。",
 "rev_en": "Both things dropped. Pick up one.",
 "rev_do_zh": "今天只处理一件事。",
-"rev_do_en": "Handle one thing today."
+"rev_do_en": "Handle one thing today.",
+"name_ja": "ペンタクルの2",
+"up_ja": "二つが釣り合っている。二つまでは持てる。三つは持てない。",
+"up_do_ja": "今週は新しいものを引き受けない。",
+"rev_ja": "二つとも落とした。一つ拾うこと。",
+"rev_do_ja": "今日は一つだけ片づける。"
 },
 {
 "slug": "three-of-pentacles",
@@ -1136,7 +1466,12 @@
 "rev_zh": "合作卡住了。不是人不对，是分工不清。",
 "rev_en": "The collaboration is stuck. Not the people; the division of work.",
 "rev_do_zh": "写下谁做什么，发给所有人。",
-"rev_do_en": "Write who does what and send it to everyone."
+"rev_do_en": "Write who does what and send it to everyone.",
+"name_ja": "ペンタクルの3",
+"up_ja": "腕が認められている。今は一人より、人と組むほうが早い。",
+"up_do_ja": "今日、一つのことで組む相手を一人見つける。",
+"rev_ja": "共同作業が詰まっている。人ではなく、分担の問題だ。",
+"rev_do_ja": "誰が何をやるのかを書いて、全員に送る。"
 },
 {
 "slug": "four-of-pentacles",
@@ -1153,7 +1488,12 @@
 "rev_zh": "松了，或者松过头了。看看账。",
 "rev_en": "Loosened, maybe too far. Look at the ledger.",
 "rev_do_zh": "今天看一眼支出。",
-"rev_do_en": "Look at your spending once today."
+"rev_do_en": "Look at your spending once today.",
+"name_ja": "ペンタクルの4",
+"up_ja": "握りすぎだ。金も、人も、時間も同じこと。",
+"up_do_ja": "今日ひとつ緩める。少し使う、少しあげる、少し手放す。",
+"rev_ja": "緩めた。少し緩めすぎたかもしれない。帳簿を見ること。",
+"rev_do_ja": "今日、一度だけ支出を見る。"
 },
 {
 "slug": "five-of-pentacles",
@@ -1170,7 +1510,12 @@
 "rev_zh": "终于进门了。冷的部分过去了，别再站回外面。",
 "rev_en": "You finally went in. The cold part is over; do not step back out.",
 "rev_do_zh": "接受一次已经给你的帮助。",
-"rev_do_en": "Accept one piece of help already offered."
+"rev_do_en": "Accept one piece of help already offered.",
+"name_ja": "ペンタクルの5",
+"up_ja": "貧しく、寒く、誰にも見えていない気がする。扉はすぐそこにある。入ること。",
+"up_do_ja": "誰か一人に、一度だけ助けを頼む。",
+"rev_ja": "やっと中に入った。寒いところは終わった。また出ていかないこと。",
+"rev_do_ja": "すでに差し出されている助けを、一つ受け取る。"
 },
 {
 "slug": "six-of-pentacles",
@@ -1187,7 +1532,12 @@
 "rev_zh": "给的和拿的不平衡。有人在欠，可能是你。",
 "rev_en": "Giving and taking, out of balance. Someone owes, possibly you.",
 "rev_do_zh": "今天还一样东西，或者要回一样。",
-"rev_do_en": "Return one thing today, or ask for one back."
+"rev_do_en": "Return one thing today, or ask for one back.",
+"name_ja": "ペンタクルの6",
+"up_ja": "与えることと受け取ること、その両方が起きている。今どちら側かを見て、受け入れること。",
+"up_do_ja": "今日、ひとつ与えるか、ひとつ受け取る。騒がずに。",
+"rev_ja": "与えと受けの釣り合いが崩れている。誰かに借りがある。たぶんあなたに。",
+"rev_do_ja": "今日、一つ返すか、一つ返してもらう。"
 },
 {
 "slug": "seven-of-pentacles",
@@ -1204,7 +1554,12 @@
 "rev_zh": "挖出来看了，苗还小。种回去。",
 "rev_en": "You dug it up to check; the shoot is small. Put it back.",
 "rev_do_zh": "这周不再看进度。",
-"rev_do_en": "Do not check progress again this week."
+"rev_do_en": "Do not check progress again this week.",
+"name_ja": "ペンタクルの7",
+"up_ja": "植えた。まだ育っていない。見ていること。掘り返さない。",
+"up_do_ja": "今日はあの件の進みを確認しない。",
+"rev_ja": "確かめようと掘り返した。芽はまだ小さい。埋め戻すこと。",
+"rev_do_ja": "今週はもう進捗を見ない。"
 },
 {
 "slug": "eight-of-pentacles",
@@ -1221,7 +1576,12 @@
 "rev_zh": "练腻了，或者练错了方向。换一种练法。",
 "rev_en": "Bored of practice, or practicing the wrong thing. Change the drill.",
 "rev_do_zh": "把练习换一种形式做一次。",
-"rev_do_en": "Do the practice once in a different form."
+"rev_do_en": "Do the practice once in a different form.",
+"name_ja": "ペンタクルの8",
+"up_ja": "稽古。同じことの八回目。八回目から始まる。",
+"up_do_ja": "一つの技を三十分繰り返す。",
+"rev_ja": "稽古に飽きたか、違うものを稽古している。型を変えること。",
+"rev_do_ja": "同じ稽古を、一度だけ違うやり方でやる。"
 },
 {
 "slug": "nine-of-pentacles",
@@ -1238,7 +1598,12 @@
 "rev_zh": "舒服，但一个人。舒服不等于够。",
 "rev_en": "Comfortable, but alone. Comfortable is not the same as enough.",
 "rev_do_zh": "今天约一个人分享你的舒服。",
-"rev_do_en": "Share your comfort with one person today."
+"rev_do_en": "Share your comfort with one person today.",
+"name_ja": "ペンタクルの9",
+"up_ja": "自分の手で得た心地よさ。言い訳せずに味わうこと。",
+"up_do_ja": "今日、一人で小さな贅沢を一つ自分に許す。",
+"rev_ja": "心地よいが、一人だ。心地よいことと、足りていることは別だ。",
+"rev_do_ja": "今日、その心地よさを誰か一人と分ける。"
 },
 {
 "slug": "ten-of-pentacles",
@@ -1255,7 +1620,12 @@
 "rev_zh": "家里的稳在松。不是塌，是要维护。",
 "rev_en": "The home's steadiness is loosening. Not falling; needs maintenance.",
 "rev_do_zh": "修好家里一样坏了的东西。",
-"rev_do_en": "Fix one broken thing at home."
+"rev_do_en": "Fix one broken thing at home.",
+"name_ja": "ペンタクルの10",
+"up_ja": "長く続く安定。家、蓄え、根。",
+"up_do_ja": "半年後の自分のために、一つやっておく。",
+"rev_ja": "家の安定が緩んでいる。崩れてはいない。手入れが要る。",
+"rev_do_ja": "家の壊れているものを一つ直す。"
 },
 {
 "slug": "page-of-pentacles",
@@ -1272,7 +1642,12 @@
 "rev_zh": "报了名没去。去一次就行。",
 "rev_en": "Signed up, never went. Go once.",
 "rev_do_zh": "去上你报了的那一节课。",
-"rev_do_en": "Attend the one class you signed up for."
+"rev_do_en": "Attend the one class you signed up for.",
+"name_ja": "ペンタクルのペイジ",
+"up_ja": "何かを学べる機会。役に立たなくても、学ぶこと。",
+"up_do_ja": "今日、何かに申し込む。",
+"rev_ja": "申し込んで、行っていない。一度行くこと。",
+"rev_do_ja": "申し込んだその講座に、一度出る。"
 },
 {
 "slug": "knight-of-pentacles",
@@ -1289,7 +1664,12 @@
 "rev_zh": "慢成了停。加一格速度。",
 "rev_en": "Slow became stopped. Add one notch of speed.",
 "rev_do_zh": "今天比昨天多做一件。",
-"rev_do_en": "Do one more thing today than yesterday."
+"rev_do_en": "Do one more thing today than yesterday.",
+"name_ja": "ペンタクルのナイト",
+"up_ja": "遅く、着実に。今週は驚きはないが、進む。",
+"up_do_ja": "同じことを同じ時刻に、五日続ける。",
+"rev_ja": "遅いが、止まった。速度を一段上げること。",
+"rev_do_ja": "昨日より一つ多くやる。"
 },
 {
 "slug": "queen-of-pentacles",
@@ -1306,7 +1686,12 @@
 "rev_zh": "照顾所有人，没照顾家和自己。",
 "rev_en": "Caring for everyone except home and self.",
 "rev_do_zh": "今天为自己做一顿饭。",
-"rev_do_en": "Cook one meal for yourself today."
+"rev_do_en": "Cook one meal for yourself today.",
+"name_ja": "ペンタクルのクイーン",
+"up_ja": "家の面倒を見ること。家にはあなたの体も入る。",
+"up_do_ja": "食事を作るか、部屋を一つ片づける。",
+"rev_ja": "家と自分以外の全員の世話をしている。",
+"rev_do_ja": "今日、自分のために一食作る。"
 },
 {
 "slug": "king-of-pentacles",
@@ -1323,6 +1708,11 @@
 "rev_zh": "帮人帮成了管人。退一步。",
 "rev_en": "Helping turned into managing. Step back.",
 "rev_do_zh": "今天不给任何人建议，除非被问。",
-"rev_do_en": "Give no advice today unless asked."
+"rev_do_en": "Give no advice today unless asked.",
+"name_ja": "ペンタクルのキング",
+"up_ja": "金回りは安定している。人を助けられる時だ。助けること。管理しないこと。",
+"up_do_ja": "誰か一人を一度助けて、そのあと追いかけない。",
+"rev_ja": "助けが管理に変わっている。一歩引くこと。",
+"rev_do_ja": "今日は訊かれないかぎり助言しない。"
 }
 ]

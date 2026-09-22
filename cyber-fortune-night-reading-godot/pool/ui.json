@@ -1,490 +1,592 @@
 {
- "title": {
-  "zh": "夜读",
-  "en": "Night Reading"
- },
- "series": {
-  "zh": "blazeCore Play · 18+",
-  "en": "blazeCore Play · 18+"
- },
- "home.ask": {
-  "zh": "今天，你想用什么来问？",
-  "en": "What do you want to ask with today?"
- },
- "home.east": {
-  "zh": "签筒",
-  "en": "The Slip Tube"
- },
- "home.east.sub": {
-  "zh": "敲木鱼，摇签，读签",
-  "en": "Tap the fish. Shake. Read."
- },
- "home.west": {
-  "zh": "牌",
-  "en": "The Deck"
- },
- "home.west.sub": {
-  "zh": "切牌，翻一张",
-  "en": "Cut the deck. Turn one card."
- },
- "home.reader": {
-  "zh": "读心",
-  "en": "The Reader"
- },
- "home.reader.sub": {
-  "zh": "你还没说，她已经知道",
-  "en": "She tells you before you tell her."
- },
- "home.collection": {
-  "zh": "签架",
-  "en": "The Rack"
- },
- "home.shop": {
-  "zh": "香火",
-  "en": "Offerings"
- },
- "merit": {
-  "zh": "功德",
-  "en": "merit"
- },
- "focus": {
-  "zh": "专注",
-  "en": "focus"
- },
- "daily.free": {
-  "zh": "今日一签，免费",
-  "en": "Today's draw is free"
- },
- "daily.used": {
-  "zh": "今日免费已用",
-  "en": "Today's free draw is used"
- },
- "tube.tap": {
-  "zh": "敲",
-  "en": "Tap"
- },
- "tube.tap.hint": {
-  "zh": "点木鱼，或按空格",
-  "en": "Tap the fish, or press space"
- },
- "tube.fill": {
-  "zh": "签筒",
-  "en": "tube"
- },
- "tube.shake": {
-  "zh": "摇签",
-  "en": "Shake"
- },
- "tube.shake.free": {
-  "zh": "摇签 · 今日免费",
-  "en": "Shake · free today"
- },
- "tube.need": {
-  "zh": "还差 {n} 功德",
-  "en": "{n} merit to go"
- },
- "tube.upgrade": {
-  "zh": "添香 {cost}",
-  "en": "Add incense {cost}"
- },
- "tube.level": {
-  "zh": "香 {level} 级",
-  "en": "incense lv {level}"
- },
- "tube.auto": {
-  "zh": "梵烟 {auto}",
-  "en": "smoke {auto}"
- },
- "deck.cut": {
-  "zh": "切牌",
-  "en": "Cut"
- },
- "deck.turn": {
-  "zh": "翻牌",
-  "en": "Turn"
- },
- "deck.turn.free": {
-  "zh": "翻牌 · 今日免费",
-  "en": "Turn · free today"
- },
- "deck.reversed": {
-  "zh": "逆位",
-  "en": "reversed"
- },
- "deck.upright": {
-  "zh": "正位",
-  "en": "upright"
- },
- "deck.position": {
-  "zh": "落在：{p}",
-  "en": "It lands in: {p}"
- },
- "pos.past": {
-  "zh": "过去",
-  "en": "the past"
- },
- "pos.present": {
-  "zh": "现在",
-  "en": "the present"
- },
- "pos.helps": {
-  "zh": "助力",
-  "en": "what helps"
- },
- "pos.blocks": {
-  "zh": "阻碍",
-  "en": "what is in the way"
- },
- "slip.today": {
-  "zh": "今日可做",
-  "en": "Today, do this"
- },
- "slip.keep": {
-  "zh": "留下",
-  "en": "Keep"
- },
- "slip.burn": {
-  "zh": "焚化 +{n}",
-  "en": "Burn +{n}"
- },
- "slip.resolve": {
-  "zh": "化解 −{n}",
-  "en": "Resolve −{n}"
- },
- "slip.integrate": {
-  "zh": "整合 −{n}",
-  "en": "Integrate −{n}"
- },
- "slip.resolve.hint": {
-  "zh": "系在签架上，{t} 后化为一分常驻功德",
-  "en": "Tied to the rack, it becomes one lasting merit after {t}"
- },
- "slip.integrate.hint": {
-  "zh": "放在架上，{t} 后化为一分常驻专注",
-  "en": "Set on the rack, it becomes one lasting focus after {t}"
- },
- "rack.full": {
-  "zh": "签架已满",
-  "en": "The rack is full"
- },
- "rack.title": {
-  "zh": "签架",
-  "en": "The Rack"
- },
- "rack.tied": {
-  "zh": "系着的",
-  "en": "Tied"
- },
- "rack.ready": {
-  "zh": "已化解",
-  "en": "Resolved"
- },
- "rack.claim": {
-  "zh": "收下",
-  "en": "Take it"
- },
- "rack.remaining": {
-  "zh": "还有 {t}",
-  "en": "{t} left"
- },
- "rack.bonus": {
-  "zh": "每敲一下 +{n}",
-  "en": "+{n} per tap"
- },
- "rack.now": {
-  "zh": "立刻化解 (香火)",
-  "en": "Resolve now (shop)"
- },
- "collection.title": {
-  "zh": "签架 · 收藏",
-  "en": "The Rack · Collection"
- },
- "collection.slips": {
-  "zh": "签",
-  "en": "Slips"
- },
- "collection.cards": {
-  "zh": "牌",
-  "en": "Cards"
- },
- "collection.count": {
-  "zh": "{have} / {all}",
-  "en": "{have} / {all}"
- },
- "collection.empty": {
-  "zh": "还没有。去摇一签。",
-  "en": "Nothing yet. Go and shake."
- },
- "shop.title": {
-  "zh": "香火",
-  "en": "Offerings"
- },
- "shop.honest": {
-  "zh": "买来的签不比免费的签更吉。香火只换功德和时间，从不换运气。",
-  "en": "A paid draw is never a luckier draw. Offerings buy merit and time, never odds."
- },
- "shop.mock": {
-  "zh": "原型：付款为模拟，直接到账。",
-  "en": "Prototype: payment is mocked and grants at once."
- },
- "sku.merit_s": {
-  "zh": "一炷香 · 100 功德",
-  "en": "One stick · 100 merit"
- },
- "sku.merit_m": {
-  "zh": "一束香 · 600 功德",
-  "en": "A bundle · 600 merit"
- },
- "sku.merit_l": {
-  "zh": "一盒香 · 2000 功德",
-  "en": "A box · 2000 merit"
- },
- "sku.extra_draw": {
-  "zh": "再来一签 · 今天多一次免费",
-  "en": "One more · a second free draw today"
- },
- "sku.resolve_now": {
-  "zh": "立刻化解 · 架上最早的一支",
-  "en": "Resolve now · the oldest on the rack"
- },
- "sku.rack_slot": {
-  "zh": "签架加一格",
-  "en": "One more rack slot"
- },
- "sku.buy": {
-  "zh": "{price}",
-  "en": "{price}"
- },
- "back": {
-  "zh": "返回",
-  "en": "Back"
- },
- "close": {
-  "zh": "关闭",
-  "en": "Close"
- },
- "lang": {
-  "zh": "EN",
-  "en": "中文"
- },
- "rank.daji": {
-  "zh": "大吉",
-  "en": "Great Fortune"
- },
- "rank.zhongji": {
-  "zh": "中吉",
-  "en": "Good Fortune"
- },
- "rank.xiaoji": {
-  "zh": "小吉",
-  "en": "Small Fortune"
- },
- "rank.moji": {
-  "zh": "末吉",
-  "en": "Late Fortune"
- },
- "rank.xiong": {
-  "zh": "凶",
-  "en": "Ill"
- },
- "rank.daxiong": {
-  "zh": "大凶",
-  "en": "Great Ill"
- },
- "subj.work": {
-  "zh": "事业",
-  "en": "Work"
- },
- "subj.money": {
-  "zh": "财",
-  "en": "Money"
- },
- "subj.love": {
-  "zh": "情",
-  "en": "Love"
- },
- "subj.body": {
-  "zh": "身体",
-  "en": "Body"
- },
- "subj.study": {
-  "zh": "学业",
-  "en": "Study"
- },
- "subj.traveler": {
-  "zh": "行人",
-  "en": "The one you wait for"
- },
- "board.more": {
-  "zh": "今天的签读完了。",
-  "en": "Today's reading is done."
- },
- "time.min": {
-  "zh": "{n} 分钟",
-  "en": "{n} min"
- },
- "time.hr": {
-  "zh": "{n} 小时",
-  "en": "{n} h"
- },
- "resolved.toast": {
-  "zh": "化解了。每敲一下多 +1。",
-  "en": "Resolved. Every tap now gives +1 more."
- },
- "burned.toast": {
-  "zh": "你没有说出口（+{n} 功德）",
-  "en": "You did not say it (+{n} merit)"
- },
- "kept.toast": {
-  "zh": "你把这一签读给了她",
-  "en": "You read it to her"
- },
- "reader.begin": {
-  "zh": "开始",
-  "en": "Begin"
- },
- "reader.pick": {
-  "zh": "她今天准备了四场。选一场。",
-  "en": "She has four pieces ready today. Choose one."
- },
- "night.rule": {
-  "zh": "白天你读人。入夜之后，你读出来的就成真。",
-  "en": "By day you read people. After dark, what you read becomes true."
- },
- "night.who": {
-  "zh": "今晚读谁？",
-  "en": "Who are you reading tonight?"
- },
- "night.tracks": {
-  "zh": "{n}/9",
-  "en": "{n}/9"
- },
- "night.done": {
-  "zh": "已读完",
-  "en": "read"
- },
- "night.ready": {
-  "zh": "她在等",
-  "en": "she is waiting"
- },
- "night.instrument": {
-  "zh": "用什么读",
-  "en": "Read her with"
- },
- "inst.slip": {
-  "zh": "签",
-  "en": "The tube"
- },
- "inst.card": {
-  "zh": "牌",
-  "en": "The deck"
- },
- "inst.force": {
-  "zh": "读心",
-  "en": "Mentalism"
- },
- "night.draw": {
-  "zh": "读",
-  "en": "Read"
- },
- "night.draw.free": {
-  "zh": "读 · 今日免费",
-  "en": "Read · free today"
- },
- "night.need": {
-  "zh": "还差 {n} 功德",
-  "en": "{n} merit to go"
- },
- "night.tap": {
-  "zh": "敲木鱼",
-  "en": "Tap the fish"
- },
- "night.speak": {
-  "zh": "读给她听",
-  "en": "Say it to her"
- },
- "night.hold": {
-  "zh": "不说",
-  "en": "Keep it"
- },
- "night.held": {
-  "zh": "你把这一签收起来了（+{n} 功德）",
-  "en": "You keep it to yourself (+{n} merit)"
- },
- "night.took": {
-  "zh": "{track} +{n}",
-  "en": "{track} +{n}"
- },
- "night.back": {
-  "zh": "{track} {n}",
-  "en": "{track} {n}"
- },
- "night.refused": {
-  "zh": "她没有接。这一签作废了。",
-  "en": "She didn't take it. The draw is spent."
- },
- "night.locked": {
-  "zh": "{track}：现在是真的了。",
-  "en": "{track}: true now."
- },
- "night.all": {
-  "zh": "她三条都是真的了。",
-  "en": "All three are true now."
- },
- "night.scene": {
-  "zh": "留下来",
-  "en": "Stay"
- },
- "night.scene.locked": {
-  "zh": "看广告解锁 · 18+",
-  "en": "Watch an ad to unlock · 18+"
- },
- "night.scene.denied": {
-  "zh": "没解锁——什么都没有变。",
-  "en": "Not unlocked — nothing changed."
- },
- "night.next": {
-  "zh": "回到桌边",
-  "en": "Back to the table"
- },
- "night.clear": {
-  "zh": "三个人，三个夜晚。",
-  "en": "Three women. Three nights."
- },
- "night.clear.sub": {
-  "zh": "你读出来的，都成真了。",
-  "en": "Everything you read came true."
- },
- "night.more": {
-  "zh": "还有别的",
-  "en": "More like this"
- },
- "night.placeholder": {
-  "zh": "占位图 · 未完成",
-  "en": "PLACEHOLDER ART"
- },
- "night.consent": {
-  "zh": "她接了，才算数。",
-  "en": "It only counts if she takes it."
- },
- "rank.strength": {
-  "zh": "力度 {n}",
-  "en": "strength {n}"
- },
- "title.tagline": {
-  "en": "WHAT YOU READ FOR HER, SHE STARTS LIVING.",
-  "zh": "你为她读出来的，她就开始活成那样。"
- },
- "title.read": {
-  "en": "DRAW HER CARD TONIGHT",
-  "zh": "今晚为她求一签"
- },
- "title.again": {
-  "en": "WHO IS STILL WAITING",
-  "zh": "谁还在等"
- },
- "title.hint": {
-  "en": "A reading only lands if she takes it.",
-  "zh": "她收下了，这一签才作数。"
- }
+"title": {
+"zh": "夜读",
+"en": "Night Reading",
+"ja": "夜読"
+},
+"series": {
+"zh": "blazeCore Play · 18+",
+"en": "blazeCore Play · 18+",
+"ja": "blazeCore Play · 18+"
+},
+"home.ask": {
+"zh": "今天，你想用什么来问？",
+"en": "What do you want to ask with today?",
+"ja": "今日は、何で占う？"
+},
+"home.east": {
+"zh": "签筒",
+"en": "The Slip Tube",
+"ja": "おみくじ筒"
+},
+"home.east.sub": {
+"zh": "敲木鱼，摇签，读签",
+"en": "Tap the fish. Shake. Read.",
+"ja": "木魚を叩き、振り、読む"
+},
+"home.west": {
+"zh": "牌",
+"en": "The Deck",
+"ja": "カード"
+},
+"home.west.sub": {
+"zh": "切牌，翻一张",
+"en": "Cut the deck. Turn one card.",
+"ja": "カットして、一枚めくる"
+},
+"home.reader": {
+"zh": "读心",
+"en": "The Reader",
+"ja": "読心"
+},
+"home.reader.sub": {
+"zh": "你还没说，她已经知道",
+"en": "She tells you before you tell her.",
+"ja": "言う前に、彼女はもう知っている"
+},
+"home.collection": {
+"zh": "签架",
+"en": "The Rack",
+"ja": "掛け棚"
+},
+"home.shop": {
+"zh": "香火",
+"en": "Offerings",
+"ja": "お供え"
+},
+"merit": {
+"zh": "功德",
+"en": "merit",
+"ja": "功徳"
+},
+"focus": {
+"zh": "专注",
+"en": "focus",
+"ja": "集中"
+},
+"daily.free": {
+"zh": "今日一签，免费",
+"en": "Today's draw is free",
+"ja": "今日の一回は無料"
+},
+"daily.used": {
+"zh": "今日免费已用",
+"en": "Today's free draw is used",
+"ja": "今日の無料はもう使った"
+},
+"tube.tap": {
+"zh": "敲",
+"en": "Tap",
+"ja": "叩く"
+},
+"tube.tap.hint": {
+"zh": "点木鱼，或按空格",
+"en": "Tap the fish, or press space",
+"ja": "木魚を叩く、またはスペースキー"
+},
+"tube.fill": {
+"zh": "签筒",
+"en": "tube",
+"ja": "筒"
+},
+"tube.shake": {
+"zh": "摇签",
+"en": "Shake",
+"ja": "振る"
+},
+"tube.shake.free": {
+"zh": "摇签 · 今日免费",
+"en": "Shake · free today",
+"ja": "振る · 今日は無料"
+},
+"tube.need": {
+"zh": "还差 {n} 功德",
+"en": "{n} merit to go",
+"ja": "あと {n} 功徳"
+},
+"tube.upgrade": {
+"zh": "添香 {cost}",
+"en": "Add incense {cost}",
+"ja": "香を足す {cost}"
+},
+"tube.level": {
+"zh": "香 {level} 级",
+"en": "incense lv {level}",
+"ja": "香 {level} 段"
+},
+"tube.auto": {
+"zh": "梵烟 {auto}",
+"en": "smoke {auto}",
+"ja": "煙 {auto}"
+},
+"deck.cut": {
+"zh": "切牌",
+"en": "Cut",
+"ja": "カット"
+},
+"deck.turn": {
+"zh": "翻牌",
+"en": "Turn",
+"ja": "めくる"
+},
+"deck.turn.free": {
+"zh": "翻牌 · 今日免费",
+"en": "Turn · free today",
+"ja": "めくる · 今日は無料"
+},
+"deck.reversed": {
+"zh": "逆位",
+"en": "reversed",
+"ja": "逆位置"
+},
+"deck.upright": {
+"zh": "正位",
+"en": "upright",
+"ja": "正位置"
+},
+"deck.position": {
+"zh": "落在：{p}",
+"en": "It lands in: {p}",
+"ja": "出た位置：{p}"
+},
+"pos.past": {
+"zh": "过去",
+"en": "the past",
+"ja": "過去"
+},
+"pos.present": {
+"zh": "现在",
+"en": "the present",
+"ja": "現在"
+},
+"pos.helps": {
+"zh": "助力",
+"en": "what helps",
+"ja": "助けるもの"
+},
+"pos.blocks": {
+"zh": "阻碍",
+"en": "what is in the way",
+"ja": "邪魔するもの"
+},
+"slip.today": {
+"zh": "今日可做",
+"en": "Today, do this",
+"ja": "今日できること"
+},
+"slip.keep": {
+"zh": "留下",
+"en": "Keep",
+"ja": "残す"
+},
+"slip.burn": {
+"zh": "焚化 +{n}",
+"en": "Burn +{n}",
+"ja": "焚く +{n}"
+},
+"slip.resolve": {
+"zh": "化解 −{n}",
+"en": "Resolve −{n}",
+"ja": "解く −{n}"
+},
+"slip.integrate": {
+"zh": "整合 −{n}",
+"en": "Integrate −{n}",
+"ja": "統合 −{n}"
+},
+"slip.resolve.hint": {
+"zh": "系在签架上，{t} 后化为一分常驻功德",
+"en": "Tied to the rack, it becomes one lasting merit after {t}",
+"ja": "棚に結べば、{t} 後に功徳が一つ残る"
+},
+"slip.integrate.hint": {
+"zh": "放在架上，{t} 后化为一分常驻专注",
+"en": "Set on the rack, it becomes one lasting focus after {t}",
+"ja": "棚に置けば、{t} 後に集中が一つ残る"
+},
+"rack.full": {
+"zh": "签架已满",
+"en": "The rack is full",
+"ja": "棚がいっぱい"
+},
+"rack.title": {
+"zh": "签架",
+"en": "The Rack",
+"ja": "掛け棚"
+},
+"rack.tied": {
+"zh": "系着的",
+"en": "Tied",
+"ja": "結んだもの"
+},
+"rack.ready": {
+"zh": "已化解",
+"en": "Resolved",
+"ja": "解けた"
+},
+"rack.claim": {
+"zh": "收下",
+"en": "Take it",
+"ja": "受け取る"
+},
+"rack.remaining": {
+"zh": "还有 {t}",
+"en": "{t} left",
+"ja": "あと {t}"
+},
+"rack.bonus": {
+"zh": "每敲一下 +{n}",
+"en": "+{n} per tap",
+"ja": "一叩きごとに +{n}"
+},
+"rack.now": {
+"zh": "立刻化解 (香火)",
+"en": "Resolve now (shop)",
+"ja": "今すぐ解く（お供え）"
+},
+"collection.title": {
+"zh": "签架 · 收藏",
+"en": "The Rack · Collection",
+"ja": "掛け棚 · コレクション"
+},
+"collection.slips": {
+"zh": "签",
+"en": "Slips",
+"ja": "みくじ"
+},
+"collection.cards": {
+"zh": "牌",
+"en": "Cards",
+"ja": "カード"
+},
+"collection.count": {
+"zh": "{have} / {all}",
+"en": "{have} / {all}",
+"ja": "{have} / {all}"
+},
+"collection.empty": {
+"zh": "还没有。去摇一签。",
+"en": "Nothing yet. Go and shake.",
+"ja": "まだ何もない。振ってきて。"
+},
+"shop.title": {
+"zh": "香火",
+"en": "Offerings",
+"ja": "お供え"
+},
+"shop.honest": {
+"zh": "买来的签不比免费的签更吉。香火只换功德和时间，从不换运气。",
+"en": "A paid draw is never a luckier draw. Offerings buy merit and time, never odds.",
+"ja": "買ったみくじが当たりやすいわけではない。お供えで買えるのは功徳と時間だけで、運は買えない。"
+},
+"shop.mock": {
+"zh": "原型：付款为模拟，直接到账。",
+"en": "Prototype: payment is mocked and grants at once.",
+"ja": "プロトタイプ：支払いは擬似で、すぐ反映される。"
+},
+"sku.merit_s": {
+"zh": "一炷香 · 100 功德",
+"en": "One stick · 100 merit",
+"ja": "線香一本 · 100 功徳"
+},
+"sku.merit_m": {
+"zh": "一束香 · 600 功德",
+"en": "A bundle · 600 merit",
+"ja": "線香一束 · 600 功徳"
+},
+"sku.merit_l": {
+"zh": "一盒香 · 2000 功德",
+"en": "A box · 2000 merit",
+"ja": "線香一箱 · 2000 功徳"
+},
+"sku.extra_draw": {
+"zh": "再来一签 · 今天多一次免费",
+"en": "One more · a second free draw today",
+"ja": "もう一回 · 今日の無料をもう一度"
+},
+"sku.resolve_now": {
+"zh": "立刻化解 · 架上最早的一支",
+"en": "Resolve now · the oldest on the rack",
+"ja": "今すぐ解く · 棚の一番古いもの"
+},
+"sku.rack_slot": {
+"zh": "签架加一格",
+"en": "One more rack slot",
+"ja": "棚をもう一枠"
+},
+"sku.buy": {
+"zh": "{price}",
+"en": "{price}",
+"ja": "{price}"
+},
+"back": {
+"zh": "返回",
+"en": "Back",
+"ja": "戻る"
+},
+"close": {
+"zh": "关闭",
+"en": "Close",
+"ja": "閉じる"
+},
+"lang": {
+"zh": "EN",
+"en": "中文",
+"ja": "EN"
+},
+"rank.daji": {
+"zh": "大吉",
+"en": "Great Fortune",
+"ja": "大吉"
+},
+"rank.zhongji": {
+"zh": "中吉",
+"en": "Good Fortune",
+"ja": "中吉"
+},
+"rank.xiaoji": {
+"zh": "小吉",
+"en": "Small Fortune",
+"ja": "小吉"
+},
+"rank.moji": {
+"zh": "末吉",
+"en": "Late Fortune",
+"ja": "末吉"
+},
+"rank.xiong": {
+"zh": "凶",
+"en": "Ill",
+"ja": "凶"
+},
+"rank.daxiong": {
+"zh": "大凶",
+"en": "Great Ill",
+"ja": "大凶"
+},
+"subj.work": {
+"zh": "事业",
+"en": "Work",
+"ja": "仕事"
+},
+"subj.money": {
+"zh": "财",
+"en": "Money",
+"ja": "金運"
+},
+"subj.love": {
+"zh": "情",
+"en": "Love",
+"ja": "恋"
+},
+"subj.body": {
+"zh": "身体",
+"en": "Body",
+"ja": "体"
+},
+"subj.study": {
+"zh": "学业",
+"en": "Study",
+"ja": "学業"
+},
+"subj.traveler": {
+"zh": "行人",
+"en": "The one you wait for",
+"ja": "待ち人"
+},
+"board.more": {
+"zh": "今天的签读完了。",
+"en": "Today's reading is done.",
+"ja": "今日の分は読み終えた。"
+},
+"time.min": {
+"zh": "{n} 分钟",
+"en": "{n} min",
+"ja": "{n} 分"
+},
+"time.hr": {
+"zh": "{n} 小时",
+"en": "{n} h",
+"ja": "{n} 時間"
+},
+"resolved.toast": {
+"zh": "化解了。每敲一下多 +1。",
+"en": "Resolved. Every tap now gives +1 more.",
+"ja": "解けた。一叩きごとに +1 増える。"
+},
+"burned.toast": {
+"zh": "你没有说出口（+{n} 功德）",
+"en": "You did not say it (+{n} merit)",
+"ja": "あなたは口に出さなかった（+{n} 功徳）"
+},
+"kept.toast": {
+"zh": "你把这一签读给了她",
+"en": "You read it to her",
+"ja": "あなたはこれを彼女に読んだ"
+},
+"reader.begin": {
+"zh": "开始",
+"en": "Begin",
+"ja": "始める"
+},
+"reader.pick": {
+"zh": "她今天准备了四场。选一场。",
+"en": "She has four pieces ready today. Choose one.",
+"ja": "彼女は今日、四つ用意している。一つ選んで。"
+},
+"night.rule": {
+"zh": "白天你读人。入夜之后，你读出来的就成真。",
+"en": "By day you read people. After dark, what you read becomes true.",
+"ja": "昼はあなたが人を読む。夜になれば、読んだことが本当になる。"
+},
+"night.who": {
+"zh": "今晚读谁？",
+"en": "Who are you reading tonight?",
+"ja": "今夜は誰を読む？"
+},
+"night.tracks": {
+"zh": "{n}/9",
+"en": "{n}/9",
+"ja": "{n}/9"
+},
+"night.done": {
+"zh": "已读完",
+"en": "read",
+"ja": "読み終えた"
+},
+"night.ready": {
+"zh": "她在等",
+"en": "she is waiting",
+"ja": "彼女は待っている"
+},
+"night.instrument": {
+"zh": "用什么读",
+"en": "Read her with",
+"ja": "何で読む"
+},
+"inst.slip": {
+"zh": "签",
+"en": "The tube",
+"ja": "みくじ"
+},
+"inst.card": {
+"zh": "牌",
+"en": "The deck",
+"ja": "カード"
+},
+"inst.force": {
+"zh": "读心",
+"en": "Mentalism",
+"ja": "読心"
+},
+"night.draw": {
+"zh": "读",
+"en": "Read",
+"ja": "読む"
+},
+"night.draw.free": {
+"zh": "读 · 今日免费",
+"en": "Read · free today",
+"ja": "読む · 今日は無料"
+},
+"night.need": {
+"zh": "还差 {n} 功德",
+"en": "{n} merit to go",
+"ja": "あと {n} 功徳"
+},
+"night.tap": {
+"zh": "敲木鱼",
+"en": "Tap the fish",
+"ja": "木魚を叩く"
+},
+"night.speak": {
+"zh": "读给她听",
+"en": "Say it to her",
+"ja": "彼女に読んで聞かせる"
+},
+"night.hold": {
+"zh": "不说",
+"en": "Keep it",
+"ja": "言わない"
+},
+"night.held": {
+"zh": "你把这一签收起来了（+{n} 功德）",
+"en": "You keep it to yourself (+{n} merit)",
+"ja": "あなたはこれを仕舞い込んだ（+{n} 功徳）"
+},
+"night.took": {
+"zh": "{track} +{n}",
+"en": "{track} +{n}",
+"ja": "{track} +{n}"
+},
+"night.back": {
+"zh": "{track} {n}",
+"en": "{track} {n}",
+"ja": "{track} {n}"
+},
+"night.refused": {
+"zh": "她没有接。这一签作废了。",
+"en": "She didn't take it. The draw is spent.",
+"ja": "彼女は受け取らなかった。この一回は消えた。"
+},
+"night.locked": {
+"zh": "{track}：现在是真的了。",
+"en": "{track}: true now.",
+"ja": "{track}：もう本当になった。"
+},
+"night.all": {
+"zh": "她三条都是真的了。",
+"en": "All three are true now.",
+"ja": "彼女の三つとも、本当になった。"
+},
+"night.scene": {
+"zh": "留下来",
+"en": "Stay",
+"ja": "泊まっていく"
+},
+"night.scene.locked": {
+"zh": "看广告解锁 · 18+",
+"en": "Watch an ad to unlock · 18+",
+"ja": "広告を見て解放 · 18+"
+},
+"night.scene.denied": {
+"zh": "没解锁——什么都没有变。",
+"en": "Not unlocked — nothing changed.",
+"ja": "解放されていない——何も変わらない。"
+},
+"night.next": {
+"zh": "回到桌边",
+"en": "Back to the table",
+"ja": "卓に戻る"
+},
+"night.clear": {
+"zh": "三个人，三个夜晚。",
+"en": "Three women. Three nights.",
+"ja": "三人、三つの夜。"
+},
+"night.clear.sub": {
+"zh": "你读出来的，都成真了。",
+"en": "Everything you read came true.",
+"ja": "あなたが読んだことは、すべて本当になった。"
+},
+"night.more": {
+"zh": "还有别的",
+"en": "More like this",
+"ja": "ほかにもある"
+},
+"night.placeholder": {
+"zh": "占位图 · 未完成",
+"en": "PLACEHOLDER ART",
+"ja": "仮画像 · 未完成"
+},
+"night.consent": {
+"zh": "她接了，才算数。",
+"en": "It only counts if she takes it.",
+"ja": "彼女が受け取って、はじめて成立する。"
+},
+"rank.strength": {
+"zh": "力度 {n}",
+"en": "strength {n}",
+"ja": "強さ {n}"
+}
 }

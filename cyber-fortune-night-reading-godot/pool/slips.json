@@ -8,7 +8,10 @@
 "read_zh": "压了很久的事，这几天会松开。你做过的准备，别人现在看得见了。",
 "read_en": "What has been pressed down for weeks loosens now. The preparation you did is finally visible to other people.",
 "do_zh": "今天把你最想推进的那件事，主动开口说出来。",
-"do_en": "Say the thing you most want to move forward, out loud, to the person who can move it."
+"do_en": "Say the thing you most want to move forward, out loud, to the person who can move it.",
+"verse_ja": "雲開見日",
+"read_ja": "長く押さえつけられていたことが、この数日でゆるむ。あなたが積んできた支度が、やっと人の目に見えるようになる。",
+"do_ja": "いちばん進めたいことを、それを動かせる人に、声に出して言う。"
 },
 {
 "id": "daji-work-1",
@@ -19,7 +22,10 @@
 "read_zh": "顺风的日子不多，这算一个。放手去争，不必等人点头。",
 "read_en": "Days with the wind behind you are rare. This is one. Go for it without waiting to be nodded at.",
 "do_zh": "把那个你一直想提的方案，今天写成一页纸。",
-"do_en": "Turn the proposal you keep rehearsing into one page, today."
+"do_en": "Turn the proposal you keep rehearsing into one page, today.",
+"verse_ja": "長風破浪",
+"read_ja": "追い風の日はめったにない。今日がそれだ。うなずかれるのを待たずに出ること。",
+"do_ja": "何度も頭の中で練習した提案を、今日、一枚にまとめる。"
 },
 {
 "id": "daji-work-2",
@@ -30,7 +36,10 @@
 "read_zh": "你的名字会被提到，而且是在你不在场的时候。这是最好的那种被提到。",
 "read_en": "Your name gets mentioned, in a room you are not in. That is the best kind of mention.",
 "do_zh": "回复一个你拖了很久的人，越短越好。",
-"do_en": "Reply to someone you have kept waiting. Keep it short."
+"do_en": "Reply to someone you have kept waiting. Keep it short.",
+"verse_ja": "鳳鳴高岡",
+"read_ja": "あなたのいない部屋で、あなたの名前が出る。いちばん良い形の評判だ。",
+"do_ja": "待たせている相手に返事をする。短くていい。"
 },
 {
 "id": "daji-work-3",
@@ -41,7 +50,10 @@
 "read_zh": "一件停滞的事忽然有了动静。趁它还在响，把你想要的说清楚。",
 "read_en": "Something stalled suddenly moves. While it is still moving, say clearly what you want from it.",
 "do_zh": "把今天的第一个小时留给最重要的事，不看消息。",
-"do_en": "Give the first hour of today to the most important thing, before you open any messages."
+"do_en": "Give the first hour of today to the most important thing, before you open any messages.",
+"verse_ja": "春雷動地",
+"read_ja": "止まっていたものが急に動く。動いているうちに、何が欲しいのかをはっきり言うこと。",
+"do_ja": "今日の最初の一時間を、連絡を開く前に、いちばん大事なことに使う。"
 },
 {
 "id": "daji-money-4",
@@ -52,7 +64,10 @@
 "read_zh": "进来的比出去的多，这一阵会持续。不是横财，是你手艺的回报。",
 "read_en": "More comes in than goes out, and it holds for a while. Not a windfall; the return on your craft.",
 "do_zh": "今天记下这个月所有固定支出，一行一项。",
-"do_en": "Write down every fixed expense this month, one line each."
+"do_en": "Write down every fixed expense this month, one line each.",
+"verse_ja": "泉源不竭",
+"read_ja": "入るほうが出るほうより多く、それがしばらく続く。棚ぼたではなく、腕の対価だ。",
+"do_ja": "今月の固定費を一行ずつ全部書き出す。"
 },
 {
 "id": "daji-money-5",
@@ -63,7 +78,10 @@
 "read_zh": "该收的钱会到。这是个把底子打厚的好时候。",
 "read_en": "The money you are owed arrives. It is a good moment to make the floor under you thicker.",
 "do_zh": "把一笔钱放到你三个月内动不了的地方。",
-"do_en": "Put one sum somewhere you cannot touch it for three months."
+"do_en": "Put one sum somewhere you cannot touch it for three months.",
+"verse_ja": "倉廩豊実",
+"read_ja": "受け取るはずだった金が入る。足元を厚くするのに良い時だ。",
+"do_ja": "一口分を、三か月触れない場所に移す。"
 },
 {
 "id": "daji-money-6",
@@ -74,7 +92,10 @@
 "read_zh": "你之前种下的会开始结果。不用急着扩张，先把手里的握稳。",
 "read_en": "Something you planted earlier starts to bear. No need to expand; hold what is in your hand steady first.",
 "do_zh": "给自己买一样小的、用得上的东西，不超过一顿饭的钱。",
-"do_en": "Buy yourself one small useful thing, for less than the price of a meal."
+"do_en": "Buy yourself one small useful thing, for less than the price of a meal.",
+"verse_ja": "金玉満堂",
+"read_ja": "前に植えたものが実りはじめる。広げなくていい。手の中のものをまず安定させること。",
+"do_ja": "食事一回分より安い、役に立つ小さなものを自分に買う。"
 },
 {
 "id": "daji-money-7",
@@ -85,7 +106,10 @@
 "read_zh": "手头宽了一点，心也会宽。宽的时候最容易乱花，记得这一点。",
 "read_en": "The hand is a little fuller, and so the heart. A full hand spends loosely; remember that.",
 "do_zh": "今天不下单。想买的东西写进清单，三天后再看。",
-"do_en": "Buy nothing today. Put what you want on a list and look at it in three days."
+"do_en": "Buy nothing today. Put what you want on a list and look at it in three days.",
+"verse_ja": "春水満塘",
+"read_ja": "手元が少し豊かで、気持ちも豊かだ。豊かな手は財布がゆるむ。それを覚えておくこと。",
+"do_ja": "今日は何も買わない。欲しいものは書いておいて、三日後に見る。"
 },
 {
 "id": "daji-love-8",
@@ -96,7 +120,10 @@
 "read_zh": "你惦记的那个人，也在惦记你。不必试探，直接一点。",
 "read_en": "The person on your mind has you on theirs. Do not test them. Be direct.",
 "do_zh": "今天给那个人发一条不问问题的消息，只说一件你想到的事。",
-"do_en": "Send them one message today that asks nothing, just says one thing you thought of."
+"do_en": "Send them one message today that asks nothing, just says one thing you thought of.",
+"verse_ja": "花好月円",
+"read_ja": "あなたが思っている人も、あなたを思っている。試さないこと。まっすぐ言うこと。",
+"do_ja": "何も求めない連絡を一通送る。思い出したことを一つ書くだけでいい。"
 },
 {
 "id": "daji-love-9",
@@ -107,7 +134,10 @@
 "read_zh": "两个人正在往同一个方向走。这很少见，值得慢下来看一眼。",
 "read_en": "Two people are walking in the same direction. That is rare; worth slowing down to notice.",
 "do_zh": "约一顿没有手机的饭。",
-"do_en": "Plan one meal together with the phones in another room."
+"do_en": "Plan one meal together with the phones in another room.",
+"verse_ja": "並蒂蓮開",
+"read_ja": "二人が同じ方向を歩いている。めったにないことだ。立ち止まって気づく価値がある。",
+"do_ja": "携帯を別の部屋に置いて、一緒に食事を一回する。"
 },
 {
 "id": "daji-love-10",
@@ -118,7 +148,10 @@
 "read_zh": "该说的话说出来会被接住。你不是在冒险，你是在被等。",
 "read_en": "What needs saying will be caught. You are not taking a risk; you are being waited for.",
 "do_zh": "把你最近一次感谢的话，今天说给本人听。",
-"do_en": "Say the thanks you have been thinking, to the person, today."
+"do_en": "Say the thanks you have been thinking, to the person, today.",
+"verse_ja": "琴瑟和鳴",
+"read_ja": "言うべきことは、ちゃんと受け取られる。賭けではない。待たれているのだ。",
+"do_ja": "ずっと思っていた礼を、今日、本人に言う。"
 },
 {
 "id": "daji-love-11",
@@ -129,7 +162,10 @@
 "read_zh": "一段僵住的关系有了松动。不是谁认输，是天气变了。",
 "read_en": "A frozen relationship gives a little. Nobody lost; the weather changed.",
 "do_zh": "主动先打一个招呼，不必解释为什么。",
-"do_en": "Say hello first. No explanation needed."
+"do_en": "Say hello first. No explanation needed.",
+"verse_ja": "東風解凍",
+"read_ja": "凍っていた関係が少しゆるむ。誰も負けていない。天気が変わっただけだ。",
+"do_ja": "こちらから先に声をかける。説明はいらない。"
 },
 {
 "id": "daji-body-12",
@@ -140,7 +176,10 @@
 "read_zh": "身体这段时间跟得上你。别拿它当理所当然，好日子也要养。",
 "read_en": "The body keeps up with you for now. Do not take it as given; the good days also need tending.",
 "do_zh": "今天走路的时候，把耳机拿下来十分钟。",
-"do_en": "Take the earphones out for ten minutes of today's walk."
+"do_en": "Take the earphones out for ten minutes of today's walk.",
+"verse_ja": "松柏長青",
+"read_ja": "体は今のところついてきている。当たり前と思わないこと。調子の良い日にも手入れが要る。",
+"do_ja": "今日の散歩のうち十分は、イヤホンを外して歩く。"
 },
 {
 "id": "daji-body-13",
@@ -151,7 +190,10 @@
 "read_zh": "精神比前几周好。趁这个状态，把那个一直拖的习惯立起来。",
 "read_en": "You have more in you than in recent weeks. Use it to set up the habit you keep putting off.",
 "do_zh": "定一个明天起床的固定时间，然后今晚按时睡。",
-"do_en": "Pick a fixed time to get up tomorrow, then go to bed on time tonight."
+"do_en": "Pick a fixed time to get up tomorrow, then go to bed on time tonight.",
+"verse_ja": "気清神爽",
+"read_ja": "ここ数週間よりも力が残っている。先延ばしにしていた習慣を、今のうちに仕込むこと。",
+"do_ja": "明日の起床時刻を決めて、今夜はその分早く寝る。"
 },
 {
 "id": "daji-body-14",
@@ -162,7 +204,10 @@
 "read_zh": "休息是有回报的，你现在正拿到它。别急着把它花掉。",
 "read_en": "Rest pays, and you are being paid now. Do not spend it all at once.",
 "do_zh": "午后离开椅子一次，出门站三分钟。",
-"do_en": "Leave the chair once this afternoon and stand outside for three minutes."
+"do_en": "Leave the chair once this afternoon and stand outside for three minutes.",
+"verse_ja": "晨光入戸",
+"read_ja": "休んだ分が返ってきている。一度に使い切らないこと。",
+"do_ja": "午後に一度椅子を離れて、三分だけ外に立つ。"
 },
 {
 "id": "daji-body-15",
@@ -173,7 +218,10 @@
 "read_zh": "你的底子比你以为的好。稳住节奏，比冲刺更重要。",
 "read_en": "Your foundation is better than you think. Holding the pace matters more than a sprint.",
 "do_zh": "今天喝够水，把杯子放在看得见的地方。",
-"do_en": "Drink enough today. Keep the cup where you can see it."
+"do_en": "Drink enough today. Keep the cup where you can see it.",
+"verse_ja": "泰山安坐",
+"read_ja": "土台は思っているより良い。全力で走るより、速度を保つほうが効く。",
+"do_ja": "今日はちゃんと水を飲む。コップを見えるところに置いておく。"
 },
 {
 "id": "daji-study-16",
@@ -184,7 +232,10 @@
 "read_zh": "读进去的东西正在连成片。你会忽然明白一件之前不懂的事。",
 "read_en": "What you have read is joining up. Something you did not understand will suddenly make sense.",
 "do_zh": "把今天学到的一点讲给一个人听，讲不通就再读。",
-"do_en": "Explain one thing you learned today to someone. If it will not explain, read it again."
+"do_en": "Explain one thing you learned today to someone. If it will not explain, read it again.",
+"verse_ja": "文光射斗",
+"read_ja": "読んできたものがつながりはじめる。分からなかったことが、急に分かる。",
+"do_ja": "今日学んだことを一つ、誰かに説明する。説明できなければ、もう一度読む。"
 },
 {
 "id": "daji-study-17",
@@ -195,7 +246,10 @@
 "read_zh": "考核、面试、发表，这一轮你的准备够了。剩下的是睡眠。",
 "read_en": "Exam, interview, presentation: for this round your preparation is enough. What is left is sleep.",
 "do_zh": "今晚提前一小时关灯。",
-"do_en": "Lights off an hour early tonight."
+"do_en": "Lights off an hour early tonight.",
+"verse_ja": "一鳴驚人",
+"read_ja": "試験、面接、発表。この回については支度は足りている。残っているのは睡眠だけだ。",
+"do_ja": "今夜は一時間早く明かりを消す。"
 },
 {
 "id": "daji-study-18",
@@ -206,7 +260,10 @@
 "read_zh": "你现在的专注力难得。用它对付最难的那一章，不要用来刷题。",
 "read_en": "The focus you have now is rare. Spend it on the hardest chapter, not on easy drills.",
 "do_zh": "选最怕的那一节，读二十分钟，不做别的。",
-"do_en": "Pick the section you dread most and read it for twenty minutes, nothing else."
+"do_en": "Pick the section you dread most and read it for twenty minutes, nothing else.",
+"verse_ja": "読書破巻",
+"read_ja": "今の集中はめったに来ない。易しい練習ではなく、いちばん難しい章に使うこと。",
+"do_ja": "いちばん嫌な節を選んで、二十分だけ読む。他には手を出さない。"
 },
 {
 "id": "daji-study-19",
@@ -217,7 +274,10 @@
 "read_zh": "过去的积累会在这一轮显出来。别怀疑自己，去做题。",
 "read_en": "The old accumulation shows this round. Do not second-guess; sit down and work.",
 "do_zh": "把一份旧笔记翻出来，只看划过线的部分。",
-"do_en": "Open one old notebook and read only what you underlined."
+"do_en": "Open one old notebook and read only what you underlined.",
+"verse_ja": "水到渠成",
+"read_ja": "積んできたものが、この回に出る。疑わずに、座って手を動かすこと。",
+"do_ja": "古いノートを一冊開いて、線を引いたところだけ読む。"
 },
 {
 "id": "daji-traveler-20",
@@ -228,7 +288,10 @@
 "read_zh": "你等的消息在路上，而且是好的。手机可以放下了。",
 "read_en": "The word you are waiting for is on its way, and it is good. You can put the phone down.",
 "do_zh": "今天不去看那个对话框。让它来找你。",
-"do_en": "Do not open that chat today. Let it come to you."
+"do_en": "Do not open that chat today. Let it come to you.",
+"verse_ja": "雁帰有信",
+"read_ja": "待っている知らせは、もう道の上にある。しかも良い知らせだ。携帯は置いていい。",
+"do_ja": "今日はあの画面を開かない。向こうから来るのに任せる。"
 },
 {
 "id": "daji-traveler-21",
@@ -239,7 +302,10 @@
 "read_zh": "那个人比你以为的近。不是回来了，是快了。",
 "read_en": "That person is nearer than you think. Not back yet; soon.",
 "do_zh": "准备一样小的、见面时能递过去的东西。",
-"do_en": "Get one small thing ready to hand over when you meet."
+"do_en": "Get one small thing ready to hand over when you meet.",
+"verse_ja": "帰舟已近",
+"read_ja": "あの人は思っているより近くにいる。まだ着いてはいない。もうすぐだ。",
+"do_ja": "会ったときに渡す小さなものを一つ用意しておく。"
 },
 {
 "id": "daji-traveler-22",
@@ -250,7 +316,10 @@
 "read_zh": "会有一个回复，比你预期的暖。你可以先把心放宽一格。",
 "read_en": "A reply is coming, warmer than you expect. You can loosen your grip by one notch.",
 "do_zh": "今天把一件为等消息推迟的小事做掉。",
-"do_en": "Do one small thing you have been postponing while you waited."
+"do_en": "Do one small thing you have been postponing while you waited.",
+"verse_ja": "風送好音",
+"read_ja": "返事が来る。思っているよりあたたかい返事だ。握る力を一段ゆるめていい。",
+"do_ja": "待つあいだ、先延ばしにしていた小さなことを一つ片づける。"
 },
 {
 "id": "daji-traveler-23",
@@ -261,7 +330,10 @@
 "read_zh": "一个久未联系的人会出现。不是要你什么，是想起你了。",
 "read_en": "Someone you lost touch with will appear. They want nothing; they remembered you.",
 "do_zh": "先主动联系一个你想起来的人，一句话就行。",
-"do_en": "Reach out first to someone you have been thinking of. One line is enough."
+"do_en": "Reach out first to someone you have been thinking of. One line is enough.",
+"verse_ja": "故人在門",
+"read_ja": "連絡が途切れていた人が現れる。用があるのではない。あなたを思い出したのだ。",
+"do_ja": "気になっている人に、こちらから一行送る。一行で足りる。"
 },
 {
 "id": "zhongji-work-24",
@@ -272,7 +344,10 @@
 "read_zh": "事情会往前走，但走的是它自己的速度。你推它不会更快。",
 "read_en": "Things move forward, at their own pace. Pushing does not speed them.",
 "do_zh": "把今天要做的三件事写在纸上，做完一件划掉一件。",
-"do_en": "Write today's three things on paper. Cross each one off as it is done."
+"do_en": "Write today's three things on paper. Cross each one off as it is done.",
+"verse_ja": "順水行舟",
+"read_ja": "前には進む。ただし向こうの速さで進む。押しても速くならない。",
+"do_ja": "今日やる三つを紙に書く。終わるたびに線で消す。"
 },
 {
 "id": "zhongji-work-25",
@@ -283,7 +358,10 @@
 "read_zh": "退一步能看到整体。这周适合规划，不适合硬干。",
 "read_en": "A step back shows the whole. This week suits planning, not brute effort.",
 "do_zh": "花二十分钟画一张下个月的路线图，画得丑没关系。",
-"do_en": "Spend twenty minutes drawing next month's map. Ugly is fine."
+"do_en": "Spend twenty minutes drawing next month's map. Ugly is fine.",
+"verse_ja": "登高望遠",
+"read_ja": "一歩下がると全体が見える。今週は力業ではなく、計画に向いている。",
+"do_ja": "二十分かけて来月の地図を描く。汚くていい。"
 },
 {
 "id": "zhongji-work-26",
@@ -294,7 +372,10 @@
 "read_zh": "手上的事能交差，虽然不会惊艳。交出去，再补。",
 "read_en": "What you have in hand will pass, if not dazzle. Hand it in, then refine.",
 "do_zh": "今天定一个交付时间，告诉一个人。",
-"do_en": "Set a delivery time today and tell one person."
+"do_en": "Set a delivery time today and tell one person.",
+"verse_ja": "小舟得渡",
+"read_ja": "手元にあるもので、驚かせはしないが通りはする。まず出して、それから直すこと。",
+"do_ja": "今日、提出の時刻を決めて、誰か一人に伝える。"
 },
 {
 "id": "zhongji-work-27",
@@ -305,7 +386,10 @@
 "read_zh": "上一阵的乱正在收尾。别急着开新局，把地扫干净。",
 "read_en": "The recent mess is ending. Do not open a new front; sweep the floor first.",
 "do_zh": "关掉三个用不上的文档或标签页。",
-"do_en": "Close three documents or tabs you are not using."
+"do_en": "Close three documents or tabs you are not using.",
+"verse_ja": "雨後新晴",
+"read_ja": "ここしばらくの散らかりが終わる。新しい戦線を開かないこと。まず床を掃くこと。",
+"do_ja": "使っていない書類かタブを三つ閉じる。"
 },
 {
 "id": "zhongji-money-28",
@@ -316,7 +400,10 @@
 "read_zh": "钱不多，但稳。稳比多难得，值得你把它守住。",
 "read_en": "Not much, but steady. Steady is rarer than plenty; worth guarding.",
 "do_zh": "取消一个你已经不用的订阅。",
-"do_en": "Cancel one subscription you no longer use."
+"do_en": "Cancel one subscription you no longer use.",
+"verse_ja": "細水長流",
+"read_ja": "多くはないが、途切れない。途切れないことのほうが、多いことより珍しい。守る価値がある。",
+"do_ja": "もう使っていない定期購読を一つ解約する。"
 },
 {
 "id": "zhongji-money-29",
@@ -327,7 +414,10 @@
 "read_zh": "这阵子的收入和付出成正比。想多拿，就得多做，没有捷径，也没有陷阱。",
 "read_en": "For now income tracks effort. To have more, do more. No shortcuts, but also no traps.",
 "do_zh": "今天把一件能变成收入的技能，练三十分钟。",
-"do_en": "Practice one skill that can become income for thirty minutes today."
+"do_en": "Practice one skill that can become income for thirty minutes today.",
+"verse_ja": "勤耕有獲",
+"read_ja": "今は収入が手数に比例する。増やしたければ、数をやること。近道はないが、罠もない。",
+"do_ja": "収入になりうる技を、今日三十分だけ練習する。"
 },
 {
 "id": "zhongji-money-30",
@@ -338,7 +428,10 @@
 "read_zh": "月底会剩下一点。剩下的部分决定你下个月的心情。",
 "read_en": "There will be a little left at month end. What you do with it decides next month's mood.",
 "do_zh": "把剩下的先转走，再决定这个月怎么花。",
-"do_en": "Move the surplus away first; then decide how the month is spent."
+"do_en": "Move the surplus away first; then decide how the month is spent.",
+"verse_ja": "有余可積",
+"read_ja": "月末に少し残る。その少しをどうするかで、来月の気分が決まる。",
+"do_ja": "余りを先に別のところへ移す。そのあとで月の使い方を決める。"
 },
 {
 "id": "zhongji-money-31",
@@ -349,7 +442,10 @@
 "read_zh": "一笔拖着的账会有结果。不是全部，但够你松一口气。",
 "read_en": "A lingering debt or payment resolves. Not all of it, but enough to breathe.",
 "do_zh": "今天去催一笔该收的钱，语气平和。",
-"do_en": "Chase one payment you are owed today, calmly."
+"do_en": "Chase one payment you are owed today, calmly.",
+"verse_ja": "旧帳得清",
+"read_ja": "長引いていた借りか支払いが片づく。全部ではないが、息はつける。",
+"do_ja": "受け取るはずの支払いを一件、落ち着いて催促する。"
 },
 {
 "id": "zhongji-love-32",
@@ -360,7 +456,10 @@
 "read_zh": "会有一次不错的相处，不必特别安排。别用力过猛就好。",
 "read_en": "A good stretch of company is coming, no planning needed. Just do not try too hard.",
 "do_zh": "把手机反扣在桌上一次，看看对方在说什么。",
-"do_en": "Turn your phone face down once and listen to what they are actually saying."
+"do_en": "Turn your phone face down once and listen to what they are actually saying.",
+"verse_ja": "月下相逢",
+"read_ja": "一緒にいて心地よい時間が来る。段取りは要らない。ただ、力みすぎないこと。",
+"do_ja": "一度だけ携帯を伏せて、相手が実際に言っていることを聞く。"
 },
 {
 "id": "zhongji-love-33",
@@ -371,7 +470,10 @@
 "read_zh": "关系在往好处走，只是慢。慢不是问题，急才是。",
 "read_en": "The relationship is improving, slowly. Slow is not the problem; hurry is.",
 "do_zh": "今天不谈未来。只问一个关于今天的问题。",
-"do_en": "Do not discuss the future today. Ask one question about their day."
+"do_en": "Do not discuss the future today. Ask one question about their day.",
+"verse_ja": "春風漸暖",
+"read_ja": "関係は良くなっている。ゆっくりと。遅いことは問題ではない。急ぐことが問題だ。",
+"do_ja": "今日は将来の話をしない。今日一日のことを一つ訊く。"
 },
 {
 "id": "zhongji-love-34",
@@ -382,7 +484,10 @@
 "read_zh": "你们比你以为的更了解彼此。少解释，多做事。",
 "read_en": "You know each other better than you think. Explain less, do more.",
 "do_zh": "帮对方做一件不用问就知道要做的事。",
-"do_en": "Do one thing for them that you already know needs doing."
+"do_en": "Do one thing for them that you already know needs doing.",
+"verse_ja": "両心相知",
+"read_ja": "思っているよりお互いを分かっている。説明を減らして、手を動かすこと。",
+"do_ja": "必要だと分かっていることを、相手のために一つやる。"
 },
 {
 "id": "zhongji-love-35",
@@ -393,7 +498,10 @@
 "read_zh": "一个人的日子也可以是好日子。今晚的月亮不需要人陪。",
 "read_en": "A day alone can be a good day. Tonight's moon needs no company.",
 "do_zh": "为自己做一顿像样的饭，摆好盘。",
-"do_en": "Cook yourself a proper meal and plate it properly."
+"do_en": "Cook yourself a proper meal and plate it properly.",
+"verse_ja": "明月在天",
+"read_ja": "一人の日が良い日になりうる。今夜の月に連れは要らない。",
+"do_ja": "自分のためにちゃんと作って、ちゃんと盛りつけて食べる。"
 },
 {
 "id": "zhongji-body-36",
@@ -404,7 +512,10 @@
 "read_zh": "身体在跟你商量，不是抗议。听一听。",
 "read_en": "The body is negotiating, not protesting. Listen.",
 "do_zh": "今天晚饭比平时少吃两口，早一点吃。",
-"do_en": "Tonight eat a little less than usual and a little earlier."
+"do_en": "Tonight eat a little less than usual and a little earlier.",
+"verse_ja": "飲食有節",
+"read_ja": "体は抗議しているのではなく、交渉している。聞くこと。",
+"do_ja": "今夜はいつもより少なめに、いつもより早く食べる。"
 },
 {
 "id": "zhongji-body-37",
@@ -415,7 +526,10 @@
 "read_zh": "缺的不是休息，是动。动过之后再休息才算数。",
 "read_en": "What is missing is not rest but movement. Rest counts after you have moved.",
 "do_zh": "出去走二十分钟，不带目的地。",
-"do_en": "Walk for twenty minutes with no destination."
+"do_en": "Walk for twenty minutes with no destination.",
+"verse_ja": "動則生陽",
+"read_ja": "足りないのは休みではなく、動きだ。休みは動いたあとに効く。",
+"do_ja": "行き先を決めずに二十分歩く。"
 },
 {
 "id": "zhongji-body-38",
@@ -426,7 +540,10 @@
 "read_zh": "这阵子的疲惫是睡眠的债，不是别的。债可以还。",
 "read_en": "This tiredness is a sleep debt, nothing more. Debts can be repaid.",
 "do_zh": "今晚十一点前躺下，手机放到房间外。",
-"do_en": "Lie down before eleven tonight, phone outside the room."
+"do_en": "Lie down before eleven tonight, phone outside the room.",
+"verse_ja": "夜静早眠",
+"read_ja": "この疲れは睡眠の借金で、それ以上のものではない。借金は返せる。",
+"do_ja": "今夜は十一時前に横になる。携帯は部屋の外。"
 },
 {
 "id": "zhongji-body-39",
@@ -437,7 +554,10 @@
 "read_zh": "恢复正在发生，虽然你自己看不出来。坚持你在做的那件事。",
 "read_en": "Recovery is happening even if you cannot see it. Keep doing the thing you are doing.",
 "do_zh": "把上周做过的那个好习惯，今天再做一次。",
-"do_en": "Repeat the good habit from last week once today."
+"do_en": "Repeat the good habit from last week once today.",
+"verse_ja": "漸入佳境",
+"read_ja": "見えなくても回復は進んでいる。今やっていることを続けること。",
+"do_ja": "先週の良い習慣を、今日一度やる。"
 },
 {
 "id": "zhongji-study-40",
@@ -448,7 +568,10 @@
 "read_zh": "往前赶不如往回看。你漏掉的东西在你以为学会的地方。",
 "read_en": "Going back beats pushing on. What you missed sits where you think you already learned.",
 "do_zh": "重做一道你上次做错的题。",
-"do_en": "Redo one problem you got wrong last time."
+"do_en": "Redo one problem you got wrong last time.",
+"verse_ja": "温故知新",
+"read_ja": "先へ進むより、戻るほうが効く。抜けているのは、もう覚えたつもりのところだ。",
+"do_ja": "前に間違えた問題を一つやり直す。"
 },
 {
 "id": "zhongji-study-41",
@@ -459,7 +582,10 @@
 "read_zh": "进步是一天一点，看不出来，但在。不要跟别人比进度。",
 "read_en": "Progress is a little each day, invisible but real. Do not compare pace with anyone.",
 "do_zh": "今天只学二十五分钟，学完就停。",
-"do_en": "Study for twenty-five minutes today, then stop."
+"do_en": "Study for twenty-five minutes today, then stop.",
+"verse_ja": "積土成山",
+"read_ja": "進みは毎日少しずつで、見えないが本物だ。人と速さを比べないこと。",
+"do_ja": "今日は二十五分だけ勉強して、やめる。"
 },
 {
 "id": "zhongji-study-42",
@@ -470,7 +596,10 @@
 "read_zh": "晚上的一个小时比白天的三个小时值。找到你的那个小时。",
 "read_en": "One good hour at night is worth three scattered ones by day. Find your hour.",
 "do_zh": "把明天最清醒的时段空出来，什么都不排。",
-"do_en": "Block tomorrow's clearest hour and put nothing in it."
+"do_en": "Block tomorrow's clearest hour and put nothing in it.",
+"verse_ja": "灯下有得",
+"read_ja": "夜の良い一時間は、昼の散らかった三時間より効く。自分の一時間を見つけること。",
+"do_ja": "明日のいちばん冴える一時間を空けて、何も入れない。"
 },
 {
 "id": "zhongji-study-43",
@@ -481,7 +610,10 @@
 "read_zh": "跳过的地方会回来找你。这周把顺序补上。",
 "read_en": "What you skipped will come back for you. Fill the sequence in this week.",
 "do_zh": "找出你跳过的那一节，今天读它的第一页。",
-"do_en": "Find the section you skipped and read its first page today."
+"do_en": "Find the section you skipped and read its first page today.",
+"verse_ja": "循序漸進",
+"read_ja": "飛ばしたところは必ず戻ってくる。今週のうちに順番を埋めること。",
+"do_ja": "飛ばした節を見つけて、今日その一ページ目を読む。"
 },
 {
 "id": "zhongji-traveler-44",
@@ -492,7 +624,10 @@
 "read_zh": "对方在动，只是还没到。等待的滋味不好，但不是坏消息。",
 "read_en": "They are moving; they have not arrived. Waiting tastes bad, but it is not bad news.",
 "do_zh": "今天做一件和这个人无关的事，做完再看手机。",
-"do_en": "Do one thing today that has nothing to do with them. Then check your phone."
+"do_en": "Do one thing today that has nothing to do with them. Then check your phone.",
+"verse_ja": "行人在途",
+"read_ja": "あの人は動いている。まだ着いていない。待つのは苦いが、悪い知らせではない。",
+"do_ja": "今日は相手と関係のないことを一つやる。そのあとで画面を見る。"
 },
 {
 "id": "zhongji-traveler-45",
@@ -503,7 +638,10 @@
 "read_zh": "会有回音，可能不是你想要的形式。留意短的那条。",
 "read_en": "A reply comes, maybe not in the form you wanted. Watch for the short one.",
 "do_zh": "把你想说的整理成三句话，先不发。",
-"do_en": "Boil what you want to say down to three sentences. Do not send yet."
+"do_en": "Boil what you want to say down to three sentences. Do not send yet.",
+"verse_ja": "書信将至",
+"read_ja": "返事は来る。望んだ形ではないかもしれない。短い一通に気をつけること。",
+"do_ja": "言いたいことを三文に煮詰める。まだ送らない。"
 },
 {
 "id": "zhongji-traveler-46",
@@ -514,7 +652,10 @@
 "read_zh": "消息其实已经到了，只是你没看到那个地方。",
 "read_en": "The news has actually arrived; you are looking in the wrong place.",
 "do_zh": "翻一下你平时不看的收件箱或文件夹。",
-"do_en": "Check the inbox or folder you usually ignore."
+"do_en": "Check the inbox or folder you usually ignore.",
+"verse_ja": "近在咫尺",
+"read_ja": "知らせはもう届いている。あなたが違うところを見ているだけだ。",
+"do_ja": "いつも見ない受信箱かフォルダを確認する。"
 },
 {
 "id": "zhongji-traveler-47",
@@ -525,7 +666,10 @@
 "read_zh": "路上会有一个中间消息，不是结果，但让你知道还在走。",
 "read_en": "There will be a message from the road: not the outcome, but proof it is moving.",
 "do_zh": "给对方一句不要求回复的话。",
-"do_en": "Send them a line that asks for no reply."
+"do_en": "Send them a line that asks for no reply.",
+"verse_ja": "半途有信",
+"read_ja": "道の途中から連絡が来る。結果ではなく、動いている証拠だ。",
+"do_ja": "返事の要らない一行を送る。"
 },
 {
 "id": "xiaoji-work-48",
@@ -536,7 +680,10 @@
 "read_zh": "会有一件小事做成。小事做成的手感比大事重要。",
 "read_en": "One small thing gets done. The feel of a small thing finished matters more than the big one.",
 "do_zh": "选一件二十分钟能完成的事，现在做。",
-"do_en": "Pick something that takes twenty minutes and do it now."
+"do_en": "Pick something that takes twenty minutes and do it now.",
+"verse_ja": "小有所成",
+"read_ja": "小さなことが一つ片づく。大きいものより、小さいものが終わる手ざわりのほうが効く。",
+"do_ja": "二十分で終わることを選んで、今やる。"
 },
 {
 "id": "xiaoji-work-49",
@@ -547,7 +694,10 @@
 "read_zh": "这周不适合改动。把已经在跑的东西看好。",
 "read_en": "This week is not for changes. Watch what is already running.",
 "do_zh": "检查一遍上周交出去的东西，改一个错字。",
-"do_en": "Reread what you handed in last week and fix one typo."
+"do_en": "Reread what you handed in last week and fix one typo.",
+"verse_ja": "守成為上",
+"read_ja": "今週は変えるための週ではない。すでに動いているものを見ていること。",
+"do_ja": "先週出したものを読み返して、誤字を一つ直す。"
 },
 {
 "id": "xiaoji-work-50",
@@ -558,7 +708,10 @@
 "read_zh": "你在考虑的选择还没到时候。多看一个月不会亏。",
 "read_en": "The choice you are weighing is not ripe. Another month of looking costs nothing.",
 "do_zh": "列出那个选择的三个具体条件，不是感觉。",
-"do_en": "List three concrete conditions for that choice. Not feelings; conditions."
+"do_en": "List three concrete conditions for that choice. Not feelings; conditions.",
+"verse_ja": "択木而栖",
+"read_ja": "迷っているその選択は、まだ熟していない。もう一か月見ても損はしない。",
+"do_ja": "その選択の条件を三つ、具体的に書く。気持ちではなく、条件を。"
 },
 {
 "id": "xiaoji-work-51",
@@ -569,7 +722,10 @@
 "read_zh": "有件事在你看不见的地方变化。你现在动手，只会踩空。",
 "read_en": "Something is shifting where you cannot see it. Act now and you step on air.",
 "do_zh": "今天不发那封邮件。存草稿。",
-"do_en": "Do not send that email today. Save the draft."
+"do_en": "Do not send that email today. Save the draft.",
+"verse_ja": "静観其変",
+"read_ja": "見えないところで何かが動いている。今動くと足を踏み外す。",
+"do_ja": "そのメールは今日送らない。下書きに置く。"
 },
 {
 "id": "xiaoji-money-52",
@@ -580,7 +736,10 @@
 "read_zh": "钱够用，不够挥霍。这是大多数好日子的样子。",
 "read_en": "Enough to live on, not enough to waste. That is what most good days look like.",
 "do_zh": "今天用现金或看得见余额的方式付账。",
-"do_en": "Pay today with cash or something where you can see the balance."
+"do_en": "Pay today with cash or something where you can see the balance.",
+"verse_ja": "量入為出",
+"read_ja": "暮らすには足りるが、無駄にするには足りない。良い日の大半はそういう形をしている。",
+"do_ja": "今日は現金か、残高の見えるもので払う。"
 },
 {
 "id": "xiaoji-money-53",
@@ -591,7 +750,10 @@
 "read_zh": "小钱不要嫌小。你这个月最好的决定可能只值一杯咖啡。",
 "read_en": "Do not scorn small money. Your best decision this month may be worth one coffee.",
 "do_zh": "把零钱或零头转到一个单独的地方。",
-"do_en": "Move loose change or odd cents into one separate place."
+"do_en": "Move loose change or odd cents into one separate place.",
+"verse_ja": "涓滴成河",
+"read_ja": "小さな金を軽く見ないこと。今月いちばん良い判断が、珈琲一杯分かもしれない。",
+"do_ja": "小銭や端数を、一か所にまとめて移す。"
 },
 {
 "id": "xiaoji-money-54",
@@ -602,7 +764,10 @@
 "read_zh": "手上的钱别动，也别去追新的机会。这阵子的好机会大多是别人的。",
 "read_en": "Leave what you have where it is, and chase nothing new. Most of this month's chances belong to others.",
 "do_zh": "把想投进去的那个念头写下来，标上日期。",
-"do_en": "Write down the thing you feel like putting money into, with today's date."
+"do_en": "Write down the thing you feel like putting money into, with today's date.",
+"verse_ja": "暫安勿動",
+"read_ja": "持っているものはそのままに。新しいものを追いかけないこと。今月の機会の多くは他人のものだ。",
+"do_ja": "金を入れたくなっているものを、今日の日付とともに書いておく。"
 },
 {
 "id": "xiaoji-money-55",
@@ -613,7 +778,10 @@
 "read_zh": "省下来的比赚到的更实在。这周不需要新东西。",
 "read_en": "What you save is more real than what you earn. Nothing new is needed this week.",
 "do_zh": "今天在家吃一顿，把外卖的钱记下来。",
-"do_en": "Eat one meal at home today and note what the delivery would have cost."
+"do_en": "Eat one meal at home today and note what the delivery would have cost.",
+"verse_ja": "粗茶淡飯",
+"read_ja": "稼ぐ額より、使わなかった額のほうが確かだ。今週は新しいものは要らない。",
+"do_ja": "今日は一食を家で食べて、出前ならいくらだったかを書いておく。"
 },
 {
 "id": "xiaoji-love-56",
@@ -624,7 +792,10 @@
 "read_zh": "关系里没有戏剧，这是好事。别去找戏剧。",
 "read_en": "No drama in the relationship. That is good. Do not go looking for any.",
 "do_zh": "今天不复盘任何一次对话。",
-"do_en": "Do not replay any conversation today."
+"do_en": "Do not replay any conversation today.",
+"verse_ja": "淡而有味",
+"read_ja": "関係に波風がない。それでいい。わざわざ探しに行かないこと。",
+"do_ja": "今日はどの会話も頭の中で再生しない。"
 },
 {
 "id": "xiaoji-love-57",
@@ -635,7 +806,10 @@
 "read_zh": "你和对方现在需要的东西不一样。不是谁错，是时间不同步。",
 "read_en": "You and they need different things right now. Nobody is wrong; the clocks differ.",
 "do_zh": "说一句「我今天需要的是……」，只说自己的。",
-"do_en": "Say one sentence starting 'what I need today is', and speak only for yourself."
+"do_en": "Say one sentence starting 'what I need today is', and speak only for yourself.",
+"verse_ja": "各安其位",
+"read_ja": "あなたと相手は、今それぞれ違うものを必要としている。どちらも間違っていない。時計が違うだけだ。",
+"do_ja": "「今日の私に要るのは」で始まる一文を言う。自分の話だけをすること。"
 },
 {
 "id": "xiaoji-love-58",
@@ -646,7 +820,10 @@
 "read_zh": "对方还没准备好，而催是最没用的事。你的耐心是有期限的，但还没到。",
 "read_en": "They are not ready, and pushing is the least useful thing. Your patience has a limit; it is not here yet.",
 "do_zh": "把注意力放回一个自己的爱好上，一小时。",
-"do_en": "Put an hour back into something that is yours alone."
+"do_en": "Put an hour back into something that is yours alone.",
+"verse_ja": "静待花開",
+"read_ja": "相手はまだ用意ができていない。押すのがいちばん効かない。あなたの我慢にも限度はあるが、まだそこではない。",
+"do_ja": "自分だけのものに、一時間戻す。"
 },
 {
 "id": "xiaoji-love-59",
@@ -657,7 +834,10 @@
 "read_zh": "会有一个让你舒服的照面。可能是陌生人，可能是老朋友。",
 "read_en": "A pleasant encounter is coming. Maybe a stranger, maybe an old friend.",
 "do_zh": "今天对一个人说一句真的赞美。",
-"do_en": "Give one true compliment today."
+"do_en": "Give one true compliment today.",
+"verse_ja": "一笑相逢",
+"read_ja": "気持ちのいい出会いがある。知らない人かもしれないし、昔の知り合いかもしれない。",
+"do_ja": "今日、本当に思ったことを一つ褒める。"
 },
 {
 "id": "xiaoji-body-60",
@@ -668,7 +848,10 @@
 "read_zh": "身体不需要新办法，需要老办法。规律比努力管用。",
 "read_en": "The body needs no new method, only the old one. Regular beats hard.",
 "do_zh": "今天三餐在固定时间吃。",
-"do_en": "Eat three meals at set times today."
+"do_en": "Eat three meals at set times today.",
+"verse_ja": "起居有常",
+"read_ja": "体に新しい方法は要らない。前のやり方でいい。強くやるより、規則正しくやること。",
+"do_ja": "今日は三食を決まった時刻に食べる。"
 },
 {
 "id": "xiaoji-body-61",
@@ -679,7 +862,10 @@
 "read_zh": "有点不舒服，但会过去。别硬撑，也别过度解读。",
 "read_en": "Slightly off, and it will pass. Do not push through, and do not over-read it.",
 "do_zh": "今天少排一件事，把空出来的时间用来躺着。",
-"do_en": "Drop one thing from today and lie down in the time it frees."
+"do_en": "Drop one thing from today and lie down in the time it frees.",
+"verse_ja": "微恙即癒",
+"read_ja": "少し調子が悪いが、じきに治る。無理に押し通さず、読みすぎもしないこと。",
+"do_ja": "今日の予定を一つ落として、空いた時間に横になる。"
 },
 {
 "id": "xiaoji-body-62",
@@ -690,7 +876,10 @@
 "read_zh": "僵的不是身体，是你坐了太久。站起来就好一半。",
 "read_en": "It is not stiffness; it is sitting. Standing up fixes half of it.",
 "do_zh": "每工作五十分钟，站起来伸展两分钟。",
-"do_en": "Every fifty minutes of work, stand and stretch for two."
+"do_en": "Every fifty minutes of work, stand and stretch for two.",
+"verse_ja": "舒筋活絡",
+"read_ja": "こっているのではなく、座りすぎているだけだ。立てば半分は直る。",
+"do_ja": "五十分働いたら、二分立って伸びる。"
 },
 {
 "id": "xiaoji-body-63",
@@ -701,7 +890,10 @@
 "read_zh": "身体的紧张是从脑子来的。先处理脑子那头。",
 "read_en": "The body's tension starts in the head. Deal with the head first.",
 "do_zh": "把今天最担心的事写在纸上，然后把纸合上。",
-"do_en": "Write today's biggest worry on paper, then fold the paper closed."
+"do_en": "Write today's biggest worry on paper, then fold the paper closed.",
+"verse_ja": "心寛体安",
+"read_ja": "体の緊張は頭から始まる。まず頭のほうを片づけること。",
+"do_ja": "今日いちばん気がかりなことを紙に書いて、その紙を畳む。"
 },
 {
 "id": "xiaoji-study-64",
@@ -712,7 +904,10 @@
 "read_zh": "你不比别人慢，只是没别人熟。熟是可以练的。",
 "read_en": "You are not slower than others, just less practiced. Practice is available.",
 "do_zh": "把最基础的那一组题再做一遍。",
-"do_en": "Do the most basic set of exercises once more."
+"do_en": "Do the most basic set of exercises once more.",
+"verse_ja": "勤能補拙",
+"read_ja": "人より遅いのではない。慣れていないだけだ。慣れは手に入る。",
+"do_ja": "いちばん基本の練習を、もう一度通しでやる。"
 },
 {
 "id": "xiaoji-study-65",
@@ -723,7 +918,10 @@
 "read_zh": "别贪多。今天弄懂一个概念，比翻十页强。",
 "read_en": "Do not be greedy. One concept understood today beats ten pages turned.",
 "do_zh": "只学一个概念，能用自己的话说出来就停。",
-"do_en": "Learn one concept. When you can say it in your own words, stop."
+"do_en": "Learn one concept. When you can say it in your own words, stop.",
+"verse_ja": "一日一課",
+"read_ja": "欲張らないこと。今日一つ分かるほうが、十ページめくるより効く。",
+"do_ja": "概念を一つ学ぶ。自分の言葉で言えたら、そこでやめる。"
 },
 {
 "id": "xiaoji-study-66",
@@ -734,7 +932,10 @@
 "read_zh": "这周落下一点，但还追得上。别让它变成两周。",
 "read_en": "You slipped a little this week, still catchable. Do not let it become two weeks.",
 "do_zh": "今天补十五分钟，明天再补十五分钟。",
-"do_en": "Make up fifteen minutes today, and fifteen tomorrow."
+"do_en": "Make up fifteen minutes today, and fifteen tomorrow.",
+"verse_ja": "不進則退",
+"read_ja": "今週は少し落ちた。まだ取り返せる。二週にしないこと。",
+"do_ja": "今日十五分、明日も十五分、取り返す。"
 },
 {
 "id": "xiaoji-study-67",
@@ -745,7 +946,10 @@
 "read_zh": "你缺的是方法，不是时间。找一个学过的人问一句。",
 "read_en": "What you lack is method, not time. Ask one person who has done it before.",
 "do_zh": "给一个学过这门的人发一条具体的问题。",
-"do_en": "Send one specific question to someone who has studied this."
+"do_en": "Send one specific question to someone who has studied this.",
+"verse_ja": "書山有径",
+"read_ja": "足りないのは時間ではなく、やり方だ。先にやった人に一人訊くこと。",
+"do_ja": "これを勉強した人に、具体的な質問を一つ送る。"
 },
 {
 "id": "xiaoji-traveler-68",
@@ -756,7 +960,10 @@
 "read_zh": "回复会来，比你想的晚。晚不代表冷。",
 "read_en": "The reply comes, later than you hoped. Late does not mean cold.",
 "do_zh": "今天定一个「不看手机」的时段，两小时。",
-"do_en": "Set a two-hour block today when you do not look at your phone."
+"do_en": "Set a two-hour block today when you do not look at your phone.",
+"verse_ja": "音信稍遅",
+"read_ja": "返事は来る。望んだより遅れて。遅いことは冷たいことではない。",
+"do_ja": "今日は二時間、携帯を見ない時間を作る。"
 },
 {
 "id": "xiaoji-traveler-69",
@@ -767,7 +974,10 @@
 "read_zh": "对方也在等，只是你们都在等对方先开口。",
 "read_en": "They are waiting too. You are both waiting for the other to speak first.",
 "do_zh": "先发一句。就一句。",
-"do_en": "Send the first line. Just one."
+"do_en": "Send the first line. Just one.",
+"verse_ja": "隔水相望",
+"read_ja": "向こうも待っている。お互いに、相手が先に言うのを待っている。",
+"do_ja": "最初の一行を送る。一行でいい。"
 },
 {
 "id": "xiaoji-traveler-70",
@@ -778,7 +988,10 @@
 "read_zh": "这件事不该由你催。给它一周。",
 "read_en": "This is not yours to hurry. Give it a week.",
 "do_zh": "在日历上标一个七天后的日期，到那天再想。",
-"do_en": "Mark a date seven days from now. Think about it then."
+"do_en": "Mark a date seven days from now. Think about it then.",
+"verse_ja": "且待時日",
+"read_ja": "これは急がせられるものではない。一週間やること。",
+"do_ja": "七日後に印をつける。考えるのはその日でいい。"
 },
 {
 "id": "xiaoji-traveler-71",
@@ -789,7 +1002,10 @@
 "read_zh": "分开的时间比你以为的短。别把它想成永别。",
 "read_en": "The separation is shorter than it feels. Do not dress it as a goodbye.",
 "do_zh": "把想给对方看的东西存进一个相册。",
-"do_en": "Save the things you want to show them into one album."
+"do_en": "Save the things you want to show them into one album.",
+"verse_ja": "小別重逢",
+"read_ja": "この別れは、感じているより短い。別れの顔をさせないこと。",
+"do_ja": "見せたいものを一つのアルバムにまとめておく。"
 },
 {
 "id": "moji-work-72",
@@ -800,7 +1016,10 @@
 "read_zh": "没什么大事，也没什么好事。这周做完该做的，就够了。",
 "read_en": "Nothing big, nothing bright. Doing what must be done is enough this week.",
 "do_zh": "把明天的待办写好再下班。",
-"do_en": "Write tomorrow's list before you finish today."
+"do_en": "Write tomorrow's list before you finish today.",
+"verse_ja": "且行且看",
+"read_ja": "大きなことも、明るいこともない。やるべきことをやるだけで、今週は十分だ。",
+"do_ja": "今日を終える前に、明日のやることを書く。"
 },
 {
 "id": "moji-work-73",
@@ -811,7 +1030,10 @@
 "read_zh": "你想赶的那个节点赶不上，但赶不上比赶坏了强。",
 "read_en": "The deadline you want to hit, you will miss. Missing beats botching.",
 "do_zh": "今天主动说一句「需要多两天」。",
-"do_en": "Say 'I need two more days' today, before being asked."
+"do_en": "Say 'I need two more days' today, before being asked.",
+"verse_ja": "事緩則円",
+"read_ja": "間に合わせたい期日には間に合わない。間に合わないほうが、雑にやるよりましだ。",
+"do_ja": "訊かれる前に、今日「あと二日ください」と言う。"
 },
 {
 "id": "moji-work-74",
@@ -822,7 +1044,10 @@
 "read_zh": "你一个人在扛的东西太多了。不是你不行，是不该一个人。",
 "read_en": "You are carrying too much alone. Not because you are weak; because it was never a one-person job.",
 "do_zh": "把一件事交出去，说清楚交给谁、什么时候要。",
-"do_en": "Hand one task to someone, with a name and a date."
+"do_en": "Hand one task to someone, with a name and a date.",
+"verse_ja": "独木難支",
+"read_ja": "一人で背負いすぎている。弱いからではない。もともと一人の仕事ではなかったからだ。",
+"do_ja": "仕事を一つ、名前と期日をつけて人に渡す。"
 },
 {
 "id": "moji-work-75",
@@ -833,7 +1058,10 @@
 "read_zh": "方向大致对，细节还模糊。别急着确认，先走一段。",
 "read_en": "The direction is roughly right; the details are blurred. Walk a while before you decide.",
 "do_zh": "今天推进一小步，不做决定。",
-"do_en": "Take one small step today. Decide nothing."
+"do_en": "Take one small step today. Decide nothing.",
+"verse_ja": "前路微明",
+"read_ja": "向きはおおむね合っている。細かいところが霞んでいるだけだ。決める前に、しばらく歩くこと。",
+"do_ja": "今日は小さな一歩だけ進む。何も決めない。"
 },
 {
 "id": "moji-money-76",
@@ -844,7 +1072,10 @@
 "read_zh": "不亏不赚。这样的月份多的是，别为它焦虑。",
 "read_en": "Neither gain nor loss. Months like this are common; do not fret over it.",
 "do_zh": "看一眼账户余额，然后关掉，今天不再看。",
-"do_en": "Look at the balance once, close it, and do not look again today."
+"do_en": "Look at the balance once, close it, and do not look again today.",
+"verse_ja": "収支相抵",
+"read_ja": "得も損もない。こういう月はよくある。気に病まないこと。",
+"do_ja": "残高を一度だけ見て閉じる。今日はもう見ない。"
 },
 {
 "id": "moji-money-77",
@@ -855,7 +1086,10 @@
 "read_zh": "有个看起来划算的机会，其实是在花你的时间。",
 "read_en": "A deal that looks good is really spending your time.",
 "do_zh": "今天不点任何「限时」的东西。",
-"do_en": "Click nothing marked 'limited time' today."
+"do_en": "Click nothing marked 'limited time' today.",
+"verse_ja": "勿貪小利",
+"read_ja": "得に見える話は、実のところ時間を使わせているだけだ。",
+"do_ja": "今日は「期間限定」と書いてあるものを押さない。"
 },
 {
 "id": "moji-money-78",
@@ -866,7 +1100,10 @@
 "read_zh": "钱紧一点，但东西够用。修比换省，用比买省。",
 "read_en": "Money is tight but you have what you need. Repair beats replace; use beats buy.",
 "do_zh": "修好一样坏了的小东西。",
-"do_en": "Fix one small broken thing."
+"do_en": "Fix one small broken thing.",
+"verse_ja": "惜物如金",
+"read_ja": "金は厳しいが、要るものは持っている。買い替えより修理、買うより使うこと。",
+"do_ja": "壊れている小さなものを一つ直す。"
 },
 {
 "id": "moji-money-79",
@@ -877,7 +1114,10 @@
 "read_zh": "一笔小的往来要清一清。数目不大，拖着难受。",
 "read_en": "A small debt, either way, wants settling. Not much, but it itches.",
 "do_zh": "把欠的或被欠的那笔小钱，今天清掉。",
-"do_en": "Settle the small sum you owe or are owed today."
+"do_en": "Settle the small sum you owe or are owed today.",
+"verse_ja": "有借有還",
+"read_ja": "どちらの向きでも、小さな貸し借りが片づきたがっている。額は小さいが、気にかかる。",
+"do_ja": "今日、貸しか借りの小さな一件を清算する。"
 },
 {
 "id": "moji-love-80",
@@ -888,7 +1128,10 @@
 "read_zh": "你们最近都在忙，没在看对方。不是问题，但要留意。",
 "read_en": "You have both been busy and not looking at each other. Not a problem yet; worth noticing.",
 "do_zh": "今天问对方一个你不知道答案的问题。",
-"do_en": "Ask them one question you do not know the answer to."
+"do_en": "Ask them one question you do not know the answer to.",
+"verse_ja": "相看両忘",
+"read_ja": "二人とも忙しくて、お互いを見ていない。まだ問題ではないが、気づく価値はある。",
+"do_ja": "答えを知らない質問を、一つ相手に訊く。"
 },
 {
 "id": "moji-love-81",
@@ -899,7 +1142,10 @@
 "read_zh": "现在的这段还看不出去向。去向不由你一个人决定。",
 "read_en": "Where this goes is not yet visible, and not yours alone to decide.",
 "do_zh": "今天不评估这段关系，只过一天。",
-"do_en": "Do not evaluate the relationship today. Just live the day."
+"do_en": "Do not evaluate the relationship today. Just live the day.",
+"verse_ja": "縁分未定",
+"read_ja": "この先どうなるかはまだ見えないし、あなただけで決まることでもない。",
+"do_ja": "今日は関係を採点しない。ただ一日を生きる。"
 },
 {
 "id": "moji-love-82",
@@ -910,7 +1156,10 @@
 "read_zh": "分开的两个人都过得不差。这是你能得到的最好的消息。",
 "read_en": "Both people, apart, are doing all right. That is the best news available.",
 "do_zh": "把留着的一件对方的东西收进箱子，不扔。",
-"do_en": "Put one thing of theirs you kept into a box. Do not throw it away."
+"do_en": "Put one thing of theirs you kept into a box. Do not throw it away.",
+"verse_ja": "各自安好",
+"read_ja": "離れていても、二人ともそれなりにやっている。今手に入る中では、いちばん良い知らせだ。",
+"do_ja": "取ってある相手のものを一つ、箱に入れる。捨てなくていい。"
 },
 {
 "id": "moji-love-83",
@@ -921,7 +1170,10 @@
 "read_zh": "有句话你想说很久了。不是说不说的问题，是怎么说。",
 "read_en": "There is something you have wanted to say for a long time. The question is not whether; it is how.",
 "do_zh": "把那句话写下来，念一遍，明天再决定。",
-"do_en": "Write it down, read it aloud once, decide tomorrow."
+"do_en": "Write it down, read it aloud once, decide tomorrow.",
+"verse_ja": "話到嘴辺",
+"read_ja": "ずっと言いたかったことがある。問題は言うかどうかではなく、どう言うかだ。",
+"do_ja": "書き出して、一度声に出して読んで、決めるのは明日にする。"
 },
 {
 "id": "moji-body-84",
@@ -932,7 +1184,10 @@
 "read_zh": "累是累了，还没到伤的地步。现在调，就不用后面修。",
 "read_en": "Tired, yes; not yet worn. Adjust now and there is nothing to repair later.",
 "do_zh": "今天最后一件工作在晚上八点前结束。",
-"do_en": "Finish the last work of today before eight."
+"do_en": "Finish the last work of today before eight.",
+"verse_ja": "労逸失度",
+"read_ja": "疲れてはいるが、まだ擦り切れてはいない。今直せば、あとで修理するものは残らない。",
+"do_ja": "今日の最後の仕事を八時前に終える。"
 },
 {
 "id": "moji-body-85",
@@ -943,7 +1198,10 @@
 "read_zh": "身体在提醒你换季了。不需要药，需要一件外套。",
 "read_en": "The body is telling you the season changed. Not medicine; a coat.",
 "do_zh": "出门带一件外套，哪怕看起来不需要。",
-"do_en": "Take a jacket when you go out, even if it looks unnecessary."
+"do_en": "Take a jacket when you go out, even if it looks unnecessary.",
+"verse_ja": "風寒宜避",
+"read_ja": "体が、季節が変わったと言っている。薬ではなく、上着の話だ。",
+"do_ja": "要らなさそうでも、出るときに上着を持つ。"
 },
 {
 "id": "moji-body-86",
@@ -954,7 +1212,10 @@
 "read_zh": "你的疲惫有一半是想出来的。想的那一半，可以放下。",
 "read_en": "Half your tiredness is thought. The thinking half can be set down.",
 "do_zh": "今晚睡前把明天的三件事写下来，然后不再想。",
-"do_en": "Before bed, write tomorrow's three things, then stop thinking about them."
+"do_en": "Before bed, write tomorrow's three things, then stop thinking about them.",
+"verse_ja": "憂思傷神",
+"read_ja": "疲れの半分は考えごとだ。考えごとのほうは、下ろせる。",
+"do_ja": "寝る前に明日の三つを書いて、そこで考えるのをやめる。"
 },
 {
 "id": "moji-body-87",
@@ -965,7 +1226,10 @@
 "read_zh": "最近吃得杂。不是要节制，是要简单。",
 "read_en": "You have been eating all over the place. Not restraint; simplicity.",
 "do_zh": "今天一顿饭只做一样菜。",
-"do_en": "Cook one dish, and only one, for a meal today."
+"do_en": "Cook one dish, and only one, for a meal today.",
+"verse_ja": "飲食宜清",
+"read_ja": "食べ方が散らかっている。節制ではなく、簡素にすること。",
+"do_ja": "今日の一食は、一品だけ作って食べる。"
 },
 {
 "id": "moji-study-88",
@@ -976,7 +1240,10 @@
 "read_zh": "坐不住是这几天的常态。别怪自己，换个短一点的目标。",
 "read_en": "Restlessness is the mood of these days. Do not blame yourself; shorten the goal.",
 "do_zh": "把学习单位改成十分钟，做完一个再说。",
-"do_en": "Cut the study unit to ten minutes. Do one, then see."
+"do_en": "Cut the study unit to ten minutes. Do one, then see.",
+"verse_ja": "心浮気躁",
+"read_ja": "落ち着かないのが、この数日の気分だ。自分を責めず、目標のほうを短くすること。",
+"do_ja": "勉強の単位を十分に切る。一回やって、それから考える。"
 },
 {
 "id": "moji-study-89",
@@ -987,7 +1254,10 @@
 "read_zh": "你以为学会的地方其实没会。现在发现比考试时发现强。",
 "read_en": "What you think you know, you do not quite. Finding out now beats finding out in the exam.",
 "do_zh": "合上书，把那一章的要点默写出来。",
-"do_en": "Close the book and write the chapter's key points from memory."
+"do_en": "Close the book and write the chapter's key points from memory.",
+"verse_ja": "似懂非懂",
+"read_ja": "分かったつもりのところが、実は分かっていない。今それに気づくほうが、試験で気づくよりいい。",
+"do_ja": "本を閉じて、その章の要点を記憶だけで書く。"
 },
 {
 "id": "moji-study-90",
@@ -998,7 +1268,10 @@
 "read_zh": "方法不对，越努力越累。停一下，换个法子。",
 "read_en": "The method is wrong, so effort makes tiredness. Stop and change method.",
 "do_zh": "换一种学法，今天用听的，或者用讲的。",
-"do_en": "Switch mode today: listen instead of read, or explain instead of review."
+"do_en": "Switch mode today: listen instead of read, or explain instead of review.",
+"verse_ja": "事倍功半",
+"read_ja": "やり方が違うので、努力が疲れに変わっている。止まって、やり方を変えること。",
+"do_ja": "今日は形を変える。読む代わりに聞く、復習の代わりに説明する。"
 },
 {
 "id": "moji-study-91",
@@ -1009,7 +1282,10 @@
 "read_zh": "一次不理想的结果，说明的是那一次，不是你。",
 "read_en": "One poor result speaks about that one time, not about you.",
 "do_zh": "看错题，只看错题，找出错在哪一步。",
-"do_en": "Look at the wrong answers only, and find the step where each went wrong."
+"do_en": "Look at the wrong answers only, and find the step where each went wrong.",
+"verse_ja": "小考失意",
+"read_ja": "一度の悪い点は、その一度のことを言っているだけで、あなたのことを言ってはいない。",
+"do_ja": "間違えたところだけを見て、どの段で外れたかを探す。"
 },
 {
 "id": "moji-traveler-92",
@@ -1020,7 +1296,10 @@
 "read_zh": "还没消息。没消息不是坏消息，是没消息。",
 "read_en": "No word yet. No news is not bad news; it is no news.",
 "do_zh": "今天把等消息的时间拿去做一件你自己的事。",
-"do_en": "Spend the waiting time today on something of your own."
+"do_en": "Spend the waiting time today on something of your own.",
+"verse_ja": "音書未至",
+"read_ja": "まだ知らせはない。便りがないのは悪い知らせではなく、ただ知らせがないだけだ。",
+"do_ja": "待っている時間を、今日は自分のことに使う。"
 },
 {
 "id": "moji-traveler-93",
@@ -1031,7 +1310,10 @@
 "read_zh": "对方遇到了拖延，跟你无关。你能做的是别再加一层。",
 "read_en": "They are delayed by something that is not you. All you can do is not add a layer.",
 "do_zh": "今天不追问。",
-"do_en": "Do not chase today."
+"do_en": "Do not chase today.",
+"verse_ja": "路遥且滞",
+"read_ja": "相手はあなたと関係のない何かで足止めされている。こちらにできるのは、もう一枚重ねないことだけだ。",
+"do_ja": "今日は催促しない。"
 },
 {
 "id": "moji-traveler-94",
@@ -1042,7 +1324,10 @@
 "read_zh": "你想那个人的时间，比那个人知道的多。这不是坏事，但别只是想。",
 "read_en": "You think of them more than they know. Not bad, but do not only think.",
 "do_zh": "写一封不发的信，写完存起来。",
-"do_en": "Write a letter you will not send. Keep it."
+"do_en": "Write a letter you will not send. Keep it.",
+"verse_ja": "心有所念",
+"read_ja": "相手が思っているより、あなたはあの人のことを考えている。悪いことではないが、考えるだけで終わらせないこと。",
+"do_ja": "送らない手紙を書く。取っておく。"
 },
 {
 "id": "moji-traveler-95",
@@ -1053,7 +1338,10 @@
 "read_zh": "有些人走了就是走了。不是你的错，也不是你的功课。",
 "read_en": "Some people, once gone, are gone. Not your fault, and not your homework.",
 "do_zh": "把那个对话框置底或归档。不删。",
-"do_en": "Move that chat to the bottom, or archive it. Do not delete it."
+"do_en": "Move that chat to the bottom, or archive it. Do not delete it.",
+"verse_ja": "去者不追",
+"read_ja": "去った人は、去ったままのことがある。あなたのせいでもないし、あなたの宿題でもない。",
+"do_ja": "その画面を一番下に移すか、書庫に入れる。消さなくていい。"
 },
 {
 "id": "xiong-work-96",
@@ -1064,7 +1352,10 @@
 "read_zh": "这周每一步都费力。不是你错了，是水在往回流。省着劲用。",
 "read_en": "Every step is heavy this week. You are not wrong; the water is running backward. Spend your strength carefully.",
 "do_zh": "把今天的目标砍掉一半，做完剩下的一半。",
-"do_en": "Cut today's goal in half and finish the half that is left."
+"do_en": "Cut today's goal in half and finish the half that is left.",
+"verse_ja": "逆水行舟",
+"read_ja": "今週はどの一歩も重い。あなたが間違っているのではない。水が逆に流れているのだ。力の使いどころを選ぶこと。",
+"do_ja": "今日の目標を半分にして、残った半分をやりきる。"
 },
 {
 "id": "xiong-work-97",
@@ -1075,7 +1366,10 @@
 "read_zh": "你想做的事是对的，只是现在做会白做。等一个信号。",
 "read_en": "The thing you want to do is right; doing it now wastes it. Wait for one signal.",
 "do_zh": "写下你在等的那个信号是什么，具体到能认出来。",
-"do_en": "Write down what signal you are waiting for, specifically enough to recognize it."
+"do_en": "Write down what signal you are waiting for, specifically enough to recognize it.",
+"verse_ja": "時機未至",
+"read_ja": "やりたいことは正しい。今やると無駄になるだけだ。合図を一つ待つこと。",
+"do_ja": "何を合図に待つのかを、それと分かるくらい具体的に書く。"
 },
 {
 "id": "xiong-work-98",
@@ -1086,7 +1380,10 @@
 "read_zh": "这周说得越多，越被误会。把话留给该听的人。",
 "read_en": "The more you say this week, the more you are misread. Keep words for the one who should hear them.",
 "do_zh": "今天开会少说一半。",
-"do_en": "Say half as much in today's meetings."
+"do_en": "Say half as much in today's meetings.",
+"verse_ja": "多言招損",
+"read_ja": "今週は言えば言うほど誤解される。言葉は、聞くべき人のために取っておくこと。",
+"do_ja": "今日の打ち合わせでは、口数を半分にする。"
 },
 {
 "id": "xiong-work-99",
@@ -1097,7 +1394,10 @@
 "read_zh": "你看不清方向，而周围的人也没看清。不必假装看清了。",
 "read_en": "You cannot see the way, and neither can the people around you. No need to pretend.",
 "do_zh": "今天问一个人「你怎么看」，然后只听。",
-"do_en": "Ask one person 'how do you see it', then only listen."
+"do_en": "Ask one person 'how do you see it', then only listen.",
+"verse_ja": "独行霧中",
+"read_ja": "道が見えない。周りの人にも見えていない。分かっているふりは要らない。",
+"do_ja": "誰か一人に「どう見えている？」と訊いて、あとは聞くだけにする。"
 },
 {
 "id": "xiong-money-100",
@@ -1108,7 +1408,10 @@
 "read_zh": "这个月的钱往外走得比进来快。这是可以算清的事，算清就不可怕。",
 "read_en": "Money leaves faster than it arrives this month. It is a thing that can be counted, and counted it is not frightening.",
 "do_zh": "今天把这个月的支出列一遍，哪怕不准。",
-"do_en": "List this month's spending today, even roughly."
+"do_en": "List this month's spending today, even roughly.",
+"verse_ja": "入不敷出",
+"read_ja": "今月は入るより出るほうが速い。数えられるものだし、数えれば怖くはない。",
+"do_ja": "今日、今月の支出をざっとでいいから書き出す。"
 },
 {
 "id": "xiong-money-101",
@@ -1119,7 +1422,10 @@
 "read_zh": "有人会要你的钱、或你的担保。这周说「让我想想」。",
 "read_en": "Someone will ask for your money or your name on a promise. This week, say 'let me think'.",
 "do_zh": "对任何金钱上的请求，回答「明天答复你」。",
-"do_en": "To any money request, answer 'I'll tell you tomorrow'."
+"do_en": "To any money request, answer 'I'll tell you tomorrow'.",
+"verse_ja": "勿軽許諾",
+"read_ja": "金か、名前を貸してくれと言ってくる人がいる。今週は「考える」と言うこと。",
+"do_ja": "金の話には、すべて「明日返事します」と答える。"
 },
 {
 "id": "xiong-money-102",
@@ -1130,7 +1436,10 @@
 "read_zh": "会丢一笔小钱，或买错一样东西。认了，比追回来省心。",
 "read_en": "You will lose a small sum or buy the wrong thing. Accepting it costs less than chasing it.",
 "do_zh": "今天不买任何超过一顿饭钱的东西。",
-"do_en": "Buy nothing today that costs more than a meal."
+"do_en": "Buy nothing today that costs more than a meal.",
+"verse_ja": "小失可忍",
+"read_ja": "小さく損をするか、買い間違える。追いかけるより、受け入れるほうが安い。",
+"do_ja": "今日は食事一回分より高いものを買わない。"
 },
 {
 "id": "xiong-money-103",
@@ -1141,7 +1450,10 @@
 "read_zh": "这不是进取的时候。守住底线，比抓住机会重要。",
 "read_en": "Not a time for gains. Holding your floor matters more than catching a chance.",
 "do_zh": "把「不能动」的那笔钱写下来，放在看得见的地方。",
-"do_en": "Write down the sum that must not be touched, and keep the note visible."
+"do_en": "Write down the sum that must not be touched, and keep the note visible.",
+"verse_ja": "守多於攻",
+"read_ja": "増やす時ではない。機会を掴むより、足元を守るほうが大事だ。",
+"do_ja": "触ってはいけない額を書いて、その紙を見えるところに置く。"
 },
 {
 "id": "xiong-love-104",
@@ -1152,7 +1464,10 @@
 "read_zh": "这几天容易吵。吵的多半是累，不是这段关系。先处理累。",
 "read_en": "It is easy to quarrel these days. Most of it is tiredness, not the relationship. Deal with the tiredness first.",
 "do_zh": "今天不谈重要的事。困了就说困了。",
-"do_en": "Discuss nothing important today. If tired, say tired."
+"do_en": "Discuss nothing important today. If tired, say tired.",
+"verse_ja": "言語相傷",
+"read_ja": "この数日は言い合いになりやすい。その大半は疲れであって、関係のせいではない。まず疲れのほうを片づけること。",
+"do_ja": "今日は大事な話をしない。疲れているなら、疲れたと言う。"
 },
 {
 "id": "xiong-love-105",
@@ -1163,7 +1478,10 @@
 "read_zh": "孤单会在这周变得明显。它是真实的，也是暂时的。",
 "read_en": "Loneliness gets loud this week. It is real, and it is temporary.",
 "do_zh": "今天约一个朋友，不是那个人，是朋友。",
-"do_en": "Make plans with a friend today. Not that person; a friend."
+"do_en": "Make plans with a friend today. Not that person; a friend.",
+"verse_ja": "独坐空堂",
+"read_ja": "今週は寂しさの音が大きい。本物だが、一時的なものだ。",
+"do_ja": "今日、友達と約束を取る。あの人ではなく、友達と。"
 },
 {
 "id": "xiong-love-106",
@@ -1174,7 +1492,10 @@
 "read_zh": "你在用力维持的这段，对方没在用力。用力的一方总是先累。",
 "read_en": "You are working to hold this, and they are not. The one who works tires first.",
 "do_zh": "这周不主动发起。看看没有你的推动，它会不会自己动。",
-"do_en": "Do not initiate this week. See if it moves without your push."
+"do_en": "Do not initiate this week. See if it moves without your push.",
+"verse_ja": "縁浅莫強",
+"read_ja": "あなたは保とうとしていて、相手はしていない。努力しているほうが先に疲れる。",
+"do_ja": "今週はこちらから始めない。押さなくても動くかどうかを見る。"
 },
 {
 "id": "xiong-love-107",
@@ -1185,7 +1506,10 @@
 "read_zh": "过去的事会被翻出来。别接那个茬，它不是今天的问题。",
 "read_en": "Something old gets raised. Do not take the bait; it is not today's problem.",
 "do_zh": "对翻旧账的话，只回一句「我们说今天的事」。",
-"do_en": "To old grievances, answer only: 'let's talk about today'."
+"do_en": "To old grievances, answer only: 'let's talk about today'.",
+"verse_ja": "旧事重提",
+"read_ja": "昔のことを持ち出される。乗らないこと。今日の問題ではない。",
+"do_ja": "昔の恨み言には、「今日の話をしよう」とだけ答える。"
 },
 {
 "id": "xiong-body-108",
@@ -1196,7 +1520,10 @@
 "read_zh": "你在硬撑。撑得住，不代表该撑。这周必须停一次。",
 "read_en": "You are running on will. Being able to is not a reason to. Stop once this week.",
 "do_zh": "今天取消一件不是必须的事。",
-"do_en": "Cancel one thing today that is not essential."
+"do_en": "Cancel one thing today that is not essential.",
+"verse_ja": "強弩之末",
+"read_ja": "気力だけで走っている。できることは、やる理由にはならない。今週は一度止まること。",
+"do_ja": "今日、必須でない予定を一つ取り消す。"
 },
 {
 "id": "xiong-body-109",
@@ -1207,7 +1534,10 @@
 "read_zh": "睡眠这几天会差。不要靠手机熬，靠早一点躺下。",
 "read_en": "Sleep will be poor for a few days. Do not ride it out on your phone; go to bed earlier.",
 "do_zh": "今晚屏幕十点关，哪怕睡不着也躺着。",
-"do_en": "Screens off at ten tonight. Lie down even if sleep does not come."
+"do_en": "Screens off at ten tonight. Lie down even if sleep does not come.",
+"verse_ja": "夜不能寐",
+"read_ja": "数日は眠りが浅い。携帯でやり過ごさず、早く横になること。",
+"do_ja": "今夜は十時に画面を切る。眠れなくても横になる。"
 },
 {
 "id": "xiong-body-110",
@@ -1218,7 +1548,10 @@
 "read_zh": "累到一个程度，做什么都没效率。这周的任务是恢复，不是产出。",
 "read_en": "Past a certain tiredness nothing is efficient. This week's job is recovery, not output.",
 "do_zh": "把今天的任务清单只留一项。",
-"do_en": "Leave only one item on today's list."
+"do_en": "Leave only one item on today's list.",
+"verse_ja": "身心倶疲",
+"read_ja": "ある疲れ方を超えると、何をしても効率は出ない。今週の仕事は成果ではなく回復だ。",
+"do_ja": "今日のやることは一つだけ残す。"
 },
 {
 "id": "xiong-body-111",
@@ -1229,7 +1562,10 @@
 "read_zh": "别在这几天做超过平时的运动或熬夜。身体这周只有一份力气。",
 "read_en": "Do not push exercise or late nights this week. The body has one measure of strength, no more.",
 "do_zh": "今天的运动量减半，时间给拉伸。",
-"do_en": "Halve today's workout and give the time to stretching."
+"do_en": "Halve today's workout and give the time to stretching.",
+"verse_ja": "忌逞一時",
+"read_ja": "今週は運動も夜更かしも押さないこと。体の力は一人分しかない。",
+"do_ja": "今日の運動は半分にして、空いた分を伸ばすことに使う。"
 },
 {
 "id": "xiong-study-112",
@@ -1240,7 +1576,10 @@
 "read_zh": "时间已经不够了。承认这一点，然后只学最重要的。",
 "read_en": "There is not enough time left. Admit it, then learn only what matters most.",
 "do_zh": "列出考试范围里最值分的三块，其他的放掉。",
-"do_en": "List the three highest-value parts of the exam. Let the rest go."
+"do_en": "List the three highest-value parts of the exam. Let the rest go.",
+"verse_ja": "臨渇掘井",
+"read_ja": "残り時間が足りない。それを認めたうえで、いちばん効くところだけやること。",
+"do_ja": "試験で配点の高い三つを書き出す。残りは捨てる。"
 },
 {
 "id": "xiong-study-113",
@@ -1251,7 +1590,10 @@
 "read_zh": "这几天读不进去，因为你在想别的事。先把别的事放好。",
 "read_en": "Nothing goes in these days because you are thinking of something else. Set that something down first.",
 "do_zh": "把让你分心的那件事写在纸上，标上「考完再说」。",
-"do_en": "Write the distraction on paper and label it 'after the exam'."
+"do_en": "Write the distraction on paper and label it 'after the exam'.",
+"verse_ja": "心不在焉",
+"read_ja": "頭が別のことにあるので、この数日は何も入らない。まずそちらを下ろすこと。",
+"do_ja": "気がかりを紙に書いて、「試験のあと」と札をつける。"
 },
 {
 "id": "xiong-study-114",
@@ -1262,7 +1604,10 @@
 "read_zh": "赶进度只会让你忘得更快。慢下来的一周，比赶的一周记得多。",
 "read_en": "Rushing makes you forget faster. A slow week remembers more than a rushed one.",
 "do_zh": "今天只复习，不学新的。",
-"do_en": "Today, review only. Nothing new."
+"do_en": "Today, review only. Nothing new.",
+"verse_ja": "欲速不達",
+"read_ja": "急ぐと忘れるのも速い。急いだ一週間より、ゆっくりの一週間のほうが残る。",
+"do_ja": "今日は復習だけ。新しいものはやらない。"
 },
 {
 "id": "xiong-study-115",
@@ -1273,7 +1618,10 @@
 "read_zh": "你困在一个地方太久了，因为没人告诉你困在哪。",
 "read_en": "You have been stuck too long because nobody told you where you are stuck.",
 "do_zh": "把卡住的地方发给一个人，哪怕只是问「这个正常吗」。",
-"do_en": "Send the stuck part to someone, even if only to ask 'is this normal?'"
+"do_en": "Send the stuck part to someone, even if only to ask 'is this normal?'",
+"verse_ja": "独学無友",
+"read_ja": "どこで詰まっているかを誰も教えてくれないから、長く詰まっている。",
+"do_ja": "詰まっているところを誰かに送る。「これ普通ですか」と訊くだけでもいい。"
 },
 {
 "id": "xiong-traveler-116",
@@ -1284,7 +1632,10 @@
 "read_zh": "这周不会有消息。不是永远，是这周。别把这周当成永远。",
 "read_en": "No word this week. Not never; this week. Do not confuse the two.",
 "do_zh": "今天把等消息的时间用来收拾一个抽屉。",
-"do_en": "Use the waiting time today to clear one drawer."
+"do_en": "Use the waiting time today to clear one drawer.",
+"verse_ja": "杳無音信",
+"read_ja": "今週は音沙汰がない。永遠にではなく、今週だ。混同しないこと。",
+"do_ja": "待つ時間で、今日は引き出しを一つ片づける。"
 },
 {
 "id": "xiong-traveler-117",
@@ -1295,7 +1646,10 @@
 "read_zh": "对方回不回、什么时候回，现在没人知道，包括对方。",
 "read_en": "Whether they return, and when, nobody knows right now, including them.",
 "do_zh": "把「等」换成一个有截止日的计划，写下来。",
-"do_en": "Replace 'waiting' with a plan that has an end date. Write it down."
+"do_en": "Replace 'waiting' with a plan that has an end date. Write it down.",
+"verse_ja": "帰期未定",
+"read_ja": "帰るのか、いつなのかは、今は誰にも分からない。本人にも。",
+"do_ja": "「待つ」を、期限のある計画に置き換える。書いておくこと。"
 },
 {
 "id": "xiong-traveler-118",
@@ -1306,7 +1660,10 @@
 "read_zh": "会有一次错过——一个电话、一个时间。不是命，是巧。",
 "read_en": "There will be one miss: a call, a time. Not fate; coincidence.",
 "do_zh": "留一条清楚的话给对方，说你什么时候方便。",
-"do_en": "Leave them a clear message saying when you are free."
+"do_en": "Leave them a clear message saying when you are free.",
+"verse_ja": "錯過一程",
+"read_ja": "一度すれ違う。電話か、時間か。運命ではなく、偶然だ。",
+"do_ja": "こちらの空いている時間を、はっきり書いて残しておく。"
 },
 {
 "id": "xiong-traveler-119",
@@ -1317,7 +1674,10 @@
 "read_zh": "对方那边不顺，所以没顾上你。这不是关于你的。",
 "read_en": "Things are rough on their side, so they have not had room for you. This is not about you.",
 "do_zh": "发一句「不用回，只是想到你」。",
-"do_en": "Send one line: 'no need to reply, just thinking of you'."
+"do_en": "Send one line: 'no need to reply, just thinking of you'.",
+"verse_ja": "風波在途",
+"read_ja": "向こうが荒れていて、あなたに割く余地がない。あなたの問題ではない。",
+"do_ja": "一行だけ送る。「返事はいらない。思い出しただけ」"
 },
 {
 "id": "daxiong-work-120",
@@ -1328,7 +1688,10 @@
 "read_zh": "这条路走到头了。走到头不是失败，是该换路的地方。",
 "read_en": "This road has run out. Running out is not failure; it is where the road changes.",
 "do_zh": "写下三条其他的路，哪怕都不喜欢。",
-"do_en": "Write down three other roads, even if you like none of them."
+"do_en": "Write down three other roads, even if you like none of them.",
+"verse_ja": "山窮水尽",
+"read_ja": "この道は尽きた。尽きることは失敗ではない。道が変わる地点だ。",
+"do_ja": "他の道を三つ書く。どれも気に入らなくていい。"
 },
 {
 "id": "daxiong-work-121",
@@ -1339,7 +1702,10 @@
 "read_zh": "一件事已经错了，改不回来。你能改的只有下一件。",
 "read_en": "Something has already gone wrong and cannot be undone. All you can change is the next thing.",
 "do_zh": "对那件事说一句「我知道了」，然后开始下一件。",
-"do_en": "Say 'noted' to the thing that went wrong, then start the next one."
+"do_en": "Say 'noted' to the thing that went wrong, then start the next one.",
+"verse_ja": "覆水難収",
+"read_ja": "もう起きてしまって、取り消せないことがある。変えられるのは次の一つだけだ。",
+"do_ja": "起きたことには「承知した」と言って、次を始める。"
 },
 {
 "id": "daxiong-work-122",
@@ -1350,7 +1716,10 @@
 "read_zh": "这周会觉得所有人都在反对你。多半不是所有人，是三个。找到那三个。",
 "read_en": "This week it will feel like everyone is against you. It is probably three people. Find the three.",
 "do_zh": "写下具体谁、具体什么事。不写「所有人」。",
-"do_en": "Write who, and what, specifically. Never write 'everyone'."
+"do_en": "Write who, and what, specifically. Never write 'everyone'.",
+"verse_ja": "四面楚歌",
+"read_ja": "今週は全員が敵に見える。実際は三人くらいだ。その三人を見つけること。",
+"do_ja": "誰が、何を、と具体的に書く。「みんな」とは書かない。"
 },
 {
 "id": "daxiong-work-123",
@@ -1361,7 +1730,10 @@
 "read_zh": "这几天做什么都不顺。那就什么都别开新的，只收尾。",
 "read_en": "Nothing goes right these days. Then start nothing; only finish.",
 "do_zh": "今天只做「收尾」类的事：回复、归档、关闭。",
-"do_en": "Do only closing work today: replies, filing, shutting things down."
+"do_en": "Do only closing work today: replies, filing, shutting things down.",
+"verse_ja": "百事不宜",
+"read_ja": "この数日は何もうまくいかない。ならば何も始めず、終わらせるだけにすること。",
+"do_ja": "今日は締める仕事だけをやる。返信、整理、店じまい。"
 },
 {
 "id": "daxiong-money-124",
@@ -1372,7 +1744,10 @@
 "read_zh": "会有一笔不小的支出，多半是躲不掉的那种。提前知道，就不是意外。",
 "read_en": "A sizable expense is coming, likely the unavoidable kind. Known ahead, it is not a shock.",
 "do_zh": "今天把应急的那笔钱确认一遍在哪、有多少。",
-"do_en": "Confirm today where your emergency money is and how much."
+"do_en": "Confirm today where your emergency money is and how much.",
+"verse_ja": "破財在前",
+"read_ja": "それなりの出費が来る。たいてい避けられない類のものだ。先に知っていれば、驚きではない。",
+"do_ja": "非常用の金がどこにいくらあるか、今日確かめる。"
 },
 {
 "id": "daxiong-money-125",
@@ -1383,7 +1758,10 @@
 "read_zh": "这周任何「稳赚」的东西都不要碰。越稳越危险。",
 "read_en": "Touch nothing this week that promises a sure gain. The surer, the worse.",
 "do_zh": "对任何人提出的赚钱机会，一律说不。",
-"do_en": "Say no to every money opportunity anyone offers this week."
+"do_en": "Say no to every money opportunity anyone offers this week.",
+"verse_ja": "貪則必失",
+"read_ja": "今週は「確実に儲かる」ものに触れないこと。確実そうなほど悪い。",
+"do_ja": "今週、金の話はすべて断る。"
 },
 {
 "id": "daxiong-money-126",
@@ -1394,7 +1772,10 @@
 "read_zh": "欠的比你愿意看的多。不看它不会少。看了，它就开始少。",
 "read_en": "You owe more than you want to look at. Not looking does not shrink it. Looking does.",
 "do_zh": "把所有欠款列在一张纸上，总数写在最下面。",
-"do_en": "List every debt on one page, total at the bottom."
+"do_en": "List every debt on one page, total at the bottom.",
+"verse_ja": "債台高築",
+"read_ja": "見たくない額の借りがある。見なくても減らない。見れば減りはじめる。",
+"do_ja": "借りを全部一枚に書いて、下に合計を書く。"
 },
 {
 "id": "daxiong-money-127",
@@ -1405,7 +1786,10 @@
 "read_zh": "这个月钱到不了你想去的地方。那就先不去。",
 "read_en": "The money will not reach where you want to go this month. Then do not go yet.",
 "do_zh": "把那个计划推迟三十天，写上新日期。",
-"do_en": "Postpone the plan thirty days and write the new date."
+"do_en": "Postpone the plan thirty days and write the new date.",
+"verse_ja": "空嚢難行",
+"read_ja": "今月は、行きたい場所まで金が届かない。ならばまだ行かないこと。",
+"do_ja": "計画を三十日延ばして、新しい日付を書く。"
 },
 {
 "id": "daxiong-love-128",
@@ -1416,7 +1800,10 @@
 "read_zh": "有一段关系到了尽头。承认它比修它更需要勇气。",
 "read_en": "A relationship has reached its end. Admitting that takes more courage than mending it.",
 "do_zh": "今天对自己说一遍：它结束了。只说一遍。",
-"do_en": "Tell yourself once today: it is over. Just once."
+"do_en": "Tell yourself once today: it is over. Just once.",
+"verse_ja": "鏡破難円",
+"read_ja": "終わっている関係がある。繕うより、終わったと認めるほうが勇気が要る。",
+"do_ja": "今日一度だけ自分に言う。終わった、と。一度でいい。"
 },
 {
 "id": "daxiong-love-129",
@@ -1427,7 +1814,10 @@
 "read_zh": "这周你会非常想要一个人，而那个人不会出现。这是要熬的，不是要解决的。",
 "read_en": "This week you will badly want someone, and they will not appear. This is to be endured, not solved.",
 "do_zh": "今晚早点睡。孤单在睡着的时候最短。",
-"do_en": "Go to bed early tonight. Loneliness is shortest asleep."
+"do_en": "Go to bed early tonight. Loneliness is shortest asleep.",
+"verse_ja": "形単影隻",
+"read_ja": "今週は誰かがひどく欲しくなり、その誰かは現れない。これは解くものではなく、やり過ごすものだ。",
+"do_ja": "今夜は早く寝る。寂しさがいちばん短いのは眠っている間だ。"
 },
 {
 "id": "daxiong-love-130",
@@ -1438,7 +1828,10 @@
 "read_zh": "你给的比对方要的多。这不是对方的错，也不是你的。是配错了。",
 "read_en": "You gave more than they wanted. Not their fault, not yours. A mismatch.",
 "do_zh": "这周不送任何东西，不请任何客。",
-"do_en": "Give nothing and treat no one this week."
+"do_en": "Give nothing and treat no one this week.",
+"verse_ja": "錯付真心",
+"read_ja": "相手が欲しかった以上に渡してしまった。相手のせいでも、あなたのせいでもない。噛み合わなかっただけだ。",
+"do_ja": "今週は何も贈らない。奢らない。"
 },
 {
 "id": "daxiong-love-131",
@@ -1449,7 +1842,10 @@
 "read_zh": "分开正在发生。你能决定的，只是分开的样子。",
 "read_en": "The parting is happening. All you decide is what the parting looks like.",
 "do_zh": "写下你希望对方记得你的一句话。不发。",
-"do_en": "Write the one line you want them to remember you by. Do not send it."
+"do_en": "Write the one line you want them to remember you by. Do not send it.",
+"verse_ja": "各奔東西",
+"read_ja": "別れは進んでいる。決められるのは、その別れがどんな形かだけだ。",
+"do_ja": "覚えていてほしい一行を書く。送らない。"
 },
 {
 "id": "daxiong-body-132",
@@ -1460,7 +1856,10 @@
 "read_zh": "你已经透支很久了。这周不休息，下周就由不得你。",
 "read_en": "You have been overdrawn a long time. If you do not rest this week, next week will rest you.",
 "do_zh": "今天请一个假，或者取消整个晚上。",
-"do_en": "Take a day off today, or cancel the whole evening."
+"do_en": "Take a day off today, or cancel the whole evening.",
+"verse_ja": "油尽灯枯",
+"read_ja": "長いこと前借りしてきた。今週休まなければ、来週あなたは休まされる。",
+"do_ja": "今日は一日休むか、夜の予定を全部取り消す。"
 },
 {
 "id": "daxiong-body-133",
@@ -1471,7 +1870,10 @@
 "read_zh": "疲劳在往一个方向积累。它不是一天造成的，也不能一天解决，但今天可以是第一天。",
 "read_en": "Tiredness is piling in one direction. Not made in a day, not undone in one; today can be the first.",
 "do_zh": "今晚睡满八小时，其他什么都不做。",
-"do_en": "Sleep a full eight hours tonight and do nothing else."
+"do_en": "Sleep a full eight hours tonight and do nothing else.",
+"verse_ja": "積労成疾",
+"read_ja": "疲れが一方向に積もっている。一日でできたものではないし、一日では消えない。今日をその一日目にはできる。",
+"do_ja": "今夜は八時間きっちり寝る。他には何もしない。"
 },
 {
 "id": "daxiong-body-134",
@@ -1482,7 +1884,10 @@
 "read_zh": "撑到这里已经很不容易了。放下一件事，不是放弃，是换手。",
 "read_en": "Getting this far took a lot. Setting one thing down is not quitting; it is changing hands.",
 "do_zh": "对一个人说「我这周撑不住了」。",
-"do_en": "Tell one person: 'I can't hold this up this week'."
+"do_en": "Tell one person: 'I can't hold this up this week'.",
+"verse_ja": "心力交瘁",
+"read_ja": "ここまで来るのに、ずいぶん使った。一つ下ろすのは投げ出すことではない。持ち手を替えるだけだ。",
+"do_ja": "誰か一人に言う。「今週はこれを支えきれない」"
 },
 {
 "id": "daxiong-body-135",
@@ -1493,7 +1898,10 @@
 "read_zh": "这周身体不听你的。不要跟它较劲，输的是你。",
 "read_en": "The body is not taking orders this week. Do not fight it; you lose.",
 "do_zh": "今天不运动，不熬夜，不喝多。三件事，做到两件。",
-"do_en": "No exercise, no late night, no heavy drinking today. Three things; manage two."
+"do_en": "No exercise, no late night, no heavy drinking today. Three things; manage two.",
+"verse_ja": "忌動宜静",
+"read_ja": "今週の体は言うことを聞かない。争っても負ける。",
+"do_ja": "今日は運動をしない、夜更かしをしない、深酒をしない。三つのうち二つ守れればいい。"
 },
 {
 "id": "daxiong-study-136",
@@ -1504,7 +1912,10 @@
 "read_zh": "这一轮的结果不会好。它决定的是这一轮，你的下一轮从今天开始。",
 "read_en": "This round will not go well. It decides this round only; your next one starts today.",
 "do_zh": "把这次学到的三条教训写下来，贴在墙上。",
-"do_en": "Write three lessons from this round and put them on the wall."
+"do_en": "Write three lessons from this round and put them on the wall.",
+"verse_ja": "名落孫山",
+"read_ja": "この回はうまくいかない。決まるのはこの回のことだけで、次の回は今日から始まる。",
+"do_ja": "この回から学んだことを三つ書いて、壁に貼る。"
 },
 {
 "id": "daxiong-study-137",
@@ -1515,7 +1926,10 @@
 "read_zh": "过去几周确实丢了。丢了就丢了，不用为它再丢一周。",
 "read_en": "The past weeks are really lost. Lost is lost; do not lose another one to regret.",
 "do_zh": "今天只做一件事：把书打开，读一页。",
-"do_en": "Do one thing today: open the book and read one page."
+"do_en": "Do one thing today: open the book and read one page.",
+"verse_ja": "荒廃時日",
+"read_ja": "ここ数週は本当に無駄になった。無駄は無駄だ。悔やんでもう一週間無駄にしないこと。",
+"do_ja": "今日は一つだけ。本を開いて一ページ読む。"
 },
 {
 "id": "daxiong-study-138",
@@ -1526,7 +1940,10 @@
 "read_zh": "这门课的难度暂时超过你现在的准备。暂时。",
 "read_en": "This subject is beyond your current preparation. Currently.",
 "do_zh": "找到这门课的先修内容，从那里开始。",
-"do_en": "Find the prerequisite for this subject and start there."
+"do_en": "Find the prerequisite for this subject and start there.",
+"verse_ja": "力有不逮",
+"read_ja": "この科目は、今の支度では手に余る。今のところは、という話だ。",
+"do_ja": "この科目の前提にあたるものを探して、そこから始める。"
 },
 {
 "id": "daxiong-study-139",
@@ -1537,7 +1954,10 @@
 "read_zh": "一个人硬学是学不过来的。这周要找人，不是找书。",
 "read_en": "Grinding alone will not cover it. This week, find people, not books.",
 "do_zh": "报一个学习小组，或者约一个人一起自习。",
-"do_en": "Join a study group, or arrange to study alongside one person."
+"do_en": "Join a study group, or arrange to study alongside one person.",
+"verse_ja": "孤灯難明",
+"read_ja": "一人で削っても足りない。今週探すのは本ではなく、人だ。",
+"do_ja": "勉強会に入るか、誰か一人と並んで勉強する約束をする。"
 },
 {
 "id": "daxiong-traveler-140",
@@ -1548,7 +1968,10 @@
 "read_zh": "你等的人不会回来了，至少不会以你等的方式。",
 "read_en": "The one you wait for is not coming back, at least not in the way you are waiting.",
 "do_zh": "把那个人的东西收起来一样。只一样。",
-"do_en": "Put away one thing of theirs. Only one."
+"do_en": "Put away one thing of theirs. Only one.",
+"verse_ja": "人去楼空",
+"read_ja": "待っている人は帰ってこない。少なくとも、あなたが待っている形では。",
+"do_ja": "相手のものを一つ片づける。一つだけ。"
 },
 {
 "id": "daxiong-traveler-141",
@@ -1559,7 +1982,10 @@
 "read_zh": "消息断了，而且这次不是延迟。你的等待可以结束了。",
 "read_en": "The line has gone quiet, and this time it is not a delay. Your waiting can end.",
 "do_zh": "今天把等待写成一句话，然后去做别的。",
-"do_en": "Write the waiting down as one sentence today, then do something else."
+"do_en": "Write the waiting down as one sentence today, then do something else.",
+"verse_ja": "音塵断絶",
+"read_ja": "連絡が途絶えた。今回は遅れているのではない。あなたの待つ時間は終わっていい。",
+"do_ja": "待っていたことを今日、一文にして書く。そのあと別のことをする。"
 },
 {
 "id": "daxiong-traveler-142",
@@ -1570,7 +1996,10 @@
 "read_zh": "距离已经不是路程，是生活。两个生活很难再重叠。",
 "read_en": "The distance is no longer miles; it is lives. Two lives rarely overlap again.",
 "do_zh": "给对方一句祝福，不问近况。",
-"do_en": "Send one line of good wishes. Ask nothing."
+"do_en": "Send one line of good wishes. Ask nothing.",
+"verse_ja": "天各一方",
+"read_ja": "距離はもう里数ではなく、暮らしの違いだ。二つの暮らしが再び重なることは少ない。",
+"do_ja": "無事を祈る一行を送る。何も求めない。"
 },
 {
 "id": "daxiong-traveler-143",
@@ -1581,7 +2010,10 @@
 "read_zh": "接下来的一段你要一个人走。你走得了，只是没人告诉你可以。",
 "read_en": "The next stretch you walk alone. You can; nobody told you so, that is all.",
 "do_zh": "今天为自己做一件平时是别人替你做的事。",
-"do_en": "Do one thing for yourself today that someone else used to do for you."
+"do_en": "Do one thing for yourself today that someone else used to do for you.",
+"verse_ja": "独行遠路",
+"read_ja": "次の一区間は一人で歩く。歩ける。誰もそう言ってくれなかっただけだ。",
+"do_ja": "誰かがやってくれていたことを、今日は自分のために一つやる。"
 },
 {
 "id": "daji-work-144",
@@ -1592,7 +2024,10 @@
 "read_zh": "最难的那段已经过去了。你没注意到，因为你还在用最难时的力气。",
 "read_en": "The hardest part is already behind you. You did not notice because you are still spending the strength it took.",
 "do_zh": "今天把工作时间缩短一小时，看看会不会有事。",
-"do_en": "Cut today's working hours by one, and see if anything breaks."
+"do_en": "Cut today's working hours by one, and see if anything breaks.",
+"verse_ja": "否極泰来",
+"read_ja": "いちばん苦しいところは、もう後ろにある。気づかないのは、そこで使った力をまだ払っている最中だからだ。",
+"do_ja": "今日の労働時間を一時間削って、何か壊れるかどうか見る。"
 },
 {
 "id": "zhongji-money-145",
@@ -1603,7 +2038,10 @@
 "read_zh": "钱在按你的节奏进来。别为了快一点，把节奏打乱。",
 "read_en": "Money arrives at your pace. Do not break the pace to make it faster.",
 "do_zh": "今天不看任何理财的内容。",
-"do_en": "Read nothing about investing today."
+"do_en": "Read nothing about investing today.",
+"verse_ja": "日進有度",
+"read_ja": "金はあなたの歩幅で入ってくる。速くするために歩幅を壊さないこと。",
+"do_ja": "今日は投資の話を何も読まない。"
 },
 {
 "id": "xiaoji-love-146",
@@ -1614,7 +2052,10 @@
 "read_zh": "会有人主动找你聊天，不是恋爱的那种。那种也很好。",
 "read_en": "Someone will reach out to talk. Not the romantic kind. That kind is also good.",
 "do_zh": "把这段对话当成今天最重要的事。",
-"do_en": "Treat that conversation as the most important thing today."
+"do_en": "Treat that conversation as the most important thing today.",
+"verse_ja": "旧友来訪",
+"read_ja": "話したいと連絡してくる人がいる。恋の類ではない。その類もまた良いものだ。",
+"do_ja": "その会話を、今日いちばん大事なこととして扱う。"
 },
 {
 "id": "moji-body-147",
@@ -1625,7 +2066,10 @@
 "read_zh": "身体状态忽好忽坏，是季节，不是你。",
 "read_en": "Good days and bad days alternate. That is the season, not you.",
 "do_zh": "今天按最坏的那天安排，好的话算赚到。",
-"do_en": "Plan today as if it were a bad day. If it is good, you are ahead."
+"do_en": "Plan today as if it were a bad day. If it is good, you are ahead.",
+"verse_ja": "乍暖還寒",
+"read_ja": "良い日と悪い日が交互に来る。季節のせいであって、あなたのせいではない。",
+"do_ja": "今日は悪い日のつもりで組む。良い日だったら、その分の得だ。"
 },
 {
 "id": "xiong-study-148",
@@ -1636,7 +2080,10 @@
 "read_zh": "你会发现某个基础没打好。现在补，比装作有强。",
 "read_en": "You will find a foundation that was never laid. Laying it now beats pretending it is there.",
 "do_zh": "找到那个基础，今天只学它。",
-"do_en": "Find that foundation and study only it today."
+"do_en": "Find that foundation and study only it today.",
+"verse_ja": "書到用時",
+"read_ja": "積んでいなかった土台が見つかる。あるふりをするより、今積むほうがいい。",
+"do_ja": "その土台を見つけて、今日はそれだけをやる。"
 },
 {
 "id": "daxiong-work-149",
@@ -1647,6 +2094,9 @@
 "read_zh": "支撑你的那样东西会被拿走：预算、人、时间。这是最坏的消息，也是最清楚的。",
 "read_en": "The thing holding you up gets taken: a budget, a person, time. The worst news, and the clearest.",
 "do_zh": "列出没有那样东西的话，你还能做什么。写三条。",
-"do_en": "List what you can still do without it. Three lines."
+"do_en": "List what you can still do without it. Three lines.",
+"verse_ja": "釜底抽薪",
+"read_ja": "支えていたものが外される。予算か、人か、時間か。最悪の知らせで、いちばんはっきりした知らせだ。",
+"do_ja": "それなしでもできることを三行書く。"
 }
 ]

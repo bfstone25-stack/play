@@ -147,6 +147,7 @@ func _do_draw() -> void:
 		return
 	Sfx.rattle()
 	Sfx.drop()
+	Sfx.bark("stage")
 	relayout()
 
 
@@ -204,17 +205,23 @@ func _do_speak() -> void:
 	reply_hot = bool(ev.get("accepted", false))
 	if not ev["accepted"]:
 		reply = Tx.field(tr, "refuse") + "\n" + Tx.t("night.refused")
+		Sfx.bark("fail")
 	elif ev["locked"]:
 		reply = Tx.field(tr, "locked") + "\n" + Tx.t("night.locked", {"track": Tx.field(tr, "name")})
+		Sfx.bark("streak")
 	elif int(ev["strength"]) >= 2:
 		reply = Tx.field(tr, "open_strong")
+		Sfx.bark("win")
 	elif int(ev["strength"]) > 0:
 		reply = Tx.field(tr, "open_weak")
+		Sfx.bark("near")
 	else:
 		reply = Tx.field(tr, "open_weak") + "\n" + Tx.t("night.back",
 			{"track": Tx.field(tr, "name"), "n": int(ev["after"])})
+		Sfx.bark("near")
 	if ev.get("ready", false):
 		reply += "\n" + Tx.t("night.all")
+		Sfx.bark("win_big")
 	relayout()
 
 

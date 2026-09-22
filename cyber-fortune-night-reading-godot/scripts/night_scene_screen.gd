@@ -99,6 +99,7 @@ func _ask() -> void:
 	if ok:
 		unlocked = true
 		beat = 0
+		Sfx.bark("unlock")
 	else:
 		# Not remembered: nothing is written, and the next press asks the page again.
 		Fortune.toast.emit(Tx.t("night.scene.denied"))

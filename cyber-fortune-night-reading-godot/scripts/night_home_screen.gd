@@ -6,6 +6,7 @@ var root: VBoxContainer
 
 
 func _ready() -> void:
+	Sfx.bark("greet")
 	relayout()
 
 

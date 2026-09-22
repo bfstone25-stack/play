@@ -432,7 +432,7 @@ func _compose() -> void:
 	lang.add_theme_stylebox_override("focus", chip)
 	lang.pressed.connect(func():
 		Sfx.flip()
-		Tx.set_lang("en" if Tx.lang == "zh" else "zh")
+		Tx.next_lang()
 		Fortune.save_state())
 	add_child(lang)
 

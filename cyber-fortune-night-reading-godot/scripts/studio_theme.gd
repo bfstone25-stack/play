@@ -243,10 +243,29 @@ static func wrapped(text: String, size: int = 18, color: Color = Palette.TEXT, w
 	return l
 
 
+## Every button in this game is a fortune slip — the same object the player draws to get
+## a reading — not a rounded rectangle with a word in it (ops/STANDARD.md #4: "the shape
+## comes from your game's world"). The parent (cyber-fortune-godot) already made this call
+## for its own draw buttons; the adult fork gets the same shape, its own tint.
+const _ShapedButtonScript := preload("res://scripts/shaped_button.gd")
+
 static func button(text: String, variation: String = "") -> Button:
-	var b := Button.new()
+	var b: Button = _ShapedButtonScript.new()
+	b.shape = _ShapedButtonScript.Shape.SLIP
+	b.label = text
 	b.text = text
-	if variation != "":
-		b.theme_type_variation = variation
+	match variation:
+		"Hot":
+			b.tint = Palette.HOT
+			b.ink = Palette.PAPER
+		"Gold":
+			b.tint = Palette.GOLD
+			b.ink = Palette.PAPER_INK
+		_:
+			b.tint = Palette.PLUM_SOFT
+			b.ink = Palette.PAPER
+	b.add_theme_font_override("font", font("bold"))
+	b.add_theme_font_size_override("font_size", 17)
+	b.custom_minimum_size = Vector2(160, 56)
 	b.focus_mode = Control.FOCUS_NONE
 	return b

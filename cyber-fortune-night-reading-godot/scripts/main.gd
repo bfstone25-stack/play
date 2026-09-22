@@ -67,7 +67,7 @@ func _build_hud() -> void:
 	lang_btn.offset_top = 14
 	lang_btn.offset_bottom = 58
 	lang_btn.pressed.connect(func():
-		Tx.set_lang("en" if Tx.lang == "zh" else "zh")
+		Tx.next_lang()
 		Fortune.save_state())
 	hud.add_child(lang_btn)
 	toasts = VBoxContainer.new()

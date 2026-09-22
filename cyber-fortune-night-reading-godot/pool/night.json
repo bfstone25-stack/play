@@ -20,7 +20,13 @@
 "refuse_zh": "“不。”她把牌推回来，手很稳。“这张不是我。今晚也不是。”",
 "refuse_en": "\"No.\" She pushes the card back, steady. \"That one isn't me. Not tonight.\"",
 "locked_zh": "她绕过来，坐在桌子的这一边，像这本来就是她的位置。",
-"locked_en": "She comes round and sits on this side of the table as if it had always been her chair."
+"locked_en": "She comes round and sits on this side of the table as if it had always been her chair.",
+"name_ja": "卓",
+"belief_ja": "彼女は卓のこちら側には決して回ってこない。",
+"open_strong_ja": "彼女は卓の角を見て、それから椅子を半寸だけ横にずらした。こちらへ来いということではない。彼女自身が動いたのだ。",
+"open_weak_ja": "「ただの木でしょう」と彼女は言い、その言葉を自分の耳で聞いた。",
+"refuse_ja": "「いいえ」。彼女は札を押し返す。手は揺れない。「それは私じゃない。今夜は違う」",
+"locked_ja": "彼女は回ってきて卓のこちら側に座る。はじめからそこが自分の席だったように。"
 },
 {
 "id": "hood",
@@ -35,7 +41,13 @@
 "refuse_zh": "她把兜帽拉严了。“先读你手里的牌，再读我。”",
 "refuse_en": "She pulls the hood closed. \"Read the card in your hand before you read me.\"",
 "locked_zh": "兜帽在椅背上。她让烛光照着自己的脸，没有偏头。",
-"locked_en": "The hood is over the chair back. She lets the candle have her face and doesn't turn away."
+"locked_en": "The hood is over the chair back. She lets the candle have her face and doesn't turn away.",
+"name_ja": "フード",
+"belief_ja": "読む者は、見られる者ではない。",
+"open_strong_ja": "フードが少し後ろに落ちた。彼女は直さない。",
+"open_weak_ja": "「ここは暗いから」と彼女は言う。「どうせ私なんて見えない」。半拍だけ遅い言い方だった。",
+"refuse_ja": "彼女はフードを閉じる。「私を読む前に、手の中の札を読んで」",
+"locked_ja": "フードは椅子の背に掛かっている。彼女は蝋燭に顔を預けたまま、そらさない。"
 },
 {
 "id": "question",
@@ -50,7 +62,13 @@
 "refuse_zh": "“我今天的问题都用完了。”她把牌翻过去。",
 "refuse_en": "\"I've used up my questions today.\" She turns the card face down.",
 "locked_zh": "她说出了那个问题，说完就一直看着你，等你抽。",
-"locked_en": "She asks it out loud, and then just looks at you, waiting for you to draw."
+"locked_en": "She asks it out loud, and then just looks at you, waiting for you to draw.",
+"name_ja": "問い",
+"belief_ja": "彼女は他人のために訊く。自分のためには訊かない。",
+"open_strong_ja": "「じゃあ……私のために一回、訊いて」。取り消す前に、と急いで言った。",
+"open_weak_ja": "彼女は少し笑う。「もし——もしもの話だけど——私にも問いがあったとして」",
+"refuse_ja": "「今日の問いはもう使い切った」。彼女は札を伏せる。",
+"locked_ja": "彼女は声に出してそれを訊き、あとはただこちらを見て、引くのを待っている。"
 }
 ],
 "scene": {
@@ -67,8 +85,17 @@
 "\"Say it,\" she says, \"the way you read a slip — and then it's true.\""
 ],
 "after_zh": "她把那张牌收进自己的牌堆里，正位朝上。",
-"after_en": "She slides that card into her own deck, upright."
-}
+"after_en": "She slides that card into her own deck, upright.",
+"invite_ja": "「あなたが読んだことは、全部そうなった」と彼女は言う。「なら、最後の一つを読んで」",
+"beats_ja": [
+"彼女は外套の留め具を自分で一つ外し、二つ目で止めて、どこで止めたかをこちらに見せる。",
+"蝋燭の火が鎖骨の影を一寸だけ押し上げる。卓の縁についた手の、指の節が白い。",
+"「言って」と彼女は言う。「みくじを読むみたいに——そうしたら、本当になる」"
+],
+"after_ja": "彼女はその札を自分の山に、正位置のまま差し込んだ。"
+},
+"name_ja": "ミレン",
+"who_ja": "昼は誰の札でも読む人。彼女を読んだ者はいない。"
 },
 {
 "id": "qiao",
@@ -91,7 +118,13 @@
 "refuse_zh": "“香还没完。”她把签筒摆正。这就是回答。",
 "refuse_en": "\"The incense isn't finished.\" She squares the tube on the table. That is the answer.",
 "locked_zh": "香灰是冷的。她终于坐下来，像一个下了班的人。",
-"locked_en": "The ash is cold. She sits down at last, like someone off shift."
+"locked_en": "The ash is cold. She sits down at last, like someone off shift.",
+"name_ja": "香",
+"belief_ja": "香が絶えないかぎり、彼女は当番のままだ。",
+"open_strong_ja": "彼女は最後の一本を軽く押して消した。スイッチを切るような手つきで。",
+"open_weak_ja": "「……これももうすぐ終わるし」。彼女はそれを見ているだけで、次を焚かない。",
+"refuse_ja": "「香はまだ終わっていません」。彼女はみくじ筒を置き直す。それが答えだ。",
+"locked_ja": "灰は冷たい。彼女はやっと腰を下ろす。仕事を上がった人の座り方で。"
 },
 {
 "id": "form",
@@ -106,7 +139,13 @@
 "refuse_zh": "她合十，答了四个字，标准得像印上去的。",
 "refuse_en": "She folds her hands and gives you four characters, as standard as a stamp.",
 "locked_zh": "她整晚都在用自己的话说话，而且没有再改回去。",
-"locked_en": "She talks in her own words all night, and doesn't switch back."
+"locked_en": "She talks in her own words all night, and doesn't switch back.",
+"name_ja": "作法",
+"belief_ja": "彼女は何を訊かれても、寺の言葉で答える。",
+"open_strong_ja": "彼女はごく普通のことを言って、それから固まった。それは寺の文句ではなく、彼女自身の文だった。",
+"open_weak_ja": "「……それ、どう言えばいいのか分からない」。はじめて引用が出てこなかった。",
+"refuse_ja": "彼女は手を合わせ、四文字で答える。判で押したように定型で。",
+"locked_ja": "彼女は一晩じゅう自分の言葉で話し、もう元には戻さなかった。"
 },
 {
 "id": "wish",
@@ -121,7 +160,13 @@
 "refuse_zh": "“这支不是给我的。”她把它放回筒里。",
 "refuse_en": "\"That one isn't mine.\" She puts it back in the tube.",
 "locked_zh": "她把自己的那支签系在架子上，名字朝外。",
-"locked_en": "She ties her own slip to the rack with her name facing out."
+"locked_en": "She ties her own slip to the rack with her name facing out.",
+"name_ja": "願",
+"belief_ja": "彼女は来た人みんなのために祈って、自分のためには一度も祈っていない。",
+"open_strong_ja": "彼女は一本振り出した。自分のために引いたのだ。手が一度だけ跳ねた。",
+"open_weak_ja": "「もし私が願ったとして」と彼女は言う。「欲張りには、ならないですよね」",
+"refuse_ja": "「これは私のじゃありません」。彼女はそれを筒に戻す。",
+"locked_ja": "彼女は自分のみくじを棚に結んだ。名前を外に向けて。"
 }
 ],
 "scene": {
@@ -138,8 +183,17 @@
 "\"Read it out,\" she says, \"the way it's written — and then it counts.\""
 ],
 "after_zh": "她把那支签收进袖子里，没有系上架子。",
-"after_en": "She keeps that slip in her sleeve instead of tying it to the rack."
-}
+"after_en": "She keeps that slip in her sleeve instead of tying it to the rack.",
+"invite_ja": "「あなたが読んだものは、本当になりました」と彼女は言う。「では、この一本は」",
+"beats_ja": [
+"袍の一枚目は文机の上に。二枚目はまだ着たまま。彼女は自分で袖を肘まで押し上げる。",
+"筒は半分空になっている。彼女は机の縁に手をつき、蝋燭に背を向ける。袍の下の肩の線がはっきりしている。",
+"「読み上げて」と彼女は言う。「書いてあるとおりに——読んだら、それで成立します」"
+],
+"after_ja": "彼女はそのみくじを袖に仕舞った。棚には結ばなかった。"
+},
+"name_ja": "巧",
+"who_ja": "みくじ筒を守る人。午前二時になってもまだ袍のまま。"
 },
 {
 "id": "dagny",
@@ -162,7 +216,13 @@
 "refuse_zh": "她笑了，很大声，然后换了个话题。你听得出来那是门关上的声音。",
 "refuse_en": "She laughs, loudly, and changes the subject. You can hear the door closing in it.",
 "locked_zh": "她不笑了。她就这么坐着，看着你，让句子留在桌上。",
-"locked_en": "She doesn't laugh. She just sits there and lets the sentence stay on the table."
+"locked_en": "She doesn't laugh. She just sits there and lets the sentence stay on the table.",
+"name_ja": "冗談",
+"belief_ja": "何でも笑い話にして通り過ぎられる。",
+"open_strong_ja": "笑いが半分で止まり、彼女は札の上に手を置いた。「もう一回、言って」",
+"open_weak_ja": "「おもしろい」と彼女は言う。笑ってはいない。",
+"refuse_ja": "彼女は大声で笑って、話題を変えた。その笑いの中に扉の閉まる音がする。",
+"locked_ja": "彼女は笑わない。ただそこに座ってこちらを見て、その一文を卓の上に置いたままにする。"
 },
 {
 "id": "lock",
@@ -177,7 +237,13 @@
 "refuse_zh": "“我十分钟后关门。”她已经站起来了。",
 "refuse_en": "\"I'm locking up in ten.\" She is already standing.",
 "locked_zh": "她没关门。她把牌子翻成“营业中”，然后坐回来。",
-"locked_en": "She doesn't lock up. She flips the sign back to OPEN and sits down again."
+"locked_en": "She doesn't lock up. She flips the sign back to OPEN and sits down again.",
+"name_ja": "戸締まり",
+"belief_ja": "彼女は一人で店を閉める。誰かを待ったことはない。",
+"open_strong_ja": "彼女は鍵を卓に置き、一寸だけこちらへ押した。理由は言わない。",
+"open_weak_ja": "「どうせ筐体が冷えるのに二時間かかるし」。それは自分に向けた理由だ。",
+"refuse_ja": "「十分で閉めるから」。彼女はもう立ち上がっている。",
+"locked_ja": "彼女は閉めなかった。札を「営業中」に返して、また座る。"
 },
 {
 "id": "tell",
@@ -192,7 +258,13 @@
 "refuse_zh": "“猜的。”她说。“接着猜。”手没动。",
 "refuse_en": "\"Guess,\" she says. \"Keep guessing.\" The hand doesn't move.",
 "locked_zh": "她把两只手都放在桌上，摊开。“行。你读到了。”",
-"locked_en": "She puts both hands on the table, open. \"Fine. You read it.\""
+"locked_en": "She puts both hands on the table, open. \"Fine. You read it.\"",
+"name_ja": "癖",
+"belief_ja": "彼女には癖がある。自分でも分かっている。",
+"open_strong_ja": "親指がグラスの縁で止まった——まさにあの動きで、見られたことも彼女は分かっている。",
+"open_weak_ja": "彼女はその手を卓の下に隠した。",
+"refuse_ja": "「当てずっぽうでしょ」と彼女は言う。「続けてどうぞ」。手は動かない。",
+"locked_ja": "彼女は両手を卓に出して、開いて置いた。「いいよ。読まれた」"
 }
 ],
 "scene": {
@@ -209,7 +281,16 @@
 "\"Read it,\" she says. \"After that I won't argue.\""
 ],
 "after_zh": "她把牌翻过来压在杯底下。“明天我还来。”",
-"after_en": "She turns the card face down under her glass. \"I'm coming back tomorrow.\""
-}
+"after_en": "She turns the card face down under her glass. \"I'm coming back tomorrow.\"",
+"invite_ja": "「三回とも当たり」と彼女は言う。「じゃあ今あんたが言うことは何でも信じる——だから、価値のあることにして」",
+"beats_ja": [
+"上着は椅子の背に掛けたまま。シャツのボタンを自分で三つ目まで外して止め、目を上げる。",
+"階下のゲーム機の光が床から筋になって背中を撫でていく。彼女は髪を片側に寄せた。",
+"「読んで」と彼女は言う。「読み終わったら、もう言い返さないから」"
+],
+"after_ja": "彼女は札を伏せてグラスの下に敷いた。「明日も来るから」"
+},
+"name_ja": "ダグニー",
+"who_ja": "階下のゲームセンターの主。こんなもの嘘だと証明しに来た。"
 }
 ]
