@@ -230,6 +230,11 @@ func _open_panel_shell(title_text: String) -> VBoxContainer:
 	t.add_theme_color_override("font_color", Palette.ACCENT_DEEP)
 	v.add_child(t)
 
+	# _open_panel_shell begins by closing whatever was open, and _close_panel publishes
+	# "floor". Without this second publish the bridge reports "floor" for the whole time a
+	# panel is on screen -- the mirror of the bug where it reported "title" after the floor
+	# had opened. A read-only state view is only worth having if every transition writes it.
+	_publish()
 	return v
 
 
@@ -382,10 +387,12 @@ func _close_panel() -> void:
 		active_panel.queue_free()
 		active_panel = null
 	active_panel_kind = ""
+	_publish()
 
 
 func _show_title() -> void:
 	title_screen.visible = true
+	_publish()
 	floor_layer.visible = false
 	_close_panel()
 
@@ -395,10 +402,17 @@ func _show_floor() -> void:
 	floor_layer.visible = true
 	_close_panel()
 	Sfx.bark("greet")
+	# Publish on the transition, not only from _refresh(). _refresh() does not run when
+	# the title is dismissed, so window.__ol_state kept reporting screen="title" while the
+	# floor was plainly on screen -- the driver's clicks were landing and the bridge was
+	# the thing lying about it. A read-only view that reports a stale screen is worse than
+	# no view at all.
+	_publish()
 
 
 # --------------------------------------------------------------------------- refresh ----
 func _refresh() -> void:
+	_publish()
 	if not is_instance_valid(floor_label):
 		return
 	floor_label.text = I18n.f("floor_label", [Grid.floor_level])
@@ -450,3 +464,36 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_open_report()
 		KEY_ESCAPE:
 			_close_panel()
+
+
+## A read-only view of the floor on window.__ol_state, for tests/headless_web.py.
+##
+## Read-only, the same rule its sibling OCCUPANCY and FOLD both keep: the driver plays
+## with real clicks and uses this only to see what happened. A command channel would let
+## a test drive the rules directly and pass while the input handling was broken, which is
+## the one failure a "does it work in a browser" test exists to catch.
+##
+## Added 2026-09-22 because Office Landlord was the only Godot title in the portfolio with
+## no tests/ directory at all. Its matrix came from the generic click driver and read as
+## 2 distinct stages out of 54 frames, against 15 for the sibling that has a driver --
+## which looked like a shallow game and was actually an unmeasured one.
+func _publish() -> void:
+	if not OS.has_feature("web"):
+		return
+	var filled := 0
+	for c in Grid.cells:
+		if c != null and c != "":
+			filled += 1
+	JavaScriptBridge.eval("window.__ol_state=%s;" % JSON.stringify({
+		"screen": ("title" if is_instance_valid(title_screen) and title_screen.visible
+				else ("panel:" + active_panel_kind if active_panel != null else "floor")),
+		"floor": Grid.floor_level,
+		"banked": Grid.banked,
+		"rent": Grid.current_rent(),
+		"rent_met": Grid.rent_met(),
+		"filled": filled,
+		"cells": Grid.cells.size(),
+		"tray": Grid.tray.size(),
+		"relics": Grid.relics.size(),
+		"lang": I18n.lang,
+	}), true)
