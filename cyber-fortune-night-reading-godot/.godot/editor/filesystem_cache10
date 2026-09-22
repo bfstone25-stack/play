@@ -40,14 +40,14 @@ tarot.json::JSON::-1::1790042981::0::1::::<><><>0<>0<><>::
 ui.json::JSON::-1::1790042981::0::1::::<><><>0<>0<><>::
 ::res://scenes/::1789790215
 main.tscn::PackedScene::-1::1789790215::0::1::::<><><>0<>0<><>::res://scripts/main.gd
-::res://scripts/::1790040510
+::res://scripts/::1790047934
 backdrop.gd::GDScript::7104390093762974783::1789885269::0::1::::Backdrop<>Control<><>0<>0<><>::
-fortune.gd::GDScript::2813504103812732937::1789883405::0::1::::<>Node<><>0<>0<><>::
-gate.gd::GDScript::8726946939687403721::1790043026::0::1::::<>Node<><>0<>0<><>::
+fortune.gd::GDScript::2813504103812732937::1790047934::0::1::::<>Node<><>0<>0<><>::
+gate.gd::GDScript::8726946939687403721::1790047973::0::1::::<>Node<><>0<>0<><>::
 i18n.gd::GDScript::5718140161692291545::1790040510::0::1::::<>Node<><>0<>0<><>::
 main.gd::GDScript::5062499984474956520::1790024133::0::1::::<>Control<><>0<>0<><>::
 merit_curve.gd::GDScript::6274601833526511246::1789790025::0::1::::MeritCurve<>RefCounted<><>0<>0<><>::
-night.gd::GDScript::9163179900211780450::1789883394::0::1::::<>Node<><>0<>0<><>::
+night.gd::GDScript::9163179900211780450::1790047930::0::1::::<>Node<><>0<>0<><>::
 night_home_screen.gd::GDScript::9031025127583604287::1790040034::0::1::::<>Control<><>0<>0<><>::
 night_read_screen.gd::GDScript::7449539320168609391::1790040031::0::1::::<>Control<><>0<>0<><>::
 night_scene_screen.gd::GDScript::3368394196581567798::1790040040::0::1::::<>Control<><>0<>0<><>::
@@ -57,7 +57,7 @@ reader.gd::GDScript::4777385112697246410::1789790048::0::1::::ReaderForces<>RefC
 sfx.gd::GDScript::2443476932835719518::1790040046::0::1::::<>Node<><>0<>0<><>::
 shaped_button.gd::GDScript::6010850827505441395::1790039800::0::1::::ShapedButton<>Button<><>0<>0<><>::
 studio_theme.gd::GDScript::2478357348248839043::1790039953::0::1::::StudioTheme<>RefCounted<><>0<>0<><>::
-::res://tests/::1789884123
+::res://tests/::1790047966
 merit_conformance.json::JSON::-1::1789790126::0::1::::<><><>0<>0<><>::
 run_tests.gd::GDScript::4981379072623322446::1789884042::0::1::::<>Node<><>0<>0<><>::
 run_tests.tscn::PackedScene::-1::1789790215::0::1::::<><><>0<>0<><>::res://tests/run_tests.gd

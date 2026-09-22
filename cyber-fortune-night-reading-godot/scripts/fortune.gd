@@ -384,6 +384,12 @@ func save_state() -> void:
 	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if f:
 		f.store_string(JSON.stringify(snapshot()))
+	# user:// on the web export is IDBFS -- the write above lands in an in-memory mirror
+	# until this flushes it to IndexedDB. Without it, a save looks fine for the rest of
+	# the same page load and is simply gone after a reload. Same pattern as
+	# play/fold-godot/scripts/save.gd.
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("if (window.FS && FS.syncfs) FS.syncfs(false, function(){});", true)
 
 
 func reset() -> void:
