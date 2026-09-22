@@ -22,7 +22,18 @@ var _first_hit := false
 var _first_buy := false
 var _kept_fonts: Array = []
 var _save_accum := 0.0
+## Barks. `ops/bark_wire.py` put the player in Sfx and the lines are rendered under
+## assets/voice, and until now NOTHING in this game called Sfx.bark() -- twenty-three
+## recorded lines that could not be reached from the running game. These three fields are
+## the state the nine slots need: how long since the player last touched anything (idle),
+## whether the last-hose line has already been said this night (near), and the combo the
+## streak line last fired on, so a combo that sits at 3 does not say it every rebound.
+var _quiet := 0.0
+var _said_near := false
+var _streak_at := 0
 var _claim: Callable = Callable()
+## The LEDGER stub that lives on the table itself — see _build_table_ledger().
+var _ledger_stub: Button = null
 
 
 func _ready() -> void:
@@ -50,6 +61,8 @@ func _ready() -> void:
 	hud.z_index = 100
 	add_child(hud)
 
+	_build_table_ledger()
+
 	overlay = Control.new()
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -59,6 +72,43 @@ func _ready() -> void:
 	Game.bridge_handler = _bridge
 	Game.tel("visit", {"lang": Game.lang})
 	show_title()
+
+
+## An idle tycoon whose ledger cannot be opened while the night is running.
+##
+## 2026-09-21: scripts/hud.gd is MOUSE_FILTER_IGNORE and draws no controls, and no other
+## node was parented over the table, so between TAKE THE GATE and SHIFT OVER this game had
+## NO buttons on screen at all. The coins that the whole loop exists to earn piled up for
+## three hoses with nowhere to spend them, and the only ways back to the ledger were to
+## finish the night or to have gone there from the title before starting. That is the one
+## screen an idle game must never put behind a wait.
+##
+## So the table gets its own stub, bottom centre, over the apron under the flippers. It is
+## the same torn ticket as every other button here. Three notes on the position:
+##
+##   * bottom centre is the portrait thumb rest, and it is also the one column
+##     ops/play_driver.py can reach on a 420x640 cabinet letterboxed into 1280x720 — the
+##     ledger was unreachable to the matrix for exactly the reason it was unreachable to a
+##     player.
+##   * it eats a 132x40 patch of the plunger's touch zone (everything below H*0.78). That
+##     is deliberate and cheap: the apron under the flippers is not where a thumb pumps,
+##     and Space and the rest of the band still plunge.
+##   * it pauses nothing by itself — show_ledger() does that, and closing from
+##     "ledger_from_table" un-pauses, which is the path that already existed.
+func _build_table_ledger() -> void:
+	_ledger_stub = StudioTheme.ticket(t("shop"), "Ghost", 132.0, 40.0)
+	_ledger_stub.add_theme_font_size_override("font_size", 13)
+	_ledger_stub.position = Vector2((W - 132.0) / 2.0, H - 46.0)
+	_ledger_stub.z_index = 110
+	_ledger_stub.visible = false
+	_ledger_stub.pressed.connect(Sfx.tap)
+	_ledger_stub.pressed.connect(func() -> void:
+		if screen != "table":
+			return
+		table.paused = true
+		show_ledger()
+		screen = "ledger_from_table")
+	add_child(_ledger_stub)
 
 
 ## The three Latin faces carry no CJK; the zh-Hans strings fall through to a Noto subset.
@@ -114,11 +164,11 @@ func _label(text: String, variation := "", size := 0, color := Color(0, 0, 0, 0)
 	return l
 
 
+## Every screen's ACTION button is a torn ticket stub (StudioTheme.ticket, STANDARD #4).
+## The ledger's rows stay plain: the shape is the game's object, and a shelf of forty
+## identical stubs stops being an object and becomes wallpaper.
 func _button(text: String, variation: String, fn: Callable, min_w := 220.0) -> Button:
-	var b := Button.new()
-	b.text = text
-	b.theme_type_variation = variation
-	b.custom_minimum_size = Vector2(min_w, 44)
+	var b := StudioTheme.ticket(text, variation, min_w, 48.0)
 	b.pressed.connect(Sfx.tap)
 	b.pressed.connect(fn)
 	return b
@@ -140,6 +190,10 @@ func _panel(pos_y: float, width := 360.0, variation := "Glass") -> VBoxContainer
 
 func _show(name: String) -> void:
 	screen = name
+	# The stub belongs to the table and to nothing else: it must not sit on top of the
+	# title's menu, and it must not be pressable from behind an overlay.
+	if _ledger_stub != null and is_instance_valid(_ledger_stub):
+		_ledger_stub.visible = name == "table"
 	Game.tel("screen", {"screen": name})
 
 
@@ -149,6 +203,8 @@ func show_title() -> void:
 	table.visible = false
 	table.paused = true
 	hud.visible = false
+	if _ledger_stub != null and is_instance_valid(_ledger_stub):
+		_ledger_stub.visible = false
 	# Rebuilt every time rather than re-shown: its labels are baked at build time, so a
 	# language change that only re-showed it left an English menu on a Chinese game.
 	if title != null and is_instance_valid(title):
@@ -160,7 +216,7 @@ func show_title() -> void:
 	title.connect("start_pressed", _enter_game)
 	title.connect("ledger_pressed", show_ledger)
 	title.connect("lang_pressed", func():
-		Game.set_lang("en" if Game.lang == "zh" else "zh")
+		Game.set_lang(RTStrings.next_lang(Game.lang))
 		show_title())
 	title.connect("sound_pressed", _toggle_sound)
 	title.connect("motion_pressed", _cycle_motion)
@@ -229,6 +285,8 @@ func start_table() -> void:
 	Game.tel("start", {"lang": Game.lang, "era": Kernel.era_id(Game.st)})
 	Game.save()
 	_show("table")
+	_bark_night_reset()
+	Sfx.bark("greet")
 
 
 # ---------- the return screen (the offline gate) ------------------------------------------
@@ -331,6 +389,7 @@ func _buy(id: String, is_perk: bool) -> void:
 		Sfx.drain()
 		return
 	var prev_era := Kernel.era_id(Game.st)
+	var was_new := (Kernel.perk_of(Game.st, id) if is_perk else Kernel.level_of(Game.st, id)) == 0
 	Game.st = res["state"]
 	table.state = Game.st
 	Sfx.buy()
@@ -339,6 +398,11 @@ func _buy(id: String, is_perk: bool) -> void:
 		Game.tel("first_buy", {"id": id})
 	if Kernel.era_id(Game.st) != prev_era:
 		Game.tel("era_up", {"era": Kernel.era_id(Game.st)})
+		# "stage" is the four era lines, in order, and Kernel.ERAS is in that order too, so
+		# the right one is said rather than a random one of the four.
+		Sfx.bark_at("stage", Kernel.era_index(Game.st))
+	elif was_new:
+		Sfx.bark("unlock")
 	Game.save()
 	var was := screen
 	show_ledger()
@@ -374,6 +438,46 @@ func _do_prestige() -> void:
 	show_ledger()
 
 
+# ---------- the booth: pause, and the way out --------------------------------------------
+## Until now a night could only be left by finishing it.
+##
+## 2026-09-21: between TAKE THE GATE and SHIFT OVER there was no pause, no way back to the
+## title, and nothing bound to Escape or to a gamepad's B. On a portal that is a hard
+## requirement (CrazyGames expects a way back to the menu) and on a phone it is what the
+## back gesture is for; here it also means the table keeps running while the player is
+## reading something else, which is how the night's state got lost.
+##
+## Escape opens it, Escape closes it, and it pauses the bed while it is up.
+func show_booth() -> void:
+	if screen != "table":
+		return
+	_clear_overlay()
+	_dim(0.72)
+	table.paused = true
+	var v := _panel(200.0, 320.0, "Card")
+	v.add_child(_label(t("settings"), "Title", 22, Palette.ACCENT))
+	v.add_child(_label(t("booth_hint"), "", 13, Palette.MUTED, true))
+	v.add_child(_button(t("resume"), "Primary", func():
+		_clear_overlay()
+		table.paused = false
+		_show("table")))
+	v.add_child(_button(t("shop"), "Amber", func():
+		show_ledger()
+		screen = "ledger_from_table"))
+	v.add_child(_button(t("sound") + ": " + (t("on") if not Sfx.muted else t("off")),
+		"Amber", func():
+			Sfx.muted = not Sfx.muted
+			Game.sound = not Sfx.muted
+			Game.save()
+			show_booth()))
+	# Leaving does NOT throw the night away: Game.save() has been writing the run every
+	# four seconds, and start_table() picks a live night back up from the title.
+	v.add_child(_button(t("quit"), "Ghost", func():
+		Game.save()
+		show_title(), 160.0))
+	_show("booth")
+
+
 # ---------- the night ends ------------------------------------------------------------------
 func show_nightover() -> void:
 	_clear_overlay()
@@ -390,6 +494,15 @@ func show_nightover() -> void:
 		screen = "ledger_from_table"))
 	v.add_child(_button(t("back"), "Ghost", show_title, 140.0))
 	Sfx.nightover()
+	# A record is the only thing worth the big line. Kernel carries no best -- it is
+	# conformance-locked -- so Game keeps it (game.gd `best_night`), and it is read BEFORE
+	# it is updated, or every night is a record.
+	var rent := int(Game.st["score"])
+	if rent > Game.best_night and Game.best_night > 0:
+		Sfx.bark("win_big")
+	else:
+		Sfx.bark("win")
+	Game.best_night = maxi(Game.best_night, rent)
 	Game.tel_play_end({"night": int(Game.st["night"]), "era": Kernel.era_id(Game.st)},
 		int((Time.get_ticks_msec() - _run_started_ms) / 1000))
 	# The night is over: that is where this catalogue offers the rest of itself. Offered,
@@ -410,6 +523,7 @@ func new_night() -> void:
 	table.paused = false
 	Sfx.tap()
 	_show("table")
+	_bark_night_reset()
 
 
 # ---------- events from the table -------------------------------------------------------
@@ -433,6 +547,12 @@ func _on_events(list: Array) -> void:
 					table.float_text(at + Vector2(0, -14), "+" + str(int(ev.get("pts", 0))))
 				hud.say(RTStrings.tm("hits", str(ev.get("id", kind))))
 				table.guard_mood("cheer", 1.0)
+				var combo := int(Game.st["combo"])
+				if combo >= 3 and combo != _streak_at:
+					_streak_at = combo
+					Sfx.bark("streak")
+				if kind == "gate":
+					Sfx.bark("win")
 				if not _first_hit:
 					_first_hit = true
 					Game.tel("first_rebound", {"kind": kind})
@@ -447,6 +567,8 @@ func _on_events(list: Array) -> void:
 				Sfx.drain()
 				table.guard_mood("oops", 1.6)
 				hud.say(RTStrings.tm("lines", "drain"))
+				_streak_at = 0
+				Sfx.bark("fail")
 				Game.save()
 			"save":
 				Sfx.save_ball()
@@ -454,6 +576,11 @@ func _on_events(list: Array) -> void:
 				hud.say(RTStrings.tm("lines", "save"))
 			"reload":
 				hud.say(t("launch_hint"))
+				# "near" is the tease slot: one move from the win. In this game that is the
+				# last hose of the night being racked -- everything after it is the board.
+				if int(Game.st["balls"]) <= 1 and not _said_near:
+					_said_near = true
+					Sfx.bark("near")
 			"nightover":
 				show_nightover()
 
@@ -462,6 +589,49 @@ func _process(dt: float) -> void:
 	hud.state = Game.st
 	_apply_motion()
 	_probe_step()
+	if screen == "table":
+		_quiet += dt
+		# The hose racks ITSELF if nobody pumps it.
+		#
+		# This is an idle tycoon, and it was not idle: with the ball in the lane and the
+		# mode at "plunge", Kernel.step does nothing at all until an input arrives, so a
+		# player who put the phone down came back to a night that had not moved a frame.
+		# ops/play_matrix.py caught the same thing from the other side -- the driver reached
+		# the table and then twelve frames of the same picture, two "stages" of twelve,
+		# because between its taps the table simply stopped. Three hoses were never spent,
+		# so the night never ended, so the board and the ledger were unreachable.
+		#
+		# Fired through table.input, the same dictionary a thumb writes to -- NOT through
+		# Kernel. The rules are an exact port of the JS build and tests/run_tests.gd
+		# compares 56,409 doubles against it with `==`; an auto-launch that reached into
+		# the state would have to be ported back into kernel.js or the suite goes red. So
+		# the auto-rack is worth exactly what a tap is worth (Kernel.launch_ball floors a
+		# fired charge at 0.78) and a held pump is still the only way to a full 1.0.
+		#
+		# The countdown runs on its OWN clock, not on `_quiet`. 2026-09-21: it used
+		# `_quiet`, and `_quiet` is reset by _unhandled_input on EVERY event, including the
+		# ones this game ignores. So a player idly tapping, or pressing an unused key, held
+		# the hose racked indefinitely -- each tap put the 3.2 s countdown back to zero and
+		# the hose the countdown exists to fire never fired. ops/play_driver.py sat on the
+		# last hose of a night for six interactions that way and the night never ended.
+		# Two timers, because they answer two questions: `_quiet` is "has the player gone
+		# away" (the idle bark), `_rack` is "has this hose been sitting in the lane".
+		if str(Game.st.get("mode", "")) == "plunge" and not table.paused \
+				and not bool(table.input.get("plunge", false)):
+			_rack += dt
+		else:
+			_rack = 0.0
+		if _rack > 3.2:
+			_rack = 0.0
+			table.input["plunge"] = false
+			table.input["fire"] = true
+			hud.say(t("launch_hint"))
+		_rescue_step(dt)
+		# The idle line: a tycoon that sits silent while the player looks away has no voice
+		# at all. 22 s, and only on the table -- never over a panel the player is reading.
+		if _quiet > 22.0:
+			_quiet = 0.0
+			Sfx.bark("idle")
 	_save_accum += dt
 	if _save_accum > 4.0:
 		_save_accum = 0.0
@@ -469,10 +639,179 @@ func _process(dt: float) -> void:
 			Game.save()
 
 
+## ---------- the ball goes to sleep, and the night never ends -----------------------------
+##
+## 2026-09-21. The play matrix reported 2 stages of 28 frames and it was read, twice, as a
+## driver that could not find the buttons. It was not. The bridge (`op: "state"`, now
+## carrying the ball) showed the ball parked at (0.238639336875166, 0.86038169921771) with
+## a speed of 0.0036, IDENTICAL to fifteen significant figures across forty seconds of
+## wall clock, mode still "live", three hoses still in hand.
+##
+## That spot is a corner the table builds out of two separate constraints: the left inlane
+## wall ends at (0.230, 0.875) and the left flipper pivots at (0.255, 0.865), 0.027 apart
+## with a ball 0.034 across. Each solver pass pushes the ball to exactly BALL_R off its own
+## segment, the two pushes cancel, and the ball sits there for the rest of time. Gravity
+## never wins because it is answered every substep. There is no drain under it -- the drain
+## mouth is 0.40..0.60 -- so `balls` never decrements, so the night never ends, so SHIFT
+## OVER, the ledger and every screen behind them are unreachable for the rest of the
+## session. A real player loses the night to it, not only the driver.
+##
+## The rules cannot be where this is fixed: scripts/kernel.gd is a bit-exact port of
+## kernel.js and tests/run_tests.gd compares 56,409 doubles against it with `==`, so a
+## change to `Kernel.step` turns the suite red and has to be ported back into the JS. So
+## the rescue lives here, above the rules, and does what the cabinet does:
+##
+##   1.4 s asleep -> **nudge the table**. Both flippers, hard, for a few frames. It is the
+##        in-world verb (a night guard kicks the machine), it is free, and it frees most
+##        wedges because raising the flipper moves the very constraint the ball is resting
+##        against.
+##   three nudges and still asleep -> concede the hose. `Kernel.drain_ball` is a static on
+##        the state and is NOT part of `Kernel.step`, so calling it here costs the
+##        conformance suite nothing, and it routes through `_on_events` so the HUD line,
+##        the sound, the bark and SHIFT OVER all behave exactly as a real drain.
+##
+## The threshold is on SPEED, not on position, so it covers the corners nobody has found
+## yet as well as this one. 1.4 s is longer than any legitimate slow roll on this table --
+## gravity is 1.35 and the bed is one screen tall, so a ball genuinely in play is never
+## under 0.05 for a second and a half.
+## Two ways a ball stops being in play, and only one of them is standing still.
+##
+## ASLEEP is the wedge above: speed under 0.05, which on this table means held. PENNED is
+## the other half, found in the same trace — the ball mooching around the left pocket at a
+## real speed of 0.08 to 0.3 and never leaving a patch 0.05 across, for forty seconds. The
+## speed test cannot see that one, and a player watching it cannot tell it from the wedge:
+## the hose count does not move and the night does not end. So the rescue also watches
+## DISPLACEMENT — where the ball is now against where it was three seconds ago.
+const ASLEEP_SPEED := 0.05
+const ASLEEP_S := 1.4
+const PENNED_RADIUS := 0.05
+const PENNED_S := 3.0
+const NUDGE_LIMIT := 3
+
+var _asleep := 0.0
+var _penned := 0.0
+var _penned_at := Vector2.ZERO
+var _nudges := 0
+var _nudge_left := 0.0
+## How long the current hose has sat in the lane untouched — see the auto-rack.
+var _rack := 0.0
+
+
+func _rescue_step(dt: float) -> void:
+	# The nudge holds the flippers up for a few frames and then lets them go, the same way
+	# a held key would -- the flippers must come back down or the next ball rests on them.
+	if _nudge_left > 0.0:
+		_nudge_left -= dt
+		if _nudge_left <= 0.0:
+			table.input["left"] = false
+			table.input["right"] = false
+	if table.paused or str(Game.st.get("mode", "")) != "live":
+		_rescue_reset()
+		return
+	var b = Game.st.get("ball")
+	if b == null:
+		_rescue_reset()
+		return
+	var at := Vector2(float(b["x"]), float(b["y"]))
+	var sp := sqrt(float(b["vx"]) * float(b["vx"]) + float(b["vy"]) * float(b["vy"]))
+
+	# penned: hasn't got anywhere, however fast it looks
+	if at.distance_to(_penned_at) > PENNED_RADIUS:
+		_penned = 0.0
+		_penned_at = at
+	else:
+		_penned += dt
+
+	# asleep: isn't moving at all
+	if sp >= ASLEEP_SPEED:
+		_asleep = 0.0
+	else:
+		_asleep += dt
+
+	if _asleep < ASLEEP_S and _penned < PENNED_S:
+		return
+	_asleep = 0.0
+	_penned = 0.0
+	_penned_at = at
+	if _nudges < NUDGE_LIMIT:
+		_nudges += 1
+		_nudge()
+		return
+	# Three kicks and it is still in the same corner. Take the hose rather than the night.
+	_nudges = 0
+	var ev := Kernel.drain_ball(Game.st)
+	table.state = Game.st
+	_on_events([{"type": ev}])
+
+
+func _rescue_reset() -> void:
+	_asleep = 0.0
+	_penned = 0.0
+	_penned_at = Vector2.ZERO
+	_nudges = 0
+
+
+func _nudge() -> void:
+	table.input["left"] = true
+	table.input["right"] = true
+	_nudge_left = 0.14
+	table.kick(0.7)
+	Sfx.flip()
+	hud.say(RTStrings.tm("lines", "nudge"))
+	table.guard_mood("oops", 0.9)
+
+
 # ---------- input ------------------------------------------------------------------------
 ## The JS build's keys, plus the thumb zones: the lower quarter is the plunger, the left
 ## and right halves above it are the flippers.
+## Each night starts the bark state over: the last-hose line is said once a night, and the
+## streak line must not carry a combo across the board.
+func _bark_night_reset() -> void:
+	_quiet = 0.0
+	_said_near = false
+	_streak_at = 0
+
+
+## Escape / Back closes whatever panel is open, from anywhere.
+##
+## 2026-09-21: nothing in this game was bound to `ui_cancel`. On the ledger the only exit
+## was one 160 px CLOSE stub, so a keyboard player, a gamepad B button and Android's back
+## gesture all did nothing at all — and ops/play_matrix.py found the same wall from the
+## other side: it opened the ledger on its fifteenth interaction and spent every
+## interaction after that inside it, because the tree of screens behind that panel had no
+## way out. A menu-driven game whose panels cannot be left is a game with one screen.
+##
+## The table is the place to land: closing from a panel opened mid-night un-pauses and
+## goes back to the bed, and closing from a panel opened off the title goes to the title.
+## SHIFT OVER is deliberately NOT closable — there is nothing behind it but a dead table,
+## which is the exact bug start_table()'s "mode == nightover" branch exists to prevent.
+func _close_panel() -> bool:
+	match screen:
+		"table":
+			show_booth()
+			return true
+		"booth":
+			_clear_overlay()
+			table.paused = false
+			_show("table")
+			return true
+		"ledger_from_table":
+			_clear_overlay()
+			table.paused = false
+			_show("table")
+			return true
+		"ledger", "return":
+			show_title()
+			return true
+	return false
+
+
 func _unhandled_input(e: InputEvent) -> void:
+	_quiet = 0.0
+	if e.is_action_pressed("ui_cancel"):
+		if _close_panel():
+			get_viewport().set_input_as_handled()
+		return
 	# Space starts the next night from SHIFT OVER, the way the JS build did.
 	if screen == "nightover" and e is InputEventKey and (e as InputEventKey).pressed \
 			and not (e as InputEventKey).echo and _map_key(e as InputEventKey) == "plunge":
@@ -555,6 +894,15 @@ func _probe_step() -> void:
 		_probe["sparks"] = maxi(_probe["sparks"], sparks.size())
 
 
+## null when there is no ball on the bed, otherwise where it is and how fast.
+func _ball_probe() -> Variant:
+	var b = Game.st.get("ball")
+	if b == null:
+		return null
+	return {"x": float(b["x"]), "y": float(b["y"]), "vx": float(b["vx"]), "vy": float(b["vy"]),
+		"speed": sqrt(float(b["vx"]) * float(b["vx"]) + float(b["vy"]) * float(b["vy"]))}
+
+
 func _motion_probe() -> Dictionary:
 	var span := 0.0
 	if _probe["skyMax"] > -INF and _probe["skyMin"] < INF:
@@ -592,6 +940,19 @@ func _bridge(cmd: Dictionary) -> Dictionary:
 				# What the gated code is actually doing, not what the flag says it should
 				# be doing: a branch that is never taken is the bug this op exists to catch.
 				"motionProbe": _motion_probe(),
+				# What the BALL is doing, not only what the scoreboard says. A night that
+				# stops dead reads identically to a night nobody is playing: same screen,
+				# same mode, same hose count, a score that simply stops moving. Without the
+				# ball's position and speed there is no way to tell "asleep in a pocket"
+				# from "the driver never pressed anything", and a whole play-matrix run was
+				# spent on that question (ops/play_matrix.py: 2 stages of 28 frames).
+				"ball": _ball_probe(),
+				"flipL": float(Game.st.get("flipL", 0.0)),
+				"flipR": float(Game.st.get("flipR", 0.0)),
+				"input": {"left": bool(table.input.get("left", false)),
+					"right": bool(table.input.get("right", false)),
+					"plunge": bool(table.input.get("plunge", false))},
+				"paused": bool(table.paused),
 			}
 		"motion":
 			# Set it outright when asked, otherwise cycle — the button cycles, the test sets.

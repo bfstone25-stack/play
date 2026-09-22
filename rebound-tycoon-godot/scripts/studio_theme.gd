@@ -306,3 +306,51 @@ static func say_label(size: int = 17) -> RichTextLabel:
 	r.scroll_active = false
 	r.add_theme_font_size_override("normal_font_size", size)
 	return r
+
+
+## ---------- the control the player presses ------------------------------------------------
+##
+## ops/STANDARD.md #4: buttons are not rectangles, and the shape comes from the game's own
+## world. This one is a **torn ticket stub** (ShapedButton.Shape.TICKET) — the thing 老王
+## tears off and drops in the tin every time somebody comes through the gate, and the thing
+## the ledger is a stack of. scripts/shaped_button.gd draws it; the three keys below are
+## the only choices this title makes about it, kept here so the title screen and the
+## ledger cannot drift into two different-looking tickets.
+##
+## `notch` is the colour of the punched holes down the stub's edges. They are the ground
+## BEHIND the button, which is why ShapedButton cannot know it: on the title that ground is
+## the key visual under a scrim, on the ledger it is a glass panel, and both read as the
+## same near-black, so one constant covers it.
+const TICKET := {
+	"Primary": {"tint": Palette.GOLD_PALE, "ink": Palette.GROUND_DEEP, "size": 17},
+	"Amber":   {"tint": Palette.ACCENT,    "ink": Palette.GROUND_DEEP, "size": 15},
+	"Ghost":   {"tint": Palette.PANEL_TOP, "ink": Palette.TEXT,        "size": 14},
+}
+
+
+static func ticket(text: String, variation: String, w: float, h: float = 46.0) -> ShapedButton:
+	var spec: Dictionary = TICKET.get(variation, TICKET["Ghost"])
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.TICKET
+	b.tint = spec["tint"]
+	b.ink = spec["ink"]
+	b.notch = Palette.GROUND_DEEP
+	b.label = text
+	b.theme_type_variation = variation
+	# ShapedButton draws the text itself, so the variation is only being asked for a font
+	# here — and its stylebox would paint a rounded rectangle straight under the stub.
+	# `flat = true` in ShapedButton._ready() is what stops that; this override is what keeps
+	# zh/ja legible, because the display face carries no CJK and 17 px is the Latin size.
+	b.add_theme_font_size_override("font_size", int(spec["size"]))
+	# ShapedButton floors every button at 220x56 unless `compact` is set, and that floor is
+	# sized for a 1280x720 title screen. This game's canvas is 420x640, so the floor was
+	# wider than four of the five buttons on its own title and ten pixels taller than all
+	# of them -- and a Control clamps its size UP to its combined minimum, so the floor won
+	# every time. On the shipped title that put LEDGER underneath 中文, Sound underneath
+	# Motion, and ran the 中文 stub 48 px off the right-hand edge of the screen: the first
+	# matrix tile of 2026-09-21 shows all three. A portrait cabinet sets its own button
+	# sizes and means them.
+	b.compact = true
+	b.custom_minimum_size = Vector2(w, h)
+	b.size = Vector2(w, h)
+	return b

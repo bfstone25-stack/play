@@ -94,9 +94,11 @@ func _draw() -> void:
 	var alpha: float = 1.0 if _line_life > 0.4 else (0.55 + (_line_life / 0.4) * 0.45 if _line_life > 0.0 else 0.55)
 	var fu := StudioTheme.font("ui")
 	var tw := fu.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, 13).x
-	var box := Rect2((W - tw) * 0.5 - 12, H - 46, tw + 24, 26)
+	# H - 46 put this exactly where the table's LEDGER stub now sits, and the stub is drawn
+	# above the HUD, so it cut 老王's line in half on every table frame. One row up.
+	var box := Rect2((W - tw) * 0.5 - 12, H - 86, tw + 24, 26)
 	draw_rect(box, Color(Palette.GROUND_DEEP, 0.62 * alpha))
-	draw_string(fu, Vector2((W - tw) * 0.5, H - 28), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 13,
+	draw_string(fu, Vector2((W - tw) * 0.5, H - 68), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 13,
 		Color(Palette.TEXT, alpha))
 
 	# --- the plunge prompt, only while the hose is waiting ---

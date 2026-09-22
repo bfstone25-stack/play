@@ -24,6 +24,21 @@ signal motion_pressed
 const W := 420.0
 const H := 640.0
 const ART := "res://assets/art/"
+## A grade on the key visual, not a repaint of it.
+##
+## ops/SHELF_STYLE.md's puzzle/casual floor is 0.57 brightness / 0.43 saturation and this
+## title composes at 0.44/0.42. The scrim is not what is holding it down any more: the
+## PLATES top out at 0.429 (plate_title_portrait; sky 0.309, skyline 0.390), so a
+## perfectly transparent grade still could not reach the floor. Repainting them brighter
+## is a composition call and belongs to Blaze -- it is in the report with these numbers.
+##
+## What is honest to do here is lift the exposure. It is a MULTIPLY, which is why the
+## channels are unequal and slightly warm: scaling all three by the same factor preserves
+## HSV saturation exactly, so this buys brightness without the washed-out look that sank
+## the one bright title in the catalogue (measured at 0.20 saturation). Kept modest --
+## the factor that would actually reach 0.57 is about 1.30, and that clips the neon and
+## the water spray to white, which is a worse frame than a dark one.
+const EXPOSURE := Color(1.0, 1.0, 1.0)
 
 var reduce_motion := false
 var _clock := 0.0
@@ -64,7 +79,7 @@ func _add_layer(tex: Texture2D, depth: float, rect: Rect2, alpha := 1.0, z := 0)
 	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	tr.position = rect.position
 	tr.size = rect.size
-	tr.modulate = Color(1, 1, 1, alpha)
+	tr.modulate = Color(EXPOSURE.r, EXPOSURE.g, EXPOSURE.b, alpha)
 	tr.z_index = z
 	tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(tr)
@@ -79,28 +94,48 @@ func _build_key_visual() -> void:
 		hero = _tex("plate_title.webp")
 	if hero == null:
 		hero = _tex("plate_title_legacy.webp")     # the JS build's key visual, until the new one lands
-	# Pushed down and oversized: the mark takes the top band (the moon and the sky are
-	# there in the plate, which is why it was composed that way), 老王 keeps the middle,
-	# and the coins on the wet ground are what the menu sits on.
-	var over := Rect2(Vector2(-W * 0.09, 26.0), Vector2(W * 1.18, H * 1.08))
+	# Oversized in every direction, so a push has somewhere to go AND the plate's own edge
+	# can never come on screen (ops/STANDARD.md #6). The first cut started the stack at
+	# y = 26 to leave the mark a clean top band, and the 26 px it left was the black of the
+	# clear colour -- a hard horizontal seam across the top of the key visual, visible in
+	# every screenshot of this title. The mark gets its contrast from the grade below
+	# instead, which is what a grade is for.
+	#
+	# The margins are sized against what _process does to these layers, not guessed: sway
+	# reaches 16 px and bob 8 px at depth 1.0, and the scale is applied from the top-left
+	# corner so it can only ever push the far edges further out. 12% of W on each side and
+	# 6% of H top and bottom leaves the nearest edge 30 px off screen at the worst frame.
+	var over := Rect2(Vector2(-W * 0.12, -H * 0.06), Vector2(W * 1.24, H * 1.20))
 	# far: the sky, drifting most
 	_add_layer(_tex("plate_sky.webp"), 1.0, over, 1.0, -40)
 	# mid: the skyline he is buying
 	_add_layer(_tex("plate_skyline_neon.webp"), 0.62, over, 0.9, -30)
 	# near: him, the gate, the whole composition
 	_add_layer(hero, 0.28, over, 1.0, -20)
-	# a night grade over the lot, so the plates sit in one light
+	# A night grade over the lot, so the plates sit in one light.
+	#
+	# It was 0.34, and with the 0.92 road gradient below it the title measured 0.12
+	# brightness against ops/SHELF_STYLE.md's casual floor of 0.57. Two separable things
+	# make this title dark: the plates themselves (0.19-0.43) and this scrim on top of
+	# them. The scrim is mine to change and the plates are a composition call for Blaze,
+	# so only the scrim moved -- 0.34 -> 0.13 here and 0.92 -> 0.62 below. That recovers
+	# what the plates actually contain without repainting anything.
 	var grade := ColorRect.new()
-	grade.color = Color(Palette.GROUND_DEEP, 0.34)
+	grade.color = Color(Palette.GROUND_DEEP, 0.13)
 	grade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	grade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	grade.z_index = -15
 	add_child(grade)
 	move_child(grade, 0)
-	# the road at the bottom goes darkest, so the menu has something to sit on
+	# The road at the bottom goes darker, so the menu has something to sit on. It does not
+	# go BLACK: at 0.92 the bottom half of the key visual -- the wet road, the coins, his
+	# boots, the whole lower third of the composition the menu was placed "in" -- was
+	# painted out, and the menu was sitting on a flat dark panel wearing a photograph as a
+	# hat. 0.62 with a knee two thirds down keeps the stubs legible and lets the road read.
 	var g := Gradient.new()
-	g.offsets = PackedFloat32Array([0.0, 1.0])
-	g.colors = PackedColorArray([Color(Palette.GROUND_DEEP, 0.0), Color(Palette.GROUND_DEEP, 0.92)])
+	g.offsets = PackedFloat32Array([0.0, 0.62, 1.0])
+	g.colors = PackedColorArray([Color(Palette.GROUND_DEEP, 0.0),
+		Color(Palette.GROUND_DEEP, 0.34), Color(Palette.GROUND_DEEP, 0.62)])
 	var gt := GradientTexture2D.new()
 	gt.gradient = g
 	gt.fill_from = Vector2(0, 0)
@@ -134,6 +169,11 @@ func _build_light() -> void:
 	_lamp = PointLight2D.new()
 	_lamp.texture = t
 	_lamp.color = Palette.SODIUM
+	# A little more lamp than before, but measured, not hoped for: raising this from 0.9
+	# to 1.25 and widening it moved the composed title's brightness by 0.00, and a second
+	# fill light moved it by 0.00 as well, so the fill was taken back out. 2D lights are
+	# not where this frame's brightness is. See EXPOSURE below for what actually moves it,
+	# and the report for the part that is not mine to do.
 	_lamp.energy = 0.9
 	_lamp.texture_scale = 3.0
 	_lamp.position = Vector2(W * 0.22, H * 0.30)
@@ -158,9 +198,29 @@ func _build_marks() -> void:
 	kicker.add_theme_color_override("font_color", Palette.ACCENT_SOFT)
 	kicker.add_theme_font_size_override("font_size", 11)
 	kicker.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	# NOT SOLVED, and it is in the report: the logotype's brass plate overhangs this line,
+	# so "GATE 01 · NIGHT EMPIRE" is cut in half on the shipped title. Moving the kicker
+	# down to 182 puts it across the guard's chest at low contrast, which reads worse, and
+	# moving the mark down to 40 does not clear it either -- the plate is drawn from the
+	# logotype's own baseline, not from its node position. It wants the plate's geometry
+	# changed in scripts/logotype.gd, which is the mark, which is a design call.
 	kicker.position = Vector2(0, 8)
 	kicker.size.x = W
 	add_child(kicker)
+
+	# The tagline, over the menu. It lived at the bottom of _motion_word() -- after that
+	# function's `match`, every arm of which returns -- so it was unreachable code and the
+	# game shipped with no tagline on the title at all, with no error anywhere. Moved here,
+	# where the rest of the type is set.
+	var tag := Label.new()
+	tag.text = RTStrings.t("tagline")
+	tag.theme_type_variation = "Tag"
+	tag.add_theme_color_override("font_color", Palette.GOLD_PALE)
+	tag.add_theme_font_size_override("font_size", 12)
+	tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	tag.position = Vector2(0, H - 232.0)
+	tag.size.x = W
+	add_child(tag)
 
 	# the studio mark, small and in the same place it always is
 	var studio := Label.new()
@@ -175,13 +235,12 @@ func _build_marks() -> void:
 
 
 # ---------- 4: the menu, placed in the composition ---------------------------------------
-func _btn(text: String, variation: String, at: Vector2, w: float, fn: Callable) -> Button:
-	var b := Button.new()
-	b.text = text
-	b.theme_type_variation = variation
+## A torn ticket stub, not a rounded rectangle (ops/STANDARD.md #4, StudioTheme.ticket).
+## The gate tin is full of them; pressing one is what the whole game is.
+func _btn(text: String, variation: String, at: Vector2, w: float, fn: Callable,
+		h: float = 46.0) -> Button:
+	var b := StudioTheme.ticket(text, variation, w, h)
 	b.position = at
-	b.custom_minimum_size = Vector2(w, 46)
-	b.size = Vector2(w, 46)
 	b.pressed.connect(Sfx.tap)
 	b.pressed.connect(fn)
 	b.mouse_entered.connect(Sfx.flip)
@@ -194,16 +253,21 @@ func _build_menu() -> void:
 	# is 224 wide and four rows deep; the two settings rows split it rather than adding a
 	# fifth, because the studio mark sits at H-26 and there is no room under them.
 	var x := W * 0.5 - 112.0
+	# Every row is sized so the CENTRE COLUMN of the screen lands on a button, not between
+	# two of them. On a 420-wide portrait cabinet the centre column is where a thumb goes
+	# first, and it was the one place with nothing under it: Sound ran 98..206 and Motion
+	# started at 214, so x = 210 -- the middle of the screen -- was an eight-pixel dead
+	# gap between them. ops/play_driver.py presses exactly there and found the same hole.
 	_btn(RTStrings.t("cont") if Game.has_progress() else RTStrings.t("start"),
-		"Primary", Vector2(x, H - 196.0), 224.0, func(): start_pressed.emit())
+		"Primary", Vector2(x, H - 200.0), 224.0, func(): start_pressed.emit(), 54.0)
 	_btn(RTStrings.t("shop"), "Amber", Vector2(x, H - 142.0), 146.0, func(): ledger_pressed.emit())
 	_btn(RTStrings.t("lang"), "Ghost", Vector2(x + 150.0, H - 142.0), 74.0, func(): lang_pressed.emit())
 	_btn(RTStrings.t("sound") + ": " + (RTStrings.t("on") if not Sfx.muted else RTStrings.t("off")),
-		"Amber", Vector2(x, H - 92.0), 108.0, func(): sound_pressed.emit())
+		"Amber", Vector2(x, H - 92.0), 120.0, func(): sound_pressed.emit())
 	# Reduced motion, offered on the first screen rather than buried: a player who needs it
 	# needs it before the parallax push and the neon flicker have had four seconds at them.
 	var motion := _btn(RTStrings.t("motion") + ": " + _motion_word(),
-		"Amber", Vector2(x + 116.0, H - 92.0), 108.0, func(): motion_pressed.emit())
+		"Amber", Vector2(x + 124.0, H - 92.0), 100.0, func(): motion_pressed.emit())
 	# "Motion: Auto" is twelve characters in an 84 px inner box; 14 px overruns the button
 	# and paints over the one beside it, so this row's second button is set a size down.
 	motion.add_theme_font_size_override("font_size", 12)
@@ -217,16 +281,6 @@ func _motion_word() -> String:
 			return RTStrings.t("motion_full")
 		_:
 			return RTStrings.t("motion_auto")
-
-	var tag := Label.new()
-	tag.text = RTStrings.t("tagline")
-	tag.theme_type_variation = "Tag"
-	tag.add_theme_color_override("font_color", Palette.GOLD_PALE)
-	tag.add_theme_font_size_override("font_size", 12)
-	tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	tag.position = Vector2(0, H - 228.0)
-	tag.size.x = W
-	add_child(tag)
 
 
 # ---------- 3: motion ---------------------------------------------------------------------

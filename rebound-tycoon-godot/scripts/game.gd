@@ -7,7 +7,7 @@
 extends Node
 
 const SAVE := "user://rebound-tycoon.json"
-const LANGS := ["en", "zh"]
+const LANGS := ["en", "zh", "ja"]
 const FREE_NIGHTS := 3   # dual-track (ops/DUAL_TRACK.md): nights 1-3 free, later behind the gate
 
 var st: Dictionary = Kernel.new_state()
@@ -20,6 +20,10 @@ var sound := true
 const MOTION_PREFS := ["auto", "on", "off"]
 var motion_pref := "auto"
 var best_coins := 0
+## The best single night's rent. Kernel has no idea this exists -- it is conformance-locked
+## against the JS build bit for bit (tests/run_tests.gd) and gains no fields -- so the one
+## number the barks need in order to know a record from a good night lives out here.
+var best_night := 0
 var last_seen := 0           # ms; 0 = never played
 var persist_enabled := true
 var bridge_handler: Callable = Callable()
@@ -73,6 +77,7 @@ func load_save() -> void:
 	if str(data.get("motion", "auto")) in MOTION_PREFS:
 		motion_pref = str(data["motion"])
 	best_coins = int(data.get("bestCoins", 0))
+	best_night = int(data.get("bestNight", 0))
 	last_seen = int(data.get("lastSeen", 0))
 	started = bool(data.get("started", false))
 	# The gate kept collecting. Worked out here, shown by the return screen, claimed by
@@ -93,7 +98,8 @@ func save() -> void:
 		return
 	f.store_string(JSON.stringify({
 		"run": Kernel.snapshot(st, last_seen), "lang": lang, "sound": sound,
-		"bestCoins": best_coins, "lastSeen": last_seen, "started": started,
+		"bestCoins": best_coins, "bestNight": best_night, "lastSeen": last_seen,
+		"started": started,
 		"motion": motion_pref,
 	}))
 
@@ -155,6 +161,8 @@ func _detect_lang() -> String:
 		var r = JavaScriptBridge.eval("(navigator.language||'en').toLowerCase()")
 		if r != null:
 			loc = str(r)
+	if loc.begins_with("ja"):
+		return "ja"
 	return "zh" if loc.begins_with("zh") else "en"
 
 

@@ -1,7 +1,9 @@
 ## RTStrings — UI copy, ported from play/rebound-tycoon/frontend/js/copy.js. en + zh-Hans
-## ship together (play/catharsis/PLAN.md locale rule: zh-Hans first, then EN). The JS build
-## also carried es/pt/ja; this rebuild ships the two the plan requires and the rest come
-## back when the copy is re-cut for the new screens rather than machine-carried.
+## + ja (play/catharsis/PLAN.md locale rule: zh-Hans first, then EN; ops/STANDARD.md adds
+## ja as the priority, because 507 of the 581 DLsite works in ops/market/dlsite_data are
+## Japanese). The JS build also carried es/pt; those are NOT offered here, because they
+## were never re-cut for these screens and STANDARD's rule is that an offered language
+## must be a translated one (Floor 13 shipped ja/ko/es full of Chinese prose).
 ## Never hardcode a user-visible string in a scene.
 class_name RTStrings
 
@@ -14,7 +16,8 @@ const EN := {
 	"start": "TAKE THE GATE", "cont": "BACK ON DUTY", "again": "NEW NIGHT",
 	"spray": "PUMP HOSE", "launch_hint": "Hold Space, or tap PUMP HOSE", "space_hint": "HOLD SPACE",
 	"left": "LEFT", "right": "RIGHT",
-	"shop": "LEDGER", "prestige": "REBOUND", "settings": "BOOTH",
+	"shop": "LEDGER", "prestige": "REBOUND", "settings": "BOOTH", "resume": "BACK ON THE HOSE", "quit": "LEAVE THE BOOTH",
+	"booth_hint": "The table keeps your night.",
 	"coins": "COINS", "rent": "RENT", "combo": "COMBO", "night": "NIGHT", "era": "ERA",
 	"balls": "HOSES", "tokens": "TOKENS",
 	"waiting": "ON DUTY", "live": "HOSE LIVE", "ringing": "PUMP", "nightover": "SHIFT OVER",
@@ -85,6 +88,7 @@ const EN := {
 		"neon": "The skyline finally learned your name.",
 		"bumper": "Soaked. Coin in the till.",
 		"drain": "Hose ran dry. Next burst.",
+		"nudge": "Stuck. Kick the table.",
 		"save": "The doorman caught the drip.",
 		"nightover": "Shift over. Count the coins.",
 		"launch": "Hose is live.",
@@ -103,11 +107,12 @@ const ZH := {
 	"start": "上岗", "cont": "回到岗位", "again": "再值一晚",
 	"spray": "压水炮", "launch_hint": "按住空格，或点压水炮", "space_hint": "按住空格",
 	"left": "左挡", "right": "右挡",
-	"shop": "账本", "prestige": "翻身", "settings": "岗亭",
+	"shop": "账本", "prestige": "翻身", "settings": "岗亭", "resume": "继续开水", "quit": "离开岗亭",
+	"booth_hint": "球台替你守着这一夜。",
 	"coins": "硬币", "rent": "租金", "combo": "连击", "night": "夜班", "era": "时代",
 	"balls": "球数", "tokens": "翻身币",
 	"waiting": "就绪", "live": "球在台上", "ringing": "待发", "nightover": "夜班结束",
-	"close": "关闭", "back": "返回", "lang": "EN",
+	"close": "关闭", "back": "返回", "lang": "日本語",
 	"need": "硬币不够", "need_tokens": "翻身币不够",
 	"prestige_hint": "重置球台，留下代币。",
 	"prestige_locked": "先进入大堂时代，再赚到一枚翻身币。",
@@ -162,6 +167,7 @@ const ZH := {
 		"neon": "天际线学会了你的名字。",
 		"bumper": "回弹。硬币入柜。",
 		"drain": "漏了。下一球。",
+		"nudge": "卡住了。踹一脚球台。",
 		"save": "门童接住了。",
 		"nightover": "夜班结束。数硬币。",
 		"launch": "球活了。",
@@ -172,8 +178,120 @@ const ZH := {
 }
 
 
+## Japanese. Written for this game, not carried from another title's file: 507 of the 581
+## DLsite works in ops/market/dlsite_data are Japanese, and ops/STANDARD.md's rule is that
+## a language you did not actually translate must not be offered. Every key below was
+## written against the screen it appears on -- "ホース" for `balls` because the thing the
+## player is given three of is a hose, not a ball, and the same word has to fit the HUD's
+## right-hand readout at 20 px.
+const JA := {
+	"wordmark": "REBOUND", "local_title": "リバウンド・タイクーン",
+	"tagline": "夜を撃て。家賃を稼げ。",
+	"kicker": "ゲート01 · ネオン帝国",
+	"studio": "blazeCore Play",
+	"pitch": "あなたは夜勤の警備員。放水ポンプを溜めて発射する。跳ね返るたびに厄介者を濡らし、家賃が入る。コインをタワーに変えて、詰所を帝国にしよう。",
+	"start": "ゲートに立つ", "cont": "勤務に戻る", "again": "次の夜へ",
+	"spray": "放水ポンプ", "launch_hint": "スペース長押し、またはポンプをタップ", "space_hint": "スペース長押し",
+	"left": "左", "right": "右",
+	"shop": "台帳", "prestige": "リバウンド", "settings": "詰所",
+	"resume": "放水に戻る", "quit": "詰所を出る",
+	"booth_hint": "台はこの夜を預かっている。",
+	"coins": "コイン", "rent": "家賃", "combo": "コンボ", "night": "夜", "era": "時代",
+	"balls": "ホース", "tokens": "トークン",
+	"waiting": "勤務中", "live": "放水中", "ringing": "チャージ", "nightover": "勤務終了",
+	"close": "閉じる", "back": "もどる", "lang": "EN",
+	"need": "コインが足りない", "need_tokens": "トークンが足りない",
+	"prestige_hint": "台をリセット。トークンは残る。もっと派手に戻ろう。",
+	"prestige_locked": "ロビー時代に到達して、トークンを一枚稼ごう。",
+	"prestige_go": "帝国ごとリバウンド",
+	"shop_hint": "まず台を、次にタワーを。",
+	"perk_hint": "トークンを使う。制服は覚えている。",
+	"sound": "サウンド", "on": "オン", "off": "オフ",
+	"motion": "モーション", "motion_auto": "自動", "motion_calm": "ひかえめ", "motion_full": "フル",
+	"return_title": "詰所が稼ぎ続けていた",
+	"return_body": "{t} 留守にしていた。詰所は {c} コインを回収した。",
+	"return_capped": "上限は八時間。{t} の残りは大家のものになった。",
+	"return_rate": "毎秒 {r} コイン",
+	"return_claim": "コインを受け取る",
+	"away_h": "{h}時間{m}分", "away_m": "{m}分{s}秒", "away_s": "{s}秒",
+	"more_games": "同じ筐体の他のゲーム",
+	"eras": {"booth": "詰所", "lobby": "ロビー", "towers": "タワー", "neon": "ネオン帝国"},
+	"groups": {"table": "台", "staff": "人員", "property": "物件", "amenity": "設備"},
+	"upgrades": {
+		"springs": "発射バネ", "flippers": "金のフリッパー", "bumpers": "熱バンパー",
+		"slings": "スリング", "doorman": "ボールセーブ", "concierge": "ボーナス保持",
+		"manager": "追加ホース", "studio": "ワンルーム", "loft": "ロフト",
+		"penthouse": "ペントハウス", "cannon": "放水砲", "neon": "ネオンサイン",
+	},
+	"hints": {
+		"springs": "ホースの圧が上がる。",
+		"flippers": "ゲートの腕が速く、跳ね返りが強くなる。",
+		"bumpers": "濡れた厄介者の支払いが増える。",
+		"slings": "門柱が押し返してくる。",
+		"doorman": "ホース一本につき一度だけ救ってくれる。",
+		"concierge": "跳ね返るたびの家賃が大きくなる。",
+		"manager": "夜の始めにホースが一本増える。",
+		"studio": "窓がひとつ。やがてスカイラインに。",
+		"loft": "中層の家賃倍率。",
+		"penthouse": "制服が金になった理由。",
+		"cannon": "中央の放水がさらに強くなる。",
+		"neon": "この街がビルの持ち主を認める。",
+	},
+	"perks": {
+		"uniform": "金縁の制服", "legend": "伝説の放水砲",
+		"switchboard": "鳴りやまぬ交換台", "empire": "帝国ファンド",
+	},
+	"perk_hints": {
+		"uniform": "ランクごとにスコア +8%。", "legend": "サウサーのキックが強くなる。",
+		"switchboard": "ライトが君を覚えている。", "empire": "ランクごとにスコア +12%、オフライン収入 +12%。",
+	},
+	"hits": {
+		"courier": "配達員がびしょ濡れ。家賃を回収。",
+		"party": "六階の騒ぎは収まった。払ってもらった。",
+		"raccoon": "アライグマを弾いた。罰金を回収。",
+		"booth": "詰所のインターホン。チップの瓶。",
+		"lobby": "ロビーのインターホン。延滞料。",
+		"tower": "ペントハウスのインターホン。ボーナス。",
+		"cannon": "放水砲、全圧。",
+		"sling": "門柱。またコインが一枚。",
+		"gate": "インターホンが全点灯。ジャックポットの家賃。",
+	},
+	"lines": {
+		"booth": "夜勤。ポンプを溜めて、払わせよう。",
+		"lobby": "ゲートが家賃を集め始めた。",
+		"towers": "放水砲に順番待ちができている。",
+		"neon": "スカイラインがついに君の名を覚えた。",
+		"bumper": "命中。コインが金庫へ。",
+		"drain": "ホースが空になった。次の一本。",
+		"nudge": "詰まった。台を蹴る。",
+		"save": "ドアマンが受け止めた。",
+		"nightover": "勤務終了。コインを数えよう。",
+		"launch": "放水、開始。",
+		"buy": "ビルが気づいた。",
+		"prestige": "詰所を出て、金だけ持っていく。",
+		"gate": "インターホンが全点灯。ジャックポット。",
+	},
+}
+
 static func bank() -> Dictionary:
-	return ZH if Game.lang == "zh" else EN
+	match Game.lang:
+		"zh":
+			return ZH
+		"ja":
+			return JA
+		_:
+			return EN
+
+
+## The order the title's language button walks. en -> zh -> ja -> en, and the button's own
+## caption ("lang") is the name of the NEXT one, which is why each bank spells a different
+## word there.
+const CYCLE := ["en", "zh", "ja"]
+
+
+static func next_lang(code: String) -> String:
+	var i := CYCLE.find(code)
+	return CYCLE[(i + 1) % CYCLE.size()] if i >= 0 else "zh"
 
 
 static func t(key: String, vars: Dictionary = {}) -> String:

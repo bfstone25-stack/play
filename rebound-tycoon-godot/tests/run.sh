@@ -15,4 +15,18 @@ echo "$OUT" | grep -v '^\s*$' | tail -40
 ERRS=$(echo "$OUT" | grep -c -E 'SCRIPT ERROR|^ERROR:|USER ERROR' || true)
 if [ "$ERRS" != "0" ]; then echo "!! $ERRS engine error line(s) — see above"; exit 2; fi
 echo "$OUT" | grep -q '^TESTS_OK' || { echo "!! TESTS_OK not printed (exit $CODE)"; exit 1; }
+
+# Two things the conformance suite cannot see, because they are about the PACKAGE rather
+# than the rules. Both have shipped broken here before.
+#   parse.tscn  every script in scripts/ can actually be instantiated. A GDScript parse
+#               error does not fail the export, does not raise a JS exception and is only
+#               a browser console line, so an autoload can silently never exist.
+#   cjk.tscn    the shipped font subset contains every character the copy uses. The web
+#               export has no system font to fall back on, so a missing glyph is a tofu
+#               box in zh/ja and nothing anywhere says so.
+for SCENE in parse cjk; do
+    OUT=$(timeout 300 "$GODOT" --headless --path . "res://tests/$SCENE.tscn" 2>&1) || {
+        echo "$OUT" | tail -6; echo "!! tests/$SCENE.tscn failed"; exit 3; }
+    echo "$OUT" | grep -E '^(ok|[0-9]+ )' | tail -2
+done
 exit 0
