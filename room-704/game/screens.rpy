@@ -274,9 +274,15 @@ transform fade_in_after(t):
     pause t
     ease 0.7 alpha 1.0 xoffset 0
 
+## Was alpha 1.0 at rest -- a full-strength black scrim over the whole key visual, which
+## measured the composed title at 0.45 brightness / 0.25 saturation against the
+## slice-of-life floor of 0.65/0.41 (2026-09-21, ops/STANDARD.md polish pass). The scrim
+## exists for menu-text legibility, not mood; 0.3 keeps text readable while giving most of
+## the plate's colour back. See ops/PUNCHLIST.md for the remaining gap -- this recovers
+## roughly a third of the brightness/saturation shortfall, not all of it.
 transform scrim_in:
     alpha 0.0
-    ease 1.2 alpha 1.0
+    ease 1.2 alpha 0.3
 
 screen main_menu():
     tag menu

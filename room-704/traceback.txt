@@ -1,0 +1,39 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "renpy/common/00mixers.rpy", line 53, in script
+    python hide:
+  File "renpy/common/00mixers.rpy", line 53, in script
+    python hide:
+  File "renpy/common/00mixers.rpy", line 53, in <module>
+    python hide:
+  File "renpy/common/00mixers.rpy", line 55, in _execute_python_hide
+    if not renpy.music.channel_defined("movie"):
+AttributeError: module 'renpy' has no attribute 'music'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "/home/frankstone/sdk/renpy-8.3.7-sdk/renpy/bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "/home/frankstone/sdk/renpy-8.3.7-sdk/renpy/main.py", line 541, in main
+    renpy.game.context().run(node)
+  File "renpy/common/00mixers.rpy", line 53, in script
+    python hide:
+  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
+  File "renpy/common/00mixers.rpy", line 53, in script
+    python hide:
+  File "/home/frankstone/sdk/renpy-8.3.7-sdk/renpy/ast.py", line 834, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/home/frankstone/sdk/renpy-8.3.7-sdk/renpy/python.py", line 1187, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00mixers.rpy", line 53, in <module>
+    python hide:
+  File "renpy/common/00mixers.rpy", line 55, in _execute_python_hide
+    if not renpy.music.channel_defined("movie"):
+AttributeError: module 'renpy' has no attribute 'music'
+
+Linux-6.12.10-76061203-generic-x86_64-with-glibc2.35 x86_64
+Ren'Py 8.3.7.25031702
+Room 704 0.1.0
+Sat Sep 19 01:39:54 2026
