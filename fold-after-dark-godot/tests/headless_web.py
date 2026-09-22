@@ -24,6 +24,7 @@ import http.server
 import json
 import socket
 import socketserver
+import shutil
 import subprocess
 import sys
 import threading
@@ -146,9 +147,22 @@ with sync_playwright() as p:
     s = wait_for(lambda s: s.get("screen") == "game")
     check(s.get("screen") == "game" and s["level"] == 1, "Enter opened level 1 of tier 1")
     shot("level-01-night")
-    sols = json.loads(subprocess.run(
-        ["node", str(HERE / "solve.cjs")] + [str(i) for i in range(5)],
-        capture_output=True, text=True, check=True).stdout)
+    # Solutions come from the shipped JS, which needs node. The GPU box that runs this
+    # driver has none, and local browser tests are disabled on the dev box -- so "runs
+    # here" and "has node" are two different machines. Compute wherever node exists,
+    # cache beside the driver, let the render host read the cache. Regenerated whenever
+    # node IS present, so it cannot go stale against a changed solver.
+    _cache = HERE / "solutions.json"
+    if shutil.which("node"):
+        sols = json.loads(subprocess.run(
+            ["node", str(HERE / "solve.cjs")] + [str(i) for i in range(5)],
+            capture_output=True, text=True, check=True).stdout)
+        _cache.write_text(json.dumps(sols, indent=1))
+    elif _cache.exists():
+        print("  (no node here; using %s)" % _cache.name)
+        sols = json.loads(_cache.read_text())
+    else:
+        raise SystemExit("no node and no %s -- run once where node exists" % _cache.name)
     KEY = {(-1, 0): "ArrowUp", (1, 0): "ArrowDown", (0, -1): "ArrowLeft", (0, 1): "ArrowRight"}
     for i in range(5):
         lv = i + 1

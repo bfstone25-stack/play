@@ -174,7 +174,16 @@ func _build_stage() -> void:
 	# The key visual is a composition, not a wallpaper: it sits right of centre and the
 	# left third is veiled so the logotype and the menu have a ground to sit on.
 	var grad := Gradient.new()
-	grad.offsets = PackedFloat32Array([0.0, 0.45, 1.0])
+	# 2026-09-22, the brightness pass. The composed title measured 0.46 against a Nutaku
+	# shelf that sits at 0.63 — 0.17 short, and the shelf is the one place this plate has
+	# to work. The key visual is not the problem (0.60/0.46 on its own); the cost is this
+	# veil, which covered nearly half the frame in plum at 0.82 alpha.
+	#
+	# Eased rather than removed, and the note below is why that is safe: the copy is white
+	# with a shadow over its own plum plate, so the veil was never what made it legible.
+	# Tightened the midpoint as well, so the picture keeps more of the frame — area of the
+	# most saturated thing on screen is the cheapest brightness there is.
+	grad.offsets = PackedFloat32Array([0.0, 0.38, 1.0])
 	# After Dark: the veil is plum-black, not the parent's cream. The key visual stays full bleed and
 	# visible through the left column (TITLE_SCREENS.md, "the surface must not eat the
 	# picture") — 0.90 at the edge, gone by the right third.
@@ -184,7 +193,7 @@ func _build_stage() -> void:
 	# was re-read in the capture at the lower value and none of them lost contrast — the
 	# text is white with a shadow over a plum plate, and the veil was never what was
 	# carrying it.
-	grad.colors = PackedColorArray([Color(Palette.GROUND, 0.82), Color(Palette.GROUND, 0.46), Color(Palette.GROUND, 0.0)])
+	grad.colors = PackedColorArray([Color(Palette.GROUND, 0.55), Color(Palette.GROUND, 0.25), Color(Palette.GROUND, 0.0)])
 	var gt := GradientTexture2D.new()
 	gt.gradient = grad
 	gt.fill_from = Vector2(0, 0)
