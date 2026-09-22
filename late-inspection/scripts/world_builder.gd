@@ -376,6 +376,14 @@ func _fixture(pos: Vector3, color: Color, energy: float, range_m: float, flicker
 	if flicker:
 		light = OmniLight3D.new()
 		light.set_script(preload("res://scripts/flicker_light.gd"))
+		# The `energy` argument used to stop here for a flickering lamp: it was set only on
+		# the else-branch below, and flicker_light.gd then drove light_energy from its own
+		# hardcoded constants. All three green lamps in this map flicker, so the ignored
+		# energy landed almost entirely on one hue -- green ran at a 1.6 baseline punching
+		# to 4.2 while the steady ambers honoured 1.0-1.45, which took green from the 36%
+		# of the budget the level asked for to roughly half of what was drawn. See
+		# scripts/flicker_light.gd.
+		light.set("energy", energy)
 	else:
 		light = OmniLight3D.new()
 		light.light_energy = energy
