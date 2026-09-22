@@ -152,9 +152,16 @@ func _vn_ui() -> void:
 	vn.nvl_root.move_child(plates, 1)
 	_gallery_ui()
 
-func _mk_btn(n: String, off: Vector2, size: Vector2) -> Button:
-	var b := Button.new()
+## ops/STANDARD.md item 4: buttons are not rectangles. The shape comes from the game's own
+## world -- a torn summons stub, since this fork's core object is the inspection order/
+## consent clause slid under a door, not the survey clipboard the (all-ages) parent hands
+## out. TICKET rather than the parent's TAG keeps this fork reading as its own object.
+func _mk_btn(n: String, off: Vector2, size: Vector2) -> ShapedButton:
+	var b := ShapedButton.new()
 	b.name = n
+	b.shape = ShapedButton.Shape.TICKET
+	b.tint = Color("#8a2f2f")
+	b.ink = Color("#120705")
 	b.set_anchors_preset(Control.PRESET_CENTER)
 	b.offset_left = off.x
 	b.offset_top = off.y
@@ -163,6 +170,17 @@ func _mk_btn(n: String, off: Vector2, size: Vector2) -> Button:
 	b.add_theme_font_size_override("font_size", 16)
 	UiFont.apply_button(b)
 	return b
+
+## Set the visible words on a title/menu button whether or not it is a ShapedButton.
+## ShapedButton draws its own text from `label` and clears Button.text in _ready -- writing
+## .text directly on one of these draws nothing (shaped_button.gd's own header warns about
+## this exact silent failure), so every caller routes through here instead.
+func _btn_text(b: Button, s: String) -> void:
+	if b is ShapedButton:
+		(b as ShapedButton).label = s
+		b.queue_redraw()
+	else:
+		b.text = s
 
 func _pause_ui() -> void:
 	pause_panel = Control.new()
@@ -223,7 +241,7 @@ func _ending_ui() -> void:
 	UiFont.apply_label(ending_text)
 	ending_panel.add_child(ending_text)
 	ending_button = _mk_btn("EndingNext", Vector2(-180, 185), Vector2(360, 50))
-	ending_button.text = Loc.t("btn.continue")
+	_btn_text(ending_button, Loc.t("btn.continue"))
 	ending_button.pressed.connect(_next_ending_beat)
 	ending_panel.add_child(ending_button)
 	add_child(ending_panel)
@@ -259,7 +277,7 @@ func _splash() -> void:
 		var col := i % 3
 		var row := int(i / 3)
 		var b := _mk_btn("Lang_%s" % code, Vector2(-576 + col * 186, 0 + row * 50), Vector2(174, 44))
-		b.text = str(Loc.NATIVE[code])
+		_btn_text(b, str(Loc.NATIVE[code]))
 		b.pressed.connect(func() -> void: Loc.set_code(code))
 		title_screen.style_button(b)
 		splash.add_child(b)
@@ -279,13 +297,25 @@ func _splash() -> void:
 	splash_enter = _mk_btn("Enter", Vector2(-576, 190), Vector2(400, 54))
 	splash_enter.name = "EnterBuilding"
 	title_screen.style_button(splash_enter)
-	splash_enter.pressed.connect(func() -> void:
-		hide_splash()
-		var p := get_tree().get_first_node_in_group("player")
-		if p and p.has_method("capture_mouse"):
-			p.capture_mouse()
-	)
+	splash_enter.pressed.connect(enter_building)
 	splash.add_child(splash_enter)
+	# The title accepts a click ANYWHERE, not only on EnterBuilding.
+	#
+	# This connection is the whole of a bug that made the game look unfinished for three
+	# weeks. `splash` is a full-rect Control on MOUSE_FILTER_STOP, so it swallowed every
+	# mouse button that landed on it — and game.gd:247 has a "while the splash is up, any
+	# click dismisses it" branch in _unhandled_input that therefore never once ran: a
+	# consumed event is not an unhandled one. `_on_splash_input` was written for this and
+	# was never connected to anything, so the ONLY way into the building was to hit a
+	# 400x54 button sitting left of centre.
+	#
+	# What that cost: ops/play_matrix.py reported `overnight-clause — 2 stage(s) of 12
+	# frames`, i.e. the automated play-through never got past the title, and the two
+	# distinct frames it did find were the title breathing. The build was fine — every
+	# test including tests/walkthrough.gd plays all three routes to an ending — so the
+	# source read as working and the game read as broken. It was neither: it was
+	# unreachable.
+	splash.gui_input.connect(_on_splash_input)
 	add_child(splash)
 	_hide_gameplay_hud(true)
 
@@ -301,12 +331,24 @@ func _hide_gameplay_hud(hidden: bool) -> void:
 		if n:
 			n.visible = not hidden
 
+## Any click on the title that is not on one of its buttons: enter the building. The
+## language buttons are children with their own mouse_filter, so they are picked first and
+## a player choosing 中文 does not start the game by doing so.
 func _on_splash_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		hide_splash()
-		var p := get_tree().get_first_node_in_group("player")
-		if p and p.has_method("capture_mouse"):
-			p.capture_mouse()
+		enter_building()
+
+
+## The keyboard way in, and the one a controller lands on. Space / Enter / E are the three
+## keys this game already uses to advance and to interact, so the title answers all three
+## rather than teaching a fourth.
+func enter_building() -> void:
+	if splash == null or not splash.visible:
+		return
+	hide_splash()
+	var p := get_tree().get_first_node_in_group("player")
+	if p and p.has_method("capture_mouse"):
+		p.capture_mouse()
 
 func hide_splash() -> void:
 	_hide_gameplay_hud(false)
@@ -438,7 +480,7 @@ func show_ending(t: String, beats: Array, thanks_key := "ending.thanks") -> void
 	ending_panel.modulate = Color(1, 1, 1, 0)
 	ending_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ending_text.text = str(ending_beats[0])
-	ending_button.text = Loc.t("btn.continue")
+	_btn_text(ending_button, Loc.t("btn.continue"))
 	var pages: Array = [{"speaker": "SYSTEM", "body": t}]
 	for beat in beats:
 		pages.append_array(VnChrome.parse_text(str(beat)))
@@ -452,18 +494,18 @@ func _next_ending_beat() -> void:
 		vn.advance(true)
 		ending_index = vn.line_index
 		if ending_index >= vn.lines.size() - 1:
-			ending_button.text = Loc.t("btn.restart")
+			_btn_text(ending_button, Loc.t("btn.restart"))
 		return
 	ending_index += 1
 	if ending_index >= ending_beats.size():
 		ending_text.text = Loc.t("ending.thanks")
-		ending_button.text = Loc.t("btn.restart")
+		_btn_text(ending_button, Loc.t("btn.restart"))
 		ending_button.pressed.disconnect(_next_ending_beat)
 		ending_button.pressed.connect(func() -> void: get_tree().call_group("game", "restart"))
 		return
 	ending_text.text = str(ending_beats[ending_index])
 	if ending_index == ending_beats.size() - 1:
-		ending_button.text = Loc.t("btn.credits")
+		_btn_text(ending_button, Loc.t("btn.credits"))
 
 func _pick(i: int) -> void:
 	if vn:
@@ -491,18 +533,18 @@ func apply_locale() -> void:
 		UiFont.apply_label(splash_title)
 		splash_title.text = "%s\n%s" % [Loc.t("splash.title"), Loc.t("splash.hint")]
 	if splash_enter:
-		splash_enter.text = Loc.t("splash.start")
+		_btn_text(splash_enter, Loc.t("splash.start"))
 	if pause_lab:
 		pause_lab.text = Loc.t("pause.title")
 	if pause_resume:
-		pause_resume.text = Loc.t("pause.resume")
+		_btn_text(pause_resume, Loc.t("pause.resume"))
 	if pause_restart:
-		pause_restart.text = Loc.t("pause.restart")
+		_btn_text(pause_restart, Loc.t("pause.restart"))
 	if lang_caption:
 		lang_caption.text = Loc.t("splash.adult")
 	for code in lang_buttons.keys():
 		var b: Button = lang_buttons[code]
-		b.text = str(Loc.NATIVE[code])
+		_btn_text(b, str(Loc.NATIVE[code]))
 		UiFont.apply_button(b)
 		if str(code) == Loc.current():
 			b.add_theme_color_override("font_color", Color(0.95, 0.82, 0.5))

@@ -233,6 +233,15 @@ func style_button(b: Button) -> void:
 	b.add_theme_color_override("font_outline_color", Color("#060907"))
 	b.add_theme_constant_override("outline_size", 3)
 	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	# A ShapedButton IS the shape -- ops/STANDARD.md item 4, "buttons are not rectangles".
+	# It draws its own torn stub in _draw() and hovers by tearing further, so handing it
+	# the StyleBoxFlat set below would frame that stub in the exact bracket-rectangle the
+	# shape exists to replace. The fonts/colours above still apply; the boxes do not.
+	if b is ShapedButton:
+		if not b.mouse_entered.is_connected(_on_hover):
+			b.mouse_entered.connect(_on_hover)
+			b.button_down.connect(_on_press)
+		return
 	var normal := StyleBoxFlat.new()
 	normal.bg_color = Color("#06090788")
 	normal.border_color = Color("#7f9a7a")

@@ -59,6 +59,11 @@ func _refresh_prop_locale() -> void:
 var ending := false
 var ending_id := ""
 var stage := 0
+## Every stage the run has actually entered, with what the world spawned for it, recorded
+## at spawn time. Ported from Late Inspection (2026-09-21, a21a4c7): a stage counter that
+## increments is not proof the room changed, and this is the evidence tests/stage_walk.gd
+## checks against -- a game can advance its own variable over an empty room.
+var visited_stages: Array[Dictionary] = []
 var objective_key := "obj.0"
 var chapter_index := 0
 var paused := false
@@ -125,6 +130,11 @@ func _setup_audio() -> void:
 	drone.play()
 
 func _spawn_stage(s: int) -> void:
+	visited_stages.append({
+		"stage": s,
+		"objective": objective_key,
+		"props": _stage_items(s).size(),
+	})
 	for item in _stage_items(s):
 		var pos: Vector3 = item["pos"]
 		if item["kind"] == "choice":
@@ -245,9 +255,18 @@ func _unhandled_input(event: InputEvent) -> void:
 	if ending or paused:
 		return
 	if hud and hud.splash and hud.splash.visible:
+		# The mouse branch here is a backstop. The splash Control is on MOUSE_FILTER_STOP
+		# and therefore CONSUMES mouse buttons, so this line never fired in the shipped
+		# build — the click is handled by hud._on_splash_input, wired to splash.gui_input.
+		# It stays because a future layout change that lets a click through should not
+		# silently un-start the game again.
 		if event is InputEventMouseButton and event.pressed:
-			hud.hide_splash()
-			player.capture_mouse()
+			hud.enter_building()
+		elif event is InputEventKey and event.pressed and not event.echo \
+				and event.physical_keycode in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER, KEY_E]:
+			# Keys are NOT consumed by a Control's mouse filter, so this branch is the
+			# real keyboard entrance rather than a backstop.
+			hud.enter_building()
 		return
 	if hud and hud.is_choice_open():
 		if event is InputEventKey and event.pressed and not event.echo:

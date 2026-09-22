@@ -393,6 +393,10 @@ func _fixture(pos: Vector3, color: Color, energy: float, range_m: float, flicker
 	if flicker:
 		light = OmniLight3D.new()
 		light.set_script(preload("res://scripts/flicker_light.gd"))
+		# Ported fix from Late Inspection (2026-09-21): flicker_light.gd's `energy` export
+		# was silently left at its default 1.0 here, so every flickering lamp ran off the
+		# script's hardcoded baseline instead of the level's requested energy.
+		light.set("energy", energy)
 	else:
 		light = OmniLight3D.new()
 		light.light_energy = energy
