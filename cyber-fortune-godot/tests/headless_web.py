@@ -67,7 +67,7 @@ with sync_playwright() as p:
     def shot(name, settle=0.6):
         time.sleep(settle)
         n[0] += 1
-        path = SHOTS / ("%02d-%s.png" % (n[0], name))
+        path = SHOTS / ("s%02d_%s.png" % (n[0], name))
         page.screenshot(path=str(path))
         print("  shot " + path.name)
 

@@ -72,7 +72,7 @@ with sync_playwright() as p:
     def shot(name, settle=0.6):
         time.sleep(settle)
         n[0] += 1
-        path = SHOTS / ("%02d-%s.png" % (n[0], name))
+        path = SHOTS / ("s%02d_%s.png" % (n[0], name))
         # under swiftshader a screenshot can stall while the engine is mid-frame; one
         # retry after a bridge round-trip has always been enough
         for attempt in range(2):

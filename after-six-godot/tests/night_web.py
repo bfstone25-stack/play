@@ -112,7 +112,7 @@ with sync_playwright() as p:
         arrives — a run that printed "shot" with no file behind it is how a check lies."""
         time.sleep(settle)
         n[0] += 1
-        path = SHOTS / ("%02d-%s.png" % (n[0], name))
+        path = SHOTS / ("s%02d_%s.png" % (n[0], name))
         page.evaluate("() => { window.__bm_snap = null; }")
         r = cmd("snap")
         b64 = page.evaluate("() => window.__bm_snap || null")

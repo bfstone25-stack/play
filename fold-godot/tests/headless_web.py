@@ -21,6 +21,7 @@ tiles in it and no adult link anywhere on the AdSense host.
 """
 import http.server
 import json
+import shutil
 import subprocess
 import os
 import socketserver
@@ -72,8 +73,20 @@ srv = socketserver.TCPServer(("127.0.0.1", PORT), Quiet)
 threading.Thread(target=srv.serve_forever, daemon=True).start()
 BASE = "http://127.0.0.1:%d/index.html" % PORT
 
-# Measured off shots/03-win-L1.png rather than guessed: the "Next" button on the win card.
-NEXT_BTN = (0.531, 0.621)
+# The "Next" button on the win card, as a fraction of the canvas.
+#
+# Re-measured 2026-09-22 off a live s03_win-L1.png: (0.590, 0.829). The previous value
+# (0.531, 0.621) was measured off the win card as it looked *before* the card was rebuilt
+# around the origami reveal plate, and it now lands on the quote box two rows above the
+# buttons. Nothing errored — the click simply did nothing, the board stayed on level 1,
+# and every per-level assertion after it failed with a message about the level being
+# wrong rather than about the click. That is why FOLD was recorded as "the matrix only
+# ever proves one origami model": not a missing driver, a stale coordinate in the driver
+# it already had.
+#
+# A coordinate measured off a screenshot goes stale silently whenever the layout moves.
+# If this breaks again, take a fresh win shot and re-measure rather than nudging it.
+NEXT_BTN = (0.590, 0.829)
 
 fails = []
 
@@ -101,7 +114,7 @@ with sync_playwright() as p:
     def shot(name, settle=0.7):
         time.sleep(settle)
         n[0] += 1
-        path = SHOTS / ("%02d-%s.png" % (n[0], name))
+        path = SHOTS / ("s%02d_%s.png" % (n[0], name))
         page.screenshot(path=str(path))
         print("  shot " + path.name)
 
@@ -189,9 +202,23 @@ with sync_playwright() as p:
     # events, the engine, and the wasm build.
     print("levels 1-8, playing solutions from the shipped JS")
     N = 8
-    sols = json.loads(subprocess.run(
-        ["node", str(HERE / "solve.cjs")] + [str(i) for i in range(N)],
-        capture_output=True, text=True, check=True).stdout)
+    # Solutions come from the shipped JS, which needs node. The GPU box that actually runs
+    # this driver has no node and is not the place to install one -- local browser tests
+    # are disabled on the dev machine, so "runs here" and "has node" are two different
+    # boxes. So: compute once wherever node exists, cache beside the driver, and let the
+    # render host read the cache. The cache is regenerated whenever node IS available, so
+    # it cannot silently go stale against a changed solver.
+    cache = HERE / "solutions.json"
+    if shutil.which("node"):
+        sols = json.loads(subprocess.run(
+            ["node", str(HERE / "solve.cjs")] + [str(i) for i in range(N)],
+            capture_output=True, text=True, check=True).stdout)
+        cache.write_text(json.dumps(sols, indent=1))
+    elif cache.exists():
+        print("  (no node here; using %s)" % cache.name)
+        sols = json.loads(cache.read_text())
+    else:
+        raise SystemExit("no node and no %s -- run this once where node exists" % cache.name)
     KEY = {(-1, 0): "ArrowUp", (1, 0): "ArrowDown", (0, -1): "ArrowLeft", (0, 1): "ArrowRight"}
     solved = 0
     offered_itself = False
@@ -228,7 +255,27 @@ with sync_playwright() as p:
             solved += 1
         if lv in (1, 3):
             shot("win-L%d" % lv, 1.2)
-        click_canvas(*NEXT_BTN)
+        # Click Next until the board actually moves on, not just once.
+        #
+        # A single click drifts: the win card animates in, and a click that lands before
+        # the button is hit-testable does nothing at all — no error, no popup, the level
+        # simply stays put. The run then falls one level behind and every later
+        # assertion fails complaining about the level number rather than about the click,
+        # which is what it looked like from L5 onward before this loop existed.
+        for attempt in range(6):
+            if state()["level"] > lv or state()["level"] != lv:
+                break
+            click_canvas(*NEXT_BTN)
+            moved = False
+            for _ in range(10):
+                time.sleep(0.2)
+                if state()["level"] != lv:
+                    moved = True
+                    break
+            if moved:
+                break
+        check(state()["level"] != lv,
+              "L%d: Next advanced the board (still on %d)" % (lv, state()["level"]))
         # game.gd offers the casual board when the player LEAVES a solved level
         for _ in range(12):
             time.sleep(0.2)

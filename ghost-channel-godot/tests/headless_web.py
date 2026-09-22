@@ -91,7 +91,7 @@ with sync_playwright() as p:
         # must not lose the twenty assertions after it.
         time.sleep(settle)
         n[0] += 1
-        path = SHOTS / ("%02d-%s.png" % (n[0], name))
+        path = SHOTS / ("s%02d_%s.png" % (n[0], name))
         for attempt, deadline in enumerate([60000, 150000]):
             try:
                 page.screenshot(path=str(path), timeout=deadline)
