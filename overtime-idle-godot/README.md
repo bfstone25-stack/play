@@ -1,4 +1,4 @@
-# Overtime Landlord: Idle — Godot 4.7
+# OCCUPANCY — Godot 4.7
 
 The Godot rebuild of the HTML prototype in `play/overtime-idle/` (kept as the reference).
 Same design (`ops/adult_forks/overtime_idle.md`), same numbers, a different shell: a

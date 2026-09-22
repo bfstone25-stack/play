@@ -3,7 +3,7 @@ config_version=5
 
 [application]
 
-config/name="Overtime Landlord: Idle"
+config/name="OCCUPANCY"
 config/description="18+ idle office with a staff gacha. The building keeps running when you leave. The adult F2P conversion of Overtime Landlord. Everyone depicted is an adult."
 run/main_scene="res://scenes/building.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")

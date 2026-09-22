@@ -1,6 +1,6 @@
 class_name TitleScreen
 extends Overlay
-## Overtime Landlord: Idle — the title screen, as a composition rather than a dialog.
+## OCCUPANCY — the title screen, as a composition rather than a dialog.
 ##
 ## ## What it replaces
 ##
@@ -55,7 +55,7 @@ extends Overlay
 ##   scrim      a generated bottom gradient so light type reads at the foot. An Image and
 ##              a TextureRect, NOT a shader: shaders draw nothing at all on the Godot web
 ##              export, with no error (floor-13 and after-six both record it).
-##   mark       OVERTIME / LANDLORD (ops/overtime_title.py). Settles in from above.
+##   mark       OCCUPANCY / IDLE (ops/overtime_title.py). Settles in from above.
 ##   key        the lit key fob the primary action is set on — art, so rule 2 holds.
 ##   badge      the 18+ staff pass, hung in the corner.
 ##
