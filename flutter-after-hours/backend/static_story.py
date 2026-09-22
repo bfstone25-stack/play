@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""static_story — the no-LLM delivery path for Flutter: After Hours.
+"""static_story — the no-LLM delivery path for VESPER.
 
 Flutter's SFW parent calls a live model every turn and lets `story_engine.py`
 decide *what happens* while the model decides *how he says it*. For the adult

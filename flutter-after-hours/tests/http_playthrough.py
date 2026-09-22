@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""End-to-end HTTP playthrough against a running After Hours backend.
+"""End-to-end HTTP playthrough against a running VESPER backend.
 
 Proves the no-LLM path over the wire, not just in-process: /say never touches a
 model, /choose returns the chapter-clear reward with its CG slot, /continue

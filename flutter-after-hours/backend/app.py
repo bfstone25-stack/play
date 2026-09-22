@@ -10,7 +10,7 @@ try:
     from . import reasoning_engine as _reason
 except ImportError:  # direct script/tests
     import reasoning_engine as _reason
-# Flutter: After Hours serves authored prose instead of calling a model.
+# VESPER serves authored prose instead of calling a model.
 # See static_story.py for the schema and for why the fork does it this way.
 try:
     from . import static_story as _sx

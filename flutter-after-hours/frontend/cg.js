@@ -1,4 +1,4 @@
-/* cg.js — the event-CG layer for Flutter: After Hours.
+/* cg.js — the event-CG layer for VESPER.
  *
  * Nine plates, three per route. Every one of them is earned by game state and
  * none of them by playtime:
@@ -242,7 +242,7 @@
     ov.innerHTML =
       '<div class="adultCard">' +
       '<div class="adultKicker">18+</div>' +
-      '<h2>Flutter: After Hours</h2>' +
+      '<h2>VESPER</h2>' +
       '<p>An adult visual novel. Everyone depicted is an adult and is written as one. ' +
       'Consensual only — no minors, no violence, no non-consent.</p>' +
       // 2026-09-21: this said "the writing is human, every line". Blaze retracted that

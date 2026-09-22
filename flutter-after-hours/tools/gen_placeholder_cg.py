@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Placeholder CG plates for Flutter: After Hours — PIL only, no GPU.
+"""Placeholder CG plates for VESPER — PIL only, no GPU.
 
 The real plates come from `ops/flutter_art/flutter_gen.py` on the 3060 and are
 NOT rendered here; this exists so the whole unlock flow — Gate, reveal, gallery,

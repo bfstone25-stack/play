@@ -58,7 +58,7 @@
   const fieldRecordings = {
     // The fork's ambience is one room, not five cities: the mainstream game opens on a
     // city morning / a night plaza / a train in the rain, because it is about being out in
-    // the world with your phone. After Hours opens in the room the rest of it happens in.
+    // the world with your phone. VESPER opens in the room the rest of it happens in.
     en:"audio/ambience/en-room.mp3",
     zh:"audio/ambience/zh-room.mp3",
     ja:"audio/ambience/ja-room.mp3",

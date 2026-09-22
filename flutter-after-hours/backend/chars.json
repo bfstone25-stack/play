@@ -24,7 +24,7 @@
    "portrait_expressions": true,
    "scene_zh": "打烊后的旧书店，窗上有雨，后面留着一盏灯",
    "scene_en": "the bookshop after closing, rain on the window, one lamp at the back",
-   "persona": "Gu Yan is 33 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "persona": "Gu Yan is 33 years old and an adult. VESPER is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
    "age": 33,
    "adult": true,
    "art": "installed"
@@ -48,7 +48,7 @@
    "portrait_expressions": true,
    "scene_zh": "面馆楼上的出租屋，没有工作人员，没有行程",
    "scene_en": "a rented flat above a noodle shop, no staff, no schedule",
-   "persona": "Lu Xingye is 27 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "persona": "Lu Xingye is 27 years old and an adult. VESPER is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
    "age": 27,
    "adult": true,
    "art": "installed"
@@ -72,7 +72,7 @@
    "portrait_expressions": true,
    "scene_zh": "写字楼顶层的公寓，一个后面什么都没有的周五夜",
    "scene_en": "his apartment above the office tower, a Friday with nothing behind it",
-   "persona": "Ethan Cole is 38 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "persona": "Ethan Cole is 38 years old and an adult. VESPER is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
    "age": 38,
    "adult": true,
    "art": "installed"
@@ -96,7 +96,7 @@
    "portrait_expressions": true,
    "scene_zh": "高层公寓的落地窗前，城市夜景在脚下，红酒在杯中摇晃",
    "scene_en": "by the floor-to-ceiling window of a penthouse, the city glittering below, wine in hand",
-   "persona": "Fu Shen is 36 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "persona": "Fu Shen is 36 years old and an adult. VESPER is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
    "age": 36,
    "adult": true,
    "art": "installed"
@@ -119,7 +119,7 @@
    "portrait_expressions": true,
    "scene_zh": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
    "scene_en": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
-   "persona": "Liam Brody is 34 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "persona": "Liam Brody is 34 years old and an adult. VESPER is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
    "age": 34,
    "adult": true,
    "art": "installed"
@@ -142,7 +142,7 @@
    "portrait_expressions": true,
    "scene_zh": "an empty stage after the show, one spotlight left on, his guitar still humming",
    "scene_en": "an empty stage after the show, one spotlight left on, his guitar still humming",
-   "persona": "Adrian Vale is 31 years old and an adult. Flutter: After Hours is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
+   "persona": "Adrian Vale is 31 years old and an adult. VESPER is served from authored prose (backend/stories_x); this persona is never sent to a model on a static route.",
    "age": 31,
    "adult": true,
    "art": "installed"

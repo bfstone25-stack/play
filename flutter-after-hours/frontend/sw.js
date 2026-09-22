@@ -1,5 +1,5 @@
 "use strict";
-/* Service worker for Flutter: After Hours.
+/* Service worker for VESPER.
  *
  * Two changes from the parent's copy, both found by a fix not reaching a
  * browser that had already loaded the game once:

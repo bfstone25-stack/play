@@ -7,7 +7,7 @@
 """
 import json, os, glob
 
-# Flutter: After Hours reads the authored adult spine. Same schema as the
+# VESPER reads the authored adult spine. Same schema as the
 # parent's stories/, plus the four fields documented in static_story.py.
 STORY_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                          os.getenv("FLUTTER_STORY_DIR", "stories_x"))

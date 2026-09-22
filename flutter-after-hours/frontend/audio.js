@@ -10,7 +10,7 @@
     es:      {tempo:88, scale:[0,3,7,8], root:123.47, wave:"triangle", texture:"pulse"},
     "pt-BR": {tempo:78, scale:[0,4,7,9], root:130.81, wave:"sine", texture:"sun"}
   };
-  // Flutter: After Hours has no vocal theme. The mainstream game's theme and resolution
+  // VESPER has no vocal theme. The mainstream game's theme and resolution
   // tracks are its vocal masters ("my-moment-vocal-pilot", "zh-theme-native-v4") and they
   // were reaching this build through a symlink — frontend/audio pointed at
   // ../../flutter/frontend/audio, so the fork was literally playing the romance game's

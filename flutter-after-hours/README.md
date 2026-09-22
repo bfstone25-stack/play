@@ -1,4 +1,4 @@
-# Flutter: After Hours — the adult fork of Flutter (Flat 404)
+# VESPER — the adult fork of Flutter (Flat 404)
 
 18+ otome VN. **Six routes**, five chapters each, three endings each, eighteen event CGs.
 It is a *derivative* of `play/flutter/`, not a second game: every chapter, beat, trigger,
