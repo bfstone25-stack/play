@@ -102,7 +102,12 @@ with sync_playwright() as p:
     def shot(name, settle=0.7):
         time.sleep(settle)
         n[0] += 1
-        path = SHOTS / ("%02d-%s.png" % (n[0], name))
+        # ops/play_matrix.py globs "s*.png" only -- the play_driver.py naming convention.
+        # This used to write "01-table.png" etc, which that glob silently ignores: every
+        # real run's frames were invisible to the matrix tool, which then either reported
+        # "no frames" or fell back to stale s*.png leftovers from an old play_driver.py
+        # pass sitting in the same directory. Match the convention so the matrix sees them.
+        path = SHOTS / ("s%02d_%s.png" % (n[0], name))
         page.screenshot(path=str(path))
         print("  shot " + path.name)
 
