@@ -169,6 +169,11 @@ with sync_playwright() as p:
           "the rank came off the parent's six-rank ladder (%s)" % o.get("result", {}).get("rank"))
     check(o.get("track") in (0, 1, 2), "the reading names one of her three tracks")
     shot("reading-drawn")
+    # Release it before the loop below draws again: Fortune.draw() refuses a second draw
+    # while `pending` still holds this one ({"ok": false} every time, never checked), which
+    # silently starved every "read" below of ever happening -- the refusal search spun 40
+    # times doing nothing rather than 40 real draws. Caught 2026-09-21.
+    cmd("hold")
 
     print("\n== what she does not take, nothing writes")
     # Drive to a refusal deterministically: keep drawing until one comes back unaccepted.
@@ -258,7 +263,12 @@ with sync_playwright() as p:
             except Exception:
                 pass
         time.sleep(2)
-    time.sleep(4)
+    # gate.gd's require() polls window.__gate every 0.4s for the page's Promise to
+    # resolve -- a fixed 4s sleep here raced that poll under load and reported the gate
+    # as still locked when "finish" a few lines later proved it wasn't. Poll instead.
+    t0 = time.time()
+    while time.time() - t0 < 20 and not state().get("scene", {}).get("unlocked", False):
+        time.sleep(0.5)
     check(state().get("scene", {}).get("unlocked", False),
           "a completed sponsor slot opens the night")
     shot("scene-beat-1")
