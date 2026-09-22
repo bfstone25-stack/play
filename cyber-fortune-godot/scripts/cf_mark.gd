@@ -124,7 +124,13 @@ func _draw() -> void:
 	# clicker shelf, which is bright and saturated) and a pale gold face over a soft red
 	# shadow stopped separating from it. Deepening the shadow rather than darkening the
 	# plate keeps the shelf number and gives the mark its edge back.
-	_word(f, word, size_px, base, Color(Palette.LACQUER_DEEP, 0.85), Vector2(0, 6))
+	# 0.85 -> 1.0 and the drop doubled, 2026-09-22. The under-shadow was raised once
+	# already when the plate went from a dark ground to a lit lantern scene; the mascot
+	# plate that replaced it is brighter and busier again, and a pale gold face over a
+	# translucent red shadow lost the edge a second time. At full opacity the shadow is a
+	# ground rather than a tint, which is what a stamp needs over a busy picture.
+	_word(f, word, size_px, base, Color(Palette.LACQUER_DEEP, 1.0), Vector2(0, 7))
+	_word(f, word, size_px, base, Color(Palette.LACQUER_DEEP, 0.75), Vector2(0, 12))
 	for i in range(10):
 		var a := TAU * float(i) / 10.0
 		_word(f, word, size_px, base, Color(Palette.PAPER, 0.95),
