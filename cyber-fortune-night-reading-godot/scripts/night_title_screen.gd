@@ -350,8 +350,14 @@ func _scrim() -> TextureRect:
 	var img := Image.create(1, n, false, Image.FORMAT_RGBA8)
 	for y in n:
 		var u := float(y) / float(n - 1)
+		# 0.88 -> 0.64, 2026-09-22. The composed title measured 0.46 against a Nutaku shelf
+		# that averages 0.63, and this scrim is where the difference lives: it ramps to
+		# near-opaque plum across the bottom 45% of a portrait frame. Five of six adult
+		# titles sit below their shelf on brightness, and that shelf's own covers are lit
+		# and warm rather than noir -- ops/market/CRAZYGAMES_SHELF.md. The menu type this
+		# grounds is large and carries its own weight.
 		img.set_pixel(0, y, Color(Palette.PLUM.r * 0.5, Palette.PLUM.g * 0.5,
-			Palette.PLUM.b * 0.5, u * u * 0.88))
+			Palette.PLUM.b * 0.5, u * u * 0.64))
 	var tr := TextureRect.new()
 	tr.texture = ImageTexture.create_from_image(img)
 	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -379,7 +385,7 @@ func _vignette() -> ImageTexture:
 			var r: float = clampf(u.length() / 1.42, 0.0, 1.0)
 			var edge: float = maxf(0.0, absf(u.y) - 0.62) * 0.8
 			img.set_pixel(x, y, Color(Palette.PLUM.r * 0.6, Palette.PLUM.g * 0.6,
-				Palette.PLUM.b * 0.6, clampf(r * r * 0.50 + edge, 0.0, 0.70)))
+				Palette.PLUM.b * 0.6, clampf(r * r * 0.34 + edge, 0.0, 0.52)))
 	return ImageTexture.create_from_image(img)
 
 
