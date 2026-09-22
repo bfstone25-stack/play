@@ -97,6 +97,9 @@ var _dust: Array = []
 var _flick := 1.0
 var _next_flick := 2.0
 var _kept: Array = []
+var _door: Button
+var _keys: Label
+var _marks: Label
 
 
 func _ready() -> void:
@@ -175,40 +178,99 @@ func _grad(top: Color, bottom: Color, rect: Rect2) -> void:
 func _build_menu() -> void:
 	# One button. A horror title has one thing to press, and the composition has exactly one
 	# clear place to put it: the floor below the vanishing point.
-	var b := Button.new()
-	b.text = "ENTER THE FOURTH FLOOR"
-	b.custom_minimum_size = Vector2(360, 54)
-	b.size = Vector2(360, 54)
-	b.position = Vector2(W * 0.5 - 180.0, H - 178.0)
+	#
+	# It was a rounded rectangle with a 1 px amber border — STANDARD.md item 4, and the
+	# objection Blaze actually made: eighteen titles that all read as one template rendered
+	# eighteen times. The shape has to come from the game's own world, and no game in the
+	# studio has a more obvious object than this one. The game is called Across the Hall.
+	# The thing across the hall is a door standing open. So the control is a door, it is
+	# shut when you are not touching it, and on hover it comes off the jamb and the warm
+	# room behind it shows in the crack — which is the game's one sentence, performed by
+	# the button before the player has pressed anything.
+	#
+	# shared/godot/shaped_button.gd's DOOR shape was written for The Other Side (this
+	# game's night twin) and had never been copied into a project. scripts/shaped_button.gd
+	# is that file verbatim; the two games share the shape the way they share the hallway.
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.DOOR
+	# The leaf is the corridor's own painted door, not a new colour on the screen: a teal
+	# so dark it is nearly ink, so the only warm thing on the button is the crack of light.
+	b.tint = Color(0.10, 0.20, 0.23)
+	b.ink = Color(0.97, 0.94, 0.86)
+	b.label = I18n.t("title_enter")
+	# Taller than a text button and narrower: a door is a portrait rectangle, and one
+	# shaped like a letterbox reads as a plank.
+	b.custom_minimum_size = Vector2(300, 92)
+	b.size = Vector2(300, 92)
+	b.position = Vector2(W * 0.5 - 150.0, H - 214.0)
+	b.add_theme_font_size_override("font_size", 16)
+	# Work Sans has no CJK glyphs; "走进四楼" set in it draws four blank boxes and reports
+	# nothing. Cjk.apply_control falls through to the display face for English.
 	b.add_theme_font_override("font", _mark_font())
-	b.add_theme_font_size_override("font_size", 17)
-	var amber := Color(0.98, 0.70, 0.24)
-	for st in ["normal", "hover", "pressed", "focus"]:
-		var sb := StyleBoxFlat.new()
-		sb.bg_color = Color(0.04, 0.10, 0.13, 0.82 if st != "hover" else 0.92)
-		sb.border_color = amber if st != "normal" else Color(amber, 0.75)
-		sb.set_border_width_all(2 if st == "hover" else 1)
-		sb.set_corner_radius_all(2)
-		sb.content_margin_left = 18
-		sb.content_margin_right = 18
-		sb.content_margin_top = 12
-		sb.content_margin_bottom = 12
-		b.add_theme_stylebox_override(st, sb)
-	b.add_theme_color_override("font_color", Color(0.98, 0.93, 0.80))
-	b.add_theme_color_override("font_hover_color", amber)
+	Cjk.apply_control(b)
 	b.pressed.connect(func(): enter_pressed.emit())
 	add_child(b)
+	_door = b
 
 
 func _build_marks() -> void:
 	# The keyboard map, which used to be the third line of the logotype. It is reference,
 	# not a mark, so it is set small and quiet at the foot where reference goes.
-	_band("WASD move   ·   mouse look   ·   E interact   ·   F light   ·   Esc release",
-		13, Color(0.72, 0.80, 0.82, 0.92), H - 104.0)
-	_band("ALL AGES   ·   blazeCore Play", 12, Color(0.62, 0.72, 0.74, 0.85), H - 54.0)
+	_keys = _band(I18n.t("title_keys"), 13, Color(0.72, 0.80, 0.82, 0.92), H - 104.0)
+	_marks = _band(I18n.t("title_marks"), 12, Color(0.62, 0.72, 0.74, 0.85), H - 54.0)
+	_build_lang()
 
 
-func _band(text: String, size_px: int, color: Color, y: float) -> void:
+## The language control: four languages, each written in its own script, cycled by one
+## press. Not a dropdown — a horror title with a settings widget on it is a settings screen
+## with a picture behind it, and the whole argument of this file is that it is not that.
+##
+## It sits top-right, away from the mark and away from the door, and it is the only thing on
+## this screen besides the door that can be pressed.
+##
+## STANDARD.md item 7: ja is the priority and all four are actually translated
+## (scripts/i18n.gd). The control exists so a player can reach them — a game whose language
+## is decided once by OS.get_locale() and never again is a game most of whose players never
+## learn it has their language.
+func _build_lang() -> void:
+	var l := Button.new()
+	l.flat = true
+	l.focus_mode = Control.FOCUS_NONE
+	l.text = I18n.ENDONYM[I18n.lang]
+	l.size = Vector2(150, 30)
+	l.position = Vector2(W - 168.0, 20.0)
+	l.add_theme_font_size_override("font_size", 14)
+	Cjk.apply_control(l)
+	l.add_theme_color_override("font_color", Color(0.72, 0.80, 0.82, 0.80))
+	l.add_theme_color_override("font_hover_color", Color(0.99, 0.74, 0.30))
+	l.pressed.connect(func() -> void:
+		I18n.cycle()
+		l.text = I18n.ENDONYM[I18n.lang]
+		Cjk.apply_control(l)
+		_relang())
+	add_child(l)
+
+
+## Repaint every string on this screen in the new language, in place.
+##
+## Rebuilding the screen would restart the dolly and re-cut the logotype, so switching
+## language would look like a crash and a reload. The four things that carry words are held
+## and re-set instead; the picture and the motion never learn it happened.
+func _relang() -> void:
+	if _door:
+		_door.label = I18n.t("title_enter")
+		Cjk.apply_control(_door)
+		_door.queue_redraw()
+	for pair in [[_keys, "title_keys"], [_marks, "title_marks"]]:
+		var lab: Label = pair[0]
+		if lab:
+			lab.text = I18n.t(str(pair[1]))
+			Cjk.apply_label(lab)
+	if _paint:
+		_paint.queue_redraw()
+
+
+func _band(text: String, size_px: int, color: Color, y: float) -> Label:
 	var l := Label.new()
 	l.text = text
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -224,7 +286,9 @@ func _band(text: String, size_px: int, color: Color, y: float) -> void:
 	l.offset_top = y
 	l.offset_bottom = y + size_px * 2.0
 	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	Cjk.apply_label(l)
 	add_child(l)
+	return l
 
 
 # ---------- 2: the logotype ---------------------------------------------------------------
@@ -285,6 +349,23 @@ func _paint_mark() -> void:
 	if half > 1.0:
 		_paint.draw_line(Vector2(cx - half, 248.0), Vector2(cx + half, 248.0),
 			Color(amber, 0.55 * _flick), 1.0)
+
+	# The title in the player's own language, under the rule. The MARK stays ACROSS THE /
+	# HALL in all four — it is what the storefront and the itch page say, and a player who
+	# found the game under that name has to recognise the screen (the same split as
+	# fold-godot's WORDMARK / WORDMARK_SUB). This line is how they read it.
+	var sub_text: String = I18n.SUBTITLE.get(I18n.lang, "")
+	if sub_text != "" and _settle > 0.7:
+		var sf := Cjk.face()
+		if sf == null:
+			sf = f
+		var ss := 26
+		var sw := sf.get_string_size(sub_text, HORIZONTAL_ALIGNMENT_LEFT, -1, ss).x
+		var sa := clampf((_settle - 0.7) * 2.0, 0.0, 1.0)
+		_paint.draw_string(sf, Vector2(cx - sw * 0.5 + 1, 285.0), sub_text,
+			HORIZONTAL_ALIGNMENT_LEFT, -1, ss, Color(0.02, 0.06, 0.08, 0.8 * sa))
+		_paint.draw_string(sf, Vector2(cx - sw * 0.5, 284.0), sub_text,
+			HORIZONTAL_ALIGNMENT_LEFT, -1, ss, Color(amber, 0.85 * sa))
 
 	# dust in the corridor light
 	for d in _dust:

@@ -48,4 +48,6 @@ flashlight={
 
 [autoload]
 
+I18n="*res://scripts/i18n.gd"
 Gate="*res://scripts/gate.gd"
+Sfx="*res://scripts/sfx.gd"

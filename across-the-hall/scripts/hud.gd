@@ -16,9 +16,12 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	note.visible = false
 	prompt.text = ""
-	UiFont.apply_label(prompt)
-	UiFont.apply_label(note)
-	UiFont.apply_label(objective)
+	# Cjk.apply_label falls through to the Latin stack for English, so this is
+	# unconditional: the HUD carries CJK copy in three of its four languages.
+	Cjk.apply_label(prompt)
+	Cjk.apply_label(note)
+	Cjk.apply_label(objective)
+	I18n.changed.connect(_relang)
 	_clock()
 	_title()
 	_grain()
@@ -31,7 +34,7 @@ func _clock() -> void:
 	clock.add_theme_font_size_override("font_size", 14)
 	clock.add_theme_color_override("font_color", Color(0.55, 0.72, 0.48, 0.85))
 	clock.text = "02:17"
-	UiFont.apply_label(clock)
+	UiFont.apply_label(clock)  # a digital clock is digits; it stays Latin in every language
 	add_child(clock)
 
 func _title() -> void:
@@ -46,7 +49,7 @@ func _title() -> void:
 	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color(0.86, 0.8, 0.7, 1))
 	title.visible = false
-	UiFont.apply_label(title)
+	Cjk.apply_label(title)
 	add_child(title)
 
 func _grain() -> void:
@@ -97,6 +100,15 @@ func hide_splash() -> void:
 		splash.visible = false
 		splash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+## Re-face every label when the language changes on the title screen. Changing the text is
+## the game's job; changing the FONT is this one's, and a label that keeps a Latin face
+## after a switch to Japanese draws a row of blank boxes and reports nothing.
+func _relang(_lang: String) -> void:
+	for l in [prompt, note, objective, title]:
+		if l:
+			Cjk.apply_label(l)
+
 
 func set_prompt(t: String) -> void:
 	prompt.text = t
