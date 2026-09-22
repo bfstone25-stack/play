@@ -142,6 +142,15 @@ with sync_playwright() as p:
     page.evaluate("() => { try { localStorage.clear(); } catch (e) {} }")
     s = state()
     check(s is not None, "the engine booted and the bridge answers")
+    # Boot lands on the title screen, which has no dev_cmd handler of its own -- a player
+    # gets to the table by clicking "title.read"/"title.again"; the bridge equivalent is
+    # `open`. Without this the very next "pick" silently no-ops ({"ok": false,
+    # "why": "no_screen_handler"}, never checked) and every check after it fails for a
+    # reason that has nothing to do with the mechanics being tested -- the whole run
+    # stayed on the title screen. Caught 2026-09-21: this test used to boot straight to
+    # the table before the title screen existed, and nobody updated it when the title
+    # screen was added.
+    cmd("open", screen="home")
     shot("table")
 
     print("\n== a reading is a real draw")
