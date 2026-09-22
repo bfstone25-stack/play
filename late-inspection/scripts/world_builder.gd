@@ -56,12 +56,40 @@ func _build() -> void:
 	_build_kitchen()
 	_build_bathroom()
 	_build_bedroom()
+	# ---- the lamps -------------------------------------------------------------------
+	#
+	# 2026-09-21. Read the play matrix rather than the code: every in-game frame of a
+	# 28-shot run was the same monochrome green, so six authored zones read as one
+	# corridor. The cause is here and it is not the materials (plaster is 0.42/0.38/0.32,
+	# a warm tan) and not the environment (ambient is 0.28/0.18/0.08, amber). It is that
+	# the LOBBY -- where the player starts, where the first document sits at x=-5.0, and
+	# therefore where almost every screenshot lands -- had exactly one lamp in it and that
+	# lamp was the green emergency fixture. Same for the bathroom: two greens and nothing
+	# else. A room lit by one hue renders as one hue.
+	#
+	# The fix is the same lesson the key visual had to learn (ops/late_inspection_art/
+	# grade_keyvisual.py): a frame reads as coloured when it has TWO temperatures in it,
+	# not when it has more of one. So each of those two rooms gets a warm practical to key
+	# it, and the green stays exactly as bright as it was -- it becomes the accent it was
+	# always meant to be rather than the whole room. Nothing is made brighter overall;
+	# memory `naming-a-light-twice-duplicates-it` is about the other failure, and adding a
+	# second lamp of the SAME colour is precisely what this must not do.
+	#
+	# Lobby: the green emergency over the lift, plus the warm bulb behind the lift-call
+	# panel. Both are in the fiction already -- the lift indicator is a plot device in
+	# stage 0, and its panel is lit.
 	_fixture(Vector3(-5.2, 2.35, 4.0), Color(0.38, 0.78, 0.46), 1.0, 5.5, true)
+	_fixture(Vector3(-6.6, 1.55, 3.1), Color(1.0, 0.71, 0.36), 0.85, 3.6, false)
+	# Corridor and living room: unchanged, these two already had a warm key.
 	_fixture(Vector3(-1.0, 2.35, 2.0), Color(1.0, 0.66, 0.28), 1.25, 6.5, true)
 	_fixture(Vector3(-1.0, 2.35, 8.0), Color(1.0, 0.72, 0.34), 1.0, 5.5, false)
 	_fixture(Vector3(4.5, 2.35, 2.4), Color(1.0, 0.72, 0.35), 1.45, 7.0, false)
+	# Bathroom: the two greens stay, and the spill from the corridor doorway keys them.
+	# Cold tile against a warm doorway is the picture; cold tile against cold tile is a
+	# green screen.
 	_fixture(Vector3(9.4, 2.3, 2.5), Color(0.5, 0.82, 0.32), 0.8, 4.5, true)
 	_fixture(Vector3(9.4, 2.3, 7.3), Color(0.35, 0.72, 0.33), 0.72, 4.0, true)
+	_fixture(Vector3(7.7, 1.9, 5.0), Color(1.0, 0.74, 0.40), 0.75, 4.2, false)
 	_fixture(Vector3(4.9, 1.0, 8.2), Color(0.92, 0.24, 0.13), 0.8, 4.5, false)
 
 	var moon := DirectionalLight3D.new()
