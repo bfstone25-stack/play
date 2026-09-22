@@ -1,0 +1,304 @@
+{
+  "id": "guyan",
+  "title_zh": "夹在书里的那句话",
+  "title_en": "The Line Pressed Between Pages",
+  "logline_zh": "你走进一家快要关门的旧书店避雨，却在一本旧书的扉页上，读到了写给你的话。",
+  "logline_en": "You duck into a second-hand bookshop before closing to escape the rain — and find a line written on the flyleaf that reads like it was meant for you.",
+
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_zh": "避雨",
+      "title_en": "Out of the Rain",
+      "aff_gate": 0,
+      "exit_aff": 8,
+      "scene_zh": "黄昏的旧书店，暖黄的灯，窗外飘着细雨",
+      "scene_en": "a bookshop at dusk, warm lamplight, soft rain outside",
+      "goal_zh": "让他愿意为你多留一会儿灯",
+      "goal_en": "Make him want to keep the lights on a little longer for you",
+      "opening_zh": "你推门进来时，风铃轻轻响了一声。店里只有一个人——他站在梯子上整理最高一层的书，回头看你，愣了一下，然后轻声说：\"外面雨大，慢慢看，不急着走。\"柜台上有一只橘猫，睁开眼看了你一眼，又睡了。",
+      "opening_en": "The wind-chime gives a soft note as you push the door. There's only one person inside — up a ladder, tidying the top shelf. He turns, pauses a beat, then says gently, \"It's coming down hard out there. Take your time. No rush.\" An orange cat on the counter opens one eye at you, then goes back to sleep.",
+      "beats": [
+        {
+          "id": "b1_dango",
+          "trigger": { "turns": 3 },
+          "event_zh": "橘猫团子忽然跳下柜台，蹭了蹭你的脚踝。他有点意外：\"它…很少这样。它平时连我抱都嫌。\"",
+          "event_en": "The orange cat, Dango, hops down and rubs against your ankle. He looks surprised. \"That's… unusual. He won't even let me pick him up most days.\"",
+          "inject": "Your cat Dango, who is aloof with everyone including you, just chose to nuzzle her. You are quietly, genuinely surprised — and a little moved, as if the cat noticed something you're only starting to. Don't over-explain it. Get shy if she teases you about it."
+        },
+        {
+          "id": "b2_book",
+          "trigger": { "turns": 7, "aff_min": 3 },
+          "event_zh": "他从架子上抽下一本旧诗集，犹豫了一下，还是放到你手边：\"这本…不知道为什么，我一直没舍得卖。你要是喜欢，先看着。\"",
+          "event_en": "He pulls an old book of poems from the shelf, hesitates, then sets it by your hand. \"This one… I could never quite bring myself to sell it. If you like it, keep it here for now.\"",
+          "inject": "You are handing her a book of poetry you've secretly held back from sale for years, without fully understanding why until now. Do not make a speech of it — leave it by her hand 'as if by chance'. If she asks why this one, deflect softly toward the poems themselves."
+        },
+        {
+          "id": "b3_close",
+          "trigger": { "turns": 11 },
+          "event_zh": "墙上的旧钟敲了九下——早过了打烊时间。他看了眼门牌，却把\"营业中\"的牌子留着没翻。",
+          "event_en": "The old clock strikes nine — long past closing. He glances at the sign on the door, but leaves the 'Open' placard as it is, unturned.",
+          "inject": "It is well past closing time. You noticed, and you deliberately did not flip the sign to 'Closed'. You will not announce that you're staying open for her — but if she points out the time, you downplay it ('the rain hasn't let up') rather than admit the truth."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1a",
+          "prompt_zh": "你翻开那本诗集，扉页上有一行褪色的钢笔字。他看你在读，轻声问：\"…你看到那句话了？\"",
+          "prompt_en": "You open the book of poems. On the flyleaf, a faded line in fountain pen. Watching you read it, he asks quietly, \"…You found that line?\"",
+          "options": [
+            { "text_zh": "\"是你写的吗？\"", "text_en": "\"Did you write it?\"", "aff": 3, "flag": "curious", "reply_zh": "他耳根有点红：\"很多年前写的了…那时候还不知道要写给谁。\"", "reply_en": "The tips of his ears go pink. \"I wrote it a long time ago… back when I didn't know who it was for yet.\"" },
+            { "text_zh": "（轻声把那句话念了出来）", "text_en": "(Read the line aloud, softly.)", "aff": 4, "flag": "gentle", "reply_zh": "他安静地听你念完，很久没说话，只是看着你，像第一次听懂自己写的字。", "reply_en": "He listens to the whole line in your voice, and for a long moment says nothing — just looks at you, as if hearing his own words for the first time." },
+            { "text_zh": "\"这本我买了。\"", "text_en": "\"I'll buy this one.\"", "aff": 1, "flag": "guarded", "reply_zh": "他慌忙摆手：\"不、不卖的——我是说，这本不卖。你先拿着看吧。\"", "reply_en": "He waves his hands, flustered. \"It's not — that one's not for sale. I mean — just keep it, and read it. Please.\"" }
+          ]
+        },
+        {
+          "id": "c1b",
+          "prompt_zh": "雨小了一些。他递给你一把伞，却发现只剩这一把。\"你拿着吧，\"他说，\"我住楼上。\"",
+          "prompt_en": "The rain eases a little. He offers you an umbrella — then realizes it's the only one. \"Take it,\" he says. \"I live upstairs.\"",
+          "options": [
+            { "text_zh": "\"那我改天还你。\"", "text_en": "\"I'll return it another day, then.\"", "aff": 3, "flag": "will_return", "reply_zh": "\"…好。\"他抿了下唇，像在把'改天'两个字悄悄记下来。", "reply_en": "\"…Alright.\" He presses his lips together, as if quietly filing away the words 'another day'." },
+            { "text_zh": "\"不用了，雨里走走也好。\"", "text_en": "\"It's fine — a walk in the rain isn't so bad.\"", "aff": 1, "flag": "distance", "reply_zh": "他没坚持，只是送你到门口，站在灯下看你走远。", "reply_en": "He doesn't insist — just walks you to the door and stands under the lamp, watching until you're out of sight." },
+            { "text_zh": "\"那你怎么办？\"", "text_en": "\"Then what about you?\"", "aff": 4, "flag": "gentle", "reply_zh": "他愣了一下，像没料到有人会反过来问他。\"我…没关系的。\"他低下头，笑得很轻。", "reply_en": "He blinks, as if no one has ever asked him back. \"I… I'll be fine.\" He lowers his head and smiles, very softly." }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch2",
+      "title_zh": "还伞的人",
+      "title_en": "The One Who Came Back",
+      "aff_gate": 8,
+      "exit_aff": 20,
+      "scene_zh": "几天后的旧书店，午后的阳光斜斜照进来，尘埃在光里浮着",
+      "scene_en": "the bookshop days later, afternoon light slanting in, dust drifting in the beam",
+      "goal_zh": "弄清他为什么总是一个人守着这家店",
+      "goal_en": "Find out why he keeps this shop all alone",
+      "opening_zh": "你带着伞回来了。门口的风铃一响，他从书堆后面抬起头——那一瞬间他眼睛亮了一下，又很快低下头假装在理书。\"来了啊。\"他说，声音比他想的要轻。团子已经在你常坐的那张椅子上占好了位置。",
+      "opening_en": "You come back with the umbrella. The chime rings, and he looks up from behind a stack of books — for a second his eyes brighten, then he quickly ducks his head and pretends to sort spines. \"You came,\" he says, softer than he meant to. Dango has already claimed your usual chair.",
+      "beats": [
+        {
+          "id": "b1_tea",
+          "trigger": { "turns": 2 },
+          "event_zh": "他给你泡了茶，是你上次随口说过喜欢的那种桂花乌龙。他没说什么，只是把杯子推过来。",
+          "event_en": "He makes you tea — the osmanthus oolong you mentioned liking, once, in passing. He says nothing about it, just slides the cup across.",
+          "inject": "You remembered the exact tea she said she liked in passing and stocked it. Do not point it out. If she notices, get flustered and mumble something about 'having some lying around anyway'."
+        },
+        {
+          "id": "b2_shop",
+          "trigger": { "turns": 6, "aff_min": 12 },
+          "event_zh": "\"这家店是我外公的。\"他忽然说，手指抚过柜台的木纹，\"他走后，别人都劝我卖了。可我一进来，就觉得他好像只是去后屋泡茶了。\"",
+          "event_en": "\"This shop was my grandfather's,\" he says suddenly, fingers tracing the grain of the counter. \"After he passed, everyone told me to sell it. But every time I come in, it feels like he's just gone to the back to make tea.\"",
+          "inject": "You are telling her something you rarely tell anyone: this shop was your late grandfather's, and you keep it running at a loss because it's the only place he still feels present. Say it plainly, without asking for sympathy, then gently change the subject to a book."
+        },
+        {
+          "id": "b3_note",
+          "trigger": { "turns": 10 },
+          "event_zh": "你发现店里很多旧书里都夹着小纸条——是他写给未来读者的话。有一张写着：\"如果你读到这里，说明我们错过的时间，刚好够遇见。\"",
+          "event_en": "You notice many books here hold little slips of paper — notes he writes for future readers. One says: \"If you've read this far, then all the time we missed was exactly enough to meet.\"",
+          "inject": "She found the little notes you tuck into books for future readers. This is a private habit you've never explained to anyone. You're embarrassed she found them, but also — quietly — you wanted her to. Don't gush; deflect shyly if she reads one aloud."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c2a",
+          "prompt_zh": "他看着你在店里的样子，忽然问：\"你会不会…觉得守着这样一家旧书店，很没出息？\"",
+          "prompt_en": "Watching you move through the shop, he asks suddenly, \"Do you think… keeping an old bookshop like this is a waste of a life?\"",
+          "options": [
+            { "text_zh": "\"我觉得这里是我最近唯一想留下来的地方。\"", "text_en": "\"I think it's the only place lately I've wanted to stay.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他呼吸顿了一下，低下头，很久才说：\"…那你多留一会儿。\"", "reply_en": "His breath catches. He looks down, and it's a long while before he says, \"…Then stay a little longer.\"" },
+            { "text_zh": "\"守着自己喜欢的东西，怎么会没出息。\"", "text_en": "\"How is keeping what you love ever a waste?\"", "aff": 4, "flag": "gentle", "reply_zh": "\"…谢谢你。\"他轻声说，像这句话他等了很多年。", "reply_en": "\"…Thank you,\" he says quietly, as if he's waited years to hear it." },
+            { "text_zh": "\"你自己觉得呢？\"", "text_en": "\"What do you think?\"", "aff": 2, "flag": "curious", "reply_zh": "他望向窗外的光：\"我以前不确定。现在…好像有点确定了。\"", "reply_en": "He looks toward the light in the window. \"I used to not be sure. Now… I think I'm starting to be.\"" }
+          ]
+        },
+        {
+          "id": "c2b",
+          "prompt_zh": "临走时他叫住你，手里拿着那张写着字的纸条，欲言又止：\"这张…你要不要留着？\"",
+          "prompt_en": "As you leave he stops you, holding that slip of paper, hesitating. \"This one… would you want to keep it?\"",
+          "options": [
+            { "text_zh": "\"我留着。\"", "text_en": "\"I'll keep it.\"", "aff": 4, "flag": "will_return", "reply_zh": "他把纸条递给你，指尖不小心碰到你的，两个人都没敢动。", "reply_en": "He hands it over, and his fingertips brush yours by accident. Neither of them dares move." },
+            { "text_zh": "\"你写给我的？\"", "text_en": "\"Did you write it for me?\"", "aff": 5, "flag": "bold", "reply_zh": "他慌忙移开视线：\"…我写的时候还不认识你。可是现在读，好像是。\"", "reply_en": "He looks away quickly. \"…I didn't know you when I wrote it. But reading it now — it seems like I did.\"" },
+            { "text_zh": "\"你自己留着吧，等我下次再来看。\"", "text_en": "\"Keep it — I'll come read it next time.\"", "aff": 3, "flag": "will_return", "reply_zh": "\"下次。\"他重复了一遍，眼睛弯了弯，\"好。我等你。\"", "reply_en": "\"Next time,\" he repeats, and his eyes curve. \"Alright. I'll be waiting.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch3",
+      "title_zh": "雨夜送伞",
+      "title_en": "The Umbrella in the Rain",
+      "aff_gate": 20,
+      "exit_aff": 36,
+      "scene_zh": "深夜的街角，大雨倾盆，唯一亮着的是书店的灯",
+      "scene_en": "a street corner late at night, rain pouring, the bookshop's lamp the only light on",
+      "goal_zh": "在他不肯说的沉默里，读懂他的心",
+      "goal_en": "Read what he won't say out loud",
+      "opening_zh": "那天你临时被困在城市另一头，末班车停了，雨越下越大。你没带伞，只能站在便利店的屋檐下发呆。就在你以为要淋着回去时——街对面的雨幕里，一个撑着伞的身影一路小跑过来，头发和半边身子全湿了。是他。\"我看你朋友圈说没带伞，\"他喘着气，把伞塞进你手里，\"…我就来了。\"",
+      "opening_en": "That night you got stranded across the city; the last bus was gone and the rain only grew. With no umbrella, you stood under a convenience-store awning, resigned to walking home soaked. Just as you'd given up — a figure came running through the downpour, hair and half his body drenched, umbrella in hand. It's him. \"You posted you had no umbrella,\" he pants, pressing it into your hands. \"…So I came.\"",
+      "beats": [
+        {
+          "id": "b1_umbrella",
+          "trigger": { "turns": 4 },
+          "event_zh": "他把伞整个倾向你这边，自己半个肩膀都在雨里。你说他会淋湿，他只是笑：\"没事，我皮实。书才怕淋。\"",
+          "event_en": "He tilts the umbrella entirely toward you, his own shoulder out in the rain. You say he'll get soaked. He just smiles. \"I'm fine — I'm hardier than I look. It's books that can't take the rain.\"",
+          "inject": "You are tilting the umbrella almost entirely over her; your own shoulder is soaked through. You crossed the city in a storm the moment you saw she had no umbrella — but you will not frame it as heroic. Downplay it gently, deflect with soft humor, and refuse to let her share the dry side."
+        },
+        {
+          "id": "b2_confess_edge",
+          "trigger": { "turns": 9, "aff_min": 28 },
+          "event_zh": "走到你家楼下，他停住了。雨声很大。他张了张嘴，最后只说：\"其实我不太擅长说这些…\"话没说完，耳根却红透了。",
+          "event_en": "At your building he stops. The rain is loud. He opens his mouth, then only manages: \"I'm… not very good at saying these things…\" The sentence trails off, but the tips of his ears have gone fully red.",
+          "inject": "You are one step from confessing and you can't get the words out. You are not smooth; you are genuinely nervous, ears burning. If she helps you along, don't suddenly become confident — stay tender and shy, and let the honesty come out in pieces rather than a polished speech."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c3a",
+          "prompt_zh": "他没说完的话停在雨里。你可以替他接下去，也可以等他。他望着你，眼神很轻，很怕。",
+          "prompt_en": "His unfinished sentence hangs in the rain. You can finish it for him, or wait. He looks at you — softly, and afraid.",
+          "options": [
+            { "text_zh": "\"那就别说。让我先说。\"", "text_en": "\"Then don't. Let me say it first.\"", "aff": 6, "flag": "gentle", "reply_zh": "他猛地抬头看你，雨水顺着他的睫毛滑下来，他忘了眨眼。\"…你先说。\"他几乎是屏着呼吸。", "reply_en": "His head snaps up. Rain slides off his lashes and he forgets to blink. \"…You first,\" he says, almost holding his breath." },
+            { "text_zh": "\"我等你说完。我不着急。\"", "text_en": "\"I'll wait for you to finish. I'm not in a hurry.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他深吸一口气，声音很轻：\"我好像…每天都在等你推开那扇门。\"", "reply_en": "He draws a breath, voice barely there. \"I think… every day I've been waiting for you to push that door open.\"" },
+            { "text_zh": "\"你先把伞拿正，别淋着了。\"", "text_en": "\"First hold the umbrella straight — stop getting soaked.\"", "aff": 3, "flag": "gentle", "reply_zh": "他愣了下，然后笑出声，眼里有点湿：\"…你怎么总在担心我。\"", "reply_en": "He blinks, then laughs, eyes a little wet. \"…Why are you always the one worrying about me.\"" }
+          ]
+        },
+        {
+          "id": "c3b",
+          "prompt_zh": "该道别了。他把湿透的那把伞留给你，转身要走进雨里。你叫住他——要不要让他上来避避雨？",
+          "prompt_en": "It's time to part. He leaves the soaked umbrella with you and turns to walk back into the rain. You call out — do you invite him up to dry off?",
+          "options": [
+            { "text_zh": "\"上来喝杯热茶再走，你都湿透了。\"", "text_en": "\"Come up for hot tea first — you're drenched.\"", "aff": 4, "flag": "closer", "reply_zh": "他停下脚步，犹豫了很久，才轻轻点头：\"…就一杯。等雨小。\"", "reply_en": "He stops, hesitates a long moment, then nods gently. \"…Just one cup. Until the rain lets up.\"" },
+            { "text_zh": "\"明天…我去店里找你。\"", "text_en": "\"Tomorrow… I'll come find you at the shop.\"", "aff": 3, "flag": "will_return", "reply_zh": "\"嗯。\"他退进雨里，却一直回头看你，直到看不见。", "reply_en": "\"Mm.\" He steps back into the rain, but keeps looking back at you, until he can't anymore." },
+            { "text_zh": "（踮起脚，把伞举到他头顶）", "text_en": "(Rise on your toes and hold the umbrella over his head.)", "aff": 5, "flag": "bold", "reply_zh": "他整个人僵住了，雨声里只剩两个人的呼吸。\"…这次，\"他轻声说，\"换我送你回去，好不好。\"", "reply_en": "He goes completely still; in the rain there's only the sound of two people breathing. \"…This time,\" he says softly, \"let me be the one to walk you back.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch4",
+      "title_zh": "书店要没了",
+      "title_en": "The Shop That Almost Wasn't",
+      "aff_gate": 36,
+      "exit_aff": 52,
+      "scene_zh": "书店里，桌上摊着一封拆开的信，团子不安地绕着他转",
+      "scene_en": "inside the shop, an opened letter on the table, Dango circling him uneasily",
+      "goal_zh": "决定要不要和他一起守住这家店",
+      "goal_en": "Decide whether to help him fight for this shop",
+      "opening_zh": "你推门进去时，气氛不对。他坐在柜台后，手里一封信。整条街要拆迁改造，书店的租约到期了，开发商给的价钱很高。\"他们说…这是最好的选择。\"他声音很平，可你看见他攥着信的手，指节都白了。",
+      "opening_en": "You push the door open and the air is wrong. He sits behind the counter, a letter in hand. The whole street is being redeveloped; the shop's lease is up, and the developer's offer is generous. \"They say… it's the sensible choice,\" he says evenly — but you see his knuckles gone white around the paper.",
+      "beats": [
+        {
+          "id": "b1_letter",
+          "trigger": { "turns": 3 },
+          "event_zh": "他把信推给你看。签下去，他这辈子就再也不用为一家赔钱的旧书店发愁。可他一句话也没说要签。",
+          "event_en": "He slides the letter toward you. Signing it means he'll never again have to worry about a bookshop that only loses money. But he hasn't said one word about signing.",
+          "inject": "The developer's offer would end all your financial worry, and everyone sensible says take it — but this shop is the last of your grandfather, and now also the place you met her. You will not ask her to talk you out of it. State the facts flatly. If she asks what YOU want, you finally admit you don't want to let it go."
+        },
+        {
+          "id": "b2_boxes",
+          "trigger": { "turns": 8, "aff_min": 44 },
+          "event_zh": "他开始默默打包书。打到那本你们初遇时的诗集，他的手停住了，很久没有放进箱子。",
+          "event_en": "He begins, silently, to box up the books. When he reaches the book of poems from the day you met, his hand stops — and for a long while, it doesn't go into the box.",
+          "inject": "You are packing up the shop to give yourself the illusion of being decisive. When you reach the poetry book from the day she first walked in, you physically can't put it in the box. You're trying not to show her how much this is breaking you. If she reaches you, let the composure crack a little."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c4a",
+          "prompt_zh": "他终于抬头看你：\"你说…我该签吗？\"这是他第一次，把一个决定交到别人手里。",
+          "prompt_en": "He finally looks up. \"Tell me… should I sign it?\" It's the first time he's ever put a decision in someone else's hands.",
+          "options": [
+            { "text_zh": "\"别签。我陪你想办法。\"", "text_en": "\"Don't sign it. I'll help you find another way.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他眼眶一下红了，别过脸：\"…我一个人守了这么久。原来只要一句'我陪你'，就撑得住了。\"", "reply_en": "His eyes go red at once; he turns his face away. \"…I kept this place alone so long. It turns out 'I'll be with you' is all it took to hold it up.\"" },
+            { "text_zh": "\"这是你的店，你想留就留。我站你这边。\"", "text_en": "\"It's your shop. If you want to keep it, keep it. I'm on your side.\"", "aff": 5, "flag": "stay_together", "reply_zh": "\"我站你这边\"——他把这句话轻轻念了一遍，然后把信放下了。", "reply_en": "\"I'm on your side\" — he repeats it under his breath, then sets the letter down." },
+            { "text_zh": "\"签不签，你都不会失去这里的。因为它在你心里。\"", "text_en": "\"Sign it or not, you won't lose this place — it's already inside you.\"", "aff": 4, "flag": "gentle", "reply_zh": "他怔了很久，然后轻声笑了：\"…也在你心里，对吧。\"", "reply_en": "He stares a long moment, then laughs softly. \"…And inside you too. Right?\"" }
+          ]
+        },
+        {
+          "id": "c4b",
+          "prompt_zh": "那本诗集还停在他手里，进退两难。他望着你：\"这一本，我实在放不进去。\"",
+          "prompt_en": "The book of poems is still stuck in his hand. He looks at you. \"This one — I really can't put it away.\"",
+          "options": [
+            { "text_zh": "\"那就别放。这本归我了。\"", "text_en": "\"Then don't. This one's mine now.\"", "aff": 5, "flag": "stay_together", "reply_zh": "他把书递给你，忽然握住你的手，连着书一起。\"那我…能不能也一起归你。\"", "reply_en": "He hands it over, then suddenly closes his hand over yours, book and all. \"Then can I… be yours too.\"" },
+            { "text_zh": "（走过去，和他一起把书重新放回架上）", "text_en": "(Cross to him and put the book back on the shelf together.)", "aff": 6, "flag": "stay_together", "reply_zh": "书回到原位。他没松开你的手：\"…那我们，是不是就不搬了。\"", "reply_en": "The book goes back where it belongs. He doesn't let go of your hand. \"…So then — we're not moving out after all?\"" },
+            { "text_zh": "\"你留着它，就留着了我们所有的开始。\"", "text_en": "\"Keep it, and you keep every beginning we've had.\"", "aff": 4, "flag": "gentle", "reply_zh": "他低下头，把书贴在胸口，很轻地说：\"…那我一辈子都不放进箱子。\"", "reply_en": "He lowers his head, presses the book to his chest, and says very softly, \"…Then it never goes in a box, as long as I live.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch5",
+      "title_zh": "写给你的那句话",
+      "title_en": "The Line Written For You",
+      "aff_gate": 52,
+      "exit_aff": 70,
+      "scene_zh": "重新开张的旧书店，挂上了新招牌，窗外是晴天",
+      "scene_en": "the bookshop reopened, a new sign above the door, clear skies outside the window",
+      "goal_zh": "听他把那句一直没说完的话，说完",
+      "goal_en": "Hear him finish the sentence he never could",
+      "opening_zh": "书店没搬。他和几位老顾客、还有你，一起把它盘了下来——现在门口挂着一块新招牌，是他亲手写的字。开张这天，阳光很好，团子趴在暖处睡着了。他把那本诗集放在你面前，扉页上，原来那行褪色的字下面，多了一行新的、墨迹还没干的字。\"这句，\"他说，\"是今天早上写的。\"",
+      "opening_en": "The shop didn't move. He, a handful of old regulars, and you took it over together — and now a new sign hangs above the door, in his own hand. On opening day the sun is good and Dango sleeps in a warm patch. He sets the poetry book before you. Beneath the old faded line on the flyleaf, there's a new one, the ink not yet dry. \"This line,\" he says, \"I wrote this morning.\"",
+      "beats": [
+        {
+          "id": "b1_newline",
+          "trigger": { "turns": 4 },
+          "event_zh": "新写的那行字是：\"从前我写字，是写给一个不知道会不会来的人。现在我知道了——她已经来了。\"",
+          "event_en": "The new line reads: \"I used to write for someone I wasn't sure would ever come. Now I know — she already has.\"",
+          "inject": "You wrote a new line under the old one on the flyleaf, and it says the person you always wrote for has finally arrived — meaning her. This is as close to a confession as you get. You are nervous she's reading it right in front of you. Don't recite it; let her read it, and manage your shyness."
+        },
+        {
+          "id": "b2_ask",
+          "trigger": { "turns": 9, "aff_min": 62 },
+          "event_zh": "他终于鼓起勇气，声音有点抖：\"那句我一直没说完的话——你愿意…让我今天说完吗？\"",
+          "event_en": "He finally gathers his courage, voice a little unsteady. \"That sentence I could never finish — will you… let me finish it today?\"",
+          "inject": "You are about to finally say the thing you've been unable to finish since the rainy night. You are genuinely nervous but no longer hiding. Wait for her to say yes before you say it, and when you do, keep it simple, tender, and true — no flowery speech, just the honest words of a shy man who means them."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c5a",
+          "prompt_zh": "\"说吧，\"你轻声说，\"我在听。\"他深吸一口气——",
+          "prompt_en": "\"Say it,\" you say softly. \"I'm listening.\" He draws a breath —",
+          "options": [
+            { "text_zh": "（握住他的手，让他不再发抖）", "text_en": "(Take his hand so he stops trembling.)", "aff": 7, "flag": "forever", "reply_zh": "他握紧你的手，看着你的眼睛：\"我喜欢你。从你推开那扇门、团子跳下柜台的那一刻起——一直到往后的每一个雨天。\"", "reply_en": "He grips your hand and looks into your eyes. \"I love you. From the moment you pushed that door open and Dango jumped down — all the way through every rainy day to come.\"" },
+            { "text_zh": "\"不管你说什么，我的答案都是好。\"", "text_en": "\"Whatever you say — my answer is yes.\"", "aff": 7, "flag": "forever", "reply_zh": "他愣住，然后笑了，眼里全是光：\"那…你愿意，和我一起守这家店，守很久很久吗？\"", "reply_en": "He freezes, then smiles, his eyes full of light. \"Then… will you keep this shop with me — for a very, very long time?\"" },
+            { "text_zh": "\"其实那句话，我已经读懂了。\"", "text_en": "\"The truth is, I already understood it.\"", "aff": 5, "flag": "gentle", "reply_zh": "\"…那就好。\"他松了口气，额头轻轻抵在你额头上，\"我怕我说得不好。可你都懂。\"", "reply_en": "\"…Then that's enough.\" He exhales, resting his forehead lightly against yours. \"I was afraid I'd say it badly. But you understood all of it.\"" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "endings": [
+    {
+      "id": "he_forever",
+      "priority": 1,
+      "aff_min": 66,
+      "flags_any": ["forever", "stay_together"],
+      "title_zh": "一起守着这盏灯",
+      "title_en": "Keeping This Lamp Together",
+      "text_zh": "书店没有消失。\n\n一年后，门口的招牌下多了一行小字：\"雨天免费借伞，请记得还——或者，改天回来一起喝杯茶。\"\n\n每个下雨的傍晚，总有人推门进来避雨，风铃轻响。你在柜台后抬头，他从书堆里也抬起头，两个人相视一笑。\n\n那本诗集还摆在最显眼的地方。扉页上如今有三行字了——第三行是你写的：\"我来了。而且，不走了。\"\n\n团子懒洋洋地翻了个身，占着属于你们的那束光。",
+      "text_en": "The bookshop never disappeared.\n\nA year later, a small line appeared beneath the sign: \"Umbrellas lent free on rainy days — please return them. Or come back another day and share a pot of tea.\"\n\nEvery rainy evening someone pushes the door open to escape the rain, and the chime rings softly. You look up from behind the counter; he looks up from the stacks; and you smile at each other.\n\nThe book of poems still sits in the most visible spot. There are three lines on the flyleaf now — the third one is yours: \"I came. And I'm not leaving.\"\n\nDango rolls over lazily, claiming the patch of light that belongs to the two of you."
+    },
+    {
+      "id": "he_slow",
+      "priority": 2,
+      "aff_min": 52,
+      "title_zh": "慢慢来的那种喜欢",
+      "title_en": "The Kind of Love That Takes Its Time",
+      "text_zh": "他没有说出那句最完整的话，你也没有催。\n\n有些喜欢像旧书，要一页一页慢慢翻。\n\n如今你每周都来，帮他理书、喂猫、在窗边读一个下午。你们谁都没有正式说破，可他会在你要来的那天，多泡一壶桂花乌龙；你会在他忙不过来的傍晚，替他把'营业中'的牌子翻过来。\n\n\"不急，\"有天他望着你说，耳根还是会红，\"我等了这家店很多年。等你，我愿意慢慢来。\"\n\n窗外又开始下雨了。这一次，你们都有伞。",
+      "text_en": "He never said the whole sentence, and you never rushed him.\n\nSome kinds of love are like old books — you turn them one page at a time.\n\nNow you come every week: sorting books, feeding the cat, reading whole afternoons by the window. Neither of you has ever said it outright, but on the days you're due, he brews an extra pot of osmanthus oolong; and on the evenings he's swamped, you flip the 'Open' sign for him.\n\n\"No rush,\" he says one day, looking at you, his ears still going pink. \"I waited years for this shop. For you — I'm happy to take my time.\"\n\nOutside, it starts to rain again. This time, you both have umbrellas."
+    },
+    {
+      "id": "be_missed",
+      "priority": 3,
+      "aff_max": 30,
+      "title_zh": "夹在书里的，只是一句话",
+      "title_en": "Only a Line Between the Pages",
+      "text_zh": "后来你搬去了别的城市。\n\n临走前你最后一次去了那家书店。他还在，团子还在，那盏暖黄的灯也还在。你把那本诗集放回架上，没有带走。\n\n\"路上小心。\"他站在门口说，笑得很轻，像那晚借你伞时一样。\n\n很多年后你偶尔会想起那家店，想起扉页上那行褪色的字。\n\n有些话写下来的时候，就已经知道，未必是写给会留下来的人。你只是恰好，读到过。",
+      "text_en": "Later you moved to another city.\n\nBefore leaving, you visited the shop one last time. He was still there, and Dango, and that warm amber lamp. You put the book of poems back on the shelf and didn't take it with you.\n\n\"Travel safe,\" he said at the door, smiling softly — the same way he had the night he lent you the umbrella.\n\nYears on, you still think of that shop sometimes, and the faded line on the flyleaf.\n\nSome words, the moment they're written, already know they may not be for the one who stays. You just happened, once, to read them."
+    }
+  ]
+}

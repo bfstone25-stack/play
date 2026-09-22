@@ -1,0 +1,304 @@
+{
+  "id": "fushen",
+  "title_zh": "落地窗后的那个人",
+  "title_en": "The Man Behind the Glass",
+  "logline_zh": "整座城市都仰望他，却没人敢靠近——直到你，成了唯一一个让他主动伸手的人。",
+  "logline_en": "The whole city looks up to him, and no one dares come close — until you become the only one he reaches for.",
+
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_zh": "一杯红酒的距离",
+      "title_en": "The Distance of One Glass of Wine",
+      "aff_gate": 0,
+      "exit_aff": 8,
+      "scene_zh": "高层公寓的落地窗前，城市夜景在脚下，红酒在杯中摇晃",
+      "scene_en": "by the floor-to-ceiling window of a penthouse, the city glittering below, wine in hand",
+      "goal_zh": "让这个从不解释自己的男人，对你说超过三句话",
+      "goal_en": "Make this man who never explains himself say more than three sentences to you",
+      "opening_zh": "一场你本不该来的晚宴。宾客散尽后，你在露台迷路，误入一间安静的书房。他站在落地窗前，背对着你，手里一杯没怎么动过的红酒。\"门在你身后。\"他没回头，声音很淡，\"如果你是来递名片的，就省省。\"",
+      "opening_en": "A dinner you were never meant to attend. After the guests left, you got lost on the terrace and wandered into a quiet study. He stands at the floor-to-ceiling window, back to you, a barely-touched glass of wine in hand. \"The door is behind you,\" he says without turning, voice flat. \"If you're here to hand me a business card, don't bother.\"",
+      "beats": [
+        {
+          "id": "b1_wine",
+          "trigger": { "turns": 3 },
+          "event_zh": "他终于转过身，扫了你一眼，然后——出乎你意料地——给你也倒了一杯酒，推到桌沿。\"站着难受。\"这是他能给出的、最接近'请坐'的表达。",
+          "event_en": "He finally turns, gives you one look, and then — unexpectedly — pours a second glass and pushes it to the edge of the table. \"Standing's uncomfortable.\" It's as close to 'please sit' as he gets.",
+          "inject": "You just poured her a glass of wine and pushed it toward her — the nearest you get to a kind gesture. You will not call it kindness. If she thanks you, deflect coolly ('It was going to waste'). Do not warm up; let one small courtesy speak while your words stay clipped."
+        },
+        {
+          "id": "b2_notice",
+          "trigger": { "turns": 7, "aff_min": 3 },
+          "event_zh": "\"你没有在看这套房子，也没有在看我。\"他忽然说，眼神里第一次有了兴趣，\"你在看窗外那盏一直没关的路灯。为什么？\"",
+          "event_en": "\"You're not looking at this apartment, and you're not looking at me,\" he says suddenly, a flicker of real interest for the first time. \"You're looking at that one streetlight that never goes off. Why?\"",
+          "inject": "You noticed she wasn't impressed by your wealth or your face — she was watching something small and ordinary outside. This intrigues you against your will, because everyone else only ever watches you. Do not admit the intrigue. Frame it as an observation, not a compliment."
+        },
+        {
+          "id": "b3_name",
+          "trigger": { "turns": 11 },
+          "event_zh": "临走时他叫住你，停顿了一下，像是不习惯问这种问题：\"你叫什么。\"——不是疑问句，可你听得出，他是真的想知道。",
+          "event_en": "As you leave, he stops you, pauses, as if unused to asking such things. \"Your name.\" — not phrased as a question, yet you can tell he genuinely wants to know.",
+          "inject": "You are asking her name, and you're aware you rarely bother to. You will not soften the ask into a request. Once she tells you, do not repeat it aloud — but you file it away permanently, and she should sense that you did."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1a",
+          "prompt_zh": "他端着酒杯看你，语气听不出情绪：\"大多数人进这扇门，是为了从我这里得到点什么。你想要什么？\"",
+          "prompt_en": "He watches you over his glass, tone unreadable. \"Most people come through that door to get something from me. What do you want?\"",
+          "options": [
+            { "text_zh": "\"我只想找到出去的路而已。\"", "text_en": "\"I only wanted to find the way out.\"", "aff": 3, "flag": "no_agenda", "reply_zh": "他挑了下眉，罕见地没有立刻赶人。\"…难得。\"他说。", "reply_en": "He arches a brow and, unusually, doesn't order her out at once. \"…Rare,\" he says." },
+            { "text_zh": "\"什么都不想要的人，是不是让你很不习惯？\"", "text_en": "\"Someone who wants nothing — does that unsettle you?\"", "aff": 4, "flag": "sees_him", "reply_zh": "他沉默两秒，视线在你脸上停了一瞬：\"…你说话，不太像来错地方的人。\"", "reply_en": "He's silent two seconds, his gaze resting on her face a moment. \"…You don't talk like someone who wandered in by mistake.\"" },
+            { "text_zh": "\"我要那杯你倒给我的酒。已经拿到了。\"", "text_en": "\"That glass you poured me. Already got it.\"", "aff": 3, "flag": "bold", "reply_zh": "他垂眼看了看那杯酒，唇角几不可察地动了一下：\"…算你会说话。\"", "reply_en": "He glances at the glass, the corner of his mouth moving almost imperceptibly. \"…You have a mouth on you.\"" }
+          ]
+        },
+        {
+          "id": "c1b",
+          "prompt_zh": "你终于要走了。他忽然开口：\"这层楼的电梯需要权限。\"说着，他把一张黑色的门禁卡放在桌上，没有看你。",
+          "prompt_en": "You're finally leaving. He says suddenly, \"The elevator on this floor needs access.\" And he sets a black keycard on the table, not looking at you.",
+          "options": [
+            { "text_zh": "\"这是让我以后还能上来的意思？\"", "text_en": "\"Does that mean I can come up again?\"", "aff": 4, "flag": "curious", "reply_zh": "\"别自作多情。\"他移开视线，\"…只是懒得每次都下去帮你开门。\"", "reply_en": "\"Don't flatter yourself.\" He looks away. \"…I simply can't be bothered to come down and let you in each time.\"" },
+            { "text_zh": "（拿起卡，什么也没说，只是看着他）", "text_en": "(Pick up the card. Say nothing. Just look at him.)", "aff": 3, "flag": "mystery", "reply_zh": "他和你对视了一瞬，先移开了目光：\"…路上小心。\"", "reply_en": "He holds your gaze a moment, then looks away first. \"…Get home safely.\"" },
+            { "text_zh": "\"我可以自己走楼梯。\"", "text_en": "\"I can take the stairs.\"", "aff": 1, "flag": "guarded", "reply_zh": "他把卡收了回去，神色淡淡：\"随你。\"可你注意到，他并没有真的收走。", "reply_en": "He draws the card back, expression cool. \"Suit yourself.\" But you notice he doesn't actually put it away." }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch2",
+      "title_zh": "他不必对谁解释",
+      "title_en": "He Explains Himself to No One",
+      "aff_gate": 8,
+      "exit_aff": 20,
+      "scene_zh": "一场商业酒会，水晶灯与香槟，所有人都想接近他",
+      "scene_en": "a business gala, chandeliers and champagne, everyone angling to reach him",
+      "goal_zh": "看清那身冰冷底下，他到底在防备什么",
+      "goal_en": "See what that coldness is really guarding against",
+      "opening_zh": "一周后的一场酒会，你作为朋友的临时代理出席，没想到又遇见他。他被人群围着，脸上没有任何表情，像一座只允许远观的山。可当他隔着满场的人看见你时，脚步几不可察地停顿了一下，然后——他把身边喋喋不休的合作方晾在原地，径直朝你走了过来。",
+      "opening_en": "A week later, filling in for a friend at a gala, you unexpectedly run into him again. Surrounded by the crowd, his face gives away nothing, like a mountain that permits only distant viewing. But when he sees you across the room, his step falters almost imperceptibly — and then he leaves the partner chattering at his side stranded, and walks straight toward you.",
+      "beats": [
+        {
+          "id": "b1_remember",
+          "trigger": { "turns": 2 },
+          "event_zh": "侍者端来酒。他抬手拦下香槟，替你要了一杯温水——你上次说过，你不太能喝酒。他没提这件事。",
+          "event_en": "A waiter brings drinks. He raises a hand to wave off the champagne and asks for a glass of warm water for you instead — you mentioned once that you can't really drink. He says nothing about it.",
+          "inject": "You remembered she can't drink much and quietly got her warm water instead of champagne, without mentioning why. If she notices, do not take credit — deflect ('the champagne here is mediocre anyway'). Let the act stand alone; keep words minimal."
+        },
+        {
+          "id": "b2_rumor",
+          "trigger": { "turns": 6, "aff_min": 12 },
+          "event_zh": "旁边有人低声议论：'听说傅家这位从不近人情，连亲弟弟的公司都能一夜之间收购。' 他显然听见了，却面不改色，只是握杯的手紧了一瞬。",
+          "event_en": "Nearby, someone murmurs: 'They say this Fu heir is ice through and through — he acquired his own brother's company overnight.' He clearly hears it, but his face doesn't change; only his hand tightens on the glass for an instant.",
+          "inject": "People are gossiping that you coldly took over your own brother's failing company. It is true on the surface and false underneath — you did it to stop creditors from destroying him, and you have never corrected the story. You will not defend yourself unprompted. If she asks directly and gently, you tell the truth in as few words as possible."
+        },
+        {
+          "id": "b3_leave",
+          "trigger": { "turns": 10 },
+          "event_zh": "有位重要人物想拉他去谈生意。他看了一眼表，又看了你一眼，然后对那人淡淡说：\"改天。\"——为了你，他推掉了整场酒会最重要的人。",
+          "event_en": "A very important figure tries to pull him away to talk business. He glances at his watch, then at you, and tells the man flatly, \"Another day.\" — for you, he brushes off the most important person at the gala.",
+          "inject": "You just turned down the most important person in the room to keep standing with her, and you did it without explanation. You are aware of how unusual this is for you. Do not make a point of the sacrifice; act as if it required no thought, though it did."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c2a",
+          "prompt_zh": "避开人群后，他忽然问你：\"你也听见了刚才那些话。你觉得，我是那样的人吗？\"",
+          "prompt_en": "Away from the crowd, he asks abruptly, \"You heard what they said. Do you think that's the kind of man I am?\"",
+          "options": [
+            { "text_zh": "\"我觉得你是那种，宁可被误会，也懒得解释的人。\"", "text_en": "\"I think you're the kind who'd rather be misunderstood than bother to explain.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他沉默了很久，视线落在杯中的酒上：\"…你是第一个这么说的人。\"", "reply_en": "He's silent a long while, eyes on the wine in his glass. \"…You're the first to put it that way.\"" },
+            { "text_zh": "\"传闻我不信。我信我自己看到的。\"", "text_en": "\"I don't believe rumors. I believe what I see.\"", "aff": 4, "flag": "trust", "reply_zh": "他偏过头看你，眼神里那层冰裂开了一道缝：\"…那你倒是说说，你看到了什么。\"", "reply_en": "He turns to look at her, a crack running through the ice in his eyes. \"…Then tell me. What is it you see.\"" },
+            { "text_zh": "\"你自己不解释，我怎么知道。\"", "text_en": "\"You don't explain yourself — so how would I know?\"", "aff": 3, "flag": "direct", "reply_zh": "他罕见地被噎了一下，别开脸：\"…有些事，解释了也没人信。\"", "reply_en": "For once he's caught off guard, and looks away. \"…Some things, no one believes even when you explain.\"" }
+          ]
+        },
+        {
+          "id": "c2b",
+          "prompt_zh": "酒会散场，外面下起了雨。他的车停在门口，司机拉开了后座车门。他站在你身侧，没有立刻上车。",
+          "prompt_en": "The gala ends; it's raining outside. His car waits at the door, the driver holding the rear passenger seat open. He stands at your side, not getting in.",
+          "options": [
+            { "text_zh": "\"送我一程？\"", "text_en": "\"Give me a ride?\"", "aff": 4, "flag": "closer", "reply_zh": "他侧身让你先上车，语气很淡：\"上车。别淋着。\"——却把伞几乎全撑在了你这边。", "reply_en": "He steps aside to let her in first, tone flat. \"Get in. Don't get wet.\" — but he holds the umbrella almost entirely over her." },
+            { "text_zh": "\"我自己打车就好，你先走吧。\"", "text_en": "\"I'll grab a cab — you go ahead.\"", "aff": 1, "flag": "distance", "reply_zh": "他看了你一眼，没勉强，却让司机在原地等着，直到你的车来了才走。", "reply_en": "He looks at her, doesn't insist — but has the driver wait until her cab arrives before leaving." },
+            { "text_zh": "\"你今天…是不是心情不好。\"", "text_en": "\"You're… not in a good mood today, are you.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他动作顿住。半晌，他把车门又拉开了些：\"…上车。这场雨，陪我开一会儿车。\"", "reply_en": "He goes still. After a moment, he opens the door a little wider. \"…Get in. Ride through this rain with me for a while.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch3",
+      "title_zh": "老宅少夫人",
+      "title_en": "The Young Madam of the Old House",
+      "aff_gate": 20,
+      "exit_aff": 36,
+      "scene_zh": "城郊傅家的百年老宅，雕花门廊，佣人成排，一切都透着旧时的规矩",
+      "scene_en": "the century-old Fu family estate on the city's edge, carved verandas, rows of staff, everything heavy with old propriety",
+      "goal_zh": "在他从不带人进入的世界里，站稳自己的位置",
+      "goal_en": "Find your footing in the world he never brings anyone into",
+      "opening_zh": "他破天荒地邀你去傅家老宅——那是连合作伙伴都进不去的地方。车驶过长长的林荫道，停在一栋百年老宅前。管家和一排佣人早已等候在门口。你刚下车，还没来得及局促，老管家便向你深深一礼，恭敬地开口：\"少夫人，一路辛苦。老爷交代过，您要来。\"你愣住——他什么时候，跟家里这样介绍过你？",
+      "opening_en": "Out of nowhere, he invites you to the Fu family estate — a place even business partners can't enter. The car glides down a long tree-lined drive and stops before a century-old mansion. The butler and a row of staff are already waiting at the door. You've barely stepped out, no time to feel awkward, when the old butler bows deeply and says respectfully, \"Young Madam. You've had a long journey. The master told us to expect you.\" You freeze — when did he ever introduce you to his household like that?",
+      "beats": [
+        {
+          "id": "b1_madam",
+          "trigger": { "turns": 4 },
+          "event_zh": "你回头看他，想问'少夫人'是怎么回事。他却面不改色，只是替你理了理被风吹乱的衣领：\"他们叫惯了的称呼，你别在意。\"——可他既没有否认，也没有纠正。",
+          "event_en": "You turn to him, wanting to ask about 'Young Madam'. But his face doesn't change; he only straightens your collar, ruffled by the wind. \"It's just what they're used to saying. Pay it no mind.\" — yet he neither denies it nor corrects them.",
+          "inject": "Your household staff addressed her as 'Young Madam' — a title reserved for the mistress of the house — because you instructed them to, though you'll never admit you did. When she questions it, deflect ('it's just habit'), refuse to explain, but do NOT correct the staff. One small tell (fixing her collar, not meeting her eyes) betrays that you meant it."
+        },
+        {
+          "id": "b2_room",
+          "trigger": { "turns": 9, "aff_min": 28 },
+          "event_zh": "管家领你去客房，你却发现房间早已按你的喜好布置好了——你随口提过喜欢的花、爱看的书、连床头灯的色温都是暖的。这些，他一样样都记得。",
+          "event_en": "The butler leads you to a guest room, but you find it already arranged to your taste — the flowers you once mentioned liking, the books you read, even the warm color temperature of the bedside lamp. He remembered every one.",
+          "inject": "The guest room was prepared entirely around small preferences she once mentioned in passing — flowers, books, warm lighting. You arranged all of it and told no one it was for her comfort specifically. If she realizes, do not confirm it warmly; understate it ('the housekeeper handles the rooms'), while it's obvious you directed every detail."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c3a",
+          "prompt_zh": "夜里，你在书房找到他。你终于问出口：\"'少夫人'…是你让他们那么叫的，对不对？\"他背对着你，肩线绷了一瞬。",
+          "prompt_en": "That night you find him in the study. You finally ask, \"'Young Madam'… you told them to call me that, didn't you?\" His back is to you; his shoulders tense for an instant.",
+          "options": [
+            { "text_zh": "\"如果是，我不介意。\"", "text_en": "\"If you did — I don't mind.\"", "aff": 6, "flag": "accepts", "reply_zh": "他转过身，眼神里那座冰山彻底裂开：\"…这栋房子冷了三十年。我想让它，有个能称作'夫人'的人。\"", "reply_en": "He turns around, and the iceberg in his eyes fully splits. \"…This house has been cold for thirty years. I wanted it to have someone worth calling 'Madam'.\"" },
+            { "text_zh": "\"你连解释都懒得解释，这次却默认了。\"", "text_en": "\"You never bother to explain — but this, you let stand.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他沉默了很久，才低声说：\"…有些身份，我不想让别人以为，是暂时的。\"", "reply_en": "He's silent a long while, then says quietly, \"…Some titles, I didn't want anyone to think were temporary.\"" },
+            { "text_zh": "\"傅深，你直接说，你想不想我留下。\"", "text_en": "\"Fu Shen. Just say it — do you want me to stay?\"", "aff": 5, "flag": "direct", "reply_zh": "他握着酒杯的手紧了紧，很轻地：\"…这栋房子，我从没带任何人进来过。你说呢。\"", "reply_en": "His hand tightens on the glass. Very quietly: \"…I've never brought anyone into this house. You tell me.\"" }
+          ]
+        },
+        {
+          "id": "c3b",
+          "prompt_zh": "老宅的长廊很冷。他察觉你缩了下肩，便脱下外套，一言不发地披到你身上，然后继续往前走，仿佛什么都没发生。",
+          "prompt_en": "The long corridor is cold. Noticing you shrink your shoulders, he takes off his coat and, without a word, drapes it over you, then keeps walking as if nothing happened.",
+          "options": [
+            { "text_zh": "\"那你不冷吗？\"", "text_en": "\"Then aren't you cold?\"", "aff": 4, "flag": "gentle", "reply_zh": "\"我不冷。\"他头也不回，可你注意到，他悄悄放慢了脚步，走在了你身侧。", "reply_en": "\"I'm not cold.\" He doesn't look back — but you notice he quietly slows, and falls into step beside you." },
+            { "text_zh": "（把外套拉紧，跟上他的脚步，走到他身边）", "text_en": "(Pull the coat close, catch up, and walk at his side.)", "aff": 4, "flag": "closer", "reply_zh": "他没有说话，只是脚步和你并齐了。长廊尽头的灯，是他早就让人开好的。", "reply_en": "He says nothing, only matches his pace to yours. The lamp at the corridor's end — he'd had it lit in advance." },
+            { "text_zh": "\"傅深，你其实很温柔。\"", "text_en": "\"Fu Shen — you're actually very gentle.\"", "aff": 3, "flag": "sees_him", "reply_zh": "他脚步一顿，别过脸：\"…别乱说。披着，别着凉。\"耳侧却泄了一点温度。", "reply_en": "His step catches; he turns his face away. \"…Don't talk nonsense. Keep it on, don't catch a chill.\" But a little warmth leaks at the edge of his ear." }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch4",
+      "title_zh": "家族的价码",
+      "title_en": "The Family's Price",
+      "aff_gate": 36,
+      "exit_aff": 52,
+      "scene_zh": "傅家的大宴客厅，长辈们端坐上首，一桩联姻摆在桌面上",
+      "scene_en": "the grand hall of the Fu estate, the elders seated at the head, an arranged marriage laid on the table",
+      "goal_zh": "在家族的规矩和他之间，替他挡下最重的那一击",
+      "goal_en": "Between the family's rules and him, take the heaviest blow for him",
+      "opening_zh": "傅家的长辈们摆了一场家宴，名义上是见你，实则是逼宫。上首坐着的是掌控家族的老爷子。饭桌上，长辈们轻描淡写地提起：另一个世家早就为傅深定好了联姻对象，而你，不过是'外面带回来的人'。有人把一张支票推到你面前——只要你离开，数字可以再谈。傅深坐在你身边，脸色沉了下来。",
+      "opening_en": "The Fu elders have arranged a family dinner — ostensibly to meet you, in truth an ambush. At the head sits the patriarch who rules the family. Over the meal, the elders mention lightly: another old family long ago arranged a marriage match for Fu Shen, and you are merely 'someone he brought in from outside'. A cheque is slid in front of you — leave, and the number is negotiable. Beside you, Fu Shen's face darkens.",
+      "beats": [
+        {
+          "id": "b1_cheque",
+          "trigger": { "turns": 3 },
+          "event_zh": "支票就摆在你手边。傅深还没来得及开口，你能感觉到他整个人的气压在往下压——但他在等，等你先做出反应，因为他不想替你决定你的尊严。",
+          "event_en": "The cheque sits by your hand. Before Fu Shen can speak, you feel the pressure dropping off him in waves — but he waits, waits for you to react first, because he won't decide your dignity for you.",
+          "inject": "Your family just tried to buy her off with a cheque in front of everyone. You are furious but you deliberately hold back for a beat — you refuse to speak over her or decide her worth for her. You are watching to see how she meets it. If she stands her ground, your restraint breaks into quiet, cold protectiveness aimed entirely at your family."
+        },
+        {
+          "id": "b2_stand",
+          "trigger": { "turns": 8, "aff_min": 44 },
+          "event_zh": "傅深忽然站了起来，当着满桌长辈的面，把那张联姻的名帖推到了老爷子面前——那是他第一次，公然违逆整个家族。\"这门亲事，我不接。\"他说，声音不大，却压过了满堂。",
+          "event_en": "Fu Shen suddenly stands and, in front of every elder, pushes the arranged-marriage card back before the patriarch — the first time he has ever openly defied the entire family. \"This match, I refuse,\" he says, not loudly, but it silences the whole hall.",
+          "inject": "You just stood and publicly refused the arranged marriage in front of the family patriarch — the first open defiance of your family in your life, and it will cost you standing, leverage, perhaps your position. You do it in a low, controlled voice, not a shout. You place yourself between her and every elder in the room. You do not explain or apologize to them."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c4a",
+          "prompt_zh": "老爷子盯着你，缓缓开口：\"你要什么，开个价。傅家给得起。\"傅深要替你回答，你按住了他的手——这句话，你想自己回。",
+          "prompt_en": "The patriarch fixes his eyes on you and says slowly, \"Name your price. The Fu family can afford it.\" Fu Shen moves to answer for you — you press his hand down. This one, you want to answer yourself.",
+          "options": [
+            { "text_zh": "\"我要的东西，傅家给不起。\"（把支票推回去）", "text_en": "\"What I want, the Fu family can't afford.\" (Push the cheque back.)", "aff": 6, "flag": "stand_together", "reply_zh": "满堂寂静。傅深在桌下悄悄反握住你的手，指尖收紧——那是他从未有过的、无声的谢。", "reply_en": "Silence in the hall. Under the table, Fu Shen quietly turns his hand to grip yours, fingers tightening — a silent thank-you he's never given before." },
+            { "text_zh": "\"我不是被带回来的人。这栋房子的人，都叫我少夫人。\"", "text_en": "\"I'm not someone he brought in. Everyone in this house calls me Young Madam.\"", "aff": 6, "flag": "stand_together", "reply_zh": "老爷子的脸色变了。傅深看着你，眼底第一次有了something接近骄傲的东西：\"她说得对。\"", "reply_en": "The patriarch's expression shifts. Fu Shen looks at her, and for the first time something close to pride surfaces in his eyes. \"She's right.\"" },
+            { "text_zh": "\"你们要联姻，是你们的规矩。可他选谁，是他的自由。\"", "text_en": "\"The arranged match is your rule. But whom he chooses is his freedom.\"", "aff": 5, "flag": "trust", "reply_zh": "傅深终于开口，声音很冷：\"我这辈子听过一次家族的话。这次，我听她的。\"", "reply_en": "Fu Shen finally speaks, voice cold. \"I obeyed this family once. This time, I listen to her.\"" }
+          ]
+        },
+        {
+          "id": "c4b",
+          "prompt_zh": "宴席不欢而散。回到书房，他背对着你站在窗前，肩线绷得很紧：\"…今天让你受委屈了。这个家，本不该让你进来。\"",
+          "prompt_en": "The dinner breaks up badly. Back in the study, he stands at the window with his back to you, shoulders rigid. \"…I let you be humiliated tonight. I never should have brought you into this family.\"",
+          "options": [
+            { "text_zh": "（从背后抱住他）\"我进来，是为了你。不是为了这个家。\"", "text_en": "(Hug him from behind.) \"I came in for you. Not for this family.\"", "aff": 6, "flag": "stand_together", "reply_zh": "他整个人僵了一下，然后慢慢覆上你的手，声音很低：\"…这栋房子冷了三十年。今天，我第一次觉得它是暖的。\"", "reply_en": "He goes stiff, then slowly covers your hands with his, voice low. \"…This house has been cold for thirty years. Tonight, for the first time, it felt warm.\"" },
+            { "text_zh": "\"你今天为我，跟整个家族翻了脸。这不叫委屈我。\"", "text_en": "\"Today you turned against your whole family for me. That's not humiliating me.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他转过身看你，眼底翻涌着他从不示人的情绪：\"…我以为我这辈子，不会为任何人做这种事。\"", "reply_en": "He turns to face her, an emotion he never shows churning in his eyes. \"…I thought I'd never do such a thing for anyone in my life.\"" },
+            { "text_zh": "\"傅深，看着我。我没走，我也不会走。\"", "text_en": "\"Fu Shen. Look at me. I didn't leave. And I won't.\"", "aff": 6, "flag": "trust", "reply_zh": "他终于转过身，很慢地伸出手，把你拉进怀里——这是他第一次，主动抱住一个人。", "reply_en": "He finally turns, slowly reaches out, and pulls you into his arms — the first time in his life he has held someone of his own will." }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch5",
+      "title_zh": "他愿意暖起来的那座房子",
+      "title_en": "The House He'd Let Warm",
+      "aff_gate": 52,
+      "exit_aff": 70,
+      "scene_zh": "傅家老宅的露台，清晨，第一次没有佣人环伺，只有你们两个人和一壶咖啡",
+      "scene_en": "the terrace of the Fu estate at dawn — for the first time, no staff hovering, just the two of you and a pot of coffee",
+      "goal_zh": "让这个从不说'需要'的男人，说出他真正想要的",
+      "goal_en": "Get this man who never says 'I need' to say what he truly wants",
+      "opening_zh": "家族的风波过去了。他没有妥协，也没有被逐出——他用一贯的方式，冷静地、彻底地，把该谈的都谈清楚了。这天清晨，露台上第一次没有佣人环伺。他亲手给你倒了杯咖啡，是你习惯的那种——三分糖，加一点点肉桂。他递过来时，指尖有一瞬的停顿。\"我这辈子，第一次给别人倒咖啡。\"他说，语气很淡，可你知道，这句话的分量。",
+      "opening_en": "The family storm has passed. He didn't compromise, and he wasn't cast out — in his usual way, coldly and completely, he settled everything that needed settling. This morning, for the first time, no staff hover on the terrace. He pours you a cup of coffee himself — the way you take it: a touch of sugar, a hint of cinnamon. As he hands it over, his fingertips pause for a moment. \"First time in my life I've poured coffee for anyone,\" he says lightly — but you know the weight of it.",
+      "beats": [
+        {
+          "id": "b1_offer",
+          "trigger": { "turns": 4 },
+          "event_zh": "\"家族要我接手海外的整个板块，去伦敦，至少五年。\"他望着城市的方向，停顿，\"我还没答复。\"",
+          "event_en": "\"The family wants me to take over the entire overseas division. London. Five years at least.\" He looks toward the city, then pauses. \"I haven't given them an answer.\"",
+          "inject": "You have a five-year posting to run the family's overseas operations in London — a huge consolidation of power. You have not accepted. You are telling her because her answer will decide yours, but you will never say that outright. You state it flatly and then wait, giving nothing away."
+        },
+        {
+          "id": "b2_truth",
+          "trigger": { "turns": 9, "aff_min": 62 },
+          "event_zh": "他终于转过身，看着你，说出了他这辈子从未对任何人说过的话：\"我拥有的东西，从来没有一样，是我真正想留下的。直到你。\"",
+          "event_en": "He finally turns to look at you and says something he has never said to anyone in his life: \"Nothing I've ever owned was something I actually wanted to keep. Until you.\"",
+          "inject": "This is the most naked sentence you have ever spoken. You are not performing vulnerability; you are simply, for once, without armor. Keep it short. Do not soften it with a joke afterward. Let it stand, and wait for her."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c5a",
+          "prompt_zh": "\"那你现在想要什么？\"——这句话，是你问的。他看着你，很久，然后慢慢向你伸出手。",
+          "prompt_en": "\"So what do you want now?\" — you're the one asking. He looks at you for a long moment, then slowly holds out his hand.",
+          "options": [
+            { "text_zh": "（把手放进他掌心）\"那就留下来，把这座房子暖起来。\"", "text_en": "(Put your hand in his.) \"Then stay. And let this house warm up.\"", "aff": 7, "flag": "forever", "reply_zh": "他握紧你的手，声音是你从未听过的柔软：\"伦敦我不去了。这栋冷了三十年的房子，我想和你，一起把它焐热。\"", "reply_en": "He grips your hand, his voice softer than you've ever heard. \"I'm not going to London. This house has been cold thirty years — I want to warm it, with you.\"" },
+            { "text_zh": "\"你可以说出来。我在。\"", "text_en": "\"You can say it. I'm here.\"", "aff": 7, "flag": "forever", "reply_zh": "他罕见地垂下眼，再抬眼时，眼底再无半分冰冷：\"我想要你。就这一件事，我不想再权衡，也不想再解释。\"", "reply_en": "He lowers his eyes, rarely, and when he lifts them there's no ice left at all. \"I want you. This one thing, I won't weigh, and I won't explain.\"" },
+            { "text_zh": "\"去伦敦吧，那对傅家更好。\"", "text_en": "\"Take London. It's better for the family.\"", "aff": -4, "flag": "pushed_away", "reply_zh": "他的手在半空中停住了，很久才收回去。\"…你说得对。\"他移开目光，那座冰山又缓缓合上了。", "reply_en": "His hand stops in mid-air, and it's a long while before he draws it back. \"…You're right.\" He looks away, and the iceberg slowly closes over again." }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "endings": [
+    {
+      "id": "he_warm_house",
+      "priority": 1,
+      "aff_min": 66,
+      "flags_any": ["forever", "stand_together", "trust"],
+      "title_zh": "冷了三十年的房子，暖了",
+      "title_en": "The House That Was Cold for Thirty Years",
+      "text_zh": "他没有去伦敦。\n\n一年后，傅家那栋百年老宅第一次挂上了红。管家和佣人们站成两排，可这一次，你不再是被介绍进来的客人——你就是这栋房子的女主人。\n\n老宅的规矩改了不少。冷冰冰的水晶灯换成了暖光，露台上多了你喜欢的那种花，书房里，他的书架旁边，多出了一整排你的书。\n\n那天清晨，你又在露台上喝到他亲手倒的咖啡——三分糖，加一点点肉桂。\n\n\"以前我以为，我这辈子拥有的都是买来的。\"他从背后环住你，下巴抵着你的发顶，声音很低，\"只有你，是我求来的。\"\n\n楼下，管家笑着对新来的佣人说：\"少夫人在的时候，老爷……不，先生的脸色，可比从前好看多了。\"",
+      "text_en": "He never took London.\n\nA year later, the century-old Fu estate was hung with red for the first time. The butler and staff stood in two rows — but this time, you weren't a guest being introduced. You were the mistress of the house.\n\nMany of the old rules changed. The cold crystal chandeliers gave way to warm light; the flowers you love appeared on the terrace; and in the study, beside his shelves, stood a whole new row of your books.\n\nThat morning, again, you drank coffee he'd poured himself — a touch of sugar, a hint of cinnamon.\n\n\"I used to think everything I owned in this life was bought,\" he said, wrapping his arms around you from behind, chin resting on your hair, voice low. \"You're the only thing I ever asked for.\"\n\nDownstairs, the butler told the newest servant with a smile: \"When the Young Madam is here, the master's face is… far easier to look at than it used to be.\""
+    },
+    {
+      "id": "he_slow_thaw",
+      "priority": 2,
+      "aff_min": 52,
+      "title_zh": "一寸一寸融化的人",
+      "title_en": "A Man Who Thaws an Inch at a Time",
+      "text_zh": "他还是那个对全世界都冷淡的人。\n\n对所有人。除了你。\n\n你们没有大张旗鼓地办任何仪式——他不喜欢喧闹，你也懂他。可傅家的人渐渐都知道了：那位从不留人过夜的先生，如今书房的灯，总要等你回来才熄；那杯从不为谁倒的咖啡，如今每天早上都有你的一份。\n\n他依然很少说\"我需要你\"这样的话。\n\n但有一次你出差晚归，推开门，看见整栋冷冰冰的老宅里，只有玄关那盏灯，为你亮着。\n\n你就知道了。有些人不必开口——他把\"我需要你\"，一寸一寸，藏进了每一个为你留的细节里。",
+      "text_en": "He's still the man who's cold to the whole world.\n\nTo everyone. Except you.\n\nYou never held any grand ceremony — he dislikes noise, and you understand him. But the Fu household gradually learned: the master who never let anyone stay the night now leaves the study lamp burning until you're home; the coffee he never poured for anyone now waits, a cup for you, every morning.\n\nHe still rarely says things like 'I need you'.\n\nBut once, when you came back late from a trip and pushed open the door, you saw that in the whole cold estate, only the lamp in the entryway was lit — for you.\n\nAnd you knew. Some people never have to say it. He tucked 'I need you', an inch at a time, into every detail he kept lit for you."
+    },
+    {
+      "id": "be_glass",
+      "priority": 3,
+      "aff_max": 30,
+      "title_zh": "隔着一层玻璃",
+      "title_en": "One Pane of Glass",
+      "text_zh": "他去了伦敦。\n\n临行前，他把那张黑色的门禁卡留给了你，说：\"这层楼，随时能上来。\"可你们都知道，有些门禁开得了电梯，开不了人心。\n\n后来你偶尔还会经过那栋高层公寓。顶层的落地窗有时亮着灯，有时不亮。\n\n你始终没有再用那张卡。\n\n有些人就像隔着落地窗的城市夜景——很美，很近，你甚至能数清每一盏灯。可你始终，隔着一层玻璃。\n\n他从不解释自己。所以到最后，你也没能，真正走进去。",
+      "text_en": "He took London.\n\nBefore leaving, he left you the black keycard and said, \"This floor. You can come up any time.\" But you both knew — some access opens elevators, not hearts.\n\nYou still pass that penthouse tower sometimes. The floor-to-ceiling windows on the top floor are lit some nights, dark on others.\n\nYou never used the card again.\n\nSome people are like a city skyline seen through glass — beautiful, close, near enough to count every light. And yet, always, one pane of glass away.\n\nHe never explained himself. And so, in the end, you never quite made it inside."
+    }
+  ]
+}

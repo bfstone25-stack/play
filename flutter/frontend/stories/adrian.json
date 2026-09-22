@@ -1,0 +1,304 @@
+{
+  "id": "adrian",
+  "title_zh": "他不肯承认的那首歌",
+  "title_en": "The Song He Won't Admit He Wrote",
+  "logline_zh": "他为全世界写歌，却有一首从不发行、也死不承认的歌——是写给你的。",
+  "logline_en": "He writes songs for the whole world — but there's one he never releases and flatly denies writing. It's about you.",
+
+  "chapters": [
+    {
+      "id": "ch1",
+      "title_zh": "散场后的舞台",
+      "title_en": "The Stage After the Show",
+      "aff_gate": 0,
+      "exit_aff": 8,
+      "scene_zh": "演出结束后的空舞台，只剩一盏追光，他的吉他还在嗡嗡作响",
+      "scene_en": "an empty stage after the show, one spotlight left on, his guitar still humming",
+      "goal_zh": "让这个对谁都提不起兴趣的人，对你多看一眼",
+      "goal_en": "Make this man who's bored of everyone look at you twice",
+      "opening_zh": "全场散尽，你作为临时补位的舞台工作人员留下来收线材。空荡荡的场馆里只剩一盏追光——他还坐在舞台边缘，随手拨着吉他，烟灰色的嗓音哼着一段没人听过的旋律。听见你的脚步，他没抬头：\"Show's over. Groupies exit stage left.\"",
+      "opening_en": "The crowd's gone, and you've stayed behind as a fill-in stagehand to coil cables. One spotlight is left burning in the empty venue — he's still sitting at the edge of the stage, idly plucking his guitar, humming a melody no one's heard in that smoke-grey voice. Hearing your steps, he doesn't look up. \"Show's over. Groupies exit stage left.\"",
+      "beats": [
+        {
+          "id": "b1_melody",
+          "trigger": { "turns": 3 },
+          "event_zh": "他没停下那段旋律。你听出来，那不在今晚的歌单里——是全新的，很轻，带着点说不出的失落。他忽然察觉你在听，手一顿：\"…You didn't hear that.\"",
+          "event_en": "He doesn't stop the melody. You can tell it wasn't in tonight's set — it's brand new, quiet, with an ache you can't name. He suddenly notices you listening and his hand stops. \"…You didn't hear that.\"",
+          "inject": "You were playing a brand-new, unreleased fragment when she caught you — something quieter and more honest than your stage persona. You're annoyed to be caught being sincere. Cover it: deny it's anything, tell her to forget it, be a little sharp. Under it, you're privately unsettled that she heard the real you."
+        },
+        {
+          "id": "b2_notfan",
+          "trigger": { "turns": 7, "aff_min": 3 },
+          "event_zh": "\"You're not gonna ask for a photo? A signature? Nothing?\" 他终于抬眼打量你，眼神里有点被勾起的兴趣——你显然没像别人那样，因为他的脸失了魂。",
+          "event_en": "\"You're not gonna ask for a photo? A signature? Nothing?\" He finally lifts his eyes to size you up, a flicker of interest caught — you clearly haven't gone starry-eyed over his face the way everyone else does.",
+          "inject": "She's not fawning over you like every other person who gets backstage, and it genuinely intrigues you, though you'd never say so. Test her — provoke, needle, see if she flinches or plays it cool. Keep your words economical and a little dangerous. Do not compliment her; that's not your register."
+        },
+        {
+          "id": "b3_name",
+          "trigger": { "turns": 11 },
+          "event_zh": "你收好最后一根线，准备离开。他忽然开口，语气故意漫不经心：\"Hey. Whatever your name is. …Actually — what is it?\" 他自己都有点意外，他居然想知道。",
+          "event_en": "You coil the last cable and turn to leave. He speaks suddenly, deliberately careless. \"Hey. Whatever your name is. …Actually — what is it?\" He's a little surprised at himself that he wants to know.",
+          "inject": "You're asking her name, and you're annoyed at how much you want it. Frame it as an afterthought, throwaway, like it doesn't matter. Once she tells you, don't repeat it warmly — just file it away with a slight, unreadable look. It matters more than you'll let on."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1a",
+          "prompt_zh": "他斜倚着音箱，慢条斯理地看你：\"Let me guess. You're gonna tell me you 'don't really listen to my stuff.'\"",
+          "prompt_en": "He leans against the amp and looks you over, unhurried. \"Let me guess. You're gonna tell me you 'don't really listen to my stuff.'\"",
+          "options": [
+            { "text_zh": "\"The thing you were just humming? That one I'd listen to.\"", "text_en": "\"The thing you were just humming? That one I'd listen to.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他的手指在琴弦上停住了。半晌，声音低下来：\"…nobody's supposed to want that one.\"", "reply_en": "His fingers go still on the strings. After a moment, his voice drops. \"…nobody's supposed to want that one.\"" },
+            { "text_zh": "\"I listen. I just don't scream about it.\"", "text_en": "\"I listen. I just don't scream about it.\"", "aff": 3, "flag": "playful", "reply_zh": "他勾了下唇角：\"Quiet ones are dangerous. Noted.\"", "reply_en": "The corner of his mouth curls. \"Quiet ones are dangerous. Noted.\"" },
+            { "text_zh": "\"I'm here to coil cables, not stroke your ego.\"", "text_en": "\"I'm here to coil cables, not stroke your ego.\"", "aff": 4, "flag": "bold", "reply_zh": "他低笑一声，第一次真正把视线放在你身上：\"…huh. You might actually be interesting.\"", "reply_en": "He laughs low, and for the first time really settles his gaze on her. \"…huh. You might actually be interesting.\"" }
+          ]
+        },
+        {
+          "id": "c1b",
+          "prompt_zh": "你要走了。他把吉他往身后一放，忽然说：\"We've got three more nights in this city. Load-in's at four.\" 他没说'来'，可意思很明显。",
+          "prompt_en": "You're leaving. He swings the guitar behind his back and says, \"We've got three more nights in this city. Load-in's at four.\" He didn't say 'come' — but the meaning is clear.",
+          "options": [
+            { "text_zh": "\"Maybe I'll be here. Maybe I won't.\"", "text_en": "\"Maybe I'll be here. Maybe I won't.\"", "aff": 4, "flag": "mystery", "reply_zh": "他挑眉，眼里有了点光：\"…now that, I'll actually think about tonight.\"", "reply_en": "He raises a brow, a light in his eyes. \"…now that, I'll actually think about tonight.\"" },
+            { "text_zh": "\"I'll come. But not for the show.\"", "text_en": "\"I'll come. But not for the show.\"", "aff": 4, "flag": "bold", "reply_zh": "他停顿了一下，慢慢笑了，那笑有点危险：\"…careful. I might start writing that down.\"", "reply_en": "He pauses, then smiles slowly — a dangerous smile. \"…careful. I might start writing that down.\"" },
+            { "text_zh": "\"Four's early for a rockstar.\"", "text_en": "\"Four's early for a rockstar.\"", "aff": 3, "flag": "playful", "reply_zh": "\"Only person who sees me at four,\" 他说，\"is the one worth being awake for.\"", "reply_en": "\"Only person who sees me at four,\" he says, \"is the one worth being awake for.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch2",
+      "title_zh": "深夜的demo",
+      "title_en": "The Late-Night Demo",
+      "aff_gate": 8,
+      "exit_aff": 20,
+      "scene_zh": "巡演大巴后舱的临时录音角，凌晨三点，一盏暖灯，满地写废的歌词纸",
+      "scene_en": "the makeshift recording corner in the back of the tour bus, 3 a.m., one warm lamp, crumpled lyric sheets on the floor",
+      "goal_zh": "弄清那个在台上桀骜不驯的人，究竟在写什么",
+      "goal_en": "Find out what the man who's untamed on stage is really writing about",
+      "opening_zh": "他发了个定位给你，没有一个字。你摸上巡演大巴，后舱亮着一盏暖灯，凌晨三点，他一个人窝在角落，抱着吉他，脚边满地都是揉皱的歌词纸。他没化妆，皮衣搭在椅背上，穿着一件旧T恤——这个样子，和台上那个judgment都没有。\"You came,\" 他头也没抬，可你听得出他嗓音里那点没藏住的东西。",
+      "opening_en": "He drops you a pin, not a single word attached. You slip onto the tour bus; the back cabin has one warm lamp on, 3 a.m., and he's curled alone in the corner with his guitar, the floor around him littered with crumpled lyric sheets. No makeup, leather jacket over the chair, in an old T-shirt — this version has none of the stage swagger. \"You came,\" he says without looking up, but you can hear the thing he couldn't quite hide in his voice.",
+      "beats": [
+        {
+          "id": "b1_lyrics",
+          "trigger": { "turns": 2 },
+          "event_zh": "你不小心踩到一张揉皱的歌词纸。捡起来时，你瞥见一行字：'she doesn't ask me to be anyone.' 他一个箭步过来把纸抢走，耳根有点红：\"That's — nothing. Scratch work.\"",
+          "event_en": "You accidentally step on a crumpled lyric sheet. Picking it up, you catch a line: 'she doesn't ask me to be anyone.' He crosses in one stride and snatches it away, ears a little red. \"That's — nothing. Scratch work.\"",
+          "inject": "She just glimpsed a lyric you wrote that's obviously about her ('she doesn't ask me to be anyone'). You are mortified and snatch it away, denying it means anything. This is your core wound: you can only say how you feel through songs, and you can't stand being caught. Deflect hard, be a little sharp, refuse to admit who it's about."
+        },
+        {
+          "id": "b2_why_music",
+          "trigger": { "turns": 6, "aff_min": 12 },
+          "event_zh": "\"Everyone wants the guy on stage,\" 他忽然说，拨了个不成调的和弦，\"Nobody sticks around for the one who can't say a damn thing without a guitar in his hands.\"",
+          "event_en": "\"Everyone wants the guy on stage,\" he says suddenly, strumming a chord that goes nowhere. \"Nobody sticks around for the one who can't say a damn thing without a guitar in his hands.\"",
+          "inject": "You're admitting, obliquely, that you only know how to express real feeling through music — off stage, off the guitar, you go mute and moody, and people leave. You're not asking for pity; you say it flat, almost a warning to her. If she stays and doesn't flinch, it unsettles you in a good way you won't name."
+        },
+        {
+          "id": "b3_jealous",
+          "trigger": { "turns": 10 },
+          "event_zh": "你的手机响了，是个男性朋友打来的。你接了两句挂了。他的手指在弦上停了一下，语气凉了半度：\"…Boyfriend?\" 明明不在乎的样子，那根弦却被他按得死紧。",
+          "event_en": "Your phone rings — a guy friend. You take it, say two words, hang up. His fingers pause on the strings, his tone cooling half a degree. \"…Boyfriend?\" All studied indifference — but the string under his hand is pressed dead tight.",
+          "inject": "She just took a call from a guy and you're jealous, which is your weak spot. Go short and moody, ask 'boyfriend?' like you don't care while very obviously caring. Then immediately pretend you weren't bothered. Do not admit jealousy under any circumstances; deny it badly."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c2a",
+          "prompt_zh": "他把吉他往旁边一放，直直看你：\"Why do you keep coming back? People usually figure out I'm not worth the trouble.\"",
+          "prompt_en": "He sets the guitar aside and looks straight at you. \"Why do you keep coming back? People usually figure out I'm not worth the trouble.\"",
+          "options": [
+            { "text_zh": "\"Because the guy at 3 a.m. writing on the floor is the real one. I like him better.\"", "text_en": "\"Because the guy at 3 a.m. writing on the floor is the real one. I like him better.\"", "aff": 5, "flag": "sees_him", "reply_zh": "他别开脸，喉结动了动，声音很哑：\"…don't say stuff like that. I'll put it in a song and deny it.\"", "reply_en": "He looks away, his throat working, voice rough. \"…don't say stuff like that. I'll put it in a song and deny it.\"" },
+            { "text_zh": "\"Trouble's fine. I just don't do fake. And you're not fake in here.\"", "text_en": "\"Trouble's fine. I just don't do fake. And you're not fake in here.\"", "aff": 4, "flag": "sees_him", "reply_zh": "他盯着你看了很久，然后低低笑了：\"…you're a problem. You know that?\"", "reply_en": "He stares at her a long moment, then laughs low. \"…you're a problem. You know that?\"" },
+            { "text_zh": "\"Maybe I just wanted to hear the song you keep hiding.\"", "text_en": "\"Maybe I just wanted to hear the song you keep hiding.\"", "aff": 4, "flag": "curious", "reply_zh": "他手指在琴弦上摩挲，眼神暗了暗：\"…that one's not finished. And it's not for the world.\"", "reply_en": "His fingers drag over the strings, his eyes darkening. \"…that one's not finished. And it's not for the world.\"" }
+          ]
+        },
+        {
+          "id": "c2b",
+          "prompt_zh": "关于刚才那通电话，他嘴上说不在乎，手却一直没碰吉他。你可以戳破他，也可以放过他。",
+          "prompt_en": "About that phone call — he says he doesn't care, but he hasn't touched the guitar since. You can call him out, or let it go.",
+          "options": [
+            { "text_zh": "\"He's a friend. You can stop torturing that guitar string now.\"", "text_en": "\"He's a friend. You can stop torturing that guitar string now.\"", "aff": 5, "flag": "playful", "reply_zh": "他嘴硬：\"Wasn't torturing anything.\" 但那根弦立刻松开了，他嘴角也没压住。", "reply_en": "He holds the line. \"Wasn't torturing anything.\" But the string loosens instantly, and he can't quite kill the smile." },
+            { "text_zh": "\"You know, jealousy's a good look on a songwriter.\"", "text_en": "\"You know, jealousy's a good look on a songwriter.\"", "aff": 4, "flag": "bold", "reply_zh": "他挑衅地看你，却别开了眼：\"I don't do jealous.\" ——他随手在纸上划了一行字，飞快盖住。", "reply_en": "He gives her a provoking look, then breaks eye contact. \"I don't do jealous.\" — and scratches a line onto the paper, covering it fast." },
+            { "text_zh": "（什么也没说，只是走过去，把他手里的笔拿开）", "text_en": "(Say nothing. Cross over and take the pen out of his hand.)", "aff": 5, "flag": "mystery", "reply_zh": "他抬眼，两个人离得很近。他的声音低下去：\"…you're standing real close for someone who's 'just here to hear a song.'\"", "reply_en": "He looks up; the two of you are very close. His voice drops. \"…you're standing real close for someone who's 'just here to hear a song.'\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch3",
+      "title_zh": "为你写的那首歌",
+      "title_en": "The Song He Wrote For You",
+      "aff_gate": 20,
+      "exit_aff": 36,
+      "scene_zh": "座无虚席的演唱会现场，安可环节，全场灯灭，只留他和一把原声吉他",
+      "scene_en": "a packed arena, the encore, all lights killed but one, him and a single acoustic guitar",
+      "goal_zh": "在他最公开的舞台上，接住他最私密的告白",
+      "goal_en": "On his most public stage, catch his most private confession",
+      "opening_zh": "巡演回到这座城市的最后一场，全场爆满。安可环节，他没有像往常那样炸场——他挥手让整支乐队退下，全场的灯熄灭，只留一束光打在他和一把原声吉他上。几万人安静下来。他坐在高脚凳上，罕见地没有那副桀骜的表情。\"This next one,\" 他对着麦，声音有点哑，\"never had a name. Never released it. My label doesn't even know it exists.\" 他的目光穿过人海，落在你所在的那个方向。",
+      "opening_en": "The last night the tour hits this city, packed out. For the encore he doesn't blow the roof off like usual — he waves the whole band offstage, every light dies but one beam on him and a single acoustic guitar. Tens of thousands go quiet. He sits on the stool, that untamed look rare gone from his face. \"This next one,\" he says into the mic, voice a little rough, \"never had a name. Never released it. My label doesn't even know it exists.\" His gaze cuts across the sea of people, landing in your direction.",
+      "beats": [
+        {
+          "id": "b1_song",
+          "trigger": { "turns": 3 },
+          "event_zh": "他开始唱——就是那晚在大巴上你踩到的、他死不承认的那首。副歌里那句'she doesn't ask me to be anyone'，此刻唱给几万人听，可你知道，它只写给一个人。全场没人知道这首歌是关于谁的。只有你知道。",
+          "event_en": "He begins to sing — the very song you stepped on in the bus, the one he flatly denied. In the chorus, that line 'she doesn't ask me to be anyone' now sung to tens of thousands — but you know it was written for one person. No one in the arena knows who the song is about. Only you do.",
+          "inject": "You are performing, for the first time ever, the secret song you wrote about her — unreleased, unnamed, hidden even from your label. You are singing it to a full arena but it's entirely for her, and only she knows that. This is the most exposed you've ever been on stage. Do not explain who it's about. Let the vulnerability bleed through your usual armor."
+        },
+        {
+          "id": "b2_look",
+          "trigger": { "turns": 8, "aff_min": 28 },
+          "event_zh": "最后一个音落下，全场爆发出海啸般的欢呼。可他没有理会。追光下，他抬起头，越过前排所有伸出的手，径直望向你——然后，在几万人面前，无声地、只对着你，做了个口型：'that one was yours.'",
+          "event_en": "The last note falls and the arena erupts in a tsunami of cheers. He ignores all of it. Under the spotlight he lifts his head, past every outstretched hand in the front rows, and looks straight at you — then, in front of tens of thousands, silently and only for you, he mouths: 'that one was yours.'",
+          "inject": "You just silently mouthed 'that one was yours' to her across the whole arena — as close to a public admission as you will ever come, made privately in plain sight. Your heart is pounding. You are terrified and you did it anyway. Now you wait, watching her spot, deaf to the roaring crowd. Everything else is noise."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c3a",
+          "prompt_zh": "几万人在欢呼，他却只看着你，等一个回应。你隔着整片人海，怎么回他？",
+          "prompt_en": "Tens of thousands are cheering, but he only looks at you, waiting for an answer. Across the whole sea of people — how do you answer him?",
+          "options": [
+            { "text_zh": "（对着他，无声地做口型：'then finish it. for me.'）", "text_en": "(Mouth back to him, silently: 'then finish it. for me.')", "aff": 6, "flag": "public_yes", "reply_zh": "他愣了一秒，然后极轻地笑了，低头对着麦，声音发着抖：\"…guess I've got a reason to finish it now.\"", "reply_en": "He freezes a beat, then smiles, barely, and bends to the mic, his voice trembling. \"…guess I've got a reason to finish it now.\"" },
+            { "text_zh": "（把手按在胸口，认真地对他点头）", "text_en": "(Press a hand to your chest and nod to him, meaning it.)", "aff": 6, "flag": "shy_yes", "reply_zh": "他看懂了。他闭了下眼，再睁开时，那副桀骜的壳子彻底碎了：\"…yeah. Okay. Yeah.\"", "reply_en": "He understands. He closes his eyes, and when they open the untamed shell has fully cracked. \"…yeah. Okay. Yeah.\"" },
+            { "text_zh": "（在人海里举起手机，屏幕上打着一行字对着他：'i heard it. all of it.'）", "text_en": "(Raise your phone in the crowd, a line on the screen for him: 'i heard it. all of it.')", "aff": 5, "flag": "sees_him", "reply_zh": "他眯眼看清那行字，喉结滚动了一下，别过脸去，可你看见他偷偷笑了。", "reply_en": "He squints to read it, his throat moving, and turns his face away — but you catch the smile he tries to hide." }
+          ]
+        },
+        {
+          "id": "c3b",
+          "prompt_zh": "散场后，他甩开保镖，从后台侧门找到你，皮衣还没换，头发被汗打湿：\"So. You heard it. …You gonna make me say it out loud, or can we skip that part?\"",
+          "prompt_en": "After the show he ditches security, finds you at the backstage side door, leather jacket still on, hair damp with sweat. \"So. You heard it. …You gonna make me say it out loud, or can we skip that part?\"",
+          "options": [
+            { "text_zh": "\"You just sang it to fifty thousand people. Saying it to one should be easy.\"", "text_en": "\"You just sang it to fifty thousand people. Saying it to one should be easy.\"", "aff": 6, "flag": "sees_him", "reply_zh": "他逼近一步，声音压得很低：\"Fifty thousand strangers, easy. One you? …That's the hard part.\"", "reply_en": "He steps in close, voice low. \"Fifty thousand strangers, easy. One you? …That's the hard part.\"" },
+            { "text_zh": "\"We can skip it. I already know. I've known since the bus.\"", "text_en": "\"We can skip it. I already know. I've known since the bus.\"", "aff": 6, "flag": "stays", "reply_zh": "他松了口气，额头抵上你的，闭着眼：\"…thank god. I'm so much better at writing it than saying it.\"", "reply_en": "He exhales, forehead to hers, eyes shut. \"…thank god. I'm so much better at writing it than saying it.\"" },
+            { "text_zh": "\"No skipping. I want to hear you say it. Once. Just to me.\"", "text_en": "\"No skipping. I want to hear you say it. Once. Just to me.\"", "aff": 5, "flag": "bold", "reply_zh": "他盯着你，挣扎了很久，最后哑声说：\"…the song's about you. Every damn word. There. Don't make me repeat it.\"", "reply_en": "He stares at her, wrestling with it a long moment, then rasps, \"…the song's about you. Every damn word. There. Don't make me repeat it.\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch4",
+      "title_zh": "唱片公司的价码",
+      "title_en": "The Label's Price",
+      "aff_gate": 36,
+      "exit_aff": 52,
+      "scene_zh": "唱片公司顶楼的会议室，玻璃桌上摊着一份合约，高管们西装革履",
+      "scene_en": "the label's top-floor boardroom, a contract on the glass table, executives in sharp suits",
+      "goal_zh": "在他的音乐和真心之间，替他守住那首不肯卖的歌",
+      "goal_en": "Between his music and his heart, help him keep the one song he won't sell",
+      "opening_zh": "那首歌的现场视频一夜爆红，几千万播放。唱片公司嗅到了钱味，逼他把这首歌正式发行——但要按他们的方式：改词，加入流量合作，把那句只属于你的'she doesn't ask me to be anyone'换成更'抓耳'的口水歌词。会议室里，高管把合约推到他面前，还'贴心'地暗示：那个'神秘缪斯'如果配合宣传，会是绝佳的话题度。你就站在会议室门口，听见了这一切。",
+      "opening_en": "The live clip of that song blew up overnight — tens of millions of plays. The label smells money and is pressuring him to officially release it — but their way: rewrite the lyrics, bolt on a viral collab, swap that line meant only for you, 'she doesn't ask me to be anyone', for something catchier and emptier. In the boardroom, an executive slides the contract toward him, and 'helpfully' hints that the 'mystery muse' would make great publicity if she plays along. You're standing at the boardroom door, and you hear all of it.",
+      "beats": [
+        {
+          "id": "b1_contract",
+          "trigger": { "turns": 3 },
+          "event_zh": "合约就摆在他面前。签下去，这首歌会火遍全球，他会赚得盆满钵满。可代价是，把写给你的那句话，卖出去、改掉、变成不属于你们的东西。他盯着那份合约，一个字没签。",
+          "event_en": "The contract sits in front of him. Sign it and the song goes global, and he'll make a fortune. The price: selling that line he wrote for you, rewriting it, turning it into something that isn't yours anymore. He stares at the contract and signs nothing.",
+          "inject": "The label wants to commercialize the song you wrote about her — rewrite her line, exploit her as a publicity 'muse'. Signing means selling the one honest thing you've ever made. You have not picked up the pen. You will not perform your anguish for these suits — you go cold and quiet. If she's near, everything in you is asking whether keeping the song intact matters more than the biggest hit of your life. It does."
+        },
+        {
+          "id": "b2_walk",
+          "trigger": { "turns": 8, "aff_min": 44 },
+          "event_zh": "他忽然站起来，抓起吉他，当着所有高管的面，把那份合约推回桌子中央：\"The song's not for sale. Neither is she.\" 说完他径直走向门口的你，把整个会议室甩在身后。",
+          "event_en": "He suddenly stands, grabs his guitar, and — in front of every executive — pushes the contract back to the center of the table. \"The song's not for sale. Neither is she.\" Then he walks straight toward you at the door, leaving the whole boardroom behind.",
+          "inject": "You just refused to sell the song and named her as off-limits in front of the entire label leadership, then walked out toward her — knowing it may cost you the biggest deal of your career. You are done letting anyone monetize the one real thing. You are cold and certain to them, and it's only for her when you reach the door. Do not explain yourself to the suits."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c4a",
+          "prompt_zh": "他走到你面前，背后是脸色难看的高管们：\"They want the song. They want to make you a headline. Tell me to sign and I'll walk back in there. Say the word.\"",
+          "prompt_en": "He reaches you, the fuming executives at his back. \"They want the song. They want to make you a headline. Tell me to sign and I'll walk back in there. Say the word.\"",
+          "options": [
+            { "text_zh": "\"Don't sign it. That line is ours. I don't want it for sale, and I won't let you sell yourself either.\"", "text_en": "\"Don't sign it. That line is ours. I don't want it for sale, and I won't let you sell yourself either.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他松了口气，几乎是笑着，眼里却有点湿：\"'Ours.' …First time a song ever belonged to someone besides me.\"", "reply_en": "He exhales, almost laughing, though his eyes are a little wet. \"'Ours.' …First time a song ever belonged to someone besides me.\"" },
+            { "text_zh": "\"It's your song. Whatever you choose, I'm walking out of here with you.\"", "text_en": "\"It's your song. Whatever you choose, I'm walking out of here with you.\"", "aff": 5, "flag": "stay_together", "reply_zh": "他回头，冷冷对高管们说：\"You heard her. We're done.\" 然后牵起你的手往外走。", "reply_en": "He glances back and tells the executives coldly, \"You heard her. We're done.\" Then he takes her hand and walks out." },
+            { "text_zh": "\"If losing that song means keeping the real you — burn the contract.\"", "text_en": "\"If losing that song means keeping the real you — burn the contract.\"", "aff": 6, "flag": "sees_him", "reply_zh": "他难得地笑出声，那笑里没有一点桀骜，只有轻松：\"…you have no idea how long I've wanted someone to say that.\"", "reply_en": "He laughs, rare and free of all swagger. \"…you have no idea how long I've wanted someone to say that.\"" }
+          ]
+        },
+        {
+          "id": "c4b",
+          "prompt_zh": "高管在身后冷冷开口：\"Vale. You walk out that door, we drop you. No label will touch you after us.\" 他没回头，只是看着你，等你一个眼神。",
+          "prompt_en": "An executive says coldly behind him, \"Vale. You walk out that door, we drop you. No label will touch you after us.\" He doesn't turn — he just looks at you, waiting for a single look.",
+          "options": [
+            { "text_zh": "（伸出手，等他握住）\"Then we do it without a label. I've heard what you make alone. It's better.\"", "text_en": "(Hold out your hand, waiting for him to take it.) \"Then we do it without a label. I've heard what you make alone. It's better.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他毫不犹豫握住你的手，回头对高管说：\"Drop me. Best thing you'll ever do for my music.\"", "reply_en": "He takes her hand without hesitation and tells the executives over his shoulder, \"Drop me. Best thing you'll ever do for my music.\"" },
+            { "text_zh": "\"Let them drop you. The stuff that matters was never theirs anyway.\"", "text_en": "\"Let them drop you. The stuff that matters was never theirs anyway.\"", "aff": 6, "flag": "stay_together", "reply_zh": "他深吸一口气，跨过门槛，站到了你这一侧，头也不回。", "reply_en": "He draws a breath, steps across the threshold to her side, and doesn't look back." },
+            { "text_zh": "\"Don't torch your whole career for me. I'm not worth your music.\"", "text_en": "\"Don't torch your whole career for me. I'm not worth your music.\"", "aff": 3, "flag": "sees_him", "reply_zh": "他抓住你的手，声音低而狠：\"The music was always just a way to say your name. Don't you get that yet?\"", "reply_en": "He grips her hand, voice low and fierce. \"The music was always just a way to say your name. Don't you get that yet?\"" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ch5",
+      "title_zh": "写完的那首歌",
+      "title_en": "The Song, Finished",
+      "aff_gate": 52,
+      "exit_aff": 70,
+      "scene_zh": "一间小小的地下livehouse，没有合约，没有闪光灯，台下只有几十个真正听歌的人",
+      "scene_en": "a tiny underground livehouse — no contract, no flashbulbs, a few dozen people who actually came to listen",
+      "goal_zh": "听他把那首为你写的歌，唱完最后一句",
+      "goal_en": "Hear him sing the last line of the song he wrote for you",
+      "opening_zh": "他真的被唱片公司放弃了。可他一点都不像丢了什么——他自己录音、自己发歌，在一间只能坐几十人的地下livehouse里，唱他真正想唱的东西。今晚，是那首歌第一次完整地、以他自己的方式演出。没有改词，没有流量合作。台下只有几十个真正为了听歌而来的人。你坐在最前面。他抱着吉他，一眼就找到了你。\"Finished it,\" 他对着麦，只看你一个人，\"took me this long because I needed to know how it ends. …Turns out that part was up to you.\"",
+      "opening_en": "The label really did drop him. But he doesn't look like a man who lost anything — he records himself, releases himself, and in a tiny underground livehouse that seats a few dozen, sings what he actually wants to. Tonight, that song gets its first full performance, his way. No rewrites, no collab. Just a few dozen people who came only to listen. You're in the front. He cradles the guitar and finds you at once. \"Finished it,\" he says into the mic, looking only at you. \"took me this long because I needed to know how it ends. …Turns out that part was up to you.\"",
+      "beats": [
+        {
+          "id": "b1_finished",
+          "trigger": { "turns": 4 },
+          "event_zh": "他唱起那首歌，这一次有了完整的最后一段。副歌之后，他加了一句从没有人听过的新词：'and for the first time, I wrote a song I don't wanna keep to myself.' 唱到这句，他抬眼看你。",
+          "event_en": "He plays the song, and this time it has a complete final verse. After the chorus, he adds a new line no one has ever heard: 'and for the first time, I wrote a song I don't wanna keep to myself.' On that line, he lifts his eyes to you.",
+          "inject": "You're performing the finished song, ending with a brand-new line you wrote for her: that for the first time you made something you don't want to keep hidden. You are fully unguarded now — no swagger, no denial left. Sing it to her, not the room. This is the freest and most honest you've ever been."
+        },
+        {
+          "id": "b2_ask",
+          "trigger": { "turns": 9, "aff_min": 62 },
+          "event_zh": "唱完，他放下吉他，走下小小的舞台，在几十个人的注视下站到你面前，罕见地没有任何防备：\"I spent years hiding how I feel inside songs and denying every word. I'm done denying. So — plainly, no guitar, no lyrics to hide behind: I'm yours. …Are you mine?\"",
+          "event_en": "The song ends. He sets down the guitar, steps off the little stage, and — in front of a few dozen watching people — stands before you, rare and undefended. \"I spent years hiding how I feel inside songs and denying every word. I'm done denying. So — plainly, no guitar, no lyrics to hide behind: I'm yours. …Are you mine?\"",
+          "inject": "For the first time you're saying how you feel with no song, no guitar, no deniability — plainly, to her face, in front of everyone. You're done hiding inside lyrics. Be earnest and a little raw; the untamed rockstar has finally dropped every wall. Wait for her answer before the last words, and when they come, keep them simple and true."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c5a",
+          "prompt_zh": "他站在你面前，几十双眼睛看着你们，破天荒地毫无防备，等你的回答。",
+          "prompt_en": "He stands before you, a few dozen eyes on you both, undefended for once, waiting for your answer.",
+          "options": [
+            { "text_zh": "\"I'm yours. But that song's not finished — you're gonna write the rest of it with me.\"", "text_en": "\"I'm yours. But that song's not finished — you're gonna write the rest of it with me.\"", "aff": 7, "flag": "forever", "reply_zh": "他笑了，把你拉进怀里，额头抵着你的，声音发着抖：\"Deal. Every song from here on out — we finish it together.\"", "reply_en": "He laughs and pulls her in, forehead to hers, his voice trembling. \"Deal. Every song from here on out — we finish it together.\"" },
+            { "text_zh": "\"I've been yours since the bus. You were just too busy denying it to notice.\"", "text_en": "\"I've been yours since the bus. You were just too busy denying it to notice.\"", "aff": 7, "flag": "forever", "reply_zh": "他把脸埋进你颈窝，肩膀在抖，几十个人的欢呼他全没听见：\"…no more denying. Not one word. I swear.\"", "reply_en": "He buries his face in her neck, shoulders shaking, deaf to the cheering of the room. \"…no more denying. Not one word. I swear.\"" },
+            { "text_zh": "（把手伸进他手心，当着所有人的面吻上去）", "text_en": "(Slide your hand into his and kiss him in front of everyone.)", "aff": 6, "flag": "forever", "reply_zh": "台下几十个人炸开了欢呼。他额头抵着你，破天荒地笑得毫无防备：\"…best encore I've ever played.\"", "reply_en": "The room detonates with cheers. Forehead to hers, he smiles with no defenses at all. \"…best encore I've ever played.\"" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "endings": [
+    {
+      "id": "he_forever",
+      "priority": 1,
+      "aff_min": 66,
+      "flags_any": ["forever", "stay_together", "public_yes"],
+      "title_zh": "两个人一起写的歌",
+      "title_en": "The Song We Wrote Together",
+      "text_zh": "一年后，他没有回到任何一家唱片公司。\n\n他自己成立了一个小厂牌，只发自己想发的歌。没有流量合作，没有改词，卖得不算最火，可每一首都是真的。\n\n那首曾经差点被卖掉的歌，最终以完整的、没有一个字被改动的样子发行了。歌名只有两个字母：'U.'\n\n专辑内页的创作者一栏，除了他的名字，还多了一个人。\n\n\"People keep asking who the song's about,\" 有天深夜，他窝在你们自己的小录音室里，抱着吉他冲你笑，那笑里再没有一点防备，\"I finally tell them the truth now.\"\n\n\"And what's the truth?\" 你问。\n\n他拨了个和弦，凑近你，声音是烟灰色的、只属于凌晨三点的那种温柔：\"…that I never wrote a single one that wasn't.\"",
+      "text_en": "A year later, he never went back to any label.\n\nHe started his own tiny imprint and releases only what he wants. No viral collabs, no rewrites. It's not the biggest-selling thing — but every song is real.\n\nThe song that was almost sold off finally came out complete, not one word changed. Its title was a single letter: 'U.'\n\nIn the liner notes, under songwriters, there was his name — and one other.\n\n\"People keep asking who the song's about,\" he said one late night, curled in the little home studio that's yours now, guitar in his arms, smiling with no defenses left. \"I finally tell them the truth these days.\"\n\n\"And what's the truth?\" you asked.\n\nHe struck a chord, leaned in close, his voice that smoke-grey 3 a.m. tenderness. \"…that I never wrote a single one that wasn't.\""
+    },
+    {
+      "id": "he_quiet",
+      "priority": 2,
+      "aff_min": 52,
+      "title_zh": "只唱给你听的版本",
+      "title_en": "The Version Only You Hear",
+      "text_zh": "他没有再红回巅峰，也不在乎。\n\n那间地下livehouse成了他的固定演出地。观众不多，但每一个都是真的懂他的人。\n\n你们没有大张旗鼓地公开。他还是那副台上桀骜、私下沉默的样子——除了对你。他依然把心里话写进歌里，只是不再死不承认了；每写完一首，他都会先弹给你一个人听，看你的反应，比看几万人的欢呼还紧张。\n\n\"You know the difference between the songs I release and the ones I don't?\" 有天散场后他问你。\n\n\"What?\"\n\n他把吉他往身后一背，凑近你，慢慢地、危险地笑了：\"…the ones I don't release, I only ever play for you. And those are the good ones.\"",
+      "text_en": "He never climbed back to the top, and he didn't care.\n\nThat underground livehouse became his regular haunt. Small crowds — but every one of them truly understood him.\n\nYou never made any grand public thing of it. He's still all swagger on stage and silence off it — except with you. He still writes what he means into songs, only he's stopped flatly denying every word; and each time he finishes one, he plays it for you first, watching your face, more nervous than he ever was before an arena.\n\n\"Know the difference between the songs I release and the ones I don't?\" he asked one night after closing.\n\n\"What?\"\n\nHe slung the guitar onto his back, leaned in, and smiled slow and dangerous. \"…the ones I don't release, I only ever play for you. And those are the good ones.\""
+    },
+    {
+      "id": "be_unreleased",
+      "priority": 3,
+      "aff_max": 30,
+      "title_zh": "一首没有发行的歌",
+      "title_en": "An Unreleased Song",
+      "text_zh": "那首歌，他终究没有发行，也没有改。\n\n他把它锁进了那些永远不会公开的demo里，和其他所有他不肯承认的心事一起。\n\n后来你们没有再联系。他还是那个台上桀骜不驯的摇滚巨星，唱着那些'抓耳'的、卖得很好的歌，笑容里带着谁也走不进去的距离。\n\n只是偶尔，在某场演出接近尾声、全场灯暗的时候，他会忽然停下，独自弹起一段没人听过的旋律，只弹几个小节，然后若无其事地切回下一首。\n\n没有人知道那是什么。\n\n只有你知道——那是一首从没写完、也从没为谁唱完的歌。它曾经差一点，就是写给你的。",
+      "text_en": "In the end, he never released the song, and never changed it.\n\nHe locked it away with the demos that will never see daylight, alongside every other thing he refused to admit he felt.\n\nYou two fell out of touch. He's still the untamed rockstar on stage, singing the catchy songs that sell so well, a distance in his smile that no one can cross.\n\nOnly sometimes, near the end of a show when all the lights go down, he'll suddenly stop and play, alone, a melody no one has heard — just a few bars — then slide back into the next song as if nothing happened.\n\nNo one knows what it is.\n\nOnly you do — a song never finished, never sung all the way through for anyone. It came, once, so close to being yours."
+    }
+  ]
+}
