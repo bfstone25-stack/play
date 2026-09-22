@@ -153,6 +153,12 @@ func _menu() -> void:
 	sub.add_theme_font_override("font", _font(TEXT_FONT))
 	sub.add_theme_font_size_override("font_size", 22)
 	sub.add_theme_color_override("font_color", Palette.TEXT)
+	# The plate behind this went from a dim grey-blue office to a candy-bright one when the
+	# title swapped to the mascot, and Palette.TEXT alone stopped separating from it. Same
+	# fix as OCCUPANCY's CTA earlier: keep the dark type, give it an opaque bright halo so
+	# it reads on whatever the plate puts behind it.
+	sub.add_theme_color_override("font_outline_color", Color(1, 0.98, 0.92, 1.0))
+	sub.add_theme_constant_override("outline_size", 5)
 	sub.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(sub)
 
