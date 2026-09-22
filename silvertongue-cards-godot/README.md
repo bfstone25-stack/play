@@ -1,4 +1,4 @@
-# SILVERTONGUE: AFTER HOURS — Cards (Godot 4.7 client)
+# SUASION (Godot 4.7 client)
 
 The card-battle client, rebuilt in Godot over the unchanged Python backend in
 `play/silvertongue-cards/backend` (FastAPI on :8929). The HTML prototype in
