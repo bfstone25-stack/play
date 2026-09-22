@@ -61,6 +61,10 @@ var _sprites := {}          # tile id -> Node2D
 
 var _hud: CanvasLayer
 var _goal: Label
+## The diagram step the tallest piece has just reached, and the value it was last said
+## at. See `_announce_step`.
+var _step: Label
+var _high := 0
 var _moves: Label
 var _lvname: Label
 var _stars_row: HBoxContainer
@@ -77,6 +81,11 @@ var _drag_from := Vector2.ZERO
 var _dragging := false
 var _board_offered := false
 var _streak_lbl: Label
+## Bark bookkeeping: seconds since the last fold, and whether the tease line has been
+## spent on this level. See _on_moved and _process.
+const IDLE_AFTER := 24.0
+var _idle_clock := 0.0
+var _said_near := false
 var _tier_lbl: Label
 var _viewer: Control
 var _ticket_for := ""
@@ -428,7 +437,7 @@ func _build_hud() -> void:
 	col.add_child(top)
 
 	var mark := VectorMark.new()
-	mark.mark = I18n.lang
+	mark.mark = VectorMark.NAME
 	# 116x38 at weight 1.15, up from 104x34 at 0.8. The small lockup is drawn from the
 	# same skeleton as the title mark, so at this size a sub-1.0 weight put the strokes
 	# under two pixels and the HUD logo came out of the capture as a thin orange outline
@@ -457,6 +466,16 @@ func _build_hud() -> void:
 	_goal.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mid.add_child(_goal)
 
+	# The diagram step. Small and MUTED at rest, because it is a caption and not the goal;
+	# it lifts to ACCENT_DEEP for a beat when a merge reaches the next step
+	# (`_announce_step`). This is the line that says WHICH part moved and where -- "Rolled
+	# to the knee" -- and in the her band it is the whole of what makes the board legible
+	# as folding her rather than as arithmetic with a photograph behind it.
+	_step = StudioTheme.serif_label("", 14, Palette.MUTED, true)
+	_step.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_step.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	mid.add_child(_step)
+
 	var back := Button.new()
 	back.theme_type_variation = "Ghost"
 	back.text = "‹"
@@ -469,7 +488,7 @@ func _build_hud() -> void:
 	langb.theme_type_variation = "Ghost"
 	langb.pressed.connect(func():
 		I18n.toggle()
-		mark.mark = I18n.lang
+		mark.mark = VectorMark.NAME     # a name is not translated; see vector_mark.gd
 		Tel.ev("language_selected", {"language": I18n.lang}))
 	top.add_child(langb)
 
@@ -538,6 +557,9 @@ func _build_hud() -> void:
 		Fold.reset()
 		Tier.streak_break()
 		Sfx.slide()
+		Sfx.bark("fail")
+		_said_near = false
+		_high = _tallest()   # a reset unfolds the sheet; the step caption goes back with it
 		_rebuild_pieces()
 		_sync())
 	btns.add_child(_reset_btn)
@@ -579,7 +601,20 @@ func _overlay() -> Control:
 func _sync() -> void:
 	_goal.text = I18n.f("goal", Fold.target())
 	_moves.text = I18n.f("moves", Fold.moves) + "   ·   " + I18n.f("parhint", Fold.par())
-	_lvname.text = "%d · %s" % [Fold.level_index + 1, Fold.level_name(Fold.level_index, I18n.lang)]
+	# THE MODEL, in the header. ops/fold/BRIDGE.md: the level's name IS the thing it folds,
+	# and the fold count is log2(target) because the tile value is the layer count. In this
+	# fork the first two tiers fold paper and every tier after folds her (scripts/origami.gd,
+	# `band`), so the same header carries "Envelope · 3 folds" early and "The sash · 3 folds"
+	# later without changing a rule. A level the model data does not cover falls back to the
+	# shipped level name rather than showing an empty header.
+	var model := Origami.model_for(Fold.level_index)
+	if Origami.has_model(Fold.level_index):
+		_lvname.text = "%d · %s · %s" % [Fold.level_index + 1,
+			Origami.model_name(model, I18n.lang),
+			I18n.f("folds", Origami.folds_to_finish(Fold.level_index))]
+	else:
+		_lvname.text = "%d · %s" % [Fold.level_index + 1, Fold.level_name(Fold.level_index, I18n.lang)]
+	_step.text = Origami.step_text(model, _high, I18n.lang)
 	_undo_btn.text = I18n.t("undo")
 	_undo_btn.disabled = Fold.history.is_empty() or Fold.done
 	_reset_btn.text = I18n.t("reset")
@@ -614,6 +649,13 @@ func _open(i: int) -> void:
 			if not okay:
 				return
 	Fold.load_level(i)
+	# The starting board is already folded: a level that opens with 2s on it has had one
+	# fold done for you. `_tallest`, not 0 -- seeding 0 would make the first merge announce
+	# a step the player did not perform.
+	_high = _tallest()
+	_said_near = false
+	_idle_clock = 0.0
+	Sfx.bark("stage")
 	Save.set_current_level(i)
 	_win.visible = false
 	_relayout()
@@ -639,11 +681,50 @@ func _to_title() -> void:
 
 # --- a fold ------------------------------------------------------------------------------------
 
+## The tallest piece on the board: the deepest-folded sheet in play.
+func _tallest() -> int:
+	var best := 0
+	for t in Fold.tiles:
+		best = maxi(best, int(t["v"]))
+	return best
+
+
+## A merge that reached the next layer count has completed a real diagram step, so say
+## which one. Everything below the first named step (a lone 2, which is one fold of a
+## square and not yet a shape) passes silently, and so does a model the data does not
+## cover -- an empty caption is better than a wrong one.
+func _announce_step() -> void:
+	var v := _tallest()
+	if v <= _high:
+		return
+	_high = v
+	var text := Origami.step_text(Origami.model_for(Fold.level_index), v, I18n.lang)
+	if text == "":
+		return
+	_step.text = text
+	_step.add_theme_color_override("font_color", Palette.ACCENT_DEEP)
+	var tw := create_tween()
+	tw.tween_property(_step, "modulate:a", 1.0, 0.18).from(0.0)
+	tw.tween_callback(func():
+		if is_instance_valid(_step):
+			_step.add_theme_color_override("font_color", Palette.MUTED)).set_delay(1.4)
+
+
 func _on_moved(direction: Vector2i, merge_count: int) -> void:
 	if merge_count > 0:
+		# a merge doubled the layer count, which is one more fold: say which one it was
+		_announce_step()
 		Sfx.merge(merge_count)
 	else:
 		Sfx.slide()
+	# The tease slot, one fold from the end: two tiles left and both of them half the
+	# target, which is the only board state from which the next merge finishes the model.
+	# Said once per level -- a line that fires on every shuffle around a near-miss stops
+	# being a tease within about thirty seconds.
+	_idle_clock = 0.0
+	if not _said_near and _one_fold_left():
+		_said_near = true
+		Sfx.bark("near")
 	_flash_crease(direction)
 	_fold_squash(direction)
 	_animate(direction)
@@ -751,10 +832,27 @@ func _fold_squash(direction: Vector2i) -> void:
 	tw.tween_property(_board, "scale", Vector2.ONE, 0.16).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 
+## True when the next merge would finish the model: two tiles, each half the target.
+func _one_fold_left() -> bool:
+	if Fold.tiles.size() != 2:
+		return false
+	var half := Fold.target() / 2
+	return int(Fold.tiles[0]["v"]) == half and int(Fold.tiles[1]["v"]) == half
+
+
 # --- winning -------------------------------------------------------------------------------------
 
 func _on_solved(stars: int, move_count: int, p: int) -> void:
 	Sfx.unity(stars)
+	# One voice, one line: bark() drops a second line while the first is playing, so the
+	# order here is the priority. A streak is the rarer thing to have earned, so it wins
+	# over a three-star clear, which wins over an ordinary one.
+	if Tier.streak > 0 and (Tier.streak + 1) % 3 == 0:
+		Sfx.bark("streak")
+	elif stars >= 3:
+		Sfx.bark("win_big")
+	else:
+		Sfx.bark("win")
 	_win_burst(stars)
 	Save.record(Fold.level_index, stars)
 	Tier.streak_hit()
@@ -880,6 +978,7 @@ func _unlock(scene: Dictionary, btn: Button, status: Label) -> void:
 		return
 	Tier.mark_unlocked(id)
 	Tel.ev("scene_unlocked", {"scene": id})
+	Sfx.bark("unlock")
 	_viewer = SceneView.open(_hud, scene, func():
 		_viewer = null
 		_offer_board()
@@ -914,6 +1013,24 @@ func _show_win(stars: int, move_count: int, p: int) -> void:
 	var h := StudioTheme.display_label(I18n.t("win"), 44, Palette.ACCENT_DEEP)
 	h.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(h)
+
+	# WHAT YOU JUST FOLDED. ops/fold/BRIDGE.md's whole point: the player did not clear a
+	# grid, they finished a model, and the win card is the only place that can say so with
+	# the finished thing in front of them. The last fold was the winning merge, so the
+	# count here is the model's own depth, not the move count.
+	#
+	# What it does NOT do is show a picture. The parent pays this out with a plate of the
+	# finished crane; this fork's payout is the gated CG at the end of a TIER
+	# (scripts/tiers.gd -> scripts/unlock.gd, kind "cg"), and putting a second reveal on
+	# every level would spend the thing the tier is saving up for. So the card names the
+	# fold and the tier card pays it.
+	if Origami.has_model(Fold.level_index):
+		var done := StudioTheme.serif_label("%s · %s" % [
+			Origami.level_model_name(Fold.level_index, I18n.lang),
+			I18n.f("folds", Origami.folds_to_finish(Fold.level_index))],
+			15, Palette.ACCENT_DEEP, true)
+		done.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		col.add_child(done)
 
 	var row := HBoxContainer.new()
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -991,8 +1108,10 @@ func _offer_board() -> void:
 
 func _share(stars: int, move_count: int) -> void:
 	var name := Fold.level_name(Fold.level_index, I18n.lang)
-	var txt := "%s · %s\n%s%s  %s\napps.blazecore.dev/fold/" % [
-		I18n.WORDMARK[I18n.lang] + (" FOLD" if I18n.lang == "zh" else ""),
+	var txt := "%s · %s\n%s%s  %s\nfold-after-dark.flat404.workers.dev" % [
+		# The name, and only the name. This used to append " FOLD" in zh -- a share card
+		# from the renamed fork that read "PLICATA FOLD" and pointed players at the parent.
+		str(I18n.WORDMARK.get(I18n.lang, "PLICATA")),
 		name, "★".repeat(stars), "☆".repeat(3 - stars),
 		I18n.f("moves", move_count)]
 	DisplayServer.clipboard_set(txt)
@@ -1140,6 +1259,14 @@ func _swipe(d: Vector2) -> bool:
 
 func _process(delta: float) -> void:
 	_t += delta
+	# The idle line, after IDLE_AFTER seconds without a fold. The clock is reset by every
+	# move and by every level load, and it re-arms rather than repeating immediately, so a
+	# player who walks away hears her every IDLE_AFTER seconds and not once a frame.
+	if not Fold.done and not _win.visible:
+		_idle_clock += delta
+		if _idle_clock >= IDLE_AFTER:
+			_idle_clock = 0.0
+			Sfx.bark("idle")
 	if _lamp:
 		var f := 1.0 + 0.035 * sin(_t * 2.1) + 0.02 * sin(_t * 0.63)
 		(_lamp.get_node("Light") as PointLight2D).energy = 2.1 * f

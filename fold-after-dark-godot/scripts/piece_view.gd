@@ -62,6 +62,13 @@ static func make(v: int, px: float, tilt: float, room: float = 1.0, lit: bool = 
 	face.modulate = col
 	holder.add_child(face)
 
+	# THE CREASES. ops/fold/BRIDGE.md: the number on a piece is how many layers of paper it
+	# is, and a sheet is 2^k layers after k folds -- so a 2 has been folded once and a 256
+	# eight times. This draws that, and it is the whole reason the board now looks like
+	# folding instead of like arithmetic: every merge adds a crease to the paper in front
+	# of you.
+	_add_creases(holder, v, px, tilt)
+
 	var rim := Line2D.new()
 	rim.name = "Rim"
 	rim.points = PackedVector2Array([
@@ -158,3 +165,49 @@ static func lamp(px: float, color: Color = Palette.GOLD_PALE, energy: float = 1.
 	l.blend_mode = Light2D.BLEND_MODE_ADD
 	holder.add_child(l)
 	return holder
+
+## The crease pattern of a square folded `folds` times, which is not decoration -- it is
+## what the fold sequence of a real sheet actually leaves behind. Fold 1 creases the centre
+## line; fold 2 creases the other centre line; fold 3 halves again and leaves two creases at
+## the quarters; and so on, alternating axis. Seven folds (a 128, the deepest target this
+## game ships) is an 8x16 lattice, which is exactly the dense grid an over-folded sheet has.
+##
+## Drawn newest-brightest, so a merge reads as a NEW line arriving rather than as a slightly
+## busier tile.
+##
+## The one thing here that is the fork's and not the parent's is the colour. FOLD draws its
+## creases in white, because on a candy ramp under a daylight key the highlight IS the light
+## source. PLICATA is lit by one warm lamp on a saturated plum ramp, and white ridges on
+## that read as dust -- so the crease is CREAM, which is the colour the lamp actually is
+## everywhere else in this build (see scenes/game.gd's crease flash, which uses the same).
+static func _add_creases(holder: Node2D, v: int, px: float, tilt: float) -> void:
+	var folds := Origami.folds_for_value(v)
+	if folds <= 0:
+		return
+	var creases := Node2D.new()
+	creases.name = "Creases"
+	creases.z_index = 1
+	holder.add_child(creases)
+	var w := px * 0.92
+	var h := px * tilt * 0.92
+	for j in range(1, folds + 1):
+		var vertical := (j % 2) == 1
+		# fold j halves what fold j-2 left, so it creases the odd 1/2^m positions
+		var m := (j + 1) / 2                    # 1,1,2,2,3,3,4,4
+		var denom := 1 << m                     # 2,2,4,4,8,8,16,16
+		# how strongly this generation reads: the newest fold is full strength
+		var age := float(folds - j)
+		var alpha: float = clampf(0.40 - age * 0.045, 0.09, 0.40)
+		var width: float = maxf(1.0, px * (0.030 if j == folds else 0.018))
+		for k in range(1, denom, 2):
+			var f := float(k) / float(denom)
+			var line := Line2D.new()
+			if vertical:
+				var x := -w * 0.5 + w * f
+				line.points = PackedVector2Array([Vector2(x, -h * 0.5), Vector2(x, h * 0.5)])
+			else:
+				var y := -h * 0.5 + h * f
+				line.points = PackedVector2Array([Vector2(-w * 0.5, y), Vector2(w * 0.5, y)])
+			line.width = width
+			line.default_color = Color(Palette.CREAM, alpha)
+			creases.add_child(line)

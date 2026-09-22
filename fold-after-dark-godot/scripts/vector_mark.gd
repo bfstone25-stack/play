@@ -1,14 +1,9 @@
-## VectorMark — the FOLD logotype, drawn.
+## VectorMark — the PLICATA logotype, drawn.
 ##
 ## TITLE_SCREENS.md item 2: "a designed mark, not a font default … exported as an image or
-## drawn with the engine's text effects, never a plain Label." FOLD already has a designed
-## mark — the page draws it as hand-built SVG paths, one for the Latin FOLD and one for the
-## Chinese 归一, each with a hairline construction grid under it, a crease across two
-## letters and a small filled plane where the paper turns. That mark is the brand; setting
-## the title in Marcellus instead would be a different logo.
-##
-## So the SVG path data is carried over verbatim (see PATHS below — the `d` strings are
-## copied out of play/fold/frontend/index.html), and this node draws it: a minimal SVG path
+## drawn with the engine's text effects, never a plain Label." So the wordmark is a set of
+## hand-built SVG paths — see PATHS below, which is PLICATA's own seven letters and not the
+## parent FOLD's four — and this node draws them: a minimal SVG path
 ## parser (M/L/H/V/C/S/Z, absolute and relative) flattening cubics into polylines, then
 ## `draw_polyline` for the strokes and `draw_colored_polygon` for the two filled planes.
 ##
@@ -39,8 +34,8 @@
 class_name VectorMark
 extends Control
 
-## Which mark: "en" draws FOLD, "zh" draws 归一.
-@export var mark: String = "en":
+## Vestigial: every value draws PLICATA. See `_mark()`.
+@export var mark: String = "plicata":
 	set(v):
 		mark = v
 		queue_redraw()
@@ -83,44 +78,102 @@ var foil: Texture2D = Art.plate("foil")
 ## Scale of the stroke weights relative to the design's own units.
 @export var weight: float = 1.0
 
+## 0 .. 1 — how far the sheet the letters are folded out of has OPENED.
+##
+## ops/STANDARD.md, 2026-09-21: the letters should be made of the game's own material, and
+## the recorded starting idea for PLICATA is "letters folded from a single sheet, creases
+## catching the light, unfolding as the title settles". This is that, and it is not a
+## decoration on top of the mark — it is the same accordion the game's merge ramp is
+## (2, 4, 8 … layers, ops/fold/BRIDGE.md), applied to the mark's own geometry.
+##
+## At 0 the design box is pleated into PANELS vertical panels, each squeezed to a sliver,
+## so the word is a closed concertina of paper standing on the baseline. At 1 every panel
+## is at full width and the mark is exactly the geometry it was before this existed — so
+## `unfold = 1.0` is the resting state and nothing downstream (the probe, the HUD lockup,
+## the ad-track fallback) has to know this parameter is here.
+##
+## Panels open LEFT TO RIGHT with a stagger, because a concertina opened by hand does not
+## open all at once, and the crease between two panels is drawn as a lit edge whose
+## brightness falls off as the panel it hinges flattens — the "creases catching the light"
+## half of the idea. A crease on flat paper is invisible, which is why it fades to nothing
+## rather than staying on as a graphic line.
+@export var unfold: float = 1.0:
+	set(v):
+		unfold = clampf(v, 0.0, 1.0)
+		queue_redraw()
+
+## How many panels the sheet is pleated into. Seven — one per letter of PLICATA — so a
+## crease never lands inside a letterform's counter, where it would read as a scratch
+## rather than as a fold. (That is the same fault the long crease diagonals had; see the
+## ORDER note below.)
+const PANELS := 7
+## Each panel starts this much later than the one to its left, as a fraction of the whole
+## unfold. Small enough that the word is never seen as two disconnected halves.
+const PANEL_STAGGER := 0.055
+## A panel never closes completely: at 0 it keeps this fraction of its width, so the
+## closed state is a thick concertina you can read as paper, not a vertical line.
+const PANEL_MIN := 0.10
+
 # --- the mark, as drawn on the page -------------------------------------------------------
 # Each entry: [d, layer], where layer is one of
 #   "letter"  the letter body        (ink, heavy)
 #   "fine"    the construction grid  (hairline)
 #   "crease"  the fold line          (accent, medium)
 #   "plane"   the turned paper       (accent, FILLED)
+## The wordmark is the NAME, and the name is PLICATA.
+##
+## 2026-09-21. The fork was renamed everywhere -- project.godot, the kicker, the exports,
+## I18n.WORDMARK -- and the title screen went on drawing FOLD, because this node does not
+## set a string: it draws designed glyph strokes, and the strokes said F, O, L, D. Changing
+## the constant next door could never have moved a single pixel of it. A mark is geometry.
+##
+## So these are PLICATA's own letters, built the way the parent's were -- centreline
+## strokes on a 680x170 design box, cap height 22..146, drawn chunky with a shadow, a gloss
+## and a shine sweep by `_draw`. Two things are deliberate:
+##
+##   * The name is NOT translated -- not into zh, not into ja. PLICATA is a proper noun,
+##     and `I18n.WORDMARK` already says so for both languages it had. `_mark()` therefore
+##     ignores the language entirely and the parent's 归一 mark is gone from this file: it
+##     belongs to FOLD, and a fork that can accidentally draw its parent's logo is exactly
+##     the defect this replaces.
+##   * The planes -- the two filled flaps of turned paper, on the L's foot and the T's arm
+##     -- are the only thing the mark keeps from FOLD's vocabulary, and they are the whole
+##     reason the mark belongs to a folding game. Each is wound HINGE FIRST
+##     (placed[0]..placed[1] is the crease) because `_draw` lights that edge and shades the
+##     opposite one; wind one backwards and the flap reads as a coloured wedge.
+const NAME := "plicata"
+
 const PATHS := {
-	"en": {
-		"box": Vector2(560, 170),
+	"plicata": {
+		"box": Vector2(680, 170),
 		"strokes": [
-			["M38 22V146M38 24H126M38 82H112", "letter"],
-			["M218 20C176 20 154 45 154 84S176 148 218 148 282 123 282 84 260 20 218 20Z", "letter"],
-			["M320 22V146H356", "letter"],
-			["M429 22V146M429 23H466C512 23 532 47 532 84S512 145 466 145H429", "letter"],
-			["M20 84H540M218 9V159M411 10V158", "fine"],
-			["M38 22L112 82L38 146M154 84L218 20L282 84L218 148Z", "fine"],
-			["M356 154.5L356 137.5L385 103L385 120Z", "plane"],
-		],
-	},
-	# The Chinese mark: 归 built from its strokes, the 一 as a long axis to the right, the
-	# little fold plane sitting on that axis, and a seal in the corner.
-	"zh": {
-		"box": Vector2(440, 170),
-		"strokes": [
-			["M58 24V116M34 72L58 54", "letter"],
-			["M88 28H190V118H84M94 72H184", "letter"],
-			["M71 18V128M79 136H206", "fine"],
-			["M215 75H366", "letter"],
-			["M366 83.5L366 66.5L395 32L395 49Z", "plane"],
-			["M350 91H396V137H350Z", "crease"],
-			["M359 109L373 99L387 109M363 111H383M361 118H385V130H361ZM373 111V118", "crease"],
+			# P -- stem plus a bowl that closes on the stem at the half-height
+			["M30 22V146M30 23H67C113 23 113 84 67 84H30", "letter"],
+			["M136 22V146H192", "letter"],
+			["M226 22V146", "letter"],
+			# C -- open to the right, both terminals cut on the same angle
+			["M330 48C306 20 256 28 256 84C256 140 306 148 330 120", "letter"],
+			["M364 146L400 22L436 146M377 106H423", "letter"],
+			["M470 24H542M506 24V146", "letter"],
+			["M576 146L612 22L648 146M589 106H635", "letter"],
+			# Two corners of the sheet turned over -- and NOTHING crosses a letterform.
+			# The first pass hinged these on the L's foot and the T's arm and let them fold
+			# back INTO the word, which drew a magenta diagonal across the I and across the
+			# final A: the identical fault the parent's long crease strokes had, arriving by
+			# a different route (see the ORDER note -- the letters are hollow polylines, so
+			# there is no occlusion to hide anything behind them). These two fold into empty
+			# air instead: one hangs below the L's foot in the band under the baseline, one
+			# turns out past the last A into the right margin.
+			["M192 146L218 146L232 168L206 168Z", "plane"],
+			["M648 146L648 124L676 106L676 128Z", "plane"],
 		],
 	},
 }
 
-# Chunky: the letter body nearly doubles (9 -> 17) and the crease thickens with it, so
-# the mark holds together as one solid object rather than a wire frame.
-const WIDTHS := {"letter": 17.0, "fine": 1.6, "crease": 7.0, "plane": 0.0}
+# 22, not the parent's 17: PLICATA is seven letters on a 680-wide box where FOLD was four
+# on a 560, so the same nominal weight comes out a third thinner on screen. Measured on
+# tools/mark_probe.gd at the title's real 470x150 -- the first pass read as a wire frame.
+const WIDTHS := {"letter": 22.0, "fine": 1.6, "crease": 7.0, "plane": 0.0}
 # The order the mark is drawn on in: grid first (it is the scaffolding), then the letters,
 # then the plane the corner turns.
 #
@@ -144,6 +197,84 @@ const WIDTHS := {"letter": 17.0, "fine": 1.6, "crease": 7.0, "plane": 0.0}
 const ORDER := ["fine", "crease", "letter", "plane"]
 
 var _cache := {}
+
+
+# --- the pleat ------------------------------------------------------------------------------
+
+## Per-panel open fraction at this `unfold`, plus where each panel's left edge lands and
+## how wide it is, all in DESIGN space. Computed once per `_draw` rather than per point:
+## seven panels against a few thousand flattened path points.
+##
+## Returns {"x": PackedFloat32Array (PANELS+1 boundaries), "f": PackedFloat32Array (open
+## fraction per panel)}. When the mark is flat this is the identity pleat and `_pleat` is
+## skipped entirely.
+func _pleat(box: Vector2) -> Dictionary:
+	var pw := box.x / float(PANELS)
+	var f := PackedFloat32Array()
+	# The stagger compresses each panel's own ramp into the time left after the last panel
+	# has started, so panel 6 still reaches 1.0 exactly at unfold = 1.0.
+	var span: float = maxf(1.0 - PANEL_STAGGER * float(PANELS - 1), 0.2)
+	for i in range(PANELS):
+		var u := clampf((unfold - PANEL_STAGGER * float(i)) / span, 0.0, 1.0)
+		# ease-out: paper swings open fast and settles slow
+		u = 1.0 - pow(1.0 - u, 2.2)
+		f.append(PANEL_MIN + (1.0 - PANEL_MIN) * u)
+	# Lay the open panels out end to end and centre the result on the design box, so the
+	# word opens from its middle instead of growing off the right-hand edge.
+	var total := 0.0
+	for v in f:
+		total += v * pw
+	var x := PackedFloat32Array()
+	var run := (box.x - total) * 0.5
+	for i in range(PANELS):
+		x.append(run)
+		run += f[i] * pw
+	x.append(run)
+	return {"x": x, "f": f, "pw": pw}
+
+
+## The creases themselves, drawn UNDER everything else — the hinges the panels turn on.
+##
+## Each interior boundary gets two lines: a lit edge on the side of the crease facing the
+## light and a shaded one behind it, which is the only cheap way a flat renderer says
+## "this is a folded edge" rather than "this is a line". Both fade out with the panel they
+## hinge, because a crease in flat paper catches nothing.
+func _draw_creases(pl: Dictionary, box: Vector2, off: Vector2, s: float) -> void:
+	var top := off.y + 8.0 * s
+	var bot := off.y + (box.y + 14.0) * s
+	for i in range(1, PANELS):
+		# how open the tighter of the two panels this crease joins is
+		var f: float = minf(pl["f"][i - 1], pl["f"][i])
+		var a := 1.0 - (f - PANEL_MIN) / (1.0 - PANEL_MIN)
+		a = clampf(a, 0.0, 1.0)
+		if a <= 0.02:
+			continue
+		var x: float = off.x + float(pl["x"][i]) * s
+		var w: float = maxf(1.5, WIDTHS["letter"] * s * weight * 0.22)
+		draw_line(Vector2(x - w * 0.5, top), Vector2(x - w * 0.5, bot),
+			Color(gloss, 0.55 * a), w, true)
+		draw_line(Vector2(x + w * 0.5, top), Vector2(x + w * 0.5, bot),
+			Color(shadow, shadow.a * 0.65 * a), w, true)
+
+
+## Map one design-space point through the pleat.
+##
+## The horizontal part is the fold: a point at fraction k across panel i lands at fraction
+## k across the panel's projected width. The vertical part is what stops the closed state
+## looking like a squashed word rather than a folded sheet — a panel seen nearly edge-on
+## is also seen slightly from below, so it keeps a little more of its height near the
+## crease. It is small (8%) on purpose; more than that and the letters bow.
+func _pleated(p: Vector2, pl: Dictionary, box: Vector2) -> Vector2:
+	var pw: float = pl["pw"]
+	var i := int(p.x / pw)
+	i = clampi(i, 0, PANELS - 1)
+	var f: float = pl["f"][i]
+	var k := (p.x - float(i) * pw) / pw
+	var nx: float = pl["x"][i] + k * f * pw
+	var base := box.y                      # the baseline the concertina stands on
+	var ny := base - (base - p.y) * (0.92 + 0.08 * f)
+	return Vector2(nx, ny)
+
 
 
 func _ready() -> void:
@@ -300,7 +431,10 @@ static func parse_path(d: String) -> Array:
 
 
 func _mark() -> Dictionary:
-	return PATHS.get(mark, PATHS["en"])
+	# There is one mark. `mark` survives as a property because three scenes set it from the
+	# language and a removed setter is a crash, but PLICATA is a name: it is the same seven
+	# letters in en, zh and ja, and any value lands on the same design.
+	return PATHS.get(mark, PATHS[NAME])
 
 
 func _subpaths() -> Array:
@@ -384,6 +518,12 @@ func _draw() -> void:
 
 	# how far the body shadow is offset down, in pixels at this scale
 	var w_shadow: float = WIDTHS["letter"] * s * weight * 0.26
+	# The pleat. Identity at unfold = 1.0, and skipped outright there so the flat mark
+	# costs exactly what it did before the fold existed.
+	var pleating := unfold < 1.0
+	var pl := _pleat(box) if pleating else {}
+	if pleating:
+		_draw_creases(pl, box, off, s)
 	# The reveal runs through the layers in ORDER, each layer getting an equal share.
 	var per := 1.0 / float(ORDER.size())
 	for li in range(ORDER.size()):
@@ -400,8 +540,12 @@ func _draw() -> void:
 				continue
 			var pts: PackedVector2Array = sub["pts"]
 			var placed := PackedVector2Array()
-			for p in pts:
-				placed.append(off + p * s)
+			if pleating:
+				for p in pts:
+					placed.append(off + _pleated(p, pl, box) * s)
+			else:
+				for p in pts:
+					placed.append(off + p * s)
 			if sub["closed"] and layer == "plane":
 				# the turned paper: filled, and it fades in rather than drawing on
 				var lift := PackedVector2Array()

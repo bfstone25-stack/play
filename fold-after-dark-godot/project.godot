@@ -3,7 +3,7 @@ config_version=5
 
 [application]
 
-config/name="FOLD: After Dark"
+config/name="PLICATA"
 config/description="The same fold-and-merge board, after dark. Every tier you clear folds one more layer off her. 18+."
 run/main_scene="res://scenes/title.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
@@ -21,6 +21,7 @@ I18n="*res://scripts/i18n.gd"
 Sfx="*res://scripts/sfx.gd"
 Tel="*res://scripts/tel.gd"
 Tier="*res://scripts/tiers.gd"
+Origami="*res://scripts/origami.gd"
 Unlock="*res://scripts/unlock.gd"
 
 [display]

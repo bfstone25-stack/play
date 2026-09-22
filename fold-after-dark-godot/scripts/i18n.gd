@@ -2,9 +2,16 @@
 ## renderLevels tables so the wording is the wording players already have. Autoloaded as
 ## "I18n".
 ##
-## The web build carries five languages; the brief for this port is en + zh, which are the
-## two the page's own telemetry shows traffic in. The table is keyed the same way, so
-## adding es/pt/ja back later is data, not code.
+## The web build carries five languages; this port shipped en + zh, and **ja was added on
+## 2026-09-21** because ja is where this fork sells: 507 of the 581 DLsite works in
+## ops/market/dlsite_data/ are Japanese, and without it PLICATA is not on that shelf at all.
+##
+## Every string in the ja table below is actually translated -- that is the whole of the
+## rule in ops/STANDARD.md item 7, and Floor 13 broke it by shipping ja/ko/es whose story
+## files held Chinese prose. The one honest gap, stated rather than hidden: the 201 LEVEL
+## NAMES in data/levels.json are "中文 / English" pairs, so `Fold.level_name` hands a ja
+## player the ENGLISH half. They are proper names of origami models; translating them is a
+## data pass on levels.json, not a code change, and it is the next thing this file needs.
 ##
 ## The level names are not here: every entry in data/levels.json is "中文 / English" and
 ## Fold.level_name() splits it, so the two stay in one file and cannot drift apart.
@@ -12,13 +19,14 @@ extends Node
 
 signal changed(lang: String)
 
-const LANGS := ["en", "zh"]
+const LANGS := ["en", "zh", "ja"]
 
 var lang := "en"
 
 const T := {
 	"en": {
 		"goal": "Fold everything into %d",
+		"folds": "%d folds",
 		"moves": "Move %d",
 		"undo": "Undo",
 		"reset": "Reset",
@@ -37,7 +45,7 @@ const T := {
 		"on": "ON",
 		"off": "OFF",
 		# title screen — INTRO_T.en
-		"kicker": "AFTER DARK · MERGE & UNLOCK",
+		"kicker": "PLICATA · MERGE & UNLOCK",
 		"tagline": "Same board. Lights down. Every tier you clear folds one more layer off her.",
 		"snapline": "Click, drag, snap.",
 		"rules": ["Fold fast. Equals merge and double.",
@@ -83,6 +91,7 @@ const T := {
 	},
 	"zh": {
 		"goal": "目标 · 归一至 %d",
+		"folds": "共 %d 折",
 		"moves": "第 %d 手",
 		"undo": "撤销",
 		"reset": "重置",
@@ -121,12 +130,82 @@ const T := {
 		"coach_hard": "繁复终究让位于从容的布局。",
 		"coach_expert": "万般可能，终成一形。",
 	},
+	"ja": {
+		"goal": "すべてを %d に折り重ねる",
+		"folds": "全 %d 折り",
+		"moves": "%d 手目",
+		"undo": "戻す",
+		"reset": "やり直す",
+		"hint": "スワイプか矢印キー · 同じ数字は合わさる · 一枚になるまで折る",
+		"win": "ぴたり",
+		"next": "次へ",
+		"retry": "もう一度",
+		"share": "記録を共有",
+		"parhint": "★3 は %d 手",
+		"level": "ステージ",
+		"done": "クリア",
+		"curated": "厳選",
+		"endless": "エンドレス",
+		"sfx": "効果音",
+		"ambience": "環境音",
+		"on": "オン",
+		"off": "オフ",
+		"kicker": "PLICATA · 合わせて、ひらく",
+		"tagline": "同じ盤面、灯りを落として。ひと段クリアするたび、彼女が一枚ずつ薄くなる。",
+		"snapline": "つまんで、運んで、ぴたりと。",
+		"rules": ["手早く折る。同じ数字は合わさって倍になる。",
+			"ひと段クリアでトロフィー、彼女のシーンがひらく。",
+			"連勝もデイリーも数える。稼いだぶんしか描かれない。"],
+		"fine": "%d の短いステージ · 25 のシーン",
+		"play": "はじめる",
+		"continue": "つづきから",
+		"levels_btn": "ステージ選択",
+		"tier": "段",
+		"scene": "シーン",
+		"locked": "ロック中",
+		"unlocked": "解放",
+		"clear_to_unlock": "この段をクリアで解放",
+		"trophy": "段クリア",
+		"unlock_scene": "彼女のシーンをひらく",
+		"delivering": "シーンを取得中…",
+		"not_delivered": "シーンが届きませんでした。表示できるものはありません。もう一度お試しください。",
+		"retry_fetch": "再試行",
+		"map_btn": "ステージ選択",
+		"streak": "連勝",
+		"daily": "デイリー",
+		"daily_line": "今日 %d ステージをクリア",
+		"daily_days": "%d 日連続",
+		"board": "ランキング",
+		"stub": "ローカル表示 · 通信なし",
+		"mosaic": "モザイク",
+		"close": "閉じる",
+		"placeholder_scene": "仮画像 · この段のシーンはまだ未収録",
+		"rating_18": "18+",
+		"back_to_map": "ステージ選択へ",
+		"nerd": "技術メモ",
+		"nerd_body": "保存量の決まった決定論パズル。エンドレス生成器は裏方に置く。ソルバーと強化学習はプレイ中に出てこない。",
+		"studio": "blazeCore Play",
+		"rating": "18+ · アダルト",
+		"back": "戻る",
+		"stars_1": "星ひとつ", "stars_2": "星ふたつ", "stars_3": "星みっつ",
+		"coach_easy": "最初の一折りは、これで決まり。",
+		"coach_medium": "空白にひそむ順序が、見えていた。",
+		"coach_hard": "複雑さが、静かな段取りに屈した。",
+		"coach_expert": "無数の可能性が、ひとつの形に。",
+	},
 }
 
-## The wordmark. The page draws 归一 for zh and FOLD for en, with the other as a subtitle;
-## scenes/title.gd draws the same pair as a designed mark rather than a Label.
-const WORDMARK := {"en": "FOLD", "zh": "归一"}
-const WORDMARK_SUB := {"en": "", "zh": "FOLD"}
+## The wordmark. Named 2026-09-20: the adult fork is PLICATA, not "FOLD: After Dark".
+##
+## Latin *plicāre*, to fold; *plicata* is the feminine perfect participle -- "she who has
+## been folded". Blaze chose the feminine over the plain noun *plica* (a crease) because
+## this fork's verb is folding paper away to reveal her, so the name should point at the
+## subject rather than at the object. The all-ages parent keeps FOLD.
+##
+## zh keeps 归一 as the second line rather than a translation: PLICATA is a name, and a
+## name is not translated. scenes/title.gd draws the pair as a designed mark, not a Label.
+const WORDMARK := {"en": "PLICATA", "zh": "PLICATA", "ja": "PLICATA"}
+const WORDMARK_SUB := {"en": "plicāre · to fold", "zh": "归一 · 夜场", "ja": "折る · 夜の卓"}
 
 var _coach := {}
 var _last_coach := ""
@@ -157,6 +236,17 @@ func set_lang(next: String) -> void:
 
 func toggle() -> void:
 	set_lang(LANGS[(LANGS.find(lang) + 1) % LANGS.size()])
+
+
+## What the language button should SAY: the language it will switch to, in that language.
+## The title screen used to hard-code `"中文" if lang == "en" else "EN"`, which with three
+## languages offers Chinese from English and English from everywhere else -- ja would have
+## been unreachable by the only control that reaches it.
+func next_lang_label() -> String:
+	match LANGS[(LANGS.find(lang) + 1) % LANGS.size()]:
+		"zh": return "中文"
+		"ja": return "日本語"
+		_: return "EN"
 
 
 func t(key: String) -> String:

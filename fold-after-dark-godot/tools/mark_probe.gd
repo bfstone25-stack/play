@@ -18,9 +18,9 @@ func _ready() -> void:
 	bg.color = Palette.PAPER
 	bg.size = Vector2(960, 380)
 	add_child(bg)
-	_add("en", Vector2(40, 30), Vector2(470, 150), 1.0)
-	_add("en", Vector2(40, 210), Vector2(116, 38), 1.15)   # the HUD lockup's real size
-	_add("zh", Vector2(540, 30), Vector2(380, 150), 1.0)
+	_add(VectorMark.NAME, Vector2(40, 30), Vector2(470, 150), 1.0)
+	_add(VectorMark.NAME, Vector2(40, 210), Vector2(116, 38), 1.15)   # the HUD lockup's real size
+	_add(VectorMark.NAME, Vector2(540, 210), Vector2(380, 120), 1.0)
 	await RenderingServer.frame_post_draw
 	await get_tree().process_frame
 	await RenderingServer.frame_post_draw

@@ -96,6 +96,12 @@ func _ready() -> void:
 	_sync()
 	_enter()
 	Tel.ev("intro_shown", {"language": I18n.lang})
+	# Her voice, once, after the logotype has drawn itself on -- ops/STANDARD.md item 5.
+	# Under the sting rather than over it: Sfx.logo() fires in _enter(), and two cues in
+	# the same instant is one cue nobody hears.
+	await get_tree().create_timer(2.4).timeout
+	if is_instance_valid(self):
+		Sfx.bark("greet")
 
 
 # --- the lit half -------------------------------------------------------------------------
@@ -155,6 +161,15 @@ func _build_stage() -> void:
 			tr.modulate = Color(PLANE_LIT, PLANE_LIT, PLANE_LIT, 1.0 if Art.has("key") else 0.0)
 		root.add_child(tr)
 		_planes.append(tr)
+
+	# The key visual is a kaleidoscope (Blaze's own render, 2026-09-21), so it turns.
+	#
+	# Rotation rather than the pan this screen used to do: panning a plate shows its edge
+	# the moment it moves further than the oversize margin, which is exactly the black
+	# border Blaze saw. A rotation about the centre never reaches an edge at all, provided
+	# the plate is scaled past the frame's diagonal -- for 16:9 that is 1.16, so 1.2 with
+	# a little to spare. The cost is one Tween and no per-frame work.
+	_spin_key()
 
 	# The key visual is a composition, not a wallpaper: it sits right of centre and the
 	# left third is veiled so the logotype and the menu have a ground to sit on.
@@ -265,6 +280,7 @@ func _build_ui() -> void:
 	_mark.shadow = Color(Palette.GROUND_DEEP, 0.95)
 	_mark.custom_minimum_size = Vector2(470, 150)
 	_mark.reveal = 0.0
+	_mark.unfold = 0.0               # the sheet starts folded shut; see `_enter`
 	_mark.pivot_offset = Vector2(235, 75)
 	col.add_child(_mark)
 
@@ -287,37 +303,29 @@ func _build_ui() -> void:
 	_menu.custom_minimum_size = Vector2(300, 0)
 	col.add_child(_menu)
 
-	var play := Button.new()
-	play.name = "Play"
-	_paper_button(play, "btn_play", 26, true)
+	var play := _fold_button("Play", Palette.ACCENT, 26, true)
 	play.pressed.connect(_play)
-	play.mouse_entered.connect(Sfx.slide)
 	_menu.add_child(play)
 
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 10)
 	_menu.add_child(row)
 
-	var levels := Button.new()
-	levels.name = "Levels"
-	_paper_button(levels, "btn_second", 20, false)
+	var levels := _fold_button("Levels", Palette.GOLD, 20, false)
 	levels.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	levels.pressed.connect(func(): _play(true))
-	levels.mouse_entered.connect(Sfx.slide)
 	row.add_child(levels)
 
-	var lang := Button.new()
-	lang.name = "Lang"
-	lang.theme_type_variation = "Ghost"
+	var lang := _fold_button("Lang", Palette.MUTED, 16, false)
+	lang.custom_minimum_size = Vector2(88, 46)
 	lang.pressed.connect(func():
 		I18n.toggle()
 		Sfx.slide()
 		Tel.ev("language_selected", {"language": I18n.lang}))
 	row.add_child(lang)
 
-	var sound := Button.new()
-	sound.name = "Sound"
-	sound.theme_type_variation = "Ghost"
+	var sound := _fold_button("Sound", Palette.MUTED, 16, false)
+	sound.custom_minimum_size = Vector2(96, 46)
 	sound.pressed.connect(func():
 		Sfx.set_music(not Sfx.music_on)
 		Sfx.set_sfx(Sfx.music_on)
@@ -368,7 +376,7 @@ func _build_ui() -> void:
 func _sync() -> void:
 	var col := _mark.get_parent()
 	(col.get_node("Kicker") as Label).text = I18n.t("rating_18") + "  ·  " + I18n.t("kicker")
-	_mark.mark = I18n.lang
+	_mark.mark = VectorMark.NAME     # a name is not translated; see vector_mark.gd
 	_sub.text = I18n.t("tagline")
 	for c in _rules.get_children():
 		c.queue_free()
@@ -387,11 +395,15 @@ func _sync() -> void:
 		h.add_child(StudioTheme.serif_label(str(line), 16, Palette.TEXT))
 		_rules.add_child(h)
 	var seen := Save.completed_count() > 0
-	(_menu.get_node("Play") as Button).text = I18n.t("continue") if seen else I18n.t("play")
+	# `label`, not `text`: a ShapedButton draws its own word so the shape can decide where
+	# the word sits, and it clears Button.text in _ready. Setting .text here would have set
+	# an invisible string on four buttons and left them blank — the same silent failure
+	# Ghost Channel's first three dials shipped with.
+	_set_label(_menu.get_node("Play"), I18n.t("continue") if seen else I18n.t("play"))
 	var row := _menu.get_child(1)
-	(row.get_node("Levels") as Button).text = I18n.t("levels_btn")
-	(row.get_node("Lang") as Button).text = "中文" if I18n.lang == "en" else "EN"
-	(row.get_node("Sound") as Button).text = ("♪ " + I18n.t("on")) if Sfx.music_on else ("♪ " + I18n.t("off"))
+	_set_label(row.get_node("Levels"), I18n.t("levels_btn"))
+	_set_label(row.get_node("Lang"), I18n.next_lang_label())
+	_set_label(row.get_node("Sound"), ("♪ " + I18n.t("on")) if Sfx.music_on else ("♪ " + I18n.t("off")))
 	var foot := get_node("CanvasLayer2/Foot") if has_node("CanvasLayer2/Foot") else null
 	if foot == null:
 		for c in get_children():
@@ -405,16 +417,26 @@ func _sync() -> void:
 
 func _enter() -> void:
 	Sfx.logo()
+	# The mark arrives in two beats, and the order matters. First the strokes draw on
+	# while the sheet is still PLEATED (`unfold = 0`), so what you watch being written is
+	# a concertina of paper standing on the baseline — unreadable as a word, and meant to
+	# be. Then the sheet opens left to right and the word is there.
+	#
+	# That is ops/STANDARD.md's ask for this title, literally: "letters folded from a
+	# single sheet, creases catching the light, unfolding as the title settles". Doing
+	# both beats at once was tried and it is mush: a stroke drawing on across a panel that
+	# is itself moving reads as a glitch rather than as paper.
 	var tw := create_tween()
 	tw.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tw.tween_property(_mark, "reveal", 1.0, 2.2)
+	tw.tween_property(_mark, "reveal", 1.0, 1.6)
+	tw.tween_property(_mark, "unfold", 1.0, 1.25).set_trans(Tween.TRANS_QUINT)
 	# the menu and the copy arrive after the mark, not with it
 	for node in [_sub, _rules, _menu]:
 		node.modulate.a = 0.0
 	var tw2 := create_tween().set_parallel(true)
-	tw2.tween_property(_sub, "modulate:a", 1.0, 0.7).set_delay(1.3)
-	tw2.tween_property(_rules, "modulate:a", 1.0, 0.7).set_delay(1.6)
-	tw2.tween_property(_menu, "modulate:a", 1.0, 0.7).set_delay(1.9)
+	tw2.tween_property(_sub, "modulate:a", 1.0, 0.7).set_delay(2.0)
+	tw2.tween_property(_rules, "modulate:a", 1.0, 0.7).set_delay(2.3)
+	tw2.tween_property(_menu, "modulate:a", 1.0, 0.7).set_delay(2.6)
 
 
 func _process(delta: float) -> void:
@@ -445,7 +467,10 @@ func _process(delta: float) -> void:
 	# The mark, once it has finished drawing on: a slow breath, and a shine sweeping
 	# across it every SHINE_EVERY seconds. Both are idle motion — the screen is never
 	# completely still, which is most of what separates a casual title from a poster.
-	if _mark and _mark.reveal >= 1.0:
+	# `unfold` as well as `reveal`: the shine sweep is a highlight travelling across FLAT
+	# paper, and running it over a half-open concertina puts a white band across panels
+	# that are meant to be edge-on to the light.
+	if _mark and _mark.reveal >= 1.0 and _mark.unfold >= 1.0:
 		var s := 1.0 + 0.012 * sin(_t * 1.35)
 		_mark.scale = Vector2(s, s)
 		_mark.rotation = 0.006 * sin(_t * 0.9 + 0.6)
@@ -460,54 +485,43 @@ func _process(delta: float) -> void:
 # --- going in ---------------------------------------------------------------------------------
 
 
-## Give a button its form from ART rather than from a StyleBoxFlat — studio rule 2, which
-## the fork inherited a violation of straight from the all-ages parent. PLAY and TIER MAP
-## were a magenta pill and a gold pill with a corner radius, sitting in front of a real
-## key visual and a designed vector mark; ops/adult_forks/TITLE_SCREENS.md records Blaze
-## rejecting exactly that shape on After Six.
+## The menu buttons are folded paper, drawn — shared/godot/shaped_button.gd, Shape.FOLD.
 ##
-## The plates are folded paper tabs (ops/fold_dark_title.py) — a crease under the label, a
-## turned corner catching the lamp, a torn foot. Nine-patch, so one plate serves any
-## width: TAB_MARGIN here is the contract with that file's MARGIN, and everything inside
-## it is flat stretchable field while every detail that must not stretch lives outside it.
-## Change one and change the other.
+## What was here before was a pair of nine-patch PNG tabs (ops/fold_dark_title.py), and
+## the argument for them was sound: a plate is art, a StyleBoxFlat is not. The captured
+## title frame settled it anyway. Stretched across a 520-wide menu column, the plate's
+## folded corner shrank to a 20 px notch in the top-right and everything between the
+## nine-patch margins was flat field, so PLAY read as a magenta rectangle and TIER MAP as
+## a gold one — studio rule 4, with a render to pay for it.
 ##
-## Hover and press are done by MOVING and LIGHTING the paper, not by swapping a colour:
-## hover lifts it a little toward the lamp, press pushes it down into the page. A piece of
-## paper that changes hue when you point at it is a rectangle again.
-const TAB_MARGIN := 44
-
-func _paper_button(b: Button, plate: String, size: int, lead: bool) -> void:
-	var tex: Texture2D = Art.plate(plate)
-	if tex == null:
-		return                                   # no plate on disk: leave the theme's own
-	var sb := StyleBoxTexture.new()
-	sb.texture = tex
-	for side in ["left", "top", "right", "bottom"]:
-		sb.set("texture_margin_" + side, TAB_MARGIN)
-	sb.content_margin_left = 18
-	sb.content_margin_right = 18
-	sb.content_margin_top = 12
-	sb.content_margin_bottom = 16
-	var hover := sb.duplicate()
-	hover.modulate_color = Color(1.12, 1.10, 1.10)       # lifted toward the lamp
-	var pressed := sb.duplicate()
-	pressed.modulate_color = Color(0.86, 0.84, 0.86)     # pushed into the page
-	pressed.content_margin_top = 14
-	pressed.content_margin_bottom = 14
-	b.add_theme_stylebox_override("normal", sb)
-	b.add_theme_stylebox_override("hover", hover)
-	b.add_theme_stylebox_override("pressed", pressed)
-	b.add_theme_stylebox_override("focus", sb)
-	b.add_theme_stylebox_override("disabled", sb)
+## Drawn, the corner is a fixed fraction of the button at any width, it OPENS on hover
+## (the whole game is folding, so the button folds), and the label stays a real Label-ish
+## draw_string so zh and ja keep working. assets/art/btn_play.png and btn_second.png are
+## left on disk and still listed in Art.SLOTS: they are the ad-track fallback nothing else
+## claims, and deleting a plate to prove a point is how a slot silently becomes missing.
+func _fold_button(name: String, tint: Color, size: int, lead: bool) -> ShapedButton:
+	var b := ShapedButton.new()
+	b.name = name
+	b.shape = ShapedButton.Shape.FOLD
+	b.tint = tint
+	# The ink is the paper's own dark, not the theme's off-white: FOLD is a FILLED shape,
+	# and pale type on a hot magenta fill is the one combination this palette cannot carry.
+	b.ink = Palette.INK
 	b.add_theme_font_override("font", StudioTheme.font("display"))
 	b.add_theme_font_size_override("font_size", size)
-	b.add_theme_color_override("font_color", Palette.TEXT)
-	b.add_theme_color_override("font_hover_color", Color(1, 1, 1))
-	b.add_theme_color_override("font_pressed_color", Palette.TEXT)
-	b.add_theme_color_override("font_outline_color", Color(Palette.INK, 0.85))
-	b.add_theme_constant_override("outline_size", 6)
-	b.custom_minimum_size.y = 58 if lead else 52
+	b.custom_minimum_size = Vector2(300 if lead else 180, 58 if lead else 52)
+	b.mouse_entered.connect(Sfx.slide)
+	return b
+
+
+## Set the word on a ShapedButton and make it redraw. Plain Buttons would take `text`;
+## these draw their own, so the property is `label`.
+func _set_label(node: Node, word: String) -> void:
+	if node is ShapedButton:
+		(node as ShapedButton).label = word
+		(node as ShapedButton).queue_redraw()
+	elif node is Button:
+		(node as Button).text = word
 
 
 func _play(pick: bool = false) -> void:
@@ -634,3 +648,24 @@ func _demo_tick(delta: float) -> void:
 			var pop := create_tween()
 			pop.tween_property(node, "scale", Vector2(1.14, 1.14), 0.1).set_delay(0.1)
 			pop.tween_property(node, "scale", Vector2.ONE, 0.13).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+
+## Turn the kaleidoscope, slowly, forever.
+##
+## 44 seconds for a full sweep either way: fast enough that the screen is alive while the
+## menu is read, slow enough that it is never the thing being looked at. The scale is set
+## once and not animated -- a breathing zoom on top of the rotation reads as drift, and
+## the plate is a pattern, so drift looks like a rendering fault rather than a choice.
+func _spin_key() -> void:
+	if _planes.is_empty():
+		return
+	var key: TextureRect = _planes[_planes.size() - 1]
+	if not Art.has("key"):
+		return
+	key.pivot_offset = key.size / 2.0
+	# 1.16 is the diagonal ratio of a 16:9 rect; past it no rotation can expose a corner.
+	key.scale = Vector2(1.2, 1.2)
+	key.rotation_degrees = -1.6
+	var tw := create_tween().set_loops()
+	tw.tween_property(key, "rotation_degrees", 1.6, 44.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tw.tween_property(key, "rotation_degrees", -1.6, 44.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

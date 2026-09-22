@@ -9,6 +9,11 @@ the three places FOLD's Chinese actually comes from —
 
   data/levels.json    201 level names, "中文 / English"
   data/coach_tips.json  the coach's lines, all languages (zh is the one that matters)
+  data/steps.json     the origami diagram step captions Origami reads (2026-09-21;
+                       PLICATA's own file, not carried from the parent — this is the set
+                       that went missing the first time the subset was rebuilt after
+                       Origami shipped, 143 characters short, all of them in the her-band
+                       fold vocabulary: 腰, 裾, 翻, 结 and the rest)
   scripts/*.gd, scenes/*.gd   the UI strings in scripts/i18n.gd
 
 — plus the punctuation and the two glyphs the title screen draws by hand.
@@ -32,7 +37,7 @@ OUT = HERE / "assets/fonts/NotoSansCJK-subset.otf"
 
 chars: set[str] = set()
 
-for name in ("levels.json", "coach_tips.json"):
+for name in ("levels.json", "coach_tips.json", "steps.json"):
     chars |= set((HERE / "data" / name).read_text(encoding="utf-8"))
 
 for p in list(HERE.glob("scripts/*.gd")) + list(HERE.glob("scenes/*.gd")):

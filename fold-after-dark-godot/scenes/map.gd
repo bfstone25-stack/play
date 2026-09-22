@@ -81,7 +81,7 @@ func _build() -> void:
 	head.add_theme_constant_override("separation", 16)
 	col.add_child(head)
 	var mark := VectorMark.new()
-	mark.mark = I18n.lang
+	mark.mark = VectorMark.NAME
 	mark.custom_minimum_size = Vector2(116, 38)
 	mark.weight = 1.15
 	mark.ink = Palette.ACCENT
