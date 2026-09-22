@@ -155,6 +155,12 @@ with sync_playwright() as p:
     # stayed on the title screen. Caught 2026-09-21: this test used to boot straight to
     # the table before the title screen existed, and nobody updated it when the title
     # screen was added.
+    # Shoot the title BEFORE leaving it. This driver opened "home" first and took its
+    # first frame there, so the game's actual title screen -- wordmark, key visual and all
+    # -- had never once been captured. Every brightness reading anyone took for Night
+    # Reading was of the reading table instead, and the board carried the table as this
+    # game's face.
+    shot("title")
     cmd("open", screen="home")
     shot("table")
 
