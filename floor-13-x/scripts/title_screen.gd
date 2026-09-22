@@ -121,6 +121,23 @@ func _build() -> void:
 	overlay.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	overlay.position = Vector2.ZERO
 	overlay.size = Vector2(640, 360)
+	# 2026-09-22. This baked plate is 0.05 brightness -- effectively a black veil -- and
+	# drawing it opaque took the composed title from a key visual that measures 0.66/0.36
+	# on its own down to 0.33, against a Nutaku shelf that averages 0.63. Half the
+	# brightness of a plate that was already on shelf, spent on an overlay.
+	#
+	# Third title tonight with exactly this shape: PLICATA's veil, Night Reading's scrim,
+	# this. The plates are fine; the darkness is being added on top of them. See
+	# ops/market/CRAZYGAMES_SHELF.md -- five of six adult titles sit below a shelf whose
+	# own covers are lit and warm rather than noir.
+	#
+	# Eased rather than removed, because this texture also carries the ink column the
+	# logotype and menu sit against.
+	# 0.55 lit the figure but also thinned the ink column this plate bakes in alongside
+	# the vignette, and the body copy that sits on that column lost its ground. One
+	# texture, two jobs, so the alpha is a single tradeoff rather than two dials. 0.75
+	# keeps the column readable and still recovers most of the brightness.
+	overlay.modulate.a = 0.75
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(overlay)
 
