@@ -20,7 +20,11 @@ from playwright.sync_api import sync_playwright
 
 HERE = Path(__file__).resolve().parent
 PROJ = HERE.parent
-WEB = PROJ.parent.parent / "build" / "godot" / "beat-monday" / "web"
+# Was "beat-monday" -- a copy-paste from the sibling driver, so After Six's own
+# headless test has been opening Beat the Monday's build. Whatever it asserted, it
+# asserted about the wrong game. Found 2026-09-22 while running every bespoke
+# driver after their shot naming was fixed.
+WEB = PROJ.parent.parent / "build" / "godot" / "after-six" / "web"
 SHOTS = PROJ / "shots"
 SHOTS.mkdir(exist_ok=True)
 for old in SHOTS.glob("*.png"):
