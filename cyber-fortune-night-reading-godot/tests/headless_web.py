@@ -252,9 +252,16 @@ with sync_playwright() as p:
           "pressing again asks the page again rather than reusing the 'no'")
     # Let it run to the end: on this box the page serves gate.js's QA sponsor slot (no
     # Adsterra creative reaches an automated browser), which is the same path a real
-    # completed clip takes — the countdown, then Continue.
+    # completed clip takes — the countdown (gate.js's own 30s, cfg().seconds default),
+    # then Continue. The button exists (and matches get_by_text) from the moment the
+    # overlay opens -- it starts disabled, so the click has to land in the window after
+    # the countdown actually finishes, not just find the element. Twice measured on this
+    # box loaded with ~20 other agents' Chrome/Godot processes: real time to a landed
+    # click ran past the previous 60s budget, which starved the poll below of ever
+    # seeing "unlocked" even though the gate resolved correctly a bit later (proved by
+    # "the night finishes" passing further down). Widened rather than guessed at once.
     t0 = time.time()
-    while time.time() - t0 < 60:
+    while time.time() - t0 < 180:
         btn = page.get_by_text("Continue")
         if btn.count():
             try:
@@ -267,7 +274,7 @@ with sync_playwright() as p:
     # resolve -- a fixed 4s sleep here raced that poll under load and reported the gate
     # as still locked when "finish" a few lines later proved it wasn't. Poll instead.
     t0 = time.time()
-    while time.time() - t0 < 20 and not state().get("scene", {}).get("unlocked", False):
+    while time.time() - t0 < 30 and not state().get("scene", {}).get("unlocked", False):
         time.sleep(0.5)
     check(state().get("scene", {}).get("unlocked", False),
           "a completed sponsor slot opens the night")
@@ -281,6 +288,13 @@ with sync_playwright() as p:
     shot("table-after")
 
     print("\n== it survives a reload")
+    # save_state()'s FS.syncfs(false, cb) is async and fire-and-forget on the GDScript
+    # side -- it returns as soon as the eval is issued, not when IndexedDB has actually
+    # been written. shot("table-after") above already gives it ~0.7s; a couple more
+    # seconds of margin under a loaded shared box costs nothing a player would notice
+    # (this reload is scripted, not a click) and removes a race the fix itself can't
+    # close from the GDScript side without a real callback round-trip.
+    time.sleep(3)
     page.reload()
     t0 = time.time()
     while time.time() - t0 < 90:
