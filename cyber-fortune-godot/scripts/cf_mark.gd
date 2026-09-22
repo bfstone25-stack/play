@@ -119,7 +119,12 @@ func _draw() -> void:
 	var base := Vector2(cx, size_px * 1.05)
 
 	# the stamp, back to front: lacquer under-shadow, paper keyline, gold face, pale lift
-	_word(f, word, size_px, base, Color(Palette.LACQUER_DEEP, 0.55), Vector2(0, 6))
+	# Under-shadow 0.55 -> 0.85, 2026-09-22. This stamp was designed against the dark
+	# ground it used to sit on; the title plate is now a lit lantern scene (graded for the
+	# clicker shelf, which is bright and saturated) and a pale gold face over a soft red
+	# shadow stopped separating from it. Deepening the shadow rather than darkening the
+	# plate keeps the shelf number and gives the mark its edge back.
+	_word(f, word, size_px, base, Color(Palette.LACQUER_DEEP, 0.85), Vector2(0, 6))
 	for i in range(10):
 		var a := TAU * float(i) / 10.0
 		_word(f, word, size_px, base, Color(Palette.PAPER, 0.95),
