@@ -1,6 +1,6 @@
 extends Control
 
-## Midnight Pawn: Collateral — the runner and the UI.
+## LIEN — the runner and the UI (adult fork of Midnight Pawn & Crypt).
 ##
 ## The layout is the base game's, rebuilt rather than reinvented: a 300x240 pixel scene
 ## window on the left, an info column on the right, a row of action buttons along the
@@ -30,6 +30,24 @@ const GROUNDS := {
 const PixelDisplayFont = preload("res://assets/fonts/midnight_pixel_16.fnt")
 const TitleScreenScript = preload("res://scripts/title_screen.gd")
 const TitleAudioScript = preload("res://scripts/title_audio.gd")
+## ops/STANDARD.md rule 4: the control the player presses is an object from the
+## fiction. Every button in this game is a pawn TAG -- the ticket tied to a pledge,
+## which is literally what the shop hands you. shared/godot/shaped_button.gd reserved
+## Shape.TAG for Midnight Pawn and nothing here had ever used it.
+const ShapedButtonScript = preload("res://scripts/shaped_button.gd")
+
+
+## One constructor so all four button sites agree. `compact` because the canvas is the
+## base game's 640x360 and the library's 220x56 floor is sized for a 1280x720 title.
+static func _tag(txt: String, w: float, h: float, col: Color = GOLD) -> ShapedButton:
+	var b: ShapedButton = ShapedButtonScript.new()
+	b.compact = true
+	b.shape = ShapedButton.Shape.TAG
+	b.tint = col
+	b.ink = Color("#17121c")
+	b.label = txt
+	b.custom_minimum_size = Vector2(w, h)
+	return b
 
 const BG := Color("#100d18")
 const PANEL := Color("#201928")
@@ -82,6 +100,8 @@ var ledger_from_beat := false
 var ground: TextureRect
 var splash: ColorRect
 var splash_open := false
+## The gate's affirmative, so a keypress can press the button rather than bypass it.
+var splash_enter: ShapedButton
 var title_screen: TitleScreen
 var title_audio: TitleAudio
 
@@ -98,7 +118,20 @@ func _ready() -> void:
 	# which is the "office software" screen Blaze rejected by name. Every build now shows
 	# it. The headless tests still do not -- they have no display and dismiss_splash is
 	# still the only way through.
-	if not OS.has_feature("headless"):
+	#
+	# 2026-09-21: this guard was `OS.has_feature("headless")`, which is FALSE under
+	# --headless on Godot 4.7 -- the display driver is named "headless" but no feature tag
+	# of that name is ever set. So from the 2026-09-20 change that gave every build the
+	# title screen, the splash opened in the test harness too; `advance()` returns early
+	# while `splash_open`, so all five routes in tests/playthrough.gd spun 4000 no-op
+	# iterations and reported "route did not terminate". The tests had been red ever
+	# since and the README still quoted the old green output.
+	#
+	# It is the same fault the matrix was showing from the outside: four tiles, all of
+	# them this screen. One unverified feature string closed the front door on the
+	# players AND on the tests that would have said so. Ask the display server its name,
+	# which is a thing it actually knows. tests/headless.gd holds this down.
+	if DisplayServer.get_name() != "headless":
 		_show_splash()
 
 
@@ -176,9 +209,7 @@ func _build_ui() -> void:
 	header.add_theme_color_override("font_color", CREAM)
 	header.add_theme_font_size_override("font_size", 12)
 	top.add_child(header)
-	var ledger_button := Button.new()
-	ledger_button.text = "Ledger"
-	ledger_button.custom_minimum_size = Vector2(60, 22)
+	var ledger_button := _tag("Ledger", 74, 24)
 	ledger_button.pressed.connect(open_ledger)
 	top.add_child(ledger_button)
 
@@ -271,14 +302,30 @@ func _clear_actions() -> void:
 
 
 func _add_action(text: String, on_press: Callable, color: Color = CREAM) -> Button:
-	var b := Button.new()
-	b.text = text
-	b.add_theme_color_override("font_color", color)
+	var b := _tag(text, 0, 30, color)
+	b.add_theme_font_override("font", PixelBodyFont)
 	b.add_theme_font_size_override("font_size", 12)
-	b.custom_minimum_size.y = 26
+	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	b.pressed.connect(on_press)
 	actions.add_child(b)
+	# The first action is focused, so Enter/Space works the choice menu without a mouse.
+	# It is also what lets ops/play_driver.py past a choice at all: the driver presses
+	# keys and clicks a fixed grid, and a choice row that only answers to a precise click
+	# is a wall. See the gate note in _show_splash.
+	if actions.get_child_count() == 1:
+		# Deferred, because a Control cannot take focus in the same frame it is added --
+		# and guarded, because _clear_actions() removes these from the tree the moment the
+		# next beat lands. Ungurded this printed one "!is_inside_tree()" per line of prose
+		# in the playthrough test: harmless, and exactly the kind of noise that hides a
+		# real error in a log nobody can read.
+		_focus_soon.call_deferred(b)
 	return b
+
+
+## Focus a control if it is still in the tree by the time the deferred call lands.
+func _focus_soon(c: Control) -> void:
+	if is_instance_valid(c) and c.is_inside_tree():
+		c.grab_focus()
 
 
 func _refresh_header() -> void:
@@ -466,7 +513,7 @@ func _finish(id: String) -> void:
 		detail.append_text("[color=#c8b8b0]%s There are three more objects in the book tonight and one of them has your name on the ticket.[/color]\n\n" % lead)
 		detail.append_text("[color=#7f7a8c]Till: %d · readings taken: %d · against the estate: %d[/color]" % [
 			run.till, run.readings_taken.size(), C.DEBT])
-		footer.text = "Midnight Pawn: Collateral — the whole night, nothing censored."
+		footer.text = "LIEN — the whole night, nothing censored."
 		_add_action("Open the Reading Ledger", open_ledger, GOLD)
 		_add_action("Price them differently", restart, MUTED)
 	else:
@@ -530,9 +577,7 @@ func open_ledger() -> void:
 	tally.add_theme_font_size_override("font_size", 12)
 	ledger_box.add_child(tally)
 
-	var close := Button.new()
-	close.text = "Close the book"
-	close.custom_minimum_size = Vector2(160, 26)
+	var close := _tag("Close the book", 170, 30)
 	close.pressed.connect(close_ledger)
 	ledger_box.add_child(close)
 	ledger_layer.visible = true
@@ -590,7 +635,7 @@ func _show_splash() -> void:
 		["An adult fork of Midnight Pawn & Crypt.", CREAM, 12],
 		["18+ only. Everyone depicted is an adult and is written as one.", CREAM, 12],
 		["Sexual content, grief, and a shop that prices both.", TITLE_MUTED, 12],
-		["The artwork is AI-assisted, directed and culled by hand. The writing is human.", TITLE_MUTED, 12],
+		["Made with AI in the loop and a person steering it.", TITLE_MUTED, 12],
 	]
 	for spec in lines:
 		var l := Label.new()
@@ -603,18 +648,38 @@ func _show_splash() -> void:
 	row.alignment = BoxContainer.ALIGNMENT_BEGIN
 	row.add_theme_constant_override("separation", 8)
 	box.add_child(row)
-	var enter := Button.new()
-	enter.text = "I am 18 or older — open the shop"
-	enter.custom_minimum_size = Vector2(220, 26)
+	# 2026-09-21, found by shooting the game rather than by reading it. The matrix
+	# (ops/play_matrix.py) reported four stages and all four were THIS screen: the title
+	# with the consent card on it, differing only by the lamp flicker. Nothing in the
+	# build was broken -- the gate simply could not be got through.
+	#
+	# Two faults, and the second is the real one:
+	#
+	#  1. The affirmative was a 220x26 control at the left edge of a 640x360 canvas, i.e.
+	#     a 440x52 target in the bottom-left twelfth of a 1280x720 window. A player finds
+	#     it; a grid of clicks does not, and neither does a thumb.
+	#  2. `_unhandled_input` returns early while `splash_open`, so NO key did anything.
+	#     There was exactly one way through the front door of this game and it was a
+	#     mouse click on a small rectangle. Off a trackpad that is a bad gate; on a
+	#     keyboard it is a locked one.
+	#
+	# So: the affirmative is a full-width TAG, it takes focus on open, and Enter/Space
+	# presses it. The keypress is still an affirmative act on a control that says what it
+	# is -- the consent is not weakened, it is reachable. `Leave` stays small and stays
+	# beside it, because the two must not be symmetrical.
+	row.alignment = BoxContainer.ALIGNMENT_BEGIN
+	var enter := _tag("I am 18 or older — open the shop", 300, 34)
+	enter.add_theme_font_override("font", PixelBodyFont)
+	enter.add_theme_font_size_override("font_size", 12)
 	enter.pressed.connect(dismiss_splash)
 	row.add_child(enter)
-	var leave := Button.new()
-	leave.text = "Leave"
-	leave.custom_minimum_size = Vector2(60, 26)
+	var leave := _tag("Leave", 86, 34, TITLE_MUTED)
+	leave.add_theme_font_override("font", PixelBodyFont)
+	leave.add_theme_font_size_override("font_size", 12)
 	leave.pressed.connect(func() -> void: JavaScriptBridge.eval("location.href='https://free.blazecore.dev/'"))
 	row.add_child(leave)
-	title_screen.style_button(enter)
-	title_screen.style_button(leave)
+	splash_enter = enter
+	_focus_soon.call_deferred(enter)
 
 	# The rating and the studio line, small and fixed, bottom corners.
 	var rating := Label.new()
@@ -647,12 +712,24 @@ func dismiss_splash() -> void:
 	splash_open = false
 	splash.queue_free()   # takes the title screen and its generator with it
 	splash = null
+	splash_enter = null
 	title_screen = null
 	title_audio = null
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if ledger_open or finished or awaiting_choice or splash_open:
+	# The gate is the one overlay that answers keys, and it answers them by pressing its
+	# own affirmative button rather than by calling dismiss_splash() behind the button's
+	# back -- so the press is visible, it makes the UI sound, and there is still exactly
+	# one code path through the gate. See _show_splash.
+	if splash_open:
+		if event.is_action_pressed("interact") or event.is_action_pressed("ui_accept"):
+			if splash_enter != null:
+				splash_enter.grab_focus()
+			dismiss_splash()
+			get_viewport().set_input_as_handled()
+		return
+	if ledger_open or finished or awaiting_choice:
 		return
 	if event.is_action_pressed("interact"):
 		advance()

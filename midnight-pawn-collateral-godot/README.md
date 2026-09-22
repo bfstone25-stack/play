@@ -1,4 +1,8 @@
-# Midnight Pawn: Collateral (Godot)
+# LIEN (Godot)
+
+*Renamed 2026-09-21, per Blaze — was "Midnight Pawn: Collateral". `ops/STANDARD.md`'s rule
+on forks: a fork needs its own name, not the parent's name plus a suffix. LIEN is a
+creditor's claim on property you still hold — a pawnshop term, and what this game runs on.*
 
 The adult (18+) fork of *Midnight Pawn & Crypt*, as a **Godot 4.7 2D pixel game** — which
 is what the base game is, and what a fork of it has to be.
