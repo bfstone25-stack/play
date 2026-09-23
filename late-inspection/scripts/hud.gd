@@ -589,7 +589,9 @@ func apply_locale() -> void:
 		lines.append(Loc.t("splash.hint"))
 		splash_title.text = "\n".join(lines)
 		if title_screen:
-			title_screen.style_label(splash_title, 18, Color(0.86, 0.90, 0.85))
+			# Ink, not bone: the form sheet under this label became real paper on
+			# 2026-09-22 and light type on paper is invisible.
+			title_screen.style_label(splash_title, 18, Color(0.17, 0.20, 0.17))
 		else:
 			UiFont.apply_label(splash_title)
 	if splash_enter:

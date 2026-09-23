@@ -107,8 +107,11 @@ const BG_OFFSET := Vector2(-8.0, 0.0)
 ## 418x474 keeps the paper the type needs and gives the rest of the frame back to the
 ## corridor. The primary control moved out of this column entirely (hud.gd ENTER_RECT).
 const FORM_POS := Vector2(14.0, 22.0)
-const FORM_SIZE := Vector2(418.0, 474.0)
-const FORM_RULES := [228.0, 330.0]
+# Height cut 474 -> 352 on 2026-09-22: once the sheet became real paper, the 140 px of
+# empty paper under the field row read as a blank panel rather than as a form. A form
+# ends where its last field ends.
+const FORM_SIZE := Vector2(418.0, 352.0)
+const FORM_RULES := [228.0, 292.0]
 
 ## Palette: the damp green of the building, the amber of the torch, ink for everything
 ## the type has to survive.
@@ -260,14 +263,14 @@ func _form_sheet() -> void:
 	add_child(sheet)
 
 	# border
-	var b := Color(DAMP.r, DAMP.g, DAMP.b, 0.40)
+	var b := Color(INK.r, INK.g, INK.b, 0.45)
 	_rect(FORM_POS, Vector2(FORM_SIZE.x, 1), b)
 	_rect(FORM_POS + Vector2(0, FORM_SIZE.y - 1), Vector2(FORM_SIZE.x, 1), b)
 	_rect(FORM_POS, Vector2(1, FORM_SIZE.y), b)
 	_rect(FORM_POS + Vector2(FORM_SIZE.x - 1, 0), Vector2(1, FORM_SIZE.y), b)
 
 	# registration ticks: an L in each corner, off the paper's own edge
-	var tick := Color(AMBER.r, AMBER.g, AMBER.b, 0.55)
+	var tick := Color(0.42, 0.30, 0.10, 0.75)
 	for sx in [0.0, 1.0]:
 		for sy in [0.0, 1.0]:
 			var c := FORM_POS + Vector2(FORM_SIZE.x * sx, FORM_SIZE.y * sy)
@@ -279,7 +282,7 @@ func _form_sheet() -> void:
 	# field rules, inset from the paper edge the way a printed rule is
 	for y in FORM_RULES:
 		_rect(Vector2(FORM_POS.x + 16.0, float(y)), Vector2(FORM_SIZE.x - 32.0, 1),
-			Color(DAMP.r, DAMP.g, DAMP.b, 0.26))
+			Color(INK.r, INK.g, INK.b, 0.30))
 
 	_field_row()
 	_stamp()
@@ -303,9 +306,9 @@ func _field_row() -> void:
 	l.add_theme_font_size_override("font_size", 15)
 	# Paper value, not damp green: this line sits over the lit end of the corridor, which
 	# is the brightest thing on the screen, and a mid-green at 0.82 disappeared into it.
-	l.add_theme_color_override("font_color", Color(0.80, 0.86, 0.80, 0.92))
-	l.add_theme_color_override("font_outline_color", INK)
-	l.add_theme_constant_override("outline_size", 5)
+	l.add_theme_color_override("font_color", Color(0.16, 0.19, 0.16, 0.92))
+	l.add_theme_color_override("font_outline_color", PAPER)
+	l.add_theme_constant_override("outline_size", 3)
 	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(l)
 
@@ -321,7 +324,7 @@ func _stamp() -> void:
 	# the whole point of the stamp: half on the paper, half on the wet floor behind it. At
 	# the old (352, 586) it was clear of the shortened sheet entirely — a stamp floating on
 	# the corridor — and it landed on the language row's new position as well.
-	s.position = Vector2(232, 462)
+	s.position = Vector2(214, 344)
 	s.pivot_offset = s.size * 0.5
 	s.rotation = deg_to_rad(-8.0)
 	s.modulate = Color(1, 1, 1, 0.62)
@@ -378,12 +381,18 @@ func _paper(w: int, h: int) -> ImageTexture:
 		# flick 1.10 — the corridor's bright phase — and the thin foot of the sheet lost
 		# the body type. The number that matters is the BRIGHT frame, not the average one;
 		# the title is a live screen and the reader sees every phase of it.
-		var a := lerpf(0.58, 0.48, k * k)
-		var g := lerpf(0.0, 0.5, k)         # the damp coming up through the paper
+		# 2026-09-22: this sheet used to be INK at 0.48-0.58 alpha -- a dark translucent
+		# rectangle, i.e. exactly the scrim that ops/market/CRAZYGAMES_TITLES.md counted
+		# ZERO of in 64 shelf covers. A survey form is paper. It is now paper: near
+		# opaque, PAPER-coloured, with the damp coming up green through the foot, which
+		# is also what lifts this title off the shelf floor.
+		var a := lerpf(0.96, 0.90, k * k)
+		var g := lerpf(0.0, 1.0, k * k)     # the damp coming up through the paper
 		for x in w:
-			var n := rng.randf_range(-0.012, 0.012)
-			img.set_pixel(x, y, Color(INK.r, INK.g + g * 0.05, INK.b + g * 0.03,
-				clampf(a + n, 0.0, 1.0)))
+			var n := rng.randf_range(-0.015, 0.015)
+			var c := Color(PAPER.r - g * 0.16, PAPER.g - g * 0.06, PAPER.b - g * 0.13,
+				clampf(a + n, 0.0, 1.0))
+			img.set_pixel(x, y, Color(c.r + n, c.g + n, c.b + n, c.a))
 	return ImageTexture.create_from_image(img)
 
 
