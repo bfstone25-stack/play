@@ -171,6 +171,29 @@ func _mk_btn(n: String, off: Vector2, size: Vector2) -> ShapedButton:
 	UiFont.apply_button(b)
 	return b
 
+func _obj_btn(n: String, tex: String, off: Vector2, size: Vector2, obj: float) -> ObjectButton:
+	var b := ObjectButton.new()
+	b.name = n
+	if tex != "" and ResourceLoader.exists(tex):
+		b.object_texture = load(tex)
+		b.object_size = obj
+	else:
+		b.object_size = 0.0
+		b.gap = 0.0
+	b.motion = ObjectButton.Motion.TURN
+	b.label_color = Color("#f4efdc")
+	b.accent_color = Color("#ffc46a")
+	b.ink = Color("#060907")
+	b.outline_px = 5
+	b.shadow_px = 0
+	b.set_anchors_preset(Control.PRESET_CENTER)
+	b.offset_left = off.x
+	b.offset_top = off.y
+	b.offset_right = off.x + size.x
+	b.offset_bottom = off.y + size.y
+	b.add_theme_font_size_override("font_size", 22 if obj > 0.0 else 18)
+	return b
+
 ## Set the visible words on a title/menu button whether or not it is a ShapedButton.
 ## ShapedButton draws its own text from `label` and clears Button.text in _ready -- writing
 ## .text directly on one of these draws nothing (shaped_button.gd's own header warns about
@@ -276,7 +299,7 @@ func _splash() -> void:
 		var code := str(codes[i])
 		var col := i % 3
 		var row := int(i / 3)
-		var b := _mk_btn("Lang_%s" % code, Vector2(-576 + col * 186, 0 + row * 50), Vector2(174, 44))
+		var b := _obj_btn("Lang_%s" % code, "", Vector2(-576 + col * 186, 0 + row * 50), Vector2(174, 44), 0.0)
 		_btn_text(b, str(Loc.NATIVE[code]))
 		b.pressed.connect(func() -> void: Loc.set_code(code))
 		title_screen.style_button(b)
@@ -294,7 +317,10 @@ func _splash() -> void:
 	info.text = "18+  ·  A night inspection in first person, 40 minutes, three endings.\nEveryone in the building is an adult. Headphones recommended."
 	title_screen.style_label(info, 13, Color(0.78, 0.8, 0.7, 1))
 	splash.add_child(info)
-	splash_enter = _mk_btn("Enter", Vector2(-576, 190), Vector2(400, 54))
+	# 2026-09-23: entering is signing the clause -- the fountain pen, an ObjectButton, not a
+	# torn summons stub (ops/STANDARD.md, "Buttons are objects from the game"). Languages
+	# are outlined words: a settings word needs neither a prop nor a box.
+	splash_enter = _obj_btn("Enter", "res://assets/title/btn_pen.png", Vector2(-576, 180), Vector2(460, 70), 64.0)
 	splash_enter.name = "EnterBuilding"
 	title_screen.style_button(splash_enter)
 	splash_enter.pressed.connect(enter_building)

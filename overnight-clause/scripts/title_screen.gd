@@ -124,7 +124,10 @@ func _build_2d() -> void:
 	# baked 0.05-brightness overlay drawn opaque on top. PLICATA's veil, Night Reading's
 	# scrim and HOLDOVER's overlay were all this. The plates are fine; the darkness is
 	# added afterwards, and the shelf does not sell noir. See ops/market/CRAZYGAMES_SHELF.md.
-	overlay.modulate.a = 0.75
+	# 2026-09-23, adult title pass: 0.75 -> 0.4 -- the baked overlay's column is a darkening
+	# under the type, which 0 of 33 Nutaku tiles use; the new plate is lit and the type
+	# carries its own outline.
+	overlay.modulate.a = 0.4
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(overlay)
 
@@ -236,6 +239,10 @@ func style_label(l: Label, size: int, color: Color, bold := false) -> void:
 ## Buttons set like lines on the inspection form: mono, a bracket at the left, the
 ## bracket goes amber (the torch) on hover and the line goes bone on press.
 func style_button(b: Button) -> void:
+	# ObjectButtons draw their own label; font colours here would make Button draw it twice.
+	if b is ObjectButton:
+		b.add_theme_font_override("font", FONT_BOLD)
+		return
 	b.add_theme_font_override("font", FONT_BOLD)
 	b.add_theme_font_size_override("font_size", 18)
 	b.add_theme_color_override("font_color", Color("#cfd6c6"))
