@@ -176,10 +176,11 @@ func _build() -> void:
 		logo.texture = load(LOGO_PATH)
 	logo.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	logo.stretch_mode = TextureRect.STRETCH_KEEP
-	logo.size = Vector2(480, 150)
+	logo.size = Vector2(300, 170)
 	# The mark is 480x150 with its ink between rows 15 and 96 of the frame once placed
 	# here; drawn at 1:1, never scaled by a non-integer factor.
-	logo.position = Vector2(80, _logo_target)
+	# top-left, stacked, over the menu column -- the character owns the right half
+	logo.position = Vector2(18, _logo_target)
 	# Present from frame one. It must never start at alpha 0 and be brought up by a Tween:
 	# a Tween does not advance while the tree is paused, and that shipped once as a title
 	# screen with no title on it. Motion is allowed to add to a finished screen; it is
