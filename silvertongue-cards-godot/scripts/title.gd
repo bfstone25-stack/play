@@ -228,6 +228,9 @@ func _build() -> void:
 	add_child(_vig)
 
 	scrim = _scrim()
+	# 2026-09-23: built for the layout code, not shown -- 0 of 33 Nutaku tiles darken the
+	# picture under the type; the rows are objects with outlined words.
+	scrim.visible = false
 	mark = _picture(MARK, _r(MARK_RECT))
 	card = _picture(CARD, _r(CARD_RECT))
 
@@ -366,43 +369,29 @@ func _compose() -> void:
 
 
 func _row(text: String, fn: Callable, index: int, lead: bool) -> Button:
-	var b := Button.new()
+	# 2026-09-23, adult title pass: OBJECTS with the words beside them, not a foil rule
+	# with a hover plate (ops/STANDARD.md, "Buttons are objects from the game"). Sitting
+	# down across from her is her whisky glass; who-you-have-persuaded is the deck. GPU
+	# renders cut out with rembg. The O of the mark is a chip, same route.
+	var b := ObjectButton.new()
 	b.text = text
+	var tex := "res://assets/title/btn_whisky.png" if lead else "res://assets/title/btn_deck.png"
+	if ResourceLoader.exists(tex):
+		b.object_texture = load(tex)
+	b.object_size = 70.0 if lead else 52.0
+	b.gap = 14.0
+	b.motion = ObjectButton.Motion.TURN
+	b.label_color = Palette.GOLD_PALE if lead else Palette.TEXT
+	b.accent_color = Color(1, 1, 1)
+	b.ink = Color(0, 0, 0, 0.9)
+	b.outline_px = 5
+	b.shadow_px = 0
+	b.add_theme_font_override("font", StudioTheme.font("display"))
+	b.add_theme_font_size_override("font_size", 30 if lead else 22)
 	b.position = Vector2(ROW_X * w, ROW_TOP * h + index * ROW_H * h)
 	b.custom_minimum_size = Vector2(ROW_W * w, ROW_H * h - 8.0)
 	b.size = b.custom_minimum_size
-	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	b.clip_text = false
 	b.focus_mode = Control.FOCUS_NONE
-	b.add_theme_font_override("font", StudioTheme.font("display"))
-	b.add_theme_font_size_override("font_size", 30 if lead else 22)
-	b.add_theme_color_override("font_color", Palette.GOLD_PALE if lead else Palette.TEXT)
-	b.add_theme_color_override("font_hover_color", Color(1, 1, 1))
-	b.add_theme_color_override("font_pressed_color", Palette.ACCENT_DEEP)
-	b.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
-	b.add_theme_constant_override("outline_size", 7)
-
-	# No fill, no border, no corner radius (studio rule 2). The row's form is the foil
-	# rule at its left and the type on it; hover lights the row and thickens the rule.
-	var flat := StyleBoxFlat.new()
-	flat.bg_color = Color(0, 0, 0, 0)
-	flat.content_margin_left = 20
-	flat.content_margin_right = 12
-	flat.content_margin_top = 6
-	flat.content_margin_bottom = 6
-	flat.border_color = Color(Palette.GOLD.r, Palette.GOLD.g, Palette.GOLD.b, 0.55)
-	flat.border_width_left = 3
-	var hover := flat.duplicate()
-	hover.bg_color = Color(Palette.ACCENT.r, Palette.ACCENT.g, Palette.ACCENT.b, 0.16)
-	hover.border_color = Palette.ACCENT
-	hover.border_width_left = 6
-	var pressed := hover.duplicate()
-	pressed.bg_color = Color(Palette.ACCENT_DEEP.r, Palette.ACCENT_DEEP.g,
-		Palette.ACCENT_DEEP.b, 0.26)
-	b.add_theme_stylebox_override("normal", flat)
-	b.add_theme_stylebox_override("hover", hover)
-	b.add_theme_stylebox_override("pressed", pressed)
-	b.add_theme_stylebox_override("focus", flat)
 	b.mouse_entered.connect(func(): _select(index))
 	b.pressed.connect(fn)
 	return b
