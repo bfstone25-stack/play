@@ -93,6 +93,7 @@ var _settle := 0.0
 var _kv: TextureRect
 var _kv_base := Rect2()
 var _paint: Control
+var _mark_tex: Texture2D
 var _dust: Array = []
 var _flick := 1.0
 var _next_flick := 2.0
@@ -106,6 +107,8 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	_build_key_visual()
+	if ResourceLoader.exists("res://assets/title/logotype.png"):
+		_mark_tex = load("res://assets/title/logotype.png")
 	_paint = Control.new()
 	_paint.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_paint.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -324,25 +327,28 @@ func _paint_mark() -> void:
 	var f := _mark_font()
 	var cx := W * 0.5
 	var amber := Color(0.99, 0.74, 0.30)
-	# Two lines, the small one leading. ACROSS THE is the qualifier; HALL is the mark, and
-	# it is the word the whole game turns on — the hall is where the player starts, and the
-	# last line of the game is that they are the door across it.
-	for line in [{"t": "ACROSS THE", "sz": 30, "y": 132.0, "tr": 14.0, "d": 0.0},
-			{"t": "HALL", "sz": 92, "y": 214.0, "tr": 26.0, "d": 0.22}]:
-		var sz: int = line["sz"]
-		var at := Vector2(cx, line["y"])
-		var tr: float = line["tr"]
-		var dl: float = line["d"]
-		# a hard dark cut under the type, so it holds on the bright teal of the walls
-		for i in range(8):
-			var a := TAU * float(i) / 8.0
-			_word(f, line["t"], sz, at, tr, Color(0.02, 0.06, 0.08, 0.85),
-				Vector2(cos(a), sin(a)) * (sz * 0.045 + 1.5), dl)
-		# the amber bloom: the corridor's own light on the letterforms, flickering with it
-		_word(f, line["t"], sz, at, tr, Color(amber, 0.30 * _flick), Vector2(0, 1), dl)
-		# and the face
-		_word(f, line["t"], sz, at, tr, Color(0.97, 0.96, 0.93, 0.96 * (0.6 + 0.4 * _flick)),
-			Vector2.ZERO, dl)
+	# 2026-09-22: the two lines used to be drawn here with _word() -- the display font
+	# stamped eight times around itself for a cut, plus an amber bloom. That is a font
+	# wearing effects, which ops/STANDARD.md rules out, and the O was just an O.
+	#
+	# The mark is now made in ops/title_logotypes.py::across_the_hall: forty-year-old
+	# corridor paint, scraped thin along the grain, chipped at the edges -- and the O of
+	# ACROSS is the peephole, brass barrel, knurled ring, dark glass with one sliver of
+	# landing light on it. The peephole is what this game is about.
+	#
+	# The flicker stays HERE rather than being baked into the PNG: the corridor's light
+	# is alive and the mark lives with it, which was the one genuinely good thing about
+	# the old drawn version.
+	if _mark_tex:
+		var mw := 940.0
+		var mh := mw * float(_mark_tex.get_height()) / float(_mark_tex.get_width())
+		var a := 0.96 * (0.62 + 0.38 * _flick) * clampf(_settle * 1.4, 0.0, 1.0)
+		_paint.draw_texture_rect(_mark_tex,
+			Rect2(Vector2(cx - mw * 0.5, 74.0), Vector2(mw, mh)), false, Color(1, 1, 1, a))
+		# the corridor's amber laid over the letterforms, flickering with the tube
+		_paint.draw_texture_rect(_mark_tex,
+			Rect2(Vector2(cx - mw * 0.5, 74.0), Vector2(mw, mh)), false,
+			Color(amber.r, amber.g, amber.b, 0.16 * _flick))
 
 	# a hairline under the mark, struck from the centre out as it settles
 	var half := 210.0 * clampf((_settle - 0.5) * 1.4, 0.0, 1.0)
