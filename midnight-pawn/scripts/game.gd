@@ -237,6 +237,31 @@ const TICKET_INK := Color("#1c140c")
 
 ## `size` is the FONT size. compact is on everywhere: the canvas is 640x360 and
 ## ShapedButton's un-compact floor is a 56px control, a sixth of the screen.
+const BTN_BELL := preload("res://assets/title/btn_bell.png")
+const BTN_LOUPE := preload("res://assets/title/btn_loupe.png")
+const BTN_COIN := preload("res://assets/title/btn_coin.png")
+
+
+func _object_btn(tex: Texture2D, callback: Callable, size := 12, obj := 32.0,
+		motion := ObjectButton.Motion.DIP) -> ObjectButton:
+	var b := ObjectButton.new()
+	b.object_texture = tex
+	b.object_size = obj
+	b.motion = motion
+	b.label_color = CREAM
+	b.accent_color = GOLD
+	# bitmap fonts cannot grow an outline in Godot; the 1-px ink shadow is the keyline
+	b.outline_px = 0
+	b.shadow_px = 1
+	b.add_theme_font_override("font", PixelDisplayFont if size >= 16 else PixelBodyFont)
+	b.add_theme_font_size_override("font_size", size)
+	if callback.is_valid():
+		b.pressed.connect(callback)
+	b.mouse_entered.connect(func() -> void: title_sound("hover"))
+	b.button_down.connect(func() -> void: title_sound("press"))
+	return b
+
+
 func _ticket(text_: String, callback: Callable, size := 12, accent := false) -> ShapedButton:
 	var b := ShapedButton.new()
 	b.shape = ShapedButton.Shape.TAG
@@ -395,7 +420,9 @@ func _mark_language_buttons() -> void:
 	for code in lang_buttons.keys():
 		var b: Button = lang_buttons[code]
 		b.text = str(Loc.NATIVE[code])
-		if b is ShapedButton:
+		if b is ObjectButton:
+			(b as ObjectButton).selected = str(code) == Loc.current()
+		elif b is ShapedButton:
 			(b as ShapedButton).tint = TICKET_CARD_HOT if str(code) == Loc.current() else TICKET_CARD
 			b.queue_redraw()
 		elif str(code) == Loc.current():
@@ -479,15 +506,22 @@ func _open_title_card() -> void:
 	title_nodes["tag"] = tag
 	title_nodes["controls"] = controls
 
-	var begin := _ticket("", Callable(self, "_title_begin"), 16, true)
-	begin.position = Vector2(20, 226)
-	begin.size = Vector2(212, 34)
+	# 2026-09-23: the title's buttons are OBJECTS now, not tickets (ops/STANDARD.md,
+	# "Buttons are objects from the game"). The tag-with-an-eyelet was a rectangle in a
+	# costume. The counter bell starts the day; the jeweller's loupe is how-to-play, because
+	# appraising is what this game teaches; the languages are coins. All three are GPU
+	# renders quantised onto this palette (ops/install_button_objects.py).
+	var begin := _object_btn(BTN_BELL, Callable(self, "_title_begin"), 16, 40.0,
+		ObjectButton.Motion.DIP)
+	begin.position = Vector2(20, 222)
+	begin.size = Vector2(300, 40)
 	title_card.add_child(begin)
 	title_nodes["begin"] = begin
 
-	var how := _ticket("", Callable(self, "_title_how_to_play"), 12)
-	how.position = Vector2(20, 264)
-	how.size = Vector2(212, 28)
+	var how := _object_btn(BTN_LOUPE, Callable(self, "_title_how_to_play"), 12, 30.0,
+		ObjectButton.Motion.TURN)
+	how.position = Vector2(24, 264)
+	how.size = Vector2(260, 30)
 	title_card.add_child(how)
 	title_nodes["how"] = how
 
@@ -496,9 +530,11 @@ func _open_title_card() -> void:
 	var lang_btns := {}
 	for i in Loc.ALLOWED.size():
 		var code := str(Loc.ALLOWED[i])
-		var b := _ticket("", func() -> void: Loc.set_code(code))
-		b.position = Vector2(20 + (i % 3) * 100, 308 + (i / 3) * 26)
-		b.size = Vector2(96, 24)
+		var b := _object_btn(BTN_COIN, func() -> void: Loc.set_code(code), 12, 22.0,
+			ObjectButton.Motion.BOB)
+		b.gap = 4.0
+		b.position = Vector2(20 + (i % 3) * 100, 308 + (i / 3) * 24)
+		b.size = Vector2(96, 22)
 		title_card.add_child(b)
 		lang_btns[code] = b
 	title_nodes["lang"] = lang_btns
@@ -536,7 +572,9 @@ func _refresh_title_card() -> void:
 	for code in title_nodes["lang"].keys():
 		var b: Button = title_nodes["lang"][code]
 		b.text = str(Loc.NATIVE[code])
-		if b is ShapedButton:
+		if b is ObjectButton:
+			(b as ObjectButton).selected = str(code) == Loc.current()
+		elif b is ShapedButton:
 			(b as ShapedButton).tint = TICKET_CARD_HOT if str(code) == Loc.current() else TICKET_CARD
 			b.queue_redraw()
 
