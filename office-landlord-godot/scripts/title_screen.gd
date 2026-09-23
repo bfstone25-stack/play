@@ -25,6 +25,7 @@ const KV := "res://assets/title/keyvisual.webp"
 const WORDMARK := "res://assets/title/wordmark.webp"
 const DISPLAY := "res://assets/fonts/LilitaOne-Regular.ttf"
 const TEXT_FONT := "res://assets/fonts/Nunito.ttf"
+const DISPLAY_FONT := "res://assets/fonts/LilitaOne-Regular.ttf"
 
 const W := 1280.0
 const H := 720.0
@@ -150,9 +151,10 @@ func _menu() -> void:
 	sub.text = I18n.t("subtitle")
 	sub.position = Vector2(64, wordmark_tex.position.y + wordmark_tex.size.y + 8 if wordmark_tex else 260)
 	sub.size = Vector2(680, 60)
-	sub.add_theme_font_override("font", _font(TEXT_FONT))
-	sub.add_theme_font_size_override("font_size", 22)
-	sub.add_theme_color_override("font_color", Palette.TEXT)
+	# display face, not Nunito: the thin text face disappeared into the new bright plate
+	sub.add_theme_font_override("font", _font(DISPLAY_FONT))
+	sub.add_theme_font_size_override("font_size", 26)
+	sub.add_theme_color_override("font_color", Palette.INK)
 	# The plate behind this went from a dim grey-blue office to a candy-bright one when the
 	# title swapped to the mascot, and Palette.TEXT alone stopped separating from it. Same
 	# fix as OCCUPANCY's CTA earlier: keep the dark type, give it an opaque bright halo so
@@ -162,21 +164,45 @@ func _menu() -> void:
 	sub.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(sub)
 
-	primary = ShapedButtonScript.new()
-	primary.shape = ShapedButtonScript.Shape.TICKET
-	primary.tint = Palette.ACCENT
-	primary.custom_minimum_size = Vector2(320, 90)
-	primary.position = Vector2(64, sub.position.y + 80)
+	# 2026-09-23: the start control is the landlord's own ring of keys, not a ticket with
+	# notched ends (ops/STANDARD.md, "Buttons are objects from the game"). The keyring is a
+	# GPU render cut out by ops/install_button_objects.py; hover swings it.
+	primary = ObjectButton.new()
+	primary.object_texture = load("res://assets/title/btn_keyring.png") if ResourceLoader.exists("res://assets/title/btn_keyring.png") else null
+	primary.object_size = 96.0
+	primary.motion = ObjectButton.Motion.TURN
+	primary.label_color = Palette.INK
+	primary.accent_color = Palette.ACCENT
+	primary.ink = Color(1, 0.98, 0.92, 1.0)
+	primary.outline_px = 3
+	primary.shadow_px = 0
+	primary.add_theme_font_override("font", _font(DISPLAY_FONT) if DISPLAY_FONT != "" else _font(TEXT_FONT))
+	primary.add_theme_font_size_override("font_size", 36)
+	primary.outline_px = 6
+	primary.custom_minimum_size = Vector2(420, 100)
+	primary.position = Vector2(64, sub.position.y + 74)
 	primary.text = I18n.t("start")
 	primary.pressed.connect(_begin)
 	add_child(primary)
 
 
 func _lang() -> void:
-	var lang_btn := Button.new()
+	# the language control is a brass mailbox door, one per building, one per tongue
+	var lang_btn := ObjectButton.new()
+	lang_btn.object_texture = load("res://assets/title/btn_mailbox.png") if ResourceLoader.exists("res://assets/title/btn_mailbox.png") else null
+	lang_btn.object_size = 44.0
+	lang_btn.motion = ObjectButton.Motion.DIP
+	lang_btn.label_color = Palette.INK
+	lang_btn.accent_color = Palette.ACCENT
+	lang_btn.ink = Color(1, 0.98, 0.92, 1.0)
+	lang_btn.outline_px = 3
+	lang_btn.shadow_px = 0
+	lang_btn.add_theme_font_size_override("font_size", 20)
+	lang_btn.custom_minimum_size = Vector2(170, 48)
 	lang_btn.text = I18n.ENDONYM[I18n.lang]
-	lang_btn.position = Vector2(1080, 20)
-	lang_btn.add_theme_font_override("font", _font(TEXT_FONT))
+	lang_btn.position = Vector2(1070, 16)
+	lang_btn.add_theme_font_override("font", _font(DISPLAY_FONT))
+	lang_btn.outline_px = 5
 	lang_btn.pressed.connect(func():
 		I18n.cycle()
 		lang_btn.text = I18n.ENDONYM[I18n.lang])
