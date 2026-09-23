@@ -374,12 +374,23 @@ func compose(tag: String, items: Array, lang_text: String, lang_fn: Callable, hi
 ## the red type, and the second is the same folder held back — smaller, cooler, quieter —
 ## so the eye still lands on the one that starts the night.
 func _row(text: String, fn: Callable, index: int, lead: bool) -> Button:
-	var b := ShapedButton.new()
-	b.shape = ShapedButton.Shape.DOSSIER
-	b.compact = true                    # this canvas is 420 wide; the 220x56 floor is for 1280
-	b.label = text
-	b.tint = Color("#cdb78d") if lead else Color("#8d8577")
-	b.ink = Color("#7d1224") if lead else Color("#1b1712")
+	# 2026-09-23, adult title pass: OBJECTS, not manila dossier shapes (ops/STANDARD.md,
+	# "Buttons are objects from the game"; and Tell owns the folders). Taking the chair is
+	# the cigar the man at her desk holds in the plate -- the power you take over; what
+	# you kept on them is the burner phone. GPU renders cut out with rembg.
+	var b := ObjectButton.new()
+	b.text = text
+	var tex := "res://assets/title/btn_cigar.png" if lead else "res://assets/title/btn_burner.png"
+	if ResourceLoader.exists(tex):
+		b.object_texture = load(tex)
+	b.object_size = 44.0 if lead else 34.0
+	b.gap = 8.0
+	b.motion = ObjectButton.Motion.TURN
+	b.label_color = Color("#f3e3c6") if lead else Color("#cfc6b8")
+	b.accent_color = Color("#ff4d6d")
+	b.ink = Color("#0d0806")
+	b.outline_px = 4
+	b.shadow_px = 0
 	b.position = Vector2(ROW_X, ROW_TOP + index * ROW_H - 2.0)
 	b.custom_minimum_size = Vector2(ROW_W, ROW_H - 4.0)
 	b.size = Vector2(ROW_W, ROW_H - 4.0)
