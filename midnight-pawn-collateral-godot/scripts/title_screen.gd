@@ -121,9 +121,10 @@ func _build() -> void:
 			"a": rng.randf_range(0.20, 0.62),
 		})
 
-	_bands(0, 152, SCRIM_TOP)        # under the mark
-	_bands(152, 36, SCRIM_TAIL)      # and out, before the picture opens up
-	_bands(228, 132, SCRIM_FOOT)     # under the copy and the buttons
+	# 2026-09-23, adult title pass: the three banded ink scrims are gone (0 of 33 Nutaku
+	# tiles darken the picture under the type). The consent copy keeps its opaque plaque,
+	# because a legal gate must be readable; an opaque in-world surface is what 7 of 28
+	# titled Nutaku tiles use and it is not a see-through box.
 	_edges()
 
 	# The gate plaque and the footer rail. See _plaque().
@@ -137,7 +138,9 @@ func _build() -> void:
 	logo.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	logo.stretch_mode = TextureRect.STRETCH_KEEP
 	logo.size = Vector2(480, 150)
-	logo.position = Vector2(80, 10)
+	# 2026-09-23: left, not centred -- centred, LIEN sat across Nara's face. She owns the
+	# right half now; the mark sits over the gate copy's column.
+	logo.position = Vector2(-60, 10)
 	# Present from frame one. It used to start at alpha 0 and be faded in by _process —
 	# so on any frame where _process does not run (the tree is paused behind this card),
 	# the mark was simply not there. The settle is motion ON TOP of a finished screen,

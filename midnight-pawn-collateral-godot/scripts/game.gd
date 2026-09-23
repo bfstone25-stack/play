@@ -101,7 +101,7 @@ var ground: TextureRect
 var splash: ColorRect
 var splash_open := false
 ## The gate's affirmative, so a keypress can press the button rather than bypass it.
-var splash_enter: ShapedButton
+var splash_enter: Button
 var title_screen: TitleScreen
 var title_audio: TitleAudio
 
@@ -668,7 +668,23 @@ func _show_splash() -> void:
 	# is -- the consent is not weakened, it is reachable. `Leave` stays small and stays
 	# beside it, because the two must not be symmetrical.
 	row.alignment = BoxContainer.ALIGNMENT_BEGIN
-	var enter := _tag("I am 18 or older — open the shop", 300, 34)
+	# 2026-09-23: the affirmative is the pledge itself -- the violet ring she holds to her
+	# monocle in the plate -- as an ObjectButton, not a tag (ops/STANDARD.md, "Buttons are
+	# objects from the game"). Focus-on-open and Enter/Space still press it: it extends
+	# Button. GPU render, rembg, quantised to the palette, 30 px.
+	var enter := ObjectButton.new()
+	enter.text = "I am 18 or older — open the shop"
+	enter.object_texture = load("res://assets/title/btn_ring.png")
+	enter.object_size = 30.0
+	enter.gap = 6.0
+	enter.motion = ObjectButton.Motion.TURN
+	enter.label_color = GOLD
+	enter.accent_color = CREAM
+	enter.ink = Color("#0b0810")
+	enter.outline_px = 0
+	enter.shadow_px = 1
+	enter.custom_minimum_size = Vector2(300, 34)
+	enter.focus_mode = Control.FOCUS_ALL
 	enter.add_theme_font_override("font", PixelBodyFont)
 	enter.add_theme_font_size_override("font_size", 12)
 	enter.pressed.connect(dismiss_splash)
