@@ -159,16 +159,16 @@ func _build() -> void:
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(overlay)
 
-	# A second, harder scrim under the type only. The baked column is a gradient built
-	# for a 1920-wide plate; at 640 the menu still floated on it, so the column gets a
-	# flat surface of its own — TITLE_SCREENS.md, "the interface gets a surface".
-	var plate := ColorRect.new()
-	plate.name = "TypePlate"
-	plate.color = Color(0.016, 0.027, 0.047, 0.52)
-	plate.position = Vector2(COL_X - 12.0, 24.0)
-	plate.size = Vector2(COL_W + 24.0, 312.0)
-	plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(plate)
+	# 2026-09-22: the translucent type plate is GONE. It was a 0.52-alpha rectangle under
+	# the whole right column -- the one pattern the all-ages shelf never uses (0 of 64
+	# covers in ops/market/CRAZYGAMES_TITLES.md carry a semi-transparent scrim; the 19
+	# plated covers all sit on an opaque in-world object). What holds the type instead is
+	# what holds it on those covers: every label and button in this column already carries
+	# a 3 px #05070d outline, and the key visual is now composed with a dark empty wall on
+	# the right half for the type to sit on.
+	#
+	# The red hairline stays. It is not a surface, it is Compliance's own colour cutting
+	# down the screen, and it is in the game.
 
 	var edge := ColorRect.new()
 	edge.color = Color("#ff3b4a")
@@ -225,7 +225,7 @@ func _mark(text: String, pos: Vector2) -> void:
 	l.add_theme_font_size_override("font_size", 10)
 	l.add_theme_color_override("font_color", Color("#d5e4de"))
 	l.add_theme_color_override("font_outline_color", Color("#05070d"))
-	l.add_theme_constant_override("outline_size", 3)
+	l.add_theme_constant_override("outline_size", 4)
 	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(l)
 
@@ -310,7 +310,7 @@ func style_label(l: Label, size: int, color: Color, bold := false) -> void:
 		l.add_theme_font_size_override("font_size", size)
 	l.add_theme_color_override("font_color", color)
 	l.add_theme_color_override("font_outline_color", Color("#05070d"))
-	l.add_theme_constant_override("outline_size", 3)
+	l.add_theme_constant_override("outline_size", 4)
 
 
 func style_button(b: Button, size := 13) -> void:
@@ -326,7 +326,7 @@ func style_button(b: Button, size := 13) -> void:
 	b.add_theme_color_override("font_pressed_color", Color("#ff3b4a"))
 	b.add_theme_color_override("font_focus_color", Color("#ffffff"))
 	b.add_theme_color_override("font_outline_color", Color("#05070d"))
-	b.add_theme_constant_override("outline_size", 3)
+	b.add_theme_constant_override("outline_size", 4)
 	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	b.clip_text = false
 	var normal := StyleBoxFlat.new()
