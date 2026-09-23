@@ -300,7 +300,9 @@ func _splash() -> void:
 
 	splash_title = Label.new()
 	splash_title.name = "SplashTitle"
-	splash_title.position = Vector2(COL_X, 234)
+	# Below the mark, not through it: the logotype is a full-width arc since
+	# 2026-09-22 and its left end lands at y~230.
+	splash_title.position = Vector2(COL_X, 306)
 	splash_title.size = Vector2(COL_W, 100)
 	splash_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	splash_title.add_theme_constant_override("line_spacing", 6)

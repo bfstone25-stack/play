@@ -230,8 +230,8 @@ func _build() -> void:
 	# It is the title of the game on a 1280-wide canvas and the shelf sets its marks at a
 	# quarter of the frame or wider (62 of 64 covers): 980 px, with the brass 404 plate
 	# baked into the lower left of the same texture so the two stay registered.
-	logo.position = Vector2(26, 26)
-	logo.size = Vector2(900, 348)
+	logo.position = Vector2(20, 14)
+	logo.size = Vector2(1240, 480)
 	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(logo)
 
