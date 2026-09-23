@@ -18,8 +18,8 @@ reader_calm.webp::CompressedTexture2D::8925950121090513761::1789813118::17898131
 reader_giveback.webp::CompressedTexture2D::684337564814607194::1789813138::1789813156::1::::<><><>0<>0<>6bff0bd59b50241e3e5d3ee0237a01e1<>res://.godot/imported/reader_giveback.webp-c2c6f16ba54a34d13be4fa10fd08a386.ctex::
 reader_reveal.webp::CompressedTexture2D::5239669998599913792::1789814238::1789814248::1::::<><><>0<>0<>296521e6e02afd661c34c6148db08ef8<>res://.godot/imported/reader_reveal.webp-9bd0cd137aa477e49e5019f72d7c6906.ctex::
 ::res://assets/tarot/::1789789161
-::res://assets/title/::1790043573
-keyvisual.webp::CompressedTexture2D::9069874757668508598::1790043564::1790043573::1::::<><><>0<>0<>7535f1103fd54329c7b3396fb6a5b75c<>res://.godot/imported/keyvisual.webp-8ff8ad983cbaa0d2ce979c8b86e9d244.ctex::
+::res://assets/title/::1790102409
+keyvisual.webp::CompressedTexture2D::9069874757668508598::1790102403::1790102409::1::::<><><>0<>0<>7535f1103fd54329c7b3396fb6a5b75c<>res://.godot/imported/keyvisual.webp-8ff8ad983cbaa0d2ce979c8b86e9d244.ctex::
 ::res://assets/voice/::1790014703
 barks.json::JSON::-1::1789948836::0::1::::<><><>0<>0<><>::
 fail_0.mp3::AudioStreamMP3::8847795577575805398::1789949628::1790014703::1::::<><><>0<>0<>e0666032c49813ea0513cd5a73c0302e<>res://.godot/imported/fail_0.mp3-573bc5da2fce095383bc9f4b109cb914.mp3str::
@@ -74,10 +74,10 @@ main.tscn::PackedScene::-1::1789790215::0::1::::<><><>0<>0<><>::res://scripts/ma
 ::res://scripts/::1790024477
 backdrop.gd::GDScript::4812025841257999771::1789790404::0::1::::Backdrop<>Control<><>0<>0<><>::
 card_view.gd::GDScript::7964991974191958895::1789790521::0::1::::CardView<>Control<><>0<>0<><>::
-cf_mark.gd::GDScript::4759698211161892408::1789891744::0::1::::CfMark<>Control<><>0<>0<><>::
+cf_mark.gd::GDScript::4759698211161892408::1790102640::0::1::::CfMark<>Control<><>0<>0<><>::
 deck_screen.gd::GDScript::4943976607316663082::1790024343::0::1::::<>Control<><>0<>0<><>::
 fortune.gd::GDScript::1006938636571559620::1790024343::0::1::::<>Node<><>0<>0<><>::
-gate.gd::GDScript::7851184039278218243::1790043569::0::1::::<>Node<><>0<>0<><>::
+gate.gd::GDScript::7851184039278218243::1790102642::0::1::::<>Node<><>0<>0<><>::
 home_screen.gd::GDScript::4336455962402033045::1790024427::0::1::::<>Control<><>0<>0<><>::
 i18n.gd::GDScript::3770226886730058299::1789790034::0::1::::<>Node<><>0<>0<><>::
 main.gd::GDScript::5647382593918426890::1790024360::0::1::::<>Control<><>0<>0<><>::
@@ -88,7 +88,7 @@ reader.gd::GDScript::6569675363201037073::1789790048::0::1::::ReaderForces<>RefC
 reader_screen.gd::GDScript::585574944841467396::1790024282::0::1::::<>Control<><>0<>0<><>::
 result_panel.gd::GDScript::138017941728737623::1789791027::0::1::::ResultPanel<>PanelContainer<><>0<>0<><>::
 sfx.gd::GDScript::8718572904591221893::1789976761::0::1::::<>Node<><>0<>0<><>::
-shaped_button.gd::GDScript::338609741794338131::1790039758::0::1::::ShapedButton<>Button<><>0<>0<><>::
+shaped_button.gd::GDScript::338609741794338131::1790049375::0::1::::ShapedButton<>Button<><>0<>0<><>::
 shop_screen.gd::GDScript::3672248716541455702::1789790684::0::1::::<>Control<><>0<>0<><>::
 studio_theme.gd::GDScript::4536006239346774132::1789790336::0::1::::StudioTheme<>RefCounted<><>0<>0<><>::
 tube_screen.gd::GDScript::8279934280293266813::1790024343::0::1::::<>Control<><>0<>0<><>::

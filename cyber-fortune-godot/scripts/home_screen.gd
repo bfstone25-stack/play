@@ -49,14 +49,23 @@ func relayout() -> void:
 	root = VBoxContainer.new()
 	root.add_theme_constant_override("separation", 14)
 	m.add_child(root)
-	# The mark, drawn, not set. See scripts/cf_mark.gd for what this replaces and why: a
-	# plain 54 px NotoSerifSC Label was the whole logotype, on a drawn black rectangle.
-	var mark := CfMark.new()
-	mark.word = Tx.t("title")
-	mark.series = Tx.t("series")
-	mark.cjk = Tx.lang != "en"
-	mark.size_px = 54 if Tx.lang == "en" else 50
-	mark.custom_minimum_size = Vector2(0, 146)
+	# 2026-09-23: the mark is now a 匾額 — the carved lacquer board with gold-leaf letters
+	# that hangs over a temple door, made in ops/title_logotypes.py::cyber_fortune, with a
+	# cash coin standing in for the O. CfMark drew the words in a display face with a gold
+	# fill and an under-shadow, which is a font in a costume (ops/STANDARD.md), and the
+	# neon-tube version that replaced it first could not survive on a lantern-lit plate:
+	# neon only reads against a dark wall and this key visual is brightest exactly here.
+	# A hanging board is an opaque in-world object, which is what 19 of the 64 shelf
+	# covers that carry a plate actually use.
+	var mark := TextureRect.new()
+	mark.name = "Mark"
+	if ResourceLoader.exists("res://assets/title/logotype.png"):
+		mark.texture = load("res://assets/title/logotype.png")
+	mark.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	mark.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	mark.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	mark.custom_minimum_size = Vector2(0, 186)
+	mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(mark)
 	# The question, now ink on a lit sky rather than SMOKE on ink. SMOKE (#C9BBA8) is a
 	# pale warm grey chosen to sit on the black ground this screen no longer has; on the
@@ -300,7 +309,10 @@ class Door extends Button:
 		# lantern light shows through the lacquer the way it does on a lacquered surface in
 		# daylight. The type is drawn on top of the panel, not through it, so it keeps full
 		# contrast.
-		draw_colored_polygon(body, Color(bg, 0.88))
+		# 2026-09-23: 0.88 -> 0.97. A lacquered slip is a lacquered object; at 0.88 the
+		# lantern behind it showed through and the three rows read as translucent bars
+		# laid over the character's face, which is the scrim pattern under another name.
+		draw_colored_polygon(body, Color(bg, 0.97))
 		var outline := body.duplicate()
 		outline.append(body[0])
 		draw_polyline(outline, edge, 2.0)
