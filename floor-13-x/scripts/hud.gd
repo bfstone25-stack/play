@@ -374,10 +374,27 @@ func _build_title() -> void:
 		lang_buttons[code] = b
 	title_lang_caption.visible = false   # [fork] see above
 	Loc.set_code("en")
-	title_start = _card_button(Loc.t("title.start"), Vector2(190, 34), 12)
+	# 2026-09-23, adult title pass: START is her staff ID badge on its red lanyard -- the
+	# thing the plate shows her still wearing, and how the company keeps her -- as an
+	# ObjectButton, not a drawn time card (ops/STANDARD.md, "Buttons are objects from the
+	# game"). GPU render, cut out with rembg, 40 px on the 640x360 canvas.
+	var ob := ObjectButton.new()
+	ob.text = Loc.t("title.start")
+	ob.object_texture = load("res://assets/title/btn_idbadge.png")
+	ob.object_size = 40.0
+	ob.gap = 6.0
+	ob.motion = ObjectButton.Motion.BOB
+	ob.label_color = Color("#f4ece6")
+	ob.accent_color = Color("#ff3b4a")
+	ob.ink = Color("#04070a")
+	ob.outline_px = 0          # bitmap font: the 1-px shadow is the keyline
+	ob.shadow_px = 1
+	UiFont.apply_button(ob)
+	ob.add_theme_font_size_override("font_size", 12)
+	title_start = ob
 	title_start.name = "TitleStart"
-	title_start.position = Vector2(322, 214)
-	title_start.size = Vector2(250, 46)
+	title_start.position = Vector2(400, 214)
+	title_start.size = Vector2(230, 44)
 	title_start.pressed.connect(_emit_start)
 	title_panel.add_child(title_start)
 	title_panel.gui_input.connect(_on_title_gui)

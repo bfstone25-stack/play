@@ -137,7 +137,11 @@ func _build() -> void:
 	# the vignette, and the body copy that sits on that column lost its ground. One
 	# texture, two jobs, so the alpha is a single tradeoff rather than two dials. 0.75
 	# keeps the column readable and still recovers most of the brightness.
-	overlay.modulate.a = 0.75
+	# 2026-09-23: 0.75 -> 0.45. The type column this texture bakes in is a darkening laid
+	# under the type -- 0 of 33 Nutaku tiles use one. It is not removed outright because
+	# the column copy is set in a 7-px bitmap face that has no outline; 0.45 keeps that
+	# copy legible and gives the figure back.
+	overlay.modulate.a = 0.45
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(overlay)
 
@@ -263,6 +267,14 @@ func style_label(l: Label, size: int, color: Color, bold := false) -> void:
 
 
 func style_button(b: Button) -> void:
+	# An ObjectButton draws its own label beside its object; giving it font colours here
+	# makes Button draw the text a second time underneath (seen 2026-09-23: BEGIN NIGHT
+	# SHIFT twice, offset). Wire the sounds and leave it alone.
+	if b is ObjectButton:
+		if not b.mouse_entered.is_connected(_on_hover):
+			b.mouse_entered.connect(_on_hover)
+			b.button_down.connect(_on_press)
+		return
 	b.add_theme_font_override("font", FONT_BOLD)
 	b.add_theme_font_size_override("font_size", 12)
 	b.add_theme_color_override("font_color", Color("#dfeee8"))
@@ -278,7 +290,7 @@ func style_button(b: Button) -> void:
 	# styleboxes: a StyleBoxFlat paints a filled rectangle behind the card, which is
 	# exactly the rounded-rectangle-with-a-word-in-it the shape exists to replace. Return
 	# before the boxes and let the card draw.
-	if b is ShapedButton:
+	if b is ShapedButton or b is ObjectButton:
 		if not b.mouse_entered.is_connected(_on_hover):
 			b.mouse_entered.connect(_on_hover)
 			b.button_down.connect(_on_press)
