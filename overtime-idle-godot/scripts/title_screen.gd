@@ -200,9 +200,15 @@ func _compose() -> void:
 	add_child(_motes(6, 11.0, 0.15, 30, Color("#fff0cf")))
 	add_child(_motes(3, 19.0, 0.11, 38, Color("#ffffff")))
 
+	# 2026-09-23, adult title pass: the foot scrim is still built (the intro tween
+	# references it) but never shown -- a generated darkening laid under the type is the
+	# one thing 0 of 33 Nutaku tiles do (ops/market/ADULT_SHELF_TITLES.md). The mark's
+	# own outline and bevel hold it on the plate. The key-fob picture is gone with it: the
+	# start control is an ObjectButton now (below).
 	scrim = _scrim()
+	scrim.visible = false
 	mark = _picture(MARK, MARK_RECT)
-	key = _picture(KEY, KEY_RECT)
+	key = TextureRect.new()
 
 	_menu()
 	_badge()
@@ -317,28 +323,25 @@ func _menu() -> void:
 	# The primary action. Its form is the lit key fob behind it (KEY_RECT) — the Button
 	# itself has no fill, no border and no corner radius in any state, which is studio
 	# rule 2: a button on a title screen takes its shape from art or it has no shape.
-	primary = Button.new()
+	# 2026-09-23: the start control is her red lipstick in its gold case, not a gold key
+	# fob (keys are Office Landlord's, the all-ages twin, and the two worlds must not share
+	# props). ObjectButton: the object with the label beside it, no box. GPU render, cut
+	# out with rembg; the first O of the mark is her powder compact, same route.
+	primary = ObjectButton.new()
 	primary.text = I18n.t("start")
-	primary.position = KEY_RECT.position + Vector2(38, 8)
-	primary.custom_minimum_size = Vector2(KEY_RECT.size.x - 52, KEY_RECT.size.y - 16)
-	primary.size = primary.custom_minimum_size
-	primary.focus_mode = Control.FOCUS_NONE
+	primary.object_texture = load("res://assets/title/btn_lipstick.png")
+	primary.object_size = 66.0
+	primary.motion = ObjectButton.Motion.TURN
+	primary.label_color = Color("#fff1d6")
+	primary.accent_color = Color("#ff8a8a")
+	primary.ink = Color(0.12, 0.03, 0.03, 1.0)
+	primary.outline_px = 5
+	primary.shadow_px = 0
 	primary.add_theme_font_override("font", _font(DISPLAY))
-	primary.add_theme_font_size_override("font_size", 19)
-	# Dark ink ON the gold key, not light type over it: the fob is the bright object on
-	# this screen and light-on-light is how the whole shelf's buttons vanish.
-	# 2026-09-22. #4a2408 on the gold fob was a brown-on-gold pair with too little
-	# separation, and the cream outline at 0.55 alpha was too faint to rescue it: zoomed
-	# in on a live capture, OPEN THE BUILDING is barely readable, and it is the screen's
-	# only action. Near-black type with an opaque bright halo instead, which reads on the
-	# fob and would read on anything else the plate puts behind it.
-	for role in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
-		primary.add_theme_color_override(role, Color("#2a1204"))
-	primary.add_theme_color_override("font_outline_color", Color(1, 0.95, 0.82, 1.0))
-	primary.add_theme_constant_override("outline_size", 6)
-	_shapeless(primary)
-	primary.mouse_entered.connect(func() -> void: _lift(key, 1.045))
-	primary.mouse_exited.connect(func() -> void: _lift(key, 1.0))
+	primary.add_theme_font_size_override("font_size", 26)
+	primary.position = KEY_RECT.position + Vector2(0, -4)
+	primary.custom_minimum_size = Vector2(380, 70)
+	primary.focus_mode = Control.FOCUS_NONE
 	primary.pressed.connect(_begin)
 	add_child(primary)
 
@@ -485,10 +488,19 @@ func _process(delta: float) -> void:
 ## lands the player back on the title screen in the language they just picked -- which is
 ## where they were standing when they pressed it.
 func _lang() -> void:
-	var b := StudioTheme.stub(I18n.ENDONYM[_next_lang()], "Ghost")
-	b.compact = true
+	# an outlined word, not a dark stub: a settings word does not need a prop, and it
+	# does not need a box either
+	var b := ObjectButton.new()
+	b.text = I18n.ENDONYM[_next_lang()]
+	b.object_size = 0.0
+	b.gap = 0.0
+	b.label_color = Color("#fff1d6")
+	b.accent_color = Color("#ff8a8a")
+	b.ink = Color(0.12, 0.03, 0.03, 1.0)
+	b.outline_px = 4
+	b.shadow_px = 0
 	b.custom_minimum_size = Vector2(150, 40)
-	b.add_theme_font_size_override("font_size", 14)
+	b.add_theme_font_size_override("font_size", 18)
 	b.position = Vector2(W - 178, H - 82)
 	b.size = b.custom_minimum_size
 	b.pressed.connect(func() -> void:
