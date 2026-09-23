@@ -204,7 +204,9 @@ func _build_stage() -> void:
 	scrim_tex.stretch_mode = TextureRect.STRETCH_SCALE
 	scrim_tex.set_anchors_preset(Control.PRESET_FULL_RECT)
 	scrim_tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	root.add_child(scrim_tex)
+	# 2026-09-23: the plum veil is not shown -- a translucent darkening under the type is
+	# the one thing 0 of 33 Nutaku tiles do. Built, never added.
+	scrim_tex.queue_free()
 
 	# The lamp, low over the right third where the board is. Not high: a light source at
 	# 22% of the screen height reads as the sun, which is what this was before the fork
@@ -244,6 +246,9 @@ func _build_stage() -> void:
 	# being a picture of a game that no longer exists.
 	_demo = Node2D.new()
 	root.add_child(_demo)
+	# 2026-09-23: the demo board runs but is not drawn on the title -- it sat on her hip
+	# beside her face, and nothing of the UI touches the character (ops/STANDARD.md).
+	_demo.visible = false
 	_demo_start()
 
 
@@ -292,6 +297,22 @@ func _build_ui() -> void:
 	_mark.unfold = 0.0               # the sheet starts folded shut; see `_enter`
 	_mark.pivot_offset = Vector2(235, 75)
 	col.add_child(_mark)
+	# 2026-09-23: the vector mark stays in the tree (its reveal/unfold tweens drive the
+	# intro timing) but is not drawn. The mark on screen is assets/title/mark.png: hot pink
+	# neon letters with BOTH A's replaced by a folding fan turned rivet-up, which is the
+	# A's apex and legs -- the night is folding paper you hide behind. A VectorMark cannot
+	# give up a letter to an object; a picture can.
+	_mark.visible = false
+	var mark_png := TextureRect.new()
+	mark_png.name = "MarkPng"
+	if ResourceLoader.exists("res://assets/title/mark.png"):
+		mark_png.texture = load("res://assets/title/mark.png")
+	mark_png.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	mark_png.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	mark_png.custom_minimum_size = Vector2(560, 168)
+	mark_png.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	col.add_child(mark_png)
+	col.move_child(mark_png, _mark.get_index())
 
 	_sub = StudioTheme.serif_label("", 17, Palette.TEXT, true)
 	_sub.name = "Tagline"
@@ -321,7 +342,6 @@ func _build_ui() -> void:
 	_menu.add_child(row)
 
 	var levels := _fold_button("Levels", Palette.GOLD, 20, false)
-	levels.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	levels.pressed.connect(func(): _play(true))
 	row.add_child(levels)
 
@@ -508,17 +528,37 @@ func _process(delta: float) -> void:
 ## draw_string so zh and ja keep working. assets/art/btn_play.png and btn_second.png are
 ## left on disk and still listed in Art.SLOTS: they are the ad-track fallback nothing else
 ## claims, and deleting a plate to prove a point is how a slot silently becomes missing.
-func _fold_button(name: String, tint: Color, size: int, lead: bool) -> ShapedButton:
-	var b := ShapedButton.new()
+## 2026-09-23, adult title pass: OBJECTS, not folded-corner sheets (ops/STANDARD.md,
+## "Buttons are objects from the game"). This is FOLD's night twin, so the objects are
+## paper that belongs to the night rather than FOLD's crane/boat/star: PLAY is a folding
+## fan, the tier map a paper lantern, the language a paper butterfly. Sound stays an
+## outlined word. GPU renders cut out with rembg (ops/install_button_objects.py).
+const BTN_OBJ := {
+	"Play": "res://assets/title/btn_fan.png",
+	"Levels": "res://assets/title/btn_lantern.png",
+	"Lang": "res://assets/title/btn_butterfly.png",
+}
+
+
+func _fold_button(name: String, tint: Color, size: int, lead: bool) -> ObjectButton:
+	var b := ObjectButton.new()
 	b.name = name
-	b.shape = ShapedButton.Shape.FOLD
-	b.tint = tint
-	# The ink is the paper's own dark, not the theme's off-white: FOLD is a FILLED shape,
-	# and pale type on a hot magenta fill is the one combination this palette cannot carry.
-	b.ink = Palette.INK
+	var path: String = BTN_OBJ.get(name, "")
+	if path != "" and ResourceLoader.exists(path):
+		b.object_texture = load(path)
+		b.object_size = 70.0 if lead else 46.0
+	else:
+		b.object_size = 0.0
+		b.gap = 0.0
+	b.motion = ObjectButton.Motion.TURN
+	b.label_color = Color("FFE9F2")
+	b.accent_color = tint
+	b.ink = Palette.GROUND_DEEP
+	b.outline_px = 5
+	b.shadow_px = 0
 	b.add_theme_font_override("font", StudioTheme.font("display"))
 	b.add_theme_font_size_override("font_size", size)
-	b.custom_minimum_size = Vector2(300 if lead else 180, 58 if lead else 52)
+	b.custom_minimum_size = Vector2(300 if lead else 150, 74 if lead else 50)
 	b.mouse_entered.connect(Sfx.slide)
 	return b
 
@@ -526,6 +566,9 @@ func _fold_button(name: String, tint: Color, size: int, lead: bool) -> ShapedBut
 ## Set the word on a ShapedButton and make it redraw. Plain Buttons would take `text`;
 ## these draw their own, so the property is `label`.
 func _set_label(node: Node, word: String) -> void:
+	if node is ObjectButton:
+		(node as ObjectButton).text = word
+		return
 	if node is ShapedButton:
 		(node as ShapedButton).label = word
 		(node as ShapedButton).queue_redraw()
