@@ -43,6 +43,11 @@ class_name TitleScreen
 const KV_LAND := "res://assets/title/keyvisual.webp"
 const KV_PORT := "res://assets/title/keyvisual_portrait.webp"
 const LOGO_PATH := "res://assets/title/logotype.png"
+const RAIL_OBJ := {
+	"begin": "res://assets/title/btn_latte.png",
+	"memories": "res://assets/title/btn_letter.png",
+	"language": "res://assets/title/btn_macaron.png",
+}
 const OVERLAY_PATH := "res://assets/title/overlay.png"
 const LAMP_PATH := "res://assets/title/lamp.png"
 
@@ -265,6 +270,26 @@ func _rail_item(action: String, label: String) -> Control:
 	text.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	text.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	# 2026-09-23: each word carries an OBJECT from the café the key visual is set in
+	# (ops/STANDARD.md, "Buttons are objects from the game"). The rail was already box-free
+	# -- words with a rule that grows under them -- and that stays; what it lacked was
+	# anything that belonged to this game rather than any game. GPU renders, cut out by
+	# ops/install_button_objects.py; hover lifts the object with the rule.
+	var obj_path: String = RAIL_OBJ.get(action, "")
+	if obj_path != "" and ResourceLoader.exists(obj_path):
+		var obj := TextureRect.new()
+		obj.name = "Obj"
+		obj.texture = load(obj_path)
+		obj.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		obj.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		obj.custom_minimum_size = Vector2(46, 46)
+		obj.size = Vector2(46, 46)
+		obj.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		item.add_child(obj)
+		item.resized.connect(func() -> void:
+			# 14 px clear of the first letter: at 0 the macaron sat on the L of LANGUAGE
+			obj.position = Vector2(item.size.x * 0.5 - 46.0 - 14.0 - _word_half(text), item.size.y * 0.5 - 25.0))
 	# Work Sans has no tracking control in Godot's theme, and a menu of un-tracked bold
 	# caps reads as a web nav bar. A space between the letters is what stands in for
 	# letter-spacing. Built with a loop rather than split("") — an empty delimiter is not
@@ -427,7 +452,9 @@ func _layout() -> void:
 	# was captured and read. 0.60 puts the mark over the window and leaves his face clear,
 	# which is also item 4's "positioned in the composition" rather than centred by
 	# default. Portrait stays centred: that crop is his face, with no quiet side to use.
-	var lcx: float = 0.5 if portrait else 0.60
+	# 2026-09-23: 0.60 -> 0.72. At 0.60 the F still ran across his right eye in the capture
+	# (ops/STANDARD.md: nothing of the UI touches the character's face).
+	var lcx: float = 0.5 if portrait else 0.72
 	# The portrait crop is a tight face with no quiet side, so the mark goes ABOVE the eyes
 	# rather than beside them — at 0.14 it sat straight across them. The plate carries deep
 	# margins (the ink occupies roughly the middle half of it), so this is nearer the top
@@ -511,3 +538,9 @@ func _input(event: InputEvent) -> void:
 		_ptr = Vector2(
 			(event.position.x / vp.x - 0.5) * -26.0,
 			(event.position.y / vp.y - 0.5) * -15.0)
+
+
+func _word_half(l: Label) -> float:
+	var f := l.get_theme_font("font")
+	var fs := l.get_theme_font_size("font_size")
+	return (f.get_string_size(l.text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x * 0.5) if f else 60.0
