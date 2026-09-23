@@ -71,7 +71,7 @@ html,body{margin:0;height:100%;overflow:hidden;font-family:'Georgia','Songti SC'
 .fbin:focus{border-color:#d4a24e}
 .back{position:absolute;top:12px;left:12px;z-index:8;background:rgba(255,255,255,.06);border:1px solid #333;color:#998;border-radius:4px;padding:5px 11px;font-size:.78em;cursor:pointer;font-family:monospace}
 /* 主菜单与案件卷宗 */
-#home{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:22px;overflow:auto;background:linear-gradient(180deg,rgba(8,9,11,.12) 0,rgba(13,13,12,.28) 38%,rgba(10,9,8,.62) 72%,rgba(8,7,6,.85) 100%),url('assets/tell-keyvisual-v1.webp') 24% 30%/cover no-repeat,#0e0f10}
+#home{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:22px;overflow:auto;background:url('assets/tell-keyvisual-v1.webp') 24% 30%/cover no-repeat,#0e0f10}
 /* keyvisual note: the interrogation-room key visual (ops/tell_art/tell_gen.py, keyvisual_01,
    graded +28% brightness / +35% saturation) replaces the flat plum gradient this screen
    shipped with — STANDARD.md item 2, figure share was ~0 before this. background-position
@@ -101,6 +101,49 @@ body.reduce-motion *{animation:none!important;transition:none!important}body.no-
 .introGo:active{transform:scale(.98)}
 .detectiveFileBtn{width:88%;display:block;margin:12px auto 0;padding:10px 12px;border:1px solid #4b4335;background:linear-gradient(90deg,#171713,#111);color:#bdb29f;font:700 .72em monospace;letter-spacing:2px;cursor:pointer;text-align:left}.detectiveFileBtn:before{content:"◉";color:#8e2c27;margin-right:10px}.detectiveFileBtn.linked{border-color:#72613f;color:#d4c7ad}.detectiveFileBtn.linked:before{color:#b99657}
 #authOv{position:fixed;inset:0;z-index:110;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,2,3,.94);backdrop-filter:blur(9px)}.authCard{width:min(430px,100%);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#181817,#0b0c0e);border:1px solid #443d32;border-top:3px solid #8f2e29;padding:24px;border-radius:3px;box-shadow:0 30px 90px #000}.authStamp{font:10px monospace;color:#9b3630;letter-spacing:3px}.authCard h2{margin:7px 0 8px;letter-spacing:3px}.authCopy{color:#a9a195;line-height:1.55;font-size:.84em;margin-bottom:18px}.authRule{padding:9px 0;border-top:1px solid #282824;color:#777064;font:10px monospace;letter-spacing:1px}.googleSlot{min-height:40px;margin:12px 0}.authDivider{text-align:center;color:#5d584f;font:10px monospace;margin:13px}.authEmail{display:flex;gap:7px}.authEmail input{min-width:0;flex:1;background:#0d0e10;border:1px solid #3a3730;color:#ddd;padding:10px}.authEmail button,.authClose,.authOut{border:1px solid #514735;background:#1b1812;color:#d7c6a7;padding:10px 12px;cursor:pointer}.authClose{width:100%;margin-top:16px;background:#272019;border-color:#7d2c27}.authStats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:16px 0}.authStat{background:#101113;border:1px solid #292a29;padding:10px;text-align:center}.authStat b{display:block;color:#d1ae6c;font-size:1.25em}.authStat small{color:#777;font:9px monospace}.authIdentity{display:flex;gap:12px;align-items:center}.authIdentity img{width:44px;height:44px;border-radius:50%;filter:grayscale(.65)}.authMsg{min-height:18px;color:#b78d52;font-size:.76em;margin-top:8px}
+
+/* 2026-09-23 -- title pass, ops/STANDARD.md "Buttons are objects from the game".
+   The home screen's controls were bordered, gradient-filled rectangles (case cards, a gold
+   bar, a monospace strip, a row of boxed language chips). They are now OBJECTS from the
+   interrogation room with the label beside them, and no box behind anything:
+     TODAY'S CASE   one manila case folder      CASE RUN    a stack of folders
+     OPEN CASEFILE  the room's hanging lamp     DETECTIVE   the tape recorder
+     languages      red wax evidence seals
+   The objects are GPU renders cut out with rembg (ops/title_logotypes.py gpu_object).
+   The dark gradient laid over the key visual is gone too -- it took the suspect's room to
+   0.85 black at the foot, a scrim, which 0 of 64 shelf covers use. */
+.playMode,.playMode:nth-of-type(2){background:none!important;border:none!important;box-shadow:none!important;transform:none!important;padding:8px 8px 8px 92px!important;min-height:78px;overflow:visible}
+.playMode:before,.playMode.on:after{content:none!important}
+.playMode .obj{position:absolute;left:0;top:50%;width:80px;height:80px;transform:translateY(-50%) rotate(-4deg);transition:transform .18s;filter:drop-shadow(0 6px 8px rgba(0,0,0,.6))}
+.playMode:hover .obj{transform:translateY(-54%) rotate(-9deg)}
+.playMode.on .obj{transform:translateY(-56%) rotate(0deg) scale(1.08)}
+.playMode b,.playMode small{text-shadow:0 0 3px #000,0 2px 4px #000,1px 1px 0 #000,-1px -1px 0 #000}
+.playMode.on b{color:#ffcf7a}
+.playMode .bloodPrint{display:none}
+.homeGo{background:none!important;border:none!important;box-shadow:none!important;color:#ffdca0!important;font-size:1.25em;text-shadow:0 0 3px #000,0 2px 6px #000,2px 2px 0 #000;display:flex!important;align-items:center;justify-content:center;gap:14px;padding:6px!important}
+.homeGo .obj{width:78px;height:78px;transition:transform .2s;filter:drop-shadow(0 0 14px rgba(255,200,110,.55))}
+.homeGo:hover .obj{transform:rotate(-8deg)}
+.detectiveFileBtn{background:none!important;border:none!important;display:flex!important;align-items:center;gap:10px;color:#e3d6c0!important;text-shadow:0 0 3px #000,1px 1px 0 #000}
+.detectiveFileBtn:before{content:none!important}
+.detectiveFileBtn .obj{width:44px;height:44px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.6))}
+.langChoice button{background:none!important;border:none!important;color:#e1d4bf!important;display:inline-flex;align-items:center;gap:4px;padding:4px 6px!important;text-shadow:0 0 3px #000,1px 1px 0 #000}
+.langChoice button:before{content:"";width:22px;height:22px;background:url('assets/btn_seal.webp') center/contain no-repeat;opacity:.55;transition:.15s}
+.langChoice button.on:before,.langChoice button:hover:before{opacity:1;transform:scale(1.15)}
+.langChoice button.on{color:#ffcf7a!important}
+.settingsBtn{background:none!important;border:none!important;text-shadow:0 0 3px #000,1px 1px 0 #000}
+/* Composition (same pass): the suspect is the subject and nothing may sit on him. The
+   column moves to the RIGHT half, where the plate has the lamp and a quiet wall, and the
+   plate is anchored so he fills the left. The heavy vignette (inset 190px black) and the
+   0.9-alpha "table" band across the foot were two more scrims; both are removed. */
+@media (min-width:900px){
+ #home{justify-content:flex-end!important;align-items:flex-start!important;padding-right:6vw!important;background-position:8% 30%!important}
+ .homeCard{padding-top:24px}
+}
+#home:before{box-shadow:none!important}
+#home:after{display:none!important}
+.settings{border-top:none!important;color:#e1d4bf!important;text-shadow:0 0 3px #000,1px 1px 0 #000}
+.homeCard .brandSub,#homeLead{text-shadow:0 0 4px #000,0 2px 6px #000,1px 1px 0 #000;color:#f1e6d3}
+
 </style><script src="https://accounts.google.com/gsi/client" async defer></script><!-- closed-loop telemetry bootstrap -->
 <script>
 window.TEL_APP = window.TEL_APP || 'tell';
@@ -114,8 +157,8 @@ window.API = window.API || window.TEL_API;
 <div id="home"><div class="hangWire"></div><div class="hangLamp"></div><div class="homeCard">
   <div class="brand"><img src="assets/tell-title-v1.webp" alt="TELL"></div><div class="brandSub" id="homeSub">INTERROGATION FILES</div>
   <div class="homeLead" id="homeLead"></div>
-  <button class="playMode" id="dailyMode" onclick="selectMode('daily')"><b></b><small></small><i class="bloodPrint" aria-hidden="true"></i></button>
-  <button class="playMode" id="runMode" onclick="selectMode('run')"><b></b><small></small><i class="bloodPrint" aria-hidden="true"></i></button>
+  <button class="playMode" id="dailyMode" onclick="selectMode('daily')"><img class="obj" src="assets/btn_folder.webp" alt=""><b></b><small></small><i class="bloodPrint" aria-hidden="true"></i></button>
+  <button class="playMode" id="runMode" onclick="selectMode('run')"><img class="obj" src="assets/btn_folders.webp" alt=""><b></b><small></small><i class="bloodPrint" aria-hidden="true"></i></button>
   <button class="homeGo" id="homeGo" onclick="enterGame()"></button>
   <button class="detectiveFileBtn" id="detectiveFileBtn" onclick="openAuth()"></button>
   <div class="settings"><button class="settingsBtn" id="settingsLabel" onclick="openSettings()"></button><div class="langChoice"><button id="langEn" onclick="setLang('en')">EN</button><button id="langEs" onclick="setLang('es')">ES</button><button id="langPt" onclick="setLang('pt')">PT</button><button id="langZh" onclick="setLang('zh')">中文</button><button id="langJa" onclick="setLang('ja')">日本語</button></div></div>
@@ -239,7 +282,7 @@ let AUTH={config:null,me:null};
 function authText(){return AUTH_I18N[lang]||AUTH_I18N.en}
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 async function authRefresh(){try{AUTH.config=await (await fetch(API+"/auth/config",{credentials:"include"})).json();AUTH.me=await (await fetch(API+"/auth/me?pid="+encodeURIComponent(pid()),{credentials:"include"})).json();renderAuthButton();}catch(e){AUTH.config={};AUTH.me={authenticated:false}}}
-function renderAuthButton(){const b=document.getElementById("detectiveFileBtn"),a=authText();if(!b)return;b.textContent=AUTH.me?.authenticated?a.linked:a.button;b.classList.toggle("linked",!!AUTH.me?.authenticated)}
+function renderAuthButton(){const b=document.getElementById("detectiveFileBtn"),a=authText();if(!b)return;b.innerHTML='<img class="obj" src="assets/btn_recorder.webp" alt=""><span></span>';b.querySelector("span").textContent=AUTH.me?.authenticated?a.linked:a.button;b.classList.toggle("linked",!!AUTH.me?.authenticated)}
 async function openAuth(){track("detective_file_opened");document.getElementById("authOv").style.display="flex";if(!AUTH.config)await authRefresh();renderAuth();}
 function closeAuth(){document.getElementById("authOv").style.display="none"}
 function renderAuth(){const a=authText(),card=document.getElementById("authCard");if(AUTH.me?.authenticated){const u=AUTH.me.account||{},p=AUTH.me.progress||{};card.innerHTML=`<div class="authStamp">${a.stamp}</div><h2>${a.title}</h2><div class="authIdentity">${u.picture?`<img src="${esc(u.picture)}" alt="">`:""}<div><b>${esc(u.name||u.email)}</b><div style="color:#777;font-size:.75em">${esc(u.email)}</div></div></div><div class="authStats"><div class="authStat"><b>${p.attempts||0}</b><small>${a.attempts}</small></div><div class="authStat"><b>${p.solves||0}</b><small>${a.solves}</small></div><div class="authStat"><b>${p.cases||0}</b><small>${a.cases}</small></div></div><button class="authOut" onclick="authLogout()">${a.out}</button><button class="authClose" onclick="closeAuth()">${OPT[lang]?.close||OPT.en.close}</button>`;return}
@@ -253,7 +296,7 @@ function tr(){return T[lang]||T.en}
 function renderHome(){
  document.getElementById("homeSub").textContent=tr().sub;
  document.getElementById("homeLead").textContent=tr().lead;
- document.getElementById("homeGo").textContent=tr().play;
+ document.getElementById("homeGo").innerHTML='<img class="obj" src="assets/btn_lamp.webp" alt=""><span></span>';document.querySelector("#homeGo span").textContent=tr().play;
  document.getElementById("settingsLabel").textContent=tr().settings;
  renderAuthButton();
  [["dailyMode",tr().daily,tr().dailyHint,"daily"],["runMode",tr().run,DEMO?(tr().runHint+" · demo 2/7"):tr().runHint,"run"]].forEach(([id,name,hint,m])=>{const b=document.getElementById(id);b.querySelector("b").textContent=name;b.querySelector("small").textContent=hint;b.classList.toggle("on",mode===m);});
@@ -515,6 +558,9 @@ document.addEventListener("keydown",()=>{if(document.getElementById("home").styl
 @media(max-width:520px){#uxFbBtn{top:52px;right:8px;height:31px;padding:0 10px;font-size:9px}}
 .brand{display:flex!important;align-items:center;justify-content:center;width:100%;margin:0 auto 4px!important;transform:none!important;filter:drop-shadow(0 5px 15px #000)}
 .brand img{display:block;width:min(360px,84vw);height:auto}
+/* 2026-09-23: the review tab moves to the foot corner -- at top-right it sat on the L of
+   TELL once the column went to the right half. */
+@media (min-width:900px){#uxFbBtn{top:auto!important;bottom:18px!important;right:18px!important}}
 </style>
 <button id="uxFbBtn" onclick="uxOpenFb()">♡</button>
 <div id="uxFbOv" onclick="if(event.target===this)uxCloseFb()">
