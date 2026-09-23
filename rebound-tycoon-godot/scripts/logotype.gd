@@ -71,12 +71,31 @@ func _draw_word(f: Font, text: String, sz: int, at: Vector2, color: Color, drop:
 		# each letter settles with its own tiny delay: the mark lands, it does not appear
 		var d := clampf((settle - i * 0.035) * 1.6, 0.0, 1.0)
 		var rise := (1.0 - d) * 14.0
-		draw_string(f, Vector2(x, at.y + rise) + drop, str(g["ch"]), HORIZONTAL_ALIGNMENT_LEFT,
-			-1, sz, Color(color, color.a * d))
+		if i == _obj_index and _obj_tex != null:
+			# the letter's slot is an object: drawn once, on the face pass only (the emboss and
+			# bloom passes would stamp it three times), at 1.35x cap height on the baseline
+			if drop == Vector2.ZERO and color.a > 0.9 * lit_face_alpha:
+				var s := sz * 1.35
+				var cxl: float = x + float(g["w"]) * 0.5
+				draw_texture_rect(_obj_tex, Rect2(Vector2(cxl - s * 0.5, at.y + rise - s * 0.86),
+					Vector2(s, s)), false, Color(1, 1, 1, d))
+		else:
+			draw_string(f, Vector2(x, at.y + rise) + drop, str(g["ch"]), HORIZONTAL_ALIGNMENT_LEFT,
+				-1, sz, Color(color, color.a * d))
 		x += float(g["w"]) + track
 
 
+var lit_face_alpha := 1.0
+## The O of REBOUND is the guard's fire hose, coiled flat -- the game launches with a hose,
+## and a coil is already an O with a counter. GPU render, cut out with rembg
+## (ops/install_button_objects.py). Only the Latin wordmark has an O to give up; other
+## locales draw every letter.
+var _obj_tex: Texture2D = load("res://assets/title/obj_hosecoil.png") if ResourceLoader.exists("res://assets/title/obj_hosecoil.png") else null
+var _obj_index := -1
+
+
 func _draw() -> void:
+	_obj_index = word.find("O")
 	var f := StudioTheme.font("display")
 	var cx := size.x * 0.5
 	var base := Vector2(cx, size_px * 1.05)
@@ -87,8 +106,10 @@ func _draw() -> void:
 	var word_w: float = _letters(f, word, size_px)[1]
 	var plate_w: float = minf(size.x - 16.0, word_w + size_px * 0.9)
 	var plate := Rect2(cx - plate_w * 0.5, base.y - size_px * 0.94, plate_w, size_px * 1.26)
-	draw_rect(plate, Color(Palette.INK, 0.55 * settle))
-	draw_rect(plate, Color(Palette.BRASS, 0.55 * settle), false, 1.5)
+	# 2026-09-23: the plate is gone. It was a 0.55-alpha ink rectangle under the word with a
+	# brass hairline round it -- a translucent box, which 0 of 64 shelf covers use. The
+	# neon word already carries an emboss and a bloom; that is what holds it on the sky.
+	lit_face_alpha = lit
 
 	# 2. the emboss: the word cut into the brass, offset down-right
 	_draw_word(f, word, size_px, base, Color(Palette.GROUND_DEEP, 0.85), Vector2(2, 3))

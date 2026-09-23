@@ -235,12 +235,40 @@ func _build_marks() -> void:
 
 
 # ---------- 4: the menu, placed in the composition ---------------------------------------
-## A torn ticket stub, not a rounded rectangle (ops/STANDARD.md #4, StudioTheme.ticket).
-## The gate tin is full of them; pressing one is what the whole game is.
+## 2026-09-23: OBJECTS, not torn ticket stubs (ops/STANDARD.md, "Buttons are objects from
+## the game"). A ticket is a rectangle in costume. This game is a night guard at a gate
+## with a water hose, so: the hose NOZZLE starts the shift, the guard's star BADGE opens
+## the ledger, the WHISTLE is the sound toggle. Language and motion stay words with an
+## outline -- a settings word does not need a prop, and inventing one would be noise.
+## Objects are GPU renders cut out by ops/install_button_objects.py.
+const BTN_OBJ := {
+	"start": "res://assets/title/btn_nozzle.png",
+	"shop": "res://assets/title/btn_badge.png",
+	"sound": "res://assets/title/btn_whistle.png",
+}
+
+
 func _btn(text: String, variation: String, at: Vector2, w: float, fn: Callable,
-		h: float = 46.0) -> Button:
-	var b := StudioTheme.ticket(text, variation, w, h)
+		h: float = 46.0, obj_key := "") -> Button:
+	var b := ObjectButton.new()
+	b.text = text
+	var path: String = BTN_OBJ.get(obj_key, "")
+	if path != "" and ResourceLoader.exists(path):
+		b.object_texture = load(path)
+		b.object_size = h
+	else:
+		b.object_size = 0.0
+		b.gap = 0.0
+	b.motion = ObjectButton.Motion.BOB if obj_key == "start" else ObjectButton.Motion.TURN
+	b.label_color = Color("FFF6E6")
+	b.accent_color = Color("FFD35A")
+	b.ink = Color("1B1320")
+	b.outline_px = 3
+	b.shadow_px = 0
+	b.add_theme_font_override("font", StudioTheme.font("display"))
+	b.add_theme_font_size_override("font_size", 20 if variation == "Primary" else 15)
 	b.position = at
+	b.size = Vector2(w, h)
 	b.pressed.connect(Sfx.tap)
 	b.pressed.connect(fn)
 	b.mouse_entered.connect(Sfx.flip)
@@ -259,11 +287,11 @@ func _build_menu() -> void:
 	# started at 214, so x = 210 -- the middle of the screen -- was an eight-pixel dead
 	# gap between them. ops/play_driver.py presses exactly there and found the same hole.
 	_btn(RTStrings.t("cont") if Game.has_progress() else RTStrings.t("start"),
-		"Primary", Vector2(x, H - 200.0), 224.0, func(): start_pressed.emit(), 54.0)
-	_btn(RTStrings.t("shop"), "Amber", Vector2(x, H - 142.0), 146.0, func(): ledger_pressed.emit())
+		"Primary", Vector2(x, H - 206.0), 224.0, func(): start_pressed.emit(), 60.0, "start")
+	_btn(RTStrings.t("shop"), "Amber", Vector2(x, H - 142.0), 146.0, func(): ledger_pressed.emit(), 42.0, "shop")
 	_btn(RTStrings.t("lang"), "Ghost", Vector2(x + 150.0, H - 142.0), 74.0, func(): lang_pressed.emit())
 	_btn(RTStrings.t("sound") + ": " + (RTStrings.t("on") if not Sfx.muted else RTStrings.t("off")),
-		"Amber", Vector2(x, H - 92.0), 120.0, func(): sound_pressed.emit())
+		"Amber", Vector2(x, H - 92.0), 120.0, func(): sound_pressed.emit(), 38.0, "sound")
 	# Reduced motion, offered on the first screen rather than buried: a player who needs it
 	# needs it before the parallax push and the neon flicker have had four seconds at them.
 	var motion := _btn(RTStrings.t("motion") + ": " + _motion_word(),
