@@ -19,6 +19,9 @@
 ##     dropout, a few seconds apart. A permanently split logo is a lens flare.
 extends Control
 
+const MARK_PATH := "res://assets/art/logotype.png"
+var _mark: Texture2D = load(MARK_PATH) if ResourceLoader.exists(MARK_PATH) else null
+
 @export var text_top := "GHOST"
 @export var text_bottom := "CHANNEL"
 @export var base_size := 96
@@ -77,40 +80,45 @@ func _draw_tracked(s: String, pos: Vector2, size: int, color: Color) -> void:
 
 
 func _draw() -> void:
-	var size := base_size
-	# GHOST is set to the measure of CHANNEL: the block is a rectangle, like station signage.
-	var w_bottom := _measure(text_bottom, size)
-	var top_size := size
-	var w_top := _measure(text_top, top_size)
-	if w_top > 1.0:
-		top_size = int(size * (w_bottom / w_top))
-		w_top = _measure(text_top, top_size)
-
+	# 2026-09-23. The RF-ghost idea is kept and the TYPE is gone. What was struck three
+	# times was the display face; what is struck three times now is the mark built in
+	# ops/title_logotypes.py::ghost_channel — phosphor letters cut by scanlines with one
+	# band torn sideways by interference, the O replaced by the set's tuning dial (needle
+	# off station) and the T of GHOST by the relay mast itself, guy wires and red beacon.
+	# Two letters, not one: picking the letter by its shape is the rule, always taking the
+	# O is a formula (ops/STANDARD.md).
+	#
+	# The split still breathes at ~0.6 px and tears to 7 px on a dropout, because that is
+	# the premise of the game — a second voice arriving a fraction late on the same
+	# frequency — and it was the good part of the old mark.
 	var ease_in: float = 1.0 - pow(1.0 - _settle, 3.0)
-	# the arrival: the three strikes come in far apart and close on the word
 	var arrive: float = (1.0 - ease_in) * 26.0
 	var breathe: float = sin(_t * 1.7) * 0.6
 	var split: float = arrive + breathe + _tear * 7.0
 	var alpha: float = ease_in
+	var w_bottom := size.x
+	var y_bottom := 0.0
 
-	var y_top := float(top_size) * 0.95
-	var y_bottom := y_top + size * 1.02
-	var pairs := [[text_top, Vector2(0, y_top), top_size], [text_bottom, Vector2(0, y_bottom), size]]
+	if _mark != null:
+		var mw := size.x
+		var mh := mw * float(_mark.get_height()) / float(_mark.get_width())
+		var r := Rect2(Vector2(0, 0), Vector2(mw, mh))
+		y_bottom = mh * 0.74
+		w_bottom = mw
+		draw_texture_rect(_mark, Rect2(r.position + Vector2(-split, 0), r.size), false,
+			Color(Palette.ACCENT, 0.55 * alpha))
+		draw_texture_rect(_mark, Rect2(r.position + Vector2(split, 0), r.size), false,
+			Color(Palette.HEAT, 0.55 * alpha))
+		draw_texture_rect(_mark, r, false, Color(1, 1, 1, alpha))
 
-	for p in pairs:
-		var s: String = p[0]
-		var at: Vector2 = p[1]
-		var sz: int = p[2]
-		# the two ghosts, then the solid cut between them
-		_draw_tracked(s, at + Vector2(-split, 0), sz, Color(Palette.ACCENT, 0.75 * alpha))
-		_draw_tracked(s, at + Vector2(split, 0), sz, Color(Palette.HEAT, 0.75 * alpha))
-		_draw_tracked(s, at, sz, Color(Palette.TEXT, alpha))
-
-	# the rule: a hairline the width of the block, and the station's callsign under it
-	var rule_y := y_bottom + size * 0.26
+	# the rule: a hairline the width of the block, and the station's callsign under it.
+	# `base` replaces the old int `size`: since the mark became a texture, `size` is the
+	# Control's own Vector2 and multiplying it by a float is a type error, not a scale.
+	var base := float(base_size)
+	var rule_y := y_bottom + base * 0.26
 	draw_rect(Rect2(0, rule_y, w_bottom * ease_in, 2), Color(Palette.ACCENT, 0.55 * alpha), true)
 	if rule_text != "":
-		var rs := maxi(11, int(size * 0.14))
+		var rs := maxi(11, int(base * 0.14))
 		# tracked out hard: this is a plate screwed to the console, not a sentence
 		var x := 0.0
 		for i in rule_text.length():
@@ -118,4 +126,4 @@ func _draw() -> void:
 				HORIZONTAL_ALIGNMENT_LEFT, -1, rs, Color(Palette.MUTED, alpha))
 			x += _small.get_string_size(rule_text[i], HORIZONTAL_ALIGNMENT_LEFT, -1, rs).x + rs * 0.34
 
-	custom_minimum_size = Vector2(w_bottom, rule_y + size * 0.6)
+	custom_minimum_size = Vector2(w_bottom, rule_y + base * 0.6)

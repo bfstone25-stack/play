@@ -63,7 +63,10 @@ func _build() -> void:
 	_logo = preload("res://scripts/logotype.gd").new()
 	_logo.base_size = 84
 	_logo.rule_text = "BLAZECORE PLAY"
-	_logo.custom_minimum_size = Vector2(470, 250)
+	# 2026-09-23: 470 -> 780. The mark is a made object now (phosphor letters, a tuning
+	# dial for the O, a relay mast for the T) and at 470 it read as a caption on a very
+	# large radio. The shelf sets 62 of 64 marks at a quarter of the frame or wider.
+	_logo.custom_minimum_size = Vector2(780, 250)
 	col.add_child(_logo)
 
 	_tag = StudioTheme.serif_label("", 19, Palette.TEXT)
