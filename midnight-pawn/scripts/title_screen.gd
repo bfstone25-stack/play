@@ -163,8 +163,11 @@ func _build() -> void:
 			"a": rng.randf_range(0.20, 0.62),
 		})
 
-	_bands(0, 108, SCRIM_TOP)      # under the mark
-	_bands(108, 40, SCRIM_TAIL)    # and out, before the picture opens up
+	# 2026-09-23: the ink bands under the mark are gone. They were a translucent darkening
+	# laid across the top 148 px so a flat wordmark could be read; the mark now carries a
+	# 1-px keyline of its own (ops/title_logotypes.py::midnight_pawn) and three of its
+	# letters are objects, so it no longer needs the picture dimmed for it. 0 of 64 shelf
+	# covers use a scrim (ops/market/CRAZYGAMES_TITLES.md).
 	_edges()
 
 	logo = TextureRect.new()
@@ -242,7 +245,10 @@ func make_plaque(x: int, y: int, w: int, h: int, fade_r: int, fade_t: int, fade_
 	img.fill(Color(0, 0, 0, 0))
 	# A warm brown plate rather than a near-black hole. Cream type at #f1dfb0 on this is
 	# still a 9:1 contrast, and 27% of the frame stops reading as zero.
-	var face := Color(0.205, 0.130, 0.076, 0.78)
+	# 2026-09-23: 0.78 -> 1.0. At 0.78 this was a translucent panel under the menu, which
+	# is the scrim pattern; fully opaque it is what it is drawn as -- the shop's own board,
+	# dark stained wood, the dithered edge reading as wear rather than as a fade.
+	var face := Color(0.205, 0.130, 0.076, 1.0)
 	for py in h:
 		for px in w:
 			var c := 1.0
