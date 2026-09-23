@@ -292,6 +292,9 @@ func _build() -> void:
 	add_child(_vig)
 
 	scrim = _scrim()
+	# 2026-09-23: built for layout, not shown. A generated darkening under the menu is the
+	# one thing 0 of 33 Nutaku tiles do; the rows are objects with outlined words now.
+	scrim.visible = false
 	slip = _picture(SLIP, _r(SLIP_RECT))
 	seal = _picture(SEAL, _r(SEAL_RECT))
 	seal.pivot_offset = seal.size / 2.0
@@ -463,47 +466,30 @@ func _compose() -> void:
 ## and the type on it. Hover lights the paper the way a hand passing over a candle does
 ## and thickens the lacquer rule at the left; press sinks it.
 func _row(text: String, fn: Callable, index: int, lead: bool) -> Button:
-	var b := Button.new()
+	# 2026-09-23, adult title pass: the rows are OBJECTS with the word beside them, not
+	# ruled lines with a hover plate (ops/STANDARD.md, "Buttons are objects from the
+	# game"). Begin-a-reading is a tarot card; back-to-the-table is the crystal ball.
+	# Cyber Fortune, the all-ages twin, has the wooden fish and the coin -- these are the
+	# night's instruments. GPU renders, cut out with rembg.
+	var b := ObjectButton.new()
 	b.text = text
+	var tex := "res://assets/night/btn_tarot.png" if lead else "res://assets/night/btn_crystalball.png"
+	if ResourceLoader.exists(tex):
+		b.object_texture = load(tex)
+	b.object_size = 78.0 if lead else 58.0
+	b.gap = 14.0
+	b.motion = ObjectButton.Motion.TURN if lead else ObjectButton.Motion.BOB
+	b.label_color = Palette.HOT_PALE if lead else Palette.PAPER
+	b.accent_color = Palette.GOLD_PALE
+	b.ink = Color(0, 0, 0, 0.9)
+	b.outline_px = 5
+	b.shadow_px = 0
+	b.add_theme_font_override("font", _font())
+	b.add_theme_font_size_override("font_size", 30 if lead else 23)
 	b.position = Vector2(ROW_X * w, ROW_TOP * h + index * ROW_H * h)
 	b.custom_minimum_size = Vector2(ROW_W * w, ROW_H * h - 8.0)
 	b.size = b.custom_minimum_size
-	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	b.clip_text = false
 	b.focus_mode = Control.FOCUS_NONE
-	b.add_theme_font_override("font", _font())
-	b.add_theme_font_size_override("font_size", 30 if lead else 23)
-	# The lead action takes the seal's red, the second stays in paper-white, so the eye
-	# lands on the one that starts the night.
-	b.add_theme_color_override("font_color", Palette.HOT_PALE if lead else Palette.PAPER)
-	b.add_theme_color_override("font_hover_color", Color(1, 1, 1) if lead else Palette.GOLD_PALE)
-	b.add_theme_color_override("font_pressed_color", Palette.HOT_DEEP)
-	b.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.84))
-	b.add_theme_constant_override("outline_size", 7)
-
-	var flat := StyleBoxFlat.new()
-	flat.bg_color = Color(0, 0, 0, 0)
-	flat.content_margin_left = 18
-	flat.content_margin_right = 12
-	flat.content_margin_top = 6
-	flat.content_margin_bottom = 6
-	# the ruled line the row is written on: one hairline at the foot, drawn by the stylebox
-	# rather than by a ColorRect so it hovers and presses with the row it belongs to
-	flat.border_color = Color(Palette.PAPER_LINE.r, Palette.PAPER_LINE.g,
-		Palette.PAPER_LINE.b, 0.30)
-	flat.border_width_bottom = 1
-	var hover := flat.duplicate()
-	hover.bg_color = Color(1.0, 0.86, 0.60, 0.13)        # the candle falling on the page
-	hover.border_color = Palette.HOT
-	hover.border_width_left = 5
-	hover.border_width_bottom = 1
-	var pressed := hover.duplicate()
-	pressed.bg_color = Color(0.28, 0.08, 0.10, 0.22)
-	b.add_theme_stylebox_override("normal", flat)
-	b.add_theme_stylebox_override("hover", hover)
-	b.add_theme_stylebox_override("pressed", pressed)
-	b.add_theme_stylebox_override("focus", flat)
-	b.mouse_entered.connect(Sfx.flip)
 	b.pressed.connect(Sfx.knock)
 	b.pressed.connect(fn)
 	return b

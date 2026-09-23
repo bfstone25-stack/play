@@ -13,7 +13,7 @@ OFL-NotoSerifCJK.txt::TextFile::-1::1789789954::0::1::::<><><>0<>0<><>::
 OFL-Nunito.txt::TextFile::-1::1789789161::0::1::::<><><>0<>0<><>::
 OFL-PlayfairDisplay.txt::TextFile::-1::1789789161::0::1::::<><><>0<>0<><>::
 PlayfairDisplay-Italic.ttf::FontFile::4081998631611149678::1789789161::1789883429::1::::<><><>0<>0<>3e2e7bb2748273b49282d0574daab58e<>res://.godot/imported/PlayfairDisplay-Italic.ttf-5b3f94e05250705b5380b0297fda596b.fontdata::
-::res://assets/night/::1789893074
+::res://assets/night/::1790077097
 dagny_calm.png::CompressedTexture2D::3650808150219726011::1789892981::1789893012::1::::<><><>0<>0<>17399e8375eadcae97f31161b46cf7dc<>res://.godot/imported/dagny_calm.png-4006d828149771b3f537c756f282ddf2.ctex::
 dagny_night.png::CompressedTexture2D::3290558492516797068::1789892984::1789893013::1::::<><><>0<>0<>7e25135346199823c2e5852bab831ba0<>res://.godot/imported/dagny_night.png-c38910761712405631fed059df5cba2e.ctex::
 dagny_night_locked.png::CompressedTexture2D::987339704743561047::1789893046::1789893074::1::::<><><>0<>0<>e87e70a407cd84ed73ed61ebe4cac16d<>res://.godot/imported/dagny_night_locked.png-a30758b500c6c2e8677b89d7f17baa62.ctex::
@@ -27,7 +27,7 @@ qiao_calm.png::CompressedTexture2D::7698507016617561771::1789892980::1789893012:
 qiao_night.png::CompressedTexture2D::3594390167259447177::1789892983::1789893013::1::::<><><>0<>0<>9c58cbdc2feff604397ecc358569d74c<>res://.godot/imported/qiao_night.png-7c68b764352e434ee263c0059f2b8185.ctex::
 qiao_night_locked.png::CompressedTexture2D::4335775671069285393::1789892985::1789893013::1::::<><><>0<>0<>c0f0f67781eaf2b922f7c2ab9606048d<>res://.godot/imported/qiao_night_locked.png-0284238bd0486e9579f5475073cc24a1.ctex::
 qiao_turn.png::CompressedTexture2D::3922599110841423041::1789892982::1789893013::1::::<><><>0<>0<>462fde17c3426c54c023d400f41b2bbc<>res://.godot/imported/qiao_turn.png-7720d45a773255d01dd75521a40fae15.ctex::
-title_kv.png::CompressedTexture2D::5694823869269687861::1789892832::1789892047::1::::<><><>0<>0<>14bdaeb43481e59ec2453b6e9c4afed2<>res://.godot/imported/title_kv.png-df44efbad18d74caa5a77c09f79da53f.ctex::
+title_kv.png::CompressedTexture2D::5694823869269687861::1790077092::1790077097::1::::<><><>0<>0<>14bdaeb43481e59ec2453b6e9c4afed2<>res://.godot/imported/title_kv.png-df44efbad18d74caa5a77c09f79da53f.ctex::
 ::res://assets/title/::1789891022
 seal.png::CompressedTexture2D::1553114325528757414::1789890762::1789891022::1::::<><><>0<>0<>387e1c38549d305611119814ee08bec1<>res://.godot/imported/seal.png-c430e8d171b295c3f970dd6768388053.ctex::
 slip.png::CompressedTexture2D::6433529901950360907::1789890762::1789891022::1::::<><><>0<>0<>0a70c9085d11f61567d09f3be262fd81<>res://.godot/imported/slip.png-732c6de5c4d8ad2dca06f312adeafcf7.ctex::
@@ -43,7 +43,7 @@ main.tscn::PackedScene::-1::1789790215::0::1::::<><><>0<>0<><>::res://scripts/ma
 ::res://scripts/::1790047934
 backdrop.gd::GDScript::7104390093762974783::1789885269::0::1::::Backdrop<>Control<><>0<>0<><>::
 fortune.gd::GDScript::2813504103812732937::1790047934::0::1::::<>Node<><>0<>0<><>::
-gate.gd::GDScript::8726946939687403721::1790047973::0::1::::<>Node<><>0<>0<><>::
+gate.gd::GDScript::8726946939687403721::1790077094::0::1::::<>Node<><>0<>0<><>::
 i18n.gd::GDScript::5718140161692291545::1790040510::0::1::::<>Node<><>0<>0<><>::
 main.gd::GDScript::5062499984474956520::1790024133::0::1::::<>Control<><>0<>0<><>::
 merit_curve.gd::GDScript::6274601833526511246::1789790025::0::1::::MeritCurve<>RefCounted<><>0<>0<><>::
@@ -51,13 +51,13 @@ night.gd::GDScript::9163179900211780450::1790047930::0::1::::<>Node<><>0<>0<><>:
 night_home_screen.gd::GDScript::9031025127583604287::1790040034::0::1::::<>Control<><>0<>0<><>::
 night_read_screen.gd::GDScript::7449539320168609391::1790040031::0::1::::<>Control<><>0<>0<><>::
 night_scene_screen.gd::GDScript::3368394196581567798::1790040040::0::1::::<>Control<><>0<>0<><>::
-night_title_screen.gd::GDScript::6290019799819459127::1790024133::0::1::::NightTitleScreen<>Control<><>0<>0<><>::
+night_title_screen.gd::GDScript::6290019799819459127::1790076667::0::1::::NightTitleScreen<>Control<><>0<>0<><>::
 palette.gd::GDScript::4316490315286085200::1789884340::0::1::::Palette<>RefCounted<><>0<>0<><>::
 reader.gd::GDScript::4777385112697246410::1789790048::0::1::::ReaderForces<>RefCounted<><>0<>0<><>::
 sfx.gd::GDScript::2443476932835719518::1790040046::0::1::::<>Node<><>0<>0<><>::
-shaped_button.gd::GDScript::6010850827505441395::1790039800::0::1::::ShapedButton<>Button<><>0<>0<><>::
+shaped_button.gd::GDScript::6010850827505441395::1790049375::0::1::::ShapedButton<>Button<><>0<>0<><>::
 studio_theme.gd::GDScript::2478357348248839043::1790039953::0::1::::StudioTheme<>RefCounted<><>0<>0<><>::
-::res://tests/::1790047966
+::res://tests/::1790049041
 merit_conformance.json::JSON::-1::1789790126::0::1::::<><><>0<>0<><>::
 run_tests.gd::GDScript::4981379072623322446::1789884042::0::1::::<>Node<><>0<>0<><>::
 run_tests.tscn::PackedScene::-1::1789790215::0::1::::<><><>0<>0<><>::res://tests/run_tests.gd
