@@ -97,11 +97,15 @@ func _run() -> void:
 		push_error("no baked overlay on the title screen")
 		quit(1)
 		return
-	## The form sheet is the type's ground since 2026-09-19. Without it the type is
-	## floating on the corridor and the screen is unreadable, so it is a hard check and
-	## not a matter of taste.
-	if ts.get_node_or_null("FormSheet") == null or ts.get_node("FormSheet").texture == null:
-		push_error("no form sheet on the title screen")
+	## The form sheet was the type's ground from 2026-09-19 until 2026-09-22, when it was
+	## deleted: a translucent rectangle behind the type is the one thing the all-ages
+	## shelf never does (0 of 64 covers in ops/market/CRAZYGAMES_TITLES.md). What replaces
+	## it is the mark carrying its own outline and drop shadow, so THAT is what is
+	## checked -- a logotype texture must actually be loaded, or the type really is
+	## floating on the corridor.
+	var mark := hud.get_node_or_null("TitleMark")
+	if mark == null or mark.texture == null:
+		push_error("no logotype on the title screen")
 		quit(1)
 		return
 	if ts.get_node_or_null("Stamp") == null:

@@ -146,10 +146,13 @@ func _title() -> void:
 	title_mark.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	title_mark.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	title_mark.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	title_mark.offset_left = -300.0
-	title_mark.offset_right = 300.0
-	title_mark.offset_top = 96.0
-	title_mark.offset_bottom = 320.0
+	# Full width and tall: the mark carries its own outline, bevel and shadow now, and
+	# the shelf's marks are at least a quarter of the frame wide (62 of 64). At
+	# -300..300 / 96..320 this one was a caption.
+	title_mark.offset_left = -620.0
+	title_mark.offset_right = 620.0
+	title_mark.offset_top = 28.0
+	title_mark.offset_bottom = 508.0
 	title_mark.visible = false
 	title_mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(title_mark)
@@ -591,7 +594,7 @@ func apply_locale() -> void:
 		if title_screen:
 			# Ink, not bone: the form sheet under this label became real paper on
 			# 2026-09-22 and light type on paper is invisible.
-			title_screen.style_label(splash_title, 18, Color(0.17, 0.20, 0.17))
+			title_screen.style_label(splash_title, 18, Color(0.90, 0.92, 0.86))
 		else:
 			UiFont.apply_label(splash_title)
 	if splash_enter:

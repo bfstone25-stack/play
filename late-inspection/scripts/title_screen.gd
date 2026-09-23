@@ -226,10 +226,12 @@ func _build() -> void:
 	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 	logo.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	# Fitted to the narrowed sheet: 468 was wider than the 418-wide paper it is struck on,
-	# so the mark hung over the right edge onto the corridor.
-	logo.position = Vector2(26, 40)
-	logo.size = Vector2(398, 150)
+	# 2026-09-22: the sheet is gone, so the mark is no longer fitted to a 418 px column.
+	# It is the title of the game on a 1280-wide canvas and the shelf sets its marks at a
+	# quarter of the frame or wider (62 of 64 covers): 980 px, with the brass 404 plate
+	# baked into the lower left of the same texture so the two stay registered.
+	logo.position = Vector2(26, 26)
+	logo.size = Vector2(900, 348)
 	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(logo)
 
@@ -250,41 +252,17 @@ func _build() -> void:
 ##   * rules between the fields, at the y where the HUD's own sections start.
 ##   * a condition stamp struck across the bottom edge at an angle, half on the paper and
 ##     half on the corridor — the one element that makes the sheet lie ON the picture.
+## 2026-09-22, second pass: the sheet is GONE. Making it real paper fixed the colour and
+## kept the shape, and the shape was the problem -- Blaze: 又是一个大方框，像幻灯片. The
+## shelf's own answer is no container at all: 45 of 64 CrazyGames covers carry the mark
+## straight on the art, held by a hard outline and a drop shadow, which the logotype now
+## has baked into it (ops/title_logotypes.py::late_inspection). What survives of the form
+## is what a form actually leaves behind: the printed field line and the condition stamp,
+## both outlined so they read on the picture.
 func _form_sheet() -> void:
-	var sheet := TextureRect.new()
-	sheet.name = "FormSheet"
-	sheet.texture = _paper(64, 256)
-	sheet.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	sheet.stretch_mode = TextureRect.STRETCH_SCALE
-	sheet.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	sheet.position = FORM_POS
-	sheet.size = FORM_SIZE
-	sheet.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(sheet)
-
-	# border
-	var b := Color(INK.r, INK.g, INK.b, 0.45)
-	_rect(FORM_POS, Vector2(FORM_SIZE.x, 1), b)
-	_rect(FORM_POS + Vector2(0, FORM_SIZE.y - 1), Vector2(FORM_SIZE.x, 1), b)
-	_rect(FORM_POS, Vector2(1, FORM_SIZE.y), b)
-	_rect(FORM_POS + Vector2(FORM_SIZE.x - 1, 0), Vector2(1, FORM_SIZE.y), b)
-
-	# registration ticks: an L in each corner, off the paper's own edge
-	var tick := Color(0.42, 0.30, 0.10, 0.75)
-	for sx in [0.0, 1.0]:
-		for sy in [0.0, 1.0]:
-			var c := FORM_POS + Vector2(FORM_SIZE.x * sx, FORM_SIZE.y * sy)
-			var dx := -1.0 if sx > 0.5 else 0.0
-			var dy := -1.0 if sy > 0.5 else 0.0
-			_rect(c + Vector2(-18.0 * sx, dy), Vector2(18, 2), tick)
-			_rect(c + Vector2(dx, -18.0 * sy), Vector2(2, 18), tick)
-
-	# field rules, inset from the paper edge the way a printed rule is
-	for y in FORM_RULES:
-		_rect(Vector2(FORM_POS.x + 16.0, float(y)), Vector2(FORM_SIZE.x - 32.0, 1),
-			Color(INK.r, INK.g, INK.b, 0.30))
-
-	_field_row()
+	# The printed field row went with the sheet. It was written to fill 80 px of empty
+	# paper ("without it that band is 80 px of empty paper"); with no paper there is
+	# nothing to fill, and on the picture it ran straight through the 404 plate.
 	_stamp()
 
 
@@ -306,9 +284,9 @@ func _field_row() -> void:
 	l.add_theme_font_size_override("font_size", 15)
 	# Paper value, not damp green: this line sits over the lit end of the corridor, which
 	# is the brightest thing on the screen, and a mid-green at 0.82 disappeared into it.
-	l.add_theme_color_override("font_color", Color(0.16, 0.19, 0.16, 0.92))
-	l.add_theme_color_override("font_outline_color", PAPER)
-	l.add_theme_constant_override("outline_size", 3)
+	l.add_theme_color_override("font_color", Color(0.90, 0.92, 0.86, 0.95))
+	l.add_theme_color_override("font_outline_color", INK)
+	l.add_theme_constant_override("outline_size", 5)
 	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(l)
 
@@ -324,7 +302,7 @@ func _stamp() -> void:
 	# the whole point of the stamp: half on the paper, half on the wet floor behind it. At
 	# the old (352, 586) it was clear of the shortened sheet entirely — a stamp floating on
 	# the corridor — and it landed on the language row's new position as well.
-	s.position = Vector2(214, 344)
+	s.position = Vector2(56, 500)
 	s.pivot_offset = s.size * 0.5
 	s.rotation = deg_to_rad(-8.0)
 	s.modulate = Color(1, 1, 1, 0.62)
