@@ -11,6 +11,13 @@ class_name UiFont
 ## load()ed and then dropped loses its fallbacks on the web export (memory:
 ## godot-web-font-fallback), and the same holding rule keeps the face itself alive.
 ## Verify any change to this file on the web build, not just on desktop.
+##
+## This file is the LATIN stack only. The CJK faces are scripts/cjk.gd — one subset per
+## script family so Japanese kanji render in Japanese forms — and every call site that can
+## show translated text goes through Cjk.apply_*, which falls back here for English. The
+## fonts/DroidSansFallback.ttf this project used to name did not exist; only its .import
+## stub was ever committed, which is why nothing ever drew a Chinese glyph and nothing ever
+## complained (memory: verification-that-lies).
 
 const BOLD_PATH := "res://fonts/WorkSans-Bold.ttf"
 const BODY_PATH := "res://fonts/WorkSans-Regular.ttf"

@@ -1,0 +1,20 @@
+{
+ "greet": [
+  "greet_0.ogg",
+  "greet_1.ogg"
+ ],
+ "stage": [
+  "stage_0.ogg",
+  "stage_1.ogg",
+  "stage_2.ogg",
+  "stage_3.ogg"
+ ],
+ "near": [
+  "near_0.ogg",
+  "near_1.ogg"
+ ],
+ "win": [
+  "win_0.ogg",
+  "win_2.ogg"
+ ]
+}

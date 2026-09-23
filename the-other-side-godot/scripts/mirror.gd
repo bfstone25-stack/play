@@ -11,7 +11,7 @@ extends StaticBody3D
 
 const SLOT := "cg_mirror"
 
-@export var prompt := "Look in the mirror"
+@export var prompt := ""
 ## Which way the glass faces. 402 is 401 mirrored in x, so it cannot be assumed to be +x.
 @export var face_x := 1.0
 
@@ -30,6 +30,8 @@ var looked := false
 func _ready() -> void:
 	add_to_group("interactable")
 	add_to_group("mirror")
+	if prompt == "":
+		prompt = I18n.t("p_mirror")
 	collision_layer = 1
 	collision_mask = 0
 	var sx := signf(face_x)
@@ -193,7 +195,7 @@ func try_unlock(unlock: Node) -> bool:
 	if not Gate.is_web():
 		return false
 	var started: bool = await unlock.start(SLOT)
-	var ok: bool = await Gate.require(SLOT, "The mirror", "cg")
+	var ok: bool = await Gate.require(SLOT, I18n.t("p_mirror"), "cg")
 	if not ok or not started:
 		return false
 	var landed: bool = await unlock.redeem(SLOT)

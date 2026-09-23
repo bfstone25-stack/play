@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://p8ekenvpabyd"
-path="res://.godot/imported/DroidSansFallback.ttf-fefd6276707493f1293e2a65efe0de0d.fontdata"
+uid="uid://bfqn2q34o2akq"
+path="res://.godot/imported/NotoSansCJKtc-subset.ttf-a387f4d66d75af3f1b4079039e0006b9.fontdata"
 
 [deps]
 
-source_file="res://fonts/DroidSansFallback.ttf"
-dest_files=["res://.godot/imported/DroidSansFallback.ttf-fefd6276707493f1293e2a65efe0de0d.fontdata"]
+source_file="res://assets/fonts/NotoSansCJKtc-subset.ttf"
+dest_files=["res://.godot/imported/NotoSansCJKtc-subset.ttf-a387f4d66d75af3f1b4079039e0006b9.fontdata"]
 
 [params]
 

@@ -405,7 +405,7 @@ func _closed_door(pos: Vector3, yaw: float, label: String) -> void:
 	col.shape = sh
 	body.add_child(col)
 	body.set_script(preload("res://scripts/door.gd"))
-	body.set("prompt", "Open 401" if label == "401" else "Knock at 402")
+	body.set("prompt", I18n.t("p_401") if label == "401" else I18n.t("p_402"))
 	body.set("kind", label)
 	body.collision_layer = 1
 	body.collision_mask = 0
