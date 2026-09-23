@@ -51,6 +51,8 @@ extends Control
 ##   `expand` scales by the smaller of window/base, so the 390 px phone read is the one
 ##   that governs. Nothing here is sized in raw pixels without being checked against it.
 
+var _mark_tex: Texture2D
+
 signal start_pressed
 signal desk_pressed
 signal lang_pressed
@@ -58,6 +60,7 @@ signal lang_pressed
 const W := 420.0
 const H := 640.0
 const KV := "res://assets/art/plate_title_kv.webp"
+const MARK := "res://assets/art/logotype.png"
 
 var reduce_motion := false
 
@@ -105,6 +108,7 @@ func _ready() -> void:
 func _build_key_visual() -> void:
 	_kv = TextureRect.new()
 	_kv.texture = load(KV) if ResourceLoader.exists(KV) else null
+	_mark_tex = load(MARK) if ResourceLoader.exists(MARK) else null
 	_kv.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	# COVERED, never SCALE: the plate is 832x1216 against a 420x640 canvas and the aspect
 	# ratios are within 5% of each other, so this crops almost nothing — but it guarantees
@@ -360,8 +364,24 @@ func _paint_mark() -> void:
 	# Two lines: the small one leads, the big one is the mark. "BEAT THE MONDAY" set on one
 	# line at a size worth reading is 470 px wide on a 420 px canvas — it does not fit, and
 	# shrinking it until it does is how a logotype becomes a caption.
-	_draw_sticker(f, "BEAT THE", 30, Vector2(cx, 62.0), 4.0, 0.0)
-	_draw_sticker(f, "MONDAY", 56, Vector2(cx, 122.0), 3.0, 0.18)
+	# 2026-09-23: the sticker is gone. It was Lilita One stamped eight times around a ring
+	# with a magenta under-shadow -- well made, and still a font wearing a costume, which
+	# ops/STANDARD.md rules out. The mark is now built in
+	# ops/title_logotypes.py::beat_monday out of the thing this game is made of: each
+	# letter is printed on its own torn desk-calendar sheet, punched and tilted, and three
+	# letters are not letters at all -- the T of BEAT is a claw hammer, the O of MONDAY is
+	# the office clock at 9:00, the D is a coffee mug seen from the side.
+	#
+	# It still LANDS rather than fading: _settle drives a rise and a slight overshoot, the
+	# same beat the sticker had, because that beat was the good part.
+	if _mark_tex:
+		var e := 1.0 - pow(1.0 - clampf(_settle * 1.6, 0.0, 1.0), 3.0)
+		var mw := W * 0.94
+		var mh := mw * float(_mark_tex.get_height()) / float(_mark_tex.get_width())
+		var rise := (1.0 - e) * -30.0
+		_paint.draw_texture_rect(_mark_tex,
+			Rect2(Vector2(cx - mw * 0.5, 34.0 + rise), Vector2(mw, mh)), false,
+			Color(1, 1, 1, e))
 
 	# the shine: a soft diagonal band travelling across the mark once it has landed
 	if _shine >= 0.0:
