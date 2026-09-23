@@ -256,8 +256,14 @@ func _build_ui() -> void:
 	_menu.custom_minimum_size = Vector2(300, 0)
 	col.add_child(_menu)
 
-	var play := StudioTheme.fold_button("Play", Palette.ACCENT, Palette.PAPER, 22)
-	play.custom_minimum_size = Vector2(300, 60)
+	# 2026-09-23: the menu is OBJECTS, not folded-corner sheets (ops/STANDARD.md, "Buttons
+	# are objects from the game"). A sheet with a dog-ear is a rectangle in costume. This
+	# game is folding paper, so the controls are things folded out of it: the crane plays,
+	# the paper boat opens the level list, a paper star switches language. All three are
+	# GPU renders cut out by ops/install_button_objects.py.
+	var play := _obj_btn("Play", "res://assets/title/btn_crane.png", 72.0, 26,
+		Palette.ACCENT, ObjectButton.Motion.BOB)
+	play.custom_minimum_size = Vector2(300, 76)
 	play.pressed.connect(_play)
 	play.mouse_entered.connect(Sfx.slide)
 	_menu.add_child(play)
@@ -266,25 +272,36 @@ func _build_ui() -> void:
 	row.add_theme_constant_override("separation", 10)
 	_menu.add_child(row)
 
-	var levels := StudioTheme.fold_button("Levels", Palette.GOLD, Palette.INK, 18)
-	levels.custom_minimum_size = Vector2(160, 52)
-	levels.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var levels := _obj_btn("Levels", "res://assets/title/btn_boat.png", 52.0, 20,
+		Palette.GOLD, ObjectButton.Motion.TURN)
+	levels.custom_minimum_size = Vector2(160, 56)
+	# not EXPAND_FILL: a stretched word pushes the language and sound controls to the far
+	# side of the column, which is how they ended up floating mid-screen
 	levels.pressed.connect(func(): _play(true))
 	levels.mouse_entered.connect(Sfx.slide)
 	row.add_child(levels)
 
-	var lang := Button.new()
-	lang.name = "Lang"
-	lang.theme_type_variation = "Ghost"
+	var lang := _obj_btn("Lang", "res://assets/title/btn_paperstar.png", 36.0, 16,
+		Palette.TEXT, ObjectButton.Motion.TURN)
+	# The language label is the one word on this screen that is ALWAYS in another script
+	# (the button names the language you would switch TO). The display face measures its
+	# CJK fallback glyphs at zero width here, so the label got a zero-width slot and was
+	# drawn underneath the Sound button. Set it in the CJK subset face directly -- it
+	# carries Latin and the music note too.
+	if ResourceLoader.exists("res://assets/fonts/NotoSansCJK-subset.otf"):
+		lang.add_theme_font_override("font", load("res://assets/fonts/NotoSansCJK-subset.otf"))
 	lang.pressed.connect(func():
 		I18n.toggle()
 		Sfx.slide()
 		Tel.ev("language_selected", {"language": I18n.lang}))
 	row.add_child(lang)
 
-	var sound := Button.new()
-	sound.name = "Sound"
-	sound.theme_type_variation = "Ghost"
+	# Sound is a word, not a prop -- and not a white rounded box either, which is what the
+	# "Ghost" variation drew. An ObjectButton with no object is just the outlined word.
+	var sound := _obj_btn("Sound", "", 0.0, 16, Palette.TEXT, ObjectButton.Motion.DIP)
+	sound.gap = 0.0
+	if ResourceLoader.exists("res://assets/fonts/NotoSansCJK-subset.otf"):
+		sound.add_theme_font_override("font", load("res://assets/fonts/NotoSansCJK-subset.otf"))
 	sound.pressed.connect(func():
 		Sfx.set_music(not Sfx.music_on)
 		Sfx.set_sfx(Sfx.music_on)
@@ -568,3 +585,23 @@ func _demo_tick(delta: float) -> void:
 			var pop := create_tween()
 			pop.tween_property(node, "scale", Vector2(1.14, 1.14), 0.1).set_delay(0.1)
 			pop.tween_property(node, "scale", Vector2.ONE, 0.13).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+
+func _obj_btn(name_: String, tex_path: String, obj: float, fs: int, accent: Color,
+		motion := ObjectButton.Motion.DIP) -> ObjectButton:
+	var b := ObjectButton.new()
+	b.name = name_
+	if ResourceLoader.exists(tex_path):
+		b.object_texture = load(tex_path)
+	b.object_size = obj
+	b.motion = motion
+	# paper-white with a hard ink keyline: on this bright plate the ink-on-ink first try
+	# read as a dark smudge beside the crane
+	b.label_color = Palette.PAPER
+	b.accent_color = accent
+	b.ink = Palette.INK
+	b.outline_px = 5
+	b.shadow_px = 0
+	b.add_theme_font_override("font", StudioTheme.font("display"))
+	b.add_theme_font_size_override("font_size", fs)
+	return b
