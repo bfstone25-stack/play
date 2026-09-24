@@ -26,7 +26,7 @@ func relayout() -> void:
 	v.add_child(title)
 	var honest := PanelContainer.new()
 	honest.theme_type_variation = "Paper"
-	var hl := StudioTheme.wrapped(Tx.t("shop.honest"), 18, Palette.PAPER_INK, "serif" if Tx.lang == "zh" else "italic")
+	var hl := StudioTheme.wrapped(Tx.t("shop.honest"), 18, Palette.PAPER_INK, "serif" if Tx.cjk() else "italic")
 	hl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	honest.add_child(hl)
 	v.add_child(honest)

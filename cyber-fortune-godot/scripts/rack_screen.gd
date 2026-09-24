@@ -132,7 +132,7 @@ func _slips() -> void:
 		l.custom_minimum_size = Vector2(84, 0)
 		grid.add_child(l)
 	for rank in Fortune.RANKS:
-		var rl := StudioTheme.label(Tx.t("rank." + rank) if Tx.lang == "zh" else Tx.t("rank." + rank).split(" ")[0], 15, Palette.rank_text(rank), "serif")
+		var rl := StudioTheme.label(Tx.t("rank." + rank) if Tx.cjk() else Tx.t("rank." + rank).split(" ")[0], 15, Palette.rank_text(rank), "serif")
 		rl.custom_minimum_size = Vector2(70, 0)
 		grid.add_child(rl)
 		for subj in Fortune.SUBJECTS:

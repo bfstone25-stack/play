@@ -24,9 +24,18 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(OUT)
 	var scene: Node = load("res://scenes/main.tscn").instantiate()
 	root.add_child(scene)
+	# --locale=ja (ops/engine_title_shot.sh passes it after "--")
+	var loc := "en"
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--locale="):
+			loc = a.substr(9)
+	var tx: Node = root.get_node_or_null("Tx")
+	if tx and loc != "en":
+		tx.call("set_lang", loc)
 	await _wait(2400)
 	var img := root.get_viewport().get_texture().get_image()
-	img.save_png(OUT + "/title_en_00.png")
-	print("shot title_en_00 %dx%d" % [img.get_width(), img.get_height()])
+	var name := "title_%s_00" % loc
+	img.save_png(OUT + "/" + name + ".png")
+	print("shot %s %dx%d" % [name, img.get_width(), img.get_height()])
 	print("TITLE_SHOT_OK")
 	quit(0)

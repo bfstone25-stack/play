@@ -1,7 +1,10 @@
 extends Node
 ## Tx autoload — the locale loader. Copy lives in pool/ui.json (zh-Hans, en); the
-## scenes call Tx.t("key", {vars}). Default follows the player's locale, as
-## play/cyber-merit's i18n.js does: zh for a zh-* system, en otherwise.
+## scenes call Tx.t("key", {vars}). Default follows the player's locale: ja for ja-*, zh for
+## zh-*, en otherwise. ja added 2026-09-23 (tools/build_pool.py's ja layer).
+
+## The order the language chip walks; its label names the language you get NEXT.
+const LANGS := ["en", "zh", "ja"]
 
 signal changed
 
@@ -16,7 +19,15 @@ func _ready() -> void:
 		var nav = JavaScriptBridge.eval("navigator.language || ''")
 		if nav != null:
 			loc = str(nav)
-	lang = "zh" if loc.begins_with("zh") else "en"
+	lang = _normalise(loc)
+
+
+static func _normalise(code: String) -> String:
+	if code.begins_with("ja"):
+		return "ja"
+	if code.begins_with("zh"):
+		return "zh"
+	return "en"
 
 
 static func _load_json(path: String):
@@ -29,8 +40,18 @@ static func _load_json(path: String):
 
 
 func set_lang(code: String) -> void:
-	lang = "zh" if code.begins_with("zh") else "en"
+	lang = _normalise(code)
 	changed.emit()
+
+
+## en -> zh -> ja -> en
+func next_lang() -> void:
+	set_lang(LANGS[(LANGS.find(lang) + 1) % LANGS.size()])
+
+
+## zh and ja share the CJK layout: the big verse, the serif face, the rank stamp.
+func cjk() -> bool:
+	return lang == "zh" or lang == "ja"
 
 
 func t(key: String, vars: Dictionary = {}) -> String:

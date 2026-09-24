@@ -22,7 +22,7 @@ func setup(r: Dictionary) -> void:
 	var head := HBoxContainer.new()
 	head.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.add_child(head)
-	var stamp := StudioTheme.label(Tx.t("rank." + rank), 40 if Tx.lang == "zh" else 28, Palette.rank_color(rank) if rank != "moji" else Palette.GOLD_DEEP, "serif")
+	var stamp := StudioTheme.label(Tx.t("rank." + rank), 40 if Tx.cjk() else 28, Palette.rank_color(rank) if rank != "moji" else Palette.GOLD_DEEP, "serif")
 	head.add_child(stamp)
 	if west:
 		var c := Fortune.card(r["id"])
@@ -30,7 +30,7 @@ func setup(r: Dictionary) -> void:
 		sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		v.add_child(sub)
-		var read := StudioTheme.wrapped(Tx.field(c, "rev" if r["reversed"] else "up"), 20, ink, "serif" if Tx.lang == "zh" else "italic")
+		var read := StudioTheme.wrapped(Tx.field(c, "rev" if r["reversed"] else "up"), 20, ink, "serif" if Tx.cjk() else "italic")
 		v.add_child(read)
 		v.add_child(_rule(Palette.SILVER_DIM))
 		v.add_child(StudioTheme.label(Tx.t("slip.today"), 13, Palette.CANDLE_DEEP, "bold"))
@@ -40,16 +40,16 @@ func setup(r: Dictionary) -> void:
 		var subj := StudioTheme.label(Tx.t("subj." + r["subject"]), 15, Palette.LACQUER, "bold")
 		subj.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		v.add_child(subj)
-		var verse := StudioTheme.label(Tx.field(s, "verse"), 44 if Tx.lang == "zh" else 26, ink, "serif" if Tx.lang == "zh" else "italic")
+		var verse := StudioTheme.label(Tx.field(s, "verse"), 44 if Tx.cjk() else 26, ink, "serif" if Tx.cjk() else "italic")
 		verse.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		verse.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		v.add_child(verse)
-		if Tx.lang == "zh":
+		if Tx.cjk():
 			var en := StudioTheme.label(str(s["verse_en"]), 14, Palette.GOLD_DEEP, "italic")
 			en.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			v.add_child(en)
 		v.add_child(_rule(Palette.PAPER_LINE))
-		v.add_child(StudioTheme.wrapped(Tx.field(s, "read"), 19, ink, "serif" if Tx.lang == "zh" else "ui"))
+		v.add_child(StudioTheme.wrapped(Tx.field(s, "read"), 19, ink, "serif" if Tx.cjk() else "ui"))
 		v.add_child(_rule(Palette.PAPER_LINE))
 		v.add_child(StudioTheme.label(Tx.t("slip.today"), 13, Palette.LACQUER, "bold"))
 		v.add_child(StudioTheme.wrapped(Tx.field(s, "do"), 19, ink, "bold"))

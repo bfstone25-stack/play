@@ -66,7 +66,7 @@ UI = {
  "sku.buy": {"zh": "{price}", "en": "{price}"},
  "back": {"zh": "返回", "en": "Back"},
  "close": {"zh": "关闭", "en": "Close"},
- "lang": {"zh": "EN", "en": "中文"},
+ "lang": {"zh": "日本語", "en": "中文"},   # the chip names the NEXT language: en -> zh -> ja -> en
  "rank.daji": {"zh": "大吉", "en": "Great Fortune"},
  "rank.zhongji": {"zh": "中吉", "en": "Good Fortune"},
  "rank.xiaoji": {"zh": "小吉", "en": "Small Fortune"},
