@@ -42,7 +42,9 @@ func relayout() -> void:
 
 	root.add_child(StudioTheme.label(Tx.field(cl, "name"), 34, Palette.HOT_PALE, "serif"))
 	var plate := NightPlate.new()
-	plate.slot = str(cl["id"]) + ("_night" if unlocked else "_night_locked")
+	# unlocked but no bytes on this install (cleared storage): the censored plate, not a hole
+	var full := str(cl["id"]) + "_night"
+	plate.slot = full if unlocked and Night.art(full) != null else str(cl["id"]) + "_night_locked"
 	plate.custom_minimum_size = Vector2(0, 420)
 	plate.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	root.add_child(plate)
@@ -94,7 +96,12 @@ func _ask() -> void:
 	# alone: a cg resolves "unavailable" and stays locked, anything else resolves
 	# "unlocked". The night reading IS this fork's paid content, and until 2026-09-20 it
 	# was handed out free to anyone whose sponsor slot failed to paint.
+	# The server clock starts with the gate (unlock.gd); the bytes are fetched after it.
+	var pid := str(Night.current) + "_night"
+	var ticketed: bool = await Unlock.start(pid)
 	var ok: bool = await Gate.require(_key(), Tx.field(Night.client(), "name"), "cg")
+	if ok and ticketed:
+		await Unlock.redeem(pid)
 	asking = false
 	if ok:
 		unlocked = true

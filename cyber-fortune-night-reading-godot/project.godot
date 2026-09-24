@@ -18,6 +18,7 @@ Tx="*res://scripts/i18n.gd"
 Fortune="*res://scripts/fortune.gd"
 Night="*res://scripts/night.gd"
 Sfx="*res://scripts/sfx.gd"
+Unlock="*res://scripts/unlock.gd"
 
 [display]
 

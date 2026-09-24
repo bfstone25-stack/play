@@ -198,10 +198,23 @@ var _art_cache := {}
 func art(name: String) -> Texture2D:
 	if _art_cache.has(name):
 		return _art_cache[name]
-	var path := ART_DIR + name + ".png"
 	var tex: Texture2D = null
-	if ResourceLoader.exists(path):
-		tex = load(path)
+	if name.ends_with("_night"):
+		# Tier 3 is not in the web package (assets/night_x/ is export-excluded): the paid
+		# download carries it, a browser gets it from the gateway via Unlock, else nothing.
+		var src: String = Unlock.source_for(name)
+		if src.begins_with("res://"):
+			tex = load(src)
+		elif src != "":
+			var img := Image.load_from_file(src)
+			if img:
+				tex = ImageTexture.create_from_image(img)
+		if tex == null:
+			return null     # not cached: a later delivery must be seen
+	else:
+		var path := ART_DIR + name + ".png"
+		if ResourceLoader.exists(path):
+			tex = load(path)
 	_art_cache[name] = tex
 	return tex
 
