@@ -19,7 +19,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 FONT_DIR = ROOT / "assets" / "fonts"
-SOURCE_FONT = Path("/workspace/wt-beat-monday/beat-monday/assets/fonts/wqy-microhei.ttc")
+SOURCE_FONT = ROOT / "assets" / "fonts" / "wqy-microhei.ttc"
 SOURCE_FILES = sorted((ROOT / "scripts").glob("*.gd"))
 SIZES = (16,)
 ATLAS_WIDTH = 1024
@@ -65,6 +65,14 @@ def source_charset() -> list[str]:
             if not isinstance(value, str):
                 continue
             chars.update(char for char in value if char >= " " and char != "\u007f")
+    # 2026-09-23: the zh/ja story tables are data, not scripts, and every glyph in them
+    # has to be in the atlas or the web build draws .notdef boxes with no error.
+    import json as _json
+    for jp in sorted((ROOT / "locale").glob("*.json")):
+        d = _json.loads(jp.read_text(encoding="utf-8"))
+        vals = d.values() if isinstance(d, dict) else d
+        for v in vals:
+            chars.update(ch for ch in str(v) if ch >= " " and ch != "\u007f")
     return sorted(chars, key=ord)
 
 

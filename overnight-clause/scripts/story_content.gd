@@ -2,10 +2,10 @@ extends RefCounted
 class_name StoryContent
 
 static func n(id: String, prompt: String, pos: Vector3, text: String) -> Dictionary:
-	return {"kind":"note", "id":id, "prompt":prompt, "pos":pos, "text":text}
+	return {"kind":"note", "id":id, "prompt":Loc.s(prompt), "pos":pos, "text":Loc.s(text)}
 
 static func c(id: String, prompt: String, pos: Vector3, text: String, a: String, b: String) -> Dictionary:
-	return {"kind":"choice", "id":id, "prompt":prompt, "pos":pos, "text":text, "a":a, "b":b}
+	return {"kind":"choice", "id":id, "prompt":Loc.s(prompt), "pos":pos, "text":Loc.s(text), "a":Loc.s(a), "b":Loc.s(b)}
 
 static func commentary(id: String) -> String:
 	var pages := {
@@ -33,7 +33,7 @@ static func commentary(id: String) -> String:
 		"followup": "MARA'S FIELD NOTE: Pell never disputes the facts together. He separates each into an administrative category until no category contains a crime. His pause at the pipe proves he hears Iris. His threat confirms the final choice affects more than payment.",
 		"final_evidence": "MARA'S FIELD NOTE: Every earlier action is now visible in the key, report, corridor, and voices. There is no neutral exit. Opening stakes my identity on Iris's evidence; ignoring ratifies Pell's rewritten record. Refusing to choose leaves the building to reconcile the contradiction."
 	}
-	return "\n---\n" + str(pages.get(id, "")) if pages.has(id) else ""
+	return "\n---\n" + Loc.s(str(pages.get(id, ""))) if pages.has(id) else ""
 
 static func stage(s: int, flags: Dictionary) -> Array[Dictionary]:
 	match s:

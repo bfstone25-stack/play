@@ -587,6 +587,10 @@ const GATE_403 := """This plate is not in the free build.
 Two of the seven plates in Overnight Clause are gated. The other five, including the wall cavity, ship open in every build."""
 
 static func scene(id: String) -> String:
+	return Loc.s(_scene(id))
+
+
+static func _scene(id: String) -> String:
 	match id:
 		"ch2_dane":
 			return CH2_DANE

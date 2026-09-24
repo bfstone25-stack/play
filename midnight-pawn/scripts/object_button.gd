@@ -39,6 +39,7 @@ enum Motion { DIP, TURN, BOB }
 		selected = v
 		queue_redraw()
 
+var _last_text := ""
 var _hover := 0.0          # 0..1 eased hover amount
 var _press := 0.0          # 0..1 eased press amount
 var _t := 0.0
@@ -53,15 +54,40 @@ func _ready() -> void:
 	# Button draws its own text; this control draws the label itself so it can sit beside
 	# the object, so the built-in text is made invisible rather than removed (keeping
 	# `.text` authoritative for localisation and tests).
+	_hide_builtin_text()
+	_fit()
+	set_process(true)
+
+
+var _hiding := false
+
+
+## Button's own text must stay invisible: this control draws the label itself. Callers that
+## style every button in a screen (apply_locale, style_button) re-add font colours after
+## _ready, and Button then draws the word a second time under ours -- seen on Overnight
+## Clause's language row, 2026-09-23, every label doubled. Re-clear on every theme change.
+func _hide_builtin_text() -> void:
+	_hiding = true
 	for c in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color",
-			"font_hover_pressed_color", "font_disabled_color"]:
+			"font_hover_pressed_color", "font_disabled_color", "font_outline_color"]:
 		add_theme_color_override(c, Color(0, 0, 0, 0))
 	add_theme_constant_override("outline_size", 0)
-	set_process(true)
+	_hiding = false
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_THEME_CHANGED and not _hiding and is_inside_tree():
+		_hide_builtin_text.call_deferred()
 
 
 func _process(dt: float) -> void:
 	_t += dt
+	# Button has no text_changed signal, and a container sizes this control from
+	# _get_minimum_size(). Without this, a label set after the control is laid out (every
+	# localised title does that) gets a zero-width slot and draws nowhere visible.
+	if text != _last_text:
+		_last_text = text
+		_fit()
 	var want_h := 1.0 if (is_hovered() or has_focus()) else 0.0
 	var want_p := 1.0 if button_pressed or (is_hovered() and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) else 0.0
 	_hover = move_toward(_hover, want_h, dt * 6.0)
@@ -69,11 +95,17 @@ func _process(dt: float) -> void:
 	queue_redraw()
 
 
-func _get_minimum_size() -> Vector2:
+## Button computes its own minimum size natively and never calls a script's
+## _get_minimum_size(), so the width is pushed in through custom_minimum_size instead --
+## measured on the fallback-carrying theme font, object + gap + label + outline. Found the
+## hard way: FOLD's language control laid out 32 px wide (the native measure of the hidden
+## built-in text) and its label was drawn underneath the next button.
+func _fit() -> void:
 	var f := get_theme_font("font")
 	var fs := get_theme_font_size("font_size")
 	var tw := f.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x if f else 0.0
-	return Vector2(object_size + gap + tw + outline_px * 2, maxf(object_size, float(fs) + 4.0))
+	var want := Vector2(object_size + gap + tw + outline_px * 2 + 4.0, maxf(object_size, float(fs) + 6.0))
+	custom_minimum_size = Vector2(maxf(custom_minimum_size.x, want.x), maxf(custom_minimum_size.y, want.y))
 
 
 func _draw() -> void:

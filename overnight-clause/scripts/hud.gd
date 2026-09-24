@@ -314,7 +314,7 @@ func _splash() -> void:
 	info.position = Vector2(64, 470)
 	info.size = Vector2(620, 60)
 	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	info.text = "18+  ·  A night inspection in first person, 40 minutes, three endings.\nEveryone in the building is an adult. Headphones recommended."
+	info.text = Loc.s("18+  ·  A night inspection in first person, 40 minutes, three endings.\nEveryone in the building is an adult. Headphones recommended.")
 	title_screen.style_label(info, 13, Color(0.78, 0.8, 0.7, 1))
 	splash.add_child(info)
 	# 2026-09-23: entering is signing the clause -- the fountain pen, an ObjectButton, not a
@@ -387,9 +387,11 @@ func hide_splash() -> void:
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func set_prompt(t: String) -> void:
+	t = Loc.s(t)
 	prompt.text = t
 
 func set_objective(t: String) -> void:
+	t = Loc.s(t)
 	objective.text = t
 
 func set_clock(t: String) -> void:
@@ -408,6 +410,7 @@ func add_evidence(id: String) -> void:
 		evidence_label.text = Loc.t("evidence", [evidence.size()])
 
 func show_title(t: String) -> void:
+	t = Loc.s(t)
 	title.text = t
 	# game.gd shows the place card as the level starts, which is while the title screen is
 	# still up — the card was printing over the key visual. It waits its turn.
@@ -433,6 +436,7 @@ func is_choice_open() -> bool:
 	return vn != null and vn.is_choice_open()
 
 func show_note(t: String) -> void:
+	t = Loc.s(t)
 	note.visible = false
 	note_t = 0.0
 	hide_title()
@@ -443,9 +447,11 @@ func show_note(t: String) -> void:
 	_sync_mouse()
 
 func show_document(t: String, cb: Callable) -> void:
+	t = Loc.s(t)
 	show_story("", t, false, cb)
 
 func show_story(id: String, t: String, use_nvl: bool, cb: Callable) -> void:
+	t = Loc.s(t)
 	hide_title()
 	_document_cb = cb
 	vn.show_text(t, use_nvl or VnChrome.is_nvl_id(id), func() -> void:
@@ -476,6 +482,9 @@ func advance_vn() -> void:
 	_sync_mouse()
 
 func open_choice(text: String, a: String, b: String, cb: Callable) -> void:
+	text = Loc.s(text)
+	a = Loc.s(a)
+	b = Loc.s(b)
 	_choice_cb = cb
 	vn.open_choice(text, a, b, func(i: int) -> void:
 		var done := _choice_cb
@@ -499,6 +508,8 @@ func set_pause(value: bool) -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP if value else Control.MOUSE_FILTER_IGNORE
 
 func show_ending(t: String, beats: Array, thanks_key := "ending.thanks") -> void:
+	t = Loc.s(t)
+	beats = beats.map(func(x): return Loc.s(str(x)))
 	ending_title.text = t
 	ending_beats = beats
 	ending_index = 0
@@ -693,6 +704,7 @@ func _view_plate(id: String) -> void:
 
 
 func append_story_page(text: String) -> void:
+	text = Loc.s(text)
 	## Add pages to the sequence that is already on screen — used to say, inside the
 	## scene, that this build carries the censored plate.
 	if vn == null or text.strip_edges() == "":

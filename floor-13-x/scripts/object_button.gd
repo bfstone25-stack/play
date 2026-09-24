@@ -54,12 +54,30 @@ func _ready() -> void:
 	# Button draws its own text; this control draws the label itself so it can sit beside
 	# the object, so the built-in text is made invisible rather than removed (keeping
 	# `.text` authoritative for localisation and tests).
-	for c in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color",
-			"font_hover_pressed_color", "font_disabled_color"]:
-		add_theme_color_override(c, Color(0, 0, 0, 0))
-	add_theme_constant_override("outline_size", 0)
+	_hide_builtin_text()
 	_fit()
 	set_process(true)
+
+
+var _hiding := false
+
+
+## Button's own text must stay invisible: this control draws the label itself. Callers that
+## style every button in a screen (apply_locale, style_button) re-add font colours after
+## _ready, and Button then draws the word a second time under ours -- seen on Overnight
+## Clause's language row, 2026-09-23, every label doubled. Re-clear on every theme change.
+func _hide_builtin_text() -> void:
+	_hiding = true
+	for c in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color",
+			"font_hover_pressed_color", "font_disabled_color", "font_outline_color"]:
+		add_theme_color_override(c, Color(0, 0, 0, 0))
+	add_theme_constant_override("outline_size", 0)
+	_hiding = false
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_THEME_CHANGED and not _hiding and is_inside_tree():
+		_hide_builtin_text.call_deferred()
 
 
 func _process(dt: float) -> void:

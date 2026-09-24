@@ -2,10 +2,20 @@ class_name Loc
 extends Object
 
 const SETTINGS_PATH := "user://settings.cfg"
-const ALLOWED := ["en"]
+# 2026-09-23: zh and ja are real translations of every player-facing string -- the UI
+# table AND the ~9,400 words of story -- in locale/{zh,ja}.json (UI keys) and
+# locale/story_{zh,ja}.json (English source -> translation). ja first because it is the
+# DLsite majority (507 of 581 works). ops/STANDARD.md item 7: never offer a language that
+# is not genuinely translated; tests/locale_cover.gd fails the build if a story string has
+# no translation.
+const ALLOWED := ["en", "zh", "ja"]
 const NATIVE := {
 	"en": "English",
+	"zh": "简体中文",
+	"ja": "日本語",
 }
+static var _ui := {}
+static var _story := {}
 
 static var code: String = ""
 static var _hooks: Array[Callable] = []
@@ -40,7 +50,31 @@ static func on_change(cb: Callable) -> void:
 
 
 static func table() -> Dictionary:
-	return EN
+	var c := current()
+	if c == "en":
+		return EN
+	if not _ui.has(c):
+		_ui[c] = _read_json("res://locale/%s.json" % c)
+	return _ui[c]
+
+
+## Story and in-world text: looked up by its English source, so a string written in the
+## scripts is its own key and nothing has to be renumbered when copy changes. Falls back
+## to the source, which the coverage test catches before a build ships.
+static func s(src: String) -> String:
+	var c := current()
+	if c == "en" or src == "":
+		return src
+	if not _story.has(c):
+		_story[c] = _read_json("res://locale/story_%s.json" % c)
+	return str(_story[c].get(src, src))
+
+
+static func _read_json(path: String) -> Dictionary:
+	if not FileAccess.file_exists(path):
+		return {}
+	var d = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return d if d is Dictionary else {}
 
 
 
