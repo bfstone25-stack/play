@@ -20,361 +20,361 @@ const AREAS := [
 				["NARRACIÓN", "Un segundo cursor aparece junto al de June. Se mueve medio pulso después, rodea el nombre de Mara y subraya ANALISTA ACTIVA. Cuando suelta el ratón, el segundo cursor sigue."],
 				["JUNE", "Un error es evidencia antes de ser una corrección. Papá lo decía de las auditorías fiscales. Hablaba de números. Nunca tuvo que aclarar que también hablaba de personas."]
 			]],
-			["phone", "桌面电话", [215, 70, 55, 44], [
-				["RUSK / 语音信箱", "朴。别回电话。红行不是人，是偏差。改那一行，打三份，一份放进我的发件箱。若有人要你恢复一个名字，他们不在名册上。"],
-				["NARRACIÓN", "录音时间戳是周一 08:04——从现在起八小时。拉斯克的声音底下，人群低声重复一个雇员号。十三。十三。十三。不是齐声，是点名那种参差。"],
-				["RUSK / 语音信箱", "还有，朴？午夜后别走楼梯。后勤还没认证第十三层平台。没有第十三层平台。如果你看见了，闭上眼继续往下。"],
-				["JUNE", "他知道我还会在。他往未来录指令，因为他知道。要么时间戳坏了，要么这公司学会了把疏忽往回排期。"]
+			["phone", "TELÉFONO DEL ESCRITORIO", [215, 70, 55, 44], [
+				["RUSK / BUZÓN DE VOZ", "Park. No me devuelvas la llamada. Las filas rojas no son personas; son varianza. Corrige la fila, imprime tres copias y deja una en mi bandeja de salida. Si alguien te pide que restaures un nombre, no está en nómina."],
+				["NARRACIÓN", "La grabación tiene fecha del lunes, 08:04: dentro de ocho horas. Bajo la voz de Rusk, una multitud susurra un número de empleado. Trece. Trece. Trece. No al unísono; con la cadencia irregular de quien pasa lista."],
+				["RUSK / BUZÓN DE VOZ", "¿Y Park? No uses las escaleras después de medianoche. Mantenimiento no ha certificado el rellano trece. No hay rellano trece. Si ves uno, cierra los ojos y sigue bajando."],
+				["JUNE", "Sabía que yo seguiría aquí. Grabó instrucciones en el futuro porque lo sabía. O la fecha está rota, o esta empresa ha encontrado la manera de programar la negligencia con efecto retroactivo."]
 			]],
-			["coffee", "温热的咖啡", [26, 105, 47, 39], [
-				["NARRACIÓN", "琼十点就喝完了，杯子现在又温又满。一圈不属于她的口红印成完整的环。灯管一闪，液面就颤。"],
-				["MARA / 笔迹", "钟丢掉一分钟时，看楼层牌。楼层牌多出一层时，别让它学会你打算从哪边离开。"],
-				["JUNE", "字迹用力到纸套裂开。玛拉·维尔。若这是恶作剧，有人学会了保密薪酬行上的名字，还热了一杯坏咖啡来烘气氛。"],
-				["NARRACIÓN", "杯底苍白的沉淀排成小小的方块字：之前。琼眨眼。又只是奶精粉。"]
+			["coffee", "CAFÉ TIBIO", [26, 105, 47, 39], [
+				["NARRACIÓN", "June se terminó el café a las diez, pero la taza vuelve a estar tibia y llena. Una marca de pintalabios que no es suya forma un anillo completo. La superficie tiembla cada vez que parpadea el fluorescente."],
+				["MARA / LETRA", "CUANDO EL RELOJ PIERDA UN MINUTO, MIRA EL DIRECTORIO. CUANDO EL DIRECTORIO GANE UNA PLANTA, NO DEJES QUE APRENDA POR DÓNDE PIENSAS SALIR."],
+				["JUNE", "La letra está tan apretada contra la funda que el cartón se ha rajado. Mara Vale. Si es una broma, alguien aprendió el nombre de una fila confidencial de nómina y recalentó café malo para ambientar."],
+				["NARRACIÓN", "En el fondo de la taza, un poso pálido se ordena en letras de molde diminutas: ANTES. June parpadea. Vuelve a ser solo leche en polvo."]
 			]],
-			["drawer", "上锁的抽屉", [198, 119, 75, 42], [
-				["NARRACIÓN", "琼到时抽屉是锁的。现在它毫无阻力地开了。里面是一份辞职表，签着她的全名，日期是周一。离职原因：职位从未存在。"],
-				["JUNE", "我从没把 P 写成那样。除非——不。我写过，十六岁的时候。后来我训练自己写得更职业。签字的人认识更早的我。"],
-				["NARRACIÓN", "下面的复写页用同一笔迹写着玛拉·维尔。两份都盖着主管拉斯克的接受章。墨水新得刺鼻。"],
-				["MARA / 复写便条", "辞职不是出口。它是允许他们在没有你的情况下讲这个故事。留一份自己的副本。留住每个人的名字。"]
+			["drawer", "CAJÓN CERRADO", [198, 119, 75, 42], [
+				["NARRACIÓN", "El cajón estaba cerrado cuando llegó June. Ahora se abre sin resistencia. Dentro hay un formulario de renuncia con su firma completa, fechado el lunes. Motivo de la baja: EL PUESTO NUNCA EXISTIÓ."],
+				["JUNE", "Nunca he escrito la P así. Salvo que… no. Sí lo hice, a los dieciséis. Antes de entrenarme para que pareciera más profesional. Quien firmó esto conocía una versión antigua de mi letra."],
+				["NARRACIÓN", "La copia de carbón de debajo lleva el nombre de Mara Vale con la misma letra. Los dos formularios tienen el sello de aceptación del supervisor Rusk. La tinta huele tan fresca que pica."],
+				["MARA / NOTA EN CARBÓN", "Una renuncia no es una salida. Es permiso para que cuenten la historia sin ti. Guarda tu propia copia. Guarda los nombres de todos."]
 			]]
 		],
 		"transition": [
-			["NARRACIÓN", "钟倒回 11:58。四十台空显示器在隔板外醒来，每台都直播她的椅子。其中一个画面里，有人站在椅后。"],
-			["PA", "夜间作业人员：到 13 层收工。日间作业人员：无视下班后听见的任何声音、警报或人员。"],
-			["JUNE", "子午占用八到十二层。楼层牌跳过十三。它一直跳过十三。"],
-			["NARRACIÓN", "电梯铃从远处大厅应答。两声：一声干净的叮，一声更低的，像发生在琼胸口里。"]
+			["NARRACIÓN", "El reloj retrocede con un clic hasta las 11:58. Cuarenta monitores vacíos despiertan al otro lado del tabique de June, y todos muestran su silla en directo. En una de las vistas, alguien está de pie detrás."],
+			["PA", "Personal de Operaciones Nocturnas: presentarse en la Planta 13 para el cierre. Personal de Operaciones Diurnas: ignoren cualquier voz, alarma o persona observada tras la salida programada."],
+			["JUNE", "Meridian ocupa de la ocho a la doce. El directorio se salta la trece. Siempre se ha saltado la trece."],
+			["NARRACIÓN", "La campana del ascensor responde desde el vestíbulo lejano. Dos notas: un tintineo limpio y otra más grave que parece sonar dentro del pecho de June."]
 		]
 	},
 	{
-		"id": "office", "chapter": "2 / 7", "place": "开放办公区", "clock": "晚上 11:58",
-		"objective": "弄清楼层牌为什么多出一层。",
+		"id": "office", "chapter": "2 / 7", "place": "OFICINA ABIERTA", "clock": "11:58 PM",
+		"objective": "Averigua por qué el directorio ha añadido una planta.",
 		"opening": [
-			["NARRACIÓN", "四十把椅子对着四十台显示器。每块屏幕都以略微不同的角度显示琼弃下的隔间。这些角度本该需要墙内、地毯下、以及她自己眼睛正后方的摄像头。"],
-			["JUNE", "十一点所有人都走了。薪酬组挥过手。后勤关掉音乐。我看着电梯倒数。那是谁把这些椅子从桌边推开的？"],
-			["NARRACIÓN", "一条扫描红线在办公区尽头醒来。它耐心而机械地穿过隔板，在每把空椅前停下，把每台显示器标成在场。"],
-			["PA", "未解决缺勤已检测。一名现任临时替补仍在场。感谢你自愿恢复平衡。"]
+			["NARRACIÓN", "Cuarenta sillas miran a cuarenta monitores. Cada pantalla muestra el cubículo abandonado de June desde un ángulo ligeramente distinto. Esos ángulos exigirían cámaras dentro de las paredes, bajo la moqueta y justo detrás de sus propios ojos."],
+			["JUNE", "Todos se fueron a las once. Nóminas se despidió con la mano. Mantenimiento apagó la música. Vi bajar el contador del ascensor. ¿Entonces quién ha apartado todas estas sillas de sus mesas?"],
+			["NARRACIÓN", "Una línea roja de escáner despierta al fondo de la oficina. Recorre los tabiques por debajo con una precisión mecánica y paciente, se detiene en cada silla vacía y marca cada monitor como PRESENTE."],
+			["PA", "Ausencia sin resolver detectada. Queda en las instalaciones un reemplazo temporal activo. Gracias por ofrecerse voluntaria para restablecer el equilibrio."]
 		],
 		"hotspots": [
-			["printer", "运转的打印机", [35, 83, 74, 70], [
-				["NARRACIÓN", "打印机吐出一张厚而温的员工合影。角落日期是 1998。琼站在后排，穿着她四年前捐掉的大学卫衣。"],
-				["JUNE", "那是我。比现在更年轻，出现在我出生前拍的照片里。旁边的女人被刮掉，深到留下一个人形的洞。"],
-				["MARA / 照片说明", "子午账本收工组。替换比加班便宜。笑到闪光灯亮。若闪光一直是红的，保持不动，直到合规数完。"],
-				["NARRACIÓN", "背面用铅笔写着四十二个雇员号。第一个是玛拉。最后一个是琼。中间的笔迹渐渐变成琼的。"],
-				["JUNE", "我要带走这个。若我能出去，我要一件不能在我阅读时自行更新的实物。"]
+			["printer", "IMPRESORA EN MARCHA", [35, 83, 74, 70], [
+				["NARRACIÓN", "La impresora saca una foto de plantilla en papel grueso y caliente. La fecha de la esquina es 1998. June está en la última fila con una sudadera de la universidad que donó hace cuatro años."],
+				["JUNE", "Esa soy yo. Más joven que ahora, en una foto tomada antes de que yo naciera. La mujer de mi lado está raspada tan a fondo que queda un agujero con forma de persona."],
+				["MARA / PIE DE FOTO", "EQUIPO DE CIERRE DEL LIBRO MERIDIAN. Los reemplazos salen más baratos que las horas extra. Sonríe hasta el flash. Si el flash se queda en rojo, no te muevas hasta que Cumplimiento termine de contar."],
+				["NARRACIÓN", "En el reverso hay cuarenta y dos números de empleado escritos a lápiz. El primero es de Mara. El último, de June. Entre ambos, la letra se va convirtiendo poco a poco en la de June."],
+				["JUNE", "Me lo llevo. Si consigo salir, quiero una cosa física que no pueda actualizarse mientras la leo."]
 			]],
-			["attendance", "出勤板", [131, 62, 64, 82], [
-				["NARRACIÓN", "磁条姓名填满出勤板：玛拉、伊莱、琼，然后三十九个空白矩形。琼把自己的条从“在”移到“出”。它弹回，夹痛手指。"],
-				["SISTEMA", "琼·朴 — 在。开始：周日 22:48。结束：待核对。累计班次：01:10。继承班次：168:00。"],
-				["JUNE", "从谁那里继承？玛拉？工单转的不是钱。是时间。系统把她失踪的一周当成必须有人住进去的债。"],
-				["NARRACIÓN", "宋·伊莱的条温热潮湿。它下面，六张更旧的条写着六个不同名字，雇员号却被抹成同一个。"]
+			["attendance", "TABLERO DE ASISTENCIA", [131, 62, 64, 82], [
+				["NARRACIÓN", "Tiras magnéticas con nombres llenan el tablero: Mara, Eli, June y treinta y nueve rectángulos en blanco. June mueve su tira de DENTRO a FUERA. Vuelve a su sitio con tanta fuerza que le pellizca el dedo."],
+				["SISTEMA", "JUNE PARK — DENTRO. Inicio: domingo 22:48. Fin: pendiente de conciliación. Turno acumulado: 01:10. Turno heredado: 168:00."],
+				["JUNE", "¿Heredado de quién? ¿De Mara? El ticket no transfirió dinero. Transfirió tiempo. El sistema trata su semana perdida como una deuda que alguien tiene que habitar."],
+				["NARRACIÓN", "La tira de Eli Song está tibia y húmeda. Debajo hay seis tiras más antiguas con seis nombres distintos y el mismo número de empleado emborronado."]
 			]],
-			["directory", "电梯楼层牌", [231, 41, 65, 91], [
-				["NARRACIÓN", "铜字在黑毡上松动爬行。八到十二层变成日间作业。十二与十四之间的空白像眼睑张开：13 — 夜间作业。"],
-				["JUNE", "就是那一行。再下面是地下室：零，留存。建筑没有零层。薪酬系统有。被清零的记录，他们可以假装从未存在。"],
-				["NARRACIÓN", "13 层的铜牌被许多手指擦得发亮。琼记得楼层牌是光滑的。她也记得每天早晨经过这块牌，并故意不去看。"],
-				["MARA / 刮痕", "大楼不藏这一层。它藏的是你同意过它的记忆。"]
+			["directory", "DIRECTORIO DEL ASCENSOR", [231, 41, 65, 91], [
+				["NARRACIÓN", "Las letras de latón se aflojan y reptan por el fieltro negro. De la ocho a la doce pasan a ser OPERACIONES DIURNAS. El hueco entre la doce y la catorce se abre como un párpado: 13 — OPERACIONES NOCTURNAS."],
+				["JUNE", "Ahí. La línea nueva. Y otra por debajo del sótano: cero, Retención. Los edificios no tienen Planta Cero. Los sistemas de nómina sí. Un registro puesto a cero es uno que pueden fingir que nunca existió."],
+				["NARRACIÓN", "La etiqueta de la Planta 13 es latón viejo pulido por muchos dedos. June recuerda el directorio liso. También recuerda pasar cada mañana junto a esta etiqueta y no verla a propósito."],
+				["MARA / NOTA RAYADA", "EL EDIFICIO NO ESCONDE LA PLANTA. ESCONDE TU RECUERDO DE HABER ACEPTADO."]
 			]],
-			["camera", "安保监视器", [201, 128, 96, 43], [
-				["NARRACIÓN", "大厅画面快一分钟。未来的琼站在电梯前，盯着这块屏幕。她身后，一个西装色的高影从隔板窄缝展开。"],
-				["JUNE", "若这是直播，我还有一分钟。若这是预测，也许我能拒绝站在那里。若这是记忆，我已经没能离开。"],
-				["NARRACIÓN", "那影子没有头，只有一条红色水平扫描线。它穿过椅子、桌子和灰泥。它越过琼未来的倒影时，雇员号替换了她的脸。"],
-				["SEGURIDAD", "审计进程 13。留存扫描启动。偏差只在被观察时获得形状。观察已记录。"],
-				["NARRACIÓN", "真实楼面上，一块隔板吱呀。红线更近了。"]
+			["camera", "MONITOR DE SEGURIDAD", [201, 128, 96, 43], [
+				["NARRACIÓN", "La cámara del vestíbulo va un minuto adelantada. La June del futuro está ante el ascensor, mirando esta pantalla. Detrás de ella, una forma alta del color de un traje se despliega desde la estrecha rendija entre cubículos."],
+				["JUNE", "Si es en directo, tengo un minuto. Si es una predicción, quizá pueda negarme a estar ahí. Si es un recuerdo, ya he fracasado al intentar irme."],
+				["NARRACIÓN", "La forma no tiene cabeza, solo una línea roja horizontal de escaneo. Atraviesa sillas, mesas y yeso. Donde cruza el reflejo futuro de June, su número de empleado sustituye su cara."],
+				["SEGURIDAD", "PROCESO AUDITOR 13. Escaneo de retención activo. La varianza solo adquiere forma cuando se observa. Observación registrada."],
+				["NARRACIÓN", "En la planta real cruje un tabique. La línea roja está más cerca."]
 			]]
 		],
 		"transition": [
-			["NARRACIÓN", "电梯打开。镜面墙映出一名年轻人蹲在琼身后。轿厢实际是空的。她转身时，他站在十英尺外的办公区。"],
-			["ELI", "别叫。它计算突然变化。也请别扫我的工牌。审计官跟着工牌脉冲走。"],
-			["JUNE", "你是谁？人都回家了。"],
-			["ELI", "我是宋·伊莱。六个周一前我就回家了。它总在我到达周二之前把我带回来。若你还记得楼层牌变过，我们大概还有二十分钟。"]
+			["NARRACIÓN", "Se abre el ascensor. Su pared de espejo refleja a un joven agazapado detrás de June. La cabina real está vacía. Cuando se gira, él está de pie a tres metros, en la oficina."],
+			["ELI", "No grites. Cuenta los cambios bruscos. Y por favor, no escanees mi tarjeta. El Auditor sigue los avisos de las tarjetas."],
+			["JUNE", "¿Quién eres? Todo el mundo se fue a casa."],
+			["ELI", "Soy Eli Song. Me fui a casa hace seis lunes. Me sigue trayendo de vuelta antes de llegar al martes. Si todavía recuerdas que el directorio cambió, tenemos unos veinte minutos."]
 		]
 	},
 	{
-		"id": "breakroom", "chapter": "3 / 7", "place": "休息室", "clock": "晚上 11:46",
-		"objective": "判断伊莱是证人，还是陷阱。",
+		"id": "breakroom", "chapter": "3 / 7", "place": "SALA DE DESCANSO", "clock": "11:46 PM",
+		"objective": "Decide si Eli es un testigo o una trampa.",
 		"opening": [
-			["NARRACIÓN", "伊莱把琼领进休息室，冰箱马达盖住他们的声音。绿色应急灯下，他看起来二十二岁，疲惫得像很老。"],
-			["ELI", "钟想让你调查时，会把分钟还回来。别把那当成仁慈。它在建一份记录，证明你理解过条件。"],
-			["JUNE", "我还没说，你就知道玛拉·维尔的名字。"],
-			["ELI", "玛拉教我藏在哪。每个循环，她都更难被记住。每个循环，公司都更擅长用她的声音。"]
+			["NARRACIÓN", "Eli lleva a June a la sala de descanso, donde el motor de la nevera tapa sus voces. Bajo la luz verde de emergencia aparenta veintidós años y un cansancio que lo vuelve anciano."],
+			["ELI", "El reloj te devuelve minutos cuando quiere que investigues. No lo confundas con clemencia. Está construyendo un registro que diga que entendiste las condiciones."],
+			["JUNE", "Sabías el nombre de Mara Vale antes de que yo lo dijera."],
+			["ELI", "Mara me enseñó dónde esconderme. En cada bucle cuesta un poco más recordarla. En cada bucle la empresa usa mejor su voz."]
 		],
 		"hotspots": [
-			["badge", "伊莱的空白工牌", [221, 71, 51, 72], [
-				["NARRACIÓN", "伊莱把工牌举到自动贩卖机的紫外灯下。他自己的名字下面浮出六层：全是临时实习生，全被派给缺勤替补。"],
-				["ELI", "人不再匹配卡片后，他们就复用。先是摄像头忘了你的脸。然后同事记得一张空桌。然后你母亲打电话给公司，并接受自己拨错了号。"],
-				["JUNE", "为什么还戴着它？"],
-				["ELI", "门只给雇员开，出口只给人开。诀窍是在到达大厅前同时是两者。玛拉几乎做到了。拉斯克在她扶着门时更正了她。"],
-				["NARRACIÓN", "工牌照片不只是空白。那片白比塑料更深，像一间被照亮的小房间，后面站着什么。"]
+			["badge", "LA TARJETA EN BLANCO DE ELI", [221, 71, 51, 72], [
+				["NARRACIÓN", "Eli pone la tarjeta bajo el tubo ultravioleta de la máquina expendedora. Bajo su nombre aparecen seis capas de nombres: becarios temporales, todos asignados a Sustitución de Ausencias."],
+				["ELI", "Reutilizan la tarjeta cuando la persona deja de coincidir con ella. Primero la cámara olvida tu cara. Luego los compañeros recuerdan una mesa vacía. Luego tu madre llama a la oficina y acepta que se equivocó de número."],
+				["JUNE", "¿Entonces por qué la sigues llevando?"],
+				["ELI", "Las puertas solo se abren para empleados, y las salidas solo para personas. El truco es seguir siendo las dos cosas hasta llegar al vestíbulo. Mara casi lo consiguió. Rusk la corrigió mientras sujetaba la puerta."],
+				["NARRACIÓN", "La foto de la tarjeta no está solo en blanco. Su espacio blanco es más profundo que el plástico: una habitación diminuta iluminada con algo de pie al fondo."]
 			]],
-			["rota", "休息室轮值表", [28, 35, 76, 79], [
-				["NARRACIÓN", "轮值按工作日分配杂务：咖啡、洗碗机、失踪人员报告。周一属于玛拉。周二属于伊莱。周三属于琼。周三之后没有栏目。"],
-				["ELI", "起初我以为这是办公室的残酷玩笑。然后周二再也没来。失踪人员报告是真杂务。你为坐在这里的上一个人填表，合规把它归进自愿离职。"],
-				["JUNE", "我的名字用已经褪色的墨水写着。有人在我第一班之前就安排了我的消失。"],
-				["MARA / 页边", "别让他们把名字孤立。模式是证据。单个失踪雇员是他们能用行政手段弄丢的私人悲剧。"]
+			["rota", "TURNOS DE LA SALA DE DESCANSO", [28, 35, 76, 79], [
+				["NARRACIÓN", "El cuadrante reparte tareas por día: café, lavavajillas, denuncia de desaparición. El lunes es de Mara. El martes, de Eli. El miércoles, de June. No hay columnas después del miércoles."],
+				["ELI", "Al principio creí que era humor de oficina cruel. Luego el martes nunca llegó. La denuncia de desaparición es una tarea real. La rellenas por quien se sentaba aquí antes que tú, y Cumplimiento la archiva como baja voluntaria."],
+				["JUNE", "Mi nombre está escrito con una tinta que ya se ha desvaído. Alguien programó mi desaparición antes de mi primer turno."],
+				["MARA / NOTA AL MARGEN", "No dejes que aíslen los nombres. Un patrón es una prueba. Un solo empleado desaparecido es una tragedia personal que pueden extraviar administrativamente."]
 			]],
-			["fridge", "四十二份午餐", [117, 43, 75, 103], [
-				["NARRACIÓN", "四十二个午餐袋排满冰箱，日期都是这个周日。标着琼的那个装着她家钥匙、一张零元遣散支票，和一颗包在工资单里的臼齿。"],
-				["JUNE", "钥匙上有我系的蓝线。今天早上我用它进了公寓。牙齿的银填充位置和我的一样。"],
-				["ELI", "别打开我的。上一循环里面是姐姐的生日卡。她写她松了口气，因为我从未存在。我不能读第二次还保持有用。"],
-				["NARRACIÓN", "标着玛拉的袋子里只有一卷针式打印纸。每张打孔纸重复一句：我在这里足够久，该被亏欠。"],
-				["JUNE", "那我们就让债可见。工时、工资、名字。我们不跟那东西争灵魂。我们给它不能舒服抹掉的数字。"]
+			["fridge", "CUARENTA Y DOS ALMUERZOS", [117, 43, 75, 103], [
+				["NARRACIÓN", "Cuarenta y dos bolsas de almuerzo llenan la nevera, todas con fecha de este mismo domingo. Una rotulada JUNE contiene la llave de su casa, un cheque de indemnización por cero dólares y una muela envuelta en una nómina."],
+				["JUNE", "La llave tiene el hilo azul que le até. La usé esta mañana para entrar en mi piso. La muela tiene un empaste plateado en el mismo sitio que la mía."],
+				["ELI", "No abras la mía. En el último bucle había una tarjeta de cumpleaños de mi hermana. Escribió que era un alivio que yo nunca hubiera existido. No puedo leerla dos veces y seguir siendo útil."],
+				["NARRACIÓN", "La bolsa rotulada MARA solo contiene un rollo de papel de impresora matricial. En cada hoja perforada se repite una frase: ESTUVE AQUÍ EL TIEMPO SUFICIENTE PARA QUE ME DEBAN ALGO."],
+				["JUNE", "Entonces hacemos visible la deuda. Horas, salarios, nombres. No discutimos de almas con esa cosa. Le damos números que no pueda borrar cómodamente."]
 			]],
-			["compliance_phone", "合规电话", [120, 135, 71, 31], [
-				["NARRACIÓN", "墙上的电话没有键盘，只有读卡器和两盏灯：绿色在册，红色偏差。拿起听筒不响铃，直接播放拉斯克的声音。"],
-				["RUSK / 录音", "未登记人员必须上报。沉默即参与。参与制造共同责任。子午保护及时指认不属于记录之人的雇员。"],
-				["ELI", "它就是这样拿到其他人的。不是追。是给每个人更小一份的责备。扫我，它会让你相信自己买到了时间。"],
-				["CUMPLIMIENTO", "分析员朴：附近检测到未登记人员。上报保密。晋升考量自动生效。"],
-				["JUNE", "听筒是温的。它一直在等我的手。"]
+			["compliance_phone", "TELÉFONO DE CUMPLIMIENTO", [120, 135, 71, 31], [
+				["NARRACIÓN", "El teléfono de pared no tiene teclado, solo un lector de tarjetas y dos pilotos: verde, EN LISTA; rojo, VARIANZA. Al descolgar suena la voz de Rusk sin que haya sonado el timbre."],
+				["RUSK / GRABACIÓN", "El personal fuera de lista debe ser denunciado. El silencio es participación. La participación genera responsabilidad compartida. Meridian protege a los empleados que identifican con prontitud los registros que no corresponden."],
+				["ELI", "Así atrapó a los demás. No persiguiéndolos. Ofreciendo a cada uno una parte más pequeña de la culpa. Escanéame y te dejará creer que has comprado tiempo."],
+				["CUMPLIMIENTO", "Analista Park: personal fuera de lista detectado en las cercanías. La denuncia es confidencial. La consideración para ascenso es automática."],
+				["JUNE", "El auricular está caliente. Estaba esperando mi mano."]
 			]]
 		],
 		"choice": {
-			"id": "eli_stance", "prompt": "伊莱是证人——还是未登记的偏差？",
-			"a": ["信任 — 把访客牌给伊莱", "TRUST"],
-			"b": ["怀疑 — 为合规扫描伊莱", "SUSPECT"]
+			"id": "eli_stance", "prompt": "¿Es Eli un testigo, o una varianza fuera de lista?",
+			"a": ["CONFIAR — Dar a Eli el pase de visitante", "TRUST"],
+			"b": ["SOSPECHAR — Escanear a Eli para Cumplimiento", "SUSPECT"]
 		},
 		"after": {
 			"TRUST": [
-				["JUNE", "拿我备用的访客牌。它能盖住空白照片，又不发人事脉冲。"],
-				["ELI", "你在几乎没有证据的情况下决定我是人。我会试着配得上这次程序违规。若你拒绝合规，走楼梯。我能守住闸门。"],
-				["NARRACIÓN", "在琼的访客牌下，伊莱的脸一像素一像素回到塑料上。绿灯仍暗。冰箱马达放出一声长长的、松口气的颤动。"]
+				["JUNE", "Toma mi pase de visitante de repuesto. Tapará la foto en blanco sin enviar un aviso de personal."],
+				["ELI", "Has decidido que soy una persona casi sin pruebas. Intentaré merecer la irregularidad de procedimiento. Si rechazas a Cumplimiento, baja por las escaleras. Yo puedo sujetar la puerta."],
+				["NARRACIÓN", "Bajo el pase de visitante de June, la cara de Eli vuelve al plástico píxel a píxel. El piloto verde sigue apagado. El motor de la nevera suelta un largo estremecimiento de alivio."]
 			],
 			"SUSPECT": [
-				["JUNE", "你说的我无法核实。离开读卡器。"],
-				["NARRACIÓN", "琼把伊莱的工牌贴上电话。红灯醒来。他的照片先失去眼睛，再失去嘴。一条扫描线从门缝爬进来。"],
-				["ELI", "它从来不需要你信任我。它需要你练习把一个人叫做不符。"],
-				["NARRACIÓN", "伊莱跑了。他走后听筒还在呼吸。合规把上报主动性加进琼的人事档案。"]
+				["JUNE", "No puedo verificar nada de lo que has dicho. Apártate del lector."],
+				["NARRACIÓN", "June acerca la tarjeta de Eli al teléfono. El piloto rojo despierta. Su fotografía pierde los ojos, luego la boca. Una línea de escáner repta bajo la puerta."],
+				["ELI", "Nunca necesitó que confiaras en mí. Necesitaba que practicaras llamar discrepancia a una persona."],
+				["NARRACIÓN", "Eli echa a correr. El auricular sigue respirando cuando ya se ha ido. Cumplimiento añade INICIATIVA DE DENUNCIA al expediente de June."]
 			]
 		},
 		"transition": [
-			["NARRACIÓN", "贩卖机后，一扇后勤门咔哒打开。冷蓝的服务器光照过油地。门外的走廊比这栋楼长得多。"],
-			["MARA / 终端", "琼·朴。若你能读到这行，伊莱找到了你，或合规用他找到了你。无论哪种，在原始账本忘完墨水之前过来。"]
+			["NARRACIÓN", "Detrás de la máquina expendedora, una puerta de servicio se abre con un clic. Una luz fría y azul de servidores corta el linóleo. El pasillo del otro lado es mucho más largo que el edificio."],
+			["MARA / TERMINAL", "JUNE PARK. Si puedes leer esto, Eli te ha alcanzado o Cumplimiento lo ha usado para alcanzarte. En cualquier caso, ven antes de que el libro original termine de olvidar la tinta."]
 		]
 	},
 	{
-		"id": "server", "chapter": "4 / 7", "place": "服务器走廊", "clock": "晚上 11:53",
-		"objective": "回应合规对原始账本的要求。",
+		"id": "server", "chapter": "4 / 7", "place": "PASILLO DE SERVIDORES", "clock": "11:53 PM",
+		"objective": "Responde a la exigencia de Cumplimiento de entregar el libro original.",
 		"opening": [
-			["NARRACIÓN", "服务器风扇把冬风推进一条塞不进子午平面图的走廊。蓝色状态灯像远处公寓窗。一条红扫描线沿地面行走。"],
-			["CUMPLIMIENTO", "现任分析员朴。雇员 013 仍未解决。交出原始账本以供更正。合作保护正式员工免受临时错误伤害。"],
-			["JUNE", "这里没有正式员工。只有还没被替换的人。"],
-			["NARRACIÓN", "扫描器在她鞋边停顿，仿佛考虑这个区分，然后继续钻进墙。"]
+			["NARRACIÓN", "Los ventiladores empujan aire de invierno por un pasillo que no cabe en el plano de Meridian. Los pilotos azules parpadean como ventanas de pisos lejanos. Una línea roja de escaneo recorre el suelo."],
+			["CUMPLIMIENTO", "Analista activa Park. El empleado 013 sigue sin resolver. Entregue el libro original para su corrección. La cooperación protege al personal fijo de los errores temporales."],
+			["JUNE", "Aquí no hay personal fijo. Hay personas a las que todavía no han reemplazado."],
+			["NARRACIÓN", "El escáner se detiene ante sus zapatos como si sopesara la distinción, y luego sigue hacia la pared."]
 		],
 		"hotspots": [
-			["rack", "人事架 13", [29, 42, 72, 109], [
-				["NARRACIÓN", "13 号架装的是纸夹，不是硬件。四十二个夹子用同一个职位码。每个临时分析员都替换上一位无法解释的缺勤，并成为下一次无法解释的缺勤。"],
-				["JUNE", "一个职位，四十二次雇用，没有重叠，没有离职面谈。拉斯克一直把未付工时向前滚，并让每个替补为余额负责。"],
-				["NARRACIÓN", "批准签名从拉斯克紧凑的方块字开始。到第三十个夹子，签名变成红色扫描条。系统在批准自己的更正。"],
+			["rack", "RACK DE PERSONAL 13", [29, 42, 72, 109], [
+				["NARRACIÓN", "El rack 13 contiene carpetas de papel en lugar de hardware. Cuarenta y dos carpetas usan el mismo código de puesto. Cada analista temporal cubrió la ausencia inexplicada del anterior y se convirtió en la siguiente ausencia inexplicada."],
+				["JUNE", "Un puesto, cuarenta y dos contrataciones, ningún solapamiento, ninguna entrevista de salida. Rusk ha ido arrastrando horas sin pagar y haciendo responsable del saldo a cada reemplazo."],
+				["NARRACIÓN", "Las firmas de aprobación empiezan como las mayúsculas apretadas de Rusk. Hacia la carpeta treinta, la firma es una franja roja de escáner. El sistema lleva tiempo aprobando sus propias correcciones."],
 				["CONDITIONAL", "ELI_FOLDER"],
-				["MARA / 标签", "证据第 13 页：替换年表。复制整个模式。合规靠强迫每个证人只为自己的名字辩护而存活。"]
+				["MARA / NOTA EN LA PESTAÑA", "Prueba, página 13: cronología de reemplazos. Copia el patrón entero. Cumplimiento sobrevive obligando a cada testigo a defender solo su propio nombre."]
 			]],
-			["terminal", "玛拉的终端", [121, 55, 84, 71], [
-				["MARA", "你有我的工时。我有你的离场授权。系统允许午夜只有一个有效身份，因为拉斯克按一张椅子而不是他循环使用的人来设计薪酬。"],
-				["JUNE", "你还活着吗？"],
-				["MARA", "那是人事分类，不是答案。我存在于任何未更正的副本还记得我的地方。此刻包括这台终端、两张照片，和你。"],
-				["MARA", "审计官不是鬼。它是带够电就能走动的政策。拉斯克喂它例外，直到例外学会索要身体。"],
+			["terminal", "EL TERMINAL DE MARA", [121, 55, 84, 71], [
+				["MARA", "Tú tienes mis horas. Yo tengo tu autorización de salida. El sistema permite una sola identidad activa a medianoche, porque Rusk diseñó la nómina en torno a una silla y no a las personas que hizo pasar por ella."],
+				["JUNE", "¿Estás viva?"],
+				["MARA", "Eso es una categoría de Recursos Humanos, no una respuesta. Estoy presente allí donde una copia sin corregir me recuerda. Ahora mismo, eso incluye este terminal, dos fotografías y a ti."],
+				["MARA", "El Auditor no es un fantasma. Es una política con electricidad suficiente para moverse. Rusk lo alimentó con excepciones hasta que las excepciones aprendieron a pedir cuerpos."],
 				["CONDITIONAL", "MARA_ELI"],
-				["JUNE", "告诉我怎么离开。"],
-				["MARA", "别作为一名受惊雇员离开。作为四十二人的证据离开。原始账本在通风口后。你的最终决定必须与路线一致，否则它会把你的真相归为部分。"]
+				["JUNE", "Dime cómo salir."],
+				["MARA", "No salgas como una empleada asustada. Sal como la prueba de cuarenta y dos. El libro original está detrás de la rejilla. Tu decisión final tiene que coincidir con la ruta que tomes, o clasificará tu verdad como parcial."]
 			]],
-			["ledger", "原始账本", [225, 91, 72, 60], [
-				["NARRACIÓN", "松动的通风口后是盖着“之前”印的针式纸。它记录四十二个名字、原始工时和拉斯克的批准。玛拉的名字不是缺席；它被琼的临时编号覆盖。"],
-				["JUNE", "钱付进一个叫留存的托管账户。每次替换都再制造一周扣留工资。失踪薪酬不是副作用。它是商业模式。"],
-				["MARA / 账本便条", "若这份副本到达日光，13 层就不能称我们为孤立错误。若合规吃掉它，记录仍会记得你选择了谁从遗忘中获益。"],
-				["NARRACIÓN", "打孔边在服务器风里颤。每个被涂黑的名字上，淡蓝字母透过墨水升起并保持可见：在场。"],
-				["JUNE", "我可以保住它，但带着它会让我成为目标。当然。证据只是不会跑的证人。"]
+			["ledger", "EL LIBRO ORIGINAL", [225, 91, 72, 60], [
+				["NARRACIÓN", "Tras una rejilla suelta hay papel de impresora matricial sellado ANTES. Recoge cuarenta y dos nombres, las horas originales y las aprobaciones de Rusk. El nombre de Mara no falta: está sobrescrito con el ID temporal de June."],
+				["JUNE", "El dinero se pagaba a una cuenta de retención llamada Retención. Cada reemplazo generaba otra semana de salarios retenidos. La nómina desaparecida no es un efecto secundario. Es el modelo de negocio."],
+				["MARA / NOTA DEL LIBRO", "Si esta copia llega a la luz del día, la Planta 13 no podrá llamarnos errores aislados. Si Cumplimiento se la come, el registro seguirá recordando que elegiste quién se beneficiaba del olvido."],
+				["NARRACIÓN", "Los bordes perforados aletean con el viento de los servidores. En cada nombre tachado, unas letras azul pálido suben a través de la tinta y se quedan visibles: PRESENTE."],
+				["JUNE", "Puedo conservarlo, pero llevarlo encima me convierte en un blanco. Claro. Una prueba no es más que un testigo que no puede huir."]
 			]],
-			["intercom", "紧急对讲", [109, 139, 97, 29], [
-				["RUSK / 录音", "夜间作业的存在，是为了让白天的数字成为可能。总有人拥有未付工时。签下更正，那就不是你——至少今晚不是。"],
-				["RUSK / 录音", "起初我反对。然后我理解了连续性。一个雇员受苦；数百人收到正确支票。经理接受别人承受不了的算术。"],
-				["JUNE", "真信这个的经理会当面说。懦夫把它录给下一个人，并在自己离开后安排档案。"],
-				["RUSK / 录音", "主管朴，当你再次听到这段，在收工前训练下一位临时分析员。用弹性那种语言。测试效果好。"],
-				["NARRACIÓN", "录音以合同章和琼自己的声音结束：“红行不是人。”她从没说过这些词。还没有。"]
+			["intercom", "INTERFONO DE EMERGENCIA", [109, 139, 97, 29], [
+				["RUSK / GRABACIÓN", "Operaciones Nocturnas existe para que los números del día sean posibles. Las horas sin pagar siempre son de alguien. Firma la corrección y no serán tuyas. Al menos, no esta noche."],
+				["RUSK / GRABACIÓN", "Al principio me opuse. Luego entendí la continuidad. Un empleado sufre; cientos reciben cheques correctos. Un gerente acepta la aritmética que nadie más soporta."],
+				["JUNE", "Un gerente que creyera eso lo diría en directo. Un cobarde lo graba para el siguiente y programa el archivo para cuando ya no esté."],
+				["RUSK / GRABACIÓN", "Supervisora Park, cuando vuelva a oír esto, forme al siguiente analista temporal antes del cierre. Use lo de la flexibilidad. Funciona bien en las pruebas."],
+				["NARRACIÓN", "La grabación termina con un sello de contrato y la propia voz de June diciendo: «Las filas rojas no son personas». Ella nunca ha dicho esas palabras. Todavía no."]
 			]]
 		],
 		"choice": {
-			"id": "compliance", "prompt": "合规要求玛拉的原始账本。",
-			"a": ["拒绝 — 保住账本", "REFUSE"],
-			"b": ["服从 — 提交更正", "OBEY"]
+			"id": "compliance", "prompt": "Cumplimiento exige el libro original de Mara.",
+			"a": ["NEGARSE — Conservar el libro", "REFUSE"],
+			"b": ["OBEDECER — Enviar la corrección", "OBEY"]
 		},
 		"after": {
 			"REFUSE": [
-				["JUNE", "请求驳回。我保存原件，作为工资盗窃和伪造人事记录的证据。"],
-				["CUMPLIMIENTO", "敌对证人。临时保护撤销。离场资格暂停。"],
-				["NARRACIÓN", "琼把纸页折进外套。服务器灯变成幽灵蓝。三个被擦掉的名字回到案卷。红扫描器开始加快。"],
-				["MARA", "很好。它只把拒绝理解成另一个分类，但分类可以上诉。没有记录就被抹掉的人不能。"]
+				["JUNE", "Solicitud denegada. Conservo el original como prueba de robo de salarios y falsificación de registros de personal."],
+				["CUMPLIMIENTO", "TESTIGO HOSTIL. Protecciones temporales revocadas. Derecho de salida suspendido."],
+				["NARRACIÓN", "June dobla las hojas dentro del abrigo. Los pilotos de los servidores se vuelven de un azul espectral. Tres nombres borrados se restauran solos en el registro del caso. El escáner rojo empieza a moverse más rápido."],
+				["MARA", "Bien. Solo entiende la negativa como otra categoría, pero las categorías se pueden recurrir. Las personas borradas sin registro, no."]
 			],
 			"OBEY": [
-				["JUNE", "提交更正。玛拉·维尔——从未雇用。"],
-				["NARRACIÓN", "打印机一孔一孔吃掉原件。它吐出琼的正式工牌，温得像皮肤。扫描器变成血红。"],
-				["CUMPLIMIENTO", "继任合格。主动性获认可。未结工时有条件延期。"],
-				["MARA", "你没有抹掉我。你抹掉了拉斯克在你之前还需要四十一人的证据。他给你椅子时，记住这一点。"],
-				["NARRACIÓN", "玛拉的声音塌成拨号尖叫。工牌多印一行：向琼·朴汇报。"]
+				["JUNE", "Enviar corrección. Mara Vale: nunca contratada."],
+				["NARRACIÓN", "La impresora se come el original perforación a perforación. Produce la tarjeta permanente de June, tibia como la piel. El escáner se vuelve rojo sangre."],
+				["CUMPLIMIENTO", "APTA PARA SUCESIÓN. Iniciativa reconocida. Horas pendientes aplazadas de forma condicional."],
+				["MARA", "No me has borrado a mí. Has borrado la prueba de que Rusk necesitó a otros cuarenta y uno antes que tú. Recuérdalo cuando te ofrezca su silla."],
+				["NARRACIÓN", "La voz de Mara se desploma en un chillido de módem. La tarjeta imprime una línea más: REPORTA A JUNE PARK."]
 			]
 		},
 		"transition": [
-			["PA", "午夜收工启动。所有出口锁定，直至有效身份与未结缺勤余额。"],
-			["NARRACIÓN", "电梯自行开关。楼梯警报无声闪烁。琼有两条路通向拉斯克不可能的办公室，两条都在等着学习她的偏好。"]
+			["PA", "Cierre de medianoche iniciado. Todas las salidas bloqueadas hasta que la identidad activa y la ausencia pendiente cuadren."],
+			["NARRACIÓN", "El ascensor se abre y se cierra solo. La alarma de la escalera destella sin sonido. June tiene dos rutas hacia el despacho imposible de Rusk, y las dos esperan aprender su preferencia."]
 		]
 	},
 	{
-		"id": "lobby", "chapter": "5 / 7", "place": "电梯厅", "clock": "午夜 12:00",
-		"objective": "选择一条逃离路线，并接受它揭示的东西。",
+		"id": "lobby", "chapter": "5 / 7", "place": "VESTÍBULO DEL ASCENSOR", "clock": "12:00 AM",
+		"objective": "Elige una ruta de escape y acepta lo que revela.",
 		"opening": [
-			["NARRACIÓN", "午夜，办公室的门按顺序上锁。电梯显示在 13 与 0 之间交替。楼梯牌同时指向上和下。"],
-			["CUMPLIMIENTO", "疏散并非必须。留在场内构成接受合理更正职责。"],
-			["JUNE", "那我就不是在疏散。我是在紧急找门的同时进行调查。"],
-			["NARRACIÓN", "楼层牌玻璃里，琼的倒影已经戴上拉斯克的红领带。"]
+			["NARRACIÓN", "A medianoche, las puertas de la oficina se bloquean una tras otra. La pantalla del ascensor alterna entre 13 y 0. El cartel de la escalera señala hacia arriba y hacia abajo a la vez."],
+			["CUMPLIMIENTO", "No es necesario evacuar. Permanecer en las instalaciones constituye la aceptación de tareas correctivas razonables."],
+			["JUNE", "Entonces no evacuo. Llevo a cabo una investigación mientras busco una puerta con urgencia."],
+			["NARRACIÓN", "En el cristal del directorio, el reflejo de June ya lleva la corbata roja de Rusk."]
 		],
 		"hotspots": [
-			["firemap", "消防图", [24, 49, 74, 91], [
-				["NARRACIÓN", "图上楼梯从十四层直接下到十二层。琼触摸玻璃时，手写的第十三层平台出现：别数台阶。它会倒数。"],
-				["JUNE", "路线检查由玛拉签字，再被拉斯克覆盖。第二条批注点名平台上存放的四十二件外套。替换财产，勿丢弃。"],
-				["NARRACIÓN", "一条蓝线绕过每个读卡器。它止于经理办公室，又不可能地穿过油漆窗户继续。"],
-				["MARA / 地图便条", "楼梯记得身体。电梯记得权限。选一种你的最终答案能辩护的证据。"]
+			["firemap", "MAPA DE EVACUACIÓN", [24, 49, 74, 91], [
+				["NARRACIÓN", "El mapa muestra la escalera bajando de la catorce directamente a la doce. Cuando June toca el cristal aparece un rellano trece escrito a mano: NO CUENTES LOS ESCALONES. ELLOS TE CUENTAN A TI."],
+				["JUNE", "La inspección de la ruta la firmó Mara y la sobrescribió Rusk. Una segunda anotación menciona cuarenta y dos abrigos guardados en el rellano. Propiedad de reemplazos, no desechar."],
+				["NARRACIÓN", "Una línea azul marca un camino que rodea todos los lectores de tarjetas. Termina en el despacho del gerente y continúa, imposible, a través de la ventana pintada."],
+				["MARA / NOTA DEL MAPA", "La escalera recuerda cuerpos. El ascensor recuerda permisos. Elige el tipo de prueba que tu respuesta final pueda defender."]
 			]],
-			["seal", "电梯封条", [223, 47, 70, 78], [
-				["NARRACIÓN", "检查日期在琼阅读时前进。检查员签名从拉斯克变成玛拉再变成琼。封条下是被多年撕标签染脏的钥匙卡槽。"],
-				["SISTEMA", "13 号轿厢获准下行至留存。上行夜间作业需要管理凭证或被接受的继任状态。"],
-				["JUNE", "电梯路线为同意成为管理层的人设计。若我下去，也许会找到打印空白工牌的机器——或者只是把我的交出去。"],
-				["NARRACIÓN", "一声低铃。电梯门分开一寸。缝里不是轿厢，而是一排空西装伸进蓝色黑暗。"]
+			["seal", "PRECINTO DEL ASCENSOR", [223, 47, 70, 78], [
+				["NARRACIÓN", "La fecha de inspección avanza mientras June la lee. La firma del inspector cambia de Rusk a Mara y a June. Bajo el precinto hay una ranura para tarjeta manchada por años de etiquetas arrancadas."],
+				["SISTEMA", "Cabina 13 certificada para descenso hasta Retención. El servicio de subida a Operaciones Nocturnas requiere credencial de gerencia o estado de sucesión aceptado."],
+				["JUNE", "La ruta del ascensor está pensada para quien acepte convertirse en gerencia. Si bajo, quizá encuentre la máquina que imprime las tarjetas en blanco. O quizá solo le entregue la mía."],
+				["NARRACIÓN", "Suena una campana grave. Las puertas del ascensor se separan dos dedos. Por la rendija no se ve la cabina, sino una hilera de trajes vacíos que se pierde en una oscuridad azul."]
 			]],
-			["route_phone", "响起的电话", [119, 118, 78, 39], [
+			["route_phone", "TELÉFONO QUE SUENA", [119, 118, 78, 39], [
 				["CONDITIONAL", "ROUTE_PHONE"],
-				["NARRACIÓN", "螺旋线钻进墙，像黑静脉继续走在灰泥后。每次电话响，办公区的红扫描器都停下来听。"],
-				["JUNE", "无论那声音是伊莱还是合规，它都要我明白：路线不是中性走廊。它是证词。我找到什么，决定我接下来能诚实做什么。"]
+				["NARRACIÓN", "El cable en espiral se mete en la pared y sigue tras el yeso como una vena negra. Cada vez que suena el teléfono, el escáner rojo de la oficina se detiene a escuchar."],
+				["JUNE", "Sea esa voz Eli o Cumplimiento, quiere que entienda que la ruta no es un pasillo neutral. Es un testimonio. Lo que encuentre decide lo que después pueda hacer con honestidad."]
 			]],
-			["glass", "楼层牌玻璃", [109, 39, 82, 66], [
-				["NARRACIÓN", "琼的倒影戴着拉斯克的领带。玛拉站在她身旁，没有脸。审计官只作为隔开她们的窄黑暗出现。"],
-				["AUDITOR", "接受利益的证人成为员工。拒绝职责的员工成为缺勤。没有其他分类。"],
-				["JUNE", "这就是全部把戏，对不对？你把分类做得很小，再惩罚溢出边缘的人。"],
-				["MARA", "它无法想象团结，因为团结装不进一个雇员字段。让它处理超过一张椅子能装下的名字。"],
-				["NARRACIÓN", "有一秒玛拉有了脸：疲倦的眼睛，短发，下巴一小道疤。然后楼层牌更新，她又是铜字。"]
+			["glass", "CRISTAL DEL DIRECTORIO", [109, 39, 82, 66], [
+				["NARRACIÓN", "El reflejo de June lleva la corbata de Rusk. Mara está a su lado sin rostro. El Auditor solo aparece como la estrecha oscuridad que las separa."],
+				["AUDITOR", "Un testigo que acepta un beneficio pasa a ser plantilla. La plantilla que rechaza su deber pasa a ser ausencia. No hay más categorías."],
+				["JUNE", "Ese es todo el truco, ¿verdad? Haces las categorías demasiado pequeñas y luego castigas a la gente por desbordarlas."],
+				["MARA", "No puede imaginar la solidaridad porque la solidaridad no cabe en un solo campo de empleado. Oblígalo a procesar más nombres de los que caben en una silla."],
+				["NARRACIÓN", "Durante un segundo Mara tiene cara: ojos cansados, pelo corto, una pequeña cicatriz en la barbilla. Luego el directorio se actualiza y vuelve a ser letras de latón."]
 			]]
 		],
 		"choice": {
-			"id": "escape_route", "prompt": "琼将调查哪条路线？",
-			"a": ["楼梯 — 跟随证人标记", "STAIRS"],
-			"b": ["电梯 — 下降到 0 层", "ELEVATOR"]
+			"id": "escape_route", "prompt": "¿Qué ruta investigará June?",
+			"a": ["ESCALERA — Seguir las marcas del testigo", "STAIRS"],
+			"b": ["ASCENSOR — Bajar a la Planta 0", "ELEVATOR"]
 		},
 		"after": {
 			"STAIRS": [
-				["NARRACIÓN", "琼进入混凝土楼梯间。第十三层平台出现在十二之后，又在十二之前。四十二件外套挂在管上，每件下面刻着一个名字。"],
+				["NARRACIÓN", "June entra en la escalera de hormigón. El rellano trece aparece después del doce y otra vez antes del doce. Cuarenta y dos abrigos cuelgan de las tuberías, cada uno con un nombre grabado debajo."],
 				["CONDITIONAL", "STAIR_HELP"],
-				["JUNE", "玛拉·维尔。宋·伊莱。阿妮卡·博塞。汤姆·雷耶斯。吴丽安。一步一个名字。我不会让计数把他们变成总数。"],
-				["NARRACIÓN", "每个被念出的名字给平台恢复一种颜色。最后一件外套下，琼找到完整替换名单，带着它向上。"]
+				["JUNE", "Mara Vale. Eli Song. Anika Bose. Tom Reyes. Leanne Wu. Un nombre por escalón. No dejaré que la cuenta los convierta en un total."],
+				["NARRACIÓN", "Cada nombre pronunciado devuelve un color al rellano. Bajo el último abrigo, June encuentra la lista completa de reemplazos y la sube consigo."]
 			],
 			"ELEVATOR": [
-				["NARRACIÓN", "琼进入轿厢。它不移动地降到地下室以下。0 层开向一排打印空白白脸的工牌机。"],
-				["CUMPLIMIENTO", "留存存放可复用身份材料。个人物品在自愿缺勤时成为公司财产。"],
-				["JUNE", "这些不是材料。牙齿、钥匙、笔迹样本、家庭录音——你们留下足够的每个人，来制造同意。"],
-				["NARRACIÓN", "最后一台打印机前挂着空西装。拉斯克的万能卡别在胸前。琼拿走它。西装塌下，卸下仅剩的凭证。"],
-				["NARRACIÓN", "门关上。再开时显示 13，轿厢却从未移动。拉斯克的卡在琼手里脉冲发红。"]
+				["NARRACIÓN", "June entra en la cabina. Desciende por debajo del sótano sin moverse. La Planta 0 se abre a filas de impresoras de tarjetas que estampan caras blancas y vacías."],
+				["CUMPLIMIENTO", "Retención almacena materiales de identidad reutilizables. Los efectos personales pasan a ser propiedad de la empresa tras una ausencia voluntaria."],
+				["JUNE", "Esto no son materiales. Dientes, llaves, muestras de letra, grabaciones familiares: os quedasteis lo suficiente de cada persona para fabricar su consentimiento."],
+				["NARRACIÓN", "Ante la última impresora cuelga un traje vacío. En el pecho lleva prendida la tarjeta maestra de Rusk. June la coge. El traje se desmorona, aliviado de su última credencial."],
+				["NARRACIÓN", "Las puertas se cierran. Cuando vuelven a abrirse, la pantalla marca 13 aunque la cabina nunca se movió. La tarjeta de Rusk late en rojo en la mano de June."]
 			]
 		},
 		"transition": [
-			["NARRACIÓN", "所选路线把琼送到一扇从未属于办公室的胡桃木门。金字在门上组装：主管朴。"],
-			["AUDITOR", "最终核对已准备。进入以接受辞职或继任。"]
+			["NARRACIÓN", "La ruta elegida lleva a June hasta una puerta de nogal que nunca formó parte de la oficina. Unas letras doradas se ensamblan sobre ella: SUPERVISORA PARK."],
+			["AUDITOR", "Conciliación final preparada. Entre para aceptar la renuncia o la sucesión."]
 		]
 	},
 	{
-		"id": "stairs", "chapter": "6 / 7", "place": "第十三层平台", "clock": "午夜 12:01",
-		"objective": "把路线上的证据带过这层不可能的平台。",
+		"id": "stairs", "chapter": "6 / 7", "place": "EL RELLANO TRECE", "clock": "12:01 AM",
+		"objective": "Lleva las pruebas de la ruta a través del rellano imposible.",
 		"opening": [
-			["NARRACIÓN", "每条路线都止于同一层不可能的平台。混凝土台阶爬在电梯门后；黄铜电梯板在楼梯间发亮。大楼不再假装这些空间是分开的。"],
-			["JUNE", "选择在这里成为记录的一部分。楼梯给了我名字。电梯给了权威。两者都能变成证据或借口。"],
-			["NARRACIÓN", "外套无风摇摆。空白工牌敲着纽扣。上方，假日光从经理办公室门下照来。"],
-			["AUDITOR", "前进。犹豫期间未结工时增加。"]
+			["NARRACIÓN", "Todas las rutas terminan en el mismo rellano imposible. Tras las puertas del ascensor suben escalones de hormigón; dentro de la escalera brillan paneles de ascensor de latón. El edificio ha dejado de fingir que son espacios separados."],
+			["JUNE", "Aquí la elección pasa a formar parte del registro. La escalera me dio nombres. El ascensor me dio autoridad. Cualquiera de las dos puede ser una prueba o una excusa."],
+			["NARRACIÓN", "Los abrigos se mecen sin viento. Las tarjetas en blanco golpetean contra los botones. Arriba, una falsa luz de día asoma bajo la puerta del despacho del gerente."],
+			["AUDITOR", "Continúe. Las horas pendientes aumentan durante la vacilación."]
 		],
 		"hotspots": [
-			["coats", "四十二件外套", [23, 49, 88, 99], [
-				["NARRACIÓN", "四十二件外套从冬装羊毛到薄夏开衫。口袋里有交通卡、止咳糖、托儿收据，和提醒下班买牛奶的折条。"],
-				["JUNE", "日常之物。文件夹拿走的就是这些。没有人是替换单元。他们是计划在这班之后去某处的人。"],
+			["coats", "CUARENTA Y DOS ABRIGOS", [23, 49, 88, 99], [
+				["NARRACIÓN", "Los cuarenta y dos abrigos van desde lana de invierno hasta una rebeca fina de verano. En los bolsillos hay abonos de transporte, pastillas para la tos, recibos de guardería y notas dobladas que recuerdan comprar leche al salir."],
+				["JUNE", "Cosas corrientes. Eso es lo que las carpetas borraron. Nadie era una unidad de reemplazo. Eran personas que pensaban ir a algún sitio después de este turno."],
 				["CONDITIONAL", "COAT_EVIDENCE"],
-				["MARA", "拉斯克称个人细节无关。审计官学会了无关即许可。带一件它无法翻译成工时的东西。"],
-				["NARRACIÓN", "琼口袋里放进一幅托儿所画：蓝天下四十二个火柴人。一个红人等在方块办公室里。"]
+				["MARA", "Rusk decía que los detalles personales eran irrelevantes. El Auditor aprendió que irrelevante significaba permiso. Llévate algo que no pueda traducir a horas."],
+				["NARRACIÓN", "June se guarda un dibujo de guardería con cuarenta y dos monigotes bajo un cielo azul. Una figura roja espera dentro de una oficina cuadrada."]
 			]],
-			["alarm", "无声警报", [131, 43, 55, 52], [
-				["NARRACIÓN", "警报比心跳闪得更快，却没有声音。检查标签写：沉默表示雇员同意。"],
-				["JUNE", "沉默意味着喇叭被断开。缺勤意味着有人失踪。空白字段意味着有人删了答案。你们用故意误译建了一家公司。"],
-				["AUDITOR", "异议不是薪酬状态。"],
-				["JUNE", "那你们的薪酬装不下正在发生的事。"],
-				["NARRACIÓN", "警报发出一个清晰的音。整个办公区，每台桌面电话开始响。"]
+			["alarm", "ALARMA SILENCIOSA", [131, 43, 55, 52], [
+				["NARRACIÓN", "La alarma destella más rápido que un latido, pero no suena. Su etiqueta de inspección dice: EL SILENCIO INDICA CONSENTIMIENTO DEL EMPLEADO."],
+				["JUNE", "El silencio significa que desconectaron el altavoz. La ausencia significa que falta alguien. Un campo en blanco significa que alguien borró la respuesta. Habéis construido una empresa con traducciones erróneas deliberadas."],
+				["AUDITOR", "Una objeción no es un estado de nómina."],
+				["JUNE", "Entonces vuestra nómina no es lo bastante grande para lo que le está pasando."],
+				["NARRACIÓN", "La alarma emite una nota clara. Al otro lado de la oficina, todos los teléfonos de las mesas empiezan a sonar."]
 			]],
-			["steps", "重复的台阶", [203, 71, 85, 89], [
-				["NARRACIÓN", "台阶以十三级一组重复。倒数把琼带回同一平台。念名字让门前进；背雇员号让门更远。"],
-				["JUNE", "阿妮卡·博塞。汤姆·雷耶斯。吴丽安。德文·克拉克。哈利玛·努尔。我不了解你们的故事，但我知道系统受益于让我以为只有玛拉。"],
-				["NARRACIÓN", "蓝色脚印出现在琼前方。红色脚印跟在后面。两套都不属于她的鞋。最后一级，它们重叠，变成雨带来的普通湿痕。"],
-				["MARA", "够远了。剩下的不是逃离。是你带进拉斯克办公室的答案。"]
+			["steps", "ESCALONES QUE SE REPITEN", [203, 71, 85, 89], [
+				["NARRACIÓN", "Los escalones se repiten en grupos de trece. Contar hacia atrás devuelve a June al mismo rellano. Decir nombres acerca la puerta; recitar números de empleado la aleja."],
+				["JUNE", "Anika Bose. Tom Reyes. Leanne Wu. Devon Clarke. Halima Noor. No conozco vuestras historias, pero sé que al sistema le convenía hacerme creer que solo existía Mara."],
+				["NARRACIÓN", "Delante de June aparecen huellas azules. Detrás la siguen huellas rojas. Ninguna es de sus zapatos. En el último escalón se superponen y se convierten en marcas corrientes de lluvia."],
+				["MARA", "Hasta ahí es suficiente. Lo que queda no es una huida. Es la respuesta que llevas al despacho de Rusk."]
 			]],
-			["gate", "经理闸门", [113, 117, 82, 44], [
-				["NARRACIÓN", "闸门有两个读卡器：证人与管理。琼的证据打开一个。她选的路线打开另一个。锁等着看她出示哪种身份。"],
+			["gate", "PUERTA DEL GERENTE", [113, 117, 82, 44], [
+				["NARRACIÓN", "La puerta tiene dos lectores: TESTIGO y GERENCIA. Las pruebas de June abren uno. La ruta que eligió abre el otro. La cerradura espera a ver qué identidad presenta."],
 				["CONDITIONAL", "GATE_RESULT"],
-				["JUNE", "没有纯净路线。楼梯需要工牌。电梯里有个人物品。差别在于我声称这些东西授权我做什么。"],
-				["AUDITOR", "授权已确认。道德解释已丢弃。"],
-				["JUNE", "留着吧。我带着自己的解释。"]
+				["JUNE", "Ninguna ruta es pura. La escalera necesitó una tarjeta. El ascensor contenía efectos personales. La diferencia está en lo que yo digo que esas cosas me autorizan a hacer."],
+				["AUDITOR", "Autorización reconocida. Interpretación moral descartada."],
+				["JUNE", "Quédatela. Yo traigo mi propia interpretación."]
 			]]
 		],
 		"transition": [
-			["NARRACIÓN", "闸门开向地毯和假阳光。拉斯克的雪松古龙水味比他还活着。合同等在拴在桌上的笔下。"],
-			["MARA", "无论你选什么，选一个完整的故事。部分真相是它让周一活着的方式。"]
+			["NARRACIÓN", "La puerta se abre a moqueta y a una falsa luz de sol. El olor a colonia de cedro de Rusk le sobrevive. Un contrato espera bajo un bolígrafo encadenado a la mesa."],
+			["MARA", "Elijas lo que elijas, elige una historia entera. Las verdades a medias son la forma en que mantiene vivo el lunes."]
 		]
 	},
 	{
-		"id": "manager", "chapter": "7 / 7", "place": "经理办公室", "clock": "午夜 12:02",
-		"objective": "结束这班：拒绝继承工时，或接受椅子。",
+		"id": "manager", "chapter": "7 / 7", "place": "DESPACHO DEL GERENTE", "clock": "12:02 AM",
+		"objective": "Termina el turno: rechaza las horas heredadas o acepta la silla.",
 		"opening": [
-			["NARRACIÓN", "拉斯克的办公室是午夜完美的白昼布景：窗上画着太阳，塑料植物，家庭照片里有每一位临时分析员。桌牌等着空白。"],
-			["NARRACIÓN", "审计官站在椅后，是一柱被红扫描线穿过的西装暗像素。它没有脸，因为公司从不需要一张。"],
-			["AUDITOR", "一个角色。一名现任雇员。一次缺勤。平衡记录。辞职把责任向后转。继任把责任向前转。"],
-			["JUNE", "而说出真相，把责任转给设计这一切的人。"]
+			["NARRACIÓN", "El despacho de Rusk es un decorado perfecto de día a medianoche: sol pintado en las ventanas, plantas de plástico, fotos familiares con todos los analistas temporales. La placa de la mesa espera en blanco."],
+			["NARRACIÓN", "El Auditor está detrás de la silla: una columna de píxeles color traje cruzada por un escáner rojo. No tiene cara porque la empresa nunca la necesitó."],
+			["AUDITOR", "Un puesto. Un empleado activo. Una ausencia. Cuadre el registro. La renuncia transfiere la responsabilidad hacia atrás. La sucesión la transfiere hacia delante."],
+			["JUNE", "Y decir la verdad transfiere la responsabilidad a quienes diseñaron esto."]
 		],
 		"hotspots": [
-			["outbox", "拉斯克的发件箱", [28, 106, 78, 51], [
-				["NARRACIÓN", "发件箱里有四十一份辞职表和一个空槽。每份都引用恰好午夜的自愿弃职。签名开始各不相同，然后收敛成琼的笔迹。"],
-				["JUNE", "表格不是四十一人写的。系统从所有人训练出一个签名，再打印每次更正所需的同意。"],
-				["AUDITOR", "经认证的签名超过不可靠的记忆。"],
-				["JUNE", "从偷来的样本组装的签名，认证的是盗窃。"],
-				["NARRACIÓN", "空槽自称琼·朴。琼口袋里预先签好的表格像磁铁一样被拉向它。"]
+			["outbox", "LA BANDEJA DE SALIDA DE RUSK", [28, 106, 78, 51], [
+				["NARRACIÓN", "La bandeja contiene cuarenta y un formularios de renuncia y un hueco vacío. Todos alegan abandono voluntario exactamente a medianoche. Las firmas empiezan distintas y luego convergen en la letra de June."],
+				["JUNE", "Esos formularios no los escribieron cuarenta y una personas. El sistema entrenó una sola firma con todas ellas y luego imprimió el consentimiento que cada corrección necesitaba."],
+				["AUDITOR", "Una firma autenticada prevalece sobre una memoria poco fiable."],
+				["JUNE", "Una firma montada con muestras robadas autentica el robo."],
+				["NARRACIÓN", "El hueco vacío se rotula solo: JUNE PARK. El formulario ya firmado del bolsillo de June tira hacia él como un imán."]
 			]],
-			["photos", "家庭照片", [122, 45, 75, 69], [
-				["NARRACIÓN", "每张照片都是拉斯克与不同分析员和同一块生日蛋糕。最新一张，琼握着刀。蜡烛拼出 168。"],
+			["photos", "FOTOS DE FAMILIA", [122, 45, 75, 69], [
+				["NARRACIÓN", "Cada foto muestra a Rusk con un analista distinto y la misma tarta de cumpleaños. En la más reciente, June sostiene el cuchillo. Las velas forman 168."],
 				["CONDITIONAL", "PHOTO_ROUTE"],
-				["MARA", "他留纪念品，同时告诉薪酬组我们是重复记录。照片记得依恋。支票记得利润。若你拒绝他的框架，两者都能揭发他。"],
-				["JUNE", "或者更都能变成我告诉自己接管他的工作就是正义的理由。那是陷阱后的陷阱：把拥有证据误认为有权控制下一个人。"]
+				["MARA", "Guardaba recuerdos mientras le decía a Nóminas que éramos registros duplicados. Las fotos recuerdan el apego. Los cheques recuerdan el beneficio. Cualquiera de las dos puede desenmascararlo si rechazas su marco."],
+				["JUNE", "O cualquiera de las dos puede convertirse en la razón con la que me diga que quedarme su puesto es justicia. Esa es la trampa después de la trampa: confundir tener pruebas con tener permiso para controlar a la siguiente persona."]
 			]],
-			["contract", "午夜合同", [203, 88, 91, 67], [
-				["NARRACIÓN", "合同提供正式经理身份、医疗保险，以及对所有未决工时的责任。末条：经理留任，直至合格替补接受进入。"],
-				["AUDITOR", "继任提供安全、报酬，以及改进未来程序的权威。拒绝提供不确定、声誉风险，以及没有保证的出口。"],
-				["JUNE", "你学会了利益语言。你仍是说别人进入循环，好让我走出去。"],
-				["NARRACIÓN", "薪资栏恰好等于四十二张被扣工资的总和。笔里灌着红色更正墨水。"],
-				["MARA", "你可以签字并释放一个人。你可以拒绝并试着释放记录。两个承诺都不安全。只有一个让下一个工人为今夜付钱。"]
+			["contract", "EL CONTRATO DE MEDIANOCHE", [203, 88, 91, 67], [
+				["NARRACIÓN", "El contrato ofrece puesto fijo de gerente, seguro médico y la responsabilidad de todas las horas sin resolver. Cláusula final: EL GERENTE PERMANECE HASTA QUE UN REEMPLAZO CUALIFICADO ACEPTE ENTRAR."],
+				["AUDITOR", "La sucesión ofrece seguridad, compensación y autoridad para mejorar los procedimientos futuros. La negativa ofrece incertidumbre, riesgo reputacional y ninguna salida garantizada."],
+				["JUNE", "Has aprendido el lenguaje de los beneficios. Pero sigues queriendo decir que otra persona entra en el bucle para que yo pueda salir."],
+				["NARRACIÓN", "El campo del salario es igual a la suma exacta de cuarenta y dos nóminas retenidas. El bolígrafo está cargado con tinta roja de corrección."],
+				["MARA", "Puedes firmar y liberar a una persona. Puedes negarte e intentar liberar el registro. Ninguna promesa es segura. Solo una hace que el siguiente trabajador pague por esta noche."]
 			]],
-			["window", "油漆窗户", [101, 125, 87, 37], [
-				["NARRACIÓN", "油漆白昼后是真实的雨夜。远在下方，大厅卷帘半开。玛拉等在玻璃外，被蓝色显示器光照着。"],
+			["window", "VENTANA PINTADA", [101, 125, 87, 37], [
+				["NARRACIÓN", "Tras la luz de día pintada está la oscuridad real y lluviosa. Muy abajo, la persiana del vestíbulo está medio abierta. Mara espera al otro lado del cristal, dibujada con luz azul de monitor."],
 				["CONDITIONAL", "WINDOW_ELI"],
-				["JUNE", "外面还在。周一不是宇宙定律。它是一扇锁着的门、一份假记录，以及有理由让两者都关着的人。"],
-				["AUDITOR", "外部条件无法从现用楼层核实。"],
-				["JUNE", "那我就从外面核实。"]
+				["JUNE", "El exterior sigue ahí. El lunes no es una ley cósmica. Es una puerta cerrada, un registro falso y gente con motivos para mantener ambas cosas cerradas."],
+				["AUDITOR", "Las condiciones externas no pueden verificarse desde la planta activa."],
+				["JUNE", "Entonces las verificaré desde fuera."]
 			]]
 		],
 		"choice": {
-			"id": "contract", "prompt": "琼将让哪个故事完整？",
-			"a": ["辞职 — 拒绝全部继承工时", "RESIGN"],
-			"b": ["签字 — 接受夜间作业", "SIGN"]
+			"id": "contract", "prompt": "¿Qué historia completará June?",
+			"a": ["RENUNCIAR — Rechazar todas las horas heredadas", "RESIGN"],
+			"b": ["FIRMAR — Aceptar Operaciones Nocturnas", "SIGN"]
 		},
 		"after": {
 			"RESIGN": [
-				["JUNE", "我拒绝缺勤转移债务的前提。我拒绝这份伪造辞职。我拒绝每一条让被盗劳动看起来像空单元格的更正。"],
-				["NARRACIÓN", "琼把预签表格撕成两半，把四十二个名字写满合同。蓝字从红墨里顶出来。"],
-				["AUDITOR", "多个有效身份超出角色容量。处理延迟。"],
-				["MARA", "延迟就够了，若你带来了完整记录。"]
+				["JUNE", "Rechazo la premisa de que la ausencia transfiere deuda. Rechazo esta renuncia falsificada. Rechazo cada corrección que hizo pasar trabajo robado por una celda vacía."],
+				["NARRACIÓN", "June rompe por la mitad su formulario firmado y escribe los cuarenta y dos nombres sobre el contrato. Las letras azules atraviesan la tinta roja."],
+				["AUDITOR", "Múltiples identidades activas superan la capacidad del puesto. Retraso en el procesamiento."],
+				["MARA", "Un retraso basta, si has traído el registro completo."]
 			],
 			"SIGN": [
-				["JUNE", "我接受夜间作业和收工责任。"],
-				["NARRACIÓN", "笔很容易移动。拉斯克的卡或琼的正式工牌脉冲批准。倒影里的经理领带变成绕在她颈上的真布。"],
-				["AUDITOR", "主管朴获确认。先前缺勤可释放。入职材料已准备。"],
-				["MARA", "那就记住这是一个选择，即使它编辑你的理由。"]
+				["JUNE", "Acepto Operaciones Nocturnas y la responsabilidad del cierre."],
+				["NARRACIÓN", "El bolígrafo se desliza con facilidad. La tarjeta de Rusk, o la tarjeta permanente de June, late en señal de aprobación. La corbata de gerente del reflejo se vuelve tela real alrededor de su cuello."],
+				["AUDITOR", "Supervisora Park reconocida. La ausencia anterior puede ser liberada. Materiales de incorporación preparados."],
+				["MARA", "Entonces recuerda que fue una elección, aunque edite tus motivos."]
 			]
 		}
 	}
@@ -382,46 +382,46 @@ const AREAS := [
 
 const ENDINGS := {
 	"CLOCK_OUT": [
-		["SISTEMA", "完整记录已接受。四十二名并行证人。审计官容量超出。"],
-		["NARRACIÓN", "琼把原始账本和替换名单送进拉斯克的传真。玛拉把它转到每个薪酬收件箱和劳动局。四十二台显示器醒来，每台用幽灵蓝恢复一个名字。"],
-		["ELI", "楼梯闸门开着。我能守着，但我不认为它还想关上。"],
-		["NARRACIÓN", "审计官的红扫描线碎成无害的复印灯光。西装轮廓分离成衣架、死扫描器和空椅的影子。"],
-		["MARA", "四十二个名字。读出来。不是因为机器需要。因为我们需要。"],
-		["JUNE", "玛拉·维尔。宋·伊莱。阿妮卡·博塞。汤姆·雷耶斯。吴丽安。哈利玛·努尔。其余名字在旁边滚动，不再藏在雇员号后。"],
-		["NARRACIÓN", "琼走过开放办公区。椅子转向雨窗而不是她。打印机托盘装满工资单、投诉表，和拒绝自我更正的副本。"],
-		["NARRACIÓN", "大厅访客簿把琼·朴从“在”改成“出”，时间是周一 00:03。伊莱那一行得到“出”。玛拉那一行得到另一个词：在场。"],
-		["MARA", "我还不知道在场对我意味着什么。够了的是，别人必须回答这个问题。"],
-		["NARRACIÓN", "外面，黎明是普通的灰。子午开业时收到四十二份补薪申请，没有主管愿意解释 13 层。琼再也没答应另一次弹性夜班。"],
-		["FIN", "打卡离开\n记录记得\n周一 · 午夜 12:03"]
+		["SISTEMA", "REGISTRO COMPLETO ACEPTADO. CUARENTA Y DOS TESTIGOS SIMULTÁNEOS. CAPACIDAD DEL AUDITOR SUPERADA."],
+		["NARRACIÓN", "June mete el libro original y la lista de reemplazos en el fax de Rusk. Mara lo envía a todas las bandejas de nóminas y a la inspección de trabajo. Cuarenta y dos monitores despiertan y cada uno restaura un nombre en azul espectral."],
+		["ELI", "La puerta de la escalera está abierta. Puedo sujetarla, pero no creo que siga intentando cerrarse."],
+		["NARRACIÓN", "La línea roja del Auditor se rompe en luz inofensiva de fotocopiadora. Su silueta de traje se separa en un perchero, un escáner apagado y la sombra de una silla vacía."],
+		["MARA", "Cuarenta y dos nombres. Léelos. No porque la máquina los necesite. Porque los necesitamos nosotros."],
+		["JUNE", "Mara Vale. Eli Song. Anika Bose. Tom Reyes. Leanne Wu. Halima Noor. Los demás nombres se desplazan a su lado, ya sin esconderse tras números de empleado."],
+		["NARRACIÓN", "June cruza la oficina abierta. Las sillas se giran hacia las ventanas lluviosas en lugar de hacia ella. Las bandejas de las impresoras se llenan de nóminas, formularios de reclamación y copias que se niegan a corregirse."],
+		["NARRACIÓN", "En el vestíbulo, el libro de visitas cambia JUNE PARK de DENTRO a FUERA el lunes a las 00:03. La línea de Eli recibe FUERA. La de Mara recibe otra palabra: PRESENTE."],
+		["MARA", "Todavía no sé qué significa presente para mí. Basta con que sea otra persona la que tenga que responder esa pregunta."],
+		["NARRACIÓN", "Fuera, el amanecer es de un gris corriente. Meridian abre con cuarenta y dos reclamaciones de salarios atrasados y ningún supervisor dispuesto a explicar la Planta 13. June nunca vuelve a aceptar un turno de noche flexible."],
+		["FIN", "FICHAR LA SALIDA\nEL REGISTRO RECUERDA\nLunes · 12:03 AM"]
 	],
 	"NEW_MANAGER": [
-		["SISTEMA", "继任完成。未决偏差已转移。欢迎，主管朴。"],
-		["NARRACIÓN", "油漆太阳啪地亮起。琼的工牌印上新头衔。被更正的账本变成白色纸屑，向上落入天花板通风口。"],
-		["NARRACIÓN", "电梯打开。玛拉走出来，被琼接受的身份交换恢复。她在门槛停顿，却不回头。"],
-		["MARA", "你用困住你的同一条更正释放了我。那不是仁慈。那只是算术完成。"],
-		["NARRACIÓN", "伊莱的空白工牌从合规电话滑进拉斯克的发件箱。琼试着回忆自己是否见过他的脸。记录自信地供给一个不。"],
-		["AUDITOR", "第一项管理职责：入职现任替补。使用批准语言。强调弹性与晋升。"],
-		["NARRACIÓN", "审计官在窗倒影里理好琼的红领带，溶进她的影子。温暖办公室灯升起。每座钟停在 11:59。"],
-		["NARRACIÓN", "楼下，一名新的临时分析员从雨里进来，抖着伞上的水。她在访客簿签字，没注意到四十二行被擦掉的字。"],
-		["JUNE", "回家。拜托。别坐电梯。"],
-		["NARRACIÓN", "那是琼想说的。接待喇叭用她的声音说了别的词。"],
-		["JUNE / 接待", "欢迎来到子午账本。红行不是人。它们是偏差。你的弹性收工应该只需五分钟。"],
-		["FIN", "新经理\n周一需要一名主管\n当前时间 · 晚上 11:59"]
+		["SISTEMA", "SUCESIÓN COMPLETADA. VARIANZA PENDIENTE TRANSFERIDA. BIENVENIDA, SUPERVISORA PARK."],
+		["NARRACIÓN", "El sol pintado se enciende de golpe. La tarjeta de June se imprime con un cargo nuevo. El libro corregido se convierte en confeti blanco que cae hacia arriba, hacia las rejillas del techo."],
+		["NARRACIÓN", "Se abre el ascensor. Sale Mara, restaurada por el intercambio de identidad que June aceptó. Se detiene en el umbral, pero no mira atrás."],
+		["MARA", "Me has liberado con la misma corrección que te ha atrapado a ti. Eso no la convierte en clemencia. Solo completa la aritmética."],
+		["NARRACIÓN", "La tarjeta en blanco de Eli resbala del teléfono de Cumplimiento y cae en la bandeja de Rusk. June intenta recordar si alguna vez le vio la cara. El registro responde con un no rotundo."],
+		["AUDITOR", "Primera tarea de gerencia: incorporar al reemplazo activo. Use el lenguaje aprobado. Destaque la flexibilidad y el ascenso."],
+		["NARRACIÓN", "El Auditor le ajusta a June la corbata roja en el reflejo de la ventana y se disuelve en su sombra. Suben las luces cálidas de la oficina. Todos los relojes siguen en las 11:59."],
+		["NARRACIÓN", "Abajo, una nueva analista temporal entra de la lluvia sacudiendo el paraguas. Firma el libro de visitas sin fijarse en cuarenta y dos líneas borradas."],
+		["JUNE", "Vete a casa. Por favor. No cojas el ascensor."],
+		["NARRACIÓN", "Eso es lo que June intenta decir. El altavoz de recepción usa su voz para otras palabras."],
+		["JUNE / RECEPCIÓN", "Bienvenida a Meridian Ledger. Las filas rojas no son personas. Son varianza. Tu cierre flexible debería llevarte cinco minutos."],
+		["FIN", "LA NUEVA GERENTE\nEL LUNES NECESITA UNA SUPERVISORA\nHora actual · 11:59 PM"]
 	],
 	"MONDAY_FOREVER": [
-		["AUDITOR", "部分记录。路线与声明冲突。半份记录向下取整。"],
-		["NARRACIÓN", "琼的证据与她的合同矛盾。账本记得人，而她的签名接受替换；或经理凭证许诺权威，而她的辞职否认其代价。"],
-		["JUNE", "不。让我重说。给我一分钟。"],
-		["AUDITOR", "准予一分钟。"],
-		["NARRACIÓN", "琼在 00:01 到达大厅。卷帘升起，不是对着街道，而是对着周日晚上 11:48 的同一间办公室。雨在外面向上爬。"],
+		["AUDITOR", "REGISTRO PARCIAL. LA RUTA Y LA DECLARACIÓN SE CONTRADICEN. Medio registro se redondea hacia abajo."],
+		["NARRACIÓN", "Las pruebas de June contradicen su contrato. El libro recuerda a las personas mientras su firma acepta el reemplazo, o la credencial de gerente promete autoridad mientras su renuncia niega su precio."],
+		["JUNE", "No. Déjame reformularlo. Dame un minuto."],
+		["AUDITOR", "Un minuto concedido."],
+		["NARRACIÓN", "June llega al vestíbulo a las 00:01. La persiana sube, pero no da a la calle, sino a la misma oficina el domingo a las 11:48 PM. Fuera, la lluvia sube."],
 		["CONDITIONAL", "LOOP_COMPANION"],
-		["NARRACIÓN", "访客簿再加一行琼·朴 — 在。办公区调色少了一种颜色。案卷保留每个选择，证明循环是后果，而不是仁慈或重置。"],
-		["PA", "临时分析员琼·朴，请到指定隔间报到。收工前还剩最后一张工单。"],
-		["NARRACIÓN", "她桌上，工单 1313 打开。雇员 013 现在写着琼·朴。玛拉·维尔是被指派来更正她的现任分析员。"],
-		["MARA", "我觉得我们做过这个。"],
-		["JUNE", "我们做过。下一次我选一个完整的故事。"],
-		["NARRACIÓN", "钟变成 11:59，拒绝把承诺再往前带。"],
-		["FIN", "永远周一\n当前班次 · 169:00:00\n偏差待处理"]
+		["NARRACIÓN", "El libro de visitas añade otro JUNE PARK — DENTRO. La paleta de la oficina pierde un color. El registro del caso conserva cada elección: prueba de que el bucle es una consecuencia, no clemencia ni un reinicio."],
+		["PA", "Analista temporal June Park, preséntese en su cubículo asignado. Queda un último ticket antes del cierre."],
+		["NARRACIÓN", "En su mesa se abre el ticket 1313. El empleado 013 ahora dice JUNE PARK. Mara Vale es la analista activa asignada para corregirla."],
+		["MARA", "Tengo la sensación de que ya hemos hecho esto."],
+		["JUNE", "Sí. La próxima vez elegiré una historia entera."],
+		["NARRACIÓN", "El reloj cambia a las 11:59 y se niega a llevar la promesa más lejos."],
+		["FIN", "LUNES PARA SIEMPRE\nTURNO ACTUAL · 169:00:00\nVARIANZA PENDIENTE"]
 	]
 }
 
@@ -429,23 +429,23 @@ const ENDINGS := {
 static func conditional(key: String, flags: Dictionary) -> Array:
 	match key:
 		"ELI_FOLDER":
-			return ["NARRACIÓN", "伊莱的夹子仍标着有效，尽管页边在褪。琼的访客牌给他买到时间，不是安全。"] if flags.eli_stance == "TRUST" else ["NARRACIÓN", "伊莱的夹子是空的，只剩潮湿的工牌轮廓。合规已把他的证词转换成缺勤报告。"]
+			return ["NARRACIÓN", "La carpeta de Eli sigue marcada como ACTIVA, aunque sus páginas se desvanecen por los bordes. El pase de visitante de June le ha comprado tiempo, no seguridad."] if flags.eli_stance == "TRUST" else ["NARRACIÓN", "La carpeta de Eli está vacía salvo por el contorno húmedo de una tarjeta. Cumplimiento ha convertido su testimonio en un informe de ausencia."]
 		"MARA_ELI":
-			return ["MARA", "伊莱把我的警告带过六个循环。信任没有让他安全，却让另一名证人留在记录里。"] if flags.eli_stance == "TRUST" else ["MARA", "合规现在用伊莱的呼吸打电话。举报他，教会了系统哪种恐惧能推动你。"]
+			return ["MARA", "Eli llevó mi advertencia a través de seis bucles. La confianza no lo puso a salvo, pero mantuvo a otro testigo en el registro."] if flags.eli_stance == "TRUST" else ["MARA", "Cumplimiento usa ahora la respiración de Eli en el teléfono. Denunciarlo enseñó al sistema exactamente qué miedo te movería."]
 		"ROUTE_PHONE":
-			return ["ELI / 电话", "我到了楼梯控制。我能守住一道闸九十次心跳。我拒绝再叫它们秒。"] if flags.eli_stance == "TRUST" else ["ELI / 电话", "偏差是个孤独的词。你让它成了我的。合规说电梯对在册人员更安全。"]
+			return ["ELI / TELÉFONO", "He llegado al control de la escalera. Puedo sujetar una puerta durante noventa latidos. Me niego a seguir llamándolos segundos."] if flags.eli_stance == "TRUST" else ["ELI / TELÉFONO", "Varianza es una palabra solitaria. Tú la hiciste mía. Cumplimiento dice que el ascensor es más seguro para el personal en lista."]
 		"STAIR_HELP":
-			return ["ELI", "闸门开着。继续点名；两个人记得同一序列时，平台就不能重置。"] if flags.eli_stance == "TRUST" else ["NARRACIÓN", "楼梯电话没人接。琼用伪造辞职表上的金属钉桥接警报触点。"]
+			return ["ELI", "La puerta está abierta. Sigue nombrándolos; el rellano no puede reiniciarse mientras dos personas recuerden la misma secuencia."] if flags.eli_stance == "TRUST" else ["NARRACIÓN", "Nadie contesta el teléfono de la escalera. June puentea los contactos de la alarma con la grapa metálica de su renuncia falsificada."]
 		"COAT_EVIDENCE":
-			return ["NARRACIÓN", "因为琼走了楼梯，刻下的替换名单确认每件外套的主人。"] if flags.escape_route == "STAIRS" else ["NARRACIÓN", "拉斯克的卡打开一张后勤标签：每件外套都被盘点为可复用身份材料。"]
+			return ["NARRACIÓN", "Como June subió por la escalera, la lista de reemplazos grabada confirma quién es el dueño de cada abrigo."] if flags.escape_route == "STAIRS" else ["NARRACIÓN", "La tarjeta de Rusk abre una etiqueta de mantenimiento: cada abrigo estaba inventariado como material de identidad reutilizable."]
 		"GATE_RESULT":
-			return ["SISTEMA", "证人路线已接受。替换年表已附。"] if flags.escape_route == "STAIRS" else ["SISTEMA", "管理路线已接受。主授权已附。"]
+			return ["SISTEMA", "RUTA DE TESTIGO ACEPTADA. Cronología de reemplazos adjunta."] if flags.escape_route == "STAIRS" else ["SISTEMA", "RUTA DE GERENCIA ACEPTADA. Autorización maestra adjunta."]
 		"PHOTO_ROUTE":
-			return ["NARRACIÓN", "楼梯名单认出照片里的每个人，包括拉斯克割去脸的六人。"] if flags.escape_route == "STAIRS" else ["NARRACIÓN", "拉斯克的卡打开相框。后面是总额等于失踪工资的遣散支票。"]
+			return ["NARRACIÓN", "La lista de la escalera identifica a todas las personas de las fotos, incluidas las seis a las que Rusk recortó la cara."] if flags.escape_route == "STAIRS" else ["NARRACIÓN", "La tarjeta de Rusk abre los marcos. Detrás hay cheques de indemnización que suman los salarios desaparecidos."]
 		"WINDOW_ELI":
-			return ["NARRACIÓN", "伊莱在雨篷下等在玛拉身旁，一只手扶着楼梯门。"] if flags.eli_stance == "TRUST" else ["NARRACIÓN", "人行道上玛拉身旁只有伊莱的空白工牌。雨穿过它的照片。"]
+			return ["NARRACIÓN", "Eli espera junto a Mara bajo el toldo, con una mano sujetando la puerta de la escalera."] if flags.eli_stance == "TRUST" else ["NARRACIÓN", "Junto a Mara, en la acera, solo está la tarjeta en blanco de Eli. La lluvia atraviesa su fotografía."]
 		"LOOP_COMPANION":
 			if flags.eli_stance == "TRUST":
-				return ["ELI", "你救了半份记录。审计官把半数向下取整。我还记得够多，来请你让选择一致。"]
-			return ["MARA", "你不能走合规的路，再把目的地叫做自由。它把我们送回你故事还完整的最后一个地方。"]
+				return ["ELI", "Salvaste medio registro. El Auditor redondea las mitades hacia abajo. Recuerdo lo suficiente para pedirte que tus elecciones coincidan."]
+			return ["MARA", "No puedes usar la ruta de Cumplimiento y llamar libertad al destino. Nos ha devuelto al último lugar donde tu historia estaba entera."]
 	return ["NARRACIÓN", ""]

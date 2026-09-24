@@ -16,8 +16,10 @@ const SETTINGS_PATH := "user://settings.cfg"
 # so it called 92 correct Japanese lines Chinese; it now asks the euc_jp codec, for which
 # 这 说 电 are unencodable and 机 着 当 数 are not. Its parser also stopped at the last
 # blank-line run, so it never read conditional(), which is where the final 17 Chinese
-# lines were hiding. ko and es are still the old half-translation and stay off.
-const ALLOWED := ["en", "zh", "ja"]
+# lines were hiding. ko and es followed on 2026-09-23: the 300/318 story lines that still
+# held Chinese were translated from the English source, and lang_audit reads 491/491 for
+# both.
+const ALLOWED := ["en", "zh", "ja", "ko", "es"]
 const NATIVE := {
 	"en": "English",
 	"zh": "简体中文",
