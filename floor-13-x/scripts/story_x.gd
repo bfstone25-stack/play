@@ -194,32 +194,49 @@ const ENDING_BEATS := {
 ## Additive only: one new hotspot, four extended `after` branches, and a stash of the
 ## second-pass and scene text that game.gd pulls at its own hooks. Nothing the base game
 ## wrote is removed here.
+## 2026-09-23: every line this file adds goes out through Loc.s, so zh and ja read the
+## fork's own writing in their language (locale/story_{zh,ja}.json), not English spliced
+## into a translated night.
+static func _L(lines: Array) -> Array:
+	var out: Array = []
+	for line in lines:
+		var l: Array = (line as Array).duplicate(true)
+		for i in l.size():
+			if l[i] is String:
+				l[i] = Loc.s(l[i])
+		out.append(l)
+	return out
+
+
 static func patch(areas: Array) -> Array:
 	var out: Array = areas.duplicate(true)
 	for area in out:
 		match str(area.id):
 			"breakroom":
-				area.hotspots.append(COAT_HOTSPOT.duplicate(true))
-				area.after["TRUST"] = (area.after["TRUST"] as Array) + BREAKROOM_TRUST.duplicate(true)
-				area.after["SUSPECT"] = (area.after["SUSPECT"] as Array) + BREAKROOM_SUSPECT.duplicate(true)
+				var coat: Array = COAT_HOTSPOT.duplicate(true)
+				coat[1] = Loc.s(str(coat[1]))
+				coat[3] = _L(coat[3])
+				area.hotspots.append(coat)
+				area.after["TRUST"] = (area.after["TRUST"] as Array) + _L(BREAKROOM_TRUST)
+				area.after["SUSPECT"] = (area.after["SUSPECT"] as Array) + _L(BREAKROOM_SUSPECT)
 			"lobby":
-				area.after["STAIRS"] = (area.after["STAIRS"] as Array) + LOBBY_STAIRS.duplicate(true)
-				area.after["ELEVATOR"] = (area.after["ELEVATOR"] as Array) + LOBBY_ELEVATOR.duplicate(true)
+				area.after["STAIRS"] = (area.after["STAIRS"] as Array) + _L(LOBBY_STAIRS)
+				area.after["ELEVATOR"] = (area.after["ELEVATOR"] as Array) + _L(LOBBY_ELEVATOR)
 	return out
 
 
 ## The second read of Mara's terminal, after the compliance choice has been made.
 static func terminal_second(flags: Dictionary) -> Array:
 	if str(flags.get("compliance", "")) == "REFUSE":
-		return TERMINAL_SECOND_PRESERVED.duplicate(true)
-	return TERMINAL_SECOND_SURRENDERED.duplicate(true)
+		return _L(TERMINAL_SECOND_PRESERVED)
+	return _L(TERMINAL_SECOND_SURRENDERED)
 
 
 ## The landing scene, shown on the stairs route once the coats' evidence line has been read.
 static func landing(flags: Dictionary) -> Array:
 	if str(flags.get("escape_route", "")) != "STAIRS":
 		return []
-	return LANDING_SCENE.duplicate(true)
+	return _L(LANDING_SCENE)
 
 
 ## The ending's extra beat, spliced into the ending text after the line it belongs behind.
@@ -232,14 +249,14 @@ static func ending_lines(ending_id: String, lines: Array) -> Array:
 	for line in lines:
 		out.append(line)
 		if not placed and str(line[1]) == str(beat.after_line):
-			for extra in beat.lines:
-				out.append(extra.duplicate(true))
+			for extra in _L(beat.lines):
+				out.append(extra)
 			placed = true
 	if not placed:
 		# The anchor line moved. Put the beat before the END card rather than dropping it.
 		var tail = out.pop_back()
-		for extra in beat.lines:
-			out.append(extra.duplicate(true))
+		for extra in _L(beat.lines):
+			out.append(extra)
 		out.append(tail)
 	return out
 

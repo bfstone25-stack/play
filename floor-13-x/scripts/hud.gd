@@ -361,19 +361,29 @@ func _build_title() -> void:
 	var codes := Loc.ALLOWED
 	for i in codes.size():
 		var code := str(codes[i])
-		var b := Button.new()
+		# outlined words under the start badge, right-hand column, clear of her -- no box
+		var b := ObjectButton.new()
 		b.name = "Lang_%s" % code
-		b.position = Vector2(12 + (i % 5) * 124, 220)
-		b.size = Vector2(120, 40)
-		b.clip_text = false
+		b.position = Vector2(400 + i * 70, 268)
+		b.size = Vector2(66, 18)
 		b.text = str(Loc.NATIVE[code])
-		_format_button(b, 8)
+		b.object_size = 0.0
+		b.gap = 0.0
+		b.label_color = Color("#f4ece6")
+		b.accent_color = Color("#ff3b4a")
+		b.ink = Color("#04070a")
+		b.outline_px = 0
+		b.shadow_px = 1
+		b.selected = code == Loc.current()
+		UiFont.apply_button(b)
+		b.add_theme_font_size_override("font_size", 12)
 		b.pressed.connect(_on_lang_pressed.bind(code))
-		b.visible = false   # [fork] see above
 		title_panel.add_child(b)
 		lang_buttons[code] = b
-	title_lang_caption.visible = false   # [fork] see above
-	Loc.set_code("en")
+	# the caption stays hidden: three endonyms in a row need no label, and it sat mid-frame
+	title_lang_caption.visible = false
+	# 2026-09-23: the fork now ships zh and ja for real (parent tables + locale/story_*.json
+	# for the fork's own lines, gated by tests/locale_cover.gd), so the bar is shown again.
 	# 2026-09-23, adult title pass: START is her staff ID badge on its red lanyard -- the
 	# thing the plate shows her still wearing, and how the company keeps her -- as an
 	# ObjectButton, not a drawn time card (ops/STANDARD.md, "Buttons are objects from the
@@ -552,6 +562,9 @@ func _set_portrait(speaker: String) -> void:
 
 func _on_lang_pressed(next: String) -> void:
 	Loc.set_code(next)
+	for c in lang_buttons.keys():
+		if lang_buttons[c] is ObjectButton:
+			(lang_buttons[c] as ObjectButton).selected = str(c) == next
 
 func _emit_start() -> void:
 	if title_panel == null or not title_panel.visible:

@@ -65,6 +65,13 @@ def source_charset() -> list[str]:
             if not isinstance(value, str):
                 continue
             chars.update(char for char in value if char >= " " and char != "\u007f")
+    # 2026-09-23: the fork's own lines are translated in locale/story_{zh,ja}.json (data,
+    # not scripts); their glyphs have to be in the atlas too.
+    import json as _json
+    for jp in sorted((ROOT / "locale").glob("*.json")):
+        d = _json.loads(jp.read_text(encoding="utf-8"))
+        for v in (d.values() if isinstance(d, dict) else d):
+            chars.update(ch for ch in str(v) if ch >= " " and ch != "\u007f")
     return sorted(chars, key=ord)
 
 

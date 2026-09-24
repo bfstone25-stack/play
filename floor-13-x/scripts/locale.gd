@@ -6,10 +6,11 @@ const SETTINGS_PATH := "user://settings.cfg"
 ## ja/ko/es tables are ~95% Chinese text — the game was selling three locales it does not
 ## have. The fork carries the correction rather than the defect; the fork's own writing is
 ## English-only in any case (FORK.md), so the bar stays hidden and the locale pinned.
-const ALLOWED := ["en", "zh"]
+const ALLOWED := ["en", "zh", "ja"]
 const NATIVE := {
 	"en": "English",
 	"zh": "简体中文",
+	"ja": "日本語",
 }
 
 static var code: String = ""
@@ -48,8 +49,26 @@ static func table() -> Dictionary:
 	match current():
 		"zh":
 			return ZH
+		"ja":
+			return JA
 		_:
 			return EN
+
+
+static var _fork := {}
+
+
+## The fork's own writing (StoryX) and anything else outside the parent's tables, looked
+## up by its English source in locale/story_{zh,ja}.json.
+static func s(src: String) -> String:
+	var c := current()
+	if c == "en" or src == "":
+		return src
+	if not _fork.has(c):
+		var path := "res://locale/story_%s.json" % c
+		var d = JSON.parse_string(FileAccess.get_file_as_string(path)) if FileAccess.file_exists(path) else {}
+		_fork[c] = d if d is Dictionary else {}
+	return str(_fork[c].get(src, src))
 
 
 static func t(key: String, args: Array = []) -> String:
@@ -169,4 +188,43 @@ const ZH := {
 }
 
 
-
+## 2026-09-23: Japanese, from the parent Floor 13 (491/491 real strings), with the fork's
+## two changed keys (title.name, title.info) translated for the fork.
+const JA := {
+	"lang.caption": "言語",
+	"title.eyebrow": "メリディアン台帳 · 夜間業務ファイル",
+	"title.name": "FLOOR 13\nリテンション",
+	"title.info": "18+ · 30〜40分のポイント＆クリック・ホラー\nヘッドホン推奨 · 選択は引き継がれます",
+	"title.start": "夜勤を始める",
+	"btn.continue": "続ける  ▸",
+	"vn.advance": "クリック / E",
+	"vn.pressure": "圧迫",
+	"btn.continue_n": "続ける  ▸  %d",
+	"btn.case_log": "記録",
+	"btn.pause": "一時停止",
+	"btn.proceed": "進む  ▸",
+	"btn.return": "戻る",
+	"btn.restart": "タイトルからやり直す",
+	"btn.restart_shift": "夜勤をやり直す",
+	"choice.banner": "この決定は永久に記録される",
+	"log.title": "記録 // 永続ログ",
+	"log.empty": "記録なし。",
+	"pause.title": "夜勤は停止中",
+	"pause.body": "時計はあなたのために止まった。記録は止まっていない。\n\n進行はこのセッションに保持される。再開するか、下のボタンでタイトルからやり直せる。",
+	"idle.chapter": "ファイル 13",
+	"idle.place": "夜間業務",
+	"idle.clock": "日曜",
+	"idle.objective": "準備ができたら始めてください。選択は再開まで残ります。",
+	"route.next": "次の区域へ  ▸",
+	"route.decision": "この決定のまま進む  ▸",
+	"log.objective": "目標\n%s\n",
+	"log.decisions": "決定",
+	"log.eli": "イーライ：%s",
+	"log.compliance": "コンプライアンス：%s",
+	"log.route": "経路：%s",
+	"log.contract": "契約：%s\n",
+	"log.pending": "未決",
+	"log.evidence": "証拠 // %d / 28",
+	"log.decision": "決定 — %s：%s",
+	"log.ending": "結末 — %s",
+}
