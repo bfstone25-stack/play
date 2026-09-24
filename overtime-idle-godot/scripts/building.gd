@@ -66,6 +66,7 @@ var f2p_panel: F2PPanel
 var scene_view: Overlay
 var fx: F2PPanel.Juice
 var gold_tag: Label
+var hud_row: HBoxContainer        ## the top bar's row (Nutaku: must fit 1280)
 
 
 func _ready() -> void:
@@ -308,20 +309,24 @@ func _build_hud() -> void:
 		tabs[key] = b
 	gallery_btn = tabs["gallery"]
 	if F2P.on():
-		# the SCENES tab of the office replaces PLATES, and the row has to fit 1280
+		# the SCENES tab of the office replaces PLATES, and the row has to fit 1280 — with a
+		# late-game bank in it, not just the first minute's (tests/f2p_client.gd checks)
 		gallery_btn.visible = false
-		h.add_theme_constant_override("separation", 14)
+		h.add_theme_constant_override("separation", 8)
+		hud_row = h
+		for l in [rate_l, bank_l, gold_l]:
+			(l as RollingLabel).compact = true
 		for key in ["roster", "shop", "daily"]:
-			(tabs[key] as Control).custom_minimum_size = Vector2(88, 42)
+			(tabs[key] as Control).custom_minimum_size = Vector2(76, 42)
 		(tabs["shop"] as Button).text = "UPGRADE"
 		var ob := StudioTheme.stub("STAFF", "Primary", true)
-		ob.custom_minimum_size = Vector2(88, 42)
+		ob.custom_minimum_size = Vector2(76, 42)
 		ob.add_theme_font_size_override("font_size", 13)
 		ob.pressed.connect(func() -> void: _open_tab("staff"))
 		h.add_child(ob)
 		tabs["staff"] = ob
 		var sb := StudioTheme.stub("STORY", "Amber", true)
-		sb.custom_minimum_size = Vector2(88, 42)
+		sb.custom_minimum_size = Vector2(76, 42)
 		sb.add_theme_font_size_override("font_size", 13)
 		sb.pressed.connect(func() -> void: _open_tab("story"))
 		h.add_child(sb)
@@ -336,7 +341,7 @@ func _build_hud() -> void:
 		Sfx.set_muted(not on)
 		sound_btn.text = I18n.t("sound_on") if on else I18n.t("sound_off"))
 	if F2P.on():
-		sound_btn.custom_minimum_size = Vector2(76, 42)
+		sound_btn.custom_minimum_size = Vector2(68, 42)
 	h.add_child(sound_btn)
 	banner_l = Label.new()
 	banner_l.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
@@ -344,6 +349,9 @@ func _build_hud() -> void:
 	banner_l.offset_left = -300
 	banner_l.offset_right = 300
 	banner_l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	# a chapter outro is ~110 characters: wrap inside the 600 px column instead of running
+	# across Mirei's portrait
+	banner_l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	banner_l.add_theme_font_override("font", Look.font_display)
 	banner_l.add_theme_color_override("font_color", Palette.GOLD_PALE)
 	banner_l.add_theme_font_size_override("font_size", 18)
@@ -1377,7 +1385,7 @@ func _juice(kind: String, data: Dictionary) -> void:
 			fx.float_text(Vector2(640, 300), "CHAPTER COMPLETE", Palette.GOLD_PALE, 40)
 			Sfx.levelup()
 			var nx = data.get("next")
-			banner(str(data.get("outro", "")).left(110))
+			banner(str(data.get("outro", "")))       # wraps; .left(110) cut words in half
 			if nx != null:
 				await get_tree().create_timer(2.2).timeout
 				banner("NEXT — " + str(nx["title"]))

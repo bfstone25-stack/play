@@ -8,6 +8,9 @@ var value := 0.0
 var target := 0.0
 var prefix := ""
 var suffix := ""
+## Show 1,000,000 and up as 1.00M / 12.3M / 350M, so a late-game bank cannot push the HUD
+## row past 1280 (the Nutaku HUD sets it; everything else keeps the full number).
+var compact := false
 var _tw: Tween
 var _last_int := 0
 
@@ -16,7 +19,7 @@ func set_now(v: float) -> void:
 	value = v
 	target = v
 	_last_int = int(round(v))
-	text = prefix + _fmt(v) + suffix
+	text = prefix + _show(v) + suffix
 
 
 func set_target(v: float, dur: float = 0.6) -> void:
@@ -40,7 +43,24 @@ func _apply(v: float) -> void:
 	var iv := int(round(v))
 	if iv != _last_int:
 		_last_int = iv
-		text = prefix + _fmt(v) + suffix
+		text = prefix + _show(v) + suffix
+
+
+func _show(v: float) -> String:
+	return _short(v) if compact else _fmt(v)
+
+
+static func _short(v: float) -> String:
+	var a := absf(v)
+	if a < 1000000.0:
+		return _fmt(v)
+	var units := [[1e12, "T"], [1e9, "B"], [1e6, "M"]]
+	for u in units:
+		if a >= float(u[0]):
+			var x: float = v / float(u[0])
+			var dp := 2 if absf(x) < 10.0 else (1 if absf(x) < 100.0 else 0)
+			return String.num(x, dp) + str(u[1])
+	return _fmt(v)
 
 
 static func _fmt(v: float) -> String:

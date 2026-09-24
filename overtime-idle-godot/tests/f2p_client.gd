@@ -60,6 +60,15 @@ func _run() -> void:
 	check("the building mirrors the server: one floor, bank 0", Ticker.B["floors"].size() == 1 and int(Ticker.B["bank"]) == 0)
 	check("the welcome tickets show in the HUD's economy", Economy.tickets() == 10, str(Economy.tickets()))
 	check("the office panel exists and the dev clock column does not", b.f2p_panel != null)
+	# the HUD row fits 1280 with a late-game bank in it (the SOUND stub used to fall off the edge)
+	b.rate_l.set_now(8200000)
+	b.bank_l.set_now(350000000)
+	b.gold_l.set_now(1234)
+	await sleep(0.2)
+	var row_end: float = b.hud_row.get_global_rect().end.x if b.get("hud_row") != null else 0.0
+	var last_end: float = b.sound_btn.get_global_rect().end.x
+	check("the HUD row fits 1280 with a 350M bank", maxf(row_end, last_end) <= 1270.0, "row ends at %d, sound at %d" % [row_end, last_end])
+	b.hud()
 
 	# ---- place through the board's own path
 	b._bridge({"op": "place", "i": 6, "id": "dan"})

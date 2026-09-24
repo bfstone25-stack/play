@@ -1,5 +1,5 @@
 extends Node
-## OVERTIME LANDLORD: IDLE — en / zh / ja.
+## OCCUPANCY: IDLE (formerly Overtime Landlord) — en / zh / ja.
 ##
 ## Autoloaded as "I18n". The shape is play/the-other-side-godot/scripts/i18n.gd's, which is
 ## play/across-the-hall's, which is play/fold-godot's: one table keyed by language,
@@ -52,7 +52,7 @@ const T := {
 	"start": "OPEN THE BUILDING",
 	"footer": "FLAT 404   ·   Everyone depicted is an adult.",
 	# ---- HUD -----------------------------------------------------------------
-	"hud_name": "OVERTIME LANDLORD",
+	"hud_name": "OCCUPANCY",
 	"hud_sub": "AFTER HOURS · IDLE · 18+",
 	"hud_sub_n": "AFTER HOURS · IDLE · 18+   ·   BUILDING %d",
 	"rent_hour": "RENT / HOUR",
@@ -250,7 +250,7 @@ const T := {
 	"tagline": "你不在的时候，楼还在收租",
 	"start": "开 楼",
 	"footer": "FLAT 404   ·   画面中人物均为成年人。",
-	"hud_name": "加班房东",
+	"hud_name": "OCCUPANCY",
 	"hud_sub": "深夜 · 挂机 · 18+",
 	"hud_sub_n": "深夜 · 挂机 · 18+   ·   第 %d 栋",
 	"rent_hour": "每小时租金",
@@ -436,7 +436,7 @@ const T := {
 	"tagline": "あなたが留守の間も、ビルは稼いでいる",
 	"start": "ビルを開ける",
 	"footer": "FLAT 404   ·   登場人物はすべて成人です。",
-	"hud_name": "残業大家",
+	"hud_name": "OCCUPANCY",
 	"hud_sub": "深夜 · 放置 · 18+",
 	"hud_sub_n": "深夜 · 放置 · 18+   ·   %d 棟目",
 	"rent_hour": "時給家賃",
