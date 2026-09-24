@@ -90,7 +90,7 @@ init -1:
         ysize 56
         padding (18, 6, 18, 6)
         background None
-        hover_background Frame("images/ui/title_hover.png", 6, 6)
+        hover_background None
 
     style title_button_text:
         font "fonts/CourierPrime-Bold.ttf"
@@ -285,8 +285,9 @@ screen main_menu():
     add "images/title/light.png" at lamp_swing
     add "images/title/haze.png" at haze_drift_a
     add "images/title/haze.png" at haze_drift_b
-    add "images/title/vignette.png"
-    add "images/title/scrim.png" at scrim_in
+    # 2026-09-23, adult title pass: the vignette and the left scrim are no longer drawn. A
+    # darkening laid under the type is the one thing 0 of 33 Nutaku tiles do
+    # (ops/market/ADULT_SHELF_TITLES.md); the type carries its own outline.
 
     key "K_s" action Start()
     key "K_RETURN" action Start()
@@ -311,8 +312,26 @@ screen main_menu():
         spacing 4
         at fade_in_after(2.3)
 
-        textbutton _("Open the case") action Start() style "title_button"
-        textbutton _("Continue") action ShowMenu("load") style "title_button"
+        # The first two actions are OBJECTS from the room with the words beside them, not
+        # boxes (ops/STANDARD.md, "Buttons are objects from the game"). Tell, the all-ages
+        # twin, owns the folders, the lamp and the recorder, so: the handcuff key opens
+        # the case, a book of matches picks the night back up. GPU renders, rembg.
+        hbox:
+            spacing 10
+            imagebutton:
+                idle Transform("images/ui/btn_cuffkey.png", zoom=0.5)
+                hover Transform("images/ui/btn_cuffkey.png", zoom=0.56, rotate=-12)
+                action Start()
+                yalign 0.5
+            textbutton _("Open the case") action Start() style "title_button" yalign 0.5
+        hbox:
+            spacing 10
+            imagebutton:
+                idle Transform("images/ui/btn_matchbook.png", zoom=0.42)
+                hover Transform("images/ui/btn_matchbook.png", zoom=0.47, rotate=8)
+                action ShowMenu("load")
+                yalign 0.5
+            textbutton _("Continue") action ShowMenu("load") style "title_button" yalign 0.5
         textbutton _("Preferences") action ShowMenu("preferences") style "title_button"
         textbutton _("About") action ShowMenu("about") style "title_button"
         textbutton _("Quit") action Quit(confirm=not main_menu) style "title_button"
