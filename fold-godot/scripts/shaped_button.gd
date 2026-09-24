@@ -172,6 +172,16 @@ func _draw() -> void:
 			var pos := Vector2((size.x - w) * 0.5, size.y * 0.5 + fs * 0.35)
 			if shape == Shape.DIAL:
 				pos = Vector2(2.0, size.y * 0.46)
+			# FOLD's turned corner lives in the top-right and its flap lies back over the
+			# sheet, so the label is centred on the field that is LEFT once the corner is
+			# accounted for. Centring on the full rect put long words (TIER MAP, 日本語)
+			# under the flap, where they are drawn in the paper's own darkened back and
+			# stop being readable — which is the fault that made the v1 shape look like a
+			# rectangle in the first place, arriving from the other side.
+			if shape == Shape.FOLD:
+				var corner: float = minf(size.y * 0.72, size.x * 0.34)
+				pos = Vector2(maxf((size.x - corner - w) * 0.5, size.y * 0.16),
+						size.y * 0.5 + fs * 0.35)
 			# DOOR keeps its label off the knob and off the opening edge: the knob lives
 			# in the right-hand sixth and the crack of light grows down the left, so the
 			# words are centred on what is left between them.
@@ -217,18 +227,62 @@ func _draw() -> void:
 
 ## A sheet with the top-right corner folded back, and the fold OPENS on hover — the whole
 ## game is folding, so the button folds.
+## v2, 2026-09-21, PLICATA's pass. v1 was `var c := 18.0` — a FIXED eighteen pixels of
+## corner on a button the title screen lays out at 300x58, which is six percent of its
+## width. The captured title frame is the argument: PLAY read as a magenta rectangle and
+## TIER MAP as a gold one, each with a small nick out of the top-right, and that is the
+## "rectangle wearing a costume" this file's own header warns about — the same fault the
+## TAG shape was rewritten for two rows above.
+##
+## Two things changed and they are the same thing twice. First, every measurement is a
+## fraction of HEIGHT, never a constant, so the corner is the same corner on the title's
+## 300x58 and on a compact 92x28 row. Second, the corner is now a corner that has actually
+## been TURNED, not clipped off: the flap is drawn where the paper went, lying back across
+## the body with its own shading, the hinge it swung on catches the light, and it casts a
+## soft shadow onto the sheet under it. A clipped corner is a shape; a turned corner is a
+## fold, and this is a folding game.
+##
+## The hover is the verb: the flap OPENS. It grows along the diagonal and its shadow grows
+## with it, which is what a sheet does when a thumb lifts the corner. The idle state keeps
+## a real fold rather than a hint of one, because a button that is only a fold while the
+## pointer is on it is a rectangle for everyone reading a screenshot — and a screenshot is
+## how this shelf is judged.
 func _draw_fold(r: Rect2, lift: float) -> void:
-	var c := 18.0 + lift * 8.0
-	var body := PackedVector2Array([
-		Vector2(0, 0), Vector2(r.size.x - c, 0), Vector2(r.size.x, c),
-		Vector2(r.size.x, r.size.y), Vector2(0, r.size.y)])
-	draw_colored_polygon(body, tint)
-	# the folded flap, darker, because it is the paper's back
+	# The turned corner, as a fraction of the button's height, and never more than a third
+	# of its width — on a very wide button a corner scaled off the height is still a
+	# corner, but on a narrow one it must not eat the label.
+	var c: float = minf(r.size.y * (0.46 + lift * 0.26), r.size.x * 0.34)
+	var hinge_a := Vector2(r.size.x - c, 0.0)      # where the crease meets the top edge
+	var hinge_b := Vector2(r.size.x, c)            # where it meets the right edge
+
+	# The sheet, with the corner gone from it.
 	draw_colored_polygon(PackedVector2Array([
-		Vector2(r.size.x - c, 0), Vector2(r.size.x, c), Vector2(r.size.x - c, c)]),
-		tint.darkened(0.32))
-	draw_polyline(PackedVector2Array([Vector2(r.size.x - c, 0), Vector2(r.size.x - c, c),
-			Vector2(r.size.x, c)]), tint.lightened(0.35), 1.5)
+		Vector2(0, 0), hinge_a, hinge_b,
+		Vector2(r.size.x, r.size.y), Vector2(0, r.size.y)]), tint)
+
+	# The shadow the lifted corner throws onto the sheet, just inside the crease. Drawn
+	# before the flap, offset along the fold's own axis, and it deepens as the flap opens.
+	var drop: float = c * (0.10 + lift * 0.10)
+	draw_colored_polygon(PackedVector2Array([
+		hinge_a + Vector2(-drop, drop), hinge_b + Vector2(-drop, drop),
+		hinge_a + Vector2(-c * 0.62 - drop, c * 0.62 + drop)]),
+		Color(0, 0, 0, 0.20 + 0.10 * lift))
+
+	# The flap: the corner lying back across the sheet, hinged on the crease. Its far
+	# point is the reflection of the old corner through the crease, which is what a fold
+	# IS — ops/fold/REDESIGN.md's one sentence, drawn on a button.
+	var tip := (hinge_a + hinge_b) * 0.5 + Vector2(-c * 0.5, c * 0.5) * (0.86 + lift * 0.22)
+	draw_colored_polygon(PackedVector2Array([hinge_a, hinge_b, tip]), tint.darkened(0.34))
+	# The back of the paper is lit unevenly: brighter where it is still near the crease.
+	draw_colored_polygon(PackedVector2Array([
+		hinge_a, hinge_b, (hinge_a + hinge_b) * 0.5 + (tip - (hinge_a + hinge_b) * 0.5) * 0.45]),
+		tint.darkened(0.18))
+	# The crease itself, catching the lamp.
+	draw_line(hinge_a, hinge_b, tint.lightened(0.45), maxf(1.4, r.size.y * 0.035), true)
+	# The flap's own cut edges, a shade darker so it reads as a separate piece of paper
+	# rather than as a stain on the button.
+	draw_polyline(PackedVector2Array([hinge_a, tip, hinge_b]),
+		tint.darkened(0.52), maxf(1.0, r.size.y * 0.022), true)
 
 
 ## A tuning dial: a bar with a notch that slides toward the right as it is hovered, the
@@ -439,14 +493,24 @@ static func slip_points(sz: Vector2, rise: float) -> PackedVector2Array:
 	for i in range(steps + 1):
 		var a: float = -PI * 0.5 - PI * (float(i) / float(steps))
 		pts.append(Vector2(rr + cos(a) * rr, rr + sin(a) * rr - rise))
-	# down the torn tail, five teeth, then back along the top
-	var teeth := 5
-	var bite: float = h * 0.11
-	pts.append(Vector2(w - bite, h - rise))
-	for i in range(teeth + 1):
-		var t: float = float(i) / float(teeth)
-		var x: float = w - (bite if i % 2 == 1 else 0.0)
-		pts.append(Vector2(x, h - rise - h * t))
+	# Torn tail: three DEEP jagged teeth (a real omikuji strip is hand-torn off the roll,
+	# not a rectangle with a nibbled edge). Previous bite (h*0.11, five teeth) was so
+	# shallow at normal button heights that it read as a straight edge from three feet
+	# away -- Blaze's flagged complaint. Also taper the whole strip narrower toward the
+	# tail (top edge ramps down, bottom edge ramps up) so the silhouette reads as a torn
+	# paper ribbon even with the teeth ignored, not just a rect with a notched corner.
+	var taper: float = h * 0.22
+	var teeth := 3
+	var bite: float = h * 0.42
+	pts.append(Vector2(w, h - taper - rise))
+	for i in range(teeth):
+		var t0: float = float(i) / float(teeth)
+		var t1: float = float(i + 1) / float(teeth)
+		var y_top: float = (h - taper) - (h - 2.0 * taper) * t0
+		var y_bot: float = (h - taper) - (h - 2.0 * taper) * t1
+		pts.append(Vector2(w - bite, lerp(y_top, y_bot, 0.5) - rise))
+		pts.append(Vector2(w, y_bot - rise))
+	pts.append(Vector2(w, taper - rise))
 	pts.append(Vector2(rr, 0.0 - rise))
 	return pts
 

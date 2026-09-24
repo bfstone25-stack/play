@@ -40,6 +40,7 @@ enum Shape {
 	## does not compile -- and an uncompilable shared script takes every game with it, not
 	## just the one being worked on. The shape itself is not this pass's design.
 	SLIP,
+	DOSSIER,   ## a manila case file with an index tab, opening on hover — After Six
 }
 
 @export var shape: Shape = Shape.SLAB
@@ -82,6 +83,23 @@ func _ready() -> void:
 	# The text is drawn by this script, not by Button, so the shape can put it where the
 	# shape wants it. Button's own text would centre inside the full rect and land on the
 	# folded corner or outside the card.
+	#
+	# ADOPT, then clear — 2026-09-21, Midnight Pawn's pass. This was a bare `text = ""`,
+	# which silently THREW AWAY the word on any button labelled before it entered the
+	# tree:
+	#
+	#     var b := ShapedButton.new()
+	#     b.text = "APPRAISE"        # assigned here...
+	#     row.add_child(b)           # ...and destroyed here, by _ready()
+	#
+	# `_draw()` adopts `text` too, but only sees writes that happen AFTER _ready has run,
+	# so it could not save this ordering. The result is a shaped button with no word on
+	# it, drawn correctly, clickable, and completely silent about what it does — and
+	# Midnight Pawn's whole action row (APPRAISE, PRICE, DISPLAY, CALL CUSTOMER, STRIKE,
+	# GUARD) came out blank the first time it was wired up. Construct-then-add is the more
+	# natural of the two orderings, so this is likely not the only game affected.
+	if text != "":
+		label = text
 	text = ""
 	mouse_entered.connect(func() -> void: _to(1.0))
 	mouse_exited.connect(func() -> void: _to(0.0))
@@ -131,6 +149,7 @@ func _draw() -> void:
 		Shape.DOOR:   _draw_door(r, lift)
 		Shape.SLIP:   _draw_slip(r, lift)
 		Shape.TIMECARD: _draw_timecard(r, lift)
+		Shape.DOSSIER: _draw_dossier(r, lift)
 		_:            _draw_slab(r, lift)
 	tint = _t0
 	var _ink_now := ink
@@ -153,6 +172,16 @@ func _draw() -> void:
 			var pos := Vector2((size.x - w) * 0.5, size.y * 0.5 + fs * 0.35)
 			if shape == Shape.DIAL:
 				pos = Vector2(2.0, size.y * 0.46)
+			# FOLD's turned corner lives in the top-right and its flap lies back over the
+			# sheet, so the label is centred on the field that is LEFT once the corner is
+			# accounted for. Centring on the full rect put long words (TIER MAP, 日本語)
+			# under the flap, where they are drawn in the paper's own darkened back and
+			# stop being readable — which is the fault that made the v1 shape look like a
+			# rectangle in the first place, arriving from the other side.
+			if shape == Shape.FOLD:
+				var corner: float = minf(size.y * 0.72, size.x * 0.34)
+				pos = Vector2(maxf((size.x - corner - w) * 0.5, size.y * 0.16),
+						size.y * 0.5 + fs * 0.35)
 			# DOOR keeps its label off the knob and off the opening edge: the knob lives
 			# in the right-hand sixth and the crack of light grows down the left, so the
 			# words are centred on what is left between them.
@@ -167,6 +196,20 @@ func _draw() -> void:
 				var hd := size.y * 0.92
 				pos = Vector2(hd + (size.x - hd - size.y * 0.5 - w) * 0.5,
 						size.y * 0.5 + fs * 0.35)
+			# DOSSIER types its label onto the folder's face, below the index tab that runs
+			# along the top and clear of the page that slides out on the right. A case file
+			# is typed onto, not centred, so it is left-aligned on the ruled field.
+			if shape == Shape.DOSSIER:
+				pos = Vector2(size.x * 0.09, size.y * 0.60 + fs * 0.35)
+			# TAG writes in the ticket's printed field: past the cut point and the
+			# eyelet on the left, and short of the perforation and the broker's stub on
+			# the right. Centred on that field and lifted off the ruled line the sum is
+			# written along. Centring on the FULL rect put the words over the eyelet at
+			# the action row's 92x28.
+			if shape == Shape.TAG:
+				var pt := size.y * 0.46
+				var st: float = size.x - maxf(size.y * 0.52, 9.0)
+				pos = Vector2(pt + maxf((st - pt - w) * 0.5, 0.0), size.y * 0.5 + fs * 0.30)
 			if shape == Shape.DOOR:
 				var pad := size.x * 0.17
 				pos = Vector2(pad + (size.x - pad * 2.0 - w) * 0.5, size.y * 0.5 + fs * 0.35)
@@ -184,18 +227,62 @@ func _draw() -> void:
 
 ## A sheet with the top-right corner folded back, and the fold OPENS on hover — the whole
 ## game is folding, so the button folds.
+## v2, 2026-09-21, PLICATA's pass. v1 was `var c := 18.0` — a FIXED eighteen pixels of
+## corner on a button the title screen lays out at 300x58, which is six percent of its
+## width. The captured title frame is the argument: PLAY read as a magenta rectangle and
+## TIER MAP as a gold one, each with a small nick out of the top-right, and that is the
+## "rectangle wearing a costume" this file's own header warns about — the same fault the
+## TAG shape was rewritten for two rows above.
+##
+## Two things changed and they are the same thing twice. First, every measurement is a
+## fraction of HEIGHT, never a constant, so the corner is the same corner on the title's
+## 300x58 and on a compact 92x28 row. Second, the corner is now a corner that has actually
+## been TURNED, not clipped off: the flap is drawn where the paper went, lying back across
+## the body with its own shading, the hinge it swung on catches the light, and it casts a
+## soft shadow onto the sheet under it. A clipped corner is a shape; a turned corner is a
+## fold, and this is a folding game.
+##
+## The hover is the verb: the flap OPENS. It grows along the diagonal and its shadow grows
+## with it, which is what a sheet does when a thumb lifts the corner. The idle state keeps
+## a real fold rather than a hint of one, because a button that is only a fold while the
+## pointer is on it is a rectangle for everyone reading a screenshot — and a screenshot is
+## how this shelf is judged.
 func _draw_fold(r: Rect2, lift: float) -> void:
-	var c := 18.0 + lift * 8.0
-	var body := PackedVector2Array([
-		Vector2(0, 0), Vector2(r.size.x - c, 0), Vector2(r.size.x, c),
-		Vector2(r.size.x, r.size.y), Vector2(0, r.size.y)])
-	draw_colored_polygon(body, tint)
-	# the folded flap, darker, because it is the paper's back
+	# The turned corner, as a fraction of the button's height, and never more than a third
+	# of its width — on a very wide button a corner scaled off the height is still a
+	# corner, but on a narrow one it must not eat the label.
+	var c: float = minf(r.size.y * (0.46 + lift * 0.26), r.size.x * 0.34)
+	var hinge_a := Vector2(r.size.x - c, 0.0)      # where the crease meets the top edge
+	var hinge_b := Vector2(r.size.x, c)            # where it meets the right edge
+
+	# The sheet, with the corner gone from it.
 	draw_colored_polygon(PackedVector2Array([
-		Vector2(r.size.x - c, 0), Vector2(r.size.x, c), Vector2(r.size.x - c, c)]),
-		tint.darkened(0.32))
-	draw_polyline(PackedVector2Array([Vector2(r.size.x - c, 0), Vector2(r.size.x - c, c),
-			Vector2(r.size.x, c)]), tint.lightened(0.35), 1.5)
+		Vector2(0, 0), hinge_a, hinge_b,
+		Vector2(r.size.x, r.size.y), Vector2(0, r.size.y)]), tint)
+
+	# The shadow the lifted corner throws onto the sheet, just inside the crease. Drawn
+	# before the flap, offset along the fold's own axis, and it deepens as the flap opens.
+	var drop: float = c * (0.10 + lift * 0.10)
+	draw_colored_polygon(PackedVector2Array([
+		hinge_a + Vector2(-drop, drop), hinge_b + Vector2(-drop, drop),
+		hinge_a + Vector2(-c * 0.62 - drop, c * 0.62 + drop)]),
+		Color(0, 0, 0, 0.20 + 0.10 * lift))
+
+	# The flap: the corner lying back across the sheet, hinged on the crease. Its far
+	# point is the reflection of the old corner through the crease, which is what a fold
+	# IS — ops/fold/REDESIGN.md's one sentence, drawn on a button.
+	var tip := (hinge_a + hinge_b) * 0.5 + Vector2(-c * 0.5, c * 0.5) * (0.86 + lift * 0.22)
+	draw_colored_polygon(PackedVector2Array([hinge_a, hinge_b, tip]), tint.darkened(0.34))
+	# The back of the paper is lit unevenly: brighter where it is still near the crease.
+	draw_colored_polygon(PackedVector2Array([
+		hinge_a, hinge_b, (hinge_a + hinge_b) * 0.5 + (tip - (hinge_a + hinge_b) * 0.5) * 0.45]),
+		tint.darkened(0.18))
+	# The crease itself, catching the lamp.
+	draw_line(hinge_a, hinge_b, tint.lightened(0.45), maxf(1.4, r.size.y * 0.035), true)
+	# The flap's own cut edges, a shade darker so it reads as a separate piece of paper
+	# rather than as a stain on the button.
+	draw_polyline(PackedVector2Array([hinge_a, tip, hinge_b]),
+		tint.darkened(0.52), maxf(1.0, r.size.y * 0.022), true)
 
 
 ## A tuning dial: a bar with a notch that slides toward the right as it is hovered, the
@@ -255,16 +342,68 @@ func _draw_ticket(r: Rect2, lift: float) -> void:
 	draw_rect(r, tint.darkened(0.2), false, 1.5)
 
 
-## A luggage tag on a string, which swings a little on hover.
+## A PAWN TICKET tied to the thing it is written against — Midnight Pawn, Late Inspection.
+##
+## v2, 2026-09-21, Midnight Pawn's pass. v1 was a pentagon with a dot in it and an arc
+## beside the dot: at the 92x28 a 640x360 canvas can afford, the dot and the arc are three
+## pixels each and the whole control reads as "a rectangle with the left corner cut off".
+## That is the costume-on-a-rectangle failure the file's own header warns about.
+##
+## What a pawnbroker actually hands you is one object, and every part of it means
+## something: the punched eyelet with the string that ties the ticket to the pledge, the
+## brass ring that stops the string tearing out, the printed rule the sum is written along,
+## and the perforation with the stub the broker keeps. So all four are drawn, and the ones
+## that carry the fiction are the ones that MOVE: on hover the ticket swings on its string
+## the way a tag does when something is lifted off the shelf, the eyelet catches the lamp,
+## and the stub starts to come away at the perforation — a pledge being redeemed.
+##
+## Everything is a fraction of HEIGHT, never a constant: the same shape has to read at the
+## title's 220x56 and at the action row's 92x28, and a 16px point on a 28px control is the
+## whole left third of it.
 func _draw_tag(r: Rect2, lift: float) -> void:
-	var c := 16.0
-	var sway := _hover * 2.0
+	var w := r.size.x
+	var h := r.size.y
+	# The swing. A tag hangs from ONE hole, so it does not slide sideways — it rotates
+	# about the eyelet, which means the far end travels and the near end barely moves.
+	var sway: float = _hover * h * 0.09
+	var point: float = h * 0.46           # the cut left end, where the string goes
+	var perf: float = w - maxf(h * 0.52, 9.0)   # the broker's stub starts here
+	# The body: point at the left, square at the right, the far end lifted by the swing.
 	draw_colored_polygon(PackedVector2Array([
-		Vector2(c + sway, 0), Vector2(r.size.x, 0), Vector2(r.size.x, r.size.y),
-		Vector2(c - sway, r.size.y), Vector2(0, r.size.y * 0.5)]), tint)
-	draw_circle(Vector2(c * 0.9, r.size.y * 0.5), 4.0, ink)
-	draw_arc(Vector2(c * 0.9, r.size.y * 0.5), 9.0 + sway, PI * 0.6, PI * 1.6, 12,
-			tint.lightened(0.3), 1.5)
+		Vector2(point, -sway * 0.35), Vector2(w, -sway), Vector2(w, h - sway),
+		Vector2(point, h + sway * 0.35), Vector2(0, h * 0.5)]), tint)
+	# The stub past the perforation is the same card seen from its back: a shade darker,
+	# and it separates a little as the ticket is hovered.
+	draw_colored_polygon(PackedVector2Array([
+		Vector2(perf + lift * 0.5, -sway * 0.9), Vector2(w, -sway),
+		Vector2(w, h - sway), Vector2(perf + lift * 0.5, h - sway * 0.9)]),
+		tint.darkened(0.17))
+	# The perforation itself — punched dots, not a dashed line.
+	var dots := maxi(int(h / 4.0), 3)
+	for i in dots:
+		var y: float = h * (float(i) + 0.5) / float(dots) - sway * 0.9
+		draw_circle(Vector2(perf, y), maxf(h * 0.035, 0.8), tint.darkened(0.45))
+	# The rule the sum is written along, under the label, the length of the printed field.
+	draw_line(Vector2(point + h * 0.18, h * 0.76 + sway * 0.1),
+			Vector2(perf - h * 0.14, h * 0.76 - sway * 0.45),
+			tint.darkened(0.38), maxf(h * 0.03, 1.0))
+	# The eyelet: a brass ring with the hole punched through it, and the string above.
+	var ex: float = point * 0.62
+	var ey: float = h * 0.5
+	var rr: float = maxf(h * 0.15, 2.5)
+	draw_circle(Vector2(ex, ey), rr + maxf(h * 0.055, 1.0),
+			tint.lightened(0.30 + _hover * 0.28))
+	draw_circle(Vector2(ex, ey), rr, ink)
+	# The string, going up and off the control: what the tag hangs from, and the reason
+	# the far end swings rather than sliding.
+	# It leaves the control, because that is what sells "hung from something" — but only
+	# just. At -0.3h it reached up into the line of copy above the button and read as a
+	# scratch through the text, in every locale.
+	draw_line(Vector2(ex, ey - rr), Vector2(ex - h * 0.10 - sway, -h * 0.10),
+			tint.lightened(0.18), maxf(h * 0.035, 1.0))
+	# The light on the top edge, so the card reads as a card and not as a swatch.
+	draw_line(Vector2(point, -sway * 0.35), Vector2(w, -sway),
+			tint.lightened(0.34), maxf(h * 0.03, 1.0))
 
 
 ## A heavy bevelled slab: still rectangular, but lit like an object rather than a div.
@@ -354,14 +493,24 @@ static func slip_points(sz: Vector2, rise: float) -> PackedVector2Array:
 	for i in range(steps + 1):
 		var a: float = -PI * 0.5 - PI * (float(i) / float(steps))
 		pts.append(Vector2(rr + cos(a) * rr, rr + sin(a) * rr - rise))
-	# down the torn tail, five teeth, then back along the top
-	var teeth := 5
-	var bite: float = h * 0.11
-	pts.append(Vector2(w - bite, h - rise))
-	for i in range(teeth + 1):
-		var t: float = float(i) / float(teeth)
-		var x: float = w - (bite if i % 2 == 1 else 0.0)
-		pts.append(Vector2(x, h - rise - h * t))
+	# Torn tail: three DEEP jagged teeth (a real omikuji strip is hand-torn off the roll,
+	# not a rectangle with a nibbled edge). Previous bite (h*0.11, five teeth) was so
+	# shallow at normal button heights that it read as a straight edge from three feet
+	# away -- Blaze's flagged complaint. Also taper the whole strip narrower toward the
+	# tail (top edge ramps down, bottom edge ramps up) so the silhouette reads as a torn
+	# paper ribbon even with the teeth ignored, not just a rect with a notched corner.
+	var taper: float = h * 0.22
+	var teeth := 3
+	var bite: float = h * 0.42
+	pts.append(Vector2(w, h - taper - rise))
+	for i in range(teeth):
+		var t0: float = float(i) / float(teeth)
+		var t1: float = float(i + 1) / float(teeth)
+		var y_top: float = (h - taper) - (h - 2.0 * taper) * t0
+		var y_bot: float = (h - taper) - (h - 2.0 * taper) * t1
+		pts.append(Vector2(w - bite, lerp(y_top, y_bot, 0.5) - rise))
+		pts.append(Vector2(w, y_bot - rise))
+	pts.append(Vector2(w, taper - rise))
 	pts.append(Vector2(rr, 0.0 - rise))
 	return pts
 
@@ -434,3 +583,69 @@ func _draw_timecard(r: Rect2, lift: float) -> void:
 				Color(1.0, 0.23, 0.29, 0.55 * _hover), false, 1.5)
 	draw_polyline(body + PackedVector2Array([Vector2(0, 0)]),
 			tint.lightened(0.28 + _hover * 0.22), 1.5)
+
+
+## A manila case file with an index tab, and it OPENS on hover — After Six.
+##
+## The fiction picks the shape. After Six is a crime thriller whose only currency is
+## leverage, and leverage in this game is one physical object: the open case file on the
+## desk. It is what the title's menu is typed on, it is where the night's evidence goes,
+## and it is what the player is really pressing when he takes the chair. So the control is
+## that folder, and the studio's shared rectangle is not involved.
+##
+## Three parts, each of which moves:
+##
+##   the tab     an index tab along the top-left, its outer corner cut. This is the
+##               silhouette — the top edge of this control is not a straight line, which is
+##               the entire difference between a folder and a rounded rectangle.
+##   the folder  manila, creased down the left where the card is folded.
+##   the page    a sheet inside, edged in the stamp's red. At rest it sits behind the
+##               folder and is not drawn at all; on hover it slides out and rides up — the
+##               file opening a crack, the leverage showing.
+##
+## Deliberately not a bevel and not a glow: hover is a MOVEMENT of an object in the world,
+## the same grammar as DOOR's crack of light and FOLD's opening corner.
+func _draw_dossier(r: Rect2, lift: float) -> void:
+	var w := r.size.x
+	var h := r.size.y
+	var tab_h: float = maxf(6.0, h * 0.20)
+	var tab_w: float = w * 0.40
+	var slant: float = tab_h * 0.55
+	var body_top := tab_h
+
+	# The page inside, drawn FIRST so the folder covers it. At rest it is flush behind the
+	# folder's edge and invisible; hover slides it out to the right and up, because a sheet
+	# pulled from a folder rides over the lip rather than sliding sideways out of it.
+	var out: float = lift * 2.6 + _hover * 7.0
+	if out > 0.4:
+		var pg := Rect2(Vector2(w * 0.30, body_top + 3.0 - out * 0.45),
+				Vector2(w * 0.70 + out, h - body_top - 6.0))
+		draw_rect(pg, Color(0.94, 0.91, 0.85, 0.95))
+		# the stamp's red down the page's outer edge — what the file is worth
+		draw_rect(Rect2(Vector2(pg.position.x + pg.size.x - 3.0, pg.position.y),
+				Vector2(3.0, pg.size.y)), Color(0.85, 0.20, 0.33, 0.95))
+		# two typed rules, so the page reads as paper and not as a coloured block
+		for i in 2:
+			var ly: float = pg.position.y + pg.size.y * (0.38 + 0.22 * i)
+			draw_line(Vector2(pg.position.x + 6.0, ly),
+					Vector2(pg.position.x + pg.size.x * 0.55, ly),
+					Color(0.35, 0.31, 0.27, 0.55), 1.0)
+
+	# the index tab, outer top corner cut
+	draw_colored_polygon(PackedVector2Array([
+		Vector2(0, tab_h), Vector2(0, slant), Vector2(slant, 0),
+		Vector2(tab_w - slant, 0), Vector2(tab_w, slant), Vector2(tab_w, tab_h)]),
+		tint.lightened(0.10))
+
+	# the folder
+	draw_rect(Rect2(Vector2(0, body_top), Vector2(w, h - body_top)), tint)
+
+	# The crease down the left: a folder is one piece of card bent, and a bend catches the
+	# light on one side of itself and loses it on the other.
+	draw_line(Vector2(w * 0.055, body_top), Vector2(w * 0.055, h), tint.darkened(0.26), 1.5)
+	draw_line(Vector2(w * 0.055 + 1.5, body_top), Vector2(w * 0.055 + 1.5, h),
+			tint.lightened(0.22), 1.0)
+	# the seam where the tab meets the folder, so the two parts read as two parts
+	draw_line(Vector2(0, body_top), Vector2(w, body_top), tint.darkened(0.30), 1.0)
+	# the lip along the foot, catching the lamp
+	draw_line(Vector2(0, h - 1.0), Vector2(w, h - 1.0), tint.lightened(0.30), 1.0)

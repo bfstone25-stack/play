@@ -493,14 +493,24 @@ static func slip_points(sz: Vector2, rise: float) -> PackedVector2Array:
 	for i in range(steps + 1):
 		var a: float = -PI * 0.5 - PI * (float(i) / float(steps))
 		pts.append(Vector2(rr + cos(a) * rr, rr + sin(a) * rr - rise))
-	# down the torn tail, five teeth, then back along the top
-	var teeth := 5
-	var bite: float = h * 0.11
-	pts.append(Vector2(w - bite, h - rise))
-	for i in range(teeth + 1):
-		var t: float = float(i) / float(teeth)
-		var x: float = w - (bite if i % 2 == 1 else 0.0)
-		pts.append(Vector2(x, h - rise - h * t))
+	# Torn tail: three DEEP jagged teeth (a real omikuji strip is hand-torn off the roll,
+	# not a rectangle with a nibbled edge). Previous bite (h*0.11, five teeth) was so
+	# shallow at normal button heights that it read as a straight edge from three feet
+	# away -- Blaze's flagged complaint. Also taper the whole strip narrower toward the
+	# tail (top edge ramps down, bottom edge ramps up) so the silhouette reads as a torn
+	# paper ribbon even with the teeth ignored, not just a rect with a notched corner.
+	var taper: float = h * 0.22
+	var teeth := 3
+	var bite: float = h * 0.42
+	pts.append(Vector2(w, h - taper - rise))
+	for i in range(teeth):
+		var t0: float = float(i) / float(teeth)
+		var t1: float = float(i + 1) / float(teeth)
+		var y_top: float = (h - taper) - (h - 2.0 * taper) * t0
+		var y_bot: float = (h - taper) - (h - 2.0 * taper) * t1
+		pts.append(Vector2(w - bite, lerp(y_top, y_bot, 0.5) - rise))
+		pts.append(Vector2(w, y_bot - rise))
+	pts.append(Vector2(w, taper - rise))
 	pts.append(Vector2(rr, 0.0 - rise))
 	return pts
 
