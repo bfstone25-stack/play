@@ -198,7 +198,7 @@ func _build_ui() -> void:
 	top.custom_minimum_size.y = 22
 	top_panel.add_child(top)
 	var brand := Label.new()
-	brand.text = "COLLATERAL"
+	brand.text = Loc.s("COLLATERAL")
 	brand.add_theme_color_override("font_color", GOLD)
 	brand.add_theme_font_override("font", PixelDisplayFont)
 	brand.add_theme_font_size_override("font_size", 16)
@@ -331,7 +331,7 @@ func _focus_soon(c: Control) -> void:
 func _refresh_header() -> void:
 	if run == null:
 		return
-	header.text = "Till %d   Shelf %d   Estate %d   Readings %d/5" % [
+	header.text = Loc.s("Till %d   Shelf %d   Estate %d   Readings %d/5") % [
 		run.till, run.stock_value(), C.DEBT, run.readings_taken.size()]
 
 
@@ -399,26 +399,26 @@ func _step() -> void:
 
 func _say_line(who: String, text: String) -> void:
 	if who == "":
-		title_label.text = ""
+		title_label.text = Loc.s("")
 		detail.clear()
-		detail.append_text("[color=#c8bfd0]%s[/color]" % text)
+		detail.append_text(Loc.s("[color=#c8bfd0]%s[/color]") % text)
 	else:
 		var voice: Dictionary = VOICES.get(who, {"name": who, "color": CREAM})
 		title_label.text = str(voice["name"])
 		title_label.add_theme_color_override("font_color", voice["color"])
 		detail.clear()
-		detail.append_text("[color=#f1dfb0]%s[/color]" % text)
+		detail.append_text(Loc.s("[color=#f1dfb0]%s[/color]") % text)
 	_refresh_header()
 	_clear_actions()
 	_add_action("Continue", advance, GOLD)
-	footer.text = "Space or click to go on."
+	footer.text = Loc.s("Space or click to go on.")
 
 
 func _show_menu(beat: Dictionary) -> void:
-	title_label.text = ""
+	title_label.text = Loc.s("")
 	title_label.add_theme_color_override("font_color", GOLD)
 	detail.clear()
-	detail.append_text("[color=#e8b84a]%s[/color]" % str(beat["prompt"]))
+	detail.append_text(Loc.s("[color=#e8b84a]%s[/color]") % str(beat["prompt"]))
 	_refresh_header()
 	_clear_actions()
 	current_options = beat["options"]
@@ -427,7 +427,7 @@ func _show_menu(beat: Dictionary) -> void:
 		var option: Dictionary = current_options[i]
 		var idx := i
 		_add_action(str(option["text"]), func() -> void: choose(idx))
-	footer.text = "The ticket is yours to write."
+	footer.text = Loc.s("The ticket is yours to write.")
 
 
 func _show_plate(item: String) -> void:
@@ -467,7 +467,7 @@ func _gate(chapter: int) -> bool:
 	if DEMO and chapter == 2:
 		_finish("DEMO")
 		return false
-	var opened := await Gate.require("act%d" % chapter, "Appraisal %d" % chapter)
+	var opened := await Gate.require("act%d" % chapter, Loc.s("Appraisal %d") % chapter)
 	if opened:
 		# Offered after the unlock, never instead of it: the player has just earned the
 		# next appraisal, so this asks whether they would rather spend ten minutes on
@@ -503,24 +503,24 @@ func _finish(id: String) -> void:
 		# stacking a catalogue on top of it would bury the one thing it has to say.
 		Gate.board_offer_more()
 	if id == "DEMO":
-		title_label.text = "The free part ends here"
+		title_label.text = Loc.s("The free part ends here")
 		detail.clear()
 		var lead := "Two appraisals down."
 		if run.readings_taken.has("ring"):
 			lead = "You put your palm on a ring a man had just asked you not to touch."
 		elif not run.readings_refused.is_empty():
 			lead = "You priced them on brass and gold and let them go home."
-		detail.append_text("[color=#c8b8b0]%s There are three more objects in the book tonight and one of them has your name on the ticket.[/color]\n\n" % lead)
-		detail.append_text("[color=#7f7a8c]Till: %d · readings taken: %d · against the estate: %d[/color]" % [
+		detail.append_text(Loc.s("[color=#c8b8b0]%s There are three more objects in the book tonight and one of them has your name on the ticket.[/color]\n\n") % lead)
+		detail.append_text(Loc.s("[color=#7f7a8c]Till: %d · readings taken: %d · against the estate: %d[/color]") % [
 			run.till, run.readings_taken.size(), C.DEBT])
-		footer.text = "LIEN — the whole night, nothing censored."
+		footer.text = Loc.s("LIEN — the whole night, nothing censored.")
 		_add_action("Open the Reading Ledger", open_ledger, GOLD)
 		_add_action("Price them differently", restart, MUTED)
 	else:
-		title_label.text = str(C.ENDING_NAMES.get(id, id))
+		title_label.text = Loc.s(str(C.ENDING_NAMES.get(id, id)))
 		detail.clear()
 		detail.append_text("[color=#c8bfd0]Two prices on everything. You have just found out which one you were.[/color]")
-		footer.text = "Readings taken: %d · refused: %d · net %d against %d" % [
+		footer.text = Loc.s("Readings taken: %d · refused: %d · net %d against %d") % [
 			run.readings_taken.size(), run.readings_refused.size(), run.net_worth(), C.DEBT]
 		_add_action("Open the Reading Ledger", open_ledger, GOLD)
 		_add_action("Run the night again", restart, MUTED)
@@ -543,13 +543,13 @@ func open_ledger() -> void:
 		ledger_box.remove_child(child)
 
 	var head := Label.new()
-	head.text = "THE READING LEDGER"
+	head.text = Loc.s("THE READING LEDGER")
 	head.add_theme_font_override("font", PixelDisplayFont)
 	head.add_theme_font_size_override("font_size", 16)
 	head.add_theme_color_override("font_color", GOLD)
 	ledger_box.add_child(head)
 	var sub := Label.new()
-	sub.text = "Every object that crossed the counter, and whether you looked."
+	sub.text = Loc.s("Every object that crossed the counter, and whether you looked.")
 	sub.add_theme_color_override("font_color", MUTED)
 	sub.add_theme_font_size_override("font_size", 12)
 	ledger_box.add_child(sub)
@@ -559,17 +559,17 @@ func open_ledger() -> void:
 		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		line.add_theme_font_size_override("font_size", 12)
 		if bool(row["earned"]):
-			line.text = "[x]  %s — %s" % [row["title"], row["why"]]
+			line.text = Loc.s("[x]  %s — %s") % [Loc.s(str(row["title"])), Loc.s(str(row["why"]))]
 			line.add_theme_color_override("font_color", GREEN if bool(row["unlocked"]) else RED)
 			if not bool(row["unlocked"]):
-				line.text += "  (censored in this build)"
+				line.text += Loc.s("  (censored in this build)")
 		else:
-			line.text = "[ ]  %s — not taken. This one stays dark." % row["title"]
+			line.text = Loc.s("[ ]  %s — not taken. This one stays dark.") % Loc.s(str(row["title"]))
 			line.add_theme_color_override("font_color", Color("#5c5468"))
 		ledger_box.add_child(line)
 
 	var tally := Label.new()
-	tally.text = "Taken: %s · refused: %s · till: %d" % [
+	tally.text = Loc.s("Taken: %s · refused: %s · till: %d") % [
 		", ".join(run.readings_taken) if not run.readings_taken.is_empty() else "none",
 		", ".join(run.readings_refused) if not run.readings_refused.is_empty() else "none",
 		run.till]
@@ -639,7 +639,7 @@ func _show_splash() -> void:
 	]
 	for spec in lines:
 		var l := Label.new()
-		l.text = str(spec[0])
+		l.text = Loc.s(str(spec[0]))
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		title_screen.style_label(l, int(spec[2]), spec[1])
 		box.add_child(l)
@@ -673,7 +673,7 @@ func _show_splash() -> void:
 	# objects from the game"). Focus-on-open and Enter/Space still press it: it extends
 	# Button. GPU render, rembg, quantised to the palette, 30 px.
 	var enter := ObjectButton.new()
-	enter.text = "I am 18 or older — open the shop"
+	enter.text = Loc.s("I am 18 or older — open the shop")
 	enter.object_texture = load("res://assets/title/btn_ring.png")
 	enter.object_size = 30.0
 	enter.gap = 6.0
@@ -689,7 +689,7 @@ func _show_splash() -> void:
 	enter.add_theme_font_size_override("font_size", 12)
 	enter.pressed.connect(dismiss_splash)
 	row.add_child(enter)
-	var leave := _tag("Leave", 86, 34, TITLE_MUTED)
+	var leave := _tag(Loc.s("Leave"), 86, 34, TITLE_MUTED)
 	leave.add_theme_font_override("font", PixelBodyFont)
 	leave.add_theme_font_size_override("font_size", 12)
 	leave.pressed.connect(func() -> void: JavaScriptBridge.eval("location.href='https://free.blazecore.dev/'"))
@@ -699,15 +699,42 @@ func _show_splash() -> void:
 
 	# The rating and the studio line, small and fixed, bottom corners.
 	var rating := Label.new()
-	rating.text = "18+"
+	rating.text = Loc.s("18+")
 	rating.position = Vector2(12, 332)
 	title_screen.style_label(rating, 12, GOLD)
 	splash.add_child(rating)
 	var studio := Label.new()
-	studio.text = "FLAT 404  ·  blazeCore Play"
+	studio.text = Loc.s("FLAT 404  ·  blazeCore Play")
 	studio.position = Vector2(404, 334)
 	title_screen.style_label(studio, 12, TITLE_MUTED)
 	splash.add_child(studio)
+
+	# 2026-09-23: the language row. Outlined words on the art, no box (ops/STANDARD.md). A
+	# language is offered only because tests/locale_cover.gd proves it is fully translated.
+	# Choosing one rebuilds the splash in place so every line re-reads through Loc.
+	var lx := 470.0
+	for code in Loc.ALLOWED:
+		var lb := ObjectButton.new()
+		lb.text = str(Loc.NATIVE[code])
+		lb.object_size = 0.0
+		lb.gap = 0.0
+		lb.label_color = CREAM
+		lb.accent_color = GOLD
+		lb.selected = code == Loc.current()
+		lb.outline_px = 0
+		lb.shadow_px = 1
+		lb.add_theme_font_override("font", PixelBodyFont)
+		lb.add_theme_font_size_override("font_size", 12)
+		lb.position = Vector2(lx, 8)
+		lb.size = Vector2(52, 16)
+		var c := str(code)
+		lb.pressed.connect(func() -> void:
+			Loc.set_code(c)
+			if is_instance_valid(splash):
+				splash.queue_free()
+			_show_splash.call_deferred())
+		splash.add_child(lb)
+		lx += 56.0
 
 	title_screen.play_in()
 

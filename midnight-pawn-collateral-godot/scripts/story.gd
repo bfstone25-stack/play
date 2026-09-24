@@ -34,10 +34,10 @@ const C := preload("res://scripts/collateral_core.gd")
 
 
 static func nar(text: String) -> Dictionary:
-	return {"t": "nar", "text": text}
+	return {"t": "nar", "text": Loc.s(text)}
 
 static func say(who: String, text: String) -> Dictionary:
-	return {"t": "say", "who": who, "text": text}
+	return {"t": "say", "who": who, "text": Loc.s(text)}
 
 static func scene(bg: String) -> Dictionary:
 	return {"t": "scene", "bg": bg}
@@ -49,13 +49,13 @@ static func plate(item: String) -> Dictionary:
 	return {"t": "plate", "item": item}
 
 static func menu(prompt: String, options: Array) -> Dictionary:
-	return {"t": "menu", "prompt": prompt, "options": options}
+	return {"t": "menu", "prompt": Loc.s(prompt), "options": options}
 
 static func goto(label: String) -> Dictionary:
 	return {"t": "goto", "label": label}
 
 static func opt(text: String, to: String) -> Dictionary:
-	return {"text": text, "to": to}
+	return {"text": Loc.s(text), "to": to}
 
 
 ## Every label in the night, in story order. game.gd walks this by name.
@@ -147,7 +147,7 @@ static func settle_reading(run: C.Run, item: String, plate_item: String) -> Arra
 	return [
 		nar("It does not come. Not all of it — a shape, a direction, the weather of the thing, and then the object goes quiet in her hand like a phone with the screen off."),
 		say("nara", "That's not a reading. That's a receipt for one."),
-		nar("She puts the %d back in the drawer. The shop does not charge for what it failed to show you." % back),
+		nar(Loc.s("She puts the %d back in the drawer. The shop does not charge for what it failed to show you.") % back),
 	]
 
 
@@ -155,9 +155,9 @@ static func settle_reading(run: C.Run, item: String, plate_item: String) -> Arra
 ## best hour you may have just watched.
 static func price_menu(item: String, low_to: String, fair_to: String, high_to: String) -> Dictionary:
 	return menu("What do you write on the ticket?", [
-		opt("LOW — %d. They will take it." % C.price_of(item, "low"), low_to),
-		opt("FAIR — %d. What it is worth." % C.price_of(item, "fair"), fair_to),
-		opt("HIGH — %d. More than it is worth." % C.price_of(item, "high"), high_to),
+		opt(Loc.s("LOW — %d. They will take it.") % C.price_of(item, "low"), low_to),
+		opt(Loc.s("FAIR — %d. What it is worth.") % C.price_of(item, "fair"), fair_to),
+		opt(Loc.s("HIGH — %d. More than it is worth.") % C.price_of(item, "high"), high_to),
 	])
 
 
@@ -376,9 +376,9 @@ static func l_act_ring(run: C.Run) -> Array:
 
 	var options: Array = []
 	if run.can_afford(C.fee_for("ring")):
-		options.append(opt("Take the reading anyway. (%d out of the till)" % C.fee_for("ring"), "ring_take"))
+		options.append(opt(Loc.s("Take the reading anyway. (%d out of the till)") % C.fee_for("ring"), "ring_take"))
 	else:
-		options.append(opt("Take the reading anyway — but the drawer is short. (%d needed, %d in it)" % [C.fee_for("ring"), run.till], "ring_broke"))
+		options.append(opt(Loc.s("Take the reading anyway — but the drawer is short. (%d needed, %d in it)") % [C.fee_for("ring"), run.till], "ring_broke"))
 	options.append(opt("Don't. He asked.", "ring_declined"))
 	out.append(menu("He asked you not to.", options))
 	return out
@@ -508,13 +508,13 @@ static func l_act_interlude(run: C.Run) -> Array:
 		scene("shop"),
 		customer(""),
 		nar("One in the morning. She does the halfway count because Elsa did the halfway count."),
-		say("nara", "Till: %d." % run.till),
-		nar("Stock on the shelf behind her: %d of other people's brass and gold." % run.stock_value()),
-		nar("Against the estate, due in five hours: %d." % C.DEBT),
+		say("nara", Loc.s("Till: %d.") % run.till),
+		nar(Loc.s("Stock on the shelf behind her: %d of other people's brass and gold.") % run.stock_value()),
+		nar(Loc.s("Against the estate, due in five hours: %d.") % C.DEBT),
 	]
 	if run.fees_paid > 0:
 		out.append_array([
-			nar("And in the fourth column, in Elsa's hand, in a ruled section Nara has never filled in and never had to explain: %d spent on knowing." % run.fees_paid),
+			nar(Loc.s("And in the fourth column, in Elsa's hand, in a ruled section Nara has never filled in and never had to explain: %d spent on knowing.") % run.fees_paid),
 			nar("The column has a heading. The heading is not in English and Nara has never looked it up, on the grounds that there is no version of the answer that improves her night."),
 		])
 	else:
@@ -580,9 +580,9 @@ static func l_act_veil(run: C.Run) -> Array:
 	]
 	var options: Array = []
 	if run.can_afford(C.fee_for("veil")):
-		options.append(opt("Read it. (%d out of the till)" % C.fee_for("veil"), "veil_take"))
+		options.append(opt(Loc.s("Read it. (%d out of the till)") % C.fee_for("veil"), "veil_take"))
 	else:
-		options.append(opt("Read it — the drawer is short. (%d needed, %d in it)" % [C.fee_for("veil"), run.till], "veil_broke"))
+		options.append(opt(Loc.s("Read it — the drawer is short. (%d needed, %d in it)") % [C.fee_for("veil"), run.till], "veil_broke"))
 	options.append(opt("Don't. It's a widow's veil and she is standing right there.", "veil_declined"))
 	out.append(menu("Nobody has said no.", options))
 	return out
@@ -728,7 +728,7 @@ static func l_act_market(run: C.Run) -> Array:
 		{"t": "gate", "chapter": 3},
 		scene("black"),
 		customer(""),
-		nar("Two o'clock. The book is empty until five and the drawer has %d in it against a debt of %d, so she goes down." % [run.till, C.DEBT]),
+		nar(Loc.s("Two o'clock. The book is empty until five and the drawer has %d in it against a debt of %d, so she goes down.") % [run.till, C.DEBT]),
 		nar("Behind the stock room, under a rug that Elsa never bothered to nail: the Receipt Stair."),
 		nar("Forty-one steps cut into what the surveyor's report from 1974 calls [i]made ground[/i] and what everybody who has ever been down it calls the other thing. The treads are paper. Compressed, laminated, decades of pawn tickets pressed into something that takes a boot."),
 		nar("On the way down you can read them side-on if you want to. She does not want to."),
@@ -754,7 +754,7 @@ static func l_act_market(run: C.Run) -> Array:
 	run.earn(C.MARKET_HAUL)
 	out.append_array([
 		nar("Tonight's unclaimed: two bone charms, a moon coin with the ward still legible under the tarnish, and a cracked dueling pistol she is glad to see the back of."),
-		nar("The stalls take the lot for %d. Till: %d." % [C.MARKET_HAUL, run.till]),
+		nar(Loc.s("The stalls take the lot for %d. Till: %d.") % [C.MARKET_HAUL, run.till]),
 		nar("And then a man at the end stall says her name, which nobody down here does."),
 		say("cal", "Quill."),
 		nar("Forty-five, heavy through the shoulders, an apron over good clothes. He is the only trader down here who is entirely solid and the only one who has ever been rude to her."),
@@ -835,10 +835,10 @@ static func l_market_offer(run: C.Run) -> Array:
 	out.append_array([
 		nar("He names a price without being asked, which is how you know he has been waiting to."),
 		say("cal", "Ninety. For one. Your pick, and I'd take the newest, they come out cleaner."),
-		nar("%d would clear the estate on its own and leave her with change and a shop." % C.CALDER_READING_PRICE),
-		nar("The newest one is %s's." % seller),
+		nar(Loc.s("%d would clear the estate on its own and leave her with change and a shop.") % C.CALDER_READING_PRICE),
+		nar(Loc.s("The newest one is %s's.") % seller),
 		menu("Ninety pounds, for a thing that is already in your head.", [
-			opt("Sell him %s's reading. (%d)" % [seller, C.CALDER_READING_PRICE], "market_sell"),
+			opt(Loc.s("Sell him %s's reading. (%d)") % [seller, C.CALDER_READING_PRICE], "market_sell"),
 			opt("Don't. Go back up the stairs.", "market_refuse"),
 		]),
 	])
@@ -859,7 +859,7 @@ static func l_market_sell(run: C.Run) -> Array:
 		say("nara", "And them?"),
 		say("cal", "They'll never know. Nobody ever knows. That's the entire business, Quill, that's why it's worth ninety and not nine."),
 		nar("He counts it out in notes that are warm, which she decides not to think about."),
-		nar("Till: %d." % run.till),
+		nar(Loc.s("Till: %d.") % run.till),
 		goto("market_leave"),
 	]
 
@@ -947,7 +947,7 @@ static func l_act_collateral(run: C.Run) -> Array:
 	if run.sold_reading != "":
 		out.append(nar("And she sold one down there for ninety pounds, which she now understands was not a sale. It was a payment [i]accelerated[/i]. Calder is not a factor because he factors debts. He is a factor because he is the reason yours comes due early."))
 	elif run.fees_paid > 0:
-		out.append(nar("%d paid in tonight, out of a drawer she thought was hers." % run.fees_paid))
+		out.append(nar(Loc.s("%d paid in tonight, out of a drawer she thought was hers.") % run.fees_paid))
 	else:
 		out.append(nar("Nothing paid in tonight. Zero instalments. The terms are still the terms, but the balance is where it was at midnight, and for the first time in three years the shop has got nothing off her."))
 
@@ -1006,9 +1006,9 @@ static func l_act_dawn(run: C.Run) -> Array:
 		scene("dawn"),
 		nar("Five ten. The window goes from black to the colour of a bruise going down, and the gold letters come back the right way round for about four minutes, which they do every morning and she has seen perhaps six times."),
 		nar("The count."),
-		nar("Till: %d. On the shelf: %d — a finial, a ring, a veil, none of them claimed, all of them thirty days from being the shop's." % [run.till, run.stock_value()]),
-		nar("Against the estate: %d." % C.DEBT),
-		nar("Net: %d." % run.net_worth()),
+		nar(Loc.s("Till: %d. On the shelf: %d — a finial, a ring, a veil, none of them claimed, all of them thirty days from being the shop's.") % [run.till, run.stock_value()]),
+		nar(Loc.s("Against the estate: %d.") % C.DEBT),
+		nar(Loc.s("Net: %d.") % run.net_worth()),
 	]
 	if ending == C.FACTOR:
 		out.append(goto("ending_factor"))
@@ -1049,7 +1049,7 @@ static func l_ending_factor(run: C.Run) -> Array:
 	return [
 		nar("The estate is settled by nine with sixty-odd left over, which is more money than this shop has had at one time since Elsa was upright."),
 		nar("And a week later, exactly as advertised, she stops being able to picture it."),
-		nar("She can still say the sentence. [i]%s — the room, the light, what happened in it.[/i] She can tell you the facts in the flat voice you use for facts." % sold_client),
+		nar(Loc.s("She can still say the sentence. [i]%s — the room, the light, what happened in it.[/i] She can tell you the facts in the flat voice you use for facts.") % sold_client),
 		nar("But the picture is gone, and what is worse is that it was not taken from her. She sold it. She has a receipt, in the fourth column, in the credit side, which she did not know the fourth column had."),
 		nar("In March, Calder comes up the stairs."),
 		nar("He has never done that. Nobody from down there has ever done that. He stands on the customer's side of the counter in an apron over good clothes and looks around at the stock with the expression of a man doing a survey."),
@@ -1071,7 +1071,7 @@ static func l_ending_collateral(run: C.Run) -> Array:
 	if run.net_worth() >= C.DEBT:
 		out.append(nar("The estate is settled, narrowly, out of a drawer that spent most of the night going the wrong way."))
 	else:
-		out.append(nar("The estate is not settled. She is %d short and she signs the extension at nine fifteen, which she is told is routine and which the man behind the glass does not look up for." % (C.DEBT - run.net_worth())))
+		out.append(nar(Loc.s("The estate is not settled. She is %d short and she signs the extension at nine fifteen, which she is told is routine and which the man behind the glass does not look up for.") % (C.DEBT - run.net_worth())))
 	out.append_array([
 		nar("But that was never what the night was about, and she knew it standing at the counter with her hand on a book."),
 		nar("Four readings. Five. Every line in the ruled section filled in, every instalment paid, on terms she agreed to by putting her palm on things."),
@@ -1092,11 +1092,11 @@ static func l_dawn_outro(run: C.Run) -> Array:
 	var ending := C.ending_of(run)
 	var out: Array = [
 		scene("dawn"),
-		nar("[b]%s.[/b]" % C.ENDING_NAMES[ending]),
-		nar("Readings taken: %d of 5. Refused: %d." % [run.readings_taken.size(), run.readings_refused.size()]),
+		nar(Loc.s("[b]%s.[/b]") % C.ENDING_NAMES[ending]),
+		nar(Loc.s("Readings taken: %d of 5. Refused: %d.") % [run.readings_taken.size(), run.readings_refused.size()]),
 	]
 	if run.fees_refunded:
-		out.append(nar("Refunded by the shop for readings it failed to deliver: %d." % run.fees_refunded))
+		out.append(nar(Loc.s("Refunded by the shop for readings it failed to deliver: %d.") % run.fees_refunded))
 	out.append({"t": "ledger"})
 	out.append({"t": "end", "ending": ending})
 	return out
