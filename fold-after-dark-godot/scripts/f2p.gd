@@ -12,6 +12,8 @@ extends Node
 ## decides a level is cleared, a scene is unlocked, or a candle exists.
 
 signal attempt_changed
+signal daily_requested       # the map's "Play today's board" (F2PUI.side)
+signal event_requested       # the map's "Play" on the weekly event panel
 
 const SKU_REFILL := "candle_refill"
 const SKU_CANDLE := "candle_1"
@@ -29,6 +31,8 @@ func on() -> bool:
 
 func _ready() -> void:
 	Nutaku.state_changed.connect(_adopt)
+	if on():
+		Fold.load_extension()          # levels 202-800 exist on the platform only
 
 
 ## Boot the platform session once; everything else waits on this.
@@ -187,23 +191,93 @@ func use(item: String) -> Dictionary:
 	return {"ok": true, "hint": r["body"].get("hint", {})}
 
 
-## The solved board goes to the server as its action log. {ok, stars, unlocked, reason}
+## The solved board goes to the server as its action log.
+## {ok, stars, unlocked, milestone, reason}; for the daily challenge also {rewarded, applied}
 func finish(moves: int) -> Dictionary:
 	if attempt.is_empty():
 		return {"ok": false, "reason": "no attempt"}
-	var r := await Nutaku.finish_level(str(attempt["id"]), str(attempt["actions"]), moves)
+	var daily := bool(attempt.get("daily", false))
+	var ev := bool(attempt.get("event", false))
+	var r: Dictionary
+	if daily or ev:
+		r = await Nutaku.api("POST", "/f2p/challenge/finish" if daily else "/f2p/event/finish",
+			{"attempt_id": str(attempt["id"]), "actions": str(attempt["actions"]), "moves": moves})
+	else:
+		r = await Nutaku.finish_level(str(attempt["id"]), str(attempt["actions"]), moves)
 	attempt = {}
 	if not r["ok"]:
 		return {"ok": false, "reason": str(r["body"].get("reason", r["status"]))}
-	return {"ok": true, "stars": int(r["body"].get("stars", 0)), "unlocked": r["body"].get("unlocked", [])}
+	var b: Dictionary = r["body"]
+	if daily and typeof(b.get("challenge")) == TYPE_DICTIONARY:
+		challenge = b["challenge"]
+		_challenge_at = Time.get_unix_time_from_system()
+	if ev and typeof(b.get("event")) == TYPE_DICTIONARY:
+		event = b["event"]
+		_event_at = Time.get_unix_time_from_system()
+	return {"ok": true, "stars": int(b.get("stars", 0)), "unlocked": b.get("unlocked", []),
+		"milestone": b.get("milestone"), "rewarded": bool(b.get("rewarded", false)),
+		"applied": b.get("applied", {}), "streak_bonus": b.get("streak_bonus", {}),
+		"score": int(b.get("score", 0)), "first_clear": bool(b.get("first_clear", false)),
+		"exclusive": b.get("exclusive", {})}
 
 
 func give_up() -> void:
 	if attempt.is_empty():
 		return
 	var id := str(attempt["id"])
+	var daily := bool(attempt.get("daily", false))
+	var ev := bool(attempt.get("event", false))
 	attempt = {}
-	await Nutaku.fail_level(id)
+	if daily:
+		await Nutaku.api("POST", "/f2p/challenge/fail", {"attempt_id": id})
+	elif ev:
+		pass                          # an event attempt is free; the next start abandons it
+	else:
+		await Nutaku.fail_level(id)
+
+
+# ---- the daily challenge (ops/nutaku/fold_f2p/daily.py) ----------------------------------
+
+var challenge := {}          # the server's view: {day, number, date, level, goal, budget, claimed, streak, next_in_s, reward}
+var _challenge_at := 0.0
+
+
+func fetch_challenge() -> Dictionary:
+	var r := await Nutaku.api("GET", "/f2p/challenge")
+	if r["ok"]:
+		challenge = r["body"].get("challenge", {})
+		_challenge_at = Time.get_unix_time_from_system()
+	return r
+
+
+## Seconds to the next challenge (the same UTC reset as the login calendar), counted down
+## locally from the server's figure.
+func challenge_next_in() -> float:
+	if challenge.is_empty():
+		return 0.0
+	return maxf(0.0, float(challenge.get("next_in_s", 0)) - (Time.get_unix_time_from_system() - _challenge_at))
+
+
+func challenge_countdown() -> String:
+	return _clock(challenge_next_in())
+
+
+## Open today's challenge: the server sends the board, which plays as Fold.DAILY. It is
+## free (no candle); the reward is paid once per day by the server.
+func begin_daily() -> Dictionary:
+	var r := await Nutaku.api("POST", "/f2p/challenge/start")
+	if not r["ok"]:
+		attempt = {}
+		return {"ok": false, "status": r["status"], "reason": str(r["body"].get("reason", ""))}
+	var b: Dictionary = r["body"]
+	challenge = b["challenge"]
+	_challenge_at = Time.get_unix_time_from_system()
+	Fold.daily_level = challenge["level"]
+	Juice.goals[Fold.DAILY] = challenge["goal"]
+	attempt = {"id": str(b["attempt_id"]), "level": Fold.DAILY, "budget": int(challenge["budget"]), "extra": 0,
+		"actions": "", "undos": 0, "replay": bool(challenge.get("claimed", false)), "daily": true}
+	attempt_changed.emit()
+	return {"ok": true}
 
 
 ## Deliver an unlocked scene's plate into user://unlocked/ through Unlock's own
@@ -215,3 +289,86 @@ func deliver(id: String) -> bool:
 	if data.size() <= 1024:
 		return false
 	return Unlock.write_delivered(id, data)
+
+
+# ---- the Folding House and the weekly event (ops/nutaku/fold_f2p/house.py) ----------------
+
+var house := {}              # {chapters, tiers: [{tier, stage}], standing, lanterns}
+var event := {}              # {week, who, title, blurb, boards, cleared, exclusive_label, ends_in_s, ...}
+var event_board := -1
+var _event_at := 0.0
+
+
+func fetch_house() -> Dictionary:
+	var r := await Nutaku.api("GET", "/f2p/house")
+	if r["ok"]:
+		house = r["body"].get("house", {})
+	return r
+
+
+func fetch_event() -> Dictionary:
+	var r := await Nutaku.api("GET", "/f2p/event")
+	if r["ok"]:
+		event = r["body"].get("event", {})
+		_event_at = Time.get_unix_time_from_system()
+	return r
+
+
+func tier_stage(t: int) -> String:
+	for row in house.get("tiers", []):
+		if int(row["tier"]) == t:
+			return str(row.get("stage", ""))
+	return ""
+
+
+## The chapter a tier belongs to, or {}.
+func chapter_of(t: int) -> Dictionary:
+	for c in house.get("chapters", []):
+		if t >= int(c["first_tier"]) and t <= int(c["last_tier"]):
+			return c
+	return {}
+
+
+func event_ends_text() -> String:
+	if event.is_empty():
+		return ""
+	var s := maxf(0.0, float(event.get("ends_in_s", 0)) - (Time.get_unix_time_from_system() - _event_at))
+	var d := int(s) / 86400
+	return ("%dd " % d if d > 0 else "") + _clock(fmod(s, 86400.0))
+
+
+## The first open, uncleared board of this week's track (or the last open one).
+func event_next_board() -> int:
+	var last := 0
+	for b in event.get("boards", []):
+		if bool(b["open"]):
+			last = int(b["board"])
+			if not bool(b["cleared"]):
+				return last
+	return last
+
+
+## Open an event board: the server sends it and it plays as Fold.EVENT, free of candles.
+func begin_event(board: int) -> Dictionary:
+	var r := await Nutaku.api("POST", "/f2p/event/start", {"board": board})
+	if not r["ok"]:
+		attempt = {}
+		return {"ok": false, "status": r["status"], "reason": str(r["body"].get("reason", ""))}
+	var b: Dictionary = r["body"]
+	event = b["event"]
+	_event_at = Time.get_unix_time_from_system()
+	event_board = board
+	var bd: Dictionary = b["board"]
+	Fold.daily_level = bd["level"]
+	if bd.has("goal"):
+		Juice.goals[Fold.EVENT] = bd["goal"]
+	else:
+		Juice.goals.erase(Fold.EVENT)
+	attempt = {"id": str(b["attempt_id"]), "level": Fold.EVENT, "budget": int(bd["budget"]), "extra": 0,
+		"actions": "", "undos": 0, "replay": bool(bd.get("cleared", false)), "event": true}
+	attempt_changed.emit()
+	return {"ok": true}
+
+
+func daily_leaderboard() -> Dictionary:
+	return await Nutaku.api("GET", "/f2p/challenge/leaderboard")

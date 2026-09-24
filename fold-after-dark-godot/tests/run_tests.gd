@@ -55,6 +55,7 @@ func _run() -> void:
 	_legibility()
 	_conformance()
 	_score_twin()
+	_generated()
 	print("\n%d checks passed, %d failed" % [passed, failed])
 	if failed > 0:
 		print("first failure: " + _first_fail)
@@ -354,3 +355,35 @@ func _score_twin() -> void:
 	ok(rows.size() >= 60, "enough score fixtures (%d)" % rows.size())
 	if first != "":
 		printerr("  first divergence: " + first)
+
+
+## Levels 202-800 (Nutaku only; ops/nutaku/fold_f2p/gen_levels.py). Runs last: it appends
+## them to Fold.levels, which every check above assumes is the shipped 201. Every stored
+## winning log (tests/gen_solutions.json) must win on the GDScript board too, within par+2.
+func _generated() -> void:
+	print("generated levels (Nutaku build)")
+	var added := Fold.load_extension()
+	eq(added, 599, "load_extension appends the 599 generated levels")
+	eq(Fold.level_count(), 800, "800 levels in the Nutaku build")
+	eq(Fold.load_extension(), 599, "a second call does not append them twice")
+	eq(Fold.level_count(), 800, "still 800")
+	var f := FileAccess.open("res://tests/gen_solutions.json", FileAccess.READ)
+	if f == null:
+		ok(false, "tests/gen_solutions.json missing — run gen_levels.py --fixture")
+		return
+	var sols = JSON.parse_string(f.get_as_text())
+	f.close()
+	var bad := 0
+	var first := ""
+	var dirs := {"U": Vector2i(-1, 0), "D": Vector2i(1, 0), "L": Vector2i(0, -1), "R": Vector2i(0, 1)}
+	for i in range(Fold.base_count, Fold.level_count()):
+		Fold.load_level(i)
+		var log := str(sols["levels"].get(str(i), ""))
+		for ch in log:
+			var d: Vector2i = dirs[ch]
+			Fold.move(d.x, d.y)
+		if not Fold.is_won() or Fold.moves > Fold.par() + 2:
+			bad += 1
+			if first == "":
+				first = "level %d: won=%s moves=%d par=%d" % [i + 1, str(Fold.is_won()), Fold.moves, Fold.par()]
+	eq(bad, 0, "every generated level's stored win also wins on the GDScript rules" + ("" if first == "" else " (" + first + ")"))

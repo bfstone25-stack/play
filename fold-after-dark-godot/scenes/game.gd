@@ -109,6 +109,9 @@ var _near_fail_said := false
 var _held := false
 
 
+var _last_finish: Dictionary = {}     # the server's answer to the last F2P finish
+
+
 func _ready() -> void:
 	theme = StudioTheme.build()
 	set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -716,6 +719,18 @@ func _sync() -> void:
 	lvb.text = I18n.t("map_btn")
 	var t := Tier.of_level(Fold.level_index)
 	_tier_lbl.text = "%s %d · %d/%d" % [I18n.t("tier").to_upper(), t + 1, Tier.cleared_in(t), Tier.length(t)]
+	if Fold.is_daily():
+		_tier_lbl.text = "DAILY #%d · %s" % [int(F2P.challenge.get("number", 0)), str(F2P.challenge.get("date", ""))]
+		_lvname.text = "Daily challenge · %s" % Fold.level_name(Fold.DAILY, I18n.lang)
+	elif Fold.is_special():
+		_tier_lbl.text = "EVENT · %s" % str(F2P.event.get("title", ""))
+		_lvname.text = "%s · board %d of %d" % [str(F2P.event.get("title", "")), F2P.event_board + 1,
+			(F2P.event.get("boards", []) as Array).size()]
+	elif F2P.on() and not F2P.house.is_empty():
+		var t2 := Tier.of_level(Fold.level_index)
+		var chap := F2P.chapter_of(t2)
+		if not chap.is_empty():
+			_tier_lbl.text += "  ·  %s · %s" % [str(chap["title"]), F2P.tier_stage(t2)]
 	_streak_lbl.text = "%s %d" % [I18n.t("streak"), Tier.streak] if Tier.streak > 0 else ""
 	# the three stars: how well this level has ever been done
 	for c in _stars_row.get_children():
@@ -736,7 +751,13 @@ func _open(i: int) -> void:
 		if not await F2P.ensure():
 			_f2p_error("Could not reach the game server. " + Nutaku.last_error)
 			return
-		var r := await F2P.begin(i)
+		var r: Dictionary
+		if i == Fold.DAILY:
+			r = await F2P.begin_daily()
+		elif i == Fold.EVENT:
+			r = await F2P.begin_event(F2P.event_next_board() if F2P.event_board < 0 else F2P.event_board)
+		else:
+			r = await F2P.begin(i)
 		if not r["ok"]:
 			if int(r["status"]) == 402:
 				_f2p_no_candles(i)
@@ -764,7 +785,8 @@ func _open(i: int) -> void:
 	Juice.reset_board()
 	_near_fail_said = false
 	_hide_combo()
-	Save.set_current_level(i)
+	if i < Fold.DAILY:
+		Save.set_current_level(i)
 	_win.visible = false
 	_relayout()
 	_sync()
@@ -978,6 +1000,7 @@ func _one_fold_left() -> bool:
 # --- winning -------------------------------------------------------------------------------------
 
 func _on_solved(stars: int, move_count: int, p: int) -> void:
+	_last_finish = {}
 	# An alternate goal (data/goals.json) sits on top of the win. Missing it is a miss, not
 	# a clear: the server would refuse the log for the same reason (fold_rules.goal_met).
 	var gm := Juice.goal_met(Fold.level_index, move_count)
@@ -1001,6 +1024,7 @@ func _on_solved(stars: int, move_count: int, p: int) -> void:
 				[["Try again", "Primary", again, "Retry"], ["Map", "Amber", home, "Map"]])
 			return
 		stars = int(res["stars"])
+		_last_finish = res
 	if not Sfx.cue("win"):
 		Sfx.unity(stars)
 	_hide_combo()
@@ -1016,7 +1040,10 @@ func _on_solved(stars: int, move_count: int, p: int) -> void:
 	_win_burst(stars)
 	var gained := maxi(0, stars - Save.stars_at(Fold.level_index))
 	var before := _star_sum()
-	Save.record(Fold.level_index, stars)
+	if Fold.is_special():
+		gained = 0                       # the daily's stars are not level stars
+	else:
+		Save.record(Fold.level_index, stars)
 	Tier.streak_hit()
 	Tel.level_ev("level_completed", {"moves": move_count, "stars": stars, "par": p})
 	_results_open = true              # keeps the HUD star total at `before` until it is paid
@@ -1031,6 +1058,12 @@ func _on_solved(stars: int, move_count: int, p: int) -> void:
 	await _show_results(stars, move_count, p, gained, before)
 	if not is_instance_valid(self):
 		return
+	if Fold.is_special():
+		_show_daily_done(stars)
+		return
+	var ms = _last_finish.get("milestone")
+	if typeof(ms) == TYPE_DICTIONARY:
+		_milestone_toast(ms)
 	var t := Tier.of_level(Fold.level_index)
 	if Fold.level_index < Tier.last_level(t):
 		# inside the tier: no button — the next board arrives on its own
@@ -1533,6 +1566,9 @@ func _try_undo() -> bool:
 	if Fold.history.is_empty() or Fold.done:
 		return false
 	if not F2P.can_undo():
+		if Fold.is_special():
+			_hint.text = "One undo on this board"
+			return false
 		var r := await F2P.use("undo")
 		if not r["ok"]:
 			_hint.text = "No undo: %s" % r["reason"]
@@ -1547,6 +1583,15 @@ func _try_undo() -> bool:
 ## the level solved.
 func _f2p_check_budget() -> void:
 	if not is_instance_valid(self) or Fold.done or not F2P.out_of_moves():
+		return
+	if Fold.is_special():
+		# the daily is free: no candle, no tokens; out of moves means try it again
+		var again := func(_s: Label): _f2p_retry()
+		var leave := func(_s: Label):
+			await F2P.give_up()
+			_to_map()
+		F2PUI.card(_win, "Out of moves", ["%d moves spent. This board is free to retry." % F2P.spent()],
+			[["Try again", "Primary", again, "Retry"], ["Map", "Ghost", leave, "Map"]])
 		return
 	var more := func(status: Label):
 		status.text = "…"
@@ -1599,6 +1644,9 @@ func _f2p_no_candles(level: int) -> void:
 func _f2p_hint() -> void:
 	if not F2P.active_for(Fold.level_index) or Fold.done:
 		return
+	if Fold.is_special():
+		_hint.text = "No hints on this board"
+		return
 	var r := await F2P.use("hint")
 	if not r["ok"]:
 		_hint.text = "No hint: %s" % r["reason"]
@@ -1607,6 +1655,65 @@ func _f2p_hint() -> void:
 	var word: String = {"U": "UP", "D": "DOWN", "L": "LEFT", "R": "RIGHT"}.get(mv, "?")
 	_sync()
 	_hint.text = "Hint: fold %s" % word
+
+
+## The daily challenge's end: what the server paid (once a day), the streak, the countdown.
+func _show_daily_done(stars: int) -> void:
+	var lines := []
+	if bool(_last_finish.get("rewarded", false)):
+		lines.append("Today's reward: " + F2PUI._reward_text(_last_finish.get("applied", {})))
+		var sb = _last_finish.get("streak_bonus", {})
+		if typeof(sb) == TYPE_DICTIONARY and not sb.is_empty():
+			lines.append("Streak bonus: " + F2PUI._reward_text(sb))
+	else:
+		lines.append("Already claimed today: this run is for the stars only.")
+	lines.append("Challenge streak: %d day%s" % [int(F2P.challenge.get("streak", 0)),
+		"" if int(F2P.challenge.get("streak", 0)) == 1 else "s"])
+	lines.append("Next challenge in " + F2P.challenge_countdown())
+	var home := func(_s: Label): _to_map()
+	if Fold.level_index == Fold.EVENT:
+		_show_event_done(stars)
+		return
+	var again := func(_s: Label): _open(Fold.DAILY)
+	F2PUI.card(_win, "Daily challenge %s" % "★".repeat(stars), lines,
+		[["Map", "Primary", home, "Map"], ["Play again", "Ghost", again, "Again"]])
+
+
+## An event board's end: its reward on the first clear, the track, the week's exclusive.
+func _show_event_done(stars: int) -> void:
+	var ev := F2P.event
+	var lines := []
+	if bool(_last_finish.get("first_clear", false)):
+		lines.append("Board reward: " + F2PUI._reward_text(_last_finish.get("applied", {})))
+	var exc = _last_finish.get("exclusive", {})
+	if typeof(exc) == TYPE_DICTIONARY and not exc.is_empty():
+		lines.append("All seven! %s is yours, and a night of unlimited candles." % str(ev.get("exclusive_label", "")))
+	lines.append("%s: %d of %d boards  ·  ends in %s" % [str(ev.get("title", "")), int(ev.get("cleared", 0)),
+		(ev.get("boards", []) as Array).size(), F2P.event_ends_text()])
+	var home := func(_s: Label): _to_map()
+	var buttons := [["Map", "Ghost", home, "Map"]]
+	var nb := F2P.event_next_board()
+	var boards: Array = ev.get("boards", [])
+	if nb >= 0 and nb < boards.size() and not bool(boards[nb]["cleared"]):
+		var nxt := func(_s: Label):
+			F2P.event_board = nb
+			_open(Fold.EVENT)
+		buttons.push_front(["Next board", "Primary", nxt, "NextBoard"])
+	F2PUI.card(_win, "%s %s" % [str(ev.get("title", "Event")), "★".repeat(stars)], lines, buttons)
+
+
+## A first-clear milestone the server paid (config f2p.milestones): a note that fades.
+func _milestone_toast(ms: Dictionary) -> void:
+	var l := StudioTheme.display_label("%s  ·  %s" % [str(ms.get("label", "Milestone")),
+		F2PUI._reward_text(ms.get("applied", {}))], 22, Palette.GOLD)
+	l.name = "MilestoneToast"
+	l.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	l.position.y += 90
+	_hud.add_child(l)
+	var tw := create_tween()
+	tw.tween_interval(2.6)
+	tw.tween_property(l, "modulate:a", 0.0, 0.6)
+	tw.tween_callback(l.queue_free)
 
 
 func _f2p_error(msg: String) -> void:
@@ -1860,6 +1967,8 @@ func _show_start_card() -> void:
 	var head := _start_card.find_child("Head", true, false) as Label
 	var goal := _start_card.find_child("Goal", true, false) as Label
 	head.text = "%s %d" % [I18n.t("level"), Fold.level_index + 1]
+	if Fold.is_special():
+		head.text = "Daily challenge" if Fold.is_daily() else str(F2P.event.get("title", "Event"))
 	goal.text = "%s   ·   %s" % [I18n.f("goal", Fold.target()), I18n.f("parhint", Fold.par())]
 	var alt := Juice.goal_text(Fold.level_index)
 	if alt != "":
@@ -1905,7 +2014,9 @@ func _show_results(stars: int, move_count: int, p: int, gained: int, before: int
 	var h := StudioTheme.display_label(cheer, 46, Palette.ACCENT_DEEP)
 	h.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(h)
-	var lv := StudioTheme.mono_label("%s %d" % [I18n.t("level").to_upper(), Fold.level_index + 1], 14, Palette.MUTED)
+	var lv := StudioTheme.mono_label(("DAILY #%d" % int(F2P.challenge.get("number", 0))) if Fold.is_daily()
+		else ("EVENT · BOARD %d" % (F2P.event_board + 1)) if Fold.is_special()
+		else "%s %d" % [I18n.t("level").to_upper(), Fold.level_index + 1], 14, Palette.MUTED)
 	lv.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(lv)
 	var row := HBoxContainer.new()
