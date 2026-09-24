@@ -193,6 +193,29 @@ func flip(rarity: String) -> void:
 		_: _play(_tone(261.0, "triangle", 0.09, 0.3))
 
 
+## Nutaku F2P juice, synthesised here like every other cue (no sample files, nothing to
+## credit): a rising major arpeggio with a bright top for a level-up / new tier, a quick
+## run of coin blips for rent arriving, and a sparkle sweep under an epic flash.
+func levelup() -> void:
+	if _cue("levelup"): return
+	var notes := [392.0, 493.88, 587.33, 783.99, 987.77]
+	for i in range(notes.size()):
+		_play(_tone(notes[i], "triangle", 0.16, 0.42), i * 0.06)
+	_play(_tone(1567.98, "sine", 0.45, 0.3, 2093.0), 0.3)
+
+
+func coins(n: int = 5) -> void:
+	if _cue("coins"): return
+	for i in range(clamp(n, 2, 8)):
+		_play(_tone(1318.5 + 90.0 * (i % 3), "square", 0.03, 0.1), i * 0.045)
+
+
+func sparkle() -> void:
+	if _cue("sparkle"): return
+	for i in range(6):
+		_play(_tone(1046.5 * pow(1.12, i), "sine", 0.12, 0.22), i * 0.04)
+
+
 func tick() -> void:
 	if _cue("tick"): return
 	_play(_tone(1200.0, "square", 0.015, 0.08))

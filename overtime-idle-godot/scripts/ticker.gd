@@ -150,6 +150,8 @@ func earned(slot: String) -> bool:
 
 
 func award(slot: String) -> void:
+	if F2P.on():
+		return   # on Nutaku the rewards are the server's scenes, not the local cabinet
 	if earned(slot):
 		return
 	cabinet["cg"].append(slot)
@@ -242,7 +244,30 @@ func tick_opts() -> Dictionary:
 	}
 
 
+func _no_report() -> Dictionary:
+	return {"from": now(), "to": now(), "elapsed": 0, "shifts": 0, "rent": 0, "evictions": [], "rentPaid": 0,
+		"capped": false, "frozenMs": 0, "perFloor": {}, "days": 0, "shielded": 0}
+
+
+## On Nutaku a visit is a /collect: the server pays whatever shifts its own clock says
+## have passed, and the report comes back through F2P.report (building.gd shows it).
+func _f2p_collect(from_visit: bool) -> void:
+	var r: Dictionary = await F2P.act("/collect")
+	if r["ok"]:
+		var rep: Dictionary = r["body"].get("report", {})
+		if from_visit and (int(rep.get("shifts", 0)) > 0 or (rep.get("evictions", []) as Array).size() > 0):
+			returned.emit(rep)
+		elif (rep.get("evictions", []) as Array).size() > 0:
+			evicted.emit(rep)
+		elif int(rep.get("shifts", 0)) > 0:
+			shift_paid.emit(rep)
+	changed.emit()
+
+
 func run_tick(from_visit: bool) -> Dictionary:
+	if F2P.on():
+		_f2p_collect(from_visit)
+		return _no_report()
 	var rep := Idle.tick(B, now(), tick_opts())
 	if int(rep["shifts"]) > 0 or int(rep["days"]) > 0:
 		Economy.save()
@@ -271,7 +296,7 @@ func start() -> void:
 
 func _process(delta: float) -> void:
 	_poll_bridge()
-	if not started:
+	if not started or F2P.on():
 		return
 	_acc += delta
 	if _acc >= 1.0:
@@ -295,7 +320,8 @@ func available() -> Array:
 	for p in Roster.ROSTER:
 		if Economy.owned(p["id"]) <= 0:
 			continue
-		var free: int = int(p["slots"]) - placed_count(p["id"])
+		var cap: int = F2P.slots(p["id"]) if F2P.on() else int(p["slots"])
+		var free: int = cap - placed_count(p["id"])
 		for _i in range(free):
 			pool.append(p["id"])
 	for id in Roster.OBJECTS:
@@ -305,6 +331,8 @@ func available() -> Array:
 
 
 func reroll_cost(f: Dictionary) -> int:
+	if F2P.on():
+		return 0      # the tray is only a view of what you own; drawing again is free
 	return 4 + (int(f["n"]) - 1)
 
 
@@ -313,10 +341,14 @@ func settle_floor(f: Dictionary) -> Dictionary:
 
 
 func floor_pay(f: Dictionary) -> int:
+	if F2P.on():
+		return F2P.floor_pay(f)
 	return int(Idle.floor_shift(B, f, Economy.dupe_map())["pay"])
 
 
 func rate_per_hour() -> float:
+	if F2P.on():
+		return float(F2P.income_h())
 	return Idle.rate_per_hour(B, Economy.dupe_map())
 
 
@@ -337,6 +369,13 @@ func place(f: Dictionary, index: int, id: String) -> bool:
 	var next := Landlord.place_at(f["cells"], id, index)
 	if next.is_empty():
 		return false
+	if F2P.on():
+		if not available().has(id):
+			return false
+		f["cells"] = next      # optimistic; the server's answer replaces it (or undoes it)
+		F2P.place(int(f["n"]), index, id)
+		changed.emit()
+		return true
 	f["cells"] = next
 	if Roster.OBJECTS.has(id):
 		B["inventory"][id] = int(B["inventory"].get(id, 0)) - 1
@@ -349,6 +388,11 @@ func take_back(f: Dictionary, index: int) -> String:
 	var id = f["cells"][index]
 	if id == null:
 		return ""
+	if F2P.on():
+		f["cells"][index] = null
+		F2P.take(int(f["n"]), index)
+		changed.emit()
+		return str(id)
 	f["cells"][index] = null
 	if Roster.OBJECTS.has(str(id)):
 		B["inventory"][str(id)] = int(B["inventory"].get(str(id), 0)) + 1
@@ -358,6 +402,8 @@ func take_back(f: Dictionary, index: int) -> String:
 
 
 func reroll(f: Dictionary) -> bool:
+	if F2P.on():
+		return true
 	var cost := reroll_cost(f)
 	if int(B["bank"]) < cost:
 		return false
@@ -541,4 +587,5 @@ func dev_state() -> Dictionary:
 	for f in B["floors"]:
 		floors.append({"n": f["n"], "cells": f["cells"], "pay": floor_pay(f)})
 	return {"bank": B["bank"], "gold": Economy.gold(), "tickets": Economy.tickets(), "building": B["building"], "mult": B["mult"],
-		"floors": floors, "cg": cabinet["cg"], "visits": cabinet["visits"], "solventDays": B["solventDays"], "rate": rate_per_hour()}
+		"floors": floors, "cg": cabinet["cg"], "visits": cabinet["visits"], "solventDays": B["solventDays"], "rate": rate_per_hour(),
+		"f2p": F2P.on(), "chapter": int((F2P.st().get("campaign", {}) as Dictionary).get("index", -1))}

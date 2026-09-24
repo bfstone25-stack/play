@@ -27,10 +27,11 @@ func build() -> void:
 	t.theme_type_variation = "Title"
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(t)
-	head.add_child(button(I18n.t("pull_1_btn"), "Pull", func() -> void: _pull(1)))
-	head.add_child(button(I18n.t("pull_10_btn"), "Pull", func() -> void: _pull(10)))
+	# On Nutaku a pull costs tickets (earned, or bought in the office SHOP), never local Gold
+	head.add_child(button("PULL ×1 · 1 TICKET" if F2P.on() else I18n.t("pull_1_btn"), "Pull", func() -> void: _pull(1)))
+	head.add_child(button("PULL ×10 · 10 TICKETS" if F2P.on() else I18n.t("pull_10_btn"), "Pull", func() -> void: _pull(10)))
 	head.add_child(button(I18n.t("close"), "Ghost", close))
-	para(I18n.t("roster_para"), 14)
+	para(I18n.t("roster_para") + (" Past the cap, a duplicate becomes +15 affection with them." if F2P.on() else ""), 14)
 	pity = Label.new()
 	pity.theme_type_variation = "Value"
 	pity.add_theme_color_override("font_color", Palette.GOLD)
@@ -85,7 +86,11 @@ func on_open() -> void:
 
 
 func render() -> void:
-	pity.text = I18n.f("pity", [Roster.PITY - Economy.since_epic(), Economy.gold(), Economy.tickets()])
+	if F2P.on():
+		pity.text = ("Epic guaranteed within %d pulls  ·  %d tickets" % [Roster.PITY - Economy.since_epic(), Economy.tickets()]) \
+				+ "  ·  odds: common 70 percent, rare 25, epic 5"
+	else:
+		pity.text = I18n.f("pity", [Roster.PITY - Economy.since_epic(), Economy.gold(), Economy.tickets()])
 	clear(grid)
 	for p in Roster.ROSTER:
 		grid.add_child(_staff_card(p))
@@ -132,13 +137,19 @@ func _staff_card(p: Dictionary) -> Control:
 	var meta := Label.new()
 	meta.theme_type_variation = "Tag"
 	var d := Economy.dupes(p["id"])
-	meta.text = I18n.f("on_floor", [Ticker.placed_count(p["id"]), int(p["slots"]), d, int(round((Roster.dupe_bonus(d) - 1.0) * 100.0)), Economy.affection(p["id"])])
+	var slot_n: int = F2P.slots(p["id"]) if F2P.on() else int(p["slots"])
+	meta.text = I18n.f("on_floor", [Ticker.placed_count(p["id"]), slot_n, d, int(round((Roster.dupe_bonus(d) - 1.0) * 100.0)), Economy.affection(p["id"])])
 	v.add_child(meta)
 	var aff := HBoxContainer.new()
 	aff.add_theme_constant_override("separation", 4)
 	v.add_child(aff)
 	var tier := Economy.affection_tier(p["id"])
-	for i in range(4):
+	var n_tiers := 4
+	if F2P.on():     # the server's five-tier ladder, not the local four
+		var row := F2P.char_row(p["id"])
+		tier = int(row.get("tier", 0))
+		n_tiers = 5
+	for i in range(n_tiers):
 		var pip := ColorRect.new()
 		pip.custom_minimum_size = Vector2(26, 5)
 		pip.color = Palette.HEAT if tier > i else Palette.PANEL_EDGE
@@ -150,6 +161,9 @@ func _staff_card(p: Dictionary) -> Control:
 		if int(x) > Economy.affection(p["id"]):
 			next_t = int(x)
 			break
+	if F2P.on():
+		var nx = F2P.char_row(p["id"]).get("next_at")
+		next_t = int(nx) if nx != null else -1
 	nxt.text = ("%d/%d" % [Economy.affection(p["id"]), next_t]) if next_t > 0 else I18n.t("max")
 	aff.add_child(nxt)
 	return c
@@ -190,6 +204,21 @@ func _portrait(id: String, rarity: String) -> Control:
 
 
 func _pull(n: int) -> void:
+	if F2P.on():
+		# Tickets come from play (calendar, missions, weekly goals) or from the SHOP tab;
+		# the roll itself is the server's.
+		if Economy.tickets() < n:
+			need_gold.emit()
+			return
+		var fr: Dictionary = await F2P.pull(n)
+		if not fr["ok"]:
+			need_gold.emit()
+			return
+		_results = fr["results"]
+		pulled.emit(_results)
+		Sfx.shop()
+		_reveal(_results)
+		return
 	var sku := "pull_10" if n == 10 else "pull_1"
 	if Economy.tickets() < n:
 		var r := Economy.buy(sku)
@@ -241,6 +270,7 @@ func _reveal(results: Array) -> void:
 		var gc: GachaCard = cards[i]
 		gc.flip()
 		Sfx.flip(str(results[i]["rarity"]))
+		_rarity_flash(str(results[i]["rarity"]))
 		await get_tree().create_timer(0.22 if cards.size() > 1 else 0.4).timeout
 	if gen != _reveal_gen:
 		return
@@ -248,3 +278,23 @@ func _reveal(results: Array) -> void:
 	reveal_done.modulate.a = 0.0
 	var tw2 := create_tween()
 	tw2.tween_property(reveal_done, "modulate:a", 1.0, 0.25)
+
+
+## A rare lights the room; an epic whites it out and sparkles. Common stays quiet so the
+## other two mean something.
+func _rarity_flash(rarity: String) -> void:
+	if rarity == "common":
+		return
+	var r := ColorRect.new()
+	r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var c := Palette.rarity_color(rarity)
+	r.color = Color(c.lightened(0.5 if rarity == "epic" else 0.2), 0.0)
+	reveal.add_child(r)
+	var peak := 0.7 if rarity == "epic" else 0.3
+	var tw := r.create_tween()
+	tw.tween_property(r, "color:a", peak, 0.08)
+	tw.tween_property(r, "color:a", 0.0, 0.5 if rarity == "epic" else 0.3)
+	tw.tween_callback(r.queue_free)
+	if rarity == "epic":
+		Sfx.sparkle()

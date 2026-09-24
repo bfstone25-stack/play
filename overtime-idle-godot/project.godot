@@ -17,6 +17,8 @@ boot_splash/bg_color=Color(0.0706, 0.0314, 0.0588, 1)
 [autoload]
 
 Gate="*res://scripts/gate.gd"
+Nutaku="*res://scripts/nutaku_f2p.gd"
+F2P="*res://scripts/f2p.gd"
 Economy="*res://scripts/economy.gd"
 Ticker="*res://scripts/ticker.gd"
 Sfx="*res://scripts/sfx.gd"

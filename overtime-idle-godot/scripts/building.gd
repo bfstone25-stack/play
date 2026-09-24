@@ -61,6 +61,11 @@ var daily_result: SimpleScreens.DailyResult
 var prestige: Overlay
 var notice: SimpleScreens.Notice
 var intro: TitleScreen
+## Nutaku F2P only (F2P.on()): the office panel, the scene viewer, the juice layer.
+var f2p_panel: F2PPanel
+var scene_view: Overlay
+var fx: F2PPanel.Juice
+var gold_tag: Label
 
 
 func _ready() -> void:
@@ -157,7 +162,9 @@ func _build_room() -> void:
 	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	bg.texture = Look.art("title")
-	bg.modulate = Color(0.62, 0.46, 0.56)
+	# On Nutaku the room is lit (bright-is-what-sells: that shelf averages 0.63 brightness);
+	# the itch/ad build keeps its after-hours maroon.
+	bg.modulate = Color(1.0, 0.94, 0.88) if F2P.on() else Color(0.62, 0.46, 0.56)
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
 	if bg.texture == null:
@@ -176,8 +183,8 @@ func _build_room() -> void:
 	gt.fill_from = Vector2(0.46, 0.55)
 	gt.fill_to = Vector2(0.46, 1.15)
 	var g := Gradient.new()
-	g.set_color(0, Color(Palette.GOLD, 0.14))
-	g.set_color(1, Color(Palette.GROUND_DEEP, 0.82))
+	g.set_color(0, Color(Palette.GOLD, 0.10 if F2P.on() else 0.14))
+	g.set_color(1, Color(Palette.GROUND_DEEP, 0.30 if F2P.on() else 0.82))
 	gt.gradient = g
 	gt.width = 256
 	gt.height = 144
@@ -250,6 +257,7 @@ func _build_hud() -> void:
 	bank_l = _stat(h, I18n.t("bank"), true, Palette.TEXT)
 	gold_l = _stat(h, I18n.t("gold"), true, Palette.GOLD, true)
 	gold_box = _last_stat_box
+	gold_tag = _last_stat_box.get_child(0) as Label
 	var cv := VBoxContainer.new()
 	cv.add_theme_constant_override("separation", 3)
 	h.add_child(cv)
@@ -299,6 +307,25 @@ func _build_hud() -> void:
 		h.add_child(b)
 		tabs[key] = b
 	gallery_btn = tabs["gallery"]
+	if F2P.on():
+		# the SCENES tab of the office replaces PLATES, and the row has to fit 1280
+		gallery_btn.visible = false
+		h.add_theme_constant_override("separation", 14)
+		for key in ["roster", "shop", "daily"]:
+			(tabs[key] as Control).custom_minimum_size = Vector2(88, 42)
+		(tabs["shop"] as Button).text = "UPGRADE"
+		var ob := StudioTheme.stub("STAFF", "Primary", true)
+		ob.custom_minimum_size = Vector2(88, 42)
+		ob.add_theme_font_size_override("font_size", 13)
+		ob.pressed.connect(func() -> void: _open_tab("staff"))
+		h.add_child(ob)
+		tabs["staff"] = ob
+		var sb := StudioTheme.stub("STORY", "Amber", true)
+		sb.custom_minimum_size = Vector2(88, 42)
+		sb.add_theme_font_size_override("font_size", 13)
+		sb.pressed.connect(func() -> void: _open_tab("story"))
+		h.add_child(sb)
+		tabs["story"] = sb
 	sound_btn = StudioTheme.stub(I18n.t("sound_on"), "Ghost", true)
 	sound_btn.custom_minimum_size = Vector2(104, 42)
 	sound_btn.add_theme_font_size_override("font_size", 13)
@@ -308,6 +335,8 @@ func _build_hud() -> void:
 		Ticker.save_cabinet()
 		Sfx.set_muted(not on)
 		sound_btn.text = I18n.t("sound_on") if on else I18n.t("sound_off"))
+	if F2P.on():
+		sound_btn.custom_minimum_size = Vector2(76, 42)
 	h.add_child(sound_btn)
 	banner_l = Label.new()
 	banner_l.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
@@ -359,6 +388,8 @@ func _build_left() -> void:
 	relic_l.add_theme_font_size_override("font_size", 12)
 	relic_l.add_theme_color_override("font_color", Palette.MUTED)
 	v.add_child(relic_l)
+	if F2P.on():
+		return      # no dev clock on Nutaku: the server's clock is the only one
 	var dv := Label.new()
 	dv.text = "DEV"
 	dv.theme_type_variation = "Tag"
@@ -471,6 +502,13 @@ func _build_overlays() -> void:
 		Sfx.win()
 		hud())
 	return_screen.extend_cap.connect(func() -> void:
+		if F2P.on():
+			var pr: Dictionary = await F2P.buy("night_manager")
+			if str(pr.get("status", "")) == "success":
+				return_screen.cap_btn.visible = false
+				banner(I18n.t("b_cap_24"))
+			hud()
+			return
 		var r := Economy.buy("offline_cap_24h")
 		if not r["ok"]:
 			banner(I18n.t("b_no_gold"))
@@ -500,10 +538,21 @@ func _build_overlays() -> void:
 		leave_daily()
 		# The daily floor is this game's run, and its end is where the board is offered:
 		# the casual catalogue, in the page, after a click. Nothing opens by itself.
+		# Not on Nutaku: no links to other platforms in that build.
+		if F2P.on():
+			return
 		await get_tree().create_timer(0.9).timeout
 		Gate.board_offer_more("casual"))
 	prestige = PrestigeScene.instantiate()
 	prestige.sign.connect(func() -> void:
+		if F2P.on():
+			var pr: Dictionary = await F2P.act("/prestige")
+			if pr["ok"]:
+				view = Ticker.B["floors"][0]
+				refill_offers()
+				_juice("prestige", pr["body"])
+			hud()
+			return
 		Ticker.do_prestige()
 		view = Ticker.B["floors"][0]
 		refill_offers()
@@ -512,12 +561,17 @@ func _build_overlays() -> void:
 		hud())
 	notice = SimpleScreens.Notice.new()
 	notice.understood.connect(func() -> void:
+		if F2P.on():
+			return
 		await get_tree().create_timer(0.9).timeout
 		Gate.board_offer_break())
 	intro = TitleScreen.new()
 	intro.start.connect(func() -> void:
 		Sfx.set_muted(not bool(Ticker.cabinet.get("sound", true)))
 		Sfx.unlock()
+		if F2P.on() and not await F2P.ensure():
+			banner("Could not reach the building: " + Nutaku.last_error)
+			return
 		Ticker.start()
 		Ticker.run_tick(true)
 		refill_offers()
@@ -529,14 +583,19 @@ func _build_overlays() -> void:
 	add_child(layer)
 	for o in [return_screen, roster, shop, gallery, plate_view, daily_screen, daily_result, prestige, notice, intro]:
 		layer.add_child(o)
+	_build_f2p(layer)
 	for key in tabs.keys():
-		(_tab_overlay(key) as Overlay).closed.connect(_mark_tabs)
+		var ov := _tab_overlay(key)
+		if not ov.closed.is_connected(_mark_tabs):
+			ov.closed.connect(_mark_tabs)
 	# A reward earned behind a panel arrives when the panel goes, not an hour later.
 	for o in [return_screen, roster, shop, gallery, plate_view, daily_result, prestige, notice]:
 		(o as Overlay).closed.connect(_drain_pending)
 
 
 func _tab_overlay(key: String) -> Overlay:
+	if F2P.on() and key != "roster":
+		return f2p_panel
 	match key:
 		"roster": return roster
 		"shop": return shop
@@ -544,7 +603,14 @@ func _tab_overlay(key: String) -> Overlay:
 		_: return gallery
 
 
+const F2P_TAB := {"shop": "upgrades", "daily": "daily", "gallery": "scenes", "staff": "staff", "story": "story"}
+
+
 func _open_tab(key: String) -> void:
+	if F2P.on() and key != "roster":
+		f2p_panel.open_tab(F2P_TAB.get(key, "staff"))
+		_mark_tabs()
+		return
 	_tab_overlay(key).open()
 	_mark_tabs()
 
@@ -609,6 +675,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _mark_tabs() -> void:
 	for key in tabs.keys():
 		var b: Button = tabs[key]
+		if F2P.on() and key != "roster":
+			b.theme_type_variation = "Active" if (f2p_panel.is_open() and f2p_panel.tab == F2P_TAB.get(key, "")) else ""
+			continue
 		if _tab_overlay(key).is_open():
 			b.theme_type_variation = "Active"
 		elif key == "gallery" and Ticker.cabinet["cg"].size() > 0:
@@ -765,7 +834,11 @@ func hud() -> void:
 	var r := settle_now()
 	rate_l.set_target(round(Ticker.rate_per_hour()))
 	bank_l.set_target(float(int(Ticker.B["bank"])))
-	gold_l.set_target(float(Economy.gold()))
+	if F2P.on():
+		gold_tag.text = "TICKETS"
+		gold_l.set_target(float(Economy.tickets()))
+	else:
+		gold_l.set_target(float(Economy.gold()))
 	var chain: int = int(r["chain"])
 	chain_l.text = str(chain)
 	for i in range(pips.size()):
@@ -920,6 +993,17 @@ func do_commit() -> void:
 	_poke()
 	_bark_commit(int(r["chain"]))
 	if mode == "daily":
+		if F2P.on():
+			if int(daily["at"]) < (daily["seq"] as Array).size():
+				banner("Place all %d pieces first." % (daily["seq"] as Array).size())
+				return
+			var sr: Dictionary = await F2P.act("/daily_floor/submit", {"cells": cells()})
+			if sr["ok"]:
+				var body: Dictionary = sr["body"]
+				daily_result.show_result({"day": Ticker.daily_key(), "shift": int(body["score"]), "best": int(body["best"]),
+					"chain": int(r["chain"]), "pct": Ticker.percentile(int(body["best"]))})
+				_juice("claim", body.get("applied", {}))
+			return
 		var res := Ticker.finish_daily(r)
 		daily_result.show_result(res)
 		return
@@ -930,6 +1014,14 @@ func do_commit() -> void:
 
 
 func build_floor(n: int) -> void:
+	if F2P.on():
+		var fr: Dictionary = await F2P.act("/build_floor")
+		if fr["ok"]:
+			view = Ticker.B["floors"][Ticker.B["floors"].size() - 1]
+			refill_offers()
+			_juice("floor", fr["body"])
+		hud()
+		return
 	if n > Ticker.FREE_FLOORS and Gate.is_web() and not Gate.has("floor%d" % n):
 		var ok := await Gate.require("floor%d" % n, "Floor %d" % n, "level")
 		if not ok:
@@ -949,8 +1041,14 @@ func build_floor(n: int) -> void:
 # ---- daily floor -------------------------------------------------------------------------
 
 func start_daily() -> void:
+	var seq: Array = Ticker.daily_seq()
+	if F2P.on():
+		var dr: Dictionary = await F2P.act("/daily_floor/start")
+		if not dr["ok"]:
+			return
+		seq = dr["body"]["seq"]
 	mode = "daily"
-	daily = {"seq": Ticker.daily_seq(), "at": 0, "cells": Idle.empty_cells(), "n": 0}
+	daily = {"seq": seq, "at": 0, "cells": Idle.empty_cells(), "n": 0}
 	view = daily
 	offers = draw_offers(3)
 	selected = -1
@@ -986,6 +1084,22 @@ func _bridge(cmd: Dictionary) -> Dictionary:
 			_render_offers()
 		"cell":
 			_on_cell(int(cmd.get("i", 0)))
+		"office":
+			# Nutaku F2P: the same panels the HUD stubs open
+			if not F2P.on():
+				return {"ok": false, "why": "not_f2p"}
+			f2p_panel.open_tab(str(cmd.get("tab", "story")))
+		"close_office":
+			if f2p_panel != null:
+				f2p_panel.close()
+		"buy":
+			# the SHOP tab's button: NutakuGI.createPayment through the bridge, answer later
+			if not F2P.on():
+				return {"ok": false, "why": "not_f2p"}
+			F2P.buy(str(cmd.get("sku", "")))
+		"pull":
+			_open_tab("roster")
+			roster._pull(int(cmd.get("n", 1)))
 		"place":
 			# a direct placement, for building a known board: the same Ticker.place the tray uses
 			if mode == "daily":
@@ -1175,3 +1289,102 @@ func _drain_pending() -> void:
 	_pending_tier = []
 	await get_tree().create_timer(0.25).timeout
 	_on_tier_up(str(p[0]), int(p[1]))
+
+
+# ---- Nutaku F2P --------------------------------------------------------------------------
+
+func _build_f2p(layer: CanvasLayer) -> void:
+	if not F2P.on():
+		return
+	f2p_panel = F2PPanel.new()
+	scene_view = F2PPanel.SceneView.new()
+	layer.add_child(f2p_panel)
+	layer.add_child(scene_view)
+	f2p_panel.daily_floor_requested.connect(start_daily)
+	f2p_panel.view_scene.connect(func(id: String, t: String) -> void: scene_view.show_scene(id, t))
+	f2p_panel.juice.connect(_juice)
+	var fl := CanvasLayer.new()
+	fl.layer = 30
+	add_child(fl)
+	fx = F2PPanel.Juice.new()
+	fx.theme = Look.theme
+	fl.add_child(fx)
+	F2P.refused.connect(func(reason: String) -> void:
+		banner(reason)
+		refill_offers()
+		hud())
+	F2P.report.connect(func(rep: Dictionary) -> void:
+		var rent := int(rep.get("rent", 0))
+		if rent > 0:
+			floor_view.burst(min(40, int(rep.get("shifts", 1)) * 4))
+			fx.float_text(Vector2(560, 300), "+" + RollingLabel._fmt(float(rent)), Palette.GOLD, 34)
+			Sfx.coins(min(8, 2 + int(rep.get("shifts", 1)))))
+	F2P.tiers_reached.connect(func(list: Array) -> void:
+		for t in list:
+			var nm := str(F2P.char_row(str(t["char"])).get("name", t["char"]))
+			fx.burst(Vector2(640, 330), Palette.HEAT, 34)
+			fx.float_text(Vector2(640, 300), "%s · TIER %d" % [nm, int(t["tier"])], Palette.HEAT, 36)
+			Sfx.levelup()
+			if str(t["kind"]) == "scene":
+				banner("NEW SCENE — %s" % str(t["title"]))
+			else:
+				banner("%s: \"%s\"" % [nm, str(t["text"]).left(90)]))
+	F2P.ot_changed.connect(func() -> void:
+		if is_inside_tree() and mode != "daily":
+			refill_offers()
+			hud())
+
+
+## Juice for things the server just agreed to.
+func _juice(kind: String, data: Dictionary) -> void:
+	if fx == null:
+		return
+	match kind:
+		"levelup":
+			fx.flash(Palette.GOLD, 0.35, 0.5)
+			fx.burst(Vector2(640, 360), Palette.GOLD, 40)
+			fx.float_text(Vector2(640, 320), "RANK %d!" % int(data.get("rank", 0)), Palette.GOLD_PALE, 40)
+			Sfx.levelup()
+		"prestige":
+			fx.flash(Palette.GOLD_PALE, 0.6, 0.9)
+			fx.burst(Vector2(640, 360), Palette.GOLD, 60)
+			fx.float_text(Vector2(640, 320), "BUILDING %d" % int(data.get("building", 0)), Palette.GOLD_PALE, 44)
+			Sfx.levelup()
+			var sc = data.get("scene")
+			if sc != null:
+				banner("NEW SCENE unlocked — see SCENES")
+		"floor":
+			fx.burst(Vector2(110, 300), Palette.GOLD, 24)
+			fx.float_text(Vector2(560, 260), "FLOOR %d" % int(data.get("floor", 0)), Palette.GOLD, 34)
+			Sfx.shop()
+			Sfx.bark("stage")
+		"fit":
+			fx.float_text(Vector2(560, 260), "FIT-OUT %d" % int(data.get("fit", 0)), Palette.SUCCESS, 30)
+			Sfx.coins(3)
+		"skip":
+			var sk: Dictionary = data.get("skip", {})
+			fx.float_text(Vector2(560, 300), "+" + RollingLabel._fmt(float(sk.get("rent", 0))), Palette.GOLD, 36)
+			floor_view.burst(30)
+			Sfx.coins(8)
+		"claim", "bought":
+			fx.burst(Vector2(640, 360), Palette.SUCCESS, 22)
+			Sfx.coins(5)
+		"talk", "gift":
+			fx.float_text(Vector2(640, 330), "+%d" % int(data.get("points", 20)), Palette.HEAT, 40)
+		"chapter":
+			fx.flash(Palette.GOLD_PALE, 0.5, 0.8)
+			fx.burst(Vector2(640, 360), Palette.GOLD, 50)
+			fx.float_text(Vector2(640, 300), "CHAPTER COMPLETE", Palette.GOLD_PALE, 40)
+			Sfx.levelup()
+			var nx = data.get("next")
+			banner(str(data.get("outro", "")).left(110))
+			if nx != null:
+				await get_tree().create_timer(2.2).timeout
+				banner("NEXT — " + str(nx["title"]))
+		"boss":
+			fx.flash(Palette.HEAT, 0.35, 0.5)
+			fx.float_text(Vector2(640, 300), "BID ACCEPTED — 48 H", Palette.HEAT, 34)
+			Sfx.combo()
+		_:
+			Sfx.shop()
+	hud()
