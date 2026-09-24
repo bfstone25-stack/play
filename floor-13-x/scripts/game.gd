@@ -75,6 +75,9 @@ var world: OfficeBuilder
 var hud: HorrorHud
 var hotspot_layer: Control
 var soundscape: Soundscape
+## bark bookkeeping (ports floor-13's): findings in a row, seconds since input
+var _bark_streak := 0
+var _idle_for := 0.0
 
 const NVL_HOTSPOTS := ["coffee", "drawer", "ledger", "camera", "intercom", "alarm"]
 
@@ -115,6 +118,7 @@ func start_game() -> void:
 		return
 	started = true
 	area_index = 0
+	soundscape.bark("greet")
 	_load_area()
 
 func restart() -> void:
@@ -132,6 +136,8 @@ func restart() -> void:
 	CgGate.reset()
 	discoveries.clear()
 	completed_hotspots.clear()
+	_bark_streak = 0
+	_idle_for = 0.0
 	current_hotspot = ""
 	pending = ""
 	started = false
@@ -150,6 +156,7 @@ func _load_area() -> void:
 	# both are served from the same origin on the ads site and share localStorage.
 	if area_index >= FREE_FILES:
 		Gate.block("f13r_area%d" % area_index, str(area.chapter))   # dual-track (ops/DUAL_TRACK.md)
+		soundscape.bark("fail")
 	if area_index > 0:
 		# The break offer, on a file boundary rather than on the gate: the gate only exists
 		# from File 4, and the point of the offer is the crossing itself. It is silent on
@@ -158,6 +165,7 @@ func _load_area() -> void:
 		Gate.board_offer_break()
 	world.build(area.id, flags)
 	hud.set_header(area.chapter, area.place, area.clock, area.objective)
+	soundscape.bark("stage")
 	_say(area.opening, false, "opening")
 
 ## [fork] `optional_only` redraws just the hotspots that are not required, for the window
@@ -260,6 +268,17 @@ func on_dialogue_done() -> void:
 			discoveries.append("%s — %s" % [_areas()[area_index].place, _hotspot_label(current_hotspot)])
 			current_hotspot = ""
 			pending = ""
+			# bark order as in floor-13: bark() drops an overlapping line, so the first
+			# slot asked for is the one heard
+			_bark_streak += 1
+			if _area_complete():
+				soundscape.bark("win")
+			elif _remaining_hotspots() == 1:
+				soundscape.bark("near")
+			elif _bark_streak % 3 == 0:
+				soundscape.bark("streak")
+			else:
+				soundscape.bark("unlock")
 			_show_hotspots()
 			if _area_complete():
 				var area: Dictionary = _areas()[area_index]
@@ -420,6 +439,7 @@ func _begin_ending() -> void:
 	discoveries.append(Loc.t("log.ending", [ending_id.replace("_", " ")]))
 	pending = "ending"
 	soundscape.cue("ending")
+	soundscape.bark("win_big")
 	world.show_ending(ending_id)
 	var lines: Array = StoryData.live_endings()[ending_id].duplicate(true)
 	lines.pop_back()
@@ -518,3 +538,28 @@ static func simulate_route(route: Dictionary) -> Dictionary:
 	delayed.append("ledger_preserved" if route.get("compliance") == "REFUSE" else "permanent_badge")
 	delayed.append("replacement_list" if route.get("escape_route") == "STAIRS" else "rusk_keycard")
 	return {"ending": StoryData.resolve(route), "delayed": delayed, "areas": StoryData.AREAS.size(), "hotspots": StoryData.total_hotspots()}
+
+
+func _remaining_hotspots() -> int:
+	var area: Dictionary = _areas()[area_index]
+	var left := 0
+	for hotspot in area.hotspots:
+		if not completed_hotspots.has(_area_key(hotspot[0])):
+			left += 1
+	return left
+
+
+## The idle nudge, as in floor-13: 30 s with nothing pressed while in a room.
+func _process(delta: float) -> void:
+	if not started or hud.is_busy():
+		_idle_for = 0.0
+		return
+	_idle_for += delta
+	if _idle_for >= 30.0:
+		_idle_for = 0.0
+		soundscape.bark("idle")
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton or event is InputEventKey:
+		_idle_for = 0.0
