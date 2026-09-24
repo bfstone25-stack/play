@@ -90,7 +90,7 @@ init -1:
         ysize 56
         padding (18, 6, 18, 6)
         background None
-        hover_background Frame("images/ui/title_hover.png", 6, 6)
+        hover_background None
 
     style title_button_text:
         font "fonts/Marcellus-Regular.ttf"
@@ -295,8 +295,8 @@ screen main_menu():
     add "images/title/light.png" at lamp_flicker
     add "images/title/rain.png" at rain_fall alpha 0.55
     add "images/title/rain.png" at rain_fall yoffset 1080 alpha 0.55
-    add "images/title/vignette.png"
-    add "images/title/scrim.png" at scrim_in
+    # 2026-09-23, adult title pass: vignette and scrim no longer drawn (0 of 33 Nutaku tiles
+    # darken the picture under the type; the type carries its own outline).
 
     key "K_s" action Start()
     key "K_RETURN" action Start()
@@ -322,8 +322,28 @@ screen main_menu():
         spacing 4
         at fade_in_after(2.3)
 
-        textbutton _("Check In") action Start() style "title_button" text_xalign 1.0
-        textbutton _("Continue") action ShowMenu("load") style "title_button" text_xalign 1.0
+        # Objects from the night desk with the words beside them (ops/STANDARD.md, "Buttons
+        # are objects from the game"): checking in is the guest's cash in its paper band --
+        # she pays cash, that is the premise -- and continuing is the register nobody is
+        # in. GPU renders, rembg. Set right of the word, because this column is flush right.
+        hbox:
+            xalign 1.0
+            spacing 10
+            textbutton _("Check In") action Start() style "title_button" text_xalign 1.0 yalign 0.5
+            imagebutton:
+                idle Transform("images/ui/btn_cash.png", zoom=0.46)
+                hover Transform("images/ui/btn_cash.png", zoom=0.52, rotate=-8)
+                action Start()
+                yalign 0.5
+        hbox:
+            xalign 1.0
+            spacing 10
+            textbutton _("Continue") action ShowMenu("load") style "title_button" text_xalign 1.0 yalign 0.5
+            imagebutton:
+                idle Transform("images/ui/btn_register.png", zoom=0.40)
+                hover Transform("images/ui/btn_register.png", zoom=0.45, rotate=6)
+                action ShowMenu("load")
+                yalign 0.5
         textbutton _("Preferences") action ShowMenu("preferences") style "title_button" text_xalign 1.0
         textbutton _("About") action ShowMenu("about") style "title_button" text_xalign 1.0
         textbutton _("Quit") action Quit(confirm=not main_menu) style "title_button" text_xalign 1.0
