@@ -1796,7 +1796,7 @@
    ],
    "guarded|guarded|path": [
     "That's a nice thing to say to a woman holding a mop. Doesn't move the shutter.",
-    "Noted. I hear a lot of nice things after one. Mostly they're about the one."
+    "Noted. After one in the morning everybody's nice to the barmaid. Usually they want one more drink."
    ],
    "guarded|guarded|case": [
     "You've clearly done this before. That's not a compliment, it's an observation."
@@ -1805,7 +1805,7 @@
     "Big speech for a small bar. I'm still wiping."
    ],
    "guarded|guarded|wild": [
-    "Mm. You want to try that again in your own words? Those were your own words. Right."
+    "Mm. Your own words, at least. Honest. Not enough to lift the shutter."
    ],
    "guarded|guarded|stale": [
     "You said that. I was here. Try a different one."
@@ -1814,11 +1814,11 @@
     "The rule's still on the wall. I can see it from here."
    ],
    "guarded|engaged|path": [
-    "…Since four, yeah. Nobody asks that. They ask what's on tap.",
+    "…Huh. Nobody says that to me. They just ask what's on tap.",
     "Okay. That one landed. Don't look pleased, it makes me want to take it back."
    ],
    "guarded|engaged|case": [
-    "You noticed the hands. Fine. The cloth goes on the shoulder, not the floor. Keep going."
+    "You noticed how tired I am. Fine. The cloth goes over my shoulder. Keep going."
    ],
    "guarded|engaged|ask": [
     "Hah. That's the whole pitch in one breath. I'm not saying no. I'm saying I'm listening."
@@ -1837,7 +1837,7 @@
     "You're careful. I like careful. Careful is how I've kept this place."
    ],
    "engaged|engaged|ask": [
-    "You ask like a man who's used to yes. I'm used to closing. Let's see who's tireder."
+    "You ask like someone used to hearing yes. I'm used to closing. Let's see who gives up first."
    ],
    "engaged|engaged|wild": [
     "That's yours, that one. Rough round the edges. Better than the polished ones."
@@ -1878,7 +1878,7 @@
     "Yeah. Yeah, I heard you. Give me a second with it."
    ],
    "wavering|wavering|*": [
-    "Two glasses on the bar. I haven't decided whose the second one is."
+    "Two glasses on the bar. I haven't decided who the second one's for."
    ],
    "wavering|breakthrough|path": [
     "One drink. And you should know I'm very bad at one drink."
@@ -1920,14 +1920,14 @@
     "The cab's waiting. I didn't ask it to. Say it, whatever it is, and say it once."
    ],
    "guarded|guarded|path": [
-    "That's the version I rehearsed for you, oddly. You're doing it fine.",
-    "You're describing a weather event. It wasn't weather."
+    "That's the apology I imagined you'd give, almost word for word. It's fine. It isn't enough.",
+    "You make it sound like weather, like it just happened. It didn't just happen."
    ],
    "guarded|guarded|case": [
     "Careful. That's nearly right, and nearly right is the one I can't stand."
    ],
    "guarded|guarded|ask": [
-    "Slow down. I've been fast for eleven months. It doesn't work."
+    "Slow down. You're asking before you've said sorry. I tried rushing for eleven months. It doesn't work."
    ],
    "guarded|guarded|wild": [
     "Okay. You're trying. I can hear you trying. It's not the same as saying it."
@@ -1939,7 +1939,7 @@
     "I'm still holding the door. Notice that."
    ],
    "guarded|engaged|path": [
-    "…Yes. Every day. Thank you for not saying 'both of us.'",
+    "…Yes. Thank you for not saying 'we both made mistakes.'",
     "That's the first accurate thing anyone's said about it. Including me."
    ],
    "guarded|engaged|case": [
@@ -1974,7 +1974,7 @@
     "The cab can wait one more minute. That's all it is. A minute."
    ],
    "engaged|wavering|path": [
-    "…You said 'my fault' without a 'but'. Do you know how long I've waited for that sentence?",
+    "…No 'but' after it. Do you know how long I've waited for a sentence with no 'but'?",
     "Okay. I'm sitting down. On the floor, because that's what's here. It doesn't mean anything."
    ],
    "engaged|wavering|case": [
@@ -2012,7 +2012,7 @@
     "Send the cab away. No — I'll do it. I want to be the one who does it."
    ],
    "wavering|breakthrough|ask": [
-    "All right. Tonight. Not the box — the box stays in the hall. Me."
+    "All right. Tonight. The box stays in the hall, and I stay here."
    ],
    "wavering|breakthrough|wild": [
     "…Okay. That's the one I didn't rehearse an answer to. I'm staying."
@@ -2034,7 +2034,7 @@
    ],
    "coercion|again|*": [
     "I'm listening. I'm not changing anything. Those are different verbs.",
-    "You can keep going. The cab's on the meter and so am I."
+    "You can keep going. The cab's meter is running. So is my patience."
    ],
    "refusal|*|*": [
     "I believe you. It isn't enough tonight. Ask me when you can say it without needing me to react."
@@ -2045,14 +2045,14 @@
     "You're still here. The left third's still wrong. Talk if you want, I can listen and work."
    ],
    "guarded|guarded|path": [
-    "Mm. Say that to the canvas, not to me. It's the one that isn't listening.",
+    "Mm. That's about me. I'm not the interesting thing in this room. The canvas is.",
     "That's a thing people say in studios. It's not a thing about this painting."
    ],
    "guarded|guarded|case": [
-    "You've got the vocabulary. Vocabulary isn't looking."
+    "You know the right words. Knowing the words isn't the same as looking."
    ],
    "guarded|guarded|ask": [
-    "A lot of words for a brush that's still moving."
+    "That's a lot of asking. My brush is still moving."
    ],
    "guarded|guarded|wild": [
     "That's your own sentence. It's not about the work yet."
@@ -2064,8 +2064,8 @@
     "Still working."
    ],
    "guarded|engaged|path": [
-    "…The temperature. Yes. Not the drawing. Everyone says the drawing. It's the light.",
-    "You looked at the left third. Actually looked. Hm."
+    "…Hm. That's the first useful thing anyone's said in here tonight.",
+    "You actually looked at the canvas. Hm. People usually just look at the model."
    ],
    "guarded|engaged|case": [
     "You saw it and you didn't call it a mistake. That's — the brush stopped. I noticed. Go on."
@@ -2099,11 +2099,11 @@
     "I'm listening. The brush is slower. That's all I'll give you."
    ],
    "engaged|wavering|path": [
-    "…You respect it. You didn't call it the thing between us. Okay. Glasses off. It's late.",
-    "Exactly one hour. You said a number. Nobody says a number. They say 'a while.'"
+    "…You respect the work. You didn't treat it as something in your way. Okay. Glasses off. It's late.",
+    "You talk about the painting like it matters. Most people talk about it like it's in the way."
    ],
    "engaged|wavering|case": [
-    "You saw the work and you didn't ask it to move for you. I'm — the palette's down. Not the brush. Palette."
+    "You saw the work and didn't ask me to drop it for you. The palette's down. Not the brush. The palette."
    ],
    "engaged|wavering|ask": [
     "That's precise and it's kind and it's about the painting. I don't know what to do with that."
@@ -2137,7 +2137,7 @@
     "Brush is down. I'm cleaning it first, that's not a delay, that's how it's done."
    ],
    "wavering|breakthrough|ask": [
-    "One hour. You said one hour. I'm holding you to the number."
+    "Yes. One hour, no more. I'm holding you to it."
    ],
    "wavering|breakthrough|wild": [
     "…Okay. That one. Sit where the model sits. It's the only chair."
@@ -2162,7 +2162,7 @@
     "I can hear you. The brush can't."
    ],
    "refusal|*|*": [
-    "You're right about the left third. That's why I can't leave it. Come back when I'm not losing."
+    "You're right that it's wrong. That's exactly why I can't leave it tonight. Come back when it's fixed."
    ]
   },
   "house_rule": {
@@ -2186,11 +2186,11 @@
     "Heard it. Filed it. Move on."
    ],
    "guarded|guarded|*": [
-    "The rule's the rule. I read it out for a living."
+    "The rule's the rule. I wrote it. I keep it."
    ],
    "guarded|engaged|path": [
     "…Okay. That's a fact. First one tonight. Camera's coming down.",
-    "'Because.' You said 'because.' That's a sentence with a spine."
+    "You gave a reason. An actual reason. That's a sentence with a spine."
    ],
    "guarded|engaged|case": [
     "A fact and a boundary in the same sentence. You listened when I explained the rule. Continue."
@@ -2224,11 +2224,11 @@
     "I haven't packed the lenses. Note that. I always pack the lenses."
    ],
    "engaged|wavering|path": [
-    "…'Exactly.' Good. Terms. You just told me what changes and what doesn't. That's — the camera's on the stool.",
+    "…Good. Exact terms. You told me what changes and what doesn't. The camera's going on the stool.",
     "No invoice, no client. That's not clever. That's just correct. Damn."
    ],
    "engaged|wavering|case": [
-    "A fact and a term. That's the shape of the rule turned round on itself. I hate that it holds."
+    "A fact and a condition. You used my own rule against me, and it holds. I hate that."
    ],
    "engaged|wavering|ask": [
     "Evidence, precision, and you asked. That's the whole form filled in. Give me a moment to check it."
@@ -2240,11 +2240,11 @@
     "Strap's off my neck. That's not a decision. It's heavy."
    ],
    "wavering|wavering|path": [
-    "I'm checking the argument for holes. There's one. Find it before I do.",
+    "I'm checking your argument for holes. I haven't found one yet. Keep it that way.",
     "Close. Say the last piece plainly."
    ],
    "wavering|wavering|case": [
-    "You've made the case. I'm being slow on purpose. Six years of rule."
+    "You've made the case. I've kept this rule six years. Let me be slow about dropping it."
    ],
    "wavering|wavering|stale": [
     "Already in evidence. Ask me the question."
@@ -2280,14 +2280,14 @@
     "Rule stands."
    ],
    "coercion|first|*": [
-    "And there's the invoice you think you're holding. Conversation continues. The rule doesn't move again tonight. Not for anything."
+    "And there it is: pressure instead of an argument. We can keep talking. The rule doesn't move again tonight. Not for anything."
    ],
    "coercion|again|*": [
     "Still packing. Still listening. Still no.",
     "You can keep talking. I'm keeping the rule."
    ],
    "refusal|*|*": [
-    "Good argument. Better than the rule deserves. I'm keeping the rule. Hire someone else next quarter."
+    "Good argument. Better than the rule deserves. I'm keeping the rule. You're a client until that invoice is settled."
    ]
   },
   "last_night": {
@@ -2302,10 +2302,10 @@
     "Well put. I've had well put before. Usually at checkout."
    ],
    "guarded|guarded|ask": [
-    "That's a great deal to say to a woman holding her own keys."
+    "That's a lot to ask of a woman who's leaving in the morning."
    ],
    "guarded|guarded|wild": [
-    "Your own words. I appreciate it. It's still asking me to open April."
+    "Your own words. I appreciate that. But it still asks me to go back to April, and I'd rather not."
    ],
    "guarded|guarded|stale": [
     "You've said that. I smiled then too. Professionally."
@@ -2318,7 +2318,7 @@
     "The smile's gone. Don't mention it. I'm aware."
    ],
    "guarded|engaged|case": [
-    "You understood what the leaving is, and you named a term. That's — different. Say more."
+    "You understood what leaving means to me, and you offered something fair. That's different. Say more."
    ],
    "guarded|engaged|ask": [
     "All of it at once. Honest. I don't get honest at this desk. Go on."
@@ -2327,14 +2327,14 @@
     "That wasn't polished. Good. I've had nine years of polished."
    ],
    "guarded|engaged|*": [
-    "I'm looking at you as a person in a lobby at one in the morning. Enjoy it, it's rare."
+    "I'm looking at you as a person, not a guest. At one in the morning. Enjoy it, it's rare."
    ],
    "engaged|engaged|path": [
     "Keep going. I'm still behind the desk. That's habit, not policy.",
     "True. And?"
    ],
    "engaged|engaged|case": [
-    "You're naming terms. I like terms. Terms are how nobody carries a different version into the morning."
+    "You're naming terms. I like terms. With terms, nobody wakes up remembering a different night."
    ],
    "engaged|engaged|ask": [
     "You're asking properly. I'm listening properly. Neither of those is a yes yet."
@@ -2349,11 +2349,11 @@
     "Jacket's unbuttoned. It's warm in here. It's always warm in here."
    ],
    "engaged|wavering|path": [
-    "…'In return.' You said what tonight is and what it isn't. Nobody offers me the second half.",
+    "…You said what tonight is and what it isn't. Nobody ever offers me the second half.",
     "Okay. The chignon's coming down. It's late and it hurts. That's all that is."
    ],
    "engaged|wavering|case": [
-    "You understood the leaving and you offered a fair trade. I'm — around the desk. I've never come around the desk."
+    "You understood the leaving and offered a fair trade. I'm coming around the desk. I never come around the desk."
    ],
    "engaged|wavering|ask": [
     "That's honest, and it's the terms, and it's about me. I need a moment. Professionally."
@@ -2369,7 +2369,7 @@
     "I'm close. Don't be grand. Grand is what ruins it."
    ],
    "wavering|wavering|case": [
-    "Stop being fair. Just for a second. Let me be sentimental about a luggage trolley."
+    "Stop being fair for a second. Let me be sentimental about nine years of this lobby."
    ],
    "wavering|wavering|stale": [
     "You've said it. I've heard it. Ask me."
@@ -2381,19 +2381,19 @@
     "Keys are in my pocket. Not on the lapel. Not on the desk."
    ],
    "wavering|breakthrough|path": [
-    "All right. Not nothing. But you let me leave in the morning without a scene."
+    "All right. Tonight counts for something. But in the morning you let me leave without a scene."
    ],
    "wavering|breakthrough|case": [
-    "Yes. Say the terms back to me. Tonight is tonight. The flight isn't negotiable. Nobody drives to the airport."
+    "Yes. Say the terms back to me. Tonight is tonight. The flight isn't negotiable. Nobody drives me to the airport."
    ],
    "wavering|breakthrough|ask": [
-    "Yes. Plainly. Tonight is something. I'm signing out of the terminal."
+    "Yes. Plainly. Tonight is something. I'm logging off the desk computer."
    ],
    "wavering|breakthrough|wild": [
-    "…That's the one. Not nothing. Come on, before I put the keys back."
+    "…That's the one. Tonight counts. Come on, before I put the keys back."
    ],
    "*|breakthrough|*": [
-    "Not nothing. All right. Terms out loud, then the corridor."
+    "All right. Tonight counts. We say the terms out loud, then we take the corridor."
    ],
    "*|wavering|*": [
     "I've come around the desk. Nine years. First time."
@@ -2412,7 +2412,7 @@
     "The keys are back on. You may keep talking."
    ],
    "refusal|*|*": [
-    "I've already left. In April, properly. You've been the best part of the worst shifts. That's what I'm taking."
+    "I left in April, in every way that counts. You were the best part of the worst shifts. That's what I'm taking with me."
    ]
   }
  },
@@ -2423,7 +2423,7 @@
    ],
    "guarded|guarded|path": [
     "モップ持ってる女に言うには、いい台詞ね。でもシャッターは動かない。",
-    "はいはい。一杯出したあとに褒められるのは慣れてる。だいたい酒の話だけど。"
+    "はいはい。夜中の一時を過ぎると、みんなバーテンに優しくなる。だいたい、もう一杯ほしいだけ。"
    ],
    "guarded|guarded|case": [
     "慣れてるでしょ、これ。褒めてない。見たままを言ってる。"
@@ -2432,7 +2432,7 @@
     "小さい店に大層な演説。こっちはまだ拭いてる。"
    ],
    "guarded|guarded|wild": [
-    "ふうん。自分の言葉で言い直してみる？　……今のが自分の言葉。そう。"
+    "ふうん。少なくとも自分の言葉ね。正直ではある。シャッターを上げるほどじゃないけど。"
    ],
    "guarded|guarded|stale": [
     "それ、さっき聞いた。わたしここにいたし。別の言って。"
@@ -2441,11 +2441,11 @@
     "決まりはまだ壁に貼ってある。ここからでも読める。"
    ],
    "guarded|engaged|path": [
-    "……四時から、ね。誰も訊かない。みんな訊くのは何が樽にあるかだけ。",
+    "……へえ。そんなこと言う客、いない。みんな訊くのは何が樽にあるかだけ。",
     "わかった。今のは効いた。嬉しそうな顔しないで。取り消したくなる。"
    ],
    "guarded|engaged|case": [
-    "手を見たんだ。いいでしょう。布巾は床じゃなくて肩にかけるの。続けて。"
+    "疲れてるの、気づいたんだ。いいでしょう。布巾は肩にかける。続けて。"
    ],
    "guarded|engaged|ask": [
     "はは。一息で全部言った。断ってはいない。聞いてる、って言ってる。"
@@ -2464,7 +2464,7 @@
     "慎重だね。慎重は好き。この店、慎重で保ってきたから。"
    ],
    "engaged|engaged|ask": [
-    "「はい」に慣れてる人の訊き方。こっちは閉店に慣れてる。どっちが疲れてるか勝負ね。"
+    "「はい」に慣れてる人の訊き方。こっちは閉店に慣れてる。どっちが先に折れるか勝負ね。"
    ],
    "engaged|engaged|wild": [
     "それ、あんたのだ。粗い。磨いたやつより、ずっといい。"
@@ -2505,7 +2505,7 @@
     "うん。うん、聞こえてる。ちょっと待って。"
    ],
    "wavering|wavering|*": [
-    "グラスが二つ。二つ目が誰のかは、まだ決めてない。"
+    "グラスが二つ。二つ目を誰に出すかは、まだ決めてない。"
    ],
    "wavering|breakthrough|path": [
     "一杯だけ。言っておくけど、わたし、一杯で止まるのがすごく下手なの。"
@@ -2547,14 +2547,14 @@
     "タクシー待たせてる。待てとは言ってない。言うことがあるなら、一度で言って。"
    ],
    "guarded|guarded|path": [
-    "奇遇ね、わたしが練習したのと同じ版。上手にできてる。",
-    "天気の話みたいに言うんだ。天気じゃなかったけど。"
+    "あなたが言いそうだって想像してた謝り方、ほとんどそのまま。悪くない。でも足りない。",
+    "天気みたいに、勝手に起きたことみたいに言うんだね。勝手に起きたんじゃない。"
    ],
    "guarded|guarded|case": [
     "気をつけて。惜しい。惜しいのがいちばん嫌なの。"
    ],
    "guarded|guarded|ask": [
-    "急がないで。十一か月ずっと急いできた。うまくいかないの。"
+    "急がないで。謝る前に頼んでる。わたしも十一か月、急いでみた。うまくいかないの。"
    ],
    "guarded|guarded|wild": [
     "うん。頑張ってるね。頑張ってるのは聞こえる。言えてるのとは違う。"
@@ -2566,7 +2566,7 @@
     "まだドアを押さえてる。そこ、見てて。"
    ],
    "guarded|engaged|path": [
-    "……うん。毎日。「お互い」って言わなかったの、ありがとう。",
+    "……うん。「お互い様」って言わなかったの、ありがとう。",
     "それについて誰かが言った中で、はじめて正確だった。わたし自身も含めて。"
    ],
    "guarded|engaged|case": [
@@ -2601,7 +2601,7 @@
     "タクシーはあと一分待てる。それだけ。一分。"
    ],
    "engaged|wavering|path": [
-    "……「でも」を付けずに「わたしのせい」って言ったね。その一文をどれだけ待ったか分かる？",
+    "……後ろに「でも」が付かなかった。「でも」のない一文を、どれだけ待ったか分かる？",
     "わかった。座る。床に。ここにあるのが床だから。意味はない。"
    ],
    "engaged|wavering|case": [
@@ -2639,7 +2639,7 @@
     "タクシー帰して。ううん——わたしが行く。わたしが帰したい。"
    ],
    "wavering|breakthrough|ask": [
-    "いいよ。今夜。箱じゃなくて——箱は玄関に置いとく。わたしが残る。"
+    "いいよ。今夜。箱は玄関に置いとく。わたしはここに残る。"
    ],
    "wavering|breakthrough|wild": [
     "……わかった。それだけは返事を用意してなかった。泊まる。"
@@ -2661,7 +2661,7 @@
    ],
    "coercion|again|*": [
     "聞いてる。何も変えない。別の動詞よ、それ。",
-    "続けていいよ。タクシーはメーター回ってるし、わたしもそう。"
+    "続けていいよ。タクシーのメーターは回ってる。わたしの我慢も、減っていく一方。"
    ],
    "refusal|*|*": [
     "信じる。今夜はそれじゃ足りない。わたしの反応を必要としないで言えるようになったら、訊いて。"
@@ -2672,14 +2672,14 @@
     "まだいたの。左の三分の一はまだ違う。話していいよ、聞きながら描ける。"
    ],
    "guarded|guarded|path": [
-    "ん。それはカンバスに言って。聞いてないのはあっち。",
+    "ふうん。それはわたしの話。この部屋で面白いのはわたしじゃない。キャンバス。",
     "アトリエでみんなが言うやつ。この絵についての言葉じゃない。"
    ],
    "guarded|guarded|case": [
-    "語彙はあるね。語彙は、見ることじゃない。"
+    "正しい言葉は知ってる。言葉を知ってるのと、見てるのは別。"
    ],
    "guarded|guarded|ask": [
-    "まだ動いてる筆に、ずいぶん言葉を使う。"
+    "ずいぶん頼むね。筆はまだ動いてる。"
    ],
    "guarded|guarded|wild": [
     "自分の文だ。まだ作品の話になってない。"
@@ -2691,8 +2691,8 @@
     "まだ描いてる。"
    ],
    "guarded|engaged|path": [
-    "……色温度。そう。デッサンじゃない。みんなデッサンって言う。光なの。",
-    "左の三分の一を見たんだ。ちゃんと見た。ふうん。"
+    "……ふむ。今夜ここで聞いた中で、初めて役に立つ言葉。",
+    "ちゃんとキャンバスを見た。ふむ。たいていの人はモデルしか見ない。"
    ],
    "guarded|engaged|case": [
     "気づいて、失敗とは言わなかった。……筆、止まった。自分でも分かった。続けて。"
@@ -2726,11 +2726,11 @@
     "聞いてる。筆は遅くなった。あげられるのはそれだけ。"
    ],
    "engaged|wavering|path": [
-    "……尊重してる。わたしたちの間にあるもの、とは言わなかった。いいよ。眼鏡外す。遅いし。",
-    "きっかり一時間。数字を言ったね。誰も数字を言わない。「ちょっと」って言う。"
+    "……作品を尊重してる。邪魔なものみたいに扱わなかった。いいよ。眼鏡、外す。もう遅いし。",
+    "絵のことを、大事なものみたいに話すんだね。たいていの人は、邪魔なものみたいに話す。"
    ],
    "engaged|wavering|case": [
-    "作品を見て、自分のために動かせとは言わなかった。……パレット、置いた。筆じゃない。パレット。"
+    "作品を見て、それを放り出せとは言わなかった。パレット、置いた。筆じゃない。パレット。"
    ],
    "engaged|wavering|ask": [
     "正確で、やさしくて、絵の話。どう扱えばいいのか分からない。"
@@ -2764,7 +2764,7 @@
     "筆は置いた。先に洗う。遅らせてるんじゃない。そういう手順なの。"
    ],
    "wavering|breakthrough|ask": [
-    "一時間。一時間って言ったね。その数字、守らせるから。"
+    "いいよ。一時間。それ以上はなし。守ってもらう。"
    ],
    "wavering|breakthrough|wild": [
     "……わかった。それだ。モデルの座るとこに座って。椅子、それしかない。"
@@ -2789,7 +2789,7 @@
     "聞こえてる。筆には聞こえない。"
    ],
    "refusal|*|*": [
-    "左の三分の一の話は当たってる。だから離れられないの。負けてないときに、また来て。"
+    "間違ってるって、その通り。だから今夜は離れられない。直ったら、また来て。"
    ]
   },
   "house_rule": {
@@ -2813,11 +2813,11 @@
     "聞いた。綴じた。次へ。"
    ],
    "guarded|guarded|*": [
-    "決まりは決まり。読み上げるのが仕事なの。"
+    "決まりは決まり。書いたのはわたし。守るのもわたし。"
    ],
    "guarded|engaged|path": [
     "……いい。それは事実。今夜はじめての。カメラ、下ろす。",
-    "「なぜなら」。「なぜなら」って言ったね。背骨のある文。"
+    "理由を言った。ちゃんとした理由。背骨のある文。"
    ],
    "guarded|engaged|case": [
     "一文に事実と線引きが両方。決まりの説明を聞いてたんだ。続けて。"
@@ -2851,11 +2851,11 @@
     "レンズをまだ片付けてない。記録しておいて。わたしは必ずレンズから片付ける。"
    ],
    "engaged|wavering|path": [
-    "……「きっかり」。いい。条件。何が変わって何が変わらないかを今言った。……カメラ、スツールの上。",
+    "……いい。正確な条件。何が変わって、何が変わらないか言った。カメラはスツールに置く。",
     "請求書がなければ依頼人もいない。うまくはない。ただ正しい。……まいった。"
    ],
    "engaged|wavering|case": [
-    "事実と条件。決まりの形をそのまま決まりに向けた。成立してるのが気に入らない。"
+    "事実と条件。わたしの決まりを、わたしに向けて使った。しかも筋が通ってる。腹が立つ。"
    ],
    "engaged|wavering|ask": [
     "証拠、精確さ、そして依頼。書式が全部埋まった。確認する時間をちょうだい。"
@@ -2867,11 +2867,11 @@
     "ストラップを首から外した。決断じゃない。重いの。"
    ],
    "wavering|wavering|path": [
-    "論に穴がないか見てる。一つある。わたしより先に見つけて。",
+    "あなたの論に穴がないか確認中。まだ見つからない。そのままでいて。",
     "もう少し。最後の一片を、平たく言って。"
    ],
    "wavering|wavering|case": [
-    "論証は成立してる。わざと遅くしてるだけ。六年分の決まりなの。"
+    "主張は成立。この決まりは六年守ってきた。手放すのに、少し時間をちょうだい。"
    ],
    "wavering|wavering|stale": [
     "それはもう証拠に入ってる。質問して。"
@@ -2907,14 +2907,14 @@
     "決まりは生きてる。"
    ],
    "coercion|first|*": [
-    "はい、握ってるつもりの請求書。会話は続ける。決まりは今夜もう二度と動かない。何があっても。"
+    "出た。議論じゃなくて圧力。話は続けていい。決まりは今夜もう動かない。何があっても。"
    ],
    "coercion|again|*": [
     "片付けてる。聞いてる。それでも、いいえ。",
     "喋っていていい。決まりはこっちが持っておく。"
    ],
    "refusal|*|*": [
-    "いい論だった。決まりにはもったいないくらい。決まりは守る。来期は他を雇って。"
+    "いい議論。決まりにはもったいないくらい。でも決まりは守る。請求書が片づくまで、あなたは客。"
    ]
   },
   "last_night": {
@@ -2929,10 +2929,10 @@
     "よく仰います。よく仰る方はいました。だいたいチェックアウトのときに。"
    ],
    "guarded|guarded|ask": [
-    "自分の鍵を握っている女に、ずいぶん仰いますね。"
+    "朝には出ていく女に、ずいぶん多くを頼むのね。"
    ],
    "guarded|guarded|wild": [
-    "ご自分の言葉ですね。ありがたく。それでも、四月を開けろと仰っている。"
+    "ご自分の言葉ですね。ありがとうございます。でも、それは四月に戻れということ。戻りたくありません。"
    ],
    "guarded|guarded|stale": [
     "それは伺いました。あのときも微笑みました。職業的に。"
@@ -2945,7 +2945,7 @@
     "笑みが消えました。触れないで。自分で分かっています。"
    ],
    "guarded|engaged|case": [
-    "去るということが何かを理解して、条件を口にした。……それは違いますね。もっと聞かせて。"
+    "わたしにとって去ることが何か、分かってくださった。そのうえで公平な申し出を。それは違います。もっと聞かせて。"
    ],
    "guarded|engaged|ask": [
     "全部いっぺんに。正直に。このデスクで正直は貰えないの。続けて。"
@@ -2954,14 +2954,14 @@
     "磨かれていなかった。いいことです。磨かれたのは九年分もらった。"
    ],
    "guarded|engaged|*": [
-    "午前一時のロビーに立っている人として見てる。珍しいから、味わって。"
+    "あなたをお客様ではなく、ひとりの人として見ています。夜中の一時に。珍しいことですよ、味わって。"
    ],
    "engaged|engaged|path": [
     "続けて。まだデスクの内側にいるけど、習慣であって規則じゃない。",
     "本当ね。それで？"
    ],
    "engaged|engaged|case": [
-    "条件を挙げてる。条件は好き。朝に別々の話を持ち帰らずに済む。"
+    "条件を口にしてくださる。条件は好きです。条件があれば、朝になって違う夜を覚えている人はいない。"
    ],
    "engaged|engaged|ask": [
     "きちんと訊いてる。こっちもきちんと聞いてる。どちらもまだ「はい」じゃない。"
@@ -2976,11 +2976,11 @@
     "上着の釦を外した。暑いの。ここはいつも暑い。"
    ],
    "engaged|wavering|path": [
-    "……「その代わり」。今夜が何で、何でないかを言ったね。後半を差し出す人はいない。",
+    "……今夜が何で、何じゃないかを言ってくれた。後半まで差し出してくれる人なんて、いなかった。",
     "わかった。まとめ髪、下ろす。遅いし、痛いから。それだけ。"
    ],
    "engaged|wavering|case": [
-    "去ることを分かって、公平な取引を出した。……デスクの外に出てる。一度も出たことがないのに。"
+    "去ることを分かって、公平な取引を出してくれた。デスクの外に出るね。一度も出たことないのに。"
    ],
    "engaged|wavering|ask": [
     "正直で、条件で、わたしについての話。少し時間を。職業的に。"
@@ -2996,7 +2996,7 @@
     "もう近い。大げさにしないで。大げさが台無しにする。"
    ],
    "wavering|wavering|case": [
-    "公平なのをやめて。少しだけ。荷物カートに感傷的でいさせて。"
+    "少しだけ、公平でいるのをやめて。このロビーの九年に、感傷的にならせて。"
    ],
    "wavering|wavering|stale": [
     "それは言った。聞いた。訊いて。"
@@ -3008,19 +3008,19 @@
     "鍵はポケットの中。襟でもデスクでもなく。"
    ],
    "wavering|breakthrough|path": [
-    "いいわ。何でもない夜にはしない。でも朝は、騒がずに発たせて。"
+    "いいわ。今夜は、何かではある。でも朝は、騒がずにわたしを行かせて。"
    ],
    "wavering|breakthrough|case": [
-    "ええ。条件を言い返して。今夜は今夜。飛行機は動かせない。空港へは誰も送らない。"
+    "ええ。条件を復唱して。今夜は今夜。飛行機は変えない。空港まで送るのはなし。"
    ],
    "wavering|breakthrough|ask": [
-    "うん。平たく言うね。今夜は何かになる。端末からサインアウトする。"
+    "ええ。はっきり。今夜は何かではある。フロントの端末、ログアウトする。"
    ],
    "wavering|breakthrough|wild": [
-    "……それ。何でもない夜じゃない。来て、鍵を戻す前に。"
+    "……それ。今夜は数に入る。行こう、鍵を戻す前に。"
    ],
    "*|breakthrough|*": [
-    "何でもない夜じゃない。わかった。条件を声に出して、それから廊下。"
+    "いいわ。今夜は数に入る。条件を声に出して、それから廊下へ。"
    ],
    "*|wavering|*": [
     "デスクの外に出た。九年で、はじめて。"
@@ -3039,7 +3039,7 @@
     "鍵は襟に戻しました。お話は続けてくださって結構です。"
    ],
    "refusal|*|*": [
-    "わたしはもう去りました。四月に、きちんと。あなたは最悪の勤務のいちばん良い部分でした。持っていくのはそれです。"
+    "大事な意味では、わたしは四月にもう去ってる。最悪のシフトの中で、あなたは一番いいところだった。それを持っていく。"
    ]
   }
  }

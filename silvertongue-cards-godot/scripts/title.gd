@@ -32,7 +32,7 @@ extends Control
 ##              gradient and not a panel: TITLE_SCREENS.md rejected Late Inspection's hard
 ##              50/50 split as "a picture beside a form", and the fix there was that the
 ##              picture stays full bleed and the type sits OVER it.
-##   mark       SUASION in gold foil + SILVERTONGUE · CARDS (ops/silvertongue_title.py).
+##   mark       SUASION in gold foil + AFTER HOURS · CARDS (ops/silvertongue_title.py).
 ##   card       the card back, tilted, carrying the 18+ in its rank corner and the studio
 ##              mark. It slides in from the right edge like a card being dealt.
 ##

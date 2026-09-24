@@ -77,7 +77,7 @@ CELESTE = {
         "Two ideas in one line. Ambitious. Neither of them about me, though.",
     ],
     ("guarded", "guarded", "ask"): [
-        "Straight to the point. How refreshing. How unlike anyone who has ever won.",
+        "Straight to the point. Refreshing. Nobody who ever won me over started there.",
     ],
     ("guarded", "guarded", "wild"): [
         "Your own words. Brave. Wrong, but brave.",
@@ -180,8 +180,8 @@ CELESTE = {
         "Mm.",
     ],
     ("coercion", "first", "*"): [
-        "Ah. There it is. The card under the door warned you, darling. That's how the last "
-        "ones tried. We'll keep talking, but you've lost me.",
+        "Ah. There it is. My note warned you, darling: that's how the last ones tried. "
+        "We'll keep talking, but you've lost me.",
     ],
     ("coercion", "again", "*"): [
         "Still talking to you. Still not persuaded. Still, I'm afraid, a little disappointed.",
@@ -200,7 +200,7 @@ NIGHTS["mara"] = {
     ("open", "open", "open"): ["You again. Sit where I can see you. What is it tonight?"],
     ("guarded", "guarded", "*"): [
         "Mm-hm. I'm listening with the part of me that isn't counting the till.",
-        "Nice. Doesn't move me. Very little moves me after one.",
+        "Nice. Doesn't move me. Not much does after one in the morning.",
     ],
     ("guarded", "guarded", "stale"): ["Said that. I was here. Try a new one."],
     ("guarded", "engaged", "*"): [
@@ -282,7 +282,7 @@ NIGHTS["sanne"] = {
         "…I've stopped taking notes. That's unusual. Don't comment on it.",
         "That is exactly the clause. How did you find the clause?",
     ],
-    ("wavering", "wavering", "*"): ["Say the last part. Exactly. I'm listening with the lights off."],
+    ("wavering", "wavering", "*"): ["Say the last part, exactly. I've stopped arguing. I'm only listening now."],
     ("wavering", "wavering", "stale"): ["Already agreed. Move to the next item."],
     ("*", "breakthrough", "*"): [
         "Agreed. Initial here. No, I'm joking. Come here.",
@@ -330,7 +330,7 @@ NIGHTS["ines"] = {
     ("open", "open", "open"): ["Say it once. Say it right. I'm counting."],
     ("guarded", "guarded", "*"): [
         "That's nearly right. Nearly right is the one I can't stand.",
-        "You're describing weather. It wasn't weather.",
+        "You make it sound like it just happened. It didn't. Someone did it.",
     ],
     ("guarded", "guarded", "stale"): ["You said that. I wrote it down. Eleven months ago."],
     ("guarded", "engaged", "*"): [
@@ -347,14 +347,14 @@ NIGHTS["ines"] = {
         "You never said that before. You could have. You didn't.",
     ],
     ("wavering", "wavering", "*"): ["Say the last part. I've been waiting eleven months for the last part."],
-    ("wavering", "wavering", "stale"): ["Past that. The rest of the word."],
+    ("wavering", "wavering", "stale"): ["Past that. Say the rest of it."],
     ("*", "breakthrough", "*"): [
         "Okay. Yes. Don't make me say it twice.",
         "All right. Yes. I'm writing that one down.",
     ],
     ("*", "wavering", "*"): ["Slowly. I'm listening with everything."],
     ("*", "engaged", "*"): ["That's something."],
-    ("*", "guarded", "*"): ["Five letters."],
+    ("*", "guarded", "*"): ["I'm waiting for one word. You know which one."],
     ("refusal", "*", "*"): ["That's the last of it. I'll get a cab."],
 }
 

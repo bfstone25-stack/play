@@ -84,7 +84,7 @@ def _scen_ui(s, lang="en"):
                       "help": sorted(C.RULES[s["id"]]["help"])}}
 
 
-app = FastAPI(title="Silvertongue: After Hours — Cards")
+app = FastAPI(title="SUASION: After Hours — Cards")
 
 try:
     # By file path: this package's own `shared/` would otherwise shadow Products/shared.

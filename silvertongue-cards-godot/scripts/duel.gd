@@ -689,10 +689,13 @@ func _show_end(r: Dictionary) -> void:
 		stats.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		# the numbers count up in the display face: affection in coral, gold in gold
 		stats.add_theme_constant_override("separation", 2)
-		stats.add_child(StudioTheme.mono_label(Loc.t("♥ AFFECTION  (+%d)") % int(rw.get("affection_gain", 0)), 11, Palette.HEAT))
+		# on Nutaku the same two numbers are BOND and CHIPS: "gold" there is the platform's
+		# paid currency, and a win that says "+60 GOLD" reads as free money that never arrives
+		var aff_word := "♥ BOND  (+%d)" if F2P.on() else Loc.t("♥ AFFECTION  (+%d)")
+		stats.add_child(StudioTheme.mono_label(aff_word % int(rw.get("affection_gain", 0)), 11, Palette.HEAT))
 		var aff_n := _counter(Palette.HEAT)
 		stats.add_child(aff_n)
-		stats.add_child(StudioTheme.mono_label(Loc.t("◆ GOLD"), 11, Palette.GOLD))
+		stats.add_child(StudioTheme.mono_label("◆ CHIPS" if F2P.on() else Loc.t("◆ GOLD"), 11, Palette.GOLD))
 		var gold_n := _counter(Palette.GOLD)
 		gold_n.prefix = "+"
 		stats.add_child(gold_n)
@@ -731,7 +734,7 @@ func _show_end(r: Dictionary) -> void:
 	brow.add_child(back)
 	if won:
 		var aff := Button.new()
-		aff.text = Loc.t("AFFECTION")
+		aff.text = "BOND" if F2P.on() else Loc.t("AFFECTION")
 		aff.focus_mode = Control.FOCUS_NONE
 		aff.pressed.connect(func(): Sfx.play("ui_click"); main.go("affection"))
 		brow.add_child(aff)

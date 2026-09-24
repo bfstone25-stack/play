@@ -147,7 +147,7 @@ func _build_bar() -> void:
 	_bar.add_child(row)
 	var wm := VBoxContainer.new()
 	wm.add_theme_constant_override("separation", -4)
-	var w1 := StudioTheme.display_label("SILVERTONGUE", 18, Palette.TEXT)
+	var w1 := StudioTheme.display_label("SUASION", 18, Palette.TEXT)
 	var w2 := StudioTheme.mono_label("AFTER HOURS · CARDS", 8, Palette.ACCENT_SOFT)
 	wm.add_child(w1)
 	wm.add_child(w2)
@@ -235,7 +235,8 @@ func render_wallet(eco: Dictionary) -> void:
 		return
 	_gold.set_target(float(int(eco.get("gold", 0))))
 	if eco.has("tickets"):
-		_gold_tag.text = "CHIPS · %d TICKETS" % int(eco.get("tickets", 0))
+		var tk := int(eco.get("tickets", 0))
+		_gold_tag.text = "CHIPS · %d TICKET%s" % [tk, "" if tk == 1 else "S"]
 	var e: Dictionary = eco.get("energy", {})
 	_energy_n.text = ("⚡ CHARM %d/%d" if F2P.on() else "⚡ %d/%d") % [int(e.get("energy", 0)), int(e.get("pool", 15))]
 	_energy_bar.max_value = int(e.get("pool", 15))

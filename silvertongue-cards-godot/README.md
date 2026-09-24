@@ -8,6 +8,24 @@ is the one that is meant to look like a game. Design: `ops/adult_forks/silverton
 No model anywhere: the client only talks to `/cards/*`. Every number on screen — momentum,
 phase, evidence, nerve, the hand — came back from `/cards/play`; the client animates it.
 
+## How her replies work (they are not one script)
+
+She does not read down a fixed list of lines. Every time you play a card, the game looks
+up her answer in a table. The table is keyed on three things: the phase she was in before
+the card (guarded, engaged, wavering, breakthrough), the phase she is in after it, and
+what kind of card it was (a common that landed, a rare, an ask, your own typed line, a
+repeat, or a pressure card). So the same card gets a cool answer when she is guarded and a
+warmer one when it tips her into wavering: what she says follows the state of the duel,
+not the order of turns. Most keys hold two or more lines and one is picked at random, so
+two duels do not sound the same. If an exact key has no line, the lookup widens step by
+step (any card kind, then any earlier phase) so she always has something to say.
+
+The tables: `play/silvertongue-cards/backend/replies.py` (the five women's own scenes,
+with the Japanese twin in `replies_ja.py`, line for line) and `backend/campaign/voices.py`
+(Celeste, and each woman's lines for ordinary campaign nights). The offline build carries
+a copy in `assets/offline/data.json`; regenerate it with `tools/export_offline.py` and then
+`tools/font_pack.py` after changing any line.
+
 ## Run
 
 ```sh

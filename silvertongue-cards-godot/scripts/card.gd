@@ -122,7 +122,7 @@ func _build() -> void:
 	_small.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_small.visible = false
 	add_child(_small)
-	_back_mark = StudioTheme.display_label("SILVERTONGUE", 10, Color(Palette.GOLD, 0.75))
+	_back_mark = StudioTheme.display_label("SUASION", 10, Color(Palette.GOLD, 0.75))
 	_back_mark.position = Vector2(0, H - 36)
 	_back_mark.size = Vector2(W, 16)
 	_back_mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

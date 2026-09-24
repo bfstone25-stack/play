@@ -183,7 +183,7 @@ func pull(n: int) -> Dictionary:
 	var r := await Nutaku.api("POST", "/suasion/gacha/pull", {"n": n, "pay": pay, "request_id": rid})
 	_adopt(r["body"])
 	if not r["ok"]:
-		return {"error": _why(r) + (" — buy tickets in the store" if int(r["status"]) == 402 else "")}
+		return {"error": _why(r) + (" — tickets are in the store" if int(r["status"]) == 402 else "")}
 	return {"ok": true, "paid": pay, "cards": r["body"].get("cards", []), "economy": economy()}
 
 

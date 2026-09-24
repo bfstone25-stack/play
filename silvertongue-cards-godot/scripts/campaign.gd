@@ -92,9 +92,10 @@ func _render() -> void:
 	if su.is_empty():
 		return
 	var e: Dictionary = Nutaku.state.get("energy", {})
-	_head.text = "STANDING ★%d   ·   CHARM %d/%d   ·   %d CHIPS   ·   %d TICKETS" % [int(su.get("standing", 0)),
+	_head.text = "STANDING ★%d   ·   CHARM %d/%d   ·   %d CHIPS   ·   %d TICKET%s" % [int(su.get("standing", 0)),
 		int(e.get("now", 0)), int(e.get("max", 8)), int(Nutaku.state.get("tokens", {}).get("chips", 0)),
-		int(Nutaku.state.get("tokens", {}).get("ticket", 0))]
+		int(Nutaku.state.get("tokens", {}).get("ticket", 0)),
+		"" if int(Nutaku.state.get("tokens", {}).get("ticket", 0)) == 1 else "S"]
 	for c in _chapters.get_children():
 		c.queue_free()
 	var chs: Array = su.get("chapters", [])
