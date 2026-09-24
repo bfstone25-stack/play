@@ -87,7 +87,7 @@ func run() -> void:
 		var g := Fold.level(lv)
 		var srv_lv: Dictionary = {}
 		check("level %d's board in the client is the generated one (par %d)" % [lv + 1, int(g["par"])],
-			str(g["name"]).ends_with("After Dark %d" % (lv + 1)))
+			str(g["name"]).ends_with("Midnight %d" % (lv + 1)))
 		await play_log(str(sols["levels"][str(lv)]))
 		var cleared := await until(func(): return int(Nutaku.state["progress"]["stars"][lv]) > 0, 12.0)
 		check("level %d accepted by the server" % (lv + 1), cleared)

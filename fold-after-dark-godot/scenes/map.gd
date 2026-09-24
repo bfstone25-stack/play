@@ -34,6 +34,10 @@ func _ready() -> void:
 		await F2P.fetch_challenge()
 		await F2P.fetch_house()
 		await F2P.fetch_event()
+		# The caller picked focus_tier from the LOCAL save before the server's progress was
+		# adopted; a stale save (another account in this browser) scrolled a new player to
+		# tier 24. The server's stars are in Save now, so ask again.
+		focus_tier = Tier.current()
 		F2P.daily_requested.connect(_play_daily)
 		F2P.event_requested.connect(_play_event)
 	_build()

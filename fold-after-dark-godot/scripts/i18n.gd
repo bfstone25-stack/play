@@ -36,6 +36,7 @@ const T := {
 		"retry": "Retry",
 		"share": "Share",
 		"parhint": "%d moves for 3★",
+		"parhint_1": "%d move for 3★",
 		"level": "Level",
 		"done": "done",
 		"curated": "Curated",
@@ -257,6 +258,9 @@ func t(key: String) -> String:
 
 
 func f(key: String, value) -> String:
+	# English singular ("1 move", not "1 moves") where a table has a key_1 form
+	if typeof(value) == TYPE_INT and value == 1 and (T[lang] as Dictionary).has(key + "_1"):
+		return t(key + "_1") % value
 	return t(key) % value
 
 

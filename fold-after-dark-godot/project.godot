@@ -4,7 +4,7 @@ config_version=5
 [application]
 
 config/name="PLICATA"
-config/description="The same fold-and-merge board, after dark. Every tier you clear folds one more layer off her. 18+."
+config/description="The fold-and-merge board, by lamplight. Every tier you clear folds one more layer off her. 18+."
 run/main_scene="res://scenes/title.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"

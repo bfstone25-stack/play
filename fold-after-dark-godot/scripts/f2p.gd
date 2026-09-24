@@ -88,7 +88,10 @@ func candle_text() -> String:
 		return ""
 	if bool(e.get("unlimited", false)):
 		return "Candles ∞"
-	var s := "Candles %d/%d" % [int(e.get("now", 0)), int(e.get("max", 5))]
+	var now := int(e.get("now", 0))
+	var cap := int(e.get("max", 5))
+	# Rewards can stack candles past the refill cap; "10/5" read as a bug on the map.
+	var s := ("Candles %d/%d" % [now, cap]) if now <= cap else ("Candles %d  (refills to %d)" % [now, cap])
 	var nxt := float(e.get("next_in_s", 0))
 	if nxt > 0:
 		var left := maxf(0.0, nxt - (Time.get_unix_time_from_system() - _state_at))
