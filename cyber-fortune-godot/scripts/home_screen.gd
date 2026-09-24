@@ -82,7 +82,9 @@ func relayout() -> void:
 	var daily := StudioTheme.label(Tx.t("daily.free" if Fortune.free_available() else "daily.used"), 15, Palette.LACQUER if Fortune.free_available() else Palette.PAPER_INK, "bold")
 	daily.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	root.add_child(daily)
-	root.add_child(_spacer(6))
+	# The mascot's face owns the middle of the frame (y ~280-720); nothing of the menu may
+	# sit on it (ops/STANDARD.md one-pass rule 6), so the doors start on the coin platform.
+	root.add_child(_spacer(330))
 	root.add_child(_door("east", Tx.t("home.east"), Tx.t("home.east.sub"), "tube"))
 	root.add_child(_door("west", Tx.t("home.west"), Tx.t("home.west.sub"), "deck"))
 	root.add_child(_door("reader", Tx.t("home.reader"), Tx.t("home.reader.sub"), "reader"))
@@ -98,8 +100,8 @@ func relayout() -> void:
 	nav.add_child(_slip_button(
 			"%s  %d/%d" % [Tx.t("home.collection"), counts["slips"] + counts["cards"],
 					counts["slips_all"] + counts["cards_all"]],
-			Palette.GOLD_DEEP, func(): get_parent().open("rack")))
-	nav.add_child(_slip_button(Tx.t("home.shop"), Palette.LACQUER,
+			"sliprack", func(): get_parent().open("rack")))
+	nav.add_child(_slip_button(Tx.t("home.shop"), "incense",
 			func(): get_parent().open("shop")))
 
 
@@ -186,16 +188,29 @@ func _paper_band() -> Control:
 	return c
 
 
-func _slip_button(text: String, tint: Color, on_press: Callable) -> ShapedButton:
-	var b := ShapedButton.new()
-	b.shape = ShapedButton.Shape.SLIP
-	b.tint = tint
-	b.ink = Palette.PAPER
-	b.label = text
-	b.custom_minimum_size = Vector2(300, 64)
-	b.add_theme_font_override("font", StudioTheme.font("bold"))
-	b.add_theme_font_size_override("font_size", 19)
+## 2026-09-23: the nav controls are objects from the temple (ops/STANDARD.md, "Buttons are
+## objects from the game"), not SLIP bars -- Blaze rejected the bar twice.
+func _slip_button(text: String, obj: String, on_press: Callable) -> ObjectButton:
+	var b := _object(obj, 52.0, 20)
+	b.text = text
 	b.pressed.connect(on_press)
+	return b
+
+
+func _object(obj: String, px: float, fs: int) -> ObjectButton:
+	var b := ObjectButton.new()
+	var path := "res://assets/title/btn_%s.png" % obj
+	b.object_texture = load(path) if ResourceLoader.exists(path) else null
+	b.object_size = px
+	b.gap = 14.0
+	b.motion = ObjectButton.Motion.BOB
+	b.label_color = Palette.PAPER_INK
+	b.accent_color = Palette.LACQUER
+	b.ink = Color(Palette.PAPER, 0.95)
+	b.outline_px = 4
+	b.shadow_px = 0
+	b.add_theme_font_override("font", StudioTheme.font("bold"))
+	b.add_theme_font_size_override("font_size", fs)
 	return b
 
 
@@ -205,19 +220,26 @@ func _spacer(h: int) -> Control:
 	return c
 
 
+## One door: the instrument itself (tube, deck, teacup) with its name beside it and the
+## line under the name. No panel -- the three rows were lacquered bars across the key
+## visual, which is the scrim pattern under another name.
 func _door(kind: String, title: String, sub: String, screen: String) -> Control:
-	var d := Door.new()
-	d.kind = kind
-	d.title = title
-	d.sub = sub
-	# 150, and NOT EXPAND_FILL. At 200-and-expand the three rows took ~600 px of a 1280 px
-	# screen and, once there was a picture behind them instead of a black ground, they read
-	# as three full-bleed bars slicing the key visual into stripes — the "picture beside a
-	# form" objection in TITLE_SCREENS.md, turned on its side. The rows are the menu; the
-	# picture is the screen.
-	d.custom_minimum_size = Vector2(0, 150)
-	d.pressed.connect(func(): get_parent().open(screen))
-	return d
+	var obj: String = {"east": "qiantong", "west": "cardfan"}.get(kind, "teacup")
+	var row := Control.new()
+	row.custom_minimum_size = Vector2(0, 100)
+	var b := _object(obj, 84.0, 32)
+	b.add_theme_font_override("font", StudioTheme.font("serif"))
+	b.text = title
+	b.position = Vector2(40, 0)
+	b.pressed.connect(func(): get_parent().open(screen))
+	row.add_child(b)
+	var line := StudioTheme.label(sub, 16, Palette.PAPER_INK, "italic" if Tx.lang == "en" else "serif")
+	line.add_theme_color_override("font_outline_color", Color(Palette.PAPER, 0.95))
+	line.add_theme_constant_override("outline_size", 4)
+	line.position = Vector2(40 + 84 + 14, 66)
+	line.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	row.add_child(line)
+	return row
 
 
 ## One door: a panel in its own palette, a mark, the title and a line under it.

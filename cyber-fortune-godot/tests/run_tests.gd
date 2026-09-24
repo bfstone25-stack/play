@@ -344,6 +344,6 @@ func _teller_states() -> void:
 	for st in ["calm", "reveal", "giveback"]:
 		var tex: Texture2D = t._tex.get(st)
 		if tex != null:
-			hashes[tex.get_image().get_data().hash()] = st
+			hashes[hash(tex.get_image().get_data())] = st
 	eq(hashes.size(), 3, "the three states are three different pictures")
 	t.queue_free()
