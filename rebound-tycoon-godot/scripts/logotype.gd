@@ -128,5 +128,9 @@ func _draw() -> void:
 	var fu := StudioTheme.font("bold")
 	var sz := int(size_px * 0.30)
 	var w := fu.get_string_size(sub, HORIZONTAL_ALIGNMENT_LEFT, -1, sz).x
+	# a keyline under the second line: pale gold on a now-bright sky disappeared
+	for off in [Vector2(-2, 0), Vector2(2, 0), Vector2(0, -2), Vector2(0, 2), Vector2(2, 2)]:
+		draw_string(fu, Vector2(cx - w * 0.5, ry + sz * 1.5) + off, sub, HORIZONTAL_ALIGNMENT_LEFT, -1, sz,
+			Color(0.106, 0.075, 0.125, 0.9 * settle))
 	draw_string(fu, Vector2(cx - w * 0.5, ry + sz * 1.5), sub, HORIZONTAL_ALIGNMENT_LEFT, -1, sz,
 		Color(Palette.GOLD_PALE, settle))

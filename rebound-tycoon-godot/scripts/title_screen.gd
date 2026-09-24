@@ -121,7 +121,10 @@ func _build_key_visual() -> void:
 	# so only the scrim moved -- 0.34 -> 0.13 here and 0.92 -> 0.62 below. That recovers
 	# what the plates actually contain without repainting anything.
 	var grade := ColorRect.new()
-	grade.color = Color(Palette.GROUND_DEEP, 0.13)
+	# 2026-09-23: 0.13 -> 0.0. Blaze: brighten it, keep the uniform blues and greens, make
+	# them bright. The plates are regraded (shadows lifted, colour pushed); this and the
+	# road gradient below were the last darkness laid on top.
+	grade.color = Color(Palette.GROUND_DEEP, 0.0)
 	grade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	grade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	grade.z_index = -15
@@ -135,7 +138,7 @@ func _build_key_visual() -> void:
 	var g := Gradient.new()
 	g.offsets = PackedFloat32Array([0.0, 0.62, 1.0])
 	g.colors = PackedColorArray([Color(Palette.GROUND_DEEP, 0.0),
-		Color(Palette.GROUND_DEEP, 0.34), Color(Palette.GROUND_DEEP, 0.62)])
+		Color(Palette.GROUND_DEEP, 0.0), Color(Palette.GROUND_DEEP, 0.0)])
 	var gt := GradientTexture2D.new()
 	gt.gradient = g
 	gt.fill_from = Vector2(0, 0)
@@ -214,6 +217,9 @@ func _build_marks() -> void:
 	# where the rest of the type is set.
 	var tag := Label.new()
 	tag.text = RTStrings.t("tagline")
+	# the plate is bright now; a pale tagline needs its own keyline to read on it
+	tag.add_theme_color_override("font_outline_color", Color("1B1320"))
+	tag.add_theme_constant_override("outline_size", 6)
 	tag.theme_type_variation = "Tag"
 	tag.add_theme_color_override("font_color", Palette.GOLD_PALE)
 	tag.add_theme_font_size_override("font_size", 12)
