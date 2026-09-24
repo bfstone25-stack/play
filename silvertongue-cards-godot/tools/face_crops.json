@@ -1,8 +1,94 @@
 {
   "_": "Crop rects in plate pixels (1344x768) of play/silvertongue-x/frontend/assets/cg/cg1_<scenario>.png, eyeballed once. face = 3:2, for the card picture panel and the affection row; bust = 4:5, for the duel portrait and the Home roster. Never the raw ref renders in ops/silvertongue_art/ref.",
-  "mara":    {"scenario": "closing_time", "face": [435, 50, 945, 390],  "bust": [430, 0, 950, 650]},
-  "ines":    {"scenario": "the_key",      "face": [506, 152, 806, 352], "bust": [476, 130, 836, 580]},
-  "yuenha":  {"scenario": "life_model",   "face": [405, 40, 915, 380],  "bust": [410, 0, 930, 650]},
-  "sanne":   {"scenario": "house_rule",   "face": [415, 0, 925, 340],   "bust": [400, 0, 920, 650]},
-  "teodora": {"scenario": "last_night",   "face": [395, 10, 905, 350],  "bust": [390, 0, 910, 650]}
+  "mara": {
+    "scenario": "closing_time",
+    "face": [
+      435,
+      50,
+      945,
+      390
+    ],
+    "bust": [
+      430,
+      0,
+      950,
+      650
+    ]
+  },
+  "ines": {
+    "scenario": "the_key",
+    "face": [
+      506,
+      152,
+      806,
+      352
+    ],
+    "bust": [
+      476,
+      130,
+      836,
+      580
+    ]
+  },
+  "yuenha": {
+    "scenario": "life_model",
+    "face": [
+      405,
+      40,
+      915,
+      380
+    ],
+    "bust": [
+      410,
+      0,
+      930,
+      650
+    ]
+  },
+  "sanne": {
+    "scenario": "house_rule",
+    "face": [
+      415,
+      0,
+      925,
+      340
+    ],
+    "bust": [
+      400,
+      0,
+      920,
+      650
+    ]
+  },
+  "teodora": {
+    "scenario": "last_night",
+    "face": [
+      395,
+      10,
+      905,
+      350
+    ],
+    "bust": [
+      390,
+      0,
+      910,
+      650
+    ]
+  },
+  "celeste": {
+    "scenario": "celeste",
+    "face": [
+      380,
+      40,
+      740,
+      280
+    ],
+    "bust": [
+      330,
+      0,
+      810,
+      600
+    ],
+    "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
+  }
 }

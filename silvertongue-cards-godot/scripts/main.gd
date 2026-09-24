@@ -11,6 +11,8 @@ const SCREENS := {
 	"gacha": "res://scenes/gacha.tscn",
 	"affection": "res://scenes/affection.tscn",
 	"deck": "res://scenes/deck.tscn",
+	"campaign": "res://scenes/campaign.tscn",
+	"store": "res://scenes/store.tscn",
 }
 
 var current := ""
@@ -21,6 +23,7 @@ var _room: Control
 var _bar: PanelContainer
 var _nav := {}
 var _gold: Counter
+var _gold_tag: Label
 var _energy_n: Label
 var _energy_bar: ProgressBar
 var _energy_next: Label
@@ -164,6 +167,7 @@ func _build_bar() -> void:
 	var gold_tag := StudioTheme.mono_label("GOLD", 10, Palette.GOLD)
 	gold_tag.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	row.add_child(gold_tag)
+	_gold_tag = gold_tag
 	row.add_child(_spacer(10))
 	# energy: coral, a bolt, the bar is heat
 	_energy_n = StudioTheme.mono_label("⚡ 15/15", 12, Palette.HEAT)
@@ -193,7 +197,10 @@ func _build_bar() -> void:
 	_lang_button.pressed.connect(func(): Sfx.play("ui_click"); Loc.next())
 	StudioTheme.style_button(_lang_button, "quiet")
 	row.add_child(_lang_button)
-	for pair in [["home", "DUELS"], ["gacha", "GACHA"], ["affection", "AFFECTION"], ["deck", "DECK"]]:
+	var navs := [["home", "DUELS"], ["gacha", "GACHA"], ["affection", "AFFECTION"], ["deck", "DECK"]]
+	if F2P.on():
+		navs = [["home", "LEDGER"], ["gacha", "GACHA"], ["affection", "BOND"], ["deck", "DECK"], ["store", "STORE"]]
+	for pair in navs:
 		var b := Button.new()
 		b.text = Loc.t(pair[1])
 		b.set_meta("key", pair[1])
@@ -227,8 +234,10 @@ func render_wallet(eco: Dictionary) -> void:
 	if eco.is_empty():
 		return
 	_gold.set_target(float(int(eco.get("gold", 0))))
+	if eco.has("tickets"):
+		_gold_tag.text = "CHIPS · %d TICKETS" % int(eco.get("tickets", 0))
 	var e: Dictionary = eco.get("energy", {})
-	_energy_n.text = "⚡ %d/%d" % [int(e.get("energy", 0)), int(e.get("pool", 15))]
+	_energy_n.text = ("⚡ CHARM %d/%d" if F2P.on() else "⚡ %d/%d") % [int(e.get("energy", 0)), int(e.get("pool", 15))]
 	_energy_bar.max_value = int(e.get("pool", 15))
 	_energy_bar.value = int(e.get("energy", 0))
 	_energy_left = int(e.get("next_in_s", 0))
@@ -264,6 +273,10 @@ func refresh() -> Dictionary:
 
 
 func go(name: String, args: Dictionary = {}) -> void:
+	# On Nutaku the roster is the campaign: the Night Ledger's map replaces the five-duel
+	# home screen (F2P.on() is false everywhere else, and nothing below changes).
+	if F2P.on() and name == "home":
+		name = "campaign"
 	if not SCREENS.has(name):
 		return
 	if screen and is_instance_valid(screen):
@@ -275,7 +288,7 @@ func go(name: String, args: Dictionary = {}) -> void:
 	for k in _nav:
 		var b: Button = _nav[k]
 		b.theme_type_variation = ""
-		if k == name:
+		if k == name or (k == "home" and name == "campaign"):
 			StudioTheme.style_button(b, "active")
 	screen = load(SCREENS[name]).instantiate()
 	screen.set("main", self)

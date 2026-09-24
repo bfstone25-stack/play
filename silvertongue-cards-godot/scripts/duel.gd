@@ -32,6 +32,9 @@ var _type_tween: Tween
 var _busy := false
 var _streak := 0
 var _idle := 0.0
+var _resolve_bar: ProgressBar
+var _resolve_n: Label
+var _pass_btn: Button
 
 
 func setup(args: Dictionary) -> void:
@@ -104,7 +107,30 @@ func _build() -> void:
 	c2.add_child(_deck_left)
 	counters.add_child(c1)
 	counters.add_child(c2)
+	# her resolve (the campaign's bar, Nutaku build): what each landed card wears down
+	var c3 := HBoxContainer.new()
+	_resolve_n = StudioTheme.mono_label("RESOLVE", 11, Palette.HEAT)
+	_resolve_bar = ProgressBar.new()
+	_resolve_bar.show_percentage = false
+	_resolve_bar.custom_minimum_size = Vector2(150, 10)
+	_resolve_bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	var fill := StudioTheme.flat(Palette.HEAT, Color(0, 0, 0, 0), 4, 0)
+	_resolve_bar.add_theme_stylebox_override("fill", fill)
+	c3.add_child(_resolve_n)
+	c3.add_child(_resolve_bar)
+	c3.visible = false
+	c3.name = "ResolveRow"
+	counters.add_child(c3)
 	hrow.add_child(counters)
+	if F2P.on():
+		_pass_btn = Button.new()
+		_pass_btn.text = "HOLD YOUR TONGUE"
+		_pass_btn.tooltip_text = "Say nothing: spend a turn, refill your nerve, draw a fresh hand."
+		_pass_btn.focus_mode = Control.FOCUS_NONE
+		_pass_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		StudioTheme.style_button(_pass_btn, "quiet")
+		_pass_btn.pressed.connect(func(): Sfx.play("ui_click"); _play_turn("pass", ""))
+		hrow.add_child(_pass_btn)
 	var leave := Button.new()
 	leave.text = Loc.t("LEAVE")
 	leave.focus_mode = Control.FOCUS_NONE
@@ -322,6 +348,15 @@ func render(instant: bool = false) -> void:
 	_turn_pips.queue_redraw()
 	_nerve_pips.queue_redraw()
 	_deck_left.text = Loc.t("DECK %d") % int(duel.get("deck_left", 0))
+	var rmax := int(duel.get("resolve_max", 0))
+	if rmax > 0 and _resolve_bar:
+		_resolve_bar.get_parent().visible = true
+		_resolve_bar.max_value = rmax
+		_resolve_n.text = "RESOLVE %d/%d " % [int(duel.get("resolve", 0)), rmax]
+		if instant:
+			_resolve_bar.value = int(duel.get("resolve", 0))
+		else:
+			create_tween().tween_property(_resolve_bar, "value", float(duel.get("resolve", 0)), 0.45).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	_render_needs(harms)
 	hand.set_hand(duel.get("hand", []), int(duel.get("nerve", 1)), int(duel.get("wild_left", 0)))
 	if duel.get("over", false):
@@ -414,7 +449,9 @@ func _play_turn(id: String, text: String) -> void:
 	_busy = true
 	main.busy = true
 	var line := text
-	if id != "wild":
+	if id == "pass":
+		line = "(You say nothing.)"
+	elif id != "wild":
 		for c in duel.get("hand", []):
 			if c.get("id") == id:
 				# The printed face, not the engine's English (Card.printed_line()).
@@ -453,6 +490,7 @@ func _play_turn(id: String, text: String) -> void:
 	_bark_for(read, r)
 	_say(str(scen.get("name", "")), str(r.get("reply", "")), "gray" if harmed else "her")
 	render(false)
+	_juice(read, pb, pa)
 	if r.has("end"):
 		ended = true
 		hand.lock()
@@ -463,6 +501,55 @@ func _play_turn(id: String, text: String) -> void:
 	_busy = false
 	main.busy = false
 	turn_resolved.emit(r)
+
+
+## The campaign's feedback on a turn (all of it read off the server's answer): the number a
+## card wore off her resolve pops over her portrait; a phase change slams its name across
+## the table; Celeste's cut and a talked-over card say what happened.
+func _juice(read: Dictionary, pb: int, pa: int) -> void:
+	var imp := int(read.get("impact", 0))
+	if imp > 0:
+		_pop("-%d" % imp, Palette.HEAT, 44, Vector2(0.28, 0.42))
+		Sfx.play("hit", -8.0)
+	if pa > pb and str(read.get("phase_after", "")) != "breakthrough":
+		_pop(str(read.get("phase_after", "")).to_upper(), Palette.GOLD, 64, Vector2(0.5, 0.36), 1.1)
+		_shake(6.0)
+		Sfx.play("flourish", -9.0)
+	match str(read.get("kind", "")):
+		"muted":
+			main.toast("She talked straight over it.", 1.8, Palette.MUTED)
+		"order":
+			main.toast("Wrong order — she closed the door.", 2.2, Palette.HEAT)
+		"press":
+			pass
+	if read.get("stolen") != null and str(read.get("stolen", "")) != "":
+		main.toast("Celeste's cut: she took your costliest card.", 2.2, Palette.ACCENT)
+		Sfx.play("steal", -8.0)
+
+
+func _pop(text: String, color: Color, size_px: int, at: Vector2, secs: float = 0.8) -> void:
+	var l := StudioTheme.display_label(text, size_px, color)
+	l.add_theme_color_override("font_outline_color", Palette.GROUND_DEEP)
+	l.add_theme_constant_override("outline_size", 10)
+	l.position = Vector2(size.x * at.x, size.y * at.y)
+	l.pivot_offset = Vector2(60, 30)
+	l.scale = Vector2(0.4, 0.4)
+	l.z_index = 20
+	add_child(l)
+	var tw := create_tween()
+	tw.tween_property(l, "scale", Vector2(1.15, 1.15), 0.16).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_property(l, "scale", Vector2.ONE, 0.1)
+	tw.parallel().tween_property(l, "position:y", l.position.y - 40, secs)
+	tw.parallel().tween_property(l, "modulate:a", 0.0, secs).set_delay(secs * 0.4)
+	tw.tween_callback(l.queue_free)
+
+
+func _shake(px: float) -> void:
+	var o := position
+	var tw := create_tween()
+	for i in 5:
+		tw.tween_property(self, "position", o + Vector2(randf_range(-px, px), randf_range(-px, px)), 0.035)
+	tw.tween_property(self, "position", o, 0.05)
 
 
 ## Which bark fires on this turn. ops/bark_wire.py deliberately does not choose the
@@ -509,6 +596,13 @@ func _bark_for(read: Dictionary, r: Dictionary) -> void:
 func drive_play(id: String, text: String = "") -> Dictionary:
 	if not hand.choose(id, text):
 		return {"error": "cannot play %s (state %d, nerve %d)" % [id, hand.state, int(duel.get("nerve", 0))]}
+	var r: Dictionary = await turn_resolved
+	return r
+
+
+## Driver entry for "hold your tongue" (the Nutaku build's pass).
+func drive_pass() -> Dictionary:
+	_play_turn("pass", "")
 	var r: Dictionary = await turn_resolved
 	return r
 
@@ -650,8 +744,9 @@ func _show_end(r: Dictionary) -> void:
 			see.pressed.connect(func(): Sfx.play("ui_click"); _show_plate(str(keys[0])))
 			brow.add_child(see)
 	# The board: offered on an explicit press only, and only on the web (Gate no-ops
-	# elsewhere). Never a popup, never a redirect — board.js draws in the page.
-	if Gate.is_web():
+	# elsewhere). Never a popup, never a redirect — board.js draws in the page. Never on
+	# Nutaku: no links to other platforms in the Nutaku build.
+	if Gate.is_web() and not F2P.on():
 		var more := Button.new()
 		more.text = Loc.t("MORE LIKE THIS")
 		more.focus_mode = Control.FOCUS_NONE
@@ -720,4 +815,4 @@ func leave_confirm() -> void:
 
 func leave() -> void:
 	main.refresh()
-	main.go("home")
+	main.go("campaign" if F2P.on() else "home")

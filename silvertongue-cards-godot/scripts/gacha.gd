@@ -67,7 +67,10 @@ func _ready() -> void:
 			main.toast("+1000 gold (dev)")
 			await main.refresh()
 			_render_prices())
-	btns.add_child(dev)
+	if not F2P.on():               # never on Nutaku: gold is the platform's
+		btns.add_child(dev)
+	else:
+		dev.free()
 	head.add_child(btns)
 	_pity = StudioTheme.mono_label("", 11, Palette.MUTED)
 	col.add_child(_pity)
@@ -100,6 +103,10 @@ func _render_prices() -> void:
 	var pp: Dictionary = eco.get("pull_price", {"1": 100, "10": 900})
 	_pull1.text = Loc.t("1 PULL · %d") % int(pp.get("1", 100))
 	_pull10.text = Loc.t("10 PULL · %d") % int(pp.get("10", 900))
+	if F2P.on():
+		var t := int(eco.get("tickets", 0))
+		_pull1.text = "1 PULL · " + ("1 TICKET" if t >= 1 else "%d CHIPS" % int(pp.get("1", 300)))
+		_pull10.text = "10 PULL · " + ("10 TICKETS" if t >= 10 else "%d CHIPS" % int(pp.get("10", 3000)))
 	var p: Dictionary = eco.get("pity", {})
 	_pity.text = Loc.t("PULLS %d · EPIC PITY IN %d · CREDITS %d") % [int(p.get("pulls", 0)), int(p.get("epic_pity_in", 30)), int(p.get("pull_credits", 0))]
 
@@ -201,6 +208,7 @@ func _flip(c: Card, dupe: bool, pity: bool) -> void:
 			Sfx.play("flip", -14.0)
 		if rar != "common":
 			_burst(c, Palette.rarity_color(rar), 36 if epic else 16, 1.4 if epic else 0.8)
+			_flash(Palette.rarity_color(rar), 0.55 if epic else 0.25)
 		if dupe:
 			Sfx.play("dupe", -14.0)
 			_stamp(c, "DUPE", Palette.HEAT)
@@ -215,6 +223,21 @@ func _flip(c: Card, dupe: bool, pity: bool) -> void:
 	if rar != "common":
 		tw.parallel().tween_property(c, "glow", 0.35 if epic else 0.0, 1.4 if epic else 0.9)
 	await tw.finished
+
+
+## The whole felt flashes the rarity's colour: violet for a rare, gold (and longer) for an
+## epic. Skipped for commons, so the flash always means something.
+func _flash(color: Color, alpha: float) -> void:
+	var f := ColorRect.new()
+	f.color = Color(color, alpha)
+	f.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	f.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(f)
+	var tw := create_tween()
+	tw.tween_property(f, "color:a", 0.0, 0.5 if alpha > 0.4 else 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tw.tween_callback(f.queue_free)
+	if F2P.on():
+		Sfx.play("flourish", -10.0)
 
 
 ## A cheap one-shot spark burst behind the card, in the rarity colour.

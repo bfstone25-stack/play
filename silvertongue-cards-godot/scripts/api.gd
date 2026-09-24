@@ -54,6 +54,14 @@ func probe() -> bool:
 	if probed:
 		return not offline
 	probed = true
+	# On Nutaku (or the desktop mock path) the title server is the backend: handshake,
+	# log in, and never fall back to local play -- a Nutaku player's collection is theirs
+	# on the server or nowhere.
+	if F2P.on():
+		var ok := await F2P.boot()
+		if not ok:
+			request_failed.emit("/f2p/login", Nutaku.last_error)
+		return ok
 	var http := HTTPRequest.new()
 	http.timeout = 4.0
 	add_child(http)
@@ -185,21 +193,31 @@ func health() -> Dictionary:
 	return await get_json("/cards/health")
 
 func state() -> Dictionary:
+	if F2P.on():
+		await F2P.refresh()
+		return {"economy": F2P.economy(), "scenarios": [], "affection": F2P.affection()["affection"], "duel": null,
+			"daily": {"available": F2P.economy()["daily_available"]}}
 	if offline:
 		return _local(Offline.state(Loc.code()))
 	return await get_json("/cards/state?lang=%s" % Loc.code())
 
 func deck(scenario: String, auto: bool = false) -> Dictionary:
+	if F2P.on():
+		return await F2P.deck(scenario, auto)
 	if offline:
 		return _local(Offline.deck(scenario, auto))
 	return await get_json("/cards/deck?scenario=%s%s" % [scenario.uri_encode(), "&auto=1" if auto else ""])
 
 func save_deck(scenario: String, ids: Array) -> Dictionary:
+	if F2P.on():
+		return await F2P.save_deck(scenario, ids)
 	if offline:
 		return _local(Offline.save_deck(scenario, ids))
 	return await post_json("/cards/deck", {"scenario": scenario, "deck": ids})
 
 func start(scenario: String, difficulty: String, daily: bool = false) -> Dictionary:
+	if F2P.on():
+		return await F2P.start(scenario, daily)
 	if offline:
 		return _local(Offline.start(scenario, difficulty, daily))
 	# lang, because /cards/start returns the scenario row AND her opening line, both of
@@ -209,31 +227,44 @@ func start(scenario: String, difficulty: String, daily: bool = false) -> Diction
 		"daily": daily, "lang": Loc.code()})
 
 func play(card: String, text: String = "") -> Dictionary:
+	if F2P.on():
+		return await F2P.play(card, text)
 	if offline:
 		return _local(Offline.play(card, text))
 	return await post_json("/cards/play", {"card": card, "text": text, "lang": Loc.code()})
 
 func forfeit() -> Dictionary:
+	if F2P.on():
+		return await F2P.forfeit()
 	if offline:
 		return Offline.forfeit()
 	return await post_json("/cards/forfeit", {})
 
 func daily() -> Dictionary:
+	if F2P.on():
+		return {"percentile": null}
 	if offline:
 		return Offline.daily(Loc.code())
 	return await get_json("/cards/daily?lang=%s" % Loc.code())
 
 func pull(n: int) -> Dictionary:
+	if F2P.on():
+		return await F2P.pull(n)
 	if offline:
 		return _local(Offline.pull(n))
 	return await post_json("/cards/pull", {"n": n})
 
 func affection() -> Dictionary:
+	if F2P.on():
+		await F2P.refresh()
+		return F2P.affection()
 	if offline:
 		return Offline.affection()
 	return await get_json("/cards/affection")
 
 func dev_gold(amount: int = 1000) -> Dictionary:
+	if F2P.on():
+		return {"error": "not on Nutaku"}
 	if offline:
 		return _local(Offline.dev_gold(amount))
 	return await post_json("/cards/dev/gold", {"amount": amount})
@@ -260,6 +291,8 @@ func plate_texture(key: String) -> Texture2D:
 	# Offline the ladder plates are not in the package (the art ceiling: the client only
 	# ever shows what the ladder earned, and the ladder lives on the server). The caller
 	# draws its dashed placeholder, which is the same thing it does for tier 4 online.
+	if F2P.on():
+		return await F2P.plate_texture(key)
 	if offline:
 		return null
 	var path := "/assets/cg/%s.png" % key

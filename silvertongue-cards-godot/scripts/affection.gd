@@ -47,7 +47,7 @@ func _load() -> void:
 		return
 	data = r.get("affection", {})
 	var i := 0
-	for who in ["mara", "ines", "yuenha", "sanne", "teodora"]:
+	for who in ["mara", "ines", "yuenha", "sanne", "teodora", "celeste"]:
 		if not data.has(who):
 			continue
 		_row(who, data[who], i)

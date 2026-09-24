@@ -88,5 +88,23 @@
    650
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_life_model.png"
+ },
+ "assets/faces/celeste.webp": {
+  "crop": [
+   380,
+   40,
+   740,
+   280
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
+ },
+ "assets/portraits/celeste.webp": {
+  "crop": [
+   330,
+   0,
+   810,
+   600
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
  }
 }

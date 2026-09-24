@@ -42,6 +42,11 @@ func _ready() -> void:
 		"gold": _tone([[1760, 0.04, 0.35], [2217, 0.08, 0.3]]),
 		"energy": _tone([[988, 0.06, 0.4]]),
 		"board": _tone([[600, 0.06, 0.35], [900, 0.10, 0.3]]),
+		# SUASION campaign (Nutaku build): a card landing on her resolve, a phase changing,
+		# Celeste taking a card. Synthesised like every cue here -- no third-party audio.
+		"hit": _tone([[220, 0.03, 0.7], [330, 0.05, 0.5]]),
+		"flourish": _tone([[784, 0.06, 0.45], [988, 0.06, 0.45], [1175, 0.06, 0.45], [1568, 0.24, 0.5]]),
+		"steal": _tone([[660, 0.05, 0.4], [494, 0.05, 0.4], [370, 0.14, 0.4]]),
 	}
 	_bark_ready()
 func play(name: String, volume_db: float = -8.0) -> void:
