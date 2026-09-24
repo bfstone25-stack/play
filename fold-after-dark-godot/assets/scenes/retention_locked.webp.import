@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brhfc0r88vlf2"
-path="res://.godot/imported/qiao_night.png-7c68b764352e434ee263c0059f2b8185.ctex"
+uid="uid://8uq2s1dkyy6y"
+path="res://.godot/imported/retention_locked.webp-bcb5031e4f8aa8ca9db8788e5cc42d6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/night/qiao_night.png"
-dest_files=["res://.godot/imported/qiao_night.png-7c68b764352e434ee263c0059f2b8185.ctex"]
+source_file="res://assets/scenes/retention_locked.webp"
+dest_files=["res://.godot/imported/retention_locked.webp-bcb5031e4f8aa8ca9db8788e5cc42d6f.ctex"]
 
 [params]
 

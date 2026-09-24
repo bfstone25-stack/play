@@ -23,6 +23,8 @@ Tel="*res://scripts/tel.gd"
 Tier="*res://scripts/tiers.gd"
 Origami="*res://scripts/origami.gd"
 Unlock="*res://scripts/unlock.gd"
+Nutaku="*res://scripts/nutaku_f2p.gd"
+F2P="*res://scripts/f2p.gd"
 
 [display]
 
