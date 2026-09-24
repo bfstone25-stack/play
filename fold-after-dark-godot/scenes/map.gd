@@ -31,6 +31,11 @@ func _ready() -> void:
 			_loading("Could not reach the game server. " + Nutaku.last_error)
 			return
 		await Nutaku.refresh()
+		await F2P.fetch_challenge()
+		await F2P.fetch_house()
+		await F2P.fetch_event()
+		F2P.daily_requested.connect(_play_daily)
+		F2P.event_requested.connect(_play_event)
 	_build()
 	I18n.changed.connect(func(_l): _build())
 
@@ -113,6 +118,14 @@ func _build() -> void:
 	var title := StudioTheme.display_label(I18n.t("map_btn"), 24, Palette.GOLD)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(title)
+	if F2P.on() and not F2P.house.is_empty():
+		# the rise through the Folding House: where you stand, from the server
+		var st: Dictionary = F2P.house.get("standing", {})
+		title.text = "The Folding House  ·  %s  ·  %s" % [str(st.get("chapter", "")), str(st.get("stage", ""))]
+		title.name = "Standing"
+		var rise := StudioTheme.mono_label("chapter %d of %d" % [mini(int(st.get("chapters_done", 0)) + 1,
+			int(st.get("chapters", 0))), int(st.get("chapters", 0))], 13, Palette.MUTED)
+		head.add_child(rise)
 	var rating := Label.new()
 	rating.theme_type_variation = "Tag"
 	rating.text = I18n.t("rating")
@@ -185,6 +198,13 @@ func _tier_card(t: int) -> Control:
 	var h := StudioTheme.display_label("%s %d" % [I18n.t("tier").to_upper(), t + 1], 22,
 		Palette.GOLD if open else Palette.FAINT)
 	info.add_child(h)
+	if F2P.on() and F2P.tier_stage(t) != "":
+		# the relationship stage this tier's scene stands for (server: /f2p/house)
+		var chap := F2P.chapter_of(t)
+		var stg := StudioTheme.mono_label("%s  ·  %s" % [F2P.tier_stage(t), str(chap.get("title", ""))], 13,
+			Palette.ACCENT if open else Palette.FAINT)
+		stg.name = "Stage"
+		info.add_child(stg)
 	var lv := StudioTheme.mono_label("%s %d–%d   ·   %d/%d" % [I18n.t("level"), Tier.first_level(t) + 1,
 		Tier.last_level(t) + 1, Tier.cleared_in(t), Tier.length(t)], 14, Palette.MUTED)
 	info.add_child(lv)
@@ -332,6 +352,27 @@ func _play(t: int) -> void:
 	queue_free()
 
 
+func _play_event() -> void:
+	Sfx.slide()
+	F2P.event_board = F2P.event_next_board()
+	var scene: PackedScene = load("res://scenes/game.tscn")
+	var node := scene.instantiate()
+	node.set("start_level", Fold.EVENT)
+	get_tree().root.add_child(node)
+	get_tree().current_scene = node
+	queue_free()
+
+
+func _play_daily() -> void:
+	Sfx.slide()
+	var scene: PackedScene = load("res://scenes/game.tscn")
+	var node := scene.instantiate()
+	node.set("start_level", Fold.DAILY)
+	get_tree().root.add_child(node)
+	get_tree().current_scene = node
+	queue_free()
+
+
 ## View an unlocked scene, or try the delivery again for a tier that is cleared but whose
 ## plate never arrived. Either way the picture comes from Unlock or does not come.
 func _view(scene: Dictionary) -> void:
@@ -406,6 +447,12 @@ func _process(_d: float) -> void:
 		var ct := _ui.find_child("CandleText", true, false)
 		if ct is Label:
 			(ct as Label).text = F2P.candle_text()
+		var cd := _ui.find_child("ChallengeCountdown", true, false)
+		if cd is Label:
+			(cd as Label).text = "Next in " + F2P.challenge_countdown()
+		var ee := _ui.find_child("EventEnds", true, false)
+		if ee is Label:
+			(ee as Label).text = "Ends in " + F2P.event_ends_text()
 
 
 func _open_shop() -> void:

@@ -132,6 +132,61 @@ static func side(rebuild: Callable, open_shop: Callable) -> Array:
 	var out := []
 	var daily: Dictionary = s.get("daily", {})
 
+	# the daily challenge (F2P.fetch_challenge ran before this): today's board, the reward
+	# if it is still unclaimed, the challenge streak, the countdown to the next one
+	var ch: Dictionary = F2P.challenge
+	if not ch.is_empty():
+		var dc := _panel("Daily challenge #%d" % int(ch.get("number", 0)))
+		dc.name = "DailyChallenge"
+		if bool(ch.get("claimed", false)):
+			dc.add_child(StudioTheme.mono_label("Done today ✓  ·  streak %d" % int(ch.get("streak", 0)), 13, Palette.SUCCESS))
+		else:
+			dc.add_child(StudioTheme.serif_label("Reward: " + _reward_text(ch.get("reward", {})), 14, Palette.TEXT))
+			if int(ch.get("streak", 0)) > 0:
+				dc.add_child(StudioTheme.mono_label("Streak %d · every %d days: %s" % [int(ch["streak"]),
+					int(ch.get("streak_every", 7)), _reward_text(ch.get("streak_bonus", {}))], 12, Palette.MUTED))
+		var cd := StudioTheme.mono_label("Next in " + F2P.challenge_countdown(), 12, Palette.GOLD)
+		cd.name = "ChallengeCountdown"
+		dc.add_child(cd)
+		var play := Button.new()
+		play.name = "PlayDaily"
+		play.text = "Play again" if bool(ch.get("claimed", false)) else "Play today's board"
+		play.theme_type_variation = "Ghost" if bool(ch.get("claimed", false)) else "Primary"
+		play.pressed.connect(func(): F2P.daily_requested.emit())
+		dc.add_child(play)
+		# today's scores (the server's replay score of each player's best accepted win)
+		var lbv := VBoxContainer.new()
+		lbv.name = "DailyBoard"
+		dc.add_child(lbv)
+		_fill_daily_board(lbv)
+		out.append(dc.get_meta("panel"))
+
+	# the weekly event: one woman featured, a seven-board bonus track, her keepsake
+	var ev: Dictionary = F2P.event
+	if not ev.is_empty():
+		var ep := _panel("This week · %s" % str(ev.get("title", "")))
+		ep.name = "WeeklyEvent"
+		if str(ev.get("blurb", "")) != "":
+			var bl := StudioTheme.serif_label(str(ev["blurb"]), 13, Palette.TEXT)
+			bl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			ep.add_child(bl)
+		var n := (ev.get("boards", []) as Array).size()
+		ep.add_child(StudioTheme.mono_label("Boards %d/%d  ·  each: %s" % [int(ev.get("cleared", 0)), n,
+			_reward_text(ev.get("per_board", {}))], 13, Palette.GOLD))
+		ep.add_child(StudioTheme.mono_label(("Won: " if bool(ev.get("exclusive_claimed", false)) else "All seven: ")
+			+ str(ev.get("exclusive_label", "")) + " + a night of unlimited candles", 12,
+			Palette.SUCCESS if bool(ev.get("exclusive_claimed", false)) else Palette.MUTED))
+		var ends := StudioTheme.mono_label("Ends in " + F2P.event_ends_text(), 12, Palette.MUTED)
+		ends.name = "EventEnds"
+		ep.add_child(ends)
+		var eb := Button.new()
+		eb.name = "PlayEvent"
+		eb.text = "Play board %d" % (F2P.event_next_board() + 1)
+		eb.theme_type_variation = "Primary"
+		eb.pressed.connect(func(): F2P.event_requested.emit())
+		ep.add_child(eb)
+		out.append(ep.get_meta("panel"))
+
 	# candles + shop
 	var c := _panel("Candles")
 	var cl := StudioTheme.mono_label(F2P.candle_text(), 14, Palette.GOLD)
@@ -213,6 +268,24 @@ static func side(rebuild: Callable, open_shop: Callable) -> Array:
 	out.append(lb.get_meta("panel"))
 	_fill_board(lb, wait)
 	return out
+
+
+static func _fill_daily_board(v: VBoxContainer) -> void:
+	var r := await F2P.daily_leaderboard()
+	if not is_instance_valid(v) or not r["ok"]:
+		return
+	var shown := 0
+	for row in r["body"].get("top", []):
+		if shown >= 3:
+			break
+		shown += 1
+		v.add_child(StudioTheme.mono_label("%d.  %-12s %6d" % [int(row["rank"]), str(row["nickname"]).left(12), int(row["score"])],
+			12, Palette.GOLD if bool(row["you"]) else Palette.TEXT))
+	var me = r["body"].get("you")
+	if typeof(me) == TYPE_DICTIONARY and int(me["rank"]) > shown:
+		v.add_child(StudioTheme.mono_label("%d.  %-12s %6d" % [int(me["rank"]), "you", int(me["score"])], 12, Palette.GOLD))
+	if shown == 0:
+		v.add_child(StudioTheme.mono_label("No scores yet today", 12, Palette.MUTED))
 
 
 static func _fill_board(v: VBoxContainer, placeholder: Label) -> void:

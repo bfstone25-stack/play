@@ -58,7 +58,16 @@ static func tile_ink(v: int) -> Color:
 	return Color("dfe6f0") if v <= 8 else Color("241a06")
 
 ## The 201 shipped levels, loaded from data/levels.json (a byte copy of the live one).
+## On Nutaku, F2P appends levels 202-800 from data/levels_gen.json (load_extension).
 var levels: Array = []
+var base_count := 0
+
+## The daily challenge is not in `levels`: the server hands its board over when it opens
+## the day's attempt, and it plays under this sentinel index (F2P.begin_daily).
+const DAILY := 100000
+## The weekly event's bonus-track board plays the same way (F2P.begin_event).
+const EVENT := 100001
+var daily_level: Dictionary = {}     # the server-sent board for DAILY or EVENT
 
 # --- live board -------------------------------------------------------------------------
 var level_index: int = 0
@@ -89,6 +98,34 @@ func load_levels() -> void:
 	f.close()
 	if parsed is Array and not parsed.is_empty():
 		levels = parsed
+		base_count = levels.size()
+
+
+## Levels 202-800 (ops/nutaku/fold_f2p/gen_levels.py): every one proven solvable and
+## replayed by the server. Only the Nutaku build asks for them (scripts/f2p.gd), so the
+## itch / ad-track game keeps its 201.
+func load_extension() -> int:
+	if levels.size() > base_count:
+		return levels.size() - base_count
+	var f := FileAccess.open("res://data/levels_gen.json", FileAccess.READ)
+	if f == null:
+		push_warning("Fold: data/levels_gen.json missing; 201 levels only")
+		return 0
+	var parsed = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Array:
+		levels.append_array(parsed)
+		return parsed.size()
+	return 0
+
+
+func is_daily() -> bool:
+	return level_index == DAILY
+
+
+## A server-sent board (the daily challenge or an event board), not one of `levels`.
+func is_special() -> bool:
+	return level_index == DAILY or level_index == EVENT
 
 
 func level_count() -> int:
@@ -96,6 +133,8 @@ func level_count() -> int:
 
 
 func level(i: int) -> Dictionary:
+	if i == DAILY or i == EVENT:
+		return daily_level
 	return levels[clampi(i, 0, levels.size() - 1)]
 
 
@@ -118,7 +157,7 @@ func level_name(i: int, lang: String) -> String:
 
 ## JS `load(l)`: build cells, walls and tiles from the grid, reset the counters.
 func load_level(i: int) -> void:
-	level_index = clampi(i, 0, levels.size() - 1)
+	level_index = i if (i == DAILY or i == EVENT) and not daily_level.is_empty() else clampi(i, 0, levels.size() - 1)
 	var grid: Array = level(level_index)["grid"]
 	rows = grid.size()
 	cols = 0
