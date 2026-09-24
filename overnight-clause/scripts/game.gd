@@ -59,6 +59,15 @@ func _refresh_prop_locale() -> void:
 var ending := false
 var ending_id := ""
 var stage := 0
+## Barks (ops/barks/lines.json -> "overnight-clause"). Silent until assets/voice/barks.json
+## exists; the layer is scripts/ambience.gd's, ported from Late Inspection.
+var ambience: Node = null
+var _run_of_findings := 0
+var _idle_t := 0.0
+var _stage_props := 0
+var _near_said := false
+var _bark_delay := 0.0
+var _bark_pending := ""
 ## Every stage the run has actually entered, with what the world spawned for it, recorded
 ## at spawn time. Ported from Late Inspection (2026-09-21, a21a4c7): a stage counter that
 ## increments is not proof the room changed, and this is the evidence tests/stage_walk.gd
@@ -110,6 +119,8 @@ func _ready() -> void:
 	var amb := Node.new()
 	amb.set_script(preload("res://scripts/ambience.gd"))
 	add_child(amb)
+	ambience = amb
+	bark("greet")
 	hud.show_title(_title_card())
 	hud.set_chapter(_chapter(0), "01:47")
 	objective_key = "obj.0"
@@ -123,6 +134,26 @@ func _ready() -> void:
 	else:
 		player.capture_mouse()
 	_check_automated_route()
+
+func bark(slot: String) -> void:
+	if ambience and ambience.has_method("bark"):
+		ambience.call("bark", slot)
+
+
+func _bark_after(wait: float, slot: String) -> void:
+	_bark_delay = wait
+	_bark_pending = slot
+
+
+func _bark_tick(delta: float) -> void:
+	if _bark_pending == "":
+		return
+	_bark_delay -= delta
+	if _bark_delay <= 0.0:
+		var slot := _bark_pending
+		_bark_pending = ""
+		bark(slot)
+
 
 func _setup_audio() -> void:
 	drone.stream = _tone_stream(42.0, 0.28)
@@ -296,6 +327,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if not paused:
 		elapsed += delta
+	_bark_tick(delta)
 	if title_t > 0.0:
 		title_t -= delta
 		if title_t <= 0.0:
@@ -312,6 +344,18 @@ func _process(delta: float) -> void:
 		hud.set_prompt(Loc.t("prompt.prefix") + str(t.prompt))
 	else:
 		hud.set_prompt("")
+	# 'near': one finding left in a zone that had several; once per zone
+	var left := 0
+	for p in active_ids.values():
+		if is_instance_valid(p) and p.get("taken") != true:
+			left += 1
+	if left == 1 and _stage_props > 1 and not _near_said:
+		_near_said = true
+		bark("near")
+	_idle_t += delta
+	if _idle_t > 34.0:
+		_idle_t = 0.0
+		bark("idle")
 	var fear := 0.12 + float(stage) * 0.055
 	if flags["pipe_answered"]:
 		fear += 0.12
@@ -408,6 +452,16 @@ func on_note(id: String) -> void:
 	if not collected.has(id):
 		collected.append(id)
 		interaction_count += 1
+		# rarest first; ambience.bark drops a line that would overlap, so the common one
+		# is the fallback (same order as Late Inspection)
+		_run_of_findings += 1
+		_idle_t = 0.0
+		if _run_of_findings % 3 == 0:
+			bark("streak")
+		elif collected.size() % 2 == 0:
+			bark("unlock")
+		else:
+			bark("win")
 	hud.add_evidence(id)
 	match id:
 		"order":
@@ -486,6 +540,8 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 				flags["photo_kept"] = true
 			else:
 				flags["photo_deleted"] = true
+				_run_of_findings = 0
+				bark("fail")
 			plate_scene("cg_mirror", "ch3_mirror", func() -> void:
 				_advance(5, "obj.stain", 3, "02:06")
 			, lead)
@@ -500,6 +556,8 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 				flags["pipe_answered"] = true
 			else:
 				flags["pipe_silenced"] = true
+				_run_of_findings = 0
+				bark("fail")
 			plate_scene(pipe_plate, pipe_scene, func() -> void:
 				_advance(7, "obj.pipe", 4, "02:13")
 			, pipe_lead)
@@ -512,6 +570,8 @@ func _resolve_choice(choice_id: String, i: int, source: Node) -> void:
 			var clause_plate := ""
 			if i == 0:
 				flags["clause_signed"] = true
+				_run_of_findings = 0
+				bark("fail")
 				clause_scene = "ch6_renewal"
 				clause_plate = "cg_renewal"
 			else:
@@ -551,6 +611,11 @@ func _advance(next_stage: int, obj_key: String, next_chapter: int, clock: String
 	hud.set_objective(Loc.t(obj_key))
 	hud.set_chapter(_chapter(next_chapter), clock)
 	_spawn_stage(stage)
+	# zone line, a beat late so it does not collide with the finding line that
+	# triggered this advance (ambience.bark drops an overlapping line).
+	_bark_after(2.4, "stage")
+	_stage_props = _stage_items(stage).size()
+	_near_said = false
 	if crossed:
 		_board_break()
 
@@ -617,6 +682,7 @@ func _finish(id: String) -> void:
 	# She is not a body in this fork, anywhere.
 	match id:
 		"WITNESS":
+			bark("win_big")
 			hud.show_ending(Loc.t("end.witness"), [
 				OvernightScript.scene("ch7_witness"),
 				Loc.t("beat.witness.0"), Loc.t("beat.witness.1"), Loc.t("beat.witness.2"), Loc.t("beat.witness.3")])

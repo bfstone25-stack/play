@@ -109,6 +109,7 @@ var title_audio: TitleAudio
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_build_ui()
+	_bark_ready()
 	start_night()
 	# The web build is the one that gets opened from a link by someone who has not read a
 	# store page, and it had no age wall of any kind. A download has already been bought
@@ -141,6 +142,9 @@ func start_night() -> void:
 	ending_id = ""
 	visited = {}
 	plates.hide_plate()
+	_bark_area = ""
+	_idle_since = 0.0
+	bark("greet")
 	_enter("start")
 
 
@@ -361,6 +365,7 @@ func _step() -> void:
 			"scene":
 				plates.hide_plate()
 				stage.set_scene(str(beat["bg"]))
+				_bark_stage(str(beat["bg"]))
 				if GROUNDS.has(str(beat["bg"])):
 					ground.texture = GROUNDS[str(beat["bg"])]
 			"customer":
@@ -370,6 +375,10 @@ func _step() -> void:
 			"settle":
 				# The refund rule, decided after the fetch rather than before it.
 				var extra: Array = Story.settle_reading(run, str(beat["item"]), str(beat["plate"]))
+				if run.readings_taken.size() > 0 and run.readings_taken.size() % 3 == 0:
+					bark("streak")
+				else:
+					bark("win")
 				for i in extra.size():
 					beats.insert(beat_index + i, extra[i])
 			"goto":
@@ -423,6 +432,7 @@ func _show_menu(beat: Dictionary) -> void:
 	_clear_actions()
 	current_options = beat["options"]
 	awaiting_choice = true
+	bark("near")
 	for i in current_options.size():
 		var option: Dictionary = current_options[i]
 		var idx := i
@@ -435,6 +445,8 @@ func _show_plate(item: String) -> void:
 	if Collateral.is_gated(id) and not Unlock.ready_for(id):
 		await _reveal(id)
 	var delivered := plates.show_plate(id)
+	if delivered:
+		bark("unlock")
 	footer.text = "" if delivered else "This reading is censored in this build."
 
 
@@ -498,6 +510,13 @@ func _finish(id: String) -> void:
 	awaiting_choice = false
 	plates.hide_plate()
 	_clear_actions()
+	match id:
+		C.SOLVENT:
+			bark("win_big")
+		C.COLLATERAL:
+			bark("fail")
+		C.FACTOR:
+			bark("win")
 	if id != "DEMO":
 		# End of a run, and only a real ending: the demo stop is a price prompt and
 		# stacking a catalogue on top of it would bury the one thing it has to say.
@@ -776,3 +795,73 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("interact"):
 		advance()
+
+
+# --- barks -------------------------------------------------------------------------------
+#
+# STANDARD.md item 5. Nara's LIEN voice (ops/barks/lines.json -> "midnight-pawn-collateral",
+# seed f_young_frayed, adult register), rendered by ops/barks/render_barks.py into
+# assets/voice/. NO-OPS until assets/voice/barks.json exists. Rotate, never repeat back to
+# back, and drop (never queue) a line that would overlap another.
+const BARK_DIR := "res://assets/voice/"
+## scene key -> the index of its 'stage' line
+const BARK_STAGE := {"shop": 0, "market": 2, "dawn": 3}
+
+var bark_player: AudioStreamPlayer
+var _bark_map: Dictionary = {}
+var _bark_last: Dictionary = {}
+var _bark_area := ""
+var _idle_since := 0.0
+
+
+func _bark_ready() -> void:
+	bark_player = AudioStreamPlayer.new()
+	bark_player.volume_db = -4.0
+	add_child(bark_player)
+	var f := FileAccess.open(BARK_DIR + "barks.json", FileAccess.READ)
+	if f == null:
+		return
+	var parsed = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) == TYPE_DICTIONARY:
+		_bark_map = parsed
+
+
+func bark(slot: String, index := -1) -> void:
+	_idle_since = 0.0
+	if bark_player == null or bark_player.playing or not _bark_map.has(slot):
+		return
+	var files: Array = _bark_map[slot]
+	if files.is_empty():
+		return
+	var pick := ""
+	if index >= 0:
+		for fname in files:
+			if str(fname).begins_with("%s_%d." % [slot, index]):
+				pick = str(fname)
+		if pick == "":
+			return
+	else:
+		pick = str(files[randi() % files.size()])
+		if files.size() > 1 and pick == str(_bark_last.get(slot, "")):
+			pick = str(files[(files.find(pick) + 1) % files.size()])
+	_bark_last[slot] = pick
+	var stream := load(BARK_DIR + pick) as AudioStream
+	if stream == null:
+		return
+	bark_player.stream = stream
+	bark_player.play()
+
+
+func _bark_stage(bg: String) -> void:
+	if bg == _bark_area or not BARK_STAGE.has(bg):
+		return
+	_bark_area = bg
+	bark("stage", int(BARK_STAGE[bg]))
+
+
+func _process(delta: float) -> void:
+	if splash_open or finished:
+		return
+	_idle_since += delta
+	if _idle_since > 40.0:
+		bark("idle")
