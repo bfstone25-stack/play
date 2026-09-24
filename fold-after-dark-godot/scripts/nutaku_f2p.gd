@@ -33,6 +33,9 @@ var nickname := ""
 var state: Dictionary = {}
 var catalog: Array = []
 var last_error := ""
+## Where refresh() reads the whole state. A title whose economy lives under its own
+## router (Overtime: /ot/state) sets this once after boot; the default is the shared one.
+var state_path := "/f2p/state"
 
 var _mock_base := ""
 var _booted := false
@@ -136,7 +139,7 @@ func api(method: String, path: String, body: Dictionary = {}) -> Dictionary:
 
 
 func refresh() -> Dictionary:
-	var r := await api("GET", "/f2p/state")
+	var r := await api("GET", state_path)
 	return state
 
 
