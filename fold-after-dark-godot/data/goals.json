@@ -1,0 +1,198 @@
+{
+ "_note": "made by ops/nutaku/fold_f2p/make_goals.py; do not hand-edit",
+ "25": {
+  "type": "score",
+  "score": 60,
+  "moves": 7,
+  "best": 76,
+  "witness": "ULDLU"
+ },
+ "31": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "URULUL"
+ },
+ "37": {
+  "type": "score",
+  "score": 380,
+  "moves": 9,
+  "best": 480,
+  "witness": "LURUULL"
+ },
+ "43": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "ULDRULLDL"
+ },
+ "49": {
+  "type": "score",
+  "score": 80,
+  "moves": 13,
+  "best": 104,
+  "witness": "LULDRDLURULL"
+ },
+ "55": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "ULL"
+ },
+ "61": {
+  "type": "score",
+  "score": 30,
+  "moves": 4,
+  "best": 48,
+  "witness": "UL"
+ },
+ "67": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RDL"
+ },
+ "73": {
+  "type": "score",
+  "score": 50,
+  "moves": 5,
+  "best": 72,
+  "witness": "DLL"
+ },
+ "79": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "DRULU"
+ },
+ "85": {
+  "type": "score",
+  "score": 190,
+  "moves": 6,
+  "best": 248,
+  "witness": "ULLL"
+ },
+ "91": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DULURU"
+ },
+ "97": {
+  "type": "score",
+  "score": 350,
+  "moves": 8,
+  "best": 444,
+  "witness": "RDLURDL"
+ },
+ "103": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "RURDRU"
+ },
+ "109": {
+  "type": "score",
+  "score": 310,
+  "moves": 8,
+  "best": 392,
+  "witness": "URUULLL"
+ },
+ "115": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "URDLRU"
+ },
+ "121": {
+  "type": "score",
+  "score": 550,
+  "moves": 7,
+  "best": 688,
+  "witness": "URULL"
+ },
+ "127": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "DLULRDU"
+ },
+ "133": {
+  "type": "score",
+  "score": 360,
+  "moves": 10,
+  "best": 452,
+  "witness": "URULDLLU"
+ },
+ "139": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDURULL"
+ },
+ "145": {
+  "type": "score",
+  "score": 180,
+  "moves": 9,
+  "best": 232,
+  "witness": "UDRDLULU"
+ },
+ "151": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "ULDLUDL"
+ },
+ "157": {
+  "type": "score",
+  "score": 150,
+  "moves": 11,
+  "best": 192,
+  "witness": "RDLRULDLL"
+ },
+ "163": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "ULRDLUL"
+ },
+ "169": {
+  "type": "score",
+  "score": 20,
+  "moves": 9,
+  "best": 32,
+  "witness": "RDLULUL"
+ },
+ "175": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "RLULDRDL"
+ },
+ "181": {
+  "type": "score",
+  "score": 80,
+  "moves": 12,
+  "best": 104,
+  "witness": "DLDURULDLUU"
+ },
+ "187": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "URDRULDLDLU"
+ },
+ "193": {
+  "type": "score",
+  "score": 80,
+  "moves": 12,
+  "best": 100,
+  "witness": "LULUDRULULUU"
+ },
+ "199": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DRURDRDLDL"
+ }
+}

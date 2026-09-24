@@ -47,6 +47,13 @@ func _ready() -> void:
 	_amb.bus = "Master"
 	_amb.volume_db = linear_to_db(0.5)
 	_amb.stream = _cues["ambience"]
+	_load_files()
+	# the cheerful loop replaces the drone when it is installed (assets/audio/bgm.ogg)
+	if _files.has("bgm"):
+		var loop: AudioStreamOggVorbis = _files["bgm"]
+		loop.loop = true
+		_amb.stream = loop
+		_amb.volume_db = linear_to_db(0.42)
 	add_child(_amb)
 	if music_on:
 		_amb.play()
@@ -161,6 +168,63 @@ func _build() -> void:
 	_cues["ambience"] = _wav(b, true)
 
 
+# --- the file cues (assets/audio, synthesised by ops/nutaku/fold_f2p/make_sfx.py) -------
+
+const AUDIO := "res://assets/audio/"
+const FILE_CUES := ["select", "move", "merge", "combo1", "combo2", "combo3", "combo4", "combo5",
+	"star1", "star2", "star3", "tick", "fly", "bump", "win", "start", "bgm"]
+var _files := {}
+
+
+func _exit_tree() -> void:
+	# loaded streams held by an autoload are reported as leaked resources at quit
+	_files.clear()
+	for p in _players:
+		p.stop()
+		p.stream = null
+	if _amb:
+		_amb.stop()
+		_amb.stream = null
+	if _bark:
+		_bark.stream = null
+
+
+func _load_files() -> void:
+	for n in FILE_CUES:
+		var path: String = AUDIO + n + ".ogg"
+		if ResourceLoader.exists(path):
+			# Uncached, like the runtime-synthesised cues: a cue still playing when the tree
+			# quits is held by its playback on the audio thread, and a CACHED resource held
+			# at exit is reported as an engine ERROR by every headless test run.
+			_files[n] = ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)
+
+
+## Play a file cue, optionally re-pitched. False if it is not installed (the caller may
+## fall back to a synthesised cue).
+func cue(name: String, pitch: float = 1.0, volume_db: float = 0.0) -> bool:
+	if not _files.has(name):
+		return false
+	if not sfx_on:
+		return true
+	var p := _players[_next]
+	_next = (_next + 1) % _players.size()
+	p.stream = _files[name]
+	p.pitch_scale = pitch
+	p.volume_db = volume_db
+	p.play()
+	return true
+
+
+## A combo step: five rising bells, then the top one pitched further up.
+func combo(step: int) -> void:
+	var s := clampi(step - 1, 1, 5)
+	cue("combo%d" % s, 1.0 + 0.06 * maxi(0, step - 6))
+
+
+func star(i: int) -> void:
+	cue("star%d" % clampi(i, 1, 3))
+
+
 # --- cues ---------------------------------------------------------------------------------
 
 func _play(name: String) -> void:
@@ -169,11 +233,14 @@ func _play(name: String) -> void:
 	var p := _players[_next]
 	_next = (_next + 1) % _players.size()
 	p.stream = _cues[name]
+	p.pitch_scale = 1.0
+	p.volume_db = 0.0
 	p.play()
 
 
 func slide() -> void:
-	_play("slide")
+	if not cue("move", randf_range(0.94, 1.06), -2.0):
+		_play("slide")
 
 
 func invalid() -> void:
@@ -181,7 +248,8 @@ func invalid() -> void:
 
 
 func merge(n: int = 1) -> void:
-	_play("merge%d" % clampi(n, 1, 3))
+	if not cue("merge", 1.0 + 0.08 * (clampi(n, 1, 3) - 1)):
+		_play("merge%d" % clampi(n, 1, 3))
 
 
 func unity(stars: int = 3) -> void:
