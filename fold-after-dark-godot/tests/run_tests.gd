@@ -54,6 +54,7 @@ func _run() -> void:
 	_fonts()
 	_legibility()
 	_conformance()
+	_score_twin()
 	print("\n%d checks passed, %d failed" % [passed, failed])
 	if failed > 0:
 		print("first failure: " + _first_fail)
@@ -313,5 +314,43 @@ func _conformance() -> void:
 	eq(bad_move, 0, "every recorded move matches the JS, tile for tile")
 	eq(bad_stars, 0, "every win scores the same stars")
 	eq(bad_undo, 0, "every undo unwinds to the same board")
+	if first != "":
+		printerr("  first divergence: " + first)
+
+
+
+## The score and the alternate goals, pinned to the server's Python (fold_rules.replay +
+## goal_met) through tests/score_fixtures.json, made by ops/nutaku/fold_f2p/make_goals.py
+## --fixtures: every goal level's witness plus random logs with undos in them.
+func _score_twin() -> void:
+	var f := FileAccess.open("res://tests/score_fixtures.json", FileAccess.READ)
+	ok(f != null, "score fixtures present")
+	if f == null:
+		return
+	var rows: Array = JSON.parse_string(f.get_as_text())
+	var bad := 0
+	var first := ""
+	var dirs := {"U": Vector2i(-1, 0), "D": Vector2i(1, 0), "L": Vector2i(0, -1), "R": Vector2i(0, 1)}
+	for row in rows:
+		Fold.load_level(int(row["level"]))
+		Juice.reset_board()
+		for ch in str(row["actions"]):
+			if ch == "Z":
+				if Fold.undo():
+					Juice.on_undo()
+			else:
+				var d: Vector2i = dirs[ch]
+				if Fold.move(d.x, d.y) >= 0:
+					Juice.on_move()
+		var gm: Dictionary = Juice.goal_met(int(row["level"]), Fold.moves)
+		if Juice.score != int(row["score"]) or Juice.max_combo != int(row["max_combo"]) \
+				or bool(gm["ok"]) != bool(row["goal_ok"]) or Fold.is_won() != bool(row["won"]):
+			bad += 1
+			if first == "":
+				first = "level %d %s: got %d/x%d/%s want %d/x%d/%s" % [int(row["level"]) + 1, row["actions"],
+					Juice.score, Juice.max_combo, gm["ok"], int(row["score"]), int(row["max_combo"]), row["goal_ok"]]
+	print("  score twin: %d logs" % rows.size())
+	eq(bad, 0, "score, combo and goal verdict match the server's Python on every log")
+	ok(rows.size() >= 60, "enough score fixtures (%d)" % rows.size())
 	if first != "":
 		printerr("  first divergence: " + first)

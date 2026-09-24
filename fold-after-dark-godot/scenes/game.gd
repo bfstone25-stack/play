@@ -91,6 +91,23 @@ var _viewer: Control
 var _ticket_for := ""
 var _swipe_px := 26.0
 
+# --- juice (2026-09-23): combo, score, results, start card, Coco --------------------------
+var _score_lbl: Label
+var _stars_total: Label
+var _fx: CanvasLayer
+var _combo_lbl: Label
+var _start_card: PanelContainer
+var _results: Control
+var _results_open := false
+var _results_skip := false
+var _coco_box: Control
+var _coco_pic: TextureRect
+var _coco_bubble: PanelContainer
+var _coco_text: Label
+var _coco_hide_at := 0.0
+var _near_fail_said := false
+var _held := false
+
 
 func _ready() -> void:
 	theme = StudioTheme.build()
@@ -103,6 +120,8 @@ func _ready() -> void:
 	_build_stage()
 	_build_hud()
 	_build_overlays()
+	_build_fx()
+	Coco.said.connect(_on_coco_said)
 	Fold.moved.connect(_on_moved)
 	Fold.refused.connect(_on_refused)
 	Fold.solved.connect(_on_solved)
@@ -371,7 +390,10 @@ func _make_piece(t: Dictionary) -> Node2D:
 ## GPUParticles2D with one_shot and explosiveness 1.0 fires the whole amount on the frame
 ## it is added and then sits idle, so the node frees itself on a timer rather than being
 ## pooled — at a dozen sparks a merge that is cheaper than keeping emitters around.
-func _sparkle(at: Vector2, color: Color, amount: int = 14, spread: float = 1.0) -> void:
+func _sparkle(at: Vector2, color: Color, amount: int = 14, spread: float = 1.0, parent: Node = null) -> void:
+	if Juice.reduced_motion:
+		amount = maxi(3, amount / 3)
+		spread *= 0.6
 	var ps := GPUParticles2D.new()
 	ps.amount = maxi(1, amount)
 	ps.lifetime = 0.62
@@ -403,7 +425,7 @@ func _sparkle(at: Vector2, color: Color, amount: int = 14, spread: float = 1.0) 
 	var mat := CanvasItemMaterial.new()
 	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	ps.material = mat
-	_board.add_child(ps)
+	(parent if parent != null else _board).add_child(ps)
 	# The cleanup rides on the particles' own tween, so it dies with them. A SceneTree
 	# timer whose lambda captured `ps` fired after the board was freed (leave a level
 	# within 1.4 s of a merge) and logged "Lambda capture at index 0 was freed" per spark.
@@ -504,6 +526,25 @@ func _build_hud() -> void:
 		_sync())
 	top.add_child(soundb)
 
+	# Coco's voice, separate from the SFX/music switch; and reduced motion
+	var voiceb := Button.new()
+	voiceb.name = "Voice"
+	voiceb.theme_type_variation = "Ghost"
+	voiceb.pressed.connect(func():
+		Juice.set_voice(not Juice.voice_on)
+		if not Juice.voice_on:
+			Coco.stop()
+		_sync())
+	top.add_child(voiceb)
+
+	var motionb := Button.new()
+	motionb.name = "Motion"
+	motionb.theme_type_variation = "Ghost"
+	motionb.pressed.connect(func():
+		Juice.set_reduced_motion(not Juice.reduced_motion)
+		_sync())
+	top.add_child(motionb)
+
 	# the star row and the move counter sit just under the title block
 	var sub := HBoxContainer.new()
 	sub.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -521,6 +562,15 @@ func _build_hud() -> void:
 
 	_tier_lbl = StudioTheme.mono_label("", 15, Palette.GOLD)
 	sub.add_child(_tier_lbl)
+
+	# the score for this board, and every star ever earned: the results card pays into it
+	_score_lbl = StudioTheme.display_label("", 22, Palette.EPIC)
+	_score_lbl.pivot_offset = Vector2(40, 14)
+	sub.add_child(_score_lbl)
+	_stars_total = StudioTheme.display_label("", 22, Palette.GOLD)
+	_stars_total.name = "StarsTotal"
+	_stars_total.pivot_offset = Vector2(30, 14)
+	sub.add_child(_stars_total)
 
 	# the streak: coral, display type, pops when it climbs
 	_streak_lbl = StudioTheme.display_label("", 22, Palette.HEAT)
@@ -549,6 +599,7 @@ func _build_hud() -> void:
 	_undo_btn.theme_type_variation = "Amber"
 	_undo_btn.pressed.connect(func():
 		if await _try_undo():
+			Juice.on_undo()
 			Sfx.slide()
 			_rebuild_pieces()
 			_sync())
@@ -563,8 +614,9 @@ func _build_hud() -> void:
 		Fold.reset()
 		Tier.streak_break()
 		Sfx.slide()
-		Sfx.bark("fail")
 		_said_near = false
+		Juice.reset_board()
+		_near_fail_said = false
 		_high = _tallest()   # a reset unfolds the sheet; the step caption goes back with it
 		_rebuild_pieces()
 		_sync())
@@ -623,6 +675,12 @@ func _overlay() -> Control:
 
 func _sync() -> void:
 	_goal.text = I18n.f("goal", Fold.target())
+	var alt := Juice.goal_text(Fold.level_index)
+	if alt != "":
+		_goal.text += "  +  " + alt
+		var g := Juice.goal_for(Fold.level_index)
+		if str(g["type"]) == "combo":
+			_goal.text += "  (best x%d)" % Juice.max_combo
 	_moves.text = I18n.f("moves", Fold.moves) + "   ·   " + I18n.f("parhint", Fold.par())
 	if F2P.on() and F2P.active_for(Fold.level_index):
 		_moves.text += "   ·   %d left" % F2P.moves_left()
@@ -647,6 +705,13 @@ func _sync() -> void:
 	var top := _hud.get_child(0).get_child(0).get_child(0)
 	(top.get_node("Lang") as Button).text = "中文" if I18n.lang == "en" else "EN"
 	(top.get_node("Sound") as Button).text = "♪" if Sfx.sfx_on else "✕"
+	(top.get_node("Voice") as Button).text = "Voice ✓" if Juice.voice_on else "Voice ✕"
+	(top.get_node("Motion") as Button).text = "Motion ✓" if not Juice.reduced_motion else "Motion ✕"
+	(top.get_node("Voice") as Button).tooltip_text = "Coco's voice (subtitles stay on)"
+	(top.get_node("Motion") as Button).tooltip_text = "Reduced motion: no shake, no flying rewards"
+	_score_lbl.text = "%s %d" % ["SCORE", Juice.score]
+	if not _results_open:
+		_stars_total.text = "★ %d" % _star_sum()
 	var lvb := _undo_btn.get_parent().get_node("Levels") as Button
 	lvb.text = I18n.t("map_btn")
 	var t := Tier.of_level(Fold.level_index)
@@ -696,11 +761,16 @@ func _open(i: int) -> void:
 	_high = _tallest()
 	_said_near = false
 	_idle_clock = 0.0
-	Sfx.bark("stage")
+	Juice.reset_board()
+	_near_fail_said = false
+	_hide_combo()
 	Save.set_current_level(i)
 	_win.visible = false
 	_relayout()
 	_sync()
+	_show_start_card()
+	if not Coco.daily():
+		Coco.say("start")
 	Tel.level_ev("level_opened")
 	# The server ticket for this tier's scene is asked for now, so the gateway's minimum
 	# wait runs under the tier instead of after it. Off the web this is a no-op.
@@ -755,12 +825,24 @@ func _on_moved(direction: Vector2i, merge_count: int) -> void:
 	if F2P.on():
 		F2P.on_move(direction)
 		_f2p_check_budget.call_deferred()
+	var jr := Juice.on_move()
 	if merge_count > 0:
 		# a merge doubled the layer count, which is one more fold: say which one it was
 		_announce_step()
 		Sfx.merge(merge_count)
+		if Juice.combo >= 2:
+			Sfx.combo(Juice.combo)
+			_show_combo(Juice.combo)
+		if Juice.combo >= 3 or merge_count >= 2:
+			Juice.shake(_board, 3.0 + 1.5 * mini(Juice.combo, 5))
+		if Juice.combo >= 3:
+			Coco.say("combo")
+		elif randf() < 0.3:
+			Coco.say("good")
+		_score_pop(int(jr["points"]))
 	else:
 		Sfx.slide()
+		_hide_combo()
 	# The tease slot, one fold from the end: two tiles left and both of them half the
 	# target, which is the only board state from which the next merge finishes the model.
 	# Said once per level -- a line that fires on every shuffle around a near-miss stops
@@ -768,7 +850,8 @@ func _on_moved(direction: Vector2i, merge_count: int) -> void:
 	_idle_clock = 0.0
 	if not _said_near and _one_fold_left():
 		_said_near = true
-		Sfx.bark("near")
+		Coco.say("good")
+	_check_near_fail()
 	_flash_crease(direction)
 	_fold_squash(direction)
 	_animate(direction)
@@ -811,8 +894,16 @@ func _animate(direction: Vector2i) -> void:
 		# it. That tiny bounce is most of what makes the board feel physical rather than
 		# animated, and it costs one enum.
 		tw.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		var travelled := node.position.distance_to(want) > 1.0
 		tw.tween_property(node, "position", want, 0.11)
 		node.z_index = 10 + int(t["r"])
+		# stretch along the fold while it travels, squash as it lands, spring back
+		if travelled and not bool(t.get("merged", false)) and not Juice.reduced_motion:
+			var along := Vector2(0.88, 1.12) if direction.x != 0 else Vector2(1.12, 0.88)
+			var st := create_tween()
+			st.tween_property(node, "scale", along, 0.05)
+			st.tween_property(node, "scale", Vector2(along.y, along.x), 0.06)
+			st.tween_property(node, "scale", Vector2.ONE, 0.14).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 		if bool(t.get("merged", false)):
 			t["merged"] = false
 			PieceView.repaint(node, int(t["v"]), _cs * _row_k(int(t["r"])), 1.0, true)
@@ -887,6 +978,19 @@ func _one_fold_left() -> bool:
 # --- winning -------------------------------------------------------------------------------------
 
 func _on_solved(stars: int, move_count: int, p: int) -> void:
+	# An alternate goal (data/goals.json) sits on top of the win. Missing it is a miss, not
+	# a clear: the server would refuse the log for the same reason (fold_rules.goal_met).
+	var gm := Juice.goal_met(Fold.level_index, move_count)
+	if not bool(gm["ok"]):
+		if F2P.on():
+			await F2P.give_up()
+		Tier.streak_break()
+		Coco.say("near_fail", true)
+		var again := func(_s: Label): _open(Fold.level_index)
+		var home := func(_s: Label): _to_map()
+		F2PUI.card(_win, "So close!", ["The board is folded, but the bonus goal was missed.", str(gm["why"])],
+			[["Try again", "Primary", again, "Retry"], ["Map", "Amber", home, "Map"]])
+		return
 	if F2P.on():
 		# the server replays the fold log; only its answer clears the level
 		var res := await F2P.finish(move_count)
@@ -897,32 +1001,42 @@ func _on_solved(stars: int, move_count: int, p: int) -> void:
 				[["Try again", "Primary", again, "Retry"], ["Map", "Amber", home, "Map"]])
 			return
 		stars = int(res["stars"])
-	Sfx.unity(stars)
-	# One voice, one line: bark() drops a second line while the first is playing, so the
-	# order here is the priority. A streak is the rarer thing to have earned, so it wins
+	if not Sfx.cue("win"):
+		Sfx.unity(stars)
+	_hide_combo()
+	# One voice, one line: Coco drops a line while another is playing, so the order here
+	# is the priority. A streak milestone is the rarer thing to have earned, so it wins
 	# over a three-star clear, which wins over an ordinary one.
 	if Tier.streak > 0 and (Tier.streak + 1) % 3 == 0:
-		Sfx.bark("streak")
+		Coco.say("streak", true)
 	elif stars >= 3:
-		Sfx.bark("win_big")
+		Coco.say("win3", true)
 	else:
-		Sfx.bark("win")
+		Coco.say("win", true)
 	_win_burst(stars)
+	var gained := maxi(0, stars - Save.stars_at(Fold.level_index))
+	var before := _star_sum()
 	Save.record(Fold.level_index, stars)
 	Tier.streak_hit()
 	Tel.level_ev("level_completed", {"moves": move_count, "stars": stars, "par": p})
+	_results_open = true              # keeps the HUD star total at `before` until it is paid
+	_stars_shown = before
+	_stars_total.text = "★ %d" % before
 	_sync()
 	var pop := create_tween()
 	pop.tween_property(_streak_lbl, "scale", Vector2(1.5, 1.5), 0.08)
 	pop.tween_property(_streak_lbl, "scale", Vector2.ONE, 0.16).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	# The results card: stars one by one, the score counting up, the new stars flying into
+	# the HUD. Tap (or Enter/Space) skips to the end; a second tap moves on.
+	await _show_results(stars, move_count, p, gained, before)
+	if not is_instance_valid(self):
+		return
 	var t := Tier.of_level(Fold.level_index)
 	if Fold.level_index < Tier.last_level(t):
-		# inside the tier: no card, no button — the next board arrives on its own
-		await get_tree().create_timer(0.45).timeout
-		if is_instance_valid(self) and not _win.visible:
+		# inside the tier: no button — the next board arrives on its own
+		if not _win.visible:
 			_open(Fold.level_index + 1)
 		return
-	await get_tree().create_timer(0.35).timeout
 	_show_trophy(t, stars, move_count, p)
 
 
@@ -1034,7 +1148,8 @@ func _unlock(scene: Dictionary, btn: Button, status: Label) -> void:
 		return
 	Tier.mark_unlocked(id)
 	Tel.ev("scene_unlocked", {"scene": id})
-	Sfx.bark("unlock")
+	Coco.say("unlock", true)
+	Sfx.cue("win")
 	_viewer = SceneView.open(_hud, scene, func():
 		_viewer = null
 		_offer_board()
@@ -1249,6 +1364,12 @@ func _show_picker(show: bool) -> void:
 # --- input -----------------------------------------------------------------------------------------
 
 func _unhandled_input(e: InputEvent) -> void:
+	if _results_open and _results != null and _results.visible:
+		if (e is InputEventKey and e.pressed and (e as InputEventKey).keycode in [KEY_ENTER, KEY_KP_ENTER, KEY_SPACE, KEY_ESCAPE]) \
+				or (e is InputEventMouseButton and e.pressed) or (e is InputEventScreenTouch and e.pressed):
+			_results_skip = true
+			get_viewport().set_input_as_handled()
+		return
 	if _win.visible or _picker.visible or _viewer != null:
 		if e is InputEventKey and e.pressed:
 			var k := (e as InputEventKey).keycode
@@ -1275,6 +1396,7 @@ func _unhandled_input(e: InputEvent) -> void:
 		Fold.move(0, 1)
 	elif e.is_action_pressed("fold_undo"):
 		if await _try_undo():
+			Juice.on_undo()
 			_rebuild_pieces()
 			_sync()
 	elif e.is_action_pressed("fold_reset"):
@@ -1282,6 +1404,7 @@ func _unhandled_input(e: InputEvent) -> void:
 			_f2p_retry()
 			return
 		Fold.reset()
+		Juice.reset_board()
 		_rebuild_pieces()
 		_sync()
 	elif e is InputEventKey and e.pressed and e.keycode == KEY_ESCAPE:
@@ -1290,8 +1413,10 @@ func _unhandled_input(e: InputEvent) -> void:
 		if e.pressed:
 			_drag_from = (e as InputEventMouseButton).position
 			_dragging = true
+			_pickup(true)
 		elif _dragging:
 			_dragging = false
+			_pickup(false)
 			_swipe((e as InputEventMouseButton).position - _drag_from)
 			_board_home()
 	elif e is InputEventMouseMotion and _dragging:
@@ -1302,6 +1427,7 @@ func _unhandled_input(e: InputEvent) -> void:
 			0.0 if ax else clampf(d.y / 4.0, -10, 10))
 		if _swipe(d):
 			_dragging = false
+			_pickup(false)
 			_board_home()
 
 
@@ -1330,6 +1456,12 @@ func _process(delta: float) -> void:
 		if _idle_clock >= IDLE_AFTER:
 			_idle_clock = 0.0
 			Sfx.bark("idle")
+	if _coco_box != null and (_viewer != null) != (_coco_box.position.y < 40.0):
+		_place_coco()
+	if _coco_bubble != null and _coco_bubble.visible and _t >= _coco_hide_at:
+		_coco_bubble.visible = false
+	if _coco_pic != null and not Juice.reduced_motion:
+		_coco_pic.position.y = 2.0 * sin(_t * 1.7)
 	if _lamp:
 		var f := 1.0 + 0.035 * sin(_t * 2.1) + 0.02 * sin(_t * 0.63)
 		(_lamp.get_node("Light") as PointLight2D).energy = 2.1 * f
@@ -1375,6 +1507,11 @@ func _publish() -> void:
 		"attempt": F2P.active_for(Fold.level_index),
 		"energy": F2P.energy(),
 		"card_buttons": _card_buttons(),
+		"results_visible": _results_open,
+		"combo": Juice.combo,
+		"score": Juice.score,
+		"coco_line": _coco_text.text if _coco_bubble != null and _coco_bubble.visible else "",
+		"reduced_motion": Juice.reduced_motion,
 	}), true)
 
 
@@ -1411,7 +1548,6 @@ func _try_undo() -> bool:
 func _f2p_check_budget() -> void:
 	if not is_instance_valid(self) or Fold.done or not F2P.out_of_moves():
 		return
-	Sfx.bark("fail")
 	var more := func(status: Label):
 		status.text = "…"
 		var r := await F2P.use("moves")
@@ -1476,3 +1612,417 @@ func _f2p_hint() -> void:
 func _f2p_error(msg: String) -> void:
 	var home := func(_s: Label): _to_map()
 	F2PUI.card(_win, "Server", [msg], [["Map", "Amber", home, "Map"]])
+
+
+# --- juice (2026-09-23) ---------------------------------------------------------------------------
+#
+# The feel layer: the combo counter, the score pop, the level-start card, the results card
+# and Coco's corner. It never decides anything: Fold says what happened, Juice counts the
+# score from it (deterministically, see scripts/juice.gd), and this draws it. Everything
+# motion-heavy checks Juice.reduced_motion. No Light2D is added here (the lamp predates
+# this pass).
+
+func _star_sum() -> int:
+	var n := 0
+	for i in range(Fold.level_count()):
+		n += Save.stars_at(i)
+	return n
+
+
+func _build_fx() -> void:
+	_fx = CanvasLayer.new()
+	_fx.layer = 3
+	add_child(_fx)
+	var root := Control.new()
+	root.theme = StudioTheme.build()
+	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_fx.add_child(root)
+
+	_combo_lbl = StudioTheme.display_label("", 44, Palette.EPIC)
+	_combo_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_combo_lbl.add_theme_color_override("font_outline_color", Palette.INK)
+	_combo_lbl.add_theme_constant_override("outline_size", 10)
+	_combo_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_combo_lbl.visible = false
+	root.add_child(_combo_lbl)
+
+	# the level-start card: non-blocking, the board takes input underneath it
+	_start_card = PanelContainer.new()
+	_start_card.theme_type_variation = "Glass"
+	_start_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_start_card.visible = false
+	var sc := VBoxContainer.new()
+	sc.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	sc.add_theme_constant_override("separation", 2)
+	_start_card.add_child(sc)
+	var l1 := StudioTheme.display_label("", 40, Palette.GOLD)
+	l1.name = "Head"
+	l1.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sc.add_child(l1)
+	var l2 := StudioTheme.serif_label("", 20, Palette.TEXT, true)
+	l2.name = "Goal"
+	l2.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sc.add_child(l2)
+	root.add_child(_start_card)
+
+	# the results overlay (tap anywhere skips; see _unhandled_input)
+	_results = Control.new()
+	_results.theme = StudioTheme.build()
+	_results.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_results.visible = false
+	_results.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var dim := ColorRect.new()
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.color = Color(Palette.GROUND_DEEP, 0.55)
+	dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_results.add_child(dim)
+	var centre := CenterContainer.new()
+	centre.name = "Centre"
+	centre.set_anchors_preset(Control.PRESET_FULL_RECT)
+	centre.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_results.add_child(centre)
+	root.add_child(_results)
+
+	# Coco's corner: her portrait (the key visual's lead, cropped) and a subtitle bubble
+	var coco_layer := CanvasLayer.new()
+	coco_layer.layer = 6
+	add_child(coco_layer)
+	_coco_box = Control.new()
+	_coco_box.theme = StudioTheme.build()
+	_coco_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_coco_box.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+	coco_layer.add_child(_coco_box)
+	var ring := Panel.new()
+	var rs := StudioTheme.flat(Palette.ACCENT, Palette.GOLD, 60, 4)
+	ring.add_theme_stylebox_override("panel", rs)
+	ring.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ring.size = Vector2(104, 104)
+	ring.position = Vector2(-4, -4)
+	_coco_box.add_child(ring)
+	_coco_pic = TextureRect.new()
+	if ResourceLoader.exists("res://assets/companion/coco.png"):
+		_coco_pic.texture = load("res://assets/companion/coco.png")
+	_coco_pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_coco_pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	_coco_pic.size = Vector2(96, 96)
+	_coco_pic.pivot_offset = Vector2(48, 96)
+	_coco_pic.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_coco_box.add_child(_coco_pic)
+	var name_tag := StudioTheme.display_label("Coco", 16, Palette.ACCENT_DEEP)
+	name_tag.position = Vector2(26, 98)
+	name_tag.add_theme_color_override("font_outline_color", Palette.INK)
+	name_tag.add_theme_constant_override("outline_size", 6)
+	_coco_box.add_child(name_tag)
+	_coco_bubble = PanelContainer.new()
+	_coco_bubble.theme_type_variation = "Paper"
+	_coco_bubble.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_coco_bubble.position = Vector2(108, 14)
+	_coco_bubble.visible = false
+	_coco_text = StudioTheme.serif_label("", 17, Palette.INK, true)
+	_coco_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_coco_text.custom_minimum_size = Vector2(230, 0)
+	_coco_bubble.add_child(_coco_text)
+	_coco_box.add_child(_coco_bubble)
+	get_viewport().size_changed.connect(_place_coco)
+	_place_coco()
+
+
+func _place_coco() -> void:
+	if _coco_box == null:
+		return
+	var vp := get_viewport_rect().size
+	var small := vp.x < 760
+	_coco_box.scale = Vector2.ONE * (0.7 if small else 1.0)
+	# over a scene she moves to the top-left, off the plate's caption and its buttons
+	if _viewer != null:
+		_coco_box.position = Vector2(18, 18)
+	else:
+		_coco_box.position = Vector2(18, vp.y - (170.0 if small else 236.0))
+
+
+func _on_coco_said(_slot: String, text: String, secs: float) -> void:
+	if _coco_text == null:
+		return
+	_coco_text.text = text
+	_coco_bubble.visible = true
+	_coco_hide_at = _t + secs + 1.4
+	if Juice.reduced_motion:
+		return
+	_coco_bubble.pivot_offset = Vector2(0, 30)
+	var tw := create_tween()
+	tw.tween_property(_coco_bubble, "scale", Vector2.ONE, 0.22).from(Vector2(0.6, 0.6)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	var hop := create_tween()
+	hop.tween_property(_coco_pic, "scale", Vector2(1.08, 0.94), 0.08)
+	hop.tween_property(_coco_pic, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+
+
+## Pickup: every piece squashes a little under the finger; drop springs it back.
+func _pickup(down: bool) -> void:
+	if down:
+		Sfx.cue("select", 1.0, -4.0)
+	if Juice.reduced_motion or Fold.done:
+		return
+	for id in _sprites.keys():
+		var node: Node2D = _sprites[id]
+		if not is_instance_valid(node):
+			continue
+		var tw := create_tween()
+		if down:
+			tw.tween_property(node, "scale", Vector2(1.07, 0.93), 0.07).set_trans(Tween.TRANS_SINE)
+		else:
+			tw.tween_property(node, "scale", Vector2.ONE, 0.18).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+
+
+func _show_combo(c: int) -> void:
+	var word := Juice.combo_word(c)
+	if word == "":
+		return
+	_combo_lbl.text = word
+	_combo_lbl.visible = true
+	_combo_lbl.add_theme_font_size_override("font_size", 38 + 6 * mini(c, 6))
+	var vp := get_viewport_rect().size
+	_combo_lbl.size = Vector2(vp.x, 80)
+	# over the top rows of the tray: above it is the HUD's goal line, which it must not hide
+	_combo_lbl.position = Vector2(0, _table.position.y + 36.0)
+	_combo_lbl.pivot_offset = Vector2(vp.x * 0.5, 40)
+	_combo_lbl.modulate = Color(1, 1, 1, 1)
+	var col: Color = [Palette.EPIC, Palette.GOLD, Palette.HEAT, Palette.ACCENT][mini(c, 5) - 2]
+	_combo_lbl.add_theme_color_override("font_color", col)
+	if Juice.reduced_motion:
+		return
+	var tw := create_tween()
+	tw.tween_property(_combo_lbl, "scale", Vector2.ONE, 0.25).from(Vector2(1.6, 1.6)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.parallel().tween_property(_combo_lbl, "rotation", 0.0, 0.25).from(deg_to_rad(-6.0 if c % 2 == 0 else 6.0))
+
+
+func _hide_combo() -> void:
+	if _combo_lbl == null or not _combo_lbl.visible:
+		return
+	var tw := create_tween()
+	tw.tween_property(_combo_lbl, "modulate:a", 0.0, 0.2)
+	tw.tween_callback(func(): _combo_lbl.visible = false)
+
+
+## "+48" rising off the board, and the HUD score bumps.
+func _score_pop(points: int) -> void:
+	if points <= 0:
+		return
+	var l := StudioTheme.display_label("+%d" % points, 26 + mini(Juice.combo, 5) * 3, Palette.EPIC)
+	l.add_theme_color_override("font_outline_color", Palette.INK)
+	l.add_theme_constant_override("outline_size", 8)
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	(_fx.get_child(0) as Control).add_child(l)
+	l.position = _origin + Vector2(-30, -40)
+	var tw := create_tween()
+	tw.tween_property(l, "position:y", l.position.y - (0.0 if Juice.reduced_motion else 60.0), 0.6).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tw.parallel().tween_property(l, "modulate:a", 0.0, 0.6).set_delay(0.25)
+	tw.tween_callback(l.queue_free)
+	_bump(_score_lbl)
+
+
+func _bump(c: Control, k: float = 1.3) -> void:
+	if c == null or Juice.reduced_motion:
+		return
+	c.pivot_offset = c.size * 0.5
+	var tw := create_tween()
+	tw.tween_property(c, "scale", Vector2(k, k), 0.07)
+	tw.tween_property(c, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+
+## Near-fail: once per board, when the move budget is nearly spent (Nutaku) or the next
+## move costs a star. The move counter pulses and Coco reassures.
+func _check_near_fail() -> void:
+	if _near_fail_said or Fold.done:
+		return
+	var low := false
+	if F2P.on() and F2P.active_for(Fold.level_index):
+		low = F2P.moves_left() <= 3 and F2P.moves_left() > 0
+	else:
+		low = Fold.moves == Fold.par() + 2 and Fold.tiles.size() > 1
+	if not low:
+		return
+	_near_fail_said = true
+	Coco.say("near_fail", true)
+	_moves.add_theme_color_override("font_color", Palette.HEAT)
+	if not Juice.reduced_motion:
+		var tw := create_tween().set_loops(3)
+		tw.tween_property(_moves, "modulate", Color(1.4, 0.8, 0.8), 0.18)
+		tw.tween_property(_moves, "modulate", Color.WHITE, 0.18)
+	var back := create_tween()
+	back.tween_interval(2.4)
+	back.tween_callback(func():
+		if is_instance_valid(_moves):
+			_moves.add_theme_color_override("font_color", Palette.TEXT))
+
+
+func _show_start_card() -> void:
+	var head := _start_card.find_child("Head", true, false) as Label
+	var goal := _start_card.find_child("Goal", true, false) as Label
+	head.text = "%s %d" % [I18n.t("level"), Fold.level_index + 1]
+	goal.text = "%s   ·   %s" % [I18n.f("goal", Fold.target()), I18n.f("parhint", Fold.par())]
+	var alt := Juice.goal_text(Fold.level_index)
+	if alt != "":
+		head.text += "  ·  BONUS GOAL"
+		goal.text = "%s   +   %s" % [I18n.f("goal", Fold.target()), alt]
+	_start_card.visible = true
+	_start_card.modulate = Color(1, 1, 1, 1)
+	_start_card.reset_size()
+	var vp := get_viewport_rect().size
+	_start_card.position = Vector2((vp.x - _start_card.size.x) * 0.5, vp.y * 0.36)
+	_start_card.pivot_offset = _start_card.size * 0.5
+	Sfx.cue("start", 1.0, -3.0)
+	var tw := create_tween()
+	if not Juice.reduced_motion:
+		tw.tween_property(_start_card, "scale", Vector2.ONE, 0.22).from(Vector2(0.7, 0.7)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_interval(0.85)
+	tw.tween_property(_start_card, "modulate:a", 0.0, 0.25)
+	tw.tween_callback(func(): _start_card.visible = false)
+
+
+## Wait `t` seconds, or less if the player tapped to skip.
+func _wait(t: float) -> void:
+	var end := Time.get_ticks_msec() + int(t * 1000.0)
+	while is_instance_valid(self) and Time.get_ticks_msec() < end and not _results_skip:
+		await get_tree().process_frame
+
+
+func _show_results(stars: int, move_count: int, p: int, gained: int, before: int) -> void:
+	_start_card.visible = false
+	var centre := _results.get_node("Centre") as CenterContainer
+	for c in centre.get_children():
+		c.queue_free()
+	var card := PanelContainer.new()
+	card.theme_type_variation = "Glass"
+	card.custom_minimum_size = Vector2(380, 0)
+	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	centre.add_child(card)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 8)
+	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	card.add_child(col)
+	var cheer: String = ["", "Cleared!", "Great!", "Perfect!"][clampi(stars, 1, 3)]
+	var h := StudioTheme.display_label(cheer, 46, Palette.ACCENT_DEEP)
+	h.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(h)
+	var lv := StudioTheme.mono_label("%s %d" % [I18n.t("level").to_upper(), Fold.level_index + 1], 14, Palette.MUTED)
+	lv.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(lv)
+	var row := HBoxContainer.new()
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	row.add_theme_constant_override("separation", 10)
+	col.add_child(row)
+	var star_nodes: Array[Label] = []
+	for i in range(3):
+		var s := StudioTheme.display_label("☆", 54, Palette.star_color(false))
+		s.pivot_offset = Vector2(24, 30)
+		row.add_child(s)
+		star_nodes.append(s)
+	var score := StudioTheme.display_label("0", 40, Palette.EPIC)
+	score.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(score)
+	var stat := StudioTheme.serif_label("%s   ·   %s" % [I18n.f("moves", move_count), I18n.f("parhint", p)], 14, Palette.MUTED)
+	stat.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(stat)
+	var tap := StudioTheme.mono_label("tap to continue", 12, Palette.FAINT)
+	tap.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(tap)
+
+	_results_skip = false
+	_results.visible = true
+	var rm := Juice.reduced_motion
+	card.pivot_offset = Vector2(190, 120)
+	if not rm:
+		create_tween().tween_property(card, "scale", Vector2.ONE, 0.2).from(Vector2(0.85, 0.85)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	await _wait(0.0 if rm else 0.18)
+
+	# 1. the stars, one at a time, each a note higher
+	for i in range(stars):
+		if not is_instance_valid(self) or _results_skip:
+			break
+		_light_star(star_nodes[i], i, not rm)
+		await _wait(0.0 if rm else 0.26)
+
+	# 2. the score counts up, ticking
+	var final_score := Juice.score
+	if not rm and not _results_skip and final_score > 0:
+		var steps := 12
+		for k in range(1, steps + 1):
+			if not is_instance_valid(self) or _results_skip:
+				break
+			score.text = str(int(round(final_score * float(k) / steps)))
+			Sfx.cue("tick", 1.0 + 0.5 * float(k) / steps, -6.0)
+			await _wait(0.05)
+
+	# 3. the new stars fly into the HUD counter, which bumps as each lands
+	if not is_instance_valid(self):
+		return
+	if gained > 0 and not rm and not _results_skip:
+		Sfx.cue("fly", 1.0, -3.0)
+		var root := _fx.get_child(0) as Control
+		var dest := _stars_total.get_global_rect().get_center()
+		for i in range(gained):
+			var from := star_nodes[stars - gained + i].get_global_rect().get_center()
+			var fl := StudioTheme.display_label("★", 40, Palette.GOLD)
+			fl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			root.add_child(fl)
+			fl.position = from - Vector2(18, 26)
+			var mid := (from + dest) * 0.5 + Vector2(0, -90)
+			var tw := create_tween()
+			tw.tween_method(_fly_step.bind(fl, from, mid, dest), 0.0, 1.0, 0.45).set_delay(0.08 * i).set_trans(Tween.TRANS_SINE)
+			tw.tween_callback(_fly_land.bind(fl, before + i + 1, i))
+		await _wait(0.45 + 0.08 * gained + 0.1)
+
+	# the end state, whether it was reached or skipped to
+	if not is_instance_valid(self):
+		return
+	for i in range(stars):
+		if star_nodes[i].text != "★":
+			_light_star(star_nodes[i], i, false)
+	score.text = str(final_score)
+	_stars_shown = _star_sum()
+	_stars_total.text = "★ %d" % _stars_shown
+
+	# 4. hold for a beat; a tap moves on at once
+	_results_skip = false
+	_results_open = true
+	await _wait(0.6 if rm else 0.9)
+	if not is_instance_valid(self):
+		return
+	_results_open = false
+	_results_skip = false
+	_results.visible = false
+
+
+var _stars_shown := 0
+
+
+func _fly_step(u: float, fl: Label, from: Vector2, mid: Vector2, dest: Vector2) -> void:
+	if not is_instance_valid(fl):
+		return
+	var a := from.lerp(mid, u)
+	var b := mid.lerp(dest, u)
+	fl.position = a.lerp(b, u) - Vector2(18, 26)
+	fl.scale = Vector2.ONE * lerpf(1.0, 0.6, u)
+
+
+func _fly_land(fl: Label, total: int, i: int) -> void:
+	if is_instance_valid(fl):
+		fl.queue_free()
+	if not is_instance_valid(_stars_total):
+		return
+	_stars_shown = maxi(_stars_shown, total)
+	_stars_total.text = "★ %d" % _stars_shown
+	_bump(_stars_total, 1.5)
+	Sfx.cue("bump", 1.0 + 0.1 * i, -2.0)
+
+
+func _light_star(s: Label, i: int, animate: bool) -> void:
+	s.text = "★"
+	s.add_theme_color_override("font_color", Palette.star_color(true))
+	if animate:
+		Sfx.star(i + 1)
+		var tw := create_tween()
+		tw.tween_property(s, "scale", Vector2.ONE, 0.3).from(Vector2(2.0, 2.0)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tw.parallel().tween_property(s, "rotation", 0.0, 0.3).from(deg_to_rad(-25.0))
+		_sparkle(s.get_global_rect().get_center(), Palette.GOLD, 12, 0.8, _fx.get_child(0))

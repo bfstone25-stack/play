@@ -1,0 +1,914 @@
+[
+{
+"level": 25,
+"actions": "ULDLU",
+"score": 76,
+"max_combo": 2,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 31,
+"actions": "URULUL",
+"score": 96,
+"max_combo": 2,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 37,
+"actions": "LURUULL",
+"score": 480,
+"max_combo": 4,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 43,
+"actions": "ULDRULLDL",
+"score": 76,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 49,
+"actions": "LULDRDLURULL",
+"score": 104,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 55,
+"actions": "ULL",
+"score": 72,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 61,
+"actions": "UL",
+"score": 48,
+"max_combo": 2,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 67,
+"actions": "RDL",
+"score": 72,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 73,
+"actions": "DLL",
+"score": 72,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 79,
+"actions": "DRULU",
+"score": 304,
+"max_combo": 5,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 85,
+"actions": "ULLL",
+"score": 248,
+"max_combo": 4,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 91,
+"actions": "DULURU",
+"score": 232,
+"max_combo": 4,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 97,
+"actions": "RDLURDL",
+"score": 444,
+"max_combo": 7,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 103,
+"actions": "RURDRU",
+"score": 1792,
+"max_combo": 6,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 109,
+"actions": "URUULLL",
+"score": 392,
+"max_combo": 7,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 115,
+"actions": "URDLRU",
+"score": 344,
+"max_combo": 6,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 121,
+"actions": "URULL",
+"score": 688,
+"max_combo": 5,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 127,
+"actions": "DLULRDU",
+"score": 904,
+"max_combo": 7,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 133,
+"actions": "URULDLLU",
+"score": 452,
+"max_combo": 8,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 139,
+"actions": "LDURULL",
+"score": 384,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 145,
+"actions": "UDRDLULU",
+"score": 232,
+"max_combo": 4,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 151,
+"actions": "ULDLUDL",
+"score": 472,
+"max_combo": 7,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 157,
+"actions": "RDLRULDLL",
+"score": 192,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 163,
+"actions": "ULRDLUL",
+"score": 224,
+"max_combo": 5,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 169,
+"actions": "RDLULUL",
+"score": 32,
+"max_combo": 1,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 175,
+"actions": "RLULDRDL",
+"score": 176,
+"max_combo": 6,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 181,
+"actions": "DLDURULDLUU",
+"score": 104,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 187,
+"actions": "URDRULDLDLU",
+"score": 100,
+"max_combo": 4,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 193,
+"actions": "LULUDRULULUU",
+"score": 100,
+"max_combo": 4,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 199,
+"actions": "DRURDRDLDL",
+"score": 152,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 25,
+"actions": "DUULLZD",
+"score": 12,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 25,
+"actions": "RURUR",
+"score": 36,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 31,
+"actions": "RUDDRLUZLDUR",
+"score": 16,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 31,
+"actions": "DLR",
+"score": 16,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 37,
+"actions": "DDUDDRLRRLLLZD",
+"score": 112,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 37,
+"actions": "ZRDDDLUUUDDDU",
+"score": 112,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 43,
+"actions": "URZRULDDRRD",
+"score": 40,
+"max_combo": 3,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 43,
+"actions": "LDLLRUULLUL",
+"score": 28,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 49,
+"actions": "URUZRD",
+"score": 28,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 49,
+"actions": "ULRRUDUR",
+"score": 28,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 55,
+"actions": "RRURDDZZLZZ",
+"score": 0,
+"max_combo": 0,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 55,
+"actions": "UDLL",
+"score": 48,
+"max_combo": 2,
+"won": true,
+"goal_ok": false
+},
+{
+"level": 61,
+"actions": "RDL",
+"score": 8,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 61,
+"actions": "LDRZU",
+"score": 8,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 67,
+"actions": "LUZZUUDUL",
+"score": 8,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 67,
+"actions": "ZLRLDDZZ",
+"score": 8,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 73,
+"actions": "RZRR",
+"score": 8,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 73,
+"actions": "UUDLULLRULRLDL",
+"score": 16,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 79,
+"actions": "URZZLZZUUDRURL",
+"score": 104,
+"max_combo": 3,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 79,
+"actions": "RLU",
+"score": 48,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 85,
+"actions": "DLDUUDLLULRZU",
+"score": 24,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 85,
+"actions": "UDLRULZDDRD",
+"score": 24,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 91,
+"actions": "RUUUDRR",
+"score": 24,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 91,
+"actions": "LDU",
+"score": 24,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 97,
+"actions": "DLDLZL",
+"score": 160,
+"max_combo": 3,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 97,
+"actions": "DUDLUDLULLUR",
+"score": 80,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 103,
+"actions": "UUUDDULDDLRRLD",
+"score": 304,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 103,
+"actions": "RZLDZRZURLDL",
+"score": 352,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 109,
+"actions": "URLDRZL",
+"score": 104,
+"max_combo": 4,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 109,
+"actions": "DLLUUD",
+"score": 48,
+"max_combo": 3,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 115,
+"actions": "LRLLDRDUURLLDR",
+"score": 56,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 115,
+"actions": "ZLL",
+"score": 16,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 121,
+"actions": "RLDRULLUUU",
+"score": 128,
+"max_combo": 1,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 121,
+"actions": "LDULLDZRZ",
+"score": 128,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 127,
+"actions": "DLRL",
+"score": 128,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 127,
+"actions": "UDUZRZRDUUULR",
+"score": 192,
+"max_combo": 3,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 133,
+"actions": "ZUDURZLDLDU",
+"score": 52,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 133,
+"actions": "DDDURUZ",
+"score": 60,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 139,
+"actions": "UZLURDL",
+"score": 128,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 139,
+"actions": "RRULU",
+"score": 112,
+"max_combo": 2,
+"won": false,
+"goal_ok": false
+},
+{
+"level": 0,
+"actions": "L",
+"score": 4,
+"max_combo": 1,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 0,
+"actions": "L",
+"score": 4,
+"max_combo": 1,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 9,
+"actions": "ULL",
+"score": 36,
+"max_combo": 3,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 9,
+"actions": "DZZ",
+"score": 0,
+"max_combo": 0,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 18,
+"actions": "URDRDUULR",
+"score": 4,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 18,
+"actions": "DLLLDLZ",
+"score": 4,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 27,
+"actions": "LZZRDU",
+"score": 28,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 27,
+"actions": "DLDZLDDRZLDDR",
+"score": 28,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 36,
+"actions": "DLRRL",
+"score": 128,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 36,
+"actions": "ZRDUDLLDZDU",
+"score": 112,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 45,
+"actions": "RUL",
+"score": 16,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 45,
+"actions": "DRRDUDL",
+"score": 48,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 54,
+"actions": "LDDLLLUL",
+"score": 32,
+"max_combo": 1,
+"won": true,
+"goal_ok": true
+},
+{
+"level": 63,
+"actions": "UZZZLL",
+"score": 16,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 63,
+"actions": "ULDLUDUZDRRD",
+"score": 48,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 72,
+"actions": "ULDULDURDLRDZU",
+"score": 16,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 72,
+"actions": "RRLZLRD",
+"score": 16,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 81,
+"actions": "DLULD",
+"score": 800,
+"max_combo": 4,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 90,
+"actions": "DDDUR",
+"score": 64,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 90,
+"actions": "RLUZULURZLULRU",
+"score": 80,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 99,
+"actions": "DRRZLRUURDURUU",
+"score": 20,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 99,
+"actions": "RZRLLLR",
+"score": 12,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 108,
+"actions": "RLUL",
+"score": 24,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 108,
+"actions": "ULUR",
+"score": 64,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 117,
+"actions": "RUUZRL",
+"score": 12,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 117,
+"actions": "LLRR",
+"score": 12,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 126,
+"actions": "ZRD",
+"score": 96,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 126,
+"actions": "UULDUUZLDRDRUU",
+"score": 432,
+"max_combo": 3,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 135,
+"actions": "UDURD",
+"score": 24,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 135,
+"actions": "RLDR",
+"score": 24,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 144,
+"actions": "URRZUUZLUDZ",
+"score": 144,
+"max_combo": 3,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 144,
+"actions": "RULRDUDZZZLR",
+"score": 144,
+"max_combo": 3,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 153,
+"actions": "DRUDUURL",
+"score": 32,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 153,
+"actions": "UUDDLL",
+"score": 4,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 162,
+"actions": "LRDZLRRLDZDRUR",
+"score": 40,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 162,
+"actions": "DLDZRUD",
+"score": 56,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 171,
+"actions": "ZLUZU",
+"score": 56,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 171,
+"actions": "RDLLZ",
+"score": 116,
+"max_combo": 3,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 180,
+"actions": "DRLLU",
+"score": 56,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 180,
+"actions": "RZL",
+"score": 8,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 189,
+"actions": "RDLRUZ",
+"score": 12,
+"max_combo": 2,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 189,
+"actions": "RRRZRZRDDRDZ",
+"score": 4,
+"max_combo": 1,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 198,
+"actions": "DDRDLUDRU",
+"score": 752,
+"max_combo": 5,
+"won": false,
+"goal_ok": true
+},
+{
+"level": 198,
+"actions": "RURRDLUU",
+"score": 416,
+"max_combo": 4,
+"won": false,
+"goal_ok": true
+}
+]

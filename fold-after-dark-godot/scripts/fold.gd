@@ -191,6 +191,10 @@ func _order(dr: int, dc: int) -> Array:
 func move(dr: int, dc: int) -> int:
 	if done:
 		return -1
+	# "merged" is presentation (which piece pops, and Juice's score); it describes THIS
+	# move only, so it is cleared here rather than trusting the board to clear it.
+	for t0 in tiles:
+		t0["merged"] = false
 	var snap := snapshot()
 	var order := _order(dr, dc)
 	var did_move := false

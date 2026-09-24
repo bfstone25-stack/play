@@ -1,0 +1,244 @@
+{
+ "start": [
+  {
+   "file": "start_0.ogg",
+   "text": "Ready when you are."
+  },
+  {
+   "file": "start_1.ogg",
+   "text": "Show me what you've got."
+  },
+  {
+   "file": "start_2.ogg",
+   "text": "New board. Let's play."
+  },
+  {
+   "file": "start_3.ogg",
+   "text": "Mm, this one looks fun."
+  },
+  {
+   "file": "start_4.ogg",
+   "text": "Take your time. I'm right here."
+  },
+  {
+   "file": "start_5.ogg",
+   "text": "Let's make it pretty."
+  },
+  {
+   "file": "start_6.ogg",
+   "text": "Go on, dazzle me."
+  }
+ ],
+ "good": [
+  {
+   "file": "good_0.ogg",
+   "text": "Nice move."
+  },
+  {
+   "file": "good_1.ogg",
+   "text": "Ooh, clever."
+  },
+  {
+   "file": "good_2.ogg",
+   "text": "You're so smart."
+  },
+  {
+   "file": "good_3.ogg",
+   "text": "Mm, I like watching you think."
+  },
+  {
+   "file": "good_4.ogg",
+   "text": "That was smooth."
+  },
+  {
+   "file": "good_5.ogg",
+   "text": "Look at you go."
+  },
+  {
+   "file": "good_6.ogg",
+   "text": "Good hands."
+  }
+ ],
+ "combo": [
+  {
+   "file": "combo_0.ogg",
+   "text": "Again! Again!"
+  },
+  {
+   "file": "combo_1.ogg",
+   "text": "Oh, keep going!"
+  },
+  {
+   "file": "combo_2.ogg",
+   "text": "Wow, look at that!"
+  },
+  {
+   "file": "combo_3.ogg",
+   "text": "Amazing!"
+  },
+  {
+   "file": "combo_4.ogg",
+   "text": "You're on fire tonight."
+  },
+  {
+   "file": "combo_5.ogg",
+   "text": "That's my favourite kind of move."
+  },
+  {
+   "file": "combo_6.ogg",
+   "text": "Don't stop now."
+  }
+ ],
+ "near_fail": [
+  {
+   "file": "near_fail_0.ogg",
+   "text": "Careful. Just a few moves left."
+  },
+  {
+   "file": "near_fail_1.ogg",
+   "text": "Deep breath. You've got this."
+  },
+  {
+   "file": "near_fail_2.ogg",
+   "text": "Tight one. I believe in you."
+  },
+  {
+   "file": "near_fail_3.ogg",
+   "text": "Almost out of moves. Think it through."
+  },
+  {
+   "file": "near_fail_4.ogg",
+   "text": "Slow down. Find the fold."
+  },
+  {
+   "file": "near_fail_5.ogg",
+   "text": "Easy. One smart move at a time."
+  }
+ ],
+ "win": [
+  {
+   "file": "win_0.ogg",
+   "text": "There you go!"
+  },
+  {
+   "file": "win_1.ogg",
+   "text": "Beautiful. Next one?"
+  },
+  {
+   "file": "win_2.ogg",
+   "text": "I knew you could."
+  },
+  {
+   "file": "win_3.ogg",
+   "text": "Clean and easy."
+  },
+  {
+   "file": "win_4.ogg",
+   "text": "You make it look simple."
+  },
+  {
+   "file": "win_5.ogg",
+   "text": "Mm, well done."
+  },
+  {
+   "file": "win_6.ogg",
+   "text": "That's how it's done."
+  }
+ ],
+ "win3": [
+  {
+   "file": "win3_0.ogg",
+   "text": "Three stars! You're so smart."
+  },
+  {
+   "file": "win3_1.ogg",
+   "text": "Nobody's ever beaten this so fast."
+  },
+  {
+   "file": "win3_2.ogg",
+   "text": "Perfect. I'm impressed."
+  },
+  {
+   "file": "win3_3.ogg",
+   "text": "Flawless. I could get used to this."
+  },
+  {
+   "file": "win3_4.ogg",
+   "text": "Three stars. Show-off. I love it."
+  },
+  {
+   "file": "win3_5.ogg",
+   "text": "Wow. Not a single wasted move."
+  }
+ ],
+ "unlock": [
+  {
+   "file": "unlock_0.ogg",
+   "text": "A new scene. Go on, take a look."
+  },
+  {
+   "file": "unlock_1.ogg",
+   "text": "You earned this one."
+  },
+  {
+   "file": "unlock_2.ogg",
+   "text": "Mm, you unlocked something special."
+  },
+  {
+   "file": "unlock_3.ogg",
+   "text": "All yours now. Enjoy."
+  },
+  {
+   "file": "unlock_4.ogg",
+   "text": "I was hoping you'd get here."
+  }
+ ],
+ "daily": [
+  {
+   "file": "daily_0.ogg",
+   "text": "You came back. I missed you."
+  },
+  {
+   "file": "daily_1.ogg",
+   "text": "There you are. Ready to play?"
+  },
+  {
+   "file": "daily_2.ogg",
+   "text": "Welcome back. I saved you a board."
+  },
+  {
+   "file": "daily_3.ogg",
+   "text": "Hey you. Let's pick up where we left off."
+  },
+  {
+   "file": "daily_4.ogg",
+   "text": "Good to see you again."
+  },
+  {
+   "file": "daily_5.ogg",
+   "text": "Back already? I like that."
+  }
+ ],
+ "streak": [
+  {
+   "file": "streak_0.ogg",
+   "text": "Win after win! Look at you."
+  },
+  {
+   "file": "streak_1.ogg",
+   "text": "You're on a streak. Don't stop."
+  },
+  {
+   "file": "streak_2.ogg",
+   "text": "That streak. I'm blushing."
+  },
+  {
+   "file": "streak_3.ogg",
+   "text": "Another one! You're unstoppable."
+  },
+  {
+   "file": "streak_4.ogg",
+   "text": "Streak's still alive. Keep it going."
+  }
+ ]
+}
