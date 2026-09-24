@@ -1,7 +1,8 @@
 {
  "greet": [
   "greet_0.ogg",
-  "greet_1.ogg"
+  "greet_1.ogg",
+  "greet_2.ogg"
  ],
  "stage": [
   "stage_0.ogg",
@@ -24,7 +25,8 @@
  ],
  "fail": [
   "fail_0.ogg",
-  "fail_1.ogg"
+  "fail_1.ogg",
+  "fail_2.ogg"
  ],
  "idle": [
   "idle_0.ogg",
