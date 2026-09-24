@@ -43,6 +43,10 @@ const SCENES := [
 ]
 
 var _tiers: Array = []      # [{first:int, last:int}] inclusive level indices
+## On Nutaku the server owns the cut and the scene pool (ops/nutaku/fold_f2p/
+## config.example.json: 5, then 14 apiece, 15 scenes). F2P._adopt() calls configure()
+## with the server's tiers; off the platform this stays empty and SCENES is the pool.
+var _server_scenes: Array = []
 
 
 func _ready() -> void:
@@ -61,6 +65,14 @@ func _cut() -> void:
 		first = false
 		_tiers.append({"first": i, "last": mini(n - 1, i + len - 1)})
 		i += len
+
+
+func configure(tiers: Array) -> void:
+	_tiers.clear()
+	_server_scenes.clear()
+	for t in tiers:
+		_tiers.append({"first": int(t["first"]), "last": int(t["last"])})
+		_server_scenes.append(t.get("scene"))
 
 
 func count() -> int:
@@ -124,6 +136,11 @@ func next_level_in(t: int) -> int:
 
 ## The scene a tier pays out. Past the pool, a labelled placeholder: nothing fits yet.
 func scene_for(t: int) -> Dictionary:
+	if not _server_scenes.is_empty():
+		var sc = _server_scenes[clampi(t, 0, _server_scenes.size() - 1)]
+		if typeof(sc) == TYPE_DICTIONARY:
+			return {"id": str(sc["id"]), "app": "", "key": "", "title": str(sc["title"]),
+				"from": "", "voice": "", "line": "", "who": ""}
 	if t < SCENES.size():
 		return SCENES[t]
 	return {"id": "pending_%02d" % (t + 1), "app": "", "key": "", "placeholder": true,
@@ -132,6 +149,10 @@ func scene_for(t: int) -> Dictionary:
 
 
 func scene_by_id(id: String) -> Dictionary:
+	for t in range(_server_scenes.size()):
+		var sc = _server_scenes[t]
+		if typeof(sc) == TYPE_DICTIONARY and str(sc["id"]) == id:
+			return scene_for(t)
 	for s in SCENES:
 		if s["id"] == id:
 			return s
@@ -154,6 +175,9 @@ func teaser_path(id: String) -> String:
 ## player earned it. Earned-but-not-delivered is a locked card with a "retry" — never a
 ## picture.
 func is_unlocked(id: String) -> bool:
+	if F2P.on():
+		# the server decides; the bytes still have to have landed for this install
+		return F2P.server_unlocked(id) and Unlock.ready_for(id)
 	return bool((Save.get_v("ad_scenes", {}) as Dictionary).get(id, false)) and Unlock.ready_for(id)
 
 

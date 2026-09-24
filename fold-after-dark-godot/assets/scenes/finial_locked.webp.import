@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm48auml0k4cu"
-path="res://.godot/imported/dagny_night.png-c38910761712405631fed059df5cba2e.ctex"
+uid="uid://csmbqypm133hm"
+path="res://.godot/imported/finial_locked.webp-1fdaad1876fd080f95084dc6cb9b5f21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/night/dagny_night.png"
-dest_files=["res://.godot/imported/dagny_night.png-c38910761712405631fed059df5cba2e.ctex"]
+source_file="res://assets/scenes/finial_locked.webp"
+dest_files=["res://.godot/imported/finial_locked.webp-1fdaad1876fd080f95084dc6cb9b5f21.ctex"]
 
 [params]
 

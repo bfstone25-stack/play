@@ -404,9 +404,12 @@ func _sparkle(at: Vector2, color: Color, amount: int = 14, spread: float = 1.0) 
 	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	ps.material = mat
 	_board.add_child(ps)
-	get_tree().create_timer(1.4).timeout.connect(func():
-		if is_instance_valid(ps):
-			ps.queue_free())
+	# The cleanup rides on the particles' own tween, so it dies with them. A SceneTree
+	# timer whose lambda captured `ps` fired after the board was freed (leave a level
+	# within 1.4 s of a merge) and logged "Lambda capture at index 0 was freed" per spark.
+	var tw := ps.create_tween()
+	tw.tween_interval(1.4)
+	tw.tween_callback(ps.queue_free)
 
 
 # --- the HUD ------------------------------------------------------------------------------------
@@ -545,7 +548,7 @@ func _build_hud() -> void:
 	_undo_btn = Button.new()
 	_undo_btn.theme_type_variation = "Amber"
 	_undo_btn.pressed.connect(func():
-		if Fold.undo():
+		if await _try_undo():
 			Sfx.slide()
 			_rebuild_pieces()
 			_sync())
@@ -554,6 +557,9 @@ func _build_hud() -> void:
 	_reset_btn = Button.new()
 	_reset_btn.theme_type_variation = "Amber"
 	_reset_btn.pressed.connect(func():
+		if F2P.on():
+			_f2p_retry()
+			return
 		Fold.reset()
 		Tier.streak_break()
 		Sfx.slide()
@@ -563,6 +569,23 @@ func _build_hud() -> void:
 		_rebuild_pieces()
 		_sync())
 	btns.add_child(_reset_btn)
+
+	if F2P.on():
+		var hint := Button.new()
+		hint.name = "Hint"
+		hint.text = "Hint"
+		hint.theme_type_variation = "Amber"
+		hint.pressed.connect(_f2p_hint)
+		btns.add_child(hint)
+		var shop := Button.new()
+		shop.name = "Shop"
+		shop.text = "Shop"
+		shop.theme_type_variation = "Amber"
+		var shop_done := func():
+			_win.visible = false
+			_sync()
+		shop.pressed.connect(func(): F2PUI.shop(_win, shop_done))
+		btns.add_child(shop)
 
 	var lv := Button.new()
 	lv.name = "Levels"
@@ -601,6 +624,8 @@ func _overlay() -> Control:
 func _sync() -> void:
 	_goal.text = I18n.f("goal", Fold.target())
 	_moves.text = I18n.f("moves", Fold.moves) + "   ·   " + I18n.f("parhint", Fold.par())
+	if F2P.on() and F2P.active_for(Fold.level_index):
+		_moves.text += "   ·   %d left" % F2P.moves_left()
 	# THE MODEL, in the header. ops/fold/BRIDGE.md: the level's name IS the thing it folds,
 	# and the fold count is log2(target) because the tile value is the layer count. In this
 	# fork the first two tiers fold paper and every tier after folds her (scripts/origami.gd,
@@ -639,10 +664,26 @@ func _sync() -> void:
 # --- opening a level ------------------------------------------------------------------------------
 
 func _open(i: int) -> void:
+	# Nutaku F2P: no ad gate, no page gate. The server opens the attempt (and takes the
+	# candle) or says why not; see scripts/f2p.gd.
+	if F2P.on():
+		_win.visible = false
+		if not await F2P.ensure():
+			_f2p_error("Could not reach the game server. " + Nutaku.last_error)
+			return
+		var r := await F2P.begin(i)
+		if not r["ok"]:
+			if int(r["status"]) == 402:
+				_f2p_no_candles(i)
+			elif int(r["status"]) == 403:
+				_to_map()
+			else:
+				_f2p_error(str(r["reason"]))
+			return
 	# The ad gate. Levels 1-50 are free on every track; past that the page decides —
 	# a price on itch, a sponsor clip on free.blazecore.dev. shared/godot/gate.gd returns
 	# true off the web and on a page with no gate.js, so a local build never bricks.
-	if i >= Fold.FREE_LEVELS and has_node("/root/Gate"):
+	elif i >= Fold.FREE_LEVELS and has_node("/root/Gate"):
 		var gate := get_node("/root/Gate")
 		if not gate.has("lv%d" % i):
 			var okay: bool = await gate.require("lv%d" % i, "%s %d" % [I18n.t("level"), i + 1], "level")
@@ -665,7 +706,7 @@ func _open(i: int) -> void:
 	# wait runs under the tier instead of after it. Off the web this is a no-op.
 	var scene := Tier.scene_for(Tier.of_level(i))
 	var sid := str(scene["id"])
-	if not bool(scene.get("placeholder", false)) and _ticket_for != sid and not Unlock.ready_for(sid):
+	if not F2P.on() and not bool(scene.get("placeholder", false)) and _ticket_for != sid and not Unlock.ready_for(sid):
 		_ticket_for = sid
 		Unlock.start(sid)
 
@@ -711,6 +752,9 @@ func _announce_step() -> void:
 
 
 func _on_moved(direction: Vector2i, merge_count: int) -> void:
+	if F2P.on():
+		F2P.on_move(direction)
+		_f2p_check_budget.call_deferred()
 	if merge_count > 0:
 		# a merge doubled the layer count, which is one more fold: say which one it was
 		_announce_step()
@@ -843,6 +887,16 @@ func _one_fold_left() -> bool:
 # --- winning -------------------------------------------------------------------------------------
 
 func _on_solved(stars: int, move_count: int, p: int) -> void:
+	if F2P.on():
+		# the server replays the fold log; only its answer clears the level
+		var res := await F2P.finish(move_count)
+		if not res["ok"]:
+			var again := func(_s: Label): _open(Fold.level_index)
+			var home := func(_s: Label): _to_map()
+			F2PUI.card(_win, "Not counted", ["The server did not accept this result: %s" % res["reason"]],
+				[["Try again", "Primary", again, "Retry"], ["Map", "Amber", home, "Map"]])
+			return
+		stars = int(res["stars"])
 	Sfx.unity(stars)
 	# One voice, one line: bark() drops a second line while the first is playing, so the
 	# order here is the priority. A streak is the rarer thing to have earned, so it wins
@@ -951,7 +1005,9 @@ func _unlock(scene: Dictionary, btn: Button, status: Label) -> void:
 	btn.disabled = true
 	status.text = I18n.t("delivering")
 	var ok := true
-	if not Unlock.ready_for(id):
+	if F2P.on():
+		ok = F2P.server_unlocked(id) and await F2P.deliver(id)
+	elif not Unlock.ready_for(id):
 		var gate := get_node("/root/Gate")
 		ok = await gate.require("scene_" + id, str(scene["title"]), "cg")
 		if ok and not (str(_ticket_for) == id) :
@@ -1084,6 +1140,7 @@ func _show_win(stars: int, move_count: int, p: int) -> void:
 	share.text = I18n.t("share")
 	share.theme_type_variation = "Ghost"
 	share.pressed.connect(func(): _share(stars, move_count))
+	share.visible = not F2P.on()     # the share text carries a URL; Nutaku bans outbound links
 	col.add_child(share)
 
 	_win.visible = true
@@ -1100,7 +1157,8 @@ func _show_win(stars: int, move_count: int, p: int) -> void:
 ## full-screen panel at z-index 100000 — landed straight on top of the win card, so the
 ## player never saw their own stars. Three seconds of result, then the offer.
 func _offer_board() -> void:
-	if _board_offered or not has_node("/root/Gate"):
+	# Nutaku: no cross-promotion and no outbound links in the platform build.
+	if F2P.on() or _board_offered or not has_node("/root/Gate"):
 		return
 	_board_offered = true
 	get_node("/root/Gate").board_offer_more("adult")
@@ -1199,7 +1257,9 @@ func _unhandled_input(e: InputEvent) -> void:
 			elif k == KEY_ENTER or k == KEY_KP_ENTER or k == KEY_SPACE:
 				# Enter: the one button that matters on whatever card is up
 				var host: Node = _viewer if _viewer != null else _win
-				for name in ["Close", "Unlock", "Map"]:
+				# Enter presses the card's primary button. On Nutaku the primary can be a
+				# purchase (Refill, +5 moves); the platform then shows its own confirm.
+				for name in ["Close", "Unlock", "Refill", "MoreMoves", "Retry", "Map"]:
 					var b := host.find_child(name, true, false)
 					if b is Button and not (b as Button).disabled:
 						(b as Button).pressed.emit()
@@ -1214,10 +1274,13 @@ func _unhandled_input(e: InputEvent) -> void:
 	elif e.is_action_pressed("fold_right"):
 		Fold.move(0, 1)
 	elif e.is_action_pressed("fold_undo"):
-		if Fold.undo():
+		if await _try_undo():
 			_rebuild_pieces()
 			_sync()
 	elif e.is_action_pressed("fold_reset"):
+		if F2P.on():
+			_f2p_retry()
+			return
 		Fold.reset()
 		_rebuild_pieces()
 		_sync()
@@ -1307,4 +1370,109 @@ func _publish() -> void:
 		"streak": Tier.streak,
 		"scene_visible": _viewer != null,
 		"plates_missing": Art.missing(),
+		"f2p": F2P.on(),
+		"moves_left": F2P.moves_left() if F2P.on() else -1,
+		"attempt": F2P.active_for(Fold.level_index),
+		"energy": F2P.energy(),
+		"card_buttons": _card_buttons(),
 	}), true)
+
+
+## Names of the buttons on whatever card is up (read-only, for the browser driver).
+func _card_buttons() -> Array:
+	var out := []
+	if _win.visible:
+		for b in _win.find_children("*", "Button", true, false):
+			out.append(str(b.name))
+	return out
+
+
+# --- Nutaku F2P (scripts/f2p.gd holds the attempt; the server holds everything else) --------
+
+## Undo: one free per attempt on Nutaku, more cost an undo token (bought on the spot).
+func _try_undo() -> bool:
+	if not F2P.on():
+		return Fold.undo()
+	if Fold.history.is_empty() or Fold.done:
+		return false
+	if not F2P.can_undo():
+		var r := await F2P.use("undo")
+		if not r["ok"]:
+			_hint.text = "No undo: %s" % r["reason"]
+			return false
+	if Fold.undo():
+		F2P.on_undo()
+		return true
+	return false
+
+
+## Out of moves is checked a frame after the move, once Fold has had its chance to call
+## the level solved.
+func _f2p_check_budget() -> void:
+	if not is_instance_valid(self) or Fold.done or not F2P.out_of_moves():
+		return
+	Sfx.bark("fail")
+	var more := func(status: Label):
+		status.text = "…"
+		var r := await F2P.use("moves")
+		if r["ok"]:
+			_win.visible = false
+			_sync()
+		else:
+			status.text = str(r["reason"])
+	var retry := func(_s: Label): _f2p_retry()
+	var home := func(_s: Label):
+		await F2P.give_up()
+		_to_map()
+	var cost := "1 token" if F2P.tokens("moves") > 0 else F2PUI.gold(F2P.SKU_MOVES)
+	F2PUI.card(_win, "Out of moves", ["%d moves spent. Five more keep this board as it is." % F2P.spent()],
+		[["+5 moves · %s" % cost, "Primary", more, "MoreMoves"],
+		 ["Retry (1 candle)", "Amber", retry, "Retry"],
+		 ["Map", "Ghost", home, "Map"]])
+
+
+## Reset on Nutaku is a new attempt: the old one is given up, the new one costs a candle
+## (unless the level is already cleared, when replays are free).
+func _f2p_retry() -> void:
+	await F2P.give_up()
+	Tier.streak_break()
+	_open(Fold.level_index)
+
+
+func _f2p_no_candles(level: int) -> void:
+	var refill := func(status: Label):
+		status.text = "Waiting for Nutaku…"
+		var r := await Nutaku.buy(F2P.SKU_REFILL)
+		status.text = F2PUI._pay_text(r)
+		if str(r.get("status", "")) == "success":
+			_open(level)
+	var one := func(status: Label):
+		status.text = "Waiting for Nutaku…"
+		var r := await Nutaku.buy(F2P.SKU_CANDLE)
+		status.text = F2PUI._pay_text(r)
+		if str(r.get("status", "")) == "success":
+			_open(level)
+	var wait := func(_s: Label): _to_map()
+	F2PUI.card(_win, "Out of candles",
+		["No candles left. " + F2P.candle_text(), "Candles come back on their own; the level waits."],
+		[["Refill · %s" % F2PUI.gold(F2P.SKU_REFILL), "Primary", refill, "Refill"],
+		 ["One candle · %s" % F2PUI.gold(F2P.SKU_CANDLE), "Amber", one, "Candle"],
+		 ["Wait", "Ghost", wait, "Map"]])
+
+
+func _f2p_hint() -> void:
+	if not F2P.active_for(Fold.level_index) or Fold.done:
+		return
+	var r := await F2P.use("hint")
+	if not r["ok"]:
+		_hint.text = "No hint: %s" % r["reason"]
+		return
+	var mv := str((r["hint"] as Dictionary).get("move", ""))
+	var word: String = {"U": "UP", "D": "DOWN", "L": "LEFT", "R": "RIGHT"}.get(mv, "?")
+	_sync()
+	_hint.text = "Hint: fold %s" % word
+
+
+func _f2p_error(msg: String) -> void:
+	var home := func(_s: Label): _to_map()
+	F2PUI.card(_win, "Server", [msg], [["Map", "Amber", home, "Map"]])

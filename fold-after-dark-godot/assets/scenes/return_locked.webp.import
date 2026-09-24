@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba4myrtlofe22"
-path="res://.godot/imported/mirren_night.png-90d7e9974b20430f2877101a6500ffa5.ctex"
+uid="uid://cawd55bfawdq0"
+path="res://.godot/imported/return_locked.webp-64b6a9876743f8652a74c14e460a8377.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/night/mirren_night.png"
-dest_files=["res://.godot/imported/mirren_night.png-90d7e9974b20430f2877101a6500ffa5.ctex"]
+source_file="res://assets/scenes/return_locked.webp"
+dest_files=["res://.godot/imported/return_locked.webp-64b6a9876743f8652a74c14e460a8377.ctex"]
 
 [params]
 

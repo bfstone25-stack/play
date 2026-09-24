@@ -24,8 +24,30 @@ func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_build_backdrop()
+	if F2P.on():
+		# Nutaku: the map is the server's. Log in (handshake -> session) before drawing.
+		_loading()
+		if not await F2P.ensure():
+			_loading("Could not reach the game server. " + Nutaku.last_error)
+			return
+		await Nutaku.refresh()
 	_build()
 	I18n.changed.connect(func(_l): _build())
+
+
+func _loading(msg: String = "Signing in…") -> void:
+	if _ui:
+		_ui.queue_free()
+	_ui = CanvasLayer.new()
+	_ui.layer = 1
+	add_child(_ui)
+	var c := CenterContainer.new()
+	c.theme = StudioTheme.build()
+	c.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_ui.add_child(c)
+	var l := StudioTheme.display_label(msg, 22, Palette.GOLD)
+	l.name = "Loading"
+	c.add_child(l)
 
 
 func _build_backdrop() -> void:
@@ -125,14 +147,19 @@ func _build() -> void:
 		if t == focus_tier:
 			focus_card = card
 
-	# right: the stubs
+	# right: the daily systems — the server's on Nutaku, the labelled local stubs elsewhere
 	var side := VBoxContainer.new()
+	side.name = "Side"
 	side.custom_minimum_size = Vector2(300, 0)
 	side.add_theme_constant_override("separation", 10)
 	body.add_child(side)
-	side.add_child(_stub_daily())
-	side.add_child(_stub_streak())
-	side.add_child(_stub_board())
+	if F2P.on():
+		for p in F2PUI.side(func(): _build(), _open_shop):
+			side.add_child(p)
+	else:
+		side.add_child(_stub_daily())
+		side.add_child(_stub_streak())
+		side.add_child(_stub_board())
 
 	if focus_card != null:
 		await get_tree().process_frame
@@ -189,6 +216,8 @@ func _tier_card(t: int) -> Control:
 	var id := str(scene["id"])
 	var placeholder := bool(scene.get("placeholder", false))
 	var unlocked := (not placeholder) and Tier.is_unlocked(id)
+	if F2P.on():
+		unlocked = (not placeholder) and F2P.server_unlocked(id)
 	if placeholder:
 		var ph := StudioTheme.mono_label(I18n.t("placeholder_scene"), 12, Palette.RED_TEXT)
 		ph.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -218,6 +247,21 @@ func _tier_card(t: int) -> Control:
 		tag.text = I18n.t("locked") + " · " + I18n.t("clear_to_unlock")
 		tag.add_theme_color_override("font_color", Palette.ACCENT)
 	scol.add_child(tag)
+	if F2P.on() and not placeholder and not unlocked and not cleared:
+		# the one early-unlock offer: the tier's scene now, for gold
+		var buy := Button.new()
+		buy.name = "BuyScene"
+		buy.text = "Unlock now · %s" % F2PUI.gold(F2P.tier_sku(t))
+		buy.theme_type_variation = "Ghost"
+		buy.pressed.connect(func():
+			buy.disabled = true
+			var r := await Nutaku.buy(F2P.tier_sku(t))
+			if str(r.get("status", "")) == "success":
+				_build()
+			else:
+				buy.text = F2PUI._pay_text(r)
+				buy.disabled = false)
+		scol.add_child(buy)
 	if not placeholder and (unlocked or cleared):
 		var view := Button.new()
 		view.name = "View"
@@ -292,6 +336,14 @@ func _play(t: int) -> void:
 ## plate never arrived. Either way the picture comes from Unlock or does not come.
 func _view(scene: Dictionary) -> void:
 	var id := str(scene["id"])
+	if F2P.on():
+		if not F2P.server_unlocked(id) or not await F2P.deliver(id):
+			return
+		_viewer = SceneView.open(_ui, scene, func():
+			_viewer = null
+			_build())
+		_publish()
+		return
 	if not Unlock.ready_for(id):
 		var ok := await _deliver(id)
 		if not ok:
@@ -350,16 +402,43 @@ func _unhandled_input(e: InputEvent) -> void:
 
 func _process(_d: float) -> void:
 	_publish()
+	if F2P.on() and _ui:
+		var ct := _ui.find_child("CandleText", true, false)
+		if ct is Label:
+			(ct as Label).text = F2P.candle_text()
+
+
+func _open_shop() -> void:
+	var ov := Control.new()
+	ov.name = "ShopOverlay"
+	ov.theme = StudioTheme.build()
+	ov.set_anchors_preset(Control.PRESET_FULL_RECT)
+	var bg := ColorRect.new()
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(Palette.GROUND_DEEP, 0.82)
+	ov.add_child(bg)
+	var centre := CenterContainer.new()
+	centre.name = "Centre"
+	centre.set_anchors_preset(Control.PRESET_FULL_RECT)
+	ov.add_child(centre)
+	_ui.add_child(ov)
+	F2PUI.shop(ov, func():
+		ov.queue_free()
+		_build())
 
 
 func _publish() -> void:
 	if not OS.has_feature("web"):
 		return
 	var unlocked := []
-	for s in Tier.SCENES:
-		if Tier.is_unlocked(str(s["id"])):
-			unlocked.append(s["id"])
+	for t in range(Tier.count()):
+		var sc := Tier.scene_for(t)
+		if Tier.is_unlocked(str(sc["id"])):
+			unlocked.append(sc["id"])
 	JavaScriptBridge.eval("window.__fold_state=%s;" % JSON.stringify({
+		"f2p": F2P.on(),
+		"energy": F2P.energy(),
+		"frontier": int((Nutaku.state.get("progress", {}) as Dictionary).get("frontier", -1)),
 		"screen": "map",
 		"tier": Tier.current() + 1,
 		"tiers": Tier.count(),
