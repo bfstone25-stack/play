@@ -1,0 +1,921 @@
+{
+ "_note": "PLICATA's crane letters (the story spine, 2026-09-24). One fold per scene tier; the server says which folds a player has opened (house.py, config f2p.letters). Keys: letter_<who>_<fold>, coco2_<n> (Coco's second crane, one fold per update pack), hook_<chapter> (a chapter's closing hook). Every entry in all seven languages (check_i18n.py).",
+ "letter_coco_1": {
+  "en": "Coco keeps a paper crane on the reception desk. \"That one's mine,\" she says, and moves it out of your reach.",
+  "ja": "Coco は受付のカウンターに折り鶴を一羽置いている。「それは私の」と言って、あなたの手の届かないところへ移す。",
+  "de": "Coco hat einen Papierkranich auf dem Empfangstresen stehen. „Der gehört mir“, sagt sie und rückt ihn außer Reichweite.",
+  "fr": "Coco garde une grue en papier sur le comptoir de l'accueil. « Celle-là, c'est la mienne », dit-elle, et elle la pousse hors de ta portée.",
+  "es": "Coco guarda una grulla de papel en el mostrador de recepción. «Esa es mía», dice, y la aparta de tu alcance.",
+  "zh": "Coco 在前台放着一只纸鹤。“那只是我的。”她说着，把它挪到你够不着的地方。",
+  "ko": "코코는 프런트 데스크에 종이학 한 마리를 두고 있어요. “그건 내 거야.” 그렇게 말하며 당신 손이 닿지 않는 곳으로 옮겨요."
+ },
+ "letter_coco_2": {
+  "en": "You catch her unfolding one wing to read a line, then folding it back. She pretends she didn't see you looking.",
+  "ja": "彼女が片方の翼をほどいて一行だけ読み、また折り直すところを見てしまう。見られていたことには、気づかないふりをする。",
+  "de": "Du erwischst sie, wie sie einen Flügel aufklappt, eine Zeile liest und ihn wieder faltet. Sie tut so, als hätte sie deinen Blick nicht bemerkt.",
+  "fr": "Tu la surprends à déplier une aile pour lire une ligne, puis à la replier. Elle fait semblant de ne pas t'avoir vu la regarder.",
+  "es": "La pillas desplegando un ala para leer una línea y volviendo a doblarla. Finge que no te ha visto mirar.",
+  "zh": "你撞见她拆开一边翅膀读了一行，又折了回去。她假装没看见你在看。",
+  "ko": "그녀가 날개 한쪽을 펼쳐 한 줄을 읽고 다시 접는 걸 보고 말았어요. 그녀는 당신이 본 걸 모르는 척해요."
+ },
+ "letter_coco_3": {
+  "en": "\"Everyone here keeps a crane,\" she says. \"A letter, folded small. You open them by staying.\" Hers stays shut.",
+  "ja": "「ここではみんな折り鶴を持ってるの」と彼女は言う。「小さく折った手紙。ここにいてくれれば、ひらいていく」。彼女の鶴は閉じたまま。",
+  "de": "„Jede hier hat einen Kranich“, sagt sie. „Einen Brief, klein gefaltet. Man öffnet sie, indem man bleibt.“ Ihrer bleibt zu.",
+  "fr": "« Ici, chacune garde une grue, dit-elle. Une lettre, pliée tout petit. On les ouvre en restant. » La sienne reste fermée.",
+  "es": "«Aquí todas guardan una grulla», dice. «Una carta, doblada muy pequeña. Se abren quedándote». La suya sigue cerrada.",
+  "zh": "“这里每个人都藏着一只纸鹤，”她说，“一封折得小小的信。你留下来，它们就会一点点打开。”她的那只依旧合着。",
+  "ko": "“여기선 다들 종이학을 하나씩 갖고 있어.” 그녀가 말해요. “작게 접은 편지야. 곁에 머물면 열리지.” 그녀의 종이학은 닫힌 채예요."
+ },
+ "letter_coco_4": {
+  "en": "The crane has a date on its tail: the night the House opened. \"I wrote it before the first guest came,\" she admits.",
+  "ja": "鶴の尾に日付がある。館がひらいた夜の日付。「最初のお客さんが来る前に書いたの」と彼女は打ち明ける。",
+  "de": "Auf dem Schwanz des Kranichs steht ein Datum: die Nacht, in der das Haus eröffnet hat. „Ich hab ihn geschrieben, bevor der erste Gast kam“, gibt sie zu.",
+  "fr": "Il y a une date sur la queue de la grue : le soir où la Maison a ouvert. « Je l'ai écrite avant l'arrivée du premier invité », avoue-t-elle.",
+  "es": "La grulla lleva una fecha en la cola: la noche en que abrió la Casa. «La escribí antes de que llegara el primer invitado», confiesa.",
+  "zh": "鹤尾上写着一个日期：这座房子开张的那一晚。“第一位客人来之前，我就写好了。”她承认。",
+  "ko": "종이학 꼬리에 날짜가 적혀 있어요. 하우스가 문을 연 밤이에요. “첫 손님이 오기 전에 썼어.” 그녀가 털어놓아요."
+ },
+ "letter_coco_5": {
+  "en": "\"There's a name inside,\" she says, and laughs when you ask whose. \"Nobody's, yet.\"",
+  "ja": "「中に名前が書いてあるの」と彼女は言い、誰の名前かと聞かれて笑う。「まだ、誰のでもない」",
+  "de": "„Da steht ein Name drin“, sagt sie und lacht, als du fragst, wessen. „Noch niemandes.“",
+  "fr": "« Il y a un nom à l'intérieur », dit-elle, et elle rit quand tu demandes lequel. « Celui de personne, pour l'instant. »",
+  "es": "«Dentro hay un nombre», dice, y se ríe cuando preguntas de quién. «De nadie, todavía».",
+  "zh": "“里面写着一个名字。”她说。你问是谁，她笑了：“现在还不是任何人的。”",
+  "ko": "“안에 이름이 하나 적혀 있어.” 누구 이름이냐고 묻자 그녀가 웃어요. “아직은 아무의 것도 아니야.”"
+ },
+ "letter_coco_6": {
+  "en": "She lets you hold her crane for a moment. It's lighter than you expected. She takes it back very quickly.",
+  "ja": "少しのあいだだけ、彼女は鶴を持たせてくれる。思っていたより軽い。そしてすぐに取り返す。",
+  "de": "Einen Moment lang lässt sie dich ihren Kranich halten. Er ist leichter, als du dachtest. Sie nimmt ihn sehr schnell zurück.",
+  "fr": "Elle te laisse tenir sa grue un instant. Elle est plus légère que tu ne l'imaginais. Elle la reprend très vite.",
+  "es": "Te deja sostener su grulla un momento. Pesa menos de lo que esperabas. Te la quita enseguida.",
+  "zh": "她让你捧了一会儿她的纸鹤。比你想的要轻。她很快就拿了回去。",
+  "ko": "그녀가 잠깐 종이학을 쥐여 줘요. 생각보다 가벼워요. 그녀는 아주 재빨리 도로 가져가요."
+ },
+ "letter_coco_7": {
+  "en": "\"I came to this city with one suitcase and no one to call,\" she says, turning the crane over. \"So I built a house where nobody leaves before morning.\"",
+  "ja": "「この街にはスーツケースひとつで来たの。電話する相手もいなかった」と、鶴をひっくり返しながら彼女は言う。「だから、朝まで誰も帰らない家をつくったの」",
+  "de": "„Ich kam mit einem Koffer in diese Stadt und niemandem, den ich anrufen konnte“, sagt sie und dreht den Kranich um. „Also hab ich ein Haus gebaut, aus dem keiner vor dem Morgen geht.“",
+  "fr": "« Je suis arrivée dans cette ville avec une valise et personne à appeler », dit-elle en retournant la grue. « Alors j'ai bâti une maison d'où personne ne part avant le matin. »",
+  "es": "«Llegué a esta ciudad con una maleta y nadie a quien llamar», dice, dándole la vuelta a la grulla. «Así que construí una casa de la que nadie se va antes del amanecer».",
+  "zh": "“我来这座城市时只拎着一个行李箱，没有一个可以打电话的人。”她把纸鹤翻过来，“所以我建了一座房子，天亮之前谁都不会走。”",
+  "ko": "“가방 하나 들고 이 도시에 왔어. 전화할 사람도 없이.” 종이학을 뒤집으며 그녀가 말해요. “그래서 아침이 오기 전엔 아무도 떠나지 않는 집을 지었어.”"
+ },
+ "letter_coco_8": {
+  "en": "One fold loosens on its own. You glimpse a single word in her handwriting: stay. She tucks it back in, blushing.",
+  "ja": "折り目がひとつ、ひとりでにゆるむ。彼女の字で書かれた一語が見える。いて。彼女は赤くなって、それを押し戻す。",
+  "de": "Eine Falte löst sich von selbst. Du erhaschst ein einziges Wort in ihrer Handschrift: bleib. Errötend steckt sie es zurück.",
+  "fr": "Un pli se défait tout seul. Tu aperçois un seul mot de son écriture : reste. Elle le glisse à nouveau dedans, en rougissant.",
+  "es": "Un pliegue se afloja solo. Alcanzas a ver una sola palabra con su letra: quédate. Ella la vuelve a meter, sonrojada.",
+  "zh": "有一道折痕自己松开了。你瞥见她手写的一个词：留下。她红着脸把它塞了回去。",
+  "ko": "접힌 자리 하나가 저절로 풀려요. 그녀의 글씨로 쓴 한 단어가 언뜻 보여요. 있어 줘. 그녀는 얼굴을 붉히며 다시 밀어 넣어요."
+ },
+ "letter_coco_9": {
+  "en": "\"Every lantern in this house is someone I hoped would come back,\" she says. \"Most of them did.\"",
+  "ja": "「この館のランタンは、どれも戻ってきてほしいと願った誰か」と彼女は言う。「ほとんどの人は、戻ってきた」",
+  "de": "„Jede Laterne in diesem Haus ist jemand, von dem ich gehofft habe, dass er wiederkommt“, sagt sie. „Die meisten sind wiedergekommen.“",
+  "fr": "« Chaque lanterne de cette maison, c'est quelqu'un dont j'espérais le retour, dit-elle. La plupart sont revenus. »",
+  "es": "«Cada farolillo de esta casa es alguien que esperaba que volviera», dice. «Casi todos volvieron».",
+  "zh": "“这房子里的每一盏灯笼，都是我盼着能回来的人，”她说，“大多数都回来了。”",
+  "ko": "“이 집의 등불 하나하나가 돌아오길 바랐던 사람이야.” 그녀가 말해요. “대부분은 돌아왔어.”"
+ },
+ "letter_coco_10": {
+  "en": "\"The letter's for one person,\" she says. \"I'll know them when they've read everyone else's.\" She looks at you a little too long.",
+  "ja": "「この手紙はひとりのためのもの」と彼女は言う。「ほかのみんなの手紙を読み終えた人が、その人」。そう言って、あなたを少し長く見つめる。",
+  "de": "„Der Brief ist für einen einzigen Menschen“, sagt sie. „Ich erkenne ihn, wenn er alle anderen gelesen hat.“ Sie sieht dich einen Moment zu lange an.",
+  "fr": "« Cette lettre est pour une seule personne, dit-elle. Je la reconnaîtrai quand elle aura lu toutes les autres. » Elle te regarde un peu trop longtemps.",
+  "es": "«La carta es para una sola persona», dice. «La reconoceré cuando haya leído las de todas las demás». Te mira un poco más de la cuenta.",
+  "zh": "“这封信只写给一个人，”她说，“读完其他所有人的信的那个人，就是他。”她看你的时间有点太长了。",
+  "ko": "“이 편지는 딱 한 사람을 위한 거야.” 그녀가 말해요. “다른 모두의 편지를 다 읽은 사람이 그 사람이겠지.” 그녀가 당신을 조금 오래 바라봐요."
+ },
+ "letter_coco_11": {
+  "en": "You find her folding a second crane at closing time, a blank one. \"Practice,\" she says. \"For when I need a new one.\"",
+  "ja": "閉店の時間、彼女が二羽目の鶴を折っているのを見つける。何も書いていない鶴。「練習よ」と彼女は言う。「新しいのが必要になったときのために」",
+  "de": "Zur Sperrstunde findest du sie beim Falten eines zweiten Kranichs, eines leeren. „Übung“, sagt sie. „Für den Fall, dass ich einen neuen brauche.“",
+  "fr": "À la fermeture, tu la trouves en train de plier une deuxième grue, vierge. « Pour m'entraîner, dit-elle. Pour le jour où il m'en faudra une nouvelle. »",
+  "es": "A la hora de cerrar la encuentras doblando una segunda grulla, en blanco. «Para practicar», dice. «Por si algún día necesito una nueva».",
+  "zh": "打烊时，你发现她在折第二只纸鹤，一只空白的。“练习，”她说，“等我需要一只新的时候用。”",
+  "ko": "문 닫을 시간, 그녀가 두 번째 종이학을 접고 있어요. 아무것도 쓰지 않은 종이학이에요. “연습이야.” 그녀가 말해요. “새 게 필요해질 때를 위해서.”"
+ },
+ "letter_coco_12": {
+  "en": "\"You want to know what I'm afraid of?\" She taps the crane. \"That the door stops opening. That's all.\"",
+  "ja": "「私が何を怖がってるか知りたい？」彼女は鶴を指でつつく。「扉がひらかなくなること。それだけ」",
+  "de": "„Willst du wissen, wovor ich Angst habe?“ Sie tippt auf den Kranich. „Dass die Tür nicht mehr aufgeht. Das ist alles.“",
+  "fr": "« Tu veux savoir ce qui me fait peur ? » Elle tapote la grue. « Que la porte cesse de s'ouvrir. C'est tout. »",
+  "es": "«¿Quieres saber qué me da miedo?». Da unos golpecitos a la grulla. «Que la puerta deje de abrirse. Nada más».",
+  "zh": "“想知道我怕什么吗？”她轻敲那只纸鹤，“怕这扇门再也没人推开。就这些。”",
+  "ko": "“내가 뭐가 무서운지 알고 싶어?” 그녀가 종이학을 톡톡 두드려요. “문이 더는 열리지 않는 거. 그게 다야.”"
+ },
+ "letter_coco_13": {
+  "en": "She reads you one line out loud, then stops. \"The rest is too honest for a Tuesday.\"",
+  "ja": "彼女は一行だけ声に出して読み、そこで止める。「続きは、火曜日にしては正直すぎるの」",
+  "de": "Sie liest dir eine Zeile laut vor und hört dann auf. „Der Rest ist zu ehrlich für einen Dienstag.“",
+  "fr": "Elle te lit une ligne à voix haute, puis s'arrête. « La suite est trop sincère pour un mardi. »",
+  "es": "Te lee una línea en voz alta y se detiene. «El resto es demasiado sincero para un martes».",
+  "zh": "她给你念了一行，然后停住。“剩下的，对一个星期二来说太坦白了。”",
+  "ko": "그녀가 한 줄을 소리 내어 읽다가 멈춰요. “나머지는 화요일에 하기엔 너무 솔직해.”"
+ },
+ "letter_coco_14": {
+  "en": "The crane's wing has a tiny tear. \"I almost opened it for someone once,\" she says. \"They didn't come back. You keep coming back.\"",
+  "ja": "鶴の翼に小さな破れ目がある。「一度、ある人のためにひらきかけたの」と彼女は言う。「その人は戻ってこなかった。あなたは何度でも戻ってくる」",
+  "de": "Der Flügel des Kranichs hat einen winzigen Riss. „Ich hätte ihn fast einmal für jemanden geöffnet“, sagt sie. „Er ist nicht wiedergekommen. Du kommst immer wieder.“",
+  "fr": "L'aile de la grue porte une minuscule déchirure. « J'ai failli l'ouvrir pour quelqu'un, une fois, dit-elle. Il n'est jamais revenu. Toi, tu reviens toujours. »",
+  "es": "El ala de la grulla tiene un desgarrón diminuto. «Una vez casi la abrí para alguien», dice. «No volvió. Tú siempre vuelves».",
+  "zh": "纸鹤的翅膀上有道小小的裂口。“我差点为一个人打开过它，”她说，“那人没有回来。而你一直回来。”",
+  "ko": "종이학 날개에 아주 작은 찢김이 있어요. “한 번, 어떤 사람을 위해 열 뻔했어.” 그녀가 말해요. “그 사람은 돌아오지 않았어. 너는 계속 돌아오고.”"
+ },
+ "letter_coco_15": {
+  "en": "\"The others trust you now,\" she says. \"I've watched every crane in the house come open in your hands.\"",
+  "ja": "「みんな、もうあなたを信じてる」と彼女は言う。「館じゅうの鶴が、あなたの手の中でひらいていくのを見てきたわ」",
+  "de": "„Die anderen vertrauen dir jetzt“, sagt sie. „Ich habe gesehen, wie sich jeder Kranich im Haus in deinen Händen geöffnet hat.“",
+  "fr": "« Les autres te font confiance maintenant, dit-elle. J'ai vu chaque grue de la maison s'ouvrir entre tes mains. »",
+  "es": "«Las demás ya confían en ti», dice. «He visto abrirse en tus manos cada grulla de la casa».",
+  "zh": "“她们现在都信任你了，”她说，“我看着这房子里的每一只纸鹤，都在你手里打开。”",
+  "ko": "“이제 다들 너를 믿어.” 그녀가 말해요. “이 집의 종이학이 전부 네 손에서 열리는 걸 지켜봤어.”"
+ },
+ "letter_coco_16": {
+  "en": "She sleeps with the crane on her pillow. When you notice, she turns it so the writing faces away from you.",
+  "ja": "彼女は鶴を枕元に置いて眠る。あなたが気づくと、文字が見えないように向きを変える。",
+  "de": "Sie schläft mit dem Kranich auf dem Kissen. Als du es bemerkst, dreht sie ihn so, dass die Schrift von dir wegzeigt.",
+  "fr": "Elle dort avec la grue sur son oreiller. Quand tu le remarques, elle la tourne pour que l'écriture ne soit pas de ton côté.",
+  "es": "Duerme con la grulla sobre la almohada. Cuando te das cuenta, la gira para que la letra no quede de tu lado.",
+  "zh": "她睡觉时把纸鹤放在枕边。你一注意到，她就把它转过去，让字背对着你。",
+  "ko": "그녀는 종이학을 베개 위에 두고 자요. 당신이 알아채자, 글씨가 당신 쪽을 향하지 않게 돌려놓아요."
+ },
+ "letter_coco_17": {
+  "en": "\"Almost,\" she says, before you can ask. \"There's one more fold I'm not ready for.\"",
+  "ja": "「もうすぐ」と、あなたが聞く前に彼女は言う。「あとひとつ、まだ覚悟のできない折り目があるの」",
+  "de": "„Fast“, sagt sie, bevor du fragen kannst. „Eine Falte fehlt noch, für die ich nicht bereit bin.“",
+  "fr": "« Presque », dit-elle avant que tu ne poses la question. « Il reste un pli pour lequel je ne suis pas prête. »",
+  "es": "«Casi», dice antes de que puedas preguntar. «Queda un pliegue para el que no estoy preparada».",
+  "zh": "“快了，”你还没开口，她就说，“还有最后一折，我还没准备好。”",
+  "ko": "“거의 다 됐어.” 당신이 묻기도 전에 그녀가 말해요. “아직 마음의 준비가 안 된 접힘이 하나 남았어.”"
+ },
+ "letter_coco_18": {
+  "en": "She holds the crane over the lantern and doesn't burn it. \"Some letters you write so you'll be brave enough to hand them over.\"",
+  "ja": "彼女は鶴をランタンにかざすけれど、燃やしはしない。「手渡せるくらい勇敢になるために書く手紙もあるの」",
+  "de": "Sie hält den Kranich über die Laterne und verbrennt ihn nicht. „Manche Briefe schreibt man, damit man mutig genug wird, sie zu übergeben.“",
+  "fr": "Elle tient la grue au-dessus de la lanterne et ne la brûle pas. « Il y a des lettres qu'on écrit pour devenir assez courageuse pour les donner. »",
+  "es": "Sostiene la grulla sobre el farolillo y no la quema. «Hay cartas que se escriben para ser lo bastante valiente como para entregarlas».",
+  "zh": "她把纸鹤举到灯笼上方，却没有烧掉它。“有些信写出来，是为了让自己勇敢到能亲手交出去。”",
+  "ko": "그녀는 종이학을 등불 위에 들어 올리지만 태우지는 않아요. “건넬 만큼 용감해지려고 쓰는 편지도 있어.”"
+ },
+ "letter_coco_19": {
+  "en": "\"The last fold of a crane is the hardest to undo,\" she says. \"It holds all the others.\" She gives you the crane, and closes your hand over it. \"Not yet.\"",
+  "ja": "「鶴の最後の折り目がいちばんほどきにくいの」と彼女は言う。「ほかの全部を支えてるから」。彼女はあなたに鶴を渡し、その手をそっと握らせる。「まだ、だめ」",
+  "de": "„Die letzte Falte eines Kranichs ist am schwersten zu lösen“, sagt sie. „Sie hält alle anderen.“ Sie gibt dir den Kranich und schließt deine Hand darum. „Noch nicht.“",
+  "fr": "« Le dernier pli d'une grue est le plus dur à défaire, dit-elle. Il tient tous les autres. » Elle te donne la grue et referme ta main dessus. « Pas encore. »",
+  "es": "«El último pliegue de una grulla es el más difícil de deshacer», dice. «Sostiene todos los demás». Te da la grulla y te cierra la mano sobre ella. «Todavía no».",
+  "zh": "“纸鹤的最后一折最难拆开，”她说，“它撑着其他所有的折痕。”她把纸鹤交给你，又合上你的手。“还不行。”",
+  "ko": "“종이학은 마지막 접힘이 제일 풀기 어려워.” 그녀가 말해요. “다른 접힘을 전부 붙잡고 있거든.” 그녀가 종이학을 건네고 당신의 손을 꼭 감싸 쥐여요. “아직은 안 돼.”"
+ },
+ "letter_coco_20": {
+  "en": "Morning. She opens her own crane at last and hands it to you: \"To whoever stays until the lanterns go out. Stay a little longer.\" Under it, in fresh ink, your name.",
+  "ja": "朝。彼女はついに自分の鶴をひらいて、あなたに手渡す。「ランタンが消えるまでいてくれる人へ。もう少しだけ、いて」。その下に、真新しいインクで、あなたの名前。",
+  "de": "Morgen. Endlich öffnet sie ihren eigenen Kranich und reicht ihn dir: „Für den, der bleibt, bis die Laternen ausgehen. Bleib noch ein bisschen.“ Darunter, in frischer Tinte, dein Name.",
+  "fr": "Le matin. Elle ouvre enfin sa propre grue et te la tend : « À celui qui reste jusqu'à ce que les lanternes s'éteignent. Reste encore un peu. » En dessous, à l'encre fraîche, ton nom.",
+  "es": "Amanece. Por fin abre su propia grulla y te la entrega: «Para quien se quede hasta que se apaguen los farolillos. Quédate un poco más». Debajo, con tinta fresca, tu nombre.",
+  "zh": "清晨。她终于打开自己的纸鹤，递给你：“致那个待到灯笼熄灭的人：再多留一会儿。”下面是一行新鲜的墨迹，是你的名字。",
+  "ko": "아침. 그녀가 마침내 자기 종이학을 펼쳐 당신에게 건네요. “등불이 꺼질 때까지 머무는 사람에게. 조금만 더 있어 줘.” 그 아래, 갓 쓴 잉크로 당신의 이름이."
+ },
+ "letter_june_1": {
+  "en": "June's crane is folded from an old timesheet. \"Very romantic,\" she says, deadpan. The first fold: she hasn't taken a day off in three years.",
+  "ja": "June の鶴は古いタイムシートで折られている。「ロマンチックでしょ」と真顔で言う。一つ目の折り目。彼女はもう三年、一日も休んでいない。",
+  "de": "Junes Kranich ist aus einem alten Stundenzettel gefaltet. „Sehr romantisch“, sagt sie trocken. Erste Falte: Sie hat seit drei Jahren keinen Tag frei genommen.",
+  "fr": "La grue de June est pliée dans une vieille feuille d'heures. « Très romantique », dit-elle, pince-sans-rire. Premier pli : elle n'a pas pris un seul jour de congé depuis trois ans.",
+  "es": "La grulla de June está doblada con una vieja hoja de horas. «Muy romántico», dice, impasible. Primer pliegue: lleva tres años sin tomarse un día libre.",
+  "zh": "June 的纸鹤是用一张旧工时单折的。“很浪漫吧。”她面无表情地说。第一折：她已经三年没休过一天假。",
+  "ko": "준의 종이학은 낡은 근무 기록지로 접혀 있어요. “엄청 낭만적이지.” 그녀가 무표정하게 말해요. 첫 번째 접힘: 그녀는 3년째 하루도 쉬지 않았어요."
+ },
+ "letter_june_2": {
+  "en": "Second fold: top of her class, she took the safe job because everyone was so proud of her for taking it.",
+  "ja": "二つ目の折り目。首席で卒業した彼女は、みんなが誇らしげだったから、安定した仕事を選んだ。",
+  "de": "Zweite Falte: Jahrgangsbeste, und sie nahm den sicheren Job, weil alle so stolz auf sie waren, dass sie ihn nahm.",
+  "fr": "Deuxième pli : major de sa promo, elle a pris l'emploi sûr parce que tout le monde était si fier qu'elle le prenne.",
+  "es": "Segundo pliegue: la primera de su promoción, aceptó el trabajo seguro porque todos estaban muy orgullosos de que lo aceptara.",
+  "zh": "第二折：她是班上第一名，却选了那份稳妥的工作，因为大家都为她的选择骄傲。",
+  "ko": "두 번째 접힘: 수석이었던 그녀는 안정적인 직장을 택했어요. 다들 그 선택을 그렇게나 자랑스러워했으니까요."
+ },
+ "letter_june_3": {
+  "en": "Third fold: she has never once said no at work. \"I say 'of course' so often it stopped meaning anything.\"",
+  "ja": "三つ目の折り目。職場で一度も「いいえ」と言ったことがない。「『もちろんです』って言いすぎて、意味がなくなっちゃった」",
+  "de": "Dritte Falte: Sie hat bei der Arbeit noch nie Nein gesagt. „Ich sage so oft ‚natürlich‘, dass es nichts mehr bedeutet.“",
+  "fr": "Troisième pli : elle n'a jamais dit non au travail. « Je dis \"bien sûr\" si souvent que ça ne veut plus rien dire. »",
+  "es": "Tercer pliegue: nunca ha dicho que no en el trabajo. «Digo \"por supuesto\" tan a menudo que ya no significa nada».",
+  "zh": "第三折：她在公司从没说过一次“不”。“‘当然可以’说得太多，已经没有意义了。”",
+  "ko": "세 번째 접힘: 그녀는 회사에서 한 번도 거절해 본 적이 없어요. “‘물론이죠’를 너무 자주 해서 이젠 아무 뜻도 없어.”"
+ },
+ "letter_june_4": {
+  "en": "Fourth fold: what she wants is embarrassingly small. One whole day that belongs to nobody but her.",
+  "ja": "四つ目の折り目。彼女の願いは恥ずかしいくらい小さい。誰のものでもない、自分だけの丸一日。",
+  "de": "Vierte Falte: Was sie sich wünscht, ist peinlich klein. Einen ganzen Tag, der niemandem gehört außer ihr.",
+  "fr": "Quatrième pli : ce qu'elle veut est d'une petitesse gênante. Une journée entière qui n'appartient qu'à elle.",
+  "es": "Cuarto pliegue: lo que quiere es vergonzosamente pequeño. Un día entero que no sea de nadie más que suyo.",
+  "zh": "第四折：她想要的东西小得让人难为情。完完整整的一天，只属于她自己。",
+  "ko": "네 번째 접힘: 그녀가 바라는 건 민망할 만큼 작아요. 오롯이 자기만의 하루, 온종일."
+ },
+ "letter_june_5": {
+  "en": "Fifth fold: she's afraid that if she stops being useful, nobody will ask her to stay. You ask anyway.",
+  "ja": "五つ目の折り目。役に立たなくなったら、誰にも引き止めてもらえない気がして怖い。それでも、あなたは引き止める。",
+  "de": "Fünfte Falte: Sie hat Angst, dass niemand sie bittet zu bleiben, wenn sie nicht mehr nützlich ist. Du bittest sie trotzdem.",
+  "fr": "Cinquième pli : elle a peur que, si elle cesse d'être utile, personne ne lui demande de rester. Tu le lui demandes quand même.",
+  "es": "Quinto pliegue: teme que, si deja de ser útil, nadie le pida que se quede. Tú se lo pides igualmente.",
+  "zh": "第五折：她怕自己一旦没用了，就没人会留她。你还是留她了。",
+  "ko": "다섯 번째 접힘: 쓸모가 없어지면 아무도 붙잡아 주지 않을까 봐 무서워요. 그래도 당신은 붙잡아요."
+ },
+ "letter_june_6": {
+  "en": "Last fold: a leave request, signed and approved. \"One day,\" she says. \"And I'm spending it here.\"",
+  "ja": "最後の折り目。署名済みで、承認された休暇届。「一日だけ」と彼女は言う。「それを、ここで過ごすの」",
+  "de": "Letzte Falte: ein Urlaubsantrag, unterschrieben und genehmigt. „Ein Tag“, sagt sie. „Und den verbringe ich hier.“",
+  "fr": "Dernier pli : une demande de congé, signée et approuvée. « Un jour, dit-elle. Et je le passe ici. »",
+  "es": "Último pliegue: una solicitud de vacaciones, firmada y aprobada. «Un día», dice. «Y lo voy a pasar aquí».",
+  "zh": "最后一折：一张已签字、已批准的假条。“一天，”她说，“我要在这里过。”",
+  "ko": "마지막 접힘: 서명하고 승인까지 받은 휴가 신청서. “딱 하루.” 그녀가 말해요. “그리고 그 하루를 여기서 보낼 거야.”"
+ },
+ "letter_iris_1": {
+  "en": "Iris's crane is folded from a theatre programme. Her name is on the cast list, very small, then crossed out.",
+  "ja": "Iris の鶴は劇場のプログラムで折られている。出演者欄に小さく彼女の名前があって、線で消されている。",
+  "de": "Iris' Kranich ist aus einem Theaterprogramm gefaltet. Ihr Name steht auf der Besetzungsliste, sehr klein, dann durchgestrichen.",
+  "fr": "La grue d'Iris est pliée dans un programme de théâtre. Son nom figure dans la distribution, tout petit, puis barré.",
+  "es": "La grulla de Iris está doblada con un programa de teatro. Su nombre aparece en el reparto, muy pequeño, y luego tachado.",
+  "zh": "Iris 的纸鹤是用一份剧院节目单折的。演员表上有她的名字，印得很小，又被划掉了。",
+  "ko": "아이리스의 종이학은 연극 프로그램으로 접혀 있어요. 출연진 명단에 그녀의 이름이 아주 작게, 그리고 줄로 그어져 있어요."
+ },
+ "letter_iris_2": {
+  "en": "Second fold: she played the same role for four hundred nights and never once heard her own voice in it.",
+  "ja": "二つ目の折り目。同じ役を四百夜演じて、その中に自分の声を聞いたことは一度もなかった。",
+  "de": "Zweite Falte: Vierhundert Abende lang spielte sie dieselbe Rolle und hörte darin kein einziges Mal ihre eigene Stimme.",
+  "fr": "Deuxième pli : elle a joué le même rôle quatre cents soirs sans jamais y entendre sa propre voix.",
+  "es": "Segundo pliegue: interpretó el mismo papel cuatrocientas noches y ni una sola vez oyó en él su propia voz.",
+  "zh": "第二折：同一个角色她演了四百个晚上，却一次也没在里面听见自己的声音。",
+  "ko": "두 번째 접힘: 같은 배역을 사백 번의 밤 동안 연기했지만, 그 안에서 자기 목소리를 들은 적은 한 번도 없었어요."
+ },
+ "letter_iris_3": {
+  "en": "Third fold: she runs the mirror room because mirrors are honest. \"They only show what's there. People don't.\"",
+  "ja": "三つ目の折り目。鏡の間を任されているのは、鏡が正直だから。「そこにあるものしか映さない。人はそうはいかない」",
+  "de": "Dritte Falte: Sie führt das Spiegelzimmer, weil Spiegel ehrlich sind. „Sie zeigen nur, was da ist. Menschen nicht.“",
+  "fr": "Troisième pli : elle tient la chambre des miroirs parce que les miroirs sont honnêtes. « Ils ne montrent que ce qui est là. Les gens, non. »",
+  "es": "Tercer pliegue: lleva la sala de los espejos porque los espejos son sinceros. «Solo muestran lo que hay. La gente no».",
+  "zh": "第三折：她打理镜厅，因为镜子很诚实。“它们只照出眼前的东西。人可做不到。”",
+  "ko": "세 번째 접힘: 그녀가 거울의 방을 맡은 건 거울이 정직하기 때문이에요. “있는 것만 보여 주거든. 사람은 안 그래.”"
+ },
+ "letter_iris_4": {
+  "en": "Fourth fold: she wants to be seen once without a part to play. Just Iris, at the window, in the evening light.",
+  "ja": "四つ目の折り目。演じる役のない自分を、一度だけ見てほしい。ただの Iris として、夕暮れの窓辺で。",
+  "de": "Vierte Falte: Sie will einmal gesehen werden, ohne eine Rolle zu spielen. Nur Iris, am Fenster, im Abendlicht.",
+  "fr": "Quatrième pli : elle veut être vue une fois sans rôle à jouer. Juste Iris, à la fenêtre, dans la lumière du soir.",
+  "es": "Cuarto pliegue: quiere que la vean una vez sin ningún papel que interpretar. Solo Iris, en la ventana, con la luz de la tarde.",
+  "zh": "第四折：她想被人看见一次，不带任何角色。只是 Iris，在窗边，在傍晚的光里。",
+  "ko": "네 번째 접힘: 연기할 배역 없이 한 번만 누군가에게 보이고 싶어요. 그냥 아이리스로, 창가에서, 저녁 빛 속에서."
+ },
+ "letter_iris_5": {
+  "en": "Fifth fold: she's afraid that without the stage there's nothing left to look at. You look anyway. She notices.",
+  "ja": "五つ目の折り目。舞台がなければ、見るべきものは何も残らないのが怖い。それでも、あなたは見つめる。彼女はそれに気づく。",
+  "de": "Fünfte Falte: Sie fürchtet, dass ohne die Bühne nichts mehr zu sehen bleibt. Du siehst trotzdem hin. Sie merkt es.",
+  "fr": "Cinquième pli : elle a peur que sans la scène, il ne reste rien à regarder. Tu la regardes quand même. Elle le remarque.",
+  "es": "Quinto pliegue: teme que, sin el escenario, no quede nada que mirar. Tú la miras igualmente. Ella se da cuenta.",
+  "zh": "第五折：她怕没有了舞台，就再没有什么值得看的。你还是看着她。她注意到了。",
+  "ko": "다섯 번째 접힘: 무대가 없으면 볼 게 아무것도 남지 않을까 봐 무서워요. 그래도 당신은 바라봐요. 그녀도 그걸 알아채요."
+ },
+ "letter_iris_6": {
+  "en": "Last fold: a new line in her handwriting, no script: \"I'm not acting now.\"",
+  "ja": "最後の折り目。台本のない、彼女の字の新しい一行。「今は演じてない」",
+  "de": "Letzte Falte: eine neue Zeile in ihrer Handschrift, ohne Drehbuch: „Ich spiele gerade nicht.“",
+  "fr": "Dernier pli : une nouvelle réplique de sa main, sans texte : « Là, je ne joue pas. »",
+  "es": "Último pliegue: una frase nueva con su letra, sin guion: «Ahora no estoy actuando».",
+  "zh": "最后一折：她亲手写下的新台词，没有剧本：“我现在没有在演。”",
+  "ko": "마지막 접힘: 대본 없이, 그녀의 글씨로 쓴 새 대사. “지금은 연기 안 해.”"
+ },
+ "letter_sable_1": {
+  "en": "Sable's crane is gold, like her fan. First fold: she learned to dance in her mother's kitchen, to the radio, barefoot.",
+  "ja": "Sable の鶴は、彼女の扇と同じ金色。一つ目の折り目。踊りを覚えたのは母の台所、ラジオに合わせて、裸足で。",
+  "de": "Sables Kranich ist golden wie ihr Fächer. Erste Falte: Tanzen lernte sie in der Küche ihrer Mutter, zum Radio, barfuß.",
+  "fr": "La grue de Sable est dorée, comme son éventail. Premier pli : elle a appris à danser dans la cuisine de sa mère, au son de la radio, pieds nus.",
+  "es": "La grulla de Sable es dorada, como su abanico. Primer pliegue: aprendió a bailar en la cocina de su madre, con la radio, descalza.",
+  "zh": "Sable 的纸鹤是金色的，和她的扇子一样。第一折：她是在妈妈的厨房里学会跳舞的，跟着收音机，光着脚。",
+  "ko": "세이블의 종이학은 그녀의 부채처럼 금빛이에요. 첫 번째 접힘: 그녀는 엄마의 부엌에서 라디오에 맞춰 맨발로 춤을 배웠어요."
+ },
+ "letter_sable_2": {
+  "en": "Second fold: the small town she grew up in thought dancing was something you grow out of. She didn't.",
+  "ja": "二つ目の折り目。育った小さな町では、踊りはいつか卒業するものだと思われていた。彼女は卒業しなかった。",
+  "de": "Zweite Falte: In der Kleinstadt, in der sie aufwuchs, hielt man Tanzen für etwas, aus dem man herauswächst. Sie wuchs nicht heraus.",
+  "fr": "Deuxième pli : dans la petite ville où elle a grandi, on pensait que la danse, ça passe avec l'âge. Chez elle, ça n'est pas passé.",
+  "es": "Segundo pliegue: en el pueblo donde creció pensaban que bailar era algo que se deja atrás al crecer. Ella no lo dejó.",
+  "zh": "第二折：她长大的小镇觉得，跳舞是长大了就该放下的东西。她没有放下。",
+  "ko": "두 번째 접힘: 그녀가 자란 작은 마을에선 춤은 크면 그만두는 거라고 여겼어요. 그녀는 그만두지 않았어요."
+ },
+ "letter_sable_3": {
+  "en": "Third fold: she's danced other people's numbers for ten years. She has a notebook full of her own and has shown no one.",
+  "ja": "三つ目の折り目。十年間、ほかの人の振り付けを踊ってきた。自分の振り付けで埋まったノートは、誰にも見せていない。",
+  "de": "Dritte Falte: Zehn Jahre lang hat sie die Nummern anderer getanzt. Sie hat ein Notizbuch voller eigener und es niemandem gezeigt.",
+  "fr": "Troisième pli : depuis dix ans, elle danse les numéros des autres. Elle a un carnet rempli des siens et ne l'a montré à personne.",
+  "es": "Tercer pliegue: lleva diez años bailando números ajenos. Tiene un cuaderno lleno de los suyos y no se lo ha enseñado a nadie.",
+  "zh": "第三折：十年来她一直跳别人编的舞。她有一整本自己编的舞，从没给任何人看过。",
+  "ko": "세 번째 접힘: 10년 동안 남의 안무만 춰 왔어요. 자기 안무로 가득 찬 노트가 있지만 아무에게도 보여 준 적이 없어요."
+ },
+ "letter_sable_4": {
+  "en": "Fourth fold: she's afraid the fan is all anyone sees. \"They clap for the feathers.\"",
+  "ja": "四つ目の折り目。みんなが見ているのは扇だけなんじゃないかと怖い。「拍手は羽根に向けられてるの」",
+  "de": "Vierte Falte: Sie fürchtet, dass alle nur den Fächer sehen. „Sie klatschen für die Federn.“",
+  "fr": "Quatrième pli : elle a peur qu'on ne voie que l'éventail. « Ils applaudissent les plumes. »",
+  "es": "Cuarto pliegue: teme que solo vean el abanico. «Aplauden a las plumas».",
+  "zh": "第四折：她怕大家眼里只有那把扇子。“掌声是给羽毛的。”",
+  "ko": "네 번째 접힘: 다들 부채만 보는 게 아닐까 무서워요. “박수는 깃털에게 가는 거야.”"
+ },
+ "letter_sable_5": {
+  "en": "Fifth fold: she wants to dance one number that's entirely hers, for someone who's watching her and not the fan.",
+  "ja": "五つ目の折り目。まるごと自分の踊りを一曲、扇じゃなく自分を見てくれる誰かのために踊りたい。",
+  "de": "Fünfte Falte: Sie will eine Nummer tanzen, die ganz ihr gehört, für jemanden, der sie ansieht und nicht den Fächer.",
+  "fr": "Cinquième pli : elle veut danser un numéro entièrement à elle, pour quelqu'un qui la regarde, elle, et pas l'éventail.",
+  "es": "Quinto pliegue: quiere bailar un número que sea solo suyo, para alguien que la mire a ella y no al abanico.",
+  "zh": "第五折：她想跳一支完全属于自己的舞，给一个看着她、而不是看着扇子的人。",
+  "ko": "다섯 번째 접힘: 온전히 자기 것인 춤 한 곡을, 부채가 아니라 자기를 봐 주는 누군가를 위해 추고 싶어요."
+ },
+ "letter_sable_6": {
+  "en": "Sixth fold: she shows you the notebook. The first page is a dance called The Guest.",
+  "ja": "六つ目の折り目。彼女はあなたにノートを見せる。最初のページの踊りの名は「お客さま」。",
+  "de": "Sechste Falte: Sie zeigt dir das Notizbuch. Auf der ersten Seite steht ein Tanz namens Der Gast.",
+  "fr": "Sixième pli : elle te montre le carnet. La première page est une danse intitulée L'Invité.",
+  "es": "Sexto pliegue: te enseña el cuaderno. La primera página es un baile llamado El Invitado.",
+  "zh": "第六折：她把那本笔记给你看。第一页的舞叫《客人》。",
+  "ko": "여섯 번째 접힘: 그녀가 노트를 보여 줘요. 첫 페이지의 춤 제목은 ‘손님’이에요."
+ },
+ "letter_sable_7": {
+  "en": "Last fold: \"Opening night,\" it says, \"one seat reserved.\" The seat has your name on it.",
+  "ja": "最後の折り目。「初日、一席予約済み」と書いてある。その席には、あなたの名前。",
+  "de": "Letzte Falte: „Premiere“, steht da, „ein Platz reserviert.“ Auf dem Platz steht dein Name.",
+  "fr": "Dernier pli : « Première, peut-on lire, une place réservée. » Sur la place, ton nom.",
+  "es": "Último pliegue: «Noche de estreno», dice, «un asiento reservado». En el asiento está tu nombre.",
+  "zh": "最后一折：“首演之夜，”上面写着，“预留一个座位。”座位上写着你的名字。",
+  "ko": "마지막 접힘: “첫 공연, 한 자리 예약.” 그렇게 적혀 있어요. 그 자리에는 당신의 이름이."
+ },
+ "letter_vesna_1": {
+  "en": "Vesna's crane is folded from a recipe card, the ink smudged with lemon. First fold: her grandmother's handwriting.",
+  "ja": "Vesna の鶴はレシピカードで折られていて、インクがレモンでにじんでいる。一つ目の折り目。祖母の字。",
+  "de": "Vesnas Kranich ist aus einer Rezeptkarte gefaltet, die Tinte von Zitrone verschmiert. Erste Falte: die Handschrift ihrer Großmutter.",
+  "fr": "La grue de Vesna est pliée dans une fiche de recette, l'encre tachée de citron. Premier pli : l'écriture de sa grand-mère.",
+  "es": "La grulla de Vesna está doblada con una ficha de receta, la tinta corrida por el limón. Primer pliegue: la letra de su abuela.",
+  "zh": "Vesna 的纸鹤是用一张食谱卡折的，墨迹被柠檬汁晕开了。第一折：她外婆的笔迹。",
+  "ko": "베스나의 종이학은 레시피 카드로 접혀 있고, 레몬 즙에 잉크가 번져 있어요. 첫 번째 접힘: 할머니의 글씨예요."
+ },
+ "letter_vesna_2": {
+  "en": "Second fold: she came from the east with a suitcase of glasses and a notebook of her grandmother's recipes.",
+  "ja": "二つ目の折り目。彼女はグラスの詰まったスーツケースと、祖母のレシピ帳を持って東から来た。",
+  "de": "Zweite Falte: Sie kam aus dem Osten, mit einem Koffer voller Gläser und einem Heft voller Rezepte ihrer Großmutter.",
+  "fr": "Deuxième pli : elle est venue de l'Est avec une valise pleine de verres et un carnet de recettes de sa grand-mère.",
+  "es": "Segundo pliegue: llegó del este con una maleta de vasos y un cuaderno con las recetas de su abuela.",
+  "zh": "第二折：她从东边来，拎着一箱玻璃杯，还有一本外婆的食谱。",
+  "ko": "두 번째 접힘: 그녀는 유리잔이 든 가방 하나와 할머니의 레시피 노트를 들고 동쪽에서 왔어요."
+ },
+ "letter_vesna_3": {
+  "en": "Third fold: she's mixed ten thousand drinks for other people's celebrations and never had one of her own.",
+  "ja": "三つ目の折り目。人のお祝いのために一万杯を作ってきたのに、自分のお祝いは一度もなかった。",
+  "de": "Dritte Falte: Zehntausend Drinks hat sie für die Feiern anderer gemixt und nie einen für eine eigene.",
+  "fr": "Troisième pli : elle a préparé dix mille verres pour les fêtes des autres, et jamais un seul pour la sienne.",
+  "es": "Tercer pliegue: ha preparado diez mil copas para las celebraciones de otros y ninguna para una propia.",
+  "zh": "第三折：她为别人的庆祝调过上万杯酒，却从没为自己庆祝过一次。",
+  "ko": "세 번째 접힘: 남들의 축하를 위해 만 잔을 만들었지만, 자기를 위한 축배는 한 번도 없었어요."
+ },
+ "letter_vesna_4": {
+  "en": "Fourth fold: she wants a bar with her own name over the door. Small. Twelve stools. Everyone welcome.",
+  "ja": "四つ目の折り目。扉の上に自分の名前を掲げたバーが欲しい。小さくていい。スツールは十二脚。誰でも歓迎。",
+  "de": "Vierte Falte: Sie will eine Bar mit ihrem eigenen Namen über der Tür. Klein. Zwölf Hocker. Alle willkommen.",
+  "fr": "Quatrième pli : elle veut un bar avec son nom au-dessus de la porte. Petit. Douze tabourets. Tout le monde bienvenu.",
+  "es": "Cuarto pliegue: quiere un bar con su nombre sobre la puerta. Pequeño. Doce taburetes. Todo el mundo bienvenido.",
+  "zh": "第四折：她想要一间门上挂着自己名字的酒吧。小小的，十二张高脚凳，谁来都欢迎。",
+  "ko": "네 번째 접힘: 문 위에 자기 이름을 건 바를 갖고 싶어요. 작게. 스툴 열두 개. 누구든 환영."
+ },
+ "letter_vesna_5": {
+  "en": "Fifth fold: she's afraid she'll stay behind someone else's counter forever because it's easier than trying.",
+  "ja": "五つ目の折り目。挑戦するより楽だからと、ずっと誰かのカウンターの内側にいてしまうのが怖い。",
+  "de": "Fünfte Falte: Sie fürchtet, für immer hinter fremden Tresen zu bleiben, weil das leichter ist, als es zu versuchen.",
+  "fr": "Cinquième pli : elle a peur de rester pour toujours derrière le comptoir d'un autre, parce que c'est plus facile que d'essayer.",
+  "es": "Quinto pliegue: teme quedarse para siempre detrás de la barra de otro, porque es más fácil que intentarlo.",
+  "zh": "第五折：她怕自己会一直待在别人的吧台后面，因为那比去尝试容易。",
+  "ko": "다섯 번째 접힘: 도전하는 것보다 쉬우니까, 평생 남의 카운터 뒤에 머물게 될까 봐 무서워요."
+ },
+ "letter_vesna_6": {
+  "en": "Sixth fold: a new recipe, in her own hand this time. It's named after the night you first sat at her bar.",
+  "ja": "六つ目の折り目。今度は彼女自身の字で書いた新しいレシピ。あなたが初めて彼女のバーに座った夜の名がついている。",
+  "de": "Sechste Falte: ein neues Rezept, diesmal in ihrer eigenen Handschrift. Es heißt nach der Nacht, in der du zum ersten Mal an ihrer Bar saßt.",
+  "fr": "Sixième pli : une nouvelle recette, de sa propre main cette fois. Elle porte le nom du soir où tu t'es assis pour la première fois à son bar.",
+  "es": "Sexto pliegue: una receta nueva, esta vez con su propia letra. Lleva el nombre de la noche en que te sentaste por primera vez en su barra.",
+  "zh": "第六折：一份新配方，这次是她自己的笔迹。名字取自你第一次坐在她吧台前的那个夜晚。",
+  "ko": "여섯 번째 접힘: 이번엔 그녀 자신의 글씨로 쓴 새 레시피. 당신이 처음 그녀의 바에 앉았던 밤의 이름이 붙어 있어요."
+ },
+ "letter_vesna_7": {
+  "en": "Last fold: a sketch of a sign. \"Vesna's.\" Under it: \"Opening soon. You're on the guest list for life.\"",
+  "ja": "最後の折り目。看板のスケッチ。「Vesna's」。その下に。「近日オープン。あなたは一生、招待客リストに載ってる」",
+  "de": "Letzte Falte: die Skizze eines Schilds. „Vesna's“. Darunter: „Eröffnung bald. Du stehst lebenslang auf der Gästeliste.“",
+  "fr": "Dernier pli : l'esquisse d'une enseigne. « Vesna's ». En dessous : « Ouverture prochaine. Tu es sur la liste des invités, à vie. »",
+  "es": "Último pliegue: el boceto de un letrero. «Vesna's». Debajo: «Próxima apertura. Estás en la lista de invitados de por vida».",
+  "zh": "最后一折：一张招牌草图，“Vesna's”。下面写着：“即将开业。你终身在贵宾名单上。”",
+  "ko": "마지막 접힘: 간판 스케치. “Vesna's.” 그 아래에는 “곧 오픈. 너는 평생 초대 손님 명단에 있어.”"
+ },
+ "letter_wren_1": {
+  "en": "Wren's crane is folded from lantern paper, painted on both sides. First fold: she drew other people's stories for a living.",
+  "ja": "Wren の鶴は両面に絵を描いたランタン紙で折られている。一つ目の折り目。彼女はほかの人の物語を描いて暮らしていた。",
+  "de": "Wrens Kranich ist aus Laternenpapier gefaltet, auf beiden Seiten bemalt. Erste Falte: Sie hat vom Zeichnen fremder Geschichten gelebt.",
+  "fr": "La grue de Wren est pliée dans du papier à lanterne, peint des deux côtés. Premier pli : elle gagnait sa vie en dessinant les histoires des autres.",
+  "es": "La grulla de Wren está doblada con papel de farolillo, pintado por las dos caras. Primer pliegue: se ganaba la vida dibujando historias ajenas.",
+  "zh": "Wren 的纸鹤是用灯笼纸折的，两面都画着画。第一折：她曾经以画别人的故事为生。",
+  "ko": "렌의 종이학은 양면에 그림을 그린 등불 종이로 접혀 있어요. 첫 번째 접힘: 그녀는 남의 이야기를 그리며 먹고살았어요."
+ },
+ "letter_wren_2": {
+  "en": "Second fold: book covers, posters, wedding portraits. Hundreds of faces, none of them hers.",
+  "ja": "二つ目の折り目。本の表紙、ポスター、結婚式の肖像画。何百もの顔、そのどれも彼女のものではない。",
+  "de": "Zweite Falte: Buchcover, Plakate, Hochzeitsporträts. Hunderte Gesichter, keines davon ihres.",
+  "fr": "Deuxième pli : couvertures de livres, affiches, portraits de mariage. Des centaines de visages, aucun n'était le sien.",
+  "es": "Segundo pliegue: portadas de libros, carteles, retratos de boda. Cientos de caras, ninguna era la suya.",
+  "zh": "第二折：书籍封面、海报、婚礼肖像。几百张脸，没有一张是她自己。",
+  "ko": "두 번째 접힘: 책 표지, 포스터, 결혼 초상화. 수백 개의 얼굴, 그중 그녀의 얼굴은 하나도 없었어요."
+ },
+ "letter_wren_3": {
+  "en": "Third fold: she paints the House's lanterns because it's the only work she signs.",
+  "ja": "三つ目の折り目。館のランタンを描くのは、それが彼女が署名する唯一の仕事だから。",
+  "de": "Dritte Falte: Sie bemalt die Laternen des Hauses, weil es die einzige Arbeit ist, die sie signiert.",
+  "fr": "Troisième pli : elle peint les lanternes de la Maison parce que c'est le seul travail qu'elle signe.",
+  "es": "Tercer pliegue: pinta los farolillos de la Casa porque es el único trabajo que firma.",
+  "zh": "第三折：她为这座房子画灯笼，因为那是她唯一会署名的作品。",
+  "ko": "세 번째 접힘: 그녀가 하우스의 등불을 그리는 건, 그게 그녀가 서명하는 유일한 작업이기 때문이에요."
+ },
+ "letter_wren_4": {
+  "en": "Fourth fold: she's afraid she only knows how to watch. \"I'm good at noticing people. Less good at being noticed.\"",
+  "ja": "四つ目の折り目。見ていることしかできないのが怖い。「人に気づくのは得意。気づかれるのは苦手」",
+  "de": "Vierte Falte: Sie fürchtet, nur zuschauen zu können. „Ich bin gut darin, Menschen zu bemerken. Weniger gut darin, bemerkt zu werden.“",
+  "fr": "Quatrième pli : elle a peur de ne savoir qu'observer. « Je suis douée pour remarquer les gens. Moins pour être remarquée. »",
+  "es": "Cuarto pliegue: teme que solo sabe observar. «Se me da bien fijarme en la gente. No tanto que se fijen en mí».",
+  "zh": "第四折：她怕自己只会旁观。“我很会留意别人，却不太会被人留意。”",
+  "ko": "네 번째 접힘: 지켜보는 것밖에 할 줄 모르는 게 아닐까 무서워요. “사람을 알아보는 건 잘해. 누가 날 알아봐 주는 건 서툴고.”"
+ },
+ "letter_wren_5": {
+  "en": "Fifth fold: she wants to paint one story that's her own, and she's decided whose face goes in it.",
+  "ja": "五つ目の折り目。自分の物語を一枚描きたい。そこに誰の顔を描くかは、もう決めている。",
+  "de": "Fünfte Falte: Sie will eine Geschichte malen, die ihre eigene ist, und sie hat entschieden, wessen Gesicht hineinkommt.",
+  "fr": "Cinquième pli : elle veut peindre une histoire bien à elle, et elle a décidé quel visage y figurera.",
+  "es": "Quinto pliegue: quiere pintar una historia que sea suya, y ya ha decidido qué cara va a aparecer en ella.",
+  "zh": "第五折：她想画一个属于自己的故事，而且已经决定了要画进谁的脸。",
+  "ko": "다섯 번째 접힘: 자기만의 이야기를 한 편 그리고 싶어요. 거기에 누구의 얼굴을 그릴지는 이미 정했어요."
+ },
+ "letter_wren_6": {
+  "en": "Sixth fold: a sketch of two people at a window. One of them is her. She's smiling in it, which she says is a first.",
+  "ja": "六つ目の折り目。窓辺に並ぶ二人のスケッチ。一人は彼女。絵の中で笑っている。初めてのことだと彼女は言う。",
+  "de": "Sechste Falte: eine Skizze von zwei Menschen am Fenster. Eine davon ist sie. Sie lächelt darauf, und das, sagt sie, ist eine Premiere.",
+  "fr": "Sixième pli : une esquisse de deux personnes à une fenêtre. L'une d'elles, c'est elle. Elle y sourit, une première, dit-elle.",
+  "es": "Sexto pliegue: un boceto de dos personas en una ventana. Una de ellas es ella. Sonríe en el dibujo, y dice que es la primera vez.",
+  "zh": "第六折：一幅草图，两个人站在窗边。其中一个是她。她在画里笑着，她说这是第一次。",
+  "ko": "여섯 번째 접힘: 창가에 선 두 사람의 스케치. 한 명은 그녀예요. 그림 속에서 웃고 있는데, 그건 처음이래요."
+ },
+ "letter_wren_7": {
+  "en": "Last fold: the portrait is finished. The title in the corner, in red ink: \"Us.\"",
+  "ja": "最後の折り目。肖像画が完成した。隅に赤いインクで題名。「私たち」",
+  "de": "Letzte Falte: Das Porträt ist fertig. Der Titel in der Ecke, in roter Tinte: „Wir.“",
+  "fr": "Dernier pli : le portrait est terminé. Le titre dans le coin, à l'encre rouge : « Nous. »",
+  "es": "Último pliegue: el retrato está terminado. El título en la esquina, con tinta roja: «Nosotros».",
+  "zh": "最后一折：肖像完成了。角落里用红墨水写着标题：《我们》。",
+  "ko": "마지막 접힘: 초상화가 완성됐어요. 구석에 빨간 잉크로 쓴 제목. “우리.”"
+ },
+ "letter_rosa_1": {
+  "en": "Rosa's crane is folded from a seed packet. First fold: she left a university lab because the plants there never talked back.",
+  "ja": "Rosa の鶴は種の袋で折られている。一つ目の折り目。大学の研究室を辞めたのは、そこの植物が一度も言い返してこなかったから。",
+  "de": "Rosas Kranich ist aus einer Samentüte gefaltet. Erste Falte: Sie verließ ein Universitätslabor, weil die Pflanzen dort nie widersprochen haben.",
+  "fr": "La grue de Rosa est pliée dans un sachet de graines. Premier pli : elle a quitté un labo d'université parce que les plantes là-bas ne répondaient jamais.",
+  "es": "La grulla de Rosa está doblada con un sobre de semillas. Primer pliegue: dejó un laboratorio de la universidad porque allí las plantas nunca le contestaban.",
+  "zh": "Rosa 的纸鹤是用一个种子袋折的。第一折：她离开了大学实验室，因为那里的植物从来不跟她顶嘴。",
+  "ko": "로사의 종이학은 씨앗 봉투로 접혀 있어요. 첫 번째 접힘: 그녀는 대학 연구실을 떠났어요. 거기 식물들은 한 번도 말대꾸를 안 했거든요."
+ },
+ "letter_rosa_2": {
+  "en": "Second fold: she talks to every plant in the greenhouse by name. The orchid is called Trouble.",
+  "ja": "二つ目の折り目。温室の植物ぜんぶに、名前で話しかける。蘭の名前はトラブル。",
+  "de": "Zweite Falte: Sie spricht mit jeder Pflanze im Gewächshaus, beim Namen. Die Orchidee heißt Ärger.",
+  "fr": "Deuxième pli : elle parle à chaque plante de la serre, par son nom. L'orchidée s'appelle Ennuis.",
+  "es": "Segundo pliegue: habla con cada planta del invernadero por su nombre. La orquídea se llama Problemas.",
+  "zh": "第二折：温室里的每一株植物，她都叫得出名字，也都跟它们说话。那株兰花叫“麻烦”。",
+  "ko": "두 번째 접힘: 그녀는 온실의 모든 식물에게 이름을 불러 가며 말을 걸어요. 난초 이름은 ‘말썽’이에요."
+ },
+ "letter_rosa_3": {
+  "en": "Third fold: she's afraid of standing still. \"Things that stop growing start dying. That goes for people.\"",
+  "ja": "三つ目の折り目。立ち止まるのが怖い。「育つのをやめたものは枯れはじめる。人も同じ」",
+  "de": "Dritte Falte: Sie hat Angst vor Stillstand. „Was aufhört zu wachsen, fängt an zu sterben. Das gilt auch für Menschen.“",
+  "fr": "Troisième pli : elle a peur de s'arrêter. « Ce qui cesse de grandir commence à mourir. Ça vaut pour les gens aussi. »",
+  "es": "Tercer pliegue: le da miedo quedarse quieta. «Lo que deja de crecer empieza a morir. Y eso vale para la gente».",
+  "zh": "第三折：她害怕停滞。“不再生长的东西，就开始凋零。人也一样。”",
+  "ko": "세 번째 접힘: 그녀는 멈춰 서는 게 무서워요. “자라기를 멈춘 건 시들기 시작해. 사람도 마찬가지야.”"
+ },
+ "letter_rosa_4": {
+  "en": "Fourth fold: she wants a garden that will still be blooming long after she's gone.",
+  "ja": "四つ目の折り目。自分がいなくなったずっと後も、咲きつづける庭が欲しい。",
+  "de": "Vierte Falte: Sie will einen Garten, der noch blüht, wenn sie längst fort ist.",
+  "fr": "Quatrième pli : elle veut un jardin qui fleurira encore longtemps après son départ.",
+  "es": "Cuarto pliegue: quiere un jardín que siga floreciendo mucho después de que ella se haya ido.",
+  "zh": "第四折：她想要一座花园，在她离开很久以后，依然开着花。",
+  "ko": "네 번째 접힘: 그녀가 떠나고 한참 뒤에도 계속 꽃피는 정원을 갖고 싶어요."
+ },
+ "letter_rosa_5": {
+  "en": "Fifth fold: she's planted something new in the corner bed and won't say what it is. It's for you.",
+  "ja": "五つ目の折り目。隅の花壇に何か新しいものを植えたけれど、何かは言わない。それは、あなたのため。",
+  "de": "Fünfte Falte: Sie hat im Eckbeet etwas Neues gepflanzt und will nicht sagen, was. Es ist für dich.",
+  "fr": "Cinquième pli : elle a planté quelque chose de nouveau dans le massif du coin et refuse de dire quoi. C'est pour toi.",
+  "es": "Quinto pliegue: ha plantado algo nuevo en el parterre de la esquina y no quiere decir qué es. Es para ti.",
+  "zh": "第五折：她在角落的花圃里种了新东西，却不肯说是什么。那是给你的。",
+  "ko": "다섯 번째 접힘: 구석 화단에 뭔가 새로 심었는데, 뭔지는 말하지 않아요. 그건 당신을 위한 거예요."
+ },
+ "letter_rosa_6": {
+  "en": "Last fold: a hibiscus, pressed flat. \"It bloomed the day you came back,\" she writes. \"I noticed. Of course I noticed.\"",
+  "ja": "最後の折り目。押し花にしたハイビスカス。「あなたが戻ってきた日に咲いたの」と書いてある。「気づいてた。もちろん気づいてた」",
+  "de": "Letzte Falte: ein gepresster Hibiskus. „Er hat an dem Tag geblüht, als du zurückkamst“, schreibt sie. „Ich hab's bemerkt. Natürlich hab ich's bemerkt.“",
+  "fr": "Dernier pli : un hibiscus séché, aplati. « Il a fleuri le jour de ton retour, écrit-elle. Je l'ai remarqué. Bien sûr que je l'ai remarqué. »",
+  "es": "Último pliegue: un hibisco prensado. «Floreció el día que volviste», escribe. «Me di cuenta. Claro que me di cuenta».",
+  "zh": "最后一折：一朵压平的扶桑花。“你回来的那天，它开了，”她写道，“我注意到了。我当然注意到了。”",
+  "ko": "마지막 접힘: 납작하게 누른 히비스커스. “네가 돌아온 날 피었어.” 그녀가 적었어요. “알고 있었어. 당연히 알고 있었지.”"
+ },
+ "letter_hana_1": {
+  "en": "Hana's crane is folded from baking paper, a little buttery. First fold: she trained in three kitchens and cried in all of them.",
+  "ja": "Hana の鶴はクッキングシートで折られていて、少しバターの匂いがする。一つ目の折り目。三つの厨房で修業して、三つとも泣いた。",
+  "de": "Hanas Kranich ist aus Backpapier gefaltet, ein bisschen buttrig. Erste Falte: Sie hat in drei Küchen gelernt und in allen dreien geweint.",
+  "fr": "La grue de Hana est pliée dans du papier cuisson, un peu beurré. Premier pli : elle a appris dans trois cuisines et a pleuré dans les trois.",
+  "es": "La grulla de Hana está doblada con papel de horno, un poco mantecoso. Primer pliegue: se formó en tres cocinas y lloró en las tres.",
+  "zh": "Hana 的纸鹤是用烘焙纸折的，带着一点黄油味。第一折：她在三家厨房学过手艺，在每一家都哭过。",
+  "ko": "하나의 종이학은 버터 향이 살짝 밴 유산지로 접혀 있어요. 첫 번째 접힘: 그녀는 세 곳의 주방에서 배웠고, 세 곳 모두에서 울었어요."
+ },
+ "letter_hana_2": {
+  "en": "Second fold: she bakes at midnight because the ovens are warm and nobody's watching her fail.",
+  "ja": "二つ目の折り目。真夜中に焼くのは、オーブンが温かくて、失敗しても誰にも見られないから。",
+  "de": "Zweite Falte: Sie backt um Mitternacht, weil die Öfen warm sind und niemand zusieht, wenn etwas misslingt.",
+  "fr": "Deuxième pli : elle pâtisse à minuit parce que les fours sont chauds et que personne ne la regarde rater.",
+  "es": "Segundo pliegue: hornea a medianoche porque los hornos están calientes y nadie la ve fallar.",
+  "zh": "第二折：她半夜烘焙，因为烤箱是暖的，而且失败的时候没人看见。",
+  "ko": "두 번째 접힘: 한밤중에 굽는 건 오븐이 따뜻하고, 실패해도 아무도 보지 않기 때문이에요."
+ },
+ "letter_hana_3": {
+  "en": "Third fold: she's afraid people love the cakes and not her.",
+  "ja": "三つ目の折り目。みんなが好きなのはケーキで、自分じゃないんじゃないかと怖い。",
+  "de": "Dritte Falte: Sie fürchtet, dass die Leute die Kuchen lieben und nicht sie.",
+  "fr": "Troisième pli : elle a peur qu'on aime les gâteaux et pas elle.",
+  "es": "Tercer pliegue: teme que la gente quiera los pasteles y no a ella.",
+  "zh": "第三折：她怕大家爱的是蛋糕，而不是她。",
+  "ko": "세 번째 접힘: 사람들이 사랑하는 게 케이크지 자기는 아닐까 봐 무서워요."
+ },
+ "letter_hana_4": {
+  "en": "Fourth fold: she wants a sign over a shop door, in pink, with her name spelled right.",
+  "ja": "四つ目の折り目。店の扉の上に、ピンクの看板が欲しい。名前の綴りを間違えずに。",
+  "de": "Vierte Falte: Sie will ein Schild über einer Ladentür, in Rosa, mit ihrem Namen richtig geschrieben.",
+  "fr": "Quatrième pli : elle veut une enseigne au-dessus d'une porte de boutique, en rose, avec son nom bien orthographié.",
+  "es": "Cuarto pliegue: quiere un letrero sobre la puerta de una tienda, en rosa, con su nombre bien escrito.",
+  "zh": "第四折：她想要店门上挂一块粉色的招牌，名字一个字母都不拼错。",
+  "ko": "네 번째 접힘: 가게 문 위에 분홍색 간판을 달고 싶어요. 이름 철자를 틀리지 않고."
+ },
+ "letter_hana_5": {
+  "en": "Fifth fold: she has been testing one cake for weeks. It's not for the menu. It's for you.",
+  "ja": "五つ目の折り目。何週間も試作しているケーキがひとつ。メニューのためじゃない。あなたのため。",
+  "de": "Fünfte Falte: Seit Wochen probiert sie an einem Kuchen. Er ist nicht für die Karte. Er ist für dich.",
+  "fr": "Cinquième pli : elle teste un gâteau depuis des semaines. Il n'est pas pour la carte. Il est pour toi.",
+  "es": "Quinto pliegue: lleva semanas probando un pastel. No es para la carta. Es para ti.",
+  "zh": "第五折：有一款蛋糕她已经试做了好几周。不是为了菜单。是为了你。",
+  "ko": "다섯 번째 접힘: 몇 주째 시험 삼아 굽는 케이크가 하나 있어요. 메뉴용이 아니에요. 당신을 위한 거예요."
+ },
+ "letter_hana_6": {
+  "en": "Last fold: the recipe, finally written down. At the bottom: \"Serves two.\"",
+  "ja": "最後の折り目。ようやく書き留めたレシピ。いちばん下に、「二人分」。",
+  "de": "Letzte Falte: das Rezept, endlich aufgeschrieben. Ganz unten: „Für zwei.“",
+  "fr": "Dernier pli : la recette, enfin écrite. Tout en bas : « Pour deux. »",
+  "es": "Último pliegue: la receta, por fin escrita. Al final del todo: «Para dos».",
+  "zh": "最后一折：终于写下来的配方。最底下写着：“两人份。”",
+  "ko": "마지막 접힘: 마침내 적어 둔 레시피. 맨 아래에 “2인분.”"
+ },
+ "letter_nadia_1": {
+  "en": "Nadia's crane is folded from a race sheet, still faintly smelling of chlorine. First fold: she swam for her country, once.",
+  "ja": "Nadia の鶴は競技の記録用紙で折られていて、まだかすかに塩素の匂いがする。一つ目の折り目。かつて彼女は国の代表として泳いだ。",
+  "de": "Nadias Kranich ist aus einem Wettkampfbogen gefaltet und riecht noch leicht nach Chlor. Erste Falte: Sie schwamm einmal für ihr Land.",
+  "fr": "La grue de Nadia est pliée dans une feuille de course qui sent encore un peu le chlore. Premier pli : elle a nagé pour son pays, autrefois.",
+  "es": "La grulla de Nadia está doblada con una hoja de competición que aún huele un poco a cloro. Primer pliegue: una vez nadó por su país.",
+  "zh": "Nadia 的纸鹤是用一张比赛成绩单折的，还隐约带着氯水味。第一折：她曾经代表国家游泳。",
+  "ko": "나디아의 종이학은 아직 희미하게 염소 냄새가 나는 경기 기록지로 접혀 있어요. 첫 번째 접힘: 그녀는 한때 국가대표로 헤엄쳤어요."
+ },
+ "letter_nadia_2": {
+  "en": "Second fold: she was always fast. She was never once allowed to be slow.",
+  "ja": "二つ目の折り目。いつも速かった。遅くていいと許されたことは、一度もなかった。",
+  "de": "Zweite Falte: Sie war immer schnell. Langsam sein durfte sie kein einziges Mal.",
+  "fr": "Deuxième pli : elle a toujours été rapide. Jamais on ne lui a permis d'être lente.",
+  "es": "Segundo pliegue: siempre fue rápida. Nunca le permitieron ser lenta.",
+  "zh": "第二折：她一直都很快。却从来没被允许慢下来过。",
+  "ko": "두 번째 접힘: 그녀는 늘 빨랐어요. 느려도 된다는 허락은 한 번도 받지 못했어요."
+ },
+ "letter_nadia_3": {
+  "en": "Third fold: she's afraid that if she slows down, she'll find out she doesn't know who she is without the clock.",
+  "ja": "三つ目の折り目。ペースを落としたら、時計のない自分が誰なのかわからないと知ってしまうのが怖い。",
+  "de": "Dritte Falte: Sie fürchtet, wenn sie langsamer wird, herauszufinden, dass sie ohne die Uhr nicht weiß, wer sie ist.",
+  "fr": "Troisième pli : elle a peur, si elle ralentit, de découvrir qu'elle ne sait pas qui elle est sans le chrono.",
+  "es": "Tercer pliegue: teme que, si baja el ritmo, descubra que no sabe quién es sin el cronómetro.",
+  "zh": "第三折：她怕一旦慢下来，就会发现没有了秒表，她不知道自己是谁。",
+  "ko": "세 번째 접힘: 속도를 늦추면, 기록 시계 없이는 자기가 누군지 모른다는 걸 알게 될까 봐 무서워요."
+ },
+ "letter_nadia_4": {
+  "en": "Fourth fold: she wants to swim for fun again. No lanes. No whistle.",
+  "ja": "四つ目の折り目。また楽しむために泳ぎたい。コースロープも、笛もなしで。",
+  "de": "Vierte Falte: Sie will wieder aus Spaß schwimmen. Keine Bahnen. Keine Pfeife.",
+  "fr": "Quatrième pli : elle veut de nouveau nager pour le plaisir. Pas de lignes d'eau. Pas de sifflet.",
+  "es": "Cuarto pliegue: quiere volver a nadar por diversión. Sin calles. Sin silbato.",
+  "zh": "第四折：她想再为了开心去游泳。没有泳道线，没有哨声。",
+  "ko": "네 번째 접힘: 다시 재미로 수영하고 싶어요. 레인도, 호루라기도 없이."
+ },
+ "letter_nadia_5": {
+  "en": "Fifth fold: she floated on her back in the pool yesterday for an hour and didn't count a single length. She's telling you first.",
+  "ja": "五つ目の折り目。昨日、プールで一時間あおむけに浮かんで、一往復も数えなかった。最初にあなたに話している。",
+  "de": "Fünfte Falte: Gestern trieb sie eine Stunde lang auf dem Rücken im Pool und zählte keine einzige Bahn. Du bist der Erste, dem sie es erzählt.",
+  "fr": "Cinquième pli : hier, elle a flotté une heure sur le dos dans la piscine sans compter une seule longueur. C'est à toi qu'elle le dit en premier.",
+  "es": "Quinto pliegue: ayer flotó una hora boca arriba en la piscina sin contar ni un largo. Te lo cuenta a ti primero.",
+  "zh": "第五折：昨天她在池子里仰面漂了一个小时，一个来回也没数。她第一个告诉的是你。",
+  "ko": "다섯 번째 접힘: 어제 수영장에서 한 시간 동안 누워서 떠 있었고, 한 바퀴도 세지 않았어요. 당신에게 제일 먼저 말하는 거예요."
+ },
+ "letter_nadia_6": {
+  "en": "Last fold: a stopwatch, drawn and crossed out. \"No more racing,\" she writes. \"Stay for the sunrise swim.\"",
+  "ja": "最後の折り目。描かれて、線で消されたストップウォッチ。「もう競争はしない」と書いてある。「日の出の泳ぎまで、いて」",
+  "de": "Letzte Falte: eine gezeichnete, durchgestrichene Stoppuhr. „Keine Rennen mehr“, schreibt sie. „Bleib zum Schwimmen bei Sonnenaufgang.“",
+  "fr": "Dernier pli : un chronomètre dessiné, puis barré. « Fini les courses, écrit-elle. Reste pour la nage du lever du soleil. »",
+  "es": "Último pliegue: un cronómetro dibujado y tachado. «Se acabaron las carreras», escribe. «Quédate a nadar al amanecer».",
+  "zh": "最后一折：一块画出来又被划掉的秒表。“不再比赛了，”她写道，“留下来，一起游日出。”",
+  "ko": "마지막 접힘: 그려 놓고 줄을 그은 스톱워치. “이제 경주는 없어.” 그녀가 적었어요. “해 뜰 때 같이 수영하자. 있어 줘.”"
+ },
+ "letter_freya_1": {
+  "en": "Freya's crane is folded from a map of somewhere very far north. First fold: she grew up where winter lasts half the year.",
+  "ja": "Freya の鶴は、ずっと北のどこかの地図で折られている。一つ目の折り目。彼女が育ったのは、一年の半分が冬の土地。",
+  "de": "Freyas Kranich ist aus einer Landkarte von irgendwo sehr weit im Norden gefaltet. Erste Falte: Sie wuchs dort auf, wo der Winter ein halbes Jahr dauert.",
+  "fr": "La grue de Freya est pliée dans une carte d'un endroit très loin au nord. Premier pli : elle a grandi là où l'hiver dure la moitié de l'année.",
+  "es": "La grulla de Freya está doblada con un mapa de algún lugar muy al norte. Primer pliegue: creció donde el invierno dura medio año.",
+  "zh": "Freya 的纸鹤是用一张很远很远的北方地图折的。第一折：她长大的地方，一年有半年是冬天。",
+  "ko": "프레야의 종이학은 아주 먼 북쪽 어딘가의 지도로 접혀 있어요. 첫 번째 접힘: 그녀는 1년의 절반이 겨울인 곳에서 자랐어요."
+ },
+ "letter_freya_2": {
+  "en": "Second fold: she keeps the bath warm because she remembers exactly how cold a house can get.",
+  "ja": "二つ目の折り目。お湯を温めておくのは、家がどれだけ冷えるかをはっきり覚えているから。",
+  "de": "Zweite Falte: Sie hält das Bad warm, weil sie genau weiß, wie kalt ein Haus werden kann.",
+  "fr": "Deuxième pli : elle garde le bain chaud parce qu'elle se souvient exactement à quel point une maison peut devenir froide.",
+  "es": "Segundo pliegue: mantiene el baño caliente porque recuerda exactamente lo fría que puede ponerse una casa.",
+  "zh": "第二折：她把泉水烧得暖暖的，因为她清楚地记得，一座房子能有多冷。",
+  "ko": "두 번째 접힘: 그녀가 온천물을 따뜻하게 데워 두는 건, 집이 얼마나 추워질 수 있는지 똑똑히 기억하기 때문이에요."
+ },
+ "letter_freya_3": {
+  "en": "Third fold: she's afraid of long winters alone. She says it lightly, and you both know it isn't light.",
+  "ja": "三つ目の折り目。ひとりきりの長い冬が怖い。軽く言うけれど、軽くないことは二人ともわかっている。",
+  "de": "Dritte Falte: Sie hat Angst vor langen Wintern allein. Sie sagt es leichthin, und ihr wisst beide, dass es nicht leicht ist.",
+  "fr": "Troisième pli : elle a peur des longs hivers toute seule. Elle le dit à la légère, et vous savez tous les deux que ça n'a rien de léger.",
+  "es": "Tercer pliegue: le dan miedo los inviernos largos a solas. Lo dice a la ligera, y los dos sabéis que no tiene nada de ligero.",
+  "zh": "第三折：她害怕独自度过漫长的冬天。她说得很轻，但你们都知道那并不轻。",
+  "ko": "세 번째 접힘: 홀로 보내는 긴 겨울이 무서워요. 가볍게 말하지만, 가볍지 않다는 걸 둘 다 알아요."
+ },
+ "letter_freya_4": {
+  "en": "Fourth fold: she wants a house full of steam and voices and snow outside the window.",
+  "ja": "四つ目の折り目。湯気と話し声でいっぱいの家が欲しい。窓の外には雪。",
+  "de": "Vierte Falte: Sie will ein Haus voller Dampf und Stimmen und Schnee vor dem Fenster.",
+  "fr": "Quatrième pli : elle veut une maison pleine de vapeur et de voix, avec de la neige derrière la fenêtre.",
+  "es": "Cuarto pliegue: quiere una casa llena de vapor y de voces, con nieve al otro lado de la ventana.",
+  "zh": "第四折：她想要一座满是热气和说话声的房子，窗外下着雪。",
+  "ko": "네 번째 접힘: 김과 말소리로 가득한 집, 창밖에는 눈이 내리는 집을 갖고 싶어요."
+ },
+ "letter_freya_5": {
+  "en": "Fifth fold: she's started heating the bath a little earlier on the nights you come.",
+  "ja": "五つ目の折り目。あなたが来る夜は、少し早めにお湯を沸かすようになった。",
+  "de": "Fünfte Falte: An den Abenden, an denen du kommst, heizt sie das Bad inzwischen etwas früher an.",
+  "fr": "Cinquième pli : les soirs où tu viens, elle a pris l'habitude de chauffer le bain un peu plus tôt.",
+  "es": "Quinto pliegue: las noches que vienes, ha empezado a calentar el baño un poco antes.",
+  "zh": "第五折：你来的那些夜晚，她开始早一点烧水了。",
+  "ko": "다섯 번째 접힘: 당신이 오는 밤이면, 그녀는 조금 일찍 물을 데우기 시작했어요."
+ },
+ "letter_freya_6": {
+  "en": "Last fold: \"This winter,\" she writes, \"I won't count the days. I'll count the guests. One will do.\"",
+  "ja": "最後の折り目。「今年の冬は」と書いてある。「日を数えない。お客さまを数える。ひとりでいい」",
+  "de": "Letzte Falte: „Diesen Winter“, schreibt sie, „zähle ich nicht die Tage. Ich zähle die Gäste. Einer reicht.“",
+  "fr": "Dernier pli : « Cet hiver, écrit-elle, je ne compterai pas les jours. Je compterai les invités. Un seul suffira. »",
+  "es": "Último pliegue: «Este invierno», escribe, «no contaré los días. Contaré los invitados. Con uno basta».",
+  "zh": "最后一折：“这个冬天，”她写道，“我不数日子了。我数客人。一位就够。”",
+  "ko": "마지막 접힘: “올겨울엔 날짜를 세지 않을 거야.” 그녀가 적었어요. “손님을 셀 거야. 한 명이면 충분해.”"
+ },
+ "letter_amara_1": {
+  "en": "Amara's crane is folded from a star chart. First fold: she has named four asteroids and none of them after herself.",
+  "ja": "Amara の鶴は星図で折られている。一つ目の折り目。彼女は小惑星を四つ名づけたけれど、どれにも自分の名前はつけなかった。",
+  "de": "Amaras Kranich ist aus einer Sternkarte gefaltet. Erste Falte: Sie hat vier Asteroiden benannt und keinen nach sich selbst.",
+  "fr": "La grue d'Amara est pliée dans une carte du ciel. Premier pli : elle a baptisé quatre astéroïdes et aucun à son nom.",
+  "es": "La grulla de Amara está doblada con una carta estelar. Primer pliegue: ha bautizado cuatro asteroides y ninguno con su nombre.",
+  "zh": "Amara 的纸鹤是用一张星图折的。第一折：她命名过四颗小行星，没有一颗用她自己的名字。",
+  "ko": "아마라의 종이학은 성도로 접혀 있어요. 첫 번째 접힘: 그녀는 소행성 네 개에 이름을 붙였지만, 자기 이름을 붙인 건 하나도 없어요."
+ },
+ "letter_amara_2": {
+  "en": "Second fold: she's spent years looking up, and she jokes that she forgot what faces look like.",
+  "ja": "二つ目の折り目。何年も空ばかり見上げていたから、人の顔を忘れちゃったと冗談を言う。",
+  "de": "Zweite Falte: Sie hat jahrelang nach oben geschaut und scherzt, sie habe vergessen, wie Gesichter aussehen.",
+  "fr": "Deuxième pli : elle a passé des années les yeux levés, et plaisante en disant qu'elle a oublié à quoi ressemblent les visages.",
+  "es": "Segundo pliegue: se ha pasado años mirando hacia arriba, y bromea con que ha olvidado cómo son las caras.",
+  "zh": "第二折：她仰望星空太多年了，开玩笑说自己都忘了人脸长什么样。",
+  "ko": "두 번째 접힘: 몇 년 동안 하늘만 올려다봐서 사람 얼굴이 어떻게 생겼는지 잊어버렸다고 농담해요."
+ },
+ "letter_amara_3": {
+  "en": "Third fold: she's afraid she's better at loving the sky than the people under it.",
+  "ja": "三つ目の折り目。空の下の人より、空を愛するほうが得意なんじゃないかと怖い。",
+  "de": "Dritte Falte: Sie fürchtet, dass sie den Himmel besser lieben kann als die Menschen darunter.",
+  "fr": "Troisième pli : elle a peur d'être plus douée pour aimer le ciel que les gens qui vivent dessous.",
+  "es": "Tercer pliegue: teme que se le dé mejor amar el cielo que a la gente que vive debajo.",
+  "zh": "第三折：她怕自己更擅长爱天空，而不是天空下的人。",
+  "ko": "세 번째 접힘: 하늘 아래 사람들보다 하늘을 사랑하는 쪽이 더 쉬운 게 아닐까 무서워요."
+ },
+ "letter_amara_4": {
+  "en": "Fourth fold: she wants to find a comet of her own and name it for someone she loves.",
+  "ja": "四つ目の折り目。自分だけの彗星を見つけて、愛する人の名前をつけたい。",
+  "de": "Vierte Falte: Sie will einen eigenen Kometen finden und ihn nach jemandem benennen, den sie liebt.",
+  "fr": "Quatrième pli : elle veut trouver sa propre comète et lui donner le nom de quelqu'un qu'elle aime.",
+  "es": "Cuarto pliegue: quiere encontrar un cometa propio y ponerle el nombre de alguien a quien quiera.",
+  "zh": "第四折：她想找到一颗属于自己的彗星，用她爱的人的名字给它命名。",
+  "ko": "네 번째 접힘: 자기만의 혜성을 찾아서, 사랑하는 사람의 이름을 붙이고 싶어요."
+ },
+ "letter_amara_5": {
+  "en": "Fifth fold: she's been teaching you the constellations and has stopped looking at the stars while she does it.",
+  "ja": "五つ目の折り目。あなたに星座を教えているあいだ、彼女はもう星を見ていない。",
+  "de": "Fünfte Falte: Sie bringt dir die Sternbilder bei und schaut dabei längst nicht mehr zu den Sternen.",
+  "fr": "Cinquième pli : elle t'apprend les constellations, et pendant ce temps, elle ne regarde plus les étoiles.",
+  "es": "Quinto pliegue: te está enseñando las constelaciones, y mientras lo hace ya no mira las estrellas.",
+  "zh": "第五折：她一直在教你认星座，而她教的时候，已经不再看星星了。",
+  "ko": "다섯 번째 접힘: 그녀는 당신에게 별자리를 가르쳐 주는데, 그러는 동안 더는 별을 보지 않아요."
+ },
+ "letter_amara_6": {
+  "en": "Last fold: a comet, circled in red, with a name beside it she won't read aloud. She just hands you the chart.",
+  "ja": "最後の折り目。赤い丸で囲まれた彗星、その横に、彼女が声に出して読もうとしない名前。彼女は黙って星図をあなたに渡す。",
+  "de": "Letzte Falte: ein rot eingekreister Komet, daneben ein Name, den sie nicht laut vorliest. Sie reicht dir einfach die Karte.",
+  "fr": "Dernier pli : une comète entourée de rouge, avec à côté un nom qu'elle refuse de lire à voix haute. Elle te tend simplement la carte.",
+  "es": "Último pliegue: un cometa rodeado en rojo, con un nombre al lado que no quiere leer en voz alta. Simplemente te da la carta.",
+  "zh": "最后一折：一颗用红笔圈起来的彗星，旁边有个名字，她不肯念出来。她只是把星图递给你。",
+  "ko": "마지막 접힘: 빨간 동그라미를 친 혜성, 그 옆에 그녀가 소리 내어 읽지 않으려는 이름. 그녀는 그저 성도를 건네요."
+ },
+ "letter_lucia_1": {
+  "en": "Lucia's crane is folded from sheet music. First fold: she played first violin in halls with two thousand seats.",
+  "ja": "Lucia の鶴は楽譜で折られている。一つ目の折り目。彼女は二千席のホールで第一バイオリンを弾いていた。",
+  "de": "Lucias Kranich ist aus Notenpapier gefaltet. Erste Falte: Sie war erste Geige in Sälen mit zweitausend Plätzen.",
+  "fr": "La grue de Lucia est pliée dans une partition. Premier pli : elle était premier violon dans des salles de deux mille places.",
+  "es": "La grulla de Lucia está doblada con una partitura. Primer pliegue: fue primer violín en salas de dos mil butacas.",
+  "zh": "Lucia 的纸鹤是用乐谱折的。第一折：她曾在两千个座位的音乐厅里担任首席小提琴。",
+  "ko": "루치아의 종이학은 악보로 접혀 있어요. 첫 번째 접힘: 그녀는 이천 석짜리 공연장에서 제1바이올린을 켰어요."
+ },
+ "letter_lucia_2": {
+  "en": "Second fold: she loved the applause, and she hated the silence that came after it, in the hotel room, alone.",
+  "ja": "二つ目の折り目。拍手は好きだった。そのあとの沈黙は嫌いだった。ホテルの部屋で、ひとりきりの。",
+  "de": "Zweite Falte: Sie liebte den Applaus und hasste die Stille danach, im Hotelzimmer, allein.",
+  "fr": "Deuxième pli : elle aimait les applaudissements, et détestait le silence d'après, dans la chambre d'hôtel, seule.",
+  "es": "Segundo pliegue: le encantaban los aplausos y odiaba el silencio de después, en la habitación del hotel, sola.",
+  "zh": "第二折：她爱掌声，却讨厌掌声之后的寂静，在酒店房间里，一个人。",
+  "ko": "두 번째 접힘: 박수는 좋았지만, 그 뒤의 정적은 싫었어요. 호텔 방에서, 혼자."
+ },
+ "letter_lucia_3": {
+  "en": "Third fold: she's afraid the music is the only thing about her anyone ever wanted.",
+  "ja": "三つ目の折り目。誰かが自分に求めたのは、音楽だけだったんじゃないかと怖い。",
+  "de": "Dritte Falte: Sie fürchtet, dass die Musik das Einzige an ihr ist, das je jemand wollte.",
+  "fr": "Troisième pli : elle a peur que la musique soit la seule chose qu'on ait jamais voulue d'elle.",
+  "es": "Tercer pliegue: teme que la música sea lo único que alguien haya querido nunca de ella.",
+  "zh": "第三折：她怕别人想从她身上得到的，从来只有音乐。",
+  "ko": "세 번째 접힘: 누군가 자기에게 원했던 건 음악뿐이었을까 봐 무서워요."
+ },
+ "letter_lucia_4": {
+  "en": "Fourth fold: she wants to play for one listener, close enough to hear her breathe between the notes.",
+  "ja": "四つ目の折り目。ひとりの聴き手のために弾きたい。音と音のあいだの息づかいが聞こえるくらい近くで。",
+  "de": "Vierte Falte: Sie will für einen einzigen Zuhörer spielen, nah genug, um sie zwischen den Tönen atmen zu hören.",
+  "fr": "Quatrième pli : elle veut jouer pour un seul auditeur, assez près pour l'entendre respirer entre les notes.",
+  "es": "Cuarto pliegue: quiere tocar para un solo oyente, tan cerca que la oiga respirar entre las notas.",
+  "zh": "第四折：她想为一位听众演奏，近到能听见她在音符之间的呼吸。",
+  "ko": "네 번째 접힘: 단 한 명의 청중을 위해 연주하고 싶어요. 음과 음 사이의 숨소리가 들릴 만큼 가까이에서."
+ },
+ "letter_lucia_5": {
+  "en": "Fifth fold: she wrote a piece. It has no title and one line of dedication, left blank.",
+  "ja": "五つ目の折り目。彼女は一曲書いた。題名はなく、献辞の一行は空白のまま。",
+  "de": "Fünfte Falte: Sie hat ein Stück geschrieben. Es hat keinen Titel und eine Zeile Widmung, leer gelassen.",
+  "fr": "Cinquième pli : elle a écrit un morceau. Il n'a pas de titre, et une ligne de dédicace, laissée vide.",
+  "es": "Quinto pliegue: ha escrito una pieza. No tiene título, y la única línea de la dedicatoria está en blanco.",
+  "zh": "第五折：她写了一首曲子。没有标题，献词只有一行，空着。",
+  "ko": "다섯 번째 접힘: 그녀는 곡을 하나 썼어요. 제목은 없고, 헌사 한 줄은 비워 두었어요."
+ },
+ "letter_lucia_6": {
+  "en": "Last fold: the dedication, filled in at last. \"For the one who stayed after the last chord.\"",
+  "ja": "最後の折り目。ついに埋まった献辞。「最後の和音のあとも、いてくれた人へ」",
+  "de": "Letzte Falte: die Widmung, endlich ausgefüllt. „Für den, der nach dem letzten Akkord geblieben ist.“",
+  "fr": "Dernier pli : la dédicace, enfin remplie. « Pour celui qui est resté après le dernier accord. »",
+  "es": "Último pliegue: la dedicatoria, por fin escrita. «Para quien se quedó después del último acorde».",
+  "zh": "最后一折：献词终于填上了。“献给最后一个和弦之后仍然留下的人。”",
+  "ko": "마지막 접힘: 마침내 채워진 헌사. “마지막 화음이 끝난 뒤에도 남아 준 사람에게.”"
+ },
+ "coco2_1": {
+  "en": "Coco folds a new crane while Rosa settles in. \"A new one,\" she says. \"The first one worked.\"",
+  "ja": "Rosa が落ち着くあいだに、Coco は新しい鶴を折る。「新しいのよ」と彼女は言う。「一羽目がうまくいったから」",
+  "de": "Während Rosa sich einrichtet, faltet Coco einen neuen Kranich. „Einen neuen“, sagt sie. „Der erste hat funktioniert.“",
+  "fr": "Pendant que Rosa s'installe, Coco plie une nouvelle grue. « Une nouvelle, dit-elle. La première a marché. »",
+  "es": "Mientras Rosa se instala, Coco dobla una grulla nueva. «Una nueva», dice. «La primera funcionó».",
+  "zh": "Rosa 安顿下来的时候，Coco 折起一只新的纸鹤。“一只新的，”她说，“第一只成功了。”",
+  "ko": "로사가 자리를 잡는 동안, 코코가 새 종이학을 접어요. “새로운 거야.” 그녀가 말해요. “첫 번째가 잘됐거든.”"
+ },
+ "coco2_2": {
+  "en": "Coco adds a fold to her new crane. \"It's shorter this time,\" she says. \"I know who it's for.\"",
+  "ja": "Coco は新しい鶴に折り目をひとつ足す。「今度のは短いの」と彼女は言う。「誰に宛てたものか、わかってるから」",
+  "de": "Coco fügt ihrem neuen Kranich eine Falte hinzu. „Diesmal ist er kürzer“, sagt sie. „Ich weiß, für wen er ist.“",
+  "fr": "Coco ajoute un pli à sa nouvelle grue. « Elle est plus courte cette fois, dit-elle. Je sais pour qui elle est. »",
+  "es": "Coco añade un pliegue a su grulla nueva. «Esta vez es más corta», dice. «Sé para quién es».",
+  "zh": "Coco 给她的新纸鹤添了一折。“这次短一些，”她说，“我知道它是写给谁的。”",
+  "ko": "코코가 새 종이학에 접힘을 하나 더해요. “이번엔 더 짧아.” 그녀가 말해요. “누구에게 줄 건지 알거든.”"
+ },
+ "coco2_3": {
+  "en": "Coco's new crane has one wing done. She lets you see a single line: \"Good morning, again.\"",
+  "ja": "Coco の新しい鶴は、片方の翼ができあがっている。見せてくれたのは一行だけ。「もう一度、おはよう」",
+  "de": "Ein Flügel von Cocos neuem Kranich ist fertig. Sie lässt dich eine einzige Zeile sehen: „Guten Morgen, schon wieder.“",
+  "fr": "La nouvelle grue de Coco a une aile terminée. Elle te laisse voir une seule ligne : « Bonjour, encore. »",
+  "es": "La grulla nueva de Coco ya tiene un ala terminada. Te deja ver una sola línea: «Buenos días, otra vez».",
+  "zh": "Coco 的新纸鹤已经折好了一边翅膀。她只让你看了一行：“再说一次早安。”",
+  "ko": "코코의 새 종이학은 날개 한쪽이 완성됐어요. 그녀가 딱 한 줄만 보여 줘요. “다시 한번, 좋은 아침.”"
+ },
+ "coco2_4": {
+  "en": "Coco hides the new crane in the bath house towels. You find it. She lets you keep it for a night.",
+  "ja": "Coco は新しい鶴を湯殿のタオルのあいだに隠す。あなたが見つける。ひと晩だけ持っていていいと彼女は言う。",
+  "de": "Coco versteckt den neuen Kranich zwischen den Handtüchern im Badehaus. Du findest ihn. Sie lässt ihn dir für eine Nacht.",
+  "fr": "Coco cache la nouvelle grue parmi les serviettes du bain. Tu la trouves. Elle te la laisse pour une nuit.",
+  "es": "Coco esconde la grulla nueva entre las toallas de la casa de baños. Tú la encuentras. Te deja quedártela una noche.",
+  "zh": "Coco 把新纸鹤藏在浴场的毛巾堆里。你找到了。她让你留着它过一夜。",
+  "ko": "코코가 새 종이학을 온천 수건 사이에 숨겨요. 당신이 찾아내요. 그녀는 하룻밤 동안 갖고 있어도 된대요."
+ },
+ "coco2_5": {
+  "en": "\"Almost finished,\" Coco says of her new crane. \"Some things you only have to write once and then keep saying.\"",
+  "ja": "「もうすぐできあがり」と Coco は新しい鶴のことを言う。「一度書いたら、あとは言いつづけるだけのこともあるの」",
+  "de": "„Fast fertig“, sagt Coco über ihren neuen Kranich. „Manches muss man nur einmal schreiben und dann immer wieder sagen.“",
+  "fr": "« Presque finie », dit Coco de sa nouvelle grue. « Il y a des choses qu'on n'écrit qu'une fois, et qu'on continue ensuite de dire. »",
+  "es": "«Casi terminada», dice Coco de su grulla nueva. «Hay cosas que solo hace falta escribir una vez y luego seguir diciendo».",
+  "zh": "“快折好了，”Coco 说起她的新纸鹤，“有些话只要写一次，然后一直说下去就好。”",
+  "ko": "“거의 다 됐어.” 코코가 새 종이학을 두고 말해요. “한 번만 써 두고, 그다음엔 계속 말하면 되는 것도 있어.”"
+ },
+ "coco2_6": {
+  "en": "Coco's second crane opens by itself in your hands: \"Still here. Still yours. Stay for the next one.\"",
+  "ja": "Coco の二羽目の鶴が、あなたの手の中でひとりでにひらく。「まだここにいる。まだあなたのもの。次のも、見届けて」",
+  "de": "Cocos zweiter Kranich öffnet sich von selbst in deinen Händen: „Immer noch hier. Immer noch deins. Bleib für den nächsten.“",
+  "fr": "La deuxième grue de Coco s'ouvre toute seule entre tes mains : « Toujours là. Toujours à toi. Reste pour la suivante. »",
+  "es": "La segunda grulla de Coco se abre sola en tus manos: «Sigo aquí. Sigo siendo tuya. Quédate para la próxima».",
+  "zh": "Coco 的第二只纸鹤在你手里自己打开了：“还在这里。还是你的。下一只，也留下来看。”",
+  "ko": "코코의 두 번째 종이학이 당신 손 안에서 저절로 펼쳐져요. “아직 여기 있어. 아직 네 거야. 다음 것도 곁에서 봐 줘.”"
+ },
+ "hook_door": {
+  "en": "Coco's crane has a date on its tail. You want to know what happened that night.",
+  "ja": "Coco の鶴の尾には日付がある。その夜に何があったのか、知りたくなる。",
+  "de": "Auf dem Schwanz von Cocos Kranich steht ein Datum. Du willst wissen, was in jener Nacht geschah.",
+  "fr": "Il y a une date sur la queue de la grue de Coco. Tu veux savoir ce qui s'est passé ce soir-là.",
+  "es": "La grulla de Coco lleva una fecha en la cola. Quieres saber qué pasó aquella noche.",
+  "zh": "Coco 的纸鹤尾上有个日期。你想知道那一晚发生了什么。",
+  "ko": "코코의 종이학 꼬리에는 날짜가 적혀 있어요. 그날 밤 무슨 일이 있었는지 알고 싶어져요."
+ },
+ "hook_lounge": {
+  "en": "Every woman here keeps a crane. You've only opened the first folds.",
+  "ja": "ここの女性はみんな鶴を持っている。あなたがひらいたのは、まだ最初の折り目だけ。",
+  "de": "Jede Frau hier hat einen Kranich. Du hast erst die ersten Falten geöffnet.",
+  "fr": "Chaque femme ici garde une grue. Tu n'en as ouvert que les premiers plis.",
+  "es": "Cada mujer de aquí guarda una grulla. Solo has abierto los primeros pliegues.",
+  "zh": "这里的每个女人都藏着一只纸鹤。你才打开了最初的几折。",
+  "ko": "이곳의 여자들은 모두 종이학을 갖고 있어요. 당신은 이제 겨우 첫 접힘들을 열었을 뿐이에요."
+ },
+ "hook_stage": {
+  "en": "Coco almost opened hers for someone once. They didn't come back.",
+  "ja": "Coco は一度、ある人のために鶴をひらきかけた。その人は戻ってこなかった。",
+  "de": "Coco hätte ihren Kranich einmal fast für jemanden geöffnet. Er ist nicht wiedergekommen.",
+  "fr": "Coco a failli ouvrir la sienne pour quelqu'un, une fois. Il n'est jamais revenu.",
+  "es": "Coco casi abrió la suya para alguien una vez. No volvió.",
+  "zh": "Coco 曾差点为一个人打开她的纸鹤。那人没有回来。",
+  "ko": "코코는 한 번, 어떤 사람을 위해 종이학을 열 뻔했어요. 그 사람은 돌아오지 않았어요."
+ },
+ "hook_mirror": {
+  "en": "The others are opening up. Coco's crane is still shut.",
+  "ja": "ほかのみんなは心をひらきはじめた。Coco の鶴は、まだ閉じたまま。",
+  "de": "Die anderen öffnen sich. Cocos Kranich ist noch zu.",
+  "fr": "Les autres s'ouvrent à toi. La grue de Coco reste fermée.",
+  "es": "Las demás se están abriendo. La grulla de Coco sigue cerrada.",
+  "zh": "其他人都在敞开心扉。Coco 的纸鹤依旧合着。",
+  "ko": "다른 이들은 마음을 열고 있어요. 코코의 종이학은 아직 닫혀 있어요."
+ },
+ "hook_upstairs": {
+  "en": "Coco's crane is nearly open. She won't say what the last folds hold.",
+  "ja": "Coco の鶴はもうすぐひらく。最後の折り目に何があるのか、彼女は言わない。",
+  "de": "Cocos Kranich ist fast offen. Was die letzten Falten bergen, verrät sie nicht.",
+  "fr": "La grue de Coco est presque ouverte. Elle ne dit pas ce que cachent les derniers plis.",
+  "es": "La grulla de Coco está casi abierta. No dice qué guardan los últimos pliegues.",
+  "zh": "Coco 的纸鹤快要打开了。最后几折写着什么，她不肯说。",
+  "ko": "코코의 종이학이 거의 열렸어요. 마지막 접힘에 무엇이 있는지 그녀는 말하지 않아요."
+ },
+ "hook_lantern": {
+  "en": "Morning is coming. So is the last fold.",
+  "ja": "朝が近づいている。最後の折り目も。",
+  "de": "Der Morgen kommt. Und mit ihm die letzte Falte.",
+  "fr": "Le matin approche. Le dernier pli aussi.",
+  "es": "Se acerca la mañana. Y también el último pliegue.",
+  "zh": "天快亮了。最后一折也快了。",
+  "ko": "아침이 다가와요. 마지막 접힘도요."
+ },
+ "hook_morning": {
+  "en": "Coco has started folding a second crane. The House is getting new guests.",
+  "ja": "Coco は二羽目の鶴を折りはじめた。館に新しいお客さまがやってくる。",
+  "de": "Coco hat angefangen, einen zweiten Kranich zu falten. Das Haus bekommt neue Gäste.",
+  "fr": "Coco a commencé à plier une deuxième grue. La Maison accueille de nouvelles invitées.",
+  "es": "Coco ha empezado a doblar una segunda grulla. La Casa recibe nuevas invitadas.",
+  "zh": "Coco 开始折第二只纸鹤了。这座房子要迎来新的客人。",
+  "ko": "코코가 두 번째 종이학을 접기 시작했어요. 하우스에 새 손님들이 와요."
+ }
+}
