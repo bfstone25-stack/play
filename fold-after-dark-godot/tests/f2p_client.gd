@@ -180,3 +180,76 @@ func run() -> void:
 		more.pressed.emit()
 		check("+5 moves buys a token and the server grants five more",
 			await until(func(): return F2P.moves_left() == left0 + 5), "left %d" % F2P.moves_left())
+
+	# ---- the map: the early-unlock offer and every F2P word in zh and ja (2026-09-24) -------
+	# Tier 1 is cleared and the player is on level 6 (tier 2), so the server's window
+	# (early_unlock_window = 2) offers tiers 2 and 3 only; a far tier has no button.
+	await F2P.give_up()
+	game.queue_free()
+	await sleep(0.2)
+	var map: Node = (load("res://scenes/map.tscn") as PackedScene).instantiate()
+	get_tree().root.add_child(map)
+	check("the map builds on the server's state", await until(func(): return map.find_child("Tier41", true, false) != null, 15.0))
+	var offered := []
+	for t in range(Tier.count()):
+		var card := map.find_child("Tier%d" % t, true, false)
+		if card != null and card.find_child("BuyScene", true, false) != null:
+			offered.append(t)
+	check("Unlock now is on the current tier and the next only", offered == [1, 2], str(offered))
+	for lang in ["zh", "ja"]:
+		I18n.set_lang(lang)
+		await sleep(0.3)
+		await until(func(): return map.find_child("DailyChallenge", true, false) != null, 5.0)
+		var eng := english_words(map)
+		check("the map and its F2P panels have no English in %s" % lang, eng.is_empty(), ", ".join(eng.slice(0, 12)))
+		var buy := map.find_child("BuyScene", true, false) as Button
+		check("the unlock offer is in %s" % lang, buy != null and english_words(buy).is_empty(), buy.text if buy else "")
+		# the shop and an out-of-candles card, drawn on the map's own overlay host
+		var host := Control.new()
+		host.set_anchors_preset(Control.PRESET_FULL_RECT)
+		var centre := CenterContainer.new()
+		centre.name = "Centre"
+		host.add_child(centre)
+		map.add_child(host)
+		F2PUI.shop(host, func(): pass)
+		await sleep(0.1)
+		eng = english_words(host)
+		check("the shop has no English in %s" % lang, eng.is_empty(), ", ".join(eng.slice(0, 12)))
+		host.queue_free()
+		check("a results cheer is in %s" % lang, I18n.t("cheer_3") != "Perfect!" and english_words_in(I18n.t("cheer_3")).is_empty())
+		check("a server refusal is in %s" % lang, english_words_in(I18n.reason("over budget (31 > 30)")).is_empty()
+			and I18n.reason("over budget (31 > 30)") != I18n.reason("zzz unknown"), I18n.reason("over budget (31 > 30)"))
+		check("Coco's subtitle is in %s" % lang, english_words_in(Coco.subtitle("Perfect. I'm impressed.")).is_empty())
+	I18n.set_lang("en")
+	map.queue_free()
+
+
+## Words of three or more Latin letters in every Label/Button under `root`, minus names
+## (the cast, the platform, the wordmark, the player's own nickname on the boards) and
+## the clock's UTC.
+const NAMES := ["coco", "june", "iris", "sable", "vesna", "wren", "nutaku", "utc", "plicata", "blazecore"]
+
+
+func english_words(root: Node) -> Array:
+	var out := []
+	var nodes := [root]
+	nodes.append_array(root.find_children("*", "Control", true, false))
+	for n in nodes:
+		if n is Label or n is Button:
+			if not (n as CanvasItem).is_visible_in_tree():
+				continue
+			for w in english_words_in(str(n.text)):
+				out.append(w)
+	return out
+
+
+func english_words_in(s: String) -> Array:
+	var out := []
+	var re := RegEx.new()
+	re.compile("[A-Za-z]{3,}")
+	for m in re.search_all(s):
+		var w := m.get_string()
+		var nick := str(Nutaku.state.get("nickname", "")).to_lower()
+		if w.to_lower() not in NAMES and not nick.contains(w.to_lower()):
+			out.append(w)
+	return out
