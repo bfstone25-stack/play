@@ -63,6 +63,7 @@ var notice: SimpleScreens.Notice
 var intro: TitleScreen
 ## Nutaku F2P only (F2P.on()): the office panel, the scene viewer, the juice layer.
 var f2p_panel: F2PPanel
+var story_view: F2PPanel.StoryView
 var scene_view: Overlay
 var fx: F2PPanel.Juice
 var gold_tag: Label
@@ -1005,12 +1006,17 @@ func do_commit() -> void:
 			if int(daily["at"]) < (daily["seq"] as Array).size():
 				banner(I18n.fmt("f2p_place_all", {"n": (daily["seq"] as Array).size()}))
 				return
-			var sr: Dictionary = await F2P.act("/daily_floor/submit", {"cells": cells()})
+			var hard := str(daily.get("tier", "")) == "hard"
+			var sr: Dictionary = await F2P.act("/hard_floor/submit" if hard else "/daily_floor/submit", {"cells": cells()})
 			if sr["ok"]:
 				var body: Dictionary = sr["body"]
 				daily_result.show_result({"day": Ticker.daily_key(), "shift": int(body["score"]), "best": int(body["best"]),
 					"chain": int(r["chain"]), "pct": Ticker.percentile(int(body["best"]))})
 				_juice("claim", body.get("applied", {}))
+				if hard:
+					banner(I18n.fmt("f2p_hf_result", {"score": int(body["score"]), "par": int(body["par"])}))
+					if bool(body.get("beat_par", false)) and not (body.get("par_applied", {}) as Dictionary).is_empty():
+						_juice("par", body)
 			return
 		var res := Ticker.finish_daily(r)
 		daily_result.show_result(res)
@@ -1048,15 +1054,16 @@ func build_floor(n: int) -> void:
 
 # ---- daily floor -------------------------------------------------------------------------
 
-func start_daily() -> void:
+func start_daily(tier: String = "") -> void:
 	var seq: Array = Ticker.daily_seq()
 	if F2P.on():
-		var dr: Dictionary = await F2P.act("/daily_floor/start")
+		# the night floor (tier "hard") is the same board with its own sixteen pieces and par
+		var dr: Dictionary = await F2P.act("/hard_floor/start" if tier == "hard" else "/daily_floor/start")
 		if not dr["ok"]:
 			return
 		seq = dr["body"]["seq"]
 	mode = "daily"
-	daily = {"seq": seq, "at": 0, "cells": Idle.empty_cells(), "n": 0}
+	daily = {"seq": seq, "at": 0, "cells": Idle.empty_cells(), "n": 0, "tier": tier}
 	view = daily
 	offers = draw_offers(3)
 	selected = -1
@@ -1308,7 +1315,17 @@ func _build_f2p(layer: CanvasLayer) -> void:
 	scene_view = F2PPanel.SceneView.new()
 	layer.add_child(f2p_panel)
 	layer.add_child(scene_view)
-	f2p_panel.daily_floor_requested.connect(start_daily)
+	f2p_panel.daily_floor_requested.connect(func() -> void: start_daily())
+	f2p_panel.hard_floor_requested.connect(func() -> void: start_daily("hard"))
+	story_view = F2PPanel.StoryView.new()
+	layer.add_child(story_view)
+	f2p_panel.story_requested.connect(func(id: String, who: String) -> void: story_view.show_story(id, who))
+	F2P.beats_landed.connect(func(list: Array) -> void:
+		for bt in list:
+			fx.flash(Palette.GOLD_PALE, 0.4, 0.7)
+			fx.float_text(Vector2(640, 280), I18n.t("f2p_beat_burst"), Palette.GOLD_PALE, 34)
+			Sfx.levelup()
+			banner(I18n.fmt("f2p_beat_line", {"title": F2P.beat_title(bt), "text": F2P.beat_text(bt)})))
 	f2p_panel.view_scene.connect(func(id: String, t: String) -> void: scene_view.show_scene(id, t))
 	f2p_panel.juice.connect(_juice)
 	var fl := CanvasLayer.new()
@@ -1381,6 +1398,21 @@ func _juice(kind: String, data: Dictionary) -> void:
 			Sfx.coins(5)
 		"talk", "gift":
 			fx.float_text(Vector2(640, 330), "+%d" % int(data.get("points", 20)), Palette.HEAT, 40)
+		"banner":
+			var fe := int(data.get("featured", 0))
+			if fe > 0:
+				fx.flash(Palette.HEAT, 0.5, 0.8)
+				fx.burst(Vector2(640, 360), Palette.HEAT, 50)
+				fx.float_text(Vector2(640, 300), I18n.fmt("f2p_bn_featured", {"name": F2P.char_name(str(data.get("char", ""))),
+						"n": int(data.get("aff", 0))}), Palette.HEAT, 36)
+				Sfx.sparkle()
+			else:
+				fx.burst(Vector2(640, 360), Palette.GOLD, 22)
+				Sfx.coins(4)
+		"par":
+			fx.flash(Palette.GOLD_PALE, 0.45, 0.7)
+			fx.float_text(Vector2(640, 300), I18n.t("f2p_hf_par_burst"), Palette.GOLD_PALE, 40)
+			Sfx.levelup()
 		"chapter":
 			fx.flash(Palette.GOLD_PALE, 0.5, 0.8)
 			fx.burst(Vector2(640, 360), Palette.GOLD, 50)

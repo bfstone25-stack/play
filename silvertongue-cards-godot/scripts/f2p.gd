@@ -35,7 +35,20 @@ func boot() -> bool:
 	if ok:
 		Nutaku.state_path = "/suasion/state"
 		await refresh()
+		await strings()
 	return ok
+
+
+## Update packs and events are released by the server's clock, not by a client build
+## (backend/campaign/packs). Their words may be newer than this build's table, so the
+## server serves their translations and they are merged under what the build already has.
+func strings() -> void:
+	var c := Loc.code()
+	if c == "en":
+		return
+	var r := await Nutaku.api("GET", "/suasion/strings?lang=" + c.uri_encode())
+	if r["ok"] and typeof(r["body"].get("strings")) == TYPE_DICTIONARY:
+		Loc.merge(c, r["body"]["strings"])
 
 
 func refresh() -> Dictionary:
@@ -72,12 +85,20 @@ func stage(id: String) -> Dictionary:
 		for s in ch.get("stages", []) + ch.get("last_call", {}).get("stages", []):
 			if str(s.get("id", "")) == id:
 				return s
+	for e in su.get("events", []):
+		for s in e.get("stages", []):
+			if str(s.get("id", "")) == id:
+				return s
 	return {}
 
 
 # --- the duel, in /cards shapes ------------------------------------------------------------
 const SCEN_OF := {"mara": "closing_time", "ines": "the_key", "yuenha": "life_model",
-	"sanne": "house_rule", "teodora": "last_night", "celeste": "celeste"}
+	"sanne": "house_rule", "teodora": "last_night", "celeste": "celeste",
+	# update packs (backend/campaign/packs); a woman released after this build falls back to
+	# her name from the server's bond table and the house art
+	"odile": "radio", "hedda": "pilot", "roz": "market", "mireille": "sleeper", "dagny": "archive",
+	"vesna": "ferry"}
 
 
 func start(id: String, daily: bool = false) -> Dictionary:
@@ -139,6 +160,12 @@ func _end(b: Dictionary) -> Dictionary:
 		var cc = f.get("chapter_clear")
 		if typeof(cc) == TYPE_DICTIONARY:
 			beat += "\n\n" + Loc.s(cc.get("title", "")).to_upper() + "\n" + Loc.s(cc.get("outro", ""))
+			# the chapter's missing Ledger page (the mystery thread): the chapter ends on it
+			var pg = cc.get("page")
+			if typeof(pg) == TYPE_DICTIONARY:
+				beat += "\n\n" + Loc.s(pg.get("title", "")).to_upper() + "\n" + Loc.s(pg.get("text", ""))
+		if f.has("marks"):
+			beat += "\n\n" + Loc.t("+%d %s · %d in all") % [int(f["marks"]), _currency(str(f.get("event", ""))), int(f.get("marks_total", 0))]
 		var scenes: Dictionary = f.get("bond_scenes", {})
 		for k in scenes:
 			if str(scenes[k]) != "":
@@ -178,15 +205,19 @@ func _view(v: Dictionary) -> Dictionary:
 
 
 # --- gacha, deck, affection, plates -------------------------------------------------------------
-func pull(n: int) -> Dictionary:
+func pull(n: int, banner: String = "") -> Dictionary:
 	var t := int(Nutaku.state.get("tokens", {}).get("ticket", 0))
 	var pay := "ticket" if t >= n else "chips"
 	var rid := "%d-%d-%d" % [Time.get_ticks_usec(), randi(), n]
-	var r := await Nutaku.api("POST", "/suasion/gacha/pull", {"n": n, "pay": pay, "request_id": rid})
+	var body := {"n": n, "pay": pay, "request_id": rid}
+	if banner != "":
+		body["banner"] = banner
+	var r := await Nutaku.api("POST", "/suasion/gacha/pull", body)
 	_adopt(r["body"])
 	if not r["ok"]:
 		return {"error": Loc.s(_why(r)) + (Loc.t(" — tickets are in the store") if int(r["status"]) == 402 else "")}
-	return {"ok": true, "paid": pay, "cards": r["body"].get("cards", []), "economy": economy()}
+	return {"ok": true, "paid": pay, "cards": r["body"].get("cards", []), "economy": economy(),
+		"banner": str(r["body"].get("banner", "") if r["body"].get("banner") != null else "")}
 
 
 func deck(_scenario: String, auto: bool = false) -> Dictionary:
@@ -214,7 +245,41 @@ func _night_id() -> String:
 
 
 const F2P_NAMES := {"mara": "Mara", "ines": "Ines", "yuenha": "Yuen Ha", "sanne": "Sanne", "teodora": "Teodora",
-	"celeste": "Celeste"}
+	"celeste": "Celeste", "odile": "Odile", "hedda": "Hedda", "roz": "Roz", "mireille": "Mireille",
+	"dagny": "Dagny", "vesna": "Vesna"}
+
+
+# --- events, auto-battle, the Ledger's pages ------------------------------------------------
+func events() -> Array:
+	return su.get("events", [])
+
+
+func banners() -> Array:
+	return su.get("banners", [])
+
+
+func _currency(eid: String) -> String:
+	for e in events():
+		if str(e.get("id", "")) == eid:
+			return Loc.s(e.get("currency", ""))
+	return Loc.t("marks")
+
+
+## Take a reward off an event's track.
+func event_claim(eid: String, step: int) -> Dictionary:
+	var r := await Nutaku.api("POST", "/suasion/event/claim", {"event": eid, "step": step})
+	_adopt(r["body"])
+	return {"ok": r["ok"], "error": "" if r["ok"] else Loc.s(_why(r)), "applied": r["body"].get("applied", {})}
+
+
+## Auto-battle a stage already won, n times: the server opens, plays and replays each duel
+## (suasion_economy.py /duel/auto) and answers with one summary per run.
+func auto(id: String, n: int) -> Dictionary:
+	var r := await Nutaku.api("POST", "/suasion/duel/auto", {"stage": id, "n": n})
+	_adopt(r["body"])
+	if not r["ok"]:
+		return {"ok": false, "error": Loc.s(_why(r))}
+	return {"ok": true, "runs": r["body"].get("runs", []), "won": int(r["body"].get("won", 0))}
 
 
 func save_deck(_scenario: String, ids: Array) -> Dictionary:

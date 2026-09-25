@@ -145,7 +145,8 @@ func printed_line() -> String:
 
 
 const NAMES := {"mara": "Mara", "ines": "Ines", "yuenha": "Yuen Ha", "sanne": "Sanne", "teodora": "Teodora",
-	"celeste": "Celeste"}
+	"celeste": "Celeste", "odile": "Odile", "hedda": "Hedda", "roz": "Roz", "mireille": "Mireille",
+	"dagny": "Dagny", "vesna": "Vesna"}
 
 
 ## Whose card this is, as a name in the player's language (the server sends an id).

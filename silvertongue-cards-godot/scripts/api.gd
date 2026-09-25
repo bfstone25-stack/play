@@ -247,9 +247,9 @@ func daily() -> Dictionary:
 		return Offline.daily(Loc.code())
 	return await get_json("/cards/daily?lang=%s" % Loc.code())
 
-func pull(n: int) -> Dictionary:
+func pull(n: int, banner: String = "") -> Dictionary:
 	if F2P.on():
-		return await F2P.pull(n)
+		return await F2P.pull(n, banner)
 	if offline:
 		return _local(Offline.pull(n))
 	return await post_json("/cards/pull", {"n": n})

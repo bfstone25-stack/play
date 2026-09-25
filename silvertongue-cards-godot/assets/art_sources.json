@@ -1,4 +1,13 @@
 {
+ "assets/faces/celeste.webp": {
+  "crop": [
+   380,
+   40,
+   740,
+   280
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
+ },
  "assets/faces/ines.webp": {
   "crop": [
    506,
@@ -16,6 +25,24 @@
    390
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_closing_time.png"
+ },
+ "assets/faces/odile.webp": {
+  "crop": [
+   160,
+   110,
+   640,
+   430
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_radio.webp"
+ },
+ "assets/faces/roz.webp": {
+  "crop": [
+   120,
+   110,
+   600,
+   430
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_market.webp"
  },
  "assets/faces/sanne.webp": {
   "crop": [
@@ -35,6 +62,15 @@
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_last_night.png"
  },
+ "assets/faces/vesna.webp": {
+  "crop": [
+   640,
+   60,
+   1120,
+   380
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_ferry.webp"
+ },
  "assets/faces/yuenha.webp": {
   "crop": [
    405,
@@ -43,6 +79,15 @@
    380
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_life_model.png"
+ },
+ "assets/portraits/celeste.webp": {
+  "crop": [
+   330,
+   0,
+   810,
+   600
+  ],
+  "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
  },
  "assets/portraits/ines.webp": {
   "crop": [
@@ -62,6 +107,24 @@
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_closing_time.png"
  },
+ "assets/portraits/odile.webp": {
+  "crop": [
+   140,
+   20,
+   660,
+   670
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_radio.webp"
+ },
+ "assets/portraits/roz.webp": {
+  "crop": [
+   100,
+   40,
+   620,
+   690
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_market.webp"
+ },
  "assets/portraits/sanne.webp": {
   "crop": [
    400,
@@ -80,6 +143,15 @@
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_last_night.png"
  },
+ "assets/portraits/vesna.webp": {
+  "crop": [
+   620,
+   30,
+   1140,
+   680
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_ferry.webp"
+ },
  "assets/portraits/yuenha.webp": {
   "crop": [
    410,
@@ -88,23 +160,5 @@
    650
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_life_model.png"
- },
- "assets/faces/celeste.webp": {
-  "crop": [
-   380,
-   40,
-   740,
-   280
-  ],
-  "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
- },
- "assets/portraits/celeste.webp": {
-  "crop": [
-   330,
-   0,
-   810,
-   600
-  ],
-  "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
  }
 }

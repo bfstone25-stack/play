@@ -20,6 +20,7 @@ from PIL import Image
 HERE = pathlib.Path(__file__).resolve().parent
 PROJ = HERE.parent
 PLATES = PROJ.parent / "silvertongue-x" / "frontend" / "assets" / "cg"
+PRODUCTS = PROJ.parent.parent
 FACES = PROJ / "assets" / "faces"
 PORTRAITS = PROJ / "assets" / "portraits"
 SIZES = {"face": (360, 240), "bust": (520, 650)}
@@ -31,7 +32,9 @@ def main() -> int:
     crops.pop("_", None)
     sources = {}
     for who, spec in crops.items():
-        plate = PLATES / ("cg1_%s.png" % spec["scenario"])
+        # the update packs' women (2026-09-24): their tier-1 plate is the installed pick in
+        # ops/silvertongue_art/installed (ops/nutaku/suasion_f2p/install_pack_art.py)
+        plate = (PRODUCTS / spec["plate"]) if spec.get("plate") else PLATES / ("cg1_%s.png" % spec["scenario"])
         if not plate.is_file():
             sys.exit("sync_art: plate missing: %s" % plate)
         im = Image.open(plate).convert("RGB")
@@ -41,7 +44,7 @@ def main() -> int:
             w, h = SIZES[kind]
             out = folder / (who + ".webp")
             im.crop(box).resize((w, h), Image.LANCZOS).save(out, "WEBP", quality=88, method=6)
-            rel = "play/silvertongue-x/frontend/assets/cg/" + plate.name
+            rel = spec.get("plate") or "play/silvertongue-x/frontend/assets/cg/" + plate.name
             sources[str(out.relative_to(PROJ))] = {"source": rel, "crop": box}
             print("  %-32s <- %s %s" % (out.relative_to(PROJ), plate.name, box))
     (PROJ / "assets" / "art_sources.json").write_text(json.dumps(sources, indent=1, sort_keys=True) + "\n")

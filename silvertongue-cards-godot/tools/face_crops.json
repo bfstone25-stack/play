@@ -90,5 +90,53 @@
       600
     ],
     "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
+  },
+  "odile": {
+    "scenario": "radio",
+    "plate": "ops/silvertongue_art/installed/cg1_radio.webp",
+    "face": [
+      160,
+      110,
+      640,
+      430
+    ],
+    "bust": [
+      140,
+      20,
+      660,
+      670
+    ]
+  },
+  "roz": {
+    "scenario": "market",
+    "plate": "ops/silvertongue_art/installed/cg1_market.webp",
+    "face": [
+      120,
+      110,
+      600,
+      430
+    ],
+    "bust": [
+      100,
+      40,
+      620,
+      690
+    ]
+  },
+  "vesna": {
+    "scenario": "ferry",
+    "plate": "ops/silvertongue_art/installed/cg1_ferry.webp",
+    "face": [
+      640,
+      60,
+      1120,
+      380
+    ],
+    "bust": [
+      620,
+      30,
+      1140,
+      680
+    ]
   }
 }

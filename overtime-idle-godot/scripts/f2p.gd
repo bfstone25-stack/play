@@ -19,6 +19,7 @@ signal ot_changed
 signal tiers_reached(list: Array)      # [{char, tier, kind, text, scene, title}]
 signal refused(reason: String)
 signal report(rep: Dictionary)         # a /collect or /timeskip report with shifts in it
+signal beats_landed(list: Array)       # mid-chapter beats the server just landed [{id, title, text, scene}]
 
 const POLL_S := 15.0
 
@@ -81,6 +82,15 @@ const REASON := {
 	"mission not complete": "f2p_rj_mission_open",
 	"already claimed today": "f2p_rj_claimed_today",
 	"no active Night Shift Pass": "f2p_rj_no_pass",
+	# 2026-09-24: the night floor, stories, the crisis, floor goals, the pack's banner/event
+	"the night floor opens after chapter one": "f2p_rj_hf_closed",
+	"start the night floor first": "f2p_rj_hf_start",
+	"the board must hold exactly tonight's sixteen pieces": "f2p_rj_hf_pieces",
+	"that story is not waiting for you": "f2p_rj_story",
+	"no crisis today": "f2p_rj_no_crisis",
+	"no such goal on this floor": "f2p_rj_no_decor",
+	"no banner is running": "f2p_rj_no_banner",
+	"no event is running": "f2p_rj_no_event",
 }
 ## Reasons with a value in them: the English prefix -> key (reason_text() fills the value).
 const REASON_PREFIX := {
@@ -136,9 +146,16 @@ func nonce() -> String:
 
 
 func refresh() -> Dictionary:
-	await Nutaku.api("GET", "/ot/state")
+	var r: Dictionary = await Nutaku.api("GET", "/ot/state")
 	_adopt()
+	_beats_of(r)
 	return st()
+
+
+func _beats_of(r: Dictionary) -> void:
+	var body = r.get("body")
+	if typeof(body) == TYPE_DICTIONARY and typeof(body.get("beats")) == TYPE_ARRAY and not (body["beats"] as Array).is_empty():
+		beats_landed.emit(body["beats"])
 
 
 ## POST /ot<path>. Returns {ok, status, body}. A refusal is announced (refused signal) and
@@ -155,6 +172,7 @@ func act(path: String, body: Dictionary = {}) -> Dictionary:
 			tiers_reached.emit(rb["tiers"])
 		if rb.has("report") and int(rb["report"].get("shifts", 0)) > 0:
 			report.emit(rb["report"])
+		_beats_of(r)
 	else:
 		var why = r["body"].get("reason") if typeof(r["body"]) == TYPE_DICTIONARY else null
 		refused.emit(reason_text(str(why)) if why != null else I18n.fmt("f2p_rj_http", {"code": int(r["status"])}))
@@ -281,10 +299,54 @@ func boss_text(ch_id: String, bs: Dictionary) -> String:
 
 
 ## A chapter goal with its number filled from the goal's own `need` (the value the
-## progress line beside it shows).
+## progress line beside it shows). A goal a beat added carries its own key.
 func goal_text(ch_id: String, i: int, g: Dictionary) -> String:
-	var tmpl := tx("f2p_ch_%s_g%d" % [ch_id, i], g.get("text", ""))
+	var key := str(g.get("key", "f2p_ch_%s_g%d" % [ch_id, i]))
+	var tmpl := tx(key, g.get("text", ""))
 	return tmpl.format({"n": RollingLabel._fmt(float(g.get("need", 0)))})
+
+
+## A mid-chapter beat's title and paragraph.
+func beat_title(b: Dictionary) -> String:
+	return tx("f2p_bt_%s_title" % b["id"], b.get("title", ""))
+
+
+func beat_text(b: Dictionary) -> String:
+	return tx("f2p_bt_%s_text" % b["id"], b.get("text", ""))
+
+
+## An update pack's name (the STORY tab says which pack brings the next chapters).
+func pack_title(p: Dictionary) -> String:
+	return tx("f2p_pk_%s_title" % p["id"], p.get("title", ""))
+
+
+func banner_title(bn: Dictionary) -> String:
+	return tx("f2p_bn_%s_title" % bn["id"], bn.get("title", ""))
+
+
+## A staff side-story: its title and its three lines (the character, you, the character).
+func story_title(id: String, fallback) -> String:
+	return tx("f2p_ss_%s_title" % id, fallback)
+
+
+func story_line(id: String, i: int) -> String:
+	return tx("f2p_ss_%s_l%d" % [id, i], "")
+
+
+## The day's tenant crisis, in words; desks are numbered 1-20, row by row.
+func crisis_text(cr: Dictionary) -> String:
+	var desks: Array = []
+	for c in cr.get("cells", []):
+		desks.append(str(int(c) + 1))
+	var need := int(ceil(float(cr["base"]) * float(cr["pct"]) / 100.0))
+	return I18n.fmt("f2p_cr_" + str(cr["kind"]), {"floor": int(cr["floor"]), "cells": I18n.t("f2p_list_sep").join(desks),
+			"pct": int(cr["pct"]), "need": RollingLabel._fmt(float(need))})
+
+
+## A floor's build goal, in words.
+func decor_text(g: Dictionary) -> String:
+	var kind := str(g["kind"])
+	return I18n.fmt("f2p_dc_" + ("row5" if kind == "row" else kind), {"n": int(g.get("n", 0))})
 
 
 func tier_line(char_id: String, tier: int, fallback) -> String:

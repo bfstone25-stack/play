@@ -3,12 +3,16 @@ extends Overlay
 ## The Nutaku free-to-play office: six tabs over the server's state (F2P.st()).
 ##
 ##   STORY     the campaign: the chapter, its rival, its goals (checked by the server), the
-##             rival's bid (a 48 h window on the server clock), complete -> the next chapter
+##             rival's bid (a 48 h window on the server clock), complete -> the next chapter;
+##             the chapter's beats so far, and which update pack brings the next chapters
 ##   STAFF     affection ladder per character (talk once a day, today's board request,
 ##             gifts, gift boxes), the
 ##             tier rewards (a line, then a scene), rank-ups (character evolution)
 ##   DAILY     login calendar + streak, three daily missions + bonus, five weekly goals,
-##             the Night Shift Pass, the daily floor
+##             the Night Shift Pass, staff stories, the tenant crisis, the daily floor and
+##             the night floor
+##   (STAFF also carries an update pack's limited banner and event while they run, and
+##   UPGRADES each floor's three build goals)
 ##   UPGRADES  fit-outs per floor, relics, objects, time skips, selling the building
 ##   SHOP      Nutaku gold SKUs (the platform's own confirm dialog does the charging)
 ##   SCENES    every scene the server has unlocked for this player, fetched from it
@@ -18,6 +22,8 @@ extends Overlay
 ## redraws from whatever state the server answers with.
 
 signal daily_floor_requested
+signal hard_floor_requested
+signal story_requested(id: String, who: String)
 signal view_scene(id: String, title: String)
 signal juice(kind: String, data: Dictionary)
 
@@ -165,6 +171,7 @@ func _story(s: Dictionary) -> void:
 	if bool(cp["done"]):
 		_section(I18n.t("f2p_story_done"))
 		para_into(I18n.t("f2p_story_after"))
+		_next_pack(s, cp)
 		return
 	var ch: Dictionary = cp["chapter"]
 	var cid := str(ch["id"])
@@ -173,6 +180,16 @@ func _story(s: Dictionary) -> void:
 	if ch.get("rival") != null:
 		_label(content, I18n.fmt("f2p_rival", {"name": F2P.rival_name(ch)}), Palette.HEAT, 14)
 	_label(content, F2P.chapter_text(cid, "intro", ch["intro"]), Palette.TEXT, 15)
+	var beats: Array = cp.get("beats", [])
+	if not beats.is_empty():
+		_section(I18n.t("f2p_beats_hdr"))
+		for bt in beats:
+			var bh := _row()
+			_label(bh, I18n.fmt("f2p_beat_line", {"title": F2P.beat_title(bt), "text": F2P.beat_text(bt)}), Palette.ACCENT_SOFT, 13, true)
+			if bt.get("scene") != null:
+				var bsid := str(bt["scene"])
+				var bttl := F2P.scene_title(bsid, bt.get("title", ""))
+				bh.add_child(_small(I18n.t("f2p_view"), "Amber", func() -> void: view_scene.emit(bsid, bttl)))
 	_section(I18n.t("f2p_goals"))
 	var gi := 0
 	for g in cp["goals"]:
@@ -211,11 +228,33 @@ func _story(s: Dictionary) -> void:
 			not bool(cp["complete"])))
 	if bool(cp.get("blocks_sale", false)):
 		para_into(I18n.t("f2p_blocks_sale"))
+	_next_pack(s, cp)
+
+
+## Which update pack brings the next chapters, and when (the server's release date).
+func _next_pack(s: Dictionary, cp: Dictionary) -> void:
+	var np = cp.get("next_pack")
+	if np == null:
+		if bool(cp["done"]):
+			para_into(I18n.t("f2p_all_packs"))
+		return
+	var at = np.get("at")
+	if at == null:
+		para_into(I18n.fmt("f2p_next_pack_soon", {"title": F2P.pack_title(np)}))
+		return
+	var secs := maxi(0, int(float(at) - float(s["server_ms"]) / 1000.0))
+	para_into(I18n.fmt("f2p_next_pack", {"title": F2P.pack_title(np), "d": secs / 86400}))
+
+
+func _left(until: float, s: Dictionary) -> String:
+	var secs := maxi(0, int(until - float(s["server_ms"]) / 1000.0))
+	return I18n.fmt("f2p_left_dh", {"d": secs / 86400, "h": (secs % 86400) / 3600})
 
 
 # ------------------------------------------------------------------------- STAFF
 
 func _staff(s: Dictionary) -> void:
+	_pack_rows(s)
 	for ch in s["roster"]:
 		var id := str(ch["id"])
 		var owned := int(ch.get("owned", 1)) > 0
@@ -227,7 +266,15 @@ func _staff(s: Dictionary) -> void:
 		var top := HBoxContainer.new()
 		top.add_theme_constant_override("separation", 10)
 		v.add_child(top)
-		var who := "%s, %d" % [F2P.char_name(id), int(ch["age"])]
+		var pp := "res://assets/f2p_portraits/%s.webp" % id
+		if ResourceLoader.exists(pp):
+			var tr := TextureRect.new()
+			tr.texture = load(pp)
+			tr.custom_minimum_size = Vector2(56, 72)
+			tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			top.add_child(tr)
+		var who := I18n.fmt("f2p_who_age", {"name": F2P.char_name(id), "age": int(ch["age"])})
 		if I18n.has("n_" + id):
 			who = I18n.t("n_" + id)            # "Dan, 41" / "丹，41" / "ダン、41"
 		if ch.has("rank"):
@@ -273,6 +320,49 @@ func _staff(s: Dictionary) -> void:
 				v.add_child(h)
 				_label(h, I18n.fmt("f2p_tier_scene", {"t": int(t["tier"]), "title": ttl}), Palette.GOLD, 13, true)
 				h.add_child(_small(I18n.t("f2p_view"), "Amber", func() -> void: view_scene.emit(sid, ttl)))
+
+
+## An update pack's limited banner and its week-long event, while they run.
+func _pack_rows(s: Dictionary) -> void:
+	var bn = s.get("banner")
+	if bn != null:
+		var name := F2P.char_name(str(bn["char"]))
+		_section(I18n.fmt("f2p_bn_hdr", {"title": F2P.banner_title(bn).to_upper(), "name": name}))
+		var odds := {"name": name, "pct": int(bn["pct"]), "pity": int(bn["pity"]), "since": int(bn["since"]), "n": int(bn["aff"])}
+		var ends = bn.get("ends")
+		var line := I18n.fmt("f2p_bn_odds", odds)
+		if ends != null:
+			line += I18n.fmt("f2p_bn_ends", {"left": _left(float(ends), s)})
+		var br := _row()
+		_label(br, line, Palette.ACCENT_SOFT, 13, true)
+		br.add_child(_small(I18n.t("f2p_bn_pull1"), "Pull", func() -> void: _banner(1), int(s["tickets"]) < 1))
+		br.add_child(_small(I18n.t("f2p_bn_pull10"), "Pull", func() -> void: _banner(10), int(s["tickets"]) < 10))
+	var pe = s.get("pack_event")
+	if pe != null:
+		var pname := F2P.char_name(str(pe["char"]))
+		_section(I18n.fmt("f2p_pe_hdr", {"title": F2P.tx("f2p_ev_%s_title" % pe["id"], pe["title"]).to_upper()}))
+		_label(content, I18n.fmt("f2p_pe_line", {"text": F2P.tx("f2p_ev_%s_text" % pe["id"], pe["text"]), "name": pname,
+				"mult": int(pe["mult"])}), Palette.ACCENT_SOFT, 13)
+		var er := _row()
+		_label(er, I18n.fmt("f2p_pe_goal", {"n": int(pe["goal"]), "name": pname, "p": mini(int(pe["progress"]), int(pe["goal"])),
+				"r": _reward_text(pe["reward"])}), Palette.TEXT, 13, true)
+		er.add_child(_small(I18n.t("f2p_claimed") if bool(pe["claimed"]) else I18n.t("f2p_claim"), "Primary",
+				func() -> void: _claim("/event/claim", {}), bool(pe["claimed"]) or int(pe["progress"]) < int(pe["goal"])))
+
+
+func _banner(n: int) -> void:
+	var r := await F2P.act("/banner/pull", {"n": n})
+	if not r["ok"]:
+		return
+	var got := 0
+	for x in r["body"].get("results", []):
+		if bool(x.get("featured", false)):
+			got += 1
+	Sfx.combo()
+	var bn = F2P.st().get("banner")
+	var bchar := str(bn["char"]) if bn != null else ""
+	var per := int(bn["aff"]) if bn != null else 0
+	juice.emit("banner", {"featured": got, "char": bchar, "n": n, "aff": got * per})
 
 
 func _talk(id: String) -> void:
@@ -348,6 +438,8 @@ func _daily(s: Dictionary) -> void:
 	_label(wb, I18n.fmt("f2p_all_six", {"r": _reward_text(w["all_bonus"])}), Palette.GOLD, 13, true)
 	wb.add_child(_small(I18n.t("f2p_bonus"), "Amber", func() -> void: _claim("/weekly/claim", {"bonus": true}),
 			bool(w["all_bonus_claimed"]) or not wall))
+	_stories(s)
+	_crisis(s)
 	_section(I18n.t("f2p_df_hdr"))
 	var df: Dictionary = s["daily_floor"]
 	var dh := _row()
@@ -355,6 +447,62 @@ func _daily(s: Dictionary) -> void:
 	dh.add_child(_small(I18n.t("f2p_play"), "Primary", func() -> void:
 		close()
 		daily_floor_requested.emit(), int(df["attempts"]) >= int(df["attempts_max"])))
+	var hf = s.get("hard_floor")
+	if hf != null:
+		_section(I18n.t("f2p_hf_hdr"))
+		var hh := _row()
+		if not bool(hf["open"]):
+			_label(hh, I18n.t("f2p_hf_closed"), Palette.MUTED, 13, true)
+		else:
+			var hl := I18n.fmt("f2p_hf_line", {"par": int(hf["par"]), "best": int(hf["best"]), "a": int(hf["attempts"]),
+					"max": int(hf["attempts_max"]), "r": _reward_text(hf["par_reward"])})
+			if bool(hf["par_beaten"]):
+				hl += I18n.t("f2p_hf_par_done")
+			_label(hh, hl, Palette.TEXT, 13, true)
+			hh.add_child(_small(I18n.t("f2p_play"), "Primary", func() -> void:
+				close()
+				hard_floor_requested.emit(), int(hf["attempts"]) >= int(hf["attempts_max"])))
+
+
+## Staff stories waiting (two a day on the server clock), each read once.
+func _stories(s: Dictionary) -> void:
+	var ss = s.get("stories")
+	if ss == null:
+		return
+	_section(I18n.fmt("f2p_st_hdr", {"read": int(ss["read"]), "of": int(ss["of"])}))
+	var pend: Array = ss.get("pending", [])
+	if pend.is_empty():
+		para_into(I18n.fmt("f2p_st_none", {"left": _left(float(ss["next_slot_at"]), s)}))
+		return
+	for st in pend:
+		var sid := str(st["id"])
+		var h := _row()
+		_label(h, I18n.fmt("f2p_st_row", {"name": F2P.char_name(str(st["char"])), "title": F2P.story_title(sid, st["title"]),
+				"n": int(ss["points"])}), Palette.TEXT, 13, true)
+		h.add_child(_small(I18n.t("f2p_st_read"), "Primary", func() -> void: _read(sid, str(st["char"]))))
+
+
+func _read(sid: String, who: String) -> void:
+	var r := await F2P.act("/story/read", {"id": sid})
+	if r["ok"]:
+		story_requested.emit(sid, who)
+		juice.emit("talk", {"char": who, "points": int(r["body"].get("points", 0))})
+
+
+## Today's tenant crisis on one floor, checked on the board.
+func _crisis(s: Dictionary) -> void:
+	var cr = s.get("crisis")
+	_section(I18n.t("f2p_cr_hdr") if cr == null else I18n.fmt("f2p_cr_hdr_n", {"floor": int(cr["floor"])}))
+	if cr == null:
+		para_into(I18n.t("f2p_cr_none"))
+		return
+	_label(content, F2P.crisis_text(cr), Palette.ACCENT_SOFT, 13)
+	var h := _row()
+	var st := I18n.t("f2p_cr_done") if bool(cr["claimed"]) else I18n.fmt("f2p_cr_now", {"now": RollingLabel._fmt(float(cr["now"])),
+			"r": _reward_text(cr["reward"]), "n": int(cr["aff"])})
+	_label(h, st, Palette.SUCCESS if bool(cr["done"]) else Palette.TEXT, 13, true)
+	h.add_child(_small(I18n.t("f2p_claimed") if bool(cr["claimed"]) else I18n.t("f2p_claim"), "Primary",
+			func() -> void: _claim("/crisis/claim", {}), bool(cr["claimed"]) or not bool(cr["done"])))
 
 
 func _claim(path: String, body: Dictionary) -> void:
@@ -406,6 +554,18 @@ func _upgrades(s: Dictionary) -> void:
 		var fc = f.get("fit_cost")
 		fr.add_child(_small(I18n.t("max") if fc == null else I18n.fmt("f2p_fit_out", {"cost": _money(fc)}), "",
 				func() -> void: _act_juice("/fitout", {"floor": n}, "fit"), fc == null or int(s["bank"]) < int(fc)))
+		var dg: Array = f.get("decor", [])
+		if not dg.is_empty():
+			var dr := _row()
+			var words: Array = []
+			for g in dg:
+				words.append((I18n.t("f2p_done_mark") if bool(g["claimed"]) else ("✓ " if bool(g["done"]) else "• ")) + F2P.decor_text(g))
+			_label(dr, I18n.fmt("f2p_dc_row", {"n": n, "goals": "   ".join(words)}), Palette.ACCENT_SOFT, 12, true)
+			for g in dg:
+				if bool(g["done"]) and not bool(g["claimed"]):
+					var gk := str(g["kind"])
+					dr.add_child(_small(I18n.fmt("f2p_dc_claim", {"r": _reward_text(g["reward"])}), "Primary",
+							func() -> void: _claim("/decor/claim", {"floor": n, "goal": gk})))
 	_section(I18n.t("f2p_obj_hdr"))
 	var orow := _row()
 	for o in ["coffee", "mute", "printer", "corner"]:
@@ -488,7 +648,8 @@ func _scenes(s: Dictionary) -> void:
 func _load_board() -> void:
 	var a := await Nutaku.api("GET", "/ot/leaderboard?board=earned")
 	var b := await Nutaku.api("GET", "/ot/leaderboard?board=daily")
-	_board = {"earned": a["body"], "daily": b["body"]}
+	var c := await Nutaku.api("GET", "/ot/leaderboard?board=hard")
+	_board = {"earned": a["body"], "daily": b["body"], "hard": c["body"]}
 	if is_open() and tab == "board":
 		render()
 
@@ -497,9 +658,11 @@ func _board_tab() -> void:
 	if _board.is_empty():
 		para_into(I18n.t("f2p_loading"))
 		return
-	for key in ["earned", "daily"]:
+	for key in ["earned", "daily", "hard"]:
+		if not _board.has(key):
+			continue
 		var bd: Dictionary = _board[key]
-		_section(I18n.t("f2p_lb_earned") if key == "earned" else I18n.t("f2p_lb_daily"))
+		_section(I18n.t("f2p_lb_" + key))
 		for row in bd.get("top", []):
 			_label(content, "%2d.  %s   %s" % [int(row["rank"]), _nick(str(row["nickname"])), _money(row["score"])],
 					Palette.GOLD if bool(row["you"]) else Palette.TEXT, 13)
@@ -550,6 +713,44 @@ class SceneView extends Overlay:
 			cap.text = title_txt
 		else:
 			cap.text = I18n.fmt("f2p_sc_fail", {"t": title_txt})
+
+
+# ===================================================================== StoryView
+
+## A staff side-story, read in full once the server has marked it read: three lines, the
+## character, you, the character. The words come from the i18n table by the story's id.
+class StoryView extends Overlay:
+	var head: Label
+	var lines: VBoxContainer
+
+	func build() -> void:
+		card_width = 760
+		card.custom_minimum_size = Vector2(760, 0)
+		head = Label.new()
+		head.theme_type_variation = "Tag"
+		body.add_child(head)
+		lines = VBoxContainer.new()
+		lines.add_theme_constant_override("separation", 10)
+		body.add_child(lines)
+		var row := HBoxContainer.new()
+		row.alignment = BoxContainer.ALIGNMENT_END
+		body.add_child(row)
+		row.add_child(button(I18n.t("close"), "Ghost", close))
+
+	func show_story(id: String, who: String) -> void:
+		head.text = I18n.fmt("f2p_st_view_hdr", {"name": F2P.char_name(who).to_upper(), "title": F2P.story_title(id, "").to_upper()})
+		for c in lines.get_children():
+			c.queue_free()
+		for i in range(3):
+			var l := Label.new()
+			var speaker := I18n.t("f2p_st_you") if i == 1 else F2P.char_name(who)
+			l.text = I18n.fmt("f2p_st_says", {"name": speaker, "text": F2P.story_line(id, i)})
+			l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			l.custom_minimum_size = Vector2(720, 0)
+			l.add_theme_color_override("font_color", Palette.ACCENT_SOFT if i == 1 else Palette.TEXT)
+			l.add_theme_font_size_override("font_size", 16)
+			lines.add_child(l)
+		open()
 
 
 # ======================================================================== Juice

@@ -49,7 +49,11 @@ func _load() -> void:
 		return
 	data = r.get("affection", {})
 	var i := 0
-	for who in ["mara", "ines", "yuenha", "sanne", "teodora", "celeste"]:
+	var order := ["mara", "ines", "yuenha", "sanne", "teodora", "celeste"]
+	for who in data:              # update-pack women, in the order the server released them
+		if not order.has(who):
+			order.append(who)
+	for who in order:
 		if not data.has(who):
 			continue
 		_row(who, data[who], i)

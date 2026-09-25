@@ -14,6 +14,8 @@ var _head: Label
 var _ch := 0
 var _mode := "story"                 # story | last_call
 var _sel := ""
+var _events_btn: Button
+var _pages_btn: Button
 
 
 func setup(_args: Dictionary) -> void:
@@ -45,14 +47,31 @@ func _ready() -> void:
 	StudioTheme.style_button(story, "quiet")
 	story.pressed.connect(func(): Sfx.play("ui_click"); _show_story())
 	top.add_child(story)
+	# the Ledger's missing pages (the mystery thread) and the limited events, when there are any
+	_pages_btn = Button.new()
+	_pages_btn.focus_mode = Control.FOCUS_NONE
+	StudioTheme.style_button(_pages_btn, "quiet")
+	_pages_btn.pressed.connect(func(): Sfx.play("ui_click"); _show_pages())
+	top.add_child(_pages_btn)
+	_events_btn = Button.new()
+	_events_btn.focus_mode = Control.FOCUS_NONE
+	StudioTheme.style_button(_events_btn, "pull")
+	_events_btn.pressed.connect(func(): Sfx.play("ui_click"); _show_events())
+	top.add_child(_events_btn)
 	var body := HBoxContainer.new()
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_theme_constant_override("separation", 12)
 	col.add_child(body)
+	# six chapters at launch, one more with every update pack: the list scrolls
+	var chs_scroll := ScrollContainer.new()
+	chs_scroll.custom_minimum_size.x = 240
+	chs_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	body.add_child(chs_scroll)
 	_chapters = VBoxContainer.new()
 	_chapters.custom_minimum_size.x = 230
+	_chapters.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_chapters.add_theme_constant_override("separation", 6)
-	body.add_child(_chapters)
+	chs_scroll.add_child(_chapters)
 	var mid := PanelContainer.new()
 	mid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	mid.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.GROUND_DEEP, Palette.PANEL_EDGE, 12, 1, Vector2(10, 10)))
@@ -83,6 +102,13 @@ func _ready() -> void:
 	# the chapter the player is in, not chapter one, on every visit
 	var f := int(F2P.su.get("frontier", 0))
 	_ch = clampi(f / 12, 0, 5)
+	# after the Long Night: the first update-pack chapter still to finish
+	if bool(F2P.su.get("finished", false)):
+		var chs: Array = F2P.su.get("chapters", [])
+		for i in chs.size():
+			if chs[i].get("pack") != null and bool(chs[i]["open"]) and not bool(chs[i]["cleared"]):
+				_ch = i
+				break
 	_render()
 	_prologue_once()
 
@@ -97,9 +123,17 @@ func _render() -> void:
 		main.charm_text(int(e.get("now", 0)), int(e.get("max", 8)), false),
 		Loc.t("%d CHIPS") % int(Nutaku.state.get("tokens", {}).get("chips", 0)),
 		Loc.t("1 TICKET") if tk == 1 else Loc.t("%d TICKETS") % tk])
+	var evs: Array = su.get("events", [])
+	_events_btn.visible = not evs.is_empty()
+	if not evs.is_empty():
+		_events_btn.text = Loc.t("EVENT: %s") % Loc.s(evs[0].get("title", "")).to_upper()
+	var pages: Array = su.get("ledger_pages", [])
+	_pages_btn.visible = not pages.is_empty()
+	_pages_btn.text = Loc.t("THE MISSING PAGES · %d") % pages.size()
 	for c in _chapters.get_children():
 		c.queue_free()
 	var chs: Array = su.get("chapters", [])
+	_ch = clampi(_ch, 0, maxi(0, chs.size() - 1))
 	for i in chs.size():
 		var ch: Dictionary = chs[i]
 		var b := Button.new()
@@ -107,6 +141,8 @@ func _render() -> void:
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.text = "%d · %s\n   %s  ★%d%s" % [i + 1, Loc.s(ch["title"]).to_upper(), Loc.s(ch["house"]),
 			int(ch["stars"]), "  ✓" if ch["cleared"] else ""]
+		if ch.get("pack") != null and not bool(ch["cleared"]):
+			b.text = "✦ " + b.text + "   " + Loc.t("NEW")
 		b.disabled = not bool(ch["open"])
 		StudioTheme.style_button(b, "active" if i == _ch else "quiet")
 		b.pressed.connect(func(): Sfx.play("ui_click"); _ch = i; _mode = "story"; _sel = ""; _render())
@@ -226,6 +262,8 @@ func _render_detail(s: Dictionary) -> void:
 	play.disabled = not bool(s["open"])
 	play.pressed.connect(func(): _play(str(s["id"])))
 	_detail.add_child(play)
+	if int(s["stars"]) > 0:
+		_detail.add_child(_auto_row(str(s["id"]), bool(s["open"])))
 	var deckb := Button.new()
 	deckb.text = Loc.t("BUILD THE DECK FOR THIS NIGHT")
 	deckb.focus_mode = Control.FOCUS_NONE
@@ -238,6 +276,49 @@ func _render_detail(s: Dictionary) -> void:
 func _name(who: String) -> String:
 	var b: Dictionary = F2P.su.get("bond", {}).get(who, {})
 	return str(b.get("name", "Yuen Ha" if who == "yuenha" else who.capitalize()))
+
+
+## Auto-battle: a night already won, replayed by the server's own player and checked by the
+## same replay as any duel. One charm a run, like any duel.
+func _auto_row(id: String, open: bool) -> HBoxContainer:
+	var h := HBoxContainer.new()
+	h.add_theme_constant_override("separation", 8)
+	for n in [1, 5]:
+		var b := Button.new()
+		b.text = Loc.t("AUTO ×1 · 1 CHARM") if n == 1 else Loc.t("AUTO ×5 · 5 CHARM")
+		b.focus_mode = Control.FOCUS_NONE
+		b.disabled = not open
+		StudioTheme.style_button(b, "quiet")
+		var k: int = n
+		b.pressed.connect(func(): _auto(id, k))
+		h.add_child(b)
+	return h
+
+
+func _auto(id: String, n: int) -> void:
+	Sfx.play("ui_click")
+	var r := await F2P.auto(id, n)
+	if not r["ok"]:
+		main.toast(Loc.s(r["error"]))
+		if "charm" in str(r["error"]):
+			main.go("store")
+		return
+	var runs: Array = r["runs"]
+	var chips := 0
+	var marks := 0
+	var drops := 0
+	for x in runs:
+		chips += int(x.get("chips", 0))
+		marks += int(x.get("marks", 0))
+		drops += (x.get("drops", []) as Array).size()
+	var msg := Loc.t("Auto: won %d of %d.") % [int(r["won"]), runs.size()] + "  " + Loc.t("%d CHIPS") % chips
+	if marks > 0:
+		msg += "  · +%d" % marks
+	if drops > 0:
+		msg += "  · " + Loc.t("%d CARDS") % drops
+	Sfx.play("gold" if int(r["won"]) > 0 else "ui_click")
+	main.toast(msg, 3.0, Palette.SUCCESS if int(r["won"]) > 0 else Palette.MUTED)
+	_render()
 
 
 func _play(id: String) -> void:
@@ -305,7 +386,128 @@ func _prologue_once() -> void:
 		return
 	cfg.set_value("seen", "prologue", true)
 	cfg.save("user://suasion.cfg")
-	_reader(Loc.t("VELL, AFTER TWO"), Loc.s(F2P.su.get("prologue", "")))
+	var hook := Loc.s(F2P.su.get("prologue_hook", ""))
+	_reader(Loc.t("VELL, AFTER TWO"), Loc.s(F2P.su.get("prologue", "")) + ("\n\n" + hook if hook != "" else ""))
+
+
+func _show_pages() -> void:
+	var parts := []
+	for p in F2P.su.get("ledger_pages", []):
+		parts.append(Loc.s(p.get("title", "")).to_upper() + "\n\n" + Loc.s(p.get("text", "")))
+	_reader(Loc.t("THE MISSING PAGES"), "\n\n* * *\n\n".join(parts))
+
+
+# --- limited events (the server's clock decides what runs) -----------------------------------
+func _show_events() -> void:
+	var evs: Array = F2P.events()
+	if evs.is_empty():
+		return
+	var e: Dictionary = evs[0]
+	var dim := ColorRect.new()
+	dim.color = Color(Palette.GROUND_DEEP, 0.94)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.name = "Events"
+	add_child(dim)
+	var box := PanelContainer.new()
+	box.set_anchors_preset(Control.PRESET_CENTER)
+	box.offset_left = -520
+	box.offset_right = 520
+	box.offset_top = -320
+	box.offset_bottom = 320
+	box.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.PANEL, Palette.GOLD, 12, 2, Vector2(20, 16)))
+	dim.add_child(box)
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 8)
+	box.add_child(v)
+	var left := maxf(0.0, float(e.get("end", 0.0)) - float(Nutaku.state.get("server_time", 0.0)))
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", 14)
+	v.add_child(head)
+	head.add_child(StudioTheme.display_label(Loc.s(e.get("title", "")).to_upper(), 28, Palette.GOLD))
+	var ends := StudioTheme.mono_label(Loc.t("ENDS IN %d DAYS") % int(ceil(left / 86400.0)), 12, Palette.HEAT)
+	ends.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	head.add_child(ends)
+	var blurb := StudioTheme.serif_label(Loc.s(e.get("blurb", "")) + "\n" + Loc.s(e.get("rule", "")), 13, Palette.MUTED)
+	blurb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	v.add_child(blurb)
+	var cols := HBoxContainer.new()
+	cols.add_theme_constant_override("separation", 16)
+	cols.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v.add_child(cols)
+	var st_col := VBoxContainer.new()
+	st_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	st_col.add_theme_constant_override("separation", 6)
+	cols.add_child(st_col)
+	for s in e.get("stages", []):
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 6)
+		var lb := StudioTheme.mono_label("%s  %s  · +%d" % ["★".repeat(int(s["stars"])) + "☆".repeat(3 - int(s["stars"])),
+			Loc.s(s["title"]), int(s.get("marks", 0))], 12, Palette.TEXT if bool(s["open"]) else Palette.MUTED)
+		lb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		lb.tooltip_text = Loc.s(s.get("goal", ""))
+		row.add_child(lb)
+		var pb := Button.new()
+		pb.text = Loc.t("PLAY · 1 CHARM")
+		pb.focus_mode = Control.FOCUS_NONE
+		pb.disabled = not bool(s["open"])
+		StudioTheme.style_button(pb, "primary" if int(s["stars"]) == 0 and bool(s["open"]) else "quiet")
+		var sid := str(s["id"])
+		pb.pressed.connect(func(): dim.queue_free(); _play(sid))
+		row.add_child(pb)
+		if int(s["stars"]) > 0:
+			var ab := Button.new()
+			ab.text = Loc.t("AUTO ×5 · 5 CHARM")
+			ab.focus_mode = Control.FOCUS_NONE
+			StudioTheme.style_button(ab, "quiet")
+			ab.pressed.connect(func(): dim.queue_free(); await _auto(sid, 5); _show_events())
+			row.add_child(ab)
+		st_col.add_child(row)
+	var tr_col := VBoxContainer.new()
+	tr_col.custom_minimum_size.x = 380
+	tr_col.add_theme_constant_override("separation", 5)
+	cols.add_child(tr_col)
+	tr_col.add_child(StudioTheme.mono_label(Loc.t("REWARD TRACK") + " · %d %s" % [int(e.get("marks", 0)), Loc.s(e.get("currency", ""))], 13, Palette.GOLD))
+	for t in e.get("track", []):
+		var row := HBoxContainer.new()
+		var lb := StudioTheme.mono_label("%d · %s" % [int(t["need"]), _reward_text(t["reward"])], 12,
+			Palette.TEXT if bool(t["ready"]) else Palette.MUTED)
+		lb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(lb)
+		var cb := Button.new()
+		cb.text = Loc.t("CLAIMED") if bool(t["claimed"]) else Loc.t("CLAIM")
+		cb.focus_mode = Control.FOCUS_NONE
+		cb.disabled = not bool(t["ready"])
+		StudioTheme.style_button(cb, "free" if bool(t["ready"]) else "quiet")
+		var eid := str(e["id"])
+		var step := int(t["step"])
+		cb.pressed.connect(func():
+			Sfx.play("gold")
+			var r := await F2P.event_claim(eid, step)
+			if not r["ok"]:
+				main.toast(Loc.s(r["error"]))
+			dim.queue_free()
+			_show_events())
+		row.add_child(cb)
+		tr_col.add_child(row)
+	var close := StudioTheme.card_button(Loc.t("CONTINUE"), "primary")
+	close.focus_mode = Control.FOCUS_NONE
+	close.pressed.connect(func(): Sfx.play("ui_click"); dim.queue_free(); _render())
+	v.add_child(close)
+
+
+func _reward_text(r: Dictionary) -> String:
+	var bits := []
+	var tk: Dictionary = r.get("tokens", {})
+	if int(tk.get("chips", 0)) > 0:
+		bits.append(Loc.t("%d CHIPS") % int(tk["chips"]))
+	if int(tk.get("ticket", 0)) > 0:
+		bits.append(Loc.t("1 TICKET") if int(tk["ticket"]) == 1 else Loc.t("%d TICKETS") % int(tk["ticket"]))
+	if int(r.get("energy", 0)) > 0:
+		bits.append(Loc.t("+%d CHARM") % int(r["energy"]))
+	for cid in r.get("cards", []):
+		var who := str(cid).split("_")[0]
+		bits.append(Loc.t("%s'S CARD") % Loc.s(F2P.F2P_NAMES.get(who, who)).to_upper())
+	return " · ".join(bits)
 
 
 func _show_story() -> void:

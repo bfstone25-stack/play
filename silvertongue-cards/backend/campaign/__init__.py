@@ -24,6 +24,8 @@ from .story_a import CH1, CH2, CH3, PROLOGUE, WORLD
 from .story_b import CH4, CH5, CH6
 from .voices import CELESTE, CELESTE_CARDS, EXTRA_CARDS, NIGHTS
 from .afterhours import BOND_SCENES, LAST_CALL
+from .ledger import PAGES as LEDGER_PAGES, PROLOGUE_HOOK, ORDER as LEDGER_ORDER
+from . import ledger as _ledger
 
 CHAPTERS = [CH1, CH2, CH3, CH4, CH5, CH6]
 STAGES: list[dict] = []
@@ -49,9 +51,12 @@ PRESSURE = {
     "c1": {"turns": {"gentle": 18, "silver": 15, "gold": 13}, "rate": 0.55, "climb": 0.35},
     "c2": {"turns": {"silver": 15, "gold": 13}, "rate": 1.25, "climb": 0.50},
     "c3": {"turns": {"silver": 15, "gold": 13}, "rate": 1.75, "climb": 0.50},
-    "c4": {"turns": {"silver": 15, "gold": 13}, "rate": 2.05, "climb": 0.50},
-    "c5": {"turns": {"silver": 15, "gold": 13}, "rate": 2.30, "climb": 0.50},
-    "c6": {"turns": {"silver": 15, "gold": 13}, "rate": 2.35, "climb": 0.50},
+    # c4 was the wall (median day 6 -> 19.5 for Checkout alone, ECONOMY.md): 2026-09-24 it
+    # starts gentler and climbs faster to the same boss (2.05 + 0.50 -> 1.90 + 0.60)
+    "c4": {"turns": {"silver": 15, "gold": 13}, "rate": 1.90, "climb": 0.60},
+    # c5/c6 +0.15 (2026-09-24) with c4 eased: the climb stays a climb (sim.py --updates)
+    "c5": {"turns": {"silver": 15, "gold": 13}, "rate": 2.45, "climb": 0.50},
+    "c6": {"turns": {"silver": 15, "gold": 13}, "rate": 2.50, "climb": 0.50},
 }
 RIVAL, BOSS = 1.10, 1.15
 LAST_CALL_RESOLVE = 1.25           # Last Call: her rate x1.3 on top of its harder rules
@@ -121,10 +126,88 @@ for _ci, _ch in enumerate(CHAPTERS):
         _new["resolve"] = resolve_for(_new, _new["rate"])
         STAGES.append(_new)
         _ch["last_call"].append(_new)
+BASE_COUNT = len(STAGES)            # 144: the launch campaign; everything after is a pack
+
+# --- update packs (packs/): each a chapter + its Last Call, appended after the base 144 so a
+# release never moves a saved stage index. Which packs a player sees is the server's call
+# (packs.schedule); the stages always exist, so a replay of any duel always has its rule.
+from . import packs as PK  # noqa: E402
+
+# Her resolve per usable turn. A pack is played by someone who has won the Long Night, so it
+# starts between chapter 5 and 6 (measured: at 1.55 a free veteran cleared a pack in two
+# days, sim.py --updates, 2026-09-24).
+PACK_PRESSURE = {"turns": {"silver": 15, "gold": 13}, "rate": 2.30, "climb": 0.60}
+PACK_CHAPTERS: list[dict] = []
+for _pi, _m in enumerate(PK.PACKS):
+    _ch = _m.CHAPTER
+    _ch["pack"] = _ch["id"]
+    _ch["week"] = PK.WEEKS[_ch["id"]]
+    PACK_CHAPTERS.append(_ch)
+    for _si, _st in enumerate(_ch["stages"]):
+        _st.update({"chapter": _ch["id"], "chapter_index": _pi, "pack": _ch["id"], "index": len(STAGES),
+                    "n_in_chapter": _si + 1, "rule_key": f"suasion_{_st['id']}",
+                    "is_boss": _si == len(_ch["stages"]) - 1, "mode": "pack"})
+        if "turns" not in _st["mods"] and _st["difficulty"] in PACK_PRESSURE["turns"]:
+            _st["mods"]["turns"] = PACK_PRESSURE["turns"][_st["difficulty"]]
+        _rate = PACK_PRESSURE["rate"] + PACK_PRESSURE["climb"] * _si / 11
+        if _st["is_boss"]:
+            _rate *= BOSS
+        elif _st["who"] != _ch["who"]:
+            _rate *= RIVAL
+        _st["rate"] = round(_rate, 3)
+        _st["resolve"] = resolve_for(_st, _rate)
+        STAGES.append(_st)
+    _lc = _m.LAST_CALL
+    _ch["last_call"] = []
+    for _si, _st in enumerate(_ch["stages"]):
+        _mods = {k: v for k, v in _st["mods"].items() if k != "boss"}
+        for k, v in _lc["rule"].items():
+            _mods[k] = max(int(_mods.get(k) or 0), v) if k != "hand" else min(int(_mods.get(k) or 3), v)
+        _mods["support"] = max(2, int(_mods.get("support") or 0))
+        _mods["turns"] = int(_st["mods"].get("turns") or C.MAX_TURNS["gold"]) + (2 if "muted" in _lc["rule"] else 0)
+        _help = set(_st["rule"]["help"]) | {_lc["extra_help"]}
+        for _extra in ("respect", "warmth", "direct_request", "empathy"):
+            if len(_help) >= 2:
+                break
+            _help.add(_extra)
+        _new = {**_st, "id": _st["id"] + "L", "title": "Last Call: " + _st["title"].replace("BOSS: ", ""),
+                "rule": {"paths": _st["rule"]["paths"], "help": sorted(_help)}, "difficulty": "gold",
+                "mods": _mods, "mode": "pack_lc", "index": len(STAGES), "rule_key": f"suasion_{_st['id']}L",
+                "is_boss": False, "story_index": _st["index"], "lc_last": _si == len(_ch["stages"]) - 1}
+        _new["rate"] = round(_st["rate"] * LAST_CALL_RESOLVE, 3)
+        _new["resolve"] = resolve_for(_new, _new["rate"])
+        STAGES.append(_new)
+        _ch["last_call"].append(_new)
+
+# --- limited events (packs/base_events.py and each pack's EVENT): five duels apiece, not in
+# the flat stage list (an event duel records marks, not campaign stars).
+EVENTS: list[dict] = list(PK.BASE_EVENTS) + [m.EVENT for m in PK.PACKS]
+EVENT_BY_ID = {e["id"]: e for e in EVENTS}
+EVENT_STAGES: dict[str, dict] = {}
+for _e in EVENTS:
+    _e.setdefault("pack", next((m.CHAPTER["id"] for m in PK.PACKS if m.EVENT is _e), None))
+    for _si, _st in enumerate(_e["stages"]):
+        _st.update({"chapter": _e["id"], "chapter_index": -1, "event": _e["id"], "index": -1,
+                    "n_in_chapter": _si + 1, "rule_key": f"suasion_{_st['id']}", "is_boss": False,
+                    "mode": "event", "marks": PK.MARKS[_si],
+                    "prev": _e["stages"][_si - 1]["id"] if _si else None})
+        if "turns" not in _st["mods"] and _st["difficulty"] in PACK_PRESSURE["turns"]:
+            _st["mods"]["turns"] = PACK_PRESSURE["turns"][_st["difficulty"]]
+        _st["rate"] = PK.EVENT_RATE[_si]
+        _st["resolve"] = resolve_for(_st, _st["rate"])
+        EVENT_STAGES[_st["id"]] = _st
+
 BY_STAGE = {s["id"]: s for s in STAGES}
+ANY_STAGE = {**BY_STAGE, **EVENT_STAGES}
+CHAPTER_BY_ID = {**{c["id"]: c for c in CHAPTERS}, **{c["id"]: c for c in PACK_CHAPTERS}}
+
+
+def chapter_of(stage: dict) -> dict:
+    return CHAPTER_BY_ID[stage["chapter"]] if stage["chapter"] in CHAPTER_BY_ID else EVENT_BY_ID[stage["chapter"]]
+
 
 # --- the engine's table, extended (never edited) ------------------------------------------
-for _st in STAGES:
+for _st in STAGES + list(EVENT_STAGES.values()):
     C.RULES[_st["rule_key"]] = {"expert": "rapport",
                                "paths": [set(p) for p in _st["rule"]["paths"]],
                                "help": set(_st["rule"]["help"])}
@@ -132,11 +215,31 @@ for _st in STAGES:
 # --- characters and cards -----------------------------------------------------------------
 CHARACTERS = {**{k: dict(v) for k, v in C.CHARACTERS.items()},
               "celeste": {"name": "Celeste", "scenario": "celeste"}}
-ALL_CARDS = list(C.CARDS) + CELESTE_CARDS + EXTRA_CARDS
+BASE_CHARACTERS = list(CHARACTERS)
+PACK_OF_WHO = {}
+for _m in PK.PACKS:
+    CHARACTERS[_m.WHO] = {"name": _m.NAME, "scenario": _m.SCENARIO, "pack": _m.CHAPTER["id"], "age": _m.AGE}
+    PACK_OF_WHO[_m.WHO] = _m.CHAPTER["id"]
+PACK_CARDS = [c for _m in PK.PACKS for c in _m.CARDS]
+ALL_CARDS = list(C.CARDS) + CELESTE_CARDS + EXTRA_CARDS + PACK_CARDS
 BY_ID = {c.id: c for c in ALL_CARDS}
 BY_ID[C.WILD.id] = C.WILD
-GACHA_POOL = {r: [c.id for c in ALL_CARDS if c.rarity == r] for r in ("common", "rare", "epic")}
+PACK_OF_CARD = {c.id: PACK_OF_WHO[c.character] for c in PACK_CARDS}
+# The launch pool. A pack's cards join the pool when the pack is released (gacha_pool).
+GACHA_POOL = {r: [c.id for c in ALL_CARDS if c.rarity == r and c.id not in PACK_OF_CARD]
+              for r in ("common", "rare", "epic")}
 SIGNATURE = {who: [c.id for c in ALL_CARDS if c.character == who] for who in CHARACTERS}
+
+
+def gacha_pool(released: set | frozenset = frozenset()) -> dict:
+    """The standard pool with the released packs' cards in it."""
+    return {r: [c.id for c in ALL_CARDS if c.rarity == r
+                and (c.id not in PACK_OF_CARD or PACK_OF_CARD[c.id] in released)]
+            for r in ("common", "rare", "epic")}
+
+
+def visible_stage(stage: dict, released: set | frozenset) -> bool:
+    return stage.get("pack") is None or stage["pack"] in released
 
 
 def card(cid: str):
@@ -157,7 +260,7 @@ def card_public(cid: str) -> dict:
 CHAPTER_PACKS = {
     "c1": ["yuenha_04", "yuenha_08", "yuenha_07", "celeste_03"],
     "c2": ["sanne_03", "sanne_04", "sanne_07", "sanne_05", "celeste_01"],
-    "c3": ["teodora_03", "teodora_04", "teodora_07", "teodora_09", "celeste_05"],
+    "c3": ["teodora_03", "teodora_04", "teodora_07", "teodora_08", "teodora_09", "celeste_05"],
     "c4": ["ines_03", "ines_07", "ines_08", "ines_13", "celeste_07"],
     "c5": ["celeste_08", "celeste_09", "celeste_11", "celeste_04", "celeste_02"],
     "c6": ["celeste_12"],
@@ -176,6 +279,8 @@ def _tables(stage: dict) -> list[dict]:
     who = stage["who"]
     if who == "celeste":
         return [CELESTE]
+    if who in PACK_OF_WHO:
+        return [PK.BY_PACK[PACK_OF_WHO[who]].REPLIES]
     base = BASE.R.get(C.CHARACTERS[who]["scenario"], {})
     if stage.get("reply") and stage["reply"] in BASE.R:
         return [BASE.R[stage["reply"]], NIGHTS[who], base]
@@ -212,6 +317,8 @@ def refusal(stage: dict) -> str:
 
 
 # The campaign's own rule beats: when a special rule bites, she says so.
+BOND_SCENES.update({_m.WHO: dict(_m.BOND_SCENES) for _m in PK.PACKS})
+LAST_CALL.update({_m.CHAPTER["id"]: _m.LAST_CALL for _m in PK.PACKS})
 MUTED = {
     "celeste": ["She talks straight over you, pleasantly. 'Sorry, darling, you were saying? No, go on. Again.'",
                 "'Mm, lovely,' she says, to someone behind you. Your line goes by her like a bus."],
@@ -222,6 +329,9 @@ ORDER = {
     "teodora": ["'You offered me a deal before you owned what you owe.' Very gently: 'No, dear. Not like that.'"],
     "*": ["'That's the wrong way round.' The door closes, politely."],
 }
+for _m in PK.PACKS:
+    MUTED[_m.WHO] = list(_m.MUTED_LINES)
+    ORDER[_m.WHO] = list(_m.ORDER_LINES)
 
 
 def audit() -> list[str]:
@@ -253,6 +363,18 @@ def audit() -> list[str]:
         for w in banned:
             if f" {w}" in f" {text}":
                 probs.append(f"{s['id']}: banned word {w!r}")
+    from ..engine import COMMON as _COMMON
+    base_ids = {c.id for c in list(C.CARDS) + CELESTE_CARDS + EXTRA_CARDS}
+    seen = set(base_ids)
+    for m in PK.PACKS:
+        probs += PK.lint(m, set(_COMMON), seen)
+        seen |= {c.id for c in m.CARDS}
+    for e in PK.BASE_EVENTS:
+        for s in e["stages"]:
+            for f in ("title", "goal", "intro", "win", "lose"):
+                if not s.get(f):
+                    probs.append(f"{s['id']}: missing {f}")
+    probs += _ledger.audit()
     for who, t in list(NIGHTS.items()) + [("celeste", CELESTE)]:
         for phase in ("guarded", "engaged", "wavering", "breakthrough"):
             if ("*", phase, "*") not in t:

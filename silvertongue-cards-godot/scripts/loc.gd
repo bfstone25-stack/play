@@ -64,6 +64,24 @@ var _code := "en"
 # through to itself and a missing translation is visible rather than blank.
 const T := {
 	"ja": {
+		# update packs, events, auto-battle, the missing pages (2026-09-24)
+		"EVENT: %s": "イベント：%s",
+		"THE MISSING PAGES · %d": "失われたページ · %d",
+		"THE MISSING PAGES": "失われたページ",
+		"AUTO ×1 · 1 CHARM": "オート×1 · 魅力1",
+		"AUTO ×5 · 5 CHARM": "オート×5 · 魅力5",
+		"Auto: won %d of %d.": "オート：%d勝 / %d戦。",
+		"%d CARDS": "カード%d枚",
+		"ENDS IN %d DAYS": "残り%d日",
+		"REWARD TRACK": "報酬トラック",
+		"CLAIM": "受け取る",
+		"CLAIMED": "受取済み",
+		"+%d CHARM": "魅力+%d",
+		"%s'S CARD": "%sのカード",
+		"+%d %s · %d in all": "+%d %s · 合計%d",
+		"marks": "マーク",
+		"ON: %s · %d DAYS LEFT": "開催中：%s · 残り%d日",
+		"BANNER: %s · %d DAYS LEFT": "バナー：%s · 残り%d日",
 		"TONIGHT": "今夜",
 		"DUELS": "対話", "GACHA": "ガチャ", "AFFECTION": "好感度", "DECK": "デッキ",
 		"RANK": "難易度", "GENTLE": "やさしい", "SILVER": "シルバー", "GOLD": "ゴールド",
@@ -233,6 +251,24 @@ const T := {
 		"LEDGER": "台帳",
 	},
 	"zh": {
+		# update packs, events, auto-battle, the missing pages (2026-09-24)
+		"EVENT: %s": "活动：%s",
+		"THE MISSING PAGES · %d": "遗失的书页 · %d",
+		"THE MISSING PAGES": "遗失的书页",
+		"AUTO ×1 · 1 CHARM": "自动×1 · 1点魅力",
+		"AUTO ×5 · 5 CHARM": "自动×5 · 5点魅力",
+		"Auto: won %d of %d.": "自动：赢%d场，共%d场。",
+		"%d CARDS": "%d张卡",
+		"ENDS IN %d DAYS": "还剩%d天",
+		"REWARD TRACK": "奖励线",
+		"CLAIM": "领取",
+		"CLAIMED": "已领取",
+		"+%d CHARM": "魅力+%d",
+		"%s'S CARD": "%s的卡",
+		"+%d %s · %d in all": "+%d %s · 共%d",
+		"marks": "印记",
+		"ON: %s · %d DAYS LEFT": "已选：%s · 还剩%d天",
+		"BANNER: %s · %d DAYS LEFT": "限定卡池：%s · 还剩%d天",
 		"TONIGHT": "今夜",
 		"DUELS": "对话", "GACHA": "抽卡", "AFFECTION": "好感", "DECK": "牌组",
 		"RANK": "难度", "GENTLE": "温和", "SILVER": "白银", "GOLD": "黄金",
@@ -402,6 +438,24 @@ const T := {
 		"LEDGER": "账簿",
 	},
 	"zh-Hant": {
+		# update packs, events, auto-battle, the missing pages (2026-09-24)
+		"EVENT: %s": "活動：%s",
+		"THE MISSING PAGES · %d": "遺失的書頁 · %d",
+		"THE MISSING PAGES": "遺失的書頁",
+		"AUTO ×1 · 1 CHARM": "自動×1 · 1點魅力",
+		"AUTO ×5 · 5 CHARM": "自動×5 · 5點魅力",
+		"Auto: won %d of %d.": "自動：贏%d場，共%d場。",
+		"%d CARDS": "%d張卡",
+		"ENDS IN %d DAYS": "還剩%d天",
+		"REWARD TRACK": "獎勵線",
+		"CLAIM": "領取",
+		"CLAIMED": "已領取",
+		"+%d CHARM": "魅力+%d",
+		"%s'S CARD": "%s的卡",
+		"+%d %s · %d in all": "+%d %s · 共%d",
+		"marks": "印記",
+		"ON: %s · %d DAYS LEFT": "已選：%s · 還剩%d天",
+		"BANNER: %s · %d DAYS LEFT": "限定卡池：%s · 還剩%d天",
 		"TONIGHT": "今夜",
 		"DUELS": "對話", "GACHA": "抽卡", "AFFECTION": "好感", "DECK": "牌組",
 		"RANK": "難度", "GENTLE": "溫和", "SILVER": "白銀", "GOLD": "黃金",
@@ -571,6 +625,24 @@ const T := {
 		"LEDGER": "賬簿",
 	},
 	"de": {
+		# update packs, events, auto-battle, the missing pages (2026-09-24)
+		"EVENT: %s": "EVENT: %s",
+		"THE MISSING PAGES · %d": "DIE FEHLENDEN SEITEN · %d",
+		"THE MISSING PAGES": "DIE FEHLENDEN SEITEN",
+		"AUTO ×1 · 1 CHARM": "AUTO ×1 · 1 CHARME",
+		"AUTO ×5 · 5 CHARM": "AUTO ×5 · 5 CHARME",
+		"Auto: won %d of %d.": "Auto: %d von %d gewonnen.",
+		"%d CARDS": "%d KARTEN",
+		"ENDS IN %d DAYS": "ENDET IN %d TAGEN",
+		"REWARD TRACK": "BELOHNUNGSLEISTE",
+		"CLAIM": "ABHOLEN",
+		"CLAIMED": "ABGEHOLT",
+		"+%d CHARM": "+%d CHARME",
+		"%s'S CARD": "KARTE VON %s",
+		"+%d %s · %d in all": "+%d %s · %d insgesamt",
+		"marks": "Marken",
+		"ON: %s · %d DAYS LEFT": "AKTIV: %s · NOCH %d TAGE",
+		"BANNER: %s · %d DAYS LEFT": "BANNER: %s · NOCH %d TAGE",
 		"TONIGHT": "HEUTE NACHT",
 		"DUELS": "DUELLE",
 		"GACHA": "GACHA",
@@ -753,6 +825,24 @@ const T := {
 		"LEDGER": "BUCH",
 	},
 	"fr": {
+		# update packs, events, auto-battle, the missing pages (2026-09-24)
+		"EVENT: %s": "ÉVÉNEMENT : %s",
+		"THE MISSING PAGES · %d": "LES PAGES MANQUANTES · %d",
+		"THE MISSING PAGES": "LES PAGES MANQUANTES",
+		"AUTO ×1 · 1 CHARM": "AUTO ×1 · 1 CHARME",
+		"AUTO ×5 · 5 CHARM": "AUTO ×5 · 5 CHARME",
+		"Auto: won %d of %d.": "Auto : %d victoires sur %d.",
+		"%d CARDS": "%d CARTES",
+		"ENDS IN %d DAYS": "FIN DANS %d JOURS",
+		"REWARD TRACK": "PISTE DE RÉCOMPENSES",
+		"CLAIM": "RÉCUPÉRER",
+		"CLAIMED": "RÉCUPÉRÉ",
+		"+%d CHARM": "+%d CHARME",
+		"%s'S CARD": "CARTE DE %s",
+		"+%d %s · %d in all": "+%d %s · %d en tout",
+		"marks": "marques",
+		"ON: %s · %d DAYS LEFT": "ACTIF : %s · %d JOURS RESTANTS",
+		"BANNER: %s · %d DAYS LEFT": "BANNIÈRE : %s · %d JOURS RESTANTS",
 		"TONIGHT": "CE SOIR",
 		"DUELS": "DUELS",
 		"GACHA": "GACHA",
@@ -935,6 +1025,24 @@ const T := {
 		"LEDGER": "REGISTRE",
 	},
 	"es": {
+		# update packs, events, auto-battle, the missing pages (2026-09-24)
+		"EVENT: %s": "EVENTO: %s",
+		"THE MISSING PAGES · %d": "LAS PÁGINAS PERDIDAS · %d",
+		"THE MISSING PAGES": "LAS PÁGINAS PERDIDAS",
+		"AUTO ×1 · 1 CHARM": "AUTO ×1 · 1 ENCANTO",
+		"AUTO ×5 · 5 CHARM": "AUTO ×5 · 5 ENCANTO",
+		"Auto: won %d of %d.": "Auto: %d victorias de %d.",
+		"%d CARDS": "%d CARTAS",
+		"ENDS IN %d DAYS": "TERMINA EN %d DÍAS",
+		"REWARD TRACK": "PISTA DE PREMIOS",
+		"CLAIM": "RECLAMAR",
+		"CLAIMED": "RECLAMADO",
+		"+%d CHARM": "+%d ENCANTO",
+		"%s'S CARD": "CARTA DE %s",
+		"+%d %s · %d in all": "+%d %s · %d en total",
+		"marks": "marcas",
+		"ON: %s · %d DAYS LEFT": "ACTIVO: %s · QUEDAN %d DÍAS",
+		"BANNER: %s · %d DAYS LEFT": "BANNER: %s · QUEDAN %d DÍAS",
 		"TONIGHT": "ESTA NOCHE",
 		"DUELS": "DUELOS",
 		"GACHA": "GACHA",
@@ -1117,6 +1225,24 @@ const T := {
 		"LEDGER": "LIBRO",
 	},
 	"ko": {
+		# update packs, events, auto-battle, the missing pages (2026-09-24)
+		"EVENT: %s": "이벤트: %s",
+		"THE MISSING PAGES · %d": "사라진 페이지 · %d",
+		"THE MISSING PAGES": "사라진 페이지",
+		"AUTO ×1 · 1 CHARM": "자동 ×1 · 매력 1",
+		"AUTO ×5 · 5 CHARM": "자동 ×5 · 매력 5",
+		"Auto: won %d of %d.": "자동: %d승 / %d판.",
+		"%d CARDS": "카드 %d장",
+		"ENDS IN %d DAYS": "%d일 남음",
+		"REWARD TRACK": "보상 트랙",
+		"CLAIM": "받기",
+		"CLAIMED": "받음",
+		"+%d CHARM": "매력 +%d",
+		"%s'S CARD": "%s의 카드",
+		"+%d %s · %d in all": "+%d %s · 총 %d",
+		"marks": "마크",
+		"ON: %s · %d DAYS LEFT": "선택됨: %s · %d일 남음",
+		"BANNER: %s · %d DAYS LEFT": "배너: %s · %d일 남음",
 		"TONIGHT": "오늘 밤",
 		"DUELS": "대결",
 		"GACHA": "뽑기",
@@ -1313,6 +1439,17 @@ func _ready() -> void:
 
 func code() -> String:
 	return _code
+
+
+## Server-sent translations for words newer than this build (F2P.strings): added under
+## what the build already has, never over it.
+func merge(c: String, table: Dictionary) -> void:
+	if not _campaign.has(c):
+		_campaign[c] = {}
+	var mine: Dictionary = _campaign[c]
+	for k in table:
+		if not mine.has(k):
+			mine[k] = table[k]
 
 
 func set_code(c: String) -> void:

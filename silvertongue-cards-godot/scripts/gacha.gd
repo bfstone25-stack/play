@@ -10,6 +10,8 @@ var _grid: GridContainer
 var _pity: Label
 var _pull1: Button
 var _pull10: Button
+var _banner_btn: Button
+var banner := ""                 # a limited banner the next pull goes on ("" = the standard pool)
 var _owned := {}                 # card id -> n, before the pull, for the dupe toast
 var _busy := false
 var last_pull := {}
@@ -53,6 +55,16 @@ func _ready() -> void:
 	_pull10.pressed.connect(func(): drive_pull(10))
 	btns.add_child(_pull1)
 	btns.add_child(_pull10)
+	# Nutaku: a limited banner, when the server has one running (backend/campaign/packs)
+	_banner_btn = Button.new()
+	_banner_btn.focus_mode = Control.FOCUS_NONE
+	_banner_btn.visible = false
+	_banner_btn.pressed.connect(func():
+		Sfx.play("ui_click")
+		var bs := F2P.banners()
+		banner = "" if banner != "" or bs.is_empty() else str(bs[0].get("id", ""))
+		_render_prices())
+	btns.add_child(_banner_btn)
 	var dev := Button.new()
 	dev.text = "+1000 GOLD (dev)"  # i18n-ok: dev build only, never added on Nutaku
 	dev.focus_mode = Control.FOCUS_NONE
@@ -107,6 +119,18 @@ func _render_prices() -> void:
 		var t := int(eco.get("tickets", 0))
 		_pull1.text = Loc.t("1 PULL · 1 TICKET") if t >= 1 else Loc.t("1 PULL · %d CHIPS") % int(pp.get("1", 300))
 		_pull10.text = Loc.t("10 PULL · 10 TICKETS") if t >= 10 else Loc.t("10 PULL · %d CHIPS") % int(pp.get("10", 3000))
+	if _banner_btn != null:
+		var bs := F2P.banners() if F2P.on() else []
+		_banner_btn.visible = not bs.is_empty()
+		if bs.is_empty():
+			banner = ""
+		else:
+			var b: Dictionary = bs[0]
+			var left := maxf(0.0, float(b.get("end", 0.0)) - float(Nutaku.state.get("server_time", 0.0)))
+			_banner_btn.text = (Loc.t("ON: %s · %d DAYS LEFT") if banner != "" else Loc.t("BANNER: %s · %d DAYS LEFT")) % [
+				Loc.s(b.get("title", "")).to_upper(), int(ceil(left / 86400.0))]
+			_banner_btn.tooltip_text = Loc.s(b.get("blurb", ""))
+			StudioTheme.style_button(_banner_btn, "active" if banner != "" else "quiet")
 	var p: Dictionary = eco.get("pity", {})
 	_pity.text = Loc.t("PULLS %d · EPIC PITY IN %d · CREDITS %d") % [int(p.get("pulls", 0)), int(p.get("epic_pity_in", 30)), int(p.get("pull_credits", 0))]
 
@@ -123,7 +147,7 @@ func drive_pull(n: int) -> Dictionary:
 		return {"error": "busy"}
 	_busy = true
 	Sfx.play("ui_click")
-	var r := await Api.pull(n)
+	var r := await Api.pull(n, banner)
 	if r.has("error"):
 		_busy = false
 		main.toast(Loc.s(r["error"]))

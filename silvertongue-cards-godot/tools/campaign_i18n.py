@@ -72,6 +72,9 @@ SERVER_REASONS = [
     "duel is over", "no wild left", "wild needs a line", "card not in hand", "needs %s nerve, have %s",
     "unknown card", "timeout", "unknown sku", "handshake: no session in the game server's answer",
     "server said %s",
+    # update packs, events, banners, auto-battle (2026-09-24)
+    "the event is not running", "no such event", "no such step", "not enough marks",
+    "that banner is not running", "win it yourself first",
 ]
 
 
@@ -98,6 +101,11 @@ def english() -> dict[str, str]:
         if s.strip() and s not in out:
             out[s] = ctx
     add(K.PROLOGUE, "prologue (narration, second person, noir)")
+    add(K.PROLOGUE_HOOK, "prologue, last paragraph: the mystery hook")
+    for cid in K.LEDGER_ORDER:
+        pg = K.LEDGER_PAGES[cid]
+        add(pg["title"], "title of a missing Ledger page (the mystery thread)")
+        add(pg["text"], "a missing Ledger page: narration + quoted records; ends on a cliffhanger")
     for ch in K.CHAPTERS:
         who = ch["who"]
         add(ch["title"], f"chapter title ({who})")
@@ -108,6 +116,32 @@ def english() -> dict[str, str]:
         lc = K.LAST_CALL[ch["id"]]
         add(lc["intro"], f"Last Call intro narration ({who})")
         add(lc["coda"], f"Last Call coda narration ({who})")
+    # update packs (backend/campaign/packs): her chapter, Last Call, events, banners
+    for ch in K.PACK_CHAPTERS:
+        who = ch["who"]
+        add(ch["title"], f"chapter title ({who}, update pack)")
+        add(ch["house"], f"place name ({who}'s house)")
+        add(ch["intro"], f"chapter intro narration ({who})")
+        add(ch["outro"], f"chapter outro narration ({who}); accompanies her tier-3 plate: tender, not explicit")
+        add("Last Call: " + ch["title"], "Last Call chapter title")
+        lc = K.LAST_CALL[ch["id"]]
+        add(lc["intro"], f"Last Call intro narration ({who})")
+        add(lc["coda"], f"Last Call coda narration ({who})")
+    from backend.campaign import packs as PK
+    for m in PK.PACKS:
+        for key, lines in m.REPLIES.items():
+            for ln in lines:
+                add(ln, f"{m.WHO} speaking (reply line; key {key}: she answers the kind of card just played)")
+        add(m.BANNER["title"], f"limited gacha banner title ({m.WHO})")
+        add(m.BANNER["blurb"], "limited gacha banner description")
+    for e in K.EVENTS:
+        add(e["title"], f"limited event title ({e['who']})")
+        add(e["blurb"], "limited event description")
+        add(e["rule"], "limited event rule, one line")
+        add(e["currency"], "event currency name (plural noun, lower case)")
+        for s in e["stages"]:
+            for f in ("title", "goal", "intro", "win", "lose"):
+                add(s[f], f"event stage {f} ({s['who']})" + (" narration" if f in ("intro", "win", "lose") else ""))
     for s in K.STAGES:
         who = s["who"]
         for f in ("title", "goal", "intro", "win", "lose"):

@@ -125,7 +125,7 @@ func _run() -> void:
 	var story_bad := ""
 	for lang in I18n.LANGS:
 		I18n.set_lang(lang)
-		for ci in range(1, 11):
+		for ci in range(1, 17):
 			var cid := "c%d" % ci
 			if I18n.has("f2p_ch_%s_boss_text" % cid):
 				var bt := F2P.boss_text(cid, {"target": 51234, "hours": 37, "text": ""})
@@ -190,8 +190,76 @@ func _run() -> void:
 	await until(func() -> bool: return b.daily_result.is_open(), 5.0)
 	check("the daily floor result comes from the server (and pays the first-play ticket)", b.daily_result.is_open()
 		and int(F2P.st()["daily_floor"]["attempts"]) == 1 and Economy.tickets() == t0 + 1)
+	b.daily_result.close()
+	b.leave_daily()
+	await _depth()
 	await _sweep_languages()
 	_finish()
+
+
+## 2026-09-24: the night floor, a staff story, the pack's banner and event, the floor goals,
+## drawn by the client and answered by the server.
+func _depth() -> void:
+	# the night floor: the same board, the server's sixteen pieces, its own score and par
+	await b.start_daily("hard")
+	check("the night floor deals the server's sixteen pieces", b.mode == "daily" and str(b.daily.get("tier", "")) == "hard"
+		and (b.daily["seq"] as Array).size() == 16, str(b.daily.get("seq", [])))
+	var hseq: Array = b.daily["seq"]
+	for i in range(hseq.size()):
+		b.daily["cells"][i] = hseq[i]
+	b.daily["at"] = hseq.size()
+	b.view = b.daily
+	await sleep(10.5)
+	var t0 := Economy.tickets()
+	await b.do_commit()
+	await until(func() -> bool: return b.daily_result.is_open(), 5.0)
+	var hf: Dictionary = F2P.st()["hard_floor"]
+	check("the night floor is scored by the server (one try used, the first-try ticket paid, a par shown)",
+		b.daily_result.is_open() and int(hf["attempts"]) == 1 and Economy.tickets() >= t0 + 1 and int(hf["par"]) > 0,
+		JSON.stringify(hf))
+	b.daily_result.close()
+	b.leave_daily()
+	# a staff story arrived on the server clock; READ marks it read and shows its three lines
+	var st: Dictionary = F2P.st()["stories"]
+	check("a staff story is waiting (it arrived with the first read of the day)", (st["pending"] as Array).size() >= 1, JSON.stringify(st))
+	if not (st["pending"] as Array).is_empty():
+		var sid := str(st["pending"][0]["id"])
+		var who := str(st["pending"][0]["char"])
+		var a0 := int(F2P.char_row(who)["aff"])
+		b.f2p_panel.open_tab("daily")
+		await sleep(0.3)
+		await b.f2p_panel._read(sid, who)
+		await until(func() -> bool: return b.story_view.is_open(), 3.0)
+		var shown: Array = _texts(b.story_view)
+		check("READ: the story's three lines are shown from the table, and the server adds its affection",
+			b.story_view.is_open() and shown.any(func(t: String) -> bool: return t.contains(F2P.story_line(sid, 0)))
+			and shown.any(func(t: String) -> bool: return t.contains(F2P.story_line(sid, 2)))
+			and int(F2P.char_row(who)["aff"]) > a0, "%s %s" % [sid, str(shown.slice(0, 4))])
+		b.story_view.close()
+		b.f2p_panel.close()
+	# the pack's banner and event (pack 1 is on by flag): drawn on STAFF, pulled on the server
+	var bn = F2P.st().get("banner")
+	check("pack 1 is live: Arden on the roster, her banner and her event", bn != null and str(bn["char"]) == "arden"
+		and F2P.st().get("pack_event") != null and not F2P.char_row("arden").is_empty())
+	if bn != null:
+		b.f2p_panel.open_tab("staff")
+		await sleep(0.3)
+		var hdr := I18n.fmt("f2p_bn_hdr", {"title": F2P.banner_title(bn).to_upper(), "name": F2P.char_name("arden")})
+		check("the STAFF tab shows the limited banner", _texts(b.f2p_panel.content).has(hdr), hdr)
+		var tk := Economy.tickets()
+		var pulls0 := int(F2P.st()["pity"]["pulls"]) + int(F2P.st()["banner"]["featured"])
+		await b.f2p_panel._banner(1)
+		await sleep(0.3)
+		var after := int(F2P.st()["pity"]["pulls"]) + int(F2P.st()["banner"]["featured"])
+		check("a banner pull costs one ticket and is rolled by the server", Economy.tickets() == tk - 1 and after == pulls0 + 1,
+			"%d -> %d, %d -> %d" % [tk, Economy.tickets(), pulls0, after])
+		b.f2p_panel.close()
+	# every floor carries its three build goals on UPGRADES
+	b.f2p_panel.open_tab("upgrades")
+	await sleep(0.3)
+	var line := I18n.fmt("f2p_dc_row", {"n": 1, "goals": ""})
+	check("UPGRADES shows each floor's build goals", _texts(b.f2p_panel.content).any(func(t: String) -> bool: return t.begins_with(line)), line)
+	b.f2p_panel.close()
 
 
 ## Every word the Nutaku layer shows is in the player's language (the office, its banners
@@ -200,7 +268,6 @@ func _run() -> void:
 ## every office tab but BOARD (its rows are players' nicknames), the roster with its ticket
 ## line, the HUD stubs, and refusals.
 func _sweep_languages() -> void:
-	b.daily_result.close()
 	b.queue_free()
 	await sleep(0.3)
 	for lang in ["ja", "de", "fr", "es", "zh", "ko"]:
