@@ -112,7 +112,9 @@ const H := 720.0
 ## was 3.7:1 and silently stretched every letter 1.5x wide — a distortion that is
 ## invisible on a screenshot of a bold display face, which is why it survived a capture.
 ## If you change one number here, change the other to match.
-const MARK_RECT := Rect2(52, 386, 520, 217)
+## 2026-09-24: the store logotype (ops/nutaku/covers/logotypes.py) is 1090x274, 3.98:1,
+## with its NOW LEASING genre line baked in; same width and bottom edge as before.
+const MARK_RECT := Rect2(52, 472, 520, 131)
 
 ## The foot, set by where the scrim is actually dark rather than by taste. An earlier pass
 ## put the tagline at 11% into the ramp, where `f*f*0.62` is alpha 0.0075 — i.e. nothing,

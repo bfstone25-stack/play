@@ -9,7 +9,10 @@ extends Node
 ##   SHOT <frame> <name>   a still was saved to <shots>/<name>.png
 ##   WALK_OK / WALK_FAIL <why>
 ##
-##   -- --nutaku-mock=<url> --nutaku-api=<url> --nutaku-user=<id> --shots=<dir>
+##   -- --nutaku-mock=<url> --nutaku-api=<url> --nutaku-user=<id> --shots=<dir> [--lang=en|zh|ja]
+##
+## --lang plays the game itself in that language (the zh video shows the zh build, not the
+## English one with Chinese captions under it).
 
 var b: Node
 var api := ""
@@ -26,6 +29,8 @@ func _ready() -> void:
 			api = a.split("=", true, 1)[1].trim_suffix("/")
 		elif a.begins_with("--shots="):
 			shots = a.split("=", true, 1)[1]
+		elif a.begins_with("--lang="):
+			I18n.set_lang(a.split("=", true, 1)[1])
 	_http = HTTPRequest.new()
 	add_child(_http)
 	_run.call_deferred()
@@ -290,7 +295,7 @@ func _run() -> void:
 	cap("scene")
 	b.f2p_panel.open_tab("scenes")
 	await sleep(2.0)
-	b.scene_view.show_scene("ot_b2", "The glass office")
+	b.scene_view.show_scene("ot_b2", F2P.scene_title("ot_b2", "The glass office"))
 	await until(func() -> bool: return b.scene_view.img.texture != null, 8.0)
 	await sleep(3.5)
 	await shot("11_scene")

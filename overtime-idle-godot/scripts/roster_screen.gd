@@ -28,10 +28,10 @@ func build() -> void:
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(t)
 	# On Nutaku a pull costs tickets (earned, or bought in the office SHOP), never local Gold
-	head.add_child(button("PULL ×1 · 1 TICKET" if F2P.on() else I18n.t("pull_1_btn"), "Pull", func() -> void: _pull(1)))
-	head.add_child(button("PULL ×10 · 10 TICKETS" if F2P.on() else I18n.t("pull_10_btn"), "Pull", func() -> void: _pull(10)))
+	head.add_child(button(I18n.t("f2p_pull_1") if F2P.on() else I18n.t("pull_1_btn"), "Pull", func() -> void: _pull(1)))
+	head.add_child(button(I18n.t("f2p_pull_10") if F2P.on() else I18n.t("pull_10_btn"), "Pull", func() -> void: _pull(10)))
 	head.add_child(button(I18n.t("close"), "Ghost", close))
-	para(I18n.t("roster_para") + (" Past the cap, a duplicate becomes +15 affection with them." if F2P.on() else ""), 14)
+	para(I18n.t("roster_para") + (I18n.t("f2p_dupe_cap") if F2P.on() else ""), 14)
 	pity = Label.new()
 	pity.theme_type_variation = "Value"
 	pity.add_theme_color_override("font_color", Palette.GOLD)
@@ -86,14 +86,18 @@ func on_open() -> void:
 
 
 func render() -> void:
-	if F2P.on():
-		pity.text = ("Epic guaranteed within %d pulls  ·  %d tickets" % [Roster.PITY - Economy.since_epic(), Economy.tickets()]) \
-				+ "  ·  odds: common 70 percent, rare 25, epic 5"
-	else:
-		pity.text = I18n.f("pity", [Roster.PITY - Economy.since_epic(), Economy.gold(), Economy.tickets()])
+	pity.text = pity_text()
 	clear(grid)
 	for p in Roster.ROSTER:
 		grid.add_child(_staff_card(p))
+
+
+## The ticket / pity line, from the economy as it is now (tests/f2p_client.gd compares the
+## label with this right after a pull, while the reveal is still up).
+func pity_text() -> String:
+	if F2P.on():
+		return I18n.fmt("f2p_pity", {"n": Roster.PITY - Economy.since_epic(), "t": Economy.tickets()})
+	return I18n.f("pity", [Roster.PITY - Economy.since_epic(), Economy.gold(), Economy.tickets()])
 
 
 func _staff_card(p: Dictionary) -> Control:
@@ -216,6 +220,7 @@ func _pull(n: int) -> void:
 			return
 		_results = fr["results"]
 		pulled.emit(_results)
+		render()      # the roster behind the cards: tickets left, pity, new faces, now
 		Sfx.shop()
 		_reveal(_results)
 		return
@@ -232,6 +237,7 @@ func _pull(n: int) -> void:
 		return
 	_results = res["results"]
 	pulled.emit(_results)
+	render()
 	Sfx.shop()
 	_reveal(_results)
 

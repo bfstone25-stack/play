@@ -22,6 +22,73 @@ signal report(rep: Dictionary)         # a /collect or /timeskip report with shi
 
 const POLL_S := 15.0
 
+## The server refuses in English (overtime_economy.py Reject / _no). A refusal is shown to
+## the player as a banner, so each reason maps to an i18n key here, and
+## ops/nutaku/overtime_f2p/check_i18n.py fails when the server gains a reason this table
+## lacks. An unknown one shows the generic line, never the server's English.
+const REASON := {
+	"invalid or expired session": "f2p_rj_session",
+	"client_ms must be a number": "f2p_rj_bad_request",
+	"client clock is ahead of the server": "f2p_rj_clock",
+	"nonce required (8-64 chars, single use)": "f2p_rj_bad_request",
+	"replayed request": "f2p_rj_replay",
+	"floor required": "f2p_rj_bad_request",
+	"no such floor": "f2p_rj_no_floor",
+	"not enough in the bank": "f2p_rj_no_bank",
+	"index required": "f2p_rj_bad_request",
+	"index out of range": "f2p_rj_bad_request",
+	"cell occupied": "f2p_rj_cell_taken",
+	"not in inventory": "f2p_rj_no_stock",
+	"unknown piece": "f2p_rj_unknown",
+	"nothing there": "f2p_rj_nothing",
+	"unknown object": "f2p_rj_unknown",
+	"unknown relic": "f2p_rj_unknown",
+	"already owned": "f2p_rj_owned",
+	"this building has no more floors": "f2p_rj_no_more_floors",
+	"fit-out already at max": "f2p_rj_fit_max",
+	"unknown staff": "f2p_rj_unknown",
+	"not on the roster yet": "f2p_rj_not_owned",
+	"already at max rank": "f2p_rj_max_rank",
+	"hours must be 1-24": "f2p_rj_hours",
+	"not enough time skips": "f2p_rj_no_skips",
+	"the building is not ready to sell": "f2p_rj_not_ready_sell",
+	"no rival bid in this chapter": "f2p_rj_no_bid",
+	"that bid is for another building": "f2p_rj_bid_other",
+	"the story is complete": "f2p_rj_story_done",
+	"that chapter is in the next building": "f2p_rj_next_building",
+	"the chapter's goals are not all met": "f2p_rj_goals_open",
+	"n must be 1 or 10": "f2p_rj_pull_n",
+	"not enough tickets": "f2p_rj_no_tickets",
+	"unknown character": "f2p_rj_unknown",
+	"already talked today": "f2p_rj_talked",
+	"no request from them today": "f2p_rj_no_request",
+	"already done today": "f2p_rj_done_today",
+	"the board does not show it yet": "f2p_rj_board_not_yet",
+	"no gift box": "f2p_rj_no_gift_box",
+	"that's enough gifts for today": "f2p_rj_gifts_today",
+	"no attempts left today": "f2p_rj_no_attempts",
+	"start the daily floor first": "f2p_rj_df_start",
+	"too fast": "f2p_rj_too_fast",
+	"cells must be 20 entries": "f2p_rj_bad_request",
+	"the board must hold exactly today's twelve pieces": "f2p_rj_df_pieces",
+	"claim all five weekly goals first": "f2p_rj_claim_weekly",
+	"bonus already claimed": "f2p_rj_claimed",
+	"no such goal this week": "f2p_rj_no_goal",
+	"already claimed": "f2p_rj_claimed",
+	"goal not complete": "f2p_rj_goal_open",
+	"claim all three missions first": "f2p_rj_claim_missions",
+	"no such mission today": "f2p_rj_no_mission",
+	"mission not complete": "f2p_rj_mission_open",
+	"already claimed today": "f2p_rj_claimed_today",
+	"no active Night Shift Pass": "f2p_rj_no_pass",
+}
+## Reasons with a value in them: the English prefix -> key (reason_text() fills the value).
+const REASON_PREFIX := {
+	"no free slot for ": "f2p_rj_no_slot",
+	"rank ": "f2p_rj_rank_tier",
+	"the bid is already ": "f2p_rj_bid_already",
+}
+
 var clock_offset_ms := 0               # server_ms - local ms, from the last answer
 var _poll := 0.0
 var _booted := false
@@ -45,7 +112,7 @@ func ensure() -> bool:
 		return true
 	Nutaku.state_path = "/ot/state"
 	if not await Nutaku.boot():
-		refused.emit(Nutaku.last_error)
+		refused.emit(I18n.fmt("f2p_no_connect", {"e": Nutaku.last_error}))
 		return false
 	await refresh()
 	_booted = not st().is_empty()
@@ -89,7 +156,8 @@ func act(path: String, body: Dictionary = {}) -> Dictionary:
 		if rb.has("report") and int(rb["report"].get("shifts", 0)) > 0:
 			report.emit(rb["report"])
 	else:
-		refused.emit(str(r["body"].get("reason", "the server said no (%d)" % int(r["status"]))))
+		var why = r["body"].get("reason") if typeof(r["body"]) == TYPE_DICTIONARY else null
+		refused.emit(reason_text(str(why)) if why != null else I18n.fmt("f2p_rj_http", {"code": int(r["status"])}))
 		await refresh()
 	return r
 
@@ -149,6 +217,111 @@ func _adopt() -> void:
 	Economy.state["pulls"] = int(s["pity"]["pulls"])
 	ot_changed.emit()
 	Ticker.changed.emit()
+
+
+# ---------------------------------------------------------------------- words
+# Everything the server says that a player reads is looked up here by its id, never shown
+# as the server's English: content.json and config are the English of record, and
+# scripts/i18n.gd holds the same line under an f2p_* key in all three languages.
+
+## A server refusal, in the player's language.
+func reason_text(why: String) -> String:
+	if REASON.has(why):
+		return I18n.t(REASON[why])
+	for p in REASON_PREFIX:
+		if why.begins_with(p):
+			var key: String = REASON_PREFIX[p]
+			match key:
+				"f2p_rj_no_slot":
+					return I18n.fmt(key, {"name": char_name(why.substr(p.length()))})
+				"f2p_rj_rank_tier":
+					var m := RegEx.create_from_string("^rank (\\d+) needs affection tier (\\d+)$").search(why)
+					if m != null:
+						return I18n.fmt(key, {"rank": m.get_string(1), "tier": m.get_string(2)})
+				"f2p_rj_bid_already":
+					var st := why.substr(p.length())
+					return I18n.fmt(key, {"status": I18n.t("f2p_bid_" + st) if I18n.has("f2p_bid_" + st) else st})
+	return I18n.t("f2p_rj_generic")
+
+
+## An f2p_* key if the table has it, else what the server sent (a key that is missing is
+## a check_i18n.py failure, so this fallback is for content newer than the client).
+func tx(key: String, fallback) -> String:
+	return I18n.t(key) if I18n.has(key) else str(fallback)
+
+
+func char_name(id: String) -> String:
+	return tx("who_" + id, char_row(id).get("name", id))
+
+
+func building_name(no: int) -> String:
+	return tx("f2p_bld_%d" % no, st().get("building", {}).get("name", ""))
+
+
+func scene_title(id: String, fallback) -> String:
+	return tx("f2p_sc_" + id, fallback)
+
+
+func rival_name(ch: Dictionary) -> String:
+	var rid = ch.get("rival_id")
+	return tx("f2p_rival_" + str(rid), ch.get("rival", "")) if rid != null else str(ch.get("rival", ""))
+
+
+## A chapter field (title, intro, outro, boss_title) in the player's language.
+func chapter_text(ch_id: String, field: String, fallback) -> String:
+	return tx("f2p_ch_%s_%s" % [ch_id, field], fallback)
+
+
+## The bid's prose with its amount and window filled from the SAME values the bid row
+## shows (the scaled target, not a number written into the story): the story cannot say
+## "earn 5M" beside a 50,000 target.
+func boss_text(ch_id: String, bs: Dictionary) -> String:
+	var tmpl := tx("f2p_ch_%s_boss_text" % ch_id, bs.get("text", ""))
+	return tmpl.format({"target": RollingLabel._fmt(float(bs["target"])), "hours": int(bs["hours"])})
+
+
+## A chapter goal with its number filled from the goal's own `need` (the value the
+## progress line beside it shows).
+func goal_text(ch_id: String, i: int, g: Dictionary) -> String:
+	var tmpl := tx("f2p_ch_%s_g%d" % [ch_id, i], g.get("text", ""))
+	return tmpl.format({"n": RollingLabel._fmt(float(g.get("need", 0)))})
+
+
+func tier_line(char_id: String, tier: int, fallback) -> String:
+	return tx("f2p_tier_%s_%d" % [char_id, tier], fallback)
+
+
+func mission_text(m: Dictionary) -> String:
+	return tx("f2p_ms_" + str(m["id"]), m["text"]).format({"n": int(m["goal"])})
+
+
+func weekly_text(g: Dictionary, ev: Dictionary) -> String:
+	var id := str(g["id"])
+	if id == "w_event":
+		return I18n.fmt("f2p_wk_w_event", {"event": tx("f2p_ev_%s_title" % ev["id"], ev["title"]), "n": int(g["goal"]),
+				"name": char_name(str(ev["char"]))})
+	return tx("f2p_wk_" + id, g["text"]).format({"n": int(g["goal"])})
+
+
+func request_text(char_id: String, rq: Dictionary) -> String:
+	var who := char_name(char_id)
+	match str(rq.get("kind", "")):
+		"beside":
+			var pc := str(rq["piece"])
+			return I18n.fmt("f2p_rq_beside", {"name": who, "piece": tx("f2p_pc_" + pc, char_name(pc))})
+		"chain":
+			return I18n.fmt("f2p_rq_chain", {"name": who, "n": int(rq["n"])})
+		"pay":
+			return I18n.fmt("f2p_rq_pay", {"name": who, "n": int(rq["n"])})
+	return str(rq.get("text", ""))
+
+
+func sku_name(id: String) -> String:
+	return tx("f2p_sku_%s_name" % id, Nutaku.sku(id).get("name", id))
+
+
+func sku_desc(id: String) -> String:
+	return tx("f2p_sku_%s_desc" % id, Nutaku.sku(id).get("description", ""))
 
 
 # ------------------------------------------------------------------------- queries

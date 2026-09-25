@@ -101,7 +101,13 @@ func _run() -> void:
 	b.roster._pull(1)
 	var pulled: bool = await until(func() -> bool: return int(F2P.st()["pity"]["pulls"]) == 1)
 	check("PULL x1 on the roster screen is rolled by the server", pulled and Economy.tickets() == 9, str(Economy.tickets()))
-	await sleep(1.5)
+	await sleep(0.3)
+	# the roster behind the new cards shows the tickets left NOW, not the count from before
+	# the pull (it read 10 with 9 left until the screen was closed)
+	check("the roster behind the pull reveal shows the tickets left after the pull",
+		b.roster.reveal.visible and b.roster.pity.text == b.roster.pity_text() and b.roster.pity_text().contains("9"),
+		"label %s / now %s" % [b.roster.pity.text, b.roster.pity_text()])
+	await sleep(1.2)
 	b.roster.close()
 
 	# ---- the office panel, every tab
@@ -109,6 +115,36 @@ func _run() -> void:
 		b.f2p_panel.open_tab(t)
 		await sleep(0.4)
 		check("office tab %s draws" % t, b.f2p_panel.content.get_child_count() > 0)
+	b.f2p_panel.close()
+
+	# ---- the story's numbers come from the goal's own values (the accelerated demo said
+	# "earn 5M" beside a 50,000 target): every bid is filled from a scaled target, in every
+	# language, and every goal from its `need`
+	var story_ok := true
+	var story_bad := ""
+	for lang in I18n.LANGS:
+		I18n.set_lang(lang)
+		for ci in range(1, 11):
+			var cid := "c%d" % ci
+			if I18n.has("f2p_ch_%s_boss_text" % cid):
+				var bt := F2P.boss_text(cid, {"target": 51234, "hours": 37, "text": ""})
+				if not (bt.contains("51,234") and bt.contains("37")) or bt.contains("{") or bt.contains("million") or bt.contains("5M"):
+					story_ok = false
+					story_bad = "%s %s: %s" % [lang, cid, bt]
+			for gi in range(4):
+				if I18n.has("f2p_ch_%s_g%d" % [cid, gi]):
+					var gt := F2P.goal_text(cid, gi, {"need": 4321, "text": ""})
+					if gt.contains("{") or (I18n.t("f2p_ch_%s_g%d" % [cid, gi]).contains("{n}") and not gt.contains("4,321")):
+						story_ok = false
+						story_bad = "%s %s g%d: %s" % [lang, cid, gi, gt]
+	I18n.set_lang("en")
+	check("story text reads the bid target and goal numbers from the values the goals show", story_ok, story_bad)
+	var cp: Dictionary = F2P.st()["campaign"]
+	b.f2p_panel.open_tab("story")
+	await sleep(0.3)
+	var goal_need := RollingLabel._fmt(float(cp["goals"][0]["need"]))
+	check("the STORY tab's first goal says the number its progress shows (%s)" % goal_need,
+		_texts(b.f2p_panel.content).any(func(t: String) -> bool: return t.contains(goal_need + " floors") and t.contains("/ " + goal_need)))
 	b.f2p_panel.close()
 
 	# ---- buy with (mock) Nutaku gold
@@ -153,7 +189,79 @@ func _run() -> void:
 	await until(func() -> bool: return b.daily_result.is_open(), 5.0)
 	check("the daily floor result comes from the server (and pays the first-play ticket)", b.daily_result.is_open()
 		and int(F2P.st()["daily_floor"]["attempts"]) == 1 and Economy.tickets() == t0 + 1)
+	await _sweep_languages()
 	_finish()
+
+
+## Every word the Nutaku layer shows is in the player's language (the office, its banners
+## and the story were English-only in the zh and ja builds). A language change reloads the
+## scene in the game (title_screen.gd), so each language gets a fresh building here too:
+## every office tab but BOARD (its rows are players' nicknames), the roster with its ticket
+## line, the HUD stubs, and refusals.
+func _sweep_languages() -> void:
+	b.daily_result.close()
+	b.queue_free()
+	await sleep(0.3)
+	for lang in ["zh", "ja"]:
+		I18n.set_lang(lang)
+		b = load("res://scenes/building.tscn").instantiate()
+		get_tree().root.add_child(b)
+		await sleep(0.3)
+		b.intro.start.emit()
+		b.intro.close()
+		Sfx.set_muted(true)
+		await sleep(0.8)
+		var english: Array = []
+		for t in F2PPanel.TABS:
+			if t == "board":
+				continue
+			b.f2p_panel.open_tab(t)
+			await sleep(0.3)
+			for x in _texts(b.f2p_panel):
+				if _latin(x):
+					english.append("%s: %s" % [t, x])
+		b.f2p_panel.close()
+		b._open_tab("roster")
+		await sleep(0.3)
+		for x in _texts(b.roster):
+			if _latin(x):
+				english.append("roster: " + x)
+		b.roster.close()
+		for k in b.tabs.keys():
+			if (b.tabs[k] as Button).visible and _latin((b.tabs[k] as Button).text):
+				english.append("hud: " + (b.tabs[k] as Button).text)
+		if _latin(b.gold_tag.text):
+			english.append("hud: " + b.gold_tag.text)
+		for x in [F2P.reason_text("not enough tickets"), F2P.reason_text("no free slot for dan"),
+				F2P.reason_text("rank 3 needs affection tier 2"), F2P.reason_text("something new")]:
+			if _latin(x):
+				english.append("refusal: " + x)
+		check("[%s] the office, the roster, the HUD and refusals show no English" % lang, english.is_empty(),
+			"%d: " % english.size() + " | ".join(english.slice(0, 8)))
+		b.queue_free()
+		await sleep(0.3)
+	I18n.set_lang("en")
+	b = null
+
+
+## Every Label, RichTextLabel and Button text under a node.
+func _texts(n: Node) -> Array:
+	var out: Array = []
+	if n is Label:
+		out.append((n as Label).text)
+	elif n is RichTextLabel:
+		out.append((n as RichTextLabel).get_parsed_text())
+	elif n is Button:
+		out.append((n as Button).text)
+	for c in n.get_children():
+		out.append_array(_texts(c))
+	return out
+
+
+## A run of three Latin letters that is not the brand, the platform or a unit.
+func _latin(t: String) -> bool:
+	var s := t.replace("OCCUPANCY", "").replace("Nutaku", "")
+	return RegEx.create_from_string("[A-Za-z]{3,}").search(s) != null
 
 
 func _finish() -> void:

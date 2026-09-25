@@ -44,3 +44,20 @@ No popups, no redirects: the board (`Gate.board_offer_more("casual")` after the 
 result, `board_offer_break()` after an eviction notice) and every buy open on an explicit
 click. Art ceiling 3: nothing rendered here; `tools/sync_art.py` copies the parent's
 installed plates by path. Nothing sold touches `settle_grid()`.
+
+## The Nutaku F2P build
+
+On Nutaku (`F2P.on()`), the server in `ops/nutaku/overtime_f2p/` owns every number and the
+client draws it (`scripts/f2p.gd`, the office panel in `scripts/f2p_ui.gd`). The campaign
+has **5 buildings with 5, 6, 7, 8 and 9 floors** (not 3-8), paying ×1, ×2.5, ×6, ×15 and
+×40; chapter goals ask for 3 to 9 floors. See `ops/nutaku/overtime_f2p/README.md`.
+
+Every word the Nutaku layer shows is in `scripts/i18n.gd` (the `f2p_*` keys, in en, zh and
+ja): the office panel, banners, refusals, and the server's story, goals, bids, tier lines,
+events, missions and SKUs, looked up by id. `content.json` stays the English of record.
+Goal and bid text are templates (`{n}`, `{target}`, `{hours}`) filled from the same values
+the goal rows show, so the story cannot quote a number the goal does not. After adding a
+line, re-cut the CJK fonts (`python3 ops/subset_cjk.py scripts/i18n.gd --out assets/fonts`
+from the repo root with full paths) and run `python3 ops/nutaku/overtime_f2p/check_i18n.py`,
+which fails on a bypassing literal, a missing or drifted key, a number written into the
+story, an unmapped refusal or a glyph the subset fonts lack.

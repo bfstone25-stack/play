@@ -318,14 +318,14 @@ func _build_hud() -> void:
 			(l as RollingLabel).compact = true
 		for key in ["roster", "shop", "daily"]:
 			(tabs[key] as Control).custom_minimum_size = Vector2(76, 42)
-		(tabs["shop"] as Button).text = "UPGRADE"
-		var ob := StudioTheme.stub("STAFF", "Primary", true)
+		(tabs["shop"] as Button).text = I18n.t("f2p_hud_upgrade")
+		var ob := StudioTheme.stub(I18n.t("f2p_tab_staff"), "Primary", true)
 		ob.custom_minimum_size = Vector2(76, 42)
 		ob.add_theme_font_size_override("font_size", 13)
 		ob.pressed.connect(func() -> void: _open_tab("staff"))
 		h.add_child(ob)
 		tabs["staff"] = ob
-		var sb := StudioTheme.stub("STORY", "Amber", true)
+		var sb := StudioTheme.stub(I18n.t("f2p_tab_story"), "Amber", true)
 		sb.custom_minimum_size = Vector2(76, 42)
 		sb.add_theme_font_size_override("font_size", 13)
 		sb.pressed.connect(func() -> void: _open_tab("story"))
@@ -578,7 +578,7 @@ func _build_overlays() -> void:
 		Sfx.set_muted(not bool(Ticker.cabinet.get("sound", true)))
 		Sfx.unlock()
 		if F2P.on() and not await F2P.ensure():
-			banner("Could not reach the building: " + Nutaku.last_error)
+			banner(I18n.fmt("f2p_no_connect", {"e": Nutaku.last_error}))
 			return
 		Ticker.start()
 		Ticker.run_tick(true)
@@ -843,7 +843,7 @@ func hud() -> void:
 	rate_l.set_target(round(Ticker.rate_per_hour()))
 	bank_l.set_target(float(int(Ticker.B["bank"])))
 	if F2P.on():
-		gold_tag.text = "TICKETS"
+		gold_tag.text = I18n.t("f2p_tickets")
 		gold_l.set_target(float(Economy.tickets()))
 	else:
 		gold_l.set_target(float(Economy.gold()))
@@ -1003,7 +1003,7 @@ func do_commit() -> void:
 	if mode == "daily":
 		if F2P.on():
 			if int(daily["at"]) < (daily["seq"] as Array).size():
-				banner("Place all %d pieces first." % (daily["seq"] as Array).size())
+				banner(I18n.fmt("f2p_place_all", {"n": (daily["seq"] as Array).size()}))
 				return
 			var sr: Dictionary = await F2P.act("/daily_floor/submit", {"cells": cells()})
 			if sr["ok"]:
@@ -1317,6 +1317,7 @@ func _build_f2p(layer: CanvasLayer) -> void:
 	fx = F2PPanel.Juice.new()
 	fx.theme = Look.theme
 	fl.add_child(fx)
+	return_screen.cap_btn.text = I18n.fmt("f2p_extend_cap", {"n": F2P.price("night_manager")})
 	F2P.refused.connect(func(reason: String) -> void:
 		banner(reason)
 		refill_offers()
@@ -1329,14 +1330,15 @@ func _build_f2p(layer: CanvasLayer) -> void:
 			Sfx.coins(min(8, 2 + int(rep.get("shifts", 1)))))
 	F2P.tiers_reached.connect(func(list: Array) -> void:
 		for t in list:
-			var nm := str(F2P.char_row(str(t["char"])).get("name", t["char"]))
+			var cid := str(t["char"])
+			var nm := F2P.char_name(cid)
 			fx.burst(Vector2(640, 330), Palette.HEAT, 34)
-			fx.float_text(Vector2(640, 300), "%s · TIER %d" % [nm, int(t["tier"])], Palette.HEAT, 36)
+			fx.float_text(Vector2(640, 300), I18n.fmt("f2p_tier_up", {"name": nm, "t": int(t["tier"])}), Palette.HEAT, 36)
 			Sfx.levelup()
 			if str(t["kind"]) == "scene":
-				banner("NEW SCENE — %s" % str(t["title"]))
+				banner(I18n.fmt("f2p_new_scene", {"title": F2P.scene_title(str(t["scene"]), t["title"])}))
 			else:
-				banner("%s: \"%s\"" % [nm, str(t["text"]).left(90)]))
+				banner(I18n.fmt("f2p_says", {"name": nm, "text": F2P.tier_line(cid, int(t["tier"]), t["text"])})))
 	F2P.ot_changed.connect(func() -> void:
 		if is_inside_tree() and mode != "daily":
 			refill_offers()
@@ -1351,23 +1353,23 @@ func _juice(kind: String, data: Dictionary) -> void:
 		"levelup":
 			fx.flash(Palette.GOLD, 0.35, 0.5)
 			fx.burst(Vector2(640, 360), Palette.GOLD, 40)
-			fx.float_text(Vector2(640, 320), "RANK %d!" % int(data.get("rank", 0)), Palette.GOLD_PALE, 40)
+			fx.float_text(Vector2(640, 320), I18n.fmt("f2p_rank_burst", {"n": int(data.get("rank", 0))}), Palette.GOLD_PALE, 40)
 			Sfx.levelup()
 		"prestige":
 			fx.flash(Palette.GOLD_PALE, 0.6, 0.9)
 			fx.burst(Vector2(640, 360), Palette.GOLD, 60)
-			fx.float_text(Vector2(640, 320), "BUILDING %d" % int(data.get("building", 0)), Palette.GOLD_PALE, 44)
+			fx.float_text(Vector2(640, 320), I18n.fmt("f2p_bld_burst", {"n": int(data.get("building", 0))}), Palette.GOLD_PALE, 44)
 			Sfx.levelup()
 			var sc = data.get("scene")
 			if sc != null:
-				banner("NEW SCENE unlocked — see SCENES")
+				banner(I18n.t("f2p_scene_unlocked"))
 		"floor":
 			fx.burst(Vector2(110, 300), Palette.GOLD, 24)
-			fx.float_text(Vector2(560, 260), "FLOOR %d" % int(data.get("floor", 0)), Palette.GOLD, 34)
+			fx.float_text(Vector2(560, 260), I18n.fmt("f2p_floor_burst", {"n": int(data.get("floor", 0))}), Palette.GOLD, 34)
 			Sfx.shop()
 			Sfx.bark("stage")
 		"fit":
-			fx.float_text(Vector2(560, 260), "FIT-OUT %d" % int(data.get("fit", 0)), Palette.SUCCESS, 30)
+			fx.float_text(Vector2(560, 260), I18n.fmt("f2p_fit_burst", {"n": int(data.get("fit", 0))}), Palette.SUCCESS, 30)
 			Sfx.coins(3)
 		"skip":
 			var sk: Dictionary = data.get("skip", {})
@@ -1382,16 +1384,20 @@ func _juice(kind: String, data: Dictionary) -> void:
 		"chapter":
 			fx.flash(Palette.GOLD_PALE, 0.5, 0.8)
 			fx.burst(Vector2(640, 360), Palette.GOLD, 50)
-			fx.float_text(Vector2(640, 300), "CHAPTER COMPLETE", Palette.GOLD_PALE, 40)
+			fx.float_text(Vector2(640, 300), I18n.t("f2p_ch_done"), Palette.GOLD_PALE, 40)
 			Sfx.levelup()
 			var nx = data.get("next")
-			banner(str(data.get("outro", "")))       # wraps; .left(110) cut words in half
+			banner(F2P.chapter_text(str(data.get("completed", "")), "outro", data.get("outro", "")))   # wraps; .left(110) cut words in half
 			if nx != null:
 				await get_tree().create_timer(2.2).timeout
-				banner("NEXT — " + str(nx["title"]))
+				banner(I18n.fmt("f2p_next", {"title": F2P.chapter_text(str(nx["id"]), "title", nx["title"])}))
 		"boss":
 			fx.flash(Palette.HEAT, 0.35, 0.5)
-			fx.float_text(Vector2(640, 300), "BID ACCEPTED — 48 H", Palette.HEAT, 34)
+			var bid: Dictionary = data.get("boss", {}) if typeof(data.get("boss")) == TYPE_DICTIONARY else {}
+			var hrs := int(bid.get("hours", 0))
+			if hrs <= 0 and bid.has("deadline_ms") and bid.has("start_ms"):
+				hrs = int(round((int(bid["deadline_ms"]) - int(bid["start_ms"])) / 3600000.0))
+			fx.float_text(Vector2(640, 300), I18n.fmt("f2p_bid_burst", {"h": hrs if hrs > 0 else 48}), Palette.HEAT, 34)
 			Sfx.combo()
 		_:
 			Sfx.shop()
