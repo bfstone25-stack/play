@@ -39,6 +39,7 @@ const CJK := {
 	"zh": "NotoSansCJKsc-subset.ttf",
 	"zh-Hant": "NotoSansCJKtc-subset.ttf",
 	"ja": "NotoSansCJKjp-subset.ttf",
+	"ko": "NotoSansCJKkr-subset.ttf",
 }
 
 ## Every Font and FontFile this has touched, held for the life of the run. See rule one.
@@ -74,6 +75,13 @@ static func install(lang: String = "en") -> void:
 	# carries none of the six symbol glyphs, so the two never compete.
 	if cjk != null:
 		stack.append(cjk)
+	# Then the other CJK faces, behind the language's own (so its forms win): the language
+	# menu writes 日本語, 中文 and 한국어 in every language, and without these an English
+	# or German screen drew them as empty boxes.
+	for other in ["ja", "zh", "ko"]:
+		var f := cjk_face(other)
+		if f != null and not stack.has(f):
+			stack.append(f)
 	if symbols != null:
 		stack.append(symbols)
 	for path in [StudioTheme.FONT_DISPLAY, StudioTheme.FONT_UI, StudioTheme.FONT_ITALIC]:

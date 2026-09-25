@@ -1,227 +1,451 @@
 {
- "_comment": "Coco's subtitles in zh and ja, keyed by the English line in lines.json (which companion_voice.py rewrites; this file it never touches). The voice stays English; the subtitle follows the player's language. Checked by ops/nutaku/fold_f2p/check_i18n.py.",
+ "_comment": "Coco's subtitles in ja, de, fr, es, zh and ko, keyed by the English line in lines.json (which companion_voice.py rewrites; this file it never touches). The voice stays English; the subtitle follows the player's language. Checked by ops/nutaku/fold_f2p/check_i18n.py.",
  "Ready when you are.": {
   "zh": "准备好了就开始吧。",
-  "ja": "準備ができたら、いつでもどうぞ。"
+  "ja": "準備ができたら、いつでもどうぞ。",
+  "de": "Bereit, wenn du es bist.",
+  "fr": "Quand tu veux.",
+  "es": "Cuando quieras.",
+  "ko": "준비되면 시작해."
  },
  "Show me what you've got.": {
   "zh": "让我看看你的本事。",
-  "ja": "あなたの実力、見せて。"
+  "ja": "あなたの実力、見せて。",
+  "de": "Zeig mir, was du kannst.",
+  "fr": "Montre-moi ce que tu sais faire.",
+  "es": "A ver qué sabes hacer.",
+  "ko": "실력 좀 보여 줘."
  },
  "New board. Let's play.": {
   "zh": "新棋盘，来玩吧。",
-  "ja": "新しい盤面。さあ、遊ぼう。"
+  "ja": "新しい盤面。さあ、遊ぼう。",
+  "de": "Neues Brett. Lass uns spielen.",
+  "fr": "Nouveau plateau. On joue ?",
+  "es": "Tablero nuevo. A jugar.",
+  "ko": "새 보드야. 놀아 볼까?"
  },
  "Mm, this one looks fun.": {
   "zh": "嗯，这盘看起来很好玩。",
-  "ja": "ん、これは楽しそう。"
+  "ja": "ん、これは楽しそう。",
+  "de": "Mm, das hier sieht lustig aus.",
+  "fr": "Mmh, celui-là a l'air amusant.",
+  "es": "Mmm, este pinta divertido.",
+  "ko": "음~ 이거 재밌겠다."
  },
  "Take your time. I'm right here.": {
   "zh": "慢慢来，我就在这儿。",
-  "ja": "ゆっくりでいいよ。私はここにいるから。"
+  "ja": "ゆっくりでいいよ。私はここにいるから。",
+  "de": "Lass dir Zeit. Ich bin da.",
+  "fr": "Prends ton temps. Je suis là.",
+  "es": "Tómate tu tiempo. Aquí estoy.",
+  "ko": "천천히 해. 나 여기 있어."
  },
  "Let's make it pretty.": {
   "zh": "折得漂亮一点吧。",
-  "ja": "きれいに仕上げよう。"
+  "ja": "きれいに仕上げよう。",
+  "de": "Machen wir's hübsch.",
+  "fr": "Faisons ça joliment.",
+  "es": "Hagámoslo bonito.",
+  "ko": "예쁘게 만들어 보자."
  },
  "Go on, dazzle me.": {
   "zh": "来吧，让我眼前一亮。",
-  "ja": "さあ、私を驚かせて。"
+  "ja": "さあ、私を驚かせて。",
+  "de": "Na los, verblüff mich.",
+  "fr": "Vas-y, éblouis-moi.",
+  "es": "Venga, deslúmbrame.",
+  "ko": "자, 날 반하게 해 봐."
  },
  "Nice move.": {
   "zh": "这步不错。",
-  "ja": "いい手ね。"
+  "ja": "いい手ね。",
+  "de": "Schöner Zug.",
+  "fr": "Joli coup.",
+  "es": "Buen movimiento.",
+  "ko": "좋은 수야."
  },
  "Ooh, clever.": {
   "zh": "哦，真聪明。",
-  "ja": "おっ、賢い。"
+  "ja": "おっ、賢い。",
+  "de": "Ooh, raffiniert.",
+  "fr": "Oh, malin.",
+  "es": "Uy, qué astucia.",
+  "ko": "오, 똑똑한데."
  },
  "You're so smart.": {
   "zh": "你好聪明。",
-  "ja": "頭いいんだね。"
+  "ja": "頭いいんだね。",
+  "de": "Du bist so schlau.",
+  "fr": "Quelle tête tu as.",
+  "es": "Qué cabeza tienes.",
+  "ko": "너 진짜 똑똑하다."
  },
  "Mm, I like watching you think.": {
   "zh": "嗯，我喜欢看你思考的样子。",
-  "ja": "ん、考えてる顔を見るのが好き。"
+  "ja": "ん、考えてる顔を見るのが好き。",
+  "de": "Mm, ich seh dir gern beim Denken zu.",
+  "fr": "Mmh, j'aime te regarder réfléchir.",
+  "es": "Mmm, me gusta verte pensar.",
+  "ko": "음~ 고민하는 모습 보는 거 좋아."
  },
  "That was smooth.": {
   "zh": "好流畅。",
-  "ja": "今のは鮮やか。"
+  "ja": "今のは鮮やか。",
+  "de": "Das war elegant.",
+  "fr": "Tout en douceur.",
+  "es": "Qué fino.",
+  "ko": "깔끔했어."
  },
  "Look at you go.": {
   "zh": "瞧你，越来越顺了。",
-  "ja": "見て、どんどん進んでる。"
+  "ja": "見て、どんどん進んでる。",
+  "de": "Sieh dich nur an.",
+  "fr": "Regarde-toi faire.",
+  "es": "Mírate, qué ritmo.",
+  "ko": "와, 거침없네."
  },
  "Good hands.": {
   "zh": "手真巧。",
-  "ja": "器用な手ね。"
+  "ja": "器用な手ね。",
+  "de": "Geschickte Hände.",
+  "fr": "Doigts de fée.",
+  "es": "Buenas manos.",
+  "ko": "손놀림 좋다."
  },
  "Again! Again!": {
   "zh": "再来！再来！",
-  "ja": "もう一回！もう一回！"
+  "ja": "もう一回！もう一回！",
+  "de": "Nochmal! Nochmal!",
+  "fr": "Encore ! Encore !",
+  "es": "¡Otra! ¡Otra!",
+  "ko": "또! 또 해 줘!"
  },
  "Oh, keep going!": {
   "zh": "哦，继续继续！",
-  "ja": "あっ、その調子！"
+  "ja": "あっ、その調子！",
+  "de": "Oh, mach weiter!",
+  "fr": "Oh, continue !",
+  "es": "¡Ay, sigue así!",
+  "ko": "아, 계속해!"
  },
  "Wow, look at that!": {
   "zh": "哇，你看！",
-  "ja": "わあ、見て！"
+  "ja": "わあ、見て！",
+  "de": "Wow, sieh dir das an!",
+  "fr": "Waouh, regarde ça !",
+  "es": "¡Guau, mira eso!",
+  "ko": "와, 저것 좀 봐!"
  },
  "Amazing!": {
   "zh": "太厉害了！",
-  "ja": "すごい！"
+  "ja": "すごい！",
+  "de": "Wahnsinn!",
+  "fr": "Génial !",
+  "es": "¡Increíble!",
+  "ko": "대단해!"
  },
  "You're on fire tonight.": {
   "zh": "你今晚状态火热。",
-  "ja": "今夜は絶好調ね。"
+  "ja": "今夜は絶好調ね。",
+  "de": "Du bist heute Nacht in Topform.",
+  "fr": "Tu es en feu ce soir.",
+  "es": "Esta noche estás que ardes.",
+  "ko": "오늘 밤 완전 불붙었네."
  },
  "That's my favourite kind of move.": {
   "zh": "我最喜欢这种走法。",
-  "ja": "そういう手、大好き。"
+  "ja": "そういう手、大好き。",
+  "de": "Genau solche Züge mag ich am liebsten.",
+  "fr": "C'est mon genre de coup préféré.",
+  "es": "Ese es mi tipo de movimiento favorito.",
+  "ko": "내가 제일 좋아하는 수야."
  },
  "Don't stop now.": {
   "zh": "现在可别停。",
-  "ja": "ここで止めないで。"
+  "ja": "ここで止めないで。",
+  "de": "Hör jetzt nicht auf.",
+  "fr": "Surtout, continue.",
+  "es": "No pares ahora.",
+  "ko": "지금 멈추지 마."
  },
  "Careful. Just a few moves left.": {
   "zh": "小心，只剩几步了。",
-  "ja": "気をつけて。残りあと少しよ。"
+  "ja": "気をつけて。残りあと少しよ。",
+  "de": "Vorsicht. Nur noch ein paar Züge.",
+  "fr": "Attention. Plus que quelques coups.",
+  "es": "Cuidado. Quedan pocos movimientos.",
+  "ko": "조심해. 이동이 몇 번 안 남았어."
  },
  "Deep breath. You've got this.": {
   "zh": "深呼吸，你可以的。",
-  "ja": "深呼吸。あなたならできる。"
+  "ja": "深呼吸。あなたならできる。",
+  "de": "Tief durchatmen. Du schaffst das.",
+  "fr": "Respire. Tu vas y arriver.",
+  "es": "Respira hondo. Tú puedes.",
+  "ko": "숨 크게 쉬어. 할 수 있어."
  },
  "Tight one. I believe in you.": {
   "zh": "这盘很紧，我相信你。",
-  "ja": "ぎりぎりね。信じてる。"
+  "ja": "ぎりぎりね。信じてる。",
+  "de": "Knapp. Ich glaub an dich.",
+  "fr": "C'est serré. J'ai confiance en toi.",
+  "es": "Está difícil. Confío en ti.",
+  "ko": "아슬아슬하네. 난 너 믿어."
  },
  "Almost out of moves. Think it through.": {
   "zh": "步数快用完了，想清楚再走。",
-  "ja": "もうすぐ手数切れ。よく考えて。"
+  "ja": "もうすぐ手数切れ。よく考えて。",
+  "de": "Fast keine Züge mehr. Denk's gut durch.",
+  "fr": "Presque plus de coups. Réfléchis bien.",
+  "es": "Casi sin movimientos. Piénsalo bien.",
+  "ko": "이동이 거의 없어. 잘 생각해 봐."
  },
  "Slow down. Find the fold.": {
   "zh": "放慢一点，找到那一折。",
-  "ja": "落ち着いて。折り目を探して。"
+  "ja": "落ち着いて。折り目を探して。",
+  "de": "Langsam. Finde die Falte.",
+  "fr": "Doucement. Trouve le pli.",
+  "es": "Con calma. Encuentra el pliegue.",
+  "ko": "천천히. 접을 곳을 찾아 봐."
  },
  "Easy. One smart move at a time.": {
   "zh": "别急，一步一步走对。",
-  "ja": "焦らないで。一手ずつ、賢く。"
+  "ja": "焦らないで。一手ずつ、賢く。",
+  "de": "Ganz ruhig. Ein kluger Zug nach dem anderen.",
+  "fr": "Tranquille. Un bon coup à la fois.",
+  "es": "Tranquilidad. Un buen movimiento cada vez.",
+  "ko": "침착하게. 한 수씩 똑똑하게."
  },
  "There you go!": {
   "zh": "成了！",
-  "ja": "できた！"
+  "ja": "できた！",
+  "de": "Na bitte!",
+  "fr": "Et voilà !",
+  "es": "¡Eso es!",
+  "ko": "바로 그거야!"
  },
  "Beautiful. Next one?": {
   "zh": "真漂亮。下一盘？",
-  "ja": "きれい。次、いく？"
+  "ja": "きれい。次、いく？",
+  "de": "Wunderschön. Das nächste?",
+  "fr": "Magnifique. Le suivant ?",
+  "es": "Precioso. ¿El siguiente?",
+  "ko": "멋져. 다음 거 할래?"
  },
  "I knew you could.": {
   "zh": "我就知道你行。",
-  "ja": "できると思ってた。"
+  "ja": "できると思ってた。",
+  "de": "Ich wusste, du kannst es.",
+  "fr": "Je le savais.",
+  "es": "Sabía que podías.",
+  "ko": "해낼 줄 알았어."
  },
  "Clean and easy.": {
   "zh": "干净利落。",
-  "ja": "スマートに決まったね。"
+  "ja": "スマートに決まったね。",
+  "de": "Sauber und locker.",
+  "fr": "Net et facile.",
+  "es": "Limpio y fácil.",
+  "ko": "깔끔하고 가볍게."
  },
  "You make it look simple.": {
   "zh": "你让它看起来好简单。",
-  "ja": "簡単そうにやっちゃうんだから。"
+  "ja": "簡単そうにやっちゃうんだから。",
+  "de": "Bei dir sieht das so einfach aus.",
+  "fr": "Avec toi, ça a l'air simple.",
+  "es": "Haces que parezca sencillo.",
+  "ko": "넌 뭐든 쉬워 보이게 하네."
  },
  "Mm, well done.": {
   "zh": "嗯，做得好。",
-  "ja": "ん、よくできました。"
+  "ja": "ん、よくできました。",
+  "de": "Mm, gut gemacht.",
+  "fr": "Mmh, bien joué.",
+  "es": "Mmm, bien hecho.",
+  "ko": "음~ 잘했어."
  },
  "That's how it's done.": {
   "zh": "就是要这样。",
-  "ja": "そう、それでいいの。"
+  "ja": "そう、それでいいの。",
+  "de": "So macht man das.",
+  "fr": "Voilà comment on fait.",
+  "es": "Así se hace.",
+  "ko": "그렇게 하는 거지."
  },
  "Three stars! You're so smart.": {
   "zh": "三星！你好聪明。",
-  "ja": "星3つ！頭いいんだね。"
+  "ja": "星3つ！頭いいんだね。",
+  "de": "Drei Sterne! Du bist so schlau.",
+  "fr": "Trois étoiles ! Quelle tête tu as.",
+  "es": "¡Tres estrellas! Qué cabeza tienes.",
+  "ko": "별 세 개! 너 진짜 똑똑하다."
  },
  "Nobody's ever beaten this so fast.": {
   "zh": "还没人这么快过这一关。",
-  "ja": "こんなに速く解いた人、初めて。"
+  "ja": "こんなに速く解いた人、初めて。",
+  "de": "So schnell hat das noch keiner geschafft.",
+  "fr": "Personne ne l'a jamais fini aussi vite.",
+  "es": "Nadie lo había superado tan rápido.",
+  "ko": "이렇게 빨리 깬 사람은 처음이야."
  },
  "Perfect. I'm impressed.": {
   "zh": "完美，我服了。",
-  "ja": "完璧。感心しちゃった。"
+  "ja": "完璧。感心しちゃった。",
+  "de": "Perfekt. Ich bin beeindruckt.",
+  "fr": "Parfait. Je suis impressionnée.",
+  "es": "Perfecto. Me has impresionado.",
+  "ko": "완벽해. 감동인걸."
  },
  "Flawless. I could get used to this.": {
   "zh": "无可挑剔。我都要习惯了。",
-  "ja": "非の打ちどころなし。クセになりそう。"
+  "ja": "非の打ちどころなし。クセになりそう。",
+  "de": "Makellos. Daran könnt ich mich gewöhnen.",
+  "fr": "Sans faute. Je pourrais m'y habituer.",
+  "es": "Impecable. Podría acostumbrarme.",
+  "ko": "흠잡을 데가 없네. 이런 거 익숙해질 것 같아."
  },
  "Three stars. Show-off. I love it.": {
   "zh": "三星。爱炫耀，可我喜欢。",
-  "ja": "星3つ。見せつけちゃって。好きよ。"
+  "ja": "星3つ。見せつけちゃって。好きよ。",
+  "de": "Drei Sterne. Angeber. Ich liebe es.",
+  "fr": "Trois étoiles. Quelle frime… J'adore.",
+  "es": "Tres estrellas. Qué manera de lucirte. Me encanta.",
+  "ko": "별 세 개. 잘난 척은. 근데 좋아."
  },
  "Wow. Not a single wasted move.": {
   "zh": "哇，一步都没浪费。",
-  "ja": "わあ。一手も無駄がない。"
+  "ja": "わあ。一手も無駄がない。",
+  "de": "Wow. Kein einziger Zug verschenkt.",
+  "fr": "Waouh. Pas un seul coup perdu.",
+  "es": "Guau. Ni un movimiento de más.",
+  "ko": "와. 낭비한 수가 하나도 없어."
  },
  "A new scene. Go on, take a look.": {
   "zh": "新场景，去看看吧。",
-  "ja": "新しいシーンよ。ほら、見てみて。"
+  "ja": "新しいシーンよ。ほら、見てみて。",
+  "de": "Eine neue Szene. Na los, schau sie dir an.",
+  "fr": "Une nouvelle scène. Vas-y, regarde.",
+  "es": "Una escena nueva. Anda, échale un vistazo.",
+  "ko": "새 장면이야. 어서, 봐 봐."
  },
  "You earned this one.": {
   "zh": "这是你应得的。",
-  "ja": "これはあなたが勝ち取ったもの。"
+  "ja": "これはあなたが勝ち取ったもの。",
+  "de": "Die hast du dir verdient.",
+  "fr": "Celle-là, tu l'as méritée.",
+  "es": "Esta te la has ganado.",
+  "ko": "이건 네가 얻어 낸 거야."
  },
  "Mm, you unlocked something special.": {
   "zh": "嗯，你解锁了特别的东西。",
-  "ja": "ん、特別なものをひらいたね。"
+  "ja": "ん、特別なものをひらいたね。",
+  "de": "Mm, du hast was Besonderes freigeschaltet.",
+  "fr": "Mmh, tu as débloqué quelque chose de spécial.",
+  "es": "Mmm, has desbloqueado algo especial.",
+  "ko": "음~ 특별한 걸 열었네."
  },
  "All yours now. Enjoy.": {
   "zh": "现在都是你的了，好好享受。",
-  "ja": "もう全部あなたのもの。楽しんで。"
+  "ja": "もう全部あなたのもの。楽しんで。",
+  "de": "Jetzt gehört sie dir. Genieß es.",
+  "fr": "Elle est à toi. Profite.",
+  "es": "Ya es toda tuya. Disfruta.",
+  "ko": "이제 다 네 거야. 즐겨."
  },
  "I was hoping you'd get here.": {
   "zh": "我一直盼着你走到这里。",
-  "ja": "ここまで来てくれるって、期待してた。"
+  "ja": "ここまで来てくれるって、期待してた。",
+  "de": "Ich hab gehofft, dass du's bis hierher schaffst.",
+  "fr": "J'espérais que tu arriverais jusqu'ici.",
+  "es": "Esperaba que llegaras aquí.",
+  "ko": "여기까지 와 주길 바랐어."
  },
  "You came back. I missed you.": {
   "zh": "你回来了。我好想你。",
-  "ja": "戻ってきてくれた。会いたかった。"
+  "ja": "戻ってきてくれた。会いたかった。",
+  "de": "Du bist zurück. Ich hab dich vermisst.",
+  "fr": "Te revoilà. Tu m'as manqué.",
+  "es": "Has vuelto. Te echaba de menos.",
+  "ko": "돌아왔구나. 보고 싶었어."
  },
  "There you are. Ready to play?": {
   "zh": "你来啦。准备好玩了吗？",
-  "ja": "来てくれたのね。遊ぶ準備はいい？"
+  "ja": "来てくれたのね。遊ぶ準備はいい？",
+  "de": "Da bist du ja. Lust zu spielen?",
+  "fr": "Te voilà. On joue ?",
+  "es": "Ahí estás. ¿Lista la partida?",
+  "ko": "왔네. 놀 준비 됐어?"
  },
  "Welcome back. I saved you a board.": {
   "zh": "欢迎回来，我给你留了一盘。",
-  "ja": "おかえり。盤面をひとつ取っておいたよ。"
+  "ja": "おかえり。盤面をひとつ取っておいたよ。",
+  "de": "Willkommen zurück. Ich hab dir ein Brett aufgehoben.",
+  "fr": "Re-bonjour. Je t'ai gardé un plateau.",
+  "es": "Hola de nuevo. Te guardé un tablero.",
+  "ko": "어서 와. 보드 하나 남겨 뒀어."
  },
  "Hey you. Let's pick up where we left off.": {
   "zh": "嘿，我们接着上次继续吧。",
-  "ja": "ねえ。この前の続きから始めよう。"
+  "ja": "ねえ。この前の続きから始めよう。",
+  "de": "Hey du. Machen wir weiter, wo wir aufgehört haben.",
+  "fr": "Coucou toi. On reprend où on s'était arrêtés.",
+  "es": "Hola, tú. Sigamos donde lo dejamos.",
+  "ko": "안녕. 하던 데서 이어서 하자."
  },
  "Good to see you again.": {
   "zh": "很高兴又见到你。",
-  "ja": "また会えてうれしい。"
+  "ja": "また会えてうれしい。",
+  "de": "Schön, dich wiederzusehen.",
+  "fr": "Contente de te revoir.",
+  "es": "Qué alegría verte otra vez.",
+  "ko": "또 보니까 좋다."
  },
  "Back already? I like that.": {
   "zh": "这么快就回来了？我喜欢。",
-  "ja": "もう戻ってきたの？そういうの、好き。"
+  "ja": "もう戻ってきたの？そういうの、好き。",
+  "de": "Schon zurück? Das gefällt mir.",
+  "fr": "Déjà de retour ? J'aime ça.",
+  "es": "¿Ya de vuelta? Me gusta.",
+  "ko": "벌써 왔어? 그런 거 좋아."
  },
  "Win after win! Look at you.": {
   "zh": "连赢不停！看看你。",
-  "ja": "勝ちっぱなし！さすがね。"
+  "ja": "勝ちっぱなし！さすがね。",
+  "de": "Sieg um Sieg! Sieh dich nur an.",
+  "fr": "Victoire sur victoire ! Regarde-toi.",
+  "es": "¡Victoria tras victoria! Mírate.",
+  "ko": "연승이야! 너 좀 봐."
  },
  "You're on a streak. Don't stop.": {
   "zh": "你在连胜中，别停。",
-  "ja": "連勝中よ。止まらないで。"
+  "ja": "連勝中よ。止まらないで。",
+  "de": "Du hast einen Lauf. Hör nicht auf.",
+  "fr": "Quelle série. Ne t'arrête pas.",
+  "es": "Estás en racha. No pares.",
+  "ko": "연속 중이야. 멈추지 마."
  },
  "That streak. I'm blushing.": {
   "zh": "这连胜，我都脸红了。",
-  "ja": "その連勝…顔が熱くなっちゃう。"
+  "ja": "その連勝…顔が熱くなっちゃう。",
+  "de": "Diese Serie. Ich werd ganz rot.",
+  "fr": "Cette série… Je rougis.",
+  "es": "Menuda racha. Me sonrojo.",
+  "ko": "이 연속 기록 봐. 나 얼굴 빨개져."
  },
  "Another one! You're unstoppable.": {
   "zh": "又一个！你简直停不下来。",
-  "ja": "また勝った！もう止められない。"
+  "ja": "また勝った！もう止められない。",
+  "de": "Noch einer! Du bist nicht zu bremsen.",
+  "fr": "Encore une ! Rien ne t'arrête.",
+  "es": "¡Otra más! No hay quien te pare.",
+  "ko": "또 이겼어! 아무도 못 말리겠네."
  },
  "Streak's still alive. Keep it going.": {
   "zh": "连胜还在继续，保持住。",
-  "ja": "連勝はまだ続いてる。このまま行こう。"
+  "ja": "連勝はまだ続いてる。このまま行こう。",
+  "de": "Die Serie lebt noch. Bleib dran.",
+  "fr": "La série tient toujours. Continue.",
+  "es": "La racha sigue viva. Mantenla.",
+  "ko": "연속 기록 아직 살아 있어. 계속 가자."
  }
 }

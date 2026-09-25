@@ -50,6 +50,8 @@ func shot(name: String) -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(shot_dir))
 	img.save_png(ProjectSettings.globalize_path(shot_dir + "/" + name + ".png"))
 	print("SHOT %.2f %s" % [Engine.get_frames_drawn() / FPS, name])
+	for w in preload("res://tests/text_fit.gd").scan(get_tree().root):
+		print("FIT %s %s" % [name, w])
 
 
 func current() -> Node:
@@ -100,6 +102,8 @@ func _ready() -> void:
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--lang="):
 			I18n.set_lang(a.split("=", true, 1)[1])
+		elif a.begins_with("--shots="):      # an absolute directory (ops/nutaku/lang_shots.py)
+			shot_dir = a.split("=", true, 1)[1]
 	print("WALK_LANG " + I18n.lang)
 	get_tree().create_timer(420.0).timeout.connect(func():
 		print("WALK_FAIL watchdog: the walkthrough did not finish in 420 s of game time")

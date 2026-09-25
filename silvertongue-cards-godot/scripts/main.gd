@@ -180,11 +180,14 @@ func _build_bar() -> void:
 	row.add_child(_energy_bar)
 	_energy_next = StudioTheme.mono_label("", 10, Palette.MUTED)
 	row.add_child(_energy_next)
+	# The daily tag is also the bar's spring (2026-09-24): it takes the spare width and, when
+	# a longer language leaves none, ends in "…" rather than pushing the last nav button
+	# (STORE / SHOP) off the right edge, which German did.
 	_daily_tag = StudioTheme.mono_label("", 10, Palette.SUCCESS)
+	_daily_tag.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_daily_tag.clip_text = true
+	_daily_tag.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	row.add_child(_daily_tag)
-	var fill := Control.new()
-	fill.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(fill)
 	# Offline is a state the player is entitled to know about: their collection lives in
 	# this browser rather than in their account. One quiet chip, not a toast every request.
 	_offline_chip = StudioTheme.mono_label("", 9, Palette.MUTED)
@@ -194,7 +197,7 @@ func _build_bar() -> void:
 	_lang_button = Button.new()
 	_lang_button.focus_mode = Control.FOCUS_NONE
 	_lang_button.tooltip_text = Loc.t("LANGUAGE")
-	_lang_button.pressed.connect(func(): Sfx.play("ui_click"); Loc.next())
+	_lang_button.pressed.connect(func(): Sfx.play("ui_click"); _lang_menu())
 	StudioTheme.style_button(_lang_button, "quiet")
 	row.add_child(_lang_button)
 	var navs := [["home", "DUELS"], ["gacha", "GACHA"], ["affection", "AFFECTION"], ["deck", "DECK"]]
@@ -209,6 +212,24 @@ func _build_bar() -> void:
 		row.add_child(b)
 		_nav[pair[0]] = b
 	_relabel()
+
+
+## The language menu: every language Loc offers, each named in itself, the current one
+## checked. Seven languages made a cycling button a lottery; this is a picker.
+func _lang_menu() -> void:
+	var pm := PopupMenu.new()
+	pm.name = "LangMenu"
+	pm.add_theme_font_override("font", StudioTheme.font("ui"))
+	pm.add_theme_font_size_override("font_size", 18)
+	for i in Loc.LANGS.size():
+		var row: Dictionary = Loc.LANGS[i]
+		pm.add_radio_check_item(str(row["name"]), i)
+		pm.set_item_checked(i, row["code"] == Loc.code())
+	pm.id_pressed.connect(func(i: int) -> void: Loc.set_code(str(Loc.LANGS[i]["code"])))
+	pm.popup_hide.connect(pm.queue_free)
+	add_child(pm)
+	var r := _lang_button.get_global_rect()
+	pm.popup(Rect2i(Vector2i(int(r.position.x), int(r.end.y) + 4), Vector2i(int(max(r.size.x, 160.0)), 0)))
 
 
 ## Re-text every label the top bar owns. Called on boot and whenever Loc changes, so the

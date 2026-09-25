@@ -515,9 +515,8 @@ func _build_hud() -> void:
 	langb.name = "Lang"
 	langb.theme_type_variation = "Ghost"
 	langb.pressed.connect(func():
-		I18n.toggle()
 		mark.mark = VectorMark.NAME     # a name is not translated; see vector_mark.gd
-		Tel.ev("language_selected", {"language": I18n.lang}))
+		I18n.menu(langb))
 	top.add_child(langb)
 
 	var soundb := Button.new()
@@ -706,7 +705,7 @@ func _sync() -> void:
 	_reset_btn.text = I18n.t("reset")
 	_hint.text = I18n.t("hint")
 	var top := _hud.get_child(0).get_child(0).get_child(0)
-	(top.get_node("Lang") as Button).text = I18n.next_lang_label()
+	(top.get_node("Lang") as Button).text = I18n.lang_label()
 	(top.get_node("Sound") as Button).text = "♪" if Sfx.sfx_on else "✕"
 	(top.get_node("Voice") as Button).text = I18n.t("voice_on") if Juice.voice_on else I18n.t("voice_off")
 	(top.get_node("Motion") as Button).text = I18n.t("motion_on") if not Juice.reduced_motion else I18n.t("motion_off")

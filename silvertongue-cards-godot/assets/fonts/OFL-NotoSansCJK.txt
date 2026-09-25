@@ -1,4 +1,4 @@
-Noto Sans CJK — SIL Open Font License 1.1. NotoSansCJK{sc,jp,kr}-subset.ttf are subsets (ops/subset_cjk.py) of Noto Sans CJK SC / JP / KR from NotoSansCJK-Regular.ttc, Copyright 2014-2021 Adobe, Reserved Font Name "Source". The KR face was added 2026-09-24 for Korean.
+Noto Sans CJK — SIL Open Font License 1.1. NotoSansCJK{sc,tc,jp,kr}-subset.ttf are subsets (tools/font_pack.py -> ops/subset_cjk.py) of Noto Sans CJK SC / TC / JP / KR from NotoSansCJK-Regular.ttc, Copyright 2014-2021 Adobe, Reserved Font Name "Source". The KR face was added 2026-09-24 for Korean.
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

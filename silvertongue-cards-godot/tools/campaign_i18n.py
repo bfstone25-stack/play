@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""The Night Ledger in Chinese and Japanese: every string the SUASION title server can put
+"""The Night Ledger in Japanese, German, French, Spanish, Chinese and Korean (de/fr/es/ko
+added 2026-09-24, memory `seven-languages-default`): every string the SUASION title server can put
 on a Nutaku player's screen, and the table the client translates them with.
 
 The server speaks English only, on purpose: card lines are rules (decompose() reads the
@@ -8,10 +9,10 @@ wire keeps the replay the only authority. The client translates what it is sent 
 Loc (scripts/loc.gd), the same way it translates its own chrome: keyed on the exact
 English string. So the whole job is a table, and this file owns it.
 
-  sources   assets/i18n/src/zh.json, assets/i18n/src/ja.json   English -> translation,
+  sources   assets/i18n/src/{zh,ja,de,fr,es,ko}.json   English -> translation,
             hand-written (not word for word); ja also inherits the base game's existing
             Japanese (backend/replies_ja.py, cards_ja.py) where src has no entry
-  output    assets/i18n/campaign.json   {"ja": {...}, "zh": {...}, "zh-Hant": {...}}
+  output    assets/i18n/campaign.json   {"ja": {...}, "de": ..., "zh": {...}, "zh-Hant": {...}, ...}
             zh-Hant is converted from zh with OpenCC (s2twp)
 
     python3 tools/campaign_i18n.py              # build campaign.json; prints what is missing
@@ -37,7 +38,7 @@ PRODUCTS = PLAY.parent
 OPS = PRODUCTS / "ops" / "nutaku"
 SRC = PROJECT / "assets" / "i18n" / "src"
 OUT = PROJECT / "assets" / "i18n" / "campaign.json"
-LANGS = ("zh", "ja")
+LANGS = ("zh", "ja", "de", "fr", "es", "ko")
 
 
 def _campaign():
@@ -198,7 +199,7 @@ def main() -> int:
         n, d = int(a[1]), pathlib.Path(a[2])
         d.mkdir(parents=True, exist_ok=True)
         todo = {lang: missing(lang) for lang in LANGS}
-        keys = sorted(set(todo["zh"]) | set(todo["ja"]), key=list(english()).index)
+        keys = sorted(set().union(*todo.values()), key=list(english()).index)
         size, i = sum(len(k.split()) for k in keys) / n, 0
         chunk, words = [], 0
         for k in keys:

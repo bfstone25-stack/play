@@ -172,11 +172,20 @@ func _build() -> void:
 			focus_card = card
 
 	# right: the daily systems — the server's on Nutaku, the labelled local stubs elsewhere
+	# In a scroll of its own (2026-09-24): in German the event and mission panels wrap to
+	# more lines and the login calendar was pushed off the bottom of a 720-high screen.
+	var side_scroll := ScrollContainer.new()
+	side_scroll.name = "SideScroll"
+	side_scroll.custom_minimum_size = Vector2(300, 0)
+	side_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	side_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	body.add_child(side_scroll)
 	var side := VBoxContainer.new()
 	side.name = "Side"
 	side.custom_minimum_size = Vector2(300, 0)
+	side.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	side.add_theme_constant_override("separation", 10)
-	body.add_child(side)
+	side_scroll.add_child(side)
 	if F2P.on():
 		for p in F2PUI.side(func(): _build(), _open_shop):
 			side.add_child(p)

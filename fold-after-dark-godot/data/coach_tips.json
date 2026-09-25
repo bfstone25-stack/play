@@ -108,5 +108,71 @@
       "精緻な一手が、迷宮を澄明に変えました。",
       "一手も虚しくなく、万象は一へ帰りました。"
     ]
+  },
+  "de": {
+    "easy": [
+      "Ein klarer Anfang. Zwei Wege wurden einer.",
+      "Einfache Formen, klar gesehen.",
+      "Die erste Falte ist vollbracht."
+    ],
+    "medium": [
+      "Du sahst die Ordnung, verborgen im Raum.",
+      "Jeder Zug machte das Ganze gewisser.",
+      "Ruhige Richtung brachte die Teile heim."
+    ],
+    "hard": [
+      "Geduld enthüllte die Form im Labyrinth.",
+      "Die Vielfalt wich einem stillen Plan.",
+      "Das ganze Brett lag klar im Geist."
+    ],
+    "expert": [
+      "Viele Möglichkeiten, eine zwingende Form.",
+      "Präzision machte das Labyrinth zu Klarheit.",
+      "Nichts verschwendet. Alles kehrte zum Einen zurück."
+    ]
+  },
+  "fr": {
+    "easy": [
+      "Un début net. Deux chemins n'en font plus qu'un.",
+      "Des formes simples, vues clairement.",
+      "Le premier pli est accompli."
+    ],
+    "medium": [
+      "L'ordre caché dans l'espace s'est révélé.",
+      "Chaque coup a rendu l'ensemble plus sûr.",
+      "Un cap tranquille a ramené les pièces à bon port."
+    ],
+    "hard": [
+      "La patience a révélé la forme au cœur du dédale.",
+      "La complexité a cédé à un plan tranquille.",
+      "Le plateau entier, tenu en pensée."
+    ],
+    "expert": [
+      "Mille possibles, une seule forme inévitable.",
+      "La précision a changé le labyrinthe en clarté.",
+      "Rien de perdu. Tout est revenu à l'unité."
+    ]
+  },
+  "ko": {
+    "easy": [
+      "깔끔한 시작. 두 갈래 길이 하나가 되었다.",
+      "단순한 형태가 선명하게 보였다.",
+      "첫 번째 접기가 끝났다."
+    ],
+    "medium": [
+      "공간 속에 숨은 질서가 보였다.",
+      "한 수마다 전체가 더 분명해졌다.",
+      "차분한 방향이 조각들을 제자리로 이끌었다."
+    ],
+    "hard": [
+      "인내가 미로 속의 형태를 드러냈다.",
+      "복잡함이 고요한 계획 앞에 물러섰다.",
+      "보드 전체가 마음속에 담겼다."
+    ],
+    "expert": [
+      "수많은 가능성, 피할 수 없는 하나의 형태.",
+      "정밀함이 미로를 명료함으로 바꾸었다.",
+      "낭비 없이, 모든 것이 하나로 돌아갔다."
+    ]
   }
 }

@@ -89,6 +89,9 @@ func _ready() -> void:
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--nutaku-mock="):
 			mock = a.split("=", true, 1)[1]
+	# The checks below read English: pin it, whatever language a previous run saved
+	# (a Chinese walkthrough on the same box left zh behind and the hint check read 提示).
+	I18n.set_lang("en")
 	await run()
 	print("CLIENT_OK" if fails == 0 else "CLIENT_FAIL %d" % fails)
 	get_tree().quit(1 if fails else 0)
@@ -196,14 +199,14 @@ func run() -> void:
 		if card != null and card.find_child("BuyScene", true, false) != null:
 			offered.append(t)
 	check("Unlock now is on the current tier and the next only", offered == [1, 2], str(offered))
-	for lang in ["zh", "ja"]:
+	for lang in ["ja", "de", "fr", "es", "zh", "ko"]:
 		I18n.set_lang(lang)
 		await sleep(0.3)
 		await until(func(): return map.find_child("DailyChallenge", true, false) != null, 5.0)
-		var eng := english_words(map)
+		var eng := leaks(map, lang)
 		check("the map and its F2P panels have no English in %s" % lang, eng.is_empty(), ", ".join(eng.slice(0, 12)))
 		var buy := map.find_child("BuyScene", true, false) as Button
-		check("the unlock offer is in %s" % lang, buy != null and english_words(buy).is_empty(), buy.text if buy else "")
+		check("the unlock offer is in %s" % lang, buy != null and leaks(buy, lang).is_empty(), buy.text if buy else "")
 		# the shop and an out-of-candles card, drawn on the map's own overlay host
 		var host := Control.new()
 		host.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -213,13 +216,14 @@ func run() -> void:
 		map.add_child(host)
 		F2PUI.shop(host, func(): pass)
 		await sleep(0.1)
-		eng = english_words(host)
+		eng = leaks(host, lang)
 		check("the shop has no English in %s" % lang, eng.is_empty(), ", ".join(eng.slice(0, 12)))
 		host.queue_free()
-		check("a results cheer is in %s" % lang, I18n.t("cheer_3") != "Perfect!" and english_words_in(I18n.t("cheer_3")).is_empty())
-		check("a server refusal is in %s" % lang, english_words_in(I18n.reason("over budget (31 > 30)")).is_empty()
+		check("a results cheer is in %s" % lang, I18n.t("cheer_3") != "Perfect!" and leaks_in(I18n.t("cheer_3"), lang).is_empty())
+		check("a server refusal is in %s" % lang, leaks_in(I18n.reason("over budget (31 > 30)"), lang).is_empty()
 			and I18n.reason("over budget (31 > 30)") != I18n.reason("zzz unknown"), I18n.reason("over budget (31 > 30)"))
-		check("Coco's subtitle is in %s" % lang, english_words_in(Coco.subtitle("Perfect. I'm impressed.")).is_empty())
+		check("Coco's subtitle is in %s" % lang, Coco.subtitle("Perfect. I'm impressed.") != "Perfect. I'm impressed."
+			and leaks_in(Coco.subtitle("Perfect. I'm impressed."), lang).is_empty())
 	I18n.set_lang("en")
 	map.queue_free()
 
@@ -228,6 +232,54 @@ func run() -> void:
 ## (the cast, the platform, the wordmark, the player's own nickname on the boards) and
 ## the clock's UTC.
 const NAMES := ["coco", "june", "iris", "sable", "vesna", "wren", "nutaku", "utc", "plicata", "blazecore"]
+
+
+## What of `root`'s text is still English in `lang`. For ja / zh / ko: any Latin word (the
+## script tells). For de / fr / es a Latin word proves nothing, so: any label whose text IS
+## an English line of the tables (numbers normalised) and not also that language's line.
+func leaks(root: Node, lang: String) -> Array:
+	if lang in ["ja", "zh", "ko"]:
+		return english_words(root)
+	var out := []
+	var nodes := [root]
+	nodes.append_array(root.find_children("*", "Control", true, false))
+	for n in nodes:
+		if (n is Label or n is Button) and (n as CanvasItem).is_visible_in_tree():
+			out.append_array(leaks_in(str(n.text), lang))
+	return out
+
+
+func leaks_in(s: String, lang: String) -> Array:
+	if lang in ["ja", "zh", "ko"]:
+		return english_words_in(s)
+	if _en_lines.is_empty():
+		for v in (I18n.T["en"] as Dictionary).values():
+			if v is String:
+				_en_lines[_norm(v)] = true
+		for row in I18n._f2p.values():
+			_en_lines[_norm(str(row.get("en", "")))] = true
+	var n := _norm(s)
+	if _en_lines.has(n) and english_words_in(s).size() > 0 and not _is_lang_line(n, lang):
+		return [s]
+	return []
+
+
+var _en_lines := {}
+
+
+func _is_lang_line(n: String, lang: String) -> bool:
+	for v in (I18n.T[lang] as Dictionary).values():
+		if v is String and _norm(v) == n:
+			return true
+	for row in I18n._f2p.values():
+		if _norm(str(row.get(lang, ""))) == n:
+			return true
+	return false
+
+
+func _norm(s: String) -> String:
+	var re := RegEx.create_from_string("%[-0-9.]*[ds]|\\d+")
+	return re.sub(s, "#", true).strip_edges()
 
 
 func english_words(root: Node) -> Array:

@@ -15,6 +15,10 @@ the three places FOLD's Chinese actually comes from —
                        Origami shipped, 143 characters short, all of them in the her-band
                        fold vocabulary: 腰, 裾, 翻, 结 and the rest)
   scripts/*.gd, scenes/*.gd   the UI strings in scripts/i18n.gd
+  data/i18n_f2p.json  the Nutaku F2P table (2026-09-24: it was never in this list, so
+                       244 zh and 166 ja characters of the F2P layer drew as empty boxes;
+                       ops/nutaku/fold_f2p/check_i18n.py now fails on that)
+  assets/voice/companion/subtitles.json   Coco's subtitles
 
 — plus the punctuation and the two glyphs the title screen draws by hand.
 
@@ -37,8 +41,9 @@ OUT = HERE / "assets/fonts/NotoSansCJK-subset.otf"
 
 chars: set[str] = set()
 
-for name in ("levels.json", "coach_tips.json", "steps.json"):
+for name in ("levels.json", "coach_tips.json", "steps.json", "i18n_f2p.json"):
     chars |= set((HERE / "data" / name).read_text(encoding="utf-8"))
+chars |= set((HERE / "assets/voice/companion/subtitles.json").read_text(encoding="utf-8"))
 
 for p in list(HERE.glob("scripts/*.gd")) + list(HERE.glob("scenes/*.gd")):
     chars |= set(p.read_text(encoding="utf-8"))
@@ -49,7 +54,9 @@ for p in list(HERE.glob("scripts/*.gd")) + list(HERE.glob("scenes/*.gd")):
 # Marcellus either, so they ride in the same fallback.
 chars |= set("归一帰0123456789×·—…：；！？，。、（）「」★☆◆♪✕✓‹›→←↑↓")
 
-cjk = "".join(sorted(c for c in chars if ord(c) > 0x2000))
+HANGUL = lambda c: 0x1100 <= ord(c) <= 0x11FF or 0x3130 <= ord(c) <= 0x318F or 0xAC00 <= ord(c) <= 0xD7A3
+cjk = "".join(sorted(c for c in chars if ord(c) > 0x2000 and not HANGUL(c)))
+hangul = "".join(sorted(c for c in chars if HANGUL(c))) + "한국어"
 
 if not SRC.exists():
     sys.exit(f"source font missing: {SRC}")
@@ -64,3 +71,26 @@ subprocess.run(
     check=True,
 )
 print(f"{len(cjk)} glyphs -> {OUT} ({OUT.stat().st_size // 1024} KB)")
+
+# Korean (added 2026-09-24 with de/fr/es/ko): Hangul is not in the JP face, so it gets its
+# own subset of Noto Sans CJK KR, hung after the JP one in StudioTheme's fallback chain.
+TTC = pathlib.Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc")
+OUT_KR = HERE / "assets/fonts/NotoSansCJKkr-subset.otf"
+from fontTools.ttLib import TTCollection  # noqa: E402
+from fontTools.subset import Subsetter  # noqa: E402
+kr = next(f for f in TTCollection(str(TTC)).fonts if f["name"].getDebugName(1) == "Noto Sans CJK KR")
+sub = Subsetter()
+sub.populate(text=hangul + "·…“”‘’「」、。")
+sub.subset(kr)
+kr.save(str(OUT_KR))
+print(f"{len(hangul)} Hangul -> {OUT_KR} ({OUT_KR.stat().st_size // 1024} KB)")
+
+# The symbols no face here holds: ✕ (sound off, close), ∞ (a candle pass) and the macron
+# in "plicāre". Neither Nunito, Lilita One nor Noto Sans CJK JP has ✕, so it drew as an
+# empty box in every language until this. DejaVu Sans (Bitstream Vera licence, OFL-compatible
+# terms; LICENSE-DejaVu.txt) is cut to just those.
+DEJAVU = pathlib.Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+OUT_SYM = HERE / "assets/fonts/Symbols-subset.ttf"
+subprocess.run(["pyftsubset", str(DEJAVU), "--text=✕∞āĀ★☆◆♪✓‹›→←↑↓×♥", "--no-hinting",
+                "--output-file=" + str(OUT_SYM)], check=True)
+print(f"symbols -> {OUT_SYM} ({OUT_SYM.stat().st_size // 1024} KB)")

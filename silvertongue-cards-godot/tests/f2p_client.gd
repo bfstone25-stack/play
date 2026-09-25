@@ -20,6 +20,7 @@ func check(cond: bool, what: String) -> void:
 
 func _ready() -> void:
 	Sfx.muted = true
+	Loc.set_code("en")      # the checks read English: pin it over whatever a previous run saved
 	call_deferred("_run")
 
 
@@ -171,9 +172,12 @@ func _run() -> void:
 	await get_tree().process_frame
 	check(m.screen._list.get_child_count() >= 8, "the store lists the SKUs from the catalogue")
 
-	# ---- Japanese and Chinese: the campaign's own words, not only the chrome
+	# ---- every language: the campaign's own words, not only the chrome
 	var cjk := RegEx.create_from_string("[\\x{3040}-\\x{30ff}\\x{4e00}-\\x{9fff}]")
-	for lang in ["ja", "zh"]:
+	var hangul := RegEx.create_from_string("[\\x{ac00}-\\x{d7a3}]")
+	var any := RegEx.create_from_string("[\\s\\S]")
+	for lang in ["ja", "de", "fr", "es", "zh", "ko"]:
+		var script: RegEx = hangul if lang == "ko" else (cjk if lang in ["ja", "zh"] else any)
 		Loc.set_code(lang)
 		await get_tree().create_timer(0.4).timeout
 		m.go("home")
@@ -185,14 +189,15 @@ func _run() -> void:
 				labels.append(str(n.text))
 		var joined := "\n".join(labels)
 		var en_title := str(F2P.su["chapters"][0]["stages"][0]["title"])
-		check(cjk.search(joined) != null and not (en_title in joined) and not ("THE NIGHT LEDGER" in joined),
+		check(script.search(joined) != null and not (en_title in joined) and not ("THE NIGHT LEDGER" in joined)
+			and Loc.s(en_title) in joined,
 			"%s: the Ledger's chrome and its stage titles are translated" % lang)
 		m.go("store")
 		await get_tree().process_frame
 		var st_txt := []
 		for n in m.screen.find_children("*", "Label", true, false):
 			st_txt.append(str(n.text))
-		check(not ("Paid in Nutaku gold" in "\n".join(st_txt)) and cjk.search("\n".join(st_txt)) != null,
+		check(not ("Paid in Nutaku gold" in "\n".join(st_txt)) and script.search("\n".join(st_txt)) != null,
 			"%s: the store's items and its note are translated" % lang)
 	Loc.set_code("en")
 	await get_tree().create_timer(0.4).timeout

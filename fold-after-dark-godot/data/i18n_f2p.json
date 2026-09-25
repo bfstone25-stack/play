@@ -1,1268 +1,2280 @@
 {
- "_comment": "PLICATA F2P strings, one row per key: en / zh / ja. Read by scripts/i18n.gd (I18n.t falls back here); checked by ops/nutaku/fold_f2p/check_i18n.py. Server content (missions, chapters, stages, events, scenes, refusal reasons) is keyed by the server's ids, never shown in the server's English.",
+ "_comment": "PLICATA F2P strings, one row per key: en / ja / de / fr / es / zh / ko. Read by scripts/i18n.gd (I18n.t falls back here); checked by ops/nutaku/fold_f2p/check_i18n.py. Server content (missions, chapters, stages, events, scenes, refusal reasons) is keyed by the server's ids, never shown in the server's English.",
  "gold": {
   "en": "%d gold",
   "zh": "%d 金币",
-  "ja": "%d ゴールド"
+  "ja": "%d ゴールド",
+  "de": "%d Gold",
+  "fr": "%d or",
+  "es": "%d de oro",
+  "ko": "%d 골드"
  },
  "waiting_nutaku": {
   "en": "Waiting for Nutaku…",
   "zh": "正在等待 Nutaku…",
-  "ja": "Nutaku の応答を待っています…"
+  "ja": "Nutaku の応答を待っています…",
+  "de": "Warte auf Nutaku…",
+  "fr": "En attente de Nutaku…",
+  "es": "Esperando a Nutaku…",
+  "ko": "Nutaku 응답 대기 중…"
  },
  "close": {
   "en": "Close",
   "zh": "关闭",
-  "ja": "閉じる"
+  "ja": "閉じる",
+  "de": "Schließen",
+  "fr": "Fermer",
+  "es": "Cerrar",
+  "ko": "닫기"
  },
  "shop": {
   "en": "Shop",
   "zh": "商店",
-  "ja": "ショップ"
+  "ja": "ショップ",
+  "de": "Shop",
+  "fr": "Boutique",
+  "es": "Tienda",
+  "ko": "상점"
  },
  "offer_candle": {
   "en": "One candle now",
   "zh": "立即补一支蜡烛",
-  "ja": "キャンドルを今すぐ1本"
+  "ja": "キャンドルを今すぐ1本",
+  "de": "Eine Kerze sofort",
+  "fr": "Une bougie",
+  "es": "Una vela ya",
+  "ko": "지금 촛불 1개"
  },
  "offer_refill": {
   "en": "Refill candles",
   "zh": "蜡烛补满",
-  "ja": "キャンドルを満タンに"
+  "ja": "キャンドルを満タンに",
+  "de": "Kerzen auffüllen",
+  "fr": "Recharger",
+  "es": "Recargar velas",
+  "ko": "촛불 충전"
  },
  "offer_hints": {
   "en": "3 hints",
   "zh": "3 次提示",
-  "ja": "ヒント3回"
+  "ja": "ヒント3回",
+  "de": "3 Tipps",
+  "fr": "3 indices",
+  "es": "3 pistas",
+  "ko": "힌트 3개"
  },
  "offer_undos": {
   "en": "5 undos",
   "zh": "5 次撤销",
-  "ja": "戻す5回"
+  "ja": "戻す5回",
+  "de": "5× Zurück",
+  "fr": "5 retours",
+  "es": "5 deshacer",
+  "ko": "되돌리기 5회"
  },
  "offer_moves": {
   "en": "+5 moves token",
   "zh": "+5 步道具",
-  "ja": "+5手チケット"
+  "ja": "+5手チケット",
+  "de": "+5-Züge-Marke",
+  "fr": "Jeton +5 coups",
+  "es": "Ficha +5 movs.",
+  "ko": "+5 이동권"
  },
  "offer_starter": {
   "en": "Starter pack (once)",
   "zh": "新手礼包（限购一次）",
-  "ja": "スターターパック（1回限り）"
+  "ja": "スターターパック（1回限り）",
+  "de": "Starterpaket (einmalig)",
+  "fr": "Pack de départ (1×)",
+  "es": "Pack de inicio (1 vez)",
+  "ko": "스타터 팩 (1회 한정)"
  },
  "offer_nights": {
   "en": "Seven Nights: unlimited candles",
   "zh": "七夜：蜡烛无限用",
-  "ja": "セブンナイト：キャンドル使い放題"
+  "ja": "セブンナイト：キャンドル使い放題",
+  "de": "Sieben Nächte: unbegrenzt Kerzen",
+  "fr": "Sept Nuits : bougies illimitées",
+  "es": "Siete Noches: velas ilimitadas",
+  "ko": "일곱 밤: 촛불 무제한"
  },
  "offer_all_scenes": {
   "en": "Every scene, now",
   "zh": "立即解锁全部场景",
-  "ja": "全シーンを今すぐ解放"
+  "ja": "全シーンを今すぐ解放",
+  "de": "Alle Szenen, sofort",
+  "fr": "Toutes les scènes",
+  "es": "Todas las escenas, ya",
+  "ko": "모든 장면, 지금 바로"
  },
  "pay_done": {
   "en": "Done.",
   "zh": "购买成功。",
-  "ja": "購入しました。"
+  "ja": "購入しました。",
+  "de": "Fertig.",
+  "fr": "Fait.",
+  "es": "Hecho.",
+  "ko": "완료."
  },
  "pay_cancel": {
   "en": "Cancelled. No gold was spent.",
   "zh": "已取消，没有扣除金币。",
-  "ja": "キャンセルしました。ゴールドは使われていません。"
+  "ja": "キャンセルしました。ゴールドは使われていません。",
+  "de": "Abgebrochen. Es wurde kein Gold ausgegeben.",
+  "fr": "Annulé. Aucun or n'a été dépensé.",
+  "es": "Cancelado. No se gastó oro.",
+  "ko": "취소됐어요. 골드는 사용되지 않았어요."
  },
  "pay_refunded": {
   "en": "The game server could not deliver it; Nutaku refunded your gold.",
   "zh": "游戏服务器没能发放物品，Nutaku 已退还你的金币。",
-  "ja": "ゲームサーバーからお届けできなかったため、Nutaku がゴールドを返金しました。"
+  "ja": "ゲームサーバーからお届けできなかったため、Nutaku がゴールドを返金しました。",
+  "de": "Der Spielserver konnte es nicht liefern; Nutaku hat dein Gold erstattet.",
+  "fr": "Le serveur de jeu n'a pas pu le livrer ; Nutaku t'a remboursé ton or.",
+  "es": "El servidor del juego no pudo entregarlo; Nutaku te devolvió el oro.",
+  "ko": "게임 서버가 지급하지 못해 Nutaku에서 골드를 환불했어요."
  },
  "pay_failed": {
   "en": "Not bought. Nothing was charged; please try again.",
   "zh": "没有买成，也没有扣费，请再试一次。",
-  "ja": "購入できませんでした。請求はされていません。もう一度お試しください。"
+  "ja": "購入できませんでした。請求はされていません。もう一度お試しください。",
+  "de": "Nicht gekauft. Nichts wurde berechnet; bitte versuch es nochmal.",
+  "fr": "Achat non effectué. Rien n'a été débité ; réessaie.",
+  "es": "No se compró. No se cobró nada; inténtalo de nuevo.",
+  "ko": "구매되지 않았어요. 결제된 금액은 없어요. 다시 시도해 주세요."
  },
  "dc_title": {
   "en": "Daily challenge #%d",
   "zh": "每日挑战 #%d",
-  "ja": "デイリーチャレンジ #%d"
+  "ja": "デイリーチャレンジ #%d",
+  "de": "Tagesrätsel #%d",
+  "fr": "Défi du jour n°%d",
+  "es": "Reto diario n.º %d",
+  "ko": "일일 챌린지 #%d"
  },
  "dc_done": {
   "en": "Done today ✓  ·  streak %d",
   "zh": "今天已完成 ✓  ·  连续 %d 天",
-  "ja": "本日クリア ✓  ·  %d 日連続"
+  "ja": "本日クリア ✓  ·  %d 日連続",
+  "de": "Heute erledigt ✓  ·  Serie %d",
+  "fr": "Fait ✓  ·  série %d",
+  "es": "Hecho hoy ✓  ·  racha %d",
+  "ko": "오늘 완료 ✓  ·  %d일 연속"
  },
  "dc_reward": {
   "en": "Reward: %s",
   "zh": "奖励：%s",
-  "ja": "報酬：%s"
+  "ja": "報酬：%s",
+  "de": "Belohnung: %s",
+  "fr": "Récompense : %s",
+  "es": "Premio: %s",
+  "ko": "보상: %s"
  },
  "dc_streak": {
   "en": "Streak %d · every %d days: %s",
   "zh": "连续 %d 天 · 每满 %d 天：%s",
-  "ja": "%d 日連続 · %d 日ごとに：%s"
+  "ja": "%d 日連続 · %d 日ごとに：%s",
+  "de": "Serie %d · alle %d Tage: %s",
+  "fr": "Série %d · tous les %d j : %s",
+  "es": "Racha %d · cada %d días: %s",
+  "ko": "연속 %d일 · %d일마다: %s"
  },
  "next_in": {
   "en": "Next in %s",
   "zh": "下一个：%s 后",
-  "ja": "次まで %s"
+  "ja": "次まで %s",
+  "de": "Nächstes in %s",
+  "fr": "Suivant dans %s",
+  "es": "Próximo en %s",
+  "ko": "다음까지 %s"
  },
  "dc_play_again": {
   "en": "Play again",
   "zh": "再玩一次",
-  "ja": "もう一度遊ぶ"
+  "ja": "もう一度遊ぶ",
+  "de": "Nochmal spielen",
+  "fr": "Rejouer",
+  "es": "Jugar otra vez",
+  "ko": "다시 플레이"
  },
  "dc_play": {
   "en": "Play today's board",
   "zh": "挑战今天的棋盘",
-  "ja": "今日の盤面に挑む"
+  "ja": "今日の盤面に挑む",
+  "de": "Heutiges Brett spielen",
+  "fr": "Jouer le défi",
+  "es": "Jugar el tablero de hoy",
+  "ko": "오늘의 보드 플레이"
  },
  "event_panel": {
   "en": "This week · %s",
   "zh": "本周 · %s",
-  "ja": "今週 · %s"
+  "ja": "今週 · %s",
+  "de": "Diese Woche · %s",
+  "fr": "Cette semaine · %s",
+  "es": "Esta semana · %s",
+  "ko": "이번 주 · %s"
  },
  "event_boards": {
   "en": "Boards %d/%d  ·  each: %s",
   "zh": "棋盘 %d/%d  ·  每盘奖励：%s",
-  "ja": "盤面 %d/%d  ·  1盤ごとに：%s"
+  "ja": "盤面 %d/%d  ·  1盤ごとに：%s",
+  "de": "Bretter %d/%d  ·  je: %s",
+  "fr": "Plateaux %d/%d  ·  chacun : %s",
+  "es": "Tableros %d/%d  ·  cada uno: %s",
+  "ko": "보드 %d/%d  ·  각 보상: %s"
  },
  "event_won": {
   "en": "Won: %s + a night of unlimited candles",
   "zh": "已获得：%s + 一晚无限蜡烛",
-  "ja": "獲得済み：%s ＋ ひと晩キャンドル使い放題"
+  "ja": "獲得済み：%s ＋ ひと晩キャンドル使い放題",
+  "de": "Gewonnen: %s + eine Nacht unbegrenzt Kerzen",
+  "fr": "Gagné : %s + une nuit de bougies illimitées",
+  "es": "Ganado: %s + una noche de velas ilimitadas",
+  "ko": "획득: %s + 촛불 무제한의 밤"
  },
  "event_all": {
   "en": "All seven: %s + a night of unlimited candles",
   "zh": "七盘全通：%s + 一晚无限蜡烛",
-  "ja": "7盤すべてで：%s ＋ ひと晩キャンドル使い放題"
+  "ja": "7盤すべてで：%s ＋ ひと晩キャンドル使い放題",
+  "de": "Alle sieben: %s + eine Nacht unbegrenzt Kerzen",
+  "fr": "Les sept : %s + une nuit de bougies illimitées",
+  "es": "Los siete: %s + una noche de velas ilimitadas",
+  "ko": "일곱 개 모두: %s + 촛불 무제한의 밤"
  },
  "ends_in": {
   "en": "Ends in %s",
   "zh": "%s 后结束",
-  "ja": "終了まで %s"
+  "ja": "終了まで %s",
+  "de": "Endet in %s",
+  "fr": "Fin dans %s",
+  "es": "Termina en %s",
+  "ko": "%s 후 종료"
  },
  "event_play": {
   "en": "Play board %d",
   "zh": "开始第 %d 盘",
-  "ja": "盤面 %d をプレイ"
+  "ja": "盤面 %d をプレイ",
+  "de": "Brett %d spielen",
+  "fr": "Plateau %d",
+  "es": "Jugar tablero %d",
+  "ko": "보드 %d 플레이"
  },
  "candles_title": {
   "en": "Candles",
   "zh": "蜡烛",
-  "ja": "キャンドル"
+  "ja": "キャンドル",
+  "de": "Kerzen",
+  "fr": "Bougies",
+  "es": "Velas",
+  "ko": "촛불"
  },
  "tonight": {
   "en": "Tonight · streak %d (best %d)",
   "zh": "今晚 · 连续 %d 天（最佳 %d 天）",
-  "ja": "今夜 · %d 日連続（最高 %d 日）"
+  "ja": "今夜 · %d 日連続（最高 %d 日）",
+  "de": "Heute Nacht · Serie %d (Rekord %d)",
+  "fr": "Ce soir · série %d (record %d)",
+  "es": "Esta noche · racha %d (mejor %d)",
+  "ko": "오늘 밤 · %d일 연속 (최고 %d일)"
  },
  "cal_day": {
   "en": "Day %d: %s",
   "zh": "第 %d 天：%s",
-  "ja": "%d 日目：%s"
+  "ja": "%d 日目：%s",
+  "de": "Tag %d: %s",
+  "fr": "Jour %d : %s",
+  "es": "Día %d: %s",
+  "ko": "%d일차: %s"
  },
  "cal_claim": {
   "en": "Light tonight's candle",
   "zh": "点亮今晚的蜡烛",
-  "ja": "今夜のキャンドルを灯す"
+  "ja": "今夜のキャンドルを灯す",
+  "de": "Heutige Kerze anzünden",
+  "fr": "Allumer la bougie du soir",
+  "es": "Enciende la vela de hoy",
+  "ko": "오늘 밤의 촛불 밝히기"
  },
  "cal_claimed": {
   "en": "Claimed. Next at the %02d:00 UTC reset.",
   "zh": "已领取。下次在 UTC %02d:00 重置后。",
-  "ja": "受け取り済み。次は UTC %02d:00 のリセット後。"
+  "ja": "受け取り済み。次は UTC %02d:00 のリセット後。",
+  "de": "Abgeholt. Nächste beim Reset um %02d:00 UTC.",
+  "fr": "Récupéré. Prochaine à %02d:00 UTC.",
+  "es": "Reclamado. La próxima, al reinicio de las %02d:00 UTC.",
+  "ko": "받았어요. 다음은 UTC %02d:00 초기화 후예요."
  },
  "missions": {
   "en": "Missions",
   "zh": "任务",
-  "ja": "ミッション"
+  "ja": "ミッション",
+  "de": "Missionen",
+  "fr": "Missions",
+  "es": "Misiones",
+  "ko": "미션"
  },
  "claim": {
   "en": "Claim: %s",
   "zh": "领取：%s",
-  "ja": "受け取る：%s"
+  "ja": "受け取る：%s",
+  "de": "Abholen: %s",
+  "fr": "Récupérer : %s",
+  "es": "Reclamar: %s",
+  "ko": "받기: %s"
  },
  "all_three": {
   "en": "All three: %s",
   "zh": "三个全完成：%s",
-  "ja": "3つすべて達成：%s"
+  "ja": "3つすべて達成：%s",
+  "de": "Alle drei: %s",
+  "fr": "Les trois : %s",
+  "es": "Las tres: %s",
+  "ko": "세 개 모두: %s"
  },
  "leaderboard": {
   "en": "Leaderboard",
   "zh": "排行榜",
-  "ja": "ランキング"
+  "ja": "ランキング",
+  "de": "Rangliste",
+  "fr": "Classement",
+  "es": "Clasificación",
+  "ko": "랭킹"
  },
  "no_scores": {
   "en": "No scores yet today",
   "zh": "今天还没有人上榜",
-  "ja": "本日のスコアはまだありません"
+  "ja": "本日のスコアはまだありません",
+  "de": "Heute noch keine Punkte",
+  "fr": "Aucun score aujourd'hui",
+  "es": "Aún no hay puntos hoy",
+  "ko": "오늘은 아직 점수가 없어요"
  },
  "you": {
   "en": "you",
   "zh": "你",
-  "ja": "あなた"
+  "ja": "あなた",
+  "de": "du",
+  "fr": "toi",
+  "es": "tú",
+  "ko": "나"
  },
  "unavailable": {
   "en": "unavailable",
   "zh": "暂时无法获取",
-  "ja": "取得できません"
+  "ja": "取得できません",
+  "de": "nicht verfügbar",
+  "fr": "indisponible",
+  "es": "no disponible",
+  "ko": "이용 불가"
  },
  "players": {
   "en": "%d players",
   "zh": "%d 名玩家",
-  "ja": "%d 人のプレイヤー"
+  "ja": "%d 人のプレイヤー",
+  "de": "%d Spieler",
+  "fr": "%d joueurs",
+  "es": "%d jugadores",
+  "ko": "플레이어 %d명"
  },
  "rw_full": {
   "en": "full candles",
   "zh": "蜡烛补满",
-  "ja": "キャンドル満タン"
+  "ja": "キャンドル満タン",
+  "de": "volle Kerzen",
+  "fr": "bougies pleines",
+  "es": "velas llenas",
+  "ko": "촛불 가득"
  },
  "rw_candles": {
   "en": "%d candles",
   "zh": "%d 支蜡烛",
-  "ja": "キャンドル %d 本"
+  "ja": "キャンドル %d 本",
+  "de": "%d Kerzen",
+  "fr": "%d bougies",
+  "es": "%d velas",
+  "ko": "촛불 %d개"
  },
  "rw_candles_1": {
   "en": "%d candle",
   "zh": "%d 支蜡烛",
-  "ja": "キャンドル %d 本"
+  "ja": "キャンドル %d 本",
+  "de": "%d Kerze",
+  "fr": "%d bougie",
+  "es": "%d vela",
+  "ko": "촛불 %d개"
  },
  "rw_hint": {
   "en": "%d× hint",
   "zh": "提示 ×%d",
-  "ja": "ヒント ×%d"
+  "ja": "ヒント ×%d",
+  "de": "%d× Tipp",
+  "fr": "%d× indice",
+  "es": "%d× pista",
+  "ko": "힌트 %d×"
  },
  "rw_undo": {
   "en": "%d× undo",
   "zh": "撤销 ×%d",
-  "ja": "戻す ×%d"
+  "ja": "戻す ×%d",
+  "de": "%d× Zurück",
+  "fr": "%d× retour",
+  "es": "%d× deshacer",
+  "ko": "되돌리기 %d×"
  },
  "rw_moves": {
   "en": "%d× +5 moves",
   "zh": "+5 步 ×%d",
-  "ja": "+5手 ×%d"
+  "ja": "+5手 ×%d",
+  "de": "%d× +5 Züge",
+  "fr": "%d× +5 coups",
+  "es": "%d× +5 movs.",
+  "ko": "+5 이동 %d×"
  },
  "rw_unlimited": {
   "en": "%d h of unlimited candles",
   "zh": "%d 小时无限蜡烛",
-  "ja": "%d 時間キャンドル使い放題"
+  "ja": "%d 時間キャンドル使い放題",
+  "de": "%d Std. unbegrenzt Kerzen",
+  "fr": "%d h de bougies illimitées",
+  "es": "%d h de velas ilimitadas",
+  "ko": "촛불 무제한 %d시간"
  },
  "rw_sep": {
   "en": ", ",
   "zh": "、",
-  "ja": "、"
+  "ja": "、",
+  "de": ", ",
+  "fr": ", ",
+  "es": ", ",
+  "ko": ", "
  },
  "candles_inf": {
   "en": "Candles ∞",
   "zh": "蜡烛 ∞",
-  "ja": "キャンドル ∞"
+  "ja": "キャンドル ∞",
+  "de": "Kerzen ∞",
+  "fr": "Bougies ∞",
+  "es": "Velas ∞",
+  "ko": "촛불 ∞"
  },
  "candles": {
   "en": "Candles %d/%d",
   "zh": "蜡烛 %d/%d",
-  "ja": "キャンドル %d/%d"
+  "ja": "キャンドル %d/%d",
+  "de": "Kerzen %d/%d",
+  "fr": "Bougies %d/%d",
+  "es": "Velas %d/%d",
+  "ko": "촛불 %d/%d"
  },
  "candles_over": {
   "en": "Candles %d  (refills to %d)",
   "zh": "蜡烛 %d（自动恢复上限 %d）",
-  "ja": "キャンドル %d（自然回復は %d まで）"
+  "ja": "キャンドル %d（自然回復は %d まで）",
+  "de": "Kerzen %d  (füllt auf %d)",
+  "fr": "Bougies %d  (max. %d)",
+  "es": "Velas %d  (se recargan a %d)",
+  "ko": "촛불 %d  (%d까지 충전)"
  },
  "candle_next": {
   "en": "  ·  +1 in %s",
   "zh": "  ·  %s 后 +1",
-  "ja": "  ·  あと %s で +1"
+  "ja": "  ·  あと %s で +1",
+  "de": "  ·  +1 in %s",
+  "fr": "  ·  +1 dans %s",
+  "es": "  ·  +1 en %s",
+  "ko": "  ·  +1까지 %s"
  },
  "days_short": {
   "en": "%dd ",
   "zh": "%d天 ",
-  "ja": "%d日 "
+  "ja": "%d日 ",
+  "de": "%dT ",
+  "fr": "%dj ",
+  "es": "%dd ",
+  "ko": "%d일 "
  },
  "combo_3": {
   "en": "x3 Great!",
   "zh": "x3 漂亮！",
-  "ja": "x3 いいね！"
+  "ja": "x3 いいね！",
+  "de": "x3 Super!",
+  "fr": "x3 Super !",
+  "es": "x3 ¡Genial!",
+  "ko": "x3 멋져요!"
  },
  "combo_4": {
   "en": "x4 Amazing!",
   "zh": "x4 太强了！",
-  "ja": "x4 すごい！"
+  "ja": "x4 すごい！",
+  "de": "x4 Klasse!",
+  "fr": "x4 Génial !",
+  "es": "x4 ¡Increíble!",
+  "ko": "x4 대단해요!"
  },
  "combo_5": {
   "en": "x5 Incredible!",
   "zh": "x5 神了！",
-  "ja": "x5 神業！"
+  "ja": "x5 神業！",
+  "de": "x5 Irre!",
+  "fr": "x5 Incroyable !",
+  "es": "x5 ¡Brutal!",
+  "ko": "x5 믿을 수 없어요!"
  },
  "goal_score": {
   "en": "Score %d in %d moves",
   "zh": "%d 分（%d 步以内）",
-  "ja": "%d 点（%d 手以内）"
+  "ja": "%d 点（%d 手以内）",
+  "de": "%d Punkte in %d Zügen",
+  "fr": "%d points en %d coups",
+  "es": "%d puntos en %d movs.",
+  "ko": "%d점 달성 (%d번 이동 이내)"
  },
  "goal_combo": {
   "en": "Hit a x%d combo",
   "zh": "打出 x%d 连击",
-  "ja": "x%d コンボを決める"
+  "ja": "x%d コンボを決める",
+  "de": "Schaffe eine x%d-Kombo",
+  "fr": "Fais un combo x%d",
+  "es": "Haz un combo x%d",
+  "ko": "x%d 콤보 달성"
  },
  "why_moves": {
   "en": "%d moves: the goal was %d or fewer",
   "zh": "用了 %d 步：目标是 %d 步以内",
-  "ja": "%d 手かかった：目標は %d 手以内"
+  "ja": "%d 手かかった：目標は %d 手以内",
+  "de": "%d Züge: Ziel waren höchstens %d",
+  "fr": "%d coups : l'objectif était %d max.",
+  "es": "%d movimientos: el objetivo era %d o menos",
+  "ko": "%d번 이동: 목표는 %d번 이하였어요"
  },
  "why_score": {
   "en": "Score %d: the goal was %d",
   "zh": "得分 %d：目标是 %d",
-  "ja": "スコア %d：目標は %d"
+  "ja": "スコア %d：目標は %d",
+  "de": "%d Punkte: Ziel waren %d",
+  "fr": "Score %d : l'objectif était %d",
+  "es": "%d puntos: el objetivo era %d",
+  "ko": "%d점: 목표는 %d점이었어요"
  },
  "why_combo": {
   "en": "Best combo x%d: the goal was x%d",
   "zh": "最高连击 x%d：目标是 x%d",
-  "ja": "最高コンボ x%d：目標は x%d"
+  "ja": "最高コンボ x%d：目標は x%d",
+  "de": "Beste Kombo x%d: Ziel war x%d",
+  "fr": "Meilleur combo x%d : l'objectif était x%d",
+  "es": "Mejor combo x%d: el objetivo era x%d",
+  "ko": "최고 콤보 x%d: 목표는 x%d였어요"
  },
  "cant_reach": {
   "en": "Could not reach the game server. Please try again.",
   "zh": "连不上游戏服务器，请稍后再试。",
-  "ja": "ゲームサーバーに接続できませんでした。もう一度お試しください。"
+  "ja": "ゲームサーバーに接続できませんでした。もう一度お試しください。",
+  "de": "Spielserver nicht erreichbar. Bitte versuch es nochmal.",
+  "fr": "Serveur de jeu injoignable. Réessaie.",
+  "es": "No se pudo conectar con el servidor del juego. Inténtalo de nuevo.",
+  "ko": "게임 서버에 연결할 수 없어요. 다시 시도해 주세요."
  },
  "signing_in": {
   "en": "Signing in…",
   "zh": "正在登录…",
-  "ja": "ログイン中…"
+  "ja": "ログイン中…",
+  "de": "Anmeldung…",
+  "fr": "Connexion…",
+  "es": "Iniciando sesión…",
+  "ko": "로그인 중…"
  },
  "house_standing": {
   "en": "The Folding House  ·  %s  ·  %s",
   "zh": "折纸之家  ·  %s  ·  %s",
-  "ja": "折り紙の館  ·  %s  ·  %s"
+  "ja": "折り紙の館  ·  %s  ·  %s",
+  "de": "Das Faltenhaus  ·  %s  ·  %s",
+  "fr": "La Maison des Plis  ·  %s  ·  %s",
+  "es": "La Casa de los Pliegues  ·  %s  ·  %s",
+  "ko": "폴딩 하우스  ·  %s  ·  %s"
  },
  "chapter_of": {
   "en": "chapter %d of %d",
   "zh": "第 %d 章 / 共 %d 章",
-  "ja": "第 %d 章（全 %d 章）"
+  "ja": "第 %d 章（全 %d 章）",
+  "de": "Kap. %d von %d",
+  "fr": "chap. %d sur %d",
+  "es": "cap. %d de %d",
+  "ko": "챕터 %d/%d"
  },
  "unlock_now": {
   "en": "Unlock now · %s",
   "zh": "立即解锁 · %s",
-  "ja": "今すぐ解放 · %s"
+  "ja": "今すぐ解放 · %s",
+  "de": "Jetzt öffnen · %s",
+  "fr": "Débloquer · %s",
+  "es": "Desbloquear ya · %s",
+  "ko": "지금 해금 · %s"
  },
  "best": {
   "en": "best %d",
   "zh": "最佳 %d",
-  "ja": "最高 %d"
+  "ja": "最高 %d",
+  "de": "Rekord %d",
+  "fr": "record %d",
+  "es": "mejor %d",
+  "ko": "최고 %d"
  },
  "hint_btn": {
   "en": "Hint",
   "zh": "提示",
-  "ja": "ヒント"
+  "ja": "ヒント",
+  "de": "Tipp",
+  "fr": "Indice",
+  "es": "Pista",
+  "ko": "힌트"
  },
  "best_combo": {
   "en": "  (best x%d)",
   "zh": "（最高 x%d）",
-  "ja": "（最高 x%d）"
+  "ja": "（最高 x%d）",
+  "de": "  (Rekord x%d)",
+  "fr": "  (record x%d)",
+  "es": "  (mejor x%d)",
+  "ko": "  (최고 x%d)"
  },
  "moves_left": {
   "en": "   ·   %d left",
   "zh": "   ·   还剩 %d 步",
-  "ja": "   ·   残り %d 手"
+  "ja": "   ·   残り %d 手",
+  "de": "   ·   noch %d",
+  "fr": "   ·   reste %d",
+  "es": "   ·   quedan %d",
+  "ko": "   ·   %d 남음"
  },
  "voice_on": {
   "en": "Voice ✓",
   "zh": "语音 ✓",
-  "ja": "ボイス ✓"
+  "ja": "ボイス ✓",
+  "de": "Stimme ✓",
+  "fr": "Voix ✓",
+  "es": "Voz ✓",
+  "ko": "음성 ✓"
  },
  "voice_off": {
   "en": "Voice ✕",
   "zh": "语音 ✕",
-  "ja": "ボイス ✕"
+  "ja": "ボイス ✕",
+  "de": "Stimme ✕",
+  "fr": "Voix ✕",
+  "es": "Voz ✕",
+  "ko": "음성 ✕"
  },
  "motion_on": {
   "en": "Motion ✓",
   "zh": "动效 ✓",
-  "ja": "演出 ✓"
+  "ja": "演出 ✓",
+  "de": "Bewegung ✓",
+  "fr": "Anim. ✓",
+  "es": "Movim. ✓",
+  "ko": "모션 ✓"
  },
  "motion_off": {
   "en": "Motion ✕",
   "zh": "动效 ✕",
-  "ja": "演出 ✕"
+  "ja": "演出 ✕",
+  "de": "Bewegung ✕",
+  "fr": "Anim. ✕",
+  "es": "Movim. ✕",
+  "ko": "모션 ✕"
  },
  "voice_tip": {
   "en": "Coco's voice (subtitles stay on)",
   "zh": "Coco 的语音（字幕一直显示）",
-  "ja": "Coco のボイス（字幕は常に表示）"
+  "ja": "Coco のボイス（字幕は常に表示）",
+  "de": "Cocos Stimme (Untertitel bleiben an)",
+  "fr": "Voix de Coco (sous-titres toujours actifs)",
+  "es": "La voz de Coco (los subtítulos siguen)",
+  "ko": "코코의 음성 (자막은 계속 표시돼요)"
  },
  "motion_tip": {
   "en": "Reduced motion: no shake, no flying rewards",
   "zh": "减弱动效：不震屏，奖励不再飞入",
-  "ja": "演出を控えめに：画面の揺れと報酬が飛ぶ演出をオフ"
+  "ja": "演出を控えめに：画面の揺れと報酬が飛ぶ演出をオフ",
+  "de": "Weniger Bewegung: kein Wackeln, keine fliegenden Belohnungen",
+  "fr": "Animations réduites : ni secousses, ni récompenses volantes",
+  "es": "Movimiento reducido: sin temblores ni premios volando",
+  "ko": "모션 줄이기: 흔들림 없음, 날아가는 보상 없음"
  },
  "score": {
   "en": "SCORE",
   "zh": "得分",
-  "ja": "スコア"
+  "ja": "スコア",
+  "de": "PUNKTE",
+  "fr": "SCORE",
+  "es": "PUNTOS",
+  "ko": "점수"
  },
  "daily_tag": {
   "en": "DAILY #%d · %s",
   "zh": "每日 #%d · %s",
-  "ja": "デイリー #%d · %s"
+  "ja": "デイリー #%d · %s",
+  "de": "TAGESRÄTSEL #%d · %s",
+  "fr": "DÉFI N°%d · %s",
+  "es": "DIARIO #%d · %s",
+  "ko": "일일 #%d · %s"
  },
  "daily_name": {
   "en": "Daily challenge · %s",
   "zh": "每日挑战 · %s",
-  "ja": "デイリーチャレンジ · %s"
+  "ja": "デイリーチャレンジ · %s",
+  "de": "Tagesrätsel · %s",
+  "fr": "Défi du jour · %s",
+  "es": "Reto diario · %s",
+  "ko": "일일 챌린지 · %s"
  },
  "event_tag": {
   "en": "EVENT · %s",
   "zh": "活动 · %s",
-  "ja": "イベント · %s"
+  "ja": "イベント · %s",
+  "de": "EVENT · %s",
+  "fr": "ÉVÉNEMENT · %s",
+  "es": "EVENTO · %s",
+  "ko": "이벤트 · %s"
  },
  "event_name": {
   "en": "%s · board %d of %d",
   "zh": "%s · 第 %d 盘 / 共 %d 盘",
-  "ja": "%s · 盤面 %d / %d"
+  "ja": "%s · 盤面 %d / %d",
+  "de": "%s · Brett %d von %d",
+  "fr": "%s · plateau %d sur %d",
+  "es": "%s · tablero %d de %d",
+  "ko": "%s · 보드 %d/%d"
  },
  "so_close": {
   "en": "So close!",
   "zh": "就差一点！",
-  "ja": "あと少し！"
+  "ja": "あと少し！",
+  "de": "So knapp!",
+  "fr": "Presque !",
+  "es": "¡Casi!",
+  "ko": "아깝다!"
  },
  "goal_missed": {
   "en": "The board is folded, but the bonus goal was missed.",
   "zh": "棋盘折好了，可惜奖励目标没达成。",
-  "ja": "盤面は折れたけど、ボーナス目標には届かなかった。"
+  "ja": "盤面は折れたけど、ボーナス目標には届かなかった。",
+  "de": "Das Brett ist gefaltet, aber das Bonusziel wurde verfehlt.",
+  "fr": "Le plateau est plié, mais l'objectif bonus est manqué.",
+  "es": "El tablero está plegado, pero no lograste el objetivo extra.",
+  "ko": "보드는 다 접었지만 보너스 목표는 놓쳤어요."
  },
  "try_again": {
   "en": "Try again",
   "zh": "再试一次",
-  "ja": "もう一度"
+  "ja": "もう一度",
+  "de": "Nochmal",
+  "fr": "Réessayer",
+  "es": "Reintentar",
+  "ko": "다시 시도"
  },
  "map": {
   "en": "Map",
   "zh": "地图",
-  "ja": "マップ"
+  "ja": "マップ",
+  "de": "Karte",
+  "fr": "Carte",
+  "es": "Mapa",
+  "ko": "맵"
  },
  "not_counted": {
   "en": "Not counted",
   "zh": "这次不算",
-  "ja": "記録されませんでした"
+  "ja": "記録されませんでした",
+  "de": "Nicht gewertet",
+  "fr": "Non compté",
+  "es": "No cuenta",
+  "ko": "기록되지 않음"
  },
  "not_accepted": {
   "en": "The server did not accept this result: %s",
   "zh": "服务器没有接受这次结果：%s",
-  "ja": "サーバーがこの結果を受け付けませんでした：%s"
+  "ja": "サーバーがこの結果を受け付けませんでした：%s",
+  "de": "Der Server hat das Ergebnis nicht angenommen: %s",
+  "fr": "Le serveur a refusé ce résultat : %s",
+  "es": "El servidor no aceptó este resultado: %s",
+  "ko": "서버가 이 결과를 받아들이지 않았어요: %s"
  },
  "one_undo_board": {
   "en": "One undo on this board",
   "zh": "这个棋盘只能撤销一次",
-  "ja": "この盤面で戻せるのは1回だけ"
+  "ja": "この盤面で戻せるのは1回だけ",
+  "de": "Ein Zurück pro Brett",
+  "fr": "Un retour sur ce plateau",
+  "es": "Un deshacer en este tablero",
+  "ko": "이 보드에서는 되돌리기 1회"
  },
  "no_undo": {
   "en": "No undo: %s",
   "zh": "不能撤销：%s",
-  "ja": "戻せません：%s"
+  "ja": "戻せません：%s",
+  "de": "Kein Zurück: %s",
+  "fr": "Sans retour: %s",
+  "es": "Sin deshacer: %s",
+  "ko": "되돌리기 불가: %s"
  },
  "out_of_moves": {
   "en": "Out of moves",
   "zh": "步数用完了",
-  "ja": "手数切れ"
+  "ja": "手数切れ",
+  "de": "Keine Züge mehr",
+  "fr": "Plus de coups",
+  "es": "Sin movimientos",
+  "ko": "이동 횟수 소진"
  },
  "moves_spent_free": {
   "en": "%d moves spent. This board is free to retry.",
   "zh": "已用 %d 步。这个棋盘可以免费重来。",
-  "ja": "%d 手使いました。この盤面は無料でやり直せます。"
+  "ja": "%d 手使いました。この盤面は無料でやり直せます。",
+  "de": "%d Züge verbraucht. Dieses Brett kannst du gratis neu spielen.",
+  "fr": "%d coups joués. Tu peux rejouer ce plateau gratuitement.",
+  "es": "%d movimientos gastados. Puedes reintentar gratis.",
+  "ko": "%d번 이동했어요. 이 보드는 무료로 재도전할 수 있어요."
  },
  "moves_spent": {
   "en": "%d moves spent. Five more keep this board as it is.",
   "zh": "已用 %d 步。再加 5 步，就能接着这盘继续。",
-  "ja": "%d 手使いました。あと5手足せば、この盤面のまま続けられます。"
+  "ja": "%d 手使いました。あと5手足せば、この盤面のまま続けられます。",
+  "de": "%d Züge verbraucht. Mit fünf weiteren bleibt das Brett, wie es ist.",
+  "fr": "%d coups joués. Cinq de plus et le plateau reste tel quel.",
+  "es": "%d movimientos gastados. Con cinco más, el tablero sigue tal cual.",
+  "ko": "%d번 이동했어요. 5번 더 받으면 보드를 그대로 이어 갈 수 있어요."
  },
  "one_token": {
   "en": "1 token",
   "zh": "1 个道具",
-  "ja": "チケット1枚"
+  "ja": "チケット1枚",
+  "de": "1 Marke",
+  "fr": "1 jeton",
+  "es": "1 ficha",
+  "ko": "이동권 1개"
  },
  "more_moves": {
   "en": "+5 moves · %s",
   "zh": "+5 步 · %s",
-  "ja": "+5手 · %s"
+  "ja": "+5手 · %s",
+  "de": "+5 Züge · %s",
+  "fr": "+5 coups · %s",
+  "es": "+5 movs. · %s",
+  "ko": "+5 이동 · %s"
  },
  "retry_candle": {
   "en": "Retry (1 candle)",
   "zh": "重来（1 支蜡烛）",
-  "ja": "やり直す（キャンドル1本）"
+  "ja": "やり直す（キャンドル1本）",
+  "de": "Nochmal (1 Kerze)",
+  "fr": "Rejouer (1 bougie)",
+  "es": "Reintentar (1 vela)",
+  "ko": "재도전 (촛불 1개)"
  },
  "out_of_candles": {
   "en": "Out of candles",
   "zh": "蜡烛用完了",
-  "ja": "キャンドル切れ"
+  "ja": "キャンドル切れ",
+  "de": "Keine Kerzen mehr",
+  "fr": "Plus de bougies",
+  "es": "Sin velas",
+  "ko": "촛불 소진"
  },
  "no_candles": {
   "en": "No candles left. %s",
   "zh": "一支蜡烛都不剩了。%s",
-  "ja": "キャンドルがありません。%s"
+  "ja": "キャンドルがありません。%s",
+  "de": "Keine Kerzen mehr. %s",
+  "fr": "Plus de bougies. %s",
+  "es": "No quedan velas. %s",
+  "ko": "남은 촛불이 없어요. %s"
  },
  "candles_come_back": {
   "en": "Candles come back on their own; the level waits.",
   "zh": "蜡烛会随时间慢慢恢复，关卡会等你。",
-  "ja": "キャンドルは時間がたてば戻ります。ステージはそのまま待っています。"
+  "ja": "キャンドルは時間がたてば戻ります。ステージはそのまま待っています。",
+  "de": "Kerzen kommen von selbst zurück; das Level wartet.",
+  "fr": "Les bougies reviennent d'elles-mêmes ; le niveau t'attend.",
+  "es": "Las velas vuelven solas; el nivel te espera.",
+  "ko": "촛불은 저절로 다시 채워져요. 레벨은 기다려 줘요."
  },
  "refill_btn": {
   "en": "Refill · %s",
   "zh": "补满 · %s",
-  "ja": "満タンにする · %s"
+  "ja": "満タンにする · %s",
+  "de": "Auffüllen · %s",
+  "fr": "Recharger · %s",
+  "es": "Recargar · %s",
+  "ko": "충전 · %s"
  },
  "one_candle_btn": {
   "en": "One candle · %s",
   "zh": "一支蜡烛 · %s",
-  "ja": "キャンドル1本 · %s"
+  "ja": "キャンドル1本 · %s",
+  "de": "Eine Kerze · %s",
+  "fr": "Une bougie · %s",
+  "es": "Una vela · %s",
+  "ko": "촛불 1개 · %s"
  },
  "wait": {
   "en": "Wait",
   "zh": "等一等",
-  "ja": "待つ"
+  "ja": "待つ",
+  "de": "Warten",
+  "fr": "Attendre",
+  "es": "Esperar",
+  "ko": "기다리기"
  },
  "no_hints_board": {
   "en": "No hints on this board",
   "zh": "这个棋盘不能用提示",
-  "ja": "この盤面ではヒントは使えません"
+  "ja": "この盤面ではヒントは使えません",
+  "de": "Keine Tipps auf diesem Brett",
+  "fr": "Pas d'indice ici",
+  "es": "Sin pistas en este tablero",
+  "ko": "이 보드에서는 힌트 없음"
  },
  "no_hint": {
   "en": "No hint: %s",
   "zh": "无法提示：%s",
-  "ja": "ヒントなし：%s"
+  "ja": "ヒントなし：%s",
+  "de": "Kein Tipp: %s",
+  "fr": "Pas d'indice : %s",
+  "es": "Sin pista: %s",
+  "ko": "힌트 불가: %s"
  },
  "hint_fold": {
   "en": "Hint: fold %s",
   "zh": "提示：往%s折",
-  "ja": "ヒント：%sに折る"
+  "ja": "ヒント：%sに折る",
+  "de": "Tipp: falte %s",
+  "fr": "Indice : plie %s",
+  "es": "Pista: pliega %s",
+  "ko": "힌트: %s 방향으로 접기"
  },
  "dir_up": {
   "en": "UP",
   "zh": "上",
-  "ja": "上"
+  "ja": "上",
+  "de": "HOCH",
+  "fr": "HAUT",
+  "es": "ARRIBA",
+  "ko": "위"
  },
  "dir_down": {
   "en": "DOWN",
   "zh": "下",
-  "ja": "下"
+  "ja": "下",
+  "de": "RUNTER",
+  "fr": "BAS",
+  "es": "ABAJO",
+  "ko": "아래"
  },
  "dir_left": {
   "en": "LEFT",
   "zh": "左",
-  "ja": "左"
+  "ja": "左",
+  "de": "LINKS",
+  "fr": "GAUCHE",
+  "es": "IZQ.",
+  "ko": "왼쪽"
  },
  "dir_right": {
   "en": "RIGHT",
   "zh": "右",
-  "ja": "右"
+  "ja": "右",
+  "de": "RECHTS",
+  "fr": "DROITE",
+  "es": "DER.",
+  "ko": "오른쪽"
  },
  "todays_reward": {
   "en": "Today's reward: %s",
   "zh": "今日奖励：%s",
-  "ja": "本日の報酬：%s"
+  "ja": "本日の報酬：%s",
+  "de": "Heutige Belohnung: %s",
+  "fr": "Récompense du jour : %s",
+  "es": "Premio de hoy: %s",
+  "ko": "오늘의 보상: %s"
  },
  "streak_bonus": {
   "en": "Streak bonus: %s",
   "zh": "连续奖励：%s",
-  "ja": "連続ボーナス：%s"
+  "ja": "連続ボーナス：%s",
+  "de": "Serienbonus: %s",
+  "fr": "Bonus de série : %s",
+  "es": "Bonus de racha: %s",
+  "ko": "연속 보너스: %s"
  },
  "already_claimed": {
   "en": "Already claimed today: this run is for the stars only.",
   "zh": "今天的奖励已经领过了，这一局只算星星。",
-  "ja": "本日の報酬は受け取り済み。今回は星のためのプレイです。"
+  "ja": "本日の報酬は受け取り済み。今回は星のためのプレイです。",
+  "de": "Heute schon abgeholt: diese Runde zählt nur für die Sterne.",
+  "fr": "Déjà récupéré aujourd'hui : cette partie ne compte que pour les étoiles.",
+  "es": "Ya reclamado hoy: esta partida es solo por las estrellas.",
+  "ko": "오늘은 이미 받았어요. 이번 판은 별만 걸려 있어요."
  },
  "ch_streak": {
   "en": "Challenge streak: %d days",
   "zh": "挑战连续 %d 天",
-  "ja": "チャレンジ %d 日連続"
+  "ja": "チャレンジ %d 日連続",
+  "de": "Rätselserie: %d Tage",
+  "fr": "Série de défis : %d jours",
+  "es": "Racha de retos: %d días",
+  "ko": "챌린지 연속: %d일"
  },
  "ch_streak_1": {
   "en": "Challenge streak: %d day",
   "zh": "挑战连续 %d 天",
-  "ja": "チャレンジ %d 日連続"
+  "ja": "チャレンジ %d 日連続",
+  "de": "Rätselserie: %d Tag",
+  "fr": "Série de défis : %d jour",
+  "es": "Racha de retos: %d día",
+  "ko": "챌린지 연속: %d일"
  },
  "next_challenge": {
   "en": "Next challenge in %s",
   "zh": "下一个挑战：%s 后",
-  "ja": "次のチャレンジまで %s"
+  "ja": "次のチャレンジまで %s",
+  "de": "Nächstes Rätsel in %s",
+  "fr": "Défi suivant dans %s",
+  "es": "Próximo reto en %s",
+  "ko": "다음 챌린지까지 %s"
  },
  "daily_done": {
   "en": "Daily challenge %s",
   "zh": "每日挑战 %s",
-  "ja": "デイリーチャレンジ %s"
+  "ja": "デイリーチャレンジ %s",
+  "de": "Tagesrätsel %s",
+  "fr": "Défi du jour %s",
+  "es": "Reto diario %s",
+  "ko": "일일 챌린지 %s"
  },
  "board_reward": {
   "en": "Board reward: %s",
   "zh": "本盘奖励：%s",
-  "ja": "盤面の報酬：%s"
+  "ja": "盤面の報酬：%s",
+  "de": "Brettbelohnung: %s",
+  "fr": "Récompense : %s",
+  "es": "Premio del tablero: %s",
+  "ko": "보드 보상: %s"
  },
  "all_seven": {
   "en": "All seven! %s is yours, and a night of unlimited candles.",
   "zh": "七盘全通！%s 归你了，外加一晚无限蜡烛。",
-  "ja": "7盤すべてクリア！%s はあなたのもの。さらにひと晩キャンドル使い放題。"
+  "ja": "7盤すべてクリア！%s はあなたのもの。さらにひと晩キャンドル使い放題。",
+  "de": "Alle sieben! %s gehört dir, dazu eine Nacht unbegrenzt Kerzen.",
+  "fr": "Les sept ! %s est à toi, avec une nuit de bougies illimitées.",
+  "es": "¡Los siete! %s es tuyo, y una noche de velas ilimitadas.",
+  "ko": "일곱 개 모두! %s 획득, 촛불 무제한의 밤도 함께예요."
  },
  "event_progress": {
   "en": "%s: %d of %d boards  ·  ends in %s",
   "zh": "%s：%d / %d 盘  ·  %s 后结束",
-  "ja": "%s：%d / %d 盤面  ·  終了まで %s"
+  "ja": "%s：%d / %d 盤面  ·  終了まで %s",
+  "de": "%s: %d von %d Brettern  ·  endet in %s",
+  "fr": "%s : %d/%d plateaux  ·  fin dans %s",
+  "es": "%s: %d de %d tableros  ·  termina en %s",
+  "ko": "%s: 보드 %d/%d  ·  %s 후 종료"
  },
  "next_board": {
   "en": "Next board",
   "zh": "下一盘",
-  "ja": "次の盤面"
+  "ja": "次の盤面",
+  "de": "Nächstes Brett",
+  "fr": "Plateau suivant",
+  "es": "Siguiente",
+  "ko": "다음 보드"
  },
  "milestone": {
   "en": "Milestone",
   "zh": "里程碑",
-  "ja": "マイルストーン"
+  "ja": "マイルストーン",
+  "de": "Meilenstein",
+  "fr": "Étape",
+  "es": "Hito",
+  "ko": "마일스톤"
  },
  "milestone_halfway": {
   "en": "Halfway to %s",
   "zh": "「%s」已经过半",
-  "ja": "「%s」まであと半分"
+  "ja": "「%s」まであと半分",
+  "de": "Halbzeit bis %s",
+  "fr": "À mi-chemin de %s",
+  "es": "A mitad de %s",
+  "ko": "%s까지 절반"
  },
  "server": {
   "en": "Server",
   "zh": "服务器",
-  "ja": "サーバー"
+  "ja": "サーバー",
+  "de": "Server",
+  "fr": "Serveur",
+  "es": "Servidor",
+  "ko": "서버"
  },
  "daily_head": {
   "en": "Daily challenge",
   "zh": "每日挑战",
-  "ja": "デイリーチャレンジ"
+  "ja": "デイリーチャレンジ",
+  "de": "Tagesrätsel",
+  "fr": "Défi du jour",
+  "es": "Reto diario",
+  "ko": "일일 챌린지"
  },
  "event": {
   "en": "Event",
   "zh": "活动",
-  "ja": "イベント"
+  "ja": "イベント",
+  "de": "Event",
+  "fr": "Événement",
+  "es": "Evento",
+  "ko": "이벤트"
  },
  "bonus_goal": {
   "en": "  ·  BONUS GOAL",
   "zh": "  ·  奖励目标",
-  "ja": "  ·  ボーナス目標"
+  "ja": "  ·  ボーナス目標",
+  "de": "  ·  BONUSZIEL",
+  "fr": "  ·  OBJECTIF BONUS",
+  "es": "  ·  OBJETIVO EXTRA",
+  "ko": "  ·  보너스 목표"
  },
  "cheer_1": {
   "en": "Cleared!",
   "zh": "过关！",
-  "ja": "クリア！"
+  "ja": "クリア！",
+  "de": "Geschafft!",
+  "fr": "Réussi !",
+  "es": "¡Hecho!",
+  "ko": "클리어!"
  },
  "cheer_2": {
   "en": "Great!",
   "zh": "漂亮！",
-  "ja": "お見事！"
+  "ja": "お見事！",
+  "de": "Super!",
+  "fr": "Super !",
+  "es": "¡Genial!",
+  "ko": "좋아요!"
  },
  "cheer_3": {
   "en": "Perfect!",
   "zh": "完美！",
-  "ja": "パーフェクト！"
+  "ja": "パーフェクト！",
+  "de": "Perfekt!",
+  "fr": "Parfait !",
+  "es": "¡Perfecto!",
+  "ko": "완벽해요!"
  },
  "res_daily": {
   "en": "DAILY #%d",
   "zh": "每日 #%d",
-  "ja": "デイリー #%d"
+  "ja": "デイリー #%d",
+  "de": "RÄTSEL #%d",
+  "fr": "DÉFI N°%d",
+  "es": "DIARIO #%d",
+  "ko": "일일 #%d"
  },
  "res_event": {
   "en": "EVENT · BOARD %d",
   "zh": "活动 · 第 %d 盘",
-  "ja": "イベント · 盤面 %d"
+  "ja": "イベント · 盤面 %d",
+  "de": "EVENT · BRETT %d",
+  "fr": "ÉVÉNEMENT · PLATEAU %d",
+  "es": "EVENTO · TABLERO %d",
+  "ko": "이벤트 · 보드 %d"
  },
  "tap": {
   "en": "tap to continue",
   "zh": "点击继续",
-  "ja": "タップで続ける"
+  "ja": "タップで続ける",
+  "de": "tippen zum Fortfahren",
+  "fr": "touche pour continuer",
+  "es": "toca para seguir",
+  "ko": "탭해서 계속"
  },
  "mission_clear3": {
   "en": "Clear %d new levels",
   "zh": "通关 %d 个新关卡",
-  "ja": "新しいステージを %d つクリア"
+  "ja": "新しいステージを %d つクリア",
+  "de": "Schaffe %d neue Level",
+  "fr": "Réussis %d nouveaux niveaux",
+  "es": "Supera %d niveles nuevos",
+  "ko": "새 레벨 %d개 클리어"
  },
  "mission_win5": {
   "en": "Win %d levels (replays count)",
   "zh": "赢下 %d 关（重玩也算）",
-  "ja": "%d ステージで勝つ（再プレイも可）"
+  "ja": "%d ステージで勝つ（再プレイも可）",
+  "de": "Gewinne %d Level (Wiederholungen zählen)",
+  "fr": "Gagne %d niveaux (rejouer compte)",
+  "es": "Gana %d niveles (repetir cuenta)",
+  "ko": "레벨 %d개 승리 (재플레이 포함)"
  },
  "mission_star2": {
   "en": "Earn three stars on %d more levels",
   "zh": "再拿 %d 个关卡的三星",
-  "ja": "さらに %d ステージで星3つを取る"
+  "ja": "さらに %d ステージで星3つを取る",
+  "de": "Hol drei Sterne in %d weiteren Leveln",
+  "fr": "Obtiens 3 étoiles sur %d niveaux de plus",
+  "es": "Consigue tres estrellas en %d niveles más",
+  "ko": "레벨 %d개 더 별 3개 달성"
  },
  "mission_clean3": {
   "en": "Win %d levels without undo or hint",
   "zh": "不用撤销和提示赢下 %d 关",
-  "ja": "戻すとヒントなしで %d ステージ勝つ"
+  "ja": "戻すとヒントなしで %d ステージ勝つ",
+  "de": "Gewinne %d Level ohne Zurück oder Tipp",
+  "fr": "Gagne %d niveaux sans retour ni indice",
+  "es": "Gana %d niveles sin deshacer ni pistas",
+  "ko": "되돌리기나 힌트 없이 레벨 %d개 승리"
  },
  "mission_replay2": {
   "en": "Replay %d cleared levels",
   "zh": "重玩 %d 个已通关的关卡",
-  "ja": "クリア済みのステージを %d 回遊ぶ"
+  "ja": "クリア済みのステージを %d 回遊ぶ",
+  "de": "Spiele %d geschaffte Level erneut",
+  "fr": "Rejoue %d niveaux réussis",
+  "es": "Repite %d niveles superados",
+  "ko": "클리어한 레벨 %d개 재플레이"
  },
  "mission_login": {
   "en": "Light tonight's candle",
   "zh": "点亮今晚的蜡烛",
-  "ja": "今夜のキャンドルを灯す"
+  "ja": "今夜のキャンドルを灯す",
+  "de": "Heutige Kerze anzünden",
+  "fr": "Allumer la bougie du soir",
+  "es": "Enciende la vela de hoy",
+  "ko": "오늘 밤의 촛불 밝히기"
  },
  "mission_other": {
   "en": "Daily mission",
   "zh": "每日任务",
-  "ja": "デイリーミッション"
+  "ja": "デイリーミッション",
+  "de": "Tagesmission",
+  "fr": "Mission du jour",
+  "es": "Misión diaria",
+  "ko": "일일 미션"
  },
  "chapter_door": {
   "en": "The Door",
   "zh": "门口",
-  "ja": "玄関"
+  "ja": "玄関",
+  "de": "Die Tür",
+  "fr": "La Porte",
+  "es": "La Puerta",
+  "ko": "문"
  },
  "chapter_door_blurb": {
   "en": "Coco opens the door. You are the first guest of the night, and everyone at the House says hello.",
   "zh": "Coco 打开门。你是今晚的第一位客人，折纸之家的每个人都来跟你打招呼。",
-  "ja": "Coco が扉を開ける。今夜最初のお客はあなた。館のみんなが挨拶に来る。"
+  "ja": "Coco が扉を開ける。今夜最初のお客はあなた。館のみんなが挨拶に来る。",
+  "de": "Coco öffnet die Tür. Du bist der erste Gast der Nacht, und das ganze Haus sagt Hallo.",
+  "fr": "Coco t'ouvre la porte. Personne d'autre n'est encore arrivé ce soir, et toute la Maison vient te saluer.",
+  "es": "Coco abre la puerta. Llegas antes que nadie esta noche, y toda la Casa te saluda.",
+  "ko": "코코가 문을 열어요. 당신은 오늘 밤 첫 손님이고, 하우스의 모두가 인사를 건네요."
  },
  "chapter_lounge": {
   "en": "The Lounge",
   "zh": "休息厅",
-  "ja": "ラウンジ"
+  "ja": "ラウンジ",
+  "de": "Die Lounge",
+  "fr": "Le Salon",
+  "es": "El Salón",
+  "ko": "라운지"
  },
  "chapter_lounge_blurb": {
   "en": "They save you a seat. Coco lets you stay past closing.",
   "zh": "她们给你留了座位。打烊之后，Coco 也让你留下。",
-  "ja": "あなたの席が用意されている。閉店後も、Coco は帰らせない。"
+  "ja": "あなたの席が用意されている。閉店後も、Coco は帰らせない。",
+  "de": "Sie halten dir einen Platz frei. Coco lässt dich nach Feierabend bleiben.",
+  "fr": "On te garde une place. Coco te laisse rester après la fermeture.",
+  "es": "Te guardan un sitio. Coco te deja quedarte después del cierre.",
+  "ko": "모두가 당신 자리를 맡아 둬요. 코코는 문 닫을 시간이 지나도 당신을 붙잡아 둬요."
  },
  "chapter_stage": {
   "en": "The Stage",
   "zh": "舞台",
-  "ja": "舞台"
+  "ja": "舞台",
+  "de": "Die Bühne",
+  "fr": "La Scène",
+  "es": "El Escenario",
+  "ko": "무대"
  },
  "chapter_stage_blurb": {
   "en": "Straps slip, and nobody fixes them. The House is loosening up around you.",
   "zh": "肩带滑落，没人去拉回来。整座房子在你身边渐渐放松下来。",
-  "ja": "肩紐がずれても、誰も直さない。館があなたのまわりでほどけていく。"
+  "ja": "肩紐がずれても、誰も直さない。館があなたのまわりでほどけていく。",
+  "de": "Träger rutschen, und niemand rückt sie zurecht. Das Haus wird locker um dich herum.",
+  "fr": "Les bretelles glissent, et personne ne les remet. La Maison se détend autour de toi.",
+  "es": "Los tirantes resbalan y nadie los sube. La Casa se suelta a tu alrededor.",
+  "ko": "어깨끈이 흘러내려도 아무도 고쳐 매지 않아요. 하우스가 당신 곁에서 조금씩 풀어져요."
  },
  "chapter_mirror": {
   "en": "The Mirror Room",
   "zh": "镜厅",
-  "ja": "鏡の間"
+  "ja": "鏡の間",
+  "de": "Das Spiegelzimmer",
+  "fr": "La Chambre des miroirs",
+  "es": "La Sala de los Espejos",
+  "ko": "거울의 방"
  },
  "chapter_mirror_blurb": {
   "en": "They turn their backs to you, and look back.",
   "zh": "她们背过身去，又回头看你。",
-  "ja": "彼女たちは背を向けて、振り返る。"
+  "ja": "彼女たちは背を向けて、振り返る。",
+  "de": "Sie drehen dir den Rücken zu – und blicken zurück.",
+  "fr": "Elles te tournent le dos, puis se retournent vers toi.",
+  "es": "Te dan la espalda, y miran atrás.",
+  "ko": "그녀들이 등을 돌리고, 어깨 너머로 당신을 돌아봐요."
  },
  "chapter_upstairs": {
   "en": "Upstairs",
   "zh": "楼上",
-  "ja": "上の階"
+  "ja": "上の階",
+  "de": "Oben",
+  "fr": "À l'étage",
+  "es": "Arriba",
+  "ko": "위층"
  },
  "chapter_upstairs_blurb": {
   "en": "Silk sheets and evening light. You kept coming back.",
   "zh": "丝绸床单，傍晚的光。你一次又一次回来。",
-  "ja": "絹のシーツと夕暮れの光。あなたは何度も戻ってきた。"
+  "ja": "絹のシーツと夕暮れの光。あなたは何度も戻ってきた。",
+  "de": "Seidenlaken und Abendlicht. Du bist immer wiedergekommen.",
+  "fr": "Draps de soie et lumière du soir. Tu n'as jamais cessé de revenir.",
+  "es": "Sábanas de seda y luz de atardecer. Siempre volvías.",
+  "ko": "실크 시트와 저녁빛. 당신은 계속 돌아왔어요."
  },
  "chapter_lantern": {
   "en": "The Lantern Room",
   "zh": "灯笼间",
-  "ja": "ランタンの間"
+  "ja": "ランタンの間",
+  "de": "Das Laternenzimmer",
+  "fr": "La Chambre des lanternes",
+  "es": "La Sala de los Farolillos",
+  "ko": "등불의 방"
  },
  "chapter_lantern_blurb": {
   "en": "The last fold. A thousand paper cranes, one for every night you came.",
   "zh": "最后一折。一千只纸鹤，每一只都是你来过的一个夜晚。",
-  "ja": "最後の一折り。千羽の折り鶴、あなたが来た夜ひとつにつき一羽。"
+  "ja": "最後の一折り。千羽の折り鶴、あなたが来た夜ひとつにつき一羽。",
+  "de": "Die letzte Falte. Tausend Papierkraniche, einer für jede Nacht, in der du kamst.",
+  "fr": "Le dernier pli. Mille grues en papier, une pour chaque nuit passée ici.",
+  "es": "El último pliegue. Mil grullas de papel, una por cada noche que viniste.",
+  "ko": "마지막 접기. 당신이 찾아온 밤마다 하나씩, 천 마리의 종이학."
  },
  "stage_hello": {
   "en": "Hello",
   "zh": "初见",
-  "ja": "はじめまして"
+  "ja": "はじめまして",
+  "de": "Hallo",
+  "fr": "Bonjour",
+  "es": "Hola",
+  "ko": "안녕"
  },
  "stage_closer": {
   "en": "Closer",
   "zh": "靠近",
-  "ja": "近づく"
+  "ja": "近づく",
+  "de": "Näher",
+  "fr": "Plus près",
+  "es": "Más cerca",
+  "ko": "가까이"
  },
  "stage_loosened": {
   "en": "Loosened",
   "zh": "松开",
-  "ja": "ほどける"
+  "ja": "ほどける",
+  "de": "Gelockert",
+  "fr": "Dénouée",
+  "es": "Desatada",
+  "ko": "느슨하게"
  },
  "stage_turned": {
   "en": "Turned",
   "zh": "转身",
-  "ja": "振り向く"
+  "ja": "振り向く",
+  "de": "Umgedreht",
+  "fr": "Retournée",
+  "es": "Girada",
+  "ko": "돌아보며"
  },
  "stage_trust": {
   "en": "Trust",
   "zh": "信任",
-  "ja": "信頼"
+  "ja": "信頼",
+  "de": "Vertrauen",
+  "fr": "Confiance",
+  "es": "Confianza",
+  "ko": "신뢰"
  },
  "stage_last_fold": {
   "en": "Last fold",
   "zh": "最后一折",
-  "ja": "最後の一折り"
+  "ja": "最後の一折り",
+  "de": "Letzte Falte",
+  "fr": "Dernier pli",
+  "es": "Último pliegue",
+  "ko": "마지막 접기"
  },
  "event_coco": {
   "en": "Coco's Night Off",
   "zh": "Coco 的休息夜",
-  "ja": "Coco の休みの夜"
+  "ja": "Coco の休みの夜",
+  "de": "Cocos freier Abend",
+  "fr": "La soirée libre de Coco",
+  "es": "La noche libre de Coco",
+  "ko": "코코의 쉬는 밤"
  },
  "event_coco_blurb": {
   "en": "The hostess plays her own boards for once.",
   "zh": "女主人难得亲自下场，玩她自己的棋盘。",
-  "ja": "今夜だけは、女主人が自分の盤面を遊ぶ。"
+  "ja": "今夜だけは、女主人が自分の盤面を遊ぶ。",
+  "de": "Die Gastgeberin spielt ausnahmsweise ihre eigenen Bretter.",
+  "fr": "Pour une fois, l'hôtesse joue ses propres plateaux.",
+  "es": "Por una vez, la anfitriona juega sus propios tableros.",
+  "ko": "오늘만은 안주인이 직접 보드를 풀어요."
  },
  "event_coco_reward": {
   "en": "Coco's paper crane",
   "zh": "Coco 的纸鹤",
-  "ja": "Coco の折り鶴"
+  "ja": "Coco の折り鶴",
+  "de": "Cocos Papierkranich",
+  "fr": "La grue en papier de Coco",
+  "es": "La grulla de papel de Coco",
+  "ko": "코코의 종이학"
  },
  "event_june": {
   "en": "June's Late Shift",
   "zh": "June 的夜班",
-  "ja": "June の残業"
+  "ja": "June の残業",
+  "de": "Junes Spätschicht",
+  "fr": "La garde tardive de June",
+  "es": "El turno de noche de June",
+  "ko": "준의 야근"
  },
  "event_june_blurb": {
   "en": "June's worst week at the office, folded away one board at a time.",
   "zh": "June 在公司最糟的一周，一盘一盘折掉。",
-  "ja": "June の会社での最悪の一週間を、一盤ずつ折りたたむ。"
+  "ja": "June の会社での最悪の一週間を、一盤ずつ折りたたむ。",
+  "de": "Junes schlimmste Bürowoche, Brett für Brett weggefaltet.",
+  "fr": "La pire semaine de bureau de June, pliée et rangée plateau après plateau.",
+  "es": "La peor semana de June en la oficina, plegada tablero a tablero.",
+  "ko": "회사에서 보낸 준의 최악의 한 주를 보드 하나씩 접어 날려요."
  },
  "event_june_reward": {
   "en": "June's desk lamp",
   "zh": "June 的台灯",
-  "ja": "June のデスクランプ"
+  "ja": "June のデスクランプ",
+  "de": "Junes Schreibtischlampe",
+  "fr": "La lampe de June",
+  "es": "La lámpara de June",
+  "ko": "준의 책상 스탠드"
  },
  "event_iris": {
   "en": "Iris's Mirror Week",
   "zh": "Iris 的镜之周",
-  "ja": "Iris の鏡の一週間"
+  "ja": "Iris の鏡の一週間",
+  "de": "Iris' Spiegelwoche",
+  "fr": "La semaine miroir d'Iris",
+  "es": "La semana del espejo de Iris",
+  "ko": "아이리스의 거울 주간"
  },
  "event_iris_blurb": {
   "en": "Iris opens the mirror room for the week.",
   "zh": "这一周，Iris 为你打开镜厅。",
-  "ja": "今週は Iris が鏡の間をひらく。"
+  "ja": "今週は Iris が鏡の間をひらく。",
+  "de": "Iris öffnet diese Woche das Spiegelzimmer.",
+  "fr": "Iris ouvre la chambre des miroirs pour la semaine.",
+  "es": "Iris abre la sala de los espejos toda la semana.",
+  "ko": "아이리스가 이번 주 동안 거울의 방을 열어요."
  },
  "event_iris_reward": {
   "en": "Iris's hand mirror",
   "zh": "Iris 的手镜",
-  "ja": "Iris の手鏡"
+  "ja": "Iris の手鏡",
+  "de": "Iris' Handspiegel",
+  "fr": "Le miroir à main d'Iris",
+  "es": "El espejo de mano de Iris",
+  "ko": "아이리스의 손거울"
  },
  "event_sable": {
   "en": "Sable's Fan Dance",
   "zh": "Sable 的扇子舞",
-  "ja": "Sable の扇の舞"
+  "ja": "Sable の扇の舞",
+  "de": "Sables Fächertanz",
+  "fr": "Sable et l'éventail",
+  "es": "Danza del abanico de Sable",
+  "ko": "세이블의 부채춤"
  },
  "event_sable_blurb": {
   "en": "A new number on the lounge stage, every night this week.",
   "zh": "这一周每晚，休息厅的舞台上都有新节目。",
-  "ja": "今週は毎晩、ラウンジの舞台に新しい演目。"
+  "ja": "今週は毎晩、ラウンジの舞台に新しい演目。",
+  "de": "Jede Nacht diese Woche eine neue Nummer auf der Lounge-Bühne.",
+  "fr": "Un nouveau numéro sur la scène du salon, chaque soir de la semaine.",
+  "es": "Un número nuevo en el escenario del salón, cada noche esta semana.",
+  "ko": "이번 주 매일 밤, 라운지 무대에 새로운 공연이 올라요."
  },
  "event_sable_reward": {
   "en": "Sable's gold fan",
   "zh": "Sable 的金扇",
-  "ja": "Sable の金の扇"
+  "ja": "Sable の金の扇",
+  "de": "Sables goldener Fächer",
+  "fr": "L'éventail doré de Sable",
+  "es": "Abanico dorado de Sable",
+  "ko": "세이블의 금빛 부채"
  },
  "event_vesna": {
   "en": "Vesna's Last Call",
   "zh": "Vesna 的最后一杯",
-  "ja": "Vesna のラストオーダー"
+  "ja": "Vesna のラストオーダー",
+  "de": "Vesnas letzte Runde",
+  "fr": "Dernier verre de Vesna",
+  "es": "La última ronda de Vesna",
+  "ko": "베스나의 라스트 콜"
  },
  "event_vesna_blurb": {
   "en": "Vesna mixes something new behind the bar.",
   "zh": "Vesna 在吧台后调了一杯新酒。",
-  "ja": "Vesna がカウンターの奥で新しい一杯を作る。"
+  "ja": "Vesna がカウンターの奥で新しい一杯を作る。",
+  "de": "Vesna mixt hinter der Bar etwas Neues.",
+  "fr": "Vesna prépare quelque chose de nouveau derrière le bar.",
+  "es": "Vesna prepara algo nuevo detrás de la barra.",
+  "ko": "베스나가 바 뒤에서 새로운 걸 섞고 있어요."
  },
  "event_vesna_reward": {
   "en": "Vesna's house recipe",
   "zh": "Vesna 的招牌配方",
-  "ja": "Vesna の秘伝レシピ"
+  "ja": "Vesna の秘伝レシピ",
+  "de": "Vesnas Hausrezept",
+  "fr": "La recette maison de Vesna",
+  "es": "La receta de la casa de Vesna",
+  "ko": "베스나의 하우스 레시피"
  },
  "event_wren": {
   "en": "Wren's Ink Week",
   "zh": "Wren 的水墨周",
-  "ja": "Wren の墨の一週間"
+  "ja": "Wren の墨の一週間",
+  "de": "Wrens Tuschewoche",
+  "fr": "Wren à l'encre",
+  "es": "Semana de tinta de Wren",
+  "ko": "렌의 잉크 주간"
  },
  "event_wren_blurb": {
   "en": "Wren paints a lantern for every board you fold.",
   "zh": "你每折完一盘，Wren 就为你画一盏灯笼。",
-  "ja": "一盤折るごとに、Wren がランタンを一つ描いてくれる。"
+  "ja": "一盤折るごとに、Wren がランタンを一つ描いてくれる。",
+  "de": "Wren malt eine Laterne für jedes Brett, das du faltest.",
+  "fr": "Wren peint une lanterne pour chaque plateau que tu plies.",
+  "es": "Wren pinta un farolillo por cada tablero que pliegas.",
+  "ko": "당신이 보드를 하나 접을 때마다 렌이 등불을 하나씩 그려요."
  },
  "event_wren_reward": {
   "en": "Wren's lantern",
   "zh": "Wren 的灯笼",
-  "ja": "Wren のランタン"
+  "ja": "Wren のランタン",
+  "de": "Wrens Laterne",
+  "fr": "La lanterne de Wren",
+  "es": "El farolillo de Wren",
+  "ko": "렌의 등불"
  },
  "scene_coco_a1": {
   "en": "Coco · Hello",
   "zh": "Coco · 初见",
-  "ja": "Coco · はじめまして"
+  "ja": "Coco · はじめまして",
+  "de": "Coco · Hallo",
+  "fr": "Coco · Bonjour",
+  "es": "Coco · Hola",
+  "ko": "코코 · 안녕"
  },
  "scene_present": {
   "en": "The present",
   "zh": "礼物",
-  "ja": "贈り物"
+  "ja": "贈り物",
+  "de": "Das Geschenk",
+  "fr": "Le cadeau",
+  "es": "El regalo",
+  "ko": "선물"
  },
  "scene_sable_a1": {
   "en": "Sable · Hello",
   "zh": "Sable · 初见",
-  "ja": "Sable · はじめまして"
+  "ja": "Sable · はじめまして",
+  "de": "Sable · Hallo",
+  "fr": "Sable · Bonjour",
+  "es": "Sable · Hola",
+  "ko": "세이블 · 안녕"
  },
  "scene_renewal": {
   "en": "The renewal",
   "zh": "续约",
-  "ja": "契約更新"
+  "ja": "契約更新",
+  "de": "Die Verlängerung",
+  "fr": "Le renouveau",
+  "es": "La renovación",
+  "ko": "갱신"
  },
  "scene_vesna_a1": {
   "en": "Vesna · Hello",
   "zh": "Vesna · 初见",
-  "ja": "Vesna · はじめまして"
+  "ja": "Vesna · はじめまして",
+  "de": "Vesna · Hallo",
+  "fr": "Vesna · Bonjour",
+  "es": "Vesna · Hola",
+  "ko": "베스나 · 안녕"
  },
  "scene_landing": {
   "en": "The landing",
   "zh": "楼梯平台",
-  "ja": "踊り場"
+  "ja": "踊り場",
+  "de": "Der Treppenabsatz",
+  "fr": "Le palier",
+  "es": "El rellano",
+  "ko": "계단참"
  },
  "scene_wren_a1": {
   "en": "Wren · Hello",
   "zh": "Wren · 初见",
-  "ja": "Wren · はじめまして"
+  "ja": "Wren · はじめまして",
+  "de": "Wren · Hallo",
+  "fr": "Wren · Bonjour",
+  "es": "Wren · Hola",
+  "ko": "렌 · 안녕"
  },
  "scene_finial": {
   "en": "Morning tea",
   "zh": "早茶",
-  "ja": "朝のお茶"
+  "ja": "朝のお茶",
+  "de": "Morgentee",
+  "fr": "Thé du matin",
+  "es": "Té de la mañana",
+  "ko": "아침 차"
  },
  "scene_coco_a2": {
   "en": "Coco · Closer",
   "zh": "Coco · 靠近",
-  "ja": "Coco · 近づく"
+  "ja": "Coco · 近づく",
+  "de": "Coco · Näher",
+  "fr": "Coco · Plus près",
+  "es": "Coco · Más cerca",
+  "ko": "코코 · 가까이"
  },
  "scene_june_a2": {
   "en": "June · Closer",
   "zh": "June · 靠近",
-  "ja": "June · 近づく"
+  "ja": "June · 近づく",
+  "de": "June · Näher",
+  "fr": "June · Plus près",
+  "es": "June · Más cerca",
+  "ko": "준 · 가까이"
  },
  "scene_return": {
   "en": "The return",
   "zh": "归来",
-  "ja": "帰り道"
+  "ja": "帰り道",
+  "de": "Die Rückkehr",
+  "fr": "Le retour",
+  "es": "El regreso",
+  "ko": "귀환"
  },
  "scene_sable_a2": {
   "en": "Sable · Closer",
   "zh": "Sable · 靠近",
-  "ja": "Sable · 近づく"
+  "ja": "Sable · 近づく",
+  "de": "Sable · Näher",
+  "fr": "Sable · Plus près",
+  "es": "Sable · Más cerca",
+  "ko": "세이블 · 가까이"
  },
  "scene_iris_a2": {
   "en": "Iris · Closer",
   "zh": "Iris · 靠近",
-  "ja": "Iris · 近づく"
+  "ja": "Iris · 近づく",
+  "de": "Iris · Näher",
+  "fr": "Iris · Plus près",
+  "es": "Iris · Más cerca",
+  "ko": "아이리스 · 가까이"
  },
  "scene_retention": {
   "en": "The fitting room",
   "zh": "试衣间",
-  "ja": "試着室"
+  "ja": "試着室",
+  "de": "Die Umkleide",
+  "fr": "La cabine d'essayage",
+  "es": "El probador",
+  "ko": "피팅룸"
  },
  "scene_vesna_a2": {
   "en": "Vesna · Closer",
   "zh": "Vesna · 靠近",
-  "ja": "Vesna · 近づく"
+  "ja": "Vesna · 近づく",
+  "de": "Vesna · Näher",
+  "fr": "Vesna · Plus près",
+  "es": "Vesna · Más cerca",
+  "ko": "베스나 · 가까이"
  },
  "scene_wren_a2": {
   "en": "Wren · Closer",
   "zh": "Wren · 靠近",
-  "ja": "Wren · 近づく"
+  "ja": "Wren · 近づく",
+  "de": "Wren · Näher",
+  "fr": "Wren · Plus près",
+  "es": "Wren · Más cerca",
+  "ko": "렌 · 가까이"
  },
  "scene_coco_a3": {
   "en": "Coco · Loosened",
   "zh": "Coco · 松开",
-  "ja": "Coco · ほどける"
+  "ja": "Coco · ほどける",
+  "de": "Coco · Gelockert",
+  "fr": "Coco · Dénouée",
+  "es": "Coco · Desatada",
+  "ko": "코코 · 느슨하게"
  },
  "scene_room403": {
   "en": "Room 403",
   "zh": "403 号房",
-  "ja": "403号室"
+  "ja": "403号室",
+  "de": "Zimmer 403",
+  "fr": "Chambre 403",
+  "es": "Hab. 403",
+  "ko": "403호"
  },
  "scene_june_a3": {
   "en": "June · Loosened",
   "zh": "June · 松开",
-  "ja": "June · ほどける"
+  "ja": "June · ほどける",
+  "de": "June · Gelockert",
+  "fr": "June · Dénouée",
+  "es": "June · Desatada",
+  "ko": "준 · 느슨하게"
  },
  "scene_sable_a3": {
   "en": "Sable · Loosened",
   "zh": "Sable · 松开",
-  "ja": "Sable · ほどける"
+  "ja": "Sable · ほどける",
+  "de": "Sable · Gelockert",
+  "fr": "Sable · Dénouée",
+  "es": "Sable · Desatada",
+  "ko": "세이블 · 느슨하게"
  },
  "scene_breakroom": {
   "en": "The break room",
   "zh": "休息室",
-  "ja": "休憩室"
+  "ja": "休憩室",
+  "de": "Der Pausenraum",
+  "fr": "La salle de pause",
+  "es": "La sala de descanso",
+  "ko": "휴게실"
  },
  "scene_iris_a3": {
   "en": "Iris · Loosened",
   "zh": "Iris · 松开",
-  "ja": "Iris · ほどける"
+  "ja": "Iris · ほどける",
+  "de": "Iris · Gelockert",
+  "fr": "Iris · Dénouée",
+  "es": "Iris · Desatada",
+  "ko": "아이리스 · 느슨하게"
  },
  "scene_vesna_a3": {
   "en": "Vesna · Loosened",
   "zh": "Vesna · 松开",
-  "ja": "Vesna · ほどける"
+  "ja": "Vesna · ほどける",
+  "de": "Vesna · Gelockert",
+  "fr": "Vesna · Dénouée",
+  "es": "Vesna · Desatada",
+  "ko": "베스나 · 느슨하게"
  },
  "scene_wren_a3": {
   "en": "Wren · Loosened",
   "zh": "Wren · 松开",
-  "ja": "Wren · ほどける"
+  "ja": "Wren · ほどける",
+  "de": "Wren · Gelockert",
+  "fr": "Wren · Dénouée",
+  "es": "Wren · Desatada",
+  "ko": "렌 · 느슨하게"
  },
  "scene_mirror": {
   "en": "Two in the mirror",
   "zh": "镜中两人",
-  "ja": "鏡の中のふたり"
+  "ja": "鏡の中のふたり",
+  "de": "Zu zweit im Spiegel",
+  "fr": "Deux dans le miroir",
+  "es": "Dos en el espejo",
+  "ko": "거울 속의 두 사람"
  },
  "scene_coco_a4": {
   "en": "Coco · Turned",
   "zh": "Coco · 转身",
-  "ja": "Coco · 振り向く"
+  "ja": "Coco · 振り向く",
+  "de": "Coco · Umgedreht",
+  "fr": "Coco · Retournée",
+  "es": "Coco · Girada",
+  "ko": "코코 · 돌아보며"
  },
  "scene_other_mirror": {
   "en": "The other side of the glass",
   "zh": "玻璃的另一边",
-  "ja": "ガラスの向こう側"
+  "ja": "ガラスの向こう側",
+  "de": "Die andere Seite des Glases",
+  "fr": "De l'autre côté du miroir",
+  "es": "Al otro lado del cristal",
+  "ko": "유리 건너편"
  },
  "scene_june_a4": {
   "en": "June · Turned",
   "zh": "June · 转身",
-  "ja": "June · 振り向く"
+  "ja": "June · 振り向く",
+  "de": "June · Umgedreht",
+  "fr": "June · Retournée",
+  "es": "June · Girada",
+  "ko": "준 · 돌아보며"
  },
  "scene_sable_a4": {
   "en": "Sable · Turned",
   "zh": "Sable · 转身",
-  "ja": "Sable · 振り向く"
+  "ja": "Sable · 振り向く",
+  "de": "Sable · Umgedreht",
+  "fr": "Sable · Retournée",
+  "es": "Sable · Girada",
+  "ko": "세이블 · 돌아보며"
  },
  "scene_iris_a4": {
   "en": "Iris · Turned",
   "zh": "Iris · 转身",
-  "ja": "Iris · 振り向く"
+  "ja": "Iris · 振り向く",
+  "de": "Iris · Umgedreht",
+  "fr": "Iris · Retournée",
+  "es": "Iris · Girada",
+  "ko": "아이리스 · 돌아보며"
  },
  "scene_terminal": {
   "en": "The terminal",
   "zh": "终端机",
-  "ja": "端末"
+  "ja": "端末",
+  "de": "Das Terminal",
+  "fr": "Le terminal",
+  "es": "La terminal",
+  "ko": "터미널"
  },
  "scene_vesna_a4": {
   "en": "Vesna · Turned",
   "zh": "Vesna · 转身",
-  "ja": "Vesna · 振り向く"
+  "ja": "Vesna · 振り向く",
+  "de": "Vesna · Umgedreht",
+  "fr": "Vesna · Retournée",
+  "es": "Vesna · Girada",
+  "ko": "베스나 · 돌아보며"
  },
  "scene_wren_a4": {
   "en": "Wren · Turned",
   "zh": "Wren · 转身",
-  "ja": "Wren · 振り向く"
+  "ja": "Wren · 振り向く",
+  "de": "Wren · Umgedreht",
+  "fr": "Wren · Retournée",
+  "es": "Wren · Girada",
+  "ko": "렌 · 돌아보며"
  },
  "scene_r704_window": {
   "en": "The window",
   "zh": "窗边",
-  "ja": "窓辺"
+  "ja": "窓辺",
+  "de": "Das Fenster",
+  "fr": "La fenêtre",
+  "es": "La ventana",
+  "ko": "창가"
  },
  "scene_coco_a5": {
   "en": "Coco · Trust",
   "zh": "Coco · 信任",
-  "ja": "Coco · 信頼"
+  "ja": "Coco · 信頼",
+  "de": "Coco · Vertrauen",
+  "fr": "Coco · Confiance",
+  "es": "Coco · Confianza",
+  "ko": "코코 · 신뢰"
  },
  "scene_june_a5": {
   "en": "June · Trust",
   "zh": "June · 信任",
-  "ja": "June · 信頼"
+  "ja": "June · 信頼",
+  "de": "June · Vertrauen",
+  "fr": "June · Confiance",
+  "es": "June · Confianza",
+  "ko": "준 · 신뢰"
  },
  "scene_sable_a5": {
   "en": "Sable · Trust",
   "zh": "Sable · 信任",
-  "ja": "Sable · 信頼"
+  "ja": "Sable · 信頼",
+  "de": "Sable · Vertrauen",
+  "fr": "Sable · Confiance",
+  "es": "Sable · Confianza",
+  "ko": "세이블 · 신뢰"
  },
  "scene_iris_a5": {
   "en": "Iris · Trust",
   "zh": "Iris · 信任",
-  "ja": "Iris · 信頼"
+  "ja": "Iris · 信頼",
+  "de": "Iris · Vertrauen",
+  "fr": "Iris · Confiance",
+  "es": "Iris · Confianza",
+  "ko": "아이리스 · 신뢰"
  },
  "scene_vesna_a5": {
   "en": "Vesna · Trust",
   "zh": "Vesna · 信任",
-  "ja": "Vesna · 信頼"
+  "ja": "Vesna · 信頼",
+  "de": "Vesna · Vertrauen",
+  "fr": "Vesna · Confiance",
+  "es": "Vesna · Confianza",
+  "ko": "베스나 · 신뢰"
  },
  "scene_r704_bed": {
   "en": "The bed",
   "zh": "床",
-  "ja": "ベッド"
+  "ja": "ベッド",
+  "de": "Das Bett",
+  "fr": "Le lit",
+  "es": "La cama",
+  "ko": "침대"
  },
  "scene_wren_a5": {
   "en": "Wren · Trust",
   "zh": "Wren · 信任",
-  "ja": "Wren · 信頼"
+  "ja": "Wren · 信頼",
+  "de": "Wren · Vertrauen",
+  "fr": "Wren · Confiance",
+  "es": "Wren · Confianza",
+  "ko": "렌 · 신뢰"
  },
  "scene_coco_a6": {
   "en": "Coco · Last fold",
   "zh": "Coco · 最后一折",
-  "ja": "Coco · 最後の一折り"
+  "ja": "Coco · 最後の一折り",
+  "de": "Coco · Letzte Falte",
+  "fr": "Coco · Dernier pli",
+  "es": "Coco · Último pliegue",
+  "ko": "코코 · 마지막 접기"
  },
  "reason_invalid_or_expired_session": {
   "en": "Your session expired. Reload the game.",
   "zh": "登录已过期，请重新载入游戏。",
-  "ja": "セッションが切れました。ゲームを再読み込みしてください。"
+  "ja": "セッションが切れました。ゲームを再読み込みしてください。",
+  "de": "Sitzung abgelaufen. Lade das Spiel neu.",
+  "fr": "Ta session a expiré. Recharge le jeu.",
+  "es": "Tu sesión caducó. Recarga el juego.",
+  "ko": "세션이 만료됐어요. 게임을 새로고침해 주세요."
  },
  "reason_already_claimed_today": {
   "en": "Already claimed today.",
   "zh": "今天已经领过了。",
-  "ja": "今日はもう受け取りました。"
+  "ja": "今日はもう受け取りました。",
+  "de": "Heute schon abgeholt.",
+  "fr": "Déjà récupéré aujourd'hui.",
+  "es": "Ya reclamado hoy.",
+  "ko": "오늘은 이미 받았어요."
  },
  "reason_claim_all_three_missions_first": {
   "en": "Claim all three missions first.",
   "zh": "请先领取三个任务的奖励。",
-  "ja": "先に3つのミッションの報酬を受け取ってください。"
+  "ja": "先に3つのミッションの報酬を受け取ってください。",
+  "de": "Hol zuerst alle drei Missionen ab.",
+  "fr": "Récupère d'abord les trois missions.",
+  "es": "Reclama antes las tres misiones.",
+  "ko": "미션 세 개를 먼저 모두 받아 주세요."
  },
  "reason_bonus_already_claimed": {
   "en": "Bonus already claimed.",
   "zh": "奖励已经领过了。",
-  "ja": "ボーナスは受け取り済みです。"
+  "ja": "ボーナスは受け取り済みです。",
+  "de": "Bonus schon abgeholt.",
+  "fr": "Bonus déjà récupéré.",
+  "es": "Bonus ya reclamado.",
+  "ko": "보너스를 이미 받았어요."
  },
  "reason_no_such_mission_today": {
   "en": "That mission is not on today's list.",
   "zh": "今天没有这个任务。",
-  "ja": "そのミッションは今日のリストにありません。"
+  "ja": "そのミッションは今日のリストにありません。",
+  "de": "Diese Mission ist heute nicht dabei.",
+  "fr": "Cette mission n'est pas au programme du jour.",
+  "es": "Esa misión no está en la lista de hoy.",
+  "ko": "오늘 목록에 없는 미션이에요."
  },
  "reason_already_claimed": {
   "en": "Already claimed.",
   "zh": "已经领过了。",
-  "ja": "受け取り済みです。"
+  "ja": "受け取り済みです。",
+  "de": "Schon abgeholt.",
+  "fr": "Déjà récupéré.",
+  "es": "Ya reclamado.",
+  "ko": "이미 받았어요."
  },
  "reason_mission_not_complete": {
   "en": "That mission is not done yet.",
   "zh": "任务还没完成。",
-  "ja": "ミッションはまだ達成していません。"
+  "ja": "ミッションはまだ達成していません。",
+  "de": "Die Mission ist noch nicht erfüllt.",
+  "fr": "Mission pas encore terminée.",
+  "es": "Esa misión aún no está hecha.",
+  "ko": "아직 완료하지 않은 미션이에요."
  },
  "reason_level_required": {
   "en": "No level was chosen.",
   "zh": "没有选择关卡。",
-  "ja": "ステージが選ばれていません。"
+  "ja": "ステージが選ばれていません。",
+  "de": "Kein Level gewählt.",
+  "fr": "Aucun niveau choisi.",
+  "es": "No se eligió ningún nivel.",
+  "ko": "선택된 레벨이 없어요."
  },
  "reason_no_such_level": {
   "en": "That level does not exist.",
   "zh": "没有这一关。",
-  "ja": "そのステージはありません。"
+  "ja": "そのステージはありません。",
+  "de": "Dieses Level gibt es nicht.",
+  "fr": "Ce niveau n'existe pas.",
+  "es": "Ese nivel no existe.",
+  "ko": "존재하지 않는 레벨이에요."
  },
  "reason_level_locked": {
   "en": "That level is not open yet.",
   "zh": "这一关还没开放。",
-  "ja": "そのステージはまだ開いていません。"
+  "ja": "そのステージはまだ開いていません。",
+  "de": "Das Level ist noch gesperrt.",
+  "fr": "Niveau pas encore ouvert.",
+  "es": "Ese nivel aún no está abierto.",
+  "ko": "아직 열리지 않은 레벨이에요."
  },
  "reason_no_energy": {
   "en": "No candles left.",
   "zh": "蜡烛用完了。",
-  "ja": "キャンドルがありません。"
+  "ja": "キャンドルがありません。",
+  "de": "Keine Kerzen mehr.",
+  "fr": "Plus de bougies.",
+  "es": "No quedan velas.",
+  "ko": "남은 촛불 없음."
  },
  "reason_unknown_attempt": {
   "en": "That try is no longer open.",
   "zh": "这一局已经失效。",
-  "ja": "このプレイはもう有効ではありません。"
+  "ja": "このプレイはもう有効ではありません。",
+  "de": "Der Versuch ist nicht mehr offen.",
+  "fr": "Cet essai n'est plus ouvert.",
+  "es": "Ese intento ya no está abierto.",
+  "ko": "더 이상 유효하지 않은 도전이에요."
  },
  "reason_attempt_is": {
   "en": "That try is already over.",
   "zh": "这一局已经结束了。",
-  "ja": "このプレイはもう終わっています。"
+  "ja": "このプレイはもう終わっています。",
+  "de": "Der Versuch ist schon vorbei.",
+  "fr": "Cet essai est terminé.",
+  "es": "Ese intento ya terminó.",
+  "ko": "이미 끝난 도전이에요."
  },
  "reason_no_open_attempt": {
   "en": "No board is being played.",
   "zh": "当前没有进行中的棋盘。",
-  "ja": "プレイ中の盤面がありません。"
+  "ja": "プレイ中の盤面がありません。",
+  "de": "Kein Brett im Spiel.",
+  "fr": "Aucun plateau en cours.",
+  "es": "No hay ningún tablero en juego.",
+  "ko": "플레이 중인 보드가 없어요."
  },
  "reason_unknown_item": {
   "en": "Unknown item.",
   "zh": "未知的道具。",
-  "ja": "不明なアイテムです。"
+  "ja": "不明なアイテムです。",
+  "de": "Unbekannter Artikel.",
+  "fr": "Objet inconnu.",
+  "es": "Objeto desconocido.",
+  "ko": "알 수 없는 아이템."
  },
  "reason_no_token": {
   "en": "No token left.",
   "zh": "道具用完了。",
-  "ja": "チケットがありません。"
+  "ja": "チケットがありません。",
+  "de": "Keine Marke mehr.",
+  "fr": "Plus de jeton.",
+  "es": "No quedan fichas.",
+  "ko": "남은 이동권 없음."
  },
  "reason_no_hint": {
   "en": "No hint for this position.",
   "zh": "这个局面没有提示。",
-  "ja": "この局面ではヒントが出せません。"
+  "ja": "この局面ではヒントが出せません。",
+  "de": "Kein Tipp für diese Stellung.",
+  "fr": "Pas d'indice ici.",
+  "es": "No hay pista para esta posición.",
+  "ko": "이 배치에는 힌트가 없어요."
  },
  "reason_scene_locked": {
   "en": "That scene is still locked.",
   "zh": "这个场景还锁着。",
-  "ja": "そのシーンはまだロック中です。"
+  "ja": "そのシーンはまだロック中です。",
+  "de": "Die Szene ist noch gesperrt.",
+  "fr": "Scène encore verrouillée.",
+  "es": "Esa escena sigue bloqueada.",
+  "ko": "아직 잠긴 장면이에요."
  },
  "reason_no_such_scene": {
   "en": "That scene does not exist.",
   "zh": "没有这个场景。",
-  "ja": "そのシーンはありません。"
+  "ja": "そのシーンはありません。",
+  "de": "Diese Szene gibt es nicht.",
+  "fr": "Cette scène n'existe pas.",
+  "es": "Esa escena no existe.",
+  "ko": "존재하지 않는 장면이에요."
  },
  "reason_plate_missing_on_server": {
   "en": "The scene is missing on the server. Please tell us.",
   "zh": "服务器上找不到这个场景，请告诉我们。",
-  "ja": "サーバーにシーンが見つかりません。お知らせください。"
+  "ja": "サーバーにシーンが見つかりません。お知らせください。",
+  "de": "Die Szene fehlt auf dem Server. Bitte melde es uns.",
+  "fr": "Scène absente du serveur. Préviens-nous.",
+  "es": "Falta la escena en el servidor. Avísanos, por favor.",
+  "ko": "서버에 장면이 없어요. 저희에게 알려 주세요."
  },
  "reason_test_clock_disabled": {
   "en": "Not available.",
   "zh": "不可用。",
-  "ja": "利用できません。"
+  "ja": "利用できません。",
+  "de": "Nicht verfügbar.",
+  "fr": "Indisponible.",
+  "es": "No disponible.",
+  "ko": "이용 불가."
  },
  "reason_board_required": {
   "en": "No board was chosen.",
   "zh": "没有选择棋盘。",
-  "ja": "盤面が選ばれていません。"
+  "ja": "盤面が選ばれていません。",
+  "de": "Kein Brett gewählt.",
+  "fr": "Aucun plateau choisi.",
+  "es": "No se eligió ningún tablero.",
+  "ko": "선택된 보드가 없어요."
  },
  "reason_no_such_board": {
   "en": "That board does not exist.",
   "zh": "没有这个棋盘。",
-  "ja": "その盤面はありません。"
+  "ja": "その盤面はありません。",
+  "de": "Dieses Brett gibt es nicht.",
+  "fr": "Ce plateau n'existe pas.",
+  "es": "Ese tablero no existe.",
+  "ko": "존재하지 않는 보드예요."
  },
  "reason_board_locked": {
   "en": "Clear the board before it first.",
   "zh": "请先通过前一盘。",
-  "ja": "先にひとつ前の盤面をクリアしてください。"
+  "ja": "先にひとつ前の盤面をクリアしてください。",
+  "de": "Schaff erst das Brett davor.",
+  "fr": "Termine d'abord le plateau précédent.",
+  "es": "Supera antes el tablero anterior.",
+  "ko": "이전 보드를 먼저 클리어해 주세요."
  },
  "reason_that_challenge_has_ended_a_new_one_is_up": {
   "en": "That challenge has ended; a new one is up.",
   "zh": "这个挑战已经结束，新的挑战已经开始。",
-  "ja": "このチャレンジは終わりました。新しいチャレンジが始まっています。"
+  "ja": "このチャレンジは終わりました。新しいチャレンジが始まっています。",
+  "de": "Das Rätsel ist vorbei; ein neues wartet.",
+  "fr": "Ce défi est terminé ; un nouveau t'attend.",
+  "es": "Ese reto terminó; ya hay uno nuevo.",
+  "ko": "챌린지가 끝났어요. 새 챌린지가 열렸어요."
  },
  "reason_that_event_has_ended_a_new_one_is_on": {
   "en": "That event has ended; a new one is on.",
   "zh": "这个活动已经结束，新活动已经开始。",
-  "ja": "このイベントは終わりました。新しいイベントが開催中です。"
+  "ja": "このイベントは終わりました。新しいイベントが開催中です。",
+  "de": "Das Event ist vorbei; ein neues läuft.",
+  "fr": "Cet événement est fini ; un nouveau a commencé.",
+  "es": "Ese evento terminó; ya hay uno nuevo.",
+  "ko": "이벤트가 끝났어요. 새 이벤트가 진행 중이에요."
  },
  "reason_rejected": {
   "en": "The server refused it.",
   "zh": "服务器拒绝了这次结果。",
-  "ja": "サーバーに拒否されました。"
+  "ja": "サーバーに拒否されました。",
+  "de": "Der Server hat abgelehnt.",
+  "fr": "Refusé par le serveur.",
+  "es": "El servidor lo rechazó.",
+  "ko": "서버가 거부했어요."
  },
  "reason_malformed_action_log": {
   "en": "The move record was damaged.",
   "zh": "操作记录损坏了。",
-  "ja": "操作の記録が壊れていました。"
+  "ja": "操作の記録が壊れていました。",
+  "de": "Das Zugprotokoll war beschädigt.",
+  "fr": "L'historique des coups est corrompu.",
+  "es": "El registro de movimientos está dañado.",
+  "ko": "이동 기록이 손상됐어요."
  },
  "reason_log_does_not_win_the_level": {
   "en": "Those moves do not solve the board.",
   "zh": "这些步骤并没有解开棋盘。",
-  "ja": "その手順では盤面が解けていません。"
+  "ja": "その手順では盤面が解けていません。",
+  "de": "Diese Züge lösen das Brett nicht.",
+  "fr": "Ces coups ne résolvent pas le plateau.",
+  "es": "Esos movimientos no resuelven el tablero.",
+  "ko": "그 이동으로는 보드를 풀 수 없어요."
  },
  "reason_over_budget": {
   "en": "More moves than the board allows.",
   "zh": "步数超出了这个棋盘的上限。",
-  "ja": "盤面の手数を超えています。"
+  "ja": "盤面の手数を超えています。",
+  "de": "Mehr Züge als erlaubt.",
+  "fr": "Trop de coups pour ce plateau.",
+  "es": "Más movimientos de los que permite el tablero.",
+  "ko": "보드 허용 횟수보다 많이 이동했어요."
  },
  "reason_undos_not_paid_for": {
   "en": "More undos than you had.",
   "zh": "撤销次数超过了你拥有的。",
-  "ja": "持っている以上に戻しています。"
+  "ja": "持っている以上に戻しています。",
+  "de": "Mehr Zurücknahmen als vorhanden.",
+  "fr": "Plus de retours que tu n'en avais.",
+  "es": "Más deshacer de los que tenías.",
+  "ko": "가진 것보다 많이 되돌렸어요."
  },
  "reason_too_fast": {
   "en": "Solved faster than a person can play.",
   "zh": "解得比人手还快。",
-  "ja": "人の手では無理な速さで解かれています。"
+  "ja": "人の手では無理な速さで解かれています。",
+  "de": "Schneller gelöst, als ein Mensch spielen kann.",
+  "fr": "Résolu plus vite qu'humainement possible.",
+  "es": "Resuelto más rápido de lo que juega una persona.",
+  "ko": "사람이 풀 수 없는 속도예요."
  },
  "reason_reported_moves_disagree_with_the_replay": {
   "en": "The move count did not match the replay.",
   "zh": "步数和回放对不上。",
-  "ja": "手数がリプレイと一致しません。"
+  "ja": "手数がリプレイと一致しません。",
+  "de": "Die Zugzahl passte nicht zur Wiedergabe.",
+  "fr": "Le nombre de coups ne correspond pas au replay.",
+  "es": "El número de movimientos no coincide con la repetición.",
+  "ko": "이동 횟수가 리플레이와 맞지 않아요."
  },
  "reason_already_won": {
   "en": "Already won.",
   "zh": "已经赢过了。",
-  "ja": "すでにクリアしています。"
+  "ja": "すでにクリアしています。",
+  "de": "Schon gewonnen.",
+  "fr": "Déjà gagné.",
+  "es": "Ya ganado.",
+  "ko": "이미 승리했어요."
  },
  "reason_other": {
   "en": "The server refused it.",
   "zh": "服务器拒绝了这次操作。",
-  "ja": "サーバーに拒否されました。"
+  "ja": "サーバーに拒否されました。",
+  "de": "Der Server hat abgelehnt.",
+  "fr": "Refusé par le serveur.",
+  "es": "El servidor lo rechazó.",
+  "ko": "서버가 거부했어요."
  }
 }

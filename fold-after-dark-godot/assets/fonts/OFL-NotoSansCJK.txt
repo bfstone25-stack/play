@@ -1,4 +1,5 @@
 Noto Sans CJK — SIL Open Font License 1.1. NotoSansCJK-subset.otf is a 332-glyph subset (tools/subset_cjk.py) of NotoSansCJKjp-Regular.otf, Copyright 2014-2021 Adobe, Reserved Font Name "Source".
+NotoSansCJKkr-subset.otf (added 2026-09-24 for Korean) is a Hangul subset (tools/subset_cjk.py) of Noto Sans CJK KR from NotoSansCJK-Regular.ttc, Copyright 2014-2021 Adobe, same licence.
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

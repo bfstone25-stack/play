@@ -11,9 +11,17 @@
      "at": 4,
      "en": "The sheet halved, corner to corner",
      "zh": "整张纸对角对折",
-     "ja": "紙を角から角へ半分に"
+     "ja": "紙を角から角へ半分に",
+     "de": "Das Blatt halbiert, Ecke auf Ecke",
+     "fr": "La feuille pliée en deux, coin sur coin",
+     "es": "La hoja plegada por la mitad, esquina a esquina",
+     "ko": "종이를 반으로, 모서리에서 모서리로"
     }
-   ]
+   ],
+   "de": "Ein gefalteter Zettel",
+   "fr": "Un billet plié",
+   "es": "Una nota plegada",
+   "ko": "접은 쪽지"
   },
   "fan": {
    "en": "A paper fan",
@@ -25,15 +33,27 @@
      "at": 4,
      "en": "Edge to edge — the first pleat",
      "zh": "对边对折，第一道褶",
-     "ja": "端から端へ、最初のひだ"
+     "ja": "端から端へ、最初のひだ",
+     "de": "Kante auf Kante — die erste Falte",
+     "fr": "Bord contre bord — le premier pli",
+     "es": "Borde con borde: el primer pliegue",
+     "ko": "끝과 끝을 맞춰 — 첫 번째 주름"
     },
     {
      "at": 8,
      "en": "Pleated back the other way — it opens",
      "zh": "反向折回，扇面展开",
-     "ja": "逆に折り返すと扇が開く"
+     "ja": "逆に折り返すと扇が開く",
+     "de": "Zurückgefaltet — er öffnet sich",
+     "fr": "Replié dans l'autre sens — il s'ouvre",
+     "es": "Plegado al revés: se abre",
+     "ko": "반대로 다시 접어 — 펼쳐진다"
     }
-   ]
+   ],
+   "de": "Ein Papierfächer",
+   "fr": "Un éventail en papier",
+   "es": "Un abanico de papel",
+   "ko": "종이부채"
   },
   "envelope": {
    "en": "An envelope",
@@ -45,15 +65,27 @@
      "at": 4,
      "en": "Two corners in to the centre line",
      "zh": "两角折向中线",
-     "ja": "両角を中心線へ"
+     "ja": "両角を中心線へ",
+     "de": "Zwei Ecken zur Mittellinie",
+     "fr": "Deux coins vers la ligne centrale",
+     "es": "Dos esquinas hacia la línea central",
+     "ko": "두 모서리를 가운데 선으로"
     },
     {
      "at": 8,
      "en": "The flap turned down and tucked",
      "zh": "封口折下掖进去",
-     "ja": "ふたを折り下げて差し込む"
+     "ja": "ふたを折り下げて差し込む",
+     "de": "Die Lasche umgelegt und eingesteckt",
+     "fr": "Le rabat replié et glissé dessous",
+     "es": "La solapa doblada hacia abajo y metida",
+     "ko": "덮개를 내려 접어 끼운다"
     }
-   ]
+   ],
+   "de": "Ein Umschlag",
+   "fr": "Une enveloppe",
+   "es": "Un sobre",
+   "ko": "봉투"
   },
   "boat": {
    "en": "A paper boat",
@@ -65,21 +97,37 @@
      "at": 4,
      "en": "Halved, then halved across",
      "zh": "先对折，再横对折",
-     "ja": "半分に、そしてもう半分に"
+     "ja": "半分に、そしてもう半分に",
+     "de": "Halbiert, dann quer halbiert",
+     "fr": "Plié en deux, puis encore en travers",
+     "es": "Plegado por la mitad, y otra vez de través",
+     "ko": "반으로, 다시 가로로 반"
     },
     {
      "at": 8,
      "en": "Top corners in — a peak",
      "zh": "上两角折进，成尖顶",
-     "ja": "上の両角を折り込んで山形に"
+     "ja": "上の両角を折り込んで山形に",
+     "de": "Obere Ecken nach innen — eine Spitze",
+     "fr": "Coins du haut rabattus — une pointe",
+     "es": "Esquinas de arriba hacia dentro: un pico",
+     "ko": "위 모서리를 안으로 — 뾰족하게"
     },
     {
      "at": 16,
      "en": "The brim opened and pulled square",
      "zh": "翻开帽檐，拉成方形",
-     "ja": "つばを開いて四角に引く"
+     "ja": "つばを開いて四角に引く",
+     "de": "Den Rand geöffnet und glatt gezogen",
+     "fr": "Le bord ouvert et tiré au carré",
+     "es": "El borde abierto y estirado en cuadro",
+     "ko": "테두리를 펼쳐 네모로 당긴다"
     }
-   ]
+   ],
+   "de": "Ein Papierboot",
+   "fr": "Un bateau en papier",
+   "es": "Un barco de papel",
+   "ko": "종이배"
   },
   "shade": {
    "en": "A lamp shade",
@@ -91,21 +139,37 @@
      "at": 4,
      "en": "The long side pleated once",
      "zh": "长边折一道",
-     "ja": "長辺を一度折る"
+     "ja": "長辺を一度折る",
+     "de": "Die lange Seite einmal gefaltet",
+     "fr": "Le grand côté plissé une fois",
+     "es": "El lado largo plegado una vez",
+     "ko": "긴 쪽을 한 번 주름 접는다"
     },
     {
      "at": 8,
      "en": "Pleated again, and again",
      "zh": "再折，再折",
-     "ja": "さらに折り、また折る"
+     "ja": "さらに折り、また折る",
+     "de": "Wieder gefaltet, und wieder",
+     "fr": "Plissé encore, et encore",
+     "es": "Plegado otra vez, y otra",
+     "ko": "다시 접고, 또 접는다"
     },
     {
      "at": 16,
      "en": "The pleats closed into a ring",
      "zh": "折痕合成一圈",
-     "ja": "ひだを輪に閉じる"
+     "ja": "ひだを輪に閉じる",
+     "de": "Die Falten zum Ring geschlossen",
+     "fr": "Les plis refermés en anneau",
+     "es": "Los pliegues cerrados en un aro",
+     "ko": "주름을 이어 고리로 만든다"
     }
-   ]
+   ],
+   "de": "Ein Lampenschirm",
+   "fr": "Un abat-jour",
+   "es": "Una pantalla de lámpara",
+   "ko": "전등갓"
   },
   "crane": {
    "en": "A paper crane",
@@ -117,21 +181,37 @@
      "at": 4,
      "en": "Both diagonals creased",
      "zh": "两条对角线压痕",
-     "ja": "対角線を両方つける"
+     "ja": "対角線を両方つける",
+     "de": "Beide Diagonalen gefalzt",
+     "fr": "Les deux diagonales marquées",
+     "es": "Las dos diagonales marcadas",
+     "ko": "두 대각선에 접는 선을 낸다"
     },
     {
      "at": 8,
      "en": "Squashed into the bird base",
      "zh": "压折成鸟形基本型",
-     "ja": "つぶして鶴の基本形に"
+     "ja": "つぶして鶴の基本形に",
+     "de": "Zur Vogelbasis flachgedrückt",
+     "fr": "Écrasé en base de l'oiseau",
+     "es": "Aplastado en la base del pájaro",
+     "ko": "눌러서 학 기본형으로"
     },
     {
      "at": 16,
      "en": "Neck and tail pulled out",
      "zh": "拉出头颈与尾",
-     "ja": "首と尾を引き出す"
+     "ja": "首と尾を引き出す",
+     "de": "Hals und Schwanz herausgezogen",
+     "fr": "Le cou et la queue tirés",
+     "es": "Cuello y cola estirados hacia fuera",
+     "ko": "목과 꼬리를 당겨 뺀다"
     }
-   ]
+   ],
+   "de": "Ein Papierkranich",
+   "fr": "Une grue en papier",
+   "es": "Una grulla de papel",
+   "ko": "종이학"
   },
   "sash": {
    "en": "The sash",
@@ -143,15 +223,27 @@
      "at": 4,
      "en": "Drawn once around and held",
      "zh": "绕身一圈，握住",
-     "ja": "一度巻きつけて手に留める"
+     "ja": "一度巻きつけて手に留める",
+     "de": "Einmal herumgeführt und gehalten",
+     "fr": "Passée une fois autour, et tenue",
+     "es": "Una vuelta alrededor, y sujeta",
+     "ko": "한 번 둘러 감아 잡는다"
     },
     {
      "at": 8,
      "en": "The knot given back its slack",
      "zh": "结扣松开",
-     "ja": "結び目をゆるめる"
+     "ja": "結び目をゆるめる",
+     "de": "Der Knoten gelockert",
+     "fr": "Le nœud relâché",
+     "es": "El nudo, otra vez flojo",
+     "ko": "매듭을 느슨하게 푼다"
     }
-   ]
+   ],
+   "de": "Die Schärpe",
+   "fr": "La ceinture",
+   "es": "La faja",
+   "ko": "허리끈"
   },
   "cuff": {
    "en": "The cuff",
@@ -163,15 +255,27 @@
      "at": 4,
      "en": "Turned back once at the wrist",
      "zh": "在腕上翻起一折",
-     "ja": "手首で一度折り返す"
+     "ja": "手首で一度折り返す",
+     "de": "Einmal am Handgelenk umgeschlagen",
+     "fr": "Retourné une fois au poignet",
+     "es": "Doblado una vez en la muñeca",
+     "ko": "손목에서 한 번 접어 올린다"
     },
     {
      "at": 8,
      "en": "And again, to the forearm",
      "zh": "再翻一折，到小臂",
-     "ja": "もう一度、前腕まで"
+     "ja": "もう一度、前腕まで",
+     "de": "Und noch einmal, bis zum Unterarm",
+     "fr": "Et encore, jusqu'à l'avant-bras",
+     "es": "Y otra vez, hasta el antebrazo",
+     "ko": "한 번 더, 팔뚝까지"
     }
-   ]
+   ],
+   "de": "Die Manschette",
+   "fr": "Le poignet",
+   "es": "El puño",
+   "ko": "소맷부리"
   },
   "collar": {
    "en": "The collar",
@@ -183,21 +287,37 @@
      "at": 4,
      "en": "The top fastening given up",
      "zh": "最上一颗松开",
-     "ja": "一番上を外す"
+     "ja": "一番上を外す",
+     "de": "Der oberste Verschluss gibt nach",
+     "fr": "La première attache cède",
+     "es": "El primer botón cede",
+     "ko": "맨 위 여밈을 푼다"
     },
     {
      "at": 8,
      "en": "The collar laid open",
      "zh": "领口摊开",
-     "ja": "襟を開く"
+     "ja": "襟を開く",
+     "de": "Der Kragen aufgeschlagen",
+     "fr": "Le col ouvert",
+     "es": "El cuello abierto",
+     "ko": "옷깃을 연다"
     },
     {
      "at": 16,
      "en": "Folded flat to the shoulder",
      "zh": "折平贴到肩上",
-     "ja": "肩まで平らに折る"
+     "ja": "肩まで平らに折る",
+     "de": "Flach zur Schulter gefaltet",
+     "fr": "Plié à plat vers l'épaule",
+     "es": "Plegado plano hasta el hombro",
+     "ko": "어깨 쪽으로 납작하게 접는다"
     }
-   ]
+   ],
+   "de": "Der Kragen",
+   "fr": "Le col",
+   "es": "El cuello",
+   "ko": "옷깃"
   },
   "sleeve": {
    "en": "The sleeve",
@@ -209,21 +329,37 @@
      "at": 4,
      "en": "Gathered at the elbow",
      "zh": "在肘间收起",
-     "ja": "肘でたくし上げる"
+     "ja": "肘でたくし上げる",
+     "de": "Am Ellbogen gerafft",
+     "fr": "Froncée au coude",
+     "es": "Recogida en el codo",
+     "ko": "팔꿈치에서 모은다"
     },
     {
      "at": 8,
      "en": "Rolled to the shoulder",
      "zh": "卷到肩头",
-     "ja": "肩まで巻き上げる"
+     "ja": "肩まで巻き上げる",
+     "de": "Bis zur Schulter aufgerollt",
+     "fr": "Roulée jusqu'à l'épaule",
+     "es": "Enrollada hasta el hombro",
+     "ko": "어깨까지 걷어 올린다"
     },
     {
      "at": 16,
      "en": "Slipped off it entirely",
      "zh": "整条从肩上滑落",
-     "ja": "肩からすべて落ちる"
+     "ja": "肩からすべて落ちる",
+     "de": "Ganz von ihr heruntergeglitten",
+     "fr": "Glissée tout à fait",
+     "es": "Deslizada del todo",
+     "ko": "아예 흘러내린다"
     }
-   ]
+   ],
+   "de": "Der Ärmel",
+   "fr": "La manche",
+   "es": "La manga",
+   "ko": "소매"
   },
   "hem": {
    "en": "The hem",
@@ -235,21 +371,37 @@
      "at": 4,
      "en": "Turned up a hand's width",
      "zh": "翻起一掌宽",
-     "ja": "手のひら分だけ折り上げる"
+     "ja": "手のひら分だけ折り上げる",
+     "de": "Eine Handbreit umgeschlagen",
+     "fr": "Relevé d'une main",
+     "es": "Subido un palmo",
+     "ko": "한 뼘 접어 올린다"
     },
     {
      "at": 8,
      "en": "Turned up again",
      "zh": "再翻一折",
-     "ja": "もう一度折り上げる"
+     "ja": "もう一度折り上げる",
+     "de": "Noch einmal umgeschlagen",
+     "fr": "Relevé encore",
+     "es": "Subido otra vez",
+     "ko": "한 번 더 접어 올린다"
     },
     {
      "at": 16,
      "en": "Held there, and let go",
      "zh": "停住，再放开",
-     "ja": "そこで止め、そして放す"
+     "ja": "そこで止め、そして放す",
+     "de": "Dort gehalten, und losgelassen",
+     "fr": "Tenu là, puis lâché",
+     "es": "Sujeto ahí, y soltado",
+     "ko": "그대로 잡았다가, 놓는다"
     }
-   ]
+   ],
+   "de": "Der Saum",
+   "fr": "L'ourlet",
+   "es": "El dobladillo",
+   "ko": "치맛단"
   },
   "wrap": {
    "en": "The wrap",
@@ -261,27 +413,47 @@
      "at": 4,
      "en": "Crossed left over right",
      "zh": "左襟压右襟",
-     "ja": "左を右に重ねる"
+     "ja": "左を右に重ねる",
+     "de": "Links über rechts gekreuzt",
+     "fr": "Croisé gauche sur droite",
+     "es": "Cruzado izquierda sobre derecha",
+     "ko": "왼쪽을 오른쪽 위로 여민다"
     },
     {
      "at": 8,
      "en": "The crossing loosened",
      "zh": "交叠处松开",
-     "ja": "重なりをゆるめる"
+     "ja": "重なりをゆるめる",
+     "de": "Die Kreuzung gelockert",
+     "fr": "Le croisement relâché",
+     "es": "El cruce se afloja",
+     "ko": "여밈이 느슨해진다"
     },
     {
      "at": 16,
      "en": "One side folded back",
      "zh": "一侧折向身后",
-     "ja": "片側を後ろへ折る"
+     "ja": "片側を後ろへ折る",
+     "de": "Eine Seite zurückgefaltet",
+     "fr": "Un côté replié",
+     "es": "Un lado plegado hacia atrás",
+     "ko": "한쪽을 뒤로 접는다"
     },
     {
      "at": 32,
      "en": "The other follows it",
      "zh": "另一侧跟着",
-     "ja": "もう片側も続く"
+     "ja": "もう片側も続く",
+     "de": "Die andere folgt",
+     "fr": "L'autre suit",
+     "es": "El otro lo sigue",
+     "ko": "다른 쪽도 따라간다"
     }
-   ]
+   ],
+   "de": "Das Wickeltuch",
+   "fr": "Le châle",
+   "es": "El chal",
+   "ko": "두르개"
   },
   "stocking": {
    "en": "The stocking",
@@ -293,27 +465,47 @@
      "at": 4,
      "en": "Creased once above the knee",
      "zh": "膝上压出一道折痕",
-     "ja": "膝の上に一度折り目"
+     "ja": "膝の上に一度折り目",
+     "de": "Einmal über dem Knie gefaltet",
+     "fr": "Plié une fois au-dessus du genou",
+     "es": "Plegada una vez sobre la rodilla",
+     "ko": "무릎 위에서 한 번 접는다"
     },
     {
      "at": 8,
      "en": "Rolled to the knee",
      "zh": "卷到膝盖",
-     "ja": "膝まで巻く"
+     "ja": "膝まで巻く",
+     "de": "Bis zum Knie gerollt",
+     "fr": "Roulé jusqu'au genou",
+     "es": "Enrollada hasta la rodilla",
+     "ko": "무릎까지 말아 내린다"
     },
     {
      "at": 16,
      "en": "Rolled to the ankle",
      "zh": "卷到脚踝",
-     "ja": "足首まで巻く"
+     "ja": "足首まで巻く",
+     "de": "Bis zum Knöchel gerollt",
+     "fr": "Roulé jusqu'à la cheville",
+     "es": "Enrollada hasta el tobillo",
+     "ko": "발목까지 말아 내린다"
     },
     {
      "at": 32,
      "en": "Folded into the palm",
      "zh": "折进掌心",
-     "ja": "手のひらに折りこむ"
+     "ja": "手のひらに折りこむ",
+     "de": "In die Handfläche gefaltet",
+     "fr": "Plié au creux de la main",
+     "es": "Plegada en la palma",
+     "ko": "손바닥 안에 접어 넣는다"
     }
-   ]
+   ],
+   "de": "Der Strumpf",
+   "fr": "Le bas",
+   "es": "La media",
+   "ko": "스타킹"
   },
   "strap": {
    "en": "The strap",
@@ -325,27 +517,47 @@
      "at": 4,
      "en": "Lifted off the shoulder",
      "zh": "从肩上挑起",
-     "ja": "肩から持ち上げる"
+     "ja": "肩から持ち上げる",
+     "de": "Von der Schulter gehoben",
+     "fr": "Soulevée de l'épaule",
+     "es": "Levantado del hombro",
+     "ko": "어깨에서 들어 올린다"
     },
     {
      "at": 8,
      "en": "Let down the arm",
      "zh": "顺着手臂落下",
-     "ja": "腕を伝って下ろす"
+     "ja": "腕を伝って下ろす",
+     "de": "Den Arm hinabgelassen",
+     "fr": "Descendue le long du bras",
+     "es": "Bajado por el brazo",
+     "ko": "팔을 따라 내린다"
     },
     {
      "at": 16,
      "en": "The second one after it",
      "zh": "第二根跟着",
-     "ja": "二本目も続く"
+     "ja": "二本目も続く",
+     "de": "Der zweite folgt",
+     "fr": "La seconde la suit",
+     "es": "El segundo lo sigue",
+     "ko": "두 번째 끈도 뒤따른다"
     },
     {
      "at": 32,
      "en": "Both folded under",
      "zh": "两根折到身下",
-     "ja": "二本とも下へ折りこむ"
+     "ja": "二本とも下へ折りこむ",
+     "de": "Beide nach innen gefaltet",
+     "fr": "Toutes deux repliées dessous",
+     "es": "Los dos plegados debajo",
+     "ko": "둘 다 안으로 접어 넣는다"
     }
-   ]
+   ],
+   "de": "Der Träger",
+   "fr": "La bretelle",
+   "es": "El tirante",
+   "ko": "어깨끈"
   },
   "kneel": {
    "en": "Folded to kneel",
@@ -357,33 +569,57 @@
      "at": 4,
      "en": "Weight carried onto one knee",
      "zh": "重心压到一膝",
-     "ja": "重心を片膝へ"
+     "ja": "重心を片膝へ",
+     "de": "Das Gewicht auf ein Knie",
+     "fr": "Le poids sur un genou",
+     "es": "El peso sobre una rodilla",
+     "ko": "한쪽 무릎에 무게를 싣는다"
     },
     {
      "at": 8,
      "en": "The other knee brought in",
      "zh": "另一膝并上",
-     "ja": "もう片膝を寄せる"
+     "ja": "もう片膝を寄せる",
+     "de": "Das andere Knie herangezogen",
+     "fr": "L'autre genou ramené",
+     "es": "La otra rodilla, recogida",
+     "ko": "다른 무릎을 모은다"
     },
     {
      "at": 16,
      "en": "The back curved forward",
      "zh": "背向前弯",
-     "ja": "背を前へ丸める"
+     "ja": "背を前へ丸める",
+     "de": "Der Rücken nach vorn gebeugt",
+     "fr": "Le dos courbé en avant",
+     "es": "La espalda curvada hacia delante",
+     "ko": "등을 앞으로 둥글게 만다"
     },
     {
      "at": 32,
      "en": "The shoulders folded down",
      "zh": "肩折下去",
-     "ja": "肩を折り下げる"
+     "ja": "肩を折り下げる",
+     "de": "Die Schultern hinabgefaltet",
+     "fr": "Les épaules repliées vers le bas",
+     "es": "Los hombros plegados hacia abajo",
+     "ko": "어깨를 아래로 접는다"
     },
     {
      "at": 64,
      "en": "Held, and still",
      "zh": "停住，不动",
-     "ja": "そのまま、静かに"
+     "ja": "そのまま、静かに",
+     "de": "Gehalten, und still",
+     "fr": "Tenue, et immobile",
+     "es": "Sostenida, y quieta",
+     "ko": "그대로, 고요히"
     }
-   ]
+   ],
+   "de": "Zum Knien gefaltet",
+   "fr": "Pliée à genoux",
+   "es": "Plegada de rodillas",
+   "ko": "무릎 꿇게 접다"
   },
   "recline": {
    "en": "Folded to recline",
@@ -395,33 +631,57 @@
      "at": 4,
      "en": "One arm folded behind her",
      "zh": "一臂折到身后",
-     "ja": "片腕を背に折る"
+     "ja": "片腕を背に折る",
+     "de": "Ein Arm hinter ihr gefaltet",
+     "fr": "Un bras plié derrière elle",
+     "es": "Un brazo plegado a su espalda",
+     "ko": "한 팔을 등 뒤로 접는다"
     },
     {
      "at": 8,
      "en": "The waist turned",
      "zh": "腰转过去",
-     "ja": "腰をひねる"
+     "ja": "腰をひねる",
+     "de": "Die Taille gedreht",
+     "fr": "La taille tournée",
+     "es": "La cintura girada",
+     "ko": "허리를 튼다"
     },
     {
      "at": 16,
      "en": "One knee drawn up",
      "zh": "一膝收起",
-     "ja": "片膝を立てる"
+     "ja": "片膝を立てる",
+     "de": "Ein Knie angezogen",
+     "fr": "Un genou ramené",
+     "es": "Una rodilla recogida",
+     "ko": "한쪽 무릎을 세운다"
     },
     {
      "at": 32,
      "en": "The other laid across it",
      "zh": "另一腿搭上去",
-     "ja": "もう片脚を重ねる"
+     "ja": "もう片脚を重ねる",
+     "de": "Das andere darübergelegt",
+     "fr": "L'autre posé en travers",
+     "es": "La otra cruzada encima",
+     "ko": "다른 쪽을 그 위에 걸친다"
     },
     {
      "at": 64,
      "en": "Settled, and not moving",
      "zh": "落定，不动",
-     "ja": "落ち着いて、動かない"
+     "ja": "落ち着いて、動かない",
+     "de": "Zur Ruhe gekommen, ganz still",
+     "fr": "Installée, sans bouger",
+     "es": "Acomodada, sin moverse",
+     "ko": "자리를 잡고, 움직이지 않는다"
     }
-   ]
+   ],
+   "de": "Zum Liegen gefaltet",
+   "fr": "Pliée allongée",
+   "es": "Plegada, recostada",
+   "ko": "기대어 눕게 접다"
   },
   "unfolded": {
    "en": "Unfolded",
@@ -433,39 +693,67 @@
      "at": 4,
      "en": "The first crease, and she lets it",
      "zh": "第一道折痕，她由着",
-     "ja": "最初の折り目、彼女は許す"
+     "ja": "最初の折り目、彼女は許す",
+     "de": "Die erste Falte, und sie lässt es zu",
+     "fr": "Le premier pli, et elle le laisse faire",
+     "es": "El primer pliegue, y ella lo permite",
+     "ko": "첫 번째 접힌 선, 그녀는 허락한다"
     },
     {
      "at": 8,
      "en": "The second",
      "zh": "第二道",
-     "ja": "二つ目"
+     "ja": "二つ目",
+     "de": "Die zweite",
+     "fr": "Le deuxième",
+     "es": "El segundo",
+     "ko": "두 번째"
     },
     {
      "at": 16,
      "en": "The third — nothing is being hidden now",
      "zh": "第三道——已无可藏",
-     "ja": "三つ目——もう隠すものはない"
+     "ja": "三つ目——もう隠すものはない",
+     "de": "Die dritte — nichts wird mehr versteckt",
+     "fr": "Le troisième — plus rien n'est caché",
+     "es": "El tercero: ya no se oculta nada",
+     "ko": "세 번째 — 이제 숨기는 것은 없다"
     },
     {
      "at": 32,
      "en": "The fourth",
      "zh": "第四道",
-     "ja": "四つ目"
+     "ja": "四つ目",
+     "de": "Die vierte",
+     "fr": "Le quatrième",
+     "es": "El cuarto",
+     "ko": "네 번째"
     },
     {
      "at": 64,
      "en": "The fifth, and she is laughing",
      "zh": "第五道，她笑了",
-     "ja": "五つ目、彼女は笑う"
+     "ja": "五つ目、彼女は笑う",
+     "de": "Die fünfte, und sie lacht",
+     "fr": "Le cinquième, et elle rit",
+     "es": "El quinto, y ella se ríe",
+     "ko": "다섯 번째, 그녀는 웃고 있다"
     },
     {
      "at": 128,
      "en": "Open. Every layer of her counted",
      "zh": "完全展开，每一层都数过了",
-     "ja": "全開。層の一枚まで数えた"
+     "ja": "全開。層の一枚まで数えた",
+     "de": "Offen. Jede Lage von ihr gezählt",
+     "fr": "Ouverte. Chaque pli d'elle compté",
+     "es": "Abierta. Cada capa de ella, contada",
+     "ko": "활짝. 그녀의 모든 겹을 다 셌다"
     }
-   ]
+   ],
+   "de": "Entfaltet",
+   "fr": "Dépliée",
+   "es": "Desplegada",
+   "ko": "펼쳐지다"
   }
  }
 }

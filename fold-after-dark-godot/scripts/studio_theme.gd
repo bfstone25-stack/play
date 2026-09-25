@@ -32,6 +32,11 @@ const FONT_DISPLAY := "res://assets/fonts/LilitaOne-Regular.ttf"
 const FONT_UI := "res://assets/fonts/Nunito.ttf"                        # variable, wght 200-1000
 const FONT_ITALIC := "res://assets/fonts/PlayfairDisplay-Italic.ttf"    # variable, wght 400-900
 const FONT_CJK := "res://assets/fonts/NotoSansCJK-subset.otf"
+## Korean (2026-09-24): Hangul is not in the JP face. And the symbols no face carried --
+## ✕, ∞, the macron in "plicāre" -- which drew as empty boxes in every language.
+## Both hang after FONT_CJK in the same chain; tools/subset_cjk.py builds all three.
+const FONT_KR := "res://assets/fonts/NotoSansCJKkr-subset.otf"
+const FONT_SYM := "res://assets/fonts/Symbols-subset.ttf"
 # the siblings' constant names, resolved onto the three faces above
 const FONT_SERIF := FONT_UI
 const FONT_SERIF_BOLD := FONT_UI
@@ -42,6 +47,7 @@ static var _cache: Theme
 static var _fonts := {}
 static var _files := {}
 static var _cjk: FontFile
+static var _chain: Array[Font] = []
 
 
 static func cjk() -> FontFile:
@@ -50,13 +56,27 @@ static func cjk() -> FontFile:
 	return _cjk
 
 
+## The whole fallback chain, JP first, then KR, then the symbols. Held in a static so the
+## FontFiles stay alive (memory `godot-web-font-fallback`). load(), not preload(): a missing
+## subset costs its glyphs, not the game.
+static func chain() -> Array[Font]:
+	if _chain.is_empty():
+		for path in [FONT_CJK, FONT_KR, FONT_SYM]:
+			if ResourceLoader.exists(path):
+				var f: Font = load(path)
+				if f != null:
+					_chain.append(f)
+	return _chain
+
+
 static func _file(path: String) -> Font:
 	if not _files.has(path):
 		var f: FontFile = load(path)
-		var fb := cjk()
-		if fb != null and f != null:
+		if f != null:
 			var arr := f.fallbacks.duplicate()
-			arr.append(fb)
+			for fb in chain():
+				if not arr.has(fb):
+					arr.append(fb)
 			f.fallbacks = arr
 		_files[path] = f
 	return _files[path]
@@ -69,9 +89,7 @@ static func _weight(path: String, wght: int) -> Font:
 	# A FontVariation does NOT inherit its base font's fallback chain: the first zh build
 	# rendered every button label as tofu while the base face measured the same glyphs
 	# fine, because the buttons are all weighted variations. Attach it here as well.
-	var fb := cjk()
-	if fb != null:
-		fv.fallbacks = [fb]
+	fv.fallbacks = chain().duplicate()
 	return fv
 
 

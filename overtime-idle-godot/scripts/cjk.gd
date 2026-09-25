@@ -35,6 +35,7 @@ const FILES := {
 	"zh": "NotoSansCJKsc-subset.ttf",
 	"ja": "NotoSansCJKjp-subset.ttf",
 	"zh-Hant": "NotoSansCJKtc-subset.ttf",
+	"ko": "NotoSansCJKkr-subset.ttf",
 }
 
 static var _kept := {}
@@ -68,3 +69,20 @@ static func face_for(l: String) -> Font:
 	var f: Font = load(path)
 	_kept[l] = f
 	return f
+
+
+## The fallback chain for the current language: its own face FIRST (so Japanese kanji come
+## from the JP face, not the SC one), then the other CJK faces. The others are there for the
+## language menu, which writes 日本語, 中文 and 한국어 in every language -- without them an
+## English or German screen draws those three names as empty boxes. Added 2026-09-24 with
+## de / fr / es / ko.
+static func chain() -> Array[Font]:
+	var out: Array[Font] = []
+	var own := face()
+	if own:
+		out.append(own)
+	for l in ["ja", "zh", "ko"]:
+		var f := face_for(l)
+		if f and not out.has(f):
+			out.append(f)
+	return out

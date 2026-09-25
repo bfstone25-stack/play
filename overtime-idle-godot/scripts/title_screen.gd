@@ -162,10 +162,10 @@ func _font(path: String) -> Font:
 	var f: Font = load(path)
 	if f == null:
 		return ThemeDB.fallback_font
-	var cjk := Cjk.face()
-	if cjk and f is FontFile:
-		f.fallbacks = [cjk]
-		_kept.append(cjk)
+	if f is FontFile:
+		var chain := Cjk.chain()
+		f.fallbacks = chain
+		_kept.append_array(chain)
 	_kept.append(f)
 	return f
 
@@ -494,7 +494,7 @@ func _lang() -> void:
 	# an outlined word, not a dark stub: a settings word does not need a prop, and it
 	# does not need a box either
 	var b := ObjectButton.new()
-	b.text = I18n.ENDONYM[_next_lang()]
+	b.text = I18n.ENDONYM[I18n.lang]
 	b.object_size = 0.0
 	b.gap = 0.0
 	b.label_color = Color("#fff1d6")
@@ -508,13 +508,37 @@ func _lang() -> void:
 	b.size = b.custom_minimum_size
 	b.pressed.connect(func() -> void:
 		Sfx.tick()
-		I18n.set_lang(_next_lang())
+		_lang_menu(b))
+	add_child(b)
+
+
+## The language menu: all seven, each in its own language, the current one checked.
+## Seven languages made the old cycling word a lottery; this is a picker.
+func _lang_menu(anchor: Control) -> void:
+	var pm := PopupMenu.new()
+	pm.name = "LangMenu"
+	pm.add_theme_font_override("font", StudioTheme.font("ui"))
+	pm.add_theme_font_size_override("font_size", 20)
+	for i in I18n.LANGS.size():
+		var code: String = I18n.LANGS[i]
+		pm.add_radio_check_item(str(I18n.ENDONYM[code]), i)
+		pm.set_item_checked(i, code == I18n.lang)
+	pm.id_pressed.connect(func(i: int) -> void:
+		var code: String = I18n.LANGS[i]
+		if code == I18n.lang:
+			return
+		I18n.set_lang(code)
 		StudioTheme.reset_fonts()
 		# The Theme is the tree root's, so it has to be replaced as well as rebuilt: the
 		# old one holds the old language's FontFiles and nothing else would drop them.
 		Look.rebuild()
-		get_tree().reload_current_scene())
-	add_child(b)
+		get_tree().reload_current_scene.call_deferred())
+	pm.popup_hide.connect(pm.queue_free)
+	add_child(pm)
+	var r := anchor.get_global_rect()
+	var h := 36 * I18n.LANGS.size() + 16
+	pm.popup(Rect2i(Vector2i(int(r.position.x), int(max(8.0, r.position.y - h - 6))), Vector2i(int(max(r.size.x, 170.0)), 0)))
+
 
 
 func _next_lang() -> String:

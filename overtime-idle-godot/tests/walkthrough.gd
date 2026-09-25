@@ -55,6 +55,8 @@ func shot(name: String) -> void:
 	var img := get_viewport().get_texture().get_image()
 	img.save_png(shots.path_join(name + ".png"))
 	print("SHOT %d %s" % [f(), name])
+	for w in preload("res://tests/text_fit.gd").scan(get_tree().root):
+		print("FIT %s %s" % [name, w])
 
 
 func sleep(s: float) -> void:

@@ -13,12 +13,15 @@ extends Node
 
 var seg := "a"
 var m: Node
+var shots := ""       # --shots=<abs dir>: a still at every caption beat (ops/nutaku/lang_shots.py)
 
 
 func _ready() -> void:
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--walk-seg="):
 			seg = a.get_slice("=", 1)
+		elif a.begins_with("--shots="):
+			shots = a.get_slice("=", 1)
 		elif a.begins_with("--walk-lang="):
 			# the zh cut is recorded with the game itself in Chinese, not only its captions
 			Loc.set_code(a.get_slice("=", 1))
@@ -27,6 +30,23 @@ func _ready() -> void:
 
 func cap(key: String) -> void:
 	print("CAP %d %s" % [Engine.get_frames_drawn(), key])
+	if shots != "" and DisplayServer.get_name() != "headless":
+		_still.call_deferred(key)
+
+
+## A still a moment after the caption beat (the screen has settled), plus the text-fit scan.
+func _still(key: String) -> void:
+	await get_tree().create_timer(1.2).timeout
+	await RenderingServer.frame_post_draw
+	var img := get_viewport().get_texture().get_image()
+	if img == null:
+		return
+	DirAccess.make_dir_recursive_absolute(shots)
+	var name := "%s_%s" % [seg, key]
+	img.save_png(shots.path_join(name + ".png"))
+	print("SHOT %d %s" % [Engine.get_frames_drawn(), name])
+	for w in preload("res://tests/text_fit.gd").scan(get_tree().root):
+		print("FIT %s %s" % [name, w])
 
 
 func hold(secs: float) -> void:

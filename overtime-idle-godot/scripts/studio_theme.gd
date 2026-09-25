@@ -34,9 +34,7 @@ static func _file(path: String) -> Font:
 		# Noto only for the glyphs the Latin face does not have. Set here, once per face,
 		# so every `add_theme_font_override("font", Look.font_display)` in the game inherits
 		# it without being edited -- see scripts/cjk.gd for why that matters.
-		var cjk := Cjk.face()
-		if cjk:
-			f.fallbacks = [cjk]
+		f.fallbacks = Cjk.chain()
 		_files[path] = f
 	return _files[path]
 
@@ -58,9 +56,7 @@ static func _weight(path: String, wght: int) -> Font:
 	# Belt and braces: `fallbacks` is a property of Font, so a FontVariation carries its own
 	# list rather than reading the base font's. Setting it on the base alone left the bold
 	# and black weights -- i.e. every Tag, Value and Button in the game -- without CJK.
-	var cjk := Cjk.face()
-	if cjk:
-		fv.fallbacks = [cjk]
+	fv.fallbacks = Cjk.chain()
 	return fv
 
 

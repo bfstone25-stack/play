@@ -152,7 +152,40 @@ func level_name(i: int, lang: String) -> String:
 	var parts := raw.split(" / ")
 	if parts.size() < 2:
 		return raw
-	return parts[0] if lang == "zh" else parts[1]
+	if lang == "zh":
+		return parts[0]
+	return _level_word(parts[1], lang)
+
+
+## The level names are 14 words ("Warmup", "Easy 12", "Midnight 502", ...), so the other
+## languages are a word table rather than a column in levels.json (2026-09-24: ja had been
+## showing the English half; de / fr / es / ko would have too). A name not in the table
+## stays as it is -- ops/nutaku/fold_f2p/check_i18n.py fails on that.
+const LEVEL_WORDS := {
+	"ja": {"Warmup": "ウォームアップ", "Corner": "角", "Walls": "壁", "Fourfold": "四つ折り", "Island": "島",
+		"Octet": "八つ合わせ", "Ladder": "はしご", "Maze": "迷路", "Easy": "やさしい", "Medium": "ふつう",
+		"Hard": "むずかしい", "Expert": "エキスパート", "Endless": "エンドレス", "Midnight": "真夜中"},
+	"de": {"Warmup": "Aufwärmen", "Corner": "Ecke", "Walls": "Wände", "Fourfold": "Vierfach", "Island": "Insel",
+		"Octet": "Oktett", "Ladder": "Leiter", "Maze": "Labyrinth", "Easy": "Leicht", "Medium": "Mittel",
+		"Hard": "Schwer", "Expert": "Experte", "Endless": "Endlos", "Midnight": "Mitternacht"},
+	"fr": {"Warmup": "Échauffement", "Corner": "Coin", "Walls": "Murs", "Fourfold": "Quadruple", "Island": "Île",
+		"Octet": "Octuor", "Ladder": "Échelle", "Maze": "Labyrinthe", "Easy": "Facile", "Medium": "Moyen",
+		"Hard": "Difficile", "Expert": "Expert", "Endless": "Infini", "Midnight": "Minuit"},
+	"es": {"Warmup": "Calentamiento", "Corner": "Esquina", "Walls": "Muros", "Fourfold": "Cuádruple", "Island": "Isla",
+		"Octet": "Octeto", "Ladder": "Escalera", "Maze": "Laberinto", "Easy": "Fácil", "Medium": "Medio",
+		"Hard": "Difícil", "Expert": "Experto", "Endless": "Infinito", "Midnight": "Medianoche"},
+	"ko": {"Warmup": "워밍업", "Corner": "모서리", "Walls": "벽", "Fourfold": "네 겹", "Island": "섬",
+		"Octet": "여덟 겹", "Ladder": "사다리", "Maze": "미로", "Easy": "쉬움", "Medium": "보통",
+		"Hard": "어려움", "Expert": "전문가", "Endless": "무한", "Midnight": "자정"},
+}
+
+
+func _level_word(en: String, lang: String) -> String:
+	var words: Dictionary = LEVEL_WORDS.get(lang, {})
+	var head := en.get_slice(" ", 0)
+	if not words.has(head):
+		return en
+	return str(words[head]) + en.substr(head.length())
 
 
 ## JS `load(l)`: build cells, walls and tiles from the grid, reset the counters.

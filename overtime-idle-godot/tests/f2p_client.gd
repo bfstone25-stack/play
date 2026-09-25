@@ -37,6 +37,7 @@ func sleep(s: float) -> void:
 
 
 func _ready() -> void:
+	I18n.set_lang("en")        # the checks read English: pin it over whatever a previous run saved
 	Ticker.persist_enabled = false
 	Economy.persist_enabled = false
 	Sfx.muted = true         # headless: nothing to hear, and a cue still playing at quit leaks
@@ -202,7 +203,8 @@ func _sweep_languages() -> void:
 	b.daily_result.close()
 	b.queue_free()
 	await sleep(0.3)
-	for lang in ["zh", "ja"]:
+	for lang in ["ja", "de", "fr", "es", "zh", "ko"]:
+		_lang = lang
 		I18n.set_lang(lang)
 		b = load("res://scenes/building.tscn").instantiate()
 		get_tree().root.add_child(b)
@@ -259,9 +261,33 @@ func _texts(n: Node) -> Array:
 
 
 ## A run of three Latin letters that is not the brand, the platform or a unit.
+var _lang := "zh"
+var _en_lines := {}
+
+
+## Is `t` English in the language being swept? For ja / zh / ko any Latin word says so. For
+## de / fr / es a Latin word proves nothing: there it is a line that IS one of the English
+## table's lines (numbers normalised) and not also this language's line.
 func _latin(t: String) -> bool:
-	var s := t.replace("OCCUPANCY", "").replace("Nutaku", "")
-	return RegEx.create_from_string("[A-Za-z]{3,}").search(s) != null
+	var s := t.replace("OCCUPANCY", "").replace("Nutaku", "").replace("NUTAKU", "")
+	var has_word := RegEx.create_from_string("[A-Za-z]{3,}").search(s) != null
+	if _lang in ["ja", "zh", "ko"] or not has_word:
+		return has_word
+	if _en_lines.is_empty():
+		for v in (I18n.T["en"] as Dictionary).values():
+			_en_lines[_norm(str(v))] = true
+	var n := _norm(t)
+	if not _en_lines.has(n):
+		return false
+	for v in (I18n.T[_lang] as Dictionary).values():
+		if _norm(str(v)) == n:
+			return false
+	return true
+
+
+func _norm(s: String) -> String:
+	var re := RegEx.create_from_string("%[-0-9.]*[dsf]|\\{\\w+\\}|\\d[\\d,.]*")
+	return re.sub(s, "#", true).strip_edges()
 
 
 func _finish() -> void:

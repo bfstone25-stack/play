@@ -348,9 +348,8 @@ func _build_ui() -> void:
 	var lang := _fold_button("Lang", Palette.MUTED, 16, false)
 	lang.custom_minimum_size = Vector2(88, 46)
 	lang.pressed.connect(func():
-		I18n.toggle()
 		Sfx.slide()
-		Tel.ev("language_selected", {"language": I18n.lang}))
+		I18n.menu(lang))
 	row.add_child(lang)
 
 	var sound := _fold_button("Sound", Palette.MUTED, 16, false)
@@ -431,7 +430,7 @@ func _sync() -> void:
 	_set_label(_menu.get_node("Play"), I18n.t("continue") if seen else I18n.t("play"))
 	var row := _menu.get_child(1)
 	_set_label(row.get_node("Levels"), I18n.t("levels_btn"))
-	_set_label(row.get_node("Lang"), I18n.next_lang_label())
+	_set_label(row.get_node("Lang"), I18n.lang_label())
 	_set_label(row.get_node("Sound"), ("♪ " + I18n.t("on")) if Sfx.music_on else ("♪ " + I18n.t("off")))
 	var foot := get_node("CanvasLayer2/Foot") if has_node("CanvasLayer2/Foot") else null
 	if foot == null:

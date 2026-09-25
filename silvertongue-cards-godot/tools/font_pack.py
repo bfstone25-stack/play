@@ -40,7 +40,7 @@ PRODUCTS = ROOT.parent.parent
 LOC = ROOT / "scripts" / "loc.gd"
 DATA = ROOT / "assets" / "offline" / "data.json"
 OUT = ROOT / "assets" / "fonts"
-LANGS = ("zh", "zh-Hant", "ja")
+LANGS = ("zh", "zh-Hant", "ja", "ko")
 
 
 def from_loc() -> dict[str, set[str]]:
