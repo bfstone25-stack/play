@@ -171,6 +171,7 @@ func _story(s: Dictionary) -> void:
 	if bool(cp["done"]):
 		_section(I18n.t("f2p_story_done"))
 		para_into(I18n.t("f2p_story_after"))
+		_news(s)
 		_next_pack(s, cp)
 		return
 	var ch: Dictionary = cp["chapter"]
@@ -190,6 +191,7 @@ func _story(s: Dictionary) -> void:
 				var bsid := str(bt["scene"])
 				var bttl := F2P.scene_title(bsid, bt.get("title", ""))
 				bh.add_child(_small(I18n.t("f2p_view"), "Amber", func() -> void: view_scene.emit(bsid, bttl)))
+	_news(s)
 	_section(I18n.t("f2p_goals"))
 	var gi := 0
 	for g in cp["goals"]:
@@ -229,6 +231,16 @@ func _story(s: Dictionary) -> void:
 	if bool(cp.get("blocks_sale", false)):
 		para_into(I18n.t("f2p_blocks_sale"))
 	_next_pack(s, cp)
+
+
+## The live packs' dispatches: dated news from their cities, newest first.
+func _news(s: Dictionary) -> void:
+	var news: Array = s.get("news", [])
+	if news.is_empty():
+		return
+	_section(I18n.t("f2p_news_hdr"))
+	for nw in news:
+		_label(content, I18n.fmt("f2p_beat_line", {"title": F2P.beat_title(nw), "text": F2P.beat_text(nw)}), Palette.TEXT, 13)
 
 
 ## Which update pack brings the next chapters, and when (the server's release date).

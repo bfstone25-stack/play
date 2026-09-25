@@ -308,11 +308,16 @@ func goal_text(ch_id: String, i: int, g: Dictionary) -> String:
 
 ## A mid-chapter beat's title and paragraph.
 func beat_title(b: Dictionary) -> String:
-	return tx("f2p_bt_%s_title" % b["id"], b.get("title", ""))
+	return tx("%s_%s_title" % [_beat_ns(b), b["id"]], b.get("title", ""))
 
 
 func beat_text(b: Dictionary) -> String:
-	return tx("f2p_bt_%s_text" % b["id"], b.get("text", ""))
+	return tx("%s_%s_text" % [_beat_ns(b), b["id"]], b.get("text", ""))
+
+
+## A chapter beat (f2p_bt_*) or a pack's dispatch (f2p_dp_*): both land through `beats`.
+func _beat_ns(b: Dictionary) -> String:
+	return "f2p_dp" if str(b.get("kind", "")) == "dispatch" or str(b["id"]).begins_with("dp_") else "f2p_bt"
 
 
 ## An update pack's name (the STORY tab says which pack brings the next chapters).
