@@ -8,6 +8,24 @@
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
  },
+ "assets/faces/dagny.webp": {
+  "crop": [
+   256,
+   64,
+   736,
+   384
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_archive.webp"
+ },
+ "assets/faces/hedda.webp": {
+  "crop": [
+   250,
+   20,
+   730,
+   340
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_pilot.webp"
+ },
  "assets/faces/ines.webp": {
   "crop": [
    506,
@@ -25,6 +43,15 @@
    390
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_closing_time.png"
+ },
+ "assets/faces/mireille.webp": {
+  "crop": [
+   200,
+   40,
+   680,
+   360
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_sleeper.webp"
  },
  "assets/faces/odile.webp": {
   "crop": [
@@ -89,6 +116,24 @@
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_celeste.png"
  },
+ "assets/portraits/dagny.webp": {
+  "crop": [
+   236,
+   0,
+   756,
+   650
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_archive.webp"
+ },
+ "assets/portraits/hedda.webp": {
+  "crop": [
+   230,
+   0,
+   750,
+   650
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_pilot.webp"
+ },
  "assets/portraits/ines.webp": {
   "crop": [
    476,
@@ -106,6 +151,15 @@
    650
   ],
   "source": "play/silvertongue-x/frontend/assets/cg/cg1_closing_time.png"
+ },
+ "assets/portraits/mireille.webp": {
+  "crop": [
+   180,
+   0,
+   700,
+   650
+  ],
+  "source": "ops/silvertongue_art/installed/cg1_sleeper.webp"
  },
  "assets/portraits/odile.webp": {
   "crop": [

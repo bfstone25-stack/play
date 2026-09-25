@@ -138,5 +138,53 @@
       1140,
       680
     ]
+  },
+  "hedda": {
+    "scenario": "pilot",
+    "plate": "ops/silvertongue_art/installed/cg1_pilot.webp",
+    "face": [
+      250,
+      20,
+      730,
+      340
+    ],
+    "bust": [
+      230,
+      0,
+      750,
+      650
+    ]
+  },
+  "mireille": {
+    "scenario": "sleeper",
+    "plate": "ops/silvertongue_art/installed/cg1_sleeper.webp",
+    "face": [
+      200,
+      40,
+      680,
+      360
+    ],
+    "bust": [
+      180,
+      0,
+      700,
+      650
+    ]
+  },
+  "dagny": {
+    "scenario": "archive",
+    "plate": "ops/silvertongue_art/installed/cg1_archive.webp",
+    "face": [
+      256,
+      64,
+      736,
+      384
+    ],
+    "bust": [
+      236,
+      0,
+      756,
+      650
+    ]
   }
 }
