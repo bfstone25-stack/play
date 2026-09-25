@@ -93,12 +93,27 @@ def from_data() -> dict[str, set[str]]:
     return out
 
 
+def from_campaign() -> dict[str, set[str]]:
+    """The Night Ledger's table (Nutaku F2P): every server string, per locale
+    (tools/campaign_i18n.py). Without it the campaign draws as empty boxes in zh/ja."""
+    p = ROOT / "assets" / "i18n" / "campaign.json"
+    out = {l: set() for l in LANGS}
+    if p.exists():
+        for loc, table in json.loads(p.read_text(encoding="utf-8")).items():
+            if loc in out:
+                for v in table.values():
+                    out[loc] |= set(v)
+    return out
+
+
 def main() -> int:
     if not DATA.exists():
         print("no %s — run tools/export_offline.py first" % DATA, file=sys.stderr)
         return 2
     chars = from_loc()
     for lang, s in from_data().items():
+        chars[lang] |= s
+    for lang, s in from_campaign().items():
         chars[lang] |= s
 
     # ops/subset_cjk.py parses `"<lang>": {` blocks and unions the string literals inside,

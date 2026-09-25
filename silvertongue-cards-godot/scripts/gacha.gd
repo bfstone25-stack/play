@@ -54,17 +54,17 @@ func _ready() -> void:
 	btns.add_child(_pull1)
 	btns.add_child(_pull10)
 	var dev := Button.new()
-	dev.text = "+1000 GOLD (dev)"
+	dev.text = "+1000 GOLD (dev)"  # i18n-ok: dev build only, never added on Nutaku
 	dev.focus_mode = Control.FOCUS_NONE
 	StudioTheme.style_button(dev, "quiet")
 	dev.pressed.connect(func():
 		Sfx.play("ui_click")
 		var r := await Api.dev_gold(1000)
 		if r.has("error"):
-			main.toast(str(r["error"]))
+			main.toast(Loc.s(r["error"]))
 		else:
 			Sfx.play("gold")
-			main.toast("+1000 gold (dev)")
+			main.toast("+1000 gold (dev)")  # i18n-ok: dev build only
 			await main.refresh()
 			_render_prices())
 	if not F2P.on():               # never on Nutaku: gold is the platform's
@@ -105,8 +105,8 @@ func _render_prices() -> void:
 	_pull10.text = Loc.t("10 PULL · %d") % int(pp.get("10", 900))
 	if F2P.on():
 		var t := int(eco.get("tickets", 0))
-		_pull1.text = "1 PULL · " + ("1 TICKET" if t >= 1 else "%d CHIPS" % int(pp.get("1", 300)))
-		_pull10.text = "10 PULL · " + ("10 TICKETS" if t >= 10 else "%d CHIPS" % int(pp.get("10", 3000)))
+		_pull1.text = Loc.t("1 PULL · 1 TICKET") if t >= 1 else Loc.t("1 PULL · %d CHIPS") % int(pp.get("1", 300))
+		_pull10.text = Loc.t("10 PULL · 10 TICKETS") if t >= 10 else Loc.t("10 PULL · %d CHIPS") % int(pp.get("10", 3000))
 	var p: Dictionary = eco.get("pity", {})
 	_pity.text = Loc.t("PULLS %d · EPIC PITY IN %d · CREDITS %d") % [int(p.get("pulls", 0)), int(p.get("epic_pity_in", 30)), int(p.get("pull_credits", 0))]
 
@@ -126,7 +126,7 @@ func drive_pull(n: int) -> Dictionary:
 	var r := await Api.pull(n)
 	if r.has("error"):
 		_busy = false
-		main.toast(str(r["error"]))
+		main.toast(Loc.s(r["error"]))
 		_render_prices()
 		return r
 	last_pull = r
@@ -184,7 +184,7 @@ func drive_pull(n: int) -> Dictionary:
 	for id in seen:
 		_owned[id] = int(_owned.get(id, 0)) + int(seen[id])
 	if dupes > 0:
-		main.toast("%d DUPE%s — already in your collection" % [dupes, "" if dupes == 1 else "S"], 2.4, Palette.HEAT)
+		main.toast((Loc.t("1 DUPE — already in your collection") if dupes == 1 else Loc.t("%d DUPES — already in your collection") % dupes), 2.4, Palette.HEAT)
 	_busy = false
 	return r
 

@@ -12,6 +12,8 @@ var _grid: GridContainer
 var _count: Label
 var _tabs := {}
 var _sub: Label
+var live = null                      # Nutaku: ids that can act in the chosen night (null = all)
+var _night: Label
 
 
 func setup(_args: Dictionary) -> void:
@@ -40,6 +42,12 @@ func _ready() -> void:
 	_sub = StudioTheme.serif_label("", 13, Palette.MUTED)
 	_sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tbox.add_child(_sub)
+	# Nutaku: the night this deck is for, and what she hears; a card that carries none of it
+	# is never dealt (the server drops it), so it is shown dimmed and cannot be added
+	_night = StudioTheme.mono_label("", 12, Palette.ACCENT_SOFT)
+	_night.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_night.visible = false
+	tbox.add_child(_night)
 	head.add_child(tbox)
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 6)
@@ -64,7 +72,7 @@ func _ready() -> void:
 	col.add_child(tabs)
 	for sc in main.state.get("scenarios", []):
 		var b := Button.new()
-		b.text = str(sc.get("name", "")).to_upper()
+		b.text = Loc.s(sc.get("name", "")).to_upper()
 		b.focus_mode = Control.FOCUS_NONE
 		var id := str(sc.get("id", ""))
 		b.pressed.connect(func(): Sfx.play("ui_click"); scenario = id; _load(false))
@@ -97,11 +105,23 @@ func _load(auto: bool) -> void:
 			StudioTheme.style_button(b, "active")
 	var r := await Api.deck(scenario, auto)
 	if r.has("error"):
-		main.toast(str(r["error"]))
+		main.toast(Loc.s(r["error"]))
 		return
 	collection = r.get("collection", [])
 	deck = r.get("deck", []).duplicate()
 	deck_size = int(r.get("deck_size", 18))
+	live = r.get("live", null)
+	if live != null:
+		var words := []
+		for w in r.get("wanted", []):
+			words.append(Palette.label(str(w)))
+		var n_live := 0
+		for d in collection:
+			if live.has(str(d.get("id", ""))):
+				n_live += 1
+		_night.text = Loc.t("FOR %s (%s) · SHE HEARS: %s · %d OF YOUR CARDS CAN ACT TONIGHT") % [
+			str(r.get("night", "")).to_upper(), str(r.get("night_who", "")), ", ".join(words), n_live]
+		_night.visible = true
 	_sub.text = Loc.t("Pick up to %d. Copies count. The wild card is always in the deck and never counts.") % deck_size
 	_render()
 
@@ -123,11 +143,18 @@ func _render() -> void:
 		wrap.add_child(c)
 		c.setup(d, true)
 		c.set_selected(in_deck > 0)
-		var n := StudioTheme.mono_label(Loc.t("%d/%d in deck") % [in_deck, own], 10, Palette.GOLD if in_deck > 0 else Palette.MUTED)
+		var dead: bool = live != null and not live.has(id)
+		if dead:
+			wrap.modulate = Color(1, 1, 1, 0.38)
+		var n := StudioTheme.mono_label(Loc.t("not tonight") if dead else Loc.t("%d/%d in deck") % [in_deck, own], 10,
+			Palette.MUTED if dead or in_deck == 0 else Palette.GOLD)
 		n.position = Vector2(6, Card.H + 4)
 		wrap.add_child(n)
 		c.pressed.connect(func(_c):
 			Sfx.play("ui_click")
+			if dead:
+				main.toast(Loc.t("She will not hear this card tonight: it carries none of what she wants."))
+				return
 			if in_deck < own and deck.size() < deck_size:
 				deck.append(id)
 			elif in_deck > 0:
@@ -140,8 +167,8 @@ func _save() -> void:
 	Sfx.play("ui_click")
 	var r := await Api.save_deck(scenario, deck)
 	if r.get("ok", false):
-		main.toast("Deck saved")
+		main.toast(Loc.t("Deck saved"))
 		deck = r.get("deck", deck)
 		_render()
 	else:
-		main.toast(str(r.get("error", "failed")))
+		main.toast(Loc.s(r["error"]) if r.has("error") else Loc.t("Could not save the deck."))

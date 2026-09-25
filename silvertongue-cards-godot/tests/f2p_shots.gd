@@ -51,4 +51,23 @@ func _run() -> void:
 	await _snap("gacha")
 	m.go("store")
 	await _snap("store")
+	F2P.stage_id = "c1s02"
+	m.go("deck")
+	await _snap("deck")
+	# the same screens in Chinese and Japanese (the campaign's own words, not only chrome)
+	for lang in ["zh", "ja"]:
+		Loc.set_code(lang)
+		await get_tree().create_timer(0.6).timeout
+		m.go("home")
+		await _snap("campaign_" + lang)
+		var r2: Dictionary = await m.start_duel("c1s01", false)
+		if r2.get("ok", false):
+			var d2 = m.screen
+			while d2.hand.cards.is_empty():
+				await get_tree().process_frame
+			await _snap("duel_" + lang)
+			await d2.leave_confirm()
+		m.go("deck")
+		await _snap("deck_" + lang)
+	Loc.set_code("en")
 	get_tree().quit(0)

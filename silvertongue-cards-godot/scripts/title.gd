@@ -43,6 +43,10 @@ class_name TitleScreen
 const KV := "res://assets/title/keyvisual.webp"
 const MARK := "res://assets/title/mark.png"
 const CARD := "res://assets/title/card.png"
+## The Nutaku build's card back: the same card with the game's name where the studio mark
+## was ("FLAT 404 / blazeCore Play" name our own play sites, and Nutaku forbids promoting
+## other platforms). The "Web (Nutaku)" preset leaves card.png out of the pack entirely.
+const CARD_NUTAKU := "res://assets/title/card_nutaku.png"
 
 ## The design canvas. Every number below is a FRACTION of it, resolved in _layout()
 ## against the node's real rect — the sibling fork shipped two captures laid out against
@@ -232,7 +236,8 @@ func _build() -> void:
 	# picture under the type; the rows are objects with outlined words.
 	scrim.visible = false
 	mark = _picture(MARK, _r(MARK_RECT))
-	card = _picture(CARD, _r(CARD_RECT))
+	card = _picture(CARD_NUTAKU if (F2P.on() or OS.has_feature("nutaku") or not ResourceLoader.exists(CARD)) else CARD,
+		_r(CARD_RECT))
 
 
 func _picture(path: String, rect: Rect2) -> TextureRect:
@@ -340,7 +345,7 @@ func _compose() -> void:
 	# The menu rows survived the same ground only because they carry a 7 px outline, and
 	# this line needs the same — ops/adult_forks/TITLE_SCREENS.md is explicit that the
 	# check is to READ the captured frame, and this was the one element that failed it.
-	tagline = StudioTheme.serif_label("She has every reason to say no.", 21, Palette.CREAM)
+	tagline = StudioTheme.serif_label(Loc.t("She has every reason to say no."), 21, Palette.CREAM)
 	tagline.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.88))
 	tagline.add_theme_constant_override("outline_size", 6)
 	tagline.position = Vector2(ROW_X * w, TAG_Y * h)
@@ -350,8 +355,8 @@ func _compose() -> void:
 
 	# Two actions, and neither is called "Start". The first is what the game is; the
 	# second is the collection, which on an F2P card title is the other half of the loop.
-	rows.append(_row("SIT DOWN ACROSS FROM HER", func(): _start(), 0, true))
-	rows.append(_row("WHO YOU HAVE PERSUADED", func(): _go("affection"), 1, false))
+	rows.append(_row(Loc.t("SIT DOWN ACROSS FROM HER"), func(): _start(), 0, true))
+	rows.append(_row(Loc.t("WHO YOU HAVE PERSUADED"), func(): _go("affection"), 1, false))
 	for b in rows:
 		add_child(b)
 

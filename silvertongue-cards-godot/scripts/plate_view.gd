@@ -54,7 +54,7 @@ func _ready() -> void:
 func _show(tex: Texture2D, caption: String, tag: String) -> void:
 	_img.texture = tex
 	_cap.text = caption
-	_tag.text = tag + "   · tap to close"
+	_tag.text = tag + "   · " + Loc.t("tap to close")
 
 
 func _gui_input(ev: InputEvent) -> void:

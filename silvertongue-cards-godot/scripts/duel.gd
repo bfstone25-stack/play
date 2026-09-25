@@ -46,7 +46,7 @@ func setup(args: Dictionary) -> void:
 	else:
 		duel = main.state.get("duel", {})
 		scen = main.scenario(str(duel.get("scenario", "")))
-		_opening = "(She is still waiting.)"
+		_opening = Loc.t("(She is still waiting.)")
 
 var _opening := ""
 
@@ -56,9 +56,9 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_build()
 	portrait.show_character(str(scen.get("who", "mara")))
-	_goal.text = str(scen.get("goal", ""))
-	_brief.text = str(scen.get("story", ""))
-	_say(str(scen.get("name", "")), _opening, "her", true)
+	_goal.text = Loc.s(scen.get("goal", ""))
+	_brief.text = Loc.s(scen.get("story", ""))
+	_say(Loc.s(scen.get("name", "")), Loc.s(_opening), "her", true)
 	render(true)
 	Sfx.bark("greet")
 
@@ -109,7 +109,7 @@ func _build() -> void:
 	counters.add_child(c2)
 	# her resolve (the campaign's bar, Nutaku build): what each landed card wears down
 	var c3 := HBoxContainer.new()
-	_resolve_n = StudioTheme.mono_label("RESOLVE", 11, Palette.HEAT)
+	_resolve_n = StudioTheme.mono_label(Loc.t("RESOLVE"), 11, Palette.HEAT)
 	_resolve_bar = ProgressBar.new()
 	_resolve_bar.show_percentage = false
 	_resolve_bar.custom_minimum_size = Vector2(150, 10)
@@ -124,8 +124,8 @@ func _build() -> void:
 	hrow.add_child(counters)
 	if F2P.on():
 		_pass_btn = Button.new()
-		_pass_btn.text = "HOLD YOUR TONGUE"
-		_pass_btn.tooltip_text = "Say nothing: spend a turn, refill your nerve, draw a fresh hand."
+		_pass_btn.text = Loc.t("HOLD YOUR TONGUE")
+		_pass_btn.tooltip_text = Loc.t("Say nothing: spend a turn, refill your nerve, draw a fresh hand.")
 		_pass_btn.focus_mode = Control.FOCUS_NONE
 		_pass_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		StudioTheme.style_button(_pass_btn, "quiet")
@@ -200,11 +200,20 @@ func _build() -> void:
 	var scene_panel := PanelContainer.new()
 	scene_panel.add_theme_stylebox_override("panel", StudioTheme.flat(Color(Palette.PANEL, 0.7), Palette.LINE_SOFT, 10, 1, Vector2(14, 8)))
 	talk.add_child(scene_panel)
+	# The night's story, whole. It used to be three lines and an ellipsis, which cut a
+	# chapter's opening off mid-sentence; now it wraps inside a short scroll box (the
+	# speech above keeps the room) and the wheel or a drag reads the rest.
+	var brief_scroll := ScrollContainer.new()
+	brief_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	brief_scroll.custom_minimum_size.y = 96
+	brief_scroll.name = "StoryScroll"
+	scene_panel.add_child(brief_scroll)
 	_brief = StudioTheme.serif_label("", 13, Palette.MUTED)
 	_brief.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_brief.max_lines_visible = 3
-	_brief.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	scene_panel.add_child(_brief)
+	_brief.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_brief.max_lines_visible = -1
+	_brief.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
+	brief_scroll.add_child(_brief)
 
 	# hand
 	hand = Hand.new()
@@ -352,7 +361,7 @@ func render(instant: bool = false) -> void:
 	if rmax > 0 and _resolve_bar:
 		_resolve_bar.get_parent().visible = true
 		_resolve_bar.max_value = rmax
-		_resolve_n.text = "RESOLVE %d/%d " % [int(duel.get("resolve", 0)), rmax]
+		_resolve_n.text = Loc.t("RESOLVE %d/%d") % [int(duel.get("resolve", 0)), rmax] + " "
 		if instant:
 			_resolve_bar.value = int(duel.get("resolve", 0))
 		else:
@@ -450,18 +459,18 @@ func _play_turn(id: String, text: String) -> void:
 	main.busy = true
 	var line := text
 	if id == "pass":
-		line = "(You say nothing.)"
+		line = Loc.t("(You say nothing.)")
 	elif id != "wild":
 		for c in duel.get("hand", []):
 			if c.get("id") == id:
 				# The printed face, not the engine's English (Card.printed_line()).
 				var loc_key := "line_" + Loc.code().split("-")[0]
-				line = str(c.get(loc_key, "")) if str(c.get(loc_key, "")) != "" else str(c.get("line", ""))
-	_say("You", line, "player", true, id == "wild")
+				line = str(c.get(loc_key, "")) if str(c.get(loc_key, "")) != "" else Loc.s(c.get("line", ""))
+	_say(Loc.t("You"), line, "player", true, id == "wild")
 	var r := await Api.play(id, text)
 	_last_play = r
 	if r.has("error"):
-		main.toast(str(r["error"]))
+		main.toast(Loc.s(r["error"]))
 		if r.has("duel"):
 			duel = r["duel"]
 			render(true)
@@ -488,7 +497,7 @@ func _play_turn(id: String, text: String) -> void:
 	else:
 		Sfx.play("reply")
 	_bark_for(read, r)
-	_say(str(scen.get("name", "")), str(r.get("reply", "")), "gray" if harmed else "her")
+	_say(Loc.s(scen.get("name", "")), Loc.s(r.get("reply", "")), "gray" if harmed else "her")
 	render(false)
 	_juice(read, pb, pa)
 	if r.has("end"):
@@ -512,18 +521,18 @@ func _juice(read: Dictionary, pb: int, pa: int) -> void:
 		_pop("-%d" % imp, Palette.HEAT, 44, Vector2(0.28, 0.42))
 		Sfx.play("hit", -8.0)
 	if pa > pb and str(read.get("phase_after", "")) != "breakthrough":
-		_pop(str(read.get("phase_after", "")).to_upper(), Palette.GOLD, 64, Vector2(0.5, 0.36), 1.1)
+		_pop(Loc.t(str(read.get("phase_after", "")).to_upper()), Palette.GOLD, 64, Vector2(0.5, 0.36), 1.1)
 		_shake(6.0)
 		Sfx.play("flourish", -9.0)
 	match str(read.get("kind", "")):
 		"muted":
-			main.toast("She talked straight over it.", 1.8, Palette.MUTED)
+			main.toast(Loc.t("She talked straight over it."), 1.8, Palette.MUTED)
 		"order":
-			main.toast("Wrong order — she closed the door.", 2.2, Palette.HEAT)
+			main.toast(Loc.t("Wrong order — she closed the door."), 2.2, Palette.HEAT)
 		"press":
 			pass
 	if read.get("stolen") != null and str(read.get("stolen", "")) != "":
-		main.toast("Celeste's cut: she took your costliest card.", 2.2, Palette.ACCENT)
+		main.toast(Loc.t("Celeste's cut: she took your costliest card."), 2.2, Palette.ACCENT)
 		Sfx.play("steal", -8.0)
 
 
@@ -595,7 +604,7 @@ func _bark_for(read: Dictionary, r: Dictionary) -> void:
 ## Driver entry: play by id through the hand's own state machine, await the turn.
 func drive_play(id: String, text: String = "") -> Dictionary:
 	if not hand.choose(id, text):
-		return {"error": "cannot play %s (state %d, nerve %d)" % [id, hand.state, int(duel.get("nerve", 0))]}
+		return {"error": "cannot play %s (state %d, nerve %d)" % [id, hand.state, int(duel.get("nerve", 0))]}  # i18n-ok: test bridge answer, never drawn
 	var r: Dictionary = await turn_resolved
 	return r
 
@@ -609,9 +618,9 @@ func drive_pass() -> Dictionary:
 
 func drive_wild_submit() -> Dictionary:
 	if hand.state != Hand.State.WILD:
-		return {"error": "wild not open"}
+		return {"error": "wild not open"}  # i18n-ok: test bridge answer, never drawn
 	if not hand.submit_wild(wild_input.text):
-		return {"error": "empty line"}
+		return {"error": "empty line"}  # i18n-ok: test bridge answer, never drawn
 	_wild_bar.visible = false
 	var r: Dictionary = await turn_resolved
 	return r
@@ -691,11 +700,11 @@ func _show_end(r: Dictionary) -> void:
 		stats.add_theme_constant_override("separation", 2)
 		# on Nutaku the same two numbers are BOND and CHIPS: "gold" there is the platform's
 		# paid currency, and a win that says "+60 GOLD" reads as free money that never arrives
-		var aff_word := "♥ BOND  (+%d)" if F2P.on() else Loc.t("♥ AFFECTION  (+%d)")
+		var aff_word := Loc.t("♥ BOND  (+%d)") if F2P.on() else Loc.t("♥ AFFECTION  (+%d)")
 		stats.add_child(StudioTheme.mono_label(aff_word % int(rw.get("affection_gain", 0)), 11, Palette.HEAT))
 		var aff_n := _counter(Palette.HEAT)
 		stats.add_child(aff_n)
-		stats.add_child(StudioTheme.mono_label("◆ CHIPS" if F2P.on() else Loc.t("◆ GOLD"), 11, Palette.GOLD))
+		stats.add_child(StudioTheme.mono_label(Loc.t("◆ CHIPS") if F2P.on() else Loc.t("◆ GOLD"), 11, Palette.GOLD))
 		var gold_n := _counter(Palette.GOLD)
 		gold_n.prefix = "+"
 		stats.add_child(gold_n)
@@ -719,7 +728,7 @@ func _show_end(r: Dictionary) -> void:
 		col.add_child(pct)
 		if e.get("daily", false):
 			_daily_percentile(pct)
-	var beat := StudioTheme.serif_label(str(e.get("beat", "")), 15, Palette.TEXT)
+	var beat := StudioTheme.serif_label(Loc.s(e.get("beat", "")), 15, Palette.TEXT)
 	beat.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	beat.custom_minimum_size.x = 600
 	col.add_child(beat)
@@ -734,7 +743,7 @@ func _show_end(r: Dictionary) -> void:
 	brow.add_child(back)
 	if won:
 		var aff := Button.new()
-		aff.text = "BOND" if F2P.on() else Loc.t("AFFECTION")
+		aff.text = Loc.t("BOND") if F2P.on() else Loc.t("AFFECTION")
 		aff.focus_mode = Control.FOCUS_NONE
 		aff.pressed.connect(func(): Sfx.play("ui_click"); main.go("affection"))
 		brow.add_child(aff)
@@ -796,7 +805,7 @@ func _daily_percentile(label: Label) -> void:
 func _show_plate(key: String) -> void:
 	var tex := await Api.plate_texture(key)
 	if tex == null:
-		main.toast("Plate not available offline.")
+		main.toast(Loc.t("Plate not available offline."))
 		return
 	var cap := str(scen.get(key.substr(0, 3) + "_caption", ""))
 	PlateView.open(self, tex, cap, key.to_upper())

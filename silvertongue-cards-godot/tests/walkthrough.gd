@@ -8,7 +8,7 @@
 ##              boss duel under its rule
 ##
 ##   godot --path . res://tests/walkthrough.tscn --write-movie a.avi --fixed-fps 30 -- \
-##       --walk-seg=a --nutaku-mock=... --nutaku-api=... --nutaku-user=...
+##       --walk-seg=a [--walk-lang=zh] --nutaku-mock=... --nutaku-api=... --nutaku-user=...
 extends Node
 
 var seg := "a"
@@ -19,6 +19,9 @@ func _ready() -> void:
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--walk-seg="):
 			seg = a.get_slice("=", 1)
+		elif a.begins_with("--walk-lang="):
+			# the zh cut is recorded with the game itself in Chinese, not only its captions
+			Loc.set_code(a.get_slice("=", 1))
 	call_deferred("_run")
 
 
@@ -153,7 +156,8 @@ func _seg_b() -> void:
 		var pick: Card = null
 		for w in m.screen._grid.get_children():
 			var c = w.get_child(0) if w.get_child_count() > 0 else null
-			if c is Card and ((i == 0 and c._selected) or (i == 1 and not c._selected)):
+			var ok_live: bool = m.screen.live == null or m.screen.live.has(str(c.data.get("id", ""))) if c is Card else false
+			if c is Card and ((i == 0 and c._selected) or (i == 1 and not c._selected and ok_live and str(c.data.get("kind", "")) != "coercion")):
 				pick = c
 				break
 		if pick:

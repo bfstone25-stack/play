@@ -25,8 +25,10 @@ func _ready() -> void:
 	col.add_theme_constant_override("separation", 8)
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(col)
-	col.add_child(StudioTheme.display_label(Loc.t("AFFECTION"), 34, Palette.GOLD))
-	var sub := StudioTheme.serif_label(Loc.t("Affection is the count of duels won against her. Plates unlock at 1, 3 and 6 wins; the fourth rung at 10 is a scene of Blaze's own and is a placeholder in this build. Nothing here unlocks from time."), 13, Palette.MUTED)
+	col.add_child(StudioTheme.display_label(Loc.t("BOND") if F2P.on() else Loc.t("AFFECTION"), 34, Palette.GOLD))
+	# the Nutaku ladder is the server's (bond 3 / 10 / 30), not the off-platform one
+	var sub := StudioTheme.serif_label(Loc.t("Bond is the count of nights won against her. Her plates open at 3 and 10 bond; the rung at 30 is a scene still being written. Nothing here unlocks from time.")
+		if F2P.on() else Loc.t("Affection is the count of duels won against her. Plates unlock at 1, 3 and 6 wins; the fourth rung at 10 is a scene of Blaze's own and is a placeholder in this build. Nothing here unlocks from time."), 13, Palette.MUTED)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(sub)
 	var scroll := ScrollContainer.new()
@@ -43,7 +45,7 @@ func _ready() -> void:
 func _load() -> void:
 	var r := await Api.affection()
 	if r.has("error"):
-		main.toast(str(r["error"]))
+		main.toast(Loc.s(r["error"]))
 		return
 	data = r.get("affection", {})
 	var i := 0
@@ -74,7 +76,7 @@ func _row(who: String, a: Dictionary, index: int) -> void:
 	var namebox := VBoxContainer.new()
 	namebox.custom_minimum_size.x = 120
 	namebox.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	namebox.add_child(StudioTheme.display_label(str(a.get("name", who)), 22, Palette.TEXT))
+	namebox.add_child(StudioTheme.display_label(Loc.s(a.get("name", who)), 22, Palette.TEXT))
 	namebox.add_child(StudioTheme.mono_label("♥ %d" % int(a.get("wins", 0)), 12, Palette.HEAT))
 	h.add_child(namebox)
 	var ladder := Ladder.new()
@@ -101,13 +103,13 @@ func _show(who: String, key: String) -> void:
 	Sfx.play("ui_click")
 	var tex := await Api.plate_texture(key)
 	if tex == null:
-		main.toast("Plate not available.")
+		main.toast(Loc.t("Plate not available."))
 		return
 	var sc := {}
 	for s in main.state.get("scenarios", []):
 		if s.get("who") == who:
 			sc = s
-	PlateView.open(self, tex, str(sc.get(key.substr(0, 3) + "_caption", "")), key.to_upper())
+	PlateView.open(self, tex, Loc.s(sc.get(key.substr(0, 3) + "_caption", "")), key.to_upper())  # i18n-ok: the key is a plate id
 
 
 ## The rail with four rungs. Custom-drawn; thumbnails are TextureRect children placed on
@@ -197,15 +199,15 @@ class Ladder extends Control:
 				for k in range(0, 96, 8):
 					draw_line(box.position + Vector2(k, 0), box.position + Vector2(k + 4, 0), Palette.MUTED, 1.0)
 					draw_line(box.position + Vector2(k, 56), box.position + Vector2(k + 4, 56), Palette.MUTED, 1.0)
-				draw_string(_font, box.position + Vector2(6, 24), "tier 4 · at 10", HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.MUTED)
-				draw_string(_font, box.position + Vector2(6, 38), "Blaze's own", HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.MUTED)
+				draw_string(_font, box.position + Vector2(6, 24), Loc.t("tier %d · at %d") % [int(r.get("tier", i + 1)), int(r.get("at", 0))], HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.MUTED)
+				draw_string(_font, box.position + Vector2(6, 38), Loc.t("still to come"), HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.MUTED)
 			else:
 				if earned:
 					draw_rect(box.grow(2), Color(Palette.GOLD, 0.25), false, 3.0)
 				draw_rect(box, Palette.GOLD if earned else Palette.LINE_STRONG, false, 1.5 if earned else 1.0)
 				if not earned:
-					draw_string(_font, box.position + Vector2(6, 24), "tier %d" % int(r.get("tier", i + 1)), HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.DIM)
-					draw_string(_font, box.position + Vector2(6, 38), "at %d wins" % int(r.get("at", 0)), HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.DIM)
+					draw_string(_font, box.position + Vector2(6, 24), Loc.t("tier %d") % int(r.get("tier", i + 1)), HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.DIM)
+					draw_string(_font, box.position + Vector2(6, 38), (Loc.t("at %d bond") if F2P.on() else Loc.t("at %d wins")) % int(r.get("at", 0)), HORIZONTAL_ALIGNMENT_LEFT, 90, 9, Palette.DIM)
 			# rung peg
 			draw_circle(Vector2(x, rail_y), 5.0, Palette.GOLD if earned else Palette.LINE_STRONG)
 			draw_string(StudioTheme.font("display"), Vector2(x - 6, rail_y + 18), str(int(r.get("at", 0))), HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Palette.GOLD if earned else Palette.MUTED)

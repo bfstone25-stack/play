@@ -92,13 +92,15 @@ func start(id: String, daily: bool = false) -> Dictionary:
 	_stage = b["stage"]
 	stage_id = str(_stage.get("id", id))
 	_last_view = b["duel"]
-	var intro := str(_stage.get("chapter_intro", ""))
-	intro = (intro + "\n\n" if intro != "" else "") + str(_stage.get("intro", ""))
-	return {"ok": true, "resumed": false, "duel": _view(b["duel"]), "opening": str(b.get("opening", "")),
+	# Everything the server wrote is English; it is translated here, on arrival, so the duel
+	# screen (shared with the off-platform build) draws what it is given.
+	var intro := Loc.s(_stage.get("chapter_intro", ""))
+	intro = (intro + "\n\n" if intro != "" else "") + Loc.s(_stage.get("intro", ""))
+	return {"ok": true, "resumed": false, "duel": _view(b["duel"]), "opening": Loc.s(b.get("opening", "")),
 		"scen": {"id": SCEN_OF.get(str(_stage["who"]), "closing_time"), "who": str(_stage["who"]),
-			"name": str(_stage.get("name", "")), "goal": str(_stage.get("goal", "")), "story": intro,
-			"title": str(_stage.get("title", "")), "mods": _stage.get("mods", {}),
-			"boss": str(_stage.get("mods", {}).get("boss", ""))},
+			"name": Loc.s(_stage.get("name", "")), "goal": Loc.s(_stage.get("goal", "")), "story": intro,
+			"title": Loc.s(_stage.get("title", "")), "mods": _stage.get("mods", {}),
+			"boss": Loc.s(_stage.get("mods", {}).get("boss", ""))},
 		"economy": economy()}
 
 
@@ -117,7 +119,7 @@ func play(card: String, text: String = "") -> Dictionary:
 	_plays = trial
 	var b: Dictionary = r["body"]
 	_last_view = b["duel"]
-	var out := {"ok": true, "reply": str(b.get("reply", "")), "read": b.get("read", {}), "duel": _view(b["duel"]),
+	var out := {"ok": true, "reply": Loc.s(b.get("reply", "")), "read": b.get("read", {}), "duel": _view(b["duel"]),
 		"economy": economy()}
 	if bool(b["duel"].get("over", false)):
 		out["end"] = await _end(b)
@@ -130,17 +132,17 @@ func _end(b: Dictionary) -> Dictionary:
 		var r := await Nutaku.api("POST", "/suasion/duel/finish", {"attempt_id": _attempt, "plays": _plays})
 		_adopt(r["body"])
 		if not r["ok"]:
-			return {"won": false, "turns": int(v.get("turns", 0)), "beat": "The server did not accept this duel: " + _why(r),
+			return {"won": false, "turns": int(v.get("turns", 0)), "beat": Loc.t("The server did not accept this duel: ") + Loc.s(_why(r)),
 				"reward": {}, "harmed": false}
 		var f: Dictionary = r["body"]
-		var beat := str(f.get("win_text", ""))
+		var beat := Loc.s(f.get("win_text", ""))
 		var cc = f.get("chapter_clear")
 		if typeof(cc) == TYPE_DICTIONARY:
-			beat += "\n\n" + str(cc.get("title", "")).to_upper() + "\n" + str(cc.get("outro", ""))
+			beat += "\n\n" + Loc.s(cc.get("title", "")).to_upper() + "\n" + Loc.s(cc.get("outro", ""))
 		var scenes: Dictionary = f.get("bond_scenes", {})
 		for k in scenes:
 			if str(scenes[k]) != "":
-				beat += "\n\n" + str(scenes[k])
+				beat += "\n\n" + Loc.s(scenes[k])
 		var drops: Array = f.get("drops", [])
 		return {"won": true, "turns": int(f.get("turns", 0)), "beat": beat, "harmed": false, "daily": false,
 			"stars": int(f.get("stars", 1)), "chapter_clear": cc, "bond_scenes": scenes,
@@ -150,9 +152,9 @@ func _end(b: Dictionary) -> Dictionary:
 	var r2 := await Nutaku.api("POST", "/suasion/duel/forfeit", {"attempt_id": _attempt})
 	_adopt(r2["body"])
 	var reason := str(v.get("reason", "turns"))
-	var beat2 := str(r2["body"].get("lose_text", ""))
+	var beat2 := Loc.s(r2["body"].get("lose_text", ""))
 	if reason == "turns" and b.has("refusal") and b["refusal"] != null:
-		beat2 = str(b["refusal"]) + "\n\n" + beat2
+		beat2 = Loc.s(b["refusal"]) + "\n\n" + beat2
 	return {"won": false, "turns": int(v.get("turns", 0)), "beat": beat2, "reward": {},
 		"harmed": reason == "coercion", "reason": reason, "daily": false}
 
@@ -183,24 +185,44 @@ func pull(n: int) -> Dictionary:
 	var r := await Nutaku.api("POST", "/suasion/gacha/pull", {"n": n, "pay": pay, "request_id": rid})
 	_adopt(r["body"])
 	if not r["ok"]:
-		return {"error": _why(r) + (" — tickets are in the store" if int(r["status"]) == 402 else "")}
+		return {"error": Loc.s(_why(r)) + (Loc.t(" — tickets are in the store") if int(r["status"]) == 402 else "")}
 	return {"ok": true, "paid": pay, "cards": r["body"].get("cards", []), "economy": economy()}
 
 
 func deck(_scenario: String, auto: bool = false) -> Dictionary:
-	var sid := stage_id if stage_id != "" else "c1s01"
+	var sid := _night_id()
 	var r := await Nutaku.api("POST", "/suasion/deck", {"stage": sid, "auto": auto})
 	var coll: Array = su.get("collection", [])
+	var st := stage(sid)
 	return {"collection": coll, "deck": r["body"].get("deck", []), "deck_size": int(r["body"].get("deck_size", 18)),
+		# which cards can act tonight (server: duel.py "Live cards"); the deck screen marks the rest
+		"live": r["body"].get("live", null), "wanted": r["body"].get("wanted", []),
+		"night": Loc.s(st.get("title", "")), "night_who": Loc.s(F2P_NAMES.get(str(st.get("who", "")), "")),
 		"scenario": _scenario, "wild": {"id": "wild", "rarity": "wild", "cost": 2, "character": "wild", "signals": [], "harms": []}}
 
 
+## The night the deck screen is for: the one the campaign chose, else the player's frontier.
+func _night_id() -> String:
+	if stage_id != "":
+		return stage_id
+	var f := int(su.get("frontier", 0))
+	for ch in su.get("chapters", []):
+		for s in ch.get("stages", []):
+			if int(s.get("index", -1)) == f:
+				return str(s["id"])
+	return "c1s01"
+
+
+const F2P_NAMES := {"mara": "Mara", "ines": "Ines", "yuenha": "Yuen Ha", "sanne": "Sanne", "teodora": "Teodora",
+	"celeste": "Celeste"}
+
+
 func save_deck(_scenario: String, ids: Array) -> Dictionary:
-	var sid := stage_id if stage_id != "" else "c1s01"
+	var sid := _night_id()
 	var r := await Nutaku.api("POST", "/suasion/deck", {"stage": sid, "deck": ids})
 	if not r["ok"]:
 		return {"ok": false, "error": _why(r)}
-	return {"ok": true, "deck": r["body"].get("deck", [])}
+	return {"ok": true, "deck": r["body"].get("deck", []), "dropped": int(r["body"].get("dropped", 0))}
 
 
 func evolve(card: String) -> Dictionary:
@@ -219,7 +241,7 @@ func affection() -> Dictionary:
 			i += 1
 			ladder.append({"at": int(step["bond"]), "key": str(step["key"]), "tier": i, "earned": bool(step["earned"]),
 				"placeholder": bool(step.get("placeholder", false))})
-		out[who] = {"name": str(b.get("name", who)), "scenario": SCEN_OF.get(str(who), "celeste"), "wins": int(b.get("bond", 0)),
+		out[who] = {"name": Loc.s(b.get("name", who)), "scenario": SCEN_OF.get(str(who), "celeste"), "wins": int(b.get("bond", 0)),
 			"ladder": ladder, "unlocked": su.get("ladder_unlocked", [])}
 	return {"affection": out}
 

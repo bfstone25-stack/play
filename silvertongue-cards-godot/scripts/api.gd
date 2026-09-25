@@ -19,8 +19,8 @@ extends Node
 signal economy_changed(economy: Dictionary)
 signal request_failed(path: String, error: String)
 
-const GATEWAY := "https://apps.blazecore.dev/silvertongue-cards"
-const LOCAL := "http://127.0.0.1:8929"
+const GATEWAY := "https://apps.blazecore.dev/silvertongue-cards"  # nutaku-audit-ok: the off-platform API host; on Nutaku F2P.on() routes every call to the title server
+const LOCAL := "http://127.0.0.1:8929"  # nutaku-audit-ok: desktop dev backend
 const TIMEOUT := 12.0
 
 var base_url := ""
@@ -90,7 +90,7 @@ func _local(out: Dictionary) -> Dictionary:
 
 func _resolve_base() -> String:
 	if OS.has_feature("web"):
-		var js := """(function(){var h=location.hostname||"";var off=location.protocol==="file:"||/itch\\.zone$/i.test(h)||/\\.itch\\.io$/i.test(h)||/nutaku/i.test(h);return off?%s:location.origin;})()""" % JSON.stringify(GATEWAY)
+		var js := """(function(){var h=location.hostname||"";var off=location.protocol==="file:"||/itch\\.zone$/i.test(h)||/\\.itch\\.io$/i.test(h)||/nutaku/i.test(h);return off?%s:location.origin;})()""" % JSON.stringify(GATEWAY)  # nutaku-audit-ok: host detection, never drawn
 		var r = JavaScriptBridge.eval(js)
 		return str(r) if r != null and str(r) != "" else GATEWAY
 	for a in OS.get_cmdline_user_args():

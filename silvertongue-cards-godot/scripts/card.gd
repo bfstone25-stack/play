@@ -122,7 +122,7 @@ func _build() -> void:
 	_small.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_small.visible = false
 	add_child(_small)
-	_back_mark = StudioTheme.display_label("SUASION", 10, Color(Palette.GOLD, 0.75))
+	_back_mark = StudioTheme.display_label("SUASION", 10, Color(Palette.GOLD, 0.75))  # i18n-ok: the title logotype
 	_back_mark.position = Vector2(0, H - 36)
 	_back_mark.size = Vector2(W, 16)
 	_back_mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -141,7 +141,17 @@ func _build() -> void:
 func printed_line() -> String:
 	var key := "line_" + Loc.code().split("-")[0]
 	var s := str(data.get(key, ""))
-	return s if s != "" else str(data.get("line", ""))
+	return s if s != "" else Loc.s(data.get("line", ""))
+
+
+const NAMES := {"mara": "Mara", "ines": "Ines", "yuenha": "Yuen Ha", "sanne": "Sanne", "teodora": "Teodora",
+	"celeste": "Celeste"}
+
+
+## Whose card this is, as a name in the player's language (the server sends an id).
+func who_name() -> String:
+	var c := str(data.get("character", ""))
+	return Loc.s(NAMES[c]) if NAMES.has(c) else ""
 
 
 func refresh() -> void:
@@ -151,7 +161,7 @@ func refresh() -> void:
 	var rarity := str(data.get("rarity", "common"))
 	var coercion := kind == "coercion"
 	var wild := rarity == "wild"
-	_who.text = ("%s · %s" % [Loc.t(rarity.to_upper()), str(data.get("character", ""))]) if not wild else Loc.t("WILD · once")
+	_who.text = ("%s · %s" % [Loc.t(rarity.to_upper()), who_name()] if who_name() != "" else Loc.t(rarity.to_upper())) if not wild else Loc.t("WILD · once")
 	_who.add_theme_color_override("font_color", Palette.rarity_text(rarity, kind))
 	_cost.text = "%d◈" % int(data.get("cost", 1))
 	_cost.add_theme_color_override("font_color", Palette.HEAT if affordable else Palette.FAINT)
@@ -162,12 +172,12 @@ func refresh() -> void:
 	_pic_frame.visible = face != null and not face_down
 	_line.remove_theme_color_override("font_color")
 	if coercion:
-		_big.text = str(data.get("face", "MOMENTUM +0.40"))
+		_big.text = Loc.s(data.get("face", "MOMENTUM +0.40"))
 		_line.text = printed_line()
 		_line.position.y = 96
 		_line.size.y = 76
 		_line.add_theme_font_size_override("font_size", 13)
-		_small.text = str(data.get("small_print", ""))
+		_small.text = Loc.s(data.get("small_print", ""))
 		_chips.visible = false
 	elif wild:
 		_line.text = Loc.t("Say it in your own words.")
@@ -178,7 +188,7 @@ func refresh() -> void:
 		_chips.visible = true
 		_add_chip(Loc.t("the engine reads it"), false)
 	else:
-		_line.text = "“%s”" % printed_line()
+		_line.text = ("「%s」" if Loc.code() == "ja" else "“%s”") % printed_line()
 		_line.position.y = 130 if face != null else 44
 		_line.size.y = 62 if face != null else 120
 		_line.add_theme_font_size_override("font_size", 13 if printed_line().length() < 40 else 11)

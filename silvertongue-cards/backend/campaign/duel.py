@@ -32,6 +32,15 @@ nothing bought changes the engine's rules.
 
 A card's nerve cost drops by one (never below one) once a rare or epic is evolved to three
 stars.
+
+Live cards (2026-09-24). A hand only ever holds cards that can act in THIS duel: a card
+carrying at least one signal the night wants (a path or help signal), or a coercion card
+(the design's trap, silvertongue_cards.md s2: "drawn like any other"). A card with none of
+the night's signals can neither advance her path nor wear her resolve, so dealing it is a
+dead draw: a fresh account's first duel with Mara used to deal Ines's and Teodora's cards.
+Which woman a card belongs to does not matter -- her signals do: an Ines card that carries
+warmth is live against Mara. `new()` drops dead cards from the deck before the shuffle, so
+the replay (which calls `new()` with the stored deck) agrees with the duel that was played.
 """
 from __future__ import annotations
 
@@ -64,8 +73,16 @@ def cost(cid: str, stars: dict) -> int:
     return max(1, base)
 
 
+def live(stage: dict, cid: str) -> bool:
+    """Can this card act in this duel? (see "Live cards" above)"""
+    c = BY_ID.get(cid)
+    if c is None or cid == "wild":
+        return False
+    return c.kind == "coercion" or bool(set(c.signals) & _wanted(stage))
+
+
 def new(stage: dict, deck: list, stars: dict, seed: int) -> dict:
-    ids = [i for i in deck if i in BY_ID and i != "wild"][:C.DECK_SIZE]
+    ids = [i for i in deck if i in BY_ID and i != "wild" and live(stage, i)][:C.DECK_SIZE]
     rng = random.Random(seed)
     rng.shuffle(ids)
     d = {"stage": stage["id"], "seed": seed, "deck": ids, "hand": [], "discard": [],
@@ -350,12 +367,13 @@ def auto_deck(stage: dict, collection: dict, stars: dict | None = None) -> list:
     """A sensible deck for this stage from what the player owns. Coverage first: for every
     signal the stage wants, up to PER_SIGNAL cards carrying it (the ones carrying most of
     what the stage wants, then the cheapest); then the remaining useful cards, cheap
-    first; then filler. No house cards. At most DECK_SIZE."""
+    first. Never a card that cannot act tonight (no filler: a dead card is a dead draw),
+    never a house card. At most DECK_SIZE."""
     stars = stars or {}
     need = set().union(*map(set, stage["rule"]["paths"])) | set(stage["rule"]["help"])
     pool = []
     for cid, n in sorted(collection.items()):
-        if cid in BY_ID and cid != "wild" and BY_ID[cid].character != "house":
+        if cid in BY_ID and cid != "wild" and BY_ID[cid].character != "house" and live(stage, cid):
             pool += [cid] * int(n)
 
     def hits(i):

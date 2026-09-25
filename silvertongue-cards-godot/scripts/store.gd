@@ -24,8 +24,8 @@ func _ready() -> void:
 	col.offset_bottom = -12
 	col.add_theme_constant_override("separation", 10)
 	add_child(col)
-	col.add_child(StudioTheme.display_label("STORE", 34, Palette.GOLD))
-	var sub := StudioTheme.serif_label("Paid in Nutaku gold (100 gold = $1). Everything in the story can be won without it; gold only makes it sooner.", 13, Palette.MUTED)
+	col.add_child(StudioTheme.display_label(Loc.t("STORE"), 34, Palette.GOLD))
+	var sub := StudioTheme.serif_label(Loc.t("Paid in Nutaku gold (100 gold = $1). Everything in the story can be won without it; gold only makes it sooner."), 13, Palette.MUTED)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(sub)
 	var sc := ScrollContainer.new()
@@ -53,6 +53,11 @@ func _render() -> void:
 		if not cat.has(id):
 			continue
 		var s: Dictionary = cat[id]
+		# a refill "to the top" when charm is already at or over its cap would take gold for
+		# nothing (the server fills only up to the cap), so it is not offered then -- PLICATA's rule
+		var e: Dictionary = Nutaku.state.get("energy", {})
+		if id == "charm_refill" and int(e.get("now", 0)) >= int(e.get("max", 8)):
+			continue
 		var row := PanelContainer.new()
 		row.add_theme_stylebox_override("panel", StudioTheme.flat(Palette.PANEL, Palette.GOLD if id == "starter" else Palette.PANEL_EDGE, 10, 1, Vector2(14, 8)))
 		var h := HBoxContainer.new()
@@ -60,12 +65,12 @@ func _render() -> void:
 		row.add_child(h)
 		var v := VBoxContainer.new()
 		v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		v.add_child(StudioTheme.display_label(str(s.get("name", id)), 20, Palette.TEXT))
-		var d := StudioTheme.serif_label(str(s.get("description", "")), 13, Palette.MUTED)
+		v.add_child(StudioTheme.display_label(Loc.s(s.get("name", id)), 20, Palette.TEXT))
+		var d := StudioTheme.serif_label(Loc.s(s.get("description", "")), 13, Palette.MUTED)
 		d.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		v.add_child(d)
 		h.add_child(v)
-		var b := StudioTheme.card_button("%d GOLD" % int(s.get("price", 0)), "pull")
+		var b := StudioTheme.card_button(Loc.t("%d GOLD") % int(s.get("price", 0)), "pull")
 		b.custom_minimum_size = Vector2(150, 44)
 		b.focus_mode = Control.FOCUS_NONE
 		b.pressed.connect(func(): _buy(id))
@@ -79,10 +84,10 @@ func _buy(id: String) -> void:
 	match str(r.get("status", "error")):
 		"success":
 			Sfx.play("gold")
-			main.toast("Delivered.", 2.0, Palette.SUCCESS)
+			main.toast(Loc.t("Delivered."), 2.0, Palette.SUCCESS)
 		"cancel":
-			main.toast("Cancelled.")
+			main.toast(Loc.t("Cancelled."))
 		"errorFromGPHS":
-			main.toast("The purchase did not go through; Nutaku has refunded the gold.")
+			main.toast(Loc.t("The purchase did not go through; Nutaku has refunded the gold."))
 		_:
-			main.toast(str(r.get("error", "Purchase failed.")))
+			main.toast(Loc.s(r["error"]) if r.has("error") else Loc.t("Purchase failed."))

@@ -34,13 +34,13 @@ func _ready() -> void:
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 14)
 	col.add_child(top)
-	top.add_child(StudioTheme.display_label("THE NIGHT LEDGER", 30, Palette.GOLD))
+	top.add_child(StudioTheme.display_label(Loc.t("THE NIGHT LEDGER"), 30, Palette.GOLD))
 	_head = StudioTheme.mono_label("", 12, Palette.MUTED)
 	_head.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	_head.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(_head)
 	var story := Button.new()
-	story.text = "STORY SO FAR"
+	story.text = Loc.t("STORY SO FAR")
 	story.focus_mode = Control.FOCUS_NONE
 	StudioTheme.style_button(story, "quiet")
 	story.pressed.connect(func(): Sfx.play("ui_click"); _show_story())
@@ -92,10 +92,11 @@ func _render() -> void:
 	if su.is_empty():
 		return
 	var e: Dictionary = Nutaku.state.get("energy", {})
-	_head.text = "STANDING ★%d   ·   CHARM %d/%d   ·   %d CHIPS   ·   %d TICKET%s" % [int(su.get("standing", 0)),
-		int(e.get("now", 0)), int(e.get("max", 8)), int(Nutaku.state.get("tokens", {}).get("chips", 0)),
-		int(Nutaku.state.get("tokens", {}).get("ticket", 0)),
-		"" if int(Nutaku.state.get("tokens", {}).get("ticket", 0)) == 1 else "S"]
+	var tk := int(Nutaku.state.get("tokens", {}).get("ticket", 0))
+	_head.text = "   ·   ".join([Loc.t("STANDING ★%d") % int(su.get("standing", 0)),
+		main.charm_text(int(e.get("now", 0)), int(e.get("max", 8)), false),
+		Loc.t("%d CHIPS") % int(Nutaku.state.get("tokens", {}).get("chips", 0)),
+		Loc.t("1 TICKET") if tk == 1 else Loc.t("%d TICKETS") % tk])
 	for c in _chapters.get_children():
 		c.queue_free()
 	var chs: Array = su.get("chapters", [])
@@ -104,7 +105,7 @@ func _render() -> void:
 		var b := Button.new()
 		b.focus_mode = Control.FOCUS_NONE
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		b.text = "%d · %s\n   %s  ★%d%s" % [i + 1, str(ch["title"]).to_upper(), str(ch["house"]),
+		b.text = "%d · %s\n   %s  ★%d%s" % [i + 1, Loc.s(ch["title"]).to_upper(), Loc.s(ch["house"]),
 			int(ch["stars"]), "  ✓" if ch["cleared"] else ""]
 		b.disabled = not bool(ch["open"])
 		StudioTheme.style_button(b, "active" if i == _ch else "quiet")
@@ -114,9 +115,9 @@ func _render() -> void:
 	var lc: Dictionary = ch.get("last_call", {})
 	var tabs := HBoxContainer.new()
 	var t1 := Button.new()
-	t1.text = "THE NIGHTS"
+	t1.text = Loc.t("THE NIGHTS")
 	var t2 := Button.new()
-	t2.text = "LAST CALL" + ("" if lc.get("open", false) else " (after the boss)")
+	t2.text = Loc.t("LAST CALL") if lc.get("open", false) else Loc.t("LAST CALL (after the boss)")
 	t2.disabled = not bool(lc.get("open", false))
 	for pair in [[t1, "story"], [t2, "last_call"]]:
 		var bt: Button = pair[0]
@@ -130,7 +131,7 @@ func _render() -> void:
 	_stages.add_child(tabs)
 	var list: Array = ch["stages"] if _mode == "story" else lc.get("stages", [])
 	if _mode == "last_call" and str(lc.get("intro", "")) != "":
-		var li := StudioTheme.serif_label(str(lc["intro"]), 13, Palette.MUTED)
+		var li := StudioTheme.serif_label(Loc.s(lc["intro"]), 13, Palette.MUTED)
 		li.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_stages.add_child(li)
 	var first_open := ""
@@ -152,21 +153,21 @@ func _stage_row(s: Dictionary) -> Control:
 	var stars := "★".repeat(int(s["stars"])) + "☆".repeat(3 - int(s["stars"]))
 	var tag := ""
 	if s["boss"]:
-		tag = "  BOSS"
+		tag = "  " + Loc.t("BOSS")
 	elif s.get("rival", false):
-		tag = "  RIVAL"
+		tag = "  " + Loc.t("RIVAL")
 	var lock := ""
 	if not s["open"]:
 		var g = s.get("gate")
 		if typeof(g) == TYPE_DICTIONARY:
 			match str(g.get("kind", "")):
 				"bond":
-					lock = "  · needs bond %d with %s (%d)" % [int(g["need"]), str(g["who"]).capitalize(), int(g["have"])]
+					lock = "  · " + Loc.t("needs bond %d with %s (%d)") % [int(g["need"]), Loc.s(_name(str(g["who"]))), int(g["have"])]
 				"standing":
-					lock = "  · needs standing ★%d (%d)" % [int(g["need"]), int(g["have"])]
+					lock = "  · " + Loc.t("needs standing ★%d (%d)") % [int(g["need"]), int(g["have"])]
 				_:
-					lock = "  · locked"
-	b.text = "%s   %s%s   ·   %s%s" % [stars, str(s["title"]), tag, str(s["who"]).capitalize(), lock]
+					lock = "  · " + Loc.t("locked")
+	b.text = "%s   %s%s   ·   %s%s" % [stars, Loc.s(s["title"]), tag, Loc.s(_name(str(s["who"]))), lock]
 	b.disabled = not bool(s["open"]) and int(s["stars"]) == 0
 	StudioTheme.style_button(b, "active" if str(s["id"]) == _sel else ("pull" if s["boss"] else "quiet"))
 	b.pressed.connect(func(): Sfx.play("card_hover"); _sel = str(s["id"]); _render())
@@ -192,45 +193,51 @@ func _render_detail(s: Dictionary) -> void:
 		row.add_child(tr)
 	var tb := VBoxContainer.new()
 	tb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tb.add_child(StudioTheme.display_label(str(s["title"]), 22, Palette.GOLD if s["boss"] else Palette.TEXT))
-	tb.add_child(StudioTheme.mono_label("%s · %s · RESOLVE %d · %d TURNS" % [who.capitalize(), str(s["difficulty"]).to_upper(),
-		int(s.get("resolve", 0)), int(s.get("mods", {}).get("turns", 15))], 11, Palette.HEAT))
+	tb.add_child(StudioTheme.display_label(Loc.s(s["title"]), 22, Palette.GOLD if s["boss"] else Palette.TEXT))
+	tb.add_child(StudioTheme.mono_label("%s · %s · %s · %s" % [Loc.s(_name(who)), Loc.t(str(s["difficulty"]).to_upper()),
+		Loc.t("RESOLVE %d") % int(s.get("resolve", 0)), Loc.t("%d TURNS") % int(s.get("mods", {}).get("turns", 15))], 11, Palette.HEAT))
 	row.add_child(tb)
-	var goal := StudioTheme.serif_label(str(s["goal"]), 16, Palette.TEXT, true)
+	var goal := StudioTheme.serif_label(Loc.s(s["goal"]), 16, Palette.TEXT, true)
 	goal.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_detail.add_child(goal)
 	if s.has("intro") and str(s["intro"]) != "":
-		var intro := StudioTheme.serif_label(str(s["intro"]), 13, Palette.MUTED)
+		var intro := StudioTheme.serif_label(Loc.s(s["intro"]), 13, Palette.MUTED)
 		intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_detail.add_child(intro)
 	var mods: Dictionary = s.get("mods", {})
 	var rules := []
 	if mods.has("boss"):
-		rules.append(str(mods["boss"]))
+		rules.append(Loc.s(mods["boss"]))
 	if int(mods.get("muted", 0)) > 0 and not mods.has("boss"):
-		rules.append("She talks over your first card.")
+		rules.append(Loc.t("She talks over your first card."))
 	if int(mods.get("steal_every", 0)) > 0 and not mods.has("boss"):
-		rules.append("Every %d turns she takes your costliest card." % int(mods["steal_every"]))
+		rules.append(Loc.t("Every %d turns she takes your costliest card.") % int(mods["steal_every"]))
 	if int(mods.get("hand", 0)) > 0 and not mods.has("boss"):
-		rules.append("You hold %d cards." % int(mods["hand"]))
+		rules.append(Loc.t("You hold %d cards.") % int(mods["hand"]))
 	if int(mods.get("stale_cost", 0)) > 1 and not mods.has("boss"):
-		rules.append("A card that adds nothing new costs two turns.")
+		rules.append(Loc.t("A card that adds nothing new costs two turns."))
 	for r in rules:
 		var rl := StudioTheme.mono_label("◆ " + r, 12, Palette.ACCENT_SOFT)
 		rl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_detail.add_child(rl)
-	var play := StudioTheme.card_button("PLAY · 1 CHARM" if int(s["stars"]) == 0 else "PLAY AGAIN · 1 CHARM", "primary")
+	var play := StudioTheme.card_button(Loc.t("PLAY · 1 CHARM") if int(s["stars"]) == 0 else Loc.t("PLAY AGAIN · 1 CHARM"), "primary")
 	play.custom_minimum_size = Vector2(260, 48)
 	play.focus_mode = Control.FOCUS_NONE
 	play.disabled = not bool(s["open"])
 	play.pressed.connect(func(): _play(str(s["id"])))
 	_detail.add_child(play)
 	var deckb := Button.new()
-	deckb.text = "BUILD THE DECK FOR THIS NIGHT"
+	deckb.text = Loc.t("BUILD THE DECK FOR THIS NIGHT")
 	deckb.focus_mode = Control.FOCUS_NONE
 	StudioTheme.style_button(deckb, "quiet")
 	deckb.pressed.connect(func(): Sfx.play("ui_click"); F2P.stage_id = str(s["id"]); main.go("deck"))
 	_detail.add_child(deckb)
+
+
+## Her name as the server has it ("mara" -> "Mara"), for Loc to translate.
+func _name(who: String) -> String:
+	var b: Dictionary = F2P.su.get("bond", {}).get(who, {})
+	return str(b.get("name", "Yuen Ha" if who == "yuenha" else who.capitalize()))
 
 
 func _play(id: String) -> void:
@@ -248,15 +255,15 @@ func _render_daily() -> void:
 	var daily: Dictionary = st.get("daily", {})
 	var cal: Dictionary = daily.get("calendar", {})
 	if not bool(cal.get("claimed_today", true)):
-		_daily_row.add_child(_chip("CLAIM TODAY'S REWARD", "free", func(): _claim("daily")))
+		_daily_row.add_child(_chip(Loc.t("CLAIM TODAY'S REWARD"), "free", func(): _claim("daily")))
 	var su: Dictionary = F2P.su
 	if bool(su.get("daily_duel", {}).get("available", false)):
-		_daily_row.add_child(_chip("TONIGHT'S REMATCH · FREE", "free", func():
+		_daily_row.add_child(_chip(Loc.t("TONIGHT'S REMATCH · FREE"), "free", func():
 			Sfx.play("ui_click")
 			main.start_duel("", true)))
 	for m in daily.get("missions", []):
 		var done: bool = m["done"]
-		var txt := "%s  %d/%d" % [str(m["text"]), int(m["progress"]), int(m["goal"])]
+		var txt := "%s  %d/%d" % [Loc.s(m["text"]), int(m["progress"]), int(m["goal"])]
 		if m["claimed"]:
 			txt += "  ✓"
 		var slot := int(m["slot"])
@@ -265,7 +272,7 @@ func _render_daily() -> void:
 		_daily_row.add_child(b)
 	var np: Dictionary = su.get("night_pass", {})
 	if bool(np.get("active", false)) and not bool(np.get("claimed_today", true)):
-		_daily_row.add_child(_chip("NIGHT PASS · CLAIM", "free", func(): _claim("pass")))
+		_daily_row.add_child(_chip(Loc.t("NIGHT PASS · CLAIM"), "free", func(): _claim("pass")))
 
 
 func _chip(text: String, kind: String, cb: Callable) -> Button:
@@ -281,12 +288,12 @@ func _claim(kind: String, slot: int = -1) -> void:
 	Sfx.play("gold")
 	var r := await F2P.claim(kind, slot)
 	if not r["ok"]:
-		main.toast(str(r["error"]))
+		main.toast(Loc.s(r["error"]))
 	else:
 		var ms: Array = Nutaku.state.get("daily", {}).get("missions", [])
 		if kind == "mission" and ms.all(func(m): return m["claimed"]) and not Nutaku.state["daily"].get("all_missions_bonus_claimed", true):
 			await F2P.claim("bonus")
-		main.toast("Claimed.", 1.6, Palette.SUCCESS)
+		main.toast(Loc.t("Claimed."), 1.6, Palette.SUCCESS)
 	_render()
 
 
@@ -298,16 +305,16 @@ func _prologue_once() -> void:
 		return
 	cfg.set_value("seen", "prologue", true)
 	cfg.save("user://suasion.cfg")
-	_reader("VELL, AFTER TWO", str(F2P.su.get("prologue", "")))
+	_reader(Loc.t("VELL, AFTER TWO"), Loc.s(F2P.su.get("prologue", "")))
 
 
 func _show_story() -> void:
 	var r := await Nutaku.api("GET", "/suasion/story")
 	var parts := []
 	for p in r["body"].get("story", []):
-		var t := str(p.get("title", "")).to_upper()
-		parts.append(("%s\n\n" % t if t != "" else "") + str(p["text"]))
-	_reader("THE STORY SO FAR", "\n\n* * *\n\n".join(parts))
+		var t := Loc.s(p.get("title", "")).to_upper()
+		parts.append(("%s\n\n" % t if t != "" else "") + Loc.s(p["text"]))
+	_reader(Loc.t("THE STORY SO FAR"), "\n\n* * *\n\n".join(parts))
 
 
 func _reader(title: String, text: String) -> void:
@@ -335,7 +342,7 @@ func _reader(title: String, text: String) -> void:
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	l.custom_minimum_size.x = 690
 	sc.add_child(l)
-	var ok := StudioTheme.card_button("CONTINUE", "primary")
+	var ok := StudioTheme.card_button(Loc.t("CONTINUE"), "primary")
 	ok.focus_mode = Control.FOCUS_NONE
 	ok.pressed.connect(func(): Sfx.play("ui_click"); dim.queue_free())
 	v.add_child(ok)

@@ -55,7 +55,7 @@ func _ready() -> void:
 	Api.economy_changed.connect(render_wallet)
 	# Online, a dropped request is worth a toast. Offline it is the normal condition and
 	# saying so every few seconds would be noise, so the banner says it once instead.
-	Api.request_failed.connect(func(_p, e): if not Api.offline: toast("Backend unreachable: " + e))
+	Api.request_failed.connect(func(_p, e): if not Api.offline: toast(Loc.t("Backend unreachable: ") + Loc.s(e)))
 	# The font stack is part of the language: switching to ja without reinstalling it
 	# leaves three Latin faces in front of the Japanese one and the whole screen draws as
 	# empty boxes. Rebuild first, THEN re-text and rebuild the screen.
@@ -147,8 +147,8 @@ func _build_bar() -> void:
 	_bar.add_child(row)
 	var wm := VBoxContainer.new()
 	wm.add_theme_constant_override("separation", -4)
-	var w1 := StudioTheme.display_label("SUASION", 18, Palette.TEXT)
-	var w2 := StudioTheme.mono_label("AFTER HOURS · CARDS", 8, Palette.ACCENT_SOFT)
+	var w1 := StudioTheme.display_label("SUASION", 18, Palette.TEXT)  # i18n-ok: the title is a logotype, as on the Nutaku product page
+	var w2 := StudioTheme.mono_label("AFTER HOURS · CARDS", 8, Palette.ACCENT_SOFT)  # i18n-ok: part of the logotype, baked in English in mark.png too
 	wm.add_child(w1)
 	wm.add_child(w2)
 	wm.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -164,7 +164,7 @@ func _build_bar() -> void:
 	_gold.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	_gold.set_now(0)
 	row.add_child(_gold)
-	var gold_tag := StudioTheme.mono_label("GOLD", 10, Palette.GOLD)
+	var gold_tag := StudioTheme.mono_label(Loc.t("GOLD"), 10, Palette.GOLD)
 	gold_tag.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	row.add_child(gold_tag)
 	_gold_tag = gold_tag
@@ -193,7 +193,7 @@ func _build_bar() -> void:
 	row.add_child(_spacer(10))
 	_lang_button = Button.new()
 	_lang_button.focus_mode = Control.FOCUS_NONE
-	_lang_button.tooltip_text = "Language"
+	_lang_button.tooltip_text = Loc.t("LANGUAGE")
 	_lang_button.pressed.connect(func(): Sfx.play("ui_click"); Loc.next())
 	StudioTheme.style_button(_lang_button, "quiet")
 	row.add_child(_lang_button)
@@ -236,19 +236,28 @@ func render_wallet(eco: Dictionary) -> void:
 	_gold.set_target(float(int(eco.get("gold", 0))))
 	if eco.has("tickets"):
 		var tk := int(eco.get("tickets", 0))
-		_gold_tag.text = "CHIPS · %d TICKET%s" % [tk, "" if tk == 1 else "S"]
+		_gold_tag.text = (Loc.t("CHIPS · 1 TICKET") if tk == 1 else Loc.t("CHIPS · %d TICKETS") % tk)
 	var e: Dictionary = eco.get("energy", {})
-	_energy_n.text = ("⚡ CHARM %d/%d" if F2P.on() else "⚡ %d/%d") % [int(e.get("energy", 0)), int(e.get("pool", 15))]
+	_energy_n.text = charm_text(int(e.get("energy", 0)), int(e.get("pool", 15))) if F2P.on() else \
+		"⚡ %d/%d" % [int(e.get("energy", 0)), int(e.get("pool", 15))]
 	_energy_bar.max_value = int(e.get("pool", 15))
 	_energy_bar.value = int(e.get("energy", 0))
 	_energy_left = int(e.get("next_in_s", 0))
 	_energy_tick = 0.0
 	_show_energy_next(int(e.get("energy", 0)) < int(e.get("pool", 15)))
-	_daily_tag.text = "DAILY DUEL FREE" if eco.get("daily_available", false) else ""
+	_daily_tag.text = Loc.t("DAILY DUEL FREE") if eco.get("daily_available", false) else ""
+
+
+## Charm on the Nutaku build. Rewards and purchases may stack it past the cap (the server
+## allows it: regen waits until it is spent back under), so above the cap it reads
+## "15 (refills to 8)", never "15/8" -- a fraction over one reads as a bug. PLICATA's rule.
+static func charm_text(now: int, cap: int, bolt: bool = true) -> String:
+	var n := (Loc.t("CHARM %d/%d") % [now, cap]) if now <= cap else (Loc.t("CHARM %d (refills to %d)") % [now, cap])
+	return ("⚡ " + n) if bolt else n
 
 
 func _show_energy_next(show: bool) -> void:
-	_energy_next.text = ("+1 in %d:%02d" % [_energy_left / 60, _energy_left % 60]) if show and _energy_left > 0 else ""
+	_energy_next.text = (Loc.t("+1 in %d:%02d") % [_energy_left / 60, _energy_left % 60]) if show and _energy_left > 0 else ""
 
 
 func _process(delta: float) -> void:
@@ -266,7 +275,7 @@ func _process(delta: float) -> void:
 func refresh() -> Dictionary:
 	var s := await Api.state()
 	if s.has("error"):
-		toast(str(s["error"]))
+		toast(Loc.s(s["error"]))
 		return s
 	state = s
 	render_wallet(s.get("economy", {}))
@@ -381,7 +390,36 @@ func bridge_command(cmd: String, arg) -> Variant:
 				"hand": screen.hand.ids() if current == "duel" and screen and "hand" in screen else [],
 				"hand_state": screen.hand.state if current == "duel" and screen and "hand" in screen else -1,
 				"ended": screen.ended if current == "duel" and screen and "ended" in screen else false,
-				"economy": Api.last_economy, "sfx": Sfx.log.slice(-12)}
+				"economy": Api.last_economy, "sfx": Sfx.log.slice(-12),
+				"f2p": F2P.on(), "lang": Loc.code(), "charm_text": _energy_n.text if _energy_n else "",
+				"brief": _brief_state(), "nutaku_error": Nutaku.last_error, "session": Nutaku.session != ""}
+		"texts":
+			# every string on screen now (the top bar and the current screen), for the
+			# browser test's language checks
+			var out := []
+			for root in [_bar, screen]:
+				if root == null:
+					continue
+				for n in root.find_children("*", "", true, false):
+					if (n is Label or n is Button or n is RichTextLabel) and n.is_visible_in_tree():
+						out.append(str(n.text))
+			return out
+		"lang":
+			Loc.set_code(str(arg))
+			await get_tree().create_timer(0.6).timeout
+			return {"ok": true, "lang": Loc.code()}
+		"go":
+			go(str(arg))
+			await get_tree().create_timer(0.5).timeout
+			return {"ok": true, "screen": current}
+		"claim":
+			if not F2P.on():
+				return {"ok": false}  # i18n-ok: test bridge answer, never drawn
+			return await F2P.claim(str(arg))
+		"deck":
+			if current != "deck" or screen == null:
+				return {"live": null}
+			return {"live": screen.live, "deck": screen.deck, "night": screen._night.text}
 		"set_pid":
 			Api.set_pid(str(arg))
 			await refresh()
@@ -399,9 +437,13 @@ func bridge_command(cmd: String, arg) -> Variant:
 			return r
 		"play":
 			if current != "duel" or screen == null:
-				return {"error": "not in a duel"}
+				return {"error": "not in a duel"}  # i18n-ok: test bridge answer, never drawn
 			var a: Dictionary = arg if typeof(arg) == TYPE_DICTIONARY else {"card": str(arg)}
 			return await screen.drive_play(str(a.get("card", "")), str(a.get("text", "")))
+		"pass":
+			if current != "duel" or screen == null or not screen.has_method("drive_pass"):
+				return {"error": "not in a duel"}  # i18n-ok: test bridge answer, never drawn
+			return await screen.drive_pass()
 		"wild_open":
 			if current == "duel" and screen:
 				screen.hand.open_wild()
@@ -413,7 +455,7 @@ func bridge_command(cmd: String, arg) -> Variant:
 		"wild_submit":
 			if current == "duel" and screen:
 				return await screen.drive_wild_submit()
-			return {"error": "not in a duel"}
+			return {"error": "not in a duel"}  # i18n-ok: test bridge answer, never drawn
 		"leave":
 			if current == "duel" and screen:
 				screen.leave()
@@ -421,7 +463,7 @@ func bridge_command(cmd: String, arg) -> Variant:
 		"pull":
 			if current == "gacha" and screen:
 				return await screen.drive_pull(int(arg))
-			return {"error": "not on gacha"}
+			return {"error": "not on gacha"}  # i18n-ok: test bridge answer, never drawn
 		"dev_gold":
 			var r := await Api.dev_gold(int(arg) if arg != null else 1000)
 			await refresh()
@@ -433,18 +475,27 @@ func bridge_command(cmd: String, arg) -> Variant:
 		"mute":
 			Sfx.muted = true
 			return {"ok": true}
-	return {"error": "unknown command " + cmd}
+	return {"error": "unknown command " + cmd}  # i18n-ok: test bridge answer, never drawn
+
+
+## The duel's story box, for the bridge: its text and whether any of it is cut.
+func _brief_state() -> Dictionary:
+	if current != "duel" or screen == null or not ("_brief" in screen):
+		return {}
+	var b: Label = screen._brief
+	return {"text": b.text, "lines": b.get_line_count(), "visible": b.get_visible_line_count(),
+		"overrun": b.text_overrun_behavior}
 
 
 ## Start a duel from anywhere (home roster, the bridge).
 func start_duel(scenario_id: String, daily: bool) -> Dictionary:
 	if busy:
-		return {"error": "busy"}
+		return {"error": "busy"}  # i18n-ok: test bridge answer, never drawn
 	busy = true
 	var r := await Api.start(scenario_id, difficulty, daily)
 	busy = false
 	if r.has("error"):
-		toast(str(r["error"]))
+		toast(Loc.s(r["error"]))
 		return r
 	go("duel", {"start": r})
 	return {"ok": true, "resumed": r.get("resumed", false), "duel": r.get("duel", {})}
