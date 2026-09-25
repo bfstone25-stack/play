@@ -64,10 +64,10 @@
  },
  "assets/faces/roz.webp": {
   "crop": [
-   120,
-   110,
-   600,
-   430
+   370,
+   40,
+   970,
+   440
   ],
   "source": "ops/silvertongue_art/installed/cg1_market.webp"
  },
@@ -91,10 +91,10 @@
  },
  "assets/faces/vesna.webp": {
   "crop": [
-   640,
-   60,
-   1120,
-   380
+   556,
+   20,
+   1146,
+   413
   ],
   "source": "ops/silvertongue_art/installed/cg1_ferry.webp"
  },
@@ -172,10 +172,10 @@
  },
  "assets/portraits/roz.webp": {
   "crop": [
-   100,
-   40,
-   620,
-   690
+   400,
+   0,
+   920,
+   650
   ],
   "source": "ops/silvertongue_art/installed/cg1_market.webp"
  },
@@ -199,10 +199,10 @@
  },
  "assets/portraits/vesna.webp": {
   "crop": [
-   620,
-   30,
-   1140,
-   680
+   580,
+   20,
+   1100,
+   670
   ],
   "source": "ops/silvertongue_art/installed/cg1_ferry.webp"
  },

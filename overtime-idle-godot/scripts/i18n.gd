@@ -6890,7 +6890,22 @@ func f(key: String, value: Variant) -> String:
 ## (f2p_*) use these rather than %-arrays because a Japanese or Chinese sentence often wants
 ## its numbers and names in a different order from the English one.
 func fmt(key: String, args: Dictionary = {}) -> String:
-	return t(key).format(args)
+	return contract(t(key).format(args))
+
+
+## A filled-in article meets the template's preposition: French "à côté de le casque" must
+## read "du casque", Spanish "al lado de el café" must read "del café". German pieces are
+## written in the accusative their templates need; CJK has no articles.
+const CONTRACTIONS := {
+	"fr": [[" de le ", " du "], [" de les ", " des "], [" à le ", " au "], [" à les ", " aux "], [" de un ", " d'un "], [" de une ", " d'une "]],
+	"es": [[" de el ", " del "], [" a el ", " al "]],
+}
+
+
+func contract(s: String) -> String:
+	for pair in CONTRACTIONS.get(lang, []):
+		s = s.replace(pair[0], pair[1])
+	return s
 
 
 ## Whether the table has this key (in English, the language of record).

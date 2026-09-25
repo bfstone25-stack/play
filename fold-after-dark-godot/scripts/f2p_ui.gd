@@ -171,31 +171,13 @@ static func side(rebuild: Callable, open_shop: Callable) -> Array:
 		_fill_daily_board(lbv)
 		out.append(dc.get_meta("panel"))
 
-	# the weekly event: one woman featured, a seven-board bonus track, her keepsake
-	var ev: Dictionary = F2P.event
+	# the weekly event: one woman featured, a seven-board bonus track, her keepsake. While an
+	# update pack's limited event is on, the weekly rotation runs alongside it (event_all.weekly)
+	var ev: Dictionary = F2P.event_all
 	if not ev.is_empty():
-		var ep := _panel(I18n.f("event_limited" if bool(ev.get("limited", false)) else "event_panel", I18n.event_title(ev)))
-		ep.name = "WeeklyEvent"
-		if I18n.event_blurb(ev) != "":
-			var bl := StudioTheme.serif_label(I18n.event_blurb(ev), 13, Palette.TEXT)
-			bl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			ep.add_child(bl)
-		var n := (ev.get("boards", []) as Array).size()
-		ep.add_child(StudioTheme.mono_label(I18n.t("event_boards") % [int(ev.get("cleared", 0)), n,
-			_reward_text(ev.get("per_board", {}))], 13, Palette.GOLD))
-		ep.add_child(StudioTheme.mono_label(I18n.f("event_won" if bool(ev.get("exclusive_claimed", false)) else "event_all",
-			I18n.event_reward(ev)), 12,
-			Palette.SUCCESS if bool(ev.get("exclusive_claimed", false)) else Palette.MUTED))
-		var ends := StudioTheme.mono_label(I18n.f("ends_in", F2P.event_ends_text()), 12, Palette.MUTED)
-		ends.name = "EventEnds"
-		ep.add_child(ends)
-		var eb := Button.new()
-		eb.name = "PlayEvent"
-		eb.text = I18n.f("event_play", F2P.event_next_board() + 1)
-		eb.theme_type_variation = "Primary"
-		eb.pressed.connect(func(): F2P.event_requested.emit())
-		ep.add_child(eb)
-		out.append(ep.get_meta("panel"))
+		out.append(_event_panel(ev, false))
+		if typeof(ev.get("weekly")) == TYPE_DICTIONARY:
+			out.append(_event_panel(ev["weekly"], true))
 
 	# the crane letters: each woman's crane, how far it is open, the last fold read
 	if not F2P.cranes().is_empty():
@@ -439,3 +421,47 @@ static func _reward_text(r) -> String:
 	if int(r.get("unlimited_s", 0)) > 0:
 		parts.append(I18n.f("rw_unlimited", int(r["unlimited_s"]) / 3600))
 	return I18n.t("rw_sep").join(parts)
+
+
+## One event's panel. `weekly`: the weekly rotation running alongside a pack's limited event.
+static func _event_panel(ev: Dictionary, weekly: bool) -> Control:
+	var ep := _panel(I18n.f("event_limited" if bool(ev.get("limited", false)) else "event_panel", I18n.event_title(ev)))
+	ep.name = "WeeklyEvent"
+	if weekly:
+		ep.name = "AlongsideEvent"
+	if I18n.event_blurb(ev) != "":
+		var bl := StudioTheme.serif_label(I18n.event_blurb(ev), 13, Palette.TEXT)
+		bl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		ep.add_child(bl)
+	var n := F2P.event_main_boards(ev)
+	ep.add_child(StudioTheme.mono_label(I18n.t("event_boards") % [int(ev.get("cleared", 0)), n,
+		_reward_text(ev.get("per_board", {}))], 13, Palette.GOLD))
+	# a pack's daily boards: one more opens each day of its limited event
+	var nd := (ev.get("boards", []) as Array).size() - n
+	if nd > 0:
+		var opened := 0
+		for b in ev.get("boards", []):
+			if b.has("daily") and bool(b["open"]):
+				opened += 1
+		var dl := StudioTheme.mono_label(I18n.t("event_daily") % [int(ev.get("daily_cleared", 0)), opened, nd], 12, Palette.GOLD)
+		dl.name = "EventDaily"
+		ep.add_child(dl)
+	ep.add_child(StudioTheme.mono_label(I18n.f("event_won" if bool(ev.get("exclusive_claimed", false)) else "event_all",
+		I18n.event_reward(ev)), 12,
+		Palette.SUCCESS if bool(ev.get("exclusive_claimed", false)) else Palette.MUTED))
+	var ends := StudioTheme.mono_label(I18n.f("ends_in", F2P.event_ends_text(ev)), 12, Palette.MUTED)
+	ends.name = "EventEnds"
+	if weekly:
+		ends.name = "WeeklyEnds"
+	ep.add_child(ends)
+	var eb := Button.new()
+	eb.name = "PlayEvent"
+	if weekly:
+		eb.name = "PlayWeekly"
+	eb.text = I18n.f("event_play", F2P.event_next_board(ev) + 1)
+	eb.theme_type_variation = "Primary"
+	eb.pressed.connect(func():
+		F2P.pick_event(weekly)
+		F2P.event_requested.emit())
+	ep.add_child(eb)
+	return ep.get_meta("panel")

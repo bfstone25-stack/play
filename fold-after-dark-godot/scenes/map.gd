@@ -522,7 +522,10 @@ func _process(_d: float) -> void:
 			(cd as Label).text = I18n.f("next_in", F2P.challenge_countdown())
 		var ee := _ui.find_child("EventEnds", true, false)
 		if ee is Label:
-			(ee as Label).text = I18n.f("ends_in", F2P.event_ends_text())
+			(ee as Label).text = I18n.f("ends_in", F2P.event_ends_text(F2P.event_all))
+		var we := _ui.find_child("WeeklyEnds", true, false)
+		if we is Label and typeof(F2P.event_all.get("weekly")) == TYPE_DICTIONARY:
+			(we as Label).text = I18n.f("ends_in", F2P.event_ends_text(F2P.event_all["weekly"]))
 
 
 func _open_crane(who: String) -> void:

@@ -3365,5 +3365,23 @@
   "fr": "Touche une grue pour relire ses plis.",
   "es": "Toca una grulla para releer sus pliegues.",
   "ko": "종이학을 누르면 연 접힘을 다시 읽을 수 있어요."
+ },
+ "event_daily": {
+  "en": "Daily boards: %d cleared  ·  %d of %d open, a new one each day",
+  "zh": "每日棋盘：已通关 %d  ·  已开放 %d / %d，每天新开一盘",
+  "ja": "デイリー盤面：クリア %d  ·  %d / %d 公開、毎日1盤ずつ",
+  "de": "Tagesbretter: %d geschafft  ·  %d von %d offen, jeden Tag ein neues",
+  "fr": "Plateaux du jour : %d réussis  ·  %d sur %d ouverts, un nouveau chaque jour",
+  "es": "Tableros diarios: %d superados  ·  %d de %d abiertos, uno nuevo cada día",
+  "ko": "데일리 보드: %d 클리어  ·  %d / %d 공개, 매일 하나씩"
+ },
+ "event_daily_name": {
+  "en": "%s · daily board %d",
+  "zh": "%s · 每日第 %d 盘",
+  "ja": "%s · デイリー盤面 %d",
+  "de": "%s · Tagesbrett %d",
+  "fr": "%s · plateau du jour %d",
+  "es": "%s · tablero diario %d",
+  "ko": "%s · 데일리 보드 %d"
  }
 }

@@ -746,8 +746,11 @@ func _sync() -> void:
 		_lvname.text = I18n.f("daily_name", Fold.level_name(Fold.DAILY, I18n.lang))
 	elif Fold.is_special():
 		_tier_lbl.text = I18n.f("event_tag", I18n.event_title(F2P.event))
-		_lvname.text = I18n.t("event_name") % [I18n.event_title(F2P.event), F2P.event_board + 1,
-			(F2P.event.get("boards", []) as Array).size()]
+		var nm := F2P.event_main_boards()
+		if F2P.event_board >= nm:
+			_lvname.text = I18n.t("event_daily_name") % [I18n.event_title(F2P.event), F2P.event_board - nm + 1]
+		else:
+			_lvname.text = I18n.t("event_name") % [I18n.event_title(F2P.event), F2P.event_board + 1, nm]
 	elif F2P.on() and not F2P.house.is_empty():
 		var t2 := Tier.of_level(Fold.level_index)
 		var chap := F2P.chapter_of(t2)
@@ -1812,7 +1815,7 @@ func _show_event_done(stars: int) -> void:
 	if typeof(exc) == TYPE_DICTIONARY and not exc.is_empty():
 		lines.append(I18n.f("all_seven", I18n.event_reward(ev)))
 	lines.append(I18n.t("event_progress") % [I18n.event_title(ev), int(ev.get("cleared", 0)),
-		(ev.get("boards", []) as Array).size(), F2P.event_ends_text()])
+		F2P.event_main_boards(ev), F2P.event_ends_text()])
 	var home := func(_s: Label): _to_map()
 	var buttons := [[I18n.t("map"), "Ghost", home, "Map"]]
 	var nb := F2P.event_next_board()

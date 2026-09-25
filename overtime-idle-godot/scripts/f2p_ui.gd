@@ -412,8 +412,10 @@ func _daily(s: Dictionary) -> void:
 		var got: bool = i < int(cal["index"]) or (i == int(cal["index"]) and bool(cal["claimed_today"]))
 		var today: bool = i == int(cal["index"])
 		var l := _label(row, I18n.fmt("f2p_day", {"n": i + 1}) + "\n" + _reward_text(cal["rewards"][i]),
-				Palette.MUTED if got else (Palette.GOLD if today else Palette.TEXT), 12)
-		l.custom_minimum_size = Vector2(128, 0)
+				Palette.MUTED if got else (Palette.GOLD if today else Palette.TEXT), 12, true)
+		# seven equal cells that wrap: a two-reward day in ja ("ギフトボックス×1、チケット×2")
+		# on one line widened the whole office card to 1109 px (2026-09-25)
+		l.custom_minimum_size = Vector2(100, 0)
 	var cr := _row()
 	cr.add_child(_small(I18n.t("f2p_claim_today"), "Primary", func() -> void: _claim("/daily/claim", {}), bool(cal["claimed_today"])))
 	var ps: Dictionary = s["pass"]

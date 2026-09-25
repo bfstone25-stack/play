@@ -111,32 +111,32 @@
     "scenario": "market",
     "plate": "ops/silvertongue_art/installed/cg1_market.webp",
     "face": [
-      120,
-      110,
-      600,
-      430
+      370,
+      40,
+      970,
+      440
     ],
     "bust": [
-      100,
-      40,
-      620,
-      690
+      400,
+      0,
+      920,
+      650
     ]
   },
   "vesna": {
     "scenario": "ferry",
     "plate": "ops/silvertongue_art/installed/cg1_ferry.webp",
     "face": [
-      640,
-      60,
-      1120,
-      380
+      556,
+      20,
+      1146,
+      413
     ],
     "bust": [
-      620,
-      30,
-      1140,
-      680
+      580,
+      20,
+      1100,
+      670
     ]
   },
   "hedda": {

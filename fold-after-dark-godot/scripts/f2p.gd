@@ -231,8 +231,7 @@ func finish(moves: int) -> Dictionary:
 		challenge = b["challenge"]
 		_challenge_at = Time.get_unix_time_from_system()
 	if ev and typeof(b.get("event")) == TYPE_DICTIONARY:
-		event = b["event"]
-		_event_at = Time.get_unix_time_from_system()
+		_set_event(b["event"])
 	if hd and typeof(b.get("hard")) == TYPE_DICTIONARY:
 		hard = b["hard"]
 	return {"ok": true, "stars": int(b.get("stars", 0)), "unlocked": b.get("unlocked", []),
@@ -318,9 +317,29 @@ func deliver(id: String) -> bool:
 # ---- the Folding House and the weekly event (ops/nutaku/fold_f2p/house.py) ----------------
 
 var house := {}              # {chapters, tiers: [{tier, stage}], standing, lanterns}
-var event := {}              # {week, who, title, blurb, boards, cleared, exclusive_label, ends_in_s, ...}
+var event := {}              # the event being played: event_all, or event_all.weekly (event_weekly)
+var event_all := {}          # GET /f2p/event: {week, who, title, blurb, boards, cleared, ..., weekly?}
+var event_weekly := false    # play the weekly rotation that runs alongside a pack's limited event
 var event_board := -1
 var _event_at := 0.0
+
+
+## The server's event view, and the one of its two tracks the player picked. While an update
+## pack's limited event runs, the weekly rotation runs alongside it (house.py, 2026-09-25):
+## it comes nested as event_all.weekly and is played with {"weekly": true}.
+func _set_event(v: Dictionary) -> void:
+	event_all = v
+	var w = v.get("weekly")
+	if event_weekly and typeof(w) != TYPE_DICTIONARY:
+		event_weekly = false
+	event = (w as Dictionary) if event_weekly else v
+	_event_at = Time.get_unix_time_from_system()
+
+
+## Pick the weekly rotation (true) or the main event (false) before event_requested.
+func pick_event(weekly: bool) -> void:
+	event_weekly = weekly
+	_set_event(event_all)
 
 
 func fetch_house() -> Dictionary:
@@ -352,8 +371,7 @@ func coming_chapters() -> Array:
 func fetch_event() -> Dictionary:
 	var r := await Nutaku.api("GET", "/f2p/event")
 	if r["ok"]:
-		event = r["body"].get("event", {})
-		_event_at = Time.get_unix_time_from_system()
+		_set_event(r["body"].get("event", {}))
 	return r
 
 
@@ -372,18 +390,23 @@ func chapter_of(t: int) -> Dictionary:
 	return {}
 
 
-func event_ends_text() -> String:
-	if event.is_empty():
+func event_ends_text(ev: Dictionary = {}) -> String:
+	if ev.is_empty():
+		ev = event
+	if ev.is_empty():
 		return ""
-	var s := maxf(0.0, float(event.get("ends_in_s", 0)) - (Time.get_unix_time_from_system() - _event_at))
+	var s := maxf(0.0, float(ev.get("ends_in_s", 0)) - (Time.get_unix_time_from_system() - _event_at))
 	var d := int(s) / 86400
 	return (I18n.f("days_short", d) if d > 0 else "") + _clock(fmod(s, 86400.0))
 
 
-## The first open, uncleared board of this week's track (or the last open one).
-func event_next_board() -> int:
+## The first open, uncleared board of this week's track (or the last open one). A pack's
+## daily boards follow its seven; each opens on its day.
+func event_next_board(ev: Dictionary = {}) -> int:
+	if ev.is_empty():
+		ev = event
 	var last := 0
-	for b in event.get("boards", []):
+	for b in ev.get("boards", []):
 		if bool(b["open"]):
 			last = int(b["board"])
 			if not bool(b["cleared"]):
@@ -393,13 +416,12 @@ func event_next_board() -> int:
 
 ## Open an event board: the server sends it and it plays as Fold.EVENT, free of candles.
 func begin_event(board: int) -> Dictionary:
-	var r := await Nutaku.api("POST", "/f2p/event/start", {"board": board})
+	var r := await Nutaku.api("POST", "/f2p/event/start", {"board": board, "weekly": event_weekly})
 	if not r["ok"]:
 		attempt = {}
 		return {"ok": false, "status": r["status"], "reason": str(r["body"].get("reason", ""))}
 	var b: Dictionary = r["body"]
-	event = b["event"]
-	_event_at = Time.get_unix_time_from_system()
+	_set_event(b["event"])
 	event_board = board
 	var bd: Dictionary = b["board"]
 	Fold.daily_level = bd["level"]
@@ -411,6 +433,13 @@ func begin_event(board: int) -> Dictionary:
 		"actions": "", "undos": 0, "replay": bool(bd.get("cleared", false)), "event": true}
 	attempt_changed.emit()
 	return {"ok": true}
+
+
+## How many of an event's boards are its own (the rest are a pack's daily boards).
+func event_main_boards(ev: Dictionary = {}) -> int:
+	if ev.is_empty():
+		ev = event
+	return int(ev.get("main_boards", (ev.get("boards", []) as Array).size()))
 
 
 func daily_leaderboard() -> Dictionary:

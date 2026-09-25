@@ -10,6 +10,10 @@
 ##   OFFSCREEN <node path> "<text>"   a text control reaching past the viewport's edge
 ##       (not counting content inside a clipping parent such as a ScrollContainer, which
 ##       is scrolled, not cut)
+##   CLIPPED <node path> <px> "<text>"   a text control sticking out sideways past a clipping
+##       parent that cannot scroll that way (a ScrollContainer with horizontal scrolling off,
+##       or a clip_contents box): the words are cut off at the panel's edge. (2026-09-25:
+##       a row of buttons too wide for the office panel was invisible to the two checks above)
 ##
 ## Called by the walkthroughs' shot() after each still. Custom-drawn words (ShapedButton,
 ## ObjectButton, draw_string) are not Labels; the screenshots are the check for those.
@@ -26,7 +30,7 @@ static func scan(root: Node) -> Array[String]:
 	return out
 
 
-static func _walk(n: Node, view: Rect2, out: Array[String], clipped := false) -> void:
+static func _walk(n: Node, view: Rect2, out: Array[String], clipped := false, hclip := Rect2()) -> void:
 	if n is CanvasItem and not (n as CanvasItem).is_visible_in_tree():
 		return
 	if n is Control:
@@ -42,12 +46,27 @@ static func _walk(n: Node, view: Rect2, out: Array[String], clipped := false) ->
 			var r := c.get_global_rect()
 			if not clipped and not view.encloses(r) and view.intersects(r):
 				out.append("OFFSCREEN %s \"%s\"" % [c.get_path(), text.left(60)])
+			if hclip.has_area():
+				r = _grect(c)
+				var cut := maxf(r.end.x - hclip.end.x, hclip.position.x - r.position.x)
+				if cut > 2.0:
+					out.append("CLIPPED %s %d \"%s\"" % [c.get_path(), int(cut), text.left(60)])
 			var need := _one_line_width(c, text)
 			if need > 0.0 and need > c.size.x + 2.0:
 				out.append("OVERFLOW %s %d > %d \"%s\"" % [c.get_path(), int(need), int(c.size.x), text.left(60)])
 	var clips := clipped or (n is Control and ((n as Control).clip_contents or n is ScrollContainer))
+	var hc := hclip
+	if n is ScrollContainer and (n as ScrollContainer).horizontal_scroll_mode == ScrollContainer.SCROLL_MODE_DISABLED:
+		hc = _grect(n as Control).intersection(view)
+	elif n is Control and (n as Control).clip_contents and not n is ScrollContainer:
+		hc = _grect(n as Control).intersection(view)
 	for ch in n.get_children():
-		_walk(ch, view, out, clips)
+		_walk(ch, view, out, clips, hc)
+
+
+## The on-screen rect, scale included (get_global_rect() leaves a scaled card's size unscaled).
+static func _grect(c: Control) -> Rect2:
+	return c.get_global_transform_with_canvas() * Rect2(Vector2.ZERO, c.size)
 
 
 ## Width a single-line text control needs, or 0 when it wraps, clips or ellipsises (those

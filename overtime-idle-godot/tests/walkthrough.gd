@@ -17,6 +17,8 @@ extends Node
 var b: Node
 var api := ""
 var shots := ""
+var panels := false        # --panels: also photograph the 2026-09-24 panels (lang_shots.py)
+var stop_after_panels := false
 var fails := 0
 var _http: HTTPRequest
 
@@ -29,6 +31,11 @@ func _ready() -> void:
 			api = a.split("=", true, 1)[1].trim_suffix("/")
 		elif a.begins_with("--shots="):
 			shots = a.split("=", true, 1)[1]
+		elif a == "--panels":
+			panels = true
+		elif a == "--panels-only":
+			panels = true
+			stop_after_panels = true
 		elif a.begins_with("--lang="):
 			I18n.set_lang(a.split("=", true, 1)[1])
 	_http = HTTPRequest.new()
@@ -57,6 +64,29 @@ func shot(name: String) -> void:
 	print("SHOT %d %s" % [f(), name])
 	for w in preload("res://tests/text_fit.gd").scan(get_tree().root):
 		print("FIT %s %s" % [name, w])
+	# a line that cannot wrap widens the whole office card past its design width without
+	# leaving the screen (ja, 2026-09-25): the checks above miss that, this does not
+	for ov in [b.f2p_panel, b.story_view] if b != null else []:
+		if ov != null and ov.is_open() and ov.card.size.x > ov.card_width + 2.0:
+			print("FIT %s WIDE %s card %d > %d" % [name, ov.get_path(), int(ov.card.size.x), int(ov.card_width)])
+			_widest(ov.card, ov.card_width - 40.0)
+
+
+## Name the deepest controls whose minimum width is over `w` (what made a card wide).
+func _widest(n: Node, w: float) -> void:
+	for c in n.get_children():
+		if c is Control and (c as Control).get_combined_minimum_size().x > w:
+			var deeper := false
+			for g in c.get_children():
+				if g is Control and (g as Control).get_combined_minimum_size().x > w:
+					deeper = true
+			if not deeper:
+				for g in c.get_children():
+					if g is Control:
+						print("    child %s %d \"%s\"" % [g.get_class(), int((g as Control).get_combined_minimum_size().x), (g.text if (g is Label or g is Button) else "").left(80)])
+				var t: String = c.text if (c is Label or c is Button) else c.get_class()
+				print("  WIDE_BY %s %d \"%s\"" % [c.get_path(), int((c as Control).get_combined_minimum_size().x), t.left(80)])
+			_widest(c, w)
 
 
 func sleep(s: float) -> void:
@@ -123,6 +153,65 @@ func buy_objects(counts: Dictionary) -> void:
 func panel(tab: String, hold := 2.5) -> void:
 	b.f2p_panel.open_tab(tab)
 	await sleep(hold)
+
+
+## Scroll the office panel so the section headed by a label starting with `head` is at the top.
+func scroll_to(head: String) -> bool:
+	var content: VBoxContainer = b.f2p_panel.content
+	var sc := content.get_parent() as ScrollContainer
+	await get_tree().process_frame
+	await get_tree().process_frame
+	for c in content.get_children():
+		if c is Label and (c as Label).text.begins_with(head):
+			sc.scroll_vertical = int((c as Control).position.y) - 4
+			await get_tree().process_frame
+			await get_tree().process_frame
+			return true
+	print("STEP_FAIL section not found: " + head)
+	fails += 1
+	return false
+
+
+## The panels added on 2026-09-24 -- pack news, staff stories + StoryView, tenant crisis,
+## the night floor, a pack's banner and event, floor build goals -- each opened and shot.
+## Needs a live pack (lang_shots.py forces u1 on) and chapter one complete (night floor).
+func panel_shots() -> void:
+	cap("panels")
+	await sleep(0.4)          # let the panel's close tween finish, or it hides the reopened panel
+	b.f2p_panel.open_tab("story")
+	await sleep(1.5)
+	need(not (F2P.st().get("news", []) as Array).is_empty(), "news: no dispatches (is a pack live?)")
+	if await scroll_to(I18n.t("f2p_news_hdr")):
+		await shot("07a_story_news")
+	b.f2p_panel.open_tab("daily")
+	await sleep(1.2)
+	var ss = F2P.st().get("stories")
+	need(ss != null and not (ss.get("pending", []) as Array).is_empty(), "stories: none pending " + str(ss))
+	need(F2P.st().get("crisis") != null, "crisis: none today")
+	if await scroll_to(I18n.t("f2p_st_hdr").get_slice("{", 0).strip_edges()):
+		await shot("07b_daily_stories_crisis")
+	if await scroll_to(I18n.t("f2p_hf_hdr")):
+		await shot("07c_daily_night_floor")
+	if ss != null and not (ss.get("pending", []) as Array).is_empty():
+		var st: Dictionary = ss["pending"][0]
+		await b.f2p_panel._read(str(st["id"]), str(st["char"]))
+		await sleep(1.2)
+		need(b.story_view.is_open(), "story view did not open")
+		await shot("07d_story_view")
+		b.story_view.close()
+		await sleep(0.5)
+	b.f2p_panel.open_tab("staff")
+	await sleep(1.5)
+	need(F2P.st().get("banner") != null and F2P.st().get("pack_event") != null, "banner/event not running")
+	(b.f2p_panel.content.get_parent() as ScrollContainer).scroll_vertical = 0     # the pack rows lead the tab
+	await sleep(0.2)
+	await shot("07e_staff_pack")
+	b.f2p_panel.open_tab("upgrades")
+	await sleep(1.2)
+	if await scroll_to(I18n.t("f2p_fit_hdr")):
+		await shot("07f_upgrades_goals")
+	b.f2p_panel.close()
+	await sleep(0.5)
 
 
 func build_floor_in_panel() -> void:
@@ -243,6 +332,11 @@ func _run() -> void:
 	await sleep(3.5)
 	await shot("07_chapter_complete")
 	b.f2p_panel.close()
+	if panels:
+		await panel_shots()
+		if stop_after_panels:
+			await _finish()
+			return
 
 	# ---- chapter 2: floors 4 and 5, 8+ pieces everywhere, no Wes tax ----------------
 	for n in [4, 5]:
