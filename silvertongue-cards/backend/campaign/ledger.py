@@ -132,9 +132,9 @@ PAGES = {
         "'And the same somebody has paid a berth at Bay Pier every month since. The boat is "
         "small. It never leaves.' She takes her glasses off. 'Go and look.'")},
     "p6": {"title": "The Last Page", "text": (
-        "Vesna gives it to you at the far pier, from inside her cap: a page of green cloth "
+        "Jaspreet gives it to you at the far pier, from inside her cap: a page of green cloth "
         "paper, torn along the stitching, folded in four. 'She gave it to me the first night "
-        "she rode with me,' Vesna says. 'She said you'd come the long way round.'\n\n"
+        "she rode with me,' Jaspreet says. 'She said you'd come the long way round.'\n\n"
         "The Night Ledger. The Long Night, seven years ago. In Marguerite Vane's hand: "
         "'The Silver Tongue of Vell is the one who said it first: nobody wants a door opened; "
         "they want somebody to knock. They had one bag and a train to catch. When they come "

@@ -1,4 +1,4 @@
-"""Update pack 6 (week 16): LAST CROSSING -- Vesna Kaur, captain of the last ferry.
+"""Update pack 6 (week 16): LAST CROSSING -- Jaspreet Kaur, captain of the last ferry.
 
 Path signals: authority + warmth (she likes being asked permission, and being noticed at
 the end of a long shift). Help: calm_action. Boss rule: eleven turns, she talks over your
@@ -17,7 +17,7 @@ from __future__ import annotations
 from ...cards import Card
 from ..story_a import S
 
-WHO, NAME, SCENARIO, AGE = "vesna", "Vesna", "ferry", 37
+WHO, NAME, SCENARIO, AGE = "vesna", "Jaspreet", "ferry", 37
 PATH_SIGNALS, HELP_SIGNAL = ("authority", "warmth"), "calm_action"
 
 
@@ -57,7 +57,7 @@ CHAPTER = {
         "won't wait.'\n\n"
         "The Last Crossing leaves Vell at half past two and comes back at five, whatever the "
         "weather, whoever is on it: night cooks, dockers, a band with its drums, people "
-        "who missed everything else. Its captain is Vesna Kaur, thirty-seven, in a navy "
+        "who missed everything else. Its captain is Jaspreet Kaur, thirty-seven, in a navy "
         "peacoat with gold buttons and a white cap she wears like she was born in it. Long "
         "black hair, a small ring in her nose, an easy grin. She runs a tight ship and "
         "knows every passenger by the way they climb aboard. Most climb aboard as if the "
@@ -75,10 +75,10 @@ CHAPTER = {
         "Behind her the first bus of the morning starts, and Vell goes on."),
     "stages": [
         S("p6s01", "The Gangway", "vesna",
-          "Get Vesna to let you aboard the Last Crossing.",
+          "Get Jaspreet to let you aboard the Last Crossing.",
           [{"authority"}], {"warmth"}, "silver",
           "Twenty-five past two. The gangway is already rattling. A man in a good suit shoves "
-          "past you, waving a ticket, and Vesna lets him on without a word and without a "
+          "past you, waving a ticket, and Jaspreet lets him on without a word and without a "
           "look. Then she turns her grin on you, and waits, one boot on the rail, to see "
           "which kind of passenger you are.",
           "'Now that,' she says, 'is how you board a ship.' She takes your hand on the last "
@@ -86,71 +86,71 @@ CHAPTER = {
           "She waves you on with the others. You are cargo tonight, and she does not look "
           "back."),
         S("p6s02", "The Wheelhouse Door", "vesna",
-          "Get Vesna to let you stand in the wheelhouse for the crossing.",
+          "Get Jaspreet to let you stand in the wheelhouse for the crossing.",
           [{"warmth"}], {"authority"}, "silver",
           "The wheelhouse is warm and smells of diesel and oranges. A sign on the door says "
-          "CREW ONLY in letters older than you. Vesna is inside with the wheel under one hand "
+          "CREW ONLY in letters older than you. Jaspreet is inside with the wheel under one hand "
           "and a mug in the other, and the whole bay black in front of her.",
           "She kicks the door open with one heel. 'Stand by the chart table. Touch nothing. "
           "Talk to me.' It is the best offer you have had all week.",
           "She taps the sign with her mug and smiles. The door stays shut all the way over."),
         S("p6s03", "The Hat Overboard", "vesna",
-          "Help Vesna calm a passenger who has lost his hat to the bay.",
+          "Help Jaspreet calm a passenger who has lost his hat to the bay.",
           [{"warmth"}], {"calm_action"}, "silver",
           "Halfway across, a drummer in his forties loses his hat to the wind and wants the "
-          "boat turned round. He is loud. The band is louder. Vesna comes down the ladder "
+          "boat turned round. He is loud. The band is louder. Jaspreet comes down the ladder "
           "with her jaw set and her grin gone. 'Help me,' she says, low. 'Before I throw "
           "him in after it.'",
           "The drummer ends up laughing, and buys the band tea from the hatch, and forgets "
-          "the hat. Vesna leans on the rail beside you. 'Crew,' she says, like a medal.",
-          "The drummer sulks to the far shore. Vesna handles it herself, and does not "
+          "the hat. Jaspreet leans on the rail beside you. 'Crew,' she says, like a medal.",
+          "The drummer sulks to the far shore. Jaspreet handles it herself, and does not "
           "thank you."),
         S("p6s04", "The Log", "vesna",
-          "Ask Vesna to let you write tonight's entry in the ship's log.",
+          "Ask Jaspreet to let you write tonight's entry in the ship's log.",
           [{"authority", "calm_action"}], {"warmth"}, "silver",
           "The log is a green book with a cracked spine and forty years of weather in it. "
-          "Every entry is in capitals: WIND, SEA, PASSENGERS, NOTES. Vesna writes hers with "
+          "Every entry is in capitals: WIND, SEA, PASSENGERS, NOTES. Jaspreet writes hers with "
           "a pencil stub she keeps behind her ear. NOTES is always empty.",
           "She hands you the pencil. You write the wind and the sea, and under NOTES, "
           "something small. She reads it upside down and does not rub it out.",
           "'Captain's hand only,' she says, and writes NOTES: NONE."),
         S("p6s05", "The Turning Buoy", "vesna",
-          "Get Vesna to let you take the wheel past the turning buoy.",
+          "Get Jaspreet to let you take the wheel past the turning buoy.",
           [{"authority", "warmth"}], {"calm_action"}, "silver",
           "The turning buoy is a red light that blinks every four seconds, and every night "
-          "at three Vesna brings the ferry round it without looking. Tonight she is looking "
+          "at three Jaspreet brings the ferry round it without looking. Tonight she is looking "
           "at you instead. 'Nobody touches her wheel,' she says. 'Nobody's ever asked.'",
           "She stands behind you with her hands over yours, and the ferry comes round the "
           "buoy wide and a little clumsy. 'Terrible,' she says in your ear. 'Again tomorrow.'",
           "She keeps the wheel. The buoy blinks past on the right side of the boat, exactly "
           "where it always is."),
         S("p6s06", "Odile Rides Home", "odile",
-          "Get Odile to stop narrating the crossing before Vesna hears it.",
+          "Get Odile to stop narrating the crossing before Jaspreet hears it.",
           [{"calm_action", "empathy"}], {"respect"}, "gold",
           "Friday, after her show, Odile takes the Last Crossing home to the far shore, and "
           "tonight she has spotted you in the wheelhouse. She is on the bench below the "
           "window with a paper cup, reading the ferry to the passengers in her radio voice. "
           "'And there, Vell, at the chart table...'",
           "Odile lowers the cup, and her voice, and says only, 'Good crossing, captain,' "
-          "on her way off. Vesna watches her go. 'I like her,' she says. 'She talks less "
+          "on her way off. Jaspreet watches her go. 'I like her,' she says. 'She talks less "
           "than the radio.'",
-          "Odile finishes the report for the whole deck. The band applauds. Vesna turns "
+          "Odile finishes the report for the whole deck. The band applauds. Jaspreet turns "
           "the wheel very slightly, so the spray reaches the bench.",
           mods={"muted": 1}),
         S("p6s07", "The Crew", "vesna",
-          "Get Vesna to introduce you to her crew as one of them.",
+          "Get Jaspreet to introduce you to her crew as one of them.",
           [{"warmth", "authority"}], {"calm_action"}, "gold",
           "Her crew is two people: Marek, the engineer, in his sixties, who has not come up "
           "from the engine room in daylight since anyone can remember, and Pia, the deckhand, "
-          "twenty-four, who coils rope like it owes her money. Vesna would die for both of "
+          "twenty-four, who coils rope like it owes her money. Jaspreet would die for both of "
           "them. She tells them nothing.",
           "At the hatch, over tea, she says, 'This one's crew,' and Marek grunts, which Pia "
-          "says is a speech. Vesna does not look at you. Her grin says the rest.",
+          "says is a speech. Jaspreet does not look at you. Her grin says the rest.",
           "'A passenger,' she tells them. Pia shrugs. Marek goes back down to his engine."),
         S("p6s08", "Fog on the Bay", "vesna",
-          "Keep Vesna company through a crossing in thick fog.",
+          "Keep Jaspreet company through a crossing in thick fog.",
           [{"warmth", "calm_action"}, {"authority"}], {"calm_action"}, "gold",
-          "The fog comes in off the sea at two and swallows the bay whole. Vesna takes the "
+          "The fog comes in off the sea at two and swallows the bay whole. Jaspreet takes the "
           "ferry out anyway, on the horn and the compass and her own ears. The passengers "
           "have gone quiet. So has she. Her knuckles on the wheel are pale.",
           "Two hours of horn and fog and your voice. When the far lights come through, she "
@@ -160,21 +160,21 @@ CHAPTER = {
           "the fog anyway, and she says nothing on it.",
           mods={"stale_cost": 2}),
         S("p6s09", "The Coat", "vesna",
-          "Ask Vesna where the peacoat came from.",
+          "Ask Jaspreet where the peacoat came from.",
           [{"authority", "warmth"}], {"calm_action"}, "gold",
           "The peacoat is older than the ferry. The gold buttons do not match: one is new. "
           "She wears it in summer. She has never taken it off on the boat, not in the "
           "hottest August, and every regular has a theory, and every theory is wrong.",
           "It was her mother's, who ran this crossing for thirty years and taught her the "
-          "wheel at nine. The new button is the one Vesna lost the night she took over. She "
+          "wheel at nine. The new button is the one Jaspreet lost the night she took over. She "
           "lets you touch it.",
           "'Second-hand shop,' she says, and buttons it to the collar.",
           mods={"hand": 2}),
         S("p6s10", "Night Off", "vesna",
-          "Get Vesna to take a night off the wheel and be a passenger.",
+          "Get Jaspreet to take a night off the wheel and be a passenger.",
           [{"warmth"}, {"authority", "calm_action"}], {"calm_action"}, "gold",
           "Once a month the relief captain takes the Last Crossing: a solid man in his "
-          "fifties who never lets anyone board early. Vesna is supposed to be asleep. "
+          "fifties who never lets anyone board early. Jaspreet is supposed to be asleep. "
           "Instead she is on the pier at two, in the peacoat, watching her boat go without "
           "her. 'He's too gentle with the throttle,' she says.",
           "She buys a ticket. She sits on the passenger bench beside you with her boots up "
@@ -182,10 +182,10 @@ CHAPTER = {
           "asleep on your shoulder.",
           "She walks home along the harbour to not watch it. You watch the ferry go alone."),
         S("p6s11", "The Five o'Clock Pier", "vesna",
-          "Get Vesna to stay on deck after the last passenger is off.",
+          "Get Jaspreet to stay on deck after the last passenger is off.",
           [{"warmth", "authority"}], {"calm_action"}, "gold",
           "Five in the morning, back at Bay Pier. The band has gone, the cooks have gone, "
-          "Marek has gone up the ladder into daylight blinking like an owl. Vesna has the "
+          "Marek has gone up the ladder into daylight blinking like an owl. Jaspreet has the "
           "log under her arm and the keys in her hand, and usually she is the first one "
           "home.",
           "She sits on the bollard at the end of the pier and pats the cold iron beside "
@@ -194,7 +194,7 @@ CHAPTER = {
           "She locks the wheelhouse and salutes you with the keys and goes.",
           mods={"steal_every": 4}),
         S("p6s12", "BOSS: Rough Water", "vesna",
-          "Across the roughest crossing of the year, get Vesna to sign the Second Page. "
+          "Across the roughest crossing of the year, get Jaspreet to sign the Second Page. "
           "Eleven turns. Notice the long night before you ask her permission.",
           [{"authority", "warmth"}], {"calm_action"}, "gold",
           "The first gale of autumn, and she takes the Last Crossing out because the night "
@@ -325,13 +325,13 @@ MUTED_LINES = ["She is shouting orders down the hatch. Your line goes out into t
 LAST_CALL = {
     "rule": {"steal_every": 3}, "extra_help": "respect",
     "intro": (
-        "Vesna has a new rule on the Last Crossing. The passenger in the wheelhouse pays "
+        "Jaspreet has a new rule on the Last Crossing. The passenger in the wheelhouse pays "
         "the fare in stories: one of your nights, told again from the chart table, while "
-        "Pia and Marek listen from the hatch. 'Tell it straight,' Vesna says. 'The crew "
+        "Pia and Marek listen from the hatch. 'Tell it straight,' Jaspreet says. 'The crew "
         "will know if you're lying. So will I.'"),
     "coda": (
         "The last story is Rough Water. Pia has heard it twice and still gasps at the gale. "
-        "Marek comes up from the engine room to hear the end. When you finish, Vesna logs "
+        "Marek comes up from the engine room to hear the end. When you finish, Jaspreet logs "
         "it under NOTES, the first entry there in forty years, and does not show you what "
         "she wrote."),
 }
@@ -355,39 +355,39 @@ EVENT = {
     "id": "ev_p6", "title": "The Lantern Crossing", "who": WHO, "currency": "boarding passes",
     "blurb": (
         "For two weeks the Last Crossing carries paper lanterns out for the bay's autumn "
-        "night. Win a boarding pass from Vesna on every duel; passes buy her cards, tickets "
+        "night. Win a boarding pass from Jaspreet on every duel; passes buy her cards, tickets "
         "and chips on the event track."),
     "rule": "Lantern Crossing: the stage wants one of her signals as support. Her cards help.",
     "stages": [
         S("ev_p6_1", "Lanterns: The Queue", WHO,
-          "Get Vesna to let you aboard with a box of lanterns.",
+          "Get Jaspreet to let you aboard with a box of lanterns.",
           [{"authority"}], {"warmth"}, "silver",
           "Half of Vell is on Bay Pier with a paper lantern, and the Last Crossing can take "
-          "two hundred. You are two hundred and one, with a box of forty. Vesna is counting "
+          "two hundred. You are two hundred and one, with a box of forty. Jaspreet is counting "
           "heads at the gangway with a clicker.",
           "She clicks you in as crew. 'Carry those to the stern,' she says, 'and don't set "
           "fire to my boat.'",
           "'Next crossing,' she says, and means it kindly."),
         S("ev_p6_2", "Lanterns: The Stern", WHO,
-          "Get Vesna to let the passengers light the lanterns early.",
+          "Get Jaspreet to let the passengers light the lanterns early.",
           [{"warmth"}], {"calm_action"}, "silver",
           "The lanterns go out at the turning buoy. The passengers want to light them now, "
-          "in the harbour, and Vesna has already said no twice, from the ladder, with the "
+          "in the harbour, and Jaspreet has already said no twice, from the ladder, with the "
           "grin that means the third no is coming.",
           "She sighs, laughs, and hands you her lighter. The stern goes gold, and the "
           "passengers cheer her, and she pretends not to hear.",
           "Rules are rules. The lanterns wait for the buoy, and so do you."),
         S("ev_p6_3", "Lanterns: The Wind", WHO,
-          "Keep Vesna company while she holds the boat steady for the launch.",
+          "Keep Jaspreet company while she holds the boat steady for the launch.",
           [{"calm_action"}], {"authority"}, "silver",
           "The wind has come round, and a lantern in the wrong wind goes straight into the "
-          "sea. Vesna holds the ferry across it, engine low, and does not want talk. She "
+          "sea. Jaspreet holds the ferry across it, engine low, and does not want talk. She "
           "wants quiet, and the right hand on the rail.",
           "Two hundred lanterns go up in one breath and drift over the bay towards the city. "
-          "Vesna watches them from the wheel, and then she watches you.",
+          "Jaspreet watches them from the wheel, and then she watches you.",
           "Half the lanterns go up. Half go in the water. The passengers cheer anyway."),
         S("ev_p6_4", "Lanterns: Her Own", WHO,
-          "Get Vesna to light a lantern of her own.",
+          "Get Jaspreet to light a lantern of her own.",
           [{"warmth", "authority"}, {"calm_action", "respect"}], {"calm_action"}, "gold",
           "Fifteen years of lantern nights and she has never sent one up. There is one left "
           "in the box, a little crushed. She holds it like a manifest she has not checked.",
@@ -399,17 +399,17 @@ EVENT = {
           "card.",
           [{"authority", "warmth"}, {"warmth", "calm_action"}], {"calm_action", "respect"}, "gold",
           "Five to five, on the way home. One lantern left and every passenger wants it. "
-          "Vesna is bringing the ferry in to the pier in her head already and not listening "
+          "Jaspreet is bringing the ferry in to the pier in her head already and not listening "
           "to anyone, including you.",
           "'Last lantern of the crossing,' she calls down, 'for the one who asked properly.' "
           "She does not look at you. She does not have to.",
-          "The last lantern goes to the night cooks. Vesna tips her hat to you from the bridge, which is almost as good.",
+          "The last lantern goes to the night cooks. Jaspreet tips her hat to you from the bridge, which is almost as good.",
           mods={"turns": 8, "muted": 1}),
     ],
 }
 
 BANNER = {
     "id": "bn_p6", "title": "Last Crossing", "who": WHO,
-    "blurb": "For two weeks, half of the pulls of each rarity land on Vesna's cards.",
+    "blurb": "For two weeks, half of the pulls of each rarity land on Jaspreet's cards.",
     "featured": ["vesna_11", "vesna_12", "vesna_07", "vesna_08", "vesna_09", "vesna_10"],
 }

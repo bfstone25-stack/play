@@ -246,7 +246,7 @@ func _night_id() -> String:
 
 const F2P_NAMES := {"mara": "Mara", "ines": "Ines", "yuenha": "Yuen Ha", "sanne": "Sanne", "teodora": "Teodora",
 	"celeste": "Celeste", "odile": "Odile", "hedda": "Hedda", "roz": "Roz", "mireille": "Mireille",
-	"dagny": "Dagny", "vesna": "Vesna"}
+	"dagny": "Dagny", "vesna": "Jaspreet"}
 
 
 # --- events, auto-battle, the Ledger's pages ------------------------------------------------
