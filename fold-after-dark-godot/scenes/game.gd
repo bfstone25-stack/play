@@ -51,6 +51,9 @@ var _stage: CanvasLayer
 var _table: TextureRect
 var _table_edge: Sprite2D
 var _rail: Line2D
+var _far: TextureRect
+var _wash: ColorRect
+var _look := ""
 var _vignette: TextureRect
 var _board: Node2D
 var _lamp: Node2D
@@ -164,6 +167,7 @@ func _build_stage() -> void:
 	far.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	far.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(far)
+	_far = far
 
 	# A cream wash over the room, and it is not decoration — it is the playfield rule.
 	# The bg_far plate that landed is a dense, high-contrast candy sky, and in the first
@@ -176,6 +180,7 @@ func _build_stage() -> void:
 	wash.set_anchors_preset(Control.PRESET_FULL_RECT)
 	wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(wash)
+	_wash = wash
 
 	# The shadow the tray casts into the room. It is added BEFORE the tray, because it has
 	# to be under it: in the first build this node came after and drew on top, which is
@@ -295,6 +300,7 @@ func _relayout() -> void:
 	# #161A19 — measured off the captured frame, the table and the room came out at a
 	# contrast ratio of 1.01:1, i.e. the same colour. There was no table.
 	_table.modulate = Color(Palette.TABLE, 1.0)
+	_apply_look()
 	var tl := _table.position
 	_rail.points = PackedVector2Array([
 		tl, tl + Vector2(w, 0), tl + Vector2(w, h), tl + Vector2(0, h)])
@@ -309,6 +315,18 @@ func _relayout() -> void:
 
 	_draw_cells()
 	_rebuild_pieces()
+
+
+## An update pack's board look (the level's "look"; Palette.LOOKS): the room plate lit in
+## the pack's key colour, the wash and the tray tinted to its hue, the lip in the key
+## colour. Modulates the existing sprites only; a board with no look gets the house colours.
+func _apply_look() -> void:
+	_look = Fold.look_of(Fold.level_index)
+	var has := Palette.has_look(_look)
+	_far.modulate = Color.WHITE.lerp(Palette.look_key(_look), 0.45) if has else Color.WHITE
+	_wash.color = Color(Palette.look_wash(_look), 0.62 if has else 0.70)
+	_table.modulate = Color(Palette.look_tray(_look), 1.0)
+	_rail.default_color = Palette.look_key(_look) if has else Palette.TABLE_RAIL
 
 
 func _draw_cells() -> void:
@@ -380,6 +398,8 @@ func _make_piece(t: Dictionary) -> Node2D:
 	# 1.0, not ROOM_DIM: see PieceView.make. The attract loop in scenes/title.gd still
 	# passes ROOM_DIM, because that board is scenery and this one is the game.
 	var holder := PieceView.make(int(t["v"]), px, TILT, 1.0, true)
+	if bool(t.get("ice", false)):
+		PieceView.set_ice(holder, true, px, TILT)
 	holder.position = _cell_pos(r, int(t["c"]))
 	holder.z_index = 10 + r
 	_pieces.add_child(holder)
@@ -718,7 +738,10 @@ func _sync() -> void:
 	lvb.text = I18n.t("map_btn")
 	var t := Tier.of_level(Fold.level_index)
 	_tier_lbl.text = "%s %d · %d/%d" % [I18n.t("tier").to_upper(), t + 1, Tier.cleared_in(t), Tier.length(t)]
-	if Fold.is_daily():
+	if Fold.is_hard():
+		_tier_lbl.text = I18n.f("hard_tag", I18n.chapter(str(F2P.hard_chapter_of(F2P.hard_level).get("id", ""))))
+		_lvname.text = I18n.f("hard_name", F2P.hard_level + 1)
+	elif Fold.is_daily():
 		_tier_lbl.text = I18n.t("daily_tag") % [int(F2P.challenge.get("number", 0)), str(F2P.challenge.get("date", ""))]
 		_lvname.text = I18n.f("daily_name", Fold.level_name(Fold.DAILY, I18n.lang))
 	elif Fold.is_special():
@@ -752,7 +775,9 @@ func _open(i: int) -> void:
 			_f2p_error(I18n.t("cant_reach"))
 			return
 		var r: Dictionary
-		if i == Fold.DAILY:
+		if i == Fold.HARD:
+			r = await F2P.begin_hard(F2P.hard_level if F2P.hard_level >= 0 else F2P.hard_next())
+		elif i == Fold.DAILY:
 			r = await F2P.begin_daily()
 		elif i == Fold.EVENT:
 			r = await F2P.begin_event(F2P.event_next_board() if F2P.event_board < 0 else F2P.event_board)
@@ -791,8 +816,14 @@ func _open(i: int) -> void:
 	_relayout()
 	_sync()
 	_show_start_card()
-	if not Coco.daily():
-		Coco.say("start")
+	var slot := _coco_open_slot(i)
+	if slot == "daily":
+		if not Coco.daily():
+			Coco.say("start")
+	elif Coco.say(slot):
+		_coco_said_open(slot)
+	elif slot in ["streak_lost", "streak_back", "chapter", "guest"]:
+		F2P._coco_queue(slot)            # not said (she was busy): keep it for the next start
 	Tel.level_ev("level_opened")
 	# The server ticket for this tier's scene is asked for now, so the gateway's minimum
 	# wait runs under the tier instead of after it. Off the web this is a no-op.
@@ -801,6 +832,43 @@ func _open(i: int) -> void:
 	if not F2P.on() and not bool(scene.get("placeholder", false)) and _ticket_for != sid and not Unlock.ready_for(sid):
 		_ticket_for = sid
 		Unlock.start(sid)
+
+
+## Which of Coco's lines a level start gets, in priority order: the moment on the board
+## (a hard board, an event opened for the first time this week, one of the first ice
+## levels), then what the server's state had to say (F2P.take_coco: a streak lost or won
+## back, a new chapter, a new guest), then the day's first hello, then an ordinary start.
+## Slots with no clips yet are skipped (Coco.has_slot).
+func _coco_open_slot(i: int) -> String:
+	if i == Fold.HARD and Coco.has_slot("hard"):
+		return "hard"
+	if i == Fold.EVENT and Coco.has_slot("event_start") and str(Save.get_v("coco_event", "")) != _event_key():
+		return "event_start"
+	if i < Fold.DAILY and Fold.level_has_ice(i) and Coco.has_slot("ice_intro") \
+			and int(Save.get_v("coco_ice_n", 0)) < ICE_INTROS:
+		return "ice_intro"
+	if F2P.on():
+		var acct := F2P.take_coco()
+		if acct != "":
+			return acct
+	if str(Save.get_v("coco_day", "")) != Time.get_date_string_from_system():
+		return "daily"
+	return "start"
+
+
+const ICE_INTROS := 3       # Coco explains ice on the first three ice levels of a save
+
+
+func _event_key() -> String:
+	return "%s:%s" % [str(F2P.event.get("pack", "")), str(F2P.event.get("week", ""))]
+
+
+## Bookkeeping once a start line was actually said.
+func _coco_said_open(slot: String) -> void:
+	if slot == "event_start":
+		Save.set_v("coco_event", _event_key())
+	elif slot == "ice_intro":
+		Save.set_v("coco_ice_n", int(Save.get_v("coco_ice_n", 0)) + 1)
 
 
 func _to_title() -> void:
@@ -926,6 +994,10 @@ func _animate(direction: Vector2i) -> void:
 			st.tween_property(node, "scale", along, 0.05)
 			st.tween_property(node, "scale", Vector2(along.y, along.x), 0.06)
 			st.tween_property(node, "scale", Vector2.ONE, 0.14).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+		if not bool(t.get("ice", false)) and node.has_node("Ice"):
+			# the merge thawed it: the ice cracks off in a pale burst
+			PieceView.set_ice(node, false, 0.0, TILT)
+			_sparkle(node.position, PieceView.ICE_TINT, 20, 1.2)
 		if bool(t.get("merged", false)):
 			t["merged"] = false
 			PieceView.repaint(node, int(t["v"]), _cs * _row_k(int(t["r"])), 1.0, true)
@@ -1031,7 +1103,9 @@ func _on_solved(stars: int, move_count: int, p: int) -> void:
 	# One voice, one line: Coco drops a line while another is playing, so the order here
 	# is the priority. A streak milestone is the rarer thing to have earned, so it wins
 	# over a three-star clear, which wins over an ordinary one.
-	if Tier.streak > 0 and (Tier.streak + 1) % 3 == 0:
+	if typeof(_last_finish.get("milestone")) == TYPE_DICTIONARY and Coco.has_slot("milestone"):
+		Coco.say("milestone", true)
+	elif Tier.streak > 0 and (Tier.streak + 1) % 3 == 0:
 		Coco.say("streak", true)
 	elif stars >= 3:
 		Coco.say("win3", true)
@@ -1099,7 +1173,7 @@ func _show_trophy(t: int, stars: int, move_count: int, p: int) -> void:
 	# the scene card, teaser dimmed, as on the map
 	if not placeholder:
 		var pic := TextureRect.new()
-		pic.texture = load(Tier.teaser_path(str(scene["id"])))
+		pic.texture = Tier.teaser(str(scene["id"]))
 		pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		pic.custom_minimum_size = Vector2(400, 200)
@@ -1141,7 +1215,50 @@ func _show_trophy(t: int, stars: int, move_count: int, p: int) -> void:
 	_win.visible = true
 	card.modulate.a = 0.0
 	create_tween().tween_property(card, "modulate:a", 1.0, 0.2)
+	if F2P.on():
+		_add_letter(col, t, status)
 	Tel.ev("tier_cleared", {"tier": t + 1, "stars": stars, "moves": move_count, "par": p})
+
+
+## The fold of her letter this tier opened (the story spine): "<Name>'s crane · fold k of n",
+## the fold's text, and, on a chapter's last tier, the chapter's closing line set apart. The
+## server names the fold's id only once the tier is cleared (house.py), so the house view is
+## fetched again here, after the win; the scene stays the reward, the letter comes with it.
+func _add_letter(col: VBoxContainer, t: int, before: Control) -> void:
+	await F2P.fetch_house()
+	if not is_instance_valid(col):
+		return
+	var lt := F2P.tier_letter(t)
+	if not lt.has("id") or I18n.letter(str(lt["id"])) == "":
+		return
+	var box := PanelContainer.new()
+	box.name = "LetterCard"
+	box.theme_type_variation = "Card"
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 6)
+	box.add_child(v)
+	var head := StudioTheme.display_label(I18n.t("crane_fold") % [I18n.cast(str(lt["who"])), int(lt["fold"]), int(lt["of"])],
+		18, Palette.ACCENT)
+	head.name = "LetterHead"
+	head.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	v.add_child(head)
+	var body := StudioTheme.serif_label(I18n.letter(str(lt["id"])), 15, Palette.TEXT)
+	body.name = "LetterText"
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.custom_minimum_size = Vector2(400, 0)
+	v.add_child(body)
+	if lt.has("hook") and I18n.letter(str(lt["hook"])) != "":
+		v.add_child(HSeparator.new())
+		var hook := StudioTheme.serif_label(I18n.letter(str(lt["hook"])), 14, Palette.GOLD, true)
+		hook.name = "LetterHook"
+		hook.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		hook.custom_minimum_size = Vector2(400, 0)
+		hook.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		v.add_child(hook)
+	col.add_child(box)
+	col.move_child(box, before.get_index())
+	box.modulate.a = 0.0
+	create_tween().tween_property(box, "modulate:a", 1.0, 0.35)
 
 
 ## The unlock: page gate first (a sponsor clip on the ad track, a price on itch; a page
@@ -1566,6 +1683,9 @@ func _try_undo() -> bool:
 	if Fold.history.is_empty() or Fold.done:
 		return false
 	if not F2P.can_undo():
+		if Fold.is_hard():
+			_hint.text = I18n.t("no_undo_hard")
+			return false
 		if Fold.is_special():
 			_hint.text = I18n.t("one_undo_board")
 			return false
@@ -1584,6 +1704,7 @@ func _try_undo() -> bool:
 func _f2p_check_budget() -> void:
 	if not is_instance_valid(self) or Fold.done or not F2P.out_of_moves():
 		return
+	Coco.say("fail", true)
 	if Fold.is_special():
 		# the daily is free: no candle, no tokens; out of moves means try it again
 		var again := func(_s: Label): _f2p_retry()
@@ -1673,6 +1794,9 @@ func _show_daily_done(stars: int) -> void:
 	if Fold.level_index == Fold.EVENT:
 		_show_event_done(stars)
 		return
+	if Fold.is_hard():
+		_show_hard_done(stars)
+		return
 	var again := func(_s: Label): _open(Fold.DAILY)
 	F2PUI.card(_win, I18n.f("daily_done", "★".repeat(stars)), lines,
 		[[I18n.t("map"), "Primary", home, "Map"], [I18n.t("dc_play_again"), "Ghost", again, "Again"]])
@@ -1699,6 +1823,30 @@ func _show_event_done(stars: int) -> void:
 			_open(Fold.EVENT)
 		buttons.push_front([I18n.t("next_board"), "Primary", nxt, "NextBoard"])
 	F2PUI.card(_win, "%s %s" % [I18n.event_title(ev), "★".repeat(stars)], lines, buttons)
+
+
+## A hard board's end: what the server paid (every per_n-th first hard clear, and a
+## chapter's hard boards all cleared), the chapter's hard progress, the next hard board.
+func _show_hard_done(stars: int) -> void:
+	var lines := []
+	var ap = _last_finish.get("applied", {})
+	if typeof(ap) == TYPE_DICTIONARY and not ap.is_empty():
+		lines.append(I18n.f("board_reward", F2PUI._reward_text(ap)))
+	var cr = _last_finish.get("chapter_reward", {})
+	if typeof(cr) == TYPE_DICTIONARY and not cr.is_empty():
+		lines.append(I18n.f("hard_chapter_reward", F2PUI._reward_text(cr)))
+	var ch := F2P.hard_chapter_of(F2P.hard_level)
+	if not ch.is_empty():
+		lines.append(I18n.t("hard_progress") % [I18n.chapter(str(ch["id"])), int(ch.get("cleared", 0)), int(ch.get("total", 0))])
+	var home := func(_s: Label): _to_map()
+	var buttons := [[I18n.t("map"), "Ghost", home, "Map"]]
+	var nxt := F2P.hard_next()
+	if nxt >= 0:
+		var go := func(_s: Label):
+			F2P.hard_level = nxt
+			_open(Fold.HARD)
+		buttons.push_front([I18n.t("next_hard"), "Primary", go, "NextHard"])
+	F2PUI.card(_win, "%s %s" % [I18n.t("hard_title"), "★".repeat(stars)], lines, buttons)
 
 
 ## A first-clear milestone the server paid (config f2p.milestones): a note that fades.
@@ -1979,7 +2127,8 @@ func _show_start_card() -> void:
 	var goal := _start_card.find_child("Goal", true, false) as Label
 	head.text = "%s %d" % [I18n.t("level"), Fold.level_index + 1]
 	if Fold.is_special():
-		head.text = I18n.t("daily_head") if Fold.is_daily() else I18n.event_title(F2P.event)
+		head.text = I18n.t("daily_head") if Fold.is_daily() else I18n.t("hard_title") if Fold.is_hard() \
+			else I18n.event_title(F2P.event)
 	goal.text = "%s   ·   %s" % [I18n.f("goal", Fold.target()), I18n.f("parhint", Fold.par())]
 	var alt := Juice.goal_text(Fold.level_index)
 	if alt != "":
@@ -2026,6 +2175,7 @@ func _show_results(stars: int, move_count: int, p: int, gained: int, before: int
 	h.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(h)
 	var lv := StudioTheme.mono_label(I18n.f("res_daily", int(F2P.challenge.get("number", 0))) if Fold.is_daily()
+		else I18n.f("res_hard", F2P.hard_level + 1) if Fold.is_hard()
 		else I18n.f("res_event", F2P.event_board + 1) if Fold.is_special()
 		else "%s %d" % [I18n.t("level").to_upper(), Fold.level_index + 1], 14, Palette.MUTED)
 	lv.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

@@ -55,6 +55,8 @@ func _run() -> void:
 	_legibility()
 	_conformance()
 	_score_twin()
+	_ice()
+	_looks()
 	_generated()
 	print("\n%d checks passed, %d failed" % [passed, failed])
 	if failed > 0:
@@ -357,16 +359,84 @@ func _score_twin() -> void:
 		printerr("  first divergence: " + first)
 
 
+## Ice (2026-09-24): tests/ice_fixtures.json, made by ops/nutaku/fold_f2p/
+## check_ice_conformance.py from the server's Python rule, replayed here through the real
+## Fold autoload. Every board after every action, and the move counter, must agree.
+func _ice() -> void:
+	print("ice (Python <-> GDScript)")
+	eq(Fold.ice_value("i8"), 8, "\"i8\" is an ice 8")
+	eq(Fold.ice_value("x"), 0, "a wall is not ice")
+	eq(Fold.ice_value(8), 0, "a number is not ice")
+	var f := FileAccess.open("res://tests/ice_fixtures.json", FileAccess.READ)
+	if f == null:
+		ok(false, "tests/ice_fixtures.json missing — run check_ice_conformance.py")
+		return
+	var fx = JSON.parse_string(f.get_as_text())
+	f.close()
+	var dirs := {"U": Vector2i(-1, 0), "D": Vector2i(1, 0), "L": Vector2i(0, -1), "R": Vector2i(0, 1)}
+	var steps := 0
+	var bad := 0
+	var first := ""
+	var saved_level: Dictionary = Fold.daily_level
+	for case in fx["cases"]:
+		Fold.daily_level = case["level"]
+		Fold.load_level(Fold.DAILY)
+		var k := 0
+		for ch in str(case["actions"]):
+			if k >= (case["steps"] as Array).size():
+				break
+			if ch == "Z":
+				Fold.undo()
+			else:
+				var d: Vector2i = dirs[ch]
+				Fold.move(d.x, d.y)
+			var rows := []
+			for t in Fold.tiles:
+				rows.append([int(t["r"]), int(t["c"]), int(t["v"]), 1 if bool(t.get("ice", false)) else 0])
+			rows.sort_custom(func(a, b):
+				for j in range(4):
+					if a[j] != b[j]:
+						return a[j] < b[j]
+				return false)
+			var want: Dictionary = case["steps"][k]
+			var want_rows := []
+			for r in want["board"]:
+				want_rows.append([int(r[0]), int(r[1]), int(r[2]), int(r[3])])
+			steps += 1
+			if rows != want_rows or Fold.moves != int(want["moves"]) or Fold.is_won() != bool(want["won"]):
+				bad += 1
+				if first == "":
+					first = "%s step %d (%s): got %s moves %d, want %s moves %d" % [case["name"], k, ch,
+						JSON.stringify(rows), Fold.moves, JSON.stringify(want_rows), int(want["moves"])]
+			k += 1
+	Fold.daily_level = saved_level
+	ok(steps > 0, "ice fixture has steps (%d cases, %d steps)" % [(fx["cases"] as Array).size(), steps])
+	eq(bad, 0, "every ice step agrees with the server's rule" + ("" if first == "" else " (" + first + ")"))
+
+
 ## Levels 202-800 (Nutaku only; ops/nutaku/fold_f2p/gen_levels.py). Runs last: it appends
 ## them to Fold.levels, which every check above assumes is the shipped 201. Every stored
 ## winning log (tests/gen_solutions.json) must win on the GDScript board too, within par+2.
 func _generated() -> void:
 	print("generated levels (Nutaku build)")
+	# The counts come from the shipped files, then are pinned exactly: levels_gen.json is
+	# the base game past 201 (599 while it ends at 800; 899 once 801-1100 land), and
+	# levels_packs.json (absent until the packs are generated) follows at index 1100.
+	var n_gen := _json_size("res://data/levels_gen.json")
+	var n_packs := _json_size("res://data/levels_packs.json")
+	ok(n_gen == 599 or n_gen == 899, "levels_gen.json holds 599 (to 800) or 899 (to 1100) levels (got %d)" % n_gen)
+	if n_packs > 0:
+		eq(Fold.base_count + n_gen, 1100, "with the update packs present the base game ends at 1100")
 	var added := Fold.load_extension()
-	eq(added, 599, "load_extension appends the 599 generated levels")
-	eq(Fold.level_count(), 800, "800 levels in the Nutaku build")
-	eq(Fold.load_extension(), 599, "a second call does not append them twice")
-	eq(Fold.level_count(), 800, "still 800")
+	eq(added, n_gen + n_packs, "load_extension appends levels_gen.json + levels_packs.json (%d + %d)" % [n_gen, n_packs])
+	eq(Fold.level_count(), 201 + n_gen + n_packs, "%d levels in the Nutaku build" % (201 + n_gen + n_packs))
+	eq(Fold.load_extension(), n_gen + n_packs, "a second call does not append them twice")
+	eq(Fold.level_count(), 201 + n_gen + n_packs, "still %d" % (201 + n_gen + n_packs))
+	var no_look := 0
+	for i in range(201 + n_gen, Fold.level_count()):
+		if not Palette.has_look(Fold.look_of(i)):
+			no_look += 1
+	eq(no_look, 0, "every update-pack level has a look Palette.LOOKS knows (%d pack levels)" % n_packs)
 	var f := FileAccess.open("res://tests/gen_solutions.json", FileAccess.READ)
 	if f == null:
 		ok(false, "tests/gen_solutions.json missing — run gen_levels.py --fixture")
@@ -376,7 +446,12 @@ func _generated() -> void:
 	var bad := 0
 	var first := ""
 	var dirs := {"U": Vector2i(-1, 0), "D": Vector2i(1, 0), "L": Vector2i(0, -1), "R": Vector2i(0, 1)}
+	var missing := 0
 	for i in range(Fold.base_count, Fold.level_count()):
+		if not (sols["levels"] as Dictionary).has(str(i)):
+			if i < 201 + n_gen:
+				missing += 1               # a base level must have its stored win
+			continue                        # pack levels: checked when the fixture carries them
 		Fold.load_level(i)
 		var log := str(sols["levels"].get(str(i), ""))
 		for ch in log:
@@ -386,4 +461,30 @@ func _generated() -> void:
 			bad += 1
 			if first == "":
 				first = "level %d: won=%s moves=%d par=%d" % [i + 1, str(Fold.is_won()), Fold.moves, Fold.par()]
+	eq(missing, 0, "every generated base level has a stored win in tests/gen_solutions.json")
 	eq(bad, 0, "every generated level's stored win also wins on the GDScript rules" + ("" if first == "" else " (" + first + ")"))
+
+
+func _json_size(path: String) -> int:
+	if not FileAccess.file_exists(path):
+		return 0
+	var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return (parsed as Array).size() if parsed is Array else -1
+
+
+## The update packs' looks (Palette.LOOKS): six, bright and saturated (memory
+## `bright-is-what-sells`), and each tinted tray still carries every tile at 3:1, the
+## same floor as the house tray in _legibility.
+func _looks() -> void:
+	print("pack looks (Palette.LOOKS)")
+	eq(Palette.LOOKS.keys().size(), 6, "six pack looks")
+	for look in ["greenhouse", "patisserie", "rooftop", "frost", "observatory", "music"]:
+		ok(Palette.has_look(look), "look %s is defined" % look)
+		var k := Palette.look_key(look)
+		ok(k.v >= 0.85 and k.s >= 0.45, "%s's key colour is bright and saturated (v %.2f, s %.2f)" % [look, k.v, k.s])
+		var tray := Palette.rendered(Palette.look_tray(look))
+		var worst := 99.0
+		for v in Palette.TILE_FACES.keys():
+			worst = minf(worst, Palette.contrast(Palette.rendered(Palette.TILE_FACES[v]), tray))
+		ok(worst >= 3.0, "every tile clears 3:1 on the %s tray (worst %.2f)" % [look, worst])
+	eq(Palette.look_tray(""), Palette.TABLE, "no look: the house tray")

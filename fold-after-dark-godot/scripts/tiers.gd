@@ -230,6 +230,13 @@ func teaser_path(id: String) -> String:
 	return "res://assets/scenes/%s_locked.webp" % id
 
 
+## The teaser texture, or null while a new scene's teaser has not been rendered yet (the
+## card then shows no picture instead of an engine error; 2026-09-24: june_a6 ... coco_a7).
+func teaser(id: String) -> Texture2D:
+	var path := teaser_path(id)
+	return load(path) as Texture2D if ResourceLoader.exists(path) else null
+
+
 ## Unlocked means the bytes actually landed for this install (Unlock.ready_for) AND the
 ## player earned it. Earned-but-not-delivered is a locked card with a "retry" — never a
 ## picture.

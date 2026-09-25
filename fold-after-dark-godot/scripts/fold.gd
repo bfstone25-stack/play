@@ -67,14 +67,17 @@ var base_count := 0
 const DAILY := 100000
 ## The weekly event's bonus-track board plays the same way (F2P.begin_event).
 const EVENT := 100001
-var daily_level: Dictionary = {}     # the server-sent board for DAILY or EVENT
+## A hard-mode board (ops/nutaku/fold_f2p/hard.py): a cleared level turned a quarter turn,
+## sent by the server when it opens the attempt (F2P.begin_hard).
+const HARD := 100002
+var daily_level: Dictionary = {}     # the server-sent board for DAILY, EVENT or HARD
 
 # --- live board -------------------------------------------------------------------------
 var level_index: int = 0
 var rows: int = 0
 var cols: int = 0
 var walls: Array[Vector2i] = []
-var tiles: Array = []          # [{id:int, r:int, c:int, v:int, merged:bool, spawned:bool}]
+var tiles: Array = []          # [{id:int, r:int, c:int, v:int, ice:bool, merged:bool, spawned:bool}]
 var moves: int = 0
 var done: bool = false
 var history: Array = []        # snapshots, newest last
@@ -107,25 +110,46 @@ func load_levels() -> void:
 func load_extension() -> int:
 	if levels.size() > base_count:
 		return levels.size() - base_count
-	var f := FileAccess.open("res://data/levels_gen.json", FileAccess.READ)
-	if f == null:
-		push_warning("Fold: data/levels_gen.json missing; 201 levels only")
-		return 0
-	var parsed = JSON.parse_string(f.get_as_text())
-	f.close()
-	if parsed is Array:
-		levels.append_array(parsed)
-		return parsed.size()
-	return 0
+	var added := 0
+	# levels_gen.json: the base game's 202-1100; levels_packs.json: the update packs'
+	# chapters (1101+). All of it ships; the server's tiers say what is released.
+	for path in ["res://data/levels_gen.json", "res://data/levels_packs.json"]:
+		var f := FileAccess.open(path, FileAccess.READ)
+		if f == null:
+			push_warning("Fold: %s missing" % path)
+			continue
+		var parsed = JSON.parse_string(f.get_as_text())
+		f.close()
+		if parsed is Array:
+			levels.append_array(parsed)
+			added += parsed.size()
+	return added
 
 
 func is_daily() -> bool:
 	return level_index == DAILY
 
 
-## A server-sent board (the daily challenge or an event board), not one of `levels`.
+func is_hard() -> bool:
+	return level_index == HARD
+
+
+## A server-sent board (the daily challenge, an event board or a hard board), not one of `levels`.
 func is_special() -> bool:
-	return level_index == DAILY or level_index == EVENT
+	return is_sentinel(level_index)
+
+
+static func is_sentinel(i: int) -> bool:
+	return i == DAILY or i == EVENT or i == HARD
+
+
+## The update-pack look of level `i` ("greenhouse", "frost", ...; Palette.LOOKS), or "".
+func look_of(i: int) -> String:
+	if is_sentinel(i) and daily_level.is_empty():
+		return ""
+	if not is_sentinel(i) and (i < 0 or i >= levels.size()):
+		return ""
+	return str(level(i).get("look", ""))
 
 
 func level_count() -> int:
@@ -133,7 +157,7 @@ func level_count() -> int:
 
 
 func level(i: int) -> Dictionary:
-	if i == DAILY or i == EVENT:
+	if is_sentinel(i):
 		return daily_level
 	return levels[clampi(i, 0, levels.size() - 1)]
 
@@ -153,6 +177,10 @@ func level_name(i: int, lang: String) -> String:
 	if parts.size() < 2:
 		return raw
 	if lang == "zh":
+		# the update packs' names carry an English id in the first half ("greenhouse 12 /
+		# Greenhouse 12"), so zh takes the pack word from the table like the others
+		if (LEVEL_WORDS["zh"] as Dictionary).has(parts[1].get_slice(" ", 0)):
+			return _level_word(parts[1], "zh")
 		return parts[0]
 	return _level_word(parts[1], lang)
 
@@ -164,19 +192,27 @@ func level_name(i: int, lang: String) -> String:
 const LEVEL_WORDS := {
 	"ja": {"Warmup": "ウォームアップ", "Corner": "角", "Walls": "壁", "Fourfold": "四つ折り", "Island": "島",
 		"Octet": "八つ合わせ", "Ladder": "はしご", "Maze": "迷路", "Easy": "やさしい", "Medium": "ふつう",
-		"Hard": "むずかしい", "Expert": "エキスパート", "Endless": "エンドレス", "Midnight": "真夜中"},
+		"Hard": "むずかしい", "Expert": "エキスパート", "Endless": "エンドレス", "Midnight": "真夜中",
+		"Daily": "デイリー", "Greenhouse": "温室", "Patisserie": "パティスリー", "Rooftop": "屋上", "Frost": "霜", "Observatory": "天文台", "Music": "音楽室"},
 	"de": {"Warmup": "Aufwärmen", "Corner": "Ecke", "Walls": "Wände", "Fourfold": "Vierfach", "Island": "Insel",
 		"Octet": "Oktett", "Ladder": "Leiter", "Maze": "Labyrinth", "Easy": "Leicht", "Medium": "Mittel",
-		"Hard": "Schwer", "Expert": "Experte", "Endless": "Endlos", "Midnight": "Mitternacht"},
+		"Hard": "Schwer", "Expert": "Experte", "Endless": "Endlos", "Midnight": "Mitternacht",
+		"Daily": "Tagesbrett", "Greenhouse": "Gewächshaus", "Patisserie": "Konditorei", "Rooftop": "Dachterrasse", "Frost": "Raureif", "Observatory": "Sternwarte", "Music": "Musikzimmer"},
 	"fr": {"Warmup": "Échauffement", "Corner": "Coin", "Walls": "Murs", "Fourfold": "Quadruple", "Island": "Île",
 		"Octet": "Octuor", "Ladder": "Échelle", "Maze": "Labyrinthe", "Easy": "Facile", "Medium": "Moyen",
-		"Hard": "Difficile", "Expert": "Expert", "Endless": "Infini", "Midnight": "Minuit"},
+		"Hard": "Difficile", "Expert": "Expert", "Endless": "Infini", "Midnight": "Minuit",
+		"Daily": "Jour", "Greenhouse": "Serre", "Patisserie": "Pâtisserie", "Rooftop": "Toit", "Frost": "Givre", "Observatory": "Observatoire", "Music": "Musique"},
 	"es": {"Warmup": "Calentamiento", "Corner": "Esquina", "Walls": "Muros", "Fourfold": "Cuádruple", "Island": "Isla",
 		"Octet": "Octeto", "Ladder": "Escalera", "Maze": "Laberinto", "Easy": "Fácil", "Medium": "Medio",
-		"Hard": "Difícil", "Expert": "Experto", "Endless": "Infinito", "Midnight": "Medianoche"},
+		"Hard": "Difícil", "Expert": "Experto", "Endless": "Infinito", "Midnight": "Medianoche",
+		"Daily": "Diario", "Greenhouse": "Invernadero", "Patisserie": "Pastelería", "Rooftop": "Azotea", "Frost": "Escarcha", "Observatory": "Observatorio", "Music": "Música"},
+	# zh: levels.json carries its own first half; only the pack names need a word
+	"zh": {"Greenhouse": "温室", "Patisserie": "甜品房", "Rooftop": "屋顶", "Frost": "霜雪", "Observatory": "观星台",
+		"Music": "琴房"},
 	"ko": {"Warmup": "워밍업", "Corner": "모서리", "Walls": "벽", "Fourfold": "네 겹", "Island": "섬",
 		"Octet": "여덟 겹", "Ladder": "사다리", "Maze": "미로", "Easy": "쉬움", "Medium": "보통",
-		"Hard": "어려움", "Expert": "전문가", "Endless": "무한", "Midnight": "자정"},
+		"Hard": "어려움", "Expert": "전문가", "Endless": "무한", "Midnight": "자정",
+		"Daily": "데일리", "Greenhouse": "온실", "Patisserie": "파티스리", "Rooftop": "옥상", "Frost": "서리", "Observatory": "천문대", "Music": "음악실"},
 }
 
 
@@ -190,7 +226,7 @@ func _level_word(en: String, lang: String) -> String:
 
 ## JS `load(l)`: build cells, walls and tiles from the grid, reset the counters.
 func load_level(i: int) -> void:
-	level_index = i if (i == DAILY or i == EVENT) and not daily_level.is_empty() else clampi(i, 0, levels.size() - 1)
+	level_index = i if is_sentinel(i) and not daily_level.is_empty() else clampi(i, 0, levels.size() - 1)
 	var grid: Array = level(level_index)["grid"]
 	rows = grid.size()
 	cols = 0
@@ -208,12 +244,33 @@ func load_level(i: int) -> void:
 			if v is String and v == "x":
 				walls.append(Vector2i(r, c))
 			elif (v is int or v is float) and float(v) > 0.0:
-				tiles.append({"id": id, "r": r, "c": c, "v": int(v), "merged": false, "spawned": false})
+				tiles.append({"id": id, "r": r, "c": c, "v": int(v), "ice": false, "merged": false, "spawned": false})
+				id += 1
+			elif ice_value(v) > 0:
+				tiles.append({"id": id, "r": r, "c": c, "v": ice_value(v), "ice": true, "merged": false, "spawned": false})
 				id += 1
 	moves = 0
 	done = false
 	history = []
 	board_changed.emit()
+
+
+## Ice (2026-09-24; the rule is fold_rules.py's ICE): a grid cell "i<N>" is an ice tile of
+## value N. Ice never slides and stops other tiles like a wall; a same-value tile sliding
+## into it merges as usual and the merge thaws it. Pinned to the Python by
+## tests/ice_conformance.gd over tests/ice_fixtures.json.
+static func ice_value(v) -> int:
+	if v is String and v.length() > 1 and v[0] == "i" and v.substr(1).is_valid_int():
+		return int(v.substr(1))
+	return 0
+
+
+func level_has_ice(i: int) -> bool:
+	for row in level(i)["grid"]:
+		for v in row:
+			if ice_value(v) > 0:
+				return true
+	return false
 
 
 func is_wall(r: int, c: int) -> bool:
@@ -233,7 +290,8 @@ func tile_at(r: int, c: int) -> Dictionary:
 func snapshot() -> Array:
 	var out := []
 	for t in tiles:
-		out.append({"id": int(t["id"]), "r": int(t["r"]), "c": int(t["c"]), "v": int(t["v"])})
+		out.append({"id": int(t["id"]), "r": int(t["r"]), "c": int(t["c"]), "v": int(t["v"]),
+			"ice": bool(t.get("ice", false))})
 	return out
 
 
@@ -241,7 +299,7 @@ func restore(snap: Array) -> void:
 	tiles = []
 	for o in snap:
 		tiles.append({"id": int(o["id"]), "r": int(o["r"]), "c": int(o["c"]), "v": int(o["v"]),
-			"merged": false, "spawned": false})
+			"ice": bool(o.get("ice", false)), "merged": false, "spawned": false})
 
 
 ## The JS traversal order: stable descending sort on `r*dr + c*dc`.
@@ -273,6 +331,8 @@ func move(dr: int, dc: int) -> int:
 	var merge_count := 0
 	var merged_ids := {}
 	for t in order:
+		if bool(t.get("ice", false)):
+			continue                           # ice never slides
 		var r := int(t["r"])
 		var c := int(t["c"])
 		while true:
@@ -287,6 +347,7 @@ func move(dr: int, dc: int) -> int:
 				continue
 			if int(occ["v"]) == int(t["v"]) and not merged_ids.has(int(occ["id"])) and int(occ["id"]) != int(t["id"]):
 				occ["v"] = int(occ["v"]) * 2
+				occ["ice"] = false                 # a merge thaws ice
 				occ["merged"] = true
 				merged_ids[int(occ["id"])] = true
 				var kept := []

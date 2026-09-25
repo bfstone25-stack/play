@@ -14,6 +14,8 @@ extends Node
 signal attempt_changed
 signal daily_requested       # the map's "Play today's board" (F2PUI.side)
 signal event_requested       # the map's "Play" on the weekly event panel
+signal hard_requested        # the map's "Play" on the hard-mode panel
+signal crane_requested(who: String)   # the map's Cranes panel: reread a woman's opened folds
 
 const SKU_REFILL := "candle_refill"
 const SKU_CANDLE := "candle_1"
@@ -55,6 +57,7 @@ func _adopt(s: Dictionary) -> void:
 			if int(stars[i]) > 0:
 				done[str(i)] = int(stars[i])
 		Save.set_v("fold_done", done)
+	_watch_streak(s)
 
 
 func energy() -> Dictionary:
@@ -166,7 +169,7 @@ func out_of_moves() -> bool:
 
 
 func free_undos() -> int:
-	return 1
+	return 0 if bool(attempt.get("hard", false)) else 1
 
 
 ## One undo is free per attempt; more need a token spent on this attempt first.
@@ -210,8 +213,12 @@ func finish(moves: int) -> Dictionary:
 		return {"ok": false, "reason": "no attempt"}
 	var daily := bool(attempt.get("daily", false))
 	var ev := bool(attempt.get("event", false))
+	var hd := bool(attempt.get("hard", false))
 	var r: Dictionary
-	if daily or ev:
+	if hd:
+		r = await Nutaku.api("POST", "/f2p/hard/finish",
+			{"attempt_id": str(attempt["id"]), "actions": str(attempt["actions"]), "moves": moves})
+	elif daily or ev:
 		r = await Nutaku.api("POST", "/f2p/challenge/finish" if daily else "/f2p/event/finish",
 			{"attempt_id": str(attempt["id"]), "actions": str(attempt["actions"]), "moves": moves})
 	else:
@@ -226,11 +233,13 @@ func finish(moves: int) -> Dictionary:
 	if ev and typeof(b.get("event")) == TYPE_DICTIONARY:
 		event = b["event"]
 		_event_at = Time.get_unix_time_from_system()
+	if hd and typeof(b.get("hard")) == TYPE_DICTIONARY:
+		hard = b["hard"]
 	return {"ok": true, "stars": int(b.get("stars", 0)), "unlocked": b.get("unlocked", []),
 		"milestone": b.get("milestone"), "rewarded": bool(b.get("rewarded", false)),
 		"applied": b.get("applied", {}), "streak_bonus": b.get("streak_bonus", {}),
 		"score": int(b.get("score", 0)), "first_clear": bool(b.get("first_clear", false)),
-		"exclusive": b.get("exclusive", {})}
+		"exclusive": b.get("exclusive", {}), "chapter_reward": b.get("chapter_reward", {})}
 
 
 func give_up() -> void:
@@ -239,8 +248,11 @@ func give_up() -> void:
 	var id := str(attempt["id"])
 	var daily := bool(attempt.get("daily", false))
 	var ev := bool(attempt.get("event", false))
+	var hd := bool(attempt.get("hard", false))
 	attempt = {}
-	if daily:
+	if hd:
+		await Nutaku.api("POST", "/f2p/hard/fail", {"attempt_id": id})
+	elif daily:
 		await Nutaku.api("POST", "/f2p/challenge/fail", {"attempt_id": id})
 	elif ev:
 		pass                          # an event attempt is free; the next start abandons it
@@ -315,7 +327,26 @@ func fetch_house() -> Dictionary:
 	var r := await Nutaku.api("GET", "/f2p/house")
 	if r["ok"]:
 		house = r["body"].get("house", {})
+		_watch_house()
 	return r
+
+
+## The id of the chapter the player stands in (house.standing names it by title).
+func current_chapter_id() -> String:
+	var t := str((house.get("standing", {}) as Dictionary).get("chapter", ""))
+	for c in house.get("chapters", []):
+		if str(c.get("title", "")) == t:
+			return str(c.get("id", ""))
+	return ""
+
+
+## Update-pack chapters the server lists but has not released: [{id, date, in_days}].
+func coming_chapters() -> Array:
+	var out := []
+	for c in house.get("chapters", []):
+		if str(c.get("status", "")) == "coming":
+			out.append(c)
+	return out
 
 
 func fetch_event() -> Dictionary:
@@ -384,3 +415,166 @@ func begin_event(board: int) -> Dictionary:
 
 func daily_leaderboard() -> Dictionary:
 	return await Nutaku.api("GET", "/f2p/challenge/leaderboard")
+
+
+# ---- hard mode (ops/nutaku/fold_f2p/hard.py) ----------------------------------------------
+
+var hard := {}               # {chapters: [{id, title, open, boards: [{level, par, budget, cleared, stars}], cleared, total, reward_claimed}], cleared_total, per_n, per_n_reward, chapter_reward}
+var hard_level := -1         # the base level whose hard board is being played
+
+
+func fetch_hard() -> Dictionary:
+	var r := await Nutaku.api("GET", "/f2p/hard")
+	if r["ok"]:
+		hard = r["body"].get("hard", {})
+	return r
+
+
+## Chapters whose hard boards are open (the chapter is done on the server).
+func hard_open_chapters() -> Array:
+	var out := []
+	for c in hard.get("chapters", []):
+		if bool(c.get("open", false)):
+			out.append(c)
+	return out
+
+
+## The next uncleared hard board of the first open chapter that has one, or -1.
+func hard_next() -> int:
+	for c in hard_open_chapters():
+		for b in c.get("boards", []):
+			if not bool(b.get("cleared", false)):
+				return int(b["level"])
+	return -1
+
+
+## The chapter row a hard level belongs to, or {}.
+func hard_chapter_of(level: int) -> Dictionary:
+	for c in hard.get("chapters", []):
+		for b in c.get("boards", []):
+			if int(b["level"]) == level:
+				return c
+	return {}
+
+
+## Open a hard board: the server sends the rotated board, which plays as Fold.HARD. Free
+## (no candle), no tokens, no undo; the budget is the server's (par + 2).
+func begin_hard(level: int) -> Dictionary:
+	var r := await Nutaku.api("POST", "/f2p/hard/start", {"level": level})
+	if not r["ok"]:
+		attempt = {}
+		return {"ok": false, "status": r["status"], "reason": str(r["body"].get("reason", ""))}
+	var b: Dictionary = r["body"]
+	hard_level = int(b.get("level", level))
+	Fold.daily_level = b["board"]
+	Juice.goals.erase(Fold.HARD)
+	var row := {}
+	for bd in hard_chapter_of(hard_level).get("boards", []):
+		if int(bd["level"]) == hard_level:
+			row = bd
+	attempt = {"id": str(b["attempt_id"]), "level": Fold.HARD, "budget": int(b["budget"]), "extra": 0,
+		"actions": "", "undos": 0, "replay": bool(row.get("cleared", false)), "hard": true}
+	attempt_changed.emit()
+	return {"ok": true}
+
+
+# ---- what Coco has to say about the account (scripts/companion.gd) --------------------------
+#
+# Server facts that deserve a line, noticed where the state arrives and said by the board
+# (game.gd) at the next level start, one per start. A slot with no clips yet is dropped
+# (the voice render rewrites lines.json later). Save keys: coco_streak_seen, coco_streak_lost,
+# coco_chapter, coco_packs.
+
+var coco_pending: Array[String] = []
+
+
+func _coco_queue(slot: String) -> void:
+	if slot not in coco_pending:
+		coco_pending.append(slot)
+
+
+## The login streak: reset to 1 after being above 1 is a lost streak; back to 2 after a loss
+## is a streak won back.
+func _watch_streak(s: Dictionary) -> void:
+	var d = s.get("daily")
+	if typeof(d) != TYPE_DICTIONARY or not (d as Dictionary).has("streak"):
+		return
+	var now := int(d["streak"])
+	var seen := int(Save.get_v("coco_streak_seen", 0))
+	if now == seen:
+		return
+	if now == 1 and seen > 1:
+		_coco_queue("streak_lost")
+		Save.set_v("coco_streak_lost", true)
+	elif now == 2 and bool(Save.get_v("coco_streak_lost", false)):
+		_coco_queue("streak_back")
+		Save.set_v("coco_streak_lost", false)
+	Save.set_v("coco_streak_seen", now)
+
+
+## A new chapter, and a newly released update pack (a new woman in the House). A save that
+## has never seen the house records it silently: a first visit is not news.
+func _watch_house() -> void:
+	var cid := current_chapter_id()
+	if cid != "":
+		var was := str(Save.get_v("coco_chapter", ""))
+		if was != "" and was != cid:
+			_coco_queue("chapter")
+		Save.set_v("coco_chapter", cid)
+	var rel := []
+	for u in house.get("updates", []):
+		if bool(u.get("released", false)):
+			rel.append(str(u["id"]))
+	var seen = Save.get_v("coco_packs", null)
+	if typeof(seen) == TYPE_ARRAY:
+		for id in rel:
+			if id not in seen:
+				_coco_queue("guest")
+	Save.set_v("coco_packs", rel)
+
+
+## The first queued account line Coco can say, removed from the queue; "" when none.
+func take_coco() -> String:
+	while not coco_pending.is_empty():
+		var slot: String = coco_pending.pop_front()
+		if Coco.has_slot(slot):
+			return slot
+	return ""
+
+
+# ---- the crane letters (house.py tiers[].letter, house.cranes; data/letters.json) -----------
+
+## Tier t's fold: {who, fold, of} and, once the tier is cleared, {id, hook?}; or {}.
+func tier_letter(t: int) -> Dictionary:
+	for row in house.get("tiers", []):
+		if int(row["tier"]) == t and typeof(row.get("letter")) == TYPE_DICTIONARY:
+			return row["letter"]
+	return {}
+
+
+## Each woman's crane: [{who, opened, of, last}].
+func cranes() -> Array:
+	return house.get("cranes", [])
+
+
+## The folds of `who`'s crane the server has opened, in fold order: [{fold, of, id, hook?}].
+func opened_folds(who: String) -> Array:
+	var out := []
+	for row in house.get("tiers", []):
+		var lt = row.get("letter")
+		if typeof(lt) == TYPE_DICTIONARY and str(lt.get("who", "")) == who and lt.has("id"):
+			out.append(lt)
+	out.sort_custom(func(a, b): return int(a["fold"]) < int(b["fold"]))
+	return out
+
+
+## The most recently opened fold (the highest cleared tier that carries one), or {}.
+func last_letter() -> Dictionary:
+	var best := {}
+	var bt := -1
+	for row in house.get("tiers", []):
+		var lt = row.get("letter")
+		if typeof(lt) == TYPE_DICTIONARY and lt.has("id") and int(row["tier"]) > bt:
+			bt = int(row["tier"])
+			best = lt
+	return best

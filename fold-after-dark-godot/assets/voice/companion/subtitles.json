@@ -447,5 +447,325 @@
   "fr": "La série tient toujours. Continue.",
   "es": "La racha sigue viva. Mantenla.",
   "ko": "연속 기록 아직 살아 있어. 계속 가자."
+ },
+ "See the ice? That tile won't budge.": {
+  "zh": "看到冰了吗？那块砖动不了。",
+  "ja": "氷が見える？あのタイルは動かないの。",
+  "de": "Siehst du das Eis? Die Kachel rührt sich nicht.",
+  "fr": "Tu vois la glace ? Cette tuile ne bougera pas.",
+  "es": "¿Ves el hielo? Esa ficha no se mueve.",
+  "ko": "얼음 보여? 저 타일은 꿈쩍도 안 해."
+ },
+ "Frozen tiles stay put. Bring them a match.": {
+  "zh": "冻住的砖不会动。给它送个一样的过去。",
+  "ja": "凍ったタイルは動かない。同じ数を連れてきて。",
+  "de": "Gefrorene Kacheln bleiben liegen. Bring ihnen ihr Gegenstück.",
+  "fr": "Les tuiles gelées restent en place. Amène-leur leur jumelle.",
+  "es": "Las fichas congeladas no se mueven. Llévales su pareja.",
+  "ko": "얼어붙은 타일은 그대로야. 짝을 데려다줘."
+ },
+ "Slide its twin in and the ice breaks.": {
+  "zh": "把一样的那块滑过去，冰就碎了。",
+  "ja": "同じタイルを滑らせれば、氷が割れるわ。",
+  "de": "Schieb ihren Zwilling hinein, und das Eis bricht.",
+  "fr": "Fais glisser sa jumelle dessus et la glace se brise.",
+  "es": "Desliza su gemela y el hielo se rompe.",
+  "ko": "똑같은 타일을 밀어 넣으면 얼음이 깨져."
+ },
+ "Fold the matching tile into the ice.": {
+  "zh": "把相同的砖折进冰里。",
+  "ja": "同じ数のタイルを氷に折り込んで。",
+  "de": "Falte die passende Kachel ins Eis.",
+  "fr": "Plie la tuile assortie dans la glace.",
+  "es": "Pliega la ficha igual sobre el hielo.",
+  "ko": "같은 타일을 얼음 쪽으로 접어 봐."
+ },
+ "Careful. Ice blocks the way.": {
+  "zh": "小心，冰会挡路。",
+  "ja": "気をつけて。氷が道をふさいでる。",
+  "de": "Vorsicht. Eis versperrt den Weg.",
+  "fr": "Attention. La glace bloque le passage.",
+  "es": "Cuidado. El hielo bloquea el paso.",
+  "ko": "조심해. 얼음이 길을 막고 있어."
+ },
+ "A new event just opened. Come and see.": {
+  "zh": "新活动开始了，快来看看。",
+  "ja": "新しいイベントが始まったよ。見に来て。",
+  "de": "Ein neues Event hat gerade begonnen. Komm und sieh.",
+  "fr": "Un nouvel événement vient d'ouvrir. Viens voir.",
+  "es": "Acaba de empezar un evento nuevo. Ven a ver.",
+  "ko": "새 이벤트가 막 열렸어. 와서 봐."
+ },
+ "Someone special is waiting for you this week.": {
+  "zh": "这周有个特别的人在等你。",
+  "ja": "今週は、特別な人があなたを待ってる。",
+  "de": "Diese Woche wartet jemand Besonderes auf dich.",
+  "fr": "Quelqu'un de spécial t'attend cette semaine.",
+  "es": "Alguien especial te espera esta semana.",
+  "ko": "이번 주엔 특별한 누군가가 널 기다려."
+ },
+ "The event boards are open. Shall we?": {
+  "zh": "活动棋盘开放了。我们开始吧？",
+  "ja": "イベントの盤面が開いたわ。始めましょうか？",
+  "de": "Die Event-Bretter sind offen. Wollen wir?",
+  "fr": "Les plateaux de l'événement sont ouverts. On y va ?",
+  "es": "Los tableros del evento están abiertos. ¿Vamos?",
+  "ko": "이벤트 보드가 열렸어. 시작할까?"
+ },
+ "New week, new guest. Let's go.": {
+  "zh": "新的一周，新的客人。走吧。",
+  "ja": "新しい週、新しいお客さま。行きましょ。",
+  "de": "Neue Woche, neuer Gast. Los geht's.",
+  "fr": "Nouvelle semaine, nouvelle invitée. On y va.",
+  "es": "Semana nueva, invitada nueva. Vamos.",
+  "ko": "새로운 주, 새로운 손님. 가자."
+ },
+ "The House is throwing a party tonight.": {
+  "zh": "今晚房子里要开派对。",
+  "ja": "今夜は館でパーティーよ。",
+  "de": "Heute Nacht feiert das Haus eine Party.",
+  "fr": "La Maison fait la fête ce soir.",
+  "es": "Esta noche la Casa da una fiesta.",
+  "ko": "오늘 밤 하우스에서 파티가 열려."
+ },
+ "Halfway there. A little gift for you.": {
+  "zh": "已经过半了。送你一点小礼物。",
+  "ja": "もう半分。ちょっとしたプレゼントよ。",
+  "de": "Halb geschafft. Ein kleines Geschenk für dich.",
+  "fr": "À mi-chemin. Un petit cadeau pour toi.",
+  "es": "Vas por la mitad. Un regalito para ti.",
+  "ko": "벌써 절반이야. 작은 선물이야."
+ },
+ "Look, a reward. You earned it.": {
+  "zh": "看，有奖励。这是你挣来的。",
+  "ja": "ほら、ご褒美。あなたが勝ち取ったのよ。",
+  "de": "Schau, eine Belohnung. Die hast du dir verdient.",
+  "fr": "Regarde, une récompense. Tu l'as méritée.",
+  "es": "Mira, una recompensa. Te la has ganado.",
+  "ko": "봐, 보상이야. 네가 얻어 낸 거야."
+ },
+ "That's a milestone. I'm proud of you.": {
+  "zh": "这是个里程碑。我为你骄傲。",
+  "ja": "大事な節目ね。誇らしいわ。",
+  "de": "Das ist ein Meilenstein. Ich bin stolz auf dich.",
+  "fr": "C'est une étape. Je suis fière de toi.",
+  "es": "Eso es un hito. Estoy orgullosa de ti.",
+  "ko": "중요한 고비를 넘었어. 네가 자랑스러워."
+ },
+ "Here, take these. You'll need them.": {
+  "zh": "来，拿着这些。你会用得上。",
+  "ja": "はい、これ持ってて。きっと役に立つわ。",
+  "de": "Hier, nimm die. Du wirst sie brauchen.",
+  "fr": "Tiens, prends ça. Tu en auras besoin.",
+  "es": "Toma, llévate esto. Lo vas a necesitar.",
+  "ko": "자, 이거 받아. 필요할 거야."
+ },
+ "Keep this pace. The next scene is close.": {
+  "zh": "保持这个节奏，下一个场景就快到了。",
+  "ja": "この調子で。次のシーンはすぐそこよ。",
+  "de": "Bleib in dem Tempo. Die nächste Szene ist nah.",
+  "fr": "Garde ce rythme. La prochaine scène est proche.",
+  "es": "Sigue a este ritmo. La próxima escena está cerca.",
+  "ko": "이 속도 그대로. 다음 장면이 코앞이야."
+ },
+ "Your streak ended. We'll start a new one.": {
+  "zh": "连续登录断了。我们重新开始吧。",
+  "ja": "連続記録が途切れちゃった。また新しく始めましょ。",
+  "de": "Deine Serie ist gerissen. Wir fangen eine neue an.",
+  "fr": "Ta série s'est arrêtée. On en commence une nouvelle.",
+  "es": "Tu racha se cortó. Empezaremos otra.",
+  "ko": "연속 기록이 끊겼어. 새로 시작하자."
+ },
+ "Missed a day? That's all right.": {
+  "zh": "错过了一天？没关系。",
+  "ja": "一日空いちゃった？大丈夫よ。",
+  "de": "Einen Tag verpasst? Das ist in Ordnung.",
+  "fr": "Tu as manqué un jour ? Ce n'est pas grave.",
+  "es": "¿Te saltaste un día? No pasa nada.",
+  "ko": "하루 빠졌어? 괜찮아."
+ },
+ "No streak today. I still saved your seat.": {
+  "zh": "今天没有连续记录了。不过你的位子我还留着。",
+  "ja": "今日は連続記録なし。でも、あなたの席は取っておいたわ。",
+  "de": "Heute keine Serie. Deinen Platz hab ich trotzdem freigehalten.",
+  "fr": "Pas de série aujourd'hui. Je t'ai quand même gardé ta place.",
+  "es": "Hoy no hay racha. Aun así te guardé el sitio.",
+  "ko": "오늘은 연속 기록이 없네. 그래도 네 자리는 맡아 뒀어."
+ },
+ "Don't worry. Streaks come back.": {
+  "zh": "别担心，连续记录还会再来的。",
+  "ja": "心配しないで。記録はまた伸ばせるわ。",
+  "de": "Keine Sorge. Serien kommen wieder.",
+  "fr": "Ne t'en fais pas. Les séries, ça revient.",
+  "es": "No te preocupes. Las rachas vuelven.",
+  "ko": "걱정 마. 연속 기록은 다시 쌓으면 돼."
+ },
+ "You're back on a roll.": {
+  "zh": "你又顺起来了。",
+  "ja": "また波に乗ってきたね。",
+  "de": "Du bist wieder in Fahrt.",
+  "fr": "Tu as repris le rythme.",
+  "es": "Vuelves a estar en racha.",
+  "ko": "다시 기세를 탔네."
+ },
+ "New streak, same you. I like it.": {
+  "zh": "新的连续记录，还是那个你。我喜欢。",
+  "ja": "新しい記録、変わらないあなた。好きよ。",
+  "de": "Neue Serie, ganz du. Gefällt mir.",
+  "fr": "Nouvelle série, toujours toi. J'aime ça.",
+  "es": "Racha nueva y sigues igual. Me gusta.",
+  "ko": "새 기록, 그대로인 너. 마음에 들어."
+ },
+ "Two days running. Keep coming back.": {
+  "zh": "连续两天了。常来哦。",
+  "ja": "二日続けてね。また来てね。",
+  "de": "Zwei Tage am Stück. Komm weiter vorbei.",
+  "fr": "Deux jours de suite. Continue de revenir.",
+  "es": "Dos días seguidos. Sigue volviendo.",
+  "ko": "이틀 연속이야. 계속 와 줘."
+ },
+ "There's my favourite regular.": {
+  "zh": "我最喜欢的常客来了。",
+  "ja": "私のお気に入りの常連さん、いらっしゃい。",
+  "de": "Da ist ja mein Lieblingsstammgast.",
+  "fr": "Te voilà, mon habitué préféré.",
+  "es": "Ahí está mi cliente favorito.",
+  "ko": "내가 제일 좋아하는 단골이 왔네."
+ },
+ "Hard mode. No mercy this time.": {
+  "zh": "困难模式。这次可不手下留情。",
+  "ja": "ハードモード。今度は手加減なしよ。",
+  "de": "Schwerer Modus. Diesmal keine Gnade.",
+  "fr": "Mode difficile. Pas de pitié cette fois.",
+  "es": "Modo difícil. Esta vez sin piedad.",
+  "ko": "하드 모드. 이번엔 봐주는 거 없어."
+ },
+ "Same board, fewer moves. Think.": {
+  "zh": "同样的棋盘，更少的步数。动动脑。",
+  "ja": "同じ盤面、少ない手数。よく考えて。",
+  "de": "Gleiches Brett, weniger Züge. Denk nach.",
+  "fr": "Même plateau, moins de coups. Réfléchis.",
+  "es": "Mismo tablero, menos movimientos. Piensa.",
+  "ko": "같은 보드, 더 적은 수. 잘 생각해."
+ },
+ "Show me you really know this one.": {
+  "zh": "让我看看你是不是真的吃透了这一盘。",
+  "ja": "この盤面、本当にわかってるって見せて。",
+  "de": "Zeig mir, dass du das hier wirklich kannst.",
+  "fr": "Montre-moi que tu le connais vraiment.",
+  "es": "Demuéstrame que de verdad te lo sabes.",
+  "ko": "이 보드, 정말 잘 안다는 걸 보여 줘."
+ },
+ "Hard mode suits you.": {
+  "zh": "困难模式很适合你。",
+  "ja": "ハードモード、似合ってるわ。",
+  "de": "Der schwere Modus steht dir.",
+  "fr": "Le mode difficile te va bien.",
+  "es": "El modo difícil te sienta bien.",
+  "ko": "하드 모드가 잘 어울려."
+ },
+ "Tight budget. Every fold counts.": {
+  "zh": "步数很紧。每一折都算数。",
+  "ja": "手数はぎりぎり。一折り一折りが勝負よ。",
+  "de": "Knappes Budget. Jede Falte zählt.",
+  "fr": "Budget serré. Chaque pli compte.",
+  "es": "Movimientos justos. Cada pliegue cuenta.",
+  "ko": "수가 빠듯해. 한 번 한 번이 중요해."
+ },
+ "Someone new moved into the House.": {
+  "zh": "有新人搬进房子了。",
+  "ja": "館に新しい人が越してきたわ。",
+  "de": "Jemand Neues ist ins Haus gezogen.",
+  "fr": "Quelqu'un de nouveau s'est installé à la Maison.",
+  "es": "Alguien nuevo se ha mudado a la Casa.",
+  "ko": "하우스에 새로운 사람이 이사 왔어."
+ },
+ "A new face tonight. Go say hello.": {
+  "zh": "今晚有张新面孔。去打个招呼吧。",
+  "ja": "今夜は新しい顔ぶれ。挨拶してきて。",
+  "de": "Ein neues Gesicht heute Nacht. Sag ruhig Hallo.",
+  "fr": "Un nouveau visage ce soir. Va lui dire bonjour.",
+  "es": "Una cara nueva esta noche. Ve a saludar.",
+  "ko": "오늘 밤 새 얼굴이 왔어. 가서 인사해."
+ },
+ "We have a new guest. Be nice.": {
+  "zh": "我们来了位新客人。要对她好一点。",
+  "ja": "新しいお客さまよ。優しくしてあげて。",
+  "de": "Wir haben einen neuen Gast. Sei nett.",
+  "fr": "Nous avons une nouvelle invitée. Sois sympa.",
+  "es": "Tenemos una invitada nueva. Sé amable.",
+  "ko": "새 손님이 왔어. 잘해 줘."
+ },
+ "The House just got a little bigger.": {
+  "zh": "房子又变大了一点。",
+  "ja": "館がちょっと広くなったわ。",
+  "de": "Das Haus ist gerade ein bisschen größer geworden.",
+  "fr": "La Maison vient de s'agrandir un peu.",
+  "es": "La Casa acaba de crecer un poco.",
+  "ko": "하우스가 조금 더 넓어졌어."
+ },
+ "Out of moves. Try again?": {
+  "zh": "步数用完了。再试一次？",
+  "ja": "手数切れ。もう一回？",
+  "de": "Keine Züge mehr. Noch mal?",
+  "fr": "Plus de coups. On réessaie ?",
+  "es": "Sin movimientos. ¿Otra vez?",
+  "ko": "수가 다 떨어졌어. 다시 해 볼래?"
+ },
+ "So close. One more go.": {
+  "zh": "就差一点。再来一局。",
+  "ja": "惜しい。もう一回。",
+  "de": "So knapp. Noch ein Versuch.",
+  "fr": "Si près du but. Encore une fois.",
+  "es": "Casi. Una vez más.",
+  "ko": "아깝다. 한 번만 더."
+ },
+ "That one got away. Again?": {
+  "zh": "这盘溜走了。再来？",
+  "ja": "逃しちゃったね。もう一度？",
+  "de": "Das ist dir entwischt. Nochmal?",
+  "fr": "Celui-là t'a échappé. On recommence ?",
+  "es": "Ese se te escapó. ¿Lo repetimos?",
+  "ko": "이번 판은 놓쳤네. 다시?"
+ },
+ "It happens. Shake it off.": {
+  "zh": "常有的事。别放在心上。",
+  "ja": "よくあることよ。気にしないで。",
+  "de": "Kann passieren. Abhaken.",
+  "fr": "Ça arrive. Oublie ça.",
+  "es": "Pasa. Olvídalo.",
+  "ko": "그럴 수도 있지. 털어 버려."
+ },
+ "A new chapter. Up we go.": {
+  "zh": "新的一章。我们往上走。",
+  "ja": "新しい章。さあ、上へ。",
+  "de": "Ein neues Kapitel. Nach oben.",
+  "fr": "Un nouveau chapitre. On monte.",
+  "es": "Un capítulo nuevo. Arriba.",
+  "ko": "새로운 챕터야. 올라가자."
+ },
+ "New floor, new faces.": {
+  "zh": "新的楼层，新的面孔。",
+  "ja": "新しい階、新しい顔ぶれ。",
+  "de": "Neue Etage, neue Gesichter.",
+  "fr": "Nouvel étage, nouveaux visages.",
+  "es": "Nuevo piso, caras nuevas.",
+  "ko": "새로운 층, 새로운 얼굴들."
+ },
+ "Welcome to the next chapter.": {
+  "zh": "欢迎来到下一章。",
+  "ja": "次の章へようこそ。",
+  "de": "Willkommen im nächsten Kapitel.",
+  "fr": "Bienvenue dans le chapitre suivant.",
+  "es": "Te doy la bienvenida al siguiente capítulo.",
+  "ko": "다음 챕터에 온 걸 환영해."
+ },
+ "Look how far you've come.": {
+  "zh": "看看你已经走了多远。",
+  "ja": "ここまで来たのね。",
+  "de": "Schau, wie weit du gekommen bist.",
+  "fr": "Regarde le chemin parcouru.",
+  "es": "Mira todo lo que has avanzado.",
+  "ko": "네가 얼마나 멀리 왔는지 봐."
  }
 }

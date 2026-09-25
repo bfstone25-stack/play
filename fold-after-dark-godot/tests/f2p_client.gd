@@ -117,6 +117,8 @@ func run() -> void:
 		if not opened:
 			return
 		await sleep(1.4)                     # the server refuses an impossibly fast solve
+		if lv == 4:
+			I18n.set_lang("ja")              # the tier's letter must come in the player's language
 		for dir in sols[str(lv)]["dirs"]:
 			Fold.move(int(dir[0]), int(dir[1]))
 			await sleep(0.25)
@@ -128,6 +130,16 @@ func run() -> void:
 	check("tier 1's scene is unlocked on the server", F2P.server_unlocked(first_scene))
 	var unlock_btn: Button = await wait_button("Unlock")
 	check("the trophy card offers the scene", unlock_btn != null)
+	# the story spine: tier 1 opens the first fold of Coco's crane, in the current language
+	var got_letter := await until(func(): return game.find_child("LetterText", true, false) != null, 10.0)
+	var lt := game.find_child("LetterText", true, false) as Label
+	var want_ja := I18n.letter("letter_coco_1")
+	check("the trophy card carries tier 1's fold of Coco's crane, in ja", got_letter and want_ja != ""
+		and lt.text == want_ja and want_ja != _letter_en("letter_coco_1"), lt.text if lt else "none")
+	var lh := game.find_child("LetterHead", true, false) as Label
+	check("its head names the crane and the fold (1 of 20)", lh != null and "Coco" in lh.text and "1 / 20" in lh.text,
+		lh.text if lh else "none")
+	I18n.set_lang("en")
 	if unlock_btn:
 		Unlock.clear(first_scene)
 		unlock_btn.pressed.emit()
@@ -222,16 +234,48 @@ func run() -> void:
 		check("a results cheer is in %s" % lang, I18n.t("cheer_3") != "Perfect!" and leaks_in(I18n.t("cheer_3"), lang).is_empty())
 		check("a server refusal is in %s" % lang, leaks_in(I18n.reason("over budget (31 > 30)"), lang).is_empty()
 			and I18n.reason("over budget (31 > 30)") != I18n.reason("zzz unknown"), I18n.reason("over budget (31 > 30)"))
+		# the Cranes panel: the one opened fold, in this language; no unopened fold's text anywhere
+		var cl := map.find_child("CranesLast", true, false) as Label
+		check("the Cranes panel shows the last opened fold in %s" % lang, cl != null
+			and cl.text == I18n.letter("letter_coco_1") and leaks_in(cl.text, lang).is_empty(), cl.text if cl else "none")
+		var shown := _texts(map)
+		var unopened := []
+		for id in _letter_ids():
+			if id != "letter_coco_1" and not id.begins_with("hook_") and I18n.letter(id) in shown:
+				unopened.append(id)
+		check("no unopened fold's text is on the map in %s" % lang, unopened.is_empty(), ", ".join(unopened))
 		check("Coco's subtitle is in %s" % lang, Coco.subtitle("Perfect. I'm impressed.") != "Perfect. I'm impressed."
 			and leaks_in(Coco.subtitle("Perfect. I'm impressed."), lang).is_empty())
 	I18n.set_lang("en")
 	map.queue_free()
 
 
+func _texts(root: Node) -> Array:
+	var out := []
+	for n in root.find_children("*", "Control", true, false):
+		if (n is Label or n is Button) and (n as CanvasItem).is_visible_in_tree():
+			out.append(str(n.text))
+	return out
+
+
+func _letter_ids() -> Array:
+	var d = JSON.parse_string(FileAccess.get_file_as_string("res://data/letters.json"))
+	var out := []
+	for k in (d as Dictionary).keys():
+		if not str(k).begins_with("_"):
+			out.append(str(k))
+	return out
+
+
+func _letter_en(id: String) -> String:
+	var d = JSON.parse_string(FileAccess.get_file_as_string("res://data/letters.json"))
+	return str(d[id]["en"])
+
+
 ## Words of three or more Latin letters in every Label/Button under `root`, minus names
 ## (the cast, the platform, the wordmark, the player's own nickname on the boards) and
 ## the clock's UTC.
-const NAMES := ["coco", "june", "iris", "sable", "vesna", "wren", "nutaku", "utc", "plicata", "blazecore"]
+const NAMES := ["coco", "june", "iris", "sable", "vesna", "wren", "rosa", "hana", "nadia", "freya", "amara", "lucia", "nutaku", "utc", "plicata", "blazecore"]
 
 
 ## What of `root`'s text is still English in `lang`. For ja / zh / ko: any Latin word (the

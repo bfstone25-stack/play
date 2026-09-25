@@ -94,6 +94,47 @@ const WELL_LIP := Color("FF9AC4")
 const WALL_FACE := Color("D9B8C9")     # the block that never moves: pale rose, raised
 const WALL_EDGE := Color("0B0409")
 
+## The update packs' board looks (a level's "look", ops/nutaku/fold_f2p/gen_levels.py PACKS):
+## one bright, saturated key colour per pack. It lights the room plate and the tray's lip,
+## and tints the room wash and the tray itself; the tray keeps TABLE's depth so every tile
+## still clears 3:1 on it (asserted in tests/run_tests.gd `_looks`). Memory
+## `bright-is-what-sells`: key colours at value >= 0.85 and saturation >= 0.45.
+const LOOKS := {
+	"greenhouse": Color("3DDC84"),     # leaf green
+	"patisserie": Color("FF7EB6"),     # strawberry icing
+	"rooftop": Color("29C5F6"),        # pool water in full sun
+	"frost": Color("8AD8FF"),          # ice blue
+	"observatory": Color("A78BFF"),    # violet dusk
+	"music": Color("FFB547"),          # brass
+}
+
+
+static func has_look(look: String) -> bool:
+	return LOOKS.has(look)
+
+
+## The tray under a pack's boards: TABLE's darkness, the pack's hue.
+static func look_tray(look: String) -> Color:
+	if not LOOKS.has(look):
+		return TABLE
+	var k: Color = LOOKS[look]
+	# 0.85 of the house tray's value: a green at TABLE.v is lighter than wine (2.90:1 under
+	# the 3:1 tile floor, caught by run_tests `_looks`)
+	return Color.from_hsv(k.h, clampf(k.s * 0.85, 0.45, 0.8), TABLE.v * 0.85)
+
+
+## The room wash over bg_far under a pack's boards (GROUND's depth, the pack's hue).
+static func look_wash(look: String) -> Color:
+	if not LOOKS.has(look):
+		return GROUND
+	var k: Color = LOOKS[look]
+	return Color.from_hsv(k.h, 0.7, 0.16)
+
+
+## The room plate's tint and the tray's lip: the key colour itself, bright.
+static func look_key(look: String) -> Color:
+	return LOOKS.get(look, TABLE_RAIL)
+
 ## The heat ramp. Light enough for dark ink on every step (worst ink/tile is well over
 ## 4.5), and it climbs from cool violet through magenta and coral into gold and finally
 ## bone-white at 256 — the tile you are folding toward is the brightest thing on the tray.

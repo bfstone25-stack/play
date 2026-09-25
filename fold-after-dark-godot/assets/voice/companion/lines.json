@@ -240,5 +240,183 @@
    "file": "streak_4.ogg",
    "text": "Streak's still alive. Keep it going."
   }
+ ],
+ "ice_intro": [
+  {
+   "file": "ice_intro_0.ogg",
+   "text": "See the ice? That tile won't budge."
+  },
+  {
+   "file": "ice_intro_1.ogg",
+   "text": "Frozen tiles stay put. Bring them a match."
+  },
+  {
+   "file": "ice_intro_2.ogg",
+   "text": "Slide its twin in and the ice breaks."
+  },
+  {
+   "file": "ice_intro_3.ogg",
+   "text": "Fold the matching tile into the ice."
+  },
+  {
+   "file": "ice_intro_4.ogg",
+   "text": "Careful. Ice blocks the way."
+  }
+ ],
+ "event_start": [
+  {
+   "file": "event_start_0.ogg",
+   "text": "A new event just opened. Come and see."
+  },
+  {
+   "file": "event_start_1.ogg",
+   "text": "Someone special is waiting for you this week."
+  },
+  {
+   "file": "event_start_2.ogg",
+   "text": "The event boards are open. Shall we?"
+  },
+  {
+   "file": "event_start_3.ogg",
+   "text": "New week, new guest. Let's go."
+  },
+  {
+   "file": "event_start_4.ogg",
+   "text": "The House is throwing a party tonight."
+  }
+ ],
+ "milestone": [
+  {
+   "file": "milestone_0.ogg",
+   "text": "Halfway there. A little gift for you."
+  },
+  {
+   "file": "milestone_1.ogg",
+   "text": "Look, a reward. You earned it."
+  },
+  {
+   "file": "milestone_2.ogg",
+   "text": "That's a milestone. I'm proud of you."
+  },
+  {
+   "file": "milestone_3.ogg",
+   "text": "Here, take these. You'll need them."
+  },
+  {
+   "file": "milestone_4.ogg",
+   "text": "Keep this pace. The next scene is close."
+  }
+ ],
+ "streak_lost": [
+  {
+   "file": "streak_lost_0.ogg",
+   "text": "Your streak ended. We'll start a new one."
+  },
+  {
+   "file": "streak_lost_1.ogg",
+   "text": "Missed a day? That's all right."
+  },
+  {
+   "file": "streak_lost_2.ogg",
+   "text": "No streak today. I still saved your seat."
+  },
+  {
+   "file": "streak_lost_3.ogg",
+   "text": "Don't worry. Streaks come back."
+  }
+ ],
+ "streak_back": [
+  {
+   "file": "streak_back_0.ogg",
+   "text": "You're back on a roll."
+  },
+  {
+   "file": "streak_back_1.ogg",
+   "text": "New streak, same you. I like it."
+  },
+  {
+   "file": "streak_back_2.ogg",
+   "text": "Two days running. Keep coming back."
+  },
+  {
+   "file": "streak_back_3.ogg",
+   "text": "There's my favourite regular."
+  }
+ ],
+ "hard": [
+  {
+   "file": "hard_0.ogg",
+   "text": "Hard mode. No mercy this time."
+  },
+  {
+   "file": "hard_1.ogg",
+   "text": "Same board, fewer moves. Think."
+  },
+  {
+   "file": "hard_2.ogg",
+   "text": "Show me you really know this one."
+  },
+  {
+   "file": "hard_3.ogg",
+   "text": "Hard mode suits you."
+  },
+  {
+   "file": "hard_4.ogg",
+   "text": "Tight budget. Every fold counts."
+  }
+ ],
+ "guest": [
+  {
+   "file": "guest_0.ogg",
+   "text": "Someone new moved into the House."
+  },
+  {
+   "file": "guest_1.ogg",
+   "text": "A new face tonight. Go say hello."
+  },
+  {
+   "file": "guest_2.ogg",
+   "text": "We have a new guest. Be nice."
+  },
+  {
+   "file": "guest_3.ogg",
+   "text": "The House just got a little bigger."
+  }
+ ],
+ "fail": [
+  {
+   "file": "fail_0.ogg",
+   "text": "Out of moves. Try again?"
+  },
+  {
+   "file": "fail_1.ogg",
+   "text": "So close. One more go."
+  },
+  {
+   "file": "fail_2.ogg",
+   "text": "That one got away. Again?"
+  },
+  {
+   "file": "fail_3.ogg",
+   "text": "It happens. Shake it off."
+  }
+ ],
+ "chapter": [
+  {
+   "file": "chapter_0.ogg",
+   "text": "A new chapter. Up we go."
+  },
+  {
+   "file": "chapter_1.ogg",
+   "text": "New floor, new faces."
+  },
+  {
+   "file": "chapter_2.ogg",
+   "text": "Welcome to the next chapter."
+  },
+  {
+   "file": "chapter_3.ogg",
+   "text": "Look how far you've come."
+  }
  ]
 }

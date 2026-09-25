@@ -174,7 +174,7 @@ static func side(rebuild: Callable, open_shop: Callable) -> Array:
 	# the weekly event: one woman featured, a seven-board bonus track, her keepsake
 	var ev: Dictionary = F2P.event
 	if not ev.is_empty():
-		var ep := _panel(I18n.f("event_panel", I18n.event_title(ev)))
+		var ep := _panel(I18n.f("event_limited" if bool(ev.get("limited", false)) else "event_panel", I18n.event_title(ev)))
 		ep.name = "WeeklyEvent"
 		if I18n.event_blurb(ev) != "":
 			var bl := StudioTheme.serif_label(I18n.event_blurb(ev), 13, Palette.TEXT)
@@ -196,6 +196,14 @@ static func side(rebuild: Callable, open_shop: Callable) -> Array:
 		eb.pressed.connect(func(): F2P.event_requested.emit())
 		ep.add_child(eb)
 		out.append(ep.get_meta("panel"))
+
+	# the crane letters: each woman's crane, how far it is open, the last fold read
+	if not F2P.cranes().is_empty():
+		out.append(cranes_panel())
+
+	# hard mode: the finished chapters' boards turned a quarter turn (F2P.fetch_hard ran first)
+	if not F2P.hard.is_empty():
+		out.append(hard_panel())
 
 	# candles + shop
 	var c := _panel(I18n.t("candles_title"))
@@ -278,6 +286,104 @@ static func side(rebuild: Callable, open_shop: Callable) -> Array:
 	out.append(lb.get_meta("panel"))
 	_fill_board(lb, wait)
 	return out
+
+
+## The Cranes panel: every woman's crane and how many of its folds are open (a tap rereads
+## them), and the last fold opened. Coco's own crane reads "Not yet" until its last fold.
+static func cranes_panel() -> Control:
+	var cp := _panel(I18n.t("cranes_title"))
+	cp.name = "Cranes"
+	for c in F2P.cranes():
+		var who := str(c["who"])
+		var n := int(c.get("opened", 0))
+		var of := int(c.get("of", 0))
+		var b := Button.new()
+		b.name = "Crane_" + who
+		b.text = "%s  %d/%d" % [I18n.cast(who), n, of]
+		if who == "coco" and n < of:
+			b.text += "  ·  " + I18n.t("cranes_not_yet")
+		b.theme_type_variation = "Ghost"
+		b.disabled = n == 0
+		b.pressed.connect(func(): F2P.crane_requested.emit(who))
+		cp.add_child(b)
+	var last := F2P.last_letter()
+	if last.is_empty():
+		var none := StudioTheme.mono_label(I18n.t("cranes_none"), 12, Palette.MUTED)
+		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		cp.add_child(none)
+	else:
+		cp.add_child(StudioTheme.mono_label(I18n.t("cranes_last") + "  ·  " + I18n.t("crane_fold") % [I18n.cast(str(last["who"])),
+			int(last["fold"]), int(last["of"])], 12, Palette.GOLD))
+		var txt := StudioTheme.serif_label(I18n.letter(str(last["id"])), 13, Palette.TEXT)
+		txt.name = "CranesLast"
+		txt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		cp.add_child(txt)
+		var tap := StudioTheme.mono_label(I18n.t("cranes_tap"), 11, Palette.MUTED)
+		tap.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		cp.add_child(tap)
+	return cp.get_meta("panel")
+
+
+## Reread `who`'s opened folds on `overlay`, one at a time (‹ ›), starting at the last.
+static func crane_reader(overlay: Control, who: String, at: int, on_close: Callable) -> void:
+	var folds := F2P.opened_folds(who)
+	if folds.is_empty():
+		on_close.call()
+		return
+	var i := clampi(at if at >= 0 else folds.size() - 1, 0, folds.size() - 1)
+	var lt: Dictionary = folds[i]
+	var lines := [I18n.letter(str(lt["id"]))]
+	if lt.has("hook"):
+		lines.append(I18n.letter(str(lt["hook"])))
+	var prev := func(_s: Label): crane_reader(overlay, who, i - 1, on_close)
+	var shut := func(_s: Label): on_close.call()
+	var nxt := func(_s: Label): crane_reader(overlay, who, i + 1, on_close)
+	var buttons := []
+	if i > 0:
+		buttons.append(["‹", "Ghost", prev, "Prev"])
+	buttons.append([I18n.t("close"), "Amber", shut, "Close"])
+	if i < folds.size() - 1:
+		buttons.append(["›", "Ghost", nxt, "Next"])
+	var c := card(overlay, I18n.t("crane_fold") % [I18n.cast(who), int(lt["fold"]), int(lt["of"])], lines, buttons)
+	c.name = "CraneReader"
+
+
+## Hard mode on the map: each finished chapter's hard progress, the reward rule, and Play
+## for the next uncleared hard board of the first open chapter. Locked text until a
+## chapter is done.
+static func hard_panel() -> Control:
+	var hp := _panel(I18n.t("hard_title"))
+	hp.name = "HardMode"
+	var rule := StudioTheme.serif_label(I18n.t("hard_rule"), 13, Palette.TEXT)
+	rule.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hp.add_child(rule)
+	var open := F2P.hard_open_chapters()
+	if open.is_empty():
+		var lk := StudioTheme.mono_label(I18n.t("hard_locked"), 12, Palette.MUTED)
+		lk.name = "HardLocked"
+		lk.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		hp.add_child(lk)
+		return hp.get_meta("panel")
+	for c in open:
+		var done := int(c.get("cleared", 0)) >= int(c.get("total", 0))
+		var row := StudioTheme.mono_label(I18n.t("hard_row") % [I18n.chapter(str(c["id"])), int(c.get("cleared", 0)),
+			int(c.get("total", 0))], 13, Palette.SUCCESS if done else Palette.GOLD)
+		row.name = "HardRow_" + str(c["id"])
+		row.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		hp.add_child(row)
+	hp.add_child(StudioTheme.mono_label(I18n.t("hard_every") % [int(F2P.hard.get("per_n", 5)),
+		_reward_text(F2P.hard.get("per_n_reward", {}))], 12, Palette.MUTED))
+	var nxt := F2P.hard_next()
+	if nxt < 0:
+		hp.add_child(StudioTheme.mono_label(I18n.t("hard_all"), 12, Palette.SUCCESS))
+	else:
+		var hb := Button.new()
+		hb.name = "PlayHard"
+		hb.text = I18n.f("hard_play", nxt + 1)
+		hb.theme_type_variation = "Primary"
+		hb.pressed.connect(func(): F2P.hard_requested.emit())
+		hp.add_child(hb)
+	return hp.get_meta("panel")
 
 
 static func _fill_daily_board(v: VBoxContainer) -> void:

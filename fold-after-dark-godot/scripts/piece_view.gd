@@ -124,6 +124,30 @@ static func repaint(holder: Node2D, v: int, px: float, room: float = 1.0, lit: b
 		_add_light(holder, v, px)
 
 
+## Ice (Fold.ice_value): the same piece texture laid over the face again, frost-blue and
+## half clear, a hair larger, so a frozen piece reads as "under ice" and not as a new
+## colour of piece. It comes off with a burst when a merge thaws it (scenes/game.gd).
+const ICE_TINT := Color(0.72, 0.9, 1.0, 0.62)
+
+
+static func set_ice(holder: Node2D, on: bool, px: float, tilt: float) -> void:
+	var have := holder.get_node_or_null("Ice")
+	if not on:
+		if have != null:
+			have.queue_free()
+		return
+	if have != null:
+		return
+	var tex := Art.surface_stand_in("piece")
+	var ice := Sprite2D.new()
+	ice.name = "Ice"
+	ice.texture = tex
+	ice.scale = Vector2(px, px * tilt) / Vector2(tex.get_width(), tex.get_height()) * 1.08
+	ice.modulate = ICE_TINT
+	ice.z_index = 3
+	holder.add_child(ice)
+
+
 static func _add_light(holder: Node2D, v: int, px: float) -> void:
 	var glow := Palette.tile_glow(v)
 	if glow <= 0.2:

@@ -19,6 +19,7 @@ the three places FOLD's Chinese actually comes from —
                        244 zh and 166 ja characters of the F2P layer drew as empty boxes;
                        ops/nutaku/fold_f2p/check_i18n.py now fails on that)
   assets/voice/companion/subtitles.json   Coco's subtitles
+  data/letters.json   the crane letters, all seven languages (2026-09-24)
 
 — plus the punctuation and the two glyphs the title screen draws by hand.
 
@@ -41,7 +42,7 @@ OUT = HERE / "assets/fonts/NotoSansCJK-subset.otf"
 
 chars: set[str] = set()
 
-for name in ("levels.json", "coach_tips.json", "steps.json", "i18n_f2p.json"):
+for name in ("levels.json", "coach_tips.json", "steps.json", "i18n_f2p.json", "letters.json"):
     chars |= set((HERE / "data" / name).read_text(encoding="utf-8"))
 chars |= set((HERE / "assets/voice/companion/subtitles.json").read_text(encoding="utf-8"))
 

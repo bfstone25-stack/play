@@ -2276,5 +2276,1094 @@
   "fr": "Refusé par le serveur.",
   "es": "El servidor lo rechazó.",
   "ko": "서버가 거부했어요."
+ },
+ "chapter_morning": {
+  "en": "The Morning After",
+  "zh": "翌晨",
+  "ja": "翌朝",
+  "de": "Der Morgen danach",
+  "fr": "Le lendemain matin",
+  "es": "La mañana siguiente",
+  "ko": "다음 날 아침"
+ },
+ "chapter_morning_blurb": {
+  "en": "The lanterns are out and the House is awake. Each of them keeps one paper crane for you.",
+  "zh": "灯笼熄了，整座房子醒了过来。她们每人都为你留着一只纸鹤。",
+  "ja": "ランタンが消え、館が目を覚ます。彼女たちはそれぞれ、あなたのための折り鶴を一羽ずつ持っている。",
+  "de": "Die Laternen sind aus, und das Haus ist wach. Jede von ihnen hebt einen Papierkranich für dich auf.",
+  "fr": "Les lanternes sont éteintes et la Maison s'éveille. Chacune garde une grue en papier pour toi.",
+  "es": "Los farolillos se apagan y la Casa despierta. Cada una guarda una grulla de papel para ti.",
+  "ko": "등불이 꺼지고 하우스가 깨어나요. 그녀들은 저마다 당신을 위한 종이학 한 마리를 간직하고 있어요."
+ },
+ "chapter_greenhouse": {
+  "en": "The Greenhouse",
+  "zh": "温室",
+  "ja": "温室",
+  "de": "Das Gewächshaus",
+  "fr": "La Serre",
+  "es": "El Invernadero",
+  "ko": "온실"
+ },
+ "chapter_greenhouse_blurb": {
+  "en": "Rosa moves in with a hundred plants and no patience for wilting.",
+  "zh": "Rosa 带着上百盆植物搬了进来，容不得半片叶子蔫掉。",
+  "ja": "Rosa が百鉢の植物と一緒に越してきた。しおれた葉は一枚も許さない。",
+  "de": "Rosa zieht mit hundert Pflanzen ein und duldet kein welkes Blatt.",
+  "fr": "Rosa emménage avec cent plantes et aucune patience pour les feuilles fanées.",
+  "es": "Rosa se muda con cien plantas y ninguna paciencia para las hojas mustias.",
+  "ko": "로사가 화분 백 개를 들고 이사 왔어요. 시든 잎은 하나도 못 참아요."
+ },
+ "chapter_patisserie": {
+  "en": "The Patisserie",
+  "zh": "甜品房",
+  "ja": "パティスリー",
+  "de": "Die Konditorei",
+  "fr": "La Pâtisserie",
+  "es": "La Pastelería",
+  "ko": "파티스리"
+ },
+ "chapter_patisserie_blurb": {
+  "en": "Hana bakes at midnight and needs a taster.",
+  "zh": "Hana 半夜烤蛋糕，正缺一个试吃的人。",
+  "ja": "Hana は真夜中にお菓子を焼く。味見役が欲しいみたい。",
+  "de": "Hana backt um Mitternacht und braucht jemanden zum Probieren.",
+  "fr": "Hana pâtisse à minuit et cherche quelqu'un pour goûter.",
+  "es": "Hana hornea a medianoche y necesita a alguien que pruebe.",
+  "ko": "하나는 한밤중에 빵을 굽고, 맛을 봐 줄 사람이 필요해요."
+ },
+ "chapter_rooftop": {
+  "en": "The Rooftop Pool",
+  "zh": "屋顶泳池",
+  "ja": "屋上プール",
+  "de": "Der Pool auf dem Dach",
+  "fr": "La Piscine sur le toit",
+  "es": "La Piscina de la azotea",
+  "ko": "옥상 수영장"
+ },
+ "chapter_rooftop_blurb": {
+  "en": "Nadia swims laps at noon and dares you to keep up.",
+  "zh": "Nadia 正午来回游泳，还挑衅你跟上她。",
+  "ja": "Nadia は真昼に何往復も泳いで、ついて来られるかと挑発する。",
+  "de": "Nadia zieht mittags ihre Bahnen und fordert dich heraus, mitzuhalten.",
+  "fr": "Nadia enchaîne les longueurs à midi et te met au défi de suivre.",
+  "es": "Nadia nada largos a mediodía y te reta a seguirle el ritmo.",
+  "ko": "나디아는 한낮에 수영하며 따라올 수 있냐고 도발해요."
+ },
+ "chapter_frost": {
+  "en": "The Winter Bath",
+  "zh": "雪中温泉",
+  "ja": "雪見の湯",
+  "de": "Das Winterbad",
+  "fr": "Le Bain d'hiver",
+  "es": "El Baño de invierno",
+  "ko": "겨울 온천"
+ },
+ "chapter_frost_blurb": {
+  "en": "Freya keeps the bath warm while the boards freeze over.",
+  "zh": "棋盘结了冰，Freya 替你守着一池温水。",
+  "ja": "盤面が凍りつくあいだも、Freya がお湯を温めていてくれる。",
+  "de": "Freya hält das Bad warm, während die Bretter zufrieren.",
+  "fr": "Freya garde le bain chaud pendant que les plateaux gèlent.",
+  "es": "Freya mantiene el baño caliente mientras los tableros se congelan.",
+  "ko": "보드가 얼어붙는 동안 프레야가 온천물을 따뜻하게 데워 둬요."
+ },
+ "chapter_observatory": {
+  "en": "The Observatory",
+  "zh": "观星台",
+  "ja": "天文台",
+  "de": "Die Sternwarte",
+  "fr": "L'Observatoire",
+  "es": "El Observatorio",
+  "ko": "천문대"
+ },
+ "chapter_observatory_blurb": {
+  "en": "Amara names a star for every board you fold.",
+  "zh": "你每折完一盘，Amara 就为一颗星星取一个名字。",
+  "ja": "あなたが盤面を一つ折るたび、Amara が星に名前をつける。",
+  "de": "Amara benennt einen Stern nach jedem Brett, das du faltest.",
+  "fr": "Amara baptise une étoile pour chaque plateau que tu plies.",
+  "es": "Amara bautiza una estrella por cada tablero que pliegas.",
+  "ko": "당신이 보드를 하나 접을 때마다 아마라가 별 하나에 이름을 붙여요."
+ },
+ "chapter_music": {
+  "en": "The Music Room",
+  "zh": "琴房",
+  "ja": "音楽室",
+  "de": "Das Musikzimmer",
+  "fr": "Le Salon de musique",
+  "es": "La Sala de música",
+  "ko": "음악실"
+ },
+ "chapter_music_blurb": {
+  "en": "Lucia plays for the House and asks you to turn the pages.",
+  "zh": "Lucia 为整座房子演奏，请你帮她翻乐谱。",
+  "ja": "Lucia は館のために演奏し、あなたに譜めくりを頼む。",
+  "de": "Lucia spielt für das Haus und bittet dich, die Seiten umzublättern.",
+  "fr": "Lucia joue pour la Maison et te demande de tourner les pages.",
+  "es": "Lucia toca para la Casa y te pide que le pases las páginas.",
+  "ko": "루치아가 하우스를 위해 연주하며 악보를 넘겨 달라고 해요."
+ },
+ "stage_morning": {
+  "en": "Morning",
+  "zh": "清晨",
+  "ja": "朝",
+  "de": "Morgen",
+  "fr": "Matin",
+  "es": "Mañana",
+  "ko": "아침"
+ },
+ "stage_keepsake": {
+  "en": "Keepsake",
+  "zh": "信物",
+  "ja": "宝物",
+  "de": "Andenken",
+  "fr": "Souvenir",
+  "es": "Recuerdo",
+  "ko": "정표"
+ },
+ "scene_june_a6": {
+  "en": "June · Morning",
+  "zh": "June · 清晨",
+  "ja": "June · 朝",
+  "de": "June · Morgen",
+  "fr": "June · Matin",
+  "es": "June · Mañana",
+  "ko": "준 · 아침"
+ },
+ "scene_sable_a6": {
+  "en": "Sable · Morning",
+  "zh": "Sable · 清晨",
+  "ja": "Sable · 朝",
+  "de": "Sable · Morgen",
+  "fr": "Sable · Matin",
+  "es": "Sable · Mañana",
+  "ko": "세이블 · 아침"
+ },
+ "scene_iris_a6": {
+  "en": "Iris · Morning",
+  "zh": "Iris · 清晨",
+  "ja": "Iris · 朝",
+  "de": "Iris · Morgen",
+  "fr": "Iris · Matin",
+  "es": "Iris · Mañana",
+  "ko": "아이리스 · 아침"
+ },
+ "scene_vesna_a6": {
+  "en": "Vesna · Morning",
+  "zh": "Vesna · 清晨",
+  "ja": "Vesna · 朝",
+  "de": "Vesna · Morgen",
+  "fr": "Vesna · Matin",
+  "es": "Vesna · Mañana",
+  "ko": "베스나 · 아침"
+ },
+ "scene_wren_a6": {
+  "en": "Wren · Morning",
+  "zh": "Wren · 清晨",
+  "ja": "Wren · 朝",
+  "de": "Wren · Morgen",
+  "fr": "Wren · Matin",
+  "es": "Wren · Mañana",
+  "ko": "렌 · 아침"
+ },
+ "scene_coco_a7": {
+  "en": "Coco · Keepsake",
+  "zh": "Coco · 信物",
+  "ja": "Coco · 宝物",
+  "de": "Coco · Andenken",
+  "fr": "Coco · Souvenir",
+  "es": "Coco · Recuerdo",
+  "ko": "코코 · 정표"
+ },
+ "scene_june_a7": {
+  "en": "June · Keepsake",
+  "zh": "June · 信物",
+  "ja": "June · 宝物",
+  "de": "June · Andenken",
+  "fr": "June · Souvenir",
+  "es": "June · Recuerdo",
+  "ko": "준 · 정표"
+ },
+ "scene_sable_a7": {
+  "en": "Sable · Keepsake",
+  "zh": "Sable · 信物",
+  "ja": "Sable · 宝物",
+  "de": "Sable · Andenken",
+  "fr": "Sable · Souvenir",
+  "es": "Sable · Recuerdo",
+  "ko": "세이블 · 정표"
+ },
+ "scene_iris_a7": {
+  "en": "Iris · Keepsake",
+  "zh": "Iris · 信物",
+  "ja": "Iris · 宝物",
+  "de": "Iris · Andenken",
+  "fr": "Iris · Souvenir",
+  "es": "Iris · Recuerdo",
+  "ko": "아이리스 · 정표"
+ },
+ "scene_vesna_a7": {
+  "en": "Vesna · Keepsake",
+  "zh": "Vesna · 信物",
+  "ja": "Vesna · 宝物",
+  "de": "Vesna · Andenken",
+  "fr": "Vesna · Souvenir",
+  "es": "Vesna · Recuerdo",
+  "ko": "베스나 · 정표"
+ },
+ "scene_wren_a7": {
+  "en": "Wren · Keepsake",
+  "zh": "Wren · 信物",
+  "ja": "Wren · 宝物",
+  "de": "Wren · Andenken",
+  "fr": "Wren · Souvenir",
+  "es": "Wren · Recuerdo",
+  "ko": "렌 · 정표"
+ },
+ "scene_rosa_a1": {
+  "en": "Rosa · Hello",
+  "zh": "Rosa · 初见",
+  "ja": "Rosa · はじめまして",
+  "de": "Rosa · Hallo",
+  "fr": "Rosa · Bonjour",
+  "es": "Rosa · Hola",
+  "ko": "로사 · 안녕"
+ },
+ "scene_rosa_a2": {
+  "en": "Rosa · Closer",
+  "zh": "Rosa · 靠近",
+  "ja": "Rosa · 近づく",
+  "de": "Rosa · Näher",
+  "fr": "Rosa · Plus près",
+  "es": "Rosa · Más cerca",
+  "ko": "로사 · 가까이"
+ },
+ "scene_rosa_a3": {
+  "en": "Rosa · Loosened",
+  "zh": "Rosa · 松开",
+  "ja": "Rosa · ほどける",
+  "de": "Rosa · Gelockert",
+  "fr": "Rosa · Dénouée",
+  "es": "Rosa · Desatada",
+  "ko": "로사 · 느슨하게"
+ },
+ "scene_rosa_a4": {
+  "en": "Rosa · Turned",
+  "zh": "Rosa · 转身",
+  "ja": "Rosa · 振り向く",
+  "de": "Rosa · Umgedreht",
+  "fr": "Rosa · Retournée",
+  "es": "Rosa · Girada",
+  "ko": "로사 · 돌아보며"
+ },
+ "scene_rosa_a5": {
+  "en": "Rosa · Trust",
+  "zh": "Rosa · 信任",
+  "ja": "Rosa · 信頼",
+  "de": "Rosa · Vertrauen",
+  "fr": "Rosa · Confiance",
+  "es": "Rosa · Confianza",
+  "ko": "로사 · 신뢰"
+ },
+ "scene_rosa_a6": {
+  "en": "Rosa · Morning",
+  "zh": "Rosa · 清晨",
+  "ja": "Rosa · 朝",
+  "de": "Rosa · Morgen",
+  "fr": "Rosa · Matin",
+  "es": "Rosa · Mañana",
+  "ko": "로사 · 아침"
+ },
+ "scene_hana_a1": {
+  "en": "Hana · Hello",
+  "zh": "Hana · 初见",
+  "ja": "Hana · はじめまして",
+  "de": "Hana · Hallo",
+  "fr": "Hana · Bonjour",
+  "es": "Hana · Hola",
+  "ko": "하나 · 안녕"
+ },
+ "scene_hana_a2": {
+  "en": "Hana · Closer",
+  "zh": "Hana · 靠近",
+  "ja": "Hana · 近づく",
+  "de": "Hana · Näher",
+  "fr": "Hana · Plus près",
+  "es": "Hana · Más cerca",
+  "ko": "하나 · 가까이"
+ },
+ "scene_hana_a3": {
+  "en": "Hana · Loosened",
+  "zh": "Hana · 松开",
+  "ja": "Hana · ほどける",
+  "de": "Hana · Gelockert",
+  "fr": "Hana · Dénouée",
+  "es": "Hana · Desatada",
+  "ko": "하나 · 느슨하게"
+ },
+ "scene_hana_a4": {
+  "en": "Hana · Turned",
+  "zh": "Hana · 转身",
+  "ja": "Hana · 振り向く",
+  "de": "Hana · Umgedreht",
+  "fr": "Hana · Retournée",
+  "es": "Hana · Girada",
+  "ko": "하나 · 돌아보며"
+ },
+ "scene_hana_a5": {
+  "en": "Hana · Trust",
+  "zh": "Hana · 信任",
+  "ja": "Hana · 信頼",
+  "de": "Hana · Vertrauen",
+  "fr": "Hana · Confiance",
+  "es": "Hana · Confianza",
+  "ko": "하나 · 신뢰"
+ },
+ "scene_hana_a6": {
+  "en": "Hana · Morning",
+  "zh": "Hana · 清晨",
+  "ja": "Hana · 朝",
+  "de": "Hana · Morgen",
+  "fr": "Hana · Matin",
+  "es": "Hana · Mañana",
+  "ko": "하나 · 아침"
+ },
+ "scene_nadia_a1": {
+  "en": "Nadia · Hello",
+  "zh": "Nadia · 初见",
+  "ja": "Nadia · はじめまして",
+  "de": "Nadia · Hallo",
+  "fr": "Nadia · Bonjour",
+  "es": "Nadia · Hola",
+  "ko": "나디아 · 안녕"
+ },
+ "scene_nadia_a2": {
+  "en": "Nadia · Closer",
+  "zh": "Nadia · 靠近",
+  "ja": "Nadia · 近づく",
+  "de": "Nadia · Näher",
+  "fr": "Nadia · Plus près",
+  "es": "Nadia · Más cerca",
+  "ko": "나디아 · 가까이"
+ },
+ "scene_nadia_a3": {
+  "en": "Nadia · Loosened",
+  "zh": "Nadia · 松开",
+  "ja": "Nadia · ほどける",
+  "de": "Nadia · Gelockert",
+  "fr": "Nadia · Dénouée",
+  "es": "Nadia · Desatada",
+  "ko": "나디아 · 느슨하게"
+ },
+ "scene_nadia_a4": {
+  "en": "Nadia · Turned",
+  "zh": "Nadia · 转身",
+  "ja": "Nadia · 振り向く",
+  "de": "Nadia · Umgedreht",
+  "fr": "Nadia · Retournée",
+  "es": "Nadia · Girada",
+  "ko": "나디아 · 돌아보며"
+ },
+ "scene_nadia_a5": {
+  "en": "Nadia · Trust",
+  "zh": "Nadia · 信任",
+  "ja": "Nadia · 信頼",
+  "de": "Nadia · Vertrauen",
+  "fr": "Nadia · Confiance",
+  "es": "Nadia · Confianza",
+  "ko": "나디아 · 신뢰"
+ },
+ "scene_nadia_a6": {
+  "en": "Nadia · Morning",
+  "zh": "Nadia · 清晨",
+  "ja": "Nadia · 朝",
+  "de": "Nadia · Morgen",
+  "fr": "Nadia · Matin",
+  "es": "Nadia · Mañana",
+  "ko": "나디아 · 아침"
+ },
+ "scene_freya_a1": {
+  "en": "Freya · Hello",
+  "zh": "Freya · 初见",
+  "ja": "Freya · はじめまして",
+  "de": "Freya · Hallo",
+  "fr": "Freya · Bonjour",
+  "es": "Freya · Hola",
+  "ko": "프레야 · 안녕"
+ },
+ "scene_freya_a2": {
+  "en": "Freya · Closer",
+  "zh": "Freya · 靠近",
+  "ja": "Freya · 近づく",
+  "de": "Freya · Näher",
+  "fr": "Freya · Plus près",
+  "es": "Freya · Más cerca",
+  "ko": "프레야 · 가까이"
+ },
+ "scene_freya_a3": {
+  "en": "Freya · Loosened",
+  "zh": "Freya · 松开",
+  "ja": "Freya · ほどける",
+  "de": "Freya · Gelockert",
+  "fr": "Freya · Dénouée",
+  "es": "Freya · Desatada",
+  "ko": "프레야 · 느슨하게"
+ },
+ "scene_freya_a4": {
+  "en": "Freya · Turned",
+  "zh": "Freya · 转身",
+  "ja": "Freya · 振り向く",
+  "de": "Freya · Umgedreht",
+  "fr": "Freya · Retournée",
+  "es": "Freya · Girada",
+  "ko": "프레야 · 돌아보며"
+ },
+ "scene_freya_a5": {
+  "en": "Freya · Trust",
+  "zh": "Freya · 信任",
+  "ja": "Freya · 信頼",
+  "de": "Freya · Vertrauen",
+  "fr": "Freya · Confiance",
+  "es": "Freya · Confianza",
+  "ko": "프레야 · 신뢰"
+ },
+ "scene_freya_a6": {
+  "en": "Freya · Morning",
+  "zh": "Freya · 清晨",
+  "ja": "Freya · 朝",
+  "de": "Freya · Morgen",
+  "fr": "Freya · Matin",
+  "es": "Freya · Mañana",
+  "ko": "프레야 · 아침"
+ },
+ "scene_amara_a1": {
+  "en": "Amara · Hello",
+  "zh": "Amara · 初见",
+  "ja": "Amara · はじめまして",
+  "de": "Amara · Hallo",
+  "fr": "Amara · Bonjour",
+  "es": "Amara · Hola",
+  "ko": "아마라 · 안녕"
+ },
+ "scene_amara_a2": {
+  "en": "Amara · Closer",
+  "zh": "Amara · 靠近",
+  "ja": "Amara · 近づく",
+  "de": "Amara · Näher",
+  "fr": "Amara · Plus près",
+  "es": "Amara · Más cerca",
+  "ko": "아마라 · 가까이"
+ },
+ "scene_amara_a3": {
+  "en": "Amara · Loosened",
+  "zh": "Amara · 松开",
+  "ja": "Amara · ほどける",
+  "de": "Amara · Gelockert",
+  "fr": "Amara · Dénouée",
+  "es": "Amara · Desatada",
+  "ko": "아마라 · 느슨하게"
+ },
+ "scene_amara_a4": {
+  "en": "Amara · Turned",
+  "zh": "Amara · 转身",
+  "ja": "Amara · 振り向く",
+  "de": "Amara · Umgedreht",
+  "fr": "Amara · Retournée",
+  "es": "Amara · Girada",
+  "ko": "아마라 · 돌아보며"
+ },
+ "scene_amara_a5": {
+  "en": "Amara · Trust",
+  "zh": "Amara · 信任",
+  "ja": "Amara · 信頼",
+  "de": "Amara · Vertrauen",
+  "fr": "Amara · Confiance",
+  "es": "Amara · Confianza",
+  "ko": "아마라 · 신뢰"
+ },
+ "scene_amara_a6": {
+  "en": "Amara · Morning",
+  "zh": "Amara · 清晨",
+  "ja": "Amara · 朝",
+  "de": "Amara · Morgen",
+  "fr": "Amara · Matin",
+  "es": "Amara · Mañana",
+  "ko": "아마라 · 아침"
+ },
+ "scene_lucia_a1": {
+  "en": "Lucia · Hello",
+  "zh": "Lucia · 初见",
+  "ja": "Lucia · はじめまして",
+  "de": "Lucia · Hallo",
+  "fr": "Lucia · Bonjour",
+  "es": "Lucia · Hola",
+  "ko": "루치아 · 안녕"
+ },
+ "scene_lucia_a2": {
+  "en": "Lucia · Closer",
+  "zh": "Lucia · 靠近",
+  "ja": "Lucia · 近づく",
+  "de": "Lucia · Näher",
+  "fr": "Lucia · Plus près",
+  "es": "Lucia · Más cerca",
+  "ko": "루치아 · 가까이"
+ },
+ "scene_lucia_a3": {
+  "en": "Lucia · Loosened",
+  "zh": "Lucia · 松开",
+  "ja": "Lucia · ほどける",
+  "de": "Lucia · Gelockert",
+  "fr": "Lucia · Dénouée",
+  "es": "Lucia · Desatada",
+  "ko": "루치아 · 느슨하게"
+ },
+ "scene_lucia_a4": {
+  "en": "Lucia · Turned",
+  "zh": "Lucia · 转身",
+  "ja": "Lucia · 振り向く",
+  "de": "Lucia · Umgedreht",
+  "fr": "Lucia · Retournée",
+  "es": "Lucia · Girada",
+  "ko": "루치아 · 돌아보며"
+ },
+ "scene_lucia_a5": {
+  "en": "Lucia · Trust",
+  "zh": "Lucia · 信任",
+  "ja": "Lucia · 信頼",
+  "de": "Lucia · Vertrauen",
+  "fr": "Lucia · Confiance",
+  "es": "Lucia · Confianza",
+  "ko": "루치아 · 신뢰"
+ },
+ "scene_lucia_a6": {
+  "en": "Lucia · Morning",
+  "zh": "Lucia · 清晨",
+  "ja": "Lucia · 朝",
+  "de": "Lucia · Morgen",
+  "fr": "Lucia · Matin",
+  "es": "Lucia · Mañana",
+  "ko": "루치아 · 아침"
+ },
+ "event_rosa": {
+  "en": "Rosa's First Bloom",
+  "zh": "Rosa 的初绽",
+  "ja": "Rosa の初咲き",
+  "de": "Rosas erste Blüte",
+  "fr": "La première floraison de Rosa",
+  "es": "La primera flor de Rosa",
+  "ko": "로사의 첫 꽃"
+ },
+ "event_rosa_blurb": {
+  "en": "Help Rosa pot the House's new garden.",
+  "zh": "帮 Rosa 把房子的新花园种进盆里。",
+  "ja": "Rosa と一緒に、館の新しい庭を鉢に植えよう。",
+  "de": "Hilf Rosa, den neuen Garten des Hauses einzutopfen.",
+  "fr": "Aide Rosa à mettre en pots le nouveau jardin de la Maison.",
+  "es": "Ayuda a Rosa a plantar el nuevo jardín de la Casa.",
+  "ko": "로사와 함께 하우스의 새 정원을 화분에 심어요."
+ },
+ "event_rosa_reward": {
+  "en": "Rosa's hibiscus",
+  "zh": "Rosa 的扶桑花",
+  "ja": "Rosa のハイビスカス",
+  "de": "Rosas Hibiskus",
+  "fr": "L'hibiscus de Rosa",
+  "es": "El hibisco de Rosa",
+  "ko": "로사의 히비스커스"
+ },
+ "event_hana": {
+  "en": "Hana's Midnight Bake",
+  "zh": "Hana 的午夜烘焙",
+  "ja": "Hana の真夜中のお菓子作り",
+  "de": "Hanas Mitternachtsbäckerei",
+  "fr": "La fournée de minuit de Hana",
+  "es": "El horneado de medianoche de Hana",
+  "ko": "하나의 한밤 베이킹"
+ },
+ "event_hana_blurb": {
+  "en": "Seven boards, seven cakes, one taster.",
+  "zh": "七盘棋，七个蛋糕，一位试吃员。",
+  "ja": "七つの盤面、七つのケーキ、味見役はひとり。",
+  "de": "Sieben Bretter, sieben Kuchen, ein Vorkoster.",
+  "fr": "Sept plateaux, sept gâteaux, un seul goûteur.",
+  "es": "Siete tableros, siete pasteles, un catador.",
+  "ko": "보드 일곱 개, 케이크 일곱 개, 맛보는 사람은 한 명."
+ },
+ "event_hana_reward": {
+  "en": "Hana's piping bag",
+  "zh": "Hana 的裱花袋",
+  "ja": "Hana の絞り袋",
+  "de": "Hanas Spritzbeutel",
+  "fr": "La poche à douille de Hana",
+  "es": "La manga pastelera de Hana",
+  "ko": "하나의 짤주머니"
+ },
+ "event_nadia": {
+  "en": "Nadia's Pool Party",
+  "zh": "Nadia 的泳池派对",
+  "ja": "Nadia のプールパーティー",
+  "de": "Nadias Poolparty",
+  "fr": "La fête à la piscine de Nadia",
+  "es": "La fiesta en la piscina de Nadia",
+  "ko": "나디아의 풀 파티"
+ },
+ "event_nadia_blurb": {
+  "en": "The roof is open all week.",
+  "zh": "整整一周，屋顶都对你开放。",
+  "ja": "今週はずっと屋上が開いている。",
+  "de": "Das Dach ist die ganze Woche offen.",
+  "fr": "Le toit est ouvert toute la semaine.",
+  "es": "La azotea está abierta toda la semana.",
+  "ko": "이번 주 내내 옥상이 열려 있어요."
+ },
+ "event_nadia_reward": {
+  "en": "Nadia's sunglasses",
+  "zh": "Nadia 的墨镜",
+  "ja": "Nadia のサングラス",
+  "de": "Nadias Sonnenbrille",
+  "fr": "Les lunettes de soleil de Nadia",
+  "es": "Las gafas de sol de Nadia",
+  "ko": "나디아의 선글라스"
+ },
+ "event_freya": {
+  "en": "Freya's Frost Week",
+  "zh": "Freya 的霜冻周",
+  "ja": "Freya の霜の一週間",
+  "de": "Freyas Frostwoche",
+  "fr": "La semaine du givre de Freya",
+  "es": "La semana helada de Freya",
+  "ko": "프레야의 서리 주간"
+ },
+ "event_freya_blurb": {
+  "en": "Ice on every board. Freya has the towels.",
+  "zh": "每一盘都结了冰。毛巾在 Freya 那儿。",
+  "ja": "どの盤面にも氷。タオルは Freya が持ってる。",
+  "de": "Eis auf jedem Brett. Freya hat die Handtücher.",
+  "fr": "De la glace sur chaque plateau. Freya a les serviettes.",
+  "es": "Hielo en cada tablero. Freya tiene las toallas.",
+  "ko": "보드마다 얼음이 가득. 수건은 프레야가 챙겼어요."
+ },
+ "event_freya_reward": {
+  "en": "Freya's snow globe",
+  "zh": "Freya 的雪花球",
+  "ja": "Freya のスノードーム",
+  "de": "Freyas Schneekugel",
+  "fr": "La boule à neige de Freya",
+  "es": "La bola de nieve de Freya",
+  "ko": "프레야의 스노볼"
+ },
+ "event_amara": {
+  "en": "Amara's Star Night",
+  "zh": "Amara 的星空之夜",
+  "ja": "Amara の星の夜",
+  "de": "Amaras Sternennacht",
+  "fr": "La nuit étoilée d'Amara",
+  "es": "La noche de estrellas de Amara",
+  "ko": "아마라의 별밤"
+ },
+ "event_amara_blurb": {
+  "en": "Clear skies, seven boards, one telescope.",
+  "zh": "晴朗的夜空，七盘棋，一架望远镜。",
+  "ja": "澄んだ空、七つの盤面、望遠鏡はひとつ。",
+  "de": "Klarer Himmel, sieben Bretter, ein Teleskop.",
+  "fr": "Ciel dégagé, sept plateaux, un télescope.",
+  "es": "Cielo despejado, siete tableros, un telescopio.",
+  "ko": "맑은 하늘, 보드 일곱 개, 망원경 하나."
+ },
+ "event_amara_reward": {
+  "en": "Amara's star chart",
+  "zh": "Amara 的星图",
+  "ja": "Amara の星図",
+  "de": "Amaras Sternkarte",
+  "fr": "La carte du ciel d'Amara",
+  "es": "La carta estelar de Amara",
+  "ko": "아마라의 별자리 지도"
+ },
+ "event_lucia": {
+  "en": "Lucia's Recital",
+  "zh": "Lucia 的独奏会",
+  "ja": "Lucia のリサイタル",
+  "de": "Lucias Konzertabend",
+  "fr": "Le récital de Lucia",
+  "es": "El recital de Lucia",
+  "ko": "루치아의 리사이틀"
+ },
+ "event_lucia_blurb": {
+  "en": "Seven boards, seven movements.",
+  "zh": "七盘棋，七个乐章。",
+  "ja": "七つの盤面、七つの楽章。",
+  "de": "Sieben Bretter, sieben Sätze.",
+  "fr": "Sept plateaux, sept mouvements.",
+  "es": "Siete tableros, siete movimientos.",
+  "ko": "보드 일곱 개, 일곱 악장."
+ },
+ "event_lucia_reward": {
+  "en": "Lucia's violin bow",
+  "zh": "Lucia 的琴弓",
+  "ja": "Lucia のバイオリンの弓",
+  "de": "Lucias Geigenbogen",
+  "fr": "L'archet de Lucia",
+  "es": "El arco de violín de Lucia",
+  "ko": "루치아의 바이올린 활"
+ },
+ "reason_not_a_hard_board": {
+  "en": "That is not a hard board.",
+  "zh": "这不是困难模式的棋盘。",
+  "ja": "それはハードモードの盤面ではありません。",
+  "de": "Das ist kein Brett im schweren Modus.",
+  "fr": "Ce n'est pas un plateau du mode difficile.",
+  "es": "Ese no es un tablero del modo difícil.",
+  "ko": "하드 모드 보드가 아니에요."
+ },
+ "reason_chapter_not_cleared": {
+  "en": "Finish this chapter first.",
+  "zh": "请先完成这一章。",
+  "ja": "先にこの章をクリアしてください。",
+  "de": "Schließ zuerst dieses Kapitel ab.",
+  "fr": "Termine d'abord ce chapitre.",
+  "es": "Termina primero este capítulo.",
+  "ko": "먼저 이 챕터를 끝내 주세요."
+ },
+ "hard_title": {
+  "en": "Hard mode",
+  "zh": "困难模式",
+  "ja": "ハードモード",
+  "de": "Schwerer Modus",
+  "fr": "Mode difficile",
+  "es": "Modo difícil",
+  "ko": "하드 모드"
+ },
+ "hard_rule": {
+  "en": "A finished chapter's boards, turned sideways. Fewer moves, no undo.",
+  "zh": "已完成章节的棋盘，换了个方向。步数更少，不能撤销。",
+  "ja": "クリアした章の盤面を横向きに。手数は少なめ、戻すのはなし。",
+  "de": "Die Bretter eines fertigen Kapitels, quer gedreht. Weniger Züge, kein Zurück.",
+  "fr": "Les plateaux d'un chapitre terminé, tournés d'un quart. Moins de coups, pas de retour.",
+  "es": "Los tableros de un capítulo terminado, girados. Menos movimientos, sin deshacer.",
+  "ko": "끝낸 챕터의 보드를 옆으로 돌렸어요. 수는 더 적게, 되돌리기는 없어요."
+ },
+ "hard_row": {
+  "en": "Hard mode · %s  %d/%d",
+  "zh": "困难模式 · %s  %d/%d",
+  "ja": "ハードモード · %s  %d/%d",
+  "de": "Schwerer Modus · %s  %d/%d",
+  "fr": "Mode difficile · %s  %d/%d",
+  "es": "Modo difícil · %s  %d/%d",
+  "ko": "하드 모드 · %s  %d/%d"
+ },
+ "hard_every": {
+  "en": "Every %d new clears: %s",
+  "zh": "每首次通关 %d 盘：%s",
+  "ja": "初クリア %d 盤ごとに：%s",
+  "de": "Alle %d neuen Siege: %s",
+  "fr": "Tous les %d nouveaux plateaux : %s",
+  "es": "Cada %d tableros nuevos: %s",
+  "ko": "새로 %d개 클리어할 때마다: %s"
+ },
+ "hard_locked": {
+  "en": "Finish a chapter to open its hard boards.",
+  "zh": "完成一章，就能解锁它的困难棋盘。",
+  "ja": "章をクリアすると、その章のハードモードが開きます。",
+  "de": "Schließ ein Kapitel ab, um seine schweren Bretter zu öffnen.",
+  "fr": "Termine un chapitre pour ouvrir ses plateaux difficiles.",
+  "es": "Termina un capítulo para abrir sus tableros difíciles.",
+  "ko": "챕터를 끝내면 그 챕터의 하드 모드 보드가 열려요."
+ },
+ "hard_all": {
+  "en": "Every open hard board is cleared.",
+  "zh": "已开放的困难棋盘全部通关。",
+  "ja": "開いているハードモードの盤面をすべてクリアしました。",
+  "de": "Alle offenen schweren Bretter geschafft.",
+  "fr": "Tous les plateaux difficiles ouverts sont réussis.",
+  "es": "Todos los tableros difíciles abiertos superados.",
+  "ko": "열린 하드 모드 보드를 모두 클리어했어요."
+ },
+ "hard_play": {
+  "en": "Play hard level %d",
+  "zh": "挑战困难第 %d 关",
+  "ja": "ハード：ステージ %d に挑戦",
+  "de": "Schwer: Level %d spielen",
+  "fr": "Niveau %d en difficile",
+  "es": "Jugar el nivel %d en difícil",
+  "ko": "하드: 레벨 %d 도전"
+ },
+ "hard_tag": {
+  "en": "HARD MODE · %s",
+  "zh": "困难模式 · %s",
+  "ja": "ハードモード · %s",
+  "de": "SCHWERER MODUS · %s",
+  "fr": "MODE DIFFICILE · %s",
+  "es": "MODO DIFÍCIL · %s",
+  "ko": "하드 모드 · %s"
+ },
+ "hard_name": {
+  "en": "Level %d, turned",
+  "zh": "第 %d 关 · 旋转",
+  "ja": "ステージ %d · 回転",
+  "de": "Level %d, gedreht",
+  "fr": "Niveau %d, tourné",
+  "es": "Nivel %d, girado",
+  "ko": "레벨 %d · 회전"
+ },
+ "res_hard": {
+  "en": "HARD · LEVEL %d",
+  "zh": "困难 · 第 %d 关",
+  "ja": "ハード · ステージ %d",
+  "de": "SCHWER · LEVEL %d",
+  "fr": "DIFFICILE · NIVEAU %d",
+  "es": "DIFÍCIL · NIVEL %d",
+  "ko": "하드 · 레벨 %d"
+ },
+ "hard_progress": {
+  "en": "%s: %d of %d hard boards",
+  "zh": "%s：困难棋盘 %d / %d",
+  "ja": "%s：ハード盤面 %d / %d",
+  "de": "%s: %d von %d schweren Brettern",
+  "fr": "%s : %d plateaux difficiles sur %d",
+  "es": "%s: %d de %d tableros difíciles",
+  "ko": "%s: 하드 보드 %d/%d"
+ },
+ "hard_chapter_reward": {
+  "en": "Chapter cleared in hard mode: %s",
+  "zh": "困难模式全章通关：%s",
+  "ja": "ハードモードで章を制覇：%s",
+  "de": "Kapitel im schweren Modus geschafft: %s",
+  "fr": "Chapitre réussi en difficile : %s",
+  "es": "Capítulo superado en difícil: %s",
+  "ko": "하드 모드 챕터 완주: %s"
+ },
+ "next_hard": {
+  "en": "Next hard board",
+  "zh": "下一个困难棋盘",
+  "ja": "次のハード盤面",
+  "de": "Nächstes schweres Brett",
+  "fr": "Plateau difficile suivant",
+  "es": "Siguiente tablero difícil",
+  "ko": "다음 하드 보드"
+ },
+ "no_undo_hard": {
+  "en": "No undo in hard mode",
+  "zh": "困难模式不能撤销",
+  "ja": "ハードモードでは戻せません",
+  "de": "Kein Zurück im schweren Modus",
+  "fr": "Pas de retour en mode difficile",
+  "es": "Sin deshacer en modo difícil",
+  "ko": "하드 모드에서는 되돌리기 없음"
+ },
+ "coming_in": {
+  "en": "New chapter in %d days",
+  "zh": "%d 天后开放新章节",
+  "ja": "新しい章まであと %d 日",
+  "de": "Neues Kapitel in %d Tagen",
+  "fr": "Nouveau chapitre dans %d jours",
+  "es": "Nuevo capítulo en %d días",
+  "ko": "%d일 후 새 챕터"
+ },
+ "coming_in_1": {
+  "en": "New chapter in %d day",
+  "zh": "%d 天后开放新章节",
+  "ja": "新しい章まであと %d 日",
+  "de": "Neues Kapitel in %d Tag",
+  "fr": "Nouveau chapitre dans %d jour",
+  "es": "Nuevo capítulo en %d día",
+  "ko": "%d일 후 새 챕터"
+ },
+ "coming_today": {
+  "en": "New chapter today",
+  "zh": "新章节今天开放",
+  "ja": "新しい章が今日オープン",
+  "de": "Neues Kapitel heute",
+  "fr": "Nouveau chapitre aujourd'hui",
+  "es": "Nuevo capítulo hoy",
+  "ko": "오늘 새 챕터 오픈"
+ },
+ "coming_soon": {
+  "en": "New chapter coming soon",
+  "zh": "新章节即将开放",
+  "ja": "新しい章、近日公開",
+  "de": "Neues Kapitel folgt bald",
+  "fr": "Nouveau chapitre bientôt",
+  "es": "Nuevo capítulo próximamente",
+  "ko": "새 챕터 곧 공개"
+ },
+ "event_limited": {
+  "en": "Limited · %s",
+  "zh": "限时 · %s",
+  "ja": "期間限定 · %s",
+  "de": "Limitiert · %s",
+  "fr": "Limité · %s",
+  "es": "Limitado · %s",
+  "ko": "한정 · %s"
+ },
+ "name_coco": {
+  "en": "Coco",
+  "zh": "Coco",
+  "ja": "Coco",
+  "de": "Coco",
+  "fr": "Coco",
+  "es": "Coco",
+  "ko": "코코"
+ },
+ "name_sable": {
+  "en": "Sable",
+  "zh": "Sable",
+  "ja": "Sable",
+  "de": "Sable",
+  "fr": "Sable",
+  "es": "Sable",
+  "ko": "세이블"
+ },
+ "name_vesna": {
+  "en": "Vesna",
+  "zh": "Vesna",
+  "ja": "Vesna",
+  "de": "Vesna",
+  "fr": "Vesna",
+  "es": "Vesna",
+  "ko": "베스나"
+ },
+ "name_wren": {
+  "en": "Wren",
+  "zh": "Wren",
+  "ja": "Wren",
+  "de": "Wren",
+  "fr": "Wren",
+  "es": "Wren",
+  "ko": "렌"
+ },
+ "name_june": {
+  "en": "June",
+  "zh": "June",
+  "ja": "June",
+  "de": "June",
+  "fr": "June",
+  "es": "June",
+  "ko": "준"
+ },
+ "name_iris": {
+  "en": "Iris",
+  "zh": "Iris",
+  "ja": "Iris",
+  "de": "Iris",
+  "fr": "Iris",
+  "es": "Iris",
+  "ko": "아이리스"
+ },
+ "name_rosa": {
+  "en": "Rosa",
+  "zh": "Rosa",
+  "ja": "Rosa",
+  "de": "Rosa",
+  "fr": "Rosa",
+  "es": "Rosa",
+  "ko": "로사"
+ },
+ "name_hana": {
+  "en": "Hana",
+  "zh": "Hana",
+  "ja": "Hana",
+  "de": "Hana",
+  "fr": "Hana",
+  "es": "Hana",
+  "ko": "하나"
+ },
+ "name_nadia": {
+  "en": "Nadia",
+  "zh": "Nadia",
+  "ja": "Nadia",
+  "de": "Nadia",
+  "fr": "Nadia",
+  "es": "Nadia",
+  "ko": "나디아"
+ },
+ "name_freya": {
+  "en": "Freya",
+  "zh": "Freya",
+  "ja": "Freya",
+  "de": "Freya",
+  "fr": "Freya",
+  "es": "Freya",
+  "ko": "프레야"
+ },
+ "name_amara": {
+  "en": "Amara",
+  "zh": "Amara",
+  "ja": "Amara",
+  "de": "Amara",
+  "fr": "Amara",
+  "es": "Amara",
+  "ko": "아마라"
+ },
+ "name_lucia": {
+  "en": "Lucia",
+  "zh": "Lucia",
+  "ja": "Lucia",
+  "de": "Lucia",
+  "fr": "Lucia",
+  "es": "Lucia",
+  "ko": "루치아"
+ },
+ "crane_fold": {
+  "en": "%s's crane · fold %d of %d",
+  "zh": "%s的纸鹤 · 第 %d 折 / 共 %d 折",
+  "ja": "%sの折り鶴 · %d / %d 折り目",
+  "de": "Kranich von %s · Falte %d von %d",
+  "fr": "La grue de %s · pli %d sur %d",
+  "es": "La grulla de %s · pliegue %d de %d",
+  "ko": "%s의 종이학 · %d/%d번째 접힘"
+ },
+ "fold_short": {
+  "en": "Fold %d/%d",
+  "zh": "第 %d/%d 折",
+  "ja": "%d/%d 折り目",
+  "de": "Falte %d/%d",
+  "fr": "Pli %d/%d",
+  "es": "Pliegue %d/%d",
+  "ko": "접힘 %d/%d"
+ },
+ "cranes_title": {
+  "en": "Cranes",
+  "zh": "纸鹤",
+  "ja": "折り鶴",
+  "de": "Kraniche",
+  "fr": "Grues",
+  "es": "Grullas",
+  "ko": "종이학"
+ },
+ "cranes_not_yet": {
+  "en": "Not yet",
+  "zh": "还不行",
+  "ja": "まだだめ",
+  "de": "Noch nicht",
+  "fr": "Pas encore",
+  "es": "Todavía no",
+  "ko": "아직은 안 돼"
+ },
+ "cranes_last": {
+  "en": "Last opened fold",
+  "zh": "最近打开的一折",
+  "ja": "最後にひらいた折り目",
+  "de": "Zuletzt geöffnete Falte",
+  "fr": "Dernier pli ouvert",
+  "es": "Último pliegue abierto",
+  "ko": "마지막으로 연 접힘"
+ },
+ "cranes_none": {
+  "en": "Clear a tier to open the first fold.",
+  "zh": "通关一层，就能打开第一折。",
+  "ja": "段をクリアすると、最初の折り目がひらきます。",
+  "de": "Schließ eine Stufe ab, um die erste Falte zu öffnen.",
+  "fr": "Termine un palier pour ouvrir le premier pli.",
+  "es": "Supera un rango para abrir el primer pliegue.",
+  "ko": "티어를 클리어하면 첫 접힘이 열려요."
+ },
+ "cranes_tap": {
+  "en": "Tap a crane to reread its folds.",
+  "zh": "点一只纸鹤，重读已打开的折。",
+  "ja": "折り鶴をタップすると、ひらいた折り目を読み返せます。",
+  "de": "Tippe auf einen Kranich, um seine Falten noch einmal zu lesen.",
+  "fr": "Touche une grue pour relire ses plis.",
+  "es": "Toca una grulla para releer sus pliegues.",
+  "ko": "종이학을 누르면 연 접힘을 다시 읽을 수 있어요."
  }
 }

@@ -628,6 +628,31 @@ func mission(m: Dictionary) -> String:
 	return s % int(m.get("goal", 0)) if s.contains("%d") else s
 
 
+## A woman's name as the player's language writes it (ko transliterates; the rest keep it).
+func cast(who: String) -> String:
+	return t("name_" + who) if has("name_" + who) else who.capitalize()
+
+
+## A crane letter's fold (data/letters.json, the story spine) in the player's language.
+## Only ids the server sent are ever asked for: house.py names a fold's id once its tier
+## is cleared, so an unopened fold's text is never on the client's screen.
+func letter(id: String) -> String:
+	if _letters.is_empty():
+		var f := FileAccess.open("res://data/letters.json", FileAccess.READ)
+		if f:
+			var parsed = JSON.parse_string(f.get_as_text())
+			f.close()
+			if parsed is Dictionary:
+				_letters = parsed
+	var row = _letters.get(id)
+	if typeof(row) != TYPE_DICTIONARY:
+		return ""
+	return str(row.get(lang, row.get("en", "")))
+
+
+var _letters := {}
+
+
 func event_title(ev: Dictionary) -> String:
 	var k := "event_" + str(ev.get("who", ""))
 	return t(k) if has(k) else t("event")

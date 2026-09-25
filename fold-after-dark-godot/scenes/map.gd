@@ -35,12 +35,15 @@ func _ready() -> void:
 		await F2P.fetch_challenge()
 		await F2P.fetch_house()
 		await F2P.fetch_event()
+		await F2P.fetch_hard()
 		# The caller picked focus_tier from the LOCAL save before the server's progress was
 		# adopted; a stale save (another account in this browser) scrolled a new player to
 		# tier 24. The server's stars are in Save now, so ask again.
 		focus_tier = Tier.current()
 		F2P.daily_requested.connect(_play_daily)
 		F2P.event_requested.connect(_play_event)
+		F2P.hard_requested.connect(_play_hard)
+		F2P.crane_requested.connect(_open_crane)
 	_build()
 	I18n.changed.connect(func(_l): _build())
 
@@ -170,6 +173,10 @@ func _build() -> void:
 		list.add_child(card)
 		if t == focus_tier:
 			focus_card = card
+	# update packs the server lists but has not released: the chapter and when it opens
+	if F2P.on():
+		for c in F2P.coming_chapters():
+			list.add_child(_coming_card(c))
 
 	# right: the daily systems — the server's on Nutaku, the labelled local stubs elsewhere
 	# In a scroll of its own (2026-09-24): in German the event and mission panels wrap to
@@ -225,6 +232,13 @@ func _tier_card(t: int) -> Control:
 			Palette.ACCENT if open else Palette.FAINT)
 		stg.name = "Stage"
 		info.add_child(stg)
+	if F2P.on() and not F2P.tier_letter(t).is_empty():
+		# each tier is one fold of one woman's letter (the story spine; house.py)
+		var lt := F2P.tier_letter(t)
+		var fl := StudioTheme.mono_label("%s  ·  %s" % [I18n.cast(str(lt["who"])), I18n.t("fold_short") % [int(lt["fold"]),
+			int(lt["of"])]], 13, Palette.GOLD if lt.has("id") else Palette.FAINT)
+		fl.name = "Fold"
+		info.add_child(fl)
 	var lv := StudioTheme.mono_label("%s %d–%d   ·   %d/%d" % [I18n.t("level"), Tier.first_level(t) + 1,
 		Tier.last_level(t) + 1, Tier.cleared_in(t), Tier.length(t)], 14, Palette.MUTED)
 	info.add_child(lv)
@@ -265,7 +279,7 @@ func _tier_card(t: int) -> Control:
 		scol.add_child(ph)
 	else:
 		var pic := TextureRect.new()
-		pic.texture = load(Tier.teaser_path(id))
+		pic.texture = Tier.teaser(id)
 		pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		pic.custom_minimum_size = Vector2(230, 118)
@@ -311,6 +325,29 @@ func _tier_card(t: int) -> Control:
 		view.theme_type_variation = "Amber" if unlocked else "Primary"
 		view.pressed.connect(func(): _view(scene))
 		scol.add_child(view)
+	return card
+
+
+## An update pack's chapter before its release (house status "coming"): its name and the
+## days to go. No blurb: the server does not send one until the pack is out.
+func _coming_card(c: Dictionary) -> Control:
+	var card := PanelContainer.new()
+	card.name = "Coming_" + str(c.get("id", ""))
+	card.theme_type_variation = "Card"
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 4)
+	card.add_child(v)
+	v.add_child(StudioTheme.display_label(I18n.chapter(str(c.get("id", ""))), 22, Palette.ACCENT))
+	var when := I18n.t("coming_soon")
+	if c.get("in_days") != null:
+		var n := int(c["in_days"])
+		when = I18n.t("coming_today") if n <= 0 else I18n.f("coming_in", n)
+	var wl := StudioTheme.mono_label(when, 14, Palette.GOLD)
+	wl.name = "ComingWhen"
+	v.add_child(wl)
+	if c.get("date") != null:
+		v.add_child(StudioTheme.mono_label(str(c["date"]), 12, Palette.MUTED))
 	return card
 
 
@@ -380,6 +417,17 @@ func _play_event() -> void:
 	var scene: PackedScene = load("res://scenes/game.tscn")
 	var node := scene.instantiate()
 	node.set("start_level", Fold.EVENT)
+	get_tree().root.add_child(node)
+	get_tree().current_scene = node
+	queue_free()
+
+
+func _play_hard() -> void:
+	Sfx.slide()
+	F2P.hard_level = F2P.hard_next()
+	var scene: PackedScene = load("res://scenes/game.tscn")
+	var node := scene.instantiate()
+	node.set("start_level", Fold.HARD)
 	get_tree().root.add_child(node)
 	get_tree().current_scene = node
 	queue_free()
@@ -475,6 +523,23 @@ func _process(_d: float) -> void:
 		var ee := _ui.find_child("EventEnds", true, false)
 		if ee is Label:
 			(ee as Label).text = I18n.f("ends_in", F2P.event_ends_text())
+
+
+func _open_crane(who: String) -> void:
+	var ov := Control.new()
+	ov.name = "CraneOverlay"
+	ov.theme = StudioTheme.build()
+	ov.set_anchors_preset(Control.PRESET_FULL_RECT)
+	var bg := ColorRect.new()
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(Palette.GROUND_DEEP, 0.82)
+	ov.add_child(bg)
+	var centre := CenterContainer.new()
+	centre.name = "Centre"
+	centre.set_anchors_preset(Control.PRESET_FULL_RECT)
+	ov.add_child(centre)
+	_ui.add_child(ov)
+	F2PUI.crane_reader(ov, who, -1, func(): ov.queue_free())
 
 
 func _open_shop() -> void:
