@@ -73,6 +73,15 @@ func server_unlocked(id: String) -> bool:
 	return false
 
 
+## The server offers a tier's scene for gold only near the player's progress
+## (config early_unlock_window); a far tier has no offer on the map or through the API.
+func early_unlock(t: int) -> bool:
+	for row in Nutaku.state.get("tiers", []):
+		if int(row.get("tier", -1)) == t:
+			return bool(row.get("early_unlock", false))
+	return false
+
+
 func tier_sku(t: int) -> String:
 	return "scene_%02d" % (t + 1)
 
@@ -87,15 +96,15 @@ func candle_text() -> String:
 	if e.is_empty():
 		return ""
 	if bool(e.get("unlimited", false)):
-		return "Candles ∞"
+		return I18n.t("candles_inf")
 	var now := int(e.get("now", 0))
 	var cap := int(e.get("max", 5))
 	# Rewards can stack candles past the refill cap; "10/5" read as a bug on the map.
-	var s := ("Candles %d/%d" % [now, cap]) if now <= cap else ("Candles %d  (refills to %d)" % [now, cap])
+	var s := (I18n.t("candles") % [now, cap]) if now <= cap else (I18n.t("candles_over") % [now, cap])
 	var nxt := float(e.get("next_in_s", 0))
 	if nxt > 0:
 		var left := maxf(0.0, nxt - (Time.get_unix_time_from_system() - _state_at))
-		s += "  ·  +1 in %s" % _clock(left)
+		s += I18n.f("candle_next", _clock(left))
 	return s
 
 
@@ -337,7 +346,7 @@ func event_ends_text() -> String:
 		return ""
 	var s := maxf(0.0, float(event.get("ends_in_s", 0)) - (Time.get_unix_time_from_system() - _event_at))
 	var d := int(s) / 86400
-	return ("%dd " % d if d > 0 else "") + _clock(fmod(s, 86400.0))
+	return (I18n.f("days_short", d) if d > 0 else "") + _clock(fmod(s, 86400.0))
 
 
 ## The first open, uncleared board of this week's track (or the last open one).

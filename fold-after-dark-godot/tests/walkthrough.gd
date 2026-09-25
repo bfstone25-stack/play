@@ -4,7 +4,7 @@ extends Node
 ## -> weekly event) against the title server + mock platform, pressing the game's own
 ## buttons, while `godot --write-movie` records. Run by ops/nutaku/walkthroughs/make_plicata.sh:
 ##   godot --path . --write-movie out.avi --fixed-fps 30 res://tests/walkthrough.tscn --
-##       --nutaku-mock=<mock> --nutaku-api=<server> --nutaku-user=<id>
+##       --nutaku-mock=<mock> --nutaku-api=<server> --nutaku-user=<id> [--lang=en|zh|ja]
 ## Prints `CAP <seconds> <caption id>` (movie time) for the caption track, `SHOT <name>`
 ## after saving shots/walk/<name>.png, and WALK_OK / WALK_FAIL at the end.
 ## Only tier 1's scene (coco_a1, art tier 1, clothed) is ever opened.
@@ -96,6 +96,11 @@ func log_moves(s: String) -> Array:
 
 func _ready() -> void:
 	get_tree().root.content_scale_size = Vector2i(1280, 720)
+	# `--lang=zh` records the game itself in that language (the zh video shows the zh UI)
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--lang="):
+			I18n.set_lang(a.split("=", true, 1)[1])
+	print("WALK_LANG " + I18n.lang)
 	get_tree().create_timer(420.0).timeout.connect(func():
 		print("WALK_FAIL watchdog: the walkthrough did not finish in 420 s of game time")
 		get_tree().quit(2))

@@ -130,6 +130,29 @@ const T := {
 		"coach_medium": "你看见了空间里潜藏的秩序。",
 		"coach_hard": "繁复终究让位于从容的布局。",
 		"coach_expert": "万般可能，终成一形。",
+		"parhint_1": "满星 %d 步",
+		"tier": "层",
+		"scene": "场景",
+		"locked": "未解锁",
+		"unlocked": "已解锁",
+		"clear_to_unlock": "通关这一层即可解锁",
+		"trophy": "本层通关",
+		"unlock_scene": "解锁她的场景",
+		"delivering": "正在取回场景…",
+		"not_delivered": "场景没有送达，暂时没有可显示的内容。请再试一次。",
+		"retry_fetch": "再试一次",
+		"map_btn": "层级地图",
+		"streak": "连胜",
+		"daily": "每日任务",
+		"daily_line": "今天通关 %d 关",
+		"daily_days": "连续 %d 天",
+		"board": "排行榜",
+		"stub": "本地示意 · 未联网",
+		"mosaic": "马赛克",
+		"close": "关闭",
+		"placeholder_scene": "占位图 · 这一层的场景还没有画好",
+		"rating_18": "18+",
+		"back_to_map": "返回地图",
 	},
 	"ja": {
 		"goal": "すべてを %d に折り重ねる",
@@ -193,6 +216,7 @@ const T := {
 		"coach_medium": "空白にひそむ順序が、見えていた。",
 		"coach_hard": "複雑さが、静かな段取りに屈した。",
 		"coach_expert": "無数の可能性が、ひとつの形に。",
+		"parhint_1": "★3 は %d 手",
 	},
 }
 
@@ -209,6 +233,7 @@ const WORDMARK := {"en": "PLICATA", "zh": "PLICATA", "ja": "PLICATA"}
 const WORDMARK_SUB := {"en": "plicāre · to fold", "zh": "归一 · 夜场", "ja": "折る · 夜の卓"}
 
 var _coach := {}
+var _f2p := {}          # data/i18n_f2p.json: key -> {en, zh, ja}; the F2P build's strings
 var _last_coach := ""
 
 
@@ -221,6 +246,14 @@ func _ready() -> void:
 		f.close()
 		if parsed is Dictionary:
 			_coach = parsed
+	var g := FileAccess.open("res://data/i18n_f2p.json", FileAccess.READ)
+	if g:
+		var rows = JSON.parse_string(g.get_as_text())
+		g.close()
+		if rows is Dictionary:
+			for k in rows.keys():
+				if not str(k).begins_with("_"):
+					_f2p[str(k)] = rows[k]
 
 
 func _from_os() -> String:
@@ -254,12 +287,88 @@ func t(key: String) -> String:
 	var table: Dictionary = T[lang]
 	if table.has(key):
 		return str(table[key])
+	if _f2p.has(key):
+		var row: Dictionary = _f2p[key]
+		return str(row.get(lang, row.get("en", key)))
 	return str(T["en"].get(key, key))
+
+
+## True if the key exists in either table (for server ids: a mission the client has no
+## words for falls back to a generic line, never to the server's English).
+func has(key: String) -> bool:
+	return (T[lang] as Dictionary).has(key) or _f2p.has(key)
+
+
+# ---- server content, mapped from the server's ids (data/i18n_f2p.json) --------------------
+# The title server speaks English labels ("Coco · Hello", "Clear 3 new levels", "level
+# locked"); the client never shows them. It shows the key for the id instead. Checked by
+# ops/nutaku/fold_f2p/check_i18n.py, which also fails if the server grows an id with no key.
+
+static func slug(s: String) -> String:
+	var out := ""
+	var gap := false
+	for ch in s.to_lower():
+		var ok := (ch >= "a" and ch <= "z") or (ch >= "0" and ch <= "9")
+		if ok:
+			if gap and out != "":
+				out += "_"
+			out += ch
+			gap = false
+		else:
+			gap = true
+	return out
+
+
+func scene_title(id: String, fallback: String = "") -> String:
+	return t("scene_" + id) if has("scene_" + id) else fallback
+
+
+func stage(name: String) -> String:
+	var k := "stage_" + slug(name)
+	return t(k) if has(k) else ""
+
+
+func chapter(id: String) -> String:
+	return t("chapter_" + id) if has("chapter_" + id) else ""
+
+
+func mission(m: Dictionary) -> String:
+	var k := "mission_" + str(m.get("id", ""))
+	if not has(k):
+		return t("mission_other")
+	var s := t(k)
+	return s % int(m.get("goal", 0)) if s.contains("%d") else s
+
+
+func event_title(ev: Dictionary) -> String:
+	var k := "event_" + str(ev.get("who", ""))
+	return t(k) if has(k) else t("event")
+
+
+func event_blurb(ev: Dictionary) -> String:
+	var k := "event_%s_blurb" % str(ev.get("who", ""))
+	return t(k) if has(k) else ""
+
+
+func event_reward(ev: Dictionary) -> String:
+	var k := "event_%s_reward" % str(ev.get("who", ""))
+	return t(k) if has(k) else ""
+
+
+## A refusal from the server ("level locked", "over budget (31 > 30)", "attempt is won"):
+## the longest known prefix of its words, else a plain "the server refused it".
+func reason(r) -> String:
+	var words := slug(str(r).split("(")[0]).split("_", false)
+	for n in range(words.size(), 0, -1):
+		var k := "reason_" + "_".join(words.slice(0, n))
+		if has(k):
+			return t(k)
+	return t("reason_other")
 
 
 func f(key: String, value) -> String:
 	# English singular ("1 move", not "1 moves") where a table has a key_1 form
-	if typeof(value) == TYPE_INT and value == 1 and (T[lang] as Dictionary).has(key + "_1"):
+	if typeof(value) == TYPE_INT and value == 1 and has(key + "_1"):
 		return t(key + "_1") % value
 	return t(key) % value
 

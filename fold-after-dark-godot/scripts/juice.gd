@@ -15,7 +15,8 @@ extends Node
 ##   points  = sum of the merged tiles' NEW values x min(combo, 5)
 
 const COMBO_CAP := 5
-const COMBO_WORDS := ["", "", "x2", "x3 Great!", "x4 Amazing!", "x5 Incredible!"]
+## the combo counter's words, by combo length (I18n keys; x2 is just the number)
+const COMBO_KEYS := ["", "", "", "combo_3", "combo_4", "combo_5"]
 
 var reduced_motion := false
 var voice_on := true
@@ -52,8 +53,8 @@ func goal_text(level: int) -> String:
 	if g.is_empty():
 		return ""
 	if str(g["type"]) == "score":
-		return "Score %d in %d moves" % [int(g["score"]), int(g["moves"])]
-	return "Hit a x%d combo" % int(g["combo"])
+		return I18n.t("goal_score") % [int(g["score"]), int(g["moves"])]
+	return I18n.f("goal_combo", int(g["combo"]))
 
 
 ## Python twin: fold_rules.goal_met. {ok, why}
@@ -63,12 +64,12 @@ func goal_met(level: int, moves: int) -> Dictionary:
 		return {"ok": true, "why": ""}
 	if str(g["type"]) == "score":
 		if moves > int(g["moves"]):
-			return {"ok": false, "why": "%d moves: the goal was %d or fewer" % [moves, int(g["moves"])]}
+			return {"ok": false, "why": I18n.t("why_moves") % [moves, int(g["moves"])]}
 		if score < int(g["score"]):
-			return {"ok": false, "why": "Score %d: the goal was %d" % [score, int(g["score"])]}
+			return {"ok": false, "why": I18n.t("why_score") % [score, int(g["score"])]}
 		return {"ok": true, "why": ""}
 	if max_combo < int(g["combo"]):
-		return {"ok": false, "why": "Best combo x%d: the goal was x%d" % [max_combo, int(g["combo"])]}
+		return {"ok": false, "why": I18n.t("why_combo") % [max_combo, int(g["combo"])]}
 	return {"ok": true, "why": ""}
 
 
@@ -124,7 +125,10 @@ func on_move() -> Dictionary:
 
 
 static func combo_word(c: int) -> String:
-	return COMBO_WORDS[mini(c, COMBO_WORDS.size() - 1)] if c >= 2 else ""
+	if c < 2:
+		return ""
+	var key: String = COMBO_KEYS[mini(c, COMBO_KEYS.size() - 1)]
+	return I18n.t(key) if key != "" else "x%d" % c
 
 
 ## A short decaying shake on `node`'s position. Nothing under reduced motion.

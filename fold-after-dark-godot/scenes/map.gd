@@ -28,7 +28,8 @@ func _ready() -> void:
 		# Nutaku: the map is the server's. Log in (handshake -> session) before drawing.
 		_loading()
 		if not await F2P.ensure():
-			_loading("Could not reach the game server. " + Nutaku.last_error)
+			_loading(I18n.t("cant_reach"))
+			push_warning("F2P boot: " + Nutaku.last_error)
 			return
 		await Nutaku.refresh()
 		await F2P.fetch_challenge()
@@ -44,7 +45,9 @@ func _ready() -> void:
 	I18n.changed.connect(func(_l): _build())
 
 
-func _loading(msg: String = "Signing in…") -> void:
+func _loading(msg: String = "") -> void:
+	if msg == "":
+		msg = I18n.t("signing_in")
 	if _ui:
 		_ui.queue_free()
 	_ui = CanvasLayer.new()
@@ -125,9 +128,13 @@ func _build() -> void:
 	if F2P.on() and not F2P.house.is_empty():
 		# the rise through the Folding House: where you stand, from the server
 		var st: Dictionary = F2P.house.get("standing", {})
-		title.text = "The Folding House  ·  %s  ·  %s" % [str(st.get("chapter", "")), str(st.get("stage", ""))]
+		var cur_id := ""
+		for c in F2P.house.get("chapters", []):
+			if str(c.get("title", "")) == str(st.get("chapter", "")):
+				cur_id = str(c.get("id", ""))
+		title.text = I18n.t("house_standing") % [I18n.chapter(cur_id), I18n.stage(str(st.get("stage", "")))]
 		title.name = "Standing"
-		var rise := StudioTheme.mono_label("chapter %d of %d" % [mini(int(st.get("chapters_done", 0)) + 1,
+		var rise := StudioTheme.mono_label(I18n.t("chapter_of") % [mini(int(st.get("chapters_done", 0)) + 1,
 			int(st.get("chapters", 0))), int(st.get("chapters", 0))], 13, Palette.MUTED)
 		head.add_child(rise)
 	var rating := Label.new()
@@ -205,7 +212,7 @@ func _tier_card(t: int) -> Control:
 	if F2P.on() and F2P.tier_stage(t) != "":
 		# the relationship stage this tier's scene stands for (server: /f2p/house)
 		var chap := F2P.chapter_of(t)
-		var stg := StudioTheme.mono_label("%s  ·  %s" % [F2P.tier_stage(t), str(chap.get("title", ""))], 13,
+		var stg := StudioTheme.mono_label("%s  ·  %s" % [I18n.stage(F2P.tier_stage(t)), I18n.chapter(str(chap.get("id", "")))], 13,
 			Palette.ACCENT if open else Palette.FAINT)
 		stg.name = "Stage"
 		info.add_child(stg)
@@ -256,7 +263,7 @@ func _tier_card(t: int) -> Control:
 		# locked: dimmed and desaturated toward the ground; unlocked: lit
 		pic.modulate = Color(1, 1, 1, 1) if unlocked else Color(0.45, 0.32, 0.42, 1)
 		scol.add_child(pic)
-	var st := StudioTheme.mono_label(str(scene["title"]), 13, Palette.TEXT if unlocked else Palette.MUTED)
+	var st := StudioTheme.mono_label(I18n.scene_title(id, str(scene.get("title", ""))), 13, Palette.TEXT if unlocked else Palette.MUTED)
 	st.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	scol.add_child(st)
 	var tag := Label.new()
@@ -271,11 +278,13 @@ func _tier_card(t: int) -> Control:
 		tag.text = I18n.t("locked") + " · " + I18n.t("clear_to_unlock")
 		tag.add_theme_color_override("font_color", Palette.ACCENT)
 	scol.add_child(tag)
-	if F2P.on() and not placeholder and not unlocked and not cleared:
-		# the one early-unlock offer: the tier's scene now, for gold
+	if F2P.on() and not placeholder and not unlocked and not cleared and F2P.early_unlock(t):
+		# the early-unlock offer: this tier's scene now, for gold -- only on the tier the
+		# player is on and the next one (the server's `early_unlock` flag, which its payment
+		# check enforces; ECONOMY.md "Early unlocks"). Far tiers just say LOCKED.
 		var buy := Button.new()
 		buy.name = "BuyScene"
-		buy.text = "Unlock now · %s" % F2PUI.gold(F2P.tier_sku(t))
+		buy.text = I18n.f("unlock_now", F2PUI.gold(F2P.tier_sku(t)))
 		buy.theme_type_variation = "Ghost"
 		buy.pressed.connect(func():
 			buy.disabled = true
@@ -328,7 +337,7 @@ func _stub_streak() -> Control:
 	var v := _stub(I18n.t("streak"))
 	var big := StudioTheme.display_label("%d" % Tier.streak, 34, Palette.HEAT)
 	v.add_child(big)
-	v.add_child(StudioTheme.mono_label("best %d" % Tier.streak_best(), 14, Palette.MUTED))
+	v.add_child(StudioTheme.mono_label(I18n.f("best", Tier.streak_best()), 14, Palette.MUTED))
 	return v.get_meta("panel")
 
 
@@ -453,10 +462,10 @@ func _process(_d: float) -> void:
 			(ct as Label).text = F2P.candle_text()
 		var cd := _ui.find_child("ChallengeCountdown", true, false)
 		if cd is Label:
-			(cd as Label).text = "Next in " + F2P.challenge_countdown()
+			(cd as Label).text = I18n.f("next_in", F2P.challenge_countdown())
 		var ee := _ui.find_child("EventEnds", true, false)
 		if ee is Label:
-			(ee as Label).text = "Ends in " + F2P.event_ends_text()
+			(ee as Label).text = I18n.f("ends_in", F2P.event_ends_text())
 
 
 func _open_shop() -> void:

@@ -23,6 +23,7 @@ const GAP := 4.0
 
 var _player: AudioStreamPlayer
 var _lines: Dictionary = {}          # slot -> [{file, text}]
+var _subs: Dictionary = {}           # English line -> {zh, ja}: the subtitle in the player's language
 var _bags: Dictionary = {}           # slot -> [indices left]
 var _last: Dictionary = {}           # slot -> last index said
 var _quiet_until := 0.0              # engine seconds
@@ -39,6 +40,18 @@ func _ready() -> void:
 		var parsed: Variant = JSON.parse_string(f.get_as_text())
 		if parsed is Dictionary:
 			_lines = parsed
+	var g := FileAccess.open(DIR + "subtitles.json", FileAccess.READ)
+	if g != null:
+		var subs: Variant = JSON.parse_string(g.get_as_text())
+		if subs is Dictionary:
+			_subs = subs
+
+
+## Her line in the player's language (the voice itself stays English).
+func subtitle(en: String) -> String:
+	if I18n.lang != "en" and _subs.has(en):
+		return str((_subs[en] as Dictionary).get(I18n.lang, en))
+	return en
 
 
 func _exit_tree() -> void:
@@ -83,7 +96,7 @@ func say(slot: String, priority: bool = false) -> bool:
 	if not priority and _clock < _quiet_until:
 		return false
 	var row: Dictionary = _lines[slot][_next(slot)]
-	var text := str(row.get("text", ""))
+	var text := subtitle(str(row.get("text", "")))
 	var secs := 1.8
 	var path := DIR + str(row.get("file", ""))
 	if ResourceLoader.exists(path):

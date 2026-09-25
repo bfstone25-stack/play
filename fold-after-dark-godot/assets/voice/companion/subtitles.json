@@ -1,0 +1,227 @@
+{
+ "_comment": "Coco's subtitles in zh and ja, keyed by the English line in lines.json (which companion_voice.py rewrites; this file it never touches). The voice stays English; the subtitle follows the player's language. Checked by ops/nutaku/fold_f2p/check_i18n.py.",
+ "Ready when you are.": {
+  "zh": "准备好了就开始吧。",
+  "ja": "準備ができたら、いつでもどうぞ。"
+ },
+ "Show me what you've got.": {
+  "zh": "让我看看你的本事。",
+  "ja": "あなたの実力、見せて。"
+ },
+ "New board. Let's play.": {
+  "zh": "新棋盘，来玩吧。",
+  "ja": "新しい盤面。さあ、遊ぼう。"
+ },
+ "Mm, this one looks fun.": {
+  "zh": "嗯，这盘看起来很好玩。",
+  "ja": "ん、これは楽しそう。"
+ },
+ "Take your time. I'm right here.": {
+  "zh": "慢慢来，我就在这儿。",
+  "ja": "ゆっくりでいいよ。私はここにいるから。"
+ },
+ "Let's make it pretty.": {
+  "zh": "折得漂亮一点吧。",
+  "ja": "きれいに仕上げよう。"
+ },
+ "Go on, dazzle me.": {
+  "zh": "来吧，让我眼前一亮。",
+  "ja": "さあ、私を驚かせて。"
+ },
+ "Nice move.": {
+  "zh": "这步不错。",
+  "ja": "いい手ね。"
+ },
+ "Ooh, clever.": {
+  "zh": "哦，真聪明。",
+  "ja": "おっ、賢い。"
+ },
+ "You're so smart.": {
+  "zh": "你好聪明。",
+  "ja": "頭いいんだね。"
+ },
+ "Mm, I like watching you think.": {
+  "zh": "嗯，我喜欢看你思考的样子。",
+  "ja": "ん、考えてる顔を見るのが好き。"
+ },
+ "That was smooth.": {
+  "zh": "好流畅。",
+  "ja": "今のは鮮やか。"
+ },
+ "Look at you go.": {
+  "zh": "瞧你，越来越顺了。",
+  "ja": "見て、どんどん進んでる。"
+ },
+ "Good hands.": {
+  "zh": "手真巧。",
+  "ja": "器用な手ね。"
+ },
+ "Again! Again!": {
+  "zh": "再来！再来！",
+  "ja": "もう一回！もう一回！"
+ },
+ "Oh, keep going!": {
+  "zh": "哦，继续继续！",
+  "ja": "あっ、その調子！"
+ },
+ "Wow, look at that!": {
+  "zh": "哇，你看！",
+  "ja": "わあ、見て！"
+ },
+ "Amazing!": {
+  "zh": "太厉害了！",
+  "ja": "すごい！"
+ },
+ "You're on fire tonight.": {
+  "zh": "你今晚状态火热。",
+  "ja": "今夜は絶好調ね。"
+ },
+ "That's my favourite kind of move.": {
+  "zh": "我最喜欢这种走法。",
+  "ja": "そういう手、大好き。"
+ },
+ "Don't stop now.": {
+  "zh": "现在可别停。",
+  "ja": "ここで止めないで。"
+ },
+ "Careful. Just a few moves left.": {
+  "zh": "小心，只剩几步了。",
+  "ja": "気をつけて。残りあと少しよ。"
+ },
+ "Deep breath. You've got this.": {
+  "zh": "深呼吸，你可以的。",
+  "ja": "深呼吸。あなたならできる。"
+ },
+ "Tight one. I believe in you.": {
+  "zh": "这盘很紧，我相信你。",
+  "ja": "ぎりぎりね。信じてる。"
+ },
+ "Almost out of moves. Think it through.": {
+  "zh": "步数快用完了，想清楚再走。",
+  "ja": "もうすぐ手数切れ。よく考えて。"
+ },
+ "Slow down. Find the fold.": {
+  "zh": "放慢一点，找到那一折。",
+  "ja": "落ち着いて。折り目を探して。"
+ },
+ "Easy. One smart move at a time.": {
+  "zh": "别急，一步一步走对。",
+  "ja": "焦らないで。一手ずつ、賢く。"
+ },
+ "There you go!": {
+  "zh": "成了！",
+  "ja": "できた！"
+ },
+ "Beautiful. Next one?": {
+  "zh": "真漂亮。下一盘？",
+  "ja": "きれい。次、いく？"
+ },
+ "I knew you could.": {
+  "zh": "我就知道你行。",
+  "ja": "できると思ってた。"
+ },
+ "Clean and easy.": {
+  "zh": "干净利落。",
+  "ja": "スマートに決まったね。"
+ },
+ "You make it look simple.": {
+  "zh": "你让它看起来好简单。",
+  "ja": "簡単そうにやっちゃうんだから。"
+ },
+ "Mm, well done.": {
+  "zh": "嗯，做得好。",
+  "ja": "ん、よくできました。"
+ },
+ "That's how it's done.": {
+  "zh": "就是要这样。",
+  "ja": "そう、それでいいの。"
+ },
+ "Three stars! You're so smart.": {
+  "zh": "三星！你好聪明。",
+  "ja": "星3つ！頭いいんだね。"
+ },
+ "Nobody's ever beaten this so fast.": {
+  "zh": "还没人这么快过这一关。",
+  "ja": "こんなに速く解いた人、初めて。"
+ },
+ "Perfect. I'm impressed.": {
+  "zh": "完美，我服了。",
+  "ja": "完璧。感心しちゃった。"
+ },
+ "Flawless. I could get used to this.": {
+  "zh": "无可挑剔。我都要习惯了。",
+  "ja": "非の打ちどころなし。クセになりそう。"
+ },
+ "Three stars. Show-off. I love it.": {
+  "zh": "三星。爱炫耀，可我喜欢。",
+  "ja": "星3つ。見せつけちゃって。好きよ。"
+ },
+ "Wow. Not a single wasted move.": {
+  "zh": "哇，一步都没浪费。",
+  "ja": "わあ。一手も無駄がない。"
+ },
+ "A new scene. Go on, take a look.": {
+  "zh": "新场景，去看看吧。",
+  "ja": "新しいシーンよ。ほら、見てみて。"
+ },
+ "You earned this one.": {
+  "zh": "这是你应得的。",
+  "ja": "これはあなたが勝ち取ったもの。"
+ },
+ "Mm, you unlocked something special.": {
+  "zh": "嗯，你解锁了特别的东西。",
+  "ja": "ん、特別なものをひらいたね。"
+ },
+ "All yours now. Enjoy.": {
+  "zh": "现在都是你的了，好好享受。",
+  "ja": "もう全部あなたのもの。楽しんで。"
+ },
+ "I was hoping you'd get here.": {
+  "zh": "我一直盼着你走到这里。",
+  "ja": "ここまで来てくれるって、期待してた。"
+ },
+ "You came back. I missed you.": {
+  "zh": "你回来了。我好想你。",
+  "ja": "戻ってきてくれた。会いたかった。"
+ },
+ "There you are. Ready to play?": {
+  "zh": "你来啦。准备好玩了吗？",
+  "ja": "来てくれたのね。遊ぶ準備はいい？"
+ },
+ "Welcome back. I saved you a board.": {
+  "zh": "欢迎回来，我给你留了一盘。",
+  "ja": "おかえり。盤面をひとつ取っておいたよ。"
+ },
+ "Hey you. Let's pick up where we left off.": {
+  "zh": "嘿，我们接着上次继续吧。",
+  "ja": "ねえ。この前の続きから始めよう。"
+ },
+ "Good to see you again.": {
+  "zh": "很高兴又见到你。",
+  "ja": "また会えてうれしい。"
+ },
+ "Back already? I like that.": {
+  "zh": "这么快就回来了？我喜欢。",
+  "ja": "もう戻ってきたの？そういうの、好き。"
+ },
+ "Win after win! Look at you.": {
+  "zh": "连赢不停！看看你。",
+  "ja": "勝ちっぱなし！さすがね。"
+ },
+ "You're on a streak. Don't stop.": {
+  "zh": "你在连胜中，别停。",
+  "ja": "連勝中よ。止まらないで。"
+ },
+ "That streak. I'm blushing.": {
+  "zh": "这连胜，我都脸红了。",
+  "ja": "その連勝…顔が熱くなっちゃう。"
+ },
+ "Another one! You're unstoppable.": {
+  "zh": "又一个！你简直停不下来。",
+  "ja": "また勝った！もう止められない。"
+ },
+ "Streak's still alive. Keep it going.": {
+  "zh": "连胜还在继续，保持住。",
+  "ja": "連勝はまだ続いてる。このまま行こう。"
+ }
+}

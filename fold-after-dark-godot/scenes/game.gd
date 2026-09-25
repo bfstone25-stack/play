@@ -628,13 +628,13 @@ func _build_hud() -> void:
 	if F2P.on():
 		var hint := Button.new()
 		hint.name = "Hint"
-		hint.text = "Hint"
+		hint.text = I18n.t("hint_btn")
 		hint.theme_type_variation = "Amber"
 		hint.pressed.connect(_f2p_hint)
 		btns.add_child(hint)
 		var shop := Button.new()
 		shop.name = "Shop"
-		shop.text = "Shop"
+		shop.text = I18n.t("shop")
 		shop.theme_type_variation = "Amber"
 		var shop_done := func():
 			_win.visible = false
@@ -683,10 +683,10 @@ func _sync() -> void:
 		_goal.text += "  +  " + alt
 		var g := Juice.goal_for(Fold.level_index)
 		if str(g["type"]) == "combo":
-			_goal.text += "  (best x%d)" % Juice.max_combo
+			_goal.text += I18n.f("best_combo", Juice.max_combo)
 	_moves.text = I18n.f("moves", Fold.moves) + "   ·   " + I18n.f("parhint", Fold.par())
 	if F2P.on() and F2P.active_for(Fold.level_index):
-		_moves.text += "   ·   %d left" % F2P.moves_left()
+		_moves.text += I18n.f("moves_left", F2P.moves_left())
 	# THE MODEL, in the header. ops/fold/BRIDGE.md: the level's name IS the thing it folds,
 	# and the fold count is log2(target) because the tile value is the layer count. In this
 	# fork the first two tiers fold paper and every tier after folds her (scripts/origami.gd,
@@ -706,13 +706,13 @@ func _sync() -> void:
 	_reset_btn.text = I18n.t("reset")
 	_hint.text = I18n.t("hint")
 	var top := _hud.get_child(0).get_child(0).get_child(0)
-	(top.get_node("Lang") as Button).text = "中文" if I18n.lang == "en" else "EN"
+	(top.get_node("Lang") as Button).text = I18n.next_lang_label()
 	(top.get_node("Sound") as Button).text = "♪" if Sfx.sfx_on else "✕"
-	(top.get_node("Voice") as Button).text = "Voice ✓" if Juice.voice_on else "Voice ✕"
-	(top.get_node("Motion") as Button).text = "Motion ✓" if not Juice.reduced_motion else "Motion ✕"
-	(top.get_node("Voice") as Button).tooltip_text = "Coco's voice (subtitles stay on)"
-	(top.get_node("Motion") as Button).tooltip_text = "Reduced motion: no shake, no flying rewards"
-	_score_lbl.text = "%s %d" % ["SCORE", Juice.score]
+	(top.get_node("Voice") as Button).text = I18n.t("voice_on") if Juice.voice_on else I18n.t("voice_off")
+	(top.get_node("Motion") as Button).text = I18n.t("motion_on") if not Juice.reduced_motion else I18n.t("motion_off")
+	(top.get_node("Voice") as Button).tooltip_text = I18n.t("voice_tip")
+	(top.get_node("Motion") as Button).tooltip_text = I18n.t("motion_tip")
+	_score_lbl.text = "%s %d" % [I18n.t("score"), Juice.score]
 	if not _results_open:
 		_stars_total.text = "★ %d" % _star_sum()
 	var lvb := _undo_btn.get_parent().get_node("Levels") as Button
@@ -720,17 +720,17 @@ func _sync() -> void:
 	var t := Tier.of_level(Fold.level_index)
 	_tier_lbl.text = "%s %d · %d/%d" % [I18n.t("tier").to_upper(), t + 1, Tier.cleared_in(t), Tier.length(t)]
 	if Fold.is_daily():
-		_tier_lbl.text = "DAILY #%d · %s" % [int(F2P.challenge.get("number", 0)), str(F2P.challenge.get("date", ""))]
-		_lvname.text = "Daily challenge · %s" % Fold.level_name(Fold.DAILY, I18n.lang)
+		_tier_lbl.text = I18n.t("daily_tag") % [int(F2P.challenge.get("number", 0)), str(F2P.challenge.get("date", ""))]
+		_lvname.text = I18n.f("daily_name", Fold.level_name(Fold.DAILY, I18n.lang))
 	elif Fold.is_special():
-		_tier_lbl.text = "EVENT · %s" % str(F2P.event.get("title", ""))
-		_lvname.text = "%s · board %d of %d" % [str(F2P.event.get("title", "")), F2P.event_board + 1,
+		_tier_lbl.text = I18n.f("event_tag", I18n.event_title(F2P.event))
+		_lvname.text = I18n.t("event_name") % [I18n.event_title(F2P.event), F2P.event_board + 1,
 			(F2P.event.get("boards", []) as Array).size()]
 	elif F2P.on() and not F2P.house.is_empty():
 		var t2 := Tier.of_level(Fold.level_index)
 		var chap := F2P.chapter_of(t2)
 		if not chap.is_empty():
-			_tier_lbl.text += "  ·  %s · %s" % [str(chap["title"]), F2P.tier_stage(t2)]
+			_tier_lbl.text += "  ·  %s · %s" % [I18n.chapter(str(chap["id"])), I18n.stage(F2P.tier_stage(t2))]
 	_streak_lbl.text = "%s %d" % [I18n.t("streak"), Tier.streak] if Tier.streak > 0 else ""
 	# the three stars: how well this level has ever been done
 	for c in _stars_row.get_children():
@@ -749,7 +749,8 @@ func _open(i: int) -> void:
 	if F2P.on():
 		_win.visible = false
 		if not await F2P.ensure():
-			_f2p_error("Could not reach the game server. " + Nutaku.last_error)
+			push_warning("F2P boot: " + Nutaku.last_error)
+			_f2p_error(I18n.t("cant_reach"))
 			return
 		var r: Dictionary
 		if i == Fold.DAILY:
@@ -764,7 +765,7 @@ func _open(i: int) -> void:
 			elif int(r["status"]) == 403:
 				_to_map()
 			else:
-				_f2p_error(str(r["reason"]))
+				_f2p_error(I18n.reason(r["reason"]))
 			return
 	# The ad gate. Levels 1-50 are free on every track; past that the page decides —
 	# a price on itch, a sponsor clip on free.blazecore.dev. shared/godot/gate.gd returns
@@ -1011,8 +1012,8 @@ func _on_solved(stars: int, move_count: int, p: int) -> void:
 		Coco.say("near_fail", true)
 		var again := func(_s: Label): _open(Fold.level_index)
 		var home := func(_s: Label): _to_map()
-		F2PUI.card(_win, "So close!", ["The board is folded, but the bonus goal was missed.", str(gm["why"])],
-			[["Try again", "Primary", again, "Retry"], ["Map", "Amber", home, "Map"]])
+		F2PUI.card(_win, I18n.t("so_close"), [I18n.t("goal_missed"), str(gm["why"])],
+			[[I18n.t("try_again"), "Primary", again, "Retry"], [I18n.t("map"), "Amber", home, "Map"]])
 		return
 	if F2P.on():
 		# the server replays the fold log; only its answer clears the level
@@ -1020,8 +1021,8 @@ func _on_solved(stars: int, move_count: int, p: int) -> void:
 		if not res["ok"]:
 			var again := func(_s: Label): _open(Fold.level_index)
 			var home := func(_s: Label): _to_map()
-			F2PUI.card(_win, "Not counted", ["The server did not accept this result: %s" % res["reason"]],
-				[["Try again", "Primary", again, "Retry"], ["Map", "Amber", home, "Map"]])
+			F2PUI.card(_win, I18n.t("not_counted"), [I18n.f("not_accepted", I18n.reason(res["reason"]))],
+				[[I18n.t("try_again"), "Primary", again, "Retry"], [I18n.t("map"), "Amber", home, "Map"]])
 			return
 		stars = int(res["stars"])
 		_last_finish = res
@@ -1105,7 +1106,7 @@ func _show_trophy(t: int, stars: int, move_count: int, p: int) -> void:
 		pic.custom_minimum_size = Vector2(400, 200)
 		pic.modulate = Color(0.55, 0.4, 0.5, 1)
 		col.add_child(pic)
-	var st := StudioTheme.serif_label(str(scene["title"]), 15, Palette.TEXT, true)
+	var st := StudioTheme.serif_label(I18n.scene_title(str(scene["id"]), str(scene.get("title", ""))), 15, Palette.TEXT, true)
 	st.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(st)
 	if placeholder:
@@ -1567,11 +1568,11 @@ func _try_undo() -> bool:
 		return false
 	if not F2P.can_undo():
 		if Fold.is_special():
-			_hint.text = "One undo on this board"
+			_hint.text = I18n.t("one_undo_board")
 			return false
 		var r := await F2P.use("undo")
 		if not r["ok"]:
-			_hint.text = "No undo: %s" % r["reason"]
+			_hint.text = I18n.f("no_undo", F2PUI.use_fail(r))
 			return false
 	if Fold.undo():
 		F2P.on_undo()
@@ -1590,8 +1591,8 @@ func _f2p_check_budget() -> void:
 		var leave := func(_s: Label):
 			await F2P.give_up()
 			_to_map()
-		F2PUI.card(_win, "Out of moves", ["%d moves spent. This board is free to retry." % F2P.spent()],
-			[["Try again", "Primary", again, "Retry"], ["Map", "Ghost", leave, "Map"]])
+		F2PUI.card(_win, I18n.t("out_of_moves"), [I18n.t("moves_spent_free") % F2P.spent()],
+			[[I18n.t("try_again"), "Primary", again, "Retry"], [I18n.t("map"), "Ghost", leave, "Map"]])
 		return
 	var more := func(status: Label):
 		status.text = "…"
@@ -1600,16 +1601,16 @@ func _f2p_check_budget() -> void:
 			_win.visible = false
 			_sync()
 		else:
-			status.text = str(r["reason"])
+			status.text = F2PUI.use_fail(r)
 	var retry := func(_s: Label): _f2p_retry()
 	var home := func(_s: Label):
 		await F2P.give_up()
 		_to_map()
-	var cost := "1 token" if F2P.tokens("moves") > 0 else F2PUI.gold(F2P.SKU_MOVES)
-	F2PUI.card(_win, "Out of moves", ["%d moves spent. Five more keep this board as it is." % F2P.spent()],
-		[["+5 moves · %s" % cost, "Primary", more, "MoreMoves"],
-		 ["Retry (1 candle)", "Amber", retry, "Retry"],
-		 ["Map", "Ghost", home, "Map"]])
+	var cost := I18n.t("one_token") if F2P.tokens("moves") > 0 else F2PUI.gold(F2P.SKU_MOVES)
+	F2PUI.card(_win, I18n.t("out_of_moves"), [I18n.t("moves_spent") % F2P.spent()],
+		[[I18n.f("more_moves", cost), "Primary", more, "MoreMoves"],
+		 [I18n.t("retry_candle"), "Amber", retry, "Retry"],
+		 [I18n.t("map"), "Ghost", home, "Map"]])
 
 
 ## Reset on Nutaku is a new attempt: the old one is given up, the new one costs a candle
@@ -1622,61 +1623,60 @@ func _f2p_retry() -> void:
 
 func _f2p_no_candles(level: int) -> void:
 	var refill := func(status: Label):
-		status.text = "Waiting for Nutaku…"
+		status.text = I18n.t("waiting_nutaku")
 		var r := await Nutaku.buy(F2P.SKU_REFILL)
 		status.text = F2PUI._pay_text(r)
 		if str(r.get("status", "")) == "success":
 			_open(level)
 	var one := func(status: Label):
-		status.text = "Waiting for Nutaku…"
+		status.text = I18n.t("waiting_nutaku")
 		var r := await Nutaku.buy(F2P.SKU_CANDLE)
 		status.text = F2PUI._pay_text(r)
 		if str(r.get("status", "")) == "success":
 			_open(level)
 	var wait := func(_s: Label): _to_map()
-	F2PUI.card(_win, "Out of candles",
-		["No candles left. " + F2P.candle_text(), "Candles come back on their own; the level waits."],
-		[["Refill · %s" % F2PUI.gold(F2P.SKU_REFILL), "Primary", refill, "Refill"],
-		 ["One candle · %s" % F2PUI.gold(F2P.SKU_CANDLE), "Amber", one, "Candle"],
-		 ["Wait", "Ghost", wait, "Map"]])
+	F2PUI.card(_win, I18n.t("out_of_candles"),
+		[I18n.f("no_candles", F2P.candle_text()), I18n.t("candles_come_back")],
+		[[I18n.f("refill_btn", F2PUI.gold(F2P.SKU_REFILL)), "Primary", refill, "Refill"],
+		 [I18n.f("one_candle_btn", F2PUI.gold(F2P.SKU_CANDLE)), "Amber", one, "Candle"],
+		 [I18n.t("wait"), "Ghost", wait, "Map"]])
 
 
 func _f2p_hint() -> void:
 	if not F2P.active_for(Fold.level_index) or Fold.done:
 		return
 	if Fold.is_special():
-		_hint.text = "No hints on this board"
+		_hint.text = I18n.t("no_hints_board")
 		return
 	var r := await F2P.use("hint")
 	if not r["ok"]:
-		_hint.text = "No hint: %s" % r["reason"]
+		_hint.text = I18n.f("no_hint", F2PUI.use_fail(r))
 		return
 	var mv := str((r["hint"] as Dictionary).get("move", ""))
-	var word: String = {"U": "UP", "D": "DOWN", "L": "LEFT", "R": "RIGHT"}.get(mv, "?")
+	var word: String = I18n.t({"U": "dir_up", "D": "dir_down", "L": "dir_left", "R": "dir_right"}.get(mv, "dir_up")) if mv in ["U", "D", "L", "R"] else "?"
 	_sync()
-	_hint.text = "Hint: fold %s" % word
+	_hint.text = I18n.f("hint_fold", word)
 
 
 ## The daily challenge's end: what the server paid (once a day), the streak, the countdown.
 func _show_daily_done(stars: int) -> void:
 	var lines := []
 	if bool(_last_finish.get("rewarded", false)):
-		lines.append("Today's reward: " + F2PUI._reward_text(_last_finish.get("applied", {})))
+		lines.append(I18n.f("todays_reward", F2PUI._reward_text(_last_finish.get("applied", {}))))
 		var sb = _last_finish.get("streak_bonus", {})
 		if typeof(sb) == TYPE_DICTIONARY and not sb.is_empty():
-			lines.append("Streak bonus: " + F2PUI._reward_text(sb))
+			lines.append(I18n.f("streak_bonus", F2PUI._reward_text(sb)))
 	else:
-		lines.append("Already claimed today: this run is for the stars only.")
-	lines.append("Challenge streak: %d day%s" % [int(F2P.challenge.get("streak", 0)),
-		"" if int(F2P.challenge.get("streak", 0)) == 1 else "s"])
-	lines.append("Next challenge in " + F2P.challenge_countdown())
+		lines.append(I18n.t("already_claimed"))
+	lines.append(I18n.f("ch_streak", int(F2P.challenge.get("streak", 0))))
+	lines.append(I18n.f("next_challenge", F2P.challenge_countdown()))
 	var home := func(_s: Label): _to_map()
 	if Fold.level_index == Fold.EVENT:
 		_show_event_done(stars)
 		return
 	var again := func(_s: Label): _open(Fold.DAILY)
-	F2PUI.card(_win, "Daily challenge %s" % "★".repeat(stars), lines,
-		[["Map", "Primary", home, "Map"], ["Play again", "Ghost", again, "Again"]])
+	F2PUI.card(_win, I18n.f("daily_done", "★".repeat(stars)), lines,
+		[[I18n.t("map"), "Primary", home, "Map"], [I18n.t("dc_play_again"), "Ghost", again, "Again"]])
 
 
 ## An event board's end: its reward on the first clear, the track, the week's exclusive.
@@ -1684,27 +1684,27 @@ func _show_event_done(stars: int) -> void:
 	var ev := F2P.event
 	var lines := []
 	if bool(_last_finish.get("first_clear", false)):
-		lines.append("Board reward: " + F2PUI._reward_text(_last_finish.get("applied", {})))
+		lines.append(I18n.f("board_reward", F2PUI._reward_text(_last_finish.get("applied", {}))))
 	var exc = _last_finish.get("exclusive", {})
 	if typeof(exc) == TYPE_DICTIONARY and not exc.is_empty():
-		lines.append("All seven! %s is yours, and a night of unlimited candles." % str(ev.get("exclusive_label", "")))
-	lines.append("%s: %d of %d boards  ·  ends in %s" % [str(ev.get("title", "")), int(ev.get("cleared", 0)),
+		lines.append(I18n.f("all_seven", I18n.event_reward(ev)))
+	lines.append(I18n.t("event_progress") % [I18n.event_title(ev), int(ev.get("cleared", 0)),
 		(ev.get("boards", []) as Array).size(), F2P.event_ends_text()])
 	var home := func(_s: Label): _to_map()
-	var buttons := [["Map", "Ghost", home, "Map"]]
+	var buttons := [[I18n.t("map"), "Ghost", home, "Map"]]
 	var nb := F2P.event_next_board()
 	var boards: Array = ev.get("boards", [])
 	if nb >= 0 and nb < boards.size() and not bool(boards[nb]["cleared"]):
 		var nxt := func(_s: Label):
 			F2P.event_board = nb
 			_open(Fold.EVENT)
-		buttons.push_front(["Next board", "Primary", nxt, "NextBoard"])
-	F2PUI.card(_win, "%s %s" % [str(ev.get("title", "Event")), "★".repeat(stars)], lines, buttons)
+		buttons.push_front([I18n.t("next_board"), "Primary", nxt, "NextBoard"])
+	F2PUI.card(_win, "%s %s" % [I18n.event_title(ev), "★".repeat(stars)], lines, buttons)
 
 
 ## A first-clear milestone the server paid (config f2p.milestones): a note that fades.
 func _milestone_toast(ms: Dictionary) -> void:
-	var l := StudioTheme.display_label("%s  ·  %s" % [str(ms.get("label", "Milestone")),
+	var l := StudioTheme.display_label("%s  ·  %s" % [_milestone_label(ms),
 		F2PUI._reward_text(ms.get("applied", {}))], 22, Palette.GOLD)
 	l.name = "MilestoneToast"
 	l.set_anchors_preset(Control.PRESET_CENTER_TOP)
@@ -1718,7 +1718,19 @@ func _milestone_toast(ms: Dictionary) -> void:
 
 func _f2p_error(msg: String) -> void:
 	var home := func(_s: Label): _to_map()
-	F2PUI.card(_win, "Server", [msg], [["Map", "Amber", home, "Map"]])
+	F2PUI.card(_win, I18n.t("server"), [msg], [[I18n.t("map"), "Amber", home, "Map"]])
+
+
+## The server's label is "Halfway to <scene>"; the level says which scene, so the words
+## come from I18n rather than from the label.
+func _milestone_label(ms: Dictionary) -> String:
+	var lv := int(ms.get("level", Fold.level_index))
+	if lv >= 0:
+		var sc := Tier.scene_for(Tier.of_level(lv))
+		var title := I18n.scene_title(str(sc.get("id", "")))
+		if title != "":
+			return I18n.f("milestone_halfway", title)
+	return I18n.t("milestone")
 
 
 # --- juice (2026-09-23) ---------------------------------------------------------------------------
@@ -1968,11 +1980,11 @@ func _show_start_card() -> void:
 	var goal := _start_card.find_child("Goal", true, false) as Label
 	head.text = "%s %d" % [I18n.t("level"), Fold.level_index + 1]
 	if Fold.is_special():
-		head.text = "Daily challenge" if Fold.is_daily() else str(F2P.event.get("title", "Event"))
+		head.text = I18n.t("daily_head") if Fold.is_daily() else I18n.event_title(F2P.event)
 	goal.text = "%s   ·   %s" % [I18n.f("goal", Fold.target()), I18n.f("parhint", Fold.par())]
 	var alt := Juice.goal_text(Fold.level_index)
 	if alt != "":
-		head.text += "  ·  BONUS GOAL"
+		head.text += I18n.t("bonus_goal")
 		goal.text = "%s   +   %s" % [I18n.f("goal", Fold.target()), alt]
 	_start_card.visible = true
 	_start_card.modulate = Color(1, 1, 1, 1)
@@ -2010,12 +2022,12 @@ func _show_results(stars: int, move_count: int, p: int, gained: int, before: int
 	col.add_theme_constant_override("separation", 8)
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card.add_child(col)
-	var cheer: String = ["", "Cleared!", "Great!", "Perfect!"][clampi(stars, 1, 3)]
+	var cheer := I18n.t("cheer_%d" % clampi(stars, 1, 3))
 	var h := StudioTheme.display_label(cheer, 46, Palette.ACCENT_DEEP)
 	h.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(h)
-	var lv := StudioTheme.mono_label(("DAILY #%d" % int(F2P.challenge.get("number", 0))) if Fold.is_daily()
-		else ("EVENT · BOARD %d" % (F2P.event_board + 1)) if Fold.is_special()
+	var lv := StudioTheme.mono_label(I18n.f("res_daily", int(F2P.challenge.get("number", 0))) if Fold.is_daily()
+		else I18n.f("res_event", F2P.event_board + 1) if Fold.is_special()
 		else "%s %d" % [I18n.t("level").to_upper(), Fold.level_index + 1], 14, Palette.MUTED)
 	lv.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(lv)
@@ -2035,7 +2047,7 @@ func _show_results(stars: int, move_count: int, p: int, gained: int, before: int
 	var stat := StudioTheme.serif_label("%s   ·   %s" % [I18n.f("moves", move_count), I18n.f("parhint", p)], 14, Palette.MUTED)
 	stat.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(stat)
-	var tap := StudioTheme.mono_label("tap to continue", 12, Palette.FAINT)
+	var tap := StudioTheme.mono_label(I18n.t("tap"), 12, Palette.FAINT)
 	tap.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(tap)
 
