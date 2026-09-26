@@ -2,6 +2,7 @@
   "installed": [
     "cg_breakroom_x",
     "cg_breakroom_x_locked",
+    "cg_desk_x",
     "cg_desk_x_locked",
     "cg_landing_x",
     "cg_landing_x_locked",
@@ -12,10 +13,9 @@
     "cg_terminal_x",
     "cg_terminal_x_locked"
   ],
-  "placeholder": [
-    "cg_desk_x"
-  ],
+  "placeholder": [],
   "suspect": [
+    "cg_desk_x (76884 colours)",
     "cg_desk_x_locked (72020 colours)",
     "cg_landing_x_locked (79617 colours)"
   ],
