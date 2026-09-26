@@ -70,11 +70,12 @@ func _run() -> void:
 	check(StoryX.word_count() > 1500, "fork word count unexpectedly low: %d" % StoryX.word_count())
 	print("fork adds ~%d words of English" % StoryX.word_count())
 
-	# ---- the shipped locale list is the corrected one ------------------------
-	# The source used to sell ja/ko/es tables that are ~95% Chinese text; the mainstream
-	# game was corrected to ["en","zh"] and the fork carries the correction.
-	check(Loc.ALLOWED == ["en", "zh"], "locale list is %s, not the corrected [en, zh]" % [Loc.ALLOWED])
-	for dead in ["ja", "ko", "es"]:
+	# ---- the shipped locale list ----------------------------------------------
+	# en/zh/ja since 2026-09-23: ja was translated for real (StoryJa + locale/story_ja.json,
+	# tests/locale_cover.gd fails on any untranslated line). ko and es were never carried
+	# into the fork and must not ship half-translated.
+	check(Loc.ALLOWED == ["en", "zh", "ja"], "locale list is %s, not [en, zh, ja]" % [Loc.ALLOWED])
+	for dead in ["ko", "es"]:
 		check(not ResourceLoader.exists("res://scripts/story_%s.gd" % dead),
 			"story_%s.gd is still in the package" % dead)
 
