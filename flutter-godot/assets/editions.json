@@ -38,6 +38,16 @@
      "Talk with me",
      "You look good today"
     ]
+   },
+   "story": {
+    "mem": "◇ MEMORIES",
+    "chapter": "CHAPTER COMPLETE",
+    "reward": "MEMORY UNLOCKED",
+    "next": "ENTER NEXT CHAPTER",
+    "archive": "MEMORIES",
+    "empty": "Nothing collected yet. Go make the first memory with him.",
+    "close": "CLOSE",
+    "complete": "COMPLETE"
    }
   },
   "es": {
@@ -71,6 +81,16 @@
      "Quédate conmigo",
      "Hoy estás irresistible"
     ]
+   },
+   "story": {
+    "mem": "◇ RECUERDOS",
+    "chapter": "CAPÍTULO COMPLETADO",
+    "reward": "RECUERDO DESBLOQUEADO",
+    "next": "SIGUIENTE CAPÍTULO",
+    "archive": "RECUERDOS",
+    "empty": "Aún no hay recuerdos.",
+    "close": "CERRAR",
+    "complete": "COMPLETO"
    }
   },
   "pt-BR": {
@@ -104,6 +124,16 @@
      "Fica aqui comigo",
      "Você está lindo hoje"
     ]
+   },
+   "story": {
+    "mem": "◇ MEMÓRIAS",
+    "chapter": "CAPÍTULO CONCLUÍDO",
+    "reward": "MEMÓRIA DESBLOQUEADA",
+    "next": "PRÓXIMO CAPÍTULO",
+    "archive": "MEMÓRIAS",
+    "empty": "Ainda não há memórias.",
+    "close": "FECHAR",
+    "complete": "CONCLUÍDO"
    }
   },
   "zh": {
@@ -137,6 +167,16 @@
      "陪我说说话",
      "你今天好看"
     ]
+   },
+   "story": {
+    "mem": "◇ 回忆收藏",
+    "chapter": "章节完成",
+    "reward": "获得回忆",
+    "next": "进入下一章",
+    "archive": "回忆收藏",
+    "empty": "还没有收藏。去和他创造第一个回忆吧。",
+    "close": "关闭",
+    "complete": "已完成"
    }
   },
   "ja": {
@@ -170,7 +210,22 @@
      "少し話さない？",
      "今日、素敵だね"
     ]
+   },
+   "story": {
+    "mem": "◇ 記憶",
+    "chapter": "章を終えた",
+    "reward": "記憶をひらいた",
+    "next": "次の章へ",
+    "archive": "記憶",
+    "empty": "まだ記憶はありません。",
+    "close": "閉じる",
+    "complete": "完了"
    }
   }
+ },
+ "attach_icon": {
+  "anxious": "💓",
+  "avoidant": "🌙",
+  "secure": "🌿"
  }
 }

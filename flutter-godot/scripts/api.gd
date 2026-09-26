@@ -91,6 +91,25 @@ func get_json(path: String) -> Dictionary:
 	return parsed
 
 
+## POST a JSON body, JSON back. /choose and /continue (the story engine) use this.
+func post_json(path: String, body: Dictionary) -> Dictionary:
+	var http := HTTPRequest.new()
+	http.timeout = TIMEOUT
+	add_child(http)
+	var err := http.request(base_url + path, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify(body))
+	if err != OK:
+		http.queue_free()
+		return {"error": "request error %d" % err}
+	var res: Array = await http.request_completed
+	http.queue_free()
+	if int(res[0]) != HTTPRequest.RESULT_SUCCESS:
+		return {"error": "network: no answer from the backend"}
+	var parsed = JSON.parse_string((res[3] as PackedByteArray).get_string_from_utf8())
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return {"error": "bad json (%d)" % int(res[1])}
+	return parsed
+
+
 func routes(lang: String = "en") -> Dictionary:
 	return await get_json("/routes?lang=%s" % lang.uri_encode())
 

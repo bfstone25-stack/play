@@ -12,6 +12,7 @@ const SETTINGS := "user://settings.cfg"
 var order: Array = []
 var editions: Dictionary = {}
 var current := "en"
+var attach_icons: Dictionary = {}
 
 
 func _ready() -> void:
@@ -21,6 +22,7 @@ func _ready() -> void:
 		if d is Dictionary:
 			order = d.get("order", [])
 			editions = d.get("editions", {})
+			attach_icons = d.get("attach_icon", {})
 	var cfg := ConfigFile.new()
 	var saved := ""
 	if cfg.load(SETTINGS) == OK:
@@ -78,3 +80,15 @@ func label() -> String:
 func ui(key: String, fallback := "") -> String:
 	var u: Dictionary = data().get("ui", {})
 	return str(u.get(key, fallback))
+
+
+## index.html GAME_UI: chapter / reward / next / archive / empty / close / complete / mem.
+func story(key: String, fallback := "") -> String:
+	var u: Dictionary = data().get("story", {})
+	return str(u.get(key, fallback))
+
+
+## The zh chapter copy is title_zh/goal_zh; every other edition reads the _en fields
+## (index.html renderChapterCard does exactly this).
+func field(rec: Dictionary, name: String) -> String:
+	return str(rec.get(name + ("_zh" if current == "zh" else "_en"), ""))

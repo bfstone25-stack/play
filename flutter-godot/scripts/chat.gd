@@ -35,6 +35,13 @@ var route: Dictionary = {}
 var hist: Array = []
 var aff: int = 0
 var story_state: Dictionary = {}
+## Story engine (PORT_PLAN.md step 6 + the _story engine): the chapter line under the header,
+## the beat card, and the three overlays -- a choice, a chapter clear, an ending. What the
+## backend returns is rendered exactly as index.html renders it; nothing is decided here.
+var _chap: Label
+var _overlay: Control
+var story_done := false
+var _pending_clear: Dictionary = {}
 var busy := false
 var _reply_bubble: RichTextLabel = null
 
@@ -91,6 +98,13 @@ func _build() -> void:
 	var header := HBoxContainer.new()
 	header.add_theme_constant_override("separation", 14)
 	root_vb.add_child(header)
+	_chap = Label.new()
+	_chap.add_theme_font_override("font", FONT_REG)
+	_chap.add_theme_font_size_override("font_size", 15)
+	_chap.add_theme_color_override("font_color", Color(0.93, 0.84, 0.80, 0.9))
+	_chap.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_chap.hide()
+	root_vb.add_child(_chap)
 
 	var back_btn := ShapedButton.new()
 	back_btn.shape = ShapedButton.Shape.FOLD
@@ -309,6 +323,7 @@ func _send() -> void:
 	var milestone = result.get("milestone")
 	if milestone != null and str(milestone) != "":
 		_show_milestone(str(milestone))
+	_apply_story(result)
 	_save()
 
 
@@ -409,3 +424,198 @@ func _load_saved() -> void:
 	aff = int(parsed.get("aff", 0))
 	if parsed.get("story_state") is Dictionary:
 		story_state = parsed["story_state"]
+
+
+# --- story engine --------------------------------------------------------------------------
+## index.html say(): story -> chapter card, attach -> icon, beat -> card, story.choice -> the
+## choice overlay (after the beat has had its moment).
+func _apply_story(r: Dictionary) -> void:
+	if r.get("story") is Dictionary:
+		_render_chapter(r["story"])
+	if r.get("attach") is Dictionary:
+		var t := str(r["attach"].get("type", ""))
+		if Edition.attach_icons.has(t):
+			_mood_label.text = str(Edition.attach_icons[t]) + " " + _mood_label.text
+	if str(r.get("beat", "")) != "":
+		_show_beat(str(r["beat"]))
+	if r.get("story") is Dictionary and r["story"].get("choice") is Dictionary and not story_done:
+		var choice: Dictionary = r["story"]["choice"]
+		get_tree().create_timer(2.4 if str(r.get("beat", "")) != "" else 1.2).timeout.connect(func(): _show_choice(choice))
+
+
+func _render_chapter(s: Dictionary) -> void:
+	var idx := int(s.get("chapter_index", 0))
+	if idx <= 0:
+		_chap.hide()
+		return
+	var head := ("第%d章" if Edition.current in ["zh", "ja"] else "Ch. %d") % idx
+	var title := Edition.field(s, "title")
+	var goal := Edition.field(s, "goal")
+	_chap.text = "%s / %d   %s%s" % [head, int(s.get("chapter_total", 0)), title, ("   ·   " + goal) if goal != "" else ""]
+	_chap.show()
+
+
+func _show_beat(txt: String) -> void:
+	var b := _add_bubble("◈ " + txt, false)
+	b.modulate = Color(1.0, 0.86, 0.9, 1.0)
+	get_tree().create_timer(7.0).timeout.connect(func():
+		if is_instance_valid(b):
+			var tw := b.create_tween()
+			tw.tween_property(b, "modulate:a", 0.0, 0.6)
+			tw.tween_callback(b.queue_free))
+
+
+func _open_overlay() -> VBoxContainer:
+	_close_overlay()
+	_overlay = Control.new()
+	_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(_overlay)
+	var dim := ColorRect.new()
+	dim.color = Color(0.05, 0.02, 0.04, 0.55)
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_overlay.add_child(dim)
+	var card := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color("#2a1422")
+	sb.border_color = Color("#d59a82")
+	sb.set_border_width_all(2)
+	sb.set_corner_radius_all(18)
+	sb.set_content_margin_all(26)
+	card.add_theme_stylebox_override("panel", sb)
+	card.set_anchors_preset(Control.PRESET_CENTER)
+	card.custom_minimum_size = Vector2(520, 0)
+	card.position = Vector2(-260, -180)
+	_overlay.add_child(card)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 12)
+	card.add_child(vb)
+	return vb
+
+
+func _close_overlay() -> void:
+	if is_instance_valid(_overlay):
+		_overlay.queue_free()
+	_overlay = null
+
+
+func _card_label(vb: VBoxContainer, text: String, size: int, bold := false) -> void:
+	var l := Label.new()
+	l.text = text
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.add_theme_font_override("font", FONT_BOLD if bold else FONT_REG)
+	l.add_theme_font_size_override("font_size", size)
+	l.add_theme_color_override("font_color", Color(0.97, 0.93, 0.89))
+	vb.add_child(l)
+
+
+func _card_button(vb: VBoxContainer, text: String, cb: Callable) -> void:
+	var b := ShapedButton.new()
+	b.shape = ShapedButton.Shape.CARD
+	b.tint = Color("#572033")
+	b.ink = Color(0.98, 0.93, 0.95)
+	b.custom_minimum_size = Vector2(0, 44)
+	b.add_theme_font_override("font", FONT_BOLD)
+	b.label = text
+	b.pressed.connect(cb)
+	vb.add_child(b)
+
+
+## The end-of-chapter choice. index.html pickChoice(): the chosen line goes into the history
+## as the player's turn, then /choose answers with reply/affection/chapter_clear/ending.
+func _show_choice(c: Dictionary) -> void:
+	var vb := _open_overlay()
+	_card_label(vb, str(c.get("prompt", "")), 20, true)
+	for o in c.get("options", []):
+		var opt: Dictionary = o
+		_card_button(vb, str(opt.get("text", "")), func(): _pick_choice(c, opt))
+
+
+func _pick_choice(c: Dictionary, opt: Dictionary) -> void:
+	_close_overlay()
+	var text := str(opt.get("text", ""))
+	hist.append({"role": "user", "content": text})
+	_add_bubble(text, true)
+	var r := await Api.post_json("/choose", {"route": route.get("id", ""), "chapter": c.get("chapter"),
+		"choice": c.get("id"), "option": int(opt.get("index", 0)), "affection": aff,
+		"story_state": story_state, "lang": Edition.content_set()})
+	if r.has("error"):
+		_add_bubble(ERROR_LINE, false)
+		return
+	if r.get("story_state") is Dictionary:
+		story_state = r["story_state"]
+	if r.has("affection"):
+		aff = int(r["affection"])
+		_update_affection_ui()
+	if str(r.get("reply", "")) != "":
+		hist.append({"role": "assistant", "content": str(r["reply"])})
+		_add_bubble(str(r["reply"]), false)
+	_save()
+	if r.get("chapter_clear") is Dictionary:
+		_pending_clear = r["chapter_clear"]
+		get_tree().create_timer(0.9).timeout.connect(func(): _show_chapter_clear(_pending_clear))
+	if r.get("ending") is Dictionary:
+		var end: Dictionary = r["ending"]
+		get_tree().create_timer(1.4).timeout.connect(func(): _show_ending(end))
+
+
+func _show_chapter_clear(clear: Dictionary) -> void:
+	var reward: Dictionary = clear.get("reward", {}) if clear.get("reward") is Dictionary else {}
+	Archive.collect("reward", reward if not reward.is_empty() else {"title": str(clear.get("title", ""))})
+	var vb := _open_overlay()
+	_card_label(vb, "%s · %d/%d" % [Edition.story("chapter", "CHAPTER COMPLETE"), int(clear.get("chapter_index", 0)), int(clear.get("chapter_total", 0))], 14)
+	_card_label(vb, str(clear.get("title", "")), 24, true)
+	_card_label(vb, "%s · %s" % [Edition.story("reward", "MEMORY UNLOCKED"), str(reward.get("kind", "memory")).to_upper()], 13)
+	_card_label(vb, str(reward.get("title", "")), 18, true)
+	_card_label(vb, str(reward.get("text", "")), 16)
+	_card_button(vb, Edition.story("next", "ENTER NEXT CHAPTER"), _continue_chapter)
+
+
+## index.html continueChapter(): chapter 1 is free, every later chapter is behind the gate
+## (ops/DUAL_TRACK.md). On a desktop download Gate.require() says yes without asking.
+func _continue_chapter() -> void:
+	var next_idx := int(_pending_clear.get("chapter_index", 1)) + 1
+	if next_idx >= 2 and not await Gate.require("ch%d" % next_idx, "Chapter %d" % next_idx, "chapter"):
+		return
+	var r := await Api.post_json("/continue", {"route": route.get("id", ""), "story_state": story_state,
+		"lang": Edition.content_set()})
+	if r.has("error"):
+		return
+	if r.get("story_state") is Dictionary:
+		story_state = r["story_state"]
+	_pending_clear = {}
+	_save()
+	_close_overlay()
+	if r.get("story") is Dictionary:
+		_render_chapter(r["story"])
+	if str(r.get("opening", "")) != "":
+		hist.append({"role": "assistant", "content": str(r["opening"])})
+		_add_bubble(str(r["opening"]), false)
+
+
+## index.html showEnding(): the run is over, so this is where the rest of the catalogue is
+## offered -- board.js through the bridge, which refuses the adult board where it is not
+## allowed.
+func _show_ending(end: Dictionary) -> void:
+	story_done = true
+	Archive.collect("ending", end)
+	var label: String = {"zh": "结 局", "en": "ENDING", "ja": "結 末", "es": "FINAL", "pt-BR": "FINAL"}.get(Edition.current, "ENDING")
+	var vb := _open_overlay()
+	_card_label(vb, label, 14)
+	_card_label(vb, str(end.get("title", "")), 24, true)
+	_card_label(vb, str(end.get("text", "")), 16)
+	_card_button(vb, Edition.ui("back", "back"), func():
+		_close_overlay()
+		back.emit())
+	get_tree().create_timer(0.9).timeout.connect(func(): Gate.board_offer_more("adult"))
+
+
+## QA: open each overlay without playing to it (engine shots on the GPU box).
+func debug_story(kind: String) -> void:
+	match kind:
+		"choice":
+			_show_choice({"prompt": "He waits for your answer.", "options": [{"index": 0, "text": "Stay a little longer"}, {"index": 1, "text": "It's late — I should go"}]})
+		"clear":
+			_show_chapter_clear({"chapter_index": 1, "chapter_total": 5, "title": "The first coffee", "reward": {"kind": "memory", "title": "Two sugars", "text": "He remembered how you take it."}})
+		"ending":
+			_show_ending({"title": "He remembers you", "text": "Some people stay in the details."})

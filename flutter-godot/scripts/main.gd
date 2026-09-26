@@ -40,16 +40,21 @@ func _ready() -> void:
 			return
 	var goto_screen := ""
 	var say_text := ""
+	var story_kind := ""
 	for a in argv:
 		if a.begins_with("--goto="):
 			goto_screen = a.substr(7)
 		elif a.begins_with("--say="):
 			say_text = a.substr(6)
+		elif a.begins_with("--story="):
+			story_kind = a.substr(8)
 	# QA-only screen jump: the shot hook above only ever saw the title, and route select /
 	# chat have no way to get in front of the camera on a headless capture without a mouse
 	# to click "begin" with. Nothing in the game calls this.
 	if goto_screen == "route_select":
 		_show_route_select()
+	elif goto_screen == "archive":
+		_show_archive()
 	elif goto_screen == "chat":
 		_show_route_select()
 		_on_route_picked({
@@ -62,6 +67,8 @@ func _ready() -> void:
 			# --shot-after has to clear the LLM's actual generation time, not a frame or
 			# two — the caller is expected to pass something like 20-30 for this.
 			chat.debug_send(say_text)
+		if story_kind != "":
+			chat.debug_story(story_kind)
 	if shot != "":
 		# --hover forces a rail item into its hover state before the frame is taken.
 		# Hover and press are item 4 of TITLE_SCREENS.md and the only way to check them is
@@ -83,7 +90,7 @@ func _on_chose(action: String) -> void:
 			Tel.ev("gate_passed", {"via": "click", "phase": "title"})   # = index.html:1947
 			_show_route_select()
 		"memories":
-			push_warning("memory archive is not ported yet — PORT_PLAN.md step 6")
+			_show_archive()
 		"opening":
 			push_warning("opening is not ported yet — PORT_PLAN.md step 5")
 		"language":
@@ -171,3 +178,61 @@ func _shoot(path: String, after: float) -> void:
 func _leave_chat() -> void:
 	Gate.board_offer_break()
 	_show_route_select()
+
+
+## The memory archive (PORT_PLAN.md step 6): every chapter reward and ending earned in the
+## current edition, over the title. Empty says so in the edition's own words.
+var _archive: Control
+
+
+func _show_archive() -> void:
+	if is_instance_valid(_archive):
+		_archive.queue_free()
+	_archive = Control.new()
+	_archive.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_archive.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(_archive)
+	var dim := ColorRect.new()
+	dim.color = Color(0.05, 0.02, 0.04, 0.6)
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_archive.add_child(dim)
+	var card := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color("#2a1422")
+	sb.border_color = Color("#d59a82")
+	sb.set_border_width_all(2)
+	sb.set_corner_radius_all(18)
+	sb.set_content_margin_all(26)
+	card.add_theme_stylebox_override("panel", sb)
+	card.custom_minimum_size = Vector2(560, 360)
+	card.position = Vector2(360, 140)
+	_archive.add_child(card)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 10)
+	card.add_child(vb)
+	var head := Label.new()
+	head.text = Edition.story("archive", "MEMORIES")
+	head.add_theme_font_size_override("font_size", 24)
+	vb.add_child(head)
+	var d := Archive.load_all()
+	var items: Array = []
+	for e in d.get("endings", []):
+		items.append(["◆", e])
+	for r in d.get("rewards", []):
+		items.append(["◇", r])
+	if items.is_empty():
+		var empty := Label.new()
+		empty.text = Edition.story("empty", "Nothing collected yet.")
+		empty.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		vb.add_child(empty)
+	for it in items:
+		var l := Label.new()
+		l.text = "%s  %s — %s" % [it[0], str(it[1].get("title", "")), str(it[1].get("text", ""))]
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		vb.add_child(l)
+	var close := ShapedButton.new()
+	close.shape = ShapedButton.Shape.FOLD
+	close.label = Edition.story("close", "CLOSE")
+	close.custom_minimum_size = Vector2(160, 40)
+	close.pressed.connect(func(): _archive.queue_free())
+	vb.add_child(close)

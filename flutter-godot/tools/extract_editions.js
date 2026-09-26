@@ -14,16 +14,22 @@ const html = fs.readFileSync(path.join(FRONT, "index.html"), "utf8");
 const m = html.match(/const T=(\{[\s\S]*?\}\}\});\nfunction tr\(\)/);
 if (!m) throw new Error("T table not found in index.html");
 const T = vm.runInNewContext("(" + m[1] + ")");
+const g = html.match(/const GAME_UI=(\{[\s\S]*?\n\});\nfunction gameUi\(\)/);
+if (!g) throw new Error("GAME_UI not found in index.html");
+const GAME_UI = vm.runInNewContext("(" + g[1] + ")");
+const ai = html.match(/const ATTACH_ICON=(\{[^;]*\});/);
+const ATTACH_ICON = ai ? vm.runInNewContext("(" + ai[1] + ")") : {};
 const src = E && E.editions;
 if (!src) throw new Error("editions.js exposed no editions: keys " + Object.keys(win));
 const order = E.order || ["en", "es", "pt-BR", "zh", "ja"];
-const out = {order: order, editions: {}};
+const out = {order: order, editions: {}, attach_icon: ATTACH_ICON};
 for (const id of order) {
   const e = src[id] || (E.get && E.get(id));
   const t = T[id] || T.en;
   out.editions[id] = {id, label: e.label, contentSet: e.contentSet, title: e.title,
     localTitle: e.localTitle, tagline: e.tagline, palette: e.palette,
-    ui: {sub: t.sub, aff: t.aff, ph: t.ph, send: t.send, back: t.back, enter: t.enter, chips: t.chips}};
+    ui: {sub: t.sub, aff: t.aff, ph: t.ph, send: t.send, back: t.back, enter: t.enter, chips: t.chips},
+    story: GAME_UI[id] || GAME_UI.en};
 }
 fs.writeFileSync(path.join(__dirname, "..", "assets", "editions.json"), JSON.stringify(out, null, 1) + "\n");
 console.log("editions:", order.join(" "));
