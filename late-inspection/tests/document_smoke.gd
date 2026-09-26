@@ -1,6 +1,13 @@
 extends SceneTree
 
 func _init() -> void:
+	call_deferred("_run")
+
+
+## Deferred, like tests/smoke.gd and choice_smoke.gd: main.tscn loaded from _init compiles
+## game.gd before the Gate autoload exists (2026-09-26).
+func _run() -> void:
+	await process_frame
 	var scene := (load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(scene)
 	await process_frame

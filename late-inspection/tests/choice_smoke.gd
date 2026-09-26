@@ -1,31 +1,18 @@
-## KNOWN: THIS TEST HANGS. Do not spend an afternoon rediscovering it — that has now
-## happened twice, most recently 2026-09-19 during the title-screen pass.
-##
-## It never reaches its own quit(0): run it with
-##
-##   $GODOT --path . -s res://tests/choice_smoke.gd
-##
-## and it sits forever rather than printing CHOICE_SMOKE_OK. The failure is PRE-EXISTING
-## and has nothing to do with the title screen, the HUD splash or the fonts — it predates
-## all of that work. The suspect is an `await process_frame` that never resolves once the
-## tree is paused (scripts/gate.gd pauses it; a SceneTree script's process_frame is not
-## exempt the way a PROCESS_MODE_ALWAYS node is), but that has not been confirmed.
-##
-## tests/vn_chrome.gd hangs the same way and is almost certainly the same bug: it is the
-## other test that drives the VN chrome after hide_splash().
-##
-## The green set, as measured on 2026-09-19:
-##   PASS  progression.gd  font_pipeline.gd  locale_scan.gd  content_audit.gd
-##         title_shot.gd (five locales)
-##   FAIL  smoke.gd            "expected initial inspection interaction" — the
-##                             interactable group is empty at frame 3
-##         document_smoke.gd   scene.active_ids on a Node3D: it reaches for the Game
-##                             node and gets the scene root
-##   HANG  choice_smoke.gd  vn_chrome.gd
-## All five of those are PRE-EXISTING and none is about the title screen.
+## Hung until 2026-09-26. The cause was loading main.tscn from _init, which compiles
+## game.gd before the Gate autoload is registered; the script failed and the first await
+## never resumed. Deferred to _run like tests/smoke.gd, it passes. vn_chrome.gd and
+## document_smoke.gd had the same bug.
 extends SceneTree
 
 func _init() -> void:
+	call_deferred("_run")
+
+
+## Deferred for the same reason as tests/smoke.gd (2026-09-26): loading main.tscn from
+## _init compiles game.gd before the autoloads exist, and awaiting a frame from _init
+## never resumes -- that was the "hang".
+func _run() -> void:
+	await process_frame
 	var packed := load("res://scenes/main.tscn")
 	if packed == null:
 		push_error("main.tscn failed")

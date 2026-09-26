@@ -1,9 +1,14 @@
-## KNOWN: THIS TEST HANGS — see the header of tests/choice_smoke.gd, which hangs the
-## same way and carries the full note. Pre-existing as of 2026-09-19, unrelated to the
-## title screen. Not part of the green set.
+## Hung until 2026-09-26: main.tscn was loaded from _init, before the autoloads existed.
 extends SceneTree
 
 func _init() -> void:
+	call_deferred("_run")
+
+
+## Deferred, like tests/smoke.gd and choice_smoke.gd: main.tscn loaded from _init compiles
+## game.gd before the Gate autoload exists (2026-09-26).
+func _run() -> void:
+	await process_frame
 	DisplayServer.window_set_size(Vector2i(1280, 720))
 	var scene: Node = (load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(scene)
