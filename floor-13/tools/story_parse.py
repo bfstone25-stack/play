@@ -1,3 +1,4 @@
+import re
 """Read the GDScript story tables as real Python data.
 
 The literals are Python-compatible once the `const NAME := ` header is stripped, so
@@ -79,6 +80,29 @@ def body_strings(path):
                 out.append((f"end.{eid}[{n}].who", pair[0]))
                 out.append((f"end.{eid}[{n}].say", pair[1]))
     out.extend(conditional_strings(path))
+    # 2026-09-27: the structure walk above knew choices as "options"/"label"/"result",
+    # but the data stores them as "a"/"b": [label, FLAG] with the outcome lines keyed by
+    # the flag ("TRUST": [[who, say], ...]). Every choice label and every outcome line --
+    # 47 of story_ja.gd's 745 strings, all Chinese -- was invisible, and this audit said
+    # 491/491. So also take EVERY string value anywhere in AREAS and ENDINGS, skipping only
+    # ids and ALL-CAPS flag values, and let the checks see what the player sees.
+    seen = {t for _, t in out}
+    def walk(x, route):
+        if isinstance(x, dict):
+            for k, v in x.items():
+                if k in ("id",):
+                    continue
+                walk(v, f"{route}.{k}")
+        elif isinstance(x, list):
+            for n, v in enumerate(x):
+                walk(v, f"{route}[{n}]")
+        elif isinstance(x, str) and x.strip() and x not in seen:
+            if re.fullmatch(r"[A-Z0-9_ /.:-]+", x) or re.fullmatch(r"[a-z0-9_]+", x):
+                return
+            seen.add(x)
+            out.append((route + "*", x))
+    walk(areas, "areas")
+    walk(ends, "end")
     return [(r, t) for r, t in out if isinstance(t, str) and t.strip()]
 
 # The function ends at a blank-line run OR at end of file. Requiring "\n\n\n" meant
