@@ -138,8 +138,9 @@ func _build_2d() -> void:
 	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 	logo.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	logo.position = Vector2(64, 56)
-	logo.size = Vector2(660, 246)
+	# 2026-09-25: 660x246 -> 480x180 so the mark ends clear of her face on the saturated plate
+	logo.position = Vector2(40, 56)
+	logo.size = Vector2(480, 180)
 	logo.modulate.a = 1.0
 	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(logo)
@@ -181,7 +182,7 @@ func play_in() -> void:
 	# the tree). Live, that meant the title screen had no title on it. Motion is allowed
 	# to add to a finished screen; it is never allowed to be the thing that finishes it.
 	logo.modulate.a = 0.85
-	logo.position = Vector2(64, 56)
+	logo.position = Vector2(40, 56)
 	var tw := create_tween()
 	tw.tween_interval(0.7)
 	tw.tween_property(logo, "modulate:a", 0.88, 0.05)
