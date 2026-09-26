@@ -86,7 +86,10 @@ func _on_chose(action: String) -> void:
 		"opening":
 			push_warning("opening is not ported yet — PORT_PLAN.md step 5")
 		"language":
-			push_warning("edition switch is not ported yet — PORT_PLAN.md step 3")
+			# PORT_PLAN.md step 3: cycle the edition; the next route list is that edition's cast
+			Edition.cycle()
+			if title.has_method("relabel_language"):
+				title.relabel_language()
 
 
 func _show_title() -> void:

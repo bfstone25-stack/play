@@ -19,6 +19,9 @@ signal back()
 const FONT_REG := preload("res://assets/fonts/WorkSans-Regular.ttf")
 const FONT_BOLD := preload("res://assets/fonts/WorkSans-Bold.ttf")
 const FONT_CJK := preload("res://assets/fonts/wqy-microhei.ttc")
+## Colour emoji for the route cards and portraits (🥃🔥🎸…), subset to the glyphs the cast
+## and these scripts use (23 KB); without it they drew as tofu boxes.
+const FONT_EMOJI := preload("res://assets/fonts/NotoColorEmoji-subset.ttf")
 var _fonts := [FONT_REG, FONT_BOLD]
 
 var _grid: GridContainer
@@ -40,7 +43,9 @@ func _wire_fonts() -> void:
 		var fb: Array = f.fallbacks.duplicate()
 		if not fb.has(FONT_CJK):
 			fb.append(FONT_CJK)
-			f.fallbacks = fb
+		if not fb.has(FONT_EMOJI):
+			fb.append(FONT_EMOJI)
+		f.fallbacks = fb
 
 
 func _build() -> void:
@@ -113,7 +118,7 @@ func reload() -> void:
 	_status.text = "loading..."
 	for c in _grid.get_children():
 		c.queue_free()
-	var res := await Api.routes("en")
+	var res := await Api.routes(Edition.content_set())
 	_loading = false
 	if not is_inside_tree():
 		return
@@ -158,6 +163,7 @@ func _make_card(r: Dictionary) -> Control:
 
 	var emoji := Label.new()
 	emoji.text = str(r.get("emoji", "✦"))
+	emoji.add_theme_font_override("font", FONT_REG)   # the font that carries the emoji fallback
 	emoji.add_theme_font_size_override("font_size", 36)
 	vb.add_child(emoji)
 

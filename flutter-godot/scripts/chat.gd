@@ -7,7 +7,7 @@ class_name Chat
 ##
 ## Talks to the same backend the HTML build does (Api.say_stream -> POST /say_stream),
 ## streamed rather than buffered — see scripts/api.gd for why plain HTTPRequest cannot
-## do this. Editions (PORT_PLAN.md step 3) are not ported: lang is hard-coded "en", which
+## do this. Editions (PORT_PLAN.md step 3) are ported: lang is Edition.content_set(), which
 ## means only the three en-langed routes (ethan, liam, adrian) are reachable through
 ## route_select.gd today, the same way the HTML build only shows a route once its
 ## `langs` matches the active edition. Chapters/choices/endings (the `_story` engine) and
@@ -18,6 +18,9 @@ signal back()
 const FONT_REG := preload("res://assets/fonts/WorkSans-Regular.ttf")
 const FONT_BOLD := preload("res://assets/fonts/WorkSans-Bold.ttf")
 const FONT_CJK := preload("res://assets/fonts/wqy-microhei.ttc")
+## Colour emoji for the route cards and portraits (🥃🔥🎸…), subset to the glyphs the cast
+## and these scripts use (23 KB); without it they drew as tofu boxes.
+const FONT_EMOJI := preload("res://assets/fonts/NotoColorEmoji-subset.ttf")
 var _fonts := [FONT_REG, FONT_BOLD]
 
 const ERROR_LINE := "(connection hiccup... try again?)"
@@ -61,7 +64,9 @@ func _wire_fonts() -> void:
 		var fb: Array = f.fallbacks.duplicate()
 		if not fb.has(FONT_CJK):
 			fb.append(FONT_CJK)
-			f.fallbacks = fb
+		if not fb.has(FONT_EMOJI):
+			fb.append(FONT_EMOJI)
+		f.fallbacks = fb
 
 
 func _build() -> void:
@@ -95,7 +100,7 @@ func _build() -> void:
 	back_btn.ink = Color(0.97, 0.93, 0.89)
 	back_btn.add_theme_font_override("font", FONT_REG)
 	back_btn.add_theme_font_size_override("font_size", 13)
-	back_btn.label = "< back"
+	back_btn.label = "< " + Edition.ui("back", "back")
 	back_btn.pressed.connect(func(): back.emit())
 	header.add_child(back_btn)
 	_back_btn = back_btn
@@ -135,6 +140,7 @@ func _build() -> void:
 
 	_mood_label = Label.new()
 	_mood_label.text = MOOD_DEFAULT
+	_mood_label.add_theme_font_override("font", FONT_REG)   # carries the emoji fallback
 	_mood_label.add_theme_font_size_override("font_size", 22)
 	header.add_child(_mood_label)
 
@@ -155,6 +161,7 @@ func _build() -> void:
 
 	_portrait = Label.new()
 	_portrait.text = str(route.get("emoji", "✦"))
+	_portrait.add_theme_font_override("font", FONT_REG)   # carries the emoji fallback
 	_portrait.add_theme_font_size_override("font_size", 48)
 	_portrait.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_portrait.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -178,7 +185,7 @@ func _build() -> void:
 	root_vb.add_child(row)
 
 	_input = LineEdit.new()
-	_input.placeholder_text = "say something..."
+	_input.placeholder_text = Edition.ui("ph", "say something...")
 	_input.add_theme_font_override("font", FONT_REG)
 	_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_input.text_submitted.connect(func(_t): _send())
@@ -268,7 +275,7 @@ func _send() -> void:
 		"memory": "",
 		"message": msg,
 		"affection": aff,
-		"lang": "en",
+		"lang": Edition.content_set(),
 		"pid": Api.pid,
 		"story_state": story_state,
 	}

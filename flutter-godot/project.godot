@@ -46,3 +46,4 @@ locale/include_text_server_data=true
 
 Gate="*res://scripts/gate.gd"
 Api="*res://scripts/api.gd"
+Edition="*res://scripts/edition.gd"

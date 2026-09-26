@@ -1,0 +1,176 @@
+{
+ "order": [
+  "en",
+  "es",
+  "pt-BR",
+  "zh",
+  "ja"
+ ],
+ "editions": {
+  "en": {
+   "id": "en",
+   "label": "EN",
+   "contentSet": "en",
+   "title": "FLUTTER — He remembers you",
+   "localTitle": "",
+   "tagline": "He remembers you",
+   "palette": {
+    "bg0": "#130a0f",
+    "bg1": "#4b1728",
+    "bg2": "#211019",
+    "glowA": "#d59a82",
+    "glowB": "#955069",
+    "ink": "#f8eee9",
+    "muted": "#d1b9b6",
+    "cardA": "#572033",
+    "cardB": "#29131e"
+   },
+   "ui": {
+    "sub": "He remembers you",
+    "aff": "Affection",
+    "ph": "Say something…",
+    "send": "Send ♡",
+    "back": "Back to routes",
+    "enter": "ENTER →",
+    "chips": [
+     "I missed you",
+     "Brought you coffee",
+     "Talk with me",
+     "You look good today"
+    ]
+   }
+  },
+  "es": {
+   "id": "es",
+   "label": "ES",
+   "contentSet": "es",
+   "title": "FLUTTER · LATIDO — Él te recuerda",
+   "localTitle": "LATIDO",
+   "tagline": "Él te recuerda",
+   "palette": {
+    "bg0": "#200b14",
+    "bg1": "#6b1e32",
+    "bg2": "#2a1024",
+    "glowA": "#ff8a5b",
+    "glowB": "#d83c6b",
+    "ink": "#fff1e8",
+    "muted": "#e6bdb8",
+    "cardA": "#7b2c3f",
+    "cardB": "#3a1728"
+   },
+   "ui": {
+    "sub": "Él te recuerda",
+    "aff": "Conexión",
+    "ph": "Dile algo…",
+    "send": "Enviar ♡",
+    "back": "Volver a las historias",
+    "enter": "ENTRAR →",
+    "chips": [
+     "Te extrañé",
+     "Te traje café",
+     "Quédate conmigo",
+     "Hoy estás irresistible"
+    ]
+   }
+  },
+  "pt-BR": {
+   "id": "pt-BR",
+   "label": "PT",
+   "contentSet": "pt",
+   "title": "FLUTTER · ENTRE NÓS — Ele se lembra de você",
+   "localTitle": "ENTRE NÓS",
+   "tagline": "Ele se lembra de você",
+   "palette": {
+    "bg0": "#102018",
+    "bg1": "#315f4a",
+    "bg2": "#142834",
+    "glowA": "#f2a65a",
+    "glowB": "#42a88b",
+    "ink": "#fff4df",
+    "muted": "#d7c9ac",
+    "cardA": "#39644f",
+    "cardB": "#19352e"
+   },
+   "ui": {
+    "sub": "Ele se lembra de você",
+    "aff": "Conexão",
+    "ph": "Diz alguma coisa…",
+    "send": "Enviar ♡",
+    "back": "Voltar às histórias",
+    "enter": "ENTRAR →",
+    "chips": [
+     "Senti sua falta",
+     "Trouxe café pra você",
+     "Fica aqui comigo",
+     "Você está lindo hoje"
+    ]
+   }
+  },
+  "zh": {
+   "id": "zh",
+   "label": "中文",
+   "contentSet": "zh",
+   "title": "FLUTTER · 怦然 — 他真的会记得你",
+   "localTitle": "怦然",
+   "tagline": "他，真的会记得你",
+   "palette": {
+    "bg0": "#24131e",
+    "bg1": "#694052",
+    "bg2": "#261b31",
+    "glowA": "#f09bb9",
+    "glowB": "#b68bd4",
+    "ink": "#fff0f3",
+    "muted": "#dfbdc9",
+    "cardA": "#f7dce6",
+    "cardB": "#e9c1d2"
+   },
+   "ui": {
+    "sub": "他，真的会记得你",
+    "aff": "好感",
+    "ph": "说点什么…",
+    "send": "发送 ♡",
+    "back": "回到选择",
+    "enter": "进入故事 →",
+    "chips": [
+     "今天想你了",
+     "给你带了咖啡",
+     "陪我说说话",
+     "你今天好看"
+    ]
+   }
+  },
+  "ja": {
+   "id": "ja",
+   "label": "日本語",
+   "contentSet": "ja",
+   "title": "FLUTTER · あわい — あなたを、覚えている",
+   "localTitle": "あわい",
+   "tagline": "あなたを、覚えている",
+   "palette": {
+    "bg0": "#17191d",
+    "bg1": "#31373c",
+    "bg2": "#1d2128",
+    "glowA": "#c99ca5",
+    "glowB": "#778a9a",
+    "ink": "#f1efeb",
+    "muted": "#bbb8b2",
+    "cardA": "#3a3c40",
+    "cardB": "#24272c"
+   },
+   "ui": {
+    "sub": "あなたを、覚えている",
+    "aff": "親密度",
+    "ph": "ことばを届ける…",
+    "send": "送る ♡",
+    "back": "物語を選ぶ",
+    "enter": "物語へ →",
+    "chips": [
+     "会いたかった",
+     "コーヒー、どうぞ",
+     "少し話さない？",
+     "今日、素敵だね"
+    ]
+   }
+  }
+ }
+}

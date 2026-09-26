@@ -241,7 +241,7 @@ func _menu_items() -> Array:
 		["begin", "BEGIN"],
 		["memories", "MEMORIES"],
 		["opening", "OPENING"],
-		["language", "LANGUAGE"],
+		["language", Edition.label()],
 	]
 
 
@@ -544,3 +544,13 @@ func _word_half(l: Label) -> float:
 	var f := l.get_theme_font("font")
 	var fs := l.get_theme_font_size("font_size")
 	return (f.get_string_size(l.text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x * 0.5) if f else 60.0
+
+
+## The language item names the current edition (EN, ES, PT, 中文, 日本語), as the web
+## switch does; main.gd calls this after Edition.cycle().
+func relabel_language() -> void:
+	var item := find_child("language", true, false)
+	if item:
+		var t := item.get_node_or_null("Text") as Label
+		if t:
+			t.text = Edition.label()
