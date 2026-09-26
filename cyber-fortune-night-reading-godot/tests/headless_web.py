@@ -124,6 +124,12 @@ with sync_playwright() as p:
         raise SystemExit("bridge timeout on %r" % c)
 
     def state():
+        # window.__cf_state is written only when the game answers a command
+        # (fortune.gd: bridge_cmd), so reading it bare returns the snapshot from the last
+        # command -- the "sponsor slot never opens the night" failure polled one stale
+        # snapshot for 30s while the gate had resolved 1.4s after Continue (measured
+        # 2026-09-27: gate ok at 33.5s, art delivered at 34.9s). A no-op command refreshes it.
+        cmd("noop", timeout=10.0)
         return page.evaluate("() => window.__cf_state || null")
 
     print("\n== boot")
@@ -213,13 +219,14 @@ with sync_playwright() as p:
     cmd("merit", n=100000)
     guard = 0
     ready = False
-    while not ready and guard < 120:
+    while not ready and guard < 400:   # a random walk: bad draws take a step back and she has a daily question cap; 47 and 120+ both seen (2026-09-27)
         guard += 1
         cmd("read", kind=["slip", "card", "force"][guard % 3], timeout=60.0)
         ev = cmd("speak", timeout=60.0).get("event", {})
         ready = bool(ev.get("ready"))
         if guard % 4 == 0:
             cmd("merit", n=100000)
+    print("  climb used %d reading(s)" % guard, flush=True)
     m = state()["night"]["clients"]["mirren"]
     check(m["total"] == 9, "all three of her tracks are true (%s)" % m["tracks"])
     check(m["ready"], "the night is hers to offer")
@@ -308,6 +315,7 @@ with sync_playwright() as p:
             break
         time.sleep(0.5)
     cmd("state")
+    print("  climb used %d reading(s)" % guard, flush=True)
     m = state()["night"]["clients"]["mirren"]
     check(m["seen"] and m["total"] == 9, "her night and her nine survived the reload")
     shot("after-reload")
