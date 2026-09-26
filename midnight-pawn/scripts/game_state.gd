@@ -44,6 +44,8 @@ var inventory: Array[Dictionary] = []
 var shelf: Array[String] = []
 var selected_id := ""
 var carried_id := ""
+## The moon coin's ward: spent on the first floor hazard of a descent.
+var ward_used := false
 var customer_index := 0
 var customer_pending := false
 var offer := 0
@@ -265,6 +267,13 @@ func enter_night(carry_id: String) -> bool:
 	if not can_enter_night() or not has_item(carry_id):
 		return false
 	carried_id = carry_id
+	ward_used = false
+	# The loadout (2026-09-27): every curio now says what it does below, and the three that
+	# did nothing when carried got a crypt effect of their own.
+	if carry_id == "rusted_bell":
+		resolve = mini(8, resolve + 2)          # its last ring steadies you on the stair
+	elif carry_id == "crypt_heart":
+		curse += 1                              # it knows the way home, and charges for it
 	night = day
 	phase = Phase.NIGHT_1 if day == 1 else Phase.NIGHT_2
 	room_index = 0 if night == 1 else 2
@@ -282,6 +291,10 @@ func start_room(index: int) -> void:
 
 
 func trigger_floor_risk() -> void:
+	if carried_id == "moon_coin" and not ward_used:
+		ward_used = true                        # the stamped ward takes the first hazard
+		action_count += 1
+		return
 	if room_index == 0:
 		resolve = maxi(0, resolve - 1)
 		curse += 1
@@ -368,6 +381,8 @@ func finish_room() -> void:
 		if carried_id == "black_ledger":
 			gained *= 2
 			curse += 1
+		elif carried_id == "crypt_heart":
+			gained += gained / 2
 		marks_unbanked += gained
 		if room_index == 0 and not has_item("moon_coin"):
 			unbanked_loot.append("moon_coin")

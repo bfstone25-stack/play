@@ -45,6 +45,11 @@ func _run() -> void:
 		state.resolve_customer(true, true)
 	game._show_shop()
 	await _shot("04-day1-ready")
+	game._enter_night()                     # the loadout (2026-09-27)
+	await _shot("04b-loadout")
+	game._select_item("dueling_pistol")
+	await _shot("04c-loadout-pistol")
+	game.loadout_open = false
 	state.enter_night("music_box")
 	game._start_room()
 	await _shot("05-room1-receipt-stair")

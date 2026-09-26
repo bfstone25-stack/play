@@ -760,7 +760,10 @@ func _select_item(id: String) -> void:
 	stage.selected_curio = id
 	stage.queue_redraw()
 	_play("tick")
-	_show_shop()
+	if loadout_open:
+		_show_loadout()
+	else:
+		_show_shop()
 
 
 func _refresh_shop_actions() -> void:
@@ -861,7 +864,39 @@ func _resolve_offer(accept: bool, honest: bool) -> void:
 	_show_shop()
 
 
+## The loadout (PUNCHLIST: "a loadout system that has not been told it is one"). Descend
+## opens this instead of taking whatever happened to be selected in the shop: every curio
+## in the inventory is listed with what it does in the crypt, the grid picks one, and the
+## action row descends with it.
+var loadout_open := false
+
+
 func _enter_night() -> void:
+	loadout_open = true
+	_show_loadout()
+
+
+func _show_loadout() -> void:
+	title.text = Loc.t("loadout.title")
+	subtitle.text = Loc.t("loadout.sub")
+	var lines: Array = []
+	for item in state.inventory:
+		var id := str(item["id"])
+		var mark := "> " if id == state.selected_id else "   "   # the pixel font has no ▶
+		lines.append("%s[b]%s[/b] — %s" % [mark, _item_label(item), Loc.t("crypt." + id)])
+	detail.text = "\n".join(lines)
+	_refresh_item_grid()
+	_clear(actions)
+	var chosen: Dictionary = state.get_item(state.selected_id)
+	if not chosen.is_empty():
+		_button(Loc.t("loadout.go", [_item_label(chosen)]), _descend, true)
+	_button(Loc.t("loadout.back"), func():
+		loadout_open = false
+		_show_shop())
+
+
+func _descend() -> void:
+	loadout_open = false
 	if not state.enter_night(state.selected_id):
 		_log(Loc.t("log.need_carry"))
 		return
@@ -1268,6 +1303,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Test-facing deterministic route helpers.
 func start_run() -> void:
+	# The Begin button closes the title card first; the helper did not, so every
+	# walkthrough frame after the title was the title (found 2026-09-27).
+	_close_title_card()
 	_start_run()
 
 

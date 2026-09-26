@@ -262,6 +262,19 @@ const EN := {
 	"ending.dawn_broker": "Dawn Broker",
 	"ending.quiet_seal": "Quiet Seal",
 	"ending.midnight_keeper": "Midnight Keeper",
+	"loadout.title": "WHAT GOES DOWN WITH YOU",
+	"loadout.sub": "One curio rides in your coat. Choose it here.",
+	"loadout.go": "DESCEND WITH %s",
+	"loadout.back": "BACK TO THE SHOP",
+	"crypt.rusted_bell": "+2 resolve on the stair.",
+	"crypt.wedding_ring": "The Widow lets you pass in peace (costs 1 resolve).",
+	"crypt.bone_key": "Opens the relic cache in the ossuary.",
+	"crypt.music_box": "In the chapel: a heavy blow that can stop the first strike.",
+	"crypt.dueling_pistol": "Item attack deals 3.",
+	"crypt.black_ledger": "Double marks from every room, +1 curse each.",
+	"crypt.moon_coin": "Its ward takes the first floor hazard.",
+	"crypt.saints_tooth": "In the ossuary: a heavy blow — but the floor bites harder.",
+	"crypt.crypt_heart": "+50% marks from every room, +1 curse going down.",
 }
 
 const ZH := {
@@ -428,6 +441,19 @@ const ZH := {
 	"ending.dawn_broker": "晨曦掌柜",
 	"ending.quiet_seal": "静默封印",
 	"ending.midnight_keeper": "午夜守藏人",
+	"loadout.title": "带什么下去",
+	"loadout.sub": "外套里只装得下一件古物，在这里挑。",
+	"loadout.go": "带着%s下楼",
+	"loadout.back": "回到店里",
+	"crypt.rusted_bell": "下楼时意志 +2。",
+	"crypt.wedding_ring": "寡妇让你平安通过（消耗 1 意志）。",
+	"crypt.bone_key": "打开藏骨堂里的圣物匣。",
+	"crypt.music_box": "在礼拜堂：一记重击，能打断对方的先手。",
+	"crypt.dueling_pistol": "道具攻击造成 3 点伤害。",
+	"crypt.black_ledger": "每个房间的印记翻倍，各 +1 诅咒。",
+	"crypt.moon_coin": "护符替你挡下第一次地面危险。",
+	"crypt.saints_tooth": "在藏骨堂：一记重击——但地面咬得更狠。",
+	"crypt.crypt_heart": "每个房间印记 +50%，下楼时 +1 诅咒。",
 }
 
 const JA := {
@@ -594,6 +620,19 @@ const JA := {
 	"ending.dawn_broker": "夜明けの店主",
 	"ending.quiet_seal": "静かな封印",
 	"ending.midnight_keeper": "真夜中の守り手",
+	"loadout.title": "何を連れて降りるか",
+	"loadout.sub": "コートに入る古物はひとつだけ。ここで選ぶ。",
+	"loadout.go": "%sを携えて降りる",
+	"loadout.back": "店に戻る",
+	"crypt.rusted_bell": "階段で意志 +2。",
+	"crypt.wedding_ring": "未亡人が穏やかに通してくれる（意志を1消費）。",
+	"crypt.bone_key": "納骨堂の聖遺物箱を開ける。",
+	"crypt.music_box": "礼拝堂で：先手を止められる重い一撃。",
+	"crypt.dueling_pistol": "アイテム攻撃で3ダメージ。",
+	"crypt.black_ledger": "各部屋の印が倍、そのたび呪い +1。",
+	"crypt.moon_coin": "護符が最初の床の危険を引き受ける。",
+	"crypt.saints_tooth": "納骨堂で：重い一撃——ただし床の牙も鋭くなる。",
+	"crypt.crypt_heart": "各部屋の印 +50%、降りるとき呪い +1。",
 }
 
 const ES := {
@@ -760,6 +799,19 @@ const ES := {
 	"ending.dawn_broker": "Prestamista del alba",
 	"ending.quiet_seal": "Sello silencioso",
 	"ending.midnight_keeper": "Guardiana de medianoche",
+	"loadout.title": "LO QUE BAJA CONTIGO",
+	"loadout.sub": "En el abrigo cabe un solo curio. Elígelo aquí.",
+	"loadout.go": "BAJAR CON %s",
+	"loadout.back": "VOLVER A LA TIENDA",
+	"crypt.rusted_bell": "+2 de temple en la escalera.",
+	"crypt.wedding_ring": "La Viuda te deja pasar en paz (cuesta 1 de temple).",
+	"crypt.bone_key": "Abre el relicario del osario.",
+	"crypt.music_box": "En la capilla: un golpe fuerte que puede frenar el primer ataque.",
+	"crypt.dueling_pistol": "El ataque con objeto hace 3.",
+	"crypt.black_ledger": "Marcas dobles en cada sala, +1 de maldición cada vez.",
+	"crypt.moon_coin": "Su amuleto absorbe el primer peligro del suelo.",
+	"crypt.saints_tooth": "En el osario: un golpe fuerte, pero el suelo muerde más.",
+	"crypt.crypt_heart": "+50 % de marcas en cada sala, +1 de maldición al bajar.",
 }
 
 const KO := {
@@ -926,6 +978,19 @@ const KO := {
 	"ending.dawn_broker": "새벽의 주인",
 	"ending.quiet_seal": "고요한 봉인",
 	"ending.midnight_keeper": "한밤의 수호자",
+	"loadout.title": "무엇을 들고 내려갈까",
+	"loadout.sub": "외투에는 골동 하나만 들어간다. 여기서 고르라.",
+	"loadout.go": "%s 들고 내려가기",
+	"loadout.back": "가게로 돌아가기",
+	"crypt.rusted_bell": "계단에서 의지 +2.",
+	"crypt.wedding_ring": "미망인이 평화롭게 지나가게 해 준다 (의지 1 소모).",
+	"crypt.bone_key": "납골당의 성유물함을 연다.",
+	"crypt.music_box": "예배당에서: 첫 공격을 막을 수 있는 강타.",
+	"crypt.dueling_pistol": "아이템 공격이 3 피해.",
+	"crypt.black_ledger": "모든 방의 표식 두 배, 매번 저주 +1.",
+	"crypt.moon_coin": "부적이 첫 바닥 위험을 대신 받는다.",
+	"crypt.saints_tooth": "납골당에서: 강타 — 대신 바닥이 더 세게 문다.",
+	"crypt.crypt_heart": "모든 방의 표식 +50%, 내려갈 때 저주 +1.",
 }
 
 
