@@ -53,11 +53,17 @@ func _run() -> void:
 	# card that a survey would count as a render (ops/adult_forks/STATUS.md: a file-size
 	# survey mistook 300 KB placeholder cards for finished plates across all six forks).
 	Unlock.simulate_free = true
-	for id in ["cg_tamsin", "cg_veil"]:
+	for id in ["cg_veil"]:
 		Unlock.clear(id)
 		var floored: Array = layer.pick(id)
 		if int(floored[2]) != layer.SRC_PIXEL:
 			_fail("%s did not take the pixel floor — is a placeholder card back?" % id)
+	# cg_tamsin has real art since 2026-09-26 (the free plate, ungated on every track): it
+	# must be drawn from the package, never the pixel floor. Before that the test demanded
+	# the floor here AND a "seen" mark later, which the floor never sets, so it could not pass.
+	var tamsin_pick: Array = layer.pick("cg_tamsin")
+	if int(tamsin_pick[2]) != layer.SRC_OPEN:
+		_fail("cg_tamsin has art in the package but did not draw it (source %d)" % int(tamsin_pick[2]))
 	# ...and the ones that do have a censored stand-in must use it rather than the floor.
 	var ring_pick: Array = layer.pick("cg_ring")
 	if int(ring_pick[2]) != layer.SRC_LOCKED:
