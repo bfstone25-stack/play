@@ -303,6 +303,7 @@ func _send() -> void:
 	aff = int(result.get("affection", aff))
 	_mood_label.text = str(result.get("mood", MOOD_DEFAULT))
 	_update_affection_ui()
+	Tel.chat(msg, reply, {"route": route.get("id", ""), "aff": aff})   # = index.html:1725
 	if result.has("story_state") and result["story_state"] is Dictionary:
 		story_state = result["story_state"]
 	var milestone = result.get("milestone")

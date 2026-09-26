@@ -80,6 +80,7 @@ func _ready() -> void:
 func _on_chose(action: String) -> void:
 	match action:
 		"begin":
+			Tel.ev("gate_passed", {"via": "click", "phase": "title"})   # = index.html:1947
 			_show_route_select()
 		"memories":
 			push_warning("memory archive is not ported yet — PORT_PLAN.md step 6")
@@ -117,7 +118,7 @@ func _on_route_picked(route: Dictionary) -> void:
 	route_select.hide()
 	if chat == null:
 		chat = ChatScene.instantiate()
-		chat.back.connect(_show_route_select)
+		chat.back.connect(_leave_chat)
 		add_child(chat)
 	chat.show()
 	chat.start(route)
@@ -160,3 +161,13 @@ func _shoot(path: String, after: float) -> void:
 	img.save_png(path)
 	print("shot: ", ProjectSettings.globalize_path(path), " ", img.get_width(), "x", img.get_height())
 	get_tree().quit()
+
+
+## Leaving a chat is the port's natural break. PORT_PLAN.md step 7: the board is the page's
+## board.js through the bridge (it decides adult vs SFW by hostname, which is the safety
+## property), offered on the 2nd and 4th crossing like every other title. The web build
+## also offers the rest of the catalogue at a story ending (index.html:1692); that call
+## lands with the story engine, which this port does not have yet.
+func _leave_chat() -> void:
+	Gate.board_offer_break()
+	_show_route_select()

@@ -31,7 +31,7 @@ func _ready() -> void:
 
 func _resolve_base() -> String:
 	if OS.has_feature("web"):
-		var js := """(function(){var h=location.hostname||"";var off=location.protocol==="file:"||/itch\\.zone$/i.test(h)||/\\.itch\\.io$/i.test(h);return off?%s:location.origin+"/flutter";})()""" % JSON.stringify(GATEWAY)
+		var js := """(function(){var h=location.hostname||"";var off=location.protocol==="file:"||/itch\\.zone$/i.test(h)||/\\.itch\\.io$/i.test(h)||h==="127.0.0.1"||h==="localhost";return off?%s:location.origin+"/flutter";})()""" % JSON.stringify(GATEWAY)
 		var r = JavaScriptBridge.eval(js)
 		return str(r) if r != null and str(r) != "" else GATEWAY
 	for a in OS.get_cmdline_user_args():

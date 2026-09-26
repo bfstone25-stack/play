@@ -111,6 +111,7 @@ func _build() -> void:
 ## Called every time the screen is shown — a fresh fetch, not a cache, so a route added
 ## or edited server-side (chars.json) shows up without a rebuild.
 func reload() -> void:
+	Tel.ev("select_shown", "title")   # = index.html:1939 (there "brand_intro": where it came from)
 	if _loading:
 		return
 	_loading = true
