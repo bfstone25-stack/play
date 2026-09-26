@@ -13,6 +13,7 @@ var order: Array = []
 var editions: Dictionary = {}
 var current := "en"
 var attach_icons: Dictionary = {}
+var openings: Dictionary = {}
 
 
 func _ready() -> void:
@@ -23,6 +24,7 @@ func _ready() -> void:
 			order = d.get("order", [])
 			editions = d.get("editions", {})
 			attach_icons = d.get("attach_icon", {})
+			openings = d.get("opening", {})
 	var cfg := ConfigFile.new()
 	var saved := ""
 	if cfg.load(SETTINGS) == OK:
@@ -92,3 +94,8 @@ func story(key: String, fallback := "") -> String:
 ## (index.html renderChapterCard does exactly this).
 func field(rec: Dictionary, name: String) -> String:
 	return str(rec.get(name + ("_zh" if current == "zh" else "_en"), ""))
+
+
+## opening.js's script for this edition: {duration, shots:[{at, kind, scene, eyebrow, text}], ambience}.
+func opening() -> Dictionary:
+	return openings.get(current, openings.get("en", {}))

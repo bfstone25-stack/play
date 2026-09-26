@@ -227,5 +227,162 @@
   "anxious": "💓",
   "avoidant": "🌙",
   "secure": "🌿"
+ },
+ "opening": {
+  "en": {
+   "duration": 6900,
+   "shots": [
+    {
+     "at": 0,
+     "kind": "dawn",
+     "scene": "res://assets/opening/en-dawn-v1.webp",
+     "eyebrow": "7:12 AM",
+     "text": "Morning finds him already awake."
+    },
+    {
+     "at": 1650,
+     "kind": "message",
+     "scene": "res://assets/opening/en-dawn-v1.webp",
+     "eyebrow": "ONE NEW MESSAGE",
+     "text": "Coffee. No sugar.\nI remembered."
+    },
+    {
+     "at": 3550,
+     "kind": "gaze",
+     "scene": "res://assets/opening/en-dawn-v1.webp",
+     "eyebrow": "",
+     "text": "“Try not to look so surprised.”"
+    },
+    {
+     "at": 5150,
+     "kind": "brand"
+    }
+   ],
+   "ambience": "res://assets/opening/en-city-morning.mp3"
+  },
+  "zh": {
+   "duration": 7100,
+   "shots": [
+    {
+     "at": 0,
+     "kind": "window",
+     "scene": "res://assets/opening/zh-late-night-v1.webp",
+     "eyebrow": "23:08",
+     "text": "城市很晚，你也很累。"
+    },
+    {
+     "at": 1700,
+     "kind": "message",
+     "scene": "res://assets/opening/zh-late-night-v1.webp",
+     "eyebrow": "他发来一条消息",
+     "text": "热美式，少冰。\n我记得。"
+    },
+    {
+     "at": 3800,
+     "kind": "reach",
+     "scene": "res://assets/opening/zh-late-night-v1.webp",
+     "eyebrow": "",
+     "text": "有些话，你只说过一次。"
+    },
+    {
+     "at": 5350,
+     "kind": "brand"
+    }
+   ],
+   "ambience": "res://assets/opening/zh-night-city.mp3"
+  },
+  "ja": {
+   "duration": 8600,
+   "shots": [
+    {
+     "at": 0,
+     "kind": "rain",
+     "scene": "res://assets/opening/ja-rain-train-v1.webp",
+     "eyebrow": "午後十一時",
+     "text": "雨は、まだ止まない。"
+    },
+    {
+     "at": 2300,
+     "kind": "reflection",
+     "scene": "res://assets/opening/ja-rain-train-v1.webp",
+     "eyebrow": "未送信",
+     "text": "会いたかった"
+    },
+    {
+     "at": 4550,
+     "kind": "umbrella",
+     "scene": "res://assets/opening/ja-rain-train-v1.webp",
+     "eyebrow": "",
+     "text": "「傘、持ってきた。」"
+    },
+    {
+     "at": 6850,
+     "kind": "brand"
+    }
+   ],
+   "ambience": "res://assets/opening/ja-rain-train.mp3"
+  },
+  "es": {
+   "duration": 6200,
+   "shots": [
+    {
+     "at": 0,
+     "kind": "steps",
+     "scene": "res://assets/opening/es-midnight-v1.webp",
+     "eyebrow": "MADRID · 00:17",
+     "text": "—Llegas tarde."
+    },
+    {
+     "at": 1250,
+     "kind": "answer",
+     "scene": "res://assets/opening/es-midnight-v1.webp",
+     "eyebrow": "",
+     "text": "—¿Me estabas esperando?"
+    },
+    {
+     "at": 2650,
+     "kind": "near",
+     "scene": "res://assets/opening/es-midnight-v1.webp",
+     "eyebrow": "",
+     "text": "“No te hagas ilusiones.”"
+    },
+    {
+     "at": 4450,
+     "kind": "brand"
+    }
+   ],
+   "ambience": "res://assets/opening/es-night-plaza.mp3"
+  },
+  "pt-BR": {
+   "duration": 6700,
+   "shots": [
+    {
+     "at": 0,
+     "kind": "sun",
+     "scene": "res://assets/opening/pt-sunset-v1.webp",
+     "eyebrow": "18:42",
+     "text": "O dia ainda não terminou."
+    },
+    {
+     "at": 1450,
+     "kind": "laugh",
+     "scene": "res://assets/opening/pt-sunset-v1.webp",
+     "eyebrow": "",
+     "text": "—Você sempre chega assim?"
+    },
+    {
+     "at": 2950,
+     "kind": "close",
+     "scene": "res://assets/opening/pt-sunset-v1.webp",
+     "eyebrow": "",
+     "text": "—Assim como?\n—Mudando o clima."
+    },
+    {
+     "at": 4900,
+     "kind": "brand"
+    }
+   ],
+   "ambience": "res://assets/opening/pt-ocean-sunset.mp3"
+  }
  }
 }

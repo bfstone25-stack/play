@@ -53,6 +53,8 @@ func _ready() -> void:
 	# to click "begin" with. Nothing in the game calls this.
 	if goto_screen == "route_select":
 		_show_route_select()
+	elif goto_screen == "opening":
+		_play_opening()
 	elif goto_screen == "archive":
 		_show_archive()
 	elif goto_screen == "chat":
@@ -92,7 +94,7 @@ func _on_chose(action: String) -> void:
 		"memories":
 			_show_archive()
 		"opening":
-			push_warning("opening is not ported yet — PORT_PLAN.md step 5")
+			_play_opening()
 		"language":
 			# PORT_PLAN.md step 3: cycle the edition; the next route list is that edition's cast
 			Edition.cycle()
@@ -236,3 +238,10 @@ func _show_archive() -> void:
 	close.custom_minimum_size = Vector2(160, 40)
 	close.pressed.connect(func(): _archive.queue_free())
 	vb.add_child(close)
+
+
+## OPENING on the title replays the edition's opening (frontend/opening.js), over the title.
+func _play_opening() -> void:
+	var op := preload("res://scripts/opening.gd").new()
+	add_child(op)
+	op.play()
