@@ -171,7 +171,8 @@ def _db():
     c.execute("""UPDATE distill_log SET lang='legacy'
                  WHERE pid='' AND latency_ms=0 AND lang='en'""")
     c.execute("""UPDATE distill_log SET traffic_class='test'
-                 WHERE lower(pid) LIKE '%test%' OR lower(pid) LIKE '%audit%' OR lower(pid) LIKE '%e2e%'""")
+                 WHERE lower(pid) LIKE '%test%' OR lower(pid) LIKE '%audit%' OR lower(pid) LIKE '%e2e%'
+                    OR lower(pid) LIKE '%sanity%' OR lower(pid) LIKE '%probe%'""")
     c.execute("""UPDATE completions SET traffic_class='test'
                  WHERE lower(pid) LIKE '%test%' OR lower(pid) LIKE '%audit%' OR lower(pid) LIKE '%e2e%'""")
     c.execute("""CREATE TABLE IF NOT EXISTS feedback(
@@ -467,6 +468,16 @@ _TIMELINE_NOTE = (" TIMELINE QUESTION: expand on your recorded opening statement
                   "detail that it or the verified facts already imply. Do not state a clock time, place, or "
                   "witness that is absent from them, and do not repeat your opening statement word for word.")
 
+_OTHER_PERSON_NOTE = (" The detective mentioned another person. Answer about yourself: what you did, what you "
+                      "know, what you think, how you stand with them. You may give an opinion or suspicion as "
+                      "opinion. Do not report anything you saw or heard them do unless your statement or the "
+                      "verified facts say so; otherwise say you did not see it.")
+_EYEWITNESS = (r"\b(?:i|we) (?:saw|seen|watched|noticed|heard)\b|\bi was with\b|\bwith (?:him|her) (?:all|the whole)\b"
+               r"|(?<![没未不])看见|(?<![没未不])看到|亲眼|和他在一起|和她在一起|見た|見ました|一緒にいた")
+
+_PLACEMENT = (r"\b{n}\b[^.!?。！？]{{0,24}}?\b(?:was|were|is|stayed|went|came|left|returned)\b[^.!?]{{0,12}}?\b(?:in|at|near|by|inside|outside|to|back)\b"
+              r"|{n}[^。！？]{{0,12}}?(?:在|去了|回到|进了|离开)|{n}[^。！？]{{0,12}}?(?:にいた|に行|に戻)")
+
 _SECRET_MARKERS = {
     "gallery": ("bronze", "statuette", "青铜", "銅像"),
     "yacht": ("gin", "tonic", "杜松", "金汤力", "ジントニック"),
@@ -585,7 +596,9 @@ def _public_setup(text):
 
 def _traffic_class(pid):
     p = (pid or "").casefold()
-    return "test" if any(tag in p for tag in ("test", "audit", "e2e", "smoke")) else "organic"
+    # "agent-sanity-*" and "*-probe-*" are our own scripted checks; the yacht
+    # row of 2026-09-10 was counted as a player until these were added.
+    return "test" if any(tag in p for tag in ("test", "audit", "e2e", "smoke", "sanity", "probe")) else "organic"
 
 def _opening(case, sid, lang):
     cf = CASEFILES[case["id"]]
@@ -736,8 +749,17 @@ def _verify_candidate(reply, case, sid, intent, allow_tell=False):
         if number not in authored_numbers:
             return False, "invented_exact_time"
     if intent == "other_person":
-        if any(s["name"].casefold() in low for s in case["suspects"] if s["id"] != sid):
-            return False, "other_person_claim"
+        # Naming another suspect is fine ("Owen ran the lab"); placing them
+        # somewhere the dossier does not, or claiming to have seen them, is not.
+        own = authored
+        grounded = own + " " + " ".join(CASEFILES[case["id"]]["facts_en"]).casefold()
+        for other in (s for s in case["suspects"] if s["id"] != sid):
+            name = other["name"].casefold()
+            if name not in low: continue
+            if name not in own and re.search(_EYEWITNESS, low):
+                return False, "other_person_eyewitness"
+            if name not in grounded and re.search(_PLACEMENT.format(n=re.escape(name)), low):
+                return False, "other_person_claim"
     if intent == "timeline":
         # An alibi is the one place a fabricated witness is most tempting, so a
         # co-suspect may only appear in it if the authored dossier already puts
@@ -919,8 +941,23 @@ def ask(r: AskReq):
         reply = _compound_authored_reply(question_parts, c, r.suspect, r.lang, allow_tell)
         verifier = "authored_compound"
     elif intent == "other_person":
-        reply = _SAFE_UNKNOWN[_lang_key(r.lang)]
-        verifier = "authored_scope_guard"; fallback_reason = "other_person_boundary"
+        # A name in the question is not a question about that person. Of the
+        # seven rows this branch ever answered with the blanket refusal
+        # (2026-08-26..09-28), most asked the witness about themselves: "have
+        # you ever harmed Owen", "did you see Vera", "do you think Clara killed
+        # him". Let the character answer, and keep the refusal only for the
+        # reply the verifier catches putting another suspect somewhere the
+        # dossier does not.
+        candidate = _chat_or_none("ask-other", sysp + _OTHER_PERSON_NOTE,
+                                  r.history[-8:] + [{"role": "user", "content": msg}])
+        valid, verifier = (_verify_candidate(candidate, c, r.suspect, intent, allow_tell)
+                           if candidate else (False, "model_unavailable"))
+        if valid:
+            reply = candidate
+        else:
+            reply = _SAFE_UNKNOWN[_lang_key(r.lang)]
+            fallback_reason = verifier
+            verifier = "authored_scope_guard"
     elif intent == "confrontation" and not (has_foundation or tell_already_revealed):
         reply = _CONFRONT_MORE[_lang_key(r.lang)]
         verifier = "authored_evidence_gate"; fallback_reason = "missing_foundation"
