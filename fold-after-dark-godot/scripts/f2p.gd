@@ -46,6 +46,8 @@ func ensure() -> bool:
 ## save cannot hold a level the server does not.
 func _adopt(s: Dictionary) -> void:
 	_state_at = Time.get_unix_time_from_system()
+	if s.get("release") is Dictionary:
+		Fold.released_cap = int(s["release"].get("released", -1))
 	if s.has("tiers"):
 		Tier.configure(s["tiers"])
 	if s.has("progress"):
@@ -372,3 +374,16 @@ func begin_event(board: int) -> Dictionary:
 
 func daily_leaderboard() -> Dictionary:
 	return await Nutaku.api("GET", "/f2p/challenge/leaderboard")
+
+
+## "A new chapter opens in 3 days": the weekly drop as a reason to come back. "" when every
+## level is already open or the server sent no schedule.
+func next_drop_text() -> String:
+	var rel = Nutaku.state.get("release", {})
+	if typeof(rel) != TYPE_DICTIONARY or rel.get("next_at") == null:
+		return ""
+	var left := float(rel["next_at"]) - float(Nutaku.state.get("server_time", Time.get_unix_time_from_system()))
+	if left <= 0:
+		return ""
+	var days := int(ceil(left / 86400.0))
+	return ("New chapter tomorrow" if days <= 1 else "New chapter in %d days" % days)

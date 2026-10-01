@@ -128,8 +128,13 @@ func is_special() -> bool:
 	return level_index == DAILY or level_index == EVENT
 
 
+## Weekly drops (ops/nutaku/fold_f2p/NUTAKU_BAR.md): every level ships in the data, the
+## server says how many are open (state.release.released). -1 = no cap (itch/ad track).
+var released_cap := -1
+
+
 func level_count() -> int:
-	return levels.size()
+	return levels.size() if released_cap < 0 else mini(levels.size(), released_cap)
 
 
 func level(i: int) -> Dictionary:

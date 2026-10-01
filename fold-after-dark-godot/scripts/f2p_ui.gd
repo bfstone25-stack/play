@@ -132,6 +132,15 @@ static func side(rebuild: Callable, open_shop: Callable) -> Array:
 	var out := []
 	var daily: Dictionary = s.get("daily", {})
 
+	# the weekly drop: a new chapter of the Folding House, the reason to come back next week
+	var drop := F2P.next_drop_text()
+	if drop != "":
+		var rel: Dictionary = s.get("release", {})
+		var nd := _panel(drop)
+		nd.name = "NextChapter"
+		nd.add_child(StudioTheme.mono_label("%d of %d levels open" % [int(rel.get("released", 0)), int(rel.get("total", 0))], 12, Palette.MUTED))
+		out.append(nd.get_meta("panel"))
+
 	# the daily challenge (F2P.fetch_challenge ran before this): today's board, the reward
 	# if it is still unclaimed, the challenge streak, the countdown to the next one
 	var ch: Dictionary = F2P.challenge

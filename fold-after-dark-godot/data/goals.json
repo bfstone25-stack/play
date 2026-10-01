@@ -818,5 +818,2086 @@
   "combo": 3,
   "best": 3,
   "witness": "RDRULULULURULU"
+ },
+ "804": {
+  "type": "score",
+  "score": 330,
+  "moves": 17,
+  "best": 416,
+  "witness": "RDLDLDLURDRURURUU"
+ },
+ "810": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "LDLLU"
+ },
+ "816": {
+  "type": "score",
+  "score": 110,
+  "moves": 19,
+  "best": 144,
+  "witness": "RDLULDRULDLURULLU"
+ },
+ "822": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "ULDRURDLURURUL"
+ },
+ "828": {
+  "type": "score",
+  "score": 140,
+  "moves": 15,
+  "best": 176,
+  "witness": "URDLURDLDLURU"
+ },
+ "834": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDRDLDLDRURU"
+ },
+ "840": {
+  "type": "score",
+  "score": 160,
+  "moves": 10,
+  "best": 212,
+  "witness": "DRULUDLU"
+ },
+ "846": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RDLULDRURDRUU"
+ },
+ "852": {
+  "type": "score",
+  "score": 160,
+  "moves": 19,
+  "best": 200,
+  "witness": "RURDRDLDRURDLULURUL"
+ },
+ "858": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "LULURULDRURUL"
+ },
+ "864": {
+  "type": "score",
+  "score": 220,
+  "moves": 16,
+  "best": 280,
+  "witness": "DRDLURDLULURDLL"
+ },
+ "870": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "ULDLU"
+ },
+ "876": {
+  "type": "score",
+  "score": 120,
+  "moves": 17,
+  "best": 160,
+  "witness": "URULULDRDLDRDLU"
+ },
+ "882": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "URDRURDRDLURUU"
+ },
+ "894": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "URURDLDRDLURURU"
+ },
+ "900": {
+  "type": "score",
+  "score": 120,
+  "moves": 8,
+  "best": 152,
+  "witness": "DLULLU"
+ },
+ "906": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "URURDLURDLUU"
+ },
+ "912": {
+  "type": "score",
+  "score": 340,
+  "moves": 17,
+  "best": 432,
+  "witness": "URDLDRDLULDLULUUU"
+ },
+ "918": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LDRDLULURULDLUUUL"
+ },
+ "924": {
+  "type": "score",
+  "score": 120,
+  "moves": 15,
+  "best": 160,
+  "witness": "RDRDLDRDLULDRDL"
+ },
+ "930": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "DRDRUL"
+ },
+ "936": {
+  "type": "score",
+  "score": 120,
+  "moves": 16,
+  "best": 152,
+  "witness": "URDRDLDLULDLDL"
+ },
+ "942": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "RURULDLDLDRURU"
+ },
+ "948": {
+  "type": "score",
+  "score": 50,
+  "moves": 15,
+  "best": 64,
+  "witness": "LDRDLDRURDLDL"
+ },
+ "954": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "ULDLULDLURUL"
+ },
+ "960": {
+  "type": "score",
+  "score": 70,
+  "moves": 7,
+  "best": 96,
+  "witness": "RULUL"
+ },
+ "966": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "RLDRDLRULULDRDL"
+ },
+ "972": {
+  "type": "score",
+  "score": 110,
+  "moves": 15,
+  "best": 140,
+  "witness": "ULURDLDRURDLUL"
+ },
+ "978": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DRULDLDRDLDLULU"
+ },
+ "984": {
+  "type": "score",
+  "score": 130,
+  "moves": 16,
+  "best": 164,
+  "witness": "DLURDLURDLULUL"
+ },
+ "990": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RDLUDL"
+ },
+ "996": {
+  "type": "score",
+  "score": 60,
+  "moves": 14,
+  "best": 80,
+  "witness": "URDRULURDRUU"
+ },
+ "1002": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RULURULURULULDLLU"
+ },
+ "1008": {
+  "type": "score",
+  "score": 840,
+  "moves": 17,
+  "best": 1056,
+  "witness": "LRURDRURDRDRURU"
+ },
+ "1014": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "DLULDRURULURULL"
+ },
+ "1020": {
+  "type": "score",
+  "score": 70,
+  "moves": 7,
+  "best": 96,
+  "witness": "DRULL"
+ },
+ "1026": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LURDLURDLURDLU"
+ },
+ "1032": {
+  "type": "score",
+  "score": 370,
+  "moves": 16,
+  "best": 472,
+  "witness": "ULURULDLULDLUULU"
+ },
+ "1044": {
+  "type": "score",
+  "score": 80,
+  "moves": 15,
+  "best": 104,
+  "witness": "DLULDRDLULULU"
+ },
+ "1050": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DRULRU"
+ },
+ "1056": {
+  "type": "score",
+  "score": 650,
+  "moves": 18,
+  "best": 816,
+  "witness": "RDLDLDRDLDLULDLL"
+ },
+ "1062": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "RDRDRULDRURULULU"
+ },
+ "1068": {
+  "type": "score",
+  "score": 330,
+  "moves": 16,
+  "best": 416,
+  "witness": "LURURDLURURURU"
+ },
+ "1074": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLURDRURDLUL"
+ },
+ "1080": {
+  "type": "score",
+  "score": 410,
+  "moves": 10,
+  "best": 520,
+  "witness": "RDLUURUL"
+ },
+ "1086": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "RDLDRDLDLULDLU"
+ },
+ "1092": {
+  "type": "score",
+  "score": 170,
+  "moves": 18,
+  "best": 216,
+  "witness": "ULULDRULDRULULUU"
+ },
+ "1098": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DRDRDLDLDRDLURDLULL"
+ },
+ "1104": {
+  "type": "score",
+  "score": 460,
+  "moves": 14,
+  "best": 576,
+  "witness": "LURULURURURU"
+ },
+ "1110": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LULUU"
+ },
+ "1116": {
+  "type": "score",
+  "score": 170,
+  "moves": 18,
+  "best": 216,
+  "witness": "URDLURDLULURULUL"
+ },
+ "1122": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "URDRULURDRDRULUL"
+ },
+ "1128": {
+  "type": "score",
+  "score": 550,
+  "moves": 14,
+  "best": 688,
+  "witness": "URDLURDRULURUL"
+ },
+ "1134": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "RDLURULULUL"
+ },
+ "1140": {
+  "type": "score",
+  "score": 320,
+  "moves": 8,
+  "best": 400,
+  "witness": "DRULLUU"
+ },
+ "1146": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "URDLDLURULRUL"
+ },
+ "1152": {
+  "type": "score",
+  "score": 90,
+  "moves": 18,
+  "best": 124,
+  "witness": "RDRDLURDLDLDRULULU"
+ },
+ "1158": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "RURDRURDRUUU"
+ },
+ "1164": {
+  "type": "score",
+  "score": 120,
+  "moves": 16,
+  "best": 160,
+  "witness": "ULDLDLURULDLDLUU"
+ },
+ "1170": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "DLULU"
+ },
+ "1176": {
+  "type": "score",
+  "score": 240,
+  "moves": 16,
+  "best": 312,
+  "witness": "DLURDLDRURDLDL"
+ },
+ "1182": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DRDLULULDLDURDLUU"
+ },
+ "1194": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "URDLULULDLDLU"
+ },
+ "1200": {
+  "type": "score",
+  "score": 70,
+  "moves": 8,
+  "best": 96,
+  "witness": "URDLDL"
+ },
+ "1206": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDRULDRURULDLDRULU"
+ },
+ "1212": {
+  "type": "score",
+  "score": 390,
+  "moves": 16,
+  "best": 488,
+  "witness": "LDLULURURDRULLU"
+ },
+ "1218": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDRULDRURDLDRULUL"
+ },
+ "1224": {
+  "type": "score",
+  "score": 60,
+  "moves": 17,
+  "best": 76,
+  "witness": "URDLURULDLDRULULU"
+ },
+ "1230": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "ULDLU"
+ },
+ "1236": {
+  "type": "score",
+  "score": 240,
+  "moves": 16,
+  "best": 304,
+  "witness": "RDULULDLDLURULUL"
+ },
+ "1242": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "DLULURURULL"
+ },
+ "1248": {
+  "type": "score",
+  "score": 540,
+  "moves": 17,
+  "best": 680,
+  "witness": "URDRDLURDLUDRUL"
+ },
+ "1254": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "ULURDRURULULULL"
+ },
+ "1260": {
+  "type": "score",
+  "score": 120,
+  "moves": 7,
+  "best": 152,
+  "witness": "UDRUL"
+ },
+ "1266": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LULURULURURDLURU"
+ },
+ "1272": {
+  "type": "score",
+  "score": 90,
+  "moves": 15,
+  "best": 120,
+  "witness": "LRDLURDLDLURU"
+ },
+ "1278": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RULURULULDLULU"
+ },
+ "1284": {
+  "type": "score",
+  "score": 120,
+  "moves": 16,
+  "best": 152,
+  "witness": "LUURDLDLULDRDLU"
+ },
+ "1290": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "UDLLU"
+ },
+ "1296": {
+  "type": "score",
+  "score": 510,
+  "moves": 15,
+  "best": 640,
+  "witness": "LULURDLURDLUUL"
+ },
+ "1302": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LRDRURDRDLDLRU"
+ },
+ "1308": {
+  "type": "score",
+  "score": 320,
+  "moves": 16,
+  "best": 400,
+  "witness": "LULDLULDRDRDLDLL"
+ },
+ "1314": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LDLURDLULDRDLUL"
+ },
+ "1320": {
+  "type": "score",
+  "score": 140,
+  "moves": 7,
+  "best": 180,
+  "witness": "LULLUU"
+ },
+ "1326": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLULDURDLULDRDLURU"
+ },
+ "1332": {
+  "type": "score",
+  "score": 210,
+  "moves": 14,
+  "best": 264,
+  "witness": "LRDLURURULDLUU"
+ },
+ "1344": {
+  "type": "score",
+  "score": 80,
+  "moves": 17,
+  "best": 112,
+  "witness": "RDRULURDRDRULULU"
+ },
+ "1350": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "DRDLDLDL"
+ },
+ "1356": {
+  "type": "score",
+  "score": 370,
+  "moves": 15,
+  "best": 472,
+  "witness": "LDLDRURULDRULDL"
+ },
+ "1362": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LULDRULDLULDRUL"
+ },
+ "1368": {
+  "type": "score",
+  "score": 420,
+  "moves": 17,
+  "best": 528,
+  "witness": "DRUULULDLDRDLDLLL"
+ },
+ "1374": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "UDLURURDRDLUDL"
+ },
+ "1380": {
+  "type": "score",
+  "score": 80,
+  "moves": 8,
+  "best": 100,
+  "witness": "URDRUU"
+ },
+ "1386": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LRURDLDRDLL"
+ },
+ "1392": {
+  "type": "score",
+  "score": 750,
+  "moves": 18,
+  "best": 944,
+  "witness": "LDLDRULDLDLDRDLU"
+ },
+ "1398": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RDRURDRULURURDRU"
+ },
+ "1404": {
+  "type": "score",
+  "score": 320,
+  "moves": 17,
+  "best": 408,
+  "witness": "LLDRDLDLULDRDLLU"
+ },
+ "1410": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "DLULU"
+ },
+ "1416": {
+  "type": "score",
+  "score": 110,
+  "moves": 16,
+  "best": 140,
+  "witness": "RURDRULURURDLL"
+ },
+ "1422": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDRDLDRDLDLULDL"
+ },
+ "1428": {
+  "type": "score",
+  "score": 480,
+  "moves": 17,
+  "best": 608,
+  "witness": "RDRDRDRURULULRU"
+ },
+ "1434": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "URULURDRURURUL"
+ },
+ "1440": {
+  "type": "score",
+  "score": 10,
+  "moves": 7,
+  "best": 24,
+  "witness": "LDULU"
+ },
+ "1446": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DRULURDLULDL"
+ },
+ "1452": {
+  "type": "score",
+  "score": 230,
+  "moves": 17,
+  "best": 296,
+  "witness": "DLDLULURDLULDRU"
+ },
+ "1458": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "LURDLDLURURDLU"
+ },
+ "1464": {
+  "type": "score",
+  "score": 60,
+  "moves": 17,
+  "best": 80,
+  "witness": "LDLURDLULDLURUL"
+ },
+ "1470": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLDLL"
+ },
+ "1476": {
+  "type": "score",
+  "score": 320,
+  "moves": 14,
+  "best": 408,
+  "witness": "ULDLULURUULL"
+ },
+ "1482": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDLURDLDLURDL"
+ },
+ "1494": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "RDLURDLRURDLU"
+ },
+ "1500": {
+  "type": "score",
+  "score": 70,
+  "moves": 8,
+  "best": 96,
+  "witness": "ULURDL"
+ },
+ "1506": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDRULDLURDLRU"
+ },
+ "1512": {
+  "type": "score",
+  "score": 120,
+  "moves": 16,
+  "best": 152,
+  "witness": "DLURDRURDRURUUU"
+ },
+ "1518": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LURDLDLURURULLL"
+ },
+ "1524": {
+  "type": "score",
+  "score": 190,
+  "moves": 17,
+  "best": 240,
+  "witness": "LULULDLDRDLUDLL"
+ },
+ "1530": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "LURUL"
+ },
+ "1536": {
+  "type": "score",
+  "score": 180,
+  "moves": 17,
+  "best": 228,
+  "witness": "DRDLDRULDRDRDLURU"
+ },
+ "1542": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "LDLURULDRURDRURUU"
+ },
+ "1548": {
+  "type": "score",
+  "score": 460,
+  "moves": 16,
+  "best": 576,
+  "witness": "LDRDLDLULDRDLL"
+ },
+ "1554": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLDLDLURDRULDRU"
+ },
+ "1560": {
+  "type": "score",
+  "score": 100,
+  "moves": 8,
+  "best": 136,
+  "witness": "RULUUL"
+ },
+ "1566": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "RDLDRULURULUDLU"
+ },
+ "1572": {
+  "type": "score",
+  "score": 170,
+  "moves": 13,
+  "best": 224,
+  "witness": "DLURDRULURDLU"
+ },
+ "1578": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "ULDRDRDLDLURDLDL"
+ },
+ "1584": {
+  "type": "score",
+  "score": 80,
+  "moves": 16,
+  "best": 100,
+  "witness": "LDRULULDRULULU"
+ },
+ "1590": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "URDRUDL"
+ },
+ "1596": {
+  "type": "score",
+  "score": 160,
+  "moves": 19,
+  "best": 208,
+  "witness": "RULURURDRULURDRUU"
+ },
+ "1602": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "DULDRURDRULURUL"
+ },
+ "1608": {
+  "type": "score",
+  "score": 160,
+  "moves": 16,
+  "best": 204,
+  "witness": "URDRDLDRULDRDL"
+ },
+ "1614": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "LUDRURULURDLDLL"
+ },
+ "1620": {
+  "type": "score",
+  "score": 160,
+  "moves": 9,
+  "best": 200,
+  "witness": "DLURDLL"
+ },
+ "1626": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "DRDLURDLULRDL"
+ },
+ "1632": {
+  "type": "score",
+  "score": 480,
+  "moves": 17,
+  "best": 608,
+  "witness": "LDLDRDLULDRDRUL"
+ },
+ "1644": {
+  "type": "score",
+  "score": 360,
+  "moves": 16,
+  "best": 456,
+  "witness": "DLDRDLURDLULLUU"
+ },
+ "1650": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "LDLUU"
+ },
+ "1656": {
+  "type": "score",
+  "score": 80,
+  "moves": 18,
+  "best": 100,
+  "witness": "ULDLULDLDRULDLULU"
+ },
+ "1662": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDRULDRULDLLU"
+ },
+ "1668": {
+  "type": "score",
+  "score": 160,
+  "moves": 16,
+  "best": 200,
+  "witness": "RDULURDRDLURDRU"
+ },
+ "1674": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "LULDRULDRDLL"
+ },
+ "1680": {
+  "type": "score",
+  "score": 320,
+  "moves": 8,
+  "best": 400,
+  "witness": "ULDLUU"
+ },
+ "1686": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RDRDLDLULURDRDLL"
+ },
+ "1692": {
+  "type": "score",
+  "score": 320,
+  "moves": 13,
+  "best": 400,
+  "witness": "DLDLURDLDLU"
+ },
+ "1698": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "ULUURDLDLULU"
+ },
+ "1704": {
+  "type": "score",
+  "score": 150,
+  "moves": 15,
+  "best": 192,
+  "witness": "RULULULDLULUU"
+ },
+ "1710": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "ULDRU"
+ },
+ "1716": {
+  "type": "score",
+  "score": 340,
+  "moves": 14,
+  "best": 432,
+  "witness": "ULURURDLDLDLUL"
+ },
+ "1722": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLDRURDLDRURDLLDL"
+ },
+ "1728": {
+  "type": "score",
+  "score": 420,
+  "moves": 15,
+  "best": 528,
+  "witness": "URULDRULDLUULU"
+ },
+ "1734": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LULULDLDRDRDRDLL"
+ },
+ "1740": {
+  "type": "score",
+  "score": 250,
+  "moves": 7,
+  "best": 320,
+  "witness": "LDLDU"
+ },
+ "1746": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "URURDRULULULLL"
+ },
+ "1752": {
+  "type": "score",
+  "score": 180,
+  "moves": 17,
+  "best": 236,
+  "witness": "URULURDRULDRDRDLL"
+ },
+ "1758": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "DRURULDLULU"
+ },
+ "1764": {
+  "type": "score",
+  "score": 120,
+  "moves": 18,
+  "best": 152,
+  "witness": "RULULULURULDLURU"
+ },
+ "1770": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "UDLLU"
+ },
+ "1776": {
+  "type": "score",
+  "score": 370,
+  "moves": 17,
+  "best": 464,
+  "witness": "RDLURDLDLDRDRURDL"
+ },
+ "1782": {
+  "type": "score",
+  "score": 20,
+  "moves": 15,
+  "best": 32,
+  "witness": "URDLURDRDLURU"
+ },
+ "1794": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LURULULLDRDRURULUL"
+ },
+ "1800": {
+  "type": "score",
+  "score": 30,
+  "moves": 10,
+  "best": 48,
+  "witness": "LDRURULL"
+ },
+ "1806": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RDRDRULURURU"
+ },
+ "1812": {
+  "type": "score",
+  "score": 330,
+  "moves": 16,
+  "best": 424,
+  "witness": "DRDLULDRULULUUU"
+ },
+ "1818": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "RDLURDLDRULURDRURULU"
+ },
+ "1824": {
+  "type": "score",
+  "score": 920,
+  "moves": 16,
+  "best": 1152,
+  "witness": "RULRULDRULRDLURU"
+ },
+ "1830": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "ULDLU"
+ },
+ "1836": {
+  "type": "score",
+  "score": 110,
+  "moves": 15,
+  "best": 144,
+  "witness": "LULDLURURULULL"
+ },
+ "1842": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "RDLDRURDRURU"
+ },
+ "1848": {
+  "type": "score",
+  "score": 220,
+  "moves": 15,
+  "best": 280,
+  "witness": "RDRURUDLDLULDLU"
+ },
+ "1854": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DLULDLDRULDLDLU"
+ },
+ "1860": {
+  "type": "score",
+  "score": 300,
+  "moves": 7,
+  "best": 384,
+  "witness": "RUDLULL"
+ },
+ "1866": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LULDRDRULULU"
+ },
+ "1872": {
+  "type": "score",
+  "score": 230,
+  "moves": 13,
+  "best": 288,
+  "witness": "DRURULURDRUU"
+ },
+ "1878": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLDRLDRULDLLURUL"
+ },
+ "1884": {
+  "type": "score",
+  "score": 180,
+  "moves": 16,
+  "best": 232,
+  "witness": "LDLURDRDRURUDLU"
+ },
+ "1890": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "URDRU"
+ },
+ "1896": {
+  "type": "score",
+  "score": 140,
+  "moves": 14,
+  "best": 176,
+  "witness": "ULURULURDRULRU"
+ },
+ "1902": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "URDLULURDLULL"
+ },
+ "1908": {
+  "type": "score",
+  "score": 100,
+  "moves": 18,
+  "best": 132,
+  "witness": "LULDRURDLURULURULL"
+ },
+ "1914": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "RURDRURDLDRULLDL"
+ },
+ "1920": {
+  "type": "score",
+  "score": 50,
+  "moves": 7,
+  "best": 72,
+  "witness": "RURUL"
+ },
+ "1926": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RDRULDLDLULURDLURU"
+ },
+ "1932": {
+  "type": "score",
+  "score": 110,
+  "moves": 16,
+  "best": 144,
+  "witness": "LULDRDLURDLULDLU"
+ },
+ "1944": {
+  "type": "score",
+  "score": 320,
+  "moves": 17,
+  "best": 400,
+  "witness": "RDRDLURDLRDLULU"
+ },
+ "1950": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LDRUURU"
+ },
+ "1956": {
+  "type": "score",
+  "score": 400,
+  "moves": 18,
+  "best": 512,
+  "witness": "DLULURULDLDRDLDRDL"
+ },
+ "1962": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DRULDRDLDRULDL"
+ },
+ "1968": {
+  "type": "score",
+  "score": 310,
+  "moves": 18,
+  "best": 392,
+  "witness": "URULDRDLURURULRU"
+ },
+ "1974": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "ULULDLDRDLULDLUU"
+ },
+ "1980": {
+  "type": "score",
+  "score": 150,
+  "moves": 8,
+  "best": 196,
+  "witness": "URDRUU"
+ },
+ "1986": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LURDRURDLURDLULUU"
+ },
+ "1992": {
+  "type": "score",
+  "score": 280,
+  "moves": 18,
+  "best": 352,
+  "witness": "DLDLDRDRURURDRUU"
+ },
+ "1998": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RULDLDRULDLDL"
+ },
+ "2004": {
+  "type": "score",
+  "score": 90,
+  "moves": 16,
+  "best": 116,
+  "witness": "RULULDLDLURDLULU"
+ },
+ "2010": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLURDLLL"
+ },
+ "2016": {
+  "type": "score",
+  "score": 190,
+  "moves": 15,
+  "best": 240,
+  "witness": "LDLDRURDLDRUL"
+ },
+ "2022": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LURDLDLURDLU"
+ },
+ "2028": {
+  "type": "score",
+  "score": 400,
+  "moves": 14,
+  "best": 504,
+  "witness": "RDRDLDLURURUL"
+ },
+ "2034": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RULURDLURULDLULU"
+ },
+ "2040": {
+  "type": "score",
+  "score": 10,
+  "moves": 8,
+  "best": 24,
+  "witness": "LURDLL"
+ },
+ "2046": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DLRDLULDLULDRU"
+ },
+ "2052": {
+  "type": "score",
+  "score": 160,
+  "moves": 18,
+  "best": 200,
+  "witness": "DRURDLDRURDLDRURUU"
+ },
+ "2058": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DRURULDRULULLL"
+ },
+ "2064": {
+  "type": "score",
+  "score": 360,
+  "moves": 17,
+  "best": 456,
+  "witness": "LULDLDLULULULLU"
+ },
+ "2070": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "DLLDLU"
+ },
+ "2076": {
+  "type": "score",
+  "score": 290,
+  "moves": 17,
+  "best": 368,
+  "witness": "ULULDLDRULDLURDL"
+ },
+ "2082": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "RDLULURULURULUUL"
+ },
+ "2094": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DRDLURURDLLURDLULU"
+ },
+ "2100": {
+  "type": "score",
+  "score": 480,
+  "moves": 7,
+  "best": 608,
+  "witness": "LURULUL"
+ },
+ "2106": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "URDLULDRULURULLUL"
+ },
+ "2112": {
+  "type": "score",
+  "score": 390,
+  "moves": 17,
+  "best": 496,
+  "witness": "DLURDRULDLURDLL"
+ },
+ "2118": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LRURULURDLDLUL"
+ },
+ "2124": {
+  "type": "score",
+  "score": 410,
+  "moves": 16,
+  "best": 520,
+  "witness": "RURDLDLULDLLDL"
+ },
+ "2130": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "URDRU"
+ },
+ "2136": {
+  "type": "score",
+  "score": 230,
+  "moves": 17,
+  "best": 296,
+  "witness": "URURULULDRULULRU"
+ },
+ "2142": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "RURDLURULUUL"
+ },
+ "2148": {
+  "type": "score",
+  "score": 620,
+  "moves": 16,
+  "best": 784,
+  "witness": "RULDRDLDLDRULRUU"
+ },
+ "2154": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LURURULDRURDLUUL"
+ },
+ "2160": {
+  "type": "score",
+  "score": 10,
+  "moves": 7,
+  "best": 24,
+  "witness": "DLDLDL"
+ },
+ "2166": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "RLDRULDLULDLULU"
+ },
+ "2172": {
+  "type": "score",
+  "score": 320,
+  "moves": 17,
+  "best": 408,
+  "witness": "DRDLURDLURDLURUU"
+ },
+ "2178": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "ULDRDLULURURUL"
+ },
+ "2184": {
+  "type": "score",
+  "score": 100,
+  "moves": 14,
+  "best": 128,
+  "witness": "ULDLULURDRDLL"
+ },
+ "2190": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DULRU"
+ },
+ "2196": {
+  "type": "score",
+  "score": 290,
+  "moves": 14,
+  "best": 368,
+  "witness": "ULDRULRULDRUL"
+ },
+ "2202": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DRULULDRURDL"
+ },
+ "2208": {
+  "type": "score",
+  "score": 110,
+  "moves": 19,
+  "best": 144,
+  "witness": "RULDRDRURULDRDRUUL"
+ },
+ "2214": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LURULULDLUUL"
+ },
+ "2220": {
+  "type": "score",
+  "score": 70,
+  "moves": 7,
+  "best": 96,
+  "witness": "LURUL"
+ },
+ "2226": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "RDRURULULLUL"
+ },
+ "2232": {
+  "type": "score",
+  "score": 70,
+  "moves": 17,
+  "best": 92,
+  "witness": "DRULULDRDLULULU"
+ },
+ "2244": {
+  "type": "score",
+  "score": 160,
+  "moves": 16,
+  "best": 200,
+  "witness": "DLDLDRULURULDLUU"
+ },
+ "2250": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "LDRDLDL"
+ },
+ "2256": {
+  "type": "score",
+  "score": 50,
+  "moves": 15,
+  "best": 72,
+  "witness": "LURULURURDLULUU"
+ },
+ "2262": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "URDLDLDLURDLDRDRU"
+ },
+ "2268": {
+  "type": "score",
+  "score": 160,
+  "moves": 18,
+  "best": 208,
+  "witness": "ULDRURDRDRURULUL"
+ },
+ "2274": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "RDLURDLDLURDLDL"
+ },
+ "2280": {
+  "type": "score",
+  "score": 150,
+  "moves": 7,
+  "best": 196,
+  "witness": "DLUUU"
+ },
+ "2286": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLURDLDRDRDLU"
+ },
+ "2292": {
+  "type": "score",
+  "score": 380,
+  "moves": 16,
+  "best": 480,
+  "witness": "LULULUDRURULURU"
+ },
+ "2298": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "URURDLURDLURUUU"
+ },
+ "2304": {
+  "type": "score",
+  "score": 160,
+  "moves": 20,
+  "best": 200,
+  "witness": "RULURDLDLULUURDLDLU"
+ },
+ "2310": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "LULUL"
+ },
+ "2316": {
+  "type": "score",
+  "score": 240,
+  "moves": 13,
+  "best": 304,
+  "witness": "DRDLDLDLURUL"
+ },
+ "2322": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "DLRDRULULDRDRU"
+ },
+ "2328": {
+  "type": "score",
+  "score": 220,
+  "moves": 14,
+  "best": 280,
+  "witness": "DLDLURDRDLDL"
+ },
+ "2334": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDRURURDLDLDRURU"
+ },
+ "2340": {
+  "type": "score",
+  "score": 130,
+  "moves": 7,
+  "best": 168,
+  "witness": "URULL"
+ },
+ "2346": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "DDRULUUDRULU"
+ },
+ "2352": {
+  "type": "score",
+  "score": 320,
+  "moves": 15,
+  "best": 408,
+  "witness": "LDRULDRDRDLDLRU"
+ },
+ "2358": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DLURURDRDLUL"
+ },
+ "2364": {
+  "type": "score",
+  "score": 670,
+  "moves": 13,
+  "best": 848,
+  "witness": "URDRDLDLLRU"
+ },
+ "2370": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "URDRU"
+ },
+ "2376": {
+  "type": "score",
+  "score": 170,
+  "moves": 16,
+  "best": 224,
+  "witness": "DLULDRULDRDRURU"
+ },
+ "2382": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RURUDRDLULDRULU"
+ },
+ "2394": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RUULDRURDLDLULDLU"
+ },
+ "2400": {
+  "type": "score",
+  "score": 120,
+  "moves": 7,
+  "best": 160,
+  "witness": "RULDL"
+ },
+ "2406": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "DRURURULULURULL"
+ },
+ "2412": {
+  "type": "score",
+  "score": 390,
+  "moves": 18,
+  "best": 492,
+  "witness": "LLDLDRURULURULLL"
+ },
+ "2418": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RDDLDRULDLDRDLDL"
+ },
+ "2424": {
+  "type": "score",
+  "score": 410,
+  "moves": 20,
+  "best": 516,
+  "witness": "DRDRURDLDRURURDRUU"
+ },
+ "2430": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DLULLL"
+ },
+ "2436": {
+  "type": "score",
+  "score": 230,
+  "moves": 14,
+  "best": 288,
+  "witness": "RULDRURDRURU"
+ },
+ "2442": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "RLDLDRDLDRDLUDL"
+ },
+ "2448": {
+  "type": "score",
+  "score": 230,
+  "moves": 16,
+  "best": 288,
+  "witness": "ULURULLDLULDRUL"
+ },
+ "2454": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "LLDRULDRULDRUL"
+ },
+ "2460": {
+  "type": "score",
+  "score": 140,
+  "moves": 7,
+  "best": 176,
+  "witness": "LURULL"
+ },
+ "2466": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "URULDRULUDLU"
+ },
+ "2472": {
+  "type": "score",
+  "score": 120,
+  "moves": 18,
+  "best": 156,
+  "witness": "LULURDRURDLDRDRU"
+ },
+ "2478": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "LDRULURURDLURUL"
+ },
+ "2484": {
+  "type": "score",
+  "score": 200,
+  "moves": 15,
+  "best": 256,
+  "witness": "DLURURULURDLULU"
+ },
+ "2490": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "RDLURUL"
+ },
+ "2496": {
+  "type": "score",
+  "score": 340,
+  "moves": 13,
+  "best": 432,
+  "witness": "DLDRURDRDLL"
+ },
+ "2502": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "ULDRDRURUUU"
+ },
+ "2508": {
+  "type": "score",
+  "score": 80,
+  "moves": 15,
+  "best": 108,
+  "witness": "DLLURURULDLUL"
+ },
+ "2514": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LULDRULDRDRURU"
+ },
+ "2520": {
+  "type": "score",
+  "score": 70,
+  "moves": 7,
+  "best": 96,
+  "witness": "URULL"
+ },
+ "2526": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "URURDLDRDLDLLL"
+ },
+ "2532": {
+  "type": "score",
+  "score": 190,
+  "moves": 15,
+  "best": 240,
+  "witness": "LDRDLURDLDRDL"
+ },
+ "2544": {
+  "type": "score",
+  "score": 120,
+  "moves": 18,
+  "best": 152,
+  "witness": "RDRURURULULURULL"
+ },
+ "2550": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "ULDLUL"
+ },
+ "2556": {
+  "type": "score",
+  "score": 190,
+  "moves": 17,
+  "best": 244,
+  "witness": "LRUDRDLDLURURUU"
+ },
+ "2562": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "LURULDRDLDLLRU"
+ },
+ "2568": {
+  "type": "score",
+  "score": 230,
+  "moves": 16,
+  "best": 292,
+  "witness": "LDRDRDRULDRDRU"
+ },
+ "2574": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "DLURURDRDLDLDLULUL"
+ },
+ "2580": {
+  "type": "score",
+  "score": 10,
+  "moves": 7,
+  "best": 24,
+  "witness": "URDLL"
+ },
+ "2586": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DRULDRURDLURDLU"
+ },
+ "2592": {
+  "type": "score",
+  "score": 390,
+  "moves": 17,
+  "best": 496,
+  "witness": "RDLULDLURDLURULUL"
+ },
+ "2598": {
+  "type": "combo",
+  "combo": 3,
+  "best": 6,
+  "witness": "UULRURULDRU"
+ },
+ "2604": {
+  "type": "score",
+  "score": 330,
+  "moves": 17,
+  "best": 416,
+  "witness": "ULURDRURULDRULL"
+ },
+ "2610": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "RULUUU"
+ },
+ "2616": {
+  "type": "score",
+  "score": 160,
+  "moves": 16,
+  "best": 200,
+  "witness": "RURDLDRURULDRDL"
+ },
+ "2622": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "RDRULULDLULULDLU"
+ },
+ "2628": {
+  "type": "score",
+  "score": 240,
+  "moves": 14,
+  "best": 304,
+  "witness": "URDLURDRDLUL"
+ },
+ "2634": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LULDRULDRURULLL"
+ },
+ "2640": {
+  "type": "score",
+  "score": 230,
+  "moves": 7,
+  "best": 296,
+  "witness": "LRUUL"
+ },
+ "2646": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "RURURDRDLDRURU"
+ },
+ "2652": {
+  "type": "score",
+  "score": 330,
+  "moves": 14,
+  "best": 416,
+  "witness": "LURDLULURDLULL"
+ },
+ "2658": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "RDLURDRULDLULU"
+ },
+ "2664": {
+  "type": "score",
+  "score": 240,
+  "moves": 18,
+  "best": 300,
+  "witness": "LULDLURURULDLDLULU"
+ },
+ "2670": {
+  "type": "combo",
+  "combo": 3,
+  "best": 5,
+  "witness": "ULULL"
+ },
+ "2676": {
+  "type": "score",
+  "score": 750,
+  "moves": 14,
+  "best": 944,
+  "witness": "DLUDLURDLDLDL"
+ },
+ "2682": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "LDRULDLDRURUL"
+ },
+ "2694": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DLURULDLDRURULULDL"
+ },
+ "2700": {
+  "type": "score",
+  "score": 230,
+  "moves": 8,
+  "best": 288,
+  "witness": "UULDLULU"
+ },
+ "2706": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "LDRULULDLURUL"
+ },
+ "2712": {
+  "type": "score",
+  "score": 980,
+  "moves": 18,
+  "best": 1232,
+  "witness": "LLULRDRURDLDRDRUL"
+ },
+ "2718": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "URDLDRDRULDRU"
+ },
+ "2724": {
+  "type": "score",
+  "score": 240,
+  "moves": 14,
+  "best": 304,
+  "witness": "LUULRDRULULLRU"
+ },
+ "2730": {
+  "type": "combo",
+  "combo": 2,
+  "best": 2,
+  "witness": "RURUL"
+ },
+ "2736": {
+  "type": "score",
+  "score": 190,
+  "moves": 13,
+  "best": 248,
+  "witness": "RULULDLURULL"
+ },
+ "2742": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "URULURDRULUL"
+ },
+ "2748": {
+  "type": "score",
+  "score": 810,
+  "moves": 17,
+  "best": 1024,
+  "witness": "DRDRURDRDLDLDLDLL"
+ },
+ "2754": {
+  "type": "combo",
+  "combo": 3,
+  "best": 3,
+  "witness": "RURDLULDRDL"
+ },
+ "2760": {
+  "type": "score",
+  "score": 70,
+  "moves": 8,
+  "best": 96,
+  "witness": "ULDRUL"
+ },
+ "2766": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LULDRDLDLURDRURDLU"
+ },
+ "2772": {
+  "type": "score",
+  "score": 160,
+  "moves": 14,
+  "best": 212,
+  "witness": "LULDRDLDRULURU"
+ },
+ "2778": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "LDRURDLURUL"
+ },
+ "2784": {
+  "type": "score",
+  "score": 140,
+  "moves": 16,
+  "best": 184,
+  "witness": "URULDRULDLUULDLU"
+ },
+ "2790": {
+  "type": "combo",
+  "combo": 3,
+  "best": 4,
+  "witness": "DLUULL"
+ },
+ "2796": {
+  "type": "score",
+  "score": 80,
+  "moves": 16,
+  "best": 104,
+  "witness": "URDRDLDLDLURDLDL"
  }
 }
