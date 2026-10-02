@@ -58,6 +58,20 @@ def main():
         for f in RPG_OUT.rglob("*.png"):
             dst = A / "rpg" / f.relative_to(RPG_OUT)
             dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(f, dst); n += 1
+    # blurred, darkened copy of each room for the map's not-yet-visited tiles; made from the
+    # real plate when it has arrived, else from the placeholder
+    from PIL import ImageFilter, ImageEnhance
+    slots = {"vault": "room_sealed_vault", "corridor": "room_porters_lodge", "stair": "room_crypt_stair",
+             "stacks": "room_stacks", "cellar": "room_coal_store", "dock": "room_records_basement",
+             "muniment": "room_muniment_room", "reading_room": "room_reading_room",
+             "common_room": "room_faculty_common_room", "deans_corridor": "room_deans_corridor",
+             "annex": "room_chapel_annex", "deans_office": "room_deans_office", "carrel": "room_elena_carrel"}
+    (A / "placeholder/rooms_locked").mkdir(parents=True, exist_ok=True)
+    for room in CROPS:
+        real = A / "rpg/rooms" / f"{slots.get(room, '-')}.png"
+        im = Image.open(real if real.exists() else A / "placeholder/rooms" / f"{room}.webp").convert("RGB")
+        im = im.resize((480, 270)).filter(ImageFilter.GaussianBlur(6))
+        ImageEnhance.Brightness(im).enhance(1.1).save(A / "placeholder/rooms_locked" / f"{room}.webp", quality=85)
     print(f"copied art; {len(CROPS)} placeholder plates; {n} new RPG plates from {RPG_OUT}")
 
 if __name__ == "__main__":

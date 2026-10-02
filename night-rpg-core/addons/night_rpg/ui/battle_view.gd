@@ -21,6 +21,7 @@ var action_box: GridContainer
 var actor_lbl: Label
 var item_box: VBoxContainer
 var policy: Callable
+var action_panel: PanelContainer
 var delay := 0.55
 
 
@@ -30,9 +31,10 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	enemy_tex = TextureRect.new()
 	enemy_tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	enemy_tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-	enemy_tex.position = Vector2(700, 40)
-	enemy_tex.size = Vector2(480, 700)
+	# below the stat panel and bottom-anchored, so the head is never under a panel
+	enemy_tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	enemy_tex.position = Vector2(780, 196)
+	enemy_tex.size = Vector2(470, 524)
 	enemy_tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(enemy_tex)
 	var top := PanelContainer.new()
@@ -55,24 +57,29 @@ func _ready() -> void:
 	tv.add_child(e_susp)
 	weak_lbl = NRSkin.label("", 17, Color(0.87, 0.74, 0.52))
 	tv.add_child(weak_lbl)
+	# left column: log, party, actions stacked so nothing overlaps whatever the text length
+	var col := VBoxContainer.new()
+	col.position = Vector2(24, 18)
+	col.size = Vector2(700, 690)
+	col.add_theme_constant_override("separation", 10)
+	add_child(col)
 	var lp := PanelContainer.new()
-	lp.position = Vector2(30, 18)
-	lp.custom_minimum_size = Vector2(640, 90)
-	add_child(lp)
-	log_lbl = NRSkin.label("", 21)
-	log_lbl.custom_minimum_size = Vector2(600, 0)
+	lp.custom_minimum_size = Vector2(700, 110)
+	col.add_child(lp)
+	log_lbl = NRSkin.label("", 19)
+	log_lbl.custom_minimum_size = Vector2(660, 0)
 	lp.add_child(log_lbl)
 	var pp := PanelContainer.new()
-	pp.position = Vector2(30, 140)
+	pp.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	pp.custom_minimum_size = Vector2(420, 0)
-	add_child(pp)
+	col.add_child(pp)
 	party_box = VBoxContainer.new()
 	party_box.add_theme_constant_override("separation", 10)
 	pp.add_child(party_box)
 	var ap := PanelContainer.new()
-	ap.position = Vector2(30, 440)
 	ap.custom_minimum_size = Vector2(700, 0)
-	add_child(ap)
+	col.add_child(ap)
+	action_panel = ap
 	var av := VBoxContainer.new()
 	ap.add_child(av)
 	actor_lbl = NRSkin.heading("", 24)
@@ -96,6 +103,7 @@ func start(enemy_id: String) -> String:
 	log_lbl.text = Loc.t(e.get("intro_key", "b_intro"))
 	Sound.play_music("boss" if e.get("boss", false) else "battle")
 	_refresh()
+	action_panel.visible = not policy.is_valid()
 	visible = true
 	var result := await _loop()
 	if not policy.is_valid():
@@ -104,6 +112,7 @@ func start(enemy_id: String) -> String:
 			c.queue_free()
 		for c in item_box.get_children():
 			c.queue_free()
+		action_panel.visible = true
 		actor_lbl.text = Loc.t("b_won") if result == "win" else Loc.t("b_lost")
 		action_box.add_child(NRSkin.button(Loc.t("ds_continue"), func(): picked.emit("_done", ""), 20))
 		await picked

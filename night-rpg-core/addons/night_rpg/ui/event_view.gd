@@ -59,7 +59,7 @@ func _ready() -> void:
 	name_lbl.add_theme_font_size_override("font_size", 22)
 	name_panel.add_child(name_lbl)
 	choices = VBoxContainer.new()
-	choices.set_anchors_preset(Control.PRESET_CENTER)
+	choices.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	choices.custom_minimum_size = Vector2(900, 0)
 	choices.position = Vector2(190, 170)
 	choices.add_theme_constant_override("separation", 12)

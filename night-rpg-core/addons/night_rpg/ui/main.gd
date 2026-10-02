@@ -159,29 +159,30 @@ func show_title() -> void:
 	var root := Control.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.add_child(root)
-	var sp := NRSkin.ui("scrim")
+	var sp := NRSkin.ui("panel")   # a dark column behind the logo and menu
 	if sp != "" and ResourceLoader.exists(sp):
 		var scrim := TextureRect.new()
 		scrim.texture = load(sp)
 		scrim.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		scrim.stretch_mode = TextureRect.STRETCH_SCALE
-		scrim.size = Vector2(760, VIEW.y)
+		scrim.size = Vector2(560, VIEW.y)
+		scrim.modulate = Color(1, 1, 1, 0.78)
 		scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		root.add_child(scrim)
 	var logo := TextureRect.new()
 	logo.texture = load(RPG.game["logo"])
 	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-	logo.position = Vector2(50, 40)
+	logo.position = Vector2(50, 30)
 	logo.size = Vector2(440, 196)
 	root.add_child(logo)
 	var sub := NRSkin.heading(Loc.t("t_subtitle"), 26)
-	sub.position = Vector2(70, 250)
+	sub.position = Vector2(70, 236)
 	root.add_child(sub)
 	var v := VBoxContainer.new()
-	v.position = Vector2(80, 320)
+	v.position = Vector2(80, 296)
 	v.custom_minimum_size = Vector2(340, 0)
-	v.add_theme_constant_override("separation", 10)
+	v.add_theme_constant_override("separation", 7)
 	root.add_child(v)
 	v.add_child(NRSkin.button(Loc.t("t_new"), new_game, 24))
 	var c := NRSkin.button(Loc.t("t_continue"), func(): show_saves(false), 24)
@@ -193,11 +194,13 @@ func show_title() -> void:
 	v.add_child(NRSkin.button(Loc.t("t_quit"), func(): get_tree().quit(), 24))
 	if RPG.is_trial():
 		var tl := NRSkin.heading(Loc.t("t_trial"), 22)
-		tl.position = Vector2(80, 300)
+		tl.position = Vector2(80, 620)
 		root.add_child(tl)
 	var note := NRSkin.label(Loc.t("t_note"), 15, Color(0.75, 0.7, 0.65))
-	note.position = Vector2(60, 680)
-	note.size = Vector2(1160, 30)
+	note.add_theme_constant_override("outline_size", 6)
+	note.position = Vector2(60, 664)
+	note.size = Vector2(640, 44)
+	note.custom_minimum_size = Vector2(640, 0)
 	root.add_child(note)
 
 
@@ -671,6 +674,8 @@ func _level_member(mid: String) -> void:
 		RPG.apply_level_choice(mid, md.get("grow", ["wit"])[int(RPG.s["level"]) % md.get("grow", ["wit"]).size()], offers[0] if offers.size() > 0 else "")
 		return
 	_clear_overlay()
+	event.box.visible = false
+	event.name_panel.visible = false
 	_dim()
 	var p := PanelContainer.new()
 	p.add_theme_stylebox_override("panel", NRSkin.box("modal", 22))
@@ -997,12 +1002,13 @@ func show_map() -> void:
 		var rd: Dictionary = RPG.night()["rooms"].get(rid, {})
 		var seen: bool = RPG.s["done"].has("visited/" + rid) or rid == RPG.s["room"] or rid == RPG.night()["start_room"]
 		var tr := TextureRect.new()
-		tr.texture = NRArt.tex("rooms", rd.get("plate", rid))
+		var locked_tex := NRArt.tex("rooms_locked", rd.get("plate", rid)) if not seen and NRArt.path("rooms_locked", rd.get("plate", rid)) != "" else null
+		tr.texture = locked_tex if locked_tex != null else NRArt.tex("rooms", rd.get("plate", rid))
 		tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		tr.size = Vector2(208, 117)
 		tr.position = Vector2(float(pos[rid][0]) * 1140 - 104, float(pos[rid][1]) * 560 - 70)
-		tr.modulate = Color(1, 1, 1) if rid == RPG.s["room"] else (Color(0.6, 0.58, 0.62) if seen else Color(0.12, 0.12, 0.14))
+		tr.modulate = Color(1, 1, 1) if rid == RPG.s["room"] else (Color(0.7, 0.68, 0.72) if seen else Color(0.85, 0.82, 0.88))
 		area.add_child(tr)
 		var l := NRSkin.label(Loc.t(rd.get("name_key", "")) if seen else "?", 17, Color(0.87, 0.74, 0.52) if rid == RPG.s["room"] else Color(0.85, 0.8, 0.75))
 		l.position = tr.position + Vector2(0, 118)

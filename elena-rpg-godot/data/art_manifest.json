@@ -128,6 +128,50 @@
    "res://assets/rpg/outfits/outfit_nightwear.png"
   ]
  },
+ "rooms_locked": {
+  "study": [
+   "res://assets/placeholder/rooms_locked/study.webp"
+  ],
+  "vault": [
+   "res://assets/placeholder/rooms_locked/vault.webp"
+  ],
+  "corridor": [
+   "res://assets/placeholder/rooms_locked/corridor.webp"
+  ],
+  "stair": [
+   "res://assets/placeholder/rooms_locked/stair.webp"
+  ],
+  "stacks": [
+   "res://assets/placeholder/rooms_locked/stacks.webp"
+  ],
+  "cellar": [
+   "res://assets/placeholder/rooms_locked/cellar.webp"
+  ],
+  "dock": [
+   "res://assets/placeholder/rooms_locked/dock.webp"
+  ],
+  "muniment": [
+   "res://assets/placeholder/rooms_locked/muniment.webp"
+  ],
+  "reading_room": [
+   "res://assets/placeholder/rooms_locked/reading_room.webp"
+  ],
+  "common_room": [
+   "res://assets/placeholder/rooms_locked/common_room.webp"
+  ],
+  "deans_corridor": [
+   "res://assets/placeholder/rooms_locked/deans_corridor.webp"
+  ],
+  "annex": [
+   "res://assets/placeholder/rooms_locked/annex.webp"
+  ],
+  "deans_office": [
+   "res://assets/placeholder/rooms_locked/deans_office.webp"
+  ],
+  "carrel": [
+   "res://assets/placeholder/rooms_locked/carrel.webp"
+  ]
+ },
  "cg": {
   "cg_aftermath": [
    "res://assets/cg/cg_aftermath.webp"

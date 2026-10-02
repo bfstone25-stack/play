@@ -122,7 +122,7 @@ game = {
         "panel": "panel", "textbox": "textbox", "namebox": "namebox", "choice_idle": "choice_idle",
         "choice_hover": "choice_hover", "slot_idle": "slot_idle", "slot_hover": "slot_hover",
         "bar_under": "choice_idle", "bar_fill": "namebox", "bar_fill_gold": "title_hover", "modal": "confirm"}.items()}},
-    "title_mood": {"ambient": "#d8d0dc", "torch": True, "zoom": 1.12, "offset": [250, 0]},
+    "title_mood": {"ambient": "#d8d0dc", "torch": True, "zoom": 1.12, "offset": [330, 0]},
     "music": {"title": "res://assets/audio/suspense_theme.ogg", "explore": "res://assets/audio/suspense_theme.ogg",
               "battle": "res://assets/audio/suspense_theme.ogg", "boss": "res://assets/audio/suspense_theme.ogg",
               "intimate": "res://assets/audio/ecchi_theme.ogg"},
@@ -169,6 +169,7 @@ art = {"rooms": {r: ([f"res://assets/rpg/rooms/{slot}.png"] if slot else []) + [
        "sprites": {s: [f"res://assets/rpg/outfits/{s}.png", f"res://assets/sprites/{s}.webp"] for s in
                    ("elena_neutral", "elena_flustered", "elena_soft", "cobb", "penhallow", "dean_holloway")},
        **{}}
+art["rooms_locked"] = {r: [f"res://assets/placeholder/rooms_locked/{r}.webp"] for r in ROOMS}
 art["sprites"].update({o: [f"res://assets/rpg/outfits/{o}.png"] for o in ("outfit_research", "outfit_raincoat", "outfit_gown", "outfit_evening", "outfit_nightwear")})
 art.update({
        "cg": {}, "maps": {"blackwood": ["res://assets/rpg/rooms/floor_map.png"]}})
