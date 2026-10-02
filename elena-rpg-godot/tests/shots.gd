@@ -24,7 +24,8 @@ func _ready() -> void:
 	await get_tree().process_frame
 	RPG.persist["gallery"] = []
 	await run_lang("en", true)
-	await run_lang("ja", false)
+	RPG.trial_override = true   # the Japanese pass plays the trial: night 1 to its end screen
+	await run_lang("ja", true)
 	print("SHOTS: ", JSON.stringify(taken.keys()))
 	get_tree().quit()
 
@@ -52,7 +53,7 @@ func hook(tag: String) -> void:
 		var e = main.event
 		print("CGDBG ", tag, " ev.vis=", e.visible, " ev.size=", e.size, " ev.pos=", e.global_position, " cg.vis=", e.cg.visible, " cg.size=", e.cg.size, " cg.tex=", e.cg.texture, " cg.mod=", e.cg.modulate, " in_tree=", e.is_visible_in_tree())
 		await snap(tag)
-	elif tag in ["battle", "levelup", "night_card", "choice"]:
+	elif tag in ["battle", "levelup", "night_card", "choice", "dialogue", "dialogue2", "trial_end", "loss"]:
 		await snap(tag)
 
 
@@ -67,7 +68,10 @@ func run_lang(l: String, full: bool) -> void:
 	add_child(main)
 	main.event.auto_mode = true
 	main.shot_hook = hook
-	main.stop_after = "night1"
+	main.stop_after = "" if RPG.trial_override else "night1"
+	main.show_disclosure(false)
+	await get_tree().create_timer(0.6).timeout
+	await snap("disclosure")
 	main.show_title()
 	await get_tree().create_timer(1.5).timeout
 	await snap("title")
@@ -81,7 +85,7 @@ func run_lang(l: String, full: bool) -> void:
 	var sim = load("res://tests/sim.gd").new()
 	sim.main = main
 	var steps := 0
-	while not ("night1" in RPG.s["nights_cleared"]) and steps < 200:
+	while not ("night1" in RPG.s["nights_cleared"]) and steps < 200 and not taken.has(lang + "_trial_end"):
 		steps += 1
 		var h = sim._next_hotspot()
 		if h == null:
@@ -95,8 +99,13 @@ func run_lang(l: String, full: bool) -> void:
 			await get_tree().create_timer(0.4).timeout
 			await snap("map")
 			main.render_room()
-		if not full and taken.has(lang + "_battle") and taken.has(lang + "_map"):
-			break
+		if RPG.s["room"] == "vault" and RPG.flag("elena_joined") and not taken.has(lang + "_room_vault_party"):
+			await get_tree().create_timer(0.8).timeout
+			await snap("room_vault_party")
+			main.show_menu()
+			await get_tree().create_timer(0.4).timeout
+			await snap("party_menu")
+			main.render_room()
 	if full:
 		main.show_gallery()
 		await get_tree().create_timer(0.5).timeout

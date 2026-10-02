@@ -20,19 +20,21 @@ var auto_choice := 0
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	size = Vector2(1280, 720)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	cg = TextureRect.new()
-	cg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	cg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	cg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	cg.visible = false
 	cg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(cg)
+	cg.position = Vector2.ZERO
+	cg.size = Vector2(1280, 720)
 	box = PanelContainer.new()
 	box.add_theme_stylebox_override("panel", NRSkin.box("textbox", 18, 26))
-	box.anchor_left = 0.0; box.anchor_right = 1.0; box.anchor_top = 1.0; box.anchor_bottom = 1.0
-	box.offset_top = -200; box.offset_left = 0; box.offset_right = 0
+	box.position = Vector2(0, 720 - 200)
+	box.size = Vector2(1280, 200)
 	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(box)
 	var m := MarginContainer.new()

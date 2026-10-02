@@ -36,7 +36,7 @@ var stop_after := ""      # sim: do not roll into the next night after this one
 
 func _ready() -> void:
 	theme = NRSkin.theme()
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var bg := CanvasLayer.new()
 	bg.layer = 0
 	add_child(bg)
@@ -47,7 +47,7 @@ func _ready() -> void:
 	add_child(top)
 	ui = Control.new()
 	ui.theme = theme
-	ui.set_anchors_preset(Control.PRESET_FULL_RECT)
+	ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ui.size = VIEW
 	top.add_child(ui)
 	_build_hud()
@@ -57,7 +57,7 @@ func _ready() -> void:
 	battle.visible = false
 	ui.add_child(battle)
 	overlay = Control.new()
-	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui.add_child(overlay)
 	toast_lbl = NRSkin.heading("", 26)
@@ -74,7 +74,10 @@ func _ready() -> void:
 	Sound.play_ambience("ambience")
 	var args := OS.get_cmdline_user_args()
 	if not ("--no-title" in args) and not get_tree().root.has_meta("nr_no_title"):
-		show_title()
+		if RPG.game.has("disclosure_key"):
+			show_disclosure(true)
+		else:
+			show_title()
 
 
 func _toast(t: String) -> void:
@@ -94,11 +97,11 @@ func _shot(tag: String) -> void:
 
 func _build_hud() -> void:
 	hud = Control.new()
-	hud.set_anchors_preset(Control.PRESET_FULL_RECT)
+	hud.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui.add_child(hud)
 	hot_layer = Control.new()
-	hot_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	hot_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	hot_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hud.add_child(hot_layer)
 	var tp := PanelContainer.new()
@@ -154,7 +157,7 @@ func show_title() -> void:
 	stage.set_figure(null)
 	Sound.play_music("title")
 	var root := Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.add_child(root)
 	var sp := NRSkin.ui("scrim")
 	if sp != "" and ResourceLoader.exists(sp):
@@ -185,7 +188,13 @@ func show_title() -> void:
 	v.add_child(c)
 	v.add_child(NRSkin.button(Loc.t("t_gallery"), show_gallery, 24))
 	v.add_child(NRSkin.button(Loc.t("t_settings"), show_settings, 24))
+	if RPG.game.has("disclosure_key"):
+		v.add_child(NRSkin.button(Loc.t("t_about"), func(): show_disclosure(false), 24))
 	v.add_child(NRSkin.button(Loc.t("t_quit"), func(): get_tree().quit(), 24))
+	if RPG.is_trial():
+		var tl := NRSkin.heading(Loc.t("t_trial"), 22)
+		tl.position = Vector2(80, 300)
+		root.add_child(tl)
 	var note := NRSkin.label(Loc.t("t_note"), 15, Color(0.75, 0.7, 0.65))
 	note.position = Vector2(60, 680)
 	note.size = Vector2(1160, 30)
@@ -442,6 +451,9 @@ func _say_line(who: String, body: String, ln: Dictionary) -> void:
 	if secs > read:
 		pace["voice"] += secs - read
 	stats["lines"] += 1
+	if stats["lines"] == 14 or stats["lines"] == 60:
+		event.say(who, body, secs)
+		await _shot("dialogue" if stats["lines"] == 14 else "dialogue2")
 	await event.say(who, body, secs)
 
 
@@ -475,7 +487,10 @@ func _step(st: Dictionary) -> String:
 		if NRArt.path("cg", st["cg"]) == "":
 			return "ok"   # a CG still being rendered: the scene plays without it
 		event.visible = true
-		event.show_cg(NRArt.tex("cg", st["cg"]))
+		var cg_id: String = st["cg"]
+		if RPG.is_trial() and cg_id in RPG.game.get("trial_locked_cgs", []) and NRArt.path("cg", cg_id + "_locked") != "":
+			cg_id += "_locked"
+		event.show_cg(NRArt.tex("cg", cg_id))
 		if st.get("unlock", true):
 			RPG.unlock_cg(st["cg"])
 		await _shot("cg_" + st["cg"])
@@ -711,7 +726,7 @@ func _level_member(mid: String) -> void:
 	while not done[0]:
 		await get_tree().process_frame
 	RPG.apply_level_choice(mid, picked["st"], picked["sk"])
-	p.queue_free()
+	_clear_overlay()   # the panel and the dim behind it (the dim swallows clicks)
 
 
 # ------------------------------------------------------------------ night end
@@ -725,6 +740,10 @@ func end_night(next: String) -> String:
 	event.close()
 	if stop_after == nid:
 		return "night_over"
+	if RPG.is_trial() and nid == RPG.game.get("trial_last_night", ""):
+		RPG.save(1)
+		await show_trial_end()
+		return "night_over"
 	if next == "" or not RPG.nights.has(next):
 		_clear_overlay()
 		var p := PanelContainer.new()
@@ -733,8 +752,10 @@ func end_night(next: String) -> String:
 		overlay.add_child(p)
 		var v := VBoxContainer.new()
 		p.add_child(v)
-		v.add_child(NRSkin.heading(Loc.t("end_t"), 34))
-		v.add_child(NRSkin.label(Loc.t("end_body") % [int(RPG.s["level"]), int(RPG.s["trust"])], 20))
+		var fin := next == ""
+		v.add_child(NRSkin.heading(Loc.t("fin_t" if fin else "end_t"), 34))
+		v.add_child(NRSkin.label(Loc.t("fin_body" if fin else "end_body") % [int(RPG.s["level"]), int(RPG.s["trust"])], 20))
+		await _shot("the_end" if fin else "night_end")
 		RPG.save(1)
 		var done := [false]
 		v.add_child(NRSkin.button(Loc.t("end_title"), func(): done[0] = true, 22))
@@ -798,6 +819,7 @@ func show_menu() -> void:
 	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	v.add_child(tabs)
 	# status
+	tabs.add_theme_font_size_override("font_size", 22)
 	var st := VBoxContainer.new()
 	st.name = Loc.t("m_status")
 	tabs.add_child(st)
@@ -904,13 +926,14 @@ func show_gallery() -> void:
 			tb.pressed.connect(func(): _view_cg(cid))
 		var box := VBoxContainer.new()
 		box.add_child(tb)
-		box.add_child(NRSkin.label(Loc.t(cg["key"]) if have else Loc.t("g_locked") % int(cg.get("trust", 0)), 15))
+		var lock_txt: String = Loc.t("g_locked") % int(cg["trust"]) if int(cg.get("trust", 0)) > 0 else Loc.t("g_unseen")
+		box.add_child(NRSkin.label(Loc.t(cg["key"]) if have else lock_txt, 15))
 		g.add_child(box)
 
 
 func _view_cg(id: String) -> void:
 	var tr := TextureRect.new()
-	tr.set_anchors_preset(Control.PRESET_FULL_RECT)
+	tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	tr.size = VIEW
 	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -986,3 +1009,69 @@ func show_map() -> void:
 		l.size = Vector2(208, 24)
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		area.add_child(l)
+
+
+
+## AI-use disclosure + adult notice: shown at every launch before the title, and from the
+## title's About button. Language buttons on it, so a Japanese player can read it first.
+func show_disclosure(then_title: bool) -> void:
+	_clear_overlay()
+	hud.visible = false
+	stage.set_plate(load(RPG.game["title_bg"]), {"ambient": "#403840", "torch": false})
+	stage.set_figure(null)
+	_dim()
+	var p := PanelContainer.new()
+	p.add_theme_stylebox_override("panel", NRSkin.box("modal", 22))
+	p.position = Vector2(170, 70)
+	p.custom_minimum_size = Vector2(940, 560)
+	overlay.add_child(p)
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 12)
+	p.add_child(v)
+	v.add_child(NRSkin.heading(Loc.t("ds_title"), 32))
+	v.add_child(NRSkin.label(Loc.t("ds_adult"), 20, Color(0.87, 0.74, 0.52)))
+	var body := NRSkin.label(Loc.t(RPG.game["disclosure_key"]), 19)
+	body.custom_minimum_size = Vector2(880, 0)
+	v.add_child(body)
+	var hb := HBoxContainer.new()
+	hb.add_theme_constant_override("separation", 8)
+	v.add_child(hb)
+	for l in ["en", "ja"]:
+		hb.add_child(NRSkin.button(Loc.LANG_NAMES[l], func():
+			Loc.set_lang(l)
+			show_disclosure(then_title), 18))
+	var ok := NRSkin.button(Loc.t("ds_continue"), func():
+		if then_title:
+			show_title()
+		else:
+			_close_modal(), 22)
+	v.add_child(ok)
+
+
+func show_trial_end() -> void:
+	_clear_overlay()
+	hud.visible = false
+	event.close()
+	_dim()
+	var p := PanelContainer.new()
+	p.add_theme_stylebox_override("panel", NRSkin.box("modal", 22))
+	p.position = Vector2(190, 110)
+	p.custom_minimum_size = Vector2(900, 480)
+	overlay.add_child(p)
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 14)
+	p.add_child(v)
+	# bilingual on purpose, like the VN trial's last screen: both languages at once
+	for k in ["tr_end_title", "tr_end_body"]:
+		var row: Dictionary = Loc.table.get(k, {})
+		v.add_child(NRSkin.heading(str(row.get("ja", "")), 30) if k == "tr_end_title" else NRSkin.label(str(row.get("ja", "")), 20))
+		v.add_child(NRSkin.heading(str(row.get("en", "")), 26) if k == "tr_end_title" else NRSkin.label(str(row.get("en", "")), 19))
+	var done := [false]
+	if RPG.game.get("store_url", "") != "":
+		v.add_child(NRSkin.button(str(Loc.table.get("tr_open_store", {}).get("ja", "")) + " / " + str(Loc.table.get("tr_open_store", {}).get("en", "")), func(): OS.shell_open(RPG.game["store_url"]), 20))
+	v.add_child(NRSkin.button(str(Loc.table.get("tr_back", {}).get("ja", "")) + " / " + str(Loc.table.get("tr_back", {}).get("en", "")), func(): done[0] = true, 20))
+	await _shot("trial_end")
+	while not auto and not done[0]:
+		await get_tree().process_frame
+	if not auto:
+		show_title()

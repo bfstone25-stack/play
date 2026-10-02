@@ -48,6 +48,13 @@
   "sting": "res://assets/audio/title_sting.ogg",
   "camera": "res://assets/audio/click.ogg"
  },
+ "disclosure_key": "about_ai",
+ "trial_last_night": "night1",
+ "trial_locked_cgs": [
+  "cg_climax_control",
+  "cg_climax_pact"
+ ],
+ "store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01722365.html",
  "stats": [
   "wit",
   "cha",
@@ -510,7 +517,7 @@
   "cobb": {
    "name_key": "e_cobb",
    "sprite": "cobb",
-   "composure": 70,
+   "composure": 55,
    "atk": 5,
    "susp_rate": 7,
    "weak": [
@@ -933,6 +940,28 @@
    "intro_key": "ei_penhallow_final",
    "win_key": "ew_penhallow_final",
    "boss": true
+  },
+  "dean_dawn_solo": {
+   "name_key": "e_dean",
+   "sprite": "dean_holloway",
+   "composure": 300,
+   "atk": 7,
+   "susp_rate": 7,
+   "boss": true,
+   "weak": [
+    "bluff",
+    "stall"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 120,
+   "drop": "signet",
+   "barks": 4,
+   "bark_set": "dean_dawn",
+   "intro_key": "ei_dean",
+   "win_key": "ew_dean"
   },
   "dean_dawn": {
    "name_key": "e_dean",

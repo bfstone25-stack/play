@@ -407,6 +407,18 @@
      "if_flag": "pen_done"
     },
     {
+     "id": "lamp",
+     "kind": "search",
+     "pos": [
+      0.6,
+      0.3
+     ],
+     "label_key": "hs_lamp",
+     "event": "n1_lamp",
+     "xp": 5,
+     "if_flag": "pen_done"
+    },
+    {
      "id": "to_stair",
      "kind": "door",
      "pos": [
@@ -466,6 +478,17 @@
      "gives": [
       "sherry"
      ],
+     "xp": 5
+    },
+    {
+     "id": "chute",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.3
+     ],
+     "label_key": "hs_coalchute",
+     "event": "n1_chute",
      "xp": 5
     },
     {
@@ -1299,7 +1322,17 @@
     "key": "n1_dean_4"
    },
    {
-    "battle": "dean_dawn"
+    "if_flag": "route_walk",
+    "then": [
+     {
+      "battle": "dean_dawn_solo"
+     }
+    ],
+    "else": [
+     {
+      "battle": "dean_dawn"
+     }
+    ]
    },
    {
     "show": "dean_holloway",
@@ -1397,6 +1430,30 @@
    {
     "say": "elena",
     "key": "n1_lbook_3"
+   }
+  ],
+  "n1_lamp": [
+   {
+    "say": "narrator",
+    "key": "n1_lamp_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_lamp_2"
+   },
+   {
+    "say": "elena",
+    "key": "n1_lamp_3"
+   }
+  ],
+  "n1_chute": [
+   {
+    "say": "narrator",
+    "key": "n1_chute_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_chute_2"
    }
   ]
  }

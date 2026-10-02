@@ -25,7 +25,8 @@ var delay := 0.55
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	size = Vector2(1280, 720)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	enemy_tex = TextureRect.new()
 	enemy_tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -97,6 +98,15 @@ func start(enemy_id: String) -> String:
 	_refresh()
 	visible = true
 	var result := await _loop()
+	if not policy.is_valid():
+		# let the player read how it ended before the screen goes
+		for c in action_box.get_children():
+			c.queue_free()
+		for c in item_box.get_children():
+			c.queue_free()
+		actor_lbl.text = Loc.t("b_won") if result == "win" else Loc.t("b_lost")
+		action_box.add_child(NRSkin.button(Loc.t("ds_continue"), func(): picked.emit("_done", ""), 20))
+		await picked
 	RPG.absorb_battle(b)
 	visible = false
 	return result

@@ -21,6 +21,14 @@ var persist: Dictionary = {"gallery": [], "lang": "en", "vol_music": 0.7, "vol_s
 var data_root := "res://data"
 
 
+var trial_override := false
+
+
+## Trial build: export feature "trial" (the trial preset), or --trial on the command line.
+func is_trial() -> bool:
+	return trial_override or OS.has_feature("trial") or "--trial" in OS.get_cmdline_user_args()
+
+
 func _ready() -> void:
 	load_content()
 	_load_persist()
@@ -40,10 +48,15 @@ func load_content() -> void:
 		return
 	game = g
 	for nid in game.get("nights", []):
+		# the trial build ships without the later nights; their absence is expected there
+		if not FileAccess.file_exists("%s/nights/%s.json" % [data_root, nid]):
+			continue
 		var n = _read_json("%s/nights/%s.json" % [data_root, nid])
 		if n != null:
 			nights[nid] = n
 	for ch in game.get("story", []):
+		if not FileAccess.file_exists("%s/story/%s.json" % [data_root, ch]):
+			continue
 		var st = _read_json("%s/story/%s.json" % [data_root, ch])
 		if st != null:
 			story[ch] = st["lines"]

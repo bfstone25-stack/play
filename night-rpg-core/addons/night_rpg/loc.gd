@@ -22,12 +22,17 @@ func _ready() -> void:
 		if d is Dictionary:
 			for k in d.keys():
 				table[k] = d[k]
+	# first launch: follow the OS language when we have it (a Japanese buyer starts in Japanese)
+	if not RPG.persist.has("lang_chosen"):
+		var os_lang := OS.get_locale_language()
+		RPG.persist["lang"] = os_lang if os_lang in LANGS and coverage(os_lang) > 0.9 else "en"
 	lang = str(RPG.persist.get("lang", "en"))
 
 
 func set_lang(l: String) -> void:
 	lang = l
 	RPG.persist["lang"] = l
+	RPG.persist["lang_chosen"] = true
 	RPG.save_persist()
 	language_changed.emit()
 

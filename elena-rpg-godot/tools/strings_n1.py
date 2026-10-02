@@ -3,7 +3,7 @@
 S = {
 "title": ("Elena: Crimson Archives", "エレナ：深紅の書庫"),
 "t_subtitle": ("Five nights in the Blackwood wing", "ブラックウッド棟の五夜"),
-"t_note": ("18+ · All characters are adults · AI-generated work (see Settings → About)", "18歳以上対象 · 登場人物は全員成人です · AI生成作品（設定 → 作品について）"),
+"t_note": ("18+ · All characters are adults · AI-generated work (see 'About this work')", "18歳以上対象 · 登場人物は全員成人です · AI生成作品（「作品について」参照）"),
 "n_protagonist": ("Vance", "ヴァンス"), "n_vance": ("Vance", "ヴァンス"), "n_elena": ("Elena", "エレナ"),
 "n_cobb": ("Cobb", "コブ"), "n_penhallow": ("Penhallow", "ペンハロウ"), "n_dean": ("Dean Holloway", "ホロウェイ学部長"),
 # stats

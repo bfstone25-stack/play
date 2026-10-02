@@ -70,7 +70,7 @@ ITEMS = {
 }
 ENEMIES = {
     # weak/resist are what the player learns; xp/drop/trust_win are the reward
-    "cobb":        {"name_key": "e_cobb", "sprite": "cobb", "composure": 70, "atk": 5, "susp_rate": 7,
+    "cobb":        {"name_key": "e_cobb", "sprite": "cobb", "composure": 55, "atk": 5, "susp_rate": 7,
                     "weak": ["bribe"], "resist": ["threaten"], "xp": 40, "drop": "porter_rota",
                     "barks": 3, "intro_key": "ei_cobb", "win_key": "ew_cobb"},
     "penhallow":   {"name_key": "e_penhallow", "sprite": "penhallow", "composure": 480, "atk": 7, "susp_rate": 11,
@@ -101,6 +101,9 @@ ENEMIES = {
         ("ambrose_n5", "solicitor", 920, 13, 11, ["evidence", "threaten"], ["bluff", "bribe"], 140, "brandy", "ambrose", False),
         ("penhallow_final", "penhallow", 1200, 14, 9, ["evidence", "recite", "lecture"], ["bribe", "threaten", "flirt"], 300, "biscuits", "penhallow_final", True),
     ]},
+    "dean_dawn_solo": {"name_key": "e_dean", "sprite": "dean_holloway", "composure": 300, "atk": 7, "susp_rate": 7,
+                    "boss": True, "weak": ["bluff", "stall"], "resist": ["bribe", "threaten"], "xp": 120,
+                    "drop": "signet", "barks": 4, "bark_set": "dean_dawn", "intro_key": "ei_dean", "win_key": "ew_dean"},
     "dean_dawn":   {"name_key": "e_dean", "sprite": "dean_holloway", "composure": 520, "atk": 8, "susp_rate": 7,
                     "boss": True, "weak": ["bluff", "deflect", "stall"], "resist": ["flirt", "bribe", "threaten"], "xp": 120,
                     "drop": "signet", "barks": 4, "intro_key": "ei_dean", "win_key": "ew_dean"},
@@ -126,6 +129,9 @@ game = {
     "audio": {"ambience": "res://assets/audio/rain_ambience.ogg", "click": "res://assets/audio/ui_click.ogg",
               "page_flip": "res://assets/audio/page_flip.ogg", "heartbeat": "res://assets/audio/heartbeat.ogg",
               "sting": "res://assets/audio/title_sting.ogg", "camera": "res://assets/audio/click.ogg"},
+    "disclosure_key": "about_ai",
+    "trial_last_night": "night1", "trial_locked_cgs": ["cg_climax_control", "cg_climax_pact"],
+    "store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01722365.html",
     "stats": ["wit", "cha", "grt", "stl"],
     "level_cap": 20, "trust_thresholds": [3, 5, 7, 9],
     "heroine_flag": "elena_joined", "heroine_sprite": "elena_neutral",

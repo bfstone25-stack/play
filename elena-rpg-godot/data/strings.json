@@ -8,8 +8,8 @@
   "ja": "ブラックウッド棟の五夜"
  },
  "t_note": {
-  "en": "18+ · All characters are adults · AI-generated work (see Settings → About)",
-  "ja": "18歳以上対象 · 登場人物は全員成人です · AI生成作品（設定 → 作品について）"
+  "en": "18+ · All characters are adults · AI-generated work (see 'About this work')",
+  "ja": "18歳以上対象 · 登場人物は全員成人です · AI生成作品（「作品について」参照）"
  },
  "n_protagonist": {
   "en": "Vance",
@@ -1102,6 +1102,58 @@
  "n1_lbook_3": {
   "en": "Thank you. For waiting.",
   "ja": "ありがとう。待ってくれて。"
+ },
+ "ds_adult": {
+  "en": "This game is for adults (18+). All characters are adults. Contains sexual content.",
+  "ja": "本作品は成人向け（18歳以上）です。登場人物はすべて成人です。性的な表現を含みます。"
+ },
+ "about_ai": {
+  "en": "AI disclosure: This work uses generative AI. All character art, backgrounds and event CGs were generated with Animagine XL (an image model) and then selected and composited by the developer. The heroine's spoken lines are synthesised with CosyVoice (a text-to-speech model). The story, dialogue and game code were written with the help of AI language models and edited, directed and tested by the developer.",
+  "ja": "AI使用について：本作は生成AIを使用しています。キャラクター立ち絵・背景・イベントCGは画像生成AI「Animagine XL」で生成し、開発者が選定・合成しています。ヒロインのボイスは音声合成AI「CosyVoice」による合成音声です。シナリオ・テキストおよびプログラムもAI（大規模言語モデル）の支援を受けて作成し、開発者が編集・監修・テストしています。"
+ },
+ "tr_end_title": {
+  "en": "This is where the trial ends.",
+  "ja": "体験版はここまで"
+ },
+ "tr_end_body": {
+  "en": "Nights 2 to 5, all three routes and three endings, every standoff and boss, the full gallery and growth to level 20 are in the full version. Your trial save carries over.",
+  "ja": "第二夜から第五夜、3つのルートと3種のエンディング、すべての対峙とボス、ギャラリー、レベル20までの成長は製品版に収録されています。体験版のセーブデータは製品版に引き継げます。"
+ },
+ "tr_open_store": {
+  "en": "Open the product page",
+  "ja": "製品版のページを開く"
+ },
+ "tr_back": {
+  "en": "Back to the title",
+  "ja": "タイトルに戻る"
+ },
+ "hs_lamp": {
+  "en": "Green lamp",
+  "ja": "緑のランプ"
+ },
+ "hs_coalchute": {
+  "en": "Coal chute",
+  "ja": "石炭シュート"
+ },
+ "n1_lamp_1": {
+  "en": "The green lamp Penhallow read by is still warm. Under it, a ring of wet from a glass he did not leave behind.",
+  "ja": "ペンハロウが読書していた緑のランプはまだ温かい。その下に、彼が持ち去ったグラスの濡れた輪。"
+ },
+ "n1_lamp_2": {
+  "en": "Elena touches the ring with one finger, as if it could tell her what he was drinking to.",
+  "ja": "エレナは指先でその輪に触れる。彼が何に乾杯していたのか、それが教えてくれるとでもいうように。"
+ },
+ "n1_lamp_3": {
+  "en": "He was here for us. Not for the book. For us.",
+  "ja": "彼は私たちのためにここにいたのよ。本じゃない。私たちのために。"
+ },
+ "n1_chute_1": {
+  "en": "The coal chute runs up to a grating in the quad. Through it, rain, and very far away, a car idling with its lights off.",
+  "ja": "石炭シュートは中庭の格子まで続いている。その向こうに雨、そしてずっと遠くに、ライトを消してアイドリングする車。"
+ },
+ "n1_chute_2": {
+  "en": "You watch until it drives away. It does not hurry either.",
+  "ja": "走り去るまで見ている。その車も急がない。"
  },
  "r_dock": {
   "en": "Loading dock",

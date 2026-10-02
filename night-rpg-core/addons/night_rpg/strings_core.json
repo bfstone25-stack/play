@@ -310,5 +310,41 @@
  "st_vol_voice": {
   "en": "Voice",
   "ja": "ボイス"
+ },
+ "t_about": {
+  "en": "About this work",
+  "ja": "作品について"
+ },
+ "ds_continue": {
+  "en": "Continue",
+  "ja": "続ける"
+ },
+ "ds_title": {
+  "en": "Before you play",
+  "ja": "プレイの前に"
+ },
+ "t_trial": {
+  "en": "Trial version — Night 1",
+  "ja": "体験版 — 第一夜"
+ },
+ "b_won": {
+  "en": "Standoff won",
+  "ja": "対峙に勝利"
+ },
+ "b_lost": {
+  "en": "Standoff lost",
+  "ja": "対峙に敗北"
+ },
+ "fin_t": {
+  "en": "The End",
+  "ja": "完"
+ },
+ "fin_body": {
+  "en": "Level %d · Trust %d. Thank you for playing. Your last save is in slot 1: replay the final night for another ending.",
+  "ja": "レベル %d · 信頼 %d。プレイしていただきありがとうございました。最後のセーブはスロット1に。最終夜をやり直すと別のエンディングが見られます。"
+ },
+ "g_unseen": {
+  "en": "Not found yet",
+  "ja": "未発見"
  }
 }

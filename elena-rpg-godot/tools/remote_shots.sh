@@ -17,7 +17,7 @@ ssh "$HOST" "cd ~/$R/game && rm -rf shots_out && mkdir shots_out && \
   timeout 900 xvfb-run -a -s '-screen 0 1280x720x24' ~/$R/bin/godot --rendering-driver vulkan --path . $SCENE -- --out=\$PWD/shots_out $* > shots_out/log.txt 2>&1; echo rc=\$?" 
 mkdir -p "$OUT"
 rsync -a "$HOST:$R/game/shots_out/" "$OUT/"
-grep -E "RENDER DEVICE|SHOTS|SCRIPT ERROR|ERROR" "$OUT/log.txt" | head -20
+grep -E "RENDER DEVICE|SHOTS|SCRIPT ERROR|ERROR|^ok |^FAIL|ui_smoke:" "$OUT/log.txt" | head -40
 grep -q "RENDER DEVICE: .*3060" "$OUT/log.txt" || { echo "!! not rendered on the RTX 3060"; exit 3; }
 n=$(ls "$OUT"/*.png 2>/dev/null | wc -l); echo "$n shots in $OUT"
 [ "$n" -ge "${MIN_SHOTS:-8}" ] || { echo "!! too few shots"; exit 4; }
