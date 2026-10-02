@@ -1,0 +1,650 @@
+{
+ "id": "night4",
+ "title_key": "n4_title",
+ "sub_key": "n4_sub",
+ "turns": 26,
+ "clock_start": 540,
+ "minutes_per_turn": 15,
+ "start_room": "study",
+ "start_event": "n4_open",
+ "map": {
+  "image": "blackwood",
+  "rooms": {
+   "study": [
+    0.14,
+    0.2
+   ],
+   "deans_corridor": [
+    0.42,
+    0.2
+   ],
+   "annex": [
+    0.7,
+    0.2
+   ],
+   "deans_office": [
+    0.7,
+    0.72
+   ],
+   "carrel": [
+    0.3,
+    0.72
+   ]
+  }
+ },
+ "rooms": {
+  "study": {
+   "name_key": "r_study",
+   "plate": "study",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7d7480",
+    "lamps": [
+     [
+      0.69,
+      0.47,
+      0.9,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "biscuits",
+     "kind": "search",
+     "pos": [
+      0.44,
+      0.52
+     ],
+     "event": "n4_biscuits",
+     "label_key": "hs_tin",
+     "gives": [
+      "biscuits",
+      "gown"
+     ]
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "deans_corridor",
+     "pos": [
+      0.9,
+      0.82
+     ]
+    }
+   ]
+  },
+  "deans_corridor": {
+   "name_key": "r_deans_corridor",
+   "plate": "deans_corridor",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7480",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "vey",
+     "kind": "enemy",
+     "enemy": "vey_n4",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n4_vey_pre",
+     "after": "n4_vey_post"
+    },
+    {
+     "id": "desk",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.6
+     ],
+     "event": "n4_desk",
+     "label_key": "hs_vey_desk",
+     "xp": 10,
+     "if_flag": "vey4_done"
+    },
+    {
+     "id": "to_study",
+     "kind": "door",
+     "to": "study",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "if_not_flag": "tea_done"
+    },
+    {
+     "id": "to_annex",
+     "kind": "door",
+     "to": "annex",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "vey4_done",
+     "if_not_flag": "tea_done"
+    },
+    {
+     "id": "to_files",
+     "kind": "door",
+     "to": "deans_office",
+     "pos": [
+      0.5,
+      0.86
+     ],
+     "if_flag": "tea_done"
+    }
+   ],
+   "enter_event": "n4_corr"
+  },
+  "annex": {
+   "name_key": "r_annex",
+   "plate": "annex",
+   "music": "explore",
+   "mood": {
+    "ambient": "#6a6070",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      1.0,
+      "#ffb050"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "hollis",
+     "kind": "enemy",
+     "enemy": "hollis_n4",
+     "pos": [
+      0.3,
+      0.5
+     ],
+     "event": "n4_hollis_pre",
+     "after": "n4_hollis_post"
+    },
+    {
+     "id": "fire",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.6
+     ],
+     "event": "n4_fire",
+     "label_key": "hs_fireplace",
+     "xp": 10,
+     "if_flag": "hollis4_done"
+    },
+    {
+     "id": "dean",
+     "kind": "enemy",
+     "enemy": "dean_tea",
+     "pos": [
+      0.55,
+      0.45
+     ],
+     "event": "n4_tea_pre",
+     "after": "n4_tea_post",
+     "if_flag": "hollis4_done"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "deans_corridor",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "if_flag": "tea_done"
+    }
+   ],
+   "enter_event": "n4_annex"
+  },
+  "deans_office": {
+   "name_key": "r_deans_office",
+   "plate": "deans_office",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7d7480",
+    "lamps": [
+     [
+      0.4,
+      0.45,
+      0.9,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "files",
+     "kind": "event",
+     "pos": [
+      0.4,
+      0.55
+     ],
+     "event": "n4_files",
+     "label_key": "hs_files"
+    },
+    {
+     "id": "crane",
+     "kind": "enemy",
+     "enemy": "crane_n4",
+     "pos": [
+      0.65,
+      0.45
+     ],
+     "event": "n4_crane_pre",
+     "after": "n4_crane_post",
+     "if_flag": "files_done"
+    },
+    {
+     "id": "to_carrel",
+     "kind": "door",
+     "to": "carrel",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "crane4_done"
+    }
+   ]
+  },
+  "carrel": {
+   "name_key": "r_carrel",
+   "plate": "carrel",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8496",
+    "lamps": [
+     [
+      0.5,
+      0.3,
+      1.0,
+      "#ffd0a0"
+     ]
+    ]
+   },
+   "hotspots": [],
+   "enter_event": "n4_end"
+  }
+ },
+ "events": {
+  "n4_open": [
+   {
+    "bg": "study"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "ch4:16-17"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.62
+   },
+   {
+    "lines": "ch4:21-32"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Take page fourteen with you. Put it on her desk.",
+      "do": [
+       {
+        "lines": "ch4:39-41"
+       }
+      ]
+     },
+     {
+      "menu": "Take nothing. Let her think you know less than you do.",
+      "do": [
+       {
+        "lines": "ch4:46-48"
+       }
+      ]
+     },
+     {
+      "menu": "Take the survey approval and ask her, in writing, who authorised it.",
+      "do": [
+       {
+        "lines": "ch4:54-55"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n4_biscuits": [
+   {
+    "say": "narrator",
+    "key": "n4_tin_1"
+   }
+  ],
+  "n4_corr": [
+   {
+    "say": "narrator",
+    "key": "n4_corr_1"
+   }
+  ],
+  "n4_vey_pre": [
+   {
+    "say": "narrator",
+    "key": "n4_vey_1"
+   },
+   {
+    "say": "vey",
+    "key": "n4_vey_2"
+   }
+  ],
+  "n4_vey_post": [
+   {
+    "say": "narrator",
+    "key": "n4_vey_3"
+   },
+   {
+    "flag": "vey4_done"
+   }
+  ],
+  "n4_desk": [
+   {
+    "say": "narrator",
+    "key": "n4_vey_3"
+   }
+  ],
+  "n4_annex": [
+   {
+    "say": "narrator",
+    "key": "n4_annex_1"
+   }
+  ],
+  "n4_hollis_pre": [
+   {
+    "say": "narrator",
+    "key": "n4_hollis_1"
+   }
+  ],
+  "n4_hollis_post": [
+   {
+    "say": "hollis",
+    "key": "n4_hollis_2"
+   },
+   {
+    "flag": "hollis4_done"
+   }
+  ],
+  "n4_fire": [
+   {
+    "say": "narrator",
+    "key": "n4_fire_1"
+   }
+  ],
+  "n4_tea_pre": [
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch4:61-61"
+   },
+   {
+    "show": "dean_holloway",
+    "x": 0.62
+   },
+   {
+    "lines": "ch4:66-67"
+   },
+   {
+    "if_flag": "dean_blackmail",
+    "then": [
+     {
+      "lines": "ch4:70-73"
+     }
+    ],
+    "else": [
+     {
+      "lines": "ch4:75-77"
+     }
+    ]
+   },
+   {
+    "lines": "ch4:79-79"
+   }
+  ],
+  "n4_tea_post": [
+   {
+    "choice": [
+     {
+      "menu": "Ask her directly what is under the chapel floor.",
+      "do": [
+       {
+        "lines": "ch4:85-87"
+       }
+      ]
+     },
+     {
+      "menu": "Talk about the weather until the tea is gone.",
+      "do": [
+       {
+        "lines": "ch4:92-94"
+       }
+      ]
+     },
+     {
+      "menu": "Tell her Cobb showed you the deaccession sheet.",
+      "do": [
+       {
+        "flag": "dean_blackmail"
+       },
+       {
+        "lines": "ch4:100-102"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "flag": "tea_done"
+   }
+  ],
+  "n4_files": [
+   {
+    "say": "narrator",
+    "key": "n4_files_1"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch4:107-107"
+   },
+   {
+    "cg": "cg_annex"
+   },
+   {
+    "lines": "ch4:112-128"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"We open the strongroom tonight.\"",
+      "do": [
+       {
+        "trust": 1
+       },
+       {
+        "lines": "ch4:136-140"
+       }
+      ]
+     },
+     {
+      "menu": "\"We do it Thursday. Properly. With the witness.\"",
+      "do": [
+       {
+        "flag": "ritual_interrupted"
+       },
+       {
+        "lines": "ch4:146-148"
+       }
+      ]
+     },
+     {
+      "menu": "\"Put the file back. We were never in the annex.\"",
+      "do": [
+       {
+        "trust": -1
+       },
+       {
+        "lines": "ch4:154-157"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "show": ""
+   },
+   {
+    "give": "plan_1994"
+   },
+   {
+    "give": "page_two"
+   },
+   {
+    "flag": "files_done"
+   }
+  ],
+  "n4_crane_pre": [
+   {
+    "say": "narrator",
+    "key": "n4_crane_1"
+   },
+   {
+    "say": "crane",
+    "key": "n4_crane_2"
+   }
+  ],
+  "n4_crane_post": [
+   {
+    "say": "crane",
+    "key": "n4_crane_3"
+   },
+   {
+    "flag": "crane4_done"
+   }
+  ],
+  "n4_end": [
+   {
+    "say": "narrator",
+    "key": "n4_carrel_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n4_window_1"
+   },
+   {
+    "if_trust": 7,
+    "then": [
+     {
+      "hide_cg": true
+     },
+     {
+      "if_flag": "route_control",
+      "then": [
+       {
+        "show": "elena_soft",
+        "x": 0.62
+       },
+       {
+        "lines": "ch4:167-172"
+       },
+       {
+        "cg": "cg_ch4_chapel"
+       },
+       {
+        "lines": "ch4:176-178"
+       }
+      ],
+      "else": [
+       {
+        "if_flag": "route_pact",
+        "then": [
+         {
+          "show": "elena_flustered",
+          "x": 0.62
+         },
+         {
+          "lines": "ch4:182-187"
+         },
+         {
+          "cg": "cg_ch4_chapel"
+         },
+         {
+          "lines": "ch4:191-194"
+         }
+        ],
+        "else": [
+         {
+          "show": "elena_neutral",
+          "x": 0.62
+         },
+         {
+          "lines": "ch4:198-201"
+         },
+         {
+          "cg": "cg_ch4_chapel"
+         },
+         {
+          "lines": "ch4:205-208"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n4_trust_hint"
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch4:215-216"
+   },
+   {
+    "show": ""
+   },
+   {
+    "end_night": true,
+    "next": "night5"
+   }
+  ]
+ }
+}

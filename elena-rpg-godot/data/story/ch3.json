@@ -1,0 +1,875 @@
+{
+ "chapter": 3,
+ "lines": [
+  {
+   "id": "chapter_3_46b6b6e0",
+   "src": 16,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Chapter 3 — Penhallow",
+   "ja": "第3章 — ペンハロー",
+   "v_en": "res://assets/voice/chapter_3_46b6b6e0.ogg",
+   "v_ja": "res://assets/voice/chapter_3_46b6b6e0.ja.ogg"
+  },
+  {
+   "id": "chapter_3_82b0564f",
+   "src": 17,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Three days later. Nobody has opened the coal store. The Dean has not mentioned lot forty-one again. You would prefer it if she had.",
+   "ja": "三日後。石炭庫はまだ誰にも開けられていない。学部長はロット四十一について二度と触れていない。むしろ触れてくれたほうがよかった。",
+   "v_en": "res://assets/voice/chapter_3_82b0564f.ogg",
+   "v_ja": "res://assets/voice/chapter_3_82b0564f.ja.ogg"
+  },
+  {
+   "id": "chapter_3_56a9b398",
+   "src": 22,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Elena has moved a second chair into your office without asking. She works at it from four until the porters change, then goes home, then comes back.",
+   "ja": "エレナは、尋ねもせず二つ目の椅子をあなたのオフィスに運び入れた。彼女は四時からポーターが交代するまでそこで働き、一度帰宅し、そして戻ってくる。",
+   "v_en": "res://assets/voice/chapter_3_56a9b398.ogg",
+   "v_ja": "res://assets/voice/chapter_3_56a9b398.ja.ogg"
+  },
+  {
+   "id": "chapter_3_42d9cd24",
+   "src": 23,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Penhallow gave eleven gifts between 1993 and 1997. Every one of them is matched, within a month, by a name leaving the Academy.",
+   "ja": "ペンハローは1993年から1997年の間に11の贈り物をした。その一つ一つが、一ヶ月以内に、アカデミーを去る人物の名と一致する。",
+   "v_en": "res://assets/voice/chapter_3_42d9cd24.ogg",
+   "v_ja": "res://assets/voice/chapter_3_42d9cd24.ja.ogg"
+  },
+  {
+   "id": "chapter_3_3d72ac28",
+   "src": 24,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "Leaving how?",
+   "ja": "どうやって去ったの？",
+   "v_en": "res://assets/voice/chapter_3_3d72ac28.ogg",
+   "v_ja": "res://assets/voice/chapter_3_3d72ac28.ja.ogg"
+  },
+  {
+   "id": "chapter_3_c98009d2",
+   "src": 25,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Quietly. Resigned, retired, transferred. Two died. My father was the fourth.",
+   "ja": "静かに。辞職、引退、異動。二人は死亡。私の父は四人目だった。",
+   "v_en": "res://assets/voice/chapter_3_c98009d2.ogg",
+   "v_ja": "res://assets/voice/chapter_3_c98009d2.ja.ogg"
+  },
+  {
+   "id": "chapter_3_ea20eaa9",
+   "src": 26,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She turns the ledger toward you. She has drawn a table on a sheet of foolscap. Eleven gifts, eleven departures, eleven receipts you countersigned or someone like you did.",
+   "ja": "彼女は帳簿をあなたの方へ向ける。彼女はフールスキャップ紙に表を描いている。11の贈り物、11の退去、そしてあなたが副署した、あるいはあなたのような誰かが副署した11の領収書。",
+   "v_en": "res://assets/voice/chapter_3_ea20eaa9.ogg",
+   "v_ja": "res://assets/voice/chapter_3_ea20eaa9.ja.ogg"
+  },
+  {
+   "id": "chapter_3_63fe05cd",
+   "src": 27,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "He was not buying a wing. He was buying a building with nobody left in it who remembered what it stood on.",
+   "ja": "彼は棟を買っていたのではない。彼は、それが何の上に建っていたかを覚えている者が誰も残っていない建物を買っていたのだ。",
+   "v_en": "res://assets/voice/chapter_3_63fe05cd.ogg",
+   "v_ja": "res://assets/voice/chapter_3_63fe05cd.ja.ogg"
+  },
+  {
+   "id": "chapter_3_c97f4964",
+   "src": 29,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "The crypt.",
+   "ja": "地下聖堂。",
+   "v_en": "res://assets/voice/chapter_3_c97f4964.ogg",
+   "v_ja": "res://assets/voice/chapter_3_c97f4964.ja.ogg"
+  },
+  {
+   "id": "chapter_3_bbedf28b",
+   "src": 31,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "There is no crypt, Vance. That's the story they tell the first-years. Under the Blackwood wing there is a cellar, and in the cellar there was a chapel, and in 1994 that chapel had a floor somebody did not want dug up.",
+   "ja": "「地下聖堂なんてありません、ヴァンス。それは一年生に聞かせる話。ブラックウッド棟の下にあるのは地下室で、その地下室にはかつて礼拝堂があって、1994年、その礼拝堂には誰かが掘り返されたくない床があった」",
+   "v_en": "res://assets/voice/chapter_3_bbedf28b.ogg",
+   "v_ja": "res://assets/voice/chapter_3_bbedf28b.ja.ogg"
+  },
+  {
+   "id": "chapter_3_aa707d00",
+   "src": 32,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She says it flatly, like a weather report. You have learned that this is how she says the things that frighten her.",
+   "ja": "彼女はそれを平坦に、天気予報のように言う。自分を怯えさせるものを口にするとき、彼女はこう言うのだと、あなたはもう学んでいる。",
+   "v_en": "res://assets/voice/chapter_3_aa707d00.ogg",
+   "v_ja": "res://assets/voice/chapter_3_aa707d00.ja.ogg"
+  },
+  {
+   "id": "chapter_3_710fe6c8",
+   "src": 39,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "With what? A trowel and a postgraduate?",
+   "ja": "何で？こてと大学院生でか？",
+   "v_en": "res://assets/voice/chapter_3_710fe6c8.ogg",
+   "v_ja": "res://assets/voice/chapter_3_710fe6c8.ja.ogg"
+  },
+  {
+   "id": "chapter_3_30ebeecb",
+   "src": 40,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "With a building survey. I am the signing officer for lot forty-one. Apparently I sign things. I can sign a survey request.",
+   "ja": "建物調査でよ。私は41番区画の署名責任者。どうやら私は何でも署名するらしいわね。調査依頼書に署名できる。",
+   "v_en": "res://assets/voice/chapter_3_30ebeecb.ogg",
+   "v_ja": "res://assets/voice/chapter_3_30ebeecb.ja.ogg"
+  },
+  {
+   "id": "chapter_3_5641e876",
+   "src": 41,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She stares at you. Then she laughs — the real one — and puts her hand over her mouth as though it had got out without permission.",
+   "ja": "彼女はあなたをじっと見る。それから笑う——本物のほうの笑いだ——そして、許可なく逃げ出したものを捕まえるように、口を手で覆う。",
+   "v_en": "res://assets/voice/chapter_3_5641e876.ogg",
+   "v_ja": "res://assets/voice/chapter_3_5641e876.ja.ogg"
+  },
+  {
+   "id": "chapter_3_940a10c9",
+   "src": 46,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "The board chair is Penhallow's grandson.",
+   "ja": "理事長はペンハローの孫よ。",
+   "v_en": "res://assets/voice/chapter_3_940a10c9.ogg",
+   "v_ja": "res://assets/voice/chapter_3_940a10c9.ja.ogg"
+  },
+  {
+   "id": "chapter_3_8d1ee176",
+   "src": 47,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "Then we go to the two members who are not.",
+   "ja": "では、そうでない二人のメンバーに当たる。",
+   "v_en": "res://assets/voice/chapter_3_8d1ee176.ogg",
+   "v_ja": "res://assets/voice/chapter_3_8d1ee176.ja.ogg"
+  },
+  {
+   "id": "chapter_3_8cdb846d",
+   "src": 48,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "And if they are the two who died?",
+   "ja": "もし、その二人が死んだ人たちだったら？",
+   "v_en": "res://assets/voice/chapter_3_8cdb846d.ogg",
+   "v_ja": "res://assets/voice/chapter_3_8cdb846d.ja.ogg"
+  },
+  {
+   "id": "chapter_3_3cc05416",
+   "src": 49,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She has already checked. It is in her face. You stop suggesting things for a while.",
+   "ja": "彼女はすでに調べてある。顔に出ている。あなたはしばらく思いつきを口にするのをやめる。",
+   "v_en": "res://assets/voice/chapter_3_3cc05416.ogg",
+   "v_ja": "res://assets/voice/chapter_3_3cc05416.ja.ogg"
+  },
+  {
+   "id": "chapter_3_0a494090",
+   "src": 55,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "You're very calm for a man whose signature is on eleven receipts.",
+   "ja": "「十一枚の受領書に署名がある男にしては、ずいぶん落ち着いていますね」",
+   "v_en": "res://assets/voice/chapter_3_0a494090.ogg",
+   "v_ja": "res://assets/voice/chapter_3_0a494090.ja.ogg"
+  },
+  {
+   "id": "chapter_3_c42d64ed",
+   "src": 56,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "Four. I checked.",
+   "ja": "四枚だ。確認した。",
+   "v_en": "res://assets/voice/chapter_3_c42d64ed.ogg",
+   "v_ja": "res://assets/voice/chapter_3_c42d64ed.ja.ogg"
+  },
+  {
+   "id": "chapter_3_820a1daf",
+   "src": 57,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Four, then.",
+   "ja": "四つ、だ。",
+   "v_en": "res://assets/voice/chapter_3_820a1daf.ogg",
+   "v_ja": "res://assets/voice/chapter_3_820a1daf.ja.ogg"
+  },
+  {
+   "id": "chapter_3_13f5b025",
+   "src": 58,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She puts her pen down and looks at you properly. It is not an unfriendly look. It is the look of someone re-reading a page she thought she had understood.",
+   "ja": "彼女はペンを置く。あなたをじっと見る。敵意はない。それは、理解したはずのページを読み直すような視線だ。",
+   "v_en": "res://assets/voice/chapter_3_13f5b025.ogg",
+   "v_ja": "res://assets/voice/chapter_3_13f5b025.ja.ogg"
+  },
+  {
+   "id": "chapter_3_bf7c8cfb",
+   "src": 65,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "The Penhallow Lecture. Friday, seven o'clock, the main hall. Every faculty member who wants to keep an office attends.",
+   "ja": "ペンハロー講義。金曜日、七時、大講堂。研究室を維持したい教員は全員出席する。",
+   "v_en": "res://assets/voice/chapter_3_bf7c8cfb.ogg",
+   "v_ja": "res://assets/voice/chapter_3_bf7c8cfb.ja.ogg"
+  },
+  {
+   "id": "chapter_3_073070ca",
+   "src": 66,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Julian Penhallow gives it himself this year. He is forty, handsome in the way money is handsome, and he thanks the Dean by her first name.",
+   "ja": "今年はジュリアン・ペンハロー本人が講義を行う。彼は四十歳。金が持つような美貌の持ち主で、学長をファーストネームで呼ぶ。",
+   "v_en": "res://assets/voice/chapter_3_073070ca.ogg",
+   "v_ja": "res://assets/voice/chapter_3_073070ca.ja.ogg"
+  },
+  {
+   "id": "chapter_3_8ebce1c8",
+   "src": 67,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Elena sits three rows behind you. You do not look at her. You agreed not to look at her. It is the hardest thing you have done all week.",
+   "ja": "エレナは三列後ろに座っている。あなたは彼女を見ない。見ないと取り決めた。今週いちばん難しいことだ。",
+   "v_en": "res://assets/voice/chapter_3_8ebce1c8.ogg",
+   "v_ja": "res://assets/voice/chapter_3_8ebce1c8.ja.ogg"
+  },
+  {
+   "id": "chapter_3_f219d69b",
+   "src": 69,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Afterwards, sherry. Penhallow works the room like a man checking exits.",
+   "ja": "その後、シェリー。ペンハローは出口を確認する男のように、会場を巡る。",
+   "v_en": "res://assets/voice/chapter_3_f219d69b.ogg",
+   "v_ja": "res://assets/voice/chapter_3_f219d69b.ja.ogg"
+  },
+  {
+   "id": "chapter_3_27ce828f",
+   "src": 70,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "He reaches you at the end. He has your name before you offer it.",
+   "ja": "彼は最後にあなたの元へ来る。あなたが名乗る前に、彼はあなたの名を知っている。",
+   "v_en": "res://assets/voice/chapter_3_27ce828f.ogg",
+   "v_ja": "res://assets/voice/chapter_3_27ce828f.ja.ogg"
+  },
+  {
+   "id": "chapter_3_8ecbf7d3",
+   "src": 75,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "\"Vance. Antiquities. My grandfather's wing.\" He shakes your hand and does not let go at once. \"I hear you lost a crate.\"",
+   "ja": "「ヴァンス。骨董品。祖父の棟だ。」彼はあなたの手を握り、すぐには離さない。「箱を一つ、失くしたと聞いている。」",
+   "v_en": "res://assets/voice/chapter_3_8ecbf7d3.ogg",
+   "v_ja": "res://assets/voice/chapter_3_8ecbf7d3.ja.ogg"
+  },
+  {
+   "id": "chapter_3_4100e043",
+   "src": 76,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "Deaccessioned. Per schedule.",
+   "ja": "除籍済み。予定通り。",
+   "v_en": "res://assets/voice/chapter_3_4100e043.ogg",
+   "v_ja": "res://assets/voice/chapter_3_4100e043.ja.ogg"
+  },
+  {
+   "id": "chapter_3_0bddeee6",
+   "src": 77,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "\"Of course. Per schedule.\" He smiles. \"Marguerite tells me you have taken on an assistant. An Ashcombe. Unusual name. I knew an Ashcombe once.\"",
+   "ja": "「もちろん。予定通り、か。」彼は微笑む。「マルグリットから聞いたよ。助手を雇ったそうだね。アッシュコム。珍しい名前だ。昔、アッシュコムという人物を知っていた。」",
+   "v_en": "res://assets/voice/chapter_3_0bddeee6.ogg",
+   "v_ja": "res://assets/voice/chapter_3_0bddeee6.ja.ogg"
+  },
+  {
+   "id": "chapter_3_c22bb430",
+   "src": 78,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "The Dean is across the room, not looking at you, in the way that Elena is not looking at you. You are surrounded by people not looking at you.",
+   "ja": "学長は部屋の向こうにいる。あなたを見ていない。エレナがそうであるように。あなたは、あなたを見ない人々に囲まれている。",
+   "v_en": "res://assets/voice/chapter_3_c22bb430.ogg",
+   "v_ja": "res://assets/voice/chapter_3_c22bb430.ja.ogg"
+  },
+  {
+   "id": "chapter_3_046d5532",
+   "src": 84,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Penhallow's smile does not move. His hand does. It lets go of yours.",
+   "ja": "ペンハローの笑顔は変わらない。彼の手は動く。あなたの手から離れる。",
+   "v_en": "res://assets/voice/chapter_3_046d5532.ogg",
+   "v_ja": "res://assets/voice/chapter_3_046d5532.ja.ogg"
+  },
+  {
+   "id": "chapter_3_b7989f86",
+   "src": 85,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "\"Careful, Professor. Old buildings have thin walls and long memories.\" He turns to the next hand.",
+   "ja": "「気をつけなさい、教授。古い建物には薄い壁と長い記憶がある。」彼は次の人物へと向きを変える。",
+   "v_en": "res://assets/voice/chapter_3_b7989f86.ogg",
+   "v_ja": "res://assets/voice/chapter_3_b7989f86.ja.ogg"
+  },
+  {
+   "id": "chapter_3_2ffe94a0",
+   "src": 86,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "You have made an enemy on purpose. You are not sure yet whether that was clever.",
+   "ja": "あなたは意図的に敵を作った。それが賢いことだったのか、まだ確信はない。",
+   "v_en": "res://assets/voice/chapter_3_2ffe94a0.ogg",
+   "v_ja": "res://assets/voice/chapter_3_2ffe94a0.ja.ogg"
+  },
+  {
+   "id": "chapter_3_a217d33c",
+   "src": 91,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "\"No,\" Penhallow agrees. \"It rarely is, until it is.\"",
+   "ja": "「いや、」ペンハローは同意する。「そうなるまでは、めったにね。」",
+   "v_en": "res://assets/voice/chapter_3_a217d33c.ogg",
+   "v_ja": "res://assets/voice/chapter_3_a217d33c.ja.ogg"
+  },
+  {
+   "id": "chapter_3_991f09f9",
+   "src": 92,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "He moves on. Behind him, the Dean finally looks at you, once, and then away, and you understand that whatever Penhallow wanted from that exchange, he got it.",
+   "ja": "彼は立ち去る。彼の後ろで、学長が一度だけあなたを見る。そして、すぐに視線を逸らす。ペンハローがそのやり取りから何を望んでいたにせよ、彼はそれを手に入れたのだと、あなたは理解する。",
+   "v_en": "res://assets/voice/chapter_3_991f09f9.ogg",
+   "v_ja": "res://assets/voice/chapter_3_991f09f9.ja.ogg"
+  },
+  {
+   "id": "chapter_3_31f1bfda",
+   "src": 98,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Men like Penhallow cannot stand a silence. He fills it.",
+   "ja": "ペンハローのような男は沈黙に耐えられない。彼はそれを埋める。",
+   "v_en": "res://assets/voice/chapter_3_31f1bfda.ogg",
+   "v_ja": "res://assets/voice/chapter_3_31f1bfda.ja.ogg"
+  },
+  {
+   "id": "chapter_3_01090b89",
+   "src": 99,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "\"Marguerite is retiring in the spring, you know. The board will want a safe pair of hands. Someone with a signature people trust.\"",
+   "ja": "「マルグリットは春に引退するんだよ。理事会は安全な手腕を求めるだろう。人々が信頼する、署名を持つ人物をね。」",
+   "v_en": "res://assets/voice/chapter_3_01090b89.ogg",
+   "v_ja": "res://assets/voice/chapter_3_01090b89.ja.ogg"
+  },
+  {
+   "id": "chapter_3_842d9c49",
+   "src": 100,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "He looks at your hand when he says it. Then he is gone, and you are holding a sherry you do not remember taking.",
+   "ja": "彼はそう言いながら、あなたの手を見る。そして、彼は去る。あなたは、いつ手に取ったか覚えていないシェリーを手にしている。",
+   "v_en": "res://assets/voice/chapter_3_842d9c49.ogg",
+   "v_ja": "res://assets/voice/chapter_3_842d9c49.ja.ogg"
+  },
+  {
+   "id": "chapter_3_de5e6f36",
+   "src": 106,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Ten o'clock. Your office. You did not turn the light on; the lamp from the corridor is enough.",
+   "ja": "十時。あなたのオフィス。電気はつけなかった。廊下の明かりで十分だ。",
+   "v_en": "res://assets/voice/chapter_3_de5e6f36.ogg",
+   "v_ja": "res://assets/voice/chapter_3_de5e6f36.ja.ogg"
+  },
+  {
+   "id": "chapter_3_3de3998c",
+   "src": 109,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Elena comes in without knocking, locks the door behind her, and stands with her back against it, breathing as if she had run the stairs.",
+   "ja": "エレナはノックもせずに入ってきて、後ろ手に鍵をかけ、扉に背を預けたまま、階段を駆け上がってきたような息をしている。",
+   "v_en": "res://assets/voice/chapter_3_3de3998c.ogg",
+   "v_ja": "res://assets/voice/chapter_3_3de3998c.ja.ogg"
+  },
+  {
+   "id": "chapter_3_2d94dcde",
+   "src": 110,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "He knows my name.",
+   "ja": "彼は私の名前を知っている。",
+   "v_en": "res://assets/voice/chapter_3_2d94dcde.ogg",
+   "v_ja": "res://assets/voice/chapter_3_2d94dcde.ja.ogg"
+  },
+  {
+   "id": "chapter_3_ea6895f8",
+   "src": 111,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "He knew it before you were born.",
+   "ja": "お前が生まれる前から知っていた。",
+   "v_en": "res://assets/voice/chapter_3_ea6895f8.ogg",
+   "v_ja": "res://assets/voice/chapter_3_ea6895f8.ja.ogg"
+  },
+  {
+   "id": "chapter_3_0464309c",
+   "src": 112,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "He said it to the Dean. Out loud. In front of the whole room. Like a man setting a glass down hard so the room has to hear it.",
+   "ja": "「学部長に向かって言ったんです。声に出して。あの部屋全員の前で。部屋に聞かせるためにグラスを強く置く男みたいに」",
+   "v_en": "res://assets/voice/chapter_3_0464309c.ogg",
+   "v_ja": "res://assets/voice/chapter_3_0464309c.ja.ogg"
+  },
+  {
+   "id": "chapter_3_abc62f03",
+   "src": 115,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She has not come closer. Her hands are behind her, on the door, holding it shut or holding herself up.",
+   "ja": "彼女は近づいてこない。両手は背後でドアにあり、それを閉ざしているのか、あるいは自身を支えているのか。",
+   "v_en": "res://assets/voice/chapter_3_abc62f03.ogg",
+   "v_ja": "res://assets/voice/chapter_3_abc62f03.ja.ogg"
+  },
+  {
+   "id": "chapter_3_f07949e9",
+   "src": 116,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Five, I said. On the dock. You did not ask.",
+   "ja": "五日だ、と私は言った。埠頭で。お前は尋ねなかった。",
+   "v_en": "res://assets/voice/chapter_3_f07949e9.ogg",
+   "v_ja": "res://assets/voice/chapter_3_f07949e9.ja.ogg"
+  },
+  {
+   "id": "chapter_3_a86e3d35",
+   "src": 117,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "I thought you would tell me when you wanted to.",
+   "ja": "話したい時に話してくれるものだと。",
+   "v_en": "res://assets/voice/chapter_3_a86e3d35.ogg",
+   "v_ja": "res://assets/voice/chapter_3_a86e3d35.ja.ogg"
+  },
+  {
+   "id": "chapter_3_ed96bbd7",
+   "src": 118,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Five days. I gave myself five days to decide whether you were a coward or a careful man. It's been five days.",
+   "ja": "「五日。あなたが臆病者なのか慎重な人なのかを決めるのに、五日くれてやりました。もう五日です」",
+   "v_en": "res://assets/voice/chapter_3_ed96bbd7.ogg",
+   "v_ja": "res://assets/voice/chapter_3_ed96bbd7.ja.ogg"
+  },
+  {
+   "id": "chapter_3_7355aa34",
+   "src": 119,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "And?",
+   "ja": "それで？",
+   "v_en": "res://assets/voice/chapter_3_7355aa34.ogg",
+   "v_ja": "res://assets/voice/chapter_3_7355aa34.ja.ogg"
+  },
+  {
+   "id": "chapter_3_e88d048e",
+   "src": 120,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She crosses the room and takes your face in both hands, coat and all, and reads it like a page.",
+   "ja": "彼女は部屋を横切り、コートごとあなたの顔を両手で挟んで、ページを読むようにそれを読む。",
+   "v_en": "res://assets/voice/chapter_3_e88d048e.ogg",
+   "v_ja": "res://assets/voice/chapter_3_e88d048e.ja.ogg"
+  },
+  {
+   "id": "chapter_3_62916a06",
+   "src": 121,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Careful. Unfortunately.",
+   "ja": "慎重だ。残念ながら。",
+   "v_en": "res://assets/voice/chapter_3_62916a06.ogg",
+   "v_ja": "res://assets/voice/chapter_3_62916a06.ja.ogg"
+  },
+  {
+   "id": "chapter_3_56c41ae6",
+   "src": 124,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She crosses the room and puts her hand in your waistcoat pocket, where the key is, and leaves it there.",
+   "ja": "彼女は部屋を横切り、お前のベストのポケットに手を入れる。鍵がある場所だ。そのままにしておく。",
+   "v_en": "res://assets/voice/chapter_3_56c41ae6.ogg",
+   "v_ja": "res://assets/voice/chapter_3_56c41ae6.ja.ogg"
+  },
+  {
+   "id": "chapter_3_0e413c9d",
+   "src": 125,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "He looked at my hands. He knows I have been in the crate.",
+   "ja": "彼は私の手を見た。私が木箱の中にいたことを知っている。",
+   "v_en": "res://assets/voice/chapter_3_0e413c9d.ogg",
+   "v_ja": "res://assets/voice/chapter_3_0e413c9d.ja.ogg"
+  },
+  {
+   "id": "chapter_3_8ada5930",
+   "src": 126,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "He knows I have. You are the assistant. I am the signing officer.",
+   "ja": "彼は知っている。私がそうしたことを。お前は助手だ。私は署名権者だ。",
+   "v_en": "res://assets/voice/chapter_3_8ada5930.ogg",
+   "v_ja": "res://assets/voice/chapter_3_8ada5930.ja.ogg"
+  },
+  {
+   "id": "chapter_3_49980da0",
+   "src": 127,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "You keep saying that as if it protects me.",
+   "ja": "まるでそれが私を守るかのように、お前はそう言い続ける。",
+   "v_en": "res://assets/voice/chapter_3_49980da0.ogg",
+   "v_ja": "res://assets/voice/chapter_3_49980da0.ja.ogg"
+  },
+  {
+   "id": "chapter_3_d0736892",
+   "src": 128,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "It does. That is the whole point of you being mine on paper. On paper is where they fight.",
+   "ja": "そうだよ。それが、お前が書類上、私のものとなる意味だ。書類上でこそ、彼らは戦う。",
+   "v_en": "res://assets/voice/chapter_3_d0736892.ogg",
+   "v_ja": "res://assets/voice/chapter_3_d0736892.ja.ogg"
+  },
+  {
+   "id": "chapter_3_563d994a",
+   "src": 129,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She takes the key out of your pocket, looks at it, and puts it back.",
+   "ja": "彼女はお前のポケットから鍵を取り出し、それを見て、元に戻す。",
+   "v_en": "res://assets/voice/chapter_3_563d994a.ogg",
+   "v_ja": "res://assets/voice/chapter_3_563d994a.ja.ogg"
+  },
+  {
+   "id": "chapter_3_f809dc87",
+   "src": 130,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Then keep me on paper. Off paper, tonight, I'd like to stop being frightened for one hour.",
+   "ja": "「なら、書類の上では私を手元に置いてください。書類の外では、今夜だけ、一時間、怯えるのをやめたい」",
+   "v_en": "res://assets/voice/chapter_3_f809dc87.ogg",
+   "v_ja": "res://assets/voice/chapter_3_f809dc87.ja.ogg"
+  },
+  {
+   "id": "chapter_3_7b3d7047",
+   "src": 132,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She crosses the room and puts her forehead against your chest and stays there.",
+   "ja": "彼女は部屋を横切り、お前の胸に額を押し当て、そのまま動かない。",
+   "v_en": "res://assets/voice/chapter_3_7b3d7047.ogg",
+   "v_ja": "res://assets/voice/chapter_3_7b3d7047.ja.ogg"
+  },
+  {
+   "id": "chapter_3_30045f2a",
+   "src": 133,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "I want to burn his portrait.",
+   "ja": "彼の肖像画を燃やしたい。",
+   "v_en": "res://assets/voice/chapter_3_30045f2a.ogg",
+   "v_ja": "res://assets/voice/chapter_3_30045f2a.ja.ogg"
+  },
+  {
+   "id": "chapter_3_80007b0a",
+   "src": 134,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "It is on loan from the family.",
+   "ja": "それは家族からの借り物だ。",
+   "v_en": "res://assets/voice/chapter_3_80007b0a.ogg",
+   "v_ja": "res://assets/voice/chapter_3_80007b0a.ja.ogg"
+  },
+  {
+   "id": "chapter_3_34a5ba79",
+   "src": 135,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Then I want to burn the family.",
+   "ja": "ならば、家族を焼き尽くしたい。",
+   "v_en": "res://assets/voice/chapter_3_34a5ba79.ogg",
+   "v_ja": "res://assets/voice/chapter_3_34a5ba79.ja.ogg"
+  },
+  {
+   "id": "chapter_3_88a42b5f",
+   "src": 136,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "Elena.",
+   "ja": "エレーナ。",
+   "v_en": "res://assets/voice/chapter_3_88a42b5f.ogg",
+   "v_ja": "res://assets/voice/chapter_3_88a42b5f.ja.ogg"
+  },
+  {
+   "id": "chapter_3_0569a7d9",
+   "src": 137,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "I know. I know. Give me an hour where I'm not the last Ashcombe, and then I'll be reasonable.",
+   "ja": "「わかってる。わかってます。最後のアシュコム家の人間でいなくていい一時間をください。そうしたら理性的になりますから」",
+   "v_en": "res://assets/voice/chapter_3_0569a7d9.ogg",
+   "v_ja": "res://assets/voice/chapter_3_0569a7d9.ja.ogg"
+  },
+  {
+   "id": "chapter_3_7200bb25",
+   "src": 150,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She is in no hurry, this first time. She takes your coat off you, then her own, and folds both over the chair. Then she undresses in the corridor light with her eyes on yours, one button at a time, daring you to look away.",
+   "ja": "この最初の一度、彼女は急がない。あなたのコートを脱がせ、次に自分のを脱ぎ、両方を椅子に畳んでかける。それから廊下の明かりの中で、あなたの目を見つめたまま、ボタンを一つずつ外していく。目を逸らしてみろ、とでも言うように。",
+   "v_en": "res://assets/voice/chapter_3_7200bb25.ogg",
+   "v_ja": "res://assets/voice/chapter_3_7200bb25.ja.ogg"
+  },
+  {
+   "id": "chapter_3_a77a8d68",
+   "src": 151,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "You do not look away.",
+   "ja": "あなたは目を逸らさない。",
+   "v_en": "res://assets/voice/chapter_3_a77a8d68.ogg",
+   "v_ja": "res://assets/voice/chapter_3_a77a8d68.ja.ogg"
+  },
+  {
+   "id": "chapter_3_7090013c",
+   "src": 152,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She takes you to the floor, on the coats, and moves on you slowly for a long time before either of you speaks, and when she does speak it is your first name, finally, said like a decision.",
+   "ja": "彼女はあなたを床へ、コートの上へ誘う。そして、どちらかが口を開くよりもずっと長く、ゆっくりとあなたの体の上で動く。そして彼女が口を開いた時、それはあなたのファーストネームだった。ついに、決意のように発せられた。",
+   "v_en": "res://assets/voice/chapter_3_7090013c.ogg",
+   "v_ja": "res://assets/voice/chapter_3_7090013c.ja.ogg"
+  },
+  {
+   "id": "chapter_3_4e2f95dc",
+   "src": 153,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "You lose the order of things after that. Her mouth. Her hands pinning yours. The moment she stops being careful and comes apart against you — and the way she laughs into your neck afterwards, as though surprised it had worked.",
+   "ja": "そこから先、順序はわからなくなる。彼女の口。あなたの手を押さえつける彼女の手。彼女が慎重であることをやめ、あなたの上で崩れていく瞬間——そしてそのあと、うまくいったことに驚いたみたいに、あなたの首筋で笑う声。",
+   "v_en": "res://assets/voice/chapter_3_4e2f95dc.ogg",
+   "v_ja": "res://assets/voice/chapter_3_4e2f95dc.ja.ogg"
+  },
+  {
+   "id": "chapter_3_6c31b86a",
+   "src": 154,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "When it is over she puts her glasses back on before anything else. Then she says, into the dark, \"That is what five meant.\"",
+   "ja": "終わると、彼女は何よりも先に眼鏡をかけ直す。それから彼女は、闇の中へ言う。「それが『五』の意味よ。」",
+   "v_en": "res://assets/voice/chapter_3_6c31b86a.ogg",
+   "v_ja": "res://assets/voice/chapter_3_6c31b86a.ja.ogg"
+  },
+  {
+   "id": "chapter_3_2c14e617",
+   "src": 156,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "You undress her yourself tonight, because she asks you to, and because it takes longer. Blouse. Skirt. The stockings she wore for the lecture. She stands in the corridor light and lets you, and does not help.",
+   "ja": "今夜、あなたは彼女の服を自分で脱がせる。彼女がそう頼むから、そしてその方が時間がかかるから。ブラウス。スカート。講義で履いていたストッキング。彼女は廊下の光の中に立ち、あなたにそれを許し、手伝おうとはしない。",
+   "v_en": "res://assets/voice/chapter_3_2c14e617.ogg",
+   "v_ja": "res://assets/voice/chapter_3_2c14e617.ja.ogg"
+  },
+  {
+   "id": "chapter_3_3d58a4ab",
+   "src": 157,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "You lay her down on the desk with her head on the ledger, deliberately, and she notices, and does not object.",
+   "ja": "あなたは彼女を机の上に横たえる。帳簿の上に頭を置かせ、意図的に。彼女はそれに気づき、異議を唱えない。",
+   "v_en": "res://assets/voice/chapter_3_3d58a4ab.ogg",
+   "v_ja": "res://assets/voice/chapter_3_3d58a4ab.ja.ogg"
+  },
+  {
+   "id": "chapter_3_b15787d4",
+   "src": 158,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "You go slowly. She asks for faster. You refuse until she asks properly, and she asks properly, and what she calls you then is not Professor and not Vance but something with no consonants in it.",
+   "ja": "あなたはゆっくり動く。彼女はもっと速くと求める。あなたはきちんと頼むまで拒む。そして彼女はきちんと頼み、そのとき彼女があなたを呼ぶのは、教授でもヴァンスでもない、子音のひとつもない何かだ。",
+   "v_en": "res://assets/voice/chapter_3_b15787d4.ogg",
+   "v_ja": "res://assets/voice/chapter_3_b15787d4.ja.ogg"
+  },
+  {
+   "id": "chapter_3_2740b993",
+   "src": 159,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "When she comes it is with her heels locked behind your back and her nails in the desk, and she pulls you down after her and holds you inside her with both legs until she is sure. Then she lets you go.",
+   "ja": "彼女が絶頂を迎える時、そのかかとがあなたの背中に絡みつき、爪が机に食い込む。そして彼女はあなたを自分の中に引き込み、両脚であなたを抱え込む。確信するまで。それから、あなたを解放する。",
+   "v_en": "res://assets/voice/chapter_3_2740b993.ogg",
+   "v_ja": "res://assets/voice/chapter_3_2740b993.ja.ogg"
+  },
+  {
+   "id": "chapter_3_d0852c07",
+   "src": 160,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "You lie on the desk together with the ledger under her hair. She is not frightened. You gave her the hour. It cost you something to give, and she knows exactly what, and she will collect.",
+   "ja": "あなたたちは机の上に並んで横たわる。彼女の髪の下に台帳がある。彼女はもう怯えていない。あなたはあの一時間を与えた。与えるのには代償があり、彼女はそれが何かを正確に知っていて、いずれ取り立てにくる。",
+   "v_en": "res://assets/voice/chapter_3_d0852c07.ogg",
+   "v_ja": "res://assets/voice/chapter_3_d0852c07.ja.ogg"
+  },
+  {
+   "id": "chapter_3_e3e4149a",
+   "src": 162,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She is rough with you and you let her. Coat. Waistcoat. She tears a button off, swears at it, and kisses the place where it was. You lift her onto the desk and she pulls you in with her heels before your belt is off.",
+   "ja": "彼女はあなたに手荒で、あなたはそれを許す。コート。ベスト。彼女はボタンを引きちぎり、それに毒づき、ボタンのあった場所に口づける。机に抱え上げると、ベルトを外し終える前に踵で引き寄せられる。",
+   "v_en": "res://assets/voice/chapter_3_e3e4149a.ogg",
+   "v_ja": "res://assets/voice/chapter_3_e3e4149a.ja.ogg"
+  },
+  {
+   "id": "chapter_3_cb7db558",
+   "src": 163,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "It is fast and loud and she says his name once, Penhallow, in the middle of it, like spitting, and then yours, four times, each time softer.",
+   "ja": "それは速く、そして騒がしい。そしてその最中、彼女は彼の名を一度だけ、ペンハロー、と吐き捨てるように言う。それからあなたの名を、四度。そのたびに柔らかく。",
+   "v_en": "res://assets/voice/chapter_3_cb7db558.ogg",
+   "v_ja": "res://assets/voice/chapter_3_cb7db558.ja.ogg"
+  },
+  {
+   "id": "chapter_3_b33a422a",
+   "src": 164,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She comes with her teeth in your shoulder. You come with your hand over her mouth because the porters are changing, and she bites your palm, and afterwards you both look at the marks and do not say anything.",
+   "ja": "彼女はあなたの肩に歯を立てて絶頂を迎える。あなたは彼女の口を手で覆いながら絶頂を迎える。ポーターが交代する時間だから。そして彼女はあなたの手のひらを噛む。その後、あなたたちは二人でその痕跡を見つめ、何も言わない。",
+   "v_en": "res://assets/voice/chapter_3_b33a422a.ogg",
+   "v_ja": "res://assets/voice/chapter_3_b33a422a.ja.ogg"
+  },
+  {
+   "id": "chapter_3_1e0508c6",
+   "src": 165,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Then she says, \"An hour. Thank you,\" and gets up, and starts being reasonable again, which is worse.",
+   "ja": "それから彼女は「一時間。ありがとう」と言って起き上がり、また理性的になりはじめる。そのほうが、よほど堪える。",
+   "v_en": "res://assets/voice/chapter_3_1e0508c6.ogg",
+   "v_ja": "res://assets/voice/chapter_3_1e0508c6.ja.ogg"
+  },
+  {
+   "id": "chapter_3_87aa9024",
+   "src": 170,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Midnight. Reasonable, for Elena, means a plan on a single sheet of paper.",
+   "ja": "真夜中。エレーナにとっての理性とは、一枚の紙に書かれた計画を意味する。",
+   "v_en": "res://assets/voice/chapter_3_87aa9024.ogg",
+   "v_ja": "res://assets/voice/chapter_3_87aa9024.ja.ogg"
+  },
+  {
+   "id": "chapter_3_a9d223f1",
+   "src": 173,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "The Dean retires in the spring. Penhallow wants your signature on the board. That means he needs you clean.",
+   "ja": "学部長は春に引退する。ペンハローは理事会であなたの署名を欲しがっている。それは、彼があなたに清廉であることを求めている、ということだ。",
+   "v_en": "res://assets/voice/chapter_3_a9d223f1.ogg",
+   "v_ja": "res://assets/voice/chapter_3_a9d223f1.ja.ogg"
+  },
+  {
+   "id": "chapter_3_36417d1e",
+   "src": 174,
+   "label": "chapter_3",
+   "who": "protagonist",
+   "en": "Or compromised.",
+   "ja": "あるいは、弱みを握られている。",
+   "v_en": "res://assets/voice/chapter_3_36417d1e.ogg",
+   "v_ja": "res://assets/voice/chapter_3_36417d1e.ja.ogg"
+  },
+  {
+   "id": "chapter_3_25f5e4c2",
+   "src": 175,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "Or compromised. Either way, he needs you. So he does not need me.",
+   "ja": "あるいは、弱みを握られている。いずれにせよ、彼にはあなたが必要だ。だから、私はいらない。",
+   "v_en": "res://assets/voice/chapter_3_25f5e4c2.ogg",
+   "v_ja": "res://assets/voice/chapter_3_25f5e4c2.ja.ogg"
+  },
+  {
+   "id": "chapter_3_2e30505c",
+   "src": 176,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "She lets that sit.",
+   "ja": "彼女はそれを静かに受け止める。",
+   "v_en": "res://assets/voice/chapter_3_2e30505c.ogg",
+   "v_ja": "res://assets/voice/chapter_3_2e30505c.ja.ogg"
+  },
+  {
+   "id": "chapter_3_d8ed7ba0",
+   "src": 177,
+   "label": "chapter_3",
+   "who": "elena",
+   "en": "I'm the loose end, Vance. Not you. Whatever happens next happens to me.",
+   "ja": "「私が切るべき糸なんです、ヴァンス。あなたじゃない。次に何が起きるにせよ、起きるのは私にです」",
+   "v_en": "res://assets/voice/chapter_3_d8ed7ba0.ogg",
+   "v_ja": "res://assets/voice/chapter_3_d8ed7ba0.ja.ogg"
+  },
+  {
+   "id": "chapter_3_e1bb22cf",
+   "src": 182,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "You want to tell her she is wrong. You have the ledger open in front of you, eleven receipts, eleven names. You do not tell her she is wrong.",
+   "ja": "彼女が間違っていると言いたい。目の前には帳簿が開かれている。領収書が十一枚、名前が十一人分。彼女が間違っているとは言わない。",
+   "v_en": "res://assets/voice/chapter_3_e1bb22cf.ogg",
+   "v_ja": "res://assets/voice/chapter_3_e1bb22cf.ja.ogg"
+  },
+  {
+   "id": "chapter_3_8f54af26",
+   "src": 183,
+   "label": "chapter_3",
+   "who": "narrator",
+   "en": "Instead you turn to the survey request form and sign it. Your own signature, for once. It looks strange on the page.",
+   "ja": "代わりに、あなたは調査依頼書に目を向け、署名する。珍しく、あなた自身の署名だ。それは紙の上で奇妙に見える。",
+   "v_en": "res://assets/voice/chapter_3_8f54af26.ogg",
+   "v_ja": "res://assets/voice/chapter_3_8f54af26.ja.ogg"
+  }
+ ],
+ "menus": {
+  "「掘り起こすしかない」": "「掘り起こすしかない」",
+  "「今あるもので理事会に持っていく」": "「今あるもので理事会に持っていく」",
+  "\"We wait. Somebody will make a mistake at the lecture.\"": "「待つ。講義で誰かがぼろを出す。」",
+  "\"You knew her father. He carried your grandfather's money out of the building.\"": "「あなたは彼女の父親を知っていた。彼はあなたの祖父の金をあの建物から運び出した。」",
+  "\"She's a good researcher. Family is not my concern.\"": "「彼女は優秀な研究者だ。家族のことは私の関心事ではない。」",
+  "Say nothing. Let him talk.": "何も言わない。彼に話させる。",
+  "\"Then we dig it up.\"": "「なら、掘り起こす。」",
+  "\"We go to the board with what we have.\"": "「今あるものを持って理事会へ行く。」"
+ }
+}

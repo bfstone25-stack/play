@@ -1,0 +1,314 @@
+{
+ "t_new": {
+  "en": "New game",
+  "ja": "はじめから"
+ },
+ "t_continue": {
+  "en": "Continue",
+  "ja": "つづきから"
+ },
+ "t_gallery": {
+  "en": "Gallery",
+  "ja": "ギャラリー"
+ },
+ "t_settings": {
+  "en": "Settings",
+  "ja": "設定"
+ },
+ "t_quit": {
+  "en": "Quit",
+  "ja": "終了"
+ },
+ "m_map": {
+  "en": "Map",
+  "ja": "地図"
+ },
+ "m_party": {
+  "en": "Party",
+  "ja": "パーティ"
+ },
+ "m_system": {
+  "en": "System",
+  "ja": "システム"
+ },
+ "m_close": {
+  "en": "Close",
+  "ja": "閉じる"
+ },
+ "m_status": {
+  "en": "Status",
+  "ja": "ステータス"
+ },
+ "m_items": {
+  "en": "Items",
+  "ja": "アイテム"
+ },
+ "m_equip": {
+  "en": "Equipment",
+  "ja": "装備"
+ },
+ "m_equip_to": {
+  "en": "Equip: %s",
+  "ja": "装備：%s"
+ },
+ "m_gift": {
+  "en": "Give to her",
+  "ja": "彼女に渡す"
+ },
+ "m_save": {
+  "en": "Save",
+  "ja": "セーブ"
+ },
+ "m_load": {
+  "en": "Load",
+  "ja": "ロード"
+ },
+ "m_to_title": {
+  "en": "Title screen",
+  "ja": "タイトルへ"
+ },
+ "sv_slot": {
+  "en": "Slot %d",
+  "ja": "スロット %d"
+ },
+ "sv_auto": {
+  "en": "Autosave",
+  "ja": "オートセーブ"
+ },
+ "sv_empty": {
+  "en": "empty",
+  "ja": "空き"
+ },
+ "slot_outfit": {
+  "en": "Outfit",
+  "ja": "衣装"
+ },
+ "slot_accessory": {
+  "en": "Accessory",
+  "ja": "アクセサリー"
+ },
+ "slot_tool": {
+  "en": "Tool",
+  "ja": "道具"
+ },
+ "ms_level": {
+  "en": "Level %d   XP %d / %d   Trust %d",
+  "ja": "レベル %d　経験値 %d / %d　信頼 %d"
+ },
+ "ms_skills": {
+  "en": "Skills:",
+  "ja": "スキル："
+ },
+ "h_clock": {
+  "en": "%s   ·   %d turns before dawn   ·   Lv %d",
+  "ja": "%s　·　夜明けまで残り %d 手　·　Lv %d"
+ },
+ "h_trust": {
+  "en": "Trust %d  (next scene at %d)",
+  "ja": "信頼 %d（次の場面は %d）"
+ },
+ "hs_search": {
+  "en": "Search:",
+  "ja": "調べる："
+ },
+ "hs_locked": {
+  "en": "(locked)",
+  "ja": "（施錠）"
+ },
+ "hs_locked_msg": {
+  "en": "It is locked. You need a key.",
+  "ja": "鍵がかかっている。鍵が必要だ。"
+ },
+ "nc_budget": {
+  "en": "%d turns until dawn. Moving, searching and standoffs all cost time.",
+  "ja": "夜明けまで %d 手。移動・調査・対峙はすべて時間を使う。"
+ },
+ "ev_got": {
+  "en": "Obtained: %s",
+  "ja": "入手：%s"
+ },
+ "ev_trust": {
+  "en": "Elena's trust +%d",
+  "ja": "エレナの信頼 +%d"
+ },
+ "ev_xp": {
+  "en": "+%d XP",
+  "ja": "経験値 +%d"
+ },
+ "toast_trust": {
+  "en": "Trust %d reached — a new scene is open",
+  "ja": "信頼 %d 到達 — 新しい場面が開いた"
+ },
+ "ch_need_trust": {
+  "en": "[needs Trust %d]",
+  "ja": "［信頼 %d が必要］"
+ },
+ "b_intro": {
+  "en": "A standoff.",
+  "ja": "対峙。"
+ },
+ "b_choose": {
+  "en": "choose an action",
+  "ja": "行動を選ぶ"
+ },
+ "b_used": {
+  "en": "%s: %s.",
+  "ja": "%s：%s。"
+ },
+ "b_dmg": {
+  "en": "Resolve −%d.",
+  "ja": "決意 −%d。"
+ },
+ "b_weak_hit": {
+  "en": "It lands — a weakness.",
+  "ja": "効いた — 弱点だ。"
+ },
+ "b_resist_hit": {
+  "en": "It slides off. They see through it.",
+  "ja": "通じない。見抜かれている。"
+ },
+ "b_susp": {
+  "en": "Suspicion %s.",
+  "ja": "疑念 %s。"
+ },
+ "b_heal": {
+  "en": "Recovered %d.",
+  "ja": "%d 回復。"
+ },
+ "b_threat_mark": {
+  "en": "A threat cannot be taken back: suspicion will climb faster for the rest of this standoff.",
+  "ja": "脅しは取り消せない：この対峙の間、疑念の上昇が速くなる。"
+ },
+ "b_enemy_turn": {
+  "en": "%s presses. Suspicion %+d. %s loses %d composure.",
+  "ja": "%sが詰め寄る。疑念 %+d。%sの平静 −%d。"
+ },
+ "b_win": {
+  "en": "They back down.",
+  "ja": "相手は引き下がった。"
+ },
+ "b_lose": {
+  "en": "It is over. Somebody is calling the Dean.",
+  "ja": "終わりだ。誰かが学部長に電話している。"
+ },
+ "b_resolve": {
+  "en": "Resolve %d / %d",
+  "ja": "決意 %d / %d"
+ },
+ "b_suspicion": {
+  "en": "Suspicion %d / 100",
+  "ja": "疑念 %d / 100"
+ },
+ "b_marked": {
+  "en": "[threatened]",
+  "ja": "［脅迫済］"
+ },
+ "b_known": {
+  "en": "Known:",
+  "ja": "判明："
+ },
+ "b_weak": {
+  "en": "(weak)",
+  "ja": "（弱点）"
+ },
+ "b_resist": {
+  "en": "(resists)",
+  "ja": "（耐性）"
+ },
+ "b_normal": {
+  "en": "",
+  "ja": ""
+ },
+ "b_comp_nerve": {
+  "en": "Composure %d/%d  Nerve %d/%d",
+  "ja": "平静 %d/%d　胆力 %d/%d"
+ },
+ "r_rattled": {
+  "en": "Too rattled to act.",
+  "ja": "動揺して動けない。"
+ },
+ "r_nerve": {
+  "en": "Not enough nerve.",
+  "ja": "胆力が足りない。"
+ },
+ "r_needs_evidence": {
+  "en": "Needs a piece of evidence.",
+  "ja": "証拠品が必要。"
+ },
+ "r_needs_cash": {
+  "en": "Needs cash.",
+  "ja": "現金が必要。"
+ },
+ "r_needs_consumable": {
+  "en": "No usable items.",
+  "ja": "使えるアイテムがない。"
+ },
+ "lose_standoff_t": {
+  "en": "The night ends early",
+  "ja": "夜は早く終わった"
+ },
+ "lose_standoff": {
+  "en": "Suspicion boiled over. Nothing is lost but the last few minutes: you are back at the last save, just before the standoff.",
+  "ja": "疑念が限界を超えた。失ったのは数分だけ — 対峙の直前のセーブに戻る。"
+ },
+ "lose_dawn_t": {
+  "en": "Dawn",
+  "ja": "夜明け"
+ },
+ "lose_dawn": {
+  "en": "The windows go grey and the building wakes. You are back at the last save.",
+  "ja": "窓が白み、建物が目を覚ます。最後のセーブに戻る。"
+ },
+ "lose_reload": {
+  "en": "Back to the last save",
+  "ja": "最後のセーブに戻る"
+ },
+ "lv_title": {
+  "en": "%s reaches level %d",
+  "ja": "%s がレベル %d に上がった"
+ },
+ "lv_stat": {
+  "en": "Choose a stat to raise by one:",
+  "ja": "上げる能力を一つ選ぶ："
+ },
+ "lv_skill": {
+  "en": "Choose a skill:",
+  "ja": "スキルを選ぶ："
+ },
+ "lv_confirm": {
+  "en": "Confirm",
+  "ja": "決定"
+ },
+ "end_t": {
+  "en": "Night cleared",
+  "ja": "夜を越えた"
+ },
+ "end_body": {
+  "en": "Level %d · Trust %d. Your progress is saved in slot 1.",
+  "ja": "レベル %d · 信頼 %d。進行状況はスロット1に保存された。"
+ },
+ "end_title": {
+  "en": "Title screen",
+  "ja": "タイトルへ"
+ },
+ "g_locked": {
+  "en": "Locked — Trust %d",
+  "ja": "未解放 — 信頼 %d"
+ },
+ "st_lang": {
+  "en": "Language",
+  "ja": "言語"
+ },
+ "st_vol_music": {
+  "en": "Music",
+  "ja": "音楽"
+ },
+ "st_vol_sfx": {
+  "en": "Sound effects",
+  "ja": "効果音"
+ },
+ "st_vol_voice": {
+  "en": "Voice",
+  "ja": "ボイス"
+ }
+}

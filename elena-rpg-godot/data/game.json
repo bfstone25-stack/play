@@ -1,0 +1,1124 @@
+{
+ "title_key": "title",
+ "logo": "res://assets/title/logo.png",
+ "title_bg": "res://assets/title/keyvisual.webp",
+ "fonts": {
+  "body": "res://assets/fonts/CormorantGaramond-SemiBold.ttf",
+  "display": "res://assets/fonts/Cinzel-Bold.ttf",
+  "cjk": "res://assets/fonts/NotoSansCJKjp-Regular.otf"
+ },
+ "ui": {
+  "dust": "res://assets/title/dust.png",
+  "vignette": "res://assets/title/vignette.png",
+  "scrim": "res://assets/title/scrim.png",
+  "dim": "res://assets/title/scrim.png",
+  "panel": "res://assets/ui/panel.png",
+  "textbox": "res://assets/ui/textbox.png",
+  "namebox": "res://assets/ui/namebox.png",
+  "choice_idle": "res://assets/ui/choice_idle.png",
+  "choice_hover": "res://assets/ui/choice_hover.png",
+  "slot_idle": "res://assets/ui/slot_idle.png",
+  "slot_hover": "res://assets/ui/slot_hover.png",
+  "bar_under": "res://assets/ui/choice_idle.png",
+  "bar_fill": "res://assets/ui/namebox.png",
+  "bar_fill_gold": "res://assets/ui/title_hover.png",
+  "modal": "res://assets/ui/confirm.png"
+ },
+ "title_mood": {
+  "ambient": "#d8d0dc",
+  "torch": true,
+  "zoom": 1.12,
+  "offset": [
+   250,
+   0
+  ]
+ },
+ "music": {
+  "title": "res://assets/audio/suspense_theme.ogg",
+  "explore": "res://assets/audio/suspense_theme.ogg",
+  "battle": "res://assets/audio/suspense_theme.ogg",
+  "boss": "res://assets/audio/suspense_theme.ogg",
+  "intimate": "res://assets/audio/ecchi_theme.ogg"
+ },
+ "audio": {
+  "ambience": "res://assets/audio/rain_ambience.ogg",
+  "click": "res://assets/audio/ui_click.ogg",
+  "page_flip": "res://assets/audio/page_flip.ogg",
+  "heartbeat": "res://assets/audio/heartbeat.ogg",
+  "sting": "res://assets/audio/title_sting.ogg",
+  "camera": "res://assets/audio/click.ogg"
+ },
+ "stats": [
+  "wit",
+  "cha",
+  "grt",
+  "stl"
+ ],
+ "level_cap": 20,
+ "trust_thresholds": [
+  3,
+  5,
+  7,
+  9
+ ],
+ "heroine_flag": "elena_joined",
+ "heroine_sprite": "elena_neutral",
+ "party": [
+  {
+   "id": "vance",
+   "base": {
+    "wit": 4,
+    "cha": 2,
+    "grt": 3,
+    "stl": 2
+   },
+   "grow": [
+    "wit",
+    "grt",
+    "cha",
+    "stl"
+   ],
+   "actions": [
+    "deflect",
+    "bluff",
+    "evidence",
+    "bribe",
+    "threaten",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "scholar": [
+     "footnote",
+     "tenure",
+     "recall",
+     "lectern",
+     "emeritus"
+    ],
+    "rogue": [
+     "palm",
+     "poker",
+     "cold",
+     "backstair",
+     "iron"
+    ]
+   },
+   "start_equip": {
+    "outfit": "tweed"
+   }
+  },
+  {
+   "id": "elena",
+   "join_flag": "elena_joined",
+   "base": {
+    "wit": 3,
+    "cha": 4,
+    "grt": 2,
+    "stl": 3
+   },
+   "grow": [
+    "cha",
+    "wit",
+    "stl",
+    "grt"
+   ],
+   "actions": [
+    "deflect",
+    "observe",
+    "bluff",
+    "evidence",
+    "flirt",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "archivist": [
+     "index",
+     "memory",
+     "tongues",
+     "lockwork",
+     "provenance"
+    ],
+    "accomplice": [
+     "smile",
+     "poise",
+     "lie",
+     "steady",
+     "alibi"
+    ]
+   },
+   "start_equip": {
+    "outfit": "raincoat"
+   }
+  }
+ ],
+ "start_items": {
+  "tea": 1
+ },
+ "actions": {
+  "deflect": {
+   "kind": "guard",
+   "cost": 0,
+   "susp": 4
+  },
+  "observe": {
+   "kind": "observe",
+   "cost": 2,
+   "susp": 2
+  },
+  "bluff": {
+   "cost": 3,
+   "stat": "wit",
+   "power": 7,
+   "scale": 1.5,
+   "susp": 3
+  },
+  "evidence": {
+   "cost": 4,
+   "stat": "wit",
+   "power": 10,
+   "scale": 2.0,
+   "susp": -2,
+   "needs_kind": "evidence"
+  },
+  "bribe": {
+   "cost": 2,
+   "stat": "cha",
+   "power": 9,
+   "scale": 1.2,
+   "susp": 1,
+   "needs_kind": "cash"
+  },
+  "flirt": {
+   "cost": 3,
+   "stat": "cha",
+   "power": 7,
+   "scale": 1.8,
+   "susp": 2
+  },
+  "threaten": {
+   "cost": 4,
+   "stat": "grt",
+   "power": 13,
+   "scale": 2.0,
+   "susp": 12,
+   "harm": true
+  },
+  "stall": {
+   "kind": "stall",
+   "cost": 1,
+   "susp_down": 10,
+   "heal": 3
+  },
+  "item": {
+   "kind": "item",
+   "cost": 0
+  },
+  "lecture": {
+   "cost": 5,
+   "stat": "wit",
+   "power": 14,
+   "scale": 2.0,
+   "susp": 4
+  },
+  "recite": {
+   "cost": 4,
+   "stat": "wit",
+   "power": 10,
+   "scale": 1.8,
+   "susp": -4
+  }
+ },
+ "skills": {
+  "footnote": {
+   "branch": "scholar",
+   "req": 2,
+   "mult": {
+    "evidence": 0.3
+   }
+  },
+  "tenure": {
+   "branch": "scholar",
+   "req": 4,
+   "max_comp": 10
+  },
+  "recall": {
+   "branch": "scholar",
+   "req": 6,
+   "stat": {
+    "wit": 2
+   }
+  },
+  "lectern": {
+   "branch": "scholar",
+   "req": 9,
+   "grant": "lecture"
+  },
+  "emeritus": {
+   "branch": "scholar",
+   "req": 12,
+   "mult": {
+    "lecture": 0.4,
+    "evidence": 0.2
+   }
+  },
+  "palm": {
+   "branch": "rogue",
+   "req": 2,
+   "mult": {
+    "bribe": 0.3
+   }
+  },
+  "poker": {
+   "branch": "rogue",
+   "req": 4,
+   "mult": {
+    "bluff": 0.3
+   }
+  },
+  "cold": {
+   "branch": "rogue",
+   "req": 6,
+   "stat": {
+    "grt": 2
+   }
+  },
+  "backstair": {
+   "branch": "rogue",
+   "req": 9,
+   "mult": {
+    "stall": 0.4
+   }
+  },
+  "iron": {
+   "branch": "rogue",
+   "req": 12,
+   "mult": {
+    "threaten": 0.4,
+    "bluff": 0.2
+   }
+  },
+  "index": {
+   "branch": "archivist",
+   "req": 2,
+   "mult": {
+    "evidence": 0.3
+   }
+  },
+  "memory": {
+   "branch": "archivist",
+   "req": 4,
+   "stat": {
+    "wit": 2
+   }
+  },
+  "tongues": {
+   "branch": "archivist",
+   "req": 6,
+   "grant": "recite"
+  },
+  "lockwork": {
+   "branch": "archivist",
+   "req": 9,
+   "stat": {
+    "stl": 2
+   }
+  },
+  "provenance": {
+   "branch": "archivist",
+   "req": 12,
+   "mult": {
+    "evidence": 0.4,
+    "recite": 0.3
+   }
+  },
+  "smile": {
+   "branch": "accomplice",
+   "req": 2,
+   "mult": {
+    "flirt": 0.3
+   }
+  },
+  "poise": {
+   "branch": "accomplice",
+   "req": 4,
+   "max_comp": 10
+  },
+  "lie": {
+   "branch": "accomplice",
+   "req": 6,
+   "mult": {
+    "bluff": 0.4
+   }
+  },
+  "steady": {
+   "branch": "accomplice",
+   "req": 9,
+   "stat": {
+    "grt": 2
+   }
+  },
+  "alibi": {
+   "branch": "accomplice",
+   "req": 12,
+   "mult": {
+    "stall": 0.4,
+    "flirt": 0.2
+   }
+  }
+ },
+ "items": {
+  "cash": {
+   "kind": "cash"
+  },
+  "tea": {
+   "kind": "consumable",
+   "heal_comp": 16
+  },
+  "sherry": {
+   "kind": "consumable",
+   "heal_nerve": 8
+  },
+  "hip_flask": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  },
+  "override_key": {
+   "kind": "key"
+  },
+  "deaccession": {
+   "kind": "evidence"
+  },
+  "porter_rota": {
+   "kind": "evidence"
+  },
+  "ledger": {
+   "kind": "evidence"
+  },
+  "torch": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "vance",
+   "bonus": {
+    "stl": 1
+   },
+   "mult": {
+    "stall": 0.2
+   }
+  },
+  "tweed": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "vance",
+   "bonus": {
+    "grt": 1
+   }
+  },
+  "signet": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "vance",
+   "bonus": {
+    "cha": 1
+   }
+  },
+  "raincoat": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "elena",
+   "bonus": {
+    "grt": 1
+   }
+  },
+  "cardigan": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "elena",
+   "bonus": {
+    "cha": 1
+   },
+   "mult": {
+    "flirt": 0.2
+   },
+   "sprite": "elena_soft"
+  },
+  "spectacles": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "elena",
+   "bonus": {
+    "wit": 1
+   }
+  },
+  "survey": {
+   "kind": "evidence"
+  },
+  "plan_1994": {
+   "kind": "evidence"
+  },
+  "page_two": {
+   "kind": "evidence"
+  },
+  "gift_pen": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  },
+  "brandy": {
+   "kind": "consumable",
+   "heal_nerve": 14
+  },
+  "biscuits": {
+   "kind": "consumable",
+   "heal_comp": 28
+  },
+  "keyring": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "vance",
+   "bonus": {
+    "stl": 2
+   }
+  },
+  "gown": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "elena",
+   "bonus": {
+    "wit": 1
+   },
+   "mult": {
+    "recite": 0.3
+   },
+   "sprite": "outfit_gown"
+  },
+  "evening": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "elena",
+   "bonus": {
+    "cha": 2
+   },
+   "mult": {
+    "flirt": 0.3
+   },
+   "sprite": "outfit_evening"
+  }
+ },
+ "enemies": {
+  "cobb": {
+   "name_key": "e_cobb",
+   "sprite": "cobb",
+   "composure": 70,
+   "atk": 5,
+   "susp_rate": 7,
+   "weak": [
+    "bribe"
+   ],
+   "resist": [
+    "threaten"
+   ],
+   "xp": 40,
+   "drop": "porter_rota",
+   "barks": 3,
+   "intro_key": "ei_cobb",
+   "win_key": "ew_cobb"
+  },
+  "penhallow": {
+   "name_key": "e_penhallow",
+   "sprite": "penhallow",
+   "composure": 480,
+   "atk": 7,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "flirt"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 55,
+   "drop": "sherry",
+   "trust_win": 1,
+   "barks": 3,
+   "intro_key": "ei_penhallow",
+   "win_key": "ew_penhallow"
+  },
+  "cobb_return": {
+   "name_key": "e_cobb_return",
+   "sprite": "cobb",
+   "composure": 500,
+   "atk": 7,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "recite",
+    "stall"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 60,
+   "drop": "cardigan",
+   "trust_win": 1,
+   "barks": 3,
+   "intro_key": "ei_cobb_return",
+   "win_key": "ew_cobb_return"
+  },
+  "vey": {
+   "name_key": "e_vey",
+   "sprite": "secretary",
+   "composure": 560,
+   "atk": 8,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "stall"
+   ],
+   "resist": [
+    "bribe",
+    "bluff"
+   ],
+   "xp": 70,
+   "drop": "tea",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "vey",
+   "intro_key": "ei_vey",
+   "win_key": "ew_vey"
+  },
+  "hollis": {
+   "name_key": "e_hollis",
+   "sprite": "security_guard",
+   "composure": 580,
+   "atk": 9,
+   "susp_rate": 11,
+   "weak": [
+    "bribe",
+    "flirt"
+   ],
+   "resist": [
+    "evidence",
+    "threaten"
+   ],
+   "xp": 70,
+   "drop": "cash",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "hollis",
+   "intro_key": "ei_hollis",
+   "win_key": "ew_hollis"
+  },
+  "grice": {
+   "name_key": "e_grice",
+   "sprite": "deans_man_a",
+   "composure": 600,
+   "atk": 10,
+   "susp_rate": 11,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "xp": 75,
+   "drop": "sherry",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "grice",
+   "intro_key": "ei_grice",
+   "win_key": "ew_grice"
+  },
+  "crane": {
+   "name_key": "e_crane",
+   "sprite": "deans_man_b",
+   "composure": 760,
+   "atk": 10,
+   "susp_rate": 9,
+   "weak": [
+    "evidence",
+    "recite"
+   ],
+   "resist": [
+    "bribe",
+    "bluff",
+    "threaten"
+   ],
+   "xp": 150,
+   "drop": "biscuits",
+   "trust_win": 1,
+   "barks": 4,
+   "bark_set": "crane",
+   "intro_key": "ei_crane",
+   "win_key": "ew_crane",
+   "boss": true
+  },
+  "grice_n3": {
+   "name_key": "e_grice_n3",
+   "sprite": "deans_man_a",
+   "composure": 660,
+   "atk": 11,
+   "susp_rate": 11,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "xp": 90,
+   "drop": "cash",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "grice",
+   "intro_key": "ei_grice",
+   "win_key": "ew_grice"
+  },
+  "sallis": {
+   "name_key": "e_sallis",
+   "sprite": "rival_archivist",
+   "composure": 700,
+   "atk": 10,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "bluff",
+    "recite"
+   ],
+   "resist": [
+    "flirt",
+    "bribe"
+   ],
+   "xp": 95,
+   "drop": "spectacles",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "sallis",
+   "intro_key": "ei_sallis",
+   "win_key": "ew_sallis"
+  },
+  "ambrose": {
+   "name_key": "e_ambrose",
+   "sprite": "solicitor",
+   "composure": 720,
+   "atk": 10,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "threaten"
+   ],
+   "resist": [
+    "bluff",
+    "bribe"
+   ],
+   "xp": 95,
+   "drop": "brandy",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "ambrose",
+   "intro_key": "ei_ambrose",
+   "win_key": "ew_ambrose"
+  },
+  "penhallow_boss": {
+   "name_key": "e_penhallow_boss",
+   "sprite": "penhallow",
+   "composure": 900,
+   "atk": 12,
+   "susp_rate": 9,
+   "weak": [
+    "evidence",
+    "flirt"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 200,
+   "drop": "signet",
+   "trust_win": 1,
+   "barks": 4,
+   "bark_set": "penhallow_boss",
+   "intro_key": "ei_penhallow_boss",
+   "win_key": "ew_penhallow_boss",
+   "boss": true
+  },
+  "vey_n4": {
+   "name_key": "e_vey_n4",
+   "sprite": "secretary",
+   "composure": 760,
+   "atk": 12,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "stall",
+    "flirt"
+   ],
+   "resist": [
+    "bribe",
+    "bluff"
+   ],
+   "xp": 110,
+   "drop": "tea",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "vey",
+   "intro_key": "ei_vey",
+   "win_key": "ew_vey"
+  },
+  "hollis_n4": {
+   "name_key": "e_hollis_n4",
+   "sprite": "security_guard",
+   "composure": 680,
+   "atk": 12,
+   "susp_rate": 11,
+   "weak": [
+    "bribe",
+    "flirt"
+   ],
+   "resist": [
+    "evidence",
+    "threaten"
+   ],
+   "xp": 110,
+   "drop": "cash",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "hollis",
+   "intro_key": "ei_hollis",
+   "win_key": "ew_hollis"
+  },
+  "dean_tea": {
+   "name_key": "e_dean_tea",
+   "sprite": "dean_holloway",
+   "composure": 1000,
+   "atk": 12,
+   "susp_rate": 8,
+   "weak": [
+    "recite",
+    "lecture",
+    "evidence"
+   ],
+   "resist": [
+    "bluff",
+    "flirt",
+    "bribe",
+    "threaten"
+   ],
+   "xp": 240,
+   "drop": "brandy",
+   "trust_win": 1,
+   "barks": 4,
+   "bark_set": "dean_tea",
+   "intro_key": "ei_dean_tea",
+   "win_key": "ew_dean_tea",
+   "boss": true
+  },
+  "crane_n4": {
+   "name_key": "e_crane_n4",
+   "sprite": "deans_man_b",
+   "composure": 820,
+   "atk": 12,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "recite"
+   ],
+   "resist": [
+    "bribe",
+    "bluff",
+    "threaten"
+   ],
+   "xp": 120,
+   "drop": "biscuits",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "crane",
+   "intro_key": "ei_crane",
+   "win_key": "ew_crane"
+  },
+  "crane_n5": {
+   "name_key": "e_crane_n5",
+   "sprite": "deans_man_b",
+   "composure": 900,
+   "atk": 13,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "recite"
+   ],
+   "resist": [
+    "bribe",
+    "bluff",
+    "threaten"
+   ],
+   "xp": 130,
+   "drop": "tea",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "crane",
+   "intro_key": "ei_crane",
+   "win_key": "ew_crane"
+  },
+  "grice_n5": {
+   "name_key": "e_grice_n5",
+   "sprite": "deans_man_a",
+   "composure": 880,
+   "atk": 13,
+   "susp_rate": 11,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "xp": 130,
+   "drop": "sherry",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "grice",
+   "intro_key": "ei_grice",
+   "win_key": "ew_grice"
+  },
+  "ambrose_n5": {
+   "name_key": "e_ambrose_n5",
+   "sprite": "solicitor",
+   "composure": 920,
+   "atk": 13,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "threaten"
+   ],
+   "resist": [
+    "bluff",
+    "bribe"
+   ],
+   "xp": 140,
+   "drop": "brandy",
+   "trust_win": 0,
+   "barks": 3,
+   "bark_set": "ambrose",
+   "intro_key": "ei_ambrose",
+   "win_key": "ew_ambrose"
+  },
+  "penhallow_final": {
+   "name_key": "e_penhallow_final",
+   "sprite": "penhallow",
+   "composure": 1200,
+   "atk": 14,
+   "susp_rate": 9,
+   "weak": [
+    "evidence",
+    "recite",
+    "lecture"
+   ],
+   "resist": [
+    "bribe",
+    "threaten",
+    "flirt"
+   ],
+   "xp": 300,
+   "drop": "biscuits",
+   "trust_win": 1,
+   "barks": 4,
+   "bark_set": "penhallow_final",
+   "intro_key": "ei_penhallow_final",
+   "win_key": "ew_penhallow_final",
+   "boss": true
+  },
+  "dean_dawn": {
+   "name_key": "e_dean",
+   "sprite": "dean_holloway",
+   "composure": 520,
+   "atk": 8,
+   "susp_rate": 7,
+   "boss": true,
+   "weak": [
+    "bluff",
+    "deflect",
+    "stall"
+   ],
+   "resist": [
+    "flirt",
+    "bribe",
+    "threaten"
+   ],
+   "xp": 120,
+   "drop": "signet",
+   "barks": 4,
+   "intro_key": "ei_dean",
+   "win_key": "ew_dean"
+  }
+ },
+ "nights": [
+  "night1",
+  "night2",
+  "night3",
+  "night4",
+  "night5"
+ ],
+ "story": [
+  "ch1",
+  "ch2",
+  "ch3",
+  "ch4",
+  "ch5"
+ ],
+ "gallery": [
+  {
+   "id": "cg_confrontation",
+   "thumb": "cg_confrontation_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_confrontation",
+   "trust": 0
+  },
+  {
+   "id": "cg_climax_pact",
+   "thumb": "cg_climax_pact_thumb",
+   "locked": "cg_climax_pact_locked",
+   "key": "g_cg_climax_pact",
+   "trust": 3
+  },
+  {
+   "id": "cg_climax_control",
+   "thumb": "cg_climax_control_thumb",
+   "locked": "cg_climax_control_locked",
+   "key": "g_cg_climax_control",
+   "trust": 3
+  },
+  {
+   "id": "cg_aftermath",
+   "thumb": "cg_aftermath_thumb",
+   "locked": "cg_aftermath_locked",
+   "key": "g_cg_aftermath",
+   "trust": 0
+  },
+  {
+   "id": "cg_coal_store",
+   "thumb": "cg_coal_store_thumb",
+   "locked": "cg_coal_store_locked",
+   "key": "g_cg_coal_store",
+   "trust": 5
+  },
+  {
+   "id": "cg_ch2_office",
+   "thumb": "cg_ch2_office_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_ch2_office",
+   "trust": 5
+  },
+  {
+   "id": "cg_ch3_crypt",
+   "thumb": "cg_ch3_crypt_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_ch3_crypt",
+   "trust": 7
+  },
+  {
+   "id": "cg_annex",
+   "thumb": "cg_annex_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_annex",
+   "trust": 0
+  },
+  {
+   "id": "cg_ch4_chapel",
+   "thumb": "cg_ch4_chapel_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_ch4_chapel",
+   "trust": 7
+  },
+  {
+   "id": "cg_muniment",
+   "thumb": "cg_muniment_thumb",
+   "locked": "cg_muniment_locked",
+   "key": "g_cg_muniment",
+   "trust": 0
+  },
+  {
+   "id": "cg_ch5_muniment",
+   "thumb": "cg_ch5_muniment_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_ch5_muniment",
+   "trust": 9
+  },
+  {
+   "id": "cg_rpg_rain_arrival",
+   "thumb": "cg_rpg_rain_arrival_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_rpg_rain_arrival",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_map_room",
+   "thumb": "cg_rpg_map_room_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_rpg_map_room",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_lockpick",
+   "thumb": "cg_rpg_lockpick_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_rpg_lockpick",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_bell_chamber",
+   "thumb": "cg_rpg_bell_chamber_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_rpg_bell_chamber",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_roof_dawn",
+   "thumb": "cg_rpg_roof_dawn_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_rpg_roof_dawn",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_gala",
+   "thumb": "cg_rpg_gala_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_rpg_gala",
+   "trust": 0
+  },
+  {
+   "id": "cg_trust3_carrel",
+   "thumb": "cg_trust3_carrel_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_trust3_carrel",
+   "trust": 3
+  },
+  {
+   "id": "cg_trust5_common_room",
+   "thumb": "cg_trust5_common_room_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_trust5_common_room",
+   "trust": 5
+  },
+  {
+   "id": "cg_trust7_bath",
+   "thumb": "cg_trust7_bath_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_trust7_bath",
+   "trust": 7
+  },
+  {
+   "id": "cg_trust9_bed",
+   "thumb": "cg_trust9_bed_thumb",
+   "locked": "cg_annex_locked",
+   "key": "g_cg_trust9_bed",
+   "trust": 9
+  }
+ ]
+}

@@ -1,0 +1,1589 @@
+{
+ "chapter": 1,
+ "lines": [
+  {
+   "id": "start_da63ec14",
+   "src": 29,
+   "label": "start",
+   "who": "narrator",
+   "en": "Saint Jude Academy. Department of Antiquities. 11:42 PM.",
+   "ja": "セント・ジュード学園。古美術学部。午後11時42分。",
+   "v_en": "res://assets/voice/start_da63ec14.ogg",
+   "v_ja": "res://assets/voice/start_da63ec14.ja.ogg"
+  },
+  {
+   "id": "start_be722d1b",
+   "src": 30,
+   "label": "start",
+   "who": "narrator",
+   "en": "Rain on the windows. A radiator ticking. The faculty archive smells of old glue and wet coats.",
+   "ja": "窓を打つ雨。ラジエーターの音。教員用書庫には、古い糊と濡れたコートの匂いが満ちている。",
+   "v_en": "res://assets/voice/start_be722d1b.ogg",
+   "v_ja": "res://assets/voice/start_be722d1b.ja.ogg"
+  },
+  {
+   "id": "start_a4faf382",
+   "src": 31,
+   "label": "start",
+   "who": "narrator",
+   "en": "You have marked forty-one essays tonight. The forty-second is open in front of you when the desk console chimes.",
+   "ja": "今夜、あなたは四十一本のレポートを採点した。四十二本目を目の前に開いたところで、デスクのコンソールが鳴る。",
+   "v_en": "res://assets/voice/start_a4faf382.ogg",
+   "v_ja": "res://assets/voice/start_a4faf382.ja.ogg"
+  },
+  {
+   "id": "start_1bf8d77c",
+   "src": 33,
+   "label": "start",
+   "who": "protagonist",
+   "en": "Vault alert. Blackwood wing.",
+   "ja": "金庫室警報。ブラックウッド棟。",
+   "v_en": "res://assets/voice/start_1bf8d77c.ogg",
+   "v_ja": "res://assets/voice/start_1bf8d77c.ja.ogg"
+  },
+  {
+   "id": "start_37f7aa7e",
+   "src": 34,
+   "label": "start",
+   "who": "protagonist",
+   "en": "Seal engaged at 11:37. The interior sensor is still tripped.",
+   "ja": "「封鎖は23時37分。内部センサーはまだ反応したままだ」",
+   "v_en": "res://assets/voice/start_37f7aa7e.ogg",
+   "v_ja": "res://assets/voice/start_37f7aa7e.ja.ogg"
+  },
+  {
+   "id": "start_d10b33df",
+   "src": 38,
+   "label": "start",
+   "who": "narrator",
+   "en": "The Blackwood vault holds the things the Academy does not admit it owns. It locks itself at eleven. Nobody has any business in it at this hour.",
+   "ja": "ブラックウッド書庫には、アカデミーが所有を認めないものが収められている。十一時に自動で施錠される。この時間、あそこに用のある人間はいない。",
+   "v_en": "res://assets/voice/start_d10b33df.ogg",
+   "v_ja": "res://assets/voice/start_d10b33df.ja.ogg"
+  },
+  {
+   "id": "start_c963c72b",
+   "src": 39,
+   "label": "start",
+   "who": "narrator",
+   "en": "You take the override key from the drawer. It is heavier than it looks.",
+   "ja": "あなたは引き出しからオーバーライドキーを取り出す。それは見た目よりも重い。",
+   "v_en": "res://assets/voice/start_c963c72b.ogg",
+   "v_ja": "res://assets/voice/start_c963c72b.ja.ogg"
+  },
+  {
+   "id": "start_ffdbd2ed",
+   "src": 40,
+   "label": "start",
+   "who": "narrator",
+   "en": "Two flights down. The corridor lights are on their night setting, a dull orange that makes the doors look further away than they are.",
+   "ja": "階段を二階分降りる。廊下の照明は夜間設定で、鈍いオレンジ色が扉を実際よりも遠く見せる。",
+   "v_en": "res://assets/voice/start_ffdbd2ed.ogg",
+   "v_ja": "res://assets/voice/start_ffdbd2ed.ja.ogg"
+  },
+  {
+   "id": "start_c6ce9c47",
+   "src": 44,
+   "label": "start",
+   "who": "narrator",
+   "en": "Behind the iron door, a phone camera clicks. Once. A pause. Again.",
+   "ja": "鉄扉の向こうで、携帯のシャッター音が鳴る。一度。間。再び。",
+   "v_en": "res://assets/voice/start_c6ce9c47.ogg",
+   "v_ja": "res://assets/voice/start_c6ce9c47.ja.ogg"
+  },
+  {
+   "id": "start_0fdff4c9",
+   "src": 45,
+   "label": "start",
+   "who": "narrator",
+   "en": "You turn the key. The seal lets go with a hiss, and the lamplight inside spills across your shoes.",
+   "ja": "あなたは鍵を回す。封鎖がシューという音を立てて解除され、内部のランプの光があなたの靴にこぼれる。",
+   "v_en": "res://assets/voice/start_0fdff4c9.ogg",
+   "v_ja": "res://assets/voice/start_0fdff4c9.ja.ogg"
+  },
+  {
+   "id": "start_e21515be",
+   "src": 46,
+   "label": "start",
+   "who": "narrator",
+   "en": "Elena is on the floor beside an open crate, phone in one hand, a ledger the size of a paving stone open on her knees.",
+   "ja": "エレナは開いた木箱の横の床に座り、片手に携帯、膝の上には敷石ほどの大きさの台帳が開かれている。",
+   "v_en": "res://assets/voice/start_e21515be.ogg",
+   "v_ja": "res://assets/voice/start_e21515be.ja.ogg"
+  },
+  {
+   "id": "start_d2bd5794",
+   "src": 47,
+   "label": "start",
+   "who": "narrator",
+   "en": "She has photographed at least thirty pages. She does not stop shooting until the door gives her a reason to.",
+   "ja": "彼女は少なくとも三十ページを撮影している。ドアが撮影をやめる理由をくれるまで、彼女は手を止めない。",
+   "v_en": "res://assets/voice/start_d2bd5794.ogg",
+   "v_ja": "res://assets/voice/start_d2bd5794.ja.ogg"
+  },
+  {
+   "id": "start_9cf43e5a",
+   "src": 54,
+   "label": "start",
+   "who": "narrator",
+   "en": "Elena Ashcombe. Twenty-two. Your postgraduate assistant, and the only person in this building who reads faster than you do.",
+   "ja": "エレナ・アッシュコム。22歳。あなたの大学院生助手であり、この建物であなたよりも速く読む唯一の人物。",
+   "v_en": "res://assets/voice/start_9cf43e5a.ogg",
+   "v_ja": "res://assets/voice/start_9cf43e5a.ja.ogg"
+  },
+  {
+   "id": "start_2ea77930",
+   "src": 55,
+   "label": "start",
+   "who": "narrator",
+   "en": "Her blazer is buttoned. Her hands are steady. Only her breathing is wrong.",
+   "ja": "ブレザーのボタンは留まっている。手は震えていない。おかしいのは呼吸だけだ。",
+   "v_en": "res://assets/voice/start_2ea77930.ogg",
+   "v_ja": "res://assets/voice/start_2ea77930.ja.ogg"
+  },
+  {
+   "id": "start_fc09ad15",
+   "src": 57,
+   "label": "start",
+   "who": "elena",
+   "en": "Professor Vance.",
+   "ja": "ヴァンス教授。",
+   "v_en": "res://assets/voice/start_fc09ad15.ogg",
+   "v_ja": "res://assets/voice/start_fc09ad15.ja.ogg"
+  },
+  {
+   "id": "start_a48e34f1",
+   "src": 58,
+   "label": "start",
+   "who": "elena",
+   "en": "The seal closed on me. I was going to call you at midnight.",
+   "ja": "封鎖が閉まってしまって。真夜中に電話するつもりでした。",
+   "v_en": "res://assets/voice/start_a48e34f1.ogg",
+   "v_ja": "res://assets/voice/start_a48e34f1.ja.ogg"
+  },
+  {
+   "id": "start_90c3d74e",
+   "src": 60,
+   "label": "start",
+   "who": "protagonist",
+   "en": "At midnight you would have had sixty pages instead of thirty.",
+   "ja": "真夜中には、30ページどころか60ページになっていたでしょう。",
+   "v_en": "res://assets/voice/start_90c3d74e.ogg",
+   "v_ja": "res://assets/voice/start_90c3d74e.ja.ogg"
+  },
+  {
+   "id": "start_19045fd4",
+   "src": 62,
+   "label": "start",
+   "who": "narrator",
+   "en": "She does not deny it. She closes the ledger carefully, the way you close a book you intend to open again.",
+   "ja": "彼女は否定しない。台帳を丁寧に閉じる。また開くつもりの本を閉じるときのやり方で。",
+   "v_en": "res://assets/voice/start_19045fd4.ogg",
+   "v_ja": "res://assets/voice/start_19045fd4.ja.ogg"
+  },
+  {
+   "id": "start_92392281",
+   "src": 64,
+   "label": "start",
+   "who": "elena",
+   "en": "This crate is on the deaccession list. Tomorrow it goes to the incinerator with the rest of the water-damaged lot.",
+   "ja": "この木箱は廃棄リストにある。明日には、他の水濡れ品と一緒に焼却炉行きだ。",
+   "v_en": "res://assets/voice/start_92392281.ogg",
+   "v_ja": "res://assets/voice/start_92392281.ja.ogg"
+  },
+  {
+   "id": "start_dca00dd8",
+   "src": 65,
+   "label": "start",
+   "who": "elena",
+   "en": "It isn't water-damaged. Somebody wants it gone.",
+   "ja": "「水濡れなんかしていません。誰かが処分したがっているんです」",
+   "v_en": "res://assets/voice/start_dca00dd8.ogg",
+   "v_ja": "res://assets/voice/start_dca00dd8.ja.ogg"
+  },
+  {
+   "id": "start_4c38dc55",
+   "src": 67,
+   "label": "start",
+   "who": "narrator",
+   "en": "Gold leaf on the spine, half worn away. No catalogue number. The Academy does not keep books without catalogue numbers.",
+   "ja": "背表紙の金箔は半分剥がれている。蔵書番号はない。学園は蔵書番号のない本を保管しない。",
+   "v_en": "res://assets/voice/start_4c38dc55.ogg",
+   "v_ja": "res://assets/voice/start_4c38dc55.ja.ogg"
+  },
+  {
+   "id": "start_a5c0e8a4",
+   "src": 76,
+   "label": "start",
+   "who": "narrator",
+   "en": "She sets the phone down without being asked twice. Screen up. Thirty-two photographs, and the last one still uploading.",
+   "ja": "彼女は二度言わせずに携帯を置く。画面は上向き。写真は三十二枚、最後の一枚はまだアップロード中だ。",
+   "v_en": "res://assets/voice/start_a5c0e8a4.ogg",
+   "v_ja": "res://assets/voice/start_a5c0e8a4.ja.ogg"
+  },
+  {
+   "id": "start_d44b7524",
+   "src": 77,
+   "label": "start",
+   "who": "elena",
+   "en": "It is a donor ledger. 1994 to 1996. Names, sums, and what the sums bought.",
+   "ja": "それは寄付者名簿だ。1994年から1996年。名前、金額、そしてその金額で何が買われたか。",
+   "v_en": "res://assets/voice/start_d44b7524.ogg",
+   "v_ja": "res://assets/voice/start_d44b7524.ja.ogg"
+  },
+  {
+   "id": "start_06b7ba19",
+   "src": 78,
+   "label": "start",
+   "who": "protagonist",
+   "en": "That is not a book anyone photographs at midnight for a thesis.",
+   "ja": "論文のために真夜中に撮影するような本ではない。",
+   "v_en": "res://assets/voice/start_06b7ba19.ogg",
+   "v_ja": "res://assets/voice/start_06b7ba19.ja.ogg"
+  },
+  {
+   "id": "start_6948684b",
+   "src": 79,
+   "label": "start",
+   "who": "elena",
+   "en": "No, Professor. It is not.",
+   "ja": "いいえ、教授。違います。",
+   "v_en": "res://assets/voice/start_6948684b.ogg",
+   "v_ja": "res://assets/voice/start_6948684b.ja.ogg"
+  },
+  {
+   "id": "start_00503662",
+   "src": 86,
+   "label": "start",
+   "who": "narrator",
+   "en": "She looks at you as if the sentence were in a language she half remembers. Then she gets up and comes to the lamp.",
+   "ja": "彼女は、その言葉が半分忘れかけた言語であるかのようにあなたを見る。それから立ち上がり、ランプのそばへ来る。",
+   "v_en": "res://assets/voice/start_00503662.ogg",
+   "v_ja": "res://assets/voice/start_00503662.ja.ogg"
+  },
+  {
+   "id": "start_f37c384e",
+   "src": 87,
+   "label": "start",
+   "who": "narrator",
+   "en": "The rain has flattened her hair against one cheek. She pushes it back with the wrist that is not holding the ledger.",
+   "ja": "雨が彼女の髪を片頬に貼りつけている。台帳を持っていないほうの手首で、彼女はそれを払いのける。",
+   "v_en": "res://assets/voice/start_f37c384e.ogg",
+   "v_ja": "res://assets/voice/start_f37c384e.ja.ogg"
+  },
+  {
+   "id": "start_0e05d244",
+   "src": 88,
+   "label": "start",
+   "who": "elena",
+   "en": "You're not going to ask what it is?",
+   "ja": "「それが何なのか、訊かないんですか?」",
+   "v_en": "res://assets/voice/start_0e05d244.ogg",
+   "v_ja": "res://assets/voice/start_0e05d244.ja.ogg"
+  },
+  {
+   "id": "start_18914745",
+   "src": 89,
+   "label": "start",
+   "who": "protagonist",
+   "en": "I am going to ask. I would rather ask somebody who is not shivering.",
+   "ja": "聞きますよ。震えていない人に聞きたいだけだ。",
+   "v_en": "res://assets/voice/start_18914745.ogg",
+   "v_ja": "res://assets/voice/start_18914745.ja.ogg"
+  },
+  {
+   "id": "start_0f482c3d",
+   "src": 90,
+   "label": "start",
+   "who": "narrator",
+   "en": "That gets a laugh out of her. Short, surprised, gone at once.",
+   "ja": "彼女から笑みが漏れる。短く、驚いたように、すぐに消える。",
+   "v_en": "res://assets/voice/start_0f482c3d.ogg",
+   "v_ja": "res://assets/voice/start_0f482c3d.ja.ogg"
+  },
+  {
+   "id": "start_7bf9d1ce",
+   "src": 97,
+   "label": "start",
+   "who": "narrator",
+   "en": "The door meets the frame with the sound of a dropped book. You put your shoulders against it.",
+   "ja": "ドアが枠に収まる音は、本を取り落としたときの音だ。あなたはその扉に両肩を預ける。",
+   "v_en": "res://assets/voice/start_7bf9d1ce.ogg",
+   "v_ja": "res://assets/voice/start_7bf9d1ce.ja.ogg"
+  },
+  {
+   "id": "start_77ea1102",
+   "src": 98,
+   "label": "start",
+   "who": "narrator",
+   "en": "Her eyes go to the door, to the key in your hand, to your face. In that order.",
+   "ja": "彼女の視線はドアへ、あなたの手の鍵へ、そしてあなたの顔へと移る。その順で。",
+   "v_en": "res://assets/voice/start_77ea1102.ogg",
+   "v_ja": "res://assets/voice/start_77ea1102.ja.ogg"
+  },
+  {
+   "id": "start_3a5c43d1",
+   "src": 99,
+   "label": "start",
+   "who": "elena",
+   "en": "Professor. That door only opens from the outside after eleven.",
+   "ja": "教授。そのドアは11時以降、外からしか開かない。",
+   "v_en": "res://assets/voice/start_3a5c43d1.ogg",
+   "v_ja": "res://assets/voice/start_3a5c43d1.ja.ogg"
+  },
+  {
+   "id": "start_8ea2bae7",
+   "src": 100,
+   "label": "start",
+   "who": "protagonist",
+   "en": "I know. So now we are both in here until one of us explains something.",
+   "ja": "知っている。だから、どちらかが説明するまで、我々はここにいる。",
+   "v_en": "res://assets/voice/start_8ea2bae7.ogg",
+   "v_ja": "res://assets/voice/start_8ea2bae7.ja.ogg"
+  },
+  {
+   "id": "start_3e6efa9c",
+   "src": 102,
+   "label": "start",
+   "who": "narrator",
+   "en": "The radiator ticks. Somewhere above you the wind finds a loose pane and worries at it.",
+   "ja": "ラジエーターが鳴る。頭上のどこかで、風が緩んだ窓ガラスを見つけて、しつこくいじっている。",
+   "v_en": "res://assets/voice/start_3e6efa9c.ogg",
+   "v_ja": "res://assets/voice/start_3e6efa9c.ja.ogg"
+  },
+  {
+   "id": "start_81c5e75a",
+   "src": 106,
+   "label": "start",
+   "who": "protagonist",
+   "en": "Elena. The ledger. On the crate.",
+   "ja": "エレナ。名簿を。木箱の上に。",
+   "v_en": "res://assets/voice/start_81c5e75a.ogg",
+   "v_ja": "res://assets/voice/start_81c5e75a.ja.ogg"
+  },
+  {
+   "id": "start_f25d166b",
+   "src": 111,
+   "label": "start",
+   "who": "elena",
+   "en": "If I give you this, it goes to the Dean's office by nine, and by ten it does not exist.",
+   "ja": "これを渡せば、9時には学部長室へ行き、10時には存在しないことになる。",
+   "v_en": "res://assets/voice/start_f25d166b.ogg",
+   "v_ja": "res://assets/voice/start_f25d166b.ja.ogg"
+  },
+  {
+   "id": "start_a4f843bb",
+   "src": 112,
+   "label": "start",
+   "who": "elena",
+   "en": "Do you know what it costs to have a name removed from a school like this one? I do. It is on page fourteen.",
+   "ja": "このような学校から名前を消すのに、どれだけの費用がかかるか知っていますか？私は知っている。14ページに載っている。",
+   "v_en": "res://assets/voice/start_a4f843bb.ogg",
+   "v_ja": "res://assets/voice/start_a4f843bb.ja.ogg"
+  },
+  {
+   "id": "start_3ed7e396",
+   "src": 114,
+   "label": "start",
+   "who": "protagonist",
+   "en": "Then you admit you knew what it was before you opened it.",
+   "ja": "では、開ける前からそれが何であるか知っていたと認めるのですね。",
+   "v_en": "res://assets/voice/start_3ed7e396.ogg",
+   "v_ja": "res://assets/voice/start_3ed7e396.ja.ogg"
+  },
+  {
+   "id": "start_f0cc2595",
+   "src": 116,
+   "label": "start",
+   "who": "narrator",
+   "en": "She takes one step back. There is nowhere to take a second. The shelves are already at her spine.",
+   "ja": "彼女は一歩下がる。二歩目を下がる場所はない。背中にはもう棚がある。",
+   "v_en": "res://assets/voice/start_f0cc2595.ogg",
+   "v_ja": "res://assets/voice/start_f0cc2595.ja.ogg"
+  },
+  {
+   "id": "start_1a7d91cd",
+   "src": 117,
+   "label": "start",
+   "who": "narrator",
+   "en": "You are close enough now to see the rain on her glasses. She has not wiped it off.",
+   "ja": "もう、彼女の眼鏡についた雨粒が見えるほど近い。彼女はそれを拭っていない。",
+   "v_en": "res://assets/voice/start_1a7d91cd.ogg",
+   "v_ja": "res://assets/voice/start_1a7d91cd.ja.ogg"
+  },
+  {
+   "id": "start_d773420a",
+   "src": 126,
+   "label": "start",
+   "who": "narrator",
+   "en": "She holds the ledger against her chest with both arms, the way a child holds a cat that wants to leave.",
+   "ja": "彼女は台帳を両腕で胸に抱え込む。出ていきたがる猫を抱く子どものやり方で。",
+   "v_en": "res://assets/voice/start_d773420a.ogg",
+   "v_ja": "res://assets/voice/start_d773420a.ja.ogg"
+  },
+  {
+   "id": "start_1f40c7ba",
+   "src": 128,
+   "label": "start",
+   "who": "elena",
+   "en": "Ashcombe. My name. It is in there twice.",
+   "ja": "アッシュコム。私の名前だ。そこに二度、記されている。",
+   "v_en": "res://assets/voice/start_1f40c7ba.ogg",
+   "v_ja": "res://assets/voice/start_1f40c7ba.ja.ogg"
+  },
+  {
+   "id": "start_03248dfc",
+   "src": 129,
+   "label": "start",
+   "who": "elena",
+   "en": "Once as a donor. Once, two years later, crossed out. Somebody drew a line through my family and the Academy stopped knowing us.",
+   "ja": "一度は寄付者として。二度目は、二年後。線で消されている。誰かが私の家族に線を引いた。アカデミーは私たちを知らなくなった。",
+   "v_en": "res://assets/voice/start_03248dfc.ogg",
+   "v_ja": "res://assets/voice/start_03248dfc.ja.ogg"
+  },
+  {
+   "id": "start_bbf38ba3",
+   "src": 130,
+   "label": "start",
+   "who": "elena",
+   "en": "My father died thinking he'd done something wrong. I wanted to know what it was.",
+   "ja": "「父は、自分が何か悪いことをしたと思ったまま死にました。それが何だったのか知りたかった」",
+   "v_en": "res://assets/voice/start_bbf38ba3.ogg",
+   "v_ja": "res://assets/voice/start_bbf38ba3.ja.ogg"
+  },
+  {
+   "id": "start_7355aa34",
+   "src": 132,
+   "label": "start",
+   "who": "protagonist",
+   "en": "And?",
+   "ja": "それで？",
+   "v_en": "res://assets/voice/start_7355aa34.ogg",
+   "v_ja": "res://assets/voice/start_7355aa34.ja.ogg"
+  },
+  {
+   "id": "start_25a425f6",
+   "src": 134,
+   "label": "start",
+   "who": "elena",
+   "en": "He did nothing. He was paid to leave. The signature on the receipt is not the Dean's.",
+   "ja": "何もしていない。彼は金を払われ、去った。領収書の署名は、学長のものではない。",
+   "v_en": "res://assets/voice/start_25a425f6.ogg",
+   "v_ja": "res://assets/voice/start_25a425f6.ja.ogg"
+  },
+  {
+   "id": "start_b2876ad0",
+   "src": 136,
+   "label": "start",
+   "who": "narrator",
+   "en": "She stops there. Whatever that signature says, she has decided you have not earned it yet.",
+   "ja": "彼女はそこで止める。その署名が何を語るにせよ、あなたにはまだその資格がないと、彼女は決めたのだ。",
+   "v_en": "res://assets/voice/start_b2876ad0.ogg",
+   "v_ja": "res://assets/voice/start_b2876ad0.ja.ogg"
+  },
+  {
+   "id": "start_d4e4c779",
+   "src": 137,
+   "label": "start",
+   "who": "narrator",
+   "en": "The phone on the crate lights up. Upload complete.",
+   "ja": "木箱の上の電話が光る。アップロード完了。",
+   "v_en": "res://assets/voice/start_d4e4c779.ogg",
+   "v_ja": "res://assets/voice/start_d4e4c779.ja.ogg"
+  },
+  {
+   "id": "route_control_c9155ec7",
+   "src": 166,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "The ledger is heavier than the key. You tuck it under one arm and do not open it.",
+   "ja": "帳簿は鍵よりも重い。あなたはそれを片腕に抱え、開かない。",
+   "v_en": "res://assets/voice/route_control_c9155ec7.ogg",
+   "v_ja": "res://assets/voice/route_control_c9155ec7.ja.ogg"
+  },
+  {
+   "id": "route_control_4f5eefa9",
+   "src": 168,
+   "label": "route_control",
+   "who": "elena",
+   "en": "Give it back.",
+   "ja": "返せ。",
+   "v_en": "res://assets/voice/route_control_4f5eefa9.ogg",
+   "v_ja": "res://assets/voice/route_control_4f5eefa9.ja.ogg"
+  },
+  {
+   "id": "route_control_651b22e0",
+   "src": 170,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "No.",
+   "ja": "いや。",
+   "v_en": "res://assets/voice/route_control_651b22e0.ogg",
+   "v_ja": "res://assets/voice/route_control_651b22e0.ja.ogg"
+  },
+  {
+   "id": "route_control_51b9b7f4",
+   "src": 171,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "You are a postgraduate who broke into a sealed vault and photographed restricted material. I am the man holding the only copy and the only key.",
+   "ja": "君は封鎖された金庫に侵入し、機密資料を撮影した大学院生だ。俺は、その唯一のコピーと唯一の鍵を握る男だ。",
+   "v_en": "res://assets/voice/route_control_51b9b7f4.ogg",
+   "v_ja": "res://assets/voice/route_control_51b9b7f4.ja.ogg"
+  },
+  {
+   "id": "route_control_363b8d06",
+   "src": 172,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "So we are going to talk about what happens next, and you are going to listen first.",
+   "ja": "だから、これからどうなるか、話し合う。そして、まず君が聞くんだ。",
+   "v_en": "res://assets/voice/route_control_363b8d06.ogg",
+   "v_ja": "res://assets/voice/route_control_363b8d06.ja.ogg"
+  },
+  {
+   "id": "route_control_b7fa59a3",
+   "src": 174,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "She does not cry. You had half expected it. She folds her arms and waits with her chin up, which is worse.",
+   "ja": "彼女は泣かない。半ば予想していたのだが。腕を組み、顎を上げて待つ。そのほうが厄介だ。",
+   "v_en": "res://assets/voice/route_control_b7fa59a3.ogg",
+   "v_ja": "res://assets/voice/route_control_b7fa59a3.ja.ogg"
+  },
+  {
+   "id": "route_control_532078cd",
+   "src": 176,
+   "label": "route_control",
+   "who": "elena",
+   "en": "Then talk.",
+   "ja": "話せ。",
+   "v_en": "res://assets/voice/route_control_532078cd.ogg",
+   "v_ja": "res://assets/voice/route_control_532078cd.ja.ogg"
+  },
+  {
+   "id": "route_control_14b3b1ec",
+   "src": 178,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "The photographs get deleted. Tonight, in front of me.",
+   "ja": "写真は削除される。今夜、俺の前でだ。",
+   "v_en": "res://assets/voice/route_control_14b3b1ec.ogg",
+   "v_ja": "res://assets/voice/route_control_14b3b1ec.ja.ogg"
+  },
+  {
+   "id": "route_control_fef31b57",
+   "src": 179,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "The ledger stays with me. Not the Dean. Me.",
+   "ja": "帳簿は俺が持つ。学長ではない。俺がだ。",
+   "v_en": "res://assets/voice/route_control_fef31b57.ogg",
+   "v_ja": "res://assets/voice/route_control_fef31b57.ja.ogg"
+  },
+  {
+   "id": "route_control_b40ae6ac",
+   "src": 180,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "And you keep working for me. Every evening. In here.",
+   "ja": "そして、君は俺のために働き続ける。毎晩。ここで。",
+   "v_en": "res://assets/voice/route_control_b40ae6ac.ogg",
+   "v_ja": "res://assets/voice/route_control_b40ae6ac.ja.ogg"
+  },
+  {
+   "id": "route_control_c1f7fef7",
+   "src": 182,
+   "label": "route_control",
+   "who": "elena",
+   "en": "That isn't a job. That's a leash.",
+   "ja": "「それは仕事じゃない。首輪です」",
+   "v_en": "res://assets/voice/route_control_c1f7fef7.ogg",
+   "v_ja": "res://assets/voice/route_control_c1f7fef7.ja.ogg"
+  },
+  {
+   "id": "route_control_414f024d",
+   "src": 184,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "It is the only arrangement where your name stays in that book and you stay in this school. Choose.",
+   "ja": "貴方の名が帳簿に残り、この学校に留まる。唯一の取り決めだ。選べ。",
+   "v_en": "res://assets/voice/route_control_414f024d.ogg",
+   "v_ja": "res://assets/voice/route_control_414f024d.ja.ogg"
+  },
+  {
+   "id": "route_control_e39d760b",
+   "src": 186,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "She looks at the phone. Then at the door you closed. Then at you, and stays there, doing arithmetic you are not invited to.",
+   "ja": "彼女は携帯を見る。次にあなたが閉めた扉を。それからあなたを見て、そのまま、あなたには立ち入れない計算を続ける。",
+   "v_en": "res://assets/voice/route_control_e39d760b.ogg",
+   "v_ja": "res://assets/voice/route_control_e39d760b.ja.ogg"
+  },
+  {
+   "id": "route_control_55312f96",
+   "src": 191,
+   "label": "route_control",
+   "who": "elena",
+   "en": "Delete them yourself. I'm not doing it for you.",
+   "ja": "「ご自分で消してください。あなたのためになんてやりません」",
+   "v_en": "res://assets/voice/route_control_55312f96.ogg",
+   "v_ja": "res://assets/voice/route_control_55312f96.ja.ogg"
+  },
+  {
+   "id": "route_control_e86c46e0",
+   "src": 193,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "You pick up the phone. Thirty-two photographs of a book you now own. You hold the button until the gallery is empty.",
+   "ja": "貴方は電話を手に取る。今や貴方のものとなった帳簿の、三十二枚の写真。ギャラリーが空になるまで、ボタンを押し続ける。",
+   "v_en": "res://assets/voice/route_control_e86c46e0.ogg",
+   "v_ja": "res://assets/voice/route_control_e86c46e0.ja.ogg"
+  },
+  {
+   "id": "route_control_1bef14fa",
+   "src": 194,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "When you look up, she has taken her glasses off and is drying them on the hem of her blouse.",
+   "ja": "顔を上げると、彼女は眼鏡を外して、ブラウスの裾で水滴を拭っている。",
+   "v_en": "res://assets/voice/route_control_1bef14fa.ogg",
+   "v_ja": "res://assets/voice/route_control_1bef14fa.ja.ogg"
+  },
+  {
+   "id": "route_control_bd4330d7",
+   "src": 195,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "It should not be the thing you notice. It is.",
+   "ja": "気付くべきことではない。だが、貴方はそれに気付く。",
+   "v_en": "res://assets/voice/route_control_bd4330d7.ogg",
+   "v_ja": "res://assets/voice/route_control_bd4330d7.ja.ogg"
+  },
+  {
+   "id": "route_control_14a9f716",
+   "src": 201,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "She comes. Slowly, so it is clear she is choosing each step.",
+   "ja": "彼女が来る。ゆっくりと。一歩一歩、選ぶように。",
+   "v_en": "res://assets/voice/route_control_14a9f716.ogg",
+   "v_ja": "res://assets/voice/route_control_14a9f716.ja.ogg"
+  },
+  {
+   "id": "route_control_39eff84b",
+   "src": 205,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "You cross to her. It costs you something to be the one who moves. She sees the cost, and files it.",
+   "ja": "あなたのほうから歩み寄る。先に動く側になるのは、それなりの代償だ。彼女はその代償を見て取り、書き留める。",
+   "v_en": "res://assets/voice/route_control_39eff84b.ogg",
+   "v_ja": "res://assets/voice/route_control_39eff84b.ja.ogg"
+  },
+  {
+   "id": "route_control_1edbd923",
+   "src": 210,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "Close enough that the lamp is behind you and she is standing in your shadow.",
+   "ja": "ランプが貴方の背後にあるほど近く。彼女は貴方の影の中に立つ。",
+   "v_en": "res://assets/voice/route_control_1edbd923.ogg",
+   "v_ja": "res://assets/voice/route_control_1edbd923.ja.ogg"
+  },
+  {
+   "id": "route_control_74cfb1be",
+   "src": 212,
+   "label": "route_control",
+   "who": "elena",
+   "en": "Is this part of the arrangement, Professor?",
+   "ja": "これも取り決めの一部ですか、教授？",
+   "v_en": "res://assets/voice/route_control_74cfb1be.ogg",
+   "v_ja": "res://assets/voice/route_control_74cfb1be.ja.ogg"
+  },
+  {
+   "id": "route_control_5c44df8b",
+   "src": 214,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "Only if you want it to be. The ledger does not care either way.",
+   "ja": "貴方が望むなら、そうなる。帳簿はどちらでも構わない。",
+   "v_en": "res://assets/voice/route_control_5c44df8b.ogg",
+   "v_ja": "res://assets/voice/route_control_5c44df8b.ja.ogg"
+  },
+  {
+   "id": "route_control_498c14fa",
+   "src": 216,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "She thinks about it, and lets you watch her think about it. Then she puts her glasses in your breast pocket and does not take her hand back.",
+   "ja": "彼女は考える。そして、考えているところをあなたに見せる。それから眼鏡をあなたの胸ポケットに差し込み、手を引っ込めない。",
+   "v_en": "res://assets/voice/route_control_498c14fa.ogg",
+   "v_ja": "res://assets/voice/route_control_498c14fa.ja.ogg"
+  },
+  {
+   "id": "route_control_514ee793",
+   "src": 218,
+   "label": "route_control",
+   "who": "elena",
+   "en": "Then yes. But I want something.",
+   "ja": "ならば、ええ。しかし、私も望むものがある。",
+   "v_en": "res://assets/voice/route_control_514ee793.ogg",
+   "v_ja": "res://assets/voice/route_control_514ee793.ja.ogg"
+  },
+  {
+   "id": "route_control_6d322ae8",
+   "src": 219,
+   "label": "route_control",
+   "who": "elena",
+   "en": "Page fourteen. Not tonight. But before the end of term, you show me the signature.",
+   "ja": "十四ページ。今夜ではない。だが、学期末までに、貴方は私に署名を見せる。",
+   "v_en": "res://assets/voice/route_control_6d322ae8.ogg",
+   "v_ja": "res://assets/voice/route_control_6d322ae8.ja.ogg"
+  },
+  {
+   "id": "route_control_da8b8bd1",
+   "src": 221,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "Before the end of term.",
+   "ja": "学期末までに。",
+   "v_en": "res://assets/voice/route_control_da8b8bd1.ogg",
+   "v_ja": "res://assets/voice/route_control_da8b8bd1.ja.ogg"
+  },
+  {
+   "id": "route_control_6f848d51",
+   "src": 223,
+   "label": "route_control",
+   "who": "elena",
+   "en": "Say it properly.",
+   "ja": "きちんと口に出せ。",
+   "v_en": "res://assets/voice/route_control_6f848d51.ogg",
+   "v_ja": "res://assets/voice/route_control_6f848d51.ja.ogg"
+  },
+  {
+   "id": "route_control_56a42fe5",
+   "src": 225,
+   "label": "route_control",
+   "who": "protagonist",
+   "en": "Before the end of term, I show you page fourteen.",
+   "ja": "学期末までに、私は貴方に十四ページを見せる。",
+   "v_en": "res://assets/voice/route_control_56a42fe5.ogg",
+   "v_ja": "res://assets/voice/route_control_56a42fe5.ja.ogg"
+  },
+  {
+   "id": "route_control_11df3e67",
+   "src": 227,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "She nods once, like a woman closing a deal. Then she kisses you, and it is not like a woman closing anything.",
+   "ja": "彼女は一度うなずく。取引をまとめる女のうなずき方で。それから口づけてくる。そちらは、何かをまとめる女のやり方ではまったくない。",
+   "v_en": "res://assets/voice/route_control_11df3e67.ogg",
+   "v_ja": "res://assets/voice/route_control_11df3e67.ja.ogg"
+  },
+  {
+   "id": "route_control_2f419d35",
+   "src": 237,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "The blazer goes first, over the back of the reading chair. She undoes her own blouse because she does not want to be undone.",
+   "ja": "まず、ブレザーが読書椅子の背にかけられる。彼女は自分のブラウスを解く。貴方に解かれることを望まないからだ。",
+   "v_en": "res://assets/voice/route_control_2f419d35.ogg",
+   "v_ja": "res://assets/voice/route_control_2f419d35.ja.ogg"
+  },
+  {
+   "id": "route_control_a7aa87d7",
+   "src": 238,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "You lift her onto the crate that held the ledger. The wood creaks. She laughs into your mouth at the sound, and then stops laughing.",
+   "ja": "あなたは台帳の入っていた木箱に彼女を抱え上げる。木がきしむ。彼女はその音にあなたの口の中で笑い、それから笑うのをやめる。",
+   "v_en": "res://assets/voice/route_control_a7aa87d7.ogg",
+   "v_ja": "res://assets/voice/route_control_a7aa87d7.ja.ogg"
+  },
+  {
+   "id": "route_control_213de5e0",
+   "src": 239,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "Her thighs are cold from the rain and warm underneath. When you push her skirt up she puts her heels against the crate lid and lets you.",
+   "ja": "彼女の太ももは雨で冷え、その下は熱い。スカートを押し上げると、彼女は木箱の蓋に踵を立て、されるがままになる。",
+   "v_en": "res://assets/voice/route_control_213de5e0.ogg",
+   "v_ja": "res://assets/voice/route_control_213de5e0.ja.ogg"
+  },
+  {
+   "id": "route_control_088504a1",
+   "src": 240,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "She is wet before you touch her. She tells you so, quietly, as if it were a fact about the weather.",
+   "ja": "触れる前から、彼女は濡れている。天気の話でもするように、静かにそう告げる。",
+   "v_en": "res://assets/voice/route_control_088504a1.ogg",
+   "v_ja": "res://assets/voice/route_control_088504a1.ja.ogg"
+  },
+  {
+   "id": "route_control_c6ec016a",
+   "src": 241,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "You take her there, on the crate, with the door locked and the rain going on outside like nothing is happening.",
+   "ja": "ドアは施錠され、外では何事もなかったかのように雨が降り続く。木箱の上で、彼女を抱く。",
+   "v_en": "res://assets/voice/route_control_c6ec016a.ogg",
+   "v_ja": "res://assets/voice/route_control_c6ec016a.ja.ogg"
+  },
+  {
+   "id": "route_control_a4732111",
+   "src": 242,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "She holds your collar in both hands and does not close her eyes. Every time you slow down she says your name — not Professor, your name — until you stop slowing down.",
+   "ja": "彼女は両手であなたの襟を掴み、目を閉じない。あなたが動きを緩めるたび、彼女はあなたの名を呼ぶ——教授ではなく、名前を——あなたが緩めるのをやめるまで。",
+   "v_en": "res://assets/voice/route_control_a4732111.ogg",
+   "v_ja": "res://assets/voice/route_control_a4732111.ja.ogg"
+  },
+  {
+   "id": "route_control_3bf528c8",
+   "src": 243,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "When she comes it is with her forehead against your shoulder and her teeth in your shirt, and she stays like that a long time after.",
+   "ja": "達するとき、彼女は額をあなたの肩に押しつけ、シャツを噛んでいる。そしてそのまま、長いあいだ動かない。",
+   "v_en": "res://assets/voice/route_control_3bf528c8.ogg",
+   "v_ja": "res://assets/voice/route_control_3bf528c8.ja.ogg"
+  },
+  {
+   "id": "route_control_617ef08a",
+   "src": 244,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "You finish inside her because she tells you to, and because by then you would have done anything she told you to.",
+   "ja": "彼女がそうしろと言うから、あなたは彼女の中で果てる。その時までに、あなたは彼女の言うことなら何でも聞いただろうから。",
+   "v_en": "res://assets/voice/route_control_617ef08a.ogg",
+   "v_ja": "res://assets/voice/route_control_617ef08a.ja.ogg"
+  },
+  {
+   "id": "route_control_f9cfe447",
+   "src": 245,
+   "label": "route_control",
+   "who": "narrator",
+   "en": "The radiator ticks. Neither of you says anything clever.",
+   "ja": "ラジエーターが音を立てる。どちらも気の利いた言葉は口にしない。",
+   "v_en": "res://assets/voice/route_control_f9cfe447.ogg",
+   "v_ja": "res://assets/voice/route_control_f9cfe447.ja.ogg"
+  },
+  {
+   "id": "route_pact_903e61eb",
+   "src": 261,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "Your hand on hers. The cover between you. She does not pull away, and she does not let go either.",
+   "ja": "あなたの手が、彼女の手に。二人の間にはシーツ。彼女は手を引かず、離しもしない。",
+   "v_en": "res://assets/voice/route_pact_903e61eb.ogg",
+   "v_ja": "res://assets/voice/route_pact_903e61eb.ja.ogg"
+  },
+  {
+   "id": "route_pact_e8dde90f",
+   "src": 263,
+   "label": "route_pact",
+   "who": "elena",
+   "en": "If you look, you can't unlook.",
+   "ja": "「見てしまったら、見なかったことにはできませんよ」",
+   "v_en": "res://assets/voice/route_pact_e8dde90f.ogg",
+   "v_ja": "res://assets/voice/route_pact_e8dde90f.ja.ogg"
+  },
+  {
+   "id": "route_pact_2472e7fa",
+   "src": 265,
+   "label": "route_pact",
+   "who": "protagonist",
+   "en": "I have spent twenty years in rooms full of things I cannot unlook. Open it.",
+   "ja": "私は二十年間、見なかったことにはできないものばかりの部屋で過ごしてきた。開けろ。",
+   "v_en": "res://assets/voice/route_pact_2472e7fa.ogg",
+   "v_ja": "res://assets/voice/route_pact_2472e7fa.ja.ogg"
+  },
+  {
+   "id": "route_pact_da06e7dc",
+   "src": 267,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "She opens it to fourteen without checking the number. Her hands already know the page.",
+   "ja": "彼女はページ番号を確かめずに十四ページを開く。手のほうがもう覚えている。",
+   "v_en": "res://assets/voice/route_pact_da06e7dc.ogg",
+   "v_ja": "res://assets/voice/route_pact_da06e7dc.ja.ogg"
+  },
+  {
+   "id": "route_pact_978b8ba6",
+   "src": 268,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "Ashcombe. A sum with four zeros. A date. A line through all of it in a different ink.",
+   "ja": "アッシュコム。ゼロが四つ並ぶ金額。日付。それらすべてを、別のインクで引かれた線。",
+   "v_en": "res://assets/voice/route_pact_978b8ba6.ogg",
+   "v_ja": "res://assets/voice/route_pact_978b8ba6.ja.ogg"
+  },
+  {
+   "id": "route_pact_fa6a080c",
+   "src": 269,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "And under the line, where a receipt would be countersigned, a signature you have written ten thousand times.",
+   "ja": "そしてその線の下、領収書なら副署がされるであろう場所に、あなたがこれまで一万回書いてきた署名。",
+   "v_en": "res://assets/voice/route_pact_fa6a080c.ogg",
+   "v_ja": "res://assets/voice/route_pact_fa6a080c.ja.ogg"
+  },
+  {
+   "id": "route_pact_9ac2ae1d",
+   "src": 271,
+   "label": "route_pact",
+   "who": "protagonist",
+   "en": "That is my hand.",
+   "ja": "それは私の筆跡だ。",
+   "v_en": "res://assets/voice/route_pact_9ac2ae1d.ogg",
+   "v_ja": "res://assets/voice/route_pact_9ac2ae1d.ja.ogg"
+  },
+  {
+   "id": "route_pact_045b58d0",
+   "src": 273,
+   "label": "route_pact",
+   "who": "elena",
+   "en": "Yes.",
+   "ja": "ええ。",
+   "v_en": "res://assets/voice/route_pact_045b58d0.ogg",
+   "v_ja": "res://assets/voice/route_pact_045b58d0.ja.ogg"
+  },
+  {
+   "id": "route_pact_1b02ea3b",
+   "src": 275,
+   "label": "route_pact",
+   "who": "protagonist",
+   "en": "I was twenty-six. I was the department's junior archivist. I countersigned whatever the Dean's office put on my desk.",
+   "ja": "私は二十六だった。学科の若手記録係だった。学部長室が私の机に置いたものなら、何でも副署した。",
+   "v_en": "res://assets/voice/route_pact_1b02ea3b.ogg",
+   "v_ja": "res://assets/voice/route_pact_1b02ea3b.ja.ogg"
+  },
+  {
+   "id": "route_pact_c93bc06b",
+   "src": 276,
+   "label": "route_pact",
+   "who": "protagonist",
+   "en": "I did not read them.",
+   "ja": "読まなかった。",
+   "v_en": "res://assets/voice/route_pact_c93bc06b.ogg",
+   "v_ja": "res://assets/voice/route_pact_c93bc06b.ja.ogg"
+  },
+  {
+   "id": "route_pact_b93a254c",
+   "src": 278,
+   "label": "route_pact",
+   "who": "elena",
+   "en": "I know. I checked. You countersigned eleven that year. Nine are ordinary. Two are like mine.",
+   "ja": "知っている。確認した。その年、あなたは十一件に副署している。九件は普通のものだ。二件は、私と同じようなもの。",
+   "v_en": "res://assets/voice/route_pact_b93a254c.ogg",
+   "v_ja": "res://assets/voice/route_pact_b93a254c.ja.ogg"
+  },
+  {
+   "id": "route_pact_99bb6a90",
+   "src": 279,
+   "label": "route_pact",
+   "who": "elena",
+   "en": "I didn't come here to ruin you, Professor. I came to find out whether you knew.",
+   "ja": "「あなたを潰しに来たんじゃありません、教授。あなたが知っていたのかどうかを、確かめに来たんです」",
+   "v_en": "res://assets/voice/route_pact_99bb6a90.ogg",
+   "v_ja": "res://assets/voice/route_pact_99bb6a90.ja.ogg"
+  },
+  {
+   "id": "route_pact_b54a9fd1",
+   "src": 281,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "She takes her hand out from under yours. Then, after a moment, puts it back on top.",
+   "ja": "彼女はあなたの手の下から手を抜く。そして少し間を置いて、今度は上に重ねる。",
+   "v_en": "res://assets/voice/route_pact_b54a9fd1.ogg",
+   "v_ja": "res://assets/voice/route_pact_b54a9fd1.ja.ogg"
+  },
+  {
+   "id": "route_pact_6e1ec7bc",
+   "src": 283,
+   "label": "route_pact",
+   "who": "elena",
+   "en": "You didn't know. I can see it. That's the first good thing that's happened to me in this building in two years.",
+   "ja": "「知らなかったんですね。見ればわかります。この二年、この建物で私に起きた最初の良いことです」",
+   "v_en": "res://assets/voice/route_pact_6e1ec7bc.ogg",
+   "v_ja": "res://assets/voice/route_pact_6e1ec7bc.ja.ogg"
+  },
+  {
+   "id": "route_pact_4f41c816",
+   "src": 288,
+   "label": "route_pact",
+   "who": "protagonist",
+   "en": "Then here is what happens. The ledger does not go to the Dean, and it does not go to the incinerator.",
+   "ja": "では、こうする。帳簿は学部長には渡さない。焼却炉にも入れない。",
+   "v_en": "res://assets/voice/route_pact_4f41c816.ogg",
+   "v_ja": "res://assets/voice/route_pact_4f41c816.ja.ogg"
+  },
+  {
+   "id": "route_pact_9475a612",
+   "src": 289,
+   "label": "route_pact",
+   "who": "protagonist",
+   "en": "We keep it. We find the other name. And when we know who wrote the line through your family, we decide together what it costs him.",
+   "ja": "私たちが保管する。もう一人の名前を探す。そして、君の家族に線を引いたのが誰か分かった時、その代償を共に決める。",
+   "v_en": "res://assets/voice/route_pact_9475a612.ogg",
+   "v_ja": "res://assets/voice/route_pact_9475a612.ja.ogg"
+  },
+  {
+   "id": "route_pact_f44591a5",
+   "src": 291,
+   "label": "route_pact",
+   "who": "elena",
+   "en": "That is conspiracy, Professor.",
+   "ja": "それは共謀罪ですよ、教授。",
+   "v_en": "res://assets/voice/route_pact_f44591a5.ogg",
+   "v_ja": "res://assets/voice/route_pact_f44591a5.ja.ogg"
+  },
+  {
+   "id": "route_pact_c7b980a3",
+   "src": 293,
+   "label": "route_pact",
+   "who": "protagonist",
+   "en": "It is research. With a smaller reading group.",
+   "ja": "研究よ。少人数の読書会ね。",
+   "v_en": "res://assets/voice/route_pact_c7b980a3.ogg",
+   "v_ja": "res://assets/voice/route_pact_c7b980a3.ja.ogg"
+  },
+  {
+   "id": "route_pact_0c36e5aa",
+   "src": 295,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "She laughs properly this time, and takes her glasses off to wipe her eyes, and does not put them back on.",
+   "ja": "今度は、きちんと笑う。眼鏡を外して目を拭う。そして、かけ直さない。",
+   "v_en": "res://assets/voice/route_pact_0c36e5aa.ogg",
+   "v_ja": "res://assets/voice/route_pact_0c36e5aa.ja.ogg"
+  },
+  {
+   "id": "route_pact_806eee5e",
+   "src": 301,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "She does not move.",
+   "ja": "彼女は動かない。",
+   "v_en": "res://assets/voice/route_pact_806eee5e.ogg",
+   "v_ja": "res://assets/voice/route_pact_806eee5e.ja.ogg"
+  },
+  {
+   "id": "route_pact_cfdb7d41",
+   "src": 302,
+   "label": "route_pact",
+   "who": "elena",
+   "en": "I've been alone with this for two years, Vance. I'm not going home tonight to be alone with it again.",
+   "ja": "「二年間、私はこれと二人きりでした、ヴァンス。今夜また一人でこれと過ごすために帰るつもりはありません」",
+   "v_en": "res://assets/voice/route_pact_cfdb7d41.ogg",
+   "v_ja": "res://assets/voice/route_pact_cfdb7d41.ja.ogg"
+  },
+  {
+   "id": "route_pact_30888043",
+   "src": 303,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "You do not argue. You are not sure you could.",
+   "ja": "あなたは反論しない。できるとも思えない。",
+   "v_en": "res://assets/voice/route_pact_30888043.ogg",
+   "v_ja": "res://assets/voice/route_pact_30888043.ja.ogg"
+  },
+  {
+   "id": "route_pact_b3e1f9a5",
+   "src": 307,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "Her hand stays where the glasses were. Then it finds your wrist.",
+   "ja": "彼女の手は、眼鏡があった場所に留まる。それから、あなたの手首を探る。",
+   "v_en": "res://assets/voice/route_pact_b3e1f9a5.ogg",
+   "v_ja": "res://assets/voice/route_pact_b3e1f9a5.ja.ogg"
+  },
+  {
+   "id": "route_pact_a3ebdf33",
+   "src": 308,
+   "label": "route_pact",
+   "who": "elena",
+   "en": "That's a very old-fashioned way to ask, Professor.",
+   "ja": "「ずいぶん古風な誘い方ですね、教授」",
+   "v_en": "res://assets/voice/route_pact_a3ebdf33.ogg",
+   "v_ja": "res://assets/voice/route_pact_a3ebdf33.ja.ogg"
+  },
+  {
+   "id": "route_pact_226ab759",
+   "src": 309,
+   "label": "route_pact",
+   "who": "protagonist",
+   "en": "It is a very old-fashioned building.",
+   "ja": "随分と古風な建物だから。",
+   "v_en": "res://assets/voice/route_pact_226ab759.ogg",
+   "v_ja": "res://assets/voice/route_pact_226ab759.ja.ogg"
+  },
+  {
+   "id": "route_pact_77e403d8",
+   "src": 311,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "She kisses you first. It is careful for about two seconds.",
+   "ja": "彼女が先にキスをする。二秒ほど、それは慎重だ。",
+   "v_en": "res://assets/voice/route_pact_77e403d8.ogg",
+   "v_ja": "res://assets/voice/route_pact_77e403d8.ja.ogg"
+  },
+  {
+   "id": "route_pact_d7f0eaf2",
+   "src": 321,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "You clear the desk with one arm. Forty-two essays go on the floor and neither of you looks at them.",
+   "ja": "あなたは片腕で机を払う。四十二枚の論文が床に散らばり、二人ともそれを見ない。",
+   "v_en": "res://assets/voice/route_pact_d7f0eaf2.ogg",
+   "v_ja": "res://assets/voice/route_pact_d7f0eaf2.ja.ogg"
+  },
+  {
+   "id": "route_pact_0542afe6",
+   "src": 322,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "She sits on the edge of the desk and pulls you in by the belt. She undoes it while she is still kissing you, and swears softly when the buckle sticks.",
+   "ja": "彼女は机の端に腰かけ、ベルトを掴んであなたを引き寄せる。口づけたまま留め具を外し、引っかかると小さく毒づく。",
+   "v_en": "res://assets/voice/route_pact_0542afe6.ogg",
+   "v_ja": "res://assets/voice/route_pact_0542afe6.ja.ogg"
+  },
+  {
+   "id": "route_pact_3cef4af0",
+   "src": 323,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "Her blouse comes off over her head instead of button by button. Her skin is warm and smells of rain and the cheap soap in the postgraduate bathrooms.",
+   "ja": "ブラウスはボタンを一つずつ外すのではなく、頭から脱がされる。彼女の肌は温かく、雨と大学院の安っぽい石鹸の匂いがする。",
+   "v_en": "res://assets/voice/route_pact_3cef4af0.ogg",
+   "v_ja": "res://assets/voice/route_pact_3cef4af0.ja.ogg"
+  },
+  {
+   "id": "route_pact_e08337c2",
+   "src": 324,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "You go down on your knees on the wet essays. She puts one hand in your hair and the other over her own mouth — then takes it away, because there is nobody left in the building to hear.",
+   "ja": "あなたは濡れたレポートの上に膝をつく。彼女は片手をあなたの髪に、もう片手を自分の口に当て——そして手を離す。この建物にはもう、聞く者が誰も残っていないから。",
+   "v_en": "res://assets/voice/route_pact_e08337c2.ogg",
+   "v_ja": "res://assets/voice/route_pact_e08337c2.ja.ogg"
+  },
+  {
+   "id": "route_pact_590b673b",
+   "src": 325,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "She is loud. The rain is louder. When her legs start to shake she pulls you up by the collar and says now, and means it.",
+   "ja": "彼女は声を上げる。雨音は、それよりも大きい。脚が震え始めると、襟を掴んであなたを引き上げ、『今よ』と言う。そして、それは本心だ。",
+   "v_en": "res://assets/voice/route_pact_590b673b.ogg",
+   "v_ja": "res://assets/voice/route_pact_590b673b.ja.ogg"
+  },
+  {
+   "id": "route_pact_e1a52de8",
+   "src": 326,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "You take her on the desk with her heels locked behind you and the ledger six inches from her head. She watches your face the whole time, the way she reads a page.",
+   "ja": "机の上、彼女の踵をあなたの背に組ませて、頭から十五センチのところに台帳がある。彼女はその間ずっとあなたの顔を見ている。ページを読むときのやり方で。",
+   "v_en": "res://assets/voice/route_pact_e1a52de8.ogg",
+   "v_ja": "res://assets/voice/route_pact_e1a52de8.ja.ogg"
+  },
+  {
+   "id": "route_pact_f14ccda7",
+   "src": 327,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "She comes with your name in her mouth and her nails in your back. You follow her a minute later, inside her, because she holds you there and says stay.",
+   "ja": "彼女はあなたの名を口にし、爪をあなたの背中に食い込ませて、果てる。あなたは一分後、彼女の中で、後に続く。彼女があなたをそこに留め、『離れないで』と言うからだ。",
+   "v_en": "res://assets/voice/route_pact_f14ccda7.ogg",
+   "v_ja": "res://assets/voice/route_pact_f14ccda7.ja.ogg"
+  },
+  {
+   "id": "route_pact_c3a70ea5",
+   "src": 328,
+   "label": "route_pact",
+   "who": "narrator",
+   "en": "Afterwards she lies across the desk with her hair over page fourteen and says, to the ceiling, that she has wanted to do that since October.",
+   "ja": "その後、彼女は机に横たわる。髪は14ページを覆う。天井に向かって、10月からずっとそうしたかった、と告げる。",
+   "v_en": "res://assets/voice/route_pact_c3a70ea5.ogg",
+   "v_ja": "res://assets/voice/route_pact_c3a70ea5.ja.ogg"
+  },
+  {
+   "id": "route_walk_away_96e2af29",
+   "src": 341,
+   "label": "route_walk_away",
+   "who": "narrator",
+   "en": "You open the door. The corridor is orange and empty.",
+   "ja": "ドアを開ける。廊下はオレンジ色で、誰もいない。",
+   "v_en": "res://assets/voice/route_walk_away_96e2af29.ogg",
+   "v_ja": "res://assets/voice/route_walk_away_96e2af29.ja.ogg"
+  },
+  {
+   "id": "route_walk_away_317fa108",
+   "src": 343,
+   "label": "route_walk_away",
+   "who": "elena",
+   "en": "That is it?",
+   "ja": "それだけか？",
+   "v_en": "res://assets/voice/route_walk_away_317fa108.ogg",
+   "v_ja": "res://assets/voice/route_walk_away_317fa108.ja.ogg"
+  },
+  {
+   "id": "route_walk_away_ba2bc21f",
+   "src": 345,
+   "label": "route_walk_away",
+   "who": "protagonist",
+   "en": "That is it. Take your phone. Leave the book.",
+   "ja": "それだけだ。携帯を持て。本は置いていけ。",
+   "v_en": "res://assets/voice/route_walk_away_ba2bc21f.ogg",
+   "v_ja": "res://assets/voice/route_walk_away_ba2bc21f.ja.ogg"
+  },
+  {
+   "id": "route_walk_away_add77025",
+   "src": 347,
+   "label": "route_walk_away",
+   "who": "narrator",
+   "en": "She puts the ledger on the crate. She takes the phone. At the door she stops without turning around.",
+   "ja": "彼女は台の上に帳簿を置く。携帯を手に取る。ドアのところで、振り返らずに立ち止まる。",
+   "v_en": "res://assets/voice/route_walk_away_add77025.ogg",
+   "v_ja": "res://assets/voice/route_walk_away_add77025.ja.ogg"
+  },
+  {
+   "id": "route_walk_away_4243f551",
+   "src": 349,
+   "label": "route_walk_away",
+   "who": "elena",
+   "en": "Page fourteen, Professor. Read it before the Dean does.",
+   "ja": "14ページよ、教授。学部長が読む前に、読んでおきなさい。",
+   "v_en": "res://assets/voice/route_walk_away_4243f551.ogg",
+   "v_ja": "res://assets/voice/route_walk_away_4243f551.ja.ogg"
+  },
+  {
+   "id": "route_walk_away_aaf452af",
+   "src": 350,
+   "label": "route_walk_away",
+   "who": "elena",
+   "en": "You'll want to know what your handwriting was doing in 1995.",
+   "ja": "「1995年にあなたの筆跡が何をしていたのか、知りたくなるはずです」",
+   "v_en": "res://assets/voice/route_walk_away_aaf452af.ogg",
+   "v_ja": "res://assets/voice/route_walk_away_aaf452af.ja.ogg"
+  },
+  {
+   "id": "route_walk_away_4b611f18",
+   "src": 352,
+   "label": "route_walk_away",
+   "who": "narrator",
+   "en": "Then she is gone. It is 11:58, and the vault is very quiet.",
+   "ja": "そして彼女は行ってしまう。23時58分。書庫はとても静かだ。",
+   "v_en": "res://assets/voice/route_walk_away_4b611f18.ogg",
+   "v_ja": "res://assets/voice/route_walk_away_4b611f18.ja.ogg"
+  },
+  {
+   "id": "route_walk_away_619c73ac",
+   "src": 353,
+   "label": "route_walk_away",
+   "who": "narrator",
+   "en": "You do not read page fourteen. You go back upstairs and mark the forty-second essay, and it takes you an hour, and you cannot remember a word of it.",
+   "ja": "14ページは読まない。上階に戻り、42番目の論文を採点する。1時間かかる。内容は何一つ覚えていない。",
+   "v_en": "res://assets/voice/route_walk_away_619c73ac.ogg",
+   "v_ja": "res://assets/voice/route_walk_away_619c73ac.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_25d2b18d",
+   "src": 375,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "5:30 AM. The rain has stopped. The window is grey and then, slowly, gold.",
+   "ja": "午前5時30分。雨は止んでいる。窓は灰色から、ゆっくりと金色に変わる。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_25d2b18d.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_25d2b18d.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_e82dd1cb",
+   "src": 378,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "Elena is asleep in the reading chair under your coat, her glasses still in your pocket. The ledger is under your hand. You have not opened it.",
+   "ja": "エレナはあなたのコートを掛けられて読書椅子で眠っている。眼鏡はまだあなたのポケットの中だ。台帳はあなたの手の下にある。あなたはそれを開いていない。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_e82dd1cb.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_e82dd1cb.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_148bd445",
+   "src": 379,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "You are not sure any more which of you is holding the leash.",
+   "ja": "もう確信がない。どちらが手綱を握っているのか。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_148bd445.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_148bd445.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_03cc1bd3",
+   "src": 380,
+   "label": "scene_dawn_resolution",
+   "who": "elena",
+   "en": "...Is it morning?",
+   "ja": "…朝？",
+   "v_en": "res://assets/voice/scene_dawn_resolution_03cc1bd3.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_4eb013f4",
+   "src": 381,
+   "label": "scene_dawn_resolution",
+   "who": "protagonist",
+   "en": "Nearly. Go back to sleep.",
+   "ja": "もうすぐだ。眠れ。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_4eb013f4.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_4eb013f4.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_4a80179f",
+   "src": 382,
+   "label": "scene_dawn_resolution",
+   "who": "elena",
+   "en": "Before the end of term, Vance. You said it properly.",
+   "ja": "学期末までに、ヴァンス。ちゃんとそう言ったわね。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_4a80179f.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_4a80179f.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_00fe2e23",
+   "src": 383,
+   "label": "scene_dawn_resolution",
+   "who": "protagonist",
+   "en": "I remember what I said.",
+   "ja": "言ったことは覚えている。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_00fe2e23.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_00fe2e23.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_491ead72",
+   "src": 384,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "She goes back to sleep. You open the ledger to page fourteen, finally, alone, and read the signature under the line.",
+   "ja": "彼女は再び眠りに落ちる。ついに、一人で帳簿の14ページを開き、線の下の署名を読む。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_491ead72.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_491ead72.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_156b1389",
+   "src": 385,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "It is yours.",
+   "ja": "それは、あなたのものだ。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_156b1389.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_156b1389.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_51d670cb",
+   "src": 388,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "Elena is asleep across the desk with your coat over her and her cheek on page fourteen. Your signature is under her ear.",
+   "ja": "エレナは机に横たわって眠っている。あなたのコートが彼女にかかり、頬は14ページの上。あなたの署名は彼女の耳の下にある。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_51d670cb.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_51d670cb.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_8ec2a8cc",
+   "src": 389,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "You have been awake for an hour, reading. There is a second crossed-out name. The line through it is in the same ink as hers.",
+   "ja": "1時間、読書をして起きていた。二つ目の、線で消された名前がある。その線は、彼女のインクと同じだ。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_8ec2a8cc.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_8ec2a8cc.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_ca28ef3b",
+   "src": 390,
+   "label": "scene_dawn_resolution",
+   "who": "elena",
+   "en": "...You are staring.",
+   "ja": "…見つめている。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_ca28ef3b.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_ca28ef3b.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_991c482c",
+   "src": 391,
+   "label": "scene_dawn_resolution",
+   "who": "protagonist",
+   "en": "There is another one. 1996. Same ink.",
+   "ja": "もう一つある。1996年。同じインクだ。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_991c482c.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_991c482c.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_ecc0edde",
+   "src": 392,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "She is awake at once. Glasses on, hair everywhere.",
+   "ja": "彼女は一瞬で目を覚ます。眼鏡をかけ、髪はぼさぼさのまま。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_ecc0edde.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_ecc0edde.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_52220cd5",
+   "src": 393,
+   "label": "scene_dawn_resolution",
+   "who": "elena",
+   "en": "Who?",
+   "ja": "誰が？",
+   "v_en": "res://assets/voice/scene_dawn_resolution_52220cd5.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_52220cd5.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_bf84c31d",
+   "src": 394,
+   "label": "scene_dawn_resolution",
+   "who": "protagonist",
+   "en": "I do not know yet. But I know who countersigned it.",
+   "ja": "まだ分からない。だが、誰が副署したかは知っている。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_bf84c31d.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_bf84c31d.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_35b88360",
+   "src": 395,
+   "label": "scene_dawn_resolution",
+   "who": "elena",
+   "en": "Not you.",
+   "ja": "お前じゃない。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_35b88360.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_35b88360.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_710b8f99",
+   "src": 396,
+   "label": "scene_dawn_resolution",
+   "who": "protagonist",
+   "en": "Not me.",
+   "ja": "私じゃない。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_710b8f99.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_710b8f99.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_a0dad7ad",
+   "src": 397,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "You turn the book so she can read it. She reads it twice. Then she looks at the door, the way she did last night, and this time you understand why.",
+   "ja": "彼女が読めるように本を向ける。彼女は二度読む。それから、昨夜と同じようにドアを見る。今度は、その理由が分かる。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_a0dad7ad.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_a0dad7ad.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_7d7ca31e",
+   "src": 400,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "The reading chair is empty. Your coat is where you left it. The ledger is on the crate with a page turned down at the corner.",
+   "ja": "読書用の椅子は空だ。コートは置いたままだ。台帳は木箱の上にあり、ページの角が折られている。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_7d7ca31e.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_7d7ca31e.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_eb328103",
+   "src": 401,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "You did not turn it down. Fourteen.",
+   "ja": "お前が折ったのではない。十四。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_eb328103.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_eb328103.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_1ab878a1",
+   "src": 402,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "At 6:10 your phone lights up. Unknown number. One line.",
+   "ja": "6時10分、携帯が光る。不明な番号。一行のメッセージ。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_1ab878a1.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_1ab878a1.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_ab36e99b",
+   "src": 403,
+   "label": "scene_dawn_resolution",
+   "who": "elena",
+   "en": "I sent the Dean nothing. Yet. Meet me before nine. E.",
+   "ja": "学部長には何も送っていない。まだだ。9時前に会おう。E。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_ab36e99b.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_ab36e99b.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_d5d59a21",
+   "src": 404,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "You open the ledger, and read your own handwriting under a stranger's name, and understand that she has been protecting you for two years and you have never once asked her why.",
+   "ja": "台帳を開き、見知らぬ名前の下に自分の筆跡を読み、彼女が二年間お前を守ってきたこと、そしてお前が一度もその理由を尋ねたことがないことを理解する。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_d5d59a21.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_d5d59a21.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_f82db064",
+   "src": 406,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "Upstairs, a door closes. Somebody is in the building early.",
+   "ja": "二階で、ドアが閉まる。誰かが早くも建物の中にいる。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_f82db064.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_f82db064.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_27632812",
+   "src": 407,
+   "label": "scene_dawn_resolution",
+   "who": "narrator",
+   "en": "The Dean's office does not open until nine.",
+   "ja": "学部長室は9時まで開かない。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_27632812.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_27632812.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_88a42b5f",
+   "src": 409,
+   "label": "scene_dawn_resolution",
+   "who": "protagonist",
+   "en": "Elena.",
+   "ja": "エレナ。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_88a42b5f.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_88a42b5f.ja.ogg"
+  },
+  {
+   "id": "scene_dawn_resolution_302bf2ad",
+   "src": 410,
+   "label": "scene_dawn_resolution",
+   "who": "protagonist",
+   "en": "Somebody is coming down.",
+   "ja": "誰かが降りてくる。",
+   "v_en": "res://assets/voice/scene_dawn_resolution_302bf2ad.ogg",
+   "v_ja": "res://assets/voice/scene_dawn_resolution_302bf2ad.ja.ogg"
+  }
+ ],
+ "menus": {
+  "\"Put the phone on the crate. Then tell me what that is.\"": "\"携帯を木箱の上に置け。それから、それが何なのか教えろ。\"",
+  "\"You're soaked. Come stand by the lamp before you ruin those pages.\"": "\"ずぶ濡れじゃないか。ページを台無しにする前に、ランプのそばに来い。\"",
+  "Say nothing. Close the vault door behind you and lean on it.": "何も言うな。金庫のドアを閉め、それに寄りかかる。",
+  "The confrontation continues after the sponsor page": "対決はスポンサーページの後も続く。",
+  "Choose her fate after the sponsor page": "スポンサーページの後、彼女の運命を選ぶ。",
+  "Take the ledger out of her arms. Do not let her see you look at page fourteen.": "彼女の腕から帳簿を奪う。十四ページ。彼女に見せるな。",
+  "Put your hand over hers on the cover. \"Show me the signature. Then we decide together.\"": "帳簿の表紙に、彼女の手に自分の手を重ねる。「署名を見せろ。それから、二人で決める。」",
+  "Step back. Open the door. \"Go home, Elena. We never spoke.\"": "後ずさる。ドアを開ける。「帰れ、エレナ。何も話していない。」",
+  "\"Come here.\"": "「ここへ来い。」",
+  "Cross the room to her instead.": "代わりに、部屋を横切り彼女のもとへ向かう。",
+  "\"Elena. Go home. We start tomorrow, in daylight.\"": "「エレナ。帰れ。明日、日の光の下で始める。」",
+  "Take her glasses out of her hand and set them on the ledger.": "彼女の手から眼鏡を取り、帳簿の上に置く。",
+  "Dawn comes after the sponsor page": "スポンサーページの後、夜が明ける。"
+ }
+}

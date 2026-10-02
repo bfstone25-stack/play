@@ -1,0 +1,960 @@
+{
+ "chapter": 5,
+ "lines": [
+  {
+   "id": "chapter_5_52ad4a02",
+   "src": 19,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Chapter 5 — The Strongroom",
+   "ja": "第5章「金庫室」",
+   "v_en": "res://assets/voice/chapter_5_52ad4a02.ogg",
+   "v_ja": "res://assets/voice/chapter_5_52ad4a02.ja.ogg"
+  },
+  {
+   "id": "chapter_5_f763a28c",
+   "src": 22,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Thursday, 10 AM. The cellar under the Blackwood wing, with a man from Estates called Priddy who has a hard hat and no curiosity.",
+   "ja": "木曜日、午前10時。ブラックウッド棟の地下室。資産管理課の男、プリディ。ヘルメットを被り、好奇心は皆無だ。",
+   "v_en": "res://assets/voice/chapter_5_f763a28c.ogg",
+   "v_ja": "res://assets/voice/chapter_5_f763a28c.ja.ogg"
+  },
+  {
+   "id": "chapter_5_ba72efab",
+   "src": 23,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "The 1994 plan says the wall in front of you is a wall. Priddy's meter says it is a door.",
+   "ja": "1994年の図面では、目の前の壁はただの壁だ。プリディの計測器は、それが扉だと言う。",
+   "v_en": "res://assets/voice/chapter_5_ba72efab.ogg",
+   "v_ja": "res://assets/voice/chapter_5_ba72efab.ja.ogg"
+  },
+  {
+   "id": "chapter_5_c753ee7d",
+   "src": 25,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "1:15 AM. The cellar under the Blackwood wing. No Estates man, no hard hat. A crowbar from the coal store and Elena's phone for light.",
+   "ja": "午前1時15分。ブラックウッド棟の地下室。資産管理課の男はいない。ヘルメットもない。石炭庫のバールと、エレナの携帯が明かりだ。",
+   "v_en": "res://assets/voice/chapter_5_c753ee7d.ogg",
+   "v_ja": "res://assets/voice/chapter_5_c753ee7d.ja.ogg"
+  },
+  {
+   "id": "chapter_5_bd5cc8fc",
+   "src": 26,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "The 1994 plan says the wall in front of you is a wall. It rings hollow when she knocks.",
+   "ja": "1994年の図面では、目の前の壁はただの壁だ。彼女が叩くと、空虚な音が響く。",
+   "v_en": "res://assets/voice/chapter_5_bd5cc8fc.ogg",
+   "v_ja": "res://assets/voice/chapter_5_bd5cc8fc.ja.ogg"
+  },
+  {
+   "id": "chapter_5_021d491b",
+   "src": 31,
+   "label": "chapter_5",
+   "who": "elena",
+   "en": "Brick over a door. Same mortar as the coal store. Same month.",
+   "ja": "扉を塞ぐレンガ。石炭庫と同じモルタル。同じ月。",
+   "v_en": "res://assets/voice/chapter_5_021d491b.ogg",
+   "v_ja": "res://assets/voice/chapter_5_021d491b.ja.ogg"
+  },
+  {
+   "id": "chapter_5_e039ac8f",
+   "src": 32,
+   "label": "chapter_5",
+   "who": "protagonist",
+   "en": "Penhallow's men.",
+   "ja": "ペンハローの男たち。",
+   "v_en": "res://assets/voice/chapter_5_e039ac8f.ogg",
+   "v_ja": "res://assets/voice/chapter_5_e039ac8f.ja.ogg"
+  },
+  {
+   "id": "chapter_5_d486ece9",
+   "src": 33,
+   "label": "chapter_5",
+   "who": "elena",
+   "en": "Penhallow's money. The men were ours. Cobb probably carried the bricks.",
+   "ja": "ペンハローの金。男たちは我々のものだった。コブがレンガを運んだのだろう。",
+   "v_en": "res://assets/voice/chapter_5_d486ece9.ogg",
+   "v_ja": "res://assets/voice/chapter_5_d486ece9.ja.ogg"
+  },
+  {
+   "id": "chapter_5_25957888",
+   "src": 35,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "It takes twenty minutes. The bricks come out in a sheet, the way bricks do when the mortar was never meant to last.",
+   "ja": "20分かかる。モルタルが永続を意図されていなかったかのように、レンガは一枚の板のように剥がれ落ちる。",
+   "v_en": "res://assets/voice/chapter_5_25957888.ogg",
+   "v_ja": "res://assets/voice/chapter_5_25957888.ja.ogg"
+  },
+  {
+   "id": "chapter_5_22680071",
+   "src": 36,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Behind them, a steel door with a wheel lock, and a brass plate: {i}Saint Jude Academy — Muniment Room — 1897.{/i}",
+   "ja": "その奥には、ホイールロック式の鋼鉄製の扉。そして真鍮のプレートには、{i}聖ユダ学園 — 文書保管室 — 1897年。{/i}",
+   "v_en": "res://assets/voice/chapter_5_22680071.ogg",
+   "v_ja": "res://assets/voice/chapter_5_22680071.ja.ogg"
+  },
+  {
+   "id": "chapter_5_dda23c3a",
+   "src": 37,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "The wheel turns. Nobody oiled it, and it turns anyway.",
+   "ja": "ホイールが回る。誰も油を差していない。それでも回る。",
+   "v_en": "res://assets/voice/chapter_5_dda23c3a.ogg",
+   "v_ja": "res://assets/voice/chapter_5_dda23c3a.ja.ogg"
+  },
+  {
+   "id": "chapter_5_cd97b48a",
+   "src": 45,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "The room is dry. That is the first surprise. Shelves floor to ceiling, and on the shelves, ledgers. Not one. Sixty. A decade to a spine.",
+   "ja": "部屋は乾いている。それが最初の驚きだ。床から天井までの棚。その棚に並ぶのは台帳。一冊ではない。六十冊。背表紙ひとつが十年分だ。",
+   "v_en": "res://assets/voice/chapter_5_cd97b48a.ogg",
+   "v_ja": "res://assets/voice/chapter_5_cd97b48a.ja.ogg"
+  },
+  {
+   "id": "chapter_5_8c0d28c6",
+   "src": 46,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "The second surprise is the desk in the middle of the room, with a lamp on it that works, and a chair that has been sat in recently.",
+   "ja": "二つ目の驚きは、部屋の中央にある机だ。その上には点灯するランプ。そして、最近座られた形跡のある椅子。",
+   "v_en": "res://assets/voice/chapter_5_8c0d28c6.ogg",
+   "v_ja": "res://assets/voice/chapter_5_8c0d28c6.ja.ogg"
+  },
+  {
+   "id": "chapter_5_806ce0fc",
+   "src": 50,
+   "label": "chapter_5",
+   "who": "elena",
+   "en": "Someone comes down here.",
+   "ja": "誰かがここへ来ている。",
+   "v_en": "res://assets/voice/chapter_5_806ce0fc.ogg",
+   "v_ja": "res://assets/voice/chapter_5_806ce0fc.ja.ogg"
+  },
+  {
+   "id": "chapter_5_9046de15",
+   "src": 51,
+   "label": "chapter_5",
+   "who": "protagonist",
+   "en": "Someone keeps it up to date.",
+   "ja": "誰かがこれを更新している。",
+   "v_en": "res://assets/voice/chapter_5_9046de15.ogg",
+   "v_ja": "res://assets/voice/chapter_5_9046de15.ja.ogg"
+  },
+  {
+   "id": "chapter_5_d8ae8b36",
+   "src": 53,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "You take down 1990 to 1999. It is heavier than the one upstairs. It {i}is{/i} the one upstairs, with the lines filled in.",
+   "ja": "あなたは1990–1999を抜き取る。上階のものより重い。これは上階のものと同じ本で、空欄がすべて埋まっている。",
+   "v_en": "res://assets/voice/chapter_5_d8ae8b36.ogg",
+   "v_ja": "res://assets/voice/chapter_5_d8ae8b36.ja.ogg"
+  },
+  {
+   "id": "chapter_5_1a35d2c5",
+   "src": 54,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Page fourteen. Ashcombe. The sum, the date, and under it, not a line through the name but a paragraph. Who paid. Why. What the man had found in the cellar in 1994, and how much it cost to make him forget he had found it.",
+   "ja": "14ページ。アシュコム。金額、日付。その下には、名前の抹消線ではなく、段落が続く。誰が支払ったか。なぜか。1994年に男が地下室で見つけたもの。そして、それを見つけたことを忘れさせるのにかかった費用。",
+   "v_en": "res://assets/voice/chapter_5_1a35d2c5.ogg",
+   "v_ja": "res://assets/voice/chapter_5_1a35d2c5.ja.ogg"
+  },
+  {
+   "id": "chapter_5_cda34a83",
+   "src": 55,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Elena reads it standing up. When she finishes she does not sit down. She turns the page.",
+   "ja": "エレナは立ったままそれを読む。読み終えても座らない。ページをめくる。",
+   "v_en": "res://assets/voice/chapter_5_cda34a83.ogg",
+   "v_ja": "res://assets/voice/chapter_5_cda34a83.ja.ogg"
+  },
+  {
+   "id": "chapter_5_46c5284e",
+   "src": 57,
+   "label": "chapter_5",
+   "who": "elena",
+   "en": "It goes on. Every name. Every year. Right up to—",
+   "ja": "それは続く。全ての名前。全ての年。そして、—",
+   "v_en": "res://assets/voice/chapter_5_46c5284e.ogg",
+   "v_ja": "res://assets/voice/chapter_5_46c5284e.ja.ogg"
+  },
+  {
+   "id": "chapter_5_a2bafd96",
+   "src": 58,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "She stops.",
+   "ja": "彼女は止まる。",
+   "v_en": "res://assets/voice/chapter_5_a2bafd96.ogg",
+   "v_ja": "res://assets/voice/chapter_5_a2bafd96.ja.ogg"
+  },
+  {
+   "id": "chapter_5_107e101c",
+   "src": 59,
+   "label": "chapter_5",
+   "who": "elena",
+   "en": "Last month.",
+   "ja": "先月。",
+   "v_en": "res://assets/voice/chapter_5_107e101c.ogg",
+   "v_ja": "res://assets/voice/chapter_5_107e101c.ja.ogg"
+  },
+  {
+   "id": "chapter_5_baa254f2",
+   "src": 60,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "The last entry is dated three weeks ago. {i}Lot 41 scheduled. Signing officer: Vance. Assistant: Ashcombe, E. Note: watch.{/i}",
+   "ja": "最後の記録は三週間前のものだ。{i}ロット41、予定。署名責任者：ヴァンス。助手：アシュコム、E。備考：監視せよ。{/i}",
+   "v_en": "res://assets/voice/chapter_5_baa254f2.ogg",
+   "v_ja": "res://assets/voice/chapter_5_baa254f2.ja.ogg"
+  },
+  {
+   "id": "chapter_5_81b21a6d",
+   "src": 61,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "In the Dean's hand.",
+   "ja": "学長の筆跡だ。",
+   "v_en": "res://assets/voice/chapter_5_81b21a6d.ogg",
+   "v_ja": "res://assets/voice/chapter_5_81b21a6d.ja.ogg"
+  },
+  {
+   "id": "chapter_5_160690d6",
+   "src": 65,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Above you, a door. Then the stair.",
+   "ja": "頭上には扉。その先に階段。",
+   "v_en": "res://assets/voice/chapter_5_160690d6.ogg",
+   "v_ja": "res://assets/voice/chapter_5_160690d6.ja.ogg"
+  },
+  {
+   "id": "chapter_5_14e91b0c",
+   "src": 68,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Priddy looks up from his meter. \"That'll be the Dean, Professor. She said she might look in.\"",
+   "ja": "プリディがメーターから顔を上げる。「あれは学長でしょう、教授。立ち寄るかもしれないと仰っていましたから。」",
+   "v_en": "res://assets/voice/chapter_5_14e91b0c.ogg",
+   "v_ja": "res://assets/voice/chapter_5_14e91b0c.ja.ogg"
+  },
+  {
+   "id": "chapter_5_38605e7c",
+   "src": 69,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "She said. Of course she said. The survey was never a trap for you. It was an appointment.",
+   "ja": "彼女は言った。もちろん、そう言った。調査は決してあなたを陥れる罠ではなかった。それは約束だったのだ。",
+   "v_en": "res://assets/voice/chapter_5_38605e7c.ogg",
+   "v_ja": "res://assets/voice/chapter_5_38605e7c.ja.ogg"
+  },
+  {
+   "id": "chapter_5_c3f7b727",
+   "src": 71,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Two sets of footsteps. One in heels. One in the kind of shoes money walks in.",
+   "ja": "二組の足音。一つはヒール。もう一つは、金が歩くような靴の音。",
+   "v_en": "res://assets/voice/chapter_5_c3f7b727.ogg",
+   "v_ja": "res://assets/voice/chapter_5_c3f7b727.ja.ogg"
+  },
+  {
+   "id": "chapter_5_3ac9c01b",
+   "src": 78,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Dean Holloway. And behind her, filling the doorway, Julian Penhallow, looking around the muniment room the way a man looks around a house he has already sold.",
+   "ja": "ホロウェイ学部長。その後ろ、戸口を塞いでいるのはジュリアン・ペンハロウ。すでに売却済みの家を見て回る男の目で、文書保管室を見渡している。",
+   "v_en": "res://assets/voice/chapter_5_3ac9c01b.ogg",
+   "v_ja": "res://assets/voice/chapter_5_3ac9c01b.ja.ogg"
+  },
+  {
+   "id": "chapter_5_36064920",
+   "src": 79,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "\"Professor,\" the Dean says. \"Miss Ashcombe. You found it faster than your father did. He needed a year.\"",
+   "ja": "「教授」学長が言う。「アシュコムさん。あなたは、お父様よりも早く見つけましたね。彼には一年かかったのに。」",
+   "v_en": "res://assets/voice/chapter_5_36064920.ogg",
+   "v_ja": "res://assets/voice/chapter_5_36064920.ja.ogg"
+  },
+  {
+   "id": "chapter_5_8e4c89c6",
+   "src": 80,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Penhallow: \"And a good deal more money to un-find it. Which is where we are now.\"",
+   "ja": "ペンハロー：「そして、それを見つけないようにするためには、もっと多くの金が必要だ。それが今の我々の状況だ。」",
+   "v_en": "res://assets/voice/chapter_5_8e4c89c6.ogg",
+   "v_ja": "res://assets/voice/chapter_5_8e4c89c6.ja.ogg"
+  },
+  {
+   "id": "chapter_5_a7a1f62e",
+   "src": 82,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Nobody moves. Elena's hand finds the 1990 ledger and stays there.",
+   "ja": "誰も動かない。エレナの手が1990年の台帳を見つけ、そこから離れない。",
+   "v_en": "res://assets/voice/chapter_5_a7a1f62e.ogg",
+   "v_ja": "res://assets/voice/chapter_5_a7a1f62e.ja.ogg"
+  },
+  {
+   "id": "chapter_5_18a64ccf",
+   "src": 84,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Penhallow: \"Here is what happens. The room is re-sealed on Monday. The 1990s volume goes upstairs into Professor Vance's keeping, as the new Dean's private archive. Miss Ashcombe's name is restored to the donor roll with a scholarship in her father's memory, generously endowed. Everybody goes home.\"",
+   "ja": "ペンハロー：「こうなる。月曜にはこの部屋は再び封鎖される。1990年代の巻は、新しい学長の個人アーカイブとして、ヴァンス教授の管理下に置かれる。アシュコムさんの名前は、彼女の父親を記念し、惜しみなく寄付された奨学金と共に、寄付者名簿に復元される。皆、家に帰る。」",
+   "v_en": "res://assets/voice/chapter_5_18a64ccf.ogg",
+   "v_ja": "res://assets/voice/chapter_5_18a64ccf.ja.ogg"
+  },
+  {
+   "id": "chapter_5_10b4e6a1",
+   "src": 85,
+   "label": "chapter_5",
+   "who": "narrator",
+   "en": "Dean Holloway does not look at Penhallow while he says it. She looks at you, and there is something in her face you have never seen there, and it takes you a moment to name it. It is tiredness.",
+   "ja": "ホロウェイ学部長は、彼が話しているあいだペンハロウを見ない。あなたを見ている。その顔に、これまで一度も見たことのないものがある。名前をつけるのに少しかかる。疲労だ。",
+   "v_en": "res://assets/voice/chapter_5_10b4e6a1.ogg",
+   "v_ja": "res://assets/voice/chapter_5_10b4e6a1.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_0d5b6735",
+   "src": 116,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "Penhallow laughs. The Dean does not.",
+   "ja": "ペンハローは笑う。学長は笑わない。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_0d5b6735.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_0d5b6735.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_fa2e1be4",
+   "src": 117,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "\"Publicly,\" she repeats. \"Do you know what is in volume one, Professor? 1897. The founders. Do you know what they were paid to forget?\"",
+   "ja": "「公には」彼女は繰り返す。「教授、第一巻に何が書かれているかご存知ですか？ 1897年。創設者たち。彼らが忘れ去るために、いくら支払われたかご存知ですか？」",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_fa2e1be4.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_fa2e1be4.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_d56b4874",
+   "src": 118,
+   "label": "ch5_ending_rewrite",
+   "who": "protagonist",
+   "en": "No. Neither does anyone else. That is the point of a muniment room, Dean. It is not a secret. It is a record. You just stopped letting anyone read it.",
+   "ja": "いや。誰も知らない。それが文書保管室の意義だ、学長。秘密ではない。記録なのだ。あなたはただ、誰もそれを読ませなくなっただけだ。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_d56b4874.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_d56b4874.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_b757bfa9",
+   "src": 120,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "Elena puts the 1990s volume on the desk, under the lamp, open at page fourteen, and steps back from it.",
+   "ja": "エレナは1990年代の巻を、ランプの下、14ページを開いた状態で机に置き、そこから一歩下がる。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_b757bfa9.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_b757bfa9.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_5b10a8a0",
+   "src": 121,
+   "label": "ch5_ending_rewrite",
+   "who": "elena",
+   "en": "Restore my name and I'm a scholarship. Restore all of them and I'm a footnote. I'd rather be a footnote in a true book.",
+   "ja": "「私の名前だけ戻せば、私は奨学金です。全員の名前を戻せば、私は脚注になる。私は本当のことが書かれた本の脚注でいたい」",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_5b10a8a0.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_5b10a8a0.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_c5e7fbb9",
+   "src": 123,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "Penhallow: \"You have no idea what that costs.\"",
+   "ja": "ペンハロー：「それがどれほどの費用か、君には想像もつかないだろう。」",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_c5e7fbb9.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_c5e7fbb9.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_9743cc0d",
+   "src": 124,
+   "label": "ch5_ending_rewrite",
+   "who": "elena",
+   "en": "Four hundred pounds. 1971. I have the receipt.",
+   "ja": "四百ポンド。1971年。領収書はここにある。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_9743cc0d.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_9743cc0d.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_0ea17c29",
+   "src": 126,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "It is the Dean who moves. She crosses to the desk, takes the pen from her jacket, and under her own last entry, {i}Note: watch,{/i} she writes a second line.",
+   "ja": "学長が動く。彼女は机へ向かい、ジャケットからペンを取り出す。自身の最後の記入、{i}注：監視せよ、{/i}の下に、二行目を書き加える。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_0ea17c29.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_0ea17c29.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_2fe9b52e",
+   "src": 127,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "{i}Watched. Found. Recorded. M.H.{/i}",
+   "ja": "{i}監視。発見。記録。M.H。{/i}",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_2fe9b52e.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_2fe9b52e.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_af29130e",
+   "src": 128,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "\"I am retiring in the spring,\" she says, to no one. \"I had wondered what I would do with the key.\"",
+   "ja": "「春には引退するわ」彼女は誰にともなく言う。「鍵をどうしようかと、考えていたのだけれど」",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_af29130e.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_af29130e.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_d179541b",
+   "src": 130,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "Penhallow leaves. He does not slam the door; men like him never do. The stair takes him up and out and, over the next eighteen months, out of the board, the wing, and the town.",
+   "ja": "ペンハローは去る。彼はドアを叩きつけない。彼のような男は決してそうしない。階段が彼を上へ、そして外へ連れ出す。そして次の十八ヶ月で、理事会から、棟から、町から、彼を消し去る。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_d179541b.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_d179541b.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_93ac17c3",
+   "src": 137,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "The muniment room, later. The Dean gone up. The lamp still on. Sixty volumes and the two of you.",
+   "ja": "後刻、古文書室。学長は去った。ランプは点いたまま。六十巻の書物と、二人きり。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_93ac17c3.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_93ac17c3.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_9a47fe32",
+   "src": 138,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "Elena kisses you against the 1930s. Not a victory kiss — the other kind, the one people find when the thing they were afraid of turns out to be over.",
+   "ja": "エレナは1930年代の棚にあなたを押しつけて口づける。勝利の口づけではない。もう一方の種類だ。怖れていたものが、終わっていたと知ったときに人が見つける口づけ。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_9a47fe32.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_9a47fe32.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_0c3dcbd9",
+   "src": 139,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "You take her on the desk in the middle of the room, on top of the open ledger, and she says {i}careful, that is the record{/i} and then {i}no, don't be careful{/i}, and you are not.",
+   "ja": "あなたは部屋の中央にある机の上、開かれた台帳の上で、彼女を抱く。彼女は{i}気をつけて、これは記録よ{/i}と言い、それから{i}いいえ、気になさらないで{/i}と言う。そしてあなたは、そうしない。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_0c3dcbd9.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_0c3dcbd9.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_16b462a6",
+   "src": 140,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "She comes with her back arched over a hundred years of paid silence and her mouth open on your name. The lamp does not go out. Nobody comes down the stair.",
+   "ja": "彼女は百年分の買われた沈黙の上で背を反らし、口をあなたの名前のかたちに開いたまま達する。ランプは消えない。階段を降りてくる者は誰もいない。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_16b462a6.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_16b462a6.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_218cbd84",
+   "src": 147,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "Spring. The muniment room has a reading desk now, and a sign-in book, and a postgraduate archivist on a proper salary who reads faster than the professor.",
+   "ja": "春。古文書室には今、閲覧机と、記帳簿がある。そして教授よりも速く書物を読む、正規の給与を得た大学院生アーキビストが。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_218cbd84.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_218cbd84.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_28e07946",
+   "src": 148,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "Volume one is on the desk, open. Someone is always reading it.",
+   "ja": "第一巻が机の上に、開かれたまま置かれている。常に誰かがそれを読んでいる。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_28e07946.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_28e07946.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_f3e787ca",
+   "src": 151,
+   "label": "ch5_ending_rewrite",
+   "who": "elena",
+   "en": "Page fourteen is the most requested page in the archive. Did you know?",
+   "ja": "十四ページは、この書庫で最も閲覧請求の多いページだ。知っていたか？",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_f3e787ca.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_f3e787ca.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_f190628a",
+   "src": 152,
+   "label": "ch5_ending_rewrite",
+   "who": "protagonist",
+   "en": "I signed the request form. Twice.",
+   "ja": "請求書に署名した。二度。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_f190628a.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_f190628a.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_037e40de",
+   "src": 153,
+   "label": "ch5_ending_rewrite",
+   "who": "elena",
+   "en": "You sign everything.",
+   "ja": "あなたは何にでも署名する。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_037e40de.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_037e40de.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_f1f8cb06",
+   "src": 154,
+   "label": "ch5_ending_rewrite",
+   "who": "protagonist",
+   "en": "I read it first now.",
+   "ja": "今は、私が最初に読む。",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_f1f8cb06.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_f1f8cb06.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_rewrite_dd695017",
+   "src": 155,
+   "label": "ch5_ending_rewrite",
+   "who": "narrator",
+   "en": "She smiles, the real one, and goes back to work. Above the desk, where the portrait was, there is a plain typed card: {i}Ashcombe, R. 1965–1996. Archivist.{/i}",
+   "ja": "彼女は、本物の笑顔を見せ、仕事に戻る。机の上、肖像画があった場所には、簡素なタイプ打ちのカードが貼られている。{i}アッシュコム、R。1965–1996。アーキビスト。{/i}",
+   "v_en": "res://assets/voice/ch5_ending_rewrite_dd695017.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_rewrite_dd695017.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_c33e6ff8",
+   "src": 166,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "Elena already has her phone out. She has had it out since the stair. Forty pages, photographed, uploading.",
+   "ja": "エレナは既にスマホを取り出している。階段を上り始めてからずっと。四十ページ。撮影済み。アップロード中。",
+   "v_en": "res://assets/voice/ch5_ending_expose_c33e6ff8.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_c33e6ff8.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_3d70254c",
+   "src": 167,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "Penhallow: \"That is theft.\"",
+   "ja": "ペンハロー：「それは窃盗だ」",
+   "v_en": "res://assets/voice/ch5_ending_expose_3d70254c.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_3d70254c.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_bd8063c3",
+   "src": 168,
+   "label": "ch5_ending_expose",
+   "who": "elena",
+   "en": "That's a receipt. You should recognise one.",
+   "ja": "「これは受領書です。見慣れているはずでしょう」",
+   "v_en": "res://assets/voice/ch5_ending_expose_bd8063c3.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_bd8063c3.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_d1ae86ad",
+   "src": 170,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "The Dean says nothing at all. She sits down in the chair that has been sat in recently, and folds her hands, and waits for it to be over.",
+   "ja": "学長は何も言わない。最近まで座られていた椅子に腰を下ろし、両手を組み、それが終わるのを待つ。",
+   "v_en": "res://assets/voice/ch5_ending_expose_d1ae86ad.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_d1ae86ad.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_6248a201",
+   "src": 172,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "It takes four months. The two board members who are not Penhallow are a retired judge and a woman who runs a hospice, and it turns out they had been waiting thirty years for someone to bring them a piece of paper.",
+   "ja": "四ヶ月を要する。ペンハロー以外の二人の理事は、引退した判事と、ホスピスを運営する女性。そして彼らは、誰かが一枚の紙を持ってくるのを、三十年間待ち続けていたことが判明する。",
+   "v_en": "res://assets/voice/ch5_ending_expose_6248a201.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_6248a201.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_5ec7a9e4",
+   "src": 173,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "The Guardian runs it on a Saturday. The Academy runs an inquiry. Penhallow runs to a lawyer, and then to another one.",
+   "ja": "「ガーディアン」は土曜にそれを報じる。アカデミーは調査を開始する。ペンハローは弁護士に走り、さらに別の弁護士を訪ねる。",
+   "v_en": "res://assets/voice/ch5_ending_expose_5ec7a9e4.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_5ec7a9e4.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_4634ffaf",
+   "src": 174,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "The Dean retires early, in November, and writes you a letter you do not show anyone. It is two lines long. The second line is {i}Thank you.{/i}",
+   "ja": "学長は11月に早期退職する。誰にも見せない手紙をあなたに書く。それは二行の手紙だ。二行目は{i}ありがとう{/i}。",
+   "v_en": "res://assets/voice/ch5_ending_expose_4634ffaf.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_4634ffaf.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_387d241d",
+   "src": 181,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "The night the story runs. Your flat. The phone finally off.",
+   "ja": "記事が報じられた夜。あなたのフラット。電話は、ようやく切れる。",
+   "v_en": "res://assets/voice/ch5_ending_expose_387d241d.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_387d241d.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_fe340b90",
+   "src": 182,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "Elena has been on the radio twice today and is more frightened of that than she was of the cellar. She says so into your shoulder, and then stops talking.",
+   "ja": "エレナは今日二度ラジオに出て、地下室のときより怯えている。そうあなたの肩に向かって言い、それから喋るのをやめる。",
+   "v_en": "res://assets/voice/ch5_ending_expose_fe340b90.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_fe340b90.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_f4930ce6",
+   "src": 183,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "You make love slowly because she asks you to, and because it is the first slow thing either of you has done in four months. She keeps her glasses on until the last minute, then takes them off herself and puts them somewhere you will step on them later.",
+   "ja": "あなたはゆっくり抱く。彼女がそう望んだからであり、この四か月で二人がした最初のゆっくりしたことだからだ。彼女は最後の瞬間まで眼鏡をかけたままでいて、それから自分で外し、あとであなたが踏むことになる場所に置く。",
+   "v_en": "res://assets/voice/ch5_ending_expose_f4930ce6.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_f4930ce6.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_4b601ffd",
+   "src": 184,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "She comes with your name and then, quieter, her father's. You hold her a long time after.",
+   "ja": "彼女はあなたの名を呼びながら絶頂を迎える。そして、静かに、父親の名を。その後、あなたは彼女を長く抱きしめる。",
+   "v_en": "res://assets/voice/ch5_ending_expose_4b601ffd.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_4b601ffd.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_0f31721b",
+   "src": 191,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "A year on. The muniment room is a museum now, which is not what either of you wanted, but it is open, and the names are on the wall.",
+   "ja": "一年後。記録保管室は今や博物館だ。それは二人とも望んだ形ではない。しかし、開館され、壁には名前が刻まれている。",
+   "v_en": "res://assets/voice/ch5_ending_expose_0f31721b.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_0f31721b.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_d84a9f91",
+   "src": 194,
+   "label": "ch5_ending_expose",
+   "who": "elena",
+   "en": "They spelled Ashcombe right. Second attempt.",
+   "ja": "アシュコムの綴りは正しく記されていた。二度目の試みで。",
+   "v_en": "res://assets/voice/ch5_ending_expose_d84a9f91.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_d84a9f91.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_b5b563de",
+   "src": 195,
+   "label": "ch5_ending_expose",
+   "who": "protagonist",
+   "en": "I checked the proof.",
+   "ja": "私が確認した。",
+   "v_en": "res://assets/voice/ch5_ending_expose_b5b563de.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_b5b563de.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_627ad72f",
+   "src": 196,
+   "label": "ch5_ending_expose",
+   "who": "elena",
+   "en": "You read it first.",
+   "ja": "あなたが最初に読んだ。",
+   "v_en": "res://assets/voice/ch5_ending_expose_627ad72f.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_627ad72f.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_7a038a65",
+   "src": 197,
+   "label": "ch5_ending_expose",
+   "who": "protagonist",
+   "en": "I read everything first now. It is exhausting.",
+   "ja": "今は、私がすべてを最初に読む。骨が折れる。",
+   "v_en": "res://assets/voice/ch5_ending_expose_7a038a65.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_7a038a65.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_expose_481863bf",
+   "src": 198,
+   "label": "ch5_ending_expose",
+   "who": "narrator",
+   "en": "She takes your arm. Behind you, a school party is being told about 1897, and none of them are listening, and that is fine. It is written down.",
+   "ja": "彼女はあなたの腕を取る。背後では、学生たちの一団が1897年について説明を受けている。誰も耳を傾けていない。それでいい。それは文字として残っている。",
+   "v_en": "res://assets/voice/ch5_ending_expose_481863bf.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_expose_481863bf.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_edeef42a",
+   "src": 209,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "You pick up the 1990s volume. Elena picks up the 1960s, because it is nearest, and because it has your father in it.",
+   "ja": "あなたは1990年代の巻を手に取る。エレナは1960年代の巻を手に取る。それが一番近いから。そして、そこにあなたの父親が記されているから。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_edeef42a.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_edeef42a.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_06950b37",
+   "src": 210,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "Penhallow steps into the doorway. He is a big man. He has never in his life had to stop anyone with his body, and it shows.",
+   "ja": "ペンハローが戸口に現れる。彼は大男だ。人生で一度も、その体で誰かを阻む必要などなかった。それが滲み出ている。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_06950b37.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_06950b37.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_d745f097",
+   "src": 211,
+   "label": "ch5_ending_abscond",
+   "who": "protagonist",
+   "en": "Move.",
+   "ja": "どけ。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_d745f097.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_d745f097.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_4f1320f9",
+   "src": 212,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "The Dean says, quietly, \"Julian. Let them.\"",
+   "ja": "学長が静かに言う。「ジュリアン。行かせなさい。」",
+   "v_en": "res://assets/voice/ch5_ending_abscond_4f1320f9.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_4f1320f9.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_973e4cc8",
+   "src": 213,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "He looks at her. Then at you. Then at Elena, holding a ledger in both arms exactly the way she held the first one, in a vault, three weeks ago — and who does not look away.",
+   "ja": "彼は彼女を見る。次にあなたを。それからエレナを——三週間前、ある書庫で最初の一冊をそうしていたのとまったく同じに、台帳を両腕で抱えている彼女を。そして彼女は目を逸らさない。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_973e4cc8.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_973e4cc8.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_0a7d0b0a",
+   "src": 214,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "He moves.",
+   "ja": "彼は動く。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_0a7d0b0a.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_0a7d0b0a.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_a4c79900",
+   "src": 216,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "The stair. The wing. The rain. Cobb, at the porter's window, who sees you go and turns his light off.",
+   "ja": "階段。棟。雨。コブは、門番室の窓から、あなたたちを見送り、明かりを消す。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_a4c79900.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_a4c79900.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_2aee00fa",
+   "src": 217,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "You are not archivists any more by the time you reach the car. You are two people with two books and nowhere in particular to be.",
+   "ja": "車にたどり着く頃には、あなたたちはもうアーカイブ係ではない。二冊の本を抱えた二人であり、特に行くべき場所もない。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_2aee00fa.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_2aee00fa.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_d209178b",
+   "src": 224,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "A hotel outside the town, the kind with a car park and no questions. The ledgers on the chair. The rain on the window.",
+   "ja": "町外れのホテル。駐車場があり、詮索はしない。帳簿が椅子の上。窓を打つ雨。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_d209178b.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_d209178b.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_b1e94015",
+   "src": 225,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "She undresses you first this time. Fast, laughing, high on it. She pushes you down on a bed that has seen worse and rides you with her hair everywhere and the curtains wide open.",
+   "ja": "今度は彼女のほうが先にあなたを脱がせる。手早く、笑いながら、高揚したまま。もっとひどいものを見てきたであろうベッドにあなたを押し倒し、髪を振り乱し、カーテンを開け放ったまま上に乗る。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_b1e94015.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_b1e94015.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_e54e968b",
+   "src": 226,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "She says the names as she goes — her father, yours, the Dean, Penhallow — throwing each one away, until there is only one name left, and that one she says properly.",
+   "ja": "彼女は進みながら名前を口にする——父の、あなたの、学部長の、ペンハロウの——ひとつずつ投げ捨てていき、やがて残る名前はひとつだけになり、その一つだけを、彼女はきちんと呼ぶ。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_e54e968b.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_e54e968b.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_3f8160cc",
+   "src": 227,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "You come together with the ledgers watching. Afterwards she lies on your chest and says, \"We are going to have to get jobs.\"",
+   "ja": "帳簿が見つめる中、二人は絶頂を迎える。その後、彼女はあなたの胸に横たわり、言う。「私たち、仕事を見つけなきゃね」",
+   "v_en": "res://assets/voice/ch5_ending_abscond_3f8160cc.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_3f8160cc.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_dace15c1",
+   "src": 234,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "A flat by the sea, eight months later. Two desks. A kettle. Sixty volumes, because you went back for the rest, one night in March, with Cobb's key.",
+   "ja": "八ヶ月後、海辺のアパート。二つの机。電気ケトル。六十冊の書物。三月のある夜、コブの鍵で残りを持ち帰ったからだ。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_dace15c1.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_dace15c1.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_58f3b500",
+   "src": 237,
+   "label": "ch5_ending_abscond",
+   "who": "elena",
+   "en": "The Academy reported them stolen. Then it stopped reporting anything.",
+   "ja": "アカデミーはそれらを盗難として報告した。その後、何も報告しなくなった。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_58f3b500.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_58f3b500.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_1b76751c",
+   "src": 238,
+   "label": "ch5_ending_abscond",
+   "who": "protagonist",
+   "en": "Penhallow's lawyers found out what page two says.",
+   "ja": "ペンハローの弁護士は、二ページ目に何が書かれているかを知った。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_1b76751c.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_1b76751c.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_7a627a12",
+   "src": 239,
+   "label": "ch5_ending_abscond",
+   "who": "elena",
+   "en": "You read it first?",
+   "ja": "あなたが先に読んだのか？",
+   "v_en": "res://assets/voice/ch5_ending_abscond_7a627a12.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_7a627a12.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_dca6d3f8",
+   "src": 240,
+   "label": "ch5_ending_abscond",
+   "who": "protagonist",
+   "en": "I read everything first now.",
+   "ja": "今は、私が全て先に読む。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_dca6d3f8.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_dca6d3f8.ja.ogg"
+  },
+  {
+   "id": "ch5_ending_abscond_c83ebeb5",
+   "src": 241,
+   "label": "ch5_ending_abscond",
+   "who": "narrator",
+   "en": "She kisses your temple and goes back to the 1897 volume. She is transcribing it. All of it. She says the sea is the right place to do it, because nobody has ever managed to burn the sea.",
+   "ja": "彼女はあなたのこめかみに口づけて、1897年の巻に戻る。彼女はそれを書き写している。全部を。海はそれをやるのに正しい場所だと彼女は言う。海を焼くことに成功した者はまだ誰もいないから。",
+   "v_en": "res://assets/voice/ch5_ending_abscond_c83ebeb5.ogg",
+   "v_ja": "res://assets/voice/ch5_ending_abscond_c83ebeb5.ja.ogg"
+  },
+  {
+   "id": "ch5_epilogue_6c3033b7",
+   "src": 255,
+   "label": "ch5_epilogue",
+   "who": "narrator",
+   "en": "Saint Jude Academy. Department of Antiquities.",
+   "ja": "セント・ジュード・アカデミー。古物研究科。",
+   "v_en": "res://assets/voice/ch5_epilogue_6c3033b7.ogg",
+   "v_ja": "res://assets/voice/ch5_epilogue_6c3033b7.ja.ogg"
+  },
+  {
+   "id": "ch5_epilogue_bc70afe5",
+   "src": 257,
+   "label": "ch5_epilogue",
+   "who": "narrator",
+   "en": "Ending: The Record. Every name restored, including one in a Leeds chemistry department who never knew he had been a footnote.",
+   "ja": "エンディング：記録。全ての名前が復元される。リーズの化学科にいた、自分が脚注に過ぎなかったことを知らなかった者も含めて。",
+   "v_en": "res://assets/voice/ch5_epilogue_bc70afe5.ogg",
+   "v_ja": "res://assets/voice/ch5_epilogue_bc70afe5.ja.ogg"
+  },
+  {
+   "id": "ch5_epilogue_aa35a8e5",
+   "src": 259,
+   "label": "ch5_epilogue",
+   "who": "narrator",
+   "en": "Ending: Daylight. The room became a museum. The names became a wall. Elena Ashcombe became, briefly and against her will, famous.",
+   "ja": "エンディング：白日の下。部屋は博物館になった。名前は壁になった。エレナ・アッシュコムは、短期間、本人の意思に反して有名になった。",
+   "v_en": "res://assets/voice/ch5_epilogue_aa35a8e5.ogg",
+   "v_ja": "res://assets/voice/ch5_epilogue_aa35a8e5.ja.ogg"
+  },
+  {
+   "id": "ch5_epilogue_e3a86baf",
+   "src": 261,
+   "label": "ch5_epilogue",
+   "who": "narrator",
+   "en": "Ending: The Sea. Sixty volumes, two desks, one kettle. The Academy kept its wing and lost its memory.",
+   "ja": "エンディング：海。六十冊の書物、二つの机、一つの電気ケトル。アカデミーはその翼を保ち、記憶を失った。",
+   "v_en": "res://assets/voice/ch5_epilogue_e3a86baf.ogg",
+   "v_ja": "res://assets/voice/ch5_epilogue_e3a86baf.ja.ogg"
+  },
+  {
+   "id": "ch5_epilogue_0cbb9e86",
+   "src": 262,
+   "label": "ch5_epilogue",
+   "who": "narrator",
+   "en": "Thank you for reading to the end.",
+   "ja": "最後までお読みいただき、ありがとうございました。",
+   "v_en": "res://assets/voice/ch5_epilogue_0cbb9e86.ogg",
+   "v_ja": "res://assets/voice/ch5_epilogue_0cbb9e86.ja.ogg"
+  }
+ ],
+ "menus": {
+  "\"No. Every name goes back. All sixty volumes. Publicly. Starting with hers.\"": "「いや。全ての名前を元に戻す。六十冊全てだ。公開で。彼女のものからだ」",
+  "\"The board has two members you do not own. They get the ledger tonight. So does the Guardian.\"": "「理事会には、お前が支配していないメンバーが二人いる。彼らは今夜、帳簿を手に入れる。ガーディアンもだ」",
+  "Take the 1990s volume. Take Elena. Walk past them and do not stop.": "1990年代の書物を取れ。エレナを連れて行け。彼らの横を通り過ぎ、止まるな。"
+ }
+}

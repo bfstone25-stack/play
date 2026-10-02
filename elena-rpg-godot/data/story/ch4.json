@@ -1,0 +1,966 @@
+{
+ "chapter": 4,
+ "lines": [
+  {
+   "id": "chapter_4_19da6821",
+   "src": 16,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Chapter 4 — The Dean's Annex",
+   "ja": "「第4章 — 学部長の別館」",
+   "v_en": "res://assets/voice/chapter_4_19da6821.ogg",
+   "v_ja": "res://assets/voice/chapter_4_19da6821.ja.ogg"
+  },
+  {
+   "id": "chapter_4_604bd48b",
+   "src": 17,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "The survey request is approved in eleven hours. No survey request in the history of the Academy has been approved in under a month.",
+   "ja": "「調査依頼は、11時間後に承認される。学園の歴史上、1ヶ月を待たずに承認された調査依頼など、前例がない。」",
+   "v_en": "res://assets/voice/chapter_4_604bd48b.ogg",
+   "v_ja": "res://assets/voice/chapter_4_604bd48b.ja.ogg"
+  },
+  {
+   "id": "chapter_4_9cf4c71d",
+   "src": 21,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "She wants you in the cellar with a clipboard where she can see you.",
+   "ja": "「彼女は君を地下室に呼び出す。クリップボードを持たせ、彼女の目の届く場所へ。」",
+   "v_en": "res://assets/voice/chapter_4_9cf4c71d.ogg",
+   "v_ja": "res://assets/voice/chapter_4_9cf4c71d.ja.ogg"
+  },
+  {
+   "id": "chapter_4_aa716468",
+   "src": 22,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "Or she wants me out of my office for an afternoon.",
+   "ja": "「あるいは、午後の間だけ、私をオフィスから遠ざけたいのか。」",
+   "v_en": "res://assets/voice/chapter_4_aa716468.ogg",
+   "v_ja": "res://assets/voice/chapter_4_aa716468.ja.ogg"
+  },
+  {
+   "id": "chapter_4_a0fb4831",
+   "src": 23,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Both. She is the Dean. She does not do one thing at a time.",
+   "ja": "「両方だ。彼女は学部長。一度に一つのことしかしない、などという真似はしない。」",
+   "v_en": "res://assets/voice/chapter_4_a0fb4831.ogg",
+   "v_ja": "res://assets/voice/chapter_4_a0fb4831.ja.ogg"
+  },
+  {
+   "id": "chapter_4_d9834a2d",
+   "src": 25,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "The summons comes at nine. Dean Marguerite Holloway will see Professor Vance in the annex at two. Tea will be served.",
+   "ja": "「召喚状は9時に届く。マルグリット・ホロウェイ学部長は、午後2時、別館にてヴァンス教授と面会する。紅茶も用意される。」",
+   "v_en": "res://assets/voice/chapter_4_d9834a2d.ogg",
+   "v_ja": "res://assets/voice/chapter_4_d9834a2d.ja.ogg"
+  },
+  {
+   "id": "chapter_4_51f74f09",
+   "src": 26,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "The annex is the old chapel vestry: panelling, portraits, Penhallow above the fireplace. Nobody goes in without an appointment. The Dean's own files are in the room behind it.",
+   "ja": "別館は旧礼拝堂の祭具室だ。羽目板、肖像画、暖炉の上にはペンハロウ。予約なしでは誰も入れない。学部長自身のファイルは、その奥の部屋にある。",
+   "v_en": "res://assets/voice/chapter_4_51f74f09.ogg",
+   "v_ja": "res://assets/voice/chapter_4_51f74f09.ja.ogg"
+  },
+  {
+   "id": "chapter_4_d87542e5",
+   "src": 28,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Two o'clock. Tea takes forty minutes if she likes you and twenty if she does not.",
+   "ja": "「2時。彼女が気に入れば紅茶は40分。気に入らなければ20分だ。」",
+   "v_en": "res://assets/voice/chapter_4_d87542e5.ogg",
+   "v_ja": "res://assets/voice/chapter_4_d87542e5.ja.ogg"
+  },
+  {
+   "id": "chapter_4_796a055c",
+   "src": 29,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "She does not.",
+   "ja": "「彼女は気に入らない。」",
+   "v_en": "res://assets/voice/chapter_4_796a055c.ogg",
+   "v_ja": "res://assets/voice/chapter_4_796a055c.ja.ogg"
+  },
+  {
+   "id": "chapter_4_f01a3852",
+   "src": 30,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Then I have twenty minutes in the file room while she watches you drink.",
+   "ja": "「なら、彼女が君の紅茶を飲むのを見ている間に、俺はファイル室で20分だ。」",
+   "v_en": "res://assets/voice/chapter_4_f01a3852.ogg",
+   "v_ja": "res://assets/voice/chapter_4_f01a3852.ja.ogg"
+  },
+  {
+   "id": "chapter_4_651b22e0",
+   "src": 31,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "No.",
+   "ja": "「駄目だ。」",
+   "v_en": "res://assets/voice/chapter_4_651b22e0.ogg",
+   "v_ja": "res://assets/voice/chapter_4_651b22e0.ja.ogg"
+  },
+  {
+   "id": "chapter_4_3dda844c",
+   "src": 32,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Yes. You're the signing officer, I'm the assistant, and you keep saying that protects me. So let it.",
+   "ja": "「ええ。あなたが署名責任者で、私が助手で、あなたはそれが私を守ると言い続けている。なら、守らせてください」",
+   "v_en": "res://assets/voice/chapter_4_3dda844c.ogg",
+   "v_ja": "res://assets/voice/chapter_4_3dda844c.ja.ogg"
+  },
+  {
+   "id": "chapter_4_0893928a",
+   "src": 39,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "You want to see her face.",
+   "ja": "「君は彼女の顔を見たいんだろ。」",
+   "v_en": "res://assets/voice/chapter_4_0893928a.ogg",
+   "v_ja": "res://assets/voice/chapter_4_0893928a.ja.ogg"
+  },
+  {
+   "id": "chapter_4_ca83a4aa",
+   "src": 40,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "I want her looking at me and not at the door.",
+   "ja": "「彼女には俺を見ていてほしいんだ。ドアの方じゃなく。」",
+   "v_en": "res://assets/voice/chapter_4_ca83a4aa.ogg",
+   "v_ja": "res://assets/voice/chapter_4_ca83a4aa.ja.ogg"
+  },
+  {
+   "id": "chapter_4_0cd73fd3",
+   "src": 41,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Elena does not like it. She does not say so. She puts the page in an envelope so it looks like a letter.",
+   "ja": "「エレナはそれが気に入らない。だが、口には出さない。彼女はそのページを封筒に入れ、手紙のように見せかける。」",
+   "v_en": "res://assets/voice/chapter_4_0cd73fd3.ogg",
+   "v_ja": "res://assets/voice/chapter_4_0cd73fd3.ja.ogg"
+  },
+  {
+   "id": "chapter_4_6c3e39a4",
+   "src": 46,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "She will ask about the crate.",
+   "ja": "「彼女はあの木箱について尋ねるだろう。」",
+   "v_en": "res://assets/voice/chapter_4_6c3e39a4.ogg",
+   "v_ja": "res://assets/voice/chapter_4_6c3e39a4.ja.ogg"
+  },
+  {
+   "id": "chapter_4_9c13b2e3",
+   "src": 47,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "And I will say per schedule, and thank her for her thanks.",
+   "ja": "「そして俺は『予定通りです』と答え、彼女の感謝に、感謝を返そう。」",
+   "v_en": "res://assets/voice/chapter_4_9c13b2e3.ogg",
+   "v_ja": "res://assets/voice/chapter_4_9c13b2e3.ja.ogg"
+  },
+  {
+   "id": "chapter_4_bc655fa2",
+   "src": 48,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Elena almost smiles. \"You are learning.\"",
+   "ja": "「エレナは、かろうじて笑みを浮かべる。『君は学習しているな。』」",
+   "v_en": "res://assets/voice/chapter_4_bc655fa2.ogg",
+   "v_ja": "res://assets/voice/chapter_4_bc655fa2.ja.ogg"
+  },
+  {
+   "id": "chapter_4_22904ce6",
+   "src": 54,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "It is a boring piece of paper. That is the point. Boring paper is what universities are made of, and the Dean has to answer it.",
+   "ja": "「それは退屈な一枚の紙切れ。それが肝要だ。大学とは退屈な書類でできている。そして学部長はそれに回答せねばならない。」",
+   "v_en": "res://assets/voice/chapter_4_22904ce6.ogg",
+   "v_ja": "res://assets/voice/chapter_4_22904ce6.ja.ogg"
+  },
+  {
+   "id": "chapter_4_189f4b5e",
+   "src": 55,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Twenty minutes, Vance. Do not enjoy yourself.",
+   "ja": "「20分だ、ヴァンス。楽しむなよ。」",
+   "v_en": "res://assets/voice/chapter_4_189f4b5e.ogg",
+   "v_ja": "res://assets/voice/chapter_4_189f4b5e.ja.ogg"
+  },
+  {
+   "id": "chapter_4_c3b87d92",
+   "src": 61,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "2:00 PM. The annex. The Dean pours. She is sixty-one, silver, in a suit that costs more than your car, and she has never once raised her voice in your hearing.",
+   "ja": "午後2時。別館。学部長が注ぐ。彼女は61歳、白髪。あなたの車より高価なスーツを纏う。あなたの知る限り、一度も声を荒げたことはない。",
+   "v_en": "res://assets/voice/chapter_4_c3b87d92.ogg",
+   "v_ja": "res://assets/voice/chapter_4_c3b87d92.ja.ogg"
+  },
+  {
+   "id": "chapter_4_265a58e9",
+   "src": 66,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"Professor. Sit. The survey. I thought we should talk before you go poking at foundations.\"",
+   "ja": "\"教授。座って。調査。あなたが基礎を穿り返す前に、話しておくべきだと思ったの。\"",
+   "v_en": "res://assets/voice/chapter_4_265a58e9.ogg",
+   "v_ja": "res://assets/voice/chapter_4_265a58e9.ja.ogg"
+  },
+  {
+   "id": "chapter_4_6ec1c7d2",
+   "src": 67,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She says {i}poking{/i} the way other people say {i}sue{/i}.",
+   "ja": "彼女は{i}穿り返す{/i}という言葉を、他人が{i}訴訟{/i}と言うのと同じ調子で口にする。",
+   "v_en": "res://assets/voice/chapter_4_6ec1c7d2.ogg",
+   "v_ja": "res://assets/voice/chapter_4_6ec1c7d2.ja.ogg"
+  },
+  {
+   "id": "chapter_4_082a2a57",
+   "src": 70,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"Julian was impressed with you on Friday. He mentioned the board. I said I would sound you out.\"",
+   "ja": "\"金曜、ジュリアンはあなたに感銘を受けていたわ。理事会の話も出た。あなたの意向を探ると伝えたの。\"",
+   "v_en": "res://assets/voice/chapter_4_082a2a57.ogg",
+   "v_ja": "res://assets/voice/chapter_4_082a2a57.ja.ogg"
+  },
+  {
+   "id": "chapter_4_18034c9e",
+   "src": 71,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She does not sound you out. She looks at you over the cup and lets the offer sit on the table between you like a third person.",
+   "ja": "彼女はあなたの意向を探らない。カップ越しにあなたを見つめ、提案は、まるで第三者のように、二人の間のテーブルに置かれたままだ。",
+   "v_en": "res://assets/voice/chapter_4_18034c9e.ogg",
+   "v_ja": "res://assets/voice/chapter_4_18034c9e.ja.ogg"
+  },
+  {
+   "id": "chapter_4_06a8ffcc",
+   "src": 72,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "I am an archivist, Dean. I sign things.",
+   "ja": "\"私は記録保管人です、学部長。署名するだけです。\"",
+   "v_en": "res://assets/voice/chapter_4_06a8ffcc.ogg",
+   "v_ja": "res://assets/voice/chapter_4_06a8ffcc.ja.ogg"
+  },
+  {
+   "id": "chapter_4_b8be020a",
+   "src": 73,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"Yes. That is rather the qualification.\"",
+   "ja": "\"ええ。それこそが資格ね。\"",
+   "v_en": "res://assets/voice/chapter_4_b8be020a.ogg",
+   "v_ja": "res://assets/voice/chapter_4_b8be020a.ja.ogg"
+  },
+  {
+   "id": "chapter_4_8d79c303",
+   "src": 75,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"Julian asked about your assistant. I told him she was a credit to the department. Is she?\"",
+   "ja": "\"ジュリアンがあなたの助手について尋ねてきたわ。彼女は学部にとっての功績だと伝えたけれど。そうかしら？\"",
+   "v_en": "res://assets/voice/chapter_4_8d79c303.ogg",
+   "v_ja": "res://assets/voice/chapter_4_8d79c303.ja.ogg"
+  },
+  {
+   "id": "chapter_4_6e71da3a",
+   "src": 76,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "She reads faster than I do.",
+   "ja": "彼女は私より速く読む。",
+   "v_en": "res://assets/voice/chapter_4_6e71da3a.ogg",
+   "v_ja": "res://assets/voice/chapter_4_6e71da3a.ja.ogg"
+  },
+  {
+   "id": "chapter_4_49c54160",
+   "src": 77,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"That is not what I asked.\" She sets the cup down. \"Be careful with that one, Vance. The Ashcombes were always clever. It did not help them.\"",
+   "ja": "\"私が尋ねたのはそれではないわ。\" 彼女はカップを置く。 \"あの娘には気をつけなさい、ヴァンス。アッシュコム家は常に賢かった。それは彼らの助けにはならなかったけれど。\"",
+   "v_en": "res://assets/voice/chapter_4_49c54160.ogg",
+   "v_ja": "res://assets/voice/chapter_4_49c54160.ja.ogg"
+  },
+  {
+   "id": "chapter_4_7954a201",
+   "src": 79,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Somewhere behind the panelling, a drawer closes. The Dean does not react. Neither do you. It costs you a great deal.",
+   "ja": "羽目板の向こうで、引き出しが閉まる。学部長は反応しない。あなたも反応しない。その代償は小さくない。",
+   "v_en": "res://assets/voice/chapter_4_7954a201.ogg",
+   "v_ja": "res://assets/voice/chapter_4_7954a201.ja.ogg"
+  },
+  {
+   "id": "chapter_4_f8bc1d00",
+   "src": 85,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She laughs. It is the first time you have heard it. It sounds like a cup on a saucer.",
+   "ja": "彼女は笑う。あなたがその笑いを聞くのは初めてだ。ソーサーにカップを置くような音だ。",
+   "v_en": "res://assets/voice/chapter_4_f8bc1d00.ogg",
+   "v_ja": "res://assets/voice/chapter_4_f8bc1d00.ja.ogg"
+  },
+  {
+   "id": "chapter_4_1ac7b0e9",
+   "src": 86,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"Foundations, Professor. Roman, then Norman, then Victorian, then Penhallow. Every building stands on what it buried. Ours is just better documented.\"",
+   "ja": "\"基礎よ、教授。ローマ、ノルマン、ヴィクトリア、そしてペンハロー。どの建物も、埋められたものの上に建っている。私たちのものは、ただ記録がより良いだけ。\"",
+   "v_en": "res://assets/voice/chapter_4_1ac7b0e9.ogg",
+   "v_ja": "res://assets/voice/chapter_4_1ac7b0e9.ja.ogg"
+  },
+  {
+   "id": "chapter_4_55de7f57",
+   "src": 87,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"Documented\" is the word she chooses. She wants you to hear it.",
+   "ja": "彼女が選んだ言葉は\"記録された\"だ。あなたにそれを聞かせたいのだ。",
+   "v_en": "res://assets/voice/chapter_4_55de7f57.ogg",
+   "v_ja": "res://assets/voice/chapter_4_55de7f57.ja.ogg"
+  },
+  {
+   "id": "chapter_4_c33553c4",
+   "src": 92,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "You are dull for twenty-two minutes. Rain. The boiler. Someone's festschrift. The Dean lets you, which means she is waiting for something too.",
+   "ja": "あなたは22分間、退屈な話をする。雨。ボイラー。誰かの記念論文集。学部長はそれを許す。それは彼女も何かを待っているということだ。",
+   "v_en": "res://assets/voice/chapter_4_c33553c4.ogg",
+   "v_ja": "res://assets/voice/chapter_4_c33553c4.ja.ogg"
+  },
+  {
+   "id": "chapter_4_3aa58bcb",
+   "src": 93,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "At 2:24 her phone buzzes. She reads it and puts it face down.",
+   "ja": "2時24分、彼女の携帯が震える。それを読み、伏せて置く。",
+   "v_en": "res://assets/voice/chapter_4_3aa58bcb.ogg",
+   "v_ja": "res://assets/voice/chapter_4_3aa58bcb.ja.ogg"
+  },
+  {
+   "id": "chapter_4_4158869c",
+   "src": 94,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"Thank you for coming, Professor. Enjoy your survey.\"",
+   "ja": "\"来てくれてありがとう、教授。調査を楽しんで。\"",
+   "v_en": "res://assets/voice/chapter_4_4158869c.ogg",
+   "v_ja": "res://assets/voice/chapter_4_4158869c.ja.ogg"
+  },
+  {
+   "id": "chapter_4_036746f1",
+   "src": 100,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "For the first time in eleven years her face does something you did not expect. It is not fear. It is arithmetic.",
+   "ja": "11年ぶりに、彼女の顔に予期せぬ変化が表れる。恐怖ではない。算術だ。",
+   "v_en": "res://assets/voice/chapter_4_036746f1.ogg",
+   "v_ja": "res://assets/voice/chapter_4_036746f1.ja.ogg"
+  },
+  {
+   "id": "chapter_4_a5cf6aa9",
+   "src": 101,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "\"Cobb retires in March,\" she says. \"I had thought of extending him. I shall think again.\"",
+   "ja": "\"コブは3月に引退するわ、\"と彼女は言う。\"彼を延長しようと考えていたの。もう一度考え直すわ。\"",
+   "v_en": "res://assets/voice/chapter_4_a5cf6aa9.ogg",
+   "v_ja": "res://assets/voice/chapter_4_a5cf6aa9.ja.ogg"
+  },
+  {
+   "id": "chapter_4_fe5853fa",
+   "src": 102,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "You have just cost an old man his thirty-second year. You will carry that.",
+   "ja": "あなたは今、老人の32年目を奪った。あなたはそれを背負うだろう。",
+   "v_en": "res://assets/voice/chapter_4_fe5853fa.ogg",
+   "v_ja": "res://assets/voice/chapter_4_fe5853fa.ja.ogg"
+  },
+  {
+   "id": "chapter_4_a5882e36",
+   "src": 107,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "2:31 PM. Your office. The door is unlocked, which it should not be.",
+   "ja": "午後2時31分。あなたのオフィス。ドアは開いている。あるべき姿ではない。",
+   "v_en": "res://assets/voice/chapter_4_a5882e36.ogg",
+   "v_ja": "res://assets/voice/chapter_4_a5882e36.ja.ogg"
+  },
+  {
+   "id": "chapter_4_abeef7a5",
+   "src": 112,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Elena is on the floor behind your desk with her back to the wall and a box file open on her knees. Her hands are black to the wrist.",
+   "ja": "エレナはあなたの机の裏、壁に背を預けて床に座り、膝の上に文書箱を開いている。手首まで真っ黒だ。",
+   "v_en": "res://assets/voice/chapter_4_abeef7a5.ogg",
+   "v_ja": "res://assets/voice/chapter_4_abeef7a5.ja.ogg"
+  },
+  {
+   "id": "chapter_4_977f7d24",
+   "src": 113,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "It isn't a chapel.",
+   "ja": "「礼拝堂じゃありません」",
+   "v_en": "res://assets/voice/chapter_4_977f7d24.ogg",
+   "v_ja": "res://assets/voice/chapter_4_977f7d24.ja.ogg"
+  },
+  {
+   "id": "chapter_4_b751b322",
+   "src": 114,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "Elena—",
+   "ja": "エレナ――",
+   "v_en": "res://assets/voice/chapter_4_b751b322.ogg",
+   "v_ja": "res://assets/voice/chapter_4_b751b322.ja.ogg"
+  },
+  {
+   "id": "chapter_4_4533b26b",
+   "src": 115,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Under the floor. The 1994 survey. It's here — she kept it, she keeps everything. It isn't a chapel, it's a strongroom, and it isn't empty.",
+   "ja": "「床の下。1994年の調査報告。ここにあった——彼女が保管していた、あの人は何でも保管する。礼拝堂じゃない、保管庫です。しかも空じゃない」",
+   "v_en": "res://assets/voice/chapter_4_4533b26b.ogg",
+   "v_ja": "res://assets/voice/chapter_4_4533b26b.ja.ogg"
+  },
+  {
+   "id": "chapter_4_e06710c0",
+   "src": 117,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She turns the file toward you. A plan of the cellar. A room drawn in red that appears on no floor plan since. An inventory, typed, four pages.",
+   "ja": "彼女はファイルをあなたのほうへ向ける。地下室の図面。以後どの平面図にも現れない、赤で描かれた部屋。そしてタイプ打ちの目録が四ページ。",
+   "v_en": "res://assets/voice/chapter_4_e06710c0.ogg",
+   "v_ja": "res://assets/voice/chapter_4_e06710c0.ja.ogg"
+  },
+  {
+   "id": "chapter_4_bc075b5c",
+   "src": 118,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Not bodies. Not relics. Paper.",
+   "ja": "死体ではない。遺物でもない。紙だ。",
+   "v_en": "res://assets/voice/chapter_4_bc075b5c.ogg",
+   "v_ja": "res://assets/voice/chapter_4_bc075b5c.ja.ogg"
+  },
+  {
+   "id": "chapter_4_198cbd71",
+   "src": 120,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "The other ledger, Vance. The real one.",
+   "ja": "もう一つの台帳よ、ヴァンス。本物の方。",
+   "v_en": "res://assets/voice/chapter_4_198cbd71.ogg",
+   "v_ja": "res://assets/voice/chapter_4_198cbd71.ja.ogg"
+  },
+  {
+   "id": "chapter_4_da89a37e",
+   "src": 121,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She taps the book on your desk without looking at it.",
+   "ja": "彼女はあなたの机の上の本を、見もせずに叩く。",
+   "v_en": "res://assets/voice/chapter_4_da89a37e.ogg",
+   "v_ja": "res://assets/voice/chapter_4_da89a37e.ja.ogg"
+  },
+  {
+   "id": "chapter_4_c4ff9d52",
+   "src": 122,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "This one is the copy they kept upstairs for people like you to countersign. The one under the floor has who was paid, how much, and by whom. Thirty years of it.",
+   "ja": "「こっちは、あなたのような人に副署させるために上階に置いていた写しです。床の下のほうには、誰が、いくら、誰から払われたかが書いてある。三十年分」",
+   "v_en": "res://assets/voice/chapter_4_c4ff9d52.ogg",
+   "v_ja": "res://assets/voice/chapter_4_c4ff9d52.ja.ogg"
+  },
+  {
+   "id": "chapter_4_26a1e395",
+   "src": 123,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "My father is in it. So is yours.",
+   "ja": "私の父も載っている。あなたの父も。",
+   "v_en": "res://assets/voice/chapter_4_26a1e395.ogg",
+   "v_ja": "res://assets/voice/chapter_4_26a1e395.ja.ogg"
+  },
+  {
+   "id": "chapter_4_3e4d0a5e",
+   "src": 125,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "You sit down. You do not remember deciding to.",
+   "ja": "あなたは座る。そう決めた覚えはない。",
+   "v_en": "res://assets/voice/chapter_4_3e4d0a5e.ogg",
+   "v_ja": "res://assets/voice/chapter_4_3e4d0a5e.ja.ogg"
+  },
+  {
+   "id": "chapter_4_e4de5291",
+   "src": 127,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "My father taught chemistry in Leeds.",
+   "ja": "私の父はリーズで化学を教えていた。",
+   "v_en": "res://assets/voice/chapter_4_e4de5291.ogg",
+   "v_ja": "res://assets/voice/chapter_4_e4de5291.ja.ogg"
+  },
+  {
+   "id": "chapter_4_0afda337",
+   "src": 128,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Your father gave the Academy four hundred pounds in 1971 and his name is on page two. I don't know why yet. But Penhallow knew it when he shook your hand.",
+   "ja": "「あなたのお父様は1971年にアカデミーへ四百ポンド寄付していて、名前は二ページ目にあります。理由はまだわかりません。でもペンハロウは、あなたと握手したときに知っていた」",
+   "v_en": "res://assets/voice/chapter_4_0afda337.ogg",
+   "v_ja": "res://assets/voice/chapter_4_0afda337.ja.ogg"
+  },
+  {
+   "id": "chapter_4_7cee18a5",
+   "src": 136,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "The survey gives you the cellar on Thursday. With a witness from Estates.",
+   "ja": "調査書のおかげで、木曜日に地下室に入れる。財産管理部門の証人付きで。",
+   "v_en": "res://assets/voice/chapter_4_7cee18a5.ogg",
+   "v_ja": "res://assets/voice/chapter_4_7cee18a5.ja.ogg"
+  },
+  {
+   "id": "chapter_4_6cc41d23",
+   "src": 137,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "Thursday is three days for her to empty it.",
+   "ja": "木曜日は、彼女がそれを空にするのに3日あるということ。",
+   "v_en": "res://assets/voice/chapter_4_6cc41d23.ogg",
+   "v_ja": "res://assets/voice/chapter_4_6cc41d23.ja.ogg"
+  },
+  {
+   "id": "chapter_4_045b58d0",
+   "src": 138,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Yes.",
+   "ja": "ああ。",
+   "v_en": "res://assets/voice/chapter_4_045b58d0.ogg",
+   "v_ja": "res://assets/voice/chapter_4_045b58d0.ja.ogg"
+  },
+  {
+   "id": "chapter_4_4adc3052",
+   "src": 139,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "Then tonight.",
+   "ja": "なら、今夜。",
+   "v_en": "res://assets/voice/chapter_4_4adc3052.ogg",
+   "v_ja": "res://assets/voice/chapter_4_4adc3052.ja.ogg"
+  },
+  {
+   "id": "chapter_4_bd5d0399",
+   "src": 140,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She looks at your hands. They are not shaking this time. She notices that too.",
+   "ja": "彼女はあなたの手を見る。今度は震えていない。それにも彼女は気づく。",
+   "v_en": "res://assets/voice/chapter_4_bd5d0399.ogg",
+   "v_ja": "res://assets/voice/chapter_4_bd5d0399.ja.ogg"
+  },
+  {
+   "id": "chapter_4_1f4bfe52",
+   "src": 146,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "And if it is empty on Thursday?",
+   "ja": "そして、もし木曜日に空っぽだったら？",
+   "v_en": "res://assets/voice/chapter_4_1f4bfe52.ogg",
+   "v_ja": "res://assets/voice/chapter_4_1f4bfe52.ja.ogg"
+  },
+  {
+   "id": "chapter_4_e99a2e41",
+   "src": 147,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "Then it is empty on the record, with a witness, and the Dean has to explain why a room on her own 1994 survey has nothing in it.",
+   "ja": "記録上は空室だ。証人もいる。1994年の調査で彼女自身が確認した部屋が、なぜ空っぽなのか。学部長は説明を求められることになる。",
+   "v_en": "res://assets/voice/chapter_4_e99a2e41.ogg",
+   "v_ja": "res://assets/voice/chapter_4_e99a2e41.ja.ogg"
+  },
+  {
+   "id": "chapter_4_743ccae9",
+   "src": 148,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She thinks about that. \"That is either very clever or very cowardly,\" she says. \"I will tell you which on Thursday.\"",
+   "ja": "彼女はそれについて考える。「それは、とても賢いか、とても臆病かのどちらかです」と彼女は言う。「どちらなのかは木曜日に教えます」",
+   "v_en": "res://assets/voice/chapter_4_743ccae9.ogg",
+   "v_ja": "res://assets/voice/chapter_4_743ccae9.ja.ogg"
+  },
+  {
+   "id": "chapter_4_f46e8bac",
+   "src": 154,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "She already knows. Her phone buzzed at 2:24, you said so. That was the file room door.",
+   "ja": "彼女はもう知っている。2時24分に彼女の携帯が鳴った。お前がそう言った。それは資料室のドアだった。",
+   "v_en": "res://assets/voice/chapter_4_f46e8bac.ogg",
+   "v_ja": "res://assets/voice/chapter_4_f46e8bac.ja.ogg"
+  },
+  {
+   "id": "chapter_4_f35a8c7b",
+   "src": 155,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "Then putting it back costs nothing.",
+   "ja": "ならば、元に戻すだけだ。費用はかからない。",
+   "v_en": "res://assets/voice/chapter_4_f35a8c7b.ogg",
+   "v_ja": "res://assets/voice/chapter_4_f35a8c7b.ja.ogg"
+  },
+  {
+   "id": "chapter_4_e0791f02",
+   "src": 156,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "It costs the file.",
+   "ja": "ファイルが代償だ。",
+   "v_en": "res://assets/voice/chapter_4_e0791f02.ogg",
+   "v_ja": "res://assets/voice/chapter_4_e0791f02.ja.ogg"
+  },
+  {
+   "id": "chapter_4_276ae66f",
+   "src": 157,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She closes the box very carefully. She does not look at you while she does it.",
+   "ja": "彼女は慎重に箱を閉める。その間、お前を見ない。",
+   "v_en": "res://assets/voice/chapter_4_276ae66f.ogg",
+   "v_ja": "res://assets/voice/chapter_4_276ae66f.ja.ogg"
+  },
+  {
+   "id": "chapter_4_56c9e39a",
+   "src": 167,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Eleven o'clock. She has washed the black off her hands. She has not gone home.",
+   "ja": "11時。彼女は手の黒い汚れを洗い落とした。まだ帰っていない。",
+   "v_en": "res://assets/voice/chapter_4_56c9e39a.ogg",
+   "v_ja": "res://assets/voice/chapter_4_56c9e39a.ja.ogg"
+  },
+  {
+   "id": "chapter_4_d0c42578",
+   "src": 168,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "If we go down there tonight and it goes wrong, they'll say you made me.",
+   "ja": "「今夜あそこへ降りて失敗したら、あなたが私にやらせたと言われます」",
+   "v_en": "res://assets/voice/chapter_4_d0c42578.ogg",
+   "v_ja": "res://assets/voice/chapter_4_d0c42578.ja.ogg"
+  },
+  {
+   "id": "chapter_4_b90ed1ca",
+   "src": 169,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "They will be right. On paper.",
+   "ja": "「奴らは正しい。書類上はな」",
+   "v_en": "res://assets/voice/chapter_4_b90ed1ca.ogg",
+   "v_ja": "res://assets/voice/chapter_4_b90ed1ca.ja.ogg"
+  },
+  {
+   "id": "chapter_4_a77797db",
+   "src": 170,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "I want it on paper, then. Properly. Write it.",
+   "ja": "「ならば、それを書類に残したい。きちんと。書け」",
+   "v_en": "res://assets/voice/chapter_4_a77797db.ogg",
+   "v_ja": "res://assets/voice/chapter_4_a77797db.ja.ogg"
+  },
+  {
+   "id": "chapter_4_d0274726",
+   "src": 171,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She puts a sheet in front of you. You write it: {i}Miss Ashcombe acted on my instruction at all times.{/i} You sign it. Your own hand.",
+   "ja": "彼女は一枚の紙をお前の前に置く。お前はそれを書く。{i}アッシュコム嬢は常に私の指示に従って行動した。{/i} お前はそれに署名する。お前自身の筆跡で。",
+   "v_en": "res://assets/voice/chapter_4_d0274726.ogg",
+   "v_ja": "res://assets/voice/chapter_4_d0274726.ja.ogg"
+  },
+  {
+   "id": "chapter_4_081fcdab",
+   "src": 172,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She reads it twice, folds it into her blouse, and then takes the blouse off.",
+   "ja": "彼女はそれを二度読む。ブラウスの中に折りたたんで入れる。そしてブラウスを脱ぎ捨てる。",
+   "v_en": "res://assets/voice/chapter_4_081fcdab.ogg",
+   "v_ja": "res://assets/voice/chapter_4_081fcdab.ja.ogg"
+  },
+  {
+   "id": "chapter_4_6f501ed7",
+   "src": 176,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "There is nothing slow about it tonight. She wants to be held down and she says so, and you do, wrists above her head on the desk, the folded paper somewhere under her shoulder.",
+   "ja": "今夜、そこにためらいはない。彼女は押さえつけられることを望み、それを口にする。お前はそれに従う。手首は頭上で机に固定され、折りたたまれた紙は彼女の肩の下に埋もれている。",
+   "v_en": "res://assets/voice/chapter_4_6f501ed7.ogg",
+   "v_ja": "res://assets/voice/chapter_4_6f501ed7.ja.ogg"
+  },
+  {
+   "id": "chapter_4_543a37ce",
+   "src": 177,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She keeps her eyes open the whole time. When you slow down she says {i}on my instruction{/i} in your own voice, and laughs — and you stop being gentle, and she stops laughing.",
+   "ja": "彼女はその間ずっと目を開けている。あなたが緩めると、彼女はあなた自身の声で{i}私の指示による{/i}と言って笑い——あなたは優しくするのをやめ、彼女は笑うのをやめる。",
+   "v_en": "res://assets/voice/chapter_4_543a37ce.ogg",
+   "v_ja": "res://assets/voice/chapter_4_543a37ce.ja.ogg"
+  },
+  {
+   "id": "chapter_4_d549cd6d",
+   "src": 178,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She comes hard and quiet, biting the inside of her own arm. You follow her. Afterwards she keeps your wrists, a long time, and says nothing at all.",
+   "ja": "彼女は激しく、静かに達する。自分の腕の内側を噛みしめながら。お前も彼女に続く。その後、彼女はお前の手首を長い間掴んだまま、何も言わない。",
+   "v_en": "res://assets/voice/chapter_4_d549cd6d.ogg",
+   "v_ja": "res://assets/voice/chapter_4_d549cd6d.ja.ogg"
+  },
+  {
+   "id": "chapter_4_7f832ab1",
+   "src": 182,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Eleven o'clock. Your flat, for the first time. She looks at the bookshelves the way other women look at photographs.",
+   "ja": "11時。お前の部屋。初めてだ。彼女は、他の女たちが写真を見るように、本棚を見つめる。",
+   "v_en": "res://assets/voice/chapter_4_7f832ab1.ogg",
+   "v_ja": "res://assets/voice/chapter_4_7f832ab1.ja.ogg"
+  },
+  {
+   "id": "chapter_4_a8f9f469",
+   "src": 183,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Your father. Four hundred pounds.",
+   "ja": "お前の父親。400ポンド。",
+   "v_en": "res://assets/voice/chapter_4_a8f9f469.ogg",
+   "v_ja": "res://assets/voice/chapter_4_a8f9f469.ja.ogg"
+  },
+  {
+   "id": "chapter_4_b5837b3c",
+   "src": 184,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "I will ask him. He is eighty-two. He will tell me it was a subscription.",
+   "ja": "「彼に尋ねてみる。彼は82歳だ。彼はそれが購読料だったと言うだろう」",
+   "v_en": "res://assets/voice/chapter_4_b5837b3c.ogg",
+   "v_ja": "res://assets/voice/chapter_4_b5837b3c.ja.ogg"
+  },
+  {
+   "id": "chapter_4_82165b44",
+   "src": 185,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "Maybe it was.",
+   "ja": "「そうだったのかもしれない」",
+   "v_en": "res://assets/voice/chapter_4_82165b44.ogg",
+   "v_ja": "res://assets/voice/chapter_4_82165b44.ja.ogg"
+  },
+  {
+   "id": "chapter_4_7e6e2b4b",
+   "src": 186,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "Maybe. Everyone in that ledger thought they were paying a subscription.",
+   "ja": "「そうかもしれない。あの台帳に載っている誰もが、購読料を払っていると思っていた」",
+   "v_en": "res://assets/voice/chapter_4_7e6e2b4b.ogg",
+   "v_ja": "res://assets/voice/chapter_4_7e6e2b4b.ja.ogg"
+  },
+  {
+   "id": "chapter_4_52902b7b",
+   "src": 187,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She takes off her glasses and puts them on a shelf between two books she has already decided she does not approve of.",
+   "ja": "彼女は眼鏡を外す。既に気に入らないと決めた二冊の本の間、棚に置く。",
+   "v_en": "res://assets/voice/chapter_4_52902b7b.ogg",
+   "v_ja": "res://assets/voice/chapter_4_52902b7b.ja.ogg"
+  },
+  {
+   "id": "chapter_4_6369f93c",
+   "src": 191,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "A bed, for once. Sheets. She finds it funny and then does not.",
+   "ja": "珍しく、ベッド。シーツ。彼女はそれを滑稽だと感じた。そして、すぐにそうではなくなった。",
+   "v_en": "res://assets/voice/chapter_4_6369f93c.ogg",
+   "v_ja": "res://assets/voice/chapter_4_6369f93c.ja.ogg"
+  },
+  {
+   "id": "chapter_4_1f19a8cf",
+   "src": 192,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She is different lying down, with no crate and no desk to fight. She lets you take your time. She lets you look. She talks low the whole way through — about nothing, about the shelf, about the rain — until the talking turns into your name, and then into nothing at all.",
+   "ja": "横たわった彼女は違う。戦うべき木箱も机もない。彼女はあなたに時間をかけさせる。見ることを許す。そして低い声で最後まで喋り続ける——何でもないことを、棚のことを、雨のことを——やがてその喋りがあなたの名前になり、それから何でもなくなるまで。",
+   "v_en": "res://assets/voice/chapter_4_1f19a8cf.ogg",
+   "v_ja": "res://assets/voice/chapter_4_1f19a8cf.ja.ogg"
+  },
+  {
+   "id": "chapter_4_423e1f5e",
+   "src": 193,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "You come inside her with her ankles crossed at the small of your back and her hand flat over your heart as if checking it is still there.",
+   "ja": "彼女の足首がお前の腰に絡み、その手はお前の心臓の上に平らに置かれる。まるでそれがまだそこにあるか確かめるように。お前は彼女の中で果てる。",
+   "v_en": "res://assets/voice/chapter_4_423e1f5e.ogg",
+   "v_ja": "res://assets/voice/chapter_4_423e1f5e.ja.ogg"
+  },
+  {
+   "id": "chapter_4_32e5da57",
+   "src": 194,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She falls asleep first. You lie awake and think about four hundred pounds in 1971.",
+   "ja": "彼女が先に眠りに落ちる。お前は目覚めたまま、1971年の400ポンドについて考える。",
+   "v_en": "res://assets/voice/chapter_4_32e5da57.ogg",
+   "v_ja": "res://assets/voice/chapter_4_32e5da57.ja.ogg"
+  },
+  {
+   "id": "chapter_4_c660092a",
+   "src": 198,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Eleven o'clock. The postgraduate block, her room, which you have never seen. One bed, one desk, four hundred books and a kettle.",
+   "ja": "11時。大学院棟。彼女の部屋。お前は一度も見たことがない。ベッドが一つ、机が一つ、本が400冊、そして電気ケトル。",
+   "v_en": "res://assets/voice/chapter_4_c660092a.ogg",
+   "v_ja": "res://assets/voice/chapter_4_c660092a.ja.ogg"
+  },
+  {
+   "id": "chapter_4_01427d80",
+   "src": 199,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "You're the first faculty member ever to stand in this room. If anyone sees you leave, I lose my funding.",
+   "ja": "「この部屋に立った教員はあなたが初めてです。出ていくところを誰かに見られたら、私は奨学金を失う」",
+   "v_en": "res://assets/voice/chapter_4_01427d80.ogg",
+   "v_ja": "res://assets/voice/chapter_4_01427d80.ja.ogg"
+  },
+  {
+   "id": "chapter_4_ea440645",
+   "src": 200,
+   "label": "chapter_4",
+   "who": "protagonist",
+   "en": "Then I will not leave.",
+   "ja": "ならば、出ない。",
+   "v_en": "res://assets/voice/chapter_4_ea440645.ogg",
+   "v_ja": "res://assets/voice/chapter_4_ea440645.ja.ogg"
+  },
+  {
+   "id": "chapter_4_cc8e6a27",
+   "src": 201,
+   "label": "chapter_4",
+   "who": "elena",
+   "en": "That was the idea.",
+   "ja": "それが狙い。",
+   "v_en": "res://assets/voice/chapter_4_cc8e6a27.ogg",
+   "v_ja": "res://assets/voice/chapter_4_cc8e6a27.ja.ogg"
+  },
+  {
+   "id": "chapter_4_1011e269",
+   "src": 205,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "A single bed. Neither of you fits. You make it work, on your side, her back against your chest, your hand between her legs while she reads you the strongroom inventory from her phone in a whisper until she cannot.",
+   "ja": "シングルベッド。二人には狭すぎる。お前は体を横にし、彼女の背中をお前の胸に押し当てる。お前の手は彼女の股間に。彼女は携帯から金庫の在庫リストを囁くように読み上げる。もう読めなくなるまで。",
+   "v_en": "res://assets/voice/chapter_4_1011e269.ogg",
+   "v_ja": "res://assets/voice/chapter_4_1011e269.ja.ogg"
+  },
+  {
+   "id": "chapter_4_b2123e18",
+   "src": 206,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She turns over. What follows is careful because the walls are thin, and fierce for the same reason: her mouth against your shoulder, yours in her hair, the bed complaining under both of you.",
+   "ja": "彼女は寝返りを打つ。そこから先は、壁が薄いから慎重で、壁が薄いからこそ激しい。彼女の口はあなたの肩に、あなたの口は彼女の髪に、ベッドは二人の下で文句を言い続ける。",
+   "v_en": "res://assets/voice/chapter_4_b2123e18.ogg",
+   "v_ja": "res://assets/voice/chapter_4_b2123e18.ja.ogg"
+  },
+  {
+   "id": "chapter_4_63f1b50e",
+   "src": 207,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "She comes with her hand over your mouth this time. Fair is fair. You come with her name in your teeth.",
+   "ja": "今度は彼女が、お前の口を手で塞ぎながら絶頂を迎える。おあいこだ。お前は、彼女の名を歯の間に噛みしめながら果てる。",
+   "v_en": "res://assets/voice/chapter_4_63f1b50e.ogg",
+   "v_ja": "res://assets/voice/chapter_4_63f1b50e.ja.ogg"
+  },
+  {
+   "id": "chapter_4_38a14f8b",
+   "src": 208,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Afterwards she puts her glasses on and reads you the rest of the inventory. Page four. The last line. {i}Vance, H. 1971. 400. Chemistry. Withdrawn.{/i}",
+   "ja": "その後、彼女は眼鏡をかけ、在庫リストの残りを読み上げる。4ページ目。最後の行。{i}ヴァンス、H。1971年。400。化学。撤回。{/i}",
+   "v_en": "res://assets/voice/chapter_4_38a14f8b.ogg",
+   "v_ja": "res://assets/voice/chapter_4_38a14f8b.ja.ogg"
+  },
+  {
+   "id": "chapter_4_c56bf244",
+   "src": 215,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Withdrawn. Not crossed out. Withdrawn, in 1971, by a man who taught chemistry in Leeds and never came back.",
+   "ja": "撤回。抹消ではない。1971年に、リーズで化学を教えていた男によって撤回された。その男は二度と戻らなかった。",
+   "v_en": "res://assets/voice/chapter_4_c56bf244.ogg",
+   "v_ja": "res://assets/voice/chapter_4_c56bf244.ja.ogg"
+  },
+  {
+   "id": "chapter_4_0772df3c",
+   "src": 216,
+   "label": "chapter_4",
+   "who": "narrator",
+   "en": "Your father got out. The Ashcombes did not. That is the whole difference, and you have been countersigning it for twenty years without reading it.",
+   "ja": "お前の父親は逃れた。アシュコム家はそうではなかった。それが全ての違いだ。そしてお前は、それを読まずに20年間、副署し続けてきた。",
+   "v_en": "res://assets/voice/chapter_4_0772df3c.ogg",
+   "v_ja": "res://assets/voice/chapter_4_0772df3c.ja.ogg"
+  }
+ ],
+ "menus": {
+  "Take page fourteen with you. Put it on her desk.": "14ページを持って行け。彼女の机に置け。",
+  "Take nothing. Let her think you know less than you do.": "何も持っていくな。お前が知るより少ないと、彼女に思わせておけ。",
+  "Take the survey approval and ask her, in writing, who authorised it.": "調査許可書を取れ。誰がそれを許可したのか、書面で彼女に問え。",
+  "Ask her directly what is under the chapel floor.": "礼拝堂の床下に何があるのか、直接彼女に聞け。",
+  "Talk about the weather until the tea is gone.": "紅茶がなくなるまで、天気の話でもしておけ。",
+  "Tell her Cobb showed you the deaccession sheet.": "彼女に言え、コブが廃棄目録を見せたと。",
+  "\"We open the strongroom tonight.\"": "\"今夜、厳重保管室を開ける。\"",
+  "\"We do it Thursday. Properly. With the witness.\"": "\"木曜日にやる。きちんと。証人を立てて。\"",
+  "\"Put the file back. We were never in the annex.\"": "\"ファイルを戻せ。別館にはいなかった。\""
+ }
+}

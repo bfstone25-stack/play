@@ -1,0 +1,551 @@
+{
+ "id": "night5",
+ "title_key": "n5_title",
+ "sub_key": "n5_sub",
+ "turns": 26,
+ "clock_start": 1380,
+ "minutes_per_turn": 15,
+ "start_room": "cellar",
+ "start_event": "n5_open",
+ "map": {
+  "image": "blackwood",
+  "rooms": {
+   "cellar": [
+    0.2,
+    0.72
+   ],
+   "stair": [
+    0.5,
+    0.72
+   ],
+   "muniment": [
+    0.8,
+    0.72
+   ]
+  }
+ },
+ "rooms": {
+  "cellar": {
+   "name_key": "r_cellar",
+   "plate": "cellar",
+   "music": "explore",
+   "mood": {
+    "ambient": "#5d6474",
+    "lamps": [
+     [
+      0.85,
+      0.2,
+      0.8,
+      "#c0d0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "crane",
+     "kind": "enemy",
+     "enemy": "crane_n5",
+     "pos": [
+      0.55,
+      0.45
+     ],
+     "event": "n5_crane_pre",
+     "after": "n5_crane_post"
+    },
+    {
+     "id": "bricks",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.5
+     ],
+     "event": "n5_bricks",
+     "label_key": "hs_bricks",
+     "xp": 10,
+     "gives": [
+      "biscuits"
+     ],
+     "if_flag": "crane5_done"
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "stair",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "crane5_done"
+    }
+   ]
+  },
+  "stair": {
+   "name_key": "r_stair",
+   "plate": "stair",
+   "music": "explore",
+   "mood": {
+    "ambient": "#6f7486",
+    "lamps": [
+     [
+      0.5,
+      0.4,
+      0.9,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "grice",
+     "kind": "enemy",
+     "enemy": "grice_n5",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n5_grice_pre",
+     "after": "n5_grice_post"
+    },
+    {
+     "id": "ambrose",
+     "kind": "enemy",
+     "enemy": "ambrose_n5",
+     "pos": [
+      0.35,
+      0.45
+     ],
+     "event": "n5_ambrose_pre",
+     "after": "n5_ambrose_post",
+     "if_flag": "grice5_done"
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "to": "cellar",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_muniment",
+     "kind": "door",
+     "to": "muniment",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "ambrose5_done"
+    }
+   ],
+   "enter_event": "n5_stair"
+  },
+  "muniment": {
+   "name_key": "r_muniment",
+   "plate": "muniment",
+   "music": "explore",
+   "mood": {
+    "ambient": "#6a7068",
+    "lamps": [
+     [
+      0.6,
+      0.35,
+      1.0,
+      "#c0ffc0"
+     ]
+    ]
+   },
+   "hotspots": [],
+   "enter_event": "n5_muniment"
+  }
+ },
+ "events": {
+  "n5_open": [
+   {
+    "bg": "cellar"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "ch5:19-19"
+   },
+   {
+    "if_flag": "ritual_interrupted",
+    "then": [
+     {
+      "lines": "ch5:22-23"
+     }
+    ],
+    "else": [
+     {
+      "lines": "ch5:25-26"
+     }
+    ]
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.62
+   },
+   {
+    "lines": "ch5:31-33"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n5_crane_pre": [
+   {
+    "say": "narrator",
+    "key": "n5_crane_1"
+   },
+   {
+    "say": "crane",
+    "key": "n5_crane_2"
+   }
+  ],
+  "n5_crane_post": [
+   {
+    "say": "narrator",
+    "key": "n5_crane_3"
+   },
+   {
+    "flag": "crane5_done"
+   }
+  ],
+  "n5_bricks": [
+   {
+    "say": "narrator",
+    "key": "n5_bricks_1"
+   },
+   {
+    "lines": "ch5:35-37"
+   }
+  ],
+  "n5_stair": [
+   {
+    "say": "narrator",
+    "key": "n5_stair_1"
+   }
+  ],
+  "n5_grice_pre": [
+   {
+    "say": "narrator",
+    "key": "n5_grice_1"
+   },
+   {
+    "say": "grice",
+    "key": "n5_grice_2"
+   }
+  ],
+  "n5_grice_post": [
+   {
+    "say": "grice",
+    "key": "n5_grice_3"
+   },
+   {
+    "flag": "grice5_done"
+   }
+  ],
+  "n5_ambrose_pre": [
+   {
+    "say": "narrator",
+    "key": "n5_ambrose_1"
+   },
+   {
+    "say": "ambrose",
+    "key": "n5_ambrose_2"
+   }
+  ],
+  "n5_ambrose_post": [
+   {
+    "say": "ambrose",
+    "key": "n5_ambrose_3"
+   },
+   {
+    "flag": "ambrose5_done"
+   }
+  ],
+  "n5_muniment": [
+   {
+    "cg": "cg_muniment"
+   },
+   {
+    "lines": "ch5:45-46"
+   },
+   {
+    "show": "elena_flustered",
+    "x": 0.62
+   },
+   {
+    "lines": "ch5:50-61"
+   },
+   {
+    "sfx": "heartbeat"
+   },
+   {
+    "lines": "ch5:65-65"
+   },
+   {
+    "if_flag": "ritual_interrupted",
+    "then": [
+     {
+      "lines": "ch5:68-69"
+     }
+    ],
+    "else": [
+     {
+      "lines": "ch5:71-71"
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "show": "dean_holloway",
+    "x": 0.3
+   },
+   {
+    "show": "penhallow",
+    "x": 0.75
+   },
+   {
+    "lines": "ch5:78-85"
+   },
+   {
+    "say": "narrator",
+    "key": "n5_pen_pre_1"
+   },
+   {
+    "battle": "penhallow_final"
+   },
+   {
+    "show": "dean_holloway",
+    "x": 0.3
+   },
+   {
+    "say": "narrator",
+    "key": "n5_pen_post_1"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"No. Every name goes back. All sixty volumes. Publicly. Starting with hers.\"",
+      "do": [
+       {
+        "trust": 1
+       },
+       {
+        "flag": "ending_rewrite"
+       }
+      ]
+     },
+     {
+      "menu": "\"The board has two members you do not own. They get the ledger tonight. So does the Guardian.\"",
+      "do": [
+       {
+        "flag": "ending_expose"
+       }
+      ]
+     },
+     {
+      "menu": "Take the 1990s volume. Take Elena. Walk past them and do not stop.",
+      "do": [
+       {
+        "trust": 1
+       },
+       {
+        "flag": "ending_abscond"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "if_flag": "ending_rewrite",
+    "then": [
+     {
+      "event": "n5_end_rewrite"
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "ending_expose",
+      "then": [
+       {
+        "event": "n5_end_expose"
+       }
+      ],
+      "else": [
+       {
+        "event": "n5_end_abscond"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "music": "title"
+   },
+   {
+    "bg": "study"
+   },
+   {
+    "lines": "ch5:255-255"
+   },
+   {
+    "if_flag": "ending_rewrite",
+    "then": [
+     {
+      "lines": "ch5:257-257"
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "ending_expose",
+      "then": [
+       {
+        "lines": "ch5:259-259"
+       }
+      ],
+      "else": [
+       {
+        "lines": "ch5:261-261"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "lines": "ch5:262-262"
+   },
+   {
+    "say": "narrator",
+    "key": "credits_1"
+   },
+   {
+    "say": "narrator",
+    "key": "credits_2"
+   },
+   {
+    "end_night": true,
+    "next": ""
+   }
+  ],
+  "n5_end_rewrite": [
+   {
+    "if_trust": 9,
+    "then": [
+     {
+      "cg": "cg_ch5_muniment"
+     },
+     {
+      "lines": "ch5:137-140"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n5_trust_hint"
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "cg": "cg_aftermath"
+   },
+   {
+    "lines": "ch5:147-148"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.62
+   },
+   {
+    "lines": "ch5:151-155"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n5_end_expose": [
+   {
+    "if_trust": 9,
+    "then": [
+     {
+      "cg": "cg_ch5_muniment"
+     },
+     {
+      "lines": "ch5:181-184"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n5_trust_hint"
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "cg": "cg_aftermath"
+   },
+   {
+    "lines": "ch5:191-191"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.62
+   },
+   {
+    "lines": "ch5:194-198"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n5_end_abscond": [
+   {
+    "if_trust": 9,
+    "then": [
+     {
+      "cg": "cg_ch5_muniment"
+     },
+     {
+      "lines": "ch5:224-227"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n5_trust_hint"
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "cg": "cg_aftermath"
+   },
+   {
+    "lines": "ch5:234-234"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.62
+   },
+   {
+    "lines": "ch5:237-241"
+   },
+   {
+    "show": ""
+   }
+  ]
+ }
+}

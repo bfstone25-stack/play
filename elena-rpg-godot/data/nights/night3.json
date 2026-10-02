@@ -1,0 +1,597 @@
+{
+ "id": "night3",
+ "title_key": "n3_title",
+ "sub_key": "n3_sub",
+ "turns": 26,
+ "clock_start": 960,
+ "minutes_per_turn": 15,
+ "start_room": "study",
+ "start_event": "n3_open",
+ "map": {
+  "image": "blackwood",
+  "rooms": {
+   "study": [
+    0.14,
+    0.2
+   ],
+   "deans_corridor": [
+    0.42,
+    0.2
+   ],
+   "reading_room": [
+    0.7,
+    0.2
+   ],
+   "common_room": [
+    0.7,
+    0.72
+   ]
+  }
+ },
+ "rooms": {
+  "study": {
+   "name_key": "r_study",
+   "plate": "study",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7d7480",
+    "lamps": [
+     [
+      0.69,
+      0.47,
+      0.9,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "gift",
+     "kind": "search",
+     "pos": [
+      0.6,
+      0.66
+     ],
+     "event": "n3_gift",
+     "label_key": "hs_desk",
+     "gives": [
+      "gift_pen",
+      "evening"
+     ]
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "deans_corridor",
+     "pos": [
+      0.9,
+      0.82
+     ]
+    }
+   ]
+  },
+  "deans_corridor": {
+   "name_key": "r_deans_corridor",
+   "plate": "deans_corridor",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7480",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "grice",
+     "kind": "enemy",
+     "enemy": "grice_n3",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n3_grice_pre",
+     "after": "n3_grice_post"
+    },
+    {
+     "id": "portraits",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.35
+     ],
+     "event": "n3_portraits",
+     "label_key": "hs_portraits",
+     "xp": 10
+    },
+    {
+     "id": "to_study",
+     "kind": "door",
+     "to": "study",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_hall",
+     "kind": "door",
+     "to": "reading_room",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "grice3_done"
+    }
+   ],
+   "enter_event": "n3_corr"
+  },
+  "reading_room": {
+   "name_key": "r_reading_room",
+   "plate": "reading_room",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a7a78",
+    "lamps": [
+     [
+      0.7,
+      0.3,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "sallis",
+     "kind": "enemy",
+     "enemy": "sallis",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n3_sallis_pre",
+     "after": "n3_sallis_post"
+    },
+    {
+     "id": "programme",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.6
+     ],
+     "event": "n3_programme",
+     "label_key": "hs_programme",
+     "xp": 10,
+     "gives": [
+      "survey"
+     ]
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "deans_corridor",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_common",
+     "kind": "door",
+     "to": "common_room",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "sallis_done"
+    }
+   ],
+   "enter_event": "n3_hall"
+  },
+  "common_room": {
+   "name_key": "r_common_room",
+   "plate": "common_room",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a6e78",
+    "lamps": [
+     [
+      0.72,
+      0.3,
+      1.0,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "ambrose",
+     "kind": "enemy",
+     "enemy": "ambrose",
+     "pos": [
+      0.4,
+      0.5
+     ],
+     "event": "n3_ambrose_pre",
+     "after": "n3_ambrose_post"
+    },
+    {
+     "id": "decanter",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.55
+     ],
+     "event": "n3_decanter",
+     "label_key": "hs_decanter",
+     "gives": [
+      "brandy"
+     ]
+    },
+    {
+     "id": "penhallow",
+     "kind": "enemy",
+     "enemy": "penhallow_boss",
+     "pos": [
+      0.6,
+      0.45
+     ],
+     "event": "n3_pen_pre",
+     "after": "n3_pen_post",
+     "if_flag": "ambrose_done"
+    },
+    {
+     "id": "to_hall",
+     "kind": "door",
+     "to": "reading_room",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "if_not_flag": "pen3_done"
+    }
+   ],
+   "enter_event": "n3_common"
+  }
+ },
+ "events": {
+  "n3_open": [
+   {
+    "bg": "study"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "ch3:16-17"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.62
+   },
+   {
+    "lines": "ch3:22-32"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"Then we dig it up.\"",
+      "do": [
+       {
+        "lines": "ch3:39-41"
+       }
+      ]
+     },
+     {
+      "menu": "\"We go to the board with what we have.\"",
+      "do": [
+       {
+        "lines": "ch3:46-49"
+       }
+      ]
+     },
+     {
+      "menu": "\"We wait. Somebody will make a mistake at the lecture.\"",
+      "do": [
+       {
+        "lines": "ch3:55-58"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "say": "narrator",
+    "key": "n3_plan_1"
+   }
+  ],
+  "n3_gift": [
+   {
+    "say": "narrator",
+    "key": "n3_gift_1"
+   }
+  ],
+  "n3_corr": [
+   {
+    "say": "narrator",
+    "key": "n3_corr_1"
+   }
+  ],
+  "n3_grice_pre": [
+   {
+    "say": "narrator",
+    "key": "n3_grice_1"
+   },
+   {
+    "say": "grice",
+    "key": "n3_grice_2"
+   }
+  ],
+  "n3_grice_post": [
+   {
+    "say": "grice",
+    "key": "n3_grice_3"
+   },
+   {
+    "flag": "grice3_done"
+   }
+  ],
+  "n3_portraits": [
+   {
+    "say": "narrator",
+    "key": "n3_portraits_1"
+   }
+  ],
+  "n3_hall": [
+   {
+    "say": "narrator",
+    "key": "n3_hall_1"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch3:65-67"
+   }
+  ],
+  "n3_sallis_pre": [
+   {
+    "say": "narrator",
+    "key": "n3_sallis_1"
+   },
+   {
+    "say": "sallis",
+    "key": "n3_sallis_2"
+   }
+  ],
+  "n3_sallis_post": [
+   {
+    "say": "sallis",
+    "key": "n3_sallis_3"
+   },
+   {
+    "flag": "sallis_done"
+   }
+  ],
+  "n3_programme": [
+   {
+    "say": "narrator",
+    "key": "n3_programme_1"
+   }
+  ],
+  "n3_common": [
+   {
+    "say": "narrator",
+    "key": "n3_common_1"
+   },
+   {
+    "lines": "ch3:69-70"
+   }
+  ],
+  "n3_ambrose_pre": [
+   {
+    "say": "ambrose",
+    "key": "n3_ambrose_1"
+   }
+  ],
+  "n3_ambrose_post": [
+   {
+    "say": "ambrose",
+    "key": "n3_ambrose_2"
+   },
+   {
+    "flag": "ambrose_done"
+   }
+  ],
+  "n3_decanter": [
+   {
+    "say": "narrator",
+    "key": "n3_decanter_1"
+   }
+  ],
+  "n3_pen_pre": [
+   {
+    "say": "narrator",
+    "key": "n3_pen_pre_1"
+   },
+   {
+    "show": "penhallow",
+    "x": 0.62
+   },
+   {
+    "lines": "ch3:75-78"
+   }
+  ],
+  "n3_pen_post": [
+   {
+    "choice": [
+     {
+      "menu": "\"You knew her father. He carried your grandfather's money out of the building.\"",
+      "do": [
+       {
+        "lines": "ch3:84-86"
+       }
+      ]
+     },
+     {
+      "menu": "\"She's a good researcher. Family is not my concern.\"",
+      "do": [
+       {
+        "lines": "ch3:91-92"
+       }
+      ]
+     },
+     {
+      "menu": "Say nothing. Let him talk.",
+      "do": [
+       {
+        "lines": "ch3:98-100"
+       },
+       {
+        "flag": "dean_blackmail"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "flag": "pen3_done"
+   },
+   {
+    "event": "n3_end"
+   }
+  ],
+  "n3_end": [
+   {
+    "say": "narrator",
+    "key": "n3_back_1"
+   },
+   {
+    "bg": "study"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch3:106-106"
+   },
+   {
+    "show": "elena_flustered",
+    "x": 0.62
+   },
+   {
+    "lines": "ch3:109-112"
+   },
+   {
+    "if_flag": "route_walk",
+    "then": [
+     {
+      "lines": "ch3:115-121"
+     },
+     {
+      "trust": 1
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "route_control",
+      "then": [
+       {
+        "lines": "ch3:124-130"
+       }
+      ],
+      "else": [
+       {
+        "lines": "ch3:132-137"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "if_trust": 7,
+    "then": [
+     {
+      "if_flag": "route_control",
+      "then": [
+       {
+        "cg": "cg_ch3_crypt"
+       }
+      ],
+      "else": [
+       {
+        "cg": "cg_ch3_crypt"
+       }
+      ]
+     },
+     {
+      "if_flag": "route_walk",
+      "then": [
+       {
+        "lines": "ch3:150-154"
+       }
+      ],
+      "else": [
+       {
+        "if_flag": "route_control",
+        "then": [
+         {
+          "lines": "ch3:156-160"
+         }
+        ],
+        "else": [
+         {
+          "lines": "ch3:162-165"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n3_trust_hint"
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch3:170-170"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.62
+   },
+   {
+    "lines": "ch3:173-177"
+   },
+   {
+    "lines": "ch3:182-183"
+   },
+   {
+    "show": ""
+   },
+   {
+    "end_night": true,
+    "next": "night4"
+   }
+  ]
+ }
+}

@@ -1,0 +1,769 @@
+{
+ "id": "night2",
+ "title_key": "n2_title",
+ "sub_key": "n2_sub",
+ "turns": 30,
+ "clock_start": 341,
+ "minutes_per_turn": 12,
+ "start_room": "vault",
+ "start_event": "n2_open",
+ "map": {
+  "image": "blackwood",
+  "rooms": {
+   "vault": [
+    0.85,
+    0.72
+   ],
+   "corridor": [
+    0.42,
+    0.2
+   ],
+   "dock": [
+    0.2,
+    0.72
+   ],
+   "cellar": [
+    0.5,
+    0.72
+   ],
+   "study": [
+    0.14,
+    0.2
+   ]
+  }
+ },
+ "rooms": {
+  "vault": {
+   "name_key": "r_vault",
+   "plate": "vault",
+   "music": "explore",
+   "mood": {
+    "ambient": "#5e5868",
+    "lamps": [
+     [
+      0.32,
+      0.48,
+      1.0,
+      "#ffb050"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ]
+  },
+  "corridor": {
+   "name_key": "r_corridor",
+   "plate": "corridor",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a6f60",
+    "lamps": [
+     [
+      0.1,
+      0.62,
+      0.9,
+      "#ffb060"
+     ],
+     [
+      0.44,
+      0.7,
+      0.9,
+      "#ffb060"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "vey",
+     "kind": "enemy",
+     "enemy": "vey",
+     "pos": [
+      0.6,
+      0.5
+     ],
+     "event": "n2_vey_pre",
+     "after": "n2_vey_post"
+    },
+    {
+     "id": "phone",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.4
+     ],
+     "event": "n2_phone",
+     "label_key": "hs_lodge_phone",
+     "xp": 10,
+     "gives": [
+      "porter_rota"
+     ]
+    },
+    {
+     "id": "keys",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.35
+     ],
+     "event": "n2_keys",
+     "label_key": "hs_lodge",
+     "gives": [
+      "keyring"
+     ],
+     "if_flag": "vey_done"
+    },
+    {
+     "id": "to_vault",
+     "kind": "door",
+     "to": "vault",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_dock",
+     "kind": "door",
+     "to": "dock",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "vey_done"
+    }
+   ],
+   "enter_event": "n2_lodge"
+  },
+  "dock": {
+   "name_key": "r_dock",
+   "plate": "dock",
+   "music": "explore",
+   "mood": {
+    "ambient": "#5d6474",
+    "lamps": [
+     [
+      0.8,
+      0.2,
+      0.9,
+      "#c0d0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "hollis",
+     "kind": "enemy",
+     "enemy": "hollis",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n2_hollis_pre",
+     "after": "n2_hollis_post"
+    },
+    {
+     "id": "manifest",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.45
+     ],
+     "event": "n2_manifest",
+     "label_key": "hs_manifest",
+     "xp": 10
+    },
+    {
+     "id": "window",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.25
+     ],
+     "event": "n2_window",
+     "label_key": "hs_window2",
+     "gives": [
+      "tea"
+     ]
+    },
+    {
+     "id": "trolley",
+     "kind": "event",
+     "pos": [
+      0.45,
+      0.68
+     ],
+     "event": "n2_swap",
+     "label_key": "hs_trolley",
+     "if_flag": "hollis_done"
+    },
+    {
+     "id": "grice",
+     "kind": "enemy",
+     "enemy": "grice",
+     "pos": [
+      0.7,
+      0.5
+     ],
+     "event": "n2_grice_pre",
+     "after": "n2_grice_post",
+     "if_flag": "swapped"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "to": "cellar",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "grice_done"
+    }
+   ],
+   "enter_event": "n2_dock"
+  },
+  "cellar": {
+   "name_key": "r_cellar",
+   "plate": "cellar",
+   "music": "explore",
+   "mood": {
+    "ambient": "#5d6474",
+    "lamps": [
+     [
+      0.85,
+      0.2,
+      0.8,
+      "#c0d0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "crane",
+     "kind": "enemy",
+     "enemy": "crane",
+     "pos": [
+      0.55,
+      0.45
+     ],
+     "event": "n2_crane_pre",
+     "after": "n2_crane_post"
+    },
+    {
+     "id": "to_dock",
+     "kind": "door",
+     "to": "dock",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "if_not_flag": "crane_done"
+    },
+    {
+     "id": "to_study",
+     "kind": "door",
+     "to": "study",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "crane_done",
+     "label_key": "hs_back"
+    }
+   ],
+   "enter_event": "n2_coal"
+  },
+  "study": {
+   "name_key": "r_study",
+   "plate": "study",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7d7480",
+    "lamps": [
+     [
+      0.69,
+      0.47,
+      0.9,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [],
+   "enter_event": "n2_end"
+  }
+ },
+ "events": {
+  "n2_open": [
+   {
+    "bg": "vault"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "ch2:18-19"
+   },
+   {
+    "if_flag": "route_walk",
+    "then": [
+     {
+      "lines": "ch2:22-22"
+     }
+    ],
+    "else": [
+     {
+      "show": "elena_neutral",
+      "x": 0.62
+     },
+     {
+      "lines": "ch2:26-29"
+     }
+    ]
+   },
+   {
+    "sfx": "camera"
+   },
+   {
+    "lines": "ch2:33-34"
+   },
+   {
+    "show": "cobb",
+    "x": 0.62
+   },
+   {
+    "lines": "ch2:40-45"
+   },
+   {
+    "if_flag": "route_walk",
+    "then": [
+     {
+      "lines": "ch2:48-49"
+     }
+    ],
+    "else": [
+     {
+      "lines": "ch2:51-53"
+     }
+    ]
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"Who gave you that sheet, Cobb?\"",
+      "do": [
+       {
+        "lines": "ch2:60-62"
+       }
+      ]
+     },
+     {
+      "menu": "\"Take the sheet back. You never came down here.\"",
+      "do": [
+       {
+        "lines": "ch2:67-69"
+       }
+      ]
+     },
+     {
+      "menu": "Show him page fourteen.",
+      "do": [
+       {
+        "lines": "ch2:74-76"
+       },
+       {
+        "if_flag": "route_walk",
+        "then": [],
+        "else": [
+         {
+          "lines": "ch2:78-78"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch2:83-85"
+   },
+   {
+    "if_flag": "route_walk",
+    "then": [
+     {
+      "lines": "ch2:88-88"
+     },
+     {
+      "show": "elena_neutral",
+      "x": 0.62
+     },
+     {
+      "lines": "ch2:91-92"
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "route_control",
+      "then": [
+       {
+        "show": "elena_flustered",
+        "x": 0.62
+       },
+       {
+        "lines": "ch2:96-102"
+       }
+      ],
+      "else": [
+       {
+        "show": "elena_neutral",
+        "x": 0.62
+       },
+       {
+        "lines": "ch2:106-108"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "join": true
+   },
+   {
+    "show": ""
+   },
+   {
+    "say": "narrator",
+    "key": "n2_plan_1"
+   }
+  ],
+  "n2_lodge": [
+   {
+    "say": "narrator",
+    "key": "n2_lodge_1"
+   }
+  ],
+  "n2_vey_pre": [
+   {
+    "say": "vey",
+    "key": "n2_vey_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_vey_2"
+   }
+  ],
+  "n2_vey_post": [
+   {
+    "say": "narrator",
+    "key": "n2_vey_3"
+   },
+   {
+    "flag": "vey_done"
+   }
+  ],
+  "n2_phone": [
+   {
+    "say": "narrator",
+    "key": "n2_phone_1"
+   }
+  ],
+  "n2_keys": [
+   {
+    "say": "narrator",
+    "key": "n2_keyring_1"
+   }
+  ],
+  "n2_dock": [
+   {
+    "lines": "ch2:116-116"
+   },
+   {
+    "if_flag": "route_walk",
+    "then": [
+     {
+      "show": "elena_neutral",
+      "x": 0.62
+     },
+     {
+      "lines": "ch2:121-127"
+     }
+    ],
+    "else": [
+     {
+      "show": "elena_neutral",
+      "x": 0.62
+     },
+     {
+      "lines": "ch2:131-131"
+     }
+    ]
+   },
+   {
+    "lines": "ch2:133-133"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n2_hollis_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_dock_hollis_1"
+   },
+   {
+    "say": "hollis",
+    "key": "n2_dock_hollis_2"
+   }
+  ],
+  "n2_hollis_post": [
+   {
+    "flag": "hollis_done"
+   }
+  ],
+  "n2_manifest": [
+   {
+    "say": "narrator",
+    "key": "n2_manifest_1"
+   }
+  ],
+  "n2_window": [
+   {
+    "say": "narrator",
+    "key": "n2_window_1"
+   }
+  ],
+  "n2_swap": [
+   {
+    "say": "narrator",
+    "key": "n2_trolley_1"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Swap the labels. Let the van burn the journals.",
+      "do": [
+       {
+        "lines": "ch2:139-140"
+       },
+       {
+        "flag": "secret_ledger_discovered"
+       }
+      ]
+     },
+     {
+      "menu": "Empty the crate into your car. Let the van take an empty box.",
+      "do": [
+       {
+        "lines": "ch2:146-147"
+       },
+       {
+        "flag": "secret_ledger_discovered"
+       }
+      ]
+     },
+     {
+      "menu": "Let the van take it. Keep only the ledger and page fourteen.",
+      "do": [
+       {
+        "lines": "ch2:153-154"
+       },
+       {
+        "if_flag": "route_walk",
+        "then": [],
+        "else": [
+         {
+          "lines": "ch2:156-159"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "flag": "swapped"
+   }
+  ],
+  "n2_grice_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_dock_grice_1"
+   },
+   {
+    "say": "elena",
+    "key": "n2_dock_grice_2"
+   }
+  ],
+  "n2_grice_post": [
+   {
+    "flag": "grice_done"
+   }
+  ],
+  "n2_coal": [
+   {
+    "say": "narrator",
+    "key": "n2_coal_1"
+   }
+  ],
+  "n2_crane_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_crane_1"
+   },
+   {
+    "say": "crane",
+    "key": "n2_crane_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_crane_3"
+   }
+  ],
+  "n2_crane_post": [
+   {
+    "say": "narrator",
+    "key": "n2_crane_4"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_crane_5"
+   },
+   {
+    "flag": "crane_done"
+   }
+  ],
+  "n2_end": [
+   {
+    "say": "narrator",
+    "key": "n2_back_1"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch2:164-165"
+   },
+   {
+    "show": "elena_flustered",
+    "x": 0.62
+   },
+   {
+    "lines": "ch2:170-171"
+   },
+   {
+    "if_flag": "route_walk",
+    "then": [
+     {
+      "lines": "ch2:174-178"
+     }
+    ],
+    "else": []
+   },
+   {
+    "if_trust": 5,
+    "then": [
+     {
+      "if_flag": "route_control",
+      "then": [
+       {
+        "hide_cg": true
+       },
+       {
+        "show": "elena_soft",
+        "x": 0.62
+       },
+       {
+        "lines": "ch2:188-196"
+       },
+       {
+        "cg": "cg_ch2_office"
+       },
+       {
+        "lines": "ch2:200-204"
+       }
+      ],
+      "else": [
+       {
+        "if_flag": "route_pact",
+        "then": [
+         {
+          "hide_cg": true
+         },
+         {
+          "show": "elena_flustered",
+          "x": 0.62
+         },
+         {
+          "cg": "cg_coal_store"
+         },
+         {
+          "lines": "ch2:214-221"
+         },
+         {
+          "cg": "cg_ch2_office"
+         },
+         {
+          "lines": "ch2:225-228"
+         }
+        ],
+        "else": [
+         {
+          "show": "elena_neutral",
+          "x": 0.62
+         },
+         {
+          "lines": "ch2:233-238"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n2_trust_hint"
+     }
+    ]
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "ch2:245-249"
+   },
+   {
+    "show": ""
+   },
+   {
+    "end_night": true,
+    "next": "night3"
+   }
+  ]
+ }
+}

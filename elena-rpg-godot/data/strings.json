@@ -1,0 +1,1958 @@
+{
+ "title": {
+  "en": "Elena: Crimson Archives",
+  "ja": "エレナ：深紅の書庫"
+ },
+ "t_subtitle": {
+  "en": "Five nights in the Blackwood wing",
+  "ja": "ブラックウッド棟の五夜"
+ },
+ "t_note": {
+  "en": "18+ · All characters are adults · AI-generated work (see Settings → About)",
+  "ja": "18歳以上対象 · 登場人物は全員成人です · AI生成作品（設定 → 作品について）"
+ },
+ "n_protagonist": {
+  "en": "Vance",
+  "ja": "ヴァンス"
+ },
+ "n_vance": {
+  "en": "Vance",
+  "ja": "ヴァンス"
+ },
+ "n_elena": {
+  "en": "Elena",
+  "ja": "エレナ"
+ },
+ "n_cobb": {
+  "en": "Cobb",
+  "ja": "コブ"
+ },
+ "n_penhallow": {
+  "en": "Penhallow",
+  "ja": "ペンハロウ"
+ },
+ "n_dean": {
+  "en": "Dean Holloway",
+  "ja": "ホロウェイ学部長"
+ },
+ "s_wit": {
+  "en": "Wit",
+  "ja": "知力"
+ },
+ "s_cha": {
+  "en": "Charm",
+  "ja": "魅力"
+ },
+ "s_grt": {
+  "en": "Grit",
+  "ja": "根性"
+ },
+ "s_stl": {
+  "en": "Stealth",
+  "ja": "隠密"
+ },
+ "sd_wit": {
+  "en": "Bluffs, evidence, nerve pool.",
+  "ja": "はったり・証拠・胆力の上限。"
+ },
+ "sd_cha": {
+  "en": "Bribes and charm.",
+  "ja": "買収と魅了。"
+ },
+ "sd_grt": {
+  "en": "Composure, and how hard a threat lands.",
+  "ja": "平静の上限と、脅しの重さ。"
+ },
+ "sd_stl": {
+  "en": "Stalling brings suspicion down further.",
+  "ja": "時間稼ぎで疑念を大きく下げる。"
+ },
+ "a_deflect": {
+  "en": "Deflect",
+  "ja": "受け流す"
+ },
+ "a_observe": {
+  "en": "Read the room",
+  "ja": "空気を読む"
+ },
+ "a_bluff": {
+  "en": "Bluff",
+  "ja": "はったり"
+ },
+ "a_evidence": {
+  "en": "Show evidence",
+  "ja": "証拠を示す"
+ },
+ "a_bribe": {
+  "en": "Bribe",
+  "ja": "買収"
+ },
+ "a_flirt": {
+  "en": "Flirt",
+  "ja": "誘惑"
+ },
+ "a_threaten": {
+  "en": "Threaten",
+  "ja": "脅す"
+ },
+ "a_stall": {
+  "en": "Stall",
+  "ja": "時間稼ぎ"
+ },
+ "a_item": {
+  "en": "Use item",
+  "ja": "アイテム"
+ },
+ "a_lecture": {
+  "en": "Lecture",
+  "ja": "講義"
+ },
+ "a_recite": {
+  "en": "Recite in Latin",
+  "ja": "ラテン語で暗誦"
+ },
+ "ad_deflect": {
+  "en": "Halve the next blow and cool the room a little.",
+  "ja": "次の一撃を和らげ、疑念を少し下げる。"
+ },
+ "ad_observe": {
+  "en": "Elena reads them: reveals their weaknesses.",
+  "ja": "エレナが相手を読む：弱点が分かる。"
+ },
+ "ad_bluff": {
+  "en": "A confident lie. Wit.",
+  "ja": "自信たっぷりの嘘。知力。"
+ },
+ "ad_evidence": {
+  "en": "Put a document in front of them. Lowers suspicion. Needs evidence.",
+  "ja": "書類を突きつける。疑念が下がる。証拠品が必要。"
+ },
+ "ad_bribe": {
+  "en": "Folded notes. Charm. Uses one cash.",
+  "ja": "折った紙幣。魅力。現金を一つ使う。"
+ },
+ "ad_flirt": {
+  "en": "Warmth where they did not expect it. Charm.",
+  "ja": "思いがけない温かさ。魅力。"
+ },
+ "ad_threaten": {
+  "en": "Hits hard — and they remember. Suspicion climbs faster for the rest of the standoff.",
+  "ja": "強烈だが、相手は忘れない。以後この対峙では疑念が速く上がる。"
+ },
+ "ad_stall": {
+  "en": "Talk about the weather. Suspicion falls; a little composure back.",
+  "ja": "天気の話でもする。疑念が下がり、平静が少し戻る。"
+ },
+ "ad_item": {
+  "en": "Use something from your pockets.",
+  "ja": "持ち物を使う。"
+ },
+ "ad_lecture": {
+  "en": "Twenty minutes on provenance. Nobody interrupts a professor.",
+  "ja": "来歴について二十分。教授の話を遮る者はいない。"
+ },
+ "ad_recite": {
+  "en": "Elena quotes the statutes at them, in the original.",
+  "ja": "エレナが原文のまま学則を読み上げる。"
+ },
+ "i_cash": {
+  "en": "Petty cash",
+  "ja": "小口現金"
+ },
+ "id_cash": {
+  "en": "Twenties from the department tin. For bribes.",
+  "ja": "学科の缶から取った二十ポンド札。買収用。"
+ },
+ "i_tea": {
+  "en": "Flask of tea",
+  "ja": "紅茶の水筒"
+ },
+ "id_tea": {
+  "en": "Restores 16 composure.",
+  "ja": "平静を16回復。"
+ },
+ "i_sherry": {
+  "en": "College sherry",
+  "ja": "学寮のシェリー"
+ },
+ "id_sherry": {
+  "en": "Restores 8 nerve.",
+  "ja": "胆力を8回復。"
+ },
+ "i_hip_flask": {
+  "en": "Silver hip flask",
+  "ja": "銀のスキットル"
+ },
+ "id_hip_flask": {
+  "en": "Hers, engraved E.A. — give it back to her.",
+  "ja": "E.A.と刻まれた彼女の物。返してあげよう。"
+ },
+ "i_override_key": {
+  "en": "Override key",
+  "ja": "オーバーライドキー"
+ },
+ "id_override_key": {
+  "en": "Opens the Blackwood vault after eleven.",
+  "ja": "十一時以降のブラックウッド書庫を開ける。"
+ },
+ "i_deaccession": {
+  "en": "Deaccession notice",
+  "ja": "除籍通知"
+ },
+ "id_deaccession": {
+  "en": "Evidence. The crate is listed for burning tomorrow.",
+  "ja": "証拠。木箱は明日焼却予定と記されている。"
+ },
+ "i_porter_rota": {
+  "en": "Porter's rota",
+  "ja": "守衛の当番表"
+ },
+ "id_porter_rota": {
+  "en": "Evidence. Cobb signed for a round he never walked.",
+  "ja": "証拠。コブは歩いていない巡回に署名している。"
+ },
+ "i_ledger": {
+  "en": "The donor ledger",
+  "ja": "寄付者台帳"
+ },
+ "id_ledger": {
+  "en": "Evidence. 1994–1996. Page fourteen.",
+  "ja": "証拠。1994〜1996年。14ページ。"
+ },
+ "i_torch": {
+  "en": "Brass torch",
+  "ja": "真鍮の懐中電灯"
+ },
+ "id_torch": {
+  "en": "Tool. Stealth +1, Stall stronger.",
+  "ja": "道具。隠密+1、時間稼ぎ強化。"
+ },
+ "i_tweed": {
+  "en": "Tweed jacket",
+  "ja": "ツイードの上着"
+ },
+ "id_tweed": {
+  "en": "Outfit. Grit +1.",
+  "ja": "衣装。根性+1。"
+ },
+ "i_signet": {
+  "en": "The Dean's signet",
+  "ja": "学部長の印章指輪"
+ },
+ "id_signet": {
+  "en": "Accessory. Charm +1. She dropped it. Or left it.",
+  "ja": "アクセサリー。魅力+1。落としたのか、置いていったのか。"
+ },
+ "i_raincoat": {
+  "en": "Wet raincoat",
+  "ja": "濡れたレインコート"
+ },
+ "id_raincoat": {
+  "en": "Outfit. Grit +1.",
+  "ja": "衣装。根性+1。"
+ },
+ "i_cardigan": {
+  "en": "Lost-property cardigan",
+  "ja": "落とし物のカーディガン"
+ },
+ "id_cardigan": {
+  "en": "Outfit. Charm +1, Flirt stronger. Dry, at least.",
+  "ja": "衣装。魅力+1、誘惑強化。少なくとも乾いている。"
+ },
+ "i_spectacles": {
+  "en": "Spare spectacles",
+  "ja": "予備の眼鏡"
+ },
+ "id_spectacles": {
+  "en": "Accessory. Wit +1.",
+  "ja": "アクセサリー。知力+1。"
+ },
+ "br_scholar": {
+  "en": "Scholar",
+  "ja": "学究"
+ },
+ "br_rogue": {
+  "en": "Rogue",
+  "ja": "悪漢"
+ },
+ "br_archivist": {
+  "en": "Archivist",
+  "ja": "書庫番"
+ },
+ "br_accomplice": {
+  "en": "Accomplice",
+  "ja": "共犯者"
+ },
+ "sk_footnote": {
+  "en": "Footnotes",
+  "ja": "脚注"
+ },
+ "skd_footnote": {
+  "en": "Show evidence +30%.",
+  "ja": "証拠を示す +30%。"
+ },
+ "sk_tenure": {
+  "en": "Tenure",
+  "ja": "終身在職"
+ },
+ "skd_tenure": {
+  "en": "Composure +10.",
+  "ja": "平静の上限 +10。"
+ },
+ "sk_recall": {
+  "en": "Total recall",
+  "ja": "完全記憶"
+ },
+ "skd_recall": {
+  "en": "Wit +2.",
+  "ja": "知力 +2。"
+ },
+ "sk_lectern": {
+  "en": "The lectern",
+  "ja": "講壇"
+ },
+ "skd_lectern": {
+  "en": "Learn Lecture.",
+  "ja": "「講義」を習得。"
+ },
+ "sk_emeritus": {
+  "en": "Emeritus",
+  "ja": "名誉教授"
+ },
+ "skd_emeritus": {
+  "en": "Lecture +40%, evidence +20%.",
+  "ja": "講義 +40%、証拠 +20%。"
+ },
+ "sk_palm": {
+  "en": "Greased palm",
+  "ja": "袖の下"
+ },
+ "skd_palm": {
+  "en": "Bribe +30%.",
+  "ja": "買収 +30%。"
+ },
+ "sk_poker": {
+  "en": "Poker face",
+  "ja": "ポーカーフェイス"
+ },
+ "skd_poker": {
+  "en": "Bluff +30%.",
+  "ja": "はったり +30%。"
+ },
+ "sk_cold": {
+  "en": "Cold blood",
+  "ja": "冷血"
+ },
+ "skd_cold": {
+  "en": "Grit +2.",
+  "ja": "根性 +2。"
+ },
+ "sk_backstair": {
+  "en": "Back stairs",
+  "ja": "裏階段"
+ },
+ "skd_backstair": {
+  "en": "Stall +40%.",
+  "ja": "時間稼ぎ +40%。"
+ },
+ "sk_iron": {
+  "en": "Iron voice",
+  "ja": "鉄の声"
+ },
+ "skd_iron": {
+  "en": "Threaten +40%, bluff +20%.",
+  "ja": "脅し +40%、はったり +20%。"
+ },
+ "sk_index": {
+  "en": "Card index",
+  "ja": "索引カード"
+ },
+ "skd_index": {
+  "en": "Show evidence +30%.",
+  "ja": "証拠を示す +30%。"
+ },
+ "sk_memory": {
+  "en": "Archive memory",
+  "ja": "書庫の記憶"
+ },
+ "skd_memory": {
+  "en": "Wit +2.",
+  "ja": "知力 +2。"
+ },
+ "sk_tongues": {
+  "en": "Dead tongues",
+  "ja": "死語"
+ },
+ "skd_tongues": {
+  "en": "Learn Recite in Latin.",
+  "ja": "「ラテン語で暗誦」を習得。"
+ },
+ "sk_lockwork": {
+  "en": "Lockwork",
+  "ja": "錠前術"
+ },
+ "skd_lockwork": {
+  "en": "Stealth +2.",
+  "ja": "隠密 +2。"
+ },
+ "sk_provenance": {
+  "en": "Provenance",
+  "ja": "来歴"
+ },
+ "skd_provenance": {
+  "en": "Evidence +40%, recite +30%.",
+  "ja": "証拠 +40%、暗誦 +30%。"
+ },
+ "sk_smile": {
+  "en": "That smile",
+  "ja": "あの微笑み"
+ },
+ "skd_smile": {
+  "en": "Flirt +30%.",
+  "ja": "誘惑 +30%。"
+ },
+ "sk_poise": {
+  "en": "Poise",
+  "ja": "落ち着き"
+ },
+ "skd_poise": {
+  "en": "Composure +10.",
+  "ja": "平静の上限 +10。"
+ },
+ "sk_lie": {
+  "en": "Straight face",
+  "ja": "真顔の嘘"
+ },
+ "skd_lie": {
+  "en": "Bluff +40%.",
+  "ja": "はったり +40%。"
+ },
+ "sk_steady": {
+  "en": "Steady hands",
+  "ja": "震えない手"
+ },
+ "skd_steady": {
+  "en": "Grit +2.",
+  "ja": "根性 +2。"
+ },
+ "sk_alibi": {
+  "en": "Alibi",
+  "ja": "アリバイ"
+ },
+ "skd_alibi": {
+  "en": "Stall +40%, flirt +20%.",
+  "ja": "時間稼ぎ +40%、誘惑 +20%。"
+ },
+ "e_cobb": {
+  "en": "Cobb, the night porter",
+  "ja": "夜間守衛コブ"
+ },
+ "e_cobb_return": {
+  "en": "Cobb, with a torch",
+  "ja": "懐中電灯を持ったコブ"
+ },
+ "e_penhallow": {
+  "en": "Julian Penhallow, trustee",
+  "ja": "理事ジュリアン・ペンハロウ"
+ },
+ "e_dean": {
+  "en": "Dean Holloway",
+  "ja": "ホロウェイ学部長"
+ },
+ "ei_cobb": {
+  "en": "Cobb wants to know why the vault alarm is your business.",
+  "ja": "コブは、なぜ書庫の警報があなたの用事なのか知りたがっている。"
+ },
+ "ew_cobb": {
+  "en": "Cobb decides he never saw you.",
+  "ja": "コブは何も見なかったことにした。"
+ },
+ "ei_penhallow": {
+  "en": "Penhallow smiles like a man who owns the shelves.",
+  "ja": "ペンハロウは書棚の持ち主のように微笑む。"
+ },
+ "ew_penhallow": {
+  "en": "Penhallow closes his book and goes to bed.",
+  "ja": "ペンハロウは本を閉じ、寝に行った。"
+ },
+ "ei_cobb_return": {
+  "en": "Cobb is back, and this time he has a torch and a question.",
+  "ja": "コブが戻ってきた。今度は懐中電灯と疑問を携えて。"
+ },
+ "ew_cobb_return": {
+  "en": "Cobb goes back to his kettle.",
+  "ja": "コブはやかんのもとへ戻っていった。"
+ },
+ "ei_dean": {
+  "en": "Dean Holloway, at dawn, in the one room nobody should be in.",
+  "ja": "夜明けの学部長。誰もいるはずのない部屋に。"
+ },
+ "ew_dean": {
+  "en": "The Dean goes back up the stair. She does not look at the crate.",
+  "ja": "学部長は階段を上っていく。木箱には目もくれない。"
+ },
+ "bark_cobb_1": {
+  "en": "\"Rules are rules, Professor.\"",
+  "ja": "「規則は規則ですよ、教授」"
+ },
+ "bark_cobb_2": {
+  "en": "\"I've a phone in the lodge, you know.\"",
+  "ja": "「詰所には電話があるんですがね」"
+ },
+ "bark_cobb_3": {
+  "en": "\"Thirty years on nights. I know a lie when I hear one.\"",
+  "ja": "「夜勤三十年。嘘は聞けば分かる」"
+ },
+ "bark_penhallow_1": {
+  "en": "\"The Academy is generous to its friends.\"",
+  "ja": "「学園は友人には寛大でね」"
+ },
+ "bark_penhallow_2": {
+  "en": "\"Do you know what a trustee is for, Professor?\"",
+  "ja": "「理事が何のためにいるか、ご存じかな、教授」"
+ },
+ "bark_penhallow_3": {
+  "en": "\"Miss Ashcombe. Your father's daughter.\"",
+  "ja": "「アシュコム君。お父上によく似ている」"
+ },
+ "bark_cobb_return_1": {
+  "en": "\"The vault seal reset itself twice. Seals don't do that.\"",
+  "ja": "「封印が二度も勝手に戻った。封印はそんなことしない」"
+ },
+ "bark_cobb_return_2": {
+  "en": "\"Whose coat is that?\"",
+  "ja": "「そのコートは誰のです？」"
+ },
+ "bark_cobb_return_3": {
+  "en": "\"Money's not going to do it twice, sir.\"",
+  "ja": "「金で二度は通りませんよ」"
+ },
+ "bark_dean_dawn_1": {
+  "en": "\"Professor. You are early. Or late.\"",
+  "ja": "「教授。お早いのね。それとも遅いのかしら」"
+ },
+ "bark_dean_dawn_2": {
+  "en": "\"That crate is on my list.\"",
+  "ja": "「その木箱は私のリストにあるわ」"
+ },
+ "bark_dean_dawn_3": {
+  "en": "\"Miss Ashcombe has no business in this wing.\"",
+  "ja": "「アシュコムさんがこの棟に用はないはずよ」"
+ },
+ "bark_dean_dawn_4": {
+  "en": "\"I can wait. I am very good at waiting.\"",
+  "ja": "「待てるわ。待つのは得意なの」"
+ },
+ "n1_title": {
+  "en": "Night One — The Vault Alarm",
+  "ja": "第一夜 — 書庫の警報"
+ },
+ "n1_sub": {
+  "en": "Saint Jude Academy, Blackwood wing. Rain.",
+  "ja": "聖ジュード学園、ブラックウッド棟。雨。"
+ },
+ "r_study": {
+  "en": "Faculty study",
+  "ja": "教員研究室"
+ },
+ "r_corridor": {
+  "en": "Antiquities corridor",
+  "ja": "古美術学部の廊下"
+ },
+ "r_stair": {
+  "en": "Blackwood stair",
+  "ja": "ブラックウッド階段"
+ },
+ "r_vault": {
+  "en": "Blackwood vault",
+  "ja": "ブラックウッド書庫"
+ },
+ "r_stacks": {
+  "en": "Lower stacks",
+  "ja": "下層書架"
+ },
+ "r_cellar": {
+  "en": "Service passage",
+  "ja": "業務用通路"
+ },
+ "r_muniment": {
+  "en": "Muniment room",
+  "ja": "古文書室"
+ },
+ "n1_vault_locked": {
+  "en": "The iron door does not move. The override key is still upstairs in your desk.",
+  "ja": "鉄の扉はびくともしない。オーバーライドキーは上の机の中だ。"
+ },
+ "n1_open_1": {
+  "en": "The console blinks: SEAL ENGAGED, SENSOR TRIPPED. Somebody is inside a room that locks itself.",
+  "ja": "コンソールが点滅する。封鎖作動、センサー反応。自ら施錠する部屋の中に、誰かがいる。"
+ },
+ "n1_open_2": {
+  "en": "You have until dawn before the building wakes. Take what you need from the study first.",
+  "ja": "建物が目を覚ます夜明けまでに片を付けたい。まずは研究室で必要な物を揃えよう。"
+ },
+ "n1_desk_1": {
+  "en": "Under the key: your own note from September. 'Do not lend this to anyone.' You lent it to Elena once.",
+  "ja": "鍵の下に九月の自分のメモ。「誰にも貸すな」。一度だけエレナに貸したことがある。"
+ },
+ "n1_essays_1": {
+  "en": "Forty-one essays on Byzantine seals. The forty-second argues that every archive is a confession.",
+  "ja": "ビザンツの印章についてのレポートが四十一本。四十二本目は、すべての書庫は告白だと論じている。"
+ },
+ "n1_essays_2": {
+  "en": "Ashcombe. Of course it is.",
+  "ja": "アシュコム。やはりそうか。"
+ },
+ "n1_essays_3": {
+  "en": "You read her last paragraph twice. It is the best thing on the desk.",
+  "ja": "最後の段落を二度読む。机の上で一番いい文章だ。"
+ },
+ "n1_tin_1": {
+  "en": "The department's petty-cash tin. Forty pounds and a button.",
+  "ja": "学科の小口現金の缶。四十ポンドとボタンが一つ。"
+ },
+ "n1_tin_2": {
+  "en": "You leave an IOU. You are, after all, a professor.",
+  "ja": "借用書を残しておく。教授なのだから。"
+ },
+ "n1_cabinet_1": {
+  "en": "A brass torch from the war-games society, and behind it a silver hip flask engraved E.A.",
+  "ja": "戦史研究会の真鍮の懐中電灯。その奥に、E.A.と刻まれた銀のスキットル。"
+ },
+ "n1_cabinet_2": {
+  "en": "She left it here in October. You never gave it back. You never asked yourself why.",
+  "ja": "十月に彼女が置き忘れたものだ。返さないままでいた。理由は考えないことにしていた。"
+ },
+ "n1_corr_1": {
+  "en": "A shadow moves at the far end, where the porter's lodge spills light across the tiles.",
+  "ja": "廊下の奥で影が動く。守衛詰所の明かりがタイルにこぼれている。"
+ },
+ "n1_cobb_1": {
+  "en": "Cobb, the night porter. Thirty years on nights and a kettle that never goes cold.",
+  "ja": "夜間守衛のコブ。夜勤三十年、冷めることのないやかん。"
+ },
+ "n1_cobb_2": {
+  "en": "\"Blackwood alarm went at eleven-thirty-seven, Professor. That's a Dean's-office matter.\"",
+  "ja": "「ブラックウッドの警報が十一時三十七分に鳴りました、教授。学部長室の案件ですよ」"
+ },
+ "n1_cobb_3": {
+  "en": "I hold the override key, Cobb. That makes it my matter.",
+  "ja": "オーバーライドキーを持っているのは私だ、コブ。だから私の案件だ。"
+ },
+ "n1_cobb_4": {
+  "en": "\"Then you won't mind me ringing the Dean to say so.\"",
+  "ja": "「なら、学部長にそうお伝えしても構いませんね」"
+ },
+ "n1_tutorial_1": {
+  "en": "A standoff. Bring his Resolve to zero before his Suspicion reaches 100 — at 100 he picks up the phone.",
+  "ja": "対峙だ。相手の「疑念」が100に達する前に「決意」を0にする。100になれば彼は電話を取る。"
+ },
+ "n1_tutorial_2": {
+  "en": "Every person has weaknesses. A porter on a porter's wage, for instance. Threats are remembered.",
+  "ja": "人には必ず弱点がある。たとえば、守衛の給料で暮らす守衛。脅しは記憶に残る。"
+ },
+ "n1_cobb_5": {
+  "en": "\"Kettle's on, Professor. I'll be in the lodge if anybody asks. Which they won't.\"",
+  "ja": "「やかんを火にかけてあります、教授。誰かに聞かれたら詰所にいますよ。聞かれやしませんがね」"
+ },
+ "n1_cobb_6": {
+  "en": "He drops a clipboard as he goes. The night rota, with his signature on a round he did not walk.",
+  "ja": "彼は去り際にクリップボードを落とす。歩いてもいない巡回に彼の署名がある当番表だ。"
+ },
+ "n1_board_1": {
+  "en": "The noticeboard: a lost cat, a sherry evening, and a thermos left 'for whoever needs it'. You need it.",
+  "ja": "掲示板。迷い猫、シェリーの会、「必要な人へ」と置かれた水筒。今は必要だ。"
+ },
+ "n1_stair_1": {
+  "en": "The Blackwood stair goes down further than the building should allow. The air gets colder by the step.",
+  "ja": "ブラックウッド階段は建物が許すより深く降りていく。一段ごとに空気が冷える。"
+ },
+ "n1_notice_1": {
+  "en": "A typed notice pinned to the vault door: DEACCESSION — WATER-DAMAGED LOT — INCINERATE 09:00.",
+  "ja": "書庫の扉に留められたタイプ打ちの通知：除籍 — 水濡れ品 — 午前9時焼却。"
+ },
+ "n1_notice_2": {
+  "en": "The stamp is the Dean's. The handwriting underneath is not. You take it.",
+  "ja": "印は学部長のもの。その下の筆跡は違う。あなたはそれを外して持っていく。"
+ },
+ "n1_join_1": {
+  "en": "There was someone in the lower stacks when I came down. A man, reading by a lamp. He saw the seal light.",
+  "ja": "降りてくるとき、下層書架に誰かいました。男の人がランプで本を読んでいた。封印の灯りを見られたわ。"
+ },
+ "n1_join_2": {
+  "en": "And Cobb walks the service passage at two. He'll find the seal reset and come looking.",
+  "ja": "それにコブは二時に業務用通路を回る。封印が戻っているのに気付いて、探しに来るはず。"
+ },
+ "n1_join_3": {
+  "en": "Then we deal with both before anyone rings the Dean. Together.",
+  "ja": "なら、誰かが学部長に電話する前に、両方片付ける。二人で。"
+ },
+ "n1_join_4": {
+  "en": "Together. I can read people, Professor. Let me do the reading.",
+  "ja": "二人で。人を読むのは得意です、教授。読むのは私に任せて。"
+ },
+ "n1_join_5": {
+  "en": "Elena joins you. In a standoff she acts after you, with her own skills — and she can Read the room.",
+  "ja": "エレナが仲間になった。対峙では彼女も自分のスキルで行動する。「空気を読む」で相手の弱点が分かる。"
+ },
+ "n1_join_6": {
+  "en": "The ledger stays in the crate for now. The way out is through the stacks, then the service passage.",
+  "ja": "台帳はひとまず木箱の中に。出口は下層書架から業務用通路へ抜ける道だ。"
+ },
+ "n1_crate_1": {
+  "en": "Under the straw, a thermos somebody else forgot. The Blackwood wing is full of people who leave things.",
+  "ja": "藁の下に、誰かが忘れた水筒。ブラックウッド棟は物を置いていく人間ばかりだ。"
+ },
+ "n1_coat_1": {
+  "en": "Her coat is steaming on the radiator. You turn it so the wet side faces the heat.",
+  "ja": "彼女のコートがラジエーターの上で湯気を立てている。濡れた側を熱に向けてやる。"
+ },
+ "n1_coat_2": {
+  "en": "...Thank you. Nobody does that.",
+  "ja": "……ありがとう。そんなことしてくれる人、いないわ。"
+ },
+ "n1_stacks_1": {
+  "en": "The lower stacks. One green lamp is still lit, and under it, a man in a good coat turning pages slowly.",
+  "ja": "下層書架。緑のランプがひとつだけ灯り、その下で上等なコートの男がゆっくりと頁をめくっている。"
+ },
+ "n1_pen_1": {
+  "en": "Julian Penhallow. Trustee, benefactor, the name over the fireplace in the annex.",
+  "ja": "ジュリアン・ペンハロウ。理事、後援者、別館の暖炉の上に名が刻まれた男。"
+ },
+ "n1_pen_2": {
+  "en": "\"Professor Vance. And Miss Ashcombe. The Blackwood wing is very popular tonight.\"",
+  "ja": "「ヴァンス教授。それにアシュコム君。今夜のブラックウッド棟は大人気だね」"
+ },
+ "n1_pen_3": {
+  "en": "We could say the same of you, Mr Penhallow.",
+  "ja": "同じことをあなたにも言えますわ、ペンハロウさん。"
+ },
+ "n1_pen_4": {
+  "en": "\"I am a trustee. Trustees may read where they like. What is your excuse?\"",
+  "ja": "「私は理事だ。理事はどこで本を読もうと自由だ。君たちの言い訳は？」"
+ },
+ "n1_pen_5": {
+  "en": "\"Goodnight, then. Do give my regards to the Dean. She keeps such careful lists.\"",
+  "ja": "「では、おやすみ。学部長によろしく。彼女はとても丁寧にリストを作るからね」"
+ },
+ "n1_pen_6": {
+  "en": "He takes his book with him. The space it leaves on the shelf is exactly the width of a ledger.",
+  "ja": "彼は本を持って去る。棚に残った隙間は、ちょうど台帳一冊分の幅だった。"
+ },
+ "n1_pen_7": {
+  "en": "He knew my name. He has never met me.",
+  "ja": "私の名前を知っていた。会ったこともないのに。"
+ },
+ "n1_cart_1": {
+  "en": "A returns cart. On top, a pair of tortoiseshell spectacles with a lost-property tag from 2019.",
+  "ja": "返却カート。一番上に、2019年の遺失物札が付いたべっ甲の眼鏡。"
+ },
+ "n1_cart_2": {
+  "en": "Mine are fogged. These will do. Don't tell anyone I stole from lost property.",
+  "ja": "私のは曇ってるの。これで十分。遺失物を盗んだって誰にも言わないでね。"
+ },
+ "n1_cellar_1": {
+  "en": "The service passage smells of coal and wet stone. A boiler grumbles somewhere to the left.",
+  "ja": "業務用通路は石炭と濡れた石の匂いがする。左のどこかでボイラーが唸っている。"
+ },
+ "n1_cellar_2": {
+  "en": "He'll come this way. He always does the boiler at two.",
+  "ja": "彼はこっちに来るわ。二時には必ずボイラーを見に来るの。"
+ },
+ "n1_cobb2_1": {
+  "en": "A torch beam swings across the coal and stops on Elena's face.",
+  "ja": "懐中電灯の光が石炭の上を走り、エレナの顔で止まる。"
+ },
+ "n1_cobb2_2": {
+  "en": "\"Miss Ashcombe. Now that's two people who aren't here.\"",
+  "ja": "「アシュコムさん。これで、ここにいないはずの人間が二人になった」"
+ },
+ "n1_cobb2_3": {
+  "en": "\"And the money won't do it twice, Professor. I've a pension to think of.\"",
+  "ja": "「金も二度は通じませんよ、教授。年金のことも考えないと」"
+ },
+ "n1_cobb2_4": {
+  "en": "He signed for a round he didn't walk. Let me talk to him.",
+  "ja": "彼は歩いてない巡回に署名した。私に話させて。"
+ },
+ "n1_cobb2_5": {
+  "en": "\"Fine. Fine. Nobody saw nobody. I'm going back to my kettle.\"",
+  "ja": "「分かりました、分かりましたよ。誰も誰も見なかった。やかんのとこへ戻ります」"
+ },
+ "n1_cobb2_6": {
+  "en": "Behind him, in a lost-property box by the boiler, a dry cardigan. Elena takes it without asking.",
+  "ja": "彼の後ろ、ボイラー脇の遺失物箱に乾いたカーディガン。エレナは何も聞かずに手に取る。"
+ },
+ "n1_cobb2_7": {
+  "en": "The way is clear. The service door opens back into the vault. The ledger is waiting.",
+  "ja": "道は開けた。業務用の扉は書庫へと通じている。台帳が待っている。"
+ },
+ "n1_boiler_1": {
+  "en": "A bottle of college sherry hidden behind the boiler pipes. Cobb's, probably. Medicinal, certainly.",
+  "ja": "ボイラーの配管の裏に学寮のシェリーが一本。たぶんコブのものだ。薬用には違いない。"
+ },
+ "n1_back_1": {
+  "en": "Back in the vault. The crate, the lamp, the rain. Nobody else knows you are here now.",
+  "ja": "書庫に戻った。木箱、ランプ、雨。今ここにいることを知る者は、もういない。"
+ },
+ "n1_ctrl_cut_1": {
+  "en": "She deletes the photographs herself, one by one, and does not look at you while she does it.",
+  "ja": "彼女は自分で写真を一枚ずつ消す。その間、一度もあなたを見ない。"
+ },
+ "n1_trust_hint": {
+  "en": "(Her trust is not there yet. At Trust 3 this scene goes further.)",
+  "ja": "（まだ彼女の信頼が足りない。信頼3でこの場面は先へ進む）"
+ },
+ "n1_dean_1": {
+  "en": "Footsteps on the stair. Heels. Unhurried. Dean Marguerite Holloway, coat buttoned to the throat.",
+  "ja": "階段に足音。ヒール。急がない足取り。喉元までコートのボタンを留めたマルグリット・ホロウェイ学部長。"
+ },
+ "n1_dean_2": {
+  "en": "\"Professor Vance. The incinerator is at nine. I came to make sure of the list.\"",
+  "ja": "「ヴァンス教授。焼却は九時よ。リストを確かめに来たの」"
+ },
+ "n1_dean_3": {
+  "en": "Then you are early, Dean. The list is in order.",
+  "ja": "なら早すぎますよ、学部長。リストは問題ありません。"
+ },
+ "n1_dean_4": {
+  "en": "\"I will be the judge of that.\"",
+  "ja": "「それを判断するのは私よ」"
+ },
+ "n1_dean_5": {
+  "en": "\"Very well. Nine o'clock, Professor. Do not be in this room at nine.\"",
+  "ja": "「いいでしょう。九時よ、教授。九時にこの部屋にいないこと」"
+ },
+ "n1_dean_6": {
+  "en": "On the floor where she stood: a signet ring. The Dean does not drop things.",
+  "ja": "彼女が立っていた床に、印章指輪がひとつ。学部長は物を落とす人ではない。"
+ },
+ "n1_end_1": {
+  "en": "The crate goes to the incinerator at nine. The ledger does not. Forty-eight hours later, the Dean sends for you.",
+  "ja": "九時、木箱は焼却炉へ運ばれる。台帳は運ばれない。四十八時間後、学部長があなたを呼び出す。"
+ },
+ "g_cg_confrontation": {
+  "en": "The vault",
+  "ja": "書庫にて"
+ },
+ "g_cg_climax_pact": {
+  "en": "Page fourteen",
+  "ja": "14ページ"
+ },
+ "g_cg_climax_control": {
+  "en": "The arrangement",
+  "ja": "取り決め"
+ },
+ "g_cg_aftermath": {
+  "en": "Dawn",
+  "ja": "夜明け"
+ },
+ "g_cg_coal_store": {
+  "en": "The coal store",
+  "ja": "石炭庫"
+ },
+ "g_cg_ch2_office": {
+  "en": "After hours",
+  "ja": "時間外"
+ },
+ "n1_open_3": {
+  "en": "You think of Elena, who asked last week whether the Blackwood wing was ever really empty. You said yes.",
+  "ja": "先週エレナに、ブラックウッド棟は本当に無人になるのかと聞かれた。あなたは「なる」と答えた。"
+ },
+ "n1_open_4": {
+  "en": "The rain gets heavier. Whatever is in that vault, it has been waiting for a night like this.",
+  "ja": "雨脚が強まる。あの書庫に何があるにせよ、それはこんな夜を待っていたのだ。"
+ },
+ "n1_desk_2": {
+  "en": "The key is cold. Brass, with the Academy crest worn smooth by forty years of thumbs.",
+  "ja": "鍵は冷たい。真鍮製で、学園の紋章は四十年分の親指に擦られて滑らかになっている。"
+ },
+ "n1_essays_4": {
+  "en": "You put her essay in your inside pocket. It feels like the first decision of the night.",
+  "ja": "彼女のレポートを内ポケットに入れる。今夜最初の決断のような気がした。"
+ },
+ "n1_corr_2": {
+  "en": "Portraits of former deans watch you pass. Every one of them looks like someone who kept a list.",
+  "ja": "歴代学部長の肖像画が通り過ぎるあなたを見ている。どれもリストを作っていそうな顔だ。"
+ },
+ "n1_corr_3": {
+  "en": "The lodge radio is playing the shipping forecast. Somebody is awake down here.",
+  "ja": "詰所のラジオが海上気象を流している。ここで誰かが起きている。"
+ },
+ "n1_cobb_7": {
+  "en": "He sets his mug down on the radiator, very deliberately, like a man laying down a card.",
+  "ja": "彼はマグをゆっくりとラジエーターに置く。カードを場に出すような手つきで。"
+ },
+ "n1_cobb_8": {
+  "en": "He wants something. Most people at this hour do. The trick is finding out what.",
+  "ja": "彼は何かを欲しがっている。この時間に起きている人間はたいていそうだ。問題はそれが何かだ。"
+ },
+ "n1_cobb_9": {
+  "en": "You add the rota to your pocket. Paper has a way of becoming useful after midnight.",
+  "ja": "当番表をポケットに入れる。真夜中を過ぎると、紙切れは役に立つものに化ける。"
+ },
+ "n1_stair_2": {
+  "en": "Somebody has been down here tonight. Wet footprints, small, going one way only.",
+  "ja": "今夜、誰かがここを降りた。濡れた小さな足跡が、一方向にだけ続いている。"
+ },
+ "n1_notice_3": {
+  "en": "Below the stamp, in pencil: 'Lot 14 — see me first. J.P.'",
+  "ja": "印の下に鉛筆で：「第14ロット — まず私に。J.P.」"
+ },
+ "n1_join_7": {
+  "en": "She buttons her coat to the collar. Her hands are not quite steady yet, and she hides it well.",
+  "ja": "彼女はコートのボタンを襟元まで留める。手はまだ少し震えているが、うまく隠している。"
+ },
+ "n1_join_8": {
+  "en": "If we get the ledger out, Professor, you'll have to read page fourteen. You know that.",
+  "ja": "台帳を持ち出せたら、教授、あなたは14ページを読むことになる。分かってますよね。"
+ },
+ "n1_join_9": {
+  "en": "I know.",
+  "ja": "分かっている。"
+ },
+ "n1_join_10": {
+  "en": "No, you don't. Not yet.",
+  "ja": "いいえ、まだ分かってない。"
+ },
+ "n1_crate_2": {
+  "en": "Elena watches you search. \"You do this like a man who has done it before.\" You have not. You let her think so.",
+  "ja": "エレナはあなたが探す様子を見ている。「慣れてるみたい」。慣れてなどいない。だが、そう思わせておく。"
+ },
+ "n1_coat_3": {
+  "en": "She stands closer to the radiator, and therefore closer to you. Neither of you mentions it.",
+  "ja": "彼女はラジエーターに近付く。つまり、あなたにも近付く。二人ともそれには触れない。"
+ },
+ "n1_stacks_2": {
+  "en": "Elena stops dead. She knows the coat before she knows the face.",
+  "ja": "エレナがぴたりと止まる。顔より先に、そのコートに見覚えがあったのだ。"
+ },
+ "n1_pen_8": {
+  "en": "He looks at Elena the way a man checks a figure he has already paid.",
+  "ja": "彼はエレナを見る。もう支払いの済んだ数字を確かめるような目で。"
+ },
+ "n1_pen_9": {
+  "en": "Elena stands very still until his footsteps are gone. Then she sits down on the returns cart, all at once.",
+  "ja": "エレナは彼の足音が消えるまで身じろぎもしない。それから、返却カートにすとんと腰を下ろす。"
+ },
+ "n1_pen_10": {
+  "en": "Who is he to you, Elena?",
+  "ja": "彼は君にとって何なんだ、エレナ。"
+ },
+ "n1_pen_11": {
+  "en": "Ask me after we've read page fourteen.",
+  "ja": "14ページを読んでから聞いて。"
+ },
+ "n1_cellar_3": {
+  "en": "A coal store opens off the passage, black to the ceiling. The service door to the vault is at the far end.",
+  "ja": "通路の脇に天井まで真っ黒な石炭庫。突き当たりに書庫へ通じる業務用の扉がある。"
+ },
+ "n1_cobb2_8": {
+  "en": "Elena hands Cobb his rota back. \"You'll want this for the morning.\" He looks at her as if she had forgiven him.",
+  "ja": "エレナはコブに当番表を返す。「朝には必要でしょう」。彼は赦されたような顔で彼女を見る。"
+ },
+ "n1_cobb2_9": {
+  "en": "You didn't have to give it back.",
+  "ja": "返さなくてもよかったのに。"
+ },
+ "n1_cobb2_10": {
+  "en": "He's sixty-three and he's frightened of the Dean. So am I. It costs nothing to be kind about it.",
+  "ja": "彼は六十三で、学部長を怖がってる。私もよ。それに優しくするのはタダだわ。"
+ },
+ "n1_back_2": {
+  "en": "Elena kneels by the crate. Her fingers find the ledger in the straw without looking, as if she had left a light on for it.",
+  "ja": "エレナは木箱の前に膝をつく。見もせずに藁の中の台帳を探り当てる。明かりを点けて待たせておいたみたいに。"
+ },
+ "n1_back_3": {
+  "en": "It is past three. Two hours of dark left, and one book between you.",
+  "ja": "三時を過ぎた。闇はあと二時間。二人の間には一冊の本。"
+ },
+ "n1_dean_7": {
+  "en": "Elena moves half a step behind you. Not hiding. Choosing where to stand.",
+  "ja": "エレナが半歩、あなたの後ろに下がる。隠れたのではない。立つ場所を選んだのだ。"
+ },
+ "n1_dean_8": {
+  "en": "Her eyes go to the crate, to the straw, to Elena. In that order. Like Elena's did, nine hours ago.",
+  "ja": "学部長の目が木箱へ、藁へ、エレナへと動く。その順番で。九時間前のエレナと同じように。"
+ },
+ "n1_dean_9": {
+  "en": "You pick up the ring. It is warm. She has been turning it on her finger all night.",
+  "ja": "指輪を拾う。温かい。彼女は一晩中、これを指で回していたのだ。"
+ },
+ "n1_dean_10": {
+  "en": "She knew. She knows we have it.",
+  "ja": "知ってたのよ。私たちが持ってることを知ってる。"
+ },
+ "n1_dean_11": {
+  "en": "Then she has decided to let us keep it. For now.",
+  "ja": "なら、持たせておくと決めたんだ。今のところは。"
+ },
+ "hs_window": {
+  "en": "Landing window",
+  "ja": "踊り場の窓"
+ },
+ "hs_shelf": {
+  "en": "Reserved shelf",
+  "ja": "予約棚"
+ },
+ "hs_lodge": {
+  "en": "Porter's lodge",
+  "ja": "守衛詰所"
+ },
+ "n1_window_1": {
+  "en": "From the landing window you can see the whole quad, silver with rain. One light is on in the Dean's residence.",
+  "ja": "踊り場の窓から雨に銀色の中庭が見渡せる。学部長公邸にひとつだけ灯りがついている。"
+ },
+ "n1_window_2": {
+  "en": "It goes out while you watch. Somebody up there has decided to sleep. Or to stop being seen awake.",
+  "ja": "見ている間に消える。誰かが眠ることにしたのだ。あるいは、起きているところを見られないことに。"
+ },
+ "n1_shelf_1": {
+  "en": "A shelf of books reserved under one name: PENHALLOW. Donor rolls, board minutes, a history of the Blackwood bequest.",
+  "ja": "ひとつの名前で取り置かれた本の棚。ペンハロウ。寄付者名簿、理事会議事録、ブラックウッド遺贈の歴史。"
+ },
+ "n1_shelf_2": {
+  "en": "Every volume covers 1994 to 1996. Every one has a slip of paper at the same page.",
+  "ja": "どれも1994年から1996年を扱っている。どれにも同じページに紙片が挟まれている。"
+ },
+ "n1_shelf_3": {
+  "en": "He is reading the same years we are. He's just reading the clean copy.",
+  "ja": "彼も私たちと同じ年を読んでる。ただ、彼が読んでるのは綺麗な方の写し。"
+ },
+ "n1_lodge_1": {
+  "en": "The lodge: a kettle, a radio, a crossword with every clue about birds filled in and nothing else.",
+  "ja": "詰所。やかん、ラジオ、鳥に関する鍵だけが埋まったクロスワード。"
+ },
+ "n1_lodge_2": {
+  "en": "On the wall, a photograph of Cobb thirty years younger, shaking hands with a man in a good coat.",
+  "ja": "壁には三十年若いコブの写真。上等なコートの男と握手している。"
+ },
+ "hs_desk": {
+  "en": "Desk drawer",
+  "ja": "机の引き出し"
+ },
+ "hs_essays": {
+  "en": "Essays",
+  "ja": "レポートの束"
+ },
+ "hs_tin": {
+  "en": "Petty-cash tin",
+  "ja": "小口現金の缶"
+ },
+ "hs_cabinet": {
+  "en": "Cabinet",
+  "ja": "戸棚"
+ },
+ "hs_board": {
+  "en": "Noticeboard",
+  "ja": "掲示板"
+ },
+ "hs_notice": {
+  "en": "Notice on the door",
+  "ja": "扉の通知"
+ },
+ "hs_crate": {
+  "en": "The crate",
+  "ja": "木箱"
+ },
+ "hs_coat": {
+  "en": "Her coat",
+  "ja": "彼女のコート"
+ },
+ "hs_ledger": {
+  "en": "The ledger",
+  "ja": "台帳"
+ },
+ "hs_cart": {
+  "en": "Returns cart",
+  "ja": "返却カート"
+ },
+ "hs_boiler": {
+  "en": "Boiler pipes",
+  "ja": "ボイラーの配管"
+ },
+ "hs_window_study": {
+  "en": "Study window",
+  "ja": "研究室の窓"
+ },
+ "hs_shelfbook": {
+  "en": "The ledger, closed",
+  "ja": "閉じた台帳"
+ },
+ "n1_swin_1": {
+  "en": "Rain on the glass, and beyond it the Blackwood wing, dark except for one slit of orange two floors down.",
+  "ja": "ガラスを打つ雨。その向こうにブラックウッド棟。二階下の細いオレンジ色の光を除けば、真っ暗だ。"
+ },
+ "n1_swin_2": {
+  "en": "The vault has no window. The orange is the corridor. Someone has left the night lights on all the way down.",
+  "ja": "書庫に窓はない。あのオレンジは廊下だ。誰かが下まで夜間灯を点けっぱなしにしている。"
+ },
+ "n1_swin_3": {
+  "en": "Or someone wanted to be able to see the way back up.",
+  "ja": "あるいは、上へ戻る道が見えるようにしておきたかった誰かがいる。"
+ },
+ "n1_lbook_1": {
+  "en": "The ledger sits in the straw where she left it. You do not open it. Not yet. It feels like a thing that should be opened with two people present.",
+  "ja": "台帳は彼女が置いた藁の中にある。あなたは開かない。まだ。二人がそろってから開くべきもののような気がする。"
+ },
+ "n1_lbook_2": {
+  "en": "Elena watches you not open it. Something in her shoulders comes down an inch.",
+  "ja": "開かないあなたを、エレナが見ている。彼女の肩がほんの少し下がる。"
+ },
+ "n1_lbook_3": {
+  "en": "Thank you. For waiting.",
+  "ja": "ありがとう。待ってくれて。"
+ },
+ "r_dock": {
+  "en": "Loading dock",
+  "ja": "搬入口"
+ },
+ "r_reading_room": {
+  "en": "Main hall",
+  "ja": "大講堂"
+ },
+ "r_common_room": {
+  "en": "Faculty common room",
+  "ja": "教員談話室"
+ },
+ "r_deans_corridor": {
+  "en": "Dean's corridor",
+  "ja": "学部長室の廊下"
+ },
+ "r_annex": {
+  "en": "The annex",
+  "ja": "別館"
+ },
+ "r_deans_office": {
+  "en": "The Dean's file room",
+  "ja": "学部長の書類室"
+ },
+ "r_carrel": {
+  "en": "Elena's carrel",
+  "ja": "エレナの閲覧席"
+ },
+ "n_vey": {
+  "en": "Miss Vey",
+  "ja": "ヴェイ"
+ },
+ "n_hollis": {
+  "en": "Hollis",
+  "ja": "ホリス"
+ },
+ "n_grice": {
+  "en": "Grice",
+  "ja": "グライス"
+ },
+ "n_crane": {
+  "en": "Crane",
+  "ja": "クレイン"
+ },
+ "n_sallis": {
+  "en": "Dr Sallis",
+  "ja": "サリス博士"
+ },
+ "n_ambrose": {
+  "en": "Ambrose",
+  "ja": "アンブローズ"
+ },
+ "e_vey": {
+  "en": "Miss Vey, the Dean's secretary",
+  "ja": "学部長秘書ヴェイ"
+ },
+ "e_hollis": {
+  "en": "Hollis, Estates security",
+  "ja": "施設警備員ホリス"
+ },
+ "e_grice": {
+  "en": "Grice, the van driver's mate",
+  "ja": "運搬車の助手グライス"
+ },
+ "e_crane": {
+  "en": "Crane, the Dean's fixer",
+  "ja": "学部長の始末屋クレイン"
+ },
+ "e_sallis": {
+  "en": "Dr Imogen Sallis, rival archivist",
+  "ja": "対抗する書庫学者イモジェン・サリス博士"
+ },
+ "e_ambrose": {
+  "en": "Ambrose, Penhallow's solicitor",
+  "ja": "ペンハロウの事務弁護士アンブローズ"
+ },
+ "e_penhallow_boss": {
+  "en": "Julian Penhallow",
+  "ja": "ジュリアン・ペンハロウ"
+ },
+ "e_dean_tea": {
+  "en": "Dean Holloway, at tea",
+  "ja": "茶席のホロウェイ学部長"
+ },
+ "e_penhallow_final": {
+  "en": "Penhallow, in the strongroom",
+  "ja": "保管庫のペンハロウ"
+ },
+ "e_crane_n5": {
+  "en": "Crane, with the bricklayer's hammer",
+  "ja": "煉瓦槌を持つクレイン"
+ },
+ "e_grice_n5": {
+  "en": "Grice, on the crypt stair",
+  "ja": "地下階段のグライス"
+ },
+ "e_ambrose_n5": {
+  "en": "Ambrose, with an injunction",
+  "ja": "差止命令を持ったアンブローズ"
+ },
+ "e_vey_n4": {
+  "en": "Miss Vey, at her desk",
+  "ja": "机に陣取るヴェイ"
+ },
+ "e_hollis_n4": {
+  "en": "Hollis, at the annex door",
+  "ja": "別館の扉のホリス"
+ },
+ "e_crane_n4": {
+  "en": "Crane, in the file room",
+  "ja": "書類室のクレイン"
+ },
+ "e_grice_n3": {
+  "en": "Grice, carrying chairs",
+  "ja": "椅子を運ぶグライス"
+ },
+ "ei_vey": {
+  "en": "Miss Vey has a telephone and a list of who was where.",
+  "ja": "ヴェイは電話と、誰がどこにいたかのリストを持っている。"
+ },
+ "ew_vey": {
+  "en": "Miss Vey writes something down, then crosses it out.",
+  "ja": "ヴェイは何かを書き留め、そして線を引いて消した。"
+ },
+ "ei_hollis": {
+  "en": "Hollis would like to see some identification. And the trolley manifest.",
+  "ja": "ホリスは身分証と、台車の積荷目録を見たがっている。"
+ },
+ "ew_hollis": {
+  "en": "Hollis waves you through and goes to find a coffee.",
+  "ja": "ホリスは手を振って通し、コーヒーを探しに行った。"
+ },
+ "ei_grice": {
+  "en": "Grice has a schedule, and you are standing in it.",
+  "ja": "グライスには予定がある。そしてあなたはその邪魔をしている。"
+ },
+ "ew_grice": {
+  "en": "Grice decides the van can wait ten minutes.",
+  "ja": "グライスは、車が十分待っても構わないと決めた。"
+ },
+ "ei_crane": {
+  "en": "Crane does not raise his voice. He has never needed to.",
+  "ja": "クレインは声を荒らげない。その必要があったことがないのだ。"
+ },
+ "ew_crane": {
+  "en": "Crane lights a cigarette and walks away into the rain.",
+  "ja": "クレインは煙草に火を点け、雨の中へ去っていった。"
+ },
+ "ei_sallis": {
+  "en": "Dr Sallis wants to know what Antiquities is doing in the Blackwood papers.",
+  "ja": "サリス博士は、古美術学部がブラックウッド文書で何をしているのか知りたがっている。"
+ },
+ "ew_sallis": {
+  "en": "Dr Sallis goes to find a better seat.",
+  "ja": "サリス博士はもっといい席を探しに行った。"
+ },
+ "ei_ambrose": {
+  "en": "Ambrose would like a word, on behalf of his client.",
+  "ja": "アンブローズは依頼人に代わって、少し話がしたいという。"
+ },
+ "ew_ambrose": {
+  "en": "Ambrose closes his briefcase. 'Another time.'",
+  "ja": "アンブローズは鞄を閉じる。「また今度」"
+ },
+ "ei_penhallow_boss": {
+  "en": "Penhallow has your hand and is not letting go.",
+  "ja": "ペンハロウはあなたの手を握り、離そうとしない。"
+ },
+ "ew_penhallow_boss": {
+  "en": "Penhallow lets go of your hand, and smiles, and moves on.",
+  "ja": "ペンハロウは手を離し、微笑んで、去っていく。"
+ },
+ "ei_dean_tea": {
+  "en": "Tea with the Dean: twenty minutes if she dislikes you. Make it forty.",
+  "ja": "学部長との茶席。嫌われていれば二十分。四十分にしてみせろ。"
+ },
+ "ew_dean_tea": {
+  "en": "The Dean sets down her cup. 'Enjoy your survey, Professor.'",
+  "ja": "学部長はカップを置く。「調査を楽しんで、教授」"
+ },
+ "ei_penhallow_final": {
+  "en": "Penhallow fills the doorway. He has brought money, and he has brought men.",
+  "ja": "ペンハロウが戸口を塞ぐ。金も、男たちも連れてきている。"
+ },
+ "ew_penhallow_final": {
+  "en": "Penhallow has nothing left to offer. Everyone in the room can see it.",
+  "ja": "ペンハロウにはもう差し出すものがない。部屋の誰の目にもそれは明らかだった。"
+ },
+ "bark_vey_1": {
+  "en": "\"The Dean's diary is full until Thursday.\"",
+  "ja": "「学部長の予定は木曜まで埋まっております」"
+ },
+ "bark_vey_2": {
+  "en": "\"Two cups, Professor. Cobb mentioned two cups.\"",
+  "ja": "「カップが二つ、と教授。コブがそう申しておりました」"
+ },
+ "bark_vey_3": {
+  "en": "\"I'll just make a note of that.\"",
+  "ja": "「念のため、控えておきますね」"
+ },
+ "bark_hollis_1": {
+  "en": "\"Manifest says three crates. I count three crates. Why are you here?\"",
+  "ja": "「目録では木箱三つ。数えても三つ。なぜあなたがここに？」"
+ },
+ "bark_hollis_2": {
+  "en": "\"I'll need to radio this in.\"",
+  "ja": "「無線で報告しないと」"
+ },
+ "bark_hollis_3": {
+  "en": "\"My shift ends at nine. Don't make it end late.\"",
+  "ja": "「俺のシフトは九時までだ。延長させないでくれ」"
+ },
+ "bark_grice_1": {
+  "en": "\"Van leaves at nine. Not five past.\"",
+  "ja": "「車は九時に出る。九時五分じゃない」"
+ },
+ "bark_grice_2": {
+  "en": "\"Labels are labels. I don't read 'em.\"",
+  "ja": "「ラベルはラベル。読みゃしねえよ」"
+ },
+ "bark_grice_3": {
+  "en": "\"You lifting or talking, Professor?\"",
+  "ja": "「運ぶのか喋るのか、どっちだ教授」"
+ },
+ "bark_crane_1": {
+  "en": "\"The Dean likes things tidy.\"",
+  "ja": "「学部長は整理整頓がお好きでね」"
+ },
+ "bark_crane_2": {
+  "en": "\"Coal stores flood, Professor. Things get lost.\"",
+  "ja": "「石炭庫は水が出るんですよ、教授。物がなくなる」"
+ },
+ "bark_crane_3": {
+  "en": "\"I have a long memory and a short list.\"",
+  "ja": "「私は記憶が長く、リストは短い」"
+ },
+ "bark_crane_4": {
+  "en": "\"Miss Ashcombe. Your father was tidy too.\"",
+  "ja": "「アシュコムさん。お父上も几帳面な方だった」"
+ },
+ "bark_sallis_1": {
+  "en": "\"The Blackwood bequest is my field, Vance.\"",
+  "ja": "「ブラックウッド遺贈は私の専門よ、ヴァンス」"
+ },
+ "bark_sallis_2": {
+  "en": "\"You cite the 1953 catalogue? Bold.\"",
+  "ja": "「1953年の目録を引用するの？大胆ね」"
+ },
+ "bark_sallis_3": {
+  "en": "\"Your assistant is very quiet. Clever people often are.\"",
+  "ja": "「助手さん、静かね。賢い人はたいていそう」"
+ },
+ "bark_ambrose_1": {
+  "en": "\"My client values discretion above all things.\"",
+  "ja": "「依頼人は何よりも慎重さを重んじます」"
+ },
+ "bark_ambrose_2": {
+  "en": "\"Shall we call it a misunderstanding?\"",
+  "ja": "「誤解、ということにしましょうか」"
+ },
+ "bark_ambrose_3": {
+  "en": "\"I have the paperwork for every outcome.\"",
+  "ja": "「どんな結末にも書類は用意してあります」"
+ },
+ "bark_penhallow_boss_1": {
+  "en": "\"My grandfather's wing. You keep it very well.\"",
+  "ja": "「祖父の棟だ。よく手入れしてくれている」"
+ },
+ "bark_penhallow_boss_2": {
+  "en": "\"Marguerite retires in the spring, you know.\"",
+  "ja": "「マルグリットは春に引退するそうだよ」"
+ },
+ "bark_penhallow_boss_3": {
+  "en": "\"A board seat is a very comfortable chair.\"",
+  "ja": "「理事の椅子はとても座り心地がいい」"
+ },
+ "bark_penhallow_boss_4": {
+  "en": "\"Her father had that look too.\"",
+  "ja": "「彼女の父親も、ああいう目をしていた」"
+ },
+ "bark_dean_tea_1": {
+  "en": "\"Milk, Professor?\"",
+  "ja": "「ミルクは、教授？」"
+ },
+ "bark_dean_tea_2": {
+  "en": "\"The survey. I thought we should talk before you go poking.\"",
+  "ja": "「調査の件。あなたが嗅ぎ回る前に話しておこうと思って」"
+ },
+ "bark_dean_tea_3": {
+  "en": "\"Julian asked about your assistant.\"",
+  "ja": "「ジュリアンがあなたの助手のことを聞いていたわ」"
+ },
+ "bark_dean_tea_4": {
+  "en": "\"I keep everything, Professor. It is my only vice.\"",
+  "ja": "「私は何でも取っておくの、教授。唯一の悪癖よ」"
+ },
+ "bark_penhallow_final_1": {
+  "en": "\"Everybody goes home. That is my offer.\"",
+  "ja": "「皆、家に帰る。それが私の提案だ」"
+ },
+ "bark_penhallow_final_2": {
+  "en": "\"Sixty volumes. Do you know what they cost?\"",
+  "ja": "「六十巻。いくらかかったか分かるかね」"
+ },
+ "bark_penhallow_final_3": {
+  "en": "\"I can make your father's page disappear, Vance.\"",
+  "ja": "「君の父親のページを消してやれるぞ、ヴァンス」"
+ },
+ "bark_penhallow_final_4": {
+  "en": "\"Marguerite. Say something.\"",
+  "ja": "「マルグリット。何か言え」"
+ },
+ "hs_trolley": {
+  "en": "The trolley",
+  "ja": "台車"
+ },
+ "hs_coalstore": {
+  "en": "Coal store door",
+  "ja": "石炭庫の扉"
+ },
+ "hs_lodge_phone": {
+  "en": "Lodge telephone",
+  "ja": "詰所の電話"
+ },
+ "hs_manifest": {
+  "en": "Manifest board",
+  "ja": "積荷目録"
+ },
+ "hs_programme": {
+  "en": "Lecture programme",
+  "ja": "講演プログラム"
+ },
+ "hs_portraits": {
+  "en": "Portraits",
+  "ja": "肖像画"
+ },
+ "hs_decanter": {
+  "en": "Sherry decanter",
+  "ja": "シェリーのデカンタ"
+ },
+ "hs_lectern": {
+  "en": "The lectern",
+  "ja": "演台"
+ },
+ "hs_vey_desk": {
+  "en": "Secretary's desk",
+  "ja": "秘書の机"
+ },
+ "hs_fireplace": {
+  "en": "Fireplace",
+  "ja": "暖炉"
+ },
+ "hs_files": {
+  "en": "File boxes",
+  "ja": "書類箱"
+ },
+ "hs_bricks": {
+  "en": "The bricked door",
+  "ja": "煉瓦で塞がれた扉"
+ },
+ "hs_wheel": {
+  "en": "Wheel lock",
+  "ja": "円形錠"
+ },
+ "hs_shelves": {
+  "en": "The volumes",
+  "ja": "台帳の棚"
+ },
+ "hs_window2": {
+  "en": "Window",
+  "ja": "窓"
+ },
+ "hs_back": {
+  "en": "Back to the study",
+  "ja": "研究室へ戻る"
+ },
+ "hs_go_lecture": {
+  "en": "Into the hall",
+  "ja": "講堂へ"
+ },
+ "hs_return": {
+  "en": "Go back",
+  "ja": "戻る"
+ },
+ "i_survey": {
+  "en": "Survey approval",
+  "ja": "調査許可書"
+ },
+ "id_survey": {
+  "en": "Evidence. Approved in eleven hours. Nobody is that fast.",
+  "ja": "証拠。十一時間で承認。そんなに早い者はいない。"
+ },
+ "i_plan_1994": {
+  "en": "1994 cellar plan",
+  "ja": "1994年の地下図面"
+ },
+ "id_plan_1994": {
+  "en": "Evidence. A room drawn in red that is on no other plan.",
+  "ja": "証拠。他のどの図面にもない、赤で描かれた部屋。"
+ },
+ "i_gift_pen": {
+  "en": "Fountain pen",
+  "ja": "万年筆"
+ },
+ "id_gift_pen": {
+  "en": "Green ink. Hers would be green. Give it to her.",
+  "ja": "緑のインク。彼女なら緑だ。贈ろう。"
+ },
+ "i_brandy": {
+  "en": "Common-room brandy",
+  "ja": "談話室のブランデー"
+ },
+ "id_brandy": {
+  "en": "Restores 14 nerve.",
+  "ja": "胆力を14回復。"
+ },
+ "i_biscuits": {
+  "en": "Tin of biscuits",
+  "ja": "ビスケット缶"
+ },
+ "id_biscuits": {
+  "en": "Restores 28 composure.",
+  "ja": "平静を28回復。"
+ },
+ "i_gown": {
+  "en": "Academic gown",
+  "ja": "学位ガウン"
+ },
+ "id_gown": {
+  "en": "Elena's outfit. Wit +1, Recite stronger.",
+  "ja": "エレナの衣装。知力+1、暗誦強化。"
+ },
+ "i_evening": {
+  "en": "Emerald evening gown",
+  "ja": "エメラルドのイブニングドレス"
+ },
+ "id_evening": {
+  "en": "Elena's outfit for the lecture. Charm +2, Flirt stronger.",
+  "ja": "講演会用のエレナの衣装。魅力+2、誘惑強化。"
+ },
+ "i_keyring": {
+  "en": "Porter's keyring",
+  "ja": "守衛の鍵束"
+ },
+ "id_keyring": {
+  "en": "Tool. Stealth +2.",
+  "ja": "道具。隠密+2。"
+ },
+ "i_page_two": {
+  "en": "Page two",
+  "ja": "2ページ"
+ },
+ "id_page_two": {
+  "en": "Evidence. Your father. Four hundred pounds. 1971.",
+  "ja": "証拠。あなたの父。四百ポンド。1971年。"
+ },
+ "n2_title": {
+  "en": "Night Two — The Incinerator List",
+  "ja": "第二夜 — 焼却リスト"
+ },
+ "n2_sub": {
+  "en": "5:41 AM. The vault door, and a clipboard.",
+  "ja": "午前5時41分。書庫の扉と、クリップボード。"
+ },
+ "n2_plan_1": {
+  "en": "The plan, then: swap the crate before nine. The lodge, the dock, the coal store. In that order, before the van.",
+  "ja": "計画はこうだ。九時までに木箱をすり替える。詰所、搬入口、石炭庫。車が来る前に、この順で。"
+ },
+ "n2_lodge_1": {
+  "en": "The porter's lodge. Cobb is not here. Someone else is, at his telephone, in a grey cardigan.",
+  "ja": "守衛詰所。コブはいない。代わりに灰色のカーディガンの誰かが、彼の電話の前にいる。"
+ },
+ "n2_vey_1": {
+  "en": "\"Professor Vance. The Dean asked me to confirm the signing officer for lot forty-one. I'm told that's you.\"",
+  "ja": "「ヴァンス教授。学部長から第41ロットの署名責任者を確認するよう言われまして。あなただと伺いました」"
+ },
+ "n2_vey_2": {
+  "en": "She has a pencil behind her ear and a list in front of her. Your name is already on it.",
+  "ja": "彼女は耳に鉛筆を挟み、目の前にリストを置いている。あなたの名前はもう載っている。"
+ },
+ "n2_vey_3": {
+  "en": "\"I'll tell the Dean you were very helpful,\" Miss Vey says. She does not say what she will tell her about Elena.",
+  "ja": "「とても協力的だったと学部長に伝えますわ」とヴェイ。エレナについて何を伝えるかは言わない。"
+ },
+ "n2_phone_1": {
+  "en": "The lodge telephone log. One call at 5:52, to an extension you know: the Dean's residence.",
+  "ja": "詰所の通話記録。5時52分に一件、知っている内線へ。学部長公邸だ。"
+ },
+ "n2_keyring_1": {
+  "en": "Cobb's spare keyring hangs on a nail. He would want you to have it. Probably.",
+  "ja": "コブの予備の鍵束が釘に掛かっている。彼ならあなたに持たせたがるだろう。たぶん。"
+ },
+ "n2_dock_hollis_1": {
+  "en": "Estates security, in a yellow coat, with a clipboard of his own. Everybody has a clipboard today.",
+  "ja": "黄色いコートの施設警備員。彼もクリップボードを持っている。今日は誰もがクリップボードを持っている。"
+ },
+ "n2_dock_hollis_2": {
+  "en": "\"Nobody's on my list for the dock this morning, sir.\"",
+  "ja": "「今朝の搬入口の名簿に、どなたも載っていませんが」"
+ },
+ "n2_dock_grice_1": {
+  "en": "The van is early. The driver's mate jumps down, already counting crates.",
+  "ja": "車が早く着いた。運転手の助手が飛び降り、もう木箱を数えている。"
+ },
+ "n2_dock_grice_2": {
+  "en": "Elena steps between him and the middle crate. \"Five minutes. The labels are wrong.\"",
+  "ja": "エレナが彼と真ん中の木箱の間に立つ。「五分ちょうだい。ラベルが違うの」"
+ },
+ "n2_manifest_1": {
+  "en": "The manifest: three crates, lot forty-one in the middle, signing officer VANCE. Typed, not signed.",
+  "ja": "積荷目録：木箱三つ、第41ロットは真ん中、署名責任者ヴァンス。タイプ打ちで、署名はない。"
+ },
+ "n2_coal_1": {
+  "en": "The coal store under the dock. Somebody has been here since you hid the crate. The door is ajar.",
+  "ja": "搬入口下の石炭庫。木箱を隠してから、誰かがここに来ている。扉が少し開いている。"
+ },
+ "n2_crane_1": {
+  "en": "A thin man in a grey trench coat, sitting on lot forty-one, smoking.",
+  "ja": "灰色のトレンチコートの痩せた男が、第41ロットに腰掛けて煙草を吸っている。"
+ },
+ "n2_crane_2": {
+  "en": "\"Professor. Miss Ashcombe. The Dean sends her thanks for your diligence. She'd like the crate.\"",
+  "ja": "「教授。アシュコムさん。学部長があなた方の勤勉さに感謝しています。木箱を頂きたいそうです」"
+ },
+ "n2_crane_3": {
+  "en": "He flicks the cigarette into the coal and does not look to see where it lands.",
+  "ja": "彼は煙草を石炭の上に弾き飛ばし、どこに落ちたかも見ない。"
+ },
+ "n2_crane_4": {
+  "en": "\"Another time, then.\" Crane steps over the crate on his way out, as if it were a puddle.",
+  "ja": "「では、また今度」クレインは水たまりでも跨ぐように木箱を跨いで出ていった。"
+ },
+ "n2_crane_5": {
+  "en": "Elena sits down on the crate where he sat. Her hands are shaking now, all at once.",
+  "ja": "エレナは彼が座っていた木箱に腰を下ろす。今になって、手が一気に震え出す。"
+ },
+ "n2_back_1": {
+  "en": "Back upstairs. The study, the lamp, the radiator. It feels like a week since last night.",
+  "ja": "上の階へ戻る。研究室、ランプ、ラジエーター。昨夜から一週間経ったような気がする。"
+ },
+ "n2_trust_hint": {
+  "en": "(Her trust is not there yet. At Trust 5 this scene goes further.)",
+  "ja": "（まだ信頼が足りない。信頼5でこの場面は先へ進む）"
+ },
+ "n2_trolley_1": {
+  "en": "The trolley. Three crates. Hollis's back is turned, for now.",
+  "ja": "台車。木箱が三つ。ホリスは今のところ背を向けている。"
+ },
+ "n2_window_1": {
+  "en": "From the dock you can see the incinerator chimney. It is already smoking.",
+  "ja": "搬入口から焼却炉の煙突が見える。もう煙が上がっている。"
+ },
+ "n3_gift_1": {
+  "en": "In your drawer: a fountain pen with green ink, bought in September and never used, and a dress box Elena left here 'for Friday'.",
+  "ja": "引き出しの中に、九月に買って使わずにいた緑インクの万年筆と、エレナが「金曜日用」と置いていったドレスの箱。"
+ },
+ "n4_tin_1": {
+  "en": "The petty-cash tin holds biscuits now. Elena's academic gown hangs on the back of the door.",
+  "ja": "小口現金の缶には今やビスケットが入っている。扉の裏にはエレナの学位ガウンが掛かっている。"
+ },
+ "n3_title": {
+  "en": "Night Three — Penhallow",
+  "ja": "第三夜 — ペンハロウ"
+ },
+ "n3_sub": {
+  "en": "Three days later. Friday: the Penhallow Lecture.",
+  "ja": "三日後。金曜日、ペンハロウ記念講演。"
+ },
+ "n3_plan_1": {
+  "en": "Seven o'clock. The main hall first, then the sherry in the common room. Elena has put on something she says is armour.",
+  "ja": "七時。まず大講堂、それから談話室でシェリー。エレナは「鎧よ」と言って何かに着替えてきた。"
+ },
+ "n3_corr_1": {
+  "en": "The Dean's corridor is full of chairs being carried somewhere else.",
+  "ja": "学部長室の廊下は、どこかへ運ばれていく椅子でいっぱいだ。"
+ },
+ "n3_grice_1": {
+  "en": "Grice, from the dock, in a borrowed waiter's jacket, with a stack of chairs and a long memory.",
+  "ja": "搬入口のグライスが、借り物の給仕服で椅子を積み上げ、長い記憶を携えて立っている。"
+ },
+ "n3_grice_2": {
+  "en": "\"You're the ten-minute man. Van was late to the incinerator. Somebody noticed.\"",
+  "ja": "「あんた、十分待たせた人だな。焼却炉に遅れた。気付いた奴がいる」"
+ },
+ "n3_grice_3": {
+  "en": "\"Fine. I never saw you. I'm carrying chairs.\"",
+  "ja": "「いいさ。何も見てない。俺は椅子を運んでるだけだ」"
+ },
+ "n3_hall_1": {
+  "en": "The main hall. Four hundred chairs, a lectern, and a portrait of Aldous Penhallow ten feet high.",
+  "ja": "大講堂。四百脚の椅子、演台、そして高さ三メートルのオルダス・ペンハロウの肖像画。"
+ },
+ "n3_sallis_1": {
+  "en": "Dr Imogen Sallis, who wrote the book on the Blackwood bequest and would like you to know it.",
+  "ja": "ブラックウッド遺贈について本を書き、それを知らしめたいイモジェン・サリス博士。"
+ },
+ "n3_sallis_2": {
+  "en": "\"Vance. Antiquities filed a survey request on my wing. Explain.\"",
+  "ja": "「ヴァンス。古美術学部が私の棟の調査請求を出したわね。説明して」"
+ },
+ "n3_sallis_3": {
+  "en": "\"Fine. Fine. But if you find anything, I want the footnote.\"",
+  "ja": "「いいわ。でも何か見つけたら、脚注は私のものよ」"
+ },
+ "n3_programme_1": {
+  "en": "The programme lists the Penhallow donors since 1897. Ashcombe is not among them. The typeface changes in 1996.",
+  "ja": "プログラムには1897年以来のペンハロウ寄付者が並ぶ。アシュコムの名はない。1996年で書体が変わっている。"
+ },
+ "n3_portraits_1": {
+  "en": "Aldous Penhallow, in oils. The painter gave him Julian's hands. Or Julian has his.",
+  "ja": "油彩のオルダス・ペンハロウ。画家は彼にジュリアンの手を描いた。あるいはジュリアンが祖父の手を受け継いだのか。"
+ },
+ "n3_common_1": {
+  "en": "The common room. Sherry, small talk, and a man in a pinstripe suit who has been watching Elena since the door.",
+  "ja": "談話室。シェリー、世間話、そして扉からずっとエレナを見ているピンストライプの男。"
+ },
+ "n3_ambrose_1": {
+  "en": "\"Professor Vance? Ambrose. I act for the Penhallow family. A small matter of a survey.\"",
+  "ja": "「ヴァンス教授？アンブローズです。ペンハロウ家の代理人をしております。調査の件で少々」"
+ },
+ "n3_ambrose_2": {
+  "en": "\"Another time, then. My client is on his way over.\"",
+  "ja": "「では、また。依頼人がこちらに向かっております」"
+ },
+ "n3_decanter_1": {
+  "en": "A decanter of common-room brandy nobody is guarding. Medicinal, again.",
+  "ja": "誰も見張っていない談話室のブランデー。またしても薬用だ。"
+ },
+ "n3_pen_pre_1": {
+  "en": "Julian Penhallow crosses the room toward you. He does not hurry. He has never had to.",
+  "ja": "ジュリアン・ペンハロウが部屋を横切ってくる。急がない。急ぐ必要がなかった男だ。"
+ },
+ "n3_back_1": {
+  "en": "Ten o'clock. You leave the common room without looking back. Elena follows two minutes later, as agreed.",
+  "ja": "十時。振り返らずに談話室を出る。エレナは打ち合わせ通り二分後に続く。"
+ },
+ "n3_trust_hint": {
+  "en": "(Her trust is not there yet. At Trust 7 this scene goes further.)",
+  "ja": "（まだ信頼が足りない。信頼7でこの場面は先へ進む）"
+ },
+ "n4_title": {
+  "en": "Night Four — The Dean's Annex",
+  "ja": "第四夜 — 学部長の別館"
+ },
+ "n4_sub": {
+  "en": "Two o'clock. Tea. Twenty minutes in the file room.",
+  "ja": "二時。茶席。書類室での二十分。"
+ },
+ "n4_corr_1": {
+  "en": "The Dean's corridor, by daylight. Every door shut. One desk outside the last one.",
+  "ja": "昼の学部長室の廊下。扉はすべて閉ざされ、最後の扉の前に机がひとつ。"
+ },
+ "n4_vey_1": {
+  "en": "Miss Vey looks up. She has a list. Elena is not on it.",
+  "ja": "ヴェイが顔を上げる。リストがある。エレナの名は載っていない。"
+ },
+ "n4_vey_2": {
+  "en": "\"The Dean is expecting you, Professor. Only you.\"",
+  "ja": "「学部長がお待ちです、教授。あなただけを」"
+ },
+ "n4_vey_3": {
+  "en": "Miss Vey goes to fetch the milk. She leaves the file-room key in her drawer, which is open.",
+  "ja": "ヴェイはミルクを取りに行く。書類室の鍵は引き出しに入れたまま。引き出しは開いている。"
+ },
+ "n4_annex_1": {
+  "en": "The annex: panelling, portraits, Penhallow above the fireplace, and a man at the door who is not a porter.",
+  "ja": "別館。羽目板、肖像画、暖炉の上のペンハロウ、そして守衛ではない戸口の男。"
+ },
+ "n4_hollis_1": {
+  "en": "Hollis, from the dock, moved to the annex. Promoted, he says. He does not look pleased about it.",
+  "ja": "搬入口のホリスが別館に移っていた。昇進だという。嬉しそうには見えない。"
+ },
+ "n4_hollis_2": {
+  "en": "\"Fine. Go in. I didn't see her go the other way, either.\"",
+  "ja": "「いいですよ、入って。彼女が反対側に行くのも見てません」"
+ },
+ "n4_fire_1": {
+  "en": "The fireplace. In the grate, the corner of a typed sheet that did not burn: LOT 41 — SIGNING OFFICER —",
+  "ja": "暖炉。火格子にタイプ打ちの紙の燃え残り：第41ロット — 署名責任者 —"
+ },
+ "n4_files_1": {
+  "en": "The file room. Boxes to the ceiling, every one labelled in the Dean's hand. She keeps everything.",
+  "ja": "書類室。天井まで箱が積まれ、どれも学部長の字でラベルが貼られている。彼女は何でも取っておく。"
+ },
+ "n4_crane_1": {
+  "en": "Crane is in the doorway, between you and the corridor, holding nothing at all.",
+  "ja": "クレインが戸口に立っている。あなたと廊下の間に。何も持たずに。"
+ },
+ "n4_crane_2": {
+  "en": "\"The Dean keeps everything, Professor. That includes count of who comes in here.\"",
+  "ja": "「学部長は何でも取っておくんですよ、教授。ここに誰が入ったかの数も含めて」"
+ },
+ "n4_crane_3": {
+  "en": "\"Keep the plan. She has copies.\" Crane steps aside. He sounds almost relieved.",
+  "ja": "「図面はどうぞ。写しはあります」クレインは脇へ退く。どこか安堵したような声だった。"
+ },
+ "n4_trust_hint": {
+  "en": "(Her trust is not there yet. At Trust 7 this scene goes further.)",
+  "ja": "（まだ信頼が足りない。信頼7でこの場面は先へ進む）"
+ },
+ "n4_carrel_1": {
+  "en": "Her carrel in the postgraduate block. One lamp, books in towers, a teacup with a week of rings in it.",
+  "ja": "大学院棟の彼女の閲覧席。ランプひとつ、塔のような本の山、一週間分の輪染みのついたティーカップ。"
+ },
+ "n4_window_1": {
+  "en": "From her window: the chapel roof, and under it, somewhere, a room that is on no plan but one.",
+  "ja": "彼女の窓から礼拝堂の屋根が見える。その下のどこかに、ただ一枚の図面にしか載っていない部屋がある。"
+ },
+ "n5_title": {
+  "en": "Night Five — The Strongroom",
+  "ja": "第五夜 — 保管庫"
+ },
+ "n5_sub": {
+  "en": "Under the chapel. Brick, mortar, and a wheel lock.",
+  "ja": "礼拝堂の下。煉瓦、モルタル、円形錠。"
+ },
+ "n5_stair_1": {
+  "en": "The crypt stair. The story the first-years tell. It is real, and it is lit, and someone has swept it.",
+  "ja": "地下への階段。新入生が語る噂話。それは実在し、灯りがともり、誰かが掃除していた。"
+ },
+ "n5_grice_1": {
+  "en": "Grice, again, at the bottom of the stair, with a torch and a different jacket.",
+  "ja": "またグライスだ。階段の下で、懐中電灯と違う上着で。"
+ },
+ "n5_grice_2": {
+  "en": "\"Overtime, Professor. Somebody's paying a lot of people to stand in cellars tonight.\"",
+  "ja": "「残業ですよ、教授。今夜は誰かが大勢に金を払って地下に立たせてる」"
+ },
+ "n5_grice_3": {
+  "en": "\"I'm going home. Tell whoever's paying I went home.\"",
+  "ja": "「帰りますよ。金を払ってる奴に、俺は帰ったと伝えてくれ」"
+ },
+ "n5_ambrose_1": {
+  "en": "Ambrose, in a good coat, holding a document with a red seal.",
+  "ja": "上等なコートのアンブローズが、赤い封蝋の書類を手にしている。"
+ },
+ "n5_ambrose_2": {
+  "en": "\"An injunction, Professor. Signed at six. You will want to read it before you touch that door.\"",
+  "ja": "「差止命令です、教授。六時に署名されました。その扉に触れる前にお読みになった方がよろしいかと」"
+ },
+ "n5_ambrose_3": {
+  "en": "\"I did say I had paperwork for every outcome. I did not say it would hold.\"",
+  "ja": "「どんな結末にも書類はある、と申し上げました。それが有効だとは申しておりません」"
+ },
+ "n5_crane_1": {
+  "en": "Crane, at the bricked door, with a bricklayer's hammer he has clearly never used.",
+  "ja": "煉瓦で塞がれた扉の前のクレイン。明らかに使ったことのない煉瓦槌を持って。"
+ },
+ "n5_crane_2": {
+  "en": "\"The Dean said nobody goes in. She didn't say why. She never does.\"",
+  "ja": "「学部長は誰も入れるなと。理由は言わなかった。いつもそうだ」"
+ },
+ "n5_crane_3": {
+  "en": "Crane puts the hammer down very carefully, as if it were the one thing in the cellar that could break.",
+  "ja": "クレインは慎重に槌を置く。まるで地下で唯一壊れるものであるかのように。"
+ },
+ "n5_bricks_1": {
+  "en": "New brick over an old door. Same mortar as the coal store. Same month.",
+  "ja": "古い扉を覆う新しい煉瓦。石炭庫と同じモルタル。同じ月のものだ。"
+ },
+ "n5_pen_pre_1": {
+  "en": "Penhallow does not raise his voice. He names a figure instead.",
+  "ja": "ペンハロウは声を荒らげない。代わりに金額を口にする。"
+ },
+ "n5_pen_post_1": {
+  "en": "The Dean has still not looked at Penhallow. She is looking at the ledger in Elena's arms.",
+  "ja": "学部長はまだペンハロウを見ていない。エレナの腕の中の台帳を見ている。"
+ },
+ "n5_trust_hint": {
+  "en": "(Her trust is not there yet. At Trust 9 this scene goes further.)",
+  "ja": "（まだ信頼が足りない。信頼9でこの場面は先へ進む）"
+ },
+ "end_rewrite": {
+  "en": "Ending: The Record",
+  "ja": "エンディング：記録"
+ },
+ "end_expose": {
+  "en": "Ending: Daylight",
+  "ja": "エンディング：白日"
+ },
+ "end_abscond": {
+  "en": "Ending: The Sea",
+  "ja": "エンディング：海"
+ },
+ "credits_1": {
+  "en": "Elena: Crimson Archives — RPG edition. Thank you for playing.",
+  "ja": "エレナ：深紅の書庫 — RPG版。プレイしていただきありがとうございました。"
+ },
+ "credits_2": {
+  "en": "Three endings: The Record, Daylight, The Sea. Your save is kept; play the last night again from slot 1 to see another.",
+  "ja": "エンディングは三つ：記録、白日、海。セーブは残る。スロット1から最終夜をやり直せば別の結末が見られる。"
+ },
+ "g_cg_ch3_crypt": {
+  "en": "An hour",
+  "ja": "一時間"
+ },
+ "g_cg_annex": {
+  "en": "The file room",
+  "ja": "書類室"
+ },
+ "g_cg_ch4_chapel": {
+  "en": "On my instruction",
+  "ja": "私の指示で"
+ },
+ "g_cg_muniment": {
+  "en": "The strongroom",
+  "ja": "保管庫"
+ },
+ "g_cg_ch5_muniment": {
+  "en": "Sixty volumes",
+  "ja": "六十巻"
+ },
+ "g_cg_rpg_rain_arrival": {
+  "en": "Rain at the gate",
+  "ja": "門の雨"
+ },
+ "g_cg_rpg_map_room": {
+  "en": "The map room",
+  "ja": "地図室"
+ },
+ "g_cg_rpg_lockpick": {
+  "en": "Lockwork",
+  "ja": "錠前"
+ },
+ "g_cg_rpg_bell_chamber": {
+  "en": "The bells",
+  "ja": "鐘楼"
+ },
+ "g_cg_rpg_roof_dawn": {
+  "en": "Roof, dawn",
+  "ja": "屋根の夜明け"
+ },
+ "g_cg_rpg_gala": {
+  "en": "The lecture",
+  "ja": "講演会"
+ },
+ "g_cg_trust3_carrel": {
+  "en": "Her carrel",
+  "ja": "閲覧席"
+ },
+ "g_cg_trust5_common_room": {
+  "en": "After the sherry",
+  "ja": "シェリーの後"
+ },
+ "g_cg_trust7_bath": {
+  "en": "Steam",
+  "ja": "湯気"
+ },
+ "g_cg_trust9_bed": {
+  "en": "Morning",
+  "ja": "朝"
+ }
+}

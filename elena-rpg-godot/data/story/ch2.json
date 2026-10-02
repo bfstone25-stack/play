@@ -1,0 +1,1112 @@
+{
+ "chapter": 2,
+ "lines": [
+  {
+   "id": "chapter_2_13f012a9",
+   "src": 18,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Chapter 2 — The Incinerator List",
+   "ja": "第2章 〜 焼却リスト",
+   "v_en": "res://assets/voice/chapter_2_13f012a9.ogg",
+   "v_ja": "res://assets/voice/chapter_2_13f012a9.ja.ogg"
+  },
+  {
+   "id": "chapter_2_a6624bb0",
+   "src": 19,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "5:41 AM. The footsteps stop outside the vault door. A key tries the lock, finds it already open, and hesitates.",
+   "ja": "午前5時41分。足音が金庫室の扉の前で止まる。鍵が錠を試す。既に開いていると知り、躊躇する。",
+   "v_en": "res://assets/voice/chapter_2_a6624bb0.ogg",
+   "v_ja": "res://assets/voice/chapter_2_a6624bb0.ja.ogg"
+  },
+  {
+   "id": "chapter_2_f3e56cab",
+   "src": 22,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You are alone with the ledger. You close it and put your hand flat on the cover, as if that hides anything.",
+   "ja": "帳簿と二人きりだ。それを閉じ、表紙に手のひらを置く。何かを隠せるかのように。",
+   "v_en": "res://assets/voice/chapter_2_f3e56cab.ogg",
+   "v_ja": "res://assets/voice/chapter_2_f3e56cab.ja.ogg"
+  },
+  {
+   "id": "chapter_2_004c0fad",
+   "src": 26,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Elena is on her feet before you are. Blouse buttoned wrong, glasses on, the ledger already behind her back.",
+   "ja": "エレナはあなたより先に立ち上がっている。ブラウスのボタンはずれ、眼鏡をかけ、台帳はすでに背中に隠されている。",
+   "v_en": "res://assets/voice/chapter_2_004c0fad.ogg",
+   "v_ja": "res://assets/voice/chapter_2_004c0fad.ja.ogg"
+  },
+  {
+   "id": "chapter_2_580ca224",
+   "src": 27,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Cobb. The night porter. He does the vault round at a quarter to six.",
+   "ja": "コブ。夜警だ。彼は6時15分前に金庫室を見回る。",
+   "v_en": "res://assets/voice/chapter_2_580ca224.ogg",
+   "v_ja": "res://assets/voice/chapter_2_580ca224.ja.ogg"
+  },
+  {
+   "id": "chapter_2_7f4f6b79",
+   "src": 28,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "He is fifteen minutes early.",
+   "ja": "彼は15分早い。",
+   "v_en": "res://assets/voice/chapter_2_7f4f6b79.ogg",
+   "v_ja": "res://assets/voice/chapter_2_7f4f6b79.ja.ogg"
+  },
+  {
+   "id": "chapter_2_4051292e",
+   "src": 29,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "He's never early.",
+   "ja": "「彼が早く来ることはありません」",
+   "v_en": "res://assets/voice/chapter_2_4051292e.ogg",
+   "v_ja": "res://assets/voice/chapter_2_4051292e.ja.ogg"
+  },
+  {
+   "id": "chapter_2_939f4555",
+   "src": 33,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "The door opens. Cobb is sixty, thin, in the grey coat the porters have worn since before you were hired. He carries a clipboard and a torch he does not need.",
+   "ja": "ドアが開く。コブは60歳、痩せている。私が雇われる前から守衛たちが着ていた灰色のコートをまとっている。クリップボードと、必要のない懐中電灯を持っている。",
+   "v_en": "res://assets/voice/chapter_2_939f4555.ogg",
+   "v_ja": "res://assets/voice/chapter_2_939f4555.ja.ogg"
+  },
+  {
+   "id": "chapter_2_9c69e897",
+   "src": 34,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "He looks at the crate. At the ledger. At the two coffee cups on the desk — one of them yours from last night, one of them not.",
+   "ja": "彼は木箱を見る。台帳を見る。机の上の二つのコーヒーカップを見る——片方は昨夜のあなたのもの、もう片方は違う。",
+   "v_en": "res://assets/voice/chapter_2_9c69e897.ogg",
+   "v_ja": "res://assets/voice/chapter_2_9c69e897.ja.ogg"
+  },
+  {
+   "id": "chapter_2_b09cced1",
+   "src": 40,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "\"Professor Vance,\" he says. \"You are on the deaccession sheet as the signing officer for lot forty-one. The van comes at nine.\"",
+   "ja": "「ヴァンス教授」と彼は言う。「あなたは廃棄目録に、ロット41の署名責任者として記載されています。バンは9時に来ます。」",
+   "v_en": "res://assets/voice/chapter_2_b09cced1.ogg",
+   "v_ja": "res://assets/voice/chapter_2_b09cced1.ja.ogg"
+  },
+  {
+   "id": "chapter_2_5c4be1da",
+   "src": 42,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "I did not sign a deaccession sheet.",
+   "ja": "廃棄目録には署名していない。",
+   "v_en": "res://assets/voice/chapter_2_5c4be1da.ogg",
+   "v_ja": "res://assets/voice/chapter_2_5c4be1da.ja.ogg"
+  },
+  {
+   "id": "chapter_2_d17bf4a9",
+   "src": 44,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "\"No, sir. But your name is on it.\"",
+   "ja": "「いえ、しかし、そこにあなた様の名前が。」",
+   "v_en": "res://assets/voice/chapter_2_d17bf4a9.ogg",
+   "v_ja": "res://assets/voice/chapter_2_d17bf4a9.ja.ogg"
+  },
+  {
+   "id": "chapter_2_e0866328",
+   "src": 45,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "He does not smile. He turns the clipboard so you can read it. Your name, typed. A signature that is a very good copy of yours. Dated yesterday.",
+   "ja": "彼は笑わない。彼がクリップボードを回し、読めるようにする。私の名前が、タイプされている。私の署名とそっくりなサイン。日付は昨日。",
+   "v_en": "res://assets/voice/chapter_2_e0866328.ogg",
+   "v_ja": "res://assets/voice/chapter_2_e0866328.ja.ogg"
+  },
+  {
+   "id": "chapter_2_73b34728",
+   "src": 48,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Under the signature, in pencil, in Elena's small hand: {i}Read page fourteen before nine. E.{/i}",
+   "ja": "署名の下に、鉛筆で、エレナの小さな手書きで：{i}9時までに14ページを読め。E.{/i}",
+   "v_en": "res://assets/voice/chapter_2_73b34728.ogg",
+   "v_ja": "res://assets/voice/chapter_2_73b34728.ja.ogg"
+  },
+  {
+   "id": "chapter_2_49cf9687",
+   "src": 49,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Cobb watches you read it. He has already read it.",
+   "ja": "コブは私がそれを読むのを見ている。彼は既にそれを読んでいる。",
+   "v_en": "res://assets/voice/chapter_2_49cf9687.ogg",
+   "v_ja": "res://assets/voice/chapter_2_49cf9687.ja.ogg"
+  },
+  {
+   "id": "chapter_2_95e60f60",
+   "src": 51,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Elena reads it over your shoulder. Her breath stops on the date.",
+   "ja": "エレナが私の肩越しにそれを読む。彼女は日付のところで息を止める。",
+   "v_en": "res://assets/voice/chapter_2_95e60f60.ogg",
+   "v_ja": "res://assets/voice/chapter_2_95e60f60.ja.ogg"
+  },
+  {
+   "id": "chapter_2_3b92a359",
+   "src": 52,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Yesterday. Before I ever opened the crate.",
+   "ja": "昨日。私が木箱を開けるよりも前に。",
+   "v_en": "res://assets/voice/chapter_2_3b92a359.ogg",
+   "v_ja": "res://assets/voice/chapter_2_3b92a359.ja.ogg"
+  },
+  {
+   "id": "chapter_2_a2d2c2cf",
+   "src": 53,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Cobb clears his throat. \"I only carry the sheet, miss.\"",
+   "ja": "コブが咳払いをする。「私はただ、この書類を運ぶだけです、お嬢さん。」",
+   "v_en": "res://assets/voice/chapter_2_a2d2c2cf.ogg",
+   "v_ja": "res://assets/voice/chapter_2_a2d2c2cf.ja.ogg"
+  },
+  {
+   "id": "chapter_2_9fcd65ad",
+   "src": 60,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "\"The Dean's office, sir. Envelope under my door at ten. Same as always.\"",
+   "ja": "「学部長室からです、先生。封筒は10時に私のドアの下に。いつもの通りです。」",
+   "v_en": "res://assets/voice/chapter_2_9fcd65ad.ogg",
+   "v_ja": "res://assets/voice/chapter_2_9fcd65ad.ja.ogg"
+  },
+  {
+   "id": "chapter_2_0e6bf7f6",
+   "src": 61,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "Always?",
+   "ja": "いつも？",
+   "v_en": "res://assets/voice/chapter_2_0e6bf7f6.ogg",
+   "v_ja": "res://assets/voice/chapter_2_0e6bf7f6.ja.ogg"
+  },
+  {
+   "id": "chapter_2_2f6946f6",
+   "src": 62,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "\"Lot forty-one is the fourth this year. The others went to the van. Nobody asked me who signed.\"",
+   "ja": "「41番の品は、今年で4つ目だ。他はバンに積まれた。誰がサインしたかなんて、誰も聞かなかった」",
+   "v_en": "res://assets/voice/chapter_2_2f6946f6.ogg",
+   "v_ja": "res://assets/voice/chapter_2_2f6946f6.ja.ogg"
+  },
+  {
+   "id": "chapter_2_78ebb1e4",
+   "src": 67,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You take out your wallet. Cobb looks at it the way a man looks at weather.",
+   "ja": "財布を取り出す。コブは、天気を眺めるような目でそれを見る。",
+   "v_en": "res://assets/voice/chapter_2_78ebb1e4.ogg",
+   "v_ja": "res://assets/voice/chapter_2_78ebb1e4.ja.ogg"
+  },
+  {
+   "id": "chapter_2_54930cda",
+   "src": 68,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "\"I have been here thirty-one years, Professor. I would like to be here thirty-two.\"",
+   "ja": "「教授、私はここに31年いる。32年目もここにいたいものだ」",
+   "v_en": "res://assets/voice/chapter_2_54930cda.ogg",
+   "v_ja": "res://assets/voice/chapter_2_54930cda.ja.ogg"
+  },
+  {
+   "id": "chapter_2_b7787a3d",
+   "src": 69,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "He does not take the money. He does not leave either.",
+   "ja": "彼は金を受け取らない。立ち去りもしない。",
+   "v_en": "res://assets/voice/chapter_2_b7787a3d.ogg",
+   "v_ja": "res://assets/voice/chapter_2_b7787a3d.ja.ogg"
+  },
+  {
+   "id": "chapter_2_c915fabf",
+   "src": 74,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You open the ledger to fourteen and turn it toward the torch.",
+   "ja": "帳簿を14ページに開く。トーチの明かりの方へ向ける。",
+   "v_en": "res://assets/voice/chapter_2_c915fabf.ogg",
+   "v_ja": "res://assets/voice/chapter_2_c915fabf.ja.ogg"
+  },
+  {
+   "id": "chapter_2_958c6f17",
+   "src": 75,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Cobb reads slowly. When he reaches the crossed-out name his mouth goes tight.",
+   "ja": "コブはゆっくりと読む。抹消された名前に差し掛かると、口元が引き締まる。",
+   "v_en": "res://assets/voice/chapter_2_958c6f17.ogg",
+   "v_ja": "res://assets/voice/chapter_2_958c6f17.ja.ogg"
+  },
+  {
+   "id": "chapter_2_faec271b",
+   "src": 76,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "\"Ashcombe. I carried his boxes out. 1996. He shook my hand and did not say why.\"",
+   "ja": "「アッシュコム。彼の荷物を運び出した。1996年。彼は私の手を握ったが、理由は言わなかった」",
+   "v_en": "res://assets/voice/chapter_2_faec271b.ogg",
+   "v_ja": "res://assets/voice/chapter_2_faec271b.ja.ogg"
+  },
+  {
+   "id": "chapter_2_ac319e72",
+   "src": 78,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Elena makes a sound that is not a word.",
+   "ja": "エレナは言葉にならない音を立てる。",
+   "v_en": "res://assets/voice/chapter_2_ac319e72.ogg",
+   "v_ja": "res://assets/voice/chapter_2_ac319e72.ja.ogg"
+  },
+  {
+   "id": "chapter_2_6271a2ab",
+   "src": 83,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Cobb puts the clipboard under his arm. Whatever he decided, he decided while you were still talking.",
+   "ja": "コッブはクリップボードを脇に挟む。何を決めたにせよ、それはあなたがまだ喋っているあいだに決まっていた。",
+   "v_en": "res://assets/voice/chapter_2_6271a2ab.ogg",
+   "v_ja": "res://assets/voice/chapter_2_6271a2ab.ja.ogg"
+  },
+  {
+   "id": "chapter_2_cb195d6c",
+   "src": 84,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "\"The van comes at nine. The driver takes what is on the trolley and does not read the labels. That is all I know, sir.\"",
+   "ja": "「バンは9時に来る。運転手は台車にあるものを運び、ラベルは読まない。私が知っているのはそれだけです、先生」",
+   "v_en": "res://assets/voice/chapter_2_cb195d6c.ogg",
+   "v_ja": "res://assets/voice/chapter_2_cb195d6c.ja.ogg"
+  },
+  {
+   "id": "chapter_2_525e9b3e",
+   "src": 85,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "He goes back up the stairs. He does not close the door.",
+   "ja": "彼は階段を上っていく。ドアは閉めない。",
+   "v_en": "res://assets/voice/chapter_2_525e9b3e.ogg",
+   "v_ja": "res://assets/voice/chapter_2_525e9b3e.ja.ogg"
+  },
+  {
+   "id": "chapter_2_65899482",
+   "src": 88,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "6:02. Your phone lights up again. Same unknown number.",
+   "ja": "6時2分。再び携帯が光る。同じ、不明な番号。",
+   "v_en": "res://assets/voice/chapter_2_65899482.ogg",
+   "v_ja": "res://assets/voice/chapter_2_65899482.ja.ogg"
+  },
+  {
+   "id": "chapter_2_ea306aa9",
+   "src": 91,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Cobb has a sister in the bursar's office. Whatever he saw, she knows by lunch. Meet me at the loading dock at eight. Bring the ledger.",
+   "ja": "コブには経理課に妹がいる。彼が何を見たにせよ、昼までには彼女が知るだろう。8時に搬入口で会おう。帳簿を持ってきて。",
+   "v_en": "res://assets/voice/chapter_2_ea306aa9.ogg",
+   "v_ja": "res://assets/voice/chapter_2_ea306aa9.ja.ogg"
+  },
+  {
+   "id": "chapter_2_fe9090d1",
+   "src": 92,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You type {i}How do you know about Cobb{/i} and delete it, and type {i}Yes{/i}.",
+   "ja": "{i}どうしてコブのことを知っている{/i}と入力し、それを消して、{i}はい{/i}と入力する。",
+   "v_en": "res://assets/voice/chapter_2_fe9090d1.ogg",
+   "v_ja": "res://assets/voice/chapter_2_fe9090d1.ja.ogg"
+  },
+  {
+   "id": "chapter_2_664418a2",
+   "src": 96,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "He'll tell the Dean. You know that.",
+   "ja": "「彼は学部長に話しますよ。わかってるでしょう」",
+   "v_en": "res://assets/voice/chapter_2_664418a2.ogg",
+   "v_ja": "res://assets/voice/chapter_2_664418a2.ja.ogg"
+  },
+  {
+   "id": "chapter_2_ce032697",
+   "src": 97,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "He will tell the Dean that I was here. He did not see you.",
+   "ja": "彼は私がここにいたと学部長に話すだろう。彼はあなたを見ていない。",
+   "v_en": "res://assets/voice/chapter_2_ce032697.ogg",
+   "v_ja": "res://assets/voice/chapter_2_ce032697.ja.ogg"
+  },
+  {
+   "id": "chapter_2_df18aa03",
+   "src": 98,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "He saw two cups.",
+   "ja": "彼はカップを二つ見た。",
+   "v_en": "res://assets/voice/chapter_2_df18aa03.ogg",
+   "v_ja": "res://assets/voice/chapter_2_df18aa03.ja.ogg"
+  },
+  {
+   "id": "chapter_2_146e2015",
+   "src": 99,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You look at the cups. She is right. She is usually right, and that is going to be the problem.",
+   "ja": "あなたはカップを見る。彼女が正しい。彼女はたいてい正しく、それがこれから問題になる。",
+   "v_en": "res://assets/voice/chapter_2_146e2015.ogg",
+   "v_ja": "res://assets/voice/chapter_2_146e2015.ja.ogg"
+  },
+  {
+   "id": "chapter_2_a881269e",
+   "src": 100,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Give me the ledger, Vance. I can be out of this building in four minutes. You can't.",
+   "ja": "「台帳をください、ヴァンス。私なら四分でこの建物を出られます。あなたには無理」",
+   "v_en": "res://assets/voice/chapter_2_a881269e.ogg",
+   "v_ja": "res://assets/voice/chapter_2_a881269e.ja.ogg"
+  },
+  {
+   "id": "chapter_2_651b22e0",
+   "src": 101,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "No.",
+   "ja": "いや。",
+   "v_en": "res://assets/voice/chapter_2_651b22e0.ogg",
+   "v_ja": "res://assets/voice/chapter_2_651b22e0.ja.ogg"
+  },
+  {
+   "id": "chapter_2_18dcabb5",
+   "src": 102,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "She does not argue this time. She pours the second cup into the first and puts the empty one in her bag.",
+   "ja": "今度は彼女は言い争わない。二つ目のカップを一つ目に注ぎ、空になったほうを鞄に入れる。",
+   "v_en": "res://assets/voice/chapter_2_18dcabb5.ogg",
+   "v_ja": "res://assets/voice/chapter_2_18dcabb5.ja.ogg"
+  },
+  {
+   "id": "chapter_2_f2391da1",
+   "src": 106,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Four this year. Four crates, four signing officers, four names that did not sign.",
+   "ja": "今年は四件。四つの木箱、四人の署名担当官、署名しなかった四つの名前。",
+   "v_en": "res://assets/voice/chapter_2_f2391da1.ogg",
+   "v_ja": "res://assets/voice/chapter_2_f2391da1.ja.ogg"
+  },
+  {
+   "id": "chapter_2_e80d3350",
+   "src": 107,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "And a van driver who does not read labels.",
+   "ja": "そして、ラベルを読まないバン運転手。",
+   "v_en": "res://assets/voice/chapter_2_e80d3350.ogg",
+   "v_ja": "res://assets/voice/chapter_2_e80d3350.ja.ogg"
+  },
+  {
+   "id": "chapter_2_f6cbcd25",
+   "src": 108,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Then we don't stop the van. We change what's on the trolley.",
+   "ja": "「なら、車は止めない。台車に載っているものを変えるんです」",
+   "v_en": "res://assets/voice/chapter_2_f6cbcd25.ogg",
+   "v_ja": "res://assets/voice/chapter_2_f6cbcd25.ja.ogg"
+  },
+  {
+   "id": "chapter_2_7f462286",
+   "src": 116,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "7:50 AM. The loading dock behind the Blackwood wing. Rain again, thin and cold. The trolley is already out, three crates under a tarp.",
+   "ja": "午前7時50分。ブラックウッド棟裏の搬入口。また雨だ。細く、冷たい。台車はすでに出ている。防水シートの下に三つの木箱。",
+   "v_en": "res://assets/voice/chapter_2_7f462286.ogg",
+   "v_ja": "res://assets/voice/chapter_2_7f462286.ja.ogg"
+  },
+  {
+   "id": "chapter_2_99b302f8",
+   "src": 121,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Elena is there first, in a coat too big for her, hands in the pockets. She does not say good morning.",
+   "ja": "エレナが先にいる。彼女には大きすぎるコートを着て、両手はポケットの中。彼女は「おはよう」と言わない。",
+   "v_en": "res://assets/voice/chapter_2_99b302f8.ogg",
+   "v_ja": "res://assets/voice/chapter_2_99b302f8.ja.ogg"
+  },
+  {
+   "id": "chapter_2_4d48c130",
+   "src": 122,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "You brought it.",
+   "ja": "持ってきたな。",
+   "v_en": "res://assets/voice/chapter_2_4d48c130.ogg",
+   "v_ja": "res://assets/voice/chapter_2_4d48c130.ja.ogg"
+  },
+  {
+   "id": "chapter_2_a10ad6bd",
+   "src": 123,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "I read it.",
+   "ja": "読んだ。",
+   "v_en": "res://assets/voice/chapter_2_a10ad6bd.ogg",
+   "v_ja": "res://assets/voice/chapter_2_a10ad6bd.ja.ogg"
+  },
+  {
+   "id": "chapter_2_b8942cf2",
+   "src": 124,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "And?",
+   "ja": "で？",
+   "v_en": "res://assets/voice/chapter_2_b8942cf2.ogg"
+  },
+  {
+   "id": "chapter_2_e5489c93",
+   "src": 125,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "And I countersigned your father's removal in 1995 and did not read it. I am not going to say sorry. Sorry is for something you meant.",
+   "ja": "私は1995年に、お前の父親の解任に副署したが、読まなかった。謝るつもりはない。謝罪は、意図したことに対してするものだ。",
+   "v_en": "res://assets/voice/chapter_2_e5489c93.ogg",
+   "v_ja": "res://assets/voice/chapter_2_e5489c93.ja.ogg"
+  },
+  {
+   "id": "chapter_2_e9fcc119",
+   "src": 126,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "She looks at you a while. Then she nods, once, and puts the subject away where she puts everything else.",
+   "ja": "彼女はしばらくあなたを見る。それから一度うなずき、その話題を、他のすべてをしまう場所にしまう。",
+   "v_en": "res://assets/voice/chapter_2_e9fcc119.ogg",
+   "v_ja": "res://assets/voice/chapter_2_e9fcc119.ja.ogg"
+  },
+  {
+   "id": "chapter_2_34434d4a",
+   "src": 127,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Good. I did not come for sorry.",
+   "ja": "よし。謝罪など求めていない。",
+   "v_en": "res://assets/voice/chapter_2_34434d4a.ogg",
+   "v_ja": "res://assets/voice/chapter_2_34434d4a.ja.ogg"
+  },
+  {
+   "id": "chapter_2_1760174b",
+   "src": 131,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Elena has the crate labels in her pocket, peeled off with a butter knife from the faculty kitchen.",
+   "ja": "エレナは木箱のラベルをポケットに入れている。教員用キッチンから持ち出したバターナイフで剥がしたものだ。",
+   "v_en": "res://assets/voice/chapter_2_1760174b.ogg",
+   "v_ja": "res://assets/voice/chapter_2_1760174b.ja.ogg"
+  },
+  {
+   "id": "chapter_2_e86b1ab7",
+   "src": 133,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Three crates. Lot forty-one is the middle one. The other two are water-damaged journals that nobody will miss.",
+   "ja": "三つの木箱。ロット41が真ん中だ。残りの二つは、誰も気にしない水濡れした雑誌だ。",
+   "v_en": "res://assets/voice/chapter_2_e86b1ab7.ogg",
+   "v_ja": "res://assets/voice/chapter_2_e86b1ab7.ja.ogg"
+  },
+  {
+   "id": "chapter_2_422ff76b",
+   "src": 139,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Two labels, one butter knife, ninety seconds. Elena's hands do not shake. Yours do, a little.",
+   "ja": "ラベル二枚、バターナイフ一本、九十秒。エレナの手は震えない。あなたの手は少し震える。",
+   "v_en": "res://assets/voice/chapter_2_422ff76b.ogg",
+   "v_ja": "res://assets/voice/chapter_2_422ff76b.ja.ogg"
+  },
+  {
+   "id": "chapter_2_1bbca143",
+   "src": 140,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Lot forty-one goes into the disused coal store under the dock, behind a door that has not had a key since the war.",
+   "ja": "ロット41は、埠頭下の使われていない石炭貯蔵庫へ。戦争以来、鍵のない扉の奥だ。",
+   "v_en": "res://assets/voice/chapter_2_1bbca143.ogg",
+   "v_ja": "res://assets/voice/chapter_2_1bbca143.ja.ogg"
+  },
+  {
+   "id": "chapter_2_8ed9860d",
+   "src": 146,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Forty minutes of carrying. The ledger, two boxes of receipts, a roll of architectural drawings nobody has looked at since 1994.",
+   "ja": "運搬に40分。台帳、領収書の箱二つ、1994年以来誰も見ていない建築図面の巻物。",
+   "v_en": "res://assets/voice/chapter_2_8ed9860d.ogg",
+   "v_ja": "res://assets/voice/chapter_2_8ed9860d.ja.ogg"
+  },
+  {
+   "id": "chapter_2_7ff8e2dc",
+   "src": 147,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "The crate goes back on the trolley with the lid nailed shut over nothing. It is lighter. The driver will not weigh it.",
+   "ja": "木箱は台車に戻される。中身のないまま、蓋は釘で打ち付けられる。軽くなっている。運転手は重さを量らないだろう。",
+   "v_en": "res://assets/voice/chapter_2_7ff8e2dc.ogg",
+   "v_ja": "res://assets/voice/chapter_2_7ff8e2dc.ja.ogg"
+  },
+  {
+   "id": "chapter_2_0bfaf048",
+   "src": 153,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You cut the page out with a razor. It comes away clean. Elena watches you do it and says nothing.",
+   "ja": "あなたはカミソリでページを切り取る。きれいに切り取れる。エレナはそれを見て、何も言わない。",
+   "v_en": "res://assets/voice/chapter_2_0bfaf048.ogg",
+   "v_ja": "res://assets/voice/chapter_2_0bfaf048.ja.ogg"
+  },
+  {
+   "id": "chapter_2_4a9b1dc4",
+   "src": 154,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "The crate goes to the van at nine. Whatever else was in it, you will never know.",
+   "ja": "木箱は9時にバンへ。他に何が入っていたのか、あなたには決して分からないだろう。",
+   "v_en": "res://assets/voice/chapter_2_4a9b1dc4.ogg",
+   "v_ja": "res://assets/voice/chapter_2_4a9b1dc4.ja.ogg"
+  },
+  {
+   "id": "chapter_2_0a8fbb79",
+   "src": 156,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "That was my family's box.",
+   "ja": "あれは私の家族の箱だ。",
+   "v_en": "res://assets/voice/chapter_2_0a8fbb79.ogg",
+   "v_ja": "res://assets/voice/chapter_2_0a8fbb79.ja.ogg"
+  },
+  {
+   "id": "chapter_2_a71f9958",
+   "src": 157,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "This is your family's page. The rest was receipts.",
+   "ja": "これはあなたの家族のページだ。残りは領収書だった。",
+   "v_en": "res://assets/voice/chapter_2_a71f9958.ogg",
+   "v_ja": "res://assets/voice/chapter_2_a71f9958.ja.ogg"
+  },
+  {
+   "id": "chapter_2_9601d5a2",
+   "src": 158,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "You don't know that.",
+   "ja": "「そんなの、わからないでしょう」",
+   "v_en": "res://assets/voice/chapter_2_9601d5a2.ogg",
+   "v_ja": "res://assets/voice/chapter_2_9601d5a2.ja.ogg"
+  },
+  {
+   "id": "chapter_2_f291ea20",
+   "src": 159,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You do not. You will think about that later, more than once.",
+   "ja": "知らない。後で、一度ならずそれを考えることになる。",
+   "v_en": "res://assets/voice/chapter_2_f291ea20.ogg",
+   "v_ja": "res://assets/voice/chapter_2_f291ea20.ja.ogg"
+  },
+  {
+   "id": "chapter_2_f24cfef4",
+   "src": 164,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "9:04. The van leaves. Cobb, from the porter's window, watches it go and does not look at you.",
+   "ja": "9時4分。バンが出発する。コブは門番の窓からそれを見送り、あなたを見ない。",
+   "v_en": "res://assets/voice/chapter_2_f24cfef4.ogg",
+   "v_ja": "res://assets/voice/chapter_2_f24cfef4.ja.ogg"
+  },
+  {
+   "id": "chapter_2_5b0fd253",
+   "src": 165,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "9:10. An email from the Dean's office to all faculty: {i}Lot 41 of the Blackwood deaccession has been destroyed per schedule. The Dean thanks Professor Vance for his diligence.{/i}",
+   "ja": "9時10分。学部長室から全教員へのメール：{i}ブラックウッド除籍品のロット41は予定通り破棄されました。学部長はヴァンス教授の勤勉さに感謝いたします。{/i}",
+   "v_en": "res://assets/voice/chapter_2_5b0fd253.ogg",
+   "v_ja": "res://assets/voice/chapter_2_5b0fd253.ja.ogg"
+  },
+  {
+   "id": "chapter_2_ffdc3573",
+   "src": 170,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "She thanked you.",
+   "ja": "彼女はあなたに感謝した。",
+   "v_en": "res://assets/voice/chapter_2_ffdc3573.ogg",
+   "v_ja": "res://assets/voice/chapter_2_ffdc3573.ja.ogg"
+  },
+  {
+   "id": "chapter_2_fd2f4e53",
+   "src": 171,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "She thinks it is done. That gives us until somebody opens the coal store.",
+   "ja": "彼女はそれが終わったと思っている。それは誰かが石炭庫を開けるまで、私たちに猶予を与える。",
+   "v_en": "res://assets/voice/chapter_2_fd2f4e53.ogg",
+   "v_ja": "res://assets/voice/chapter_2_fd2f4e53.ja.ogg"
+  },
+  {
+   "id": "chapter_2_33613ba5",
+   "src": 174,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Somebody will. Cobb's sister does the key audit in October.",
+   "ja": "誰かがそうするだろう。コブの妹が10月に鍵の監査を行う。",
+   "v_en": "res://assets/voice/chapter_2_33613ba5.ogg",
+   "v_ja": "res://assets/voice/chapter_2_33613ba5.ja.ogg"
+  },
+  {
+   "id": "chapter_2_089667c6",
+   "src": 175,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "Then we have until October.",
+   "ja": "なら、10月までだ。",
+   "v_en": "res://assets/voice/chapter_2_089667c6.ogg",
+   "v_ja": "res://assets/voice/chapter_2_089667c6.ja.ogg"
+  },
+  {
+   "id": "chapter_2_335c8f41",
+   "src": 176,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "We.",
+   "ja": "我々。",
+   "v_en": "res://assets/voice/chapter_2_335c8f41.ogg",
+   "v_ja": "res://assets/voice/chapter_2_335c8f41.ja.ogg"
+  },
+  {
+   "id": "chapter_2_115014b0",
+   "src": 177,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "You brought a coat two sizes too big to a loading dock at eight in the morning. I assumed.",
+   "ja": "あなたは朝8時に、積み込み場に二回りも大きいコートを持ってきた。そう思っただけだ。",
+   "v_en": "res://assets/voice/chapter_2_115014b0.ogg",
+   "v_ja": "res://assets/voice/chapter_2_115014b0.ja.ogg"
+  },
+  {
+   "id": "chapter_2_d5798c93",
+   "src": 178,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "She almost smiles, and you understand at once why she does not do it often. It changes her whole face.",
+   "ja": "彼女がわずかに微笑み、あなたはなぜ彼女がそれを滅多にしないのかを即座に理解する。顔つきがまるごと変わってしまうのだ。",
+   "v_en": "res://assets/voice/chapter_2_d5798c93.ogg",
+   "v_ja": "res://assets/voice/chapter_2_d5798c93.ja.ogg"
+  },
+  {
+   "id": "chapter_2_368f206b",
+   "src": 188,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Your office, blinds down, the ledger locked in the drawer with the only key in your waistcoat.",
+   "ja": "あなたのオフィス、ブラインドは下ろされ、帳簿は唯一の鍵がベストにある引き出しに閉じ込められている。",
+   "v_en": "res://assets/voice/chapter_2_368f206b.ogg",
+   "v_ja": "res://assets/voice/chapter_2_368f206b.ja.ogg"
+  },
+  {
+   "id": "chapter_2_1c9fbd3b",
+   "src": 189,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "You are going to keep it in there.",
+   "ja": "あなたはそれをそこにしまっておく。",
+   "v_en": "res://assets/voice/chapter_2_1c9fbd3b.ogg",
+   "v_ja": "res://assets/voice/chapter_2_1c9fbd3b.ja.ogg"
+  },
+  {
+   "id": "chapter_2_cb92a27b",
+   "src": 190,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "Until October.",
+   "ja": "10月まで。",
+   "v_en": "res://assets/voice/chapter_2_cb92a27b.ogg",
+   "v_ja": "res://assets/voice/chapter_2_cb92a27b.ja.ogg"
+  },
+  {
+   "id": "chapter_2_467faa5d",
+   "src": 191,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "And me?",
+   "ja": "私は？",
+   "v_en": "res://assets/voice/chapter_2_467faa5d.ogg",
+   "v_ja": "res://assets/voice/chapter_2_467faa5d.ja.ogg"
+  },
+  {
+   "id": "chapter_2_da397983",
+   "src": 192,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "You know where the key is.",
+   "ja": "鍵がどこにあるか、知っているはずだ。",
+   "v_en": "res://assets/voice/chapter_2_da397983.ogg",
+   "v_ja": "res://assets/voice/chapter_2_da397983.ja.ogg"
+  },
+  {
+   "id": "chapter_2_dfbd53a6",
+   "src": 193,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "She looks at the waistcoat pocket. Then she comes around the desk and puts her hand on it, flat, and leaves it there.",
+   "ja": "彼女はベストのポケットを見る。それからデスクの周りを回り、平らに手を置き、そのままにする。",
+   "v_en": "res://assets/voice/chapter_2_dfbd53a6.ogg",
+   "v_ja": "res://assets/voice/chapter_2_dfbd53a6.ja.ogg"
+  },
+  {
+   "id": "chapter_2_978a3008",
+   "src": 194,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "This is what you meant. Every evening. In here.",
+   "ja": "これがあなたの言いたかったことね。毎晩。ここで。",
+   "v_en": "res://assets/voice/chapter_2_978a3008.ogg",
+   "v_ja": "res://assets/voice/chapter_2_978a3008.ja.ogg"
+  },
+  {
+   "id": "chapter_2_4934f011",
+   "src": 195,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "Only if you want it to be.",
+   "ja": "あなたがそう望むなら。",
+   "v_en": "res://assets/voice/chapter_2_4934f011.ogg",
+   "v_ja": "res://assets/voice/chapter_2_4934f011.ja.ogg"
+  },
+  {
+   "id": "chapter_2_c437fb01",
+   "src": 196,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "I have decided what I want. I decided at the loading dock, watching you shake.",
+   "ja": "私の望みは決まった。荷下ろし場で、あなたが震えるのを見て決めた。",
+   "v_en": "res://assets/voice/chapter_2_c437fb01.ogg",
+   "v_ja": "res://assets/voice/chapter_2_c437fb01.ja.ogg"
+  },
+  {
+   "id": "chapter_2_4688af16",
+   "src": 200,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "She takes the key out of your pocket herself and sets it on the desk where you can both see it. Then she undoes your belt.",
+   "ja": "彼女は自分であなたのポケットから鍵を取り出し、二人とも見える場所に机の上に置く。それからあなたのベルトを外す。",
+   "v_en": "res://assets/voice/chapter_2_4688af16.ogg",
+   "v_ja": "res://assets/voice/chapter_2_4688af16.ja.ogg"
+  },
+  {
+   "id": "chapter_2_8c0bd9ff",
+   "src": 201,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "No ledger this time. Nothing between you but the fact that she could pick the key up and leave, and does not.",
+   "ja": "今回は帳簿はない。二人を隔てるものは何もない。彼女は鍵を手に取り、立ち去ることもできた。だが、そうしない。",
+   "v_en": "res://assets/voice/chapter_2_8c0bd9ff.ogg",
+   "v_ja": "res://assets/voice/chapter_2_8c0bd9ff.ja.ogg"
+  },
+  {
+   "id": "chapter_2_157a90fc",
+   "src": 202,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You take her against the locked drawer, her skirt around her waist, one shoe on the floor. She keeps her glasses on. She wants to watch your face at the moment you understand who is holding the leash now.",
+   "ja": "施錠された引き出しに押しつけて彼女を抱く。スカートは腰までまくれ、靴が片方床に落ちている。彼女は眼鏡を外さない。いまや首輪を握っているのが誰なのか、あなたが理解するその瞬間の顔を、見ていたいのだ。",
+   "v_en": "res://assets/voice/chapter_2_157a90fc.ogg",
+   "v_ja": "res://assets/voice/chapter_2_157a90fc.ja.ogg"
+  },
+  {
+   "id": "chapter_2_e4895a75",
+   "src": 203,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You understand. She makes sure of it, slowly, until you say her name the way she said yours.",
+   "ja": "あなたは理解する。彼女はそれを、ゆっくりと確信させる。あなたが彼女の名前を、彼女があなたの名前を呼んだ時と同じように口にするまで。",
+   "v_en": "res://assets/voice/chapter_2_e4895a75.ogg",
+   "v_ja": "res://assets/voice/chapter_2_e4895a75.ja.ogg"
+  },
+  {
+   "id": "chapter_2_0fefc60b",
+   "src": 204,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Afterwards the key is still on the desk. Neither of you picks it up.",
+   "ja": "その後も鍵は机の上にある。どちらもそれを手に取らない。",
+   "v_en": "res://assets/voice/chapter_2_0fefc60b.ogg",
+   "v_ja": "res://assets/voice/chapter_2_0fefc60b.ja.ogg"
+  },
+  {
+   "id": "chapter_2_985ac2b7",
+   "src": 214,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "The coal store, 9:30, the crate between you and the door propped with a brick. Cold enough to see your breath.",
+   "ja": "石炭置き場。九時半。あなたとドアの間には、煉瓦で支えられた木箱がある。息が白くなるほどの寒さ。",
+   "v_en": "res://assets/voice/chapter_2_985ac2b7.ogg",
+   "v_ja": "res://assets/voice/chapter_2_985ac2b7.ja.ogg"
+  },
+  {
+   "id": "chapter_2_eb129a1a",
+   "src": 215,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "We have a receipt with your signature, a crate the Dean thinks is ash, and a porter who knows both.",
+   "ja": "あなたの署名入りの領収書がある。学長が灰だと思っている木箱がある。そして、その両方を知るポーターもいる。",
+   "v_en": "res://assets/voice/chapter_2_eb129a1a.ogg",
+   "v_ja": "res://assets/voice/chapter_2_eb129a1a.ja.ogg"
+  },
+  {
+   "id": "chapter_2_d6a0fd31",
+   "src": 216,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "And a second name we have not found yet.",
+   "ja": "そして、まだ見つかっていないもう一つの名前がある。",
+   "v_en": "res://assets/voice/chapter_2_d6a0fd31.ogg",
+   "v_ja": "res://assets/voice/chapter_2_d6a0fd31.ja.ogg"
+  },
+  {
+   "id": "chapter_2_2149f35d",
+   "src": 217,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "And that.",
+   "ja": "そして、それ。",
+   "v_en": "res://assets/voice/chapter_2_2149f35d.ogg",
+   "v_ja": "res://assets/voice/chapter_2_2149f35d.ja.ogg"
+  },
+  {
+   "id": "chapter_2_82d47580",
+   "src": 218,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "She sits on the crate. She is shivering. You give her your coat, and she pulls you in by the lapels instead of putting it on.",
+   "ja": "彼女は木箱に座る。震えている。あなたは彼女にコートを渡す。彼女はそれを羽織る代わりに、あなたの襟を掴んで引き寄せる。",
+   "v_en": "res://assets/voice/chapter_2_82d47580.ogg",
+   "v_ja": "res://assets/voice/chapter_2_82d47580.ja.ogg"
+  },
+  {
+   "id": "chapter_2_5664a3b7",
+   "src": 219,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "I haven't slept. I haven't eaten. I've committed two crimes before nine in the morning with a man whose handwriting ruined my father.",
+   "ja": "「寝てない。食べてない。父の人生を壊した筆跡の持ち主と、朝九時前に犯罪を二つ犯した」",
+   "v_en": "res://assets/voice/chapter_2_5664a3b7.ogg",
+   "v_ja": "res://assets/voice/chapter_2_5664a3b7.ja.ogg"
+  },
+  {
+   "id": "chapter_2_7355aa34",
+   "src": 220,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "And?",
+   "ja": "それで？",
+   "v_en": "res://assets/voice/chapter_2_7355aa34.ogg",
+   "v_ja": "res://assets/voice/chapter_2_7355aa34.ja.ogg"
+  },
+  {
+   "id": "chapter_2_521a8ef3",
+   "src": 221,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "And I've never felt this awake in my life.",
+   "ja": "「それなのに、こんなに目が冴えているのは生まれて初めて」",
+   "v_en": "res://assets/voice/chapter_2_521a8ef3.ogg",
+   "v_ja": "res://assets/voice/chapter_2_521a8ef3.ja.ogg"
+  },
+  {
+   "id": "chapter_2_ae0f2670",
+   "src": 225,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "On the crate, in the coal dust, with the door propped open on a brick and the rain coming in sideways.",
+   "ja": "木箱の上で。石炭の埃の中で。ドアは煉瓦で開け放たれ、雨が横殴りに吹き込む。",
+   "v_en": "res://assets/voice/chapter_2_ae0f2670.ogg",
+   "v_ja": "res://assets/voice/chapter_2_ae0f2670.ja.ogg"
+  },
+  {
+   "id": "chapter_2_74d95ee1",
+   "src": 226,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "She is quick and fierce about it, as if the cold were a clock. She pushes you back, climbs onto you, holds your wrists against the lid — laughs when the crate creaks, and does not stop.",
+   "ja": "彼女はそれを手早く、激しく進める。まるで寒さが時計であるかのように。あなたを押し倒し、上にまたがり、手首を蓋に押さえつけ——木箱がきしむと笑い、それでもやめない。",
+   "v_en": "res://assets/voice/chapter_2_74d95ee1.ogg",
+   "v_ja": "res://assets/voice/chapter_2_74d95ee1.ja.ogg"
+  },
+  {
+   "id": "chapter_2_1c7a3360",
+   "src": 227,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "You come together, badly timed and perfect, and she stays on top of you with her forehead on yours until the shivering starts again and is not from the cold.",
+   "ja": "二人は同時に達する。タイミングは最悪で、そして完璧に。彼女はあなたの額に自分の額を重ねたまま、あなたの体の上に留まる。再び震えが始まり、それが寒さによるものではなくなるまで。",
+   "v_en": "res://assets/voice/chapter_2_1c7a3360.ogg",
+   "v_ja": "res://assets/voice/chapter_2_1c7a3360.ja.ogg"
+  },
+  {
+   "id": "chapter_2_78ce99d7",
+   "src": 228,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Her hair is full of coal dust. She looks like a chimney sweep who has just robbed a bank. You tell her so. She bites your ear.",
+   "ja": "彼女の髪は石炭の埃まみれだ。まるで銀行強盗を終えたばかりの煙突掃除夫のようだ。あなたはそう告げる。彼女はあなたの耳を噛む。",
+   "v_en": "res://assets/voice/chapter_2_78ce99d7.ogg",
+   "v_ja": "res://assets/voice/chapter_2_78ce99d7.ja.ogg"
+  },
+  {
+   "id": "chapter_2_a76c5569",
+   "src": 233,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "At the dock gate she stops. Rain on her glasses. Your coat, which she has not given back.",
+   "ja": "埠頭の門で、彼女は立ち止まる。眼鏡には雨粒。あなたのコート。まだ返されていない。",
+   "v_en": "res://assets/voice/chapter_2_a76c5569.ogg",
+   "v_ja": "res://assets/voice/chapter_2_a76c5569.ja.ogg"
+  },
+  {
+   "id": "chapter_2_6cf19164",
+   "src": 234,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Tonight. Your office. Bring the page. I will bring what I photographed.",
+   "ja": "今夜。オフィスへ。ページを持ってこい。私は撮影したものを持っていく。",
+   "v_en": "res://assets/voice/chapter_2_6cf19164.ogg",
+   "v_ja": "res://assets/voice/chapter_2_6cf19164.ja.ogg"
+  },
+  {
+   "id": "chapter_2_88a42b5f",
+   "src": 235,
+   "label": "chapter_2",
+   "who": "protagonist",
+   "en": "Elena.",
+   "ja": "エレナ。",
+   "v_en": "res://assets/voice/chapter_2_88a42b5f.ogg",
+   "v_ja": "res://assets/voice/chapter_2_88a42b5f.ja.ogg"
+  },
+  {
+   "id": "chapter_2_9bb7ee10",
+   "src": 236,
+   "label": "chapter_2",
+   "who": "elena",
+   "en": "Not yet, Professor. You have to earn the first name.",
+   "ja": "まだですよ、教授。下の名前で呼ぶには、まだ早い。",
+   "v_en": "res://assets/voice/chapter_2_9bb7ee10.ogg",
+   "v_ja": "res://assets/voice/chapter_2_9bb7ee10.ja.ogg"
+  },
+  {
+   "id": "chapter_2_abf97620",
+   "src": 237,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "She walks off toward the postgraduate block. Halfway there she turns and keeps walking backwards, and holds up one hand with the fingers spread.",
+   "ja": "彼女は大学院棟のほうへ歩き去る。途中で振り向き、そのまま後ろ向きに歩きながら、指を広げた片手を掲げてみせる。",
+   "v_en": "res://assets/voice/chapter_2_abf97620.ogg",
+   "v_ja": "res://assets/voice/chapter_2_abf97620.ja.ogg"
+  },
+  {
+   "id": "chapter_2_6ee11a1e",
+   "src": 238,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Five. You have no idea what it means. You are going to spend the whole day finding out.",
+   "ja": "五。それが何を意味するのか、君には皆目見当もつかない。一日中、それを解明することになるだろう。",
+   "v_en": "res://assets/voice/chapter_2_6ee11a1e.ogg",
+   "v_ja": "res://assets/voice/chapter_2_6ee11a1e.ja.ogg"
+  },
+  {
+   "id": "chapter_2_211597d7",
+   "src": 245,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Noon. You open the ledger to page fifteen for the first time, because fourteen has told you everything it can.",
+   "ja": "正午。君は初めて帳簿の15ページを開く。14ページは、もう語り尽くしたからだ。",
+   "v_en": "res://assets/voice/chapter_2_211597d7.ogg",
+   "v_ja": "res://assets/voice/chapter_2_211597d7.ja.ogg"
+  },
+  {
+   "id": "chapter_2_ddb7f1c0",
+   "src": 246,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Fifteen is a list of donors, 1995. Halfway down, in the same ink as the line through Ashcombe, one name is underlined twice.",
+   "ja": "15ページは、1995年の寄付者リストだ。その半ば、アッシュコムの名前を消した線と同じインクで、一つの名前が二重に下線が引かれている。",
+   "v_en": "res://assets/voice/chapter_2_ddb7f1c0.ogg",
+   "v_ja": "res://assets/voice/chapter_2_ddb7f1c0.ja.ogg"
+  },
+  {
+   "id": "chapter_2_45b05639",
+   "src": 247,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "{i}Penhallow.{/i}",
+   "ja": "{i}ペンハロー。{/i}",
+   "v_en": "res://assets/voice/chapter_2_45b05639.ogg",
+   "v_ja": "res://assets/voice/chapter_2_45b05639.ja.ogg"
+  },
+  {
+   "id": "chapter_2_e9c8727c",
+   "src": 248,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "Aldous Penhallow gave the Academy the Blackwood wing. His portrait hangs in the Dean's annex. His grandson is on the board.",
+   "ja": "アルダス・ペンハローは、アカデミーにブラックウッド棟を寄贈した。彼の肖像画は学部長の別館に飾られている。彼の孫は理事会のメンバーだ。",
+   "v_en": "res://assets/voice/chapter_2_e9c8727c.ogg",
+   "v_ja": "res://assets/voice/chapter_2_e9c8727c.ja.ogg"
+  },
+  {
+   "id": "chapter_2_d8eb75a8",
+   "src": 249,
+   "label": "chapter_2",
+   "who": "narrator",
+   "en": "And someone, thirty years ago, wanted you to see his name and not the one they crossed out.",
+   "ja": "そして三十年前、誰かはあなたに、抹消された名前ではなく、この名前を見せたかったのだ。",
+   "v_en": "res://assets/voice/chapter_2_d8eb75a8.ogg",
+   "v_ja": "res://assets/voice/chapter_2_d8eb75a8.ja.ogg"
+  }
+ ],
+ "menus": {
+  "\"Who gave you that sheet, Cobb?\"": "「その書類は誰に渡された、コブ？」",
+  "\"Take the sheet back. You never came down here.\"": "「書類を持って帰れ。君はここへは来ていない。」",
+  "Show him page fourteen.": "14ページを彼に見せる。",
+  "Swap the labels. Let the van burn the journals.": "ラベルを入れ替える。バンには雑誌を焼かせる。",
+  "Empty the crate into your car. Let the van take an empty box.": "木箱の中身を自分の車へ移す。バンには空の箱を持たせる。",
+  "Let the van take it. Keep only the ledger and page fourteen.": "バンに持たせる。帳簿と14ページだけを手元に残す。"
+ }
+}

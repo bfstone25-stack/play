@@ -1,0 +1,1403 @@
+{
+ "id": "night1",
+ "title_key": "n1_title",
+ "sub_key": "n1_sub",
+ "turns": 34,
+ "clock_start": 1420,
+ "minutes_per_turn": 10,
+ "start_room": "study",
+ "start_event": "n1_open",
+ "map": {
+  "image": "blackwood",
+  "rooms": {
+   "study": [
+    0.14,
+    0.2
+   ],
+   "corridor": [
+    0.42,
+    0.2
+   ],
+   "stair": [
+    0.7,
+    0.2
+   ],
+   "vault": [
+    0.88,
+    0.72
+   ],
+   "stacks": [
+    0.42,
+    0.72
+   ],
+   "cellar": [
+    0.65,
+    0.72
+   ]
+  }
+ },
+ "rooms": {
+  "study": {
+   "name_key": "r_study",
+   "plate": "study",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7d7480",
+    "lamps": [
+     [
+      0.69,
+      0.47,
+      0.9,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "desk",
+     "kind": "search",
+     "pos": [
+      0.62,
+      0.66
+     ],
+     "event": "n1_desk",
+     "gives": [
+      "override_key"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "essays",
+     "kind": "search",
+     "pos": [
+      0.22,
+      0.74
+     ],
+     "event": "n1_essays",
+     "xp": 10
+    },
+    {
+     "id": "tin",
+     "kind": "search",
+     "pos": [
+      0.44,
+      0.52
+     ],
+     "event": "n1_tin",
+     "gives": [
+      "cash",
+      "cash"
+     ]
+    },
+    {
+     "id": "cabinet",
+     "kind": "search",
+     "pos": [
+      0.1,
+      0.42
+     ],
+     "event": "n1_cabinet",
+     "gives": [
+      "hip_flask",
+      "torch"
+     ]
+    },
+    {
+     "id": "swin",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.3
+     ],
+     "label_key": "hs_window_study",
+     "event": "n1_swin",
+     "xp": 5
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "pos": [
+      0.9,
+      0.82
+     ],
+     "to": "corridor",
+     "if_flag": "has_key_seen"
+    }
+   ]
+  },
+  "corridor": {
+   "name_key": "r_corridor",
+   "plate": "corridor",
+   "music": "explore",
+   "enter_event": "n1_corridor",
+   "mood": {
+    "ambient": "#8a6f60",
+    "lamps": [
+     [
+      0.1,
+      0.62,
+      0.9,
+      "#ffb060"
+     ],
+     [
+      0.44,
+      0.7,
+      0.9,
+      "#ffb060"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "cobb",
+     "kind": "enemy",
+     "enemy": "cobb",
+     "pos": [
+      0.6,
+      0.5
+     ],
+     "event": "n1_cobb_pre",
+     "after": "n1_cobb_post"
+    },
+    {
+     "id": "board",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.38
+     ],
+     "event": "n1_board",
+     "gives": [
+      "tea"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "lodge",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.3
+     ],
+     "label_key": "hs_lodge",
+     "event": "n1_lodge",
+     "xp": 5,
+     "if_flag": "cobb_done"
+    },
+    {
+     "id": "to_study",
+     "kind": "door",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "to": "study"
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "pos": [
+      0.9,
+      0.82
+     ],
+     "to": "stair",
+     "if_flag": "cobb_done"
+    }
+   ]
+  },
+  "stair": {
+   "name_key": "r_stair",
+   "plate": "stair",
+   "music": "explore",
+   "enter_event": "n1_stair",
+   "mood": {
+    "ambient": "#6f7486"
+   },
+   "hotspots": [
+    {
+     "id": "notice",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.45
+     ],
+     "event": "n1_notice",
+     "gives": [
+      "deaccession"
+     ],
+     "xp": 10
+    },
+    {
+     "id": "window",
+     "kind": "search",
+     "pos": [
+      0.55,
+      0.3
+     ],
+     "label_key": "hs_window",
+     "event": "n1_window",
+     "xp": 5
+    },
+    {
+     "id": "to_vault",
+     "kind": "door",
+     "pos": [
+      0.78,
+      0.6
+     ],
+     "to": "vault",
+     "needs": "override_key",
+     "locked_key": "n1_vault_locked"
+    },
+    {
+     "id": "to_stacks",
+     "kind": "door",
+     "pos": [
+      0.5,
+      0.86
+     ],
+     "to": "stacks",
+     "if_flag": "elena_joined"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "to": "corridor"
+    }
+   ]
+  },
+  "vault": {
+   "name_key": "r_vault",
+   "plate": "vault",
+   "music": "explore",
+   "enter_event": "n1_vault",
+   "mood": {
+    "ambient": "#5e5868",
+    "lamps": [
+     [
+      0.32,
+      0.48,
+      1.0,
+      "#ffb050"
+     ],
+     [
+      0.2,
+      0.5,
+      0.6,
+      "#ffb050"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "crate",
+     "kind": "search",
+     "pos": [
+      0.55,
+      0.72
+     ],
+     "event": "n1_crate",
+     "gives": [
+      "tea"
+     ],
+     "xp": 5,
+     "if_flag": "elena_joined"
+    },
+    {
+     "id": "coat",
+     "kind": "search",
+     "pos": [
+      0.82,
+      0.4
+     ],
+     "event": "n1_coat",
+     "trust": 1,
+     "if_flag": "elena_joined"
+    },
+    {
+     "id": "lbook",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.55
+     ],
+     "label_key": "hs_shelfbook",
+     "event": "n1_lbook",
+     "trust": 1,
+     "if_flag": "elena_joined",
+     "if_not_flag": "both_cleared"
+    },
+    {
+     "id": "ledger",
+     "kind": "event",
+     "pos": [
+      0.42,
+      0.6
+     ],
+     "event": "n1_climax",
+     "if_flag": "both_cleared"
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "to": "stair",
+     "if_not_flag": "both_cleared"
+    }
+   ]
+  },
+  "stacks": {
+   "name_key": "r_stacks",
+   "plate": "stacks",
+   "music": "explore",
+   "enter_event": "n1_stacks",
+   "mood": {
+    "ambient": "#8a7a78",
+    "lamps": [
+     [
+      0.7,
+      0.3,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "penhallow",
+     "kind": "enemy",
+     "enemy": "penhallow",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n1_pen_pre",
+     "after": "n1_pen_post"
+    },
+    {
+     "id": "cart",
+     "kind": "search",
+     "pos": [
+      0.22,
+      0.62
+     ],
+     "event": "n1_cart",
+     "gives": [
+      "spectacles"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "shelf",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.4
+     ],
+     "label_key": "hs_shelf",
+     "event": "n1_shelf",
+     "xp": 10,
+     "if_flag": "pen_done"
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "to": "stair"
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "to": "cellar",
+     "if_flag": "pen_done"
+    }
+   ]
+  },
+  "cellar": {
+   "name_key": "r_cellar",
+   "plate": "cellar",
+   "music": "explore",
+   "enter_event": "n1_cellar",
+   "mood": {
+    "ambient": "#5d6474",
+    "lamps": [
+     [
+      0.85,
+      0.2,
+      0.8,
+      "#c0d0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "cobb_return",
+     "kind": "enemy",
+     "enemy": "cobb_return",
+     "pos": [
+      0.55,
+      0.45
+     ],
+     "event": "n1_cobb2_pre",
+     "after": "n1_cobb2_post"
+    },
+    {
+     "id": "boiler",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.55
+     ],
+     "event": "n1_boiler",
+     "gives": [
+      "sherry"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "to_stacks",
+     "kind": "door",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "to": "stacks"
+    },
+    {
+     "id": "to_vault",
+     "kind": "door",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "to": "vault",
+     "if_flag": "cobb2_done"
+    }
+   ]
+  }
+ },
+ "events": {
+  "n1_open": [
+   {
+    "bg": "study"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "ch1:29-34"
+   },
+   {
+    "sfx": "page_flip"
+   },
+   {
+    "lines": "ch1:38-38"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_3"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_4"
+   }
+  ],
+  "n1_desk": [
+   {
+    "lines": "ch1:39-39"
+   },
+   {
+    "flag": "has_key_seen"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_desk_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_desk_2"
+   }
+  ],
+  "n1_essays": [
+   {
+    "say": "narrator",
+    "key": "n1_essays_1"
+   },
+   {
+    "say": "protagonist",
+    "key": "n1_essays_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_essays_3"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_essays_4"
+   }
+  ],
+  "n1_tin": [
+   {
+    "say": "narrator",
+    "key": "n1_tin_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_tin_2"
+   }
+  ],
+  "n1_cabinet": [
+   {
+    "say": "narrator",
+    "key": "n1_cabinet_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cabinet_2"
+   }
+  ],
+  "n1_corridor": [
+   {
+    "lines": "ch1:40-40"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_corr_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_corr_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_corr_3"
+   }
+  ],
+  "n1_cobb_pre": [
+   {
+    "show": "cobb",
+    "x": 0.7
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cobb_1"
+   },
+   {
+    "say": "cobb",
+    "key": "n1_cobb_2"
+   },
+   {
+    "say": "protagonist",
+    "key": "n1_cobb_3"
+   },
+   {
+    "say": "cobb",
+    "key": "n1_cobb_4"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cobb_7"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cobb_8"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_tutorial_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_tutorial_2"
+   }
+  ],
+  "n1_cobb_post": [
+   {
+    "show": "cobb",
+    "x": 0.7
+   },
+   {
+    "say": "cobb",
+    "key": "n1_cobb_5"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cobb_6"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cobb_9"
+   },
+   {
+    "show": ""
+   },
+   {
+    "flag": "cobb_done"
+   }
+  ],
+  "n1_board": [
+   {
+    "say": "narrator",
+    "key": "n1_board_1"
+   }
+  ],
+  "n1_stair": [
+   {
+    "say": "narrator",
+    "key": "n1_stair_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_stair_2"
+   },
+   {
+    "sfx": "camera"
+   },
+   {
+    "lines": "ch1:44-44"
+   }
+  ],
+  "n1_notice": [
+   {
+    "say": "narrator",
+    "key": "n1_notice_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_notice_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_notice_3"
+   }
+  ],
+  "n1_vault": [
+   {
+    "lines": "ch1:45-47"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.6
+   },
+   {
+    "lines": "ch1:54-67"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"Put the phone on the crate. Then tell me what that is.\"",
+      "auto_rank": 1,
+      "do": [
+       {
+        "show": "elena_flustered",
+        "x": 0.6
+       },
+       {
+        "lines": "ch1:76-79"
+       }
+      ]
+     },
+     {
+      "menu": "\"You're soaked. Come stand by the lamp before you ruin those pages.\"",
+      "auto_rank": 3,
+      "do": [
+       {
+        "show": "elena_flustered",
+        "x": 0.6
+       },
+       {
+        "lines": "ch1:86-90"
+       },
+       {
+        "trust": 1
+       }
+      ]
+     },
+     {
+      "menu": "Say nothing. Close the vault door behind you and lean on it.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "show": "elena_flustered",
+        "x": 0.6
+       },
+       {
+        "lines": "ch1:97-100"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "lines": "ch1:102-102"
+   },
+   {
+    "say": "elena",
+    "key": "n1_join_1"
+   },
+   {
+    "say": "elena",
+    "key": "n1_join_2"
+   },
+   {
+    "say": "protagonist",
+    "key": "n1_join_3"
+   },
+   {
+    "say": "elena",
+    "key": "n1_join_4"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_join_5"
+   },
+   {
+    "join": true
+   },
+   {
+    "flag": "service_open"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_join_6"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_join_7"
+   },
+   {
+    "say": "elena",
+    "key": "n1_join_8"
+   },
+   {
+    "say": "protagonist",
+    "key": "n1_join_9"
+   },
+   {
+    "say": "elena",
+    "key": "n1_join_10"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n1_crate": [
+   {
+    "say": "narrator",
+    "key": "n1_crate_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_crate_2"
+   }
+  ],
+  "n1_coat": [
+   {
+    "say": "narrator",
+    "key": "n1_coat_1"
+   },
+   {
+    "say": "elena",
+    "key": "n1_coat_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_coat_3"
+   }
+  ],
+  "n1_stacks": [
+   {
+    "say": "narrator",
+    "key": "n1_stacks_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_stacks_2"
+   }
+  ],
+  "n1_pen_pre": [
+   {
+    "show": "penhallow",
+    "x": 0.7
+   },
+   {
+    "say": "narrator",
+    "key": "n1_pen_1"
+   },
+   {
+    "say": "penhallow",
+    "key": "n1_pen_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_pen_8"
+   },
+   {
+    "say": "elena",
+    "key": "n1_pen_3"
+   },
+   {
+    "say": "penhallow",
+    "key": "n1_pen_4"
+   }
+  ],
+  "n1_pen_post": [
+   {
+    "show": "penhallow",
+    "x": 0.7
+   },
+   {
+    "say": "penhallow",
+    "key": "n1_pen_5"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_pen_6"
+   },
+   {
+    "show": ""
+   },
+   {
+    "say": "elena",
+    "key": "n1_pen_7"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_pen_9"
+   },
+   {
+    "say": "protagonist",
+    "key": "n1_pen_10"
+   },
+   {
+    "say": "elena",
+    "key": "n1_pen_11"
+   },
+   {
+    "flag": "pen_done"
+   }
+  ],
+  "n1_cart": [
+   {
+    "say": "narrator",
+    "key": "n1_cart_1"
+   },
+   {
+    "say": "elena",
+    "key": "n1_cart_2"
+   }
+  ],
+  "n1_cellar": [
+   {
+    "say": "narrator",
+    "key": "n1_cellar_1"
+   },
+   {
+    "say": "elena",
+    "key": "n1_cellar_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cellar_3"
+   }
+  ],
+  "n1_cobb2_pre": [
+   {
+    "show": "cobb",
+    "x": 0.7
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cobb2_1"
+   },
+   {
+    "say": "cobb",
+    "key": "n1_cobb2_2"
+   },
+   {
+    "say": "cobb",
+    "key": "n1_cobb2_3"
+   },
+   {
+    "say": "elena",
+    "key": "n1_cobb2_4"
+   }
+  ],
+  "n1_cobb2_post": [
+   {
+    "show": "cobb",
+    "x": 0.7
+   },
+   {
+    "say": "cobb",
+    "key": "n1_cobb2_5"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cobb2_6"
+   },
+   {
+    "show": ""
+   },
+   {
+    "say": "elena",
+    "key": "n1_cobb2_7"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_cobb2_8"
+   },
+   {
+    "say": "protagonist",
+    "key": "n1_cobb2_9"
+   },
+   {
+    "say": "elena",
+    "key": "n1_cobb2_10"
+   },
+   {
+    "flag": "cobb2_done"
+   },
+   {
+    "flag": "both_cleared"
+   }
+  ],
+  "n1_boiler": [
+   {
+    "say": "narrator",
+    "key": "n1_boiler_1"
+   }
+  ],
+  "n1_climax": [
+   {
+    "say": "narrator",
+    "key": "n1_back_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_back_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_back_3"
+   },
+   {
+    "sfx": "heartbeat"
+   },
+   {
+    "lines": "ch1:106-106"
+   },
+   {
+    "show": "elena_flustered",
+    "x": 0.6
+   },
+   {
+    "lines": "ch1:111-117"
+   },
+   {
+    "cg": "cg_confrontation"
+   },
+   {
+    "lines": "ch1:126-137"
+   },
+   {
+    "give": "ledger"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Take the ledger out of her arms. Do not let her see you look at page fourteen.",
+      "auto_rank": 1,
+      "do": [
+       {
+        "event": "n1_route_control"
+       }
+      ]
+     },
+     {
+      "menu": "Put your hand over hers on the cover. \"Show me the signature. Then we decide together.\"",
+      "req_trust": 3,
+      "auto_rank": 3,
+      "do": [
+       {
+        "event": "n1_route_pact"
+       }
+      ]
+     },
+     {
+      "menu": "Step back. Open the door. \"Go home, Elena. We never spoke.\"",
+      "auto_rank": 0,
+      "do": [
+       {
+        "event": "n1_route_walk"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "event": "n1_dawn"
+   }
+  ],
+  "n1_route_control": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "vault"
+   },
+   {
+    "show": "elena_soft",
+    "x": 0.6
+   },
+   {
+    "flag": "route_control"
+   },
+   {
+    "lines": "ch1:166-195"
+   },
+   {
+    "if_trust": 3,
+    "then": [
+     {
+      "choice": [
+       {
+        "menu": "\"Come here.\"",
+        "auto_rank": 0,
+        "do": [
+         {
+          "lines": "ch1:201-201"
+         }
+        ]
+       },
+       {
+        "menu": "Cross the room to her instead.",
+        "auto_rank": 1,
+        "do": [
+         {
+          "lines": "ch1:205-205"
+         },
+         {
+          "trust": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "music": "intimate"
+     },
+     {
+      "lines": "ch1:210-227"
+     },
+     {
+      "cg": "cg_climax_control"
+     },
+     {
+      "lines": "ch1:237-245"
+     },
+     {
+      "hide_cg": true
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n1_ctrl_cut_1"
+     },
+     {
+      "say": "narrator",
+      "key": "n1_trust_hint"
+     }
+    ]
+   }
+  ],
+  "n1_route_pact": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "vault"
+   },
+   {
+    "show": "elena_flustered",
+    "x": 0.6
+   },
+   {
+    "flag": "route_pact"
+   },
+   {
+    "music": "intimate"
+   },
+   {
+    "lines": "ch1:261-283"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.6
+   },
+   {
+    "lines": "ch1:288-295"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"Elena. Go home. We start tomorrow, in daylight.\"",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "ch1:301-303"
+       },
+       {
+        "trust": 1
+       }
+      ]
+     },
+     {
+      "menu": "Take her glasses out of her hand and set them on the ledger.",
+      "auto_rank": 1,
+      "do": [
+       {
+        "lines": "ch1:307-309"
+       },
+       {
+        "trust": 1
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "lines": "ch1:311-311"
+   },
+   {
+    "cg": "cg_climax_pact"
+   },
+   {
+    "lines": "ch1:321-328"
+   },
+   {
+    "hide_cg": true
+   }
+  ],
+  "n1_route_walk": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "vault"
+   },
+   {
+    "show": "elena_neutral",
+    "x": 0.6
+   },
+   {
+    "flag": "route_walk"
+   },
+   {
+    "lines": "ch1:341-353"
+   },
+   {
+    "flag": "elena_joined",
+    "value": false
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n1_dawn": [
+   {
+    "music": "explore"
+   },
+   {
+    "cg": "cg_aftermath"
+   },
+   {
+    "lines": "ch1:375-375"
+   },
+   {
+    "if_flag": "route_control",
+    "then": [
+     {
+      "lines": "ch1:378-385"
+     }
+    ]
+   },
+   {
+    "if_flag": "route_pact",
+    "then": [
+     {
+      "lines": "ch1:388-397"
+     }
+    ]
+   },
+   {
+    "if_flag": "route_walk",
+    "then": [
+     {
+      "lines": "ch1:400-404"
+     }
+    ]
+   },
+   {
+    "lines": "ch1:406-410"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "vault"
+   },
+   {
+    "show": "dean_holloway",
+    "x": 0.7
+   },
+   {
+    "say": "narrator",
+    "key": "n1_dean_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_dean_7"
+   },
+   {
+    "say": "dean",
+    "key": "n1_dean_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_dean_8"
+   },
+   {
+    "say": "protagonist",
+    "key": "n1_dean_3"
+   },
+   {
+    "say": "dean",
+    "key": "n1_dean_4"
+   },
+   {
+    "battle": "dean_dawn"
+   },
+   {
+    "show": "dean_holloway",
+    "x": 0.7
+   },
+   {
+    "say": "dean",
+    "key": "n1_dean_5"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_dean_6"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_dean_9"
+   },
+   {
+    "say": "elena",
+    "key": "n1_dean_10"
+   },
+   {
+    "say": "protagonist",
+    "key": "n1_dean_11"
+   },
+   {
+    "show": ""
+   },
+   {
+    "say": "narrator",
+    "key": "n1_end_1"
+   },
+   {
+    "end_night": true,
+    "next": "night2"
+   }
+  ],
+  "n1_window": [
+   {
+    "say": "narrator",
+    "key": "n1_window_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_window_2"
+   }
+  ],
+  "n1_shelf": [
+   {
+    "say": "narrator",
+    "key": "n1_shelf_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_shelf_2"
+   },
+   {
+    "say": "elena",
+    "key": "n1_shelf_3"
+   }
+  ],
+  "n1_lodge": [
+   {
+    "say": "narrator",
+    "key": "n1_lodge_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_lodge_2"
+   }
+  ],
+  "n1_swin": [
+   {
+    "say": "narrator",
+    "key": "n1_swin_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_swin_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_swin_3"
+   }
+  ],
+  "n1_lbook": [
+   {
+    "say": "narrator",
+    "key": "n1_lbook_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_lbook_2"
+   },
+   {
+    "say": "elena",
+    "key": "n1_lbook_3"
+   }
+  ]
+ }
+}

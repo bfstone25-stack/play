@@ -1,0 +1,252 @@
+{
+ "rooms": {
+  "study": [
+   "res://assets/placeholder/rooms/study.webp"
+  ],
+  "vault": [
+   "res://assets/rpg/rooms/room_sealed_vault.png",
+   "res://assets/placeholder/rooms/vault.webp"
+  ],
+  "corridor": [
+   "res://assets/rpg/rooms/room_porters_lodge.png",
+   "res://assets/placeholder/rooms/corridor.webp"
+  ],
+  "stair": [
+   "res://assets/rpg/rooms/room_crypt_stair.png",
+   "res://assets/placeholder/rooms/stair.webp"
+  ],
+  "stacks": [
+   "res://assets/rpg/rooms/room_stacks.png",
+   "res://assets/placeholder/rooms/stacks.webp"
+  ],
+  "cellar": [
+   "res://assets/rpg/rooms/room_coal_store.png",
+   "res://assets/placeholder/rooms/cellar.webp"
+  ],
+  "dock": [
+   "res://assets/rpg/rooms/room_records_basement.png",
+   "res://assets/placeholder/rooms/dock.webp"
+  ],
+  "muniment": [
+   "res://assets/rpg/rooms/room_muniment_room.png",
+   "res://assets/placeholder/rooms/muniment.webp"
+  ],
+  "reading_room": [
+   "res://assets/rpg/rooms/room_reading_room.png",
+   "res://assets/placeholder/rooms/reading_room.webp"
+  ],
+  "common_room": [
+   "res://assets/rpg/rooms/room_faculty_common_room.png",
+   "res://assets/placeholder/rooms/common_room.webp"
+  ],
+  "deans_corridor": [
+   "res://assets/rpg/rooms/room_deans_corridor.png",
+   "res://assets/placeholder/rooms/deans_corridor.webp"
+  ],
+  "annex": [
+   "res://assets/rpg/rooms/room_chapel_annex.png",
+   "res://assets/placeholder/rooms/annex.webp"
+  ],
+  "deans_office": [
+   "res://assets/rpg/rooms/room_deans_office.png",
+   "res://assets/placeholder/rooms/deans_office.webp"
+  ],
+  "carrel": [
+   "res://assets/rpg/rooms/room_elena_carrel.png",
+   "res://assets/placeholder/rooms/carrel.webp"
+  ]
+ },
+ "enemies": {
+  "cobb": [
+   "res://assets/sprites/cobb.webp"
+  ],
+  "penhallow": [
+   "res://assets/rpg/enemies/enemy_penhallow_neutral.png",
+   "res://assets/sprites/penhallow.webp"
+  ],
+  "dean_holloway": [
+   "res://assets/rpg/enemies/enemy_dean_neutral.png",
+   "res://assets/sprites/dean_holloway.webp"
+  ],
+  "secretary": [
+   "res://assets/rpg/enemies/enemy_secretary_neutral.png"
+  ],
+  "deans_man_a": [
+   "res://assets/rpg/enemies/enemy_deans_man_a_neutral.png"
+  ],
+  "deans_man_b": [
+   "res://assets/rpg/enemies/enemy_deans_man_b_neutral.png"
+  ],
+  "security_guard": [
+   "res://assets/rpg/enemies/enemy_security_guard_neutral.png"
+  ],
+  "rival_archivist": [
+   "res://assets/rpg/enemies/enemy_rival_archivist_neutral.png"
+  ],
+  "solicitor": [
+   "res://assets/rpg/enemies/enemy_solicitor_neutral.png"
+  ]
+ },
+ "sprites": {
+  "elena_neutral": [
+   "res://assets/rpg/outfits/elena_neutral.png",
+   "res://assets/sprites/elena_neutral.webp"
+  ],
+  "elena_flustered": [
+   "res://assets/rpg/outfits/elena_flustered.png",
+   "res://assets/sprites/elena_flustered.webp"
+  ],
+  "elena_soft": [
+   "res://assets/rpg/outfits/elena_soft.png",
+   "res://assets/sprites/elena_soft.webp"
+  ],
+  "cobb": [
+   "res://assets/rpg/outfits/cobb.png",
+   "res://assets/sprites/cobb.webp"
+  ],
+  "penhallow": [
+   "res://assets/rpg/outfits/penhallow.png",
+   "res://assets/sprites/penhallow.webp"
+  ],
+  "dean_holloway": [
+   "res://assets/rpg/outfits/dean_holloway.png",
+   "res://assets/sprites/dean_holloway.webp"
+  ],
+  "outfit_research": [
+   "res://assets/rpg/outfits/outfit_research.png"
+  ],
+  "outfit_raincoat": [
+   "res://assets/rpg/outfits/outfit_raincoat.png"
+  ],
+  "outfit_gown": [
+   "res://assets/rpg/outfits/outfit_gown.png"
+  ],
+  "outfit_evening": [
+   "res://assets/rpg/outfits/outfit_evening.png"
+  ],
+  "outfit_nightwear": [
+   "res://assets/rpg/outfits/outfit_nightwear.png"
+  ]
+ },
+ "cg": {
+  "cg_aftermath": [
+   "res://assets/cg/cg_aftermath.webp"
+  ],
+  "cg_aftermath_locked": [
+   "res://assets/cg/cg_aftermath_locked.webp"
+  ],
+  "cg_aftermath_thumb": [
+   "res://assets/cg/cg_aftermath_thumb.webp"
+  ],
+  "cg_annex": [
+   "res://assets/cg/cg_annex.webp"
+  ],
+  "cg_annex_locked": [
+   "res://assets/cg/cg_annex_locked.webp"
+  ],
+  "cg_annex_thumb": [
+   "res://assets/cg/cg_annex_thumb.webp"
+  ],
+  "cg_ch2_office": [
+   "res://assets/cg/cg_ch2_office.webp"
+  ],
+  "cg_ch2_office_thumb": [
+   "res://assets/cg/cg_ch2_office_thumb.webp"
+  ],
+  "cg_ch3_crypt": [
+   "res://assets/cg/cg_ch3_crypt.webp"
+  ],
+  "cg_ch3_crypt_thumb": [
+   "res://assets/cg/cg_ch3_crypt_thumb.webp"
+  ],
+  "cg_ch4_chapel": [
+   "res://assets/cg/cg_ch4_chapel.webp"
+  ],
+  "cg_ch4_chapel_thumb": [
+   "res://assets/cg/cg_ch4_chapel_thumb.webp"
+  ],
+  "cg_ch5_muniment": [
+   "res://assets/cg/cg_ch5_muniment.webp"
+  ],
+  "cg_ch5_muniment_thumb": [
+   "res://assets/cg/cg_ch5_muniment_thumb.webp"
+  ],
+  "cg_climax_control": [
+   "res://assets/cg/cg_climax_control.webp"
+  ],
+  "cg_climax_control_locked": [
+   "res://assets/cg/cg_climax_control_locked.webp"
+  ],
+  "cg_climax_control_thumb": [
+   "res://assets/cg/cg_climax_control_thumb.webp"
+  ],
+  "cg_climax_pact": [
+   "res://assets/cg/cg_climax_pact.webp"
+  ],
+  "cg_climax_pact_locked": [
+   "res://assets/cg/cg_climax_pact_locked.webp"
+  ],
+  "cg_climax_pact_thumb": [
+   "res://assets/cg/cg_climax_pact_thumb.webp"
+  ],
+  "cg_coal_store": [
+   "res://assets/cg/cg_coal_store.webp"
+  ],
+  "cg_coal_store_locked": [
+   "res://assets/cg/cg_coal_store_locked.webp"
+  ],
+  "cg_coal_store_thumb": [
+   "res://assets/cg/cg_coal_store_thumb.webp"
+  ],
+  "cg_confrontation": [
+   "res://assets/cg/cg_confrontation.webp"
+  ],
+  "cg_confrontation_thumb": [
+   "res://assets/cg/cg_confrontation_thumb.webp"
+  ],
+  "cg_muniment": [
+   "res://assets/cg/cg_muniment.webp"
+  ],
+  "cg_muniment_locked": [
+   "res://assets/cg/cg_muniment_locked.webp"
+  ],
+  "cg_muniment_thumb": [
+   "res://assets/cg/cg_muniment_thumb.webp"
+  ],
+  "cg_rpg_rain_arrival": [
+   "res://assets/rpg/cgs/cg_rpg_rain_arrival.png"
+  ],
+  "cg_rpg_map_room": [
+   "res://assets/rpg/cgs/cg_rpg_map_room.png"
+  ],
+  "cg_rpg_lockpick": [
+   "res://assets/rpg/cgs/cg_rpg_lockpick.png"
+  ],
+  "cg_rpg_bell_chamber": [
+   "res://assets/rpg/cgs/cg_rpg_bell_chamber.png"
+  ],
+  "cg_rpg_roof_dawn": [
+   "res://assets/rpg/cgs/cg_rpg_roof_dawn.png"
+  ],
+  "cg_rpg_gala": [
+   "res://assets/rpg/cgs/cg_rpg_gala.png"
+  ],
+  "cg_trust3_carrel": [
+   "res://assets/rpg/cgs/cg_trust3_carrel.png"
+  ],
+  "cg_trust5_common_room": [
+   "res://assets/rpg/cgs/cg_trust5_common_room.png"
+  ],
+  "cg_trust7_bath": [
+   "res://assets/rpg/cgs/cg_trust7_bath.png"
+  ],
+  "cg_trust9_bed": [
+   "res://assets/rpg/cgs/cg_trust9_bed.png"
+  ]
+ },
+ "maps": {
+  "blackwood": [
+   "res://assets/rpg/rooms/floor_map.png"
+  ]
+ }
+}

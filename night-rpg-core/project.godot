@@ -1,0 +1,11 @@
+; night_rpg core: a project only so the core's own tests can run. Games symlink addons/night_rpg.
+config_version=5
+
+[application]
+config/name="night-rpg-core"
+config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+RPG="*res://addons/night_rpg/state.gd"
+Loc="*res://addons/night_rpg/loc.gd"
+Sound="*res://addons/night_rpg/sound.gd"
