@@ -1,12 +1,73 @@
 (() => {
   const canvas = document.getElementById("game");
   const ctx = canvas.getContext("2d");
+  // Pet names live in the string table (pet.<id>) so a pull reads right in either language.
   const PETS = [
-    { id: "vocab", rarity: "N", name: "词汇精灵" },
-    { id: "math", rarity: "SR", name: "算术神兽" },
+    { id: "vocab", rarity: "N" },
+    { id: "math", rarity: "SR" },
   ];
+  const LANG_KEY = "wp_lang";
+  const PACK = { en: "en", zh: "zh-Hans" };
+  let lang = "en";
+
+  I18N.register({
+    en: {
+      "title": "Word Pop Quest",
+      "hud.charge": "CHARGE",
+      "hud.ok": "CORRECT",
+      "hud.dust": "STAR DUST",
+      "ui.answer": "Your answer",
+      "ui.go": "ANSWER · CHARGE · FIRE",
+      "ui.report": "Parent report",
+      "ui.pull": "Pet pull 50★",
+      "toast.full": "Full charge — FIRE!",
+      "toast.ok": "Correct! +{pct}%",
+      "toast.wrong": "Not quite — try again",
+      "toast.noDust": "Not enough StarDust",
+      "toast.got": "New pet: {name}",
+      "pet.vocab": "Vocab Sprite",
+      "pet.math": "Math Beast",
+    },
+    "zh-Hans": {
+      "title": "单词弹珠英雄 · Word Pop Quest",
+      "hud.charge": "充能",
+      "hud.ok": "答对",
+      "hud.dust": "星尘",
+      "ui.answer": "答案",
+      "ui.go": "答题充能 / 发射",
+      "ui.report": "家长日报",
+      "ui.pull": "萌宠 50★",
+      "toast.full": "充能满，发射",
+      "toast.ok": "正确 +{pct}%",
+      "toast.wrong": "再试一次",
+      "toast.noDust": "星尘不够",
+      "toast.got": "新萌宠：{name}",
+      "pet.vocab": "词汇精灵",
+      "pet.math": "算术神兽",
+    },
+  });
+
   let charge = 0, correct = 0, attempts = 0, item = pickQuiz();
   Save.load();
+
+  function applyLang(code) {
+    lang = code === "zh" ? "zh" : "en";
+    I18N.setLang(PACK[lang]);
+    document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+    document.title = I18N.t("title");
+    document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = I18N.t(el.getAttribute("data-i18n")); });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => { el.placeholder = I18N.t(el.getAttribute("data-i18n-placeholder")); });
+    document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("on", b.getAttribute("data-lang") === lang));
+    hud();
+    if (window.TEL && TEL.ev) TEL.ev("language", { lang });
+  }
+  document.querySelectorAll("[data-lang]").forEach(b => {
+    b.addEventListener("click", () => {
+      const code = b.getAttribute("data-lang");
+      I18N.remember(LANG_KEY, code);
+      applyLang(code);
+    });
+  });
 
   function toast(m) {
     const el = document.getElementById("toast");
@@ -19,9 +80,14 @@
     document.getElementById("chg").textContent = Math.round(charge * 100) + "%";
     document.getElementById("ok").textContent = correct;
     document.getElementById("dust").textContent = Economy.snapshot().stardust;
-    document.getElementById("prompt").textContent = item.prompt + " · " + item.hint;
+    document.getElementById("prompt").textContent = item.prompt + " · " + quizHint(item, lang);
   }
   function next() { item = pickQuiz(); hud(); }
+  function petName(pet) {
+    const key = "pet." + pet.id;
+    const s = I18N.t(key);
+    return s === key ? (pet.name || pet.id) : s;
+  }
 
   document.getElementById("goBtn").onclick = () => {
     const input = document.getElementById("ans").value;
@@ -35,15 +101,15 @@
       if (charge >= 0.99) {
         launch(charge);
         charge = 0;
-        toast("充能满，发射");
-      } else toast("正确 +" + Math.round(charge * 100) + "%");
+        toast(I18N.t("toast.full"));
+      } else toast(I18N.t("toast.ok", { pct: Math.round(charge * 100) }));
       next();
-    } else toast("再试一次");
+    } else toast(I18N.t("toast.wrong"));
     Save.persist({ wordpop: { correct, attempts } });
     hud();
   };
   document.getElementById("reportBtn").onclick = async () => {
-    const r = parentReport({ correct, attempts });
+    const r = parentReport({ correct, attempts }, lang);
     const text = r.title + "\n" + r.lines.join("\n");
     toast(text.split("\n")[1] || r.title);
     if (navigator.share) {
@@ -60,8 +126,8 @@
     }
   };
   document.getElementById("pullBtn").onclick = () => {
-    if (!Economy.spend(Gacha.PULL_COST)) { toast("星尘不够"); return; }
-    toast(Gacha.pull(PETS).name);
+    if (!Economy.spend(Gacha.PULL_COST)) { toast(I18N.t("toast.noDust")); return; }
+    toast(I18N.t("toast.got", { name: petName(Gacha.pull(PETS)) }));
     hud();
   };
 
@@ -93,6 +159,6 @@
     });
     requestAnimationFrame(frame);
   }
-  hud();
+  applyLang(I18N.detect(LANG_KEY));
   requestAnimationFrame(frame);
 })();

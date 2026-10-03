@@ -35,6 +35,7 @@ button{font-family:inherit;cursor:pointer}
 .ghost{background:transparent;border:1px solid #3a3148;color:#d4d0c6}
 #langDock{position:absolute;right:12px;top:12px;display:flex;gap:4px;z-index:20}
 #langDock button{border:0;background:transparent;color:var(--dim);min-height:44px;padding:8px;font:700 11px ui-monospace,monospace}
+#langDock button.on{color:var(--yellow);border-bottom:1px solid var(--yellow)}
 .dayBtn,.eqBtn,.card{display:block;width:100%;text-align:left;margin:6px 0;padding:12px;border:1px solid #2c3348;background:linear-gradient(180deg,#171b28,#10131c);color:#fff;min-height:56px}
 .dayBtn em,.eqBtn em,.card em{display:block;font:800 16px "Arial Black",Impact,sans-serif;font-style:normal;color:var(--yellow)}
 .dayBtn span,.eqBtn span{display:block;margin-top:2px;color:#c9c6bc;font:500 12px -apple-system,sans-serif}
@@ -55,7 +56,7 @@ window.API = window.API || window.TEL_API;
 <body>
 <div id="app"><div id="stage">
   <canvas id="game" width="420" height="640"></canvas>
-  <div id="langDock"><button data-lang="en">EN</button><button data-lang="zh">中文</button></div>
+  <div id="langDock"><button data-lang="en">EN</button><button data-lang="zh">中</button></div>
 
   <div class="ov show" id="titleOv">
     <h1 id="tBrand">BEAT MONDAY</h1>

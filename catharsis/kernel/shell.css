@@ -26,6 +26,8 @@ html, body {
   position: relative;
 }
 .hud {
+  position: relative;
+  z-index: 2;
   flex: 0 0 auto;
   padding: 10px 12px 0;
   display: flex;
@@ -44,9 +46,12 @@ html, body {
 }
 canvas {
   display: block;
-  width: 100%;
-  max-width: 420px;
+  /* Fit the slot on both axes, keeping the intrinsic aspect: a 420x640 board used to
+     overflow a short viewport upwards and sit over the HUD, eating its taps. */
+  width: auto;
   height: auto;
+  max-width: min(100%, 420px);
+  max-height: 100%;
   background: #0e0c09;
   touch-action: none;
 }
@@ -97,3 +102,17 @@ canvas {
   pointer-events: none;
 }
 .toast.show { opacity: 1; }
+/* EN/中 language toggle. Sits in the HUD; the active language is lit. */
+.lang { display: flex; gap: 2px; align-self: flex-start; }
+.lang button {
+  min-width: 34px;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dim);
+  font: 700 12px/1 "IBM Plex Sans", "PingFang SC", sans-serif;
+  letter-spacing: .04em;
+}
+.lang button.on { color: #1a1406; background: var(--accent); border-color: var(--accent); }

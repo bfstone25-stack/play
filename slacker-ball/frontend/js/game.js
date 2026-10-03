@@ -3,34 +3,87 @@
   const ctx = canvas.getContext("2d");
   const W = LAYOUT.width, H = LAYOUT.height;
 
+  // Skin names live in the string table (skin.<id>) so a skin pulled in one language
+  // reads right after the player flips the toggle.
   const POOL = [
-    { id: "coffee", rarity: "N", color: "#c47a3a", name: "咖啡球" },
-    { id: "cat", rarity: "SR", color: "#e8d7a0", name: "带薪摸鱼猫" },
-    { id: "boss", rarity: "SSR", color: "#ff6b4a", name: "甩锅球" },
+    { id: "coffee", rarity: "N", color: "#c47a3a" },
+    { id: "cat", rarity: "SR", color: "#e8d7a0" },
+    { id: "boss", rarity: "SSR", color: "#ff6b4a" },
   ];
 
   const SFX = window.SFX || { peg() {}, launch() {}, redZone() {}, flipperHit() {} };
   window.SFX = SFX;
 
+  const LANG_KEY = "sb_lang";
+  const PACK = { en: "en", zh: "zh-Hans" };
+
   I18N.register({
+    en: {
+      "title": "Slacker Ball",
+      "hud.dust": "STAR DUST",
+      "hud.ammo": "AMMO",
+      "hud.smash": "SMASHED",
+      "ui.launch": "HOLD · SLACK SHOT",
+      "ui.ad": "Watch ad · +5 ammo",
+      "ui.pull": "Skin pull 50★",
+      "ui.skin": "Swap skin",
+      "toast.noAmmo": "Out of ammo",
+      "toast.noDust": "Not enough StarDust",
+      "toast.smash": "Urgent request smashed!",
+      "toast.ammo": "+5 ammo",
+      "toast.skin": "Skin: {name}",
+      "toast.got": "Pulled: {name}",
+      "block.0": "URGENT",
+      "block.1": "REPORT",
+      "block.2": "MEETING",
+      "block.3": "KPI",
+      "block.4": "SYNC",
+      "skin.coffee": "Coffee Ball",
+      "skin.cat": "Paid-to-Slack Cat",
+      "skin.boss": "Blame-Shift Ball",
+    },
     "zh-Hans": {
+      "title": "摸鱼大暴弹 · Slacker Ball",
+      "hud.dust": "星尘",
+      "hud.ammo": "弹药",
+      "hud.smash": "粉碎",
       "ui.launch": "HOLD · 摸鱼发射",
       "ui.ad": "看广告补弹药",
       "ui.pull": "抽皮 50★",
+      "ui.skin": "换皮",
       "toast.noAmmo": "弹药空了",
       "toast.noDust": "星尘不够",
       "toast.smash": "加急需求粉碎",
-    },
-    en: {
-      "ui.launch": "HOLD · SLACK SHOT",
-      "ui.ad": "Ad for ammo",
-      "ui.pull": "Skin 50★",
-      "toast.noAmmo": "No ammo",
-      "toast.noDust": "Not enough StarDust",
-      "toast.smash": "Urgent request smashed",
+      "toast.ammo": "+5 弹药",
+      "toast.skin": "皮肤：{name}",
+      "toast.got": "抽到：{name}",
+      "block.0": "加急",
+      "block.1": "周报",
+      "block.2": "会议",
+      "block.3": "KPI",
+      "block.4": "对齐",
+      "skin.coffee": "咖啡球",
+      "skin.cat": "带薪摸鱼猫",
+      "skin.boss": "甩锅球",
     },
   });
-  I18N.setLang("zh-Hans");
+
+  function applyLang(code) {
+    I18N.setLang(PACK[code] || PACK.en);
+    document.documentElement.lang = code === "zh" ? "zh-Hans" : "en";
+    document.title = I18N.t("title");
+    document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = I18N.t(el.getAttribute("data-i18n")); });
+    document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("on", b.getAttribute("data-lang") === code));
+    if (window.TEL && TEL.ev) TEL.ev("language", { lang: code });
+  }
+  document.querySelectorAll("[data-lang]").forEach(b => {
+    b.addEventListener("click", () => {
+      const code = b.getAttribute("data-lang");
+      I18N.remember(LANG_KEY, code);
+      applyLang(code);
+    });
+  });
+  applyLang(I18N.detect(LANG_KEY));
 
   Save.load();
   let smashed = 0;
@@ -41,7 +94,6 @@
 
   function resetBlocks() {
     const row = [];
-    const labels = ["加急", "周报", "会议", "KPI", "对齐"];
     const w = 68;
     for (let i = 0; i < 5; i++) {
       row.push({
@@ -52,7 +104,7 @@
         h: 36,
         hp: 2 + (i % 2),
         max: 2 + (i % 2),
-        label: labels[i],
+        label: "block." + i,   // resolved through I18N at draw time
       });
     }
     return row;
@@ -77,6 +129,11 @@
     const owned = inv.length ? inv : [POOL[0]];
     return owned[skinIndex % owned.length];
   }
+  function skinName(skin) {
+    const key = "skin." + skin.id;
+    const s = I18N.t(key);
+    return s === key ? (skin.name || skin.id) : s;
+  }
 
   const btn = document.getElementById("launchBtn");
   btn.addEventListener("pointerdown", () => { charging = true; power = 0.15; });
@@ -92,19 +149,19 @@
   document.getElementById("adBtn").onclick = () => {
     Commerce.rewarded("ammo");
     Save.persist({ smashed });
-    toast("+5 ammo");
+    toast(I18N.t("toast.ammo"));
     hud();
   };
   document.getElementById("pullBtn").onclick = () => {
     if (!Economy.spend(Gacha.PULL_COST)) { toast(I18N.t("toast.noDust")); return; }
     const got = Gacha.pull(POOL);
-    toast(got.name || got.id);
+    toast(I18N.t("toast.got", { name: skinName(got) }));
     Save.persist({ smashed });
     hud();
   };
   document.getElementById("skinBtn").onclick = () => {
     skinIndex += 1;
-    toast((currentSkin().name || currentSkin().id) + "");
+    toast(I18N.t("toast.skin", { name: skinName(currentSkin()) }));
   };
 
   let last = performance.now();
@@ -163,9 +220,9 @@
       ctx.fillStyle = `rgba(196,92,50,${0.35 + 0.25 * (b.hp / b.max)})`;
       ctx.fillRect(b.x, b.y, b.w, b.h);
       ctx.fillStyle = "#f4ead8";
-      ctx.font = "11px sans-serif";
+      ctx.font = "700 11px sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText(b.label, b.x + b.w / 2, b.y + 22);
+      ctx.fillText(I18N.t(b.label), b.x + b.w / 2, b.y + 22, b.w - 6);
     });
     const skin = currentSkin();
     WORLD.balls.forEach(b => {

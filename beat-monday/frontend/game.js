@@ -501,7 +501,10 @@
     const canvas = document.getElementById("game");
     const ctx = canvas.getContext("2d", { alpha: false });
     loadSprites();
-    let lang = localStorage.getItem("bm_lang") || "en";
+    // English-first: ?lang= beats the stored dock choice; anything unknown is English.
+    let lang = "";
+    try { lang = new URLSearchParams(location.search).get("lang") || ""; } catch (e) {}
+    lang = (lang || localStorage.getItem("bm_lang") || "en").toLowerCase().slice(0, 2);
     if (I.LANGS.indexOf(lang) < 0) lang = "en";
     const settings = {
       sfx: localStorage.getItem("bm_sfx") !== "0",

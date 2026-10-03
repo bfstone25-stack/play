@@ -5,13 +5,17 @@ var BMRPG = (() => {
   let target = null, autopilot = false, screen = "title";
   const t = (k, v) => I18N.t(k, v);
 
+  // English-first: ?lang=, then the stored toggle choice (bm.lang), then the browser;
+  // only a zh browser lands on Chinese. See kernel/i18n.js.
   function langCode() {
-    try {
-      const saved = localStorage.getItem("bm.lang");
-      if (saved) return saved;
-    } catch (e) {}
-    const n = (navigator.language || "en").toLowerCase();
-    return n.indexOf("zh") === 0 ? "zh" : "en";
+    return I18N.detect("bm.lang");
+  }
+
+  function reflectLang() {
+    const code = I18N.current();
+    document.documentElement.lang = code === "zh" ? "zh-CN" : "en";
+    document.title = code === "zh" ? "打爆周一 · BEAT MONDAY" : "BEAT MONDAY — a work week RPG";
+    document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("on", b.getAttribute("data-lang") === code));
   }
 
   function save() {
@@ -78,6 +82,7 @@ var BMRPG = (() => {
   // ---------- desk (equipment) ----------
   function renderDesk() {
     const box = $("dList");
+    $("dTitle").textContent = t("locker");
     box.innerHTML = "";
     if (!profile.owned.length) {
       const p = document.createElement("p");
@@ -223,7 +228,9 @@ var BMRPG = (() => {
 
   function setLang(code) {
     I18N.setLang(code);
-    try { localStorage.setItem("bm.lang", I18N.current()); } catch (e) {}
+    I18N.remember("bm.lang", I18N.current());
+    reflectLang();
+    if (window.TEL && TEL.ev) TEL.ev("language", { lang: I18N.current() });
     if (screen === "titleOv") renderTitle();
     else if (screen === "weekOv") renderWeek();
     else if (screen === "deskOv") renderDesk();
@@ -234,6 +241,7 @@ var BMRPG = (() => {
     ctx = BMRender.fit(canvas);
     I18N.register(BMStrings);
     I18N.setLang(langCode());
+    reflectLang();
     profile = loadProfile();
     bindInput();
     $("btnStart").onclick = () => (profile.cleared.length || profile.week ? renderWeek() : brief(0));

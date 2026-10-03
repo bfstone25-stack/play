@@ -1,5 +1,5 @@
 const I18N = (() => {
-  let lang = "zh-Hans";
+  let lang = "en";
   let dict = {};
 
   function t(key, vars) {
@@ -23,5 +23,30 @@ const I18N = (() => {
 
   function current() { return lang; }
 
-  return { t, setLang, register, current };
+  // Which language should a player see? English-first: only a zh browser gets Chinese
+  // unless the player asked otherwise. Order: explicit ?lang= in the URL, then the
+  // choice stored under `key` (the in-game EN/中 toggle writes it), then the browser.
+  // Returns `zh` or `en` (the caller maps `zh` onto its own pack code, e.g. "zh-Hans").
+  function detect(key) {
+    let pick = "";
+    try {
+      const q = new URLSearchParams(location.search).get("lang");
+      if (q) pick = q;
+    } catch (e) {}
+    if (!pick && key) {
+      try { pick = localStorage.getItem(key) || ""; } catch (e) {}
+    }
+    if (!pick) {
+      let langs = [];
+      try { langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ""]; } catch (e) {}
+      pick = langs[0] || "en";
+    }
+    return /^zh/i.test(String(pick).trim()) ? "zh" : "en";
+  }
+
+  function remember(key, code) {
+    try { localStorage.setItem(key, code); } catch (e) {}
+  }
+
+  return { t, setLang, register, current, detect, remember };
 })();
