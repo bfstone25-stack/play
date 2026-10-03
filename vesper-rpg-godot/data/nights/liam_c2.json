@@ -1,0 +1,525 @@
+{
+ "id": "liam_c2",
+ "title_key": "nt_liam_2",
+ "sub_key": "ns_liam_2",
+ "turns": 24,
+ "clock_start": 1170,
+ "minutes_per_turn": 15,
+ "start_room": "home",
+ "start_event": "start",
+ "map": {
+  "image": "city",
+  "rooms": {
+   "home": [
+    0.2,
+    0.72
+   ],
+   "street": [
+    0.47,
+    0.5
+   ],
+   "cafe": [
+    0.24,
+    0.26
+   ],
+   "venue": [
+    0.77,
+    0.32
+   ]
+  }
+ },
+ "rooms": {
+  "home": {
+   "name_key": "r_home",
+   "plate": "v_home",
+   "music": "explore",
+   "mood": {
+    "ambient": "#e0d4dc",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      0.9,
+      "#ffd8b0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "out",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.14,
+      0.74
+     ],
+     "label_key": "r_street"
+    },
+    {
+     "id": "wardrobe",
+     "kind": "search",
+     "pos": [
+      0.72,
+      0.46
+     ],
+     "event": "w",
+     "label_key": "hs_wardrobe",
+     "xp": 5,
+     "gives": [
+      "trench"
+     ]
+    },
+    {
+     "id": "desk",
+     "kind": "search",
+     "pos": [
+      0.42,
+      0.62
+     ],
+     "event": "d",
+     "label_key": "hs_desk",
+     "xp": 5,
+     "gives": [
+      "umbrella"
+     ]
+    }
+   ],
+   "heroine_pose": "",
+   "heroine_x": 0.74
+  },
+  "street": {
+   "name_key": "r_street",
+   "plate": "v_street",
+   "music": "explore",
+   "mood": {
+    "ambient": "#c8c4dc",
+    "lamps": [
+     [
+      0.7,
+      0.3,
+      1.0,
+      "#ff90b0"
+     ],
+     [
+      0.2,
+      0.35,
+      0.8,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "home",
+     "kind": "door",
+     "to": "home",
+     "pos": [
+      0.12,
+      0.78
+     ],
+     "label_key": "r_home"
+    },
+    {
+     "id": "cafe",
+     "kind": "door",
+     "to": "cafe",
+     "pos": [
+      0.3,
+      0.42
+     ],
+     "label_key": "r_cafe"
+    },
+    {
+     "id": "stranger",
+     "kind": "enemy",
+     "enemy": "paparazzo_liam",
+     "pos": [
+      0.6,
+      0.6
+     ],
+     "after": "stranger_after"
+    },
+    {
+     "id": "venue",
+     "kind": "door",
+     "to": "venue",
+     "pos": [
+      0.86,
+      0.4
+     ],
+     "label_key": "r_v_liam_2",
+     "if_flag": "street_clear"
+    }
+   ],
+   "heroine_pose": "",
+   "heroine_x": 0.74
+  },
+  "cafe": {
+   "name_key": "r_cafe",
+   "plate": "v_cafe",
+   "music": "explore",
+   "mood": {
+    "ambient": "#e4d8cc",
+    "lamps": [
+     [
+      0.5,
+      0.25,
+      1.0,
+      "#ffd8a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.12,
+      0.78
+     ],
+     "label_key": "r_street"
+    },
+    {
+     "id": "counter",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "cc",
+     "label_key": "hs_counter",
+     "xp": 5,
+     "gives": [
+      "macarons",
+      "coffee"
+     ]
+    },
+    {
+     "id": "corner",
+     "kind": "search",
+     "pos": [
+      0.78,
+      0.6
+     ],
+     "event": "cn",
+     "label_key": "hs_corner",
+     "xp": 5,
+     "gives": [
+      "ks_liam_2"
+     ]
+    },
+    {
+     "id": "board",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.38
+     ],
+     "event": "b",
+     "label_key": "hs_board",
+     "xp": 5,
+     "gives": [
+      "gift_liam"
+     ]
+    }
+   ],
+   "heroine_pose": "",
+   "heroine_x": 0.74
+  },
+  "venue": {
+   "name_key": "r_v_liam_2",
+   "plate": "v_liam_2",
+   "music": "venue",
+   "mood": {
+    "ambient": "#e0d8e0",
+    "lamps": [
+     [
+      0.6,
+      0.3,
+      0.9,
+      "#ffd0c0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.1,
+      0.8
+     ],
+     "label_key": "r_street"
+    },
+    {
+     "id": "beat0",
+     "kind": "event",
+     "event": "beat0",
+     "pos": [
+      0.3,
+      0.42
+     ],
+     "label_key": "hs_b1"
+    },
+    {
+     "id": "date1",
+     "kind": "enemy",
+     "enemy": "date_liam_2",
+     "pos": [
+      0.42,
+      0.56
+     ],
+     "after": "after1",
+     "if_flag": "s1"
+    },
+    {
+     "id": "beat2",
+     "kind": "event",
+     "event": "beat2",
+     "pos": [
+      0.54,
+      0.42
+     ],
+     "label_key": "hs_b2",
+     "if_flag": "s2"
+    },
+    {
+     "id": "beat3",
+     "kind": "event",
+     "event": "beat3",
+     "pos": [
+      0.3,
+      0.66
+     ],
+     "label_key": "hs_b3",
+     "if_flag": "s3"
+    },
+    {
+     "id": "end",
+     "kind": "event",
+     "event": "end",
+     "pos": [
+      0.66,
+      0.56
+     ],
+     "label_key": "hs_end",
+     "if_flag": "s4"
+    }
+   ],
+   "heroine_pose": "liam_smile",
+   "heroine_x": 0.74,
+   "enter_event": "open"
+  }
+ },
+ "events": {
+  "w": [
+   {
+    "say": "narrator",
+    "key": "ev_wardrobe"
+   }
+  ],
+  "d": [
+   {
+    "say": "narrator",
+    "key": "ev_desk"
+   }
+  ],
+  "stranger_after": [
+   {
+    "say": "narrator",
+    "key": "post_paparazzo"
+   },
+   {
+    "flag": "street_clear"
+   }
+  ],
+  "cc": [
+   {
+    "say": "narrator",
+    "key": "ev_counter"
+   }
+  ],
+  "cn": [
+   {
+    "say": "narrator",
+    "key": "ev_corner"
+   }
+  ],
+  "b": [
+   {
+    "say": "narrator",
+    "key": "ev_board"
+   }
+  ],
+  "open": [
+   {
+    "music": "venue"
+   },
+   {
+    "lines": "liam_c2:1-1"
+   }
+  ],
+  "beat0": [
+   {
+    "lines": "liam_c2:10-11"
+   },
+   {
+    "xp": 10
+   },
+   {
+    "flag": "s1"
+   }
+  ],
+  "after1": [
+   {
+    "say": "narrator",
+    "key": "vb_stage_2"
+   },
+   {
+    "flag": "s2"
+   }
+  ],
+  "beat2": [
+   {
+    "lines": "liam_c2:20-21"
+   },
+   {
+    "xp": 10
+   },
+   {
+    "flag": "s3"
+   }
+  ],
+  "beat3": [
+   {
+    "lines": "liam_c2:30-31"
+   },
+   {
+    "xp": 10
+   },
+   {
+    "flag": "s4"
+   }
+  ],
+  "end": [
+   {
+    "lines": "liam_c2:100-100"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"So — are you okay, Liam?\"",
+      "do": [
+       {
+        "flag": "sees_him"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "lines": "liam_c2:101-101"
+       }
+      ]
+     },
+     {
+      "menu": "\"Then lean on me for once. I can take it.\"",
+      "do": [
+       {
+        "flag": "sees_him"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "lines": "liam_c2:102-102"
+       }
+      ]
+     },
+     {
+      "menu": "\"Every day. Guess that's why I moved next to you.\"",
+      "do": [
+       {
+        "flag": "playful"
+       },
+       {
+        "lines": "liam_c2:103-103"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "lines": "liam_c2:120-120"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"Same time next week? I'll bring the bad jokes.\"",
+      "do": [
+       {
+        "flag": "will_return"
+       },
+       {
+        "lines": "liam_c2:121-121"
+       }
+      ]
+     },
+     {
+      "menu": "\"Easy's good. You've earned easy, Liam.\"",
+      "do": [
+       {
+        "flag": "sees_him"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "lines": "liam_c2:122-122"
+       }
+      ]
+     },
+     {
+      "menu": "(Rise on your toes, kiss his cheek quickly, and turn inside.)",
+      "do": [
+       {
+        "flag": "bold"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "lines": "liam_c2:123-123"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "cg": "cg_liam_ch2"
+   },
+   {
+    "say": "narrator",
+    "key": "ev_chapter_cg"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "say": "narrator",
+    "key": "vb_unlock_1"
+   },
+   {
+    "end_night": true,
+    "next": "liam_c3"
+   }
+  ],
+  "start": [
+   {
+    "say": "narrator",
+    "key": "hb_open_2"
+   }
+  ]
+ }
+}

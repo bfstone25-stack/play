@@ -1,0 +1,89 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "fushen_c5_open",
+"who": "narrator",
+"en": "The family storm has passed. He didn't compromise, and he wasn't cast out — in his usual way, coldly and completely, he settled everything that needed settling. This morning, for the first time, no staff hover on the terrace. He pours you a cup of coffee himself — the way you take it: a touch of sugar, a hint of cinnamon. As he hands it over, his fingertips pause for a moment. \"First time in my life I've poured coffee for anyone,\" he says lightly — but you know the weight of it.",
+"zh": "家族的风波过去了。他没有妥协，也没有被逐出——他用一贯的方式，冷静地、彻底地，把该谈的都谈清楚了。这天清晨，露台上第一次没有佣人环伺。他亲手给你倒了杯咖啡，是你习惯的那种——三分糖，加一点点肉桂。他递过来时，指尖有一瞬的停顿。\"我这辈子，第一次给别人倒咖啡。\"他说，语气很淡，可你知道，这句话的分量。"
+},
+{
+"src": 10,
+"id": "fushen_c5_b1_offer_ev",
+"who": "narrator",
+"en": "\"The family wants me to take over the entire overseas division. London. Five years at least.\" He looks toward the city, then pauses. \"I haven't given them an answer.\"",
+"zh": "\"家族要我接手海外的整个板块，去伦敦，至少五年。\"他望着城市的方向，停顿，\"我还没答复。\""
+},
+{
+"src": 11,
+"id": "fushen_c5_b1_offer_he",
+"who": "fushen",
+"en": "\"The family wants me to take the overseas division. London. Five years, at least.\" He watches the skyline go pale. \"I haven't given them an answer.\" He does not say that yours decides his. He simply stops talking, and waits, and gives away nothing at all.",
+"zh": "\"家里要我去接海外那一块。伦敦。至少五年。\"他看着天边一点点发白。\"我还没有给他们答复。\"他没有说，答复取决于你的答复。他只是不再说话，等着，什么也不泄露。"
+},
+{
+"src": 20,
+"id": "fushen_c5_b2_truth_ev",
+"who": "narrator",
+"en": "He finally turns to look at you and says something he has never said to anyone in his life: \"Nothing I've ever owned was something I actually wanted to keep. Until you.\"",
+"zh": "他终于转过身，看着你，说出了他这辈子从未对任何人说过的话：\"我拥有的东西，从来没有一样，是我真正想留下的。直到你。\""
+},
+{
+"src": 21,
+"id": "fushen_c5_b2_truth_he",
+"who": "fushen",
+"en": "He turns and looks at you. \"Nothing I have ever owned was something I actually wanted to keep.\" A pause with nothing in it — no joke coming, no retreat. \"Until you.\" Then he says nothing more and lets it stand there in the open between you, which for him is an act of enormous violence.",
+"zh": "他转过身来看着你。\"我拥有过的任何东西，都不是我真正想留住的。\"一段什么也没有的停顿——没有玩笑要来，也没有后退。\"直到你。\"然后他不再说话，任由这句话敞在你们之间——对他而言，这是一种极大的暴力。"
+},
+{
+"src": 30,
+"id": "fushen_c5_bx_morning_ev",
+"who": "narrator",
+"en": "Dawn on the terrace. No staff. A pot of coffee he made himself, badly.",
+"zh": "露台上的黎明。没有佣人。一壶他自己煮的咖啡，煮得并不好。"
+},
+{
+"src": 31,
+"id": "fushen_c5_bx_morning_he",
+"who": "fushen",
+"en": "\"I have never eaten breakfast in this house without an audience,\" he says, and drinks the bad coffee anyway. Then, without any particular ceremony, he moves his chair around to your side of the table. \"This is better. We will do it this way from now on.\"",
+"zh": "\"我在这栋房子里吃早饭，从来都是有观众的。\"他说。他把那杯很难喝的咖啡推给你，神情里有一种你从未见过的东西，接近于得意。\"这一杯不好喝。我打算每天早上都煮，直到它好喝为止。\""
+},
+{
+"src": 100,
+"id": "fushen_c5_c5a_q",
+"who": "fushen",
+"en": "\"So what do you want now?\" — you're the one asking. He looks at you for a long moment, then slowly holds out his hand.",
+"zh": "\"那你现在想要什么？\"——这句话，是你问的。他看着你，很久，然后慢慢向你伸出手。"
+},
+{
+"src": 101,
+"id": "fushen_c5_c5a_r0",
+"who": "fushen",
+"en": "He grips your hand, his voice softer than you've ever heard. \"I'm not going to London. This house has been cold thirty years — I want to warm it, with you.\"",
+"zh": "他握紧你的手，声音是你从未听过的柔软：\"伦敦我不去了。这栋冷了三十年的房子，我想和你，一起把它焐热。\""
+},
+{
+"src": 102,
+"id": "fushen_c5_c5a_r1",
+"who": "fushen",
+"en": "He lowers his eyes, rarely, and when he lifts them there's no ice left at all. \"I want you. This one thing, I won't weigh, and I won't explain.\"",
+"zh": "他罕见地垂下眼，再抬眼时，眼底再无半分冰冷：\"我想要你。就这一件事，我不想再权衡，也不想再解释。\""
+},
+{
+"src": 103,
+"id": "fushen_c5_c5a_r2",
+"who": "fushen",
+"en": "His hand stops in mid-air, and it's a long while before he draws it back. \"…You're right.\" He looks away, and the iceberg slowly closes over again.",
+"zh": "他的手在半空中停住了，很久才收回去。\"…你说得对。\"他移开目光，那座冰山又缓缓合上了。"
+},
+{
+"src": 104,
+"id": "fushen_c5_c5a_r3",
+"who": "fushen",
+"en": "\"...That is the correct order,\" he says, after a moment. \"I had them the wrong way round. Thank you.\"",
+"zh": "\"……这个顺序是对的，\"他停了一下说，\"我会先回答他们。然后我会问你，而且我会问得很正式。\""
+}
+],
+"menus": {}
+}

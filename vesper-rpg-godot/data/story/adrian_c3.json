@@ -1,0 +1,83 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "adrian_c3_open",
+"who": "narrator",
+"en": "The last night the tour hits this city, packed out. For the encore he doesn't blow the roof off like usual — he waves the whole band offstage, every light dies but one beam on him and a single acoustic guitar. Tens of thousands go quiet. He sits on the stool, that untamed look rare gone from his face. \"This next one,\" he says into the mic, voice a little rough, \"never had a name. Never released it. My label doesn't even know it exists.\" His gaze cuts across the sea of people, landing in your direction."
+},
+{
+"src": 10,
+"id": "adrian_c3_b1_song_ev",
+"who": "narrator",
+"en": "He begins to sing — the very song you stepped on in the bus, the one he flatly denied. In the chorus, that line 'she doesn't ask me to be anyone' now sung to tens of thousands — but you know it was written for one person. No one in the arena knows who the song is about. Only you do."
+},
+{
+"src": 11,
+"id": "adrian_c3_b1_song_he",
+"who": "adrian",
+"en": "He starts it on one guitar under one light and it's the song off the floor of the bus — *she doesn't ask me to be anyone* — sung now to tens of thousands of people, none of whom know who it's for. He doesn't say. He doesn't have to. His voice goes through the armour on the chorus."
+},
+{
+"src": 20,
+"id": "adrian_c3_b2_look_ev",
+"who": "narrator",
+"en": "The last note falls and the arena erupts in a tsunami of cheers. He ignores all of it. Under the spotlight he lifts his head, past every outstretched hand in the front rows, and looks straight at you — then, in front of tens of thousands, silently and only for you, he mouths: 'that one was yours.'"
+},
+{
+"src": 21,
+"id": "adrian_c3_b2_look_he",
+"who": "adrian",
+"en": "The arena detonates and he ignores all of it. Under the spotlight he lifts his head, past every hand in the front row, finds you, and mouths it silently, for exactly one person: *that one was yours.* Then he stands there in the noise, waiting, deaf to forty thousand people."
+},
+{
+"src": 100,
+"id": "adrian_c3_c3a_q",
+"who": "adrian",
+"en": "Tens of thousands are cheering, but he only looks at you, waiting for an answer. Across the whole sea of people — how do you answer him?"
+},
+{
+"src": 101,
+"id": "adrian_c3_c3a_r0",
+"who": "adrian",
+"en": "He freezes a beat, then smiles, barely, and bends to the mic, his voice trembling. \"…guess I've got a reason to finish it now.\""
+},
+{
+"src": 102,
+"id": "adrian_c3_c3a_r1",
+"who": "adrian",
+"en": "He understands. He closes his eyes, and when they open the untamed shell has fully cracked. \"…yeah. Okay. Yeah.\""
+},
+{
+"src": 103,
+"id": "adrian_c3_c3a_r2",
+"who": "adrian",
+"en": "He squints to read it, his throat moving, and turns his face away — but you catch the smile he tries to hide."
+},
+{
+"src": 120,
+"id": "adrian_c3_c3b_q",
+"who": "adrian",
+"en": "After the show he ditches security, finds you at the backstage side door, leather jacket still on, hair damp with sweat. \"So. You heard it. …You gonna make me say it out loud, or can we skip that part?\""
+},
+{
+"src": 121,
+"id": "adrian_c3_c3b_r0",
+"who": "adrian",
+"en": "He steps in close, voice low. \"Fifty thousand strangers, easy. One you? …That's the hard part.\""
+},
+{
+"src": 122,
+"id": "adrian_c3_c3b_r1",
+"who": "adrian",
+"en": "He exhales, forehead to hers, eyes shut. \"…thank god. I'm so much better at writing it than saying it.\""
+},
+{
+"src": 123,
+"id": "adrian_c3_c3b_r2",
+"who": "adrian",
+"en": "He stares at her, wrestling with it a long moment, then rasps, \"…the song's about you. Every damn word. There. Don't make me repeat it.\""
+}
+],
+"menus": {}
+}

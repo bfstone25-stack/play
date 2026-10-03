@@ -1,0 +1,96 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "luxingye_c3_open",
+"who": "narrator",
+"en": "The final night of the tour, packed to the rafters. The lights fall; thousands of glow-sticks become a galaxy. You're in row seven — the seat he set aside for you. On the last encore, after the whole crowd's sing-along ends, he suddenly signals the band to stop. The arena goes silent; tens of thousands hold their breath. Mic in hand, he walks slowly to the edge of the stage, his gaze passing over the front rows to land on row seven — on you.",
+"zh": "巡演最后一场，全场爆满。灯光暗下，万人的应援棒连成星海。你坐在第七排——这是他特意留给你的位置。唱到最后一首安可，全场大合唱结束后，他忽然示意乐队停下。整个体育馆安静下来，几万人屏住呼吸。他握着麦，慢慢走到舞台边缘，目光越过前排，落在第七排——落在你身上。"
+},
+{
+"src": 10,
+"id": "luxingye_c3_b1_song_for_you_ev",
+"who": "narrator",
+"en": "\"This last song,\" he tells the whole arena, but his eyes are on you, \"the label said it wasn't commercial enough to release. But tonight, I want to sing it for one person.\" — It's the unreleased song he played you in the rehearsal room.",
+"zh": "\"最后这首歌，\"他对着全场，眼睛却看着你，\"公司说它不够商业，没让我发。但今晚，我想唱给一个人听。\"——是那首他在排练室弹给你的、没发过的歌。"
+},
+{
+"src": 11,
+"id": "luxingye_c3_b1_song_for_you_he",
+"who": "luxingye",
+"en": "\"This last one,\" he tells forty thousand people, and it is not forty thousand people he's telling, \"the label said it wasn't commercial enough to put out.\" His hand isn't quite steady on the mic. \"So tonight I'm going to sing it for one person, and they know who they are.\"",
+"zh": "\"最后这一首，\"他对着四万个人说，而他要说的对象不是那四万个人，\"公司说它不够商业，不给发。\"他握着麦克风的手不太稳。\"所以今晚我把它唱给一个人听，那个人知道我说的是谁。\""
+},
+{
+"src": 20,
+"id": "luxingye_c3_b2_confession_ev",
+"who": "narrator",
+"en": "As the last note fades, he doesn't take his usual bow. He looks straight at row seven, his voice echoing through the arena: \"The person in row seven — I don't care how many headlines this makes tomorrow. I like you.\" First dead silence, then a tsunami of screams.",
+"zh": "唱完最后一个音，他没有像往常那样鞠躬谢幕。他直直望向第七排，声音在全场回荡：\"第七排的那个人——我不管明天上多少热搜。我喜欢你。\"全场先是死寂，然后是海啸般的尖叫。"
+},
+{
+"src": 21,
+"id": "luxingye_c3_b2_confession_he",
+"who": "luxingye",
+"en": "He doesn't bow. The last note is still ringing and he is looking at row seven with the whole arena holding its breath. \"The person in row seven.\" His voice cracks the arena open. \"I don't care how many headlines this makes tomorrow. I like you.\" Then silence. Then a tsunami.",
+"zh": "他没有鞠躬。最后一个音还在响，他看着第七排，整座场馆屏住了呼吸。\"第七排的那个人。\"他的声音把整座场馆劈开了。\"我不在乎明天会有多少标题。我喜欢你。\"然后是死寂。然后是海啸。"
+},
+{
+"src": 100,
+"id": "luxingye_c3_c3a_q",
+"who": "luxingye",
+"en": "Tens of thousands of eyes follow his gaze. Phone cameras swing to row seven. He stands on stage, waiting for an answer — how do you respond?",
+"zh": "几万人的目光顺着他的视线找过来。手机镜头对准第七排。他站在台上，等一个回应——你怎么回？"
+},
+{
+"src": 101,
+"id": "luxingye_c3_c3a_r0",
+"who": "luxingye",
+"en": "He grins on stage like an idiot; tens of thousands scream along. Into the mic, voice shaking, he says, \"…She said yes.\"",
+"zh": "他在台上笑得像个傻子，几万人跟着尖叫。他对着麦，声音发抖：\"…她答应我了。\""
+},
+{
+"src": 102,
+"id": "luxingye_c3_c3a_r1",
+"who": "luxingye",
+"en": "The arena detonates. He covers his face and crouches down, shoulders trembling — and that's not a performance; he's actually crying.",
+"zh": "全场瞬间炸了。他捂住脸，蹲了下去，肩膀在抖——那不是表演，是真的哭了。"
+},
+{
+"src": 103,
+"id": "luxingye_c3_c3a_r2",
+"who": "luxingye",
+"en": "He understands the nod. Under the lights, he mouths, silently, just for you: 'thank you'.",
+"zh": "他看懂了那个点头。灯光下，他对着你，无声地说了句'谢谢你'。"
+},
+{
+"src": 120,
+"id": "luxingye_c3_c3b_q",
+"who": "luxingye",
+"en": "After the show he rushes to row seven, breathless, eyes still red. \"Just now… was that too reckless? Will you hate me for exposing you?\"",
+"zh": "散场后他冲到第七排来找你，喘着气，眼睛还红着：\"我刚才…是不是太冲动了。你会不会怪我把你曝光？\""
+},
+{
+"src": 121,
+"id": "luxingye_c3_c3b_r0",
+"who": "luxingye",
+"en": "He pulls you into a hug, buries his face in your neck. \"…The one reckless thing I'll never regret.\"",
+"zh": "他一把抱住你，把脸埋在你颈窝：\"…我这辈子最不后悔的一次冲动。\""
+},
+{
+"src": 122,
+"id": "luxingye_c3_c3b_r1",
+"who": "luxingye",
+"en": "His nose stings. \"…You're the first person to be happy for that song.\"",
+"zh": "他鼻子一酸：\"…你是第一个，为那首歌高兴的人。\""
+},
+{
+"src": 123,
+"id": "luxingye_c3_c3b_r2",
+"who": "luxingye",
+"en": "He laughs through the tears and bumps his forehead to yours. \"Great. Now I'll only get more reckless — for you.\"",
+"zh": "他破涕为笑，拿额头顶你：\"完了。以后我只会为你越来越冲动。\""
+}
+],
+"menus": {}
+}

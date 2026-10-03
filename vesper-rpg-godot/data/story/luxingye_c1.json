@@ -1,0 +1,117 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "luxingye_c1_open",
+"who": "narrator",
+"en": "Holding a mis-issued staff pass, you get waved backstage by security in the confusion. Round a corner — and there he is: in-ears out, makeup a little smudged, hugging his knees on a prop crate, secretly eating a convenience-store rice ball. He sees you and jumps; the rice ball nearly hits the floor. \"…Th-that thing you just saw — can we pretend it didn't happen?\" He is twenty-seven, you are twenty-six, and the only person waiting up for either of you tonight is the other one.",
+"zh": "你举着写错工作证的通行牌，稀里糊涂被保安放进了后台。转过一个转角——他就坐在那儿，摘了耳返，妆有点花，一个人抱着膝盖坐在道具箱上，正偷偷啃一根便利店饭团。看见你，他手一抖，饭团差点掉了。\"…你、你看见的这一幕，能不能当没发生？\"他二十七，你二十六，今晚在等对方回家的，只有彼此。"
+},
+{
+"src": 2,
+"id": "luxingye_c1_cast",
+"who": "narrator",
+"en": "Lu Xingye, 27. The player character is 26. Both adults.",
+"zh": "陆星野，27岁；主角26岁。两人都是成年人。"
+},
+{
+"src": 10,
+"id": "luxingye_c1_b1_riceball_ev",
+"who": "narrator",
+"en": "He tries to hide the rice ball behind his back — and smears sauce on his cheek. He hasn't noticed, and is still valiantly trying to project top-idol composure.",
+"zh": "他慌忙想把饭团藏到背后，结果酱汁蹭到了脸上。他自己没发现，还在努力维持顶流的形象。"
+},
+{
+"src": 11,
+"id": "luxingye_c1_b1_riceball_he",
+"who": "luxingye",
+"en": "\"Okay. Okay!\" He shoves the rice ball behind his back and lifts his chin like a man with dignity, sauce on his cheek. \"You saw nothing. Nation's top idol, impeccable diet, photographed for magazines.\" A beat. \"...There's a second one in the bag. It's yours if you never speak of this.\"",
+"zh": "\"好——好！\"他把饭团藏到背后，抬起下巴，一副很有尊严的样子，脸颊上还沾着酱。\"你什么都没看见。全国顶流，饮食精致，常年上杂志。\"停了一秒。\"……袋子里还有一个。你要是能守住这个秘密，它就是你的。\""
+},
+{
+"src": 20,
+"id": "luxingye_c1_b2_deal_ev",
+"who": "narrator",
+"en": "\"Tell you what,\" he leans in suddenly, eyes bright, \"you keep my secret, and I'll… show you a side of me nobody else has seen. Deal?\"",
+"zh": "\"这样吧，\"他忽然凑近，眼睛亮亮的，\"你替我保密，我就…让你看一个别人都没看过的我。成交？\""
+},
+{
+"src": 21,
+"id": "luxingye_c1_b2_deal_he",
+"who": "luxingye",
+"en": "\"Tell you what.\" He leans in, bright-eyed, all mischief on the surface. \"Your silence, and I show you a version of me that hasn't been on a single broadcast. Fair trade.\" He says it like a game. He is, quietly, hoping very much that you say yes, and he would deny that under oath.",
+"zh": "\"这样吧。\"他凑过来，眼睛很亮，表面上全是胡闹。\"你替我保密，我给你看一个没上过任何节目的版本。公平交易。\"他说得像在玩。可他心里非常、非常希望你答应，而这一点他打死也不会承认。"
+},
+{
+"src": 30,
+"id": "luxingye_c1_b3_name_ev",
+"who": "narrator",
+"en": "Staff outside are calling his name, rushing him. He doesn't move — instead he asks, \"…And you? What's your name? I want to remember who's keeping my secret.\"",
+"zh": "外面工作人员在喊他的名字催场。他却没动，反而问你：\"…你呢？你叫什么？我想记住替我保密的人。\""
+},
+{
+"src": 31,
+"id": "luxingye_c1_b3_name_he",
+"who": "luxingye",
+"en": "Someone outside is shouting his name for the third time and he does not move. \"Hang on, hang on — what's yours? I can't have a secret-keeper I can't file under anything.\" You tell him, and he repeats it once, grinning, tasting it. \"Right. Noted. Permanently.\"",
+"zh": "外面已经第三次喊他的名字了，他一动不动。\"等等、等等——你叫什么？我不能有一个连归档都归不了的保密人。\"你告诉他，他咧着嘴重复了一遍，像在尝味道。\"行。记下了。永久的。\""
+},
+{
+"src": 100,
+"id": "luxingye_c1_c1a_q",
+"who": "luxingye",
+"en": "He tilts his head, grinning wickedly. \"Name your price for silence. Autograph? Selfie? Or… me?\"",
+"zh": "他歪着头看你，坏笑：\"说吧，要多少封口费？签名？合照？还是…我这个人？\""
+},
+{
+"src": 101,
+"id": "luxingye_c1_c1a_r0",
+"who": "luxingye",
+"en": "He touches his cheek, yelps 'AH' and leaps up, ears scarlet. \"Wh— why didn't you SAY something!\"",
+"zh": "他一摸脸，'啊'地惨叫一声跳起来，耳朵通红：\"你、你怎么不早说！\""
+},
+{
+"src": 102,
+"id": "luxingye_c1_c1a_r1",
+"who": "luxingye",
+"en": "He blinks, then gets more into it, not less. \"Oh? Not a fan? Then I'll just have to make you one.\"",
+"zh": "他愣了一下，反而更来劲了：\"哦？不追星？那我偏要让你追。\""
+},
+{
+"src": 103,
+"id": "luxingye_c1_c1a_r2",
+"who": "luxingye",
+"en": "His mouth opens; for once he has no comeback. He looks away and mutters, \"…Not many people want to see the offstage me.\"",
+"zh": "他张了张嘴，难得没接上话，别过脸小声嘟囔：\"…台下的我，很少有人想看。\""
+},
+{
+"src": 120,
+"id": "luxingye_c1_c1b_q",
+"who": "luxingye",
+"en": "Staff are calling again. He stands, but turns back at the door. \"I've got another appearance after this. You… gonna leave?\"",
+"zh": "工作人员又在催了。他站起来，却在门口回头：\"这场之后我还有个通告。你…会走吗？\""
+},
+{
+"src": 121,
+"id": "luxingye_c1_c1b_r0",
+"who": "luxingye",
+"en": "He arches a brow, flashing his signature pre-stage smile. \"Then watch closely. This one's for you.\"",
+"zh": "他挑眉，露出上台前那个招牌笑：\"那你可看好了。这场，我为你唱。\""
+},
+{
+"src": 122,
+"id": "luxingye_c1_c1b_r1",
+"who": "luxingye",
+"en": "\"Row seven,\" he repeats, like jotting down a coordinate. \"…Alright. Noted.\"",
+"zh": "\"第七排。\"他重复了一遍，像随手记下了一个坐标。\"…行，我记住了。\""
+},
+{
+"src": 123,
+"id": "luxingye_c1_c1b_r2",
+"who": "luxingye",
+"en": "His smile dims a little; he waves. \"…Right. Well. The secret — I'm counting on you.\"",
+"zh": "他脸上的笑淡了一点，摆摆手：\"…也对。那，保密的事拜托了。\""
+}
+],
+"menus": {}
+}

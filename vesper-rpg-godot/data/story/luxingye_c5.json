@@ -1,0 +1,89 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "luxingye_c5_open",
+"who": "narrator",
+"en": "The storm passed. He wasn't destroyed, and he didn't cave — after talks with the label collapsed, he simply started his own small studio and sings what he wants. Tonight is his first show as an independent artist, in a livehouse that seats a few dozen. No sea of glow-sticks, no trending topics. You're still in row seven — except tonight, the whole place barely has a row eight. He steps up with his guitar and finds you at once.",
+"zh": "风暴过去了。他没有毁掉，也没有屈服——他和公司谈崩后，索性成立了自己的小工作室，唱自己想唱的歌。今晚是他独立后的第一场演出，在一间只能坐几十人的小livehouse。没有应援海，没有热搜。你还是坐在第七排——只不过这一次，整个场子一共也没有第八排。他抱着吉他上台，一眼就找到了你。"
+},
+{
+"src": 10,
+"id": "luxingye_c5_b1_new_song_ev",
+"who": "narrator",
+"en": "\"This song,\" he says, tuning a string, \"is a new one I wrote after that last one. It's called 'Row Seven'.\" The few dozen people go quiet, and he begins to sing — every line is about you.",
+"zh": "\"这首歌，\"他调着弦，\"是我写完那首之后，又写的一首新的。名字叫《第七排》。\"台下几十个人安静下来，他开始唱——每一句都是关于你的。"
+},
+{
+"src": 11,
+"id": "luxingye_c5_b1_new_song_he",
+"who": "luxingye",
+"en": "\"New one,\" he says, tuning a string. \"It's called Row Seven.\" Forty people go quiet instead of forty thousand, and he prefers it. Every line is you. He sings it straight at you and doesn't perform a single bar of it, which is the most naked he has ever been on a stage.",
+"zh": "\"新歌，\"他说，拧着一根弦，\"叫《第七排》。\"安静下来的是四十个人，不是四万个，而他更喜欢这样。每一句都是你。他直直地唱给你听，一个小节都没有表演，这是他站在台上最赤裸的一次。"
+},
+{
+"src": 20,
+"id": "luxingye_c5_b2_ask_forever_ev",
+"who": "narrator",
+"en": "The song ends. He sets down the guitar, steps off the little stage, and — in front of a few dozen watching people — kneels on one knee on the floor before you. \"I confessed to you in front of tens of thousands. Today, in front of a few dozen, I want to ask you something more important.\"",
+"zh": "唱完，他放下吉他，走下小小的舞台，在几十个人的注视下，单膝跪在你面前的地板上：\"以前我在几万人面前告白。今天我想在几十个人面前，问你一件更重要的事。\""
+},
+{
+"src": 21,
+"id": "luxingye_c5_b2_ask_forever_he",
+"who": "luxingye",
+"en": "He sets the guitar down, steps off the little stage and goes down on one knee on a floor that is definitely sticky. \"I said it to tens of thousands. Now I'm asking something bigger in front of about forty.\" His hands are unsteady. \"I gave up the empire. I'd like to keep you.\"",
+"zh": "他把吉他放下，从那个小舞台上走下来，在一块肯定黏脚的地板上单膝跪了下去。\"我对着几万人说过一次。现在我要在大概四十个人面前，问一件更大的事。\"他的手不稳。\"我把那座帝国放掉了。我想留住你。\""
+},
+{
+"src": 30,
+"id": "luxingye_c5_bx_morning_ev",
+"who": "narrator",
+"en": "Morning. No call time, no car, no manager. He has been awake for an hour and has not once picked up his phone.",
+"zh": "早上。没有通告时间，没有车，没有经纪人。他已经醒了一个小时，一次也没有碰过手机。"
+},
+{
+"src": 31,
+"id": "luxingye_c5_bx_morning_he",
+"who": "luxingye",
+"en": "\"I worked out what's different,\" he says into your shoulder. \"Nobody's waiting for me to come out and be someone.\" He thinks about it. \"Terrifying. Ten out of ten. I'd like to do it every day for a while and then see.\"",
+"zh": "\"我想明白哪里不一样了，\"他把脸埋在你肩膀上说，\"没有人在外面等我出去当某个人。\"他想了想。\"吓人。满分十分。我想先这么过一阵子，再说。\""
+},
+{
+"src": 100,
+"id": "luxingye_c5_c5a_q",
+"who": "luxingye",
+"en": "He kneels before you, a few dozen eyes on you both, his voice trembling a little. \"I want to sing 'Row Seven' for the rest of my life. Will you sit in that seat — for the rest of yours?\"",
+"zh": "他跪在你面前，几十双眼睛看着你们，他的声音有点抖：\"《第七排》这首歌，我想唱一辈子。你愿不愿意，一辈子都坐在那个位置？\""
+},
+{
+"src": 101,
+"id": "luxingye_c5_c5a_r0",
+"who": "luxingye",
+"en": "He freezes a beat, then laughs and pulls you into his arms. \"Deal! From today, there's always a spot on my stage for you.\"",
+"zh": "他愣了一秒，然后大笑着把你拥进怀里：\"成交！从今天起，我的舞台上永远有你的位置。\""
+},
+{
+"src": 102,
+"id": "luxingye_c5_c5a_r1",
+"who": "luxingye",
+"en": "He buries his face in your palm, shoulders shaking. \"…Thank you — for still sitting there when I was nobody.\"",
+"zh": "他把脸埋进你手心，肩膀在抖：\"…谢谢你，在我谁都不是的时候，还坐在那里。\""
+},
+{
+"src": 103,
+"id": "luxingye_c5_c5a_r2",
+"who": "luxingye",
+"en": "The whole room cheers. Forehead to yours, he grins like a kid who stole candy. \"This is the best show I'll ever play.\"",
+"zh": "全场几十个人欢呼起来。他额头抵着你，笑得像个偷到糖的小孩：\"这场，是我这辈子最满意的一场演出。\""
+},
+{
+"src": 104,
+"id": "luxingye_c5_c5a_r3",
+"who": "luxingye",
+"en": "\"Deal.\" He grins, and for once it's the unrehearsed one. \"I'm very good at waiting. I'll be terrible at it. Both things are true.\"",
+"zh": "\"成交。\"他笑了，这一次是没有排练过的那个笑。\"那我天天问，一直问到风停。\""
+}
+],
+"menus": {}
+}

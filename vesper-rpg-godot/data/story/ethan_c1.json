@@ -1,0 +1,89 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "ethan_c1_open",
+"who": "narrator",
+"en": "The elevator stopped on the wrong floor. The whole level is dark except the office at the end of the hall — door open, a man standing with his back to you at the floor-to-ceiling window, tie loosened, the whiskey in his hand untouched. You are twenty-nine; he is thirty-eight, and neither of you is anywhere you have to be tomorrow.",
+"zh": "电梯停错了楼层。整层楼是暗的，只有走廊尽头那间还亮着——门开着，一个男人背对你站在落地窗前，领带松着，手里的酒杯没动过。你二十九，他三十八，而明天早上，你们谁都不必出现在任何地方。"
+},
+{
+"src": 2,
+"id": "ethan_c1_cast",
+"who": "narrator",
+"en": "Ethan Cole, 38. The player character is 29. Both adults.",
+"zh": "Ethan Cole，38岁；主角29岁。两人都是成年人。"
+},
+{
+"src": 10,
+"id": "ethan_c1_b1_call_ev",
+"who": "narrator",
+"en": "His phone lights up on the desk. He glances at it, declines the call, and looks at you properly for the first time.",
+"zh": "他的手机在桌上亮起来。他扫了一眼，按掉，然后第一次正眼看你。"
+},
+{
+"src": 11,
+"id": "ethan_c1_b1_call_he",
+"who": "ethan",
+"en": "\"That was the chairman,\" he says, and doesn't elaborate. He sets the phone face-down. \"He'll survive until Monday.\" Then he looks at you properly for the first time, the way a man looks at something he has decided to actually see. \"You're still here.\"",
+"zh": "\"董事长。\"他说，没有再往下解释，把手机倒扣在桌上。\"他撑得到周一。\"然后他第一次真正地看向你——一个男人决定要认真看一样东西时的那种看法。\"你还在。\""
+},
+{
+"src": 20,
+"id": "ethan_c1_b2_blackout_ev",
+"who": "narrator",
+"en": "The building goes dark. Only the red glow of emergency lights, and the whole city outside the window.",
+"zh": "整栋楼的灯灭了。只剩应急灯的红光，和窗外整座城市。"
+},
+{
+"src": 21,
+"id": "ethan_c1_b2_blackout_he",
+"who": "ethan",
+"en": "\"Generators take ninety seconds.\" His voice has dropped without his permission. He moves half a step closer, and offers no reason for it. \"Don't move toward the desk, there's a chair leg. Just — stay where you are. I can hear you breathing, so I know where you are.\"",
+"zh": "\"发电机要九十秒。\"他的声音不受控制地低了下去。他往前走了半步，没有给任何理由。\"别往办公桌那边走，有张椅子腿。就——待在原地。我能听见你呼吸，所以我知道你在哪儿。\""
+},
+{
+"src": 30,
+"id": "ethan_c1_b3_name_ev",
+"who": "narrator",
+"en": "He suddenly asks, 'What's your name?' — as if he just realized he never asked.",
+"zh": "他忽然问：'你叫什么？'——像是刚意识到自己一直不知道。"
+},
+{
+"src": 31,
+"id": "ethan_c1_b3_name_he",
+"who": "ethan",
+"en": "\"What's your name?\" It arrives out of nowhere, and he seems faintly annoyed at himself for not having asked. When you tell him, he repeats it once, quietly, the way he'd write something on a page he intends to keep. \"All right. Now I know.\"",
+"zh": "\"你叫什么名字？\"这句话来得毫无预兆，他似乎为自己没有早点问而有些恼火。你告诉他之后，他轻声重复了一遍，像是在一页他打算留下的纸上写字。\"好。现在我知道了。\""
+},
+{
+"src": 100,
+"id": "ethan_c1_c1_q",
+"who": "ethan",
+"en": "He sets the glass down and looks at you. \"Why haven't you left?\"",
+"zh": "他把杯子放下，看着你：\"你为什么还没走？\""
+},
+{
+"src": 101,
+"id": "ethan_c1_c1_r0",
+"who": "ethan",
+"en": "A short laugh. \"Then I owe the elevator.\"",
+"zh": "他轻笑一声：\"那真是电梯的功劳。\""
+},
+{
+"src": 102,
+"id": "ethan_c1_c1_r1",
+"who": "ethan",
+"en": "Two seconds of silence. Then: \"...Interesting.\"",
+"zh": "他沉默了两秒，然后：\"…有意思。\""
+},
+{
+"src": 103,
+"id": "ethan_c1_c1_r2",
+"who": "ethan",
+"en": "He raises an eyebrow and slides the second glass across to you.",
+"zh": "他挑了下眉，把另一只杯子推到你面前。"
+}
+],
+"menus": {}
+}

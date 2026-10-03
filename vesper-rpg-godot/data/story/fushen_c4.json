@@ -1,0 +1,117 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "fushen_c4_open",
+"who": "narrator",
+"en": "The Fu elders have arranged a family dinner — ostensibly to meet you, in truth an ambush. At the head sits the patriarch who rules the family. Over the meal, the elders mention lightly: another old family long ago arranged a marriage match for Fu Shen, and you are merely 'someone he brought in from outside'. A cheque is slid in front of you — leave, and the number is negotiable. Beside you, Fu Shen's face darkens.",
+"zh": "傅家的长辈们摆了一场家宴，名义上是见你，实则是逼宫。上首坐着的是掌控家族的老爷子。饭桌上，长辈们轻描淡写地提起：另一个世家早就为傅深定好了联姻对象，而你，不过是'外面带回来的人'。有人把一张支票推到你面前——只要你离开，数字可以再谈。傅深坐在你身边，脸色沉了下来。"
+},
+{
+"src": 10,
+"id": "fushen_c4_b1_cheque_ev",
+"who": "narrator",
+"en": "The cheque sits by your hand. Before Fu Shen can speak, you feel the pressure dropping off him in waves — but he waits, waits for you to react first, because he won't decide your dignity for you.",
+"zh": "支票就摆在你手边。傅深还没来得及开口，你能感觉到他整个人的气压在往下压——但他在等，等你先做出反应，因为他不想替你决定你的尊严。"
+},
+{
+"src": 11,
+"id": "fushen_c4_b1_cheque_he",
+"who": "fushen",
+"en": "The cheque slides to rest by your hand. Fu Shen does not speak. The air around him has gone very cold and very still, and still he waits — he will not price you in front of you, or answer for you. Only when you have met it does he turn to his family, quietly: \"Now. My turn.\"",
+"zh": "支票滑过来，停在你手边。傅深没有说话。他周围的空气变得极冷、极静，而他仍然在等——他不会当着你的面给你定价，也不会替你回答。只有当你自己接住了这一下，他才转向他的家人，很轻地说：\"好。轮到我了。\""
+},
+{
+"src": 20,
+"id": "fushen_c4_b2_stand_ev",
+"who": "narrator",
+"en": "Fu Shen suddenly stands and, in front of every elder, pushes the arranged-marriage card back before the patriarch — the first time he has ever openly defied the entire family. \"This match, I refuse,\" he says, not loudly, but it silences the whole hall.",
+"zh": "傅深忽然站了起来，当着满桌长辈的面，把那张联姻的名帖推到了老爷子面前——那是他第一次，公然违逆整个家族。\"这门亲事，我不接。\"他说，声音不大，却压过了满堂。"
+},
+{
+"src": 21,
+"id": "fushen_c4_b2_stand_he",
+"who": "fushen",
+"en": "He stands and pushes the card back across the table to the patriarch. \"This match, I refuse.\" Not loud. The hall goes silent anyway, because nobody in it has ever heard him refuse anything out loud. He moves one step sideways, between you and every elder in the room, and stays there.",
+"zh": "他站起来，把那张卡片推回给族里的长辈。\"这门亲事，我拒绝。\"声音不大。整个厅还是静了下来，因为在场没有一个人听他出声拒绝过任何事。他往旁边移了一步，站在你和满屋子的长辈之间，就不再动了。"
+},
+{
+"src": 30,
+"id": "fushen_c4_bx_after_hours_ev",
+"who": "narrator",
+"en": "The estate empties. The elders go, the staff are dismissed for the night, and for the first time in its hundred years the house has two people in it and nobody else.",
+"zh": "宅子空了。长辈走了，佣人今晚被遣散了，连门房的灯也灭了。这栋房子从来没有这样安静过。"
+},
+{
+"src": 31,
+"id": "fushen_c4_bx_after_hours_he",
+"who": "fushen",
+"en": "\"I have refused them for you,\" he says, \"and that obliges you to nothing. I want that understood before anything else is.\" He is standing very straight, which is what he does instead of trembling. \"I would like you to stay tonight. If the answer is no it will not cost you one thing — not the room, not the house, not me.\" The answer is not no. Something in his shoulders finally lets go, and he crosses the distance he has been refusing to cross since the first glass of wine, and after that the old house keeps its own counsel.",
+"zh": "\"我替你拒绝了他们，\"他说，\"而这并不让你欠我任何东西。这一点我需要先说清楚，因为在这栋房子里，人们习惯把好意当成账。\"他站在离你三步的地方，没有再近。\"我想请你今晚不要回那间客房。你可以说不。你说不，明天早上我仍然会送你去你想去的任何地方。\"你走了那三步。他闭上眼睛，像一个终于被允许呼吸的人。"
+},
+{
+"src": 100,
+"id": "fushen_c4_c4a_q",
+"who": "fushen",
+"en": "The patriarch fixes his eyes on you and says slowly, \"Name your price. The Fu family can afford it.\" Fu Shen moves to answer for you — you press his hand down. This one, you want to answer yourself.",
+"zh": "老爷子盯着你，缓缓开口：\"你要什么，开个价。傅家给得起。\"傅深要替你回答，你按住了他的手——这句话，你想自己回。"
+},
+{
+"src": 101,
+"id": "fushen_c4_c4a_r0",
+"who": "fushen",
+"en": "Silence in the hall. Under the table, Fu Shen quietly turns his hand to grip yours, fingers tightening — a silent thank-you he's never given before.",
+"zh": "满堂寂静。傅深在桌下悄悄反握住你的手，指尖收紧——那是他从未有过的、无声的谢。"
+},
+{
+"src": 102,
+"id": "fushen_c4_c4a_r1",
+"who": "fushen",
+"en": "The patriarch's expression shifts. Fu Shen looks at her, and for the first time something close to pride surfaces in his eyes. \"She's right.\"",
+"zh": "老爷子的脸色变了。傅深看着你，眼底第一次有了something接近骄傲的东西：\"她说得对。\""
+},
+{
+"src": 103,
+"id": "fushen_c4_c4a_r2",
+"who": "fushen",
+"en": "Fu Shen finally speaks, voice cold. \"I obeyed this family once. This time, I listen to her.\"",
+"zh": "傅深终于开口，声音很冷：\"我这辈子听过一次家族的话。这次，我听她的。\""
+},
+{
+"src": 104,
+"id": "fushen_c4_c4a_r3",
+"who": "fushen",
+"en": "He does not move a step closer. He does not go back either. \"Very well,\" he says. \"I will stay here.\"",
+"zh": "他没有走近一步。他也没有退回去。他就在那儿站了很久，然后说：\"好。\"这个字他说得很轻，像是在对自己承诺。"
+},
+{
+"src": 120,
+"id": "fushen_c4_c4b_q",
+"who": "fushen",
+"en": "The dinner breaks up badly. Back in the study, he stands at the window with his back to you, shoulders rigid. \"…I let you be humiliated tonight. I never should have brought you into this family.\"",
+"zh": "宴席不欢而散。回到书房，他背对着你站在窗前，肩线绷得很紧：\"…今天让你受委屈了。这个家，本不该让你进来。\""
+},
+{
+"src": 121,
+"id": "fushen_c4_c4b_r0",
+"who": "fushen",
+"en": "He goes stiff, then slowly covers your hands with his, voice low. \"…This house has been cold for thirty years. Tonight, for the first time, it felt warm.\"",
+"zh": "他整个人僵了一下，然后慢慢覆上你的手，声音很低：\"…这栋房子冷了三十年。今天，我第一次觉得它是暖的。\""
+},
+{
+"src": 122,
+"id": "fushen_c4_c4b_r1",
+"who": "fushen",
+"en": "He turns to face her, an emotion he never shows churning in his eyes. \"…I thought I'd never do such a thing for anyone in my life.\"",
+"zh": "他转过身看你，眼底翻涌着他从不示人的情绪：\"…我以为我这辈子，不会为任何人做这种事。\""
+},
+{
+"src": 123,
+"id": "fushen_c4_c4b_r2",
+"who": "fushen",
+"en": "He finally turns, slowly reaches out, and pulls you into his arms — the first time in his life he has held someone of his own will.",
+"zh": "他终于转过身，很慢地伸出手，把你拉进怀里——这是他第一次，主动抱住一个人。"
+}
+],
+"menus": {}
+}

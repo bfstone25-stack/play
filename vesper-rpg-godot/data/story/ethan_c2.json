@@ -1,0 +1,82 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "ethan_c2_open",
+"who": "narrator",
+"en": "A week later, same floor. The door is closed this time, but he opens it almost instantly when you ring — as if he'd been waiting. There are two glasses on the table.",
+"zh": "一周后，同一层楼。这次门是关着的，但你按门铃时，他几乎立刻开了门——像是一直在等。桌上有两只杯子。"
+},
+{
+"src": 10,
+"id": "ethan_c2_b1_remember_ev",
+"who": "narrator",
+"en": "The drink he hands you is exactly the one you mentioned offhand last time.",
+"zh": "他递给你的酒，正是你上次随口提过的那一款。"
+},
+{
+"src": 11,
+"id": "ethan_c2_b1_remember_he",
+"who": "ethan",
+"en": "\"They keep a case of it downstairs,\" he says, handing it over, which is not an answer and you both know it. He mentioned nothing, ordered nothing, and there it is. \"Don't look at me like that. I have an excellent memory and very few uses for it.\"",
+"zh": "\"楼下常备着一箱。\"他把东西递过来，这不算回答，你们都清楚。他没提过，没订过，可它就在这儿。\"别那样看我。我记性很好，而它没什么用处。\""
+},
+{
+"src": 20,
+"id": "ethan_c2_b2_why_here_ev",
+"who": "narrator",
+"en": "\"My father was a security guard in this building for thirty years,\" he says suddenly, not looking at you.",
+"zh": "\"我父亲在这栋楼当了三十年保安。\"他忽然说，没看你。"
+},
+{
+"src": 21,
+"id": "ethan_c2_b2_why_here_he",
+"who": "ethan",
+"en": "\"My father worked this building. Night shift, thirty years, that door to that door.\" He still isn't looking at you. \"I bought it eleven years ago. Nobody here knows that, and I'd prefer it stayed that way.\" A beat. \"Your glass is empty. Say something else.\"",
+"zh": "\"我父亲在这栋楼里做事。夜班，三十年，从那扇门到那扇门。\"他还是没有看你。\"十一年前我把它买下来了。这里没人知道，我也希望一直没人知道。\"停了一下。\"你的杯子空了。再说点别的。\""
+},
+{
+"src": 30,
+"id": "ethan_c2_b3_interrupt_ev",
+"who": "narrator",
+"en": "An assistant knocks and comes in with papers, then visibly freezes when he sees you — he's never seen anyone up here with his boss.",
+"zh": "助理敲门进来递文件，看到你时明显愣了一下——他从没见过老板身边有人。"
+},
+{
+"src": 31,
+"id": "ethan_c2_b3_interrupt_he",
+"who": "ethan",
+"en": "\"Leave them on the desk. Goodnight.\" The door closes on a man who has never once seen anyone up here after ten. Ethan doesn't explain you to him, before or after. \"He'll be insufferable about it by Wednesday,\" he says. \"I find I don't mind.\"",
+"zh": "\"放在桌上就行。晚安。\"门关上了，关在一个十年来没见过十点后这层楼有别人的男人身上。前后，Ethan都没有向他解释你是谁。\"到周三他会得意得让人受不了，\"他说，\"我发现我不介意。\""
+},
+{
+"src": 100,
+"id": "ethan_c2_c2_q",
+"who": "ethan",
+"en": "He asks, \"What do you think I am?\" — and he isn't making small talk.",
+"zh": "他问：\"你觉得我是什么样的人？\"——这不是客套。"
+},
+{
+"src": 101,
+"id": "ethan_c2_c2_r0",
+"who": "ethan",
+"en": "He does not speak for a long moment. Then: \"...No one has put it that way.\"",
+"zh": "他很久没说话。然后：\"…没人这么说过。\""
+},
+{
+"src": 102,
+"id": "ethan_c2_c2_r1",
+"who": "ethan",
+"en": "\"Control is a luxury,\" he says. \"I can simply afford it.\"",
+"zh": "\"控制是奢侈品。\"他说，\"我只是买得起。\""
+},
+{
+"src": 103,
+"id": "ethan_c2_c2_r2",
+"who": "ethan",
+"en": "He smiles -- and this time it reaches his eyes.",
+"zh": "他笑了，这次是真的笑。"
+}
+],
+"menus": {}
+}

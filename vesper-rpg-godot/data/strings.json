@@ -1,0 +1,2474 @@
+{
+ "n_guyan": {
+  "en": "Gu Yan",
+  "ja": "顧言"
+ },
+ "pick_guyan": {
+  "en": "Gu Yan, 33 — the bookshop owner who left the sign turned around",
+  "ja": "顧言（33）— 閉店の札を裏返したままにした古書店の店主"
+ },
+ "nt_guyan_1": {
+  "en": "Gu Yan · 1. Out of the Rain",
+  "ja": "顧言 · 第1章 雨宿り"
+ },
+ "ns_guyan_1": {
+  "en": "Make him want to keep the lights on a little longer for you",
+  "ja": "彼に「もう少し明かりを点けていたい」と思わせる"
+ },
+ "r_v_guyan_1": {
+  "en": "The bookshop at dusk",
+  "ja": "夕暮れの古書店"
+ },
+ "e_date_guyan_1": {
+  "en": "Gu Yan — first meeting",
+  "ja": "顧言 — 初めての夜"
+ },
+ "ei_date_guyan_1": {
+  "en": "He doesn't know you yet. Every answer he gives is the polite one. Bring his guard down before he decides you were never here.",
+  "ja": "彼はまだあなたを知らない。どの答えも礼儀正しいだけ。あなたがいなかったことにされる前に、心の壁をほどいて。"
+ },
+ "ew_date_guyan_1": {
+  "en": "He laughs, once, surprised at himself. Something in his shoulders lets go.",
+  "ja": "彼は一度だけ笑い、自分に驚く。肩の力がふっと抜ける。"
+ },
+ "i_ks_guyan_1": {
+  "en": "A bookmark from the counter",
+  "ja": "カウンターのしおり"
+ },
+ "id_ks_guyan_1": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_guyan_2": {
+  "en": "Gu Yan · 2. The One Who Came Back",
+  "ja": "顧言 · 第2章 戻ってきた人"
+ },
+ "ns_guyan_2": {
+  "en": "Find out why he keeps this shop all alone",
+  "ja": "彼がひとりで店を守る理由を知る"
+ },
+ "r_v_guyan_2": {
+  "en": "The bookshop, afternoon",
+  "ja": "午後の古書店"
+ },
+ "e_date_guyan_2": {
+  "en": "Gu Yan — the second evening",
+  "ja": "顧言 — 二度目の夜"
+ },
+ "ei_date_guyan_2": {
+  "en": "He remembers you, and that worries him more than it should. Get past the careful version of him.",
+  "ja": "彼はあなたを覚えている。それが思った以上に彼を落ち着かなくさせている。用心深い彼の向こうへ。"
+ },
+ "ew_date_guyan_2": {
+  "en": "He stops performing the conversation and simply has it with you.",
+  "ja": "彼は会話を演じるのをやめ、ただあなたと話し始める。"
+ },
+ "i_ks_guyan_2": {
+  "en": "Dango's favourite chair",
+  "ja": "団子のお気に入りの椅子"
+ },
+ "id_ks_guyan_2": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_guyan_3": {
+  "en": "Gu Yan · 3. The Umbrella in the Rain",
+  "ja": "顧言 · 第3章 雨の中の傘"
+ },
+ "ns_guyan_3": {
+  "en": "Read what he won't say out loud",
+  "ja": "彼が口にしない言葉を読み取る"
+ },
+ "r_v_guyan_3": {
+  "en": "The corner in the rain",
+  "ja": "雨の街角"
+ },
+ "e_date_guyan_3": {
+  "en": "Gu Yan — off guard",
+  "ja": "顧言 — 不意の素顔"
+ },
+ "ei_date_guyan_3": {
+  "en": "Caught somewhere he didn't plan to be seen, he is half a step from making a joke of it and leaving. Don't let him.",
+  "ja": "見られるつもりのない場所で見つかって、彼は冗談にして立ち去る半歩手前。そうさせないで。"
+ },
+ "ew_date_guyan_3": {
+  "en": "He gives up on leaving. He pulls out the chair beside you instead.",
+  "ja": "彼は立ち去るのをやめる。代わりに、あなたの隣の椅子を引く。"
+ },
+ "i_ks_guyan_3": {
+  "en": "The umbrella he lent you",
+  "ja": "彼が貸してくれた傘"
+ },
+ "id_ks_guyan_3": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_guyan_4": {
+  "en": "Gu Yan · 4. The Shop That Almost Wasn't",
+  "ja": "顧言 · 第4章 なくなりかけた店"
+ },
+ "ns_guyan_4": {
+  "en": "Decide whether to help him fight for this shop",
+  "ja": "この店のために一緒に闘うか決める"
+ },
+ "r_v_guyan_4": {
+  "en": "Behind the counter",
+  "ja": "カウンターの奥"
+ },
+ "e_date_guyan_4": {
+  "en": "Gu Yan — under pressure",
+  "ja": "顧言 — 試される夜"
+ },
+ "ei_date_guyan_4": {
+  "en": "Everything is pressing on him at once, and the easiest thing would be to shut everyone out — you included.",
+  "ja": "すべてが一度に彼にのしかかり、いちばん楽なのは全員を締め出すこと — あなたも含めて。"
+ },
+ "ew_date_guyan_4": {
+  "en": "He looks at you like the room has finally stopped shouting.",
+  "ja": "部屋がようやく叫ぶのをやめたかのように、彼はあなたを見る。"
+ },
+ "i_ks_guyan_4": {
+  "en": "The poem on the flyleaf",
+  "ja": "見返しの詩"
+ },
+ "id_ks_guyan_4": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_guyan_5": {
+  "en": "Gu Yan · 5. The Line Written For You",
+  "ja": "顧言 · 第5章 あなたに書かれた一行"
+ },
+ "ns_guyan_5": {
+  "en": "Hear him finish the sentence he never could",
+  "ja": "彼が言えずにいた一文を最後まで聞く"
+ },
+ "r_v_guyan_5": {
+  "en": "The shop, reopened",
+  "ja": "再開した古書店"
+ },
+ "e_date_guyan_5": {
+  "en": "Gu Yan — the last wall",
+  "ja": "顧言 — 最後の壁"
+ },
+ "ei_date_guyan_5": {
+  "en": "This is the last of the walls. Behind it is the thing he wants and has never once said out loud.",
+  "ja": "これが最後の壁。その向こうに、彼が一度も口にしたことのない望みがある。"
+ },
+ "ew_date_guyan_5": {
+  "en": "The last wall comes down without a sound. He is just a man, here, with you.",
+  "ja": "最後の壁が音もなく崩れる。ここにいるのは、あなたと一緒の、ただのひとりの男。"
+ },
+ "i_ks_guyan_5": {
+  "en": "A key to the shop",
+  "ja": "店の鍵"
+ },
+ "id_ks_guyan_5": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "i_gift_guyan": {
+  "en": "A pressed-flower bookmark",
+  "ja": "押し花のしおり"
+ },
+ "id_gift_guyan": {
+  "en": "Give it to him from the Items menu: Trust +1.",
+  "ja": "「アイテム」から彼に贈る：信頼 +1。"
+ },
+ "e_doorman_guyan": {
+  "en": "The doorman",
+  "ja": "ドアマン"
+ },
+ "ei_doorman_guyan": {
+  "en": "A doorman with an earpiece and a clipboard steps into your path. \"Name? You're not on the list.\"",
+  "ja": "イヤーピースとクリップボードのドアマンが行く手を塞ぐ。「お名前は？ リストにありませんね」"
+ },
+ "ew_doorman_guyan": {
+  "en": "He steps aside.",
+  "ja": "彼は道を空ける。"
+ },
+ "e_paparazzo_guyan": {
+  "en": "A paparazzo",
+  "ja": "パパラッチ"
+ },
+ "ei_paparazzo_guyan": {
+  "en": "A flash goes off in your face. A man with a long lens grins. \"Who are you to him? Give me a name and I'll make you famous.\"",
+  "ja": "目の前でフラッシュが光る。望遠レンズの男がにやりと笑う。「彼とはどういう関係？ 名前をくれたら有名にしてやるよ」"
+ },
+ "ew_paparazzo_guyan": {
+  "en": "He lowers the camera.",
+  "ja": "彼はカメラを下ろす。"
+ },
+ "e_columnist_guyan": {
+  "en": "The gossip columnist",
+  "ja": "ゴシップ記者"
+ },
+ "ei_columnist_guyan": {
+  "en": "A woman in a trench coat falls into step beside you, phone already recording. \"Off the record — how long has this been going on?\"",
+  "ja": "トレンチコートの女があなたの横に並ぶ。スマホはもう録音中。「オフレコで — いつから続いてるの？」"
+ },
+ "ew_columnist_guyan": {
+  "en": "She stops recording.",
+  "ja": "彼女は録音を止める。"
+ },
+ "n_ethan": {
+  "en": "Ethan",
+  "ja": "イーサン"
+ },
+ "pick_ethan": {
+  "en": "Ethan Cole, 38 — the man who finally put the phone face-down",
+  "ja": "イーサン・コール（38）— ついにスマホを伏せて置いた男"
+ },
+ "nt_ethan_1": {
+  "en": "Ethan · 1. Wrong Floor",
+  "ja": "イーサン · 第1章 間違えた階"
+ },
+ "ns_ethan_1": {
+  "en": "Make him remember your name",
+  "ja": "彼にあなたの名前を覚えさせる"
+ },
+ "r_v_ethan_1": {
+  "en": "The top floor at midnight",
+  "ja": "真夜中の最上階"
+ },
+ "e_date_ethan_1": {
+  "en": "Ethan — first meeting",
+  "ja": "イーサン — 初めての夜"
+ },
+ "ei_date_ethan_1": {
+  "en": "He doesn't know you yet. Every answer he gives is the polite one. Bring his guard down before he decides you were never here.",
+  "ja": "彼はまだあなたを知らない。どの答えも礼儀正しいだけ。あなたがいなかったことにされる前に、心の壁をほどいて。"
+ },
+ "ew_date_ethan_1": {
+  "en": "He laughs, once, surprised at himself. Something in his shoulders lets go.",
+  "ja": "彼は一度だけ笑い、自分に驚く。肩の力がふっと抜ける。"
+ },
+ "i_ks_ethan_1": {
+  "en": "A visitor badge for the wrong floor",
+  "ja": "階を間違えた入館証"
+ },
+ "id_ks_ethan_1": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_ethan_2": {
+  "en": "Ethan · 2. Not a Coincidence",
+  "ja": "イーサン · 第2章 偶然じゃない"
+ },
+ "ns_ethan_2": {
+  "en": "Find out why he's here every night",
+  "ja": "彼が毎晩ここにいる理由を知る"
+ },
+ "r_v_ethan_2": {
+  "en": "His office lounge",
+  "ja": "彼の執務ラウンジ"
+ },
+ "e_date_ethan_2": {
+  "en": "Ethan — the second evening",
+  "ja": "イーサン — 二度目の夜"
+ },
+ "ei_date_ethan_2": {
+  "en": "He remembers you, and that worries him more than it should. Get past the careful version of him.",
+  "ja": "彼はあなたを覚えている。それが思った以上に彼を落ち着かなくさせている。用心深い彼の向こうへ。"
+ },
+ "ew_date_ethan_2": {
+  "en": "He stops performing the conversation and simply has it with you.",
+  "ja": "彼は会話を演じるのをやめ、ただあなたと話し始める。"
+ },
+ "i_ks_ethan_2": {
+  "en": "His father's night-shift story",
+  "ja": "父の夜勤の話"
+ },
+ "id_ks_ethan_2": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_ethan_3": {
+  "en": "Ethan · 3. Where He Shouldn't Be",
+  "ja": "イーサン · 第3章 いるはずのない場所"
+ },
+ "ns_ethan_3": {
+  "en": "See who he is when he's not on the top floor",
+  "ja": "最上階にいない時の彼を見る"
+ },
+ "r_v_ethan_3": {
+  "en": "The noodle shop",
+  "ja": "雨の夜の麺屋"
+ },
+ "e_date_ethan_3": {
+  "en": "Ethan — off guard",
+  "ja": "イーサン — 不意の素顔"
+ },
+ "ei_date_ethan_3": {
+  "en": "Caught somewhere he didn't plan to be seen, he is half a step from making a joke of it and leaving. Don't let him.",
+  "ja": "見られるつもりのない場所で見つかって、彼は冗談にして立ち去る半歩手前。そうさせないで。"
+ },
+ "ew_date_ethan_3": {
+  "en": "He gives up on leaving. He pulls out the chair beside you instead.",
+  "ja": "彼は立ち去るのをやめる。代わりに、あなたの隣の椅子を引く。"
+ },
+ "i_ks_ethan_3": {
+  "en": "A noodle-shop receipt",
+  "ja": "麺屋のレシート"
+ },
+ "id_ks_ethan_3": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_ethan_4": {
+  "en": "Ethan · 4. The Fracture",
+  "ja": "イーサン · 第4章 亀裂"
+ },
+ "ns_ethan_4": {
+  "en": "Decide whether to stand on his side",
+  "ja": "彼の側に立つか決める"
+ },
+ "r_v_ethan_4": {
+  "en": "The gala",
+  "ja": "祝賀パーティー"
+ },
+ "e_date_ethan_4": {
+  "en": "Ethan — under pressure",
+  "ja": "イーサン — 試される夜"
+ },
+ "ei_date_ethan_4": {
+  "en": "Everything is pressing on him at once, and the easiest thing would be to shut everyone out — you included.",
+  "ja": "すべてが一度に彼にのしかかり、いちばん楽なのは全員を締め出すこと — あなたも含めて。"
+ },
+ "ew_date_ethan_4": {
+  "en": "He looks at you like the room has finally stopped shouting.",
+  "ja": "部屋がようやく叫ぶのをやめたかのように、彼はあなたを見る。"
+ },
+ "i_ks_ethan_4": {
+  "en": "His co-founder's name",
+  "ja": "共同創業者の名前"
+ },
+ "id_ks_ethan_4": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_ethan_5": {
+  "en": "Ethan · 5. The Light He'd Turn Off",
+  "ja": "イーサン · 第5章 彼が消す明かり"
+ },
+ "ns_ethan_5": {
+  "en": "Get him to say what he actually wants",
+  "ja": "彼が本当に望むことを言わせる"
+ },
+ "r_v_ethan_5": {
+  "en": "The top floor, lights off",
+  "ja": "灯りを消した最上階"
+ },
+ "e_date_ethan_5": {
+  "en": "Ethan — the last wall",
+  "ja": "イーサン — 最後の壁"
+ },
+ "ei_date_ethan_5": {
+  "en": "This is the last of the walls. Behind it is the thing he wants and has never once said out loud.",
+  "ja": "これが最後の壁。その向こうに、彼が一度も口にしたことのない望みがある。"
+ },
+ "ew_date_ethan_5": {
+  "en": "The last wall comes down without a sound. He is just a man, here, with you.",
+  "ja": "最後の壁が音もなく崩れる。ここにいるのは、あなたと一緒の、ただのひとりの男。"
+ },
+ "i_ks_ethan_5": {
+  "en": "The top-floor light switch",
+  "ja": "最上階のスイッチ"
+ },
+ "id_ks_ethan_5": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "i_gift_ethan": {
+  "en": "A thermos of good coffee",
+  "ja": "上等なコーヒーの魔法瓶"
+ },
+ "id_gift_ethan": {
+  "en": "Give it to him from the Items menu: Trust +1.",
+  "ja": "「アイテム」から彼に贈る：信頼 +1。"
+ },
+ "e_doorman_ethan": {
+  "en": "The doorman",
+  "ja": "ドアマン"
+ },
+ "ei_doorman_ethan": {
+  "en": "A doorman with an earpiece and a clipboard steps into your path. \"Name? You're not on the list.\"",
+  "ja": "イヤーピースとクリップボードのドアマンが行く手を塞ぐ。「お名前は？ リストにありませんね」"
+ },
+ "ew_doorman_ethan": {
+  "en": "He steps aside.",
+  "ja": "彼は道を空ける。"
+ },
+ "e_paparazzo_ethan": {
+  "en": "A paparazzo",
+  "ja": "パパラッチ"
+ },
+ "ei_paparazzo_ethan": {
+  "en": "A flash goes off in your face. A man with a long lens grins. \"Who are you to him? Give me a name and I'll make you famous.\"",
+  "ja": "目の前でフラッシュが光る。望遠レンズの男がにやりと笑う。「彼とはどういう関係？ 名前をくれたら有名にしてやるよ」"
+ },
+ "ew_paparazzo_ethan": {
+  "en": "He lowers the camera.",
+  "ja": "彼はカメラを下ろす。"
+ },
+ "e_columnist_ethan": {
+  "en": "The gossip columnist",
+  "ja": "ゴシップ記者"
+ },
+ "ei_columnist_ethan": {
+  "en": "A woman in a trench coat falls into step beside you, phone already recording. \"Off the record — how long has this been going on?\"",
+  "ja": "トレンチコートの女があなたの横に並ぶ。スマホはもう録音中。「オフレコで — いつから続いてるの？」"
+ },
+ "ew_columnist_ethan": {
+  "en": "She stops recording.",
+  "ja": "彼女は録音を止める。"
+ },
+ "n_luxingye": {
+  "en": "Lu Xingye",
+  "ja": "陸星野"
+ },
+ "pick_luxingye": {
+  "en": "Lu Xingye, 27 — the idol in an off-season nobody knows about",
+  "ja": "陸星野（27）— 誰も知らないオフシーズンのアイドル"
+ },
+ "nt_luxingye_1": {
+  "en": "Lu Xingye · 1. Backstage by Accident",
+  "ja": "陸星野 · 第1章 間違って舞台裏へ"
+ },
+ "ns_luxingye_1": {
+  "en": "Make him drop the idol mask for one minute",
+  "ja": "一分だけ、彼にアイドルの仮面を外させる"
+ },
+ "r_v_luxingye_1": {
+  "en": "Backstage",
+  "ja": "舞台裏"
+ },
+ "e_date_luxingye_1": {
+  "en": "Lu Xingye — first meeting",
+  "ja": "陸星野 — 初めての夜"
+ },
+ "ei_date_luxingye_1": {
+  "en": "He doesn't know you yet. Every answer he gives is the polite one. Bring his guard down before he decides you were never here.",
+  "ja": "彼はまだあなたを知らない。どの答えも礼儀正しいだけ。あなたがいなかったことにされる前に、心の壁をほどいて。"
+ },
+ "ew_date_luxingye_1": {
+  "en": "He laughs, once, surprised at himself. Something in his shoulders lets go.",
+  "ja": "彼は一度だけ笑い、自分に驚く。肩の力がふっと抜ける。"
+ },
+ "i_ks_luxingye_1": {
+  "en": "Half a convenience-store rice ball",
+  "ja": "コンビニおにぎりの半分"
+ },
+ "id_ks_luxingye_1": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_luxingye_2": {
+  "en": "Lu Xingye · 2. The Idol's Secret",
+  "ja": "陸星野 · 第2章 アイドルの秘密"
+ },
+ "ns_luxingye_2": {
+  "en": "Find out what the 'perfect idol' is really carrying",
+  "ja": "「完璧なアイドル」が本当に背負っているものを知る"
+ },
+ "r_v_luxingye_2": {
+  "en": "The rehearsal room",
+  "ja": "深夜のリハーサル室"
+ },
+ "e_date_luxingye_2": {
+  "en": "Lu Xingye — the second evening",
+  "ja": "陸星野 — 二度目の夜"
+ },
+ "ei_date_luxingye_2": {
+  "en": "He remembers you, and that worries him more than it should. Get past the careful version of him.",
+  "ja": "彼はあなたを覚えている。それが思った以上に彼を落ち着かなくさせている。用心深い彼の向こうへ。"
+ },
+ "ew_date_luxingye_2": {
+  "en": "He stops performing the conversation and simply has it with you.",
+  "ja": "彼は会話を演じるのをやめ、ただあなたと話し始める。"
+ },
+ "i_ks_luxingye_2": {
+  "en": "The private account's first message",
+  "ja": "非公開アカウントの最初のメッセージ"
+ },
+ "id_ks_luxingye_2": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_luxingye_3": {
+  "en": "Lu Xingye · 3. The Confession to Row Seven",
+  "ja": "陸星野 · 第3章 七列目への告白"
+ },
+ "ns_luxingye_3": {
+  "en": "In front of thousands, catch the words meant only for you",
+  "ja": "何万人の前で、あなただけへの言葉を受け取る"
+ },
+ "r_v_luxingye_3": {
+  "en": "The arena, row seven",
+  "ja": "アリーナ七列目"
+ },
+ "e_date_luxingye_3": {
+  "en": "Lu Xingye — off guard",
+  "ja": "陸星野 — 不意の素顔"
+ },
+ "ei_date_luxingye_3": {
+  "en": "Caught somewhere he didn't plan to be seen, he is half a step from making a joke of it and leaving. Don't let him.",
+  "ja": "見られるつもりのない場所で見つかって、彼は冗談にして立ち去る半歩手前。そうさせないで。"
+ },
+ "ew_date_luxingye_3": {
+  "en": "He gives up on leaving. He pulls out the chair beside you instead.",
+  "ja": "彼は立ち去るのをやめる。代わりに、あなたの隣の椅子を引く。"
+ },
+ "i_ks_luxingye_3": {
+  "en": "Your row-seven ticket",
+  "ja": "七列目のチケット"
+ },
+ "id_ks_luxingye_3": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_luxingye_4": {
+  "en": "Lu Xingye · 4. The Storm",
+  "ja": "陸星野 · 第4章 嵐"
+ },
+ "ns_luxingye_4": {
+  "en": "Decide which side to stand on — him, or the industry's rules",
+  "ja": "彼か、業界のルールか、どちらに立つか決める"
+ },
+ "r_v_luxingye_4": {
+  "en": "Outside the boardroom",
+  "ja": "役員会議室の前"
+ },
+ "e_date_luxingye_4": {
+  "en": "Lu Xingye — under pressure",
+  "ja": "陸星野 — 試される夜"
+ },
+ "ei_date_luxingye_4": {
+  "en": "Everything is pressing on him at once, and the easiest thing would be to shut everyone out — you included.",
+  "ja": "すべてが一度に彼にのしかかり、いちばん楽なのは全員を締め出すこと — あなたも含めて。"
+ },
+ "ew_date_luxingye_4": {
+  "en": "He looks at you like the room has finally stopped shouting.",
+  "ja": "部屋がようやく叫ぶのをやめたかのように、彼はあなたを見る。"
+ },
+ "i_ks_luxingye_4": {
+  "en": "The clip everyone saw",
+  "ja": "皆が見た動画"
+ },
+ "id_ks_luxingye_4": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_luxingye_5": {
+  "en": "Lu Xingye · 5. The Song Only For You",
+  "ja": "陸星野 · 第5章 あなただけの歌"
+ },
+ "ns_luxingye_5": {
+  "en": "On the smallest stage, catch his truest words",
+  "ja": "いちばん小さな舞台で、彼の本当の言葉を受け取る"
+ },
+ "r_v_luxingye_5": {
+  "en": "The little livehouse",
+  "ja": "小さなライブハウス"
+ },
+ "e_date_luxingye_5": {
+  "en": "Lu Xingye — the last wall",
+  "ja": "陸星野 — 最後の壁"
+ },
+ "ei_date_luxingye_5": {
+  "en": "This is the last of the walls. Behind it is the thing he wants and has never once said out loud.",
+  "ja": "これが最後の壁。その向こうに、彼が一度も口にしたことのない望みがある。"
+ },
+ "ew_date_luxingye_5": {
+  "en": "The last wall comes down without a sound. He is just a man, here, with you.",
+  "ja": "最後の壁が音もなく崩れる。ここにいるのは、あなたと一緒の、ただのひとりの男。"
+ },
+ "i_ks_luxingye_5": {
+  "en": "A handwritten setlist",
+  "ja": "手書きのセットリスト"
+ },
+ "id_ks_luxingye_5": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "i_gift_luxingye": {
+  "en": "A plain hoodie, his size",
+  "ja": "彼のサイズの無地のパーカー"
+ },
+ "id_gift_luxingye": {
+  "en": "Give it to him from the Items menu: Trust +1.",
+  "ja": "「アイテム」から彼に贈る：信頼 +1。"
+ },
+ "e_doorman_luxingye": {
+  "en": "The doorman",
+  "ja": "ドアマン"
+ },
+ "ei_doorman_luxingye": {
+  "en": "A doorman with an earpiece and a clipboard steps into your path. \"Name? You're not on the list.\"",
+  "ja": "イヤーピースとクリップボードのドアマンが行く手を塞ぐ。「お名前は？ リストにありませんね」"
+ },
+ "ew_doorman_luxingye": {
+  "en": "He steps aside.",
+  "ja": "彼は道を空ける。"
+ },
+ "e_paparazzo_luxingye": {
+  "en": "A paparazzo",
+  "ja": "パパラッチ"
+ },
+ "ei_paparazzo_luxingye": {
+  "en": "A flash goes off in your face. A man with a long lens grins. \"Who are you to him? Give me a name and I'll make you famous.\"",
+  "ja": "目の前でフラッシュが光る。望遠レンズの男がにやりと笑う。「彼とはどういう関係？ 名前をくれたら有名にしてやるよ」"
+ },
+ "ew_paparazzo_luxingye": {
+  "en": "He lowers the camera.",
+  "ja": "彼はカメラを下ろす。"
+ },
+ "e_columnist_luxingye": {
+  "en": "The gossip columnist",
+  "ja": "ゴシップ記者"
+ },
+ "ei_columnist_luxingye": {
+  "en": "A woman in a trench coat falls into step beside you, phone already recording. \"Off the record — how long has this been going on?\"",
+  "ja": "トレンチコートの女があなたの横に並ぶ。スマホはもう録音中。「オフレコで — いつから続いてるの？」"
+ },
+ "ew_columnist_luxingye": {
+  "en": "She stops recording.",
+  "ja": "彼女は録音を止める。"
+ },
+ "n_liam": {
+  "en": "Liam",
+  "ja": "リアム"
+ },
+ "pick_liam": {
+  "en": "Liam, 34 — the firefighter next door",
+  "ja": "リアム（34）— 隣に住む消防士"
+ },
+ "nt_liam_1": {
+  "en": "Liam · 1. Moving-In Day",
+  "ja": "リアム · 第1章 引っ越しの日"
+ },
+ "ns_liam_1": {
+  "en": "Make him remember you as more than 'the new neighbor'",
+  "ja": "「新しいお隣さん」以上の存在として覚えてもらう"
+ },
+ "r_v_liam_1": {
+  "en": "His tailgate at sunset",
+  "ja": "夕暮れの荷台"
+ },
+ "e_date_liam_1": {
+  "en": "Liam — first meeting",
+  "ja": "リアム — 初めての夜"
+ },
+ "ei_date_liam_1": {
+  "en": "He doesn't know you yet. Every answer he gives is the polite one. Bring his guard down before he decides you were never here.",
+  "ja": "彼はまだあなたを知らない。どの答えも礼儀正しいだけ。あなたがいなかったことにされる前に、心の壁をほどいて。"
+ },
+ "ew_date_liam_1": {
+  "en": "He laughs, once, surprised at himself. Something in his shoulders lets go.",
+  "ja": "彼は一度だけ笑い、自分に驚く。肩の力がふっと抜ける。"
+ },
+ "i_ks_liam_1": {
+  "en": "The couch he carried",
+  "ja": "彼が運んだソファ"
+ },
+ "id_ks_liam_1": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_liam_2": {
+  "en": "Liam · 2. Cookout and Old Scars",
+  "ja": "リアム · 第2章 バーベキューと古傷"
+ },
+ "ns_liam_2": {
+  "en": "See the side this always-smiling man keeps tucked away",
+  "ja": "いつも笑っている彼が隠している一面を見る"
+ },
+ "r_v_liam_2": {
+  "en": "The backyard cookout",
+  "ja": "裏庭のバーベキュー"
+ },
+ "e_date_liam_2": {
+  "en": "Liam — the second evening",
+  "ja": "リアム — 二度目の夜"
+ },
+ "ei_date_liam_2": {
+  "en": "He remembers you, and that worries him more than it should. Get past the careful version of him.",
+  "ja": "彼はあなたを覚えている。それが思った以上に彼を落ち着かなくさせている。用心深い彼の向こうへ。"
+ },
+ "ew_date_liam_2": {
+  "en": "He stops performing the conversation and simply has it with you.",
+  "ja": "彼は会話を演じるのをやめ、ただあなたと話し始める。"
+ },
+ "i_ks_liam_2": {
+  "en": "Biscuit's chewed tennis ball",
+  "ja": "ビスケットの噛んだテニスボール"
+ },
+ "id_ks_liam_2": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_liam_3": {
+  "en": "Liam · 3. The Watch in the Fire",
+  "ja": "リアム · 第3章 炎の中の腕時計"
+ },
+ "ns_liam_3": {
+  "en": "On his most dangerous night, be the reason he wants to make it back",
+  "ja": "彼のいちばん危険な夜に、帰ってきたい理由になる"
+ },
+ "r_v_liam_3": {
+  "en": "The fire on your street",
+  "ja": "通りの火事"
+ },
+ "e_date_liam_3": {
+  "en": "Liam — off guard",
+  "ja": "リアム — 不意の素顔"
+ },
+ "ei_date_liam_3": {
+  "en": "Caught somewhere he didn't plan to be seen, he is half a step from making a joke of it and leaving. Don't let him.",
+  "ja": "見られるつもりのない場所で見つかって、彼は冗談にして立ち去る半歩手前。そうさせないで。"
+ },
+ "ew_date_liam_3": {
+  "en": "He gives up on leaving. He pulls out the chair beside you instead.",
+  "ja": "彼は立ち去るのをやめる。代わりに、あなたの隣の椅子を引く。"
+ },
+ "i_ks_liam_3": {
+  "en": "The watch from the fire",
+  "ja": "火事から戻った腕時計"
+ },
+ "id_ks_liam_3": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_liam_4": {
+  "en": "Liam · 4. The Transfer",
+  "ja": "リアム · 第4章 転属"
+ },
+ "ns_liam_4": {
+  "en": "In the choice he'd shoulder alone, let him know he doesn't have to",
+  "ja": "ひとりで背負おうとする決断を、ひとりで背負わなくていいと伝える"
+ },
+ "r_v_liam_4": {
+  "en": "The station garage",
+  "ja": "消防署のガレージ"
+ },
+ "e_date_liam_4": {
+  "en": "Liam — under pressure",
+  "ja": "リアム — 試される夜"
+ },
+ "ei_date_liam_4": {
+  "en": "Everything is pressing on him at once, and the easiest thing would be to shut everyone out — you included.",
+  "ja": "すべてが一度に彼にのしかかり、いちばん楽なのは全員を締め出すこと — あなたも含めて。"
+ },
+ "ew_date_liam_4": {
+  "en": "He looks at you like the room has finally stopped shouting.",
+  "ja": "部屋がようやく叫ぶのをやめたかのように、彼はあなたを見る。"
+ },
+ "i_ks_liam_4": {
+  "en": "The transfer letter",
+  "ja": "転属の辞令"
+ },
+ "id_ks_liam_4": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_liam_5": {
+  "en": "Liam · 5. The One Who Comes Home",
+  "ja": "リアム · 第5章 帰ってくる人"
+ },
+ "ns_liam_5": {
+  "en": "Hear this man who always puts others first say what he wants for himself",
+  "ja": "いつも人を優先する彼に、自分の望みを言わせる"
+ },
+ "r_v_liam_5": {
+  "en": "The new porch",
+  "ja": "新しいポーチ"
+ },
+ "e_date_liam_5": {
+  "en": "Liam — the last wall",
+  "ja": "リアム — 最後の壁"
+ },
+ "ei_date_liam_5": {
+  "en": "This is the last of the walls. Behind it is the thing he wants and has never once said out loud.",
+  "ja": "これが最後の壁。その向こうに、彼が一度も口にしたことのない望みがある。"
+ },
+ "ew_date_liam_5": {
+  "en": "The last wall comes down without a sound. He is just a man, here, with you.",
+  "ja": "最後の壁が音もなく崩れる。ここにいるのは、あなたと一緒の、ただのひとりの男。"
+ },
+ "i_ks_liam_5": {
+  "en": "Two root beers",
+  "ja": "ルートビア二本"
+ },
+ "id_ks_liam_5": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "i_gift_liam": {
+  "en": "A new chew toy for Biscuit",
+  "ja": "ビスケットの新しいおもちゃ"
+ },
+ "id_gift_liam": {
+  "en": "Give it to him from the Items menu: Trust +1.",
+  "ja": "「アイテム」から彼に贈る：信頼 +1。"
+ },
+ "e_doorman_liam": {
+  "en": "The doorman",
+  "ja": "ドアマン"
+ },
+ "ei_doorman_liam": {
+  "en": "A doorman with an earpiece and a clipboard steps into your path. \"Name? You're not on the list.\"",
+  "ja": "イヤーピースとクリップボードのドアマンが行く手を塞ぐ。「お名前は？ リストにありませんね」"
+ },
+ "ew_doorman_liam": {
+  "en": "He steps aside.",
+  "ja": "彼は道を空ける。"
+ },
+ "e_paparazzo_liam": {
+  "en": "A paparazzo",
+  "ja": "パパラッチ"
+ },
+ "ei_paparazzo_liam": {
+  "en": "A flash goes off in your face. A man with a long lens grins. \"Who are you to him? Give me a name and I'll make you famous.\"",
+  "ja": "目の前でフラッシュが光る。望遠レンズの男がにやりと笑う。「彼とはどういう関係？ 名前をくれたら有名にしてやるよ」"
+ },
+ "ew_paparazzo_liam": {
+  "en": "He lowers the camera.",
+  "ja": "彼はカメラを下ろす。"
+ },
+ "e_columnist_liam": {
+  "en": "The gossip columnist",
+  "ja": "ゴシップ記者"
+ },
+ "ei_columnist_liam": {
+  "en": "A woman in a trench coat falls into step beside you, phone already recording. \"Off the record — how long has this been going on?\"",
+  "ja": "トレンチコートの女があなたの横に並ぶ。スマホはもう録音中。「オフレコで — いつから続いてるの？」"
+ },
+ "ew_columnist_liam": {
+  "en": "She stops recording.",
+  "ja": "彼女は録音を止める。"
+ },
+ "n_adrian": {
+  "en": "Adrian",
+  "ja": "エイドリアン"
+ },
+ "pick_adrian": {
+  "en": "Adrian Vale, 31 — the rockstar who writes about you",
+  "ja": "エイドリアン・ヴェイル（31）— あなたのことを歌うロックスター"
+ },
+ "nt_adrian_1": {
+  "en": "Adrian · 1. The Stage After the Show",
+  "ja": "エイドリアン · 第1章 終演後のステージ"
+ },
+ "ns_adrian_1": {
+  "en": "Make this man who's bored of everyone look at you twice",
+  "ja": "誰にも飽きている彼に、二度見させる"
+ },
+ "r_v_adrian_1": {
+  "en": "The empty stage",
+  "ja": "誰もいないステージ"
+ },
+ "e_date_adrian_1": {
+  "en": "Adrian — first meeting",
+  "ja": "エイドリアン — 初めての夜"
+ },
+ "ei_date_adrian_1": {
+  "en": "He doesn't know you yet. Every answer he gives is the polite one. Bring his guard down before he decides you were never here.",
+  "ja": "彼はまだあなたを知らない。どの答えも礼儀正しいだけ。あなたがいなかったことにされる前に、心の壁をほどいて。"
+ },
+ "ew_date_adrian_1": {
+  "en": "He laughs, once, surprised at himself. Something in his shoulders lets go.",
+  "ja": "彼は一度だけ笑い、自分に驚く。肩の力がふっと抜ける。"
+ },
+ "i_ks_adrian_1": {
+  "en": "A guitar pick from the stage",
+  "ja": "舞台のピック"
+ },
+ "id_ks_adrian_1": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_adrian_2": {
+  "en": "Adrian · 2. The Late-Night Demo",
+  "ja": "エイドリアン · 第2章 深夜のデモ"
+ },
+ "ns_adrian_2": {
+  "en": "Find out what the man who's untamed on stage is really writing about",
+  "ja": "舞台では奔放な彼が本当は何を書いているのか知る"
+ },
+ "r_v_adrian_2": {
+  "en": "The back of the tour bus",
+  "ja": "ツアーバスの後部"
+ },
+ "e_date_adrian_2": {
+  "en": "Adrian — the second evening",
+  "ja": "エイドリアン — 二度目の夜"
+ },
+ "ei_date_adrian_2": {
+  "en": "He remembers you, and that worries him more than it should. Get past the careful version of him.",
+  "ja": "彼はあなたを覚えている。それが思った以上に彼を落ち着かなくさせている。用心深い彼の向こうへ。"
+ },
+ "ew_date_adrian_2": {
+  "en": "He stops performing the conversation and simply has it with you.",
+  "ja": "彼は会話を演じるのをやめ、ただあなたと話し始める。"
+ },
+ "i_ks_adrian_2": {
+  "en": "A crumpled lyric sheet",
+  "ja": "くしゃくしゃの歌詞カード"
+ },
+ "id_ks_adrian_2": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_adrian_3": {
+  "en": "Adrian · 3. The Song He Wrote For You",
+  "ja": "エイドリアン · 第3章 あなたのための歌"
+ },
+ "ns_adrian_3": {
+  "en": "On his most public stage, catch his most private confession",
+  "ja": "いちばん公の舞台で、いちばん私的な告白を受け取る"
+ },
+ "r_v_adrian_3": {
+  "en": "The arena encore",
+  "ja": "アリーナのアンコール"
+ },
+ "e_date_adrian_3": {
+  "en": "Adrian — off guard",
+  "ja": "エイドリアン — 不意の素顔"
+ },
+ "ei_date_adrian_3": {
+  "en": "Caught somewhere he didn't plan to be seen, he is half a step from making a joke of it and leaving. Don't let him.",
+  "ja": "見られるつもりのない場所で見つかって、彼は冗談にして立ち去る半歩手前。そうさせないで。"
+ },
+ "ew_date_adrian_3": {
+  "en": "He gives up on leaving. He pulls out the chair beside you instead.",
+  "ja": "彼は立ち去るのをやめる。代わりに、あなたの隣の椅子を引く。"
+ },
+ "i_ks_adrian_3": {
+  "en": "The line he sang to you",
+  "ja": "あなたに歌った一行"
+ },
+ "id_ks_adrian_3": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_adrian_4": {
+  "en": "Adrian · 4. The Label's Price",
+  "ja": "エイドリアン · 第4章 レーベルの代償"
+ },
+ "ns_adrian_4": {
+  "en": "Between his music and his heart, help him keep the one song he won't sell",
+  "ja": "音楽と心のあいだで、彼が売らない一曲を守る手助けをする"
+ },
+ "r_v_adrian_4": {
+  "en": "The label's boardroom",
+  "ja": "レーベルの会議室"
+ },
+ "e_date_adrian_4": {
+  "en": "Adrian — under pressure",
+  "ja": "エイドリアン — 試される夜"
+ },
+ "ei_date_adrian_4": {
+  "en": "Everything is pressing on him at once, and the easiest thing would be to shut everyone out — you included.",
+  "ja": "すべてが一度に彼にのしかかり、いちばん楽なのは全員を締め出すこと — あなたも含めて。"
+ },
+ "ew_date_adrian_4": {
+  "en": "He looks at you like the room has finally stopped shouting.",
+  "ja": "部屋がようやく叫ぶのをやめたかのように、彼はあなたを見る。"
+ },
+ "i_ks_adrian_4": {
+  "en": "The clause he won't sign",
+  "ja": "彼が署名しない条項"
+ },
+ "id_ks_adrian_4": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_adrian_5": {
+  "en": "Adrian · 5. The Song, Finished",
+  "ja": "エイドリアン · 第5章 完成した歌"
+ },
+ "ns_adrian_5": {
+  "en": "Hear him sing the last line of the song he wrote for you",
+  "ja": "あなたのための歌の最後の一行を聴く"
+ },
+ "r_v_adrian_5": {
+  "en": "The underground livehouse",
+  "ja": "地下のライブハウス"
+ },
+ "e_date_adrian_5": {
+  "en": "Adrian — the last wall",
+  "ja": "エイドリアン — 最後の壁"
+ },
+ "ei_date_adrian_5": {
+  "en": "This is the last of the walls. Behind it is the thing he wants and has never once said out loud.",
+  "ja": "これが最後の壁。その向こうに、彼が一度も口にしたことのない望みがある。"
+ },
+ "ew_date_adrian_5": {
+  "en": "The last wall comes down without a sound. He is just a man, here, with you.",
+  "ja": "最後の壁が音もなく崩れる。ここにいるのは、あなたと一緒の、ただのひとりの男。"
+ },
+ "i_ks_adrian_5": {
+  "en": "The unreleased demo",
+  "ja": "未発表のデモ"
+ },
+ "id_ks_adrian_5": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "i_gift_adrian": {
+  "en": "A notebook of blank staff paper",
+  "ja": "白紙の五線譜ノート"
+ },
+ "id_gift_adrian": {
+  "en": "Give it to him from the Items menu: Trust +1.",
+  "ja": "「アイテム」から彼に贈る：信頼 +1。"
+ },
+ "e_doorman_adrian": {
+  "en": "The doorman",
+  "ja": "ドアマン"
+ },
+ "ei_doorman_adrian": {
+  "en": "A doorman with an earpiece and a clipboard steps into your path. \"Name? You're not on the list.\"",
+  "ja": "イヤーピースとクリップボードのドアマンが行く手を塞ぐ。「お名前は？ リストにありませんね」"
+ },
+ "ew_doorman_adrian": {
+  "en": "He steps aside.",
+  "ja": "彼は道を空ける。"
+ },
+ "e_paparazzo_adrian": {
+  "en": "A paparazzo",
+  "ja": "パパラッチ"
+ },
+ "ei_paparazzo_adrian": {
+  "en": "A flash goes off in your face. A man with a long lens grins. \"Who are you to him? Give me a name and I'll make you famous.\"",
+  "ja": "目の前でフラッシュが光る。望遠レンズの男がにやりと笑う。「彼とはどういう関係？ 名前をくれたら有名にしてやるよ」"
+ },
+ "ew_paparazzo_adrian": {
+  "en": "He lowers the camera.",
+  "ja": "彼はカメラを下ろす。"
+ },
+ "e_columnist_adrian": {
+  "en": "The gossip columnist",
+  "ja": "ゴシップ記者"
+ },
+ "ei_columnist_adrian": {
+  "en": "A woman in a trench coat falls into step beside you, phone already recording. \"Off the record — how long has this been going on?\"",
+  "ja": "トレンチコートの女があなたの横に並ぶ。スマホはもう録音中。「オフレコで — いつから続いてるの？」"
+ },
+ "ew_columnist_adrian": {
+  "en": "She stops recording.",
+  "ja": "彼女は録音を止める。"
+ },
+ "n_fushen": {
+  "en": "Fu Shen",
+  "ja": "傅深"
+ },
+ "pick_fushen": {
+  "en": "Fu Shen, 36 — the aloof heir the whole city looks up to",
+  "ja": "傅深（36）— 街じゅうが仰ぎ見る、近寄りがたい御曹司"
+ },
+ "nt_fushen_1": {
+  "en": "Fu Shen · 1. The Distance of One Glass of Wine",
+  "ja": "傅深 · 第1章 ワイン一杯ぶんの距離"
+ },
+ "ns_fushen_1": {
+  "en": "Make this man who never explains himself say more than three sentences to you",
+  "ja": "決して弁明しない彼に、三文以上話させる"
+ },
+ "r_v_fushen_1": {
+  "en": "The penthouse study",
+  "ja": "ペントハウスの書斎"
+ },
+ "e_date_fushen_1": {
+  "en": "Fu Shen — first meeting",
+  "ja": "傅深 — 初めての夜"
+ },
+ "ei_date_fushen_1": {
+  "en": "He doesn't know you yet. Every answer he gives is the polite one. Bring his guard down before he decides you were never here.",
+  "ja": "彼はまだあなたを知らない。どの答えも礼儀正しいだけ。あなたがいなかったことにされる前に、心の壁をほどいて。"
+ },
+ "ew_date_fushen_1": {
+  "en": "He laughs, once, surprised at himself. Something in his shoulders lets go.",
+  "ja": "彼は一度だけ笑い、自分に驚く。肩の力がふっと抜ける。"
+ },
+ "i_ks_fushen_1": {
+  "en": "His untouched glass of wine",
+  "ja": "口をつけていないワイン"
+ },
+ "id_ks_fushen_1": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_fushen_2": {
+  "en": "Fu Shen · 2. He Explains Himself to No One",
+  "ja": "傅深 · 第2章 誰にも弁明しない人"
+ },
+ "ns_fushen_2": {
+  "en": "See what that coldness is really guarding against",
+  "ja": "その冷たさが本当は何を守っているのかを見る"
+ },
+ "r_v_fushen_2": {
+  "en": "The gala hall",
+  "ja": "祝賀会のホール"
+ },
+ "e_date_fushen_2": {
+  "en": "Fu Shen — the second evening",
+  "ja": "傅深 — 二度目の夜"
+ },
+ "ei_date_fushen_2": {
+  "en": "He remembers you, and that worries him more than it should. Get past the careful version of him.",
+  "ja": "彼はあなたを覚えている。それが思った以上に彼を落ち着かなくさせている。用心深い彼の向こうへ。"
+ },
+ "ew_date_fushen_2": {
+  "en": "He stops performing the conversation and simply has it with you.",
+  "ja": "彼は会話を演じるのをやめ、ただあなたと話し始める。"
+ },
+ "i_ks_fushen_2": {
+  "en": "The partner he walked away from",
+  "ja": "彼が背を向けた取引相手"
+ },
+ "id_ks_fushen_2": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_fushen_3": {
+  "en": "Fu Shen · 3. The Young Madam of the Old House",
+  "ja": "傅深 · 第3章 旧家の若奥様"
+ },
+ "ns_fushen_3": {
+  "en": "Find your footing in the world he never brings anyone into",
+  "ja": "誰も入れたことのない彼の世界で足場を見つける"
+ },
+ "r_v_fushen_3": {
+  "en": "The Fu estate",
+  "ja": "傅家の屋敷"
+ },
+ "e_date_fushen_3": {
+  "en": "Fu Shen — off guard",
+  "ja": "傅深 — 不意の素顔"
+ },
+ "ei_date_fushen_3": {
+  "en": "Caught somewhere he didn't plan to be seen, he is half a step from making a joke of it and leaving. Don't let him.",
+  "ja": "見られるつもりのない場所で見つかって、彼は冗談にして立ち去る半歩手前。そうさせないで。"
+ },
+ "ew_date_fushen_3": {
+  "en": "He gives up on leaving. He pulls out the chair beside you instead.",
+  "ja": "彼は立ち去るのをやめる。代わりに、あなたの隣の椅子を引く。"
+ },
+ "i_ks_fushen_3": {
+  "en": "The butler's quiet advice",
+  "ja": "執事の静かな助言"
+ },
+ "id_ks_fushen_3": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_fushen_4": {
+  "en": "Fu Shen · 4. The Family's Price",
+  "ja": "傅深 · 第4章 一族の代償"
+ },
+ "ns_fushen_4": {
+  "en": "Between the family's rules and him, take the heaviest blow for him",
+  "ja": "一族の掟と彼のあいだで、いちばん重い一撃を彼の代わりに受ける"
+ },
+ "r_v_fushen_4": {
+  "en": "The great hall",
+  "ja": "屋敷の大広間"
+ },
+ "e_date_fushen_4": {
+  "en": "Fu Shen — under pressure",
+  "ja": "傅深 — 試される夜"
+ },
+ "ei_date_fushen_4": {
+  "en": "Everything is pressing on him at once, and the easiest thing would be to shut everyone out — you included.",
+  "ja": "すべてが一度に彼にのしかかり、いちばん楽なのは全員を締め出すこと — あなたも含めて。"
+ },
+ "ew_date_fushen_4": {
+  "en": "He looks at you like the room has finally stopped shouting.",
+  "ja": "部屋がようやく叫ぶのをやめたかのように、彼はあなたを見る。"
+ },
+ "i_ks_fushen_4": {
+  "en": "The arranged-marriage file",
+  "ja": "縁談の書類"
+ },
+ "id_ks_fushen_4": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "nt_fushen_5": {
+  "en": "Fu Shen · 5. The House He'd Let Warm",
+  "ja": "傅深 · 第5章 温もりを許した家"
+ },
+ "ns_fushen_5": {
+  "en": "Get this man who never says 'I need' to say what he truly wants",
+  "ja": "「必要だ」と言わない彼に、本当の望みを言わせる"
+ },
+ "r_v_fushen_5": {
+  "en": "The terrace at dawn",
+  "ja": "夜明けのテラス"
+ },
+ "e_date_fushen_5": {
+  "en": "Fu Shen — the last wall",
+  "ja": "傅深 — 最後の壁"
+ },
+ "ei_date_fushen_5": {
+  "en": "This is the last of the walls. Behind it is the thing he wants and has never once said out loud.",
+  "ja": "これが最後の壁。その向こうに、彼が一度も口にしたことのない望みがある。"
+ },
+ "ew_date_fushen_5": {
+  "en": "The last wall comes down without a sound. He is just a man, here, with you.",
+  "ja": "最後の壁が音もなく崩れる。ここにいるのは、あなたと一緒の、ただのひとりの男。"
+ },
+ "i_ks_fushen_5": {
+  "en": "How you take your coffee",
+  "ja": "あなたのコーヒーの好み"
+ },
+ "id_ks_fushen_5": {
+  "en": "A keepsake: bring it up with Remember.",
+  "ja": "思い出の品：「思い出す」で話題にできる。"
+ },
+ "i_gift_fushen": {
+  "en": "A tin of the tea his mother liked",
+  "ja": "彼の母が好んだお茶の缶"
+ },
+ "id_gift_fushen": {
+  "en": "Give it to him from the Items menu: Trust +1.",
+  "ja": "「アイテム」から彼に贈る：信頼 +1。"
+ },
+ "e_doorman_fushen": {
+  "en": "The doorman",
+  "ja": "ドアマン"
+ },
+ "ei_doorman_fushen": {
+  "en": "A doorman with an earpiece and a clipboard steps into your path. \"Name? You're not on the list.\"",
+  "ja": "イヤーピースとクリップボードのドアマンが行く手を塞ぐ。「お名前は？ リストにありませんね」"
+ },
+ "ew_doorman_fushen": {
+  "en": "He steps aside.",
+  "ja": "彼は道を空ける。"
+ },
+ "e_paparazzo_fushen": {
+  "en": "A paparazzo",
+  "ja": "パパラッチ"
+ },
+ "ei_paparazzo_fushen": {
+  "en": "A flash goes off in your face. A man with a long lens grins. \"Who are you to him? Give me a name and I'll make you famous.\"",
+  "ja": "目の前でフラッシュが光る。望遠レンズの男がにやりと笑う。「彼とはどういう関係？ 名前をくれたら有名にしてやるよ」"
+ },
+ "ew_paparazzo_fushen": {
+  "en": "He lowers the camera.",
+  "ja": "彼はカメラを下ろす。"
+ },
+ "e_columnist_fushen": {
+  "en": "The gossip columnist",
+  "ja": "ゴシップ記者"
+ },
+ "ei_columnist_fushen": {
+  "en": "A woman in a trench coat falls into step beside you, phone already recording. \"Off the record — how long has this been going on?\"",
+  "ja": "トレンチコートの女があなたの横に並ぶ。スマホはもう録音中。「オフレコで — いつから続いてるの？」"
+ },
+ "ew_columnist_fushen": {
+  "en": "She stops recording.",
+  "ja": "彼女は録音を止める。"
+ },
+ "e_rival_ethan": {
+  "en": "Victor Hale, the board's man",
+  "ja": "取締役会の男、ヴィクター・ヘイル"
+ },
+ "ei_rival_ethan": {
+  "en": "The man with the document is still at your elbow, silver-haired and smiling like a closed door. \"You should know what he is before the cameras decide for you.\"",
+  "ja": "書類を持った銀髪の男が、まだあなたの肘のそばにいる。閉じた扉のような笑み。「カメラが決める前に、彼が何者か知っておくべきだ」"
+ },
+ "ew_rival_ethan": {
+  "en": "Hale folds the document back into his jacket. \"He'll disappoint you,\" he says, without conviction now, and goes to find someone easier.",
+  "ja": "ヘイルは書類を上着に戻す。「彼はきっと君を失望させる」もう確信のない声でそう言い、もっと扱いやすい相手を探しに行く。"
+ },
+ "pre_hale": {
+  "en": "The man with the document is still at your elbow, silver-haired and smiling like a closed door. \"You should know what he is before the cameras decide for you.\"",
+  "ja": "書類を持った銀髪の男が、まだあなたの肘のそばにいる。閉じた扉のような笑み。「カメラが決める前に、彼が何者か知っておくべきだ」"
+ },
+ "post_hale": {
+  "en": "Hale folds the document back into his jacket. \"He'll disappoint you,\" he says, without conviction now, and goes to find someone easier.",
+  "ja": "ヘイルは書類を上着に戻す。「彼はきっと君を失望させる」もう確信のない声でそう言い、もっと扱いやすい相手を探しに行く。"
+ },
+ "bark_hale_1": {
+  "en": "\"Numbers don't lie. People do.\"",
+  "ja": "「数字は嘘をつかない。人はつく」"
+ },
+ "bark_hale_2": {
+  "en": "He taps the document with one finger.",
+  "ja": "彼は書類を指で軽く叩く。"
+ },
+ "bark_hale_3": {
+  "en": "\"What do you think you are to him? Have you asked?\"",
+  "ja": "「君は彼にとって何なんだ？ 考えたことは？」"
+ },
+ "bark_hale_4": {
+  "en": "\"The board doesn't run on sentiment.\"",
+  "ja": "「取締役会は感傷で動かない」"
+ },
+ "e_rival_luxingye": {
+  "en": "Ms Han, his manager",
+  "ja": "マネージャーのハン"
+ },
+ "ei_rival_luxingye": {
+  "en": "His manager steps out of the glass room and shuts the door behind her. Headset, tablet, ten years of keeping him on schedule. \"Whatever you are, you're a problem I have to solve tonight.\"",
+  "ja": "マネージャーがガラスの部屋から出て、後ろ手に扉を閉める。ヘッドセット、タブレット、十年間彼のスケジュールを守ってきた女。「あなたが何者でも、今夜片づけなきゃいけない問題よ」"
+ },
+ "ew_rival_luxingye": {
+  "en": "Han looks at the tablet, then at you, then turns the screen off. \"Go in,\" she says. \"He's been asking for you for an hour. I didn't tell him.\"",
+  "ja": "ハンはタブレットを見て、あなたを見て、画面を消す。「入って。一時間前からあなたを呼んでる。私は伝えなかったけど」"
+ },
+ "pre_han": {
+  "en": "His manager steps out of the glass room and shuts the door behind her. Headset, tablet, ten years of keeping him on schedule. \"Whatever you are, you're a problem I have to solve tonight.\"",
+  "ja": "マネージャーがガラスの部屋から出て、後ろ手に扉を閉める。ヘッドセット、タブレット、十年間彼のスケジュールを守ってきた女。「あなたが何者でも、今夜片づけなきゃいけない問題よ」"
+ },
+ "post_han": {
+  "en": "Han looks at the tablet, then at you, then turns the screen off. \"Go in,\" she says. \"He's been asking for you for an hour. I didn't tell him.\"",
+  "ja": "ハンはタブレットを見て、あなたを見て、画面を消す。「入って。一時間前からあなたを呼んでる。私は伝えなかったけど」"
+ },
+ "bark_han_1": {
+  "en": "\"Contracts outlive fans.\"",
+  "ja": "「契約書はファンより長生きするの」"
+ },
+ "bark_han_2": {
+  "en": "She swipes the tablet without stopping.",
+  "ja": "彼女はタブレットをスワイプする。止めずに。"
+ },
+ "bark_han_3": {
+  "en": "\"I'm the one who's kept him safe.\"",
+  "ja": "「あの子を守ってきたのは私よ」"
+ },
+ "bark_han_4": {
+  "en": "\"Feelings are not on the schedule.\"",
+  "ja": "「感情はスケジュールに入ってない」"
+ },
+ "e_rival_guyan": {
+  "en": "Mr Pratt, the developer's agent",
+  "ja": "開発業者の代理人プラット"
+ },
+ "ei_rival_guyan": {
+  "en": "A man in a navy suit is waiting by the door with a folder and a very reasonable smile. \"You must be the friend. Perhaps you can help him see sense.\"",
+  "ja": "紺のスーツの男が、フォルダーととても感じのいい笑顔で扉のそばに待っている。「お友達ですね。彼に分別を持たせてあげてください」"
+ },
+ "ew_rival_guyan": {
+  "en": "Pratt closes the folder. \"The offer stands until Friday,\" he says, and it sounds like an apology. The chime rings him out.",
+  "ja": "プラットはフォルダーを閉じる。「申し出は金曜まで有効です」謝罪のように聞こえる。ドアベルが彼を送り出す。"
+ },
+ "pre_pratt": {
+  "en": "A man in a navy suit is waiting by the door with a folder and a very reasonable smile. \"You must be the friend. Perhaps you can help him see sense.\"",
+  "ja": "紺のスーツの男が、フォルダーととても感じのいい笑顔で扉のそばに待っている。「お友達ですね。彼に分別を持たせてあげてください」"
+ },
+ "post_pratt": {
+  "en": "Pratt closes the folder. \"The offer stands until Friday,\" he says, and it sounds like an apology. The chime rings him out.",
+  "ja": "プラットはフォルダーを閉じる。「申し出は金曜まで有効です」謝罪のように聞こえる。ドアベルが彼を送り出す。"
+ },
+ "bark_pratt_1": {
+  "en": "\"It really is a generous offer.\"",
+  "ja": "「とても寛大な条件ですよ」"
+ },
+ "bark_pratt_2": {
+  "en": "He opens the folder, and closes it.",
+  "ja": "彼はフォルダーを開いて、閉じる。"
+ },
+ "bark_pratt_3": {
+  "en": "\"Sentiment doesn't pay rent.\"",
+  "ja": "「感傷で家賃は払えません」"
+ },
+ "bark_pratt_4": {
+  "en": "\"This street is changing either way.\"",
+  "ja": "「この通りはもう変わるんです」"
+ },
+ "e_rival_liam": {
+  "en": "Chief Morrow, central command",
+  "ja": "本部のモロー署長"
+ },
+ "ei_rival_liam": {
+  "en": "A man in dress uniform is standing by the engine with his cap under his arm. \"So you're the reason he hasn't signed. Let's talk about what he's turning down.\"",
+  "ja": "礼装の男が帽子を脇に抱えて消防車のそばに立っている。「君が、彼が署名しない理由か。彼が何を断ろうとしているのか話そう」"
+ },
+ "ew_rival_liam": {
+  "en": "Morrow puts his cap back on. \"Fine. If he wants the unit closer to home, he can write me the proposal himself.\" He almost smiles. \"Tell him I said so.\"",
+  "ja": "モローは帽子をかぶり直す。「いいだろう。部隊を家の近くに置きたいなら、提案書を本人が書いてくればいい」ほとんど笑っている。「私がそう言ったと伝えてくれ」"
+ },
+ "pre_morrow": {
+  "en": "A man in dress uniform is standing by the engine with his cap under his arm. \"So you're the reason he hasn't signed. Let's talk about what he's turning down.\"",
+  "ja": "礼装の男が帽子を脇に抱えて消防車のそばに立っている。「君が、彼が署名しない理由か。彼が何を断ろうとしているのか話そう」"
+ },
+ "post_morrow": {
+  "en": "Morrow puts his cap back on. \"Fine. If he wants the unit closer to home, he can write me the proposal himself.\" He almost smiles. \"Tell him I said so.\"",
+  "ja": "モローは帽子をかぶり直す。「いいだろう。部隊を家の近くに置きたいなら、提案書を本人が書いてくればいい」ほとんど笑っている。「私がそう言ったと伝えてくれ」"
+ },
+ "bark_morrow_1": {
+  "en": "\"This comes once in ten years.\"",
+  "ja": "「十年に一度の機会だぞ」"
+ },
+ "bark_morrow_2": {
+  "en": "He taps the envelope.",
+  "ja": "彼は辞令の封筒を指で叩く。"
+ },
+ "bark_morrow_3": {
+  "en": "\"Men like him are wasted anywhere smaller.\"",
+  "ja": "「彼のような男は、そういう所でこそ役に立つ」"
+ },
+ "bark_morrow_4": {
+  "en": "\"Would you ask him to give that up?\"",
+  "ja": "「君は彼に、それを諦めろと言うのか？」"
+ },
+ "e_rival_adrian": {
+  "en": "Sterling, from the label",
+  "ja": "レーベルのスターリング"
+ },
+ "ei_rival_adrian": {
+  "en": "The executive at the head of the glass table slides the contract an inch toward you instead. \"You're the 'she' in the song. Then you can tell him what's good for the song.\"",
+  "ja": "ガラスのテーブルの上座の重役が、契約書をあなたのほうへ少し滑らせる。「君が歌の中の『彼女』か。なら、何が歌のためになるか彼に言えるだろう」"
+ },
+ "ew_rival_adrian": {
+  "en": "Sterling caps his pen. \"Keep your line, then,\" he says. \"Nobody will hear it.\" He doesn't look like he believes that either.",
+  "ja": "スターリングはペンにキャップをする。「その一行は取っておけばいい。誰も聞かないさ」彼自身もそうは思っていない顔だ。"
+ },
+ "pre_sterling": {
+  "en": "The executive at the head of the glass table slides the contract an inch toward you instead. \"You're the 'she' in the song. Then you can tell him what's good for the song.\"",
+  "ja": "ガラスのテーブルの上座の重役が、契約書をあなたのほうへ少し滑らせる。「君が歌の中の『彼女』か。なら、何が歌のためになるか彼に言えるだろう」"
+ },
+ "post_sterling": {
+  "en": "Sterling caps his pen. \"Keep your line, then,\" he says. \"Nobody will hear it.\" He doesn't look like he believes that either.",
+  "ja": "スターリングはペンにキャップをする。「その一行は取っておけばいい。誰も聞かないさ」彼自身もそうは思っていない顔だ。"
+ },
+ "bark_sterling_1": {
+  "en": "\"Hits have reasons. Revisions.\"",
+  "ja": "「ヒットには理由がある。修正だ」"
+ },
+ "bark_sterling_2": {
+  "en": "He turns the pen in his fingers.",
+  "ja": "彼はペンを回す。"
+ },
+ "bark_sterling_3": {
+  "en": "\"Sentiment doesn't sell. Collabs sell.\"",
+  "ja": "「感傷は売れない。コラボは売れる」"
+ },
+ "bark_sterling_4": {
+  "en": "\"Millions, against one line about you?\"",
+  "ja": "「君の一行で、何百万を捨てるのか？」"
+ },
+ "e_rival_fushen": {
+  "en": "The Fu patriarch",
+  "ja": "傅家の当主"
+ },
+ "ei_rival_fushen": {
+  "en": "At the head of the long table the patriarch sets down his chopsticks. The room goes quiet with him. \"Someone he brought in from outside,\" he says, to nobody, about you.",
+  "ja": "長いテーブルの上座で、当主が箸を置く。部屋が彼と一緒に静まる。「外から連れてきた者か」誰にともなく、あなたについてそう言う。"
+ },
+ "ew_rival_fushen": {
+  "en": "The old man looks at you for a long moment, then at his grandson's hand on the table beside yours. He picks his chopsticks back up. Nobody mentions the other family again.",
+  "ja": "老人は長いあいだあなたを見つめ、それから、あなたの手の隣にある孫の手を見る。彼は再び箸を取る。もう誰も、あの家の話をしない。"
+ },
+ "pre_fu_elder": {
+  "en": "At the head of the long table the patriarch sets down his chopsticks. The room goes quiet with him. \"Someone he brought in from outside,\" he says, to nobody, about you.",
+  "ja": "長いテーブルの上座で、当主が箸を置く。部屋が彼と一緒に静まる。「外から連れてきた者か」誰にともなく、あなたについてそう言う。"
+ },
+ "post_fu_elder": {
+  "en": "The old man looks at you for a long moment, then at his grandson's hand on the table beside yours. He picks his chopsticks back up. Nobody mentions the other family again.",
+  "ja": "老人は長いあいだあなたを見つめ、それから、あなたの手の隣にある孫の手を見る。彼は再び箸を取る。もう誰も、あの家の話をしない。"
+ },
+ "bark_fu_elder_1": {
+  "en": "\"This house has a hundred years of rules.\"",
+  "ja": "「この家には百年の決まりがある」"
+ },
+ "bark_fu_elder_2": {
+  "en": "He folds both hands over the head of his cane.",
+  "ja": "彼は杖の柄に両手を重ねる。"
+ },
+ "bark_fu_elder_3": {
+  "en": "\"A match is between families.\"",
+  "ja": "「縁談は家と家のものだ」"
+ },
+ "bark_fu_elder_4": {
+  "en": "\"What could you carry?\"",
+  "ja": "「お前に何が背負える」"
+ },
+ "g_cg_guyan_ch2": {
+  "en": "Gu Yan — The One Who Came Back",
+  "ja": "顧言 — 戻ってきた人"
+ },
+ "g_cg_guyan_heat": {
+  "en": "Gu Yan — after hours",
+  "ja": "顧言 — 夜更けに"
+ },
+ "g_cg_guyan_end": {
+  "en": "Gu Yan — the ending",
+  "ja": "顧言 — エンディング"
+ },
+ "g_cg_ethan_ch2": {
+  "en": "Ethan — Not a Coincidence",
+  "ja": "イーサン — 偶然じゃない"
+ },
+ "g_cg_ethan_heat": {
+  "en": "Ethan — after hours",
+  "ja": "イーサン — 夜更けに"
+ },
+ "g_cg_ethan_end": {
+  "en": "Ethan — the ending",
+  "ja": "イーサン — エンディング"
+ },
+ "g_cg_luxingye_ch2": {
+  "en": "Lu Xingye — The Idol's Secret",
+  "ja": "陸星野 — アイドルの秘密"
+ },
+ "g_cg_luxingye_heat": {
+  "en": "Lu Xingye — after hours",
+  "ja": "陸星野 — 夜更けに"
+ },
+ "g_cg_luxingye_end": {
+  "en": "Lu Xingye — the ending",
+  "ja": "陸星野 — エンディング"
+ },
+ "g_cg_liam_ch2": {
+  "en": "Liam — Cookout and Old Scars",
+  "ja": "リアム — バーベキューと古傷"
+ },
+ "g_cg_liam_heat": {
+  "en": "Liam — after hours",
+  "ja": "リアム — 夜更けに"
+ },
+ "g_cg_liam_end": {
+  "en": "Liam — the ending",
+  "ja": "リアム — エンディング"
+ },
+ "g_cg_adrian_ch2": {
+  "en": "Adrian — The Late-Night Demo",
+  "ja": "エイドリアン — 深夜のデモ"
+ },
+ "g_cg_adrian_heat": {
+  "en": "Adrian — after hours",
+  "ja": "エイドリアン — 夜更けに"
+ },
+ "g_cg_adrian_end": {
+  "en": "Adrian — the ending",
+  "ja": "エイドリアン — エンディング"
+ },
+ "g_cg_fushen_ch2": {
+  "en": "Fu Shen — He Explains Himself to No One",
+  "ja": "傅深 — 誰にも弁明しない人"
+ },
+ "g_cg_fushen_heat": {
+  "en": "Fu Shen — after hours",
+  "ja": "傅深 — 夜更けに"
+ },
+ "g_cg_fushen_end": {
+  "en": "Fu Shen — the ending",
+  "ja": "傅深 — エンディング"
+ },
+ "title": {
+  "en": "VESPER",
+  "ja": "VESPER"
+ },
+ "t_subtitle": {
+  "en": "Six men. One evening star. Choose whose night you walk into.",
+  "ja": "六人の男。ひとつの宵の明星。誰の夜に歩み入るかを選ぶ。"
+ },
+ "t_note": {
+  "en": "18+ · Otome · All characters are adults · AI-generated work (see 'About this work')",
+  "ja": "18歳以上対象 · 乙女向け · 登場人物は全員成人です · AI生成作品（「作品について」参照）"
+ },
+ "n_you": {
+  "en": "You",
+  "ja": "あなた"
+ },
+ "n_narrator": {
+  "en": "",
+  "ja": ""
+ },
+ "ds_adult": {
+  "en": "This game is for adults (18+). Every character is an adult and is stated as one; every intimate scene is consensual and asked for on the page. Contains sexual content (no explicit genitals).",
+  "ja": "本作品は成人向け（18歳以上）です。登場人物はすべて成人で、作中でもそう明記されています。親密な場面はすべて合意のうえで、その意思が作中で確かめられます。性的な表現を含みます（性器の描写はありません）。"
+ },
+ "about_ai": {
+  "en": "AI disclosure: Generative AI is used as a production tool in this work, which was made through intensive collaboration between the developer and AI over several hundred hours. Images (sprites, backgrounds, CGs) are output by an image-generation model and the voice by a speech-synthesis model. The concept, world, story structure, direction, character design, the selection and compositing of every image, voice direction, game-system design and balancing, and testing are the developer's work; the script text and the program were written and edited jointly by AI language models and the developer.",
+  "ja": "【AI使用について】本作は生成AIを制作ツールとして活用し、開発者とAIの集中的な共同作業で制作しました。画像（立ち絵・背景・CG）は画像生成AIで出力し、音声は音声合成AIで生成しています。企画・世界観・ストーリー構成・演出・キャラクター設計、すべての画像の選定と合成、音声の演技指示、ゲームシステムの設計とバランス調整、テストは開発者が行い、シナリオ文とプログラムはAI（大規模言語モデル）と開発者が共同で執筆・編集しています。制作には数百時間を費やしています。"
+ },
+ "lang_note": {
+  "en": "Japanese: the interface, the RPG text and every standoff are in Japanese; the six routes' story prose (beats, his replies, endings) is in English only.",
+  "ja": "日本語について：インターフェース、RPG部分の文章、すべての対峙は日本語です。六つのルートの本編の文章（場面・彼の台詞・エンディング）は英語のみです。"
+ },
+ "ev_trust": {
+  "en": "Trust +%d",
+  "ja": "信頼 +%d"
+ },
+ "toast_trust": {
+  "en": "Trust %d — he has let you a little further in",
+  "ja": "信頼 %d — 彼はあなたを少し内側へ入れた"
+ },
+ "m_gift": {
+  "en": "Give it to him",
+  "ja": "彼に贈る"
+ },
+ "lose_standoff_t": {
+  "en": "He stepped back",
+  "ja": "彼は一歩引いた"
+ },
+ "lose_standoff": {
+  "en": "The distance won: the moment closed. Nothing is lost but the last few minutes — you are back at the last save, just before it.",
+  "ja": "距離が勝ち、その瞬間は閉じてしまった。失ったのは数分だけ — 直前のセーブに戻る。"
+ },
+ "lose_dawn_t": {
+  "en": "The last train",
+  "ja": "終電"
+ },
+ "lose_dawn": {
+  "en": "The last train goes without you and the night closes without him. You are back at the last save.",
+  "ja": "終電はあなたを置いて出て、夜は彼のいないまま閉じた。最後のセーブに戻る。"
+ },
+ "end_t": {
+  "en": "Chapter cleared",
+  "ja": "章クリア"
+ },
+ "t_trial": {
+  "en": "Trial version — Gu Yan, chapters 1–2",
+  "ja": "体験版 — 顧言 第1〜2章"
+ },
+ "fin_body": {
+  "en": "Level %d · Trust %d. Thank you for playing. Your last save is in slot 1. Five more men are waiting at the title: every route has three endings.",
+  "ja": "レベル %d · 信頼 %d。プレイしていただきありがとうございました。最後のセーブはスロット1に。タイトルではあと五人が待っています — どのルートにも三つのエンディングがあります。"
+ },
+ "nc_budget": {
+  "en": "%d turns until the last train. Moving, searching and standoffs all cost time.",
+  "ja": "終電まで %d 手。移動・調べる・対峙はすべて時間を使う。"
+ },
+ "h_clock": {
+  "en": "%s   ·   %d turns to the last train   ·   Lv %d",
+  "ja": "%s　·　終電まで %d 手　·　Lv %d"
+ },
+ "h_trust": {
+  "en": "Trust %d  (next scene at %d)",
+  "ja": "信頼 %d（次の場面は %d）"
+ },
+ "b_intro": {
+  "en": "A standoff.",
+  "ja": "対峙。"
+ },
+ "b_dmg": {
+  "en": "Guard −%d.",
+  "ja": "心の壁 −%d。"
+ },
+ "b_susp": {
+  "en": "Distance %s.",
+  "ja": "距離 %s。"
+ },
+ "b_weak_hit": {
+  "en": "It lands — that is one of his tells.",
+  "ja": "届いた — それは彼の弱いところ。"
+ },
+ "b_resist_hit": {
+  "en": "It slides off. He sees it coming.",
+  "ja": "かわされた。見抜かれている。"
+ },
+ "b_threat_mark": {
+  "en": "You pushed. He will remember it: the distance grows faster for the rest of this.",
+  "ja": "押しすぎた。彼は忘れない：この先、距離は速く広がる。"
+ },
+ "b_enemy_turn": {
+  "en": "%s holds back. Distance %+d. %s loses %d composure.",
+  "ja": "%s は身を引く。距離 %+d。%s の平静 −%d。"
+ },
+ "b_win": {
+  "en": "The guard comes down.",
+  "ja": "心の壁がほどけた。"
+ },
+ "b_lose": {
+  "en": "It is over. He has closed the door.",
+  "ja": "終わった。彼は扉を閉じた。"
+ },
+ "b_resolve": {
+  "en": "Guard %d / %d",
+  "ja": "心の壁 %d / %d"
+ },
+ "b_suspicion": {
+  "en": "Distance %d / 100",
+  "ja": "距離 %d / 100"
+ },
+ "b_marked": {
+  "en": "[pushed]",
+  "ja": "［押しすぎ］"
+ },
+ "b_known": {
+  "en": "Tells:",
+  "ja": "弱いところ："
+ },
+ "r_needs_keepsake": {
+  "en": "Needs a keepsake — something to remember together.",
+  "ja": "思い出の品が必要。"
+ },
+ "r_needs_treat": {
+  "en": "Needs something sweet from the café.",
+  "ja": "カフェの甘いものが必要。"
+ },
+ "lv_title": {
+  "en": "%s — level %d",
+  "ja": "%s — レベル %d"
+ },
+ "b_won": {
+  "en": "He let you in",
+  "ja": "彼は心を開いた"
+ },
+ "b_lost": {
+  "en": "He stepped back",
+  "ja": "彼は一歩引いた"
+ },
+ "tr_end_title": {
+  "en": "This is where the trial ends.",
+  "ja": "体験版はここまで"
+ },
+ "tr_end_body": {
+  "en": "Gu Yan's chapters 3–5 and all three of his endings, five more men with five chapters and three endings each, every date and rival standoff, all 18 CGs and growth to level 20 are in the full version. Your trial save carries over.",
+  "ja": "顧言の第3〜5章と三つのエンディング、それぞれ五章・三エンディングを持つほか五人のルート、すべてのデートとライバルとの対峙、全18枚のCG、レベル20までの成長は製品版に収録されています。体験版のセーブデータは製品版に引き継げます。"
+ },
+ "tr_open_store": {
+  "en": "Open the product page",
+  "ja": "製品版のページを開く"
+ },
+ "tr_back": {
+  "en": "Back to the title",
+  "ja": "タイトルに戻る"
+ },
+ "credits_1": {
+  "en": "VESPER — the RPG edition. Flat 404.",
+  "ja": "VESPER — RPG版。Flat 404。"
+ },
+ "s_wit": {
+  "en": "Wit",
+  "ja": "機知"
+ },
+ "s_cha": {
+  "en": "Charm",
+  "ja": "魅力"
+ },
+ "s_grt": {
+  "en": "Poise",
+  "ja": "落ち着き"
+ },
+ "s_stl": {
+  "en": "Patience",
+  "ja": "辛抱"
+ },
+ "sd_wit": {
+  "en": "Banter, remembering, saying it plainly; your nerve pool.",
+  "ja": "軽口・思い出す・率直に言う。胆力の上限。"
+ },
+ "sd_cha": {
+  "en": "Teasing, something sweet, a look that lingers.",
+  "ja": "からかう・甘いもの・見つめる。"
+ },
+ "sd_grt": {
+  "en": "Composure; how much the distance can cost you.",
+  "ja": "平静の上限。距離に耐える力。"
+ },
+ "sd_stl": {
+  "en": "Breathing brings the distance down further.",
+  "ja": "「深呼吸」で距離を大きく縮める。"
+ },
+ "a_deflect": {
+  "en": "Hold back",
+  "ja": "引く"
+ },
+ "a_observe": {
+  "en": "Read him",
+  "ja": "彼を読む"
+ },
+ "a_banter": {
+  "en": "Banter",
+  "ja": "軽口"
+ },
+ "a_tease": {
+  "en": "Tease",
+  "ja": "からかう"
+ },
+ "a_remember": {
+  "en": "Remember",
+  "ja": "思い出す"
+ },
+ "a_sweet": {
+  "en": "Something sweet",
+  "ja": "甘いもの"
+ },
+ "a_push": {
+  "en": "Push him",
+  "ja": "押す"
+ },
+ "a_stall": {
+  "en": "Breathe",
+  "ja": "深呼吸"
+ },
+ "a_item": {
+  "en": "Use item",
+  "ja": "アイテム"
+ },
+ "a_plain": {
+  "en": "Say it plainly",
+  "ja": "率直に言う"
+ },
+ "a_linger": {
+  "en": "A look that lingers",
+  "ja": "長いまなざし"
+ },
+ "ad_deflect": {
+  "en": "Give him room: soften his next move and close the distance a little.",
+  "ja": "彼に余白を：次の一手を和らげ、距離を少し縮める。"
+ },
+ "ad_observe": {
+  "en": "Watch him: reveals his tells (what reaches him).",
+  "ja": "彼を見る：弱いところ（彼に届くもの）が分かる。"
+ },
+ "ad_banter": {
+  "en": "Quick and light. Wit.",
+  "ja": "軽やかに切り返す。機知。"
+ },
+ "ad_tease": {
+  "en": "Warmth with a smile in it. Charm.",
+  "ja": "笑みを含んだ温かさ。魅力。"
+ },
+ "ad_remember": {
+  "en": "Bring up something only the two of you know. Closes the distance. Needs a keepsake.",
+  "ja": "二人だけが知っていることを持ち出す。距離が縮む。思い出の品が必要。"
+ },
+ "ad_sweet": {
+  "en": "Share something from the café. Charm. Needs a treat.",
+  "ja": "カフェの甘いものを分ける。魅力。お菓子が必要。"
+ },
+ "ad_push": {
+  "en": "Ask for more than he is offering. Hits hard — and he remembers: the distance grows faster for the rest of the date.",
+  "ja": "彼が差し出す以上を求める。強く響くが、彼は忘れない：この先、距離は速く広がる。"
+ },
+ "ad_stall": {
+  "en": "Slow down and let the quiet work. The distance falls; a little composure back.",
+  "ja": "ゆっくりと、沈黙に任せる。距離が縮み、平静が少し戻る。"
+ },
+ "ad_item": {
+  "en": "Use something from your bag.",
+  "ja": "バッグの中のものを使う。"
+ },
+ "ad_plain": {
+  "en": "Say the true thing, without decoration. Closes the distance.",
+  "ja": "飾らずに本当のことを言う。距離が縮む。"
+ },
+ "ad_linger": {
+  "en": "Hold his eyes a beat longer than you should. Closes the distance.",
+  "ja": "少しだけ長く、彼の目を見つめる。距離が縮む。"
+ },
+ "br_sharp": {
+  "en": "Sharp",
+  "ja": "鋭さ"
+ },
+ "br_sweet": {
+  "en": "Sweet",
+  "ja": "甘さ"
+ },
+ "sk_quick": {
+  "en": "Quick tongue",
+  "ja": "回る舌"
+ },
+ "skd_quick": {
+  "en": "Banter +30%.",
+  "ja": "軽口 +30%。"
+ },
+ "sk_steady": {
+  "en": "Steady heart",
+  "ja": "揺れない心"
+ },
+ "skd_steady": {
+  "en": "Composure +10.",
+  "ja": "平静 +10。"
+ },
+ "sk_noticing": {
+  "en": "Noticing",
+  "ja": "気づく人"
+ },
+ "skd_noticing": {
+  "en": "Wit +2, Remember +20%.",
+  "ja": "機知 +2、思い出す +20%。"
+ },
+ "sk_plain_sk": {
+  "en": "Plain words",
+  "ja": "率直な言葉"
+ },
+ "skd_plain_sk": {
+  "en": "Learn 'Say it plainly'.",
+  "ja": "「率直に言う」を覚える。"
+ },
+ "sk_candour": {
+  "en": "Candour",
+  "ja": "まっすぐさ"
+ },
+ "skd_candour": {
+  "en": "Say it plainly +40%, Remember +20%.",
+  "ja": "率直に言う +40%、思い出す +20%。"
+ },
+ "sk_warm": {
+  "en": "Warm smile",
+  "ja": "温かい笑み"
+ },
+ "skd_warm": {
+  "en": "Tease +30%.",
+  "ja": "からかう +30%。"
+ },
+ "sk_linger_sk": {
+  "en": "Eye contact",
+  "ja": "目を合わせる"
+ },
+ "skd_linger_sk": {
+  "en": "Learn 'A look that lingers'.",
+  "ja": "「長いまなざし」を覚える。"
+ },
+ "sk_poise_sk": {
+  "en": "Grace",
+  "ja": "しなやかさ"
+ },
+ "skd_poise_sk": {
+  "en": "Charm +2.",
+  "ja": "魅力 +2。"
+ },
+ "sk_unhurried": {
+  "en": "Unhurried",
+  "ja": "急がない人"
+ },
+ "skd_unhurried": {
+  "en": "Breathe +40%, A look that lingers +20%.",
+  "ja": "深呼吸 +40%、長いまなざし +20%。"
+ },
+ "sk_glow": {
+  "en": "Glow",
+  "ja": "輝き"
+ },
+ "skd_glow": {
+  "en": "Tease +40%, A look that lingers +30%.",
+  "ja": "からかう +40%、長いまなざし +30%。"
+ },
+ "i_coffee": {
+  "en": "Café latte",
+  "ja": "カフェラテ"
+ },
+ "id_coffee": {
+  "en": "Restores 16 composure.",
+  "ja": "平静を16回復。"
+ },
+ "i_cake": {
+  "en": "Slice of cake",
+  "ja": "ケーキひと切れ"
+ },
+ "id_cake": {
+  "en": "Restores 28 composure.",
+  "ja": "平静を28回復。"
+ },
+ "i_tea": {
+  "en": "Mint tea",
+  "ja": "ミントティー"
+ },
+ "id_tea": {
+  "en": "Restores 8 nerve.",
+  "ja": "胆力を8回復。"
+ },
+ "i_wine": {
+  "en": "A glass of wine",
+  "ja": "グラスワイン"
+ },
+ "id_wine": {
+  "en": "Restores 14 nerve.",
+  "ja": "胆力を14回復。"
+ },
+ "i_macarons": {
+  "en": "Macarons",
+  "ja": "マカロン"
+ },
+ "id_macarons": {
+  "en": "A box from the café. For 'Something sweet'.",
+  "ja": "カフェの箱入り。「甘いもの」に使う。"
+ },
+ "i_transit": {
+  "en": "Night-bus pass",
+  "ja": "深夜バスの定期"
+ },
+ "id_transit": {
+  "en": "Gets you across the city after dark.",
+  "ja": "夜の街を渡るための定期。"
+ },
+ "i_blouse": {
+  "en": "Silk blouse",
+  "ja": "シルクのブラウス"
+ },
+ "id_blouse": {
+  "en": "Office-to-evening. Wit +1.",
+  "ja": "仕事帰りにも。機知 +1。"
+ },
+ "i_trench": {
+  "en": "Trench coat",
+  "ja": "トレンチコート"
+ },
+ "id_trench": {
+  "en": "For rain and long walks. Poise +1, Patience +1, Breathe +20%.",
+  "ja": "雨と長い散歩に。落ち着き +1、辛抱 +1、深呼吸 +20%。"
+ },
+ "i_dress": {
+  "en": "Little black dress",
+  "ja": "黒のワンピース"
+ },
+ "id_dress": {
+  "en": "Charm +2, Tease +20%.",
+  "ja": "魅力 +2、からかう +20%。"
+ },
+ "i_slip": {
+  "en": "Wine-red slip dress",
+  "ja": "ワインレッドのスリップドレス"
+ },
+ "id_slip": {
+  "en": "Charm +3, Tease +30%, A look that lingers +20%.",
+  "ja": "魅力 +3、からかう +30%、長いまなざし +20%。"
+ },
+ "i_his_shirt": {
+  "en": "His shirt",
+  "ja": "彼のシャツ"
+ },
+ "id_his_shirt": {
+  "en": "Too big, and yours now. Charm +2, Poise +2, A look that lingers +30%, Say it plainly +20%.",
+  "ja": "大きすぎて、もうあなたのもの。魅力 +2、落ち着き +2、長いまなざし +30%、率直に言う +20%。"
+ },
+ "i_earrings": {
+  "en": "Pearl earrings",
+  "ja": "パールのイヤリング"
+ },
+ "id_earrings": {
+  "en": "Charm +1.",
+  "ja": "魅力 +1。"
+ },
+ "i_scarf": {
+  "en": "Silk scarf",
+  "ja": "シルクのスカーフ"
+ },
+ "id_scarf": {
+  "en": "Poise +1, Breathe +20%.",
+  "ja": "落ち着き +1、深呼吸 +20%。"
+ },
+ "i_perfume": {
+  "en": "Evening perfume",
+  "ja": "夜の香水"
+ },
+ "id_perfume": {
+  "en": "Charm +1, Tease +20%, A look that lingers +20%.",
+  "ja": "魅力 +1、からかう +20%、長いまなざし +20%。"
+ },
+ "i_phone": {
+  "en": "Your phone",
+  "ja": "スマートフォン"
+ },
+ "id_phone": {
+  "en": "Wit +1.",
+  "ja": "機知 +1。"
+ },
+ "i_notebook": {
+  "en": "Pocket notebook",
+  "ja": "手帳"
+ },
+ "id_notebook": {
+  "en": "You write down what he says. Wit +1, Remember +30%.",
+  "ja": "彼の言葉を書き留める。機知 +1、思い出す +30%。"
+ },
+ "i_umbrella": {
+  "en": "Umbrella",
+  "ja": "傘"
+ },
+ "id_umbrella": {
+  "en": "Patience +1, Breathe +20%.",
+  "ja": "辛抱 +1、深呼吸 +20%。"
+ },
+ "r_home": {
+  "en": "Your flat",
+  "ja": "あなたの部屋"
+ },
+ "r_street": {
+  "en": "The city at night",
+  "ja": "夜の街"
+ },
+ "r_cafe": {
+  "en": "The late café",
+  "ja": "深夜のカフェ"
+ },
+ "hs_wardrobe": {
+  "en": "the wardrobe",
+  "ja": "クローゼット"
+ },
+ "hs_desk": {
+  "en": "your desk",
+  "ja": "机"
+ },
+ "hs_mirror": {
+  "en": "the mirror",
+  "ja": "鏡"
+ },
+ "hs_counter": {
+  "en": "the counter",
+  "ja": "カウンター"
+ },
+ "hs_corner": {
+  "en": "the window seat",
+  "ja": "窓際の席"
+ },
+ "hs_board": {
+  "en": "the noticeboard",
+  "ja": "掲示板"
+ },
+ "hs_stall": {
+  "en": "the flower stall",
+  "ja": "花屋の屋台"
+ },
+ "hs_kiosk": {
+  "en": "the kiosk",
+  "ja": "キオスク"
+ },
+ "hs_b1": {
+  "en": "Go to him",
+  "ja": "彼のもとへ"
+ },
+ "hs_b2": {
+  "en": "Stay a little longer",
+  "ja": "もう少しだけ"
+ },
+ "hs_b3": {
+  "en": "One more thing",
+  "ja": "もうひとつだけ"
+ },
+ "hs_end": {
+  "en": "Before the night ends",
+  "ja": "夜が終わる前に"
+ },
+ "ev_wardrobe": {
+  "en": "You open the wardrobe and stand there longer than you need to, deciding who you are going to be tonight.",
+  "ja": "クローゼットを開け、必要以上に長く立ち尽くす。今夜の自分を決めるために。"
+ },
+ "ev_wardrobe_n": {
+  "en": "Nothing new in here — but the mirror says you look like someone who is expected somewhere.",
+  "ja": "新しいものはない — でも鏡の中のあなたは、どこかで待たれている人の顔をしている。"
+ },
+ "ev_desk": {
+  "en": "Your desk, the half-finished things on it, and the one thing you came back for.",
+  "ja": "机の上の、やりかけのものたち。そして取りに戻ったひとつ。"
+ },
+ "ev_counter": {
+  "en": "The barista knows your order by now, and adds something you didn't ask for. \"You've got a look,\" she says. \"Go on.\"",
+  "ja": "バリスタはもうあなたの注文を覚えていて、頼んでいないものをひとつ添える。「いい顔してる。行っておいで」"
+ },
+ "ev_corner": {
+  "en": "You sit by the window for a minute and let the evening rearrange itself. Something in your bag has his name on it now.",
+  "ja": "窓際に一分だけ座り、夜が形を変えるのを待つ。バッグの中のあるものは、もう彼の名前がついている。"
+ },
+ "ev_board": {
+  "en": "Flyers, lost cats, a poem someone pinned up and never claimed. You take what you need and leave the poem.",
+  "ja": "チラシ、迷い猫、誰かが貼って取りに来なかった詩。必要なものだけ取って、詩は残していく。"
+ },
+ "ev_stall": {
+  "en": "The flower seller wraps a single stem for you without asking who it is for.",
+  "ja": "花売りは誰に贈るのかも聞かずに、一輪だけ包んでくれる。"
+ },
+ "ev_kiosk": {
+  "en": "A late paper, a bus pass top-up, a mint. The city keeps its small promises.",
+  "ja": "遅い新聞、バス定期のチャージ、ミントひとつ。街は小さな約束を守る。"
+ },
+ "ev_heat_gate": {
+  "en": "Whatever happens next is a question, and he asks it out loud. You can say yes. You can say not tonight. Both are allowed.",
+  "ja": "次に起きることは問いかけで、彼はそれを声に出して尋ねる。はいと言ってもいい。今夜はやめておくと言ってもいい。どちらも許されている。"
+ },
+ "ev_heat_locked": {
+  "en": "(Trust is not high enough yet for this — the scene stays closed, and so does nothing else. You can still say not tonight.)",
+  "ja": "（まだ信頼が足りない — この場面は閉じたまま。他に失うものはない。「今夜はやめておく」はいつでも選べる。）"
+ },
+ "ev_trust_missed": {
+  "en": "He let you in — but you got there the long way round, and the distance is still in the room. (Win a date with Distance under 60 for Trust.)",
+  "ja": "彼は心を開いた — でも遠回りだった。距離はまだ部屋に残っている。（距離60未満で勝つと信頼が上がる）"
+ },
+ "ev_chapter_cg": {
+  "en": "You will keep this one.",
+  "ja": "これは、ずっと覚えている。"
+ },
+ "ev_ending": {
+  "en": "— Ending —",
+  "ja": "— エンディング —"
+ },
+ "nt_prologue": {
+  "en": "VESPER",
+  "ja": "VESPER"
+ },
+ "ns_prologue": {
+  "en": "The evening star is up. Six doors in the city are still lit.",
+  "ja": "宵の明星が昇った。街にはまだ灯りのついた扉が六つある。"
+ },
+ "ev_pro_1": {
+  "en": "Evening. The city switches its lights on one window at a time, and somewhere in it six men are still awake for reasons they have not told anyone.",
+  "ja": "夜。街は窓ひとつずつ灯りを点けていく。そのどこかで、六人の男が誰にも言っていない理由で、まだ起きている。"
+ },
+ "ev_pro_2": {
+  "en": "Everyone you will meet tonight is an adult, and so are you. Nothing happens here that is not asked for and answered yes.",
+  "ja": "今夜出会う人はみな大人で、あなたもそう。ここでは、尋ねられ「はい」と答えられたこと以外は何も起きない。"
+ },
+ "ev_pro_3": {
+  "en": "Whose night do you walk into?",
+  "ja": "誰の夜に歩み入る？"
+ },
+ "ev_route_joined": {
+  "en": "You step out into the evening. He doesn't know yet that you are on your way.",
+  "ja": "あなたは夜へ踏み出す。彼はまだ、あなたが向かっていることを知らない。"
+ },
+ "pre_doorman": {
+  "en": "A doorman with an earpiece and a clipboard steps into your path. \"Name? You're not on the list.\"",
+  "ja": "イヤーピースとクリップボードのドアマンが行く手を塞ぐ。「お名前は？ リストにありませんね」"
+ },
+ "post_doorman": {
+  "en": "He checks the list again, finds a reason to have made a mistake, and holds the door. \"Have a good night, miss.\"",
+  "ja": "彼はリストを見直し、自分の間違いだった理由を見つけて、扉を押さえる。「良い夜を」"
+ },
+ "pre_paparazzo": {
+  "en": "A flash goes off in your face. A man with a long lens grins. \"Who are you to him? Give me a name and I'll make you famous.\"",
+  "ja": "目の前でフラッシュが光る。望遠レンズの男がにやりと笑う。「彼とはどういう関係？ 名前をくれたら有名にしてやるよ」"
+ },
+ "post_paparazzo": {
+  "en": "He lowers the camera, deletes the frame in front of you, and goes to stand somewhere else.",
+  "ja": "彼はカメラを下ろし、あなたの目の前でその一枚を消して、別の場所へ立ち去る。"
+ },
+ "pre_columnist": {
+  "en": "A woman in a trench coat falls into step beside you, phone already recording. \"Off the record — how long has this been going on?\"",
+  "ja": "トレンチコートの女があなたの横に並ぶ。スマホはもう録音中。「オフレコで — いつから続いてるの？」"
+ },
+ "post_columnist": {
+  "en": "She stops the recording, looks at you for a long second, and laughs. \"Fine. Keep it. Some things are better not printed.\"",
+  "ja": "彼女は録音を止め、しばらくあなたを見て、笑う。「いいわ。取っておきなさい。書かないほうがいいこともある」"
+ },
+ "bark_doorman_1": {
+  "en": "\"I don't make the list. I just read it.\"",
+  "ja": "「リストを作るのは俺じゃない。読むだけだ」"
+ },
+ "bark_doorman_2": {
+  "en": "He taps the clipboard, slowly.",
+  "ja": "彼はゆっくりとクリップボードを叩く。"
+ },
+ "bark_doorman_3": {
+  "en": "\"Lot of people say they know him.\"",
+  "ja": "「彼の知り合いだって言う人は多いんですよ」"
+ },
+ "bark_paparazzo_1": {
+  "en": "\"Just one smile. For the readers.\"",
+  "ja": "「一枚だけ笑って。読者のために」"
+ },
+ "bark_paparazzo_2": {
+  "en": "The shutter clicks three times, fast.",
+  "ja": "シャッターが三度、素早く鳴る。"
+ },
+ "bark_paparazzo_3": {
+  "en": "\"Everyone's for sale, sweetheart. What's your price?\"",
+  "ja": "「誰にだって値段はあるさ。あんたのは？」"
+ },
+ "bark_columnist_1": {
+  "en": "\"I'll find out anyway. Better from you.\"",
+  "ja": "「どうせ調べはつくの。あなたから聞いたほうがいい」"
+ },
+ "bark_columnist_2": {
+  "en": "She smiles like she has already written the headline.",
+  "ja": "彼女はもう見出しを書き終えたような顔で微笑む。"
+ },
+ "bark_columnist_3": {
+  "en": "\"Does he know you're this interesting?\"",
+  "ja": "「あなたがこんなに面白い人だって、彼は知ってるの？」"
+ },
+ "e_doorman": {
+  "en": "The doorman",
+  "ja": "ドアマン"
+ },
+ "e_paparazzo": {
+  "en": "A paparazzo",
+  "ja": "パパラッチ"
+ },
+ "e_columnist": {
+  "en": "The gossip columnist",
+  "ja": "ゴシップ記者"
+ },
+ "hb_open_1": {
+  "en": "He left the thread open. He was hoping.",
+  "ja": "彼は話の糸を切らずにおいた。期待していたのだ。"
+ },
+ "hb_open_2": {
+  "en": "You're back, and it's late, and he noticed both.",
+  "ja": "あなたは戻ってきた。夜も遅い。彼はその両方に気づいている。"
+ },
+ "hb_read_1": {
+  "en": "One more word and he says it out loud.",
+  "ja": "あとひと言で、彼はそれを口にする。"
+ },
+ "hb_read_2": {
+  "en": "He's right at the edge of asking.",
+  "ja": "彼は今にも尋ねそうだ。"
+ },
+ "hb_win_1": {
+  "en": "He'll think about that all night.",
+  "ja": "彼は一晩中、そのことを考えるだろう。"
+ },
+ "hb_win_2": {
+  "en": "That landed. You can feel him go still.",
+  "ja": "届いた。彼が静かになるのが分かる。"
+ },
+ "hb_win_3": {
+  "en": "Something just shifted, and you both felt it.",
+  "ja": "何かが動いた。二人ともそれを感じた。"
+ },
+ "vb_stage_1": {
+  "en": "Something in him just gave way.",
+  "ja": "彼の中で何かがほどけた。"
+ },
+ "vb_stage_2": {
+  "en": "He stopped pretending he wasn't waiting.",
+  "ja": "彼は待っていないふりをやめた。"
+ },
+ "vb_stage_3": {
+  "en": "He's telling you the thing he doesn't tell anyone.",
+  "ja": "彼は誰にも言わないことを、あなたに話している。"
+ },
+ "vb_stage_4": {
+  "en": "You're not being careful any more. Neither is he.",
+  "ja": "あなたはもう慎重じゃない。彼もそう。"
+ },
+ "vb_win_big_1": {
+  "en": "He kept every word you ever gave him. All of them.",
+  "ja": "彼はあなたがくれた言葉を全部取っておいた。ひとつ残らず。"
+ },
+ "vb_win_big_2": {
+  "en": "You reached the end of him, and he stayed.",
+  "ja": "あなたは彼のいちばん奥まで辿り着き、彼はそこに留まった。"
+ },
+ "vb_unlock_1": {
+  "en": "A new chapter just opened for you.",
+  "ja": "新しい章があなたのために開いた。"
+ },
+ "vb_unlock_2": {
+  "en": "Someone else has been waiting his turn.",
+  "ja": "別の誰かが、自分の番を待っていた。"
+ },
+ "vb_streak_1": {
+  "en": "Three in a row. You know exactly what he needs.",
+  "ja": "三連続。彼に何が必要か、あなたはもう分かっている。"
+ },
+ "vb_streak_2": {
+  "en": "You're reading him like you wrote him.",
+  "ja": "まるで自分で書いた人物のように、彼を読めている。"
+ },
+ "vb_fail_1": {
+  "en": "He's gone quiet. Let him have the moment.",
+  "ja": "彼は黙り込んだ。その時間を彼にあげて。"
+ },
+ "vb_fail_2": {
+  "en": "That one missed. Say it another way.",
+  "ja": "今のは外れ。別の言い方で。"
+ },
+ "vb_idle_1": {
+  "en": "He's still on the other end of this.",
+  "ja": "彼はまだ、この向こう側にいる。"
+ },
+ "vb_idle_2": {
+  "en": "Still awake? So is he.",
+  "ja": "まだ起きてる？ 彼もよ。"
+ },
+ "g_locked": {
+  "en": "Locked — Trust %d",
+  "ja": "未開放 — 信頼 %d"
+ },
+ "bark_hold_guyan_1": {
+  "en": "He nods, slowly, the way he does when he is memorising something.",
+  "ja": "彼はゆっくりと頷く。何かを覚えようとする時の仕草だ。"
+ },
+ "bark_hold_guyan_2": {
+  "en": "\"Take your time,\" he says. \"The rain isn't in a hurry either.\"",
+  "ja": "「ゆっくりでいいよ」と彼は言う。「雨も急いでないから」"
+ },
+ "bark_hold_guyan_3": {
+  "en": "Dango settles between you, and he takes that as permission to stay quiet a while.",
+  "ja": "団子が二人のあいだに落ち着く。彼はそれを、しばらく黙っていていい許しだと受け取る。"
+ },
+ "bark_hold_guyan_4": {
+  "en": "\"I'd like to hear the rest of that,\" he says, and goes pink at his own boldness.",
+  "ja": "「その続きを聞きたいな」と彼は言い、自分の大胆さに頬を染める。"
+ },
+ "bark_hold_ethan_1": {
+  "en": "He doesn't fill the silence. He lets it sit, and watches what you do with it.",
+  "ja": "彼は沈黙を埋めない。ただそこに置き、あなたがそれをどうするかを見ている。"
+ },
+ "bark_hold_ethan_2": {
+  "en": "\"Keep going,\" he says. \"I'm not going anywhere tonight.\"",
+  "ja": "「続けて」と彼は言う。「今夜はどこにも行かない」"
+ },
+ "bark_hold_ethan_3": {
+  "en": "He turns the glass a quarter turn on the table and doesn't drink from it.",
+  "ja": "彼はグラスを机の上で四分の一回転させ、口はつけない。"
+ },
+ "bark_hold_ethan_4": {
+  "en": "\"Say that again,\" he says. \"Slower. I want to be sure I heard it.\"",
+  "ja": "「もう一度言って」と彼は言う。「ゆっくり。聞き間違いじゃないか確かめたい」"
+ },
+ "bark_hold_luxingye_1": {
+  "en": "He drops his chin onto the back of the chair and grins up at you. \"Go on. I'm listening.\"",
+  "ja": "彼は椅子の背にあごを乗せて、にっと見上げる。「どうぞ。聞いてるよ」"
+ },
+ "bark_hold_luxingye_2": {
+  "en": "\"You know nobody talks to me like this,\" he says. \"Don't stop on my account.\"",
+  "ja": "「こんなふうに話しかけてくる人、いないんだ」と彼は言う。「俺のために止めないで」"
+ },
+ "bark_hold_luxingye_3": {
+  "en": "He plays two notes, stops, and looks at you instead of the strings.",
+  "ja": "彼は二音だけ弾いて止め、弦ではなくあなたを見る。"
+ },
+ "bark_hold_luxingye_4": {
+  "en": "\"Say more things,\" he says. \"I like your voice better than the room.\"",
+  "ja": "「もっと話して」と彼は言う。「この部屋より、君の声のほうが好きだ」"
+ },
+ "bark_hold_liam_1": {
+  "en": "He leans back against the tailgate and gives you his whole attention, which is a lot of attention.",
+  "ja": "彼は荷台にもたれて、あなたに全部の注意を向ける。それはかなりの量の注意だ。"
+ },
+ "bark_hold_liam_2": {
+  "en": "\"Keep talking,\" he says. \"I've got nowhere I need to be till six.\"",
+  "ja": "「話してて」と彼は言う。「六時まで、どこにも行く用はないから」"
+ },
+ "bark_hold_liam_3": {
+  "en": "Biscuit sighs and flops across both your feet, pinning you there.",
+  "ja": "ビスケットがため息をついて二人の足の上に寝転び、あなたをそこに留める。"
+ },
+ "bark_hold_liam_4": {
+  "en": "\"That's the good stuff,\" he says. \"Say the rest of it.\"",
+  "ja": "「そこがいいとこなんだ」と彼は言う。「続きを言って」"
+ },
+ "bark_hold_adrian_1": {
+  "en": "He doesn't answer. He watches you, which from him is the same as answering.",
+  "ja": "彼は答えない。あなたを見ている。彼の場合、それが答えと同じだ。"
+ },
+ "bark_hold_adrian_2": {
+  "en": "\"Don't stop,\" he says, short. \"I'm not bored yet.\"",
+  "ja": "「止めるな」と彼は短く言う。「まだ飽きてない」"
+ },
+ "bark_hold_adrian_3": {
+  "en": "He mutes the strings with his palm so he can hear you better, and pretends he didn't.",
+  "ja": "彼は手のひらで弦を押さえて、あなたの声がよく聞こえるようにする。そして、そうしなかったふりをする。"
+ },
+ "bark_hold_adrian_4": {
+  "en": "\"Again,\" he says. \"That part. Say it again.\"",
+  "ja": "「もう一回」と彼は言う。「そこ。もう一回言って」"
+ },
+ "bark_hold_fushen_1": {
+  "en": "He says nothing. The silence is not a wall this time; it is an invitation, and you can tell the difference now.",
+  "ja": "彼は何も言わない。今度の沈黙は壁ではなく招待で、あなたにはもうその違いが分かる。"
+ },
+ "bark_hold_fushen_2": {
+  "en": "\"Continue,\" he says. It is the closest he gets to please.",
+  "ja": "「続けろ」と彼は言う。彼にとって「お願い」に最も近い言葉だ。"
+ },
+ "bark_hold_fushen_3": {
+  "en": "He sets his glass down without a sound and waits.",
+  "ja": "彼は音を立てずにグラスを置き、待つ。"
+ },
+ "bark_hold_fushen_4": {
+  "en": "\"I'm listening,\" he says, and he is — completely, which from him is rare.",
+  "ja": "「聞いている」と彼は言う。そして本当に聞いている — 完全に。彼にしては珍しく。"
+ }
+}

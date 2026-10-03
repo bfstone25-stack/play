@@ -1,0 +1,2712 @@
+{
+ "guyan": {
+  "title_en": "The Line Pressed Between Pages",
+  "title_zh": "夹在书里的那句话",
+  "logline_en": "You duck into a second-hand bookshop before closing to escape the rain — and find a line written on the flyleaf that reads like it was meant for you.",
+  "cg_heat": "cg_guyan_heat",
+  "hold_en": [
+   "He nods, slowly, the way he does when he is memorising something.",
+   "\"Take your time,\" he says. \"The rain isn't in a hurry either.\"",
+   "Dango settles between you, and he takes that as permission to stay quiet a while.",
+   "\"I'd like to hear the rest of that,\" he says, and goes pink at his own boldness."
+  ],
+  "chapters": [
+   {
+    "file": "guyan_c1",
+    "title_en": "Out of the Rain",
+    "title_zh": "避雨",
+    "goal_en": "Make him want to keep the lights on a little longer for you",
+    "scene_en": "a bookshop at dusk, warm lamplight, soft rain outside",
+    "cg": null,
+    "open": "guyan_c1:1-2",
+    "beats": [
+     {
+      "id": "b1_dango",
+      "range": "guyan_c1:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_book",
+      "range": "guyan_c1:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 3
+     },
+     {
+      "id": "b3_close",
+      "range": "guyan_c1:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c1a",
+      "prompt": "guyan_c1:100-100",
+      "options": [
+       {
+        "text_en": "\"Did you write it?\"",
+        "aff": 3,
+        "flag": "curious",
+        "reply": "guyan_c1:101-101",
+        "added": false
+       },
+       {
+        "text_en": "(Read the line aloud, softly.)",
+        "aff": 4,
+        "flag": "gentle",
+        "reply": "guyan_c1:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"I'll buy this one.\"",
+        "aff": 1,
+        "flag": "guarded",
+        "reply": "guyan_c1:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c1b",
+      "prompt": "guyan_c1:120-120",
+      "options": [
+       {
+        "text_en": "\"I'll return it another day, then.\"",
+        "aff": 3,
+        "flag": "will_return",
+        "reply": "guyan_c1:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"It's fine — a walk in the rain isn't so bad.\"",
+        "aff": 1,
+        "flag": "distance",
+        "reply": "guyan_c1:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Then what about you?\"",
+        "aff": 4,
+        "flag": "gentle",
+        "reply": "guyan_c1:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "guyan_c2",
+    "title_en": "The One Who Came Back",
+    "title_zh": "还伞的人",
+    "goal_en": "Find out why he keeps this shop all alone",
+    "scene_en": "the bookshop days later, afternoon light slanting in, dust drifting in the beam",
+    "cg": "cg_guyan_ch2",
+    "open": "guyan_c2:1-1",
+    "beats": [
+     {
+      "id": "b1_tea",
+      "range": "guyan_c2:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_shop",
+      "range": "guyan_c2:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 12
+     },
+     {
+      "id": "b3_note",
+      "range": "guyan_c2:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c2a",
+      "prompt": "guyan_c2:100-100",
+      "options": [
+       {
+        "text_en": "\"I think it's the only place lately I've wanted to stay.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "guyan_c2:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"How is keeping what you love ever a waste?\"",
+        "aff": 4,
+        "flag": "gentle",
+        "reply": "guyan_c2:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"What do you think?\"",
+        "aff": 2,
+        "flag": "curious",
+        "reply": "guyan_c2:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c2b",
+      "prompt": "guyan_c2:120-120",
+      "options": [
+       {
+        "text_en": "\"I'll keep it.\"",
+        "aff": 4,
+        "flag": "will_return",
+        "reply": "guyan_c2:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"Did you write it for me?\"",
+        "aff": 5,
+        "flag": "bold",
+        "reply": "guyan_c2:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Keep it — I'll come read it next time.\"",
+        "aff": 3,
+        "flag": "will_return",
+        "reply": "guyan_c2:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "guyan_c3",
+    "title_en": "The Umbrella in the Rain",
+    "title_zh": "雨夜送伞",
+    "goal_en": "Read what he won't say out loud",
+    "scene_en": "a street corner late at night, rain pouring, the bookshop's lamp the only light on",
+    "cg": null,
+    "open": "guyan_c3:1-1",
+    "beats": [
+     {
+      "id": "b1_umbrella",
+      "range": "guyan_c3:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_confess_edge",
+      "range": "guyan_c3:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 28
+     }
+    ],
+    "choices": [
+     {
+      "id": "c3a",
+      "prompt": "guyan_c3:100-100",
+      "options": [
+       {
+        "text_en": "\"Then don't. Let me say it first.\"",
+        "aff": 6,
+        "flag": "gentle",
+        "reply": "guyan_c3:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I'll wait for you to finish. I'm not in a hurry.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "guyan_c3:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"First hold the umbrella straight — stop getting soaked.\"",
+        "aff": 3,
+        "flag": "gentle",
+        "reply": "guyan_c3:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c3b",
+      "prompt": "guyan_c3:120-120",
+      "options": [
+       {
+        "text_en": "\"Come up for hot tea first — you're drenched.\"",
+        "aff": 4,
+        "flag": "closer",
+        "reply": "guyan_c3:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"Tomorrow… I'll come find you at the shop.\"",
+        "aff": 3,
+        "flag": "will_return",
+        "reply": "guyan_c3:122-122",
+        "added": false
+       },
+       {
+        "text_en": "(Rise on your toes and hold the umbrella over his head.)",
+        "aff": 5,
+        "flag": "bold",
+        "reply": "guyan_c3:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "guyan_c4",
+    "title_en": "The Shop That Almost Wasn't",
+    "title_zh": "书店要没了",
+    "goal_en": "Decide whether to help him fight for this shop",
+    "scene_en": "inside the shop, an opened letter on the table, Dango circling him uneasily",
+    "cg": null,
+    "open": "guyan_c4:1-1",
+    "beats": [
+     {
+      "id": "b1_letter",
+      "range": "guyan_c4:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_boxes",
+      "range": "guyan_c4:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 44
+     },
+     {
+      "id": "bx_after_hours",
+      "range": "guyan_c4:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 36
+     }
+    ],
+    "choices": [
+     {
+      "id": "c4a",
+      "prompt": "guyan_c4:100-100",
+      "options": [
+       {
+        "text_en": "\"Don't sign it. I'll help you find another way.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "guyan_c4:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"It's your shop. If you want to keep it, keep it. I'm on your side.\"",
+        "aff": 5,
+        "flag": "stay_together",
+        "reply": "guyan_c4:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Sign it or not, you won't lose this place — it's already inside you.\"",
+        "aff": 4,
+        "flag": "gentle",
+        "reply": "guyan_c4:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Make the tea. I'll stay for the tea.",
+        "aff": 3,
+        "flag": "slow_ch4",
+        "reply": "guyan_c4:104-104",
+        "added": true
+       }
+      ]
+     },
+     {
+      "id": "c4b",
+      "prompt": "guyan_c4:120-120",
+      "options": [
+       {
+        "text_en": "\"Then don't. This one's mine now.\"",
+        "aff": 5,
+        "flag": "stay_together",
+        "reply": "guyan_c4:121-121",
+        "added": false
+       },
+       {
+        "text_en": "(Cross to him and put the book back on the shelf together.)",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "guyan_c4:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Keep it, and you keep every beginning we've had.\"",
+        "aff": 4,
+        "flag": "gentle",
+        "reply": "guyan_c4:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "guyan_c5",
+    "title_en": "The Line Written For You",
+    "title_zh": "写给你的那句话",
+    "goal_en": "Hear him finish the sentence he never could",
+    "scene_en": "the bookshop reopened, a new sign above the door, clear skies outside the window",
+    "cg": null,
+    "open": "guyan_c5:1-1",
+    "beats": [
+     {
+      "id": "b1_newline",
+      "range": "guyan_c5:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_ask",
+      "range": "guyan_c5:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 62
+     },
+     {
+      "id": "bx_morning",
+      "range": "guyan_c5:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 52
+     }
+    ],
+    "choices": [
+     {
+      "id": "c5a",
+      "prompt": "guyan_c5:100-100",
+      "options": [
+       {
+        "text_en": "(Take his hand so he stops trembling.)",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "guyan_c5:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Whatever you say — my answer is yes.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "guyan_c5:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"The truth is, I already understood it.\"",
+        "aff": 5,
+        "flag": "gentle",
+        "reply": "guyan_c5:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Finish the sentence first. Everything else can wait.",
+        "aff": 3,
+        "flag": "slow_ch5",
+        "reply": "guyan_c5:104-104",
+        "added": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "endings": [
+   {
+    "id": "he_forever",
+    "priority": 1,
+    "aff_min": 66,
+    "aff_max": null,
+    "flags_any": [
+     "forever",
+     "stay_together"
+    ],
+    "cg": "cg_guyan_end",
+    "title_en": "Keeping This Lamp Together",
+    "range": "guyan_end:10-15"
+   },
+   {
+    "id": "he_slow",
+    "priority": 2,
+    "aff_min": 52,
+    "aff_max": null,
+    "flags_any": [],
+    "cg": "cg_guyan_end",
+    "title_en": "The Kind of Love That Takes Its Time",
+    "range": "guyan_end:20-25"
+   },
+   {
+    "id": "be_missed",
+    "priority": 3,
+    "aff_min": 0,
+    "aff_max": 30,
+    "flags_any": [],
+    "cg": "cg_guyan_end",
+    "title_en": "Only a Line Between the Pages",
+    "range": "guyan_end:30-35"
+   }
+  ]
+ },
+ "ethan": {
+  "title_en": "The Light on the Top Floor",
+  "title_zh": "顶楼的那盏灯",
+  "logline_en": "You got off on the wrong floor — and walked into the private hour of a man who never stops for anyone.",
+  "cg_heat": "cg_ethan_heat",
+  "hold_en": [
+   "He doesn't fill the silence. He lets it sit, and watches what you do with it.",
+   "\"Keep going,\" he says. \"I'm not going anywhere tonight.\"",
+   "He turns the glass a quarter turn on the table and doesn't drink from it.",
+   "\"Say that again,\" he says. \"Slower. I want to be sure I heard it.\""
+  ],
+  "chapters": [
+   {
+    "file": "ethan_c1",
+    "title_en": "Wrong Floor",
+    "title_zh": "误闯",
+    "goal_en": "Make him remember your name",
+    "scene_en": "the top floor of an office tower at midnight, one office still lit",
+    "cg": null,
+    "open": "ethan_c1:1-2",
+    "beats": [
+     {
+      "id": "b1_call",
+      "range": "ethan_c1:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_blackout",
+      "range": "ethan_c1:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 3
+     },
+     {
+      "id": "b3_name",
+      "range": "ethan_c1:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c1",
+      "prompt": "ethan_c1:100-100",
+      "options": [
+       {
+        "text_en": "\"The elevator isn't fixed yet.\"",
+        "aff": 0,
+        "flag": "guarded",
+        "reply": "ethan_c1:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Because you haven't.\"",
+        "aff": 3,
+        "flag": "bold",
+        "reply": "ethan_c1:102-102",
+        "added": false
+       },
+       {
+        "text_en": "(Say nothing. Just look at him.)",
+        "aff": 1,
+        "flag": "mystery",
+        "reply": "ethan_c1:103-103",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "ethan_c2",
+    "title_en": "Not a Coincidence",
+    "title_zh": "第二次不是巧合",
+    "goal_en": "Find out why he's here every night",
+    "scene_en": "the same rooftop bar, a week later — this time he's expecting you",
+    "cg": "cg_ethan_ch2",
+    "open": "ethan_c2:1-1",
+    "beats": [
+     {
+      "id": "b1_remember",
+      "range": "ethan_c2:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_why_here",
+      "range": "ethan_c2:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 12
+     },
+     {
+      "id": "b3_interrupt",
+      "range": "ethan_c2:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c2",
+      "prompt": "ethan_c2:100-100",
+      "options": [
+       {
+        "text_en": "\"Someone who locked himself on the top floor.\"",
+        "aff": 4,
+        "flag": "sees_him",
+        "reply": "ethan_c2:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Someone who's very good at control.\"",
+        "aff": 2,
+        "flag": "safe",
+        "reply": "ethan_c2:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"I don't know yet. That's why I'm still here.\"",
+        "aff": 3,
+        "flag": "curious",
+        "reply": "ethan_c2:103-103",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "ethan_c3",
+    "title_en": "Where He Shouldn't Be",
+    "title_zh": "他不该在的地方",
+    "goal_en": "See who he is when he's not on the top floor",
+    "scene_en": "a rainy night across town, a small noodle shop still open",
+    "cg": null,
+    "open": "ethan_c3:1-1",
+    "beats": [
+     {
+      "id": "b1_umbrella",
+      "range": "ethan_c3:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_photo",
+      "range": "ethan_c3:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 28
+     }
+    ],
+    "choices": [
+     {
+      "id": "c3",
+      "prompt": "ethan_c3:100-100",
+      "options": [
+       {
+        "text_en": "\"Have a safe flight.\"",
+        "aff": 0,
+        "flag": "distance",
+        "reply": "ethan_c3:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Why are you telling me this?\"",
+        "aff": 5,
+        "flag": "direct",
+        "reply": "ethan_c3:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Then I'll come find you Thursday.\"",
+        "aff": 4,
+        "flag": "bold",
+        "reply": "ethan_c3:103-103",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "ethan_c4",
+    "title_en": "The Fracture",
+    "title_zh": "裂缝",
+    "goal_en": "Decide whether to stand on his side",
+    "scene_en": "a corporate gala, flashbulbs and champagne",
+    "cg": null,
+    "open": "ethan_c4:1-1",
+    "beats": [
+     {
+      "id": "b1_accusation",
+      "range": "ethan_c4:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_leave",
+      "range": "ethan_c4:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 44
+     },
+     {
+      "id": "bx_after_hours",
+      "range": "ethan_c4:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 36
+     }
+    ],
+    "choices": [
+     {
+      "id": "c4",
+      "prompt": "ethan_c4:100-100",
+      "options": [
+       {
+        "text_en": "\"Is the document real?\"",
+        "aff": 6,
+        "flag": "trust",
+        "reply": "ethan_c4:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Not here.\"",
+        "aff": 3,
+        "flag": "protective",
+        "reply": "ethan_c4:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"I don't need to ask.\"",
+        "aff": 5,
+        "flag": "trust",
+        "reply": "ethan_c4:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Not tonight — but don't take me home yet.",
+        "aff": 3,
+        "flag": "slow_ch4",
+        "reply": "ethan_c4:104-104",
+        "added": true
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "ethan_c5",
+    "title_en": "The Light He'd Turn Off",
+    "title_zh": "他愿意关掉的那盏灯",
+    "goal_en": "Get him to say what he actually wants",
+    "scene_en": "back on the top floor — the city below, and the lights off",
+    "cg": null,
+    "open": "ethan_c5:1-1",
+    "beats": [
+     {
+      "id": "b1_offer",
+      "range": "ethan_c5:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_truth",
+      "range": "ethan_c5:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 62
+     },
+     {
+      "id": "bx_morning",
+      "range": "ethan_c5:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 52
+     }
+    ],
+    "choices": [
+     {
+      "id": "c5",
+      "prompt": "ethan_c5:100-100",
+      "options": [
+       {
+        "text_en": "(Wait. Let him finish.)",
+        "aff": 6,
+        "flag": "patient",
+        "reply": "ethan_c5:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"You can say it. I'm here.\"",
+        "aff": 7,
+        "flag": "sacrifice",
+        "reply": "ethan_c5:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Take New York.\"",
+        "aff": -4,
+        "flag": "pushed_away",
+        "reply": "ethan_c5:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Slower than this. I want the whole thing.",
+        "aff": 3,
+        "flag": "slow_ch5",
+        "reply": "ethan_c5:104-104",
+        "added": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "endings": [
+   {
+    "id": "he_stay",
+    "priority": 1,
+    "aff_min": 68,
+    "aff_max": null,
+    "flags_any": [
+     "sacrifice",
+     "trust"
+    ],
+    "cg": "cg_ethan_end",
+    "title_en": "The Light Stays On For You",
+    "range": "ethan_end:10-14"
+   },
+   {
+    "id": "he_together",
+    "priority": 2,
+    "aff_min": 55,
+    "aff_max": null,
+    "flags_any": [],
+    "cg": "cg_ethan_end",
+    "title_en": "Between Two Cities",
+    "range": "ethan_end:20-24"
+   },
+   {
+    "id": "be_distance",
+    "priority": 3,
+    "aff_min": 0,
+    "aff_max": 30,
+    "flags_any": [],
+    "cg": "cg_ethan_end",
+    "title_en": "Just a Light on a Top Floor",
+    "range": "ethan_end:30-34"
+   }
+  ]
+ },
+ "luxingye": {
+  "title_en": "The Fan in Row Seven",
+  "title_zh": "第七排的观众",
+  "logline_en": "The whole world screams for him — but the only one he wants to see the real him is you, in row seven.",
+  "cg_heat": "cg_luxingye_heat",
+  "hold_en": [
+   "He drops his chin onto the back of the chair and grins up at you. \"Go on. I'm listening.\"",
+   "\"You know nobody talks to me like this,\" he says. \"Don't stop on my account.\"",
+   "He plays two notes, stops, and looks at you instead of the strings.",
+   "\"Say more things,\" he says. \"I like your voice better than the room.\""
+  ],
+  "chapters": [
+   {
+    "file": "luxingye_c1",
+    "title_en": "Backstage by Accident",
+    "title_zh": "后台的意外",
+    "goal_en": "Make him drop the idol mask for one minute",
+    "scene_en": "backstage after a concert, neon signs still glowing, just the two of you",
+    "cg": null,
+    "open": "luxingye_c1:1-2",
+    "beats": [
+     {
+      "id": "b1_riceball",
+      "range": "luxingye_c1:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_deal",
+      "range": "luxingye_c1:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 3
+     },
+     {
+      "id": "b3_name",
+      "range": "luxingye_c1:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c1a",
+      "prompt": "luxingye_c1:100-100",
+      "options": [
+       {
+        "text_en": "\"I want that grain of rice on your face.\"",
+        "aff": 4,
+        "flag": "playful",
+        "reply": "luxingye_c1:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I'm not a fan. So you can relax.\"",
+        "aff": 3,
+        "flag": "not_fan",
+        "reply": "luxingye_c1:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Just now — you looked better than you do on stage.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "luxingye_c1:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c1b",
+      "prompt": "luxingye_c1:120-120",
+      "options": [
+       {
+        "text_en": "\"Depends how you do out there.\"",
+        "aff": 3,
+        "flag": "playful",
+        "reply": "luxingye_c1:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"Row seven. I have a ticket, you know.\"",
+        "aff": 4,
+        "flag": "row_seven",
+        "reply": "luxingye_c1:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"I should go — don't let me hold you up.\"",
+        "aff": 1,
+        "flag": "distance",
+        "reply": "luxingye_c1:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "luxingye_c2",
+    "title_en": "The Idol's Secret",
+    "title_zh": "顶流的秘密",
+    "goal_en": "Find out what the 'perfect idol' is really carrying",
+    "scene_en": "an empty rehearsal room late at night, one lamp on, guitar in his arms",
+    "cg": "cg_luxingye_ch2",
+    "open": "luxingye_c2:1-1",
+    "beats": [
+     {
+      "id": "b1_song",
+      "range": "luxingye_c2:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_cage",
+      "range": "luxingye_c2:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 12
+     },
+     {
+      "id": "b3_photo",
+      "range": "luxingye_c2:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c2a",
+      "prompt": "luxingye_c2:100-100",
+      "options": [
+       {
+        "text_en": "\"I want the you who sneaks rice balls and admits he's tired.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "luxingye_c2:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I don't know the stage one. The one I know is this one, right here.\"",
+        "aff": 4,
+        "flag": "sees_him",
+        "reply": "luxingye_c2:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Depends if you'll still dare eat rice balls in front of me.\"",
+        "aff": 3,
+        "flag": "playful",
+        "reply": "luxingye_c2:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c2b",
+      "prompt": "luxingye_c2:120-120",
+      "options": [
+       {
+        "text_en": "\"Mystery person? That's just me.\"",
+        "aff": 5,
+        "flag": "stays",
+        "reply": "luxingye_c2:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"If I were scared, I wouldn't be here at midnight.\"",
+        "aff": 4,
+        "flag": "stays",
+        "reply": "luxingye_c2:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Won't this cause trouble for you?\"",
+        "aff": 3,
+        "flag": "gentle",
+        "reply": "luxingye_c2:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "luxingye_c3",
+    "title_en": "The Confession to Row Seven",
+    "title_zh": "第七排告白",
+    "goal_en": "In front of thousands, catch the words meant only for you",
+    "scene_en": "a sold-out arena, a sea of glow-sticks, you in row seven",
+    "cg": null,
+    "open": "luxingye_c3:1-1",
+    "beats": [
+     {
+      "id": "b1_song_for_you",
+      "range": "luxingye_c3:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_confession",
+      "range": "luxingye_c3:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 28
+     }
+    ],
+    "choices": [
+     {
+      "id": "c3a",
+      "prompt": "luxingye_c3:100-100",
+      "options": [
+       {
+        "text_en": "(Raise your glow-stick and make a heart at him, in the sea of light.)",
+        "aff": 6,
+        "flag": "public_yes",
+        "reply": "luxingye_c3:101-101",
+        "added": false
+       },
+       {
+        "text_en": "(Stand and shout back: \"I like you too!\")",
+        "aff": 7,
+        "flag": "public_yes",
+        "reply": "luxingye_c3:102-102",
+        "added": false
+       },
+       {
+        "text_en": "(Do nothing but nod, seriously, across the sea of people.)",
+        "aff": 5,
+        "flag": "shy_yes",
+        "reply": "luxingye_c3:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c3b",
+      "prompt": "luxingye_c3:120-120",
+      "options": [
+       {
+        "text_en": "\"You dared shout it to thousands — I dare stand beside you.\"",
+        "aff": 6,
+        "flag": "stays",
+        "reply": "luxingye_c3:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"Why would I? You finally got to sing that song.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "luxingye_c3:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"It was reckless. But I like you reckless.\"",
+        "aff": 6,
+        "flag": "public_yes",
+        "reply": "luxingye_c3:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "luxingye_c4",
+    "title_en": "The Storm",
+    "title_zh": "风暴",
+    "goal_en": "Decide which side to stand on — him, or the industry's rules",
+    "scene_en": "the corridor outside a company boardroom, suits filling the glass-walled room",
+    "cg": null,
+    "open": "luxingye_c4:1-1",
+    "beats": [
+     {
+      "id": "b1_statement",
+      "range": "luxingye_c4:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_walk",
+      "range": "luxingye_c4:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 44
+     },
+     {
+      "id": "bx_after_hours",
+      "range": "luxingye_c4:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 36
+     }
+    ],
+    "choices": [
+     {
+      "id": "c4a",
+      "prompt": "luxingye_c4:100-100",
+      "options": [
+       {
+        "text_en": "\"Don't sign. I don't need you to lie for me, and I won't let you ruin yourself for me. We'll figure it out together.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "luxingye_c4:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"It's your life. Whatever you choose, I'm with you.\"",
+        "aff": 5,
+        "flag": "stay_together",
+        "reply": "luxingye_c4:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"If signing saves everything you have, I can step into the background first.\"",
+        "aff": 2,
+        "flag": "sacrifice",
+        "reply": "luxingye_c4:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Not tonight. Sit on the floor and eat noodles with me.",
+        "aff": 3,
+        "flag": "slow_ch4",
+        "reply": "luxingye_c4:104-104",
+        "added": true
+       }
+      ]
+     },
+     {
+      "id": "c4b",
+      "prompt": "luxingye_c4:120-120",
+      "options": [
+       {
+        "text_en": "(Hold out your hand, palm up, waiting for him to take it.)",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "luxingye_c4:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"Step out. Whatever storm's out here, I'll face it with you.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "luxingye_c4:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Don't bet everything on me — I'm not worth losing the whole world.\"",
+        "aff": 3,
+        "flag": "gentle",
+        "reply": "luxingye_c4:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "luxingye_c5",
+    "title_en": "The Song Only For You",
+    "title_zh": "只为你唱的歌",
+    "goal_en": "On the smallest stage, catch his truest words",
+    "scene_en": "a tiny livehouse — no trending topics, no flashbulbs, a few dozen people in the seats",
+    "cg": null,
+    "open": "luxingye_c5:1-1",
+    "beats": [
+     {
+      "id": "b1_new_song",
+      "range": "luxingye_c5:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_ask_forever",
+      "range": "luxingye_c5:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 62
+     },
+     {
+      "id": "bx_morning",
+      "range": "luxingye_c5:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 52
+     }
+    ],
+    "choices": [
+     {
+      "id": "c5a",
+      "prompt": "luxingye_c5:100-100",
+      "options": [
+       {
+        "text_en": "\"I will. But next time — I want to sit on stage, right beside you.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "luxingye_c5:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I will. I stopped being the fan in row seven long ago — I'm yours.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "luxingye_c5:102-102",
+        "added": false
+       },
+       {
+        "text_en": "(Pull him up off the floor and kiss him in front of everyone.)",
+        "aff": 6,
+        "flag": "forever",
+        "reply": "luxingye_c5:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Ask me again when the storm's over.",
+        "aff": 3,
+        "flag": "slow_ch5",
+        "reply": "luxingye_c5:104-104",
+        "added": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "endings": [
+   {
+    "id": "he_forever",
+    "priority": 1,
+    "aff_min": 66,
+    "aff_max": null,
+    "flags_any": [
+     "forever",
+     "stay_together",
+     "public_yes"
+    ],
+    "cg": "cg_luxingye_end",
+    "title_en": "From Row Seven to the Stage",
+    "range": "luxingye_end:10-16"
+   },
+   {
+    "id": "he_quiet",
+    "priority": 2,
+    "aff_min": 52,
+    "aff_max": null,
+    "flags_any": [],
+    "cg": "cg_luxingye_end",
+    "title_en": "The Show With an Audience of One",
+    "range": "luxingye_end:20-26"
+   },
+   {
+    "id": "be_lights_out",
+    "priority": 3,
+    "aff_min": 0,
+    "aff_max": 30,
+    "flags_any": [],
+    "cg": "cg_luxingye_end",
+    "title_en": "After the Lights Go Down",
+    "range": "luxingye_end:30-35"
+   }
+  ]
+ },
+ "liam": {
+  "title_en": "The Firefighter Next Door",
+  "title_zh": "隔壁的消防员",
+  "logline_en": "He ran into a burning building to save a stranger — and walked out of the rubble holding a watch that turns out to be yours.",
+  "cg_heat": "cg_liam_heat",
+  "hold_en": [
+   "He leans back against the tailgate and gives you his whole attention, which is a lot of attention.",
+   "\"Keep talking,\" he says. \"I've got nowhere I need to be till six.\"",
+   "Biscuit sighs and flops across both your feet, pinning you there.",
+   "\"That's the good stuff,\" he says. \"Say the rest of it.\""
+  ],
+  "chapters": [
+   {
+    "file": "liam_c1",
+    "title_en": "Moving-In Day",
+    "title_zh": "搬来第一天",
+    "goal_en": "Make this golden-retriever of a man remember you as more than 'the new neighbor'",
+    "scene_en": "his pickup truck bed at sunset, tailgate down, two root beers, dog at your feet",
+    "cg": null,
+    "open": "liam_c1:1-2",
+    "beats": [
+     {
+      "id": "b1_dog",
+      "range": "liam_c1:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_fix",
+      "range": "liam_c1:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 3
+     },
+     {
+      "id": "b3_call",
+      "range": "liam_c1:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c1a",
+      "prompt": "liam_c1:100-100",
+      "options": [
+       {
+        "text_en": "\"I just wanted somewhere the sink gets fixed by a cute neighbor.\"",
+        "aff": 4,
+        "flag": "playful",
+        "reply": "liam_c1:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I wanted a place that feels like home. Haven't had one in a while.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "liam_c1:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Peace and quiet. Then a firefighter and a dog showed up.\"",
+        "aff": 3,
+        "flag": "playful",
+        "reply": "liam_c1:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c1b",
+      "prompt": "liam_c1:120-120",
+      "options": [
+       {
+        "text_en": "\"Depends. You cooking?\"",
+        "aff": 4,
+        "flag": "playful",
+        "reply": "liam_c1:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"I'll be there. Save me a seat.\"",
+        "aff": 4,
+        "flag": "will_return",
+        "reply": "liam_c1:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Go save the world first. Then we'll talk.\"",
+        "aff": 3,
+        "flag": "sees_him",
+        "reply": "liam_c1:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "liam_c2",
+    "title_en": "Cookout and Old Scars",
+    "title_zh": "烧烤与旧疤",
+    "goal_en": "See the side this always-smiling man keeps tucked away",
+    "scene_en": "a backyard cookout at night, string lights in the trees, the grill crackling, the dog weaving through the crowd",
+    "cg": "cg_liam_ch2",
+    "open": "liam_c2:1-1",
+    "beats": [
+     {
+      "id": "b1_chili",
+      "range": "liam_c2:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_scar",
+      "range": "liam_c2:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 12
+     },
+     {
+      "id": "b3_dance",
+      "range": "liam_c2:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c2a",
+      "prompt": "liam_c2:100-100",
+      "options": [
+       {
+        "text_en": "\"So — are you okay, Liam?\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "liam_c2:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Then lean on me for once. I can take it.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "liam_c2:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Every day. Guess that's why I moved next to you.\"",
+        "aff": 4,
+        "flag": "playful",
+        "reply": "liam_c2:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c2b",
+      "prompt": "liam_c2:120-120",
+      "options": [
+       {
+        "text_en": "\"Same time next week? I'll bring the bad jokes.\"",
+        "aff": 4,
+        "flag": "will_return",
+        "reply": "liam_c2:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"Easy's good. You've earned easy, Liam.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "liam_c2:122-122",
+        "added": false
+       },
+       {
+        "text_en": "(Rise on your toes, kiss his cheek quickly, and turn inside.)",
+        "aff": 5,
+        "flag": "bold",
+        "reply": "liam_c2:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "liam_c3",
+    "title_en": "The Watch in the Fire",
+    "title_zh": "火场手表",
+    "goal_en": "On his most dangerous night, be the reason he wants to make it back",
+    "scene_en": "late at night, an apartment in the neighborhood ablaze, thick smoke, sirens and firelight lighting up the whole street",
+    "cg": null,
+    "open": "liam_c3:1-1",
+    "beats": [
+     {
+      "id": "b1_watch",
+      "range": "liam_c3:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_shaking",
+      "range": "liam_c3:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 28
+     }
+    ],
+    "choices": [
+     {
+      "id": "c3a",
+      "prompt": "liam_c3:100-100",
+      "options": [
+       {
+        "text_en": "\"I'm gonna tell them you ran into a fire to save an old man's life. And a watch.\"",
+        "aff": 6,
+        "flag": "sees_him",
+        "reply": "liam_c3:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Being scared and going in anyway — that's the bravest thing there is.\"",
+        "aff": 6,
+        "flag": "sees_him",
+        "reply": "liam_c3:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Your secret's safe. But you're not doing the scared part alone anymore.\"",
+        "aff": 6,
+        "flag": "stays",
+        "reply": "liam_c3:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c3b",
+      "prompt": "liam_c3:120-120",
+      "options": [
+       {
+        "text_en": "\"It's the last thing I have from my grandmother. You just ran into a fire with it.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "liam_c3:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"It matters. But right now, honestly? You matter more.\"",
+        "aff": 6,
+        "flag": "stays",
+        "reply": "liam_c3:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"She used to say: hold on to the people who show up. You showed up.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "liam_c3:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "liam_c4",
+    "title_en": "The Transfer",
+    "title_zh": "调令",
+    "goal_en": "In the choice he'd shoulder alone, let him know he doesn't have to",
+    "scene_en": "the fire station garage at night, Liam alone on a bench by the engine, a letter in his hand",
+    "cg": null,
+    "open": "liam_c4:1-1",
+    "beats": [
+     {
+      "id": "b1_letter",
+      "range": "liam_c4:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_biscuit",
+      "range": "liam_c4:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 44
+     },
+     {
+      "id": "bx_after_hours",
+      "range": "liam_c4:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 36
+     }
+    ],
+    "choices": [
+     {
+      "id": "c4a",
+      "prompt": "liam_c4:100-100",
+      "options": [
+       {
+        "text_en": "\"Take it. And take me with you. I didn't move here for the town — I moved for you.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "liam_c4:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Don't take it for me. But don't turn it down for me either. Let's figure it out — together.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "liam_c4:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"You've saved everyone else's home for ten years. Go build one you get to keep.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "liam_c4:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Take the couch, Reyes. I'll still be here in the morning.",
+        "aff": 3,
+        "flag": "slow_ch4",
+        "reply": "liam_c4:104-104",
+        "added": true
+       }
+      ]
+     },
+     {
+      "id": "c4b",
+      "prompt": "liam_c4:120-120",
+      "options": [
+       {
+        "text_en": "\"Then stop running. Stand still a second. I'll be right here.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "liam_c4:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"That something isn't going anywhere. Whatever you choose.\"",
+        "aff": 5,
+        "flag": "stays",
+        "reply": "liam_c4:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Good. Because I'm the thing, and I'm not on fire, and I'm not leaving.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "liam_c4:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "liam_c5",
+    "title_en": "The One Who Comes Home",
+    "title_zh": "回家的人",
+    "goal_en": "Hear this man who always puts others first say what he wants for himself",
+    "scene_en": "his backyard at sunset, two chairs on the newly-built porch, two root beers still on the tailgate",
+    "cg": null,
+    "open": "liam_c5:1-1",
+    "beats": [
+     {
+      "id": "b1_key",
+      "range": "liam_c5:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_ask",
+      "range": "liam_c5:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 62
+     },
+     {
+      "id": "bx_morning",
+      "range": "liam_c5:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 52
+     }
+    ],
+    "choices": [
+     {
+      "id": "c5a",
+      "prompt": "liam_c5:100-100",
+      "options": [
+       {
+        "text_en": "(Take the key and slide it onto your keyring.) \"Then stop calling it my house and your house. It's home now.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "liam_c5:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"The job's yours. But I've got one condition: you come home to me alive, every single time.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "liam_c5:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"I gave you a key first, you know. The one to me. You just took a while to notice.\"",
+        "aff": 6,
+        "flag": "forever",
+        "reply": "liam_c5:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Ask me once more when you know what you want to do.",
+        "aff": 3,
+        "flag": "slow_ch5",
+        "reply": "liam_c5:104-104",
+        "added": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "endings": [
+   {
+    "id": "he_home",
+    "priority": 1,
+    "aff_min": 66,
+    "aff_max": null,
+    "flags_any": [
+     "forever",
+     "stay_together",
+     "stays"
+    ],
+    "cg": "cg_liam_end",
+    "title_en": "The One Who Comes Home",
+    "range": "liam_end:10-16"
+   },
+   {
+    "id": "he_slow",
+    "priority": 2,
+    "aff_min": 52,
+    "aff_max": null,
+    "flags_any": [],
+    "cg": "cg_liam_end",
+    "title_en": "The Neighbor Who Took His Time",
+    "range": "liam_end:20-26"
+   },
+   {
+    "id": "be_moved",
+    "priority": 3,
+    "aff_min": 0,
+    "aff_max": 30,
+    "flags_any": [],
+    "cg": "cg_liam_end",
+    "title_en": "The Door Next Door That Never Knocked Again",
+    "range": "liam_end:30-37"
+   }
+  ]
+ },
+ "adrian": {
+  "title_en": "The Song He Won't Admit He Wrote",
+  "title_zh": "他不肯承认的那首歌",
+  "logline_en": "He writes songs for the whole world — but there's one he never releases and flatly denies writing. It's about you.",
+  "cg_heat": "cg_adrian_heat",
+  "hold_en": [
+   "He doesn't answer. He watches you, which from him is the same as answering.",
+   "\"Don't stop,\" he says, short. \"I'm not bored yet.\"",
+   "He mutes the strings with his palm so he can hear you better, and pretends he didn't.",
+   "\"Again,\" he says. \"That part. Say it again.\""
+  ],
+  "chapters": [
+   {
+    "file": "adrian_c1",
+    "title_en": "The Stage After the Show",
+    "title_zh": "散场后的舞台",
+    "goal_en": "Make this man who's bored of everyone look at you twice",
+    "scene_en": "an empty stage after the show, one spotlight left on, his guitar still humming",
+    "cg": null,
+    "open": "adrian_c1:1-2",
+    "beats": [
+     {
+      "id": "b1_melody",
+      "range": "adrian_c1:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_notfan",
+      "range": "adrian_c1:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 3
+     },
+     {
+      "id": "b3_name",
+      "range": "adrian_c1:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c1a",
+      "prompt": "adrian_c1:100-100",
+      "options": [
+       {
+        "text_en": "\"The thing you were just humming? That one I'd listen to.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "adrian_c1:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I listen. I just don't scream about it.\"",
+        "aff": 3,
+        "flag": "playful",
+        "reply": "adrian_c1:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"I'm here to coil cables, not stroke your ego.\"",
+        "aff": 4,
+        "flag": "bold",
+        "reply": "adrian_c1:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c1b",
+      "prompt": "adrian_c1:120-120",
+      "options": [
+       {
+        "text_en": "\"Maybe I'll be here. Maybe I won't.\"",
+        "aff": 4,
+        "flag": "mystery",
+        "reply": "adrian_c1:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"I'll come. But not for the show.\"",
+        "aff": 4,
+        "flag": "bold",
+        "reply": "adrian_c1:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Four's early for a rockstar.\"",
+        "aff": 3,
+        "flag": "playful",
+        "reply": "adrian_c1:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "adrian_c2",
+    "title_en": "The Late-Night Demo",
+    "title_zh": "深夜的demo",
+    "goal_en": "Find out what the man who's untamed on stage is really writing about",
+    "scene_en": "the makeshift recording corner in the back of the tour bus, 3 a.m., one warm lamp, crumpled lyric sheets on the floor",
+    "cg": "cg_adrian_ch2",
+    "open": "adrian_c2:1-1",
+    "beats": [
+     {
+      "id": "b1_lyrics",
+      "range": "adrian_c2:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_why_music",
+      "range": "adrian_c2:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 12
+     },
+     {
+      "id": "b3_jealous",
+      "range": "adrian_c2:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c2a",
+      "prompt": "adrian_c2:100-100",
+      "options": [
+       {
+        "text_en": "\"Because the guy at 3 a.m. writing on the floor is the real one. I like him better.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "adrian_c2:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Trouble's fine. I just don't do fake. And you're not fake in here.\"",
+        "aff": 4,
+        "flag": "sees_him",
+        "reply": "adrian_c2:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Maybe I just wanted to hear the song you keep hiding.\"",
+        "aff": 4,
+        "flag": "curious",
+        "reply": "adrian_c2:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c2b",
+      "prompt": "adrian_c2:120-120",
+      "options": [
+       {
+        "text_en": "\"He's a friend. You can stop torturing that guitar string now.\"",
+        "aff": 5,
+        "flag": "playful",
+        "reply": "adrian_c2:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"You know, jealousy's a good look on a songwriter.\"",
+        "aff": 4,
+        "flag": "bold",
+        "reply": "adrian_c2:122-122",
+        "added": false
+       },
+       {
+        "text_en": "(Say nothing. Cross over and take the pen out of his hand.)",
+        "aff": 5,
+        "flag": "mystery",
+        "reply": "adrian_c2:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "adrian_c3",
+    "title_en": "The Song He Wrote For You",
+    "title_zh": "为你写的那首歌",
+    "goal_en": "On his most public stage, catch his most private confession",
+    "scene_en": "a packed arena, the encore, all lights killed but one, him and a single acoustic guitar",
+    "cg": null,
+    "open": "adrian_c3:1-1",
+    "beats": [
+     {
+      "id": "b1_song",
+      "range": "adrian_c3:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_look",
+      "range": "adrian_c3:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 28
+     }
+    ],
+    "choices": [
+     {
+      "id": "c3a",
+      "prompt": "adrian_c3:100-100",
+      "options": [
+       {
+        "text_en": "(Mouth back to him, silently: 'then finish it. for me.')",
+        "aff": 6,
+        "flag": "public_yes",
+        "reply": "adrian_c3:101-101",
+        "added": false
+       },
+       {
+        "text_en": "(Press a hand to your chest and nod to him, meaning it.)",
+        "aff": 6,
+        "flag": "shy_yes",
+        "reply": "adrian_c3:102-102",
+        "added": false
+       },
+       {
+        "text_en": "(Raise your phone in the crowd, a line on the screen for him: 'i heard it. all of it.')",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "adrian_c3:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c3b",
+      "prompt": "adrian_c3:120-120",
+      "options": [
+       {
+        "text_en": "\"You just sang it to fifty thousand people. Saying it to one should be easy.\"",
+        "aff": 6,
+        "flag": "sees_him",
+        "reply": "adrian_c3:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"We can skip it. I already know. I've known since the bus.\"",
+        "aff": 6,
+        "flag": "stays",
+        "reply": "adrian_c3:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"No skipping. I want to hear you say it. Once. Just to me.\"",
+        "aff": 5,
+        "flag": "bold",
+        "reply": "adrian_c3:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "adrian_c4",
+    "title_en": "The Label's Price",
+    "title_zh": "唱片公司的价码",
+    "goal_en": "Between his music and his heart, help him keep the one song he won't sell",
+    "scene_en": "the label's top-floor boardroom, a contract on the glass table, executives in sharp suits",
+    "cg": null,
+    "open": "adrian_c4:1-1",
+    "beats": [
+     {
+      "id": "b1_contract",
+      "range": "adrian_c4:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_walk",
+      "range": "adrian_c4:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 44
+     },
+     {
+      "id": "bx_after_hours",
+      "range": "adrian_c4:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 36
+     }
+    ],
+    "choices": [
+     {
+      "id": "c4a",
+      "prompt": "adrian_c4:100-100",
+      "options": [
+       {
+        "text_en": "\"Don't sign it. That line is ours. I don't want it for sale, and I won't let you sell yourself either.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "adrian_c4:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"It's your song. Whatever you choose, I'm walking out of here with you.\"",
+        "aff": 5,
+        "flag": "stay_together",
+        "reply": "adrian_c4:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"If losing that song means keeping the real you — burn the contract.\"",
+        "aff": 6,
+        "flag": "sees_him",
+        "reply": "adrian_c4:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Not tonight. Play me the rest of it instead.",
+        "aff": 3,
+        "flag": "slow_ch4",
+        "reply": "adrian_c4:104-104",
+        "added": true
+       }
+      ]
+     },
+     {
+      "id": "c4b",
+      "prompt": "adrian_c4:120-120",
+      "options": [
+       {
+        "text_en": "(Hold out your hand, waiting for him to take it.) \"Then we do it without a label. I've heard what you make alone. It's better.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "adrian_c4:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"Let them drop you. The stuff that matters was never theirs anyway.\"",
+        "aff": 6,
+        "flag": "stay_together",
+        "reply": "adrian_c4:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Don't torch your whole career for me. I'm not worth your music.\"",
+        "aff": 3,
+        "flag": "sees_him",
+        "reply": "adrian_c4:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "adrian_c5",
+    "title_en": "The Song, Finished",
+    "title_zh": "写完的那首歌",
+    "goal_en": "Hear him sing the last line of the song he wrote for you",
+    "scene_en": "a tiny underground livehouse — no contract, no flashbulbs, a few dozen people who actually came to listen",
+    "cg": null,
+    "open": "adrian_c5:1-1",
+    "beats": [
+     {
+      "id": "b1_finished",
+      "range": "adrian_c5:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_ask",
+      "range": "adrian_c5:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 62
+     },
+     {
+      "id": "bx_morning",
+      "range": "adrian_c5:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 52
+     }
+    ],
+    "choices": [
+     {
+      "id": "c5a",
+      "prompt": "adrian_c5:100-100",
+      "options": [
+       {
+        "text_en": "\"I'm yours. But that song's not finished — you're gonna write the rest of it with me.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "adrian_c5:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I've been yours since the bus. You were just too busy denying it to notice.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "adrian_c5:102-102",
+        "added": false
+       },
+       {
+        "text_en": "(Slide your hand into his and kiss him in front of everyone.)",
+        "aff": 6,
+        "flag": "forever",
+        "reply": "adrian_c5:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Say it again tomorrow, sober, in daylight.",
+        "aff": 3,
+        "flag": "slow_ch5",
+        "reply": "adrian_c5:104-104",
+        "added": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "endings": [
+   {
+    "id": "he_forever",
+    "priority": 1,
+    "aff_min": 66,
+    "aff_max": null,
+    "flags_any": [
+     "forever",
+     "stay_together",
+     "public_yes"
+    ],
+    "cg": "cg_adrian_end",
+    "title_en": "The Song We Wrote Together",
+    "range": "adrian_end:10-17"
+   },
+   {
+    "id": "he_quiet",
+    "priority": 2,
+    "aff_min": 52,
+    "aff_max": null,
+    "flags_any": [],
+    "cg": "cg_adrian_end",
+    "title_en": "The Version Only You Hear",
+    "range": "adrian_end:20-26"
+   },
+   {
+    "id": "be_unreleased",
+    "priority": 3,
+    "aff_min": 0,
+    "aff_max": 30,
+    "flags_any": [],
+    "cg": "cg_adrian_end",
+    "title_en": "An Unreleased Song",
+    "range": "adrian_end:30-36"
+   }
+  ]
+ },
+ "fushen": {
+  "title_en": "The Man Behind the Glass",
+  "title_zh": "落地窗后的那个人",
+  "logline_en": "The whole city looks up to him, and no one dares come close — until you become the only one he reaches for.",
+  "cg_heat": "cg_fushen_heat",
+  "hold_en": [
+   "He says nothing. The silence is not a wall this time; it is an invitation, and you can tell the difference now.",
+   "\"Continue,\" he says. It is the closest he gets to please.",
+   "He sets his glass down without a sound and waits.",
+   "\"I'm listening,\" he says, and he is — completely, which from him is rare."
+  ],
+  "chapters": [
+   {
+    "file": "fushen_c1",
+    "title_en": "The Distance of One Glass of Wine",
+    "title_zh": "一杯红酒的距离",
+    "goal_en": "Make this man who never explains himself say more than three sentences to you",
+    "scene_en": "by the floor-to-ceiling window of a penthouse, the city glittering below, wine in hand",
+    "cg": null,
+    "open": "fushen_c1:1-2",
+    "beats": [
+     {
+      "id": "b1_wine",
+      "range": "fushen_c1:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_notice",
+      "range": "fushen_c1:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 3
+     },
+     {
+      "id": "b3_name",
+      "range": "fushen_c1:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c1a",
+      "prompt": "fushen_c1:100-100",
+      "options": [
+       {
+        "text_en": "\"I only wanted to find the way out.\"",
+        "aff": 3,
+        "flag": "no_agenda",
+        "reply": "fushen_c1:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"Someone who wants nothing — does that unsettle you?\"",
+        "aff": 4,
+        "flag": "sees_him",
+        "reply": "fushen_c1:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"That glass you poured me. Already got it.\"",
+        "aff": 3,
+        "flag": "bold",
+        "reply": "fushen_c1:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c1b",
+      "prompt": "fushen_c1:120-120",
+      "options": [
+       {
+        "text_en": "\"Does that mean I can come up again?\"",
+        "aff": 4,
+        "flag": "curious",
+        "reply": "fushen_c1:121-121",
+        "added": false
+       },
+       {
+        "text_en": "(Pick up the card. Say nothing. Just look at him.)",
+        "aff": 3,
+        "flag": "mystery",
+        "reply": "fushen_c1:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"I can take the stairs.\"",
+        "aff": 1,
+        "flag": "guarded",
+        "reply": "fushen_c1:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "fushen_c2",
+    "title_en": "He Explains Himself to No One",
+    "title_zh": "他不必对谁解释",
+    "goal_en": "See what that coldness is really guarding against",
+    "scene_en": "a business gala, chandeliers and champagne, everyone angling to reach him",
+    "cg": "cg_fushen_ch2",
+    "open": "fushen_c2:1-1",
+    "beats": [
+     {
+      "id": "b1_remember",
+      "range": "fushen_c2:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_rumor",
+      "range": "fushen_c2:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 12
+     },
+     {
+      "id": "b3_leave",
+      "range": "fushen_c2:30-31",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     }
+    ],
+    "choices": [
+     {
+      "id": "c2a",
+      "prompt": "fushen_c2:100-100",
+      "options": [
+       {
+        "text_en": "\"I think you're the kind who'd rather be misunderstood than bother to explain.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "fushen_c2:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I don't believe rumors. I believe what I see.\"",
+        "aff": 4,
+        "flag": "trust",
+        "reply": "fushen_c2:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"You don't explain yourself — so how would I know?\"",
+        "aff": 3,
+        "flag": "direct",
+        "reply": "fushen_c2:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c2b",
+      "prompt": "fushen_c2:120-120",
+      "options": [
+       {
+        "text_en": "\"Give me a ride?\"",
+        "aff": 4,
+        "flag": "closer",
+        "reply": "fushen_c2:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"I'll grab a cab — you go ahead.\"",
+        "aff": 1,
+        "flag": "distance",
+        "reply": "fushen_c2:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"You're… not in a good mood today, are you.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "fushen_c2:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "fushen_c3",
+    "title_en": "The Young Madam of the Old House",
+    "title_zh": "老宅少夫人",
+    "goal_en": "Find your footing in the world he never brings anyone into",
+    "scene_en": "the century-old Fu family estate on the city's edge, carved verandas, rows of staff, everything heavy with old propriety",
+    "cg": null,
+    "open": "fushen_c3:1-1",
+    "beats": [
+     {
+      "id": "b1_madam",
+      "range": "fushen_c3:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_room",
+      "range": "fushen_c3:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 28
+     }
+    ],
+    "choices": [
+     {
+      "id": "c3a",
+      "prompt": "fushen_c3:100-100",
+      "options": [
+       {
+        "text_en": "\"If you did — I don't mind.\"",
+        "aff": 6,
+        "flag": "accepts",
+        "reply": "fushen_c3:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"You never bother to explain — but this, you let stand.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "fushen_c3:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Fu Shen. Just say it — do you want me to stay?\"",
+        "aff": 5,
+        "flag": "direct",
+        "reply": "fushen_c3:103-103",
+        "added": false
+       }
+      ]
+     },
+     {
+      "id": "c3b",
+      "prompt": "fushen_c3:120-120",
+      "options": [
+       {
+        "text_en": "\"Then aren't you cold?\"",
+        "aff": 4,
+        "flag": "gentle",
+        "reply": "fushen_c3:121-121",
+        "added": false
+       },
+       {
+        "text_en": "(Pull the coat close, catch up, and walk at his side.)",
+        "aff": 4,
+        "flag": "closer",
+        "reply": "fushen_c3:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Fu Shen — you're actually very gentle.\"",
+        "aff": 3,
+        "flag": "sees_him",
+        "reply": "fushen_c3:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "fushen_c4",
+    "title_en": "The Family's Price",
+    "title_zh": "家族的价码",
+    "goal_en": "Between the family's rules and him, take the heaviest blow for him",
+    "scene_en": "the grand hall of the Fu estate, the elders seated at the head, an arranged marriage laid on the table",
+    "cg": null,
+    "open": "fushen_c4:1-1",
+    "beats": [
+     {
+      "id": "b1_cheque",
+      "range": "fushen_c4:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_stand",
+      "range": "fushen_c4:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 44
+     },
+     {
+      "id": "bx_after_hours",
+      "range": "fushen_c4:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 36
+     }
+    ],
+    "choices": [
+     {
+      "id": "c4a",
+      "prompt": "fushen_c4:100-100",
+      "options": [
+       {
+        "text_en": "\"What I want, the Fu family can't afford.\" (Push the cheque back.)",
+        "aff": 6,
+        "flag": "stand_together",
+        "reply": "fushen_c4:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"I'm not someone he brought in. Everyone in this house calls me Young Madam.\"",
+        "aff": 6,
+        "flag": "stand_together",
+        "reply": "fushen_c4:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"The arranged match is your rule. But whom he chooses is his freedom.\"",
+        "aff": 5,
+        "flag": "trust",
+        "reply": "fushen_c4:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Stay where you are. Just — don't go back behind the glass.",
+        "aff": 3,
+        "flag": "slow_ch4",
+        "reply": "fushen_c4:104-104",
+        "added": true
+       }
+      ]
+     },
+     {
+      "id": "c4b",
+      "prompt": "fushen_c4:120-120",
+      "options": [
+       {
+        "text_en": "(Hug him from behind.) \"I came in for you. Not for this family.\"",
+        "aff": 6,
+        "flag": "stand_together",
+        "reply": "fushen_c4:121-121",
+        "added": false
+       },
+       {
+        "text_en": "\"Today you turned against your whole family for me. That's not humiliating me.\"",
+        "aff": 5,
+        "flag": "sees_him",
+        "reply": "fushen_c4:122-122",
+        "added": false
+       },
+       {
+        "text_en": "\"Fu Shen. Look at me. I didn't leave. And I won't.\"",
+        "aff": 6,
+        "flag": "trust",
+        "reply": "fushen_c4:123-123",
+        "added": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "file": "fushen_c5",
+    "title_en": "The House He'd Let Warm",
+    "title_zh": "他愿意暖起来的那座房子",
+    "goal_en": "Get this man who never says 'I need' to say what he truly wants",
+    "scene_en": "the terrace of the Fu estate at dawn — for the first time, no staff hovering, just the two of you and a pot of coffee",
+    "cg": null,
+    "open": "fushen_c5:1-1",
+    "beats": [
+     {
+      "id": "b1_offer",
+      "range": "fushen_c5:10-11",
+      "heat": 0,
+      "added": false,
+      "aff_min": 0
+     },
+     {
+      "id": "b2_truth",
+      "range": "fushen_c5:20-21",
+      "heat": 0,
+      "added": false,
+      "aff_min": 62
+     },
+     {
+      "id": "bx_morning",
+      "range": "fushen_c5:30-31",
+      "heat": 2,
+      "added": true,
+      "aff_min": 52
+     }
+    ],
+    "choices": [
+     {
+      "id": "c5a",
+      "prompt": "fushen_c5:100-100",
+      "options": [
+       {
+        "text_en": "(Put your hand in his.) \"Then stay. And let this house warm up.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "fushen_c5:101-101",
+        "added": false
+       },
+       {
+        "text_en": "\"You can say it. I'm here.\"",
+        "aff": 7,
+        "flag": "forever",
+        "reply": "fushen_c5:102-102",
+        "added": false
+       },
+       {
+        "text_en": "\"Take London. It's better for the family.\"",
+        "aff": -4,
+        "flag": "pushed_away",
+        "reply": "fushen_c5:103-103",
+        "added": false
+       },
+       {
+        "text_en": "Answer London first. Then ask me.",
+        "aff": 3,
+        "flag": "slow_ch5",
+        "reply": "fushen_c5:104-104",
+        "added": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "endings": [
+   {
+    "id": "he_warm_house",
+    "priority": 1,
+    "aff_min": 66,
+    "aff_max": null,
+    "flags_any": [
+     "forever",
+     "stand_together",
+     "trust"
+    ],
+    "cg": "cg_fushen_end",
+    "title_en": "The House That Was Cold for Thirty Years",
+    "range": "fushen_end:10-16"
+   },
+   {
+    "id": "he_slow_thaw",
+    "priority": 2,
+    "aff_min": 52,
+    "aff_max": null,
+    "flags_any": [],
+    "cg": "cg_fushen_end",
+    "title_en": "A Man Who Thaws an Inch at a Time",
+    "range": "fushen_end:20-26"
+   },
+   {
+    "id": "be_glass",
+    "priority": 3,
+    "aff_min": 0,
+    "aff_max": 30,
+    "flags_any": [],
+    "cg": "cg_fushen_end",
+    "title_en": "One Pane of Glass",
+    "range": "fushen_end:30-36"
+   }
+  ]
+ }
+}

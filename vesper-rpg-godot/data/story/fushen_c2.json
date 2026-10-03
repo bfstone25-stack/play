@@ -1,0 +1,110 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "fushen_c2_open",
+"who": "narrator",
+"en": "A week later, filling in for a friend at a gala, you unexpectedly run into him again. Surrounded by the crowd, his face gives away nothing, like a mountain that permits only distant viewing. But when he sees you across the room, his step falters almost imperceptibly — and then he leaves the partner chattering at his side stranded, and walks straight toward you.",
+"zh": "一周后的一场酒会，你作为朋友的临时代理出席，没想到又遇见他。他被人群围着，脸上没有任何表情，像一座只允许远观的山。可当他隔着满场的人看见你时，脚步几不可察地停顿了一下，然后——他把身边喋喋不休的合作方晾在原地，径直朝你走了过来。"
+},
+{
+"src": 10,
+"id": "fushen_c2_b1_remember_ev",
+"who": "narrator",
+"en": "A waiter brings drinks. He raises a hand to wave off the champagne and asks for a glass of warm water for you instead — you mentioned once that you can't really drink. He says nothing about it.",
+"zh": "侍者端来酒。他抬手拦下香槟，替你要了一杯温水——你上次说过，你不太能喝酒。他没提这件事。"
+},
+{
+"src": 11,
+"id": "fushen_c2_b1_remember_he",
+"who": "fushen",
+"en": "He waves the champagne tray off before it reaches you and asks for warm water instead — you said once, weeks ago, that you can't really drink. He doesn't mention it. When you notice he's already looking elsewhere. \"The champagne here is mediocre,\" he says. \"You'd have regretted it.\"",
+"zh": "香槟托盘还没到你面前就被他挥退了，他要了一杯温水——几个星期前你说过一次，你其实不能喝酒。他没有提这件事。你注意到的时候，他已经看向别处了。\"这儿的香槟一般，\"他说，\"你会后悔的。\""
+},
+{
+"src": 20,
+"id": "fushen_c2_b2_rumor_ev",
+"who": "narrator",
+"en": "Nearby, someone murmurs: 'They say this Fu heir is ice through and through — he acquired his own brother's company overnight.' He clearly hears it, but his face doesn't change; only his hand tightens on the glass for an instant.",
+"zh": "旁边有人低声议论：'听说傅家这位从不近人情，连亲弟弟的公司都能一夜之间收购。' 他显然听见了，却面不改色，只是握杯的手紧了一瞬。"
+},
+{
+"src": 21,
+"id": "fushen_c2_b2_rumor_he",
+"who": "fushen",
+"en": "The murmur carries — *acquired his own brother's company overnight.* His face does not move; only his hand tightens on the glass for a fraction. He offers nothing. If you ask him directly and gently, it comes in as few words as possible: \"The creditors would have taken everything he had. It was faster my way. He doesn't know. Leave it.\"",
+"zh": "那阵低语飘了过来——*一夜之间把自己亲弟弟的公司拿走了。*他的脸没有动；只有握着杯子的手收紧了一瞬。他什么也没有提供。如果你直接而温和地问他，答案会用尽可能少的字出来：\"债主会把他所有的东西都拿走。我这样更快。他不知道。别管了。\""
+},
+{
+"src": 30,
+"id": "fushen_c2_b3_leave_ev",
+"who": "narrator",
+"en": "A very important figure tries to pull him away to talk business. He glances at his watch, then at you, and tells the man flatly, \"Another day.\" — for you, he brushes off the most important person at the gala.",
+"zh": "有位重要人物想拉他去谈生意。他看了一眼表，又看了你一眼，然后对那人淡淡说：\"改天。\"——为了你，他推掉了整场酒会最重要的人。"
+},
+{
+"src": 31,
+"id": "fushen_c2_b3_leave_he",
+"who": "fushen",
+"en": "The most important man in the room wants ten minutes. Fu Shen glances at his watch, then at you. \"Another day,\" he tells him, and turns back, as though it cost nothing. It cost something. He does not intend for you to be told what.",
+"zh": "全场最重要的那个人想要十分钟。傅深看了一眼表，又看了一眼你。\"改天。\"他对那个人说，然后转回来，仿佛这不值什么。这值一些东西。他不打算让你知道值多少。"
+},
+{
+"src": 100,
+"id": "fushen_c2_c2a_q",
+"who": "fushen",
+"en": "Away from the crowd, he asks abruptly, \"You heard what they said. Do you think that's the kind of man I am?\"",
+"zh": "避开人群后，他忽然问你：\"你也听见了刚才那些话。你觉得，我是那样的人吗？\""
+},
+{
+"src": 101,
+"id": "fushen_c2_c2a_r0",
+"who": "fushen",
+"en": "He's silent a long while, eyes on the wine in his glass. \"…You're the first to put it that way.\"",
+"zh": "他沉默了很久，视线落在杯中的酒上：\"…你是第一个这么说的人。\""
+},
+{
+"src": 102,
+"id": "fushen_c2_c2a_r1",
+"who": "fushen",
+"en": "He turns to look at her, a crack running through the ice in his eyes. \"…Then tell me. What is it you see.\"",
+"zh": "他偏过头看你，眼神里那层冰裂开了一道缝：\"…那你倒是说说，你看到了什么。\""
+},
+{
+"src": 103,
+"id": "fushen_c2_c2a_r2",
+"who": "fushen",
+"en": "For once he's caught off guard, and looks away. \"…Some things, no one believes even when you explain.\"",
+"zh": "他罕见地被噎了一下，别开脸：\"…有些事，解释了也没人信。\""
+},
+{
+"src": 120,
+"id": "fushen_c2_c2b_q",
+"who": "fushen",
+"en": "The gala ends; it's raining outside. His car waits at the door, the driver holding the rear passenger seat open. He stands at your side, not getting in.",
+"zh": "酒会散场，外面下起了雨。他的车停在门口，司机拉开了后座车门。他站在你身侧，没有立刻上车。"
+},
+{
+"src": 121,
+"id": "fushen_c2_c2b_r0",
+"who": "fushen",
+"en": "He steps aside to let her in first, tone flat. \"Get in. Don't get wet.\" — but he holds the umbrella almost entirely over her.",
+"zh": "他侧身让你先上车，语气很淡：\"上车。别淋着。\"——却把伞几乎全撑在了你这边。"
+},
+{
+"src": 122,
+"id": "fushen_c2_c2b_r1",
+"who": "fushen",
+"en": "He looks at her, doesn't insist — but has the driver wait until her cab arrives before leaving.",
+"zh": "他看了你一眼，没勉强，却让司机在原地等着，直到你的车来了才走。"
+},
+{
+"src": 123,
+"id": "fushen_c2_c2b_r2",
+"who": "fushen",
+"en": "He goes still. After a moment, he opens the door a little wider. \"…Get in. Ride through this rain with me for a while.\"",
+"zh": "他动作顿住。半晌，他把车门又拉开了些：\"…上车。这场雨，陪我开一会儿车。\""
+}
+],
+"menus": {}
+}

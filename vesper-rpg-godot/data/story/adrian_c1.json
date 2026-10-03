@@ -1,0 +1,101 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "adrian_c1_open",
+"who": "narrator",
+"en": "The crowd's gone, and you've stayed behind as a fill-in stagehand to coil cables. One spotlight is left burning in the empty venue — he's still sitting at the edge of the stage, idly plucking his guitar, humming a melody no one's heard in that smoke-grey voice. Hearing your steps, he doesn't look up. \"Show's over. Groupies exit stage left.\" He is thirty-one, you are twenty-eight, and the crew went home an hour ago."
+},
+{
+"src": 2,
+"id": "adrian_c1_cast",
+"who": "narrator",
+"en": "Adrian Vale, 31. The player character is 28. Both adults."
+},
+{
+"src": 10,
+"id": "adrian_c1_b1_melody_ev",
+"who": "narrator",
+"en": "He doesn't stop the melody. You can tell it wasn't in tonight's set — it's brand new, quiet, with an ache you can't name. He suddenly notices you listening and his hand stops. \"…You didn't hear that.\""
+},
+{
+"src": 11,
+"id": "adrian_c1_b1_melody_he",
+"who": "adrian",
+"en": "His hand kills the strings the second he sees you. \"You didn't hear that.\" It comes out harder than he intends and he doesn't take it back. \"It's not anything. It's not finished, it's not a song, it's not going anywhere.\" A pause, flatter: \"Forget the whole thing. Seriously.\""
+},
+{
+"src": 20,
+"id": "adrian_c1_b2_notfan_ev",
+"who": "narrator",
+"en": "\"You're not gonna ask for a photo? A signature? Nothing?\" He finally lifts his eyes to size you up, a flicker of interest caught — you clearly haven't gone starry-eyed over his face the way everyone else does."
+},
+{
+"src": 21,
+"id": "adrian_c1_b2_notfan_he",
+"who": "adrian",
+"en": "\"No photo. No signature. Nothing.\" He looks up properly for the first time, sizing you up like a lock he intends to pick. \"Everybody who gets back here wants something. You coiled my cables.\" A beat. \"So either you're playing a longer game than they do, or you actually don't care. I can't tell which yet.\""
+},
+{
+"src": 30,
+"id": "adrian_c1_b3_name_ev",
+"who": "narrator",
+"en": "You coil the last cable and turn to leave. He speaks suddenly, deliberately careless. \"Hey. Whatever your name is. …Actually — what is it?\" He's a little surprised at himself that he wants to know."
+},
+{
+"src": 31,
+"id": "adrian_c1_b3_name_he",
+"who": "adrian",
+"en": "\"Hey. Whatever your name is.\" He makes it sound like an afterthought, tosses it over his shoulder, and then ruins it: \"...Actually. What is it?\" You tell him. He doesn't repeat it, doesn't warm up, just files it away behind a look you can't read, and it lands harder than he'd ever admit."
+},
+{
+"src": 100,
+"id": "adrian_c1_c1a_q",
+"who": "adrian",
+"en": "He leans against the amp and looks you over, unhurried. \"Let me guess. You're gonna tell me you 'don't really listen to my stuff.'\""
+},
+{
+"src": 101,
+"id": "adrian_c1_c1a_r0",
+"who": "adrian",
+"en": "His fingers go still on the strings. After a moment, his voice drops. \"…nobody's supposed to want that one.\""
+},
+{
+"src": 102,
+"id": "adrian_c1_c1a_r1",
+"who": "adrian",
+"en": "The corner of his mouth curls. \"Quiet ones are dangerous. Noted.\""
+},
+{
+"src": 103,
+"id": "adrian_c1_c1a_r2",
+"who": "adrian",
+"en": "He laughs low, and for the first time really settles his gaze on her. \"…huh. You might actually be interesting.\""
+},
+{
+"src": 120,
+"id": "adrian_c1_c1b_q",
+"who": "adrian",
+"en": "You're leaving. He swings the guitar behind his back and says, \"We've got three more nights in this city. Load-in's at four.\" He didn't say 'come' — but the meaning is clear."
+},
+{
+"src": 121,
+"id": "adrian_c1_c1b_r0",
+"who": "adrian",
+"en": "He raises a brow, a light in his eyes. \"…now that, I'll actually think about tonight.\""
+},
+{
+"src": 122,
+"id": "adrian_c1_c1b_r1",
+"who": "adrian",
+"en": "He pauses, then smiles slowly — a dangerous smile. \"…careful. I might start writing that down.\""
+},
+{
+"src": 123,
+"id": "adrian_c1_c1b_r2",
+"who": "adrian",
+"en": "\"Only person who sees me at four,\" he says, \"is the one worth being awake for.\""
+}
+],
+"menus": {}
+}

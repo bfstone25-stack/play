@@ -1,0 +1,89 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "guyan_c5_open",
+"who": "narrator",
+"en": "The shop didn't move. He, a handful of old regulars, and you took it over together — and now a new sign hangs above the door, in his own hand. On opening day the sun is good and Dango sleeps in a warm patch. He sets the poetry book before you. Beneath the old faded line on the flyleaf, there's a new one, the ink not yet dry. \"This line,\" he says, \"I wrote this morning.\"",
+"zh": "书店没搬。他和几位老顾客、还有你，一起把它盘了下来——现在门口挂着一块新招牌，是他亲手写的字。开张这天，阳光很好，团子趴在暖处睡着了。他把那本诗集放在你面前，扉页上，原来那行褪色的字下面，多了一行新的、墨迹还没干的字。\"这句，\"他说，\"是今天早上写的。\""
+},
+{
+"src": 10,
+"id": "guyan_c5_b1_newline_ev",
+"who": "narrator",
+"en": "The new line reads: \"I used to write for someone I wasn't sure would ever come. Now I know — she already has.\"",
+"zh": "新写的那行字是：\"从前我写字，是写给一个不知道会不会来的人。现在我知道了——她已经来了。\""
+},
+{
+"src": 11,
+"id": "guyan_c5_b1_newline_he",
+"who": "guyan",
+"en": "He has written a second line under the old one on the flyleaf and he cannot look at you while you read it: *I used to write for someone I wasn't sure would ever come. Now I know — she already has.* \"Don't read it aloud,\" he says, hopelessly. \"Please. Just — read it.\"",
+"zh": "扉页上那句话下面，他写了第二行，而你读的时候他没法看你：*从前我写给一个我不确定会不会来的人。现在我知道了——她已经来了。*\"别念出来，\"他毫无办法地说，\"求你。就——看一眼就好。\""
+},
+{
+"src": 20,
+"id": "guyan_c5_b2_ask_ev",
+"who": "narrator",
+"en": "He finally gathers his courage, voice a little unsteady. \"That sentence I could never finish — will you… let me finish it today?\"",
+"zh": "他终于鼓起勇气，声音有点抖：\"那句我一直没说完的话——你愿意…让我今天说完吗？\""
+},
+{
+"src": 21,
+"id": "guyan_c5_b2_ask_he",
+"who": "guyan",
+"en": "\"That sentence I could never finish.\" He has rehearsed this and it is still unsteady. \"Will you let me finish it today?\" He waits for your yes before he says it, and when he says it there is no flourish at all — only a shy man saying a true thing, once, properly, and meaning every syllable.",
+"zh": "\"那句我一直说不完的话。\"他排练过，排练也没让它变稳。\"今天可以让我说完吗？\"他要等到你点头才肯说，而说的时候没有任何修饰——只是一个害羞的人，把一件真的事，认真地、完整地说了一次，每一个字都算数。"
+},
+{
+"src": 30,
+"id": "guyan_c5_bx_morning_ev",
+"who": "narrator",
+"en": "Morning in the reopened shop. Dango has taken the warm patch. The new sign is still crooked.",
+"zh": "重新开张的店里的早晨。团子占了那块晒得到太阳的地方。新挂的牌子还是歪的。"
+},
+{
+"src": 31,
+"id": "guyan_c5_bx_morning_he",
+"who": "guyan",
+"en": "\"I have been trying for an hour,\" he says, from somewhere near your hair, \"to think of a line for the flyleaf, and everything I come up with is too pleased with itself.\" He gives up happily. \"I'll just write the date. I'll know what it means.\"",
+"zh": "\"我想了一个小时，\"他的声音从你头发附近传来，\"想在扉页上写一句什么，结果想出来的每一句都太得意了。\"他很高兴地放弃了。\"就写日期吧。我知道它是什么意思就行。\""
+},
+{
+"src": 100,
+"id": "guyan_c5_c5a_q",
+"who": "guyan",
+"en": "\"Say it,\" you say softly. \"I'm listening.\" He draws a breath —",
+"zh": "\"说吧，\"你轻声说，\"我在听。\"他深吸一口气——"
+},
+{
+"src": 101,
+"id": "guyan_c5_c5a_r0",
+"who": "guyan",
+"en": "He grips your hand and looks into your eyes. \"I love you. From the moment you pushed that door open and Dango jumped down — all the way through every rainy day to come.\"",
+"zh": "他握紧你的手，看着你的眼睛：\"我喜欢你。从你推开那扇门、团子跳下柜台的那一刻起——一直到往后的每一个雨天。\""
+},
+{
+"src": 102,
+"id": "guyan_c5_c5a_r1",
+"who": "guyan",
+"en": "He freezes, then smiles, his eyes full of light. \"Then… will you keep this shop with me — for a very, very long time?\"",
+"zh": "他愣住，然后笑了，眼里全是光：\"那…你愿意，和我一起守这家店，守很久很久吗？\""
+},
+{
+"src": 103,
+"id": "guyan_c5_c5a_r2",
+"who": "guyan",
+"en": "\"…Then that's enough.\" He exhales, resting his forehead lightly against yours. \"I was afraid I'd say it badly. But you understood all of it.\"",
+"zh": "\"…那就好。\"他松了口气，额头轻轻抵在你额头上，\"我怕我说得不好。可你都懂。\""
+},
+{
+"src": 104,
+"id": "guyan_c5_c5a_r3",
+"who": "guyan",
+"en": "\"...That's fair,\" he says softly. \"That's more than fair. Sit down, then, and let me try again.\"",
+"zh": "\"……也对，\"他轻声说，\"这更公平。那我从头说。\"他真的从头说了。"
+}
+],
+"menus": {}
+}

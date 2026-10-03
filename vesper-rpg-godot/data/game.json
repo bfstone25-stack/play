@@ -1,0 +1,2057 @@
+{
+ "title_key": "title",
+ "logo": "res://assets/title/logo.webp",
+ "title_bg": "res://assets/title/keyvisual.webp",
+ "fonts": {
+  "body": "res://assets/fonts/JosefinSans-SemiBold.ttf",
+  "display": "res://assets/fonts/Marcellus-Regular.ttf",
+  "cjk": "res://assets/fonts/NotoSansCJKjp-Regular.otf"
+ },
+ "ui": {
+  "dust": "res://assets/title/rain.png",
+  "vignette": "res://assets/title/vignette.png",
+  "scrim": "res://assets/title/scrim.png",
+  "dim": "res://assets/title/scrim.png",
+  "panel": "res://assets/ui/panel.png",
+  "textbox": "res://assets/ui/textbox.png",
+  "namebox": "res://assets/ui/namebox.png",
+  "choice_idle": "res://assets/ui/choice_idle.png",
+  "choice_hover": "res://assets/ui/choice_hover.png",
+  "slot_idle": "res://assets/ui/slot_idle.png",
+  "slot_hover": "res://assets/ui/slot_hover.png",
+  "bar_under": "res://assets/ui/choice_idle.png",
+  "bar_fill": "res://assets/ui/namebox.png",
+  "bar_fill_gold": "res://assets/ui/title_hover.png",
+  "modal": "res://assets/ui/confirm.png"
+ },
+ "title_mood": {
+  "ambient": "#e8d8e4",
+  "torch": true,
+  "zoom": 1.06,
+  "offset": [
+   0,
+   0
+  ]
+ },
+ "music": {
+  "title": "res://assets/audio/afterhours-theme.mp3",
+  "explore": "res://assets/audio/en-main.mp3",
+  "venue": "res://assets/audio/en-conversation.mp3",
+  "battle": "res://assets/audio/en-tension.mp3",
+  "boss": "res://assets/audio/en-tension.mp3",
+  "intimate": "res://assets/audio/en-intimate.mp3",
+  "ending": "res://assets/audio/afterhours-resolution.mp3",
+  "sad": "res://assets/audio/en-melancholy.mp3"
+ },
+ "audio": {
+  "ambience": "res://assets/audio/room_ambience.mp3",
+  "click": "res://assets/audio/ui_click.ogg",
+  "page_flip": "res://assets/audio/page_flip.ogg",
+  "heartbeat": "res://assets/audio/heartbeat.ogg",
+  "sting": "res://assets/audio/title_sting.ogg"
+ },
+ "disclosure_key": "about_ai",
+ "trial_last_night": "guyan_c2",
+ "trial_locked_cgs": [],
+ "store_url": "",
+ "stats": [
+  "wit",
+  "cha",
+  "grt",
+  "stl"
+ ],
+ "level_cap": 20,
+ "trust_thresholds": [
+  3,
+  5,
+  7,
+  9
+ ],
+ "heroine_flag": "with_him",
+ "heroine_sprite": "",
+ "party": [
+  {
+   "id": "you",
+   "base": {
+    "wit": 3,
+    "cha": 3,
+    "grt": 3,
+    "stl": 3
+   },
+   "grow": [
+    "cha",
+    "wit",
+    "grt",
+    "stl"
+   ],
+   "actions": [
+    "deflect",
+    "observe",
+    "banter",
+    "tease",
+    "remember",
+    "sweet",
+    "push",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "sharp": [
+     "quick",
+     "steady",
+     "noticing",
+     "plain_sk",
+     "candour"
+    ],
+    "sweet": [
+     "warm",
+     "linger_sk",
+     "poise_sk",
+     "unhurried",
+     "glow"
+    ]
+   },
+   "start_equip": {
+    "outfit": "blouse",
+    "tool": "phone"
+   }
+  }
+ ],
+ "heroine_barks": {
+  "who": "you",
+  "open": [
+   "hb_open_1",
+   "hb_open_2"
+  ],
+  "read": [
+   "hb_read_1",
+   "hb_read_2"
+  ],
+  "win": [
+   "hb_win_1",
+   "hb_win_2",
+   "hb_win_3"
+  ]
+ },
+ "voice": {
+  "hb_open_1": {
+   "v_en": "res://assets/voice/greet_0.ogg"
+  },
+  "hb_open_2": {
+   "v_en": "res://assets/voice/greet_1.ogg"
+  },
+  "hb_read_1": {
+   "v_en": "res://assets/voice/near_0.ogg"
+  },
+  "hb_read_2": {
+   "v_en": "res://assets/voice/near_1.ogg"
+  },
+  "hb_win_1": {
+   "v_en": "res://assets/voice/win_0.ogg"
+  },
+  "hb_win_2": {
+   "v_en": "res://assets/voice/win_1.ogg"
+  },
+  "hb_win_3": {
+   "v_en": "res://assets/voice/win_2.ogg"
+  },
+  "vb_stage_1": {
+   "v_en": "res://assets/voice/stage_0.ogg"
+  },
+  "vb_stage_2": {
+   "v_en": "res://assets/voice/stage_1.ogg"
+  },
+  "vb_stage_3": {
+   "v_en": "res://assets/voice/stage_2.ogg"
+  },
+  "vb_stage_4": {
+   "v_en": "res://assets/voice/stage_3.ogg"
+  },
+  "vb_win_big_1": {
+   "v_en": "res://assets/voice/win_big_0.ogg"
+  },
+  "vb_win_big_2": {
+   "v_en": "res://assets/voice/win_big_1.ogg"
+  },
+  "vb_unlock_1": {
+   "v_en": "res://assets/voice/unlock_0.ogg"
+  },
+  "vb_unlock_2": {
+   "v_en": "res://assets/voice/unlock_1.ogg"
+  },
+  "vb_streak_1": {
+   "v_en": "res://assets/voice/streak_0.ogg"
+  },
+  "vb_streak_2": {
+   "v_en": "res://assets/voice/streak_1.ogg"
+  },
+  "vb_fail_1": {
+   "v_en": "res://assets/voice/fail_0.ogg"
+  },
+  "vb_fail_2": {
+   "v_en": "res://assets/voice/fail_1.ogg"
+  },
+  "vb_idle_1": {
+   "v_en": "res://assets/voice/idle_0.ogg"
+  },
+  "vb_idle_2": {
+   "v_en": "res://assets/voice/idle_1.ogg"
+  }
+ },
+ "start_items": {
+  "coffee": 2,
+  "tea": 1
+ },
+ "actions": {
+  "deflect": {
+   "kind": "guard",
+   "cost": 0,
+   "susp": 4
+  },
+  "observe": {
+   "kind": "observe",
+   "cost": 2,
+   "susp": 2
+  },
+  "banter": {
+   "cost": 3,
+   "stat": "wit",
+   "power": 7,
+   "scale": 1.5,
+   "susp": 3
+  },
+  "tease": {
+   "cost": 3,
+   "stat": "cha",
+   "power": 7,
+   "scale": 1.8,
+   "susp": 2
+  },
+  "remember": {
+   "cost": 4,
+   "stat": "wit",
+   "power": 10,
+   "scale": 2.0,
+   "susp": -2,
+   "needs_kind": "keepsake"
+  },
+  "sweet": {
+   "cost": 2,
+   "stat": "cha",
+   "power": 9,
+   "scale": 1.2,
+   "susp": 1,
+   "needs_kind": "treat"
+  },
+  "push": {
+   "cost": 4,
+   "stat": "grt",
+   "power": 13,
+   "scale": 2.0,
+   "susp": 12,
+   "harm": true
+  },
+  "stall": {
+   "kind": "stall",
+   "cost": 1,
+   "susp_down": 10,
+   "heal": 3
+  },
+  "item": {
+   "kind": "item",
+   "cost": 0
+  },
+  "plain": {
+   "cost": 5,
+   "stat": "wit",
+   "power": 14,
+   "scale": 2.0,
+   "susp": -3
+  },
+  "linger": {
+   "cost": 4,
+   "stat": "cha",
+   "power": 11,
+   "scale": 1.8,
+   "susp": -4
+  }
+ },
+ "skills": {
+  "quick": {
+   "branch": "sharp",
+   "req": 2,
+   "mult": {
+    "banter": 0.3
+   }
+  },
+  "steady": {
+   "branch": "sharp",
+   "req": 4,
+   "max_comp": 10
+  },
+  "noticing": {
+   "branch": "sharp",
+   "req": 6,
+   "stat": {
+    "wit": 2
+   },
+   "mult": {
+    "remember": 0.2
+   }
+  },
+  "plain_sk": {
+   "branch": "sharp",
+   "req": 9,
+   "grant": "plain"
+  },
+  "candour": {
+   "branch": "sharp",
+   "req": 12,
+   "mult": {
+    "plain": 0.4,
+    "remember": 0.2
+   }
+  },
+  "warm": {
+   "branch": "sweet",
+   "req": 2,
+   "mult": {
+    "tease": 0.3
+   }
+  },
+  "linger_sk": {
+   "branch": "sweet",
+   "req": 4,
+   "grant": "linger"
+  },
+  "poise_sk": {
+   "branch": "sweet",
+   "req": 6,
+   "stat": {
+    "cha": 2
+   }
+  },
+  "unhurried": {
+   "branch": "sweet",
+   "req": 9,
+   "mult": {
+    "stall": 0.4,
+    "linger": 0.2
+   }
+  },
+  "glow": {
+   "branch": "sweet",
+   "req": 12,
+   "mult": {
+    "tease": 0.4,
+    "linger": 0.3
+   }
+  }
+ },
+ "items": {
+  "coffee": {
+   "kind": "consumable",
+   "heal_comp": 16
+  },
+  "cake": {
+   "kind": "consumable",
+   "heal_comp": 28
+  },
+  "tea": {
+   "kind": "consumable",
+   "heal_nerve": 8
+  },
+  "wine": {
+   "kind": "consumable",
+   "heal_nerve": 14
+  },
+  "macarons": {
+   "kind": "treat"
+  },
+  "transit": {
+   "kind": "key"
+  },
+  "blouse": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "you",
+   "bonus": {
+    "wit": 1
+   },
+   "sprite": "outfit_blouse"
+  },
+  "trench": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "you",
+   "bonus": {
+    "grt": 1,
+    "stl": 1
+   },
+   "mult": {
+    "stall": 0.2
+   },
+   "sprite": "outfit_trench"
+  },
+  "dress": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "you",
+   "bonus": {
+    "cha": 2
+   },
+   "mult": {
+    "tease": 0.2
+   },
+   "sprite": "outfit_dress"
+  },
+  "slip": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "you",
+   "bonus": {
+    "cha": 3
+   },
+   "mult": {
+    "tease": 0.3,
+    "linger": 0.2
+   },
+   "sprite": "outfit_slip"
+  },
+  "his_shirt": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "you",
+   "bonus": {
+    "cha": 2,
+    "grt": 2
+   },
+   "mult": {
+    "linger": 0.3,
+    "plain": 0.2
+   },
+   "sprite": "outfit_shirt"
+  },
+  "earrings": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "you",
+   "bonus": {
+    "cha": 1
+   }
+  },
+  "scarf": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "you",
+   "bonus": {
+    "grt": 1
+   },
+   "mult": {
+    "stall": 0.2
+   }
+  },
+  "perfume": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "you",
+   "bonus": {
+    "cha": 1
+   },
+   "mult": {
+    "tease": 0.2,
+    "linger": 0.2
+   }
+  },
+  "phone": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "you",
+   "bonus": {
+    "wit": 1
+   }
+  },
+  "notebook": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "you",
+   "bonus": {
+    "wit": 1
+   },
+   "mult": {
+    "remember": 0.3
+   }
+  },
+  "umbrella": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "you",
+   "bonus": {
+    "stl": 1
+   },
+   "mult": {
+    "stall": 0.2
+   }
+  },
+  "ks_guyan_1": {
+   "kind": "keepsake"
+  },
+  "ks_guyan_2": {
+   "kind": "keepsake"
+  },
+  "ks_guyan_3": {
+   "kind": "keepsake"
+  },
+  "ks_guyan_4": {
+   "kind": "keepsake"
+  },
+  "ks_guyan_5": {
+   "kind": "keepsake"
+  },
+  "gift_guyan": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  },
+  "ks_ethan_1": {
+   "kind": "keepsake"
+  },
+  "ks_ethan_2": {
+   "kind": "keepsake"
+  },
+  "ks_ethan_3": {
+   "kind": "keepsake"
+  },
+  "ks_ethan_4": {
+   "kind": "keepsake"
+  },
+  "ks_ethan_5": {
+   "kind": "keepsake"
+  },
+  "gift_ethan": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  },
+  "ks_luxingye_1": {
+   "kind": "keepsake"
+  },
+  "ks_luxingye_2": {
+   "kind": "keepsake"
+  },
+  "ks_luxingye_3": {
+   "kind": "keepsake"
+  },
+  "ks_luxingye_4": {
+   "kind": "keepsake"
+  },
+  "ks_luxingye_5": {
+   "kind": "keepsake"
+  },
+  "gift_luxingye": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  },
+  "ks_liam_1": {
+   "kind": "keepsake"
+  },
+  "ks_liam_2": {
+   "kind": "keepsake"
+  },
+  "ks_liam_3": {
+   "kind": "keepsake"
+  },
+  "ks_liam_4": {
+   "kind": "keepsake"
+  },
+  "ks_liam_5": {
+   "kind": "keepsake"
+  },
+  "gift_liam": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  },
+  "ks_adrian_1": {
+   "kind": "keepsake"
+  },
+  "ks_adrian_2": {
+   "kind": "keepsake"
+  },
+  "ks_adrian_3": {
+   "kind": "keepsake"
+  },
+  "ks_adrian_4": {
+   "kind": "keepsake"
+  },
+  "ks_adrian_5": {
+   "kind": "keepsake"
+  },
+  "gift_adrian": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  },
+  "ks_fushen_1": {
+   "kind": "keepsake"
+  },
+  "ks_fushen_2": {
+   "kind": "keepsake"
+  },
+  "ks_fushen_3": {
+   "kind": "keepsake"
+  },
+  "ks_fushen_4": {
+   "kind": "keepsake"
+  },
+  "ks_fushen_5": {
+   "kind": "keepsake"
+  },
+  "gift_fushen": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  }
+ },
+ "enemies": {
+  "date_guyan_1": {
+   "name_key": "e_date_guyan_1",
+   "sprite": "guyan_neutral",
+   "sprite_pressured": "guyan_blush",
+   "composure": 125,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "remember",
+    "linger"
+   ],
+   "resist": [
+    "banter",
+    "push"
+   ],
+   "xp": 45,
+   "barks": 4,
+   "bark_set": "hold_guyan",
+   "intro_key": "ei_date_guyan_1",
+   "win_key": "ew_date_guyan_1",
+   "drop": "coffee",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "doorman_guyan": {
+   "name_key": "e_doorman_guyan",
+   "sprite": "enemy_doorman",
+   "sprite_pressured": "enemy_doorman_pressured",
+   "composure": 80,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "sweet"
+   ],
+   "resist": [
+    "tease"
+   ],
+   "xp": 35,
+   "barks": 3,
+   "bark_set": "doorman",
+   "intro_key": "ei_doorman_guyan",
+   "win_key": "ew_doorman_guyan",
+   "drop": "earrings"
+  },
+  "date_guyan_2": {
+   "name_key": "e_date_guyan_2",
+   "sprite": "guyan_neutral",
+   "sprite_pressured": "guyan_blush",
+   "composure": 215,
+   "atk": 6,
+   "susp_rate": 6,
+   "weak": [
+    "remember",
+    "linger"
+   ],
+   "resist": [
+    "banter",
+    "push"
+   ],
+   "xp": 60,
+   "barks": 4,
+   "bark_set": "hold_guyan",
+   "intro_key": "ei_date_guyan_2",
+   "win_key": "ew_date_guyan_2",
+   "drop": "tea",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "paparazzo_guyan": {
+   "name_key": "e_paparazzo_guyan",
+   "sprite": "enemy_paparazzo",
+   "sprite_pressured": "enemy_paparazzo_pressured",
+   "composure": 170,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "tease"
+   ],
+   "resist": [
+    "plain"
+   ],
+   "xp": 50,
+   "barks": 3,
+   "bark_set": "paparazzo",
+   "intro_key": "ei_paparazzo_guyan",
+   "win_key": "ew_paparazzo_guyan",
+   "drop": "scarf"
+  },
+  "date_guyan_3": {
+   "name_key": "e_date_guyan_3",
+   "sprite": "guyan_neutral",
+   "sprite_pressured": "guyan_blush",
+   "composure": 300,
+   "atk": 7,
+   "susp_rate": 7,
+   "weak": [
+    "remember",
+    "tease",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 75,
+   "barks": 4,
+   "bark_set": "hold_guyan",
+   "intro_key": "ei_date_guyan_3",
+   "win_key": "ew_date_guyan_3",
+   "drop": "cake",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "columnist_guyan": {
+   "name_key": "e_columnist_guyan",
+   "sprite": "enemy_columnist",
+   "sprite_pressured": "enemy_columnist_pressured",
+   "composure": 250,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "banter"
+   ],
+   "xp": 65,
+   "barks": 3,
+   "bark_set": "columnist",
+   "intro_key": "ei_columnist_guyan",
+   "win_key": "ew_columnist_guyan",
+   "drop": "perfume"
+  },
+  "date_guyan_4": {
+   "name_key": "e_date_guyan_4",
+   "sprite": "guyan_neutral",
+   "sprite_pressured": "guyan_blush",
+   "composure": 330,
+   "atk": 9,
+   "susp_rate": 8,
+   "weak": [
+    "remember",
+    "tease",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 90,
+   "barks": 4,
+   "bark_set": "hold_guyan",
+   "intro_key": "ei_date_guyan_4",
+   "win_key": "ew_date_guyan_4",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "date_guyan_5": {
+   "name_key": "e_date_guyan_5",
+   "sprite": "guyan_neutral",
+   "sprite_pressured": "guyan_blush",
+   "composure": 500,
+   "atk": 10,
+   "susp_rate": 8,
+   "weak": [
+    "remember",
+    "tease",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 200,
+   "barks": 4,
+   "bark_set": "hold_guyan",
+   "intro_key": "ei_date_guyan_5",
+   "win_key": "ew_date_guyan_5",
+   "boss": true,
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "rival_guyan": {
+   "name_key": "e_rival_guyan",
+   "sprite": "enemy_pratt",
+   "sprite_pressured": "enemy_pratt_pressured",
+   "composure": 420,
+   "atk": 9,
+   "susp_rate": 7,
+   "weak": [
+    "remember",
+    "plain"
+   ],
+   "resist": [
+    "sweet"
+   ],
+   "xp": 140,
+   "barks": 4,
+   "bark_set": "pratt",
+   "intro_key": "ei_rival_guyan",
+   "win_key": "ew_rival_guyan",
+   "drop": "wine",
+   "boss": true,
+   "trust_win": 1
+  },
+  "date_ethan_1": {
+   "name_key": "e_date_ethan_1",
+   "sprite": "ethan_neutral",
+   "sprite_pressured": "ethan_blush",
+   "composure": 125,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "plain"
+   ],
+   "resist": [
+    "tease",
+    "push"
+   ],
+   "xp": 45,
+   "barks": 4,
+   "bark_set": "hold_ethan",
+   "intro_key": "ei_date_ethan_1",
+   "win_key": "ew_date_ethan_1",
+   "drop": "coffee",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "doorman_ethan": {
+   "name_key": "e_doorman_ethan",
+   "sprite": "enemy_doorman",
+   "sprite_pressured": "enemy_doorman_pressured",
+   "composure": 80,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "sweet"
+   ],
+   "resist": [
+    "tease"
+   ],
+   "xp": 35,
+   "barks": 3,
+   "bark_set": "doorman",
+   "intro_key": "ei_doorman_ethan",
+   "win_key": "ew_doorman_ethan",
+   "drop": "earrings"
+  },
+  "date_ethan_2": {
+   "name_key": "e_date_ethan_2",
+   "sprite": "ethan_neutral",
+   "sprite_pressured": "ethan_blush",
+   "composure": 215,
+   "atk": 6,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "plain"
+   ],
+   "resist": [
+    "tease",
+    "push"
+   ],
+   "xp": 60,
+   "barks": 4,
+   "bark_set": "hold_ethan",
+   "intro_key": "ei_date_ethan_2",
+   "win_key": "ew_date_ethan_2",
+   "drop": "tea",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "paparazzo_ethan": {
+   "name_key": "e_paparazzo_ethan",
+   "sprite": "enemy_paparazzo",
+   "sprite_pressured": "enemy_paparazzo_pressured",
+   "composure": 170,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "tease"
+   ],
+   "resist": [
+    "plain"
+   ],
+   "xp": 50,
+   "barks": 3,
+   "bark_set": "paparazzo",
+   "intro_key": "ei_paparazzo_ethan",
+   "win_key": "ew_paparazzo_ethan",
+   "drop": "scarf"
+  },
+  "date_ethan_3": {
+   "name_key": "e_date_ethan_3",
+   "sprite": "ethan_neutral",
+   "sprite_pressured": "ethan_blush",
+   "composure": 300,
+   "atk": 7,
+   "susp_rate": 7,
+   "weak": [
+    "banter",
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 75,
+   "barks": 4,
+   "bark_set": "hold_ethan",
+   "intro_key": "ei_date_ethan_3",
+   "win_key": "ew_date_ethan_3",
+   "drop": "cake",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "columnist_ethan": {
+   "name_key": "e_columnist_ethan",
+   "sprite": "enemy_columnist",
+   "sprite_pressured": "enemy_columnist_pressured",
+   "composure": 250,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "banter"
+   ],
+   "xp": 65,
+   "barks": 3,
+   "bark_set": "columnist",
+   "intro_key": "ei_columnist_ethan",
+   "win_key": "ew_columnist_ethan",
+   "drop": "perfume"
+  },
+  "date_ethan_4": {
+   "name_key": "e_date_ethan_4",
+   "sprite": "ethan_neutral",
+   "sprite_pressured": "ethan_blush",
+   "composure": 330,
+   "atk": 9,
+   "susp_rate": 8,
+   "weak": [
+    "banter",
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 90,
+   "barks": 4,
+   "bark_set": "hold_ethan",
+   "intro_key": "ei_date_ethan_4",
+   "win_key": "ew_date_ethan_4",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "date_ethan_5": {
+   "name_key": "e_date_ethan_5",
+   "sprite": "ethan_neutral",
+   "sprite_pressured": "ethan_blush",
+   "composure": 500,
+   "atk": 10,
+   "susp_rate": 8,
+   "weak": [
+    "banter",
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 200,
+   "barks": 4,
+   "bark_set": "hold_ethan",
+   "intro_key": "ei_date_ethan_5",
+   "win_key": "ew_date_ethan_5",
+   "boss": true,
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "rival_ethan": {
+   "name_key": "e_rival_ethan",
+   "sprite": "enemy_hale",
+   "sprite_pressured": "enemy_hale_pressured",
+   "composure": 420,
+   "atk": 9,
+   "susp_rate": 7,
+   "weak": [
+    "remember",
+    "plain"
+   ],
+   "resist": [
+    "tease",
+    "sweet"
+   ],
+   "xp": 140,
+   "barks": 4,
+   "bark_set": "hale",
+   "intro_key": "ei_rival_ethan",
+   "win_key": "ew_rival_ethan",
+   "drop": "wine",
+   "boss": true,
+   "trust_win": 1
+  },
+  "date_luxingye_1": {
+   "name_key": "e_date_luxingye_1",
+   "sprite": "luxingye_neutral",
+   "sprite_pressured": "luxingye_blush",
+   "composure": 125,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "tease",
+    "sweet"
+   ],
+   "resist": [
+    "plain",
+    "push"
+   ],
+   "xp": 45,
+   "barks": 4,
+   "bark_set": "hold_luxingye",
+   "intro_key": "ei_date_luxingye_1",
+   "win_key": "ew_date_luxingye_1",
+   "drop": "coffee",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "doorman_luxingye": {
+   "name_key": "e_doorman_luxingye",
+   "sprite": "enemy_doorman",
+   "sprite_pressured": "enemy_doorman_pressured",
+   "composure": 80,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "sweet"
+   ],
+   "resist": [
+    "tease"
+   ],
+   "xp": 35,
+   "barks": 3,
+   "bark_set": "doorman",
+   "intro_key": "ei_doorman_luxingye",
+   "win_key": "ew_doorman_luxingye",
+   "drop": "earrings"
+  },
+  "date_luxingye_2": {
+   "name_key": "e_date_luxingye_2",
+   "sprite": "luxingye_neutral",
+   "sprite_pressured": "luxingye_blush",
+   "composure": 215,
+   "atk": 6,
+   "susp_rate": 6,
+   "weak": [
+    "tease",
+    "sweet"
+   ],
+   "resist": [
+    "plain",
+    "push"
+   ],
+   "xp": 60,
+   "barks": 4,
+   "bark_set": "hold_luxingye",
+   "intro_key": "ei_date_luxingye_2",
+   "win_key": "ew_date_luxingye_2",
+   "drop": "tea",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "paparazzo_luxingye": {
+   "name_key": "e_paparazzo_luxingye",
+   "sprite": "enemy_paparazzo",
+   "sprite_pressured": "enemy_paparazzo_pressured",
+   "composure": 170,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "tease"
+   ],
+   "resist": [
+    "plain"
+   ],
+   "xp": 50,
+   "barks": 3,
+   "bark_set": "paparazzo",
+   "intro_key": "ei_paparazzo_luxingye",
+   "win_key": "ew_paparazzo_luxingye",
+   "drop": "scarf"
+  },
+  "date_luxingye_3": {
+   "name_key": "e_date_luxingye_3",
+   "sprite": "luxingye_neutral",
+   "sprite_pressured": "luxingye_blush",
+   "composure": 300,
+   "atk": 7,
+   "susp_rate": 7,
+   "weak": [
+    "tease",
+    "remember",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 75,
+   "barks": 4,
+   "bark_set": "hold_luxingye",
+   "intro_key": "ei_date_luxingye_3",
+   "win_key": "ew_date_luxingye_3",
+   "drop": "cake",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "columnist_luxingye": {
+   "name_key": "e_columnist_luxingye",
+   "sprite": "enemy_columnist",
+   "sprite_pressured": "enemy_columnist_pressured",
+   "composure": 250,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "banter"
+   ],
+   "xp": 65,
+   "barks": 3,
+   "bark_set": "columnist",
+   "intro_key": "ei_columnist_luxingye",
+   "win_key": "ew_columnist_luxingye",
+   "drop": "perfume"
+  },
+  "date_luxingye_4": {
+   "name_key": "e_date_luxingye_4",
+   "sprite": "luxingye_neutral",
+   "sprite_pressured": "luxingye_blush",
+   "composure": 330,
+   "atk": 9,
+   "susp_rate": 8,
+   "weak": [
+    "tease",
+    "remember",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 90,
+   "barks": 4,
+   "bark_set": "hold_luxingye",
+   "intro_key": "ei_date_luxingye_4",
+   "win_key": "ew_date_luxingye_4",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "date_luxingye_5": {
+   "name_key": "e_date_luxingye_5",
+   "sprite": "luxingye_neutral",
+   "sprite_pressured": "luxingye_blush",
+   "composure": 500,
+   "atk": 10,
+   "susp_rate": 8,
+   "weak": [
+    "tease",
+    "remember",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 200,
+   "barks": 4,
+   "bark_set": "hold_luxingye",
+   "intro_key": "ei_date_luxingye_5",
+   "win_key": "ew_date_luxingye_5",
+   "boss": true,
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "rival_luxingye": {
+   "name_key": "e_rival_luxingye",
+   "sprite": "enemy_han",
+   "sprite_pressured": "enemy_han_pressured",
+   "composure": 420,
+   "atk": 9,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "banter"
+   ],
+   "resist": [
+    "tease"
+   ],
+   "xp": 140,
+   "barks": 4,
+   "bark_set": "han",
+   "intro_key": "ei_rival_luxingye",
+   "win_key": "ew_rival_luxingye",
+   "drop": "wine",
+   "boss": true,
+   "trust_win": 1
+  },
+  "date_liam_1": {
+   "name_key": "e_date_liam_1",
+   "sprite": "liam_neutral",
+   "sprite_pressured": "liam_blush",
+   "composure": 125,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "sweet"
+   ],
+   "resist": [
+    "plain",
+    "push"
+   ],
+   "xp": 45,
+   "barks": 4,
+   "bark_set": "hold_liam",
+   "intro_key": "ei_date_liam_1",
+   "win_key": "ew_date_liam_1",
+   "drop": "coffee",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "doorman_liam": {
+   "name_key": "e_doorman_liam",
+   "sprite": "enemy_doorman",
+   "sprite_pressured": "enemy_doorman_pressured",
+   "composure": 80,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "sweet"
+   ],
+   "resist": [
+    "tease"
+   ],
+   "xp": 35,
+   "barks": 3,
+   "bark_set": "doorman",
+   "intro_key": "ei_doorman_liam",
+   "win_key": "ew_doorman_liam",
+   "drop": "earrings"
+  },
+  "date_liam_2": {
+   "name_key": "e_date_liam_2",
+   "sprite": "liam_neutral",
+   "sprite_pressured": "liam_blush",
+   "composure": 215,
+   "atk": 6,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "sweet"
+   ],
+   "resist": [
+    "plain",
+    "push"
+   ],
+   "xp": 60,
+   "barks": 4,
+   "bark_set": "hold_liam",
+   "intro_key": "ei_date_liam_2",
+   "win_key": "ew_date_liam_2",
+   "drop": "tea",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "paparazzo_liam": {
+   "name_key": "e_paparazzo_liam",
+   "sprite": "enemy_paparazzo",
+   "sprite_pressured": "enemy_paparazzo_pressured",
+   "composure": 170,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "tease"
+   ],
+   "resist": [
+    "plain"
+   ],
+   "xp": 50,
+   "barks": 3,
+   "bark_set": "paparazzo",
+   "intro_key": "ei_paparazzo_liam",
+   "win_key": "ew_paparazzo_liam",
+   "drop": "scarf"
+  },
+  "date_liam_3": {
+   "name_key": "e_date_liam_3",
+   "sprite": "liam_neutral",
+   "sprite_pressured": "liam_blush",
+   "composure": 300,
+   "atk": 7,
+   "susp_rate": 7,
+   "weak": [
+    "banter",
+    "remember",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 75,
+   "barks": 4,
+   "bark_set": "hold_liam",
+   "intro_key": "ei_date_liam_3",
+   "win_key": "ew_date_liam_3",
+   "drop": "cake",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "columnist_liam": {
+   "name_key": "e_columnist_liam",
+   "sprite": "enemy_columnist",
+   "sprite_pressured": "enemy_columnist_pressured",
+   "composure": 250,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "banter"
+   ],
+   "xp": 65,
+   "barks": 3,
+   "bark_set": "columnist",
+   "intro_key": "ei_columnist_liam",
+   "win_key": "ew_columnist_liam",
+   "drop": "perfume"
+  },
+  "date_liam_4": {
+   "name_key": "e_date_liam_4",
+   "sprite": "liam_neutral",
+   "sprite_pressured": "liam_blush",
+   "composure": 330,
+   "atk": 9,
+   "susp_rate": 8,
+   "weak": [
+    "banter",
+    "remember",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 90,
+   "barks": 4,
+   "bark_set": "hold_liam",
+   "intro_key": "ei_date_liam_4",
+   "win_key": "ew_date_liam_4",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "date_liam_5": {
+   "name_key": "e_date_liam_5",
+   "sprite": "liam_neutral",
+   "sprite_pressured": "liam_blush",
+   "composure": 500,
+   "atk": 10,
+   "susp_rate": 8,
+   "weak": [
+    "banter",
+    "remember",
+    "linger"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 200,
+   "barks": 4,
+   "bark_set": "hold_liam",
+   "intro_key": "ei_date_liam_5",
+   "win_key": "ew_date_liam_5",
+   "boss": true,
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "rival_liam": {
+   "name_key": "e_rival_liam",
+   "sprite": "enemy_morrow",
+   "sprite_pressured": "enemy_morrow_pressured",
+   "composure": 420,
+   "atk": 9,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "linger"
+   ],
+   "resist": [
+    "banter"
+   ],
+   "xp": 140,
+   "barks": 4,
+   "bark_set": "morrow",
+   "intro_key": "ei_rival_liam",
+   "win_key": "ew_rival_liam",
+   "drop": "wine",
+   "boss": true,
+   "trust_win": 1
+  },
+  "date_adrian_1": {
+   "name_key": "e_date_adrian_1",
+   "sprite": "adrian_neutral",
+   "sprite_pressured": "adrian_blush",
+   "composure": 125,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "remember",
+    "plain"
+   ],
+   "resist": [
+    "tease",
+    "push"
+   ],
+   "xp": 45,
+   "barks": 4,
+   "bark_set": "hold_adrian",
+   "intro_key": "ei_date_adrian_1",
+   "win_key": "ew_date_adrian_1",
+   "drop": "coffee",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "doorman_adrian": {
+   "name_key": "e_doorman_adrian",
+   "sprite": "enemy_doorman",
+   "sprite_pressured": "enemy_doorman_pressured",
+   "composure": 80,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "sweet"
+   ],
+   "resist": [
+    "tease"
+   ],
+   "xp": 35,
+   "barks": 3,
+   "bark_set": "doorman",
+   "intro_key": "ei_doorman_adrian",
+   "win_key": "ew_doorman_adrian",
+   "drop": "earrings"
+  },
+  "date_adrian_2": {
+   "name_key": "e_date_adrian_2",
+   "sprite": "adrian_neutral",
+   "sprite_pressured": "adrian_blush",
+   "composure": 215,
+   "atk": 6,
+   "susp_rate": 6,
+   "weak": [
+    "remember",
+    "plain"
+   ],
+   "resist": [
+    "tease",
+    "push"
+   ],
+   "xp": 60,
+   "barks": 4,
+   "bark_set": "hold_adrian",
+   "intro_key": "ei_date_adrian_2",
+   "win_key": "ew_date_adrian_2",
+   "drop": "tea",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "paparazzo_adrian": {
+   "name_key": "e_paparazzo_adrian",
+   "sprite": "enemy_paparazzo",
+   "sprite_pressured": "enemy_paparazzo_pressured",
+   "composure": 170,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "tease"
+   ],
+   "resist": [
+    "plain"
+   ],
+   "xp": 50,
+   "barks": 3,
+   "bark_set": "paparazzo",
+   "intro_key": "ei_paparazzo_adrian",
+   "win_key": "ew_paparazzo_adrian",
+   "drop": "scarf"
+  },
+  "date_adrian_3": {
+   "name_key": "e_date_adrian_3",
+   "sprite": "adrian_neutral",
+   "sprite_pressured": "adrian_blush",
+   "composure": 300,
+   "atk": 7,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "linger",
+    "remember"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 75,
+   "barks": 4,
+   "bark_set": "hold_adrian",
+   "intro_key": "ei_date_adrian_3",
+   "win_key": "ew_date_adrian_3",
+   "drop": "cake",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "columnist_adrian": {
+   "name_key": "e_columnist_adrian",
+   "sprite": "enemy_columnist",
+   "sprite_pressured": "enemy_columnist_pressured",
+   "composure": 250,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "banter"
+   ],
+   "xp": 65,
+   "barks": 3,
+   "bark_set": "columnist",
+   "intro_key": "ei_columnist_adrian",
+   "win_key": "ew_columnist_adrian",
+   "drop": "perfume"
+  },
+  "date_adrian_4": {
+   "name_key": "e_date_adrian_4",
+   "sprite": "adrian_neutral",
+   "sprite_pressured": "adrian_blush",
+   "composure": 330,
+   "atk": 9,
+   "susp_rate": 8,
+   "weak": [
+    "plain",
+    "linger",
+    "remember"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 90,
+   "barks": 4,
+   "bark_set": "hold_adrian",
+   "intro_key": "ei_date_adrian_4",
+   "win_key": "ew_date_adrian_4",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "date_adrian_5": {
+   "name_key": "e_date_adrian_5",
+   "sprite": "adrian_neutral",
+   "sprite_pressured": "adrian_blush",
+   "composure": 500,
+   "atk": 10,
+   "susp_rate": 8,
+   "weak": [
+    "plain",
+    "linger",
+    "remember"
+   ],
+   "resist": [
+    "push"
+   ],
+   "xp": 200,
+   "barks": 4,
+   "bark_set": "hold_adrian",
+   "intro_key": "ei_date_adrian_5",
+   "win_key": "ew_date_adrian_5",
+   "boss": true,
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "rival_adrian": {
+   "name_key": "e_rival_adrian",
+   "sprite": "enemy_sterling",
+   "sprite_pressured": "enemy_sterling_pressured",
+   "composure": 420,
+   "atk": 9,
+   "susp_rate": 7,
+   "weak": [
+    "remember",
+    "banter"
+   ],
+   "resist": [
+    "sweet",
+    "tease"
+   ],
+   "xp": 140,
+   "barks": 4,
+   "bark_set": "sterling",
+   "intro_key": "ei_rival_adrian",
+   "win_key": "ew_rival_adrian",
+   "drop": "wine",
+   "boss": true,
+   "trust_win": 1
+  },
+  "date_fushen_1": {
+   "name_key": "e_date_fushen_1",
+   "sprite": "fushen_neutral",
+   "sprite_pressured": "fushen_blush",
+   "composure": 125,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "tease",
+    "sweet",
+    "push"
+   ],
+   "xp": 45,
+   "barks": 4,
+   "bark_set": "hold_fushen",
+   "intro_key": "ei_date_fushen_1",
+   "win_key": "ew_date_fushen_1",
+   "drop": "coffee",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "doorman_fushen": {
+   "name_key": "e_doorman_fushen",
+   "sprite": "enemy_doorman",
+   "sprite_pressured": "enemy_doorman_pressured",
+   "composure": 80,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "sweet"
+   ],
+   "resist": [
+    "tease"
+   ],
+   "xp": 35,
+   "barks": 3,
+   "bark_set": "doorman",
+   "intro_key": "ei_doorman_fushen",
+   "win_key": "ew_doorman_fushen",
+   "drop": "earrings"
+  },
+  "date_fushen_2": {
+   "name_key": "e_date_fushen_2",
+   "sprite": "fushen_neutral",
+   "sprite_pressured": "fushen_blush",
+   "composure": 215,
+   "atk": 6,
+   "susp_rate": 6,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "tease",
+    "sweet",
+    "push"
+   ],
+   "xp": 60,
+   "barks": 4,
+   "bark_set": "hold_fushen",
+   "intro_key": "ei_date_fushen_2",
+   "win_key": "ew_date_fushen_2",
+   "drop": "tea",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "paparazzo_fushen": {
+   "name_key": "e_paparazzo_fushen",
+   "sprite": "enemy_paparazzo",
+   "sprite_pressured": "enemy_paparazzo_pressured",
+   "composure": 170,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "banter",
+    "tease"
+   ],
+   "resist": [
+    "plain"
+   ],
+   "xp": 50,
+   "barks": 3,
+   "bark_set": "paparazzo",
+   "intro_key": "ei_paparazzo_fushen",
+   "win_key": "ew_paparazzo_fushen",
+   "drop": "scarf"
+  },
+  "date_fushen_3": {
+   "name_key": "e_date_fushen_3",
+   "sprite": "fushen_neutral",
+   "sprite_pressured": "fushen_blush",
+   "composure": 300,
+   "atk": 7,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "linger",
+    "remember"
+   ],
+   "resist": [
+    "sweet",
+    "push"
+   ],
+   "xp": 75,
+   "barks": 4,
+   "bark_set": "hold_fushen",
+   "intro_key": "ei_date_fushen_3",
+   "win_key": "ew_date_fushen_3",
+   "drop": "cake",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "columnist_fushen": {
+   "name_key": "e_columnist_fushen",
+   "sprite": "enemy_columnist",
+   "sprite_pressured": "enemy_columnist_pressured",
+   "composure": 250,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "banter"
+   ],
+   "xp": 65,
+   "barks": 3,
+   "bark_set": "columnist",
+   "intro_key": "ei_columnist_fushen",
+   "win_key": "ew_columnist_fushen",
+   "drop": "perfume"
+  },
+  "date_fushen_4": {
+   "name_key": "e_date_fushen_4",
+   "sprite": "fushen_neutral",
+   "sprite_pressured": "fushen_blush",
+   "composure": 330,
+   "atk": 9,
+   "susp_rate": 8,
+   "weak": [
+    "plain",
+    "linger",
+    "remember"
+   ],
+   "resist": [
+    "sweet",
+    "push"
+   ],
+   "xp": 90,
+   "barks": 4,
+   "bark_set": "hold_fushen",
+   "intro_key": "ei_date_fushen_4",
+   "win_key": "ew_date_fushen_4",
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "date_fushen_5": {
+   "name_key": "e_date_fushen_5",
+   "sprite": "fushen_neutral",
+   "sprite_pressured": "fushen_blush",
+   "composure": 500,
+   "atk": 10,
+   "susp_rate": 8,
+   "weak": [
+    "plain",
+    "linger",
+    "remember"
+   ],
+   "resist": [
+    "sweet",
+    "push"
+   ],
+   "xp": 200,
+   "barks": 4,
+   "bark_set": "hold_fushen",
+   "intro_key": "ei_date_fushen_5",
+   "win_key": "ew_date_fushen_5",
+   "boss": true,
+   "trust_win": 1,
+   "trust_win_max_susp": 60
+  },
+  "rival_fushen": {
+   "name_key": "e_rival_fushen",
+   "sprite": "enemy_fu_elder",
+   "sprite_pressured": "enemy_fu_elder_pressured",
+   "composure": 420,
+   "atk": 9,
+   "susp_rate": 7,
+   "weak": [
+    "plain",
+    "remember"
+   ],
+   "resist": [
+    "tease",
+    "push"
+   ],
+   "xp": 140,
+   "barks": 4,
+   "bark_set": "fu_elder",
+   "intro_key": "ei_rival_fushen",
+   "win_key": "ew_rival_fushen",
+   "drop": "wine",
+   "boss": true,
+   "trust_win": 1
+  }
+ },
+ "nights": [
+  "prologue",
+  "guyan_c1",
+  "guyan_c2",
+  "guyan_c3",
+  "guyan_c4",
+  "guyan_c5",
+  "ethan_c1",
+  "ethan_c2",
+  "ethan_c3",
+  "ethan_c4",
+  "ethan_c5",
+  "luxingye_c1",
+  "luxingye_c2",
+  "luxingye_c3",
+  "luxingye_c4",
+  "luxingye_c5",
+  "liam_c1",
+  "liam_c2",
+  "liam_c3",
+  "liam_c4",
+  "liam_c5",
+  "adrian_c1",
+  "adrian_c2",
+  "adrian_c3",
+  "adrian_c4",
+  "adrian_c5",
+  "fushen_c1",
+  "fushen_c2",
+  "fushen_c3",
+  "fushen_c4",
+  "fushen_c5"
+ ],
+ "story": [
+  "guyan_c1",
+  "guyan_c2",
+  "guyan_c3",
+  "guyan_c4",
+  "guyan_c5",
+  "ethan_c1",
+  "ethan_c2",
+  "ethan_c3",
+  "ethan_c4",
+  "ethan_c5",
+  "luxingye_c1",
+  "luxingye_c2",
+  "luxingye_c3",
+  "luxingye_c4",
+  "luxingye_c5",
+  "liam_c1",
+  "liam_c2",
+  "liam_c3",
+  "liam_c4",
+  "liam_c5",
+  "adrian_c1",
+  "adrian_c2",
+  "adrian_c3",
+  "adrian_c4",
+  "adrian_c5",
+  "fushen_c1",
+  "fushen_c2",
+  "fushen_c3",
+  "fushen_c4",
+  "fushen_c5",
+  "guyan_end",
+  "ethan_end",
+  "luxingye_end",
+  "liam_end",
+  "adrian_end",
+  "fushen_end",
+  "rpg"
+ ],
+ "gallery": [
+  {
+   "id": "cg_guyan_ch2",
+   "thumb": "cg_guyan_ch2_thumb",
+   "locked": "cg_guyan_ch2_locked",
+   "key": "g_cg_guyan_ch2",
+   "trust": 0
+  },
+  {
+   "id": "cg_guyan_heat",
+   "thumb": "cg_guyan_heat_thumb",
+   "locked": "cg_guyan_heat_locked",
+   "key": "g_cg_guyan_heat",
+   "trust": 5
+  },
+  {
+   "id": "cg_guyan_end",
+   "thumb": "cg_guyan_end_thumb",
+   "locked": "cg_guyan_end_locked",
+   "key": "g_cg_guyan_end",
+   "trust": 0
+  },
+  {
+   "id": "cg_ethan_ch2",
+   "thumb": "cg_ethan_ch2_thumb",
+   "locked": "cg_ethan_ch2_locked",
+   "key": "g_cg_ethan_ch2",
+   "trust": 0
+  },
+  {
+   "id": "cg_ethan_heat",
+   "thumb": "cg_ethan_heat_thumb",
+   "locked": "cg_ethan_heat_locked",
+   "key": "g_cg_ethan_heat",
+   "trust": 5
+  },
+  {
+   "id": "cg_ethan_end",
+   "thumb": "cg_ethan_end_thumb",
+   "locked": "cg_ethan_end_locked",
+   "key": "g_cg_ethan_end",
+   "trust": 0
+  },
+  {
+   "id": "cg_luxingye_ch2",
+   "thumb": "cg_luxingye_ch2_thumb",
+   "locked": "cg_luxingye_ch2_locked",
+   "key": "g_cg_luxingye_ch2",
+   "trust": 0
+  },
+  {
+   "id": "cg_luxingye_heat",
+   "thumb": "cg_luxingye_heat_thumb",
+   "locked": "cg_luxingye_heat_locked",
+   "key": "g_cg_luxingye_heat",
+   "trust": 5
+  },
+  {
+   "id": "cg_luxingye_end",
+   "thumb": "cg_luxingye_end_thumb",
+   "locked": "cg_luxingye_end_locked",
+   "key": "g_cg_luxingye_end",
+   "trust": 0
+  },
+  {
+   "id": "cg_liam_ch2",
+   "thumb": "cg_liam_ch2_thumb",
+   "locked": "cg_liam_ch2_locked",
+   "key": "g_cg_liam_ch2",
+   "trust": 0
+  },
+  {
+   "id": "cg_liam_heat",
+   "thumb": "cg_liam_heat_thumb",
+   "locked": "cg_liam_heat_locked",
+   "key": "g_cg_liam_heat",
+   "trust": 5
+  },
+  {
+   "id": "cg_liam_end",
+   "thumb": "cg_liam_end_thumb",
+   "locked": "cg_liam_end_locked",
+   "key": "g_cg_liam_end",
+   "trust": 0
+  },
+  {
+   "id": "cg_adrian_ch2",
+   "thumb": "cg_adrian_ch2_thumb",
+   "locked": "cg_adrian_ch2_locked",
+   "key": "g_cg_adrian_ch2",
+   "trust": 0
+  },
+  {
+   "id": "cg_adrian_heat",
+   "thumb": "cg_adrian_heat_thumb",
+   "locked": "cg_adrian_heat_locked",
+   "key": "g_cg_adrian_heat",
+   "trust": 5
+  },
+  {
+   "id": "cg_adrian_end",
+   "thumb": "cg_adrian_end_thumb",
+   "locked": "cg_adrian_end_locked",
+   "key": "g_cg_adrian_end",
+   "trust": 0
+  },
+  {
+   "id": "cg_fushen_ch2",
+   "thumb": "cg_fushen_ch2_thumb",
+   "locked": "cg_fushen_ch2_locked",
+   "key": "g_cg_fushen_ch2",
+   "trust": 0
+  },
+  {
+   "id": "cg_fushen_heat",
+   "thumb": "cg_fushen_heat_thumb",
+   "locked": "cg_fushen_heat_locked",
+   "key": "g_cg_fushen_heat",
+   "trust": 5
+  },
+  {
+   "id": "cg_fushen_end",
+   "thumb": "cg_fushen_end_thumb",
+   "locked": "cg_fushen_end_locked",
+   "key": "g_cg_fushen_end",
+   "trust": 0
+  }
+ ]
+}

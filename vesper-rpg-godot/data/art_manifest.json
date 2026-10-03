@@ -1,0 +1,588 @@
+{
+ "rooms": {
+  "v_home": [
+   "res://assets/rpg/rooms/v_home.png",
+   "res://assets/placeholder/rooms/v_home.webp"
+  ],
+  "v_street": [
+   "res://assets/rpg/rooms/v_street.png",
+   "res://assets/placeholder/rooms/v_street.webp"
+  ],
+  "v_cafe": [
+   "res://assets/rpg/rooms/v_cafe.png",
+   "res://assets/placeholder/rooms/v_cafe.webp"
+  ],
+  "v_guyan_1": [
+   "res://assets/rpg/rooms/v_guyan_1.png",
+   "res://assets/placeholder/rooms/v_guyan_1.webp"
+  ],
+  "v_guyan_2": [
+   "res://assets/rpg/rooms/v_guyan_2.png",
+   "res://assets/placeholder/rooms/v_guyan_2.webp"
+  ],
+  "v_guyan_3": [
+   "res://assets/rpg/rooms/v_guyan_3.png",
+   "res://assets/placeholder/rooms/v_guyan_3.webp"
+  ],
+  "v_guyan_4": [
+   "res://assets/rpg/rooms/v_guyan_4.png",
+   "res://assets/placeholder/rooms/v_guyan_4.webp"
+  ],
+  "v_guyan_5": [
+   "res://assets/rpg/rooms/v_guyan_5.png",
+   "res://assets/placeholder/rooms/v_guyan_5.webp"
+  ],
+  "v_ethan_1": [
+   "res://assets/rpg/rooms/v_ethan_1.png",
+   "res://assets/placeholder/rooms/v_ethan_1.webp"
+  ],
+  "v_ethan_2": [
+   "res://assets/rpg/rooms/v_ethan_2.png",
+   "res://assets/placeholder/rooms/v_ethan_2.webp"
+  ],
+  "v_ethan_3": [
+   "res://assets/rpg/rooms/v_ethan_3.png",
+   "res://assets/placeholder/rooms/v_ethan_3.webp"
+  ],
+  "v_ethan_4": [
+   "res://assets/rpg/rooms/v_ethan_4.png",
+   "res://assets/placeholder/rooms/v_ethan_4.webp"
+  ],
+  "v_ethan_5": [
+   "res://assets/rpg/rooms/v_ethan_5.png",
+   "res://assets/placeholder/rooms/v_ethan_5.webp"
+  ],
+  "v_luxingye_1": [
+   "res://assets/rpg/rooms/v_luxingye_1.png",
+   "res://assets/placeholder/rooms/v_luxingye_1.webp"
+  ],
+  "v_luxingye_2": [
+   "res://assets/rpg/rooms/v_luxingye_2.png",
+   "res://assets/placeholder/rooms/v_luxingye_2.webp"
+  ],
+  "v_luxingye_3": [
+   "res://assets/rpg/rooms/v_luxingye_3.png",
+   "res://assets/placeholder/rooms/v_luxingye_3.webp"
+  ],
+  "v_luxingye_4": [
+   "res://assets/rpg/rooms/v_luxingye_4.png",
+   "res://assets/placeholder/rooms/v_luxingye_4.webp"
+  ],
+  "v_luxingye_5": [
+   "res://assets/rpg/rooms/v_luxingye_5.png",
+   "res://assets/placeholder/rooms/v_luxingye_5.webp"
+  ],
+  "v_liam_1": [
+   "res://assets/rpg/rooms/v_liam_1.png",
+   "res://assets/placeholder/rooms/v_liam_1.webp"
+  ],
+  "v_liam_2": [
+   "res://assets/rpg/rooms/v_liam_2.png",
+   "res://assets/placeholder/rooms/v_liam_2.webp"
+  ],
+  "v_liam_3": [
+   "res://assets/rpg/rooms/v_liam_3.png",
+   "res://assets/placeholder/rooms/v_liam_3.webp"
+  ],
+  "v_liam_4": [
+   "res://assets/rpg/rooms/v_liam_4.png",
+   "res://assets/placeholder/rooms/v_liam_4.webp"
+  ],
+  "v_liam_5": [
+   "res://assets/rpg/rooms/v_liam_5.png",
+   "res://assets/placeholder/rooms/v_liam_5.webp"
+  ],
+  "v_adrian_1": [
+   "res://assets/rpg/rooms/v_adrian_1.png",
+   "res://assets/placeholder/rooms/v_adrian_1.webp"
+  ],
+  "v_adrian_2": [
+   "res://assets/rpg/rooms/v_adrian_2.png",
+   "res://assets/placeholder/rooms/v_adrian_2.webp"
+  ],
+  "v_adrian_3": [
+   "res://assets/rpg/rooms/v_adrian_3.png",
+   "res://assets/placeholder/rooms/v_adrian_3.webp"
+  ],
+  "v_adrian_4": [
+   "res://assets/rpg/rooms/v_adrian_4.png",
+   "res://assets/placeholder/rooms/v_adrian_4.webp"
+  ],
+  "v_adrian_5": [
+   "res://assets/rpg/rooms/v_adrian_5.png",
+   "res://assets/placeholder/rooms/v_adrian_5.webp"
+  ],
+  "v_fushen_1": [
+   "res://assets/rpg/rooms/v_fushen_1.png",
+   "res://assets/placeholder/rooms/v_fushen_1.webp"
+  ],
+  "v_fushen_2": [
+   "res://assets/rpg/rooms/v_fushen_2.png",
+   "res://assets/placeholder/rooms/v_fushen_2.webp"
+  ],
+  "v_fushen_3": [
+   "res://assets/rpg/rooms/v_fushen_3.png",
+   "res://assets/placeholder/rooms/v_fushen_3.webp"
+  ],
+  "v_fushen_4": [
+   "res://assets/rpg/rooms/v_fushen_4.png",
+   "res://assets/placeholder/rooms/v_fushen_4.webp"
+  ],
+  "v_fushen_5": [
+   "res://assets/rpg/rooms/v_fushen_5.png",
+   "res://assets/placeholder/rooms/v_fushen_5.webp"
+  ]
+ },
+ "rooms_locked": {
+  "v_home": [
+   "res://assets/placeholder/rooms_locked/v_home.webp"
+  ],
+  "v_street": [
+   "res://assets/placeholder/rooms_locked/v_street.webp"
+  ],
+  "v_cafe": [
+   "res://assets/placeholder/rooms_locked/v_cafe.webp"
+  ],
+  "v_guyan_1": [
+   "res://assets/placeholder/rooms_locked/v_guyan_1.webp"
+  ],
+  "v_guyan_2": [
+   "res://assets/placeholder/rooms_locked/v_guyan_2.webp"
+  ],
+  "v_guyan_3": [
+   "res://assets/placeholder/rooms_locked/v_guyan_3.webp"
+  ],
+  "v_guyan_4": [
+   "res://assets/placeholder/rooms_locked/v_guyan_4.webp"
+  ],
+  "v_guyan_5": [
+   "res://assets/placeholder/rooms_locked/v_guyan_5.webp"
+  ],
+  "v_ethan_1": [
+   "res://assets/placeholder/rooms_locked/v_ethan_1.webp"
+  ],
+  "v_ethan_2": [
+   "res://assets/placeholder/rooms_locked/v_ethan_2.webp"
+  ],
+  "v_ethan_3": [
+   "res://assets/placeholder/rooms_locked/v_ethan_3.webp"
+  ],
+  "v_ethan_4": [
+   "res://assets/placeholder/rooms_locked/v_ethan_4.webp"
+  ],
+  "v_ethan_5": [
+   "res://assets/placeholder/rooms_locked/v_ethan_5.webp"
+  ],
+  "v_luxingye_1": [
+   "res://assets/placeholder/rooms_locked/v_luxingye_1.webp"
+  ],
+  "v_luxingye_2": [
+   "res://assets/placeholder/rooms_locked/v_luxingye_2.webp"
+  ],
+  "v_luxingye_3": [
+   "res://assets/placeholder/rooms_locked/v_luxingye_3.webp"
+  ],
+  "v_luxingye_4": [
+   "res://assets/placeholder/rooms_locked/v_luxingye_4.webp"
+  ],
+  "v_luxingye_5": [
+   "res://assets/placeholder/rooms_locked/v_luxingye_5.webp"
+  ],
+  "v_liam_1": [
+   "res://assets/placeholder/rooms_locked/v_liam_1.webp"
+  ],
+  "v_liam_2": [
+   "res://assets/placeholder/rooms_locked/v_liam_2.webp"
+  ],
+  "v_liam_3": [
+   "res://assets/placeholder/rooms_locked/v_liam_3.webp"
+  ],
+  "v_liam_4": [
+   "res://assets/placeholder/rooms_locked/v_liam_4.webp"
+  ],
+  "v_liam_5": [
+   "res://assets/placeholder/rooms_locked/v_liam_5.webp"
+  ],
+  "v_adrian_1": [
+   "res://assets/placeholder/rooms_locked/v_adrian_1.webp"
+  ],
+  "v_adrian_2": [
+   "res://assets/placeholder/rooms_locked/v_adrian_2.webp"
+  ],
+  "v_adrian_3": [
+   "res://assets/placeholder/rooms_locked/v_adrian_3.webp"
+  ],
+  "v_adrian_4": [
+   "res://assets/placeholder/rooms_locked/v_adrian_4.webp"
+  ],
+  "v_adrian_5": [
+   "res://assets/placeholder/rooms_locked/v_adrian_5.webp"
+  ],
+  "v_fushen_1": [
+   "res://assets/placeholder/rooms_locked/v_fushen_1.webp"
+  ],
+  "v_fushen_2": [
+   "res://assets/placeholder/rooms_locked/v_fushen_2.webp"
+  ],
+  "v_fushen_3": [
+   "res://assets/placeholder/rooms_locked/v_fushen_3.webp"
+  ],
+  "v_fushen_4": [
+   "res://assets/placeholder/rooms_locked/v_fushen_4.webp"
+  ],
+  "v_fushen_5": [
+   "res://assets/placeholder/rooms_locked/v_fushen_5.webp"
+  ]
+ },
+ "enemies": {
+  "guyan_neutral": [
+   "res://assets/sprites/guyan_neutral.png"
+  ],
+  "guyan_blush": [
+   "res://assets/sprites/guyan_blush.png"
+  ],
+  "guyan_smile": [
+   "res://assets/sprites/guyan_smile.png"
+  ],
+  "ethan_neutral": [
+   "res://assets/sprites/ethan_neutral.png"
+  ],
+  "ethan_blush": [
+   "res://assets/sprites/ethan_blush.png"
+  ],
+  "ethan_smile": [
+   "res://assets/sprites/ethan_smile.png"
+  ],
+  "luxingye_neutral": [
+   "res://assets/sprites/luxingye_neutral.png"
+  ],
+  "luxingye_blush": [
+   "res://assets/sprites/luxingye_blush.png"
+  ],
+  "luxingye_smile": [
+   "res://assets/sprites/luxingye_smile.png"
+  ],
+  "liam_neutral": [
+   "res://assets/sprites/liam_neutral.png"
+  ],
+  "liam_blush": [
+   "res://assets/sprites/liam_blush.png"
+  ],
+  "liam_smile": [
+   "res://assets/sprites/liam_smile.png"
+  ],
+  "adrian_neutral": [
+   "res://assets/sprites/adrian_neutral.png"
+  ],
+  "adrian_blush": [
+   "res://assets/sprites/adrian_blush.png"
+  ],
+  "adrian_smile": [
+   "res://assets/sprites/adrian_smile.png"
+  ],
+  "fushen_neutral": [
+   "res://assets/sprites/fushen_neutral.png"
+  ],
+  "fushen_blush": [
+   "res://assets/sprites/fushen_blush.png"
+  ],
+  "fushen_smile": [
+   "res://assets/sprites/fushen_smile.png"
+  ],
+  "enemy_hale": [
+   "res://assets/rpg/enemies/enemy_hale_neutral.png"
+  ],
+  "enemy_hale_pressured": [
+   "res://assets/rpg/enemies/enemy_hale_pressured.png"
+  ],
+  "enemy_han": [
+   "res://assets/rpg/enemies/enemy_han_neutral.png"
+  ],
+  "enemy_han_pressured": [
+   "res://assets/rpg/enemies/enemy_han_pressured.png"
+  ],
+  "enemy_pratt": [
+   "res://assets/rpg/enemies/enemy_pratt_neutral.png"
+  ],
+  "enemy_pratt_pressured": [
+   "res://assets/rpg/enemies/enemy_pratt_pressured.png"
+  ],
+  "enemy_morrow": [
+   "res://assets/rpg/enemies/enemy_morrow_neutral.png"
+  ],
+  "enemy_morrow_pressured": [
+   "res://assets/rpg/enemies/enemy_morrow_pressured.png"
+  ],
+  "enemy_sterling": [
+   "res://assets/rpg/enemies/enemy_sterling_neutral.png"
+  ],
+  "enemy_sterling_pressured": [
+   "res://assets/rpg/enemies/enemy_sterling_pressured.png"
+  ],
+  "enemy_fu_elder": [
+   "res://assets/rpg/enemies/enemy_fu_elder_neutral.png"
+  ],
+  "enemy_fu_elder_pressured": [
+   "res://assets/rpg/enemies/enemy_fu_elder_pressured.png"
+  ],
+  "enemy_paparazzo": [
+   "res://assets/rpg/enemies/enemy_paparazzo_neutral.png"
+  ],
+  "enemy_paparazzo_pressured": [
+   "res://assets/rpg/enemies/enemy_paparazzo_pressured.png"
+  ],
+  "enemy_doorman": [
+   "res://assets/rpg/enemies/enemy_doorman_neutral.png"
+  ],
+  "enemy_doorman_pressured": [
+   "res://assets/rpg/enemies/enemy_doorman_pressured.png"
+  ],
+  "enemy_columnist": [
+   "res://assets/rpg/enemies/enemy_columnist_neutral.png"
+  ],
+  "enemy_columnist_pressured": [
+   "res://assets/rpg/enemies/enemy_columnist_pressured.png"
+  ]
+ },
+ "sprites": {
+  "guyan_neutral": [
+   "res://assets/sprites/guyan_neutral.png"
+  ],
+  "guyan_blush": [
+   "res://assets/sprites/guyan_blush.png"
+  ],
+  "guyan_smile": [
+   "res://assets/sprites/guyan_smile.png"
+  ],
+  "ethan_neutral": [
+   "res://assets/sprites/ethan_neutral.png"
+  ],
+  "ethan_blush": [
+   "res://assets/sprites/ethan_blush.png"
+  ],
+  "ethan_smile": [
+   "res://assets/sprites/ethan_smile.png"
+  ],
+  "luxingye_neutral": [
+   "res://assets/sprites/luxingye_neutral.png"
+  ],
+  "luxingye_blush": [
+   "res://assets/sprites/luxingye_blush.png"
+  ],
+  "luxingye_smile": [
+   "res://assets/sprites/luxingye_smile.png"
+  ],
+  "liam_neutral": [
+   "res://assets/sprites/liam_neutral.png"
+  ],
+  "liam_blush": [
+   "res://assets/sprites/liam_blush.png"
+  ],
+  "liam_smile": [
+   "res://assets/sprites/liam_smile.png"
+  ],
+  "adrian_neutral": [
+   "res://assets/sprites/adrian_neutral.png"
+  ],
+  "adrian_blush": [
+   "res://assets/sprites/adrian_blush.png"
+  ],
+  "adrian_smile": [
+   "res://assets/sprites/adrian_smile.png"
+  ],
+  "fushen_neutral": [
+   "res://assets/sprites/fushen_neutral.png"
+  ],
+  "fushen_blush": [
+   "res://assets/sprites/fushen_blush.png"
+  ],
+  "fushen_smile": [
+   "res://assets/sprites/fushen_smile.png"
+  ],
+  "outfit_blouse": [
+   "res://assets/rpg/outfits/outfit_blouse.png"
+  ],
+  "outfit_trench": [
+   "res://assets/rpg/outfits/outfit_trench.png"
+  ],
+  "outfit_dress": [
+   "res://assets/rpg/outfits/outfit_dress.png"
+  ],
+  "outfit_slip": [
+   "res://assets/rpg/outfits/outfit_slip.png"
+  ],
+  "outfit_shirt": [
+   "res://assets/rpg/outfits/outfit_shirt.png"
+  ]
+ },
+ "cg": {
+  "cg_guyan_ch2": [
+   "res://assets/cg/cg_guyan_ch2.webp"
+  ],
+  "cg_guyan_ch2_thumb": [
+   "res://assets/cg/cg_guyan_ch2_thumb.webp"
+  ],
+  "cg_guyan_ch2_locked": [
+   "res://assets/cg/cg_guyan_ch2_locked.webp"
+  ],
+  "cg_guyan_heat": [
+   "res://assets/cg/cg_guyan_heat.webp"
+  ],
+  "cg_guyan_heat_thumb": [
+   "res://assets/cg/cg_guyan_heat_thumb.webp"
+  ],
+  "cg_guyan_heat_locked": [
+   "res://assets/cg/cg_guyan_heat_locked.webp"
+  ],
+  "cg_guyan_end": [
+   "res://assets/cg/cg_guyan_end.webp"
+  ],
+  "cg_guyan_end_thumb": [
+   "res://assets/cg/cg_guyan_end_thumb.webp"
+  ],
+  "cg_guyan_end_locked": [
+   "res://assets/cg/cg_guyan_end_locked.webp"
+  ],
+  "cg_ethan_ch2": [
+   "res://assets/cg/cg_ethan_ch2.webp"
+  ],
+  "cg_ethan_ch2_thumb": [
+   "res://assets/cg/cg_ethan_ch2_thumb.webp"
+  ],
+  "cg_ethan_ch2_locked": [
+   "res://assets/cg/cg_ethan_ch2_locked.webp"
+  ],
+  "cg_ethan_heat": [
+   "res://assets/cg/cg_ethan_heat.webp"
+  ],
+  "cg_ethan_heat_thumb": [
+   "res://assets/cg/cg_ethan_heat_thumb.webp"
+  ],
+  "cg_ethan_heat_locked": [
+   "res://assets/cg/cg_ethan_heat_locked.webp"
+  ],
+  "cg_ethan_end": [
+   "res://assets/cg/cg_ethan_end.webp"
+  ],
+  "cg_ethan_end_thumb": [
+   "res://assets/cg/cg_ethan_end_thumb.webp"
+  ],
+  "cg_ethan_end_locked": [
+   "res://assets/cg/cg_ethan_end_locked.webp"
+  ],
+  "cg_luxingye_ch2": [
+   "res://assets/cg/cg_luxingye_ch2.webp"
+  ],
+  "cg_luxingye_ch2_thumb": [
+   "res://assets/cg/cg_luxingye_ch2_thumb.webp"
+  ],
+  "cg_luxingye_ch2_locked": [
+   "res://assets/cg/cg_luxingye_ch2_locked.webp"
+  ],
+  "cg_luxingye_heat": [
+   "res://assets/cg/cg_luxingye_heat.webp"
+  ],
+  "cg_luxingye_heat_thumb": [
+   "res://assets/cg/cg_luxingye_heat_thumb.webp"
+  ],
+  "cg_luxingye_heat_locked": [
+   "res://assets/cg/cg_luxingye_heat_locked.webp"
+  ],
+  "cg_luxingye_end": [
+   "res://assets/cg/cg_luxingye_end.webp"
+  ],
+  "cg_luxingye_end_thumb": [
+   "res://assets/cg/cg_luxingye_end_thumb.webp"
+  ],
+  "cg_luxingye_end_locked": [
+   "res://assets/cg/cg_luxingye_end_locked.webp"
+  ],
+  "cg_liam_ch2": [
+   "res://assets/cg/cg_liam_ch2.webp"
+  ],
+  "cg_liam_ch2_thumb": [
+   "res://assets/cg/cg_liam_ch2_thumb.webp"
+  ],
+  "cg_liam_ch2_locked": [
+   "res://assets/cg/cg_liam_ch2_locked.webp"
+  ],
+  "cg_liam_heat": [
+   "res://assets/cg/cg_liam_heat.webp"
+  ],
+  "cg_liam_heat_thumb": [
+   "res://assets/cg/cg_liam_heat_thumb.webp"
+  ],
+  "cg_liam_heat_locked": [
+   "res://assets/cg/cg_liam_heat_locked.webp"
+  ],
+  "cg_liam_end": [
+   "res://assets/cg/cg_liam_end.webp"
+  ],
+  "cg_liam_end_thumb": [
+   "res://assets/cg/cg_liam_end_thumb.webp"
+  ],
+  "cg_liam_end_locked": [
+   "res://assets/cg/cg_liam_end_locked.webp"
+  ],
+  "cg_adrian_ch2": [
+   "res://assets/cg/cg_adrian_ch2.webp"
+  ],
+  "cg_adrian_ch2_thumb": [
+   "res://assets/cg/cg_adrian_ch2_thumb.webp"
+  ],
+  "cg_adrian_ch2_locked": [
+   "res://assets/cg/cg_adrian_ch2_locked.webp"
+  ],
+  "cg_adrian_heat": [
+   "res://assets/cg/cg_adrian_heat.webp"
+  ],
+  "cg_adrian_heat_thumb": [
+   "res://assets/cg/cg_adrian_heat_thumb.webp"
+  ],
+  "cg_adrian_heat_locked": [
+   "res://assets/cg/cg_adrian_heat_locked.webp"
+  ],
+  "cg_adrian_end": [
+   "res://assets/cg/cg_adrian_end.webp"
+  ],
+  "cg_adrian_end_thumb": [
+   "res://assets/cg/cg_adrian_end_thumb.webp"
+  ],
+  "cg_adrian_end_locked": [
+   "res://assets/cg/cg_adrian_end_locked.webp"
+  ],
+  "cg_fushen_ch2": [
+   "res://assets/cg/cg_fushen_ch2.webp"
+  ],
+  "cg_fushen_ch2_thumb": [
+   "res://assets/cg/cg_fushen_ch2_thumb.webp"
+  ],
+  "cg_fushen_ch2_locked": [
+   "res://assets/cg/cg_fushen_ch2_locked.webp"
+  ],
+  "cg_fushen_heat": [
+   "res://assets/cg/cg_fushen_heat.webp"
+  ],
+  "cg_fushen_heat_thumb": [
+   "res://assets/cg/cg_fushen_heat_thumb.webp"
+  ],
+  "cg_fushen_heat_locked": [
+   "res://assets/cg/cg_fushen_heat_locked.webp"
+  ],
+  "cg_fushen_end": [
+   "res://assets/cg/cg_fushen_end.webp"
+  ],
+  "cg_fushen_end_thumb": [
+   "res://assets/cg/cg_fushen_end_thumb.webp"
+  ],
+  "cg_fushen_end_locked": [
+   "res://assets/cg/cg_fushen_end_locked.webp"
+  ]
+ },
+ "maps": {
+  "city": [
+   "res://assets/rpg/rooms/v_city_map.png",
+   "res://assets/title/keyvisual.webp"
+  ]
+ }
+}

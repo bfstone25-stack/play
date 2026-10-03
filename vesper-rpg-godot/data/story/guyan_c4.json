@@ -1,0 +1,117 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "guyan_c4_open",
+"who": "narrator",
+"en": "You push the door open and the air is wrong. He sits behind the counter, a letter in hand. The whole street is being redeveloped; the shop's lease is up, and the developer's offer is generous. \"They say… it's the sensible choice,\" he says evenly — but you see his knuckles gone white around the paper.",
+"zh": "你推门进去时，气氛不对。他坐在柜台后，手里一封信。整条街要拆迁改造，书店的租约到期了，开发商给的价钱很高。\"他们说…这是最好的选择。\"他声音很平，可你看见他攥着信的手，指节都白了。"
+},
+{
+"src": 10,
+"id": "guyan_c4_b1_letter_ev",
+"who": "narrator",
+"en": "He slides the letter toward you. Signing it means he'll never again have to worry about a bookshop that only loses money. But he hasn't said one word about signing.",
+"zh": "他把信推给你看。签下去，他这辈子就再也不用为一家赔钱的旧书店发愁。可他一句话也没说要签。"
+},
+{
+"src": 11,
+"id": "guyan_c4_b1_letter_he",
+"who": "guyan",
+"en": "\"They'd clear the debt and then some.\" He states it like a stock figure. \"Every sensible person I know says take it.\" Only when you ask what he wants does it come out at all, quietly: \"I don't want to let it go. That's not an argument. It's just the truth of it.\"",
+"zh": "\"他们会替我把债清了，还能多出一笔。\"他说得像在报一个库存数字。\"我认识的每一个明白人都说，接。\"只有当你问他自己想怎样，那句话才轻轻地出来：\"我不想放手。这不是道理。这只是实情。\""
+},
+{
+"src": 20,
+"id": "guyan_c4_b2_boxes_ev",
+"who": "narrator",
+"en": "He begins, silently, to box up the books. When he reaches the book of poems from the day you met, his hand stops — and for a long while, it doesn't go into the box.",
+"zh": "他开始默默打包书。打到那本你们初遇时的诗集，他的手停住了，很久没有放进箱子。"
+},
+{
+"src": 21,
+"id": "guyan_c4_b2_boxes_he",
+"who": "guyan",
+"en": "He packs in silence because packing looks like deciding. Then his hand stops over the poetry book from the evening you walked in, and stays stopped. \"...I can't put this one in,\" he says, and his voice isn't steady. \"I've tried twice. I keep finding it back on the counter.\"",
+"zh": "他沉默地收拾，因为收拾看上去像是已经决定了。然后他的手停在那本诗集上面——你走进来那天晚上的那一本——就那样停住了。\"……这本我装不进去，\"他说，声音不稳，\"我试过两次。它每次都回到柜台上。\""
+},
+{
+"src": 30,
+"id": "guyan_c4_bx_after_hours_ev",
+"who": "narrator",
+"en": "The boxes stay unpacked on the shop floor. He turns the sign to Closed for the first time in the whole story, and he is very careful about the lock, because his hands are not steady.",
+"zh": "箱子留在店堂中间没有打开。整个故事里他第一次把牌子翻到\"打烊\"，锁门的时候他很小心，因为他的手不稳。"
+},
+{
+"src": 31,
+"id": "guyan_c4_bx_after_hours_he",
+"who": "guyan",
+"en": "\"I want to say it properly, so I'm going to say it slowly.\" His ears are scarlet and his voice is level, which costs him. \"I would like you to stay tonight. Not because of the shop, or the letter, or any of it. If you'd rather not, we'll make tea and I'll walk you home and I won't be any different tomorrow — I need you to believe that part before you answer.\" You answer. He closes his eyes for a second. Then he takes the poetry book off the counter, and puts it back on the shelf where it has always belonged, and turns off the lamp.",
+"zh": "\"我想把话说好，所以我说得慢一点。\"他的耳朵通红，声音却是平的，这让他付出了代价。\"我想请你今晚留下来。不是因为店，不是因为那封信，不是因为其中任何一件。如果你不想，我们就去煮茶，我送你回家，明天我不会有任何不一样——这一句我需要你先相信，再回答我。\"你回答了。他闭了一下眼睛。然后他把柜台上那本诗集拿起来，放回它一直属于的那格书架上，关了灯。"
+},
+{
+"src": 100,
+"id": "guyan_c4_c4a_q",
+"who": "guyan",
+"en": "He finally looks up. \"Tell me… should I sign it?\" It's the first time he's ever put a decision in someone else's hands.",
+"zh": "他终于抬头看你：\"你说…我该签吗？\"这是他第一次，把一个决定交到别人手里。"
+},
+{
+"src": 101,
+"id": "guyan_c4_c4a_r0",
+"who": "guyan",
+"en": "His eyes go red at once; he turns his face away. \"…I kept this place alone so long. It turns out 'I'll be with you' is all it took to hold it up.\"",
+"zh": "他眼眶一下红了，别过脸：\"…我一个人守了这么久。原来只要一句'我陪你'，就撑得住了。\""
+},
+{
+"src": 102,
+"id": "guyan_c4_c4a_r1",
+"who": "guyan",
+"en": "\"I'm on your side\" — he repeats it under his breath, then sets the letter down.",
+"zh": "\"我站你这边\"——他把这句话轻轻念了一遍，然后把信放下了。"
+},
+{
+"src": 103,
+"id": "guyan_c4_c4a_r2",
+"who": "guyan",
+"en": "He stares a long moment, then laughs softly. \"…And inside you too. Right?\"",
+"zh": "他怔了很久，然后轻声笑了：\"…也在你心里，对吧。\""
+},
+{
+"src": 104,
+"id": "guyan_c4_c4a_r3",
+"who": "guyan",
+"en": "\"Tea,\" he says, visibly relieved to have something to do with his hands. \"Yes. Tea I can manage.\"",
+"zh": "\"茶。\"他说，明显松了一口气，总算有件事能让手有地方放。\"好。茶。\"他在厨房里待了很久，久到你听得出他在那儿站了一会儿才开的火。"
+},
+{
+"src": 120,
+"id": "guyan_c4_c4b_q",
+"who": "guyan",
+"en": "The book of poems is still stuck in his hand. He looks at you. \"This one — I really can't put it away.\"",
+"zh": "那本诗集还停在他手里，进退两难。他望着你：\"这一本，我实在放不进去。\""
+},
+{
+"src": 121,
+"id": "guyan_c4_c4b_r0",
+"who": "guyan",
+"en": "He hands it over, then suddenly closes his hand over yours, book and all. \"Then can I… be yours too.\"",
+"zh": "他把书递给你，忽然握住你的手，连着书一起。\"那我…能不能也一起归你。\""
+},
+{
+"src": 122,
+"id": "guyan_c4_c4b_r1",
+"who": "guyan",
+"en": "The book goes back where it belongs. He doesn't let go of your hand. \"…So then — we're not moving out after all?\"",
+"zh": "书回到原位。他没松开你的手：\"…那我们，是不是就不搬了。\""
+},
+{
+"src": 123,
+"id": "guyan_c4_c4b_r2",
+"who": "guyan",
+"en": "He lowers his head, presses the book to his chest, and says very softly, \"…Then it never goes in a box, as long as I live.\"",
+"zh": "他低下头，把书贴在胸口，很轻地说：\"…那我一辈子都不放进箱子。\""
+}
+],
+"menus": {}
+}

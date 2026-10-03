@@ -1,0 +1,101 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "liam_c4_open",
+"who": "narrator",
+"en": "After the fire, Liam made the local news for the rescue. What came with it was a transfer order — the city's central command wants to promote him to lead a new rescue unit. Great terms; the chance he's dreamed of for ten years in this job. But it's three states away. When you find him in the station garage, he's alone on a bench, turning the letter over and over, Biscuit lying uneasily at his feet. \"Hey,\" he looks up, his smile a little forced. \"you're gonna think I'm crazy for even hesitating.\""
+},
+{
+"src": 10,
+"id": "liam_c4_b1_letter_ev",
+"who": "narrator",
+"en": "He hands you the letter. Taking the position is the best opportunity he's had in ten years. But he hasn't said one word about accepting. He just looks at you, like he's waiting for you to say something — and afraid he shouldn't be hoping for it."
+},
+{
+"src": 11,
+"id": "liam_c4_b1_letter_he",
+"who": "liam",
+"en": "\"Best shot I've had in ten years. Three states, though.\" He hands you the letter instead of an opinion, and he doesn't put a thumb on the scale. When you ask what *he* wants, he takes a while. \"First time the job isn't the thing I'd most hate to lose. That's new. I'm still getting used to it.\""
+},
+{
+"src": 20,
+"id": "liam_c4_b2_biscuit_ev",
+"who": "narrator",
+"en": "Biscuit trots over and sets something between the two of you — a glove you'd left at Liam's place. Liam looks at it and laughs ruefully. \"even the dog's got an opinion. He's been sleeping by your side of the fence.\""
+},
+{
+"src": 21,
+"id": "liam_c4_b2_biscuit_he",
+"who": "liam",
+"en": "Biscuit drops your glove between you and sits, pleased with himself. Liam laughs, ruefully, at the floor. \"Even the dog's got an opinion.\" He turns the glove over in his hands. \"He's been sleeping by your side of the fence for a month. I'm not going to pretend I don't know why.\""
+},
+{
+"src": 30,
+"id": "liam_c4_bx_after_hours_ev",
+"who": "narrator",
+"en": "The letter is still on the bench in the garage. The truck goes home instead of to the station, and Biscuit is put out in the yard with a look of profound betrayal."
+},
+{
+"src": 31,
+"id": "liam_c4_bx_after_hours_he",
+"who": "liam",
+"en": "\"I'm gonna be real clear, 'cause I'd rather be clumsy than wrong.\" He's holding both your hands, which makes him look enormous and about nineteen. \"I'd like you to stay tonight. No part of that's connected to the letter — I'll want this whether I take the job or don't. You can say no and I'll get you a blanket and take the couch and we'll have pancakes and it'll be fine.\" You don't want the couch. \"Yeah,\" he says, quiet, \"okay,\" and the porch light goes off behind him."
+},
+{
+"src": 100,
+"id": "liam_c4_c4a_q",
+"who": "liam",
+"en": "He finally asks it. \"Tell me straight. Should I take it?\" It's the first time he's ever put a decision in someone else's hands."
+},
+{
+"src": 101,
+"id": "liam_c4_c4a_r0",
+"who": "liam",
+"en": "He shoots up, sweeps her into a spin, Biscuit barking wildly. \"you mean it? Three states, new town, the whole thing?\""
+},
+{
+"src": 102,
+"id": "liam_c4_c4a_r1",
+"who": "liam",
+"en": "He exhales, forehead to hers. \"'Together.' Ten years I made these calls alone. I like the new way better.\""
+},
+{
+"src": 103,
+"id": "liam_c4_c4a_r2",
+"who": "liam",
+"en": "His throat tightens; he laughs with wet eyes. \"…only if you're in it. Otherwise it's just a house.\""
+},
+{
+"src": 104,
+"id": "liam_c4_c4a_r3",
+"who": "liam",
+"en": "\"Couch it is.\" He's already getting the blanket, grinning. \"Pancakes at seven. Biscuit gets none of them.\""
+},
+{
+"src": 120,
+"id": "liam_c4_c4b_q",
+"who": "liam",
+"en": "He looks down at Biscuit and his voice drops. \"Thing is… I've spent my whole life running toward stuff on fire. First time I've got something I don't wanna run away from.\""
+},
+{
+"src": 121,
+"id": "liam_c4_c4b_r0",
+"who": "liam",
+"en": "He pulls her in, chin on her head, and lets out a long breath. \"…okay. Standing still. First time in ten years.\""
+},
+{
+"src": 122,
+"id": "liam_c4_c4b_r1",
+"who": "liam",
+"en": "He looks at her, his eyes lighting by degrees. \"…then the choice just got a whole lot easier.\""
+},
+{
+"src": 123,
+"id": "liam_c4_c4b_r2",
+"who": "liam",
+"en": "He laughs out loud and buries his face in her neck. \"god, I like you. Like, the whole-life kind of like.\""
+}
+],
+"menus": {}
+}

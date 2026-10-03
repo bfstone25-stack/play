@@ -1,0 +1,110 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "guyan_c2_open",
+"who": "narrator",
+"en": "You come back with the umbrella. The chime rings, and he looks up from behind a stack of books — for a second his eyes brighten, then he quickly ducks his head and pretends to sort spines. \"You came,\" he says, softer than he meant to. Dango has already claimed your usual chair.",
+"zh": "你带着伞回来了。门口的风铃一响，他从书堆后面抬起头——那一瞬间他眼睛亮了一下，又很快低下头假装在理书。\"来了啊。\"他说，声音比他想的要轻。团子已经在你常坐的那张椅子上占好了位置。"
+},
+{
+"src": 10,
+"id": "guyan_c2_b1_tea_ev",
+"who": "narrator",
+"en": "He makes you tea — the osmanthus oolong you mentioned liking, once, in passing. He says nothing about it, just slides the cup across.",
+"zh": "他给你泡了茶，是你上次随口说过喜欢的那种桂花乌龙。他没说什么，只是把杯子推过来。"
+},
+{
+"src": 11,
+"id": "guyan_c2_b1_tea_he",
+"who": "guyan",
+"en": "He slides the cup across without a word — osmanthus oolong, which you mentioned once, weeks ago, in passing. When you notice, he busies himself with the pot. \"I had some. Lying around. It was going to go stale.\" The tin is new. He knows you can see that the tin is new.",
+"zh": "他一句话没说就把杯子推了过来——桂花乌龙。几个星期前你随口提过一次。你注意到的时候，他忙着摆弄茶壶。\"家里有一点。放着的。再不喝就陈了。\"那个茶罐是新的。他知道你看得出它是新的。"
+},
+{
+"src": 20,
+"id": "guyan_c2_b2_shop_ev",
+"who": "narrator",
+"en": "\"This shop was my grandfather's,\" he says suddenly, fingers tracing the grain of the counter. \"After he passed, everyone told me to sell it. But every time I come in, it feels like he's just gone to the back to make tea.\"",
+"zh": "\"这家店是我外公的。\"他忽然说，手指抚过柜台的木纹，\"他走后，别人都劝我卖了。可我一进来，就觉得他好像只是去后屋泡茶了。\""
+},
+{
+"src": 21,
+"id": "guyan_c2_b2_shop_he",
+"who": "guyan",
+"en": "\"It was my grandfather's.\" His fingers follow the grain of the counter, an old habit. \"Everyone said sell it when he passed. But I come in in the morning and it's as if he's just gone to the back to make tea.\" Then, gently, closing the door: \"You'd like the poetry shelf. Come.\"",
+"zh": "\"这是我祖父的。\"他的手指顺着柜台的木纹走，是个老习惯。\"他走的时候，所有人都说卖了吧。可我早上进来，总觉得他只是去后面烧水了。\"然后，他温和地把这扇门关上：\"诗集那一架你会喜欢。来。\""
+},
+{
+"src": 30,
+"id": "guyan_c2_b3_note_ev",
+"who": "narrator",
+"en": "You notice many books here hold little slips of paper — notes he writes for future readers. One says: \"If you've read this far, then all the time we missed was exactly enough to meet.\"",
+"zh": "你发现店里很多旧书里都夹着小纸条——是他写给未来读者的话。有一张写着：\"如果你读到这里，说明我们错过的时间，刚好够遇见。\""
+},
+{
+"src": 31,
+"id": "guyan_c2_b3_note_he",
+"who": "guyan",
+"en": "\"Oh — those.\" He reaches for the slip and doesn't quite take it from you. \"I write them for whoever gets there next. It's a foolish habit, I've never explained it to anyone.\" When you read one aloud he studies the floor intently. \"...You weren't supposed to find that one so quickly.\"",
+"zh": "\"哦——那些啊。\"他伸手去拿那张纸条，又没有真的从你手里接过去。\"我写给下一个翻到这本书的人。很无聊的习惯，我没跟任何人解释过。\"你念出声的时候，他非常专注地研究地板。\"……那一张，你不该这么快就找到的。\""
+},
+{
+"src": 100,
+"id": "guyan_c2_c2a_q",
+"who": "guyan",
+"en": "Watching you move through the shop, he asks suddenly, \"Do you think… keeping an old bookshop like this is a waste of a life?\"",
+"zh": "他看着你在店里的样子，忽然问：\"你会不会…觉得守着这样一家旧书店，很没出息？\""
+},
+{
+"src": 101,
+"id": "guyan_c2_c2a_r0",
+"who": "guyan",
+"en": "His breath catches. He looks down, and it's a long while before he says, \"…Then stay a little longer.\"",
+"zh": "他呼吸顿了一下，低下头，很久才说：\"…那你多留一会儿。\""
+},
+{
+"src": 102,
+"id": "guyan_c2_c2a_r1",
+"who": "guyan",
+"en": "\"…Thank you,\" he says quietly, as if he's waited years to hear it.",
+"zh": "\"…谢谢你。\"他轻声说，像这句话他等了很多年。"
+},
+{
+"src": 103,
+"id": "guyan_c2_c2a_r2",
+"who": "guyan",
+"en": "He looks toward the light in the window. \"I used to not be sure. Now… I think I'm starting to be.\"",
+"zh": "他望向窗外的光：\"我以前不确定。现在…好像有点确定了。\""
+},
+{
+"src": 120,
+"id": "guyan_c2_c2b_q",
+"who": "guyan",
+"en": "As you leave he stops you, holding that slip of paper, hesitating. \"This one… would you want to keep it?\"",
+"zh": "临走时他叫住你，手里拿着那张写着字的纸条，欲言又止：\"这张…你要不要留着？\""
+},
+{
+"src": 121,
+"id": "guyan_c2_c2b_r0",
+"who": "guyan",
+"en": "He hands it over, and his fingertips brush yours by accident. Neither of them dares move.",
+"zh": "他把纸条递给你，指尖不小心碰到你的，两个人都没敢动。"
+},
+{
+"src": 122,
+"id": "guyan_c2_c2b_r1",
+"who": "guyan",
+"en": "He looks away quickly. \"…I didn't know you when I wrote it. But reading it now — it seems like I did.\"",
+"zh": "他慌忙移开视线：\"…我写的时候还不认识你。可是现在读，好像是。\""
+},
+{
+"src": 123,
+"id": "guyan_c2_c2b_r2",
+"who": "guyan",
+"en": "\"Next time,\" he repeats, and his eyes curve. \"Alright. I'll be waiting.\"",
+"zh": "\"下次。\"他重复了一遍，眼睛弯了弯，\"好。我等你。\""
+}
+],
+"menus": {}
+}

@@ -1,0 +1,117 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "guyan_c1_open",
+"who": "narrator",
+"en": "The wind-chime gives a soft note as you push the door. There's only one person inside — up a ladder, tidying the top shelf. He turns, pauses a beat, then says gently, \"It's coming down hard out there. Take your time. No rush.\" An orange cat on the counter opens one eye at you, then goes back to sleep. He is thirty-three, you are thirty, and the shop keeps whatever hours the two of you decide it keeps.",
+"zh": "你推门进来时，风铃轻轻响了一声。店里只有一个人——他站在梯子上整理最高一层的书，回头看你，愣了一下，然后轻声说：\"外面雨大，慢慢看，不急着走。\"柜台上有一只橘猫，睁开眼看了你一眼，又睡了。他三十三，你三十，这家店从今往后开到几点，由你们两个说了算。"
+},
+{
+"src": 2,
+"id": "guyan_c1_cast",
+"who": "narrator",
+"en": "Gu Yan, 33. The player character is 30. Both adults.",
+"zh": "顾言，33岁；主角30岁。两人都是成年人。"
+},
+{
+"src": 10,
+"id": "guyan_c1_b1_dango_ev",
+"who": "narrator",
+"en": "The orange cat, Dango, hops down and rubs against your ankle. He looks surprised. \"That's… unusual. He won't even let me pick him up most days.\"",
+"zh": "橘猫团子忽然跳下柜台，蹭了蹭你的脚踝。他有点意外：\"它…很少这样。它平时连我抱都嫌。\""
+},
+{
+"src": 11,
+"id": "guyan_c1_b1_dango_he",
+"who": "guyan",
+"en": "\"That's — unusual.\" He blinks at the cat winding round your ankle. \"He doesn't do that. He doesn't do that for me, and I feed him.\" When you tease him about being outranked by his own cat, the tips of his ears go faintly pink. \"He has opinions. Apparently he's decided.\"",
+"zh": "\"这——不太常见。\"他看着那只绕着你脚踝转的猫，眨了眨眼。\"它不这样的。它对我都不这样，而我还喂它。\"你笑他连自己的猫都排在你后面，他的耳朵尖微微红了。\"它有它的主意。看来它已经决定了。\""
+},
+{
+"src": 20,
+"id": "guyan_c1_b2_book_ev",
+"who": "narrator",
+"en": "He pulls an old book of poems from the shelf, hesitates, then sets it by your hand. \"This one… I could never quite bring myself to sell it. If you like it, keep it here for now.\"",
+"zh": "他从架子上抽下一本旧诗集，犹豫了一下，还是放到你手边：\"这本…不知道为什么，我一直没舍得卖。你要是喜欢，先看着。\""
+},
+{
+"src": 21,
+"id": "guyan_c1_b2_book_he",
+"who": "guyan",
+"en": "He slides the book of poems to rest by your hand, as though it simply ended up there. \"This one never sells,\" he says, which is a lie of omission; he has taken it off the shelf every time it nearly did. \"Keep it here for now. If you like it. The third poem is the good one.\"",
+"zh": "他把那本诗集推到你手边，像是它自己停在那儿的。\"这本一直卖不掉。\"这句话是真的，但不全：每次它快被买走，他都会先把它从架上拿下来。\"先放在这儿吧。如果你喜欢的话。第三首是好的那首。\""
+},
+{
+"src": 30,
+"id": "guyan_c1_b3_close_ev",
+"who": "narrator",
+"en": "The old clock strikes nine — long past closing. He glances at the sign on the door, but leaves the 'Open' placard as it is, unturned.",
+"zh": "墙上的旧钟敲了九下——早过了打烊时间。他看了眼门牌，却把\"营业中\"的牌子留着没翻。"
+},
+{
+"src": 31,
+"id": "guyan_c1_b3_close_he",
+"who": "guyan",
+"en": "The clock strikes nine. He glances at the door sign and leaves it exactly as it is. When you point out the time he looks at the window instead of at you. \"The rain hasn't let up,\" he says. \"It would be unkind to send anyone out into that. The shop doesn't mind.\"",
+"zh": "九点的钟响了。他看了一眼门上的牌子，让它原样挂着。你提醒他时间，他看的是窗外，不是你。\"雨还没停，\"他说，\"这种天把人赶出去，不厚道。店不介意。\""
+},
+{
+"src": 100,
+"id": "guyan_c1_c1a_q",
+"who": "guyan",
+"en": "You open the book of poems. On the flyleaf, a faded line in fountain pen. Watching you read it, he asks quietly, \"…You found that line?\"",
+"zh": "你翻开那本诗集，扉页上有一行褪色的钢笔字。他看你在读，轻声问：\"…你看到那句话了？\""
+},
+{
+"src": 101,
+"id": "guyan_c1_c1a_r0",
+"who": "guyan",
+"en": "The tips of his ears go pink. \"I wrote it a long time ago… back when I didn't know who it was for yet.\"",
+"zh": "他耳根有点红：\"很多年前写的了…那时候还不知道要写给谁。\""
+},
+{
+"src": 102,
+"id": "guyan_c1_c1a_r1",
+"who": "guyan",
+"en": "He listens to the whole line in your voice, and for a long moment says nothing — just looks at you, as if hearing his own words for the first time.",
+"zh": "他安静地听你念完，很久没说话，只是看着你，像第一次听懂自己写的字。"
+},
+{
+"src": 103,
+"id": "guyan_c1_c1a_r2",
+"who": "guyan",
+"en": "He waves his hands, flustered. \"It's not — that one's not for sale. I mean — just keep it, and read it. Please.\"",
+"zh": "他慌忙摆手：\"不、不卖的——我是说，这本不卖。你先拿着看吧。\""
+},
+{
+"src": 120,
+"id": "guyan_c1_c1b_q",
+"who": "guyan",
+"en": "The rain eases a little. He offers you an umbrella — then realizes it's the only one. \"Take it,\" he says. \"I live upstairs.\"",
+"zh": "雨小了一些。他递给你一把伞，却发现只剩这一把。\"你拿着吧，\"他说，\"我住楼上。\""
+},
+{
+"src": 121,
+"id": "guyan_c1_c1b_r0",
+"who": "guyan",
+"en": "\"…Alright.\" He presses his lips together, as if quietly filing away the words 'another day'.",
+"zh": "\"…好。\"他抿了下唇，像在把'改天'两个字悄悄记下来。"
+},
+{
+"src": 122,
+"id": "guyan_c1_c1b_r1",
+"who": "guyan",
+"en": "He doesn't insist — just walks you to the door and stands under the lamp, watching until you're out of sight.",
+"zh": "他没坚持，只是送你到门口，站在灯下看你走远。"
+},
+{
+"src": 123,
+"id": "guyan_c1_c1b_r2",
+"who": "guyan",
+"en": "He blinks, as if no one has ever asked him back. \"I… I'll be fine.\" He lowers his head and smiles, very softly.",
+"zh": "他愣了一下，像没料到有人会反过来问他。\"我…没关系的。\"他低下头，笑得很轻。"
+}
+],
+"menus": {}
+}

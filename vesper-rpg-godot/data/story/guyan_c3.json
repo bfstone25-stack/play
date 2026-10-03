@@ -1,0 +1,96 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "guyan_c3_open",
+"who": "narrator",
+"en": "That night you got stranded across the city; the last bus was gone and the rain only grew. With no umbrella, you stood under a convenience-store awning, resigned to walking home soaked. Just as you'd given up — a figure came running through the downpour, hair and half his body drenched, umbrella in hand. It's him. \"You posted you had no umbrella,\" he pants, pressing it into your hands. \"…So I came.\"",
+"zh": "那天你临时被困在城市另一头，末班车停了，雨越下越大。你没带伞，只能站在便利店的屋檐下发呆。就在你以为要淋着回去时——街对面的雨幕里，一个撑着伞的身影一路小跑过来，头发和半边身子全湿了。是他。\"我看你朋友圈说没带伞，\"他喘着气，把伞塞进你手里，\"…我就来了。\""
+},
+{
+"src": 10,
+"id": "guyan_c3_b1_umbrella_ev",
+"who": "narrator",
+"en": "He tilts the umbrella entirely toward you, his own shoulder out in the rain. You say he'll get soaked. He just smiles. \"I'm fine — I'm hardier than I look. It's books that can't take the rain.\"",
+"zh": "他把伞整个倾向你这边，自己半个肩膀都在雨里。你说他会淋湿，他只是笑：\"没事，我皮实。书才怕淋。\""
+},
+{
+"src": 11,
+"id": "guyan_c3_b1_umbrella_he",
+"who": "guyan",
+"en": "\"I'm fine. I'm hardier than I look — it's books that can't take the rain.\" He has tipped the umbrella so far toward you that his own shoulder is a dark soak, and he keeps it there when you push back. \"No, leave it. You'll only make us both wet and then it was for nothing.\"",
+"zh": "\"我没事。我比看上去结实——淋不得的是书。\"伞已经整个偏到你这边，他自己那半边肩膀湿成深色，你推回去他也不动。\"别，就这样。你推来推去，两个人都要湿，那就白淋了。\""
+},
+{
+"src": 20,
+"id": "guyan_c3_b2_confess_edge_ev",
+"who": "narrator",
+"en": "At your building he stops. The rain is loud. He opens his mouth, then only manages: \"I'm… not very good at saying these things…\" The sentence trails off, but the tips of his ears have gone fully red.",
+"zh": "走到你家楼下，他停住了。雨声很大。他张了张嘴，最后只说：\"其实我不太擅长说这些…\"话没说完，耳根却红透了。"
+},
+{
+"src": 21,
+"id": "guyan_c3_b2_confess_edge_he",
+"who": "guyan",
+"en": "\"I'm — not very good at saying these things.\" The rain is loud on the awning and he has run out of sentence. His ears have gone entirely red. If you help him along he doesn't get any braver, only more honest, in pieces: \"It's only — I'd rather you didn't go up yet. That's all it is.\"",
+"zh": "\"我——不太会说这种话。\"雨打在雨棚上很响，而他的句子已经用完了。他的耳朵整个红了。你要是替他接下去，他不会变得更勇敢，只会更诚实，一截一截地：\"就是——我希望你先别上楼。就是这样而已。\""
+},
+{
+"src": 100,
+"id": "guyan_c3_c3a_q",
+"who": "guyan",
+"en": "His unfinished sentence hangs in the rain. You can finish it for him, or wait. He looks at you — softly, and afraid.",
+"zh": "他没说完的话停在雨里。你可以替他接下去，也可以等他。他望着你，眼神很轻，很怕。"
+},
+{
+"src": 101,
+"id": "guyan_c3_c3a_r0",
+"who": "guyan",
+"en": "His head snaps up. Rain slides off his lashes and he forgets to blink. \"…You first,\" he says, almost holding his breath.",
+"zh": "他猛地抬头看你，雨水顺着他的睫毛滑下来，他忘了眨眼。\"…你先说。\"他几乎是屏着呼吸。"
+},
+{
+"src": 102,
+"id": "guyan_c3_c3a_r1",
+"who": "guyan",
+"en": "He draws a breath, voice barely there. \"I think… every day I've been waiting for you to push that door open.\"",
+"zh": "他深吸一口气，声音很轻：\"我好像…每天都在等你推开那扇门。\""
+},
+{
+"src": 103,
+"id": "guyan_c3_c3a_r2",
+"who": "guyan",
+"en": "He blinks, then laughs, eyes a little wet. \"…Why are you always the one worrying about me.\"",
+"zh": "他愣了下，然后笑出声，眼里有点湿：\"…你怎么总在担心我。\""
+},
+{
+"src": 120,
+"id": "guyan_c3_c3b_q",
+"who": "guyan",
+"en": "It's time to part. He leaves the soaked umbrella with you and turns to walk back into the rain. You call out — do you invite him up to dry off?",
+"zh": "该道别了。他把湿透的那把伞留给你，转身要走进雨里。你叫住他——要不要让他上来避避雨？"
+},
+{
+"src": 121,
+"id": "guyan_c3_c3b_r0",
+"who": "guyan",
+"en": "He stops, hesitates a long moment, then nods gently. \"…Just one cup. Until the rain lets up.\"",
+"zh": "他停下脚步，犹豫了很久，才轻轻点头：\"…就一杯。等雨小。\""
+},
+{
+"src": 122,
+"id": "guyan_c3_c3b_r1",
+"who": "guyan",
+"en": "\"Mm.\" He steps back into the rain, but keeps looking back at you, until he can't anymore.",
+"zh": "\"嗯。\"他退进雨里，却一直回头看你，直到看不见。"
+},
+{
+"src": 123,
+"id": "guyan_c3_c3b_r2",
+"who": "guyan",
+"en": "He goes completely still; in the rain there's only the sound of two people breathing. \"…This time,\" he says softly, \"let me be the one to walk you back.\"",
+"zh": "他整个人僵住了，雨声里只剩两个人的呼吸。\"…这次，\"他轻声说，\"换我送你回去，好不好。\""
+}
+],
+"menus": {}
+}

@@ -32,6 +32,7 @@ var voice_cache := {}
 var policy_override: Callable
 var prefer_menu: Array = []   # sim: substrings of menu options to prefer (route/ending coverage)
 var stop_after := ""      # sim: do not roll into the next night after this one
+var choice_override: Callable   # sim: picks the option index itself (ending coverage: cold / middle players)
 
 
 func _ready() -> void:
@@ -139,6 +140,10 @@ func _refresh_hud() -> void:
 		for tr in tracks:
 			parts.append(Loc.t("h_trust_track") % [Loc.t("n_" + tr), RPG.trust(tr)])
 		trust_lbl.text = "   ·   ".join(parts)
+	# game.json "hud_counter": an item whose count the HUD shows (e.g. a till) -- opt-in
+	var hc: String = RPG.game.get("hud_counter", "")
+	if hc != "":
+		clock_lbl.text += "   ·   " + Loc.t("h_counter") % int(RPG.s["items"].get(hc, 0))
 
 
 func _next_threshold() -> int:
@@ -457,6 +462,7 @@ func _say_line(who: String, body: String, ln: Dictionary) -> void:
 		secs = Sound.play_voice(ln)
 	else:
 		secs = _voice_len(ln)
+	body = interp(body)
 	var read: float = body.length() / read_cps + 0.6
 	pace["read"] += max(read, secs + 0.4)
 	if secs > read:
@@ -466,6 +472,16 @@ func _say_line(who: String, body: String, ln: Dictionary) -> void:
 		event.say(who, body, secs)
 		await _shot("dialogue" if stats["lines"] == 14 else "dialogue2")
 	await event.say(who, body, secs)
+
+
+## "{#item}" in a line -> how many of that item the party holds (a till, a tally). Opt-in.
+func interp(body: String) -> String:
+	if not body.contains("{#"):
+		return body
+	var re := RegEx.create_from_string("\\{#([a-z0-9_]+)\\}")
+	for m in re.search_all(body):
+		body = body.replace(m.get_string(0), str(int(RPG.s["items"].get(m.get_string(1), 0))))
+	return body
 
 
 func _voice_len(ln: Dictionary) -> float:
@@ -524,11 +540,16 @@ func _step(st: Dictionary) -> String:
 		return "ok"
 	if st.has("give"):
 		RPG.give(st["give"], int(st.get("n", 1)))
-		await _say_line("", Loc.t("ev_got") % Loc.t("i_" + st["give"]), {})
+		if st.get("quiet", false):
+			return "ok"
+		var got := Loc.t("i_" + st["give"])
+		if int(st.get("n", 1)) > 1:
+			got += " ×%d" % int(st["n"])
+		await _say_line("", Loc.t("ev_got") % got, {})
 		Sound.play_sfx("page_flip")
 		return "ok"
 	if st.has("take"):
-		RPG.take(st["take"])
+		RPG.take(st["take"], int(st.get("n", 1)))
 		return "ok"
 	if st.has("trust"):
 		var track: String = st.get("track", "")
@@ -551,6 +572,17 @@ func _step(st: Dictionary) -> String:
 		return await run_steps(st["then"] if ok else st.get("else", []))
 	if st.has("if_flag"):
 		return await run_steps(st["then"] if RPG.flag(st["if_flag"]) else st.get("else", []))
+	if st.has("if_has"):
+		# {"if_has": item, "n": 35}: the party holds at least n of the item
+		var okh := int(RPG.s["items"].get(st["if_has"], 0)) >= int(st.get("n", 1))
+		return await run_steps(st["then"] if okh else st.get("else", []))
+	if st.has("if_count"):
+		# {"if_count": [flags], "n": 2}: at least n of the flags are set
+		var cnt := 0
+		for f in st["if_count"]:
+			if RPG.flag(f):
+				cnt += 1
+		return await run_steps(st["then"] if cnt >= int(st.get("n", 1)) else st.get("else", []))
 	if st.has("choice"):
 		var opts := []
 		var shown := []   # options whose if_flag / if_not_flag allow them now
@@ -558,6 +590,13 @@ func _step(st: Dictionary) -> String:
 			if o.has("if_flag") and not RPG.flag(o["if_flag"]):
 				continue
 			if o.has("if_not_flag") and RPG.flag(o["if_not_flag"]):
+				continue
+			if o.has("if_has") and int(RPG.s["items"].get(o["if_has"], 0)) < int(o.get("n", 1)):
+				continue
+			if o.has("if_lacks") and int(RPG.s["items"].get(o["if_lacks"], 0)) >= int(o.get("n", 1)):
+				continue
+			# an option that leads to a night this build does not ship (the trial pck) is not offered
+			if o.has("if_night") and not RPG.nights.has(o["if_night"]):
 				continue
 			shown.append(o)
 			var t := Loc.menu(o["menu"]) if o.has("menu") else Loc.t(o["key"])
@@ -593,6 +632,8 @@ func _step(st: Dictionary) -> String:
 
 ## Scripted player's menu choice: the highest-trust option it may take.
 func _auto_choice(opts: Array) -> int:
+	if choice_override.is_valid():
+		return int(choice_override.call(opts))
 	var best := 0
 	var best_v := -99
 	for i in opts.size():
@@ -645,7 +686,11 @@ func do_battle(enemy_id: String) -> String:
 	var steps := [{"xp": int(e.get("xp", 30))}]
 	if e.has("drop"):
 		steps.push_front({"give": e["drop"]})
-	if e.has("trust_win") and int(e["trust_win"]) != 0:
+	# a game may pay the standoff's Trust only for a close win: Suspicion still under the bar
+	var close := not e.has("trust_win_max_susp") or int(battle.b["suspicion"]) < int(e["trust_win_max_susp"])
+	if e.has("trust_win") and int(e["trust_win"]) != 0 and not close and Loc.has("ev_trust_missed"):
+		steps.append({"say": "narrator", "key": "ev_trust_missed"})
+	if e.has("trust_win") and int(e["trust_win"]) != 0 and close:
 		if e.get("trust_track", "") != "":
 			steps.append({"trust": int(e["trust_win"]), "track": e["trust_track"]})
 		elif RPG.flag(RPG.game.get("heroine_flag", "heroine_joined")):
@@ -872,6 +917,8 @@ func show_menu() -> void:
 	tabs.add_child(it)
 	for id in RPG.s["items"].keys():
 		var d := RPG.item_def(id)
+		if d.get("hidden", false):
+			continue   # a tally the story counts, not something carried
 		var row := HBoxContainer.new()
 		var l := NRSkin.label("%s ×%d — %s" % [Loc.t("i_" + id), int(RPG.s["items"][id]), Loc.t("id_" + id)], 18)
 		l.size_flags_horizontal = Control.SIZE_EXPAND_FILL

@@ -1,0 +1,83 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "liam_c3_open",
+"who": "narrator",
+"en": "Sirens tear open the street in the dead of night. The old apartment block in the neighborhood is on fire, the glow reddening half the sky. You run out just as Liam's engine screams in — he jumps down, buckling his helmet, and shouts at you, \"Stay back! There's still someone inside!\" Before you can answer, he's already charged into the wall of flame. You stand behind the line, heart in your throat. Your grandmother's old watch, the one you left on his truck yesterday, is somewhere in the direction of that burning building."
+},
+{
+"src": 10,
+"id": "liam_c3_b1_watch_ev",
+"who": "narrator",
+"en": "After ten endless minutes, he stumbles out of the smoke with a trapped elderly man on his back. Everyone rushes in. He hands the man to the medics, then walks straight to you and presses something into your hand from a pocket of his turnout gear — the grandmother's watch you thought you'd lost. \"Since the day you left it on my truck,\" he pants, face streaked with soot, \"I've been holding onto it for you. Just now… I put it in my pocket first.\""
+},
+{
+"src": 11,
+"id": "liam_c3_b1_watch_he",
+"who": "liam",
+"en": "He comes out of the smoke with a man on his back, hands him to the medics, and then walks straight to you and presses the watch into your palm. \"Since the day you left it on my truck.\" He's sooty and hoarse and entirely matter-of-fact about it. \"Put it in my pocket before I went in.\""
+},
+{
+"src": 20,
+"id": "liam_c3_b2_shaking_ev",
+"who": "narrator",
+"en": "The fire is out; the crowd disperses. Only then do you notice his hand, wrapped around a water cup, is trembling slightly — the man who always grins and says 'it's my whole job' is, in truth, afraid every single time he runs into the fire."
+},
+{
+"src": 21,
+"id": "liam_c3_b2_shaking_he",
+"who": "liam",
+"en": "The street empties and the cup of water in his hand is trembling, just slightly. He sees you see it and doesn't bother with the grin. \"Every time,\" he says. \"Not just tonight. Every single time.\" Then, after a moment, he lets his shoulder come to rest against yours and stays there."
+},
+{
+"src": 100,
+"id": "liam_c3_c3a_q",
+"who": "liam",
+"en": "You take his still-trembling hand. He looks up at you, and under the soot his eyes are a little fragile. \"You're not gonna tell the crew I shake, right?\""
+},
+{
+"src": 101,
+"id": "liam_c3_c3a_r0",
+"who": "liam",
+"en": "His throat works; he grips her hand. \"…the watch was for you. Everything tonight kind of ended up being for you.\""
+},
+{
+"src": 102,
+"id": "liam_c3_c3a_r1",
+"who": "liam",
+"en": "He lowers his head, his shoulders loosening, and says quietly, \"…nobody's ever put it like that. Thanks. Really.\""
+},
+{
+"src": 103,
+"id": "liam_c3_c3a_r2",
+"who": "liam",
+"en": "He blinks, then rests his forehead lightly on her shoulder and just leans there a moment. \"…okay. Okay.\""
+},
+{
+"src": 120,
+"id": "liam_c3_c3b_q",
+"who": "liam",
+"en": "You slide your grandmother's watch back onto your wrist. Watching, he turns serious. \"Can I ask you something? Why'd it matter so much — the watch?\""
+},
+{
+"src": 121,
+"id": "liam_c3_c3b_r0",
+"who": "liam",
+"en": "He's quiet a beat, then says softly, \"…then I'm real glad it was in my pocket and not that building.\""
+},
+{
+"src": 122,
+"id": "liam_c3_c3b_r1",
+"who": "liam",
+"en": "His head snaps up, and a smile spreads across his sooty face, brighter than the firelight. \"…say that again when I'm not covered in soot, would you?\""
+},
+{
+"src": 123,
+"id": "liam_c3_c3b_r2",
+"who": "liam",
+"en": "He flexes a fist, voice a little rough. \"…then I'm gonna keep showing up. That a promise you'll hold me to?\""
+}
+],
+"menus": {}
+}

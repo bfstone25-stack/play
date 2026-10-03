@@ -1,0 +1,68 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "ethan_c3_open",
+"who": "narrator",
+"en": "You changed plans to see an old friend, and it starts raining on the way back. Ducking into a noodle shop, you look up — he's in the corner, suit jacket over the chair, eating the most ordinary bowl of noodles. He sees you too.",
+"zh": "你临时改了行程去看一位老朋友，深夜回程路上下起雨。你在一家面馆躲雨时抬头——他坐在角落，西装外套搭在椅背上，正在吃一碗最普通的面。他也看见了你。"
+},
+{
+"src": 10,
+"id": "ethan_c3_b1_umbrella_ev",
+"who": "narrator",
+"en": "The rain gets heavier. Walking out, he tilts the umbrella entirely over you — his whole right shoulder is soaked, but he says he's fine.",
+"zh": "雨更大了。走出去时他把伞完全倾向你这边——他自己整个右肩都湿了，但他说\"我不冷\"。"
+},
+{
+"src": 11,
+"id": "ethan_c3_b1_umbrella_he",
+"who": "ethan",
+"en": "\"It's rain,\" he says, as if that settles it, the entire right side of his coat going dark. When you push the umbrella back toward him he pushes it back. \"I'm not being gallant. I'm being efficient. One of us dry is better arithmetic than two of us damp.\"",
+"zh": "\"下雨而已。\"他说，好像这句话就把事情定了，大衣右半边整个湿成深色。你把伞往他那边推，他又推回来。\"我不是在献殷勤。我是在讲效率。一个人干着，比两个人都半湿，算术上更划算。\""
+},
+{
+"src": 20,
+"id": "ethan_c3_b2_photo_ev",
+"who": "narrator",
+"en": "An old photo falls out of his wallet: a man in a security uniform, and a skinny teenager.",
+"zh": "他的钱包掉出一张旧照片：一个穿保安制服的男人，和一个瘦小的少年。"
+},
+{
+"src": 21,
+"id": "ethan_c3_b2_photo_he",
+"who": "ethan",
+"en": "He picks it up faster than he needs to. Then, because you saw: \"That's him. That's me, at fifteen.\" A long pause, and he gives you the short version because the short version is all he can carry. \"He worked nights so I wouldn't have to. That's the whole story.\"",
+"zh": "他拿起来的速度比需要的快。然后，因为你已经看见了：\"那是他。那个是我，十五岁。\"很长的一段停顿，他给了你最短的版本，因为他只扛得动最短的版本。\"他上夜班，为了让我不用上。故事就这么多。\""
+},
+{
+"src": 100,
+"id": "ethan_c3_c3_q",
+"who": "ethan",
+"en": "Standing in the rain as you part, he says suddenly, \"I'm flying to Tokyo Wednesday.\"",
+"zh": "分别时他站在雨里没动，忽然说：\"下周三我要去一趟东京。\""
+},
+{
+"src": 101,
+"id": "ethan_c3_c3_r0",
+"who": "ethan",
+"en": "He nods, and says nothing more.",
+"zh": "他点点头，什么也没再说。"
+},
+{
+"src": 102,
+"id": "ethan_c3_c3_r1",
+"who": "ethan",
+"en": "A long silence. Then: \"...I don't know either.\"",
+"zh": "长久的沉默。然后他说：\"…我也不知道。\""
+},
+{
+"src": 103,
+"id": "ethan_c3_c3_r2",
+"who": "ethan",
+"en": "He goes still. The rain keeps falling. He does not move.",
+"zh": "他愣住了。雨还在下，他没有动。"
+}
+],
+"menus": {}
+}

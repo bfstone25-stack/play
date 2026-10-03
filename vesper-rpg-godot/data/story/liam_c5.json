@@ -1,0 +1,77 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "liam_c5_open",
+"who": "narrator",
+"en": "The dust has settled. He didn't go three states away alone — he talked to central command, took the position, but fought to base the new rescue unit somewhere closer to you. This evening there's a new porch on his backyard, two chairs hung on it. Two root beers still sit on the tailgate; Biscuit rolls in the grass. He pulls something from his apron pocket, closes his hand around it, and for once looks a little nervous. \"So. I fixed your sink, saved your watch, danced like a hydrant for you… figured I'd earned the right to ask you something big.\""
+},
+{
+"src": 10,
+"id": "liam_c5_b1_key_ev",
+"who": "narrator",
+"en": "He opens his hand — a freshly cut key on his palm, and a short leather cord with one corner singed, the one that had been tied to your watch the night he ran into the fire. \"This is the key to my place,\" he says. \"And that cord… I kept it. Figured one day I'd give you both, together.\""
+},
+{
+"src": 11,
+"id": "liam_c5_b1_key_he",
+"who": "liam",
+"en": "He opens his hand: a new-cut key, and a short leather cord with one corner burned. \"Key's to my place. And this was tied to your watch the night of the fire — I kept it.\" He's nervous and doing a bad job of hiding it. \"Figured I'd give you both at once, when it was time.\""
+},
+{
+"src": 20,
+"id": "liam_c5_b2_ask_ev",
+"who": "narrator",
+"en": "He rubs the back of his head and takes a breath — the always-grinning man is serious this time. \"I'm not good with big speeches. So here it is, plain: I don't wanna just be the neighbor who fixes your sink. I wanna be the guy who comes home to you. …That a job you'd give me?\""
+},
+{
+"src": 21,
+"id": "liam_c5_b2_ask_he",
+"who": "liam",
+"en": "He rubs the back of his head and takes a breath. \"I'm no good at big speeches, so, plain: I don't want to be the neighbour who fixes your sink.\" The grin is gone; what's under it is steadier. \"I want to be the guy who comes home to you. That a job you'd give me?\""
+},
+{
+"src": 30,
+"id": "liam_c5_bx_morning_ev",
+"who": "narrator",
+"en": "Sunrise on the new porch. Two root beers, unopened, from last night. A dog asleep across the doorway like a draught excluder."
+},
+{
+"src": 31,
+"id": "liam_c5_bx_morning_he",
+"who": "liam",
+"en": "\"Didn't set an alarm,\" he says, amazed at himself. \"Ten years, never once.\" He tucks the singed cord back into your hand and closes your fingers on it. \"Keep that. I've had it long enough.\""
+},
+{
+"src": 100,
+"id": "liam_c5_c5a_q",
+"who": "liam",
+"en": "He stands under the porch light, the key and the singed cord in his palm, waiting for your answer. Biscuit sits between you, wagging."
+},
+{
+"src": 101,
+"id": "liam_c5_c5a_r0",
+"who": "liam",
+"en": "He sweeps her up, Biscuit barking in circles. \"Home. God, I've been running toward fires my whole life. Turns out I just wanted to run home to you.\""
+},
+{
+"src": 102,
+"id": "liam_c5_c5a_r1",
+"who": "liam",
+"en": "He grips her hand, serious past any grin. \"Every time. That's the only promise I'll ever swear on. You and Biscuit — I always come back.\""
+},
+{
+"src": 103,
+"id": "liam_c5_c5a_r2",
+"who": "liam",
+"en": "He laughs, eyes shining, forehead against hers. \"Slowest rescue of my career. Worth every second.\""
+},
+{
+"src": 104,
+"id": "liam_c5_c5a_r3",
+"who": "liam",
+"en": "\"That's — yeah. That's the right call.\" He nods slowly. \"I'll know by Friday. I'll ask you Friday.\""
+}
+],
+"menus": {}
+}

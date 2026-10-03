@@ -1,0 +1,95 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "adrian_c2_open",
+"who": "narrator",
+"en": "He drops you a pin, not a single word attached. You slip onto the tour bus; the back cabin has one warm lamp on, 3 a.m., and he's curled alone in the corner with his guitar, the floor around him littered with crumpled lyric sheets. No makeup, leather jacket over the chair, in an old T-shirt — this version has none of the stage swagger. \"You came,\" he says without looking up, but you can hear the thing he couldn't quite hide in his voice."
+},
+{
+"src": 10,
+"id": "adrian_c2_b1_lyrics_ev",
+"who": "narrator",
+"en": "You accidentally step on a crumpled lyric sheet. Picking it up, you catch a line: 'she doesn't ask me to be anyone.' He crosses in one stride and snatches it away, ears a little red. \"That's — nothing. Scratch work.\""
+},
+{
+"src": 11,
+"id": "adrian_c2_b1_lyrics_he",
+"who": "adrian",
+"en": "He crosses the bus in one stride and takes the page out of your hand. *she doesn't ask me to be anyone.* \"That's nothing. Scratch work.\" His ears have gone red and he's furious about it. \"It's not about anybody. It's a line. Lines aren't about people, they're about scanning.\""
+},
+{
+"src": 20,
+"id": "adrian_c2_b2_why_music_ev",
+"who": "narrator",
+"en": "\"Everyone wants the guy on stage,\" he says suddenly, strumming a chord that goes nowhere. \"Nobody sticks around for the one who can't say a damn thing without a guitar in his hands.\""
+},
+{
+"src": 21,
+"id": "adrian_c2_b2_why_music_he",
+"who": "adrian",
+"en": "He strums a chord that resolves nowhere. \"Everyone wants the guy on stage.\" Flat, almost a warning. \"Nobody sticks around for the one who can't say a damn thing without a guitar in his hands.\" He doesn't look up to check whether you're still there. He is listening very carefully for whether you are."
+},
+{
+"src": 30,
+"id": "adrian_c2_b3_jealous_ev",
+"who": "narrator",
+"en": "Your phone rings — a guy friend. You take it, say two words, hang up. His fingers pause on the strings, his tone cooling half a degree. \"…Boyfriend?\" All studied indifference — but the string under his hand is pressed dead tight."
+},
+{
+"src": 31,
+"id": "adrian_c2_b3_jealous_he",
+"who": "adrian",
+"en": "Two words and you hang up. His fingers stop; the string under his hand is pressed dead flat. \"...Boyfriend?\" Studied indifference, badly built. When you answer he shrugs one shoulder like the whole exchange bored him. \"Didn't ask because I cared. Was just — the timing. Of the call. Whatever.\""
+},
+{
+"src": 100,
+"id": "adrian_c2_c2a_q",
+"who": "adrian",
+"en": "He sets the guitar aside and looks straight at you. \"Why do you keep coming back? People usually figure out I'm not worth the trouble.\""
+},
+{
+"src": 101,
+"id": "adrian_c2_c2a_r0",
+"who": "adrian",
+"en": "He looks away, his throat working, voice rough. \"…don't say stuff like that. I'll put it in a song and deny it.\""
+},
+{
+"src": 102,
+"id": "adrian_c2_c2a_r1",
+"who": "adrian",
+"en": "He stares at her a long moment, then laughs low. \"…you're a problem. You know that?\""
+},
+{
+"src": 103,
+"id": "adrian_c2_c2a_r2",
+"who": "adrian",
+"en": "His fingers drag over the strings, his eyes darkening. \"…that one's not finished. And it's not for the world.\""
+},
+{
+"src": 120,
+"id": "adrian_c2_c2b_q",
+"who": "adrian",
+"en": "About that phone call — he says he doesn't care, but he hasn't touched the guitar since. You can call him out, or let it go."
+},
+{
+"src": 121,
+"id": "adrian_c2_c2b_r0",
+"who": "adrian",
+"en": "He holds the line. \"Wasn't torturing anything.\" But the string loosens instantly, and he can't quite kill the smile."
+},
+{
+"src": 122,
+"id": "adrian_c2_c2b_r1",
+"who": "adrian",
+"en": "He gives her a provoking look, then breaks eye contact. \"I don't do jealous.\" — and scratches a line onto the paper, covering it fast."
+},
+{
+"src": 123,
+"id": "adrian_c2_c2b_r2",
+"who": "adrian",
+"en": "He looks up; the two of you are very close. His voice drops. \"…you're standing real close for someone who's 'just here to hear a song.'\""
+}
+],
+"menus": {}
+}

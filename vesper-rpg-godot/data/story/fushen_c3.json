@@ -1,0 +1,96 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "fushen_c3_open",
+"who": "narrator",
+"en": "Out of nowhere, he invites you to the Fu family estate — a place even business partners can't enter. The car glides down a long tree-lined drive and stops before a century-old mansion. The butler and a row of staff are already waiting at the door. You've barely stepped out, no time to feel awkward, when the old butler bows deeply and says respectfully, \"Young Madam. You've had a long journey. The master told us to expect you.\" You freeze — when did he ever introduce you to his household like that?",
+"zh": "他破天荒地邀你去傅家老宅——那是连合作伙伴都进不去的地方。车驶过长长的林荫道，停在一栋百年老宅前。管家和一排佣人早已等候在门口。你刚下车，还没来得及局促，老管家便向你深深一礼，恭敬地开口：\"少夫人，一路辛苦。老爷交代过，您要来。\"你愣住——他什么时候，跟家里这样介绍过你？"
+},
+{
+"src": 10,
+"id": "fushen_c3_b1_madam_ev",
+"who": "narrator",
+"en": "You turn to him, wanting to ask about 'Young Madam'. But his face doesn't change; he only straightens your collar, ruffled by the wind. \"It's just what they're used to saying. Pay it no mind.\" — yet he neither denies it nor corrects them.",
+"zh": "你回头看他，想问'少夫人'是怎么回事。他却面不改色，只是替你理了理被风吹乱的衣领：\"他们叫惯了的称呼，你别在意。\"——可他既没有否认，也没有纠正。"
+},
+{
+"src": 11,
+"id": "fushen_c3_b1_madam_he",
+"who": "fushen",
+"en": "You open your mouth to ask about *Young Madam* and he reaches over and straightens the collar the wind has turned up, eyes somewhere past your shoulder. \"It's what they're used to saying. Pay it no mind.\" He does not correct one member of his staff, then or later.",
+"zh": "你张嘴想问\"少夫人\"是怎么回事，他伸手替你把被风吹翻的衣领理好，眼睛看着你肩膀以外的某个地方。\"他们叫惯了。别放在心上。\"当时他没有纠正他手下任何一个人，之后也没有。"
+},
+{
+"src": 20,
+"id": "fushen_c3_b2_room_ev",
+"who": "narrator",
+"en": "The butler leads you to a guest room, but you find it already arranged to your taste — the flowers you once mentioned liking, the books you read, even the warm color temperature of the bedside lamp. He remembered every one.",
+"zh": "管家领你去客房，你却发现房间早已按你的喜好布置好了——你随口提过喜欢的花、爱看的书、连床头灯的色温都是暖的。这些，他一样样都记得。"
+},
+{
+"src": 21,
+"id": "fushen_c3_b2_room_he",
+"who": "fushen",
+"en": "Your flowers. Your books. The bedside lamp at the exact warm temperature you once complained no hotel ever gets right. \"The housekeeper handles the rooms,\" he says, which would be more convincing if the housekeeper had ever met you. \"If anything is wrong with it, say so and it will be changed tonight.\"",
+"zh": "你的花。你的书。床头灯调在那个色温上——你曾经抱怨过，没有一家酒店调得对。\"房间是管家管的。\"他说。如果那位管家见过你，这句话会更有说服力一些。\"有哪里不合适，说一声，今晚就换。\""
+},
+{
+"src": 100,
+"id": "fushen_c3_c3a_q",
+"who": "fushen",
+"en": "That night you find him in the study. You finally ask, \"'Young Madam'… you told them to call me that, didn't you?\" His back is to you; his shoulders tense for an instant.",
+"zh": "夜里，你在书房找到他。你终于问出口：\"'少夫人'…是你让他们那么叫的，对不对？\"他背对着你，肩线绷了一瞬。"
+},
+{
+"src": 101,
+"id": "fushen_c3_c3a_r0",
+"who": "fushen",
+"en": "He turns around, and the iceberg in his eyes fully splits. \"…This house has been cold for thirty years. I wanted it to have someone worth calling 'Madam'.\"",
+"zh": "他转过身，眼神里那座冰山彻底裂开：\"…这栋房子冷了三十年。我想让它，有个能称作'夫人'的人。\""
+},
+{
+"src": 102,
+"id": "fushen_c3_c3a_r1",
+"who": "fushen",
+"en": "He's silent a long while, then says quietly, \"…Some titles, I didn't want anyone to think were temporary.\"",
+"zh": "他沉默了很久，才低声说：\"…有些身份，我不想让别人以为，是暂时的。\""
+},
+{
+"src": 103,
+"id": "fushen_c3_c3a_r2",
+"who": "fushen",
+"en": "His hand tightens on the glass. Very quietly: \"…I've never brought anyone into this house. You tell me.\"",
+"zh": "他握着酒杯的手紧了紧，很轻地：\"…这栋房子，我从没带任何人进来过。你说呢。\""
+},
+{
+"src": 120,
+"id": "fushen_c3_c3b_q",
+"who": "fushen",
+"en": "The long corridor is cold. Noticing you shrink your shoulders, he takes off his coat and, without a word, drapes it over you, then keeps walking as if nothing happened.",
+"zh": "老宅的长廊很冷。他察觉你缩了下肩，便脱下外套，一言不发地披到你身上，然后继续往前走，仿佛什么都没发生。"
+},
+{
+"src": 121,
+"id": "fushen_c3_c3b_r0",
+"who": "fushen",
+"en": "\"I'm not cold.\" He doesn't look back — but you notice he quietly slows, and falls into step beside you.",
+"zh": "\"我不冷。\"他头也不回，可你注意到，他悄悄放慢了脚步，走在了你身侧。"
+},
+{
+"src": 122,
+"id": "fushen_c3_c3b_r1",
+"who": "fushen",
+"en": "He says nothing, only matches his pace to yours. The lamp at the corridor's end — he'd had it lit in advance.",
+"zh": "他没有说话，只是脚步和你并齐了。长廊尽头的灯，是他早就让人开好的。"
+},
+{
+"src": 123,
+"id": "fushen_c3_c3b_r2",
+"who": "fushen",
+"en": "His step catches; he turns his face away. \"…Don't talk nonsense. Keep it on, don't catch a chill.\" But a little warmth leaks at the edge of his ear.",
+"zh": "他脚步一顿，别过脸：\"…别乱说。披着，别着凉。\"耳侧却泄了一点温度。"
+}
+],
+"menus": {}
+}

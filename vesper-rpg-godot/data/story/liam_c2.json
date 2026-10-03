@@ -1,0 +1,95 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "liam_c2_open",
+"who": "narrator",
+"en": "Friday cookout. String lights fill the backyard, and Liam — in a 'KISS THE COOK' apron — is wrangling the grill. He grins the second he sees you. \"Perfect timing — try this, and don't hold back. If you say it's bad, I'm pretending I didn't hear.\" The chair he saved you is right beside his."
+},
+{
+"src": 10,
+"id": "liam_c2_b1_chili_ev",
+"who": "narrator",
+"en": "He hands you a bowl of chili, a flicker of hope in his eyes — you'll learn later this was his mother's recipe, one he rarely makes for anyone."
+},
+{
+"src": 11,
+"id": "liam_c2_b1_chili_he",
+"who": "liam",
+"en": "He hands you the bowl and then very obviously does not watch you eat it. \"It's just chili,\" he says, which is untrue in every way that matters; it's his mother's, and he makes it about twice a year. If you ask about the recipe he rubs the back of his neck. \"...It was my mom's. Yeah.\""
+},
+{
+"src": 20,
+"id": "liam_c2_b2_scar_ev",
+"who": "narrator",
+"en": "As he reaches for the grill, his sleeve slips, and you see an old burn scar on his forearm. He notices you noticing, and his smile dims for a beat. \"…Souvenir of the job. A big fire, three years back. There was someone I couldn't pull out in time.\""
+},
+{
+"src": 21,
+"id": "liam_c2_b2_scar_he",
+"who": "liam",
+"en": "The sleeve slips and he catches you seeing it. The grin dims one notch and doesn't go out. \"Souvenir of the job. Big fire, three years back.\" A beat, plainly, no performance: \"There was somebody I couldn't get out in time.\" Then he turns the burgers, because that's what there is to do."
+},
+{
+"src": 30,
+"id": "liam_c2_b3_dance_ev",
+"who": "narrator",
+"en": "Someone puts on an old song. Biscuit circles the two of you, thrilled. Liam wipes his hands and, a little sheepish, holds one out to you. \"I dance about as smooth as a fire hydrant, but… wanna give it a shot?\""
+},
+{
+"src": 31,
+"id": "liam_c2_b3_dance_he",
+"who": "liam",
+"en": "He wipes his hands on his jeans twice, which is one more time than necessary, and holds one out. \"I dance about as smooth as a fire hydrant.\" Biscuit is losing his mind circling you both. \"But it's a good song and you're standing right there, so — wanna give it a shot?\""
+},
+{
+"src": 100,
+"id": "liam_c2_c2a_q",
+"who": "liam",
+"en": "After the dance you sit on the porch steps. Watching the yard, he says quietly, \"You ever feel like you're the one everybody leans on, but nobody asks if you're okay?\""
+},
+{
+"src": 101,
+"id": "liam_c2_c2a_r0",
+"who": "liam",
+"en": "He freezes, silent a long moment, then laughs a little, eyes bright. \"…Nobody's asked me that in a long time. I might be, now.\""
+},
+{
+"src": 102,
+"id": "liam_c2_c2a_r1",
+"who": "liam",
+"en": "He turns his head to look at her, voice dropping. \"…Careful making an offer like that to a guy who never gets one.\""
+},
+{
+"src": 103,
+"id": "liam_c2_c2a_r2",
+"who": "liam",
+"en": "He bumps her shoulder, smiling warm. \"Well. Two tired people and a dog. Could be worse.\""
+},
+{
+"src": 120,
+"id": "liam_c2_c2b_q",
+"who": "liam",
+"en": "It gets late; the guests thin out. He helps stack your chairs and stops at your door. \"Hey. I had a good night. Been a while since one of these felt… easy.\""
+},
+{
+"src": 121,
+"id": "liam_c2_c2b_r0",
+"who": "liam",
+"en": "\"Deal. I'll bring the chili and the dog. Fair trade.\" He backs off a couple steps, grinning."
+},
+{
+"src": 122,
+"id": "liam_c2_c2b_r1",
+"who": "liam",
+"en": "He pauses, his voice softening. \"…You keep saying the right thing. It's a little unfair.\""
+},
+{
+"src": 123,
+"id": "liam_c2_c2b_r2",
+"who": "liam",
+"en": "He stands under the porch light, hand on his cheek, dazed a long moment, then laughs into the dark yard. \"…well, alright then.\""
+}
+],
+"menus": {}
+}

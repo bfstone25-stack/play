@@ -1,0 +1,77 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "adrian_c5_open",
+"who": "narrator",
+"en": "The label really did drop him. But he doesn't look like a man who lost anything — he records himself, releases himself, and in a tiny underground livehouse that seats a few dozen, sings what he actually wants to. Tonight, that song gets its first full performance, his way. No rewrites, no collab. Just a few dozen people who came only to listen. You're in the front. He cradles the guitar and finds you at once. \"Finished it,\" he says into the mic, looking only at you. \"took me this long because I needed to know how it ends. …Turns out that part was up to you.\""
+},
+{
+"src": 10,
+"id": "adrian_c5_b1_finished_ev",
+"who": "narrator",
+"en": "He plays the song, and this time it has a complete final verse. After the chorus, he adds a new line no one has ever heard: 'and for the first time, I wrote a song I don't wanna keep to myself.' On that line, he lifts his eyes to you."
+},
+{
+"src": 11,
+"id": "adrian_c5_b1_finished_he",
+"who": "adrian",
+"en": "The song has a last verse now. After the chorus comes a line no one in the world has heard: *and for the first time, I wrote a song I don't wanna keep to myself.* On that line he lifts his eyes off the fretboard and puts them on you and leaves them there."
+},
+{
+"src": 20,
+"id": "adrian_c5_b2_ask_ev",
+"who": "narrator",
+"en": "The song ends. He sets down the guitar, steps off the little stage, and — in front of a few dozen watching people — stands before you, rare and undefended. \"I spent years hiding how I feel inside songs and denying every word. I'm done denying. So — plainly, no guitar, no lyrics to hide behind: I'm yours. …Are you mine?\""
+},
+{
+"src": 21,
+"id": "adrian_c5_b2_ask_he",
+"who": "adrian",
+"en": "He sets the guitar down and comes off the stage with nothing in his hands, which for him is the whole point. \"I spent years hiding it in songs and denying every word. I'm done denying.\" No swagger left anywhere. \"So — plainly. No guitar. I'm yours. Are you mine?\""
+},
+{
+"src": 30,
+"id": "adrian_c5_bx_morning_ev",
+"who": "narrator",
+"en": "Late morning. The guitar has not come out of its case. He has let it sit there for nine hours, which is a record."
+},
+{
+"src": 31,
+"id": "adrian_c5_bx_morning_he",
+"who": "adrian",
+"en": "\"I woke up and I didn't want to write anything,\" he says, faintly appalled. \"Just — wanted to be in the room.\" He considers this. \"Don't tell the band. They'll think I'm ill.\""
+},
+{
+"src": 100,
+"id": "adrian_c5_c5a_q",
+"who": "adrian",
+"en": "He stands before you, a few dozen eyes on you both, undefended for once, waiting for your answer."
+},
+{
+"src": 101,
+"id": "adrian_c5_c5a_r0",
+"who": "adrian",
+"en": "He laughs and pulls her in, forehead to hers, his voice trembling. \"Deal. Every song from here on out — we finish it together.\""
+},
+{
+"src": 102,
+"id": "adrian_c5_c5a_r1",
+"who": "adrian",
+"en": "He buries his face in her neck, shoulders shaking, deaf to the cheering of the room. \"…no more denying. Not one word. I swear.\""
+},
+{
+"src": 103,
+"id": "adrian_c5_c5a_r2",
+"who": "adrian",
+"en": "The room detonates with cheers. Forehead to hers, he smiles with no defenses at all. \"…best encore I've ever played.\""
+},
+{
+"src": 104,
+"id": "adrian_c5_c5a_r3",
+"who": "adrian",
+"en": "\"I'll say it every day for a week,\" he says, short. \"You'll get sick of it before I do.\""
+}
+],
+"menus": {}
+}

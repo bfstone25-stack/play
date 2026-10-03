@@ -1,0 +1,89 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "ethan_c5_open",
+"who": "narrator",
+"en": "He turns off every light on the floor. The city's glow floods in through the glass. \"My father loved this hour on his night shifts,\" he says. \"I never understood why. I do now.\"",
+"zh": "他把顶楼所有的灯都关了。整座城市的光从窗外涌进来。\"我父亲值夜班的时候，最喜欢这个时刻。\"他说，\"我一直不明白为什么。现在明白了。\""
+},
+{
+"src": 10,
+"id": "ethan_c5_b1_offer_ev",
+"who": "narrator",
+"en": "\"The board wants me in New York. Three years.\" A pause. \"I haven't answered them.\"",
+"zh": "\"董事会要我去纽约，三年。\"他停顿，\"我还没答复。\""
+},
+{
+"src": 11,
+"id": "ethan_c5_b1_offer_he",
+"who": "ethan",
+"en": "\"New York. Three years, running the whole region.\" He turns the glass and doesn't drink. \"I haven't answered them.\" He doesn't say why he hasn't. He looks at you and lets the silence do the asking, because he has never learned to do it himself.",
+"zh": "\"纽约。三年，整个区。\"他转着杯子，没有喝。\"我还没答复他们。\"他没说为什么没答复。他看着你，让沉默替他问，因为他从来没学会自己问。"
+},
+{
+"src": 20,
+"id": "ethan_c5_b2_truth_ev",
+"who": "narrator",
+"en": "He finally turns around. \"Everything I've ever taken, I never actually wanted.\"",
+"zh": "他终于转过身：\"这辈子我要过的东西，从来没有一次是我真正想要的。\""
+},
+{
+"src": 21,
+"id": "ethan_c5_b2_truth_he",
+"who": "ethan",
+"en": "He turns around at last. \"Everything I've ever taken, I never actually wanted.\" He doesn't soften it, doesn't dress it, doesn't follow it with anything clever. He is simply standing there, out of armour, in the dark of his own building. \"That's the whole sentence. I've never said it out loud before.\"",
+"zh": "他终于转过身来。\"我拿到手的每一样东西，其实我都不想要。\"他没有把它说软，没有给它加装饰，后面也没接什么漂亮话。他只是站在那里，卸了甲，站在自己这栋楼的黑暗里。\"整句话就是这样。我从来没有出声说过。\""
+},
+{
+"src": 30,
+"id": "ethan_c5_bx_morning_ev",
+"who": "narrator",
+"en": "Six a.m. The top-floor light is off for the first time in eleven years, and he is still asleep.",
+"zh": "早上六点。顶楼的灯十一年来第一次是灭着的，而他还在睡。"
+},
+{
+"src": 31,
+"id": "ethan_c5_bx_morning_he",
+"who": "ethan",
+"en": "He wakes up slowly, which you would not have thought he knew how to do. \"Don't,\" he says, when you reach for your phone, and pulls you back under his arm without opening his eyes. \"Nine minutes. The building has survived worse.\" It is the most extravagant thing you have ever watched him spend.",
+"zh": "他醒得很慢，你本来不会以为他懂得怎么慢慢醒。\"别。\"你去够手机的时候他说，没有睁眼，把你按回他手臂下面。\"九分钟。这栋楼撑过比这更糟的。\"这是你见过他花掉的、最奢侈的一样东西。"
+},
+{
+"src": 100,
+"id": "ethan_c5_c5_q",
+"who": "ethan",
+"en": "\"So what do you want now?\" — you're the one asking.",
+"zh": "\"那你现在想要什么？\"——这句话是你问的。"
+},
+{
+"src": 101,
+"id": "ethan_c5_c5_r0",
+"who": "ethan",
+"en": "He crosses the room, slowly. \"I want a reason to stay in this city.\"",
+"zh": "他走过来，很慢：\"我想要一个理由，留在这座城市。\""
+},
+{
+"src": 102,
+"id": "ethan_c5_c5_r1",
+"who": "ethan",
+"en": "\"I want you,\" he says, quietly. \"This is the one thing I don't want to calculate.\"",
+"zh": "\"我想要你。\"他说得很轻，\"就这一件事，我不想再算了。\""
+},
+{
+"src": 103,
+"id": "ethan_c5_c5_r2",
+"who": "ethan",
+"en": "He is still for a long time. Then, a small smile. \"...All right.\"",
+"zh": "他很久没动。然后笑了一下：\"…好。\""
+},
+{
+"src": 104,
+"id": "ethan_c5_c5_r3",
+"who": "ethan",
+"en": "\"Slower,\" he agrees. \"I've never been any good at slow. I'd like to find out if I can be.\"",
+"zh": "\"慢一点，\"他同意了，\"我从来不擅长慢。我想看看我能不能学会。\""
+}
+],
+"menus": {}
+}

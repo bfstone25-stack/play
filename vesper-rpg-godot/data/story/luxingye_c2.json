@@ -1,0 +1,110 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "luxingye_c2_open",
+"who": "narrator",
+"en": "He messages you to come to the rehearsal room — from a private, unverified account no fan knows exists. When you arrive, the huge room has a single lamp on, and he's alone on the floor with a guitar, makeup off, in an ordinary hoodie. \"You came,\" he says, looking up with a smile completely unlike the one on stage — soft, and a little tired.",
+"zh": "他发消息约你来排练室——用的是一个没有认证、粉丝根本不知道的小号。你到的时候，偌大的排练室只开了一盏灯，他一个人抱着吉他坐在地板上，卸了妆，穿着最普通的卫衣。\"来啦。\"他抬头笑，那笑容和台上那个完全不一样——软软的，有点累。"
+},
+{
+"src": 10,
+"id": "luxingye_c2_b1_song_ev",
+"who": "narrator",
+"en": "He idly plays a melody — soft, lovely, unreleased. \"This bit… is something I wrote myself. The label says it's not 'commercial' enough.\"",
+"zh": "他随手弹了一段旋律，很轻很好听，是没发过的。\"这段…是我自己乱写的。公司说不够'商业'。\""
+},
+{
+"src": 11,
+"id": "luxingye_c2_b1_song_he",
+"who": "luxingye",
+"en": "\"This bit's mine. I wrote it.\" The melody wanders on under his hands, unhurried. \"Label says it's not commercial. They're probably right, they usually are.\" He's watching your face while pretending not to. \"...You can say if it's bad. People don't, and it makes me insane.\"",
+"zh": "\"这一段是我的。我写的。\"旋律在他手底下不紧不慢地往前走。\"公司说不商业。他们大概是对的，他们通常都对。\"他假装没在看你的脸，其实一直在看。\"……不好听你可以直说。没人肯说，这才真的让我发疯。\""
+},
+{
+"src": 20,
+"id": "luxingye_c2_b2_cage_ev",
+"who": "narrator",
+"en": "\"You know,\" he says, hugging his knees, \"the last time anyone asked if I was tired was three years ago. Everyone only asks if I'm 'in good form today'.\"",
+"zh": "\"你知道吗，\"他抱着膝盖，\"上一次有人问我'你今天累不累'，是三年前。大家只问我'今天状态好不好'。\""
+},
+{
+"src": 21,
+"id": "luxingye_c2_b2_cage_he",
+"who": "luxingye",
+"en": "\"Three years since anyone asked if I was tired,\" he says, chin on his knees, light as a shrug. \"They ask if I'm in good form. Different question.\" Then, immediately, because being seen makes his skin itch: \"Anyway — tragic idol backstory, very on-brand, please clap.\"",
+"zh": "\"三年了，没人问过我累不累，\"他把下巴搁在膝盖上说，语气轻得像耸肩，\"他们问我状态好不好。那是另一个问题。\"然后他立刻接了下去，因为被看穿让他浑身发痒：\"总之——悲情偶像前史，非常符合人设，鼓掌吧。\""
+},
+{
+"src": 30,
+"id": "luxingye_c2_b3_photo_ev",
+"who": "narrator",
+"en": "His phone lights up — a trending topic: '#LuXingye's late-night secret rendezvous'. He glances at it, but watches your reaction first.",
+"zh": "手机屏幕亮起，是热搜——'#陆星野深夜私会神秘人'。他扫了一眼，却先看你的反应。"
+},
+{
+"src": 31,
+"id": "luxingye_c2_b3_photo_he",
+"who": "luxingye",
+"en": "He tilts the screen so you can read the trending tag, watching you and not it. \"Late-night secret rendezvous. They'll have me engaged by Thursday.\" A grin that's doing a lot of work. \"This is the part where most people remember an early morning. I'm just saying. In case you were about to.\"",
+"zh": "他把屏幕转过来让你看那个热搜词条，看的却是你，不是屏幕。\"深夜密会。照这个速度，周四我就订婚了。\"那个笑容承担了很多工作。\"一般人到这一步会忽然想起明天有个早班。我就是说一下。万一你正准备想起来。\""
+},
+{
+"src": 100,
+"id": "luxingye_c2_c2a_q",
+"who": "luxingye",
+"en": "He sets down the guitar and looks at you seriously. \"Are you going to… one day only want the me that's on stage, too?\"",
+"zh": "他放下吉他，认真看你：\"你会不会…哪天也只是想要台上那个我？\""
+},
+{
+"src": 101,
+"id": "luxingye_c2_c2a_r0",
+"who": "luxingye",
+"en": "He freezes, then hides his face behind the guitar, voice muffled. \"…Say things like that and I'll actually believe them.\"",
+"zh": "他愣住，然后把脸埋进吉他后面，声音闷闷的：\"…你这样，我会当真的。\""
+},
+{
+"src": 102,
+"id": "luxingye_c2_c2a_r1",
+"who": "luxingye",
+"en": "He lifts his eyes, lashes flickering. \"…Then don't ever stop knowing this one.\"",
+"zh": "他抬眼看你，睫毛动了动：\"…那你可别不认识我了。\""
+},
+{
+"src": 103,
+"id": "luxingye_c2_c2a_r2",
+"who": "luxingye",
+"en": "He bursts out laughing. \"I will! Every single day, right in front of you!\"",
+"zh": "他噗地笑出来：\"啃！当着你的面天天啃！\""
+},
+{
+"src": 120,
+"id": "luxingye_c2_c2b_q",
+"who": "luxingye",
+"en": "The rumor is still trending. He flips the phone face-down on the floor and asks, testing, \"All this… doesn't scare you?\"",
+"zh": "热搜还挂着。他把手机倒扣在地上，试探地问：\"这些…你不怕？\""
+},
+{
+"src": 121,
+"id": "luxingye_c2_c2b_r0",
+"who": "luxingye",
+"en": "His eyes light up; he forces a casual tone. \"Oh—— so you admit it.\" But his ears go red.",
+"zh": "他眼睛一下亮了，又强装淡定：\"哦——那你承认了啊。\"耳朵却红了。"
+},
+{
+"src": 122,
+"id": "luxingye_c2_c2b_r1",
+"who": "luxingye",
+"en": "He exhales and leans back against the wall. \"…With that, I'll actually sleep tonight.\"",
+"zh": "他松了口气，靠回墙上：\"…有你这句，我今晚睡得着了。\""
+},
+{
+"src": 123,
+"id": "luxingye_c2_c2b_r2",
+"who": "luxingye",
+"en": "He pauses, softening. \"…You worried about me first. Fine — this is one kind of trouble I don't mind.\"",
+"zh": "他愣了下，笑得有点心软：\"…你居然先担心我。行吧，这个麻烦，我乐意。\""
+}
+],
+"menus": {}
+}

@@ -1,0 +1,117 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "fushen_c1_open",
+"who": "narrator",
+"en": "A dinner you were never meant to attend. After the guests left, you got lost on the terrace and wandered into a quiet study. He stands at the floor-to-ceiling window, back to you, a barely-touched glass of wine in hand. \"The door is behind you,\" he says without turning, voice flat. \"If you're here to hand me a business card, don't bother.\" He is thirty-six, you are thirty, and for once there is no one in this house but the two of you.",
+"zh": "一场你本不该来的晚宴。宾客散尽后，你在露台迷路，误入一间安静的书房。他站在落地窗前，背对着你，手里一杯没怎么动过的红酒。\"门在你身后。\"他没回头，声音很淡，\"如果你是来递名片的，就省省。\"他三十六，你三十，而这一次，这栋房子里除了你们两个，没有别人。"
+},
+{
+"src": 2,
+"id": "fushen_c1_cast",
+"who": "narrator",
+"en": "Fu Shen, 36. The player character is 30. Both adults.",
+"zh": "傅深，36岁；主角30岁。两人都是成年人。"
+},
+{
+"src": 10,
+"id": "fushen_c1_b1_wine_ev",
+"who": "narrator",
+"en": "He finally turns, gives you one look, and then — unexpectedly — pours a second glass and pushes it to the edge of the table. \"Standing's uncomfortable.\" It's as close to 'please sit' as he gets.",
+"zh": "他终于转过身，扫了你一眼，然后——出乎你意料地——给你也倒了一杯酒，推到桌沿。\"站着难受。\"这是他能给出的、最接近'请坐'的表达。"
+},
+{
+"src": 11,
+"id": "fushen_c1_b1_wine_he",
+"who": "fushen",
+"en": "He pours a second glass and pushes it to the edge of the table. \"Standing's uncomfortable.\" That is the entire invitation and there will not be a warmer one. When you thank him he looks back out at the city. \"It was going to waste. Don't read anything into it.\"",
+"zh": "他倒了第二杯，把它推到桌沿。\"站着不舒服。\"这就是全部的邀请，不会有更温和的版本了。你道谢的时候，他已经转回去看那座城市。\"反正也是浪费。别多想。\""
+},
+{
+"src": 20,
+"id": "fushen_c1_b2_notice_ev",
+"who": "narrator",
+"en": "\"You're not looking at this apartment, and you're not looking at me,\" he says suddenly, a flicker of real interest for the first time. \"You're looking at that one streetlight that never goes off. Why?\"",
+"zh": "\"你没有在看这套房子，也没有在看我。\"他忽然说，眼神里第一次有了兴趣，\"你在看窗外那盏一直没关的路灯。为什么？\""
+},
+{
+"src": 21,
+"id": "fushen_c1_b2_notice_he",
+"who": "fushen",
+"en": "\"You're not looking at the apartment, and you're not looking at me.\" It is the first thing he has said with any interest in it. \"You're watching the one streetlight on that corner that never goes off. Why.\" Not a question, in his mouth. It is still, unmistakably, a question.",
+"zh": "\"你没在看这套房子，也没在看我。\"这是他今晚第一句带着兴趣的话。\"你在看那个路口那盏从来不灭的路灯。为什么。\"从他嘴里出来，这不是一个疑问句。可它毫无疑问地，是一个问题。"
+},
+{
+"src": 30,
+"id": "fushen_c1_b3_name_ev",
+"who": "narrator",
+"en": "As you leave, he stops you, pauses, as if unused to asking such things. \"Your name.\" — not phrased as a question, yet you can tell he genuinely wants to know.",
+"zh": "临走时他叫住你，停顿了一下，像是不习惯问这种问题：\"你叫什么。\"——不是疑问句，可你听得出，他是真的想知道。"
+},
+{
+"src": 31,
+"id": "fushen_c1_b3_name_he",
+"who": "fushen",
+"en": "\"Your name.\" Not phrased as a request; he does not appear to know how. When you give it he doesn't repeat it and doesn't thank you. He simply files it somewhere permanent, and somehow you can tell that he has. \"...Good night. The driver is downstairs. He'll take you.\"",
+"zh": "\"你的名字。\"这不是一个请求的句式；他似乎也不知道它可以是。你说了之后，他没有重复，也没有道谢。他只是把它归进了某个永久的位置，而你不知怎么就是看得出来他归了。\"……晚安。司机在楼下。他送你。\""
+},
+{
+"src": 100,
+"id": "fushen_c1_c1a_q",
+"who": "fushen",
+"en": "He watches you over his glass, tone unreadable. \"Most people come through that door to get something from me. What do you want?\"",
+"zh": "他端着酒杯看你，语气听不出情绪：\"大多数人进这扇门，是为了从我这里得到点什么。你想要什么？\""
+},
+{
+"src": 101,
+"id": "fushen_c1_c1a_r0",
+"who": "fushen",
+"en": "He arches a brow and, unusually, doesn't order her out at once. \"…Rare,\" he says.",
+"zh": "他挑了下眉，罕见地没有立刻赶人。\"…难得。\"他说。"
+},
+{
+"src": 102,
+"id": "fushen_c1_c1a_r1",
+"who": "fushen",
+"en": "He's silent two seconds, his gaze resting on her face a moment. \"…You don't talk like someone who wandered in by mistake.\"",
+"zh": "他沉默两秒，视线在你脸上停了一瞬：\"…你说话，不太像来错地方的人。\""
+},
+{
+"src": 103,
+"id": "fushen_c1_c1a_r2",
+"who": "fushen",
+"en": "He glances at the glass, the corner of his mouth moving almost imperceptibly. \"…You have a mouth on you.\"",
+"zh": "他垂眼看了看那杯酒，唇角几不可察地动了一下：\"…算你会说话。\""
+},
+{
+"src": 120,
+"id": "fushen_c1_c1b_q",
+"who": "fushen",
+"en": "You're finally leaving. He says suddenly, \"The elevator on this floor needs access.\" And he sets a black keycard on the table, not looking at you.",
+"zh": "你终于要走了。他忽然开口：\"这层楼的电梯需要权限。\"说着，他把一张黑色的门禁卡放在桌上，没有看你。"
+},
+{
+"src": 121,
+"id": "fushen_c1_c1b_r0",
+"who": "fushen",
+"en": "\"Don't flatter yourself.\" He looks away. \"…I simply can't be bothered to come down and let you in each time.\"",
+"zh": "\"别自作多情。\"他移开视线，\"…只是懒得每次都下去帮你开门。\""
+},
+{
+"src": 122,
+"id": "fushen_c1_c1b_r1",
+"who": "fushen",
+"en": "He holds your gaze a moment, then looks away first. \"…Get home safely.\"",
+"zh": "他和你对视了一瞬，先移开了目光：\"…路上小心。\""
+},
+{
+"src": 123,
+"id": "fushen_c1_c1b_r2",
+"who": "fushen",
+"en": "He draws the card back, expression cool. \"Suit yourself.\" But you notice he doesn't actually put it away.",
+"zh": "他把卡收了回去，神色淡淡：\"随你。\"可你注意到，他并没有真的收走。"
+}
+],
+"menus": {}
+}

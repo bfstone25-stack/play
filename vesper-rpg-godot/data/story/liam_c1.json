@@ -1,0 +1,101 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "liam_c1_open",
+"who": "narrator",
+"en": "Your first day in the new place, a cardboard box gives out on the doorstep and your things scatter everywhere. As you scramble, a whistle comes from the yard next door — a broad-shouldered man walks over, one end of the couch you couldn't budge tucked easily under his arm, and grins. \"New neighbor? I'm Liam. Relax — this kind of thing's my whole job.\" A golden retriever at his heels wags its tail and comes over to lick your hand. He is thirty-four, you are thirty-one, and the fence between the two yards is the only thing either of you answers to."
+},
+{
+"src": 2,
+"id": "liam_c1_cast",
+"who": "narrator",
+"en": "Liam Reyes, 34. The player character is 31. Both adults."
+},
+{
+"src": 10,
+"id": "liam_c1_b1_dog_ev",
+"who": "narrator",
+"en": "The golden retriever trots up with one of your dropped socks and drops it proudly at your feet. Liam laughs, shaking his head. \"That's Biscuit, my partner. He's way more enthusiastic about fetching than firefighting.\""
+},
+{
+"src": 11,
+"id": "liam_c1_b1_dog_he",
+"who": "liam",
+"en": "\"That's Biscuit. My partner.\" He takes the sock off him with an apologetic grin. \"Way more enthusiastic about fetching than firefighting, which is a problem, since that's the job.\" He says *the job* the way other people say *the bus* — no weight on it. \"Station's six blocks that way.\""
+},
+{
+"src": 20,
+"id": "liam_c1_b2_fix_ev",
+"who": "narrator",
+"en": "He glances at your dripping faucet, and without a word digs a toolbox out of the truck. \"That's a five-minute job. Sit down, have a root beer.\" — he's fixing it before you can even ask."
+},
+{
+"src": 21,
+"id": "liam_c1_b2_fix_he",
+"who": "liam",
+"en": "The toolbox is out of the truck before you've finished the sentence about the faucet. \"Five-minute job. Sit down, have a root beer.\" When you thank him he waves it off with the wrench still in his hand. \"Can't have my neighbour's sink haunting me. I'm between shifts, I've got nothing but time till six.\""
+},
+{
+"src": 30,
+"id": "liam_c1_b3_call_ev",
+"who": "narrator",
+"en": "His pager goes off. He stands, his face turning a shade more serious. \"Sorry — call-out with the crew.\" Before he goes, he looks back. \"…What was your name again? I want to remember whose faucet I fixed.\""
+},
+{
+"src": 31,
+"id": "liam_c1_b3_call_he",
+"who": "liam",
+"en": "The pager goes and his face changes a shade — not dramatic, just *on*. \"Sorry. Call-out with the crew.\" He's three steps away when he turns back. \"Hey — what was your name again? I'd like to know whose faucet I fixed.\" You tell him. He repeats it once, grinning, and goes."
+},
+{
+"src": 100,
+"id": "liam_c1_c1a_q",
+"who": "liam",
+"en": "He hands you a root beer and sits on the tailgate. \"So — what brings you out here on your own? Big city wear you out?\""
+},
+{
+"src": 101,
+"id": "liam_c1_c1a_r0",
+"who": "liam",
+"en": "His ears go a little red as he laughs. \"Careful — say stuff like that and I'll fix everything you own.\""
+},
+{
+"src": 102,
+"id": "liam_c1_c1a_r1",
+"who": "liam",
+"en": "His grin softens; he looks at her seriously. \"…Then let's make this one stick. Home's easier with good neighbors.\""
+},
+{
+"src": 103,
+"id": "liam_c1_c1a_r2",
+"who": "liam",
+"en": "He laughs out loud. \"Yeah, the quiet doesn't last around Biscuit. Sorry in advance.\""
+},
+{
+"src": 120,
+"id": "liam_c1_c1b_q",
+"who": "liam",
+"en": "He's leaving, pager still buzzing. He turns back. \"After my shift — there's a neighborhood cookout Friday night. You coming?\""
+},
+{
+"src": 121,
+"id": "liam_c1_c1b_r0",
+"who": "liam",
+"en": "\"Damn right I am. My chili's the reason the fire station has a reputation.\" He winks and jogs off."
+},
+{
+"src": 122,
+"id": "liam_c1_c1b_r1",
+"who": "liam",
+"en": "\"Seat next to me. Biscuit'll fight you for it, though.\" He climbs into the truck, grinning."
+},
+{
+"src": 123,
+"id": "liam_c1_c1b_r2",
+"who": "liam",
+"en": "He pauses, then smiles, warm. \"…I like the way you say that. Like you actually mean it.\""
+}
+],
+"menus": {}
+}

@@ -1,0 +1,117 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "luxingye_c4_open",
+"who": "narrator",
+"en": "The confession clip hits hundreds of millions of views overnight. Some fans cheer, some leave; the label is furious. Summoned to the company, you see him through the glass door, alone at the head of the long table, surrounded by executives applying pressure. One holds termination clauses; another slides over a statement — if he publicly says it was 'just a stage gimmick', it all blows over. Through the glass, he sees you.",
+"zh": "告白视频一夜之间几亿播放。粉丝有的祝福有的脱粉，公司震怒。你被叫到公司，隔着玻璃门，看见他一个人坐在长桌那头，被一圈高管围着施压。有人拿着解约条款，有人递上一份声明——只要他公开说'那只是舞台效果'，一切就能平息。他隔着玻璃看见了你。"
+},
+{
+"src": 10,
+"id": "luxingye_c4_b1_statement_ev",
+"who": "narrator",
+"en": "An executive pushes the statement in front of him, pen extended. Sign it, and his career is untouched. He stares at the page and doesn't move.",
+"zh": "高管把那份声明推到他面前，笔也递了过去。签下去，他的事业毫发无损。他盯着那张纸，一动没动。"
+},
+{
+"src": 11,
+"id": "luxingye_c4_b1_statement_he",
+"who": "luxingye",
+"en": "The statement says it was a stage gimmick. The pen is being held out. He looks at it for a long moment and does not take it. \"They want me to say it was a bit,\" he says, to you, not to them, and very quietly. \"I'm not going to say it was a bit.\"",
+"zh": "声明上写着那是一个舞台设计。笔递了过来。他看了它很久，没有接。\"他们要我说那是个梗，\"他说，对你说的，不是对他们说的，声音很轻，\"我不打算说那是个梗。\""
+},
+{
+"src": 20,
+"id": "luxingye_c4_b2_walk_ev",
+"who": "narrator",
+"en": "He suddenly stands, pushes open the boardroom door, and — in front of every executive — walks straight toward you outside the glass. The whole room falls silent.",
+"zh": "他忽然站起来，推开会议室的门，当着所有高管的面，径直走向玻璃门外的你。整个会议室鸦雀无声。"
+},
+{
+"src": 21,
+"id": "luxingye_c4_b2_walk_he",
+"who": "luxingye",
+"en": "He stands up mid-sentence, walks out through the glass door, and crosses to you in front of every executive who has ever owned a piece of him. \"That's it. That's the whole meeting.\" He's shaking slightly and grinning like an idiot. \"Ask me later if it was worth it. I'll say yes.\"",
+"zh": "他说到一半站了起来，从玻璃门走出去，当着每一个曾经握有他一部分的人的面，径直走到你面前。\"就这样。整个会就到这儿。\"他微微发着抖，笑得像个傻子。\"以后再问我值不值。我会说值。\""
+},
+{
+"src": 30,
+"id": "luxingye_c4_bx_after_hours_ev",
+"who": "narrator",
+"en": "The car is a decoy and the flat is borrowed and nobody on earth knows where either of you is. He locks the door and puts his back against it, laughing, out of breath.",
+"zh": "那辆车是幌子，这间公寓是借的，地球上没有一个人知道你们两个在哪里。他把门锁上，背靠着门，笑着，喘着气。"
+},
+{
+"src": 31,
+"id": "luxingye_c4_bx_after_hours_he",
+"who": "luxingye",
+"en": "\"Okay. Okay.\" He's grinning and it keeps slipping into something less practised. \"Full disclosure: I've been famous since I was nineteen and I have no idea how to do this part without it being a bit. So tell me if it's too fast, tell me if you want to just eat noodles and sit on the floor, tell me anything —\" You tell him. He stops talking, which almost never happens, and the borrowed flat is very quiet for a long time after that.",
+"zh": "\"好。好。\"他还在笑，那个笑一次又一次地滑进某种不那么熟练的东西里。\"我坦白：我十九岁就出名了，我完全不知道这一段该怎么演才不像在演。所以太快了你要告诉我，你想只吃碗面坐地板上也要告诉我，你想说什么都——\"你说了。他不说话了，这在他身上几乎从不发生，而那间借来的公寓在那之后安静了很久。"
+},
+{
+"src": 100,
+"id": "luxingye_c4_c4a_q",
+"who": "luxingye",
+"en": "He stops in front of you, the fuming executives at his back. \"They want me to say it was fake. Tell me — should I sign?\"",
+"zh": "他停在你面前，背后是气得发抖的高管们：\"他们要我说那是假的。你说，我该签吗？\""
+},
+{
+"src": 101,
+"id": "luxingye_c4_c4a_r0",
+"who": "luxingye",
+"en": "His eyes go red, but he smiles. \"'We.' …Best word I've heard in days.\"",
+"zh": "他眼眶红了，却笑了：\"'我们'。…这是我这几天听过最好的两个字。\""
+},
+{
+"src": 102,
+"id": "luxingye_c4_c4a_r1",
+"who": "luxingye",
+"en": "He pushes the statement back to the executives without looking. \"You heard her. I'm not signing.\"",
+"zh": "他把那份声明推回给高管，头也不回：\"你们听见了。我不签。\""
+},
+{
+"src": 103,
+"id": "luxingye_c4_c4a_r2",
+"who": "luxingye",
+"en": "He cuts you off instantly. \"No. I can quit the industry. I can't quit you.\"",
+"zh": "他立刻打断你：\"不行。我可以退圈，不能退你。\""
+},
+{
+"src": 104,
+"id": "luxingye_c4_c4a_r3",
+"who": "luxingye",
+"en": "\"Oh thank God,\" he says, sliding down the door. \"Noodles. I'm so much better at noodles.\"",
+"zh": "\"谢天谢地，\"他顺着门滑坐到地上，\"面。面我会。我这辈子最拿手的就是面。\""
+},
+{
+"src": 120,
+"id": "luxingye_c4_c4b_q",
+"who": "luxingye",
+"en": "An executive says coldly behind him, \"Think hard, Lu Xingye. One step out that door and there's no going back.\" He doesn't turn — he just looks at you, waiting for a single look.",
+"zh": "高管在身后冷冷开口：\"陆星野，你想清楚，这一步跨出去，就没有回头路了。\"他没回头，只是看着你，等你一个眼神。"
+},
+{
+"src": 121,
+"id": "luxingye_c4_c4b_r0",
+"who": "luxingye",
+"en": "He takes your hand without hesitation, then tells the executives over his shoulder, \"Going back? I never planned to.\"",
+"zh": "他毫不犹豫地握住你的手，回头对高管说：\"回头路？我从没打算回头。\""
+},
+{
+"src": 122,
+"id": "luxingye_c4_c4b_r1",
+"who": "luxingye",
+"en": "He draws a breath and steps across the threshold, to your side.",
+"zh": "他深吸一口气，跨过了那道门槛，站到了你这一侧。"
+},
+{
+"src": 123,
+"id": "luxingye_c4_c4b_r2",
+"who": "luxingye",
+"en": "He grips your hand tighter and says, seriously, \"You are the world I want.\"",
+"zh": "他握紧你的手，认真地说：\"你就是我想要的那个世界。\""
+}
+],
+"menus": {}
+}

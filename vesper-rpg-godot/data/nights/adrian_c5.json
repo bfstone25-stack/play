@@ -1,0 +1,677 @@
+{
+ "id": "adrian_c5",
+ "title_key": "nt_adrian_5",
+ "sub_key": "ns_adrian_5",
+ "turns": 24,
+ "clock_start": 1170,
+ "minutes_per_turn": 15,
+ "start_room": "home",
+ "start_event": "start",
+ "map": {
+  "image": "city",
+  "rooms": {
+   "home": [
+    0.2,
+    0.72
+   ],
+   "street": [
+    0.47,
+    0.5
+   ],
+   "cafe": [
+    0.24,
+    0.26
+   ],
+   "venue": [
+    0.77,
+    0.32
+   ]
+  }
+ },
+ "rooms": {
+  "home": {
+   "name_key": "r_home",
+   "plate": "v_home",
+   "music": "explore",
+   "mood": {
+    "ambient": "#e0d4dc",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      0.9,
+      "#ffd8b0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "out",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.14,
+      0.74
+     ],
+     "label_key": "r_street"
+    },
+    {
+     "id": "wardrobe",
+     "kind": "search",
+     "pos": [
+      0.72,
+      0.46
+     ],
+     "event": "w",
+     "label_key": "hs_wardrobe",
+     "xp": 5,
+     "gives": [
+      "his_shirt"
+     ]
+    },
+    {
+     "id": "desk",
+     "kind": "search",
+     "pos": [
+      0.42,
+      0.62
+     ],
+     "event": "d",
+     "label_key": "hs_desk",
+     "xp": 5,
+     "gives": [
+      "cake"
+     ]
+    }
+   ],
+   "heroine_pose": "",
+   "heroine_x": 0.74
+  },
+  "street": {
+   "name_key": "r_street",
+   "plate": "v_street",
+   "music": "explore",
+   "mood": {
+    "ambient": "#c8c4dc",
+    "lamps": [
+     [
+      0.7,
+      0.3,
+      1.0,
+      "#ff90b0"
+     ],
+     [
+      0.2,
+      0.35,
+      0.8,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "home",
+     "kind": "door",
+     "to": "home",
+     "pos": [
+      0.12,
+      0.78
+     ],
+     "label_key": "r_home"
+    },
+    {
+     "id": "cafe",
+     "kind": "door",
+     "to": "cafe",
+     "pos": [
+      0.3,
+      0.42
+     ],
+     "label_key": "r_cafe"
+    },
+    {
+     "id": "stall",
+     "kind": "search",
+     "pos": [
+      0.55,
+      0.62
+     ],
+     "event": "s",
+     "label_key": "hs_stall",
+     "xp": 5,
+     "gives": [
+      "tea"
+     ]
+    },
+    {
+     "id": "kiosk",
+     "kind": "search",
+     "pos": [
+      0.68,
+      0.5
+     ],
+     "event": "k",
+     "label_key": "hs_kiosk",
+     "xp": 5,
+     "gives": [
+      "coffee"
+     ]
+    },
+    {
+     "id": "venue",
+     "kind": "door",
+     "to": "venue",
+     "pos": [
+      0.86,
+      0.4
+     ],
+     "label_key": "r_v_adrian_5"
+    }
+   ],
+   "heroine_pose": "",
+   "heroine_x": 0.74
+  },
+  "cafe": {
+   "name_key": "r_cafe",
+   "plate": "v_cafe",
+   "music": "explore",
+   "mood": {
+    "ambient": "#e4d8cc",
+    "lamps": [
+     [
+      0.5,
+      0.25,
+      1.0,
+      "#ffd8a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.12,
+      0.78
+     ],
+     "label_key": "r_street"
+    },
+    {
+     "id": "counter",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "cc",
+     "label_key": "hs_counter",
+     "xp": 5,
+     "gives": [
+      "macarons",
+      "coffee"
+     ]
+    },
+    {
+     "id": "corner",
+     "kind": "search",
+     "pos": [
+      0.78,
+      0.6
+     ],
+     "event": "cn",
+     "label_key": "hs_corner",
+     "xp": 5,
+     "gives": [
+      "ks_adrian_5"
+     ]
+    }
+   ],
+   "heroine_pose": "",
+   "heroine_x": 0.74
+  },
+  "venue": {
+   "name_key": "r_v_adrian_5",
+   "plate": "v_adrian_5",
+   "music": "venue",
+   "mood": {
+    "ambient": "#e0d8e0",
+    "lamps": [
+     [
+      0.6,
+      0.3,
+      0.9,
+      "#ffd0c0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.1,
+      0.8
+     ],
+     "label_key": "r_street"
+    },
+    {
+     "id": "beat0",
+     "kind": "event",
+     "event": "beat0",
+     "pos": [
+      0.3,
+      0.42
+     ],
+     "label_key": "hs_b1"
+    },
+    {
+     "id": "date1",
+     "kind": "enemy",
+     "enemy": "date_adrian_5",
+     "pos": [
+      0.42,
+      0.56
+     ],
+     "after": "after1",
+     "if_flag": "s1"
+    },
+    {
+     "id": "beat2",
+     "kind": "event",
+     "event": "beat2",
+     "pos": [
+      0.54,
+      0.42
+     ],
+     "label_key": "hs_b2",
+     "if_flag": "s2"
+    },
+    {
+     "id": "end",
+     "kind": "event",
+     "event": "end",
+     "pos": [
+      0.66,
+      0.56
+     ],
+     "label_key": "hs_end",
+     "if_flag": "s3"
+    }
+   ],
+   "heroine_pose": "adrian_smile",
+   "heroine_x": 0.74,
+   "enter_event": "open"
+  }
+ },
+ "events": {
+  "w": [
+   {
+    "say": "narrator",
+    "key": "ev_wardrobe"
+   }
+  ],
+  "d": [
+   {
+    "say": "narrator",
+    "key": "ev_desk"
+   }
+  ],
+  "s": [
+   {
+    "say": "narrator",
+    "key": "ev_stall"
+   }
+  ],
+  "k": [
+   {
+    "say": "narrator",
+    "key": "ev_kiosk"
+   }
+  ],
+  "cc": [
+   {
+    "say": "narrator",
+    "key": "ev_counter"
+   }
+  ],
+  "cn": [
+   {
+    "say": "narrator",
+    "key": "ev_corner"
+   }
+  ],
+  "open": [
+   {
+    "music": "venue"
+   },
+   {
+    "lines": "adrian_c5:1-1"
+   }
+  ],
+  "beat0": [
+   {
+    "lines": "adrian_c5:10-11"
+   },
+   {
+    "xp": 10
+   },
+   {
+    "flag": "s1"
+   }
+  ],
+  "after1": [
+   {
+    "say": "narrator",
+    "key": "vb_win_big_1"
+   },
+   {
+    "flag": "s2"
+   }
+  ],
+  "beat2": [
+   {
+    "lines": "adrian_c5:20-21"
+   },
+   {
+    "xp": 10
+   },
+   {
+    "flag": "s3"
+   }
+  ],
+  "end": [
+   {
+    "say": "narrator",
+    "key": "ev_heat_gate"
+   },
+   {
+    "if_trust": 7,
+    "then": [],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "ev_heat_locked"
+     }
+    ]
+   },
+   {
+    "choice": [
+     {
+      "menu": "Say yes. Stay until morning.",
+      "req_trust": 7,
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "lines": "adrian_c5:30-31"
+       },
+       {
+        "flag": "heat_c5"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "music": "venue"
+       }
+      ]
+     },
+     {
+      "menu": "Say it again tomorrow, sober, in daylight.",
+      "auto_rank": 1,
+      "do": [
+       {
+        "flag": "slow_ch5"
+       },
+       {
+        "lines": "adrian_c5:104-104"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "lines": "adrian_c5:100-100"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"I'm yours. But that song's not finished — you're gonna write the rest of it with me.\"",
+      "do": [
+       {
+        "flag": "forever"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "lines": "adrian_c5:101-101"
+       }
+      ]
+     },
+     {
+      "menu": "\"I've been yours since the bus. You were just too busy denying it to notice.\"",
+      "do": [
+       {
+        "flag": "forever"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "lines": "adrian_c5:102-102"
+       }
+      ]
+     },
+     {
+      "menu": "(Slide your hand into his and kiss him in front of everyone.)",
+      "do": [
+       {
+        "flag": "forever"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "lines": "adrian_c5:103-103"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "if_trust": 8,
+    "then": [
+     {
+      "if_flag": "forever",
+      "then": [
+       {
+        "music": "ending"
+       },
+       {
+        "say": "narrator",
+        "key": "ev_ending"
+       },
+       {
+        "cg": "cg_adrian_end"
+       },
+       {
+        "lines": "adrian_end:10-17"
+       },
+       {
+        "flag": "ending_he_forever"
+       },
+       {
+        "flag": "ending_rank_best"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "say": "narrator",
+        "key": "vb_win_big_2"
+       }
+      ],
+      "else": [
+       {
+        "if_flag": "stay_together",
+        "then": [
+         {
+          "music": "ending"
+         },
+         {
+          "say": "narrator",
+          "key": "ev_ending"
+         },
+         {
+          "cg": "cg_adrian_end"
+         },
+         {
+          "lines": "adrian_end:10-17"
+         },
+         {
+          "flag": "ending_he_forever"
+         },
+         {
+          "flag": "ending_rank_best"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "say": "narrator",
+          "key": "vb_win_big_2"
+         }
+        ],
+        "else": [
+         {
+          "if_flag": "public_yes",
+          "then": [
+           {
+            "music": "ending"
+           },
+           {
+            "say": "narrator",
+            "key": "ev_ending"
+           },
+           {
+            "cg": "cg_adrian_end"
+           },
+           {
+            "lines": "adrian_end:10-17"
+           },
+           {
+            "flag": "ending_he_forever"
+           },
+           {
+            "flag": "ending_rank_best"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "say": "narrator",
+            "key": "vb_win_big_2"
+           }
+          ],
+          "else": [
+           {
+            "music": "ending"
+           },
+           {
+            "say": "narrator",
+            "key": "ev_ending"
+           },
+           {
+            "cg": "cg_adrian_end"
+           },
+           {
+            "lines": "adrian_end:20-26"
+           },
+           {
+            "flag": "ending_he_quiet"
+           },
+           {
+            "flag": "ending_rank_mid"
+           },
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "if_trust": 5,
+      "then": [
+       {
+        "music": "ending"
+       },
+       {
+        "say": "narrator",
+        "key": "ev_ending"
+       },
+       {
+        "cg": "cg_adrian_end"
+       },
+       {
+        "lines": "adrian_end:20-26"
+       },
+       {
+        "flag": "ending_he_quiet"
+       },
+       {
+        "flag": "ending_rank_mid"
+       },
+       {
+        "hide_cg": true
+       }
+      ],
+      "else": [
+       {
+        "music": "ending"
+       },
+       {
+        "say": "narrator",
+        "key": "ev_ending"
+       },
+       {
+        "cg": "cg_adrian_end"
+       },
+       {
+        "lines": "adrian_end:30-36"
+       },
+       {
+        "flag": "ending_be_unreleased"
+       },
+       {
+        "flag": "ending_rank_low"
+       },
+       {
+        "hide_cg": true
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "end_night": true,
+    "next": ""
+   }
+  ],
+  "start": [
+   {
+    "say": "narrator",
+    "key": "hb_open_2"
+   }
+  ]
+ }
+}

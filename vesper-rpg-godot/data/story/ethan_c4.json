@@ -1,0 +1,89 @@
+{
+"lines": [
+{
+"src": 1,
+"id": "ethan_c4_open",
+"who": "narrator",
+"en": "The gala for the closed acquisition. He's on stage, flawless. Someone beside you says quietly, \"He cut loose his own partner. What do you think you are to him?\" — and they're holding a document.",
+"zh": "并购案敲定的庆功宴。他在台上讲话，滴水不漏。有人在你旁边低声说：\"他连自己的搭档都能割舍，你以为你算什么？\"——那人手里有一份文件。"
+},
+{
+"src": 10,
+"id": "ethan_c4_b1_accusation_ev",
+"who": "narrator",
+"en": "The document bears his signature, dated three years ago — he did cut his co-founder loose during a crisis.",
+"zh": "那份文件上有他的签名，日期是三年前——他确实在一场危机里放弃了创业伙伴。"
+},
+{
+"src": 11,
+"id": "ethan_c4_b1_accusation_he",
+"who": "ethan",
+"en": "\"It's my signature and it's the right date.\" No defence, no preamble. Only when you ask him straight does the rest come, flat and complete: \"The bank would have taken his house. I couldn't stop the vote. So I paid his debts for two years through a third party and let him hate me instead. He still does.\"",
+"zh": "\"那是我的签名，日期也是对的。\"没有辩解，没有铺垫。只有在你直接问他的时候，剩下的才出来，平铺直叙，一字不落：\"银行会收走他的房子。那次表决我拦不住。所以我通过第三方替他还了两年的债，然后让他改恨我。他到现在还恨。\""
+},
+{
+"src": 20,
+"id": "ethan_c4_b2_leave_ev",
+"who": "narrator",
+"en": "He steps off the stage and walks straight across the entire room toward you — every camera follows.",
+"zh": "他从台上下来，径直穿过整个会场走向你——所有镜头都跟着他。"
+},
+{
+"src": 21,
+"id": "ethan_c4_b2_leave_he",
+"who": "ethan",
+"en": "He crosses the entire room to you with every lens in the building following, and stops close enough that there is nothing else to call it. \"They'll run this everywhere by morning,\" he says. \"I'd like you to know I did the arithmetic on the stairs, and I walked down them anyway.\"",
+"zh": "他穿过整间屋子走到你面前，楼里每一只镜头都跟着他，停在一个再没有别的说法的距离上。\"天亮之前这会传遍每一个地方，\"他说，\"我想让你知道，我在楼梯上把账算过了，然后我还是走下来了。\""
+},
+{
+"src": 30,
+"id": "ethan_c4_bx_after_hours_ev",
+"who": "narrator",
+"en": "The car doesn't go to your building. Neither of you says anything about that until the lift doors close on the forty-first floor.",
+"zh": "车没有开往你家的方向。在四十一楼的电梯门合上之前，你们谁也没有提这件事。"
+},
+{
+"src": 31,
+"id": "ethan_c4_bx_after_hours_he",
+"who": "ethan",
+"en": "\"I'm going to say this badly.\" He hasn't let go of your hand since the gala floor. \"I have spent eleven years being extremely careful about what I want, and I'd like to stop, tonight, with you, if that's something you also want. Say no and I'll take you home and nothing about tomorrow changes.\" You don't say no. He exhales like a man setting down something heavy, and the last thing you see before the lights go is the city, forty-one floors down, doing its work without either of you.",
+"zh": "他从宴会厅那层起就没有松开你的手。\"我会说得很难听。\"他说，\"十一年了，我对自己想要什么一直极其小心。今晚我想不小心一次，和你，前提是你也想。你说不，我就送你回家，明天的一切都不会有任何变化。\"你没有说不。他呼出一口气，像一个人终于把很重的东西放下来，而在灯熄灭之前你最后看见的，是四十一层楼下面那座城市，照旧运转，与你们两个都无关。"
+},
+{
+"src": 100,
+"id": "ethan_c4_c4_q",
+"who": "ethan",
+"en": "He stops in front of you. \"Ask me. Right now.\"",
+"zh": "他停在你面前：\"你想问什么，现在问。\""
+},
+{
+"src": 101,
+"id": "ethan_c4_c4_r0",
+"who": "ethan",
+"en": "\"It's real,\" he says. \"But it isn't all of it. Will you hear the rest?\"",
+"zh": "\"是真的。\"他说，\"但不是全部。你愿意听完吗？\""
+},
+{
+"src": 102,
+"id": "ethan_c4_c4_r1",
+"who": "ethan",
+"en": "He glances at the cameras around you, and nods. \"...Thank you.\"",
+"zh": "他看了眼四周的镜头，点头：\"…谢谢。\""
+},
+{
+"src": 103,
+"id": "ethan_c4_c4_r2",
+"who": "ethan",
+"en": "Something in his face gives, just for a second -- like no one has believed him without asking in a very long time.",
+"zh": "他的表情有一瞬间的松动——像很久没被人无条件相信过。"
+},
+{
+"src": 104,
+"id": "ethan_c4_c4_r3",
+"who": "ethan",
+"en": "\"Then we'll stay here,\" he says, and means it entirely. \"I've got a whole city and no plans. Sit down.\"",
+"zh": "\"那我们就待在这儿。\"他说，而且完全是认真的。\"我有一整座城市，没有任何安排。坐下吧。\""
+}
+],
+"menus": {}
+}
