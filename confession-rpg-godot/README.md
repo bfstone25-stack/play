@@ -59,6 +59,16 @@ The trial pck excludes nights 2–3 and the epilogue, their rooms, Sgt. Okafor /
 the case 2–3 voice and CGs; the three route CGs of case 1 show as the VN's blurred tiles
 (`trial_locked_cgs`). The case 2–3 *text* stays in the pck (one story file) — noted.
 
+## Status (2026-10-03)
+
+verify_all rc=0 (case 1 10/10 no loss, 39.8 min; whole game with every clean ending, route
+and epilogue scene; reckless player loses). ui_smoke on the RTX 3060: 13/13 real clicks. 81
+screenshots EN+JA+trial in `shots/latest/` (3060, Vulkan), looked at. All 27 renders installed,
+`check_data.py --strict` clean. `tools/package.sh 1.0.0` built; both -pc zips booted from the
+zip on the 3060 (`shots/exported/`). Trial pck checked with `tools/pck_list.py`. DLsite draft:
+`ops/dlsite/confession_rpg_product_page.md`. Known: in sim/auto mode a choice's buttons linger
+until the next line (core event_view), so a CG shot taken right after a choice shows them.
+
 ## Art
 
 `ops/confession_art/confession_gen.py` steps `rooms` / `enemies` / `rpgcgs` (queued through
