@@ -1,11 +1,17 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#12100c">
-  <title>blazeCore Play · 情绪解药</title>
+  <title>blazeCore Play</title>
   <link rel="stylesheet" href="hub.css">
+  <style>
+    .lang { position: absolute; top: 12px; right: 12px; display: flex; gap: 2px; }
+    .lang button { min-width: 34px; height: 28px; padding: 0 8px; border: 1px solid #3a3428; border-radius: 8px;
+      background: transparent; color: #8a8170; font: 700 12px/1 "IBM Plex Sans", "PingFang SC", sans-serif; }
+    .lang button.on { color: #1a1406; background: #d4a017; border-color: #d4a017; }
+  </style>
 <!-- closed-loop telemetry bootstrap -->
 <script>
 window.TEL_APP = window.TEL_APP || 'catharsis';
@@ -15,31 +21,70 @@ window.API = window.API || window.TEL_API;
 </script>
 </head>
 <body>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" class="on">EN</button><button type="button" data-lang="zh">中</button></div>
   <header>
     <small>BLAZECORE PLAY</small>
-    <h1>情绪解药</h1>
-    <p>七台单手微游戏。星尘共通。神社仍是一号机。</p>
+    <h1 data-i18n="title">Catharsis</h1>
+    <p data-i18n="sub">Seven one-handed micro games. One StarDust wallet. The shrine is still cabinet one.</p>
   </header>
   <nav id="cabs"></nav>
   <script src="/kernel/i18n.js"></script>
   <script>
-    const CABS = [
-      { href: "/null-shrine/", tag: "01", name: "NULL//SHRINE", sub: "技巧弹珠 · 击球臂", track: "seed" },
-      { href: "/slacker-ball/", tag: "02", name: "摸鱼大暴弹", sub: "职场弹珠泄压", track: "work" },
-      { href: "/office-landlord/", tag: "03", name: "职场大赢家", sub: "符号构筑连携", track: "work" },
-      { href: "/beat-monday/", tag: "04", name: "击溃星期一", sub: "单手割草走位", track: "work" },
-      { href: "/cyber-merit/", tag: "05", name: "赛博木鱼", sub: "Z世代点击功德", track: "zgen" },
-      { href: "/rebound-tycoon/", tag: "07", name: "老王逆袭记", sub: "保安逆袭放置", track: "work" },
-      { href: "/word-pop/", tag: "08", name: "单词弹珠英雄", sub: "答题充能弹珠", track: "work" },
-    ];
-    const nav = document.getElementById("cabs");
-    CABS.forEach(c => {
-      const a = document.createElement("a");
-      a.href = c.href;
-      a.className = c.track;
-      a.innerHTML = `<i>${c.tag}</i><div><b>${c.name}</b><span>${c.sub}</span></div>`;
-      nav.appendChild(a);
+    // English-first hub (kernel/i18n.js: ?lang=, then the toggle choice, then the browser).
+    const LANG_KEY = "hub_lang";
+    I18N.register({
+      en: {
+        "doc": "blazeCore Play", "title": "Catharsis",
+        "sub": "Seven one-handed micro games. One StarDust wallet. The shrine is still cabinet one.",
+        "null-shrine": "NULL//SHRINE", "null-shrine.sub": "Skill pinball · flipper arm",
+        "slacker-ball": "Slacker Ball", "slacker-ball.sub": "Workplace pegs · let off steam",
+        "office-landlord": "Office Landlord", "office-landlord.sub": "Symbol-builder chains",
+        "beat-monday": "Beat Monday", "beat-monday.sub": "One-hand horde runner",
+        "cyber-merit": "Cyber Merit", "cyber-merit.sub": "Gen-Z merit clicker",
+        "rebound-tycoon": "Rebound Tycoon", "rebound-tycoon.sub": "Night-guard idle comeback",
+        "word-pop": "Word Pop Quest", "word-pop.sub": "Quiz-charged pinball",
+      },
+      "zh-Hans": {
+        "doc": "blazeCore Play · 情绪解药", "title": "情绪解药",
+        "sub": "七台单手微游戏。星尘共通。神社仍是一号机。",
+        "null-shrine": "NULL//SHRINE", "null-shrine.sub": "技巧弹珠 · 击球臂",
+        "slacker-ball": "摸鱼大暴弹", "slacker-ball.sub": "职场弹珠泄压",
+        "office-landlord": "职场大赢家", "office-landlord.sub": "符号构筑连携",
+        "beat-monday": "击溃星期一", "beat-monday.sub": "单手割草走位",
+        "cyber-merit": "赛博木鱼", "cyber-merit.sub": "Z世代点击功德",
+        "rebound-tycoon": "老王逆袭记", "rebound-tycoon.sub": "保安逆袭放置",
+        "word-pop": "单词弹珠英雄", "word-pop.sub": "答题充能弹珠",
+      },
     });
+    const CABS = [
+      { id: "null-shrine", tag: "01", track: "seed" },
+      { id: "slacker-ball", tag: "02", track: "work" },
+      { id: "office-landlord", tag: "03", track: "work" },
+      { id: "beat-monday", tag: "04", track: "work" },
+      { id: "cyber-merit", tag: "05", track: "zgen" },
+      { id: "rebound-tycoon", tag: "07", track: "work" },
+      { id: "word-pop", tag: "08", track: "work" },
+    ];
+    function render(code) {
+      I18N.setLang(code === "zh" ? "zh-Hans" : "en");
+      document.documentElement.lang = code === "zh" ? "zh-Hans" : "en";
+      document.title = I18N.t("doc");
+      document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = I18N.t(el.getAttribute("data-i18n")); });
+      document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("on", b.getAttribute("data-lang") === code));
+      const nav = document.getElementById("cabs");
+      nav.innerHTML = "";
+      CABS.forEach(c => {
+        const a = document.createElement("a");
+        a.href = "/" + c.id + "/";
+        a.className = c.track;
+        a.innerHTML = `<i>${c.tag}</i><div><b>${I18N.t(c.id)}</b><span>${I18N.t(c.id + ".sub")}</span></div>`;
+        nav.appendChild(a);
+      });
+    }
+    document.querySelectorAll("[data-lang]").forEach(b => {
+      b.addEventListener("click", () => { const c = b.getAttribute("data-lang"); I18N.remember(LANG_KEY, c); render(c); });
+    });
+    render(I18N.detect(LANG_KEY));
   </script>
 
 <script>

@@ -49,7 +49,7 @@ html, body {
   position: fixed;
   top: calc(10px + env(safe-area-inset-top));
   right: 14px;
-  z-index: 8;
+  z-index: 14; /* above the overlay sheets: language is switchable on the title screen */
   display: flex;
   gap: 6px;
 }

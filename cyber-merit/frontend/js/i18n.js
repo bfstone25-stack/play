@@ -2,7 +2,16 @@ const I18N = (() => {
   // Default to the visitor's language, not to Chinese: the game ships to CrazyGames and
   // free.blazecore.dev where almost nobody reads it, and a Chinese splash screen is where
   // those players bounce.
+  // Explicit ?lang= beats everything; otherwise the browser (the stored choice is
+  // applied by game.js once the save has loaded). English-first: only zh lands on Chinese.
   let lang = /^zh/i.test(navigator.language || "") ? "zh-Hans" : "en";
+  try {
+    const q = new URLSearchParams(location.search).get("lang");
+    if (q) lang = /^zh/i.test(q) ? "zh-Hans" : "en";
+  } catch (e) {}
+  function forced() {
+    try { return !!new URLSearchParams(location.search).get("lang"); } catch (e) { return false; }
+  }
   const dict = { "zh-Hans": {}, en: {} };
 
   function register(bundle) {
@@ -25,6 +34,7 @@ const I18N = (() => {
 
   function apply() {
     document.documentElement.lang = lang === "en" ? "en" : "zh-Hans";
+    document.title = t("title");
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       el.textContent = t(el.getAttribute("data-i18n"));
     });
@@ -41,6 +51,14 @@ const I18N = (() => {
 
   register({
     "zh-Hans": {
+      "title": "赛博木鱼 · Cyber Merit",
+      "ui.name": "赛博木鱼",
+      "ui.seal": "莲",
+      "ui.meritUnit": "功德",
+      "mascot.hello": "先敲一下。云会记账。",
+      "intro.seal": "功",
+      "intro.title": "赛博木鱼",
+      "intro.en": "CYBER MERIT",
       "ui.cabinet": "CABINET 07 · CYBER MERIT",
       "ui.lore": "敲一记全息木鱼，把功德上传云端",
       "ui.ready": "READY",
@@ -90,6 +108,14 @@ const I18N = (() => {
       "mandala.0": "单莲", "mandala.1": "双环", "mandala.2": "电路坛城", "mandala.3": "万花",
     },
     en: {
+      "title": "Cyber Merit",
+      "ui.name": "CYBER MERIT",
+      "ui.seal": "✦",
+      "ui.meritUnit": "merit",
+      "mascot.hello": "Strike once. The cloud will file it.",
+      "intro.seal": "✦",
+      "intro.title": "CYBER MERIT",
+      "intro.en": "A NEON WOODEN-FISH CLICKER",
       "ui.cabinet": "CABINET 07 · CYBER MERIT",
       "ui.lore": "Strike the holo-fish. Upload merit to the cloud.",
       "ui.ready": "READY",
@@ -140,5 +166,5 @@ const I18N = (() => {
     },
   });
 
-  return { register, t, setLang, apply, getLang: () => lang };
+  return { register, t, setLang, apply, getLang: () => lang, forced };
 })();

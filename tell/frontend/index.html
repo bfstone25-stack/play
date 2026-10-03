@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#701d1d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>破绽 · TELL</title><script src="build.js"></script><script src="config.js"></script><script>window.GATE_CONFIG={directLink:"https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9",directLinkSeconds:20,price:"$2.99",buyUrl:"https://bfstone25-stack.itch.io/tell/purchase"};</script><script src="gate.js"></script>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#701d1d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192-v2.png"><script defer src="pwa-install.js"></script><title>TELL</title><script src="build.js"></script><script src="config.js"></script><script>window.GATE_CONFIG={directLink:"https://www.profitableratecpmnetwork.com/zwp8ud7ja?key=a1512482200926a2de2d9ef3cb26a8a9",directLinkSeconds:20,price:"$2.99",buyUrl:"https://bfstone25-stack.itch.io/tell/purchase"};</script><script src="gate.js"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;overflow:hidden;font-family:'Georgia','Songti SC',-apple-system,serif;color:#d8d4cc;background:#080809}
@@ -164,7 +164,7 @@ window.API = window.API || window.TEL_API;
   <div class="settings"><button class="settingsBtn" id="settingsLabel" onclick="openSettings()"></button><div class="langChoice"><button id="langEn" onclick="setLang('en')">EN</button><button id="langEs" onclick="setLang('es')">ES</button><button id="langPt" onclick="setLang('pt')">PT</button><button id="langZh" onclick="setLang('zh')">中文</button><button id="langJa" onclick="setLang('ja')">日本語</button></div></div>
   <nav class="xpromo" aria-label="More games">
     <a href="https://apps.blazecore.dev/silvertongue/" target="_blank" rel="noopener noreferrer"><small>DIALOGUE RPG</small><b>SILVERTONGUE</b><span>Talk your way through town. Same AI table, different stakes.</span></a>
-    <a href="https://apps.blazecore.dev/flutter/" target="_blank" rel="noopener noreferrer"><small>DIALOGUE RPG</small><b>FLUTTER · 怦然</b><span>He remembers what you said. Romance, not a confession.</span></a>
+    <a href="https://apps.blazecore.dev/flutter/" target="_blank" rel="noopener noreferrer"><small>DIALOGUE RPG</small><b id="flutterName">FLUTTER</b><span>He remembers what you said. Romance, not a confession.</span></a>
     <a href="https://bfstone25-stack.itch.io/across-the-hall" target="_blank" rel="noopener noreferrer"><small>THRILLER</small><b>ACROSS THE HALL</b><span>Apartment next door. Different case. Same kind of night.</span></a>
   </nav>
 </div></div>
@@ -213,7 +213,12 @@ const IS_PREVIEW=location.protocol==="file:"||location.hostname==="localhost"||l
 const API=IS_PREVIEW
   ?"https://apps.blazecore.dev/tell"
   :(window.TELL_API||window.APP_API||"");
-let lang=localStorage.getItem("tell_lang")||(navigator.language.startsWith("zh")?"zh":"en");
+const TELL_LANGS=["en","es","pt","zh","ja"];
+let lang=(()=>{let q="";try{q=(new URLSearchParams(location.search).get("lang")||"").toLowerCase().slice(0,2)}catch(e){}
+ if(TELL_LANGS.indexOf(q)>=0)return q;const s=localStorage.getItem("tell_lang");if(TELL_LANGS.indexOf(s)>=0)return s;
+ const n=(navigator.language||"en").toLowerCase().slice(0,2);return TELL_LANGS.indexOf(n)>=0?n:"en";})();
+function syncLangMeta(){document.documentElement.lang=lang;document.title=lang==="zh"?"破绽 · TELL":"TELL";const f=document.getElementById("flutterName");if(f)f.textContent=lang==="zh"?"FLUTTER · 怦然":"FLUTTER";}
+syncLangMeta();
 let S=null,cur=null,convos={},qUsed=0,done=false;
 let mode=localStorage.getItem("tell_mode")==="run"?"run":"daily";
 let runCase=Math.max(0,parseInt(localStorage.getItem("tell_run_case")||"0",10)||0);
@@ -388,7 +393,7 @@ async function enterGame(){
  }finally{go.disabled=false;go.textContent=label;}
 }
 function goHome(){track("return_home",{questions:qUsed});playScore("menu");document.getElementById("verdict").style.display="none";document.getElementById("briefOv").style.display="none";document.getElementById("home").style.display="flex";renderHome();}
-function setLang(next){lang=next;localStorage.setItem("tell_lang",lang);document.documentElement.lang=lang;track("language_selected",{selected:next});renderHome();if(document.getElementById("settingsOv").style.display==="flex")openSettings();if(window.uxSyncLabels)uxSyncLabels();}
+function setLang(next){lang=next;localStorage.setItem("tell_lang",lang);syncLangMeta();track("language_selected",{selected:next});renderHome();if(document.getElementById("settingsOv").style.display==="flex")openSettings();if(window.uxSyncLabels)uxSyncLabels();}
 function nextCase(){const nxt=(runCase+1)%(S.case_total||7);if(demoRunLocked(nxt)){if(adsTrack()){window.Gate.require("case"+nxt,{title:"Case "+(nxt+1),kind:"level"}).then(r=>{if(r==="unlocked")nextCase();});return;}showPaywall();return;}track("next_case",{streak:runStreak});playScore("interrogation");runCase=nxt;localStorage.setItem("tell_run_case",String(runCase));gameStartedAt=Date.now();resetCase();load().then(showBrief);}
 function retryCase(){track("retry_case",{});playScore("interrogation");gameStartedAt=Date.now();resetCase();load().then(showBrief);}
 function pick(id){if(cur!==id)track("suspect_selected",{suspect:id});cur=id;S.suspects.forEach(s=>document.getElementById("mug-"+s.id).classList.toggle("on",s.id===id));

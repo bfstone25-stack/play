@@ -57,7 +57,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .lang-bar {
-  position: fixed; top: 10px; right: 12px; z-index: 80;
+  position: fixed; top: 10px; right: 12px; z-index: 95; /* above the intro (90): language is switchable before entering */
   display: flex; gap: 4px; padding: 4px;
   border: 1px solid var(--line);
   background: rgba(7, 11, 22, .72);

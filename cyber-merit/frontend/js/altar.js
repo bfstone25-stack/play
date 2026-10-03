@@ -92,7 +92,7 @@ const ALTAR = (() => {
       ctx.fillStyle = "#ff2d95";
       ctx.globalAlpha = 0.85;
       ctx.font = "bold 11px Syne, sans-serif";
-      ctx.fillText("功德", 0, 0);
+      ctx.fillText(typeof I18N !== "undefined" && I18N.getLang() === "en" ? "MERIT" : "功德", 0, 0);
       ctx.fillStyle = "#3dba8a";
       ctx.fillText("CLOUD", 292, 18);
       ctx.restore();
@@ -345,7 +345,7 @@ const ALTAR = (() => {
       ctx.strokeRect(0, 0, 18, 36);
       ctx.fillStyle = "#8a1a2a";
       ctx.font = "10px Noto Serif SC, serif";
-      ctx.fillText("符", 3, 22);
+      ctx.fillText(typeof I18N !== "undefined" && I18N.getLang() === "en" ? "✦" : "符", 3, 22);
       ctx.restore();
     });
   }

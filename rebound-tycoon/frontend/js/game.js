@@ -7,6 +7,15 @@
   const persist = { lang: "en", sound: true, motion: !reducePref, bestCoins: 0, prestiges: 0 };
   try { Object.assign(persist, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (_) {}
   if (LANGS.indexOf(persist.lang) < 0) persist.lang = "en";
+  // English-first: ?lang= beats the stored choice; a first visit follows the browser.
+  {
+    let q = "", stored = "";
+    try { q = (new URLSearchParams(location.search).get("lang") || "").toLowerCase().slice(0, 2); } catch (_) {}
+    try { stored = (JSON.parse(localStorage.getItem(KEY) || "{}") || {}).lang || ""; } catch (_) {}
+    const nav = (navigator.language || "en").toLowerCase().slice(0, 2);
+    if (LANGS.indexOf(q) >= 0) persist.lang = q;
+    else if (LANGS.indexOf(stored) < 0) persist.lang = LANGS.indexOf(nav) >= 0 ? nav : "en";
+  }
 
   let lang = persist.lang;
   let soundOn = persist.sound !== false;

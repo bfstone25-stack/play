@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#070b16">
   <meta name="description" content="Tap the cyber fish. Stack digital merit. A neon meditation clicker.">
-  <meta property="og:title" content="赛博木鱼 · Cyber Merit">
+  <meta property="og:title" content="Cyber Merit · 赛博木鱼">
   <meta property="og:description" content="A futuristic cyber-Buddhist wooden fish altar in a neon city.">
   <meta name="twitter:card" content="summary">
-  <title>赛博木鱼 · Cyber Merit</title>
+  <title>Cyber Merit</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="css/style.css?v=1.0.0">
 <!-- closed-loop telemetry bootstrap -->
@@ -29,8 +29,8 @@ window.API = window.API || window.TEL_API;
   </div>
 
   <div class="lang-bar" role="group" aria-label="Language">
-    <button type="button" class="lang-btn" data-lang="zh-Hans">简</button>
     <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="zh-Hans">中</button>
     <button type="button" class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
   </div>
 
@@ -42,7 +42,7 @@ window.API = window.API || window.TEL_API;
             <i></i>
             <div>
               <small data-i18n="ui.cabinet">CABINET 07 · CYBER MERIT</small>
-              <b>赛博木鱼</b>
+              <b data-i18n="ui.name">CYBER MERIT</b>
               <em data-i18n="ui.lore">敲一记全息木鱼，把功德上传云端</em>
             </div>
             <span id="runState" data-i18n="ui.ready">READY</span>
@@ -63,7 +63,7 @@ window.API = window.API || window.TEL_API;
                 <article class="side-plate ema">
                   <header>
                     <small data-i18n="ui.liturgy">今日坛城</small>
-                    <span class="seal">莲</span>
+                    <span class="seal" data-i18n="ui.seal">✦</span>
                   </header>
                   <b id="mandalaLabel">0 / 40</b>
                   <div class="progress"><i id="mandalaFill"></i></div>
@@ -83,10 +83,10 @@ window.API = window.API || window.TEL_API;
                   <b id="autoValue">0/s</b>
                 </div>
                 <div class="callout">
-                  <div class="ling-face" id="mascotFace" aria-hidden="true">灵</div>
+                  <div class="ling-face" id="mascotFace" aria-hidden="true">•‿•</div>
                   <div>
                     <small data-i18n="ui.lingTitle">LING-7 · 灵七</small>
-                    <p id="mascotLine">先敲一下。云会记账。</p>
+                    <p id="mascotLine" data-i18n="mascot.hello">Strike once. The cloud will file it.</p>
                   </div>
                 </div>
               </aside>
@@ -113,10 +113,10 @@ window.API = window.API || window.TEL_API;
   </div>
 
   <div class="intro" id="intro">
-    <div class="intro-seal" aria-hidden="true">功</div>
+    <div class="intro-seal" aria-hidden="true" data-i18n="intro.seal">✦</div>
     <small data-i18n="intro.eyebrow">BLAZECORE PLAY · CABINET 07</small>
-    <h1>赛博木鱼</h1>
-    <p class="intro-en">CYBER MERIT</p>
+    <h1 data-i18n="intro.title">CYBER MERIT</h1>
+    <p class="intro-en" data-i18n="intro.en">A NEON WOODEN-FISH CLICKER</p>
     <p class="intro-sub" data-i18n="intro.sub">全息手敲木鱼。功德粒子螺旋升入数字莲花。</p>
     <button type="button" class="intro-go" id="introGo" data-i18n="intro.go">入龛</button>
   </div>

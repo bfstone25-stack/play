@@ -20,9 +20,15 @@ const MASCOT = (() => {
     },
   };
 
+  // Face glyphs: Chinese seals for zh, ASCII faces for everyone else.
+  const FACES = {
+    "zh-Hans": { ling: "灵", drop: "困", liturgy: "悟", steal: "贼", incense: "香" },
+    en: { ling: "•‿•", drop: "•︵•", liturgy: "✧‿✧", steal: "•ᴗ•", incense: "~‿~" },
+  };
+  let langNow = "zh-Hans";
   let mood = "idle";
   let until = 0;
-  let face = "灵";
+  let face = "ling";
   let bob = 0;
   let steal = 0;
 
@@ -35,15 +41,16 @@ const MASCOT = (() => {
   }
 
   function say(kind, lang) {
+    langNow = lang === "en" ? "en" : "zh-Hans";
     const p = pack(lang);
     mood = kind;
     until = 2.4;
     const line = pick(p[kind] || p.idle);
-    if (kind === "combo") face = "灵";
-    if (kind === "drop") face = "困";
-    if (kind === "liturgy") face = "悟";
-    if (kind === "steal") face = "贼";
-    if (kind === "strike") face = "灵";
+    if (kind === "combo") face = "ling";
+    if (kind === "drop") face = "drop";
+    if (kind === "liturgy") face = "liturgy";
+    if (kind === "steal") face = "steal";
+    if (kind === "strike") face = "ling";
     return line;
   }
 
@@ -52,7 +59,7 @@ const MASCOT = (() => {
     if (until > 0) until -= dt;
     if (until <= 0) {
       mood = "idle";
-      face = auto > 0 ? "香" : "灵";
+      face = auto > 0 ? "incense" : "ling";
     }
     if (auto > 0) {
       steal += dt;
@@ -105,5 +112,5 @@ const MASCOT = (() => {
     }
   }
 
-  return { say, update, draw, get face() { return face; }, get mood() { return mood; } };
+  return { say, update, draw, get face() { return (FACES[langNow] || FACES.en)[face] || FACES.en.ling; }, get mood() { return mood; } };
 })();

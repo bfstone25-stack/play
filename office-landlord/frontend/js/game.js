@@ -109,7 +109,17 @@
   let soundOn = true;
   const persistShape = { lang: "en", sound: true, bestBank: 0, leases: 0 };
   try { Object.assign(persistShape, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (_) {}
-  lang = persistShape.lang === "zh" ? "zh" : "en";
+  // English-first: ?lang= beats the stored toggle choice, which beats the browser;
+  // only a zh browser lands on Chinese.
+  lang = (() => {
+    let q = "";
+    try { q = (new URLSearchParams(location.search).get("lang") || "").toLowerCase(); } catch (_) {}
+    if (q) return /^zh/.test(q) ? "zh" : "en";
+    let stored = "";
+    try { stored = (JSON.parse(localStorage.getItem(KEY) || "{}") || {}).lang || ""; } catch (_) {}
+    if (stored) return stored === "zh" ? "zh" : "en";
+    return /^zh/i.test(navigator.language || "") ? "zh" : "en";
+  })();
   soundOn = persistShape.sound !== false;
 
   const st = {
@@ -176,6 +186,7 @@
   function applyLang() {
     const c = t();
     document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+    document.title = lang === "zh" ? "职场大赢家 · Office Landlord" : "Office Landlord";
     document.getElementById("tagline").textContent = c.tag;
     document.getElementById("lore").textContent = c.lore;
     document.getElementById("lRent").textContent = c.rent;

@@ -28,7 +28,9 @@
   const idleGain = LITURGY.applyIdle(Date.now());
   // Fall back to the locale I18N picked from the browser, not to Chinese: on the portals and
   // free.blazecore.dev a Chinese splash screen is where non-Chinese players leave.
-  I18N.setLang(LITURGY.snapshot().lang || I18N.getLang());
+  // ?lang= (already in I18N) beats the stored choice; the stored choice beats the browser.
+  I18N.setLang(I18N.forced() ? I18N.getLang() : (LITURGY.snapshot().lang || I18N.getLang()));
+  LITURGY.setLang(I18N.getLang());
 
   const CAM = { yaw: 0, pitch: 6, punch: 0, userYaw: 0, userPitch: 0 };
   let lastHud = "";
@@ -162,7 +164,7 @@
       const name = I18N.t("track." + track);
       const tier = I18N.t(track + "." + lv);
       btn.innerHTML = "<div><b>" + name + " · " + tier + "</b><span>Lv " + lv + " / " + spec.max + "</span></div><em>" +
-        (maxed ? I18N.t("shop.max") : c + " 功德") + "</em>";
+        (maxed ? I18N.t("shop.max") : c + " " + I18N.t("ui.meritUnit")) + "</em>";
       btn.onclick = () => {
         if (!LITURGY.tryUpgrade(track)) { toast(I18N.t("shop.need")); return; }
         SFX.upgrade();
@@ -207,11 +209,12 @@
     g.font = "22px Syne, sans-serif";
     g.fillText("CABINET 07", 56, 80);
     g.fillStyle = "#ffe08a";
-    g.font = "bold 48px Noto Serif SC, serif";
-    g.fillText("赛博木鱼", 56, 140);
+    const en = I18N.getLang() === "en";
+    g.font = en ? "bold 44px Syne, sans-serif" : "bold 48px Noto Serif SC, serif";
+    g.fillText(en ? "CYBER MERIT" : "赛博木鱼", 56, 140);
     g.fillStyle = "#3dba8a";
     g.font = "18px Syne, sans-serif";
-    g.fillText("CYBER MERIT", 56, 172);
+    g.fillText(en ? "MERIT CARD" : "CYBER MERIT", 56, 172);
     g.strokeStyle = "#c9a227";
     g.beginPath();
     g.arc(360, 380, 110, 0, Math.PI * 2);
@@ -319,7 +322,8 @@
       hud();
       lastHud = "";
       hud();
-      $("mascotLine").textContent = MASCOT.say("idle", code);
+      mascotLine("idle");
+      if (window.TEL && TEL.ev) TEL.ev("language", { lang: code });
     };
   });
 
@@ -328,7 +332,7 @@
     setTimeout(() => { $("intro").hidden = true; }, 600);
     SFX.unlock();
     BGM.start();
-    if (idleGain >= 1) toast("+" + Math.floor(idleGain) + " 功德");
+    if (idleGain >= 1) toast("+" + Math.floor(idleGain) + " " + I18N.t("ui.meritUnit"));
     mascotLine("idle");
   };
 
