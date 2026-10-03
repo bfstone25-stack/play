@@ -35,10 +35,110 @@
  },
  "music": {
   "title": "res://assets/audio/suspense_theme.ogg",
-  "explore": "res://assets/audio/suspense_theme.ogg",
-  "battle": "res://assets/audio/suspense_theme.ogg",
-  "boss": "res://assets/audio/suspense_theme.ogg",
-  "intimate": "res://assets/audio/ecchi_theme.ogg"
+  "explore": "res://assets/audio/explore.ogg",
+  "battle": "res://assets/audio/standoff.ogg",
+  "boss": "res://assets/audio/boss.ogg",
+  "intimate": "res://assets/audio/intimate.ogg",
+  "dawn": "res://assets/audio/dawn.ogg",
+  "archive": "res://assets/audio/ecchi_theme.ogg"
+ },
+ "voice": {
+  "hb_open_1": {
+   "v_en": "res://assets/voice/rpg_hb_open_1.ogg"
+  },
+  "hb_open_2": {
+   "v_en": "res://assets/voice/rpg_hb_open_2.ogg"
+  },
+  "hb_open_3": {
+   "v_en": "res://assets/voice/rpg_hb_open_3.ogg"
+  },
+  "hb_read_1": {
+   "v_en": "res://assets/voice/rpg_hb_read_1.ogg"
+  },
+  "hb_read_2": {
+   "v_en": "res://assets/voice/rpg_hb_read_2.ogg"
+  },
+  "hb_win_1": {
+   "v_en": "res://assets/voice/rpg_hb_win_1.ogg"
+  },
+  "hb_win_2": {
+   "v_en": "res://assets/voice/rpg_hb_win_2.ogg"
+  },
+  "hb_win_3": {
+   "v_en": "res://assets/voice/rpg_hb_win_3.ogg"
+  },
+  "n1_cart_2": {
+   "v_en": "res://assets/voice/rpg_n1_cart_2.ogg"
+  },
+  "n1_cellar_2": {
+   "v_en": "res://assets/voice/rpg_n1_cellar_2.ogg"
+  },
+  "n1_coat_2": {
+   "v_en": "res://assets/voice/rpg_n1_coat_2.ogg"
+  },
+  "n1_cobb2_10": {
+   "v_en": "res://assets/voice/rpg_n1_cobb2_10.ogg"
+  },
+  "n1_cobb2_4": {
+   "v_en": "res://assets/voice/rpg_n1_cobb2_4.ogg"
+  },
+  "n1_cobb2_7": {
+   "v_en": "res://assets/voice/rpg_n1_cobb2_7.ogg"
+  },
+  "n1_dean_10": {
+   "v_en": "res://assets/voice/rpg_n1_dean_10.ogg"
+  },
+  "n1_join_1": {
+   "v_en": "res://assets/voice/rpg_n1_join_1.ogg"
+  },
+  "n1_join_10": {
+   "v_en": "res://assets/voice/rpg_n1_join_10.ogg"
+  },
+  "n1_join_2": {
+   "v_en": "res://assets/voice/rpg_n1_join_2.ogg"
+  },
+  "n1_join_4": {
+   "v_en": "res://assets/voice/rpg_n1_join_4.ogg"
+  },
+  "n1_join_8": {
+   "v_en": "res://assets/voice/rpg_n1_join_8.ogg"
+  },
+  "n1_lamp_3": {
+   "v_en": "res://assets/voice/rpg_n1_lamp_3.ogg"
+  },
+  "n1_lbook_3": {
+   "v_en": "res://assets/voice/rpg_n1_lbook_3.ogg"
+  },
+  "n1_pen_11": {
+   "v_en": "res://assets/voice/rpg_n1_pen_11.ogg"
+  },
+  "n1_pen_3": {
+   "v_en": "res://assets/voice/rpg_n1_pen_3.ogg"
+  },
+  "n1_pen_7": {
+   "v_en": "res://assets/voice/rpg_n1_pen_7.ogg"
+  },
+  "n1_roof_3": {
+   "v_en": "res://assets/voice/rpg_n1_roof_3.ogg"
+  },
+  "n1_shelf_3": {
+   "v_en": "res://assets/voice/rpg_n1_shelf_3.ogg"
+  },
+  "n2_dock_grice_2": {
+   "v_en": "res://assets/voice/rpg_n2_dock_grice_2.ogg"
+  },
+  "n3_chart_2": {
+   "v_en": "res://assets/voice/rpg_n3_chart_2.ogg"
+  },
+  "n3_t5_2": {
+   "v_en": "res://assets/voice/rpg_n3_t5_2.ogg"
+  },
+  "n4_t3_2": {
+   "v_en": "res://assets/voice/rpg_n4_t3_2.ogg"
+  },
+  "n4_t7_3": {
+   "v_en": "res://assets/voice/rpg_n4_t7_3.ogg"
+  }
  },
  "audio": {
   "ambience": "res://assets/audio/rain_ambience.ogg",
@@ -70,6 +170,23 @@
  ],
  "heroine_flag": "elena_joined",
  "heroine_sprite": "outfit_research",
+ "heroine_barks": {
+  "who": "elena",
+  "open": [
+   "hb_open_1",
+   "hb_open_2",
+   "hb_open_3"
+  ],
+  "read": [
+   "hb_read_1",
+   "hb_read_2"
+  ],
+  "win": [
+   "hb_win_1",
+   "hb_win_2",
+   "hb_win_3"
+  ]
+ },
  "party": [
   {
    "id": "vance",

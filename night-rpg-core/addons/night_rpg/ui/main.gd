@@ -478,7 +478,8 @@ func _step(st: Dictionary) -> String:
 			await _say_line(_who(ln["who"]), Loc.line(ln), ln)
 		return "ok"
 	if st.has("say"):
-		await _say_line(_who(st["say"]), Loc.t(st["key"]), {})
+		# RPG-only lines are voiced per string key (game.json "voice"); missing = silent
+		await _say_line(_who(st["say"]), Loc.t(st["key"]), RPG.game.get("voice", {}).get(st["key"], {}))
 		return "ok"
 	if st.has("event"):
 		return await run_event(st["event"])

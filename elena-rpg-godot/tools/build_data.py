@@ -131,9 +131,16 @@ game = {
         "choice_hover": "choice_hover", "slot_idle": "slot_idle", "slot_hover": "slot_hover",
         "bar_under": "choice_idle", "bar_fill": "namebox", "bar_fill_gold": "title_hover", "modal": "confirm"}.items()}},
     "title_mood": {"ambient": "#d8d0dc", "torch": True, "zoom": 1.12, "offset": [330, 0]},
-    "music": {"title": "res://assets/audio/suspense_theme.ogg", "explore": "res://assets/audio/suspense_theme.ogg",
-              "battle": "res://assets/audio/suspense_theme.ogg", "boss": "res://assets/audio/suspense_theme.ogg",
-              "intimate": "res://assets/audio/ecchi_theme.ogg"},
+    # title: the VN's suspense bed. The other five are the RPG's own (ops/vn_music.py elena-rpg,
+    # copied in by tools/import_art.py): same D minor / F major world, looped clean.
+    "music": {"title": "res://assets/audio/suspense_theme.ogg", "explore": "res://assets/audio/explore.ogg",
+              "battle": "res://assets/audio/standoff.ogg", "boss": "res://assets/audio/boss.ogg",
+              "intimate": "res://assets/audio/intimate.ogg", "dawn": "res://assets/audio/dawn.ogg",
+              "archive": "res://assets/audio/ecchi_theme.ogg"},
+    # string key -> voice for the RPG's own `say` lines (ops/elena_rpg_voice.py); the VN's
+    # lines carry theirs per line in data/story/. English only; other languages fall back.
+    "voice": {k: {"v_en": f"res://assets/voice/rpg_{k}.ogg"} for k in json.loads(Path(
+        "/home/frankstone/Products/ops/elena_rpg_audio/voice/manifest.json").read_text())},
     "audio": {"ambience": "res://assets/audio/rain_ambience.ogg", "click": "res://assets/audio/ui_click.ogg",
               "page_flip": "res://assets/audio/page_flip.ogg", "heartbeat": "res://assets/audio/heartbeat.ogg",
               "sting": "res://assets/audio/title_sting.ogg", "camera": "res://assets/audio/click.ogg"},
@@ -143,6 +150,10 @@ game = {
     "stats": ["wit", "cha", "grt", "stl"],
     "level_cap": 20, "trust_thresholds": [3, 5, 7, 9],
     "heroine_flag": "elena_joined", "heroine_sprite": "outfit_research",
+    # Elena's standoff barks (tools/strings_barks_elena.py), rotated by battle_view.gd: "open"
+    # when a standoff starts with her in the party, "read" on her Read the room, "win" on a win.
+    "heroine_barks": {"who": "elena", "open": ["hb_open_1", "hb_open_2", "hb_open_3"],
+                      "read": ["hb_read_1", "hb_read_2"], "win": ["hb_win_1", "hb_win_2", "hb_win_3"]},
     "party": [
         {"id": "vance", "base": {"wit": 4, "cha": 2, "grt": 3, "stl": 2}, "grow": ["wit", "grt", "cha", "stl"],
          "actions": ["deflect", "bluff", "evidence", "bribe", "threaten", "stall", "item"],

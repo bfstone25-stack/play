@@ -91,7 +91,29 @@ black-background remnant in `outfit_gown`).
 
 Still from the VN by design: the study plate (a rendered VN background), Cobb's and
 Penhallow's sprites (they appear in the VN CGs), Elena's expression sprites in story
-scenes, the 6 VN CGs, and the two music tracks.
+scenes, and the 6 VN CGs.
+
+## Audio
+
+Music: the VN's `suspense_theme` under the title and five beds of the RPG's own, made by
+`ops/vn_music.py elena-rpg` into `ops/elena_rpg_audio/music/` (same D minor / F major world,
+sine partials snapped to whole cycles, plucks and pulses placed circularly, so every loop is
+seamless — the build fails on a seam over 0.5 RMS-units): `explore` (map and rooms, 48 s),
+`standoff` (100 bpm pulse, 28.8 s), `boss` (120 bpm, tritone, heartbeat, 28 s), `intimate`
+(Trust scenes and the route scenes, 36 s) and `dawn` (the roof at dawn and the endings, 44 s).
+`game.json["music"]` maps the keys; `tools/import_art.py` copies the files into `assets/audio/`.
+
+Voice: the VN's 549 Elena lines come in by translation id (`tools/import_story.py`). The 32
+RPG-only Elena lines — 24 room/event/Trust-scene lines spoken via `{"say": "elena"}` steps and
+8 standoff barks (`tools/strings_barks_elena.py`, rotated by `battle_view.gd` from
+`game.json["heroine_barks"]`) — are rendered by `ops/elena_rpg_voice.py` with the VN's
+reference clip, direction rules and best-of-3 on short lines, into
+`ops/elena_rpg_audio/voice/`. `import_art.py` copies them to `assets/voice/rpg_<key>.ogg` and
+`build_data.py` writes `game.json["voice"]` (key -> `v_en`); `check_data.py` fails on an unvoiced
+Elena line or a missing file. English only; JA falls back to the English take like the VN lines.
+`ops/elena_rpg_voice.py check` transcribes every clip (whisper small) for leaked directions,
+WER, duration and level — run it after any re-render. Nights 2–5 voice (`rpg_n2_*`…) is
+excluded from the trial pck like the chapter voice.
 
 ## Known gaps
 

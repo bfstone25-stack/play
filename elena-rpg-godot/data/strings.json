@@ -263,6 +263,38 @@
   "en": "Evidence. Hemp from this year. Someone rang the Blackwood bell at night.",
   "ja": "証拠。今年の麻縄。誰かが夜、ブラックウッドの鐘を鳴らした。"
  },
+ "hb_open_1": {
+  "en": "Let me read him first.",
+  "ja": "まず、私に読ませて。"
+ },
+ "hb_open_2": {
+  "en": "Quietly, Professor. He's listening for a lie.",
+  "ja": "静かに、教授。嘘を聞き取ろうとしてる。"
+ },
+ "hb_open_3": {
+  "en": "We've done harder than this tonight.",
+  "ja": "今夜はもっと難しいこともやってきたでしょう。"
+ },
+ "hb_read_1": {
+  "en": "There. He looked away. He's hiding something.",
+  "ja": "ほら、目をそらした。何か隠してる。"
+ },
+ "hb_read_2": {
+  "en": "His hands. Watch his hands, not his face.",
+  "ja": "手よ。顔じゃなくて、手を見て。"
+ },
+ "hb_win_1": {
+  "en": "He believed you. I almost did.",
+  "ja": "信じたわね。私もほとんど信じかけた。"
+ },
+ "hb_win_2": {
+  "en": "Good. Now walk, before he thinks about it.",
+  "ja": "よし。彼が考え直す前に、歩いて。"
+ },
+ "hb_win_3": {
+  "en": "You're getting better at this, Professor.",
+  "ja": "上手になってきたわね、教授。"
+ },
  "title": {
   "en": "Elena: Crimson Archives",
   "ja": "エレナ：深紅の書庫"

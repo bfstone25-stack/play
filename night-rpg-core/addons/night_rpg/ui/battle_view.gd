@@ -102,6 +102,9 @@ func start(enemy_id: String) -> String:
 	enemy_tex.texture = NRArt.tex("enemies", e.get("sprite", enemy_id))
 	e_name.text = Loc.t(e["name_key"])
 	log_lbl.text = Loc.t(e.get("intro_key", "b_intro"))
+	var hb := _heroine_bark("open")
+	if hb != "":
+		log_lbl.text += "\n" + hb
 	Sound.play_music("boss" if e.get("boss", false) else "battle")
 	_refresh()
 	action_panel.visible = not policy.is_valid()
@@ -228,11 +231,41 @@ func _say_event(ev: Dictionary) -> void:
 		if ev["action"] == "threaten":
 			txt += "\n" + Loc.t("b_threat_mark")
 		Sound.play_sfx("page_flip" if ev["dmg"] > 0 else "click")
+	if ev["who"] != "enemy" and ev["who"] == RPG.game.get("heroine_barks", {}).get("who", "") and ev["action"] == "observe" and b["result"] == "":
+		var rb := _heroine_bark("read")
+		if rb != "":
+			txt += "\n" + rb
 	if b["result"] == "win":
 		txt += "\n" + Loc.t(e.get("win_key", "b_win"))
+		var wb := _heroine_bark("win")
+		if wb != "":
+			txt += "\n" + wb
 	elif b["result"] == "lose":
 		txt += "\n" + Loc.t("b_lose")
 	log_lbl.text = txt
+
+
+## The heroine's bark for a slot (game.json "heroine_barks"), voiced through game.json
+## "voice" like the RPG's other lines. Rotates, never the same line twice running; "" when
+## she is not in the party or the game defines no barks. Silent in sim/auto mode.
+var _bark_last := {}
+func _heroine_bark(slot: String) -> String:
+	var hbs: Dictionary = RPG.game.get("heroine_barks", {})
+	var keys: Array = hbs.get(slot, [])
+	if keys.is_empty():
+		return ""
+	var present := false
+	for p in b["party"]:
+		if p["id"] == hbs.get("who", "") and p["comp"] > 0:
+			present = true
+	if not present:
+		return ""
+	var i: int = (int(_bark_last.get(slot, -1)) + 1 + (randi() % max(1, keys.size() - 1))) % keys.size()
+	_bark_last[slot] = i
+	var key: String = keys[i]
+	if not policy.is_valid():
+		Sound.play_voice(RPG.game.get("voice", {}).get(key, {}))
+	return "— " + Loc.t(key)
 
 
 func _refresh() -> void:

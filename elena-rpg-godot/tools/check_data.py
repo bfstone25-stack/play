@@ -14,6 +14,11 @@ def walk(steps, where):
     for s in steps:
         if "key" in s and s["key"] not in S and s["key"] not in core: bad.append((where, "key", s["key"]))
         if "say" in s and s["say"] != "narrator" and "n_" + s["say"] not in S: bad.append((where, "speaker", s["say"]))
+        if s.get("say") == "elena" and "key" in s:   # every RPG-only Elena line is voiced (ops/elena_rpg_voice.py)
+            v = G.get("voice", {}).get(s["key"], {}).get("v_en", "")
+            if not v: bad.append((where, "elena line unvoiced", s["key"]))
+            elif not (R / v.replace("res://", "")).exists(): bad.append((where, "voice file missing", v))
+        if "music" in s and s["music"] not in G["music"]: bad.append((where, "music key", s["music"]))
         if "lines" in s:
             ch, r = s["lines"].split(":"); a, b = map(int, r.split("-"))
             ls = [l for l in story[ch]["lines"] if a <= l["src"] <= b]
@@ -65,6 +70,13 @@ for pl in art["rooms"]:
 for pl, cands in art["rooms"].items():
     if not any((R / c.replace("res://", "")).exists() and "/rpg/" in c for c in cands) and pl != "study":
         bad.append(("room still on placeholder art", pl))
+for slot, keys in G.get("heroine_barks", {}).items():   # her standoff barks: string + voice file
+    for k in (keys if isinstance(keys, list) else []):
+        if k not in S: bad.append(("heroine bark string", slot, k))
+        v = G.get("voice", {}).get(k, {}).get("v_en", "")
+        if not v or not (R / v.replace("res://", "")).exists(): bad.append(("heroine bark unvoiced", slot, k))
+for k, pth in G["music"].items():
+    if not (R / pth.replace("res://", "")).exists(): bad.append(("music file missing", k, pth))
 for b in bad[:50]: print("BAD", b)
 print(f"check_data: {len(bad)} problem(s)")
 sys.exit(1 if bad else 0)

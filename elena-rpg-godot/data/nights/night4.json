@@ -744,6 +744,9 @@
     "if_trust": 3,
     "then": [
      {
+      "music": "intimate"
+     },
+     {
       "cg": "cg_trust3_carrel"
      },
      {
@@ -756,6 +759,9 @@
      },
      {
       "hide_cg": true
+     },
+     {
+      "music": "explore"
      }
     ],
     "else": []
@@ -765,6 +771,9 @@
     "then": [
      {
       "bg": "carrel"
+     },
+     {
+      "music": "intimate"
      },
      {
       "say": "narrator",
@@ -786,6 +795,9 @@
      },
      {
       "give": "nightwear"
+     },
+     {
+      "music": "explore"
      }
     ],
     "else": []

@@ -7,13 +7,14 @@ arrive in ops/elena_art/out/rpg/{rooms,enemies,outfits}/ from the render queue; 
 file named in data/art_manifest.json exists there, this script copies it to assets/rpg/
 and the game prefers it over the placeholder (see core Art.tex()).
 """
-import shutil
+import json, shutil
 from pathlib import Path
 from PIL import Image
 
 HERE = Path(__file__).resolve().parent.parent
 VN = Path("/home/frankstone/Products/.elena-wt/elena-suspense/game")
 RPG_OUT = Path("/home/frankstone/Products/ops/elena_art/out/rpg")
+RPG_AUDIO = Path("/home/frankstone/Products/ops/elena_rpg_audio")
 A = HERE / "assets"
 
 CROPS = {  # room id -> (source image, crop box in 1920x1080)
@@ -100,6 +101,15 @@ def main():
         shutil.copy2(f, A / "fonts" / f.name)
     for f in (VN / "audio").glob("*.ogg"):
         shutil.copy2(f, A / "audio" / f.name)
+    # The RPG's own beds (ops/vn_music.py elena-rpg) and its own Elena lines
+    # (ops/elena_rpg_voice.py): assets/ is gitignored, so ops/ is the source of truth.
+    for f in (RPG_AUDIO / "music").glob("*.ogg"):
+        shutil.copy2(f, A / "audio" / f.name)
+    vman = RPG_AUDIO / "voice" / "manifest.json"
+    if vman.exists():
+        (A / "voice").mkdir(parents=True, exist_ok=True)
+        for key, rel in json.loads(vman.read_text()).items():
+            shutil.copy2(RPG_AUDIO / "voice" / rel, A / "voice" / f"rpg_{key}.ogg")
     from PIL import ImageOps
     for room, (src, box, *fx) in CROPS.items():
         im = Image.open(VN / src).convert("RGB")

@@ -733,6 +733,9 @@
     "if_trust": 5,
     "then": [
      {
+      "music": "intimate"
+     },
+     {
       "cg": "cg_trust5_common_room"
      },
      {
@@ -749,6 +752,9 @@
      },
      {
       "hide_cg": true
+     },
+     {
+      "music": "explore"
      }
     ],
     "else": []
