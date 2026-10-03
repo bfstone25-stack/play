@@ -181,7 +181,7 @@ def locker(c, events):
 def casefile(c, events):
     base = c * 1000
     events[f"c{c}_file"] = [{"lines": f"cases:{base + 10}-{base + 14}"}, {"lines": "board:78-78"}]
-    return search("casefile", [0.3, 0.5], f"c{c}_file", label_key="hs_casefile", xp=5)
+    return search("casefile", [0.18, 0.5], f"c{c}_file", label_key="hs_casefile", xp=5)
 
 
 LINES = json.loads((HERE.parent / "data/story/cases.json").read_text())["lines"]
@@ -192,13 +192,13 @@ ev = {}
 rooms = {
     "precinct": room("r_precinct", "precinct", [
         casefile(1, ev),
-        search("drawer", [0.7, 0.5], "n1_drawer", label_key="hs_drawer", gives=["notebook", "flask", "marker", "marker"]),
+        search("drawer", [0.82, 0.5], "n1_drawer", label_key="hs_drawer", gives=["notebook", "flask", "marker", "marker"]),
         accusation(1, ev),
-        door("to_corridor", "corridor", [0.15, 0.9]), door("to_alley", "alley", [0.85, 0.9]),
+        door("to_corridor", "corridor", [0.15, 0.9]), door("to_alley", "alley", [0.78, 0.9]),
     ]),
     "corridor": room("r_corridor", "corridor", [
         door("to_nik", "interview_nikolai", [0.2, 0.55]), door("to_ade", "interview_adaeze", [0.5, 0.55]), door("to_vee", "interview_vee", [0.8, 0.55]),
-        door("to_lockup", "lockup", [0.8, 0.9]), door("to_precinct", "precinct", [0.15, 0.9]),
+        door("to_lockup", "lockup", [0.78, 0.9]), door("to_precinct", "precinct", [0.15, 0.9]),
     ], enter="c1_corridor"),
     **interview_rooms(1, ev),
     "lockup": locker(1, ev),
@@ -206,13 +206,13 @@ rooms = {
         enemy("bouncer", "bouncer", [0.5, 0.5], "n1_bouncer_pre", "n1_bouncer_post", turns=2),
         search("dumpster", [0.2, 0.6], "n1_dumpster", label_key="hs_dumpster", gives=["lighter", "docket"]),
         search("yard_door", [0.8, 0.4], "n1_yard", label_key="hs_yard_door", xp=8),
-        door("to_precinct", "precinct", [0.15, 0.9]), door("to_club", "club", [0.85, 0.9], if_flag="c1_bouncer"),
+        door("to_precinct", "precinct", [0.15, 0.9]), door("to_club", "club", [0.78, 0.9], if_flag="c1_bouncer"),
     ], enter="n1_alley"),
     "club": room("r_club", "club", [
         search("bar", [0.25, 0.5], "n1_bar", label_key="hs_bar", gives=["whisky"]),
         search("curtain", [0.55, 0.4], "n1_curtain", label_key="hs_curtain", xp=10),
         search("booth", [0.8, 0.6], "n1_booth", label_key="hs_booth", gives=["marker"]),
-        door("to_alley", "alley", [0.15, 0.9]), door("to_office", "back_office", [0.5, 0.9]), door("to_cooler", "cooler", [0.85, 0.9]),
+        door("to_alley", "alley", [0.15, 0.9]), door("to_office", "back_office", [0.5, 0.9]), door("to_cooler", "cooler", [0.8, 0.9]),
     ], enter="n1_club"),
     "back_office": room("r_back_office", "back_office", [
         search("desk", [0.3, 0.55], "n1_desk", label_key="hs_desk", gives=["key_list"]),
@@ -243,9 +243,10 @@ ev.update({
 NIGHTS["night1"] = {
     "id": "night1", "title_key": "n1_title", "sub_key": "n1_sub", "turns": 92, "clock_start": 23 * 60 + 20, "minutes_per_turn": 5,
     "start_room": "precinct", "start_event": "n1_open",
-    "map": {"image": "board", "rooms": {"precinct": [0.14, 0.22], "corridor": [0.38, 0.22], "interview_nikolai": [0.62, 0.12],
-                                        "interview_adaeze": [0.62, 0.36], "interview_vee": [0.86, 0.22], "lockup": [0.38, 0.5],
-                                        "alley": [0.14, 0.76], "club": [0.38, 0.76], "back_office": [0.62, 0.76], "cooler": [0.86, 0.76]}},
+    # board tiles are 208x117 of 1140x560: keep >= 0.24 apart in x and >= 0.3 in y
+    "map": {"image": "board", "rooms": {"precinct": [0.14, 0.18], "corridor": [0.38, 0.18], "interview_nikolai": [0.62, 0.18], "interview_adaeze": [0.86, 0.18],
+                                        "alley": [0.14, 0.5], "lockup": [0.38, 0.5], "interview_vee": [0.62, 0.5],
+                                        "club": [0.14, 0.82], "back_office": [0.38, 0.82], "cooler": [0.62, 0.82]}},
     "rooms": rooms, "events": ev,
 }
 
@@ -254,13 +255,13 @@ ev = {}
 rooms = {
     "precinct": room("r_precinct", "precinct", [
         casefile(2, ev),
-        search("locker", [0.7, 0.5], "n2_locker", label_key="hs_locker", gives=["suit", "coffee"]),
+        search("locker", [0.82, 0.5], "n2_locker", label_key="hs_locker", gives=["suit", "coffee"]),
         accusation(2, ev),
-        door("to_corridor", "corridor", [0.15, 0.9]), door("to_archive", "archive", [0.5, 0.9]), door("to_alley", "alley", [0.85, 0.9]),
+        door("to_corridor", "corridor", [0.15, 0.9]), door("to_archive", "archive", [0.5, 0.9]), door("to_alley", "alley", [0.78, 0.9]),
     ]),
     "corridor": room("r_corridor", "corridor", [
         door("to_nik", "interview_nikolai", [0.2, 0.55]), door("to_ade", "interview_adaeze", [0.5, 0.55]), door("to_vee", "interview_vee", [0.8, 0.55]),
-        door("to_lockup", "lockup", [0.65, 0.9]), door("to_morgue", "morgue", [0.85, 0.9]), door("to_precinct", "precinct", [0.15, 0.9]),
+        door("to_lockup", "lockup", [0.65, 0.9]), door("to_morgue", "morgue", [0.82, 0.9]), door("to_precinct", "precinct", [0.15, 0.9]),
     ]),
     **interview_rooms(2, ev),
     "lockup": locker(2, ev),
@@ -276,7 +277,7 @@ rooms = {
     ], enter="n2_morgue"),
     "alley": room("r_alley", "alley", [
         search("dumpster", [0.2, 0.6], "n2_dumpster", label_key="hs_dumpster", gives=["cigarettes"]),
-        door("to_precinct", "precinct", [0.15, 0.9]), door("to_club", "club", [0.5, 0.9]), door("to_bay", "loading_bay", [0.85, 0.9]),
+        door("to_precinct", "precinct", [0.15, 0.9]), door("to_club", "club", [0.5, 0.9]), door("to_bay", "loading_bay", [0.8, 0.9]),
     ], enter="n2_alley"),
     "club": room("r_club", "club", [
         search("bar", [0.25, 0.5], "n2_bar", label_key="hs_bar", gives=["whisky"]),
@@ -290,7 +291,7 @@ rooms = {
     "loading_bay": room("r_loading_bay", "loading_bay", [
         search("car", [0.4, 0.55], "n2_car", label_key="hs_car", xp=10, gives=["watch"]),
         search("bay_light", [0.75, 0.25], "n2_light", label_key="hs_bay_light", gives=["timer"], xp=8),
-        door("to_alley", "alley", [0.15, 0.9]), door("to_mop", "mop_room", [0.85, 0.9]),
+        door("to_alley", "alley", [0.15, 0.9]), door("to_mop", "mop_room", [0.8, 0.9]),
     ], enter="n2_bay"),
     "mop_room": room("r_mop_room", "mop_room", [
         search("sink", [0.5, 0.5], "n2_sink", label_key="hs_sink", gives=["sink_note"], xp=12),
@@ -316,11 +317,10 @@ ev.update({
 NIGHTS["night2"] = {
     "id": "night2", "title_key": "n2_title", "sub_key": "n2_sub", "turns": 104, "clock_start": 23 * 60, "minutes_per_turn": 5,
     "start_room": "precinct", "start_event": "n2_open",
-    "map": {"image": "board", "rooms": {"precinct": [0.14, 0.22], "corridor": [0.38, 0.22], "interview_nikolai": [0.62, 0.1],
-                                        "interview_adaeze": [0.62, 0.34], "interview_vee": [0.86, 0.1], "lockup": [0.86, 0.34],
-                                        "archive": [0.14, 0.5], "morgue": [0.38, 0.5],
-                                        "alley": [0.14, 0.78], "club": [0.38, 0.78], "back_office": [0.62, 0.78],
-                                        "loading_bay": [0.86, 0.6], "mop_room": [0.86, 0.86]}},
+    "map": {"image": "board", "rooms": {"precinct": [0.14, 0.14], "corridor": [0.38, 0.14], "interview_nikolai": [0.62, 0.14], "interview_adaeze": [0.86, 0.14],
+                                        "archive": [0.14, 0.38], "lockup": [0.38, 0.38], "interview_vee": [0.62, 0.38], "morgue": [0.86, 0.38],
+                                        "alley": [0.14, 0.62], "club": [0.38, 0.62], "back_office": [0.62, 0.62],
+                                        "loading_bay": [0.14, 0.86], "mop_room": [0.38, 0.86]}},
     "rooms": rooms, "events": ev,
 }
 
@@ -329,15 +329,15 @@ ev = {}
 rooms = {
     "precinct": room("r_precinct", "precinct", [
         casefile(3, ev),
-        search("drawer", [0.7, 0.5], "n3_drawer", label_key="hs_drawer", gives=["coffee", "coffee", "marker"]),
+        search("drawer", [0.82, 0.5], "n3_drawer", label_key="hs_drawer", gives=["coffee", "coffee", "marker"]),
         accusation(3, ev),
-        door("to_corridor", "corridor", [0.15, 0.9]), door("to_archive", "archive", [0.5, 0.9]), door("to_alley", "alley", [0.85, 0.9]),
+        door("to_corridor", "corridor", [0.15, 0.9]), door("to_archive", "archive", [0.5, 0.9]), door("to_alley", "alley", [0.78, 0.9]),
     ]),
     "corridor": room("r_corridor", "corridor", [
         enemy("lawyer", "lawyer", [0.5, 0.4], "n3_lawyer_pre", "n3_lawyer_post", turns=2),
         door("to_nik", "interview_nikolai", [0.2, 0.6]), door("to_ade", "interview_adaeze", [0.5, 0.6], if_flag="c3_lawyer"),
         door("to_vee", "interview_vee", [0.8, 0.6]),
-        door("to_lockup", "lockup", [0.8, 0.9]), door("to_precinct", "precinct", [0.15, 0.9]),
+        door("to_lockup", "lockup", [0.78, 0.9]), door("to_precinct", "precinct", [0.15, 0.9]),
     ]),
     **interview_rooms(3, ev),
     "lockup": locker(3, ev),
@@ -348,10 +348,10 @@ rooms = {
     "alley": room("r_alley", "alley", [
         search("yard_door", [0.8, 0.4], "n3_yard", label_key="hs_yard_door", gives=["vent_note"], xp=10),
         search("dumpster", [0.2, 0.6], "n3_dumpster", label_key="hs_dumpster", gives=["whisky"]),
-        door("to_precinct", "precinct", [0.15, 0.9]), door("to_club", "club", [0.5, 0.9]), door("to_flat", "flat", [0.85, 0.9]),
+        door("to_precinct", "precinct", [0.15, 0.9]), door("to_club", "club", [0.5, 0.9]), door("to_flat", "flat", [0.8, 0.9]),
     ]),
     "club": room("r_club", "club", [
-        door("to_alley", "alley", [0.15, 0.9]), door("to_office", "back_office", [0.5, 0.9]), door("to_stairs", "fire_stairs", [0.85, 0.9]),
+        door("to_alley", "alley", [0.15, 0.9]), door("to_office", "back_office", [0.5, 0.9]), door("to_stairs", "fire_stairs", [0.8, 0.9]),
     ], enter="n3_club"),
     "back_office": room("r_back_office", "back_office", [
         search("safe", [0.75, 0.6], "n3_safe", label_key="hs_safe", gives=["safe_photo"], xp=12),
@@ -383,11 +383,10 @@ ev.update({
 NIGHTS["night3"] = {
     "id": "night3", "title_key": "n3_title", "sub_key": "n3_sub", "turns": 104, "clock_start": 23 * 60, "minutes_per_turn": 5,
     "start_room": "precinct", "start_event": "n3_open",
-    "map": {"image": "board", "rooms": {"precinct": [0.14, 0.22], "corridor": [0.38, 0.22], "interview_nikolai": [0.62, 0.1],
-                                        "interview_adaeze": [0.62, 0.34], "interview_vee": [0.86, 0.1], "lockup": [0.86, 0.34],
-                                        "archive": [0.14, 0.5],
-                                        "alley": [0.14, 0.78], "club": [0.38, 0.78], "back_office": [0.62, 0.78],
-                                        "fire_stairs": [0.86, 0.6], "flat": [0.86, 0.86]}},
+    "map": {"image": "board", "rooms": {"precinct": [0.14, 0.14], "corridor": [0.38, 0.14], "interview_nikolai": [0.62, 0.14], "interview_adaeze": [0.86, 0.14],
+                                        "archive": [0.14, 0.38], "lockup": [0.38, 0.38], "interview_vee": [0.62, 0.38],
+                                        "alley": [0.14, 0.62], "club": [0.38, 0.62], "back_office": [0.62, 0.62],
+                                        "fire_stairs": [0.14, 0.86], "flat": [0.38, 0.86]}},
     "rooms": rooms, "events": ev,
 }
 

@@ -504,7 +504,7 @@
   "ja": "根性"
  },
  "s_stl": {
-  "en": "Patience",
+  "en": "Poise",
   "ja": "忍耐"
  },
  "sd_wit": {
@@ -1036,16 +1036,16 @@
   "ja": "廊下"
  },
  "r_interview_nikolai": {
-  "en": "Interview room 1 — Nikolai",
-  "ja": "取調室1 — ニコライ"
+  "en": "Room 1 — Nikolai",
+  "ja": "取調室1 ニコライ"
  },
  "r_interview_adaeze": {
-  "en": "Interview room 2 — Adaeze",
-  "ja": "取調室2 — アダエゼ"
+  "en": "Room 2 — Adaeze",
+  "ja": "取調室2 アダエゼ"
  },
  "r_interview_vee": {
-  "en": "Interview room 3 — Vee",
-  "ja": "取調室3 — ヴィー"
+  "en": "Room 3 — Vee",
+  "ja": "取調室3 ヴィー"
  },
  "r_lockup": {
   "en": "Evidence lockup",
@@ -1060,16 +1060,16 @@
   "ja": "遺体安置所"
  },
  "r_alley": {
-  "en": "The alley behind the Paloma",
-  "ja": "パロマ裏の路地"
+  "en": "The alley",
+  "ja": "裏の路地"
  },
  "r_club": {
   "en": "The club floor",
   "ja": "クラブのフロア"
  },
  "r_back_office": {
-  "en": "The dead man's office",
-  "ja": "死んだ男の事務室"
+  "en": "The back office",
+  "ja": "事務室"
  },
  "r_cooler": {
   "en": "The walk-in cooler",
@@ -1088,8 +1088,8 @@
   "ja": "非常階段"
  },
  "r_flat": {
-  "en": "The flat above the club",
-  "ja": "クラブの上の部屋"
+  "en": "The flat upstairs",
+  "ja": "上階の部屋"
  },
  "r_safe_house": {
   "en": "The safe house",
@@ -1140,7 +1140,7 @@
   "ja": "壁まで追い詰める（2）"
  },
  "hs_casefile": {
-  "en": "The case file",
+  "en": "Case file",
   "ja": "事件ファイル"
  },
  "hs_drawer": {

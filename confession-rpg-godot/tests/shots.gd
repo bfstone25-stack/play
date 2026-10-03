@@ -83,7 +83,7 @@ func run_lang(l: String, full: bool) -> void:
 	add_child(main)
 	main.event.auto_mode = true
 	main.shot_hook = hook
-	main.stop_after = "night1" if (RPG.trial_override or not full) else ""
+	main.stop_after = "" if (RPG.trial_override or full) else "night1"   # the trial reaches its own end screen
 	main.show_disclosure(false)
 	await get_tree().create_timer(0.6).timeout
 	await snap("disclosure")

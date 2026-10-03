@@ -12,50 +12,50 @@
   "rooms": {
    "precinct": [
     0.14,
-    0.22
+    0.14
    ],
    "corridor": [
     0.38,
-    0.22
+    0.14
    ],
    "interview_nikolai": [
     0.62,
-    0.1
+    0.14
    ],
    "interview_adaeze": [
-    0.62,
-    0.34
-   ],
-   "interview_vee": [
     0.86,
-    0.1
-   ],
-   "lockup": [
-    0.86,
-    0.34
+    0.14
    ],
    "archive": [
     0.14,
-    0.5
+    0.38
+   ],
+   "lockup": [
+    0.38,
+    0.38
+   ],
+   "interview_vee": [
+    0.62,
+    0.38
    ],
    "alley": [
     0.14,
-    0.78
+    0.62
    ],
    "club": [
     0.38,
-    0.78
+    0.62
    ],
    "back_office": [
     0.62,
-    0.78
+    0.62
    ],
    "fire_stairs": [
-    0.86,
-    0.6
+    0.14,
+    0.86
    ],
    "flat": [
-    0.86,
+    0.38,
     0.86
    ]
   }
@@ -87,7 +87,7 @@
      "id": "casefile",
      "kind": "search",
      "pos": [
-      0.3,
+      0.18,
       0.5
      ],
      "event": "c3_file",
@@ -98,7 +98,7 @@
      "id": "drawer",
      "kind": "search",
      "pos": [
-      0.7,
+      0.82,
       0.5
      ],
      "event": "n3_drawer",
@@ -145,7 +145,7 @@
      "kind": "door",
      "to": "alley",
      "pos": [
-      0.85,
+      0.78,
       0.9
      ]
     }
@@ -212,7 +212,7 @@
      "kind": "door",
      "to": "lockup",
      "pos": [
-      0.8,
+      0.78,
       0.9
      ]
     },
@@ -865,7 +865,7 @@
      "kind": "door",
      "to": "flat",
      "pos": [
-      0.85,
+      0.8,
       0.9
      ]
     }
@@ -916,7 +916,7 @@
      "kind": "door",
      "to": "fire_stairs",
      "pos": [
-      0.85,
+      0.8,
       0.9
      ]
     }

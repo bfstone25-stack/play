@@ -12,43 +12,43 @@
   "rooms": {
    "precinct": [
     0.14,
-    0.22
+    0.18
    ],
    "corridor": [
     0.38,
-    0.22
+    0.18
    ],
    "interview_nikolai": [
     0.62,
-    0.12
+    0.18
    ],
    "interview_adaeze": [
-    0.62,
-    0.36
-   ],
-   "interview_vee": [
     0.86,
-    0.22
+    0.18
+   ],
+   "alley": [
+    0.14,
+    0.5
    ],
    "lockup": [
     0.38,
     0.5
    ],
-   "alley": [
-    0.14,
-    0.76
+   "interview_vee": [
+    0.62,
+    0.5
    ],
    "club": [
-    0.38,
-    0.76
+    0.14,
+    0.82
    ],
    "back_office": [
-    0.62,
-    0.76
+    0.38,
+    0.82
    ],
    "cooler": [
-    0.86,
-    0.76
+    0.62,
+    0.82
    ]
   }
  },
@@ -79,7 +79,7 @@
      "id": "casefile",
      "kind": "search",
      "pos": [
-      0.3,
+      0.18,
       0.5
      ],
      "event": "c1_file",
@@ -90,7 +90,7 @@
      "id": "drawer",
      "kind": "search",
      "pos": [
-      0.7,
+      0.82,
       0.5
      ],
      "event": "n1_drawer",
@@ -129,7 +129,7 @@
      "kind": "door",
      "to": "alley",
      "pos": [
-      0.85,
+      0.78,
       0.9
      ]
     }
@@ -183,7 +183,7 @@
      "kind": "door",
      "to": "lockup",
      "pos": [
-      0.8,
+      0.78,
       0.9
      ]
     },
@@ -797,7 +797,7 @@
      "kind": "door",
      "to": "club",
      "pos": [
-      0.85,
+      0.78,
       0.9
      ],
      "if_flag": "c1_bouncer"
@@ -887,7 +887,7 @@
      "kind": "door",
      "to": "cooler",
      "pos": [
-      0.85,
+      0.8,
       0.9
      ]
     }

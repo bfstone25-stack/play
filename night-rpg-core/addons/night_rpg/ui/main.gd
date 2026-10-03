@@ -254,7 +254,8 @@ func _night_card(n: Dictionary) -> void:
 	if not auto:
 		await get_tree().create_timer(2.6).timeout
 	pace["menus"] += 3.0
-	p.queue_free()
+	if is_instance_valid(p):   # a shot hook may have cleared the overlay already
+		p.queue_free()
 
 
 func render_room() -> void:

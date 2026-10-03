@@ -47,7 +47,7 @@ S = {
 "b_won": ("They gave", "相手が折れた"), "b_lost": ("They lawyered up", "弁護士を呼ばれた"),
 "r_needs_cash": ("Needs a marker to trade.", "取引に使う貸しが必要。"),
 # stats
-"s_wit": ("Wits", "知力"), "s_cha": ("Charm", "魅力"), "s_grt": ("Grit", "根性"), "s_stl": ("Patience", "忍耐"),
+"s_wit": ("Wits", "知力"), "s_cha": ("Charm", "魅力"), "s_grt": ("Grit", "根性"), "s_stl": ("Poise", "忍耐"),
 "sd_wit": ("Bluffs, evidence, nerve pool.", "はったり・証拠・胆力の上限。"), "sd_cha": ("Deals and leaning in.", "取引と、身を寄せる話し方。"),
 "sd_grt": ("How much of the case you can hold, and how hard you press.", "追及の耐久力と、詰める力。"), "sd_stl": ("Waiting brings the stonewall down further.", "待つことで沈黙を大きく下げる。"),
 # actions
@@ -121,18 +121,18 @@ S = {
 "sk_quiet_sk": ("Off the record", "記録外"), "skd_quiet_sk": ("Grants A quiet word.", "「静かな一言」を習得。"),
 "sk_hard": ("Hard case", "手強い男"), "skd_hard": ("Threaten +40%, bluff +20%.", "脅す +40%、はったり +20%。"),
 # rooms
-"r_precinct": ("Your desk", "刑事部屋の机"), "r_corridor": ("The corridor", "廊下"), "r_interview_nikolai": ("Interview room 1 — Nikolai", "取調室1 — ニコライ"),
-"r_interview_adaeze": ("Interview room 2 — Adaeze", "取調室2 — アダエゼ"), "r_interview_vee": ("Interview room 3 — Vee", "取調室3 — ヴィー"),
+"r_precinct": ("Your desk", "刑事部屋の机"), "r_corridor": ("The corridor", "廊下"), "r_interview_nikolai": ("Room 1 — Nikolai", "取調室1 ニコライ"),
+"r_interview_adaeze": ("Room 2 — Adaeze", "取調室2 アダエゼ"), "r_interview_vee": ("Room 3 — Vee", "取調室3 ヴィー"),
 "r_lockup": ("Evidence lockup", "証拠保管室"), "r_archive": ("Records archive", "記録保管庫"), "r_morgue": ("The morgue", "遺体安置所"),
-"r_alley": ("The alley behind the Paloma", "パロマ裏の路地"), "r_club": ("The club floor", "クラブのフロア"), "r_back_office": ("The dead man's office", "死んだ男の事務室"),
+"r_alley": ("The alley", "裏の路地"), "r_club": ("The club floor", "クラブのフロア"), "r_back_office": ("The back office", "事務室"),
 "r_cooler": ("The walk-in cooler", "冷蔵室"), "r_loading_bay": ("The loading bay", "搬入口"), "r_mop_room": ("The mop room", "モップ室"),
-"r_fire_stairs": ("The fire stairs", "非常階段"), "r_flat": ("The flat above the club", "クラブの上の部屋"), "r_safe_house": ("The safe house", "隠れ家"),
+"r_fire_stairs": ("The fire stairs", "非常階段"), "r_flat": ("The flat upstairs", "上階の部屋"), "r_safe_house": ("The safe house", "隠れ家"),
 # hotspots
 "hs_back": ("Back", "戻る"), "hs_close_door": ("Close the door", "扉を閉める"),
 "hs_press_nikolai_1": ("Press Nikolai (2)", "ニコライを追及する（2）"), "hs_press_nikolai_2": ("Press him harder (2)", "さらに追及する（2）"), "hs_press_nikolai_3": ("Press him to the wall (2)", "壁まで追い詰める（2）"),
 "hs_press_adaeze_1": ("Press Adaeze (2)", "アダエゼを追及する（2）"), "hs_press_adaeze_2": ("Press her harder (2)", "さらに追及する（2）"), "hs_press_adaeze_3": ("Press her to the wall (2)", "壁まで追い詰める（2）"),
 "hs_press_vee_1": ("Press Vee (2)", "ヴィーを追及する（2）"), "hs_press_vee_2": ("Press them harder (2)", "さらに追及する（2）"), "hs_press_vee_3": ("Press them to the wall (2)", "壁まで追い詰める（2）"),
-"hs_casefile": ("The case file", "事件ファイル"), "hs_drawer": ("Desk drawer", "机の引き出し"), "hs_board": ("Name someone", "名前を挙げる"),
+"hs_casefile": ("Case file", "事件ファイル"), "hs_drawer": ("Desk drawer", "机の引き出し"), "hs_board": ("Name someone", "名前を挙げる"),
 "hs_tray": ("The tray", "トレイ"), "hs_dumpster": ("The dumpster", "ゴミ容器"), "hs_yard_door": ("The yard door", "裏庭の扉"),
 "hs_bar": ("The bar", "バーカウンター"), "hs_curtain": ("The strip curtain", "ストリップカーテン"), "hs_booth": ("The booths", "ボックス席"),
 "hs_desk": ("The desk", "机"), "hs_safe": ("The safe", "金庫"), "hs_blinds": ("The blinds", "ブラインド"), "hs_rack": ("The bottom rack", "最下段の棚"),
