@@ -14,7 +14,7 @@ ssh "$HOST" "test -x ~/$R/bin/godot" || rsync -a "$GODOT_LOCAL" "$HOST:$R/bin/go
 rsync -aL --delete --exclude .godot --exclude shots --exclude build ./ "$HOST:$R/game/"
 ssh "$HOST" "cd ~/$R/game && rm -rf shots_out && mkdir shots_out && \
   timeout 200 ~/$R/bin/godot --headless --path . --import >/dev/null 2>&1; \
-  timeout 900 xvfb-run -a -s '-screen 0 1280x720x24' ~/$R/bin/godot --rendering-driver vulkan --path . $SCENE -- --out=\$PWD/shots_out $* > shots_out/log.txt 2>&1; echo rc=\$?" 
+  timeout 1600 xvfb-run -a -s '-screen 0 1280x720x24' ~/$R/bin/godot --rendering-driver vulkan --path . $SCENE -- --out=\$PWD/shots_out $* > shots_out/log.txt 2>&1; echo rc=\$?" 
 mkdir -p "$OUT"
 rsync -a "$HOST:$R/game/shots_out/" "$OUT/"
 grep -E "RENDER DEVICE|SHOTS|SCRIPT ERROR|ERROR|^ok |^FAIL|ui_smoke:" "$OUT/log.txt" | head -40
