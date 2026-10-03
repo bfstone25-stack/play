@@ -1189,7 +1189,7 @@
   {
    "id": "cg_rpg_paloma",
    "thumb": "cg_rpg_paloma_thumb",
-   "locked": "cg_intake_locked",
+   "locked": "cg_rpg_paloma_locked",
    "key": "g_cg_rpg_paloma",
    "trust": 0
   },
@@ -1231,7 +1231,7 @@
   {
    "id": "cg_rpg_bay",
    "thumb": "cg_rpg_bay_thumb",
-   "locked": "cg_intake_locked",
+   "locked": "cg_rpg_bay_locked",
    "key": "g_cg_rpg_bay",
    "trust": 0
   },
@@ -1245,14 +1245,14 @@
   {
    "id": "cg_trust5_adaeze",
    "thumb": "cg_trust5_adaeze_thumb",
-   "locked": "cg_intake_locked",
+   "locked": "cg_trust5_adaeze_locked",
    "key": "g_cg_trust5_adaeze",
    "trust": 5
   },
   {
    "id": "cg_rpg_stairs",
    "thumb": "cg_rpg_stairs_thumb",
-   "locked": "cg_intake_locked",
+   "locked": "cg_rpg_stairs_locked",
    "key": "g_cg_rpg_stairs",
    "trust": 0
   },
@@ -1266,14 +1266,14 @@
   {
    "id": "cg_trust7_nikolai",
    "thumb": "cg_trust7_nikolai_thumb",
-   "locked": "cg_intake_locked",
+   "locked": "cg_trust7_nikolai_locked",
    "key": "g_cg_trust7_nikolai",
    "trust": 7
   },
   {
    "id": "cg_trust9_vee",
    "thumb": "cg_trust9_vee_thumb",
-   "locked": "cg_intake_locked",
+   "locked": "cg_trust9_vee_locked",
    "key": "g_cg_trust9_vee",
    "trust": 9
   },

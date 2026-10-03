@@ -231,6 +231,42 @@
   "cg_nikolai_x_thumb": [
    "res://assets/cg/cg_nikolai_x_thumb.webp"
   ],
+  "cg_rpg_bay_locked": [
+   "res://assets/cg/cg_rpg_bay_locked.webp"
+  ],
+  "cg_rpg_bay_thumb": [
+   "res://assets/cg/cg_rpg_bay_thumb.webp"
+  ],
+  "cg_rpg_paloma_locked": [
+   "res://assets/cg/cg_rpg_paloma_locked.webp"
+  ],
+  "cg_rpg_paloma_thumb": [
+   "res://assets/cg/cg_rpg_paloma_thumb.webp"
+  ],
+  "cg_rpg_stairs_locked": [
+   "res://assets/cg/cg_rpg_stairs_locked.webp"
+  ],
+  "cg_rpg_stairs_thumb": [
+   "res://assets/cg/cg_rpg_stairs_thumb.webp"
+  ],
+  "cg_trust5_adaeze_locked": [
+   "res://assets/cg/cg_trust5_adaeze_locked.webp"
+  ],
+  "cg_trust5_adaeze_thumb": [
+   "res://assets/cg/cg_trust5_adaeze_thumb.webp"
+  ],
+  "cg_trust7_nikolai_locked": [
+   "res://assets/cg/cg_trust7_nikolai_locked.webp"
+  ],
+  "cg_trust7_nikolai_thumb": [
+   "res://assets/cg/cg_trust7_nikolai_thumb.webp"
+  ],
+  "cg_trust9_vee_locked": [
+   "res://assets/cg/cg_trust9_vee_locked.webp"
+  ],
+  "cg_trust9_vee_thumb": [
+   "res://assets/cg/cg_trust9_vee_thumb.webp"
+  ],
   "cg_vee_x": [
    "res://assets/cg/cg_vee_x.webp"
   ],
@@ -243,56 +279,20 @@
   "cg_rpg_paloma": [
    "res://assets/rpg/cgs/cg_rpg_paloma.png"
   ],
-  "cg_rpg_paloma_thumb": [
-   "res://assets/cg/cg_rpg_paloma_thumb.webp"
-  ],
-  "cg_rpg_paloma_locked": [
-   "res://assets/cg/cg_rpg_paloma_locked.webp"
-  ],
   "cg_rpg_bay": [
    "res://assets/rpg/cgs/cg_rpg_bay.png"
-  ],
-  "cg_rpg_bay_thumb": [
-   "res://assets/cg/cg_rpg_bay_thumb.webp"
-  ],
-  "cg_rpg_bay_locked": [
-   "res://assets/cg/cg_rpg_bay_locked.webp"
   ],
   "cg_rpg_stairs": [
    "res://assets/rpg/cgs/cg_rpg_stairs.png"
   ],
-  "cg_rpg_stairs_thumb": [
-   "res://assets/cg/cg_rpg_stairs_thumb.webp"
-  ],
-  "cg_rpg_stairs_locked": [
-   "res://assets/cg/cg_rpg_stairs_locked.webp"
-  ],
   "cg_trust5_adaeze": [
    "res://assets/rpg/cgs/cg_trust5_adaeze.png"
-  ],
-  "cg_trust5_adaeze_thumb": [
-   "res://assets/cg/cg_trust5_adaeze_thumb.webp"
-  ],
-  "cg_trust5_adaeze_locked": [
-   "res://assets/cg/cg_trust5_adaeze_locked.webp"
   ],
   "cg_trust7_nikolai": [
    "res://assets/rpg/cgs/cg_trust7_nikolai.png"
   ],
-  "cg_trust7_nikolai_thumb": [
-   "res://assets/cg/cg_trust7_nikolai_thumb.webp"
-  ],
-  "cg_trust7_nikolai_locked": [
-   "res://assets/cg/cg_trust7_nikolai_locked.webp"
-  ],
   "cg_trust9_vee": [
    "res://assets/rpg/cgs/cg_trust9_vee.png"
-  ],
-  "cg_trust9_vee_thumb": [
-   "res://assets/cg/cg_trust9_vee_thumb.webp"
-  ],
-  "cg_trust9_vee_locked": [
-   "res://assets/cg/cg_trust9_vee_locked.webp"
   ]
  }
 }
