@@ -68,6 +68,7 @@ func _ready() -> void:
 
 
 func show_cg(tex: Texture2D) -> void:
+	_clear_choices()
 	cg.texture = tex
 	cg.visible = tex != null
 	if tex != null:
@@ -78,8 +79,7 @@ func show_cg(tex: Texture2D) -> void:
 func say(who: String, body: String, voice_secs: float = 0.0) -> void:
 	visible = true
 	box.visible = true
-	for c in choices.get_children():
-		c.queue_free()
+	_clear_choices()
 	name_panel.visible = who != ""
 	name_lbl.text = who
 	text.text = body
@@ -111,15 +111,25 @@ func choose(opts: Array) -> int:
 		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		b.disabled = o.get("locked", false)
 		choices.add_child(b)
+	var idx: int
 	if auto_mode:
-		return min(auto_choice, opts.size() - 1)
-	var idx: int = await chosen
-	for c in choices.get_children():
-		c.queue_free()
+		idx = min(auto_choice, opts.size() - 1)
+	else:
+		idx = await chosen
+	_clear_choices()
 	return idx
 
 
+## The choice panel goes the moment a choice resolves or a CG shows: queue_free alone leaves
+## the buttons drawn until the next frame, which the screenshot runs caught over a CG.
+func _clear_choices() -> void:
+	for c in choices.get_children():
+		choices.remove_child(c)
+		c.queue_free()
+
+
 func close() -> void:
+	_clear_choices()
 	visible = false
 	cg.visible = false
 
