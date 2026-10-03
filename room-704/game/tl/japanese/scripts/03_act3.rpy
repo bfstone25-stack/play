@@ -143,8 +143,8 @@ translate japanese strings:
     new "プレイしてくれてありがとう。"
 
     # game/scripts/03_act3.rpy:115
-    old "Artwork is AI-assisted. Writing is not. Both are disclosed on every store page."
-    new "アートワークはAI支援。文章はAIではありません。どちらも各ストアページで開示しています。"
+    old "Artwork is AI-assisted, directed and culled by hand; the script text and the program were written and edited jointly by AI language models and the developer. Disclosed on every store page."
+    new "イラストはAI補助で制作し、人の手で指示・選別しています。シナリオ文とプログラムはAI（大規模言語モデル）と開発者が共同で執筆・編集しています。各ストアページで開示しています。"
 
     # game/scripts/03_act3.rpy:116
     old "Flat 404"

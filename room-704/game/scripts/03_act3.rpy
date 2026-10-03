@@ -117,7 +117,7 @@ screen end_screen():
         null height 18
         use cross_promo
         null height 14
-        text _("Artwork is AI-assisted. Writing is not. Both are disclosed on every store page.") size 17 color "#8d8f9b" xalign 0.5
+        text _("Artwork is AI-assisted, directed and culled by hand; the script text and the program were written and edited jointly by AI language models and the developer. Disclosed on every store page.") size 17 color "#8d8f9b" xalign 0.5
         text _("Flat 404") size 17 color "#8d8f9b" xalign 0.5
 
 

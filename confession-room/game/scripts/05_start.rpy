@@ -16,7 +16,7 @@ label start:
             return
 
     ## Disclosure two. Same rule Room 704 set: say it inside the game.
-    nar "The illustrations in this game were made with AI image generation, directed, culled and retouched by hand. The writing and the case are human-written."
+    nar "The illustrations in this game were made with AI image generation, directed, culled and retouched by hand. The script text, the case and the program were written and edited jointly by AI language models and the developer."
     $ tel_track("disclosures_ack", {"dist": dist_track()})
 
     scene bg precinct at cold_tint
