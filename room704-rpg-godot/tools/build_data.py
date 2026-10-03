@@ -110,7 +110,7 @@ ENEMIES = {
     "porter":      enemy("porter", "porter", 620, 8, 8, ["bluff", "stall", "flirt"], ["evidence"], 80, "coffee"),
 }
 # room id -> rendered plate slot (ops/room704_art/out/rpg/rooms/<slot>.png); None = a VN plate
-ROOMS = {"lobby": None, "corridor4": None, "room704": None,
+ROOMS = {"lobby": None, "corridor4": "room_corridor4", "room704": None,
          "back_office": "room_back_office", "bar": "room_bar", "kitchen": "room_kitchen", "service_stair": "room_service_stair",
          "lift": "room_lift", "corridor_2": "room_corridor_2", "room_212": "room_212", "room_702": "room_702", "linen": "room_linen",
          "roof": "room_roof", "manager_flat": "room_manager_flat", "boiler": "room_boiler", "laundry": "room_laundry",

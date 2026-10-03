@@ -45,7 +45,7 @@ CROPS = {  # room id -> (source image, crop box in the source's pixels, *fx)
     "loading_bay": ("images/bg/bg_corridor.webp", (0, 0, 1280, 720)),
     "street": ("images/title/keyvisual.webp", None),
 }
-SLOTS = {"back_office": "room_back_office", "bar": "room_bar", "kitchen": "room_kitchen", "service_stair": "room_service_stair",
+SLOTS = {"corridor4": "room_corridor4", "back_office": "room_back_office", "bar": "room_bar", "kitchen": "room_kitchen", "service_stair": "room_service_stair",
          "lift": "room_lift", "corridor_2": "room_corridor_2", "room_212": "room_212", "room_702": "room_702", "linen": "room_linen",
          "roof": "room_roof", "manager_flat": "room_manager_flat", "boiler": "room_boiler", "laundry": "room_laundry",
          "loading_bay": "room_loading_bay", "street": "room_street"}
