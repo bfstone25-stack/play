@@ -23,6 +23,20 @@ func _ready() -> void:
 		get_tree().quit(2))
 	await get_tree().process_frame
 	RPG.persist["gallery"] = []
+	if "--only=disclosure" in OS.get_cmdline_user_args():
+		for l in ["ja", "en"]:
+			lang = l
+			Loc.set_lang(l)
+			main = load("res://addons/night_rpg/ui/main.tscn").instantiate()
+			add_child(main)
+			main.show_disclosure(false)
+			await get_tree().create_timer(0.6).timeout
+			await snap("disclosure")
+			main.queue_free()
+			await get_tree().process_frame
+		print("SHOTS: ", JSON.stringify(taken.keys()))
+		get_tree().quit()
+		return
 	await run_lang("en", true)
 	await run_lang("ja", true)
 	RPG.trial_override = true   # a third, short pass: the Japanese trial to its end screen

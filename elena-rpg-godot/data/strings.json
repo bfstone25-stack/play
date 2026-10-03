@@ -1373,7 +1373,7 @@
  },
  "about_ai": {
   "en": "AI disclosure: This work uses generative AI. All character art, backgrounds and event CGs were generated with Animagine XL (an image model) and then selected and composited by the developer. The heroine's spoken lines are synthesised with CosyVoice (a text-to-speech model). The story, dialogue and game code were written with the help of AI language models and edited, directed and tested by the developer.",
-  "ja": "AI使用について：本作は生成AIを使用しています。キャラクター立ち絵・背景・イベントCGは画像生成AI「Animagine XL」で生成し、開発者が選定・合成しています。ヒロインのボイスは音声合成AI「CosyVoice」による合成音声です。シナリオ・テキストおよびプログラムもAI（大規模言語モデル）の支援を受けて作成し、開発者が編集・監修・テストしています。"
+  "ja": "AI使用について：本作は生成AIを使用しています。キャラクター立ち絵・背景・イベントCGは画像生成AI「Animagine⁠ ⁠XL」で生成し、開発者が選定・合成しています。ヒロインのボイスは音声合成AI「CosyVoice」による合成音声です。シナリオ・テキストおよびプログラムもAI（大規模言語モデル）の支援を受けて作成し、開発者が編集・監修・テストしています。"
  },
  "tr_end_title": {
   "en": "This is where the trial ends.",

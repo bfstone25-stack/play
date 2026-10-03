@@ -62,7 +62,7 @@ S.update({
 S.update({
 "ds_adult": ("This game is for adults (18+). All characters are adults. Contains sexual content.", "本作品は成人向け（18歳以上）です。登場人物はすべて成人です。性的な表現を含みます。"),
 "about_ai": ("AI disclosure: This work uses generative AI. All character art, backgrounds and event CGs were generated with Animagine XL (an image model) and then selected and composited by the developer. The heroine's spoken lines are synthesised with CosyVoice (a text-to-speech model). The story, dialogue and game code were written with the help of AI language models and edited, directed and tested by the developer.",
-             "AI使用について：本作は生成AIを使用しています。キャラクター立ち絵・背景・イベントCGは画像生成AI「Animagine\u00a0XL」で生成し、開発者が選定・合成しています。ヒロインのボイスは音声合成AI「CosyVoice」による合成音声です。シナリオ・テキストおよびプログラムもAI（大規模言語モデル）の支援を受けて作成し、開発者が編集・監修・テストしています。"),
+             "AI使用について：本作は生成AIを使用しています。キャラクター立ち絵・背景・イベントCGは画像生成AI「Animagine\u2060 \u2060XL」で生成し、開発者が選定・合成しています。ヒロインのボイスは音声合成AI「CosyVoice」による合成音声です。シナリオ・テキストおよびプログラムもAI（大規模言語モデル）の支援を受けて作成し、開発者が編集・監修・テストしています。"),
 "tr_end_title": ("This is where the trial ends.", "体験版はここまで"),
 "tr_end_body": ("Nights 2 to 5, all three routes and three endings, every standoff and boss, the full gallery and growth to level 20 are in the full version. Your trial save carries over.",
                 "第二夜から第五夜、3つのルートと3種のエンディング、すべての対峙とボス、ギャラリー、レベル20までの成長は製品版に収録されています。体験版のセーブデータは製品版に引き継げます。"),
