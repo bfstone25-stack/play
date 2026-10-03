@@ -362,7 +362,7 @@ const ALTAR = (() => {
     ctx.fill();
     ctx.font = "9px Syne, sans-serif";
     ctx.fillStyle = "#8aa0b8";
-    ctx.fillText("MERIT", 20, 24);
+    ctx.fillText(typeof I18N !== "undefined" && I18N.getLang() === "en" ? "MERIT" : "功德", 20, 24);
     ctx.fillStyle = "#ffe08a";
     ctx.font = "bold 16px Syne, sans-serif";
     ctx.fillText(String(snap.merit), 20, 42);
