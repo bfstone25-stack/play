@@ -386,6 +386,26 @@
     ]
    },
    {
+    "if_trust": 9,
+    "then": [
+     {
+      "cg": "cg_trust9_bed"
+     },
+     {
+      "say": "narrator",
+      "key": "n5_t9_1"
+     },
+     {
+      "say": "narrator",
+      "key": "n5_t9_2"
+     },
+     {
+      "hide_cg": true
+     }
+    ],
+    "else": []
+   },
+   {
     "music": "title"
    },
    {

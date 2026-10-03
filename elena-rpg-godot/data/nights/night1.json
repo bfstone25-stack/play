@@ -1362,6 +1362,27 @@
     "show": ""
    },
    {
+    "bg": "roof_leads"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_roof_1"
+   },
+   {
+    "cg": "cg_rpg_roof_dawn"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_roof_2"
+   },
+   {
+    "say": "elena",
+    "key": "n1_roof_3"
+   },
+   {
+    "hide_cg": true
+   },
+   {
     "say": "narrator",
     "key": "n1_end_1"
    },

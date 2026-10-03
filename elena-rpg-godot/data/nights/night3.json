@@ -22,6 +22,18 @@
     0.7,
     0.2
    ],
+   "map_room": [
+    0.9,
+    0.45
+   ],
+   "bell_tower_stair": [
+    0.2,
+    0.72
+   ],
+   "bell_chamber": [
+    0.45,
+    0.72
+   ],
    "common_room": [
     0.7,
     0.72
@@ -181,6 +193,26 @@
      ]
     },
     {
+     "id": "to_map",
+     "kind": "door",
+     "to": "map_room",
+     "pos": [
+      0.5,
+      0.86
+     ],
+     "if_flag": "sallis_done"
+    },
+    {
+     "id": "to_tower",
+     "kind": "door",
+     "to": "bell_tower_stair",
+     "pos": [
+      0.75,
+      0.86
+     ],
+     "if_flag": "map_done"
+    },
+    {
      "id": "to_common",
      "kind": "door",
      "to": "common_room",
@@ -188,10 +220,153 @@
       0.9,
       0.86
      ],
-     "if_flag": "sallis_done"
+     "if_flag": "bells_done"
     }
    ],
    "enter_event": "n3_hall"
+  },
+  "map_room": {
+   "name_key": "r_map_room",
+   "plate": "map_room",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8070",
+    "lamps": [
+     [
+      0.55,
+      0.3,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "chart",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.55
+     ],
+     "event": "n3_chart",
+     "label_key": "hs_chart_table"
+    },
+    {
+     "id": "globe",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.5
+     ],
+     "event": "n3_globe",
+     "label_key": "hs_globe",
+     "xp": 5
+    },
+    {
+     "id": "to_hall",
+     "kind": "door",
+     "to": "reading_room",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n3_map"
+  },
+  "bell_tower_stair": {
+   "name_key": "r_bell_tower_stair",
+   "plate": "bell_tower_stair",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7488",
+    "lamps": [
+     [
+      0.2,
+      0.3,
+      0.8,
+      "#ffc080"
+     ],
+     [
+      0.7,
+      0.5,
+      0.8,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_hall",
+     "kind": "door",
+     "to": "reading_room",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "up",
+     "kind": "door",
+     "to": "bell_chamber",
+     "pos": [
+      0.6,
+      0.3
+     ]
+    }
+   ],
+   "enter_event": "n3_tower"
+  },
+  "bell_chamber": {
+   "name_key": "r_bell_chamber",
+   "plate": "bell_chamber",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8088a0",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.3,
+      "#c8d8ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "wind",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "n3_bells",
+     "label_key": "hs_louvres"
+    },
+    {
+     "id": "rope",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.6
+     ],
+     "event": "n3_rope",
+     "label_key": "hs_rope",
+     "xp": 10,
+     "gives": [
+      "bell_rope"
+     ]
+    },
+    {
+     "id": "down",
+     "kind": "door",
+     "to": "bell_tower_stair",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ]
   },
   "common_room": {
    "name_key": "r_common_room",
@@ -387,6 +562,82 @@
     "key": "n3_programme_1"
    }
   ],
+  "n3_map": [
+   {
+    "say": "narrator",
+    "key": "n3_map_1"
+   }
+  ],
+  "n3_chart": [
+   {
+    "cg": "cg_rpg_map_room"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_chart_1"
+   },
+   {
+    "say": "elena",
+    "key": "n3_chart_2"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "xp": 15
+   },
+   {
+    "flag": "map_done"
+   }
+  ],
+  "n3_globe": [
+   {
+    "say": "narrator",
+    "key": "n3_globe_1"
+   }
+  ],
+  "n3_tower": [
+   {
+    "say": "narrator",
+    "key": "n3_tower_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_tower_2"
+   }
+  ],
+  "n3_bells": [
+   {
+    "say": "narrator",
+    "key": "n3_bell_1"
+   },
+   {
+    "cg": "cg_rpg_bell_chamber"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_bell_2"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "trust": 1
+   },
+   {
+    "flag": "bells_done"
+   }
+  ],
+  "n3_rope": [
+   {
+    "say": "narrator",
+    "key": "n3_rope_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_louvres_1"
+   }
+  ],
   "n3_common": [
    {
     "say": "narrator",
@@ -394,6 +645,16 @@
    },
    {
     "lines": "ch3:69-70"
+   },
+   {
+    "cg": "cg_rpg_gala"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_gala_1"
+   },
+   {
+    "hide_cg": true
    }
   ],
   "n3_ambrose_pre": [
@@ -467,6 +728,30 @@
    },
    {
     "flag": "pen3_done"
+   },
+   {
+    "if_trust": 5,
+    "then": [
+     {
+      "cg": "cg_trust5_common_room"
+     },
+     {
+      "say": "narrator",
+      "key": "n3_t5_1"
+     },
+     {
+      "say": "elena",
+      "key": "n3_t5_2"
+     },
+     {
+      "say": "narrator",
+      "key": "n3_t5_3"
+     },
+     {
+      "hide_cg": true
+     }
+    ],
+    "else": []
    },
    {
     "event": "n3_end"

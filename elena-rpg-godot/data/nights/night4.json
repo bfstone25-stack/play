@@ -22,8 +22,16 @@
     0.7,
     0.2
    ],
+   "bindery": [
+    0.9,
+    0.45
+   ],
+   "conservation_lab": [
+    0.9,
+    0.72
+   ],
    "deans_office": [
-    0.7,
+    0.6,
     0.72
    ],
    "carrel": [
@@ -135,6 +143,16 @@
      "if_not_flag": "tea_done"
     },
     {
+     "id": "to_bindery",
+     "kind": "door",
+     "to": "bindery",
+     "pos": [
+      0.75,
+      0.86
+     ],
+     "if_flag": "vey4_done"
+    },
+    {
      "id": "to_files",
      "kind": "door",
      "to": "deans_office",
@@ -146,6 +164,120 @@
     }
    ],
    "enter_event": "n4_corr"
+  },
+  "bindery": {
+   "name_key": "r_bindery",
+   "plate": "bindery",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8070",
+    "lamps": [
+     [
+      0.3,
+      0.4,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "press",
+     "kind": "search",
+     "pos": [
+      0.45,
+      0.6
+     ],
+     "event": "n4_press",
+     "label_key": "hs_press",
+     "xp": 10,
+     "gives": [
+      "survey"
+     ]
+    },
+    {
+     "id": "hides",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.4
+     ],
+     "event": "n4_hides",
+     "label_key": "hs_hides",
+     "xp": 5
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "deans_corridor",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_lab",
+     "kind": "door",
+     "to": "conservation_lab",
+     "pos": [
+      0.9,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n4_bindery"
+  },
+  "conservation_lab": {
+   "name_key": "r_conservation_lab",
+   "plate": "conservation_lab",
+   "music": "explore",
+   "mood": {
+    "ambient": "#9098a0",
+    "lamps": [
+     [
+      0.6,
+      0.25,
+      1.2,
+      "#e0f0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "light",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "n4_light",
+     "label_key": "hs_light_table",
+     "xp": 15
+    },
+    {
+     "id": "jars",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.45
+     ],
+     "event": "n4_jars",
+     "label_key": "hs_jars",
+     "gives": [
+      "sherry"
+     ]
+    },
+    {
+     "id": "to_bindery",
+     "kind": "door",
+     "to": "bindery",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n4_lab"
   },
   "annex": {
    "name_key": "r_annex",
@@ -464,7 +596,53 @@
     "flag": "tea_done"
    }
   ],
+  "n4_bindery": [
+   {
+    "say": "narrator",
+    "key": "n4_bindery_1"
+   }
+  ],
+  "n4_press": [
+   {
+    "say": "narrator",
+    "key": "n4_press_1"
+   }
+  ],
+  "n4_hides": [
+   {
+    "say": "narrator",
+    "key": "n4_hides_1"
+   }
+  ],
+  "n4_lab": [
+   {
+    "say": "narrator",
+    "key": "n4_lab_1"
+   }
+  ],
+  "n4_light": [
+   {
+    "say": "narrator",
+    "key": "n4_light_1"
+   }
+  ],
+  "n4_jars": [
+   {
+    "say": "narrator",
+    "key": "n4_jars_1"
+   }
+  ],
   "n4_files": [
+   {
+    "cg": "cg_rpg_lockpick"
+   },
+   {
+    "say": "narrator",
+    "key": "n4_lock_1"
+   },
+   {
+    "hide_cg": true
+   },
    {
     "say": "narrator",
     "key": "n4_files_1"
@@ -561,6 +739,56 @@
    {
     "say": "narrator",
     "key": "n4_window_1"
+   },
+   {
+    "if_trust": 3,
+    "then": [
+     {
+      "cg": "cg_trust3_carrel"
+     },
+     {
+      "say": "narrator",
+      "key": "n4_t3_1"
+     },
+     {
+      "say": "elena",
+      "key": "n4_t3_2"
+     },
+     {
+      "hide_cg": true
+     }
+    ],
+    "else": []
+   },
+   {
+    "if_trust": 7,
+    "then": [
+     {
+      "bg": "carrel"
+     },
+     {
+      "say": "narrator",
+      "key": "n4_t7_1"
+     },
+     {
+      "cg": "cg_trust7_bath"
+     },
+     {
+      "say": "narrator",
+      "key": "n4_t7_2"
+     },
+     {
+      "say": "elena",
+      "key": "n4_t7_3"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "give": "nightwear"
+     }
+    ],
+    "else": []
    },
    {
     "if_trust": 7,

@@ -24,7 +24,10 @@ func _ready() -> void:
 	await get_tree().process_frame
 	RPG.persist["gallery"] = []
 	await run_lang("en", true)
-	RPG.trial_override = true   # the Japanese pass plays the trial: night 1 to its end screen
+	await run_lang("ja", true)
+	RPG.trial_override = true   # a third, short pass: the Japanese trial to its end screen
+	lang = "ja"
+	taken.erase("ja_trial_end")
 	await run_lang("ja", true)
 	print("SHOTS: ", JSON.stringify(taken.keys()))
 	get_tree().quit()
@@ -39,6 +42,8 @@ func snap(tag: String) -> void:
 	var key := lang + "_" + tag
 	if taken.has(key):
 		return
+	if main != null:
+		main.toast_lbl.modulate.a = 0.0   # a trust toast over a sample reads as clutter
 	await RenderingServer.frame_post_draw
 	await RenderingServer.frame_post_draw
 	var img := get_viewport().get_texture().get_image()
@@ -53,8 +58,16 @@ func hook(tag: String) -> void:
 		var e = main.event
 		print("CGDBG ", tag, " ev.vis=", e.visible, " ev.size=", e.size, " ev.pos=", e.global_position, " cg.vis=", e.cg.visible, " cg.size=", e.cg.size, " cg.tex=", e.cg.texture, " cg.mod=", e.cg.modulate, " in_tree=", e.is_visible_in_tree())
 		await snap(tag)
-	elif tag in ["battle", "levelup", "night_card", "choice", "dialogue", "dialogue2", "trial_end", "loss"]:
+	elif tag in ["battle", "battle_boss", "battle_pressured", "levelup", "choice", "dialogue", "dialogue2", "trial_end", "loss"] or (tag == "night_card" and str(RPG.s.get("night", "")) == "night1"):
 		await snap(tag)
+	elif tag == "night_card" and str(RPG.s.get("night", "")) == "night2":
+		# the gallery as it stands after night 1: three CGs open, nothing explicit (the DLsite sample)
+		main.show_gallery()
+		await get_tree().create_timer(0.5).timeout
+		await snap("gallery_early")
+		main._clear_overlay()
+	elif tag == "night_end":
+		await snap("night_end_" + str(RPG.s["night"]))
 
 
 func run_lang(l: String, full: bool) -> void:
@@ -68,7 +81,7 @@ func run_lang(l: String, full: bool) -> void:
 	add_child(main)
 	main.event.auto_mode = true
 	main.shot_hook = hook
-	main.stop_after = "" if RPG.trial_override else "night1"
+	main.stop_after = "" if RPG.trial_override else "night4"   # EN: through night 4 (gala, carrel); JA: the trial
 	main.show_disclosure(false)
 	await get_tree().create_timer(0.6).timeout
 	await snap("disclosure")
@@ -85,7 +98,12 @@ func run_lang(l: String, full: bool) -> void:
 	var sim = load("res://tests/sim.gd").new()
 	sim.main = main
 	var steps := 0
-	while not ("night1" in RPG.s["nights_cleared"]) and steps < 200 and not taken.has(lang + "_trial_end"):
+	var last := "night1" if RPG.trial_override else "night4"
+	if RPG.trial_override:
+		for k in taken.keys():
+			if k.begins_with(lang + "_") and k != lang + "_trial_end":
+				pass   # already taken in the full pass; only the trial end is new here
+	while not (last in RPG.s["nights_cleared"]) and steps < 900 and not taken.has(lang + "_trial_end"):
 		steps += 1
 		var h = sim._next_hotspot()
 		if h == null:
@@ -99,6 +117,22 @@ func run_lang(l: String, full: bool) -> void:
 			await get_tree().create_timer(0.4).timeout
 			await snap("map")
 			main.render_room()
+		for rid in ["entrance_hall", "map_room", "bell_chamber", "bindery", "conservation_lab", "common_room", "deans_corridor"]:
+			if RPG.s["room"] == rid and not taken.has(lang + "_room_" + rid):
+				await get_tree().create_timer(0.8).timeout
+				await snap("room_" + rid)
+		if RPG.s["night"] == "night3" and RPG.has("evening") and not taken.has(lang + "_equip_menu"):
+			RPG.equip("elena", "evening")
+			main.show_menu()
+			await get_tree().create_timer(0.3).timeout
+			var tabs = main.overlay.find_children("*", "TabContainer", true, false)
+			if tabs.size() > 0:
+				tabs[0].current_tab = 2
+			await get_tree().create_timer(0.3).timeout
+			await snap("equip_menu")
+			main.render_room()
+			await get_tree().create_timer(0.6).timeout
+			await snap("room_outfit_evening")
 		if RPG.s["room"] == "vault" and RPG.flag("elena_joined") and not taken.has(lang + "_room_vault_party"):
 			await get_tree().create_timer(0.8).timeout
 			await snap("room_vault_party")

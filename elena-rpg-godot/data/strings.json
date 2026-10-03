@@ -1,4 +1,268 @@
 {
+ "r_entrance_hall": {
+  "en": "Entrance hall",
+  "ja": "玄関ホール"
+ },
+ "r_map_room": {
+  "en": "Map room",
+  "ja": "地図室"
+ },
+ "r_bell_tower_stair": {
+  "en": "Bell tower stair",
+  "ja": "鐘楼の階段"
+ },
+ "r_bell_chamber": {
+  "en": "Bell chamber",
+  "ja": "鐘楼"
+ },
+ "r_bindery": {
+  "en": "Bindery",
+  "ja": "製本室"
+ },
+ "r_conservation_lab": {
+  "en": "Conservation lab",
+  "ja": "修復室"
+ },
+ "r_roof_leads": {
+  "en": "The roof leads",
+  "ja": "鉛屋根"
+ },
+ "n_marsh": {
+  "en": "Marsh",
+  "ja": "マーシュ"
+ },
+ "e_marsh": {
+  "en": "Marsh, the day porter",
+  "ja": "昼間守衛マーシュ"
+ },
+ "ei_marsh": {
+  "en": "Marsh has a lantern, a list, and the slow certainty of a man who has never once been wrong on his own doorstep.",
+  "ja": "マーシュはランタンとリストを持ち、自分の持ち場で一度も間違えたことのない男の、ゆっくりした確信を湛えている。"
+ },
+ "ew_marsh": {
+  "en": "Marsh writes 'no incident' in the book and underlines it.",
+  "ja": "マーシュは日誌に「異常なし」と書き、下線を引いた。"
+ },
+ "bark_marsh_1": {
+  "en": "\"Deliveries use the dock, Professor. Not my hall.\"",
+  "ja": "「搬入は搬入口からですよ、教授。私のホールじゃない」"
+ },
+ "bark_marsh_2": {
+  "en": "\"Cobb's lot. I knew it. Night shift never writes anything down.\"",
+  "ja": "「コブの連中か。やっぱりな。夜勤は何も書き残さん」"
+ },
+ "bark_marsh_3": {
+  "en": "\"I've a sister in the bursar's office, you know.\"",
+  "ja": "「会計課に姉がいるんですよ」"
+ },
+ "hs_marsh_book": {
+  "en": "Visitors' book",
+  "ja": "来訪者名簿"
+ },
+ "hs_chart_table": {
+  "en": "Chart table",
+  "ja": "海図台"
+ },
+ "hs_globe": {
+  "en": "Brass globe",
+  "ja": "真鍮の地球儀"
+ },
+ "hs_rope": {
+  "en": "Bell rope",
+  "ja": "鐘の綱"
+ },
+ "hs_louvres": {
+  "en": "Louvres",
+  "ja": "鎧窓"
+ },
+ "hs_press": {
+  "en": "Book press",
+  "ja": "製本プレス"
+ },
+ "hs_hides": {
+  "en": "Leather hides",
+  "ja": "革の束"
+ },
+ "hs_light_table": {
+  "en": "Light table",
+  "ja": "ライトテーブル"
+ },
+ "hs_jars": {
+  "en": "Glass jars",
+  "ja": "ガラス瓶"
+ },
+ "n2_hall_1": {
+  "en": "The entrance hall by daylight: chequered marble, a chandelier nobody has cleaned since the war, and the day porter already behind his counter.",
+  "ja": "昼の玄関ホール。市松模様の大理石、戦争以来掃除されていないシャンデリア、そしてもうカウンターの奥にいる昼間守衛。"
+ },
+ "n2_marsh_1": {
+  "en": "Marsh looks at the two of you, then at the clock, then back. Eight in the morning is not a time he has an entry for.",
+  "ja": "マーシュは二人を見て、時計を見て、また二人を見る。朝八時は、彼の帳面に項目のない時間だ。"
+ },
+ "n2_marsh_2": {
+  "en": "\"Professor Vance. And a guest. Sign the book, please. Both of you.\"",
+  "ja": "「ヴァンス教授。それにお客様。名簿にご記入を。お二人とも」"
+ },
+ "n2_marsh_3": {
+  "en": "Elena signs with a name that is not hers. Marsh reads it upside down and says nothing, which is its own kind of signature.",
+  "ja": "エレナは自分のでない名前を書く。マーシュはそれを逆さまに読み、何も言わない。それもまたひとつの署名だ。"
+ },
+ "n2_marsh_book_1": {
+  "en": "The visitors' book. Last night, 11:50 PM, in a careful hand: PENHALLOW, J. — purpose of visit: reading.",
+  "ja": "来訪者名簿。昨夜11時50分、几帳面な字で：ペンハロウ、J. — 来訪目的：読書。"
+ },
+ "n2_rain_1": {
+  "en": "Elena at the gate, in a coat two sizes too big, waiting in the rain without an umbrella, as if being wet were a decision.",
+  "ja": "門のところにエレナ。二回り大きなコートで、傘もささずに雨の中で待っている。濡れることを自分で決めたみたいに。"
+ },
+ "n3_map_1": {
+  "en": "The map room. Every plan of the Blackwood wing ever drawn, under glass, and one that is not under glass because someone is still using it.",
+  "ja": "地図室。これまでに描かれたブラックウッド棟の図面がすべてガラスの下に。そして一枚だけ、まだ誰かが使っているから、ガラスの下にない。"
+ },
+ "n3_chart_1": {
+  "en": "Elena bends over the 1897 plan with the magnifying glass. The chapel is drawn with a room beneath it, and the room has a name that was later scratched out.",
+  "ja": "エレナが拡大鏡で1897年の図面に身を乗り出す。礼拝堂の下に部屋が描かれ、その部屋の名前は後から削り取られている。"
+ },
+ "n3_chart_2": {
+  "en": "Muniment. Latin for 'the things that defend us'. Documents. Deeds. Proof.",
+  "ja": "ムニメント。ラテン語で「私たちを守るもの」。文書、権利証、証拠。"
+ },
+ "n3_globe_1": {
+  "en": "The brass globe spins under your hand and stops with the Academy's own county under your thumb. Somebody has stuck a pin in it.",
+  "ja": "真鍮の地球儀が手の下で回り、学園のある州があなたの親指の下で止まる。誰かがそこにピンを刺している。"
+ },
+ "n3_tower_1": {
+  "en": "Elena wants air before the sherry. The bell tower stair is the only way up that does not pass the Dean's door.",
+  "ja": "シェリーの前に、エレナは風に当たりたいという。鐘楼の階段だけが、学部長室の前を通らずに上へ行ける道だ。"
+ },
+ "n3_tower_2": {
+  "en": "Two hundred steps, a lantern on a hook at every landing, and her breath ahead of you in the cold.",
+  "ja": "二百段。踊り場ごとに掛けられたランタン。冷気の中、あなたの前を行く彼女の息。"
+ },
+ "n3_bell_1": {
+  "en": "The bell chamber. Four bronze bells the size of carriages, and between them, the wind and the whole town's lights.",
+  "ja": "鐘楼。馬車ほどの大きさの青銅の鐘が四つ。その間に、風と、街じゅうの灯り。"
+ },
+ "n3_bell_2": {
+  "en": "Elena stands between the bells with her hair going everywhere and laughs for the first time since the loading dock.",
+  "ja": "エレナは鐘の間に立ち、髪を風に乱されながら、搬入口以来はじめて笑う。"
+ },
+ "n3_rope_1": {
+  "en": "The bell rope is new. Everything else up here is a hundred years old. Someone rang this bell recently, at an hour when nobody should.",
+  "ja": "鐘の綱だけが新しい。ここにある他のものはみな百年前のものだ。誰かが最近、鳴らしてはいけない時間にこの鐘を鳴らした。"
+ },
+ "n3_louvres_1": {
+  "en": "Through the louvres: the quad, the chapel roof, and under the chapel, where the plan said a room was, a line of fresh brick dust on the grass.",
+  "ja": "鎧窓の向こうに中庭、礼拝堂の屋根、そして図面が部屋だと言っていた礼拝堂の下には、芝生に落ちた新しい煉瓦の粉の筋。"
+ },
+ "n3_gala_1": {
+  "en": "Elena, in the green dress, with a glass she has not drunk from, looking back at you across the hall as if the room were a page and you were the footnote she was looking for.",
+  "ja": "緑のドレスのエレナが、口をつけていないグラスを手に、講堂の向こうからあなたを振り返る。部屋が一枚のページで、あなたが探していた脚注だとでもいうように。"
+ },
+ "n3_t5_1": {
+  "en": "Later. The common room empty, the fire down to embers, and Elena on the sofa with her shoes off and her head against your shoulder, not sleeping.",
+  "ja": "その後。空になった談話室、熾火になった暖炉。靴を脱いだエレナがソファで、あなたの肩に頭を預けている。眠ってはいない。"
+ },
+ "n3_t5_2": {
+  "en": "He said my name to the whole room. I want somebody to say it who means something else by it.",
+  "ja": "彼は部屋じゅうに私の名前を言った。別の意味で言ってくれる人が欲しい。"
+ },
+ "n3_t5_3": {
+  "en": "You say it. She turns her face up and you do not say anything else for a long time.",
+  "ja": "あなたは言う。彼女が顔を上げ、あなたは長いあいだ、それ以上何も言わない。"
+ },
+ "n4_bindery_1": {
+  "en": "The bindery. A press the size of a wardrobe, leather on hooks, and on the bench, four crate labels waiting to be glued to four crates.",
+  "ja": "製本室。衣装箪笥ほどのプレス、鉤に掛けられた革、そして作業台の上に、四つの木箱に貼られるのを待つ四枚のラベル。"
+ },
+ "n4_press_1": {
+  "en": "Under the press, flattened like a leaf: a deaccession sheet for lot forty-two. Dated next month. Signing officer: VANCE.",
+  "ja": "プレスの下に、葉のように押し潰された第42ロットの除籍通知。日付は来月。署名責任者：ヴァンス。"
+ },
+ "n4_hides_1": {
+  "en": "The leather smells of the muniment room before you have ever been in it. Elena notices you noticing.",
+  "ja": "革の匂いは、まだ行ったことのない古文書室の匂いがする。エレナは、あなたが気付いたことに気付く。"
+ },
+ "n4_lab_1": {
+  "en": "The conservation lab. White benches, a light table, and in a tray of distilled water, a page being coaxed apart from another page.",
+  "ja": "修復室。白い作業台、ライトテーブル、蒸留水のトレーの中で、別のページからそっと剥がされていく一枚のページ。"
+ },
+ "n4_light_1": {
+  "en": "On the light table, the 1994 survey. Not a copy. The Dean sent it here to be 'stabilised', which is to say kept.",
+  "ja": "ライトテーブルの上に1994年の調査報告。写しではない。学部長は「安定化処理」のため、つまり保存のためにここへ送った。"
+ },
+ "n4_jars_1": {
+  "en": "Jars of wheat-starch paste and one jar of college sherry, labelled SOLVENT in a conservator's hand.",
+  "ja": "小麦澱粉糊の瓶が並ぶ中に、学寮のシェリーが一本。修復師の字で「溶剤」とラベルが貼られている。"
+ },
+ "n4_lock_1": {
+  "en": "The file-room door is locked. Elena takes a pin out of her hair and is through it in forty seconds. You do not ask where she learned that.",
+  "ja": "書類室の扉は施錠されている。エレナは髪からピンを抜き、四十秒で開けた。どこで覚えたのかは聞かない。"
+ },
+ "n4_t3_1": {
+  "en": "Her carrel, afterwards. One lamp. She sits on the desk because the chair is full of books, and does not fix her blouse.",
+  "ja": "その後の、彼女の閲覧席。ランプがひとつ。椅子は本で埋まっているから、彼女は机に腰掛け、ブラウスを直さない。"
+ },
+ "n4_t3_2": {
+  "en": "You can look. I'd rather you looked than pretended not to.",
+  "ja": "見ていいのよ。見ないふりをされるより、見てくれる方がいい。"
+ },
+ "n4_t7_1": {
+  "en": "The staff bathroom on the third floor has a tub nobody has used since 1960. Tonight somebody uses it, and leaves the door unlocked.",
+  "ja": "三階の職員用浴室には、1960年から誰も使っていない浴槽がある。今夜、誰かがそれを使い、扉に鍵をかけないでおく。"
+ },
+ "n4_t7_2": {
+  "en": "The coal is off her hands. The rest of her is pink with the heat. She does not sink lower in the water when you come in.",
+  "ja": "手から石炭は落ちている。あとは湯の熱で桜色だ。あなたが入ってきても、彼女は湯の中に沈み込まない。"
+ },
+ "n4_t7_3": {
+  "en": "Don't say anything clever, Vance. Just hand me the towel. Slowly.",
+  "ja": "気の利いたことは言わないで、ヴァンス。タオルを渡して。ゆっくりね。"
+ },
+ "n5_t9_1": {
+  "en": "Morning, in a bed, at last. The volumes on the floor where they fell. Her glasses on your side of the pillow.",
+  "ja": "ついに、ベッドの中の朝。落ちたままの台帳が床に。枕のあなた側に彼女の眼鏡。"
+ },
+ "n5_t9_2": {
+  "en": "She wakes before you and does not get up. That is the whole of what she wants to say about it, and she says it by staying.",
+  "ja": "彼女はあなたより先に目を覚まし、起きない。それが彼女の言いたいことのすべてで、彼女はそこに居続けることでそれを言う。"
+ },
+ "n1_roof_1": {
+  "en": "You take her up to the roof leads before the porters change shift. Gothic spires, wet lead, and the sky going from grey to gold over the whole town.",
+  "ja": "守衛が交代する前に、彼女を鉛屋根の上へ連れていく。ゴシックの尖塔、濡れた鉛、そして街全体の上で灰色から金色に変わっていく空。"
+ },
+ "n1_roof_2": {
+  "en": "Elena sits on the parapet with her back to the drop, the way she sat on the crate, and watches you watch the dawn.",
+  "ja": "エレナは木箱に腰掛けたときと同じように、崖側に背を向けて胸壁に座り、夜明けを見るあなたを見ている。"
+ },
+ "n1_roof_3": {
+  "en": "Four more nights, Professor. I counted. The incinerator, the lecture, her tea, and whatever is under the chapel.",
+  "ja": "あと四夜よ、教授。数えたの。焼却炉、講演、学部長のお茶、それから礼拝堂の下にあるもの。"
+ },
+ "i_lantern": {
+  "en": "Porter's lantern",
+  "ja": "守衛のランタン"
+ },
+ "id_lantern": {
+  "en": "Tool. Stealth +1, Grit +1. Marsh's, and he knows it.",
+  "ja": "道具。隠密+1、根性+1。マーシュのもので、彼もそれを知っている。"
+ },
+ "i_nightwear": {
+  "en": "Black lace",
+  "ja": "黒いレース"
+ },
+ "id_nightwear": {
+  "en": "Elena's outfit. Charm +3, Flirt much stronger. Hers; she decides when.",
+  "ja": "エレナの衣装。魅力+3、誘惑が大幅強化。彼女のもの。いつ着るかは彼女が決める。"
+ },
+ "i_bell_rope": {
+  "en": "A length of new bell rope",
+  "ja": "新しい鐘の綱の切れ端"
+ },
+ "id_bell_rope": {
+  "en": "Evidence. Hemp from this year. Someone rang the Blackwood bell at night.",
+  "ja": "証拠。今年の麻縄。誰かが夜、ブラックウッドの鐘を鳴らした。"
+ },
  "title": {
   "en": "Elena: Crimson Archives",
   "ja": "エレナ：深紅の書庫"

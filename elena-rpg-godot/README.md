@@ -17,11 +17,11 @@ Daylight / The Sea) are the VN's own. New RPG text (rooms, standoffs, barks) is 
 | | count |
 |---|---|
 | nights | 5 (all playable end to end; every route and ending reached by the sim) |
-| rooms | 14 distinct (study, vault, porter's lodge, Blackwood stair, lower stacks, service passage/coal store, loading dock, main hall, common room, Dean's corridor, annex, Dean's file room, Elena's carrel, muniment room) |
-| standoffs | 16 standard + 5 bosses (Dean at dawn, Crane, Penhallow, the Dean at tea, Penhallow in the strongroom) |
+| rooms | 20 explorable (study, vault, porter's lodge, entrance hall, Blackwood stair, lower stacks, coal store, loading dock, main hall, map room, bell tower stair, bell chamber, common room, Dean's corridor, annex, bindery, conservation lab, Dean's file room, Elena's carrel, muniment room) + the roof leads at dawn |
+| standoffs | 17 standard + 5 bosses (Dean at dawn, Crane, Penhallow, the Dean at tea, Penhallow in the strongroom) |
 | systems | level/XP (cap 20), 4 stats (Wit/Charm/Grit/Stealth), two skill branches per character (Scholar/Rogue, Archivist/Accomplice), 3 equipment slots, consumables, keys, evidence, gifts, Trust 0–10 with scenes at 3/5/7/9, 6 save slots + autosave, gallery, settings, map |
 | languages | EN and JA complete (UI, VN text, RPG text, voice per language); DE/FR/ES/ZH/KO columns wired with EN fallback, settings shows each one's coverage |
-| play time (sim) | Night 1 ≈ 40 min, whole game ≈ 2.5 h at measured pacing |
+| play time (sim) | nights 41 / 33 / 29 / 29 / 26 min ≈ 2.6 h for one route at measured pacing |
 
 **Standoff rules** (`addons/night_rpg/rules.gd`, port of SUASION's duel): Composure (HP),
 Nerve (MP), the enemy's Resolve and Suspicion (100 = they call the Dean = loss). Actions:
@@ -77,29 +77,21 @@ blurred (as the VN trial does), then a bilingual JA/EN end screen with the produ
 The AI disclosure (text from `ops/dlsite/elena_product_page*.md`) is shown at every launch
 and from the title's "About this work".
 
-## Placeholders (drop-in when the renders land)
+## Art
 
-`data/art_manifest.json` lists, per slot, the rendered RPG file first and the placeholder
-second; the first that exists wins, so installing art is `python3 tools/import_art.py`
-(copies `ops/elena_art/out/rpg/**`) and nothing else.
+All 52 rendered RPG assets from `ops/elena_art/out/rpg/manifest.json` are in the game:
+20 room plates + the painted floor map, 8 enemies in neutral and pressured poses (the
+pressured pose shows under half Resolve or Suspicion 60+), Elena's 5 outfits (research is
+her default; raincoat/gown/evening/nightwear are equipment that changes her sprite), and 10
+new CGs (6 story, 4 Trust scenes at 3/5/7/9). `tools/build_data.py` fails if a manifest
+asset is not referenced; `tools/check_data.py` fails if a room plate is unused or still on
+placeholder art. `tools/import_art.py` also heals rembg mattes (enclosed holes, a
+convex-hull repair on the shredded coat edge of `enemy_deans_man_a_pressured`, and a
+black-background remnant in `outfit_gown`).
 
-- **Room plates**: all 14 rooms use crops of existing VN art (the two backgrounds and
-  figure-free regions of CGs), upscaled — soft, and several rooms share a source. Real plates:
-  `out/rpg/rooms/room_*.png` from `ops/elena_art/elena_gen.py rooms`.
-- **Floor map**: no painted map yet; the map screen lays room thumbnails out on the panel.
-  Real one: `out/rpg/rooms/floor_map.png`.
-- **Enemies**: Cobb, Penhallow and the Dean use their VN sprites. Miss Vey, Hollis, Grice,
-  Crane, Dr Sallis and Ambrose have **no figure** until `out/rpg/enemies/enemy_<slot>_neutral.png`
-  exist (secretary, security_guard, deans_man_a, deans_man_b, rival_archivist, solicitor) —
-  the standoff shows the room and their name. Note the render bible's night_porter is
-  heavyset; the VN's Cobb is thin, so Cobb keeps his VN sprite.
-- **Outfits**: raincoat/cardigan use the VN sprites; gown and evening dress show the default
-  sprite until `out/rpg/outfits/outfit_*.png` exist.
-- **New CGs** (`cg_rpg_*`, `cg_trust{3,5,7,9}_*`): wired into the gallery, hidden until rendered;
-  not yet placed in story events.
-- **Music**: the VN has two tracks; explore/battle/boss all use the suspense theme and the
-  intimate scenes the second. Battle and boss tracks are separate keys in `game.json`.
-- **Voice**: every VN line keeps its EN/JA voice; RPG-only lines and battle barks are unvoiced.
+Still from the VN by design: the study plate (a rendered VN background), Cobb's and
+Penhallow's sprites (they appear in the VN CGs), Elena's expression sprites in story
+scenes, the 6 VN CGs, and the two music tracks.
 
 ## Known gaps
 

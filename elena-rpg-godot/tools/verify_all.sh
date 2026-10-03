@@ -14,5 +14,5 @@ for spec in 'hand over hers|Every name goes back:route_pact,ending_rewrite' 'Tak
   echo "$out"; echo "$out" | grep -qE "^FAIL|stuck|SCRIPT ERROR" && rc=1
 done
 out=$(run --nights=night1 --runs=2 --policy=reckless); echo "$out"
-echo "$out" | grep -q "^FAIL night1 winnable" || { echo "!! the reckless player did not lose: the balance check cannot fail"; rc=1; }
+echo "$out" | grep -qE "^FAIL night1 (winnable|finished)" || { echo "!! the reckless player did not lose: the balance check cannot fail"; rc=1; }
 echo "verify_all rc=$rc"; exit $rc

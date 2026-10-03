@@ -55,9 +55,12 @@ ITEMS = {
     "torch":         {"kind": "equip", "slot": "tool", "for": "vance", "bonus": {"stl": 1}, "mult": {"stall": 0.2}},
     "tweed":         {"kind": "equip", "slot": "outfit", "for": "vance", "bonus": {"grt": 1}},
     "signet":        {"kind": "equip", "slot": "accessory", "for": "vance", "bonus": {"cha": 1}},
-    "raincoat":      {"kind": "equip", "slot": "outfit", "for": "elena", "bonus": {"grt": 1}},
+    "raincoat":      {"kind": "equip", "slot": "outfit", "for": "elena", "bonus": {"grt": 1}, "sprite": "outfit_raincoat"},
     "cardigan":      {"kind": "equip", "slot": "outfit", "for": "elena", "bonus": {"cha": 1}, "mult": {"flirt": 0.2}, "sprite": "elena_soft"},
     "spectacles":    {"kind": "equip", "slot": "accessory", "for": "elena", "bonus": {"wit": 1}},
+    "nightwear":     {"kind": "equip", "slot": "outfit", "for": "elena", "bonus": {"cha": 3}, "mult": {"flirt": 0.5}, "sprite": "outfit_nightwear"},
+    "lantern":       {"kind": "equip", "slot": "tool", "for": "vance", "bonus": {"stl": 1, "grt": 1}},
+    "bell_rope":     {"kind": "evidence"},
     "survey":        {"kind": "evidence"},
     "plan_1994":     {"kind": "evidence"},
     "page_two":      {"kind": "evidence"},
@@ -70,7 +73,7 @@ ITEMS = {
 }
 ENEMIES = {
     # weak/resist are what the player learns; xp/drop/trust_win are the reward
-    "cobb":        {"name_key": "e_cobb", "sprite": "cobb", "composure": 55, "atk": 5, "susp_rate": 7,
+    "cobb":        {"name_key": "e_cobb", "sprite": "cobb", "composure": 55, "atk": 5, "susp_rate": 6,
                     "weak": ["bribe"], "resist": ["threaten"], "xp": 40, "drop": "porter_rota",
                     "barks": 3, "intro_key": "ei_cobb", "win_key": "ew_cobb"},
     "penhallow":   {"name_key": "e_penhallow", "sprite": "penhallow", "composure": 480, "atk": 7, "susp_rate": 11,
@@ -80,7 +83,10 @@ ENEMIES = {
                     "weak": ["evidence", "recite", "stall"], "resist": ["bribe", "threaten"], "xp": 60, "drop": "cardigan",
                     "trust_win": 1, "barks": 3, "intro_key": "ei_cobb_return", "win_key": "ew_cobb_return"},
     # nights 2-5 (VN cast keep VN sprites; new people use the rendered RPG enemy art)
-    **{eid: {"name_key": "e_" + eid, "sprite": spr, "composure": c, "atk": atk, "susp_rate": rate, "weak": w, "resist": r,
+    "marsh": {"name_key": "e_marsh", "sprite": "night_porter", "sprite_pressured": "night_porter_pressured", "composure": 560, "atk": 8,
+              "susp_rate": 11, "weak": ["evidence", "flirt"], "resist": ["threaten", "bluff"], "xp": 70, "drop": "lantern",
+              "barks": 3, "intro_key": "ei_marsh", "win_key": "ew_marsh"},
+    **{eid: {"name_key": "e_" + eid, "sprite": spr, "sprite_pressured": spr + "_pressured" if spr != "penhallow" else "", "composure": c, "atk": atk, "susp_rate": rate, "weak": w, "resist": r,
              "xp": xp, "drop": drop, "trust_win": 1 if boss else 0, "barks": 3, "bark_set": bark, "intro_key": "ei_" + bark, "win_key": "ew_" + bark,
              **({"boss": True, "barks": 4} if boss else {})}
        for eid, spr, c, atk, rate, w, r, xp, drop, bark, boss in [
@@ -94,22 +100,24 @@ ENEMIES = {
         ("penhallow_boss", "penhallow", 900, 12, 9, ["evidence", "flirt"], ["bribe", "threaten"], 200, "signet", "penhallow_boss", True),
         ("vey_n4", "secretary", 760, 12, 11, ["evidence", "stall", "flirt"], ["bribe", "bluff"], 110, "tea", "vey", False),
         ("hollis_n4", "security_guard", 680, 12, 11, ["bribe", "flirt"], ["evidence", "threaten"], 110, "cash", "hollis", False),
-        ("dean_tea", "dean_holloway", 1000, 12, 8, ["recite", "lecture", "evidence"], ["bluff", "flirt", "bribe", "threaten"], 240, "brandy", "dean_tea", True),
+        ("dean_tea", "dean_rpg", 1000, 12, 8, ["recite", "lecture", "evidence"], ["bluff", "flirt", "bribe", "threaten"], 240, "brandy", "dean_tea", True),
         ("crane_n4", "deans_man_b", 820, 12, 11, ["evidence", "recite"], ["bribe", "bluff", "threaten"], 120, "biscuits", "crane", False),
         ("crane_n5", "deans_man_b", 900, 13, 11, ["evidence", "recite"], ["bribe", "bluff", "threaten"], 130, "tea", "crane", False),
         ("grice_n5", "deans_man_a", 880, 13, 11, ["bluff", "flirt"], ["threaten", "bribe"], 130, "sherry", "grice", False),
         ("ambrose_n5", "solicitor", 920, 13, 11, ["evidence", "threaten"], ["bluff", "bribe"], 140, "brandy", "ambrose", False),
         ("penhallow_final", "penhallow", 1200, 14, 9, ["evidence", "recite", "lecture"], ["bribe", "threaten", "flirt"], 300, "biscuits", "penhallow_final", True),
     ]},
-    "dean_dawn_solo": {"name_key": "e_dean", "sprite": "dean_holloway", "composure": 300, "atk": 7, "susp_rate": 7,
+    "dean_dawn_solo": {"name_key": "e_dean", "sprite": "dean_rpg", "sprite_pressured": "dean_rpg_pressured", "composure": 210, "atk": 7, "susp_rate": 6,
                     "boss": True, "weak": ["bluff", "stall"], "resist": ["bribe", "threaten"], "xp": 120,
                     "drop": "signet", "barks": 4, "bark_set": "dean_dawn", "intro_key": "ei_dean", "win_key": "ew_dean"},
-    "dean_dawn":   {"name_key": "e_dean", "sprite": "dean_holloway", "composure": 520, "atk": 8, "susp_rate": 7,
+    "dean_dawn":   {"name_key": "e_dean", "sprite": "dean_rpg", "sprite_pressured": "dean_rpg_pressured", "composure": 520, "atk": 8, "susp_rate": 7,
                     "boss": True, "weak": ["bluff", "deflect", "stall"], "resist": ["flirt", "bribe", "threaten"], "xp": 120,
                     "drop": "signet", "barks": 4, "intro_key": "ei_dean", "win_key": "ew_dean"},
 }
 # our room id -> the RPG plate slot ops/elena_art/elena_gen.py renders (out/rpg/rooms/<slot>.png)
-ROOMS = {"study": None, "vault": "room_sealed_vault", "corridor": "room_porters_lodge", "stair": "room_crypt_stair",
+ROOMS = {"study": None, "entrance_hall": "room_entrance_hall", "map_room": "room_map_room", "bell_tower_stair": "room_bell_tower_stair",
+         "bell_chamber": "room_bell_chamber", "bindery": "room_bindery", "conservation_lab": "room_conservation_lab",
+         "roof_leads": "room_roof_leads", "vault": "room_sealed_vault", "corridor": "room_porters_lodge", "stair": "room_crypt_stair",
          "stacks": "room_stacks", "cellar": "room_coal_store", "dock": "room_records_basement", "muniment": "room_muniment_room",
          "reading_room": "room_reading_room", "common_room": "room_faculty_common_room", "deans_corridor": "room_deans_corridor",
          "annex": "room_chapel_annex", "deans_office": "room_deans_office", "carrel": "room_elena_carrel"}
@@ -134,7 +142,7 @@ game = {
     "store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01722365.html",
     "stats": ["wit", "cha", "grt", "stl"],
     "level_cap": 20, "trust_thresholds": [3, 5, 7, 9],
-    "heroine_flag": "elena_joined", "heroine_sprite": "elena_neutral",
+    "heroine_flag": "elena_joined", "heroine_sprite": "outfit_research",
     "party": [
         {"id": "vance", "base": {"wit": 4, "cha": 2, "grt": 3, "stl": 2}, "grow": ["wit", "grt", "cha", "stl"],
          "actions": ["deflect", "bluff", "evidence", "bribe", "threaten", "stall", "item"],
@@ -163,9 +171,11 @@ for c in game["gallery"]:
 art = {"rooms": {r: ([f"res://assets/rpg/rooms/{slot}.png"] if slot else []) + [f"res://assets/placeholder/rooms/{r}.webp"] for r, slot in ROOMS.items()},
        # VN-cast enemies keep their VN sprite (they appear in the VN CGs); new people use the
        # rendered RPG enemy art and have no placeholder (the standoff shows the room and name).
-       "enemies": {"cobb": ["res://assets/sprites/cobb.webp"], "penhallow": ["res://assets/rpg/enemies/enemy_penhallow_neutral.png", "res://assets/sprites/penhallow.webp"],
-                   "dean_holloway": ["res://assets/rpg/enemies/enemy_dean_neutral.png", "res://assets/sprites/dean_holloway.webp"],
-                   **{w: [f"res://assets/rpg/enemies/enemy_{w}_neutral.png"] for w in ("secretary", "deans_man_a", "deans_man_b", "security_guard", "rival_archivist", "solicitor")}},
+       "enemies": {"cobb": ["res://assets/sprites/cobb.webp"], "penhallow": ["res://assets/sprites/penhallow.webp"],
+                   "dean_rpg": ["res://assets/rpg/enemies/enemy_dean_neutral.png"], "dean_rpg_pressured": ["res://assets/rpg/enemies/enemy_dean_pressured.png"],
+                   **{w + p: [f"res://assets/rpg/enemies/enemy_{w}_{'pressured' if p else 'neutral'}.png"]
+                      for w in ("secretary", "deans_man_a", "deans_man_b", "security_guard", "rival_archivist", "solicitor", "night_porter")
+                      for p in ("", "_pressured")}},
        "sprites": {s: [f"res://assets/rpg/outfits/{s}.png", f"res://assets/sprites/{s}.webp"] for s in
                    ("elena_neutral", "elena_flustered", "elena_soft", "cobb", "penhallow", "dean_holloway")},
        **{}}
@@ -178,6 +188,23 @@ for f in sorted((D.parent / "assets/cg").glob("*.webp")):
 for slot in ("cg_rpg_rain_arrival", "cg_rpg_map_room", "cg_rpg_lockpick", "cg_rpg_bell_chamber", "cg_rpg_roof_dawn",
              "cg_rpg_gala", "cg_trust3_carrel", "cg_trust5_common_room", "cg_trust7_bath", "cg_trust9_bed"):
     art["cg"][slot] = [f"res://assets/rpg/cgs/{slot}.png"]   # new RPG CGs: shown only once rendered
+# every manifest asset must be reachable from the game: a renamed slot fails the build
+_man = json.loads(Path("/home/frankstone/Products/ops/elena_art/out/rpg/manifest.json").read_text())["assets"]
+_used = set()
+for r, slot in ROOMS.items():
+    if slot: _used.add(slot)
+_used.add("floor_map")
+for e in game["enemies"].values():
+    for k in ("sprite", "sprite_pressured"):
+        for pth in art["enemies"].get(e.get(k, ""), []):
+            _used.add(Path(pth).stem.removeprefix(""))
+for it in game["items"].values():
+    if it.get("sprite", "").startswith("outfit_"): _used.add(it["sprite"])
+_used.add(game["heroine_sprite"])
+for c in game["gallery"]: _used.add(c["id"])
+_missing = [a["id"] for a in _man if a["id"] not in _used]
+if _missing:
+    raise SystemExit("manifest assets not referenced by the game: " + ", ".join(_missing))
 (D / "game.json").write_text(json.dumps(game, indent=1))
 (D / "art_manifest.json").write_text(json.dumps(art, indent=1))
 print("game.json + art_manifest.json written")

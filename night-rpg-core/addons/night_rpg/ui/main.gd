@@ -605,7 +605,9 @@ func do_battle(enemy_id: String) -> String:
 		battle.policy = policy_override if policy_override.is_valid() else NRPolicy.choose
 	if shot_hook.is_valid():
 		battle.delay = 0.25
-		get_tree().create_timer(1.6).timeout.connect(func(): _shot("battle"))
+		battle.shot_hook = shot_hook
+		var tag := "battle_boss" if RPG.game["enemies"][enemy_id].get("boss", false) else "battle"
+		get_tree().create_timer(1.6).timeout.connect(func(): _shot(tag))
 	var rounds_before := 0
 	var res: String = await battle.start(enemy_id)
 	var e: Dictionary = RPG.game["enemies"][enemy_id]
@@ -870,9 +872,29 @@ func show_menu() -> void:
 	for m in RPG.game["party"]:
 		var mid3: String = m["id"]
 		eq.add_child(NRSkin.heading(Loc.t("n_" + mid3), 22))
+		var parts3 := []
+		for s3 in RPG.game["stats"]:
+			parts3.append("%s %d" % [Loc.t("s_" + s3), RPG.stat(mid3, s3)])
+		eq.add_child(NRSkin.label("   ".join(parts3), 17, Color(0.87, 0.74, 0.52)))
 		for slot in ["outfit", "accessory", "tool"]:
 			var cur: String = RPG.s["members"][mid3]["equip"][slot]
-			eq.add_child(NRSkin.label("%s: %s" % [Loc.t("slot_" + slot), Loc.t("i_" + cur) if cur != "" else "—"], 18))
+			var row := HBoxContainer.new()
+			var l := NRSkin.label("%s: %s" % [Loc.t("slot_" + slot), Loc.t("i_" + cur) if cur != "" else "—"], 18)
+			l.custom_minimum_size = Vector2(360, 0)
+			row.add_child(l)
+			if cur != "":
+				var dl := NRSkin.label(Loc.t("id_" + cur), 16, Color(0.75, 0.7, 0.65))
+				dl.custom_minimum_size = Vector2(560, 0)
+				dl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				row.add_child(dl)
+			eq.add_child(row)
+		var spare := []
+		for id in RPG.s["items"].keys():
+			var d := RPG.item_def(id)
+			if d.get("slot", "") != "" and d.get("for", mid3) == mid3:
+				spare.append(Loc.t("i_" + id))
+		if spare.size() > 0:
+			eq.add_child(NRSkin.label(Loc.t("m_items") + ": " + ", ".join(spare), 16, Color(0.75, 0.7, 0.65)))
 
 
 func show_system() -> void:

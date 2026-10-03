@@ -3,6 +3,34 @@
   "study": [
    "res://assets/placeholder/rooms/study.webp"
   ],
+  "entrance_hall": [
+   "res://assets/rpg/rooms/room_entrance_hall.png",
+   "res://assets/placeholder/rooms/entrance_hall.webp"
+  ],
+  "map_room": [
+   "res://assets/rpg/rooms/room_map_room.png",
+   "res://assets/placeholder/rooms/map_room.webp"
+  ],
+  "bell_tower_stair": [
+   "res://assets/rpg/rooms/room_bell_tower_stair.png",
+   "res://assets/placeholder/rooms/bell_tower_stair.webp"
+  ],
+  "bell_chamber": [
+   "res://assets/rpg/rooms/room_bell_chamber.png",
+   "res://assets/placeholder/rooms/bell_chamber.webp"
+  ],
+  "bindery": [
+   "res://assets/rpg/rooms/room_bindery.png",
+   "res://assets/placeholder/rooms/bindery.webp"
+  ],
+  "conservation_lab": [
+   "res://assets/rpg/rooms/room_conservation_lab.png",
+   "res://assets/placeholder/rooms/conservation_lab.webp"
+  ],
+  "roof_leads": [
+   "res://assets/rpg/rooms/room_roof_leads.png",
+   "res://assets/placeholder/rooms/roof_leads.webp"
+  ],
   "vault": [
    "res://assets/rpg/rooms/room_sealed_vault.png",
    "res://assets/placeholder/rooms/vault.webp"
@@ -61,30 +89,55 @@
    "res://assets/sprites/cobb.webp"
   ],
   "penhallow": [
-   "res://assets/rpg/enemies/enemy_penhallow_neutral.png",
    "res://assets/sprites/penhallow.webp"
   ],
-  "dean_holloway": [
-   "res://assets/rpg/enemies/enemy_dean_neutral.png",
-   "res://assets/sprites/dean_holloway.webp"
+  "dean_rpg": [
+   "res://assets/rpg/enemies/enemy_dean_neutral.png"
+  ],
+  "dean_rpg_pressured": [
+   "res://assets/rpg/enemies/enemy_dean_pressured.png"
   ],
   "secretary": [
    "res://assets/rpg/enemies/enemy_secretary_neutral.png"
   ],
+  "secretary_pressured": [
+   "res://assets/rpg/enemies/enemy_secretary_pressured.png"
+  ],
   "deans_man_a": [
    "res://assets/rpg/enemies/enemy_deans_man_a_neutral.png"
+  ],
+  "deans_man_a_pressured": [
+   "res://assets/rpg/enemies/enemy_deans_man_a_pressured.png"
   ],
   "deans_man_b": [
    "res://assets/rpg/enemies/enemy_deans_man_b_neutral.png"
   ],
+  "deans_man_b_pressured": [
+   "res://assets/rpg/enemies/enemy_deans_man_b_pressured.png"
+  ],
   "security_guard": [
    "res://assets/rpg/enemies/enemy_security_guard_neutral.png"
+  ],
+  "security_guard_pressured": [
+   "res://assets/rpg/enemies/enemy_security_guard_pressured.png"
   ],
   "rival_archivist": [
    "res://assets/rpg/enemies/enemy_rival_archivist_neutral.png"
   ],
+  "rival_archivist_pressured": [
+   "res://assets/rpg/enemies/enemy_rival_archivist_pressured.png"
+  ],
   "solicitor": [
    "res://assets/rpg/enemies/enemy_solicitor_neutral.png"
+  ],
+  "solicitor_pressured": [
+   "res://assets/rpg/enemies/enemy_solicitor_pressured.png"
+  ],
+  "night_porter": [
+   "res://assets/rpg/enemies/enemy_night_porter_neutral.png"
+  ],
+  "night_porter_pressured": [
+   "res://assets/rpg/enemies/enemy_night_porter_pressured.png"
   ]
  },
  "sprites": {
@@ -131,6 +184,27 @@
  "rooms_locked": {
   "study": [
    "res://assets/placeholder/rooms_locked/study.webp"
+  ],
+  "entrance_hall": [
+   "res://assets/placeholder/rooms_locked/entrance_hall.webp"
+  ],
+  "map_room": [
+   "res://assets/placeholder/rooms_locked/map_room.webp"
+  ],
+  "bell_tower_stair": [
+   "res://assets/placeholder/rooms_locked/bell_tower_stair.webp"
+  ],
+  "bell_chamber": [
+   "res://assets/placeholder/rooms_locked/bell_chamber.webp"
+  ],
+  "bindery": [
+   "res://assets/placeholder/rooms_locked/bindery.webp"
+  ],
+  "conservation_lab": [
+   "res://assets/placeholder/rooms_locked/conservation_lab.webp"
+  ],
+  "roof_leads": [
+   "res://assets/placeholder/rooms_locked/roof_leads.webp"
   ],
   "vault": [
    "res://assets/placeholder/rooms_locked/vault.webp"

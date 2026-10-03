@@ -22,6 +22,7 @@ var actor_lbl: Label
 var item_box: VBoxContainer
 var policy: Callable
 var action_panel: PanelContainer
+var shot_hook: Callable
 var delay := 0.55
 
 
@@ -237,6 +238,14 @@ func _say_event(ev: Dictionary) -> void:
 func _refresh() -> void:
 	e_comp.max_value = b["e_comp_max"]
 	e_comp.value = b["e_comp"]
+	var e: Dictionary = b["enemy"]
+	if e.has("sprite_pressured") and b["result"] != "win":
+		var pressed: bool = b["e_comp"] * 2 < b["e_comp_max"] or b["suspicion"] >= 60
+		var want: Texture2D = NRArt.tex("enemies", e["sprite_pressured"] if pressed else e.get("sprite", b["enemy_id"]))
+		if want != null and enemy_tex.texture != want:
+			enemy_tex.texture = want
+			if pressed and shot_hook.is_valid():
+				shot_hook.call("battle_pressured")
 	e_comp_lbl.text = Loc.t("b_resolve") % [b["e_comp"], b["e_comp_max"]]
 	e_susp.max_value = 100
 	e_susp.value = b["suspicion"]

@@ -52,6 +52,19 @@ for it in G["items"]:
     if "i_" + it not in S or "id_" + it not in S: bad.append(("item text", it))
 for k, row in S.items():
     if not row.get("ja"): bad.append(("no JA string", k))
+art = json.load(open(R / "data/art_manifest.json"))
+used_plates = set()
+for f in glob.glob(str(R / "data/nights/*.json")):
+    n = json.load(open(f))
+    for r in n["rooms"].values(): used_plates.add(r["plate"])
+    txt = json.dumps(n["events"])
+    for pl in art["rooms"]:
+        if f'"bg": "{pl}"' in txt: used_plates.add(pl)
+for pl in art["rooms"]:
+    if pl not in used_plates: bad.append(("room plate never used", pl))
+for pl, cands in art["rooms"].items():
+    if not any((R / c.replace("res://", "")).exists() and "/rpg/" in c for c in cands) and pl != "study":
+        bad.append(("room still on placeholder art", pl))
 for b in bad[:50]: print("BAD", b)
 print(f"check_data: {len(bad)} problem(s)")
 sys.exit(1 if bad else 0)

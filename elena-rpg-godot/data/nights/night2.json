@@ -18,6 +18,10 @@
     0.42,
     0.2
    ],
+   "entrance_hall": [
+    0.7,
+    0.2
+   ],
    "dock": [
     0.2,
     0.72
@@ -131,9 +135,9 @@
      ]
     },
     {
-     "id": "to_dock",
+     "id": "to_hall",
      "kind": "door",
-     "to": "dock",
+     "to": "entrance_hall",
      "pos": [
       0.9,
       0.86
@@ -142,6 +146,70 @@
     }
    ],
    "enter_event": "n2_lodge"
+  },
+  "entrance_hall": {
+   "name_key": "r_entrance_hall",
+   "plate": "entrance_hall",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8490",
+    "lamps": [
+     [
+      0.5,
+      0.15,
+      1.2,
+      "#ffd8a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "marsh",
+     "kind": "enemy",
+     "enemy": "marsh",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "n2_marsh_pre",
+     "after": "n2_marsh_post"
+    },
+    {
+     "id": "book",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.6
+     ],
+     "event": "n2_marsh_book",
+     "label_key": "hs_marsh_book",
+     "xp": 10,
+     "gives": [
+      "porter_rota"
+     ],
+     "if_flag": "marsh_done"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_dock",
+     "kind": "door",
+     "to": "dock",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "marsh_done"
+    }
+   ],
+   "enter_event": "n2_hall"
   },
   "dock": {
    "name_key": "r_dock",
@@ -218,9 +286,9 @@
      "if_flag": "swapped"
     },
     {
-     "id": "to_corridor",
+     "id": "to_hall",
      "kind": "door",
-     "to": "corridor",
+     "to": "entrance_hall",
      "pos": [
       0.1,
       0.86
@@ -492,9 +560,50 @@
     "key": "n2_keyring_1"
    }
   ],
+  "n2_hall": [
+   {
+    "say": "narrator",
+    "key": "n2_hall_1"
+   }
+  ],
+  "n2_marsh_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_marsh_1"
+   },
+   {
+    "say": "marsh",
+    "key": "n2_marsh_2"
+   }
+  ],
+  "n2_marsh_post": [
+   {
+    "say": "narrator",
+    "key": "n2_marsh_3"
+   },
+   {
+    "flag": "marsh_done"
+   }
+  ],
+  "n2_marsh_book": [
+   {
+    "say": "narrator",
+    "key": "n2_marsh_book_1"
+   }
+  ],
   "n2_dock": [
    {
     "lines": "ch2:116-116"
+   },
+   {
+    "cg": "cg_rpg_rain_arrival"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_rain_1"
+   },
+   {
+    "hide_cg": true
    },
    {
     "if_flag": "route_walk",

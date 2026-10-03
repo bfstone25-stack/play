@@ -33,6 +33,59 @@ CROPS = {  # room id -> (source image, crop box in 1920x1080)
     "carrel": ("images/cgs/cg_aftermath.webp", (1300, 0, 1920, 349)),
 }
 
+HEAVY_HEAL = {"enemy_deans_man_a_pressured.png": (0.55, 0.42, 1.0, 1.0, 28)}
+# black-background remnants rembg kept as foreground: (x0, y0, x1, y1) box in px; an
+# opaque near-black component whose bounding box lies wholly inside is deleted
+BLOB_REMOVE = {"outfit_gown.png": [(455, 610, 610, 910)]}
+
+
+def heal_cutout(src: Path, dst: Path) -> None:
+    """rembg leaves frayed mattes: alpha holes inside a figure with black RGB under them
+    (enemy_deans_man_a_pressured, right coat edge). Fill enclosed holes and bridge small
+    frays, painting the new pixels with the nearest opaque colour."""
+    import numpy as np
+    from scipy import ndimage
+    a = np.array(Image.open(src).convert("RGBA"))
+    solid = a[:, :, 3] > 8
+    want = ndimage.binary_fill_holes(solid) | ndimage.binary_closing(solid, iterations=6)
+    want &= ndimage.binary_dilation(solid, iterations=8)   # never grow a new outline far from the figure
+    # per-file heavy repair where the matte is shredded over a wide band (right coat edge)
+    for name, (x0, y0, x1, y1, it) in HEAVY_HEAL.items():
+        if src.name == name:
+            h, w = solid.shape
+            box = np.zeros_like(solid); box[int(y0 * h):int(y1 * h), int(x0 * w):int(x1 * w)] = True
+            # convex hull of the figure inside the band: a hanging coat edge is convex there
+            from scipy.spatial import ConvexHull
+            from matplotlib.path import Path as MPath
+            ys, xs = np.where(solid & box)
+            if len(xs) > 10:
+                hull = ConvexHull(np.c_[xs, ys])
+                yy, xx = np.mgrid[0:h, 0:w]
+                inside = MPath(np.c_[xs, ys][hull.vertices]).contains_points(np.c_[xx.ravel(), yy.ravel()]).reshape(h, w)
+                want |= inside & box
+    new = want & ~solid
+    if new.any():
+        _, (iy, ix) = ndimage.distance_transform_edt(~solid, return_indices=True)
+        a[new, :3] = a[iy[new], ix[new], :3]
+        a[new, 3] = 255
+    removed = 0
+    for (x0, y0, x1, y1) in BLOB_REMOVE.get(src.name, []):
+        dark = (a[:, :, :3].max(axis=2) < 16) & (a[:, :, 3] > 100)
+        lab, nlab = ndimage.label(dark)
+        for sl_i, sl in enumerate(ndimage.find_objects(lab), 1):
+            if sl is None:
+                continue
+            if sl[0].start >= y0 and sl[0].stop <= y1 and sl[1].start >= x0 and sl[1].stop <= x1:
+                comp = lab == sl_i
+                if comp.sum() > 60:
+                    a[comp, 3] = 0
+                    removed += int(comp.sum())
+    Image.fromarray(a).save(dst)
+    if removed:
+        print(f"  removed {removed} px of matte remnant from {src.name}")
+    print(f"  healed {src.name}: {int(new.sum())} px")
+
+
 def main():
     for sub in ("cg", "sprites", "ui", "title", "fonts", "audio", "placeholder/rooms", "rpg"):
         (A / sub).mkdir(parents=True, exist_ok=True)
@@ -57,7 +110,12 @@ def main():
     if RPG_OUT.exists():
         for f in RPG_OUT.rglob("*.png"):
             dst = A / "rpg" / f.relative_to(RPG_OUT)
-            dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(f, dst); n += 1
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            if f.parent.name in ("enemies", "outfits"):
+                heal_cutout(f, dst)
+            else:
+                shutil.copy2(f, dst)
+            n += 1
     # blurred, darkened copy of each room for the map's not-yet-visited tiles; made from the
     # real plate when it has arrived, else from the placeholder
     from PIL import ImageFilter, ImageEnhance

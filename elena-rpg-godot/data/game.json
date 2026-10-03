@@ -69,7 +69,7 @@
   9
  ],
  "heroine_flag": "elena_joined",
- "heroine_sprite": "elena_neutral",
+ "heroine_sprite": "outfit_research",
  "party": [
   {
    "id": "vance",
@@ -436,7 +436,8 @@
    "for": "elena",
    "bonus": {
     "grt": 1
-   }
+   },
+   "sprite": "outfit_raincoat"
   },
   "cardigan": {
    "kind": "equip",
@@ -457,6 +458,30 @@
    "bonus": {
     "wit": 1
    }
+  },
+  "nightwear": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "elena",
+   "bonus": {
+    "cha": 3
+   },
+   "mult": {
+    "flirt": 0.5
+   },
+   "sprite": "outfit_nightwear"
+  },
+  "lantern": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "vance",
+   "bonus": {
+    "stl": 1,
+    "grt": 1
+   }
+  },
+  "bell_rope": {
+   "kind": "evidence"
   },
   "survey": {
    "kind": "evidence"
@@ -519,7 +544,7 @@
    "sprite": "cobb",
    "composure": 55,
    "atk": 5,
-   "susp_rate": 7,
+   "susp_rate": 6,
    "weak": [
     "bribe"
    ],
@@ -575,9 +600,31 @@
    "intro_key": "ei_cobb_return",
    "win_key": "ew_cobb_return"
   },
+  "marsh": {
+   "name_key": "e_marsh",
+   "sprite": "night_porter",
+   "sprite_pressured": "night_porter_pressured",
+   "composure": 560,
+   "atk": 8,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "bluff"
+   ],
+   "xp": 70,
+   "drop": "lantern",
+   "barks": 3,
+   "intro_key": "ei_marsh",
+   "win_key": "ew_marsh"
+  },
   "vey": {
    "name_key": "e_vey",
    "sprite": "secretary",
+   "sprite_pressured": "secretary_pressured",
    "composure": 560,
    "atk": 8,
    "susp_rate": 11,
@@ -600,6 +647,7 @@
   "hollis": {
    "name_key": "e_hollis",
    "sprite": "security_guard",
+   "sprite_pressured": "security_guard_pressured",
    "composure": 580,
    "atk": 9,
    "susp_rate": 11,
@@ -622,6 +670,7 @@
   "grice": {
    "name_key": "e_grice",
    "sprite": "deans_man_a",
+   "sprite_pressured": "deans_man_a_pressured",
    "composure": 600,
    "atk": 10,
    "susp_rate": 11,
@@ -644,6 +693,7 @@
   "crane": {
    "name_key": "e_crane",
    "sprite": "deans_man_b",
+   "sprite_pressured": "deans_man_b_pressured",
    "composure": 760,
    "atk": 10,
    "susp_rate": 9,
@@ -668,6 +718,7 @@
   "grice_n3": {
    "name_key": "e_grice_n3",
    "sprite": "deans_man_a",
+   "sprite_pressured": "deans_man_a_pressured",
    "composure": 660,
    "atk": 11,
    "susp_rate": 11,
@@ -690,6 +741,7 @@
   "sallis": {
    "name_key": "e_sallis",
    "sprite": "rival_archivist",
+   "sprite_pressured": "rival_archivist_pressured",
    "composure": 700,
    "atk": 10,
    "susp_rate": 11,
@@ -713,6 +765,7 @@
   "ambrose": {
    "name_key": "e_ambrose",
    "sprite": "solicitor",
+   "sprite_pressured": "solicitor_pressured",
    "composure": 720,
    "atk": 10,
    "susp_rate": 11,
@@ -735,6 +788,7 @@
   "penhallow_boss": {
    "name_key": "e_penhallow_boss",
    "sprite": "penhallow",
+   "sprite_pressured": "",
    "composure": 900,
    "atk": 12,
    "susp_rate": 9,
@@ -758,6 +812,7 @@
   "vey_n4": {
    "name_key": "e_vey_n4",
    "sprite": "secretary",
+   "sprite_pressured": "secretary_pressured",
    "composure": 760,
    "atk": 12,
    "susp_rate": 11,
@@ -781,6 +836,7 @@
   "hollis_n4": {
    "name_key": "e_hollis_n4",
    "sprite": "security_guard",
+   "sprite_pressured": "security_guard_pressured",
    "composure": 680,
    "atk": 12,
    "susp_rate": 11,
@@ -802,7 +858,8 @@
   },
   "dean_tea": {
    "name_key": "e_dean_tea",
-   "sprite": "dean_holloway",
+   "sprite": "dean_rpg",
+   "sprite_pressured": "dean_rpg_pressured",
    "composure": 1000,
    "atk": 12,
    "susp_rate": 8,
@@ -829,6 +886,7 @@
   "crane_n4": {
    "name_key": "e_crane_n4",
    "sprite": "deans_man_b",
+   "sprite_pressured": "deans_man_b_pressured",
    "composure": 820,
    "atk": 12,
    "susp_rate": 11,
@@ -852,6 +910,7 @@
   "crane_n5": {
    "name_key": "e_crane_n5",
    "sprite": "deans_man_b",
+   "sprite_pressured": "deans_man_b_pressured",
    "composure": 900,
    "atk": 13,
    "susp_rate": 11,
@@ -875,6 +934,7 @@
   "grice_n5": {
    "name_key": "e_grice_n5",
    "sprite": "deans_man_a",
+   "sprite_pressured": "deans_man_a_pressured",
    "composure": 880,
    "atk": 13,
    "susp_rate": 11,
@@ -897,6 +957,7 @@
   "ambrose_n5": {
    "name_key": "e_ambrose_n5",
    "sprite": "solicitor",
+   "sprite_pressured": "solicitor_pressured",
    "composure": 920,
    "atk": 13,
    "susp_rate": 11,
@@ -919,6 +980,7 @@
   "penhallow_final": {
    "name_key": "e_penhallow_final",
    "sprite": "penhallow",
+   "sprite_pressured": "",
    "composure": 1200,
    "atk": 14,
    "susp_rate": 9,
@@ -943,10 +1005,11 @@
   },
   "dean_dawn_solo": {
    "name_key": "e_dean",
-   "sprite": "dean_holloway",
-   "composure": 300,
+   "sprite": "dean_rpg",
+   "sprite_pressured": "dean_rpg_pressured",
+   "composure": 210,
    "atk": 7,
-   "susp_rate": 7,
+   "susp_rate": 6,
    "boss": true,
    "weak": [
     "bluff",
@@ -965,7 +1028,8 @@
   },
   "dean_dawn": {
    "name_key": "e_dean",
-   "sprite": "dean_holloway",
+   "sprite": "dean_rpg",
+   "sprite_pressured": "dean_rpg_pressured",
    "composure": 520,
    "atk": 8,
    "susp_rate": 7,
