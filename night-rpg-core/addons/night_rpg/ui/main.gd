@@ -131,7 +131,14 @@ func _refresh_hud() -> void:
 		return
 	room_lbl.text = Loc.t(RPG.room().get("name_key", ""))
 	clock_lbl.text = Loc.t("h_clock") % [RPG.clock_text(), int(RPG.s["turns_left"]), int(RPG.s["level"])]
-	trust_lbl.text = Loc.t("h_trust") % [int(RPG.s["trust"]), _next_threshold()]
+	var tracks: Array = RPG.game.get("trust_tracks", [])
+	if tracks.is_empty():
+		trust_lbl.text = Loc.t("h_trust") % [int(RPG.s["trust"]), _next_threshold()]
+	else:
+		var parts := []
+		for tr in tracks:
+			parts.append(Loc.t("h_trust_track") % [Loc.t("n_" + tr), RPG.trust(tr)])
+		trust_lbl.text = "   ·   ".join(parts)
 
 
 func _next_threshold() -> int:
@@ -523,9 +530,13 @@ func _step(st: Dictionary) -> String:
 		RPG.take(st["take"])
 		return "ok"
 	if st.has("trust"):
-		RPG.add_trust(int(st["trust"]))
+		var track: String = st.get("track", "")
+		RPG.add_trust(int(st["trust"]), track)
 		if int(st["trust"]) > 0:
-			await _say_line("", Loc.t("ev_trust") % int(st["trust"]), {})
+			if track != "":
+				await _say_line("", Loc.t("ev_trust_track") % [Loc.t("n_" + track), int(st["trust"])], {})
+			else:
+				await _say_line("", Loc.t("ev_trust") % int(st["trust"]), {})
 		return "ok"
 	if st.has("xp"):
 		var lv := RPG.add_xp(int(st["xp"]))
@@ -535,28 +546,36 @@ func _step(st: Dictionary) -> String:
 			await level_up_flow()
 		return "ok"
 	if st.has("if_trust"):
-		var ok := int(RPG.s["trust"]) >= int(st["if_trust"])
+		var ok := RPG.trust(st.get("track", "")) >= int(st["if_trust"])
 		return await run_steps(st["then"] if ok else st.get("else", []))
 	if st.has("if_flag"):
 		return await run_steps(st["then"] if RPG.flag(st["if_flag"]) else st.get("else", []))
 	if st.has("choice"):
 		var opts := []
+		var shown := []   # options whose if_flag / if_not_flag allow them now
 		for o in st["choice"]:
+			if o.has("if_flag") and not RPG.flag(o["if_flag"]):
+				continue
+			if o.has("if_not_flag") and RPG.flag(o["if_not_flag"]):
+				continue
+			shown.append(o)
 			var t := Loc.menu(o["menu"]) if o.has("menu") else Loc.t(o["key"])
 			var locked := false
-			if o.has("req_trust") and int(RPG.s["trust"]) < int(o["req_trust"]):
+			if o.has("req_trust") and RPG.trust(o.get("req_track", "")) < int(o["req_trust"]):
 				locked = true
 				t += "   " + Loc.t("ch_need_trust") % int(o["req_trust"])
 			opts.append({"text": t, "locked": locked})
+		if shown.is_empty():
+			return "ok"
 		pace["choice"] += 8.0
 		var idx := 0
 		if auto:
-			event.auto_choice = _auto_choice(st["choice"])
+			event.auto_choice = _auto_choice(shown)
 			idx = await event.choose(opts)
 			await _shot("choice")
 		else:
 			idx = await event.choose(opts)
-		return await run_steps(st["choice"][idx].get("do", []))
+		return await run_steps(shown[idx].get("do", []))
 	if st.has("battle"):
 		return await do_battle(st["battle"])
 	if st.has("end_night"):
@@ -581,7 +600,7 @@ func _auto_choice(opts: Array) -> int:
 				return i
 	for i in opts.size():
 		var o: Dictionary = opts[i]
-		if o.has("req_trust") and int(RPG.s["trust"]) < int(o["req_trust"]):
+		if o.has("req_trust") and RPG.trust(o.get("req_track", "")) < int(o["req_trust"]):
 			continue
 		var v := int(o.get("auto_rank", 0))
 		if not o.has("auto_rank"):
@@ -599,7 +618,7 @@ func _auto_choice(opts: Array) -> int:
 func do_battle(enemy_id: String) -> String:
 	event.close()
 	hud.visible = false
-	var heroine: String = RPG.heroine_sprite() if RPG.in_party("elena") or RPG.game["party"].size() < 2 else ""
+	var heroine: String = RPG.heroine_sprite() if RPG.heroine_id() == "" or RPG.in_party(RPG.heroine_id()) else ""
 	stage.set_figure(NRArt.tex("sprites", heroine) if heroine != "" else null, 0.16)
 	if auto:
 		battle.delay = 0.0
@@ -625,8 +644,11 @@ func do_battle(enemy_id: String) -> String:
 	var steps := [{"xp": int(e.get("xp", 30))}]
 	if e.has("drop"):
 		steps.push_front({"give": e["drop"]})
-	if e.has("trust_win") and RPG.flag(RPG.game.get("heroine_flag", "heroine_joined")):
-		steps.append({"trust": int(e["trust_win"])})
+	if e.has("trust_win") and int(e["trust_win"]) != 0:
+		if e.get("trust_track", "") != "":
+			steps.append({"trust": int(e["trust_win"]), "track": e["trust_track"]})
+		elif RPG.flag(RPG.game.get("heroine_flag", "heroine_joined")):
+			steps.append({"trust": int(e["trust_win"])})
 	Sound.play_music(RPG.room().get("music", "explore"))
 	return await run_steps(steps)
 
@@ -744,7 +766,7 @@ func end_night(next: String) -> String:
 	if not (nid in RPG.s["nights_cleared"]):
 		RPG.s["nights_cleared"].append(nid)
 	stats["nights"].append(nid)
-	stats["trust"] = int(RPG.s["trust"])
+	stats["trust"] = RPG.trust_shown()
 	event.close()
 	if stop_after == nid:
 		return "night_over"
@@ -762,7 +784,7 @@ func end_night(next: String) -> String:
 		p.add_child(v)
 		var fin := next == ""
 		v.add_child(NRSkin.heading(Loc.t("fin_t" if fin else "end_t"), 34))
-		v.add_child(NRSkin.label(Loc.t("fin_body" if fin else "end_body") % [int(RPG.s["level"]), int(RPG.s["trust"])], 20))
+		v.add_child(NRSkin.label(Loc.t("fin_body" if fin else "end_body") % [int(RPG.s["level"]), RPG.trust_shown()], 20))
 		await _shot("the_end" if fin else "night_end")
 		RPG.save(1)
 		var done := [false]
@@ -831,7 +853,7 @@ func show_menu() -> void:
 	var st := VBoxContainer.new()
 	st.name = Loc.t("m_status")
 	tabs.add_child(st)
-	st.add_child(NRSkin.label(Loc.t("ms_level") % [int(RPG.s["level"]), int(RPG.s["xp"]), NRRules.xp_to_next(int(RPG.s["level"])), int(RPG.s["trust"])], 20))
+	st.add_child(NRSkin.label(Loc.t("ms_level") % [int(RPG.s["level"]), int(RPG.s["xp"]), NRRules.xp_to_next(int(RPG.s["level"])), RPG.trust_shown()], 20))
 	for m in RPG.game["party"]:
 		var mid: String = m["id"]
 		var parts := []
@@ -860,10 +882,11 @@ func show_menu() -> void:
 					row.add_child(NRSkin.button(Loc.t("m_equip_to") % Loc.t("n_" + mid2), func():
 						RPG.equip(mid2, id)
 						show_menu(), 16))
-		if d.get("gift", false) and RPG.flag(RPG.game.get("heroine_flag", "heroine_joined")):
-			row.add_child(NRSkin.button(Loc.t("m_gift"), func():
+		if d.get("gift", false) and (d.get("gift_track", "") != "" or RPG.flag(RPG.game.get("heroine_flag", "heroine_joined"))):
+			var gl: String = Loc.t("m_gift_to") % Loc.t("n_" + d["gift_track"]) if d.get("gift_track", "") != "" else Loc.t("m_gift")
+			row.add_child(NRSkin.button(gl, func():
 				RPG.take(id)
-				RPG.add_trust(int(d.get("gift_trust", 1)))
+				RPG.add_trust(int(d.get("gift_trust", 1)), d.get("gift_track", ""))
 				show_menu(), 16))
 		it.add_child(row)
 	# equipment: one column per member, filling the panel at sample size
