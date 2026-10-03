@@ -161,11 +161,20 @@ func _build() -> void:
 			focus_card = card
 
 	# right: the daily systems — the server's on Nutaku, the labelled local stubs elsewhere
+	# 2026-10-03 playtest: at Nutaku's 720 px frame the column ran past the bottom edge, and
+	# the login calendar, missions and leaderboard below "Candles" could never be reached.
+	# So the column scrolls, like the tier list does.
+	var side_scroll := ScrollContainer.new()
+	side_scroll.name = "SideScroll"
+	side_scroll.custom_minimum_size = Vector2(300, 0)
+	side_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	side_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	body.add_child(side_scroll)
 	var side := VBoxContainer.new()
 	side.name = "Side"
-	side.custom_minimum_size = Vector2(300, 0)
+	side.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	side.add_theme_constant_override("separation", 10)
-	body.add_child(side)
+	side_scroll.add_child(side)
 	if F2P.on():
 		for p in F2PUI.side(func(): _build(), _open_shop):
 			side.add_child(p)
@@ -267,7 +276,10 @@ func _tier_card(t: int) -> Control:
 		tag.text = I18n.t("locked") + " · " + I18n.t("clear_to_unlock")
 		tag.add_theme_color_override("font_color", Palette.ACCENT)
 	scol.add_child(tag)
-	if F2P.on() and not placeholder and not unlocked and not cleared:
+	# 2026-10-03 playtest: the weekly-drop tiers (43+) have no scene_NN SKU in the catalog,
+	# so the button read "Unlock now · 0 gold" and answered "Not bought: unknown sku".
+	# No SKU, no offer.
+	if F2P.on() and not placeholder and not unlocked and not cleared and F2P.price(F2P.tier_sku(t)) > 0:
 		# the one early-unlock offer: the tier's scene now, for gold
 		var buy := Button.new()
 		buy.name = "BuyScene"
