@@ -821,7 +821,7 @@ func _close_modal() -> void:
 
 
 func show_menu() -> void:
-	var v := _modal(Loc.t("m_party"))
+	var v := _modal(Loc.t("m_party"), 1120, 680)
 	var tabs := TabContainer.new()
 	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	v.add_child(tabs)
@@ -865,37 +865,84 @@ func show_menu() -> void:
 				RPG.add_trust(int(d.get("gift_trust", 1)))
 				show_menu(), 16))
 		it.add_child(row)
-	# equipment
-	var eq := VBoxContainer.new()
+	# equipment: one column per member, filling the panel at sample size
+	var eq := HBoxContainer.new()
 	eq.name = Loc.t("m_equip")
+	eq.add_theme_constant_override("separation", 24)
 	tabs.add_child(eq)
+	var stat_max := 20.0
 	for m in RPG.game["party"]:
 		var mid3: String = m["id"]
-		eq.add_child(NRSkin.heading(Loc.t("n_" + mid3), 22))
-		var parts3 := []
+		var col := VBoxContainer.new()
+		col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		col.add_theme_constant_override("separation", 6)
+		eq.add_child(col)
+		var head := HBoxContainer.new()
+		head.add_theme_constant_override("separation", 14)
+		col.add_child(head)
+		var info := VBoxContainer.new()
+		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		info.add_theme_constant_override("separation", 4)
+		head.add_child(info)
+		info.add_child(NRSkin.heading(Loc.t("n_" + mid3), 30))
+		info.add_child(NRSkin.label(Loc.t("b_comp_nerve") % [int(RPG.s["members"][mid3]["comp"]), RPG.comp_max(mid3), int(RPG.s["members"][mid3]["nerve"]), RPG.nerve_max(mid3)], 17, Color(0.75, 0.7, 0.65)))
 		for s3 in RPG.game["stats"]:
-			parts3.append("%s %d" % [Loc.t("s_" + s3), RPG.stat(mid3, s3)])
-		eq.add_child(NRSkin.label("   ".join(parts3), 17, Color(0.87, 0.74, 0.52)))
+			var srow := HBoxContainer.new()
+			srow.add_theme_constant_override("separation", 10)
+			var sl := NRSkin.label(Loc.t("s_" + s3), 22)
+			sl.custom_minimum_size = Vector2(104, 0)
+			srow.add_child(sl)
+			var bar := NRSkin.meter("bar_fill_gold")
+			bar.custom_minimum_size = Vector2(170, 22)
+			bar.max_value = stat_max
+			bar.value = RPG.stat(mid3, s3)
+			bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			srow.add_child(bar)
+			var vl := NRSkin.label(str(RPG.stat(mid3, s3)), 22, Color(0.87, 0.74, 0.52))
+			vl.autowrap_mode = TextServer.AUTOWRAP_OFF
+			vl.custom_minimum_size = Vector2(44, 0)
+			srow.add_child(vl)
+			info.add_child(srow)
+		# outfit preview: whoever the equipped outfit (or default) has a sprite for
+		var cur_outfit: String = RPG.s["members"][mid3]["equip"].get("outfit", "")
+		var spr: String = RPG.item_def(cur_outfit).get("sprite", "") if cur_outfit != "" else ""
+		if spr == "" and m.get("join_flag", "") != "":
+			spr = RPG.game.get("heroine_sprite", "")
+		var ptex: Texture2D = NRArt.tex("sprites", spr) if spr != "" and NRArt.path("sprites", spr) != "" else null
+		if ptex != null:
+			var pf := PanelContainer.new()
+			pf.custom_minimum_size = Vector2(176, 250)
+			var pv := TextureRect.new()
+			pv.texture = ptex
+			pv.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			pv.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			pv.custom_minimum_size = Vector2(176, 250)
+			pf.add_child(pv)
+			head.add_child(pf)
 		for slot in ["outfit", "accessory", "tool"]:
 			var cur: String = RPG.s["members"][mid3]["equip"][slot]
 			var row := HBoxContainer.new()
-			var l := NRSkin.label("%s: %s" % [Loc.t("slot_" + slot), Loc.t("i_" + cur) if cur != "" else "—"], 18)
-			l.custom_minimum_size = Vector2(360, 0)
+			row.add_theme_constant_override("separation", 8)
+			var l := NRSkin.label(Loc.t("slot_" + slot), 19, Color(0.87, 0.74, 0.52))
+			l.custom_minimum_size = Vector2(120, 0)
 			row.add_child(l)
+			var nm := NRSkin.label(Loc.t("i_" + cur) if cur != "" else "—", 24)
+			nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			row.add_child(nm)
+			col.add_child(row)
 			if cur != "":
-				var dl := NRSkin.label(Loc.t("id_" + cur), 16, Color(0.75, 0.7, 0.65))
-				dl.custom_minimum_size = Vector2(560, 0)
-				dl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				row.add_child(dl)
-			eq.add_child(row)
+				var dl := NRSkin.label(Loc.t("id_" + cur), 18, Color(0.75, 0.7, 0.65))
+				dl.custom_minimum_size = Vector2(400, 0)
+				col.add_child(dl)
 		var spare := []
 		for id in RPG.s["items"].keys():
 			var d := RPG.item_def(id)
 			if d.get("slot", "") != "" and d.get("for", mid3) == mid3:
 				spare.append(Loc.t("i_" + id))
 		if spare.size() > 0:
-			eq.add_child(NRSkin.label(Loc.t("m_items") + ": " + ", ".join(spare), 16, Color(0.75, 0.7, 0.65)))
-
+			var sp := NRSkin.label(Loc.t("m_items") + ": " + ", ".join(spare), 18, Color(0.75, 0.7, 0.65))
+			sp.custom_minimum_size = Vector2(400, 0)
+			col.add_child(sp)
 
 func show_system() -> void:
 	var v := _modal(Loc.t("m_system"), 520, 420)

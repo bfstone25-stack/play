@@ -23,6 +23,36 @@ func _ready() -> void:
 		get_tree().quit(2))
 	await get_tree().process_frame
 	RPG.persist["gallery"] = []
+	if "--only=equip" in OS.get_cmdline_user_args():
+		for l in ["en", "ja"]:
+			lang = l
+			Loc.set_lang(l)
+			main = load("res://addons/night_rpg/ui/main.tscn").instantiate()
+			main.auto = true
+			add_child(main)
+			main.event.auto_mode = true
+			RPG.new_game()
+			RPG.start_night("night3")
+			RPG.set_flag("elena_joined")
+			RPG.s["level"] = 10
+			for mid in ["vance", "elena"]:
+				for k in RPG.s["members"][mid]["base"].keys():
+					RPG.s["members"][mid]["base"][k] = int(RPG.s["members"][mid]["base"][k]) + 4
+			RPG.give("evening"); RPG.give("spectacles"); RPG.give("signet"); RPG.give("torch"); RPG.give("cardigan")
+			RPG.equip("elena", "evening"); RPG.equip("elena", "spectacles"); RPG.equip("vance", "signet"); RPG.equip("vance", "torch")
+			main.render_room()
+			main.show_menu()
+			await get_tree().create_timer(0.4).timeout
+			var tabs = main.overlay.find_children("*", "TabContainer", true, false)
+			if tabs.size() > 0:
+				tabs[0].current_tab = 2
+			await get_tree().create_timer(0.4).timeout
+			await snap("equip_menu")
+			main.queue_free()
+			await get_tree().process_frame
+		print("SHOTS: ", JSON.stringify(taken.keys()))
+		get_tree().quit()
+		return
 	if "--only=disclosure" in OS.get_cmdline_user_args():
 		for l in ["ja", "en"]:
 			lang = l
