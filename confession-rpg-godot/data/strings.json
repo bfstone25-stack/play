@@ -1,0 +1,1970 @@
+{
+ "n1_title": {
+  "en": "Case 1 — The Cold Room",
+  "ja": "第一の事件 — 冷蔵室"
+ },
+ "n1_sub": {
+  "en": "Thursday. The Paloma, back office. One down, three keys.",
+  "ja": "木曜。パロマの事務室。死者一人、鍵は三本。"
+ },
+ "n1_open_1": {
+  "en": "The captain gets in at seven. Until then the Paloma, the three keys and the three people who held them are yours.",
+  "ja": "署長は七時に来る。それまでは、パロマも、三本の鍵も、それを持っていた三人も、あなたのものだ。"
+ },
+ "n1_open_2": {
+  "en": "Three doors off one corridor; two blocks of wet street between here and the club. Start wherever the night tells you to.",
+  "ja": "一本の廊下に三つの扉。ここからクラブまでは濡れた通りを二区画。夜が告げる場所から始めろ。"
+ },
+ "n1_drawer_1": {
+  "en": "Your drawer: a notebook with half its pages gone, a hip flask, and two markers you have been owed since spring.",
+  "ja": "机の引き出し。半分ちぎれた手帳、スキットル、春から回収していない貸しが二つ。"
+ },
+ "n1_alley_1": {
+  "en": "The alley behind the Paloma. Rain in the puddles, a dead neon sign, police tape across the yard door, and a man standing where the tape used to be.",
+  "ja": "パロマ裏の路地。水たまりに雨、死んだネオン、裏庭の扉に張られた規制線、そしてテープのあった場所に立つ男。"
+ },
+ "n1_bouncer_1": {
+  "en": "\"Closed.\"",
+  "ja": "「閉店だ」"
+ },
+ "n1_bouncer_2": {
+  "en": "He peels the tape back for you. Not far.",
+  "ja": "彼はテープをめくってくれる。ほんの少しだけ。"
+ },
+ "n1_dumpster_1": {
+  "en": "Under the lid: a brass lighter with its initials scratched off, and a delivery docket somebody did not want found in the van.",
+  "ja": "蓋の下。イニシャルを削った真鍮のライターと、バンの中で見つかりたくなかった誰かの配達伝票。"
+ },
+ "n1_yard_1": {
+  "en": "The yard door. Steel, a rubber seal round the frame, a drag mark in the paint at knee height.",
+  "ja": "裏庭の扉。鋼製、枠にゴムのシール、膝の高さの塗装に引きずった跡。"
+ },
+ "n1_club_1": {
+  "en": "The Paloma after closing: upturned stools, the smell of a mop, one service light left on by somebody who meant to come back.",
+  "ja": "閉店後のパロマ。逆さのスツール、モップの匂い、戻るつもりだった誰かが点けたままのサービスライト。"
+ },
+ "n1_bar_1": {
+  "en": "Behind the bar, a bottle nobody rang up and a glass with lipstick on it.",
+  "ja": "カウンターの裏に、レジを通していない瓶と、口紅のついたグラス。"
+ },
+ "n1_curtain_1": {
+  "en": "The strip curtain to the back rooms. Plastic slats. They swing when you touch them and keep swinging for a long time.",
+  "ja": "奥へ続くストリップカーテン。プラスチックの帯。触れると揺れ、長いこと揺れ続ける。"
+ },
+ "n1_booth_1": {
+  "en": "The booths. Under one cushion, a marker in Nikolai's handwriting: a name, a sum, a date.",
+  "ja": "ボックス席。クッションの下に、ニコライの字の貸し。名前、金額、日付。"
+ },
+ "n1_office_1": {
+  "en": "The dead man's office. The chalk is gone, the chair is where he was, and the desk has been tidied by somebody who tidies when nervous.",
+  "ja": "死んだ男の事務室。チョークの跡は消え、椅子は彼のいた場所にあり、机は不安なときに片付ける誰かの手で整えられている。"
+ },
+ "n1_desk_1": {
+  "en": "A key list in the drawer: three keys issued, a fourth struck through and never returned.",
+  "ja": "引き出しの鍵一覧。三本発行、四本目は線で消され、返却されていない。"
+ },
+ "n1_safe_1": {
+  "en": "The safe is open and nothing is missing. The alarm log is taped inside the door: set at 02:14 by the manager's code.",
+  "ja": "金庫は開いていて、何もなくなっていない。扉の内側に警報記録。店長のコードで2時14分にセット。"
+ },
+ "n1_blinds_1": {
+  "en": "Through the blinds: the yard, the cooler door, and the camera on Delgado Street that likes Nikolai.",
+  "ja": "ブラインドの向こう。裏庭、冷蔵室の扉、ニコライを気に入っているデルガド通りのカメラ。"
+ },
+ "n1_cooler_1": {
+  "en": "The walk-in cooler. Your breath goes white. Something in here was moved, and the frost remembers the shape.",
+  "ja": "冷蔵室。息が白くなる。ここで何かが動かされ、霜がその形を覚えている。"
+ },
+ "n1_rack_1": {
+  "en": "Under the bottom rack: a left shoe, size ten, and a yellow marker forensics forgot to take with them.",
+  "ja": "最下段の棚の下。左の靴、10サイズ、鑑識が持ち帰り忘れた黄色いマーカー。"
+ },
+ "n2_title": {
+  "en": "Case 2 — The Second Key",
+  "ja": "第二の事件 — 二本目の鍵"
+ },
+ "n2_sub": {
+  "en": "Three weeks later. The loading bay, 05:40. Doors unlocked.",
+  "ja": "三週間後。搬入口、5時40分。ドアは開いていた。"
+ },
+ "n2_open_1": {
+  "en": "Three weeks. The Paloma reopened for nine days and closed again at 05:40 this morning, when a bookkeeper was found in her own car with the doors unlocked.",
+  "ja": "三週間。パロマは九日間営業を再開し、今朝5時40分にまた閉まった。帳簿係が自分の車の中で、ドアを開けたまま見つかった。"
+ },
+ "n2_open_2": {
+  "en": "The same three names on the sheet. Nobody is surprised, which is a kind of evidence too.",
+  "ja": "用紙には同じ三つの名前。誰も驚かない。それもまた一種の証拠だ。"
+ },
+ "n2_locker_1": {
+  "en": "Your locker. The good suit, for court. You have not been to court in a year.",
+  "ja": "ロッカー。法廷用の上等なスーツ。この一年、法廷には行っていない。"
+ },
+ "n2_archive_1": {
+  "en": "The records archive: the Paloma's licence file, six years of Iris Toma's handwriting, and the dust of nobody reading any of it.",
+  "ja": "記録保管庫。パロマの営業許可ファイル、六年分のアイリス・トマの手書き、そしてそれを誰も読まなかった埃。"
+ },
+ "n2_books_1": {
+  "en": "Two sets. The clean one typed; the real one in her hand, with margins full of questions nobody answered.",
+  "ja": "二組。清書の方はタイプ打ち。本物は彼女の手書きで、余白は誰も答えなかった問いで埋まっている。"
+ },
+ "n2_filedrawer_1": {
+  "en": "In the drawer: her fountain pen, and the aspirin she kept for the nights the numbers did not add up.",
+  "ja": "引き出しの中。彼女の万年筆と、数字の合わない夜のためのアスピリン。"
+ },
+ "n2_morgue_1": {
+  "en": "The morgue. Cold the way the cooler was cold. Sergeant Okafor has the log, a chair, and no intention of leaving either.",
+  "ja": "遺体安置所。冷蔵室と同じ冷たさ。オカフォー巡査部長は記録簿と椅子を持ち、どちらも離すつもりがない。"
+ },
+ "n2_sergeant_1": {
+  "en": "\"Day shift signs. You're not day shift.\"",
+  "ja": "「署名は日勤がする。あんたは日勤じゃない」"
+ },
+ "n2_sergeant_2": {
+  "en": "He signs you in under a name that is not yours.",
+  "ja": "彼はあなたでない名前であなたを記帳する。"
+ },
+ "n2_drawer7_1": {
+  "en": "Drawer 7. The note clipped to the sheet: lungs, clean water. No diesel. No rain.",
+  "ja": "7番の引き出し。シーツに留められた所見。肺、きれいな水。ディーゼルなし。雨水なし。"
+ },
+ "n2_alley_1": {
+  "en": "The alley again. No tape this time; the bouncer is at a different door in a different part of town.",
+  "ja": "また路地。今回はテープはない。バウンサーは別の街の別の扉にいる。"
+ },
+ "n2_bay_1": {
+  "en": "The loading bay. The water is down to the ankles now. Her car is still backed in, the way she always parked: ready to leave in one move.",
+  "ja": "搬入口。水はもう足首までに引いた。彼女の車はまだ後ろ向きに停められている。いつも通り、一手で出られるように。"
+ },
+ "n2_car_1": {
+  "en": "Keys in the ignition. Bag on the seat. Nothing taken. Everything about the car says she meant to drive away and never got the chance to try.",
+  "ja": "鍵はイグニッションに。バッグは座席に。何も取られていない。車のすべてが、彼女は走り去るつもりで、その機会を得なかったと言っている。"
+ },
+ "n2_light_1": {
+  "en": "The bay light is on a timer and it is off. It does not fail. The switch for it is inside, in the mop room.",
+  "ja": "搬入口の灯りはタイマー式で、消えている。故障しない灯りだ。スイッチは中の、モップ室にある。"
+ },
+ "n2_mop_1": {
+  "en": "The mop room. One bulb, a bucket on its side, and a deep white sink still full of water you can see the bottom of.",
+  "ja": "モップ室。電球一つ、横倒しのバケツ、底まで見える水で満たされた深い白いシンク。"
+ },
+ "n2_sink_1": {
+  "en": "Deep enough to lose an arm in. Clean. The only clean water in the building.",
+  "ja": "腕が沈むほど深い。澄んでいる。この建物で唯一のきれいな水。"
+ },
+ "n2_bucket_1": {
+  "en": "Under the bucket, a folded twenty with a phone number on it. Somebody's marker, now yours.",
+  "ja": "バケツの下に、電話番号を書いた二十ドル札。誰かの貸しが、あなたのものになった。"
+ },
+ "n2_bar_1": {
+  "en": "The bar. Someone has been drinking the good bottle and not paying.",
+  "ja": "バー。誰かが上等な瓶を飲んで、払っていない。"
+ },
+ "n2_desk_1": {
+  "en": "Her desk now. The lamp still warm — no. Your imagination. It has been three weeks.",
+  "ja": "今は彼女の机。ランプがまだ温かい — いや。気のせいだ。三週間経っている。"
+ },
+ "n2_safe_1": {
+  "en": "The safe. Locked this time. Adaeze changed the code the day after.",
+  "ja": "金庫。今回は施錠されている。アダエゼは翌日にコードを変えた。"
+ },
+ "n3_title": {
+  "en": "Case 3 — What the Room Heard",
+  "ja": "第三の事件 — 部屋が聞いたもの"
+ },
+ "n3_sub": {
+  "en": "The last night. The fire stairs, 01:20. A folder with nothing missing.",
+  "ja": "最後の夜。非常階段、1時20分。何も欠けていないフォルダー。"
+ },
+ "n3_open_1": {
+  "en": "The last night. A licensing inspector on the fire stairs, a folder beside him with nothing missing from it, and an inspection booked for nine that nobody will attend.",
+  "ja": "最後の夜。非常階段に査察官、横には何も欠けていないフォルダー、そして誰も出席しない九時の査察予定。"
+ },
+ "n3_open_2": {
+  "en": "Adaeze has a lawyer now. Vee walked in on their own. Nikolai is already in the chair.",
+  "ja": "アダエゼには弁護士がついた。ヴィーは自分で歩いてきた。ニコライはもう椅子に座っている。"
+ },
+ "n3_drawer_1": {
+  "en": "Your drawer, the last night: two coffees gone cold and a marker you had forgotten you held.",
+  "ja": "最後の夜の引き出し。冷めたコーヒー二つと、持っていたのを忘れていた貸し。"
+ },
+ "n3_lawyer_1": {
+  "en": "\"My client will see you when I say so.\"",
+  "ja": "「依頼人に会えるのは、私がいいと言ったときです」"
+ },
+ "n3_lawyer_2": {
+  "en": "Twenty minutes. She means it.",
+  "ja": "二十分。本気だ。"
+ },
+ "n3_club_1": {
+  "en": "The Paloma, the last time. Chairs on the tables for good.",
+  "ja": "最後のパロマ。椅子はもう永遠にテーブルの上だ。"
+ },
+ "n3_safe_1": {
+  "en": "The safe, open. The cash banded and in place. The inner drawer pulled out and empty, and a clean rectangle in the dust the size of a ledger.",
+  "ja": "金庫、開いている。現金は帯封のままそこにある。内側の引き出しは引き出されて空、埃に台帳の大きさのきれいな長方形。"
+ },
+ "n3_desk_1": {
+  "en": "A folder's worth of paper clips and nothing with a name on it. The office has been cleaned by someone who knows what a file looks like.",
+  "ja": "フォルダー一冊分のクリップと、名前の書かれたものは何一つない。ファイルの形を知っている誰かが、事務室を掃除した。"
+ },
+ "n3_stairs_1": {
+  "en": "The fire stairs. Concrete, steel nosing, no handrail on the turn. The building has been trying to kill somebody here for thirty years.",
+  "ja": "非常階段。コンクリート、鋼の段鼻、曲がり角に手摺りなし。この建物は三十年、ここで誰かを殺そうとしてきた。"
+ },
+ "n3_landing_1": {
+  "en": "Bo's folder, where it fell. Open. Nothing missing. Everything in it is about the Paloma, and none of it is about why he was in the office.",
+  "ja": "ボーのフォルダー、落ちた場所に。開いている。欠けているものはない。中身はすべてパロマについてで、彼がなぜ事務室にいたかについては何もない。"
+ },
+ "n3_flat_1": {
+  "en": "Adaeze's flat, over the club. Lights off. A coat on a chair. From the window you can see the yard wall and the square of light the office throws on it.",
+  "ja": "クラブの上のアダエゼの部屋。灯りは消えている。椅子にコート。窓からは裏庭の壁と、事務室が投げる四角い光が見える。"
+ },
+ "n3_window_1": {
+  "en": "The office light. From here you would have watched it go out.",
+  "ja": "事務室の灯り。ここからなら、消えるのを見ていられただろう。"
+ },
+ "n3_sofa_1": {
+  "en": "Between the cushions: a pair of gold cufflinks. Not hers. You know whose.",
+  "ja": "クッションの間に、金のカフスボタン。彼女のものではない。誰のものか、あなたは知っている。"
+ },
+ "n3_yard_1": {
+  "en": "The vent by the yard door. Put your ear to it and the office speaks. Not words. That there are words.",
+  "ja": "裏庭の扉の脇の通気口。耳を当てれば事務室が話す。言葉ではない。言葉があるということが。"
+ },
+ "n3_dumpster_1": {
+  "en": "A bottle, mostly full, thrown away by someone in a hurry.",
+  "ja": "ほぼ満杯の瓶。急いでいた誰かが捨てたもの。"
+ },
+ "ep_title": {
+  "en": "Epilogue — The safe house",
+  "ja": "エピローグ — 隠れ家"
+ },
+ "ep_sub": {
+  "en": "After the last file. One lamp.",
+  "ja": "最後のファイルの後。ランプ一つ。"
+ },
+ "ep_all": {
+  "en": "You got all three. Nobody hands you anything for that. You did not expect them to.",
+  "ja": "三件すべて解決した。誰も何も渡してはくれない。期待もしていなかった。"
+ },
+ "ep_some": {
+  "en": "You did not get all three. The rest sit in a drawer with your name on the tab.",
+  "ja": "三件すべてではなかった。残りは、あなたの名前のタブがついた引き出しの中だ。"
+ },
+ "ep_safe_1": {
+  "en": "The safe house. One lamp. Somebody knocks the way people knock when they have decided something on the stairs.",
+  "ja": "隠れ家。ランプ一つ。階段で何かを決めてきた人間のノックが聞こえる。"
+ },
+ "ep_nikolai_1": {
+  "en": "\"Third time I have come to you. First time nobody sent me.\"",
+  "ja": "「お前のところに来るのは三度目だ。誰にも送られずに来たのは初めてだ」"
+ },
+ "ep_nikolai_2": {
+  "en": "He takes off the signet ring and puts it on the table, which is the only confession he will ever make.",
+  "ja": "彼は印章指輪を外してテーブルに置く。それが彼が生涯にする唯一の自白だ。"
+ },
+ "ep_nikolai_3": {
+  "en": "You do not write it down. For an hour there is no file, no Paloma, and nobody's name on anything.",
+  "ja": "あなたは書き留めない。一時間、ファイルも、パロマも、誰の名前も、どこにもない。"
+ },
+ "ep_nikolai_no": {
+  "en": "Nikolai, at the door. He looks at you a long moment, then goes back down the stairs. Whatever he came to say, there was not enough between you for it.",
+  "ja": "扉の前にニコライ。長くあなたを見て、階段を降りていく。言いに来たことが何であれ、二人の間にはそのための十分なものがなかった。"
+ },
+ "ep_adaeze_1": {
+  "en": "\"I am not on any page tonight. I checked.\"",
+  "ja": "「今夜は私はどのページにも載っていない。確かめた」"
+ },
+ "ep_adaeze_2": {
+  "en": "She hangs her coat on your hook as if the hook were hers.",
+  "ja": "彼女はコートをあなたのフックに掛ける。フックが自分のものであるかのように。"
+ },
+ "ep_adaeze_3": {
+  "en": "Later she spells your name, slowly, to see if you will correct her.",
+  "ja": "あとで彼女はあなたの名前をゆっくり綴る。訂正するかどうか、見るために。"
+ },
+ "ep_adaeze_no": {
+  "en": "Adaeze, at the door. She says your name correctly, once, and leaves. That is all there was room for.",
+  "ja": "扉の前にアダエゼ。あなたの名前を一度正しく言って、去る。それだけの余地しかなかった。"
+ },
+ "ep_vee_1": {
+  "en": "\"Nobody came and got me. I walked. I keep telling you that.\"",
+  "ja": "「誰も迎えに来なかった。歩いてきた。ずっとそう言ってる」"
+ },
+ "ep_vee_2": {
+  "en": "Vee sits on the edge of the mattress and the shaking stops, for once, because of a room instead of in spite of one.",
+  "ja": "ヴィーはマットレスの端に座り、震えが止まる。初めて、部屋のせいでではなく、部屋のおかげで。"
+ },
+ "ep_vee_3": {
+  "en": "Dawn through the broken blinds. Vee is still here. That has to be worth something. It is.",
+  "ja": "壊れたブラインドから夜明け。ヴィーはまだここにいる。それは何かの価値があるはずだ。ある。"
+ },
+ "ep_vee_no": {
+  "en": "Vee, at the door. Vee does not come in, and you do not ask, and both of you know that was the kind thing.",
+  "ja": "扉の前にヴィー。入ってこず、あなたも頼まない。それが優しさだったと、二人とも知っている。"
+ },
+ "ep_lamp_1": {
+  "en": "You turn off the lamp. Somewhere a captain is signing something without reading it.",
+  "ja": "ランプを消す。どこかで署長が、読まずに何かに署名している。"
+ },
+ "title": {
+  "en": "Confession Room",
+  "ja": "Confession Room ―自白室―"
+ },
+ "t_subtitle": {
+  "en": "Three nights at the Paloma",
+  "ja": "パロマの三夜"
+ },
+ "t_note": {
+  "en": "18+ · All characters are adults · AI-generated work (see 'About this work')",
+  "ja": "18歳以上対象 · 登場人物は全員成人です · AI生成作品（「作品について」参照）"
+ },
+ "t_trial": {
+  "en": "Trial version — Case 1: The Cold Room",
+  "ja": "体験版 — 第一の事件「冷蔵室」"
+ },
+ "about_ai": {
+  "en": "This is an adults-only work. Every character depicted is an adult.\n\nAI disclosure: Generative AI is used as a production tool in this work, which was made through intensive collaboration between the developer and AI over several hundred hours. Images (sprites, backgrounds, CGs) are output by an image-generation model; music and sound effects are generated by the developer's own program. The concept, world, story structure, direction, character design, the selection and compositing of every image, game-system design and balancing, and testing are the developer's work; the script text and the program were written and edited jointly by AI language models and the developer.",
+  "ja": "本作は18歳以上を対象とした作品です。登場人物は全員成人です。\n\n【AI使用について】本作は生成AIを制作ツールとして活用し、開発者とAIの集中的な共同作業で制作しました。画像（立ち絵・背景・CG）は画像生成AIで出力し、音楽・効果音はプログラムによる生成です。企画・世界観・ストーリー構成・演出・キャラクター設計、すべての画像の選定と合成、ゲームシステムの設計とバランス調整、テストは開発者が行い、シナリオ文とプログラムはAI（大規模言語モデル）と開発者が共同で執筆・編集しています。制作には数百時間を費やしています。"
+ },
+ "ds_adult": {
+  "en": "18+. Everyone in this game is an adult. It contains sexual content (optional, consensual) and a homicide investigation told without flinching.",
+  "ja": "18歳以上対象。登場人物は全員成人です。性的描写（任意・合意の上）と、殺人事件の捜査を含みます。"
+ },
+ "n_protagonist": {
+  "en": "Reyes",
+  "ja": "レイエス"
+ },
+ "n_reyes": {
+  "en": "Reyes",
+  "ja": "レイエス"
+ },
+ "n_dispatch": {
+  "en": "Dispatch",
+  "ja": "通信係"
+ },
+ "n_nikolai": {
+  "en": "Nikolai",
+  "ja": "ニコライ"
+ },
+ "n_adaeze": {
+  "en": "Adaeze",
+  "ja": "アダエゼ"
+ },
+ "n_vee": {
+  "en": "Vee",
+  "ja": "ヴィー"
+ },
+ "n_bouncer": {
+  "en": "The bouncer",
+  "ja": "バウンサー"
+ },
+ "n_sergeant": {
+  "en": "Sgt. Okafor",
+  "ja": "オカフォー巡査部長"
+ },
+ "n_lawyer": {
+  "en": "Ms. Halloran",
+  "ja": "ハロラン弁護士"
+ },
+ "h_clock": {
+  "en": "%s   ·   %d moves before the captain   ·   Lv %d",
+  "ja": "%s　·　署長が来るまで残り %d 手　·　Lv %d"
+ },
+ "nc_budget": {
+  "en": "%d moves before the captain takes the case off you. Walking, searching, asking and pressing all cost time.",
+  "ja": "署長に事件を取り上げられるまで %d 手。移動・調査・質問・追及はすべて時間を使う。"
+ },
+ "m_party": {
+  "en": "Reyes",
+  "ja": "レイエス"
+ },
+ "m_map": {
+  "en": "The board",
+  "ja": "捜査板"
+ },
+ "ms_level": {
+  "en": "Level %d   XP %d / %d   Best trust %d",
+  "ja": "レベル %d　経験値 %d / %d　最高信頼 %d"
+ },
+ "end_t": {
+  "en": "Case closed",
+  "ja": "事件終了"
+ },
+ "end_body": {
+  "en": "Level %d · best Trust %d. Your progress is saved in slot 1.",
+  "ja": "レベル %d · 最高信頼 %d。進行状況はスロット1に保存された。"
+ },
+ "fin_t": {
+  "en": "End of run",
+  "ja": "完"
+ },
+ "fin_body": {
+  "en": "Level %d · best Trust %d. Thank you for playing. Your last save is in slot 1: replay a night to press someone you left alone.",
+  "ja": "レベル %d · 最高信頼 %d。プレイしていただきありがとうございました。最後のセーブはスロット1に。夜をやり直せば、放っておいた誰かを追及できる。"
+ },
+ "lose_standoff_t": {
+  "en": "The interview is over",
+  "ja": "取調べは終わった"
+ },
+ "lose_standoff": {
+  "en": "They stonewalled you and asked for a lawyer. Nothing is lost but the last few minutes: you are back at the last save, just before the door.",
+  "ja": "相手は口を閉ざし、弁護士を呼んだ。失ったのは数分だけ — 扉の直前のセーブに戻る。"
+ },
+ "lose_dawn_t": {
+  "en": "The captain",
+  "ja": "署長"
+ },
+ "lose_dawn": {
+  "en": "The captain is in. He takes the folder off your desk without looking at you. You are back at the last save.",
+  "ja": "署長が出勤してきた。あなたを見もせずに机からフォルダーを取り上げる。最後のセーブに戻る。"
+ },
+ "g_locked": {
+  "en": "Locked — Trust %d",
+  "ja": "未解放 — 信頼 %d"
+ },
+ "hs_locked_msg": {
+  "en": "Locked. Not tonight, not without a key.",
+  "ja": "施錠されている。鍵がなければ今夜は無理だ。"
+ },
+ "b_intro": {
+  "en": "The door closes.",
+  "ja": "扉が閉まる。"
+ },
+ "b_resolve": {
+  "en": "Composure %d / %d",
+  "ja": "平静 %d / %d"
+ },
+ "b_suspicion": {
+  "en": "Stonewall %d / 100",
+  "ja": "沈黙 %d / 100"
+ },
+ "b_comp_nerve": {
+  "en": "Case %d/%d  Nerve %d/%d",
+  "ja": "追及 %d/%d　胆力 %d/%d"
+ },
+ "b_dmg": {
+  "en": "Composure −%d.",
+  "ja": "平静 −%d。"
+ },
+ "b_susp": {
+  "en": "Stonewall %s.",
+  "ja": "沈黙 %s。"
+ },
+ "b_weak_hit": {
+  "en": "It lands — a weakness.",
+  "ja": "効いた — 弱点だ。"
+ },
+ "b_resist_hit": {
+  "en": "It slides off. They have heard that one before.",
+  "ja": "通じない。聞き慣れた手だ。"
+ },
+ "b_enemy_turn": {
+  "en": "%s pushes back. Stonewall %+d. %s's case takes −%d.",
+  "ja": "%sが押し返す。沈黙 %+d。%sの追及 −%d。"
+ },
+ "b_threat_mark": {
+  "en": "A threat cannot be taken back: they will stonewall faster for the rest of this interview.",
+  "ja": "脅しは取り消せない：この取調べの間、相手はより速く口を閉ざしていく。"
+ },
+ "b_win": {
+  "en": "They crack. Something true comes out.",
+  "ja": "相手が折れる。本当のことが出てくる。"
+ },
+ "b_lose": {
+  "en": "They stop talking and ask for a lawyer.",
+  "ja": "相手は口を閉ざし、弁護士を要求した。"
+ },
+ "b_marked": {
+  "en": "[threatened]",
+  "ja": "［脅迫済］"
+ },
+ "b_won": {
+  "en": "They gave",
+  "ja": "相手が折れた"
+ },
+ "b_lost": {
+  "en": "They lawyered up",
+  "ja": "弁護士を呼ばれた"
+ },
+ "r_needs_cash": {
+  "en": "Needs a marker to trade.",
+  "ja": "取引に使う貸しが必要。"
+ },
+ "s_wit": {
+  "en": "Wits",
+  "ja": "知力"
+ },
+ "s_cha": {
+  "en": "Charm",
+  "ja": "魅力"
+ },
+ "s_grt": {
+  "en": "Grit",
+  "ja": "根性"
+ },
+ "s_stl": {
+  "en": "Patience",
+  "ja": "忍耐"
+ },
+ "sd_wit": {
+  "en": "Bluffs, evidence, nerve pool.",
+  "ja": "はったり・証拠・胆力の上限。"
+ },
+ "sd_cha": {
+  "en": "Deals and leaning in.",
+  "ja": "取引と、身を寄せる話し方。"
+ },
+ "sd_grt": {
+  "en": "How much of the case you can hold, and how hard you press.",
+  "ja": "追及の耐久力と、詰める力。"
+ },
+ "sd_stl": {
+  "en": "Waiting brings the stonewall down further.",
+  "ja": "待つことで沈黙を大きく下げる。"
+ },
+ "a_deflect": {
+  "en": "Hold back",
+  "ja": "引く"
+ },
+ "a_observe": {
+  "en": "Read them",
+  "ja": "読む"
+ },
+ "a_press": {
+  "en": "Press",
+  "ja": "詰める"
+ },
+ "a_bluff": {
+  "en": "Bluff",
+  "ja": "はったり"
+ },
+ "a_evidence": {
+  "en": "Show evidence",
+  "ja": "証拠を示す"
+ },
+ "a_bribe": {
+  "en": "Offer a deal",
+  "ja": "取引を持ちかける"
+ },
+ "a_flirt": {
+  "en": "Lean in",
+  "ja": "身を寄せる"
+ },
+ "a_threaten": {
+  "en": "Threaten",
+  "ja": "脅す"
+ },
+ "a_stall": {
+  "en": "Wait",
+  "ja": "待つ"
+ },
+ "a_item": {
+  "en": "Use item",
+  "ja": "アイテム"
+ },
+ "a_casefile": {
+  "en": "Lay out the case",
+  "ja": "事件を並べる"
+ },
+ "a_quiet": {
+  "en": "A quiet word",
+  "ja": "静かな一言"
+ },
+ "ad_deflect": {
+  "en": "Take the next push on the chin and cool the room a little.",
+  "ja": "次の一押しを受け止め、空気を少し冷ます。"
+ },
+ "ad_observe": {
+  "en": "Watch their hands, not their face: reveals their weaknesses.",
+  "ja": "顔ではなく手を見る：弱点が分かる。"
+ },
+ "ad_press": {
+  "en": "Repeat the question until it costs them something. Grit.",
+  "ja": "相手が何かを失うまで同じ質問を繰り返す。根性。"
+ },
+ "ad_bluff": {
+  "en": "Tell them you already know. Wits.",
+  "ja": "もう知っていると言う。知力。"
+ },
+ "ad_evidence": {
+  "en": "Put a piece of the file on the table. Lowers the stonewall. Needs evidence.",
+  "ja": "書類を一枚テーブルに置く。沈黙が下がる。証拠品が必要。"
+ },
+ "ad_bribe": {
+  "en": "Trade a favour owed. Charm. Spends one marker.",
+  "ja": "貸しを一つ差し出す。魅力。貸しを一つ使う。"
+ },
+ "ad_flirt": {
+  "en": "Get close. Lower your voice. Charm.",
+  "ja": "近づき、声を落とす。魅力。"
+ },
+ "ad_threaten": {
+  "en": "Hits hard — and they remember. They stonewall faster for the rest of the interview.",
+  "ja": "強烈だが、相手は忘れない。以後この取調べでは沈黙が速く進む。"
+ },
+ "ad_stall": {
+  "en": "Say nothing. Let the clock do it. Stonewall falls; a little of the case comes back.",
+  "ja": "何も言わない。時計に任せる。沈黙が下がり、追及が少し戻る。"
+ },
+ "ad_item": {
+  "en": "Use something from your coat.",
+  "ja": "コートの中の物を使う。"
+ },
+ "ad_casefile": {
+  "en": "Walk them through the whole file, slowly, in order.",
+  "ja": "ファイル全体を、ゆっくり順番に話して聞かせる。"
+ },
+ "ad_quiet": {
+  "en": "Off the record. For a minute, nobody is a cop.",
+  "ja": "記録外の話。一分だけ、誰も刑事ではない。"
+ },
+ "i_marker": {
+  "en": "Marker",
+  "ja": "貸し"
+ },
+ "id_marker": {
+  "en": "A favour somebody owes. Offer a deal spends one.",
+  "ja": "誰かがあなたに負っている貸し。取引に一つ使う。"
+ },
+ "i_coffee": {
+  "en": "Station coffee",
+  "ja": "署のコーヒー"
+ },
+ "id_coffee": {
+  "en": "Restores 16 to the case.",
+  "ja": "追及を16回復。"
+ },
+ "i_cigarettes": {
+  "en": "Cigarettes",
+  "ja": "煙草"
+ },
+ "id_cigarettes": {
+  "en": "Restores 8 nerve.",
+  "ja": "胆力を8回復。"
+ },
+ "i_whisky": {
+  "en": "Bar whisky",
+  "ja": "バーのウイスキー"
+ },
+ "id_whisky": {
+  "en": "Restores 28 to the case.",
+  "ja": "追及を28回復。"
+ },
+ "i_aspirin": {
+  "en": "Aspirin",
+  "ja": "アスピリン"
+ },
+ "id_aspirin": {
+  "en": "Restores 14 nerve.",
+  "ja": "胆力を14回復。"
+ },
+ "i_alarm_log": {
+  "en": "Alarm panel log",
+  "ja": "警報装置の記録"
+ },
+ "id_alarm_log": {
+  "en": "Evidence. Set at 02:14. Nothing after.",
+  "ja": "証拠。2時14分にセット。その後は何もない。"
+ },
+ "i_docket": {
+  "en": "Delivery docket",
+  "ja": "配達伝票"
+ },
+ "id_docket": {
+  "en": "Evidence. One crate, signed in at 01:49. Not signed out.",
+  "ja": "証拠。木箱一つ、1時49分受領。退出記録なし。"
+ },
+ "i_key_list": {
+  "en": "The key list",
+  "ja": "鍵の一覧"
+ },
+ "id_key_list": {
+  "en": "Evidence. Three keys issued. A fourth was never returned.",
+  "ja": "証拠。発行された鍵は三本。四本目は返却されていない。"
+ },
+ "i_shoe": {
+  "en": "A left shoe",
+  "ja": "左の靴"
+ },
+ "id_shoe": {
+  "en": "Evidence. Size ten, from under the bottom rack of the cooler.",
+  "ja": "証拠。10サイズ、冷蔵室の最下段の棚の下から。"
+ },
+ "i_photo1": {
+  "en": "Forensics photograph",
+  "ja": "鑑識写真"
+ },
+ "id_photo1": {
+  "en": "Evidence. The cooler, the shoe, a yellow marker.",
+  "ja": "証拠。冷蔵室、靴、黄色いマーカー。"
+ },
+ "i_photo2": {
+  "en": "Forensics photograph",
+  "ja": "鑑識写真"
+ },
+ "id_photo2": {
+  "en": "Evidence. The mop room sink, still full, water clear.",
+  "ja": "証拠。モップ室のシンク。まだ満水で、水は澄んでいる。"
+ },
+ "i_photo3": {
+  "en": "Forensics photograph",
+  "ja": "鑑識写真"
+ },
+ "id_photo3": {
+  "en": "Evidence. The safe: cash in place, inner drawer empty.",
+  "ja": "証拠。金庫。現金はそのまま、内側の引き出しは空。"
+ },
+ "i_ledgers": {
+  "en": "Two sets of books",
+  "ja": "二組の帳簿"
+ },
+ "id_ledgers": {
+  "en": "Evidence. Iris's margins in the real one.",
+  "ja": "証拠。本物の方にアイリスの書き込みがある。"
+ },
+ "i_autopsy": {
+  "en": "Autopsy note",
+  "ja": "解剖所見"
+ },
+ "id_autopsy": {
+  "en": "Evidence. Lungs: clean water. No diesel.",
+  "ja": "証拠。肺：きれいな水。ディーゼルなし。"
+ },
+ "i_timer": {
+  "en": "Bay light timer",
+  "ja": "搬入口の灯りのタイマー"
+ },
+ "id_timer": {
+  "en": "Evidence. Switched off from inside. The switch is in the mop room.",
+  "ja": "証拠。内側から切られている。スイッチはモップ室にある。"
+ },
+ "i_sink_note": {
+  "en": "The sink",
+  "ja": "シンクの記録"
+ },
+ "id_sink_note": {
+  "en": "Evidence. Deep enough to lose an arm in. Clean.",
+  "ja": "証拠。腕が沈むほど深い。澄んでいる。"
+ },
+ "i_folder": {
+  "en": "Bo's folder",
+  "ja": "ボーのフォルダー"
+ },
+ "id_folder": {
+  "en": "Evidence. The report that would have closed the Paloma. Nothing missing.",
+  "ja": "証拠。パロマを閉店させるはずだった報告書。欠けているものはない。"
+ },
+ "i_safe_photo": {
+  "en": "The safe, photographed",
+  "ja": "金庫の写真"
+ },
+ "id_safe_photo": {
+  "en": "Evidence. Banded cash. One small drawer, empty, a clean rectangle in the dust.",
+  "ja": "証拠。帯封の現金。小さな引き出しが一つ、空で、埃にきれいな長方形の跡。"
+ },
+ "i_yard_light": {
+  "en": "The office light",
+  "ja": "事務室の灯り"
+ },
+ "id_yard_light": {
+  "en": "Evidence. From the flat you can see it on the yard wall. It went out at one.",
+  "ja": "証拠。上の部屋からは裏庭の壁に映るのが見える。一時に消えた。"
+ },
+ "i_vent_note": {
+  "en": "The vent",
+  "ja": "通気口"
+ },
+ "id_vent_note": {
+  "en": "Evidence. You can hear the office from the yard. Not words. That there are words.",
+  "ja": "証拠。裏庭から事務室の音が聞こえる。言葉ではない。言葉があるということが。"
+ },
+ "i_fact_nik_curtain": {
+  "en": "Nikolai: the strip curtain",
+  "ja": "ニコライ：ストリップカーテン"
+ },
+ "id_fact_nik_curtain": {
+  "en": "Route fact. Somebody was past the bar. He heard the strip curtain and did not look.",
+  "ja": "ルートで得た事実。誰かがバーの奥にいた。彼はカーテンの音を聞き、見なかった。"
+ },
+ "i_fact_ade_seal": {
+  "en": "Adaeze: the cooler door",
+  "ja": "アダエゼ：冷蔵室の扉"
+ },
+ "id_fact_ade_seal": {
+  "en": "Route fact. She heard the cooler door drag after she set the alarm.",
+  "ja": "ルートで得た事実。警報をセットした後、冷蔵室の扉が引きずられる音を聞いた。"
+ },
+ "i_fact_vee_hands": {
+  "en": "Vee: eleven minutes",
+  "ja": "ヴィー：十一分"
+ },
+ "id_fact_vee_hands": {
+  "en": "Route fact. Long enough to stop feeling their hands.",
+  "ja": "ルートで得た事実。手の感覚がなくなるほど長く、そこにいた。"
+ },
+ "i_fact_nik2_light": {
+  "en": "Nikolai: the bay light",
+  "ja": "ニコライ：搬入口の灯り"
+ },
+ "id_fact_nik2_light": {
+  "en": "Route fact. Killed from inside. The switch is in the mop room.",
+  "ja": "ルートで得た事実。内側から消された。スイッチはモップ室。"
+ },
+ "i_fact_ade2_mop": {
+  "en": "Adaeze: the mop room",
+  "ja": "アダエゼ：モップ室"
+ },
+ "id_fact_ade2_mop": {
+  "en": "Route fact. She was in the mop room at half past three.",
+  "ja": "ルートで得た事実。三時半、彼女はモップ室にいた。"
+ },
+ "i_fact_vee2_seen": {
+  "en": "Vee: the light",
+  "ja": "ヴィー：灯り"
+ },
+ "id_fact_vee2_seen": {
+  "en": "Route fact. A light on in the mop room around four. Vee did not go in.",
+  "ja": "ルートで得た事実。四時ごろモップ室に灯りが。ヴィーは入らなかった。"
+ },
+ "i_fact_nik3_tired": {
+  "en": "Nikolai: the patient one",
+  "ja": "ニコライ：辛抱強い男"
+ },
+ "id_fact_nik3_tired": {
+  "en": "Route fact. He has never once asked you for anything.",
+  "ja": "ルートで得た事実。彼はあなたに一度も何も頼んだことがない。"
+ },
+ "i_fact_ade3_office": {
+  "en": "Adaeze: the office light",
+  "ja": "アダエゼ：事務室の灯り"
+ },
+ "id_fact_ade3_office": {
+  "en": "Route fact. She watched it go out at one and did not come down.",
+  "ja": "ルートで得た事実。一時に消えるのを見て、降りてこなかった。"
+ },
+ "i_fact_vee3_slow": {
+  "en": "Vee: the stairs",
+  "ja": "ヴィー：階段"
+ },
+ "id_fact_vee3_slow": {
+  "en": "Route fact. Slow down, quick up. Nobody carries anything up.",
+  "ja": "ルートで得た事実。降りはゆっくり、上りは速い。誰も何かを持って上がらない。"
+ },
+ "i_lighter": {
+  "en": "A brass lighter",
+  "ja": "真鍮のライター"
+ },
+ "id_lighter": {
+  "en": "Vee's. Initials scratched off. Give it back.",
+  "ja": "ヴィーのもの。イニシャルが削られている。返してやろう。"
+ },
+ "i_cufflinks": {
+  "en": "Gold cufflinks",
+  "ja": "金のカフスボタン"
+ },
+ "id_cufflinks": {
+  "en": "Nikolai's. Found where they should not have been. Give them back.",
+  "ja": "ニコライのもの。あってはならない場所にあった。返してやろう。"
+ },
+ "i_pen": {
+  "en": "A fountain pen",
+  "ja": "万年筆"
+ },
+ "id_pen": {
+  "en": "Iris's. Adaeze would want it. Give it to her.",
+  "ja": "アイリスのもの。アダエゼが欲しがるだろう。渡してやろう。"
+ },
+ "i_coat": {
+  "en": "Your coat",
+  "ja": "いつものコート"
+ },
+ "id_coat": {
+  "en": "Outfit. Grit +1.",
+  "ja": "衣装。根性+1。"
+ },
+ "i_raincoat": {
+  "en": "Police-issue raincoat",
+  "ja": "官給のレインコート"
+ },
+ "id_raincoat": {
+  "en": "Outfit. Grit +2.",
+  "ja": "衣装。根性+2。"
+ },
+ "i_suit": {
+  "en": "The good suit",
+  "ja": "上等なスーツ"
+ },
+ "id_suit": {
+  "en": "Outfit. Charm +2, deals stronger.",
+  "ja": "衣装。魅力+2、取引強化。"
+ },
+ "i_badge": {
+  "en": "Your badge",
+  "ja": "警察バッジ"
+ },
+ "id_badge": {
+  "en": "Accessory. Charm +1.",
+  "ja": "アクセサリー。魅力+1。"
+ },
+ "i_watch": {
+  "en": "Iris's watch",
+  "ja": "アイリスの腕時計"
+ },
+ "id_watch": {
+  "en": "Accessory. Wits +1. Stopped at 03:40.",
+  "ja": "アクセサリー。知力+1。3時40分で止まっている。"
+ },
+ "i_notebook": {
+  "en": "Notebook",
+  "ja": "手帳"
+ },
+ "id_notebook": {
+  "en": "Tool. Wits +1, evidence stronger.",
+  "ja": "道具。知力+1、証拠強化。"
+ },
+ "i_flask": {
+  "en": "Hip flask",
+  "ja": "スキットル"
+ },
+ "id_flask": {
+  "en": "Tool. Patience +1, waiting stronger.",
+  "ja": "道具。忍耐+1、待つ強化。"
+ },
+ "i_recorder": {
+  "en": "Tape recorder",
+  "ja": "テープレコーダー"
+ },
+ "id_recorder": {
+  "en": "Tool. Wits +2, evidence stronger. Halloran's. She will want it back.",
+  "ja": "道具。知力+2、証拠強化。ハロランのもの。返せと言うだろう。"
+ },
+ "br_procedure": {
+  "en": "Procedure",
+  "ja": "手順"
+ },
+ "br_street": {
+  "en": "Street",
+  "ja": "路上"
+ },
+ "sk_method": {
+  "en": "Method",
+  "ja": "手法"
+ },
+ "skd_method": {
+  "en": "Wits +2.",
+  "ja": "知力 +2。"
+ },
+ "sk_paperwork": {
+  "en": "Paperwork",
+  "ja": "書類仕事"
+ },
+ "skd_paperwork": {
+  "en": "Evidence +30%.",
+  "ja": "証拠 +30%。"
+ },
+ "sk_patience": {
+  "en": "Patience",
+  "ja": "忍耐"
+ },
+ "skd_patience": {
+  "en": "Patience +2.",
+  "ja": "忍耐 +2。"
+ },
+ "sk_casefile_sk": {
+  "en": "The whole file",
+  "ja": "ファイル全部"
+ },
+ "skd_casefile_sk": {
+  "en": "Grants Lay out the case.",
+  "ja": "「事件を並べる」を習得。"
+ },
+ "sk_captain": {
+  "en": "Captain material",
+  "ja": "署長の器"
+ },
+ "skd_captain": {
+  "en": "Lay out the case +40%, evidence +20%.",
+  "ja": "事件を並べる +40%、証拠 +20%。"
+ },
+ "sk_cheap": {
+  "en": "Cheap to buy",
+  "ja": "安い買い物"
+ },
+ "skd_cheap": {
+  "en": "Deals +30%.",
+  "ja": "取引 +30%。"
+ },
+ "sk_face": {
+  "en": "Poker face",
+  "ja": "ポーカーフェイス"
+ },
+ "skd_face": {
+  "en": "Bluff +30%.",
+  "ja": "はったり +30%。"
+ },
+ "sk_thick": {
+  "en": "Thick skin",
+  "ja": "面の皮"
+ },
+ "skd_thick": {
+  "en": "Grit +2.",
+  "ja": "根性 +2。"
+ },
+ "sk_quiet_sk": {
+  "en": "Off the record",
+  "ja": "記録外"
+ },
+ "skd_quiet_sk": {
+  "en": "Grants A quiet word.",
+  "ja": "「静かな一言」を習得。"
+ },
+ "sk_hard": {
+  "en": "Hard case",
+  "ja": "手強い男"
+ },
+ "skd_hard": {
+  "en": "Threaten +40%, bluff +20%.",
+  "ja": "脅す +40%、はったり +20%。"
+ },
+ "r_precinct": {
+  "en": "Your desk",
+  "ja": "刑事部屋の机"
+ },
+ "r_corridor": {
+  "en": "The corridor",
+  "ja": "廊下"
+ },
+ "r_interview_nikolai": {
+  "en": "Interview room 1 — Nikolai",
+  "ja": "取調室1 — ニコライ"
+ },
+ "r_interview_adaeze": {
+  "en": "Interview room 2 — Adaeze",
+  "ja": "取調室2 — アダエゼ"
+ },
+ "r_interview_vee": {
+  "en": "Interview room 3 — Vee",
+  "ja": "取調室3 — ヴィー"
+ },
+ "r_lockup": {
+  "en": "Evidence lockup",
+  "ja": "証拠保管室"
+ },
+ "r_archive": {
+  "en": "Records archive",
+  "ja": "記録保管庫"
+ },
+ "r_morgue": {
+  "en": "The morgue",
+  "ja": "遺体安置所"
+ },
+ "r_alley": {
+  "en": "The alley behind the Paloma",
+  "ja": "パロマ裏の路地"
+ },
+ "r_club": {
+  "en": "The club floor",
+  "ja": "クラブのフロア"
+ },
+ "r_back_office": {
+  "en": "The dead man's office",
+  "ja": "死んだ男の事務室"
+ },
+ "r_cooler": {
+  "en": "The walk-in cooler",
+  "ja": "冷蔵室"
+ },
+ "r_loading_bay": {
+  "en": "The loading bay",
+  "ja": "搬入口"
+ },
+ "r_mop_room": {
+  "en": "The mop room",
+  "ja": "モップ室"
+ },
+ "r_fire_stairs": {
+  "en": "The fire stairs",
+  "ja": "非常階段"
+ },
+ "r_flat": {
+  "en": "The flat above the club",
+  "ja": "クラブの上の部屋"
+ },
+ "r_safe_house": {
+  "en": "The safe house",
+  "ja": "隠れ家"
+ },
+ "hs_back": {
+  "en": "Back",
+  "ja": "戻る"
+ },
+ "hs_close_door": {
+  "en": "Close the door",
+  "ja": "扉を閉める"
+ },
+ "hs_press_nikolai_1": {
+  "en": "Press Nikolai (2)",
+  "ja": "ニコライを追及する（2）"
+ },
+ "hs_press_nikolai_2": {
+  "en": "Press him harder (2)",
+  "ja": "さらに追及する（2）"
+ },
+ "hs_press_nikolai_3": {
+  "en": "Press him to the wall (2)",
+  "ja": "壁まで追い詰める（2）"
+ },
+ "hs_press_adaeze_1": {
+  "en": "Press Adaeze (2)",
+  "ja": "アダエゼを追及する（2）"
+ },
+ "hs_press_adaeze_2": {
+  "en": "Press her harder (2)",
+  "ja": "さらに追及する（2）"
+ },
+ "hs_press_adaeze_3": {
+  "en": "Press her to the wall (2)",
+  "ja": "壁まで追い詰める（2）"
+ },
+ "hs_press_vee_1": {
+  "en": "Press Vee (2)",
+  "ja": "ヴィーを追及する（2）"
+ },
+ "hs_press_vee_2": {
+  "en": "Press them harder (2)",
+  "ja": "さらに追及する（2）"
+ },
+ "hs_press_vee_3": {
+  "en": "Press them to the wall (2)",
+  "ja": "壁まで追い詰める（2）"
+ },
+ "hs_casefile": {
+  "en": "The case file",
+  "ja": "事件ファイル"
+ },
+ "hs_drawer": {
+  "en": "Desk drawer",
+  "ja": "机の引き出し"
+ },
+ "hs_board": {
+  "en": "Name someone",
+  "ja": "名前を挙げる"
+ },
+ "hs_tray": {
+  "en": "The tray",
+  "ja": "トレイ"
+ },
+ "hs_dumpster": {
+  "en": "The dumpster",
+  "ja": "ゴミ容器"
+ },
+ "hs_yard_door": {
+  "en": "The yard door",
+  "ja": "裏庭の扉"
+ },
+ "hs_bar": {
+  "en": "The bar",
+  "ja": "バーカウンター"
+ },
+ "hs_curtain": {
+  "en": "The strip curtain",
+  "ja": "ストリップカーテン"
+ },
+ "hs_booth": {
+  "en": "The booths",
+  "ja": "ボックス席"
+ },
+ "hs_desk": {
+  "en": "The desk",
+  "ja": "机"
+ },
+ "hs_safe": {
+  "en": "The safe",
+  "ja": "金庫"
+ },
+ "hs_blinds": {
+  "en": "The blinds",
+  "ja": "ブラインド"
+ },
+ "hs_rack": {
+  "en": "The bottom rack",
+  "ja": "最下段の棚"
+ },
+ "hs_car": {
+  "en": "Her car",
+  "ja": "彼女の車"
+ },
+ "hs_bay_light": {
+  "en": "The bay light",
+  "ja": "搬入口の灯り"
+ },
+ "hs_sink": {
+  "en": "The sink",
+  "ja": "シンク"
+ },
+ "hs_bucket": {
+  "en": "The mop bucket",
+  "ja": "モップバケツ"
+ },
+ "hs_books": {
+  "en": "The books",
+  "ja": "帳簿"
+ },
+ "hs_file_drawer": {
+  "en": "File drawer",
+  "ja": "ファイル引き出し"
+ },
+ "hs_morgue_drawer": {
+  "en": "Drawer 7",
+  "ja": "7番の引き出し"
+ },
+ "hs_landing": {
+  "en": "The landing",
+  "ja": "踊り場"
+ },
+ "hs_window": {
+  "en": "The window",
+  "ja": "窓"
+ },
+ "hs_sofa": {
+  "en": "The sofa",
+  "ja": "ソファ"
+ },
+ "hs_locker": {
+  "en": "Your locker",
+  "ja": "ロッカー"
+ },
+ "hs_visit_nikolai": {
+  "en": "Nikolai is at the door",
+  "ja": "ニコライが扉の前にいる"
+ },
+ "hs_visit_adaeze": {
+  "en": "Adaeze is at the door",
+  "ja": "アダエゼが扉の前にいる"
+ },
+ "hs_visit_vee": {
+  "en": "Vee is at the door",
+  "ja": "ヴィーが扉の前にいる"
+ },
+ "hs_end_run": {
+  "en": "Turn off the lamp",
+  "ja": "ランプを消す"
+ },
+ "e_nikolai": {
+  "en": "Nikolai",
+  "ja": "ニコライ"
+ },
+ "e_adaeze": {
+  "en": "Adaeze",
+  "ja": "アダエゼ"
+ },
+ "e_vee": {
+  "en": "Vee",
+  "ja": "ヴィー"
+ },
+ "e_bouncer": {
+  "en": "The bouncer",
+  "ja": "バウンサー"
+ },
+ "e_sergeant": {
+  "en": "Sgt. Okafor",
+  "ja": "オカフォー巡査部長"
+ },
+ "e_lawyer": {
+  "en": "Ms. Halloran, counsel",
+  "ja": "弁護士ハロラン"
+ },
+ "ei_nikolai_p1": {
+  "en": "Nikolai leans back. He has done this before, with better detectives, and he would like you to know it.",
+  "ja": "ニコライが椅子にもたれる。もっと腕のいい刑事ともこれをやってきた男で、それを知らせたがっている。"
+ },
+ "ei_nikolai_p2": {
+  "en": "He has stopped pretending to be bored. That is as close to a tell as he has.",
+  "ja": "退屈なふりをやめた。それが彼にとっての、最も分かりやすい手がかりだ。"
+ },
+ "ei_nikolai_p3": {
+  "en": "He folds his hands on the table. Whatever comes out next, he has already decided the price of it.",
+  "ja": "彼はテーブルの上で手を組む。次に出てくる言葉の値段を、もう決めている。"
+ },
+ "ew_nikolai_p1": {
+  "en": "He gives you a line. Not the line. A line.",
+  "ja": "彼が一つ言葉を渡す。本命ではない。だが一つ。"
+ },
+ "ew_nikolai_p2": {
+  "en": "He looks at the mirror as if somebody he knows were behind it.",
+  "ja": "知った顔が鏡の裏にいるかのように、彼は鏡を見る。"
+ },
+ "ew_nikolai_p3": {
+  "en": "He straightens his cuff. He is finished exactly when he intended to be.",
+  "ja": "彼は袖口を整える。終わるつもりだった瞬間に、ぴたりと終わる。"
+ },
+ "ei_adaeze_p1": {
+  "en": "Adaeze checks the clock before she checks you. She counts drawers for a living.",
+  "ja": "アダエゼはあなたより先に時計を見る。引き出しの金を数えるのが仕事の女だ。"
+ },
+ "ei_adaeze_p2": {
+  "en": "She sets her hands flat on the steel. The lease is hers; so, she has decided, is this room.",
+  "ja": "彼女は鋼のテーブルに両手を平らに置く。賃貸契約は彼女のもの。この部屋もそうだと、彼女は決めた。"
+ },
+ "ei_adaeze_p3": {
+  "en": "She does not look at the door. She has never once looked at the door.",
+  "ja": "彼女は扉を見ない。一度も見たことがない。"
+ },
+ "ew_adaeze_p1": {
+  "en": "She gives you exactly one thing, and spells it for you.",
+  "ja": "彼女はちょうど一つだけ渡し、綴りまで教える。"
+ },
+ "ew_adaeze_p2": {
+  "en": "A pause. The only crack she lets you see.",
+  "ja": "一拍の間。彼女が見せる唯一の亀裂。"
+ },
+ "ew_adaeze_p3": {
+  "en": "She says it with her chin up, the way she says everything.",
+  "ja": "彼女は顎を上げて言う。何を言う時もそうするように。"
+ },
+ "ei_vee_p1": {
+  "en": "Vee's hands will not stay still. They were not still before you came in either.",
+  "ja": "ヴィーの手は落ち着かない。あなたが入る前からそうだった。"
+ },
+ "ei_vee_p2": {
+  "en": "Vee has gone very still, which you have learned is worse.",
+  "ja": "ヴィーがぴたりと動かなくなった。それが悪い兆候だと、あなたはもう学んでいる。"
+ },
+ "ei_vee_p3": {
+  "en": "Vee looks at the ceiling. Whatever is coming, Vee has been carrying it a while.",
+  "ja": "ヴィーは天井を見る。これから出てくるものを、ずっと抱えてきたのだ。"
+ },
+ "ew_vee_p1": {
+  "en": "Vee says it fast, to get it over with.",
+  "ja": "ヴィーは早口で言う。早く終わらせたくて。"
+ },
+ "ew_vee_p2": {
+  "en": "Vee hears it land. Does not take it back.",
+  "ja": "ヴィーは言葉が落ちる音を聞く。取り消さない。"
+ },
+ "ew_vee_p3": {
+  "en": "Vee waits to be disbelieved. You do not, and that takes them a moment.",
+  "ja": "ヴィーは信じてもらえないのを待つ。あなたは疑わない。それに、ヴィーは一瞬戸惑う。"
+ },
+ "ei_bouncer": {
+  "en": "The bouncer fills the yard door. The club is closed, the club is a crime scene, and neither of those is his problem.",
+  "ja": "バウンサーが裏庭の扉を塞いでいる。クラブは閉店中で、現場で、どちらも彼の問題ではない。"
+ },
+ "ew_bouncer": {
+  "en": "He steps aside and lights a cigarette, which is as much of an apology as you will get.",
+  "ja": "彼は脇にどいて煙草に火をつける。それが得られる精一杯の謝罪だ。"
+ },
+ "ei_sergeant": {
+  "en": "Sergeant Okafor has the morgue log and a rule about who signs it. Night detectives are not on the list.",
+  "ja": "オカフォー巡査部長は安置所の記録簿と、誰が署名できるかの規則を持っている。夜勤の刑事はリストにない。"
+ },
+ "ew_sergeant": {
+  "en": "He signs you in under a name that is not yours and tells you to be quick.",
+  "ja": "彼はあなたでない名前であなたを記帳し、早くしろと言う。"
+ },
+ "ei_lawyer": {
+  "en": "Ms. Halloran stands between you and interview room two with a briefcase and the calm of a woman who bills by the hour.",
+  "ja": "ハロラン弁護士がブリーフケースを持ち、時間単位で請求する女の落ち着きで、取調室2との間に立つ。"
+ },
+ "ew_lawyer": {
+  "en": "She checks her watch, says 'twenty minutes', and lets you past.",
+  "ja": "彼女は時計を見て「二十分」と言い、あなたを通す。"
+ },
+ "bark_nikolai_1": {
+  "en": "\"Ask the camera on Delgado Street. It likes me.\"",
+  "ja": "「デルガド通りのカメラに聞け。俺を気に入ってる」"
+ },
+ "bark_nikolai_2": {
+  "en": "\"You keep handing me facts I am supposed to find surprising.\"",
+  "ja": "「驚けと言わんばかりに事実を渡してくるな」"
+ },
+ "bark_nikolai_3": {
+  "en": "\"Attention is cheaper than a lawyer. Until it isn't.\"",
+  "ja": "「注目は弁護士より安い。そうでなくなるまでは」"
+ },
+ "bark_nikolai_boss_1": {
+  "en": "\"Third time, Reyes. At some point this is a habit.\"",
+  "ja": "「三度目だぞ、レイエス。そろそろ習慣だ」"
+ },
+ "bark_nikolai_boss_2": {
+  "en": "\"The money was never the thing.\"",
+  "ja": "「金が目的だったことは一度もない」"
+ },
+ "bark_nikolai_boss_3": {
+  "en": "\"Ask yourself why the patient one is patient.\"",
+  "ja": "「辛抱強い男がなぜ辛抱強いのか、自分に問え」"
+ },
+ "bark_nikolai_boss_4": {
+  "en": "\"I have never once asked you for anything.\"",
+  "ja": "「俺はお前に一度も何も頼んだことがない」"
+ },
+ "bark_adaeze_1": {
+  "en": "\"Spell my name right.\"",
+  "ja": "「名前の綴りを間違えないで」"
+ },
+ "bark_adaeze_2": {
+  "en": "\"Everything here has my name on it. Including this.\"",
+  "ja": "「ここにあるものは全部私の名前入り。これもね」"
+ },
+ "bark_adaeze_3": {
+  "en": "\"Try to keep up.\"",
+  "ja": "「ついてきなさい」"
+ },
+ "bark_adaeze_boss_1": {
+  "en": "\"I was in the office with the books until four. Alone.\"",
+  "ja": "「四時まで事務室で帳簿を見ていた。一人で」"
+ },
+ "bark_adaeze_boss_2": {
+  "en": "\"That water is filthy.\"",
+  "ja": "「あの水は汚いのよ」"
+ },
+ "bark_adaeze_boss_3": {
+  "en": "\"She told me like she was doing me a kindness.\"",
+  "ja": "「彼女は親切のつもりで私に言った」"
+ },
+ "bark_adaeze_boss_4": {
+  "en": "\"Write it down. All of it.\"",
+  "ja": "「書きなさい。全部」"
+ },
+ "bark_vee_1": {
+  "en": "\"Eleven minutes. End to end.\"",
+  "ja": "「十一分。最初から最後まで」"
+ },
+ "bark_vee_2": {
+  "en": "\"I don't own anything that can be traced to an address.\"",
+  "ja": "「住所まで辿れるものは何一つ持ってない」"
+ },
+ "bark_vee_3": {
+  "en": "\"Don't stop asking.\"",
+  "ja": "「質問をやめないで」"
+ },
+ "bark_vee_boss_1": {
+  "en": "\"I said I never went past the bar.\"",
+  "ja": "「バーの奥には行ってないと言った」"
+ },
+ "bark_vee_boss_2": {
+  "en": "\"He owed me. Not money.\"",
+  "ja": "「あいつは借りがあった。金じゃない」"
+ },
+ "bark_vee_boss_3": {
+  "en": "\"You want me to say it. Fine.\"",
+  "ja": "「言わせたいんだろ。いいさ」"
+ },
+ "bark_vee_boss_4": {
+  "en": "\"It was cold in there.\"",
+  "ja": "「あそこは寒かった」"
+ },
+ "bark_bouncer_1": {
+  "en": "\"Closed, detective.\"",
+  "ja": "「閉店ですよ、刑事さん」"
+ },
+ "bark_bouncer_2": {
+  "en": "\"Warrant's a piece of paper. I'm a door.\"",
+  "ja": "「令状は紙切れだ。俺は扉だ」"
+ },
+ "bark_bouncer_3": {
+  "en": "\"Nikolai pays Thursdays. You pay never.\"",
+  "ja": "「ニコライは木曜に払う。あんたは一度も払わない」"
+ },
+ "bark_sergeant_1": {
+  "en": "\"Log says day shift. You're not day shift.\"",
+  "ja": "「記録簿には日勤と書いてある。あんたは日勤じゃない」"
+ },
+ "bark_sergeant_2": {
+  "en": "\"I've got six years to a pension, Reyes.\"",
+  "ja": "「年金まで六年なんだよ、レイエス」"
+ },
+ "bark_sergeant_3": {
+  "en": "\"Nobody drowns twice. Go home.\"",
+  "ja": "「二度溺れる奴はいない。帰れ」"
+ },
+ "bark_lawyer_1": {
+  "en": "\"My client has been very patient.\"",
+  "ja": "「依頼人はとても我慢していますよ」"
+ },
+ "bark_lawyer_2": {
+  "en": "\"Is that a question or a theory, detective?\"",
+  "ja": "「それは質問ですか、仮説ですか、刑事さん」"
+ },
+ "bark_lawyer_3": {
+  "en": "\"Twenty minutes. I am counting.\"",
+  "ja": "「二十分。数えていますから」"
+ },
+ "pb1_reply": {
+  "en": "\"Then let's both be quick.\"",
+  "ja": "「じゃあ、お互い手早く済ませよう」"
+ },
+ "pb2_reply": {
+  "en": "\"...\"",
+  "ja": "「……」"
+ },
+ "pb3_reply": {
+  "en": "\"And if what I've got isn't the kind of thing you write down either?\"",
+  "ja": "「私の持ってるものも、書き留める類のものじゃなかったら？」"
+ },
+ "pa_1": {
+  "en": "Pressure 1 of 3. Something they would not have said an hour ago is now on the table.",
+  "ja": "圧力 1/3。一時間前なら言わなかったことが、テーブルに載った。"
+ },
+ "pa_2": {
+  "en": "Pressure 2 of 3. The room is smaller than it was.",
+  "ja": "圧力 2/3。部屋は前より狭くなった。"
+ },
+ "pa_3": {
+  "en": "Pressure 3 of 3. There is nothing left they can keep from you by sitting still. The door is still open, and it stays open unless you close it.",
+  "ja": "圧力 3/3。じっと座っているだけでは、もう何も隠せない。扉はまだ開いている。あなたが閉めなければ、開いたままだ。"
+ },
+ "ch_close_it": {
+  "en": "Close it.",
+  "ja": "閉める。"
+ },
+ "ch_leave_open": {
+  "en": "Leave it open.",
+  "ja": "開けておく。"
+ },
+ "ch_look": {
+  "en": "Look at it.",
+  "ja": "見る。"
+ },
+ "ch_leave_tray": {
+  "en": "Leave it in the tray.",
+  "ja": "トレイに置いておく。"
+ },
+ "route_hint": {
+  "en": "You could close the door. Not tonight: there is not enough between you yet for that to be anything but a mistake.",
+  "ja": "扉を閉めることはできる。だが今夜ではない。二人の間にはまだ、それを間違い以外のものにするだけの何もない。"
+ },
+ "acc_intro": {
+  "en": "The board. Every line you pulled is pinned under the face that said it. One of them could not have known what they know.",
+  "ja": "捜査板。引き出した言葉はすべて、それを言った顔の下に留めてある。そのうち一人は、知っているはずのないことを知っている。"
+ },
+ "acc_who": {
+  "en": "Who killed them?",
+  "ja": "誰が殺した？"
+ },
+ "acc_who_nikolai": {
+  "en": "Nikolai — the fixer",
+  "ja": "ニコライ — 揉み消し屋"
+ },
+ "acc_who_adaeze": {
+  "en": "Adaeze — the manager",
+  "ja": "アダエゼ — 店長"
+ },
+ "acc_who_vee": {
+  "en": "Vee — the courier",
+  "ja": "ヴィー — 運び屋"
+ },
+ "acc_not_yet": {
+  "en": "Not yet.",
+  "ja": "まだだ。"
+ },
+ "acc_back": {
+  "en": "Back.",
+  "ja": "戻る。"
+ },
+ "acc_why": {
+  "en": "Which line convicts them? Pick the thing they could not have known unless they were there.",
+  "ja": "どの言葉が決定打か。その場にいなければ知り得なかったことを選べ。"
+ },
+ "acc_nothing": {
+  "en": "You never got them to say anything that matters. That is not a case.",
+  "ja": "肝心なことを何も言わせていない。それでは事件にならない。"
+ },
+ "end_clean_c1": {
+  "en": "You clear the case with moves still on the clock, which nobody will notice, and one door you closed, which you will.",
+  "ja": "署長が来る前に事件を片付けた。誰も気づかない。あなたが閉めた扉のことは、あなただけが覚えている。"
+ },
+ "end_clean_c2": {
+  "en": "Moves still on the clock. She signs the statement herself, on every page, the way she has signed everything.",
+  "ja": "まだ時間は残っていた。彼女は自分で供述書に署名する。全ページに。何にでもそうしてきたように。"
+ },
+ "end_clean_c3": {
+  "en": "Moves still on the clock, and one question you never asked in three nights: who was paying him to be patient.",
+  "ja": "まだ時間は残っていた。三夜のあいだ一度も訊かなかった問いが一つ：誰が彼に、辛抱強くいる金を払っていたのか。"
+ },
+ "ep_closed": {
+  "en": "Case closed.",
+  "ja": "事件解決。"
+ },
+ "ep_open": {
+  "en": "Case filed open.",
+  "ja": "事件は未解決のまま保管。"
+ },
+ "ep_next_c1": {
+  "en": "Reyes catches the next one three weeks later. There is always a next one.",
+  "ja": "三週間後、レイエスは次の事件を拾う。次はいつでもある。"
+ },
+ "ep_next_c2": {
+  "en": "Reyes catches the next one on the last night. There is always a next one.",
+  "ja": "最後の夜、レイエスは次の事件を拾う。次はいつでもある。"
+ },
+ "ep_next_c3": {
+  "en": "That was the last one. The Paloma will be a phone shop by spring.",
+  "ja": "それが最後だった。パロマは春には携帯ショップになる。"
+ },
+ "g_cg_intake": {
+  "en": "Intake",
+  "ja": "受付"
+ },
+ "g_cg_board": {
+  "en": "The board",
+  "ja": "捜査板"
+ },
+ "g_cg_closing": {
+  "en": "Dawn, interview room",
+  "ja": "夜明けの取調室"
+ },
+ "g_cg_nikolai_x": {
+  "en": "Nikolai — the door closed",
+  "ja": "ニコライ — 閉じた扉"
+ },
+ "g_cg_adaeze_x": {
+  "en": "Adaeze — the door closed",
+  "ja": "アダエゼ — 閉じた扉"
+ },
+ "g_cg_vee_x": {
+  "en": "Vee — the door closed",
+  "ja": "ヴィー — 閉じた扉"
+ },
+ "g_cg_evidence_x": {
+  "en": "Evidence: the cooler",
+  "ja": "証拠：冷蔵室"
+ },
+ "g_cg_evidence2_x": {
+  "en": "Evidence: the sink",
+  "ja": "証拠：シンク"
+ },
+ "g_cg_evidence3_x": {
+  "en": "Evidence: the safe",
+  "ja": "証拠：金庫"
+ },
+ "g_cg_rpg_paloma": {
+  "en": "The Paloma, 04:30",
+  "ja": "パロマ、4時30分"
+ },
+ "g_cg_rpg_bay": {
+  "en": "The loading bay",
+  "ja": "搬入口"
+ },
+ "g_cg_rpg_stairs": {
+  "en": "The fire stairs",
+  "ja": "非常階段"
+ },
+ "g_cg_trust5_adaeze": {
+  "en": "Adaeze — after hours",
+  "ja": "アダエゼ — 閉店後"
+ },
+ "g_cg_trust7_nikolai": {
+  "en": "Nikolai — the safe house",
+  "ja": "ニコライ — 隠れ家"
+ },
+ "g_cg_trust9_vee": {
+  "en": "Vee — dawn",
+  "ja": "ヴィー — 夜明け"
+ },
+ "tr_end_title": {
+  "en": "The trial ends here.",
+  "ja": "体験版はここまでです。"
+ },
+ "tr_end_body": {
+  "en": "The Cold Room is closed. The Second Key and What the Room Heard — two more cases, six more standoffs with each suspect, the Trust scenes at 5, 7 and 9, the epilogue at the safe house — are in the full version. Your save carries over.",
+  "ja": "「冷蔵室」は解決した。残る二つの事件「二本目の鍵」「部屋が聞いたもの」、各容疑者とのさらなる対峙、信頼5・7・9の場面、隠れ家のエピローグは製品版に。セーブデータは引き継がれます。"
+ },
+ "tr_open_store": {
+  "en": "Open the store page",
+  "ja": "ストアページを開く"
+ },
+ "tr_back": {
+  "en": "Back to title",
+  "ja": "タイトルへ"
+ },
+ "hs_ask_nik_keys": {
+  "en": "Ask: the keys",
+  "ja": "質問：鍵"
+ },
+ "hs_ask_nik_two": {
+  "en": "Ask: after two",
+  "ja": "質問：二時以降"
+ },
+ "hs_ask_nik_job": {
+  "en": "Ask: what you do here",
+  "ja": "質問：ここでの仕事"
+ },
+ "hs_ask_nik_marek": {
+  "en": "Ask: Marek",
+  "ja": "質問：マレク"
+ },
+ "hs_ask_nik_list": {
+  "en": "Ask: the list",
+  "ja": "質問：リスト"
+ },
+ "hs_ask_nik_money": {
+  "en": "Ask: the safe",
+  "ja": "質問：金庫"
+ },
+ "hs_ask_nik_room": {
+  "en": "Ask: the back rooms",
+  "ja": "質問：奥の部屋"
+ },
+ "hs_ask_nik_curtain": {
+  "en": "Ask: the strip curtain",
+  "ja": "質問：ストリップカーテン"
+ },
+ "hs_ask_ade_drawer": {
+  "en": "Ask: closing up",
+  "ja": "質問：閉店作業"
+ },
+ "hs_ask_ade_alarm": {
+  "en": "Ask: the alarm",
+  "ja": "質問：警報装置"
+ },
+ "hs_ask_ade_staff": {
+  "en": "Ask: who was left",
+  "ja": "質問：残っていた人"
+ },
+ "hs_ask_ade_marek": {
+  "en": "Ask: Marek",
+  "ja": "質問：マレク"
+ },
+ "hs_ask_ade_kitchen": {
+  "en": "Ask: the kitchen",
+  "ja": "質問：厨房"
+ },
+ "hs_ask_ade_vee": {
+  "en": "Ask: Vee",
+  "ja": "質問：ヴィー"
+ },
+ "hs_ask_ade_lease": {
+  "en": "Ask: the lease",
+  "ja": "質問：賃貸契約"
+ },
+ "hs_ask_ade_seal": {
+  "en": "Ask: the cooler door",
+  "ja": "質問：冷蔵室の扉"
+ },
+ "hs_ask_vee_crate": {
+  "en": "Ask: the delivery",
+  "ja": "質問：配達"
+ },
+ "hs_ask_vee_leave": {
+  "en": "Ask: leaving",
+  "ja": "質問：退店"
+ },
+ "hs_ask_vee_van": {
+  "en": "Ask: the van",
+  "ja": "質問：バン"
+ },
+ "hs_ask_vee_marek": {
+  "en": "Ask: Marek",
+  "ja": "質問：マレク"
+ },
+ "hs_ask_vee_name": {
+  "en": "Ask: whose name",
+  "ja": "質問：誰の名前"
+ },
+ "hs_ask_vee_bar": {
+  "en": "Ask: past the bar",
+  "ja": "質問：バーの奥"
+ },
+ "hs_ask_vee_cold": {
+  "en": "Ask: the cold",
+  "ja": "質問：寒さ"
+ },
+ "hs_ask_vee_hands": {
+  "en": "Ask: eleven minutes",
+  "ja": "質問：十一分"
+ },
+ "hs_ask_nik2_iris": {
+  "en": "Ask: Iris",
+  "ja": "質問：アイリス"
+ },
+ "hs_ask_nik2_rain": {
+  "en": "Ask: the rain",
+  "ja": "質問：雨"
+ },
+ "hs_ask_nik2_car": {
+  "en": "Ask: her car",
+  "ja": "質問：彼女の車"
+ },
+ "hs_ask_nik2_books": {
+  "en": "Ask: the books",
+  "ja": "質問：帳簿"
+ },
+ "hs_ask_nik2_second": {
+  "en": "Ask: the second set",
+  "ja": "質問：二冊目の帳簿"
+ },
+ "hs_ask_nik2_ade": {
+  "en": "Ask: Adaeze",
+  "ja": "質問：アダエゼ"
+ },
+ "hs_ask_nik2_offer": {
+  "en": "Ask: what Iris wanted",
+  "ja": "質問：アイリスの望み"
+ },
+ "hs_ask_nik2_light": {
+  "en": "Ask: the bay light",
+  "ja": "質問：搬入口の灯り"
+ },
+ "hs_ask_ade2_four": {
+  "en": "Ask: until four",
+  "ja": "質問：四時まで"
+ },
+ "hs_ask_ade2_iris": {
+  "en": "Ask: Iris",
+  "ja": "質問：アイリス"
+ },
+ "hs_ask_ade2_bay": {
+  "en": "Ask: the loading bay",
+  "ja": "質問：搬入口"
+ },
+ "hs_ask_ade2_sign": {
+  "en": "Ask: your signature",
+  "ja": "質問：あなたの署名"
+ },
+ "hs_ask_ade2_audit": {
+  "en": "Ask: the audit",
+  "ja": "質問：監査"
+ },
+ "hs_ask_ade2_night": {
+  "en": "Ask: that night",
+  "ja": "質問：あの夜"
+ },
+ "hs_ask_ade2_basin": {
+  "en": "Ask: clean water",
+  "ja": "質問：きれいな水"
+ },
+ "hs_ask_ade2_mop": {
+  "en": "Ask: the mop room",
+  "ja": "質問：モップ室"
+ },
+ "hs_ask_vee2_where": {
+  "en": "Ask: where you were",
+  "ja": "質問：居場所"
+ },
+ "hs_ask_vee2_bail": {
+  "en": "Ask: the bail",
+  "ja": "質問：保釈"
+ },
+ "hs_ask_vee2_iris": {
+  "en": "Ask: Iris",
+  "ja": "質問：アイリス"
+ },
+ "hs_ask_vee2_kind": {
+  "en": "Ask: why that mattered",
+  "ja": "質問：なぜ大事だったか"
+ },
+ "hs_ask_vee2_paid": {
+  "en": "Ask: who paid",
+  "ja": "質問：誰が払ったか"
+ },
+ "hs_ask_vee2_cold": {
+  "en": "Ask: the last case",
+  "ja": "質問：前の事件"
+ },
+ "hs_ask_vee2_scared": {
+  "en": "Ask: what you're afraid of",
+  "ja": "質問：何が怖いのか"
+ },
+ "hs_ask_vee2_seen": {
+  "en": "Ask: what you saw",
+  "ja": "質問：見たもの"
+ },
+ "hs_ask_nik3_bo": {
+  "en": "Ask: Bo Kestrel",
+  "ja": "質問：ボー・ケストレル"
+ },
+ "hs_ask_nik3_stairs": {
+  "en": "Ask: the fire stairs",
+  "ja": "質問：非常階段"
+ },
+ "hs_ask_nik3_morning": {
+  "en": "Ask: the inspection",
+  "ja": "質問：査察"
+ },
+ "hs_ask_nik3_folder": {
+  "en": "Ask: the folder",
+  "ja": "質問：フォルダー"
+ },
+ "hs_ask_nik3_paloma": {
+  "en": "Ask: the Paloma",
+  "ja": "質問：パロマ"
+ },
+ "hs_ask_nik3_safe": {
+  "en": "Ask: the safe",
+  "ja": "質問：金庫"
+ },
+ "hs_ask_nik3_drawer": {
+  "en": "Ask: what was worth taking",
+  "ja": "質問：盗む価値があったもの"
+ },
+ "hs_ask_nik3_tired": {
+  "en": "Ask: why you keep coming back",
+  "ja": "質問：なぜ戻ってくるのか"
+ },
+ "hs_ask_ade3_lease": {
+  "en": "Ask: the lease, again",
+  "ja": "質問：また賃貸契約"
+ },
+ "hs_ask_ade3_bo": {
+  "en": "Ask: Bo Kestrel",
+  "ja": "質問：ボー・ケストレル"
+ },
+ "hs_ask_ade3_night": {
+  "en": "Ask: last night",
+  "ja": "質問：昨夜"
+ },
+ "hs_ask_ade3_report": {
+  "en": "Ask: the report",
+  "ja": "質問：報告書"
+ },
+ "hs_ask_ade3_after": {
+  "en": "Ask: since Iris",
+  "ja": "質問：アイリス以来"
+ },
+ "hs_ask_ade3_nik": {
+  "en": "Ask: Nikolai",
+  "ja": "質問：ニコライ"
+ },
+ "hs_ask_ade3_owe": {
+  "en": "Ask: what he is owed",
+  "ja": "質問：彼が受け取るべきもの"
+ },
+ "hs_ask_ade3_office": {
+  "en": "Ask: the office light",
+  "ja": "質問：事務室の灯り"
+ },
+ "hs_ask_vee3_here": {
+  "en": "Ask: why you came in",
+  "ja": "質問：なぜ来たのか"
+ },
+ "hs_ask_vee3_bo": {
+  "en": "Ask: Bo Kestrel",
+  "ja": "質問：ボー・ケストレル"
+ },
+ "hs_ask_vee3_night": {
+  "en": "Ask: last night",
+  "ja": "質問：昨夜"
+ },
+ "hs_ask_vee3_yard": {
+  "en": "Ask: the yard",
+  "ja": "質問：裏庭"
+ },
+ "hs_ask_vee3_heard": {
+  "en": "Ask: what you heard",
+  "ja": "質問：聞いたこと"
+ },
+ "hs_ask_vee3_tell": {
+  "en": "Ask: why you didn't say",
+  "ja": "質問：なぜ言わなかったか"
+ },
+ "hs_ask_vee3_believe": {
+  "en": "Ask: what you want",
+  "ja": "質問：望むこと"
+ },
+ "hs_ask_vee3_slow": {
+  "en": "Ask: going down slow",
+  "ja": "質問：ゆっくり降りる足音"
+ }
+}

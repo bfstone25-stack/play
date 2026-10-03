@@ -1,0 +1,346 @@
+{
+ "chapter": "board",
+ "lines": [
+  {
+   "id": "case_file_c2827041",
+   "src": 74,
+   "label": "case_file",
+   "who": "narrator",
+   "en": "[CASE['victim']]",
+   "ja": ""
+  },
+  {
+   "id": "case_file_f5813bbf",
+   "src": 77,
+   "label": "case_file",
+   "who": "narrator",
+   "en": "[_lines]",
+   "ja": ""
+  },
+  {
+   "id": "case_file_a0757440",
+   "src": 78,
+   "label": "case_file",
+   "who": "narrator",
+   "en": "Three keys. Three people. Twelve questions before the captain takes it off you.",
+   "ja": "",
+   "v_en": "res://assets/voice/case_file_a0757440.ogg"
+  },
+  {
+   "id": "ending_clean_79deba0e",
+   "src": 154,
+   "label": "ending_clean",
+   "who": "protagonist",
+   "en": "Nobody told you he was in the cooler.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_79deba0e.ogg"
+  },
+  {
+   "id": "ending_clean_3adbfc32",
+   "src": 155,
+   "label": "ending_clean",
+   "who": "vee",
+   "en": "...",
+   "ja": ""
+  },
+  {
+   "id": "ending_clean_d6f48abd",
+   "src": 156,
+   "label": "ending_clean",
+   "who": "protagonist",
+   "en": "The file says the office. The press says the office. Your own statement says you never went past the bar. And then you told me it was cold in there.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_d6f48abd.ogg"
+  },
+  {
+   "id": "ending_clean_22e1c907",
+   "src": 157,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "Vee looks at their hands as though the hands were the part that did it.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_22e1c907.ogg"
+  },
+  {
+   "id": "ending_clean_2989a204",
+   "src": 158,
+   "label": "ending_clean",
+   "who": "vee",
+   "en": "He was already going. I only moved him so she wouldn't be the one to find him.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_2989a204.ogg"
+  },
+  {
+   "id": "ending_clean_298cd53a",
+   "src": 161,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "They take the shoe out from under the bottom rack at 06:40. Left foot. Size ten.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_298cd53a.ogg"
+  },
+  {
+   "id": "ending_clean_7c565a20",
+   "src": 162,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "You clear the case with [questions_left] questions still on the board, which nobody will notice, and one door you closed, which you will.",
+   "ja": ""
+  },
+  {
+   "id": "ending_clean_43023181",
+   "src": 165,
+   "label": "ending_clean",
+   "who": "protagonist",
+   "en": "The bay water is rain and diesel. Iris had neither in her.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_43023181.ogg"
+  },
+  {
+   "id": "ending_clean_21addb13",
+   "src": 166,
+   "label": "ending_clean",
+   "who": "adaeze",
+   "en": "...",
+   "ja": ""
+  },
+  {
+   "id": "ending_clean_27094537",
+   "src": 167,
+   "label": "ending_clean",
+   "who": "protagonist",
+   "en": "You told me the mop room sink is the only clean basin in the building. The file doesn't say clean. Nobody said clean but you.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_27094537.ogg"
+  },
+  {
+   "id": "ending_clean_06819f90",
+   "src": 168,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "She does not look away. She has not once looked away in three nights, and that is the worst of it.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_06819f90.ogg"
+  },
+  {
+   "id": "ending_clean_223f8c9a",
+   "src": 169,
+   "label": "ending_clean",
+   "who": "adaeze",
+   "en": "She was going to hand me to an auditor and call it a kindness. Six years, and she thought the kind thing was to warn me it was coming.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_223f8c9a.ogg"
+  },
+  {
+   "id": "ending_clean_a05c248e",
+   "src": 170,
+   "label": "ending_clean",
+   "who": "protagonist",
+   "en": "So you carried her out to the car.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_a05c248e.ogg"
+  },
+  {
+   "id": "ending_clean_98ebc8d6",
+   "src": 171,
+   "label": "ending_clean",
+   "who": "adaeze",
+   "en": "I put her somewhere she would be found by a stranger. That was the kindness I had left.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_98ebc8d6.ogg"
+  },
+  {
+   "id": "ending_clean_d0f00517",
+   "src": 174,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "The bay light is on a timer. It has been off for three weeks and nobody has called it in, because nobody in this building calls anything in.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_d0f00517.ogg"
+  },
+  {
+   "id": "ending_clean_e92e1d7a",
+   "src": 175,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "[questions_left] questions still on the board. She signs the statement herself, on every page, the way she has signed everything.",
+   "ja": ""
+  },
+  {
+   "id": "ending_clean_22576a8f",
+   "src": 178,
+   "label": "ending_clean",
+   "who": "protagonist",
+   "en": "You told me the inner drawer was the thing. The file says nothing was missing.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_22576a8f.ogg"
+  },
+  {
+   "id": "ending_clean_3d9d96a9",
+   "src": 179,
+   "label": "ending_clean",
+   "who": "nikolai",
+   "en": "The file is wrong. You knew the file was wrong before I opened my mouth.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_3d9d96a9.ogg"
+  },
+  {
+   "id": "ending_clean_25922e5f",
+   "src": 180,
+   "label": "ending_clean",
+   "who": "protagonist",
+   "en": "I knew. I didn't know you knew.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_25922e5f.ogg"
+  },
+  {
+   "id": "ending_clean_295ab6c3",
+   "src": 181,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "He takes it the way he takes everything: a line in a ledger he balanced weeks ago.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_295ab6c3.ogg"
+  },
+  {
+   "id": "ending_clean_87c31158",
+   "src": 182,
+   "label": "ending_clean",
+   "who": "nikolai",
+   "en": "Nine months of names, Reyes. Marek started it and Iris kept it and Bo was going to carry it out of here in a folder at nine in the morning.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_87c31158.ogg"
+  },
+  {
+   "id": "ending_clean_f85a803d",
+   "src": 183,
+   "label": "ending_clean",
+   "who": "protagonist",
+   "en": "And the two of them before him?",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_f85a803d.ogg"
+  },
+  {
+   "id": "ending_clean_3b7c5569",
+   "src": 184,
+   "label": "ending_clean",
+   "who": "nikolai",
+   "en": "You already cleared those. That is the part I would like you to sit with.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_3b7c5569.ogg"
+  },
+  {
+   "id": "ending_clean_33f5a299",
+   "src": 187,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "He walks out ahead of the uniform, because he has done it before and knows the pace. The ledger turns up in a locker at the bus terminal on Thursday.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_clean_33f5a299.ogg"
+  },
+  {
+   "id": "ending_clean_ba47863f",
+   "src": 188,
+   "label": "ending_clean",
+   "who": "narrator",
+   "en": "[questions_left] questions still on the board, and one you never asked in three nights: who was paying him to be patient.",
+   "ja": ""
+  },
+  {
+   "id": "ending_right_wrong_reason_4e147ff0",
+   "src": 197,
+   "label": "ending_right_wrong_reason",
+   "who": "narrator",
+   "en": "You get the name right and the reason wrong, and some lawyer gets a year out of the difference.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_right_wrong_reason_4e147ff0.ogg"
+  },
+  {
+   "id": "ending_right_wrong_reason_1c4d0321",
+   "src": 198,
+   "label": "ending_right_wrong_reason",
+   "who": "narrator",
+   "en": "It holds. Barely. The captain signs it without looking at you.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_right_wrong_reason_1c4d0321.ogg"
+  },
+  {
+   "id": "ending_wrong_0b4075e7",
+   "src": 205,
+   "label": "ending_wrong",
+   "who": "narrator",
+   "en": "The name you said goes on the sheet. The thing nobody was told stays a thing nobody was told.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_wrong_0b4075e7.ogg"
+  },
+  {
+   "id": "ending_wrong_60785ae0",
+   "src": 206,
+   "label": "ending_wrong",
+   "who": "dispatch",
+   "en": "Captain says that's the case, Reyes. Captain says go home.",
+   "ja": "",
+   "v_en": "res://assets/voice/ending_wrong_60785ae0.ogg"
+  },
+  {
+   "id": "epilogue_ad78a590",
+   "src": 216,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "Case closed: [b][CASE['title']][/b].",
+   "ja": ""
+  },
+  {
+   "id": "epilogue_8ca5452c",
+   "src": 218,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "Case filed open: [b][CASE['title']][/b].",
+   "ja": ""
+  },
+  {
+   "id": "epilogue_272efc2c",
+   "src": 224,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "Reyes catches the next one [_next['night']]. There is always a next one.",
+   "ja": ""
+  },
+  {
+   "id": "epilogue_232a2fb8",
+   "src": 240,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "Three nights, three files, and a club that will be a phone shop by spring.",
+   "ja": "",
+   "v_en": "res://assets/voice/epilogue_232a2fb8.ogg"
+  },
+  {
+   "id": "epilogue_84ab586a",
+   "src": 242,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "You got all three. Nobody hands you anything for that. You did not expect them to.",
+   "ja": "",
+   "v_en": "res://assets/voice/epilogue_84ab586a.ogg"
+  },
+  {
+   "id": "epilogue_cb85c934",
+   "src": 244,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "You got [len(cases_cleared)] of [CASE_COUNT]. The rest sit in a drawer with your name on the tab.",
+   "ja": ""
+  },
+  {
+   "id": "epilogue_aca7f464",
+   "src": 245,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "[b]Confession Room[/b] — end of run.",
+   "ja": "",
+   "v_en": "res://assets/voice/epilogue_aca7f464.ogg"
+  }
+ ],
+ "menus": {}
+}

@@ -1,0 +1,1288 @@
+{
+ "title_key": "title",
+ "logo": "res://assets/title/logo.png",
+ "title_bg": "res://assets/title/keyvisual.webp",
+ "fonts": {
+  "body": "res://assets/fonts/CourierPrime-Regular.ttf",
+  "display": "res://assets/fonts/StardosStencil-Bold.ttf",
+  "cjk": "res://assets/fonts/NotoSansCJKjp-Regular.otf"
+ },
+ "ui": {
+  "dust": "res://assets/title/haze.png",
+  "vignette": "res://assets/title/vignette.png",
+  "scrim": "res://assets/title/scrim.png",
+  "dim": "res://assets/title/scrim.png",
+  "panel": "res://assets/ui/panel.png",
+  "textbox": "res://assets/ui/textbox.png",
+  "namebox": "res://assets/ui/namebox.png",
+  "choice_idle": "res://assets/ui/choice_idle.png",
+  "choice_hover": "res://assets/ui/choice_hover.png",
+  "slot_idle": "res://assets/ui/slot_idle.png",
+  "slot_hover": "res://assets/ui/slot_hover.png",
+  "bar_under": "res://assets/ui/choice_idle.png",
+  "bar_fill": "res://assets/ui/namebox.png",
+  "bar_fill_gold": "res://assets/ui/title_hover.png",
+  "modal": "res://assets/ui/confirm.png"
+ },
+ "title_mood": {
+  "ambient": "#d8d4dc",
+  "torch": true,
+  "zoom": 1.1,
+  "offset": [
+   300,
+   0
+  ]
+ },
+ "music": {
+  "title": "res://assets/audio/noir_theme.ogg",
+  "explore": "res://assets/audio/explore.ogg",
+  "battle": "res://assets/audio/standoff.ogg",
+  "boss": "res://assets/audio/boss.ogg",
+  "intimate": "res://assets/audio/intimate.ogg",
+  "dawn": "res://assets/audio/dawn.ogg",
+  "pressure": "res://assets/audio/pressure.ogg"
+ },
+ "audio": {
+  "ambience": "res://assets/audio/room_tone.ogg",
+  "click": "res://assets/audio/ui_click.ogg",
+  "page_flip": "res://assets/audio/ui_hover.ogg",
+  "heartbeat": "res://assets/audio/heartbeat.ogg",
+  "sting": "res://assets/audio/title_sting.ogg",
+  "camera": "res://assets/audio/ui_click.ogg"
+ },
+ "disclosure_key": "about_ai",
+ "trial_last_night": "night1",
+ "trial_locked_cgs": [
+  "cg_nikolai_x",
+  "cg_adaeze_x",
+  "cg_vee_x"
+ ],
+ "store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01722985.html",
+ "stats": [
+  "wit",
+  "cha",
+  "grt",
+  "stl"
+ ],
+ "level_cap": 20,
+ "trust_thresholds": [
+  3,
+  5,
+  7,
+  9
+ ],
+ "trust_tracks": [
+  "nikolai",
+  "adaeze",
+  "vee"
+ ],
+ "party": [
+  {
+   "id": "reyes",
+   "base": {
+    "wit": 4,
+    "cha": 3,
+    "grt": 4,
+    "stl": 2
+   },
+   "grow": [
+    "wit",
+    "grt",
+    "cha",
+    "stl"
+   ],
+   "actions": [
+    "deflect",
+    "observe",
+    "press",
+    "bluff",
+    "evidence",
+    "bribe",
+    "flirt",
+    "threaten",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "procedure": [
+     "paperwork",
+     "patience",
+     "method",
+     "casefile_sk",
+     "captain"
+    ],
+    "street": [
+     "cheap",
+     "face",
+     "thick",
+     "quiet_sk",
+     "hard"
+    ]
+   },
+   "start_equip": {
+    "outfit": "coat",
+    "accessory": "badge"
+   }
+  }
+ ],
+ "start_items": {
+  "coffee": 1,
+  "marker": 2
+ },
+ "actions": {
+  "deflect": {
+   "kind": "guard",
+   "cost": 0,
+   "susp": 4
+  },
+  "observe": {
+   "kind": "observe",
+   "cost": 2,
+   "susp": 2
+  },
+  "press": {
+   "cost": 3,
+   "stat": "grt",
+   "power": 8,
+   "scale": 1.6,
+   "susp": 4
+  },
+  "bluff": {
+   "cost": 3,
+   "stat": "wit",
+   "power": 7,
+   "scale": 1.5,
+   "susp": 3
+  },
+  "evidence": {
+   "cost": 4,
+   "stat": "wit",
+   "power": 10,
+   "scale": 2.0,
+   "susp": -2,
+   "needs_kind": "evidence"
+  },
+  "bribe": {
+   "cost": 2,
+   "stat": "cha",
+   "power": 9,
+   "scale": 1.2,
+   "susp": 1,
+   "needs_kind": "cash"
+  },
+  "flirt": {
+   "cost": 3,
+   "stat": "cha",
+   "power": 7,
+   "scale": 1.8,
+   "susp": 2
+  },
+  "threaten": {
+   "cost": 4,
+   "stat": "grt",
+   "power": 13,
+   "scale": 2.0,
+   "susp": 12,
+   "harm": true
+  },
+  "stall": {
+   "kind": "stall",
+   "cost": 1,
+   "susp_down": 10,
+   "heal": 3
+  },
+  "item": {
+   "kind": "item",
+   "cost": 0
+  },
+  "casefile": {
+   "cost": 5,
+   "stat": "wit",
+   "power": 14,
+   "scale": 2.0,
+   "susp": -3
+  },
+  "quiet": {
+   "cost": 4,
+   "stat": "cha",
+   "power": 11,
+   "scale": 1.8,
+   "susp": -4
+  }
+ },
+ "skills": {
+  "paperwork": {
+   "branch": "procedure",
+   "req": 2,
+   "mult": {
+    "evidence": 0.3
+   }
+  },
+  "patience": {
+   "branch": "procedure",
+   "req": 4,
+   "stat": {
+    "stl": 2
+   }
+  },
+  "method": {
+   "branch": "procedure",
+   "req": 6,
+   "stat": {
+    "wit": 2
+   }
+  },
+  "casefile_sk": {
+   "branch": "procedure",
+   "req": 9,
+   "grant": "casefile"
+  },
+  "captain": {
+   "branch": "procedure",
+   "req": 12,
+   "mult": {
+    "casefile": 0.4,
+    "evidence": 0.2
+   }
+  },
+  "cheap": {
+   "branch": "street",
+   "req": 2,
+   "mult": {
+    "bribe": 0.3
+   }
+  },
+  "face": {
+   "branch": "street",
+   "req": 4,
+   "mult": {
+    "bluff": 0.3
+   }
+  },
+  "thick": {
+   "branch": "street",
+   "req": 6,
+   "stat": {
+    "grt": 2
+   }
+  },
+  "quiet_sk": {
+   "branch": "street",
+   "req": 9,
+   "grant": "quiet"
+  },
+  "hard": {
+   "branch": "street",
+   "req": 12,
+   "mult": {
+    "threaten": 0.4,
+    "bluff": 0.2
+   }
+  }
+ },
+ "items": {
+  "marker": {
+   "kind": "cash"
+  },
+  "coffee": {
+   "kind": "consumable",
+   "heal_comp": 16
+  },
+  "cigarettes": {
+   "kind": "consumable",
+   "heal_nerve": 8
+  },
+  "whisky": {
+   "kind": "consumable",
+   "heal_comp": 28
+  },
+  "aspirin": {
+   "kind": "consumable",
+   "heal_nerve": 14
+  },
+  "alarm_log": {
+   "kind": "evidence"
+  },
+  "docket": {
+   "kind": "evidence"
+  },
+  "key_list": {
+   "kind": "evidence"
+  },
+  "shoe": {
+   "kind": "evidence"
+  },
+  "photo1": {
+   "kind": "evidence"
+  },
+  "photo2": {
+   "kind": "evidence"
+  },
+  "photo3": {
+   "kind": "evidence"
+  },
+  "ledgers": {
+   "kind": "evidence"
+  },
+  "autopsy": {
+   "kind": "evidence"
+  },
+  "timer": {
+   "kind": "evidence"
+  },
+  "sink_note": {
+   "kind": "evidence"
+  },
+  "folder": {
+   "kind": "evidence"
+  },
+  "safe_photo": {
+   "kind": "evidence"
+  },
+  "yard_light": {
+   "kind": "evidence"
+  },
+  "vent_note": {
+   "kind": "evidence"
+  },
+  "lighter": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1,
+   "gift_track": "vee"
+  },
+  "cufflinks": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1,
+   "gift_track": "nikolai"
+  },
+  "pen": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1,
+   "gift_track": "adaeze"
+  },
+  "coat": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "reyes",
+   "bonus": {
+    "grt": 1
+   }
+  },
+  "raincoat": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "reyes",
+   "bonus": {
+    "grt": 2
+   }
+  },
+  "suit": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "reyes",
+   "bonus": {
+    "cha": 2
+   },
+   "mult": {
+    "bribe": 0.2
+   }
+  },
+  "badge": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "reyes",
+   "bonus": {
+    "cha": 1
+   }
+  },
+  "watch": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "reyes",
+   "bonus": {
+    "wit": 1
+   }
+  },
+  "notebook": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "reyes",
+   "bonus": {
+    "wit": 1
+   },
+   "mult": {
+    "evidence": 0.2
+   }
+  },
+  "flask": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "reyes",
+   "bonus": {
+    "stl": 1
+   },
+   "mult": {
+    "stall": 0.2
+   }
+  },
+  "recorder": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "reyes",
+   "bonus": {
+    "wit": 2
+   },
+   "mult": {
+    "evidence": 0.3
+   }
+  },
+  "fact_nik_curtain": {
+   "kind": "evidence"
+  },
+  "fact_ade_seal": {
+   "kind": "evidence"
+  },
+  "fact_vee_hands": {
+   "kind": "evidence"
+  },
+  "fact_nik2_light": {
+   "kind": "evidence"
+  },
+  "fact_ade2_mop": {
+   "kind": "evidence"
+  },
+  "fact_vee2_seen": {
+   "kind": "evidence"
+  },
+  "fact_nik3_tired": {
+   "kind": "evidence"
+  },
+  "fact_ade3_office": {
+   "kind": "evidence"
+  },
+  "fact_vee3_slow": {
+   "kind": "evidence"
+  }
+ },
+ "enemies": {
+  "nikolai_c1_p1": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 55,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "evidence",
+    "bribe"
+   ],
+   "resist": [
+    "threaten",
+    "bluff"
+   ],
+   "xp": 40,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 3,
+   "bark_set": "nikolai",
+   "intro_key": "ei_nikolai_p1",
+   "win_key": "ew_nikolai_p1"
+  },
+  "nikolai_c1_p2": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 80,
+   "atk": 5,
+   "susp_rate": 7,
+   "weak": [
+    "evidence",
+    "bribe"
+   ],
+   "resist": [
+    "threaten",
+    "bluff"
+   ],
+   "xp": 55,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 3,
+   "bark_set": "nikolai",
+   "intro_key": "ei_nikolai_p2",
+   "win_key": "ew_nikolai_p2"
+  },
+  "nikolai_c1_p3": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 100,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "evidence",
+    "bribe"
+   ],
+   "resist": [
+    "threaten",
+    "bluff"
+   ],
+   "xp": 90,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 3,
+   "bark_set": "nikolai",
+   "intro_key": "ei_nikolai_p3",
+   "win_key": "ew_nikolai_p3",
+   "drop": "cigarettes"
+  },
+  "nikolai_c2_p1": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 150,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "flirt",
+    "evidence"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 70,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 3,
+   "bark_set": "nikolai",
+   "intro_key": "ei_nikolai_p1",
+   "win_key": "ew_nikolai_p1"
+  },
+  "nikolai_c2_p2": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 200,
+   "atk": 7,
+   "susp_rate": 8,
+   "weak": [
+    "flirt",
+    "evidence"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 85,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 3,
+   "bark_set": "nikolai",
+   "intro_key": "ei_nikolai_p2",
+   "win_key": "ew_nikolai_p2"
+  },
+  "nikolai_c2_p3": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 280,
+   "atk": 8,
+   "susp_rate": 9,
+   "weak": [
+    "flirt",
+    "evidence"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 120,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 3,
+   "bark_set": "nikolai",
+   "intro_key": "ei_nikolai_p3",
+   "win_key": "ew_nikolai_p3",
+   "drop": "whisky"
+  },
+  "nikolai_c3_p1": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 220,
+   "atk": 8,
+   "susp_rate": 8,
+   "weak": [
+    "evidence",
+    "press"
+   ],
+   "resist": [
+    "bribe",
+    "bluff",
+    "flirt"
+   ],
+   "xp": 95,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 3,
+   "bark_set": "nikolai",
+   "intro_key": "ei_nikolai_p1",
+   "win_key": "ew_nikolai_p1"
+  },
+  "nikolai_c3_p2": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 300,
+   "atk": 9,
+   "susp_rate": 9,
+   "weak": [
+    "evidence",
+    "press"
+   ],
+   "resist": [
+    "bribe",
+    "bluff",
+    "flirt"
+   ],
+   "xp": 110,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 3,
+   "bark_set": "nikolai",
+   "intro_key": "ei_nikolai_p2",
+   "win_key": "ew_nikolai_p2"
+  },
+  "nikolai_c3_p3": {
+   "name_key": "e_nikolai",
+   "sprite": "nikolai",
+   "sprite_pressured": "nikolai_pressured",
+   "composure": 490,
+   "atk": 10,
+   "susp_rate": 10,
+   "weak": [
+    "evidence",
+    "press"
+   ],
+   "resist": [
+    "bribe",
+    "bluff",
+    "flirt"
+   ],
+   "xp": 190,
+   "trust_win": 1,
+   "trust_track": "nikolai",
+   "barks": 4,
+   "bark_set": "nikolai_boss",
+   "intro_key": "ei_nikolai_p3",
+   "win_key": "ew_nikolai_p3",
+   "drop": "marker",
+   "boss": true
+  },
+  "adaeze_c1_p1": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 55,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 40,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 3,
+   "bark_set": "adaeze",
+   "intro_key": "ei_adaeze_p1",
+   "win_key": "ew_adaeze_p1"
+  },
+  "adaeze_c1_p2": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 80,
+   "atk": 5,
+   "susp_rate": 7,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 55,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 3,
+   "bark_set": "adaeze",
+   "intro_key": "ei_adaeze_p2",
+   "win_key": "ew_adaeze_p2"
+  },
+  "adaeze_c1_p3": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 100,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 90,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 3,
+   "bark_set": "adaeze",
+   "intro_key": "ei_adaeze_p3",
+   "win_key": "ew_adaeze_p3",
+   "drop": "coffee"
+  },
+  "adaeze_c2_p1": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 150,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "evidence",
+    "press"
+   ],
+   "resist": [
+    "flirt",
+    "bribe"
+   ],
+   "xp": 70,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 3,
+   "bark_set": "adaeze",
+   "intro_key": "ei_adaeze_p1",
+   "win_key": "ew_adaeze_p1"
+  },
+  "adaeze_c2_p2": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 200,
+   "atk": 7,
+   "susp_rate": 8,
+   "weak": [
+    "evidence",
+    "press"
+   ],
+   "resist": [
+    "flirt",
+    "bribe"
+   ],
+   "xp": 85,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 3,
+   "bark_set": "adaeze",
+   "intro_key": "ei_adaeze_p2",
+   "win_key": "ew_adaeze_p2"
+  },
+  "adaeze_c2_p3": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 340,
+   "atk": 8,
+   "susp_rate": 9,
+   "weak": [
+    "evidence",
+    "press"
+   ],
+   "resist": [
+    "flirt",
+    "bribe"
+   ],
+   "xp": 160,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 4,
+   "bark_set": "adaeze_boss",
+   "intro_key": "ei_adaeze_p3",
+   "win_key": "ew_adaeze_p3",
+   "drop": "pen",
+   "boss": true
+  },
+  "adaeze_c3_p1": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 220,
+   "atk": 8,
+   "susp_rate": 8,
+   "weak": [
+    "flirt",
+    "bluff"
+   ],
+   "resist": [
+    "threaten",
+    "evidence"
+   ],
+   "xp": 95,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 3,
+   "bark_set": "adaeze",
+   "intro_key": "ei_adaeze_p1",
+   "win_key": "ew_adaeze_p1"
+  },
+  "adaeze_c3_p2": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 300,
+   "atk": 9,
+   "susp_rate": 9,
+   "weak": [
+    "flirt",
+    "bluff"
+   ],
+   "resist": [
+    "threaten",
+    "evidence"
+   ],
+   "xp": 110,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 3,
+   "bark_set": "adaeze",
+   "intro_key": "ei_adaeze_p2",
+   "win_key": "ew_adaeze_p2"
+  },
+  "adaeze_c3_p3": {
+   "name_key": "e_adaeze",
+   "sprite": "adaeze",
+   "sprite_pressured": "adaeze_pressured",
+   "composure": 400,
+   "atk": 10,
+   "susp_rate": 10,
+   "weak": [
+    "flirt",
+    "bluff"
+   ],
+   "resist": [
+    "threaten",
+    "evidence"
+   ],
+   "xp": 150,
+   "trust_win": 1,
+   "trust_track": "adaeze",
+   "barks": 3,
+   "bark_set": "adaeze",
+   "intro_key": "ei_adaeze_p3",
+   "win_key": "ew_adaeze_p3",
+   "drop": "coffee"
+  },
+  "vee_c1_p1": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 55,
+   "atk": 4,
+   "susp_rate": 6,
+   "weak": [
+    "flirt",
+    "press"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 40,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 3,
+   "bark_set": "vee",
+   "intro_key": "ei_vee_p1",
+   "win_key": "ew_vee_p1"
+  },
+  "vee_c1_p2": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 80,
+   "atk": 5,
+   "susp_rate": 7,
+   "weak": [
+    "flirt",
+    "press"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 55,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 3,
+   "bark_set": "vee",
+   "intro_key": "ei_vee_p2",
+   "win_key": "ew_vee_p2"
+  },
+  "vee_c1_p3": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 140,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "flirt",
+    "press"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 130,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 4,
+   "bark_set": "vee_boss",
+   "intro_key": "ei_vee_p3",
+   "win_key": "ew_vee_p3",
+   "drop": "cigarettes",
+   "boss": true
+  },
+  "vee_c2_p1": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 150,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "bribe",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "press"
+   ],
+   "xp": 70,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 3,
+   "bark_set": "vee",
+   "intro_key": "ei_vee_p1",
+   "win_key": "ew_vee_p1"
+  },
+  "vee_c2_p2": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 200,
+   "atk": 7,
+   "susp_rate": 8,
+   "weak": [
+    "bribe",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "press"
+   ],
+   "xp": 85,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 3,
+   "bark_set": "vee",
+   "intro_key": "ei_vee_p2",
+   "win_key": "ew_vee_p2"
+  },
+  "vee_c2_p3": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 280,
+   "atk": 8,
+   "susp_rate": 9,
+   "weak": [
+    "bribe",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "press"
+   ],
+   "xp": 120,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 3,
+   "bark_set": "vee",
+   "intro_key": "ei_vee_p3",
+   "win_key": "ew_vee_p3",
+   "drop": "aspirin"
+  },
+  "vee_c3_p1": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 220,
+   "atk": 8,
+   "susp_rate": 8,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "xp": 95,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 3,
+   "bark_set": "vee",
+   "intro_key": "ei_vee_p1",
+   "win_key": "ew_vee_p1"
+  },
+  "vee_c3_p2": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 300,
+   "atk": 9,
+   "susp_rate": 9,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "xp": 110,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 3,
+   "bark_set": "vee",
+   "intro_key": "ei_vee_p2",
+   "win_key": "ew_vee_p2"
+  },
+  "vee_c3_p3": {
+   "name_key": "e_vee",
+   "sprite": "vee",
+   "sprite_pressured": "vee_pressured",
+   "composure": 400,
+   "atk": 10,
+   "susp_rate": 10,
+   "weak": [
+    "bluff",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "xp": 150,
+   "trust_win": 1,
+   "trust_track": "vee",
+   "barks": 3,
+   "bark_set": "vee",
+   "intro_key": "ei_vee_p3",
+   "win_key": "ew_vee_p3",
+   "drop": "whisky"
+  },
+  "bouncer": {
+   "name_key": "e_bouncer",
+   "sprite": "bouncer",
+   "composure": 60,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "bribe",
+    "threaten"
+   ],
+   "resist": [
+    "evidence",
+    "bluff"
+   ],
+   "xp": 45,
+   "drop": "marker",
+   "barks": 3,
+   "intro_key": "ei_bouncer",
+   "win_key": "ew_bouncer"
+  },
+  "sergeant": {
+   "name_key": "e_sergeant",
+   "sprite": "sergeant",
+   "composure": 130,
+   "atk": 7,
+   "susp_rate": 8,
+   "weak": [
+    "evidence",
+    "bluff"
+   ],
+   "resist": [
+    "bribe",
+    "flirt"
+   ],
+   "xp": 80,
+   "drop": "raincoat",
+   "barks": 3,
+   "intro_key": "ei_sergeant",
+   "win_key": "ew_sergeant"
+  },
+  "lawyer": {
+   "name_key": "e_lawyer",
+   "sprite": "lawyer",
+   "composure": 210,
+   "atk": 9,
+   "susp_rate": 9,
+   "weak": [
+    "evidence",
+    "press"
+   ],
+   "resist": [
+    "bluff",
+    "flirt",
+    "bribe"
+   ],
+   "xp": 100,
+   "drop": "recorder",
+   "barks": 3,
+   "intro_key": "ei_lawyer",
+   "win_key": "ew_lawyer"
+  }
+ },
+ "nights": [
+  "night1",
+  "night2",
+  "night3",
+  "epilogue"
+ ],
+ "story": [
+  "cases",
+  "interr",
+  "board",
+  "start"
+ ],
+ "gallery": [
+  {
+   "id": "cg_intake",
+   "thumb": "cg_intake_thumb",
+   "locked": "cg_intake_locked",
+   "key": "g_cg_intake",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_paloma",
+   "thumb": "cg_rpg_paloma_thumb",
+   "locked": "cg_intake_locked",
+   "key": "g_cg_rpg_paloma",
+   "trust": 0
+  },
+  {
+   "id": "cg_evidence_x",
+   "thumb": "cg_evidence_x_thumb",
+   "locked": "cg_evidence_x_locked",
+   "key": "g_cg_evidence_x",
+   "trust": 0
+  },
+  {
+   "id": "cg_nikolai_x",
+   "thumb": "cg_nikolai_x_thumb",
+   "locked": "cg_nikolai_x_locked",
+   "key": "g_cg_nikolai_x",
+   "trust": 3
+  },
+  {
+   "id": "cg_adaeze_x",
+   "thumb": "cg_adaeze_x_thumb",
+   "locked": "cg_adaeze_x_locked",
+   "key": "g_cg_adaeze_x",
+   "trust": 3
+  },
+  {
+   "id": "cg_vee_x",
+   "thumb": "cg_vee_x_thumb",
+   "locked": "cg_vee_x_locked",
+   "key": "g_cg_vee_x",
+   "trust": 3
+  },
+  {
+   "id": "cg_closing",
+   "thumb": "cg_closing_thumb",
+   "locked": "cg_closing_locked",
+   "key": "g_cg_closing",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_bay",
+   "thumb": "cg_rpg_bay_thumb",
+   "locked": "cg_intake_locked",
+   "key": "g_cg_rpg_bay",
+   "trust": 0
+  },
+  {
+   "id": "cg_evidence2_x",
+   "thumb": "cg_evidence2_x_thumb",
+   "locked": "cg_evidence2_x_locked",
+   "key": "g_cg_evidence2_x",
+   "trust": 0
+  },
+  {
+   "id": "cg_trust5_adaeze",
+   "thumb": "cg_trust5_adaeze_thumb",
+   "locked": "cg_intake_locked",
+   "key": "g_cg_trust5_adaeze",
+   "trust": 5
+  },
+  {
+   "id": "cg_rpg_stairs",
+   "thumb": "cg_rpg_stairs_thumb",
+   "locked": "cg_intake_locked",
+   "key": "g_cg_rpg_stairs",
+   "trust": 0
+  },
+  {
+   "id": "cg_evidence3_x",
+   "thumb": "cg_evidence3_x_thumb",
+   "locked": "cg_evidence3_x_locked",
+   "key": "g_cg_evidence3_x",
+   "trust": 0
+  },
+  {
+   "id": "cg_trust7_nikolai",
+   "thumb": "cg_trust7_nikolai_thumb",
+   "locked": "cg_intake_locked",
+   "key": "g_cg_trust7_nikolai",
+   "trust": 7
+  },
+  {
+   "id": "cg_trust9_vee",
+   "thumb": "cg_trust9_vee_thumb",
+   "locked": "cg_intake_locked",
+   "key": "g_cg_trust9_vee",
+   "trust": 9
+  },
+  {
+   "id": "cg_board",
+   "thumb": "cg_board_thumb",
+   "locked": "cg_board_locked",
+   "key": "g_cg_board",
+   "trust": 0
+  }
+ ]
+}

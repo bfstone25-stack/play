@@ -1,0 +1,298 @@
+{
+ "rooms": {
+  "precinct": [
+   "res://assets/placeholder/rooms/precinct.webp"
+  ],
+  "interview": [
+   "res://assets/placeholder/rooms/interview.webp"
+  ],
+  "club": [
+   "res://assets/placeholder/rooms/club.webp"
+  ],
+  "cooler": [
+   "res://assets/placeholder/rooms/cooler.webp"
+  ],
+  "corridor": [
+   "res://assets/rpg/rooms/room_corridor_bench.png",
+   "res://assets/placeholder/rooms/corridor.webp"
+  ],
+  "lockup": [
+   "res://assets/rpg/rooms/room_evidence_lockup.png",
+   "res://assets/placeholder/rooms/lockup.webp"
+  ],
+  "archive": [
+   "res://assets/rpg/rooms/room_archive.png",
+   "res://assets/placeholder/rooms/archive.webp"
+  ],
+  "morgue": [
+   "res://assets/rpg/rooms/room_morgue.png",
+   "res://assets/placeholder/rooms/morgue.webp"
+  ],
+  "back_office": [
+   "res://assets/rpg/rooms/room_back_office.png",
+   "res://assets/placeholder/rooms/back_office.webp"
+  ],
+  "alley": [
+   "res://assets/rpg/rooms/room_alley.png",
+   "res://assets/placeholder/rooms/alley.webp"
+  ],
+  "loading_bay": [
+   "res://assets/rpg/rooms/room_loading_bay.png",
+   "res://assets/placeholder/rooms/loading_bay.webp"
+  ],
+  "mop_room": [
+   "res://assets/rpg/rooms/room_mop_room.png",
+   "res://assets/placeholder/rooms/mop_room.webp"
+  ],
+  "fire_stairs": [
+   "res://assets/rpg/rooms/room_fire_stairs.png",
+   "res://assets/placeholder/rooms/fire_stairs.webp"
+  ],
+  "flat": [
+   "res://assets/rpg/rooms/room_flat.png",
+   "res://assets/placeholder/rooms/flat.webp"
+  ],
+  "safe_house": [
+   "res://assets/rpg/rooms/room_safe_house.png",
+   "res://assets/placeholder/rooms/safe_house.webp"
+  ]
+ },
+ "rooms_locked": {
+  "precinct": [
+   "res://assets/placeholder/rooms_locked/precinct.webp"
+  ],
+  "interview": [
+   "res://assets/placeholder/rooms_locked/interview.webp"
+  ],
+  "club": [
+   "res://assets/placeholder/rooms_locked/club.webp"
+  ],
+  "cooler": [
+   "res://assets/placeholder/rooms_locked/cooler.webp"
+  ],
+  "corridor": [
+   "res://assets/placeholder/rooms_locked/corridor.webp"
+  ],
+  "lockup": [
+   "res://assets/placeholder/rooms_locked/lockup.webp"
+  ],
+  "archive": [
+   "res://assets/placeholder/rooms_locked/archive.webp"
+  ],
+  "morgue": [
+   "res://assets/placeholder/rooms_locked/morgue.webp"
+  ],
+  "back_office": [
+   "res://assets/placeholder/rooms_locked/back_office.webp"
+  ],
+  "alley": [
+   "res://assets/placeholder/rooms_locked/alley.webp"
+  ],
+  "loading_bay": [
+   "res://assets/placeholder/rooms_locked/loading_bay.webp"
+  ],
+  "mop_room": [
+   "res://assets/placeholder/rooms_locked/mop_room.webp"
+  ],
+  "fire_stairs": [
+   "res://assets/placeholder/rooms_locked/fire_stairs.webp"
+  ],
+  "flat": [
+   "res://assets/placeholder/rooms_locked/flat.webp"
+  ],
+  "safe_house": [
+   "res://assets/placeholder/rooms_locked/safe_house.webp"
+  ]
+ },
+ "enemies": {
+  "nikolai": [
+   "res://assets/rpg/enemies/enemy_nikolai_neutral.png"
+  ],
+  "adaeze": [
+   "res://assets/rpg/enemies/enemy_adaeze_neutral.png"
+  ],
+  "vee": [
+   "res://assets/rpg/enemies/enemy_vee_neutral.png"
+  ],
+  "nikolai_pressured": [
+   "res://assets/rpg/enemies/enemy_nikolai_pressured.png"
+  ],
+  "adaeze_pressured": [
+   "res://assets/rpg/enemies/enemy_adaeze_pressured.png"
+  ],
+  "vee_pressured": [
+   "res://assets/rpg/enemies/enemy_vee_pressured.png"
+  ],
+  "bouncer": [
+   "res://assets/rpg/enemies/enemy_bouncer_neutral.png"
+  ],
+  "sergeant": [
+   "res://assets/rpg/enemies/enemy_sergeant_neutral.png"
+  ],
+  "lawyer": [
+   "res://assets/rpg/enemies/enemy_lawyer_neutral.png"
+  ]
+ },
+ "sprites": {
+  "nikolai": [
+   "res://assets/rpg/enemies/enemy_nikolai_neutral.png"
+  ],
+  "adaeze": [
+   "res://assets/rpg/enemies/enemy_adaeze_neutral.png"
+  ],
+  "vee": [
+   "res://assets/rpg/enemies/enemy_vee_neutral.png"
+  ],
+  "bouncer": [
+   "res://assets/rpg/enemies/enemy_bouncer_neutral.png"
+  ],
+  "sergeant": [
+   "res://assets/rpg/enemies/enemy_sergeant_neutral.png"
+  ],
+  "lawyer": [
+   "res://assets/rpg/enemies/enemy_lawyer_neutral.png"
+  ]
+ },
+ "maps": {
+  "board": [
+   "res://assets/rpg/rooms/floor_map.png"
+  ]
+ },
+ "cg": {
+  "cg_adaeze_x": [
+   "res://assets/cg/cg_adaeze_x.webp"
+  ],
+  "cg_adaeze_x_locked": [
+   "res://assets/cg/cg_adaeze_x_locked.webp"
+  ],
+  "cg_adaeze_x_thumb": [
+   "res://assets/cg/cg_adaeze_x_thumb.webp"
+  ],
+  "cg_board": [
+   "res://assets/cg/cg_board.webp"
+  ],
+  "cg_board_locked": [
+   "res://assets/cg/cg_board_locked.webp"
+  ],
+  "cg_board_thumb": [
+   "res://assets/cg/cg_board_thumb.webp"
+  ],
+  "cg_closing": [
+   "res://assets/cg/cg_closing.webp"
+  ],
+  "cg_closing_locked": [
+   "res://assets/cg/cg_closing_locked.webp"
+  ],
+  "cg_closing_thumb": [
+   "res://assets/cg/cg_closing_thumb.webp"
+  ],
+  "cg_evidence2_x": [
+   "res://assets/cg/cg_evidence2_x.webp"
+  ],
+  "cg_evidence2_x_locked": [
+   "res://assets/cg/cg_evidence2_x_locked.webp"
+  ],
+  "cg_evidence2_x_thumb": [
+   "res://assets/cg/cg_evidence2_x_thumb.webp"
+  ],
+  "cg_evidence3_x": [
+   "res://assets/cg/cg_evidence3_x.webp"
+  ],
+  "cg_evidence3_x_locked": [
+   "res://assets/cg/cg_evidence3_x_locked.webp"
+  ],
+  "cg_evidence3_x_thumb": [
+   "res://assets/cg/cg_evidence3_x_thumb.webp"
+  ],
+  "cg_evidence_x": [
+   "res://assets/cg/cg_evidence_x.webp"
+  ],
+  "cg_evidence_x_locked": [
+   "res://assets/cg/cg_evidence_x_locked.webp"
+  ],
+  "cg_evidence_x_thumb": [
+   "res://assets/cg/cg_evidence_x_thumb.webp"
+  ],
+  "cg_intake": [
+   "res://assets/cg/cg_intake.webp"
+  ],
+  "cg_intake_locked": [
+   "res://assets/cg/cg_intake_locked.webp"
+  ],
+  "cg_intake_thumb": [
+   "res://assets/cg/cg_intake_thumb.webp"
+  ],
+  "cg_nikolai_x": [
+   "res://assets/cg/cg_nikolai_x.webp"
+  ],
+  "cg_nikolai_x_locked": [
+   "res://assets/cg/cg_nikolai_x_locked.webp"
+  ],
+  "cg_nikolai_x_thumb": [
+   "res://assets/cg/cg_nikolai_x_thumb.webp"
+  ],
+  "cg_vee_x": [
+   "res://assets/cg/cg_vee_x.webp"
+  ],
+  "cg_vee_x_locked": [
+   "res://assets/cg/cg_vee_x_locked.webp"
+  ],
+  "cg_vee_x_thumb": [
+   "res://assets/cg/cg_vee_x_thumb.webp"
+  ],
+  "cg_rpg_paloma": [
+   "res://assets/rpg/cgs/cg_rpg_paloma.png"
+  ],
+  "cg_rpg_paloma_thumb": [
+   "res://assets/cg/cg_rpg_paloma_thumb.webp"
+  ],
+  "cg_rpg_paloma_locked": [
+   "res://assets/cg/cg_rpg_paloma_locked.webp"
+  ],
+  "cg_rpg_bay": [
+   "res://assets/rpg/cgs/cg_rpg_bay.png"
+  ],
+  "cg_rpg_bay_thumb": [
+   "res://assets/cg/cg_rpg_bay_thumb.webp"
+  ],
+  "cg_rpg_bay_locked": [
+   "res://assets/cg/cg_rpg_bay_locked.webp"
+  ],
+  "cg_rpg_stairs": [
+   "res://assets/rpg/cgs/cg_rpg_stairs.png"
+  ],
+  "cg_rpg_stairs_thumb": [
+   "res://assets/cg/cg_rpg_stairs_thumb.webp"
+  ],
+  "cg_rpg_stairs_locked": [
+   "res://assets/cg/cg_rpg_stairs_locked.webp"
+  ],
+  "cg_trust5_adaeze": [
+   "res://assets/rpg/cgs/cg_trust5_adaeze.png"
+  ],
+  "cg_trust5_adaeze_thumb": [
+   "res://assets/cg/cg_trust5_adaeze_thumb.webp"
+  ],
+  "cg_trust5_adaeze_locked": [
+   "res://assets/cg/cg_trust5_adaeze_locked.webp"
+  ],
+  "cg_trust7_nikolai": [
+   "res://assets/rpg/cgs/cg_trust7_nikolai.png"
+  ],
+  "cg_trust7_nikolai_thumb": [
+   "res://assets/cg/cg_trust7_nikolai_thumb.webp"
+  ],
+  "cg_trust7_nikolai_locked": [
+   "res://assets/cg/cg_trust7_nikolai_locked.webp"
+  ],
+  "cg_trust9_vee": [
+   "res://assets/rpg/cgs/cg_trust9_vee.png"
+  ],
+  "cg_trust9_vee_thumb": [
+   "res://assets/cg/cg_trust9_vee_thumb.webp"
+  ],
+  "cg_trust9_vee_locked": [
+   "res://assets/cg/cg_trust9_vee_locked.webp"
+  ]
+ }
+}

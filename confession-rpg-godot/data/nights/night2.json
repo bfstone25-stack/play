@@ -1,0 +1,2601 @@
+{
+ "id": "night2",
+ "title_key": "n2_title",
+ "sub_key": "n2_sub",
+ "turns": 104,
+ "clock_start": 1380,
+ "minutes_per_turn": 5,
+ "start_room": "precinct",
+ "start_event": "n2_open",
+ "map": {
+  "image": "board",
+  "rooms": {
+   "precinct": [
+    0.14,
+    0.22
+   ],
+   "corridor": [
+    0.38,
+    0.22
+   ],
+   "interview_nikolai": [
+    0.62,
+    0.1
+   ],
+   "interview_adaeze": [
+    0.62,
+    0.34
+   ],
+   "interview_vee": [
+    0.86,
+    0.1
+   ],
+   "lockup": [
+    0.86,
+    0.34
+   ],
+   "archive": [
+    0.14,
+    0.5
+   ],
+   "morgue": [
+    0.38,
+    0.5
+   ],
+   "alley": [
+    0.14,
+    0.78
+   ],
+   "club": [
+    0.38,
+    0.78
+   ],
+   "back_office": [
+    0.62,
+    0.78
+   ],
+   "loading_bay": [
+    0.86,
+    0.6
+   ],
+   "mop_room": [
+    0.86,
+    0.86
+   ]
+  }
+ },
+ "rooms": {
+  "precinct": {
+   "name_key": "r_precinct",
+   "plate": "precinct",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8ca0",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      1.0,
+      "#ffd28a"
+     ],
+     [
+      0.78,
+      0.3,
+      0.8,
+      "#b0c8ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "casefile",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.5
+     ],
+     "event": "c2_file",
+     "label_key": "hs_casefile",
+     "xp": 5
+    },
+    {
+     "id": "locker",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.5
+     ],
+     "event": "n2_locker",
+     "label_key": "hs_locker",
+     "gives": [
+      "suit",
+      "coffee"
+     ]
+    },
+    {
+     "id": "board",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "c2_accuse",
+     "label_key": "hs_board",
+     "once": false,
+     "if_not_flag": "c2_done",
+     "sim_last": true
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_archive",
+     "kind": "door",
+     "to": "archive",
+     "pos": [
+      0.5,
+      0.9
+     ]
+    },
+    {
+     "id": "to_alley",
+     "kind": "door",
+     "to": "alley",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    }
+   ]
+  },
+  "corridor": {
+   "name_key": "r_corridor",
+   "plate": "corridor",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8890a0",
+    "lamps": [
+     [
+      0.5,
+      0.15,
+      1.3,
+      "#d8e8ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_nik",
+     "kind": "door",
+     "to": "interview_nikolai",
+     "pos": [
+      0.2,
+      0.55
+     ]
+    },
+    {
+     "id": "to_ade",
+     "kind": "door",
+     "to": "interview_adaeze",
+     "pos": [
+      0.5,
+      0.55
+     ]
+    },
+    {
+     "id": "to_vee",
+     "kind": "door",
+     "to": "interview_vee",
+     "pos": [
+      0.8,
+      0.55
+     ]
+    },
+    {
+     "id": "to_lockup",
+     "kind": "door",
+     "to": "lockup",
+     "pos": [
+      0.65,
+      0.9
+     ]
+    },
+    {
+     "id": "to_morgue",
+     "kind": "door",
+     "to": "morgue",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    },
+    {
+     "id": "to_precinct",
+     "kind": "door",
+     "to": "precinct",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ]
+  },
+  "interview_nikolai": {
+   "name_key": "r_interview_nikolai",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "nik2_iris",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_nik2_iris",
+     "label_key": "hs_ask_nik2_iris",
+     "turns": 1
+    },
+    {
+     "id": "nik2_rain",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_nik2_rain",
+     "label_key": "hs_ask_nik2_rain",
+     "turns": 1
+    },
+    {
+     "id": "nik2_car",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_nik2_car",
+     "label_key": "hs_ask_nik2_car",
+     "turns": 1
+    },
+    {
+     "id": "nik2_books",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_nik2_books",
+     "label_key": "hs_ask_nik2_books",
+     "turns": 1,
+     "if_flag": "c2_nikolai_p1"
+    },
+    {
+     "id": "nik2_second",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_nik2_second",
+     "label_key": "hs_ask_nik2_second",
+     "turns": 1,
+     "if_flag": "c2_nikolai_p1"
+    },
+    {
+     "id": "nik2_ade",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_nik2_ade",
+     "label_key": "hs_ask_nik2_ade",
+     "turns": 1,
+     "if_flag": "c2_nikolai_p2"
+    },
+    {
+     "id": "nik2_offer",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_nik2_offer",
+     "label_key": "hs_ask_nik2_offer",
+     "turns": 1,
+     "if_flag": "c2_nikolai_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "nikolai_c2_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_nikolai",
+     "after": "pa1_c2_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "nikolai_c2_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_nikolai",
+     "after": "pa2_c2_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_2",
+     "if_flag": "c2_nikolai_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "nikolai_c2_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_nikolai",
+     "after": "pa3_c2_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_3",
+     "if_flag": "c2_nikolai_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c2_nikolai",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c2_nikolai_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c2_nikolai_enter"
+  },
+  "interview_adaeze": {
+   "name_key": "r_interview_adaeze",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "ade2_four",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_ade2_four",
+     "label_key": "hs_ask_ade2_four",
+     "turns": 1
+    },
+    {
+     "id": "ade2_iris",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_ade2_iris",
+     "label_key": "hs_ask_ade2_iris",
+     "turns": 1
+    },
+    {
+     "id": "ade2_bay",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_ade2_bay",
+     "label_key": "hs_ask_ade2_bay",
+     "turns": 1
+    },
+    {
+     "id": "ade2_sign",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_ade2_sign",
+     "label_key": "hs_ask_ade2_sign",
+     "turns": 1,
+     "if_flag": "c2_adaeze_p1"
+    },
+    {
+     "id": "ade2_audit",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_ade2_audit",
+     "label_key": "hs_ask_ade2_audit",
+     "turns": 1,
+     "if_flag": "c2_adaeze_p1"
+    },
+    {
+     "id": "ade2_night",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_ade2_night",
+     "label_key": "hs_ask_ade2_night",
+     "turns": 1,
+     "if_flag": "c2_adaeze_p2"
+    },
+    {
+     "id": "ade2_basin",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_ade2_basin",
+     "label_key": "hs_ask_ade2_basin",
+     "turns": 1,
+     "if_flag": "c2_adaeze_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "adaeze_c2_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_adaeze",
+     "after": "pa1_c2_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "adaeze_c2_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_adaeze",
+     "after": "pa2_c2_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_2",
+     "if_flag": "c2_adaeze_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "adaeze_c2_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_adaeze",
+     "after": "pa3_c2_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_3",
+     "if_flag": "c2_adaeze_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c2_adaeze",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c2_adaeze_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c2_adaeze_enter"
+  },
+  "interview_vee": {
+   "name_key": "r_interview_vee",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "vee2_where",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_vee2_where",
+     "label_key": "hs_ask_vee2_where",
+     "turns": 1
+    },
+    {
+     "id": "vee2_bail",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_vee2_bail",
+     "label_key": "hs_ask_vee2_bail",
+     "turns": 1
+    },
+    {
+     "id": "vee2_iris",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_vee2_iris",
+     "label_key": "hs_ask_vee2_iris",
+     "turns": 1
+    },
+    {
+     "id": "vee2_kind",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_vee2_kind",
+     "label_key": "hs_ask_vee2_kind",
+     "turns": 1,
+     "if_flag": "c2_vee_p1"
+    },
+    {
+     "id": "vee2_paid",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_vee2_paid",
+     "label_key": "hs_ask_vee2_paid",
+     "turns": 1,
+     "if_flag": "c2_vee_p1"
+    },
+    {
+     "id": "vee2_cold",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_vee2_cold",
+     "label_key": "hs_ask_vee2_cold",
+     "turns": 1,
+     "if_flag": "c2_vee_p2"
+    },
+    {
+     "id": "vee2_scared",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_vee2_scared",
+     "label_key": "hs_ask_vee2_scared",
+     "turns": 1,
+     "if_flag": "c2_vee_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "vee_c2_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_vee",
+     "after": "pa1_c2_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "vee_c2_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_vee",
+     "after": "pa2_c2_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_2",
+     "if_flag": "c2_vee_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "vee_c2_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_vee",
+     "after": "pa3_c2_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_3",
+     "if_flag": "c2_vee_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c2_vee",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c2_vee_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c2_vee_enter"
+  },
+  "lockup": {
+   "name_key": "r_lockup",
+   "plate": "lockup",
+   "music": "explore",
+   "mood": {
+    "ambient": "#808898",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.0,
+      "#e0ecff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "tray",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "c2_tray",
+     "label_key": "hs_tray",
+     "turns": 1
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c2_lockup"
+  },
+  "archive": {
+   "name_key": "r_archive",
+   "plate": "archive",
+   "music": "explore",
+   "mood": {
+    "ambient": "#88847c",
+    "lamps": [
+     [
+      0.35,
+      0.35,
+      1.0,
+      "#ffd890"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "books",
+     "kind": "search",
+     "pos": [
+      0.35,
+      0.5
+     ],
+     "event": "n2_books",
+     "label_key": "hs_books",
+     "gives": [
+      "ledgers"
+     ],
+     "xp": 10
+    },
+    {
+     "id": "file_drawer",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.6
+     ],
+     "event": "n2_filedrawer",
+     "label_key": "hs_file_drawer",
+     "gives": [
+      "pen",
+      "aspirin"
+     ]
+    },
+    {
+     "id": "to_precinct",
+     "kind": "door",
+     "to": "precinct",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n2_archive"
+  },
+  "morgue": {
+   "name_key": "r_morgue",
+   "plate": "morgue",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a98a8",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.2,
+      "#d0f0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "sergeant",
+     "kind": "enemy",
+     "enemy": "sergeant",
+     "pos": [
+      0.5,
+      0.45
+     ],
+     "event": "n2_sergeant_pre",
+     "after": "n2_sergeant_post",
+     "turns": 2
+    },
+    {
+     "id": "drawer7",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.6
+     ],
+     "event": "n2_drawer7",
+     "label_key": "hs_morgue_drawer",
+     "gives": [
+      "autopsy"
+     ],
+     "xp": 12,
+     "if_flag": "c2_sergeant"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n2_morgue"
+  },
+  "alley": {
+   "name_key": "r_alley",
+   "plate": "alley",
+   "music": "explore",
+   "mood": {
+    "ambient": "#6e6a80",
+    "lamps": [
+     [
+      0.2,
+      0.25,
+      1.0,
+      "#ffb060"
+     ],
+     [
+      0.8,
+      0.35,
+      0.8,
+      "#ff6080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "dumpster",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.6
+     ],
+     "event": "n2_dumpster",
+     "label_key": "hs_dumpster",
+     "gives": [
+      "cigarettes"
+     ]
+    },
+    {
+     "id": "to_precinct",
+     "kind": "door",
+     "to": "precinct",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_club",
+     "kind": "door",
+     "to": "club",
+     "pos": [
+      0.5,
+      0.9
+     ]
+    },
+    {
+     "id": "to_bay",
+     "kind": "door",
+     "to": "loading_bay",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n2_alley"
+  },
+  "club": {
+   "name_key": "r_club",
+   "plate": "club",
+   "music": "explore",
+   "mood": {
+    "ambient": "#786c80",
+    "lamps": [
+     [
+      0.3,
+      0.4,
+      1.0,
+      "#ff8060"
+     ],
+     [
+      0.75,
+      0.3,
+      0.9,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "bar",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.5
+     ],
+     "event": "n2_bar",
+     "label_key": "hs_bar",
+     "gives": [
+      "whisky"
+     ]
+    },
+    {
+     "id": "to_alley",
+     "kind": "door",
+     "to": "alley",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_office",
+     "kind": "door",
+     "to": "back_office",
+     "pos": [
+      0.5,
+      0.9
+     ]
+    }
+   ]
+  },
+  "back_office": {
+   "name_key": "r_back_office",
+   "plate": "back_office",
+   "music": "explore",
+   "mood": {
+    "ambient": "#88807a",
+    "lamps": [
+     [
+      0.45,
+      0.4,
+      1.0,
+      "#ffd080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "desk",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.55
+     ],
+     "event": "n2_desk",
+     "label_key": "hs_desk",
+     "xp": 8
+    },
+    {
+     "id": "safe",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.6
+     ],
+     "event": "n2_safe",
+     "label_key": "hs_safe",
+     "xp": 4
+    },
+    {
+     "id": "to_club",
+     "kind": "door",
+     "to": "club",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ]
+  },
+  "loading_bay": {
+   "name_key": "r_loading_bay",
+   "plate": "loading_bay",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.7,
+      0.2,
+      1.1,
+      "#ffd890"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "car",
+     "kind": "search",
+     "pos": [
+      0.4,
+      0.55
+     ],
+     "event": "n2_car",
+     "label_key": "hs_car",
+     "xp": 10,
+     "gives": [
+      "watch"
+     ]
+    },
+    {
+     "id": "bay_light",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.25
+     ],
+     "event": "n2_light",
+     "label_key": "hs_bay_light",
+     "gives": [
+      "timer"
+     ],
+     "xp": 8
+    },
+    {
+     "id": "to_alley",
+     "kind": "door",
+     "to": "alley",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_mop",
+     "kind": "door",
+     "to": "mop_room",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n2_bay"
+  },
+  "mop_room": {
+   "name_key": "r_mop_room",
+   "plate": "mop_room",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8a80",
+    "lamps": [
+     [
+      0.5,
+      0.15,
+      0.9,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "sink",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "n2_sink",
+     "label_key": "hs_sink",
+     "gives": [
+      "sink_note"
+     ],
+     "xp": 12
+    },
+    {
+     "id": "bucket",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.65
+     ],
+     "event": "n2_bucket",
+     "label_key": "hs_bucket",
+     "gives": [
+      "marker"
+     ]
+    },
+    {
+     "id": "to_bay",
+     "kind": "door",
+     "to": "loading_bay",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n2_mop"
+  }
+ },
+ "events": {
+  "c2_file": [
+   {
+    "lines": "cases:2010-2014"
+   },
+   {
+    "lines": "board:78-78"
+   }
+  ],
+  "c2_epilogue": [
+   {
+    "hide_cg": true
+   },
+   {
+    "show": ""
+   },
+   {
+    "if_flag": "c2_cleared",
+    "then": [
+     {
+      "say": "narrator",
+      "key": "ep_closed"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "ep_open"
+     }
+    ]
+   },
+   {
+    "say": "narrator",
+    "key": "ep_next_c2"
+   },
+   {
+    "end_night": true,
+    "next": "night3"
+   }
+  ],
+  "c2_accuse": [
+   {
+    "cg": "cg_board"
+   },
+   {
+    "say": "narrator",
+    "key": "acc_intro"
+   },
+   {
+    "say": "narrator",
+    "key": "acc_who"
+   },
+   {
+    "choice": [
+     {
+      "key": "acc_who_nikolai",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "Two sets. That is not an accusation, that is a Tuesday.",
+          "if_flag": "heard_nik2_books",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "The real one had her handwriting in the margins. Somebody has been reading it.",
+          "if_flag": "heard_nik2_second",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "She signed every page. If the pages are wrong, there is exactly one signature on them.",
+          "if_flag": "heard_nik2_ade",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "She asked me what it costs to leave a place like this. I told her nobody had ever paid it in one go.",
+          "if_flag": "heard_nik2_offer",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "The bay light is on a timer and it was off. Somebody killed it from inside, and the switch for it is in the mop room.",
+          "if_flag": "heard_nik2_light",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_who_adaeze",
+      "auto_rank": 3,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "On every page. That is what a manager is. A person who is on every page.",
+          "if_flag": "heard_ade2_sign",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_cleared"
+           },
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "There was going to be one. She told me. She told me like she was doing me a kindness.",
+          "if_flag": "heard_ade2_audit",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_cleared"
+           },
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "I heard her car. I did not hear it leave. I told myself she was on the phone.",
+          "if_flag": "heard_ade2_night",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_cleared"
+           },
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "You keep saying drowned like the bay explains it. That water is filthy. The only clean basin in this building is the mop room sink and it is deep enough to lose an arm in. I have known that for six years.",
+          "if_flag": "heard_ade2_basin",
+          "auto_rank": 3,
+          "do": [
+           {
+            "flag": "c2_clean"
+           },
+           {
+            "flag": "c2_cleared"
+           },
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "music": "boss"
+           },
+           {
+            "show": "adaeze",
+            "x": 0.72
+           },
+           {
+            "lines": "board:165-171"
+           },
+           {
+            "show": ""
+           },
+           {
+            "cg": "cg_closing"
+           },
+           {
+            "lines": "board:174-174"
+           },
+           {
+            "say": "narrator",
+            "key": "end_clean_c2"
+           },
+           {
+            "xp": 150
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "I was in there at half past three. I will say that before you find someone who says it for me.",
+          "if_flag": "heard_ade2_mop",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_cleared"
+           },
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_who_vee",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "Because everyone else in my life keeps a list, and hers was the only one I wasn't on.",
+          "if_flag": "heard_vee2_kind",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "I have a guess. My guess is a man who likes people to owe him something soft.",
+          "if_flag": "heard_vee2_paid",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "You think I don't know what you all decided about me. I know.",
+          "if_flag": "heard_vee2_cold",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "That it doesn't matter what I did. That there's a shape people have decided I am, and it has a chair in it, and the chair is this one.",
+          "if_flag": "heard_vee2_scared",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "I came back for a jacket. Around four. There was a light on in the mop room and I did not go in, and I have been sick about it since.",
+          "if_flag": "heard_vee2_seen",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c2_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c2_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_not_yet",
+      "auto_rank": 1,
+      "do": [
+       {
+        "hide_cg": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "ask_nik2_iris": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2100-2100"
+   },
+   {
+    "flag": "heard_nik2_iris"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik2_rain": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2101-2101"
+   },
+   {
+    "flag": "heard_nik2_rain"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik2_car": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2102-2102"
+   },
+   {
+    "flag": "heard_nik2_car"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik2_books": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2103-2103"
+   },
+   {
+    "flag": "heard_nik2_books"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik2_second": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2104-2104"
+   },
+   {
+    "flag": "heard_nik2_second"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik2_ade": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2105-2105"
+   },
+   {
+    "flag": "heard_nik2_ade"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik2_offer": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2106-2106"
+   },
+   {
+    "flag": "heard_nik2_offer"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "pb1_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c2_nikolai": [
+   {
+    "flag": "c2_nikolai_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c2_nikolai": [
+   {
+    "flag": "c2_nikolai_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c2_nikolai": [
+   {
+    "flag": "c2_nikolai_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c2_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 5,
+      "req_track": "nikolai",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_nikolai_x"
+       },
+       {
+        "lines": "interr:214-225"
+       },
+       {
+        "give": "fact_nik2_light"
+       },
+       {
+        "flag": "heard_nik2_light"
+       },
+       {
+        "trust": 1,
+        "track": "nikolai"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c2_nikolai"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c2_nikolai_enter": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2001-2001"
+   }
+  ],
+  "ask_ade2_four": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2108-2108"
+   },
+   {
+    "flag": "heard_ade2_four"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade2_iris": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2109-2109"
+   },
+   {
+    "flag": "heard_ade2_iris"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade2_bay": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2110-2110"
+   },
+   {
+    "flag": "heard_ade2_bay"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade2_sign": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2111-2111"
+   },
+   {
+    "flag": "heard_ade2_sign"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade2_audit": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2112-2112"
+   },
+   {
+    "flag": "heard_ade2_audit"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade2_night": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2113-2113"
+   },
+   {
+    "flag": "heard_ade2_night"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade2_basin": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2114-2114"
+   },
+   {
+    "flag": "heard_ade2_basin"
+   },
+   {
+    "xp": 4
+   },
+   {
+    "flag": "c2_decisive_heard"
+   }
+  ],
+  "pb1_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c2_adaeze": [
+   {
+    "flag": "c2_adaeze_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c2_adaeze": [
+   {
+    "flag": "c2_adaeze_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c2_adaeze": [
+   {
+    "flag": "c2_adaeze_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c2_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 5,
+      "req_track": "adaeze",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_trust5_adaeze"
+       },
+       {
+        "lines": "interr:228-240"
+       },
+       {
+        "give": "fact_ade2_mop"
+       },
+       {
+        "flag": "heard_ade2_mop"
+       },
+       {
+        "trust": 1,
+        "track": "adaeze"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c2_adaeze"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c2_adaeze_enter": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2002-2002"
+   }
+  ],
+  "ask_vee2_where": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2116-2116"
+   },
+   {
+    "flag": "heard_vee2_where"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee2_bail": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2117-2117"
+   },
+   {
+    "flag": "heard_vee2_bail"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee2_iris": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2118-2118"
+   },
+   {
+    "flag": "heard_vee2_iris"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee2_kind": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2119-2119"
+   },
+   {
+    "flag": "heard_vee2_kind"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee2_paid": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2120-2120"
+   },
+   {
+    "flag": "heard_vee2_paid"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee2_cold": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2121-2121"
+   },
+   {
+    "flag": "heard_vee2_cold"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee2_scared": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2122-2122"
+   },
+   {
+    "flag": "heard_vee2_scared"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "pb1_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "vee",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c2_vee": [
+   {
+    "flag": "c2_vee_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "vee",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c2_vee": [
+   {
+    "flag": "c2_vee_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "vee",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c2_vee": [
+   {
+    "flag": "c2_vee_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c2_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 5,
+      "req_track": "vee",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_vee_x"
+       },
+       {
+        "lines": "interr:243-256"
+       },
+       {
+        "give": "fact_vee2_seen"
+       },
+       {
+        "flag": "heard_vee2_seen"
+       },
+       {
+        "trust": 1,
+        "track": "vee"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c2_vee"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c2_vee_enter": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:2003-2003"
+   }
+  ],
+  "c2_tray": [
+   {
+    "choice": [
+     {
+      "key": "ch_look",
+      "auto_rank": 2,
+      "do": [
+       {
+        "cg": "cg_evidence2_x"
+       },
+       {
+        "lines": "start:127-129"
+       },
+       {
+        "give": "photo2"
+       },
+       {
+        "xp": 10
+       },
+       {
+        "hide_cg": true
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_tray",
+      "auto_rank": 0,
+      "do": []
+     }
+    ]
+   }
+  ],
+  "n2_open": [
+   {
+    "bg": "precinct"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_open_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_open_2"
+   }
+  ],
+  "c2_lockup": [
+   {
+    "lines": "start:106-106"
+   }
+  ],
+  "n2_locker": [
+   {
+    "say": "narrator",
+    "key": "n2_locker_1"
+   }
+  ],
+  "n2_archive": [
+   {
+    "say": "narrator",
+    "key": "n2_archive_1"
+   }
+  ],
+  "n2_books": [
+   {
+    "say": "narrator",
+    "key": "n2_books_1"
+   }
+  ],
+  "n2_filedrawer": [
+   {
+    "say": "narrator",
+    "key": "n2_filedrawer_1"
+   }
+  ],
+  "n2_morgue": [
+   {
+    "say": "narrator",
+    "key": "n2_morgue_1"
+   }
+  ],
+  "n2_sergeant_pre": [
+   {
+    "show": "sergeant",
+    "x": 0.7
+   },
+   {
+    "say": "sergeant",
+    "key": "n2_sergeant_1"
+   }
+  ],
+  "n2_sergeant_post": [
+   {
+    "flag": "c2_sergeant"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_sergeant_2"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n2_drawer7": [
+   {
+    "say": "narrator",
+    "key": "n2_drawer7_1"
+   }
+  ],
+  "n2_alley": [
+   {
+    "say": "narrator",
+    "key": "n2_alley_1"
+   }
+  ],
+  "n2_dumpster": [
+   {
+    "say": "narrator",
+    "key": "n3_dumpster_1"
+   }
+  ],
+  "n2_bar": [
+   {
+    "say": "narrator",
+    "key": "n2_bar_1"
+   }
+  ],
+  "n2_desk": [
+   {
+    "say": "narrator",
+    "key": "n2_desk_1"
+   }
+  ],
+  "n2_safe": [
+   {
+    "say": "narrator",
+    "key": "n2_safe_1"
+   }
+  ],
+  "n2_bay": [
+   {
+    "cg": "cg_rpg_bay"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_bay_1"
+   },
+   {
+    "hide_cg": true
+   }
+  ],
+  "n2_car": [
+   {
+    "say": "narrator",
+    "key": "n2_car_1"
+   }
+  ],
+  "n2_light": [
+   {
+    "say": "narrator",
+    "key": "n2_light_1"
+   }
+  ],
+  "n2_mop": [
+   {
+    "say": "narrator",
+    "key": "n2_mop_1"
+   }
+  ],
+  "n2_sink": [
+   {
+    "say": "narrator",
+    "key": "n2_sink_1"
+   }
+  ],
+  "n2_bucket": [
+   {
+    "say": "narrator",
+    "key": "n2_bucket_1"
+   }
+  ]
+ }
+}

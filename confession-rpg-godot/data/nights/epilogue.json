@@ -1,0 +1,306 @@
+{
+ "id": "epilogue",
+ "title_key": "ep_title",
+ "sub_key": "ep_sub",
+ "turns": 12,
+ "clock_start": 300,
+ "minutes_per_turn": 5,
+ "start_room": "safe_house",
+ "start_event": "ep_open",
+ "map": {
+  "image": "board",
+  "rooms": {
+   "safe_house": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "rooms": {
+  "safe_house": {
+   "name_key": "r_safe_house",
+   "plate": "safe_house",
+   "music": "dawn",
+   "mood": {
+    "ambient": "#7a7080",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      1.1,
+      "#ffc880"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "visit_nikolai",
+     "kind": "event",
+     "pos": [
+      0.2,
+      0.5
+     ],
+     "event": "ep_nikolai",
+     "label_key": "hs_visit_nikolai",
+     "turns": 1
+    },
+    {
+     "id": "visit_adaeze",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "ep_adaeze",
+     "label_key": "hs_visit_adaeze",
+     "turns": 1
+    },
+    {
+     "id": "visit_vee",
+     "kind": "event",
+     "pos": [
+      0.8,
+      0.5
+     ],
+     "event": "ep_vee",
+     "label_key": "hs_visit_vee",
+     "turns": 1
+    },
+    {
+     "id": "lamp",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.78
+     ],
+     "event": "ep_end",
+     "label_key": "hs_end_run",
+     "sim_last": true
+    }
+   ]
+  }
+ },
+ "events": {
+  "ep_nikolai": [
+   {
+    "if_trust": 9,
+    "track": "nikolai",
+    "then": [
+     {
+      "music": "intimate"
+     },
+     {
+      "show": "nikolai",
+      "x": 0.72
+     },
+     {
+      "say": "nikolai",
+      "key": "ep_nikolai_1"
+     },
+     {
+      "say": "narrator",
+      "key": "ep_nikolai_2"
+     },
+     {
+      "cg": "cg_nikolai_x"
+     },
+     {
+      "say": "narrator",
+      "key": "ep_nikolai_3"
+     },
+     {
+      "trust": 1,
+      "track": "nikolai"
+     },
+     {
+      "flag": "ep_nikolai"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "show": ""
+     },
+     {
+      "music": "dawn"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "ep_nikolai_no"
+     }
+    ]
+   }
+  ],
+  "ep_adaeze": [
+   {
+    "if_trust": 9,
+    "track": "adaeze",
+    "then": [
+     {
+      "music": "intimate"
+     },
+     {
+      "show": "adaeze",
+      "x": 0.72
+     },
+     {
+      "say": "adaeze",
+      "key": "ep_adaeze_1"
+     },
+     {
+      "say": "narrator",
+      "key": "ep_adaeze_2"
+     },
+     {
+      "cg": "cg_adaeze_x"
+     },
+     {
+      "say": "narrator",
+      "key": "ep_adaeze_3"
+     },
+     {
+      "trust": 1,
+      "track": "adaeze"
+     },
+     {
+      "flag": "ep_adaeze"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "show": ""
+     },
+     {
+      "music": "dawn"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "ep_adaeze_no"
+     }
+    ]
+   }
+  ],
+  "ep_vee": [
+   {
+    "if_trust": 9,
+    "track": "vee",
+    "then": [
+     {
+      "music": "intimate"
+     },
+     {
+      "show": "vee",
+      "x": 0.72
+     },
+     {
+      "say": "vee",
+      "key": "ep_vee_1"
+     },
+     {
+      "say": "narrator",
+      "key": "ep_vee_2"
+     },
+     {
+      "cg": "cg_trust9_vee"
+     },
+     {
+      "say": "narrator",
+      "key": "ep_vee_3"
+     },
+     {
+      "trust": 1,
+      "track": "vee"
+     },
+     {
+      "flag": "ep_vee"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "show": ""
+     },
+     {
+      "music": "dawn"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "ep_vee_no"
+     }
+    ]
+   }
+  ],
+  "ep_open": [
+   {
+    "bg": "safe_house"
+   },
+   {
+    "music": "dawn"
+   },
+   {
+    "lines": "board:240-240"
+   },
+   {
+    "if_flag": "c1_cleared",
+    "then": [
+     {
+      "if_flag": "c2_cleared",
+      "then": [
+       {
+        "if_flag": "c3_cleared",
+        "then": [
+         {
+          "say": "narrator",
+          "key": "ep_all"
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "ep_some"
+         }
+        ]
+       }
+      ],
+      "else": [
+       {
+        "say": "narrator",
+        "key": "ep_some"
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "ep_some"
+     }
+    ]
+   },
+   {
+    "say": "narrator",
+    "key": "ep_safe_1"
+   }
+  ],
+  "ep_end": [
+   {
+    "say": "narrator",
+    "key": "ep_lamp_1"
+   },
+   {
+    "lines": "board:245-245"
+   },
+   {
+    "end_night": true,
+    "next": ""
+   }
+  ]
+ }
+}

@@ -1,0 +1,855 @@
+{
+ "chapter": "cases",
+ "lines": [
+  {
+   "id": "open1_nikolai",
+   "src": 1001,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "I was in the office until two. Then I was somewhere else. That's the whole of it.",
+   "ja": "",
+   "v_en": "res://assets/voice/open1_nikolai.ogg"
+  },
+  {
+   "id": "open1_adaeze",
+   "src": 1002,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "I counted the drawer, I set the alarm, I went home. You can have the tape.",
+   "ja": "",
+   "v_en": "res://assets/voice/open1_adaeze.ogg"
+  },
+  {
+   "id": "open1_vee",
+   "src": 1003,
+   "label": "case1",
+   "who": "vee",
+   "en": "I dropped a crate and I left. I never went past the bar.",
+   "ja": "",
+   "v_en": "res://assets/voice/open1_vee.ogg"
+  },
+  {
+   "id": "victim1",
+   "src": 1010,
+   "label": "case1",
+   "who": "narrator",
+   "en": "Marek Sandoval, 41. Vice informant. Off the books for nine months.",
+   "ja": ""
+  },
+  {
+   "id": "public1_1",
+   "src": 1011,
+   "label": "case1",
+   "who": "narrator",
+   "en": "Found at 04:10 in the back office of the Paloma, behind the desk.",
+   "ja": ""
+  },
+  {
+   "id": "public1_2",
+   "src": 1012,
+   "label": "case1",
+   "who": "narrator",
+   "en": "Cause of death: a single blow to the back of the skull.",
+   "ja": ""
+  },
+  {
+   "id": "public1_3",
+   "src": 1013,
+   "label": "case1",
+   "who": "narrator",
+   "en": "The club closed to the public at 02:00. Three people had keys.",
+   "ja": ""
+  },
+  {
+   "id": "public1_4",
+   "src": 1014,
+   "label": "case1",
+   "who": "narrator",
+   "en": "No forced entry. Nothing taken from the register or the safe.",
+   "ja": ""
+  },
+  {
+   "id": "nik_keys",
+   "src": 1100,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "Three keys. Mine, hers, and the one Marek was never supposed to still have.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik_keys.ogg"
+  },
+  {
+   "id": "nik_two",
+   "src": 1101,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "I locked the office and I walked. Ask the camera on Delgado Street. It likes me.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik_two.ogg"
+  },
+  {
+   "id": "nik_job",
+   "src": 1102,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "I am what a place like this has instead of a complaints procedure.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik_job.ogg"
+  },
+  {
+   "id": "nik_marek",
+   "src": 1103,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "He was selling. Not product — names. Mine was on the list he was building.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik_marek.ogg"
+  },
+  {
+   "id": "nik_list",
+   "src": 1104,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "Nine months of it. Every name on that list is still walking around being very calm.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik_list.ogg"
+  },
+  {
+   "id": "nik_money",
+   "src": 1105,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "Nothing was taken because nothing in there was worth what he already had in his head.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik_money.ogg"
+  },
+  {
+   "id": "nik_room",
+   "src": 1106,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "I don't go past the bar. Hasn't been my job since I stopped being cheap.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik_room.ogg"
+  },
+  {
+   "id": "nik_curtain",
+   "src": 1107,
+   "label": "case1",
+   "who": "nikolai",
+   "en": "Somebody was past the bar. I heard the strip curtain. I did not look, because looking is how you end up on a list.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik_curtain.ogg"
+  },
+  {
+   "id": "ade_drawer",
+   "src": 1108,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "Four hundred and ten in the drawer, same as every Thursday. I wrote it down.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade_drawer.ogg"
+  },
+  {
+   "id": "ade_alarm",
+   "src": 1109,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "I set it. It logs. If it logs me at 02:14 then I was at the panel at 02:14.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade_alarm.ogg"
+  },
+  {
+   "id": "ade_staff",
+   "src": 1110,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "Me, Nikolai, a courier who should have been gone. That is not a crowd.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade_staff.ogg"
+  },
+  {
+   "id": "ade_marek",
+   "src": 1111,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "He came in through the kitchen. He always did. I stopped telling him not to.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade_marek.ogg"
+  },
+  {
+   "id": "ade_kitchen",
+   "src": 1112,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "Deliveries, ice, the cooler, the yard door. Everything that isn't for customers.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade_kitchen.ogg"
+  },
+  {
+   "id": "ade_vee",
+   "src": 1113,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "Vee stayed. I watched them not leave. That's the part I didn't want to say.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade_vee.ogg"
+  },
+  {
+   "id": "ade_lease",
+   "src": 1114,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "Everything here has my name on it. Including whatever you decide happened.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade_lease.ogg"
+  },
+  {
+   "id": "ade_seal",
+   "src": 1115,
+   "label": "case1",
+   "who": "adaeze",
+   "en": "The cooler door has a seal, it drags. I heard it drag after I set the alarm, and I told myself it was the compressor.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade_seal.ogg"
+  },
+  {
+   "id": "vee_crate",
+   "src": 1116,
+   "label": "case1",
+   "who": "vee",
+   "en": "One crate, off the van, onto the floor by the bar. Eleven minutes, end to end.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee_crate.ogg"
+  },
+  {
+   "id": "vee_leave",
+   "src": 1117,
+   "label": "case1",
+   "who": "vee",
+   "en": "I was gone before she counted the drawer. Ask her.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee_leave.ogg"
+  },
+  {
+   "id": "vee_van",
+   "src": 1118,
+   "label": "case1",
+   "who": "vee",
+   "en": "Not mine. I don't own anything that can be traced to an address.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee_van.ogg"
+  },
+  {
+   "id": "vee_marek",
+   "src": 1119,
+   "label": "case1",
+   "who": "vee",
+   "en": "He owed me. Not money. He was supposed to keep a name out of a file.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee_marek.ogg"
+  },
+  {
+   "id": "vee_name",
+   "src": 1120,
+   "label": "case1",
+   "who": "vee",
+   "en": "Does it matter? It was never going to be his own.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee_name.ogg"
+  },
+  {
+   "id": "vee_bar",
+   "src": 1121,
+   "label": "case1",
+   "who": "vee",
+   "en": "I said I never went past the bar. I'd like to keep saying that.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee_bar.ogg"
+  },
+  {
+   "id": "vee_cold",
+   "src": 1122,
+   "label": "case1",
+   "who": "vee",
+   "en": "You want me to say it. Fine. It was cold in there. My hands stopped working and I couldn't pick the thing back up. That's what I remember. The cold.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee_cold.ogg"
+  },
+  {
+   "id": "vee_hands",
+   "src": 1123,
+   "label": "case1",
+   "who": "vee",
+   "en": "Everyone keeps saying eleven minutes. I was there long enough to stop feeling my hands.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee_hands.ogg"
+  },
+  {
+   "id": "open2_nikolai",
+   "src": 2001,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "I liked her. Write that down first, because nothing after it sounds like it.",
+   "ja": "",
+   "v_en": "res://assets/voice/open2_nikolai.ogg"
+  },
+  {
+   "id": "open2_adaeze",
+   "src": 2002,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "I was in the office with the books until four. Alone. I know how that sounds.",
+   "ja": "",
+   "v_en": "res://assets/voice/open2_adaeze.ogg"
+  },
+  {
+   "id": "open2_vee",
+   "src": 2003,
+   "label": "case2",
+   "who": "vee",
+   "en": "I wasn't there. For once in my life I have somewhere else to be and no way to prove it.",
+   "ja": "",
+   "v_en": "res://assets/voice/open2_vee.ogg"
+  },
+  {
+   "id": "victim2",
+   "src": 2010,
+   "label": "case2",
+   "who": "narrator",
+   "en": "Iris Toma, 38. The Paloma's bookkeeper. Nobody's idea of a suspect.",
+   "ja": ""
+  },
+  {
+   "id": "public2_1",
+   "src": 2011,
+   "label": "case2",
+   "who": "narrator",
+   "en": "Found at 05:40 in her own car in the Paloma's loading bay, doors unlocked.",
+   "ja": ""
+  },
+  {
+   "id": "public2_2",
+   "src": 2012,
+   "label": "case2",
+   "who": "narrator",
+   "en": "Cause of death: drowning.",
+   "ja": ""
+  },
+  {
+   "id": "public2_3",
+   "src": 2013,
+   "label": "case2",
+   "who": "narrator",
+   "en": "The bay floods when it rains. It rained until three.",
+   "ja": ""
+  },
+  {
+   "id": "public2_4",
+   "src": 2014,
+   "label": "case2",
+   "who": "narrator",
+   "en": "Her keys were in the ignition. Her bag was on the passenger seat, untouched.",
+   "ja": ""
+  },
+  {
+   "id": "nik2_iris",
+   "src": 2100,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "Thirty-eight, twice as smart as this place needed, and she stayed anyway.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik2_iris.ogg"
+  },
+  {
+   "id": "nik2_rain",
+   "src": 2101,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "Stopped at three. Everyone keeps saying it like it settles something.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik2_rain.ogg"
+  },
+  {
+   "id": "nik2_car",
+   "src": 2102,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "She backed it in. Always. Said she liked being able to leave in one move.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik2_car.ogg"
+  },
+  {
+   "id": "nik2_books",
+   "src": 2103,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "Two sets. That is not an accusation, that is a Tuesday.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik2_books.ogg"
+  },
+  {
+   "id": "nik2_second",
+   "src": 2104,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "The real one had her handwriting in the margins. Somebody has been reading it.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik2_second.ogg"
+  },
+  {
+   "id": "nik2_ade",
+   "src": 2105,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "She signed every page. If the pages are wrong, there is exactly one signature on them.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik2_ade.ogg"
+  },
+  {
+   "id": "nik2_offer",
+   "src": 2106,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "She asked me what it costs to leave a place like this. I told her nobody had ever paid it in one go.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik2_offer.ogg"
+  },
+  {
+   "id": "nik2_light",
+   "src": 2107,
+   "label": "case2",
+   "who": "nikolai",
+   "en": "The bay light is on a timer and it was off. Somebody killed it from inside, and the switch for it is in the mop room.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik2_light.ogg"
+  },
+  {
+   "id": "ade2_four",
+   "src": 2108,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "Books, coffee, the desk lamp. No door, no phone, no witness. I am aware.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade2_four.ogg"
+  },
+  {
+   "id": "ade2_iris",
+   "src": 2109,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "She worked for me for six years and I do not know the name of her sister.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade2_iris.ogg"
+  },
+  {
+   "id": "ade2_bay",
+   "src": 2110,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "It floods. It has flooded every winter since before my name went on anything.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade2_bay.ogg"
+  },
+  {
+   "id": "ade2_sign",
+   "src": 2111,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "On every page. That is what a manager is. A person who is on every page.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade2_sign.ogg"
+  },
+  {
+   "id": "ade2_audit",
+   "src": 2112,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "There was going to be one. She told me. She told me like she was doing me a kindness.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade2_audit.ogg"
+  },
+  {
+   "id": "ade2_night",
+   "src": 2113,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "I heard her car. I did not hear it leave. I told myself she was on the phone.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade2_night.ogg"
+  },
+  {
+   "id": "ade2_basin",
+   "src": 2114,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "You keep saying drowned like the bay explains it. That water is filthy. The only clean basin in this building is the mop room sink and it is deep enough to lose an arm in. I have known that for six years.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade2_basin.ogg"
+  },
+  {
+   "id": "ade2_mop",
+   "src": 2115,
+   "label": "case2",
+   "who": "adaeze",
+   "en": "I was in there at half past three. I will say that before you find someone who says it for me.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade2_mop.ogg"
+  },
+  {
+   "id": "vee2_where",
+   "src": 2116,
+   "label": "case2",
+   "who": "vee",
+   "en": "A room with a door that locks from outside. You can check. Please check.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee2_where.ogg"
+  },
+  {
+   "id": "vee2_bail",
+   "src": 2117,
+   "label": "case2",
+   "who": "vee",
+   "en": "Somebody paid it. I did not ask who, because I know what asking costs.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee2_bail.ogg"
+  },
+  {
+   "id": "vee2_iris",
+   "src": 2118,
+   "label": "case2",
+   "who": "vee",
+   "en": "She wrote down what I brought in. Every crate. She never once wrote down my name.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee2_iris.ogg"
+  },
+  {
+   "id": "vee2_kind",
+   "src": 2119,
+   "label": "case2",
+   "who": "vee",
+   "en": "Because everyone else in my life keeps a list, and hers was the only one I wasn't on.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee2_kind.ogg"
+  },
+  {
+   "id": "vee2_paid",
+   "src": 2120,
+   "label": "case2",
+   "who": "vee",
+   "en": "I have a guess. My guess is a man who likes people to owe him something soft.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee2_paid.ogg"
+  },
+  {
+   "id": "vee2_cold",
+   "src": 2121,
+   "label": "case2",
+   "who": "vee",
+   "en": "You think I don't know what you all decided about me. I know.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee2_cold.ogg"
+  },
+  {
+   "id": "vee2_scared",
+   "src": 2122,
+   "label": "case2",
+   "who": "vee",
+   "en": "That it doesn't matter what I did. That there's a shape people have decided I am, and it has a chair in it, and the chair is this one.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee2_scared.ogg"
+  },
+  {
+   "id": "vee2_seen",
+   "src": 2123,
+   "label": "case2",
+   "who": "vee",
+   "en": "I came back for a jacket. Around four. There was a light on in the mop room and I did not go in, and I have been sick about it since.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee2_seen.ogg"
+  },
+  {
+   "id": "open3_nikolai",
+   "src": 3001,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "Third time, Reyes. At some point this stops being detective work and starts being a habit.",
+   "ja": "",
+   "v_en": "res://assets/voice/open3_nikolai.ogg"
+  },
+  {
+   "id": "open3_adaeze",
+   "src": 3002,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "You let me out of one of these six days ago. I have not redecorated since.",
+   "ja": "",
+   "v_en": "res://assets/voice/open3_adaeze.ogg"
+  },
+  {
+   "id": "open3_vee",
+   "src": 3003,
+   "label": "case3",
+   "who": "vee",
+   "en": "I'm here. I didn't wait for you to send anyone. That has to be worth something.",
+   "ja": "",
+   "v_en": "res://assets/voice/open3_vee.ogg"
+  },
+  {
+   "id": "victim3",
+   "src": 3010,
+   "label": "case3",
+   "who": "narrator",
+   "en": "Bo Kestrel, 45. Licensing inspector. Held the Paloma's future in a folder.",
+   "ja": ""
+  },
+  {
+   "id": "public3_1",
+   "src": 3011,
+   "label": "case3",
+   "who": "narrator",
+   "en": "Found at 01:20 on the fire stairs between the second and third landing.",
+   "ja": ""
+  },
+  {
+   "id": "public3_2",
+   "src": 3012,
+   "label": "case3",
+   "who": "narrator",
+   "en": "Cause of death: a fall. The fall is consistent with the stairs.",
+   "ja": ""
+  },
+  {
+   "id": "public3_3",
+   "src": 3013,
+   "label": "case3",
+   "who": "narrator",
+   "en": "The inspection was booked for the following morning.",
+   "ja": ""
+  },
+  {
+   "id": "public3_4",
+   "src": 3014,
+   "label": "case3",
+   "who": "narrator",
+   "en": "His folder was on the landing beside him. Nothing in it was missing.",
+   "ja": ""
+  },
+  {
+   "id": "nik3_bo",
+   "src": 3100,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "An inspector who took a folder everywhere. A man can be honest and still be a problem.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik3_bo.ogg"
+  },
+  {
+   "id": "nik3_stairs",
+   "src": 3101,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "Concrete, steel nosing, no handrail on the turn. The building has been trying to kill somebody there for thirty years.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik3_stairs.ogg"
+  },
+  {
+   "id": "nik3_morning",
+   "src": 3102,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "Nine in the morning. Everyone in this building had somewhere to be at nine.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik3_morning.ogg"
+  },
+  {
+   "id": "nik3_folder",
+   "src": 3103,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "Still beside him. Which is the part nobody wants to talk about, so let us not.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik3_folder.ogg"
+  },
+  {
+   "id": "nik3_paloma",
+   "src": 3104,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "It has been dying for two years. Three deaths is not a run of luck, it is a diagnosis.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik3_paloma.ogg"
+  },
+  {
+   "id": "nik3_safe",
+   "src": 3105,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "Open, I'm told. Money still in it, I'm told. You keep handing me facts I am supposed to find surprising.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik3_safe.ogg"
+  },
+  {
+   "id": "nik3_drawer",
+   "src": 3106,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "Nothing in that safe was worth a life. The money, I mean. The money was never the thing. The inner drawer is the thing, and you already know it was the ledger in there and not a single note, or you would not have come back a third time.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik3_drawer.ogg"
+  },
+  {
+   "id": "nik3_tired",
+   "src": 3107,
+   "label": "case3",
+   "who": "nikolai",
+   "en": "Because I am the only one of the three who has never once asked you for anything. You should have found that strange a long time ago.",
+   "ja": "",
+   "v_en": "res://assets/voice/nik3_tired.ogg"
+  },
+  {
+   "id": "ade3_lease",
+   "src": 3108,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "Still mine. Getting heavier.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade3_lease.ogg"
+  },
+  {
+   "id": "ade3_bo",
+   "src": 3109,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "He was polite to me in a way that meant he had already written his report.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade3_bo.ogg"
+  },
+  {
+   "id": "ade3_night",
+   "src": 3110,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "Upstairs, in the flat over the club, with the lights off, doing nothing at all.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade3_night.ogg"
+  },
+  {
+   "id": "ade3_report",
+   "src": 3111,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "It was going to close us. He did not say so. You do not have to say so.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade3_report.ogg"
+  },
+  {
+   "id": "ade3_after",
+   "src": 3112,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "I sign nothing now. Somebody else can be on every page for a while.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade3_after.ogg"
+  },
+  {
+   "id": "ade3_nik",
+   "src": 3113,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "He has never asked me for one thing in six years. I used to find that restful.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade3_nik.ogg"
+  },
+  {
+   "id": "ade3_owe",
+   "src": 3114,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "A man who is never owed anything is a man who has already taken it.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade3_owe.ogg"
+  },
+  {
+   "id": "ade3_office",
+   "src": 3115,
+   "label": "case3",
+   "who": "adaeze",
+   "en": "There was a light in the office at one. From upstairs you can see it in the yard, on the wall. I watched it go out and I did not come down.",
+   "ja": "",
+   "v_en": "res://assets/voice/ade3_office.ogg"
+  },
+  {
+   "id": "vee3_here",
+   "src": 3116,
+   "label": "case3",
+   "who": "vee",
+   "en": "Because the third time you send someone for me, I would rather have walked in myself.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee3_here.ogg"
+  },
+  {
+   "id": "vee3_bo",
+   "src": 3117,
+   "label": "case3",
+   "who": "vee",
+   "en": "Never met him. That is the first true thing I have said in this room in a month.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee3_bo.ogg"
+  },
+  {
+   "id": "vee3_night",
+   "src": 3118,
+   "label": "case3",
+   "who": "vee",
+   "en": "Outside the yard door from midnight. Smoking. I can tell you what colour the wall is at one in the morning.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee3_night.ogg"
+  },
+  {
+   "id": "vee3_yard",
+   "src": 3119,
+   "label": "case3",
+   "who": "vee",
+   "en": "You can hear the office through the vent. You cannot hear words. You can hear that there are words.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee3_yard.ogg"
+  },
+  {
+   "id": "vee3_heard",
+   "src": 3120,
+   "label": "case3",
+   "who": "vee",
+   "en": "Two people. One of them doing most of it. Then one set of feet on the stairs, going down slow, like carrying.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee3_heard.ogg"
+  },
+  {
+   "id": "vee3_tell",
+   "src": 3121,
+   "label": "case3",
+   "who": "vee",
+   "en": "Because last time I told the truth about a room I was standing in, it took eleven months off my life.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee3_tell.ogg"
+  },
+  {
+   "id": "vee3_believe",
+   "src": 3122,
+   "label": "case3",
+   "who": "vee",
+   "en": "One person in this city to hear me say a thing and write it down the way I said it.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee3_believe.ogg"
+  },
+  {
+   "id": "vee3_slow",
+   "src": 3123,
+   "label": "case3",
+   "who": "vee",
+   "en": "Slow on the way down. Quick on the way up. Nobody carries anything up.",
+   "ja": "",
+   "v_en": "res://assets/voice/vee3_slow.ogg"
+  }
+ ],
+ "menus": {}
+}

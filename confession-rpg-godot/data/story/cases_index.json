@@ -1,0 +1,553 @@
+{
+ "cases": [
+  {
+   "id": "cold_room",
+   "title": "The Cold Room",
+   "night": "Thursday",
+   "solution": "vee",
+   "decisive": "vee_cold",
+   "withheld": "Marek was killed in the walk-in cooler and moved. His left shoe is still in there.",
+   "roles": {
+    "nikolai": "Fixer. Forty-two. Paid to make the Paloma's problems quiet.",
+    "adaeze": "Manager. Twenty-nine. The only one whose name is on the lease.",
+    "vee": "Courier. Thirty-one. Moves things nobody writes down."
+   },
+   "statements": [
+    {
+     "id": "nik_keys",
+     "who": "nikolai",
+     "topic": "the keys",
+     "need": 0,
+     "src": 1100
+    },
+    {
+     "id": "nik_two",
+     "who": "nikolai",
+     "topic": "after two",
+     "need": 0,
+     "src": 1101
+    },
+    {
+     "id": "nik_job",
+     "who": "nikolai",
+     "topic": "what you do here",
+     "need": 0,
+     "src": 1102
+    },
+    {
+     "id": "nik_marek",
+     "who": "nikolai",
+     "topic": "Marek",
+     "need": 1,
+     "src": 1103
+    },
+    {
+     "id": "nik_list",
+     "who": "nikolai",
+     "topic": "the list",
+     "need": 1,
+     "src": 1104
+    },
+    {
+     "id": "nik_money",
+     "who": "nikolai",
+     "topic": "the safe",
+     "need": 2,
+     "src": 1105
+    },
+    {
+     "id": "nik_room",
+     "who": "nikolai",
+     "topic": "the back rooms",
+     "need": 3,
+     "src": 1106
+    },
+    {
+     "id": "nik_curtain",
+     "who": "nikolai",
+     "topic": "the strip curtain",
+     "need": 99,
+     "src": 1107
+    },
+    {
+     "id": "ade_drawer",
+     "who": "adaeze",
+     "topic": "closing up",
+     "need": 0,
+     "src": 1108
+    },
+    {
+     "id": "ade_alarm",
+     "who": "adaeze",
+     "topic": "the alarm",
+     "need": 0,
+     "src": 1109
+    },
+    {
+     "id": "ade_staff",
+     "who": "adaeze",
+     "topic": "who was left",
+     "need": 0,
+     "src": 1110
+    },
+    {
+     "id": "ade_marek",
+     "who": "adaeze",
+     "topic": "Marek",
+     "need": 1,
+     "src": 1111
+    },
+    {
+     "id": "ade_kitchen",
+     "who": "adaeze",
+     "topic": "the kitchen",
+     "need": 1,
+     "src": 1112
+    },
+    {
+     "id": "ade_vee",
+     "who": "adaeze",
+     "topic": "Vee",
+     "need": 2,
+     "src": 1113
+    },
+    {
+     "id": "ade_lease",
+     "who": "adaeze",
+     "topic": "the lease",
+     "need": 3,
+     "src": 1114
+    },
+    {
+     "id": "ade_seal",
+     "who": "adaeze",
+     "topic": "the cooler door",
+     "need": 99,
+     "src": 1115
+    },
+    {
+     "id": "vee_crate",
+     "who": "vee",
+     "topic": "the delivery",
+     "need": 0,
+     "src": 1116
+    },
+    {
+     "id": "vee_leave",
+     "who": "vee",
+     "topic": "leaving",
+     "need": 0,
+     "src": 1117
+    },
+    {
+     "id": "vee_van",
+     "who": "vee",
+     "topic": "the van",
+     "need": 0,
+     "src": 1118
+    },
+    {
+     "id": "vee_marek",
+     "who": "vee",
+     "topic": "Marek",
+     "need": 1,
+     "src": 1119
+    },
+    {
+     "id": "vee_name",
+     "who": "vee",
+     "topic": "whose name",
+     "need": 1,
+     "src": 1120
+    },
+    {
+     "id": "vee_bar",
+     "who": "vee",
+     "topic": "past the bar",
+     "need": 2,
+     "src": 1121
+    },
+    {
+     "id": "vee_cold",
+     "who": "vee",
+     "topic": "the cold",
+     "need": 3,
+     "src": 1122
+    },
+    {
+     "id": "vee_hands",
+     "who": "vee",
+     "topic": "eleven minutes",
+     "need": 99,
+     "src": 1123
+    }
+   ]
+  },
+  {
+   "id": "loading_bay",
+   "title": "The Second Key",
+   "night": "three weeks later",
+   "solution": "adaeze",
+   "decisive": "ade2_basin",
+   "withheld": "Iris drowned in clean water. She was killed in the mop room and put in the car.",
+   "roles": {
+    "nikolai": "Fixer. Still. Nobody has found a reason to stop paying him.",
+    "adaeze": "Manager. Signed off every page Iris ever wrote.",
+    "vee": "Courier. Out on bail you did not ask about."
+   },
+   "statements": [
+    {
+     "id": "nik2_iris",
+     "who": "nikolai",
+     "topic": "Iris",
+     "need": 0,
+     "src": 2100
+    },
+    {
+     "id": "nik2_rain",
+     "who": "nikolai",
+     "topic": "the rain",
+     "need": 0,
+     "src": 2101
+    },
+    {
+     "id": "nik2_car",
+     "who": "nikolai",
+     "topic": "her car",
+     "need": 0,
+     "src": 2102
+    },
+    {
+     "id": "nik2_books",
+     "who": "nikolai",
+     "topic": "the books",
+     "need": 1,
+     "src": 2103
+    },
+    {
+     "id": "nik2_second",
+     "who": "nikolai",
+     "topic": "the second set",
+     "need": 1,
+     "src": 2104
+    },
+    {
+     "id": "nik2_ade",
+     "who": "nikolai",
+     "topic": "Adaeze",
+     "need": 2,
+     "src": 2105
+    },
+    {
+     "id": "nik2_offer",
+     "who": "nikolai",
+     "topic": "what Iris wanted",
+     "need": 3,
+     "src": 2106
+    },
+    {
+     "id": "nik2_light",
+     "who": "nikolai",
+     "topic": "the bay light",
+     "need": 99,
+     "src": 2107
+    },
+    {
+     "id": "ade2_four",
+     "who": "adaeze",
+     "topic": "until four",
+     "need": 0,
+     "src": 2108
+    },
+    {
+     "id": "ade2_iris",
+     "who": "adaeze",
+     "topic": "Iris",
+     "need": 0,
+     "src": 2109
+    },
+    {
+     "id": "ade2_bay",
+     "who": "adaeze",
+     "topic": "the loading bay",
+     "need": 0,
+     "src": 2110
+    },
+    {
+     "id": "ade2_sign",
+     "who": "adaeze",
+     "topic": "your signature",
+     "need": 1,
+     "src": 2111
+    },
+    {
+     "id": "ade2_audit",
+     "who": "adaeze",
+     "topic": "the audit",
+     "need": 1,
+     "src": 2112
+    },
+    {
+     "id": "ade2_night",
+     "who": "adaeze",
+     "topic": "that night",
+     "need": 2,
+     "src": 2113
+    },
+    {
+     "id": "ade2_basin",
+     "who": "adaeze",
+     "topic": "clean water",
+     "need": 3,
+     "src": 2114
+    },
+    {
+     "id": "ade2_mop",
+     "who": "adaeze",
+     "topic": "the mop room",
+     "need": 99,
+     "src": 2115
+    },
+    {
+     "id": "vee2_where",
+     "who": "vee",
+     "topic": "where you were",
+     "need": 0,
+     "src": 2116
+    },
+    {
+     "id": "vee2_bail",
+     "who": "vee",
+     "topic": "the bail",
+     "need": 0,
+     "src": 2117
+    },
+    {
+     "id": "vee2_iris",
+     "who": "vee",
+     "topic": "Iris",
+     "need": 0,
+     "src": 2118
+    },
+    {
+     "id": "vee2_kind",
+     "who": "vee",
+     "topic": "why that mattered",
+     "need": 1,
+     "src": 2119
+    },
+    {
+     "id": "vee2_paid",
+     "who": "vee",
+     "topic": "who paid",
+     "need": 1,
+     "src": 2120
+    },
+    {
+     "id": "vee2_cold",
+     "who": "vee",
+     "topic": "the last case",
+     "need": 2,
+     "src": 2121
+    },
+    {
+     "id": "vee2_scared",
+     "who": "vee",
+     "topic": "what you're afraid of",
+     "need": 3,
+     "src": 2122
+    },
+    {
+     "id": "vee2_seen",
+     "who": "vee",
+     "topic": "what you saw",
+     "need": 99,
+     "src": 2123
+    }
+   ]
+  },
+  {
+   "id": "fire_stairs",
+   "title": "What the Room Heard",
+   "night": "the last night",
+   "solution": "nikolai",
+   "decisive": "nik3_drawer",
+   "withheld": "Bo was killed in the office. The safe's inner drawer was emptied of a ledger.",
+   "roles": {
+    "nikolai": "Fixer. Has been in this room more than you have.",
+    "adaeze": "Manager. Out on your paperwork, back behind your table.",
+    "vee": "Courier. Has stopped pretending to have anywhere else to be."
+   },
+   "statements": [
+    {
+     "id": "nik3_bo",
+     "who": "nikolai",
+     "topic": "Bo Kestrel",
+     "need": 0,
+     "src": 3100
+    },
+    {
+     "id": "nik3_stairs",
+     "who": "nikolai",
+     "topic": "the fire stairs",
+     "need": 0,
+     "src": 3101
+    },
+    {
+     "id": "nik3_morning",
+     "who": "nikolai",
+     "topic": "the inspection",
+     "need": 0,
+     "src": 3102
+    },
+    {
+     "id": "nik3_folder",
+     "who": "nikolai",
+     "topic": "the folder",
+     "need": 1,
+     "src": 3103
+    },
+    {
+     "id": "nik3_paloma",
+     "who": "nikolai",
+     "topic": "the Paloma",
+     "need": 1,
+     "src": 3104
+    },
+    {
+     "id": "nik3_safe",
+     "who": "nikolai",
+     "topic": "the safe",
+     "need": 2,
+     "src": 3105
+    },
+    {
+     "id": "nik3_drawer",
+     "who": "nikolai",
+     "topic": "what was worth taking",
+     "need": 3,
+     "src": 3106
+    },
+    {
+     "id": "nik3_tired",
+     "who": "nikolai",
+     "topic": "why you keep coming back",
+     "need": 99,
+     "src": 3107
+    },
+    {
+     "id": "ade3_lease",
+     "who": "adaeze",
+     "topic": "the lease, again",
+     "need": 0,
+     "src": 3108
+    },
+    {
+     "id": "ade3_bo",
+     "who": "adaeze",
+     "topic": "Bo Kestrel",
+     "need": 0,
+     "src": 3109
+    },
+    {
+     "id": "ade3_night",
+     "who": "adaeze",
+     "topic": "last night",
+     "need": 0,
+     "src": 3110
+    },
+    {
+     "id": "ade3_report",
+     "who": "adaeze",
+     "topic": "the report",
+     "need": 1,
+     "src": 3111
+    },
+    {
+     "id": "ade3_after",
+     "who": "adaeze",
+     "topic": "since Iris",
+     "need": 1,
+     "src": 3112
+    },
+    {
+     "id": "ade3_nik",
+     "who": "adaeze",
+     "topic": "Nikolai",
+     "need": 2,
+     "src": 3113
+    },
+    {
+     "id": "ade3_owe",
+     "who": "adaeze",
+     "topic": "what he is owed",
+     "need": 3,
+     "src": 3114
+    },
+    {
+     "id": "ade3_office",
+     "who": "adaeze",
+     "topic": "the office light",
+     "need": 99,
+     "src": 3115
+    },
+    {
+     "id": "vee3_here",
+     "who": "vee",
+     "topic": "why you came in",
+     "need": 0,
+     "src": 3116
+    },
+    {
+     "id": "vee3_bo",
+     "who": "vee",
+     "topic": "Bo Kestrel",
+     "need": 0,
+     "src": 3117
+    },
+    {
+     "id": "vee3_night",
+     "who": "vee",
+     "topic": "last night",
+     "need": 0,
+     "src": 3118
+    },
+    {
+     "id": "vee3_yard",
+     "who": "vee",
+     "topic": "the yard",
+     "need": 1,
+     "src": 3119
+    },
+    {
+     "id": "vee3_heard",
+     "who": "vee",
+     "topic": "what you heard",
+     "need": 1,
+     "src": 3120
+    },
+    {
+     "id": "vee3_tell",
+     "who": "vee",
+     "topic": "why you didn't say",
+     "need": 2,
+     "src": 3121
+    },
+    {
+     "id": "vee3_believe",
+     "who": "vee",
+     "topic": "what you want",
+     "need": 3,
+     "src": 3122
+    },
+    {
+     "id": "vee3_slow",
+     "who": "vee",
+     "topic": "going down slow",
+     "need": 99,
+     "src": 3123
+    }
+   ]
+  }
+ ]
+}

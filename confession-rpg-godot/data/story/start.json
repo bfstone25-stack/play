@@ -1,0 +1,184 @@
+{
+ "chapter": "start",
+ "lines": [
+  {
+   "id": "start_fa780872",
+   "src": 9,
+   "label": "start",
+   "who": "narrator",
+   "en": "[b]Confession Room[/b] is for adults. Every character in it is an adult, and is written as one.",
+   "ja": "",
+   "v_en": "res://assets/voice/start_fa780872.ogg"
+  },
+  {
+   "id": "start_77e9dd9a",
+   "src": 10,
+   "label": "start",
+   "who": "narrator",
+   "en": "It contains explicit sexual content, and a homicide investigation told without flinching. If that is not what you came for, close it here. No hard feelings, and no argument.",
+   "ja": "",
+   "v_en": "res://assets/voice/start_77e9dd9a.ogg"
+  },
+  {
+   "id": "start_a5e52d22",
+   "src": 19,
+   "label": "start",
+   "who": "narrator",
+   "en": "The illustrations in this game were made with AI image generation, directed, culled and retouched by hand. The writing and the case are human-written.",
+   "ja": "",
+   "v_en": "res://assets/voice/start_a5e52d22.ogg"
+  },
+  {
+   "id": "start_2a98dc11",
+   "src": 27,
+   "label": "start",
+   "who": "dispatch",
+   "en": "Reyes. Paloma nightclub, back office. One down, three keys, and the captain wants it closed before the morning shift reads about it.",
+   "ja": "",
+   "v_en": "res://assets/voice/start_2a98dc11.ogg"
+  },
+  {
+   "id": "start_3cf6bca8",
+   "src": 28,
+   "label": "start",
+   "who": "narrator",
+   "en": "You have twelve questions. Not by rule. By the hour the captain gets in.",
+   "ja": "",
+   "v_en": "res://assets/voice/start_3cf6bca8.ogg"
+  },
+  {
+   "id": "case_open_a9a37372",
+   "src": 37,
+   "label": "case_open",
+   "who": "narrator",
+   "en": "[b][CASE['title']][/b]",
+   "ja": ""
+  },
+  {
+   "id": "case_open_4d107532",
+   "src": 41,
+   "label": "case_open",
+   "who": "narrator",
+   "en": "Three doors off one corridor, and behind each of them somebody who has had all night to decide what kind of person they are going to be for you.",
+   "ja": "",
+   "v_en": "res://assets/voice/case_open_4d107532.ogg"
+  },
+  {
+   "id": "case_open_bbe32114",
+   "src": 42,
+   "label": "case_open",
+   "who": "narrator",
+   "en": "Nobody has asked for a lawyer. That tells you something, and not enough.",
+   "ja": "",
+   "v_en": "res://assets/voice/case_open_bbe32114.ogg"
+  },
+  {
+   "id": "evidence_locker_8ba511ae",
+   "src": 106,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "Forensics left one photograph in the tray with a sticker over half of it — the way they do when the file is going to be read by people who talk.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_8ba511ae.ogg"
+  },
+  {
+   "id": "evidence_locker_0f9bed47",
+   "src": 108,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "Look at the uncensored plate?",
+   "ja": ""
+  },
+  {
+   "id": "evidence_locker_435caae0",
+   "src": 123,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "A shoe. Left foot, under the bottom rack of a walk-in cooler, with a yellow marker beside it.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_435caae0.ogg"
+  },
+  {
+   "id": "evidence_locker_ebdaed40",
+   "src": 124,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "Marek was found in the office. He did not get there by himself.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_ebdaed40.ogg"
+  },
+  {
+   "id": "evidence_locker_644ae154",
+   "src": 125,
+   "label": "evidence_locker",
+   "who": "protagonist",
+   "en": "So whoever moved him stood in that cold long enough to mind it.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_644ae154.ogg"
+  },
+  {
+   "id": "evidence_locker_8ee51d4b",
+   "src": 127,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "A utility sink, deep enough to lose an arm in, still full. The water in it is clear. The water in the loading bay is not.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_8ee51d4b.ogg"
+  },
+  {
+   "id": "evidence_locker_948117fd",
+   "src": 128,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "Iris drowned. The file says the bay. The bay is rain and diesel, and she had neither in her.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_948117fd.ogg"
+  },
+  {
+   "id": "evidence_locker_4463846f",
+   "src": 129,
+   "label": "evidence_locker",
+   "who": "protagonist",
+   "en": "So she drowned indoors and somebody drove her outside afterwards.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_4463846f.ogg"
+  },
+  {
+   "id": "evidence_locker_0a753e52",
+   "src": 131,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "A floor safe, open. The cash still banded and still in it. The inner drawer pulled out and empty, and a clean rectangle in the dust where something used to sit.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_0a753e52.ogg"
+  },
+  {
+   "id": "evidence_locker_a22f2103",
+   "src": 132,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "The file says nothing was missing. The file was counting money.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_a22f2103.ogg"
+  },
+  {
+   "id": "evidence_locker_1d6252e4",
+   "src": 133,
+   "label": "evidence_locker",
+   "who": "protagonist",
+   "en": "Something the size of a book. Worth more than everything stacked under it.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_1d6252e4.ogg"
+  },
+  {
+   "id": "evidence_locker_72bc3b71",
+   "src": 135,
+   "label": "evidence_locker",
+   "who": "narrator",
+   "en": "Half a photograph and a sticker. Whatever forensics wanted you to see, you will have to take out of a person instead.",
+   "ja": "",
+   "v_en": "res://assets/voice/evidence_locker_72bc3b71.ogg"
+  }
+ ],
+ "menus": {}
+}

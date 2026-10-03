@@ -1,0 +1,2448 @@
+{
+ "id": "night1",
+ "title_key": "n1_title",
+ "sub_key": "n1_sub",
+ "turns": 92,
+ "clock_start": 1400,
+ "minutes_per_turn": 5,
+ "start_room": "precinct",
+ "start_event": "n1_open",
+ "map": {
+  "image": "board",
+  "rooms": {
+   "precinct": [
+    0.14,
+    0.22
+   ],
+   "corridor": [
+    0.38,
+    0.22
+   ],
+   "interview_nikolai": [
+    0.62,
+    0.12
+   ],
+   "interview_adaeze": [
+    0.62,
+    0.36
+   ],
+   "interview_vee": [
+    0.86,
+    0.22
+   ],
+   "lockup": [
+    0.38,
+    0.5
+   ],
+   "alley": [
+    0.14,
+    0.76
+   ],
+   "club": [
+    0.38,
+    0.76
+   ],
+   "back_office": [
+    0.62,
+    0.76
+   ],
+   "cooler": [
+    0.86,
+    0.76
+   ]
+  }
+ },
+ "rooms": {
+  "precinct": {
+   "name_key": "r_precinct",
+   "plate": "precinct",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8ca0",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      1.0,
+      "#ffd28a"
+     ],
+     [
+      0.78,
+      0.3,
+      0.8,
+      "#b0c8ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "casefile",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.5
+     ],
+     "event": "c1_file",
+     "label_key": "hs_casefile",
+     "xp": 5
+    },
+    {
+     "id": "drawer",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.5
+     ],
+     "event": "n1_drawer",
+     "label_key": "hs_drawer",
+     "gives": [
+      "notebook",
+      "flask",
+      "marker",
+      "marker"
+     ]
+    },
+    {
+     "id": "board",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "c1_accuse",
+     "label_key": "hs_board",
+     "once": false,
+     "if_not_flag": "c1_done",
+     "sim_last": true
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_alley",
+     "kind": "door",
+     "to": "alley",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    }
+   ]
+  },
+  "corridor": {
+   "name_key": "r_corridor",
+   "plate": "corridor",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8890a0",
+    "lamps": [
+     [
+      0.5,
+      0.15,
+      1.3,
+      "#d8e8ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_nik",
+     "kind": "door",
+     "to": "interview_nikolai",
+     "pos": [
+      0.2,
+      0.55
+     ]
+    },
+    {
+     "id": "to_ade",
+     "kind": "door",
+     "to": "interview_adaeze",
+     "pos": [
+      0.5,
+      0.55
+     ]
+    },
+    {
+     "id": "to_vee",
+     "kind": "door",
+     "to": "interview_vee",
+     "pos": [
+      0.8,
+      0.55
+     ]
+    },
+    {
+     "id": "to_lockup",
+     "kind": "door",
+     "to": "lockup",
+     "pos": [
+      0.8,
+      0.9
+     ]
+    },
+    {
+     "id": "to_precinct",
+     "kind": "door",
+     "to": "precinct",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c1_corridor"
+  },
+  "interview_nikolai": {
+   "name_key": "r_interview_nikolai",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "nik_keys",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_nik_keys",
+     "label_key": "hs_ask_nik_keys",
+     "turns": 1
+    },
+    {
+     "id": "nik_two",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_nik_two",
+     "label_key": "hs_ask_nik_two",
+     "turns": 1
+    },
+    {
+     "id": "nik_job",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_nik_job",
+     "label_key": "hs_ask_nik_job",
+     "turns": 1
+    },
+    {
+     "id": "nik_marek",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_nik_marek",
+     "label_key": "hs_ask_nik_marek",
+     "turns": 1,
+     "if_flag": "c1_nikolai_p1"
+    },
+    {
+     "id": "nik_list",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_nik_list",
+     "label_key": "hs_ask_nik_list",
+     "turns": 1,
+     "if_flag": "c1_nikolai_p1"
+    },
+    {
+     "id": "nik_money",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_nik_money",
+     "label_key": "hs_ask_nik_money",
+     "turns": 1,
+     "if_flag": "c1_nikolai_p2"
+    },
+    {
+     "id": "nik_room",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_nik_room",
+     "label_key": "hs_ask_nik_room",
+     "turns": 1,
+     "if_flag": "c1_nikolai_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "nikolai_c1_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_nikolai",
+     "after": "pa1_c1_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "nikolai_c1_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_nikolai",
+     "after": "pa2_c1_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_2",
+     "if_flag": "c1_nikolai_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "nikolai_c1_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_nikolai",
+     "after": "pa3_c1_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_3",
+     "if_flag": "c1_nikolai_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c1_nikolai",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c1_nikolai_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c1_nikolai_enter"
+  },
+  "interview_adaeze": {
+   "name_key": "r_interview_adaeze",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "ade_drawer",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_ade_drawer",
+     "label_key": "hs_ask_ade_drawer",
+     "turns": 1
+    },
+    {
+     "id": "ade_alarm",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_ade_alarm",
+     "label_key": "hs_ask_ade_alarm",
+     "turns": 1
+    },
+    {
+     "id": "ade_staff",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_ade_staff",
+     "label_key": "hs_ask_ade_staff",
+     "turns": 1
+    },
+    {
+     "id": "ade_marek",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_ade_marek",
+     "label_key": "hs_ask_ade_marek",
+     "turns": 1,
+     "if_flag": "c1_adaeze_p1"
+    },
+    {
+     "id": "ade_kitchen",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_ade_kitchen",
+     "label_key": "hs_ask_ade_kitchen",
+     "turns": 1,
+     "if_flag": "c1_adaeze_p1"
+    },
+    {
+     "id": "ade_vee",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_ade_vee",
+     "label_key": "hs_ask_ade_vee",
+     "turns": 1,
+     "if_flag": "c1_adaeze_p2"
+    },
+    {
+     "id": "ade_lease",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_ade_lease",
+     "label_key": "hs_ask_ade_lease",
+     "turns": 1,
+     "if_flag": "c1_adaeze_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "adaeze_c1_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_adaeze",
+     "after": "pa1_c1_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "adaeze_c1_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_adaeze",
+     "after": "pa2_c1_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_2",
+     "if_flag": "c1_adaeze_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "adaeze_c1_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_adaeze",
+     "after": "pa3_c1_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_3",
+     "if_flag": "c1_adaeze_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c1_adaeze",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c1_adaeze_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c1_adaeze_enter"
+  },
+  "interview_vee": {
+   "name_key": "r_interview_vee",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "vee_crate",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_vee_crate",
+     "label_key": "hs_ask_vee_crate",
+     "turns": 1
+    },
+    {
+     "id": "vee_leave",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_vee_leave",
+     "label_key": "hs_ask_vee_leave",
+     "turns": 1
+    },
+    {
+     "id": "vee_van",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_vee_van",
+     "label_key": "hs_ask_vee_van",
+     "turns": 1
+    },
+    {
+     "id": "vee_marek",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_vee_marek",
+     "label_key": "hs_ask_vee_marek",
+     "turns": 1,
+     "if_flag": "c1_vee_p1"
+    },
+    {
+     "id": "vee_name",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_vee_name",
+     "label_key": "hs_ask_vee_name",
+     "turns": 1,
+     "if_flag": "c1_vee_p1"
+    },
+    {
+     "id": "vee_bar",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_vee_bar",
+     "label_key": "hs_ask_vee_bar",
+     "turns": 1,
+     "if_flag": "c1_vee_p2"
+    },
+    {
+     "id": "vee_cold",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_vee_cold",
+     "label_key": "hs_ask_vee_cold",
+     "turns": 1,
+     "if_flag": "c1_vee_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "vee_c1_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_vee",
+     "after": "pa1_c1_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "vee_c1_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_vee",
+     "after": "pa2_c1_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_2",
+     "if_flag": "c1_vee_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "vee_c1_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_vee",
+     "after": "pa3_c1_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_3",
+     "if_flag": "c1_vee_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c1_vee",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c1_vee_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c1_vee_enter"
+  },
+  "lockup": {
+   "name_key": "r_lockup",
+   "plate": "lockup",
+   "music": "explore",
+   "mood": {
+    "ambient": "#808898",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.0,
+      "#e0ecff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "tray",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "c1_tray",
+     "label_key": "hs_tray",
+     "turns": 1
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c1_lockup"
+  },
+  "alley": {
+   "name_key": "r_alley",
+   "plate": "alley",
+   "music": "explore",
+   "mood": {
+    "ambient": "#6e6a80",
+    "lamps": [
+     [
+      0.2,
+      0.25,
+      1.0,
+      "#ffb060"
+     ],
+     [
+      0.8,
+      0.35,
+      0.8,
+      "#ff6080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "bouncer",
+     "kind": "enemy",
+     "enemy": "bouncer",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "n1_bouncer_pre",
+     "after": "n1_bouncer_post",
+     "turns": 2
+    },
+    {
+     "id": "dumpster",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.6
+     ],
+     "event": "n1_dumpster",
+     "label_key": "hs_dumpster",
+     "gives": [
+      "lighter",
+      "docket"
+     ]
+    },
+    {
+     "id": "yard_door",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.4
+     ],
+     "event": "n1_yard",
+     "label_key": "hs_yard_door",
+     "xp": 8
+    },
+    {
+     "id": "to_precinct",
+     "kind": "door",
+     "to": "precinct",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_club",
+     "kind": "door",
+     "to": "club",
+     "pos": [
+      0.85,
+      0.9
+     ],
+     "if_flag": "c1_bouncer"
+    }
+   ],
+   "enter_event": "n1_alley"
+  },
+  "club": {
+   "name_key": "r_club",
+   "plate": "club",
+   "music": "explore",
+   "mood": {
+    "ambient": "#786c80",
+    "lamps": [
+     [
+      0.3,
+      0.4,
+      1.0,
+      "#ff8060"
+     ],
+     [
+      0.75,
+      0.3,
+      0.9,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "bar",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.5
+     ],
+     "event": "n1_bar",
+     "label_key": "hs_bar",
+     "gives": [
+      "whisky"
+     ]
+    },
+    {
+     "id": "curtain",
+     "kind": "search",
+     "pos": [
+      0.55,
+      0.4
+     ],
+     "event": "n1_curtain",
+     "label_key": "hs_curtain",
+     "xp": 10
+    },
+    {
+     "id": "booth",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.6
+     ],
+     "event": "n1_booth",
+     "label_key": "hs_booth",
+     "gives": [
+      "marker"
+     ]
+    },
+    {
+     "id": "to_alley",
+     "kind": "door",
+     "to": "alley",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_office",
+     "kind": "door",
+     "to": "back_office",
+     "pos": [
+      0.5,
+      0.9
+     ]
+    },
+    {
+     "id": "to_cooler",
+     "kind": "door",
+     "to": "cooler",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n1_club"
+  },
+  "back_office": {
+   "name_key": "r_back_office",
+   "plate": "back_office",
+   "music": "explore",
+   "mood": {
+    "ambient": "#88807a",
+    "lamps": [
+     [
+      0.45,
+      0.4,
+      1.0,
+      "#ffd080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "desk",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.55
+     ],
+     "event": "n1_desk",
+     "label_key": "hs_desk",
+     "gives": [
+      "key_list"
+     ]
+    },
+    {
+     "id": "safe",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.6
+     ],
+     "event": "n1_safe",
+     "label_key": "hs_safe",
+     "gives": [
+      "alarm_log",
+      "marker"
+     ]
+    },
+    {
+     "id": "blinds",
+     "kind": "search",
+     "pos": [
+      0.55,
+      0.3
+     ],
+     "event": "n1_blinds",
+     "label_key": "hs_blinds",
+     "xp": 6
+    },
+    {
+     "id": "to_club",
+     "kind": "door",
+     "to": "club",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n1_office"
+  },
+  "cooler": {
+   "name_key": "r_cooler",
+   "plate": "cooler",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8aa0b0",
+    "lamps": [
+     [
+      0.5,
+      0.15,
+      1.1,
+      "#d8f0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "rack",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.65
+     ],
+     "event": "n1_rack",
+     "label_key": "hs_rack",
+     "gives": [
+      "shoe"
+     ],
+     "xp": 12
+    },
+    {
+     "id": "to_club",
+     "kind": "door",
+     "to": "club",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n1_cooler"
+  }
+ },
+ "events": {
+  "c1_file": [
+   {
+    "lines": "cases:1010-1014"
+   },
+   {
+    "lines": "board:78-78"
+   }
+  ],
+  "c1_epilogue": [
+   {
+    "hide_cg": true
+   },
+   {
+    "show": ""
+   },
+   {
+    "if_flag": "c1_cleared",
+    "then": [
+     {
+      "say": "narrator",
+      "key": "ep_closed"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "ep_open"
+     }
+    ]
+   },
+   {
+    "say": "narrator",
+    "key": "ep_next_c1"
+   },
+   {
+    "end_night": true,
+    "next": "night2"
+   }
+  ],
+  "c1_accuse": [
+   {
+    "cg": "cg_board"
+   },
+   {
+    "say": "narrator",
+    "key": "acc_intro"
+   },
+   {
+    "say": "narrator",
+    "key": "acc_who"
+   },
+   {
+    "choice": [
+     {
+      "key": "acc_who_nikolai",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "He was selling. Not product — names. Mine was on the list he was building.",
+          "if_flag": "heard_nik_marek",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Nine months of it. Every name on that list is still walking around being very calm.",
+          "if_flag": "heard_nik_list",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Nothing was taken because nothing in there was worth what he already had in his head.",
+          "if_flag": "heard_nik_money",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "I don't go past the bar. Hasn't been my job since I stopped being cheap.",
+          "if_flag": "heard_nik_room",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Somebody was past the bar. I heard the strip curtain. I did not look, because looking is how you end up on a list.",
+          "if_flag": "heard_nik_curtain",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_who_adaeze",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "He came in through the kitchen. He always did. I stopped telling him not to.",
+          "if_flag": "heard_ade_marek",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Deliveries, ice, the cooler, the yard door. Everything that isn't for customers.",
+          "if_flag": "heard_ade_kitchen",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Vee stayed. I watched them not leave. That's the part I didn't want to say.",
+          "if_flag": "heard_ade_vee",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Everything here has my name on it. Including whatever you decide happened.",
+          "if_flag": "heard_ade_lease",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "The cooler door has a seal, it drags. I heard it drag after I set the alarm, and I told myself it was the compressor.",
+          "if_flag": "heard_ade_seal",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_who_vee",
+      "auto_rank": 3,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "He owed me. Not money. He was supposed to keep a name out of a file.",
+          "if_flag": "heard_vee_marek",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_cleared"
+           },
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Does it matter? It was never going to be his own.",
+          "if_flag": "heard_vee_name",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_cleared"
+           },
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "I said I never went past the bar. I'd like to keep saying that.",
+          "if_flag": "heard_vee_bar",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_cleared"
+           },
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "You want me to say it. Fine. It was cold in there. My hands stopped working and I couldn't pick the thing back up. That's what I remember. The cold.",
+          "if_flag": "heard_vee_cold",
+          "auto_rank": 3,
+          "do": [
+           {
+            "flag": "c1_clean"
+           },
+           {
+            "flag": "c1_cleared"
+           },
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "music": "boss"
+           },
+           {
+            "show": "vee",
+            "x": 0.72
+           },
+           {
+            "lines": "board:154-158"
+           },
+           {
+            "show": ""
+           },
+           {
+            "cg": "cg_closing"
+           },
+           {
+            "lines": "board:161-161"
+           },
+           {
+            "say": "narrator",
+            "key": "end_clean_c1"
+           },
+           {
+            "xp": 150
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Everyone keeps saying eleven minutes. I was there long enough to stop feeling my hands.",
+          "if_flag": "heard_vee_hands",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c1_cleared"
+           },
+           {
+            "flag": "c1_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c1_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_not_yet",
+      "auto_rank": 1,
+      "do": [
+       {
+        "hide_cg": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "ask_nik_keys": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1100-1100"
+   },
+   {
+    "flag": "heard_nik_keys"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik_two": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1101-1101"
+   },
+   {
+    "flag": "heard_nik_two"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik_job": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1102-1102"
+   },
+   {
+    "flag": "heard_nik_job"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik_marek": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1103-1103"
+   },
+   {
+    "flag": "heard_nik_marek"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik_list": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1104-1104"
+   },
+   {
+    "flag": "heard_nik_list"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik_money": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1105-1105"
+   },
+   {
+    "flag": "heard_nik_money"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik_room": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1106-1106"
+   },
+   {
+    "flag": "heard_nik_room"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "pb1_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c1_nikolai": [
+   {
+    "flag": "c1_nikolai_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c1_nikolai": [
+   {
+    "flag": "c1_nikolai_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c1_nikolai": [
+   {
+    "flag": "c1_nikolai_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c1_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 3,
+      "req_track": "nikolai",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_nikolai_x"
+       },
+       {
+        "lines": "interr:159-169"
+       },
+       {
+        "give": "fact_nik_curtain"
+       },
+       {
+        "flag": "heard_nik_curtain"
+       },
+       {
+        "trust": 1,
+        "track": "nikolai"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c1_nikolai"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c1_nikolai_enter": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1001-1001"
+   }
+  ],
+  "ask_ade_drawer": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1108-1108"
+   },
+   {
+    "flag": "heard_ade_drawer"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade_alarm": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1109-1109"
+   },
+   {
+    "flag": "heard_ade_alarm"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade_staff": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1110-1110"
+   },
+   {
+    "flag": "heard_ade_staff"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade_marek": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1111-1111"
+   },
+   {
+    "flag": "heard_ade_marek"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade_kitchen": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1112-1112"
+   },
+   {
+    "flag": "heard_ade_kitchen"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade_vee": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1113-1113"
+   },
+   {
+    "flag": "heard_ade_vee"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade_lease": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1114-1114"
+   },
+   {
+    "flag": "heard_ade_lease"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "pb1_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c1_adaeze": [
+   {
+    "flag": "c1_adaeze_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c1_adaeze": [
+   {
+    "flag": "c1_adaeze_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c1_adaeze": [
+   {
+    "flag": "c1_adaeze_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c1_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 3,
+      "req_track": "adaeze",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_adaeze_x"
+       },
+       {
+        "lines": "interr:172-183"
+       },
+       {
+        "give": "fact_ade_seal"
+       },
+       {
+        "flag": "heard_ade_seal"
+       },
+       {
+        "trust": 1,
+        "track": "adaeze"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c1_adaeze"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c1_adaeze_enter": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1002-1002"
+   }
+  ],
+  "ask_vee_crate": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1116-1116"
+   },
+   {
+    "flag": "heard_vee_crate"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee_leave": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1117-1117"
+   },
+   {
+    "flag": "heard_vee_leave"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee_van": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1118-1118"
+   },
+   {
+    "flag": "heard_vee_van"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee_marek": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1119-1119"
+   },
+   {
+    "flag": "heard_vee_marek"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee_name": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1120-1120"
+   },
+   {
+    "flag": "heard_vee_name"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee_bar": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1121-1121"
+   },
+   {
+    "flag": "heard_vee_bar"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee_cold": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1122-1122"
+   },
+   {
+    "flag": "heard_vee_cold"
+   },
+   {
+    "xp": 4
+   },
+   {
+    "flag": "c1_decisive_heard"
+   }
+  ],
+  "pb1_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "vee",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c1_vee": [
+   {
+    "flag": "c1_vee_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "vee",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c1_vee": [
+   {
+    "flag": "c1_vee_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "vee",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c1_vee": [
+   {
+    "flag": "c1_vee_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c1_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 3,
+      "req_track": "vee",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_vee_x"
+       },
+       {
+        "lines": "interr:186-195"
+       },
+       {
+        "give": "fact_vee_hands"
+       },
+       {
+        "flag": "heard_vee_hands"
+       },
+       {
+        "trust": 1,
+        "track": "vee"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c1_vee"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c1_vee_enter": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:1003-1003"
+   }
+  ],
+  "c1_tray": [
+   {
+    "choice": [
+     {
+      "key": "ch_look",
+      "auto_rank": 2,
+      "do": [
+       {
+        "cg": "cg_evidence_x"
+       },
+       {
+        "lines": "start:123-125"
+       },
+       {
+        "give": "photo1"
+       },
+       {
+        "xp": 10
+       },
+       {
+        "hide_cg": true
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_tray",
+      "auto_rank": 0,
+      "do": []
+     }
+    ]
+   }
+  ],
+  "n1_open": [
+   {
+    "bg": "precinct"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "start:27-28"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_2"
+   }
+  ],
+  "c1_corridor": [
+   {
+    "cg": "cg_intake"
+   },
+   {
+    "lines": "start:41-42"
+   },
+   {
+    "hide_cg": true
+   }
+  ],
+  "c1_lockup": [
+   {
+    "lines": "start:106-106"
+   }
+  ],
+  "n1_drawer": [
+   {
+    "say": "narrator",
+    "key": "n1_drawer_1"
+   }
+  ],
+  "n1_alley": [
+   {
+    "cg": "cg_rpg_paloma"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_alley_1"
+   },
+   {
+    "hide_cg": true
+   }
+  ],
+  "n1_bouncer_pre": [
+   {
+    "show": "bouncer",
+    "x": 0.7
+   },
+   {
+    "say": "bouncer",
+    "key": "n1_bouncer_1"
+   }
+  ],
+  "n1_bouncer_post": [
+   {
+    "flag": "c1_bouncer"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_bouncer_2"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n1_dumpster": [
+   {
+    "say": "narrator",
+    "key": "n1_dumpster_1"
+   }
+  ],
+  "n1_yard": [
+   {
+    "say": "narrator",
+    "key": "n1_yard_1"
+   }
+  ],
+  "n1_club": [
+   {
+    "say": "narrator",
+    "key": "n1_club_1"
+   }
+  ],
+  "n1_bar": [
+   {
+    "say": "narrator",
+    "key": "n1_bar_1"
+   }
+  ],
+  "n1_curtain": [
+   {
+    "say": "narrator",
+    "key": "n1_curtain_1"
+   }
+  ],
+  "n1_booth": [
+   {
+    "say": "narrator",
+    "key": "n1_booth_1"
+   }
+  ],
+  "n1_office": [
+   {
+    "say": "narrator",
+    "key": "n1_office_1"
+   }
+  ],
+  "n1_desk": [
+   {
+    "say": "narrator",
+    "key": "n1_desk_1"
+   }
+  ],
+  "n1_safe": [
+   {
+    "say": "narrator",
+    "key": "n1_safe_1"
+   }
+  ],
+  "n1_blinds": [
+   {
+    "say": "narrator",
+    "key": "n1_blinds_1"
+   }
+  ],
+  "n1_cooler": [
+   {
+    "say": "narrator",
+    "key": "n1_cooler_1"
+   }
+  ],
+  "n1_rack": [
+   {
+    "say": "narrator",
+    "key": "n1_rack_1"
+   }
+  ]
+ }
+}

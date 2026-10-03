@@ -1,0 +1,2492 @@
+{
+ "id": "night3",
+ "title_key": "n3_title",
+ "sub_key": "n3_sub",
+ "turns": 104,
+ "clock_start": 1380,
+ "minutes_per_turn": 5,
+ "start_room": "precinct",
+ "start_event": "n3_open",
+ "map": {
+  "image": "board",
+  "rooms": {
+   "precinct": [
+    0.14,
+    0.22
+   ],
+   "corridor": [
+    0.38,
+    0.22
+   ],
+   "interview_nikolai": [
+    0.62,
+    0.1
+   ],
+   "interview_adaeze": [
+    0.62,
+    0.34
+   ],
+   "interview_vee": [
+    0.86,
+    0.1
+   ],
+   "lockup": [
+    0.86,
+    0.34
+   ],
+   "archive": [
+    0.14,
+    0.5
+   ],
+   "alley": [
+    0.14,
+    0.78
+   ],
+   "club": [
+    0.38,
+    0.78
+   ],
+   "back_office": [
+    0.62,
+    0.78
+   ],
+   "fire_stairs": [
+    0.86,
+    0.6
+   ],
+   "flat": [
+    0.86,
+    0.86
+   ]
+  }
+ },
+ "rooms": {
+  "precinct": {
+   "name_key": "r_precinct",
+   "plate": "precinct",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8ca0",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      1.0,
+      "#ffd28a"
+     ],
+     [
+      0.78,
+      0.3,
+      0.8,
+      "#b0c8ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "casefile",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.5
+     ],
+     "event": "c3_file",
+     "label_key": "hs_casefile",
+     "xp": 5
+    },
+    {
+     "id": "drawer",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.5
+     ],
+     "event": "n3_drawer",
+     "label_key": "hs_drawer",
+     "gives": [
+      "coffee",
+      "coffee",
+      "marker"
+     ]
+    },
+    {
+     "id": "board",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "c3_accuse",
+     "label_key": "hs_board",
+     "once": false,
+     "if_not_flag": "c3_done",
+     "sim_last": true
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_archive",
+     "kind": "door",
+     "to": "archive",
+     "pos": [
+      0.5,
+      0.9
+     ]
+    },
+    {
+     "id": "to_alley",
+     "kind": "door",
+     "to": "alley",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    }
+   ]
+  },
+  "corridor": {
+   "name_key": "r_corridor",
+   "plate": "corridor",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8890a0",
+    "lamps": [
+     [
+      0.5,
+      0.15,
+      1.3,
+      "#d8e8ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "lawyer",
+     "kind": "enemy",
+     "enemy": "lawyer",
+     "pos": [
+      0.5,
+      0.4
+     ],
+     "event": "n3_lawyer_pre",
+     "after": "n3_lawyer_post",
+     "turns": 2
+    },
+    {
+     "id": "to_nik",
+     "kind": "door",
+     "to": "interview_nikolai",
+     "pos": [
+      0.2,
+      0.6
+     ]
+    },
+    {
+     "id": "to_ade",
+     "kind": "door",
+     "to": "interview_adaeze",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "if_flag": "c3_lawyer"
+    },
+    {
+     "id": "to_vee",
+     "kind": "door",
+     "to": "interview_vee",
+     "pos": [
+      0.8,
+      0.6
+     ]
+    },
+    {
+     "id": "to_lockup",
+     "kind": "door",
+     "to": "lockup",
+     "pos": [
+      0.8,
+      0.9
+     ]
+    },
+    {
+     "id": "to_precinct",
+     "kind": "door",
+     "to": "precinct",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ]
+  },
+  "interview_nikolai": {
+   "name_key": "r_interview_nikolai",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "nik3_bo",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_nik3_bo",
+     "label_key": "hs_ask_nik3_bo",
+     "turns": 1
+    },
+    {
+     "id": "nik3_stairs",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_nik3_stairs",
+     "label_key": "hs_ask_nik3_stairs",
+     "turns": 1
+    },
+    {
+     "id": "nik3_morning",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_nik3_morning",
+     "label_key": "hs_ask_nik3_morning",
+     "turns": 1
+    },
+    {
+     "id": "nik3_folder",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_nik3_folder",
+     "label_key": "hs_ask_nik3_folder",
+     "turns": 1,
+     "if_flag": "c3_nikolai_p1"
+    },
+    {
+     "id": "nik3_paloma",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_nik3_paloma",
+     "label_key": "hs_ask_nik3_paloma",
+     "turns": 1,
+     "if_flag": "c3_nikolai_p1"
+    },
+    {
+     "id": "nik3_safe",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_nik3_safe",
+     "label_key": "hs_ask_nik3_safe",
+     "turns": 1,
+     "if_flag": "c3_nikolai_p2"
+    },
+    {
+     "id": "nik3_drawer",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_nik3_drawer",
+     "label_key": "hs_ask_nik3_drawer",
+     "turns": 1,
+     "if_flag": "c3_nikolai_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "nikolai_c3_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_nikolai",
+     "after": "pa1_c3_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "nikolai_c3_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_nikolai",
+     "after": "pa2_c3_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_2",
+     "if_flag": "c3_nikolai_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "nikolai_c3_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_nikolai",
+     "after": "pa3_c3_nikolai",
+     "turns": 2,
+     "label_key": "hs_press_nikolai_3",
+     "if_flag": "c3_nikolai_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c3_nikolai",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c3_nikolai_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c3_nikolai_enter"
+  },
+  "interview_adaeze": {
+   "name_key": "r_interview_adaeze",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "ade3_lease",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_ade3_lease",
+     "label_key": "hs_ask_ade3_lease",
+     "turns": 1
+    },
+    {
+     "id": "ade3_bo",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_ade3_bo",
+     "label_key": "hs_ask_ade3_bo",
+     "turns": 1
+    },
+    {
+     "id": "ade3_night",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_ade3_night",
+     "label_key": "hs_ask_ade3_night",
+     "turns": 1
+    },
+    {
+     "id": "ade3_report",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_ade3_report",
+     "label_key": "hs_ask_ade3_report",
+     "turns": 1,
+     "if_flag": "c3_adaeze_p1"
+    },
+    {
+     "id": "ade3_after",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_ade3_after",
+     "label_key": "hs_ask_ade3_after",
+     "turns": 1,
+     "if_flag": "c3_adaeze_p1"
+    },
+    {
+     "id": "ade3_nik",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_ade3_nik",
+     "label_key": "hs_ask_ade3_nik",
+     "turns": 1,
+     "if_flag": "c3_adaeze_p2"
+    },
+    {
+     "id": "ade3_owe",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_ade3_owe",
+     "label_key": "hs_ask_ade3_owe",
+     "turns": 1,
+     "if_flag": "c3_adaeze_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "adaeze_c3_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_adaeze",
+     "after": "pa1_c3_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "adaeze_c3_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_adaeze",
+     "after": "pa2_c3_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_2",
+     "if_flag": "c3_adaeze_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "adaeze_c3_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_adaeze",
+     "after": "pa3_c3_adaeze",
+     "turns": 2,
+     "label_key": "hs_press_adaeze_3",
+     "if_flag": "c3_adaeze_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c3_adaeze",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c3_adaeze_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c3_adaeze_enter"
+  },
+  "interview_vee": {
+   "name_key": "r_interview_vee",
+   "plate": "interview",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8290",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.1,
+      "#ffe0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "vee3_here",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.26
+     ],
+     "event": "ask_vee3_here",
+     "label_key": "hs_ask_vee3_here",
+     "turns": 1
+    },
+    {
+     "id": "vee3_bo",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.26
+     ],
+     "event": "ask_vee3_bo",
+     "label_key": "hs_ask_vee3_bo",
+     "turns": 1
+    },
+    {
+     "id": "vee3_night",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.26
+     ],
+     "event": "ask_vee3_night",
+     "label_key": "hs_ask_vee3_night",
+     "turns": 1
+    },
+    {
+     "id": "vee3_yard",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.37
+     ],
+     "event": "ask_vee3_yard",
+     "label_key": "hs_ask_vee3_yard",
+     "turns": 1,
+     "if_flag": "c3_vee_p1"
+    },
+    {
+     "id": "vee3_heard",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.37
+     ],
+     "event": "ask_vee3_heard",
+     "label_key": "hs_ask_vee3_heard",
+     "turns": 1,
+     "if_flag": "c3_vee_p1"
+    },
+    {
+     "id": "vee3_tell",
+     "kind": "event",
+     "pos": [
+      0.83,
+      0.37
+     ],
+     "event": "ask_vee3_tell",
+     "label_key": "hs_ask_vee3_tell",
+     "turns": 1,
+     "if_flag": "c3_vee_p2"
+    },
+    {
+     "id": "vee3_believe",
+     "kind": "event",
+     "pos": [
+      0.17,
+      0.48
+     ],
+     "event": "ask_vee3_believe",
+     "label_key": "hs_ask_vee3_believe",
+     "turns": 1,
+     "if_flag": "c3_vee_p3"
+    },
+    {
+     "id": "press1",
+     "kind": "enemy",
+     "enemy": "vee_c3_p1",
+     "pos": [
+      0.17,
+      0.6
+     ],
+     "event": "pb1_vee",
+     "after": "pa1_c3_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_1"
+    },
+    {
+     "id": "press2",
+     "kind": "enemy",
+     "enemy": "vee_c3_p2",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "pb2_vee",
+     "after": "pa2_c3_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_2",
+     "if_flag": "c3_vee_p1"
+    },
+    {
+     "id": "press3",
+     "kind": "enemy",
+     "enemy": "vee_c3_p3",
+     "pos": [
+      0.83,
+      0.6
+     ],
+     "event": "pb3_vee",
+     "after": "pa3_c3_vee",
+     "turns": 2,
+     "label_key": "hs_press_vee_3",
+     "if_flag": "c3_vee_p2"
+    },
+    {
+     "id": "route",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.74
+     ],
+     "event": "route_c3_vee",
+     "label_key": "hs_close_door",
+     "turns": 1,
+     "if_flag": "c3_vee_p3"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c3_vee_enter"
+  },
+  "lockup": {
+   "name_key": "r_lockup",
+   "plate": "lockup",
+   "music": "explore",
+   "mood": {
+    "ambient": "#808898",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.0,
+      "#e0ecff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "tray",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "c3_tray",
+     "label_key": "hs_tray",
+     "turns": 1
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor",
+     "pos": [
+      0.1,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "c3_lockup"
+  },
+  "archive": {
+   "name_key": "r_archive",
+   "plate": "archive",
+   "music": "explore",
+   "mood": {
+    "ambient": "#88847c",
+    "lamps": [
+     [
+      0.35,
+      0.35,
+      1.0,
+      "#ffd890"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "file_drawer",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.6
+     ],
+     "event": "n3_filedrawer",
+     "label_key": "hs_file_drawer",
+     "gives": [
+      "aspirin",
+      "marker"
+     ]
+    },
+    {
+     "id": "to_precinct",
+     "kind": "door",
+     "to": "precinct",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ]
+  },
+  "alley": {
+   "name_key": "r_alley",
+   "plate": "alley",
+   "music": "explore",
+   "mood": {
+    "ambient": "#6e6a80",
+    "lamps": [
+     [
+      0.2,
+      0.25,
+      1.0,
+      "#ffb060"
+     ],
+     [
+      0.8,
+      0.35,
+      0.8,
+      "#ff6080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "yard_door",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.4
+     ],
+     "event": "n3_yard",
+     "label_key": "hs_yard_door",
+     "gives": [
+      "vent_note"
+     ],
+     "xp": 10
+    },
+    {
+     "id": "dumpster",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.6
+     ],
+     "event": "n3_dumpster",
+     "label_key": "hs_dumpster",
+     "gives": [
+      "whisky"
+     ]
+    },
+    {
+     "id": "to_precinct",
+     "kind": "door",
+     "to": "precinct",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_club",
+     "kind": "door",
+     "to": "club",
+     "pos": [
+      0.5,
+      0.9
+     ]
+    },
+    {
+     "id": "to_flat",
+     "kind": "door",
+     "to": "flat",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    }
+   ]
+  },
+  "club": {
+   "name_key": "r_club",
+   "plate": "club",
+   "music": "explore",
+   "mood": {
+    "ambient": "#786c80",
+    "lamps": [
+     [
+      0.3,
+      0.4,
+      1.0,
+      "#ff8060"
+     ],
+     [
+      0.75,
+      0.3,
+      0.9,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_alley",
+     "kind": "door",
+     "to": "alley",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    },
+    {
+     "id": "to_office",
+     "kind": "door",
+     "to": "back_office",
+     "pos": [
+      0.5,
+      0.9
+     ]
+    },
+    {
+     "id": "to_stairs",
+     "kind": "door",
+     "to": "fire_stairs",
+     "pos": [
+      0.85,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n3_club"
+  },
+  "back_office": {
+   "name_key": "r_back_office",
+   "plate": "back_office",
+   "music": "explore",
+   "mood": {
+    "ambient": "#88807a",
+    "lamps": [
+     [
+      0.45,
+      0.4,
+      1.0,
+      "#ffd080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "safe",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.6
+     ],
+     "event": "n3_safe",
+     "label_key": "hs_safe",
+     "gives": [
+      "safe_photo"
+     ],
+     "xp": 12
+    },
+    {
+     "id": "desk",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.55
+     ],
+     "event": "n3_desk",
+     "label_key": "hs_desk",
+     "xp": 8
+    },
+    {
+     "id": "to_club",
+     "kind": "door",
+     "to": "club",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ]
+  },
+  "fire_stairs": {
+   "name_key": "r_fire_stairs",
+   "plate": "fire_stairs",
+   "music": "explore",
+   "mood": {
+    "ambient": "#80848c",
+    "lamps": [
+     [
+      0.25,
+      0.3,
+      0.9,
+      "#ffd890"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "landing",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.55
+     ],
+     "event": "n3_landing",
+     "label_key": "hs_landing",
+     "gives": [
+      "folder"
+     ],
+     "xp": 12
+    },
+    {
+     "id": "to_club",
+     "kind": "door",
+     "to": "club",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n3_stairs"
+  },
+  "flat": {
+   "name_key": "r_flat",
+   "plate": "flat",
+   "music": "explore",
+   "mood": {
+    "ambient": "#6a6878",
+    "lamps": [
+     [
+      0.75,
+      0.4,
+      0.9,
+      "#ffb070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "window",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.35
+     ],
+     "event": "n3_window",
+     "label_key": "hs_window",
+     "gives": [
+      "yard_light"
+     ],
+     "xp": 10
+    },
+    {
+     "id": "sofa",
+     "kind": "search",
+     "pos": [
+      0.35,
+      0.6
+     ],
+     "event": "n3_sofa",
+     "label_key": "hs_sofa",
+     "gives": [
+      "cufflinks"
+     ]
+    },
+    {
+     "id": "to_alley",
+     "kind": "door",
+     "to": "alley",
+     "pos": [
+      0.15,
+      0.9
+     ]
+    }
+   ],
+   "enter_event": "n3_flat"
+  }
+ },
+ "events": {
+  "c3_file": [
+   {
+    "lines": "cases:3010-3014"
+   },
+   {
+    "lines": "board:78-78"
+   }
+  ],
+  "c3_epilogue": [
+   {
+    "hide_cg": true
+   },
+   {
+    "show": ""
+   },
+   {
+    "if_flag": "c3_cleared",
+    "then": [
+     {
+      "say": "narrator",
+      "key": "ep_closed"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "ep_open"
+     }
+    ]
+   },
+   {
+    "say": "narrator",
+    "key": "ep_next_c3"
+   },
+   {
+    "end_night": true,
+    "next": "epilogue"
+   }
+  ],
+  "c3_accuse": [
+   {
+    "cg": "cg_board"
+   },
+   {
+    "say": "narrator",
+    "key": "acc_intro"
+   },
+   {
+    "say": "narrator",
+    "key": "acc_who"
+   },
+   {
+    "choice": [
+     {
+      "key": "acc_who_nikolai",
+      "auto_rank": 3,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "Still beside him. Which is the part nobody wants to talk about, so let us not.",
+          "if_flag": "heard_nik3_folder",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_cleared"
+           },
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "It has been dying for two years. Three deaths is not a run of luck, it is a diagnosis.",
+          "if_flag": "heard_nik3_paloma",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_cleared"
+           },
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Open, I'm told. Money still in it, I'm told. You keep handing me facts I am supposed to find surprising.",
+          "if_flag": "heard_nik3_safe",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_cleared"
+           },
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Nothing in that safe was worth a life. The money, I mean. The money was never the thing. The inner drawer is the thing, and you already know it was the ledger in there and not a single note, or you would not have come back a third time.",
+          "if_flag": "heard_nik3_drawer",
+          "auto_rank": 3,
+          "do": [
+           {
+            "flag": "c3_clean"
+           },
+           {
+            "flag": "c3_cleared"
+           },
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "music": "boss"
+           },
+           {
+            "show": "nikolai",
+            "x": 0.72
+           },
+           {
+            "lines": "board:178-184"
+           },
+           {
+            "show": ""
+           },
+           {
+            "cg": "cg_closing"
+           },
+           {
+            "lines": "board:187-187"
+           },
+           {
+            "say": "narrator",
+            "key": "end_clean_c3"
+           },
+           {
+            "xp": 150
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Because I am the only one of the three who has never once asked you for anything. You should have found that strange a long time ago.",
+          "if_flag": "heard_nik3_tired",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_cleared"
+           },
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "interview"
+           },
+           {
+            "lines": "board:197-198"
+           },
+           {
+            "xp": 60
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_who_adaeze",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "It was going to close us. He did not say so. You do not have to say so.",
+          "if_flag": "heard_ade3_report",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "I sign nothing now. Somebody else can be on every page for a while.",
+          "if_flag": "heard_ade3_after",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "He has never asked me for one thing in six years. I used to find that restful.",
+          "if_flag": "heard_ade3_nik",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "A man who is never owed anything is a man who has already taken it.",
+          "if_flag": "heard_ade3_owe",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "There was a light in the office at one. From upstairs you can see it in the yard, on the wall. I watched it go out and I did not come down.",
+          "if_flag": "heard_ade3_office",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_who_vee",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "acc_why"
+       },
+       {
+        "choice": [
+         {
+          "menu": "You can hear the office through the vent. You cannot hear words. You can hear that there are words.",
+          "if_flag": "heard_vee3_yard",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Two people. One of them doing most of it. Then one set of feet on the stairs, going down slow, like carrying.",
+          "if_flag": "heard_vee3_heard",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Because last time I told the truth about a room I was standing in, it took eleven months off my life.",
+          "if_flag": "heard_vee3_tell",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "One person in this city to hear me say a thing and write it down the way I said it.",
+          "if_flag": "heard_vee3_believe",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "menu": "Slow on the way down. Quick on the way up. Nobody carries anything up.",
+          "if_flag": "heard_vee3_slow",
+          "auto_rank": 0,
+          "do": [
+           {
+            "flag": "c3_done"
+           },
+           {
+            "hide_cg": true
+           },
+           {
+            "bg": "precinct"
+           },
+           {
+            "lines": "board:205-206"
+           },
+           {
+            "event": "c3_epilogue"
+           }
+          ]
+         },
+         {
+          "key": "acc_back",
+          "auto_rank": 1,
+          "do": [
+           {
+            "hide_cg": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "key": "acc_not_yet",
+      "auto_rank": 1,
+      "do": [
+       {
+        "hide_cg": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "ask_nik3_bo": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3100-3100"
+   },
+   {
+    "flag": "heard_nik3_bo"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik3_stairs": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3101-3101"
+   },
+   {
+    "flag": "heard_nik3_stairs"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik3_morning": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3102-3102"
+   },
+   {
+    "flag": "heard_nik3_morning"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik3_folder": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3103-3103"
+   },
+   {
+    "flag": "heard_nik3_folder"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik3_paloma": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3104-3104"
+   },
+   {
+    "flag": "heard_nik3_paloma"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik3_safe": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3105-3105"
+   },
+   {
+    "flag": "heard_nik3_safe"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_nik3_drawer": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3106-3106"
+   },
+   {
+    "flag": "heard_nik3_drawer"
+   },
+   {
+    "xp": 4
+   },
+   {
+    "flag": "c3_decisive_heard"
+   }
+  ],
+  "pb1_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c3_nikolai": [
+   {
+    "flag": "c3_nikolai_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c3_nikolai": [
+   {
+    "flag": "c3_nikolai_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "nikolai",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c3_nikolai": [
+   {
+    "flag": "c3_nikolai_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c3_nikolai": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 7,
+      "req_track": "nikolai",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_trust7_nikolai"
+       },
+       {
+        "lines": "interr:265-276"
+       },
+       {
+        "give": "fact_nik3_tired"
+       },
+       {
+        "flag": "heard_nik3_tired"
+       },
+       {
+        "trust": 1,
+        "track": "nikolai"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c3_nikolai"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c3_nikolai_enter": [
+   {
+    "show": "nikolai",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3001-3001"
+   }
+  ],
+  "ask_ade3_lease": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3108-3108"
+   },
+   {
+    "flag": "heard_ade3_lease"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade3_bo": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3109-3109"
+   },
+   {
+    "flag": "heard_ade3_bo"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade3_night": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3110-3110"
+   },
+   {
+    "flag": "heard_ade3_night"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade3_report": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3111-3111"
+   },
+   {
+    "flag": "heard_ade3_report"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade3_after": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3112-3112"
+   },
+   {
+    "flag": "heard_ade3_after"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade3_nik": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3113-3113"
+   },
+   {
+    "flag": "heard_ade3_nik"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_ade3_owe": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3114-3114"
+   },
+   {
+    "flag": "heard_ade3_owe"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "pb1_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c3_adaeze": [
+   {
+    "flag": "c3_adaeze_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c3_adaeze": [
+   {
+    "flag": "c3_adaeze_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "adaeze",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c3_adaeze": [
+   {
+    "flag": "c3_adaeze_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c3_adaeze": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 7,
+      "req_track": "adaeze",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_adaeze_x"
+       },
+       {
+        "lines": "interr:279-290"
+       },
+       {
+        "give": "fact_ade3_office"
+       },
+       {
+        "flag": "heard_ade3_office"
+       },
+       {
+        "trust": 1,
+        "track": "adaeze"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c3_adaeze"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c3_adaeze_enter": [
+   {
+    "show": "adaeze",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3002-3002"
+   }
+  ],
+  "ask_vee3_here": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3116-3116"
+   },
+   {
+    "flag": "heard_vee3_here"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee3_bo": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3117-3117"
+   },
+   {
+    "flag": "heard_vee3_bo"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee3_night": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3118-3118"
+   },
+   {
+    "flag": "heard_vee3_night"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee3_yard": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3119-3119"
+   },
+   {
+    "flag": "heard_vee3_yard"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee3_heard": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3120-3120"
+   },
+   {
+    "flag": "heard_vee3_heard"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee3_tell": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3121-3121"
+   },
+   {
+    "flag": "heard_vee3_tell"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "ask_vee3_believe": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3122-3122"
+   },
+   {
+    "flag": "heard_vee3_believe"
+   },
+   {
+    "xp": 4
+   }
+  ],
+  "pb1_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:103-103"
+   },
+   {
+    "say": "vee",
+    "key": "pb1_reply"
+   }
+  ],
+  "pa1_c3_vee": [
+   {
+    "flag": "c3_vee_p1"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_1"
+   }
+  ],
+  "pb2_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:106-106"
+   },
+   {
+    "say": "vee",
+    "key": "pb2_reply"
+   },
+   {
+    "lines": "interr:108-108"
+   }
+  ],
+  "pa2_c3_vee": [
+   {
+    "flag": "c3_vee_p2"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_2"
+   }
+  ],
+  "pb3_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:110-110"
+   },
+   {
+    "say": "vee",
+    "key": "pb3_reply"
+   },
+   {
+    "lines": "interr:112-112"
+   }
+  ],
+  "pa3_c3_vee": [
+   {
+    "flag": "c3_vee_p3"
+   },
+   {
+    "say": "narrator",
+    "key": "pa_3"
+   }
+  ],
+  "route_c3_vee": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "interr:122-122"
+   },
+   {
+    "choice": [
+     {
+      "key": "ch_close_it",
+      "req_trust": 7,
+      "req_track": "vee",
+      "auto_rank": 2,
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_vee_x"
+       },
+       {
+        "lines": "interr:293-304"
+       },
+       {
+        "give": "fact_vee3_slow"
+       },
+       {
+        "flag": "heard_vee3_slow"
+       },
+       {
+        "trust": 1,
+        "track": "vee"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "interr:198-198"
+       },
+       {
+        "flag": "route_c3_vee"
+       },
+       {
+        "music": "explore"
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_open",
+      "auto_rank": 0,
+      "do": [
+       {
+        "lines": "interr:127-127"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "c3_vee_enter": [
+   {
+    "show": "vee",
+    "x": 0.72
+   },
+   {
+    "lines": "cases:3003-3003"
+   }
+  ],
+  "c3_tray": [
+   {
+    "choice": [
+     {
+      "key": "ch_look",
+      "auto_rank": 2,
+      "do": [
+       {
+        "cg": "cg_evidence3_x"
+       },
+       {
+        "lines": "start:131-133"
+       },
+       {
+        "give": "photo3"
+       },
+       {
+        "xp": 10
+       },
+       {
+        "hide_cg": true
+       }
+      ]
+     },
+     {
+      "key": "ch_leave_tray",
+      "auto_rank": 0,
+      "do": []
+     }
+    ]
+   }
+  ],
+  "n3_open": [
+   {
+    "bg": "precinct"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_open_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_open_2"
+   }
+  ],
+  "c3_lockup": [
+   {
+    "lines": "start:106-106"
+   }
+  ],
+  "n3_drawer": [
+   {
+    "say": "narrator",
+    "key": "n3_drawer_1"
+   }
+  ],
+  "n3_lawyer_pre": [
+   {
+    "show": "lawyer",
+    "x": 0.7
+   },
+   {
+    "say": "lawyer",
+    "key": "n3_lawyer_1"
+   }
+  ],
+  "n3_lawyer_post": [
+   {
+    "flag": "c3_lawyer"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_lawyer_2"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n3_filedrawer": [
+   {
+    "say": "narrator",
+    "key": "n2_filedrawer_1"
+   }
+  ],
+  "n3_yard": [
+   {
+    "say": "narrator",
+    "key": "n3_yard_1"
+   }
+  ],
+  "n3_dumpster": [
+   {
+    "say": "narrator",
+    "key": "n3_dumpster_1"
+   }
+  ],
+  "n3_club": [
+   {
+    "say": "narrator",
+    "key": "n3_club_1"
+   }
+  ],
+  "n3_safe": [
+   {
+    "say": "narrator",
+    "key": "n3_safe_1"
+   }
+  ],
+  "n3_desk": [
+   {
+    "say": "narrator",
+    "key": "n3_desk_1"
+   }
+  ],
+  "n3_stairs": [
+   {
+    "cg": "cg_rpg_stairs"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_stairs_1"
+   },
+   {
+    "hide_cg": true
+   }
+  ],
+  "n3_landing": [
+   {
+    "say": "narrator",
+    "key": "n3_landing_1"
+   }
+  ],
+  "n3_flat": [
+   {
+    "say": "narrator",
+    "key": "n3_flat_1"
+   }
+  ],
+  "n3_window": [
+   {
+    "say": "narrator",
+    "key": "n3_window_1"
+   }
+  ],
+  "n3_sofa": [
+   {
+    "say": "narrator",
+    "key": "n3_sofa_1"
+   }
+  ]
+ }
+}
