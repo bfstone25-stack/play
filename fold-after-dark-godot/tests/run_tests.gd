@@ -363,10 +363,11 @@ func _score_twin() -> void:
 func _generated() -> void:
 	print("generated levels (Nutaku build)")
 	var added := Fold.load_extension()
-	eq(added, 599, "load_extension appends the 599 generated levels")
-	eq(Fold.level_count(), 800, "800 levels in the Nutaku build")
-	eq(Fold.load_extension(), 599, "a second call does not append them twice")
-	eq(Fold.level_count(), 800, "still 800")
+	# 2,599 since the 2,800-level expansion (6847c68: 1,600 at launch + 12 weekly drops)
+	eq(added, 2599, "load_extension appends the 2599 generated levels")
+	eq(Fold.level_count(), 2800, "2800 levels in the Nutaku build")
+	eq(Fold.load_extension(), 2599, "a second call does not append them twice")
+	eq(Fold.level_count(), 2800, "still 2800")
 	var f := FileAccess.open("res://tests/gen_solutions.json", FileAccess.READ)
 	if f == null:
 		ok(false, "tests/gen_solutions.json missing — run gen_levels.py --fixture")

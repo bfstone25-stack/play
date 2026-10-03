@@ -289,7 +289,11 @@ func _tier_card(t: int) -> Control:
 			buy.disabled = true
 			var r := await Nutaku.buy(F2P.tier_sku(t))
 			if str(r.get("status", "")) == "success":
+				# 2026-10-03 playtest: the map rebuilt scrolled to the top and the player had
+				# to find the card again. What was just paid for opens at once.
 				_build()
+				await get_tree().process_frame
+				_view(scene)
 			else:
 				buy.text = F2PUI._pay_text(r)
 				buy.disabled = false)
@@ -449,6 +453,13 @@ func _unhandled_input(e: InputEvent) -> void:
 		_play(Tier.current())
 	elif e.keycode == KEY_ESCAPE:
 		if _viewer != null:
+			return
+		# 2026-10-03 playtest: Escape under the shop overlay went to the title. The shop
+		# swallows it and closes; the map stays.
+		var shop := _ui.find_child("ShopOverlay", true, false) if _ui else null
+		if shop != null:
+			shop.queue_free()
+			_build()
 			return
 		_to_title()
 

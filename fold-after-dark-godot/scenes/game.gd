@@ -272,12 +272,19 @@ func _relayout() -> void:
 	# 0.78 / 0.78, up from 0.62 / 0.70: measured off the captured frame, where the tray
 	# occupied about an eighth of the screen and the background the rest. The board is the
 	# product; it gets the middle of the picture.
-	var avail := Vector2(vp.x * 0.78, vp.y * 0.72)
+	# 2026-10-03 playtest: at 0.72 of the frame a 4- or 5-row tray (1.40x the board, below)
+	# ran under the HUD's stars/moves row and over the button row. The board gets the band
+	# between them: the HUD's two rows end about 190 px down, the button block starts
+	# 134 px up (offset_top -108 + margin), and the tray's 1.40 padding is taken off first.
+	const HUD_BOTTOM := 190.0
+	const BUTTONS_TOP := 134.0
+	var band := maxf(160.0, vp.y - HUD_BOTTOM - BUTTONS_TOP - 12.0)
+	var avail := Vector2(vp.x * 0.78, band / 1.40)
 	_cs = maxf(34.0, minf(
 		(avail.x - CELL_GAP * (Fold.cols - 1)) / maxf(1, Fold.cols),
 		(avail.y / TILT - CELL_GAP * (Fold.rows - 1)) / maxf(1, Fold.rows)))
 	_cs = minf(_cs, 112.0)
-	_origin = Vector2(vp.x * 0.5, vp.y * 0.55)
+	_origin = Vector2(vp.x * 0.5, HUD_BOTTOM + (vp.y - BUTTONS_TOP - HUD_BOTTOM) * 0.5)
 	_swipe_px = maxf(18.0, _cs * 0.3)
 
 	# The table is a table, not a backdrop: it reaches a little past the board and stops.
@@ -612,7 +619,7 @@ func _build_hud() -> void:
 	_reset_btn.theme_type_variation = "Amber"
 	_reset_btn.pressed.connect(func():
 		if F2P.on():
-			_f2p_retry()
+			_f2p_reset()
 			return
 		Fold.reset()
 		Tier.streak_break()
@@ -645,8 +652,15 @@ func _build_hud() -> void:
 	var lv := Button.new()
 	lv.name = "Levels"
 	lv.theme_type_variation = "Amber"
-	lv.pressed.connect(_to_map)
+	lv.pressed.connect(_leave_level)
 	btns.add_child(lv)
+	# 2026-10-03 re-test: a clicked HUD button kept keyboard focus, so Enter on the confirm
+	# card that the click had just raised pressed the HUD button again (Reset under the
+	# Leave card re-raised the Reset card). These are pointer buttons; the keyboard has its
+	# own actions and Enter belongs to the card.
+	for b in btns.get_children():
+		if b is Control:
+			(b as Control).focus_mode = Control.FOCUS_NONE
 
 	_hint = StudioTheme.serif_label("", 15, Palette.TEXT)
 	_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -1408,6 +1422,9 @@ func _unhandled_input(e: InputEvent) -> void:
 			var k := (e as InputEventKey).keycode
 			if k == KEY_ESCAPE and _viewer == null:
 				_show_picker(false)
+				var cl := _win.find_child("Close", true, false)
+				if _win.visible and cl is Button and not (cl as Button).disabled:
+					(cl as Button).pressed.emit()
 			elif k == KEY_ENTER or k == KEY_KP_ENTER or k == KEY_SPACE:
 				# Enter: the one button that matters on whatever card is up
 				var host: Node = _viewer if _viewer != null else _win
@@ -1434,14 +1451,14 @@ func _unhandled_input(e: InputEvent) -> void:
 			_sync()
 	elif e.is_action_pressed("fold_reset"):
 		if F2P.on():
-			_f2p_retry()
+			_f2p_reset()
 			return
 		Fold.reset()
 		Juice.reset_board()
 		_rebuild_pieces()
 		_sync()
 	elif e is InputEventKey and e.pressed and e.keycode == KEY_ESCAPE:
-		_to_map()
+		_leave_level()
 	elif e is InputEventMouseButton and e.button_index == MOUSE_BUTTON_LEFT:
 		if e.pressed:
 			_drag_from = (e as InputEventMouseButton).position
@@ -1608,7 +1625,7 @@ func _f2p_check_budget() -> void:
 	var cost := "1 token" if F2P.tokens("moves") > 0 else F2PUI.gold(F2P.SKU_MOVES)
 	F2PUI.card(_win, "Out of moves", ["%d moves spent. Five more keep this board as it is." % F2P.spent()],
 		[["+5 moves · %s" % cost, "Primary", more, "MoreMoves"],
-		 ["Retry (1 candle)", "Amber", retry, "Retry"],
+		 ["Retry (%s)" % ("free" if _f2p_retry_is_free() else "1 candle"), "Amber", retry, "Retry"],
 		 ["Map", "Ghost", home, "Map"]])
 
 
@@ -1618,6 +1635,71 @@ func _f2p_retry() -> void:
 	await F2P.give_up()
 	Tier.streak_break()
 	_open(Fold.level_index)
+
+
+## A retry is free on the first-day pass and on a replay of a cleared level; the daily and
+## the event are free boards. Otherwise giving the attempt up burns a candle
+## (server: energy_on_fail_only).
+func _f2p_retry_is_free() -> bool:
+	if F2P.attempt.is_empty() or Fold.is_special() or bool(F2P.attempt.get("replay", false)):
+		return true
+	return bool(F2P.energy().get("unlimited", false))
+
+
+## 2026-10-03 playtest (D6): Reset and TIER MAP gave the attempt up — and burned a candle —
+## without a word once the first-day pass had expired. Both now ask first when a candle is
+## at stake; when the retry is free they go straight through, as before.
+func _f2p_candle_at_stake() -> bool:
+	return F2P.on() and F2P.active_for(Fold.level_index) and not Fold.done and not _f2p_retry_is_free()
+
+
+func _f2p_confirm(title: String, line: String, verb: String, go: Callable) -> void:
+	var yes := func(_s: Label):
+		_win.visible = false
+		await go.call()
+	var keep := func(_s: Label): _win.visible = false
+	F2PUI.card(_win, title, [line, F2P.candle_text()],
+		[["Keep playing", "Primary", keep, "Close"], [verb, "Amber", yes, "Confirm"]])
+
+
+func _f2p_reset() -> void:
+	if _f2p_candle_at_stake():
+		_f2p_confirm("Reset this board?", "Starting over gives this attempt up and burns one candle.",
+			"Reset · 1 candle", _f2p_retry)
+		return
+	_f2p_retry()
+
+
+func _leave_level() -> void:
+	if _f2p_candle_at_stake():
+		_f2p_confirm("Leave the level?", "Leaving gives this attempt up and burns one candle. The level waits for you.",
+			"Leave · 1 candle", func():
+				await F2P.give_up()
+				_to_map())
+		return
+	_to_map()
+
+
+## 2026-10-03 playtest: Hint with no tokens went straight to the platform's purchase
+## dialog. The no-tokens state is shown first; buying is its own, named button.
+func _f2p_no_hints() -> void:
+	var buy := func(status: Label):
+		status.text = "Waiting for Nutaku…"
+		var r := await Nutaku.buy(F2P.SKU_HINTS)
+		status.text = F2PUI._pay_text(r)
+		if str(r.get("status", "")) == "success":
+			_win.visible = false
+			_sync()
+			await _f2p_hint()
+	var shop := func(_s: Label):
+		F2PUI.shop(_win, func():
+			_win.visible = false
+			_sync())
+	var close := func(_s: Label): _win.visible = false
+	F2PUI.card(_win, "No hints left",
+		["A hint shows one fold on the shortest way home.", "Hints: 0  ·  3 for %s" % F2PUI.gold(F2P.SKU_HINTS)],
+		[["Close", "Ghost", close, "Close"], ["Shop", "Amber", shop, "Shop"],
+		 ["3 hints · %s" % F2PUI.gold(F2P.SKU_HINTS), "Primary", buy, "BuyHints"]])
 
 
 func _f2p_no_candles(level: int) -> void:
@@ -1646,6 +1728,9 @@ func _f2p_hint() -> void:
 		return
 	if Fold.is_special():
 		_hint.text = "No hints on this board"
+		return
+	if F2P.tokens("hint") < 1:
+		_f2p_no_hints()
 		return
 	var r := await F2P.use("hint")
 	if not r["ok"]:
