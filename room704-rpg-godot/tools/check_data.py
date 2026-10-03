@@ -93,13 +93,16 @@ for pl in art["rooms"]:
     if not any((R / p.replace("res://", "")).exists() for p in art["rooms"][pl]): bad.append(("plate has no file", pl))
 for pl in sorted(used_plates):
     have = [p for p in art["rooms"].get(pl, []) if (R / p.replace("res://", "")).exists()]
-    if have and "/placeholder/" in have[0]: print(f"note: {pl} still on a placeholder plate")
+    if have and "/placeholder/" in have[0]: bad.append(("placeholder plate", pl))
 for e in G["enemies"].values():
     for k in ("sprite", "sprite_pressured"):
         sp = e.get(k, "")
-        if sp and not any((R / p.replace("res://", "")).exists() for p in art["enemies"].get(sp, [])): print(f"note: enemy art missing: {sp}")
+        if sp and not any((R / p.replace("res://", "")).exists() for p in art["enemies"].get(sp, [])): bad.append(("enemy art missing", sp))
 for c in G["gallery"]:
-    if not any((R / p.replace("res://", "")).exists() for p in art["cg"].get(c["id"], [])): print(f"note: CG not rendered yet: {c['id']}")
+    if not any((R / p.replace("res://", "")).exists() for p in art["cg"].get(c["id"], [])): bad.append(("CG missing", c["id"]))
+alltxt = json.dumps([n["events"] for n in nights.values()])
+for c in G["gallery"]:
+    if f'"cg": "{c["id"]}"' not in alltxt: bad.append(("gallery CG never shown", c["id"]))
 for lang in ("ja",):
     cov = sum(1 for r in S.values() if r.get(lang)) / len(S)
     if cov < 0.999: bad.append(("coverage", lang, cov))

@@ -1,12 +1,15 @@
 {
  "rooms": {
   "lobby": [
+   "res://assets/vn/rooms/lobby.webp",
    "res://assets/placeholder/rooms/lobby.webp"
   ],
   "corridor4": [
+   "res://assets/rpg/rooms/room_corridor4.png",
    "res://assets/placeholder/rooms/corridor4.webp"
   ],
   "room704": [
+   "res://assets/vn/rooms/room704.webp",
    "res://assets/placeholder/rooms/room704.webp"
   ],
   "back_office": [

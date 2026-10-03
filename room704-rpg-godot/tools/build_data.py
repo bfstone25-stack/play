@@ -164,7 +164,7 @@ game = {
 for c in game["gallery"]:
     if not (A / "cg" / (c["locked"] + ".webp")).exists():
         c["locked"] = "cg_generic_locked"
-art = {"rooms": {r: ([f"res://assets/rpg/rooms/{slot}.png"] if slot else []) + [f"res://assets/placeholder/rooms/{r}.webp"] for r, slot in ROOMS.items()},
+art = {"rooms": {r: ([f"res://assets/rpg/rooms/{slot}.png"] if slot else [f"res://assets/vn/rooms/{r}.webp"]) + [f"res://assets/placeholder/rooms/{r}.webp"] for r, slot in ROOMS.items()},
        "rooms_locked": {r: [f"res://assets/placeholder/rooms_locked/{r}.webp"] for r in ROOMS},
        "enemies": {f"enemy_{w}{p}": [f"res://assets/rpg/enemies/enemy_{w}_{'pressured' if p else 'neutral'}.png"]
                    for w in ("gale", "haskell", "penhallow", "dace", "guest212", "constable", "porter") for p in ("", "_pressured")},

@@ -21,7 +21,7 @@ the writing and the three routes (cover / sold / stonewall) are the VN's own. Ne
 | | count |
 |---|---|
 | shifts | 3 + epilogue (all reached by the sim on all three route/ending paths) |
-| rooms | 18 explorable (lobby, back office, bar, kitchen, lift, service stair, second-floor corridor, 212, fourth-floor corridor, 704, 702, linen room, roof, Mrs Dace's flat, boiler room, laundry, loading bay, the street) + the painted floor plan |
+| rooms | 18 explorable (16 rendered for the RPG, lobby and 704 are the VN's) (lobby, back office, bar, kitchen, lift, service stair, second-floor corridor, 212, fourth-floor corridor, 704, 702, linen room, roof, Mrs Dace's flat, boiler room, laundry, loading bay, the street) + the painted floor plan |
 | standoffs | 11 standard + 3 bosses (Gale at the desk, Gale on the fourth floor, Penhallow at the doors) |
 | systems | level/XP (cap 20), 4 stats (Wits/Charm/Grit/Discretion), two skill branches per character (Clerk/Fixer, Ghost/Flame), 3 equipment slots, consumables, keys, evidence, a gift, Trust 0–10 with scenes at 3/5/7/9, 6 save slots + autosave, gallery, settings, map |
 | endings | together / train / alone (Trust 7+ and a desk that did not sell her; a sold register trust never repaired; the bus from the corner) |
@@ -49,7 +49,7 @@ reloads the autosave taken just before the hotspot.
     MIN_SHOTS=0 tools/remote_shots.sh res://tests/ui_smoke.tscn shots/smoke   # real mouse clicks under Xvfb on the 3060
     tools/remote_shots.sh res://tests/shots.tscn shots/latest   # EN + JA screenshots, then the JA trial end
 
-## Package (DLsite)
+## Package (DLsite, new work registration)
 
     tools/package.sh 1.0.0    # -> build/dist/room-704-rpg[-trial]-v1.0.0-{pc,mac}.zip + SHA256SUMS.txt
 
@@ -64,5 +64,5 @@ Rendered by `ops/room704_art/room704_gen.py` steps `rooms` / `enemies` / `outfit
 `rpg_picks.json`) and installed by `ops/room704_art/install_rpg.py` into
 `ops/room704_art/out/rpg/` with a manifest; `tools/import_art.py` copies them in and
 `build_data.py` fails if a manifest asset is not referenced. Kept from the VN by design: the
-lobby / corridor / room 704 plates, the three story CGs, the two gated love scenes (the
+lobby and room 704 plates (the corridor was re-rendered: the VN plate has Mira painted in), the three story CGs, the two gated love scenes (the
 sensual versions, no genitals), the title key visual and the music.

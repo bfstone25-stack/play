@@ -124,6 +124,10 @@ def main():
         if "mirror" in fx:
             im = ImageOps.mirror(im)
         im.resize((1600, 900), Image.LANCZOS).save(A / "placeholder/rooms" / f"{rid}.webp", quality=90)
+    # the VN's own lobby and room 704 plates are final art, not placeholders
+    (A / "vn/rooms").mkdir(parents=True, exist_ok=True)
+    for rid, src in (("lobby", "bg_lobby"), ("room704", "bg_room")):
+        Image.open(VN / f"images/bg/{src}.webp").convert("RGB").save(A / "vn/rooms" / f"{rid}.webp", quality=92)
     n = 0
     if RPG_OUT.exists():
         for f in RPG_OUT.rglob("*.png"):

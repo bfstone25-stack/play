@@ -758,6 +758,13 @@
     "lines": "act1:16-19"
    },
    {
+    "cg": "cg_rpg_doors"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_doors_1"
+   },
+   {
     "cg": "cg_checkin"
    },
    {
@@ -868,12 +875,18 @@
   ],
   "n1_register": [
    {
+    "cg": "cg_rpg_register"
+   },
+   {
     "say": "narrator",
     "key": "n1_register_1"
    },
    {
     "say": "narrator",
     "key": "n1_register_2"
+   },
+   {
+    "hide_cg": true
    }
   ],
   "n1_board": [

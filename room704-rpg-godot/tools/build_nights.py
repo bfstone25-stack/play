@@ -178,12 +178,13 @@ s1_rooms = {
     ], enter="n1_street"),
 }
 s1_events = {
-    "n1_open": vn("act1:start") + [{"event": "vn_gives_key"}, {"hide_cg": True}, {"show": ""}] + N("n1_open_1", "n1_open_2", "n1_open_3"),
+    # the RPG's door CG goes in just before the VN's check-in CG
+    "n1_open": [x for st in vn("act1:start") for x in ([{"cg": "cg_rpg_doors"}, {"say": "narrator", "key": "n1_doors_1"}, st] if st.get("cg") == "cg_checkin" else [st])] + [{"event": "vn_gives_key"}, {"hide_cg": True}, {"show": ""}] + N("n1_open_1", "n1_open_2", "n1_open_3"),
     "vn_ask_why": vn("act1:ask_why", cut=["gives_key"]),
     "vn_take_cash": vn("act1:take_cash", cut=["gives_key"]),
     "vn_by_the_book": vn("act1:by_the_book", cut=["gives_key"]),
     "vn_gives_key": vn("act1:gives_key", lines=(95, 105)),
-    "n1_register": N("n1_register_1", "n1_register_2"),
+    "n1_register": [{"cg": "cg_rpg_register"}] + N("n1_register_1", "n1_register_2") + [{"hide_cg": True}],
     "n1_board": N("n1_board_1", "n1_board_2"),
     "n1_office": N("n1_office_1"),
     "n1_keysafe": N("n1_keysafe_1"), "n1_cctv": N("n1_cctv_1"), "n1_kettle": N("n1_kettle_1"), "n1_drawer": N("n1_drawer_1"),

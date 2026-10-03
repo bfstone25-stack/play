@@ -82,7 +82,7 @@ func run_lang(l: String, full: bool) -> void:
 	main.event.auto_mode = true
 	main.shot_hook = hook
 	main.stop_after = "" if RPG.trial_override else "epilogue"
-	main.prefer_menu = ["Ask her why", "nobody's checked in", "Sit next to her", "Stay awake with me"]
+	main.prefer_menu = ["Ask her why", "checked in", "Sit next to her", "Stay awake with me"] if l == "en" else ["Ask her why", "checked in", "Watch the car", "Turn her away"]
 	main.show_disclosure(false)
 	await get_tree().create_timer(0.6).timeout
 	await snap("disclosure")

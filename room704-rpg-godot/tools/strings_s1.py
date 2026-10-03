@@ -4,6 +4,7 @@ S = {
 "n1_open_1": ("The desk is yours until seven. Between now and then: the rounds, the register, and whatever walks in off the street.", "七時まで、このデスクはあなたのものだ。それまでに：見回り、宿帳、そして通りから入ってくる何か。"),
 "n1_open_2": ("You have until the shift ends before the day porter asks what happened. Every door, every search and every conversation costs minutes.", "昼番のポーターに「何かあったか」と聞かれるまでが、持ち時間だ。扉も、調べ物も、会話も、すべて数分ずつ食う。"),
 "n1_open_3": ("Start with the back office. The pass key is in the safe, and the fourth floor is a long way up without it.", "まずは事務室から。マスターキーは金庫の中。それなしでは四階は遠い。"),
+"n1_doors_1": ("Rain on the glass, the noodle sign in the puddles, and a woman in a long coat coming through it as if it were not there.", "ガラスを打つ雨、水たまりに映る麺屋の看板。そしてその中を、雨などないかのように歩いてくる長いコートの女。"),
 "n1_register_1": ("The register. Forty rooms, eleven names, and on the fourth floor's row, a line as clean as the day it was ruled.", "宿帳。四十室、十一の名前。そして四階の行には、罫線を引いた日のままの空白。"),
 "n1_register_2": ("You tear the carbon from under it, carefully, so the page above shows nothing. Paper has a way of becoming useful after midnight.", "下のカーボン紙を慎重に剥がす。上のページには何も残らないように。真夜中を過ぎると、紙切れは役に立つものに化ける。"),
 "n1_board_1": ("The key board. Seven-oh-four's hook is empty. So are nineteen others, and nobody can tell which empty hook is the one.", "鍵のボード。704の鉤は空。他にも十九本空いていて、どの空の鉤がそれなのか、誰にも分からない。"),
