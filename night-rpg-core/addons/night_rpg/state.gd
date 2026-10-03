@@ -69,7 +69,7 @@ func load_content() -> void:
 func new_game() -> void:
 	s = {
 		"version": 1, "night": "", "room": "", "turns_left": 0, "level": 1, "xp": 0,
-		"members": {}, "items": {}, "trust": 0, "flags": {}, "done": {}, "known": {},
+		"members": {}, "items": {}, "trust": 0, "trusts": {}, "flags": {}, "done": {}, "known": {},
 		"play_seconds": 0.0, "pending_levels": 0, "nights_cleared": [], "saved_at": "",
 	}
 	for m in game["party"]:
@@ -158,6 +158,14 @@ func nerve_max(mid: String) -> int:
 func in_party(mid: String) -> bool:
 	var jf: String = member_def(mid).get("join_flag", "")
 	return jf == "" or flag(jf)
+
+
+## The heroine: the party member who joins later (has a join_flag); "" in a solo game.
+func heroine_id() -> String:
+	for m in game["party"]:
+		if m.get("join_flag", "") != "":
+			return m["id"]
+	return ""
 
 
 ## The heroine's sprite: her outfit's own art if it has some, else the default.
@@ -315,12 +323,37 @@ func equip(mid: String, id: String) -> void:
 	changed.emit()
 
 
-func add_trust(n: int) -> void:
-	var before := int(s["trust"])
-	s["trust"] = clampi(before + n, 0, 10)
+## Trust: one shared track (s["trust"], the heroine games) or named tracks (s["trusts"][track],
+## a game with several people to win over; game.json "trust_tracks" lists them for the HUD).
+func trust(track: String = "") -> int:
+	if track == "":
+		return int(s.get("trust", 0))
+	return int(s.get("trusts", {}).get(track, 0))
+
+
+## The number the summaries show: the shared track, or the highest named one.
+func trust_shown() -> int:
+	var best := int(s.get("trust", 0))
+	for v in s.get("trusts", {}).values():
+		best = max(best, int(v))
+	return best
+
+
+func add_trust(n: int, track: String = "") -> void:
+	var before := trust(track)
+	var after := clampi(before + n, 0, 10)
+	if track == "":
+		s["trust"] = after
+	else:
+		if not s.has("trusts"):
+			s["trusts"] = {}
+		s["trusts"][track] = after
 	for th in game.get("trust_thresholds", [3, 5, 7, 9]):
-		if before < int(th) and int(s["trust"]) >= int(th):
-			toast.emit(Loc.t("toast_trust") % int(th))
+		if before < int(th) and after >= int(th):
+			if track != "" and Loc.has("toast_trust_track"):
+				toast.emit(Loc.t("toast_trust_track") % [Loc.t("n_" + track), int(th)])
+			else:
+				toast.emit(Loc.t("toast_trust") % int(th))
 	changed.emit()
 
 

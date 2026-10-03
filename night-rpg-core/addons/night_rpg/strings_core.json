@@ -346,5 +346,21 @@
  "g_unseen": {
   "en": "Not found yet",
   "ja": "未発見"
+ },
+ "h_trust_track": {
+  "en": "%s %d",
+  "ja": "%s %d"
+ },
+ "ev_trust_track": {
+  "en": "%s's trust +%d",
+  "ja": "%sの信頼 +%d"
+ },
+ "toast_trust_track": {
+  "en": "%s: Trust %d reached — a new scene is open",
+  "ja": "%s：信頼 %d 到達 — 新しい場面が開いた"
+ },
+ "m_gift_to": {
+  "en": "Give to %s",
+  "ja": "%sに渡す"
  }
 }
