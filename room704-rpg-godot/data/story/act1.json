@@ -1,0 +1,741 @@
+{
+ "chapter": 1,
+ "lines": [
+  {
+   "id": "start_f48da2e1",
+   "src": 11,
+   "label": "start",
+   "who": "narrator",
+   "en": "The Marbeck Residential Hotel has forty rooms, eleven guests, and one person awake.",
+   "ja": "マーベック・レジデンシャル・ホテル。40室の部屋。11人の宿泊客。そして、目を覚ましているのはただ一人。",
+   "v_en": "res://assets/voice/start_f48da2e1.ogg",
+   "v_ja": "res://assets/voice/start_f48da2e1.ja.ogg"
+  },
+  {
+   "id": "start_722c789e",
+   "src": 12,
+   "label": "start",
+   "who": "narrator",
+   "en": "That is you. It is 2:14 in the morning and you are three columns into a ledger nobody has read in ten years except the owner's accountant, once a quarter, without interest.",
+   "ja": "それはあなただ。午前2時14分。この十年、オーナーの会計士が四半期に一度、何の関心もなく目を通すほかは誰も読まない帳簿の、三列目に差し掛かっている。",
+   "v_en": "res://assets/voice/start_722c789e.ogg",
+   "v_ja": "res://assets/voice/start_722c789e.ja.ogg"
+  },
+  {
+   "id": "start_36694ba9",
+   "src": 16,
+   "label": "start",
+   "who": "narrator",
+   "en": "Rain came in off the river around midnight and has not let up. The glass doors run with it. The neon from the noodle place across the street arrives on the floor tiles in long red smears.",
+   "ja": "真夜中頃から、川から雨が吹き込んでいる。止む気配はない。ガラスのドアを雨が伝う。通りの向かいの麺屋のネオンが、床のタイルに長い赤い筋となって映り込む。",
+   "v_en": "res://assets/voice/start_36694ba9.ogg",
+   "v_ja": "res://assets/voice/start_36694ba9.ja.ogg"
+  },
+  {
+   "id": "start_c697871d",
+   "src": 18,
+   "label": "start",
+   "who": "narrator",
+   "en": "You are the night auditor. The job is to be here. Occasionally the job is to hand someone a key.",
+   "ja": "あなたは夜間監査人だ。仕事は、ここにいること。時折、誰かに鍵を渡すこと。",
+   "v_en": "res://assets/voice/start_c697871d.ogg",
+   "v_ja": "res://assets/voice/start_c697871d.ja.ogg"
+  },
+  {
+   "id": "start_de38a20d",
+   "src": 19,
+   "label": "start",
+   "who": "narrator",
+   "en": "Then the doors open.",
+   "ja": "その時、ドアが開く。",
+   "v_en": "res://assets/voice/start_de38a20d.ogg",
+   "v_ja": "res://assets/voice/start_de38a20d.ja.ogg"
+  },
+  {
+   "id": "start_93d35296",
+   "src": 25,
+   "label": "start",
+   "who": "narrator",
+   "en": "She comes in out of the rain without hurrying, which is the first thing you notice. People run through weather like this. She walked.",
+   "ja": "彼女は急ぐことなく雨の中から入ってくる。それが、あなたが最初に気づいたことだ。こんな天気なら、誰もが走る。彼女は歩いた。",
+   "v_en": "res://assets/voice/start_93d35296.ogg",
+   "v_ja": "res://assets/voice/start_93d35296.ja.ogg"
+  },
+  {
+   "id": "start_e0f47faa",
+   "src": 26,
+   "label": "start",
+   "who": "narrator",
+   "en": "Late twenties. Pale hair gone dark at the ends with water. A long coat over something that was not chosen for a night like this.",
+   "ja": "20代後半。淡い色の髪は、雨で毛先が黒ずんでいる。この夜には不似合いな服装の上に、長いコートを羽織っている。",
+   "v_en": "res://assets/voice/start_e0f47faa.ogg",
+   "v_ja": "res://assets/voice/start_e0f47faa.ja.ogg"
+  },
+  {
+   "id": "start_a299de3f",
+   "src": 27,
+   "label": "start",
+   "who": "narrator",
+   "en": "She puts a canvas bag on the counter. Then a folded stack of banknotes beside it. Then she looks at you.",
+   "ja": "彼女はカンバス地の鞄をカウンターに置く。その横に、折り畳まれた紙幣の束を置く。そして、あなたを見る。",
+   "v_en": "res://assets/voice/start_a299de3f.ogg",
+   "v_ja": "res://assets/voice/start_a299de3f.ja.ogg"
+  },
+  {
+   "id": "start_337c7251",
+   "src": 29,
+   "label": "start",
+   "who": "mira",
+   "en": "A room. Whatever you have.",
+   "ja": "部屋を。何でもいい。",
+   "v_en": "res://assets/voice/start_337c7251.ogg",
+   "v_ja": "res://assets/voice/start_337c7251.ja.ogg"
+  },
+  {
+   "id": "start_2e2c3fb4",
+   "src": 30,
+   "label": "start",
+   "who": "protagonist",
+   "en": "How many nights?",
+   "ja": "何泊ですか？",
+   "v_en": "res://assets/voice/start_2e2c3fb4.ogg",
+   "v_ja": "res://assets/voice/start_2e2c3fb4.ja.ogg"
+  },
+  {
+   "id": "start_2ca0cc24",
+   "src": 31,
+   "label": "start",
+   "who": "mira",
+   "en": "Let's say one and see how it goes.",
+   "ja": "一泊で。様子を見て。",
+   "v_en": "res://assets/voice/start_2ca0cc24.ogg",
+   "v_ja": "res://assets/voice/start_2ca0cc24.ja.ogg"
+  },
+  {
+   "id": "start_36f8d542",
+   "src": 33,
+   "label": "start",
+   "who": "narrator",
+   "en": "You turn the register toward her. It is a paper register, because the Marbeck has never spent money it did not have to.",
+   "ja": "あなたは帳簿を彼女の方へ向ける。それは紙の帳簿だ。マーベックは、必要のない金は決して使わない。",
+   "v_en": "res://assets/voice/start_36f8d542.ogg",
+   "v_ja": "res://assets/voice/start_36f8d542.ja.ogg"
+  },
+  {
+   "id": "start_69e457fa",
+   "src": 35,
+   "label": "start",
+   "who": "mira",
+   "en": "I would rather not.",
+   "ja": "遠慮したい。",
+   "v_en": "res://assets/voice/start_69e457fa.ogg",
+   "v_ja": "res://assets/voice/start_69e457fa.ja.ogg"
+  },
+  {
+   "id": "start_6d67804f",
+   "src": 36,
+   "label": "start",
+   "who": "protagonist",
+   "en": "Rather not what?",
+   "ja": "何を？",
+   "v_en": "res://assets/voice/start_6d67804f.ogg",
+   "v_ja": "res://assets/voice/start_6d67804f.ja.ogg"
+  },
+  {
+   "id": "start_89cbf08f",
+   "src": 37,
+   "label": "start",
+   "who": "mira",
+   "en": "Be in the book.",
+   "ja": "帳簿に載るのは。",
+   "v_en": "res://assets/voice/start_89cbf08f.ogg",
+   "v_ja": "res://assets/voice/start_89cbf08f.ja.ogg"
+  },
+  {
+   "id": "start_d0736171",
+   "src": 39,
+   "label": "start",
+   "who": "narrator",
+   "en": "She says it plainly. Not a wheedle, not a joke. A stated preference, the way you would say you would rather have a room away from the lift.",
+   "ja": "彼女はあっさりとそう言う。媚びるでもなく、冗談でもない。それは明確な意思表示。まるで、エレベーターから離れた部屋を希望する、とでも言うように。",
+   "v_en": "res://assets/voice/start_d0736171.ogg",
+   "v_ja": "res://assets/voice/start_d0736171.ja.ogg"
+  },
+  {
+   "id": "start_124ceb3a",
+   "src": 40,
+   "label": "start",
+   "who": "narrator",
+   "en": "You look at the cash. It is more than a room costs. Not so much more that it is an insult.",
+   "ja": "あなたは現金を見る。部屋代より多い。だが、侮辱と呼べるほどではない。",
+   "v_en": "res://assets/voice/start_124ceb3a.ogg",
+   "v_ja": "res://assets/voice/start_124ceb3a.ja.ogg"
+  },
+  {
+   "id": "start_d2b909f1",
+   "src": 45,
+   "label": "start",
+   "who": "narrator",
+   "en": "She wants off the ledger. The cash is on the counter.",
+   "ja": "彼女は帳簿に載りたくない。現金はカウンターの上だ。"
+  },
+  {
+   "id": "ask_why_7f24530e",
+   "src": 62,
+   "label": "ask_why",
+   "who": "protagonist",
+   "en": "You're getting the room either way. I'd just like to know what I'm agreeing to.",
+   "ja": "「部屋はどのみちお渡しします。ただ、何に同意することになるのかは知っておきたい」",
+   "v_en": "res://assets/voice/ask_why_7f24530e.ogg",
+   "v_ja": "res://assets/voice/ask_why_7f24530e.ja.ogg"
+  },
+  {
+   "id": "ask_why_b64b0b9a",
+   "src": 63,
+   "label": "ask_why",
+   "who": "narrator",
+   "en": "Something in her face moves and settles. She had been braced for a different answer.",
+   "ja": "彼女の表情が動き、そして収まる。別の答えを覚悟していたのだ。",
+   "v_en": "res://assets/voice/ask_why_b64b0b9a.ogg",
+   "v_ja": "res://assets/voice/ask_why_b64b0b9a.ja.ogg"
+  },
+  {
+   "id": "ask_why_f6ab7d4b",
+   "src": 64,
+   "label": "ask_why",
+   "who": "mira",
+   "en": "Nothing you'd have to lie to the police about, if that's the worry.",
+   "ja": "警察に嘘をつくようなことじゃない。もしそれが心配ならね。",
+   "v_en": "res://assets/voice/ask_why_f6ab7d4b.ogg",
+   "v_ja": "res://assets/voice/ask_why_f6ab7d4b.ja.ogg"
+  },
+  {
+   "id": "ask_why_b396459b",
+   "src": 65,
+   "label": "ask_why",
+   "who": "mira",
+   "en": "I have a card in my bag with my name on it. If I use it tonight, someone will know the name of this hotel before breakfast.",
+   "ja": "バッグの中に、私の名前が書かれたカードがある。今夜それを使えば、誰かが朝食前にこのホテルの名前を知ることになる。",
+   "v_en": "res://assets/voice/ask_why_b396459b.ogg",
+   "v_ja": "res://assets/voice/ask_why_b396459b.ja.ogg"
+  },
+  {
+   "id": "ask_why_f597369e",
+   "src": 66,
+   "label": "ask_why",
+   "who": "protagonist",
+   "en": "A someone who is looking for you.",
+   "ja": "あなたを探している誰か、ですか。",
+   "v_en": "res://assets/voice/ask_why_f597369e.ogg",
+   "v_ja": "res://assets/voice/ask_why_f597369e.ja.ogg"
+  },
+  {
+   "id": "ask_why_14ea3e3d",
+   "src": 67,
+   "label": "ask_why",
+   "who": "mira",
+   "en": "Someone who pays for the account the card belongs to. He finds it restful, knowing where I spend money.",
+   "ja": "「そのカードの口座に金を払っている人。私がどこで金を使うか知っていると、安心するらしいの」",
+   "v_en": "res://assets/voice/ask_why_14ea3e3d.ogg",
+   "v_ja": "res://assets/voice/ask_why_14ea3e3d.ja.ogg"
+  },
+  {
+   "id": "ask_why_1bc60693",
+   "src": 69,
+   "label": "ask_why",
+   "who": "narrator",
+   "en": "She says it flat, the way people say a thing they have said to themselves a hundred times and never once aloud.",
+   "ja": "彼女は平坦に言う。自分の中で百回は言って、一度も声に出したことのない言葉の言い方だ。",
+   "v_en": "res://assets/voice/ask_why_1bc60693.ogg",
+   "v_ja": "res://assets/voice/ask_why_1bc60693.ja.ogg"
+  },
+  {
+   "id": "ask_why_3912378d",
+   "src": 70,
+   "label": "ask_why",
+   "who": "mira",
+   "en": "So. Cash. And not in the book. That's the whole of it.",
+   "ja": "つまり。現金で。帳簿には載せない。それが全て、と。",
+   "v_en": "res://assets/voice/ask_why_3912378d.ogg",
+   "v_ja": "res://assets/voice/ask_why_3912378d.ja.ogg"
+  },
+  {
+   "id": "take_cash_17b4330d",
+   "src": 78,
+   "label": "take_cash",
+   "who": "narrator",
+   "en": "You take the notes, count them without appearing to count them, and put them in the drawer under the tray.",
+   "ja": "あなたは紙幣を受け取り、数えているように見えないやり方で数え、トレイの下の引き出しに入れる。",
+   "v_en": "res://assets/voice/take_cash_17b4330d.ogg",
+   "v_ja": "res://assets/voice/take_cash_17b4330d.ja.ogg"
+  },
+  {
+   "id": "take_cash_9aefc7d5",
+   "src": 79,
+   "label": "take_cash",
+   "who": "narrator",
+   "en": "The register stays where it is. You turn it back around.",
+   "ja": "レジはそのまま。向きを変える。",
+   "v_en": "res://assets/voice/take_cash_9aefc7d5.ogg",
+   "v_ja": "res://assets/voice/take_cash_9aefc7d5.ja.ogg"
+  },
+  {
+   "id": "take_cash_ac776f5e",
+   "src": 80,
+   "label": "take_cash",
+   "who": "protagonist",
+   "en": "The book says the fourth floor is empty tonight. The book is often wrong.",
+   "ja": "帳簿には今夜、四階は空室とある。帳簿はよく間違える。",
+   "v_en": "res://assets/voice/take_cash_ac776f5e.ogg",
+   "v_ja": "res://assets/voice/take_cash_ac776f5e.ja.ogg"
+  },
+  {
+   "id": "take_cash_e676f029",
+   "src": 81,
+   "label": "take_cash",
+   "who": "mira",
+   "en": "That's a good book.",
+   "ja": "いい帳簿だ。",
+   "v_en": "res://assets/voice/take_cash_e676f029.ogg",
+   "v_ja": "res://assets/voice/take_cash_e676f029.ja.ogg"
+  },
+  {
+   "id": "by_the_book_79ae07b0",
+   "src": 86,
+   "label": "by_the_book",
+   "who": "protagonist",
+   "en": "I need a name. It's the one thing I can't skip.",
+   "ja": "名前が必要だ。これだけは飛ばせない。",
+   "v_en": "res://assets/voice/by_the_book_79ae07b0.ogg",
+   "v_ja": "res://assets/voice/by_the_book_79ae07b0.ja.ogg"
+  },
+  {
+   "id": "by_the_book_ddad076e",
+   "src": 87,
+   "label": "by_the_book",
+   "who": "narrator",
+   "en": "She looks at you long enough for the rain to get loud.",
+   "ja": "彼女はあなたを見る。雨の音が大きくなるほど長く。",
+   "v_en": "res://assets/voice/by_the_book_ddad076e.ogg",
+   "v_ja": "res://assets/voice/by_the_book_ddad076e.ja.ogg"
+  },
+  {
+   "id": "by_the_book_98ce8bb1",
+   "src": 88,
+   "label": "by_the_book",
+   "who": "mira",
+   "en": "Of course you do.",
+   "ja": "当然だ。",
+   "v_en": "res://assets/voice/by_the_book_98ce8bb1.ogg",
+   "v_ja": "res://assets/voice/by_the_book_98ce8bb1.ja.ogg"
+  },
+  {
+   "id": "by_the_book_76f9b880",
+   "src": 89,
+   "label": "by_the_book",
+   "who": "narrator",
+   "en": "She writes. The hand is steady, and the name is not the one on the card in her bag. You would put money on it.",
+   "ja": "彼女は書く。手は揺れない。そしてその名は、鞄の中のカードの名ではない。賭けてもいい。",
+   "v_en": "res://assets/voice/by_the_book_76f9b880.ogg",
+   "v_ja": "res://assets/voice/by_the_book_76f9b880.ja.ogg"
+  },
+  {
+   "id": "by_the_book_c500fc8f",
+   "src": 90,
+   "label": "by_the_book",
+   "who": "mira",
+   "en": "There. Now we're both honest.",
+   "ja": "これで。お互い正直だ。",
+   "v_en": "res://assets/voice/by_the_book_c500fc8f.ogg",
+   "v_ja": "res://assets/voice/by_the_book_c500fc8f.ja.ogg"
+  },
+  {
+   "id": "gives_key_570a86d0",
+   "src": 97,
+   "label": "gives_key",
+   "who": "narrator",
+   "en": "You take a key off the board. Seven-oh-four. Corner room, river side, the only one on that floor where the window still opens.",
+   "ja": "あなたはボードから鍵を取る。七〇四号室。角部屋、川側、その階で唯一窓が開く部屋。",
+   "v_en": "res://assets/voice/gives_key_570a86d0.ogg",
+   "v_ja": "res://assets/voice/gives_key_570a86d0.ja.ogg"
+  },
+  {
+   "id": "gives_key_adbac9cb",
+   "src": 98,
+   "label": "gives_key",
+   "who": "protagonist",
+   "en": "Top of the stairs, left, all the way down. Take the stairs — the lift makes a noise you don't want to hear at this hour.",
+   "ja": "「階段を上がって左、突き当たりです。階段で。この時間、エレベーターは聞きたくない音を立てるので」",
+   "v_en": "res://assets/voice/gives_key_adbac9cb.ogg",
+   "v_ja": "res://assets/voice/gives_key_adbac9cb.ja.ogg"
+  },
+  {
+   "id": "gives_key_f86e94d0",
+   "src": 99,
+   "label": "gives_key",
+   "who": "mira",
+   "en": "Mira.",
+   "ja": "ミラ。",
+   "v_en": "res://assets/voice/gives_key_f86e94d0.ogg",
+   "v_ja": "res://assets/voice/gives_key_f86e94d0.ja.ogg"
+  },
+  {
+   "id": "gives_key_29e719a9",
+   "src": 100,
+   "label": "gives_key",
+   "who": "protagonist",
+   "en": "I didn't ask.",
+   "ja": "聞いてない。",
+   "v_en": "res://assets/voice/gives_key_29e719a9.ogg",
+   "v_ja": "res://assets/voice/gives_key_29e719a9.ja.ogg"
+  },
+  {
+   "id": "gives_key_756c2108",
+   "src": 101,
+   "label": "gives_key",
+   "who": "mira",
+   "en": "I know. That's why.",
+   "ja": "知ってる。だからよ。",
+   "v_en": "res://assets/voice/gives_key_756c2108.ogg",
+   "v_ja": "res://assets/voice/gives_key_756c2108.ja.ogg"
+  },
+  {
+   "id": "gives_key_6593f0e7",
+   "src": 103,
+   "label": "gives_key",
+   "who": "mira",
+   "en": "Goodnight, night auditor.",
+   "ja": "おやすみ、ナイトオーディター。",
+   "v_en": "res://assets/voice/gives_key_6593f0e7.ogg",
+   "v_ja": "res://assets/voice/gives_key_6593f0e7.ja.ogg"
+  },
+  {
+   "id": "gives_key_61f6631b",
+   "src": 105,
+   "label": "gives_key",
+   "who": "narrator",
+   "en": "She goes up. You listen to her not hurrying, all the way to the fourth floor.",
+   "ja": "彼女は上がっていく。急がない足音が四階まで続くのを、あなたは聞いている。",
+   "v_en": "res://assets/voice/gives_key_61f6631b.ogg",
+   "v_ja": "res://assets/voice/gives_key_61f6631b.ja.ogg"
+  },
+  {
+   "id": "gives_key_d770c18c",
+   "src": 110,
+   "label": "gives_key",
+   "who": "narrator",
+   "en": "At twenty to four, the doors open again.",
+   "ja": "四時二十三分前、ドアが再び開く。",
+   "v_en": "res://assets/voice/gives_key_d770c18c.ogg",
+   "v_ja": "res://assets/voice/gives_key_d770c18c.ja.ogg"
+  },
+  {
+   "id": "gives_key_2e808a9e",
+   "src": 112,
+   "label": "gives_key",
+   "who": "man",
+   "en": "Evening.",
+   "ja": "こんばんは。",
+   "v_en": "res://assets/voice/gives_key_2e808a9e.ogg",
+   "v_ja": "res://assets/voice/gives_key_2e808a9e.ja.ogg"
+  },
+  {
+   "id": "gives_key_a6a6bc80",
+   "src": 113,
+   "label": "gives_key",
+   "who": "narrator",
+   "en": "Wet overcoat, mid-forties, a build that used to be sport and is now maintenance. He does not shake the water off. He stands where it can run off him onto your tiles.",
+   "ja": "濡れたコート、四十代半ば、かつては運動で、今は維持のための体つき。水を払いもしない。払った水がこちらのタイルに落ちる位置に、そのまま立つ。",
+   "v_en": "res://assets/voice/gives_key_a6a6bc80.ogg",
+   "v_ja": "res://assets/voice/gives_key_a6a6bc80.ja.ogg"
+  },
+  {
+   "id": "gives_key_9a0e5cc6",
+   "src": 114,
+   "label": "gives_key",
+   "who": "man",
+   "en": "I'm looking for someone. Woman, late twenties, pale hair. She'd have come in these last two hours.",
+   "ja": "「人を探している。女、二十代後半、髪は淡い色。この二時間のうちに入ってきたはずだ」",
+   "v_en": "res://assets/voice/gives_key_9a0e5cc6.ogg",
+   "v_ja": "res://assets/voice/gives_key_9a0e5cc6.ja.ogg"
+  },
+  {
+   "id": "gives_key_13624b3a",
+   "src": 115,
+   "label": "gives_key",
+   "who": "narrator",
+   "en": "He is not a policeman. A policeman would have led with being a policeman.",
+   "ja": "彼は警官ではない。警官なら、まず警官だと名乗る。",
+   "v_en": "res://assets/voice/gives_key_13624b3a.ogg",
+   "v_ja": "res://assets/voice/gives_key_13624b3a.ja.ogg"
+  },
+  {
+   "id": "gives_key_62ef9776",
+   "src": 120,
+   "label": "gives_key",
+   "who": "narrator",
+   "en": "He is waiting. The register is on the counter between you.",
+   "ja": "彼は待っている。宿帳は二人の間のカウンターの上だ。"
+  },
+  {
+   "id": "lie_to_him_c8b448f7",
+   "src": 139,
+   "label": "lie_to_him",
+   "who": "protagonist",
+   "en": "Nobody's checked in since eleven. Quiet night.",
+   "ja": "「十一時以降、チェックインはありません。静かな夜でしたよ」",
+   "v_en": "res://assets/voice/lie_to_him_c8b448f7.ogg",
+   "v_ja": "res://assets/voice/lie_to_him_c8b448f7.ja.ogg"
+  },
+  {
+   "id": "lie_to_him_2b730407",
+   "src": 140,
+   "label": "lie_to_him",
+   "who": "narrator",
+   "en": "You say it without effort. That surprises you.",
+   "ja": "口をついて出た。造作もなく。そのことに、あなた自身が驚く。",
+   "v_en": "res://assets/voice/lie_to_him_2b730407.ogg",
+   "v_ja": "res://assets/voice/lie_to_him_2b730407.ja.ogg"
+  },
+  {
+   "id": "lie_to_him_53daf583",
+   "src": 141,
+   "label": "lie_to_him",
+   "who": "man",
+   "en": "Quiet night.",
+   "ja": "静かな夜。",
+   "v_en": "res://assets/voice/lie_to_him_53daf583.ogg",
+   "v_ja": "res://assets/voice/lie_to_him_53daf583.ja.ogg"
+  },
+  {
+   "id": "lie_to_him_9fa7eab9",
+   "src": 142,
+   "label": "lie_to_him",
+   "who": "protagonist",
+   "en": "It's a quiet hotel.",
+   "ja": "静かなホテルだ。",
+   "v_en": "res://assets/voice/lie_to_him_9fa7eab9.ogg",
+   "v_ja": "res://assets/voice/lie_to_him_9fa7eab9.ja.ogg"
+  },
+  {
+   "id": "lie_to_him_36359119",
+   "src": 143,
+   "label": "lie_to_him",
+   "who": "narrator",
+   "en": "He looks past you at the key board. Seven-oh-four's hook is empty. So are nineteen others, and he cannot tell which empty hook is the one.",
+   "ja": "男はあなたの肩越しにキーボードを見る。704のフックは空だ。他にも十九本が空で、どの空きがその空きなのか、男には分からない。",
+   "v_en": "res://assets/voice/lie_to_him_36359119.ogg",
+   "v_ja": "res://assets/voice/lie_to_him_36359119.ja.ogg"
+  },
+  {
+   "id": "lie_to_him_72f1ee46",
+   "src": 144,
+   "label": "lie_to_him",
+   "who": "man",
+   "en": "If she comes in. There's a number on this.",
+   "ja": "彼女が入ってきたら。これに番号がある。",
+   "v_en": "res://assets/voice/lie_to_him_72f1ee46.ogg",
+   "v_ja": "res://assets/voice/lie_to_him_72f1ee46.ja.ogg"
+  },
+  {
+   "id": "lie_to_him_a26a84d4",
+   "src": 145,
+   "label": "lie_to_him",
+   "who": "narrator",
+   "en": "He puts a card on the counter. You leave it there.",
+   "ja": "彼はカウンターにカードを置く。あなたはそれをそこに置いたままにする。",
+   "v_en": "res://assets/voice/lie_to_him_a26a84d4.ogg",
+   "v_ja": "res://assets/voice/lie_to_him_a26a84d4.ja.ogg"
+  },
+  {
+   "id": "lie_to_him_38bad291",
+   "src": 146,
+   "label": "lie_to_him",
+   "who": "narrator",
+   "en": "He goes. The rain takes him.",
+   "ja": "彼は行く。雨が彼を連れ去る。",
+   "v_en": "res://assets/voice/lie_to_him_38bad291.ogg",
+   "v_ja": "res://assets/voice/lie_to_him_38bad291.ja.ogg"
+  },
+  {
+   "id": "show_register_9d0f83cf",
+   "src": 151,
+   "label": "show_register",
+   "who": "narrator",
+   "en": "You turn the register around. Whatever is written there, he can read it himself.",
+   "ja": "あなたは帳簿を裏返す。何が書かれていようと、彼自身が読めばいい。",
+   "v_en": "res://assets/voice/show_register_9d0f83cf.ogg",
+   "v_ja": "res://assets/voice/show_register_9d0f83cf.ja.ogg"
+  },
+  {
+   "id": "show_register_02c7c801",
+   "src": 152,
+   "label": "show_register",
+   "who": "narrator",
+   "en": "He reads. His face does not change, which is the worst version.",
+   "ja": "男は読む。表情は動かない。それがいちばん悪い。",
+   "v_en": "res://assets/voice/show_register_02c7c801.ogg",
+   "v_ja": "res://assets/voice/show_register_02c7c801.ja.ogg"
+  },
+  {
+   "id": "show_register_bc8ded72",
+   "src": 153,
+   "label": "show_register",
+   "who": "man",
+   "en": "Fourth floor?",
+   "ja": "4階か？",
+   "v_en": "res://assets/voice/show_register_bc8ded72.ogg",
+   "v_ja": "res://assets/voice/show_register_bc8ded72.ja.ogg"
+  },
+  {
+   "id": "show_register_28cde616",
+   "src": 154,
+   "label": "show_register",
+   "who": "protagonist",
+   "en": "I didn't say that.",
+   "ja": "言ってない。",
+   "v_en": "res://assets/voice/show_register_28cde616.ogg",
+   "v_ja": "res://assets/voice/show_register_28cde616.ja.ogg"
+  },
+  {
+   "id": "show_register_3c9aa7e1",
+   "src": 155,
+   "label": "show_register",
+   "who": "man",
+   "en": "You didn't have to. There's one gap on the fourth row.",
+   "ja": "「言う必要はない。四列目にひとつだけ空きがある」",
+   "v_en": "res://assets/voice/show_register_3c9aa7e1.ogg",
+   "v_ja": "res://assets/voice/show_register_3c9aa7e1.ja.ogg"
+  },
+  {
+   "id": "show_register_e32fbe01",
+   "src": 156,
+   "label": "show_register",
+   "who": "narrator",
+   "en": "He taps the counter twice — a man confirming what he already knew — and goes back out into the rain.",
+   "ja": "男はカウンターを二度叩く——分かっていたことを確かめる男の叩き方で——そして雨の中へ戻っていく。",
+   "v_en": "res://assets/voice/show_register_e32fbe01.ogg",
+   "v_ja": "res://assets/voice/show_register_e32fbe01.ja.ogg"
+  },
+  {
+   "id": "show_register_2209d9d8",
+   "src": 157,
+   "label": "show_register",
+   "who": "narrator",
+   "en": "You sit down. You have done something, and it is now four floors above you, in a room with one window.",
+   "ja": "あなたは腰を下ろす。何かをしてしまった。そしてそれは今、四階上の、窓がひとつきりの部屋にある。",
+   "v_en": "res://assets/voice/show_register_2209d9d8.ogg",
+   "v_ja": "res://assets/voice/show_register_2209d9d8.ja.ogg"
+  },
+  {
+   "id": "stonewall_3cb0d4c4",
+   "src": 162,
+   "label": "stonewall",
+   "who": "protagonist",
+   "en": "The hotel doesn't discuss guests. With anyone.",
+   "ja": "ホテルは宿泊客について話さない。誰とも。",
+   "v_en": "res://assets/voice/stonewall_3cb0d4c4.ogg",
+   "v_ja": "res://assets/voice/stonewall_3cb0d4c4.ja.ogg"
+  },
+  {
+   "id": "stonewall_fe30bbe5",
+   "src": 163,
+   "label": "stonewall",
+   "who": "man",
+   "en": "So there is a guest.",
+   "ja": "なら、客はいる。",
+   "v_en": "res://assets/voice/stonewall_fe30bbe5.ogg",
+   "v_ja": "res://assets/voice/stonewall_fe30bbe5.ja.ogg"
+  },
+  {
+   "id": "stonewall_a2e036d0",
+   "src": 164,
+   "label": "stonewall",
+   "who": "protagonist",
+   "en": "The hotel doesn't discuss whether there are guests.",
+   "ja": "宿泊客の有無についても、ホテルは話さない。",
+   "v_en": "res://assets/voice/stonewall_a2e036d0.ogg",
+   "v_ja": "res://assets/voice/stonewall_a2e036d0.ja.ogg"
+  },
+  {
+   "id": "stonewall_d3f83a36",
+   "src": 165,
+   "label": "stonewall",
+   "who": "narrator",
+   "en": "He almost smiles. He has met desks.",
+   "ja": "男はわずかに笑いかける。フロントは何度も相手にしてきたのだ。",
+   "v_en": "res://assets/voice/stonewall_d3f83a36.ogg",
+   "v_ja": "res://assets/voice/stonewall_d3f83a36.ja.ogg"
+  },
+  {
+   "id": "stonewall_b3f42fe9",
+   "src": 166,
+   "label": "stonewall",
+   "who": "man",
+   "en": "Fair enough.",
+   "ja": "結構だ。",
+   "v_en": "res://assets/voice/stonewall_b3f42fe9.ogg",
+   "v_ja": "res://assets/voice/stonewall_b3f42fe9.ja.ogg"
+  },
+  {
+   "id": "stonewall_e058ac12",
+   "src": 167,
+   "label": "stonewall",
+   "who": "narrator",
+   "en": "He leaves a card on the counter and goes. You give him ten minutes to be across the street in a car, watching the doors.",
+   "ja": "男はカウンターに名刺を残して出ていく。十分もすれば通りの向かいの車の中から、この扉を見ているだろう。",
+   "v_en": "res://assets/voice/stonewall_e058ac12.ogg",
+   "v_ja": "res://assets/voice/stonewall_e058ac12.ja.ogg"
+  },
+  {
+   "id": "act1_end_0b31b424",
+   "src": 174,
+   "label": "act1_end",
+   "who": "narrator",
+   "en": "At ten past four the desk phone rings. Internal line. Seven-oh-four.",
+   "ja": "4時10分。フロントの電話が鳴る。内線だ。704号室。",
+   "v_en": "res://assets/voice/act1_end_0b31b424.ogg",
+   "v_ja": "res://assets/voice/act1_end_0b31b424.ja.ogg"
+  },
+  {
+   "id": "act1_end_d56c8b06",
+   "src": 175,
+   "label": "act1_end",
+   "who": "mira",
+   "en": "It's Mira. From the book you didn't write in.",
+   "ja": "ミラだ。あなたが書き込まなかった帳簿の。",
+   "v_en": "res://assets/voice/act1_end_d56c8b06.ogg",
+   "v_ja": "res://assets/voice/act1_end_d56c8b06.ja.ogg"
+  },
+  {
+   "id": "act1_end_44026d3a",
+   "src": 176,
+   "label": "act1_end",
+   "who": "mira",
+   "en": "There's a car across the road that hasn't moved in twenty minutes, and I can't sleep, and I've decided I'd rather not be alone up here not sleeping.",
+   "ja": "「通りの向かいに二十分動いていない車がいて、眠れなくて、それで決めたの。眠れないなら、せめて一人で眠れないのはやめようって」",
+   "v_en": "res://assets/voice/act1_end_44026d3a.ogg",
+   "v_ja": "res://assets/voice/act1_end_44026d3a.ja.ogg"
+  },
+  {
+   "id": "act1_end_95a74821",
+   "src": 177,
+   "label": "act1_end",
+   "who": "mira",
+   "en": "Bring the pass key. If I open the door myself, I have to stand in the corridor to do it.",
+   "ja": "「マスターキーを持ってきて。自分で開けると、廊下に立って開けることになるから」",
+   "v_en": "res://assets/voice/act1_end_95a74821.ogg",
+   "v_ja": "res://assets/voice/act1_end_95a74821.ja.ogg"
+  }
+ ],
+ "menus": {
+  "She wants off the ledger. The cash is on the counter.": "彼女は帳簿に載りたくない。現金はカウンターの上だ。",
+  "Ask her why before you decide.": "決める前に、理由を聞く。",
+  "Take the cash. Don't write anything.": "現金を受け取る。何も書かない。",
+  "Do it properly. Name in the book.": "きちんとやる。帳簿に名前を。",
+  "He is waiting. The register is on the counter between you.": "彼は待っている。宿帳は二人の間のカウンターの上だ。",
+  "Tell him nobody's checked in.": "誰もチェックインしていないと言う。",
+  "Slide the register at him and say nothing.": "宿帳を彼の方へ滑らせ、何も言わない。",
+  "Tell him the hotel doesn't discuss guests.": "ホテルは宿泊客について話さないと言う。"
+ }
+}

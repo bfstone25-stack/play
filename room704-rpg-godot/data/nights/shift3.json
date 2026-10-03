@@ -1,0 +1,919 @@
+{
+ "id": "shift3",
+ "title_key": "n3_title",
+ "sub_key": "n3_sub",
+ "turns": 44,
+ "clock_start": 380,
+ "minutes_per_turn": 1,
+ "start_room": "room704",
+ "start_event": "n3_open",
+ "map": {
+  "image": "marbeck",
+  "rooms": {
+   "room704": [
+    0.7,
+    0.22
+   ],
+   "corridor4": [
+    0.5,
+    0.22
+   ],
+   "service_stair": [
+    0.9,
+    0.42
+   ],
+   "boiler": [
+    0.5,
+    0.86
+   ],
+   "laundry": [
+    0.7,
+    0.86
+   ],
+   "loading_bay": [
+    0.3,
+    0.86
+   ],
+   "street": [
+    0.1,
+    0.62
+   ],
+   "back_office": [
+    0.5,
+    0.62
+   ],
+   "lobby": [
+    0.3,
+    0.62
+   ]
+  }
+ },
+ "rooms": {
+  "room704": {
+   "name_key": "r_room704",
+   "plate": "room704",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8090",
+    "lamps": [
+     [
+      0.25,
+      0.5,
+      1.0,
+      "#ffd0a0"
+     ],
+     [
+      0.8,
+      0.3,
+      0.7,
+      "#ff6070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor4",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ]
+  },
+  "corridor4": {
+   "name_key": "r_corridor4",
+   "plate": "corridor4",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7080",
+    "lamps": [
+     [
+      0.3,
+      0.3,
+      0.9,
+      "#ffc080"
+     ],
+     [
+      0.75,
+      0.3,
+      0.7,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_704",
+     "kind": "door",
+     "to": "room704",
+     "pos": [
+      0.9,
+      0.86
+     ]
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "service_stair",
+     "pos": [
+      0.42,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n3_corr"
+  },
+  "service_stair": {
+   "name_key": "r_service_stair",
+   "plate": "service_stair",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7a88",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      0.9,
+      "#ffd8a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor4",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_boiler",
+     "kind": "door",
+     "to": "boiler",
+     "pos": [
+      0.6,
+      0.7
+     ],
+     "needs": "basement_key",
+     "locked_key": "n1_service_locked"
+    },
+    {
+     "id": "to_lobby",
+     "kind": "door",
+     "to": "lobby",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "haskell3_done"
+    }
+   ],
+   "enter_event": "n3_stair"
+  },
+  "boiler": {
+   "name_key": "r_boiler",
+   "plate": "boiler",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a7a70",
+    "lamps": [
+     [
+      0.5,
+      0.35,
+      1.0,
+      "#ffb060"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "gauges",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.35
+     ],
+     "event": "n3_gauges",
+     "label_key": "hs_gauges",
+     "xp": 10
+    },
+    {
+     "id": "pipes",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.5
+     ],
+     "event": "n3_pipes",
+     "label_key": "hs_pipes",
+     "gives": [
+      "whisky"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "service_stair",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_laundry",
+     "kind": "door",
+     "to": "laundry",
+     "pos": [
+      0.9,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n3_boiler"
+  },
+  "laundry": {
+   "name_key": "r_laundry",
+   "plate": "laundry",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a9098",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.2,
+      "#e8f0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "dace",
+     "kind": "enemy",
+     "enemy": "dace_2",
+     "pos": [
+      0.5,
+      0.45
+     ],
+     "event": "n3_dace_pre",
+     "after": "n3_dace_post"
+    },
+    {
+     "id": "washers",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.5
+     ],
+     "event": "n3_washers",
+     "label_key": "hs_washers",
+     "gives": [
+      "minibar"
+     ]
+    },
+    {
+     "id": "sheets",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.4
+     ],
+     "event": "n3_sheets",
+     "label_key": "hs_sheets",
+     "xp": 10,
+     "if_flag": "dace2_done"
+    },
+    {
+     "id": "to_boiler",
+     "kind": "door",
+     "to": "boiler",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_bay",
+     "kind": "door",
+     "to": "loading_bay",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "dace2_done"
+    }
+   ],
+   "enter_event": "n3_laundry"
+  },
+  "loading_bay": {
+   "name_key": "r_loading_bay",
+   "plate": "loading_bay",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7a88",
+    "lamps": [
+     [
+      0.7,
+      0.3,
+      0.9,
+      "#ffc080"
+     ],
+     [
+      0.2,
+      0.5,
+      0.6,
+      "#ff6070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "constable",
+     "kind": "enemy",
+     "enemy": "constable_2",
+     "pos": [
+      0.45,
+      0.5
+     ],
+     "event": "n3_constable_pre",
+     "after": "n3_constable_post"
+    },
+    {
+     "id": "shutter",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.3
+     ],
+     "event": "n3_shutter",
+     "label_key": "hs_shutter",
+     "xp": 10
+    },
+    {
+     "id": "bins",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.55
+     ],
+     "event": "n3_bins",
+     "label_key": "hs_bins",
+     "gives": [
+      "card_gale"
+     ],
+     "xp": 5,
+     "if_flag": "constable2_done"
+    },
+    {
+     "id": "to_laundry",
+     "kind": "door",
+     "to": "laundry",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "constable2_done"
+    }
+   ],
+   "enter_event": "n3_bay"
+  },
+  "street": {
+   "name_key": "r_street",
+   "plate": "street",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8088a0",
+    "lamps": [
+     [
+      0.6,
+      0.25,
+      1.1,
+      "#ff6070"
+     ],
+     [
+      0.2,
+      0.3,
+      0.8,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "car",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.55
+     ],
+     "event": "n3_car_gone",
+     "label_key": "hs_car",
+     "xp": 10
+    },
+    {
+     "id": "noodle",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.45
+     ],
+     "event": "n3_noodle",
+     "label_key": "hs_noodle",
+     "gives": [
+      "coffee",
+      "coffee"
+     ]
+    },
+    {
+     "id": "to_bay",
+     "kind": "door",
+     "to": "loading_bay",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_office",
+     "kind": "door",
+     "to": "back_office",
+     "pos": [
+      0.9,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n3_street"
+  },
+  "back_office": {
+   "name_key": "r_back_office",
+   "plate": "back_office",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8480",
+    "lamps": [
+     [
+      0.4,
+      0.45,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "haskell",
+     "kind": "enemy",
+     "enemy": "haskell_3",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "n3_haskell_pre",
+     "after": "n3_haskell_post"
+    },
+    {
+     "id": "register",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.6
+     ],
+     "event": "n3_register3",
+     "label_key": "hs_register",
+     "gives": [
+      "register_page"
+     ],
+     "xp": 10,
+     "if_flag": "haskell3_done"
+    },
+    {
+     "id": "to_lobby",
+     "kind": "door",
+     "to": "lobby",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "haskell3_done"
+    },
+    {
+     "id": "to_street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n3_office"
+  },
+  "lobby": {
+   "name_key": "r_lobby",
+   "plate": "lobby",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8294",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      1.0,
+      "#ffd090"
+     ],
+     [
+      0.85,
+      0.3,
+      0.8,
+      "#ff6070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "penhallow",
+     "kind": "enemy",
+     "enemy": "penhallow",
+     "pos": [
+      0.4,
+      0.5
+     ],
+     "event": "n3_pen_pre",
+     "after": "n3_pen_post"
+    }
+   ],
+   "enter_event": "n3_lobby"
+  }
+ },
+ "events": {
+  "n3_open": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "room704"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "act3:8-8"
+   },
+   {
+    "cg": "cg_morning"
+   },
+   {
+    "lines": "act3:12-16"
+   },
+   {
+    "if_trust": 7,
+    "then": [
+     {
+      "cg": "cg_trust7_sheets"
+     },
+     {
+      "say": "narrator",
+      "key": "n3_t7_1"
+     },
+     {
+      "say": "mira",
+      "key": "n3_t7_2"
+     },
+     {
+      "say": "narrator",
+      "key": "n3_t7_3"
+     },
+     {
+      "hide_cg": true
+     }
+    ],
+    "else": []
+   },
+   {
+    "if_trust": 5,
+    "then": [
+     {
+      "cg": "cg_trust5_bath"
+     },
+     {
+      "say": "narrator",
+      "key": "n3_t5_1"
+     },
+     {
+      "say": "mira",
+      "key": "n3_t5_2"
+     },
+     {
+      "hide_cg": true
+     }
+    ],
+    "else": []
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "show": "mira_wry",
+    "x": 0.7
+   },
+   {
+    "say": "narrator",
+    "key": "n3_plan_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_plan_2"
+   },
+   {
+    "say": "mira",
+    "key": "n3_plan_3"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n3_corr": [
+   {
+    "say": "narrator",
+    "key": "n3_corr_1"
+   }
+  ],
+  "n3_stair": [
+   {
+    "say": "narrator",
+    "key": "n3_stair_1"
+   }
+  ],
+  "n3_boiler": [
+   {
+    "say": "narrator",
+    "key": "n3_boiler_1"
+   }
+  ],
+  "n3_gauges": [
+   {
+    "say": "narrator",
+    "key": "n3_gauges_1"
+   }
+  ],
+  "n3_pipes": [
+   {
+    "say": "narrator",
+    "key": "n3_pipes_1"
+   }
+  ],
+  "n3_laundry": [
+   {
+    "say": "narrator",
+    "key": "n3_laundry_1"
+   }
+  ],
+  "n3_dace_pre": [
+   {
+    "say": "dace",
+    "key": "n3_dace_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_dace_2"
+   }
+  ],
+  "n3_dace_post": [
+   {
+    "say": "dace",
+    "key": "n3_dace_3"
+   },
+   {
+    "flag": "dace2_done"
+   }
+  ],
+  "n3_washers": [
+   {
+    "say": "narrator",
+    "key": "n3_washers_1"
+   }
+  ],
+  "n3_sheets": [
+   {
+    "say": "narrator",
+    "key": "n3_sheets_1"
+   }
+  ],
+  "n3_bay": [
+   {
+    "say": "narrator",
+    "key": "n3_bay_1"
+   }
+  ],
+  "n3_constable_pre": [
+   {
+    "say": "narrator",
+    "key": "n3_constable_1"
+   },
+   {
+    "say": "constable",
+    "key": "n3_constable_2"
+   }
+  ],
+  "n3_constable_post": [
+   {
+    "say": "narrator",
+    "key": "n3_constable_3"
+   },
+   {
+    "flag": "constable2_done"
+   }
+  ],
+  "n3_shutter": [
+   {
+    "say": "narrator",
+    "key": "n3_shutter_1"
+   }
+  ],
+  "n3_bins": [
+   {
+    "say": "narrator",
+    "key": "n3_bins_1"
+   }
+  ],
+  "n3_street": [
+   {
+    "say": "narrator",
+    "key": "n3_street_1"
+   }
+  ],
+  "n3_car_gone": [
+   {
+    "say": "narrator",
+    "key": "n3_car_gone_1"
+   }
+  ],
+  "n3_noodle": [
+   {
+    "say": "narrator",
+    "key": "n3_noodle_1"
+   }
+  ],
+  "n3_office": [
+   {
+    "say": "narrator",
+    "key": "n3_office_1"
+   }
+  ],
+  "n3_haskell_pre": [
+   {
+    "say": "haskell",
+    "key": "n3_haskell_1"
+   }
+  ],
+  "n3_haskell_post": [
+   {
+    "say": "narrator",
+    "key": "n3_haskell_2"
+   },
+   {
+    "flag": "haskell3_done"
+   }
+  ],
+  "n3_register3": [
+   {
+    "say": "narrator",
+    "key": "n3_register3_1"
+   }
+  ],
+  "n3_lobby": [
+   {
+    "say": "narrator",
+    "key": "n3_lobby_1"
+   }
+  ],
+  "n3_pen_pre": [
+   {
+    "say": "penhallow",
+    "key": "n3_pen_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_pen_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_pen_3"
+   }
+  ],
+  "n3_pen_post": [
+   {
+    "say": "narrator",
+    "key": "n3_pen_4"
+   },
+   {
+    "say": "narrator",
+    "key": "n3_pen_5"
+   },
+   {
+    "flag": "pen_done"
+   },
+   {
+    "show": "mira_neutral",
+    "x": 0.7
+   },
+   {
+    "say": "narrator",
+    "key": "n3_end_pre"
+   },
+   {
+    "if_trust": 7,
+    "then": [
+     {
+      "if_flag": "route_sold",
+      "then": [
+       {
+        "flag": "ending_train"
+       },
+       {
+        "lines": "act3:27-35"
+       }
+      ],
+      "else": [
+       {
+        "flag": "ending_together"
+       },
+       {
+        "lines": "act3:40-46"
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "if_trust": 5,
+      "then": [
+       {
+        "flag": "ending_train"
+       },
+       {
+        "lines": "act3:27-35"
+       }
+      ],
+      "else": [
+       {
+        "if_trust": 3,
+        "then": [
+         {
+          "if_flag": "route_sold",
+          "then": [
+           {
+            "flag": "ending_alone"
+           },
+           {
+            "lines": "act3:51-56"
+           }
+          ],
+          "else": [
+           {
+            "flag": "ending_train"
+           },
+           {
+            "lines": "act3:27-35"
+           }
+          ]
+         }
+        ],
+        "else": [
+         {
+          "flag": "ending_alone"
+         },
+         {
+          "lines": "act3:51-56"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "end_night": true,
+    "next": "epilogue"
+   }
+  ]
+ }
+}

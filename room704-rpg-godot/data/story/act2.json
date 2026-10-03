@@ -1,0 +1,830 @@
+{
+ "chapter": 2,
+ "lines": [
+  {
+   "id": "act2_30d12ae8",
+   "src": 8,
+   "label": "act2",
+   "who": "narrator",
+   "en": "The fourth-floor corridor smells of old carpet and a cigarette somebody finished three hours ago. The sconce outside 702 has been dying for a year.",
+   "ja": "四階の廊下は、古い絨毯と、三時間前に誰かが吸い終えた煙草の匂いがする。702の前の壁灯は、この一年ずっと死にかけている。",
+   "v_en": "res://assets/voice/act2_30d12ae8.ogg",
+   "v_ja": "res://assets/voice/act2_30d12ae8.ja.ogg"
+  },
+  {
+   "id": "act2_3615ad1e",
+   "src": 9,
+   "label": "act2",
+   "who": "narrator",
+   "en": "You knock once. The door opens before your hand is back at your side.",
+   "ja": "一度ノックする。手が体側に戻るより早く、ドアが開く。",
+   "v_en": "res://assets/voice/act2_3615ad1e.ogg",
+   "v_ja": "res://assets/voice/act2_3615ad1e.ja.ogg"
+  },
+  {
+   "id": "act2_8adbfac8",
+   "src": 13,
+   "label": "act2",
+   "who": "narrator",
+   "en": "The coat is gone. The dress underneath was not chosen for the rain, and it was certainly not chosen for the Marbeck.",
+   "ja": "コートはもうない。その下のドレスは、雨のために選ばれたものではなく、ましてマーベックのために選ばれたものでもない。",
+   "v_en": "res://assets/voice/act2_8adbfac8.ogg",
+   "v_ja": "res://assets/voice/act2_8adbfac8.ja.ogg"
+  },
+  {
+   "id": "act2_8e0e450a",
+   "src": 14,
+   "label": "act2",
+   "who": "mira",
+   "en": "You came up.",
+   "ja": "上がってきたのね。",
+   "v_en": "res://assets/voice/act2_8e0e450a.ogg",
+   "v_ja": "res://assets/voice/act2_8e0e450a.ja.ogg"
+  },
+  {
+   "id": "act2_909cb681",
+   "src": 15,
+   "label": "act2",
+   "who": "protagonist",
+   "en": "You called the desk.",
+   "ja": "フロントに電話したのね。",
+   "v_en": "res://assets/voice/act2_909cb681.ogg",
+   "v_ja": "res://assets/voice/act2_909cb681.ja.ogg"
+  },
+  {
+   "id": "act2_6f8ba988",
+   "src": 16,
+   "label": "act2",
+   "who": "mira",
+   "en": "People don't always come when you call the desk.",
+   "ja": "フロントに電話しても、いつも人が来るわけじゃない。",
+   "v_en": "res://assets/voice/act2_6f8ba988.ogg",
+   "v_ja": "res://assets/voice/act2_6f8ba988.ja.ogg"
+  },
+  {
+   "id": "act2_e95efd8d",
+   "src": 20,
+   "label": "act2",
+   "who": "narrator",
+   "en": "Seven-oh-four is eleven square metres of bed, one chair, and a window that looks straight down onto the street.",
+   "ja": "704号室。11平方メートルの空間に、ベッドが一つ、椅子が一つ。窓からは、通りが真下に見える。",
+   "v_en": "res://assets/voice/act2_e95efd8d.ogg",
+   "v_ja": "res://assets/voice/act2_e95efd8d.ja.ogg"
+  },
+  {
+   "id": "act2_1b5aebf7",
+   "src": 21,
+   "label": "act2",
+   "who": "narrator",
+   "en": "The car is still there. From up here you can make out the shape of a man in it, doing nothing, which takes a particular kind of patience.",
+   "ja": "車はまだそこにいる。ここからだと、中の男の輪郭が見える。何もしていない。あれには、ある種の忍耐が要る。",
+   "v_en": "res://assets/voice/act2_1b5aebf7.ogg",
+   "v_ja": "res://assets/voice/act2_1b5aebf7.ja.ogg"
+  },
+  {
+   "id": "act2_97067f46",
+   "src": 24,
+   "label": "act2",
+   "who": "mira",
+   "en": "He came in, didn't he.",
+   "ja": "彼、入ってきたんでしょ。",
+   "v_en": "res://assets/voice/act2_97067f46.ogg",
+   "v_ja": "res://assets/voice/act2_97067f46.ja.ogg"
+  },
+  {
+   "id": "act2_1f6605b7",
+   "src": 25,
+   "label": "act2",
+   "who": "protagonist",
+   "en": "Around twenty to four.",
+   "ja": "三時四十分頃。",
+   "v_en": "res://assets/voice/act2_1f6605b7.ogg",
+   "v_ja": "res://assets/voice/act2_1f6605b7.ja.ogg"
+  },
+  {
+   "id": "act2_fdcded8b",
+   "src": 26,
+   "label": "act2",
+   "who": "mira",
+   "en": "What did you say?",
+   "ja": "何て言った？",
+   "v_en": "res://assets/voice/act2_fdcded8b.ogg",
+   "v_ja": "res://assets/voice/act2_fdcded8b.ja.ogg"
+  },
+  {
+   "id": "act2_7ff2fe80",
+   "src": 27,
+   "label": "act2",
+   "who": "protagonist",
+   "en": "That it had been a quiet night.",
+   "ja": "静かな夜だったって。",
+   "v_en": "res://assets/voice/act2_7ff2fe80.ogg",
+   "v_ja": "res://assets/voice/act2_7ff2fe80.ja.ogg"
+  },
+  {
+   "id": "act2_e539f638",
+   "src": 28,
+   "label": "act2",
+   "who": "narrator",
+   "en": "She takes her time with that.",
+   "ja": "彼女は、それについて時間をかける。",
+   "v_en": "res://assets/voice/act2_e539f638.ogg",
+   "v_ja": "res://assets/voice/act2_e539f638.ja.ogg"
+  },
+  {
+   "id": "act2_471bbdbd",
+   "src": 29,
+   "label": "act2",
+   "who": "mira",
+   "en": "You lied to a man you'd never met, for a woman you'd known eight minutes.",
+   "ja": "会ったこともない男に嘘をついた。たった八分しか知らない女のために。",
+   "v_en": "res://assets/voice/act2_471bbdbd.ogg",
+   "v_ja": "res://assets/voice/act2_471bbdbd.ja.ogg"
+  },
+  {
+   "id": "act2_905447cf",
+   "src": 30,
+   "label": "act2",
+   "who": "protagonist",
+   "en": "It wasn't a hard decision.",
+   "ja": "難しい決断じゃなかった。",
+   "v_en": "res://assets/voice/act2_905447cf.ogg",
+   "v_ja": "res://assets/voice/act2_905447cf.ja.ogg"
+  },
+  {
+   "id": "act2_1d6cf592",
+   "src": 31,
+   "label": "act2",
+   "who": "mira",
+   "en": "No. That's the part I'm turning over.",
+   "ja": "いいえ。そこが、私が考えていることよ。",
+   "v_en": "res://assets/voice/act2_1d6cf592.ogg",
+   "v_ja": "res://assets/voice/act2_1d6cf592.ja.ogg"
+  },
+  {
+   "id": "act2_b55cc48e",
+   "src": 34,
+   "label": "act2",
+   "who": "mira",
+   "en": "He came in.",
+   "ja": "彼、入ってきた。",
+   "v_en": "res://assets/voice/act2_b55cc48e.ogg",
+   "v_ja": "res://assets/voice/act2_b55cc48e.ja.ogg"
+  },
+  {
+   "id": "act2_465a44fe",
+   "src": 35,
+   "label": "act2",
+   "who": "protagonist",
+   "en": "He did.",
+   "ja": "ええ。",
+   "v_en": "res://assets/voice/act2_465a44fe.ogg",
+   "v_ja": "res://assets/voice/act2_465a44fe.ja.ogg"
+  },
+  {
+   "id": "act2_4ff83c39",
+   "src": 36,
+   "label": "act2",
+   "who": "mira",
+   "en": "And you showed him the book.",
+   "ja": "それで、彼に本を見せたのね。",
+   "v_en": "res://assets/voice/act2_4ff83c39.ogg",
+   "v_ja": "res://assets/voice/act2_4ff83c39.ja.ogg"
+  },
+  {
+   "id": "act2_e27cd5d9",
+   "src": 37,
+   "label": "act2",
+   "who": "narrator",
+   "en": "There is no point in the sentence where you could put a denial.",
+   "ja": "その言葉の中に、否定を差し挟む隙はない。",
+   "v_en": "res://assets/voice/act2_e27cd5d9.ogg",
+   "v_ja": "res://assets/voice/act2_e27cd5d9.ja.ogg"
+  },
+  {
+   "id": "act2_13e0b014",
+   "src": 38,
+   "label": "act2",
+   "who": "protagonist",
+   "en": "I did.",
+   "ja": "そうよ。",
+   "v_en": "res://assets/voice/act2_13e0b014.ogg",
+   "v_ja": "res://assets/voice/act2_13e0b014.ja.ogg"
+  },
+  {
+   "id": "act2_ed24bcfd",
+   "src": 39,
+   "label": "act2",
+   "who": "mira",
+   "en": "Right.",
+   "ja": "そう。",
+   "v_en": "res://assets/voice/act2_ed24bcfd.ogg",
+   "v_ja": "res://assets/voice/act2_ed24bcfd.ja.ogg"
+  },
+  {
+   "id": "act2_6c6f0ecc",
+   "src": 40,
+   "label": "act2",
+   "who": "narrator",
+   "en": "She looks at the window instead of at you.",
+   "ja": "彼女はあなたではなく、窓のほうを見る。",
+   "v_en": "res://assets/voice/act2_6c6f0ecc.ogg",
+   "v_ja": "res://assets/voice/act2_6c6f0ecc.ja.ogg"
+  },
+  {
+   "id": "act2_a5242f1c",
+   "src": 41,
+   "label": "act2",
+   "who": "mira",
+   "en": "I'm not going to shout at you. You didn't owe me anything. I put money on a counter and asked a stranger to be on my side, and that was optimistic of me.",
+   "ja": "あなたに怒鳴ったりしないわ。あなたは私に何も借りはない。私はカウンターに金を置いて、見知らぬ人に味方になってくれと頼んだ。それは、私がおめでたかっただけ。",
+   "v_en": "res://assets/voice/act2_a5242f1c.ogg",
+   "v_ja": "res://assets/voice/act2_a5242f1c.ja.ogg"
+  },
+  {
+   "id": "act2_8cf08b3a",
+   "src": 42,
+   "label": "act2",
+   "who": "mira",
+   "en": "But I'll be gone before it's light, and I'd rather not spend my last few hours angry at the only person who's spoken to me today.",
+   "ja": "「でも明るくなる前には行く。最後の数時間を、今日話した唯一の相手に腹を立てて過ごしたくない」",
+   "v_en": "res://assets/voice/act2_8cf08b3a.ogg",
+   "v_ja": "res://assets/voice/act2_8cf08b3a.ja.ogg"
+  },
+  {
+   "id": "act2_5df2544b",
+   "src": 45,
+   "label": "act2",
+   "who": "mira",
+   "en": "He came in and you gave him nothing.",
+   "ja": "彼が入ってくる。あなたは何も与えない。",
+   "v_en": "res://assets/voice/act2_5df2544b.ogg",
+   "v_ja": "res://assets/voice/act2_5df2544b.ja.ogg"
+  },
+  {
+   "id": "act2_e1e72ab4",
+   "src": 46,
+   "label": "act2",
+   "who": "protagonist",
+   "en": "I gave him the house line.",
+   "ja": "ハウスラインを出した。",
+   "v_en": "res://assets/voice/act2_e1e72ab4.ogg",
+   "v_ja": "res://assets/voice/act2_e1e72ab4.ja.ogg"
+  },
+  {
+   "id": "act2_dd0c2740",
+   "src": 47,
+   "label": "act2",
+   "who": "mira",
+   "en": "The house line is a gift, at four in the morning.",
+   "ja": "午前四時のハウスラインは、贈り物だ。",
+   "v_en": "res://assets/voice/act2_dd0c2740.ogg",
+   "v_ja": "res://assets/voice/act2_dd0c2740.ja.ogg"
+  },
+  {
+   "id": "act2_71cdfbf6",
+   "src": 50,
+   "label": "act2",
+   "who": "narrator",
+   "en": "She pours two inches of something into the bathroom tooth glass and hands it to you, then drinks hers from the bottle, which tells you what she thinks of the glass.",
+   "ja": "彼女は浴室の歯磨き用コップに二インチほど注いであなたに渡し、自分は瓶から飲む。コップをどう思っているかが分かる。",
+   "v_en": "res://assets/voice/act2_71cdfbf6.ogg",
+   "v_ja": "res://assets/voice/act2_71cdfbf6.ja.ogg"
+  },
+  {
+   "id": "act2_54351b94",
+   "src": 52,
+   "label": "act2",
+   "who": "mira",
+   "en": "Sit down. You've been on your feet behind that desk for six hours. I could hear it in how you came up the stairs.",
+   "ja": "「座って。六時間あのデスクで立ちっぱなしだったでしょう。階段の上がり方で分かった」",
+   "v_en": "res://assets/voice/act2_54351b94.ogg",
+   "v_ja": "res://assets/voice/act2_54351b94.ja.ogg"
+  },
+  {
+   "id": "act2_0b2ca8bb",
+   "src": 57,
+   "label": "act2",
+   "who": "narrator",
+   "en": "She has made room on the edge of the bed. The chair is also there.",
+   "ja": "彼女はベッドの端に場所を空けた。椅子もそこにある。"
+  },
+  {
+   "id": "act2_chair_5d3ff78e",
+   "src": 72,
+   "label": "act2_chair",
+   "who": "narrator",
+   "en": "You take the chair. She watches you do it, and her shoulders come down half an inch.",
+   "ja": "あなたは椅子に座る。彼女はそれを見届け、肩が半インチ下がる。",
+   "v_en": "res://assets/voice/act2_chair_5d3ff78e.ogg",
+   "v_ja": "res://assets/voice/act2_chair_5d3ff78e.ja.ogg"
+  },
+  {
+   "id": "act2_chair_c08bc8f4",
+   "src": 73,
+   "label": "act2_chair",
+   "who": "mira",
+   "en": "Good.",
+   "ja": "よし。",
+   "v_en": "res://assets/voice/act2_chair_c08bc8f4.ogg",
+   "v_ja": "res://assets/voice/act2_chair_c08bc8f4.ja.ogg"
+  },
+  {
+   "id": "act2_chair_32e33182",
+   "src": 74,
+   "label": "act2_chair",
+   "who": "protagonist",
+   "en": "Good?",
+   "ja": "よし、だと？",
+   "v_en": "res://assets/voice/act2_chair_32e33182.ogg",
+   "v_ja": "res://assets/voice/act2_chair_32e33182.ja.ogg"
+  },
+  {
+   "id": "act2_chair_05ffe937",
+   "src": 75,
+   "label": "act2_chair",
+   "who": "mira",
+   "en": "Most men would have sat on the bed.",
+   "ja": "大抵の男はベッドに座るものだ。",
+   "v_en": "res://assets/voice/act2_chair_05ffe937.ogg",
+   "v_ja": "res://assets/voice/act2_chair_05ffe937.ja.ogg"
+  },
+  {
+   "id": "act2_chair_aa51e009",
+   "src": 76,
+   "label": "act2_chair",
+   "who": "narrator",
+   "en": "You talk. It is four in the morning and neither of you is going to sleep, so you talk.",
+   "ja": "言葉を交わす。午前四時。どちらも眠る気配はない。だから、話す。",
+   "v_en": "res://assets/voice/act2_chair_aa51e009.ogg",
+   "v_ja": "res://assets/voice/act2_chair_aa51e009.ja.ogg"
+  },
+  {
+   "id": "act2_chair_ff5b08c3",
+   "src": 77,
+   "label": "act2_chair",
+   "who": "narrator",
+   "en": "About the hotel, which has a ghost according to the day porter and a rat problem according to everyone else. About the account with her name on it, and the eleven months it took her to notice she had stopped buying anything she liked.",
+   "ja": "ホテルの話。昼番のポーターに言わせれば幽霊がいて、他の全員に言わせればネズミがいる。彼女の名前の口座の話。そして、好きなものを買わなくなっていたと気づくまでにかかった十一か月の話。",
+   "v_en": "res://assets/voice/act2_chair_ff5b08c3.ogg",
+   "v_ja": "res://assets/voice/act2_chair_ff5b08c3.ja.ogg"
+  },
+  {
+   "id": "act2_chair_2b731aba",
+   "src": 78,
+   "label": "act2_chair",
+   "who": "narrator",
+   "en": "At some point the bottle is nearly empty and she is on the floor with her back to the bed, near enough that her shoulder rests against your knee.",
+   "ja": "いつの間にか瓶はほとんど空で、彼女はベッドに背を預けて床にいる。肩があなたの膝に触れる距離で。",
+   "v_en": "res://assets/voice/act2_chair_2b731aba.ogg",
+   "v_ja": "res://assets/voice/act2_chair_2b731aba.ja.ogg"
+  },
+  {
+   "id": "act2_chair_3774e5ee",
+   "src": 80,
+   "label": "act2_chair",
+   "who": "mira",
+   "en": "I'm going to ask you something and you can say no and it won't be strange afterwards.",
+   "ja": "ひとつ、聞きたいことがある。断っても構わない。後腐れはない。",
+   "v_en": "res://assets/voice/act2_chair_3774e5ee.ogg",
+   "v_ja": "res://assets/voice/act2_chair_3774e5ee.ja.ogg"
+  },
+  {
+   "id": "act2_chair_acd8b322",
+   "src": 81,
+   "label": "act2_chair",
+   "who": "mira",
+   "en": "Stay up here. Not the chair.",
+   "ja": "ここにいろ。椅子じゃない。",
+   "v_en": "res://assets/voice/act2_chair_acd8b322.ogg",
+   "v_ja": "res://assets/voice/act2_chair_acd8b322.ja.ogg"
+  },
+  {
+   "id": "act2_chair_0cd7dd36",
+   "src": 84,
+   "label": "act2_chair",
+   "who": "narrator",
+   "en": "She has asked plainly. That deserves a plain answer.",
+   "ja": "彼女は率直に尋ねた。それには率直な答えが相応しい。"
+  },
+  {
+   "id": "act2_bed_b47be58e",
+   "src": 93,
+   "label": "act2_bed",
+   "who": "narrator",
+   "en": "You sit on the edge of the bed, close enough that the mattress puts you slightly off balance toward her.",
+   "ja": "あなたはベッドの端に座る。マットレスがわずかに傾き、彼女の方へ重心が寄るほど近くに。",
+   "v_en": "res://assets/voice/act2_bed_b47be58e.ogg",
+   "v_ja": "res://assets/voice/act2_bed_b47be58e.ja.ogg"
+  },
+  {
+   "id": "act2_bed_2aca18d2",
+   "src": 94,
+   "label": "act2_bed",
+   "who": "mira",
+   "en": "There we are.",
+   "ja": "これでよし。",
+   "v_en": "res://assets/voice/act2_bed_2aca18d2.ogg",
+   "v_ja": "res://assets/voice/act2_bed_2aca18d2.ja.ogg"
+  },
+  {
+   "id": "act2_bed_6b390c8a",
+   "src": 95,
+   "label": "act2_bed",
+   "who": "narrator",
+   "en": "She does not move away. She does not move closer. She lets it sit there being what it is, and drinks, and watches the window.",
+   "ja": "彼女は離れない。近づきもしない。その間をそのままにしておいて、飲み、窓を見ている。",
+   "v_en": "res://assets/voice/act2_bed_6b390c8a.ogg",
+   "v_ja": "res://assets/voice/act2_bed_6b390c8a.ja.ogg"
+  },
+  {
+   "id": "act2_bed_2dc1990e",
+   "src": 96,
+   "label": "act2_bed",
+   "who": "mira",
+   "en": "Do you want to know the stupid part?",
+   "ja": "馬鹿な話、聞きたいか？",
+   "v_en": "res://assets/voice/act2_bed_2dc1990e.ogg",
+   "v_ja": "res://assets/voice/act2_bed_2dc1990e.ja.ogg"
+  },
+  {
+   "id": "act2_bed_ec842a4a",
+   "src": 97,
+   "label": "act2_bed",
+   "who": "protagonist",
+   "en": "Tell me the stupid part.",
+   "ja": "馬鹿な話を聞かせろ。",
+   "v_en": "res://assets/voice/act2_bed_ec842a4a.ogg",
+   "v_ja": "res://assets/voice/act2_bed_ec842a4a.ja.ogg"
+  },
+  {
+   "id": "act2_bed_0e38c0f7",
+   "src": 98,
+   "label": "act2_bed",
+   "who": "mira",
+   "en": "I booked a train. It leaves at six-forty. I've had the ticket for nine days and I kept not getting on it.",
+   "ja": "列車を予約した。六時四十分発だ。九日前から切符を持っていたが、ずっと乗れずにいた。",
+   "v_en": "res://assets/voice/act2_bed_0e38c0f7.ogg",
+   "v_ja": "res://assets/voice/act2_bed_0e38c0f7.ja.ogg"
+  },
+  {
+   "id": "act2_bed_b1381ef4",
+   "src": 99,
+   "label": "act2_bed",
+   "who": "mira",
+   "en": "Tonight I got as far as the station and couldn't make myself sit on a bench for four hours where anyone could see me. So I walked, and your doors were the first ones that were open.",
+   "ja": "今夜も駅までは行った。だが、誰かに見られる場所で四時間もベンチに座っている気にはなれなかった。だから、歩いた。そして、あなたの店が最初に開いていたドアだった。",
+   "v_en": "res://assets/voice/act2_bed_b1381ef4.ogg",
+   "v_ja": "res://assets/voice/act2_bed_b1381ef4.ja.ogg"
+  },
+  {
+   "id": "act2_bed_bd70ff42",
+   "src": 100,
+   "label": "act2_bed",
+   "who": "narrator",
+   "en": "She turns the bottle in her hands.",
+   "ja": "彼女は手の中でボトルを回す。",
+   "v_en": "res://assets/voice/act2_bed_bd70ff42.ogg",
+   "v_ja": "res://assets/voice/act2_bed_bd70ff42.ja.ogg"
+  },
+  {
+   "id": "act2_bed_e25eede6",
+   "src": 101,
+   "label": "act2_bed",
+   "who": "mira",
+   "en": "So this is the bravest thing I've done in a year. A hotel lobby.",
+   "ja": "だから、これがこの一年で一番勇敢なことだ。ホテルのロビー。",
+   "v_en": "res://assets/voice/act2_bed_e25eede6.ogg",
+   "v_ja": "res://assets/voice/act2_bed_e25eede6.ja.ogg"
+  },
+  {
+   "id": "act2_bed_b4c2d737",
+   "src": 102,
+   "label": "act2_bed",
+   "who": "protagonist",
+   "en": "You walked in out of the rain like you owned the place.",
+   "ja": "雨の中を、まるで自分の場所であるかのように入ってきたな。",
+   "v_en": "res://assets/voice/act2_bed_b4c2d737.ogg",
+   "v_ja": "res://assets/voice/act2_bed_b4c2d737.ja.ogg"
+  },
+  {
+   "id": "act2_bed_26c308f1",
+   "src": 103,
+   "label": "act2_bed",
+   "who": "mira",
+   "en": "Yes. I'm good at that.",
+   "ja": "ああ。それは得意だ。",
+   "v_en": "res://assets/voice/act2_bed_26c308f1.ogg",
+   "v_ja": "res://assets/voice/act2_bed_26c308f1.ja.ogg"
+  },
+  {
+   "id": "act2_bed_bc232ac3",
+   "src": 105,
+   "label": "act2_bed",
+   "who": "narrator",
+   "en": "She puts the bottle down on the floor, deliberately, out of the way.",
+   "ja": "彼女はボトルを床に置く。わざと、邪魔にならないように。",
+   "v_en": "res://assets/voice/act2_bed_bc232ac3.ogg",
+   "v_ja": "res://assets/voice/act2_bed_bc232ac3.ja.ogg"
+  },
+  {
+   "id": "act2_bed_10b72939",
+   "src": 106,
+   "label": "act2_bed",
+   "who": "mira",
+   "en": "Ask me to stay awake with you, or tell me to go to sleep. Either one. Just decide, because I've been deciding nothing for eleven months and I'm tired of it.",
+   "ja": "私に起きていてほしいのか、それとも寝ろと言うのか。どちらでもいい。ただ決めてくれ。この十一ヶ月間、何も決められずにいた。もううんざりだ。",
+   "v_en": "res://assets/voice/act2_bed_10b72939.ogg",
+   "v_ja": "res://assets/voice/act2_bed_10b72939.ja.ogg"
+  },
+  {
+   "id": "act2_bed_afb65c0e",
+   "src": 109,
+   "label": "act2_bed",
+   "who": "narrator",
+   "en": "She has put it in your hands on purpose.",
+   "ja": "彼女は意図的に、それをあなたに委ねた。"
+  },
+  {
+   "id": "act2_window_62f17efe",
+   "src": 118,
+   "label": "act2_window",
+   "who": "narrator",
+   "en": "You stay by the window. The car does not move. Neither does the shape inside it.",
+   "ja": "あなたは窓際に立つ。車は動かない。中の影も。",
+   "v_en": "res://assets/voice/act2_window_62f17efe.ogg",
+   "v_ja": "res://assets/voice/act2_window_62f17efe.ja.ogg"
+  },
+  {
+   "id": "act2_window_5aa547ca",
+   "src": 119,
+   "label": "act2_window",
+   "who": "mira",
+   "en": "You can watch him all night. He'll still be there at six.",
+   "ja": "一晩中、彼を見張っていてもいい。六時にはまだそこにいるだろう。",
+   "v_en": "res://assets/voice/act2_window_5aa547ca.ogg",
+   "v_ja": "res://assets/voice/act2_window_5aa547ca.ja.ogg"
+  },
+  {
+   "id": "act2_window_08ec6ae1",
+   "src": 120,
+   "label": "act2_window",
+   "who": "protagonist",
+   "en": "Then at six you'll have a train and he'll have a parking ticket.",
+   "ja": "そして六時には、あなたは電車に乗り、彼は駐車違反切符を切られる。",
+   "v_en": "res://assets/voice/act2_window_08ec6ae1.ogg",
+   "v_ja": "res://assets/voice/act2_window_08ec6ae1.ja.ogg"
+  },
+  {
+   "id": "act2_window_db27c2d7",
+   "src": 121,
+   "label": "act2_window",
+   "who": "narrator",
+   "en": "She laughs. Short, surprised, nothing performed about it — the first one tonight.",
+   "ja": "彼女が笑う。短く、不意を突かれた笑い。作ったところがひとつもない——今夜はじめての。",
+   "v_en": "res://assets/voice/act2_window_db27c2d7.ogg",
+   "v_ja": "res://assets/voice/act2_window_db27c2d7.ja.ogg"
+  },
+  {
+   "id": "act2_window_b6192088",
+   "src": 122,
+   "label": "act2_window",
+   "who": "mira",
+   "en": "How do you know about the train?",
+   "ja": "どうして電車のことを？",
+   "v_en": "res://assets/voice/act2_window_b6192088.ogg",
+   "v_ja": "res://assets/voice/act2_window_b6192088.ja.ogg"
+  },
+  {
+   "id": "act2_window_b7235d90",
+   "src": 123,
+   "label": "act2_window",
+   "who": "protagonist",
+   "en": "I don't. It was a guess. Everyone leaving somewhere at this hour has a train.",
+   "ja": "知らない。勘だ。この時間にどこかへ向かう奴は、みんな電車に乗る。",
+   "v_en": "res://assets/voice/act2_window_b7235d90.ogg",
+   "v_ja": "res://assets/voice/act2_window_b7235d90.ja.ogg"
+  },
+  {
+   "id": "act2_window_4e9213fe",
+   "src": 124,
+   "label": "act2_window",
+   "who": "mira",
+   "en": "Six-forty.",
+   "ja": "六時四十分。",
+   "v_en": "res://assets/voice/act2_window_4e9213fe.ogg",
+   "v_ja": "res://assets/voice/act2_window_4e9213fe.ja.ogg"
+  },
+  {
+   "id": "act2_window_4d003817",
+   "src": 126,
+   "label": "act2_window",
+   "who": "narrator",
+   "en": "She comes and stands beside you at the glass. Close. The rain has taken the street apart into pieces.",
+   "ja": "彼女はガラスの前、あなたの隣に立つ。近い。雨が通りをばらばらに解体している。",
+   "v_en": "res://assets/voice/act2_window_4d003817.ogg",
+   "v_ja": "res://assets/voice/act2_window_4d003817.ja.ogg"
+  },
+  {
+   "id": "act2_window_8d37aecb",
+   "src": 127,
+   "label": "act2_window",
+   "who": "mira",
+   "en": "Nine days I've had that ticket.",
+   "ja": "あの切符、九日間持ってた。",
+   "v_en": "res://assets/voice/act2_window_8d37aecb.ogg",
+   "v_ja": "res://assets/voice/act2_window_8d37aecb.ja.ogg"
+  },
+  {
+   "id": "act2_window_223c2707",
+   "src": 128,
+   "label": "act2_window",
+   "who": "narrator",
+   "en": "Her reflection in the window is looking at yours.",
+   "ja": "窓に映る彼女の姿が、あなたの姿を見つめている。",
+   "v_en": "res://assets/voice/act2_window_223c2707.ogg",
+   "v_ja": "res://assets/voice/act2_window_223c2707.ja.ogg"
+  },
+  {
+   "id": "act2_window_1501b845",
+   "src": 129,
+   "label": "act2_window",
+   "who": "mira",
+   "en": "I don't want to spend the last four hours of it being watched.",
+   "ja": "「その最後の四時間を、見られて過ごしたくない」",
+   "v_en": "res://assets/voice/act2_window_1501b845.ogg",
+   "v_ja": "res://assets/voice/act2_window_1501b845.ja.ogg"
+  },
+  {
+   "id": "act2_window_e72e4354",
+   "src": 132,
+   "label": "act2_window",
+   "who": "narrator",
+   "en": "She is at the glass beside you. The street is a long way down.",
+   "ja": "彼女はあなたの隣、窓ガラスの前にいる。通りは遥か下だ。"
+  },
+  {
+   "id": "act2_decline_1a0febee",
+   "src": 144,
+   "label": "act2_decline",
+   "who": "narrator",
+   "en": "You say the sensible thing. She takes it well, which is worse than if she had not.",
+   "ja": "あなたは分別のあることを言う。彼女はそれを感じよく受け取る。怒られるより、そのほうが悪い。",
+   "v_en": "res://assets/voice/act2_decline_1a0febee.ogg",
+   "v_ja": "res://assets/voice/act2_decline_1a0febee.ja.ogg"
+  },
+  {
+   "id": "act2_decline_51cf8148",
+   "src": 145,
+   "label": "act2_decline",
+   "who": "mira",
+   "en": "All right.",
+   "ja": "わかった。",
+   "v_en": "res://assets/voice/act2_decline_51cf8148.ogg",
+   "v_ja": "res://assets/voice/act2_decline_51cf8148.ja.ogg"
+  },
+  {
+   "id": "act2_decline_be842045",
+   "src": 146,
+   "label": "act2_decline",
+   "who": "narrator",
+   "en": "You sit in the chair by the door until the window goes from black to grey. She sleeps eventually, on top of the covers with her shoes on, the way people sleep when they mean to leave.",
+   "ja": "あなたは窓が黒から灰色になるまで、ドア脇の椅子に座っている。彼女はやがて眠る。上掛けの上で、靴を履いたまま。出ていくつもりの人間の眠り方で。",
+   "v_en": "res://assets/voice/act2_decline_be842045.ogg",
+   "v_ja": "res://assets/voice/act2_decline_be842045.ja.ogg"
+  },
+  {
+   "id": "scene_bed_87a0bb85",
+   "src": 153,
+   "label": "scene_bed",
+   "who": "narrator",
+   "en": "The lamp stays on. She reaches past you and turns it to face the wall, so the light climbs the paper instead of crossing the bed — the last ordinary thing either of you does for a long while.",
+   "ja": "ランプは点いたままだ。彼女があなたの脇から手を伸ばし、灯りを壁に向ける。光はベッドを横切らず、壁紙を上っていく——それが、しばらくのあいだ二人がする最後の普通のことだ。",
+   "v_en": "res://assets/voice/scene_bed_87a0bb85.ogg",
+   "v_ja": "res://assets/voice/scene_bed_87a0bb85.ja.ogg"
+  },
+  {
+   "id": "scene_bed_613b1f13",
+   "src": 159,
+   "label": "scene_bed",
+   "who": "narrator",
+   "en": "Rain on the window. Neon coming through it in long red bars that move across the sheets when the sign cycles.",
+   "ja": "窓に雨。ネオンが長い赤い棒となって差し込み、看板が切り替わるたびにシーツの上を移動する。",
+   "v_en": "res://assets/voice/scene_bed_613b1f13.ogg",
+   "v_ja": "res://assets/voice/scene_bed_613b1f13.ja.ogg"
+  },
+  {
+   "id": "scene_bed_29fc8317",
+   "src": 160,
+   "label": "scene_bed",
+   "who": "narrator",
+   "en": "She is not quiet, and she is not performing not being quiet, and you can hear the difference.",
+   "ja": "彼女は静かではない。静かでないことを演じてもいない。その違いは、聞けば分かる。",
+   "v_en": "res://assets/voice/scene_bed_29fc8317.ogg",
+   "v_ja": "res://assets/voice/scene_bed_29fc8317.ja.ogg"
+  },
+  {
+   "id": "scene_bed_80f01d26",
+   "src": 161,
+   "label": "scene_bed",
+   "who": "mira",
+   "en": "Don't stop.",
+   "ja": "やめないで。",
+   "v_en": "res://assets/voice/scene_bed_80f01d26.ogg",
+   "v_ja": "res://assets/voice/scene_bed_80f01d26.ja.ogg"
+  },
+  {
+   "id": "scene_bed_e901750d",
+   "src": 162,
+   "label": "scene_bed",
+   "who": "narrator",
+   "en": "Four floors down a car door opens and shuts. Neither of you goes to the window.",
+   "ja": "四階下で、車のドアが開いて閉まる。どちらも窓へは行かない。",
+   "v_en": "res://assets/voice/scene_bed_e901750d.ogg",
+   "v_ja": "res://assets/voice/scene_bed_e901750d.ja.ogg"
+  },
+  {
+   "id": "scene_window_a3a086ce",
+   "src": 170,
+   "label": "scene_window",
+   "who": "narrator",
+   "en": "You turn her away from the street, which is what she asked for. She takes two handfuls of your shirt and walks you backwards until the bed stops you, and from there she decides everything, which is also what she asked for.",
+   "ja": "あなたは彼女を通りから背けさせる。彼女が求めたとおりに。彼女はあなたのシャツを両手で掴み、ベッドに当たるまで後ろ向きに歩かせる。そこから先は全部彼女が決める。それも、彼女が求めたことだ。",
+   "v_en": "res://assets/voice/scene_window_a3a086ce.ogg",
+   "v_ja": "res://assets/voice/scene_window_a3a086ce.ja.ogg"
+  },
+  {
+   "id": "scene_window_9ab74c21",
+   "src": 176,
+   "label": "scene_window",
+   "who": "narrator",
+   "en": "Behind her the window is a sheet of moving water with the city broken up inside it. She does not look at it once.",
+   "ja": "彼女の背後で窓は動く水の膜になり、街はその中で砕けている。彼女は一度もそちらを見ない。",
+   "v_en": "res://assets/voice/scene_window_9ab74c21.ogg",
+   "v_ja": "res://assets/voice/scene_window_9ab74c21.ja.ogg"
+  },
+  {
+   "id": "scene_window_99a61c12",
+   "src": 177,
+   "label": "scene_window",
+   "who": "mira",
+   "en": "He can't see up here.",
+   "ja": "彼はここまでは見えない。",
+   "v_en": "res://assets/voice/scene_window_99a61c12.ogg",
+   "v_ja": "res://assets/voice/scene_window_99a61c12.ja.ogg"
+  },
+  {
+   "id": "scene_window_e5b0b3b1",
+   "src": 178,
+   "label": "scene_window",
+   "who": "protagonist",
+   "en": "No.",
+   "ja": "いや。",
+   "v_en": "res://assets/voice/scene_window_e5b0b3b1.ogg",
+   "v_ja": "res://assets/voice/scene_window_e5b0b3b1.ja.ogg"
+  },
+  {
+   "id": "scene_window_c08bc8f4",
+   "src": 179,
+   "label": "scene_window",
+   "who": "mira",
+   "en": "Good.",
+   "ja": "よし。",
+   "v_en": "res://assets/voice/scene_window_c08bc8f4.ogg",
+   "v_ja": "res://assets/voice/scene_window_c08bc8f4.ja.ogg"
+  },
+  {
+   "id": "scene_window_7a085ad0",
+   "src": 180,
+   "label": "scene_window",
+   "who": "narrator",
+   "en": "Four floors down, a man in a car watches a door that nobody comes out of.",
+   "ja": "四階下。車中の男は、誰も出てこない扉を見つめている。",
+   "v_en": "res://assets/voice/scene_window_7a085ad0.ogg",
+   "v_ja": "res://assets/voice/scene_window_7a085ad0.ja.ogg"
+  }
+ ],
+ "menus": {
+  "She has made room on the edge of the bed. The chair is also there.": "彼女はベッドの端に場所を空けた。椅子もそこにある。",
+  "Take the chair.": "椅子に座る。",
+  "Sit next to her.": "彼女の隣に座る。",
+  "Stay standing. Watch the car.": "立ったままでいる。車を見張る。",
+  "She has asked plainly. That deserves a plain answer.": "彼女は率直に尋ねた。それには率直な答えが相応しい。",
+  "Say yes.": "「はい」と答える。",
+  "Say no, and stay in the chair until it's light.": "「いいえ」と答え、明るくなるまで椅子に座っている。",
+  "She has put it in your hands on purpose.": "彼女は意図的に、それをあなたに委ねた。",
+  "\"Stay awake with me.\"": "「このまま起きていて」",
+  "\"Get some sleep. I'll be downstairs.\"": "「少し眠るといい。俺は下にいる」",
+  "She is at the glass beside you. The street is a long way down.": "彼女はあなたの隣、窓ガラスの前にいる。通りは遥か下だ。",
+  "Turn her away from the window.": "彼女を窓から遠ざける。",
+  "Close the curtain and leave her to sleep.": "カーテンを閉め、彼女を眠らせておく。",
+  "She wants off the ledger. The cash is on the counter.": "彼女は帳簿に載りたくない。現金はカウンターの上だ。",
+  "Ask her why before you decide.": "決める前に、理由を聞く。",
+  "Take the cash. Don't write anything.": "現金を受け取る。何も書かない。",
+  "Do it properly. Name in the book.": "きちんとやる。帳簿に名前を。",
+  "He is waiting. The register is on the counter between you.": "彼は待っている。宿帳は二人の間のカウンターの上だ。",
+  "Tell him nobody's checked in.": "誰もチェックインしていないと言う。",
+  "Slide the register at him and say nothing.": "宿帳を彼の方へ滑らせ、何も言わない。",
+  "Tell him the hotel doesn't discuss guests.": "ホテルは宿泊客について話さないと言う。"
+ }
+}

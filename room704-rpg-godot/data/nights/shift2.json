@@ -1,0 +1,1242 @@
+{
+ "id": "shift2",
+ "title_key": "n2_title",
+ "sub_key": "n2_sub",
+ "turns": 56,
+ "clock_start": 250,
+ "minutes_per_turn": 2,
+ "start_room": "room704",
+ "start_event": "n2_open",
+ "map": {
+  "image": "marbeck",
+  "rooms": {
+   "room704": [
+    0.7,
+    0.22
+   ],
+   "corridor4": [
+    0.5,
+    0.22
+   ],
+   "room_702": [
+    0.3,
+    0.22
+   ],
+   "linen": [
+    0.9,
+    0.22
+   ],
+   "roof": [
+    0.7,
+    0.06
+   ],
+   "lift": [
+    0.3,
+    0.42
+   ],
+   "service_stair": [
+    0.9,
+    0.42
+   ],
+   "manager_flat": [
+    0.3,
+    0.06
+   ]
+  }
+ },
+ "rooms": {
+  "room704": {
+   "name_key": "r_room704",
+   "plate": "room704",
+   "music": "intimate",
+   "mood": {
+    "ambient": "#8a8090",
+    "lamps": [
+     [
+      0.25,
+      0.5,
+      1.0,
+      "#ffd0a0"
+     ],
+     [
+      0.8,
+      0.3,
+      0.7,
+      "#ff6070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "bag",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.6
+     ],
+     "event": "n2_bag",
+     "label_key": "hs_bag",
+     "gives": [
+      "train_ticket"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "window704",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.3
+     ],
+     "event": "n2_window704",
+     "label_key": "hs_window704",
+     "xp": 10
+    },
+    {
+     "id": "bathroom",
+     "kind": "search",
+     "pos": [
+      0.15,
+      0.4
+     ],
+     "event": "n2_bath",
+     "label_key": "hs_bathroom",
+     "gives": [
+      "whisky"
+     ]
+    },
+    {
+     "id": "coat",
+     "kind": "search",
+     "pos": [
+      0.6,
+      0.45
+     ],
+     "event": "n2_coat",
+     "label_key": "i_coat",
+     "gives": [
+      "coat"
+     ]
+    },
+    {
+     "id": "bed704",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.7
+     ],
+     "event": "n2_sit",
+     "label_key": "hs_bed704",
+     "if_flag": "gale2_done"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor4",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "if_not_flag": "scene_done"
+    }
+   ]
+  },
+  "corridor4": {
+   "name_key": "r_corridor4",
+   "plate": "corridor4",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7080",
+    "lamps": [
+     [
+      0.3,
+      0.3,
+      0.9,
+      "#ffc080"
+     ],
+     [
+      0.75,
+      0.3,
+      0.7,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "haskell",
+     "kind": "enemy",
+     "enemy": "haskell_2",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n2_haskell_pre",
+     "after": "n2_haskell_post"
+    },
+    {
+     "id": "sconce",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.3
+     ],
+     "event": "n2_sconce4",
+     "label_key": "hs_sconce",
+     "xp": 5
+    },
+    {
+     "id": "gale",
+     "kind": "enemy",
+     "enemy": "gale_2",
+     "pos": [
+      0.45,
+      0.5
+     ],
+     "event": "n2_gale_pre",
+     "after": "n2_gale_post",
+     "if_flag": "flat_done"
+    },
+    {
+     "id": "to_704",
+     "kind": "door",
+     "to": "room704",
+     "pos": [
+      0.9,
+      0.86
+     ]
+    },
+    {
+     "id": "to_702",
+     "kind": "door",
+     "to": "room_702",
+     "pos": [
+      0.25,
+      0.86
+     ],
+     "if_flag": "haskell2_done"
+    },
+    {
+     "id": "to_linen",
+     "kind": "door",
+     "to": "linen",
+     "pos": [
+      0.6,
+      0.86
+     ],
+     "if_flag": "haskell2_done"
+    },
+    {
+     "id": "to_lift",
+     "kind": "door",
+     "to": "lift",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "service_stair",
+     "pos": [
+      0.42,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n2_corr"
+  },
+  "room_702": {
+   "name_key": "r_room_702",
+   "plate": "room_702",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8088",
+    "lamps": [
+     [
+      0.3,
+      0.5,
+      1.0,
+      "#ffd0a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "newspapers",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.55
+     ],
+     "event": "n2_newspapers",
+     "label_key": "hs_newspapers",
+     "gives": [
+      "cash"
+     ]
+    },
+    {
+     "id": "ashtray",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.4
+     ],
+     "event": "n2_ashtray",
+     "label_key": "hs_ashtray",
+     "xp": 10
+    },
+    {
+     "id": "suitcase",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.7
+     ],
+     "event": "n2_suitcase",
+     "label_key": "hs_suitcase",
+     "gives": [
+      "shirt"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor4",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n2_702"
+  },
+  "linen": {
+   "name_key": "r_linen",
+   "plate": "linen",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8880",
+    "lamps": [
+     [
+      0.5,
+      0.3,
+      1.0,
+      "#ffe0b0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "towels",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.4
+     ],
+     "event": "n2_towels",
+     "label_key": "hs_towels",
+     "gives": [
+      "robe"
+     ]
+    },
+    {
+     "id": "chute",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.55
+     ],
+     "event": "n2_chute",
+     "label_key": "hs_chute",
+     "xp": 10
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor4",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_roof",
+     "kind": "door",
+     "to": "roof",
+     "pos": [
+      0.85,
+      0.25
+     ],
+     "label_key": "hs_ladder"
+    }
+   ],
+   "enter_event": "n2_linen"
+  },
+  "roof": {
+   "name_key": "r_roof",
+   "plate": "roof",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7880a0",
+    "lamps": [
+     [
+      0.7,
+      0.25,
+      1.2,
+      "#ff8090"
+     ],
+     [
+      0.2,
+      0.4,
+      0.8,
+      "#c0d0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "constable",
+     "kind": "enemy",
+     "enemy": "constable",
+     "pos": [
+      0.4,
+      0.5
+     ],
+     "event": "n2_constable_pre",
+     "after": "n2_constable_post"
+    },
+    {
+     "id": "tank",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.35
+     ],
+     "event": "n2_tank",
+     "label_key": "hs_tank",
+     "xp": 5
+    },
+    {
+     "id": "sign",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.3
+     ],
+     "event": "n2_sign",
+     "label_key": "hs_sign",
+     "xp": 5
+    },
+    {
+     "id": "parapet",
+     "kind": "search",
+     "pos": [
+      0.6,
+      0.65
+     ],
+     "event": "n2_parapet",
+     "label_key": "hs_parapet",
+     "xp": 10,
+     "if_flag": "constable_done"
+    },
+    {
+     "id": "to_linen",
+     "kind": "door",
+     "to": "linen",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "label_key": "hs_ladder"
+    }
+   ],
+   "enter_event": "n2_roof"
+  },
+  "lift": {
+   "name_key": "r_lift",
+   "plate": "lift",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8488",
+    "lamps": [
+     [
+      0.5,
+      0.3,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "guest212",
+     "kind": "enemy",
+     "enemy": "guest212_2",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "n2_g212_pre",
+     "after": "n2_g212_post"
+    },
+    {
+     "id": "dial",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.25
+     ],
+     "event": "n2_dial4",
+     "label_key": "hs_dial",
+     "xp": 5
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor4",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n2_lift"
+  },
+  "service_stair": {
+   "name_key": "r_service_stair",
+   "plate": "service_stair",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7a88",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      0.9,
+      "#ffd8a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "dace",
+     "kind": "enemy",
+     "enemy": "dace",
+     "pos": [
+      0.5,
+      0.45
+     ],
+     "event": "n2_dace_pre",
+     "after": "n2_dace_post",
+     "if_flag": "roof_done"
+    },
+    {
+     "id": "to_corridor",
+     "kind": "door",
+     "to": "corridor4",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_flat",
+     "kind": "door",
+     "to": "manager_flat",
+     "pos": [
+      0.75,
+      0.3
+     ],
+     "if_flag": "dace_done"
+    }
+   ],
+   "enter_event": "n2_stair"
+  },
+  "manager_flat": {
+   "name_key": "r_manager_flat",
+   "plate": "manager_flat",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8078",
+    "lamps": [
+     [
+      0.35,
+      0.5,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "cat",
+     "kind": "search",
+     "pos": [
+      0.35,
+      0.6
+     ],
+     "event": "n2_cat",
+     "label_key": "hs_cat",
+     "xp": 5
+    },
+    {
+     "id": "photos",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.35
+     ],
+     "event": "n2_photos",
+     "label_key": "hs_photos",
+     "xp": 15
+    },
+    {
+     "id": "nail",
+     "kind": "search",
+     "pos": [
+      0.15,
+      0.4
+     ],
+     "event": "n2_nail",
+     "label_key": "hs_nail",
+     "gives": [
+      "basement_key"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "service_stair",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n2_flat"
+  }
+ },
+ "events": {
+  "n2_open": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "corridor4"
+   },
+   {
+    "music": "intimate"
+   },
+   {
+    "lines": "act2:8-9"
+   },
+   {
+    "cg": "cg_door"
+   },
+   {
+    "lines": "act2:13-16"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "room704"
+   },
+   {
+    "lines": "act2:20-21"
+   },
+   {
+    "if_flag": "route_cover",
+    "then": [
+     {
+      "lines": "act2:24-31"
+     },
+     {
+      "trust": 2
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "route_sold",
+      "then": [
+       {
+        "lines": "act2:34-42"
+       },
+       {
+        "trust": -1
+       }
+      ],
+      "else": [
+       {
+        "lines": "act2:45-47"
+       },
+       {
+        "trust": 1
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "lines": "act2:50-52"
+   },
+   {
+    "join": true
+   },
+   {
+    "show": "mira_neutral",
+    "x": 0.7
+   },
+   {
+    "say": "narrator",
+    "key": "n2_join_1"
+   },
+   {
+    "say": "mira",
+    "key": "n2_join_3"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_join_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_join_4"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n2_bag": [
+   {
+    "say": "narrator",
+    "key": "n2_bag_1"
+   },
+   {
+    "say": "mira",
+    "key": "n2_bag_2"
+   }
+  ],
+  "n2_window704": [
+   {
+    "say": "narrator",
+    "key": "n2_window704_1"
+   }
+  ],
+  "n2_bath": [
+   {
+    "say": "narrator",
+    "key": "n2_bath_1"
+   }
+  ],
+  "n2_coat": [
+   {
+    "say": "narrator",
+    "key": "n2_coat_1"
+   },
+   {
+    "say": "mira",
+    "key": "n2_coat_2"
+   }
+  ],
+  "n2_corr": [
+   {
+    "say": "narrator",
+    "key": "n2_corr_1"
+   }
+  ],
+  "n2_haskell_pre": [
+   {
+    "say": "haskell",
+    "key": "n2_haskell_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_haskell_2"
+   }
+  ],
+  "n2_haskell_post": [
+   {
+    "say": "narrator",
+    "key": "n2_haskell_3"
+   },
+   {
+    "flag": "haskell2_done"
+   }
+  ],
+  "n2_sconce4": [
+   {
+    "say": "narrator",
+    "key": "n2_sconce4_1"
+   }
+  ],
+  "n2_702": [
+   {
+    "say": "narrator",
+    "key": "n2_702_1"
+   }
+  ],
+  "n2_newspapers": [
+   {
+    "say": "narrator",
+    "key": "n2_newspapers_1"
+   }
+  ],
+  "n2_ashtray": [
+   {
+    "say": "narrator",
+    "key": "n2_ashtray_1"
+   }
+  ],
+  "n2_suitcase": [
+   {
+    "say": "narrator",
+    "key": "n2_suitcase_1"
+   }
+  ],
+  "n2_linen": [
+   {
+    "say": "narrator",
+    "key": "n2_linen_1"
+   }
+  ],
+  "n2_towels": [
+   {
+    "say": "narrator",
+    "key": "n2_towels_1"
+   }
+  ],
+  "n2_chute": [
+   {
+    "say": "narrator",
+    "key": "n2_chute_1"
+   }
+  ],
+  "n2_roof": [
+   {
+    "say": "narrator",
+    "key": "n2_roof_1"
+   },
+   {
+    "cg": "cg_rpg_roof_city"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_roof_2"
+   },
+   {
+    "say": "mira",
+    "key": "n2_roof_3"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "trust": 1
+   }
+  ],
+  "n2_constable_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_constable_1"
+   },
+   {
+    "say": "constable",
+    "key": "n2_constable_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_constable_3"
+   }
+  ],
+  "n2_constable_post": [
+   {
+    "say": "narrator",
+    "key": "n2_constable_4"
+   },
+   {
+    "flag": "constable_done"
+   },
+   {
+    "flag": "roof_done"
+   }
+  ],
+  "n2_tank": [
+   {
+    "say": "narrator",
+    "key": "n2_tank_1"
+   }
+  ],
+  "n2_sign": [
+   {
+    "say": "narrator",
+    "key": "n2_sign_1"
+   }
+  ],
+  "n2_parapet": [
+   {
+    "say": "narrator",
+    "key": "n2_parapet_1"
+   }
+  ],
+  "n2_lift": [
+   {
+    "say": "narrator",
+    "key": "n2_lift_1"
+   }
+  ],
+  "n2_g212_pre": [
+   {
+    "say": "guest212",
+    "key": "n2_g212_1"
+   }
+  ],
+  "n2_g212_post": [
+   {
+    "say": "narrator",
+    "key": "n2_g212_2"
+   },
+   {
+    "flag": "g212b_done"
+   }
+  ],
+  "n2_dial4": [
+   {
+    "say": "narrator",
+    "key": "n2_dial4_1"
+   }
+  ],
+  "n2_stair": [
+   {
+    "say": "narrator",
+    "key": "n2_stair_1"
+   },
+   {
+    "if_trust": 3,
+    "then": [
+     {
+      "cg": "cg_trust3_stair"
+     },
+     {
+      "say": "narrator",
+      "key": "n2_t3_1"
+     },
+     {
+      "say": "narrator",
+      "key": "n2_t3_2"
+     },
+     {
+      "say": "mira",
+      "key": "n2_t3_3"
+     },
+     {
+      "hide_cg": true
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n2_trust_hint"
+     }
+    ]
+   }
+  ],
+  "n2_dace_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_dace_1"
+   },
+   {
+    "say": "dace",
+    "key": "n2_dace_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_dace_3"
+   }
+  ],
+  "n2_dace_post": [
+   {
+    "say": "dace",
+    "key": "n2_dace_4"
+   },
+   {
+    "flag": "dace_done"
+   }
+  ],
+  "n2_flat": [
+   {
+    "say": "narrator",
+    "key": "n2_flat_1"
+   }
+  ],
+  "n2_cat": [
+   {
+    "say": "narrator",
+    "key": "n2_cat_1"
+   },
+   {
+    "say": "mira",
+    "key": "n2_cat_2"
+   }
+  ],
+  "n2_photos": [
+   {
+    "say": "narrator",
+    "key": "n2_photos_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_photos_2"
+   }
+  ],
+  "n2_nail": [
+   {
+    "say": "narrator",
+    "key": "n2_nail_1"
+   },
+   {
+    "flag": "flat_done"
+   }
+  ],
+  "n2_gale_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_gale_1"
+   },
+   {
+    "say": "gale",
+    "key": "n2_gale_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_gale_3"
+   }
+  ],
+  "n2_gale_post": [
+   {
+    "say": "narrator",
+    "key": "n2_gale_4"
+   },
+   {
+    "say": "mira",
+    "key": "n2_gale_5"
+   },
+   {
+    "flag": "gale2_done"
+   }
+  ],
+  "n2_sit": [
+   {
+    "say": "narrator",
+    "key": "n2_back_1"
+   },
+   {
+    "lines": "act2:57-57"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Take the chair.",
+      "do": [
+       {
+        "event": "vn_act2_chair"
+       }
+      ],
+      "auto_rank": 0
+     },
+     {
+      "menu": "Sit next to her.",
+      "do": [
+       {
+        "event": "vn_act2_bed"
+       }
+      ],
+      "auto_rank": 0
+     },
+     {
+      "menu": "Stay standing. Watch the car.",
+      "do": [
+       {
+        "event": "vn_act2_window"
+       }
+      ],
+      "auto_rank": 0
+     }
+    ]
+   },
+   {
+    "flag": "scene_done"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "say": "narrator",
+    "key": "n2_after_1"
+   },
+   {
+    "end_night": true,
+    "next": "shift3"
+   }
+  ],
+  "vn_act2_chair": [
+   {
+    "lines": "act2:72-81"
+   },
+   {
+    "lines": "act2:84-84"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Say yes.",
+      "do": [
+       {
+        "flag": "scene_yes"
+       },
+       {
+        "event": "vn_scene_bed"
+       }
+      ],
+      "req_trust": 5,
+      "auto_rank": 1
+     },
+     {
+      "menu": "Say no, and stay in the chair until it's light.",
+      "do": [
+       {
+        "flag": "scene_no"
+       },
+       {
+        "event": "vn_act2_decline"
+       }
+      ],
+      "auto_rank": 0
+     }
+    ]
+   }
+  ],
+  "vn_act2_bed": [
+   {
+    "lines": "act2:93-106"
+   },
+   {
+    "lines": "act2:109-109"
+   },
+   {
+    "choice": [
+     {
+      "menu": "\"Stay awake with me.\"",
+      "do": [
+       {
+        "flag": "scene_yes"
+       },
+       {
+        "event": "vn_scene_bed"
+       }
+      ],
+      "req_trust": 5,
+      "auto_rank": 1
+     },
+     {
+      "menu": "\"Get some sleep. I'll be downstairs.\"",
+      "do": [
+       {
+        "flag": "scene_no"
+       },
+       {
+        "event": "vn_act2_decline"
+       }
+      ],
+      "auto_rank": 0
+     }
+    ]
+   }
+  ],
+  "vn_act2_window": [
+   {
+    "lines": "act2:118-129"
+   },
+   {
+    "lines": "act2:132-132"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Turn her away from the window.",
+      "do": [
+       {
+        "flag": "scene_yes"
+       },
+       {
+        "event": "vn_scene_window"
+       }
+      ],
+      "req_trust": 5,
+      "auto_rank": 1
+     },
+     {
+      "menu": "Close the curtain and leave her to sleep.",
+      "do": [
+       {
+        "flag": "scene_no"
+       },
+       {
+        "event": "vn_act2_decline"
+       }
+      ],
+      "auto_rank": 0
+     }
+    ]
+   }
+  ],
+  "vn_act2_decline": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "room704"
+   },
+   {
+    "lines": "act2:144-146"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_trust5_hint"
+   }
+  ],
+  "vn_scene_bed": [
+   {
+    "music": "heartbeat"
+   },
+   {
+    "lines": "act2:153-153"
+   },
+   {
+    "cg": "cg_bed"
+   },
+   {
+    "lines": "act2:159-162"
+   }
+  ],
+  "vn_scene_window": [
+   {
+    "music": "heartbeat"
+   },
+   {
+    "lines": "act2:170-170"
+   },
+   {
+    "cg": "cg_window"
+   },
+   {
+    "lines": "act2:176-180"
+   }
+  ]
+ }
+}

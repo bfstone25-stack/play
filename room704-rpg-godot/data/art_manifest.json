@@ -1,0 +1,305 @@
+{
+ "rooms": {
+  "lobby": [
+   "res://assets/placeholder/rooms/lobby.webp"
+  ],
+  "corridor4": [
+   "res://assets/placeholder/rooms/corridor4.webp"
+  ],
+  "room704": [
+   "res://assets/placeholder/rooms/room704.webp"
+  ],
+  "back_office": [
+   "res://assets/rpg/rooms/room_back_office.png",
+   "res://assets/placeholder/rooms/back_office.webp"
+  ],
+  "bar": [
+   "res://assets/rpg/rooms/room_bar.png",
+   "res://assets/placeholder/rooms/bar.webp"
+  ],
+  "kitchen": [
+   "res://assets/rpg/rooms/room_kitchen.png",
+   "res://assets/placeholder/rooms/kitchen.webp"
+  ],
+  "service_stair": [
+   "res://assets/rpg/rooms/room_service_stair.png",
+   "res://assets/placeholder/rooms/service_stair.webp"
+  ],
+  "lift": [
+   "res://assets/rpg/rooms/room_lift.png",
+   "res://assets/placeholder/rooms/lift.webp"
+  ],
+  "corridor_2": [
+   "res://assets/rpg/rooms/room_corridor_2.png",
+   "res://assets/placeholder/rooms/corridor_2.webp"
+  ],
+  "room_212": [
+   "res://assets/rpg/rooms/room_212.png",
+   "res://assets/placeholder/rooms/room_212.webp"
+  ],
+  "room_702": [
+   "res://assets/rpg/rooms/room_702.png",
+   "res://assets/placeholder/rooms/room_702.webp"
+  ],
+  "linen": [
+   "res://assets/rpg/rooms/room_linen.png",
+   "res://assets/placeholder/rooms/linen.webp"
+  ],
+  "roof": [
+   "res://assets/rpg/rooms/room_roof.png",
+   "res://assets/placeholder/rooms/roof.webp"
+  ],
+  "manager_flat": [
+   "res://assets/rpg/rooms/room_manager_flat.png",
+   "res://assets/placeholder/rooms/manager_flat.webp"
+  ],
+  "boiler": [
+   "res://assets/rpg/rooms/room_boiler.png",
+   "res://assets/placeholder/rooms/boiler.webp"
+  ],
+  "laundry": [
+   "res://assets/rpg/rooms/room_laundry.png",
+   "res://assets/placeholder/rooms/laundry.webp"
+  ],
+  "loading_bay": [
+   "res://assets/rpg/rooms/room_loading_bay.png",
+   "res://assets/placeholder/rooms/loading_bay.webp"
+  ],
+  "street": [
+   "res://assets/rpg/rooms/room_street.png",
+   "res://assets/placeholder/rooms/street.webp"
+  ]
+ },
+ "rooms_locked": {
+  "lobby": [
+   "res://assets/placeholder/rooms_locked/lobby.webp"
+  ],
+  "corridor4": [
+   "res://assets/placeholder/rooms_locked/corridor4.webp"
+  ],
+  "room704": [
+   "res://assets/placeholder/rooms_locked/room704.webp"
+  ],
+  "back_office": [
+   "res://assets/placeholder/rooms_locked/back_office.webp"
+  ],
+  "bar": [
+   "res://assets/placeholder/rooms_locked/bar.webp"
+  ],
+  "kitchen": [
+   "res://assets/placeholder/rooms_locked/kitchen.webp"
+  ],
+  "service_stair": [
+   "res://assets/placeholder/rooms_locked/service_stair.webp"
+  ],
+  "lift": [
+   "res://assets/placeholder/rooms_locked/lift.webp"
+  ],
+  "corridor_2": [
+   "res://assets/placeholder/rooms_locked/corridor_2.webp"
+  ],
+  "room_212": [
+   "res://assets/placeholder/rooms_locked/room_212.webp"
+  ],
+  "room_702": [
+   "res://assets/placeholder/rooms_locked/room_702.webp"
+  ],
+  "linen": [
+   "res://assets/placeholder/rooms_locked/linen.webp"
+  ],
+  "roof": [
+   "res://assets/placeholder/rooms_locked/roof.webp"
+  ],
+  "manager_flat": [
+   "res://assets/placeholder/rooms_locked/manager_flat.webp"
+  ],
+  "boiler": [
+   "res://assets/placeholder/rooms_locked/boiler.webp"
+  ],
+  "laundry": [
+   "res://assets/placeholder/rooms_locked/laundry.webp"
+  ],
+  "loading_bay": [
+   "res://assets/placeholder/rooms_locked/loading_bay.webp"
+  ],
+  "street": [
+   "res://assets/placeholder/rooms_locked/street.webp"
+  ]
+ },
+ "enemies": {
+  "enemy_gale": [
+   "res://assets/rpg/enemies/enemy_gale_neutral.png"
+  ],
+  "enemy_gale_pressured": [
+   "res://assets/rpg/enemies/enemy_gale_pressured.png"
+  ],
+  "enemy_haskell": [
+   "res://assets/rpg/enemies/enemy_haskell_neutral.png"
+  ],
+  "enemy_haskell_pressured": [
+   "res://assets/rpg/enemies/enemy_haskell_pressured.png"
+  ],
+  "enemy_penhallow": [
+   "res://assets/rpg/enemies/enemy_penhallow_neutral.png"
+  ],
+  "enemy_penhallow_pressured": [
+   "res://assets/rpg/enemies/enemy_penhallow_pressured.png"
+  ],
+  "enemy_dace": [
+   "res://assets/rpg/enemies/enemy_dace_neutral.png"
+  ],
+  "enemy_dace_pressured": [
+   "res://assets/rpg/enemies/enemy_dace_pressured.png"
+  ],
+  "enemy_guest212": [
+   "res://assets/rpg/enemies/enemy_guest212_neutral.png"
+  ],
+  "enemy_guest212_pressured": [
+   "res://assets/rpg/enemies/enemy_guest212_pressured.png"
+  ],
+  "enemy_constable": [
+   "res://assets/rpg/enemies/enemy_constable_neutral.png"
+  ],
+  "enemy_constable_pressured": [
+   "res://assets/rpg/enemies/enemy_constable_pressured.png"
+  ],
+  "enemy_porter": [
+   "res://assets/rpg/enemies/enemy_porter_neutral.png"
+  ],
+  "enemy_porter_pressured": [
+   "res://assets/rpg/enemies/enemy_porter_pressured.png"
+  ]
+ },
+ "sprites": {
+  "mira_neutral": [
+   "res://assets/sprites/mira_neutral.png"
+  ],
+  "mira_wry": [
+   "res://assets/sprites/mira_wry.png"
+  ],
+  "mira_undone": [
+   "res://assets/sprites/mira_undone.png"
+  ],
+  "outfit_slip": [
+   "res://assets/rpg/outfits/outfit_slip.png"
+  ],
+  "outfit_coat": [
+   "res://assets/rpg/outfits/outfit_coat.png"
+  ],
+  "outfit_shirt": [
+   "res://assets/rpg/outfits/outfit_shirt.png"
+  ],
+  "outfit_robe": [
+   "res://assets/rpg/outfits/outfit_robe.png"
+  ],
+  "outfit_lace": [
+   "res://assets/rpg/outfits/outfit_lace.png"
+  ]
+ },
+ "cg": {
+  "cg_bed": [
+   "res://assets/cg/cg_bed.webp"
+  ],
+  "cg_bed_locked": [
+   "res://assets/cg/cg_bed_locked.webp"
+  ],
+  "cg_bed_thumb": [
+   "res://assets/cg/cg_bed_thumb.webp"
+  ],
+  "cg_bed_x_locked": [
+   "res://assets/cg/cg_bed_x_locked.webp"
+  ],
+  "cg_checkin": [
+   "res://assets/cg/cg_checkin.webp"
+  ],
+  "cg_checkin_thumb": [
+   "res://assets/cg/cg_checkin_thumb.webp"
+  ],
+  "cg_door": [
+   "res://assets/cg/cg_door.webp"
+  ],
+  "cg_door_thumb": [
+   "res://assets/cg/cg_door_thumb.webp"
+  ],
+  "cg_generic_locked": [
+   "res://assets/cg/cg_generic_locked.webp"
+  ],
+  "cg_morning": [
+   "res://assets/cg/cg_morning.webp"
+  ],
+  "cg_morning_thumb": [
+   "res://assets/cg/cg_morning_thumb.webp"
+  ],
+  "cg_window": [
+   "res://assets/cg/cg_window.webp"
+  ],
+  "cg_window_locked": [
+   "res://assets/cg/cg_window_locked.webp"
+  ],
+  "cg_window_thumb": [
+   "res://assets/cg/cg_window_thumb.webp"
+  ],
+  "cg_window_x_locked": [
+   "res://assets/cg/cg_window_x_locked.webp"
+  ],
+  "cg_rpg_doors": [
+   "res://assets/rpg/cgs/cg_rpg_doors.png"
+  ],
+  "cg_rpg_doors_thumb": [
+   "res://assets/rpg/cgs/cg_rpg_doors_thumb.png"
+  ],
+  "cg_rpg_car": [
+   "res://assets/rpg/cgs/cg_rpg_car.png"
+  ],
+  "cg_rpg_car_thumb": [
+   "res://assets/rpg/cgs/cg_rpg_car_thumb.png"
+  ],
+  "cg_rpg_register": [
+   "res://assets/rpg/cgs/cg_rpg_register.png"
+  ],
+  "cg_rpg_register_thumb": [
+   "res://assets/rpg/cgs/cg_rpg_register_thumb.png"
+  ],
+  "cg_rpg_roof_city": [
+   "res://assets/rpg/cgs/cg_rpg_roof_city.png"
+  ],
+  "cg_rpg_roof_city_thumb": [
+   "res://assets/rpg/cgs/cg_rpg_roof_city_thumb.png"
+  ],
+  "cg_rpg_corner": [
+   "res://assets/rpg/cgs/cg_rpg_corner.png"
+  ],
+  "cg_rpg_corner_thumb": [
+   "res://assets/rpg/cgs/cg_rpg_corner_thumb.png"
+  ],
+  "cg_trust3_stair": [
+   "res://assets/rpg/cgs/cg_trust3_stair.png"
+  ],
+  "cg_trust3_stair_thumb": [
+   "res://assets/rpg/cgs/cg_trust3_stair_thumb.png"
+  ],
+  "cg_trust5_bath": [
+   "res://assets/rpg/cgs/cg_trust5_bath.png"
+  ],
+  "cg_trust5_bath_thumb": [
+   "res://assets/rpg/cgs/cg_trust5_bath_thumb.png"
+  ],
+  "cg_trust7_sheets": [
+   "res://assets/rpg/cgs/cg_trust7_sheets.png"
+  ],
+  "cg_trust7_sheets_thumb": [
+   "res://assets/rpg/cgs/cg_trust7_sheets_thumb.png"
+  ],
+  "cg_trust9_morning": [
+   "res://assets/rpg/cgs/cg_trust9_morning.png"
+  ],
+  "cg_trust9_morning_thumb": [
+   "res://assets/rpg/cgs/cg_trust9_morning_thumb.png"
+  ]
+ },
+ "maps": {
+  "marbeck": [
+   "res://assets/rpg/rooms/floor_map.png"
+  ]
+ }
+}

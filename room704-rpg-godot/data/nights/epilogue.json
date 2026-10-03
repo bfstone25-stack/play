@@ -1,0 +1,256 @@
+{
+ "id": "epilogue",
+ "title_key": "n4_title",
+ "sub_key": "n4_sub",
+ "turns": 12,
+ "clock_start": 420,
+ "minutes_per_turn": 3,
+ "start_room": "lobby",
+ "start_event": "n4_open",
+ "map": {
+  "image": "marbeck",
+  "rooms": {
+   "lobby": [
+    0.3,
+    0.62
+   ],
+   "street": [
+    0.1,
+    0.62
+   ]
+  }
+ },
+ "rooms": {
+  "lobby": {
+   "name_key": "r_lobby",
+   "plate": "lobby",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8294",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      1.0,
+      "#ffd090"
+     ],
+     [
+      0.85,
+      0.3,
+      0.8,
+      "#ff6070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "porter",
+     "kind": "enemy",
+     "enemy": "porter",
+     "pos": [
+      0.45,
+      0.5
+     ],
+     "event": "n4_porter_pre",
+     "after": "n4_porter_post"
+    },
+    {
+     "id": "board",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.4
+     ],
+     "event": "n4_board",
+     "label_key": "hs_board",
+     "xp": 10,
+     "if_flag": "porter_done"
+    },
+    {
+     "id": "to_street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.15,
+      0.78
+     ],
+     "if_flag": "porter_done",
+     "label_key": "hs_doors"
+    }
+   ]
+  },
+  "street": {
+   "name_key": "r_street",
+   "plate": "street",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8088a0",
+    "lamps": [
+     [
+      0.6,
+      0.25,
+      1.1,
+      "#ff6070"
+     ],
+     [
+      0.2,
+      0.3,
+      0.8,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [],
+   "enter_event": "n4_street"
+  }
+ },
+ "events": {
+  "n4_open": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "lobby"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "act3:63-63"
+   },
+   {
+    "say": "narrator",
+    "key": "n4_open_1"
+   }
+  ],
+  "n4_porter_pre": [
+   {
+    "say": "porter",
+    "key": "n4_porter_1"
+   },
+   {
+    "say": "porter",
+    "key": "n4_porter_2"
+   }
+  ],
+  "n4_porter_post": [
+   {
+    "lines": "act3:64-64"
+   },
+   {
+    "say": "narrator",
+    "key": "n4_porter_3"
+   },
+   {
+    "flag": "porter_done"
+   }
+  ],
+  "n4_board": [
+   {
+    "say": "narrator",
+    "key": "n4_board_1"
+   }
+  ],
+  "n4_street": [
+   {
+    "if_flag": "ending_together",
+    "then": [
+     {
+      "cg": "cg_rpg_corner"
+     },
+     {
+      "say": "narrator",
+      "key": "n4_corner_1"
+     },
+     {
+      "say": "narrator",
+      "key": "n4_corner_2"
+     },
+     {
+      "hide_cg": true
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "ending_train",
+      "then": [
+       {
+        "say": "narrator",
+        "key": "n4_train_1"
+       },
+       {
+        "say": "narrator",
+        "key": "n4_train_2"
+       }
+      ],
+      "else": [
+       {
+        "say": "narrator",
+        "key": "n4_alone_1"
+       },
+       {
+        "say": "narrator",
+        "key": "n4_alone_2"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "if_flag": "ending_alone",
+    "then": [],
+    "else": [
+     {
+      "if_trust": 9,
+      "then": [
+       {
+        "hide_cg": true
+       },
+       {
+        "bg": "lobby"
+       },
+       {
+        "say": "narrator",
+        "key": "n4_t9_1"
+       },
+       {
+        "cg": "cg_trust9_morning"
+       },
+       {
+        "say": "mira",
+        "key": "n4_t9_2"
+       },
+       {
+        "say": "mira",
+        "key": "n4_t9_3"
+       },
+       {
+        "say": "narrator",
+        "key": "n4_t9_4"
+       },
+       {
+        "hide_cg": true
+       }
+      ],
+      "else": []
+     }
+    ]
+   },
+   {
+    "music": "title"
+   },
+   {
+    "say": "narrator",
+    "key": "credits_1"
+   },
+   {
+    "say": "narrator",
+    "key": "credits_2"
+   },
+   {
+    "end_night": true,
+    "next": ""
+   }
+  ]
+ }
+}

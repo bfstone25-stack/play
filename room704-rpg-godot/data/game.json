@@ -1,0 +1,966 @@
+{
+ "title_key": "title",
+ "logo": "res://assets/title/logo.png",
+ "title_bg": "res://assets/title/keyvisual.webp",
+ "fonts": {
+  "body": "res://assets/fonts/JosefinSans-SemiBold.ttf",
+  "display": "res://assets/fonts/Marcellus-Regular.ttf",
+  "cjk": "res://assets/fonts/NotoSansCJKjp-Regular.otf"
+ },
+ "ui": {
+  "dust": "res://assets/title/rain.png",
+  "vignette": "res://assets/title/vignette.png",
+  "scrim": "res://assets/title/scrim.png",
+  "dim": "res://assets/title/scrim.png",
+  "panel": "res://assets/ui/panel.png",
+  "textbox": "res://assets/ui/textbox.png",
+  "namebox": "res://assets/ui/namebox.png",
+  "choice_idle": "res://assets/ui/choice_idle.png",
+  "choice_hover": "res://assets/ui/choice_hover.png",
+  "slot_idle": "res://assets/ui/slot_idle.png",
+  "slot_hover": "res://assets/ui/slot_hover.png",
+  "bar_under": "res://assets/ui/choice_idle.png",
+  "bar_fill": "res://assets/ui/namebox.png",
+  "bar_fill_gold": "res://assets/ui/title_hover.png",
+  "modal": "res://assets/ui/confirm.png"
+ },
+ "title_mood": {
+  "ambient": "#d0c8dc",
+  "torch": true,
+  "zoom": 1.1,
+  "offset": [
+   300,
+   0
+  ]
+ },
+ "music": {
+  "title": "res://assets/audio/suspense_theme.ogg",
+  "explore": "res://assets/audio/suspense_theme.ogg",
+  "battle": "res://assets/audio/suspense_theme.ogg",
+  "boss": "res://assets/audio/suspense_theme.ogg",
+  "intimate": "res://assets/audio/ecchi_theme.ogg",
+  "heartbeat": "res://assets/audio/heartbeat.ogg"
+ },
+ "audio": {
+  "ambience": "res://assets/audio/rain_ambience.ogg",
+  "click": "res://assets/audio/ui_click.ogg",
+  "page_flip": "res://assets/audio/page_flip.ogg",
+  "heartbeat": "res://assets/audio/heartbeat.ogg",
+  "sting": "res://assets/audio/title_sting.ogg",
+  "camera": "res://assets/audio/click.ogg"
+ },
+ "disclosure_key": "about_ai",
+ "trial_last_night": "shift1",
+ "trial_locked_cgs": [
+  "cg_bed",
+  "cg_window"
+ ],
+ "store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01724563.html",
+ "stats": [
+  "wit",
+  "cha",
+  "grt",
+  "stl"
+ ],
+ "level_cap": 20,
+ "trust_thresholds": [
+  3,
+  5,
+  7,
+  9
+ ],
+ "heroine_flag": "mira_joined",
+ "heroine_sprite": "outfit_slip",
+ "party": [
+  {
+   "id": "auditor",
+   "base": {
+    "wit": 4,
+    "cha": 2,
+    "grt": 3,
+    "stl": 2
+   },
+   "grow": [
+    "wit",
+    "grt",
+    "cha",
+    "stl"
+   ],
+   "actions": [
+    "deflect",
+    "bluff",
+    "evidence",
+    "bribe",
+    "threaten",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "clerk": [
+     "ledger",
+     "nightshift",
+     "arithmetic",
+     "houseline_sk",
+     "auditor"
+    ],
+    "fixer": [
+     "tip",
+     "deadpan",
+     "thickskin",
+     "backdoor",
+     "quietword"
+    ]
+   },
+   "start_equip": {
+    "outfit": "waistcoat"
+   }
+  },
+  {
+   "id": "mira",
+   "join_flag": "mira_joined",
+   "base": {
+    "wit": 3,
+    "cha": 4,
+    "grt": 2,
+    "stl": 3
+   },
+   "grow": [
+    "cha",
+    "wit",
+    "stl",
+    "grt"
+   ],
+   "actions": [
+    "deflect",
+    "observe",
+    "bluff",
+    "flirt",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "ghost": [
+     "unseen",
+     "coolhead",
+     "straightface",
+     "vanish",
+     "nobody"
+    ],
+    "flame": [
+     "smile",
+     "confide_sk",
+     "poise",
+     "candle",
+     "ember"
+    ]
+   },
+   "start_equip": {
+    "outfit": "slip"
+   }
+  }
+ ],
+ "start_items": {
+  "coffee": 1,
+  "cash": 1
+ },
+ "actions": {
+  "deflect": {
+   "kind": "guard",
+   "cost": 0,
+   "susp": 4
+  },
+  "observe": {
+   "kind": "observe",
+   "cost": 2,
+   "susp": 2
+  },
+  "bluff": {
+   "cost": 3,
+   "stat": "wit",
+   "power": 7,
+   "scale": 1.5,
+   "susp": 3
+  },
+  "evidence": {
+   "cost": 4,
+   "stat": "wit",
+   "power": 10,
+   "scale": 2.0,
+   "susp": -2,
+   "needs_kind": "evidence"
+  },
+  "bribe": {
+   "cost": 2,
+   "stat": "cha",
+   "power": 9,
+   "scale": 1.2,
+   "susp": 1,
+   "needs_kind": "cash"
+  },
+  "flirt": {
+   "cost": 3,
+   "stat": "cha",
+   "power": 7,
+   "scale": 1.8,
+   "susp": 2
+  },
+  "threaten": {
+   "cost": 4,
+   "stat": "grt",
+   "power": 13,
+   "scale": 2.0,
+   "susp": 12,
+   "harm": true
+  },
+  "stall": {
+   "kind": "stall",
+   "cost": 1,
+   "susp_down": 10,
+   "heal": 3
+  },
+  "item": {
+   "kind": "item",
+   "cost": 0
+  },
+  "houseline": {
+   "cost": 5,
+   "stat": "wit",
+   "power": 14,
+   "scale": 2.0,
+   "susp": -3
+  },
+  "confide": {
+   "cost": 4,
+   "stat": "cha",
+   "power": 11,
+   "scale": 1.8,
+   "susp": -4
+  }
+ },
+ "skills": {
+  "ledger": {
+   "branch": "clerk",
+   "req": 2,
+   "mult": {
+    "evidence": 0.3
+   }
+  },
+  "nightshift": {
+   "branch": "clerk",
+   "req": 4,
+   "max_comp": 10
+  },
+  "arithmetic": {
+   "branch": "clerk",
+   "req": 6,
+   "stat": {
+    "wit": 2
+   }
+  },
+  "houseline_sk": {
+   "branch": "clerk",
+   "req": 9,
+   "grant": "houseline"
+  },
+  "auditor": {
+   "branch": "clerk",
+   "req": 12,
+   "mult": {
+    "houseline": 0.4,
+    "evidence": 0.2
+   }
+  },
+  "tip": {
+   "branch": "fixer",
+   "req": 2,
+   "mult": {
+    "bribe": 0.3
+   }
+  },
+  "deadpan": {
+   "branch": "fixer",
+   "req": 4,
+   "mult": {
+    "bluff": 0.3
+   }
+  },
+  "thickskin": {
+   "branch": "fixer",
+   "req": 6,
+   "stat": {
+    "grt": 2
+   }
+  },
+  "backdoor": {
+   "branch": "fixer",
+   "req": 9,
+   "mult": {
+    "stall": 0.4
+   }
+  },
+  "quietword": {
+   "branch": "fixer",
+   "req": 12,
+   "mult": {
+    "threaten": 0.4,
+    "bluff": 0.2
+   }
+  },
+  "unseen": {
+   "branch": "ghost",
+   "req": 2,
+   "stat": {
+    "stl": 2
+   }
+  },
+  "coolhead": {
+   "branch": "ghost",
+   "req": 4,
+   "max_comp": 10
+  },
+  "straightface": {
+   "branch": "ghost",
+   "req": 6,
+   "mult": {
+    "bluff": 0.4
+   }
+  },
+  "vanish": {
+   "branch": "ghost",
+   "req": 9,
+   "mult": {
+    "stall": 0.4
+   }
+  },
+  "nobody": {
+   "branch": "ghost",
+   "req": 12,
+   "mult": {
+    "bluff": 0.3,
+    "stall": 0.2
+   }
+  },
+  "smile": {
+   "branch": "flame",
+   "req": 2,
+   "mult": {
+    "flirt": 0.3
+   }
+  },
+  "confide_sk": {
+   "branch": "flame",
+   "req": 4,
+   "grant": "confide"
+  },
+  "poise": {
+   "branch": "flame",
+   "req": 6,
+   "stat": {
+    "cha": 2
+   }
+  },
+  "candle": {
+   "branch": "flame",
+   "req": 9,
+   "mult": {
+    "confide": 0.4
+   }
+  },
+  "ember": {
+   "branch": "flame",
+   "req": 12,
+   "mult": {
+    "flirt": 0.4,
+    "confide": 0.2
+   }
+  }
+ },
+ "items": {
+  "cash": {
+   "kind": "cash"
+  },
+  "coffee": {
+   "kind": "consumable",
+   "heal_comp": 16
+  },
+  "whisky": {
+   "kind": "consumable",
+   "heal_nerve": 8
+  },
+  "minibar": {
+   "kind": "consumable",
+   "heal_comp": 28
+  },
+  "aspirin": {
+   "kind": "consumable",
+   "heal_nerve": 14
+  },
+  "passkey": {
+   "kind": "key"
+  },
+  "basement_key": {
+   "kind": "key"
+  },
+  "card_gale": {
+   "kind": "evidence"
+  },
+  "register_page": {
+   "kind": "evidence"
+  },
+  "cctv_tape": {
+   "kind": "evidence"
+  },
+  "ledger704": {
+   "kind": "evidence"
+  },
+  "train_ticket": {
+   "kind": "gift",
+   "gift": true,
+   "gift_trust": 1
+  },
+  "umbrella": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "mira",
+   "bonus": {
+    "wit": 1
+   }
+  },
+  "lighter": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "auditor",
+   "bonus": {
+    "stl": 1
+   },
+   "mult": {
+    "stall": 0.2
+   }
+  },
+  "torch": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "auditor",
+   "bonus": {
+    "stl": 1
+   }
+  },
+  "revolver": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "auditor",
+   "bonus": {
+    "grt": 2
+   },
+   "mult": {
+    "threaten": 0.3
+   }
+  },
+  "waistcoat": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "auditor",
+   "bonus": {
+    "grt": 1
+   }
+  },
+  "namebadge": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "auditor",
+   "bonus": {
+    "cha": 1
+   }
+  },
+  "coat": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "mira",
+   "bonus": {
+    "grt": 1
+   },
+   "sprite": "outfit_coat"
+  },
+  "slip": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "mira",
+   "bonus": {
+    "cha": 1
+   },
+   "mult": {
+    "flirt": 0.2
+   },
+   "sprite": "outfit_slip"
+  },
+  "shirt": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "mira",
+   "bonus": {
+    "cha": 2
+   },
+   "mult": {
+    "flirt": 0.3
+   },
+   "sprite": "outfit_shirt"
+  },
+  "robe": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "mira",
+   "bonus": {
+    "wit": 1
+   },
+   "mult": {
+    "stall": 0.3
+   },
+   "sprite": "outfit_robe"
+  },
+  "lace": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "mira",
+   "bonus": {
+    "cha": 3
+   },
+   "mult": {
+    "flirt": 0.5
+   },
+   "sprite": "outfit_lace"
+  }
+ },
+ "enemies": {
+  "guest212": {
+   "name_key": "e_guest212",
+   "sprite": "enemy_guest212",
+   "sprite_pressured": "enemy_guest212_pressured",
+   "composure": 85,
+   "atk": 5,
+   "susp_rate": 6,
+   "weak": [
+    "bribe",
+    "stall"
+   ],
+   "resist": [
+    "threaten"
+   ],
+   "xp": 40,
+   "drop": "whisky",
+   "barks": 3,
+   "bark_set": "guest212",
+   "intro_key": "ei_guest212",
+   "win_key": "ew_guest212"
+  },
+  "haskell": {
+   "name_key": "e_haskell",
+   "sprite": "enemy_haskell",
+   "sprite_pressured": "enemy_haskell_pressured",
+   "composure": 140,
+   "atk": 6,
+   "susp_rate": 7,
+   "weak": [
+    "evidence",
+    "deflect"
+   ],
+   "resist": [
+    "bluff",
+    "bribe"
+   ],
+   "xp": 50,
+   "drop": "torch",
+   "barks": 3,
+   "bark_set": "haskell",
+   "intro_key": "ei_haskell",
+   "win_key": "ew_haskell"
+  },
+  "dace_phone": {
+   "name_key": "e_dace_phone",
+   "sprite": "enemy_dace",
+   "sprite_pressured": "enemy_dace_pressured",
+   "composure": 120,
+   "atk": 5,
+   "susp_rate": 7,
+   "weak": [
+    "stall",
+    "bluff"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "xp": 45,
+   "drop": "coffee",
+   "barks": 3,
+   "bark_set": "dace",
+   "intro_key": "ei_dace_phone",
+   "win_key": "ew_dace_phone"
+  },
+  "gale": {
+   "name_key": "e_gale",
+   "sprite": "enemy_gale",
+   "sprite_pressured": "enemy_gale_pressured",
+   "composure": 320,
+   "atk": 7,
+   "susp_rate": 6,
+   "weak": [
+    "bluff",
+    "deflect",
+    "stall"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 120,
+   "drop": "card_gale",
+   "barks": 4,
+   "bark_set": "gale",
+   "intro_key": "ei_gale",
+   "win_key": "ew_gale",
+   "boss": true
+  },
+  "haskell_2": {
+   "name_key": "e_haskell_2",
+   "sprite": "enemy_haskell",
+   "sprite_pressured": "enemy_haskell_pressured",
+   "composure": 700,
+   "atk": 8,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "flirt"
+   ],
+   "resist": [
+    "bluff",
+    "bribe"
+   ],
+   "xp": 70,
+   "drop": "minibar",
+   "barks": 3,
+   "bark_set": "haskell",
+   "intro_key": "ei_haskell_2",
+   "win_key": "ew_haskell_2"
+  },
+  "guest212_2": {
+   "name_key": "e_guest212_2",
+   "sprite": "enemy_guest212",
+   "sprite_pressured": "enemy_guest212_pressured",
+   "composure": 620,
+   "atk": 7,
+   "susp_rate": 11,
+   "weak": [
+    "bribe",
+    "stall",
+    "flirt"
+   ],
+   "resist": [
+    "threaten"
+   ],
+   "xp": 60,
+   "drop": "aspirin",
+   "barks": 3,
+   "bark_set": "guest212",
+   "intro_key": "ei_guest212_2",
+   "win_key": "ew_guest212_2"
+  },
+  "constable": {
+   "name_key": "e_constable",
+   "sprite": "enemy_constable",
+   "sprite_pressured": "enemy_constable_pressured",
+   "composure": 780,
+   "atk": 10,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "bluff"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 75,
+   "drop": "cash",
+   "barks": 3,
+   "bark_set": "constable",
+   "intro_key": "ei_constable",
+   "win_key": "ew_constable"
+  },
+  "dace": {
+   "name_key": "e_dace",
+   "sprite": "enemy_dace",
+   "sprite_pressured": "enemy_dace_pressured",
+   "composure": 740,
+   "atk": 9,
+   "susp_rate": 11,
+   "weak": [
+    "stall",
+    "bluff",
+    "confide"
+   ],
+   "resist": [
+    "threaten",
+    "bribe",
+    "flirt"
+   ],
+   "xp": 75,
+   "drop": "umbrella",
+   "barks": 3,
+   "bark_set": "dace",
+   "intro_key": "ei_dace",
+   "win_key": "ew_dace"
+  },
+  "gale_2": {
+   "name_key": "e_gale_2",
+   "sprite": "enemy_gale",
+   "sprite_pressured": "enemy_gale_pressured",
+   "composure": 1000,
+   "atk": 10,
+   "susp_rate": 9,
+   "weak": [
+    "evidence",
+    "flirt",
+    "deflect"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 150,
+   "drop": "lighter",
+   "barks": 4,
+   "bark_set": "gale",
+   "intro_key": "ei_gale_2",
+   "win_key": "ew_gale_2",
+   "boss": true,
+   "trust_win": 1
+  },
+  "constable_2": {
+   "name_key": "e_constable_2",
+   "sprite": "enemy_constable",
+   "sprite_pressured": "enemy_constable_pressured",
+   "composure": 880,
+   "atk": 11,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "stall"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 95,
+   "drop": "coffee",
+   "barks": 3,
+   "bark_set": "constable",
+   "intro_key": "ei_constable_2",
+   "win_key": "ew_constable_2"
+  },
+  "dace_2": {
+   "name_key": "e_dace_2",
+   "sprite": "enemy_dace",
+   "sprite_pressured": "enemy_dace_pressured",
+   "composure": 900,
+   "atk": 11,
+   "susp_rate": 11,
+   "weak": [
+    "bluff",
+    "flirt",
+    "confide"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "xp": 95,
+   "drop": "aspirin",
+   "barks": 3,
+   "bark_set": "dace",
+   "intro_key": "ei_dace_2",
+   "win_key": "ew_dace_2"
+  },
+  "haskell_3": {
+   "name_key": "e_haskell_3",
+   "sprite": "enemy_haskell",
+   "sprite_pressured": "enemy_haskell_pressured",
+   "composure": 960,
+   "atk": 12,
+   "susp_rate": 11,
+   "weak": [
+    "evidence",
+    "deflect",
+    "houseline"
+   ],
+   "resist": [
+    "bluff",
+    "bribe"
+   ],
+   "xp": 100,
+   "drop": "minibar",
+   "barks": 3,
+   "bark_set": "haskell",
+   "intro_key": "ei_haskell_3",
+   "win_key": "ew_haskell_3"
+  },
+  "penhallow": {
+   "name_key": "e_penhallow",
+   "sprite": "enemy_penhallow",
+   "sprite_pressured": "enemy_penhallow_pressured",
+   "composure": 1400,
+   "atk": 13,
+   "susp_rate": 9,
+   "weak": [
+    "evidence",
+    "flirt",
+    "houseline",
+    "confide"
+   ],
+   "resist": [
+    "bribe",
+    "threaten"
+   ],
+   "xp": 260,
+   "drop": "train_ticket",
+   "barks": 4,
+   "bark_set": "penhallow",
+   "intro_key": "ei_penhallow",
+   "win_key": "ew_penhallow",
+   "boss": true,
+   "trust_win": 1
+  },
+  "porter": {
+   "name_key": "e_porter",
+   "sprite": "enemy_porter",
+   "sprite_pressured": "enemy_porter_pressured",
+   "composure": 620,
+   "atk": 8,
+   "susp_rate": 8,
+   "weak": [
+    "bluff",
+    "stall",
+    "flirt"
+   ],
+   "resist": [
+    "evidence"
+   ],
+   "xp": 80,
+   "drop": "coffee",
+   "barks": 3,
+   "bark_set": "porter",
+   "intro_key": "ei_porter",
+   "win_key": "ew_porter"
+  }
+ },
+ "nights": [
+  "shift1",
+  "shift2",
+  "shift3",
+  "epilogue"
+ ],
+ "story": [
+  "act1",
+  "act2",
+  "act3"
+ ],
+ "gallery": [
+  {
+   "id": "cg_checkin",
+   "thumb": "cg_checkin_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_checkin",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_doors",
+   "thumb": "cg_rpg_doors_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_rpg_doors",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_register",
+   "thumb": "cg_rpg_register_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_rpg_register",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_car",
+   "thumb": "cg_rpg_car_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_rpg_car",
+   "trust": 0
+  },
+  {
+   "id": "cg_door",
+   "thumb": "cg_door_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_door",
+   "trust": 0
+  },
+  {
+   "id": "cg_trust3_stair",
+   "thumb": "cg_trust3_stair_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_trust3_stair",
+   "trust": 3
+  },
+  {
+   "id": "cg_rpg_roof_city",
+   "thumb": "cg_rpg_roof_city_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_rpg_roof_city",
+   "trust": 0
+  },
+  {
+   "id": "cg_bed",
+   "thumb": "cg_bed_thumb",
+   "locked": "cg_bed_locked",
+   "key": "g_cg_bed",
+   "trust": 5
+  },
+  {
+   "id": "cg_window",
+   "thumb": "cg_window_thumb",
+   "locked": "cg_window_locked",
+   "key": "g_cg_window",
+   "trust": 5
+  },
+  {
+   "id": "cg_trust5_bath",
+   "thumb": "cg_trust5_bath_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_trust5_bath",
+   "trust": 5
+  },
+  {
+   "id": "cg_trust7_sheets",
+   "thumb": "cg_trust7_sheets_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_trust7_sheets",
+   "trust": 7
+  },
+  {
+   "id": "cg_morning",
+   "thumb": "cg_morning_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_morning",
+   "trust": 0
+  },
+  {
+   "id": "cg_rpg_corner",
+   "thumb": "cg_rpg_corner_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_rpg_corner",
+   "trust": 0
+  },
+  {
+   "id": "cg_trust9_morning",
+   "thumb": "cg_trust9_morning_thumb",
+   "locked": "cg_generic_locked",
+   "key": "g_cg_trust9_morning",
+   "trust": 9
+  }
+ ]
+}

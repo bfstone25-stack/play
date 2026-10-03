@@ -1,0 +1,1906 @@
+{
+ "n1_open_1": {
+  "en": "The desk is yours until seven. Between now and then: the rounds, the register, and whatever walks in off the street.",
+  "ja": "七時まで、このデスクはあなたのものだ。それまでに：見回り、宿帳、そして通りから入ってくる何か。"
+ },
+ "n1_open_2": {
+  "en": "You have until the shift ends before the day porter asks what happened. Every door, every search and every conversation costs minutes.",
+  "ja": "昼番のポーターに「何かあったか」と聞かれるまでが、持ち時間だ。扉も、調べ物も、会話も、すべて数分ずつ食う。"
+ },
+ "n1_open_3": {
+  "en": "Start with the back office. The pass key is in the safe, and the fourth floor is a long way up without it.",
+  "ja": "まずは事務室から。マスターキーは金庫の中。それなしでは四階は遠い。"
+ },
+ "n1_register_1": {
+  "en": "The register. Forty rooms, eleven names, and on the fourth floor's row, a line as clean as the day it was ruled.",
+  "ja": "宿帳。四十室、十一の名前。そして四階の行には、罫線を引いた日のままの空白。"
+ },
+ "n1_register_2": {
+  "en": "You tear the carbon from under it, carefully, so the page above shows nothing. Paper has a way of becoming useful after midnight.",
+  "ja": "下のカーボン紙を慎重に剥がす。上のページには何も残らないように。真夜中を過ぎると、紙切れは役に立つものに化ける。"
+ },
+ "n1_board_1": {
+  "en": "The key board. Seven-oh-four's hook is empty. So are nineteen others, and nobody can tell which empty hook is the one.",
+  "ja": "鍵のボード。704の鉤は空。他にも十九本空いていて、どの空の鉤がそれなのか、誰にも分からない。"
+ },
+ "n1_board_2": {
+  "en": "You move two keys from the fourth row to the second. Now it is twenty-one, and the pattern is gone.",
+  "ja": "四段目の鍵を二本、二段目へ移す。これで二十一本。並びは消えた。"
+ },
+ "n1_office_1": {
+  "en": "The back office: a key safe, a kettle, a television that has shown the same lobby since March, and the owner's accountant's chair, which nobody sits in.",
+  "ja": "事務室。鍵の金庫、やかん、三月から同じロビーを映しているテレビ、そして誰も座らないオーナーの会計士の椅子。"
+ },
+ "n1_keysafe_1": {
+  "en": "The pass key hangs on the inside of the safe door, where the night manager keeps it so she never has to come down.",
+  "ja": "マスターキーは金庫の扉の内側に掛かっている。夜間支配人が降りてこなくて済むように、そこに置いているのだ。"
+ },
+ "n1_cctv_1": {
+  "en": "The monitor shows the lobby, the doors, the rain. The recorder under it shows a tape that ran out in March. You take it out. Now it never happened.",
+  "ja": "モニターにはロビー、ドア、雨。その下のレコーダーには、三月に使い切ったテープ。取り出す。これで、何も起きなかったことになる。"
+ },
+ "n1_kettle_1": {
+  "en": "The kettle is warm. Someone was down here before you. You make a coffee anyway; it is going to be that kind of night.",
+  "ja": "やかんが温かい。あなたより前に誰かが降りてきていた。構わずコーヒーを淹れる。そういう夜になりそうだ。"
+ },
+ "n1_drawer_1": {
+  "en": "The drawer under the till: a revolver the owner bought in 1983 and a note that says NEVER. It has never been fired. You put it in your pocket to keep it that way.",
+  "ja": "レジの下の引き出し。オーナーが1983年に買った回転式拳銃と、「絶対に」とだけ書かれたメモ。一度も撃たれたことはない。そのままにしておくために、ポケットに入れる。"
+ },
+ "n1_ledger_1": {
+  "en": "The quarterly ledger. Room 704: OUT OF ORDER, for two years, in the accountant's hand. Under it, in pencil, a weekly figure that an out-of-order room does not earn.",
+  "ja": "四半期の帳簿。704号室：故障中、二年間、会計士の筆跡で。その下に鉛筆で、故障中の部屋が稼ぐはずのない週ごとの数字。"
+ },
+ "n1_ledger_2": {
+  "en": "Somebody has been letting a room that does not exist. Somebody with a key. You put the page in your pocket.",
+  "ja": "誰かが存在しない部屋を貸している。鍵を持った誰かが。そのページをポケットに入れる。"
+ },
+ "n1_bar_1": {
+  "en": "The Marbeck Bar, closed since eleven. Stools on the counter, one lamp left on for the mirror's benefit.",
+  "ja": "マーベック・バー。十一時から閉店。カウンターに上げた椅子、鏡のためだけに点けたままのランプ。"
+ },
+ "n1_g212_1": {
+  "en": "A man in an undershirt is behind the bar, looking for the gin with the confidence of a man who has paid for a room.",
+  "ja": "下着姿の男がカウンターの奥で、部屋代を払った男の自信でジンを探している。"
+ },
+ "n1_g212_2": {
+  "en": "\"Two-twelve. Paying guest. I'd like the bar open and I'd like it not to be a conversation.\"",
+  "ja": "「212だ。金払ってる客だ。バーを開けてくれ。話し合いはなしで」"
+ },
+ "n1_g212_3": {
+  "en": "He is not dangerous. He is loud, and loud is the one thing this hotel cannot afford tonight.",
+  "ja": "危険な男ではない。ただ声が大きい。そして今夜のこのホテルに、一番困るのが大声だ。"
+ },
+ "n1_tutorial_1": {
+  "en": "A standoff. Bring his Resolve to zero before his Suspicion reaches 100 — at 100, somebody picks up a phone.",
+  "ja": "対峙だ。相手の「疑念」が100に達する前に「決意」を0にする。100になれば、誰かが受話器を取る。"
+ },
+ "n1_tutorial_2": {
+  "en": "Every person has weaknesses. A drunk wants a drink and a reason to go back to bed. Threats are remembered.",
+  "ja": "人には必ず弱点がある。酔っ払いが欲しいのは一杯と、ベッドに戻る口実。脅しは記憶に残る。"
+ },
+ "n1_g212_4": {
+  "en": "\"Water. Fine. It's gin where I come from.\" He goes up by the stairs, which is the quietest thing he has done all night.",
+  "ja": "「水か。いいさ。俺の国じゃこれがジンだ」彼は階段で上がっていく。今夜彼がした一番静かな行いだ。"
+ },
+ "n1_bottles_1": {
+  "en": "Behind the bottles, a half bottle that is nobody's. You pour two inches into a tooth glass, for later.",
+  "ja": "酒瓶の裏に、誰のものでもない半分の瓶。後のために、歯磨きコップに二インチ注ぐ。"
+ },
+ "n1_till_1": {
+  "en": "The till has forty in it and a note from the barman: TAKE IT, THEY NEVER COUNT. You take it. For bribes, you tell yourself.",
+  "ja": "レジには四十ポンドと、バーテンダーのメモ。「持ってけ、どうせ誰も数えない」。持っていく。買収用だ、と自分に言い聞かせる。"
+ },
+ "n1_mirror_1": {
+  "en": "In the mirror behind the bar, the glass doors, and through them the street, and across the street a car with its lights off that was not there at midnight.",
+  "ja": "バーの鏡に、ガラスのドアが映っている。その向こうの通り、通りの向かいに、ライトを消した車。真夜中にはなかった車だ。"
+ },
+ "n1_kitchen_1": {
+  "en": "The service kitchen. Steel, tile, one fluorescent tube that has never been off. The door to the basement is at the far end.",
+  "ja": "業務用厨房。鋼鉄、タイル、一度も消えたことのない蛍光灯が一本。地下への扉は突き当たりだ。"
+ },
+ "n1_fridge_1": {
+  "en": "The walk-in fridge has a shelf labelled MINIBAR. Chocolate, mostly. It is billed to the rooms; it will not be billed to 704.",
+  "ja": "業務用冷蔵庫に「ミニバー」と書かれた棚。ほとんどチョコレートだ。各部屋に請求される。704には請求されない。"
+ },
+ "n1_pans_1": {
+  "en": "Somebody has hung the pans in order of size. It is the only orderly thing in the building and it makes you unreasonably happy.",
+  "ja": "誰かが鍋を大きさ順に吊るしている。この建物でただひとつ秩序だったもので、なぜか無性に嬉しくなる。"
+ },
+ "n1_service_locked": {
+  "en": "The basement door is locked from the other side. Mrs Dace keeps that key, and Mrs Dace is asleep.",
+  "ja": "地下の扉は向こう側から施錠されている。鍵はデイス夫人が持っていて、デイス夫人は眠っている。"
+ },
+ "n1_lift_1": {
+  "en": "The lift. Brass gate, floor dial, and a noise on the way up that wakes the sixth floor. Mrs Dace lives on the sixth floor.",
+  "ja": "エレベーター。真鍮の格子扉、階数表示、そして上りの途中で六階を起こす音。六階にはデイス夫人が住んでいる。"
+ },
+ "n1_lift_2": {
+  "en": "You press the button anyway, to hear it. Somewhere above, a door opens, and a telephone starts to ring at the desk you just left.",
+  "ja": "それでもボタンを押す。音を聞くために。どこか上で扉が開き、たった今離れたデスクで電話が鳴り始める。"
+ },
+ "n1_dial_1": {
+  "en": "The dial says four. The lift is on the ground floor. The dial has said four since the owner stopped paying for repairs.",
+  "ja": "階数表示は「4」。エレベーターは一階にある。オーナーが修理代を払わなくなってから、表示はずっと「4」だ。"
+ },
+ "n1_gate_1": {
+  "en": "Inside the gate, a cigarette end, still faintly warm. Not a brand this hotel sells.",
+  "ja": "格子扉の内側に煙草の吸殻。まだかすかに温かい。このホテルで売っている銘柄ではない。"
+ },
+ "n1_phone_1": {
+  "en": "The internal line. Mrs Dace, who has lived on the sixth floor since her husband owned the place, and hears every door in it.",
+  "ja": "内線。デイス夫人だ。夫がこのホテルを所有していた頃から六階に住み、建物じゅうの扉の音を聞き分ける。"
+ },
+ "n1_phone_2": {
+  "en": "\"The lift. At this hour. Who is in my hotel?\"",
+  "ja": "「エレベーター。この時間に。私のホテルに誰がいるの？」"
+ },
+ "n1_phone_3": {
+  "en": "\"Keep it quiet, then. And if anyone asks, I was asleep.\" The line clicks.",
+  "ja": "「じゃあ静かにね。誰かに聞かれたら、私は寝てたことにして」回線が切れる。"
+ },
+ "n1_stair_1": {
+  "en": "The service stair: concrete, a caged bulb on every landing, and the floor numbers painted by someone who gave up at four.",
+  "ja": "業務用階段。コンクリート、踊り場ごとの金網付き電球、そして四階で投げ出した誰かが塗った階数の数字。"
+ },
+ "n1_footprints_1": {
+  "en": "Wet footprints, small, going up. One pair. She took the stairs, as you told her to. Nobody else has.",
+  "ja": "濡れた足跡。小さく、上へ向かっている。ひと組だけ。あなたが言った通り、彼女は階段を使った。他には誰も。"
+ },
+ "n1_landing_1": {
+  "en": "From the second landing you can see the street through a wired-glass window. The car is still there. It has not moved since you noticed it.",
+  "ja": "二階の踊り場から、網入りガラスの窓越しに通りが見える。車はまだそこにいる。気づいてから一度も動いていない。"
+ },
+ "n1_corr2_1": {
+  "en": "The second-floor corridor: green carpet, a radiator that bangs, and at the far end a torch beam that is not yours.",
+  "ja": "二階の廊下。緑の絨毯、音を立てるラジエーター、そして突き当たりに、あなたのものではない懐中電灯の光。"
+ },
+ "n1_haskell_1": {
+  "en": "Haskell. The house detective, which in a forty-room hotel means a retired policeman with a notebook and nowhere to be.",
+  "ja": "ハスケル。ホテル探偵。四十室のホテルでは、手帳を持った引退警官で、他に行き場のない男を指す。"
+ },
+ "n1_haskell_2": {
+  "en": "\"Fourth floor's closed. Fourth floor's hook is empty. I've been doing this eleven years, son. Tell me a story.\"",
+  "ja": "「四階は閉鎖中。四階の鍵が一本ない。十一年この仕事をしてるんだ、坊や。話を聞かせてくれ」"
+ },
+ "n1_haskell_3": {
+  "en": "He sees through a bluff the way a window sees through rain. But he is a man who respects paper. He always has been.",
+  "ja": "彼は窓が雨を透かすように、はったりを見抜く。だが紙を敬う男だ。昔からそうだった。"
+ },
+ "n1_haskell_4": {
+  "en": "\"Quiet. I'll write 'quiet'.\" He writes it. He underlines it. He does not believe it, and he goes.",
+  "ja": "「異常なし。『異常なし』と書く」彼は書く。下線を引く。信じていないまま、去っていく。"
+ },
+ "n1_haskell_5": {
+  "en": "He leaves the torch on the radiator. Rubber, heavy, the kind that is also a reason to stop talking.",
+  "ja": "彼はラジエーターの上に懐中電灯を置いていく。ゴム製で重く、話を終わらせる口実にもなる類いのものだ。"
+ },
+ "n1_sconce_1": {
+  "en": "The sconce outside 208 is dying. You tap it and it comes back, which is more than can be said for most things in this building.",
+  "ja": "208号室の前の壁灯が消えかけている。叩くと点き直る。この建物では珍しいことだ。"
+ },
+ "n1_extinguisher_1": {
+  "en": "Behind the extinguisher, Haskell's spare torch. He hides one on every floor. You take this one. He has eleven.",
+  "ja": "消火器の裏に、ハスケルの予備の懐中電灯。彼は各階にひとつ隠している。これをもらう。彼には十一本ある。"
+ },
+ "n1_212_1": {
+  "en": "Room 212, vacant since the spring. Dust sheets, a stripped mattress, and a window that looks straight across at the noodle place.",
+  "ja": "212号室。春から空室。家具のカバー、剥がされたマットレス、そして麺屋を真正面に見る窓。"
+ },
+ "n1_dustsheet_1": {
+  "en": "Under the dust sheet, a bedside drawer with a packet of aspirin and a bible someone has used as a coaster.",
+  "ja": "カバーの下に、アスピリンの箱と、誰かがコースター代わりにした聖書の入ったベッドサイドの引き出し。"
+ },
+ "n1_window_1": {
+  "en": "From up here you can see into the car. A man, mid-forties, doing nothing, which takes a particular kind of patience.",
+  "ja": "ここからなら車の中が見える。四十代半ばの男が、何もせずにいる。それには特別な種類の忍耐がいる。"
+ },
+ "n1_window_2": {
+  "en": "He is looking at the doors. He is not looking up. Nobody looks up.",
+  "ja": "彼はドアを見ている。上は見ていない。誰も上を見ない。"
+ },
+ "n1_street_1": {
+  "en": "The street. Rain, the noodle place's red neon, and the car at the kerb with a man in it who does not look at you.",
+  "ja": "通り。雨、麺屋の赤いネオン、そして縁石の車と、あなたを見ない中の男。"
+ },
+ "n1_noodle_1": {
+  "en": "The noodle place is shut, but the cook knows you. He hands a paper cup through the side door and does not ask why you are out in this.",
+  "ja": "麺屋は閉まっているが、料理人はあなたを知っている。横の扉から紙コップを差し出し、なぜこんな雨の中にいるのかとは聞かない。"
+ },
+ "n1_car_1": {
+  "en": "You walk past the car as if you were going somewhere. The window is down an inch. He is listening to the hotel's doors, not to the rain.",
+  "ja": "どこかへ行くふりをして車の横を歩く。窓が一インチ開いている。彼は雨ではなく、ホテルのドアの音を聞いている。"
+ },
+ "n1_gale_1": {
+  "en": "He does not go. He puts both hands on the counter, flat, the way a man does when he has decided to stay until he hears what he came for.",
+  "ja": "彼は帰らない。両手をカウンターに平らに置く。聞きに来たことを聞くまで居座ると決めた男のやり方で。"
+ },
+ "n1_gale_2": {
+  "en": "Whatever you told him, he is going to make you say it again, slower, until one of you is wrong.",
+  "ja": "何を言ったにせよ、彼はもう一度、ゆっくり言わせるつもりだ。どちらかが間違うまで。"
+ },
+ "n1_end_1": {
+  "en": "You take the pass key from your pocket and look at the stairs. Four floors. One window. A car across the road.",
+  "ja": "ポケットからマスターキーを出し、階段を見る。四階分。窓ひとつ。通りの向かいの車。"
+ },
+ "hs_ask": {
+  "en": "Pick up",
+  "ja": "受話器を取る"
+ },
+ "n2_join_1": {
+  "en": "She wants to know who he is talking to. The roof looks down on the car. Mrs Dace keeps a call log on the sixth floor. The man in 702 keeps nothing, and that is useful too.",
+  "ja": "彼女は彼が誰と話しているのか知りたがっている。屋上からは車が見下ろせる。六階のデイス夫人は通話記録をつけている。702の男は何も記録しない。それもまた役に立つ。"
+ },
+ "n2_join_2": {
+  "en": "Mira joins you. In a standoff she acts after you, with her own skills — and she can Read him, which shows you what a person is afraid of.",
+  "ja": "ミラが仲間になった。対峙では彼女もあなたの後に、自分のスキルで行動する。「相手を読む」で、その人が何を恐れているかが分かる。"
+ },
+ "n2_join_3": {
+  "en": "\"I'm good at people. I had eleven months of practice being looked at. Let me do the looking.\"",
+  "ja": "「人を見るのは得意なの。十一ヶ月、見られる練習をしたから。見るのは私に任せて」"
+ },
+ "n2_join_4": {
+  "en": "Her coat is on the chair, still wet at the hem. The dress underneath was not chosen for corridors either.",
+  "ja": "彼女のコートは椅子の上。裾はまだ濡れている。その下のドレスも、廊下向きに選ばれたものではない。"
+ },
+ "n2_bag_1": {
+  "en": "Her canvas bag, open on the bed. A toothbrush, a paperback with the cover torn off, and a train ticket for six-forty, nine days old.",
+  "ja": "ベッドの上に開いたキャンバスバッグ。歯ブラシ、表紙の破れた文庫本、そして九日前の六時四十分発の列車の切符。"
+ },
+ "n2_bag_2": {
+  "en": "\"You can hold on to that. I keep almost getting on it.\"",
+  "ja": "「持ってていいわ。乗りそうになるのを、何度も繰り返してるから」"
+ },
+ "n2_window704_1": {
+  "en": "The car is still there. From the window you can make out the shape of a man doing nothing. The sign across the street cycles red, then off, then red.",
+  "ja": "車はまだそこにいる。窓から、何もしていない男の影が見える。通りの向かいの看板が赤く点き、消え、また赤く点く。"
+ },
+ "n2_bath_1": {
+  "en": "The bathroom. A tooth glass with two inches of something in it, and a towel folded by someone who meant to leave early.",
+  "ja": "バスルーム。何かが二インチ入った歯磨きコップと、早朝に発つつもりだった誰かが畳んだタオル。"
+ },
+ "n2_coat_1": {
+  "en": "You hang her coat on the radiator and turn it so the wet side faces the heat. She watches you do it.",
+  "ja": "彼女のコートをラジエーターに掛け、濡れた側を熱に向ける。彼女はそれを見ている。"
+ },
+ "n2_coat_2": {
+  "en": "\"...Nobody does that.\"",
+  "ja": "「……そんなことする人、いないわ」"
+ },
+ "n2_corr_1": {
+  "en": "The fourth-floor corridor. The sconce outside 702 flickers, and under it a torch beam that is not yours. Haskell is early.",
+  "ja": "四階の廊下。702号室の前の壁灯が明滅し、その下にあなたのものではない懐中電灯の光。ハスケルが早い。"
+ },
+ "n2_haskell_1": {
+  "en": "\"Voices. Seven-oh-two rang down about voices on a closed floor. And here's two of them.\"",
+  "ja": "「声がするってな。閉鎖中の階で声がすると、702から電話があった。で、ここに二人分の声がある」"
+ },
+ "n2_haskell_2": {
+  "en": "He looks at Mira the way he looks at everything: as if it were already in his notebook.",
+  "ja": "彼はミラを見る。他のすべてを見るのと同じように。もう手帳に書いてあるとでも言うように。"
+ },
+ "n2_haskell_3": {
+  "en": "\"Pipes. I'll write it up as the pipes.\" He turns the torch off, which for Haskell is an apology.",
+  "ja": "「配管の音だな。配管ってことにしとく」彼は懐中電灯を消す。ハスケルにとっては、それが謝罪だ。"
+ },
+ "n2_sconce4_1": {
+  "en": "The sconce outside 702 has been dying for a year. Tonight it holds. Even the building is on your side.",
+  "ja": "702号室の前の壁灯は一年前から消えかけている。今夜は持ちこたえた。建物まであなたの味方だ。"
+ },
+ "n2_702_1": {
+  "en": "Room 702. The guest is a salesman who is never in it. Newspapers, an ashtray, an open suitcase, and a smell of a cigarette finished three hours ago.",
+  "ja": "702号室。客は部屋にいたためしのないセールスマン。新聞、灰皿、開いたスーツケース、そして三時間前に吸い終えた煙草の匂い。"
+ },
+ "n2_newspapers_1": {
+  "en": "Between the papers, two twenties and a racing slip. He will not miss the twenties. He has not been back since Tuesday.",
+  "ja": "新聞の間に二十ポンド札が二枚と競馬の投票券。彼は札を惜しまないだろう。火曜日から戻っていない。"
+ },
+ "n2_ashtray_1": {
+  "en": "In the ashtray, a cigarette end of the brand you found in the lift. The man in the car has been up here. Recently.",
+  "ja": "灰皿に、エレベーターで見つけたのと同じ銘柄の吸殻。車の男はここまで上がってきていた。最近。"
+ },
+ "n2_suitcase_1": {
+  "en": "A laundered shirt on top of the suitcase, two sizes too big for her. Mira looks at it, and at you, and takes it anyway.",
+  "ja": "スーツケースの上に、洗濯済みのシャツ。彼女には二回り大きい。ミラはそれを見て、あなたを見て、それでも手に取る。"
+ },
+ "n2_linen_1": {
+  "en": "The linen room. Towels to the ceiling, a chute to the laundry, and a ladder to a hatch somebody painted shut and somebody else unpainted.",
+  "ja": "リネン室。天井までのタオル、洗濯室へのシュート、そして誰かがペンキで塞ぎ、別の誰かが剥がした天井ハッチへのはしご。"
+ },
+ "n2_towels_1": {
+  "en": "Behind the towels, the Marbeck's one bathrobe. The night manager's. Mira puts it over the dress and looks, for the first time tonight, warm.",
+  "ja": "タオルの奥に、マーベック唯一のバスローブ。夜間支配人のものだ。ミラはドレスの上に羽織り、今夜はじめて暖かそうに見える。"
+ },
+ "n2_chute_1": {
+  "en": "Down the chute, far below, someone is running a washing machine at half past four. Mrs Dace does not sleep either.",
+  "ja": "シュートの奥、はるか下で、誰かが四時半に洗濯機を回している。デイス夫人も眠れないのだ。"
+ },
+ "n2_roof_1": {
+  "en": "The roof. The back of the sign, the water tank, and the whole wet city laid out like a thing that owes nobody anything.",
+  "ja": "屋上。看板の裏、給水タンク、そして誰にも何の借りもないように広がる、濡れた街のすべて。"
+ },
+ "n2_roof_2": {
+  "en": "Mira stands at the parapet in your coat and looks at the city for a long time, the way people look at a thing they are about to leave.",
+  "ja": "ミラはあなたのコートを着てパラペットに立ち、長いこと街を眺める。これから去る場所を見る人の目で。"
+ },
+ "n2_roof_3": {
+  "en": "\"From up here he's just a car.\"",
+  "ja": "「ここからだと、彼はただの車ね」"
+ },
+ "n2_constable_1": {
+  "en": "A torch at the roof door. Hi-vis, a radio, a face that is twenty-eight and has not decided what to think yet.",
+  "ja": "屋上の扉に懐中電灯。蛍光ベスト、無線機、そしてまだ何も決めていない二十八歳の顔。"
+ },
+ "n2_constable_2": {
+  "en": "\"Welfare check, sir. A caller was concerned about a woman at this address. He wouldn't give his name.\"",
+  "ja": "「安否確認です。この住所の女性について心配する通報がありまして。通報者は名乗りませんでした」"
+ },
+ "n2_constable_3": {
+  "en": "Mira does not hide. She stands in the open and lets him see that she is, in every sense, fine.",
+  "ja": "ミラは隠れない。開けた場所に立ち、あらゆる意味で自分が無事であることを彼に見せる。"
+ },
+ "n2_constable_4": {
+  "en": "\"Hoax, then.\" He radios it in. He looks at Mira once more, kindly, and goes to find his car.",
+  "ja": "「じゃあ悪戯ですね」彼は無線で報告する。もう一度、優しくミラを見て、車を探しに行った。"
+ },
+ "n2_tank_1": {
+  "en": "The water tank hums. Somebody has written a name and a year on it in paint. It is not a name you know.",
+  "ja": "給水タンクが唸る。誰かがペンキで名前と年号を書いている。知らない名前だ。"
+ },
+ "n2_sign_1": {
+  "en": "The back of the sign, where the neon is just wire and dust. From the front it is the most beautiful thing on the street.",
+  "ja": "看板の裏。ネオンはただの針金と埃だ。表から見れば、通りで一番美しいもの。"
+ },
+ "n2_parapet_1": {
+  "en": "From the parapet, the car. He has the interior light on now. He is writing something down.",
+  "ja": "パラペットから、車。今は室内灯が点いている。何かを書き留めている。"
+ },
+ "n2_lift_1": {
+  "en": "The lift has stopped between the third and fourth floors with the guest from 212 inside it, and he has decided this is your fault.",
+  "ja": "エレベーターが三階と四階の間で止まった。中には212号室の客。彼はこれがあなたのせいだと決めた。"
+ },
+ "n2_g212_1": {
+  "en": "\"I've paid! I've paid for a room with a lift that works!\"",
+  "ja": "「金は払ったぞ！ 動くエレベーター付きの部屋に払ったんだ！」"
+ },
+ "n2_g212_2": {
+  "en": "The lift remembers how to move. He forgets what he was angry about, and goes down, and does not come back.",
+  "ja": "エレベーターは動き方を思い出し、彼は何に怒っていたかを忘れ、降りていき、戻ってこない。"
+ },
+ "n2_dial4_1": {
+  "en": "The dial on this floor says two. Nothing in this building agrees with anything else in it.",
+  "ja": "この階の階数表示は「2」。この建物の中で、互いに一致するものは何ひとつない。"
+ },
+ "n2_stair_1": {
+  "en": "The service stair again. The caged bulbs, the painted numbers, and her hand on the rail just ahead of yours.",
+  "ja": "また業務用階段。金網の電球、ペンキの数字、そしてあなたの手のすぐ先で手すりに添えられた彼女の手。"
+ },
+ "n2_t3_1": {
+  "en": "On the fifth landing she stops, and turns, and does not say anything, and the strap of the dress has slipped off her shoulder and she does not fix it.",
+  "ja": "五階の踊り場で彼女は立ち止まり、振り返り、何も言わない。ドレスの肩紐が肩から落ちていて、彼女はそれを直さない。"
+ },
+ "n2_t3_2": {
+  "en": "You kiss her under a caged bulb on a concrete stair, which is not where either of you imagined it, and is exactly right.",
+  "ja": "金網の電球の下、コンクリートの階段で、彼女にキスをする。どちらも思い描いていた場所ではない。そして、それで完全に正しい。"
+ },
+ "n2_t3_3": {
+  "en": "\"Later,\" she says, and means it, and goes up ahead of you not hurrying.",
+  "ja": "「あとで」と彼女は言う。本気で。そして急がずに、あなたの先を上がっていく。"
+ },
+ "n2_trust_hint": {
+  "en": "(Her trust is not there yet. At Trust 3, this stair goes somewhere.)",
+  "ja": "（まだ彼女の信頼が足りない。信頼3で、この階段は別の場所へ続く）"
+ },
+ "n2_dace_1": {
+  "en": "Mrs Dace, on the sixth landing, in a quilted dressing gown, with a cordless phone in one hand and the other on the rail like a woman who owns the rail.",
+  "ja": "六階の踊り場にデイス夫人。キルトのガウン、片手にコードレス電話、もう片方の手は手すりを所有する女のように手すりに。"
+ },
+ "n2_dace_2": {
+  "en": "\"Forty rooms. Eleven guests. I can count, young man. And I can count her.\"",
+  "ja": "「四十室。十一人。数えられるのよ、お若いの。彼女も数えられる」"
+ },
+ "n2_dace_3": {
+  "en": "She looks at Mira for a long moment, and something in her face that was a landlady becomes, briefly, a woman.",
+  "ja": "彼女は長いことミラを見る。女主人だった顔の何かが、ほんの一瞬、ひとりの女になる。"
+ },
+ "n2_dace_4": {
+  "en": "\"I did not see her. I did not see you. I saw a draught. Keep the lift still.\" She goes up.",
+  "ja": "「彼女は見なかった。あなたも見なかった。見たのは隙間風。エレベーターは動かさないで」彼女は上がっていく。"
+ },
+ "n2_flat_1": {
+  "en": "Mrs Dace's flat: an armchair, a blanket, a cat on the cushion, a television with the sound off, and the Marbeck's whole history in photographs along one wall.",
+  "ja": "デイス夫人の部屋。肘掛け椅子、毛布、クッションの上の猫、音を消したテレビ、そして壁一面の写真に収まったマーベックの歴史。"
+ },
+ "n2_cat_1": {
+  "en": "The cat looks at Mira, decides something, and gets into her lap. Mira sits very still, as if she had been given something breakable.",
+  "ja": "猫はミラを見て、何かを決め、彼女の膝に乗る。ミラは壊れ物を渡されたように、じっと動かない。"
+ },
+ "n2_cat_2": {
+  "en": "\"Nobody's chosen me in a while. Not even a cat.\"",
+  "ja": "「しばらく誰にも選ばれてなかった。猫にすら」"
+ },
+ "n2_photos_1": {
+  "en": "The photographs: the Marbeck in 1962, the Marbeck on fire in 1979, Mr Dace shaking hands with a man in a good coat. The man is younger. The coat is the same. Penhallow.",
+  "ja": "写真。1962年のマーベック、1979年の火事のマーベック、上等なコートの男と握手するデイス氏。男は若い。コートは同じだ。ペンハロウ。"
+ },
+ "n2_photos_2": {
+  "en": "Under the frame, a call log in Mrs Dace's hand. Tonight, 3:52: 'Man asking after the fourth floor. Told him we're closed. He didn't believe me.'",
+  "ja": "写真立ての下に、デイス夫人の筆跡の通話記録。今夜3時52分：「四階について尋ねる男。閉鎖中と伝えた。信じなかった」"
+ },
+ "n2_nail_1": {
+  "en": "The basement key, on a nail by the door, where a woman who never goes down keeps it. You take it. She will know. She will not say.",
+  "ja": "扉のそばの釘に地下の鍵。決して下へ行かない女が置いておく場所だ。あなたはそれを取る。彼女は気づく。何も言わない。"
+ },
+ "n2_gale_1": {
+  "en": "Footsteps on the service stair. Not hurrying. He comes round the corner of the fourth-floor corridor with his coat open and his hands empty, and looks at the door of 704.",
+  "ja": "業務用階段に足音。急いでいない。彼はコートの前を開け、手には何も持たず、四階の廊下の角を曲がってきて、704号室の扉を見る。"
+ },
+ "n2_gale_2": {
+  "en": "\"Mira.\" Not a question. \"Nine days. I'd have let you have the ticket. I only wanted to know where.\"",
+  "ja": "「ミラ」問いかけではない。「九日間。切符なら持たせてやった。どこなのか、知りたかっただけだ」"
+ },
+ "n2_gale_3": {
+  "en": "She does not step behind you. She steps beside you. That is the whole of what she has decided tonight.",
+  "ja": "彼女はあなたの後ろに下がらない。隣に立つ。それが今夜、彼女が決めたことのすべてだ。"
+ },
+ "n2_gale_4": {
+  "en": "He looks at the door for a long time. Then he puts his lighter on the radiator, like a man leaving a card, and goes down the way he came.",
+  "ja": "彼は長いこと扉を見る。それから名刺を置く男のように、ラジエーターの上にライターを置き、来た道を戻っていく。"
+ },
+ "n2_gale_5": {
+  "en": "\"He'll go to the station. He'll wait there. He's good at waiting.\" She says it without looking at the stairs.",
+  "ja": "「駅に行くわ。そこで待つ。待つのは得意だから」階段を見ずに、彼女は言う。"
+ },
+ "n2_back_1": {
+  "en": "Back in 704. The bed, the chair, the window. She pours two inches of something into the tooth glass and hands it to you.",
+  "ja": "704号室に戻る。ベッド、椅子、窓。彼女は歯磨きコップに何かを二インチ注ぎ、あなたに渡す。"
+ },
+ "n2_after_1": {
+  "en": "Four floors down, a car starts, and idles, and does not leave. The window goes from black to a colour that is not yet grey.",
+  "ja": "四階下で車のエンジンがかかり、アイドリングし、去らない。窓は黒から、まだ灰色ではない色に変わる。"
+ },
+ "n2_trust5_hint": {
+  "en": "(She asked plainly. At Trust 5 you could answer plainly. Tonight you say the sensible thing.)",
+  "ja": "（彼女は率直に尋ねた。信頼5なら率直に答えられた。今夜は、分別のあることを言う）"
+ },
+ "n3_t7_1": {
+  "en": "Before the stockings, before the car's gone and the sign is off: she is on her front on the sheets with her chin on her arms, watching you not get up.",
+  "ja": "ストッキングの前、車が消えて看板が消える前。彼女はシーツの上にうつ伏せで、腕に顎を乗せ、起き上がらないあなたを見ている。"
+ },
+ "n3_t7_2": {
+  "en": "\"Don't look at the window yet. Look at this. This is the part I'll keep.\"",
+  "ja": "「まだ窓を見ないで。こっちを見て。これが、私が持っていく部分だから」"
+ },
+ "n3_t7_3": {
+  "en": "The neon crosses her back one last time and goes out for the day.",
+  "ja": "ネオンが最後にもう一度、彼女の背中を横切り、昼のために消える。"
+ },
+ "n3_t5_1": {
+  "en": "The bathroom door stays open. Steam, the tap, and Mira on the edge of the bath with a towel round her hips and nothing else, laughing at something you said.",
+  "ja": "バスルームの扉は開いたまま。湯気、蛇口、そして腰にタオルだけを巻いたミラが、バスタブの縁に腰かけ、あなたの言ったことに笑っている。"
+ },
+ "n3_t5_2": {
+  "en": "\"The Marbeck has hot water. I take back half of what I said about it.\"",
+  "ja": "「マーベックにはお湯が出るのね。言ったことの半分は撤回するわ」"
+ },
+ "n3_plan_1": {
+  "en": "The car's gone. The sign is off. In an hour the day porter comes on, and before that, at a quarter to seven, the owner's man comes for the book.",
+  "ja": "車は消えた。看板は消えた。一時間後に昼番のポーターが出勤し、その前の六時四十五分に、オーナーの代理人が帳簿を取りに来る。"
+ },
+ "n3_plan_2": {
+  "en": "The basement key is in your pocket. The fourth row of the fourth floor is a clean line. Keep it that way until seven.",
+  "ja": "地下の鍵はポケットの中。四階の四行目はきれいな空白。七時までそのままにしておこう。"
+ },
+ "n3_plan_3": {
+  "en": "\"I'm not getting on the six-forty. I've decided that much. The rest I'll decide at the door.\"",
+  "ja": "「六時四十分には乗らない。それだけは決めた。残りは、ドアのところで決める」"
+ },
+ "n3_corr_1": {
+  "en": "The fourth-floor corridor by daylight is only a corridor. The sconce outside 702 is off because somebody, finally, has turned it off.",
+  "ja": "昼の光の中の四階の廊下は、ただの廊下だ。702の前の壁灯は、ついに誰かが消したから消えている。"
+ },
+ "n3_stair_1": {
+  "en": "Down the service stair, past the landing where she stopped. Neither of you mentions it. Both of you look at it.",
+  "ja": "業務用階段を降り、彼女が立ち止まった踊り場を過ぎる。どちらもそれには触れない。どちらもそこを見る。"
+ },
+ "n3_boiler_1": {
+  "en": "The boiler room. Gauges, pipes, a lamp in a cage, and the one place in the Marbeck that is warm by design.",
+  "ja": "ボイラー室。計器、配管、金網の中のランプ。マーベックで唯一、意図して暖かい場所。"
+ },
+ "n3_gauges_1": {
+  "en": "The gauges read what they read in 1979. Mr Dace painted the needles on. It has not blown up yet.",
+  "ja": "計器は1979年と同じ値を示している。デイス氏が針をペンキで描いたのだ。まだ爆発していない。"
+ },
+ "n3_pipes_1": {
+  "en": "Behind the pipes, a bottle with Mrs Dace's name on it in biro and a glass that has been washed. You pour her a measure back and take the rest.",
+  "ja": "配管の裏に、ボールペンでデイス夫人の名前を書いた瓶と、洗ってあるグラス。彼女の分を一杯注ぎ戻し、残りをもらう。"
+ },
+ "n3_laundry_1": {
+  "en": "The laundry. Sheets on lines, steam, two machines running, and Mrs Dace at the folding table at half past six because she could not sleep either.",
+  "ja": "洗濯室。ロープに干したシーツ、湯気、回っている洗濯機が二台、そして六時半に畳み台に向かうデイス夫人。彼女も眠れなかったのだ。"
+ },
+ "n3_dace_1": {
+  "en": "\"You took my key.\" Not a question. \"And the owner's man is coming for the book, and I am a woman who was asleep.\"",
+  "ja": "「鍵を持っていったわね」問いではない。「オーナーの代理人が帳簿を取りに来る。そして私は、寝ていた女」"
+ },
+ "n3_dace_2": {
+  "en": "Mira takes the other end of the sheet without being asked, and the two of them fold it between them like women who have done this before.",
+  "ja": "ミラは言われもせずにシーツの反対側を持ち、二人は昔からそうしてきた女たちのように、間でシーツを畳む。"
+ },
+ "n3_dace_3": {
+  "en": "\"For the room. It'll want making up before nine. And put my key back on its nail, young man.\"",
+  "ja": "「部屋の分。九時までに整えておきなさい。それと鍵は釘に戻しておいて、お若いの」"
+ },
+ "n3_washers_1": {
+  "en": "On the second machine, a tray of minibar chocolate someone has been drying out. It is the Marbeck. Nothing is thrown away.",
+  "ja": "二台目の洗濯機の上に、誰かが乾かしていたミニバーのチョコレートのトレー。マーベックだ。何も捨てられない。"
+ },
+ "n3_sheets_1": {
+  "en": "Between two hanging sheets, Mira stops, and the light comes through the cotton onto her face, and for a second nobody is looking for anyone.",
+  "ja": "干したシーツの間でミラが立ち止まる。木綿越しの光が顔に落ち、一瞬、誰も誰かを探していない。"
+ },
+ "n3_bay_1": {
+  "en": "The loading bay. The shutter up a foot, rain blowing under it, bins, puddles, and on the cobbles a dry rectangle where a car was parked until twenty past six.",
+  "ja": "搬入口。一フィート上がったシャッター、その下から吹き込む雨、ゴミ箱、水たまり。そして石畳に、六時二十分まで車が停まっていた乾いた長方形。"
+ },
+ "n3_constable_1": {
+  "en": "The constable again, in the alley, with a notebook and a different question.",
+  "ja": "路地にまた巡査。手帳と、違う質問を携えて。"
+ },
+ "n3_constable_2": {
+  "en": "\"The car. Dark saloon, kerbside, there since three. Whose was it, sir, and why has it gone?\"",
+  "ja": "「あの車です。黒っぽいセダン、縁石脇、三時からいました。誰の車で、なぜいなくなったんですか？」"
+ },
+ "n3_constable_3": {
+  "en": "You give him a registration. It is wrong by one letter. He writes it down and thanks you, and that is the end of the car.",
+  "ja": "ナンバーを教える。一文字だけ違う。彼は書き留めて礼を言い、それで車の話は終わりだ。"
+ },
+ "n3_shutter_1": {
+  "en": "The shutter has been forced from outside, a foot and no more. A man came in this way at four and went out this way at six.",
+  "ja": "シャッターは外からこじ開けられている。一フィートだけ。四時に男がここから入り、六時にここから出た。"
+ },
+ "n3_bins_1": {
+  "en": "In the bin, torn in half, his card. The number he left on the counter. He does not want it back.",
+  "ja": "ゴミ箱の中に、半分に破られた彼の名刺。カウンターに置いていった番号だ。もう要らないらしい。"
+ },
+ "n3_street_1": {
+  "en": "The street at twenty to seven. The rain has stopped. The pavement has started to steam. The kerb where the car was is only a kerb.",
+  "ja": "六時四十分の通り。雨は止んだ。歩道から湯気が立ち始めている。車のあった縁石は、ただの縁石だ。"
+ },
+ "n3_car_gone_1": {
+  "en": "A dry rectangle on the road, already shrinking. In an hour there will be no sign he was ever here, which is what he would have wanted.",
+  "ja": "路面に乾いた長方形。もう縮み始めている。一時間後には彼がいた痕跡もなくなる。彼もそれを望んだだろう。"
+ },
+ "n3_noodle_1": {
+  "en": "The noodle place is opening. The cook puts two paper cups on the sill without being asked. He has seen the two of you from across the road.",
+  "ja": "麺屋が開く。料理人は頼まれもせずに窓の桟に紙コップを二つ置く。通りの向こうから、二人を見ていたのだ。"
+ },
+ "n3_office_1": {
+  "en": "The back office. The register is open on the desk, and Haskell is sitting in the accountant's chair, which nobody sits in.",
+  "ja": "事務室。デスクの上に開かれた宿帳。そして会計士の椅子に、誰も座らないその椅子に、ハスケルが座っている。"
+ },
+ "n3_haskell_1": {
+  "en": "\"Fourth floor. Fourth row. Clean as the day it was ruled.\" He turns the book round. \"Eleven years, son. Tell me a story I can write down.\"",
+  "ja": "「四階。四行目。罫線を引いた日のままだ」彼は宿帳をこちらに向ける。「十一年だ、坊や。書き留められる話を聞かせてくれ」"
+ },
+ "n3_haskell_2": {
+  "en": "He closes the book. \"This wasn't a quiet night. I'll write 'quiet'. Goodnight.\" He leaves the chair exactly as he found it.",
+  "ja": "彼は帳簿を閉じる。「静かな夜じゃなかった。『異常なし』と書く。おやすみ」椅子は見つけたときのままに戻していった。"
+ },
+ "n3_register3_1": {
+  "en": "The fourth row. You run your thumb along it. Nothing comes off. It is the cleanest thing you have done all year.",
+  "ja": "四行目。親指でなぞる。何もつかない。この一年であなたがした、一番きれいな仕事だ。"
+ },
+ "n3_lobby_1": {
+  "en": "The lobby at a quarter to seven: grey light, wet tiles, and a man in a camel coat at the doors with a briefcase, who has not pressed the bell because he does not need to.",
+  "ja": "六時四十五分のロビー。灰色の光、濡れたタイル、そしてドアのところに鞄を持ったキャメルコートの男。ベルは押さない。押す必要がないからだ。"
+ },
+ "n3_pen_1": {
+  "en": "\"Penhallow. For the owner. The quarterly audit is early this quarter, because the owner had a telephone call at four this morning from a man with a full tank.\"",
+  "ja": "「ペンハロウだ。オーナーの代理でね。今期の四半期監査は早めだ。今朝四時に、オーナーのところへガソリン満タンの男から電話があったものでね」"
+ },
+ "n3_pen_2": {
+  "en": "He puts a cheque on the counter, unsigned, with Gale's handwriting on the payee line. \"The fourth floor's row, please. I am told it is empty. I would like to be told it by the book.\"",
+  "ja": "彼はカウンターに未署名の小切手を置く。受取人の欄にはゲイルの筆跡。「四階の行を見せてくれ。空だと聞いている。帳簿にそう言ってもらいたい」"
+ },
+ "n3_pen_3": {
+  "en": "Mira, beside you, in your spare shirt, looks at the cheque and then at him, and he looks at her for the first time, and understands that she is not for sale either.",
+  "ja": "隣のミラは、あなたの替えのシャツを着て、小切手を見て、それから彼を見る。彼ははじめて彼女を見て、彼女も売り物ではないと理解する。"
+ },
+ "n3_pen_4": {
+  "en": "He puts the cheque back in the briefcase. \"A quiet hotel. The owner will be pleased. Mrs Dace will be relieved.\" He goes out into a street that is only a street.",
+  "ja": "彼は小切手を鞄に戻す。「静かなホテルだ。オーナーも喜ぶだろう。デイス夫人も安心する」彼はただの通りに出ていく。"
+ },
+ "n3_pen_5": {
+  "en": "On the counter where the cheque was: her train ticket. He found it in the car. He does not say so. He does not need to.",
+  "ja": "小切手のあった場所に、彼女の列車の切符。彼は車の中で見つけたのだ。そうとは言わない。言う必要がない。"
+ },
+ "n3_end_pre": {
+  "en": "She walks back up four flights for her coat and her bag, and comes down them again without hurrying, and stops at the desk.",
+  "ja": "彼女はコートとバッグを取りに四階分を上がり、急がずにまた降りてきて、デスクのところで立ち止まる。"
+ },
+ "n4_open_1": {
+  "en": "Lenny. Twenty-three, bicycle clips, a paper under his arm, and a question he asks every morning because one day the answer will be yes.",
+  "ja": "レニー。二十三歳、自転車用のズボン留め、小脇に新聞。そして、いつか答えが「ああ」になる日のために毎朝する質問。"
+ },
+ "n4_porter_1": {
+  "en": "\"Anything happen?\" He asks it at the door, before his coat is off. He asks it the way other people say good morning.",
+  "ja": "「何かあった？」コートを脱ぐ前に、ドアのところで聞く。他の人が「おはよう」と言うのと同じ調子で。"
+ },
+ "n4_porter_2": {
+  "en": "\"Only — the fourth floor's hook. I'll be the one asked, see, if anyone asks.\"",
+  "ja": "「ただ、四階の鍵なんだけど。誰かに聞かれたら、聞かれるのは俺だからさ」"
+ },
+ "n4_porter_3": {
+  "en": "He takes the paper and the register and does not look at either, and goes to put the kettle on, and that is the Marbeck's whole security review for the quarter.",
+  "ja": "彼は新聞と宿帳を受け取り、どちらも見ず、やかんを火にかけに行く。それが今四半期のマーベックの保安監査のすべてだ。"
+ },
+ "n4_board_1": {
+  "en": "Seven-oh-four goes back on its hook. Twenty empty hooks. Nobody will ever know which one.",
+  "ja": "704が鉤に戻る。空の鉤は二十本。どれがそれなのか、誰にも分からない。"
+ },
+ "n4_corner_1": {
+  "en": "The corner, at seven. The pavement steaming. She goes left, the wrong way for the station, and that is the point.",
+  "ja": "七時の角。湯気を立てる歩道。彼女は左へ行く。駅とは逆の方へ。それが肝心なところだ。"
+ },
+ "n4_corner_2": {
+  "en": "At the corner she looks back once. You are standing in the doorway you have watched all night from the wrong side.",
+  "ja": "角で彼女は一度だけ振り返る。あなたは、一晩じゅう内側から見ていた戸口に立っている。"
+ },
+ "n4_train_1": {
+  "en": "The bus from the corner at seven goes the wrong way for an hour. She gets on it with the key in her pocket, which she will post back, which she does.",
+  "ja": "七時に角から出るバスは、一時間ほど逆方向へ行く。彼女はポケットに鍵を入れたまま乗る。郵便で返すと言って、本当に返してきた。"
+ },
+ "n4_train_2": {
+  "en": "The hotel gets three letters a year. That winter it gets four.",
+  "ja": "ホテルには年に三通の手紙が届く。その冬は四通だった。"
+ },
+ "n4_alone_1": {
+  "en": "The station, then. She walks to it the way she walked in: without hurrying. She does not look back at the doors.",
+  "ja": "では駅へ。彼女は入ってきたときと同じように歩いていく。急がずに。ドアを振り返りはしない。"
+ },
+ "n4_alone_2": {
+  "en": "You go back inside and put the tooth glass in the sink, and the key on the board, and the night in the place where you keep the others.",
+  "ja": "中に戻り、歯磨きコップを流しに置き、鍵をボードに掛け、今夜を、他の夜をしまってある場所にしまう。"
+ },
+ "n4_t9_1": {
+  "en": "At nine, with the room already made up, the desk phone rings. Internal line. Seven-oh-four.",
+  "ja": "九時、部屋はもう整えてある。デスクの電話が鳴る。内線。704号室。"
+ },
+ "n4_t9_2": {
+  "en": "\"It's Mira. From the book you didn't write in. I never went to the corner. I've been sitting here in your shirt drinking the noodle man's coffee, deciding.\"",
+  "ja": "「ミラよ。あなたが書かなかった帳簿の。角には行かなかった。ずっとここで、あなたのシャツを着て麺屋のコーヒーを飲みながら、決めてたの」"
+ },
+ "n4_t9_3": {
+  "en": "\"Bring the pass key. I've decided.\"",
+  "ja": "「マスターキーを持ってきて。決めたから」"
+ },
+ "n4_t9_4": {
+  "en": "You take the key off the board, and you do not write anything in the book, and you go up the stairs not hurrying either.",
+  "ja": "ボードから鍵を取り、帳簿には何も書かず、あなたもまた急がずに階段を上がっていく。"
+ },
+ "hs_ticket": {
+  "en": "The ticket",
+  "ja": "切符"
+ },
+ "title": {
+  "en": "Room 704",
+  "ja": "ルーム704"
+ },
+ "t_subtitle": {
+  "en": "One night. One floor. Nobody in the book.",
+  "ja": "ひと晩。ひとつの階。帳簿には誰もいない。"
+ },
+ "t_note": {
+  "en": "18+ · All characters are adults · AI-generated work (see 'About this work')",
+  "ja": "18歳以上対象 · 登場人物は全員成人です · AI生成作品（「作品について」参照）"
+ },
+ "n_protagonist": {
+  "en": "You",
+  "ja": "あなた"
+ },
+ "n_auditor": {
+  "en": "Night auditor",
+  "ja": "夜間監査人"
+ },
+ "n_mira": {
+  "en": "Mira",
+  "ja": "ミラ"
+ },
+ "n_man": {
+  "en": "???",
+  "ja": "？？？"
+ },
+ "n_gale": {
+  "en": "Gale",
+  "ja": "ゲイル"
+ },
+ "n_haskell": {
+  "en": "Haskell",
+  "ja": "ハスケル"
+ },
+ "n_penhallow": {
+  "en": "Penhallow",
+  "ja": "ペンハロウ"
+ },
+ "n_dace": {
+  "en": "Mrs Dace",
+  "ja": "デイス夫人"
+ },
+ "n_guest212": {
+  "en": "The guest in 212",
+  "ja": "212号室の客"
+ },
+ "n_constable": {
+  "en": "Constable",
+  "ja": "巡査"
+ },
+ "n_porter": {
+  "en": "Lenny",
+  "ja": "レニー"
+ },
+ "ev_trust": {
+  "en": "Mira's trust +%d",
+  "ja": "ミラの信頼 +%d"
+ },
+ "lose_standoff_t": {
+  "en": "The shift ends early",
+  "ja": "シフトは早く終わった"
+ },
+ "lose_standoff": {
+  "en": "Suspicion boiled over: somebody picked up a phone. Nothing is lost but the last few minutes — you are back at the last save, just before the standoff.",
+  "ja": "疑念が限界を超え、誰かが受話器を取った。失ったのは数分だけ — 対峙の直前のセーブに戻る。"
+ },
+ "lose_dawn_t": {
+  "en": "Seven o'clock",
+  "ja": "七時"
+ },
+ "lose_dawn": {
+  "en": "The day porter comes on and the night is over without you. You are back at the last save.",
+  "ja": "昼番のポーターが出勤し、夜はあなたを置いて終わった。最後のセーブに戻る。"
+ },
+ "end_t": {
+  "en": "Shift cleared",
+  "ja": "シフトを乗り切った"
+ },
+ "t_trial": {
+  "en": "Trial version — Shift 1",
+  "ja": "体験版 — 第一シフト"
+ },
+ "fin_body": {
+  "en": "Level %d · Trust %d. Thank you for playing. Your last save is in slot 1: replay the last shift for another ending.",
+  "ja": "レベル %d · 信頼 %d。プレイしていただきありがとうございました。最後のセーブはスロット1に。最終シフトをやり直すと別のエンディングが見られます。"
+ },
+ "nc_budget": {
+  "en": "%d turns until the shift ends. Moving, searching and standoffs all cost time.",
+  "ja": "シフト終了まで %d 手。移動・調査・対峙はすべて時間を使う。"
+ },
+ "h_clock": {
+  "en": "%s   ·   %d turns left   ·   Lv %d",
+  "ja": "%s　·　残り %d 手　·　Lv %d"
+ },
+ "ds_adult": {
+  "en": "This game is for adults (18+). All characters are adults. Contains sexual content.",
+  "ja": "本作品は成人向け（18歳以上）です。登場人物はすべて成人です。性的な表現を含みます。"
+ },
+ "about_ai": {
+  "en": "AI disclosure: This work uses generative AI. All character art, backgrounds and event CGs were generated with Animagine XL (an image model) and then selected and composited by the developer. The spoken lines are synthesised with CosyVoice (a text-to-speech model). The story, dialogue and game code were written with the help of AI language models and edited, directed and tested by the developer.",
+  "ja": "AI使用について：本作は生成AIを使用しています。キャラクター立ち絵・背景・イベントCGは画像生成AI「Animagine⁠ ⁠XL」で生成し、開発者が選定・合成しています。ボイスは音声合成AI「CosyVoice」による合成音声です。シナリオ・テキストおよびプログラムもAI（大規模言語モデル）の支援を受けて作成し、開発者が編集・監修・テストしています。"
+ },
+ "tr_end_title": {
+  "en": "This is where the trial ends.",
+  "ja": "体験版はここまで"
+ },
+ "tr_end_body": {
+  "en": "Shifts 2 and 3 and the epilogue, Mira in the party, all three routes and three endings, every standoff and boss, the full gallery and growth to level 20 are in the full version. Your trial save carries over.",
+  "ja": "第二・第三シフトとエピローグ、仲間になるミラ、3つのルートと3種のエンディング、すべての対峙とボス、ギャラリー、レベル20までの成長は製品版に収録されています。体験版のセーブデータは製品版に引き継げます。"
+ },
+ "tr_open_store": {
+  "en": "Open the product page",
+  "ja": "製品版のページを開く"
+ },
+ "tr_back": {
+  "en": "Back to the title",
+  "ja": "タイトルに戻る"
+ },
+ "credits_1": {
+  "en": "ROOM 704 — the RPG edition. Writing, art direction and code: Flat 404. Art: Animagine XL. Voice: CosyVoice.",
+  "ja": "ROOM 704 — RPG版。脚本・アートディレクション・プログラム：Flat 404。画像：Animagine XL。音声：CosyVoice。"
+ },
+ "credits_2": {
+  "en": "Thank you for staying the night.",
+  "ja": "ご宿泊ありがとうございました。"
+ },
+ "s_wit": {
+  "en": "Wits",
+  "ja": "機転"
+ },
+ "s_cha": {
+  "en": "Charm",
+  "ja": "魅力"
+ },
+ "s_grt": {
+  "en": "Grit",
+  "ja": "根性"
+ },
+ "s_stl": {
+  "en": "Discretion",
+  "ja": "口の堅さ"
+ },
+ "sd_wit": {
+  "en": "Bluffs, evidence, nerve pool.",
+  "ja": "はったり・証拠・胆力の上限。"
+ },
+ "sd_cha": {
+  "en": "Bribes and charm.",
+  "ja": "買収と魅了。"
+ },
+ "sd_grt": {
+  "en": "Composure, and how hard a threat lands.",
+  "ja": "平静の上限と、脅しの重さ。"
+ },
+ "sd_stl": {
+  "en": "Stalling brings suspicion down further.",
+  "ja": "時間稼ぎで疑念を大きく下げる。"
+ },
+ "a_deflect": {
+  "en": "Deflect",
+  "ja": "受け流す"
+ },
+ "a_observe": {
+  "en": "Read him",
+  "ja": "相手を読む"
+ },
+ "a_bluff": {
+  "en": "Bluff",
+  "ja": "はったり"
+ },
+ "a_evidence": {
+  "en": "Show the book",
+  "ja": "帳簿を示す"
+ },
+ "a_bribe": {
+  "en": "Bribe",
+  "ja": "買収"
+ },
+ "a_flirt": {
+  "en": "Flirt",
+  "ja": "誘惑"
+ },
+ "a_threaten": {
+  "en": "Threaten",
+  "ja": "脅す"
+ },
+ "a_stall": {
+  "en": "Stall",
+  "ja": "時間稼ぎ"
+ },
+ "a_item": {
+  "en": "Use item",
+  "ja": "アイテム"
+ },
+ "a_houseline": {
+  "en": "The house line",
+  "ja": "ホテルの決まり文句"
+ },
+ "a_confide": {
+  "en": "Tell him the truth",
+  "ja": "本当のことを話す"
+ },
+ "ad_deflect": {
+  "en": "Halve the next blow and cool the room a little.",
+  "ja": "次の一撃を和らげ、疑念を少し下げる。"
+ },
+ "ad_observe": {
+  "en": "Mira reads them: reveals their weaknesses.",
+  "ja": "ミラが相手を読む：弱点が分かる。"
+ },
+ "ad_bluff": {
+  "en": "A confident lie. Wits.",
+  "ja": "自信たっぷりの嘘。機転。"
+ },
+ "ad_evidence": {
+  "en": "Put a page in front of them. Lowers suspicion. Needs evidence.",
+  "ja": "書類を突きつける。疑念が下がる。証拠品が必要。"
+ },
+ "ad_bribe": {
+  "en": "Folded notes. Charm. Uses one cash.",
+  "ja": "折った紙幣。魅力。現金を一つ使う。"
+ },
+ "ad_flirt": {
+  "en": "Warmth where they did not expect it. Charm.",
+  "ja": "思いがけない温かさ。魅力。"
+ },
+ "ad_threaten": {
+  "en": "Hits hard — and they remember. Suspicion climbs faster for the rest of the standoff.",
+  "ja": "強烈だが、相手は忘れない。以後この対峙では疑念が速く上がる。"
+ },
+ "ad_stall": {
+  "en": "Talk about the rain. Suspicion falls; a little composure back.",
+  "ja": "雨の話でもする。疑念が下がり、平静が少し戻る。"
+ },
+ "ad_item": {
+  "en": "Use something from behind the desk.",
+  "ja": "持ち物を使う。"
+ },
+ "ad_houseline": {
+  "en": "'The hotel doesn't discuss guests.' Said with twenty years behind it. Lowers suspicion.",
+  "ja": "「当ホテルはお客様についてお話ししません」。二十年分の重みで言う。疑念が下がる。"
+ },
+ "ad_confide": {
+  "en": "Mira tells one true thing, plainly. Nobody is ready for that. Lowers suspicion.",
+  "ja": "ミラが本当のことをひとつ、淡々と話す。誰も身構えていない。疑念が下がる。"
+ },
+ "i_cash": {
+  "en": "Her banknotes",
+  "ja": "彼女の紙幣"
+ },
+ "id_cash": {
+  "en": "From the stack she put on the counter. For bribes.",
+  "ja": "彼女がカウンターに置いた札束から。買収用。"
+ },
+ "i_coffee": {
+  "en": "Desk coffee",
+  "ja": "デスクのコーヒー"
+ },
+ "id_coffee": {
+  "en": "Restores 16 composure.",
+  "ja": "平静を16回復。"
+ },
+ "i_whisky": {
+  "en": "Tooth-glass whisky",
+  "ja": "歯磨きコップのウイスキー"
+ },
+ "id_whisky": {
+  "en": "Restores 8 nerve.",
+  "ja": "胆力を8回復。"
+ },
+ "i_minibar": {
+  "en": "Minibar chocolate",
+  "ja": "ミニバーのチョコ"
+ },
+ "id_minibar": {
+  "en": "Restores 28 composure. Billed to nobody.",
+  "ja": "平静を28回復。請求先はなし。"
+ },
+ "i_aspirin": {
+  "en": "Aspirin",
+  "ja": "アスピリン"
+ },
+ "id_aspirin": {
+  "en": "Restores 14 nerve.",
+  "ja": "胆力を14回復。"
+ },
+ "i_passkey": {
+  "en": "Pass key",
+  "ja": "マスターキー"
+ },
+ "id_passkey": {
+  "en": "Opens every door in the Marbeck except the ones that matter.",
+  "ja": "マーベックのどの扉も開く。肝心な扉を除いて。"
+ },
+ "i_basement_key": {
+  "en": "Basement key",
+  "ja": "地下の鍵"
+ },
+ "id_basement_key": {
+  "en": "Mrs Dace keeps it on a nail. Now it is in your pocket.",
+  "ja": "デイス夫人が釘に掛けていたもの。今はあなたのポケットに。"
+ },
+ "i_card_gale": {
+  "en": "His card",
+  "ja": "彼の名刺"
+ },
+ "id_card_gale": {
+  "en": "Evidence. A number, no name. He left it on the counter.",
+  "ja": "証拠。番号だけで名前はない。彼がカウンターに置いていった。"
+ },
+ "i_register_page": {
+  "en": "Register page",
+  "ja": "宿帳のページ"
+ },
+ "id_register_page": {
+  "en": "Evidence. The fourth floor, fourth row: a clean line.",
+  "ja": "証拠。四階の四行目：きれいな空白。"
+ },
+ "i_cctv_tape": {
+  "en": "CCTV tape",
+  "ja": "防犯カメラのテープ"
+ },
+ "id_cctv_tape": {
+  "en": "Evidence. The lobby camera has not recorded since March. Nobody knows that but you.",
+  "ja": "証拠。ロビーのカメラは三月から録画していない。知っているのはあなただけ。"
+ },
+ "i_ledger704": {
+  "en": "The quarterly ledger",
+  "ja": "四半期の帳簿"
+ },
+ "id_ledger704": {
+  "en": "Evidence. Room 704 has been 'out of order' on paper for two years. It was let every week.",
+  "ja": "証拠。704号室は書類上、二年間「故障中」。毎週貸し出されていた。"
+ },
+ "i_train_ticket": {
+  "en": "Her train ticket",
+  "ja": "彼女の列車の切符"
+ },
+ "id_train_ticket": {
+  "en": "Six-forty. Nine days old. Give it back to her, or don't.",
+  "ja": "六時四十分発。九日前のもの。返すか、返さないか。"
+ },
+ "i_umbrella": {
+  "en": "Hotel umbrella",
+  "ja": "ホテルの傘"
+ },
+ "id_umbrella": {
+  "en": "Accessory. Wits +1. Nobody ever brings them back.",
+  "ja": "アクセサリー。機転+1。誰も返しに来ない。"
+ },
+ "i_lighter": {
+  "en": "His lighter",
+  "ja": "彼のライター"
+ },
+ "id_lighter": {
+  "en": "Tool. Discretion +1, Stall stronger. Gale's. He will want it back.",
+  "ja": "道具。口の堅さ+1、時間稼ぎ強化。ゲイルのもの。取り戻しに来るだろう。"
+ },
+ "i_torch": {
+  "en": "Rubber torch",
+  "ja": "ゴム製の懐中電灯"
+ },
+ "id_torch": {
+  "en": "Tool. Discretion +1.",
+  "ja": "道具。口の堅さ+1。"
+ },
+ "i_revolver": {
+  "en": "The drawer revolver",
+  "ja": "引き出しの回転式拳銃"
+ },
+ "id_revolver": {
+  "en": "Tool. Grit +2, Threaten stronger. It has never been fired. It will not be tonight.",
+  "ja": "道具。根性+2、脅し強化。一度も撃たれたことはない。今夜も撃たれない。"
+ },
+ "i_waistcoat": {
+  "en": "Hotel waistcoat",
+  "ja": "ホテルのベスト"
+ },
+ "id_waistcoat": {
+  "en": "Outfit. Grit +1.",
+  "ja": "衣装。根性+1。"
+ },
+ "i_namebadge": {
+  "en": "Name badge",
+  "ja": "名札"
+ },
+ "id_namebadge": {
+  "en": "Accessory. Charm +1. People trust a name they can read.",
+  "ja": "アクセサリー。魅力+1。読める名前は信用される。"
+ },
+ "i_coat": {
+  "en": "Her long coat",
+  "ja": "彼女のロングコート"
+ },
+ "id_coat": {
+  "en": "Outfit. Grit +1. Still wet at the hem.",
+  "ja": "衣装。根性+1。裾がまだ濡れている。"
+ },
+ "i_slip": {
+  "en": "The black slip",
+  "ja": "黒のスリップドレス"
+ },
+ "id_slip": {
+  "en": "Outfit. Charm +1, Flirt stronger. Not chosen for the rain.",
+  "ja": "衣装。魅力+1、誘惑強化。雨の夜向きではない。"
+ },
+ "i_shirt": {
+  "en": "Your spare shirt",
+  "ja": "あなたの替えのシャツ"
+ },
+ "id_shirt": {
+  "en": "Outfit. Charm +2, Flirt stronger. Too big for her. That is the point.",
+  "ja": "衣装。魅力+2、誘惑強化。彼女には大きすぎる。それがいい。"
+ },
+ "i_robe": {
+  "en": "Hotel bathrobe",
+  "ja": "ホテルのバスローブ"
+ },
+ "id_robe": {
+  "en": "Outfit. Wits +1, Stall stronger. The Marbeck's one luxury.",
+  "ja": "衣装。機転+1、時間稼ぎ強化。マーベック唯一の贅沢。"
+ },
+ "i_lace": {
+  "en": "What was under the dress",
+  "ja": "ドレスの下にあったもの"
+ },
+ "id_lace": {
+  "en": "Outfit. Charm +3, Flirt much stronger. Not for corridors.",
+  "ja": "衣装。魅力+3、誘惑大幅強化。廊下向きではない。"
+ },
+ "br_clerk": {
+  "en": "Clerk",
+  "ja": "番台"
+ },
+ "br_fixer": {
+  "en": "Fixer",
+  "ja": "始末屋"
+ },
+ "br_ghost": {
+  "en": "Ghost",
+  "ja": "幽霊"
+ },
+ "br_flame": {
+  "en": "Flame",
+  "ja": "灯火"
+ },
+ "sk_ledger": {
+  "en": "The ledger",
+  "ja": "帳簿"
+ },
+ "skd_ledger": {
+  "en": "Show the book +30%.",
+  "ja": "帳簿を示す +30%。"
+ },
+ "sk_nightshift": {
+  "en": "Night shift",
+  "ja": "夜勤"
+ },
+ "skd_nightshift": {
+  "en": "Composure +10.",
+  "ja": "平静の上限 +10。"
+ },
+ "sk_arithmetic": {
+  "en": "Mental arithmetic",
+  "ja": "暗算"
+ },
+ "skd_arithmetic": {
+  "en": "Wits +2.",
+  "ja": "機転 +2。"
+ },
+ "sk_houseline_sk": {
+  "en": "Twenty years at a desk",
+  "ja": "番台二十年"
+ },
+ "skd_houseline_sk": {
+  "en": "Learn The house line.",
+  "ja": "「ホテルの決まり文句」を習得。"
+ },
+ "sk_auditor": {
+  "en": "Auditor",
+  "ja": "監査人"
+ },
+ "skd_auditor": {
+  "en": "House line +40%, book +20%.",
+  "ja": "決まり文句 +40%、帳簿 +20%。"
+ },
+ "sk_tip": {
+  "en": "The tip",
+  "ja": "チップ"
+ },
+ "skd_tip": {
+  "en": "Bribe +30%.",
+  "ja": "買収 +30%。"
+ },
+ "sk_deadpan": {
+  "en": "Deadpan",
+  "ja": "無表情"
+ },
+ "skd_deadpan": {
+  "en": "Bluff +30%.",
+  "ja": "はったり +30%。"
+ },
+ "sk_thickskin": {
+  "en": "Thick skin",
+  "ja": "面の皮"
+ },
+ "skd_thickskin": {
+  "en": "Grit +2.",
+  "ja": "根性 +2。"
+ },
+ "sk_backdoor": {
+  "en": "Back door",
+  "ja": "裏口"
+ },
+ "skd_backdoor": {
+  "en": "Stall +40%.",
+  "ja": "時間稼ぎ +40%。"
+ },
+ "sk_quietword": {
+  "en": "A quiet word",
+  "ja": "静かな一言"
+ },
+ "skd_quietword": {
+  "en": "Threaten +40%, bluff +20%.",
+  "ja": "脅し +40%、はったり +20%。"
+ },
+ "sk_unseen": {
+  "en": "Unseen",
+  "ja": "見えない女"
+ },
+ "skd_unseen": {
+  "en": "Discretion +2.",
+  "ja": "口の堅さ +2。"
+ },
+ "sk_coolhead": {
+  "en": "Cool head",
+  "ja": "冷静"
+ },
+ "skd_coolhead": {
+  "en": "Composure +10.",
+  "ja": "平静の上限 +10。"
+ },
+ "sk_straightface": {
+  "en": "Straight face",
+  "ja": "真顔の嘘"
+ },
+ "skd_straightface": {
+  "en": "Bluff +40%.",
+  "ja": "はったり +40%。"
+ },
+ "sk_vanish": {
+  "en": "Vanish",
+  "ja": "消える"
+ },
+ "skd_vanish": {
+  "en": "Stall +40%.",
+  "ja": "時間稼ぎ +40%。"
+ },
+ "sk_nobody": {
+  "en": "Nobody",
+  "ja": "誰でもない"
+ },
+ "skd_nobody": {
+  "en": "Bluff +30%, stall +20%.",
+  "ja": "はったり +30%、時間稼ぎ +20%。"
+ },
+ "sk_smile": {
+  "en": "That laugh",
+  "ja": "あの笑い声"
+ },
+ "skd_smile": {
+  "en": "Flirt +30%.",
+  "ja": "誘惑 +30%。"
+ },
+ "sk_confide_sk": {
+  "en": "Plain answers",
+  "ja": "率直な答え"
+ },
+ "skd_confide_sk": {
+  "en": "Learn Tell him the truth.",
+  "ja": "「本当のことを話す」を習得。"
+ },
+ "sk_poise": {
+  "en": "Poise",
+  "ja": "落ち着き"
+ },
+ "skd_poise": {
+  "en": "Charm +2.",
+  "ja": "魅力 +2。"
+ },
+ "sk_candle": {
+  "en": "Candle",
+  "ja": "蝋燭"
+ },
+ "skd_candle": {
+  "en": "Tell him the truth +40%.",
+  "ja": "本当のことを話す +40%。"
+ },
+ "sk_ember": {
+  "en": "Ember",
+  "ja": "熾火"
+ },
+ "skd_ember": {
+  "en": "Flirt +40%, truth +20%.",
+  "ja": "誘惑 +40%、本当のこと +20%。"
+ },
+ "e_guest212": {
+  "en": "The guest in 212, drunk",
+  "ja": "212号室の客、酔っている"
+ },
+ "e_guest212_2": {
+  "en": "The guest in 212, in the lift",
+  "ja": "エレベーターの中の212号室の客"
+ },
+ "e_haskell": {
+  "en": "Haskell, the house detective",
+  "ja": "ホテル探偵ハスケル"
+ },
+ "e_haskell_2": {
+  "en": "Haskell, on the fourth floor",
+  "ja": "四階のハスケル"
+ },
+ "e_haskell_3": {
+  "en": "Haskell, with the register",
+  "ja": "宿帳を持ったハスケル"
+ },
+ "e_dace_phone": {
+  "en": "Mrs Dace, on the internal line",
+  "ja": "内線のデイス夫人"
+ },
+ "e_dace": {
+  "en": "Mrs Dace, the night manager",
+  "ja": "夜間支配人デイス夫人"
+ },
+ "e_dace_2": {
+  "en": "Mrs Dace, in the laundry",
+  "ja": "洗濯室のデイス夫人"
+ },
+ "e_gale": {
+  "en": "The man from the car",
+  "ja": "車の男"
+ },
+ "e_gale_2": {
+  "en": "Gale, on the fourth floor",
+  "ja": "四階のゲイル"
+ },
+ "e_constable": {
+  "en": "A constable, at the roof door",
+  "ja": "屋上の扉の巡査"
+ },
+ "e_constable_2": {
+  "en": "The constable, in the alley",
+  "ja": "路地の巡査"
+ },
+ "e_penhallow": {
+  "en": "Mr Penhallow, the owner's man",
+  "ja": "オーナーの代理人ペンハロウ氏"
+ },
+ "e_porter": {
+  "en": "Lenny, the day porter",
+  "ja": "昼番のポーター、レニー"
+ },
+ "ei_guest212": {
+  "en": "The guest from 212 has found his way to the bar and wants it open. He has the keys to nothing and the confidence of a man who has paid.",
+  "ja": "212号室の客がバーまで降りてきて、開けろと言う。鍵はひとつも持っていないが、金を払った男の自信がある。"
+ },
+ "ew_guest212": {
+  "en": "He goes back up with a glass of water he thinks is gin.",
+  "ja": "彼はジンだと思っている水のグラスを持って上がっていった。"
+ },
+ "ei_guest212_2": {
+  "en": "The lift has stopped between floors with the guest from 212 inside it, and he has decided this is your fault.",
+  "ja": "エレベーターが階の途中で止まり、中には212号室の客。彼はこれがあなたのせいだと決めた。"
+ },
+ "ew_guest212_2": {
+  "en": "The lift remembers how to move. He forgets what he was angry about.",
+  "ja": "エレベーターは動き方を思い出し、彼は何に怒っていたかを忘れた。"
+ },
+ "ei_haskell": {
+  "en": "Haskell does the floors at three. He has done them for eleven years and he has never once found nothing.",
+  "ja": "ハスケルは三時に各階を回る。十一年続けて、一度も「何もなし」で終わったことがない。"
+ },
+ "ew_haskell": {
+  "en": "Haskell writes 'quiet' in his notebook, and underlines it, and does not believe it.",
+  "ja": "ハスケルは手帳に「異常なし」と書き、下線を引き、それを信じていない。"
+ },
+ "ei_haskell_2": {
+  "en": "Haskell, on the fourth floor, with a complaint from 702 about voices and a torch he does not need.",
+  "ja": "四階のハスケル。702号室から声がするとの苦情と、必要のない懐中電灯を携えて。"
+ },
+ "ew_haskell_2": {
+  "en": "He turns the torch off. 'Voices. In a hotel. I'll write it up as the pipes.'",
+  "ja": "彼は懐中電灯を消す。「声ね。ホテルで。配管の音ってことにしとく」"
+ },
+ "ei_haskell_3": {
+  "en": "Haskell has the register open at the fourth floor. He is not reading it. He is waiting for you to.",
+  "ja": "ハスケルは宿帳の四階のページを開いている。読んではいない。あなたが読むのを待っている。"
+ },
+ "ew_haskell_3": {
+  "en": "He closes the book. 'Eleven years. I know what a quiet night looks like. This wasn't one. Goodnight.'",
+  "ja": "彼は帳簿を閉じる。「十一年だ。静かな夜がどんなものかは知ってる。今夜は違った。おやすみ」"
+ },
+ "ei_dace_phone": {
+  "en": "The internal line. Mrs Dace, from the sixth floor, who heard the lift and wants to know who is in her hotel.",
+  "ja": "内線。六階のデイス夫人。エレベーターの音を聞いて、自分のホテルに誰がいるのか知りたがっている。"
+ },
+ "ew_dace_phone": {
+  "en": "'Well. Keep it quiet.' The line clicks. The sixth floor goes back to sleep.",
+  "ja": "「そう。静かにね」回線が切れる。六階はまた眠りにつく。"
+ },
+ "ei_dace": {
+  "en": "Mrs Dace on the landing in a quilted dressing gown, with a cordless phone and the expression of a woman who owns the building.",
+  "ja": "踊り場のデイス夫人。キルトのガウン、コードレス電話、そしてこの建物の所有者の顔。"
+ },
+ "ew_dace": {
+  "en": "'I did not see her. I did not see you. I saw a draught.' She goes back up.",
+  "ja": "「彼女は見なかった。あなたも見なかった。見たのは隙間風」彼女は上へ戻った。"
+ },
+ "ei_dace_2": {
+  "en": "Mrs Dace is in the laundry at half past six, folding sheets that are not hers to fold, because she could not sleep either.",
+  "ja": "六時半の洗濯室にデイス夫人。自分の仕事ではないシーツを畳んでいる。彼女も眠れなかったのだ。"
+ },
+ "ew_dace_2": {
+  "en": "She hands you a folded sheet. 'For the room. It'll want making up before nine.'",
+  "ja": "彼女は畳んだシーツを渡す。「部屋の分。九時までに整えておきなさい」"
+ },
+ "ei_gale": {
+  "en": "He is not a policeman. A policeman would have led with being a policeman. He is waiting, and the register is on the counter between you.",
+  "ja": "彼は警察ではない。警察なら、まず警察だと名乗る。彼は待っている。宿帳はあなたと彼の間のカウンターの上だ。"
+ },
+ "ew_gale": {
+  "en": "He puts a card on the counter. You leave it there. He goes. The rain takes him.",
+  "ja": "彼はカウンターに名刺を置く。あなたはそのままにする。彼は出て行く。雨が彼を連れ去る。"
+ },
+ "ei_gale_2": {
+  "en": "Gale, on the fourth floor. He came up the service stair. He has her name now, and the number of the room, and still he knocks.",
+  "ja": "四階のゲイル。業務用階段を上ってきた。今や彼女の名前も部屋番号も知っている。それでもノックする。"
+ },
+ "ew_gale_2": {
+  "en": "He looks at the door of 704 for a long time, and then he goes down the way he came.",
+  "ja": "彼は704号室の扉を長いこと見つめ、来た道を戻っていった。"
+ },
+ "ei_constable": {
+  "en": "A constable at the roof door, called out for a welfare check on a woman he has never met by a man who would not give his name.",
+  "ja": "屋上の扉に巡査。名乗らない男からの、会ったこともない女性の安否確認の通報で来た。"
+ },
+ "ew_constable": {
+  "en": "'Welfare's fine, then.' He radios it in as a hoax and goes to find his car.",
+  "ja": "「じゃあ安否は問題なし」彼は無線で悪戯だと報告し、車を探しに行った。"
+ },
+ "ei_constable_2": {
+  "en": "The constable again, in the alley, with a different question: whose car was that, and why has it gone.",
+  "ja": "路地にまた巡査。今度の質問は違う。あの車は誰のもので、なぜ消えたのか。"
+ },
+ "ew_constable_2": {
+  "en": "He writes down the registration you give him, which is wrong, and thanks you for it.",
+  "ja": "彼はあなたが教えた偽のナンバーを書き留め、礼を言った。"
+ },
+ "ei_penhallow": {
+  "en": "Mr Penhallow, for the owner, at a quarter to seven, with a briefcase and a cheque with Gale's handwriting on it. He would like to see the fourth floor's row.",
+  "ja": "六時四十五分、オーナーの代理でペンハロウ氏。鞄と、ゲイルの筆跡の小切手を携えて。四階の行を見たいという。"
+ },
+ "ew_penhallow": {
+  "en": "He puts the cheque back in the briefcase, unsigned. 'A quiet hotel. The owner will be pleased.'",
+  "ja": "彼は未署名の小切手を鞄に戻す。「静かなホテルだ。オーナーも喜ぶだろう」"
+ },
+ "ei_porter": {
+  "en": "Lenny comes on at seven and asks if anything happened. Lenny always asks.",
+  "ja": "七時にレニーが出勤し、何かあったかと聞く。レニーはいつも聞く。"
+ },
+ "ew_porter": {
+  "en": "'Quiet night, then.' He takes the paper and the register and does not look at either.",
+  "ja": "「静かな夜だったんだな」彼は新聞と宿帳を受け取り、どちらも見なかった。"
+ },
+ "bark_guest212_1": {
+  "en": "\"I'm a guest. I'm a paying guest.\"",
+  "ja": "「俺は客だぞ。金払ってる客だ」"
+ },
+ "bark_guest212_2": {
+  "en": "\"There's a woman upstairs who isn't in the book. I heard.\"",
+  "ja": "「上に帳簿に載ってない女がいるんだろ。聞いたぞ」"
+ },
+ "bark_guest212_3": {
+  "en": "\"One drink. Then I'll go up. Then you'll never know I was here.\"",
+  "ja": "「一杯だけ。そしたら上に戻る。俺がいたことも忘れるさ」"
+ },
+ "bark_haskell_1": {
+  "en": "\"Eleven years on nights. I've seen every kind of quiet.\"",
+  "ja": "「夜勤十一年だ。あらゆる種類の静けさを見てきた」"
+ },
+ "bark_haskell_2": {
+  "en": "\"Fourth floor hook's empty. Fourth floor's closed. Explain that to me slowly.\"",
+  "ja": "「四階の鍵が一本ない。四階は閉鎖中だ。ゆっくり説明してくれ」"
+ },
+ "bark_haskell_3": {
+  "en": "\"I don't need the police. I need you to stop looking at the stairs.\"",
+  "ja": "「警察はいらん。階段を見るのをやめてくれればいい」"
+ },
+ "bark_dace_1": {
+  "en": "\"This is my hotel. I hear every door in it.\"",
+  "ja": "「ここは私のホテルよ。扉の音はすべて聞こえる」"
+ },
+ "bark_dace_2": {
+  "en": "\"Forty rooms, eleven guests. I can count. Can you?\"",
+  "ja": "「四十室に十一人。数えられるわ。あなたは？」"
+ },
+ "bark_dace_3": {
+  "en": "\"If the owner's man asks, I was asleep. Was I?\"",
+  "ja": "「オーナーの人に聞かれたら、私は寝てたことにする。寝てたのよね？」"
+ },
+ "bark_gale_1": {
+  "en": "\"Woman, late twenties, pale hair. These last two hours.\"",
+  "ja": "「女だ。二十代後半、淡い髪。この二時間のうちに来た」"
+ },
+ "bark_gale_2": {
+  "en": "\"I pay for the account. I'm entitled to know where it sleeps.\"",
+  "ja": "「口座の金は俺が払ってる。どこで寝てるか知る権利がある」"
+ },
+ "bark_gale_3": {
+  "en": "\"There's one gap on the fourth row.\"",
+  "ja": "「四行目に空きがひとつある」"
+ },
+ "bark_gale_4": {
+  "en": "\"I can wait. I've a car and a full tank.\"",
+  "ja": "「待てるさ。車はあるし、ガソリンも満タンだ」"
+ },
+ "bark_constable_1": {
+  "en": "\"Welfare check, sir. A caller was concerned.\"",
+  "ja": "「安否確認です。通報者が心配していまして」"
+ },
+ "bark_constable_2": {
+  "en": "\"I'll need to see the register. Procedure.\"",
+  "ja": "「宿帳を見せてもらいます。手続きですので」"
+ },
+ "bark_constable_3": {
+  "en": "\"Nobody gives their name at four in the morning. I've noticed that.\"",
+  "ja": "「朝四時に名乗る人はいませんね。そういうものだと気づきました」"
+ },
+ "bark_penhallow_1": {
+  "en": "\"The owner is a patient man. I am paid to be less so.\"",
+  "ja": "「オーナーは辛抱強い。私は辛抱しないために雇われている」"
+ },
+ "bark_penhallow_2": {
+  "en": "\"Room 704 is out of order. It has been for two years. Who is in it?\"",
+  "ja": "「704号室は故障中だ。二年前からね。誰が泊まっている？」"
+ },
+ "bark_penhallow_3": {
+  "en": "\"A night auditor audits. He does not editorialise.\"",
+  "ja": "「夜間監査人は監査をするものだ。論評はしない」"
+ },
+ "bark_penhallow_4": {
+  "en": "\"I know what a clean line in a register costs. I have paid for several.\"",
+  "ja": "「宿帳のきれいな空白にいくらかかるかは知っている。何度も払ってきた」"
+ },
+ "bark_porter_1": {
+  "en": "\"Anything happen?\"",
+  "ja": "「何かあった？」"
+ },
+ "bark_porter_2": {
+  "en": "\"The fourth floor's hook. I only ask because I'll be the one asked.\"",
+  "ja": "「四階の鍵。聞くのは、俺が聞かれる側になるからさ」"
+ },
+ "bark_porter_3": {
+  "en": "\"Quiet night, you'll say. You always say.\"",
+  "ja": "「静かな夜だった、って言うんだろ。いつもそうだ」"
+ },
+ "r_lobby": {
+  "en": "Lobby",
+  "ja": "ロビー"
+ },
+ "r_back_office": {
+  "en": "Back office",
+  "ja": "事務室"
+ },
+ "r_bar": {
+  "en": "The Marbeck Bar",
+  "ja": "マーベック・バー"
+ },
+ "r_kitchen": {
+  "en": "Service kitchen",
+  "ja": "業務用厨房"
+ },
+ "r_lift": {
+  "en": "Lift lobby",
+  "ja": "エレベーターホール"
+ },
+ "r_service_stair": {
+  "en": "Service stair",
+  "ja": "業務用階段"
+ },
+ "r_corridor_2": {
+  "en": "Second-floor corridor",
+  "ja": "二階の廊下"
+ },
+ "r_room_212": {
+  "en": "Room 212",
+  "ja": "212号室"
+ },
+ "r_corridor4": {
+  "en": "Fourth-floor corridor",
+  "ja": "四階の廊下"
+ },
+ "r_room704": {
+  "en": "Room 704",
+  "ja": "704号室"
+ },
+ "r_room_702": {
+  "en": "Room 702",
+  "ja": "702号室"
+ },
+ "r_linen": {
+  "en": "Linen room",
+  "ja": "リネン室"
+ },
+ "r_roof": {
+  "en": "The roof",
+  "ja": "屋上"
+ },
+ "r_manager_flat": {
+  "en": "Mrs Dace's flat",
+  "ja": "デイス夫人の部屋"
+ },
+ "r_boiler": {
+  "en": "Boiler room",
+  "ja": "ボイラー室"
+ },
+ "r_laundry": {
+  "en": "Laundry",
+  "ja": "洗濯室"
+ },
+ "r_loading_bay": {
+  "en": "Loading bay",
+  "ja": "搬入口"
+ },
+ "r_street": {
+  "en": "The street",
+  "ja": "通り"
+ },
+ "hs_register": {
+  "en": "The register",
+  "ja": "宿帳"
+ },
+ "hs_keysafe": {
+  "en": "Key safe",
+  "ja": "鍵の金庫"
+ },
+ "hs_kettle": {
+  "en": "Kettle",
+  "ja": "やかん"
+ },
+ "hs_cctv": {
+  "en": "CCTV monitor",
+  "ja": "防犯カメラのモニター"
+ },
+ "hs_drawer": {
+  "en": "Desk drawer",
+  "ja": "デスクの引き出し"
+ },
+ "hs_till": {
+  "en": "The till",
+  "ja": "レジ"
+ },
+ "hs_bottles": {
+  "en": "Bottle shelf",
+  "ja": "酒棚"
+ },
+ "hs_mirror": {
+  "en": "Bar mirror",
+  "ja": "バーの鏡"
+ },
+ "hs_fridge": {
+  "en": "Walk-in fridge",
+  "ja": "業務用冷蔵庫"
+ },
+ "hs_service_door": {
+  "en": "Service door",
+  "ja": "業務用ドア"
+ },
+ "hs_pans": {
+  "en": "Hanging pans",
+  "ja": "吊るした鍋"
+ },
+ "hs_dial": {
+  "en": "Floor dial",
+  "ja": "階数表示"
+ },
+ "hs_gate": {
+  "en": "Lift gate",
+  "ja": "エレベーターの格子扉"
+ },
+ "hs_landing": {
+  "en": "Landing",
+  "ja": "踊り場"
+ },
+ "hs_footprints": {
+  "en": "Wet footprints",
+  "ja": "濡れた足跡"
+ },
+ "hs_sconce": {
+  "en": "Dying sconce",
+  "ja": "消えかけの壁灯"
+ },
+ "hs_extinguisher": {
+  "en": "Fire extinguisher",
+  "ja": "消火器"
+ },
+ "hs_dustsheet": {
+  "en": "Dust sheets",
+  "ja": "家具のカバー"
+ },
+ "hs_window212": {
+  "en": "Window",
+  "ja": "窓"
+ },
+ "hs_doors": {
+  "en": "The glass doors",
+  "ja": "ガラスのドア"
+ },
+ "hs_phone": {
+  "en": "Desk phone",
+  "ja": "デスクの電話"
+ },
+ "hs_car": {
+  "en": "The car",
+  "ja": "車"
+ },
+ "hs_noodle": {
+  "en": "Noodle place",
+  "ja": "麺屋"
+ },
+ "hs_newspapers": {
+  "en": "Newspapers",
+  "ja": "新聞"
+ },
+ "hs_ashtray": {
+  "en": "Ashtray",
+  "ja": "灰皿"
+ },
+ "hs_suitcase": {
+  "en": "Open suitcase",
+  "ja": "開いたスーツケース"
+ },
+ "hs_towels": {
+  "en": "Towel shelves",
+  "ja": "タオルの棚"
+ },
+ "hs_chute": {
+  "en": "Laundry chute",
+  "ja": "洗濯物シュート"
+ },
+ "hs_ladder": {
+  "en": "Roof ladder",
+  "ja": "屋上へのはしご"
+ },
+ "hs_tank": {
+  "en": "Water tank",
+  "ja": "給水タンク"
+ },
+ "hs_sign": {
+  "en": "Back of the sign",
+  "ja": "看板の裏"
+ },
+ "hs_parapet": {
+  "en": "Parapet",
+  "ja": "パラペット"
+ },
+ "hs_cat": {
+  "en": "The cat",
+  "ja": "猫"
+ },
+ "hs_photos": {
+  "en": "Framed photographs",
+  "ja": "写真立て"
+ },
+ "hs_nail": {
+  "en": "Key on a nail",
+  "ja": "釘に掛かった鍵"
+ },
+ "hs_gauges": {
+  "en": "Pressure gauges",
+  "ja": "圧力計"
+ },
+ "hs_pipes": {
+  "en": "Pipes",
+  "ja": "配管"
+ },
+ "hs_washers": {
+  "en": "Washing machines",
+  "ja": "洗濯機"
+ },
+ "hs_sheets": {
+  "en": "Hanging sheets",
+  "ja": "干したシーツ"
+ },
+ "hs_shutter": {
+  "en": "Roller shutter",
+  "ja": "シャッター"
+ },
+ "hs_bins": {
+  "en": "Bins",
+  "ja": "ゴミ箱"
+ },
+ "hs_puddle": {
+  "en": "Puddle",
+  "ja": "水たまり"
+ },
+ "hs_bed704": {
+  "en": "The bed",
+  "ja": "ベッド"
+ },
+ "hs_window704": {
+  "en": "The window",
+  "ja": "窓"
+ },
+ "hs_bathroom": {
+  "en": "Bathroom",
+  "ja": "バスルーム"
+ },
+ "hs_bag": {
+  "en": "Her canvas bag",
+  "ja": "彼女のキャンバスバッグ"
+ },
+ "hs_corner": {
+  "en": "The corner",
+  "ja": "角"
+ },
+ "hs_board": {
+  "en": "Key board",
+  "ja": "鍵のボード"
+ },
+ "n1_title": {
+  "en": "Shift One — The Front Desk",
+  "ja": "第一シフト — フロント"
+ },
+ "n1_sub": {
+  "en": "The Marbeck Residential Hotel. 2:14 AM. Rain.",
+  "ja": "マーベック・レジデンシャル・ホテル。午前2時14分。雨。"
+ },
+ "n2_title": {
+  "en": "Shift Two — The Fourth Floor",
+  "ja": "第二シフト — 四階"
+ },
+ "n2_sub": {
+  "en": "Room 704. 4:10 AM. A car across the road.",
+  "ja": "704号室。午前4時10分。通りの向かいに車。"
+ },
+ "n3_title": {
+  "en": "Shift Three — Six-Forty",
+  "ja": "第三シフト — 六時四十分"
+ },
+ "n3_sub": {
+  "en": "The window is grey. The sign is off.",
+  "ja": "窓は灰色。看板は消えた。"
+ },
+ "n4_title": {
+  "en": "Epilogue — Seven O'Clock",
+  "ja": "エピローグ — 七時"
+ },
+ "n4_sub": {
+  "en": "The day porter comes on.",
+  "ja": "昼番のポーターが出勤する。"
+ },
+ "g_cg_checkin": {
+  "en": "Check-in",
+  "ja": "チェックイン"
+ },
+ "g_cg_door": {
+  "en": "The door",
+  "ja": "扉"
+ },
+ "g_cg_morning": {
+  "en": "Morning",
+  "ja": "朝"
+ },
+ "g_cg_bed": {
+  "en": "The bed",
+  "ja": "ベッド"
+ },
+ "g_cg_window": {
+  "en": "The window",
+  "ja": "窓"
+ },
+ "g_cg_rpg_doors": {
+  "en": "Out of the rain",
+  "ja": "雨の中から"
+ },
+ "g_cg_rpg_car": {
+  "en": "The car",
+  "ja": "車"
+ },
+ "g_cg_rpg_register": {
+  "en": "The fourth row",
+  "ja": "四行目"
+ },
+ "g_cg_rpg_roof_city": {
+  "en": "The roof",
+  "ja": "屋上"
+ },
+ "g_cg_rpg_corner": {
+  "en": "The corner",
+  "ja": "角"
+ },
+ "g_cg_trust3_stair": {
+  "en": "The service stair",
+  "ja": "業務用階段"
+ },
+ "g_cg_trust5_bath": {
+  "en": "Steam",
+  "ja": "湯気"
+ },
+ "g_cg_trust7_sheets": {
+  "en": "Sheets",
+  "ja": "シーツ"
+ },
+ "g_cg_trust9_morning": {
+  "en": "Coffee",
+  "ja": "コーヒー"
+ }
+}

@@ -1,0 +1,331 @@
+{
+ "chapter": 3,
+ "lines": [
+  {
+   "id": "act3_9b40cf9d",
+   "src": 8,
+   "label": "act3",
+   "who": "narrator",
+   "en": "At twenty past six the window is grey, the sign across the street has switched itself off, and the street below looks like an ordinary street that owes nobody anything.",
+   "ja": "六時二十分、窓は灰色で、通りの向かいの看板はひとりでに消えていて、眼下の通りは誰にも何の借りもない、ただの通りに見える。",
+   "v_en": "res://assets/voice/act3_9b40cf9d.ogg",
+   "v_ja": "res://assets/voice/act3_9b40cf9d.ja.ogg"
+  },
+  {
+   "id": "act3_bf07ad66",
+   "src": 12,
+   "label": "act3",
+   "who": "narrator",
+   "en": "She dresses the way she walked in out of the rain: without hurrying.",
+   "ja": "彼女は、雨の中を歩いてきた時と同じように身支度をする。急ぐ素振りはない。",
+   "v_en": "res://assets/voice/act3_bf07ad66.ogg",
+   "v_ja": "res://assets/voice/act3_bf07ad66.ja.ogg"
+  },
+  {
+   "id": "act3_6cee9f47",
+   "src": 13,
+   "label": "act3",
+   "who": "mira",
+   "en": "The car's gone.",
+   "ja": "車は消えた。",
+   "v_en": "res://assets/voice/act3_6cee9f47.ogg",
+   "v_ja": "res://assets/voice/act3_6cee9f47.ja.ogg"
+  },
+  {
+   "id": "act3_dff1b552",
+   "src": 14,
+   "label": "act3",
+   "who": "protagonist",
+   "en": "He'll have gone to the station.",
+   "ja": "彼は駅に行ったはずだ。",
+   "v_en": "res://assets/voice/act3_dff1b552.ogg",
+   "v_ja": "res://assets/voice/act3_dff1b552.ja.ogg"
+  },
+  {
+   "id": "act3_d3e444e7",
+   "src": 15,
+   "label": "act3",
+   "who": "mira",
+   "en": "Yes. He will.",
+   "ja": "ええ、そうね。",
+   "v_en": "res://assets/voice/act3_d3e444e7.ogg",
+   "v_ja": "res://assets/voice/act3_d3e444e7.ja.ogg"
+  },
+  {
+   "id": "act3_f3b38135",
+   "src": 16,
+   "label": "act3",
+   "who": "narrator",
+   "en": "She sits on the edge of the bed with one stocking half on, thinking about that, and you watch her decide something.",
+   "ja": "彼女はストッキングを片方だけ履いたままベッドの端に座り、そのことを考えている。あなたは彼女が何かを決めるのを見ている。",
+   "v_en": "res://assets/voice/act3_f3b38135.ogg",
+   "v_ja": "res://assets/voice/act3_f3b38135.ja.ogg"
+  },
+  {
+   "id": "end_train_22f8f170",
+   "src": 27,
+   "label": "end_train",
+   "who": "mira",
+   "en": "Then I won't go to the station.",
+   "ja": "それなら、駅には行かないわ。",
+   "v_en": "res://assets/voice/end_train_22f8f170.ogg",
+   "v_ja": "res://assets/voice/end_train_22f8f170.ja.ogg"
+  },
+  {
+   "id": "end_train_0ad5afee",
+   "src": 28,
+   "label": "end_train",
+   "who": "protagonist",
+   "en": "There's a bus from the corner at seven. It goes the wrong way for an hour and then it meets the same line four stops up.",
+   "ja": "7時に角からバスが出る。1時間ほど逆方向へ進み、それから4つ先の停留所で同じ路線に合流する。",
+   "v_en": "res://assets/voice/end_train_0ad5afee.ogg",
+   "v_ja": "res://assets/voice/end_train_0ad5afee.ja.ogg"
+  },
+  {
+   "id": "end_train_c3aae7de",
+   "src": 29,
+   "label": "end_train",
+   "who": "mira",
+   "en": "How do you know that?",
+   "ja": "どうしてそんなこと知ってるの？",
+   "v_en": "res://assets/voice/end_train_c3aae7de.ogg",
+   "v_ja": "res://assets/voice/end_train_c3aae7de.ja.ogg"
+  },
+  {
+   "id": "end_train_53054264",
+   "src": 30,
+   "label": "end_train",
+   "who": "protagonist",
+   "en": "Everyone who leaves this hotel at this hour has a reason to stay out of the station.",
+   "ja": "「この時間にこのホテルを出る人間は、みんな駅を避ける理由がある」",
+   "v_en": "res://assets/voice/end_train_53054264.ogg",
+   "v_ja": "res://assets/voice/end_train_53054264.ja.ogg"
+  },
+  {
+   "id": "end_train_640d044d",
+   "src": 31,
+   "label": "end_train",
+   "who": "narrator",
+   "en": "She laughs, puts the other stocking on, and takes the key off the bedside table — and puts it in your hand instead of on the desk downstairs.",
+   "ja": "彼女は笑い、もう片方のストッキングを履き、ベッドサイドの鍵を取って——下のデスクではなく、あなたの手に置く。",
+   "v_en": "res://assets/voice/end_train_640d044d.ogg",
+   "v_ja": "res://assets/voice/end_train_640d044d.ja.ogg"
+  },
+  {
+   "id": "end_train_d1686792",
+   "src": 32,
+   "label": "end_train",
+   "who": "mira",
+   "en": "Seven-oh-four.",
+   "ja": "704。",
+   "v_en": "res://assets/voice/end_train_d1686792.ogg"
+  },
+  {
+   "id": "end_train_b716a301",
+   "src": 33,
+   "label": "end_train",
+   "who": "protagonist",
+   "en": "I'll put it back on the board.",
+   "ja": "私がボードに戻しておくわ。",
+   "v_en": "res://assets/voice/end_train_b716a301.ogg",
+   "v_ja": "res://assets/voice/end_train_b716a301.ja.ogg"
+  },
+  {
+   "id": "end_train_ab978939",
+   "src": 34,
+   "label": "end_train",
+   "who": "mira",
+   "en": "Don't write it in the book.",
+   "ja": "帳簿には書かないで。",
+   "v_en": "res://assets/voice/end_train_ab978939.ogg",
+   "v_ja": "res://assets/voice/end_train_ab978939.ja.ogg"
+  },
+  {
+   "id": "end_train_a63c2723",
+   "src": 35,
+   "label": "end_train",
+   "who": "narrator",
+   "en": "You don't.",
+   "ja": "君は書かない。",
+   "v_en": "res://assets/voice/end_train_a63c2723.ogg",
+   "v_ja": "res://assets/voice/end_train_a63c2723.ja.ogg"
+  },
+  {
+   "id": "end_together_003306e9",
+   "src": 40,
+   "label": "end_together",
+   "who": "mira",
+   "en": "Come with me to the corner, at least. Not the station. The corner.",
+   "ja": "せめて角まで来て。駅じゃない。角よ。",
+   "v_en": "res://assets/voice/end_together_003306e9.ogg",
+   "v_ja": "res://assets/voice/end_together_003306e9.ja.ogg"
+  },
+  {
+   "id": "end_together_c085fd95",
+   "src": 41,
+   "label": "end_together",
+   "who": "narrator",
+   "en": "You walk her down four flights and out through the doors you have watched all night from the wrong side.",
+   "ja": "君は彼女を四階分下へ連れて行く。そして、一晩中、間違った側から見ていたドアを通り、外へ出る。",
+   "v_en": "res://assets/voice/end_together_c085fd95.ogg",
+   "v_ja": "res://assets/voice/end_together_c085fd95.ja.ogg"
+  },
+  {
+   "id": "end_together_8a6ecde6",
+   "src": 42,
+   "label": "end_together",
+   "who": "narrator",
+   "en": "The rain has stopped. The pavement has started to steam.",
+   "ja": "雨は止んだ。舗道が湯気を立てはじめている。",
+   "v_en": "res://assets/voice/end_together_8a6ecde6.ogg",
+   "v_ja": "res://assets/voice/end_together_8a6ecde6.ja.ogg"
+  },
+  {
+   "id": "end_together_db9e9c48",
+   "src": 43,
+   "label": "end_together",
+   "who": "mira",
+   "en": "If I write to the hotel, will it reach you?",
+   "ja": "もしホテルに手紙を書いたら、あなたに届くかしら？",
+   "v_en": "res://assets/voice/end_together_db9e9c48.ogg",
+   "v_ja": "res://assets/voice/end_together_db9e9c48.ja.ogg"
+  },
+  {
+   "id": "end_together_4c1a3664",
+   "src": 44,
+   "label": "end_together",
+   "who": "protagonist",
+   "en": "The hotel gets three letters a year. I open all of them.",
+   "ja": "「このホテルには年に三通しか手紙が来ません。全部、私が開けます」",
+   "v_en": "res://assets/voice/end_together_4c1a3664.ogg",
+   "v_ja": "res://assets/voice/end_together_4c1a3664.ja.ogg"
+  },
+  {
+   "id": "end_together_cb9fa211",
+   "src": 45,
+   "label": "end_together",
+   "who": "mira",
+   "en": "Then I'll make it four.",
+   "ja": "それなら、私が四通目にするわ。",
+   "v_en": "res://assets/voice/end_together_cb9fa211.ogg",
+   "v_ja": "res://assets/voice/end_together_cb9fa211.ja.ogg"
+  },
+  {
+   "id": "end_together_606d9929",
+   "src": 46,
+   "label": "end_together",
+   "who": "narrator",
+   "en": "She goes left at the corner. Wrong way for the station. That is the point.",
+   "ja": "彼女は角を左に曲がる。駅とは逆の方向。それが要点だ。",
+   "v_en": "res://assets/voice/end_together_606d9929.ogg",
+   "v_ja": "res://assets/voice/end_together_606d9929.ja.ogg"
+  },
+  {
+   "id": "end_alone_1f5d6182",
+   "src": 51,
+   "label": "end_alone",
+   "who": "mira",
+   "en": "I'll take the station. He'll have given up by now, or he won't, and either way it stops being a thing I plan around.",
+   "ja": "俺は駅に向かう。彼はもう諦めているだろう。あるいは、諦めていないだろう。どちらにせよ、俺がそれに合わせて動く必要はなくなる。",
+   "v_en": "res://assets/voice/end_alone_1f5d6182.ogg",
+   "v_ja": "res://assets/voice/end_alone_1f5d6182.ja.ogg"
+  },
+  {
+   "id": "end_alone_94f9fcd3",
+   "src": 52,
+   "label": "end_alone",
+   "who": "narrator",
+   "en": "She sets the key on the bedside table, squared to the edge, the way you leave a thing for someone you do not intend to speak to again.",
+   "ja": "彼女は鍵をベッドサイドに置く。縁に揃えて。もう口をきくつもりのない相手に何かを残すときの置き方で。",
+   "v_en": "res://assets/voice/end_alone_94f9fcd3.ogg",
+   "v_ja": "res://assets/voice/end_alone_94f9fcd3.ja.ogg"
+  },
+  {
+   "id": "end_alone_c1305e19",
+   "src": 53,
+   "label": "end_alone",
+   "who": "mira",
+   "en": "Thanks for the room.",
+   "ja": "部屋、ありがとう。",
+   "v_en": "res://assets/voice/end_alone_c1305e19.ogg",
+   "v_ja": "res://assets/voice/end_alone_c1305e19.ja.ogg"
+  },
+  {
+   "id": "end_alone_86eb65a1",
+   "src": 54,
+   "label": "end_alone",
+   "who": "narrator",
+   "en": "At the door she stops, and does not turn around.",
+   "ja": "彼女はドアの前で立ち止まる。振り返らない。",
+   "v_en": "res://assets/voice/end_alone_86eb65a1.ogg",
+   "v_ja": "res://assets/voice/end_alone_86eb65a1.ja.ogg"
+  },
+  {
+   "id": "end_alone_abfc49c8",
+   "src": 55,
+   "label": "end_alone",
+   "who": "mira",
+   "en": "You could have told him nothing. It wasn't a hard thing to withhold.",
+   "ja": "「何も言わないこともできたのに。黙っているのは、そんなに難しいことじゃない」",
+   "v_en": "res://assets/voice/end_alone_abfc49c8.ogg",
+   "v_ja": "res://assets/voice/end_alone_abfc49c8.ja.ogg"
+  },
+  {
+   "id": "end_alone_a74660c7",
+   "src": 56,
+   "label": "end_alone",
+   "who": "narrator",
+   "en": "Then she is gone, and you are holding a tooth glass with two inches of somebody else's whisky in it, at half past six in the morning, in a room that is going to be cleaned by nine.",
+   "ja": "そして彼女は行ってしまい、あなたは朝の六時半、九時には清掃が入る部屋で、他人のウイスキーが二インチ入った歯磨き用コップを持っている。",
+   "v_en": "res://assets/voice/end_alone_a74660c7.ogg",
+   "v_ja": "res://assets/voice/end_alone_a74660c7.ja.ogg"
+  },
+  {
+   "id": "epilogue_40bc425f",
+   "src": 63,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "The day porter comes on at seven and asks if anything happened.",
+   "ja": "七時、日勤のポーターが出勤し、何かあったかと尋ねる。",
+   "v_en": "res://assets/voice/epilogue_40bc425f.ogg",
+   "v_ja": "res://assets/voice/epilogue_40bc425f.ja.ogg"
+  },
+  {
+   "id": "epilogue_c5a0ffd5",
+   "src": 64,
+   "label": "epilogue",
+   "who": "narrator",
+   "en": "You look at the register, where the fourth row of the fourth floor is a clean unbroken line, and you tell him it was a quiet night.",
+   "ja": "お前は帳簿を見る。四階の四番目の行は、きれいに空白のままだ。そして、静かな夜だったと彼に告げる。",
+   "v_en": "res://assets/voice/epilogue_c5a0ffd5.ogg",
+   "v_ja": "res://assets/voice/epilogue_c5a0ffd5.ja.ogg"
+  }
+ ],
+ "menus": {
+  "The full night, uncensored, DRM-free — $2.49": "完全版、ぼかしなし、DRMフリー — $2.49",
+  "Windows / macOS / Linux. No ads, nothing blurred, every route open.": "Windows / macOS / Linux対応。広告なし、ぼかしなし、全ルート解放。",
+  "★ Get the full game — $2.49": "★ 完全版を購入 — $2.49",
+  "↺ Play the other route": "↺ 別のルートをプレイ",
+  "Thanks for playing.": "プレイしてくれてありがとう。",
+  "Artwork is AI-assisted. Writing is not. Both are disclosed on every store page.": "アートワークはAI支援。文章はAIではありません。どちらも各ストアページで開示しています。",
+  "Flat 404": "404号室",
+  "THE FREE PART ENDS HERE": "無料版はここまで",
+  "You told him it had been a quiet night. She is four floors up, and she has just called the desk.": "お前は静かな夜だったと彼に告げた。彼女は四階にいる。今しがた、フロントに電話をかけてきた。",
+  "You showed him the book. She is four floors up, and she has just called the desk anyway.": "お前は彼に帳簿を見せた。彼女は四階にいる。それでも今しがた、フロントに電話をかけてきた。",
+  "You gave him the house line. She is four floors up, and she has just called the desk.": "お前は彼に内線番号を教えた。彼女は四階にいる。今しがた、フロントに電話をかけてきた。",
+  "Room 704 — the whole night, uncensored": "704号室 — 完全版、ぼかしなし",
+  "Three routes, two uncensored scenes, three endings. Windows / macOS / Linux, DRM-free, no ads.": "三つのルート、ぼかしなしのシーン二つ、三つのエンディング。Windows / macOS / Linux対応、DRMフリー、広告なし。",
+  "$2.49 once.": "$2.49で買い切り。",
+  "★ Unlock the full night — $2.49": "★ 完全版をアンロック — $2.49",
+  "↺ Try the other choices": "↺ 別の選択肢を試す",
+  "Prefer free? The ad-supported web edition unlocks everything with short sponsor clips.": "無料版がいい？広告付きウェブ版なら、短いスポンサー動画を見るだけで全てがアンロックされる。",
+  "She wants off the ledger. The cash is on the counter.": "彼女は帳簿に載りたくない。現金はカウンターの上だ。",
+  "Ask her why before you decide.": "決める前に、理由を聞く。",
+  "Take the cash. Don't write anything.": "現金を受け取る。何も書かない。",
+  "Do it properly. Name in the book.": "きちんとやる。帳簿に名前を。",
+  "He is waiting. The register is on the counter between you.": "彼は待っている。宿帳は二人の間のカウンターの上だ。",
+  "Tell him nobody's checked in.": "誰もチェックインしていないと言う。",
+  "Slide the register at him and say nothing.": "宿帳を彼の方へ滑らせ、何も言わない。",
+  "Tell him the hotel doesn't discuss guests.": "ホテルは宿泊客について話さないと言う。"
+ }
+}

@@ -1,0 +1,1276 @@
+{
+ "id": "shift1",
+ "title_key": "n1_title",
+ "sub_key": "n1_sub",
+ "turns": 60,
+ "clock_start": 134,
+ "minutes_per_turn": 2,
+ "start_room": "lobby",
+ "start_event": "n1_open",
+ "map": {
+  "image": "marbeck",
+  "rooms": {
+   "lobby": [
+    0.3,
+    0.62
+   ],
+   "back_office": [
+    0.5,
+    0.62
+   ],
+   "bar": [
+    0.7,
+    0.62
+   ],
+   "kitchen": [
+    0.9,
+    0.62
+   ],
+   "lift": [
+    0.3,
+    0.42
+   ],
+   "service_stair": [
+    0.9,
+    0.42
+   ],
+   "corridor_2": [
+    0.5,
+    0.42
+   ],
+   "room_212": [
+    0.7,
+    0.42
+   ],
+   "street": [
+    0.1,
+    0.62
+   ]
+  }
+ },
+ "rooms": {
+  "lobby": {
+   "name_key": "r_lobby",
+   "plate": "lobby",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8294",
+    "lamps": [
+     [
+      0.3,
+      0.45,
+      1.0,
+      "#ffd090"
+     ],
+     [
+      0.85,
+      0.3,
+      0.8,
+      "#ff6070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "register",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.62
+     ],
+     "event": "n1_register",
+     "label_key": "hs_register",
+     "gives": [
+      "register_page"
+     ],
+     "xp": 10
+    },
+    {
+     "id": "board",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.4
+     ],
+     "event": "n1_board",
+     "label_key": "hs_board",
+     "xp": 5
+    },
+    {
+     "id": "dace_phone",
+     "kind": "enemy",
+     "enemy": "dace_phone",
+     "pos": [
+      0.25,
+      0.55
+     ],
+     "event": "n1_phone_pre",
+     "after": "n1_phone_post",
+     "label_key": "e_dace_phone",
+     "if_flag": "lift_done"
+    },
+    {
+     "id": "doors",
+     "kind": "event",
+     "pos": [
+      0.15,
+      0.78
+     ],
+     "event": "n1_gale",
+     "label_key": "hs_doors",
+     "if_flag": "car_seen"
+    },
+    {
+     "id": "to_office",
+     "kind": "door",
+     "to": "back_office",
+     "pos": [
+      0.62,
+      0.86
+     ]
+    },
+    {
+     "id": "to_bar",
+     "kind": "door",
+     "to": "bar",
+     "pos": [
+      0.85,
+      0.86
+     ]
+    },
+    {
+     "id": "to_lift",
+     "kind": "door",
+     "to": "lift",
+     "pos": [
+      0.38,
+      0.86
+     ]
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "service_stair",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "needs": "passkey",
+     "locked_key": "hs_locked_msg"
+    },
+    {
+     "id": "to_street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.15,
+      0.28
+     ],
+     "turns": 1
+    }
+   ]
+  },
+  "back_office": {
+   "name_key": "r_back_office",
+   "plate": "back_office",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8480",
+    "lamps": [
+     [
+      0.4,
+      0.45,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "keysafe",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.4
+     ],
+     "event": "n1_keysafe",
+     "label_key": "hs_keysafe",
+     "gives": [
+      "passkey"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "cctv",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.35
+     ],
+     "event": "n1_cctv",
+     "label_key": "hs_cctv",
+     "gives": [
+      "cctv_tape"
+     ],
+     "xp": 10
+    },
+    {
+     "id": "kettle",
+     "kind": "search",
+     "pos": [
+      0.85,
+      0.6
+     ],
+     "event": "n1_kettle",
+     "label_key": "hs_kettle",
+     "gives": [
+      "coffee"
+     ]
+    },
+    {
+     "id": "drawer",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.68
+     ],
+     "event": "n1_drawer",
+     "label_key": "hs_drawer",
+     "gives": [
+      "revolver"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "ledger",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.6
+     ],
+     "event": "n1_ledger",
+     "label_key": "hs_register",
+     "gives": [
+      "ledger704"
+     ],
+     "xp": 15
+    },
+    {
+     "id": "to_lobby",
+     "kind": "door",
+     "to": "lobby",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n1_office"
+  },
+  "bar": {
+   "name_key": "r_bar",
+   "plate": "bar",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a7a70",
+    "lamps": [
+     [
+      0.6,
+      0.35,
+      1.0,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "guest212",
+     "kind": "enemy",
+     "enemy": "guest212",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n1_g212_pre",
+     "after": "n1_g212_post"
+    },
+    {
+     "id": "bottles",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.35
+     ],
+     "event": "n1_bottles",
+     "label_key": "hs_bottles",
+     "gives": [
+      "whisky"
+     ]
+    },
+    {
+     "id": "till",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.6
+     ],
+     "event": "n1_till",
+     "label_key": "hs_till",
+     "gives": [
+      "cash",
+      "cash"
+     ],
+     "if_flag": "g212_done"
+    },
+    {
+     "id": "mirror",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.3
+     ],
+     "event": "n1_mirror",
+     "label_key": "hs_mirror",
+     "xp": 10
+    },
+    {
+     "id": "to_lobby",
+     "kind": "door",
+     "to": "lobby",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_kitchen",
+     "kind": "door",
+     "to": "kitchen",
+     "pos": [
+      0.9,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n1_bar"
+  },
+  "kitchen": {
+   "name_key": "r_kitchen",
+   "plate": "kitchen",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a9098",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.2,
+      "#e0f0ff"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "fridge",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.45
+     ],
+     "event": "n1_fridge",
+     "label_key": "hs_fridge",
+     "gives": [
+      "minibar"
+     ]
+    },
+    {
+     "id": "pans",
+     "kind": "search",
+     "pos": [
+      0.6,
+      0.3
+     ],
+     "event": "n1_pans",
+     "label_key": "hs_pans",
+     "xp": 5
+    },
+    {
+     "id": "service_door",
+     "kind": "search",
+     "pos": [
+      0.85,
+      0.5
+     ],
+     "event": "n1_service",
+     "label_key": "hs_service_door",
+     "xp": 5
+    },
+    {
+     "id": "to_bar",
+     "kind": "door",
+     "to": "bar",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n1_kitchen"
+  },
+  "lift": {
+   "name_key": "r_lift",
+   "plate": "lift",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8488",
+    "lamps": [
+     [
+      0.5,
+      0.3,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "dial",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.25
+     ],
+     "event": "n1_dial",
+     "label_key": "hs_dial",
+     "xp": 5
+    },
+    {
+     "id": "gate",
+     "kind": "search",
+     "pos": [
+      0.5,
+      0.6
+     ],
+     "event": "n1_gate",
+     "label_key": "hs_gate",
+     "xp": 10
+    },
+    {
+     "id": "to_lobby",
+     "kind": "door",
+     "to": "lobby",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_corridor2",
+     "kind": "door",
+     "to": "corridor_2",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "lift_done"
+    }
+   ],
+   "enter_event": "n1_lift"
+  },
+  "service_stair": {
+   "name_key": "r_service_stair",
+   "plate": "service_stair",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a7a88",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      0.9,
+      "#ffd8a0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "footprints",
+     "kind": "search",
+     "pos": [
+      0.45,
+      0.6
+     ],
+     "event": "n1_footprints",
+     "label_key": "hs_footprints",
+     "xp": 10
+    },
+    {
+     "id": "landing",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.3
+     ],
+     "event": "n1_landing",
+     "label_key": "hs_landing",
+     "xp": 5
+    },
+    {
+     "id": "to_lobby",
+     "kind": "door",
+     "to": "lobby",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_corridor2",
+     "kind": "door",
+     "to": "corridor_2",
+     "pos": [
+      0.9,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n1_stair"
+  },
+  "corridor_2": {
+   "name_key": "r_corridor_2",
+   "plate": "corridor_2",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8078",
+    "lamps": [
+     [
+      0.2,
+      0.3,
+      0.9,
+      "#ffc080"
+     ],
+     [
+      0.7,
+      0.3,
+      0.9,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "haskell",
+     "kind": "enemy",
+     "enemy": "haskell",
+     "pos": [
+      0.55,
+      0.5
+     ],
+     "event": "n1_haskell_pre",
+     "after": "n1_haskell_post"
+    },
+    {
+     "id": "sconce",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.3
+     ],
+     "event": "n1_sconce",
+     "label_key": "hs_sconce",
+     "xp": 5
+    },
+    {
+     "id": "extinguisher",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.4
+     ],
+     "event": "n1_extinguisher",
+     "label_key": "hs_extinguisher",
+     "gives": [
+      "torch"
+     ],
+     "if_flag": "haskell_done"
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "service_stair",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    },
+    {
+     "id": "to_lift",
+     "kind": "door",
+     "to": "lift",
+     "pos": [
+      0.4,
+      0.86
+     ]
+    },
+    {
+     "id": "to_212",
+     "kind": "door",
+     "to": "room_212",
+     "pos": [
+      0.9,
+      0.86
+     ],
+     "if_flag": "haskell_done"
+    }
+   ],
+   "enter_event": "n1_corr2"
+  },
+  "room_212": {
+   "name_key": "r_room_212",
+   "plate": "room_212",
+   "music": "explore",
+   "mood": {
+    "ambient": "#80808c",
+    "lamps": [
+     [
+      0.5,
+      0.25,
+      0.9,
+      "#ffe0b0"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "dustsheet",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.6
+     ],
+     "event": "n1_dustsheet",
+     "label_key": "hs_dustsheet",
+     "gives": [
+      "aspirin"
+     ]
+    },
+    {
+     "id": "window212",
+     "kind": "event",
+     "pos": [
+      0.7,
+      0.3
+     ],
+     "event": "n1_window",
+     "label_key": "hs_window212"
+    },
+    {
+     "id": "to_corridor2",
+     "kind": "door",
+     "to": "corridor_2",
+     "pos": [
+      0.1,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n1_212"
+  },
+  "street": {
+   "name_key": "r_street",
+   "plate": "street",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8088a0",
+    "lamps": [
+     [
+      0.6,
+      0.25,
+      1.1,
+      "#ff6070"
+     ],
+     [
+      0.2,
+      0.3,
+      0.8,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "noodle",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.45
+     ],
+     "event": "n1_noodle",
+     "label_key": "hs_noodle",
+     "gives": [
+      "coffee"
+     ]
+    },
+    {
+     "id": "car",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.55
+     ],
+     "event": "n1_car",
+     "label_key": "hs_car",
+     "xp": 10,
+     "if_flag": "car_seen"
+    },
+    {
+     "id": "to_lobby",
+     "kind": "door",
+     "to": "lobby",
+     "pos": [
+      0.1,
+      0.86
+     ],
+     "turns": 1
+    }
+   ],
+   "enter_event": "n1_street"
+  }
+ },
+ "events": {
+  "n1_open": [
+   {
+    "hide_cg": true
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "act1:11-12"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "lobby"
+   },
+   {
+    "lines": "act1:16-19"
+   },
+   {
+    "cg": "cg_checkin"
+   },
+   {
+    "lines": "act1:25-40"
+   },
+   {
+    "lines": "act1:45-45"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Ask her why before you decide.",
+      "do": [
+       {
+        "trust": 2
+       },
+       {
+        "event": "vn_ask_why"
+       }
+      ]
+     },
+     {
+      "menu": "Take the cash. Don't write anything.",
+      "do": [
+       {
+        "trust": 1
+       },
+       {
+        "flag": "covered",
+        "value": true
+       },
+       {
+        "event": "vn_take_cash"
+       }
+      ]
+     },
+     {
+      "menu": "Do it properly. Name in the book.",
+      "do": [
+       {
+        "trust": -1
+       },
+       {
+        "event": "vn_by_the_book"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "event": "vn_gives_key"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "show": ""
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_open_3"
+   }
+  ],
+  "vn_ask_why": [
+   {
+    "lines": "act1:62-70"
+   },
+   {
+    "trust": 2
+   },
+   {
+    "flag": "covered",
+    "value": true
+   }
+  ],
+  "vn_take_cash": [
+   {
+    "lines": "act1:78-81"
+   }
+  ],
+  "vn_by_the_book": [
+   {
+    "lines": "act1:86-90"
+   },
+   {
+    "flag": "covered",
+    "value": false
+   }
+  ],
+  "vn_gives_key": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "lobby"
+   },
+   {
+    "lines": "act1:97-105"
+   }
+  ],
+  "n1_register": [
+   {
+    "say": "narrator",
+    "key": "n1_register_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_register_2"
+   }
+  ],
+  "n1_board": [
+   {
+    "say": "narrator",
+    "key": "n1_board_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_board_2"
+   }
+  ],
+  "n1_office": [
+   {
+    "say": "narrator",
+    "key": "n1_office_1"
+   }
+  ],
+  "n1_keysafe": [
+   {
+    "say": "narrator",
+    "key": "n1_keysafe_1"
+   }
+  ],
+  "n1_cctv": [
+   {
+    "say": "narrator",
+    "key": "n1_cctv_1"
+   }
+  ],
+  "n1_kettle": [
+   {
+    "say": "narrator",
+    "key": "n1_kettle_1"
+   }
+  ],
+  "n1_drawer": [
+   {
+    "say": "narrator",
+    "key": "n1_drawer_1"
+   }
+  ],
+  "n1_ledger": [
+   {
+    "say": "narrator",
+    "key": "n1_ledger_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_ledger_2"
+   }
+  ],
+  "n1_bar": [
+   {
+    "say": "narrator",
+    "key": "n1_bar_1"
+   }
+  ],
+  "n1_g212_pre": [
+   {
+    "say": "narrator",
+    "key": "n1_g212_1"
+   },
+   {
+    "say": "guest212",
+    "key": "n1_g212_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_g212_3"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_tutorial_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_tutorial_2"
+   }
+  ],
+  "n1_g212_post": [
+   {
+    "say": "guest212",
+    "key": "n1_g212_4"
+   },
+   {
+    "flag": "g212_done"
+   }
+  ],
+  "n1_bottles": [
+   {
+    "say": "narrator",
+    "key": "n1_bottles_1"
+   }
+  ],
+  "n1_till": [
+   {
+    "say": "narrator",
+    "key": "n1_till_1"
+   }
+  ],
+  "n1_mirror": [
+   {
+    "say": "narrator",
+    "key": "n1_mirror_1"
+   }
+  ],
+  "n1_kitchen": [
+   {
+    "say": "narrator",
+    "key": "n1_kitchen_1"
+   }
+  ],
+  "n1_fridge": [
+   {
+    "say": "narrator",
+    "key": "n1_fridge_1"
+   }
+  ],
+  "n1_pans": [
+   {
+    "say": "narrator",
+    "key": "n1_pans_1"
+   }
+  ],
+  "n1_service": [
+   {
+    "say": "narrator",
+    "key": "n1_service_locked"
+   }
+  ],
+  "n1_lift": [
+   {
+    "say": "narrator",
+    "key": "n1_lift_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_lift_2"
+   },
+   {
+    "flag": "lift_done"
+   }
+  ],
+  "n1_dial": [
+   {
+    "say": "narrator",
+    "key": "n1_dial_1"
+   }
+  ],
+  "n1_gate": [
+   {
+    "say": "narrator",
+    "key": "n1_gate_1"
+   }
+  ],
+  "n1_phone_pre": [
+   {
+    "say": "narrator",
+    "key": "n1_phone_1"
+   },
+   {
+    "say": "dace",
+    "key": "n1_phone_2"
+   }
+  ],
+  "n1_phone_post": [
+   {
+    "say": "dace",
+    "key": "n1_phone_3"
+   },
+   {
+    "flag": "phone_done"
+   }
+  ],
+  "n1_stair": [
+   {
+    "say": "narrator",
+    "key": "n1_stair_1"
+   }
+  ],
+  "n1_footprints": [
+   {
+    "say": "narrator",
+    "key": "n1_footprints_1"
+   }
+  ],
+  "n1_landing": [
+   {
+    "say": "narrator",
+    "key": "n1_landing_1"
+   }
+  ],
+  "n1_corr2": [
+   {
+    "say": "narrator",
+    "key": "n1_corr2_1"
+   }
+  ],
+  "n1_haskell_pre": [
+   {
+    "say": "narrator",
+    "key": "n1_haskell_1"
+   },
+   {
+    "say": "haskell",
+    "key": "n1_haskell_2"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_haskell_3"
+   }
+  ],
+  "n1_haskell_post": [
+   {
+    "say": "haskell",
+    "key": "n1_haskell_4"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_haskell_5"
+   },
+   {
+    "flag": "haskell_done"
+   }
+  ],
+  "n1_sconce": [
+   {
+    "say": "narrator",
+    "key": "n1_sconce_1"
+   }
+  ],
+  "n1_extinguisher": [
+   {
+    "say": "narrator",
+    "key": "n1_extinguisher_1"
+   }
+  ],
+  "n1_212": [
+   {
+    "say": "narrator",
+    "key": "n1_212_1"
+   }
+  ],
+  "n1_dustsheet": [
+   {
+    "say": "narrator",
+    "key": "n1_dustsheet_1"
+   }
+  ],
+  "n1_window": [
+   {
+    "cg": "cg_rpg_car"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_window_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_window_2"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "xp": 15
+   },
+   {
+    "flag": "car_seen"
+   }
+  ],
+  "n1_street": [
+   {
+    "say": "narrator",
+    "key": "n1_street_1"
+   }
+  ],
+  "n1_noodle": [
+   {
+    "say": "narrator",
+    "key": "n1_noodle_1"
+   }
+  ],
+  "n1_car": [
+   {
+    "say": "narrator",
+    "key": "n1_car_1"
+   }
+  ],
+  "n1_gale": [
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "lobby"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "bg": "lobby"
+   },
+   {
+    "lines": "act1:110-115"
+   },
+   {
+    "lines": "act1:120-120"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Tell him nobody's checked in.",
+      "do": [
+       {
+        "trust": 3
+       },
+       {
+        "flag": "route_cover"
+       }
+      ]
+     },
+     {
+      "menu": "Slide the register at him and say nothing.",
+      "do": [
+       {
+        "trust": -2
+       },
+       {
+        "flag": "route_sold"
+       }
+      ]
+     },
+     {
+      "menu": "Tell him the hotel doesn't discuss guests.",
+      "do": [
+       {
+        "trust": 1
+       },
+       {
+        "flag": "route_stonewall"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "say": "narrator",
+    "key": "n1_gale_1"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_gale_2"
+   },
+   {
+    "battle": "gale"
+   },
+   {
+    "if_flag": "route_cover",
+    "then": [
+     {
+      "lines": "act1:139-146"
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "route_sold",
+      "then": [
+       {
+        "lines": "act1:151-157"
+       }
+      ],
+      "else": [
+       {
+        "lines": "act1:162-167"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "flag": "gale_done"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "act1:174-177"
+   },
+   {
+    "say": "narrator",
+    "key": "n1_end_1"
+   },
+   {
+    "end_night": true,
+    "next": "shift2"
+   }
+  ]
+ }
+}
