@@ -294,6 +294,7 @@ func render_room() -> void:
 		fig = r.get("heroine_pose", RPG.heroine_sprite())
 	stage.set_figure(NRArt.tex("sprites", fig) if fig != "" else null, float(r.get("heroine_x", 0.78)))
 	Sound.play_music(r.get("music", "explore"))
+	Sound.play_room(r, RPG.s["room"])
 	hud.visible = true
 	_refresh_hud()
 	for c in hot_layer.get_children():
@@ -398,10 +399,12 @@ func _do_hotspot(h: Dictionary) -> String:
 			RPG.spend_turns(int(h.get("turns", 1)))
 			pace["explore"] += 6.0
 			RPG.s["room"] = h["to"]
+			Sound.play_room_enter(RPG.room(), h["to"])
 			RPG.autosave()
 			return await enter_room_event()
 		"search":
 			RPG.autosave()
+			Sound.play_foley("search")
 			RPG.spend_turns(int(h.get("turns", 1)))
 			pace["explore"] += 7.0
 			RPG.s["done"][key] = true
@@ -538,6 +541,10 @@ func _step(st: Dictionary) -> String:
 		if RPG.is_trial() and cg_id in RPG.game.get("trial_locked_cgs", []) and NRArt.path("cg", cg_id + "_locked") != "":
 			cg_id += "_locked"
 		event.show_cg(NRArt.tex("cg", cg_id))
+		if st.has("cg_sfx"):
+			Sound.play_foley(st["cg_sfx"])
+		elif Sound.cur_music_key == "intimate":
+			Sound.play_foley("cloth_soft", -4.0)
 		if st.get("unlock", true):
 			RPG.unlock_cg(st["cg"])
 		await _shot("cg_" + st["cg"])
@@ -903,6 +910,7 @@ func _modal(title: String, w: float = 1000, h: float = 600) -> VBoxContainer:
 	_clear_overlay()
 	hud.visible = false
 	_dim()
+	Sound.play_foley("ui_open", -3.0)
 	var p := PanelContainer.new()
 	p.add_theme_stylebox_override("panel", NRSkin.box("modal", 22))
 	p.position = (VIEW - Vector2(w, h)) / 2
@@ -1078,6 +1086,7 @@ func show_saves(saving: bool) -> void:
 		var b := NRSkin.button(t, func():
 			if saving:
 				RPG.save(slot)
+				Sound.play_foley("writing")
 				show_saves(true)
 			elif RPG.load_slot(slot):
 				_clear_overlay()
@@ -1179,7 +1188,7 @@ func show_settings() -> void:
 		if NRAlive.enabled() == on:
 			mb.modulate = Color(1, 0.9, 0.6)
 		mrow.add_child(mb)
-	for key in ["vol_music", "vol_sfx", "vol_voice"]:
+	for key in ["vol_music", "vol_ambience", "vol_sfx", "vol_voice"]:
 		var row := HBoxContainer.new()
 		v.add_child(row)
 		var lab := NRSkin.label(Loc.t("st_" + key), 18)
@@ -1195,7 +1204,9 @@ func show_settings() -> void:
 		s.value_changed.connect(func(x):
 			RPG.persist[k] = x
 			RPG.save_persist()
-			Sound.apply_volumes())
+			Sound.apply_volumes()
+			if k == "vol_sfx":
+				Sound.play_foley("click"))
 		row.add_child(s)
 
 

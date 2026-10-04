@@ -44,8 +44,6 @@
  },
  "audio": {
   "ambience": "res://assets/audio/rain_ambience.ogg",
-  "click": "res://assets/audio/ui_click.ogg",
-  "page_flip": "res://assets/audio/page_flip.ogg",
   "heartbeat": "res://assets/audio/heartbeat.ogg",
   "sting": "res://assets/audio/title_sting.ogg",
   "camera": "res://assets/audio/ui_click.ogg"
@@ -1237,6 +1235,65 @@
   },
   "v_unlock_1": {
    "v_en": "res://assets/voice/v_unlock_1.ogg"
+  }
+ },
+ "room_audio": {
+  "_steps": "steps_wood",
+  "shop": {
+   "amb": "amb_rain_window",
+   "steps": "steps_wood"
+  },
+  "stockroom": {
+   "amb": "amb_room_tone",
+   "steps": "steps_wood"
+  },
+  "street": {
+   "amb": "amb_rain_street",
+   "steps": "steps_stone"
+  },
+  "cellar": {
+   "amb": "amb_cellar",
+   "steps": "steps_stone"
+  },
+  "receipt_stair": {
+   "amb": "amb_wind",
+   "steps": "steps_stone"
+  },
+  "bone_arcade": {
+   "amb": "amb_cellar",
+   "steps": "steps_stone"
+  },
+  "reliquary": {
+   "amb": "amb_cellar",
+   "steps": "steps_stone"
+  },
+  "lantern_row": {
+   "amb": "amb_street_night",
+   "steps": "steps_stone"
+  },
+  "archive": {
+   "amb": "amb_library",
+   "steps": "steps_wood"
+  },
+  "market": {
+   "amb": "amb_cafe",
+   "steps": "steps_stone"
+  },
+  "toll_gate": {
+   "amb": "amb_wind",
+   "steps": "steps_stone"
+  },
+  "counting_house": {
+   "amb": "amb_library",
+   "steps": "steps_wood"
+  },
+  "heart_vault": {
+   "amb": "amb_boiler",
+   "steps": "steps_stone"
+  },
+  "mirror_hall": {
+   "amb": "amb_room_tone",
+   "steps": "steps_stone"
   }
  }
 }

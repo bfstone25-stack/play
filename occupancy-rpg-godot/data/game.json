@@ -44,8 +44,6 @@
  },
  "audio": {
   "ambience": "res://assets/audio/rain_ambience.ogg",
-  "click": "res://assets/audio/ui_click.ogg",
-  "page_flip": "res://assets/audio/page_flip.ogg",
   "heartbeat": "res://assets/audio/heartbeat.ogg",
   "sting": "res://assets/audio/title_sting.ogg",
   "camera": "res://assets/audio/ui_click.ogg"
@@ -1419,6 +1417,73 @@
   },
   "v_unlock_1": {
    "v_en": "res://assets/voice/v_unlock_1.ogg"
+  }
+ },
+ "room_audio": {
+  "_steps": "steps_carpet",
+  "lobby": {
+   "amb": "amb_rain_window",
+   "steps": "steps_stone"
+  },
+  "open_plan": {
+   "amb": "amb_office",
+   "steps": "steps_carpet"
+  },
+  "copy_room": {
+   "amb": "amb_server",
+   "steps": "steps_carpet"
+  },
+  "break_room": {
+   "amb": "amb_office",
+   "steps": "steps_stone"
+  },
+  "stairwell": {
+   "amb": "amb_wind",
+   "steps": "steps_stone"
+  },
+  "sublet": {
+   "amb": "amb_office",
+   "steps": "steps_carpet"
+  },
+  "meeting_room": {
+   "amb": "amb_office",
+   "steps": "steps_carpet"
+  },
+  "accounts": {
+   "amb": "amb_office",
+   "steps": "steps_carpet"
+  },
+  "records": {
+   "amb": "amb_library",
+   "steps": "steps_carpet"
+  },
+  "server_room": {
+   "amb": "amb_server",
+   "steps": "steps_stone"
+  },
+  "newsroom": {
+   "amb": "amb_office",
+   "steps": "steps_carpet"
+  },
+  "print_room": {
+   "amb": "amb_server",
+   "steps": "steps_stone"
+  },
+  "rooftop": {
+   "amb": "amb_wind",
+   "steps": "steps_stone"
+  },
+  "penthouse": {
+   "amb": "amb_rain_window",
+   "steps": "steps_carpet"
+  },
+  "boardroom": {
+   "amb": "amb_office",
+   "steps": "steps_carpet"
+  },
+  "vault": {
+   "amb": "amb_boiler",
+   "steps": "steps_stone"
   }
  }
 }

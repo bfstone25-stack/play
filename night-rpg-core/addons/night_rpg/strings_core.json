@@ -683,6 +683,15 @@
   "zh": "音乐",
   "ko": "음악"
  },
+ "st_vol_ambience": {
+  "en": "Ambience",
+  "ja": "環境音",
+  "de": "Atmosphäre",
+  "fr": "Ambiance",
+  "es": "Ambiente",
+  "zh": "环境音",
+  "ko": "환경음"
+ },
  "st_vol_sfx": {
   "en": "Sound effects",
   "ja": "効果音",

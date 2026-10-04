@@ -1,0 +1,556 @@
+{
+ "steps_wood_1.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "footstep_wood_000.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "steps_wood_2.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "footstep_wood_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "steps_wood_3.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "footstep_wood_002.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "steps_stone_1.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "footstep_concrete_000.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "steps_stone_2.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "footstep_concrete_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "steps_stone_3.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "footstep_concrete_002.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "steps_carpet_1.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "footstep_carpet_000.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "steps_carpet_2.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "footstep_carpet_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "door_open_1.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "doorOpen_1.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-20 LUFS, TP=-1.5, LRA=11, Vorbis q6"
+ },
+ "door_open_2.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "doorOpen_2.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-20 LUFS, TP=-1.5, LRA=11, Vorbis q6"
+ },
+ "door_close_1.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "doorClose_1.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-20 LUFS, TP=-1.5, LRA=11, Vorbis q6"
+ },
+ "door_close_2.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "doorClose_2.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-20 LUFS, TP=-1.5, LRA=11, Vorbis q6"
+ },
+ "door_close_3.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "doorClose_3.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-20 LUFS, TP=-1.5, LRA=11, Vorbis q6"
+ },
+ "door_metal.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "metalLatch.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "paper_1.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "bookFlip1.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-20 LUFS, TP=-1.5, LRA=11, Vorbis q6"
+ },
+ "paper_2.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "bookFlip2.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "paper_3.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "bookFlip3.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "paper_place_1.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "bookPlace1.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "paper_place_2.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "bookPlace2.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "book_close.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "bookClose.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "search_1.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "handleSmallLeather.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "search_2.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "handleSmallLeather2.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "cloth_1.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "cloth1.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-26 LUFS, TP=-3, LRA=11, Vorbis q6"
+ },
+ "cloth_2.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "cloth2.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "cloth_3.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "cloth3.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "cloth_soft_1.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "cloth4.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "low-passed, quieter; peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "cloth_soft_2.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "cloth2.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "low-passed, slowed; peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "embrace_1.ogg": {
+  "source": "Kenney — RPG Audio + Impact Sounds (1.0)",
+  "files": [
+   "cloth1.ogg",
+   "impactSoft_medium_000.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "cloth rustle + soft body impact, low-passed; I=-26 LUFS, TP=-3, LRA=11, Vorbis q6"
+ },
+ "embrace_2.ogg": {
+  "source": "Kenney — RPG Audio + Impact Sounds (1.0)",
+  "files": [
+   "cloth3.ogg",
+   "impactSoft_medium_002.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "cloth rustle + soft body impact, low-passed; peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "belt.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "clothBelt.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-26 LUFS, TP=-3, LRA=11, Vorbis q6"
+ },
+ "hit_1.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "impactPunch_medium_000.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "hit_2.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "impactPunch_medium_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "hit_3.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "impactPunch_medium_002.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "hit_heavy_1.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "impactWood_heavy_000.ogg",
+   "impactPunch_heavy_000.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "desk slam + heavy thud; I=-20 LUFS, TP=-1.5, LRA=11, Vorbis q6"
+ },
+ "hit_heavy_2.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "impactWood_heavy_002.ogg",
+   "impactPunch_heavy_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "desk slam + heavy thud; peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "hit_soft_1.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "impactSoft_medium_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "hit_soft_2.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "impactSoft_medium_003.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -9 dBFS, Vorbis q6"
+ },
+ "desk_slam.ogg": {
+  "source": "Kenney — Impact Sounds (1.0)",
+  "files": [
+   "impactWood_heavy_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/impact-sounds",
+  "processing": "peak-normalised to -3 dBFS, Vorbis q6"
+ },
+ "ui_click.ogg": {
+  "source": "Kenney — Interface Sounds (1.0)",
+  "files": [
+   "click_002.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/interface-sounds",
+  "processing": "peak-normalised to -8 dBFS, Vorbis q6"
+ },
+ "ui_open.ogg": {
+  "source": "Kenney — Interface Sounds (1.0)",
+  "files": [
+   "open_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/interface-sounds",
+  "processing": "peak-normalised to -8 dBFS, Vorbis q6"
+ },
+ "ui_close.ogg": {
+  "source": "Kenney — Interface Sounds (1.0)",
+  "files": [
+   "close_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/interface-sounds",
+  "processing": "peak-normalised to -8 dBFS, Vorbis q6"
+ },
+ "ui_confirm.ogg": {
+  "source": "Kenney — Interface Sounds (1.0)",
+  "files": [
+   "confirmation_001.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/interface-sounds",
+  "processing": "peak-normalised to -8 dBFS, Vorbis q6"
+ },
+ "coins.ogg": {
+  "source": "Kenney — RPG Audio (1.0)",
+  "files": [
+   "handleCoins.ogg"
+  ],
+  "author": "Kenney (kenney.nl)",
+  "licence": "CC0 1.0",
+  "url": "https://kenney.nl/assets/rpg-audio",
+  "processing": "I=-20 LUFS, TP=-1.5, LRA=11, Vorbis q6"
+ },
+ "amb_boiler.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_cafe.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_cellar.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_club.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_hotel_hall.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_library.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_office.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_rain_street.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_rain_window.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_room_tone.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_server.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_street_night.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "amb_wind.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-30 LUFS, TP=-6, LRA=7, Vorbis q6, seamless loop"
+ },
+ "writing_1.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-26 LUFS, TP=-3, LRA=11, Vorbis q6"
+ },
+ "writing_2.ogg": {
+  "source": "procedural DSP, ops/foley/synth_ambience.py",
+  "files": [],
+  "author": "BlazeCore (own work)",
+  "licence": "CC0 1.0 (own work, dedicated)",
+  "url": "",
+  "processing": "I=-26 LUFS, TP=-3, LRA=11, Vorbis q6"
+ }
+}

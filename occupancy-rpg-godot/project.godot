@@ -27,3 +27,7 @@ window/stretch/aspect="keep"
 [rendering]
 environment/defaults/default_clear_color=Color(0.133, 0.086, 0.157, 1)
 textures/vram_compression/import_etc2_astc=true
+
+[audio]
+
+buses/default_bus_layout="res://addons/night_rpg/audio/default_bus_layout.tres"

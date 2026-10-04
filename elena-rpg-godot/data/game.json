@@ -142,8 +142,6 @@
  },
  "audio": {
   "ambience": "res://assets/audio/rain_ambience.ogg",
-  "click": "res://assets/audio/ui_click.ogg",
-  "page_flip": "res://assets/audio/page_flip.ogg",
   "heartbeat": "res://assets/audio/heartbeat.ogg",
   "sting": "res://assets/audio/title_sting.ogg",
   "camera": "res://assets/audio/click.ogg"
@@ -1331,5 +1329,88 @@
    "key": "g_cg_trust9_bed",
    "trust": 9
   }
- ]
+ ],
+ "room_audio": {
+  "_steps": "steps_wood",
+  "study": {
+   "amb": "amb_rain_window",
+   "steps": "steps_carpet"
+  },
+  "corridor": {
+   "amb": "amb_library",
+   "steps": "steps_wood"
+  },
+  "stair": {
+   "amb": "amb_wind",
+   "steps": "steps_stone"
+  },
+  "vault": {
+   "amb": "amb_cellar",
+   "steps": "steps_stone"
+  },
+  "stacks": {
+   "amb": "amb_library",
+   "steps": "steps_wood"
+  },
+  "cellar": {
+   "amb": "amb_cellar",
+   "steps": "steps_stone"
+  },
+  "entrance_hall": {
+   "amb": "amb_rain_window",
+   "steps": "steps_stone"
+  },
+  "dock": {
+   "amb": "amb_rain_street",
+   "steps": "steps_stone"
+  },
+  "deans_corridor": {
+   "amb": "amb_library",
+   "steps": "steps_carpet"
+  },
+  "reading_room": {
+   "amb": "amb_library",
+   "steps": "steps_wood"
+  },
+  "map_room": {
+   "amb": "amb_library",
+   "steps": "steps_wood"
+  },
+  "bell_tower_stair": {
+   "amb": "amb_wind",
+   "steps": "steps_stone"
+  },
+  "bell_chamber": {
+   "amb": "amb_wind",
+   "steps": "steps_wood"
+  },
+  "common_room": {
+   "amb": "amb_rain_window",
+   "steps": "steps_carpet"
+  },
+  "bindery": {
+   "amb": "amb_library",
+   "steps": "steps_wood"
+  },
+  "conservation_lab": {
+   "amb": "amb_server",
+   "steps": "steps_stone"
+  },
+  "annex": {
+   "amb": "amb_rain_window",
+   "steps": "steps_wood"
+  },
+  "deans_office": {
+   "amb": "amb_rain_window",
+   "steps": "steps_carpet"
+  },
+  "carrel": {
+   "amb": "amb_library",
+   "steps": "steps_wood"
+  },
+  "muniment": {
+   "amb": "amb_cellar",
+   "steps": "steps_stone"
+  }
+ }
 }

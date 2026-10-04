@@ -44,8 +44,6 @@
  },
  "audio": {
   "ambience": "res://assets/audio/room_tone.ogg",
-  "click": "res://assets/audio/ui_click.ogg",
-  "page_flip": "res://assets/audio/ui_hover.ogg",
   "heartbeat": "res://assets/audio/heartbeat.ogg",
   "sting": "res://assets/audio/title_sting.ogg",
   "camera": "res://assets/audio/ui_click.ogg"
@@ -1284,5 +1282,68 @@
    "key": "g_cg_board",
    "trust": 0
   }
- ]
+ ],
+ "room_audio": {
+  "_steps": "steps_stone",
+  "precinct": {
+   "amb": "amb_office",
+   "steps": "steps_stone"
+  },
+  "corridor": {
+   "amb": "amb_hotel_hall",
+   "steps": "steps_stone"
+  },
+  "interview": {
+   "amb": "amb_room_tone",
+   "steps": "steps_stone"
+  },
+  "lockup": {
+   "amb": "amb_cellar",
+   "steps": "steps_stone"
+  },
+  "alley": {
+   "amb": "amb_rain_street",
+   "steps": "steps_stone"
+  },
+  "club": {
+   "amb": "amb_club",
+   "steps": "steps_wood"
+  },
+  "back_office": {
+   "amb": "amb_club",
+   "steps": "steps_wood"
+  },
+  "cooler": {
+   "amb": "amb_server",
+   "steps": "steps_stone"
+  },
+  "archive": {
+   "amb": "amb_library",
+   "steps": "steps_stone"
+  },
+  "morgue": {
+   "amb": "amb_server",
+   "steps": "steps_stone"
+  },
+  "loading_bay": {
+   "amb": "amb_rain_street",
+   "steps": "steps_stone"
+  },
+  "mop_room": {
+   "amb": "amb_boiler",
+   "steps": "steps_stone"
+  },
+  "fire_stairs": {
+   "amb": "amb_wind",
+   "steps": "steps_stone"
+  },
+  "flat": {
+   "amb": "amb_rain_window",
+   "steps": "steps_carpet"
+  },
+  "safe_house": {
+   "amb": "amb_rain_window",
+   "steps": "steps_wood"
+  }
+ }
 }

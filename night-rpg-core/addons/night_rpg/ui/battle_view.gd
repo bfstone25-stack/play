@@ -232,7 +232,11 @@ func _say_event(ev: Dictionary) -> void:
 			txt += " " + Loc.t("b_heal") % int(ev["heal"])
 		if ev["action"] == "threaten":
 			txt += "\n" + Loc.t("b_threat_mark")
-		Sound.play_sfx("page_flip" if ev["dmg"] > 0 else "click")
+		# standoff hits: a desk-slam/punch weight by how the hit landed, a paper flick on a miss
+		if ev["dmg"] > 0:
+			Sound.play_foley("hit_heavy" if ev["aff"] == "weak" else ("hit_soft" if ev["aff"] == "resist" else "hit"))
+		else:
+			Sound.play_foley("paper")
 	if ev["who"] != "enemy" and ev["who"] == RPG.game.get("heroine_barks", {}).get("who", "") and ev["action"] == "observe" and b["result"] == "":
 		var rb := _heroine_bark("read")
 		if rb != "":

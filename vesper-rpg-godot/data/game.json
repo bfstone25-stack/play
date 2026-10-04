@@ -45,8 +45,6 @@
  },
  "audio": {
   "ambience": "res://assets/audio/room_ambience.mp3",
-  "click": "res://assets/audio/ui_click.ogg",
-  "page_flip": "res://assets/audio/page_flip.ogg",
   "heartbeat": "res://assets/audio/heartbeat.ogg",
   "sting": "res://assets/audio/title_sting.ogg"
  },
@@ -2772,5 +2770,20 @@
    "key": "g_cg_fushen_end",
    "trust": 0
   }
- ]
+ ],
+ "room_audio": {
+  "_steps": "steps_wood",
+  "v_home": {
+   "amb": "amb_rain_window",
+   "steps": "steps_wood"
+  },
+  "v_street": {
+   "amb": "amb_street_night",
+   "steps": "steps_stone"
+  },
+  "v_cafe": {
+   "amb": "amb_cafe",
+   "steps": "steps_wood"
+  }
+ }
 }
