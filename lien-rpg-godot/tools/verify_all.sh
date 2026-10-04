@@ -22,6 +22,16 @@ echo "$out"; echo "$out" | grep -qE "^FAIL|stuck|SCRIPT ERROR" && rc=1
 # reads all three (looks at the ring though Ivo asked) -> collateral, and the gated readings
 out=$(run --nights=$ALL --runs=1 --min=0 --max=999 --prefer="h2_take|price_finial_high|price_veil_high|h3_take|h1_read" --expect=ending_collateral,read_ring,read_finial,read_veil)
 echo "$out"; echo "$out" | grep -qE "^FAIL|stuck|SCRIPT ERROR" && rc=1
+# the counter must matter: the same normal player who never uses it (sends every walk-in away,
+# sells and buys nothing) ends the night short of the estate and in Collateral, with a till
+# at least 100 lower than the player who works the counter
+runt() { "$G" --headless --path . res://tests/sim.tscn -- "$@" 2>&1 | grep -E "^h5: till" | sed 's/.*till \([0-9]*\).*/\1/'; }
+busy=$(runt --nights=$ALL --runs=1 --min=0 --max=999)
+lazy=$(runt --nights=$ALL --runs=1 --min=0 --max=999 --counter=ignore)
+out=$(run --nights=$ALL --runs=1 --min=0 --max=999 --counter=ignore --expect=ending_collateral)
+echo "$out" | grep -E "FAIL|ending"; echo "counter used: till $busy at dawn; counter ignored: till $lazy"
+echo "$out" | grep -qE "^FAIL|stuck|SCRIPT ERROR" && rc=1
+[ -n "$busy" ] && [ -n "$lazy" ] && [ $((busy - lazy)) -ge 100 ] || { echo "!! ignoring the counter is not measurably worse"; rc=1; }
 out=$(run --nights=h1 --runs=2 --policy=reckless --min=0 --max=999); echo "$out"
 echo "$out" | grep -qE "^FAIL h1 (winnable|finished)" || { echo "!! the reckless player did not lose: the balance check cannot fail"; rc=1; }
 echo "verify_all rc=$rc"; exit $rc

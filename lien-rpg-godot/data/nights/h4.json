@@ -79,6 +79,17 @@
      "after": "h4_name_post"
     },
     {
+     "id": "stalls",
+     "kind": "event",
+     "pos": [
+      0.3,
+      0.7
+     ],
+     "event": "h4_stalls",
+     "label_key": "hs_stalls",
+     "if_flag": "doors_done"
+    },
+    {
      "id": "instruments",
      "kind": "search",
      "pos": [
@@ -282,6 +293,26 @@
    {
     "say": "narrator",
     "key": "h4_open_1"
+   },
+   {
+    "if_has": "coin",
+    "n": 25,
+    "then": [
+     {
+      "take": "coin",
+      "n": 25
+     },
+     {
+      "say": "narrator",
+      "key": "toll_paid"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "toll_short"
+     }
+    ]
    },
    {
     "lines": "lien:732-739"
@@ -648,6 +679,62 @@
    {
     "end_night": true,
     "next": "h5"
+   }
+  ],
+  "h1_counter": [
+   {
+    "say": "nara",
+    "key": "v_greet_0"
+   },
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h1"
+    }
+   }
+  ],
+  "h2_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h2"
+    }
+   }
+  ],
+  "h3_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h3"
+    }
+   }
+  ],
+  "h5_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h5"
+    }
+   }
+  ],
+  "h2_stalls": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "market"
+    }
+   }
+  ],
+  "h4_stalls": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "market"
+    }
    }
   ]
  }

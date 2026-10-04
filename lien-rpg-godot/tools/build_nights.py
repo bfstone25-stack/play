@@ -159,6 +159,7 @@ NIGHTS = {}
 # ================================================================== HOUR ONE: midnight (trial)
 h1_rooms = {
     "shop": room("shop", [
+        ev("counter", [0.42, 0.55], "h1_counter", "counter", "Open the counter", "カウンターを開ける", if_flag="tamsin_done"),
         search("window", [0.18, 0.32], "h1_window", "window", "The gold letters", "金文字", xp=5),
         search("shelves", [0.82, 0.38], "h1_shelves", "shelves", "The shelves", "棚", gives=["tea"]),
         search("clock", [0.62, 0.22], "h1_clock", "clock", "The wrong clock", "狂った時計", xp=5),
@@ -193,7 +194,7 @@ h1_rooms = {
     ], enter="h1_stair"),
 }
 h1_events = {
-    "h1_open": [{"bg": "shop"}, {"music": "explore"}, L(171, 189), V("v_greet_0"), L(190, 191), {"show": "tamsin", "x": 0.7}, L(199, 218),
+    "h1_open": [{"bg": "shop"}, {"music": "explore"}, L(171, 191), {"show": "tamsin", "x": 0.7}, L(199, 218),
                 N("h1_talk_0", "She waits for a number. You could give her something else first.", "彼女は数字を待っている。その前に、別のものを渡すこともできる。"),
                 {"choice": [
                     opt("h1_talk_flat", "\"Two days. Where are you going after?\"", "「あと二日。そのあとはどこへ？」", [
@@ -232,7 +233,14 @@ h1_events = {
                     N("h1_after_2", "And under the floor, under the stock room, something that is not the boiler knocks three times, politely, like a clerk at a door.", "そして床の下、在庫部屋の下で、ボイラーではない何かが三度、礼儀正しく叩く。扉の前の書記のように。"),
                     S("nara", "h1_after_3", "Not tonight. I've got a full book.", "今夜はだめ。帳簿が埋まってるの。"),
                     N("h1_after_4", "It knocks again. The shop has never once cared how full her book is.", "また叩く。店は一度だって、彼女の帳簿の混み具合など気にしたことがない。"),
+                    N("h1_counter_tip", "(Between clients the counter is yours: walk-ins with things to pledge or sell. Touch them to see what they are worth and catch the fakes, lend at interest, buy, sell what the descent brings up. The stair takes a toll every time; the estate wants 200 at dawn.)", "（客と客のあいだ、カウンターはあなたのもの。質入れや売却に来る飛び込み客。手で触れて値打ちを見極め、偽物を見抜き、利息つきで貸し、買い取り、下で手に入れた品を売る。階段は降りるたびに通行税を取り、夜明けには遺産が200を求める。）"),
                     N("h1_tutorial", "(Walk the rooms: click a place to look, a door to go through. Haggles and readings are standoffs — wear their Resolve down before their Claim on you reaches 100. Appraise first: everyone has soft spots.)", "（部屋を歩いて調べよう。場所をクリックで調べ、扉で移動。値切りと読み取りは「対決」だ。相手の請求が100に達する前に、意地を削りきろう。まずは鑑定。誰にでも弱みがある。）")]),
+    "h1_counter": [V("v_greet_0"), {"screen": "res://scripts/counter.gd", "args": {"mode": "counter", "hour": "h1"}}],
+    "h2_counter": [{"screen": "res://scripts/counter.gd", "args": {"mode": "counter", "hour": "h2"}}],
+    "h3_counter": [{"screen": "res://scripts/counter.gd", "args": {"mode": "counter", "hour": "h3"}}],
+    "h5_counter": [{"screen": "res://scripts/counter.gd", "args": {"mode": "counter", "hour": "h5"}}],
+    "h2_stalls": [{"screen": "res://scripts/counter.gd", "args": {"mode": "market"}}],
+    "h4_stalls": [{"screen": "res://scripts/counter.gd", "args": {"mode": "market"}}],
     "h1_window": [V("v_idle_1"), N("h1_window_1", "TWO PRICES ON EVERYTHING, backwards, in gold, from the inside. From in here it reads like a spell, which Elsa always said it was.", "「すべてのものに二つの値段」。内側から、逆さまの金文字で。ここから見ると呪文のようだ。エルサはいつも、実際そうだと言っていた。")],
     "h1_shelves": [N("h1_shelves_1", "Tonight's restock: a clarinet with no reed, six teaspoons, a tin of tea nobody pawned. The tea she takes.", "今夜の入荷。リードのないクラリネット、ティースプーン六本、誰も質入れしていない紅茶の缶。紅茶はもらっておく。")],
     "h1_clock": [N("h1_clock_1", "Wrong since 1998, by eleven minutes, always the same eleven. Elsa said the clock was keeping somebody else's time and it would be rude to correct it.", "1998年から十一分狂っている。いつも同じ十一分。誰か別の人の時間を刻んでいるのだから直すのは失礼だ、とエルサは言っていた。")],
@@ -277,6 +285,7 @@ NIGHTS["h1"] = night("h1", "Midnight", "午前零時", "The finial, and the firs
 # ================================================================== HOUR TWO: twenty past twelve
 h2_rooms = {
     "shop": room("shop", [
+        ev("counter", [0.42, 0.55], "h2_counter", "counter", "Open the counter", "カウンターを開ける"),
         search("case", [0.75, 0.4], "h2_case", "case", "The pocket-watch case", "懐中時計のケース", xp=5),
         door("to_cellar", "cellar", [0.5, 0.84]),
     ]),
@@ -291,6 +300,7 @@ h2_rooms = {
     ], enter="h2_stair"),
     "bone_arcade": room("bone_arcade", [
         enemy("haggler", "haggler", [0.5, 0.48], "h2_haggler_pre", "h2_haggler_post"),
+        ev("stalls", [0.35, 0.7], "h2_stalls", "stalls", "Trade at the stalls", "屋台で取引", if_flag="haggler_done"),
         search("costume", [0.2, 0.5], "h2_costume", "costume", "The costume stall", "衣装の屋台", gives=["velvet"]),
         search("tickets", [0.82, 0.55], "h2_tickets", "tickets", "A basket of old tickets", "古い質札の籠", xp=10, if_flag="haggler_done"),
         door("to_stair", "receipt_stair", [0.08, 0.84]),
@@ -330,7 +340,7 @@ h2_events = {
                     N("h2_after_1", "Twelve forty. The knock again, from under the stock room, three times. The receipt in her apron pocket has a second line on it now, in a hand that is not hers: Arcade. Bring the ring's ticket.", "十二時四十分。また在庫部屋の下から三度のノック。エプロンのポケットの受領証に二行目が増えている。彼女のものではない字で。『アーケードへ。指輪の質札を持て』"),
                     S("nara", "h2_after_2", "I'm a pawnbroker, not a postman.", "私は質屋よ、郵便屋じゃない。")]),
     "h2_case": [V("v_stage_0"), N("h2_case_1", "Pocket watches, all stopped at different times, all of them right twice a day. Ivo looked at these for four seconds once and they still remember it.", "懐中時計。どれも違う時刻で止まり、どれも一日に二度だけ正しい。アイヴォが四秒だけ眺めたことを、まだ覚えている。")],
-    "h2_stair": [N("h2_stair_1", "Lower than the first landing. The treads here are older: carbon copies, purple, the kind nobody has made since the eighties.", "最初の踊り場より下。ここの踏み板は古い。紫のカーボンコピー。八十年代から誰も作っていない類のものだ。")],
+    "h2_stair": [{"if_has": "coin", "n": 25, "then": [{"take": "coin", "n": 25}, N("toll_paid", "The Toll-Keeper's lantern on the first landing: twenty-five out of the till, every descent. Till: {#coin}.", "最初の踊り場に通行税の番人のランタン。降りるたびに金庫から二十五。金庫：{#coin}。")], "else": [N("toll_short", "The Toll-Keeper looks at the drawer and lets her pass on credit, which she writes down.", "通行税の番人は引き出しを見て、つけで通す。しっかり書き留めて。")]}, N("h2_stair_1", "Lower than the first landing. The treads here are older: carbon copies, purple, the kind nobody has made since the eighties.", "最初の踊り場より下。ここの踏み板は古い。紫のカーボンコピー。八十年代から誰も作っていない類のものだ。")],
     "h2_pledge_pre": [N("h2_pledge_1", "A man sits on a step in a wet overcoat, which is a thing he pawned, and is still wearing, which is how you know where you are.", "濡れたオーバーコートの男が段に座っている。質入れしたはずのコートを、まだ着ている。それで、ここがどこかわかる。"),
                       S("nara", "h2_pledge_2", "That coat's ours. Thirty days, 1987. You never came back.", "そのコート、うちのよ。1987年、三十日。あなたは戻ってこなかった。")],
     "h2_pledge_post": [N("h2_pledge_3", "He takes the coat off, folds it over his arm, and is gone, and so is the coat. The shop has one fewer overcoat. It does not mind.", "彼はコートを脱ぎ、腕に掛け、消える。コートも一緒に。店のオーバーコートが一着減った。店は気にしない。"), {"flag": "pledge2_done"}],
@@ -360,6 +370,7 @@ NIGHTS["h2"] = night("h2", "Twenty past twelve", "零時二十分", "The ring, a
 # ================================================================== HOUR THREE: one o'clock
 h3_rooms = {
     "shop": room("shop", [
+        ev("counter", [0.42, 0.55], "h3_counter", "counter", "Open the counter", "カウンターを開ける"),
         door("to_cellar", "cellar", [0.5, 0.84]),
     ]),
     "cellar": room("cellar", [
@@ -420,7 +431,7 @@ h3_events = {
                     {"show": ""}, {"give": "ticket_mara"}, {"flag": "mara_done"},
                     N("h3_after_1", "Half past one. The receipt's fourth line: Lantern Row. The Bailiff is asking after the shop.", "一時半。受領証の四行目。『灯籠通り。執達吏が店のことを尋ねている』"),
                     S("nara", "h3_after_2", "Elsa had a note about him.", "エルサのメモに彼のことがあった。")]),
-    "h3_stair": [N("h3_stair_1", "The stair goes further tonight than it did at midnight. She counts forty-one and keeps going, and the paper underfoot turns damp.", "今夜の階段は真夜中より深い。四十一まで数えても続き、足元の紙が湿ってくる。")],
+    "h3_stair": [{"if_has": "coin", "n": 25, "then": [{"take": "coin", "n": 25}, N("toll_paid", "The Toll-Keeper's lantern on the first landing: twenty-five out of the till, every descent. Till: {#coin}.", "最初の踊り場に通行税の番人のランタン。降りるたびに金庫から二十五。金庫：{#coin}。")], "else": [N("toll_short", "The Toll-Keeper looks at the drawer and lets her pass on credit, which she writes down.", "通行税の番人は引き出しを見て、つけで通す。しっかり書き留めて。")]}, N("h3_stair_1", "The stair goes further tonight than it did at midnight. She counts forty-one and keeps going, and the paper underfoot turns damp.", "今夜の階段は真夜中より深い。四十一まで数えても続き、足元の紙が湿ってくる。")],
     "h3_row": [N("h3_row_1", "Lantern Row: a canal under the city that the city does not have, lanterns strung over black water, and everything the water has been given floating just under the surface.", "灯籠通り。街にはないはずの街の下の運河。黒い水の上に灯籠が連なり、水に託されたものがすべて、水面のすぐ下を漂っている。")],
     "h3_water": [N("h3_water_1", "Among the lost things: a brass castor off the foot of a bed. The same casting as the finial. The same catalogue, the same Sunday.", "失せ物の中に、ベッドの脚の真鍮のキャスター。あの飾りと同じ鋳物。同じカタログ、同じ日曜日。"),
                  S("nara", "h3_water_2", "She's losing the whole bed one piece at a time.", "彼女、ベッドを一つずつ失くしていってるのね。"),
@@ -477,6 +488,7 @@ h4_rooms = {
         search("teeth", [0.2, 0.55], "h4_teeth", "teeth", "The teeth stall", "歯の屋台", xp=5),
         enemy("door_man", "door_man", [0.45, 0.48], "h4_doors_pre", "h4_doors_post"),
         enemy("name_buyer", "name_buyer", [0.7, 0.48], "h4_name_pre", "h4_name_post"),
+        ev("stalls", [0.3, 0.7], "h4_stalls", "stalls", "Trade at the stalls", "屋台で取引", if_flag="doors_done"),
         search("instruments", [0.85, 0.6], "h4_instruments", "instruments", "Unstrung instruments", "弦のない楽器", gives=["tea"]),
         door("to_gate", "toll_gate", [0.08, 0.84]),
         door("to_calder", "counting_house", [0.92, 0.84], if_flag="name_done"),
@@ -500,7 +512,7 @@ h4_rooms = {
 h4_events = {
     "h4_open": [{"bg": "receipt_stair"}, {"music": "explore"},
                 N("h4_open_1", "Two o'clock. The book is empty until five and the drawer has {#coin} in it against a debt of 200, so she goes down.", "二時。五時まで帳簿に名前はなく、引き出しには{#coin}。負債は200。だから彼女は降りる。"),
-                L(732, 739), {"bg": "market"}, {"cg": "cg_market_crowd"}, L(741, 753), {"hide_cg": True}, V("v_stage_2"), L(755, 756),
+                {"if_has": "coin", "n": 25, "then": [{"take": "coin", "n": 25}, N("toll_paid", "The Toll-Keeper's lantern on the first landing: twenty-five out of the till, every descent. Till: {#coin}.", "最初の踊り場に通行税の番人のランタン。降りるたびに金庫から二十五。金庫：{#coin}。")], "else": [N("toll_short", "The Toll-Keeper looks at the drawer and lets her pass on credit, which she writes down.", "通行税の番人は引き出しを見て、つけで通す。しっかり書き留めて。")]}, L(732, 739), {"bg": "market"}, {"cg": "cg_market_crowd"}, L(741, 753), {"hide_cg": True}, V("v_stage_2"), L(755, 756),
                 {"give": "coin", "n": 30, "quiet": True},
                 N("h4_haul", "The stalls take the lot for 30. Till: {#coin}.", "屋台は全部まとめて30で引き取った。金庫：{#coin}。"),
                 N("h4_open_2", "Calder's stall is at the far end, past the Door Man and the woman who buys names. She has never once got there without being stopped.", "カルダーの店はいちばん奥、扉売りと名前買いの女の先にある。止められずにたどり着けたことは一度もない。")],
@@ -604,6 +616,7 @@ h5_rooms = {
         ev("shelf_finial", [0.72, 0.36], "h5_shelf_tamsin", "shelf_finial", "The finial on the shelf", "棚の飾り", if_not_flag="second_tamsin"),
         ev("shelf_ring", [0.82, 0.46], "h5_shelf_ivo", "shelf_ring", "The ring on the shelf", "棚の指輪", if_not_flag="second_ivo"),
         ev("shelf_veil", [0.62, 0.48], "h5_shelf_mara", "shelf_veil", "The veil on the shelf", "棚のヴェール", if_not_flag="second_mara"),
+        ev("counter", [0.3, 0.55], "h5_counter", "counter", "Open the counter", "カウンターを開ける"),
         ev("ledger", [0.45, 0.6], "h5_ledger", "ledger", "The object on the counter", "カウンターの上の品", sim_last=True),
         door("to_cellar", "cellar", [0.08, 0.84]),
     ]),
@@ -650,6 +663,13 @@ h5_events = {
 }
 NIGHTS["h5"] = night("h5", "Three forty", "三時四十分", "The last object in the lamp", "灯りの下の最後の品",
                      40, 3 * 60 + 30, 1, "mirror_hall", "h5_open", h5_rooms, h5_events)
+
+
+# the counter / stall screens are shared: each hour carries its own copy of the events
+SHARED = {k: v for k, v in NIGHTS["h1"]["events"].items() if k.endswith("_counter") or k.endswith("_stalls")}
+for _n in NIGHTS.values():
+    for k, v in SHARED.items():
+        _n["events"].setdefault(k, v)
 
 
 def main():

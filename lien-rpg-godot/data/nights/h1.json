@@ -50,6 +50,17 @@
    },
    "hotspots": [
     {
+     "id": "counter",
+     "kind": "event",
+     "pos": [
+      0.42,
+      0.55
+     ],
+     "event": "h1_counter",
+     "label_key": "hs_counter",
+     "if_flag": "tamsin_done"
+    },
+    {
      "id": "window",
      "kind": "search",
      "pos": [
@@ -401,14 +412,7 @@
     "music": "explore"
    },
    {
-    "lines": "lien:171-189"
-   },
-   {
-    "say": "nara",
-    "key": "v_greet_0"
-   },
-   {
-    "lines": "lien:190-191"
+    "lines": "lien:171-191"
    },
    {
     "show": "tamsin",
@@ -682,7 +686,67 @@
    },
    {
     "say": "narrator",
+    "key": "h1_counter_tip"
+   },
+   {
+    "say": "narrator",
     "key": "h1_tutorial"
+   }
+  ],
+  "h1_counter": [
+   {
+    "say": "nara",
+    "key": "v_greet_0"
+   },
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h1"
+    }
+   }
+  ],
+  "h2_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h2"
+    }
+   }
+  ],
+  "h3_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h3"
+    }
+   }
+  ],
+  "h5_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h5"
+    }
+   }
+  ],
+  "h2_stalls": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "market"
+    }
+   }
+  ],
+  "h4_stalls": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "market"
+    }
    }
   ],
   "h1_window": [

@@ -50,6 +50,16 @@
    },
    "hotspots": [
     {
+     "id": "counter",
+     "kind": "event",
+     "pos": [
+      0.42,
+      0.55
+     ],
+     "event": "h3_counter",
+     "label_key": "hs_counter"
+    },
+    {
      "id": "to_cellar",
      "kind": "door",
      "to": "cellar",
@@ -575,6 +585,26 @@
   ],
   "h3_stair": [
    {
+    "if_has": "coin",
+    "n": 25,
+    "then": [
+     {
+      "take": "coin",
+      "n": 25
+     },
+     {
+      "say": "narrator",
+      "key": "toll_paid"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "toll_short"
+     }
+    ]
+   },
+   {
     "say": "narrator",
     "key": "h3_stair_1"
    }
@@ -733,6 +763,62 @@
    {
     "end_night": true,
     "next": "h4"
+   }
+  ],
+  "h1_counter": [
+   {
+    "say": "nara",
+    "key": "v_greet_0"
+   },
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h1"
+    }
+   }
+  ],
+  "h2_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h2"
+    }
+   }
+  ],
+  "h3_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h3"
+    }
+   }
+  ],
+  "h5_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h5"
+    }
+   }
+  ],
+  "h2_stalls": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "market"
+    }
+   }
+  ],
+  "h4_stalls": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "market"
+    }
    }
   ]
  }

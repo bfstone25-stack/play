@@ -572,6 +572,12 @@ func _step(st: Dictionary) -> String:
 		return await run_steps(st["then"] if ok else st.get("else", []))
 	if st.has("if_flag"):
 		return await run_steps(st["then"] if RPG.flag(st["if_flag"]) else st.get("else", []))
+	if st.has("if_equipped"):
+		var worn := false
+		for mid in RPG.s["members"].keys():
+			if st["if_equipped"] in RPG.s["members"][mid]["equip"].values():
+				worn = true
+		return await run_steps(st["then"] if worn else st.get("else", []))
 	if st.has("if_has"):
 		# {"if_has": item, "n": 35}: the party holds at least n of the item
 		var okh := int(RPG.s["items"].get(st["if_has"], 0)) >= int(st.get("n", 1))
@@ -616,6 +622,17 @@ func _step(st: Dictionary) -> String:
 		else:
 			idx = await event.choose(opts)
 		return await run_steps(shown[idx].get("do", []))
+	if st.has("screen"):
+		# {"screen": "res://scripts/x.gd", "args": {...}}: a game's own screen (a shop
+		# counter, a planner). It is a Control with `func run(main, args) -> String`
+		# that returns "ok" (or "abort"); `main.auto` tells it to play itself for the sim.
+		event.close()
+		hud.visible = false
+		var scr: Control = load(st["screen"]).new()
+		overlay.add_child(scr)
+		var rs: String = await scr.run(self, st.get("args", {}))
+		scr.queue_free()
+		return rs
 	if st.has("battle"):
 		return await do_battle(st["battle"])
 	if st.has("end_night"):

@@ -48,6 +48,7 @@ func _ready() -> void:
 		for m in mins:
 			avg += m
 		avg /= mins.size()
+		print("%s: till %d, reputation %d" % [nid, int(RPG.s["items"].get("coin", 0)), int(RPG.s.get("shop", {}).get("rep", -1))])
 		print("%s: %d/%d runs cleared with no loss; avg %.1f min (min %.1f, max %.1f); %d losses" % [nid, clean, runs, avg, mins.min(), mins.max(), losses])
 		if runs >= 5:
 			check(clean >= int(ceil(runs * 0.8)), "%s winnable by a normal player without a loss in >=80%% of runs" % nid)
@@ -105,7 +106,7 @@ func play_night(nid: String, run: int) -> Dictionary:
 		total += main.pace[k]
 	return {"night": nid, "run": run, "cleared": nid in RPG.s["nights_cleared"], "losses": main.stats["losses"],
 		"minutes": total / 60.0, "pace_min": _mins(main.pace), "level": [lv0, int(RPG.s["level"])], "trusts": RPG.s.get("trusts", {}),
-		"turns_left": int(RPG.s["turns_left"]), "steps": steps, "battles": main.stats["battles"], "flags": RPG.s["flags"].keys()}
+		"turns_left": int(RPG.s["turns_left"]), "till": int(RPG.s["items"].get("coin", 0)), "rep": int(RPG.s.get("shop", {}).get("rep", -1)), "steps": steps, "battles": main.stats["battles"], "flags": RPG.s["flags"].keys()}
 
 
 func _mins(p: Dictionary) -> Dictionary:

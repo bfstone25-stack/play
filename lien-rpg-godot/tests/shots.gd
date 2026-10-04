@@ -66,6 +66,11 @@ func hook(tag: String) -> void:
 		await get_tree().create_timer(0.5).timeout
 		await snap("gallery_early")
 		main._clear_overlay()
+	elif tag == "counter":
+		# the second genre on screen: first walk-in, then one from each later hour
+		var k := "counter_" + str(RPG.s.get("night", ""))
+		if not taken.has(lang + "_" + k):
+			await snap(k)
 	elif tag == "night_end":
 		await snap("night_end_" + str(RPG.s["night"]))
 	elif tag == "the_end":

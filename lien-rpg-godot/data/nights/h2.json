@@ -50,6 +50,16 @@
    },
    "hotspots": [
     {
+     "id": "counter",
+     "kind": "event",
+     "pos": [
+      0.42,
+      0.55
+     ],
+     "event": "h2_counter",
+     "label_key": "hs_counter"
+    },
+    {
      "id": "case",
      "kind": "search",
      "pos": [
@@ -182,6 +192,17 @@
      ],
      "event": "h2_haggler_pre",
      "after": "h2_haggler_post"
+    },
+    {
+     "id": "stalls",
+     "kind": "event",
+     "pos": [
+      0.35,
+      0.7
+     ],
+     "event": "h2_stalls",
+     "label_key": "hs_stalls",
+     "if_flag": "haggler_done"
     },
     {
      "id": "costume",
@@ -535,6 +556,26 @@
   ],
   "h2_stair": [
    {
+    "if_has": "coin",
+    "n": 25,
+    "then": [
+     {
+      "take": "coin",
+      "n": 25
+     },
+     {
+      "say": "narrator",
+      "key": "toll_paid"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "toll_short"
+     }
+    ]
+   },
+   {
     "say": "narrator",
     "key": "h2_stair_1"
    }
@@ -658,6 +699,62 @@
    {
     "end_night": true,
     "next": "h3"
+   }
+  ],
+  "h1_counter": [
+   {
+    "say": "nara",
+    "key": "v_greet_0"
+   },
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h1"
+    }
+   }
+  ],
+  "h2_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h2"
+    }
+   }
+  ],
+  "h3_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h3"
+    }
+   }
+  ],
+  "h5_counter": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "counter",
+     "hour": "h5"
+    }
+   }
+  ],
+  "h2_stalls": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "market"
+    }
+   }
+  ],
+  "h4_stalls": [
+   {
+    "screen": "res://scripts/counter.gd",
+    "args": {
+     "mode": "market"
+    }
    }
   ]
  }

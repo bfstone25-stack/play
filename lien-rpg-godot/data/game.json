@@ -409,6 +409,66 @@
    "bonus": {
     "grt": 2
    }
+  },
+  "stock_locket": {
+   "kind": "stock",
+   "value": 34,
+   "curio": "",
+   "relic": false
+  },
+  "stock_key": {
+   "kind": "stock",
+   "value": 4,
+   "curio": "",
+   "relic": false
+  },
+  "stock_box": {
+   "kind": "stock",
+   "value": 45,
+   "curio": "",
+   "relic": false
+  },
+  "stock_pistol": {
+   "kind": "stock",
+   "value": 12,
+   "curio": "",
+   "relic": false
+  },
+  "stock_painting": {
+   "kind": "stock",
+   "value": 70,
+   "curio": "",
+   "relic": false
+  },
+  "stock_ribbon": {
+   "kind": "stock",
+   "value": 30,
+   "curio": "cloth",
+   "relic": false
+  },
+  "curio_key": {
+   "kind": "stock",
+   "value": 15,
+   "curio": "key",
+   "relic": false
+  },
+  "curio_ring": {
+   "kind": "stock",
+   "value": 20,
+   "curio": "ring",
+   "relic": false
+  },
+  "curio_moon": {
+   "kind": "stock",
+   "value": 30,
+   "curio": "moon",
+   "relic": true
+  },
+  "curio_heart": {
+   "kind": "stock",
+   "value": 40,
+   "curio": "heart",
+   "relic": true
   }
  },
  "enemies": {
@@ -452,7 +512,7 @@
    "intro_key": "ei_pledge",
    "win_key": "ew_pledge",
    "barks": 2,
-   "drop": "tea"
+   "drop": "curio_key"
   },
   "keeper": {
    "name_key": "e_keeper",
@@ -535,7 +595,7 @@
    "intro_key": "ei_pledge2",
    "win_key": "ew_pledge2",
    "barks": 2,
-   "drop": "tea"
+   "drop": "curio_ring"
   },
   "haggler": {
    "name_key": "e_haggler",
@@ -639,7 +699,7 @@
    "intro_key": "ei_archivist",
    "win_key": "ew_archivist",
    "barks": 3,
-   "drop": "salts"
+   "drop": "curio_moon"
   },
   "bailiff": {
    "name_key": "e_bailiff",
@@ -681,7 +741,7 @@
    "intro_key": "ei_door_man",
    "win_key": "ew_door_man",
    "barks": 3,
-   "drop": "peppermint"
+   "drop": "curio_heart"
   },
   "name_buyer": {
    "name_key": "e_name_buyer",
@@ -749,7 +809,7 @@
   "auditor": {
    "name_key": "e_auditor",
    "sprite": "auditor",
-   "composure": 510,
+   "composure": 460,
    "atk": 11,
    "susp_rate": 10,
    "xp": 170,
@@ -828,7 +888,7 @@
   "glass": {
    "name_key": "e_glass",
    "sprite": "nara",
-   "composure": 380,
+   "composure": 340,
    "atk": 10,
    "susp_rate": 10,
    "xp": 200,
@@ -858,6 +918,145 @@
  "story": [
   "lien"
  ],
+ "shop": {
+  "rep_start": 5,
+  "interest": 0.25,
+  "touch_moves": 3,
+  "rep_floor": 0.03,
+  "buyer_premium": 1.5,
+  "relic_premium": 1.3,
+  "loan_tiers": [
+   0.5,
+   0.7,
+   0.9
+  ],
+  "buy_tiers": [
+   0.6,
+   0.8,
+   1.0
+  ],
+  "toll": 25,
+  "goods": [
+   {
+    "item": "bone_charm",
+    "price": 8
+   },
+   {
+    "item": "tea",
+    "price": 6
+   },
+   {
+    "item": "brandy",
+    "price": 12
+   },
+   {
+    "item": "peppermint",
+    "price": 6
+   }
+  ],
+  "walkins": {
+   "h1": [
+    "w_locket",
+    "w_key"
+   ],
+   "h2": [
+    "w_box",
+    "w_pistol",
+    "b_key"
+   ],
+   "h3": [
+    "w_painting",
+    "w_ribbon",
+    "b_ring"
+   ],
+   "h5": [
+    "b_moon",
+    "b_cloth"
+   ]
+  },
+  "items": {
+   "w_locket": {
+    "looks": 30,
+    "value": 34,
+    "fake": false,
+    "floor": 0.55,
+    "redeem": true,
+    "due": "h2",
+    "icon": 0,
+    "stock": "stock_locket"
+   },
+   "w_key": {
+    "looks": 20,
+    "value": 4,
+    "fake": true,
+    "floor": 0.6,
+    "redeem": false,
+    "due": "h3",
+    "icon": 1,
+    "stock": "stock_key"
+   },
+   "w_box": {
+    "looks": 40,
+    "value": 45,
+    "fake": false,
+    "floor": 0.6,
+    "redeem": false,
+    "due": "h3",
+    "icon": 2,
+    "stock": "stock_box"
+   },
+   "w_pistol": {
+    "looks": 50,
+    "value": 12,
+    "fake": true,
+    "floor": 0.6,
+    "redeem": false,
+    "due": "h4",
+    "icon": 3,
+    "stock": "stock_pistol"
+   },
+   "w_painting": {
+    "looks": 60,
+    "value": 70,
+    "fake": false,
+    "floor": 0.6,
+    "redeem": true,
+    "due": "h5",
+    "icon": 4,
+    "stock": "stock_painting"
+   },
+   "w_ribbon": {
+    "looks": 25,
+    "value": 30,
+    "fake": false,
+    "floor": 0.6,
+    "redeem": false,
+    "due": "h5",
+    "icon": 6,
+    "stock": "stock_ribbon"
+   },
+   "b_key": {
+    "buyer": true,
+    "wants": "key",
+    "icon": 1
+   },
+   "b_ring": {
+    "buyer": true,
+    "wants": "ring",
+    "icon": 0
+   },
+   "b_moon": {
+    "buyer": true,
+    "wants": "moon",
+    "icon": 5
+   },
+   "b_cloth": {
+    "buyer": true,
+    "wants": "cloth",
+    "icon": 6
+   }
+  }
+ },
  "gallery": [
   {
    "id": "cg_tamsin",

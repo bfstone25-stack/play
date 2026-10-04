@@ -173,6 +173,8 @@ def main():
             continue
         cg_out(Image.open(ART / "out/plates" / cid / chosen), cid)
     # title: the fork's key visual and logotype
+    # the base game's curio sheet: the counter shows each walk-in's object from it, 4x
+    shutil.copy2(FORK / "assets/pixel/curios.png", A / "ui/curios.png")
     shutil.copy2(FORK / "assets/title/keyvisual.png", A / "title/keyvisual.png")
     shutil.copy2(FORK / "assets/title/logotype.png", A / "title/logo.png")
     # Pixelify Sans with its ligatures switched off: Godot shapes "fi" through the font's
