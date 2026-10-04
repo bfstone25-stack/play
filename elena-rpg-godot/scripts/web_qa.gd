@@ -1,13 +1,14 @@
 ## Web-only QA hook for the free edition's live acceptance test: setting
 ## `window.__elenaWarp = "night2"` from the page jumps to the start of that night through the
 ## real start_night() path, so the night-boundary sponsor gate can be reached without playing
-## 40 minutes. Inert off the web (the DLsite download returns in _ready). It only skips story;
-## it unlocks nothing the free edition does not already give, and still goes through the gate.
+## 40 minutes. Active ONLY in the "Web-QA" export (custom feature "qa"); the production Web
+## preset and every desktop build lack that feature, so it returns in _ready and players
+## cannot jump nights from the console.
 extends Node
 
 
 func _ready() -> void:
-	if not OS.has_feature("web"):
+	if not (OS.has_feature("web") and OS.has_feature("qa")):
 		set_process(false)
 		return
 	while true:
