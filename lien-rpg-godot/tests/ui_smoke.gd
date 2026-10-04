@@ -59,6 +59,50 @@ func _ready() -> void:
 	await click_text_prefix(Loc.t("sv_slot") % 2)
 	await wait(0.3)
 	check(RPG.s["room"] == "stockroom", "loaded slot 2 by clicking")
+	# the counter (the second genre), by clicking: touch + lend on the first walk-in, buy the second
+	RPG.s["room"] = "shop"
+	main.render_room()
+	await wait(0.3)
+	var till0 := int(RPG.s["items"].get("coin", 0))
+	await click_text(Loc.t("hs_counter"))
+	await wait(0.5)
+	var k0 := 0
+	while _find_button_prefix(Loc.t("sh_touch"), main) == null and k0 < 30:
+		await click_at(Vector2(400, 610))   # Nara's greeting line, then the counter opens
+		k0 += 1
+	await click_prefix_any(Loc.t("sh_touch"))
+	await wait(0.3)
+	await click_prefix_any(Loc.t("sh_lend").split("£")[0] + "£" + str(int(round(34 * 0.7))))
+	await wait(0.3)
+	check(RPG.s.get("shop", {}).get("pledges", []).size() == 1, "lent against the locket by clicking (pledge in the book)")
+	await click_prefix_any(Loc.t("ds_continue"))
+	await click_prefix_any(Loc.t("sh_buy").split("£")[0] + "£" + str(int(round(20 * 1.0))))
+	await wait(0.3)
+	check(RPG.has("stock_key"), "bought the key outright by clicking (it is stock now)")
+	check(int(RPG.s["items"].get("coin", 0)) == till0 - 24 - 20, "till moved by both deals: %d -> %d" % [till0, int(RPG.s["items"].get("coin", 0))])
+	var n2 := 0
+	while not main.hud.visible and n2 < 20:
+		await click_prefix_any(Loc.t("ds_continue"))
+		n2 += 1
+	check(main.hud.visible, "counter closed back to the shop")
+	# the Market stalls: put the run in hour two at Ossian's (navigation by state), then click
+	RPG.start_night("h2")
+	RPG.s["room"] = "bone_arcade"
+	RPG.set_flag("haggler_done")
+	RPG.s["done"]["visited/bone_arcade"] = true
+	main.render_room()
+	await wait(0.3)
+	var till1 := int(RPG.s["items"].get("coin", 0))
+	await click_text(Loc.t("hs_stalls"))
+	await wait(0.5)
+	await click_prefix_any(Loc.t("sh_sell").split("%s")[0] + Loc.t("i_stock_key"))
+	await wait(0.2)
+	await click_prefix_any(Loc.t("sh_buy_good").split("%s")[0] + Loc.t("i_bone_charm"))
+	await wait(0.2)
+	check(not RPG.has("stock_key") and int(RPG.s["items"].get("coin", 0)) == till1 + 4 - 8, "sold stock and bought a charm at the stalls by clicking")
+	await click_prefix_any(Loc.t("sh_leave"))
+	await wait(0.3)
+	check(main.hud.visible, "left the stalls back to the arcade")
 	print("ui_smoke: %d failure(s)" % fails)
 	get_tree().quit(1 if fails > 0 else 0)
 
@@ -174,6 +218,14 @@ func click_text(t: String) -> void:
 
 
 func click_text_prefix(t: String) -> void:
+	var b = _find_button_prefix(t, main)
+	if b == null:
+		check(false, "button '%s…' not found" % t)
+		return
+	await click_node(b)
+
+
+func click_prefix_any(t: String) -> void:
 	var b = _find_button_prefix(t, main)
 	if b == null:
 		check(false, "button '%s…' not found" % t)
