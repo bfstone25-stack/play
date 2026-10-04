@@ -26,6 +26,14 @@ func _ready() -> void:
 		get_tree().quit(2))
 	await get_tree().process_frame
 	RPG.persist["gallery"] = []
+	# --langs=de,fr,... : night one in each listed language only (the i18n check run)
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--langs="):
+			for l in a.trim_prefix("--langs=").split(","):
+				await run_lang(l, false)
+			print("SHOTS: ", JSON.stringify(taken.keys()))
+			get_tree().quit()
+			return
 	await run_lang("en", true)
 	await run_lang("ja", false)
 	RPG.trial_override = true
