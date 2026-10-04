@@ -202,8 +202,8 @@ def main():
     if mark.exists():
         m = Image.open(mark).convert("RGBA")
         # the Overtime mark says OCCUPANCY / IDLE / FREE TO PLAY: this edition is neither, so
-        # only the wordmark row ships (rows 0-293 of the 1440x600 mark)
-        m = m.crop((0, 0, m.width, 293))
+        # only the wordmark row ships (rows 0-278 of the 1440x600 mark)
+        m = m.crop((0, 0, m.width, 278))
         m = m.crop(m.getbbox())
         m.thumbnail((620, 300), Image.LANCZOS)
         m.save(A / "title" / "logo.png")
