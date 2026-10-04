@@ -91,7 +91,7 @@ for l in LANGS:
     chain = [cm.get(k, set()) for k in order.get(l, ["cjk", "cjk_sc", "cjk_ko"])]
     for primary in ("body", "display"):
         have = cm.get(primary, set()).union(*chain)
-        miss = sorted(c for c in chars[l] if c not in have and not c.isspace() and ord(c) not in (0x200b, 0xfe0f))
+        miss = sorted(c for c in chars[l] if c not in have and not c.isspace() and ord(c) not in (0x200b, 0x200c, 0x200d, 0x2060, 0xfeff, 0xfe0f))
         if miss:
             bad += 1
             print(f"  TOFU {l} {primary}: {''.join(miss[:60])} ({len(miss)})")
