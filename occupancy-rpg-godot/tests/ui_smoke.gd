@@ -28,6 +28,9 @@ func _ready() -> void:
 	check(RPG.persist["gallery"].has("cg_mirei_lease"), "the opening CG went into the gallery")
 	await click_text("→ " + Loc.t("r_open_plan"))
 	await advance([], 60)
+	# and what those rooms give (the reception desk's sign-in sheet, the courier's parking pass)
+	RPG.give("sign_in_sheet")
+	RPG.give("voucher")
 	check(RPG.s["room"] == "open_plan", "door click moved to the open plan")
 	# the office (the second genre), by clicking
 	var coin0 := int(RPG.s["items"].get("coin", 0))
@@ -81,15 +84,23 @@ func _ready() -> void:
 	check(RPG.s["room"] == "open_plan" and RPG.flag("ran_n1"), "loaded slot 2 by clicking (the shift is remembered)")
 	main.render_room()
 	await wait(0.3)
-	# the rent crisis: pay, then win the standoff by clicking actions
+	# the rent crisis: pay, then win the standoff by clicking actions. A player arrives at it
+	# after the courier and the cleaning supervisor (the sim plays those): level 4 as the sim arrives, as state
+	RPG.add_xp(NRRules.xp_to_next(1) + NRRules.xp_to_next(2) + NRRules.xp_to_next(3) + 10)
+	await advance([], 60)
 	await click_text(Loc.t("hs_crisis_pryce"))
-	await advance([Loc.t("ah_home")], 400, true)
+	var na := await advance([Loc.t("ah_home")], 1500, true)
+	print("state: battle %s res %s ev %s hud %s overlay %d actor %s btns %s" % [str(main.battle.visible), str(main.battle.b.get("result","")), str(main.event.visible), str(main.hud.visible), main.overlay.get_child_count(), main.battle.actor_lbl.text, str(_all_buttons(main).map(func(x): return x.text).slice(0, 12))])
+	print("crisis: %d steps, paid %s, done %s, losses %d, level %d" % [na, str(RPG.flag("n1_paid")), str(RPG.flag("n1_done")), int(main.stats["losses"]), int(RPG.s["level"])])
 	check(RPG.flag("n1_paid"), "the rent was paid from the fund the shift filled")
 	check(battles_won >= 1 and RPG.flag("n1_done"), "the crisis standoff was won by clicking actions (%d action clicks)" % acts)
 	# night two's console (navigation by state), recruiting and supplies by clicking
-	main._clear_overlay()
-	main.event.close()
-	RPG.start_night("n2")
+	# play on into night two the way a player does (after-hours menu: go home; the night card)
+	var guard := 0
+	while not (RPG.s.get("night", "") == "n2" and main.hud.visible and main.overlay.get_child_count() == 0) and guard < 20:
+		await advance([Loc.t("ah_home")], 60)
+		guard += 1
+	check(RPG.s.get("night", "") == "n2", "night one ended into night two by clicking")
 	RPG.s["room"] = "sublet"
 	RPG.s["done"]["visited/sublet"] = true
 	main.render_room()
@@ -97,6 +108,7 @@ func _ready() -> void:
 	await click_text(Loc.t("hs_console"))
 	await wait(0.6)
 	off = _office()
+	check(off != null, "night two's console opened the office")
 	if off != null:
 		var coin1 := int(RPG.s["items"].get("coin", 0))
 		if coin1 < 700:
@@ -149,9 +161,8 @@ func advance(prefer: Array, limit: int, until_done := false) -> int:
 					if sb != null:
 						await click_node(sb)
 						break
-				for sk in ["m_ring", "m_steady", "p_wrench", "p_grin", "n_columns", "s_lede"]:
-					var skb = _find_button_prefix(Loc.t("sk_" + sk), main.overlay)
-					if skb != null:
+				for skb in _all_buttons(main.overlay):
+					if skb is Button and skb.text.contains("\n") and not skb.disabled:
 						await click_node(skb)
 						break
 				await click_node(c)
@@ -189,9 +200,24 @@ func battle_click() -> void:
 			mi = k
 	var want: Array = NRPolicy.choose(bt, mi)
 	var pick = _find_button_prefix(Loc.t("a_" + want[0]), main.battle.action_box)
+	if pick == null:
+		# the policy's pick is not on offer for this member: take the first enabled action
+		for c in _all_buttons(main.battle.action_box):
+			if c is Button and not c.disabled and not c.text.begins_with(Loc.t("a_item")):
+				pick = c
+				want = ["", ""]
+				break
+	if acts < 12:
+		print("click: actor '%s' mi %d want %s found %s susp %d" % [main.battle.actor_lbl.text, mi, str(want), str(pick != null), int(bt["suspicion"])])
 	if pick != null:
+		var before: String = main.battle.actor_lbl.text
 		await click_node(pick)
 		acts += 1
+		# wait for the next member's turn (or the enemy's) so a stale button is never clicked
+		var w := 0
+		while main.battle.visible and main.battle.actor_lbl.text == before and w < 40 and _find_button(Loc.t("ds_continue"), main.battle) == null:
+			await wait(0.1)
+			w += 1
 		if want[0] == "item":
 			await wait(0.2)
 			var ib = _find_button_prefix(Loc.t("i_" + want[1]), main.battle.item_box)

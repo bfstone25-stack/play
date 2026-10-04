@@ -11,7 +11,7 @@ SRC = R / "shots/latest"
 OUT = Path("/home/frankstone/Products/ops/dlsite/occupancy_samples")
 PICKS = [  # (sample name, shot file)
     ("01_cg_mirei_lease", "en_cgview_cg_mirei_lease.png"), ("02_office_board", "en_office_built_n4.png"),
-    ("03_recruit", "en_recruit10_n1.png"), ("04_standoff_party", "en_battle.png"),
+    ("03_recruit", "en_recruit_n4.png"), ("04_standoff_party", "en_battle.png"),
     ("05_rent_crisis_boss", "en_battle_boss.png"), ("06_dress_up", "en_equip_menu.png"),
     ("07_office_n2", "en_office_built_n2.png"), ("08_floor_lobby", "en_room_lobby.png"),
     ("09_level_up", "en_levelup.png"), ("10_cg_full_occupancy", "en_cgview_cg_keys.png"),
