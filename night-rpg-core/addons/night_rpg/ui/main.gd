@@ -638,7 +638,8 @@ func _auto_choice(opts: Array) -> int:
 	var best_v := -99
 	for i in opts.size():
 		for pm in prefer_menu:
-			if str(opts[i].get("menu", "")).contains(pm):
+			# a VN menu's English text, or an RPG option's string key
+			if str(opts[i].get("menu", "")).contains(pm) or str(opts[i].get("key", "")).begins_with(pm):
 				return i
 	for i in opts.size():
 		var o: Dictionary = opts[i]
