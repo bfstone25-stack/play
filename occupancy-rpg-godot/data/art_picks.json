@@ -24,5 +24,15 @@
  "rpg_o_corner": 1,
  "rpg_copy_room": 1,
  "rpg_lobby": 1,
- "rpg_open_plan": 2
+ "rpg_open_plan": 2,
+ "rpg_break_room": 0,
+ "rpg_sublet": 2,
+ "rpg_meeting_room": 1,
+ "rpg_stairwell": 0,
+ "rpg_accounts": 2,
+ "rpg_records": 1,
+ "rpg_server_room": 2,
+ "rpg_newsroom": 1,
+ "rpg_print_room": 2,
+ "rpg_rooftop": 2
 }

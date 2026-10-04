@@ -51,18 +51,6 @@ func _ready() -> void:
 		var coin1 := int(RPG.s["items"].get("coin", 0))
 		check(RPG.flag("ran_n1") and coin1 == coin0 + v1 * 8, "ran the night shift by clicking: fund %d -> %d" % [coin0, coin1])
 		check(RPG.trust("priya") >= 1 and RPG.trust("mara") >= 1, "the women who worked the floor gained trust")
-		var tb: TabBar = off.tabs.get_tab_bar()
-		await click_at(tb.get_global_rect().position + tb.get_tab_rect(1).get_center())
-		await wait(0.3)
-		var pulls0 := int(RPG.s["office"]["pulls"])
-		await click_prefix_any(Loc.t("of_recruit") % 400)
-		await wait(0.3)
-		check(int(RPG.s["office"]["pulls"]) == pulls0 + 1 and int(RPG.s["items"].get("coin", 0)) == coin1 - 400, "recruited once by clicking, paid from the rent fund")
-		await click_at(tb.get_global_rect().position + tb.get_tab_rect(2).get_center())
-		await wait(0.3)
-		var esp := int(RPG.s["items"].get("espresso", 0))
-		await click_prefix_any(Loc.t("i_espresso") + " —")
-		check(int(RPG.s["items"].get("espresso", 0)) == esp + 1, "bought an espresso in Supplies by clicking")
 		await click_text(Loc.t("of_done"))
 		await wait(0.4)
 	check(main.hud.visible, "office closed back to the floor")
@@ -95,9 +83,39 @@ func _ready() -> void:
 	await wait(0.3)
 	# the rent crisis: pay, then win the standoff by clicking actions
 	await click_text(Loc.t("hs_crisis_pryce"))
-	await advance([], 900)
+	await advance([Loc.t("ah_home")], 400, true)
 	check(RPG.flag("n1_paid"), "the rent was paid from the fund the shift filled")
 	check(battles_won >= 1 and RPG.flag("n1_done"), "the crisis standoff was won by clicking actions (%d action clicks)" % acts)
+	# night two's console (navigation by state), recruiting and supplies by clicking
+	main._clear_overlay()
+	main.event.close()
+	RPG.start_night("n2")
+	RPG.s["room"] = "sublet"
+	RPG.s["done"]["visited/sublet"] = true
+	main.render_room()
+	await wait(0.3)
+	await click_text(Loc.t("hs_console"))
+	await wait(0.6)
+	off = _office()
+	if off != null:
+		var coin1 := int(RPG.s["items"].get("coin", 0))
+		if coin1 < 700:
+			RPG.give("coin", 700 - coin1)
+			coin1 = 700
+		var tb: TabBar = off.tabs.get_tab_bar()
+		await click_at(tb.get_global_rect().position + tb.get_tab_rect(1).get_center())
+		await wait(0.3)
+		var pulls0 := int(RPG.s["office"]["pulls"])
+		await click_prefix_any(Loc.t("of_recruit") % 400)
+		await wait(0.3)
+		check(int(RPG.s["office"]["pulls"]) == pulls0 + 1 and int(RPG.s["items"].get("coin", 0)) == coin1 - 400, "recruited once by clicking, paid from the rent fund")
+		await click_at(tb.get_global_rect().position + tb.get_tab_rect(2).get_center())
+		await wait(0.3)
+		var esp := int(RPG.s["items"].get("espresso", 0))
+		await click_prefix_any(Loc.t("i_espresso") + " —")
+		check(int(RPG.s["items"].get("espresso", 0)) == esp + 1, "bought an espresso in Supplies by clicking")
+		await click_text(Loc.t("of_done"))
+		await wait(0.4)
 	print("ui_smoke: %d failure(s)" % fails)
 	get_tree().quit(1 if fails > 0 else 0)
 
@@ -108,10 +126,12 @@ var battles_won := 0
 
 ## Click through dialogue until the room HUD is back: choices by preferred text, standoffs by
 ## the policy's action (clicked as a button), level-ups by the first stat and skill offered.
-func advance(prefer: Array, limit: int) -> int:
+func advance(prefer: Array, limit: int, until_done := false) -> int:
 	var n := 0
 	while n < limit:
 		n += 1
+		if until_done and RPG.flag("n1_done") and ("n1" in RPG.s.get("nights_cleared", []) or _find_button(Loc.t("end_title")) != null):
+			return n
 		if main.hud.visible and not main.battle.visible and main.overlay.get_child_count() == 0 and not main.event.visible:
 			return n
 		if main.battle.visible:
