@@ -1,0 +1,2358 @@
+{
+ "e_echo_finial": {
+  "en": "The finial's hour",
+  "ja": "飾りの一時"
+ },
+ "ei_echo_finial": {
+  "en": "The brass holds its morning shut, like a hand around a coin.",
+  "ja": "真鍮はその朝を固く閉じている。硬貨を握る手のように。"
+ },
+ "ew_echo_finial": {
+  "en": "It opens.",
+  "ja": "開いた。"
+ },
+ "bark_echo_finial_1": {
+  "en": "It is warm. It does not want to be warm in front of you.",
+  "ja": "温かい。あなたの前で温かくありたくはないのだ。"
+ },
+ "bark_echo_finial_2": {
+  "en": "A curtain, half up. Then nothing.",
+  "ja": "半分だけ上がったカーテン。それから、何も。"
+ },
+ "e_pledge": {
+  "en": "A lapsed pledge",
+  "ja": "期限切れの質入れ人"
+ },
+ "ei_pledge": {
+  "en": "It presses its hands to the glass and asks, without a mouth, whether it is too late.",
+  "ja": "手を窓に押し当て、口もないのに、もう遅いのかと訊いてくる。"
+ },
+ "ew_pledge": {
+  "en": "It nods, the way you nod at a closing time.",
+  "ja": "閉店時刻にうなずくように、それはうなずいた。"
+ },
+ "bark_pledge_1": {
+  "en": "Thirty days. It was only thirty days.",
+  "ja": "三十日。たった三十日だった。"
+ },
+ "bark_pledge_2": {
+  "en": "Is it still here? Is it still mine?",
+  "ja": "まだある？まだ私のもの？"
+ },
+ "e_keeper": {
+  "en": "The Toll-Keeper",
+  "ja": "通行税の番人"
+ },
+ "ei_keeper": {
+  "en": "She holds the lantern up between you, and the light is the toll.",
+  "ja": "彼女は二人の間にランタンを掲げる。その光が通行税だ。"
+ },
+ "ew_keeper": {
+  "en": "She lowers the lantern. Paid.",
+  "ja": "ランタンが下がる。支払い済み。"
+ },
+ "bark_keeper_1": {
+  "en": "Everyone pays going down.",
+  "ja": "降りる者はみな払う。"
+ },
+ "bark_keeper_2": {
+  "en": "Your aunt paid in silence. Can you?",
+  "ja": "あなたの叔母は沈黙で払った。あなたは？"
+ },
+ "bark_keeper_3": {
+  "en": "Don't look at the eleventh step.",
+  "ja": "十一段目を見ないで。"
+ },
+ "e_clerk": {
+  "en": "The Stair Clerk",
+  "ja": "階段の書記"
+ },
+ "ei_clerk": {
+  "en": "He dips his pen. Every word you say, he enters.",
+  "ja": "彼はペンを浸す。あなたの言葉はすべて記帳される。"
+ },
+ "ew_clerk": {
+  "en": "He blots the page and, with some reluctance, stamps it.",
+  "ja": "頁に吸い取り紙を当て、渋々ながら判を押した。"
+ },
+ "bark_clerk_1": {
+  "en": "Entered.",
+  "ja": "記帳。"
+ },
+ "bark_clerk_2": {
+  "en": "Received, not accepted.",
+  "ja": "受領、未承認。"
+ },
+ "bark_clerk_3": {
+  "en": "Your aunt's hand was neater.",
+  "ja": "君の叔母の字はもっときれいだった。"
+ },
+ "bark_clerk_4": {
+  "en": "Shall I enter that as a threat or a joke?",
+  "ja": "それは脅しとして記帳するか、冗談としてか？"
+ },
+ "e_echo_ring": {
+  "en": "The ring's hour",
+  "ja": "指輪の一時"
+ },
+ "ei_echo_ring": {
+  "en": "The gold remembers being asked about. It does not like you for it.",
+  "ja": "金は尋ねられたことを覚えている。だからあなたを好いてはいない。"
+ },
+ "ew_echo_ring": {
+  "en": "A lamp on the floor. It lets you in.",
+  "ja": "床に置かれたランプ。中へ入れてくれた。"
+ },
+ "bark_echo_ring_1": {
+  "en": "Don't do that.",
+  "ja": "それはやめてくれ。"
+ },
+ "bark_echo_ring_2": {
+  "en": "Eleven centimetres of nightstand.",
+  "ja": "ナイトスタンドの十一センチ。"
+ },
+ "bark_echo_ring_3": {
+  "en": "Rain, further north.",
+  "ja": "雨。もっと北の。"
+ },
+ "e_pledge2": {
+  "en": "The man in the overcoat",
+  "ja": "オーバーコートの男"
+ },
+ "ei_pledge2": {
+  "en": "He wears the coat he pawned in 1987 and he is not giving it back.",
+  "ja": "1987年に質入れしたコートを着て、返す気はない。"
+ },
+ "ew_pledge2": {
+  "en": "He folds the coat over his arm.",
+  "ja": "彼はコートを腕に掛けた。"
+ },
+ "bark_pledge2_1": {
+  "en": "It was a cold winter.",
+  "ja": "寒い冬だった。"
+ },
+ "bark_pledge2_2": {
+  "en": "There's no version of it where I need it again.",
+  "ja": "また要るようになる冬なんてない。"
+ },
+ "e_haggler": {
+  "en": "Old Ossian",
+  "ja": "オシアン爺"
+ },
+ "ei_haggler": {
+  "en": "He spreads his ringed hands. Everything on the trestle is for sale, including the trestle.",
+  "ja": "指輪だらけの手を広げる。台の上のものは全部売り物、台もだ。"
+ },
+ "ew_haggler": {
+  "en": "He laughs until the bones on his fingers rattle.",
+  "ja": "指の骨が鳴るほど笑った。"
+ },
+ "bark_haggler_1": {
+  "en": "For you? Double.",
+  "ja": "お前さんには？倍だ。"
+ },
+ "bark_haggler_2": {
+  "en": "Elsa paid half. Elsa was cheating.",
+  "ja": "エルサは半値だった。エルサはずるをしてた。"
+ },
+ "bark_haggler_3": {
+  "en": "A door's a door. A key's a story.",
+  "ja": "扉は扉。鍵は物語だ。"
+ },
+ "e_broker": {
+  "en": "The Hollow Broker",
+  "ja": "虚ろな仲買人"
+ },
+ "ei_broker": {
+  "en": "The beads of her abacus are teeth, and she counts with them.",
+  "ja": "算盤の珠は歯で、彼女はそれで数える。"
+ },
+ "ew_broker": {
+  "en": "She sets the abacus down with the teeth all on one side.",
+  "ja": "彼女は珠をすべて片側に寄せて、算盤を置いた。"
+ },
+ "bark_broker_1": {
+  "en": "Expensive.",
+  "ja": "高い。"
+ },
+ "bark_broker_2": {
+  "en": "Everything is for sale.",
+  "ja": "何だって売り物よ。"
+ },
+ "bark_broker_3": {
+  "en": "I'll buy that hesitation.",
+  "ja": "そのためらい、買うわ。"
+ },
+ "bark_broker_4": {
+  "en": "Names are cheaper than you think.",
+  "ja": "名前は思うより安いの。"
+ },
+ "e_echo_veil": {
+  "en": "The veil's hour",
+  "ja": "ヴェールの一時"
+ },
+ "ei_echo_veil": {
+  "en": "The crepe folds itself against your palm, pleat by pleat.",
+  "ja": "クレープ地が一ひだずつ、掌に向かって畳まれていく。"
+ },
+ "ew_echo_veil": {
+  "en": "The night before, not the day of.",
+  "ja": "当日ではなく、その前の夜。"
+ },
+ "bark_echo_veil_1": {
+  "en": "A candle. A lily in a jug.",
+  "ja": "蝋燭。水差しの百合。"
+ },
+ "bark_echo_veil_2": {
+  "en": "Not the church. Not yet.",
+  "ja": "教会ではない。まだ。"
+ },
+ "e_moth": {
+  "en": "The Moth Widow",
+  "ja": "蛾の未亡人"
+ },
+ "ei_moth": {
+  "en": "She mends while she bargains. The needle never stops.",
+  "ja": "彼女は値切りながら繕う。針は止まらない。"
+ },
+ "ew_moth": {
+  "en": "She laughs, softly, and puts the needle down.",
+  "ja": "柔らかく笑い、針を置いた。"
+ },
+ "bark_moth_1": {
+  "en": "Grief keeps. I keep it warm.",
+  "ja": "悲しみは日持ちする。私が温めておく。"
+ },
+ "bark_moth_2": {
+  "en": "You smell of a kindness.",
+  "ja": "優しさの匂いがする。"
+ },
+ "bark_moth_3": {
+  "en": "Closer. I bite only lace.",
+  "ja": "もっと近くへ。噛むのはレースだけ。"
+ },
+ "e_archivist": {
+  "en": "Miss Penrose",
+  "ja": "ペンローズ嬢"
+ },
+ "ei_archivist": {
+  "en": "She opens a drawer marked Q and does not let you see into it.",
+  "ja": "Qと記された引き出しを開け、中を見せない。"
+ },
+ "ew_archivist": {
+  "en": "She closes the drawer, satisfied that the system works.",
+  "ja": "仕組みが機能したことに満足して、引き出しを閉じた。"
+ },
+ "bark_archivist_1": {
+  "en": "No browsing.",
+  "ja": "閲覧不可。"
+ },
+ "bark_archivist_2": {
+  "en": "State a surname.",
+  "ja": "姓を。"
+ },
+ "bark_archivist_3": {
+  "en": "That is not how filing works.",
+  "ja": "整理はそういうものではありません。"
+ },
+ "e_bailiff": {
+  "en": "The Bailiff",
+  "ja": "執達吏"
+ },
+ "ei_bailiff": {
+  "en": "His chain of key-tags clinks once for every pound the estate owes.",
+  "ja": "鍵札の鎖が、遺産の負債一ポンドごとに一度鳴る。"
+ },
+ "ew_bailiff": {
+  "en": "He steps aside, and writes something down that is not a debt.",
+  "ja": "彼は脇へ退き、負債ではない何かを書き留めた。"
+ },
+ "bark_bailiff_1": {
+  "en": "Noted.",
+  "ja": "記録。"
+ },
+ "bark_bailiff_2": {
+  "en": "Everything is due.",
+  "ja": "すべては期限を迎えている。"
+ },
+ "bark_bailiff_3": {
+  "en": "Coin, Miss Quill? I'll take the coin AND the debt.",
+  "ja": "硬貨かね、クイル嬢？硬貨も借りもいただこう。"
+ },
+ "bark_bailiff_4": {
+  "en": "Six is merely when it is noticed.",
+  "ja": "六時とは、気づかれる時刻にすぎない。"
+ },
+ "e_door_man": {
+  "en": "Old Ossian, selling doors",
+  "ja": "扉を売るオシアン爺"
+ },
+ "ei_door_man": {
+  "en": "Six doors and a grin. He will sell you any of them. Not the keys.",
+  "ja": "六枚の扉と笑み。どれでも売る。鍵は売らない。"
+ },
+ "ew_door_man": {
+  "en": "He presses a key into your hand and swears he never did.",
+  "ja": "鍵を手に押しつけ、そんなことはしていないと誓った。"
+ },
+ "bark_door_man_1": {
+  "en": "Twice in one night!",
+  "ja": "一晩で二度目！"
+ },
+ "bark_door_man_2": {
+  "en": "Keys are extra. Keys are always extra.",
+  "ja": "鍵は別料金。鍵はいつも別料金。"
+ },
+ "bark_door_man_3": {
+  "en": "The door's older than the Market.",
+  "ja": "その扉は市場より古い。"
+ },
+ "e_name_buyer": {
+  "en": "The woman who buys names",
+  "ja": "名前を買う女"
+ },
+ "ei_name_buyer": {
+  "en": "She wants your name, cash, no questions. Her abacus is already counting it.",
+  "ja": "あなたの名前を、現金で、何も訊かずに。算盤はもう数え始めている。"
+ },
+ "ew_name_buyer": {
+  "en": "She writes EXPENSIVE again, and underlines it.",
+  "ja": "また『高い』と書き、下線を引いた。"
+ },
+ "bark_name_buyer_1": {
+  "en": "Sell it and be light.",
+  "ja": "売って身軽になりなさい。"
+ },
+ "bark_name_buyer_2": {
+  "en": "A name is just a ticket you never redeem.",
+  "ja": "名前なんて、請け出さない質札よ。"
+ },
+ "bark_name_buyer_3": {
+  "en": "Still expensive.",
+  "ja": "まだ高い。"
+ },
+ "e_keeper2": {
+  "en": "The Toll-Keeper",
+  "ja": "通行税の番人"
+ },
+ "ei_keeper2": {
+  "en": "Up is dearer than down. She raises the lantern higher.",
+  "ja": "上りは下りより高くつく。彼女はランタンをさらに高く掲げる。"
+ },
+ "ew_keeper2": {
+  "en": "Paid in patience.",
+  "ja": "忍耐で支払われた。"
+ },
+ "bark_keeper2_1": {
+  "en": "Not till the hour's done.",
+  "ja": "この刻が終わるまでは。"
+ },
+ "bark_keeper2_2": {
+  "en": "Pay or wait.",
+  "ja": "払うか、待つか。"
+ },
+ "e_calder": {
+  "en": "Calder, the factor",
+  "ja": "仲買人カルダー"
+ },
+ "ei_calder": {
+  "en": "He does not haggle. He waits for you to haggle, and charges you for the wait.",
+  "ja": "彼は値切らない。あなたが値切るのを待ち、その待ち時間を請求する。"
+ },
+ "ew_calder": {
+  "en": "He sits back. For the first time, he looks at her as a seller and not as stock.",
+  "ja": "彼は背もたれに身を預けた。はじめて、彼女を在庫ではなく売り手として見ている。"
+ },
+ "bark_calder_1": {
+  "en": "Quill.",
+  "ja": "クイル。"
+ },
+ "bark_calder_2": {
+  "en": "Everything has prices in it.",
+  "ja": "すべてに値段がある。"
+ },
+ "bark_calder_3": {
+  "en": "Elsa was better at this.",
+  "ja": "エルサの方が上手だった。"
+ },
+ "bark_calder_4": {
+  "en": "Come back in March.",
+  "ja": "三月にまた来い。"
+ },
+ "e_auditor": {
+  "en": "The Auditor",
+  "ja": "監査人"
+ },
+ "ei_auditor": {
+  "en": "He holds the abacus like a hymn book and reads your night back to you, line by line.",
+  "ja": "賛美歌集のように算盤を持ち、あなたの夜を一行ずつ読み上げる。"
+ },
+ "ew_auditor": {
+  "en": "He closes the book. The figures balance, narrowly.",
+  "ja": "帳簿を閉じた。数字はかろうじて釣り合った。"
+ },
+ "bark_auditor_1": {
+  "en": "Be exact.",
+  "ja": "正確に。"
+ },
+ "bark_auditor_2": {
+  "en": "A rounding error is a person.",
+  "ja": "端数は人だ。"
+ },
+ "bark_auditor_3": {
+  "en": "Carry the one. Carry yourself.",
+  "ja": "一を繰り上げて。自分も繰り上げて。"
+ },
+ "e_echo_tamsin2": {
+  "en": "The finial, deeper",
+  "ja": "飾り、さらに奥"
+ },
+ "ei_echo_tamsin2": {
+  "en": "It lets you in further, and then tests whether you meant it.",
+  "ja": "さらに奥へ入れてくれる。それから、本気かどうか試してくる。"
+ },
+ "ew_echo_tamsin2": {
+  "en": "Steam, and a laugh at the ceiling.",
+  "ja": "湯気と、天井への笑い声。"
+ },
+ "bark_echo_tamsin2_1": {
+  "en": "A good bed.",
+  "ja": "良いベッドだった。"
+ },
+ "bark_echo_tamsin2_2": {
+  "en": "Boxes, taped.",
+  "ja": "封をされた箱。"
+ },
+ "e_echo_ring2": {
+  "en": "The ring, asked",
+  "ja": "頼まれた指輪"
+ },
+ "ei_echo_ring2": {
+  "en": "This time it was asked for. It still makes you work.",
+  "ja": "今度は頼まれた。それでも、骨を折らせる。"
+ },
+ "ew_echo_ring2": {
+  "en": "A windowsill, rain, a date read by lamplight.",
+  "ja": "窓辺、雨、灯りで読む日付。"
+ },
+ "bark_echo_ring2_1": {
+  "en": "Was she happy.",
+  "ja": "彼女は幸せだったか。"
+ },
+ "bark_echo_ring2_2": {
+  "en": "After.",
+  "ja": "そのあと。"
+ },
+ "e_echo_veil2": {
+  "en": "The veil, permitted",
+  "ja": "許されたヴェール"
+ },
+ "ei_echo_veil2": {
+  "en": "The crepe opens a little, and waits to see what you will do with it.",
+  "ja": "クレープ地がわずかに開き、あなたがどうするかを待つ。"
+ },
+ "ew_echo_veil2": {
+  "en": "Letters, in his hand.",
+  "ja": "彼の筆跡の手紙。"
+ },
+ "bark_echo_veil2_1": {
+  "en": "The fourth letter.",
+  "ja": "四通目。"
+ },
+ "bark_echo_veil2_2": {
+  "en": "Do not read over my shoulder.",
+  "ja": "肩越しに読まないで。"
+ },
+ "e_glass": {
+  "en": "Nara, in the glass",
+  "ja": "鏡の中のナラ"
+ },
+ "ei_glass": {
+  "en": "She looks straight out of the mirror, at the place where the person watching a reading stands.",
+  "ja": "鏡の中の彼女はまっすぐこちらを見る。読み取りを見る者が立つ場所を。"
+ },
+ "ew_glass": {
+  "en": "She lets you have the last four hours. All of them.",
+  "ja": "最後の四時間を、すべて渡してくれた。"
+ },
+ "bark_glass_1": {
+  "en": "Thirty days on the ticket.",
+  "ja": "質札は三十日。"
+ },
+ "bark_glass_2": {
+  "en": "What the dead will demand.",
+  "ja": "死者が求めるもの。"
+ },
+ "bark_glass_3": {
+  "en": "You can't pawn this. You're the shop.",
+  "ja": "これは質入れできない。あなたが店なのだから。"
+ },
+ "bark_glass_4": {
+  "en": "I buy anything I can price.",
+  "ja": "値がつくものなら何でも買う。"
+ },
+ "g_cg_tamsin": {
+  "en": "Tamsin — the morning",
+  "ja": "タムシン — 朝"
+ },
+ "g_cg_finial": {
+  "en": "Tamsin — further in",
+  "ja": "タムシン — さらに奥"
+ },
+ "g_cg_descent": {
+  "en": "The Receipt Stair",
+  "ja": "受領の階段"
+ },
+ "g_cg_ring": {
+  "en": "The ring — a lamp on the floor",
+  "ja": "指輪 — 床のランプ"
+ },
+ "g_cg_veil": {
+  "en": "Mara — the night before",
+  "ja": "マーラ — 前夜"
+ },
+ "g_cg_moth": {
+  "en": "The Moth Widow",
+  "ja": "蛾の未亡人"
+ },
+ "g_cg_market_crowd": {
+  "en": "The Ossuary Market",
+  "ja": "骨の市場"
+ },
+ "g_cg_calder": {
+  "en": "Calder's desk",
+  "ja": "カルダーの机"
+ },
+ "g_cg_market": {
+  "en": "Calder's demonstration",
+  "ja": "カルダーの実演"
+ },
+ "g_cg_heart": {
+  "en": "The Heart of the Crypt",
+  "ja": "地下聖堂の心臓"
+ },
+ "g_cg_tamsin_bath": {
+  "en": "Tamsin — the last bath",
+  "ja": "タムシン — 最後の湯"
+ },
+ "g_cg_maya": {
+  "en": "Maya — after",
+  "ja": "マヤ — そのあと"
+ },
+ "g_cg_mara_letters": {
+  "en": "Mara — the letters",
+  "ja": "マーラ — 手紙"
+ },
+ "g_cg_collateral": {
+  "en": "Collateral",
+  "ja": "担保"
+ },
+ "g_cg_solvent": {
+  "en": "Solvent — dawn",
+  "ja": "支払可能 — 夜明け"
+ },
+ "g_cg_factor": {
+  "en": "Factor — March",
+  "ja": "仲買人 — 三月"
+ },
+ "r_shop": {
+  "en": "The shop",
+  "ja": "店"
+ },
+ "r_stockroom": {
+  "en": "The stock room",
+  "ja": "在庫部屋"
+ },
+ "r_street": {
+  "en": "Gilt Lane",
+  "ja": "ギルト小路"
+ },
+ "r_cellar": {
+  "en": "The cellar",
+  "ja": "地下室"
+ },
+ "r_receipt_stair": {
+  "en": "The Receipt Stair",
+  "ja": "受領の階段"
+ },
+ "r_toll_gate": {
+  "en": "The toll gate",
+  "ja": "通行税の門"
+ },
+ "r_bone_arcade": {
+  "en": "The Bone Arcade",
+  "ja": "骨のアーケード"
+ },
+ "r_reliquary": {
+  "en": "The reliquary stall",
+  "ja": "聖遺物の屋台"
+ },
+ "r_lantern_row": {
+  "en": "Lantern Row",
+  "ja": "灯籠通り"
+ },
+ "r_archive": {
+  "en": "The unclaimed archive",
+  "ja": "未請求の書庫"
+ },
+ "r_market": {
+  "en": "The Ossuary Market",
+  "ja": "骨の市場"
+ },
+ "r_counting_house": {
+  "en": "Calder's counting house",
+  "ja": "カルダーの勘定場"
+ },
+ "r_heart_vault": {
+  "en": "The vault under the Market",
+  "ja": "市場の下の金庫室"
+ },
+ "r_mirror_hall": {
+  "en": "The last landing",
+  "ja": "最後の踊り場"
+ },
+ "r_dawn": {
+  "en": "The shop, at dawn",
+  "ja": "夜明けの店"
+ },
+ "hs_window": {
+  "en": "The gold letters",
+  "ja": "金文字"
+ },
+ "hs_shelves": {
+  "en": "The shelves",
+  "ja": "棚"
+ },
+ "hs_clock": {
+  "en": "The wrong clock",
+  "ja": "狂った時計"
+ },
+ "hs_safe": {
+  "en": "Elsa's safe",
+  "ja": "エルサの金庫"
+ },
+ "hs_boxes": {
+  "en": "Unclaimed boxes",
+  "ja": "請け出されない箱"
+ },
+ "hs_ledgers": {
+  "en": "Old ledgers",
+  "ja": "古い帳簿"
+ },
+ "hs_gutter": {
+  "en": "The gutter",
+  "ja": "側溝"
+ },
+ "hs_shelter": {
+  "en": "The bus shelter",
+  "ja": "バス停"
+ },
+ "hs_candle": {
+  "en": "The candle",
+  "ja": "蝋燭"
+ },
+ "hs_hatch": {
+  "en": "The hatch",
+  "ja": "跳ね上げ戸"
+ },
+ "hs_slips": {
+  "en": "Tickets in the wall",
+  "ja": "壁の質札"
+ },
+ "hs_niche": {
+  "en": "A niche",
+  "ja": "壁龕"
+ },
+ "h1_talk_0": {
+  "en": "She waits for a number. You could give her something else first.",
+  "ja": "彼女は数字を待っている。その前に、別のものを渡すこともできる。"
+ },
+ "h1_flat_1": {
+  "en": "My sister's. Box room. I'll be thirty-five in a box room with a single bed and a view of a bin.",
+  "ja": "妹のところ。物置部屋。三十五にもなって、シングルベッドとゴミ箱しか見えない物置部屋よ。"
+ },
+ "h1_flat_2": {
+  "en": "I've had worse views.",
+  "ja": "もっとひどい景色も見たことあるわ。"
+ },
+ "h1_flat_3": {
+  "en": "Have you? Good. That helps, actually. Weirdly.",
+  "ja": "そうなの？よかった。なんだか、それ効くわね。妙に。"
+ },
+ "h1_talk_flat": {
+  "en": "\"Two days. Where are you going after?\"",
+  "ja": "「あと二日。そのあとはどこへ？」"
+ },
+ "h1_cast_1": {
+  "en": "I chose it. Out of a catalogue, eight years ago, on a Sunday, with someone reading the prices out.",
+  "ja": "私が選んだの。八年前の日曜、カタログで。誰かが値段を読み上げてくれて。"
+ },
+ "h1_cast_2": {
+  "en": "She does not say who. She does not have to; the finial is warm from her hands, and it remembers.",
+  "ja": "誰とは言わない。言う必要もない。飾りは彼女の手で温まっていて、覚えている。"
+ },
+ "h1_talk_cast": {
+  "en": "\"It's a good casting. Somebody chose this.\"",
+  "ja": "「いい鋳物ね。誰かが選んだものよ」"
+ },
+ "h1_talk_none": {
+  "en": "Say nothing. Price it.",
+  "ja": "何も言わず、値をつける。"
+ },
+ "h1_clue": {
+  "en": "Unscrewed in a hurry. The thread is bright where the tool slipped.",
+  "ja": "急いで外された。工具が滑ったところだけ、ねじ山が光っている。"
+ },
+ "h1_duel_1": {
+  "en": "Her palm goes flat. The brass does not open. It pushes back, the way a held breath pushes back.",
+  "ja": "掌を平らに置く。真鍮は開かない。止めた息のように、押し返してくる。"
+ },
+ "h1_duel_2": {
+  "en": "Every object has an hour it would rather keep. You have to talk it out of its hands.",
+  "ja": "どの品にも、手放したくない一時がある。それを手から引き剥がすように、説き伏せなければならない。"
+ },
+ "h1_read": {
+  "en": "Put a hand on it. (the shop is not charging for this one)",
+  "ja": "手を置く。（今回は店も代金を取らない）"
+ },
+ "h1_blind": {
+  "en": "Leave it. Price the brass and let her go home.",
+  "ja": "やめておく。真鍮の値をつけて帰してやる。"
+ },
+ "h1_finial_hint": {
+  "en": "(Tamsin's trust 3 would have shown you the rest of that morning.)",
+  "ja": "（タムシンの信頼が3あれば、あの朝の続きが見えた。）"
+ },
+ "h1_after_1": {
+  "en": "The bell. The rain. The finial on the shelf behind her, being worth twenty-two.",
+  "ja": "ベル。雨。背後の棚の上で、二十二の値打ちのままの飾り。"
+ },
+ "h1_after_2": {
+  "en": "And under the floor, under the stock room, something that is not the boiler knocks three times, politely, like a clerk at a door.",
+  "ja": "そして床の下、在庫部屋の下で、ボイラーではない何かが三度、礼儀正しく叩く。扉の前の書記のように。"
+ },
+ "h1_after_3": {
+  "en": "Not tonight. I've got a full book.",
+  "ja": "今夜はだめ。帳簿が埋まってるの。"
+ },
+ "h1_after_4": {
+  "en": "It knocks again. The shop has never once cared how full her book is.",
+  "ja": "また叩く。店は一度だって、彼女の帳簿の混み具合など気にしたことがない。"
+ },
+ "h1_tutorial": {
+  "en": "(Walk the rooms: click a place to look, a door to go through. Haggles and readings are standoffs — wear their Resolve down before their Claim on you reaches 100. Appraise first: everyone has soft spots.)",
+  "ja": "（部屋を歩いて調べよう。場所をクリックで調べ、扉で移動。値切りと読み取りは「対決」だ。相手の請求が100に達する前に、意地を削りきろう。まずは鑑定。誰にでも弱みがある。）"
+ },
+ "price_finial_low": {
+  "en": "LOW — 14. They will take it.",
+  "ja": "安値 — 14。相手は呑むだろう。"
+ },
+ "price_finial_fair": {
+  "en": "FAIR — 22. What it is worth.",
+  "ja": "適正 — 22。物の値打ちどおり。"
+ },
+ "price_finial_high": {
+  "en": "HIGH — 33. More than it is worth.",
+  "ja": "高値 — 33。値打ち以上。"
+ },
+ "h1_window_1": {
+  "en": "TWO PRICES ON EVERYTHING, backwards, in gold, from the inside. From in here it reads like a spell, which Elsa always said it was.",
+  "ja": "「すべてのものに二つの値段」。内側から、逆さまの金文字で。ここから見ると呪文のようだ。エルサはいつも、実際そうだと言っていた。"
+ },
+ "h1_shelves_1": {
+  "en": "Tonight's restock: a clarinet with no reed, six teaspoons, a tin of tea nobody pawned. The tea she takes.",
+  "ja": "今夜の入荷。リードのないクラリネット、ティースプーン六本、誰も質入れしていない紅茶の缶。紅茶はもらっておく。"
+ },
+ "h1_clock_1": {
+  "en": "Wrong since 1998, by eleven minutes, always the same eleven. Elsa said the clock was keeping somebody else's time and it would be rude to correct it.",
+  "ja": "1998年から十一分狂っている。いつも同じ十一分。誰か別の人の時間を刻んでいるのだから直すのは失礼だ、とエルサは言っていた。"
+ },
+ "h1_stock_1": {
+  "en": "Shelves to the ceiling of things whose thirty days ran out. They are the shop's now. They do not look grateful.",
+  "ja": "天井まで続く棚。三十日が過ぎた品々。今はもう店のものだ。ありがたがっている様子はない。"
+ },
+ "h1_safe_1": {
+  "en": "Elsa's safe, combination her birthday, which is a thing she told Nara and the window cleaner. Inside: the stair lantern, still trimmed.",
+  "ja": "エルサの金庫。暗証番号は彼女の誕生日。それをナラと窓拭きに教えていた。中には階段用のランタン。芯はまだ整えてある。"
+ },
+ "h1_boxes_1": {
+  "en": "A box of a stranger's medicine cabinet. The smelling salts are older than she is and still work.",
+  "ja": "見知らぬ誰かの薬棚の中身を詰めた箱。気付け塩は彼女より年上で、まだ効く。"
+ },
+ "h1_ledgers_1": {
+  "en": "1974 to 1981. Elsa's hand. A note is folded into July 1979: Never pay the Bailiff in coin. He keeps the coin AND the debt.",
+  "ja": "1974年から1981年。エルサの字。1979年7月の頁にメモが挟んである。『執達吏に硬貨で払うな。硬貨も借りも両方持っていかれる』"
+ },
+ "h1_street_1": {
+  "en": "Gilt Lane at midnight: one lamp, the shop's window, and the rain standing in the air.",
+  "ja": "真夜中のギルト小路。街灯がひとつ、店の窓、そして宙に立ちつくす雨。"
+ },
+ "h1_gutter_1": {
+  "en": "A bone charm in the gutter, washed up from somewhere it should not have been able to wash up from. Market money. She pockets it.",
+  "ja": "側溝に骨の護符。流れてくるはずのない場所から流れてきた。市場の通貨だ。ポケットにしまう。"
+ },
+ "h1_shelter_low": {
+  "en": "Tamsin is at the bus shelter. She sees the shop's lamp and turns her back to it, and that is fair.",
+  "ja": "タムシンがバス停にいる。店の灯りを見ると、背を向けた。当然のことだ。"
+ },
+ "h1_shelter_1": {
+  "en": "Tamsin is at the bus shelter with the money in her back pocket and no coat. She lifts a hand. Nara lifts one back.",
+  "ja": "タムシンが、尻ポケットに金を入れ、コートもなしにバス停にいる。手を上げる。ナラも上げ返す。"
+ },
+ "h1_shelter_2": {
+  "en": "I'm going to bring you the other three!",
+  "ja": "残りの三つも持ってくるから！"
+ },
+ "h1_shelter_3": {
+  "en": "I'll be here. I'm always here.",
+  "ja": "いるわ。いつもいる。"
+ },
+ "h1_pledge_1": {
+  "en": "Someone is standing at the shop window with their hands cupped to the glass. Not solid. A pledge who never came back for their ticket, and still looks in.",
+  "ja": "誰かが店の窓に両手を当てて覗き込んでいる。実体がない。質札を受け取りに戻らなかった質入れ人が、今も覗いている。"
+ },
+ "h1_pledge_2": {
+  "en": "We're closed. And you're thirty days late. About thirty years late.",
+  "ja": "閉店よ。それに三十日遅れ。三十年くらい遅れてる。"
+ },
+ "h1_pledge_3": {
+  "en": "It takes its hands off the glass. The prints stay a while, then the rain has them.",
+  "ja": "それは窓から手を離す。手形はしばらく残り、やがて雨にさらわれた。"
+ },
+ "h1_cellar_1": {
+  "en": "Brick arches, a ladder, a hatch in the floor with a ring for a handle. The ring is warm.",
+  "ja": "煉瓦のアーチ、梯子、床の跳ね上げ戸。取っ手の輪が温かい。"
+ },
+ "h1_candle_1": {
+  "en": "One candle, always lit. Nobody lights it.",
+  "ja": "蝋燭が一本、いつも灯っている。誰も灯していないのに。"
+ },
+ "h1_hatch_1": {
+  "en": "She lifts it. Under it, steps: paper, pressed hard as slate, going down out of the candle's reach.",
+  "ja": "持ち上げる。その下に階段。石板のように固く押し固められた紙が、蝋燭の届かないところへ降りていく。"
+ },
+ "h1_hatch_2": {
+  "en": "The Receipt Stair. Forty-one treads to the Market, and on a night like this, landings that are not always there, and people on them who want something stamped.",
+  "ja": "受領の階段。市場まで四十一段。今夜のような夜には、いつもはない踊り場が現れ、そこに何かに判を押してほしい者たちがいる。"
+ },
+ "h1_hatch_3": {
+  "en": "One landing. Then back up for the next name.",
+  "ja": "踊り場ひとつ分だけ。それから次の名前のために戻る。"
+ },
+ "h1_stair_1": {
+  "en": "Paper underfoot. The walls are tickets too, side-on, thousands of them, and the oldest still smell of the pockets they were kept in.",
+  "ja": "足元は紙。壁も横向きの質札で、何千枚もある。いちばん古いものは、しまわれていたポケットの匂いがまだする。"
+ },
+ "h1_slips_1": {
+  "en": "Silver christening cup. Held 30 days. Unredeemed. — She stops reading at the second one. She always stops at the second one.",
+  "ja": "『銀の洗礼杯。三十日預かり。請け出しなし』。二枚目で読むのをやめる。いつも二枚目でやめる。"
+ },
+ "h1_niche_1": {
+  "en": "Somebody left change in the niche for whoever comes down. Two bone charms, warm.",
+  "ja": "誰かが、降りてくる者のために壁龕に小銭を置いていった。骨の護符が二つ、温かい。"
+ },
+ "h1_keeper_1": {
+  "en": "A woman in a grey hood sits on the landing with a lantern on her knee and a hand out, palm up.",
+  "ja": "灰色の頭巾の女が踊り場に座り、膝にランタン、掌を上にして手を差し出している。"
+ },
+ "h1_keeper_2": {
+  "en": "Toll. Everyone pays going down. Not everyone pays coming up.",
+  "ja": "通行税。降りる者はみな払う。上ってくる者がみな払うとは限らないけれど。"
+ },
+ "h1_keeper_3": {
+  "en": "Go on, then. Mind the eleventh step, it's somebody's divorce.",
+  "ja": "行きなさい。十一段目に気をつけて。誰かの離婚だから。"
+ },
+ "h1_clerk_1": {
+  "en": "At the turn of the landing a desk that should not fit there, and behind it a clerk in a bowler hat with a face like a well-kept skull, which is what it is.",
+  "ja": "踊り場の曲がり角に、入るはずのない机。その向こうに山高帽の書記。よく手入れされた頭蓋骨のような顔。というより、そのものだ。"
+ },
+ "h1_clerk_2": {
+  "en": "Quill. The night's first entry. You owe it a stamp, and I owe you nothing, and we are going to argue about which.",
+  "ja": "クイル。今夜最初の記帳だ。君は判をひとつ借りている。私は君に何も借りていない。どちらがどちらか、議論しよう。"
+ },
+ "h1_clerk_3": {
+  "en": "He opens a ledger the size of a door. The finial is already in it.",
+  "ja": "扉ほどもある帳簿を開く。もう飾りが記されている。"
+ },
+ "h1_clerk_4": {
+  "en": "Stamped. Received in good order. Go up; you have another name in the book at twenty past.",
+  "ja": "押印済み。良好な状態で受領。上へ戻りたまえ。十二時二十分に次の名前がある。"
+ },
+ "h1_clerk_5": {
+  "en": "The stamp is still wet on the receipt he gives her. It smells of the shop.",
+  "ja": "渡された受領証の判はまだ濡れている。店の匂いがする。"
+ },
+ "h1_title": {
+  "en": "Midnight",
+  "ja": "午前零時"
+ },
+ "h1_sub": {
+  "en": "The finial, and the first landing",
+  "ja": "真鍮の飾りと、最初の踊り場"
+ },
+ "hs_case": {
+  "en": "The pocket-watch case",
+  "ja": "懐中時計のケース"
+ },
+ "hs_costume": {
+  "en": "The costume stall",
+  "ja": "衣装の屋台"
+ },
+ "hs_tickets": {
+  "en": "A basket of old tickets",
+  "ja": "古い質札の籠"
+ },
+ "hs_jars": {
+  "en": "Jars",
+  "ja": "瓶"
+ },
+ "hs_loupe": {
+  "en": "A tray of loupes",
+  "ja": "ルーペの盆"
+ },
+ "h2_talk_0": {
+  "en": "He is watching your hands. You could give him something to watch instead.",
+  "ja": "彼はあなたの手を見ている。代わりに見るものを与えることもできる。"
+ },
+ "h2_ink_1": {
+  "en": "Twenty-three. A swallow. It's meant to bring you home.",
+  "ja": "二十三だ。燕。家に帰れるようにって意味だ。"
+ },
+ "h2_ink_2": {
+  "en": "Did it?",
+  "ja": "帰れた？"
+ },
+ "h2_ink_3": {
+  "en": "It brought me here. Close enough, some nights.",
+  "ja": "ここに連れてきた。夜によっては、それで十分だ。"
+ },
+ "h2_talk_ink": {
+  "en": "\"Twenty-two?\" (the tattoo)",
+  "ja": "「二十二の時？」（刺青を見て）"
+ },
+ "h2_talk_none": {
+  "en": "Say nothing.",
+  "ja": "何も言わない。"
+ },
+ "h2_duel_1": {
+  "en": "The gold is not warm. It is shut, the way a mouth is shut. It knows it was asked about.",
+  "ja": "金は温かくない。口を閉じるように閉ざされている。尋ねられたことを知っているのだ。"
+ },
+ "h2_take": {
+  "en": "Take the reading anyway. (35 out of the till)",
+  "ja": "それでも読み取る。（金庫から35）"
+ },
+ "h2_broke": {
+  "en": "Take the reading anyway — but the drawer is short.",
+  "ja": "それでも読み取る — だが引き出しの金が足りない。"
+ },
+ "h2_decline": {
+  "en": "Don't. He asked.",
+  "ja": "やめる。彼に頼まれたのだから。"
+ },
+ "h2_after_1": {
+  "en": "Twelve forty. The knock again, from under the stock room, three times. The receipt in her apron pocket has a second line on it now, in a hand that is not hers: Arcade. Bring the ring's ticket.",
+  "ja": "十二時四十分。また在庫部屋の下から三度のノック。エプロンのポケットの受領証に二行目が増えている。彼女のものではない字で。『アーケードへ。指輪の質札を持て』"
+ },
+ "h2_after_2": {
+  "en": "I'm a pawnbroker, not a postman.",
+  "ja": "私は質屋よ、郵便屋じゃない。"
+ },
+ "price_ring_low": {
+  "en": "LOW — 26. They will take it.",
+  "ja": "安値 — 26。相手は呑むだろう。"
+ },
+ "price_ring_fair": {
+  "en": "FAIR — 40. What it is worth.",
+  "ja": "適正 — 40。物の値打ちどおり。"
+ },
+ "price_ring_high": {
+  "en": "HIGH — 60. More than it is worth.",
+  "ja": "高値 — 60。値打ち以上。"
+ },
+ "h2_case_1": {
+  "en": "Pocket watches, all stopped at different times, all of them right twice a day. Ivo looked at these for four seconds once and they still remember it.",
+  "ja": "懐中時計。どれも違う時刻で止まり、どれも一日に二度だけ正しい。アイヴォが四秒だけ眺めたことを、まだ覚えている。"
+ },
+ "h2_stair_1": {
+  "en": "Lower than the first landing. The treads here are older: carbon copies, purple, the kind nobody has made since the eighties.",
+  "ja": "最初の踊り場より下。ここの踏み板は古い。紫のカーボンコピー。八十年代から誰も作っていない類のものだ。"
+ },
+ "h2_pledge_1": {
+  "en": "A man sits on a step in a wet overcoat, which is a thing he pawned, and is still wearing, which is how you know where you are.",
+  "ja": "濡れたオーバーコートの男が段に座っている。質入れしたはずのコートを、まだ着ている。それで、ここがどこかわかる。"
+ },
+ "h2_pledge_2": {
+  "en": "That coat's ours. Thirty days, 1987. You never came back.",
+  "ja": "そのコート、うちのよ。1987年、三十日。あなたは戻ってこなかった。"
+ },
+ "h2_pledge_3": {
+  "en": "He takes the coat off, folds it over his arm, and is gone, and so is the coat. The shop has one fewer overcoat. It does not mind.",
+  "ja": "彼はコートを脱ぎ、腕に掛け、消える。コートも一緒に。店のオーバーコートが一着減った。店は気にしない。"
+ },
+ "h2_arcade_1": {
+  "en": "The Bone Arcade: an avenue of stalls under arches of femur and rib, which sounds worse than it is and looks better than it should.",
+  "ja": "骨のアーケード。大腿骨と肋骨のアーチの下に続く屋台の通り。聞こえほど悪くはなく、見た目は思ったより良い。"
+ },
+ "h2_costume_1": {
+  "en": "A velvet jacket, bottle-green, cut for a woman who talked for a living. Nobody is minding the stall. She leaves a charm's worth of thanks in her head and takes it.",
+  "ja": "瓶緑のベルベットの上着。話すことを生業にしていた女のために仕立てられている。店番はいない。頭の中で護符ひとつ分の礼を置いて、もらっていく。"
+ },
+ "h2_tickets_1": {
+  "en": "Old Ossian's basket: tickets from other shops, sold on when the shops closed. One from Hale & Daughter, three years ago. Ring, gold. Pledger: I. Glass. Never redeemed.",
+  "ja": "オシアン爺の籠。閉店した他の店の質札が流れてきたもの。三年前、ヘイル＆ドーター商会の一枚。『指輪、金。質入れ人：I・グラス。請け出しなし』"
+ },
+ "h2_tickets_2": {
+  "en": "Elsa's ring. The one he asked her not to read.",
+  "ja": "エルサのときの指輪。読まないでと頼んだ、あの。"
+ },
+ "h2_tickets_3": {
+  "en": "She buys it back for nothing, which Ossian allows because nobody else ever asks, and pins it into the book under Ivo's name. Some debts are only paperwork.",
+  "ja": "オシアンはただで譲ってくれる。誰も欲しがらないからだ。彼女はそれを帳簿のアイヴォの名の下に留める。紙の上だけの借りもある。"
+ },
+ "h2_haggler_1": {
+  "en": "Old Ossian, who sells doors and keys and never both to the same person, has bone on every finger and a grin with a gap in it you could post a ticket through.",
+  "ja": "扉と鍵を売るが、同じ相手には決して両方を売らないオシアン爺。指という指に骨の指輪、質札が一枚通りそうな歯の隙間のある笑み。"
+ },
+ "h2_haggler_2": {
+  "en": "Elsa's girl! Come to sell? Come to buy? Come to be sold? Let's find out together.",
+  "ja": "エルサの嬢ちゃん！売りに来たか？買いに来たか？売られに来たか？一緒に確かめようじゃないか。"
+ },
+ "h2_haggler_3": {
+  "en": "Ha! She drives Elsa's bargain. Fine, fine. The basket's yours to rummage. Mind the broker, she's in a mood.",
+  "ja": "はっ！エルサ譲りの値切りだ。いいとも。籠は好きに漁りな。仲買人には気をつけな、機嫌が悪い。"
+ },
+ "h2_reliquary_1": {
+  "en": "Jars on shelves to the vault: a breath, a first word, the smell of a particular kitchen. Each one labelled, priced, and very slightly fogged from inside.",
+  "ja": "天井まで瓶の並ぶ棚。吐息、最初の一言、ある台所の匂い。どれもラベルと値札がつき、内側からわずかに曇っている。"
+ },
+ "h2_jars_1": {
+  "en": "A jar labelled PEPPERMINT, 1952, which is peppermints. Sometimes a thing is only itself.",
+  "ja": "『ハッカ、1952年』と書かれた瓶。中身はハッカ飴だ。物がただの物であることも、ときにはある。"
+ },
+ "h2_loupe_1": {
+  "en": "A tray of jewellers' loupes, each one still focused on the last thing it looked at. She takes one that is focused on nothing at all.",
+  "ja": "宝石鑑定用ルーペの盆。どれも最後に見たものに焦点が合ったままだ。何にも合っていないものをひとつ取る。"
+ },
+ "h2_broker_1": {
+  "en": "The Hollow Broker wears a porcelain face with nothing behind the eyes and works an abacus with beads of teeth.",
+  "ja": "虚ろな仲買人は、目の奥に何もない磁器の顔をつけ、歯の珠の算盤を弾く。"
+ },
+ "h2_broker_2": {
+  "en": "You carry a ticket for a reading you did or did not take. Either way it has a price. I buy prices.",
+  "ja": "あなたは、取ったか取らなかったかした読み取りの質札を持っている。どちらにせよ値がつく。私は値段を買うのよ。"
+ },
+ "h2_broker_3": {
+  "en": "It isn't for sale.",
+  "ja": "売り物じゃないわ。"
+ },
+ "h2_broker_4": {
+  "en": "Everything is for sale. Some things are merely expensive.",
+  "ja": "何だって売り物よ。ただ高いものがあるだけ。"
+ },
+ "h2_broker_5": {
+  "en": "Expensive, then. I'll write you down as expensive.",
+  "ja": "では、高い、と。あなたを『高い』と書いておくわ。"
+ },
+ "h2_broker_6": {
+  "en": "The receipt in Nara's pocket gets a third line: One o'clock. A widow.",
+  "ja": "ナラのポケットの受領証に三行目が増える。『一時。未亡人』"
+ },
+ "h2_title": {
+  "en": "Twenty past twelve",
+  "ja": "零時二十分"
+ },
+ "h2_sub": {
+  "en": "The ring, and the Bone Arcade",
+  "ja": "指輪と、骨のアーケード"
+ },
+ "hs_water": {
+  "en": "The canal",
+  "ja": "運河"
+ },
+ "hs_archshelves": {
+  "en": "The N shelf",
+  "ja": "Nの棚"
+ },
+ "hs_ladder": {
+  "en": "The ladder",
+  "ja": "梯子"
+ },
+ "h3_till": {
+  "en": "Till: {#coin}.",
+  "ja": "金庫：{#coin}。"
+ },
+ "h3_stock": {
+  "en": "Stock on the shelf behind her: 62 of other people's brass and gold.",
+  "ja": "背後の棚の在庫：他人の真鍮と金、62。"
+ },
+ "h3_debt": {
+  "en": "Against the estate, due in five hours: 200.",
+  "ja": "遺産に対する負債、五時間後に期限：200。"
+ },
+ "h3_fees": {
+  "en": "And in the fourth column, in Elsa's hand, in a ruled section Nara has never filled in and never had to explain: {#fees} spent on knowing.",
+  "ja": "そして第四の欄。エルサの字で罫が引かれ、ナラが一度も埋めたことも説明する必要もなかった欄に、知るために払った額：{#fees}。"
+ },
+ "h3_hatch": {
+  "en": "The hatch behind the stock room has been open since midnight. She has been down twice. There is one more name in the book first.",
+  "ja": "在庫部屋の奥の跳ね上げ戸は、真夜中から開いたままだ。もう二度降りた。その前に、帳簿にもう一人の名前がある。"
+ },
+ "h3_talk_0": {
+  "en": "She is standing very straight. You could let her sit.",
+  "ja": "彼女はとてもまっすぐ立っている。座らせてあげることもできる。"
+ },
+ "h3_chair_1": {
+  "en": "Mara looks at the chair for a long moment, and then sits on it like a queen accepting a smaller country.",
+  "ja": "マーラは長いあいだ椅子を見つめ、それから、小国を受け入れる女王のように腰を下ろした。"
+ },
+ "h3_chair_2": {
+  "en": "Elsa never offered me a chair.",
+  "ja": "エルサは一度も椅子を勧めなかったわ。"
+ },
+ "h3_chair_3": {
+  "en": "Elsa never sat down. I've had a long night.",
+  "ja": "エルサは座らなかったから。私は長い夜を過ごしてるの。"
+ },
+ "h3_talk_chair": {
+  "en": "Bring her the chair from behind the counter.",
+  "ja": "カウンターの奥から椅子を持ってくる。"
+ },
+ "h3_talk_none": {
+  "en": "Leave her standing. She chose to.",
+  "ja": "立たせておく。彼女がそう選んだのだから。"
+ },
+ "h3_duel_1": {
+  "en": "Crepe does not hold heat. It holds shape. The pleats close under her hand like a fan being folded against her.",
+  "ja": "クレープ地は熱を保たない。形を保つ。ひだが、扇を彼女に向けて畳むように、手の下で閉じていく。"
+ },
+ "h3_take": {
+  "en": "Read it. (20 out of the till)",
+  "ja": "読み取る。（金庫から20）"
+ },
+ "h3_broke": {
+  "en": "Read it — but the drawer is short.",
+  "ja": "読み取る — だが引き出しの金が足りない。"
+ },
+ "h3_decline": {
+  "en": "Don't. It's a widow's veil and she is standing right there.",
+  "ja": "やめる。未亡人のヴェールで、本人が目の前に立っている。"
+ },
+ "h3_after_1": {
+  "en": "Half past one. The receipt's fourth line: Lantern Row. The Bailiff is asking after the shop.",
+  "ja": "一時半。受領証の四行目。『灯籠通り。執達吏が店のことを尋ねている』"
+ },
+ "h3_after_2": {
+  "en": "Elsa had a note about him.",
+  "ja": "エルサのメモに彼のことがあった。"
+ },
+ "price_veil_low": {
+  "en": "LOW — 23. They will take it.",
+  "ja": "安値 — 23。相手は呑むだろう。"
+ },
+ "price_veil_fair": {
+  "en": "FAIR — 35. What it is worth.",
+  "ja": "適正 — 35。物の値打ちどおり。"
+ },
+ "price_veil_high": {
+  "en": "HIGH — 52. More than it is worth.",
+  "ja": "高値 — 52。値打ち以上。"
+ },
+ "h3_stair_1": {
+  "en": "The stair goes further tonight than it did at midnight. She counts forty-one and keeps going, and the paper underfoot turns damp.",
+  "ja": "今夜の階段は真夜中より深い。四十一まで数えても続き、足元の紙が湿ってくる。"
+ },
+ "h3_row_1": {
+  "en": "Lantern Row: a canal under the city that the city does not have, lanterns strung over black water, and everything the water has been given floating just under the surface.",
+  "ja": "灯籠通り。街にはないはずの街の下の運河。黒い水の上に灯籠が連なり、水に託されたものがすべて、水面のすぐ下を漂っている。"
+ },
+ "h3_water_1": {
+  "en": "Among the lost things: a brass castor off the foot of a bed. The same casting as the finial. The same catalogue, the same Sunday.",
+  "ja": "失せ物の中に、ベッドの脚の真鍮のキャスター。あの飾りと同じ鋳物。同じカタログ、同じ日曜日。"
+ },
+ "h3_water_2": {
+  "en": "She's losing the whole bed one piece at a time.",
+  "ja": "彼女、ベッドを一つずつ失くしていってるのね。"
+ },
+ "h3_water_3": {
+  "en": "She fishes it out and puts it in the book under Tamsin's name, with the finial. Four of anything is a set; this is a start.",
+  "ja": "拾い上げ、帳簿のタムシンの名の下に、飾りと一緒に記す。四つ揃えば一組。これはその始まりだ。"
+ },
+ "h3_moth_1": {
+  "en": "On a paper lantern too small to hold her sits a woman with moth wings the colour of old lace, and she is mending a veil that is not Mara's, and is.",
+  "ja": "抱えきれないほど小さな紙灯籠に、古いレース色の蛾の羽を持つ女が座り、ヴェールを繕っている。マーラのものではなく、そしてマーラのものでもある。"
+ },
+ "h3_moth_2": {
+  "en": "Every widow's veil comes down here eventually, pawnbroker. I keep them warm. What will you give me for the one you priced?",
+  "ja": "未亡人のヴェールはいずれみんなここへ降りてくるのよ、質屋さん。私が温めておくの。あなたが値をつけたあれに、何をくれる？"
+ },
+ "h3_moth_3": {
+  "en": "You bargain like someone who has been kind tonight. It shows on you, like flour.",
+  "ja": "今夜誰かに優しくした人の値切り方ね。小麦粉みたいに、あなたについてる。"
+ },
+ "h3_moth_4": {
+  "en": "Only because you asked properly.",
+  "ja": "ちゃんと頼んだから、特別よ。"
+ },
+ "h3_moth_5": {
+  "en": "She opens them. Lace and dust and lantern light, and under them a woman who has been keeping other people's grief warm for a very long time and has decided, tonight, to be looked at instead.",
+  "ja": "彼女は羽を開く。レースと鱗粉と灯籠の光。その下には、他人の悲しみを長いあいだ温めてきて、今夜は見られる側になると決めた女がいる。"
+ },
+ "h3_moth_6": {
+  "en": "Nara looks, because she was invited to, which is a rarer thing on her side of the counter than it should be.",
+  "ja": "ナラは見る。招かれたからだ。カウンターのこちら側では、それは本来あるべきより稀なことだ。"
+ },
+ "h3_moth_look": {
+  "en": "\"Show me the wings.\"",
+  "ja": "「羽を見せて」"
+ },
+ "h3_moth_go": {
+  "en": "Thank her and go on.",
+  "ja": "礼を言って先へ進む。"
+ },
+ "h3_archive_1": {
+  "en": "The unclaimed archive: every letter that was in a pocket of something pawned and never collected, filed by surname, forever.",
+  "ja": "未請求の書庫。質入れされ、二度と取りに来られなかった品のポケットに入っていた手紙が、すべて姓ごとに、永遠に綴じられている。"
+ },
+ "h3_arch_1": {
+  "en": "Miss Penrose has ink to the second knuckle and spectacles on a ribbon and has not been entirely alive since 1931, which she regards as a filing matter.",
+  "ja": "ペンローズ嬢は第二関節までインクで汚れ、リボンつきの眼鏡をかけ、1931年からずっと完全には生きていない。彼女はそれを書類上の問題とみなしている。"
+ },
+ "h3_arch_2": {
+  "en": "You may not browse. Nobody browses. State a surname or leave.",
+  "ja": "閲覧はできません。誰も閲覧はしないの。姓を言うか、出ていくか。"
+ },
+ "h3_arch_3": {
+  "en": "Voss. V. One item. It was in the lining of a dress. Do try to give it to someone.",
+  "ja": "ヴォス。V。一件。ドレスの裏地に入っていたわ。誰かに渡すよう努めて。"
+ },
+ "h3_arch_4": {
+  "en": "A letter addressed to 'M.', never posted. Nara does not open it. She puts it in the book under Mara's name, sealed, where it can wait for her.",
+  "ja": "「M」宛ての、投函されなかった手紙。ナラは開けない。封をしたまま帳簿のマーラの名の下に挟み、彼女を待たせておく。"
+ },
+ "h3_shelves_1": {
+  "en": "Q. Quill. A file, thin, opened tonight. Inside, one torn ledger page with her own name on it, in a hand that is nearly hers.",
+  "ja": "Q。クイル。薄いファイル、今夜開かれたばかり。中には破れた台帳の頁が一枚。彼女の名前が、ほとんど彼女のものの筆跡で。"
+ },
+ "h3_ladder_1": {
+  "en": "On the archive ladder hangs an oilskin coat with ELSA Q. inked inside the collar. Of course it is down here. Of course it fits.",
+  "ja": "書庫の梯子に、襟の内側に『ELSA Q.』とインクで書かれた油布のコートが掛かっている。もちろん、ここにある。もちろん、ぴったりだ。"
+ },
+ "h3_bailiff_1": {
+  "en": "On the bridge, blocking it: a tall grey man in a greatcoat with a chain of office, and the chain is made of the little brass tags that hang off pawned keys.",
+  "ja": "橋の上に、塞ぐように立つ灰色の長身の男。外套に職章の鎖。その鎖は、質入れされた鍵に下がる小さな真鍮の札でできている。"
+ },
+ "h3_bailiff_2": {
+  "en": "Quill and premises. The estate's debt is two hundred. I am instructed to begin collecting it early, in whatever currency is to hand.",
+  "ja": "クイルおよび店舗。遺産の負債は二百。手元にある通貨で、前倒しで取り立てを始めるよう指示されている。"
+ },
+ "h3_bailiff_3": {
+  "en": "It's due at six.",
+  "ja": "期限は六時よ。"
+ },
+ "h3_bailiff_4": {
+  "en": "Everything is due. Six is merely when it is noticed.",
+  "ja": "すべては期限を迎えている。六時とは、それに気づかれる時刻にすぎない。"
+ },
+ "h3_bailiff_5": {
+  "en": "Noted. Not collected. Noted.",
+  "ja": "記録した。徴収はしていない。記録した。"
+ },
+ "h3_bailiff_6": {
+  "en": "He steps aside. Past him, the water opens out into a vault the size of a swimming bath, and the noise of a market.",
+  "ja": "彼は脇へ退く。その先で水は広がり、プールほどもある丸天井の空間へ、市場のざわめきへと続いている。"
+ },
+ "h3_title": {
+  "en": "One o'clock",
+  "ja": "午前一時"
+ },
+ "h3_sub": {
+  "en": "The veil, and Lantern Row",
+  "ja": "ヴェールと、灯籠通り"
+ },
+ "hs_teeth": {
+  "en": "The teeth stall",
+  "ja": "歯の屋台"
+ },
+ "hs_instruments": {
+  "en": "Unstrung instruments",
+  "ja": "弦のない楽器"
+ },
+ "h4_vault_locked": {
+  "en": "A door with nothing behind it. Locked.",
+  "ja": "何もない場所に立つ扉。鍵がかかっている。"
+ },
+ "hs_booth": {
+  "en": "The toll booth",
+  "ja": "料金所"
+ },
+ "hs_calder": {
+  "en": "Calder's desk",
+  "ja": "カルダーの机"
+ },
+ "hs_upstairs": {
+  "en": "The stair up",
+  "ja": "上り階段"
+ },
+ "hs_heart": {
+  "en": "The thing on the pedestal",
+  "ja": "台座の上のもの"
+ },
+ "h4_open_1": {
+  "en": "Two o'clock. The book is empty until five and the drawer has {#coin} in it against a debt of 200, so she goes down.",
+  "ja": "二時。五時まで帳簿に名前はなく、引き出しには{#coin}。負債は200。だから彼女は降りる。"
+ },
+ "h4_haul": {
+  "en": "The stalls take the lot for 30. Till: {#coin}.",
+  "ja": "屋台は全部まとめて30で引き取った。金庫：{#coin}。"
+ },
+ "h4_open_2": {
+  "en": "Calder's stall is at the far end, past the Door Man and the woman who buys names. She has never once got there without being stopped.",
+  "ja": "カルダーの店はいちばん奥、扉売りと名前買いの女の先にある。止められずにたどり着けたことは一度もない。"
+ },
+ "h4_teeth_1": {
+  "en": "Human teeth sorted by decade. Somebody buys them. She has never asked, and tonight, with a hand that has read four things already, she decides not to start.",
+  "ja": "年代ごとに仕分けられた人の歯。誰かが買っていく。訊いたことはない。もう四つも読んだ手で、今夜それを始めるのはやめておく。"
+ },
+ "h4_instruments_1": {
+  "en": "Unstrung violins, a cello with no bridge, and on a stool, a flask of tea still hot. The Market looks after its regulars.",
+  "ja": "弦のないヴァイオリン、駒のないチェロ。腰掛けの上に、まだ熱い紅茶の水筒。市場は常連の面倒を見る。"
+ },
+ "h4_doors_1": {
+  "en": "Six freestanding doors and Old Ossian among them, grinning. He sells the doors. He does not sell the keys.",
+  "ja": "自立する六枚の扉、その間でにやつくオシアン爺。扉は売る。鍵は売らない。"
+ },
+ "h4_doors_2": {
+  "en": "Twice in one night! You want a door, Elsa's girl. I can tell. Everybody who comes this far wants a door.",
+  "ja": "一晩で二度目！扉が欲しいんだろう、嬢ちゃん。わかるとも。ここまで来た者はみんな扉が欲しくなる。"
+ },
+ "h4_doors_3": {
+  "en": "Oh, you. Fine. One key, no door. The door's already there; it's been there since before the Market. Don't tell anyone I sold you both.",
+  "ja": "まったく。いいとも。鍵ひとつ、扉なし。扉はもうある。市場より前からな。両方売ったって誰にも言うなよ。"
+ },
+ "h4_name_1": {
+  "en": "The woman who buys names, cash, no questions: the Hollow Broker again, at her own stall now, with her abacus and her empty eyes.",
+  "ja": "名前を現金で、何も訊かずに買う女。また虚ろな仲買人だ。今度は自分の屋台で、算盤と空っぽの目を携えて。"
+ },
+ "h4_name_2": {
+  "en": "Expensive Quill. I wrote you down. Now let me buy your name, and you'll never have to be expensive again.",
+  "ja": "高いクイル。書いておいたわ。名前を売りなさい。そうすれば二度と高くいる必要はない。"
+ },
+ "h4_name_3": {
+  "en": "Still expensive. Go and see the factor. He'll give you a number; he always does.",
+  "ja": "まだ高いわね。仲買人のところへ行きなさい。数字をくれるわ。いつもそう。"
+ },
+ "h4_keeper_1": {
+  "en": "Coming up already? No. Not past me, not till the hour's done. Pay or wait.",
+  "ja": "もう上がるの？だめ。この刻が終わるまでは通さない。払うか、待つか。"
+ },
+ "h4_keeper_2": {
+  "en": "Paid in patience. That's the best coin. The booth's open; help yourself.",
+  "ja": "忍耐で支払われた。それがいちばんの硬貨。料金所は開いてる。好きにして。"
+ },
+ "h4_booth_1": {
+  "en": "The toll booth: a ledger of everyone who has gone up, and under the desk, a bottle of brandy with ELSA on the label in pencil.",
+  "ja": "料金所。上っていった者すべての台帳。机の下に、ラベルに鉛筆で『ELSA』と書かれたブランデーの瓶。"
+ },
+ "h4_heart_1": {
+  "en": "Under the Market, behind a door that stood on its own in a crowd: a round room, and on a pedestal a heart of dark red glass, beating slowly, lighting the walls with each beat.",
+  "ja": "市場の下、人混みに自立していた扉の向こう。円い部屋。台座の上に暗赤色のガラスの心臓が、ゆっくりと脈打ち、そのたびに壁を照らしている。"
+ },
+ "h4_heart_2": {
+  "en": "The Heart of the Crypt. Elsa wrote about it once, in the back of a ledger: what the shop actually wants. Every reading, every fee, every instalment, goes here.",
+  "ja": "地下聖堂の心臓。エルサが一度だけ、帳簿の裏に書いていた。『店が本当に欲しいもの』。読み取りも、手数料も、分割払いも、すべてここへ行く。"
+ },
+ "h4_heart_3": {
+  "en": "She does not touch it. It is the only object in three years she has met and not wanted to know.",
+  "ja": "触れない。この三年で出会った品のうち、知りたいと思わなかった唯一のものだ。"
+ },
+ "h4_calder_test": {
+  "en": "He puts both gloved hands on the desk. Before Calder deals with anybody, he finds out what they are made of.",
+  "ja": "彼は手袋の両手を机に置く。カルダーは誰かと取引する前に、相手が何でできているかを確かめる。"
+ },
+ "h4_ninety": {
+  "en": "90 would clear the estate on its own and leave her with change and a shop.",
+  "ja": "90あれば、それだけで遺産は片づき、釣り銭と店が残る。"
+ },
+ "h4_newest_mara": {
+  "en": "The newest one is Mara Voss's.",
+  "ja": "いちばん新しいのはマーラ・ヴォスのものだ。"
+ },
+ "h4_sold_till": {
+  "en": "Till: {#coin}.",
+  "ja": "金庫：{#coin}。"
+ },
+ "h4_sell_mara": {
+  "en": "Sell him Mara Voss's reading. (90)",
+  "ja": "マーラ・ヴォスの読み取りを彼に売る。（90）"
+ },
+ "h4_refuse_mara": {
+  "en": "Don't. Go back up the stairs.",
+  "ja": "やめる。階段を上って戻る。"
+ },
+ "h4_newest_ivo": {
+  "en": "The newest one is Ivo Glass's.",
+  "ja": "いちばん新しいのはアイヴォ・グラスのものだ。"
+ },
+ "h4_sell_ivo": {
+  "en": "Sell him Ivo Glass's reading. (90)",
+  "ja": "アイヴォ・グラスの読み取りを彼に売る。（90）"
+ },
+ "h4_refuse_ivo": {
+  "en": "Don't. Go back up the stairs.",
+  "ja": "やめる。階段を上って戻る。"
+ },
+ "h4_newest_tamsin": {
+  "en": "The newest one is Tamsin Reed's.",
+  "ja": "いちばん新しいのはタムシン・リードのものだ。"
+ },
+ "h4_sell_tamsin": {
+  "en": "Sell him Tamsin Reed's reading. (90)",
+  "ja": "タムシン・リードの読み取りを彼に売る。（90）"
+ },
+ "h4_refuse_tamsin": {
+  "en": "Don't. Go back up the stairs.",
+  "ja": "やめる。階段を上って戻る。"
+ },
+ "h4_title": {
+  "en": "Two o'clock",
+  "ja": "午前二時"
+ },
+ "h4_sub": {
+  "en": "The Ossuary Market",
+  "ja": "骨の市場"
+ },
+ "h5_tam_1": {
+  "en": "The finial on the shelf has gone warm again. Not the brass: the shelf under it, the way a chair stays warm.",
+  "ja": "棚の飾りがまた温かい。真鍮ではなく、その下の棚が。椅子が温もりを残すように。"
+ },
+ "h5_tam_2": {
+  "en": "It was priced fairly, and it was found a castor, and it has decided it does not mind her. Objects keep score of the counter as well as the room.",
+  "ja": "公正に値をつけられ、キャスターも見つけてもらい、彼女のことを嫌ではないと決めたのだ。品は部屋だけでなく、カウンターでの扱いも覚えている。"
+ },
+ "h5_tam_3": {
+  "en": "The flat again, later. The boxes taped. The bath run in a bathroom with nothing left in it but the bath.",
+  "ja": "あの部屋、もっと後。箱には封がされ、浴槽のほかは何も残っていない浴室で、湯が張られている。"
+ },
+ "h5_tam_4": {
+  "en": "Tamsin in it to the shoulders, freckles going on forever, looking back over one of them at the door as if somebody might come and say it was a joke.",
+  "ja": "肩まで浸かったタムシン。果てしなく続くそばかす。片方の肩越しに扉を振り返る。誰かが来て、冗談だったと言ってくれるかのように。"
+ },
+ "h5_tam_5": {
+  "en": "Nobody does. She laughs anyway, once, at the ceiling, and sinks to the chin, and the steam takes the rest. It is the first time tonight Nara has seen her look like the bed was a good bed.",
+  "ja": "誰も来ない。それでも彼女は一度、天井に向かって笑い、顎まで沈む。残りは湯気がさらう。あのベッドが良いベッドだったと思える顔を、ナラは今夜はじめて見た。"
+ },
+ "h5_ivo_1": {
+  "en": "Ivo's ticket in the book has writing on the back that was not there at twenty past twelve. His hand: You can look now. I'm asking. Tell me she was happy after. — I.G.",
+  "ja": "帳簿のアイヴォの質札に、零時二十分にはなかった書き込みがある。彼の字で。『もう見ていい。頼んでる。そのあと彼女が幸せだったか教えてくれ — I.G.』"
+ },
+ "h5_ivo_2": {
+  "en": "Asking is the part you get to do.",
+  "ja": "頼むのは、あなたにできることだものね。"
+ },
+ "h5_ivo_3": {
+  "en": "Not the night of the books and the lamp. A later night, and not his: Maya, alone, on a windowsill in somebody's shirt, rain behind her, the ring on her finger instead of a nightstand.",
+  "ja": "本と灯りの夜ではない。もっと後の夜、そして彼のものではない。マヤが一人、誰かのシャツを羽織って窓辺に座り、背後には雨。指輪はナイトスタンドではなく、彼女の指に。"
+ },
+ "h5_ivo_4": {
+  "en": "She is turning it to the lamp the way Nara did. Reading the date. Smiling at it, not sadly. The ring was worn, after. That is the answer, and it is a good one.",
+  "ja": "ナラがしたように、灯りに向けて回している。日付を読んでいる。悲しくはない微笑み。そのあとも、指輪は着けられていた。それが答えで、良い答えだ。"
+ },
+ "h5_mara_1": {
+  "en": "The veil on the shelf, and the letter from the archive in the book under Mara's name, and between them something like permission.",
+  "ja": "棚のヴェールと、帳簿のマーラの名の下に挟んだ書庫の手紙。その間に、許しのようなもの。"
+ },
+ "h5_mara_2": {
+  "en": "Earlier than the mirror. The dressing table, two candles, a black slip, and a box of letters in his hand that she is reading for the first time since he wrote them.",
+  "ja": "鏡よりも前。化粧台、二本の蝋燭、黒いスリップ。彼の筆跡の手紙の箱を、書かれて以来はじめて読んでいる。"
+ },
+ "h5_mara_3": {
+  "en": "Her shoulders are bare and set like a woman reading a contract, and every few lines one of them drops, very slightly. She does not cry. She laughs at the fourth letter, out loud, alone, and puts her hand over her mouth as if to keep it.",
+  "ja": "裸の肩は契約書を読む女のように張り詰め、数行ごとにほんのわずか下がる。泣かない。四通目で声を立てて笑い、一人きりで、それを留めておくように口を手で覆う。"
+ },
+ "hs_shelf_finial": {
+  "en": "The finial on the shelf",
+  "ja": "棚の飾り"
+ },
+ "hs_shelf_ring": {
+  "en": "The ring on the shelf",
+  "ja": "棚の指輪"
+ },
+ "hs_shelf_veil": {
+  "en": "The veil on the shelf",
+  "ja": "棚のヴェール"
+ },
+ "hs_ledger": {
+  "en": "The object on the counter",
+  "ja": "カウンターの上の品"
+ },
+ "h5_open_1": {
+  "en": "Three thirty. The stair is shorter going up, as it always is, except for the last landing, which tonight is a hall of mirrors with nobody in them.",
+  "ja": "三時半。上りの階段はいつも短い。今夜は最後の踊り場だけが違う。誰も映っていない鏡の広間になっている。"
+ },
+ "h5_open_2": {
+  "en": "In every mirror, the shop's counter, empty, waiting.",
+  "ja": "どの鏡にも、店のカウンター。空っぽで、待っている。"
+ },
+ "h5_aud_1": {
+  "en": "A thin man in sleeve garters and a green visor stands between her and the cellar with an abacus held like a hymn book. The Auditor. Elsa met him once, and wrote only: be exact.",
+  "ja": "袖留めと緑のひさしをつけた痩せた男が、算盤を賛美歌集のように持って、彼女と地下室の間に立っている。監査人。エルサは一度だけ会い、こう書いた。『正確に』"
+ },
+ "h5_aud_2": {
+  "en": "The night's figures, Miss Quill. Every reading, every fee, every price. If they balance you may go up. If they do not, you are the difference.",
+  "ja": "今夜の数字を、クイル嬢。すべての読み取り、手数料、値付け。釣り合えば上がってよろしい。釣り合わなければ、あなたが差額だ。"
+ },
+ "h5_aud_3": {
+  "en": "They balance. Narrowly. Everything balances narrowly, at the end. Go up; there is one object left in the lamp.",
+  "ja": "釣り合っている。かろうじて。最後にはすべて、かろうじて釣り合うものだ。上がりなさい。灯りの下に品がひとつ残っている。"
+ },
+ "h5_second_tamsin": {
+  "en": "A second reading. Deeper; it will push back harder.",
+  "ja": "二度目の読み取り。より深く、より強く押し返してくる。"
+ },
+ "h5_cold_tamsin": {
+  "en": "Cold. It has nothing more to give you yet. (Trust 5 with its owner.)",
+  "ja": "冷たい。まだ何も渡すつもりはない。（持ち主の信頼5が必要）"
+ },
+ "h5_second_ivo": {
+  "en": "A second reading. Deeper; it will push back harder.",
+  "ja": "二度目の読み取り。より深く、より強く押し返してくる。"
+ },
+ "h5_cold_ivo": {
+  "en": "Cold. It has nothing more to give you yet. (Trust 5 with its owner.)",
+  "ja": "冷たい。まだ何も渡すつもりはない。（持ち主の信頼5が必要）"
+ },
+ "h5_second_mara": {
+  "en": "A second reading. Deeper; it will push back harder.",
+  "ja": "二度目の読み取り。より深く、より強く押し返してくる。"
+ },
+ "h5_cold_mara": {
+  "en": "Cold. It has nothing more to give you yet. (Trust 5 with its owner.)",
+  "ja": "冷たい。まだ何も渡すつもりはない。（持ち主の信頼5が必要）"
+ },
+ "h5_fees": {
+  "en": "{#fees} paid in tonight, out of a drawer she thought was hers.",
+  "ja": "今夜、自分のものだと思っていた引き出しから払った額：{#fees}。"
+ },
+ "h5_glass_1": {
+  "en": "Her palm goes flat on the strap. For the first time tonight the object pushes back with her own hands.",
+  "ja": "掌をベルトの上に平らに置く。今夜はじめて、品が彼女自身の手で押し返してくる。"
+ },
+ "h5_count_1": {
+  "en": "Till: {#coin}. On the shelf: 97 — a finial, a ring, a veil, none of them claimed, all of them thirty days from being the shop's.",
+  "ja": "金庫：{#coin}。棚の上：97 — 飾り、指輪、ヴェール。どれも請け出されず、三十日後には店のものになる。"
+ },
+ "h5_count_2": {
+  "en": "Against the estate: 200.",
+  "ja": "遺産に対する負債：200。"
+ },
+ "h5_factor_mara": {
+  "en": "She can still say the sentence. [i]Mara Voss — the room, the light, what happened in it.[/i] She can tell you the facts in the flat voice of a ticket.",
+  "ja": "文章としては、まだ言える。[i]マーラ・ヴォス — 部屋、光、そこで起きたこと。[/i] 質札の平板な声で、事実を語ることはできる。"
+ },
+ "h5_factor_ivo": {
+  "en": "She can still say the sentence. [i]Ivo Glass — the room, the light, what happened in it.[/i] She can tell you the facts in the flat voice of a ticket.",
+  "ja": "文章としては、まだ言える。[i]アイヴォ・グラス — 部屋、光、そこで起きたこと。[/i] 質札の平板な声で、事実を語ることはできる。"
+ },
+ "h5_factor_tamsin": {
+  "en": "She can still say the sentence. [i]Tamsin Reed — the room, the light, what happened in it.[/i] She can tell you the facts in the flat voice of a ticket.",
+  "ja": "文章としては、まだ言える。[i]タムシン・リード — 部屋、光、そこで起きたこと。[/i] 質札の平板な声で、事実を語ることはできる。"
+ },
+ "end_name_factor": {
+  "en": "[b]Factor.[/b]",
+  "ja": "[b]仲買人。[/b]"
+ },
+ "end_count": {
+  "en": "Readings taken: {#n_read}. Refused: {#n_refused}.",
+  "ja": "読み取り：{#n_read}。見送り：{#n_refused}。"
+ },
+ "credits_1": {
+  "en": "LIEN — the adult fork of Midnight Pawn & Crypt. Thank you for keeping the shop open.",
+  "ja": "LIEN — 『Midnight Pawn & Crypt』の成人向け分岐作品。店を開けていてくれて、ありがとう。"
+ },
+ "h5_short": {
+  "en": "The estate is not settled. She is short, and she signs the extension at nine fifteen, which she is told is routine and which the man behind the glass does not look up for.",
+  "ja": "遺産は片づかない。足りず、九時十五分に延長の書類に署名する。よくあることだと言われ、ガラスの向こうの男は顔も上げない。"
+ },
+ "end_name_collateral": {
+  "en": "[b]Collateral.[/b]",
+  "ja": "[b]担保。[/b]"
+ },
+ "end_name_solvent": {
+  "en": "[b]Solvent.[/b]",
+  "ja": "[b]支払可能。[/b]"
+ },
+ "h5_title": {
+  "en": "Three forty",
+  "ja": "三時四十分"
+ },
+ "h5_sub": {
+  "en": "The last object in the lamp",
+  "ja": "灯りの下の最後の品"
+ },
+ "title": {
+  "en": "LIEN",
+  "ja": "LIEN ―リーエン―"
+ },
+ "t_subtitle": {
+  "en": "A pawnbroker's night under the shop",
+  "ja": "質屋の夜、店の下へ"
+ },
+ "t_note": {
+  "en": "18+ · All characters are adults · AI-generated work (see 'About this work')",
+  "ja": "18歳以上対象 · 登場人物は全員成人です · AI生成作品（「作品について」参照）"
+ },
+ "t_trial": {
+  "en": "Trial version — Midnight: the finial and the first landing",
+  "ja": "体験版 — 午前零時：真鍮の飾りと最初の踊り場"
+ },
+ "about_ai": {
+  "en": "This is an adults-only work. Every character depicted is an adult.\n\nAI disclosure: Generative AI is used as a production tool in this work, which was made through intensive collaboration between the developer and AI over several hundred hours. Images (sprites, backgrounds, CGs) are output by an image-generation model and the voice by a speech-synthesis model. The concept, world, story structure, direction, character design, the selection and compositing of every image, voice direction, game-system design and balancing, and testing are the developer's work; the script text and the program were written and edited jointly by AI language models and the developer.",
+  "ja": "本作は18歳以上を対象とした作品です。登場人物は全員成人です。\n\n【AI使用について】本作は生成AIを制作ツールとして活用し、開発者とAIの集中的な共同作業で制作しました。画像（立ち絵・背景・CG）は画像生成AIで出力し、音声は音声合成AIで生成しています。企画・世界観・ストーリー構成・演出・キャラクター設計、すべての画像の選定と合成、音声の演技指示、ゲームシステムの設計とバランス調整、テストは開発者が行い、シナリオ文とプログラムはAI（大規模言語モデル）と開発者が共同で執筆・編集しています。制作には数百時間を費やしています。"
+ },
+ "ds_adult": {
+  "en": "18+. Everyone in this game is an adult. It contains nudity and sexual themes (seen in readings of other people's private hours; nothing explicit), grief, and debt.",
+  "ja": "18歳以上対象。登場人物は全員成人です。裸体と性的な主題（他人の私的な時間を「読む」場面として。露骨な描写はありません）、喪失、借金を扱います。"
+ },
+ "n_nara": {
+  "en": "Nara",
+  "ja": "ナラ"
+ },
+ "n_tam": {
+  "en": "Tamsin",
+  "ja": "タムシン"
+ },
+ "n_ivo": {
+  "en": "Ivo",
+  "ja": "アイヴォ"
+ },
+ "n_mara": {
+  "en": "Mara",
+  "ja": "マーラ"
+ },
+ "n_cal": {
+  "en": "Calder",
+  "ja": "カルダー"
+ },
+ "n_shop": {
+  "en": "The shop",
+  "ja": "店"
+ },
+ "n_tamsin": {
+  "en": "Tamsin",
+  "ja": "タムシン"
+ },
+ "n_clerk": {
+  "en": "The Stair Clerk",
+  "ja": "階段の書記"
+ },
+ "n_keeper": {
+  "en": "The Toll-Keeper",
+  "ja": "通行税の番人"
+ },
+ "n_haggler": {
+  "en": "Old Ossian",
+  "ja": "オシアン爺"
+ },
+ "n_broker": {
+  "en": "The Hollow Broker",
+  "ja": "虚ろな仲買人"
+ },
+ "n_moth": {
+  "en": "The Moth Widow",
+  "ja": "蛾の未亡人"
+ },
+ "n_archivist": {
+  "en": "Miss Penrose",
+  "ja": "ペンローズ嬢"
+ },
+ "n_bailiff": {
+  "en": "The Bailiff",
+  "ja": "執達吏"
+ },
+ "n_auditor": {
+  "en": "The Auditor",
+  "ja": "監査人"
+ },
+ "n_glass": {
+  "en": "Nara, in the glass",
+  "ja": "鏡の中のナラ"
+ },
+ "h_clock": {
+  "en": "%s   ·   %d moves before the hour turns   ·   Lv %d",
+  "ja": "%s   ·   この刻が過ぎるまであと%d手   ·   Lv %d"
+ },
+ "h_counter": {
+  "en": "Till £%d",
+  "ja": "金庫 £%d"
+ },
+ "nc_budget": {
+  "en": "%d moves before the hour turns. Walking, searching, haggling and reading all cost time.",
+  "ja": "この刻が過ぎるまであと%d手。移動・調べる・値切り・読み取り、すべてに時間がかかります。"
+ },
+ "m_party": {
+  "en": "Nara",
+  "ja": "ナラ"
+ },
+ "m_map": {
+  "en": "The ledger map",
+  "ja": "台帳の地図"
+ },
+ "ms_level": {
+  "en": "Level %d   XP %d / %d   Best trust %d",
+  "ja": "レベル %d   経験値 %d / %d   最高信頼 %d"
+ },
+ "ev_trust_track": {
+  "en": "%s's trust +%d",
+  "ja": "%sの信頼 +%d"
+ },
+ "toast_trust_track": {
+  "en": "%s: Trust %d — a deeper reading is open",
+  "ja": "%s：信頼%d — より深い読み取りが解放されました"
+ },
+ "g_locked": {
+  "en": "Locked — Trust %d",
+  "ja": "未解放 — 信頼%d"
+ },
+ "g_unseen": {
+  "en": "Not read yet",
+  "ja": "まだ読んでいない"
+ },
+ "end_t": {
+  "en": "The hour turns",
+  "ja": "刻が移る"
+ },
+ "end_body": {
+  "en": "Level %d · best Trust %d. Your progress is saved in slot 1.",
+  "ja": "レベル %d · 最高信頼 %d。進行状況はスロット1に保存されています。"
+ },
+ "fin_t": {
+  "en": "Thirty days on the ticket",
+  "ja": "質札は三十日"
+ },
+ "fin_body": {
+  "en": "Level %d · best Trust %d. Thank you for playing. Your last save is in slot 1: price someone differently, or keep your hands to yourself, and the dawn changes.",
+  "ja": "レベル %d · 最高信頼 %d。遊んでいただきありがとうございました。最後のセーブはスロット1にあります。値付けを変えるか、手を触れずにおけば、夜明けが変わります。"
+ },
+ "lose_standoff_t": {
+  "en": "Written in",
+  "ja": "書き込まれた"
+ },
+ "lose_standoff": {
+  "en": "Their claim on you reached a hundred, and your name went into their book. Nothing is lost but the last few minutes: you are back at the last save.",
+  "ja": "相手の請求が100に達し、あなたの名前が向こうの帳簿に書き込まれた。失ったのは直前の数分だけ。最後のセーブに戻ります。"
+ },
+ "lose_dawn_t": {
+  "en": "The hour turns",
+  "ja": "刻が移る"
+ },
+ "lose_dawn": {
+  "en": "The shelves shuffle and the hour is gone. You are back at the last save.",
+  "ja": "棚が入れ替わり、この刻は過ぎ去った。最後のセーブに戻ります。"
+ },
+ "b_intro": {
+  "en": "Across the counter.",
+  "ja": "カウンターを挟んで。"
+ },
+ "b_resolve": {
+  "en": "Resolve %d / %d",
+  "ja": "意地 %d / %d"
+ },
+ "b_suspicion": {
+  "en": "Claim %d / 100",
+  "ja": "請求 %d / 100"
+ },
+ "b_comp_nerve": {
+  "en": "Composure %d/%d  Focus %d/%d",
+  "ja": "平静 %d/%d  集中 %d/%d"
+ },
+ "b_dmg": {
+  "en": "Resolve −%d.",
+  "ja": "意地 −%d。"
+ },
+ "b_susp": {
+  "en": "Claim %s.",
+  "ja": "請求 %s。"
+ },
+ "b_weak_hit": {
+  "en": "It lands — a soft spot.",
+  "ja": "効いた — 弱みだ。"
+ },
+ "b_resist_hit": {
+  "en": "It slides off. They have priced that before.",
+  "ja": "受け流された。その手はもう値踏み済みだ。"
+ },
+ "b_enemy_turn": {
+  "en": "%s leans on the counter. Claim %+d. %s's composure −%d.",
+  "ja": "%sがカウンターに身を乗り出す。請求 %+d。%sの平静 −%d。"
+ },
+ "b_threat_mark": {
+  "en": "A debt called cannot be uncalled: their claim climbs faster for the rest of this.",
+  "ja": "取り立てた借りは取り消せない。この先、相手の請求は速く膨らむ。"
+ },
+ "b_win": {
+  "en": "They let go of it.",
+  "ja": "相手が手を離した。"
+ },
+ "b_lose": {
+  "en": "Your name goes into their book.",
+  "ja": "あなたの名前が相手の帳簿に書き込まれる。"
+ },
+ "b_marked": {
+  "en": "[debt called]",
+  "ja": "[取り立て済み]"
+ },
+ "b_won": {
+  "en": "Haggle won",
+  "ja": "交渉成立"
+ },
+ "b_lost": {
+  "en": "Written in",
+  "ja": "書き込まれた"
+ },
+ "r_needs_cash": {
+  "en": "Needs a bone charm to trade.",
+  "ja": "取引には骨の護符が要る。"
+ },
+ "r_needs_evidence": {
+  "en": "Needs a ticket or a receipt to show.",
+  "ja": "見せる質札か受領証が要る。"
+ },
+ "r_nerve": {
+  "en": "Not enough focus.",
+  "ja": "集中が足りない。"
+ },
+ "r_rattled": {
+  "en": "Too shaken to act.",
+  "ja": "動揺して動けない。"
+ },
+ "ev_trust_missed": {
+  "en": "You won, but too close to the line: it did not trust you for it.",
+  "ja": "勝ったが、際どすぎた。それで信頼は得られなかった。"
+ },
+ "s_wit": {
+  "en": "Eye",
+  "ja": "目利き"
+ },
+ "s_cha": {
+  "en": "Patter",
+  "ja": "話術"
+ },
+ "s_grt": {
+  "en": "Steel",
+  "ja": "胆力"
+ },
+ "s_stl": {
+  "en": "Tact",
+  "ja": "気配り"
+ },
+ "sd_wit": {
+  "en": "Appraisal: lowballs, tickets, the touch. Also your focus pool.",
+  "ja": "鑑定。値切り・質札・手触り。集中の上限も決まる。"
+ },
+ "sd_cha": {
+  "en": "Talk: patter and trading in kind.",
+  "ja": "話。口上と物々交換。"
+ },
+ "sd_grt": {
+  "en": "How much you can take across a counter, and how hard you call a debt.",
+  "ja": "カウンター越しに耐えられる量と、取り立ての強さ。"
+ },
+ "sd_stl": {
+  "en": "Letting it sit lowers their claim further.",
+  "ja": "「寝かせる」で相手の請求を大きく下げる。"
+ },
+ "a_deflect": {
+  "en": "Hold the counter",
+  "ja": "カウンターを守る"
+ },
+ "a_observe": {
+  "en": "Appraise",
+  "ja": "鑑定する"
+ },
+ "a_bluff": {
+  "en": "Lowball",
+  "ja": "安く言い値"
+ },
+ "a_evidence": {
+  "en": "Show the ticket",
+  "ja": "質札を見せる"
+ },
+ "a_bribe": {
+  "en": "Pay in kind",
+  "ja": "現物で払う"
+ },
+ "a_flirt": {
+  "en": "Patter",
+  "ja": "口上"
+ },
+ "a_threaten": {
+  "en": "Call the debt",
+  "ja": "借りを取り立てる"
+ },
+ "a_stall": {
+  "en": "Let it sit",
+  "ja": "寝かせる"
+ },
+ "a_item": {
+  "en": "Use item",
+  "ja": "道具を使う"
+ },
+ "a_touch": {
+  "en": "Lay a hand",
+  "ja": "手を置く"
+ },
+ "a_elsa": {
+  "en": "Elsa's rule",
+  "ja": "エルサの決まり"
+ },
+ "ad_deflect": {
+  "en": "Hands flat on the glass. Take the next push and cool the room a little.",
+  "ja": "両手をガラスに置く。次の圧を受け止め、場を少し冷ます。"
+ },
+ "ad_observe": {
+  "en": "Look at them the way you look at a hallmark: reveals their soft spots.",
+  "ja": "刻印を見るように相手を見る。弱みがわかる。"
+ },
+ "ad_bluff": {
+  "en": "Name a number lower than you mean. Eye.",
+  "ja": "本気より低い数字を言う。目利き。"
+ },
+ "ad_evidence": {
+  "en": "Put a ticket or a receipt on the glass. Lowers their claim. Needs one.",
+  "ja": "質札か受領証をガラスに置く。請求が下がる。一枚必要。"
+ },
+ "ad_bribe": {
+  "en": "Trade a bone charm across. Patter. Spends one.",
+  "ja": "骨の護符を差し出す。話術。一つ消費。"
+ },
+ "ad_flirt": {
+  "en": "Keep them talking, warmly, until they forget the price. Patter.",
+  "ja": "温かく話し続け、値段を忘れさせる。話術。"
+ },
+ "ad_threaten": {
+  "en": "Hits hard — and they remember. Their claim climbs faster for the rest of this.",
+  "ja": "強烈に効く。だが相手は覚えている。この後、請求が速く膨らむ。"
+ },
+ "ad_stall": {
+  "en": "Say nothing. Let the clock do it. Their claim falls; a little composure comes back.",
+  "ja": "黙って時計に任せる。請求が下がり、平静が少し戻る。"
+ },
+ "ad_item": {
+  "en": "Something from your apron.",
+  "ja": "エプロンから何かを。"
+ },
+ "ad_touch": {
+  "en": "Palm flat on the thing between you. It tells you what they are really selling.",
+  "ja": "二人の間の品に掌を当てる。相手が本当に売っているものがわかる。"
+ },
+ "ad_elsa": {
+  "en": "The shop pays first and looks second. Said in Elsa's voice, it ends arguments.",
+  "ja": "店が先に払い、見るのはそのあと。エルサの声で言えば、議論は終わる。"
+ },
+ "i_coin": {
+  "en": "Till",
+  "ja": "金庫"
+ },
+ "id_coin": {
+  "en": "The shop's drawer, in pounds.",
+  "ja": "店の引き出しの中身（ポンド）。"
+ },
+ "i_fees": {
+  "en": "Fourth column",
+  "ja": "第四の欄"
+ },
+ "id_fees": {
+  "en": "Spent on knowing.",
+  "ja": "知るために払った額。"
+ },
+ "i_stock": {
+  "en": "Stock",
+  "ja": "在庫"
+ },
+ "id_stock": {
+  "en": "On the shelf.",
+  "ja": "棚の上。"
+ },
+ "i_n_read": {
+  "en": "Readings",
+  "ja": "読み取り"
+ },
+ "id_n_read": {
+  "en": "Taken.",
+  "ja": "済み。"
+ },
+ "i_n_refused": {
+  "en": "Refusals",
+  "ja": "見送り"
+ },
+ "id_n_refused": {
+  "en": "Priced blind.",
+  "ja": "見ずに値付け。"
+ },
+ "i_bone_charm": {
+  "en": "Bone charm",
+  "ja": "骨の護符"
+ },
+ "id_bone_charm": {
+  "en": "Market money. Pay in kind spends one.",
+  "ja": "市場の通貨。「現物で払う」で一つ消費。"
+ },
+ "i_tea": {
+  "en": "Strong tea",
+  "ja": "濃い紅茶"
+ },
+ "id_tea": {
+  "en": "Restores 16 composure.",
+  "ja": "平静を16回復。"
+ },
+ "i_salts": {
+  "en": "Smelling salts",
+  "ja": "気付け塩"
+ },
+ "id_salts": {
+  "en": "Restores 8 focus.",
+  "ja": "集中を8回復。"
+ },
+ "i_brandy": {
+  "en": "Elsa's brandy",
+  "ja": "エルサのブランデー"
+ },
+ "id_brandy": {
+  "en": "Restores 28 composure.",
+  "ja": "平静を28回復。"
+ },
+ "i_peppermint": {
+  "en": "Peppermints",
+  "ja": "ハッカ飴"
+ },
+ "id_peppermint": {
+  "en": "Restores 14 focus.",
+  "ja": "集中を14回復。"
+ },
+ "i_receipt": {
+  "en": "A stamped receipt",
+  "ja": "判の押された受領証"
+ },
+ "id_receipt": {
+  "en": "Proof. The Stair Clerk's stamp, still wet.",
+  "ja": "証拠。階段の書記の判、まだ乾いていない。"
+ },
+ "i_ticket_tamsin": {
+  "en": "Tamsin's ticket",
+  "ja": "タムシンの質札"
+ },
+ "id_ticket_tamsin": {
+  "en": "Proof. One brass finial, priced.",
+  "ja": "証拠。真鍮の飾り一つ、値付け済み。"
+ },
+ "i_ticket_ivo": {
+  "en": "Ivo's ticket",
+  "ja": "アイヴォの質札"
+ },
+ "id_ticket_ivo": {
+  "en": "Proof. One gold band, priced.",
+  "ja": "証拠。金の指輪一つ、値付け済み。"
+ },
+ "i_ticket_mara": {
+  "en": "Mara's ticket",
+  "ja": "マーラの質札"
+ },
+ "id_ticket_mara": {
+  "en": "Proof. One mourning veil, priced.",
+  "ja": "証拠。喪のヴェール一枚、値付け済み。"
+ },
+ "i_elsa_note": {
+  "en": "Elsa's note",
+  "ja": "エルサのメモ"
+ },
+ "id_elsa_note": {
+  "en": "Proof. 'Never pay the Bailiff in coin.' In pencil.",
+  "ja": "証拠。「執達吏に硬貨で払うな」。鉛筆書き。"
+ },
+ "i_calder_card": {
+  "en": "Calder's card",
+  "ja": "カルダーの名刺"
+ },
+ "id_calder_card": {
+  "en": "Proof. 'Factor. Readings bought.'",
+  "ja": "証拠。「仲買。読み取り買います」。"
+ },
+ "i_ledger_page": {
+  "en": "A torn ledger page",
+  "ja": "破れた台帳の頁"
+ },
+ "id_ledger_page": {
+  "en": "Proof. Your own name, in a hand that is not yet yours.",
+  "ja": "証拠。自分の名前。まだ自分のものではない筆跡で。"
+ },
+ "i_vault_key": {
+  "en": "A key with no door",
+  "ja": "扉のない鍵"
+ },
+ "id_vault_key": {
+  "en": "Old Ossian swears he never sold it to you.",
+  "ja": "オシアン爺は売っていないと誓っている。"
+ },
+ "i_waistcoat": {
+  "en": "Charcoal waistcoat",
+  "ja": "炭色のベスト"
+ },
+ "id_waistcoat": {
+  "en": "Outfit. Steel +1.",
+  "ja": "服装。胆力+1。"
+ },
+ "i_oilskin": {
+  "en": "Elsa's oilskin",
+  "ja": "エルサの油布コート"
+ },
+ "id_oilskin": {
+  "en": "Outfit. Steel +2. Smells of the stair.",
+  "ja": "服装。胆力+2。階段の匂いがする。"
+ },
+ "i_velvet": {
+  "en": "Velvet jacket",
+  "ja": "ベルベットの上着"
+ },
+ "id_velvet": {
+  "en": "Outfit. Patter +2, patter stronger.",
+  "ja": "服装。話術+2、口上が強くなる。"
+ },
+ "i_monocle": {
+  "en": "Monocle on a chain",
+  "ja": "鎖つきの片眼鏡"
+ },
+ "id_monocle": {
+  "en": "Accessory. Eye +1.",
+  "ja": "装飾品。目利き+1。"
+ },
+ "i_loupe": {
+  "en": "Jeweller's loupe",
+  "ja": "宝石鑑定ルーペ"
+ },
+ "id_loupe": {
+  "en": "Accessory. Eye +2, tickets stronger.",
+  "ja": "装飾品。目利き+2、質札が強くなる。"
+ },
+ "i_brooch": {
+  "en": "Jet brooch",
+  "ja": "黒玉のブローチ"
+ },
+ "id_brooch": {
+  "en": "Accessory. Patter +1. Mara's kind of brooch.",
+  "ja": "装飾品。話術+1。マーラが着けていた類のもの。"
+ },
+ "i_lantern": {
+  "en": "Stair lantern",
+  "ja": "階段のランタン"
+ },
+ "id_lantern": {
+  "en": "Tool. Tact +1, letting it sit stronger.",
+  "ja": "道具。気配り+1、「寝かせる」が強くなる。"
+ },
+ "i_scales": {
+  "en": "Pocket scales",
+  "ja": "携帯天秤"
+ },
+ "id_scales": {
+  "en": "Tool. Eye +1, lowballs stronger.",
+  "ja": "道具。目利き+1、値切りが強くなる。"
+ },
+ "i_gloves": {
+  "en": "Cotton gloves",
+  "ja": "木綿の手袋"
+ },
+ "id_gloves": {
+  "en": "Tool. Steel +2. Elsa wore them for the things she did not want to read.",
+  "ja": "道具。胆力+2。エルサが読みたくない品に触れるとき嵌めていた。"
+ },
+ "br_broker": {
+  "en": "Broker",
+  "ja": "仲買"
+ },
+ "br_reader": {
+  "en": "Reader",
+  "ja": "読み手"
+ },
+ "sk_tally": {
+  "en": "Quick tally",
+  "ja": "早勘定"
+ },
+ "skd_tally": {
+  "en": "Lowball +30%.",
+  "ja": "値切り+30%。"
+ },
+ "sk_patter": {
+  "en": "Shop patter",
+  "ja": "店の口上"
+ },
+ "skd_patter": {
+  "en": "Patter +30%.",
+  "ja": "口上+30%。"
+ },
+ "sk_ledger_mind": {
+  "en": "Ledger mind",
+  "ja": "帳簿頭"
+ },
+ "skd_ledger_mind": {
+  "en": "Eye +2.",
+  "ja": "目利き+2。"
+ },
+ "sk_elsa_sk": {
+  "en": "Elsa's voice",
+  "ja": "エルサの声"
+ },
+ "skd_elsa_sk": {
+  "en": "Grants Elsa's rule.",
+  "ja": "「エルサの決まり」を習得。"
+ },
+ "sk_house": {
+  "en": "The house always",
+  "ja": "店はいつも"
+ },
+ "skd_house": {
+  "en": "Elsa's rule +40%, pay in kind +30%.",
+  "ja": "「エルサの決まり」+40%、現物払い+30%。"
+ },
+ "sk_steady": {
+  "en": "Steady hands",
+  "ja": "動じない手"
+ },
+ "skd_steady": {
+  "en": "Composure +10.",
+  "ja": "平静+10。"
+ },
+ "sk_open_hand": {
+  "en": "Open hand",
+  "ja": "開いた手"
+ },
+ "skd_open_hand": {
+  "en": "Tact +2.",
+  "ja": "気配り+2。"
+ },
+ "sk_fingertips": {
+  "en": "Fingertips",
+  "ja": "指先"
+ },
+ "skd_fingertips": {
+  "en": "Show the ticket +30%.",
+  "ja": "質札を見せる+30%。"
+ },
+ "sk_touch_sk": {
+  "en": "The touch",
+  "ja": "手触り"
+ },
+ "skd_touch_sk": {
+  "en": "Grants Lay a hand.",
+  "ja": "「手を置く」を習得。"
+ },
+ "sk_deep": {
+  "en": "All the way in",
+  "ja": "奥まで"
+ },
+ "skd_deep": {
+  "en": "Lay a hand +40%, let it sit +20%.",
+  "ja": "「手を置く」+40%、「寝かせる」+20%。"
+ },
+ "tr_end_title": {
+  "en": "The trial ends here.",
+  "ja": "体験版はここまでです。"
+ },
+ "tr_end_body": {
+  "en": "Midnight is priced. The full game goes on through four more hours of the same night: Ivo's ring, Mara's veil, the Ossuary Market and Calder's offer, and the last object on the counter. Twenty standoffs, sixteen readings (CGs), three endings, about two and a half hours. The full version is the one on DLsite.",
+  "ja": "午前零時の値付けは終わりました。製品版では同じ夜がさらに四つの刻へ続きます。アイヴォの指輪、マーラのヴェール、骨の市場とカルダーの申し出、そしてカウンターに置かれる最後の品。対決20戦、読み取り（CG）16枚、エンディング3種、約2時間半。製品版はDLsiteで販売中です。"
+ },
+ "tr_back": {
+  "en": "Back to title",
+  "ja": "タイトルへ戻る"
+ },
+ "v_greet_0": {
+  "en": "Shutters down, lamp on. Who needs a reading tonight?",
+  "ja": "シャッターを下ろして、灯りをつけて。今夜、読んでほしいのは誰？"
+ },
+ "v_greet_1": {
+  "en": "Put it on the counter. No — in my hand.",
+  "ja": "カウンターに置いて。いえ — 私の手に。"
+ },
+ "v_stage_0": {
+  "en": "The counter. Everything here was held by someone.",
+  "ja": "カウンター。ここにあるものは全部、誰かが握っていた。"
+ },
+ "v_stage_1": {
+  "en": "The stair down. Receipts in the walls, still warm.",
+  "ja": "下りの階段。壁の受領証が、まだ温かい。"
+ },
+ "v_stage_2": {
+  "en": "The Ossuary Market. They trade in memories down here. I brought mine.",
+  "ja": "骨の市場。ここでは記憶を売り買いする。私は自分のを持ってきた。"
+ },
+ "v_stage_3": {
+  "en": "The last room. Whatever I touch here, touches back.",
+  "ja": "最後の部屋。ここで触れるものは、触れ返してくる。"
+ },
+ "v_near_0": {
+  "en": "Almost. I can nearly see whose hand it was.",
+  "ja": "もう少し。誰の手だったか、ほとんど見える。"
+ },
+ "v_near_1": {
+  "en": "Close. Don't let go yet.",
+  "ja": "近い。まだ離さないで。"
+ },
+ "v_win_0": {
+  "en": "There. Now I know what you were for.",
+  "ja": "ほら。あなたが何のためにあったのか、わかった。"
+ },
+ "v_win_1": {
+  "en": "Priced, and I'll remember the price.",
+  "ja": "値はついた。その値段は覚えておく。"
+ },
+ "v_win_2": {
+  "en": "Fair ticket. My hands say so.",
+  "ja": "公正な札。私の手がそう言ってる。"
+ },
+ "v_win_big_0": {
+  "en": "Oh. Oh, that one I felt all the way down.",
+  "ja": "ああ。ああ、今のは奥まで届いた。"
+ },
+ "v_win_big_1": {
+  "en": "That's a lien I'm happy to hold.",
+  "ja": "これなら喜んで抱えておく担保だわ。"
+ },
+ "v_fail_0": {
+  "en": "Too much. I let go too late.",
+  "ja": "多すぎた。手を離すのが遅すぎた。"
+ },
+ "v_fail_1": {
+  "en": "It kept something of mine. That's how they get you.",
+  "ja": "私の何かを取っていった。そうやって捕まるのよ。"
+ },
+ "v_idle_0": {
+  "en": "The ring's still warm. I keep checking.",
+  "ja": "指輪がまだ温かい。何度も確かめてしまう。"
+ },
+ "v_idle_1": {
+  "en": "Quiet shop. Loud hands.",
+  "ja": "静かな店。騒がしい手。"
+ },
+ "v_idle_2": {
+  "en": "I shouldn't pick it up again. I'm going to pick it up again.",
+  "ja": "もう手に取るべきじゃない。でも、取ってしまう。"
+ },
+ "v_streak_0": {
+  "en": "Three clean readings. I'm getting good at this. Too good.",
+  "ja": "三回きれいに読めた。上手くなってる。上手くなりすぎ。"
+ },
+ "v_streak_1": {
+  "en": "They keep coming back. So do I.",
+  "ja": "あれは何度でも戻ってくる。私もね。"
+ },
+ "v_unlock_0": {
+  "en": "A reading. Close the door, this one's private.",
+  "ja": "読み取りよ。扉を閉めて、これは内緒。"
+ },
+ "v_unlock_1": {
+  "en": "There it is — the last time somebody loved it.",
+  "ja": "あった — 誰かがこれを最後に愛した時。"
+ }
+}

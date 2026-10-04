@@ -1,0 +1,664 @@
+{
+ "id": "h2",
+ "title_key": "h2_title",
+ "sub_key": "h2_sub",
+ "turns": 60,
+ "clock_start": 20,
+ "minutes_per_turn": 1,
+ "start_room": "shop",
+ "start_event": "h2_open",
+ "map": {
+  "image": "ledger",
+  "rooms": {
+   "shop": [
+    0.38,
+    0.08
+   ],
+   "cellar": [
+    0.38,
+    0.27
+   ],
+   "receipt_stair": [
+    0.38,
+    0.46
+   ],
+   "bone_arcade": [
+    0.12,
+    0.65
+   ],
+   "reliquary": [
+    0.12,
+    0.86
+   ]
+  }
+ },
+ "rooms": {
+  "shop": {
+   "name_key": "r_shop",
+   "plate": "shop",
+   "music": "explore",
+   "mood": {
+    "ambient": "#a89888",
+    "lamps": [
+     [
+      0.5,
+      0.42,
+      1.1,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "case",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.4
+     ],
+     "event": "h2_case",
+     "label_key": "hs_case",
+     "xp": 5
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "to": "cellar",
+     "pos": [
+      0.5,
+      0.84
+     ]
+    }
+   ]
+  },
+  "cellar": {
+   "name_key": "r_cellar",
+   "plate": "cellar",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8088",
+    "lamps": [
+     [
+      0.45,
+      0.4,
+      0.9,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_shop",
+     "kind": "door",
+     "to": "shop",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "receipt_stair",
+     "pos": [
+      0.6,
+      0.84
+     ]
+    }
+   ]
+  },
+  "receipt_stair": {
+   "name_key": "r_receipt_stair",
+   "plate": "receipt_stair",
+   "music": "explore",
+   "mood": {
+    "ambient": "#70888a",
+    "lamps": [
+     [
+      0.5,
+      0.3,
+      1.0,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "pledge2",
+     "kind": "enemy",
+     "enemy": "pledge2",
+     "pos": [
+      0.5,
+      0.5
+     ],
+     "event": "h2_pledge_pre",
+     "after": "h2_pledge_post"
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "to": "cellar",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    },
+    {
+     "id": "to_arcade",
+     "kind": "door",
+     "to": "bone_arcade",
+     "pos": [
+      0.9,
+      0.84
+     ],
+     "if_flag": "pledge2_done"
+    }
+   ],
+   "enter_event": "h2_stair"
+  },
+  "bone_arcade": {
+   "name_key": "r_bone_arcade",
+   "plate": "bone_arcade",
+   "music": "explore",
+   "mood": {
+    "ambient": "#80708a",
+    "lamps": [
+     [
+      0.5,
+      0.25,
+      1.1,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "haggler",
+     "kind": "enemy",
+     "enemy": "haggler",
+     "pos": [
+      0.5,
+      0.48
+     ],
+     "event": "h2_haggler_pre",
+     "after": "h2_haggler_post"
+    },
+    {
+     "id": "costume",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.5
+     ],
+     "event": "h2_costume",
+     "label_key": "hs_costume",
+     "gives": [
+      "velvet"
+     ]
+    },
+    {
+     "id": "tickets",
+     "kind": "search",
+     "pos": [
+      0.82,
+      0.55
+     ],
+     "event": "h2_tickets",
+     "label_key": "hs_tickets",
+     "xp": 10,
+     "if_flag": "haggler_done"
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "receipt_stair",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    },
+    {
+     "id": "to_reliquary",
+     "kind": "door",
+     "to": "reliquary",
+     "pos": [
+      0.92,
+      0.84
+     ],
+     "if_flag": "haggler_done"
+    }
+   ],
+   "enter_event": "h2_arcade"
+  },
+  "reliquary": {
+   "name_key": "r_reliquary",
+   "plate": "reliquary",
+   "music": "explore",
+   "mood": {
+    "ambient": "#88708a",
+    "lamps": [
+     [
+      0.4,
+      0.4,
+      1.0,
+      "#ffb070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "jars",
+     "kind": "search",
+     "pos": [
+      0.25,
+      0.4
+     ],
+     "event": "h2_jars",
+     "label_key": "hs_jars",
+     "gives": [
+      "peppermint"
+     ]
+    },
+    {
+     "id": "loupe",
+     "kind": "search",
+     "pos": [
+      0.78,
+      0.6
+     ],
+     "event": "h2_loupe",
+     "label_key": "hs_loupe",
+     "gives": [
+      "loupe"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "broker",
+     "kind": "enemy",
+     "enemy": "broker",
+     "pos": [
+      0.5,
+      0.48
+     ],
+     "event": "h2_broker_pre",
+     "after": "h2_broker_post"
+    },
+    {
+     "id": "to_arcade",
+     "kind": "door",
+     "to": "bone_arcade",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    }
+   ],
+   "enter_event": "h2_reliquary"
+  }
+ },
+ "events": {
+  "h2_open": [
+   {
+    "bg": "shop"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "show": "ivo",
+    "x": 0.7
+   },
+   {
+    "lines": "lien:339-373"
+   },
+   {
+    "say": "narrator",
+    "key": "h2_talk_0"
+   },
+   {
+    "choice": [
+     {
+      "key": "h2_talk_ink",
+      "do": [
+       {
+        "say": "ivo",
+        "key": "h2_ink_1"
+       },
+       {
+        "say": "nara",
+        "key": "h2_ink_2"
+       },
+       {
+        "say": "ivo",
+        "key": "h2_ink_3"
+       },
+       {
+        "trust": 1,
+        "track": "ivo"
+       }
+      ],
+      "auto_rank": 1
+     },
+     {
+      "key": "h2_talk_none",
+      "do": [],
+      "auto_rank": 0
+     }
+    ]
+   },
+   {
+    "choice": [
+     {
+      "key": "h2_take",
+      "do": [
+       {
+        "take": "coin",
+        "n": 35
+       },
+       {
+        "give": "fees",
+        "n": 35,
+        "quiet": true
+       },
+       {
+        "lines": "lien:389-391"
+       },
+       {
+        "say": "narrator",
+        "key": "h2_duel_1"
+       },
+       {
+        "battle": "echo_ring"
+       },
+       {
+        "cg": "cg_ring"
+       },
+       {
+        "lines": "lien:425-431"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "say": "nara",
+        "key": "v_fail_0"
+       },
+       {
+        "lines": "lien:433-451"
+       },
+       {
+        "flag": "read_ring"
+       },
+       {
+        "give": "n_read",
+        "n": 1,
+        "quiet": true
+       }
+      ],
+      "if_has": "coin",
+      "n": 35,
+      "auto_rank": 0
+     },
+     {
+      "key": "h2_broke",
+      "do": [
+       {
+        "lines": "lien:401-403"
+       },
+       {
+        "flag": "refused_ring"
+       },
+       {
+        "give": "n_refused",
+        "n": 1,
+        "quiet": true
+       }
+      ],
+      "if_lacks": "coin",
+      "n": 35,
+      "auto_rank": 0
+     },
+     {
+      "key": "h2_decline",
+      "do": [
+       {
+        "lines": "lien:411-415"
+       },
+       {
+        "flag": "refused_ring"
+       },
+       {
+        "give": "n_refused",
+        "n": 1,
+        "quiet": true
+       },
+       {
+        "trust": 2,
+        "track": "ivo"
+       }
+      ],
+      "auto_rank": 2
+     }
+    ]
+   },
+   {
+    "lines": "lien:458-458"
+   },
+   {
+    "choice": [
+     {
+      "key": "price_ring_low",
+      "do": [
+       {
+        "take": "coin",
+        "n": 26
+       },
+       {
+        "flag": "price_ring_low"
+       },
+       {
+        "lines": "lien:468-472"
+       }
+      ],
+      "auto_rank": 0
+     },
+     {
+      "key": "price_ring_fair",
+      "do": [
+       {
+        "take": "coin",
+        "n": 40
+       },
+       {
+        "flag": "price_ring_fair"
+       },
+       {
+        "trust": 1,
+        "track": "ivo"
+       },
+       {
+        "lines": "lien:476-486"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "price_ring_high",
+      "do": [
+       {
+        "take": "coin",
+        "n": 60
+       },
+       {
+        "flag": "price_ring_high"
+       },
+       {
+        "trust": 2,
+        "track": "ivo"
+       },
+       {
+        "lines": "lien:490-498"
+       }
+      ],
+      "auto_rank": 1
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "give": "ticket_ivo"
+   },
+   {
+    "flag": "ivo_done"
+   },
+   {
+    "say": "narrator",
+    "key": "h2_after_1"
+   },
+   {
+    "say": "nara",
+    "key": "h2_after_2"
+   }
+  ],
+  "h2_case": [
+   {
+    "say": "nara",
+    "key": "v_stage_0"
+   },
+   {
+    "say": "narrator",
+    "key": "h2_case_1"
+   }
+  ],
+  "h2_stair": [
+   {
+    "say": "narrator",
+    "key": "h2_stair_1"
+   }
+  ],
+  "h2_pledge_pre": [
+   {
+    "say": "narrator",
+    "key": "h2_pledge_1"
+   },
+   {
+    "say": "nara",
+    "key": "h2_pledge_2"
+   }
+  ],
+  "h2_pledge_post": [
+   {
+    "say": "narrator",
+    "key": "h2_pledge_3"
+   },
+   {
+    "flag": "pledge2_done"
+   }
+  ],
+  "h2_arcade": [
+   {
+    "say": "narrator",
+    "key": "h2_arcade_1"
+   }
+  ],
+  "h2_costume": [
+   {
+    "say": "narrator",
+    "key": "h2_costume_1"
+   }
+  ],
+  "h2_tickets": [
+   {
+    "say": "narrator",
+    "key": "h2_tickets_1"
+   },
+   {
+    "say": "nara",
+    "key": "h2_tickets_2"
+   },
+   {
+    "say": "narrator",
+    "key": "h2_tickets_3"
+   },
+   {
+    "trust": 1,
+    "track": "ivo"
+   }
+  ],
+  "h2_haggler_pre": [
+   {
+    "say": "narrator",
+    "key": "h2_haggler_1"
+   },
+   {
+    "say": "haggler",
+    "key": "h2_haggler_2"
+   }
+  ],
+  "h2_haggler_post": [
+   {
+    "say": "haggler",
+    "key": "h2_haggler_3"
+   },
+   {
+    "flag": "haggler_done"
+   }
+  ],
+  "h2_reliquary": [
+   {
+    "say": "narrator",
+    "key": "h2_reliquary_1"
+   }
+  ],
+  "h2_jars": [
+   {
+    "say": "narrator",
+    "key": "h2_jars_1"
+   }
+  ],
+  "h2_loupe": [
+   {
+    "say": "narrator",
+    "key": "h2_loupe_1"
+   }
+  ],
+  "h2_broker_pre": [
+   {
+    "say": "narrator",
+    "key": "h2_broker_1"
+   },
+   {
+    "say": "broker",
+    "key": "h2_broker_2"
+   },
+   {
+    "say": "nara",
+    "key": "h2_broker_3"
+   },
+   {
+    "say": "broker",
+    "key": "h2_broker_4"
+   }
+  ],
+  "h2_broker_post": [
+   {
+    "say": "broker",
+    "key": "h2_broker_5"
+   },
+   {
+    "say": "narrator",
+    "key": "h2_broker_6"
+   },
+   {
+    "flag": "h2_done"
+   },
+   {
+    "end_night": true,
+    "next": "h3"
+   }
+  ]
+ }
+}

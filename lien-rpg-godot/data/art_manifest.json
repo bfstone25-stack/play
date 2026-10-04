@@ -1,0 +1,308 @@
+{
+ "rooms": {
+  "shop": [
+   "res://assets/rooms/shop.png"
+  ],
+  "stockroom": [
+   "res://assets/rooms/stockroom.png"
+  ],
+  "street": [
+   "res://assets/rooms/street.png"
+  ],
+  "cellar": [
+   "res://assets/rooms/cellar.png"
+  ],
+  "receipt_stair": [
+   "res://assets/rooms/receipt_stair.png"
+  ],
+  "toll_gate": [
+   "res://assets/rooms/toll_gate.png"
+  ],
+  "bone_arcade": [
+   "res://assets/rooms/bone_arcade.png"
+  ],
+  "reliquary": [
+   "res://assets/rooms/reliquary.png"
+  ],
+  "lantern_row": [
+   "res://assets/rooms/lantern_row.png"
+  ],
+  "archive": [
+   "res://assets/rooms/archive.png"
+  ],
+  "market": [
+   "res://assets/rooms/market.png"
+  ],
+  "counting_house": [
+   "res://assets/rooms/counting_house.png"
+  ],
+  "heart_vault": [
+   "res://assets/rooms/heart_vault.png"
+  ],
+  "mirror_hall": [
+   "res://assets/rooms/mirror_hall.png"
+  ],
+  "dawn": [
+   "res://assets/rooms/dawn.png"
+  ]
+ },
+ "rooms_locked": {
+  "shop": [
+   "res://assets/rooms_locked/shop.png"
+  ],
+  "stockroom": [
+   "res://assets/rooms_locked/stockroom.png"
+  ],
+  "street": [
+   "res://assets/rooms_locked/street.png"
+  ],
+  "cellar": [
+   "res://assets/rooms_locked/cellar.png"
+  ],
+  "receipt_stair": [
+   "res://assets/rooms_locked/receipt_stair.png"
+  ],
+  "toll_gate": [
+   "res://assets/rooms_locked/toll_gate.png"
+  ],
+  "bone_arcade": [
+   "res://assets/rooms_locked/bone_arcade.png"
+  ],
+  "reliquary": [
+   "res://assets/rooms_locked/reliquary.png"
+  ],
+  "lantern_row": [
+   "res://assets/rooms_locked/lantern_row.png"
+  ],
+  "archive": [
+   "res://assets/rooms_locked/archive.png"
+  ],
+  "market": [
+   "res://assets/rooms_locked/market.png"
+  ],
+  "counting_house": [
+   "res://assets/rooms_locked/counting_house.png"
+  ],
+  "heart_vault": [
+   "res://assets/rooms_locked/heart_vault.png"
+  ],
+  "mirror_hall": [
+   "res://assets/rooms_locked/mirror_hall.png"
+  ],
+  "dawn": [
+   "res://assets/rooms_locked/dawn.png"
+  ]
+ },
+ "enemies": {
+  "echo": [
+   "res://assets/enemies/echo.png"
+  ],
+  "toll_keeper": [
+   "res://assets/enemies/toll_keeper.png"
+  ],
+  "stair_clerk": [
+   "res://assets/enemies/stair_clerk.png"
+  ],
+  "bone_haggler": [
+   "res://assets/enemies/bone_haggler.png"
+  ],
+  "hollow_broker": [
+   "res://assets/enemies/hollow_broker.png"
+  ],
+  "moth_widow": [
+   "res://assets/enemies/moth_widow.png"
+  ],
+  "bailiff": [
+   "res://assets/enemies/bailiff.png"
+  ],
+  "archivist": [
+   "res://assets/enemies/archivist.png"
+  ],
+  "auditor": [
+   "res://assets/enemies/auditor.png"
+  ],
+  "nara": [
+   "res://assets/enemies/nara.png"
+  ],
+  "tamsin": [
+   "res://assets/enemies/tamsin.png"
+  ],
+  "ivo": [
+   "res://assets/enemies/ivo.png"
+  ],
+  "mara": [
+   "res://assets/enemies/mara.png"
+  ],
+  "calder": [
+   "res://assets/enemies/calder.png"
+  ]
+ },
+ "sprites": {
+  "nara": [
+   "res://assets/sprites/nara.png"
+  ],
+  "tamsin": [
+   "res://assets/sprites/tamsin.png"
+  ],
+  "ivo": [
+   "res://assets/sprites/ivo.png"
+  ],
+  "mara": [
+   "res://assets/sprites/mara.png"
+  ],
+  "calder": [
+   "res://assets/sprites/calder.png"
+  ]
+ },
+ "maps": {
+  "ledger": [
+   "res://assets/ui/map.png"
+  ]
+ },
+ "cg": {
+  "cg_tamsin": [
+   "res://assets/cg/cg_tamsin.png"
+  ],
+  "cg_tamsin_thumb": [
+   "res://assets/cg/cg_tamsin_thumb.png"
+  ],
+  "cg_tamsin_locked": [
+   "res://assets/cg/cg_tamsin_locked.png"
+  ],
+  "cg_finial": [
+   "res://assets/cg/cg_finial.png"
+  ],
+  "cg_finial_thumb": [
+   "res://assets/cg/cg_finial_thumb.png"
+  ],
+  "cg_finial_locked": [
+   "res://assets/cg/cg_finial_locked.png"
+  ],
+  "cg_descent": [
+   "res://assets/cg/cg_descent.png"
+  ],
+  "cg_descent_thumb": [
+   "res://assets/cg/cg_descent_thumb.png"
+  ],
+  "cg_descent_locked": [
+   "res://assets/cg/cg_descent_locked.png"
+  ],
+  "cg_ring": [
+   "res://assets/cg/cg_ring.png"
+  ],
+  "cg_ring_thumb": [
+   "res://assets/cg/cg_ring_thumb.png"
+  ],
+  "cg_ring_locked": [
+   "res://assets/cg/cg_ring_locked.png"
+  ],
+  "cg_veil": [
+   "res://assets/cg/cg_veil.png"
+  ],
+  "cg_veil_thumb": [
+   "res://assets/cg/cg_veil_thumb.png"
+  ],
+  "cg_veil_locked": [
+   "res://assets/cg/cg_veil_locked.png"
+  ],
+  "cg_moth": [
+   "res://assets/cg/cg_moth.png"
+  ],
+  "cg_moth_thumb": [
+   "res://assets/cg/cg_moth_thumb.png"
+  ],
+  "cg_moth_locked": [
+   "res://assets/cg/cg_moth_locked.png"
+  ],
+  "cg_market_crowd": [
+   "res://assets/cg/cg_market_crowd.png"
+  ],
+  "cg_market_crowd_thumb": [
+   "res://assets/cg/cg_market_crowd_thumb.png"
+  ],
+  "cg_market_crowd_locked": [
+   "res://assets/cg/cg_market_crowd_locked.png"
+  ],
+  "cg_calder": [
+   "res://assets/cg/cg_calder.png"
+  ],
+  "cg_calder_thumb": [
+   "res://assets/cg/cg_calder_thumb.png"
+  ],
+  "cg_calder_locked": [
+   "res://assets/cg/cg_calder_locked.png"
+  ],
+  "cg_market": [
+   "res://assets/cg/cg_market.png"
+  ],
+  "cg_market_thumb": [
+   "res://assets/cg/cg_market_thumb.png"
+  ],
+  "cg_market_locked": [
+   "res://assets/cg/cg_market_locked.png"
+  ],
+  "cg_heart": [
+   "res://assets/cg/cg_heart.png"
+  ],
+  "cg_heart_thumb": [
+   "res://assets/cg/cg_heart_thumb.png"
+  ],
+  "cg_heart_locked": [
+   "res://assets/cg/cg_heart_locked.png"
+  ],
+  "cg_tamsin_bath": [
+   "res://assets/cg/cg_tamsin_bath.png"
+  ],
+  "cg_tamsin_bath_thumb": [
+   "res://assets/cg/cg_tamsin_bath_thumb.png"
+  ],
+  "cg_tamsin_bath_locked": [
+   "res://assets/cg/cg_tamsin_bath_locked.png"
+  ],
+  "cg_maya": [
+   "res://assets/cg/cg_maya.png"
+  ],
+  "cg_maya_thumb": [
+   "res://assets/cg/cg_maya_thumb.png"
+  ],
+  "cg_maya_locked": [
+   "res://assets/cg/cg_maya_locked.png"
+  ],
+  "cg_mara_letters": [
+   "res://assets/cg/cg_mara_letters.png"
+  ],
+  "cg_mara_letters_thumb": [
+   "res://assets/cg/cg_mara_letters_thumb.png"
+  ],
+  "cg_mara_letters_locked": [
+   "res://assets/cg/cg_mara_letters_locked.png"
+  ],
+  "cg_collateral": [
+   "res://assets/cg/cg_collateral.png"
+  ],
+  "cg_collateral_thumb": [
+   "res://assets/cg/cg_collateral_thumb.png"
+  ],
+  "cg_collateral_locked": [
+   "res://assets/cg/cg_collateral_locked.png"
+  ],
+  "cg_solvent": [
+   "res://assets/cg/cg_solvent.png"
+  ],
+  "cg_solvent_thumb": [
+   "res://assets/cg/cg_solvent_thumb.png"
+  ],
+  "cg_solvent_locked": [
+   "res://assets/cg/cg_solvent_locked.png"
+  ],
+  "cg_factor": [
+   "res://assets/cg/cg_factor.png"
+  ],
+  "cg_factor_thumb": [
+   "res://assets/cg/cg_factor_thumb.png"
+  ],
+  "cg_factor_locked": [
+   "res://assets/cg/cg_factor_locked.png"
+  ]
+ }
+}

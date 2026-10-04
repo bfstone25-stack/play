@@ -1,0 +1,3586 @@
+{
+ "chapter": "lien",
+ "lines": [
+  {
+   "id": "lien_126",
+   "src": 126,
+   "who": "narrator",
+   "en": "She counts it out of the drawer before she touches anything, because Elsa's rule was that the shop pays first and looks second, and the one time Nara did it the other way round she saw a thing she could not afford to have seen.",
+   "ja": "何かに触れる前に、彼女はまず引き出しから金を数えて出す。店が先に払い、見るのはそのあと――それがエルサの決まりで、一度だけ逆の順でやったとき、ナラは見てしまっては割に合わないものを見た。"
+  },
+  {
+   "id": "lien_148",
+   "src": 148,
+   "who": "narrator",
+   "en": "It does not come. Not all of it — a shape, a direction, the weather of the thing, and then the object goes quiet in her hand like a phone with the screen off.",
+   "ja": "来ない。全部は来ない――形と、向きと、その物の天気のようなものだけ。それから物は、画面の消えた電話みたいに手の中で黙りこむ。"
+  },
+  {
+   "id": "lien_149",
+   "src": 149,
+   "who": "nara",
+   "en": "That's not a reading. That's a receipt for one.",
+   "ja": "これは読み取りじゃない。読み取りの領収書だ。"
+  },
+  {
+   "id": "lien_150",
+   "src": 150,
+   "who": "narrator",
+   "en": "She puts the %d back in the drawer. The shop does not charge for what it failed to show you.",
+   "ja": "彼女は%dを引き出しに戻す。見せ損ねたものに、店は代金を取らない。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_171",
+   "src": 171,
+   "who": "narrator",
+   "en": "There are two prices on everything. What the living will offer, and what the dead will demand. Elsa Quill had that painted on the window in 1961 and it is still there, backwards, in gold, shedding a little more of itself every winter.",
+   "ja": "どんな物にも値段は二つある。生者が差し出す値と、死者が求める値。エルサ・クイルは1961年にそれを窓に描かせ、金文字は今も裏返しのまま残っていて、冬が来るたびに少しずつ剥げていく。"
+  },
+  {
+   "id": "lien_172",
+   "src": 172,
+   "who": "narrator",
+   "en": "Nara has run the shop under it for three years.",
+   "ja": "ナラはその文字の下で三年、店を切り盛りしてきた。"
+  },
+  {
+   "id": "lien_174",
+   "src": 174,
+   "who": "narrator",
+   "en": "Eleven fifty-eight. The rain has been going since four and has settled into the kind that does not fall so much as stand in the air and wait.",
+   "ja": "十一時五十八分。雨は四時から降りつづき、今では落ちるというより、宙に立ちどまって何かを待つような降り方に落ち着いている。"
+  },
+  {
+   "id": "lien_175",
+   "src": 175,
+   "who": "narrator",
+   "en": "She is closing out. Four columns, a stub of pencil, a drawer with two hundred and sixty in it, and a debt against the estate of two hundred that comes due tomorrow, which is a word that at this hour means in about six hours.",
+   "ja": "彼女は締めの作業中だ。四つの欄、ちびた鉛筆、二百六十入った引き出し、そして明日が期日の、遺産に対する二百の借金。この時刻の「明日」は、あと六時間ほどという意味だ。"
+  },
+  {
+   "id": "lien_176",
+   "src": 176,
+   "who": "nara",
+   "en": "Two-sixty in. Two hundred out. Sixty to live on and a shop full of other people's decisions.",
+   "ja": "入りが二百六十。出が二百。暮らしに残るのは六十と、他人の決断で埋まった店がひとつ。"
+  },
+  {
+   "id": "lien_177",
+   "src": 177,
+   "who": "narrator",
+   "en": "The shop restocks itself at midnight. Not metaphorically. She has stopped finding it remarkable, the way you stop hearing a fridge.",
+   "ja": "店は真夜中に品を入れ替える。比喩ではない。冷蔵庫の音が聞こえなくなるように、彼女はもうそれを不思議とも思わない。"
+  },
+  {
+   "id": "lien_178",
+   "src": 178,
+   "who": "narrator",
+   "en": "At 12:00 exactly, the shelves shuffle. A thing that has sat unclaimed for a decade goes quiet and dark and slides back, and a thing that somebody in this city is about to need a price for comes forward into the lamp.",
+   "ja": "十二時ちょうど、棚がざわりと入れ替わる。十年引き取り手のなかった品が静かに暗がりへ退き、この街の誰かがもうすぐ値をつけてもらう必要のある品が、ランプの明かりの中へ進み出てくる。"
+  },
+  {
+   "id": "lien_179",
+   "src": 179,
+   "who": "narrator",
+   "en": "She has never once caught it happening. She has watched the second hand for twenty minutes straight and it happens anyway, in the part of the minute where she blinked.",
+   "ja": "その瞬間を見届けたことは一度もない。二十分ぶっ通しで秒針を睨んでいたこともあるが、それでも入れ替わりは起きた。彼女がまばたきした、その一瞬のうちに。"
+  },
+  {
+   "id": "lien_180",
+   "src": 180,
+   "who": "shop",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_181",
+   "src": 181,
+   "who": "narrator",
+   "en": "And her hands. That is the other thing.",
+   "ja": "それから、彼女の手。もうひとつの事情だ。"
+  },
+  {
+   "id": "lien_182",
+   "src": 182,
+   "who": "narrator",
+   "en": "Put a palm flat on an object and it gives up the last thing it was used for. Not the history — the last use. The most recent hour that mattered to it.",
+   "ja": "物に掌を平らに当てると、その物は最後に使われたときのことを明け渡す。来歴ではない――最後の用途。その物にとって意味のあった、いちばん新しい一時間。"
+  },
+  {
+   "id": "lien_183",
+   "src": 183,
+   "who": "narrator",
+   "en": "Most nights that is a kettle. A coat on a hook. Somebody signing away a car in a kitchen with the radio on. Elsa called it the trade's one advantage and warned her it was not free.",
+   "ja": "たいていの夜、それはやかんだ。フックに掛かったコート。ラジオのついた台所で、誰かが車の権利を手放す署名をしているところ。エルサはそれをこの商売の唯一の強みと呼び、ただではないと釘を刺した。"
+  },
+  {
+   "id": "lien_184",
+   "src": 184,
+   "who": "nara",
+   "en": "It is not free. It costs the shop.",
+   "ja": "ただではない。代償は店が払う。"
+  },
+  {
+   "id": "lien_185",
+   "src": 185,
+   "who": "narrator",
+   "en": "She has never got a straight answer about why. The reading takes money out of the drawer the way a lamp takes oil, and if the drawer is empty the object stays a lump of brass.",
+   "ja": "なぜなのか、まともな答えをもらったことはない。ランプが油を食うように読み取りは引き出しから金を食い、引き出しが空なら、物はただの真鍮の塊のままだ。"
+  },
+  {
+   "id": "lien_186",
+   "src": 186,
+   "who": "narrator",
+   "en": "Elsa's theory was that you are paying for the attention of whatever files these things. Nara's theory is that it is a business and she is a customer.",
+   "ja": "エルサの説では、こうした物を綴じて保管している何者かの注意に金を払っているのだという。ナラの説では、これは商売で、自分は客にすぎない。"
+  },
+  {
+   "id": "lien_187",
+   "src": 187,
+   "who": "narrator",
+   "en": "The rules, because tonight is going to test all three.",
+   "ja": "決まりごと。今夜はその三つすべてが試されるから。"
+  },
+  {
+   "id": "lien_188",
+   "src": 188,
+   "who": "narrator",
+   "en": "Appraise. Read, or don't. Then price it — LOW, FAIR, or HIGH — and they either take the ticket or they don't.",
+   "ja": "査定する。読むか、読まないか。そして値をつける――安値、適正、高値――相手は札を受け取るか、受け取らないか。"
+  },
+  {
+   "id": "lien_189",
+   "src": 189,
+   "who": "narrator",
+   "en": "Lowball a stranger and you are ahead by a few. Lowball someone whose worst hour you have just watched from the inside and you are a different kind of thing.",
+   "ja": "見知らぬ相手を買い叩けば、少し得をする。だが、その人の最悪の一時間を内側から見たばかりで買い叩くなら、あなたは別の種類の何かになる。"
+  },
+  {
+   "id": "lien_190",
+   "src": 190,
+   "who": "narrator",
+   "en": "12:00. The lamp gutters and comes back.",
+   "ja": "十二時。ランプの火が揺らぎ、また戻る。"
+  },
+  {
+   "id": "lien_191",
+   "src": 191,
+   "who": "narrator",
+   "en": "There is a woman at the glass.",
+   "ja": "ガラスの向こうに女がいる。"
+  },
+  {
+   "id": "lien_199",
+   "src": 199,
+   "who": "narrator",
+   "en": "She has come through the rain without a coat and she is not shivering, which usually means somebody has been sitting in a car in a car park deciding for a while.",
+   "ja": "コートも着ずに雨の中を来たのに、震えていない。たいていそれは、どこかの駐車場の車の中でしばらく腹を決めかねていたということだ。"
+  },
+  {
+   "id": "lien_200",
+   "src": 200,
+   "who": "narrator",
+   "en": "Mid-thirties. Auburn, cut blunt at the jaw. Freckles right across the shoulders where the wet blouse has given up. She is holding something in both hands the way you hold a mug.",
+   "ja": "三十代半ば。赤褐色の髪を顎の線でぱつんと切りそろえている。濡れたブラウスが透けた肩一面にそばかす。手にしたものを、マグカップを持つように両手で包んでいる。"
+  },
+  {
+   "id": "lien_201",
+   "src": 201,
+   "who": "tam",
+   "en": "Do you buy brass?",
+   "ja": "真鍮は買い取ってる？"
+  },
+  {
+   "id": "lien_202",
+   "src": 202,
+   "who": "nara",
+   "en": "I buy anything I can price.",
+   "ja": "値のつけられるものなら何でも。"
+  },
+  {
+   "id": "lien_203",
+   "src": 203,
+   "who": "narrator",
+   "en": "She puts it on the counter. It is a finial — the knob off the corner post of a bed frame. Turned brass, about the size of a pear, with a flattened seam down one side where it was cast.",
+   "ja": "彼女はそれをカウンターに置く。フィニアル――ベッドフレームの支柱の頭につける飾り玉だ。削り出しの真鍮で、洋梨ほどの大きさ、片側に鋳造の平たい継ぎ目が走っている。"
+  },
+  {
+   "id": "lien_204",
+   "src": 204,
+   "who": "narrator",
+   "en": "There are four of them on a bed. There is one of them here.",
+   "ja": "ベッドにはこれが四つある。ここにはひとつ。"
+  },
+  {
+   "id": "lien_205",
+   "src": 205,
+   "who": "nara",
+   "en": "Where are the other three?",
+   "ja": "残りの三つは？"
+  },
+  {
+   "id": "lien_206",
+   "src": 206,
+   "who": "tam",
+   "en": "On the bed.",
+   "ja": "ベッドに。"
+  },
+  {
+   "id": "lien_207",
+   "src": 207,
+   "who": "nara",
+   "en": "And the bed?",
+   "ja": "で、ベッドは？"
+  },
+  {
+   "id": "lien_208",
+   "src": 208,
+   "who": "tam",
+   "en": "In the flat. For another two days.",
+   "ja": "部屋に。あと二日は。"
+  },
+  {
+   "id": "lien_209",
+   "src": 209,
+   "who": "narrator",
+   "en": "She says it evenly. It is a sentence she has clearly said to a letting agent, twice, and got better at.",
+   "ja": "平然と言う。明らかに不動産屋相手に二度口にして、言い慣れた文句だ。"
+  },
+  {
+   "id": "lien_210",
+   "src": 210,
+   "who": "narrator",
+   "en": "She makes a small circle with one hand, taking in the counter, the shop, the hour.",
+   "ja": "彼女は片手で小さな円を描く。カウンターと、店と、この時刻をまとめて示すように。"
+  },
+  {
+   "id": "lien_211",
+   "src": 211,
+   "who": "tam",
+   "en": "Tamsin Reed. I'm not being coy. I just don't want to do the whole thing where you ask and I explain and you say you're sorry.",
+   "ja": "タムシン・リード。気取ってるんじゃないの。ただ、あなたが訊いて、私が説明して、あなたが『お気の毒に』って言う、あの一連をやりたくないだけ。"
+  },
+  {
+   "id": "lien_212",
+   "src": 212,
+   "who": "nara",
+   "en": "I wasn't going to say I'm sorry.",
+   "ja": "お気の毒になんて言うつもりはなかった。"
+  },
+  {
+   "id": "lien_213",
+   "src": 213,
+   "who": "tam",
+   "en": "No. You were going to say twelve.",
+   "ja": "でしょうね。十二って言うつもりだった。"
+  },
+  {
+   "id": "lien_214",
+   "src": 214,
+   "who": "narrator",
+   "en": "Nara laughs before she decides whether to, which does not happen often.",
+   "ja": "ナラは笑うかどうか決める前に笑ってしまう。めったにないことだ。"
+  },
+  {
+   "id": "lien_215",
+   "src": 215,
+   "who": "nara",
+   "en": "I was going to say fourteen and let you get me to eighteen.",
+   "ja": "十四って言って、十八まで引き上げさせるつもりだった。"
+  },
+  {
+   "id": "lien_216",
+   "src": 216,
+   "who": "tam",
+   "en": "See, that's worse.",
+   "ja": "ほら、そっちのほうがひどい。"
+  },
+  {
+   "id": "lien_217",
+   "src": 217,
+   "who": "narrator",
+   "en": "The thread inside the finial is bright. Scored, actually — the bright of metal that has been turned against a tool that slipped, recently, in a hurry, by somebody who did not have the right spanner and used a table knife.",
+   "ja": "フィニアルの内側のねじ山が光っている。正確には削れている――ごく最近、急いで、合うスパナを持たない誰かがテーブルナイフで回し、滑った工具にこすられた金属の光だ。"
+  },
+  {
+   "id": "lien_218",
+   "src": 218,
+   "who": "narrator",
+   "en": "You do not unscrew one finial off a bed slowly.",
+   "ja": "ベッドのフィニアルを、ひとつだけゆっくり外す人はいない。"
+  },
+  {
+   "id": "lien_229",
+   "src": 229,
+   "who": "narrator",
+   "en": "This one is free, which she has learned means the shop wants her to see it. That is not a comfort.",
+   "ja": "これはただだ。それは店が彼女に見せたがっているという意味だと、ナラは学んでいる。慰めにはならない。"
+  },
+  {
+   "id": "lien_243",
+   "src": 243,
+   "who": "narrator",
+   "en": "She turns it over with the backs of her fingers. Brass is brass. Twenty-two of anything, no story attached.",
+   "ja": "彼女は指の背でそれを裏返す。真鍮は真鍮。何であれ二十二、物語は付かない。"
+  },
+  {
+   "id": "lien_244",
+   "src": 244,
+   "who": "nara",
+   "en": "It's a nice casting. Somebody paid for that bed.",
+   "ja": "いい鋳物ね。誰かがあのベッドにお金をかけた。"
+  },
+  {
+   "id": "lien_245",
+   "src": 245,
+   "who": "tam",
+   "en": "Somebody did.",
+   "ja": "かけたわね。"
+  },
+  {
+   "id": "lien_246",
+   "src": 246,
+   "who": "nara",
+   "en": "Some nights you want the whole story. Some nights the story is a cost.",
+   "ja": "物語を丸ごと知りたい夜もある。物語が代償になる夜もある。"
+  },
+  {
+   "id": "lien_256",
+   "src": 256,
+   "who": "narrator",
+   "en": "The brass goes warm, which it does not do, and then Nara is not holding it any more. She is about four feet up and slightly behind, the way you are in someone else's memory — present, uninvited, unable to look away and unable to help.",
+   "ja": "真鍮が温かくなる――そんなことはありえないのに――そしてナラはもうそれを持っていない。彼女は四フィートほど上の、少し後ろにいる。他人の記憶の中ではいつもそうなるように――そこにいて、招かれておらず、目を逸らすことも、手を貸すこともできない。"
+  },
+  {
+   "id": "lien_257",
+   "src": 257,
+   "who": "narrator",
+   "en": "Morning. Not this morning; a morning with a lot of light in it, coming through a curtain that is only half up because the other half of the rail has been unscrewed and put in a box.",
+   "ja": "朝。今朝ではない。光のたっぷりある朝で、その光はカーテン越しに射している。カーテンは半分しか上がっていない。レールの残り半分はねじを外され、箱にしまわれているからだ。"
+  },
+  {
+   "id": "lien_258",
+   "src": 258,
+   "who": "narrator",
+   "en": "The room is nearly empty. Cardboard along one wall, labelled in marker in a hand that started neat. The bed is stripped down to the mattress and the mattress is on the floor, because the frame is in pieces against the radiator.",
+   "ja": "部屋はほとんど空っぽだ。壁際に段ボール、書き始めは丁寧だった手でマーカーのラベル。ベッドはマットレスだけにされ、そのマットレスは床に置かれている。フレームはばらされて、ラジエーターに立てかけてあるからだ。"
+  },
+  {
+   "id": "lien_259",
+   "src": 259,
+   "who": "narrator",
+   "en": "Tamsin is sitting on it. Sheet pulled across her lap, shoulders bare, hair flat on one side from sleeping on a thing that is no longer a bed.",
+   "ja": "タムシンがその上に座っている。シーツを膝に引き寄せ、肩はむき出し、もうベッドではないものの上で眠ったせいで、髪の片側が潰れている。"
+  },
+  {
+   "id": "lien_260",
+   "src": 260,
+   "who": "narrator",
+   "en": "She is holding the finial. Turning it. She has clearly been sitting there a while doing exactly that and nothing else.",
+   "ja": "彼女はフィニアルを握っている。回している。明らかに、しばらく前からそこに座って、ただそれだけをしている。"
+  },
+  {
+   "id": "lien_261",
+   "src": 261,
+   "who": "narrator",
+   "en": "There is no one else in the room. That is the part that makes it hard to watch — not the bareness of her, which is simply what you look like at eight in the morning in a flat you are losing, but that the scene has been built by somebody and then everybody left.",
+   "ja": "部屋には他に誰もいない。見ていてつらいのはそこだ――彼女の裸ではない。失いかけている部屋で迎える朝八時の人は、ただそういう姿をしているものだ。つらいのは、この光景が誰かによって作られ、そのあと全員が出ていったということ。"
+  },
+  {
+   "id": "lien_262",
+   "src": 262,
+   "who": "narrator",
+   "en": "She says something. It does not carry; readings do not carry sound, they carry the shape of it. It was four words and it was addressed to the room.",
+   "ja": "彼女が何か言う。声は届かない。読み取りは音を運ばない、運ぶのは音の形だ。四語で、部屋に向けられた言葉だった。"
+  },
+  {
+   "id": "lien_263",
+   "src": 263,
+   "who": "narrator",
+   "en": "Then she puts the finial in the pocket of a coat and stands up, and the light goes.",
+   "ja": "それから彼女はフィニアルをコートのポケットに入れて立ち上がり、光が消える。"
+  },
+  {
+   "id": "lien_265",
+   "src": 265,
+   "who": "narrator",
+   "en": "Nara is at her own counter with her hand flat on a piece of brass and eleven seconds gone off the clock.",
+   "ja": "ナラは自分のカウンターにいて、真鍮のかけらに掌を平らに当て、時計からは十一秒が消えている。"
+  },
+  {
+   "id": "lien_266",
+   "src": 266,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_267",
+   "src": 267,
+   "who": "tam",
+   "en": "You've gone a bit grey.",
+   "ja": "ちょっと顔色が悪いわよ。"
+  },
+  {
+   "id": "lien_268",
+   "src": 268,
+   "who": "nara",
+   "en": "The lamp does that.",
+   "ja": "ランプのせい。"
+  },
+  {
+   "id": "lien_269",
+   "src": 269,
+   "who": "tam",
+   "en": "The lamp's been on the whole time.",
+   "ja": "ランプはずっとついてたけど。"
+  },
+  {
+   "id": "lien_276",
+   "src": 276,
+   "who": "narrator",
+   "en": "Twenty-two is what it is worth. She could write fourteen and Tamsin would take fourteen, because people who have already decided to lose something will accept the terms of losing it.",
+   "ja": "値打ちは二十二。十四と書けばタムシンは十四を呑むだろう。何かを失うと決めてしまった人は、失う条件もそのまま受け入れるものだから。"
+  },
+  {
+   "id": "lien_277",
+   "src": 277,
+   "who": "narrator",
+   "en": "She could write thirty-three, which is not generosity, it is the shop paying for her to have seen the room.",
+   "ja": "三十三と書くこともできる。それは気前のよさではない。あの部屋を見たことへの代金を、店が払うということだ。"
+  },
+  {
+   "id": "lien_287",
+   "src": 287,
+   "who": "narrator",
+   "en": "She writes fourteen. Tamsin looks at it for exactly as long as it takes to decide not to argue, and that is the whole transaction.",
+   "ja": "彼女は十四と書く。タムシンは言い争わないと決めるのにちょうど要るだけそれを眺め、取引はそれで全部だ。"
+  },
+  {
+   "id": "lien_288",
+   "src": 288,
+   "who": "tam",
+   "en": "Fine.",
+   "ja": "いいわ。"
+  },
+  {
+   "id": "lien_289",
+   "src": 289,
+   "who": "nara",
+   "en": "It's brass.",
+   "ja": "真鍮だから。"
+  },
+  {
+   "id": "lien_290",
+   "src": 290,
+   "who": "tam",
+   "en": "It's fourteen pounds of my bed. That's fine. That's — yeah.",
+   "ja": "私のベッドの十四ポンド分。いいの。それで――うん。"
+  },
+  {
+   "id": "lien_291",
+   "src": 291,
+   "who": "narrator",
+   "en": "She is gone before the bell has finished. Nara puts the finial on the shelf behind her and it sits there being worth twenty-two.",
+   "ja": "ドアベルが鳴りやむ前に彼女は去っている。ナラはフィニアルを背後の棚に置き、それはそこで二十二の値打ちのまま座っている。"
+  },
+  {
+   "id": "lien_292",
+   "src": 292,
+   "who": "nara",
+   "en": "Eight up. Well done.",
+   "ja": "八の得。ご立派なこと。"
+  },
+  {
+   "id": "lien_296",
+   "src": 296,
+   "who": "narrator",
+   "en": "Twenty-two. She writes it, turns the ticket, and does not explain it.",
+   "ja": "二十二。彼女はそう書き、札を向け、説明はしない。"
+  },
+  {
+   "id": "lien_297",
+   "src": 297,
+   "who": "tam",
+   "en": "That's more than it's worth.",
+   "ja": "値打ちより多いじゃない。"
+  },
+  {
+   "id": "lien_298",
+   "src": 298,
+   "who": "nara",
+   "en": "That's exactly what it's worth. What's less than it's worth is fourteen, which is what you came in expecting, which is why you didn't bring the other three.",
+   "ja": "ちょうど値打ちどおり。値打ちより少ないのは十四。あなたが予想して来た額で、だから残りの三つを持ってこなかった。"
+  },
+  {
+   "id": "lien_299",
+   "src": 299,
+   "who": "narrator",
+   "en": "Tamsin takes the money and puts it in her back pocket without counting it, which is either trust or exhaustion.",
+   "ja": "タムシンは金を受け取り、数えもせずに尻ポケットへ入れる。信頼か、疲れか、どちらかだ。"
+  },
+  {
+   "id": "lien_300",
+   "src": 300,
+   "who": "tam",
+   "en": "If I bring the other three, will you do the same?",
+   "ja": "残りの三つを持ってきたら、同じようにしてくれる？"
+  },
+  {
+   "id": "lien_301",
+   "src": 301,
+   "who": "nara",
+   "en": "If you bring the other three I'll do better, because four of anything is a set.",
+   "ja": "残りの三つを持ってきたら、もっと出す。四つ揃えばセットだから。"
+  },
+  {
+   "id": "lien_302",
+   "src": 302,
+   "who": "tam",
+   "en": "Right. Okay.",
+   "ja": "そう。わかった。"
+  },
+  {
+   "id": "lien_303",
+   "src": 303,
+   "who": "narrator",
+   "en": "At the door she stops with her hand on the glass and says the thing people say when the transaction was not the reason they came.",
+   "ja": "ドアのところで彼女はガラスに手をかけて立ちどまり、取引が来た理由ではなかったときに人が言うことを言う。"
+  },
+  {
+   "id": "lien_304",
+   "src": 304,
+   "who": "tam",
+   "en": "It was a good bed.",
+   "ja": "いいベッドだったの。"
+  },
+  {
+   "id": "lien_305",
+   "src": 305,
+   "who": "nara",
+   "en": "It sounded like one.",
+   "ja": "そう聞こえた。"
+  },
+  {
+   "id": "lien_306",
+   "src": 306,
+   "who": "narrator",
+   "en": "Tamsin looks at her. Neither of them touches it.",
+   "ja": "タムシンがナラを見る。どちらもそこには触れない。"
+  },
+  {
+   "id": "lien_310",
+   "src": 310,
+   "who": "narrator",
+   "en": "Thirty-three. Tamsin looks at the ticket, then at her, and her face does something complicated and unwelcome.",
+   "ja": "三十三。タムシンは札を見て、それからナラを見る。その顔が、複雑で歓迎されない何かを形づくる。"
+  },
+  {
+   "id": "lien_311",
+   "src": 311,
+   "who": "tam",
+   "en": "Why.",
+   "ja": "なぜ。"
+  },
+  {
+   "id": "lien_312",
+   "src": 312,
+   "who": "nara",
+   "en": "Because I looked at it and now I know what it's worth to you, and that's a different number, and I'd rather be wrong in that direction.",
+   "ja": "見たから。見て、これがあなたにとっていくらなのか分かった。それは別の数字で、どうせ間違えるならそっちの方向に間違えたいの。"
+  },
+  {
+   "id": "lien_313",
+   "src": 313,
+   "who": "tam",
+   "en": "You can't afford to be wrong in that direction. Look at this place.",
+   "ja": "そっちの方向に間違える余裕なんてないでしょ。この店を見てよ。"
+  },
+  {
+   "id": "lien_314",
+   "src": 314,
+   "who": "nara",
+   "en": "I know what I can afford. Take the thirty-three.",
+   "ja": "自分の余裕くらい分かってる。三十三、受け取って。"
+  },
+  {
+   "id": "lien_315",
+   "src": 315,
+   "who": "narrator",
+   "en": "She takes it. At the door she turns round.",
+   "ja": "彼女は受け取る。ドアのところで振り返る。"
+  },
+  {
+   "id": "lien_316",
+   "src": 316,
+   "who": "tam",
+   "en": "You saw it. Didn't you. The room.",
+   "ja": "見たのね。そうでしょ。あの部屋。"
+  },
+  {
+   "id": "lien_317",
+   "src": 317,
+   "who": "nara",
+   "en": "Yes.",
+   "ja": "ええ。"
+  },
+  {
+   "id": "lien_318",
+   "src": 318,
+   "who": "tam",
+   "en": "Was I —",
+   "ja": "私、どんな――"
+  },
+  {
+   "id": "lien_320",
+   "src": 320,
+   "who": "nara",
+   "en": "You were sitting up. That's all. You were sitting up and it was a nice morning and the light was good.",
+   "ja": "起き上がって座ってた。それだけ。起きて座っていて、いい朝で、光がきれいだった。"
+  },
+  {
+   "id": "lien_321",
+   "src": 321,
+   "who": "narrator",
+   "en": "Tamsin nods once, hard, the way you nod at a thing you needed to be told, and goes out into the rain without a coat.",
+   "ja": "タムシンは一度、強くうなずく。言ってもらう必要のあったことに人がうなずくように。そしてコートなしで雨の中へ出ていく。"
+  },
+  {
+   "id": "lien_339",
+   "src": 339,
+   "who": "narrator",
+   "en": "Twelve twenty. The shelves have done their second shuffle of the night, quieter, the way a house settles.",
+   "ja": "十二時二十分。棚が今夜二度目の入れ替えを済ませた。家が落ち着くときのように、さっきより静かに。"
+  },
+  {
+   "id": "lien_340",
+   "src": 340,
+   "who": "narrator",
+   "en": "The man who comes in has been outside for a while. You can tell by the way he does not react to the warmth.",
+   "ja": "入ってきた男は、しばらく外にいたらしい。暖かさに何の反応も見せないことで分かる。"
+  },
+  {
+   "id": "lien_341",
+   "src": 341,
+   "who": "narrator",
+   "en": "Late thirties. Brown hair going back at the temples, short beard, forearms out of a rolled shirt with old ink on the left one that has gone the green of a tattoo somebody got at twenty-two.",
+   "ja": "三十代後半。こめかみから後退しかけた茶色の髪、短い顎鬚。まくった袖から出た前腕、左腕には古い墨。二十二の頃に入れた刺青が行き着く、あの緑色に褪せている。"
+  },
+  {
+   "id": "lien_342",
+   "src": 342,
+   "who": "narrator",
+   "en": "He puts a ring on the counter from about six inches up, so it lands and rolls and he has to stop it with one finger.",
+   "ja": "彼はカウンターの六インチほど上から指輪を落とす。指輪は着地して転がり、彼は指一本で止めなければならない。"
+  },
+  {
+   "id": "lien_343",
+   "src": 343,
+   "who": "ivo",
+   "en": "How much.",
+   "ja": "いくらだ。"
+  },
+  {
+   "id": "lien_344",
+   "src": 344,
+   "who": "nara",
+   "en": "Depends what it is.",
+   "ja": "物によるわ。"
+  },
+  {
+   "id": "lien_345",
+   "src": 345,
+   "who": "ivo",
+   "en": "It's a ring. That's the whole of it.",
+   "ja": "指輪だ。それで全部だ。"
+  },
+  {
+   "id": "lien_346",
+   "src": 346,
+   "who": "narrator",
+   "en": "It is a woman's wedding band. Yellow gold, narrow, worn thin on the inside curve the way a ring goes when it has been worn every day for years and taken off for nothing.",
+   "ja": "女物の結婚指輪。イエローゴールドの細い輪で、内側の曲面が薄くすり減っている。何年も毎日はめて、何のためにも外さなかった指輪がそうなるように。"
+  },
+  {
+   "id": "lien_347",
+   "src": 347,
+   "who": "narrator",
+   "en": "There is an engraving inside. She turns it to the lamp before he can stop her.",
+   "ja": "内側に刻印がある。彼が止める前に、彼女はそれをランプに向ける。"
+  },
+  {
+   "id": "lien_348",
+   "src": 348,
+   "who": "nara",
+   "en": "There's a date in it.",
+   "ja": "日付が入ってる。"
+  },
+  {
+   "id": "lien_349",
+   "src": 349,
+   "who": "ivo",
+   "en": "There is.",
+   "ja": "入ってる。"
+  },
+  {
+   "id": "lien_350",
+   "src": 350,
+   "who": "narrator",
+   "en": "It is eleven months after the date Nara would put on a decree if she were putting one on a decree, which she is not, because she does not know this man.",
+   "ja": "それは、ナラが離婚判決に日付を入れるとしたらそこに入れるだろう日から、十一か月後だ。入れはしない。この男のことを知らないのだから。"
+  },
+  {
+   "id": "lien_351",
+   "src": 351,
+   "who": "narrator",
+   "en": "But you learn to read a date the way you read a hallmark. This one is not the date of a wedding. It is the date of a thing that happened after a wedding had finished happening.",
+   "ja": "だが、刻印を読むように日付を読むことは覚えるものだ。これは結婚式の日付ではない。ひとつの結婚が終わりきったあとに起きた、何かの日付だ。"
+  },
+  {
+   "id": "lien_352",
+   "src": 352,
+   "who": "nara",
+   "en": "Ivo?",
+   "ja": "アイヴォ？"
+  },
+  {
+   "id": "lien_353",
+   "src": 353,
+   "who": "ivo",
+   "en": "How do you —",
+   "ja": "どうして――"
+  },
+  {
+   "id": "lien_354",
+   "src": 354,
+   "who": "nara",
+   "en": "It's on the card you're holding. You've been turning it over since you came in.",
+   "ja": "あなたが持ってるカードに書いてある。入ってきてからずっと、ひっくり返してるでしょう。"
+  },
+  {
+   "id": "lien_355",
+   "src": 355,
+   "who": "narrator",
+   "en": "He looks at his own hand. Pawn ticket from three years ago, another shop, softened at the corners.",
+   "ja": "彼は自分の手を見る。三年前の、別の店の質札。角が柔らかくなっている。"
+  },
+  {
+   "id": "lien_356",
+   "src": 356,
+   "who": "ivo",
+   "en": "Ivo Glass. I've done this before, is what that means. Not here.",
+   "ja": "イヴォ・グラス。前にもやったことがある、って意味だ。ここではないが。"
+  },
+  {
+   "id": "lien_357",
+   "src": 357,
+   "who": "nara",
+   "en": "Most people have done it before. It's a shop, not a confession.",
+   "ja": "たいていの人は前にもやってる。ここは店で、懺悔室じゃない。"
+  },
+  {
+   "id": "lien_358",
+   "src": 358,
+   "who": "narrator",
+   "en": "She puts two fingers on the band, and it is not a gesture that means anything to anyone who does not know what she is, but he goes very still.",
+   "ja": "彼女は指輪に指を二本置く。彼女が何者か知らない人には何の意味もない仕草だが、彼はぴたりと動かなくなる。"
+  },
+  {
+   "id": "lien_359",
+   "src": 359,
+   "who": "ivo",
+   "en": "Don't do that.",
+   "ja": "それはやめてくれ。"
+  },
+  {
+   "id": "lien_360",
+   "src": 360,
+   "who": "nara",
+   "en": "Do what.",
+   "ja": "何を。"
+  },
+  {
+   "id": "lien_361",
+   "src": 361,
+   "who": "ivo",
+   "en": "Elsa did that. Same face, same two fingers. She told me what it was and I have thought about it every week since and I am asking you not to do it.",
+   "ja": "エルサがそれをやった。同じ顔で、同じ二本の指で。あれが何だったのか彼女は教えてくれて、それ以来毎週そのことを考えてる。だから、やらないでくれと頼んでるんだ。"
+  },
+  {
+   "id": "lien_362",
+   "src": 362,
+   "who": "narrator",
+   "en": "Nara takes her hand off the ring.",
+   "ja": "ナラは指輪から手を離す。"
+  },
+  {
+   "id": "lien_363",
+   "src": 363,
+   "who": "nara",
+   "en": "All right.",
+   "ja": "わかった。"
+  },
+  {
+   "id": "lien_364",
+   "src": 364,
+   "who": "ivo",
+   "en": "It's mine to sell and it isn't mine to show you.",
+   "ja": "売るのは俺の自由だが、君に見せるのは俺の自由じゃない。"
+  },
+  {
+   "id": "lien_365",
+   "src": 365,
+   "who": "nara",
+   "en": "Whose is it?",
+   "ja": "誰のもの？"
+  },
+  {
+   "id": "lien_366",
+   "src": 366,
+   "who": "ivo",
+   "en": "Maya's. Not my wife. I want to be exact about that because everybody gets it wrong and then they look at me a certain way for the rest of the transaction.",
+   "ja": "マヤのだ。妻じゃない。そこははっきりさせておきたい。みんな勘違いして、取引のあいだじゅう、ある種の目で俺を見るから。"
+  },
+  {
+   "id": "lien_367",
+   "src": 367,
+   "who": "ivo",
+   "en": "I was married. It ended. It ended properly — she left, we did the paperwork, we did it badly for a year and then we did it fine, and she is in Leeds and we speak at Christmas.",
+   "ja": "結婚はしてた。終わった。きちんと終わった――彼女が出ていって、書類を片づけて、一年はひどいやり方で、それからはまともにやって、今彼女はリーズにいて、クリスマスには話をする。"
+  },
+  {
+   "id": "lien_368",
+   "src": 368,
+   "who": "ivo",
+   "en": "Eleven months after all of that was finished, I bought that ring for someone else. And then I was an idiot about it in a way that had nothing to do with anybody but me.",
+   "ja": "それが全部片づいて十一か月後、俺はその指輪を別の人のために買った。それから、俺以外の誰にも関係のないやり方で、それについて馬鹿をやった。"
+  },
+  {
+   "id": "lien_369",
+   "src": 369,
+   "who": "nara",
+   "en": "So it's not —",
+   "ja": "じゃあ、これは――"
+  },
+  {
+   "id": "lien_370",
+   "src": 370,
+   "who": "ivo",
+   "en": "It is not that. I want that said out loud in the shop before you write a number, because it is going to be the cheapest thing about tonight and I would still rather have it.",
+   "ja": "そういうのじゃない。数字を書く前に、それを店の中で声に出して言っておきたい。今夜いちばん安くつくのはそこだろうが、それでも言っておきたいんだ。"
+  },
+  {
+   "id": "lien_371",
+   "src": 371,
+   "who": "narrator",
+   "en": "Nara writes something in the margin of the ledger, which is not a number.",
+   "ja": "ナラは帳簿の余白に何か書く。数字ではない。"
+  },
+  {
+   "id": "lien_372",
+   "src": 372,
+   "who": "narrator",
+   "en": "Forty is what it is. Narrow band, low carat, a gram and a half of gold and no market for the sentiment.",
+   "ja": "値打ちは四十。細い輪、低い金位、一グラム半の金、感傷に市場はない。"
+  },
+  {
+   "id": "lien_373",
+   "src": 373,
+   "who": "narrator",
+   "en": "A reading costs the shop thirty-five, which is very nearly the price of the object, and that is not a coincidence — the shop has always charged most for the things somebody has just told her not to look at.",
+   "ja": "読み取りには店から三十五かかる。ほとんど物の値段と同じで、それは偶然ではない――店はいつだって、見るなと言われたばかりのものにいちばん高い値をつけてきた。"
+  },
+  {
+   "id": "lien_389",
+   "src": 389,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_390",
+   "src": 390,
+   "who": "narrator",
+   "en": "She waits until he has turned to look at the case of pocket watches, which takes about four seconds, and she puts her whole palm on it.",
+   "ja": "彼が振り返って懐中時計のケースを眺めるまで待つ。四秒ほどだ。そして彼女は掌全体をそれに当てる。"
+  },
+  {
+   "id": "lien_391",
+   "src": 391,
+   "who": "narrator",
+   "en": "That is the transgression and there is no version of it that is not one. She is not going to pretend otherwise later and neither is the ledger.",
+   "ja": "それが背信で、背信でない形はありえない。あとでそうでないふりをするつもりはないし、帳簿もしない。"
+  },
+  {
+   "id": "lien_401",
+   "src": 401,
+   "who": "narrator",
+   "en": "She puts her palm on it and the shop counts the drawer and declines. The gold stays gold.",
+   "ja": "彼女は掌を当て、店は引き出しを数えて断る。金は金のまま。"
+  },
+  {
+   "id": "lien_402",
+   "src": 402,
+   "who": "nara",
+   "en": "Nothing.",
+   "ja": "何も。"
+  },
+  {
+   "id": "lien_403",
+   "src": 403,
+   "who": "narrator",
+   "en": "The first honest thing about the night is that she tried.",
+   "ja": "今夜最初の正直なことは、彼女が試みたということだ。"
+  },
+  {
+   "id": "lien_411",
+   "src": 411,
+   "who": "narrator",
+   "en": "She leaves her hands on the ledger where he can see both of them, which is a thing Elsa did and Nara has never admitted she copied.",
+   "ja": "彼女は両手を帳簿の上に置いたまま、彼に両方とも見えるようにしておく。エルサがしていたことで、ナラは真似たと認めたことがない。"
+  },
+  {
+   "id": "lien_412",
+   "src": 412,
+   "who": "nara",
+   "en": "I didn't look.",
+   "ja": "見てない。"
+  },
+  {
+   "id": "lien_413",
+   "src": 413,
+   "who": "ivo",
+   "en": "I know. I was watching in the case glass.",
+   "ja": "知ってる。ケースのガラスで見てた。"
+  },
+  {
+   "id": "lien_414",
+   "src": 414,
+   "who": "nara",
+   "en": "Then why did you ask?",
+   "ja": "じゃあ、なぜ頼んだ？"
+  },
+  {
+   "id": "lien_415",
+   "src": 415,
+   "who": "ivo",
+   "en": "Because asking is the part I get to do.",
+   "ja": "頼むことだけは、俺にできるからだ。"
+  },
+  {
+   "id": "lien_425",
+   "src": 425,
+   "who": "narrator",
+   "en": "A bedroom with the lamp on the floor because the nightstand is a stack of books, which is a flat somebody has lived in for four months and expects to leave.",
+   "ja": "寝室。ナイトテーブル代わりに本が積まれているせいで、ランプは床に置かれている。誰かが四か月暮らし、いずれ出ていくつもりでいる部屋だ。"
+  },
+  {
+   "id": "lien_426",
+   "src": 426,
+   "who": "narrator",
+   "en": "Rain on the window. Different rain, harder, further north.",
+   "ja": "窓に雨。別の雨。もっと強く、もっと北の。"
+  },
+  {
+   "id": "lien_427",
+   "src": 427,
+   "who": "narrator",
+   "en": "Two people asleep, or one asleep and one not. The sheet is up over both of them. Bare shoulder, bare back, an arm across. From behind and slightly above, the way readings always are, which is the only mercy in the whole arrangement.",
+   "ja": "眠る二人、あるいは一人は眠り、一人は起きている。シーツが二人の上まで掛かっている。むき出しの肩、むき出しの背中、差し渡された腕。後ろの少し上から――読み取りはいつもそうだ――それだけが、この成り行き全体の中で唯一の情けだった。"
+  },
+  {
+   "id": "lien_428",
+   "src": 428,
+   "who": "narrator",
+   "en": "The reading is not interested in them. It is interested in the ring, because the ring is what she is holding, and the ring is on the stack of books next to the lamp, in focus, with the rest of the room going soft around it.",
+   "ja": "読み取りは二人に関心がない。関心があるのは指輪だ。彼女が握っているのは指輪で、その指輪はランプの横の本の山の上にあり、ピントが合っていて、部屋の残りはそのまわりでぼやけていく。"
+  },
+  {
+   "id": "lien_429",
+   "src": 429,
+   "who": "narrator",
+   "en": "That is what an object remembers. Not the night. The eleven centimetres of nightstand it spent the night on, and the hand that reached over at some point in it and moved it two centimetres to the left for no reason.",
+   "ja": "物が覚えているのはそういうことだ。夜そのものではない。一夜を過ごしたナイトテーブルの十一センチと、その夜のどこかで伸びてきて、わけもなくそれを二センチ左へずらした手。"
+  },
+  {
+   "id": "lien_430",
+   "src": 430,
+   "who": "narrator",
+   "en": "It was a good hour. Nara wants that noted. Whatever happened after — and something clearly happened after, or it would not be on her counter with a man outside it asking her not to look — the last use of this object was somebody being happy and slightly careless with it at two in the morning.",
+   "ja": "いい一時間だった。ナラはそれを記録に残しておきたい。そのあと何が起きたにせよ――明らかに何かが起きた、でなければこれが彼女のカウンターに載り、見ないでくれと頼む男がその前に立っていることはない――この物の最後の用途は、午前二時に誰かが幸せで、少し無頓着にそれを扱っていたことだった。"
+  },
+  {
+   "id": "lien_431",
+   "src": 431,
+   "who": "narrator",
+   "en": "Then a hand takes it off the books. And the light goes.",
+   "ja": "それから手が本の上からそれを取る。そして光が消える。"
+  },
+  {
+   "id": "lien_433",
+   "src": 433,
+   "who": "narrator",
+   "en": "Nara's palm is flat on the counter with nothing under it. Ivo has not turned round.",
+   "ja": "ナラの掌は、何も載っていないカウンターに平らに置かれている。イヴォはまだ振り返っていない。"
+  },
+  {
+   "id": "lien_434",
+   "src": 434,
+   "who": "ivo",
+   "en": "Well?",
+   "ja": "それで？"
+  },
+  {
+   "id": "lien_435",
+   "src": 435,
+   "who": "nara",
+   "en": "Forty.",
+   "ja": "四十。"
+  },
+  {
+   "id": "lien_436",
+   "src": 436,
+   "who": "ivo",
+   "en": "That isn't what I asked.",
+   "ja": "俺が頼んだのはそういうことじゃない。"
+  },
+  {
+   "id": "lien_437",
+   "src": 437,
+   "who": "nara",
+   "en": "It's what I'm answering.",
+   "ja": "私が答えてるのはそういうこと。"
+  },
+  {
+   "id": "lien_438",
+   "src": 438,
+   "who": "narrator",
+   "en": "He turns round then, and he looks at her hand, and he does the arithmetic that anybody would do.",
+   "ja": "そこで彼は振り返り、彼女の手を見て、誰でもするような計算をする。"
+  },
+  {
+   "id": "lien_439",
+   "src": 439,
+   "who": "ivo",
+   "en": "You did it.",
+   "ja": "やったな。"
+  },
+  {
+   "id": "lien_440",
+   "src": 440,
+   "who": "nara",
+   "en": "I did it.",
+   "ja": "やった。"
+  },
+  {
+   "id": "lien_441",
+   "src": 441,
+   "who": "ivo",
+   "en": "What did you —",
+   "ja": "何を見た――"
+  },
+  {
+   "id": "lien_442",
+   "src": 442,
+   "who": "nara",
+   "en": "No.",
+   "ja": "いいえ。"
+  },
+  {
+   "id": "lien_443",
+   "src": 443,
+   "who": "ivo",
+   "en": "That's not fair.",
+   "ja": "それは卑怯だ。"
+  },
+  {
+   "id": "lien_444",
+   "src": 444,
+   "who": "nara",
+   "en": "No. It isn't. I took a thing you asked me not to take and I'm not going to make it worse by making you pay to hear it described.",
+   "ja": "そう。卑怯よ。やめてと言われたものを私は取った。それを聞くのにお金まで払わせて、もっとひどくするつもりはない。"
+  },
+  {
+   "id": "lien_445",
+   "src": 445,
+   "who": "narrator",
+   "en": "There is a silence in which a clock that has been wrong since 1998 gets to be the loudest thing in the room.",
+   "ja": "沈黙が落ち、1998年から狂っている時計が、部屋でいちばん大きな音を立てるものになる。"
+  },
+  {
+   "id": "lien_446",
+   "src": 446,
+   "who": "ivo",
+   "en": "Was she happy.",
+   "ja": "彼女は幸せだったか。"
+  },
+  {
+   "id": "lien_447",
+   "src": 447,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_448",
+   "src": 448,
+   "who": "nara",
+   "en": "It was a nice room. The lamp was on the floor.",
+   "ja": "いい部屋だった。ランプが床に置いてあった。"
+  },
+  {
+   "id": "lien_449",
+   "src": 449,
+   "who": "ivo",
+   "en": "It was always on the floor. She hated the — yeah.",
+   "ja": "いつも床だったんだ。彼女はあの――ああ。"
+  },
+  {
+   "id": "lien_450",
+   "src": 450,
+   "who": "narrator",
+   "en": "He laughs at nothing, once, and rubs his face with the heel of his hand.",
+   "ja": "彼は何にともなく一度笑い、手のひらの付け根で顔をこする。"
+  },
+  {
+   "id": "lien_451",
+   "src": 451,
+   "who": "ivo",
+   "en": "Right. Write your number.",
+   "ja": "よし。数字を書いてくれ。"
+  },
+  {
+   "id": "lien_458",
+   "src": 458,
+   "who": "narrator",
+   "en": "Forty is the number. Twenty-six insults him and he will take it. Sixty is not a price, it is an apology with a receipt.",
+   "ja": "値は四十。二十六なら彼を侮辱することになるが、彼は受け取るだろう。六十は値段ではない。領収書つきの詫びだ。"
+  },
+  {
+   "id": "lien_468",
+   "src": 468,
+   "who": "narrator",
+   "en": "Twenty-six. He looks at the ticket and does not say anything about it, which is how you can tell.",
+   "ja": "二十六。彼は札を見て何も言わない。それで分かる。"
+  },
+  {
+   "id": "lien_469",
+   "src": 469,
+   "who": "ivo",
+   "en": "Fine.",
+   "ja": "いいわ。"
+  },
+  {
+   "id": "lien_470",
+   "src": 470,
+   "who": "nara",
+   "en": "It's a gram and a half.",
+   "ja": "一グラム半だからな。"
+  },
+  {
+   "id": "lien_471",
+   "src": 471,
+   "who": "ivo",
+   "en": "It's twenty-six quid and you know exactly what it is. That's what I came for.",
+   "ja": "二十六ポンド。あなたにはそれが何なのか、ちゃんと分かってる。俺はそのために来たんだ。"
+  },
+  {
+   "id": "lien_472",
+   "src": 472,
+   "who": "narrator",
+   "en": "The bell. The door. The rain taking him back.",
+   "ja": "ドアベル。ドア。雨が彼を連れ戻していく。"
+  },
+  {
+   "id": "lien_476",
+   "src": 476,
+   "who": "narrator",
+   "en": "Forty. He reads it twice.",
+   "ja": "四十。彼は二度読む。"
+  },
+  {
+   "id": "lien_477",
+   "src": 477,
+   "who": "ivo",
+   "en": "That's the real number.",
+   "ja": "本当の数字だな。"
+  },
+  {
+   "id": "lien_478",
+   "src": 478,
+   "who": "nara",
+   "en": "That's the real number.",
+   "ja": "本当の数字だな。"
+  },
+  {
+   "id": "lien_479",
+   "src": 479,
+   "who": "ivo",
+   "en": "Nobody gives me the real number. They give me the number they think I'll take because I look like a man who'll take it.",
+   "ja": "誰も本当の数字なんかくれない。俺がいかにも受け取りそうな男に見えるから、受け取ると思う数字をくれるんだ。"
+  },
+  {
+   "id": "lien_480",
+   "src": 480,
+   "who": "nara",
+   "en": "You do look like that. It's still forty.",
+   "ja": "確かにそう見える。それでも四十。"
+  },
+  {
+   "id": "lien_481",
+   "src": 481,
+   "who": "narrator",
+   "en": "He puts the money in his shirt pocket rather than his trousers, which is what people do when they are not going to spend it tonight.",
+   "ja": "彼は金をズボンではなくシャツの胸ポケットに入れる。今夜それを使うつもりのない人がすることだ。"
+  },
+  {
+   "id": "lien_482",
+   "src": 482,
+   "who": "ivo",
+   "en": "If I come back in a month, is it still here?",
+   "ja": "一か月後に戻ってきたら、まだここにあるか？"
+  },
+  {
+   "id": "lien_483",
+   "src": 483,
+   "who": "nara",
+   "en": "Thirty days on the ticket. After that it's the shop's.",
+   "ja": "札の期限は三十日。それを過ぎたら店のもの。"
+  },
+  {
+   "id": "lien_484",
+   "src": 484,
+   "who": "ivo",
+   "en": "And the shop's is —",
+   "ja": "で、店のものってのは――"
+  },
+  {
+   "id": "lien_485",
+   "src": 485,
+   "who": "nara",
+   "en": "The shop's.",
+   "ja": "店のもの。"
+  },
+  {
+   "id": "lien_486",
+   "src": 486,
+   "who": "narrator",
+   "en": "He nods like that was a straight answer, which it was, and goes.",
+   "ja": "まっすぐな答えを聞いたように彼はうなずく。実際そうだった。そして去る。"
+  },
+  {
+   "id": "lien_490",
+   "src": 490,
+   "who": "narrator",
+   "en": "Sixty. He does not pick the ticket up.",
+   "ja": "六十。彼は札を手に取らない。"
+  },
+  {
+   "id": "lien_491",
+   "src": 491,
+   "who": "ivo",
+   "en": "No.",
+   "ja": "いいえ。"
+  },
+  {
+   "id": "lien_492",
+   "src": 492,
+   "who": "nara",
+   "en": "Take it.",
+   "ja": "受け取って。"
+  },
+  {
+   "id": "lien_493",
+   "src": 493,
+   "who": "ivo",
+   "en": "You're paying me for the thing you took. I can see you doing it. Don't.",
+   "ja": "取ったものの代金を俺に払おうとしてる。見れば分かる。やめろ。"
+  },
+  {
+   "id": "lien_494",
+   "src": 494,
+   "who": "nara",
+   "en": "I'm paying you sixty pounds for a gold ring, Mr Glass, and if you want to argue about the till you can come round this side of it.",
+   "ja": "金の指輪に六十ポンド払ってるのよ、グラスさん。レジのことで揉めたいなら、こっち側に回ってきたら。"
+  },
+  {
+   "id": "lien_495",
+   "src": 495,
+   "who": "narrator",
+   "en": "He takes it, eventually, and he is angry in a way that is mostly aimed inward, and at the door he says the sentence she will still be carrying at four in the morning.",
+   "ja": "やがて彼は受け取る。怒っているが、その大半は自分に向いている。そしてドアのところで、彼女が朝の四時になってもまだ抱えているだろう一言を口にする。"
+  },
+  {
+   "id": "lien_496",
+   "src": 496,
+   "who": "ivo",
+   "en": "The thing about your aunt is she never once told me I could have it back.",
+   "ja": "君の叔母さんはな、返してもらえるなんて一度も言わなかったんだ。"
+  },
+  {
+   "id": "lien_497",
+   "src": 497,
+   "who": "nara",
+   "en": "It's thirty days on the ticket.",
+   "ja": "札の期限は三十日。"
+  },
+  {
+   "id": "lien_498",
+   "src": 498,
+   "who": "ivo",
+   "en": "That's not the same shape of sentence and you know it.",
+   "ja": "そういう形の文じゃないことくらい、分かってるだろう。"
+  },
+  {
+   "id": "lien_510",
+   "src": 510,
+   "who": "narrator",
+   "en": "One in the morning. She does the halfway count because Elsa did the halfway count.",
+   "ja": "午前一時。エルサがやっていたから、彼女も中締めをする。"
+  },
+  {
+   "id": "lien_511",
+   "src": 511,
+   "who": "nara",
+   "en": "Till: %d.",
+   "ja": "レジ：%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_512",
+   "src": 512,
+   "who": "narrator",
+   "en": "Stock on the shelf behind her: %d of other people's brass and gold.",
+   "ja": "背後の棚の在庫：他人の真鍮と金が%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_513",
+   "src": 513,
+   "who": "narrator",
+   "en": "Against the estate, due in five hours: %d.",
+   "ja": "遺産への借り、五時間後に期日：%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_517",
+   "src": 517,
+   "who": "narrator",
+   "en": "And in the fourth column, in Elsa's hand, in a ruled section Nara has never filled in and never had to explain: %d spent on knowing.",
+   "ja": "そして四つ目の欄、エルサの筆跡の、ナラが一度も埋めたことも説明を求められたこともない罫線の区画には――知るために使った額：%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_518",
+   "src": 518,
+   "who": "narrator",
+   "en": "The column has a heading. The heading is not in English and Nara has never looked it up, on the grounds that there is no version of the answer that improves her night.",
+   "ja": "その欄には見出しがある。見出しは英語ではなく、ナラは一度も調べたことがない。どんな答えであっても、今夜がましになることはないという理由で。"
+  },
+  {
+   "id": "lien_522",
+   "src": 522,
+   "who": "narrator",
+   "en": "And in the fourth column, in Elsa's hand, in a ruled section Nara has never filled in: nothing. Zero. Cleanest that column has been in three years.",
+   "ja": "そして四つ目の欄、エルサの筆跡の、ナラが一度も埋めたことのない罫線の区画には――何もない。ゼロ。この三年でいちばんきれいな欄だ。"
+  },
+  {
+   "id": "lien_523",
+   "src": 523,
+   "who": "nara",
+   "en": "Good.",
+   "ja": "よし。"
+  },
+  {
+   "id": "lien_524",
+   "src": 524,
+   "who": "narrator",
+   "en": "It does not feel like good. It feels like the shop is waiting.",
+   "ja": "いいことのようには感じない。店が待っているように感じる。"
+  },
+  {
+   "id": "lien_527",
+   "src": 527,
+   "who": "narrator",
+   "en": "She turns the page and finds, on the reverse, in pencil, in her own handwriting, which she does not remember doing:",
+   "ja": "ページをめくると、裏に鉛筆で、覚えのない自分の筆跡でこう書いてある。"
+  },
+  {
+   "id": "lien_528",
+   "src": 528,
+   "who": "narrator",
+   "en": "[i]N. Quill — held against reading. Value: pending.[/i]",
+   "ja": "[i]N・クイル――読み取りの担保として預かり。価値：未定。[/i]"
+  },
+  {
+   "id": "lien_529",
+   "src": 529,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_530",
+   "src": 530,
+   "who": "nara",
+   "en": "That's not funny.",
+   "ja": "笑えない。"
+  },
+  {
+   "id": "lien_531",
+   "src": 531,
+   "who": "shop",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_532",
+   "src": 532,
+   "who": "narrator",
+   "en": "She puts her hand flat on the ledger, because of course she does, and gets absolutely nothing, which is the first time an object in this building has ever declined her.",
+   "ja": "当然のように彼女は帳簿に掌を平らに当て、まったく何も得られない。この建物の物に拒まれたのは、それが初めてだ。"
+  },
+  {
+   "id": "lien_533",
+   "src": 533,
+   "who": "narrator",
+   "en": "Either it has no last use yet, or the last use has not finished.",
+   "ja": "まだ最後の用途がないのか、それとも最後の用途がまだ終わっていないのか。"
+  },
+  {
+   "id": "lien_536",
+   "src": 536,
+   "who": "narrator",
+   "en": "Downstairs, under the floor, something that is not the boiler makes the sound the boiler makes. It has been doing that since she looked at the ring.",
+   "ja": "階下、床の下で、ボイラーではない何かがボイラーの立てる音を立てる。指輪を見たときからずっとだ。"
+  },
+  {
+   "id": "lien_538",
+   "src": 538,
+   "who": "narrator",
+   "en": "Downstairs, under the floor, the boiler makes the sound the boiler makes, and for once that is all it is.",
+   "ja": "階下、床の下で、ボイラーがボイラーの音を立てる。そして今夜ばかりは、それはそれだけのことだ。"
+  },
+  {
+   "id": "lien_540",
+   "src": 540,
+   "who": "narrator",
+   "en": "There is a hatch behind the stock room that Elsa called the stairs and everyone else called a hole. It goes down to the Receipt Stair and from there to the Market.",
+   "ja": "倉庫の奥に、エルサが「階段」と呼び、ほかの皆が「穴」と呼んだ落とし戸がある。それは〈受領の階段〉へ、そこから〈市場〉へと下りていく。"
+  },
+  {
+   "id": "lien_541",
+   "src": 541,
+   "who": "narrator",
+   "en": "She is not going down tonight. There is one more name in the book.",
+   "ja": "今夜は下りない。帳簿にはあと一人、名前がある。"
+  },
+  {
+   "id": "lien_561",
+   "src": 561,
+   "who": "narrator",
+   "en": "Ten past one. The rain has stopped and left the street shining, which is worse.",
+   "ja": "一時十分。雨はやみ、通りを光らせたまま残していった。そのほうがたちが悪い。"
+  },
+  {
+   "id": "lien_562",
+   "src": 562,
+   "who": "narrator",
+   "en": "The woman who comes in does not hurry and does not apologise for the hour, and she closes the door behind her with two hands, quietly, the way you close a door in a hospital.",
+   "ja": "入ってきた女は急がず、時刻を詫びもせず、病院でドアを閉めるように、両手で静かに背後のドアを閉める。"
+  },
+  {
+   "id": "lien_563",
+   "src": 563,
+   "who": "narrator",
+   "en": "Early forties. Tall, long-necked, black hair with one white streak in it that is not dye and is not age either — it is the other thing, the kind that arrives in a fortnight.",
+   "ja": "四十代前半。背が高く、首が長く、黒髪に一筋の白。染めたものでも歳のせいでもない――もうひとつのほう、二週間でやってくる種類の白だ。"
+  },
+  {
+   "id": "lien_564",
+   "src": 564,
+   "who": "narrator",
+   "en": "Black dress, high collar, and a brooch at the throat that is worth more than the contents of this shop.",
+   "ja": "黒いドレス、高い襟。喉元のブローチは、この店の中身全部より値が張る。"
+  },
+  {
+   "id": "lien_565",
+   "src": 565,
+   "who": "mara",
+   "en": "You are Elsa's girl.",
+   "ja": "あなたがエルサの娘ね。"
+  },
+  {
+   "id": "lien_566",
+   "src": 566,
+   "who": "nara",
+   "en": "I'm Elsa's niece.",
+   "ja": "エルサの姪です。"
+  },
+  {
+   "id": "lien_567",
+   "src": 567,
+   "who": "mara",
+   "en": "That is what I said.",
+   "ja": "そう言ったのよ。"
+  },
+  {
+   "id": "lien_568",
+   "src": 568,
+   "who": "narrator",
+   "en": "She puts a folded square of black crepe on the counter and smooths it flat with the back of her hand, twice, which is a gesture that belongs to fabric and not to money.",
+   "ja": "彼女は畳んだ黒いクレープの四角をカウンターに置き、手の甲で二度平らに撫でつける。金ではなく、布に属する仕草だ。"
+  },
+  {
+   "id": "lien_569",
+   "src": 569,
+   "who": "nara",
+   "en": "A veil.",
+   "ja": "ヴェール。"
+  },
+  {
+   "id": "lien_570",
+   "src": 570,
+   "who": "mara",
+   "en": "A mourning veil. There is a difference and you will want it for your ticket.",
+   "ja": "喪のヴェール。違いがあるの。札に書くならその違いが要るでしょう。"
+  },
+  {
+   "id": "lien_571",
+   "src": 571,
+   "who": "nara",
+   "en": "Voss.",
+   "ja": "ヴォス。"
+  },
+  {
+   "id": "lien_572",
+   "src": 572,
+   "who": "mara",
+   "en": "Widow Voss, since about March. You may use either. I have not settled on which one I am.",
+   "ja": "ヴォス未亡人。三月ごろから。どちらで呼んでもいいわ。自分がどちらなのか、まだ決めていないの。"
+  },
+  {
+   "id": "lien_573",
+   "src": 573,
+   "who": "narrator",
+   "en": "The crepe is old, good, and the pleating at the crown has been pressed exactly once. It has been worn exactly once. It has never been washed, and you do not wash crepe anyway, so that is not neglect, it is preservation.",
+   "ja": "クレープは古く、上等で、頭頂のプリーツはちょうど一度だけアイロンが当てられている。ちょうど一度だけ着けられた。一度も洗われていない。もっともクレープは洗わないものだから、それは放置ではなく保存だ。"
+  },
+  {
+   "id": "lien_574",
+   "src": 574,
+   "who": "nara",
+   "en": "It's been out of a box recently.",
+   "ja": "最近、箱から出されましたね。"
+  },
+  {
+   "id": "lien_575",
+   "src": 575,
+   "who": "mara",
+   "en": "It has been out of a box for six months. It is on the chair in my bedroom and I go past it four times a day and I have decided that is a stupid way to run a house.",
+   "ja": "箱から出して六か月になるわ。寝室の椅子の上にあって、日に四回その前を通る。そんなふうに家を回すのは馬鹿げていると決めたの。"
+  },
+  {
+   "id": "lien_576",
+   "src": 576,
+   "who": "nara",
+   "en": "You could throw it away.",
+   "ja": "捨てることもできますよ。"
+  },
+  {
+   "id": "lien_577",
+   "src": 577,
+   "who": "mara",
+   "en": "I could. That would be a decision about him. I would rather it were a transaction about a piece of cloth.",
+   "ja": "できるわね。でもそれは彼についての決断になる。私はこれを、布切れについての取引にしたいの。"
+  },
+  {
+   "id": "lien_578",
+   "src": 578,
+   "who": "narrator",
+   "en": "Thirty-five. Antique crepe in this condition goes to a costumier for thirty-five, or to a collector of very specific and unwholesome things for more, and Nara does not sell to those.",
+   "ja": "三十五。この状態のアンティークのクレープなら衣装屋が三十五で買う。ひどく特殊で不健全な物の蒐集家ならもっと出すが、ナラはそういう相手には売らない。"
+  },
+  {
+   "id": "lien_579",
+   "src": 579,
+   "who": "narrator",
+   "en": "A reading costs the shop twenty, and she has not told her not to, and that is somehow worse than Ivo, because it means it is entirely Nara's to decide.",
+   "ja": "読み取りには店から二十かかる。そして彼女はやめてとは言っていない。それがどういうわけかイヴォのときよりたちが悪い。決めるのは完全にナラだということだから。"
+  },
+  {
+   "id": "lien_593",
+   "src": 593,
+   "who": "nara",
+   "en": "May I.",
+   "ja": "よろしいですか。"
+  },
+  {
+   "id": "lien_594",
+   "src": 594,
+   "who": "mara",
+   "en": "May you what?",
+   "ja": "何がよろしいの？"
+  },
+  {
+   "id": "lien_595",
+   "src": 595,
+   "who": "nara",
+   "en": "Elsa will have told you what this shop does. May I.",
+   "ja": "この店が何をするか、エルサから聞いているはずです。よろしいですか。"
+  },
+  {
+   "id": "lien_596",
+   "src": 596,
+   "who": "narrator",
+   "en": "She looks at her for a long moment and then does a thing with her chin that in her family has meant yes for four generations.",
+   "ja": "彼女は長いあいだナラを見つめ、それから顎で小さな動きをする。彼女の家では四代にわたって「はい」を意味してきた仕草だ。"
+  },
+  {
+   "id": "lien_597",
+   "src": 597,
+   "who": "mara",
+   "en": "She said it costs you. Is that true, or is it a thing you say to make people feel bought?",
+   "ja": "エルサは、あなたが代償を払うと言っていた。本当なの？ それとも、人に買われたと感じさせるための決まり文句？"
+  },
+  {
+   "id": "lien_598",
+   "src": 598,
+   "who": "nara",
+   "en": "It's true. It comes out of the drawer.",
+   "ja": "本当です。引き出しから出ていきます。"
+  },
+  {
+   "id": "lien_599",
+   "src": 599,
+   "who": "mara",
+   "en": "Then spend it, and afterwards you will tell me what you saw, because I was there and I want to know if it is the same.",
+   "ja": "なら使いなさい。そして終わったら、何を見たか教えて。私はそこにいたから、同じものかどうか知りたいの。"
+  },
+  {
+   "id": "lien_609",
+   "src": 609,
+   "who": "narrator",
+   "en": "She asks the shop and the shop looks at the drawer and says no, in the way it says no: nothing at all happens, expensively.",
+   "ja": "彼女は店に頼み、店は引き出しを見て、いつものやり方で断る。何ひとつ起こらない、高くつくやり方で。"
+  },
+  {
+   "id": "lien_610",
+   "src": 610,
+   "who": "nara",
+   "en": "I can't. I haven't got it tonight.",
+   "ja": "できません。今夜はその持ち合わせがないんです。"
+  },
+  {
+   "id": "lien_611",
+   "src": 611,
+   "who": "mara",
+   "en": "That is the most honest thing anyone has said to me since March.",
+   "ja": "三月以来、誰かが私に言ったなかでいちばん正直な言葉だわ。"
+  },
+  {
+   "id": "lien_619",
+   "src": 619,
+   "who": "nara",
+   "en": "I'll price it as cloth.",
+   "ja": "布として値をつけます。"
+  },
+  {
+   "id": "lien_620",
+   "src": 620,
+   "who": "mara",
+   "en": "You are allowed to look. Elsa looked.",
+   "ja": "見てもいいのよ。エルサは見た。"
+  },
+  {
+   "id": "lien_621",
+   "src": 621,
+   "who": "nara",
+   "en": "Elsa looked at everything and died owing two hundred pounds and knowing what every object in this building had been doing. I'm not sure those are unrelated.",
+   "ja": "エルサは何でも見て、二百ポンドの借金を残して、この建物のすべての物が何をしてきたかを知ったまま死にました。その二つが無関係かどうか、私には自信がありません。"
+  },
+  {
+   "id": "lien_622",
+   "src": 622,
+   "who": "narrator",
+   "en": "She almost smiles, which on her is an event.",
+   "ja": "彼女はほとんど微笑む。この人にとっては、それは事件だ。"
+  },
+  {
+   "id": "lien_623",
+   "src": 623,
+   "who": "mara",
+   "en": "No. I don't imagine they are.",
+   "ja": "いいえ。無関係だとは思わないわ。"
+  },
+  {
+   "id": "lien_630",
+   "src": 630,
+   "who": "narrator",
+   "en": "The night before, not the day of.",
+   "ja": "当日ではなく、前の晩。"
+  },
+  {
+   "id": "lien_631",
+   "src": 631,
+   "who": "narrator",
+   "en": "That is the first thing and it reorganises everything, because Nara had braced for a church.",
+   "ja": "それがまず最初で、それがすべてを組み替える。ナラは教会を覚悟していたのだから。"
+  },
+  {
+   "id": "lien_632",
+   "src": 632,
+   "who": "narrator",
+   "en": "A bedroom with the furniture wrong — a bed slept in by one person in the middle rather than two people at the edges, and a chair with a black dress laid out on it flat, sleeves arranged, the way you lay out a thing you are frightened of.",
+   "ja": "家具の配置がおかしい寝室――二人が端で眠るのではなく、一人が真ん中で眠るベッド。椅子には黒いドレスが平らに広げられ、袖が整えられている。怖いものを並べておくときのやり方で。"
+  },
+  {
+   "id": "lien_633",
+   "src": 633,
+   "who": "narrator",
+   "en": "Candles, because the electricity in that house is Victorian and so is the house. A lily in a jug that somebody has sent and somebody else has put somewhere without thinking about it.",
+   "ja": "蝋燭。あの家の電気はヴィクトリア朝のもので、家もそうだからだ。水差しに挿した百合が一輪。誰かが贈り、別の誰かが何も考えずにどこかに置いたもの。"
+  },
+  {
+   "id": "lien_634",
+   "src": 634,
+   "who": "narrator",
+   "en": "She is at the mirror, and she is trying it on.",
+   "ja": "彼女は鏡の前にいて、それを試している。"
+  },
+  {
+   "id": "lien_635",
+   "src": 635,
+   "who": "narrator",
+   "en": "The veil first. Over the face, then lifted, then over again, and the third time she leaves it and stands there looking at the shape of herself through black crepe, which is a thing a person does the night before, alone, in order to find out whether they can get through the day.",
+   "ja": "まずヴェール。顔に下ろし、上げ、また下ろし、三度目はそのままにして、黒いクレープ越しに自分の輪郭を見つめて立っている。前の晩に、ひとりで、その一日を乗り切れるかどうか確かめるために人がすることだ。"
+  },
+  {
+   "id": "lien_636",
+   "src": 636,
+   "who": "narrator",
+   "en": "The dress is not on yet. She has come to the mirror in the middle of undressing and got stopped by the veil, so the dress is at her waist and her arms are down at her sides and she is not holding anything, and that stillness is the whole scene.",
+   "ja": "ドレスはまだ着ていない。服を脱ぐ途中で鏡の前に来て、ヴェールに足を止められたのだ。だからドレスは腰のところにあり、両腕は脇に下ろされ、何も持っていない。その静止が、この場面のすべてだ。"
+  },
+  {
+   "id": "lien_637",
+   "src": 637,
+   "who": "narrator",
+   "en": "It is not modesty and it is not the other thing either. It is a woman looking at her own bare shoulders in a mirror, under a black veil, twelve hours before the worst appointment of her life, working out whether she is going to be able to stand up straight.",
+   "ja": "慎みではない。その逆のものでもない。人生最悪の約束の十二時間前、黒いヴェールの下で、鏡に映る自分のむき出しの肩を見つめ、まっすぐ立っていられるかどうかを確かめている女だ。"
+  },
+  {
+   "id": "lien_638",
+   "src": 638,
+   "who": "narrator",
+   "en": "The mirror does most of the work. You are watching the reflection and the reflection is watching her and Nara is a third thing, four feet up, with no right to be there at all.",
+   "ja": "仕事の大半は鏡がする。あなたは映像を見ていて、映像は彼女を見ていて、ナラは三つ目の何かとして四フィート上にいる。そこにいる権利など、まるでないまま。"
+  },
+  {
+   "id": "lien_639",
+   "src": 639,
+   "who": "narrator",
+   "en": "She is composed. That is what makes it hard. There is no crying in this scene, and the reading does not offer any, and the total absence of it is the most naked thing in the room.",
+   "ja": "彼女は落ち着いている。だからこそつらい。この場面に涙はなく、読み取りもそれを差し出さない。そしてその完全な不在こそが、部屋でいちばん裸なものだ。"
+  },
+  {
+   "id": "lien_640",
+   "src": 640,
+   "who": "narrator",
+   "en": "After about a minute she lifts the veil back off her face, and looks at herself without it, and says one word to the mirror.",
+   "ja": "一分ほどして、彼女はヴェールを顔から上げ、ヴェールなしの自分を見て、鏡にひとこと言う。"
+  },
+  {
+   "id": "lien_641",
+   "src": 641,
+   "who": "narrator",
+   "en": "Then she folds the veil over the arm of the chair and blows the candle out.",
+   "ja": "それからヴェールを椅子の肘掛けに畳んで掛け、蝋燭を吹き消す。"
+  },
+  {
+   "id": "lien_643",
+   "src": 643,
+   "who": "narrator",
+   "en": "The lamp. The counter. The crepe under her palm, cool.",
+   "ja": "ランプ。カウンター。掌の下のクレープは、ひんやりしている。"
+  },
+  {
+   "id": "lien_644",
+   "src": 644,
+   "who": "mara",
+   "en": "Well.",
+   "ja": "さて。"
+  },
+  {
+   "id": "lien_645",
+   "src": 645,
+   "who": "nara",
+   "en": "You were at the mirror.",
+   "ja": "鏡の前にいらした。"
+  },
+  {
+   "id": "lien_646",
+   "src": 646,
+   "who": "mara",
+   "en": "Yes.",
+   "ja": "ええ。"
+  },
+  {
+   "id": "lien_647",
+   "src": 647,
+   "who": "nara",
+   "en": "You had it over your face and then you took it off.",
+   "ja": "顔にかけて、それから外された。"
+  },
+  {
+   "id": "lien_648",
+   "src": 648,
+   "who": "mara",
+   "en": "Yes.",
+   "ja": "ええ。"
+  },
+  {
+   "id": "lien_649",
+   "src": 649,
+   "who": "nara",
+   "en": "You said something.",
+   "ja": "何かおっしゃった。"
+  },
+  {
+   "id": "lien_650",
+   "src": 650,
+   "who": "mara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_651",
+   "src": 651,
+   "who": "mara",
+   "en": "I said his name. To check that I could.",
+   "ja": "彼の名前を言ったの。言えるかどうか確かめるために。"
+  },
+  {
+   "id": "lien_652",
+   "src": 652,
+   "who": "narrator",
+   "en": "Nara does not say anything, because there is nothing that is not worse than nothing.",
+   "ja": "ナラは何も言わない。何も言わないより悪くない言葉など、何ひとつないから。"
+  },
+  {
+   "id": "lien_653",
+   "src": 653,
+   "who": "mara",
+   "en": "And could I, in your version?",
+   "ja": "それで、言えていた？ あなたの見た版では。"
+  },
+  {
+   "id": "lien_654",
+   "src": 654,
+   "who": "nara",
+   "en": "You said one word. The reading doesn't carry sound.",
+   "ja": "ひとことおっしゃいました。読み取りは音を運ばないんです。"
+  },
+  {
+   "id": "lien_655",
+   "src": 655,
+   "who": "mara",
+   "en": "Good. That is exactly the correct amount of it to have.",
+   "ja": "よかった。それがちょうど、持っていていい正しい量だわ。"
+  },
+  {
+   "id": "lien_656",
+   "src": 656,
+   "who": "narrator",
+   "en": "She smooths the crepe flat again with the back of her hand. Twice.",
+   "ja": "彼女はまた手の甲でクレープを平らに撫でる。二度。"
+  },
+  {
+   "id": "lien_657",
+   "src": 657,
+   "who": "mara",
+   "en": "I will tell you what I expected, since I have paid for the right to be embarrassed. I expected the funeral. I have been dreading that you would see me at the funeral, where I was very badly behaved.",
+   "ja": "何を予想していたか話してあげる。恥をかく権利にお金を払ったのだから。葬儀だと思っていたの。葬儀の私を見られるのが怖くてたまらなかった。とてもみっともない振る舞いをしたから。"
+  },
+  {
+   "id": "lien_658",
+   "src": 658,
+   "who": "nara",
+   "en": "I got the night before.",
+   "ja": "私が見たのは前の晩でした。"
+  },
+  {
+   "id": "lien_659",
+   "src": 659,
+   "who": "mara",
+   "en": "The night before I was alone and had my arms down and was frightened. That is the version I can stand a stranger having.",
+   "ja": "前の晩の私はひとりで、腕を下ろして、怯えていた。見知らぬ人に持っていられても耐えられるのは、その版よ。"
+  },
+  {
+   "id": "lien_660",
+   "src": 660,
+   "who": "nara",
+   "en": "It wasn't frightened.",
+   "ja": "怯えてはいませんでした。"
+  },
+  {
+   "id": "lien_661",
+   "src": 661,
+   "who": "mara",
+   "en": "Wasn't it.",
+   "ja": "そう？"
+  },
+  {
+   "id": "lien_662",
+   "src": 662,
+   "who": "nara",
+   "en": "It was somebody finding out they could do it. That's a different picture.",
+   "ja": "自分にはできると確かめている人でした。それは別の絵です。"
+  },
+  {
+   "id": "lien_663",
+   "src": 663,
+   "who": "narrator",
+   "en": "She looks at the veil on the counter for a while.",
+   "ja": "彼女はしばらくカウンターのヴェールを見つめる。"
+  },
+  {
+   "id": "lien_664",
+   "src": 664,
+   "who": "mara",
+   "en": "Thirty-five, Elsa would have said.",
+   "ja": "三十五、とエルサなら言ったでしょうね。"
+  },
+  {
+   "id": "lien_671",
+   "src": 671,
+   "who": "narrator",
+   "en": "Thirty-five is the number. Twenty-three is what a costumier pays a stranger. Fifty-two is not a price for cloth.",
+   "ja": "値は三十五。二十三は衣装屋が見知らぬ客に払う額。五十二は布の値段ではない。"
+  },
+  {
+   "id": "lien_672",
+   "src": 672,
+   "who": "narrator",
+   "en": "And this is the one where the arithmetic is honest about itself: to unlock what she just saw — to have any right to it — the shop has to go above the number. Mercy costs, or it was only curiosity wearing a better coat.",
+   "ja": "そしてこれは、算術が自分に正直な一件だ。いま見たものの鍵を開けるには――それに何らかの権利を持つには――店はその数字を上回らなければならない。情けには代価がある。さもなければ、それはましなコートを着ただけの好奇心だった。"
+  },
+  {
+   "id": "lien_682",
+   "src": 682,
+   "who": "narrator",
+   "en": "Twenty-three. She reads the ticket and her face does not move at all, which is a skill and she has had six months to practise it.",
+   "ja": "二十三。彼女は札を読み、顔はまったく動かない。それは技術で、彼女には六か月、練習する時間があった。"
+  },
+  {
+   "id": "lien_683",
+   "src": 683,
+   "who": "mara",
+   "en": "That is a costumier's number.",
+   "ja": "衣装屋の数字ね。"
+  },
+  {
+   "id": "lien_684",
+   "src": 684,
+   "who": "nara",
+   "en": "It's a fair trade number.",
+   "ja": "公正な取引の数字です。"
+  },
+  {
+   "id": "lien_685",
+   "src": 685,
+   "who": "mara",
+   "en": "It is a number for a woman who does not know what she has. Thank you for the demonstration.",
+   "ja": "自分の持ち物の値打ちを知らない女に向けた数字よ。お手本をありがとう。"
+  },
+  {
+   "id": "lien_686",
+   "src": 686,
+   "who": "narrator",
+   "en": "She takes it. At the door she does not turn round.",
+   "ja": "彼女は受け取る。ドアのところで振り返りはしない。"
+  },
+  {
+   "id": "lien_690",
+   "src": 690,
+   "who": "narrator",
+   "en": "Thirty-five. She writes it, and Mara nods once.",
+   "ja": "三十五。彼女がそう書くと、マーラは一度うなずく。"
+  },
+  {
+   "id": "lien_691",
+   "src": 691,
+   "who": "mara",
+   "en": "Elsa's number.",
+   "ja": "エルサの数字ね。"
+  },
+  {
+   "id": "lien_692",
+   "src": 692,
+   "who": "nara",
+   "en": "It's the right number.",
+   "ja": "正しい数字です。"
+  },
+  {
+   "id": "lien_693",
+   "src": 693,
+   "who": "mara",
+   "en": "It is the right number. You will find that the right number is very rarely the whole of what is owed, but it is a good place to start and I am glad you started there.",
+   "ja": "正しい数字ね。正しい数字が負っているものの全部であることはめったにないと、いずれ分かるでしょう。でも出発点としてはいいし、あなたがそこから始めてくれてうれしいわ。"
+  },
+  {
+   "id": "lien_694",
+   "src": 694,
+   "who": "narrator",
+   "en": "At the door she pauses with a hand on the glass.",
+   "ja": "ドアのところで、彼女はガラスに手をかけて立ちどまる。"
+  },
+  {
+   "id": "lien_695",
+   "src": 695,
+   "who": "mara",
+   "en": "You will not tell anyone.",
+   "ja": "誰にも言いませんから。"
+  },
+  {
+   "id": "lien_696",
+   "src": 696,
+   "who": "nara",
+   "en": "No.",
+   "ja": "いいえ。"
+  },
+  {
+   "id": "lien_697",
+   "src": 697,
+   "who": "mara",
+   "en": "No. I did not think you would. That is a different thing from not being able to.",
+   "ja": "ええ。言うとは思っていなかった。でもそれは、言えないのとは別のことよ。"
+  },
+  {
+   "id": "lien_701",
+   "src": 701,
+   "who": "narrator",
+   "en": "Fifty-two. She turns the ticket round and pushes it across the crepe.",
+   "ja": "五十二。彼女は札を向け、クレープの上を滑らせる。"
+  },
+  {
+   "id": "lien_702",
+   "src": 702,
+   "who": "mara",
+   "en": "That is seventeen pounds more than it is worth.",
+   "ja": "値打ちより十七ポンド多いわ。"
+  },
+  {
+   "id": "lien_703",
+   "src": 703,
+   "who": "nara",
+   "en": "Yes.",
+   "ja": "ええ。"
+  },
+  {
+   "id": "lien_704",
+   "src": 704,
+   "who": "mara",
+   "en": "Why.",
+   "ja": "なぜ。"
+  },
+  {
+   "id": "lien_705",
+   "src": 705,
+   "who": "nara",
+   "en": "Because I went into your bedroom on the worst night of your life without asking properly and I looked at you, and thirty-five is what the cloth costs and seventeen is what I owe.",
+   "ja": "あなたの人生で最悪の夜に、ちゃんと許しも得ずに寝室に入って、あなたを見たからです。三十五は布の値段で、十七は私の借りです。"
+  },
+  {
+   "id": "lien_706",
+   "src": 706,
+   "who": "mara",
+   "en": "That is not how a shop works.",
+   "ja": "店というのはそういうふうには回らないものよ。"
+  },
+  {
+   "id": "lien_707",
+   "src": 707,
+   "who": "nara",
+   "en": "It's how this one works after one in the morning.",
+   "ja": "この店は、午前一時を過ぎるとそう回るんです。"
+  },
+  {
+   "id": "lien_708",
+   "src": 708,
+   "who": "narrator",
+   "en": "She takes the money, and then does something nobody has done across this counter in three years: she puts her hand flat on the back of Nara's, on the crepe, for about two seconds.",
+   "ja": "彼女は金を受け取り、それから、この三年このカウンター越しに誰もしなかったことをする。クレープの上に置かれたナラの手の甲に、自分の手を平らに重ねるのだ。二秒ほど。"
+  },
+  {
+   "id": "lien_709",
+   "src": 709,
+   "who": "mara",
+   "en": "You will want to be careful, Elsa's girl. That column adds up in both directions.",
+   "ja": "気をつけなさい、エルサの娘。あの欄は、どちらの方向にも足し算されるから。"
+  },
+  {
+   "id": "lien_710",
+   "src": 710,
+   "who": "nara",
+   "en": "Which column?",
+   "ja": "どの欄ですか？"
+  },
+  {
+   "id": "lien_711",
+   "src": 711,
+   "who": "mara",
+   "en": "The fourth one.",
+   "ja": "四つ目よ。"
+  },
+  {
+   "id": "lien_712",
+   "src": 712,
+   "who": "narrator",
+   "en": "And she is gone, and the veil is on the shelf, and the shop is very quiet in the specific way it is quiet when it has got what it wanted.",
+   "ja": "そして彼女は去り、ヴェールは棚に載り、店はとても静かになる。欲しいものを手に入れたときの、あの特有の静けさで。"
+  },
+  {
+   "id": "lien_731",
+   "src": 731,
+   "who": "narrator",
+   "en": "Two o'clock. The book is empty until five and the drawer has %d in it against a debt of %d, so she goes down.",
+   "ja": "二時。五時まで帳簿は空で、引き出しには%d、対する借金は%d。だから彼女は下りていく。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_732",
+   "src": 732,
+   "who": "narrator",
+   "en": "Behind the stock room, under a rug that Elsa never bothered to nail: the Receipt Stair.",
+   "ja": "倉庫の奥、エルサが釘で留めようともしなかった敷物の下に、〈受領の階段〉がある。"
+  },
+  {
+   "id": "lien_733",
+   "src": 733,
+   "who": "narrator",
+   "en": "Forty-one steps cut into what the surveyor's report from 1974 calls [i]made ground[/i] and what everybody who has ever been down it calls the other thing. The treads are paper. Compressed, laminated, decades of pawn tickets pressed into something that takes a boot.",
+   "ja": "四十一段。1974年の測量報告書が[i]盛土[/i]と呼び、下りたことのある者は皆、別の名で呼ぶものに刻まれた段だ。踏み板は紙でできている。何十年分もの質札が圧縮され、貼り合わされ、ブーツを受け止めるほどのものに固められている。"
+  },
+  {
+   "id": "lien_734",
+   "src": 734,
+   "who": "narrator",
+   "en": "On the way down you can read them side-on if you want to. She does not want to.",
+   "ja": "下りながら、その気になれば横から札を読める。彼女はその気にならない。"
+  },
+  {
+   "id": "lien_735",
+   "src": 735,
+   "who": "narrator",
+   "en": "She does anyway, about a third of the way, because the mind is a stupid animal that reads what is in front of it.",
+   "ja": "それでも三分の一ほど下りたところで読んでしまう。心というのは、目の前にあるものを読んでしまう愚かな動物だから。"
+  },
+  {
+   "id": "lien_736",
+   "src": 736,
+   "who": "narrator",
+   "en": "[i]Silver christening cup. Held 30 days. Unredeemed.[/i] [i]Trombone, case. Redeemed, 14 days, no interest charged, E.Q.[/i] [i]Overcoat, wool, good. Unredeemed.[/i]",
+   "ja": "[i]銀の洗礼杯。三十日預かり。請け出されず。[/i] [i]トロンボーン、ケース付き。請け出し、十四日、利息なし、E・Q。[/i] [i]オーバーコート、ウール、上物。請け出されず。[/i]"
+  },
+  {
+   "id": "lien_737",
+   "src": 737,
+   "who": "narrator",
+   "en": "Nobody ever comes and gets the overcoats. Elsa had a theory about that too — that a coat is the thing you pawn when there is no longer a version of the winter in which you need it.",
+   "ja": "オーバーコートを取りに戻る人はいない。エルサにはそれについても説があった――コートを質に入れるのは、それが必要になる冬がもう自分の未来に存在しないときなのだと。"
+  },
+  {
+   "id": "lien_738",
+   "src": 738,
+   "who": "narrator",
+   "en": "The air changes at about step twenty-five. Not colder; drier, and with the faint mineral smell of a cellar that has never had water in it, which in this city is not possible and is nonetheless the case.",
+   "ja": "二十五段目あたりで空気が変わる。冷たくなるのではない。乾いて、一度も水の入ったことのない地下室の、かすかな鉱物の匂いがする。この街ではありえないことで、それでも事実だ。"
+  },
+  {
+   "id": "lien_739",
+   "src": 739,
+   "who": "narrator",
+   "en": "The last sixteen steps she takes with her hand on the wall, and the wall is not stone, and she has known that for three years and still checks.",
+   "ja": "最後の十六段は壁に手をついて下りる。壁は石ではない。三年前から知っていて、それでも確かめてしまう。"
+  },
+  {
+   "id": "lien_741",
+   "src": 741,
+   "who": "narrator",
+   "en": "And then the Market.",
+   "ja": "そして〈市場〉。"
+  },
+  {
+   "id": "lien_742",
+   "src": 742,
+   "who": "narrator",
+   "en": "A vaulted room the size of a swimming bath, walled floor to ceiling in bone — femurs stacked in courses like brick, skulls set in as a decorative band at head height, which whoever did it clearly thought was tasteful.",
+   "ja": "プールほどもある穹窿の部屋。床から天井まで骨で壁が築かれている――大腿骨が煉瓦のように段々に積まれ、頭蓋骨が頭の高さに装飾の帯としてはめ込まれている。作った誰かは明らかに、それを趣味がいいと思っていた。"
+  },
+  {
+   "id": "lien_743",
+   "src": 743,
+   "who": "narrator",
+   "en": "Between the pillars, stalls. Trestles, awnings, lanterns burning something that is not oil. Thirty or forty traders, none of whom are precisely present, all of whom are precisely busy.",
+   "ja": "柱のあいだに屋台。架台、日よけ、油ではない何かを燃やすランタン。三十人か四十人の商人がいて、誰ひとり正確にはそこにおらず、全員が正確に忙しい。"
+  },
+  {
+   "id": "lien_744",
+   "src": 744,
+   "who": "narrator",
+   "en": "They deal in unclaimed collateral. Everything down here defaulted on a ticket somewhere and came to the only market that will take it.",
+   "ja": "彼らが扱うのは引き取り手のない担保だ。ここにあるものはすべて、どこかで質札を流され、それを受け入れる唯一の市場に流れ着いた。"
+  },
+  {
+   "id": "lien_745",
+   "src": 745,
+   "who": "narrator",
+   "en": "Nara comes down about once a fortnight with whatever the shop's thirty days have eaten, and comes back up with cash, and the whole arrangement is so ordinary that she has stopped bringing a light.",
+   "ja": "ナラは二週に一度ほど、店の三十日が呑み込んだものを持って下り、現金を持って上がってくる。その段取り全体があまりにありふれているので、彼女はもう明かりを持ってこない。"
+  },
+  {
+   "id": "lien_746",
+   "src": 746,
+   "who": "narrator",
+   "en": "The stalls, in order, because she does the same circuit every time and the circuit is the only thing down here she controls.",
+   "ja": "屋台を順に。彼女は毎回同じ順路を回り、その順路だけがここで彼女の自由になるものだから。"
+  },
+  {
+   "id": "lien_747",
+   "src": 747,
+   "who": "narrator",
+   "en": "Teeth. Not a metaphor and not a curiosity stall — a trestle of human teeth sorted by decade, which somebody buys, which she has never asked about.",
+   "ja": "歯。比喩でも珍品屋でもない――年代別に仕分けられた人間の歯を並べた架台で、誰かがそれを買う。彼女は一度も訊いたことがない。"
+  },
+  {
+   "id": "lien_748",
+   "src": 748,
+   "who": "narrator",
+   "en": "Doors. Six of them, freestanding, none of them attached to anything, all of them locked. The trader sells the doors. He does not sell the keys and becomes unpleasant if you mention them.",
+   "ja": "扉。六枚、どれも自立していて、どこにもつながっておらず、どれも施錠されている。商人は扉を売る。鍵は売らないし、鍵の話をすると不機嫌になる。"
+  },
+  {
+   "id": "lien_749",
+   "src": 749,
+   "who": "narrator",
+   "en": "Instruments, all of them unstrung. Bottles of things that are almost certainly water. A woman who will buy a name off you, cash, no questions, and who Nara crosses the aisle to avoid.",
+   "ja": "楽器、どれも弦が外されている。ほぼ確実に水であるものの瓶。名前を現金で買い取る女がいて、何も訊かない。ナラは通路を渡って彼女を避ける。"
+  },
+  {
+   "id": "lien_750",
+   "src": 750,
+   "who": "narrator",
+   "en": "And at the end, past the pillar where the femurs give way to something longer than a femur, the factor's stall.",
+   "ja": "そして奥の、大腿骨が大腿骨より長い何かに取って代わる柱の先に、仲買人の屋台がある。"
+  },
+  {
+   "id": "lien_751",
+   "src": 751,
+   "who": "narrator",
+   "en": "The traders are not solid in the way a person is solid. If you look directly at one they are a man in an apron weighing out charms. If you look at the next stall along and let him sit at the edge of your eye, he is a shape doing the motions of weighing, with no weights and no scale and no hands.",
+   "ja": "商人たちは人間のように実体があるわけではない。まっすぐ見れば、エプロン姿で護符の目方を量る男だ。隣の屋台に目をやって彼を視界の端に置いておくと、それは量る動作をしている形になる。分銅も秤も、手もない。"
+  },
+  {
+   "id": "lien_752",
+   "src": 752,
+   "who": "narrator",
+   "en": "The first year, that stopped her sleeping. The second year she worked out the trick, which is simply to look at people when you are talking to them, the same as upstairs.",
+   "ja": "最初の年、それで眠れなくなった。二年目にこつを覚えた。単純なことで、話すときは相手を見ればいい。上の店と同じだ。"
+  },
+  {
+   "id": "lien_756",
+   "src": 756,
+   "who": "narrator",
+   "en": "Tonight's unclaimed: two bone charms, a moon coin with the ward still legible under the tarnish, and a cracked dueling pistol she is glad to see the back of.",
+   "ja": "今夜の流れ品――骨の護符が二つ、錆の下にまだ守りの文字が読める月の硬貨が一枚、手放せてせいせいするひびの入った決闘用拳銃が一丁。"
+  },
+  {
+   "id": "lien_757",
+   "src": 757,
+   "who": "narrator",
+   "en": "The stalls take the lot for %d. Till: %d.",
+   "ja": "屋台は全部まとめて%dで引き取る。レジ：%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_758",
+   "src": 758,
+   "who": "narrator",
+   "en": "And then a man at the end stall says her name, which nobody down here does.",
+   "ja": "そのとき、奥の屋台の男が彼女の名を呼ぶ。ここで彼女の名を呼ぶ者などいない。"
+  },
+  {
+   "id": "lien_759",
+   "src": 759,
+   "who": "cal",
+   "en": "Quill.",
+   "ja": "クイル。"
+  },
+  {
+   "id": "lien_760",
+   "src": 760,
+   "who": "narrator",
+   "en": "Forty-five, heavy through the shoulders, an apron over good clothes. He is the only trader down here who is entirely solid and the only one who has ever been rude to her.",
+   "ja": "四十五歳、肩まわりが分厚く、上等な服の上にエプロン。ここで完全に実体があるのは彼だけで、彼女に無礼な口をきいたことがあるのも彼だけだ。"
+  },
+  {
+   "id": "lien_761",
+   "src": 761,
+   "who": "narrator",
+   "en": "Calder. A factor — he does not sell, he buys, and then other people find they own what he bought.",
+   "ja": "コールダー。仲買人――売るのではなく買う。すると、彼が買ったものを所有しているのは自分だと、ほかの人たちが気づくことになる。"
+  },
+  {
+   "id": "lien_762",
+   "src": 762,
+   "who": "nara",
+   "en": "Calder.",
+   "ja": "カルダーだ。"
+  },
+  {
+   "id": "lien_763",
+   "src": 763,
+   "who": "cal",
+   "en": "You've been up there three years and you still come down here with charms and coins.",
+   "ja": "上に三年もいて、まだ護符だの硬貨だのを持って下りてくるのか。"
+  },
+  {
+   "id": "lien_764",
+   "src": 764,
+   "who": "nara",
+   "en": "That's the stock.",
+   "ja": "それが在庫だから。"
+  },
+  {
+   "id": "lien_765",
+   "src": 765,
+   "who": "cal",
+   "en": "That's the [i]stock[/i]. That is not the inventory.",
+   "ja": "それは[i]在庫[/i]だ。財産目録じゃない。"
+  },
+  {
+   "id": "lien_766",
+   "src": 766,
+   "who": "narrator",
+   "en": "He taps the trestle twice with one knuckle.",
+   "ja": "彼は指の関節で架台を二度叩く。"
+  },
+  {
+   "id": "lien_767",
+   "src": 767,
+   "who": "cal",
+   "en": "You've got four columns in that book. You sell me the contents of three of them. Nobody has ever asked you about the fourth.",
+   "ja": "その帳簿には欄が四つある。君はそのうち三つの中身を俺に売る。四つ目のことは誰にも訊かれたことがないだろう。"
+  },
+  {
+   "id": "lien_768",
+   "src": 768,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_769",
+   "src": 769,
+   "who": "nara",
+   "en": "The fourth column's not stock.",
+   "ja": "四つ目の欄は在庫じゃない。"
+  },
+  {
+   "id": "lien_770",
+   "src": 770,
+   "who": "cal",
+   "en": "The fourth column is the only thing in that shop that isn't replaceable, and you're giving it away free with every purchase.",
+   "ja": "四つ目の欄は、あの店で唯一替えのきかないものだ。それを君は、買い物のたびにおまけで配ってる。"
+  },
+  {
+   "id": "lien_771",
+   "src": 771,
+   "who": "nara",
+   "en": "It's not mine to sell.",
+   "ja": "私が売っていいものじゃない。"
+  },
+  {
+   "id": "lien_772",
+   "src": 772,
+   "who": "cal",
+   "en": "Neither's the ring. You sold me that man's pistol last month and his fingerprints were still on the grip and you didn't ask him.",
+   "ja": "指輪だってそうだ。先月、君はあの男の拳銃を俺に売った。握りにはまだあいつの指紋がついてたが、君はあいつに訊かなかった。"
+  },
+  {
+   "id": "lien_773",
+   "src": 773,
+   "who": "nara",
+   "en": "A pistol is an object.",
+   "ja": "拳銃は物よ。"
+  },
+  {
+   "id": "lien_774",
+   "src": 774,
+   "who": "cal",
+   "en": "And a reading is a thing you have in your head that came out of an object. Where exactly is the line, and did you draw it before or after you found out what it was worth?",
+   "ja": "そして読み取りは、物から出てきて君の頭の中にあるものだ。線はいったいどこにある？ その線を引いたのは、値打ちを知る前か、後か？"
+  },
+  {
+   "id": "lien_775",
+   "src": 775,
+   "who": "nara",
+   "en": "I haven't found out what it's worth.",
+   "ja": "値打ちなんて知らない。"
+  },
+  {
+   "id": "lien_776",
+   "src": 776,
+   "who": "cal",
+   "en": "You're about to. That's the part people mind.",
+   "ja": "これから知る。人が気にするのはそこだ。"
+  },
+  {
+   "id": "lien_777",
+   "src": 777,
+   "who": "narrator",
+   "en": "He wipes the trestle down with a cloth, which is a thing he does when he is about to be reasonable, and Nara has learned to mind that more than the rudeness.",
+   "ja": "彼は布で架台を拭く。道理の通ったことを言い出す前に彼がする仕草で、ナラは無礼よりそっちを気にするようになった。"
+  },
+  {
+   "id": "lien_778",
+   "src": 778,
+   "who": "cal",
+   "en": "Let me put the objection for you, so you don't have to. It's theirs. They didn't consent. They came in out of the rain with a problem and they left with a ticket and somewhere in the middle of that you went into a room they were in six years ago.",
+   "ja": "異議を代わりに言ってやろう、君が言わずに済むように。それは彼らのものだ。彼らは同意していない。問題を抱えて雨の中から入ってきて、札を持って出ていった。そのあいだのどこかで、君は彼らが六年前にいた部屋に入り込んだ。"
+  },
+  {
+   "id": "lien_779",
+   "src": 779,
+   "who": "nara",
+   "en": "Yes. That's the objection.",
+   "ja": "そう。それが異議よ。"
+  },
+  {
+   "id": "lien_780",
+   "src": 780,
+   "who": "cal",
+   "en": "It's a good one. It is also an objection to the [i]looking[/i], Quill, not to the selling, and you did the looking upstairs half an hour ago for free.",
+   "ja": "いい異議だ。だがそれは[i]見ること[/i]への異議だよ、クイル。売ることへのじゃない。そして見るほうは、三十分前に上でただでやってきた。"
+  },
+  {
+   "id": "lien_781",
+   "src": 781,
+   "who": "nara",
+   "en": "Not for free. It cost the shop.",
+   "ja": "ただじゃない。店が払った。"
+  },
+  {
+   "id": "lien_782",
+   "src": 782,
+   "who": "cal",
+   "en": "It cost the shop. It didn't cost you. Do you know what the difference is?",
+   "ja": "店が払った。君は払っていない。その違いが分かるか？"
+  },
+  {
+   "id": "lien_783",
+   "src": 783,
+   "who": "nara",
+   "en": "I know what the difference is.",
+   "ja": "違いくらい分かってる。"
+  },
+  {
+   "id": "lien_784",
+   "src": 784,
+   "who": "cal",
+   "en": "Then say it.",
+   "ja": "なら言ってみろ。"
+  },
+  {
+   "id": "lien_785",
+   "src": 785,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_786",
+   "src": 786,
+   "who": "cal",
+   "en": "No. I didn't think so.",
+   "ja": "だろうな。言えないと思った。"
+  },
+  {
+   "id": "lien_787",
+   "src": 787,
+   "who": "narrator",
+   "en": "Which is the closest Nara has come, in three years, to being genuinely got at, and the worst of it is that she does not know the answer and has not known it since about half past eleven.",
+   "ja": "この三年で、ナラが本当に痛いところを突かれかけたのはこれがいちばん近い。最悪なのは、彼女が答えを知らず、十一時半ごろからずっと知らないままだということだ。"
+  },
+  {
+   "id": "lien_793",
+   "src": 793,
+   "who": "narrator",
+   "en": "He can tell. She does not know how — something about the hands, or the fourth column has a smell.",
+   "ja": "彼には分かる。どうしてかは分からない――手の何か、あるいは四つ目の欄には匂いがあるのか。"
+  },
+  {
+   "id": "lien_794",
+   "src": 794,
+   "who": "cal",
+   "en": "You're carrying two. Maybe three. Let me show you the shape of the trade before you decide you're above it.",
+   "ja": "二つ抱えてるな。三つかもしれん。自分はそんな商売の上にいると決める前に、取引の形を見せてやろう。"
+  },
+  {
+   "id": "lien_795",
+   "src": 795,
+   "who": "nara",
+   "en": "I don't want —",
+   "ja": "見たくなんか――"
+  },
+  {
+   "id": "lien_796",
+   "src": 796,
+   "who": "cal",
+   "en": "You do. Everybody does. It's free and it's not one of yours.",
+   "ja": "見たいさ。誰だってそうだ。ただだし、君のじゃない。"
+  },
+  {
+   "id": "lien_797",
+   "src": 797,
+   "who": "narrator",
+   "en": "He puts a bone charm on the trestle and turns it over so the flat side is up, and it is not a charm, it is a plate — a reading fixed in something, bought off some other broker in some other city, wrapped and stacked like herring.",
+   "ja": "彼は骨の護符を架台に置き、平らな面が上になるよう裏返す。それは護符ではない。板だ――何かに定着させた読み取りで、どこか別の街の別の仲買人から買い、鰊のように包んで積み上げたもの。"
+  },
+  {
+   "id": "lien_803",
+   "src": 803,
+   "who": "narrator",
+   "en": "Two people, very small in the frame, a long way down the vault between the stalls. Holding on to each other and nothing else.",
+   "ja": "二人の人間。画面の中でとても小さく、屋台のあいだの穹窿のずっと奥にいる。互いに抱き合い、ほかには何もつかんでいない。"
+  },
+  {
+   "id": "lien_804",
+   "src": 804,
+   "who": "narrator",
+   "en": "You cannot see their faces. There are no faces to see — whoever sold this took the reading and the reading came out with the people in it as light and mist and the suggestion of bare shoulders, and that is all anyone will ever get of them now.",
+   "ja": "顔は見えない。見るべき顔がないのだ――これを売った誰かが読み取りを抜き、読み取りは人の姿を光と靄と、むき出しの肩の気配として残した。それが今後、誰かが彼らについて得られるすべてだ。"
+  },
+  {
+   "id": "lien_805",
+   "src": 805,
+   "who": "narrator",
+   "en": "They are somebody's worst or best hour, and they are for sale, at head height, between a stall selling teeth and a stall selling doors.",
+   "ja": "彼らは誰かの最悪の、あるいは最良の一時間で、売り物になっている。頭の高さに、歯を売る屋台と扉を売る屋台のあいだで。"
+  },
+  {
+   "id": "lien_806",
+   "src": 806,
+   "who": "nara",
+   "en": "Who are they?",
+   "ja": "この人たちは誰？"
+  },
+  {
+   "id": "lien_807",
+   "src": 807,
+   "who": "cal",
+   "en": "No idea. That's the product. Nobody's ever going to know and that's why it's worth anything.",
+   "ja": "知らんね。それが商品なんだ。誰も知ることはない。だから値打ちがある。"
+  },
+  {
+   "id": "lien_808",
+   "src": 808,
+   "who": "nara",
+   "en": "That's obscene.",
+   "ja": "おぞましい。"
+  },
+  {
+   "id": "lien_809",
+   "src": 809,
+   "who": "cal",
+   "en": "That's inventory. You've got the same thing in your head about a woman and a bed frame, and the only difference is yours is doing nothing for anybody.",
+   "ja": "在庫だよ。君の頭にも同じものがある。女とベッドフレームのやつがな。違いは、君のは誰の役にも立ってないってことだけだ。"
+  },
+  {
+   "id": "lien_813",
+   "src": 813,
+   "who": "narrator",
+   "en": "He watches her hands for a moment and then makes a small dismissive noise.",
+   "ja": "彼は少しのあいだ彼女の手を見て、それから小さく見下すような音を立てる。"
+  },
+  {
+   "id": "lien_814",
+   "src": 814,
+   "who": "cal",
+   "en": "You've not got enough on you to be worth the demonstration. Come back when you've looked at something.",
+   "ja": "実演してやるほどのものを持ってないな。何か見てから戻ってこい。"
+  },
+  {
+   "id": "lien_815",
+   "src": 815,
+   "who": "narrator",
+   "en": "Which stings more than it should, and she files that.",
+   "ja": "それは必要以上にこたえる。彼女はそれを記録しておく。"
+  },
+  {
+   "id": "lien_826",
+   "src": 826,
+   "who": "narrator",
+   "en": "Calder waits for her to offer something and she has nothing to offer, because she has not looked at anything tonight, and that is either integrity or an empty fourth column and she genuinely cannot tell which.",
+   "ja": "コールダーは彼女が何か差し出すのを待つが、差し出すものは何もない。今夜は何も見ていないからだ。それが誠実さなのか、ただ空っぽの四つ目の欄なのか、彼女には本当に分からない。"
+  },
+  {
+   "id": "lien_827",
+   "src": 827,
+   "who": "cal",
+   "en": "Then we're wasting each other's night.",
+   "ja": "なら、お互い夜を無駄にしてるな。"
+  },
+  {
+   "id": "lien_828",
+   "src": 828,
+   "who": "nara",
+   "en": "Apparently.",
+   "ja": "そうらしい。"
+  },
+  {
+   "id": "lien_836",
+   "src": 836,
+   "who": "narrator",
+   "en": "He names a price without being asked, which is how you know he has been waiting to.",
+   "ja": "訊かれもしないのに彼は値を言う。待ちかまえていたと分かるのはそこだ。"
+  },
+  {
+   "id": "lien_837",
+   "src": 837,
+   "who": "cal",
+   "en": "Ninety. For one. Your pick, and I'd take the newest, they come out cleaner.",
+   "ja": "九十。一つにつき。どれでも選べ。俺なら一番新しいのを取るね、そのほうがきれいに抜ける。"
+  },
+  {
+   "id": "lien_838",
+   "src": 838,
+   "who": "narrator",
+   "en": "%d would clear the estate on its own and leave her with change and a shop.",
+   "ja": "%dあれば、それだけで遺産の借りは片づき、釣り銭と店が残る。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_839",
+   "src": 839,
+   "who": "narrator",
+   "en": "The newest one is %s's.",
+   "ja": "一番新しいのは%sのものだ。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_854",
+   "src": 854,
+   "who": "narrator",
+   "en": "It does not take long and it does not hurt, and both of those are the problem.",
+   "ja": "時間はかからず、痛みもない。そのどちらもが問題なのだ。"
+  },
+  {
+   "id": "lien_855",
+   "src": 855,
+   "who": "narrator",
+   "en": "He puts a blank charm in her palm and closes her fingers on it and says something short, and the reading goes out of her the way a word goes when you have been trying to remember it and then stop trying.",
+   "ja": "彼は何も刻まれていない護符を彼女の掌に置き、その上に指を閉じさせて短く何かを言う。読み取りは彼女から出ていく。思い出そうとしていた言葉が、思い出すのをやめたときに去っていくように。"
+  },
+  {
+   "id": "lien_856",
+   "src": 856,
+   "who": "narrator",
+   "en": "She can still describe the room. She cannot see it. It has become a thing she knows rather than a thing she has.",
+   "ja": "あの部屋のことはまだ説明できる。見ることはできない。それは持っているものではなく、知っているものになった。"
+  },
+  {
+   "id": "lien_857",
+   "src": 857,
+   "who": "nara",
+   "en": "That's it?",
+   "ja": "それだけ？"
+  },
+  {
+   "id": "lien_858",
+   "src": 858,
+   "who": "cal",
+   "en": "That's it. You'll notice in about a week that you've stopped being able to picture it. Most people say that's an improvement.",
+   "ja": "それだけだ。一週間もすれば思い浮かべられなくなってるのに気づくだろう。たいていの人はそのほうがいいと言う。"
+  },
+  {
+   "id": "lien_859",
+   "src": 859,
+   "who": "nara",
+   "en": "And them?",
+   "ja": "で、あの人たちは？"
+  },
+  {
+   "id": "lien_860",
+   "src": 860,
+   "who": "cal",
+   "en": "They'll never know. Nobody ever knows. That's the entire business, Quill, that's why it's worth ninety and not nine.",
+   "ja": "決して知らない。誰も知らないんだ。それがこの商売のすべてだよ、クイル。だから九で済まず九十になる。"
+  },
+  {
+   "id": "lien_861",
+   "src": 861,
+   "who": "narrator",
+   "en": "He counts it out in notes that are warm, which she decides not to think about.",
+   "ja": "彼は温かい紙幣で数えて渡す。そのことは考えないと、彼女は決める。"
+  },
+  {
+   "id": "lien_862",
+   "src": 862,
+   "who": "narrator",
+   "en": "Till: %d.",
+   "ja": "レジ：%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_869",
+   "src": 869,
+   "who": "nara",
+   "en": "No.",
+   "ja": "いいえ。"
+  },
+  {
+   "id": "lien_870",
+   "src": 870,
+   "who": "cal",
+   "en": "Say a number.",
+   "ja": "数字を言ってみろ。"
+  },
+  {
+   "id": "lien_871",
+   "src": 871,
+   "who": "nara",
+   "en": "There isn't one. That's not me being noble, it's me telling you the column doesn't have prices in it.",
+   "ja": "そんなものはない。気高いふりをしてるんじゃない。あの欄には値段なんて入ってないって言ってるの。"
+  },
+  {
+   "id": "lien_872",
+   "src": 872,
+   "who": "cal",
+   "en": "Everything has prices in it. That's painted on your own window.",
+   "ja": "何にだって値段は入ってる。君の店の窓に描いてあるじゃないか。"
+  },
+  {
+   "id": "lien_873",
+   "src": 873,
+   "who": "nara",
+   "en": "[i]What the living will offer, and what the dead will demand.[/i] You're neither. You're a man with an apron who found a gap.",
+   "ja": "[i]生者が差し出す値と、死者が求める値。[/i] あなたはどちらでもない。隙間を見つけた、エプロン姿の男よ。"
+  },
+  {
+   "id": "lien_874",
+   "src": 874,
+   "who": "narrator",
+   "en": "Calder laughs, genuinely, for the first time in three years of doing business.",
+   "ja": "コールダーが笑う。三年の取引で初めて、本気で。"
+  },
+  {
+   "id": "lien_875",
+   "src": 875,
+   "who": "cal",
+   "en": "That's Elsa's line. Word for word, same flat delivery. She said no as well.",
+   "ja": "エルサの台詞だ。一言一句、同じ平板な言い方で。彼女もノーと言った。"
+  },
+  {
+   "id": "lien_876",
+   "src": 876,
+   "who": "nara",
+   "en": "Then you've had your answer twice.",
+   "ja": "なら、答えは二度聞いたわけね。"
+  },
+  {
+   "id": "lien_877",
+   "src": 877,
+   "who": "cal",
+   "en": "I've had it twice from the same shop. Come back in March.",
+   "ja": "同じ店から二度な。三月にまた来い。"
+  },
+  {
+   "id": "lien_885",
+   "src": 885,
+   "who": "narrator",
+   "en": "Forty-one steps back up, and on the way up the tickets are readable the other way round, which she has never noticed before.",
+   "ja": "四十一段を上る。上りでは札が逆向きに読める。今まで気づいたことがなかった。"
+  },
+  {
+   "id": "lien_886",
+   "src": 886,
+   "who": "narrator",
+   "en": "About two-thirds of the way she stops, because one of the treads near the top is newer than the others. Cleaner. Not yet walked flat.",
+   "ja": "三分の二ほど上ったところで彼女は立ちどまる。上のほうの踏み板のひとつがほかより新しいのだ。きれいで、まだ踏み平らされていない。"
+  },
+  {
+   "id": "lien_887",
+   "src": 887,
+   "who": "narrator",
+   "en": "It has a name on it and the name is hers and the date on it is tomorrow's.",
+   "ja": "名前が書いてある。それは彼女の名前で、日付は明日だ。"
+  },
+  {
+   "id": "lien_888",
+   "src": 888,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_889",
+   "src": 889,
+   "who": "narrator",
+   "en": "She steps on it, because the alternative is to stand in a stairwell until morning.",
+   "ja": "彼女はそれを踏む。さもなければ、朝まで階段の途中に立っていることになるから。"
+  },
+  {
+   "id": "lien_907",
+   "src": 907,
+   "who": "narrator",
+   "en": "Three forty. The shop has done its last shuffle of the night, and there is one object forward in the lamp that was not there when she went down.",
+   "ja": "三時四十分。店は今夜最後の入れ替えを終え、下りていったときにはなかった品がひとつ、ランプの明かりの中に進み出ている。"
+  },
+  {
+   "id": "lien_908",
+   "src": 908,
+   "who": "narrator",
+   "en": "Before she looks at it she does the thing Elsa did at the end of a night, which is to turn to the back of the book where the readings are kept.",
+   "ja": "それを見る前に、彼女はエルサが夜の終わりにしていたことをする。帳簿の後ろ、読み取りを記録してある箇所をめくるのだ。"
+  },
+  {
+   "id": "lien_915",
+   "src": 915,
+   "who": "narrator",
+   "en": "Two lines with nothing after them. Three, if you count the one the drawer refused.",
+   "ja": "何も続かない行が二つ。引き出しに断られた分を数えれば三つ。"
+  },
+  {
+   "id": "lien_916",
+   "src": 916,
+   "who": "nara",
+   "en": "Those stay blank. That's allowed. That's the whole point of a column — you're allowed to not fill it in.",
+   "ja": "そこは空白のまま。それでいい。欄というのはそういうものだ――埋めなくてもいい。"
+  },
+  {
+   "id": "lien_917",
+   "src": 917,
+   "who": "narrator",
+   "en": "It does not look like a principle in the book. In the book it looks like a gap.",
+   "ja": "帳簿の上では、それは信念には見えない。帳簿の上では、それは隙間に見える。"
+  },
+  {
+   "id": "lien_921",
+   "src": 921,
+   "who": "narrator",
+   "en": "Every line filled, in her own hand, in the ruled section she has never used.",
+   "ja": "すべての行が、彼女自身の筆跡で埋まっている。一度も使ったことのない罫線の区画で。"
+  },
+  {
+   "id": "lien_922",
+   "src": 922,
+   "who": "nara",
+   "en": "Well. I've had a night.",
+   "ja": "まあ。大変な夜だった。"
+  },
+  {
+   "id": "lien_923",
+   "src": 923,
+   "who": "narrator",
+   "en": "The fourth column is full and the drawer is thin and those two facts are the same fact wearing different hats.",
+   "ja": "四つ目の欄は満ちて、引き出しは薄い。その二つは、違う帽子をかぶった同じひとつの事実だ。"
+  },
+  {
+   "id": "lien_926",
+   "src": 926,
+   "who": "narrator",
+   "en": "Some of it filled in and some of it not, which is what most nights look like and is somehow the hardest version to feel anything about.",
+   "ja": "埋まったところもあれば、埋まらなかったところもある。たいていの夜はそんなふうで、なぜかそれがいちばん何かを感じにくい版だ。"
+  },
+  {
+   "id": "lien_929",
+   "src": 929,
+   "who": "narrator",
+   "en": "And now the counter.",
+   "ja": "そして、カウンター。"
+  },
+  {
+   "id": "lien_930",
+   "src": 930,
+   "who": "narrator",
+   "en": "It is a book. Black, quarter-bound, about the size of a hand, with a strap and no lock — Elsa never trusted a lock she could not pick, on the grounds that then she could not pick it.",
+   "ja": "それは一冊の本だ。黒い、背革装、手のひらほどの大きさで、留め革はあるが錠はない――エルサは自分で開けられない錠を信用しなかった。開けられないなら、自分でも開けられないからだ。"
+  },
+  {
+   "id": "lien_931",
+   "src": 931,
+   "who": "narrator",
+   "en": "It is the Black Ledger. It has been on the shop's shelves as stock since before Nara was born, priced at thirty, unsold, because nobody who has ever picked it up has wanted to own it once they have opened it.",
+   "ja": "それが〈黒い台帳〉だ。ナラが生まれる前から在庫として店の棚にあり、値は三十、売れ残っている。手に取った者は誰も、一度開いたあとではそれを所有したいと思わなかったから。"
+  },
+  {
+   "id": "lien_932",
+   "src": 932,
+   "who": "narrator",
+   "en": "Nara has opened it twice. Once at nineteen, on the day of the funeral, when it was a list of debtors in four hands going back to 1889 and the last entry was blank.",
+   "ja": "ナラは二度開いたことがある。一度は十九歳、葬儀の日。それは1889年まで遡る四つの筆跡による債務者の一覧で、最後の記入は空欄だった。"
+  },
+  {
+   "id": "lien_933",
+   "src": 933,
+   "who": "narrator",
+   "en": "And once at twenty-five, on a bad night, when it was the same list and the last entry had a date in it and the date was six years out.",
+   "ja": "もう一度は二十五歳、ひどい夜に。同じ一覧で、最後の記入には日付があり、その日付は六年先だった。"
+  },
+  {
+   "id": "lien_934",
+   "src": 934,
+   "who": "narrator",
+   "en": "The strap is done up. The card tucked under it is not a card. It is a pawn ticket, the shop's own, the ones Elsa had printed in 1981 and never reordered because there were nine hundred of them.",
+   "ja": "留め革は締めてある。その下に挟まれたカードはカードではない。質札だ。この店のもの。エルサが1981年に刷らせ、九百枚あったので二度と注文しなかったあの札だ。"
+  },
+  {
+   "id": "lien_935",
+   "src": 935,
+   "who": "nara",
+   "en": "You can't pawn this. You're the shop. I'm the shop. This is —",
+   "ja": "これは質に入れられない。あなたは店。私が店。これは――"
+  },
+  {
+   "id": "lien_936",
+   "src": 936,
+   "who": "shop",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_937",
+   "src": 937,
+   "who": "narrator",
+   "en": "There is a ticket under it. Filled in, in her handwriting, in pencil, which she has not done.",
+   "ja": "その下に札がある。記入済みで、彼女の筆跡で、鉛筆で。彼女は書いた覚えがない。"
+  },
+  {
+   "id": "lien_938",
+   "src": 938,
+   "who": "narrator",
+   "en": "[i]Item: N. Quill. Holder: the premises. Terms: thirty days from the date of first reading.[/i]",
+   "ja": "[i]品目：N・クイル。保有者：当店。条件：初回の読み取りの日から三十日。[/i]"
+  },
+  {
+   "id": "lien_939",
+   "src": 939,
+   "who": "narrator",
+   "en": "[i]Date of first reading: tonight.[/i]",
+   "ja": "[i]初回の読み取りの日：今夜。[/i]"
+  },
+  {
+   "id": "lien_940",
+   "src": 940,
+   "who": "nara",
+   "en": "No, that's — I've been reading things for three years.",
+   "ja": "違う、それは――三年も前から物を読んでる。"
+  },
+  {
+   "id": "lien_941",
+   "src": 941,
+   "who": "narrator",
+   "en": "[i]First reading of this item.[/i]",
+   "ja": "[i]本品目の初回の読み取り。[/i]"
+  },
+  {
+   "id": "lien_942",
+   "src": 942,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_943",
+   "src": 943,
+   "who": "narrator",
+   "en": "She works it out standing up, which she is proud of afterwards.",
+   "ja": "彼女は立ったままそれを理解する。あとになって、そのことを誇りに思う。"
+  },
+  {
+   "id": "lien_944",
+   "src": 944,
+   "who": "narrator",
+   "en": "The fourth column was never a cost. It was a schedule of payments. Every time she spent the shop's money to look inside something, she was not buying a view — she was making an instalment on a thing that was being bought, on terms, by the premises, from the premises.",
+   "ja": "四つ目の欄は代償などではなかった。支払いの予定表だった。店の金を使って何かの中を覗くたびに、彼女は眺めを買っていたのではない――当店が当店から、分割払いで買い取りつつある何かの、割賦金を払っていたのだ。"
+  },
+  {
+   "id": "lien_945",
+   "src": 945,
+   "who": "narrator",
+   "en": "And the thing being bought is on the counter with a strap round it.",
+   "ja": "そして買われつつあるものは、留め革を巻かれてカウンターの上にある。"
+  },
+  {
+   "id": "lien_948",
+   "src": 948,
+   "who": "narrator",
+   "en": "And she sold one down there for ninety pounds, which she now understands was not a sale. It was a payment [i]accelerated[/i]. Calder is not a factor because he factors debts. He is a factor because he is the reason yours comes due early.",
+   "ja": "そして彼女は下でひとつを九十ポンドで売った。今なら分かる、あれは売買ではなかった。[i]繰り上げ[/i]返済だ。コールダーが仲買人なのは、債権を買い取るからではない。あなたの期日が早まる理由が彼だからだ。"
+  },
+  {
+   "id": "lien_950",
+   "src": 950,
+   "who": "narrator",
+   "en": "%d paid in tonight, out of a drawer she thought was hers.",
+   "ja": "今夜払い込まれたのは%d。自分のものだと思っていた引き出しから。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_952",
+   "src": 952,
+   "who": "narrator",
+   "en": "Nothing paid in tonight. Zero instalments. The terms are still the terms, but the balance is where it was at midnight, and for the first time in three years the shop has got nothing off her.",
+   "ja": "今夜の払い込みはなし。割賦ゼロ。条件は条件のままだが、残高は真夜中のときのまま。この三年で初めて、店は彼女から何ひとつ取れなかった。"
+  },
+  {
+   "id": "lien_955",
+   "src": 955,
+   "who": "narrator",
+   "en": "She thinks, for about ninety seconds, about the door.",
+   "ja": "九十秒ほど、彼女はドアのことを考える。"
+  },
+  {
+   "id": "lien_956",
+   "src": 956,
+   "who": "narrator",
+   "en": "It is a real thought and she gives it a real hearing, because she is not a character in a story about a haunted shop, she is a woman with a coat on a hook and a sister in Sheffield and forty pounds in her own pocket that is hers and not the till's.",
+   "ja": "本物の考えで、彼女は本気で耳を傾ける。彼女は幽霊の出る店の物語の登場人物ではなく、フックにコートを掛け、シェフィールドに姉がいて、自分のポケットにはレジのものではない自分の四十ポンドがある女なのだから。"
+  },
+  {
+   "id": "lien_957",
+   "src": 957,
+   "who": "narrator",
+   "en": "She could walk. The estate would take the building. Somebody would buy it, and the shelves would shuffle at midnight for whoever that was, and the fourth column would open an account in a new name.",
+   "ja": "出ていくこともできる。遺産が建物を取るだろう。誰かが買い、その誰かのために棚は真夜中に入れ替わり、四つ目の欄は新しい名義で口座を開くだろう。"
+  },
+  {
+   "id": "lien_958",
+   "src": 958,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_959",
+   "src": 959,
+   "who": "nara",
+   "en": "And then I'd spend the rest of my life not knowing what was in it.",
+   "ja": "そして私は残りの人生を、そこに何があったのか知らないまま過ごすことになる。"
+  },
+  {
+   "id": "lien_960",
+   "src": 960,
+   "who": "narrator",
+   "en": "That is the whole of it, said out loud in an empty shop at three forty in the morning, and she hears herself say it and understands that this was never a trap. A trap requires a mechanism. This required only a woman who wanted to know things.",
+   "ja": "それがすべてだ。午前三時四十分の空っぽの店で声に出して言われたそれを、彼女は自分の声で聞き、これが最初から罠ではなかったと理解する。罠には仕掛けが要る。これに要ったのは、物事を知りたがる女がひとりいることだけだった。"
+  },
+  {
+   "id": "lien_961",
+   "src": 961,
+   "who": "narrator",
+   "en": "There is no menu here. The shop has not offered her a choice, because the shop does not have to — she has had her hand on every other object in this building all night, and this is the one that has been waiting.",
+   "ja": "ここに選択肢はない。店は彼女に選ばせなかった。選ばせる必要がないのだ――彼女は一晩じゅう、この建物のほかのすべての物に手を当ててきた。そしてこれが、待っていたひとつだ。"
+  },
+  {
+   "id": "lien_962",
+   "src": 962,
+   "who": "nara",
+   "en": "Fine.",
+   "ja": "いいわ。"
+  },
+  {
+   "id": "lien_963",
+   "src": 963,
+   "who": "nara",
+   "en": "Let's see what I've been using myself for.",
+   "ja": "さあ、私が自分を何に使ってきたのか見てみよう。"
+  },
+  {
+   "id": "lien_971",
+   "src": 971,
+   "who": "narrator",
+   "en": "It is this room. It is this hour. It is now, or near enough — the reading has caught up with itself, because the last use of Nara Quill was the last four hours and there is nothing else on the reel.",
+   "ja": "この部屋だ。この時刻だ。今、あるいはほぼ今――読み取りが自分自身に追いついたのだ。ナラ・クイルの最後の用途はこの四時間で、リールにはほかに何もない。"
+  },
+  {
+   "id": "lien_972",
+   "src": 972,
+   "who": "narrator",
+   "en": "She is standing where she is standing, on the customer's side of her own counter, four feet up and slightly behind, looking at her own back and her own hands.",
+   "ja": "彼女は自分の立っている場所に立っている。自分のカウンターの客の側に、四フィート上の少し後ろから、自分の背中と自分の両手を見ている。"
+  },
+  {
+   "id": "lien_973",
+   "src": 973,
+   "who": "narrator",
+   "en": "The waistcoat is open and off one shoulder because she has been reaching across a counter all night and nobody straightens their clothes at four in the morning in an empty shop.",
+   "ja": "ベストは前が開き、片方の肩から落ちている。一晩じゅうカウンター越しに手を伸ばしていたからで、空っぽの店で朝の四時に服を直す人などいない。"
+  },
+  {
+   "id": "lien_974",
+   "src": 974,
+   "who": "narrator",
+   "en": "The monocle on its chain. Ink on three fingers. The bun that went a while ago.",
+   "ja": "鎖につけた片眼鏡。三本の指にインク。とっくにほどけたまとめ髪。"
+  },
+  {
+   "id": "lien_975",
+   "src": 975,
+   "who": "narrator",
+   "en": "And the mirror behind the counter, which she has not looked into properly in about a year, which is doing what mirrors have been doing all night in every single one of these readings.",
+   "ja": "そしてカウンターの背後の鏡。一年ほどまともに覗いていない鏡が、今夜のどの読み取りでも鏡がしてきたことをしている。"
+  },
+  {
+   "id": "lien_976",
+   "src": 976,
+   "who": "narrator",
+   "en": "In the glass she is looking straight out. At the vantage point. At the place where the person watching a reading stands.",
+   "ja": "ガラスの中の彼女は、まっすぐこちらを見ている。視点を。読み取りを見る者が立つ場所を。"
+  },
+  {
+   "id": "lien_977",
+   "src": 977,
+   "who": "nara",
+   "en": "...",
+   "ja": "……"
+  },
+  {
+   "id": "lien_978",
+   "src": 978,
+   "who": "narrator",
+   "en": "That is not how a reading works. Nobody in a reading has ever once looked at her.",
+   "ja": "読み取りはそういうものではない。読み取りの中の誰かが彼女を見たことなど、一度もない。"
+  },
+  {
+   "id": "lien_979",
+   "src": 979,
+   "who": "narrator",
+   "en": "The Nara in the mirror is not startled and is not frightened and is not apologising. She looks like someone who has been waiting at a counter for a long time and has finally been served.",
+   "ja": "鏡の中のナラは驚いてもおらず、怯えてもおらず、詫びてもいない。長いことカウンターで待っていて、ようやく応対してもらえた人のように見える。"
+  },
+  {
+   "id": "lien_980",
+   "src": 980,
+   "who": "narrator",
+   "en": "Then she says four words, and readings do not carry sound, so Nara gets the shape of it and the shape is unmistakable, because it is the shape of the thing painted backwards in gold on her own window.",
+   "ja": "それから彼女は四語を口にする。読み取りは音を運ばないから、ナラが受け取るのは形だけだ。だがその形は見間違えようがない。自分の店の窓に、金で裏返しに描かれたものの形なのだから。"
+  },
+  {
+   "id": "lien_981",
+   "src": 981,
+   "who": "narrator",
+   "en": "[i]What the dead will demand.[/i]",
+   "ja": "[i]死者が求める値。[/i]"
+  },
+  {
+   "id": "lien_982",
+   "src": 982,
+   "who": "narrator",
+   "en": "And then — because a reading runs to the end of the last use and this one has not finished — the Nara in the mirror reaches out of frame, and brings her hand back with a pencil in it, and writes on a ticket.",
+   "ja": "そして――読み取りは最後の用途の終わりまで流れ、これはまだ終わっていないから――鏡の中のナラは枠の外へ手を伸ばし、鉛筆を持った手を戻し、札に書きつける。"
+  },
+  {
+   "id": "lien_983",
+   "src": 983,
+   "who": "narrator",
+   "en": "She is left-handed in the glass, which is what a mirror does, and Nara watches her own hand form her own name backwards with the ease of somebody who has done it nine hundred times.",
+   "ja": "ガラスの中の彼女は左利きだ。鏡とはそういうものだ。ナラは、自分の手が自分の名前を裏返しに綴るのを見つめる。九百回はそうしてきた人の手つきで。"
+  },
+  {
+   "id": "lien_984",
+   "src": 984,
+   "who": "narrator",
+   "en": "She writes the item. She writes the holder. She writes the terms.",
+   "ja": "品目を書く。保有者を書く。条件を書く。"
+  },
+  {
+   "id": "lien_985",
+   "src": 985,
+   "who": "narrator",
+   "en": "And at the bottom, in the space where the broker signs to say the goods were received in good order, she writes, in the same hand, the thing that is painted on the window.",
+   "ja": "そして一番下の、品物を良好な状態で受領したと仲買人が署名する欄に、同じ筆跡で、窓に描かれているあの言葉を書く。"
+  },
+  {
+   "id": "lien_986",
+   "src": 986,
+   "who": "narrator",
+   "en": "Then she puts the pencil down and looks up, and for the first time in three years of doing this to other people, Nara finds out what it is like on the other side of a reading: to be the room, and to know somebody is standing in it, and to have no way at all of telling them to get out.",
+   "ja": "それから鉛筆を置いて顔を上げる。三年間、他人にこれをしてきて初めて、ナラは読み取りの向こう側がどういうものかを知る。自分が部屋であること。その中に誰かが立っていると知っていること。そして出ていけと告げる手立てが、まったくないこと。"
+  },
+  {
+   "id": "lien_987",
+   "src": 987,
+   "who": "narrator",
+   "en": "The light goes.",
+   "ja": "光が消える。"
+  },
+  {
+   "id": "lien_989",
+   "src": 989,
+   "who": "narrator",
+   "en": "Four twelve. The Black Ledger is on the counter with the strap done up and the ticket is gone.",
+   "ja": "四時十二分。〈黒い台帳〉は留め革を締めたままカウンターの上にあり、札は消えている。"
+  },
+  {
+   "id": "lien_1007",
+   "src": 1007,
+   "who": "narrator",
+   "en": "Five ten. The window goes from black to the colour of a bruise going down, and the gold letters come back the right way round for about four minutes, which they do every morning and she has seen perhaps six times.",
+   "ja": "五時十分。窓が黒から、引いていく痣の色に変わる。金文字が四分ほどだけ正しい向きに戻る。毎朝そうなるのだが、彼女が見たのはたぶん六回ほどだ。"
+  },
+  {
+   "id": "lien_1008",
+   "src": 1008,
+   "who": "narrator",
+   "en": "The count.",
+   "ja": "勘定。"
+  },
+  {
+   "id": "lien_1009",
+   "src": 1009,
+   "who": "narrator",
+   "en": "Till: %d. On the shelf: %d — a finial, a ring, a veil, none of them claimed, all of them thirty days from being the shop's.",
+   "ja": "レジ：%d。棚には：%d――フィニアル、指輪、ヴェール。どれも請け出されず、どれもあと三十日で店のものになる。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_1010",
+   "src": 1010,
+   "who": "narrator",
+   "en": "Against the estate: %d.",
+   "ja": "遺産への借り：%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_1011",
+   "src": 1011,
+   "who": "narrator",
+   "en": "Net: %d.",
+   "ja": "差引：%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_1024",
+   "src": 1024,
+   "who": "narrator",
+   "en": "Clear. Not comfortable — clear.",
+   "ja": "完済。楽ではない――でも完済。"
+  },
+  {
+   "id": "lien_1025",
+   "src": 1025,
+   "who": "narrator",
+   "en": "At eight she walks the two hundred to the estate office in an envelope, because Elsa never trusted a transfer, and the man behind the glass stamps a thing and the shop stops being a debt and starts being a shop.",
+   "ja": "八時、彼女は封筒に入れた二百を歩いて遺産管理事務所へ持っていく。エルサは振込を信用しなかったから。ガラスの向こうの男が何かに判を押し、店は借金であることをやめて、店になる。"
+  },
+  {
+   "id": "lien_1029",
+   "src": 1029,
+   "who": "narrator",
+   "en": "In the back of the book, in the ruled section, three lines with nothing after them.",
+   "ja": "帳簿の後ろ、罫線の区画に、何も続かない行が三つ。"
+  },
+  {
+   "id": "lien_1030",
+   "src": 1030,
+   "who": "narrator",
+   "en": "She looks at them for a while on the walk back.",
+   "ja": "帰り道、彼女はしばらくそれを眺める。"
+  },
+  {
+   "id": "lien_1031",
+   "src": 1031,
+   "who": "nara",
+   "en": "I could have. That's the bit. It wasn't that I couldn't.",
+   "ja": "やろうと思えばできた。そこなんだ。できなかったわけじゃない。"
+  },
+  {
+   "id": "lien_1032",
+   "src": 1032,
+   "who": "narrator",
+   "en": "She did not see Tamsin's room, or Ivo's, or Mara's mirror. She priced three strangers on the evidence of brass, gold and crepe, and she got two of the three roughly right, and the third one she will never know about, which is the cost and she has decided she can carry it.",
+   "ja": "彼女はタムシンの部屋も、イヴォの部屋も、マーラの鏡も見なかった。真鍮と金とクレープを証拠に三人の見知らぬ人に値をつけ、三つのうち二つはおおむね正しく、三つ目については決して知ることがない。それが代償で、彼女はそれを背負っていけると決めた。"
+  },
+  {
+   "id": "lien_1035",
+   "src": 1035,
+   "who": "narrator",
+   "en": "In the back of the book, some lines filled in and some not, and a balance that came out on the correct side of the line by an amount that would not survive one bad week.",
+   "ja": "帳簿の後ろには、埋まった行と埋まらない行。そして線の正しい側にかろうじて出た残高。ひどい一週間がひとつあれば吹き飛ぶ程度の額だ。"
+  },
+  {
+   "id": "lien_1037",
+   "src": 1037,
+   "who": "narrator",
+   "en": "Nothing comes due. The stair behind the stock room has forty-one treads on it and the newest one near the top has her name on it and a date that was yesterday, and yesterday has now been and gone and nothing happened.",
+   "ja": "何も期日を迎えない。倉庫の奥の階段には四十一の踏み板があり、上のほうの一番新しい板には彼女の名前と、昨日だった日付がある。その昨日は来て、過ぎ去り、何も起きなかった。"
+  },
+  {
+   "id": "lien_1038",
+   "src": 1038,
+   "who": "narrator",
+   "en": "That is what an unpaid instalment looks like from the outside. Nothing happening, indefinitely.",
+   "ja": "未払いの割賦は、外から見るとそういうものだ。何も起きないことが、いつまでも続く。"
+  },
+  {
+   "id": "lien_1039",
+   "src": 1039,
+   "who": "nara",
+   "en": "Thirty days on the ticket.",
+   "ja": "札の期限は三十日。"
+  },
+  {
+   "id": "lien_1040",
+   "src": 1040,
+   "who": "narrator",
+   "en": "She says it to the shop, out loud, at eight forty in the morning, and the shop does not answer, which she has decided to read as terms accepted.",
+   "ja": "朝の八時四十分、彼女は声に出して店にそう言う。店は答えない。彼女はそれを、条件を承諾したと読むことにした。"
+  },
+  {
+   "id": "lien_1041",
+   "src": 1041,
+   "who": "narrator",
+   "en": "Tamsin Reed comes back on the Thursday with the other three finials. Nara pays her for a set.",
+   "ja": "タムシン・リードは木曜日に、残りの三つのフィニアルを持って戻ってくる。ナラはセットとして代金を払う。"
+  },
+  {
+   "id": "lien_1050",
+   "src": 1050,
+   "who": "narrator",
+   "en": "The estate is settled by nine with sixty-odd left over, which is more money than this shop has had at one time since Elsa was upright.",
+   "ja": "九時には遺産の件が片づき、六十いくらかが残る。エルサがまだ背筋を伸ばしていた頃以来、この店が一度に持った最高額だ。"
+  },
+  {
+   "id": "lien_1051",
+   "src": 1051,
+   "who": "narrator",
+   "en": "And a week later, exactly as advertised, she stops being able to picture it.",
+   "ja": "そして一週間後、まさに宣伝どおり、彼女はそれを思い浮かべられなくなる。"
+  },
+  {
+   "id": "lien_1052",
+   "src": 1052,
+   "who": "narrator",
+   "en": "She can still say the sentence. [i]%s — the room, the light, what happened in it.[/i] She can tell you the facts in the flat voice you use for facts.",
+   "ja": "文はまだ言える。[i]%s――あの部屋、あの光、そこで起きたこと。[/i] 事実を話すときの平板な声で、事実を語ることはできる。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_1053",
+   "src": 1053,
+   "who": "narrator",
+   "en": "But the picture is gone, and what is worse is that it was not taken from her. She sold it. She has a receipt, in the fourth column, in the credit side, which she did not know the fourth column had.",
+   "ja": "だが絵は消えた。もっと悪いのは、それが奪われたのではないということだ。彼女が売った。領収書がある。四つ目の欄の、貸方に。四つ目の欄に貸方があるなんて、彼女は知らなかった。"
+  },
+  {
+   "id": "lien_1054",
+   "src": 1054,
+   "who": "narrator",
+   "en": "In March, Calder comes up the stairs.",
+   "ja": "三月、コールダーが階段を上ってくる。"
+  },
+  {
+   "id": "lien_1055",
+   "src": 1055,
+   "who": "narrator",
+   "en": "He has never done that. Nobody from down there has ever done that. He stands on the customer's side of the counter in an apron over good clothes and looks around at the stock with the expression of a man doing a survey.",
+   "ja": "彼がそうしたことは一度もない。下の者が上がってきたことなど一度もない。彼は上等な服にエプロンを掛けてカウンターの客の側に立ち、測量でもする男の顔つきで在庫を見回す。"
+  },
+  {
+   "id": "lien_1056",
+   "src": 1056,
+   "who": "cal",
+   "en": "You've had a good quarter.",
+   "ja": "いい四半期だったようだな。"
+  },
+  {
+   "id": "lien_1057",
+   "src": 1057,
+   "who": "nara",
+   "en": "I've had a quiet one.",
+   "ja": "静かな四半期だった。"
+  },
+  {
+   "id": "lien_1058",
+   "src": 1058,
+   "who": "cal",
+   "en": "Same thing at your end. I'll take three this time.",
+   "ja": "こっちから見れば同じことだ。今回は三つもらおう。"
+  },
+  {
+   "id": "lien_1059",
+   "src": 1059,
+   "who": "nara",
+   "en": "I've only got —",
+   "ja": "私にはまだ――"
+  },
+  {
+   "id": "lien_1060",
+   "src": 1060,
+   "who": "cal",
+   "en": "You'll have looked at more by now. You always do after the first. That's not a criticism, Quill, it's inventory forecasting.",
+   "ja": "もっと見てるはずだ。最初の一回のあとは、いつだってそうなる。批判じゃないぞ、クイル。在庫予測だ。"
+  },
+  {
+   "id": "lien_1061",
+   "src": 1061,
+   "who": "narrator",
+   "en": "And the thing that finishes it is that he is right, and she knows he is right before he has got to the door, because she has spent three months taking readings she did not need and telling herself it was diligence.",
+   "ja": "とどめになるのは、彼が正しいということだ。彼がドアにたどり着く前に彼女にはそれが分かっている。この三か月、必要もない読み取りをして、それを勤勉だと自分に言い聞かせてきたのだから。"
+  },
+  {
+   "id": "lien_1062",
+   "src": 1062,
+   "who": "narrator",
+   "en": "The shop is solvent. It has one supplier and one customer and they are the same man, and the product is other people, and it was never going to be anything else from the moment she found out what the fourth column was for.",
+   "ja": "店は支払い能力を取り戻した。仕入れ先はひとつ、得意先はひとつ、そしてその二つは同じ男で、商品は他人だ。四つ目の欄が何のためにあるのか知ったその瞬間から、それ以外のものになるはずはなかった。"
+  },
+  {
+   "id": "lien_1063",
+   "src": 1063,
+   "who": "nara",
+   "en": "Come back in March.",
+   "ja": "三月にまた来い。"
+  },
+  {
+   "id": "lien_1064",
+   "src": 1064,
+   "who": "cal",
+   "en": "I did.",
+   "ja": "来たわ。"
+  },
+  {
+   "id": "lien_1072",
+   "src": 1072,
+   "who": "narrator",
+   "en": "The estate is settled, narrowly, out of a drawer that spent most of the night going the wrong way.",
+   "ja": "遺産の件は、一晩の大半を逆向きに進んだ引き出しから、辛うじて片づく。"
+  },
+  {
+   "id": "lien_1074",
+   "src": 1074,
+   "who": "narrator",
+   "en": "The estate is not settled. She is %d short and she signs the extension at nine fifteen, which she is told is routine and which the man behind the glass does not look up for.",
+   "ja": "遺産の件は片づかない。%d足りず、彼女は九時十五分に延長の書類に署名する。よくあることだと言われ、ガラスの向こうの男は顔も上げない。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_1076",
+   "src": 1076,
+   "who": "narrator",
+   "en": "But that was never what the night was about, and she knew it standing at the counter with her hand on a book.",
+   "ja": "だが、今夜はそういう話ではなかった。本に手を置いてカウンターに立っていたとき、彼女にはそれが分かっていた。"
+  },
+  {
+   "id": "lien_1077",
+   "src": 1077,
+   "who": "narrator",
+   "en": "Four readings. Five. Every line in the ruled section filled in, every instalment paid, on terms she agreed to by putting her palm on things.",
+   "ja": "四つの読み取り。五つ。罫線の区画のすべての行が埋まり、すべての割賦が払われた。物に掌を当てることで彼女が同意した条件で。"
+  },
+  {
+   "id": "lien_1078",
+   "src": 1078,
+   "who": "narrator",
+   "en": "The ticket said thirty days from the date of first reading. The date of first reading was last night. She has done the arithmetic and she is not going to do it again.",
+   "ja": "札には、初回の読み取りの日から三十日とあった。初回の読み取りの日は昨夜だった。彼女は計算を済ませ、二度とするつもりはない。"
+  },
+  {
+   "id": "lien_1079",
+   "src": 1079,
+   "who": "narrator",
+   "en": "Nothing dramatic happens on the thirtieth day. That is not the shape of this.",
+   "ja": "三十日目に劇的なことは何も起きない。これはそういう形の話ではない。"
+  },
+  {
+   "id": "lien_1080",
+   "src": 1080,
+   "who": "narrator",
+   "en": "What happens is that around the twenty-second she notices she has stopped going upstairs to the flat, and around the twenty-sixth she notices the shelves have stopped shuffling at midnight because they no longer need to do it while she is not looking.",
+   "ja": "起きるのはこういうことだ。二十二日目ごろ、彼女は階上の部屋へ上がらなくなっていることに気づく。二十六日目ごろ、真夜中に棚が入れ替わらなくなったことに気づく。彼女が見ていないあいだにそれをする必要が、もうないからだ。"
+  },
+  {
+   "id": "lien_1081",
+   "src": 1081,
+   "who": "narrator",
+   "en": "And on the thirtieth she is behind the counter at eleven fifty-eight with a stub of pencil and four columns, and the bell goes, and it is a woman in the rain with something in both hands.",
+   "ja": "そして三十日目、十一時五十八分、彼女はちびた鉛筆と四つの欄を前にカウンターの内側にいる。ベルが鳴る。雨の中の女が、両手で何かを持っている。"
+  },
+  {
+   "id": "lien_1082",
+   "src": 1082,
+   "who": "narrator",
+   "en": "Nara says the sentence. It comes out in Elsa's cadence, which she has never managed before and will never manage otherwise again.",
+   "ja": "ナラはあの文を言う。エルサの抑揚で出てくる。これまで一度もできなかったし、この先ほかのかたちでできることもない抑揚で。"
+  },
+  {
+   "id": "lien_1083",
+   "src": 1083,
+   "who": "nara",
+   "en": "I buy anything I can price.",
+   "ja": "値のつけられるものなら何でも。"
+  },
+  {
+   "id": "lien_1084",
+   "src": 1084,
+   "who": "narrator",
+   "en": "And somewhere behind her in the dark of the case glass, the shop has her exactly where it has always had every single thing in this building: forward, in the lamp, priced, and waiting for whoever it is that will need her.",
+   "ja": "そして背後のどこか、ケースのガラスの暗がりの中で、店は彼女を、この建物のすべての物をいつもそうしてきたとおりの場所に置いている。前へ、ランプの中へ、値をつけられて、彼女を必要とする誰かを待ちながら。"
+  },
+  {
+   "id": "lien_1085",
+   "src": 1085,
+   "who": "shop",
+   "en": "Thirty days on the ticket.",
+   "ja": "札の期限は三十日。"
+  },
+  {
+   "id": "lien_1095",
+   "src": 1095,
+   "who": "narrator",
+   "en": "[b]%s.[/b]",
+   "ja": "",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_1096",
+   "src": 1096,
+   "who": "narrator",
+   "en": "Readings taken: %d of 5. Refused: %d.",
+   "ja": "読み取った数：%d／5。断った数：%d。",
+   "fmt": true,
+   "skip": true
+  },
+  {
+   "id": "lien_1099",
+   "src": 1099,
+   "who": "narrator",
+   "en": "Refunded by the shop for readings it failed to deliver: %d.",
+   "ja": "読み取りを果たせなかった分として店が返した額：%d。",
+   "fmt": true,
+   "skip": true
+  }
+ ],
+ "menus": {}
+}

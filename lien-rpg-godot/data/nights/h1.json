@@ -1,0 +1,909 @@
+{
+ "id": "h1",
+ "title_key": "h1_title",
+ "sub_key": "h1_sub",
+ "turns": 70,
+ "clock_start": 1438,
+ "minutes_per_turn": 1,
+ "start_room": "shop",
+ "start_event": "h1_open",
+ "map": {
+  "image": "ledger",
+  "rooms": {
+   "shop": [
+    0.38,
+    0.08
+   ],
+   "stockroom": [
+    0.64,
+    0.08
+   ],
+   "street": [
+    0.12,
+    0.08
+   ],
+   "cellar": [
+    0.38,
+    0.27
+   ],
+   "receipt_stair": [
+    0.38,
+    0.46
+   ]
+  }
+ },
+ "rooms": {
+  "shop": {
+   "name_key": "r_shop",
+   "plate": "shop",
+   "music": "explore",
+   "mood": {
+    "ambient": "#a89888",
+    "lamps": [
+     [
+      0.5,
+      0.42,
+      1.1,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "window",
+     "kind": "search",
+     "pos": [
+      0.18,
+      0.32
+     ],
+     "event": "h1_window",
+     "label_key": "hs_window",
+     "xp": 5
+    },
+    {
+     "id": "shelves",
+     "kind": "search",
+     "pos": [
+      0.82,
+      0.38
+     ],
+     "event": "h1_shelves",
+     "label_key": "hs_shelves",
+     "gives": [
+      "tea"
+     ]
+    },
+    {
+     "id": "clock",
+     "kind": "search",
+     "pos": [
+      0.62,
+      0.22
+     ],
+     "event": "h1_clock",
+     "label_key": "hs_clock",
+     "xp": 5
+    },
+    {
+     "id": "to_stock",
+     "kind": "door",
+     "to": "stockroom",
+     "pos": [
+      0.92,
+      0.84
+     ]
+    },
+    {
+     "id": "to_street",
+     "kind": "door",
+     "to": "street",
+     "pos": [
+      0.08,
+      0.84
+     ],
+     "turns": 1
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "to": "cellar",
+     "pos": [
+      0.5,
+      0.84
+     ],
+     "if_flag": "tamsin_done"
+    }
+   ]
+  },
+  "stockroom": {
+   "name_key": "r_stockroom",
+   "plate": "stockroom",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8a8078",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "safe",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.6
+     ],
+     "event": "h1_safe",
+     "label_key": "hs_safe",
+     "gives": [
+      "lantern"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "boxes",
+     "kind": "search",
+     "pos": [
+      0.7,
+      0.62
+     ],
+     "event": "h1_boxes",
+     "label_key": "hs_boxes",
+     "gives": [
+      "salts"
+     ]
+    },
+    {
+     "id": "ledgers",
+     "kind": "search",
+     "pos": [
+      0.55,
+      0.3
+     ],
+     "event": "h1_ledgers",
+     "label_key": "hs_ledgers",
+     "gives": [
+      "elsa_note"
+     ],
+     "xp": 10
+    },
+    {
+     "id": "to_shop",
+     "kind": "door",
+     "to": "shop",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    }
+   ],
+   "enter_event": "h1_stock"
+  },
+  "street": {
+   "name_key": "r_street",
+   "plate": "street",
+   "music": "explore",
+   "mood": {
+    "ambient": "#8088a8",
+    "lamps": [
+     [
+      0.3,
+      0.3,
+      1.0,
+      "#ffb060"
+     ],
+     [
+      0.8,
+      0.2,
+      0.8,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "pledge",
+     "kind": "enemy",
+     "enemy": "pledge",
+     "pos": [
+      0.62,
+      0.5
+     ],
+     "event": "h1_pledge_pre",
+     "after": "h1_pledge_post"
+    },
+    {
+     "id": "gutter",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.75
+     ],
+     "event": "h1_gutter",
+     "label_key": "hs_gutter",
+     "gives": [
+      "bone_charm"
+     ]
+    },
+    {
+     "id": "shelter",
+     "kind": "event",
+     "pos": [
+      0.85,
+      0.45
+     ],
+     "event": "h1_shelter",
+     "label_key": "hs_shelter",
+     "if_flag": "tamsin_done"
+    },
+    {
+     "id": "to_shop",
+     "kind": "door",
+     "to": "shop",
+     "pos": [
+      0.5,
+      0.84
+     ],
+     "turns": 1
+    }
+   ],
+   "enter_event": "h1_street"
+  },
+  "cellar": {
+   "name_key": "r_cellar",
+   "plate": "cellar",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8088",
+    "lamps": [
+     [
+      0.45,
+      0.4,
+      0.9,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "candle",
+     "kind": "search",
+     "pos": [
+      0.3,
+      0.4
+     ],
+     "event": "h1_candle",
+     "label_key": "hs_candle",
+     "xp": 5
+    },
+    {
+     "id": "hatch",
+     "kind": "event",
+     "pos": [
+      0.55,
+      0.66
+     ],
+     "event": "h1_hatch",
+     "label_key": "hs_hatch",
+     "if_not_flag": "hatch_open"
+    },
+    {
+     "id": "to_shop",
+     "kind": "door",
+     "to": "shop",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "receipt_stair",
+     "pos": [
+      0.6,
+      0.84
+     ],
+     "if_flag": "hatch_open"
+    }
+   ],
+   "enter_event": "h1_cellar"
+  },
+  "receipt_stair": {
+   "name_key": "r_receipt_stair",
+   "plate": "receipt_stair",
+   "music": "explore",
+   "mood": {
+    "ambient": "#70888a",
+    "lamps": [
+     [
+      0.5,
+      0.3,
+      1.0,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "keeper",
+     "kind": "enemy",
+     "enemy": "keeper",
+     "pos": [
+      0.42,
+      0.5
+     ],
+     "event": "h1_keeper_pre",
+     "after": "h1_keeper_post"
+    },
+    {
+     "id": "slips",
+     "kind": "search",
+     "pos": [
+      0.18,
+      0.35
+     ],
+     "event": "h1_slips",
+     "label_key": "hs_slips",
+     "xp": 10
+    },
+    {
+     "id": "niche",
+     "kind": "search",
+     "pos": [
+      0.8,
+      0.6
+     ],
+     "event": "h1_niche",
+     "label_key": "hs_niche",
+     "gives": [
+      "bone_charm",
+      "bone_charm"
+     ],
+     "if_flag": "keeper_done"
+    },
+    {
+     "id": "clerk",
+     "kind": "enemy",
+     "enemy": "clerk",
+     "pos": [
+      0.6,
+      0.45
+     ],
+     "event": "h1_clerk_pre",
+     "after": "h1_clerk_post",
+     "if_flag": "keeper_done"
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "to": "cellar",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    }
+   ],
+   "enter_event": "h1_stair"
+  }
+ },
+ "events": {
+  "h1_open": [
+   {
+    "bg": "shop"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "lines": "lien:171-189"
+   },
+   {
+    "say": "nara",
+    "key": "v_greet_0"
+   },
+   {
+    "lines": "lien:190-191"
+   },
+   {
+    "show": "tamsin",
+    "x": 0.7
+   },
+   {
+    "lines": "lien:199-218"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_talk_0"
+   },
+   {
+    "choice": [
+     {
+      "key": "h1_talk_flat",
+      "do": [
+       {
+        "say": "tam",
+        "key": "h1_flat_1"
+       },
+       {
+        "say": "nara",
+        "key": "h1_flat_2"
+       },
+       {
+        "say": "tam",
+        "key": "h1_flat_3"
+       },
+       {
+        "trust": 1,
+        "track": "tamsin"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "h1_talk_cast",
+      "do": [
+       {
+        "say": "tam",
+        "key": "h1_cast_1"
+       },
+       {
+        "say": "narrator",
+        "key": "h1_cast_2"
+       },
+       {
+        "trust": 1,
+        "track": "tamsin"
+       }
+      ],
+      "auto_rank": 1
+     },
+     {
+      "key": "h1_talk_none",
+      "do": [],
+      "auto_rank": 0
+     }
+    ]
+   },
+   {
+    "choice": [
+     {
+      "key": "h1_read",
+      "do": [
+       {
+        "say": "nara",
+        "key": "v_greet_1"
+       },
+       {
+        "say": "narrator",
+        "key": "h1_clue"
+       },
+       {
+        "lines": "lien:229-229"
+       },
+       {
+        "say": "narrator",
+        "key": "h1_duel_1"
+       },
+       {
+        "say": "narrator",
+        "key": "h1_duel_2"
+       },
+       {
+        "say": "nara",
+        "key": "v_near_0"
+       },
+       {
+        "battle": "echo_finial"
+       },
+       {
+        "say": "nara",
+        "key": "v_win_0"
+       },
+       {
+        "lines": "lien:256-256"
+       },
+       {
+        "cg": "cg_tamsin"
+       },
+       {
+        "lines": "lien:257-263"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "lines": "lien:265-269"
+       },
+       {
+        "flag": "read_finial"
+       },
+       {
+        "give": "n_read",
+        "n": 1,
+        "quiet": true
+       }
+      ],
+      "auto_rank": 1
+     },
+     {
+      "key": "h1_blind",
+      "do": [
+       {
+        "lines": "lien:243-246"
+       },
+       {
+        "flag": "refused_finial"
+       },
+       {
+        "give": "n_refused",
+        "n": 1,
+        "quiet": true
+       }
+      ],
+      "auto_rank": 0
+     }
+    ]
+   },
+   {
+    "lines": "lien:276-277"
+   },
+   {
+    "choice": [
+     {
+      "key": "price_finial_low",
+      "do": [
+       {
+        "take": "coin",
+        "n": 14
+       },
+       {
+        "flag": "price_finial_low"
+       },
+       {
+        "lines": "lien:287-292"
+       }
+      ],
+      "auto_rank": 0
+     },
+     {
+      "key": "price_finial_fair",
+      "do": [
+       {
+        "take": "coin",
+        "n": 22
+       },
+       {
+        "flag": "price_finial_fair"
+       },
+       {
+        "trust": 1,
+        "track": "tamsin"
+       },
+       {
+        "say": "nara",
+        "key": "v_win_2"
+       },
+       {
+        "lines": "lien:296-306"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "price_finial_high",
+      "do": [
+       {
+        "take": "coin",
+        "n": 33
+       },
+       {
+        "flag": "price_finial_high"
+       },
+       {
+        "trust": 2,
+        "track": "tamsin"
+       },
+       {
+        "lines": "lien:310-318"
+       },
+       {
+        "if_flag": "read_finial",
+        "then": [
+         {
+          "if_trust": 3,
+          "track": "tamsin",
+          "then": [
+           {
+            "say": "nara",
+            "key": "v_unlock_0"
+           },
+           {
+            "cg": "cg_finial"
+           },
+           {
+            "lines": "lien:320-321"
+           },
+           {
+            "hide_cg": true
+           }
+          ],
+          "else": [
+           {
+            "lines": "lien:320-321"
+           },
+           {
+            "say": "narrator",
+            "key": "h1_finial_hint"
+           }
+          ]
+         }
+        ],
+        "else": [
+         {
+          "lines": "lien:320-321"
+         }
+        ]
+       }
+      ],
+      "auto_rank": 1
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "give": "ticket_tamsin"
+   },
+   {
+    "flag": "tamsin_done"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_after_1"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_after_2"
+   },
+   {
+    "say": "nara",
+    "key": "h1_after_3"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_after_4"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_tutorial"
+   }
+  ],
+  "h1_window": [
+   {
+    "say": "nara",
+    "key": "v_idle_1"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_window_1"
+   }
+  ],
+  "h1_shelves": [
+   {
+    "say": "narrator",
+    "key": "h1_shelves_1"
+   }
+  ],
+  "h1_clock": [
+   {
+    "say": "narrator",
+    "key": "h1_clock_1"
+   }
+  ],
+  "h1_stock": [
+   {
+    "say": "narrator",
+    "key": "h1_stock_1"
+   }
+  ],
+  "h1_safe": [
+   {
+    "say": "narrator",
+    "key": "h1_safe_1"
+   }
+  ],
+  "h1_boxes": [
+   {
+    "say": "narrator",
+    "key": "h1_boxes_1"
+   }
+  ],
+  "h1_ledgers": [
+   {
+    "say": "narrator",
+    "key": "h1_ledgers_1"
+   }
+  ],
+  "h1_street": [
+   {
+    "say": "narrator",
+    "key": "h1_street_1"
+   }
+  ],
+  "h1_gutter": [
+   {
+    "say": "narrator",
+    "key": "h1_gutter_1"
+   }
+  ],
+  "h1_shelter": [
+   {
+    "if_flag": "price_finial_low",
+    "then": [
+     {
+      "say": "narrator",
+      "key": "h1_shelter_low"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "h1_shelter_1"
+     },
+     {
+      "say": "tam",
+      "key": "h1_shelter_2"
+     },
+     {
+      "say": "nara",
+      "key": "h1_shelter_3"
+     },
+     {
+      "trust": 1,
+      "track": "tamsin"
+     }
+    ]
+   }
+  ],
+  "h1_pledge_pre": [
+   {
+    "say": "narrator",
+    "key": "h1_pledge_1"
+   },
+   {
+    "say": "nara",
+    "key": "h1_pledge_2"
+   }
+  ],
+  "h1_pledge_post": [
+   {
+    "say": "narrator",
+    "key": "h1_pledge_3"
+   },
+   {
+    "flag": "pledge_done"
+   }
+  ],
+  "h1_cellar": [
+   {
+    "say": "narrator",
+    "key": "h1_cellar_1"
+   }
+  ],
+  "h1_candle": [
+   {
+    "say": "narrator",
+    "key": "h1_candle_1"
+   }
+  ],
+  "h1_hatch": [
+   {
+    "say": "narrator",
+    "key": "h1_hatch_1"
+   },
+   {
+    "cg": "cg_descent"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_hatch_2"
+   },
+   {
+    "say": "nara",
+    "key": "h1_hatch_3"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "flag": "hatch_open"
+   },
+   {
+    "xp": 10
+   }
+  ],
+  "h1_stair": [
+   {
+    "say": "nara",
+    "key": "v_stage_1"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_stair_1"
+   }
+  ],
+  "h1_slips": [
+   {
+    "say": "narrator",
+    "key": "h1_slips_1"
+   }
+  ],
+  "h1_niche": [
+   {
+    "say": "narrator",
+    "key": "h1_niche_1"
+   }
+  ],
+  "h1_keeper_pre": [
+   {
+    "say": "narrator",
+    "key": "h1_keeper_1"
+   },
+   {
+    "say": "keeper",
+    "key": "h1_keeper_2"
+   }
+  ],
+  "h1_keeper_post": [
+   {
+    "say": "keeper",
+    "key": "h1_keeper_3"
+   },
+   {
+    "flag": "keeper_done"
+   }
+  ],
+  "h1_clerk_pre": [
+   {
+    "say": "narrator",
+    "key": "h1_clerk_1"
+   },
+   {
+    "say": "clerk",
+    "key": "h1_clerk_2"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_clerk_3"
+   }
+  ],
+  "h1_clerk_post": [
+   {
+    "say": "nara",
+    "key": "v_win_1"
+   },
+   {
+    "say": "clerk",
+    "key": "h1_clerk_4"
+   },
+   {
+    "say": "narrator",
+    "key": "h1_clerk_5"
+   },
+   {
+    "flag": "h1_done"
+   },
+   {
+    "end_night": true,
+    "next": "h2"
+   }
+  ]
+ }
+}

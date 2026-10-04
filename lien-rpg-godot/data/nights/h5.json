@@ -1,0 +1,764 @@
+{
+ "id": "h5",
+ "title_key": "h5_title",
+ "sub_key": "h5_sub",
+ "turns": 40,
+ "clock_start": 210,
+ "minutes_per_turn": 1,
+ "start_room": "mirror_hall",
+ "start_event": "h5_open",
+ "map": {
+  "image": "ledger",
+  "rooms": {
+   "mirror_hall": [
+    0.64,
+    0.46
+   ],
+   "cellar": [
+    0.38,
+    0.27
+   ],
+   "shop": [
+    0.38,
+    0.08
+   ]
+  }
+ },
+ "rooms": {
+  "mirror_hall": {
+   "name_key": "r_mirror_hall",
+   "plate": "mirror_hall",
+   "music": "explore",
+   "mood": {
+    "ambient": "#88788a",
+    "lamps": [
+     [
+      0.3,
+      0.35,
+      1.0,
+      "#ffc080"
+     ],
+     [
+      0.7,
+      0.35,
+      1.0,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "auditor",
+     "kind": "enemy",
+     "enemy": "auditor",
+     "pos": [
+      0.5,
+      0.48
+     ],
+     "event": "h5_aud_pre",
+     "after": "h5_aud_post"
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "to": "cellar",
+     "pos": [
+      0.9,
+      0.84
+     ],
+     "if_flag": "auditor_done"
+    }
+   ],
+   "enter_event": "h5_landing"
+  },
+  "cellar": {
+   "name_key": "r_cellar",
+   "plate": "cellar",
+   "music": "explore",
+   "mood": {
+    "ambient": "#7a8088",
+    "lamps": [
+     [
+      0.45,
+      0.4,
+      0.9,
+      "#ffc080"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "to_shop",
+     "kind": "door",
+     "to": "shop",
+     "pos": [
+      0.5,
+      0.84
+     ]
+    },
+    {
+     "id": "to_landing",
+     "kind": "door",
+     "to": "mirror_hall",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    }
+   ]
+  },
+  "shop": {
+   "name_key": "r_shop",
+   "plate": "shop",
+   "music": "explore",
+   "mood": {
+    "ambient": "#a89888",
+    "lamps": [
+     [
+      0.5,
+      0.42,
+      1.1,
+      "#ffc070"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "shelf_finial",
+     "kind": "event",
+     "pos": [
+      0.72,
+      0.36
+     ],
+     "event": "h5_shelf_tamsin",
+     "label_key": "hs_shelf_finial",
+     "if_not_flag": "second_tamsin"
+    },
+    {
+     "id": "shelf_ring",
+     "kind": "event",
+     "pos": [
+      0.82,
+      0.46
+     ],
+     "event": "h5_shelf_ivo",
+     "label_key": "hs_shelf_ring",
+     "if_not_flag": "second_ivo"
+    },
+    {
+     "id": "shelf_veil",
+     "kind": "event",
+     "pos": [
+      0.62,
+      0.48
+     ],
+     "event": "h5_shelf_mara",
+     "label_key": "hs_shelf_veil",
+     "if_not_flag": "second_mara"
+    },
+    {
+     "id": "ledger",
+     "kind": "event",
+     "pos": [
+      0.45,
+      0.6
+     ],
+     "event": "h5_ledger",
+     "label_key": "hs_ledger",
+     "sim_last": true
+    },
+    {
+     "id": "to_cellar",
+     "kind": "door",
+     "to": "cellar",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    }
+   ]
+  }
+ },
+ "events": {
+  "h5_open": [
+   {
+    "bg": "mirror_hall"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "say": "narrator",
+    "key": "h5_open_1"
+   },
+   {
+    "say": "narrator",
+    "key": "h5_open_2"
+   },
+   {
+    "say": "nara",
+    "key": "v_stage_3"
+   }
+  ],
+  "h5_landing": [],
+  "h5_aud_pre": [
+   {
+    "say": "narrator",
+    "key": "h5_aud_1"
+   },
+   {
+    "say": "auditor",
+    "key": "h5_aud_2"
+   }
+  ],
+  "h5_aud_post": [
+   {
+    "say": "auditor",
+    "key": "h5_aud_3"
+   },
+   {
+    "flag": "auditor_done"
+   }
+  ],
+  "h5_shelf_tamsin": [
+   {
+    "if_trust": 5,
+    "track": "tamsin",
+    "then": [
+     {
+      "say": "narrator",
+      "key": "h5_tam_1"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_tam_2"
+     },
+     {
+      "say": "nara",
+      "key": "v_idle_2"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_second_tamsin"
+     },
+     {
+      "battle": "echo_tamsin2"
+     },
+     {
+      "cg": "cg_tamsin_bath"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_tam_3"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_tam_4"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_tam_5"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "say": "nara",
+      "key": "v_win_big_1"
+     },
+     {
+      "flag": "second_tamsin"
+     },
+     {
+      "give": "n_read",
+      "n": 1,
+      "quiet": true
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "h5_cold_tamsin"
+     }
+    ]
+   }
+  ],
+  "h5_shelf_ivo": [
+   {
+    "if_trust": 5,
+    "track": "ivo",
+    "then": [
+     {
+      "say": "narrator",
+      "key": "h5_ivo_1"
+     },
+     {
+      "say": "nara",
+      "key": "h5_ivo_2"
+     },
+     {
+      "say": "nara",
+      "key": "v_idle_2"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_second_ivo"
+     },
+     {
+      "battle": "echo_ring2"
+     },
+     {
+      "say": "nara",
+      "key": "v_unlock_1"
+     },
+     {
+      "cg": "cg_maya"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_ivo_3"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_ivo_4"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "say": "nara",
+      "key": "v_win_big_1"
+     },
+     {
+      "flag": "second_ivo"
+     },
+     {
+      "give": "n_read",
+      "n": 1,
+      "quiet": true
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "h5_cold_ivo"
+     }
+    ]
+   }
+  ],
+  "h5_shelf_mara": [
+   {
+    "if_trust": 5,
+    "track": "mara",
+    "then": [
+     {
+      "say": "narrator",
+      "key": "h5_mara_1"
+     },
+     {
+      "say": "nara",
+      "key": "v_idle_2"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_second_mara"
+     },
+     {
+      "battle": "echo_veil2"
+     },
+     {
+      "cg": "cg_mara_letters"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_mara_2"
+     },
+     {
+      "say": "narrator",
+      "key": "h5_mara_3"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "say": "nara",
+      "key": "v_win_big_1"
+     },
+     {
+      "flag": "second_mara"
+     },
+     {
+      "give": "n_read",
+      "n": 1,
+      "quiet": true
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "h5_cold_mara"
+     }
+    ]
+   }
+  ],
+  "h5_ledger": [
+   {
+    "lines": "lien:907-908"
+   },
+   {
+    "if_count": [
+     "refused_finial",
+     "refused_ring",
+     "refused_veil"
+    ],
+    "n": 2,
+    "then": [
+     {
+      "lines": "lien:914-917"
+     }
+    ],
+    "else": [
+     {
+      "if_count": [
+       "read_finial",
+       "read_ring",
+       "read_veil"
+      ],
+      "n": 3,
+      "then": [
+       {
+        "lines": "lien:920-923"
+       },
+       {
+        "say": "nara",
+        "key": "v_streak_0"
+       }
+      ],
+      "else": [
+       {
+        "lines": "lien:926-926"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "lines": "lien:929-946"
+   },
+   {
+    "if_flag": "sold",
+    "then": [
+     {
+      "lines": "lien:948-948"
+     }
+    ],
+    "else": [
+     {
+      "if_has": "fees",
+      "n": 1,
+      "then": [
+       {
+        "say": "narrator",
+        "key": "h5_fees"
+       }
+      ],
+      "else": [
+       {
+        "lines": "lien:952-952"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "lines": "lien:955-963"
+   },
+   {
+    "say": "narrator",
+    "key": "h5_glass_1"
+   },
+   {
+    "battle": "glass"
+   },
+   {
+    "give": "n_read",
+    "n": 1,
+    "quiet": true
+   },
+   {
+    "cg": "cg_collateral"
+   },
+   {
+    "lines": "lien:970-987"
+   },
+   {
+    "hide_cg": true
+   },
+   {
+    "lines": "lien:989-989"
+   },
+   {
+    "bg": "dawn"
+   },
+   {
+    "music": "dawn"
+   },
+   {
+    "lines": "lien:1007-1008"
+   },
+   {
+    "say": "narrator",
+    "key": "h5_count_1"
+   },
+   {
+    "say": "narrator",
+    "key": "h5_count_2"
+   },
+   {
+    "if_flag": "sold",
+    "then": [
+     {
+      "cg": "cg_factor"
+     },
+     {
+      "lines": "lien:1050-1051"
+     },
+     {
+      "if_flag": "read_veil",
+      "then": [
+       {
+        "say": "narrator",
+        "key": "h5_factor_mara"
+       }
+      ],
+      "else": [
+       {
+        "if_flag": "read_ring",
+        "then": [
+         {
+          "say": "narrator",
+          "key": "h5_factor_ivo"
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "h5_factor_tamsin"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "lines": "lien:1053-1064"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "bg": "dawn"
+     },
+     {
+      "music": "dawn"
+     },
+     {
+      "flag": "ending_factor"
+     },
+     {
+      "say": "narrator",
+      "key": "end_name_factor"
+     },
+     {
+      "say": "narrator",
+      "key": "end_count"
+     },
+     {
+      "say": "narrator",
+      "key": "credits_1"
+     },
+     {
+      "end_night": true,
+      "next": ""
+     }
+    ],
+    "else": [
+     {
+      "if_count": [
+       "read_finial",
+       "read_ring",
+       "read_veil"
+      ],
+      "n": 3,
+      "then": [
+       {
+        "if_has": "coin",
+        "n": 103,
+        "then": [
+         {
+          "lines": "lien:1072-1072"
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "h5_short"
+         }
+        ]
+       },
+       {
+        "cg": "cg_collateral",
+        "unlock": false
+       },
+       {
+        "lines": "lien:1076-1085"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "bg": "dawn"
+       },
+       {
+        "music": "dawn"
+       },
+       {
+        "flag": "ending_collateral"
+       },
+       {
+        "say": "narrator",
+        "key": "end_name_collateral"
+       },
+       {
+        "say": "narrator",
+        "key": "end_count"
+       },
+       {
+        "say": "narrator",
+        "key": "credits_1"
+       },
+       {
+        "end_night": true,
+        "next": ""
+       }
+      ],
+      "else": [
+       {
+        "if_has": "coin",
+        "n": 103,
+        "then": [
+         {
+          "cg": "cg_solvent"
+         },
+         {
+          "lines": "lien:1024-1025"
+         },
+         {
+          "if_count": [
+           "refused_finial",
+           "refused_ring",
+           "refused_veil"
+          ],
+          "n": 3,
+          "then": [
+           {
+            "lines": "lien:1029-1032"
+           }
+          ],
+          "else": [
+           {
+            "lines": "lien:1035-1035"
+           }
+          ]
+         },
+         {
+          "lines": "lien:1037-1041"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "bg": "dawn"
+         },
+         {
+          "music": "dawn"
+         },
+         {
+          "flag": "ending_solvent"
+         },
+         {
+          "say": "narrator",
+          "key": "end_name_solvent"
+         },
+         {
+          "say": "narrator",
+          "key": "end_count"
+         },
+         {
+          "say": "narrator",
+          "key": "credits_1"
+         },
+         {
+          "end_night": true,
+          "next": ""
+         }
+        ],
+        "else": [
+         {
+          "if_has": "coin",
+          "n": 103,
+          "then": [
+           {
+            "lines": "lien:1072-1072"
+           }
+          ],
+          "else": [
+           {
+            "say": "narrator",
+            "key": "h5_short"
+           }
+          ]
+         },
+         {
+          "cg": "cg_collateral",
+          "unlock": false
+         },
+         {
+          "lines": "lien:1076-1085"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "bg": "dawn"
+         },
+         {
+          "music": "dawn"
+         },
+         {
+          "flag": "ending_collateral"
+         },
+         {
+          "say": "narrator",
+          "key": "end_name_collateral"
+         },
+         {
+          "say": "narrator",
+          "key": "end_count"
+         },
+         {
+          "say": "narrator",
+          "key": "credits_1"
+         },
+         {
+          "end_night": true,
+          "next": ""
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
