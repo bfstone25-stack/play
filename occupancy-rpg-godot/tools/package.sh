@@ -29,9 +29,9 @@ for t in "" "-trial"; do
   cmp -s "build/win$t/Occupancy.pck" "build/linux$t/Occupancy.pck" || echo "note: win/linux pck differ in bytes; shipping the Windows one"
   cp "build/win$t/Occupancy.exe" "build/win$t/Occupancy.pck" "build/linux$t/Occupancy.x86_64" "build/stage/$name-pc/"
   chmod +x "build/stage/$name-pc/Occupancy.x86_64"
-  (cd build/stage && zip -qr "../dist/$name-pc.zip" "$name-pc")
+  (cd build/stage && python3 -m zipfile -c "../dist/$name-pc.zip" "$name-pc")
   mkdir -p "build/stage/$name-mac" && (cd "build/stage/$name-mac" && unzip -q "../../mac$t/Occupancy.zip")
-  (cd build/stage && zip -qry "../dist/$name-mac.zip" "$name-mac")
+  (cd build/stage && python3 -m zipfile -c "../dist/$name-mac.zip" "$name-mac")
 done
 rm -rf build/stage
 ls -la build/dist; (cd build/dist && sha256sum *.zip > SHA256SUMS.txt && cat SHA256SUMS.txt)
