@@ -34,5 +34,9 @@
  "rpg_server_room": 2,
  "rpg_newsroom": 1,
  "rpg_print_room": 2,
- "rpg_rooftop": 2
+ "rpg_rooftop": 2,
+ "rpg_penthouse": 0,
+ "rpg_boardroom": 0,
+ "rpg_vault": 1,
+ "rpg_floor_map": 2
 }
