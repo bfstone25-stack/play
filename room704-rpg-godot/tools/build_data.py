@@ -137,8 +137,8 @@ game = {
     "disclosure_key": "about_ai",
     "trial_last_night": "shift1", "trial_locked_cgs": ["cg_bed", "cg_window"],
     # Room 704's DLsite RJ id is not recorded anywhere in the repo (Elena's is RJ01722365); the
-    # trial's "product page" button opens the itch page until Blaze fills the DLsite work URL in.
-    "store_url": "https://bfstone25-stack.itch.io/room-704",
+    # DLsite work page (RJ01737052, registered 2026-10-03). No other store: DLsite bans 他サイトへの誘導.
+    "store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01737052.html",
     "stats": ["wit", "cha", "grt", "stl"],
     "level_cap": 20, "trust_thresholds": [3, 5, 7, 9],
     "heroine_flag": "mira_joined", "heroine_sprite": "outfit_slip",
