@@ -1335,13 +1335,6 @@
    "trust": 5
   },
   {
-   "id": "cg_quiet_floor",
-   "thumb": "cg_quiet_floor_thumb",
-   "locked": "cg_quiet_floor_locked",
-   "key": "g_cg_quiet_floor",
-   "trust": 5
-  },
-  {
    "id": "cg_vault_x",
    "thumb": "cg_vault_x_thumb",
    "locked": "cg_vault_x_locked",

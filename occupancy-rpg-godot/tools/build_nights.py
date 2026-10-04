@@ -254,7 +254,7 @@ n1_rooms = {
     "open_plan": room("open_plan", [
         ev("console", [0.48, 0.55], "n1_console", "console", "The floor console — build and run the shift", "フロアの端末 — 配置してシフトを回す"),
         search("desks", [0.2, 0.45], "n1_desks", "desks", "Abandoned desks", "空いた机", gives=["voucher"], xp=5),
-        {"id": "pryce", "kind": "event", "pos": [0.75, 0.48], "event": "n1_crisis", "label_key": T("hs_crisis_pryce", "The rent crisis — Gideon Pryce, rent agent", "家賃の危機 — Gideon Pryce, rent agent"), "sim_last": True},
+        {"id": "pryce", "kind": "event", "pos": [0.75, 0.48], "event": "n1_crisis", "label_key": T("hs_crisis_pryce", "The rent crisis — Gideon Pryce, rent agent", "家賃の危機 — 家賃代理人ギデオン・プライス"), "sim_last": True},
         door("to_lobby", "lobby", [0.08, 0.84]),
         door("to_copy", "copy_room", [0.92, 0.84]),
         door("to_break", "break_room", [0.5, 0.86]),
@@ -374,7 +374,7 @@ n2_rooms = {
     "meeting_room": room("meeting_room", [
         enemy("subletter2", "subletter2", [0.35, 0.5], "n2_sub2_pre", "n2_sub2_post"),
         ev("mirei", [0.6, 0.35], "n2_mirei", "mirei_call", "Mirei on the speakerphone", "スピーカーフォンのミレイ"),
-        {"id": "wes", "kind": "event", "pos": [0.7, 0.5], "event": "n2_crisis", "label_key": T("hs_crisis_wes", "The rent crisis — Wes", "家賃の危機 — Wes"), "sim_last": True},
+        {"id": "wes", "kind": "event", "pos": [0.7, 0.5], "event": "n2_crisis", "label_key": T("hs_crisis_wes", "The rent crisis — Wes", "家賃の危機 — ウェス"), "sim_last": True},
         door("to_sublet", "sublet", [0.08, 0.84]),
     ]),
 }
@@ -440,7 +440,7 @@ n3_rooms = {
         ev("console", [0.5, 0.58], "n3_console", "console", "The floor console — build and run the shift", "フロアの端末 — 配置してシフトを回す"),
         enemy("junior", "junior", [0.3, 0.5], "n3_junior_pre", "n3_junior_post"),
         ev("mara", [0.15, 0.45], "n3_mara", "mara_blinds", "Mara at the blinds", "ブラインド際のマーラ"),
-        {"id": "varga", "kind": "event", "pos": [0.72, 0.5], "event": "n3_crisis", "label_key": T("hs_crisis_varga", "The rent crisis — Ilse Varga, auditor", "家賃の危機 — Ilse Varga, auditor"), "sim_last": True},
+        {"id": "varga", "kind": "event", "pos": [0.72, 0.5], "event": "n3_crisis", "label_key": T("hs_crisis_varga", "The rent crisis — Ilse Varga, auditor", "家賃の危機 — 監査人イルゼ・ヴァルガ"), "sim_last": True},
         door("to_records", "records", [0.92, 0.84]),
         door("to_server", "server_room", [0.08, 0.84]),
     ], enter="n3_acc_enter"),
@@ -521,7 +521,7 @@ n4_rooms = {
         ev("console", [0.5, 0.58], "n4_console", "console", "The floor console — build and run the shift", "フロアの端末 — 配置してシフトを回す"),
         enemy("mover", "mover", [0.28, 0.5], "n4_mover_pre", "n4_mover_post"),
         ev("nia", [0.15, 0.45], "n4_nia", "nia_desk", "Nia at Sol's desk", "ソルの机のニア"),
-        {"id": "bailiff", "kind": "event", "pos": [0.72, 0.5], "event": "n4_crisis", "label_key": T("hs_crisis_bailiff", "The rent crisis — The Bailiff", "家賃の危機 — The Bailiff"), "sim_last": True},
+        {"id": "bailiff", "kind": "event", "pos": [0.72, 0.5], "event": "n4_crisis", "label_key": T("hs_crisis_bailiff", "The rent crisis — The Bailiff", "家賃の危機 — 執行官"), "sim_last": True},
         door("to_print", "print_room", [0.92, 0.84]),
         door("to_roof", "rooftop", [0.5, 0.86]),
     ], enter="n4_news_enter"),
@@ -607,11 +607,6 @@ ENDING_KEEP = [
                         S("mirei", "n5_vault2", "Do you know, nobody has ever paid every floor in one week. Not my father. Not me. Sit with me. I want to look at it with someone.", "知ってる？ 一週間で全フロアを払いきった人はいないの。父も、私も。一緒に座って。誰かと一緒に眺めたいの。"),
                         N("n5_vault3", "She leans back in the chair with the jacket open and her hand on the money, smug and lovely and, for the first time since you met her, not tired.", "ジャケットをはだけて椅子にもたれ、片手をお金に置く。得意げで、美しく、出会ってから初めて、疲れていない。"),
                         {"hide_cg": True}, {"music": "dawn"}], "else": []},
-              {"if_trust": 5, "track": "mara", "then": [{"if_trust": 5, "track": "mirei", "then": [
-                  {"music": "intimate"}, {"cg": "cg_quiet_floor"},
-                  N("n5_quiet1", "Later, on the quiet floor, you find Mara and Mirei on the sofa by the window with a jacket over their knees, kissing like two people who have been meaning to for nine years.", "あとで、静かなフロアで、窓辺のソファにマーラとミレイを見つける。膝にジャケットをかけ、九年越しにやっとそうしているふたりのように口づけている。"),
-                  N("n5_quiet2", "Mirei opens her eyes, sees you, and holds out a hand. Mara moves over. There is room on the sofa; there always was.", "ミレイが目を開け、あなたに気づき、手を差し出す。マーラが詰める。ソファには場所がある。ずっとあったのだ。"),
-                  {"hide_cg": True}, {"music": "dawn"}]}]},
               {"cg": "cg_keys"},
               S("mirei", "n5_keys1", "Every floor paid. The building's mine — ours. Here. These are the penthouse keys. Don't lose them; Mara will never let you forget it.", "全フロア支払済。ビルは私のもの — 私たちのもの。はい、ペントハウスの鍵。なくさないで。マーラが一生言い続けるから。"),
               V("v_stage_3"),
@@ -627,7 +622,7 @@ n5_rooms = {
     "penthouse": room("penthouse", [
         ev("console", [0.35, 0.6], "n5_console", "console", "The floor console — build and run the shift", "フロアの端末 — 配置してシフトを回す"),
         ev("mirei", [0.6, 0.4], "n5_mirei", "mirei_desk", "Mirei at her father's desk", "父の机のミレイ"),
-        {"id": "halvard", "kind": "event", "pos": [0.75, 0.5], "event": "n5_crisis", "label_key": T("hs_crisis_halvard", "The rent crisis — Corinne Halvard", "家賃の危機 — Corinne Halvard"), "sim_last": True},
+        {"id": "halvard", "kind": "event", "pos": [0.75, 0.5], "event": "n5_crisis", "label_key": T("hs_crisis_halvard", "The rent crisis — Corinne Halvard", "家賃の危機 — コリンヌ・ハルヴァード"), "sim_last": True},
         door("to_board", "boardroom", [0.92, 0.84]),
         door("to_vault", "vault", [0.08, 0.84]),
     ], enter="n5_ph_enter"),

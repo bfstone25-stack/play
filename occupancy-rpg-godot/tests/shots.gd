@@ -119,7 +119,9 @@ func run_lang(l: String, full: bool) -> void:
 			await get_tree().create_timer(0.4).timeout
 			await snap("map")
 			main.render_room()
-		if RPG.s["night"] == "n3" and RPG.has("mara_after") and not taken.has(lang + "_equip_menu"):
+		if RPG.s["night"] == "n3" and not taken.has(lang + "_equip_menu"):
+			if not RPG.has("mara_after") and RPG.s["members"]["mara"]["equip"]["outfit"] != "mara_after":
+				RPG.give("mara_after")   # the dress is a Supplies purchase; the shot shows it worn
 			RPG.equip("mara", "mara_after")
 			if RPG.has("priya_after"):
 				RPG.equip("priya", "priya_after")

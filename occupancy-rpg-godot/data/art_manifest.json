@@ -274,15 +274,6 @@
   "cg_glass_office_locked": [
    "res://assets/cg/cg_glass_office_locked.png"
   ],
-  "cg_quiet_floor": [
-   "res://assets/cg/cg_quiet_floor.png"
-  ],
-  "cg_quiet_floor_thumb": [
-   "res://assets/cg/cg_quiet_floor_thumb.png"
-  ],
-  "cg_quiet_floor_locked": [
-   "res://assets/cg/cg_quiet_floor_locked.png"
-  ],
   "cg_vault_x": [
    "res://assets/cg/cg_vault_x.png"
   ],

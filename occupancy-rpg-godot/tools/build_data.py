@@ -239,7 +239,6 @@ GALLERY = [
     ("cg_sol_after", 5, "Sol — four in the morning", "ソル — 午前四時"),
     ("cg_mirei_window", 3, "Mirei — the penthouse window", "ミレイ — ペントハウスの窓"),
     ("cg_glass_office", 5, "Mirei — against the glass", "ミレイ — ガラス越しに"),
-    ("cg_quiet_floor", 5, "Mirei and Mara — the quiet floor", "ミレイとマーラ — 静かな階"),
     ("cg_vault_x", 5, "Mirei — the vault", "ミレイ — 金庫室"),
     ("cg_keys", 0, "Full occupancy", "満室"),
     ("cg_floor9", 0, "Holding on — dawn", "持ちこたえて — 夜明け"),
@@ -252,7 +251,7 @@ CG_SOURCES = {
     "cg_nia_ledger": "f2p_nia_ledger/f2p_nia_ledger_01", "cg_nia_after": "f2p_nia_after/f2p_nia_after_00",
     "cg_sol_press": "f2p_sol_press/f2p_sol_press_03", "cg_sol_after": "f2p_sol_after/f2p_sol_after_02",
     "cg_mirei_window": "f2p_mirei_window/f2p_mirei_window_02", "cg_glass_office": "cg_glass_office/cg_glass_office_00",
-    "cg_quiet_floor": "cg_quiet_floor/cg_quiet_floor_01", "cg_vault_x": "cg_vault_x/cg_vault_x_02",
+    "cg_vault_x": "cg_vault_x/cg_vault_x_02",
     "cg_keys": "f2p_b5_keys/f2p_b5_keys_02", "cg_floor9": "cg_floor9/cg_floor9_01",
 }
 for cid, _, en, ja in GALLERY:

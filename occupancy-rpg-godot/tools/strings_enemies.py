@@ -114,7 +114,6 @@ S = {
 'g_cg_sol_after': ('Sol — four in the morning', 'ソル — 午前四時'),
 'g_cg_mirei_window': ('Mirei — the penthouse window', 'ミレイ — ペントハウスの窓'),
 'g_cg_glass_office': ('Mirei — against the glass', 'ミレイ — ガラス越しに'),
-'g_cg_quiet_floor': ('Mirei and Mara — the quiet floor', 'ミレイとマーラ — 静かな階'),
 'g_cg_vault_x': ('Mirei — the vault', 'ミレイ — 金庫室'),
 'g_cg_keys': ('Full occupancy', '満室'),
 'g_cg_floor9': ('Holding on — dawn', '持ちこたえて — 夜明け'),

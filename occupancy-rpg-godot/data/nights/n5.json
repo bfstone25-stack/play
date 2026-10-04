@@ -561,38 +561,6 @@
       "else": []
      },
      {
-      "if_trust": 5,
-      "track": "mara",
-      "then": [
-       {
-        "if_trust": 5,
-        "track": "mirei",
-        "then": [
-         {
-          "music": "intimate"
-         },
-         {
-          "cg": "cg_quiet_floor"
-         },
-         {
-          "say": "narrator",
-          "key": "n5_quiet1"
-         },
-         {
-          "say": "narrator",
-          "key": "n5_quiet2"
-         },
-         {
-          "hide_cg": true
-         },
-         {
-          "music": "dawn"
-         }
-        ]
-       }
-      ]
-     },
-     {
       "cg": "cg_keys"
      },
      {

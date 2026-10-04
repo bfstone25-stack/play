@@ -455,10 +455,6 @@
   "en": "Mirei — against the glass",
   "ja": "ミレイ — ガラス越しに"
  },
- "g_cg_quiet_floor": {
-  "en": "Mirei and Mara — the quiet floor",
-  "ja": "ミレイとマーラ — 静かな階"
- },
  "g_cg_vault_x": {
   "en": "Mirei — the vault",
   "ja": "ミレイ — 金庫室"
@@ -745,7 +741,7 @@
  },
  "hs_crisis_pryce": {
   "en": "The rent crisis — Gideon Pryce, rent agent",
-  "ja": "家賃の危機 — Gideon Pryce, rent agent"
+  "ja": "家賃の危機 — 家賃代理人ギデオン・プライス"
  },
  "hs_priya_copier": {
   "en": "Priya and the copier",
@@ -993,7 +989,7 @@
  },
  "hs_crisis_wes": {
   "en": "The rent crisis — Wes",
-  "ja": "家賃の危機 — Wes"
+  "ja": "家賃の危機 — ウェス"
  },
  "n2_o1": {
   "en": "Night two. The lift to seven has stopped between six and seven with nobody in it, which Priya says is the lift's way of making a point.",
@@ -1149,7 +1145,7 @@
  },
  "hs_crisis_varga": {
   "en": "The rent crisis — Ilse Varga, auditor",
-  "ja": "家賃の危機 — Ilse Varga, auditor"
+  "ja": "家賃の危機 — 監査人イルゼ・ヴァルガ"
  },
  "hs_nia_boxes": {
   "en": "Nia among the boxes",
@@ -1313,7 +1309,7 @@
  },
  "hs_crisis_bailiff": {
   "en": "The rent crisis — The Bailiff",
-  "ja": "家賃の危機 — The Bailiff"
+  "ja": "家賃の危機 — 執行官"
  },
  "hs_sol_press": {
   "en": "Sol at the press",
@@ -1487,14 +1483,6 @@
   "en": "She leans back in the chair with the jacket open and her hand on the money, smug and lovely and, for the first time since you met her, not tired.",
   "ja": "ジャケットをはだけて椅子にもたれ、片手をお金に置く。得意げで、美しく、出会ってから初めて、疲れていない。"
  },
- "n5_quiet1": {
-  "en": "Later, on the quiet floor, you find Mara and Mirei on the sofa by the window with a jacket over their knees, kissing like two people who have been meaning to for nine years.",
-  "ja": "あとで、静かなフロアで、窓辺のソファにマーラとミレイを見つける。膝にジャケットをかけ、九年越しにやっとそうしているふたりのように口づけている。"
- },
- "n5_quiet2": {
-  "en": "Mirei opens her eyes, sees you, and holds out a hand. Mara moves over. There is room on the sofa; there always was.",
-  "ja": "ミレイが目を開け、あなたに気づき、手を差し出す。マーラが詰める。ソファには場所がある。ずっとあったのだ。"
- },
  "n5_keys1": {
   "en": "Every floor paid. The building's mine — ours. Here. These are the penthouse keys. Don't lose them; Mara will never let you forget it.",
   "ja": "全フロア支払済。ビルは私のもの — 私たちのもの。はい、ペントハウスの鍵。なくさないで。マーラが一生言い続けるから。"
@@ -1517,7 +1505,7 @@
  },
  "hs_crisis_halvard": {
   "en": "The rent crisis — Corinne Halvard",
-  "ja": "家賃の危機 — Corinne Halvard"
+  "ja": "家賃の危機 — コリンヌ・ハルヴァード"
  },
  "hs_sol_board": {
   "en": "Sol taking notes",
