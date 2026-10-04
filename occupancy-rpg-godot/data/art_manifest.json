@@ -1,0 +1,314 @@
+{
+ "rooms": {
+  "lobby": [
+   "res://assets/rooms/lobby.png"
+  ],
+  "open_plan": [
+   "res://assets/rooms/open_plan.png"
+  ],
+  "copy_room": [
+   "res://assets/rooms/copy_room.png"
+  ],
+  "break_room": [
+   "res://assets/rooms/break_room.png"
+  ],
+  "sublet": [
+   "res://assets/rooms/sublet.png"
+  ],
+  "meeting_room": [
+   "res://assets/rooms/meeting_room.png"
+  ],
+  "stairwell": [
+   "res://assets/rooms/stairwell.png"
+  ],
+  "accounts": [
+   "res://assets/rooms/accounts.png"
+  ],
+  "records": [
+   "res://assets/rooms/records.png"
+  ],
+  "server_room": [
+   "res://assets/rooms/server_room.png"
+  ],
+  "newsroom": [
+   "res://assets/rooms/newsroom.png"
+  ],
+  "print_room": [
+   "res://assets/rooms/print_room.png"
+  ],
+  "rooftop": [
+   "res://assets/rooms/rooftop.png"
+  ],
+  "penthouse": [
+   "res://assets/rooms/penthouse.png"
+  ],
+  "boardroom": [
+   "res://assets/rooms/boardroom.png"
+  ],
+  "vault": [
+   "res://assets/rooms/vault.png"
+  ]
+ },
+ "rooms_locked": {
+  "lobby": [
+   "res://assets/rooms_locked/lobby.png"
+  ],
+  "open_plan": [
+   "res://assets/rooms_locked/open_plan.png"
+  ],
+  "copy_room": [
+   "res://assets/rooms_locked/copy_room.png"
+  ],
+  "break_room": [
+   "res://assets/rooms_locked/break_room.png"
+  ],
+  "sublet": [
+   "res://assets/rooms_locked/sublet.png"
+  ],
+  "meeting_room": [
+   "res://assets/rooms_locked/meeting_room.png"
+  ],
+  "stairwell": [
+   "res://assets/rooms_locked/stairwell.png"
+  ],
+  "accounts": [
+   "res://assets/rooms_locked/accounts.png"
+  ],
+  "records": [
+   "res://assets/rooms_locked/records.png"
+  ],
+  "server_room": [
+   "res://assets/rooms_locked/server_room.png"
+  ],
+  "newsroom": [
+   "res://assets/rooms_locked/newsroom.png"
+  ],
+  "print_room": [
+   "res://assets/rooms_locked/print_room.png"
+  ],
+  "rooftop": [
+   "res://assets/rooms_locked/rooftop.png"
+  ],
+  "penthouse": [
+   "res://assets/rooms_locked/penthouse.png"
+  ],
+  "boardroom": [
+   "res://assets/rooms_locked/boardroom.png"
+  ],
+  "vault": [
+   "res://assets/rooms_locked/vault.png"
+  ]
+ },
+ "enemies": {
+  "courier": [
+   "res://assets/enemies/courier.png"
+  ],
+  "pryce": [
+   "res://assets/enemies/pryce.png"
+  ],
+  "sublet": [
+   "res://assets/enemies/sublet.png"
+  ],
+  "wes": [
+   "res://assets/enemies/wes.png"
+  ],
+  "junior": [
+   "res://assets/enemies/junior.png"
+  ],
+  "varga": [
+   "res://assets/enemies/varga.png"
+  ],
+  "mover": [
+   "res://assets/enemies/mover.png"
+  ],
+  "bailiff": [
+   "res://assets/enemies/bailiff.png"
+  ],
+  "lawyer": [
+   "res://assets/enemies/lawyer.png"
+  ],
+  "halvard": [
+   "res://assets/enemies/halvard.png"
+  ]
+ },
+ "sprites": {
+  "mara_work": [
+   "res://assets/sprites/mara_work.png"
+  ],
+  "mara_after": [
+   "res://assets/sprites/mara_after.png"
+  ],
+  "priya_work": [
+   "res://assets/sprites/priya_work.png"
+  ],
+  "priya_after": [
+   "res://assets/sprites/priya_after.png"
+  ],
+  "nia_work": [
+   "res://assets/sprites/nia_work.png"
+  ],
+  "nia_after": [
+   "res://assets/sprites/nia_after.png"
+  ],
+  "sol_work": [
+   "res://assets/sprites/sol_work.png"
+  ],
+  "sol_after": [
+   "res://assets/sprites/sol_after.png"
+  ],
+  "mirei": [
+   "res://assets/sprites/mirei.png"
+  ]
+ },
+ "maps": {
+  "tower": [
+   "res://assets/ui/map.png"
+  ]
+ },
+ "cg": {
+  "cg_mirei_lease": [
+   "res://assets/cg/cg_mirei_lease.png"
+  ],
+  "cg_mirei_lease_thumb": [
+   "res://assets/cg/cg_mirei_lease_thumb.png"
+  ],
+  "cg_mirei_lease_locked": [
+   "res://assets/cg/cg_mirei_lease_locked.png"
+  ],
+  "cg_evicted": [
+   "res://assets/cg/cg_evicted.png"
+  ],
+  "cg_evicted_thumb": [
+   "res://assets/cg/cg_evicted_thumb.png"
+  ],
+  "cg_evicted_locked": [
+   "res://assets/cg/cg_evicted_locked.png"
+  ],
+  "cg_mara_sofa": [
+   "res://assets/cg/cg_mara_sofa.png"
+  ],
+  "cg_mara_sofa_thumb": [
+   "res://assets/cg/cg_mara_sofa_thumb.png"
+  ],
+  "cg_mara_sofa_locked": [
+   "res://assets/cg/cg_mara_sofa_locked.png"
+  ],
+  "cg_mara_corners": [
+   "res://assets/cg/cg_mara_corners.png"
+  ],
+  "cg_mara_corners_thumb": [
+   "res://assets/cg/cg_mara_corners_thumb.png"
+  ],
+  "cg_mara_corners_locked": [
+   "res://assets/cg/cg_mara_corners_locked.png"
+  ],
+  "cg_priya_rooftop": [
+   "res://assets/cg/cg_priya_rooftop.png"
+  ],
+  "cg_priya_rooftop_thumb": [
+   "res://assets/cg/cg_priya_rooftop_thumb.png"
+  ],
+  "cg_priya_rooftop_locked": [
+   "res://assets/cg/cg_priya_rooftop_locked.png"
+  ],
+  "cg_priya_x": [
+   "res://assets/cg/cg_priya_x.png"
+  ],
+  "cg_priya_x_thumb": [
+   "res://assets/cg/cg_priya_x_thumb.png"
+  ],
+  "cg_priya_x_locked": [
+   "res://assets/cg/cg_priya_x_locked.png"
+  ],
+  "cg_nia_ledger": [
+   "res://assets/cg/cg_nia_ledger.png"
+  ],
+  "cg_nia_ledger_thumb": [
+   "res://assets/cg/cg_nia_ledger_thumb.png"
+  ],
+  "cg_nia_ledger_locked": [
+   "res://assets/cg/cg_nia_ledger_locked.png"
+  ],
+  "cg_nia_after": [
+   "res://assets/cg/cg_nia_after.png"
+  ],
+  "cg_nia_after_thumb": [
+   "res://assets/cg/cg_nia_after_thumb.png"
+  ],
+  "cg_nia_after_locked": [
+   "res://assets/cg/cg_nia_after_locked.png"
+  ],
+  "cg_sol_press": [
+   "res://assets/cg/cg_sol_press.png"
+  ],
+  "cg_sol_press_thumb": [
+   "res://assets/cg/cg_sol_press_thumb.png"
+  ],
+  "cg_sol_press_locked": [
+   "res://assets/cg/cg_sol_press_locked.png"
+  ],
+  "cg_sol_after": [
+   "res://assets/cg/cg_sol_after.png"
+  ],
+  "cg_sol_after_thumb": [
+   "res://assets/cg/cg_sol_after_thumb.png"
+  ],
+  "cg_sol_after_locked": [
+   "res://assets/cg/cg_sol_after_locked.png"
+  ],
+  "cg_mirei_window": [
+   "res://assets/cg/cg_mirei_window.png"
+  ],
+  "cg_mirei_window_thumb": [
+   "res://assets/cg/cg_mirei_window_thumb.png"
+  ],
+  "cg_mirei_window_locked": [
+   "res://assets/cg/cg_mirei_window_locked.png"
+  ],
+  "cg_glass_office": [
+   "res://assets/cg/cg_glass_office.png"
+  ],
+  "cg_glass_office_thumb": [
+   "res://assets/cg/cg_glass_office_thumb.png"
+  ],
+  "cg_glass_office_locked": [
+   "res://assets/cg/cg_glass_office_locked.png"
+  ],
+  "cg_quiet_floor": [
+   "res://assets/cg/cg_quiet_floor.png"
+  ],
+  "cg_quiet_floor_thumb": [
+   "res://assets/cg/cg_quiet_floor_thumb.png"
+  ],
+  "cg_quiet_floor_locked": [
+   "res://assets/cg/cg_quiet_floor_locked.png"
+  ],
+  "cg_vault_x": [
+   "res://assets/cg/cg_vault_x.png"
+  ],
+  "cg_vault_x_thumb": [
+   "res://assets/cg/cg_vault_x_thumb.png"
+  ],
+  "cg_vault_x_locked": [
+   "res://assets/cg/cg_vault_x_locked.png"
+  ],
+  "cg_keys": [
+   "res://assets/cg/cg_keys.png"
+  ],
+  "cg_keys_thumb": [
+   "res://assets/cg/cg_keys_thumb.png"
+  ],
+  "cg_keys_locked": [
+   "res://assets/cg/cg_keys_locked.png"
+  ],
+  "cg_floor9": [
+   "res://assets/cg/cg_floor9.png"
+  ],
+  "cg_floor9_thumb": [
+   "res://assets/cg/cg_floor9_thumb.png"
+  ],
+  "cg_floor9_locked": [
+   "res://assets/cg/cg_floor9_locked.png"
+  ]
+ }
+}

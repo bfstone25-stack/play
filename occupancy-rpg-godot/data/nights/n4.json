@@ -1,0 +1,1412 @@
+{
+ "id": "n4",
+ "title_key": "n4_title",
+ "sub_key": "n4_sub",
+ "turns": 46,
+ "clock_start": 1320,
+ "minutes_per_turn": 8,
+ "start_room": "newsroom",
+ "start_event": "n4_open",
+ "map": {
+  "image": "tower",
+  "rooms": {
+   "newsroom": [
+    0.4,
+    0.3
+   ],
+   "print_room": [
+    0.7,
+    0.3
+   ],
+   "rooftop": [
+    0.4,
+    0.06
+   ]
+  }
+ },
+ "rooms": {
+  "newsroom": {
+   "name_key": "r_newsroom",
+   "plate": "newsroom",
+   "music": "explore",
+   "mood": {
+    "ambient": "#e6dcd0",
+    "lamps": [
+     [
+      0.4,
+      0.3,
+      1.1,
+      "#ffcf90"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "console",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.58
+     ],
+     "event": "n4_console",
+     "label_key": "hs_console"
+    },
+    {
+     "id": "mover",
+     "kind": "enemy",
+     "enemy": "mover",
+     "pos": [
+      0.28,
+      0.5
+     ],
+     "event": "n4_mover_pre",
+     "after": "n4_mover_post"
+    },
+    {
+     "id": "nia",
+     "kind": "event",
+     "pos": [
+      0.15,
+      0.45
+     ],
+     "event": "n4_nia",
+     "label_key": "hs_nia_desk"
+    },
+    {
+     "id": "bailiff",
+     "kind": "event",
+     "pos": [
+      0.72,
+      0.5
+     ],
+     "event": "n4_crisis",
+     "label_key": "hs_crisis_bailiff",
+     "sim_last": true
+    },
+    {
+     "id": "to_print",
+     "kind": "door",
+     "to": "print_room",
+     "pos": [
+      0.92,
+      0.84
+     ]
+    },
+    {
+     "id": "to_roof",
+     "kind": "door",
+     "to": "rooftop",
+     "pos": [
+      0.5,
+      0.86
+     ]
+    }
+   ],
+   "enter_event": "n4_news_enter"
+  },
+  "print_room": {
+   "name_key": "r_print_room",
+   "plate": "print_room",
+   "music": "explore",
+   "mood": {
+    "ambient": "#e8dccc",
+    "lamps": [
+     [
+      0.5,
+      0.3,
+      1.1,
+      "#ffc880"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "sol",
+     "kind": "event",
+     "pos": [
+      0.45,
+      0.55
+     ],
+     "event": "n4_sol",
+     "label_key": "hs_sol_press"
+    },
+    {
+     "id": "printer_rep",
+     "kind": "enemy",
+     "enemy": "printer_rep",
+     "pos": [
+      0.7,
+      0.48
+     ],
+     "event": "n4_rep_pre",
+     "after": "n4_rep_post"
+    },
+    {
+     "id": "proofs",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.35
+     ],
+     "event": "n4_proofs",
+     "label_key": "hs_proofs",
+     "xp": 15
+    },
+    {
+     "id": "to_news",
+     "kind": "door",
+     "to": "newsroom",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    }
+   ]
+  },
+  "rooftop": {
+   "name_key": "r_rooftop",
+   "plate": "rooftop",
+   "music": "explore",
+   "mood": {
+    "ambient": "#c8cce0",
+    "lamps": [
+     [
+      0.3,
+      0.25,
+      0.9,
+      "#ffd090"
+     ],
+     [
+      0.7,
+      0.25,
+      0.9,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "priya",
+     "kind": "event",
+     "pos": [
+      0.4,
+      0.55
+     ],
+     "event": "n4_priya",
+     "label_key": "hs_priya_tank"
+    },
+    {
+     "id": "garden",
+     "kind": "search",
+     "pos": [
+      0.75,
+      0.6
+     ],
+     "event": "n4_garden",
+     "label_key": "hs_garden",
+     "gives": [
+      "pastry",
+      "earpiece"
+     ]
+    },
+    {
+     "id": "to_news",
+     "kind": "door",
+     "to": "newsroom",
+     "pos": [
+      0.5,
+      0.86
+     ]
+    }
+   ]
+  }
+ },
+ "events": {
+  "n4_open": [
+   {
+    "bg": "newsroom"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "say": "mirei",
+    "key": "v_stage_2"
+   },
+   {
+    "say": "mirei",
+    "key": "v_near_0"
+   },
+   {
+    "say": "narrator",
+    "key": "n4_o1"
+   },
+   {
+    "say": "mirei",
+    "key": "n4_o2"
+   },
+   {
+    "screen": "res://scripts/office.gd",
+    "args": {
+     "mode": "join",
+     "id": "sol",
+     "floor": "n4",
+     "plate": "newsroom"
+    }
+   },
+   {
+    "show": "sol_work",
+    "x": 0.72
+   },
+   {
+    "say": "sol",
+    "key": "n4_o3"
+   },
+   {
+    "show": ""
+   }
+  ],
+  "n4_news_enter": [
+   {
+    "say": "narrator",
+    "key": "n4_ne1"
+   }
+  ],
+  "n4_console": [
+   {
+    "screen": "res://scripts/office.gd",
+    "args": {
+     "floor": "n4",
+     "plate": "newsroom"
+    }
+   }
+  ],
+  "n4_proofs": [
+   {
+    "say": "narrator",
+    "key": "n4_pr1"
+   }
+  ],
+  "n4_garden": [
+   {
+    "say": "narrator",
+    "key": "n4_g1"
+   }
+  ],
+  "n4_sol": [
+   {
+    "show": "sol_work",
+    "x": 0.7
+   },
+   {
+    "say": "sol",
+    "key": "n4_s1"
+   },
+   {
+    "choice": [
+     {
+      "key": "n4_s_story",
+      "do": [
+       {
+        "say": "sol",
+        "key": "n4_s_st1"
+       },
+       {
+        "trust": 2,
+        "track": "sol"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "n4_s_help",
+      "do": [
+       {
+        "say": "sol",
+        "key": "n4_s_h1"
+       },
+       {
+        "trust": 1,
+        "track": "sol"
+       }
+      ],
+      "auto_rank": 1
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "xp": 20
+   }
+  ],
+  "n4_nia": [
+   {
+    "show": "nia_work",
+    "x": 0.7
+   },
+   {
+    "say": "nia",
+    "key": "n4_n1"
+   },
+   {
+    "choice": [
+     {
+      "key": "n4_n_yes",
+      "do": [
+       {
+        "say": "nia",
+        "key": "n4_n_y1"
+       },
+       {
+        "trust": 1,
+        "track": "nia"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "n4_n_sleep",
+      "do": [
+       {
+        "say": "nia",
+        "key": "n4_n_s1"
+       },
+       {
+        "trust": 1,
+        "track": "nia"
+       }
+      ],
+      "auto_rank": 1
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "xp": 15
+   }
+  ],
+  "n4_priya": [
+   {
+    "show": "priya_work",
+    "x": 0.7
+   },
+   {
+    "say": "priya",
+    "key": "n4_p1"
+   },
+   {
+    "choice": [
+     {
+      "key": "n4_p_view",
+      "do": [
+       {
+        "say": "priya",
+        "key": "n4_p_v1"
+       },
+       {
+        "trust": 1,
+        "track": "priya"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "n4_p_ask",
+      "do": [
+       {
+        "say": "priya",
+        "key": "n4_p_a1"
+       },
+       {
+        "trust": 1,
+        "track": "priya"
+       }
+      ],
+      "auto_rank": 1
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "xp": 15
+   }
+  ],
+  "n4_mover_pre": [
+   {
+    "say": "narrator",
+    "key": "n4_mv1"
+   },
+   {
+    "say": "foreman",
+    "key": "n4_mv2"
+   }
+  ],
+  "n4_mover_post": [
+   {
+    "say": "narrator",
+    "key": "n4_mv3"
+   }
+  ],
+  "n4_rep_pre": [
+   {
+    "say": "narrator",
+    "key": "n4_rp1"
+   }
+  ],
+  "n4_rep_post": [
+   {
+    "say": "narrator",
+    "key": "n4_rp2"
+   }
+  ],
+  "n4_bailiff_pre": [
+   {
+    "say": "narrator",
+    "key": "n4_b1"
+   },
+   {
+    "say": "bailiff",
+    "key": "n4_b2"
+   },
+   {
+    "if_has": "coin",
+    "n": 3200,
+    "then": [
+     {
+      "take": "coin",
+      "n": 3200
+     },
+     {
+      "flag": "n4_paid"
+     },
+     {
+      "say": "narrator",
+      "key": "n4_paid_msg"
+     },
+     {
+      "battle": "bailiff"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n4_short_msg"
+     },
+     {
+      "cg": "cg_evicted"
+     },
+     {
+      "say": "bailiff",
+      "key": "n4_short1"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "battle": "bailiff_short"
+     }
+    ]
+   }
+  ],
+  "n4_crisis": [
+   {
+    "say": "narrator",
+    "key": "n4_b1"
+   },
+   {
+    "say": "bailiff",
+    "key": "n4_b2"
+   },
+   {
+    "if_has": "coin",
+    "n": 3200,
+    "then": [
+     {
+      "take": "coin",
+      "n": 3200
+     },
+     {
+      "flag": "n4_paid"
+     },
+     {
+      "say": "narrator",
+      "key": "n4_paid_msg"
+     },
+     {
+      "battle": "bailiff"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n4_short_msg"
+     },
+     {
+      "cg": "cg_evicted"
+     },
+     {
+      "say": "bailiff",
+      "key": "n4_short1"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "battle": "bailiff_short"
+     }
+    ]
+   },
+   {
+    "say": "bailiff",
+    "key": "n4_b3"
+   },
+   {
+    "say": "mirei",
+    "key": "v_win_big_0"
+   },
+   {
+    "say": "mirei",
+    "key": "v_streak_1"
+   },
+   {
+    "say": "mirei",
+    "key": "n4_after1"
+   },
+   {
+    "flag": "n4_done"
+   },
+   {
+    "say": "narrator",
+    "key": "n4_ah"
+   },
+   {
+    "choice": [
+     {
+      "key": "ah_mirei_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_mirei_window"
+       },
+       {
+        "say": "narrator",
+        "key": "mirei_a_1"
+       },
+       {
+        "say": "mirei",
+        "key": "mirei_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "mirei_a_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_mirei_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "mirei",
+      "if_not_flag": "seen_mirei_a",
+      "auto_rank": 5,
+      "if_flag": "n2_done"
+     },
+     {
+      "key": "ah_mirei_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_glass_office"
+       },
+       {
+        "say": "narrator",
+        "key": "mirei_b_1"
+       },
+       {
+        "say": "mirei",
+        "key": "mirei_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "mirei_b_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_mirei_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "mirei",
+      "if_not_flag": "seen_mirei_b",
+      "auto_rank": 7,
+      "if_flag": "seen_mirei_a"
+     },
+     {
+      "key": "ah_mara_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_mara_sofa"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_a_1"
+       },
+       {
+        "say": "mara",
+        "key": "mara_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_a_3"
+       },
+       {
+        "say": "mara",
+        "key": "mara_a_4"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_a_5"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_mara_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "mara",
+      "if_not_flag": "seen_mara_a",
+      "auto_rank": 5
+     },
+     {
+      "key": "ah_mara_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_mara_corners"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_b_1"
+       },
+       {
+        "say": "mara",
+        "key": "mara_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_b_3"
+       },
+       {
+        "say": "mara",
+        "key": "mara_b_4"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_mara_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "mara",
+      "if_not_flag": "seen_mara_b",
+      "auto_rank": 7,
+      "if_flag": "seen_mara_a"
+     },
+     {
+      "key": "ah_priya_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_priya_rooftop"
+       },
+       {
+        "say": "narrator",
+        "key": "priya_a_1"
+       },
+       {
+        "say": "priya",
+        "key": "priya_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "priya_a_3"
+       },
+       {
+        "say": "priya",
+        "key": "priya_a_4"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_priya_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "priya",
+      "if_not_flag": "seen_priya_a",
+      "auto_rank": 5,
+      "if_flag": "hired_priya"
+     },
+     {
+      "key": "ah_priya_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_priya_x"
+       },
+       {
+        "say": "narrator",
+        "key": "priya_b_1"
+       },
+       {
+        "say": "priya",
+        "key": "priya_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "priya_b_3"
+       },
+       {
+        "say": "priya",
+        "key": "priya_b_4"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_priya_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "priya",
+      "if_not_flag": "seen_priya_b",
+      "auto_rank": 7,
+      "if_flag": "seen_priya_a"
+     },
+     {
+      "key": "ah_nia_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_nia_ledger"
+       },
+       {
+        "say": "narrator",
+        "key": "nia_a_1"
+       },
+       {
+        "say": "nia",
+        "key": "nia_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "nia_a_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_nia_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "nia",
+      "if_not_flag": "seen_nia_a",
+      "auto_rank": 5,
+      "if_flag": "hired_nia"
+     },
+     {
+      "key": "ah_nia_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_nia_after"
+       },
+       {
+        "say": "narrator",
+        "key": "nia_b_1"
+       },
+       {
+        "say": "nia",
+        "key": "nia_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "nia_b_3"
+       },
+       {
+        "say": "nia",
+        "key": "nia_b_4"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_nia_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "nia",
+      "if_not_flag": "seen_nia_b",
+      "auto_rank": 7,
+      "if_flag": "seen_nia_a"
+     },
+     {
+      "key": "ah_sol_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_sol_press"
+       },
+       {
+        "say": "narrator",
+        "key": "sol_a_1"
+       },
+       {
+        "say": "sol",
+        "key": "sol_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "sol_a_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_sol_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "sol",
+      "if_not_flag": "seen_sol_a",
+      "auto_rank": 5,
+      "if_flag": "hired_sol"
+     },
+     {
+      "key": "ah_sol_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_sol_after"
+       },
+       {
+        "say": "narrator",
+        "key": "sol_b_1"
+       },
+       {
+        "say": "sol",
+        "key": "sol_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "sol_b_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_sol_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "sol",
+      "if_not_flag": "seen_sol_b",
+      "auto_rank": 7,
+      "if_flag": "seen_sol_a"
+     },
+     {
+      "key": "ah_home",
+      "do": [
+       {
+        "flag": "n4_home1"
+       }
+      ],
+      "auto_rank": 0
+     }
+    ]
+   },
+   {
+    "if_flag": "n4_home1",
+    "then": [],
+    "else": [
+     {
+      "choice": [
+       {
+        "key": "ah_mirei_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_mirei_window"
+         },
+         {
+          "say": "narrator",
+          "key": "mirei_a_1"
+         },
+         {
+          "say": "mirei",
+          "key": "mirei_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "mirei_a_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_mirei_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "mirei",
+        "if_not_flag": "seen_mirei_a",
+        "auto_rank": 5,
+        "if_flag": "n2_done"
+       },
+       {
+        "key": "ah_mirei_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_glass_office"
+         },
+         {
+          "say": "narrator",
+          "key": "mirei_b_1"
+         },
+         {
+          "say": "mirei",
+          "key": "mirei_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "mirei_b_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_mirei_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "mirei",
+        "if_not_flag": "seen_mirei_b",
+        "auto_rank": 7,
+        "if_flag": "seen_mirei_a"
+       },
+       {
+        "key": "ah_mara_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_mara_sofa"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_a_1"
+         },
+         {
+          "say": "mara",
+          "key": "mara_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_a_3"
+         },
+         {
+          "say": "mara",
+          "key": "mara_a_4"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_a_5"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_mara_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "mara",
+        "if_not_flag": "seen_mara_a",
+        "auto_rank": 5
+       },
+       {
+        "key": "ah_mara_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_mara_corners"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_b_1"
+         },
+         {
+          "say": "mara",
+          "key": "mara_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_b_3"
+         },
+         {
+          "say": "mara",
+          "key": "mara_b_4"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_mara_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "mara",
+        "if_not_flag": "seen_mara_b",
+        "auto_rank": 7,
+        "if_flag": "seen_mara_a"
+       },
+       {
+        "key": "ah_priya_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_priya_rooftop"
+         },
+         {
+          "say": "narrator",
+          "key": "priya_a_1"
+         },
+         {
+          "say": "priya",
+          "key": "priya_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "priya_a_3"
+         },
+         {
+          "say": "priya",
+          "key": "priya_a_4"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_priya_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "priya",
+        "if_not_flag": "seen_priya_a",
+        "auto_rank": 5,
+        "if_flag": "hired_priya"
+       },
+       {
+        "key": "ah_priya_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_priya_x"
+         },
+         {
+          "say": "narrator",
+          "key": "priya_b_1"
+         },
+         {
+          "say": "priya",
+          "key": "priya_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "priya_b_3"
+         },
+         {
+          "say": "priya",
+          "key": "priya_b_4"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_priya_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "priya",
+        "if_not_flag": "seen_priya_b",
+        "auto_rank": 7,
+        "if_flag": "seen_priya_a"
+       },
+       {
+        "key": "ah_nia_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_nia_ledger"
+         },
+         {
+          "say": "narrator",
+          "key": "nia_a_1"
+         },
+         {
+          "say": "nia",
+          "key": "nia_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "nia_a_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_nia_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "nia",
+        "if_not_flag": "seen_nia_a",
+        "auto_rank": 5,
+        "if_flag": "hired_nia"
+       },
+       {
+        "key": "ah_nia_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_nia_after"
+         },
+         {
+          "say": "narrator",
+          "key": "nia_b_1"
+         },
+         {
+          "say": "nia",
+          "key": "nia_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "nia_b_3"
+         },
+         {
+          "say": "nia",
+          "key": "nia_b_4"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_nia_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "nia",
+        "if_not_flag": "seen_nia_b",
+        "auto_rank": 7,
+        "if_flag": "seen_nia_a"
+       },
+       {
+        "key": "ah_sol_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_sol_press"
+         },
+         {
+          "say": "narrator",
+          "key": "sol_a_1"
+         },
+         {
+          "say": "sol",
+          "key": "sol_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "sol_a_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_sol_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "sol",
+        "if_not_flag": "seen_sol_a",
+        "auto_rank": 5,
+        "if_flag": "hired_sol"
+       },
+       {
+        "key": "ah_sol_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_sol_after"
+         },
+         {
+          "say": "narrator",
+          "key": "sol_b_1"
+         },
+         {
+          "say": "sol",
+          "key": "sol_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "sol_b_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_sol_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "sol",
+        "if_not_flag": "seen_sol_b",
+        "auto_rank": 7,
+        "if_flag": "seen_sol_a"
+       },
+       {
+        "key": "ah_home",
+        "do": [
+         {
+          "flag": "n4_home2"
+         }
+        ],
+        "auto_rank": 0
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "end_night": true,
+    "next": "n5"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1431 @@
+{
+ "title_key": "title",
+ "logo": "res://assets/title/logo.png",
+ "title_bg": "res://assets/title/keyvisual.png",
+ "fonts": {
+  "body": "res://assets/fonts/Nunito.ttf",
+  "display": "res://assets/fonts/LilitaOne-Regular.ttf",
+  "cjk": "res://assets/fonts/NotoSansCJKjp-subset.ttf"
+ },
+ "ui": {
+  "dust": "res://assets/ui/dust.png",
+  "vignette": "res://assets/ui/vignette.png",
+  "scrim": "res://assets/ui/scrim.png",
+  "dim": "res://assets/ui/scrim.png",
+  "panel": "res://assets/ui/panel.png",
+  "textbox": "res://assets/ui/textbox.png",
+  "namebox": "res://assets/ui/namebox.png",
+  "choice_idle": "res://assets/ui/choice_idle.png",
+  "choice_hover": "res://assets/ui/choice_hover.png",
+  "slot_idle": "res://assets/ui/slot_idle.png",
+  "slot_hover": "res://assets/ui/slot_hover.png",
+  "bar_under": "res://assets/ui/bar_under.png",
+  "bar_fill": "res://assets/ui/bar_fill.png",
+  "bar_fill_gold": "res://assets/ui/bar_fill_gold.png",
+  "modal": "res://assets/ui/modal.png"
+ },
+ "title_mood": {
+  "ambient": "#fff4ea",
+  "torch": false,
+  "zoom": 1.04,
+  "offset": [
+   -120,
+   0
+  ]
+ },
+ "music": {
+  "title": "res://assets/audio/suspense_theme.ogg",
+  "explore": "res://assets/audio/explore.ogg",
+  "battle": "res://assets/audio/standoff.ogg",
+  "boss": "res://assets/audio/boss.ogg",
+  "intimate": "res://assets/audio/intimate.ogg",
+  "dawn": "res://assets/audio/dawn.ogg",
+  "reading": "res://assets/audio/ecchi_theme.ogg"
+ },
+ "audio": {
+  "ambience": "res://assets/audio/rain_ambience.ogg",
+  "click": "res://assets/audio/ui_click.ogg",
+  "page_flip": "res://assets/audio/page_flip.ogg",
+  "heartbeat": "res://assets/audio/heartbeat.ogg",
+  "sting": "res://assets/audio/title_sting.ogg",
+  "camera": "res://assets/audio/ui_click.ogg"
+ },
+ "disclosure_key": "about_ai",
+ "trial_last_night": "n1",
+ "trial_locked_cgs": [],
+ "store_url": "",
+ "stats": [
+  "wit",
+  "cha",
+  "grt",
+  "stl"
+ ],
+ "level_cap": 20,
+ "trust_thresholds": [
+  3,
+  5
+ ],
+ "trust_tracks": [
+  "mara",
+  "priya",
+  "nia",
+  "sol",
+  "mirei"
+ ],
+ "hud_counter": "coin",
+ "heroine_flag": "mara_on",
+ "heroine_sprite": "mara_work",
+ "party": [
+  {
+   "id": "mara",
+   "join_flag": "mara_on",
+   "base": {
+    "wit": 4,
+    "cha": 3,
+    "grt": 4,
+    "stl": 3
+   },
+   "grow": [
+    "wit",
+    "grt",
+    "cha",
+    "stl"
+   ],
+   "actions": [
+    "deflect",
+    "observe",
+    "evidence",
+    "threaten",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "keys": [
+     "m_ring",
+     "m_plan",
+     "m_master",
+     "m_lockdown"
+    ],
+    "steel": [
+     "m_steady",
+     "m_glare",
+     "m_spine"
+    ]
+   },
+   "start_equip": {
+    "outfit": "mara_work",
+    "accessory": "keyring"
+   }
+  },
+  {
+   "id": "priya",
+   "join_flag": "hired_priya",
+   "base": {
+    "wit": 3,
+    "cha": 4,
+    "grt": 4,
+    "stl": 2
+   },
+   "grow": [
+    "grt",
+    "cha",
+    "wit",
+    "stl"
+   ],
+   "actions": [
+    "deflect",
+    "bluff",
+    "flirt",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "tools": [
+     "p_wrench",
+     "p_fix",
+     "p_overtime"
+    ],
+    "banter": [
+     "p_grin",
+     "p_tease",
+     "p_wink"
+    ]
+   },
+   "start_equip": {
+    "outfit": "priya_work",
+    "accessory": "safety_glasses"
+   }
+  },
+  {
+   "id": "nia",
+   "join_flag": "hired_nia",
+   "base": {
+    "wit": 6,
+    "cha": 3,
+    "grt": 3,
+    "stl": 4
+   },
+   "grow": [
+    "wit",
+    "stl",
+    "cha",
+    "grt"
+   ],
+   "actions": [
+    "deflect",
+    "observe",
+    "evidence",
+    "bluff",
+    "item"
+   ],
+   "branches": {
+    "ledger": [
+     "n_columns",
+     "n_audit",
+     "n_forensic"
+    ],
+    "poise": [
+     "n_glasses",
+     "n_dry",
+     "n_cold"
+    ]
+   },
+   "start_equip": {
+    "outfit": "nia_work"
+   }
+  },
+  {
+   "id": "sol",
+   "join_flag": "hired_sol",
+   "base": {
+    "wit": 4,
+    "cha": 6,
+    "grt": 3,
+    "stl": 4
+   },
+   "grow": [
+    "cha",
+    "stl",
+    "wit",
+    "grt"
+   ],
+   "actions": [
+    "deflect",
+    "flirt",
+    "bribe",
+    "stall",
+    "item"
+   ],
+   "branches": {
+    "press": [
+     "s_lede",
+     "s_headline",
+     "s_front"
+    ],
+    "warmth": [
+     "s_tea",
+     "s_warm",
+     "s_late"
+    ]
+   },
+   "start_equip": {
+    "outfit": "sol_work"
+   }
+  }
+ ],
+ "start_items": {
+  "coin": 600,
+  "espresso": 2,
+  "voucher": 1
+ },
+ "actions": {
+  "deflect": {
+   "kind": "guard",
+   "cost": 0,
+   "susp": 4
+  },
+  "observe": {
+   "kind": "observe",
+   "cost": 2,
+   "susp": 2
+  },
+  "bluff": {
+   "cost": 3,
+   "stat": "wit",
+   "power": 7,
+   "scale": 1.5,
+   "susp": 3
+  },
+  "evidence": {
+   "cost": 4,
+   "stat": "wit",
+   "power": 10,
+   "scale": 2.0,
+   "susp": -2,
+   "needs_kind": "evidence"
+  },
+  "bribe": {
+   "cost": 2,
+   "stat": "cha",
+   "power": 9,
+   "scale": 1.2,
+   "susp": 1,
+   "needs_kind": "cash"
+  },
+  "flirt": {
+   "cost": 3,
+   "stat": "cha",
+   "power": 7,
+   "scale": 1.8,
+   "susp": 2
+  },
+  "threaten": {
+   "cost": 4,
+   "stat": "grt",
+   "power": 13,
+   "scale": 2.0,
+   "susp": 12,
+   "harm": true
+  },
+  "stall": {
+   "kind": "stall",
+   "cost": 1,
+   "susp_down": 10,
+   "heal": 3
+  },
+  "item": {
+   "kind": "item",
+   "cost": 0
+  },
+  "keys": {
+   "cost": 5,
+   "stat": "wit",
+   "power": 14,
+   "scale": 2.0,
+   "susp": -3
+  },
+  "fix": {
+   "cost": 4,
+   "stat": "grt",
+   "power": 13,
+   "scale": 1.8,
+   "susp": -2
+  },
+  "audit": {
+   "cost": 5,
+   "stat": "wit",
+   "power": 16,
+   "scale": 2.0,
+   "susp": -4
+  },
+  "headline": {
+   "cost": 5,
+   "stat": "cha",
+   "power": 15,
+   "scale": 2.0,
+   "susp": -2
+  }
+ },
+ "skills": {
+  "m_ring": {
+   "branch": "keys",
+   "req": 2,
+   "mult": {
+    "evidence": 0.3
+   }
+  },
+  "m_plan": {
+   "branch": "keys",
+   "req": 4,
+   "stat": {
+    "wit": 2
+   }
+  },
+  "m_master": {
+   "branch": "keys",
+   "req": 6,
+   "grant": "keys"
+  },
+  "m_lockdown": {
+   "branch": "keys",
+   "req": 10,
+   "mult": {
+    "keys": 0.4
+   }
+  },
+  "m_steady": {
+   "branch": "steel",
+   "req": 2,
+   "max_comp": 10
+  },
+  "m_glare": {
+   "branch": "steel",
+   "req": 5,
+   "mult": {
+    "threaten": 0.3
+   }
+  },
+  "m_spine": {
+   "branch": "steel",
+   "req": 8,
+   "stat": {
+    "grt": 2
+   }
+  },
+  "p_wrench": {
+   "branch": "tools",
+   "req": 2,
+   "stat": {
+    "grt": 2
+   }
+  },
+  "p_fix": {
+   "branch": "tools",
+   "req": 4,
+   "grant": "fix"
+  },
+  "p_overtime": {
+   "branch": "tools",
+   "req": 8,
+   "mult": {
+    "fix": 0.4
+   }
+  },
+  "p_grin": {
+   "branch": "banter",
+   "req": 2,
+   "mult": {
+    "flirt": 0.3
+   }
+  },
+  "p_tease": {
+   "branch": "banter",
+   "req": 5,
+   "stat": {
+    "cha": 2
+   }
+  },
+  "p_wink": {
+   "branch": "banter",
+   "req": 9,
+   "mult": {
+    "bluff": 0.3
+   }
+  },
+  "n_columns": {
+   "branch": "ledger",
+   "req": 2,
+   "mult": {
+    "evidence": 0.3
+   }
+  },
+  "n_audit": {
+   "branch": "ledger",
+   "req": 5,
+   "grant": "audit"
+  },
+  "n_forensic": {
+   "branch": "ledger",
+   "req": 9,
+   "mult": {
+    "audit": 0.4
+   }
+  },
+  "n_glasses": {
+   "branch": "poise",
+   "req": 3,
+   "stat": {
+    "wit": 2
+   }
+  },
+  "n_dry": {
+   "branch": "poise",
+   "req": 6,
+   "mult": {
+    "bluff": 0.3
+   }
+  },
+  "n_cold": {
+   "branch": "poise",
+   "req": 10,
+   "max_comp": 12
+  },
+  "s_lede": {
+   "branch": "press",
+   "req": 2,
+   "mult": {
+    "flirt": 0.3
+   }
+  },
+  "s_headline": {
+   "branch": "press",
+   "req": 6,
+   "grant": "headline"
+  },
+  "s_front": {
+   "branch": "press",
+   "req": 10,
+   "mult": {
+    "headline": 0.4
+   }
+  },
+  "s_tea": {
+   "branch": "warmth",
+   "req": 3,
+   "mult": {
+    "stall": 0.3
+   }
+  },
+  "s_warm": {
+   "branch": "warmth",
+   "req": 7,
+   "stat": {
+    "cha": 2
+   }
+  },
+  "s_late": {
+   "branch": "warmth",
+   "req": 11,
+   "max_comp": 12
+  }
+ },
+ "items": {
+  "coin": {
+   "kind": "money",
+   "hidden": true
+  },
+  "voucher": {
+   "kind": "cash"
+  },
+  "espresso": {
+   "kind": "consumable",
+   "heal_comp": 16
+  },
+  "energy": {
+   "kind": "consumable",
+   "heal_nerve": 8
+  },
+  "pastry": {
+   "kind": "consumable",
+   "heal_comp": 28
+  },
+  "mints": {
+   "kind": "consumable",
+   "heal_nerve": 14
+  },
+  "lease_copy": {
+   "kind": "evidence"
+  },
+  "sign_in_sheet": {
+   "kind": "evidence"
+  },
+  "sublet_ledger": {
+   "kind": "evidence"
+  },
+  "audit_trail": {
+   "kind": "evidence"
+  },
+  "court_error": {
+   "kind": "evidence"
+  },
+  "trust_deed": {
+   "kind": "evidence"
+  },
+  "mara_work": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "mara",
+   "bonus": {
+    "grt": 1
+   },
+   "sprite": "mara_work"
+  },
+  "mara_after": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "mara",
+   "bonus": {
+    "cha": 2
+   },
+   "mult": {
+    "flirt": 0.2
+   },
+   "sprite": "mara_after"
+  },
+  "priya_work": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "priya",
+   "bonus": {
+    "grt": 1
+   },
+   "sprite": "priya_work"
+  },
+  "priya_after": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "priya",
+   "bonus": {
+    "cha": 2
+   },
+   "mult": {
+    "flirt": 0.2
+   },
+   "sprite": "priya_after"
+  },
+  "nia_work": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "nia",
+   "bonus": {
+    "wit": 1
+   },
+   "sprite": "nia_work"
+  },
+  "nia_after": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "nia",
+   "bonus": {
+    "cha": 2
+   },
+   "mult": {
+    "bluff": 0.2
+   },
+   "sprite": "nia_after"
+  },
+  "sol_work": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "sol",
+   "bonus": {
+    "stl": 1
+   },
+   "sprite": "sol_work"
+  },
+  "sol_after": {
+   "kind": "equip",
+   "slot": "outfit",
+   "for": "sol",
+   "bonus": {
+    "cha": 2
+   },
+   "mult": {
+    "flirt": 0.2
+   },
+   "sprite": "sol_after"
+  },
+  "keyring": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "mara",
+   "bonus": {
+    "wit": 1
+   }
+  },
+  "gold_lanyard": {
+   "kind": "equip",
+   "slot": "accessory",
+   "bonus": {
+    "cha": 1,
+    "wit": 1
+   }
+  },
+  "earpiece": {
+   "kind": "equip",
+   "slot": "accessory",
+   "bonus": {
+    "stl": 2
+   }
+  },
+  "safety_glasses": {
+   "kind": "equip",
+   "slot": "accessory",
+   "for": "priya",
+   "bonus": {
+    "grt": 1
+   }
+  },
+  "fountain_pen": {
+   "kind": "equip",
+   "slot": "accessory",
+   "bonus": {
+    "wit": 2
+   },
+   "mult": {
+    "evidence": 0.2
+   }
+  },
+  "press_pass": {
+   "kind": "equip",
+   "slot": "accessory",
+   "bonus": {
+    "cha": 2
+   }
+  },
+  "clipboard": {
+   "kind": "equip",
+   "slot": "tool",
+   "bonus": {
+    "wit": 1
+   },
+   "mult": {
+    "bluff": 0.2
+   }
+  },
+  "tablet": {
+   "kind": "equip",
+   "slot": "tool",
+   "bonus": {
+    "stl": 1
+   },
+   "mult": {
+    "stall": 0.2
+   }
+  },
+  "thermos": {
+   "kind": "equip",
+   "slot": "tool",
+   "bonus": {
+    "grt": 2
+   }
+  },
+  "toolbelt": {
+   "kind": "equip",
+   "slot": "tool",
+   "for": "priya",
+   "bonus": {
+    "grt": 1
+   },
+   "mult": {
+    "fix": 0.2
+   }
+  },
+  "orchid": {
+   "kind": "gift",
+   "gift": true,
+   "gift_track": "mirei",
+   "gift_trust": 1
+  },
+  "whisky": {
+   "kind": "gift",
+   "gift": true,
+   "gift_track": "mara",
+   "gift_trust": 1
+  },
+  "craft_beer": {
+   "kind": "gift",
+   "gift": true,
+   "gift_track": "priya",
+   "gift_trust": 1
+  },
+  "ink": {
+   "kind": "gift",
+   "gift": true,
+   "gift_track": "nia",
+   "gift_trust": 1
+  },
+  "first_edition": {
+   "kind": "gift",
+   "gift": true,
+   "gift_track": "sol",
+   "gift_trust": 1
+  }
+ },
+ "enemies": {
+  "courier": {
+   "name_key": "e_courier",
+   "sprite": "courier",
+   "composure": 175,
+   "atk": 7,
+   "susp_rate": 7,
+   "xp": 35,
+   "weak": [
+    "flirt",
+    "bribe"
+   ],
+   "resist": [
+    "threaten",
+    "bluff"
+   ],
+   "intro_key": "ei_courier",
+   "win_key": "ew_courier",
+   "barks": 2,
+   "drop": "voucher"
+  },
+  "cleaner": {
+   "name_key": "e_cleaner",
+   "sprite": "junior",
+   "composure": 237,
+   "atk": 8,
+   "susp_rate": 8,
+   "xp": 45,
+   "weak": [
+    "evidence",
+    "flirt"
+   ],
+   "resist": [
+    "bluff",
+    "threaten"
+   ],
+   "intro_key": "ei_cleaner",
+   "win_key": "ew_cleaner",
+   "barks": 2,
+   "drop": "espresso"
+  },
+  "pryce": {
+   "name_key": "e_pryce",
+   "sprite": "pryce",
+   "composure": 425,
+   "atk": 9,
+   "susp_rate": 8,
+   "xp": 90,
+   "weak": [
+    "evidence",
+    "bluff"
+   ],
+   "resist": [
+    "flirt",
+    "bribe"
+   ],
+   "intro_key": "ei_pryce",
+   "win_key": "ew_pryce",
+   "barks": 3,
+   "drop": "lease_copy",
+   "boss": true,
+   "trust_win": 1,
+   "trust_track": "mirei",
+   "trust_win_max_susp": 60
+  },
+  "pryce_short": {
+   "name_key": "e_pryce",
+   "sprite": "pryce",
+   "composure": 807,
+   "atk": 12,
+   "susp_rate": 12,
+   "xp": 90,
+   "weak": [
+    "evidence",
+    "bluff"
+   ],
+   "resist": [
+    "flirt",
+    "bribe"
+   ],
+   "intro_key": "ei_pryce_short",
+   "win_key": "ew_pryce_short",
+   "barks": 3,
+   "drop": "lease_copy",
+   "boss": true,
+   "suspicion_start": 38
+  },
+  "subletter": {
+   "name_key": "e_subletter",
+   "sprite": "sublet",
+   "composure": 300,
+   "atk": 9,
+   "susp_rate": 8,
+   "xp": 50,
+   "weak": [
+    "threaten",
+    "evidence"
+   ],
+   "resist": [
+    "flirt",
+    "bribe"
+   ],
+   "intro_key": "ei_subletter",
+   "win_key": "ew_subletter",
+   "barks": 2,
+   "drop": "energy"
+  },
+  "subletter2": {
+   "name_key": "e_subletter2",
+   "sprite": "sublet",
+   "composure": 375,
+   "atk": 9,
+   "susp_rate": 9,
+   "xp": 55,
+   "weak": [
+    "threaten",
+    "evidence"
+   ],
+   "resist": [
+    "flirt",
+    "bribe"
+   ],
+   "intro_key": "ei_subletter2",
+   "win_key": "ew_subletter2",
+   "barks": 2,
+   "drop": "pastry"
+  },
+  "wes": {
+   "name_key": "e_wes",
+   "sprite": "wes",
+   "composure": 675,
+   "atk": 10,
+   "susp_rate": 9,
+   "xp": 120,
+   "weak": [
+    "evidence",
+    "threaten"
+   ],
+   "resist": [
+    "bluff",
+    "flirt"
+   ],
+   "intro_key": "ei_wes",
+   "win_key": "ew_wes",
+   "barks": 3,
+   "drop": "sublet_ledger",
+   "boss": true,
+   "trust_win": 1,
+   "trust_track": "mirei",
+   "trust_win_max_susp": 60
+  },
+  "wes_short": {
+   "name_key": "e_wes",
+   "sprite": "wes",
+   "composure": 1282,
+   "atk": 13,
+   "susp_rate": 13,
+   "xp": 120,
+   "weak": [
+    "evidence",
+    "threaten"
+   ],
+   "resist": [
+    "bluff",
+    "flirt"
+   ],
+   "intro_key": "ei_wes_short",
+   "win_key": "ew_wes_short",
+   "barks": 3,
+   "drop": "sublet_ledger",
+   "boss": true,
+   "suspicion_start": 38
+  },
+  "junior": {
+   "name_key": "e_junior",
+   "sprite": "junior",
+   "composure": 425,
+   "atk": 10,
+   "susp_rate": 9,
+   "xp": 60,
+   "weak": [
+    "flirt",
+    "bluff"
+   ],
+   "resist": [
+    "threaten",
+    "evidence"
+   ],
+   "intro_key": "ei_junior",
+   "win_key": "ew_junior",
+   "barks": 2,
+   "drop": "mints"
+  },
+  "records_clerk": {
+   "name_key": "e_records_clerk",
+   "sprite": "junior",
+   "composure": 500,
+   "atk": 10,
+   "susp_rate": 9,
+   "xp": 65,
+   "weak": [
+    "evidence",
+    "flirt"
+   ],
+   "resist": [
+    "bluff",
+    "bribe"
+   ],
+   "intro_key": "ei_records_clerk",
+   "win_key": "ew_records_clerk",
+   "barks": 2,
+   "drop": "audit_trail"
+  },
+  "varga": {
+   "name_key": "e_varga",
+   "sprite": "varga",
+   "composure": 925,
+   "atk": 12,
+   "susp_rate": 10,
+   "xp": 160,
+   "weak": [
+    "evidence",
+    "audit"
+   ],
+   "resist": [
+    "bluff",
+    "flirt",
+    "bribe"
+   ],
+   "intro_key": "ei_varga",
+   "win_key": "ew_varga",
+   "barks": 3,
+   "drop": "fountain_pen",
+   "boss": true,
+   "trust_win": 1,
+   "trust_track": "mirei",
+   "trust_win_max_susp": 60
+  },
+  "varga_short": {
+   "name_key": "e_varga",
+   "sprite": "varga",
+   "composure": 1757,
+   "atk": 15,
+   "susp_rate": 14,
+   "xp": 160,
+   "weak": [
+    "evidence",
+    "audit"
+   ],
+   "resist": [
+    "bluff",
+    "flirt",
+    "bribe"
+   ],
+   "intro_key": "ei_varga_short",
+   "win_key": "ew_varga_short",
+   "barks": 3,
+   "drop": "fountain_pen",
+   "boss": true,
+   "suspicion_start": 38
+  },
+  "mover": {
+   "name_key": "e_mover",
+   "sprite": "mover",
+   "composure": 625,
+   "atk": 11,
+   "susp_rate": 10,
+   "xp": 80,
+   "weak": [
+    "threaten",
+    "keys"
+   ],
+   "resist": [
+    "flirt",
+    "bluff"
+   ],
+   "intro_key": "ei_mover",
+   "win_key": "ew_mover",
+   "barks": 2,
+   "drop": "thermos"
+  },
+  "printer_rep": {
+   "name_key": "e_printer_rep",
+   "sprite": "lawyer",
+   "composure": 675,
+   "atk": 11,
+   "susp_rate": 10,
+   "xp": 85,
+   "weak": [
+    "evidence",
+    "flirt"
+   ],
+   "resist": [
+    "threaten",
+    "bribe"
+   ],
+   "intro_key": "ei_printer_rep",
+   "win_key": "ew_printer_rep",
+   "barks": 2,
+   "drop": "court_error"
+  },
+  "bailiff": {
+   "name_key": "e_bailiff",
+   "sprite": "bailiff",
+   "composure": 1350,
+   "atk": 13,
+   "susp_rate": 11,
+   "xp": 180,
+   "weak": [
+    "evidence",
+    "headline"
+   ],
+   "resist": [
+    "bribe",
+    "flirt",
+    "threaten"
+   ],
+   "intro_key": "ei_bailiff",
+   "win_key": "ew_bailiff",
+   "barks": 3,
+   "drop": "press_pass",
+   "boss": true,
+   "trust_win": 1,
+   "trust_track": "mirei",
+   "trust_win_max_susp": 60
+  },
+  "bailiff_short": {
+   "name_key": "e_bailiff",
+   "sprite": "bailiff",
+   "composure": 2565,
+   "atk": 16,
+   "susp_rate": 15,
+   "xp": 180,
+   "weak": [
+    "evidence",
+    "headline"
+   ],
+   "resist": [
+    "bribe",
+    "flirt",
+    "threaten"
+   ],
+   "intro_key": "ei_bailiff_short",
+   "win_key": "ew_bailiff_short",
+   "barks": 3,
+   "drop": "press_pass",
+   "boss": true,
+   "suspicion_start": 38
+  },
+  "lawyer": {
+   "name_key": "e_lawyer",
+   "sprite": "lawyer",
+   "composure": 850,
+   "atk": 12,
+   "susp_rate": 11,
+   "xp": 100,
+   "weak": [
+    "audit",
+    "evidence"
+   ],
+   "resist": [
+    "bluff",
+    "flirt"
+   ],
+   "intro_key": "ei_lawyer",
+   "win_key": "ew_lawyer",
+   "barks": 2,
+   "drop": "trust_deed"
+  },
+  "halvard": {
+   "name_key": "e_halvard",
+   "sprite": "halvard",
+   "composure": 1900,
+   "atk": 14,
+   "susp_rate": 12,
+   "xp": 220,
+   "weak": [
+    "keys",
+    "headline",
+    "audit"
+   ],
+   "resist": [
+    "threaten",
+    "bribe",
+    "bluff"
+   ],
+   "intro_key": "ei_halvard",
+   "win_key": "ew_halvard",
+   "barks": 4,
+   "boss": true,
+   "trust_win": 1,
+   "trust_track": "mirei",
+   "trust_win_max_susp": 60
+  },
+  "halvard_short": {
+   "name_key": "e_halvard",
+   "sprite": "halvard",
+   "composure": 3610,
+   "atk": 17,
+   "susp_rate": 16,
+   "xp": 220,
+   "weak": [
+    "keys",
+    "headline",
+    "audit"
+   ],
+   "resist": [
+    "threaten",
+    "bribe",
+    "bluff"
+   ],
+   "intro_key": "ei_halvard_short",
+   "win_key": "ew_halvard_short",
+   "barks": 4,
+   "boss": true,
+   "suspicion_start": 38
+  }
+ },
+ "nights": [
+  "n1",
+  "n2",
+  "n3",
+  "n4",
+  "n5"
+ ],
+ "story": [],
+ "office": {
+  "shifts": 8,
+  "rent": {
+   "n1": 1500,
+   "n2": 1900,
+   "n3": 2400,
+   "n4": 3200,
+   "n5": 4200
+  },
+  "pull_cost": 400,
+  "pull10_cost": 3600,
+  "rates": {
+   "common": 70,
+   "rare": 25,
+   "epic": 5
+  },
+  "pity": 10,
+  "pool": {
+   "common": [
+    "priya",
+    "mara",
+    "dan"
+   ],
+   "rare": [
+    "nia",
+    "wes"
+   ],
+   "epic": [
+    "sol"
+   ]
+  },
+  "pool_flags": {
+   "wes": "wes_done"
+  },
+  "party": [
+   "mara",
+   "priya",
+   "nia",
+   "sol"
+  ],
+  "start_owned": {
+   "mara": 1,
+   "dan": 1
+  },
+  "start_objects": {
+   "coffee": 2,
+   "mute": 1
+  },
+  "objects": {
+   "coffee": 300,
+   "mute": 600,
+   "printer": 700,
+   "corner": 500
+  },
+  "supplies": {
+   "espresso": 240,
+   "pastry": 500,
+   "energy": 300,
+   "mints": 500,
+   "voucher": 400,
+   "clipboard": 1200,
+   "tablet": 1400,
+   "earpiece": 1600,
+   "gold_lanyard": 1800,
+   "orchid": 1200,
+   "whisky": 1200,
+   "craft_beer": 800,
+   "ink": 1200,
+   "first_edition": 1400,
+   "mara_after": 1800,
+   "priya_after": 1800,
+   "nia_after": 1800,
+   "sol_after": 1800
+  },
+  "once": [
+   "mara_after",
+   "priya_after",
+   "nia_after",
+   "sol_after",
+   "clipboard",
+   "tablet",
+   "earpiece",
+   "gold_lanyard",
+   "orchid",
+   "whisky",
+   "craft_beer",
+   "ink",
+   "first_edition"
+  ],
+  "trust_on_shift": 1
+ },
+ "gallery": [
+  {
+   "id": "cg_mirei_lease",
+   "thumb": "cg_mirei_lease_thumb",
+   "locked": "cg_mirei_lease_locked",
+   "key": "g_cg_mirei_lease",
+   "trust": 0
+  },
+  {
+   "id": "cg_evicted",
+   "thumb": "cg_evicted_thumb",
+   "locked": "cg_evicted_locked",
+   "key": "g_cg_evicted",
+   "trust": 0
+  },
+  {
+   "id": "cg_mara_sofa",
+   "thumb": "cg_mara_sofa_thumb",
+   "locked": "cg_mara_sofa_locked",
+   "key": "g_cg_mara_sofa",
+   "trust": 3
+  },
+  {
+   "id": "cg_mara_corners",
+   "thumb": "cg_mara_corners_thumb",
+   "locked": "cg_mara_corners_locked",
+   "key": "g_cg_mara_corners",
+   "trust": 5
+  },
+  {
+   "id": "cg_priya_rooftop",
+   "thumb": "cg_priya_rooftop_thumb",
+   "locked": "cg_priya_rooftop_locked",
+   "key": "g_cg_priya_rooftop",
+   "trust": 3
+  },
+  {
+   "id": "cg_priya_x",
+   "thumb": "cg_priya_x_thumb",
+   "locked": "cg_priya_x_locked",
+   "key": "g_cg_priya_x",
+   "trust": 5
+  },
+  {
+   "id": "cg_nia_ledger",
+   "thumb": "cg_nia_ledger_thumb",
+   "locked": "cg_nia_ledger_locked",
+   "key": "g_cg_nia_ledger",
+   "trust": 3
+  },
+  {
+   "id": "cg_nia_after",
+   "thumb": "cg_nia_after_thumb",
+   "locked": "cg_nia_after_locked",
+   "key": "g_cg_nia_after",
+   "trust": 5
+  },
+  {
+   "id": "cg_sol_press",
+   "thumb": "cg_sol_press_thumb",
+   "locked": "cg_sol_press_locked",
+   "key": "g_cg_sol_press",
+   "trust": 3
+  },
+  {
+   "id": "cg_sol_after",
+   "thumb": "cg_sol_after_thumb",
+   "locked": "cg_sol_after_locked",
+   "key": "g_cg_sol_after",
+   "trust": 5
+  },
+  {
+   "id": "cg_mirei_window",
+   "thumb": "cg_mirei_window_thumb",
+   "locked": "cg_mirei_window_locked",
+   "key": "g_cg_mirei_window",
+   "trust": 3
+  },
+  {
+   "id": "cg_glass_office",
+   "thumb": "cg_glass_office_thumb",
+   "locked": "cg_glass_office_locked",
+   "key": "g_cg_glass_office",
+   "trust": 5
+  },
+  {
+   "id": "cg_quiet_floor",
+   "thumb": "cg_quiet_floor_thumb",
+   "locked": "cg_quiet_floor_locked",
+   "key": "g_cg_quiet_floor",
+   "trust": 5
+  },
+  {
+   "id": "cg_vault_x",
+   "thumb": "cg_vault_x_thumb",
+   "locked": "cg_vault_x_locked",
+   "key": "g_cg_vault_x",
+   "trust": 5
+  },
+  {
+   "id": "cg_keys",
+   "thumb": "cg_keys_thumb",
+   "locked": "cg_keys_locked",
+   "key": "g_cg_keys",
+   "trust": 0
+  },
+  {
+   "id": "cg_floor9",
+   "thumb": "cg_floor9_thumb",
+   "locked": "cg_floor9_locked",
+   "key": "g_cg_floor9",
+   "trust": 0
+  }
+ ],
+ "voice": {
+  "v_greet_0": {
+   "v_en": "res://assets/voice/v_greet_0.ogg"
+  },
+  "v_greet_1": {
+   "v_en": "res://assets/voice/v_greet_1.ogg"
+  },
+  "v_stage_0": {
+   "v_en": "res://assets/voice/v_stage_0.ogg"
+  },
+  "v_stage_1": {
+   "v_en": "res://assets/voice/v_stage_1.ogg"
+  },
+  "v_stage_2": {
+   "v_en": "res://assets/voice/v_stage_2.ogg"
+  },
+  "v_stage_3": {
+   "v_en": "res://assets/voice/v_stage_3.ogg"
+  },
+  "v_near_0": {
+   "v_en": "res://assets/voice/v_near_0.ogg"
+  },
+  "v_near_1": {
+   "v_en": "res://assets/voice/v_near_1.ogg"
+  },
+  "v_win_0": {
+   "v_en": "res://assets/voice/v_win_0.ogg"
+  },
+  "v_win_1": {
+   "v_en": "res://assets/voice/v_win_1.ogg"
+  },
+  "v_win_2": {
+   "v_en": "res://assets/voice/v_win_2.ogg"
+  },
+  "v_win_big_0": {
+   "v_en": "res://assets/voice/v_win_big_0.ogg"
+  },
+  "v_win_big_1": {
+   "v_en": "res://assets/voice/v_win_big_1.ogg"
+  },
+  "v_fail_0": {
+   "v_en": "res://assets/voice/v_fail_0.ogg"
+  },
+  "v_fail_1": {
+   "v_en": "res://assets/voice/v_fail_1.ogg"
+  },
+  "v_idle_0": {
+   "v_en": "res://assets/voice/v_idle_0.ogg"
+  },
+  "v_idle_1": {
+   "v_en": "res://assets/voice/v_idle_1.ogg"
+  },
+  "v_streak_0": {
+   "v_en": "res://assets/voice/v_streak_0.ogg"
+  },
+  "v_streak_1": {
+   "v_en": "res://assets/voice/v_streak_1.ogg"
+  },
+  "v_unlock_0": {
+   "v_en": "res://assets/voice/v_unlock_0.ogg"
+  },
+  "v_unlock_1": {
+   "v_en": "res://assets/voice/v_unlock_1.ogg"
+  }
+ }
+}

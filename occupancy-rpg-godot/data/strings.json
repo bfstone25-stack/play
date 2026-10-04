@@ -1,0 +1,2926 @@
+{
+ "e_courier": {
+  "en": "A night courier",
+  "ja": "夜間の配達人"
+ },
+ "ei_courier": {
+  "en": "She has an envelope for 'whoever runs this building' and a bike on the kerb with the light still flashing.",
+  "ja": "「このビルを仕切ってる人」宛ての封筒を持ち、歩道の自転車はライトが点滅したままだ。"
+ },
+ "ew_courier": {
+  "en": "She signs her own sheet, grins, and leaves the envelope and a parking pass she has no use for.",
+  "ja": "彼女は自分で伝票にサインし、にやりと笑って、封筒と使い道のない駐車券を置いていった。"
+ },
+ "bark_courier_1": {
+  "en": "Sign or I leave it in the rain.",
+  "ja": "サインして。じゃなきゃ雨の中に置いてく。"
+ },
+ "bark_courier_2": {
+  "en": "I get paid per door, not per argument.",
+  "ja": "報酬は一軒ごと。口論ごとじゃない。"
+ },
+ "e_cleaner": {
+  "en": "The agency's night supervisor",
+  "ja": "清掃会社の夜間主任"
+ },
+ "ei_cleaner": {
+  "en": "She says the cleaning contract lapsed at midnight and her crew is walking unless someone signs for the month.",
+  "ja": "清掃契約は零時で切れた、誰かが一か月分にサインしなければ班は引き上げる、と彼女は言う。"
+ },
+ "ew_cleaner": {
+  "en": "She countersigns, and the hoovers start up again two floors down.",
+  "ja": "彼女が副署すると、二つ下の階で掃除機がまた唸り出した。"
+ },
+ "bark_cleaner_1": {
+  "en": "Contract says midnight.",
+  "ja": "契約書には零時とある。"
+ },
+ "bark_cleaner_2": {
+  "en": "My crew has homes too.",
+  "ja": "うちの班にも家はあるの。"
+ },
+ "e_pryce": {
+  "en": "Gideon Pryce, rent agent",
+  "ja": "家賃代理人ギデオン・プライス"
+ },
+ "ei_pryce": {
+  "en": "He opens the Halvard Trust's ledger on the reception desk and turns it to face you. Floor two. In red.",
+  "ja": "彼はハルヴァード信託の台帳を受付台に開き、こちらに向けた。二階。赤字で。"
+ },
+ "ew_pryce": {
+  "en": "He blots the line, writes PAID in a hand like a scalpel, and wishes you, sincerely, a long night.",
+  "ja": "彼は行に吸い取り紙を当て、メスのような字で『支払済』と書き、心から長い夜を祈った。"
+ },
+ "bark_pryce_1": {
+  "en": "The Trust is patient. I am not the Trust.",
+  "ja": "信託は辛抱強い。私は信託ではない。"
+ },
+ "bark_pryce_2": {
+  "en": "Floor two owes. Floors are like people.",
+  "ja": "二階は滞納している。階は人間と同じだ。"
+ },
+ "bark_pryce_3": {
+  "en": "Your predecessor said that too.",
+  "ja": "前任者も同じことを言っていた。"
+ },
+ "ei_pryce_short": {
+  "en": "He opens the Halvard Trust's ledger on the reception desk and turns it to face you. Floor two. In red. The rent is short, and they know it.",
+  "ja": "彼はハルヴァード信託の台帳を受付台に開き、こちらに向けた。二階。赤字で。家賃が足りない。向こうもそれを知っている。"
+ },
+ "ew_pryce_short": {
+  "en": "He blots the line, writes PAID in a hand like a scalpel, and wishes you, sincerely, a long night.",
+  "ja": "彼は行に吸い取り紙を当て、メスのような字で『支払済』と書き、心から長い夜を祈った。"
+ },
+ "bark_pryce_short_1": {
+  "en": "The Trust is patient. I am not the Trust.",
+  "ja": "信託は辛抱強い。私は信託ではない。"
+ },
+ "bark_pryce_short_2": {
+  "en": "Floor two owes. Floors are like people.",
+  "ja": "二階は滞納している。階は人間と同じだ。"
+ },
+ "bark_pryce_short_3": {
+  "en": "Your predecessor said that too.",
+  "ja": "前任者も同じことを言っていた。"
+ },
+ "e_subletter": {
+  "en": "A man who rents a desk from Wes",
+  "ja": "ウェスから机を借りている男"
+ },
+ "ei_subletter": {
+  "en": "He has paid Wes for a desk, a password and 'the energy of the space'. He would like all three, now.",
+  "ja": "彼はウェスに机代とパスワードと「空間のエネルギー」代を払った。三つとも今すぐ欲しいと言う。"
+ },
+ "ew_subletter": {
+  "en": "He packs his laptop. He thanks you, which is worse.",
+  "ja": "彼はノートパソコンを畳む。礼まで言われるのが、かえってつらい。"
+ },
+ "bark_subletter_1": {
+  "en": "I have a Zoom at nine.",
+  "ja": "九時にZoomがあるんだ。"
+ },
+ "bark_subletter_2": {
+  "en": "The energy was the point.",
+  "ja": "エネルギーが肝心だったのに。"
+ },
+ "e_subletter2": {
+  "en": "Two more of Wes's tenants",
+  "ja": "ウェスの借り手、さらに二人"
+ },
+ "ei_subletter2": {
+  "en": "They have the same receipt, for the same desk, from the same man.",
+  "ja": "同じ机の、同じ男からの、同じ領収書を二人とも持っている。"
+ },
+ "ew_subletter2": {
+  "en": "They leave together, already planning a podcast about it.",
+  "ja": "二人は連れ立って帰っていく。もうこの件のポッドキャストを企画している。"
+ },
+ "bark_subletter2_1": {
+  "en": "We were told it was a community.",
+  "ja": "コミュニティだって聞いてた。"
+ },
+ "bark_subletter2_2": {
+  "en": "Who even owns this building?",
+  "ja": "このビル、そもそも誰のもの？"
+ },
+ "e_wes": {
+  "en": "Wes, tenant on seven",
+  "ja": "七階の入居者ウェス"
+ },
+ "ei_wes": {
+  "en": "Wes sits on the boardroom table with his tie loose and a smile he has used on better landlords than you.",
+  "ja": "ウェスはネクタイを緩めて会議机に腰掛け、あなたよりましな家主たちにも使ってきた笑みを浮かべている。"
+ },
+ "ew_wes": {
+  "en": "He laughs, once, and hands over the ledger. 'Fine. Fine. Put me on payroll, then. I'm good at people.'",
+  "ja": "彼は一度だけ笑い、台帳を差し出した。「わかった、わかったよ。じゃあ給料を払ってくれ。人あしらいは得意なんだ」"
+ },
+ "bark_wes_1": {
+  "en": "Everyone sublets. I just say it out loud.",
+  "ja": "みんな又貸ししてる。俺は口に出すだけさ。"
+ },
+ "bark_wes_2": {
+  "en": "Mirei likes me. Ask her.",
+  "ja": "ミレイは俺を気に入ってる。聞いてみなよ。"
+ },
+ "bark_wes_3": {
+  "en": "It's a community, technically.",
+  "ja": "厳密にはコミュニティだよ。"
+ },
+ "ei_wes_short": {
+  "en": "Wes sits on the boardroom table with his tie loose and a smile he has used on better landlords than you. The rent is short, and they know it.",
+  "ja": "ウェスはネクタイを緩めて会議机に腰掛け、あなたよりましな家主たちにも使ってきた笑みを浮かべている。家賃が足りない。向こうもそれを知っている。"
+ },
+ "ew_wes_short": {
+  "en": "He laughs, once, and hands over the ledger. 'Fine. Fine. Put me on payroll, then. I'm good at people.'",
+  "ja": "彼は一度だけ笑い、台帳を差し出した。「わかった、わかったよ。じゃあ給料を払ってくれ。人あしらいは得意なんだ」"
+ },
+ "bark_wes_short_1": {
+  "en": "Everyone sublets. I just say it out loud.",
+  "ja": "みんな又貸ししてる。俺は口に出すだけさ。"
+ },
+ "bark_wes_short_2": {
+  "en": "Mirei likes me. Ask her.",
+  "ja": "ミレイは俺を気に入ってる。聞いてみなよ。"
+ },
+ "bark_wes_short_3": {
+  "en": "It's a community, technically.",
+  "ja": "厳密にはコミュニティだよ。"
+ },
+ "e_junior": {
+  "en": "Ms. Ames, junior auditor",
+  "ja": "下級監査人エイムズ"
+ },
+ "ei_junior": {
+  "en": "She has a clipboard, a trench coat, and an expression of someone who was sent up alone on purpose.",
+  "ja": "クリップボードとトレンチコート、それにわざと一人で寄越された人の表情。"
+ },
+ "ew_junior": {
+  "en": "She ticks a box she was not told about and goes to find a vending machine.",
+  "ja": "教わっていない欄にチェックを入れ、自販機を探しに行った。"
+ },
+ "bark_junior_1": {
+  "en": "I'm just here to count.",
+  "ja": "数えに来ただけです。"
+ },
+ "bark_junior_2": {
+  "en": "Ms. Varga will ask me what you said.",
+  "ja": "ヴァルガさんに何を言われたか聞かれます。"
+ },
+ "e_records_clerk": {
+  "en": "The night archivist",
+  "ja": "夜間記録係"
+ },
+ "ei_records_clerk": {
+  "en": "The Trust has rented the records room for a week and left one woman in it with a stamp.",
+  "ja": "信託は記録室を一週間借り、判子を持った女を一人そこに置いていった。"
+ },
+ "ew_records_clerk": {
+  "en": "She stamps your box RETURNED, which is the nicest word she knows.",
+  "ja": "彼女はあなたの箱に『返却』の判を押した。彼女の知る一番優しい言葉だ。"
+ },
+ "bark_records_clerk_1": {
+  "en": "Box number?",
+  "ja": "箱番号は？"
+ },
+ "bark_records_clerk_2": {
+  "en": "No originals leave this room.",
+  "ja": "原本はこの部屋から出ません。"
+ },
+ "e_varga": {
+  "en": "Ilse Varga, the Trust's auditor",
+  "ja": "信託の監査人イルゼ・ヴァルガ"
+ },
+ "ei_varga": {
+  "en": "She has spread six years of the building's accounts across the conference table in the order in which they lie.",
+  "ja": "彼女は六年分のビルの帳簿を、嘘をついている順に会議机に並べた。"
+ },
+ "ew_varga": {
+  "en": "She closes the last binder. 'Clean. Irritatingly.' She almost smiles. Almost.",
+  "ja": "最後のバインダーを閉じる。「きれいね。腹立たしいほど」ほとんど笑った。ほとんど。"
+ },
+ "bark_varga_1": {
+  "en": "Every column has a person under it.",
+  "ja": "どの列の下にも人がいる。"
+ },
+ "bark_varga_2": {
+  "en": "Round that again.",
+  "ja": "そこ、もう一度丸めて。"
+ },
+ "bark_varga_3": {
+  "en": "I audit, I do not negotiate.",
+  "ja": "私は監査する。交渉はしない。"
+ },
+ "ei_varga_short": {
+  "en": "She has spread six years of the building's accounts across the conference table in the order in which they lie. The rent is short, and they know it.",
+  "ja": "彼女は六年分のビルの帳簿を、嘘をついている順に会議机に並べた。家賃が足りない。向こうもそれを知っている。"
+ },
+ "ew_varga_short": {
+  "en": "She closes the last binder. 'Clean. Irritatingly.' She almost smiles. Almost.",
+  "ja": "最後のバインダーを閉じる。「きれいね。腹立たしいほど」ほとんど笑った。ほとんど。"
+ },
+ "bark_varga_short_1": {
+  "en": "Every column has a person under it.",
+  "ja": "どの列の下にも人がいる。"
+ },
+ "bark_varga_short_2": {
+  "en": "Round that again.",
+  "ja": "そこ、もう一度丸めて。"
+ },
+ "bark_varga_short_3": {
+  "en": "I audit, I do not negotiate.",
+  "ja": "私は監査する。交渉はしない。"
+ },
+ "e_mover": {
+  "en": "A repo crew foreman",
+  "ja": "差し押さえ班の班長"
+ },
+ "ei_mover": {
+  "en": "He has a van, four men and a list of the newsroom's furniture, and the list has been signed by someone.",
+  "ja": "バンと四人の男と、新聞部の家具の一覧。一覧には誰かの署名がある。"
+ },
+ "ew_mover": {
+  "en": "He folds the list into his top pocket. 'Wrong date. My mistake.' It was not his mistake.",
+  "ja": "彼は一覧を胸ポケットにしまった。「日付違いだ。俺のミスだ」彼のミスではない。"
+ },
+ "bark_mover_1": {
+  "en": "Just doing the job.",
+  "ja": "仕事してるだけだ。"
+ },
+ "bark_mover_2": {
+  "en": "Desk, desk, chair, desk.",
+  "ja": "机、机、椅子、机。"
+ },
+ "e_printer_rep": {
+  "en": "A lease-company rep",
+  "ja": "リース会社の担当者"
+ },
+ "ei_printer_rep": {
+  "en": "He has come at two in the morning to repossess a printing press, with a tablet and a lawyer's smile on loan.",
+  "ja": "午前二時に、タブレットと借り物の弁護士の笑みを携えて、印刷機を引き取りに来た。"
+ },
+ "ew_printer_rep": {
+  "en": "He photographs the press, for the file, and leaves it where it is.",
+  "ja": "彼は記録用に印刷機を撮影し、そのまま置いて帰った。"
+ },
+ "bark_printer_rep_1": {
+  "en": "It's on the schedule.",
+  "ja": "予定表に載ってる。"
+ },
+ "bark_printer_rep_2": {
+  "en": "Nobody prints any more.",
+  "ja": "今どき誰も印刷しない。"
+ },
+ "e_bailiff": {
+  "en": "The Bailiff",
+  "ja": "執行官"
+ },
+ "ei_bailiff": {
+  "en": "He reads the order aloud in the newsroom, slowly, so that everyone who still works there can hear it.",
+  "ja": "彼は新聞部で命令書を読み上げる。まだここで働く全員に聞こえるよう、ゆっくりと。"
+ },
+ "ew_bailiff": {
+  "en": "He folds the order. 'Not tonight, then.' He sounds, of all things, relieved.",
+  "ja": "命令書を畳む。「では今夜ではない」よりによって、ほっとした声だ。"
+ },
+ "bark_bailiff_1": {
+  "en": "Noted.",
+  "ja": "記録した。"
+ },
+ "bark_bailiff_2": {
+  "en": "Everything is due eventually.",
+  "ja": "いずれはすべて期限が来る。"
+ },
+ "bark_bailiff_3": {
+  "en": "I have done this to better buildings.",
+  "ja": "もっと良いビルにもやってきた。"
+ },
+ "ei_bailiff_short": {
+  "en": "He reads the order aloud in the newsroom, slowly, so that everyone who still works there can hear it. The rent is short, and they know it.",
+  "ja": "彼は新聞部で命令書を読み上げる。まだここで働く全員に聞こえるよう、ゆっくりと。家賃が足りない。向こうもそれを知っている。"
+ },
+ "ew_bailiff_short": {
+  "en": "He folds the order. 'Not tonight, then.' He sounds, of all things, relieved.",
+  "ja": "命令書を畳む。「では今夜ではない」よりによって、ほっとした声だ。"
+ },
+ "bark_bailiff_short_1": {
+  "en": "Noted.",
+  "ja": "記録した。"
+ },
+ "bark_bailiff_short_2": {
+  "en": "Everything is due eventually.",
+  "ja": "いずれはすべて期限が来る。"
+ },
+ "bark_bailiff_short_3": {
+  "en": "I have done this to better buildings.",
+  "ja": "もっと良いビルにもやってきた。"
+ },
+ "e_lawyer": {
+  "en": "Mr. Sallow, the Trust's counsel",
+  "ja": "信託の顧問弁護士サロウ"
+ },
+ "ei_lawyer": {
+  "en": "He offers you a pen before he offers you the paper. He has done this many times.",
+  "ja": "紙より先にペンを差し出してくる。何度もやってきた手つきだ。"
+ },
+ "ew_lawyer": {
+  "en": "He caps the pen. He will bill someone for the time; it will not be you.",
+  "ja": "彼はペンにキャップをする。この時間は誰かに請求するだろう。あなたではない。"
+ },
+ "bark_lawyer_1": {
+  "en": "Sign here, and here.",
+  "ja": "ここと、ここに署名を。"
+ },
+ "bark_lawyer_2": {
+  "en": "This is a courtesy.",
+  "ja": "これは好意です。"
+ },
+ "e_halvard": {
+  "en": "Corinne Halvard",
+  "ja": "コリンヌ・ハルヴァード"
+ },
+ "ei_halvard": {
+  "en": "The heir of the Trust takes Mirei's chair as if it had been kept warm for her, and asks what the building is worth to you.",
+  "ja": "信託の相続人はミレイの椅子に、自分のために温められていたかのように座り、このビルがあなたにとっていくらの価値かと尋ねる。"
+ },
+ "ew_halvard": {
+  "en": "She stands, smooths the white suit, and holds out her hand to Mirei. 'Keep it, then. Make it worth something.'",
+  "ja": "彼女は立ち上がり、白いスーツを撫でつけ、ミレイに手を差し出した。「では持っていなさい。価値のあるものにして」"
+ },
+ "bark_halvard_1": {
+  "en": "Everything in this city is rented.",
+  "ja": "この街のものはすべて借り物よ。"
+ },
+ "bark_halvard_2": {
+  "en": "Mirei always did love a lost cause.",
+  "ja": "ミレイは昔から負け戦が好きだった。"
+ },
+ "bark_halvard_3": {
+  "en": "Name a number.",
+  "ja": "数字を言いなさい。"
+ },
+ "bark_halvard_4": {
+  "en": "I could buy your staff.",
+  "ja": "あなたのスタッフを買うこともできる。"
+ },
+ "ei_halvard_short": {
+  "en": "The heir of the Trust takes Mirei's chair as if it had been kept warm for her, and asks what the building is worth to you. The rent is short, and they know it.",
+  "ja": "信託の相続人はミレイの椅子に、自分のために温められていたかのように座り、このビルがあなたにとっていくらの価値かと尋ねる。家賃が足りない。向こうもそれを知っている。"
+ },
+ "ew_halvard_short": {
+  "en": "She stands, smooths the white suit, and holds out her hand to Mirei. 'Keep it, then. Make it worth something.'",
+  "ja": "彼女は立ち上がり、白いスーツを撫でつけ、ミレイに手を差し出した。「では持っていなさい。価値のあるものにして」"
+ },
+ "bark_halvard_short_1": {
+  "en": "Everything in this city is rented.",
+  "ja": "この街のものはすべて借り物よ。"
+ },
+ "bark_halvard_short_2": {
+  "en": "Mirei always did love a lost cause.",
+  "ja": "ミレイは昔から負け戦が好きだった。"
+ },
+ "bark_halvard_short_3": {
+  "en": "Name a number.",
+  "ja": "数字を言いなさい。"
+ },
+ "bark_halvard_short_4": {
+  "en": "I could buy your staff.",
+  "ja": "あなたのスタッフを買うこともできる。"
+ },
+ "g_cg_mirei_lease": {
+  "en": "Mirei — the lease",
+  "ja": "ミレイ — 契約"
+ },
+ "g_cg_evicted": {
+  "en": "A floor short of rent",
+  "ja": "家賃の足りない階"
+ },
+ "g_cg_mara_sofa": {
+  "en": "Mara — the sofa on twelve",
+  "ja": "マーラ — 十二階のソファ"
+ },
+ "g_cg_mara_corners": {
+  "en": "Mara — the corner office",
+  "ja": "マーラ — 角部屋"
+ },
+ "g_cg_priya_rooftop": {
+  "en": "Priya — the roof at sunrise",
+  "ja": "プリヤ — 夜明けの屋上"
+ },
+ "g_cg_priya_x": {
+  "en": "Priya — the service corridor",
+  "ja": "プリヤ — 業務用通路"
+ },
+ "g_cg_nia_ledger": {
+  "en": "Nia — the ledger",
+  "ja": "ニア — 帳簿"
+ },
+ "g_cg_nia_after": {
+  "en": "Nia — after the audit",
+  "ja": "ニア — 監査のあとで"
+ },
+ "g_cg_sol_press": {
+  "en": "Sol — the last edition",
+  "ja": "ソル — 最終版"
+ },
+ "g_cg_sol_after": {
+  "en": "Sol — four in the morning",
+  "ja": "ソル — 午前四時"
+ },
+ "g_cg_mirei_window": {
+  "en": "Mirei — the penthouse window",
+  "ja": "ミレイ — ペントハウスの窓"
+ },
+ "g_cg_glass_office": {
+  "en": "Mirei — against the glass",
+  "ja": "ミレイ — ガラス越しに"
+ },
+ "g_cg_quiet_floor": {
+  "en": "Mirei and Mara — the quiet floor",
+  "ja": "ミレイとマーラ — 静かな階"
+ },
+ "g_cg_vault_x": {
+  "en": "Mirei — the vault",
+  "ja": "ミレイ — 金庫室"
+ },
+ "g_cg_keys": {
+  "en": "Full occupancy",
+  "ja": "満室"
+ },
+ "g_cg_floor9": {
+  "en": "Holding on — dawn",
+  "ja": "持ちこたえて — 夜明け"
+ },
+ "r_lobby": {
+  "en": "The lobby",
+  "ja": "ロビー"
+ },
+ "r_open_plan": {
+  "en": "Floor two — the open plan",
+  "ja": "二階 — オープンフロア"
+ },
+ "r_copy_room": {
+  "en": "The copy room",
+  "ja": "コピー室"
+ },
+ "r_break_room": {
+  "en": "The break room",
+  "ja": "休憩室"
+ },
+ "r_sublet": {
+  "en": "Floor seven — the sublet",
+  "ja": "七階 — 又貸しのフロア"
+ },
+ "r_meeting_room": {
+  "en": "The glass meeting room",
+  "ja": "ガラスの会議室"
+ },
+ "r_stairwell": {
+  "en": "The east stairwell",
+  "ja": "東階段"
+ },
+ "r_accounts": {
+  "en": "Floor six — accounts",
+  "ja": "六階 — 経理"
+ },
+ "r_records": {
+  "en": "The records room",
+  "ja": "記録室"
+ },
+ "r_server_room": {
+  "en": "The server room",
+  "ja": "サーバー室"
+ },
+ "r_newsroom": {
+  "en": "Floor eight — the newsroom",
+  "ja": "八階 — 新聞部"
+ },
+ "r_print_room": {
+  "en": "The print room",
+  "ja": "印刷室"
+ },
+ "r_rooftop": {
+  "en": "The roof",
+  "ja": "屋上"
+ },
+ "r_penthouse": {
+  "en": "The penthouse",
+  "ja": "ペントハウス"
+ },
+ "r_boardroom": {
+  "en": "The boardroom",
+  "ja": "役員会議室"
+ },
+ "r_vault": {
+  "en": "The vault under the penthouse",
+  "ja": "ペントハウス下の金庫室"
+ },
+ "mara_a_1": {
+  "en": "The sofa on twelve is the one nobody is supposed to know about. Mara knows about it. She has the key on the ring.",
+  "ja": "十二階のソファは誰も知らないことになっている。マーラは知っている。鍵は輪についている。"
+ },
+ "mara_a_2": {
+  "en": "Sit. You've been standing since ten. I count.",
+  "ja": "座って。十時からずっと立ってる。数えてたのよ。"
+ },
+ "mara_a_3": {
+  "en": "She undoes two buttons of her shirt like a woman taking off a uniform rather than putting on a show, and lies back with the lanyard still round her neck.",
+  "ja": "彼女はシャツのボタンを二つ外す。見せるためではなく、制服を脱ぐ女の手つきで。そして名札を首にかけたまま横になる。"
+ },
+ "mara_a_4": {
+  "en": "Ten minutes. Then we go and look at the boiler. Come here.",
+  "ja": "十分。それからボイラーを見に行く。こっちに来て。"
+ },
+ "mara_a_5": {
+  "en": "It is longer than ten minutes. Neither of you mentions the boiler again until it is almost light.",
+  "ja": "十分では済まない。夜が明けかけるまで、どちらもボイラーの話を二度としなかった。"
+ },
+ "ah_mara_a": {
+  "en": "Stay late with Mara — the sofa on twelve",
+  "ja": "マーラと残業 — 十二階のソファ"
+ },
+ "mara_b_1": {
+  "en": "The corner office has been empty for a year. Mara keeps it clean anyway; it has the best view in the building and nobody else has the key.",
+  "ja": "角部屋は一年空いている。それでもマーラは掃除を欠かさない。ビルで一番の眺めで、鍵を持っているのは彼女だけだ。"
+ },
+ "mara_b_2": {
+  "en": "I used to want this office. Then I realised I already had every office.",
+  "ja": "昔はこの部屋が欲しかった。でも気づいたの。もう全部の部屋を持ってるって。"
+ },
+ "mara_b_3": {
+  "en": "She sits on the desk with her shirt open and her chin up, and asks you to look at her the way you look at a floor plan: properly, all of it, nothing skipped.",
+  "ja": "シャツをはだけて机に腰掛け、顎を上げる。図面を見るように見て、と彼女は言う。きちんと、全部、何も飛ばさずに。"
+ },
+ "mara_b_4": {
+  "en": "Good. You're learning the building.",
+  "ja": "いいわ。ビルのことがわかってきたわね。"
+ },
+ "ah_mara_b": {
+  "en": "Stay late with Mara — the corner office",
+  "ja": "マーラと残業 — 角部屋"
+ },
+ "priya_a_1": {
+  "en": "Priya fixes the roof door at five to six and refuses to go home until the sun has done something worth staying for.",
+  "ja": "プリヤは六時五分前に屋上の扉を直し、日の出が待つ価値のあることをするまで帰らないと言い張る。"
+ },
+ "priya_a_2": {
+  "en": "Sit on the ledge. No — the inside of the ledge. I'm not filling in the form if you fall.",
+  "ja": "縁に座って。違う、内側。落ちたら書類を書くのは私なんだから。"
+ },
+ "priya_a_3": {
+  "en": "The hi-vis jacket comes off one shoulder, then the strap under it. She laughs at you for looking, and then she lets you.",
+  "ja": "反射ジャケットが片方の肩から落ち、その下の肩紐も。見とれるあなたを笑い、それから、見るのを許してくれる。"
+ },
+ "priya_a_4": {
+  "en": "Six nights a week I'm on call for this building. Tonight I'm off the clock. Act like it.",
+  "ja": "週六日、このビルの呼び出し待ち。今夜は時間外よ。そのつもりでいて。"
+ },
+ "ah_priya_a": {
+  "en": "Stay late with Priya — the roof at sunrise",
+  "ja": "プリヤと残業 — 夜明けの屋上"
+ },
+ "priya_b_1": {
+  "en": "The service corridor behind the lifts has one bulb and a railing and Priya, who has been waiting there with her jacket off.",
+  "ja": "エレベーター裏の業務用通路には、電球がひとつと手すり、そしてジャケットを脱いで待っていたプリヤがいる。"
+ },
+ "priya_b_2": {
+  "en": "Every camera in this building has a blind spot. I installed half of them. This is the best one.",
+  "ja": "このビルのカメラには全部死角がある。半分は私が取り付けた。ここが一番いい死角。"
+ },
+ "priya_b_3": {
+  "en": "She lets the shirt fall down her back and looks over her shoulder at you, flushed and grinning, a hand on the cold rail.",
+  "ja": "シャツを背中まで落とし、肩越しにあなたを見る。頬を染めて笑い、片手は冷たい手すりに。"
+ },
+ "priya_b_4": {
+  "en": "Well? I'm not going to fix this one for you.",
+  "ja": "で？ これは直してあげないわよ。"
+ },
+ "ah_priya_b": {
+  "en": "Stay late with Priya — the service corridor",
+  "ja": "プリヤと残業 — 業務用通路"
+ },
+ "nia_a_1": {
+  "en": "Nia has found the error. It was eleven dollars in 2021, and it has been eating the building ever since. She is very pleased.",
+  "ja": "ニアは誤りを見つけた。2021年の十一ドルが、それ以来ずっとビルを蝕んでいた。彼女はとても満足している。"
+ },
+ "nia_a_2": {
+  "en": "Do you know how rare it is to be right at two in the morning? Sit down. Celebrate with me. Quietly.",
+  "ja": "午前二時に正しいって、どれだけ珍しいかわかる？ 座って。一緒に祝って。静かにね。"
+ },
+ "nia_a_3": {
+  "en": "She sits on the desk with the ledger in her lap and the blazer slipping, and reads you the corrected total in a voice that should not make a number sound like that.",
+  "ja": "台帳を膝にのせて机に腰掛け、ブレザーが滑り落ちる。そして訂正後の合計を読み上げる。数字がそんなふうに聞こえていいはずのない声で。"
+ },
+ "ah_nia_a": {
+  "en": "Stay late with Nia — the ledger",
+  "ja": "ニアと残業 — 帳簿"
+ },
+ "nia_b_1": {
+  "en": "After the audit, the window. Nia takes her glasses off, which she never does, and holds them like evidence.",
+  "ja": "監査のあとは窓辺。ニアは決して外さない眼鏡を外し、証拠品のように持つ。"
+ },
+ "nia_b_2": {
+  "en": "I don't do this. I want that on the record.",
+  "ja": "私はこういうことはしない。記録に残しておいて。"
+ },
+ "nia_b_3": {
+  "en": "The blazer is the only thing left and she lets it hang open at the back, looking at you over her shoulder against a sky going pink.",
+  "ja": "残ったのはブレザーだけ。背中を開けたまま、桃色に染まりはじめた空を背に、肩越しにあなたを見る。"
+ },
+ "nia_b_4": {
+  "en": "Noted. Approved. Come here.",
+  "ja": "記録。承認。こっちに来て。"
+ },
+ "ah_nia_b": {
+  "en": "Stay late with Nia — after the audit",
+  "ja": "ニアと残業 — 監査のあとで"
+ },
+ "sol_a_1": {
+  "en": "Sol files at four, still, for a paper that stopped printing in March. Tonight she reads you the piece before she sends it nowhere.",
+  "ja": "ソルは今も四時に入稿する。三月に印刷をやめた新聞に。今夜は送り先のない記事を、送る前にあなたに読んでくれる。"
+ },
+ "sol_a_2": {
+  "en": "It's about this building. You're in paragraph six. Don't let it go to your head.",
+  "ja": "このビルの記事よ。あなたは第六段落にいる。のぼせないでね。"
+ },
+ "sol_a_3": {
+  "en": "The cardigan has slid off one shoulder and she doesn't fix it. She leans on her hand and watches you read, warm and tired and very much awake.",
+  "ja": "カーディガンが片方の肩から滑り落ちても直さない。頬杖をついて、あなたが読むのを見ている。温かく、疲れていて、すっかり目が覚めている。"
+ },
+ "ah_sol_a": {
+  "en": "Stay late with Sol — the last edition",
+  "ja": "ソルと残業 — 最終版"
+ },
+ "sol_b_1": {
+  "en": "Four in the morning, the sofa in the newsroom, a lamp, a stack of papers nobody will read. Sol, laughing, holding her own arms across herself.",
+  "ja": "午前四時、新聞部のソファ、ランプ、誰も読まない新聞の山。自分の腕で胸を隠し、笑っているソル。"
+ },
+ "sol_b_2": {
+  "en": "I've been writing about other people's nights for twenty years. I wanted one of my own.",
+  "ja": "二十年、他人の夜のことを書いてきた。自分の夜がひとつ欲しかったの。"
+ },
+ "sol_b_3": {
+  "en": "She makes room on the sofa. The story, for once, is not going to be filed.",
+  "ja": "彼女はソファに場所を空ける。今回ばかりは、この話は入稿されない。"
+ },
+ "ah_sol_b": {
+  "en": "Stay late with Sol — four in the morning",
+  "ja": "ソルと残業 — 午前四時"
+ },
+ "mirei_a_1": {
+  "en": "The penthouse at the hour the city turns gold. Mirei in a silk robe, a glass of something old, her back to you and the view in front of her.",
+  "ja": "街が金色に変わる時刻のペントハウス。絹のローブのミレイ、古い何かを注いだグラス。背中をこちらに向け、眺めを前にしている。"
+ },
+ "mirei_a_2": {
+  "en": "My father bought this building with money he didn't have. I've been paying for it with nights I don't have. You're the first person who's helped.",
+  "ja": "父はないお金でこのビルを買った。私はない夜で払い続けてきた。手伝ってくれたのは、あなたが初めて。"
+ },
+ "mirei_a_3": {
+  "en": "The robe slides off her shoulders. She doesn't turn round. She doesn't need to; she can see you in the glass.",
+  "ja": "ローブが肩から滑り落ちる。彼女は振り向かない。その必要はない。ガラスに映るあなたが見えている。"
+ },
+ "ah_mirei_a": {
+  "en": "Stay late with Mirei — the penthouse window",
+  "ja": "ミレイと残業 — ペントハウスの窓"
+ },
+ "mirei_b_1": {
+  "en": "Her office, the lights off, the city on the other side of the glass. Mirei with one hand flat on the window, as if she were holding the skyline up.",
+  "ja": "灯りを消した彼女のオフィス。ガラスの向こうの街。片手を窓に平らに当てたミレイ。まるで摩天楼を支えているように。"
+ },
+ "mirei_b_2": {
+  "en": "Everyone out there pays rent to someone. Tonight I'd like to owe you something.",
+  "ja": "外の人たちは皆、誰かに家賃を払ってる。今夜は、あなたに借りを作りたいの。"
+ },
+ "mirei_b_3": {
+  "en": "She looks back at you over a bare shoulder, and for once the woman who owns the building is not the one in charge.",
+  "ja": "裸の肩越しに振り返る。今回ばかりは、ビルの持ち主が主導権を握る側ではない。"
+ },
+ "ah_mirei_b": {
+  "en": "Stay late with Mirei — against the glass",
+  "ja": "ミレイと残業 — ガラス越しに"
+ },
+ "ah_home": {
+  "en": "Go home. It's late even for this building.",
+  "ja": "帰る。このビルにしても遅すぎる。"
+ },
+ "ah_menu": {
+  "en": "The floor is quiet. Someone is still here.",
+  "ja": "フロアは静かだ。まだ誰かが残っている。"
+ },
+ "hs_desk": {
+  "en": "The reception desk",
+  "ja": "受付"
+ },
+ "hs_clock": {
+  "en": "The brass clock",
+  "ja": "真鍮の時計"
+ },
+ "hs_console": {
+  "en": "The floor console — build and run the shift",
+  "ja": "フロアの端末 — 配置してシフトを回す"
+ },
+ "hs_desks": {
+  "en": "Abandoned desks",
+  "ja": "空いた机"
+ },
+ "hs_crisis_pryce": {
+  "en": "The rent crisis — Gideon Pryce, rent agent",
+  "ja": "家賃の危機 — Gideon Pryce, rent agent"
+ },
+ "hs_priya_copier": {
+  "en": "Priya and the copier",
+  "ja": "プリヤとコピー機"
+ },
+ "hs_vending": {
+  "en": "The vending machine",
+  "ja": "自販機"
+ },
+ "hs_mara_coffee": {
+  "en": "Mara at the coffee machine",
+  "ja": "コーヒーマシンのマーラ"
+ },
+ "hs_fridge": {
+  "en": "The fridge",
+  "ja": "冷蔵庫"
+ },
+ "hs_noticeboard": {
+  "en": "The noticeboard",
+  "ja": "掲示板"
+ },
+ "n1_o1": {
+  "en": "Ten at night, the Occupancy Building. Thirty-one floors of glass, nine of them lit, and a woman in a pinstripe suit waiting at the reception desk with a pen.",
+  "ja": "夜十時、オキュパンシー・ビル。三十一階分のガラス、灯りがついているのは九フロア。受付台でペンを持って待つピンストライプのスーツの女。"
+ },
+ "n1_o2": {
+  "en": "You're the night manager. Mirei Kurosawa — I own the building. Mostly. Sit, sign, and I'll tell you which part I don't own.",
+  "ja": "あなたが夜間管理人ね。黒沢ミレイ — このビルの持ち主。ほぼね。座って、署名して。持っていない部分を教えるわ。"
+ },
+ "n1_o3": {
+  "en": "The ground under us belongs to the Halvard Trust. Every floor pays them ground rent, every night it's due, and five floors are behind.",
+  "ja": "この下の土地はハルヴァード信託のもの。どのフロアも地代を払う。毎晩が期日で、五フロアが滞納してる。"
+ },
+ "n1_o4": {
+  "en": "If one floor defaults, the Trust can call the whole lease. They've wanted this tower for thirty years.",
+  "ja": "一フロアでも払えなければ、信託は賃貸契約ごと解除できる。三十年前からこのタワーを狙ってるのよ。"
+ },
+ "n1_o5": {
+  "en": "Tonight their agent comes for floor two. Your job is to have the rent when he does.",
+  "ja": "今夜、代理人が二階に来る。あなたの仕事は、そのとき家賃を用意しておくこと。"
+ },
+ "n1_how_1": {
+  "en": "With people. The staff who stay late are the only margin this building has. Put them where they work best and the floor pays.",
+  "ja": "人でよ。遅くまで残るスタッフが、このビルの唯一の余力。一番働ける場所に置けば、フロアは稼ぐ。"
+ },
+ "n1_c_how": {
+  "en": "\"How much, and with what?\"",
+  "ja": "「いくら、何で？」"
+ },
+ "n1_why_1": {
+  "en": "Because everyone I know has already told me to sell.",
+  "ja": "知り合いは皆、もう売れって言ったから。"
+ },
+ "n1_c_why": {
+  "en": "\"Why hire a stranger for this?\"",
+  "ja": "「なぜ見知らぬ人間を？」"
+ },
+ "n1_c_sign": {
+  "en": "Sign. Ask nothing.",
+  "ja": "署名する。何も聞かない。"
+ },
+ "n1_o6": {
+  "en": "Mara. Building manager. I have keys to every floor and opinions about every tenant. You'll want both.",
+  "ja": "マーラ。ビル管理。全フロアの鍵と、全入居者への意見を持ってる。どっちも必要になるわよ。"
+ },
+ "n1_o7": {
+  "en": "And you'll want more hands than Mara's. The first hire is on me.",
+  "ja": "それにマーラの手だけじゃ足りない。最初の採用は私の奢り。"
+ },
+ "n1_o8": {
+  "en": "Priya. Facilities. I have keys I'm not supposed to have and a very good reason for each.",
+  "ja": "プリヤ。設備担当。持っちゃいけない鍵を持ってて、どれにもちゃんとした理由がある。"
+ },
+ "n1_tut1": {
+  "en": "(The floor console on each floor is the office: place staff and objects on the 5×4 floor, then run the night shift once. Neighbours link — coffee beside Dan, Mara lifting everyone round her — and every link multiplies the whole floor. The shift pays the rent fund.)",
+  "ja": "（各フロアの端末がオフィス。5×4のフロアにスタッフと備品を置き、夜勤シフトを一度だけ回す。隣同士が連携する — ダンの隣のコーヒー、周りを底上げするマーラ — 連携ごとにフロア全体の倍率が上がる。シフトの稼ぎが家賃資金になる。）"
+ },
+ "n1_tut2": {
+  "en": "(Recruit more staff from the same fund — in-game money only. Each night's rent is due when its crisis arrives: paid, it is an ordinary standoff; short, a hard one. Standoffs: wear down their Resolve before their Pressure reaches 100. Read them first: everyone has soft spots.)",
+  "ja": "（同じ資金でスタッフを採用できる — ゲーム内通貨のみ。各夜の家賃は危機が来たときに支払う。払えれば普通の対決、足りなければ厳しい対決。対決では、相手の圧力が100に達する前に意地を削りきる。まずは相手を読むこと。誰にでも弱みがある。）"
+ },
+ "n1_oe1": {
+  "en": "Floor two: an open plan for eighty, lit for nine. Monitors asleep in rows. Somebody's cardigan on a chair since spring.",
+  "ja": "二階：八十人用のオープンフロアに、九人分の灯り。並んで眠るモニター。春から椅子に掛かったままの誰かのカーディガン。"
+ },
+ "n1_desk1": {
+  "en": "The night sign-in sheet, in Mara's square capitals. Who came in, who went up, who never signed out. Paperwork is a weapon in the right meeting.",
+  "ja": "マーラの角ばった大文字で書かれた夜間入館記録。誰が来て、誰が上がり、誰が退館しなかったか。しかるべき会議では、書類は武器になる。"
+ },
+ "n1_clock1": {
+  "en": "The lobby clock was a gift from the Trust in 1974. It runs four minutes fast. Mirei has never had it fixed, on principle.",
+  "ja": "ロビーの時計は1974年に信託から贈られたもの。四分進んでいる。ミレイは主義として一度も直させていない。"
+ },
+ "n1_desks1": {
+  "en": "Eleven empty desks, each with a name card for somebody who left. In one drawer, a parking pass nobody came back for.",
+  "ja": "空いた机が十一。それぞれに、去った誰かの名札。引き出しのひとつに、誰も取りに戻らなかった駐車券。"
+ },
+ "n1_vend1": {
+  "en": "The vending machine takes your dollar, considers it, and gives you two energy drinks. You keep the second one for later.",
+  "ja": "自販機はあなたの一ドルを受け取り、検討し、エナジードリンクを二本くれた。二本目はあとにとっておく。"
+ },
+ "n1_fridge1": {
+  "en": "A labelled shelf (MARA. DO NOT.) and an unlabelled one. The unlabelled one has a night-shift pastry in it.",
+  "ja": "名前つきの棚（マーラ。触るな）と、名前のない棚。名前のない方に夜勤のペストリーがある。"
+ },
+ "n1_board1": {
+  "en": "Fire drill notices, a lost cat (found), and a printed chart of rent by floor going back six years. Every line goes up. One floor's goes up faster: two.",
+  "ja": "避難訓練のお知らせ、迷い猫（見つかった）、そして六年分のフロア別家賃の表。どの線も上がっている。一本だけ速く上がる線がある。二階だ。"
+ },
+ "n1_ce1": {
+  "en": "The copy room hums. The copier is making a sound copiers are not meant to make.",
+  "ja": "コピー室が唸っている。コピー機が、コピー機の出してはいけない音を出している。"
+ },
+ "n1_p1": {
+  "en": "Don't touch it. It's not jammed, it's offended. There's a difference.",
+  "ja": "触らないで。詰まってるんじゃない、拗ねてるの。違いがあるのよ。"
+ },
+ "n1_p_help1": {
+  "en": "See, you're useful. Mirei said you would be. I said we'd see.",
+  "ja": "ほら、役に立つじゃない。ミレイはそう言ってた。私は様子見って言ったけど。"
+ },
+ "n1_p_help": {
+  "en": "Hold the panel while she works.",
+  "ja": "彼女が作業するあいだパネルを押さえる。"
+ },
+ "n1_p_ask1": {
+  "en": "Days have managers. Nights have me. I like being the person who knows where the water shut-off is.",
+  "ja": "昼には管理職がいる。夜には私がいる。止水栓の場所を知ってる人でいるのが好きなの。"
+ },
+ "n1_p_ask": {
+  "en": "\"Why do you do nights?\"",
+  "ja": "「どうして夜勤を？」"
+ },
+ "n1_p_leave": {
+  "en": "Leave her to it.",
+  "ja": "任せておく。"
+ },
+ "n1_m1": {
+  "en": "Coffee. Black. Don't make that face; the machine only does black. It used to do latte. Then it saw things.",
+  "ja": "コーヒー。ブラック。そんな顔しないで。この機械はブラックしか出ない。昔はラテも出た。それから色々見ちゃったのよ。"
+ },
+ "n1_m_keys1": {
+  "en": "Nine years. I've outlasted three owners and two managers. I'm hoping to outlast the Trust.",
+  "ja": "九年。オーナー三人と管理人二人より長くいる。信託より長くいられたらいいわね。"
+ },
+ "n1_m_keys": {
+  "en": "\"How long have you had all the keys?\"",
+  "ja": "「いつから全部の鍵を？」"
+ },
+ "n1_m_mirei1": {
+  "en": "Stubborn. Generous. Late. She's the only owner who's ever asked my name twice.",
+  "ja": "頑固。気前がいい。遅刻魔。私の名前を二度聞いたオーナーは彼女だけ。"
+ },
+ "n1_m_mirei": {
+  "en": "\"What's Mirei like?\"",
+  "ja": "「ミレイはどんな人？」"
+ },
+ "n1_m_none": {
+  "en": "Drink the coffee in silence.",
+  "ja": "黙ってコーヒーを飲む。"
+ },
+ "n1_cou1": {
+  "en": "A courier in a yellow rain jacket is blocking the revolving door with a bike and an envelope.",
+  "ja": "黄色いレインジャケットの配達人が、自転車と封筒で回転扉をふさいでいる。"
+ },
+ "n1_cou2": {
+  "en": "Summons for 'whoever runs this building'. Sign, or I leave it in the rain and you can explain that to a judge.",
+  "ja": "「このビルを仕切ってる人」宛ての召喚状。サインして。じゃなきゃ雨の中に置いてく。判事に説明するのはそっちよ。"
+ },
+ "n1_cou3": {
+  "en": "The envelope is from the Trust: notice of the rent agent's visit, eleven o'clock, floor two. As if you didn't know.",
+  "ja": "封筒は信託から：二階、十一時、家賃代理人の訪問通知。知らなかったとでもいうように。"
+ },
+ "n1_cl1": {
+  "en": "The cleaning agency's night supervisor, with a contract and a crew waiting in the lift.",
+  "ja": "清掃会社の夜間主任。契約書を手に、班をエレベーターで待たせている。"
+ },
+ "n1_cl2": {
+  "en": "Contract lapsed at midnight. No signature, no hoovers. Your floors, your dust.",
+  "ja": "契約は零時で切れた。サインがなきゃ掃除機は動かない。あなたのフロア、あなたの埃。"
+ },
+ "n1_cl3": {
+  "en": "Two floors down, the hoovers start up again. It sounds, absurdly, like applause.",
+  "ja": "二つ下の階で、掃除機がまた動き出す。ばかばかしいほど、拍手のように聞こえる。"
+ },
+ "n1_pr1": {
+  "en": "Eleven exactly. A grey man with a pocket-watch chain and a ledger opens the Trust's book on the nearest desk.",
+  "ja": "十一時ちょうど。懐中時計の鎖をつけた灰色の男が、手近な机に信託の台帳を開く。"
+ },
+ "n1_pr2": {
+  "en": "Gideon Pryce, for the Halvard Trust. Floor two, ground rent, one night. Fifteen hundred dollars, or the floor is in default.",
+  "ja": "ギデオン・プライス、ハルヴァード信託の者だ。二階、地代、一晩分。千五百ドル。払えなければこのフロアは債務不履行となる。"
+ },
+ "n1_short1": {
+  "en": "This is what default looks like. A desk, a box, a lanyard. Somebody's whole job in one carton. Don't let it be floor two.",
+  "ja": "不履行ってこういうことよ。机ひとつ、箱ひとつ、名札ひとつ。誰かの仕事がまるごと段ボール一箱。二階をそうさせないで。"
+ },
+ "n1_paid_msg": {
+  "en": "You count out $1500 from the rent fund. It is all there.",
+  "ja": "家賃資金から$1500を数えて出す。全額そろっている。"
+ },
+ "n1_short_msg": {
+  "en": "The rent fund is short. Everyone in the room can see it.",
+  "ja": "家賃資金が足りない。部屋の全員にそれが見えている。"
+ },
+ "n1_after1": {
+  "en": "Floor two, paid. One down. Four floors to go, and they get more expensive.",
+  "ja": "二階、支払済。一つ目。あと四フロア、しかも高くなる。"
+ },
+ "n1_after2": {
+  "en": "Seven tomorrow. There's a tenant up there called Wes. You'll like him for about ten minutes.",
+  "ja": "明日は七階。ウェスって入居者がいる。十分くらいは好きになれるわよ。"
+ },
+ "n1_ah": {
+  "en": "The floor is quiet. Someone is still here.",
+  "ja": "フロアは静かだ。まだ誰かが残っている。"
+ },
+ "n1_title": {
+  "en": "Night one",
+  "ja": "第一夜"
+ },
+ "n1_sub": {
+  "en": "Floor two — the open plan",
+  "ja": "二階 — オープンフロア"
+ },
+ "hs_priya_lift": {
+  "en": "Priya and the dead lift",
+  "ja": "プリヤと止まったエレベーター"
+ },
+ "hs_landing": {
+  "en": "The landing",
+  "ja": "踊り場"
+ },
+ "hs_mara_sublet": {
+  "en": "Mara counting desks",
+  "ja": "机を数えるマーラ"
+ },
+ "hs_boxes": {
+  "en": "Cardboard boxes",
+  "ja": "段ボール"
+ },
+ "hs_mirei_call": {
+  "en": "Mirei on the speakerphone",
+  "ja": "スピーカーフォンのミレイ"
+ },
+ "hs_crisis_wes": {
+  "en": "The rent crisis — Wes",
+  "ja": "家賃の危機 — Wes"
+ },
+ "n2_o1": {
+  "en": "Night two. The lift to seven has stopped between six and seven with nobody in it, which Priya says is the lift's way of making a point.",
+  "ja": "第二夜。七階行きのエレベーターが六階と七階のあいだで止まった。誰も乗っていない。プリヤいわく、エレベーターなりの意思表示らしい。"
+ },
+ "n2_o2": {
+  "en": "Seven is Wes's floor. He leases a third of it and rents out all of it. The Trust's lawyers have noticed. So has the fire marshal.",
+  "ja": "七階はウェスのフロア。三分の一を借りて、全部を貸してる。信託の弁護士も気づいた。消防署もね。"
+ },
+ "n2_o3": {
+  "en": "Tonight the Trust's agent for seven is Wes himself, because he signed as our sub-agent. Don't ask me how. I'd have to draw a diagram.",
+  "ja": "今夜の七階の信託代理人はウェス本人。うちの副代理人として署名したから。どうやってかは聞かないで。図を描くことになる。"
+ },
+ "n2_se1": {
+  "en": "Folding tables, extension leads, a whiteboard that says COMMUNITY in four colours. Eleven people pay for desks here. There are six desks.",
+  "ja": "折りたたみ机、延長コード、四色で『コミュニティ』と書かれたホワイトボード。ここで十一人が机代を払っている。机は六つ。"
+ },
+ "n2_land1": {
+  "en": "Someone keeps an espresso machine on the sixth-floor landing, plugged into the emergency lighting. It is the best coffee in the building.",
+  "ja": "誰かが六階の踊り場にエスプレッソマシンを置き、非常灯の電源につないでいる。ビルで一番うまいコーヒーだ。"
+ },
+ "n2_box1": {
+  "en": "Boxes of Wes's merchandise: tote bags that say THE SPACE. Under them, a clipboard and a parking pass from a tenant who left without either.",
+  "ja": "ウェスのグッズの箱：『ザ・スペース』と書かれたトートバッグ。その下に、どちらも持たずに去った入居者のクリップボードと駐車券。"
+ },
+ "n2_p1": {
+  "en": "Hold the torch. Higher. No, at the cable, not at my face — I know what my face looks like.",
+  "ja": "ライト持って。もっと上。違う、ケーブルに。顔じゃなくて — 自分の顔は知ってるから。"
+ },
+ "n2_p_st1": {
+  "en": "Good. You can stay.",
+  "ja": "よし。いてもいいわ。"
+ },
+ "n2_p_steady": {
+  "en": "Hold it steady, and say nothing about her face.",
+  "ja": "しっかり照らし、顔のことは何も言わない。"
+ },
+ "n2_p_te1": {
+  "en": "...Hold the torch. Higher. And keep talking like that after I've fixed this.",
+  "ja": "……ライト持って。もっと上。それと、これを直したあとも、そういうこと言い続けて。"
+ },
+ "n2_p_tease": {
+  "en": "\"I'd rather look at your face.\"",
+  "ja": "「顔の方を見ていたいな」"
+ },
+ "n2_p_go": {
+  "en": "Leave her the torch.",
+  "ja": "ライトを渡して離れる。"
+ },
+ "n2_m1": {
+  "en": "Six desks, eleven tenants, and a sign-in sheet that says nobody's been here since Tuesday. Somebody's lying, and it's the furniture.",
+  "ja": "机が六つ、入居者が十一人、入館記録には火曜から誰も来てないとある。誰かが嘘をついてる。家具がね。"
+ },
+ "n2_m_h1": {
+  "en": "Twice. Good. Nobody counts twice. You're hired, again.",
+  "ja": "二度。いいわね。誰も二度は数えない。あなた、改めて採用。"
+ },
+ "n2_m_help": {
+  "en": "Count them with her, twice.",
+  "ja": "彼女と一緒に、二度数える。"
+ },
+ "n2_m_w1": {
+  "en": "Because he pays, eventually, and because she likes people who don't give up. It's her worst quality and the reason I still work here.",
+  "ja": "最終的には払うから。それに諦めない人が好きだから。彼女の最悪の欠点で、私がまだここで働いてる理由。"
+ },
+ "n2_m_wes": {
+  "en": "\"Why does Mirei keep Wes?\"",
+  "ja": "「ミレイはなぜウェスを置いておく？」"
+ },
+ "n2_mi1": {
+  "en": "Is he charming you? He charms everyone. He charmed me into a five-year lease.",
+  "ja": "あの人、あなたを口説いてる？ 誰でも口説くのよ。私なんか五年契約を口説き落とされた。"
+ },
+ "n2_mi_t1": {
+  "en": "Ha. Yes. I'm going to like you, I think. I'll tell you when I'm sure.",
+  "ja": "ふふ。そうね。あなたのこと好きになりそう。確信したら言うわ。"
+ },
+ "n2_mi_tell": {
+  "en": "\"He's going to have to charm the ledger.\"",
+  "ja": "「台帳を口説くしかないね」"
+ },
+ "n2_mi_a1": {
+  "en": "I want him honest. If you can do that, hire him. I mean it.",
+  "ja": "正直でいてほしいの。それができたら雇って。本気よ。"
+ },
+ "n2_mi_ask": {
+  "en": "\"Do you want him gone?\"",
+  "ja": "「彼を追い出したい？」"
+ },
+ "n2_s1": {
+  "en": "Are you management? I paid Wes for a desk with a window and he gave me a desk with a poster of a window.",
+  "ja": "管理の人？ ウェスに窓つきの机代を払ったら、窓のポスター付きの机をくれたんだけど。"
+ },
+ "n2_s2": {
+  "en": "He takes his laptop and the poster. You let him keep the poster.",
+  "ja": "彼はノートパソコンとポスターを持っていく。ポスターは持たせてやる。"
+ },
+ "n2_s21": {
+  "en": "Two tenants have barricaded the meeting room with a whiteboard and are holding a stand-up about it.",
+  "ja": "入居者二人がホワイトボードで会議室にバリケードを築き、その件で立ち会議をしている。"
+ },
+ "n2_s22": {
+  "en": "They leave together, already arguing about who gets to host the podcast.",
+  "ja": "二人は連れ立って出ていく。もうポッドキャストの司会をどちらがやるかで揉めている。"
+ },
+ "n2_w1": {
+  "en": "Wes, on the boardroom table, tie loose, a smile he has used on better landlords than you.",
+  "ja": "会議机の上のウェス。ネクタイは緩め、あなたより上等な家主たちにも使ってきた笑み。"
+ },
+ "n2_w2": {
+  "en": "Seven owes the Trust nineteen hundred. As the Trust's sub-agent, I'm obliged to collect. As a tenant, I'm obliged to say I don't have it.",
+  "ja": "七階は信託に千九百の借り。信託の副代理人として回収する義務がある。入居者としては、持ってないと言う義務がある。"
+ },
+ "n2_short1": {
+  "en": "See, this is why I sublet. Nobody can ever pay the whole thing. That box? That's the last guy who tried.",
+  "ja": "ほらね、だから又貸しするんだ。誰も全額なんて払えない。あの箱？ 全部払おうとした最後のやつだよ。"
+ },
+ "n2_paid_msg": {
+  "en": "You count out $1900 from the rent fund. It is all there.",
+  "ja": "家賃資金から$1900を数えて出す。全額そろっている。"
+ },
+ "n2_short_msg": {
+  "en": "The rent fund is short. Everyone in the room can see it.",
+  "ja": "家賃資金が足りない。部屋の全員にそれが見えている。"
+ },
+ "n2_w3": {
+  "en": "Fine. Fine! Put me on payroll. Board staff, nights. I'm terrific with people as long as someone else is doing the maths.",
+  "ja": "わかった、わかったよ！ 給料を払ってくれ。夜勤のフロアスタッフで。誰かが計算してくれるなら、人あしらいは抜群なんだ。"
+ },
+ "n2_w4": {
+  "en": "(Wes joins the recruit pool. He works the board — and taxes the wrong neighbours, unless someone gives them headphones.)",
+  "ja": "（ウェスが採用候補に加わった。フロアで働く — ただしヘッドホンで守らないと、隣の人から取り立てる。）"
+ },
+ "n2_after1": {
+  "en": "Two floors. Six tomorrow — the Trust's sending an auditor. A real one.",
+  "ja": "二フロア。明日は六階 — 信託が監査人を送ってくる。本物のね。"
+ },
+ "n2_ah": {
+  "en": "The floor is quiet. Someone is still here.",
+  "ja": "フロアは静かだ。まだ誰かが残っている。"
+ },
+ "n2_title": {
+  "en": "Night two",
+  "ja": "第二夜"
+ },
+ "n2_sub": {
+  "en": "Floor seven — the sublet",
+  "ja": "七階 — 又貸し"
+ },
+ "hs_mara_blinds": {
+  "en": "Mara at the blinds",
+  "ja": "ブラインド際のマーラ"
+ },
+ "hs_crisis_varga": {
+  "en": "The rent crisis — Ilse Varga, auditor",
+  "ja": "家賃の危機 — Ilse Varga, auditor"
+ },
+ "hs_nia_boxes": {
+  "en": "Nia among the boxes",
+  "ja": "箱の中のニア"
+ },
+ "hs_shelf": {
+  "en": "Box 1974",
+  "ja": "1974年の箱"
+ },
+ "hs_priya_servers": {
+  "en": "Priya in the cold aisle",
+  "ja": "冷気の通路のプリヤ"
+ },
+ "hs_rack": {
+  "en": "Rack nine",
+  "ja": "九番ラック"
+ },
+ "n3_o1": {
+  "en": "Night three. Floor six: accounts, for a company that moved to Lisbon and left its filing cabinets as a deposit.",
+  "ja": "第三夜。六階：経理。リスボンへ移った会社が、敷金代わりに書類棚を置いていった。"
+ },
+ "n3_o2": {
+  "en": "The Trust's auditor is Ilse Varga. She has never once been wrong in public. I've brought someone who might ruin that.",
+  "ja": "信託の監査人はイルゼ・ヴァルガ。人前で間違えたことが一度もない。それを台無しにできそうな人を連れてきたわ。"
+ },
+ "n3_o3": {
+  "en": "Nia. Forensic accountant. I've read the Trust's last six years of letters to this building. They have a typo problem and a greed problem, in that order.",
+  "ja": "ニア。法務会計士。信託がこのビルに送った六年分の手紙を読んだ。誤字の問題と強欲の問題がある。その順番でね。"
+ },
+ "n3_ae1": {
+  "en": "Filing cabinets to the ceiling. A calculator on every desk, like a place setting.",
+  "ja": "天井まで届く書類棚。どの机にも、食器のように電卓が一台ずつ。"
+ },
+ "n3_sh1": {
+  "en": "Box 1974: the building's original deed of trust, typed, carbon-copied, initialled by Mirei's father and a Halvard. Clause nine is underlined in pencil. Someone read it once.",
+  "ja": "1974年の箱：ビル最初の信託証書。タイプ打ち、カーボン複写、ミレイの父とハルヴァード家の誰かのイニシャル。第九条に鉛筆で下線。誰かが一度読んだのだ。"
+ },
+ "n3_rack1": {
+  "en": "Rack nine has been running a cryptocurrency miner since 2022. Priya unplugs it with real joy. Behind it: a building tablet and a tin of mints.",
+  "ja": "九番ラックは2022年から暗号通貨の採掘機を回していた。プリヤが心から嬉しそうに抜く。その裏に、ビル管理タブレットとミントの缶。"
+ },
+ "n3_n1": {
+  "en": "Hand me 2019. No — the other 2019. There are two. That's the first lie.",
+  "ja": "2019年を取って。違う、もう一つの2019年。二つあるの。それが最初の嘘。"
+ },
+ "n3_n_b1": {
+  "en": "Both. Different lies. You'd be wasted on day shifts.",
+  "ja": "両方よ。違う嘘。あなた、昼勤じゃもったいないわ。"
+ },
+ "n3_n_both": {
+  "en": "Hand her both, and ask which is the lie.",
+  "ja": "両方渡して、どちらが嘘か聞く。"
+ },
+ "n3_n_w1": {
+  "en": "Because they pay better and I'd be bored. Mirei pays late and I'm never bored.",
+  "ja": "向こうの方が払いがいいけど、退屈だから。ミレイは払いが遅いけど、退屈したことはない。"
+ },
+ "n3_n_why": {
+  "en": "\"Why audit for us and not for them?\"",
+  "ja": "「どうして向こうじゃなく、こっちの監査を？」"
+ },
+ "n3_p1": {
+  "en": "It's eleven degrees in here. I've got a jumper you can have, it says SECURITY on it, nobody will believe you.",
+  "ja": "ここは十一度。セーター貸してあげる。『警備』って書いてあるけど、誰も信じないわ。"
+ },
+ "n3_p_t1": {
+  "en": "Suits you. Keep it. Give it back when you're less cold. Or don't.",
+  "ja": "似合う。持ってて。寒くなくなったら返して。返さなくてもいい。"
+ },
+ "n3_p_take": {
+  "en": "Take the jumper.",
+  "ja": "セーターを借りる。"
+ },
+ "n3_p_s1": {
+  "en": "It's a jumper, not a tent. ...Come here, then. Quickly. The cameras in here are mine.",
+  "ja": "セーターよ、テントじゃない。……じゃあ、こっち来て。早く。ここのカメラは私のだから。"
+ },
+ "n3_p_share": {
+  "en": "\"Share it?\"",
+  "ja": "「一緒に着る？」"
+ },
+ "n3_m1": {
+  "en": "I've opened every floor in this building for nine years and I've never once been on the Trust's side of the desk. Tonight I'd like to see their face.",
+  "ja": "九年このビルの全フロアを開けてきて、一度も信託側の机に座ったことはない。今夜は向こうの顔を見てみたい。"
+ },
+ "n3_m_s1": {
+  "en": "I was going to anyway. But thank you for asking.",
+  "ja": "どうせそうするつもりだった。でも頼んでくれてありがとう。"
+ },
+ "n3_m_stand": {
+  "en": "\"Stand next to me when she arrives.\"",
+  "ja": "「彼女が来たら隣に立って」"
+ },
+ "n3_m_r1": {
+  "en": "Nobody tells me to rest. ...Ten minutes.",
+  "ja": "誰も私に休めなんて言わない。……十分ね。"
+ },
+ "n3_m_rest": {
+  "en": "\"Rest. I'll call you.\"",
+  "ja": "「休んで。呼ぶから」"
+ },
+ "n3_j1": {
+  "en": "I'm just here to count the cabinets. Ms. Varga said not to talk to anyone. You're anyone.",
+  "ja": "書類棚を数えに来ただけです。ヴァルガさんに誰とも話すなと言われてます。あなたは誰かです。"
+ },
+ "n3_j2": {
+  "en": "She ticks a box she was not told about and goes looking for a vending machine that takes cards.",
+  "ja": "教わっていない欄にチェックを入れ、カードの使える自販機を探しに行く。"
+ },
+ "n3_rc1": {
+  "en": "The Trust has rented the records room for a week and left one woman in it with a stamp and a rule.",
+  "ja": "信託は記録室を一週間借り、判子と規則を持った女を一人置いていった。"
+ },
+ "n3_rc2": {
+  "en": "She stamps your box RETURNED and slides an audit trail across with it, six years, in order.",
+  "ja": "あなたの箱に『返却』の判を押し、監査証跡を添えて滑らせてくる。六年分、順番どおりに。"
+ },
+ "n3_v1": {
+  "en": "Ilse Varga lays six years of the building across the conference table in the order in which they lie.",
+  "ja": "イルゼ・ヴァルガは六年分のビルを、嘘をついている順に会議机に並べる。"
+ },
+ "n3_v2": {
+  "en": "Floor six: two thousand four hundred, and an explanation for 2021 that does not involve the word 'rounding'.",
+  "ja": "六階：二千四百。それと、『端数』という言葉を使わない2021年の説明を。"
+ },
+ "n3_short1": {
+  "en": "Short. I do not negotiate with short. I itemise it.",
+  "ja": "不足ね。不足とは交渉しない。明細にするだけ。"
+ },
+ "n3_paid_msg": {
+  "en": "You count out $2400 from the rent fund. It is all there.",
+  "ja": "家賃資金から$2400を数えて出す。全額そろっている。"
+ },
+ "n3_short_msg": {
+  "en": "The rent fund is short. Everyone in the room can see it.",
+  "ja": "家賃資金が足りない。部屋の全員にそれが見えている。"
+ },
+ "n3_v3": {
+  "en": "Clean. Irritatingly. Ms. Nia — you would be wasted at the Trust. Don't tell them I said so.",
+  "ja": "きれいね。腹立たしいほど。ニアさん — あなたは信託ではもったいない。私が言ったとは言わないで。"
+ },
+ "n3_after1": {
+  "en": "Three. Tomorrow's eight, the newsroom. They're sending the Bailiff, which means somebody at the Trust is frightened.",
+  "ja": "三つ。明日は八階、新聞部。執行官を送ってくる。信託の誰かが怯えてるってことよ。"
+ },
+ "n3_ah": {
+  "en": "The floor is quiet. Someone is still here.",
+  "ja": "フロアは静かだ。まだ誰かが残っている。"
+ },
+ "n3_title": {
+  "en": "Night three",
+  "ja": "第三夜"
+ },
+ "n3_sub": {
+  "en": "Floor six — the audit",
+  "ja": "六階 — 監査"
+ },
+ "hs_nia_desk": {
+  "en": "Nia at Sol's desk",
+  "ja": "ソルの机のニア"
+ },
+ "hs_crisis_bailiff": {
+  "en": "The rent crisis — The Bailiff",
+  "ja": "家賃の危機 — The Bailiff"
+ },
+ "hs_sol_press": {
+  "en": "Sol at the press",
+  "ja": "印刷機のソル"
+ },
+ "hs_proofs": {
+  "en": "Hanging proofs",
+  "ja": "吊るされた校正刷り"
+ },
+ "hs_priya_tank": {
+  "en": "Priya on the water tank",
+  "ja": "給水塔のプリヤ"
+ },
+ "hs_garden": {
+  "en": "The rooftop garden",
+  "ja": "屋上庭園"
+ },
+ "n4_o1": {
+  "en": "Night four. Floor eight: the newsroom of a paper that stopped printing in March and did not stop coming in.",
+  "ja": "第四夜。八階：三月に印刷をやめ、それでも出社をやめなかった新聞の編集部。"
+ },
+ "n4_o2": {
+  "en": "Sol has been the night editor here for twenty years. She doesn't work for us. She works for the story. Tonight that's us.",
+  "ja": "ソルはここで二十年、夜間デスクをしてる。うちのために働いてるんじゃない。記事のために働いてる。今夜は、それがうちなの。"
+ },
+ "n4_o3": {
+  "en": "Sol. I file at four. If the Bailiff is still here at four, he's in the story. He knows that. It makes him careful.",
+  "ja": "ソル。四時に入稿する。四時にまだ執行官がいたら、記事に載る。本人もわかってる。だから慎重になるの。"
+ },
+ "n4_ne1": {
+  "en": "Desks buried in newspapers. Clocks for five cities, all of them right. One lamp on, Sol's.",
+  "ja": "新聞に埋もれた机。五都市分の時計、どれも正確。灯りはひとつだけ、ソルのもの。"
+ },
+ "n4_pr1": {
+  "en": "Proofs on a line like washing. One is a front page from 1974: HALVARD TRUST WINS GROUND LEASE ON TOWER SITE. Someone has circled the date.",
+  "ja": "洗濯物のように紐に吊るされた校正刷り。一枚は1974年の一面：『ハルヴァード信託、タワー用地の地上権を獲得』。誰かが日付に丸をつけている。"
+ },
+ "n4_g1": {
+  "en": "Tomatoes, two deckchairs, an earpiece someone lost while pretending to take a call up here. A pastry under a cloche, for whoever needs it.",
+  "ja": "トマト、デッキチェア二脚、ここで電話するふりをしていた誰かが落としたイヤーピース。必要な誰かのために、クロッシュの下にペストリー。"
+ },
+ "n4_s1": {
+  "en": "Twenty years on this press and it's never once been on time. I love it like a bad dog.",
+  "ja": "この印刷機と二十年、一度も時間どおりに動いたことがない。駄犬みたいに愛してるわ。"
+ },
+ "n4_s_st1": {
+  "en": "A woman who won't sell a building, and the people who stay up with her. It's not news. It's the only kind I still believe.",
+  "ja": "ビルを売らない女と、一緒に夜更かしする人たちの話。ニュースじゃない。今でも信じられる唯一の種類の話よ。"
+ },
+ "n4_s_story": {
+  "en": "\"Tell me the story you'd run tonight.\"",
+  "ja": "「今夜載せる記事を聞かせて」"
+ },
+ "n4_s_h1": {
+  "en": "Steady hands. Good. Writers never have them.",
+  "ja": "手がぶれない。いいわね。物書きは持ってないのよ。"
+ },
+ "n4_s_help": {
+  "en": "Feed the paper while she sets the type.",
+  "ja": "彼女が組版するあいだ紙を差す。"
+ },
+ "n4_n1": {
+  "en": "The Bailiff's order is dated 2025. It's 2026. Courts make typos too. Shall we be rude about it?",
+  "ja": "執行官の命令書は2025年付け。今は2026年。裁判所も誤字をする。礼儀知らずにいきましょうか？"
+ },
+ "n4_n_y1": {
+  "en": "My favourite register. You're getting dangerous.",
+  "ja": "私の好きな口調。あなた、危険になってきたわね。"
+ },
+ "n4_n_yes": {
+  "en": "\"Very rude. Politely.\"",
+  "ja": "「とても失礼に。丁寧に」"
+ },
+ "n4_n_s1": {
+  "en": "I'll sleep when the Trust's been audited. Ask me again at dawn. I might say yes to something.",
+  "ja": "信託を監査し終えたら寝る。夜明けにもう一度聞いて。何かに「はい」と言うかもしれない。"
+ },
+ "n4_n_sleep": {
+  "en": "\"Have you slept?\"",
+  "ja": "「寝た？」"
+ },
+ "n4_p1": {
+  "en": "Best view in the city and nobody comes up here except me and the pigeons. Sit. Not there, that's a pigeon's.",
+  "ja": "街一番の眺めなのに、ここに来るのは私と鳩だけ。座って。そこじゃない、そこは鳩の席。"
+ },
+ "n4_p_v1": {
+  "en": "...Yeah. That. That's the thing I come up here for.",
+  "ja": "……うん。それ。それのためにここに来るの。"
+ },
+ "n4_p_view": {
+  "en": "Sit beside her and say nothing for a while.",
+  "ja": "隣に座って、しばらく何も言わない。"
+ },
+ "n4_p_a1": {
+  "en": "Find another one. But I'd miss this roof. And the company.",
+  "ja": "別のを探す。でもこの屋上は恋しくなる。それに、一緒にいる人も。"
+ },
+ "n4_p_ask": {
+  "en": "\"What will you do if we lose the building?\"",
+  "ja": "「ビルを失ったらどうする？」"
+ },
+ "n4_mv1": {
+  "en": "A van at the loading bay and a foreman with a list: the newsroom's desks, chairs, clocks. All five clocks.",
+  "ja": "搬入口にバン、そして一覧を持った班長。新聞部の机、椅子、時計。時計は五つ全部。"
+ },
+ "n4_mv2": {
+  "en": "Just doing the job. Desk, desk, chair, desk.",
+  "ja": "仕事してるだけだ。机、机、椅子、机。"
+ },
+ "n4_mv3": {
+  "en": "He folds the list into his pocket. The clocks stay. All five go on being right.",
+  "ja": "彼は一覧をポケットにしまう。時計は残る。五つとも正確なまま。"
+ },
+ "n4_rp1": {
+  "en": "A lease-company rep at two in the morning, here to repossess a printing press with a tablet.",
+  "ja": "午前二時、タブレットで印刷機を引き取りに来たリース会社の担当者。"
+ },
+ "n4_rp2": {
+  "en": "He photographs the press, for the file, and leaves the court order behind with the wrong year on it.",
+  "ja": "彼は記録用に印刷機を撮影し、年の間違った命令書を置いて帰った。"
+ },
+ "n4_b1": {
+  "en": "The Bailiff reads the order aloud in the newsroom, slowly, so that everyone who still works there can hear it.",
+  "ja": "執行官は新聞部で命令書を読み上げる。まだここで働く全員に聞こえるよう、ゆっくりと。"
+ },
+ "n4_b2": {
+  "en": "Floor eight: three thousand two hundred, tonight, or the contents are distrained.",
+  "ja": "八階：三千二百、今夜中に。さもなくば什器を差し押さえる。"
+ },
+ "n4_short1": {
+  "en": "Short. I have a van. The van is not short.",
+  "ja": "不足だ。こちらにはバンがある。バンは不足していない。"
+ },
+ "n4_paid_msg": {
+  "en": "You count out $3200 from the rent fund. It is all there.",
+  "ja": "家賃資金から$3200を数えて出す。全額そろっている。"
+ },
+ "n4_short_msg": {
+  "en": "The rent fund is short. Everyone in the room can see it.",
+  "ja": "家賃資金が足りない。部屋の全員にそれが見えている。"
+ },
+ "n4_b3": {
+  "en": "Not tonight, then. Off the record — I hope she keeps it.",
+  "ja": "では今夜ではない。記録外だが — 彼女が守りきるといい。"
+ },
+ "n4_after1": {
+  "en": "Four. Tomorrow there's only the penthouse — and Corinne Halvard, who has decided to come herself.",
+  "ja": "四つ。明日はペントハウスだけ — それとコリンヌ・ハルヴァード。本人が来ることにしたのよ。"
+ },
+ "n4_ah": {
+  "en": "The floor is quiet. Someone is still here.",
+  "ja": "フロアは静かだ。まだ誰かが残っている。"
+ },
+ "n4_title": {
+  "en": "Night four",
+  "ja": "第四夜"
+ },
+ "n4_sub": {
+  "en": "Floor eight — the newsroom",
+  "ja": "八階 — 新聞部"
+ },
+ "n5_vault1": {
+  "en": "The vault under the penthouse, which Mirei's father built for money he never had. Tonight it holds the rent fund, all of it, stacked on the desk.",
+  "ja": "ペントハウスの下の金庫室。ミレイの父が、持っていなかったお金のために造った部屋。今夜は家賃資金がすべて、机の上に積まれている。"
+ },
+ "n5_vault2": {
+  "en": "Do you know, nobody has ever paid every floor in one week. Not my father. Not me. Sit with me. I want to look at it with someone.",
+  "ja": "知ってる？ 一週間で全フロアを払いきった人はいないの。父も、私も。一緒に座って。誰かと一緒に眺めたいの。"
+ },
+ "n5_vault3": {
+  "en": "She leans back in the chair with the jacket open and her hand on the money, smug and lovely and, for the first time since you met her, not tired.",
+  "ja": "ジャケットをはだけて椅子にもたれ、片手をお金に置く。得意げで、美しく、出会ってから初めて、疲れていない。"
+ },
+ "n5_quiet1": {
+  "en": "Later, on the quiet floor, you find Mara and Mirei on the sofa by the window with a jacket over their knees, kissing like two people who have been meaning to for nine years.",
+  "ja": "あとで、静かなフロアで、窓辺のソファにマーラとミレイを見つける。膝にジャケットをかけ、九年越しにやっとそうしているふたりのように口づけている。"
+ },
+ "n5_quiet2": {
+  "en": "Mirei opens her eyes, sees you, and holds out a hand. Mara moves over. There is room on the sofa; there always was.",
+  "ja": "ミレイが目を開け、あなたに気づき、手を差し出す。マーラが詰める。ソファには場所がある。ずっとあったのだ。"
+ },
+ "n5_keys1": {
+  "en": "Every floor paid. The building's mine — ours. Here. These are the penthouse keys. Don't lose them; Mara will never let you forget it.",
+  "ja": "全フロア支払済。ビルは私のもの — 私たちのもの。はい、ペントハウスの鍵。なくさないで。マーラが一生言い続けるから。"
+ },
+ "n5_keys2": {
+  "en": "FULL OCCUPANCY. The lights on thirty-one floors, every one of them paid for.",
+  "ja": "満室。三十一階すべての灯り、どれも支払済。"
+ },
+ "n5_hold1": {
+  "en": "We kept it. Not cleanly — there are floors I'll be paying back till spring. But we kept it, and the Trust has gone home.",
+  "ja": "守りきった。きれいにじゃない — 春まで払い続けるフロアもある。でも守った。信託は帰ったわ。"
+ },
+ "n5_hold2": {
+  "en": "HOLDING ON. Dawn over the unfinished top floors. Next time, build the floors better and every one of them pays.",
+  "ja": "持ちこたえて。未完成の最上階に夜明け。次は、フロアをもっと上手く組めば、全部が払える。"
+ },
+ "hs_mirei_desk": {
+  "en": "Mirei at her father's desk",
+  "ja": "父の机のミレイ"
+ },
+ "hs_crisis_halvard": {
+  "en": "The rent crisis — Corinne Halvard",
+  "ja": "家賃の危機 — Corinne Halvard"
+ },
+ "hs_sol_board": {
+  "en": "Sol taking notes",
+  "ja": "メモを取るソル"
+ },
+ "hs_mara_vault": {
+  "en": "Mara with the vault keys",
+  "ja": "金庫の鍵を持つマーラ"
+ },
+ "hs_deposit": {
+  "en": "Deposit box 9",
+  "ja": "九番の貸金庫"
+ },
+ "n5_o1": {
+  "en": "Night five. The penthouse, which Mirei has not slept in for a year because she couldn't stand to see the view and not own it.",
+  "ja": "第五夜。ペントハウス。眺めを見ながらそれを持っていないことに耐えられず、ミレイが一年寝ていない部屋。"
+ },
+ "n5_o2": {
+  "en": "Corinne Halvard is the heir. We were at school together. She was better at everything except wanting things.",
+  "ja": "コリンヌ・ハルヴァードは相続人。学校が一緒だった。欲しがること以外は、何でも彼女の方が上手だった。"
+ },
+ "n5_o3": {
+  "en": "The penthouse rent is the big one. Build the last floor well. Then help me face her.",
+  "ja": "ペントハウスの家賃が一番大きい。最後のフロアをうまく組んで。それから、彼女と向き合うのを手伝って。"
+ },
+ "n5_pe1": {
+  "en": "Floor-to-ceiling glass, a desk older than the tower, and thirty-one floors of lights below you, most of them now on.",
+  "ja": "床から天井までのガラス、タワーより古い机、そして眼下に三十一階分の灯り。今はそのほとんどがついている。"
+ },
+ "n5_dep1": {
+  "en": "Box nine, opened with Mara's key: a gold lanyard engraved NIGHT MANAGER and a date thirty years ago. Somebody had this job before you, and was good at it.",
+  "ja": "マーラの鍵で開けた九番の箱：『夜間管理人』と三十年前の日付が刻まれた金の名札紐。あなたの前にもこの仕事をした誰かがいて、上手だったのだ。"
+ },
+ "n5_m1": {
+  "en": "My father sat here and lied to the Trust for twenty years. I've sat here and told them the truth for ten. Neither of us could make the rent.",
+  "ja": "父はここに座って二十年、信託に嘘をついた。私は十年、本当のことを言ってきた。どちらも家賃は払えなかった。"
+ },
+ "n5_m_we1": {
+  "en": "...Say that again when she's here. I want her to hear it.",
+  "ja": "……彼女がいるときに、もう一度言って。聞かせたいの。"
+ },
+ "n5_m_we": {
+  "en": "\"You couldn't. We can.\"",
+  "ja": "「あなた一人では。でも私たちなら」"
+ },
+ "n5_m_s1": {
+  "en": "Yes. Not for me. For them — every one of them on every floor. Ask me again after tonight.",
+  "ja": "ええ。私にとってじゃない。彼らにとって — 全フロアの一人ひとりにとって。今夜が終わったらもう一度聞いて。"
+ },
+ "n5_m_sell": {
+  "en": "\"Would it be so bad to sell?\"",
+  "ja": "「売るのはそんなに悪いこと？」"
+ },
+ "n5_s1": {
+  "en": "I'm taking notes. Not for the paper. For the building. Somebody should write down how this went.",
+  "ja": "メモを取ってるの。新聞のためじゃない。ビルのために。どうなったか、誰かが書き残すべきだから。"
+ },
+ "n5_s_e1": {
+  "en": "With the lights on, I hope. Ask me at four.",
+  "ja": "灯りがついたまま、だといいわね。四時に聞いて。"
+ },
+ "n5_s_ending": {
+  "en": "\"How does it end?\"",
+  "ja": "「どう終わる？」"
+ },
+ "n5_s_i1": {
+  "en": "She's already in it. She's in every paragraph. She just doesn't know.",
+  "ja": "もう書いてある。全段落に出てくる。本人が知らないだけ。"
+ },
+ "n5_s_in": {
+  "en": "\"Put Mara in it. She'll pretend to hate it.\"",
+  "ja": "「マーラを書いて。嫌がるふりをするから」"
+ },
+ "n5_ma1": {
+  "en": "Nine years and I've never opened this one. Mirei's father had the only key. Turns out I had a copy. Don't tell her.",
+  "ja": "九年、これだけは開けたことがない。ミレイの父が唯一の鍵を持ってた。私が合鍵を持ってたってわけ。彼女には内緒よ。"
+ },
+ "n5_ma_o1": {
+  "en": "With you. Yes. That's the right way to do it.",
+  "ja": "あなたと。ええ。それが正しいやり方ね。"
+ },
+ "n5_ma_open": {
+  "en": "\"Open it with me.\"",
+  "ja": "「一緒に開けよう」"
+ },
+ "n5_ma_t1": {
+  "en": "Traitor. ...She'll laugh. Fine. Tell her.",
+  "ja": "裏切り者。……彼女は笑うわね。いいわ、言って。"
+ },
+ "n5_ma_tell": {
+  "en": "\"I'm telling her.\"",
+  "ja": "「彼女に言うよ」"
+ },
+ "n5_l1": {
+  "en": "A courtesy, before Ms. Halvard arrives: sign here, and here, and the Trust will take the building at a fair price. Everyone keeps their jobs. For a while.",
+  "ja": "ハルヴァード様が来られる前に、ご好意として。ここと、ここに署名を。信託が適正価格でビルを引き取ります。皆さん職は残ります。しばらくは。"
+ },
+ "n5_l2": {
+  "en": "He caps his pen and leaves the 1974 deed on the table, open at clause nine. He had brought it to show you that it said nothing. It says something.",
+  "ja": "彼はペンにキャップをし、1974年の証書を第九条で開いたまま机に置いていく。何も書いていないと見せるために持ってきたのだ。だが、書いてある。"
+ },
+ "n5_h1": {
+  "en": "Corinne Halvard takes Mirei's chair as if it had been kept warm for her, in a white suit that has never been near a filing cabinet.",
+  "ja": "コリンヌ・ハルヴァードは、自分のために温められていたかのようにミレイの椅子に座る。書類棚に近づいたことのない白いスーツで。"
+ },
+ "n5_h2": {
+  "en": "The penthouse: four thousand two hundred, tonight. Or the lease, which is worth considerably more to me than it is to you.",
+  "ja": "ペントハウス：四千二百、今夜。さもなくば賃貸契約を。あなたより、私にとってずっと価値があるものよ。"
+ },
+ "n5_short1": {
+  "en": "Short, Mirei. You always were. I'll take the building and keep the staff. I'm told they're very good.",
+  "ja": "足りないわね、ミレイ。昔からそう。ビルはもらって、スタッフは残すわ。とても優秀だそうね。"
+ },
+ "n5_paid_msg": {
+  "en": "You count out $4200 from the rent fund. It is all there.",
+  "ja": "家賃資金から$4200を数えて出す。全額そろっている。"
+ },
+ "n5_short_msg": {
+  "en": "The rent fund is short. Everyone in the room can see it.",
+  "ja": "家賃資金が足りない。部屋の全員にそれが見えている。"
+ },
+ "n5_h3": {
+  "en": "Clause nine. Of course it's clause nine. Keep it, then, Mirei. Make it worth something.",
+  "ja": "第九条。もちろん第九条よね。じゃあ持っていなさい、ミレイ。価値のあるものにして。"
+ },
+ "n5_ah": {
+  "en": "The floor is quiet. Someone is still here.",
+  "ja": "フロアは静かだ。まだ誰かが残っている。"
+ },
+ "n5_title": {
+  "en": "Night five",
+  "ja": "第五夜"
+ },
+ "n5_sub": {
+  "en": "The penthouse",
+  "ja": "ペントハウス"
+ },
+ "title": {
+  "en": "OCCUPANCY",
+  "ja": "OCCUPANCY ―オキュパンシー―"
+ },
+ "t_subtitle": {
+  "en": "RPG × office management × staff recruiting — five nights to make the rent",
+  "ja": "RPG × オフィス経営 × スタッフ採用ガチャ ― 家賃を払いきる五夜"
+ },
+ "t_note": {
+  "en": "18+ · All characters are adults · AI-generated work (see 'About this work')",
+  "ja": "18歳以上対象 · 登場人物は全員成人です · AI生成作品（「作品について」参照）"
+ },
+ "t_trial": {
+  "en": "Trial version — Night one: the open plan",
+  "ja": "体験版 — 第一夜：オープンフロア"
+ },
+ "about_ai": {
+  "en": "This is an adults-only work. Every character depicted is an adult. Recruiting uses the in-game rent fund only: there are no real-money purchases of any kind.\n\nAI disclosure: Generative AI is used as a production tool in this work, which was made through intensive collaboration between the developer and AI over several hundred hours. Images (sprites, backgrounds, CGs) are output by an image-generation model and the voice by a speech-synthesis model. The concept, world, story structure, direction, character design, the selection and compositing of every image, voice direction, game-system design and balancing, and testing are the developer's work; the script text and the program were written and edited jointly by AI language models and the developer.",
+  "ja": "本作は18歳以上を対象とした作品です。登場人物は全員成人です。スタッフ採用（ガチャ）はゲーム内の家賃資金のみで行い、現実のお金による課金は一切ありません。\n\n【AI使用について】本作は生成AIを制作ツールとして活用し、開発者とAIの集中的な共同作業で制作しました。画像（立ち絵・背景・CG）は画像生成AIで出力し、音声は音声合成AIで生成しています。企画・世界観・ストーリー構成・演出・キャラクター設計、すべての画像の選定と合成、音声の演技指示、ゲームシステムの設計とバランス調整、テストは開発者が行い、シナリオ文とプログラムはAI（大規模言語モデル）と開発者が共同で執筆・編集しています。制作には数百時間を費やしています。"
+ },
+ "ds_adult": {
+  "en": "18+. Everyone in this game is an adult. It contains partial nudity and sexual themes between consenting adults (nothing explicit), office politics and debt.",
+  "ja": "18歳以上対象。登場人物は全員成人です。成人同士の合意のうえでの部分的な裸体と性的な主題（露骨な描写はありません）、職場の駆け引き、借金を扱います。"
+ },
+ "n_you": {
+  "en": "You",
+  "ja": "あなた"
+ },
+ "n_mara": {
+  "en": "Mara",
+  "ja": "マーラ"
+ },
+ "n_priya": {
+  "en": "Priya",
+  "ja": "プリヤ"
+ },
+ "n_nia": {
+  "en": "Nia",
+  "ja": "ニア"
+ },
+ "n_sol": {
+  "en": "Sol",
+  "ja": "ソル"
+ },
+ "n_mirei": {
+  "en": "Mirei",
+  "ja": "ミレイ"
+ },
+ "n_dan": {
+  "en": "Dan",
+  "ja": "ダン"
+ },
+ "n_wes": {
+  "en": "Wes",
+  "ja": "ウェス"
+ },
+ "n_pryce": {
+  "en": "Pryce",
+  "ja": "プライス"
+ },
+ "n_courier": {
+  "en": "The courier",
+  "ja": "配達人"
+ },
+ "n_cleaner": {
+  "en": "The supervisor",
+  "ja": "主任"
+ },
+ "n_varga": {
+  "en": "Ms. Varga",
+  "ja": "ヴァルガ"
+ },
+ "n_ames": {
+  "en": "Ms. Ames",
+  "ja": "エイムズ"
+ },
+ "n_bailiff": {
+  "en": "The Bailiff",
+  "ja": "執行官"
+ },
+ "n_sallow": {
+  "en": "Mr. Sallow",
+  "ja": "サロウ"
+ },
+ "n_halvard": {
+  "en": "Corinne",
+  "ja": "コリンヌ"
+ },
+ "n_tenant": {
+  "en": "Tenant",
+  "ja": "入居者"
+ },
+ "n_foreman": {
+  "en": "The foreman",
+  "ja": "班長"
+ },
+ "h_clock": {
+  "en": "%s   ·   %d moves before dawn   ·   Lv %d",
+  "ja": "%s   ·   夜明けまであと%d手   ·   Lv %d"
+ },
+ "h_counter": {
+  "en": "Rent fund $%d",
+  "ja": "家賃資金 $%d"
+ },
+ "nc_budget": {
+  "en": "%d moves before dawn. Walking, searching, negotiating and the shift all cost time.",
+  "ja": "夜明けまであと%d手。移動・調査・交渉・シフト、すべてに時間がかかります。"
+ },
+ "m_party": {
+  "en": "Staff",
+  "ja": "スタッフ"
+ },
+ "m_map": {
+  "en": "The building",
+  "ja": "ビルの案内図"
+ },
+ "ms_level": {
+  "en": "Office level %d   XP %d / %d   Best trust %d",
+  "ja": "オフィスレベル %d   経験値 %d / %d   最高信頼 %d"
+ },
+ "ev_trust_track": {
+  "en": "%s's trust +%d",
+  "ja": "%sの信頼 +%d"
+ },
+ "toast_trust_track": {
+  "en": "%s: Trust %d — something after hours is open",
+  "ja": "%s：信頼%d — 終業後の時間が解放されました"
+ },
+ "g_locked": {
+  "en": "Locked — Trust %d",
+  "ja": "未解放 — 信頼%d"
+ },
+ "g_unseen": {
+  "en": "Not seen yet",
+  "ja": "まだ見ていない"
+ },
+ "end_t": {
+  "en": "Lights down on the floor",
+  "ja": "フロアの消灯"
+ },
+ "end_body": {
+  "en": "Office level %d · best Trust %d. Your progress is saved in slot 1.",
+  "ja": "オフィスレベル %d · 最高信頼 %d。進行状況はスロット1に保存されています。"
+ },
+ "fin_t": {
+  "en": "Occupancy",
+  "ja": "オキュパンシー"
+ },
+ "fin_body": {
+  "en": "Office level %d · best Trust %d. Thank you for playing. Your last save is in slot 1: build the floors differently, hire differently, stay late with someone else, and the dawn changes.",
+  "ja": "オフィスレベル %d · 最高信頼 %d。遊んでいただきありがとうございました。最後のセーブはスロット1にあります。フロアの組み方、採用、残業の相手を変えれば、夜明けが変わります。"
+ },
+ "lose_standoff_t": {
+  "en": "Served notice",
+  "ja": "通告"
+ },
+ "lose_standoff": {
+  "en": "The pressure on the floor reached a hundred, and the notice went up on the door. Nothing is lost but the last few minutes: you are back at the last save.",
+  "ja": "フロアへの圧力が100に達し、扉に通告が貼られた。失ったのは直前の数分だけ。最後のセーブに戻ります。"
+ },
+ "lose_dawn_t": {
+  "en": "Dawn",
+  "ja": "夜明け"
+ },
+ "lose_dawn": {
+  "en": "The cleaners arrive, the lifts wake, and the night is gone with the floor still unsettled. You are back at the last save.",
+  "ja": "清掃員が来て、エレベーターが目を覚まし、フロアが片づかないまま夜が終わった。最後のセーブに戻ります。"
+ },
+ "b_intro": {
+  "en": "Across the desk.",
+  "ja": "机を挟んで。"
+ },
+ "b_resolve": {
+  "en": "Resolve %d / %d",
+  "ja": "意地 %d / %d"
+ },
+ "b_suspicion": {
+  "en": "Pressure %d / 100",
+  "ja": "圧力 %d / 100"
+ },
+ "b_comp_nerve": {
+  "en": "Composure %d/%d  Focus %d/%d",
+  "ja": "平静 %d/%d  集中 %d/%d"
+ },
+ "b_dmg": {
+  "en": "Resolve −%d.",
+  "ja": "意地 −%d。"
+ },
+ "b_susp": {
+  "en": "Pressure %s.",
+  "ja": "圧力 %s。"
+ },
+ "b_weak_hit": {
+  "en": "It lands — a soft spot.",
+  "ja": "効いた — 弱みだ。"
+ },
+ "b_resist_hit": {
+  "en": "It slides off. They were ready for that.",
+  "ja": "受け流された。その手は読まれていた。"
+ },
+ "b_enemy_turn": {
+  "en": "%s leans on the desk. Pressure %+d. %s's composure −%d.",
+  "ja": "%sが机に身を乗り出す。圧力 %+d。%sの平静 −%d。"
+ },
+ "b_threat_mark": {
+  "en": "Security has been called and cannot be uncalled: the pressure climbs faster for the rest of this.",
+  "ja": "警備を呼んだら取り消せない。この先、圧力の上がり方が速くなる。"
+ },
+ "b_win": {
+  "en": "They sign off.",
+  "ja": "相手が引き下がった。"
+ },
+ "b_lose": {
+  "en": "The notice goes up on the door.",
+  "ja": "扉に通告が貼られる。"
+ },
+ "b_marked": {
+  "en": "[security called]",
+  "ja": "[警備を呼んだ]"
+ },
+ "b_won": {
+  "en": "Settled",
+  "ja": "交渉成立"
+ },
+ "b_lost": {
+  "en": "Served notice",
+  "ja": "通告"
+ },
+ "r_needs_cash": {
+  "en": "Needs a parking pass or a voucher to comp.",
+  "ja": "渡す駐車券かバウチャーが要る。"
+ },
+ "r_needs_evidence": {
+  "en": "Needs a document to show.",
+  "ja": "見せる書類が要る。"
+ },
+ "r_nerve": {
+  "en": "Not enough focus.",
+  "ja": "集中が足りない。"
+ },
+ "r_rattled": {
+  "en": "Too rattled to act.",
+  "ja": "動揺して動けない。"
+ },
+ "ev_trust_missed": {
+  "en": "You won, but too close to the line: Mirei noticed how close.",
+  "ja": "勝ったが、際どすぎた。ミレイはその際どさに気づいた。"
+ },
+ "s_wit": {
+  "en": "Sharp",
+  "ja": "切れ者"
+ },
+ "s_cha": {
+  "en": "Charm",
+  "ja": "魅力"
+ },
+ "s_grt": {
+  "en": "Nerve",
+  "ja": "度胸"
+ },
+ "s_stl": {
+  "en": "Calm",
+  "ja": "冷静"
+ },
+ "sd_wit": {
+  "en": "Paperwork, spin, keys and audits. Also the focus pool.",
+  "ja": "書類・言いくるめ・鍵・監査。集中の上限も決まる。"
+ },
+ "sd_cha": {
+  "en": "Charm, perks and headlines.",
+  "ja": "愛嬌・特典・見出し。"
+ },
+ "sd_grt": {
+  "en": "How much a staffer can take across a desk, and how hard security lands.",
+  "ja": "机越しに耐えられる量と、警備の効き目。"
+ },
+ "sd_stl": {
+  "en": "A coffee break lowers the pressure further.",
+  "ja": "「コーヒー休憩」で圧力を大きく下げる。"
+ },
+ "a_deflect": {
+  "en": "Hold the line",
+  "ja": "一線を守る"
+ },
+ "a_observe": {
+  "en": "Read them",
+  "ja": "相手を読む"
+ },
+ "a_bluff": {
+  "en": "Spin it",
+  "ja": "言いくるめる"
+ },
+ "a_evidence": {
+  "en": "Show the paperwork",
+  "ja": "書類を見せる"
+ },
+ "a_bribe": {
+  "en": "Comp a perk",
+  "ja": "特典を渡す"
+ },
+ "a_flirt": {
+  "en": "Charm",
+  "ja": "愛嬌"
+ },
+ "a_threaten": {
+  "en": "Call security",
+  "ja": "警備を呼ぶ"
+ },
+ "a_stall": {
+  "en": "Coffee break",
+  "ja": "コーヒー休憩"
+ },
+ "a_item": {
+  "en": "Use item",
+  "ja": "道具を使う"
+ },
+ "a_keys": {
+  "en": "Master keys",
+  "ja": "マスターキー"
+ },
+ "a_fix": {
+  "en": "Fix it on the spot",
+  "ja": "その場で直す"
+ },
+ "a_audit": {
+  "en": "Audit them",
+  "ja": "監査する"
+ },
+ "a_headline": {
+  "en": "Headline",
+  "ja": "見出し"
+ },
+ "ad_deflect": {
+  "en": "Feet planted. Take the next push and cool the room a little.",
+  "ja": "足を踏ん張る。次の圧を受け止め、場を少し冷やす。"
+ },
+ "ad_observe": {
+  "en": "Watch what they reach for: reveals their soft spots.",
+  "ja": "相手が何に手を伸ばすか見る。弱みがわかる。"
+ },
+ "ad_bluff": {
+  "en": "Tell it the way it should have happened. Sharp.",
+  "ja": "そうあるべきだった形で話す。切れ者。"
+ },
+ "ad_evidence": {
+  "en": "A lease, a sign-in sheet, a ledger: lowers the pressure. Needs one.",
+  "ja": "契約書、入館記録、台帳。圧力が下がる。一枚必要。"
+ },
+ "ad_bribe": {
+  "en": "A parking pass, a voucher, a favour. Charm. Spends one.",
+  "ja": "駐車券、バウチャー、ちょっとした恩。魅力。一つ消費。"
+ },
+ "ad_flirt": {
+  "en": "Warmly, until they forget the number. Charm.",
+  "ja": "温かく、相手が数字を忘れるまで。魅力。"
+ },
+ "ad_threaten": {
+  "en": "Hits hard — and they remember. Pressure climbs faster for the rest of this.",
+  "ja": "強烈に効く。だが相手は覚えている。この先、圧力が上がりやすくなる。"
+ },
+ "ad_stall": {
+  "en": "Two coffees and a silence. Pressure falls; a little composure comes back.",
+  "ja": "コーヒー二杯と沈黙。圧力が下がり、平静が少し戻る。"
+ },
+ "ad_item": {
+  "en": "Something from the desk drawer.",
+  "ja": "机の引き出しから何かを。"
+ },
+ "ad_keys": {
+  "en": "Mara opens the door they were sure was locked. Hard, and it lowers the pressure.",
+  "ja": "マーラが、閉まっていると思われていた扉を開ける。強力で、圧力も下がる。"
+ },
+ "ad_fix": {
+  "en": "Priya fixes the thing they were complaining about while they are still complaining. Nerve.",
+  "ja": "プリヤは相手が文句を言っている最中に、その原因を直してしまう。度胸。"
+ },
+ "ad_audit": {
+  "en": "Nia reads their numbers back to them. Very hard, and the pressure drops.",
+  "ja": "ニアが相手の数字を読み返す。非常に強力で、圧力が下がる。"
+ },
+ "ad_headline": {
+  "en": "Sol tells them how this will read in print. Charm.",
+  "ja": "ソルが、これが記事になったらどう読めるかを告げる。魅力。"
+ },
+ "i_coin": {
+  "en": "Rent fund",
+  "ja": "家賃資金"
+ },
+ "id_coin": {
+  "en": "The building's float, in dollars. In-game money only.",
+  "ja": "ビルの運転資金（ドル）。ゲーム内通貨のみ。"
+ },
+ "i_voucher": {
+  "en": "Parking pass",
+  "ja": "駐車券"
+ },
+ "id_voucher": {
+  "en": "A free month in the garage. Comp a perk spends one.",
+  "ja": "駐車場一か月無料。「特典を渡す」で一つ消費。"
+ },
+ "i_espresso": {
+  "en": "Double espresso",
+  "ja": "ダブルエスプレッソ"
+ },
+ "id_espresso": {
+  "en": "Restores 16 composure.",
+  "ja": "平静を16回復。"
+ },
+ "i_energy": {
+  "en": "Energy drink",
+  "ja": "エナジードリンク"
+ },
+ "id_energy": {
+  "en": "Restores 8 focus.",
+  "ja": "集中を8回復。"
+ },
+ "i_pastry": {
+  "en": "Night-shift pastry",
+  "ja": "夜勤のペストリー"
+ },
+ "id_pastry": {
+  "en": "Restores 28 composure.",
+  "ja": "平静を28回復。"
+ },
+ "i_mints": {
+  "en": "Strong mints",
+  "ja": "強いミント"
+ },
+ "id_mints": {
+  "en": "Restores 14 focus.",
+  "ja": "集中を14回復。"
+ },
+ "i_lease_copy": {
+  "en": "Floor two's lease",
+  "ja": "二階の賃貸契約書"
+ },
+ "id_lease_copy": {
+  "en": "Paperwork. Signed, dated, paid.",
+  "ja": "書類。署名、日付、支払済。"
+ },
+ "i_sign_in_sheet": {
+  "en": "The night sign-in sheet",
+  "ja": "夜間入館記録"
+ },
+ "id_sign_in_sheet": {
+  "en": "Paperwork. Who was where, in Mara's hand.",
+  "ja": "書類。誰がどこにいたか、マーラの字で。"
+ },
+ "i_sublet_ledger": {
+  "en": "Wes's ledger",
+  "ja": "ウェスの台帳"
+ },
+ "id_sublet_ledger": {
+  "en": "Paperwork. Every desk he rented that he did not have.",
+  "ja": "書類。持っていない机を貸した記録すべて。"
+ },
+ "i_audit_trail": {
+  "en": "An audit trail",
+  "ja": "監査証跡"
+ },
+ "id_audit_trail": {
+  "en": "Paperwork. Six years, stamped RETURNED.",
+  "ja": "書類。六年分、『返却』の判。"
+ },
+ "i_court_error": {
+  "en": "The order's wrong date",
+  "ja": "命令書の日付誤り"
+ },
+ "id_court_error": {
+  "en": "Paperwork. The court typed 2025.",
+  "ja": "書類。裁判所が2025と打った。"
+ },
+ "i_trust_deed": {
+  "en": "The 1974 trust deed",
+  "ja": "1974年の信託証書"
+ },
+ "id_trust_deed": {
+  "en": "Paperwork. Clause nine, which nobody has read since 1974.",
+  "ja": "書類。1974年以来誰も読んでいない第九条。"
+ },
+ "i_mara_work": {
+  "en": "Mara — shirt and lanyard",
+  "ja": "マーラ — シャツと名札"
+ },
+ "id_mara_work": {
+  "en": "Outfit. Nerve +1. The keys to every floor.",
+  "ja": "服装。度胸+1。全フロアの鍵。"
+ },
+ "i_mara_after": {
+  "en": "Mara — black dress",
+  "ja": "マーラ — 黒いドレス"
+ },
+ "id_mara_after": {
+  "en": "Outfit. Charm +2, charm stronger. She kept the lanyard on.",
+  "ja": "服装。魅力+2、愛嬌が強くなる。名札はつけたまま。"
+ },
+ "i_priya_work": {
+  "en": "Priya — hi-vis",
+  "ja": "プリヤ — 反射ジャケット"
+ },
+ "id_priya_work": {
+  "en": "Outfit. Nerve +1.",
+  "ja": "服装。度胸+1。"
+ },
+ "i_priya_after": {
+  "en": "Priya — red sweater",
+  "ja": "プリヤ — 赤いセーター"
+ },
+ "id_priya_after": {
+  "en": "Outfit. Charm +2, charm stronger.",
+  "ja": "服装。魅力+2、愛嬌が強くなる。"
+ },
+ "i_nia_work": {
+  "en": "Nia — navy blazer",
+  "ja": "ニア — 紺のブレザー"
+ },
+ "id_nia_work": {
+  "en": "Outfit. Sharp +1.",
+  "ja": "服装。切れ者+1。"
+ },
+ "i_nia_after": {
+  "en": "Nia — emerald satin",
+  "ja": "ニア — エメラルドのサテン"
+ },
+ "id_nia_after": {
+  "en": "Outfit. Charm +2, spin stronger.",
+  "ja": "服装。魅力+2、言いくるめが強くなる。"
+ },
+ "i_sol_work": {
+  "en": "Sol — cardigan",
+  "ja": "ソル — カーディガン"
+ },
+ "id_sol_work": {
+  "en": "Outfit. Calm +1.",
+  "ja": "服装。冷静+1。"
+ },
+ "i_sol_after": {
+  "en": "Sol — burgundy wrap",
+  "ja": "ソル — ワインのラップドレス"
+ },
+ "id_sol_after": {
+  "en": "Outfit. Charm +2, charm stronger.",
+  "ja": "服装。魅力+2、愛嬌が強くなる。"
+ },
+ "i_keyring": {
+  "en": "Mara's keyring",
+  "ja": "マーラの鍵束"
+ },
+ "id_keyring": {
+  "en": "Accessory (Mara). Sharp +1.",
+  "ja": "装飾品（マーラ）。切れ者+1。"
+ },
+ "i_gold_lanyard": {
+  "en": "Gold lanyard",
+  "ja": "金の名札紐"
+ },
+ "id_gold_lanyard": {
+  "en": "Accessory. Charm +1, Sharp +1.",
+  "ja": "装飾品。魅力+1、切れ者+1。"
+ },
+ "i_earpiece": {
+  "en": "Earpiece",
+  "ja": "イヤーピース"
+ },
+ "id_earpiece": {
+  "en": "Accessory. Calm +2.",
+  "ja": "装飾品。冷静+2。"
+ },
+ "i_safety_glasses": {
+  "en": "Safety glasses",
+  "ja": "保護メガネ"
+ },
+ "id_safety_glasses": {
+  "en": "Accessory (Priya). Nerve +1.",
+  "ja": "装飾品（プリヤ）。度胸+1。"
+ },
+ "i_fountain_pen": {
+  "en": "Varga's fountain pen",
+  "ja": "ヴァルガの万年筆"
+ },
+ "id_fountain_pen": {
+  "en": "Accessory. Sharp +2, paperwork stronger.",
+  "ja": "装飾品。切れ者+2、書類が強くなる。"
+ },
+ "i_press_pass": {
+  "en": "An old press pass",
+  "ja": "古い記者証"
+ },
+ "id_press_pass": {
+  "en": "Accessory. Charm +2.",
+  "ja": "装飾品。魅力+2。"
+ },
+ "i_clipboard": {
+  "en": "Clipboard",
+  "ja": "クリップボード"
+ },
+ "id_clipboard": {
+  "en": "Tool. Sharp +1, spin stronger.",
+  "ja": "道具。切れ者+1、言いくるめが強くなる。"
+ },
+ "i_tablet": {
+  "en": "Building tablet",
+  "ja": "ビル管理タブレット"
+ },
+ "id_tablet": {
+  "en": "Tool. Calm +1, coffee breaks stronger.",
+  "ja": "道具。冷静+1、コーヒー休憩が強くなる。"
+ },
+ "i_thermos": {
+  "en": "Steel thermos",
+  "ja": "スチールの魔法瓶"
+ },
+ "id_thermos": {
+  "en": "Tool. Nerve +2.",
+  "ja": "道具。度胸+2。"
+ },
+ "i_toolbelt": {
+  "en": "Priya's toolbelt",
+  "ja": "プリヤの工具ベルト"
+ },
+ "id_toolbelt": {
+  "en": "Tool (Priya). Nerve +1, fixes stronger.",
+  "ja": "道具（プリヤ）。度胸+1、修理が強くなる。"
+ },
+ "i_orchid": {
+  "en": "A white orchid",
+  "ja": "白い蘭"
+ },
+ "id_orchid": {
+  "en": "A gift for Mirei. +1 trust.",
+  "ja": "ミレイへの贈り物。信頼+1。"
+ },
+ "i_whisky": {
+  "en": "A good single malt",
+  "ja": "上等なシングルモルト"
+ },
+ "id_whisky": {
+  "en": "A gift for Mara. +1 trust.",
+  "ja": "マーラへの贈り物。信頼+1。"
+ },
+ "i_craft_beer": {
+  "en": "A four-pack of sour beer",
+  "ja": "サワービール四本"
+ },
+ "id_craft_beer": {
+  "en": "A gift for Priya. +1 trust.",
+  "ja": "プリヤへの贈り物。信頼+1。"
+ },
+ "i_ink": {
+  "en": "A bottle of green ink",
+  "ja": "緑のインク瓶"
+ },
+ "id_ink": {
+  "en": "A gift for Nia. +1 trust.",
+  "ja": "ニアへの贈り物。信頼+1。"
+ },
+ "i_first_edition": {
+  "en": "A first edition",
+  "ja": "初版本"
+ },
+ "id_first_edition": {
+  "en": "A gift for Sol. +1 trust.",
+  "ja": "ソルへの贈り物。信頼+1。"
+ },
+ "br_keys": {
+  "en": "Keys",
+  "ja": "鍵"
+ },
+ "br_steel": {
+  "en": "Steel",
+  "ja": "鋼"
+ },
+ "br_tools": {
+  "en": "Tools",
+  "ja": "工具"
+ },
+ "br_banter": {
+  "en": "Banter",
+  "ja": "軽口"
+ },
+ "br_ledger": {
+  "en": "Ledger",
+  "ja": "帳簿"
+ },
+ "br_poise": {
+  "en": "Poise",
+  "ja": "品位"
+ },
+ "br_press": {
+  "en": "Press",
+  "ja": "報道"
+ },
+ "br_warmth": {
+  "en": "Warmth",
+  "ja": "温もり"
+ },
+ "sk_m_ring": {
+  "en": "Every key on one ring",
+  "ja": "鍵はひとつの輪に"
+ },
+ "skd_m_ring": {
+  "en": "Paperwork +30%.",
+  "ja": "書類+30%。"
+ },
+ "sk_m_plan": {
+  "en": "Floor plans by heart",
+  "ja": "図面は頭の中"
+ },
+ "skd_m_plan": {
+  "en": "Sharp +2.",
+  "ja": "切れ者+2。"
+ },
+ "sk_m_master": {
+  "en": "The master key",
+  "ja": "マスターキー"
+ },
+ "skd_m_master": {
+  "en": "Grants Master keys.",
+  "ja": "「マスターキー」を習得。"
+ },
+ "sk_m_lockdown": {
+  "en": "Lockdown",
+  "ja": "封鎖"
+ },
+ "skd_m_lockdown": {
+  "en": "Master keys +40%.",
+  "ja": "マスターキー+40%。"
+ },
+ "sk_m_steady": {
+  "en": "Night-shift steady",
+  "ja": "夜勤の落ち着き"
+ },
+ "skd_m_steady": {
+  "en": "Composure +10.",
+  "ja": "平静+10。"
+ },
+ "sk_m_glare": {
+  "en": "The eyebrow",
+  "ja": "眉ひとつ"
+ },
+ "skd_m_glare": {
+  "en": "Call security +30%.",
+  "ja": "警備を呼ぶ+30%。"
+ },
+ "sk_m_spine": {
+  "en": "Spine",
+  "ja": "背骨"
+ },
+ "skd_m_spine": {
+  "en": "Nerve +2.",
+  "ja": "度胸+2。"
+ },
+ "sk_p_wrench": {
+  "en": "Heavy wrench",
+  "ja": "重いレンチ"
+ },
+ "skd_p_wrench": {
+  "en": "Nerve +2.",
+  "ja": "度胸+2。"
+ },
+ "sk_p_fix": {
+  "en": "Fix it now",
+  "ja": "今すぐ直す"
+ },
+ "skd_p_fix": {
+  "en": "Grants Fix it on the spot.",
+  "ja": "「その場で直す」を習得。"
+ },
+ "sk_p_overtime": {
+  "en": "On the clock",
+  "ja": "時間外手当"
+ },
+ "skd_p_overtime": {
+  "en": "Fix it on the spot +40%.",
+  "ja": "その場で直す+40%。"
+ },
+ "sk_p_grin": {
+  "en": "The grin",
+  "ja": "あの笑顔"
+ },
+ "skd_p_grin": {
+  "en": "Charm +30%.",
+  "ja": "愛嬌+30%。"
+ },
+ "sk_p_tease": {
+  "en": "Teasing",
+  "ja": "からかい"
+ },
+ "skd_p_tease": {
+  "en": "Charm stat +2.",
+  "ja": "魅力+2。"
+ },
+ "sk_p_wink": {
+  "en": "A wink",
+  "ja": "ウインク"
+ },
+ "skd_p_wink": {
+  "en": "Spin it +30%.",
+  "ja": "言いくるめ+30%。"
+ },
+ "sk_n_columns": {
+  "en": "Columns",
+  "ja": "列"
+ },
+ "skd_n_columns": {
+  "en": "Paperwork +30%.",
+  "ja": "書類+30%。"
+ },
+ "sk_n_audit": {
+  "en": "Forensic eye",
+  "ja": "鑑識の目"
+ },
+ "skd_n_audit": {
+  "en": "Grants Audit them.",
+  "ja": "「監査する」を習得。"
+ },
+ "sk_n_forensic": {
+  "en": "Six years in an hour",
+  "ja": "六年を一時間で"
+ },
+ "skd_n_forensic": {
+  "en": "Audit them +40%.",
+  "ja": "監査+40%。"
+ },
+ "sk_n_glasses": {
+  "en": "Over the glasses",
+  "ja": "眼鏡越し"
+ },
+ "skd_n_glasses": {
+  "en": "Sharp +2.",
+  "ja": "切れ者+2。"
+ },
+ "sk_n_dry": {
+  "en": "Dry",
+  "ja": "辛口"
+ },
+ "skd_n_dry": {
+  "en": "Spin it +30%.",
+  "ja": "言いくるめ+30%。"
+ },
+ "sk_n_cold": {
+  "en": "Cold read",
+  "ja": "冷たい読み"
+ },
+ "skd_n_cold": {
+  "en": "Composure +12.",
+  "ja": "平静+12。"
+ },
+ "sk_s_lede": {
+  "en": "The lede",
+  "ja": "リード文"
+ },
+ "skd_s_lede": {
+  "en": "Charm +30%.",
+  "ja": "愛嬌+30%。"
+ },
+ "sk_s_headline": {
+  "en": "Front page",
+  "ja": "一面"
+ },
+ "skd_s_headline": {
+  "en": "Grants Headline.",
+  "ja": "「見出し」を習得。"
+ },
+ "sk_s_front": {
+  "en": "Stop the presses",
+  "ja": "輪転機を止めろ"
+ },
+ "skd_s_front": {
+  "en": "Headline +40%.",
+  "ja": "見出し+40%。"
+ },
+ "sk_s_tea": {
+  "en": "Kettle on",
+  "ja": "やかんを火に"
+ },
+ "skd_s_tea": {
+  "en": "Coffee break +30%.",
+  "ja": "コーヒー休憩+30%。"
+ },
+ "sk_s_warm": {
+  "en": "Warm voice",
+  "ja": "温かい声"
+ },
+ "skd_s_warm": {
+  "en": "Charm stat +2.",
+  "ja": "魅力+2。"
+ },
+ "sk_s_late": {
+  "en": "Files at four",
+  "ja": "四時に入稿"
+ },
+ "skd_s_late": {
+  "en": "Composure +12.",
+  "ja": "平静+12。"
+ },
+ "of_title": {
+  "en": "The office — %s",
+  "ja": "オフィス — %s"
+ },
+ "of_fund": {
+  "en": "Rent fund $%d",
+  "ja": "家賃資金 $%d"
+ },
+ "of_rent": {
+  "en": "Rent due tonight: $%d",
+  "ja": "今夜の家賃：$%d"
+ },
+ "of_preview": {
+  "en": "This layout: $%d a shift × %d shifts = $%d tonight",
+  "ja": "この配置：1シフト$%d × %dシフト = 今夜$%d"
+ },
+ "of_chain": {
+  "en": "Links %d · chain ×%.2f",
+  "ja": "連鎖 %d · 倍率×%.2f"
+ },
+ "of_ran": {
+  "en": "Shift run: +$%d to the rent fund.",
+  "ja": "シフト完了：家賃資金 +$%d。"
+ },
+ "of_ran_short": {
+  "en": "Tonight's shift is done (+$%d).",
+  "ja": "今夜のシフトは完了（+$%d）。"
+ },
+ "of_run": {
+  "en": "Run the night shift",
+  "ja": "夜勤シフトを回す"
+ },
+ "of_run_hint": {
+  "en": "Place staff and objects on the floor, then run the shift once. Links between neighbours multiply the whole floor.",
+  "ja": "スタッフと備品をフロアに置いてから、シフトを一度だけ回す。隣同士の連携がフロア全体を倍増させる。"
+ },
+ "of_pieces": {
+  "en": "Staff and objects — pick one, then a desk",
+  "ja": "スタッフと備品 — 選んでから机へ"
+ },
+ "of_clear": {
+  "en": "Clear the floor",
+  "ja": "フロアを空にする"
+ },
+ "of_auto": {
+  "en": "Suggest a layout",
+  "ja": "配置を提案"
+ },
+ "of_recruit": {
+  "en": "Recruit ($%d)",
+  "ja": "採用（$%d）"
+ },
+ "of_recruit10": {
+  "en": "Recruit ×10 ($%d)",
+  "ja": "10連採用（$%d）"
+ },
+ "of_pity": {
+  "en": "An epic recruit is guaranteed within %d more.",
+  "ja": "あと%d回以内にエピック確定。"
+ },
+ "of_got": {
+  "en": "Recruited: %s (%s)",
+  "ja": "採用：%s（%s）"
+ },
+ "of_dupe": {
+  "en": "%s again — overtime bonus +5%%, and %s +1.",
+  "ja": "%sが再び — 残業ボーナス+5%%、%s+1。"
+ },
+ "of_dupe_board": {
+  "en": "%s again — overtime bonus +5%%.",
+  "ja": "%sが再び — 残業ボーナス+5%%。"
+ },
+ "of_joined": {
+  "en": "%s joins the staff — and the party.",
+  "ja": "%sがスタッフに — そしてパーティに加わった。"
+ },
+ "of_supplies": {
+  "en": "Supplies",
+  "ja": "備品・購買"
+ },
+ "of_buy": {
+  "en": "%s — $%d",
+  "ja": "%s — $%d"
+ },
+ "of_owned": {
+  "en": "owned %d",
+  "ja": "所持 %d"
+ },
+ "of_done": {
+  "en": "Back to the floor",
+  "ja": "フロアに戻る"
+ },
+ "of_broke": {
+  "en": "Not enough in the rent fund.",
+  "ja": "家賃資金が足りない。"
+ },
+ "of_rarity_common": {
+  "en": "common",
+  "ja": "コモン"
+ },
+ "of_rarity_rare": {
+  "en": "rare",
+  "ja": "レア"
+ },
+ "of_rarity_epic": {
+  "en": "epic",
+  "ja": "エピック"
+ },
+ "of_events": {
+  "en": "On this floor: %s",
+  "ja": "このフロアで：%s"
+ },
+ "of_none": {
+  "en": "nothing linked yet",
+  "ja": "まだ連携なし"
+ },
+ "of_trust": {
+  "en": "%s worked the floor you built (+1 trust).",
+  "ja": "%sがあなたの組んだフロアで働いた（信頼+1）。"
+ },
+ "of_rule": {
+  "en": "%s — %s",
+  "ja": "%s — %s"
+ },
+ "of_tab_floor": {
+  "en": "Floor",
+  "ja": "フロア"
+ },
+ "of_tab_recruit": {
+  "en": "Recruit",
+  "ja": "採用"
+ },
+ "of_tab_supplies": {
+  "en": "Supplies",
+  "ja": "購買"
+ },
+ "of_no_money_note": {
+  "en": "Recruiting uses the in-game rent fund only.",
+  "ja": "採用はゲーム内の家賃資金のみで行います。"
+ },
+ "pc_coffee": {
+  "en": "Coffee",
+  "ja": "コーヒー"
+ },
+ "pr_coffee": {
+  "en": "Pays 2. Beside Dan: ×3.",
+  "ja": "2を生む。ダンの隣で×3。"
+ },
+ "pc_mute": {
+  "en": "Headphones",
+  "ja": "ヘッドホン"
+ },
+ "pr_mute": {
+  "en": "Pays 4. Shields Dan, Priya, Mara beside them from Wes.",
+  "ja": "4を生む。隣のダン・プリヤ・マーラをウェスから守る。"
+ },
+ "pc_printer": {
+  "en": "Printer",
+  "ja": "プリンター"
+ },
+ "pr_printer": {
+  "en": "Pays 2, +1 for every other piece in its row.",
+  "ja": "2を生む。同じ列の他の駒1つごとに+1。"
+ },
+ "pc_corner": {
+  "en": "Corner plant",
+  "ja": "角の観葉植物"
+ },
+ "pr_corner": {
+  "en": "Pays 3, but only in a corner.",
+  "ja": "3を生む。ただし角でのみ。"
+ },
+ "pc_dan": {
+  "en": "Dan",
+  "ja": "ダン"
+ },
+ "pr_dan": {
+  "en": "Pays 3. Coffee beside him triples. Headphones beside him +2.",
+  "ja": "3を生む。隣のコーヒーは3倍。隣のヘッドホンで+2。"
+ },
+ "pc_priya": {
+  "en": "Priya",
+  "ja": "プリヤ"
+ },
+ "pr_priya": {
+  "en": "Copies the best base beside her.",
+  "ja": "隣で一番高い基本値をコピーする。"
+ },
+ "pc_mara": {
+  "en": "Mara",
+  "ja": "マーラ"
+ },
+ "pr_mara": {
+  "en": "Every neighbour +1.",
+  "ja": "隣すべて+1。"
+ },
+ "pc_wes": {
+  "en": "Wes",
+  "ja": "ウェス"
+ },
+ "pr_wes": {
+  "en": "Pays 2. Taxes unshielded Dan and Priya beside him. Tag: noise.",
+  "ja": "2を生む。守られていない隣のダンとプリヤから徴収。騒音タグ。"
+ },
+ "pc_nia": {
+  "en": "Nia",
+  "ja": "ニア"
+ },
+ "pr_nia": {
+  "en": "Audits Wes: each Wes beside her pays her his 2.",
+  "ja": "ウェスを監査：隣のウェス1人ごとに2を受け取る。"
+ },
+ "pc_sol": {
+  "en": "Sol",
+  "ja": "ソル"
+ },
+ "pr_sol": {
+  "en": "Coffee beside her +2 to her. Floor: every other staff +1.",
+  "ja": "隣のコーヒーで+2。フロア全体：他のスタッフ全員+1。"
+ },
+ "ev_coffee-dan": {
+  "en": "coffee × Dan",
+  "ja": "コーヒー×ダン"
+ },
+ "ev_dan-mute": {
+  "en": "Dan in headphones",
+  "ja": "ヘッドホンのダン"
+ },
+ "ev_mute-shield": {
+  "en": "headphones shield",
+  "ja": "ヘッドホンの防壁"
+ },
+ "ev_priya-copy": {
+  "en": "Priya covers",
+  "ja": "プリヤの代役"
+ },
+ "ev_print-job": {
+  "en": "print run",
+  "ja": "印刷"
+ },
+ "ev_mara-boost": {
+  "en": "Mara lifts",
+  "ja": "マーラの底上げ"
+ },
+ "ev_wes-tax": {
+  "en": "Wes's tax",
+  "ja": "ウェスの徴収"
+ },
+ "ev_nia-audit": {
+  "en": "Nia audits Wes",
+  "ja": "ニアの監査"
+ },
+ "ev_sol-late": {
+  "en": "Sol's late coffee",
+  "ja": "ソルの夜更けのコーヒー"
+ },
+ "ev_sol-floor": {
+  "en": "Sol keeps the floor late",
+  "ja": "ソルが残るフロア"
+ },
+ "ev_tag-staff": {
+  "en": "staff together",
+  "ja": "スタッフの連携"
+ },
+ "ev_tag-fuel": {
+  "en": "fuel together",
+  "ja": "燃料の連携"
+ },
+ "ev_tag-noise": {
+  "en": "noise together",
+  "ja": "騒音の連携"
+ },
+ "ev_tag-infra": {
+  "en": "infrastructure",
+  "ja": "設備の連携"
+ },
+ "tr_end_title": {
+  "en": "The trial ends here.",
+  "ja": "体験版はここまでです。"
+ },
+ "tr_end_body": {
+  "en": "Floor two is paid. The full game keeps the building running — the sublet on seven, the audit on six, the bailiff in the newsroom, the heir in the penthouse — with Nia and Sol to recruit, two outfits for every woman on staff, and after-hours scenes for each of them and for Mirei.",
+  "ja": "二階は払い終えた。製品版ではビルの経営が続く — 七階の又貸し、六階の監査、新聞部の執行官、ペントハウスの相続人。ニアとソルの採用、女性スタッフ全員の二着の衣装、そして彼女たちとミレイそれぞれの終業後の場面。"
+ },
+ "tr_back": {
+  "en": "Back to title",
+  "ja": "タイトルへ戻る"
+ },
+ "v_greet_0": {
+  "en": "Evening. The office missed you.",
+  "ja": "こんばんは。オフィスはあなたが恋しかったみたい。"
+ },
+ "v_greet_1": {
+  "en": "Back again? Lights are still on.",
+  "ja": "また来たの？ 灯りはまだついてるわ。"
+ },
+ "v_stage_0": {
+  "en": "One desk, one dream.",
+  "ja": "机ひとつ、夢ひとつ。"
+ },
+ "v_stage_1": {
+  "en": "A whole floor now.",
+  "ja": "もうワンフロアまるごとね。"
+ },
+ "v_stage_2": {
+  "en": "Two floors. People are noticing.",
+  "ja": "二フロア。気づく人が出てきた。"
+ },
+ "v_stage_3": {
+  "en": "The building's yours.",
+  "ja": "ビルはあなたのものよ。"
+ },
+ "v_near_0": {
+  "en": "Almost there. One more.",
+  "ja": "あと少し。もうひとつ。"
+ },
+ "v_near_1": {
+  "en": "Nearly. Hold on.",
+  "ja": "もうすぐ。踏ん張って。"
+ },
+ "v_win_0": {
+  "en": "Signed and filed.",
+  "ja": "署名して、綴じたわ。"
+ },
+ "v_win_1": {
+  "en": "Good work.",
+  "ja": "いい仕事ね。"
+ },
+ "v_win_2": {
+  "en": "That's a win.",
+  "ja": "これは勝ちね。"
+ },
+ "v_win_big_0": {
+  "en": "Best quarter yet!",
+  "ja": "過去最高の四半期！"
+ },
+ "v_win_big_1": {
+  "en": "That is a record. Really.",
+  "ja": "記録よ。本当に。"
+ },
+ "v_fail_0": {
+  "en": "We'll get it next time.",
+  "ja": "次は取れるわ。"
+ },
+ "v_fail_1": {
+  "en": "Not this round.",
+  "ja": "今回は駄目ね。"
+ },
+ "v_idle_0": {
+  "en": "Still awake?",
+  "ja": "まだ起きてるの？"
+ },
+ "v_idle_1": {
+  "en": "Overtime waits for nobody.",
+  "ja": "残業は誰も待ってくれない。"
+ },
+ "v_streak_0": {
+  "en": "Three straight!",
+  "ja": "三連続！"
+ },
+ "v_streak_1": {
+  "en": "Somebody's on a roll.",
+  "ja": "誰かさん、絶好調ね。"
+ },
+ "v_unlock_0": {
+  "en": "New floor. Go see.",
+  "ja": "新しいフロアよ。見てきて。"
+ },
+ "v_unlock_1": {
+  "en": "Something opened up upstairs.",
+  "ja": "上の階で何かが空いたわ。"
+ }
+}

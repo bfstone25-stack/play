@@ -1,0 +1,15 @@
+.godot/
+build/
+shots/
+assets/rooms/
+assets/rooms_locked/
+assets/sprites/
+assets/enemies/
+assets/cg/
+assets/ui/
+assets/audio/
+assets/board/
+assets/title/keyvisual.png
+assets/title/logo.png
+assets/voice/v_*
+icon.png.import

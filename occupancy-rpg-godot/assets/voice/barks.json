@@ -1,0 +1,41 @@
+{
+ "greet": [
+  "greet_0.ogg",
+  "greet_1.ogg"
+ ],
+ "stage": [
+  "stage_0.ogg",
+  "stage_1.ogg",
+  "stage_2.ogg",
+  "stage_3.ogg"
+ ],
+ "near": [
+  "near_0.ogg",
+  "near_1.ogg"
+ ],
+ "win": [
+  "win_0.ogg",
+  "win_1.ogg",
+  "win_2.ogg"
+ ],
+ "win_big": [
+  "win_big_0.ogg",
+  "win_big_1.ogg"
+ ],
+ "fail": [
+  "fail_0.ogg",
+  "fail_1.ogg"
+ ],
+ "idle": [
+  "idle_0.ogg",
+  "idle_1.ogg"
+ ],
+ "streak": [
+  "streak_0.ogg",
+  "streak_1.ogg"
+ ],
+ "unlock": [
+  "unlock_0.ogg",
+  "unlock_1.ogg"
+ ]
+}

@@ -1,0 +1,1398 @@
+{
+ "id": "n2",
+ "title_key": "n2_title",
+ "sub_key": "n2_sub",
+ "turns": 46,
+ "clock_start": 1320,
+ "minutes_per_turn": 8,
+ "start_room": "stairwell",
+ "start_event": "n2_open",
+ "map": {
+  "image": "tower",
+  "rooms": {
+   "stairwell": [
+    0.12,
+    0.6
+   ],
+   "sublet": [
+    0.4,
+    0.6
+   ],
+   "meeting_room": [
+    0.7,
+    0.6
+   ]
+  }
+ },
+ "rooms": {
+  "stairwell": {
+   "name_key": "r_stairwell",
+   "plate": "stairwell",
+   "music": "explore",
+   "mood": {
+    "ambient": "#dcd8d0",
+    "lamps": [
+     [
+      0.5,
+      0.2,
+      1.0,
+      "#fff0c8"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "priya",
+     "kind": "event",
+     "pos": [
+      0.45,
+      0.55
+     ],
+     "event": "n2_priya",
+     "label_key": "hs_priya_lift"
+    },
+    {
+     "id": "landing",
+     "kind": "search",
+     "pos": [
+      0.2,
+      0.4
+     ],
+     "event": "n2_landing",
+     "label_key": "hs_landing",
+     "gives": [
+      "espresso"
+     ]
+    },
+    {
+     "id": "to_sublet",
+     "kind": "door",
+     "to": "sublet",
+     "pos": [
+      0.9,
+      0.84
+     ]
+    }
+   ]
+  },
+  "sublet": {
+   "name_key": "r_sublet",
+   "plate": "sublet",
+   "music": "explore",
+   "mood": {
+    "ambient": "#e0d8d0",
+    "lamps": [
+     [
+      0.45,
+      0.3,
+      1.0,
+      "#ffd090"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "console",
+     "kind": "event",
+     "pos": [
+      0.5,
+      0.58
+     ],
+     "event": "n2_console",
+     "label_key": "hs_console"
+    },
+    {
+     "id": "subletter",
+     "kind": "enemy",
+     "enemy": "subletter",
+     "pos": [
+      0.7,
+      0.48
+     ],
+     "event": "n2_sub_pre",
+     "after": "n2_sub_post"
+    },
+    {
+     "id": "mara",
+     "kind": "event",
+     "pos": [
+      0.25,
+      0.55
+     ],
+     "event": "n2_mara",
+     "label_key": "hs_mara_sublet"
+    },
+    {
+     "id": "boxes",
+     "kind": "search",
+     "pos": [
+      0.85,
+      0.65
+     ],
+     "event": "n2_boxes",
+     "label_key": "hs_boxes",
+     "gives": [
+      "voucher",
+      "clipboard"
+     ],
+     "xp": 5
+    },
+    {
+     "id": "to_stair",
+     "kind": "door",
+     "to": "stairwell",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    },
+    {
+     "id": "to_meeting",
+     "kind": "door",
+     "to": "meeting_room",
+     "pos": [
+      0.92,
+      0.84
+     ]
+    }
+   ],
+   "enter_event": "n2_sublet_enter"
+  },
+  "meeting_room": {
+   "name_key": "r_meeting_room",
+   "plate": "meeting_room",
+   "music": "explore",
+   "mood": {
+    "ambient": "#dcdde4",
+    "lamps": [
+     [
+      0.5,
+      0.25,
+      1.0,
+      "#fff0d8"
+     ]
+    ]
+   },
+   "hotspots": [
+    {
+     "id": "subletter2",
+     "kind": "enemy",
+     "enemy": "subletter2",
+     "pos": [
+      0.35,
+      0.5
+     ],
+     "event": "n2_sub2_pre",
+     "after": "n2_sub2_post"
+    },
+    {
+     "id": "mirei",
+     "kind": "event",
+     "pos": [
+      0.6,
+      0.35
+     ],
+     "event": "n2_mirei",
+     "label_key": "hs_mirei_call"
+    },
+    {
+     "id": "wes",
+     "kind": "event",
+     "pos": [
+      0.7,
+      0.5
+     ],
+     "event": "n2_crisis",
+     "label_key": "hs_crisis_wes",
+     "sim_last": true
+    },
+    {
+     "id": "to_sublet",
+     "kind": "door",
+     "to": "sublet",
+     "pos": [
+      0.08,
+      0.84
+     ]
+    }
+   ]
+  }
+ },
+ "events": {
+  "n2_open": [
+   {
+    "bg": "stairwell"
+   },
+   {
+    "music": "explore"
+   },
+   {
+    "say": "mirei",
+    "key": "v_stage_0"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_o1"
+   },
+   {
+    "say": "mara",
+    "key": "n2_o2"
+   },
+   {
+    "say": "mara",
+    "key": "n2_o3"
+   }
+  ],
+  "n2_sublet_enter": [
+   {
+    "say": "narrator",
+    "key": "n2_se1"
+   }
+  ],
+  "n2_console": [
+   {
+    "screen": "res://scripts/office.gd",
+    "args": {
+     "floor": "n2",
+     "plate": "sublet"
+    }
+   }
+  ],
+  "n2_landing": [
+   {
+    "say": "narrator",
+    "key": "n2_land1"
+   }
+  ],
+  "n2_boxes": [
+   {
+    "say": "narrator",
+    "key": "n2_box1"
+   }
+  ],
+  "n2_priya": [
+   {
+    "show": "priya_work",
+    "x": 0.7
+   },
+   {
+    "say": "priya",
+    "key": "n2_p1"
+   },
+   {
+    "choice": [
+     {
+      "key": "n2_p_steady",
+      "do": [
+       {
+        "say": "priya",
+        "key": "n2_p_st1"
+       },
+       {
+        "trust": 1,
+        "track": "priya"
+       }
+      ],
+      "auto_rank": 1
+     },
+     {
+      "key": "n2_p_tease",
+      "do": [
+       {
+        "say": "priya",
+        "key": "n2_p_te1"
+       },
+       {
+        "trust": 2,
+        "track": "priya"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "n2_p_go",
+      "do": [],
+      "auto_rank": 0
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "xp": 15
+   }
+  ],
+  "n2_mara": [
+   {
+    "show": "mara_work",
+    "x": 0.7
+   },
+   {
+    "say": "mara",
+    "key": "n2_m1"
+   },
+   {
+    "choice": [
+     {
+      "key": "n2_m_help",
+      "do": [
+       {
+        "say": "mara",
+        "key": "n2_m_h1"
+       },
+       {
+        "trust": 1,
+        "track": "mara"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "n2_m_wes",
+      "do": [
+       {
+        "say": "mara",
+        "key": "n2_m_w1"
+       },
+       {
+        "trust": 1,
+        "track": "mara"
+       },
+       {
+        "trust": 1,
+        "track": "mirei"
+       }
+      ],
+      "auto_rank": 1
+     }
+    ]
+   },
+   {
+    "show": ""
+   },
+   {
+    "xp": 15
+   }
+  ],
+  "n2_mirei": [
+   {
+    "say": "mirei",
+    "key": "v_idle_1"
+   },
+   {
+    "say": "mirei",
+    "key": "n2_mi1"
+   },
+   {
+    "choice": [
+     {
+      "key": "n2_mi_tell",
+      "do": [
+       {
+        "say": "mirei",
+        "key": "n2_mi_t1"
+       },
+       {
+        "trust": 1,
+        "track": "mirei"
+       }
+      ],
+      "auto_rank": 2
+     },
+     {
+      "key": "n2_mi_ask",
+      "do": [
+       {
+        "say": "mirei",
+        "key": "n2_mi_a1"
+       },
+       {
+        "trust": 1,
+        "track": "mirei"
+       }
+      ],
+      "auto_rank": 1
+     }
+    ]
+   },
+   {
+    "xp": 10
+   }
+  ],
+  "n2_sub_pre": [
+   {
+    "say": "tenant",
+    "key": "n2_s1"
+   }
+  ],
+  "n2_sub_post": [
+   {
+    "say": "narrator",
+    "key": "n2_s2"
+   }
+  ],
+  "n2_sub2_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_s21"
+   }
+  ],
+  "n2_sub2_post": [
+   {
+    "say": "narrator",
+    "key": "n2_s22"
+   }
+  ],
+  "n2_wes_pre": [
+   {
+    "say": "narrator",
+    "key": "n2_w1"
+   },
+   {
+    "say": "wes",
+    "key": "n2_w2"
+   },
+   {
+    "if_has": "coin",
+    "n": 1900,
+    "then": [
+     {
+      "take": "coin",
+      "n": 1900
+     },
+     {
+      "flag": "n2_paid"
+     },
+     {
+      "say": "narrator",
+      "key": "n2_paid_msg"
+     },
+     {
+      "battle": "wes"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n2_short_msg"
+     },
+     {
+      "cg": "cg_evicted"
+     },
+     {
+      "say": "wes",
+      "key": "n2_short1"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "battle": "wes_short"
+     }
+    ]
+   }
+  ],
+  "n2_crisis": [
+   {
+    "say": "narrator",
+    "key": "n2_w1"
+   },
+   {
+    "say": "wes",
+    "key": "n2_w2"
+   },
+   {
+    "if_has": "coin",
+    "n": 1900,
+    "then": [
+     {
+      "take": "coin",
+      "n": 1900
+     },
+     {
+      "flag": "n2_paid"
+     },
+     {
+      "say": "narrator",
+      "key": "n2_paid_msg"
+     },
+     {
+      "battle": "wes"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "n2_short_msg"
+     },
+     {
+      "cg": "cg_evicted"
+     },
+     {
+      "say": "wes",
+      "key": "n2_short1"
+     },
+     {
+      "hide_cg": true
+     },
+     {
+      "battle": "wes_short"
+     }
+    ]
+   },
+   {
+    "say": "wes",
+    "key": "n2_w3"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_w4"
+   },
+   {
+    "flag": "wes_done"
+   },
+   {
+    "say": "mirei",
+    "key": "v_unlock_1"
+   },
+   {
+    "say": "mirei",
+    "key": "v_win_1"
+   },
+   {
+    "say": "mirei",
+    "key": "n2_after1"
+   },
+   {
+    "flag": "n2_done"
+   },
+   {
+    "say": "narrator",
+    "key": "n2_ah"
+   },
+   {
+    "choice": [
+     {
+      "key": "ah_mirei_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_mirei_window"
+       },
+       {
+        "say": "narrator",
+        "key": "mirei_a_1"
+       },
+       {
+        "say": "mirei",
+        "key": "mirei_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "mirei_a_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_mirei_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "mirei",
+      "if_not_flag": "seen_mirei_a",
+      "auto_rank": 5,
+      "if_flag": "n2_done"
+     },
+     {
+      "key": "ah_mirei_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_glass_office"
+       },
+       {
+        "say": "narrator",
+        "key": "mirei_b_1"
+       },
+       {
+        "say": "mirei",
+        "key": "mirei_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "mirei_b_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_mirei_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "mirei",
+      "if_not_flag": "seen_mirei_b",
+      "auto_rank": 7,
+      "if_flag": "seen_mirei_a"
+     },
+     {
+      "key": "ah_mara_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_mara_sofa"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_a_1"
+       },
+       {
+        "say": "mara",
+        "key": "mara_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_a_3"
+       },
+       {
+        "say": "mara",
+        "key": "mara_a_4"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_a_5"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_mara_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "mara",
+      "if_not_flag": "seen_mara_a",
+      "auto_rank": 5
+     },
+     {
+      "key": "ah_mara_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_mara_corners"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_b_1"
+       },
+       {
+        "say": "mara",
+        "key": "mara_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "mara_b_3"
+       },
+       {
+        "say": "mara",
+        "key": "mara_b_4"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_mara_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "mara",
+      "if_not_flag": "seen_mara_b",
+      "auto_rank": 7,
+      "if_flag": "seen_mara_a"
+     },
+     {
+      "key": "ah_priya_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_priya_rooftop"
+       },
+       {
+        "say": "narrator",
+        "key": "priya_a_1"
+       },
+       {
+        "say": "priya",
+        "key": "priya_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "priya_a_3"
+       },
+       {
+        "say": "priya",
+        "key": "priya_a_4"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_priya_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "priya",
+      "if_not_flag": "seen_priya_a",
+      "auto_rank": 5,
+      "if_flag": "hired_priya"
+     },
+     {
+      "key": "ah_priya_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_priya_x"
+       },
+       {
+        "say": "narrator",
+        "key": "priya_b_1"
+       },
+       {
+        "say": "priya",
+        "key": "priya_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "priya_b_3"
+       },
+       {
+        "say": "priya",
+        "key": "priya_b_4"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_priya_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "priya",
+      "if_not_flag": "seen_priya_b",
+      "auto_rank": 7,
+      "if_flag": "seen_priya_a"
+     },
+     {
+      "key": "ah_nia_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_nia_ledger"
+       },
+       {
+        "say": "narrator",
+        "key": "nia_a_1"
+       },
+       {
+        "say": "nia",
+        "key": "nia_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "nia_a_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_nia_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "nia",
+      "if_not_flag": "seen_nia_a",
+      "auto_rank": 5,
+      "if_flag": "hired_nia"
+     },
+     {
+      "key": "ah_nia_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_nia_after"
+       },
+       {
+        "say": "narrator",
+        "key": "nia_b_1"
+       },
+       {
+        "say": "nia",
+        "key": "nia_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "nia_b_3"
+       },
+       {
+        "say": "nia",
+        "key": "nia_b_4"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_nia_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "nia",
+      "if_not_flag": "seen_nia_b",
+      "auto_rank": 7,
+      "if_flag": "seen_nia_a"
+     },
+     {
+      "key": "ah_sol_a",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_sol_press"
+       },
+       {
+        "say": "narrator",
+        "key": "sol_a_1"
+       },
+       {
+        "say": "sol",
+        "key": "sol_a_2"
+       },
+       {
+        "say": "narrator",
+        "key": "sol_a_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_sol_a"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 3,
+      "req_track": "sol",
+      "if_not_flag": "seen_sol_a",
+      "auto_rank": 5,
+      "if_flag": "hired_sol"
+     },
+     {
+      "key": "ah_sol_b",
+      "do": [
+       {
+        "music": "intimate"
+       },
+       {
+        "cg": "cg_sol_after"
+       },
+       {
+        "say": "narrator",
+        "key": "sol_b_1"
+       },
+       {
+        "say": "sol",
+        "key": "sol_b_2"
+       },
+       {
+        "say": "narrator",
+        "key": "sol_b_3"
+       },
+       {
+        "hide_cg": true
+       },
+       {
+        "flag": "seen_sol_b"
+       },
+       {
+        "music": "explore"
+       }
+      ],
+      "req_trust": 5,
+      "req_track": "sol",
+      "if_not_flag": "seen_sol_b",
+      "auto_rank": 7,
+      "if_flag": "seen_sol_a"
+     },
+     {
+      "key": "ah_home",
+      "do": [
+       {
+        "flag": "n2_home1"
+       }
+      ],
+      "auto_rank": 0
+     }
+    ]
+   },
+   {
+    "if_flag": "n2_home1",
+    "then": [],
+    "else": [
+     {
+      "choice": [
+       {
+        "key": "ah_mirei_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_mirei_window"
+         },
+         {
+          "say": "narrator",
+          "key": "mirei_a_1"
+         },
+         {
+          "say": "mirei",
+          "key": "mirei_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "mirei_a_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_mirei_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "mirei",
+        "if_not_flag": "seen_mirei_a",
+        "auto_rank": 5,
+        "if_flag": "n2_done"
+       },
+       {
+        "key": "ah_mirei_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_glass_office"
+         },
+         {
+          "say": "narrator",
+          "key": "mirei_b_1"
+         },
+         {
+          "say": "mirei",
+          "key": "mirei_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "mirei_b_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_mirei_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "mirei",
+        "if_not_flag": "seen_mirei_b",
+        "auto_rank": 7,
+        "if_flag": "seen_mirei_a"
+       },
+       {
+        "key": "ah_mara_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_mara_sofa"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_a_1"
+         },
+         {
+          "say": "mara",
+          "key": "mara_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_a_3"
+         },
+         {
+          "say": "mara",
+          "key": "mara_a_4"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_a_5"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_mara_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "mara",
+        "if_not_flag": "seen_mara_a",
+        "auto_rank": 5
+       },
+       {
+        "key": "ah_mara_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_mara_corners"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_b_1"
+         },
+         {
+          "say": "mara",
+          "key": "mara_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "mara_b_3"
+         },
+         {
+          "say": "mara",
+          "key": "mara_b_4"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_mara_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "mara",
+        "if_not_flag": "seen_mara_b",
+        "auto_rank": 7,
+        "if_flag": "seen_mara_a"
+       },
+       {
+        "key": "ah_priya_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_priya_rooftop"
+         },
+         {
+          "say": "narrator",
+          "key": "priya_a_1"
+         },
+         {
+          "say": "priya",
+          "key": "priya_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "priya_a_3"
+         },
+         {
+          "say": "priya",
+          "key": "priya_a_4"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_priya_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "priya",
+        "if_not_flag": "seen_priya_a",
+        "auto_rank": 5,
+        "if_flag": "hired_priya"
+       },
+       {
+        "key": "ah_priya_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_priya_x"
+         },
+         {
+          "say": "narrator",
+          "key": "priya_b_1"
+         },
+         {
+          "say": "priya",
+          "key": "priya_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "priya_b_3"
+         },
+         {
+          "say": "priya",
+          "key": "priya_b_4"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_priya_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "priya",
+        "if_not_flag": "seen_priya_b",
+        "auto_rank": 7,
+        "if_flag": "seen_priya_a"
+       },
+       {
+        "key": "ah_nia_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_nia_ledger"
+         },
+         {
+          "say": "narrator",
+          "key": "nia_a_1"
+         },
+         {
+          "say": "nia",
+          "key": "nia_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "nia_a_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_nia_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "nia",
+        "if_not_flag": "seen_nia_a",
+        "auto_rank": 5,
+        "if_flag": "hired_nia"
+       },
+       {
+        "key": "ah_nia_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_nia_after"
+         },
+         {
+          "say": "narrator",
+          "key": "nia_b_1"
+         },
+         {
+          "say": "nia",
+          "key": "nia_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "nia_b_3"
+         },
+         {
+          "say": "nia",
+          "key": "nia_b_4"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_nia_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "nia",
+        "if_not_flag": "seen_nia_b",
+        "auto_rank": 7,
+        "if_flag": "seen_nia_a"
+       },
+       {
+        "key": "ah_sol_a",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_sol_press"
+         },
+         {
+          "say": "narrator",
+          "key": "sol_a_1"
+         },
+         {
+          "say": "sol",
+          "key": "sol_a_2"
+         },
+         {
+          "say": "narrator",
+          "key": "sol_a_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_sol_a"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 3,
+        "req_track": "sol",
+        "if_not_flag": "seen_sol_a",
+        "auto_rank": 5,
+        "if_flag": "hired_sol"
+       },
+       {
+        "key": "ah_sol_b",
+        "do": [
+         {
+          "music": "intimate"
+         },
+         {
+          "cg": "cg_sol_after"
+         },
+         {
+          "say": "narrator",
+          "key": "sol_b_1"
+         },
+         {
+          "say": "sol",
+          "key": "sol_b_2"
+         },
+         {
+          "say": "narrator",
+          "key": "sol_b_3"
+         },
+         {
+          "hide_cg": true
+         },
+         {
+          "flag": "seen_sol_b"
+         },
+         {
+          "music": "explore"
+         }
+        ],
+        "req_trust": 5,
+        "req_track": "sol",
+        "if_not_flag": "seen_sol_b",
+        "auto_rank": 7,
+        "if_flag": "seen_sol_a"
+       },
+       {
+        "key": "ah_home",
+        "do": [
+         {
+          "flag": "n2_home2"
+         }
+        ],
+        "auto_rank": 0
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "end_night": true,
+    "next": "n3"
+   }
+  ]
+ }
+}
