@@ -175,8 +175,18 @@ def main():
     # title: the fork's key visual and logotype
     shutil.copy2(FORK / "assets/title/keyvisual.png", A / "title/keyvisual.png")
     shutil.copy2(FORK / "assets/title/logotype.png", A / "title/logo.png")
-    shutil.copy2(PIXFONT, A / "fonts/display.ttf")
-    shutil.copy2(PIXFONT, A / "fonts/body.ttf")
+    # Pixelify Sans with its ligatures switched off: Godot shapes "fi" through the font's
+    # liga lookup and this face's fi glyph reads as a capital A at game sizes ("The Anial's
+    # hour", seen in the first battle screenshot). Emptying the liga/dlig features fixes it
+    # in the file, for every label, without touching the shared core's font loading.
+    from fontTools.ttLib import TTFont
+    ft = TTFont(PIXFONT)
+    for fr in ft["GSUB"].table.FeatureList.FeatureRecord:
+        if fr.FeatureTag in ("liga", "dlig"):
+            fr.Feature.LookupListIndex = []
+            fr.Feature.LookupCount = 0
+    ft.save(A / "fonts/display.ttf")
+    ft.save(A / "fonts/body.ttf")
     shutil.copy2(PRODUCTS / "ops/fonts/PixelifySans-OFL.txt", A / "fonts/PixelifySans-OFL.txt")
     shutil.copy2(CJK, A / "fonts" / CJK.name)
     for f in AUDIO.glob("*.ogg"):

@@ -19,5 +19,5 @@ mkdir -p "$OUT"
 rsync -a "$HOST:$R/game/shots_out/" "$OUT/"
 grep -E "RENDER DEVICE|SHOTS|SCRIPT ERROR|ERROR|^ok |^FAIL|ui_smoke:" "$OUT/log.txt" | head -40
 grep -q "RENDER DEVICE: .*3060" "$OUT/log.txt" || { echo "!! not rendered on the RTX 3060"; exit 3; }
-n=$(ls "$OUT"/*.png 2>/dev/null | wc -l); echo "$n shots in $OUT"
+n=$(ls "$OUT"/*.png 2>/dev/null | wc -l || true); echo "$n shots in $OUT"
 [ "$n" -ge "${MIN_SHOTS:-8}" ] || { echo "!! too few shots"; exit 4; }
