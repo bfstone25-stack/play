@@ -15,6 +15,7 @@ config/icon="res://icon.png"
 RPG="*res://addons/night_rpg/state.gd"
 Loc="*res://addons/night_rpg/loc.gd"
 Sound="*res://addons/night_rpg/sound.gd"
+WebQA="*res://scripts/web_qa.gd"
 
 [display]
 window/size/viewport_width=1280

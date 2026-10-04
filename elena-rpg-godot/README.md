@@ -77,6 +77,16 @@ blurred (as the VN trial does), then a bilingual JA/EN end screen with the produ
 The AI disclosure (text from `ops/dlsite/elena_product_page*.md`) is shown at every launch
 and from the title's "About this work".
 
+## Editions (2026-10-03, see ops/promo/ELENA_EDITIONS.md)
+
+- **DLsite (desktop)**: `tools/package.sh`. Title menu and the final screen have "More from
+  Flat 404" (`scripts/more_games.gd`, `tools/build_more.py`): text-only credits, no links or URLs
+  (DLsite help 4408257160345). The store link lives in `data/store.json`, shipped by the trial only.
+- **Free web (our site)**: `ops/elena_rpg_web_build.sh` -> https://elena-rpg.flat404.workers.dev/.
+  `web/elena_rpg_gate.js` (18+ gate, 20 s sponsor slot at start and each night via
+  `scripts/web_gate.gd`, ad-blocker wall with Retry, never a pass) and matrix tiles that link out.
+  `scripts/web_gate.gd` and `scripts/web_qa.gd` return at once off the web.
+
 ## Art
 
 All 52 rendered RPG assets from `ops/elena_art/out/rpg/manifest.json` are in the game:

@@ -154,7 +154,8 @@
   "cg_climax_control",
   "cg_climax_pact"
  ],
- "store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01722365.html",
+ "more_screen": "res://scripts/more_games.gd",
+ "night_hook": "res://scripts/web_gate.gd",
  "stats": [
   "wit",
   "cha",

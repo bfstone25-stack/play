@@ -146,7 +146,13 @@ game = {
               "sting": "res://assets/audio/title_sting.ogg", "camera": "res://assets/audio/click.ogg"},
     "disclosure_key": "about_ai",
     "trial_last_night": "night1", "trial_locked_cgs": ["cg_climax_control", "cg_climax_pact"],
-    "store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01722365.html",
+    # store_url is NOT here: it goes to data/store.json, which only the trial presets ship.
+    # DLsite forbids leading players to other sites from a work (help 4408257160345), and
+    # the full build is checked for zero URLs; the trial's button points at DLsite itself.
+    # "more_screen": the text-only "More from Flat 404" matrix (scripts/more_games.gd);
+    # "night_hook": the web edition's sponsor gate at each night (inert off the web).
+    "more_screen": "res://scripts/more_games.gd",
+    "night_hook": "res://scripts/web_gate.gd",
     "stats": ["wit", "cha", "grt", "stl"],
     "level_cap": 20, "trust_thresholds": [3, 5, 7, 9],
     "heroine_flag": "elena_joined", "heroine_sprite": "outfit_research",
@@ -217,5 +223,6 @@ _missing = [a["id"] for a in _man if a["id"] not in _used]
 if _missing:
     raise SystemExit("manifest assets not referenced by the game: " + ", ".join(_missing))
 (D / "game.json").write_text(json.dumps(game, indent=1))
+(D / "store.json").write_text(json.dumps({"store_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01722365.html"}, indent=1))
 (D / "art_manifest.json").write_text(json.dumps(art, indent=1))
 print("game.json + art_manifest.json written")

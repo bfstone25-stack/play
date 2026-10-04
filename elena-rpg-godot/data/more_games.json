@@ -1,0 +1,103 @@
+{
+ "studio": "Flat 404",
+ "adult": [
+  {
+   "slug": "room-704",
+   "name": "Room 704",
+   "hook": "A woman with no name in the book, and a man in a wet overcoat.",
+   "cover": "res://more/room-704.webp"
+  },
+  {
+   "slug": "confession-room",
+   "name": "Confession Room",
+   "hook": "Three people had keys. You have twelve questions.",
+   "cover": "res://more/confession-room.webp"
+  },
+  {
+   "slug": "floor-13-retention",
+   "name": "HOLDOVER",
+   "hook": "A holdover is a tenant who will not leave. Floor 13 has three.",
+   "cover": "res://more/floor-13-retention.webp"
+  },
+  {
+   "slug": "midnight-pawn-collateral",
+   "name": "LIEN",
+   "hook": "A pawnbroker who reads an object by touching it.",
+   "cover": "res://more/midnight-pawn-collateral.webp"
+  },
+  {
+   "slug": "flutter-after-hours",
+   "name": "VESPER",
+   "hook": "He remembers what you told him.",
+   "cover": "res://more/flutter-after-hours.webp"
+  },
+  {
+   "slug": "overnight-clause",
+   "name": "Overnight Clause",
+   "hook": "The contract has a clause about staying the night.",
+   "cover": "res://more/overnight-clause.webp"
+  }
+ ],
+ "regular": [
+  {
+   "slug": "rebound-tycoon",
+   "name": "Rebound Tycoon",
+   "hook": "Hose the night. Bank the rent.",
+   "cover": "res://more/rebound-tycoon.webp"
+  },
+  {
+   "slug": "ghost-channel",
+   "name": "Ghost Channel",
+   "hook": "Five voices on a dead station. One of them is lying.",
+   "cover": "res://more/ghost-channel.webp"
+  },
+  {
+   "slug": "fold",
+   "name": "Fold",
+   "hook": "Fold space in three dimensions until the tiles become one.",
+   "cover": "res://more/fold.webp"
+  },
+  {
+   "slug": "tell",
+   "name": "Tell",
+   "hook": "Every lie has a seam.",
+   "cover": "res://more/tell.webp"
+  },
+  {
+   "slug": "silvertongue",
+   "name": "SilverTongue",
+   "hook": "Talk to win. Not a chatbot — a person who will not budge.",
+   "cover": "res://more/silvertongue.webp"
+  },
+  {
+   "slug": "flutter",
+   "name": "Flutter",
+   "hook": "He remembers you. Every word, every 2 AM thing you said once.",
+   "cover": "res://more/flutter.webp"
+  },
+  {
+   "slug": "across-the-hall",
+   "name": "Across the Hall",
+   "hook": "You live in 401. The deadbolt is on from the inside.",
+   "cover": "res://more/across-the-hall.webp"
+  },
+  {
+   "slug": "floor-13",
+   "name": "Floor 13: Night Shift",
+   "hook": "The directory skips thirteen. The PA says otherwise.",
+   "cover": "res://more/floor-13.webp"
+  },
+  {
+   "slug": "late-inspection",
+   "name": "Late Inspection: Flat 404",
+   "hook": "The flat is not vacant. The checklist knows.",
+   "cover": "res://more/late-inspection.webp"
+  },
+  {
+   "slug": "midnight-pawn",
+   "name": "Midnight Pawn & Crypt",
+   "hook": "By day you weigh prices. By night you weigh the cost.",
+   "cover": "res://more/midnight-pawn.webp"
+  }
+ ]
+}

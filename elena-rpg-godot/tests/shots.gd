@@ -53,6 +53,29 @@ func _ready() -> void:
 		print("SHOTS: ", JSON.stringify(taken.keys()))
 		get_tree().quit()
 		return
+	if "--only=more" in OS.get_cmdline_user_args():
+		# the "More from Flat 404" matrix (title menu + final screen), EN and JA
+		for l in ["en", "ja"]:
+			lang = l
+			Loc.set_lang(l)
+			main = load("res://addons/night_rpg/ui/main.tscn").instantiate()
+			add_child(main)
+			main.show_title()
+			await get_tree().create_timer(0.8).timeout
+			await snap("title_more")
+			var scr = load(RPG.game["more_screen"]).new()
+			main.ui.add_child(scr)
+			scr.run(null, {})
+			await get_tree().create_timer(0.8).timeout
+			await snap("more_matrix")
+			scr.get_child(4).scroll_vertical = 2000
+			await get_tree().create_timer(0.5).timeout
+			await snap("more_matrix_bottom")
+			main.queue_free()
+			await get_tree().process_frame
+		print("SHOTS: ", JSON.stringify(taken.keys()))
+		get_tree().quit()
+		return
 	if "--only=disclosure" in OS.get_cmdline_user_args():
 		for l in ["ja", "en"]:
 			lang = l

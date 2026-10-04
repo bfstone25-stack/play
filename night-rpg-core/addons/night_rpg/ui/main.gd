@@ -203,7 +203,10 @@ func show_title() -> void:
 	v.add_child(NRSkin.button(Loc.t("t_settings"), show_settings, 24))
 	if RPG.game.has("disclosure_key"):
 		v.add_child(NRSkin.button(Loc.t("t_about"), func(): show_disclosure(false), 24))
-	v.add_child(NRSkin.button(Loc.t("t_quit"), func(): get_tree().quit(), 24))
+	if RPG.game.get("more_screen", "") != "":
+		v.add_child(NRSkin.button(Loc.t("t_more"), show_more, 24))
+	if not OS.has_feature("web"):   # a browser tab has nothing to quit to
+		v.add_child(NRSkin.button(Loc.t("t_quit"), func(): get_tree().quit(), 24))
 	if RPG.is_trial():
 		var tl := NRSkin.heading(Loc.t("t_trial"), 22)
 		tl.position = Vector2(80, 620)
@@ -225,6 +228,12 @@ func new_game() -> void:
 
 
 func start_night(nid: String) -> void:
+	# {"night_hook": "res://scripts/x.gd"} in game.json: an object with
+	# `func before_night(main, nid) -> void`, awaited before each night starts (Elena's web
+	# edition puts its sponsor gate here; it returns at once off the web).
+	if RPG.game.get("night_hook", "") != "" and not auto:
+		var hk = load(RPG.game["night_hook"]).new()
+		await hk.before_night(self, nid)
 	RPG.start_night(nid)
 	RPG.autosave()
 	var n := RPG.night()
@@ -852,6 +861,8 @@ func end_night(next: String) -> String:
 		await _shot("the_end" if fin else "night_end")
 		RPG.save(1)
 		var done := [false]
+		if fin and RPG.game.get("more_screen", "") != "":
+			v.add_child(NRSkin.button(Loc.t("t_more"), func(): show_more(), 22))
 		v.add_child(NRSkin.button(Loc.t("end_title"), func(): done[0] = true, 22))
 		while not auto and not done[0]:
 			await get_tree().process_frame
@@ -1175,6 +1186,15 @@ func show_map() -> void:
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		area.add_child(l)
 
+
+
+## A game's own "more from the studio" screen (game.json "more_screen"): a Control with
+## `func run(main, args) -> String`, shown over whatever is on screen and closed by itself.
+func show_more() -> void:
+	var scr: Control = load(RPG.game["more_screen"]).new()
+	ui.add_child(scr)
+	await scr.run(self, {})
+	scr.queue_free()
 
 
 ## AI-use disclosure + adult notice: shown at every launch before the title, and from the

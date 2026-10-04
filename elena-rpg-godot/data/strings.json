@@ -295,6 +295,34 @@
   "en": "You're getting better at this, Professor.",
   "ja": "上手になってきたわね、教授。"
  },
+ "t_more": {
+  "en": "More from Flat 404",
+  "ja": "Flat 404 のほかの作品"
+ },
+ "mg_title": {
+  "en": "More from Flat 404",
+  "ja": "Flat 404 のほかの作品"
+ },
+ "mg_sub": {
+  "en": "Other games by the same studio.",
+  "ja": "同じスタジオのほかのゲーム。"
+ },
+ "mg_adult": {
+  "en": "After dark (18+)",
+  "ja": "大人向け（18歳以上）"
+ },
+ "mg_regular": {
+  "en": "For everyone",
+  "ja": "全年齢向け"
+ },
+ "mg_back": {
+  "en": "Back",
+  "ja": "戻る"
+ },
+ "mg_open": {
+  "en": "Open its page",
+  "ja": "作品ページを開く"
+ },
  "title": {
   "en": "Elena: Crimson Archives",
   "ja": "エレナ：深紅の書庫"

@@ -47,6 +47,12 @@ func load_content() -> void:
 	if g == null:
 		return
 	game = g
+	# Optional overlay a game ships in some builds only (Elena: the DLsite store link lives in
+	# data/store.json, which the full presets exclude so that build carries no URL at all).
+	if FileAccess.file_exists(data_root + "/store.json"):
+		var sj = _read_json(data_root + "/store.json")
+		if sj is Dictionary:
+			game.merge(sj, true)
 	for nid in game.get("nights", []):
 		# the trial build ships without the later nights; their absence is expected there
 		if not FileAccess.file_exists("%s/nights/%s.json" % [data_root, nid]):
