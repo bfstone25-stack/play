@@ -84,11 +84,51 @@ func play_sfx(key: String) -> void:
 		sfx.play()
 
 
-## Plays a line's voice in the current language, English as fallback. Returns seconds.
+## Voice packs: one per language, chosen in Settings independently of the text language
+## ("auto" follows the text). A take is found, in order, at the line's own "v_<lang>" path,
+## then at res://assets/voice/<lang>/<file of the English take>; English is the reference
+## pack and the fallback for any line a pack lacks.
+func voice_lang() -> String:
+	var v := str(RPG.persist.get("voice_lang", "auto"))
+	return Loc.lang if v == "auto" else v
+
+
+func voice_path(ln: Dictionary, vl: String = "") -> String:
+	if vl == "":
+		vl = voice_lang()
+	var en: String = ln.get("v_en", "")
+	if vl != "en":
+		var own: String = ln.get("v_" + vl, "")
+		if own != "" and ResourceLoader.exists(own):
+			return own
+		if en.begins_with("res://assets/voice/"):
+			var pack := "res://assets/voice/%s/%s" % [vl, en.get_file()]
+			if ResourceLoader.exists(pack):
+				return pack
+	return en
+
+
+## Fraction of voiced lines (story + barks) the pack for `vl` covers.
+func voice_coverage(vl: String) -> float:
+	if vl == "en":
+		return 1.0
+	var n := 0
+	var have := 0
+	var rows: Array = RPG.game.get("voice", {}).values()
+	for ch in RPG.story.keys():
+		rows.append_array(RPG.story[ch])
+	for ln in rows:
+		if ln is Dictionary and str(ln.get("v_en", "")) != "":
+			n += 1
+			if voice_path(ln, vl) != ln["v_en"]:
+				have += 1
+	return float(have) / max(1, n)
+
+
+## Plays a line's voice in the chosen pack, English as fallback. Returns seconds.
 func play_voice(ln: Dictionary) -> float:
 	voice.stop()
-	var path: String = ln.get("v_" + Loc.lang, ln.get("v_en", ""))
-	var st := _stream(path, false)
+	var st := _stream(voice_path(ln), false)
 	if st == null:
 		return 0.0
 	voice.stream = st

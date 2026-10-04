@@ -188,8 +188,18 @@ func show_title() -> void:
 	logo.position = Vector2(50, 30)
 	logo.size = Vector2(440, 196)
 	root.add_child(logo)
-	var sub := NRSkin.heading(Loc.t("t_subtitle"), 26)
-	sub.position = Vector2(70, 236)
+	# the tagline fits the left panel in every language: shrink first, then wrap to two lines
+	var sub_txt := Loc.t("t_subtitle")
+	var sub_sz := 26
+	var dfont := NRSkin.font("display")
+	while sub_sz > 18 and dfont.get_string_size(sub_txt, HORIZONTAL_ALIGNMENT_LEFT, -1, sub_sz).x > 470:
+		sub_sz -= 1
+	var sub := NRSkin.heading(sub_txt, sub_sz)
+	sub.position = Vector2(70, 236 if dfont.get_string_size(sub_txt, HORIZONTAL_ALIGNMENT_LEFT, -1, sub_sz).x <= 470 else 226)
+	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sub.size = Vector2(470, 0)
+	sub.custom_minimum_size = Vector2(470, 0)
+	sub.add_theme_constant_override("line_spacing", -4)
 	root.add_child(sub)
 	var v := VBoxContainer.new()
 	v.position = Vector2(80, 296)
@@ -1120,7 +1130,7 @@ func _view_cg(id: String) -> void:
 
 
 func show_settings() -> void:
-	var v := _modal(Loc.t("t_settings"), 760, 560)
+	var v := _modal(Loc.t("t_settings"), 900, 680)
 	v.add_child(NRSkin.label(Loc.t("st_lang"), 20))
 	var g := GridContainer.new()
 	g.columns = 4
@@ -1136,8 +1146,28 @@ func show_settings() -> void:
 		if l == Loc.lang:
 			b.modulate = Color(1, 0.9, 0.6)
 		g.add_child(b)
+	# voice pack: "same as text" or any language with recorded takes (English always)
+	v.add_child(NRSkin.label(Loc.t("st_voice_lang"), 20))
+	var gv := GridContainer.new()
+	gv.columns = 4
+	v.add_child(gv)
+	var cur := str(RPG.persist.get("voice_lang", "auto"))
+	for vl in ["auto"] + Loc.LANGS:
+		if vl != "auto" and vl != "en" and Sound.voice_coverage(vl) <= 0.0:
+			continue
+		var vb := NRSkin.button(Loc.t("st_voice_auto") if vl == "auto" else Loc.LANG_NAMES[vl], func():
+			RPG.persist["voice_lang"] = vl
+			RPG.save_persist()
+			show_settings(), 18)
+		if vl == cur:
+			vb.modulate = Color(1, 0.9, 0.6)
+		gv.add_child(vb)
 	for key in ["vol_music", "vol_sfx", "vol_voice"]:
-		v.add_child(NRSkin.label(Loc.t("st_" + key), 18))
+		var row := HBoxContainer.new()
+		v.add_child(row)
+		var lab := NRSkin.label(Loc.t("st_" + key), 18)
+		lab.custom_minimum_size = Vector2(260, 0)
+		row.add_child(lab)
 		var s := HSlider.new()
 		s.min_value = 0.0
 		s.max_value = 1.0
@@ -1149,7 +1179,7 @@ func show_settings() -> void:
 			RPG.persist[k] = x
 			RPG.save_persist()
 			Sound.apply_volumes())
-		v.add_child(s)
+		row.add_child(s)
 
 
 ## The floor map: the night's painted map if it has one, room plates as thumbnails placed
@@ -1218,10 +1248,13 @@ func show_disclosure(then_title: bool) -> void:
 	var body := NRSkin.label(Loc.t(RPG.game["disclosure_key"]), 19)
 	body.custom_minimum_size = Vector2(880, 0)
 	v.add_child(body)
-	var hb := HBoxContainer.new()
-	hb.add_theme_constant_override("separation", 8)
+	var hb := GridContainer.new()
+	hb.columns = 7
+	hb.add_theme_constant_override("h_separation", 6)
 	v.add_child(hb)
-	for l in ["en", "ja"]:
+	for l in Loc.LANGS:
+		if Loc.coverage(l) < 0.9:
+			continue
 		hb.add_child(NRSkin.button(Loc.LANG_NAMES[l], func():
 			Loc.set_lang(l)
 			show_disclosure(then_title), 18))
@@ -1246,15 +1279,22 @@ func show_trial_end() -> void:
 	var v := VBoxContainer.new()
 	v.add_theme_constant_override("separation", 14)
 	p.add_child(v)
-	# bilingual on purpose, like the VN trial's last screen: both languages at once
+	# bilingual on purpose, like the VN trial's last screen: the player's language, then Japanese
+	# (the store's own language) -- or English when the player reads Japanese
+	var second := "en" if Loc.lang == "ja" else "ja"
+	var langs := [Loc.lang, second]
 	for k in ["tr_end_title", "tr_end_body"]:
 		var row: Dictionary = Loc.table.get(k, {})
-		v.add_child(NRSkin.heading(str(row.get("ja", "")), 30) if k == "tr_end_title" else NRSkin.label(str(row.get("ja", "")), 20))
-		v.add_child(NRSkin.heading(str(row.get("en", "")), 26) if k == "tr_end_title" else NRSkin.label(str(row.get("en", "")), 19))
+		for i in 2:
+			var txt := str(row.get(langs[i], "")) if str(row.get(langs[i], "")) != "" else str(row.get("en", ""))
+			v.add_child(NRSkin.heading(txt, 30 - 4 * i) if k == "tr_end_title" else NRSkin.label(txt, 20 - i))
+	var both := func(key: String) -> String:
+		var row: Dictionary = Loc.table.get(key, {})
+		return Loc.t(key) + " / " + str(row.get(second, row.get("en", "")))
 	var done := [false]
 	if RPG.game.get("store_url", "") != "":
-		v.add_child(NRSkin.button(str(Loc.table.get("tr_open_store", {}).get("ja", "")) + " / " + str(Loc.table.get("tr_open_store", {}).get("en", "")), func(): OS.shell_open(RPG.game["store_url"]), 20))
-	v.add_child(NRSkin.button(str(Loc.table.get("tr_back", {}).get("ja", "")) + " / " + str(Loc.table.get("tr_back", {}).get("en", "")), func(): done[0] = true, 20))
+		v.add_child(NRSkin.button(both.call("tr_open_store"), func(): OS.shell_open(RPG.game["store_url"]), 20))
+	v.add_child(NRSkin.button(both.call("tr_back"), func(): done[0] = true, 20))
 	await _shot("trial_end")
 	while not auto and not done[0]:
 		await get_tree().process_frame

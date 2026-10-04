@@ -544,7 +544,7 @@ func _refresh() -> void:
 	var r := settle(cells)
 	var shifts := int(cfg.get("shifts", 8))
 	var nt: String = RPG.night().get("title_key", "")
-	info.add_child(NRSkin.heading(Loc.t("of_title") % (Loc.t(nt) if nt != "" else ""), 26))
+	info.add_child(NRSkin.heading(Loc.t("of_title") % (Loc.t(nt) if nt != "" else ""), 24))
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 18)
 	info.add_child(top)
@@ -567,6 +567,12 @@ func _refresh() -> void:
 		parts.append(("%s ×%d" % [Loc.t("ev_" + e), evs[e]]) if evs[e] > 1 else Loc.t("ev_" + e))
 	var el := NRSkin.label((Loc.t("of_chain") % [int(r["chain"]), float(r["mult"])]) + "   " + (Loc.t("of_events") % (", ".join(parts) if parts.size() else Loc.t("of_none"))), 14, Color(0.85, 0.8, 0.9))
 	el.custom_minimum_size = Vector2(620, 0)
+	# two lines at most: the full list is on hover (German and CJK run longer than English)
+	el.max_lines_visible = 2
+	el.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	el.tooltip_text = el.text
+	el.mouse_filter = Control.MOUSE_FILTER_PASS
+	el.add_theme_constant_override("line_spacing", -2)
 	info.add_child(el)
 	# the board
 	for c in grid.get_children():

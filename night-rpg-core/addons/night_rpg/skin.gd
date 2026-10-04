@@ -42,13 +42,51 @@ static func _font(key: String) -> Font:
 		return null
 	var f: FontFile = load(p)
 	_held.append(f)
-	var cjk_p: String = RPG.game.get("fonts", {}).get("cjk", "")
-	if key != "cjk" and cjk_p != "" and ResourceLoader.exists(cjk_p):
-		var cjk: FontFile = load(cjk_p)
-		_held.append(cjk)
-		f.fallbacks = [cjk]
 	fonts[key] = f
+	if not key.begins_with("cjk"):
+		f.fallbacks = _fallbacks(Loc.lang if Loc else "en")
 	return f
+
+
+## CJK fallbacks: "cjk" (Japanese), optional "cjk_sc" (Simplified Chinese) and "cjk_ko" (Hangul).
+## The current language's face goes first so shared ideographs take that language's forms.
+static var _cjk: Dictionary = {}
+
+
+static func _cjk_font(key: String) -> FontFile:
+	if _cjk.has(key):
+		return _cjk[key]
+	# cjk_sc / cjk_ko default to the subsets tools/cjk_fonts.py writes into every title
+	var dflt: String = {"cjk_sc": "res://assets/fonts/nr_cjk_sc.otf", "cjk_ko": "res://assets/fonts/nr_cjk_kr.otf"}.get(key, "")
+	var p: String = RPG.game.get("fonts", {}).get(key, dflt)
+	var f: FontFile = null
+	if p != "" and ResourceLoader.exists(p):
+		f = load(p)
+		_held.append(f)
+	_cjk[key] = f
+	return f
+
+
+static func _fallbacks(lang: String) -> Array:
+	var order := ["cjk", "cjk_sc", "cjk_ko"]
+	if lang == "zh":
+		order = ["cjk_sc", "cjk", "cjk_ko"]
+	elif lang == "ko":
+		order = ["cjk_ko", "cjk", "cjk_sc"]
+	var out: Array = []
+	for k in order:
+		var c := _cjk_font(k)
+		if c != null:
+			out.append(c)
+	return out
+
+
+static func apply_lang(lang: String) -> void:
+	var fb := _fallbacks(lang)
+	for k in fonts.keys():
+		var f = fonts[k]
+		if f is FontFile and not str(k).begins_with("cjk"):
+			f.fallbacks = fb
 
 
 static func font(key: String) -> Font:

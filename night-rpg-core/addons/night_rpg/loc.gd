@@ -27,6 +27,7 @@ func _ready() -> void:
 		var os_lang := OS.get_locale_language()
 		RPG.persist["lang"] = os_lang if os_lang in LANGS and coverage(os_lang) > 0.9 else "en"
 	lang = str(RPG.persist.get("lang", "en"))
+	_apply_locale()
 
 
 func set_lang(l: String) -> void:
@@ -34,7 +35,15 @@ func set_lang(l: String) -> void:
 	RPG.persist["lang"] = l
 	RPG.persist["lang_chosen"] = true
 	RPG.save_persist()
+	_apply_locale()
 	language_changed.emit()
+
+
+## The text server shapes and line-breaks by the locale (CJK breaks between ideographs, Hangul
+## and Latin at spaces) and picks the right CJK glyph forms; the skin re-orders font fallbacks.
+func _apply_locale() -> void:
+	TranslationServer.set_locale({"zh": "zh_CN", "ko": "ko_KR", "ja": "ja_JP"}.get(lang, lang))
+	NRSkin.apply_lang(lang)
 
 
 func t(key: String) -> String:

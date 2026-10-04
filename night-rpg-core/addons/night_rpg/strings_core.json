@@ -1,366 +1,839 @@
 {
  "t_new": {
   "en": "New game",
-  "ja": "はじめから"
+  "ja": "はじめから",
+  "de": "Neues Spiel",
+  "fr": "Nouvelle partie",
+  "es": "Nueva partida",
+  "zh": "新游戏",
+  "ko": "새 게임"
  },
  "t_continue": {
   "en": "Continue",
-  "ja": "つづきから"
+  "ja": "つづきから",
+  "de": "Fortsetzen",
+  "fr": "Continuer",
+  "es": "Continuar",
+  "zh": "继续",
+  "ko": "이어하기"
  },
  "t_gallery": {
   "en": "Gallery",
-  "ja": "ギャラリー"
+  "ja": "ギャラリー",
+  "de": "Galerie",
+  "fr": "Galerie",
+  "es": "Galería",
+  "zh": "画廊",
+  "ko": "갤러리"
  },
  "t_settings": {
   "en": "Settings",
-  "ja": "設定"
+  "ja": "設定",
+  "de": "Einstellungen",
+  "fr": "Options",
+  "es": "Opciones",
+  "zh": "设置",
+  "ko": "설정"
  },
  "t_quit": {
   "en": "Quit",
-  "ja": "終了"
+  "ja": "終了",
+  "de": "Beenden",
+  "fr": "Quitter",
+  "es": "Salir",
+  "zh": "退出",
+  "ko": "종료"
  },
  "m_map": {
   "en": "Map",
-  "ja": "地図"
+  "ja": "地図",
+  "de": "Karte",
+  "fr": "Carte",
+  "es": "Mapa",
+  "zh": "地图",
+  "ko": "지도"
  },
  "m_party": {
   "en": "Party",
-  "ja": "パーティ"
+  "ja": "パーティ",
+  "de": "Gruppe",
+  "fr": "Équipe",
+  "es": "Grupo",
+  "zh": "队伍",
+  "ko": "파티"
  },
  "m_system": {
   "en": "System",
-  "ja": "システム"
+  "ja": "システム",
+  "de": "System",
+  "fr": "Système",
+  "es": "Sistema",
+  "zh": "系统",
+  "ko": "시스템"
  },
  "m_close": {
   "en": "Close",
-  "ja": "閉じる"
+  "ja": "閉じる",
+  "de": "Schließen",
+  "fr": "Fermer",
+  "es": "Cerrar",
+  "zh": "关闭",
+  "ko": "닫기"
  },
  "m_status": {
   "en": "Status",
-  "ja": "ステータス"
+  "ja": "ステータス",
+  "de": "Status",
+  "fr": "Statut",
+  "es": "Estado",
+  "zh": "状态",
+  "ko": "상태"
  },
  "m_items": {
   "en": "Items",
-  "ja": "アイテム"
+  "ja": "アイテム",
+  "de": "Gegenstände",
+  "fr": "Objets",
+  "es": "Objetos",
+  "zh": "物品",
+  "ko": "아이템"
  },
  "m_equip": {
   "en": "Equipment",
-  "ja": "装備"
+  "ja": "装備",
+  "de": "Ausrüstung",
+  "fr": "Équipement",
+  "es": "Equipo",
+  "zh": "装备",
+  "ko": "장비"
  },
  "m_equip_to": {
   "en": "Equip: %s",
-  "ja": "装備：%s"
+  "ja": "装備：%s",
+  "de": "Ausrüsten: %s",
+  "fr": "Équiper : %s",
+  "es": "Equipar: %s",
+  "zh": "装备：%s",
+  "ko": "장착: %s"
  },
  "m_gift": {
   "en": "Give to her",
-  "ja": "彼女に渡す"
+  "ja": "彼女に渡す",
+  "de": "Ihr geben",
+  "fr": "Lui offrir",
+  "es": "Dárselo",
+  "zh": "送给她",
+  "ko": "그녀에게 주기"
  },
  "m_save": {
   "en": "Save",
-  "ja": "セーブ"
+  "ja": "セーブ",
+  "de": "Speichern",
+  "fr": "Sauvegarder",
+  "es": "Guardar",
+  "zh": "存档",
+  "ko": "저장"
  },
  "m_load": {
   "en": "Load",
-  "ja": "ロード"
+  "ja": "ロード",
+  "de": "Laden",
+  "fr": "Charger",
+  "es": "Cargar",
+  "zh": "读档",
+  "ko": "불러오기"
  },
  "m_to_title": {
   "en": "Title screen",
-  "ja": "タイトルへ"
+  "ja": "タイトルへ",
+  "de": "Titelbildschirm",
+  "fr": "Écran titre",
+  "es": "Pantalla de título",
+  "zh": "返回标题",
+  "ko": "타이틀 화면"
  },
  "sv_slot": {
   "en": "Slot %d",
-  "ja": "スロット %d"
+  "ja": "スロット %d",
+  "de": "Platz %d",
+  "fr": "Emplacement %d",
+  "es": "Ranura %d",
+  "zh": "存档 %d",
+  "ko": "슬롯 %d"
  },
  "sv_auto": {
   "en": "Autosave",
-  "ja": "オートセーブ"
+  "ja": "オートセーブ",
+  "de": "Autospeichern",
+  "fr": "Sauvegarde auto",
+  "es": "Autoguardado",
+  "zh": "自动存档",
+  "ko": "자동 저장"
  },
  "sv_empty": {
   "en": "empty",
-  "ja": "空き"
+  "ja": "空き",
+  "de": "leer",
+  "fr": "vide",
+  "es": "vacía",
+  "zh": "空",
+  "ko": "비어 있음"
  },
  "slot_outfit": {
   "en": "Outfit",
-  "ja": "衣装"
+  "ja": "衣装",
+  "de": "Outfit",
+  "fr": "Tenue",
+  "es": "Atuendo",
+  "zh": "服装",
+  "ko": "의상"
  },
  "slot_accessory": {
   "en": "Accessory",
-  "ja": "アクセサリー"
+  "ja": "アクセサリー",
+  "de": "Accessoire",
+  "fr": "Accessoire",
+  "es": "Accesorio",
+  "zh": "饰品",
+  "ko": "액세서리"
  },
  "slot_tool": {
   "en": "Tool",
-  "ja": "道具"
+  "ja": "道具",
+  "de": "Werkzeug",
+  "fr": "Outil",
+  "es": "Herramienta",
+  "zh": "工具",
+  "ko": "도구"
  },
  "ms_level": {
   "en": "Level %d   XP %d / %d   Trust %d",
-  "ja": "レベル %d　経験値 %d / %d　信頼 %d"
+  "ja": "レベル %d　経験値 %d / %d　信頼 %d",
+  "de": "Stufe %d   EP %d / %d   Vertrauen %d",
+  "fr": "Niveau %d   XP %d / %d   Confiance %d",
+  "es": "Nivel %d   EXP %d / %d   Confianza %d",
+  "zh": "等级 %d   经验 %d / %d   信任 %d",
+  "ko": "레벨 %d   경험치 %d / %d   신뢰 %d"
  },
  "ms_skills": {
   "en": "Skills:",
-  "ja": "スキル："
+  "ja": "スキル：",
+  "de": "Fähigkeiten:",
+  "fr": "Compétences :",
+  "es": "Habilidades:",
+  "zh": "技能：",
+  "ko": "스킬:"
  },
  "h_clock": {
   "en": "%s   ·   %d turns before dawn   ·   Lv %d",
-  "ja": "%s　·　夜明けまで残り %d 手　·　Lv %d"
+  "ja": "%s　·　夜明けまで残り %d 手　·　Lv %d",
+  "de": "%s   ·   noch %d Züge bis zum Morgengrauen   ·   St. %d",
+  "fr": "%s   ·   %d tours avant l’aube   ·   Niv. %d",
+  "es": "%s   ·   %d turnos hasta el alba   ·   Nv. %d",
+  "zh": "%s   ·   距黎明还有 %d 回合   ·   Lv %d",
+  "ko": "%s   ·   새벽까지 %d턴   ·   Lv %d"
  },
  "h_trust": {
   "en": "Trust %d  (next scene at %d)",
-  "ja": "信頼 %d（次の場面は %d）"
+  "ja": "信頼 %d（次の場面は %d）",
+  "de": "Vertrauen %d  (nächste Szene bei %d)",
+  "fr": "Confiance %d  (scène suivante à %d)",
+  "es": "Confianza %d  (siguiente escena a %d)",
+  "zh": "信任 %d（%d 时解锁下一场景）",
+  "ko": "신뢰 %d  (다음 장면: %d)"
  },
  "hs_search": {
   "en": "Search:",
-  "ja": "調べる："
+  "ja": "調べる：",
+  "de": "Durchsuchen:",
+  "fr": "Fouiller :",
+  "es": "Registrar:",
+  "zh": "搜索：",
+  "ko": "조사:"
  },
  "hs_locked": {
   "en": "(locked)",
-  "ja": "（施錠）"
+  "ja": "（施錠）",
+  "de": "(verschlossen)",
+  "fr": "(verrouillé)",
+  "es": "(cerrado)",
+  "zh": "（已上锁）",
+  "ko": "(잠김)"
  },
  "hs_locked_msg": {
   "en": "It is locked. You need a key.",
-  "ja": "鍵がかかっている。鍵が必要だ。"
+  "ja": "鍵がかかっている。鍵が必要だ。",
+  "de": "Verschlossen. Du brauchst einen Schlüssel.",
+  "fr": "C’est verrouillé. Il te faut une clé.",
+  "es": "Está cerrado. Necesitas una llave.",
+  "zh": "锁着。你需要一把钥匙。",
+  "ko": "잠겨 있다. 열쇠가 필요하다."
  },
  "nc_budget": {
   "en": "%d turns until dawn. Moving, searching and standoffs all cost time.",
-  "ja": "夜明けまで %d 手。移動・調査・対峙はすべて時間を使う。"
+  "ja": "夜明けまで %d 手。移動・調査・対峙はすべて時間を使う。",
+  "de": "Noch %d Züge bis zum Morgengrauen. Gehen, Durchsuchen und Konfrontationen kosten Zeit.",
+  "fr": "%d tours avant l’aube. Se déplacer, fouiller et affronter coûte du temps.",
+  "es": "%d turnos hasta el alba. Moverse, registrar y enfrentarse cuesta tiempo.",
+  "zh": "距黎明还有 %d 回合。移动、搜索和对峙都会消耗时间。",
+  "ko": "새벽까지 %d턴. 이동, 조사, 대치 모두 시간이 든다."
  },
  "ev_got": {
   "en": "Obtained: %s",
-  "ja": "入手：%s"
+  "ja": "入手：%s",
+  "de": "Erhalten: %s",
+  "fr": "Obtenu : %s",
+  "es": "Obtenido: %s",
+  "zh": "获得：%s",
+  "ko": "획득: %s"
  },
  "ev_trust": {
   "en": "Elena's trust +%d",
-  "ja": "エレナの信頼 +%d"
+  "ja": "エレナの信頼 +%d",
+  "de": "Elenas Vertrauen +%d",
+  "fr": "Confiance d’Elena +%d",
+  "es": "Confianza de Elena +%d",
+  "zh": "伊莲娜的信任 +%d",
+  "ko": "엘레나의 신뢰 +%d"
  },
  "ev_xp": {
   "en": "+%d XP",
-  "ja": "経験値 +%d"
+  "ja": "経験値 +%d",
+  "de": "+%d EP",
+  "fr": "+%d XP",
+  "es": "+%d EXP",
+  "zh": "经验 +%d",
+  "ko": "경험치 +%d"
  },
  "toast_trust": {
   "en": "Trust %d reached — a new scene is open",
-  "ja": "信頼 %d 到達 — 新しい場面が開いた"
+  "ja": "信頼 %d 到達 — 新しい場面が開いた",
+  "de": "Vertrauen %d erreicht — eine neue Szene ist offen",
+  "fr": "Confiance %d atteinte — une nouvelle scène est ouverte",
+  "es": "Confianza %d alcanzada: nueva escena disponible",
+  "zh": "信任达到 %d——新场景已开启",
+  "ko": "신뢰 %d 달성 — 새 장면이 열렸다"
  },
  "ch_need_trust": {
   "en": "[needs Trust %d]",
-  "ja": "［信頼 %d が必要］"
+  "ja": "［信頼 %d が必要］",
+  "de": "[benötigt Vertrauen %d]",
+  "fr": "[confiance %d requise]",
+  "es": "[requiere Confianza %d]",
+  "zh": "[需要信任 %d]",
+  "ko": "[신뢰 %d 필요]"
  },
  "b_intro": {
   "en": "A standoff.",
-  "ja": "対峙。"
+  "ja": "対峙。",
+  "de": "Eine Konfrontation.",
+  "fr": "Un face-à-face.",
+  "es": "Un enfrentamiento.",
+  "zh": "一场对峙。",
+  "ko": "대치가 시작된다."
  },
  "b_choose": {
   "en": "choose an action",
-  "ja": "行動を選ぶ"
+  "ja": "行動を選ぶ",
+  "de": "Wähle eine Aktion",
+  "fr": "choisis une action",
+  "es": "elige una acción",
+  "zh": "选择行动",
+  "ko": "행동을 선택하라"
  },
  "b_used": {
   "en": "%s: %s.",
-  "ja": "%s：%s。"
+  "ja": "%s：%s。",
+  "de": "%s: %s.",
+  "fr": "%s : %s.",
+  "es": "%s: %s.",
+  "zh": "%s：%s。",
+  "ko": "%s: %s."
  },
  "b_dmg": {
   "en": "Resolve −%d.",
-  "ja": "決意 −%d。"
+  "ja": "決意 −%d。",
+  "de": "Entschlossenheit −%d.",
+  "fr": "Détermination −%d.",
+  "es": "Determinación −%d.",
+  "zh": "决心 −%d。",
+  "ko": "결의 −%d."
  },
  "b_weak_hit": {
   "en": "It lands — a weakness.",
-  "ja": "効いた — 弱点だ。"
+  "ja": "効いた — 弱点だ。",
+  "de": "Es sitzt — eine Schwäche.",
+  "fr": "Ça porte — un point faible.",
+  "es": "Da en el blanco: un punto débil.",
+  "zh": "命中——是弱点。",
+  "ko": "통했다 — 약점이다."
  },
  "b_resist_hit": {
   "en": "It slides off. They see through it.",
-  "ja": "通じない。見抜かれている。"
+  "ja": "通じない。見抜かれている。",
+  "de": "Es prallt ab. Sie durchschauen es.",
+  "fr": "Ça glisse. Ils voient clair dans ton jeu.",
+  "es": "Resbala. Lo ven venir.",
+  "zh": "没用。对方看穿了。",
+  "ko": "먹히지 않는다. 속셈을 간파당했다."
  },
  "b_susp": {
   "en": "Suspicion %s.",
-  "ja": "疑念 %s。"
+  "ja": "疑念 %s。",
+  "de": "Verdacht %s.",
+  "fr": "Soupçon %s.",
+  "es": "Sospecha %s.",
+  "zh": "怀疑 %s。",
+  "ko": "의심 %s."
  },
  "b_heal": {
   "en": "Recovered %d.",
-  "ja": "%d 回復。"
+  "ja": "%d 回復。",
+  "de": "%d erholt.",
+  "fr": "%d récupéré.",
+  "es": "Recuperas %d.",
+  "zh": "恢复 %d。",
+  "ko": "%d 회복."
  },
  "b_threat_mark": {
   "en": "A threat cannot be taken back: suspicion will climb faster for the rest of this standoff.",
-  "ja": "脅しは取り消せない：この対峙の間、疑念の上昇が速くなる。"
+  "ja": "脅しは取り消せない：この対峙の間、疑念の上昇が速くなる。",
+  "de": "Eine Drohung lässt sich nicht zurücknehmen: Der Verdacht steigt für den Rest dieser Konfrontation schneller.",
+  "fr": "Une menace ne se reprend pas : le soupçon montera plus vite jusqu’à la fin de ce face-à-face.",
+  "es": "Una amenaza no se retira: la sospecha subirá más rápido el resto del enfrentamiento.",
+  "zh": "威胁说出口就收不回：本次对峙剩下的时间里，怀疑会涨得更快。",
+  "ko": "협박은 되돌릴 수 없다: 이번 대치가 끝날 때까지 의심이 더 빨리 오른다."
  },
  "b_enemy_turn": {
   "en": "%s presses. Suspicion %+d. %s loses %d composure.",
-  "ja": "%sが詰め寄る。疑念 %+d。%sの平静 −%d。"
+  "ja": "%sが詰め寄る。疑念 %+d。%sの平静 −%d。",
+  "de": "%s setzt nach. Verdacht %+d. %s verliert %d Fassung.",
+  "fr": "%s insiste. Soupçon %+d. %s perd %d de sang-froid.",
+  "es": "%s presiona. Sospecha %+d. %s pierde %d de compostura.",
+  "zh": "%s步步紧逼。怀疑 %+d。%s失去 %d 点镇定。",
+  "ko": "%s의 압박. 의심 %+d. %s의 평정 %d 감소."
  },
  "b_win": {
   "en": "They back down.",
-  "ja": "相手は引き下がった。"
+  "ja": "相手は引き下がった。",
+  "de": "Sie geben nach.",
+  "fr": "Ils cèdent.",
+  "es": "Se echan atrás.",
+  "zh": "对方退让了。",
+  "ko": "상대가 물러섰다."
  },
  "b_lose": {
   "en": "It is over. Somebody is calling the Dean.",
-  "ja": "終わりだ。誰かが学部長に電話している。"
+  "ja": "終わりだ。誰かが学部長に電話している。",
+  "de": "Es ist vorbei. Jemand ruft den Dekan.",
+  "fr": "C’est fini. Quelqu’un appelle le doyen.",
+  "es": "Se acabó. Alguien llama al decano.",
+  "zh": "完了。有人在给院长打电话。",
+  "ko": "끝났다. 누군가 학장에게 전화하고 있다."
  },
  "b_resolve": {
   "en": "Resolve %d / %d",
-  "ja": "決意 %d / %d"
+  "ja": "決意 %d / %d",
+  "de": "Entschlossenheit %d / %d",
+  "fr": "Détermination %d / %d",
+  "es": "Determinación %d / %d",
+  "zh": "决心 %d / %d",
+  "ko": "결의 %d / %d"
  },
  "b_suspicion": {
   "en": "Suspicion %d / 100",
-  "ja": "疑念 %d / 100"
+  "ja": "疑念 %d / 100",
+  "de": "Verdacht %d / 100",
+  "fr": "Soupçon %d / 100",
+  "es": "Sospecha %d / 100",
+  "zh": "怀疑 %d / 100",
+  "ko": "의심 %d / 100"
  },
  "b_marked": {
   "en": "[threatened]",
-  "ja": "［脅迫済］"
+  "ja": "［脅迫済］",
+  "de": "[bedroht]",
+  "fr": "[menacé]",
+  "es": "[amenazado]",
+  "zh": "[已威胁]",
+  "ko": "[협박함]"
  },
  "b_known": {
   "en": "Known:",
-  "ja": "判明："
+  "ja": "判明：",
+  "de": "Bekannt:",
+  "fr": "Connu :",
+  "es": "Conocido:",
+  "zh": "已知：",
+  "ko": "파악됨:"
  },
  "b_weak": {
   "en": "(weak)",
-  "ja": "（弱点）"
+  "ja": "（弱点）",
+  "de": "(schwach)",
+  "fr": "(faible)",
+  "es": "(débil)",
+  "zh": "（弱点）",
+  "ko": "(약점)"
  },
  "b_resist": {
   "en": "(resists)",
-  "ja": "（耐性）"
+  "ja": "（耐性）",
+  "de": "(resistent)",
+  "fr": "(résiste)",
+  "es": "(resiste)",
+  "zh": "（抵抗）",
+  "ko": "(저항)"
  },
  "b_normal": {
   "en": "",
-  "ja": ""
+  "ja": "",
+  "de": "",
+  "fr": "",
+  "es": "",
+  "zh": "",
+  "ko": ""
  },
  "b_comp_nerve": {
   "en": "Composure %d/%d  Nerve %d/%d",
-  "ja": "平静 %d/%d　胆力 %d/%d"
+  "ja": "平静 %d/%d　胆力 %d/%d",
+  "de": "Fassung %d/%d  Nerven %d/%d",
+  "fr": "Sang-froid %d/%d  Cran %d/%d",
+  "es": "Compostura %d/%d  Temple %d/%d",
+  "zh": "镇定 %d/%d  胆量 %d/%d",
+  "ko": "평정 %d/%d  담력 %d/%d"
  },
  "r_rattled": {
   "en": "Too rattled to act.",
-  "ja": "動揺して動けない。"
+  "ja": "動揺して動けない。",
+  "de": "Zu erschüttert zum Handeln.",
+  "fr": "Trop ébranlé pour agir.",
+  "es": "Demasiado alterado para actuar.",
+  "zh": "心神大乱，无法行动。",
+  "ko": "너무 동요해서 움직일 수 없다."
  },
  "r_nerve": {
   "en": "Not enough nerve.",
-  "ja": "胆力が足りない。"
+  "ja": "胆力が足りない。",
+  "de": "Nicht genug Nerven.",
+  "fr": "Pas assez de cran.",
+  "es": "No tienes suficiente temple.",
+  "zh": "胆量不足。",
+  "ko": "담력이 부족하다."
  },
  "r_needs_evidence": {
   "en": "Needs a piece of evidence.",
-  "ja": "証拠品が必要。"
+  "ja": "証拠品が必要。",
+  "de": "Braucht ein Beweisstück.",
+  "fr": "Il faut une preuve.",
+  "es": "Necesita una prueba.",
+  "zh": "需要一件证据。",
+  "ko": "증거가 필요하다."
  },
  "r_needs_cash": {
   "en": "Needs cash.",
-  "ja": "現金が必要。"
+  "ja": "現金が必要。",
+  "de": "Braucht Bargeld.",
+  "fr": "Il faut de l’argent liquide.",
+  "es": "Necesita efectivo.",
+  "zh": "需要现金。",
+  "ko": "현금이 필요하다."
  },
  "r_needs_consumable": {
   "en": "No usable items.",
-  "ja": "使えるアイテムがない。"
+  "ja": "使えるアイテムがない。",
+  "de": "Keine nutzbaren Gegenstände.",
+  "fr": "Aucun objet utilisable.",
+  "es": "No hay objetos utilizables.",
+  "zh": "没有可用的物品。",
+  "ko": "사용할 수 있는 아이템이 없다."
  },
  "lose_standoff_t": {
   "en": "The night ends early",
-  "ja": "夜は早く終わった"
+  "ja": "夜は早く終わった",
+  "de": "Die Nacht endet früh",
+  "fr": "La nuit s’achève trop tôt",
+  "es": "La noche termina antes",
+  "zh": "夜晚提前结束",
+  "ko": "밤이 일찍 끝났다"
  },
  "lose_standoff": {
   "en": "Suspicion boiled over. Nothing is lost but the last few minutes: you are back at the last save, just before the standoff.",
-  "ja": "疑念が限界を超えた。失ったのは数分だけ — 対峙の直前のセーブに戻る。"
+  "ja": "疑念が限界を超えた。失ったのは数分だけ — 対峙の直前のセーブに戻る。",
+  "de": "Der Verdacht ist übergekocht. Verloren sind nur die letzten Minuten: Du bist zurück beim letzten Spielstand, kurz vor der Konfrontation.",
+  "fr": "Le soupçon a débordé. Tu ne perds que les dernières minutes : retour à la dernière sauvegarde, juste avant le face-à-face.",
+  "es": "La sospecha se desbordó. Solo pierdes los últimos minutos: vuelves al último guardado, justo antes del enfrentamiento.",
+  "zh": "怀疑彻底爆发了。你只损失了最后几分钟：回到最近的存档，就在对峙之前。",
+  "ko": "의심이 끓어 넘쳤다. 잃은 건 마지막 몇 분뿐이다: 대치 직전의 마지막 저장으로 돌아간다."
  },
  "lose_dawn_t": {
   "en": "Dawn",
-  "ja": "夜明け"
+  "ja": "夜明け",
+  "de": "Morgengrauen",
+  "fr": "L’aube",
+  "es": "El alba",
+  "zh": "黎明",
+  "ko": "새벽"
  },
  "lose_dawn": {
   "en": "The windows go grey and the building wakes. You are back at the last save.",
-  "ja": "窓が白み、建物が目を覚ます。最後のセーブに戻る。"
+  "ja": "窓が白み、建物が目を覚ます。最後のセーブに戻る。",
+  "de": "Die Fenster werden grau, das Gebäude erwacht. Du bist zurück beim letzten Spielstand.",
+  "fr": "Les fenêtres grisaillent et le bâtiment s’éveille. Retour à la dernière sauvegarde.",
+  "es": "Las ventanas se vuelven grises y el edificio despierta. Vuelves al último guardado.",
+  "zh": "窗外泛起灰白，整栋楼醒了过来。你回到了最近的存档。",
+  "ko": "창밖이 잿빛으로 밝아오고 건물이 깨어난다. 마지막 저장으로 돌아간다."
  },
  "lose_reload": {
   "en": "Back to the last save",
-  "ja": "最後のセーブに戻る"
+  "ja": "最後のセーブに戻る",
+  "de": "Zum letzten Spielstand",
+  "fr": "Revenir à la dernière sauvegarde",
+  "es": "Volver al último guardado",
+  "zh": "回到最近的存档",
+  "ko": "마지막 저장으로"
  },
  "lv_title": {
   "en": "%s reaches level %d",
-  "ja": "%s がレベル %d に上がった"
+  "ja": "%s がレベル %d に上がった",
+  "de": "%s erreicht Stufe %d",
+  "fr": "%s atteint le niveau %d",
+  "es": "%s alcanza el nivel %d",
+  "zh": "%s升到了 %d 级",
+  "ko": "%s, 레벨 %d 달성"
  },
  "lv_stat": {
   "en": "Choose a stat to raise by one:",
-  "ja": "上げる能力を一つ選ぶ："
+  "ja": "上げる能力を一つ選ぶ：",
+  "de": "Wähle einen Wert, der um eins steigt:",
+  "fr": "Choisis une caractéristique à augmenter d’un point :",
+  "es": "Elige un atributo para subir uno:",
+  "zh": "选择一项属性 +1：",
+  "ko": "1 올릴 능력치를 선택:"
  },
  "lv_skill": {
   "en": "Choose a skill:",
-  "ja": "スキルを選ぶ："
+  "ja": "スキルを選ぶ：",
+  "de": "Wähle eine Fähigkeit:",
+  "fr": "Choisis une compétence :",
+  "es": "Elige una habilidad:",
+  "zh": "选择一个技能：",
+  "ko": "스킬을 선택:"
  },
  "lv_confirm": {
   "en": "Confirm",
-  "ja": "決定"
+  "ja": "決定",
+  "de": "Bestätigen",
+  "fr": "Confirmer",
+  "es": "Confirmar",
+  "zh": "确认",
+  "ko": "확인"
  },
  "end_t": {
   "en": "Night cleared",
-  "ja": "夜を越えた"
+  "ja": "夜を越えた",
+  "de": "Nacht überstanden",
+  "fr": "Nuit terminée",
+  "es": "Noche superada",
+  "zh": "度过了这一夜",
+  "ko": "밤을 넘겼다"
  },
  "end_body": {
   "en": "Level %d · Trust %d. Your progress is saved in slot 1.",
-  "ja": "レベル %d · 信頼 %d。進行状況はスロット1に保存された。"
+  "ja": "レベル %d · 信頼 %d。進行状況はスロット1に保存された。",
+  "de": "Stufe %d · Vertrauen %d. Dein Fortschritt ist in Platz 1 gespeichert.",
+  "fr": "Niveau %d · Confiance %d. Ta progression est sauvegardée dans l’emplacement 1.",
+  "es": "Nivel %d · Confianza %d. Tu progreso se guardó en la ranura 1.",
+  "zh": "等级 %d · 信任 %d。进度已保存在存档 1。",
+  "ko": "레벨 %d · 신뢰 %d. 진행 상황은 슬롯 1에 저장되었다."
  },
  "end_title": {
   "en": "Title screen",
-  "ja": "タイトルへ"
+  "ja": "タイトルへ",
+  "de": "Titelbildschirm",
+  "fr": "Écran titre",
+  "es": "Pantalla de título",
+  "zh": "返回标题",
+  "ko": "타이틀 화면"
  },
  "g_locked": {
   "en": "Locked — Trust %d",
-  "ja": "未解放 — 信頼 %d"
+  "ja": "未解放 — 信頼 %d",
+  "de": "Gesperrt — Vertrauen %d",
+  "fr": "Verrouillé — Confiance %d",
+  "es": "Bloqueado — Confianza %d",
+  "zh": "未解锁——信任 %d",
+  "ko": "잠김 — 신뢰 %d"
  },
  "st_lang": {
   "en": "Language",
-  "ja": "言語"
+  "ja": "言語",
+  "de": "Sprache",
+  "fr": "Langue",
+  "es": "Idioma",
+  "zh": "语言",
+  "ko": "언어"
  },
  "st_vol_music": {
   "en": "Music",
-  "ja": "音楽"
+  "ja": "音楽",
+  "de": "Musik",
+  "fr": "Musique",
+  "es": "Música",
+  "zh": "音乐",
+  "ko": "음악"
  },
  "st_vol_sfx": {
   "en": "Sound effects",
-  "ja": "効果音"
+  "ja": "効果音",
+  "de": "Soundeffekte",
+  "fr": "Effets sonores",
+  "es": "Efectos de sonido",
+  "zh": "音效",
+  "ko": "효과음"
  },
  "st_vol_voice": {
   "en": "Voice",
-  "ja": "ボイス"
+  "ja": "ボイス",
+  "de": "Stimme",
+  "fr": "Voix",
+  "es": "Voces",
+  "zh": "语音",
+  "ko": "음성"
  },
  "t_about": {
   "en": "About this work",
-  "ja": "作品について"
+  "ja": "作品について",
+  "de": "Über dieses Werk",
+  "fr": "À propos de l’œuvre",
+  "es": "Sobre esta obra",
+  "zh": "关于本作",
+  "ko": "작품 정보"
  },
  "ds_continue": {
   "en": "Continue",
-  "ja": "続ける"
+  "ja": "続ける",
+  "de": "Weiter",
+  "fr": "Continuer",
+  "es": "Continuar",
+  "zh": "继续",
+  "ko": "계속"
  },
  "ds_title": {
   "en": "Before you play",
-  "ja": "プレイの前に"
+  "ja": "プレイの前に",
+  "de": "Vor dem Spielen",
+  "fr": "Avant de jouer",
+  "es": "Antes de jugar",
+  "zh": "游玩之前",
+  "ko": "플레이 전에"
  },
  "t_trial": {
   "en": "Trial version — Night 1",
-  "ja": "体験版 — 第一夜"
+  "ja": "体験版 — 第一夜",
+  "de": "Testversion — Nacht 1",
+  "fr": "Version d’essai — Nuit 1",
+  "es": "Versión de prueba — Noche 1",
+  "zh": "体验版——第一夜",
+  "ko": "체험판 — 첫째 밤"
  },
  "b_won": {
   "en": "Standoff won",
-  "ja": "対峙に勝利"
+  "ja": "対峙に勝利",
+  "de": "Konfrontation gewonnen",
+  "fr": "Face-à-face gagné",
+  "es": "Enfrentamiento ganado",
+  "zh": "对峙胜利",
+  "ko": "대치 승리"
  },
  "b_lost": {
   "en": "Standoff lost",
-  "ja": "対峙に敗北"
+  "ja": "対峙に敗北",
+  "de": "Konfrontation verloren",
+  "fr": "Face-à-face perdu",
+  "es": "Enfrentamiento perdido",
+  "zh": "对峙失败",
+  "ko": "대치 패배"
  },
  "fin_t": {
   "en": "The End",
-  "ja": "完"
+  "ja": "完",
+  "de": "Ende",
+  "fr": "Fin",
+  "es": "Fin",
+  "zh": "完",
+  "ko": "끝"
  },
  "fin_body": {
   "en": "Level %d · Trust %d. Thank you for playing. Your last save is in slot 1: replay the final night for another ending.",
-  "ja": "レベル %d · 信頼 %d。プレイしていただきありがとうございました。最後のセーブはスロット1に。最終夜をやり直すと別のエンディングが見られます。"
+  "ja": "レベル %d · 信頼 %d。プレイしていただきありがとうございました。最後のセーブはスロット1に。最終夜をやり直すと別のエンディングが見られます。",
+  "de": "Stufe %d · Vertrauen %d. Danke fürs Spielen. Dein letzter Spielstand liegt in Platz 1: Spiel die letzte Nacht erneut für ein anderes Ende.",
+  "fr": "Niveau %d · Confiance %d. Merci d’avoir joué. Ta dernière sauvegarde est dans l’emplacement 1 : rejoue la dernière nuit pour une autre fin.",
+  "es": "Nivel %d · Confianza %d. Gracias por jugar. Tu último guardado está en la ranura 1: repite la última noche para otro final.",
+  "zh": "等级 %d · 信任 %d。感谢游玩。最后的存档在存档 1：重玩最后一夜可以看到另一个结局。",
+  "ko": "레벨 %d · 신뢰 %d. 플레이해 주셔서 감사합니다. 마지막 저장은 슬롯 1에 있다: 마지막 밤을 다시 하면 다른 엔딩을 볼 수 있다."
  },
  "g_unseen": {
   "en": "Not found yet",
-  "ja": "未発見"
+  "ja": "未発見",
+  "de": "Noch nicht gefunden",
+  "fr": "Pas encore trouvé",
+  "es": "Aún no encontrado",
+  "zh": "尚未发现",
+  "ko": "아직 발견하지 못함"
  },
  "h_trust_track": {
   "en": "%s %d",
-  "ja": "%s %d"
+  "ja": "%s %d",
+  "de": "%s %d",
+  "fr": "%s %d",
+  "es": "%s %d",
+  "zh": "%s %d",
+  "ko": "%s %d"
  },
  "ev_trust_track": {
   "en": "%s's trust +%d",
-  "ja": "%sの信頼 +%d"
+  "ja": "%sの信頼 +%d",
+  "de": "Vertrauen von %s +%d",
+  "fr": "Confiance de %s +%d",
+  "es": "Confianza de %s +%d",
+  "zh": "%s的信任 +%d",
+  "ko": "%s의 신뢰 +%d"
  },
  "toast_trust_track": {
   "en": "%s: Trust %d reached — a new scene is open",
-  "ja": "%s：信頼 %d 到達 — 新しい場面が開いた"
+  "ja": "%s：信頼 %d 到達 — 新しい場面が開いた",
+  "de": "%s: Vertrauen %d erreicht — eine neue Szene ist offen",
+  "fr": "%s : confiance %d atteinte — une nouvelle scène est ouverte",
+  "es": "%s: Confianza %d alcanzada: nueva escena disponible",
+  "zh": "%s：信任达到 %d——新场景已开启",
+  "ko": "%s: 신뢰 %d 달성 — 새 장면이 열렸다"
  },
  "m_gift_to": {
   "en": "Give to %s",
-  "ja": "%sに渡す"
+  "ja": "%sに渡す",
+  "de": "%s geben",
+  "fr": "Offrir à %s",
+  "es": "Dárselo a %s",
+  "zh": "送给%s",
+  "ko": "%s에게 주기"
+ },
+ "st_voice_lang": {
+  "en": "Voice language",
+  "ja": "ボイス言語",
+  "de": "Sprache der Stimmen",
+  "fr": "Langue des voix",
+  "es": "Idioma de voz",
+  "zh": "语音语言",
+  "ko": "음성 언어"
+ },
+ "st_voice_auto": {
+  "en": "Same as text",
+  "ja": "テキストと同じ",
+  "de": "Wie Text",
+  "fr": "Comme le texte",
+  "es": "Igual que el texto",
+  "zh": "与文字相同",
+  "ko": "텍스트와 동일"
  }
 }

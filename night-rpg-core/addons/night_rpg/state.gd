@@ -68,6 +68,33 @@ func load_content() -> void:
 			story[ch] = st["lines"]
 			for en in st.get("menus", {}).keys():
 				menus[en] = {"ja": st["menus"][en]}
+	_merge_story_i18n()
+
+
+## Story translations beyond EN/JA live beside the story, one file per language:
+## data/i18n/story/<lang>.json = {"lines": {line_id: text}, "menus": {en_menu: text}}.
+## Merged into the loaded lines so Loc.line() / Loc.menu() see one row per line.
+func _merge_story_i18n() -> void:
+	var by_id := {}
+	for ch in story.keys():
+		for ln in story[ch]:
+			by_id[str(ln.get("id", ""))] = ln
+	for l in ["de", "fr", "es", "zh", "ko"]:
+		var p := "%s/i18n/story/%s.json" % [data_root, l]
+		if not FileAccess.file_exists(p):
+			continue
+		var ov = _read_json(p)
+		if not ov is Dictionary:
+			continue
+		var lines: Dictionary = ov.get("lines", {})
+		for id in lines.keys():
+			if by_id.has(id):
+				by_id[id][l] = lines[id]
+		var mn: Dictionary = ov.get("menus", {})
+		for en in mn.keys():
+			if not menus.has(en):
+				menus[en] = {}
+			menus[en][l] = mn[en]
 
 
 # ------------------------------------------------------------------ new game / nights
