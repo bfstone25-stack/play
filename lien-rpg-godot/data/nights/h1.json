@@ -374,7 +374,8 @@
      "label_key": "hs_niche",
      "gives": [
       "bone_charm",
-      "bone_charm"
+      "bone_charm",
+      "curio_key"
      ],
      "if_flag": "keeper_done"
     },

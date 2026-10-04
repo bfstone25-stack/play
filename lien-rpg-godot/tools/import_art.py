@@ -126,8 +126,42 @@ def figure(who):
     return big(bpa.build_sprite(ART / "out/sprites" / who / chosen, FIG))
 
 
+def grade(im):
+    """The capped colour pass (memory bright-is-what-sells: the shelf sits at brightness ~0.6,
+    saturation ~0.35). The Nara-reference plates rendered near-white and near-grey; the
+    readings at night rendered dark. Each step is capped so no frame is pushed into
+    banding: contrast up to 1.25, brightness 0.85-1.5, saturation up to 1.8; a near-grey
+    frame first gets a warm-highlight / teal-shadow split tone (the shop's lamp and the
+    Market's lanterns) at 35%, because multiplying a saturation of 0.05 gives nothing."""
+    import numpy as np
+    from PIL import ImageStat, ImageOps
+
+    def meas(x):
+        m = ImageStat.Stat(x.resize((256, 160)).convert("HSV")).mean
+        return m[2] / 255, m[1] / 255
+    b, sat = meas(im)
+    if sat < 0.12:
+        a = np.asarray(im).astype(np.float32) / 255
+        lum = a.mean(axis=2, keepdims=True)
+        warm = np.array([1.0, 0.72, 0.42]); cool = np.array([0.20, 0.42, 0.52])
+        tone = lum * warm + (1 - lum) * cool * lum * 2
+        a = a * 0.65 + np.clip(tone, 0, 1) * 0.35 * (0.5 + lum)
+        im = Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8))
+        b, sat = meas(im)
+    if b > 0.7:
+        im = ImageEnhance.Contrast(im).enhance(1.25)
+        im = ImageEnhance.Brightness(im).enhance(max(0.85, 0.66 / b))
+    elif b < 0.5:
+        im = ImageEnhance.Brightness(im).enhance(min(1.5, 0.58 / b))
+        im = ImageEnhance.Contrast(im).enhance(1.08)
+    b, sat = meas(im)
+    if sat < 0.33:
+        im = ImageEnhance.Color(im).enhance(min(1.8, 0.36 / max(sat, 0.05)))
+    return im
+
+
 def cg_out(im, cid):
-    im = im.convert("RGB")
+    im = grade(im.convert("RGB"))
     im.save(A / "cg" / f"{cid}.png")
     t = im.resize((480, round(480 * im.height / im.width)), Image.LANCZOS)
     t.save(A / "cg" / f"{cid}_thumb.png")
@@ -173,6 +207,19 @@ def main():
             continue
         cg_out(Image.open(ART / "out/plates" / cid / chosen), cid)
     # title: the fork's key visual and logotype
+    # the counter: one figure per walk-in, and Nara's hand on the glass (rpg_picks.json)
+    (A / "walkins").mkdir(exist_ok=True)
+    for wid in ("w_locket", "w_key", "w_box", "w_pistol", "w_painting", "w_ribbon", "b_key", "b_ring", "b_moon", "b_cloth"):
+        chosen = pk.get("sprites", {}).get(wid)
+        if not chosen:
+            missing.append("walk-in " + wid)
+            continue
+        big(bpa.build_sprite(ART / "out/sprites" / wid / chosen, FIG)).save(A / "walkins" / f"{wid}.png")
+    tp = pk.get("plates", {}).get("ui_touch")
+    if tp:
+        grade(Image.open(ART / "out/plates/ui_touch" / tp).convert("RGB")).resize((860, 540), Image.LANCZOS).save(A / "ui/touch.png")
+    else:
+        missing.append("ui_touch")
     # the base game's curio sheet: the counter shows each walk-in's object from it, 4x
     shutil.copy2(FORK / "assets/pixel/curios.png", A / "ui/curios.png")
     shutil.copy2(FORK / "assets/title/keyvisual.png", A / "title/keyvisual.png")

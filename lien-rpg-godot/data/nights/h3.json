@@ -273,7 +273,8 @@
      "event": "h3_ladder",
      "label_key": "hs_ladder",
      "gives": [
-      "oilskin"
+      "oilskin",
+      "curio_moon"
      ]
     },
     {

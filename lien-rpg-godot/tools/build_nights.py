@@ -188,7 +188,7 @@ h1_rooms = {
     "receipt_stair": room("receipt_stair", [
         enemy("keeper", "keeper", [0.42, 0.5], "h1_keeper_pre", "h1_keeper_post"),
         search("slips", [0.18, 0.35], "h1_slips", "slips", "Tickets in the wall", "壁の質札", xp=10),
-        search("niche", [0.8, 0.6], "h1_niche", "niche", "A niche", "壁龕", gives=["bone_charm", "bone_charm"], if_flag="keeper_done"),
+        search("niche", [0.8, 0.6], "h1_niche", "niche", "A niche", "壁龕", gives=["bone_charm", "bone_charm", "curio_key"], if_flag="keeper_done"),
         enemy("clerk", "clerk", [0.6, 0.45], "h1_clerk_pre", "h1_clerk_post", if_flag="keeper_done"),
         door("to_cellar", "cellar", [0.08, 0.84]),
     ], enter="h1_stair"),
@@ -307,7 +307,7 @@ h2_rooms = {
         door("to_reliquary", "reliquary", [0.92, 0.84], if_flag="haggler_done"),
     ], enter="h2_arcade"),
     "reliquary": room("reliquary", [
-        search("jars", [0.25, 0.4], "h2_jars", "jars", "Jars", "瓶", gives=["peppermint"]),
+        search("jars", [0.25, 0.4], "h2_jars", "jars", "Jars", "瓶", gives=["peppermint", "curio_ring"]),
         search("loupe", [0.78, 0.6], "h2_loupe", "loupe", "A tray of loupes", "ルーペの盆", gives=["loupe"], xp=5),
         enemy("broker", "broker", [0.5, 0.48], "h2_broker_pre", "h2_broker_post"),
         door("to_arcade", "bone_arcade", [0.08, 0.84]),
@@ -391,7 +391,7 @@ h3_rooms = {
     "archive": room("archive", [
         enemy("archivist", "archivist", [0.5, 0.48], "h3_arch_pre", "h3_arch_post"),
         search("shelves", [0.2, 0.4], "h3_shelves", "archshelves", "The N shelf", "Nの棚", gives=["ledger_page"], xp=10, if_flag="archivist_done"),
-        search("ladder", [0.82, 0.5], "h3_ladder", "ladder", "The ladder", "梯子", gives=["oilskin"]),
+        search("ladder", [0.82, 0.5], "h3_ladder", "ladder", "The ladder", "梯子", gives=["oilskin", "curio_moon"]),
         door("to_row", "lantern_row", [0.08, 0.84]),
     ], enter="h3_archive"),
 }
@@ -533,7 +533,7 @@ h4_events = {
                  {"cg": "cg_heart"},
                  N("h4_heart_2", "The Heart of the Crypt. Elsa wrote about it once, in the back of a ledger: what the shop actually wants. Every reading, every fee, every instalment, goes here.", "地下聖堂の心臓。エルサが一度だけ、帳簿の裏に書いていた。『店が本当に欲しいもの』。読み取りも、手数料も、分割払いも、すべてここへ行く。"),
                  N("h4_heart_3", "She does not touch it. It is the only object in three years she has met and not wanted to know.", "触れない。この三年で出会った品のうち、知りたいと思わなかった唯一のものだ。"),
-                 {"hide_cg": True}, {"xp": 40}, {"flag": "heart_seen"}],
+                 {"hide_cg": True}, {"give": "curio_heart"}, {"xp": 40}, {"flag": "heart_seen"}],
     "h4_calder": [{"show": "calder", "x": 0.7}, L(758, 788), {"cg": "cg_calder"},
                   N("h4_calder_test", "He puts both gloved hands on the desk. Before Calder deals with anybody, he finds out what they are made of.", "彼は手袋の両手を机に置く。カルダーは誰かと取引する前に、相手が何でできているかを確かめる。"),
                   {"hide_cg": True}, {"battle": "calder"},

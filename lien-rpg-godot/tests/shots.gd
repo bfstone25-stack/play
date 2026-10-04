@@ -66,6 +66,10 @@ func hook(tag: String) -> void:
 		await get_tree().create_timer(0.5).timeout
 		await snap("gallery_early")
 		main._clear_overlay()
+	elif tag == "counter_touched":
+		var kt := "counter_touch_" + str(RPG.s.get("night", ""))
+		if not taken.has(lang + "_" + kt):
+			await snap(kt)
 	elif tag == "counter":
 		# the second genre on screen: first walk-in, then one from each later hour
 		var k := "counter_" + str(RPG.s.get("night", ""))
@@ -145,8 +149,11 @@ func run_lang(l: String, full: bool) -> void:
 				if NRArt.path("cg", c["id"]) == "":
 					continue
 				main.event.visible = true
+				main.event.box.visible = false
+				main.event.name_panel.visible = false
 				main.event.show_cg(NRArt.tex("cg", c["id"]))
 				await get_tree().create_timer(0.5).timeout
 				await snap("cgview_" + c["id"])
 			main.event.show_cg(null)
+			main.event.box.visible = true
 	sim.free()

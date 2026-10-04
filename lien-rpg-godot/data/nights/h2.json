@@ -277,7 +277,8 @@
      "event": "h2_jars",
      "label_key": "hs_jars",
      "gives": [
-      "peppermint"
+      "peppermint",
+      "curio_ring"
      ]
     },
     {

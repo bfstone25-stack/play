@@ -8,12 +8,12 @@ from PIL import Image
 R = Path(__file__).resolve().parent.parent
 SRC = R / "shots/latest"
 OUT = Path("/home/frankstone/Products/ops/dlsite/lien_samples")
-PICKS = [  # (sample name, shot file) -- RPG x management first, then the RPG; no nudity anywhere
-    ("01_counter_appraise", "en_counter_h1.png"), ("02_counter_ledger", "en_counter_h3.png"),
-    ("03_market_stalls", "en_counter_h4.png"), ("04_shop", "en_room_shop.png"),
-    ("05_receipt_stair", "en_room_receipt_stair.png"), ("06_standoff", "en_battle.png"),
-    ("07_standoff_boss", "en_battle_boss.png"), ("08_level_up", "en_levelup.png"),
-    ("09_cg_descent", "en_cg_cg_descent.png"), ("10_cg_market", "en_cg_cg_market_crowd.png"),
+PICKS = [  # (sample name, shot file): open with art, then the counter, then play; no nudity anywhere
+    ("01_cg_moth_widow", "en_cgview_cg_moth.png"), ("02_counter_appraise", "en_counter_touch_h1.png"),
+    ("03_descent", "en_cgview_cg_descent.png"), ("04_standoff", "en_battle.png"),
+    ("05_standoff_boss", "en_battle_boss.png"), ("06_market_stalls", "en_counter_h4.png"),
+    ("07_level_up", "en_levelup.png"), ("08_counter_ledger", "en_counter_touch_h3.png"),
+    ("09_cg_market", "en_cgview_cg_market_crowd.png"), ("10_shop", "en_room_shop.png"),
 ]
 
 

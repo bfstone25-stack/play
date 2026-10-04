@@ -2471,6 +2471,10 @@
   "en": "Reputation %d  %s",
   "ja": "評判 %d  %s"
  },
+ "sh_rep_short": {
+  "en": "Reputation",
+  "ja": "評判"
+ },
  "sh_pledges": {
   "en": "Pledges out",
   "ja": "預かり中の質草"
@@ -2512,8 +2516,8 @@
   "ja": "手を置く（3手）"
  },
  "sh_lend": {
-  "en": "Lend £%d against it (%d%%) — they may come back with interest",
-  "ja": "£%dを貸す（%d%%）— 利息つきで戻るかもしれない"
+  "en": "Lend £%d (%d%%) — back with interest, or not",
+  "ja": "£%dを貸す（%d%%）— 利息つきで戻るか"
  },
  "sh_buy": {
   "en": "Buy it outright: £%d (%d%%)",

@@ -512,7 +512,7 @@
    "intro_key": "ei_pledge",
    "win_key": "ew_pledge",
    "barks": 2,
-   "drop": "curio_key"
+   "drop": "tea"
   },
   "keeper": {
    "name_key": "e_keeper",
@@ -595,7 +595,7 @@
    "intro_key": "ei_pledge2",
    "win_key": "ew_pledge2",
    "barks": 2,
-   "drop": "curio_ring"
+   "drop": "tea"
   },
   "haggler": {
    "name_key": "e_haggler",
@@ -699,7 +699,7 @@
    "intro_key": "ei_archivist",
    "win_key": "ew_archivist",
    "barks": 3,
-   "drop": "curio_moon"
+   "drop": "salts"
   },
   "bailiff": {
    "name_key": "e_bailiff",
@@ -741,7 +741,7 @@
    "intro_key": "ei_door_man",
    "win_key": "ew_door_man",
    "barks": 3,
-   "drop": "curio_heart"
+   "drop": "peppermint"
   },
   "name_buyer": {
    "name_key": "e_name_buyer",
