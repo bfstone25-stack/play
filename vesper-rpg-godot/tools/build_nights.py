@@ -110,6 +110,42 @@ def search(i, pos, event, gives=(), xp=5, **kw):
     return h
 
 
+# ---------------------------------------------------------------- the date planner (otome sim)
+# Each night starts at home with a plan: where to go first, how to be with him, and what you are
+# wearing (the equipped outfit). His taste is a table per route, hinted by his schedule line;
+# 2 of 3 right = a well-planned evening: Trust +1 and the date starts at his lower-guard variant.
+TASTE = {  # route -> (first stop, approach, outfit)
+    "guyan": ("cafe", "patient", "trench"), "ethan": ("straight", "sincere", "blouse"),
+    "luxingye": ("walk", "playful", "dress"), "liam": ("walk", "playful", "blouse"),
+    "adrian": ("straight", "sincere", "slip"), "fushen": ("cafe", "patient", "dress")}
+STOPS = [("cafe", "Stop at the late café first.", "まず深夜のカフェに寄る。"),
+         ("walk", "Take the long way through the city.", "遠回りして街を歩く。"),
+         ("straight", "Go straight to him.", "まっすぐ彼のもとへ。")]
+WAYS = [("playful", "Keep it light and playful.", "軽やかに、楽しく。"),
+        ("sincere", "Be sincere; say what you mean.", "誠実に。思ったことを言う。"),
+        ("patient", "Be patient; let him come to you.", "辛抱強く。彼が来るのを待つ。")]
+
+
+def planner(r, c, menus):
+    stop, way, wear = TASTE[r]
+    for _, en, ja in STOPS + WAYS:
+        menus[en] = ja
+    steps = [say(f"pl_day_{c}"), say(f"pl_hint_{r}"), say("pl_q_stop"),
+             {"choice": [{"menu": en, "auto_rank": 2 if k == stop else 0,
+                          "do": ([{"flag": f"c{c}_pv"}, say("pl_fit")] if k == stop else [say("pl_miss")])} for k, en, _ in STOPS]},
+             say("pl_q_way"),
+             {"choice": [{"menu": en, "auto_rank": 2 if k == way else 0,
+                          "do": ([{"flag": f"c{c}_pa"}, say("pl_fit")] if k == way else [say("pl_miss")])} for k, en, _ in WAYS]},
+             {"if_equipped": wear, "then": [{"flag": f"c{c}_po"}, say("pl_wear_ok")], "else": [say("pl_wear_no")]}]
+    good = [{"flag": f"plan{c}"}, say("pl_good"), {"trust": 1}, {"xp": 10}]
+    bad = [say("pl_bad"), {"xp": 5}]
+    # two of three: (pv and (pa or po)) or (pa and po)
+    steps.append({"if_flag": f"c{c}_pv", "then": [{"if_flag": f"c{c}_pa", "then": good, "else": [{"if_flag": f"c{c}_po", "then": good, "else": bad}]}],
+                  "else": [{"if_flag": f"c{c}_pa", "then": [{"if_flag": f"c{c}_po", "then": good, "else": bad}], "else": bad}]})
+    steps.append({"flag": f"c{c}_planned"})
+    return steps
+
+
 def chapter_night(r, c, ri, menus):
     ch = ri["chapters"][c - 1]
     nid = f"{r}_c{c}"
@@ -117,7 +153,9 @@ def chapter_night(r, c, ri, menus):
     # -------- home
     ev["w"] = [say("ev_wardrobe" if WARDROBE[c] else "ev_wardrobe_n")]
     ev["d"] = [say("ev_desk")]
+    ev["plan"] = planner(r, c, menus)
     home = room("home", "v_home", [
+        {"id": "plan", "kind": "event", "event": "plan", "pos": [0.56, 0.34], "label_key": "hs_plan"},
         door("out", "street", [0.14, 0.74], label_key="r_street"),
         search("wardrobe", [0.72, 0.46], "w", gives=[WARDROBE[c] or "coffee"]),
         search("desk", [0.42, 0.62], "d", gives=[DESK[c]]),
@@ -126,15 +164,15 @@ def chapter_night(r, c, ri, menus):
     st_hs = [door("home", "home", [0.12, 0.78], label_key="r_home"), door("cafe", "cafe", [0.3, 0.42], label_key="r_cafe")]
     if c in STRANGER:
         g = STRANGER[c]
-        ev["stranger_after"] = [say("post_" + g), {"flag": "street_clear"}]
-        st_hs.append({"id": "stranger", "kind": "enemy", "enemy": f"{g}_{r}", "pos": [0.6, 0.6], "after": "stranger_after"})
-        st_hs.append(door("venue", "venue", [0.86, 0.4], label_key=f"r_v_{r}_{c}", if_flag="street_clear"))
+        ev["stranger_after"] = [say("post_" + g), {"flag": f"c{c}_street"}]
+        st_hs.append({"id": "stranger", "kind": "enemy", "enemy": f"{g}_{r}", "pos": [0.6, 0.6], "after": "stranger_after", "if_flag": f"c{c}_planned"})
+        st_hs.append(door("venue", "venue", [0.86, 0.4], label_key=f"r_v_{r}_{c}", if_flag=f"c{c}_street"))
     else:
         ev["s"] = [say("ev_stall")]
         ev["k"] = [say("ev_kiosk")]
         st_hs.append(search("stall", [0.55, 0.62], "s", gives=["tea"]))
         st_hs.append(search("kiosk", [0.68, 0.5], "k", gives=["coffee"]))
-        st_hs.append(door("venue", "venue", [0.86, 0.4], label_key=f"r_v_{r}_{c}"))
+        st_hs.append(door("venue", "venue", [0.86, 0.4], label_key=f"r_v_{r}_{c}", if_flag=f"c{c}_planned"))
     street = room("street", "v_street", st_hs, "r_street")
     # -------- café
     ev["cc"] = [say("ev_counter")]
@@ -147,7 +185,7 @@ def chapter_night(r, c, ri, menus):
         cafe_hs.append(search("board", [0.3, 0.38], "b", gives=[f"gift_{r}"]))
     cafe = room("cafe", "v_cafe", cafe_hs, "r_cafe")
     # -------- the venue: the chapter
-    ev["open"] = [{"music": "venue"}, lines(ch["open"])]
+    ev["open"] = [{"music": "venue"}, lines(ch["open"]), {"flag": f"c{c}_venue"}]
     plain = [b for b in ch["beats"] if not b["heat"]]
     heat = [b for b in ch["beats"] if b["heat"]]
     seq = [("beat", plain[0])]
@@ -159,17 +197,19 @@ def chapter_night(r, c, ri, menus):
     xs = [0.3, 0.42, 0.54, 0.3, 0.42, 0.54]
     ys = [0.42, 0.56, 0.42, 0.66, 0.7, 0.66]
     for i, (kind, b) in enumerate(seq):
-        cond = {"if_flag": f"s{i}"} if i else {}
+        cond = {"if_flag": f"c{c}_s{i}"} if i else {"if_flag": f"c{c}_venue"}
         pos = [xs[i], ys[i]]
         if kind == "beat":
-            ev[f"beat{i}"] = [lines(b["range"]), {"xp": 10}, {"flag": f"s{i + 1}"}]
+            ev[f"beat{i}"] = [lines(b["range"]), {"xp": 10}, {"flag": f"c{c}_s{i + 1}"}]
             hs.append({"id": f"beat{i}", "kind": "event", "event": f"beat{i}", "pos": pos, "label_key": f"hs_b{min(3, 1 + sum(1 for k, _ in seq[:i] if k == 'beat'))}", **cond})
         elif kind == "date":
-            ev[f"after{i}"] = [say(f"vb_stage_{min(c, 4)}" if c < 5 else "vb_win_big_1"), {"flag": f"s{i + 1}"}]
-            hs.append({"id": f"date{i}", "kind": "enemy", "enemy": f"date_{r}_{c}", "pos": pos, "after": f"after{i}", **cond})
+            ev[f"after{i}"] = [say(f"vb_stage_{min(c, 4)}" if c < 5 else "vb_win_big_1"), {"flag": f"c{c}_s{i + 1}"}]
+            ev[f"date{i}"] = [{"if_flag": f"plan{c}", "then": [{"battle": f"date_{r}_{c}_p"}], "else": [{"battle": f"date_{r}_{c}"}]},
+                              {"event": f"after{i}"}]
+            hs.append({"id": f"date{i}", "kind": "event", "event": f"date{i}", "pos": pos, "label_key": f"e_date_{r}_{c}", "turns": 2, **cond})
         else:
             rv = RIVAL[r]
-            ev[f"after{i}"] = [say("post_" + rv), {"flag": f"s{i + 1}"}]
+            ev[f"after{i}"] = [say("post_" + rv), {"flag": f"c{c}_s{i + 1}"}]
             hs.append({"id": f"rival{i}", "kind": "enemy", "enemy": f"rival_{r}", "pos": pos, "after": f"after{i}", **cond})
     end = []
     choices = [dict(cj, options=[o for o in cj["options"] if not (o["added"] and o["flag"].startswith("slow_"))]) for cj in ch["choices"]]
@@ -195,7 +235,7 @@ def chapter_night(r, c, ri, menus):
     else:
         end += endings(ri, r) + [{"end_night": True, "next": ""}]
     ev["end"] = end
-    hs.append({"id": "end", "kind": "event", "event": "end", "pos": [0.66, 0.56], "label_key": "hs_end", "if_flag": f"s{len(seq)}"})
+    hs.append({"id": "end", "kind": "event", "event": "end", "pos": [0.66, 0.56], "label_key": "hs_end", "if_flag": f"c{c}_s{len(seq)}"})
     hs.insert(0, door("street", "street", [0.1, 0.8], label_key="r_street"))
     venue = room("venue", f"v_{r}_{c}", hs, f"r_v_{r}_{c}", pose=f"{r}_smile", enter="open", music="venue")
     ev["start"] = [say(["vb_idle_2", "hb_open_2", "hb_open_1", "vb_idle_1", "hb_open_2"][c - 1])]

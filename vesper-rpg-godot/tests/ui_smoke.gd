@@ -1,7 +1,7 @@
 extends Node
 ## Click-through smoke test with real mouse events (Input.parse_input_event):
 ## disclosure -> title -> New game -> the prologue -> pick Gu Yan's route by clicking it ->
-## search the wardrobe -> equip the dress from the Party menu -> walk to the city -> win the
+## search the wardrobe -> equip the dress from the Party menu -> plan the evening -> walk to the city -> win the
 ## doorman standoff by clicking action buttons -> level-up -> the café -> save to slot 2 -> load it.
 ## Run under Xvfb for real input (tools/remote_shots.sh res://tests/ui_smoke.tscn shots/smoke).
 ## Asserts on game state, never on pixels or remembered coordinates (buttons are found by text).
@@ -46,6 +46,9 @@ func _ready() -> void:
 	await wait(0.3)
 	check(RPG.s["members"]["you"]["equip"]["outfit"] == "dress", "equipped the dress from the Party menu by clicking")
 	await click_text(Loc.t("m_close"))
+	await click_text(Loc.t("hs_plan"))
+	await click_through(60)
+	check(RPG.flag("c1_planned"), "planned the evening by clicking (stop, approach, outfit)")
 	await click_text("→ " + Loc.t("r_street"))
 	await click_through(50)
 	check(RPG.s["room"] == "street", "door click moved to the city")
@@ -101,7 +104,7 @@ func _ready() -> void:
 		await click_at(Vector2(640, 640))
 		n += 1
 	check(main.hud.visible, "back in the city after the standoff")
-	check(acts > 0 and RPG.flag("street_clear"), "standoff won by clicking actions (%d clicks)" % acts)
+	check(acts > 0 and RPG.flag("c1_street"), "standoff won by clicking actions (%d clicks)" % acts)
 	check(int(RPG.s["level"]) >= 2, "level-up screen clicked through (level %d)" % int(RPG.s["level"]))
 	await click_text("→ " + Loc.t("r_cafe"))
 	await click_through(50)

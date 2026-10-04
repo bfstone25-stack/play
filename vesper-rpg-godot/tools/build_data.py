@@ -115,6 +115,8 @@ for r in ROUTES:
                                          drop=["coffee", "tea", "cake", None, None][c - 1], boss=(c == 5), trust_win=1,
                                          bark=f"hold_{r}", barks=4)
         ENEMIES[f"date_{r}_{c}"]["trust_win_max_susp"] = 60   # Trust only for a date won close
+        # the well-planned evening (date planner, 2 of 3 right): his guard starts a quarter lower
+        ENEMIES[f"date_{r}_{c}_p"] = dict(ENEMIES[f"date_{r}_{c}"], composure=int(comp_d * 0.75))
         if c in STRANGER:
             g = STRANGER[c]
             ENEMIES[f"{g}_{r}"] = enemy(f"{g}_{r}", f"enemy_{g}", f"enemy_{g}_pressured", comp_s, atk - 1, rate,

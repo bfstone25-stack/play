@@ -46,6 +46,16 @@
    },
    "hotspots": [
     {
+     "id": "plan",
+     "kind": "event",
+     "event": "plan",
+     "pos": [
+      0.56,
+      0.34
+     ],
+     "label_key": "hs_plan"
+    },
+    {
      "id": "out",
      "kind": "door",
      "to": "street",
@@ -137,7 +147,8 @@
       0.6,
       0.6
      ],
-     "after": "stranger_after"
+     "after": "stranger_after",
+     "if_flag": "c3_planned"
     },
     {
      "id": "venue",
@@ -148,7 +159,7 @@
       0.4
      ],
      "label_key": "r_v_adrian_3",
-     "if_flag": "street_clear"
+     "if_flag": "c3_street"
     }
    ],
    "heroine_pose": "",
@@ -247,18 +258,20 @@
       0.3,
       0.42
      ],
-     "label_key": "hs_b1"
+     "label_key": "hs_b1",
+     "if_flag": "c3_venue"
     },
     {
      "id": "date1",
-     "kind": "enemy",
-     "enemy": "date_adrian_3",
+     "kind": "event",
+     "event": "date1",
      "pos": [
       0.42,
       0.56
      ],
-     "after": "after1",
-     "if_flag": "s1"
+     "label_key": "e_date_adrian_3",
+     "turns": 2,
+     "if_flag": "c3_s1"
     },
     {
      "id": "beat2",
@@ -269,7 +282,7 @@
       0.42
      ],
      "label_key": "hs_b2",
-     "if_flag": "s2"
+     "if_flag": "c3_s2"
     },
     {
      "id": "end",
@@ -280,7 +293,7 @@
       0.56
      ],
      "label_key": "hs_end",
-     "if_flag": "s3"
+     "if_flag": "c3_s3"
     }
    ],
    "heroine_pose": "adrian_smile",
@@ -301,13 +314,221 @@
     "key": "ev_desk"
    }
   ],
+  "plan": [
+   {
+    "say": "narrator",
+    "key": "pl_day_3"
+   },
+   {
+    "say": "narrator",
+    "key": "pl_hint_adrian"
+   },
+   {
+    "say": "narrator",
+    "key": "pl_q_stop"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Stop at the late café first.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     },
+     {
+      "menu": "Take the long way through the city.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     },
+     {
+      "menu": "Go straight to him.",
+      "auto_rank": 2,
+      "do": [
+       {
+        "flag": "c3_pv"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_fit"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "say": "narrator",
+    "key": "pl_q_way"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Keep it light and playful.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     },
+     {
+      "menu": "Be sincere; say what you mean.",
+      "auto_rank": 2,
+      "do": [
+       {
+        "flag": "c3_pa"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_fit"
+       }
+      ]
+     },
+     {
+      "menu": "Be patient; let him come to you.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "if_equipped": "slip",
+    "then": [
+     {
+      "flag": "c3_po"
+     },
+     {
+      "say": "narrator",
+      "key": "pl_wear_ok"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "pl_wear_no"
+     }
+    ]
+   },
+   {
+    "if_flag": "c3_pv",
+    "then": [
+     {
+      "if_flag": "c3_pa",
+      "then": [
+       {
+        "flag": "plan3"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_good"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "xp": 10
+       }
+      ],
+      "else": [
+       {
+        "if_flag": "c3_po",
+        "then": [
+         {
+          "flag": "plan3"
+         },
+         {
+          "say": "narrator",
+          "key": "pl_good"
+         },
+         {
+          "trust": 1
+         },
+         {
+          "xp": 10
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "pl_bad"
+         },
+         {
+          "xp": 5
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "c3_pa",
+      "then": [
+       {
+        "if_flag": "c3_po",
+        "then": [
+         {
+          "flag": "plan3"
+         },
+         {
+          "say": "narrator",
+          "key": "pl_good"
+         },
+         {
+          "trust": 1
+         },
+         {
+          "xp": 10
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "pl_bad"
+         },
+         {
+          "xp": 5
+         }
+        ]
+       }
+      ],
+      "else": [
+       {
+        "say": "narrator",
+        "key": "pl_bad"
+       },
+       {
+        "xp": 5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "flag": "c3_planned"
+   }
+  ],
   "stranger_after": [
    {
     "say": "narrator",
     "key": "post_columnist"
    },
    {
-    "flag": "street_clear"
+    "flag": "c3_street"
    }
   ],
   "cc": [
@@ -328,6 +549,9 @@
    },
    {
     "lines": "adrian_c3:1-1"
+   },
+   {
+    "flag": "c3_venue"
    }
   ],
   "beat0": [
@@ -338,7 +562,7 @@
     "xp": 10
    },
    {
-    "flag": "s1"
+    "flag": "c3_s1"
    }
   ],
   "after1": [
@@ -347,7 +571,25 @@
     "key": "vb_stage_3"
    },
    {
-    "flag": "s2"
+    "flag": "c3_s2"
+   }
+  ],
+  "date1": [
+   {
+    "if_flag": "plan3",
+    "then": [
+     {
+      "battle": "date_adrian_3_p"
+     }
+    ],
+    "else": [
+     {
+      "battle": "date_adrian_3"
+     }
+    ]
+   },
+   {
+    "event": "after1"
    }
   ],
   "beat2": [
@@ -358,7 +600,7 @@
     "xp": 10
    },
    {
-    "flag": "s3"
+    "flag": "c3_s3"
    }
   ],
   "end": [

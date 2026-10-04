@@ -26,11 +26,23 @@ func _ready() -> void:
 			only = a.trim_prefix("--routes=")
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(out) if out.begins_with("res://") else out)
 	print("RENDER DEVICE: ", RenderingServer.get_video_adapter_name(), " / ", RenderingServer.get_video_adapter_vendor(), " / ", RenderingServer.get_current_rendering_driver_name())
-	get_tree().create_timer(2400.0).timeout.connect(func():
+	get_tree().create_timer(6300.0).timeout.connect(func():
 		print("SHOTS TIMEOUT")
 		get_tree().quit(2))
 	await get_tree().process_frame
 	RPG.persist["gallery"] = []
+	if "--allart" in OS.get_cmdline_user_args():
+		await allart("en")
+		await allart("ja")
+		print("SHOTS: ", JSON.stringify(taken.keys()))
+		get_tree().quit()
+		return
+	if "--extras" in OS.get_cmdline_user_args():
+		for l in ["en", "ja"]:
+			await extras(l)
+		print("SHOTS: ", JSON.stringify(taken.keys()))
+		get_tree().quit()
+		return
 	var en_routes: Array = ROUTES if only == "" else Array(only.split(","))
 	await run_lang("en", en_routes, true)
 	await run_lang("ja", ["guyan"], true)
@@ -125,7 +137,7 @@ func run_lang(l: String, routes: Array, full: bool, prefix: String = "") -> void
 			await main.on_hotspot(h)
 			sim._auto_equip()
 			var nid := str(RPG.s.get("night", ""))
-			var rk := "room_" + (RPG.room().get("plate", "") if RPG.s["room"] == "venue" else RPG.s["room"])
+			var rk: String = "room_" + str(RPG.room().get("plate", "") if RPG.s["room"] == "venue" else RPG.s["room"])
 			if main.hud.visible and not taken.has(lang + "_" + prefix + rk):
 				await get_tree().create_timer(0.8).timeout
 				await snap(prefix + rk)
@@ -153,3 +165,75 @@ func run_lang(l: String, routes: Array, full: bool, prefix: String = "") -> void
 		main.show_gallery()
 		await get_tree().create_timer(0.5).timeout
 		await snap(prefix + "gallery")
+
+
+## The two dating-sim screens a sample needs, held still: the route select and the date planner.
+func extras(l: String) -> void:
+	lang = l
+	Loc.set_lang(l)
+	if main != null:
+		main.queue_free()
+		await get_tree().process_frame
+	main = load("res://addons/night_rpg/ui/main.tscn").instantiate()
+	main.auto = true
+	add_child(main)
+	RPG.new_game()
+	main.stage.set_plate(NRArt.tex("rooms", "v_home"), {})
+	var opts := []
+	for o in RPG.nights["prologue"]["events"]["start"][3]["choice"]:
+		opts.append({"text": Loc.menu(o["menu"])})
+	main.event.choose(opts)
+	await get_tree().create_timer(0.6).timeout
+	await snap("route_select")
+	main.event.close()
+	for r in ["guyan", "ethan"]:
+		RPG.new_game()
+		RPG.set_flag("r_" + r)
+		RPG.set_flag("with_him")
+		RPG.start_night(r + "_c1")
+		main.render_room()
+		var ev: Array = RPG.nights[r + "_c1"]["events"]["plan"]
+		main.event.say("", Loc.t("pl_day_1") + "\n" + Loc.t("pl_hint_" + r))
+		await get_tree().create_timer(0.6).timeout
+		await snap("planner_hint_" + r)
+		var o2 := []
+		for o in ev[3]["choice"]:
+			o2.append({"text": Loc.menu(o["menu"])})
+		main.event.choose(o2)
+		await get_tree().create_timer(0.6).timeout
+		await snap("planner_" + r)
+		main.event.close()
+
+
+## Every venue (with him on the stage) and every CG, held still, plus the full gallery: the art
+## check for the routes the long playthrough run does not reach in its time budget.
+func allart(l: String) -> void:
+	lang = l
+	Loc.set_lang(l)
+	if main != null:
+		main.queue_free()
+		await get_tree().process_frame
+	main = load("res://addons/night_rpg/ui/main.tscn").instantiate()
+	main.auto = true
+	add_child(main)
+	RPG.new_game()
+	RPG.set_flag("with_him")
+	for r in ROUTES:
+		for c in range(1, 6):
+			RPG.start_night("%s_c%d" % [r, c])
+			RPG.s["room"] = "venue"
+			main.render_room()
+			await get_tree().create_timer(0.5).timeout
+			await snap("venue_%s_%d" % [r, c])
+		for k in ["ch2", "heat", "end"]:
+			var id := "cg_%s_%s" % [r, k]
+			main.event.visible = true
+			main.event.show_cg(NRArt.tex("cg", id))
+			RPG.unlock_cg(id)
+			await get_tree().create_timer(0.9).timeout
+			await snap("cgall_" + id)
+			main.event.show_cg(null)
+	main.show_gallery()
+	await get_tree().create_timer(0.6).timeout
+	await snap("gallery_full")
+	main._clear_overlay()

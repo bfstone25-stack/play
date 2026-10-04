@@ -1564,8 +1564,8 @@
   "ja": "VESPER"
  },
  "t_subtitle": {
-  "en": "Six men. One evening star. Choose whose night you walk into.",
-  "ja": "六人の男。ひとつの宵の明星。誰の夜に歩み入るかを選ぶ。"
+  "en": "An otome dating sim RPG. Six men, one evening star — plan the date, win him over.",
+  "ja": "乙女恋愛シミュレーションRPG。六人の男、ひとつの宵の明星 — デートを計画し、彼の心をほどく。"
  },
  "t_note": {
   "en": "18+ · Otome · All characters are adults · AI-generated work (see 'About this work')",
@@ -2078,6 +2078,90 @@
  "id_umbrella": {
   "en": "Patience +1, Breathe +20%.",
   "ja": "辛抱 +1、深呼吸 +20%。"
+ },
+ "hs_plan": {
+  "en": "Plan the evening",
+  "ja": "今夜の計画を立てる"
+ },
+ "pl_day_1": {
+  "en": "Monday. You have the evening, and a plan to make.",
+  "ja": "月曜日。夜は空いている。計画を立てよう。"
+ },
+ "pl_day_2": {
+  "en": "Tuesday. You already know a little more about him than last time.",
+  "ja": "火曜日。前より少しだけ、彼のことを知っている。"
+ },
+ "pl_day_3": {
+  "en": "Wednesday. Halfway through the week, and he is on your mind more than halfway.",
+  "ja": "水曜日。週の半ば。彼のことは半分以上、頭にある。"
+ },
+ "pl_day_4": {
+  "en": "Thursday. Something is pressing on him; plan for that.",
+  "ja": "木曜日。何かが彼にのしかかっている。それを踏まえて計画を。"
+ },
+ "pl_day_5": {
+  "en": "Friday. The last evening of the week. Make it the right one.",
+  "ja": "金曜日。週の最後の夜。正しい夜にしよう。"
+ },
+ "pl_hint_guyan": {
+  "en": "Gu Yan closes the shop at nine and likes the quiet hour after. Something warm before you go; no rush; dress for rain.",
+  "ja": "顧言は九時に店を閉め、その後の静かな時間が好き。行く前に温かいものを。急がずに。雨に備えた装いで。"
+ },
+ "pl_hint_ethan": {
+  "en": "Ethan works until the building empties. He respects people who don't waste his time: go straight to him, say what you mean, and dress like you work on the top floor.",
+  "ja": "イーサンはビルが空になるまで働く。時間を無駄にしない人を尊重する：まっすぐ彼のもとへ、思ったことを言い、最上階で働く人のような装いで。"
+ },
+ "pl_hint_luxingye": {
+  "en": "Lu Xingye can't be seen in public as himself. Take the long way through the city, keep it light and teasing, and wear something that feels like a night out.",
+  "ja": "陸星野は素顔で人前に出られない。遠回りして街を歩き、軽やかにからかって、夜遊びらしい装いで。"
+ },
+ "pl_hint_liam": {
+  "en": "Liam is off shift at seven and hates fuss. A walk first, a joke or two, and what you'd wear to a neighbour's porch.",
+  "ja": "リアムは七時に非番になり、大げさなことが苦手。まず散歩、冗談をひとつふたつ、そしてお隣のポーチに行くような服で。"
+ },
+ "pl_hint_adrian": {
+  "en": "Adrian is bored of people who perform. Go straight to him, mean every word, and wear something with an edge.",
+  "ja": "エイドリアンは演じる人に飽きている。まっすぐ彼のもとへ、言葉はすべて本気で、少し尖った装いで。"
+ },
+ "pl_hint_fushen": {
+  "en": "Fu Shen notices everything and says nothing. Somewhere quiet first, take your time, and dress like the room you're walking into.",
+  "ja": "傅深はすべてに気づき、何も言わない。まず静かな場所へ、時間をかけて、向かう部屋にふさわしい装いで。"
+ },
+ "pl_q_stop": {
+  "en": "Where do you go first?",
+  "ja": "まずどこへ？"
+ },
+ "pl_q_way": {
+  "en": "How do you want to be with him tonight?",
+  "ja": "今夜、彼とどう過ごしたい？"
+ },
+ "pl_fit": {
+  "en": "That suits him.",
+  "ja": "それは彼に合っている。"
+ },
+ "pl_miss": {
+  "en": "Not quite him — but it's your evening too.",
+  "ja": "彼らしくはない — でも、あなたの夜でもある。"
+ },
+ "pl_wear_ok": {
+  "en": "And what you're wearing is exactly his kind of evening.",
+  "ja": "そしてその装いは、まさに彼好みの夜だ。"
+ },
+ "pl_wear_no": {
+  "en": "You catch yourself in the mirror: lovely — but not quite his evening. (Change in the Party menu; the wardrobe is here.)",
+  "ja": "鏡に映る自分：素敵だけど、彼の好みとは少し違う。（着替えは「パーティ」メニューから。クローゼットはここ）"
+ },
+ "pl_good": {
+  "en": "The plan fits him (2 of 3 or better): Trust +1, and his guard starts lower tonight.",
+  "ja": "計画は彼にぴったり（3つ中2つ以上）：信頼 +1、今夜は心の壁が低いところから始まる。"
+ },
+ "pl_bad": {
+  "en": "The plan doesn't quite fit him (fewer than 2 of 3): the date starts at his full guard.",
+  "ja": "計画は彼に合わなかった（3つ中2つ未満）：デートは心の壁が高いまま始まる。"
+ },
+ "m_party": {
+  "en": "Me",
+  "ja": "わたし"
  },
  "r_home": {
   "en": "Your flat",

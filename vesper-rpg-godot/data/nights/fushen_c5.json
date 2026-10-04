@@ -46,6 +46,16 @@
    },
    "hotspots": [
     {
+     "id": "plan",
+     "kind": "event",
+     "event": "plan",
+     "pos": [
+      0.56,
+      0.34
+     ],
+     "label_key": "hs_plan"
+    },
+    {
      "id": "out",
      "kind": "door",
      "to": "street",
@@ -165,7 +175,8 @@
       0.86,
       0.4
      ],
-     "label_key": "r_v_fushen_5"
+     "label_key": "r_v_fushen_5",
+     "if_flag": "c5_planned"
     }
    ],
    "heroine_pose": "",
@@ -264,18 +275,20 @@
       0.3,
       0.42
      ],
-     "label_key": "hs_b1"
+     "label_key": "hs_b1",
+     "if_flag": "c5_venue"
     },
     {
      "id": "date1",
-     "kind": "enemy",
-     "enemy": "date_fushen_5",
+     "kind": "event",
+     "event": "date1",
      "pos": [
       0.42,
       0.56
      ],
-     "after": "after1",
-     "if_flag": "s1"
+     "label_key": "e_date_fushen_5",
+     "turns": 2,
+     "if_flag": "c5_s1"
     },
     {
      "id": "beat2",
@@ -286,7 +299,7 @@
       0.42
      ],
      "label_key": "hs_b2",
-     "if_flag": "s2"
+     "if_flag": "c5_s2"
     },
     {
      "id": "end",
@@ -297,7 +310,7 @@
       0.56
      ],
      "label_key": "hs_end",
-     "if_flag": "s3"
+     "if_flag": "c5_s3"
     }
    ],
    "heroine_pose": "fushen_smile",
@@ -316,6 +329,214 @@
    {
     "say": "narrator",
     "key": "ev_desk"
+   }
+  ],
+  "plan": [
+   {
+    "say": "narrator",
+    "key": "pl_day_5"
+   },
+   {
+    "say": "narrator",
+    "key": "pl_hint_fushen"
+   },
+   {
+    "say": "narrator",
+    "key": "pl_q_stop"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Stop at the late café first.",
+      "auto_rank": 2,
+      "do": [
+       {
+        "flag": "c5_pv"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_fit"
+       }
+      ]
+     },
+     {
+      "menu": "Take the long way through the city.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     },
+     {
+      "menu": "Go straight to him.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "say": "narrator",
+    "key": "pl_q_way"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Keep it light and playful.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     },
+     {
+      "menu": "Be sincere; say what you mean.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     },
+     {
+      "menu": "Be patient; let him come to you.",
+      "auto_rank": 2,
+      "do": [
+       {
+        "flag": "c5_pa"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_fit"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "if_equipped": "dress",
+    "then": [
+     {
+      "flag": "c5_po"
+     },
+     {
+      "say": "narrator",
+      "key": "pl_wear_ok"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "pl_wear_no"
+     }
+    ]
+   },
+   {
+    "if_flag": "c5_pv",
+    "then": [
+     {
+      "if_flag": "c5_pa",
+      "then": [
+       {
+        "flag": "plan5"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_good"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "xp": 10
+       }
+      ],
+      "else": [
+       {
+        "if_flag": "c5_po",
+        "then": [
+         {
+          "flag": "plan5"
+         },
+         {
+          "say": "narrator",
+          "key": "pl_good"
+         },
+         {
+          "trust": 1
+         },
+         {
+          "xp": 10
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "pl_bad"
+         },
+         {
+          "xp": 5
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "c5_pa",
+      "then": [
+       {
+        "if_flag": "c5_po",
+        "then": [
+         {
+          "flag": "plan5"
+         },
+         {
+          "say": "narrator",
+          "key": "pl_good"
+         },
+         {
+          "trust": 1
+         },
+         {
+          "xp": 10
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "pl_bad"
+         },
+         {
+          "xp": 5
+         }
+        ]
+       }
+      ],
+      "else": [
+       {
+        "say": "narrator",
+        "key": "pl_bad"
+       },
+       {
+        "xp": 5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "flag": "c5_planned"
    }
   ],
   "s": [
@@ -348,6 +569,9 @@
    },
    {
     "lines": "fushen_c5:1-1"
+   },
+   {
+    "flag": "c5_venue"
    }
   ],
   "beat0": [
@@ -358,7 +582,7 @@
     "xp": 10
    },
    {
-    "flag": "s1"
+    "flag": "c5_s1"
    }
   ],
   "after1": [
@@ -367,7 +591,25 @@
     "key": "vb_win_big_1"
    },
    {
-    "flag": "s2"
+    "flag": "c5_s2"
+   }
+  ],
+  "date1": [
+   {
+    "if_flag": "plan5",
+    "then": [
+     {
+      "battle": "date_fushen_5_p"
+     }
+    ],
+    "else": [
+     {
+      "battle": "date_fushen_5"
+     }
+    ]
+   },
+   {
+    "event": "after1"
    }
   ],
   "beat2": [
@@ -378,7 +620,7 @@
     "xp": 10
    },
    {
-    "flag": "s3"
+    "flag": "c5_s3"
    }
   ],
   "end": [

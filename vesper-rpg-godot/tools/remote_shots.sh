@@ -8,7 +8,7 @@ cd "$(dirname "$0")/.."
 HOST="${REMOTE_HOST:-bfs@100.121.195.19}"
 SCENE="${1:-res://tests/shots.tscn}"; OUT="${2:-shots/latest}"; shift 2 || true
 GODOT_LOCAL="$HOME/bin/godot/Godot_v4.7-stable_linux.x86_64"
-R=rpgtestvesper
+R=${REMOTE_DIR:-rpgtestvesper}
 ssh -o ConnectTimeout=10 -o BatchMode=yes "$HOST" "mkdir -p ~/$R/bin ~/$R/game"
 ssh "$HOST" "test -x ~/$R/bin/godot" || rsync -a "$GODOT_LOCAL" "$HOST:$R/bin/godot"
 rsync -aL --delete --exclude .godot --exclude shots --exclude build ./ "$HOST:$R/game/"

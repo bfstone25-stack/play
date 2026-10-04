@@ -256,7 +256,7 @@ func _choose(opts: Array) -> int:
 		if player == "cold":
 			v = -v
 		elif player == "middle":
-			v = -absf(float(_trust_of(o))) + float(o.get("auto_rank", 0)) * 0.1 - (100.0 if _sets_avoided(o) else 0.0)
+			v = -absf(float(_trust_of(o))) - float(o.get("auto_rank", 0)) * 0.1 - (100.0 if _sets_avoided(o) else 0.0)
 		if v > best_v:
 			best_v = v
 			best = i

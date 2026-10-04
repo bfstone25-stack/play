@@ -46,6 +46,16 @@
    },
    "hotspots": [
     {
+     "id": "plan",
+     "kind": "event",
+     "event": "plan",
+     "pos": [
+      0.56,
+      0.34
+     ],
+     "label_key": "hs_plan"
+    },
+    {
      "id": "out",
      "kind": "door",
      "to": "street",
@@ -137,7 +147,8 @@
       0.6,
       0.6
      ],
-     "after": "stranger_after"
+     "after": "stranger_after",
+     "if_flag": "c1_planned"
     },
     {
      "id": "venue",
@@ -148,7 +159,7 @@
       0.4
      ],
      "label_key": "r_v_luxingye_1",
-     "if_flag": "street_clear"
+     "if_flag": "c1_street"
     }
    ],
    "heroine_pose": "",
@@ -247,18 +258,20 @@
       0.3,
       0.42
      ],
-     "label_key": "hs_b1"
+     "label_key": "hs_b1",
+     "if_flag": "c1_venue"
     },
     {
      "id": "date1",
-     "kind": "enemy",
-     "enemy": "date_luxingye_1",
+     "kind": "event",
+     "event": "date1",
      "pos": [
       0.42,
       0.56
      ],
-     "after": "after1",
-     "if_flag": "s1"
+     "label_key": "e_date_luxingye_1",
+     "turns": 2,
+     "if_flag": "c1_s1"
     },
     {
      "id": "beat2",
@@ -269,7 +282,7 @@
       0.42
      ],
      "label_key": "hs_b2",
-     "if_flag": "s2"
+     "if_flag": "c1_s2"
     },
     {
      "id": "beat3",
@@ -280,7 +293,7 @@
       0.66
      ],
      "label_key": "hs_b3",
-     "if_flag": "s3"
+     "if_flag": "c1_s3"
     },
     {
      "id": "end",
@@ -291,7 +304,7 @@
       0.56
      ],
      "label_key": "hs_end",
-     "if_flag": "s4"
+     "if_flag": "c1_s4"
     }
    ],
    "heroine_pose": "luxingye_smile",
@@ -312,13 +325,221 @@
     "key": "ev_desk"
    }
   ],
+  "plan": [
+   {
+    "say": "narrator",
+    "key": "pl_day_1"
+   },
+   {
+    "say": "narrator",
+    "key": "pl_hint_luxingye"
+   },
+   {
+    "say": "narrator",
+    "key": "pl_q_stop"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Stop at the late café first.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     },
+     {
+      "menu": "Take the long way through the city.",
+      "auto_rank": 2,
+      "do": [
+       {
+        "flag": "c1_pv"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_fit"
+       }
+      ]
+     },
+     {
+      "menu": "Go straight to him.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "say": "narrator",
+    "key": "pl_q_way"
+   },
+   {
+    "choice": [
+     {
+      "menu": "Keep it light and playful.",
+      "auto_rank": 2,
+      "do": [
+       {
+        "flag": "c1_pa"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_fit"
+       }
+      ]
+     },
+     {
+      "menu": "Be sincere; say what you mean.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     },
+     {
+      "menu": "Be patient; let him come to you.",
+      "auto_rank": 0,
+      "do": [
+       {
+        "say": "narrator",
+        "key": "pl_miss"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "if_equipped": "dress",
+    "then": [
+     {
+      "flag": "c1_po"
+     },
+     {
+      "say": "narrator",
+      "key": "pl_wear_ok"
+     }
+    ],
+    "else": [
+     {
+      "say": "narrator",
+      "key": "pl_wear_no"
+     }
+    ]
+   },
+   {
+    "if_flag": "c1_pv",
+    "then": [
+     {
+      "if_flag": "c1_pa",
+      "then": [
+       {
+        "flag": "plan1"
+       },
+       {
+        "say": "narrator",
+        "key": "pl_good"
+       },
+       {
+        "trust": 1
+       },
+       {
+        "xp": 10
+       }
+      ],
+      "else": [
+       {
+        "if_flag": "c1_po",
+        "then": [
+         {
+          "flag": "plan1"
+         },
+         {
+          "say": "narrator",
+          "key": "pl_good"
+         },
+         {
+          "trust": 1
+         },
+         {
+          "xp": 10
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "pl_bad"
+         },
+         {
+          "xp": 5
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "else": [
+     {
+      "if_flag": "c1_pa",
+      "then": [
+       {
+        "if_flag": "c1_po",
+        "then": [
+         {
+          "flag": "plan1"
+         },
+         {
+          "say": "narrator",
+          "key": "pl_good"
+         },
+         {
+          "trust": 1
+         },
+         {
+          "xp": 10
+         }
+        ],
+        "else": [
+         {
+          "say": "narrator",
+          "key": "pl_bad"
+         },
+         {
+          "xp": 5
+         }
+        ]
+       }
+      ],
+      "else": [
+       {
+        "say": "narrator",
+        "key": "pl_bad"
+       },
+       {
+        "xp": 5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "flag": "c1_planned"
+   }
+  ],
   "stranger_after": [
    {
     "say": "narrator",
     "key": "post_doorman"
    },
    {
-    "flag": "street_clear"
+    "flag": "c1_street"
    }
   ],
   "cc": [
@@ -339,6 +560,9 @@
    },
    {
     "lines": "luxingye_c1:1-2"
+   },
+   {
+    "flag": "c1_venue"
    }
   ],
   "beat0": [
@@ -349,7 +573,7 @@
     "xp": 10
    },
    {
-    "flag": "s1"
+    "flag": "c1_s1"
    }
   ],
   "after1": [
@@ -358,7 +582,25 @@
     "key": "vb_stage_1"
    },
    {
-    "flag": "s2"
+    "flag": "c1_s2"
+   }
+  ],
+  "date1": [
+   {
+    "if_flag": "plan1",
+    "then": [
+     {
+      "battle": "date_luxingye_1_p"
+     }
+    ],
+    "else": [
+     {
+      "battle": "date_luxingye_1"
+     }
+    ]
+   },
+   {
+    "event": "after1"
    }
   ],
   "beat2": [
@@ -369,7 +611,7 @@
     "xp": 10
    },
    {
-    "flag": "s3"
+    "flag": "c1_s3"
    }
   ],
   "beat3": [
@@ -380,7 +622,7 @@
     "xp": 10
    },
    {
-    "flag": "s4"
+    "flag": "c1_s4"
    }
   ],
   "end": [
