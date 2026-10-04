@@ -1,0 +1,434 @@
+{
+ "cg_calder.png": {
+  "chest": [
+   0.5,
+   0.47
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "man seated at desk"
+ },
+ "cg_calder_thumb.png": {
+  "chest": [
+   0.5,
+   0.47
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "man seated at desk"
+ },
+ "cg_calder_locked.png": {
+  "chest": [
+   0.5,
+   0.47
+  ],
+  "radius": 0.25,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_collateral.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "woman seated, open jacket"
+ },
+ "cg_collateral_thumb.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "woman seated, open jacket"
+ },
+ "cg_collateral_locked.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.22,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_descent.png": {
+  "chest": [
+   0.52,
+   0.33
+  ],
+  "radius": 0.12,
+  "amp": 0.012,
+  "note": "woman walking away, stairs"
+ },
+ "cg_descent_thumb.png": {
+  "chest": [
+   0.52,
+   0.33
+  ],
+  "radius": 0.12,
+  "amp": 0.012,
+  "note": "woman walking away, stairs"
+ },
+ "cg_descent_locked.png": {
+  "chest": [
+   0.52,
+   0.33
+  ],
+  "radius": 0.12,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_factor.png": {
+  "chest": [
+   0.27,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "woman beside bald man"
+ },
+ "cg_factor_thumb.png": {
+  "chest": [
+   0.27,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "woman beside bald man"
+ },
+ "cg_factor_locked.png": {
+  "chest": [
+   0.27,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_finial.png": {
+  "chest": [
+   0.55,
+   0.45
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "bare-backed woman on bed"
+ },
+ "cg_finial_thumb.png": {
+  "chest": [
+   0.55,
+   0.45
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "bare-backed woman on bed"
+ },
+ "cg_finial_locked.png": {
+  "chest": [
+   0.55,
+   0.45
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_heart.png": {
+  "chest": [
+   0.5,
+   0.65
+  ],
+  "radius": 0.25,
+  "amp": 0.008,
+  "note": "woman close-up, coat"
+ },
+ "cg_heart_thumb.png": {
+  "chest": [
+   0.5,
+   0.65
+  ],
+  "radius": 0.25,
+  "amp": 0.008,
+  "note": "woman close-up, coat"
+ },
+ "cg_heart_locked.png": {
+  "chest": [
+   0.5,
+   0.65
+  ],
+  "radius": 0.25,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_mara_letters.png": {
+  "chest": [
+   0.37,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "woman reading letters at desk"
+ },
+ "cg_mara_letters_thumb.png": {
+  "chest": [
+   0.37,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "woman reading letters at desk"
+ },
+ "cg_mara_letters_locked.png": {
+  "chest": [
+   0.37,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_market.png": {
+  "chest": [
+   0.47,
+   0.66
+  ],
+  "radius": 0.12,
+  "amp": 0.008,
+  "note": "silhouette man in market"
+ },
+ "cg_market_thumb.png": {
+  "chest": [
+   0.47,
+   0.66
+  ],
+  "radius": 0.12,
+  "amp": 0.008,
+  "note": "silhouette man in market"
+ },
+ "cg_market_locked.png": {
+  "chest": [
+   0.47,
+   0.66
+  ],
+  "radius": 0.12,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_market_crowd.png": {
+  "chest": [
+   0.52,
+   0.47
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "woman in white coat, lanterns"
+ },
+ "cg_market_crowd_thumb.png": {
+  "chest": [
+   0.52,
+   0.47
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "woman in white coat, lanterns"
+ },
+ "cg_market_crowd_locked.png": {
+  "chest": [
+   0.52,
+   0.47
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_maya.png": {
+  "chest": [
+   0.47,
+   0.55
+  ],
+  "radius": 0.16,
+  "amp": 0.012,
+  "note": "woman in shirt by window"
+ },
+ "cg_maya_thumb.png": {
+  "chest": [
+   0.47,
+   0.55
+  ],
+  "radius": 0.16,
+  "amp": 0.012,
+  "note": "woman in shirt by window"
+ },
+ "cg_maya_locked.png": {
+  "chest": [
+   0.47,
+   0.55
+  ],
+  "radius": 0.16,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_moth.png": {
+  "chest": [
+   0.48,
+   0.53
+  ],
+  "radius": 0.16,
+  "amp": 0.012,
+  "note": "moth-winged woman seated"
+ },
+ "cg_moth_thumb.png": {
+  "chest": [
+   0.48,
+   0.53
+  ],
+  "radius": 0.16,
+  "amp": 0.012,
+  "note": "moth-winged woman seated"
+ },
+ "cg_moth_locked.png": {
+  "chest": [
+   0.48,
+   0.53
+  ],
+  "radius": 0.16,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_ring.png": {
+  "chest": [
+   0.57,
+   0.48
+  ],
+  "radius": 0.17,
+  "amp": 0.012,
+  "note": "bare-backed woman, rainy window"
+ },
+ "cg_ring_thumb.png": {
+  "chest": [
+   0.57,
+   0.48
+  ],
+  "radius": 0.17,
+  "amp": 0.012,
+  "note": "bare-backed woman, rainy window"
+ },
+ "cg_ring_locked.png": {
+  "chest": [
+   0.57,
+   0.48
+  ],
+  "radius": 0.17,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_solvent.png": {
+  "chest": [
+   0.3,
+   0.6
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "woman asleep on desk"
+ },
+ "cg_solvent_thumb.png": {
+  "chest": [
+   0.3,
+   0.6
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "woman asleep on desk"
+ },
+ "cg_solvent_locked.png": {
+  "chest": [
+   0.3,
+   0.6
+  ],
+  "radius": 0.22,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_tamsin.png": {
+  "chest": [
+   0.5,
+   0.6
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "woman on bed, teapot"
+ },
+ "cg_tamsin_thumb.png": {
+  "chest": [
+   0.5,
+   0.6
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "woman on bed, teapot"
+ },
+ "cg_tamsin_locked.png": {
+  "chest": [
+   0.5,
+   0.6
+  ],
+  "radius": 0.25,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_tamsin_bath.png": {
+  "chest": [
+   0.65,
+   0.82
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "woman in bath, looking back"
+ },
+ "cg_tamsin_bath_thumb.png": {
+  "chest": [
+   0.65,
+   0.82
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "woman in bath, looking back"
+ },
+ "cg_tamsin_bath_locked.png": {
+  "chest": [
+   0.65,
+   0.82
+  ],
+  "radius": 0.22,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ },
+ "cg_veil.png": {
+  "chest": [
+   0.5,
+   0.45
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "veiled woman at mirror"
+ },
+ "cg_veil_thumb.png": {
+  "chest": [
+   0.5,
+   0.45
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "veiled woman at mirror"
+ },
+ "cg_veil_locked.png": {
+  "chest": [
+   0.5,
+   0.45
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder, still"
+ }
+}

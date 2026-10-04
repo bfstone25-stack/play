@@ -90,6 +90,14 @@ func _ready() -> void:
 		print("SHOTS: ", JSON.stringify(taken.keys()))
 		get_tree().quit()
 		return
+	# --langs=de,fr,... : night one in each listed language only (the i18n check run)
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--langs="):
+			for l in a.trim_prefix("--langs=").split(","):
+				await run_lang(l, false)
+			print("SHOTS: ", JSON.stringify(taken.keys()))
+			get_tree().quit()
+			return
 	await run_lang("en", true)
 	await run_lang("ja", true)
 	RPG.trial_override = true   # a third, short pass: the Japanese trial to its end screen

@@ -11,8 +11,8 @@ S = {
              "本作品は成人向け（18歳以上）です。登場人物はすべて成人で、作中でもそう明記されています。親密な場面はすべて合意のうえで、その意思が作中で確かめられます。性的な表現を含みます（性器の描写はありません）。"),
 "about_ai": ("AI disclosure: Generative AI is used as a production tool in this work, which was made through intensive collaboration between the developer and AI over several hundred hours. Images (sprites, backgrounds, CGs) are output by an image-generation model and the voice by a speech-synthesis model. The concept, world, story structure, direction, character design, the selection and compositing of every image, voice direction, game-system design and balancing, and testing are the developer's work; the script text and the program were written and edited jointly by AI language models and the developer.",
              "【AI使用について】本作は生成AIを制作ツールとして活用し、開発者とAIの集中的な共同作業で制作しました。画像（立ち絵・背景・CG）は画像生成AIで出力し、音声は音声合成AIで生成しています。企画・世界観・ストーリー構成・演出・キャラクター設計、すべての画像の選定と合成、音声の演技指示、ゲームシステムの設計とバランス調整、テストは開発者が行い、シナリオ文とプログラムはAI（大規模言語モデル）と開発者が共同で執筆・編集しています。制作には数百時間を費やしています。"),
-"lang_note": ("Japanese: the interface, the RPG text and every standoff are in Japanese; the six routes' story prose (beats, his replies, endings) is in English only.",
-              "日本語について：インターフェース、RPG部分の文章、すべての対峙は日本語です。六つのルートの本編の文章（場面・彼の台詞・エンディング）は英語のみです。"),
+"lang_note": ("All seven languages cover the interface, the RPG text, every standoff and the six routes' story; voice is in English.",
+              "七言語すべてで、インターフェース、RPG部分の文章、すべての対峙、六つのルートの本編を収録しています。ボイスは英語です。"),
 # core overrides
 "ev_trust": ("Trust +%d", "信頼 +%d"),
 "toast_trust": ("Trust %d — he has let you a little further in", "信頼 %d — 彼はあなたを少し内側へ入れた"),

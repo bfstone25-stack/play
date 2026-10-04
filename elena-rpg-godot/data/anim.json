@@ -1,0 +1,344 @@
+{
+ "cg_aftermath.webp": {
+  "chest": [
+   0.44,
+   0.58
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Elena seated in armchair"
+ },
+ "cg_aftermath_locked.webp": {
+  "chest": [
+   0.44,
+   0.58
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Elena seated in armchair"
+ },
+ "cg_aftermath_thumb.webp": {
+  "chest": [
+   0.44,
+   0.58
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Elena seated in armchair"
+ },
+ "cg_annex.webp": {
+  "chest": [
+   0.58,
+   0.62
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Elena slumped over desk"
+ },
+ "cg_annex_locked.webp": {
+  "chest": [
+   0.58,
+   0.62
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Elena slumped over desk"
+ },
+ "cg_annex_thumb.webp": {
+  "chest": [
+   0.58,
+   0.62
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Elena slumped over desk"
+ },
+ "cg_ch2_office.webp": {
+  "chest": [
+   0.52,
+   0.62
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Elena bent over desk"
+ },
+ "cg_ch2_office_thumb.webp": {
+  "chest": [
+   0.52,
+   0.62
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Elena bent over desk"
+ },
+ "cg_ch3_crypt.webp": {
+  "chest": [
+   0.52,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Elena straddling man, embrace"
+ },
+ "cg_ch3_crypt_thumb.webp": {
+  "chest": [
+   0.52,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Elena straddling man, embrace"
+ },
+ "cg_ch4_chapel.webp": {
+  "chest": [
+   0.58,
+   0.55
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Elena lying back on table"
+ },
+ "cg_ch4_chapel_thumb.webp": {
+  "chest": [
+   0.58,
+   0.55
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Elena lying back on table"
+ },
+ "cg_ch5_muniment.webp": {
+  "chest": [
+   0.52,
+   0.47
+  ],
+  "radius": 0.15,
+  "amp": 0.012,
+  "note": "Elena on top, kneeling"
+ },
+ "cg_ch5_muniment_thumb.webp": {
+  "chest": [
+   0.52,
+   0.47
+  ],
+  "radius": 0.15,
+  "amp": 0.012,
+  "note": "Elena on top, kneeling"
+ },
+ "cg_climax_control.webp": {
+  "chest": [
+   0.6,
+   0.48
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Elena lying on floor"
+ },
+ "cg_climax_control_locked.webp": {
+  "chest": [
+   0.6,
+   0.48
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Elena lying on floor"
+ },
+ "cg_climax_control_thumb.webp": {
+  "chest": [
+   0.6,
+   0.48
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Elena lying on floor"
+ },
+ "cg_climax_pact.webp": {
+  "chest": [
+   0.58,
+   0.55
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "Elena close-up, on top"
+ },
+ "cg_climax_pact_locked.webp": {
+  "chest": [
+   0.58,
+   0.55
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "Elena close-up, on top"
+ },
+ "cg_climax_pact_thumb.webp": {
+  "chest": [
+   0.58,
+   0.55
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "Elena close-up, on top"
+ },
+ "cg_coal_store.webp": {
+  "chest": [
+   0.6,
+   0.52
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Elena seated on coal heap"
+ },
+ "cg_coal_store_locked.webp": {
+  "chest": [
+   0.6,
+   0.52
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Elena seated on coal heap"
+ },
+ "cg_coal_store_thumb.webp": {
+  "chest": [
+   0.6,
+   0.52
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Elena seated on coal heap"
+ },
+ "cg_confrontation.webp": {
+  "chest": [
+   0.48,
+   0.72
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Elena close-up holding book"
+ },
+ "cg_confrontation_thumb.webp": {
+  "chest": [
+   0.48,
+   0.72
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Elena close-up holding book"
+ },
+ "cg_muniment.webp": {
+  "chest": [
+   0.62,
+   0.75
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "Elena close-up, reading"
+ },
+ "cg_muniment_locked.webp": {
+  "chest": [
+   0.62,
+   0.75
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "Elena close-up, reading"
+ },
+ "cg_muniment_thumb.webp": {
+  "chest": [
+   0.62,
+   0.75
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "Elena close-up, reading"
+ },
+ "cg_rpg_rain_arrival.png": {
+  "chest": [
+   0.63,
+   0.42
+  ],
+  "radius": 0.1,
+  "amp": 0.012,
+  "note": "Elena standing, raincoat"
+ },
+ "cg_rpg_map_room.png": {
+  "chest": [
+   0.55,
+   0.6
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Elena leaning over map"
+ },
+ "cg_rpg_lockpick.png": {
+  "chest": [
+   0.53,
+   0.8
+  ],
+  "radius": 0.22,
+  "amp": 0.008,
+  "note": "Elena close-up with lockpick"
+ },
+ "cg_rpg_bell_chamber.png": {
+  "chest": [
+   0.58,
+   0.75
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Elena close-up in belfry"
+ },
+ "cg_rpg_roof_dawn.png": {
+  "chest": [
+   0.6,
+   0.47
+  ],
+  "radius": 0.1,
+  "amp": 0.012,
+  "note": "Elena sitting on roof"
+ },
+ "cg_rpg_gala.png": {
+  "chest": [
+   0.55,
+   0.75
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Elena back view, champagne"
+ },
+ "cg_trust3_carrel.png": {
+  "chest": [
+   0.47,
+   0.72
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Elena leaning forward, blouse"
+ },
+ "cg_trust5_common_room.png": {
+  "chest": [
+   0.52,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Elena in man's lap"
+ },
+ "cg_trust7_bath.png": {
+  "chest": [
+   0.55,
+   0.58
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Elena reclining in bath"
+ },
+ "cg_trust9_bed.png": {
+  "chest": [
+   0.42,
+   0.6
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Elena lying on side, bed"
+ }
+}

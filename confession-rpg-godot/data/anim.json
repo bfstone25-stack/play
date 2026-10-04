@@ -1,0 +1,407 @@
+{
+ "cg_adaeze_x.webp": {
+  "chest": [
+   0.38,
+   0.3
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Adaeze nude seated on desk"
+ },
+ "cg_adaeze_x_locked.webp": {
+  "chest": [
+   0.38,
+   0.3
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Adaeze nude seated on desk"
+ },
+ "cg_adaeze_x_thumb.webp": {
+  "chest": [
+   0.38,
+   0.3
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Adaeze nude seated on desk"
+ },
+ "cg_board.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_board_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_board_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_closing.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_closing_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_closing_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence2_x.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence2_x_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence2_x_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence3_x.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence3_x_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence3_x_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence_x.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence_x_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_evidence_x_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_intake.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_intake_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_intake_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_nikolai_x.webp": {
+  "chest": [
+   0.6,
+   0.45
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Nikolai reclining shirt open"
+ },
+ "cg_nikolai_x_locked.webp": {
+  "chest": [
+   0.6,
+   0.45
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Nikolai reclining shirt open"
+ },
+ "cg_nikolai_x_thumb.webp": {
+  "chest": [
+   0.6,
+   0.45
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Nikolai reclining shirt open"
+ },
+ "cg_rpg_bay_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_rpg_bay_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_rpg_paloma_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_rpg_paloma_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_rpg_stairs_locked.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_rpg_stairs_thumb.webp": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_trust5_adaeze_locked.webp": {
+  "chest": [
+   0.42,
+   0.5
+  ],
+  "radius": 0.17,
+  "amp": 0.012,
+  "note": "Adaeze leaning on desk"
+ },
+ "cg_trust5_adaeze_thumb.webp": {
+  "chest": [
+   0.42,
+   0.5
+  ],
+  "radius": 0.17,
+  "amp": 0.012,
+  "note": "Adaeze leaning on desk"
+ },
+ "cg_trust7_nikolai_locked.webp": {
+  "chest": [
+   0.47,
+   0.5
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Nikolai shirtless holding cuffs"
+ },
+ "cg_trust7_nikolai_thumb.webp": {
+  "chest": [
+   0.47,
+   0.5
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Nikolai shirtless holding cuffs"
+ },
+ "cg_trust9_vee_locked.webp": {
+  "chest": [
+   0.48,
+   0.47
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Vee shirtless in bed"
+ },
+ "cg_trust9_vee_thumb.webp": {
+  "chest": [
+   0.48,
+   0.47
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Vee shirtless in bed"
+ },
+ "cg_vee_x.webp": {
+  "chest": [
+   0.44,
+   0.33
+  ],
+  "radius": 0.15,
+  "amp": 0.008,
+  "note": "Vee hugging knees, close"
+ },
+ "cg_vee_x_locked.webp": {
+  "chest": [
+   0.44,
+   0.33
+  ],
+  "radius": 0.15,
+  "amp": 0.008,
+  "note": "Vee hugging knees, close"
+ },
+ "cg_vee_x_thumb.webp": {
+  "chest": [
+   0.44,
+   0.33
+  ],
+  "radius": 0.15,
+  "amp": 0.008,
+  "note": "Vee hugging knees, close"
+ },
+ "cg_rpg_paloma.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_rpg_bay.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_rpg_stairs.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "no person, still"
+ },
+ "cg_trust5_adaeze.png": {
+  "chest": [
+   0.42,
+   0.5
+  ],
+  "radius": 0.17,
+  "amp": 0.012,
+  "note": "Adaeze leaning on desk"
+ },
+ "cg_trust7_nikolai.png": {
+  "chest": [
+   0.47,
+   0.5
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Nikolai shirtless holding cuffs"
+ },
+ "cg_trust9_vee.png": {
+  "chest": [
+   0.48,
+   0.47
+  ],
+  "radius": 0.22,
+  "amp": 0.012,
+  "note": "Vee shirtless in bed"
+ }
+}

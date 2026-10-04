@@ -1,0 +1,407 @@
+{
+ "cg_mirei_lease.png": {
+  "chest": [
+   0.5,
+   0.52
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Mirei signing lease, desk"
+ },
+ "cg_mirei_lease_thumb.png": {
+  "chest": [
+   0.5,
+   0.52
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Mirei signing lease, desk"
+ },
+ "cg_mirei_lease_locked.png": {
+  "chest": [
+   0.5,
+   0.52
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_evicted.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "empty office at night"
+ },
+ "cg_evicted_thumb.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "empty office at night"
+ },
+ "cg_evicted_locked.png": {
+  "chest": [
+   0.5,
+   0.5
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_mara_sofa.png": {
+  "chest": [
+   0.62,
+   0.62
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Mara reclining on sofa"
+ },
+ "cg_mara_sofa_thumb.png": {
+  "chest": [
+   0.62,
+   0.62
+  ],
+  "radius": 0.25,
+  "amp": 0.012,
+  "note": "Mara reclining on sofa"
+ },
+ "cg_mara_sofa_locked.png": {
+  "chest": [
+   0.62,
+   0.62
+  ],
+  "radius": 0.25,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_mara_corners.png": {
+  "chest": [
+   0.48,
+   0.45
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Mara sitting, open shirt"
+ },
+ "cg_mara_corners_thumb.png": {
+  "chest": [
+   0.48,
+   0.45
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Mara sitting, open shirt"
+ },
+ "cg_mara_corners_locked.png": {
+  "chest": [
+   0.48,
+   0.45
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_priya_rooftop.png": {
+  "chest": [
+   0.48,
+   0.6
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Priya on rooftop, hardhat"
+ },
+ "cg_priya_rooftop_thumb.png": {
+  "chest": [
+   0.48,
+   0.6
+  ],
+  "radius": 0.2,
+  "amp": 0.012,
+  "note": "Priya on rooftop, hardhat"
+ },
+ "cg_priya_rooftop_locked.png": {
+  "chest": [
+   0.48,
+   0.6
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_priya_x.png": {
+  "chest": [
+   0.63,
+   0.6
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Priya bare back, over shoulder"
+ },
+ "cg_priya_x_thumb.png": {
+  "chest": [
+   0.63,
+   0.6
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Priya bare back, over shoulder"
+ },
+ "cg_priya_x_locked.png": {
+  "chest": [
+   0.63,
+   0.6
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_nia_ledger.png": {
+  "chest": [
+   0.53,
+   0.48
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Nia seated by window"
+ },
+ "cg_nia_ledger_thumb.png": {
+  "chest": [
+   0.53,
+   0.48
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Nia seated by window"
+ },
+ "cg_nia_ledger_locked.png": {
+  "chest": [
+   0.53,
+   0.48
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_nia_after.png": {
+  "chest": [
+   0.4,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0.008,
+  "note": "Nia bare back, glasses"
+ },
+ "cg_nia_after_thumb.png": {
+  "chest": [
+   0.4,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0.008,
+  "note": "Nia bare back, glasses"
+ },
+ "cg_nia_after_locked.png": {
+  "chest": [
+   0.4,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_sol_press.png": {
+  "chest": [
+   0.5,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Sol at typewriter desk"
+ },
+ "cg_sol_press_thumb.png": {
+  "chest": [
+   0.5,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Sol at typewriter desk"
+ },
+ "cg_sol_press_locked.png": {
+  "chest": [
+   0.5,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_sol_after.png": {
+  "chest": [
+   0.47,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Sol arms crossed, smiling"
+ },
+ "cg_sol_after_thumb.png": {
+  "chest": [
+   0.47,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Sol arms crossed, smiling"
+ },
+ "cg_sol_after_locked.png": {
+  "chest": [
+   0.47,
+   0.6
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_mirei_window.png": {
+  "chest": [
+   0.5,
+   0.58
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Mirei bare back, wine"
+ },
+ "cg_mirei_window_thumb.png": {
+  "chest": [
+   0.5,
+   0.58
+  ],
+  "radius": 0.2,
+  "amp": 0.008,
+  "note": "Mirei bare back, wine"
+ },
+ "cg_mirei_window_locked.png": {
+  "chest": [
+   0.5,
+   0.58
+  ],
+  "radius": 0.2,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_glass_office.png": {
+  "chest": [
+   0.41,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "woman back view, window"
+ },
+ "cg_glass_office_thumb.png": {
+  "chest": [
+   0.41,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "woman back view, window"
+ },
+ "cg_glass_office_locked.png": {
+  "chest": [
+   0.41,
+   0.55
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_vault_x.png": {
+  "chest": [
+   0.48,
+   0.4
+  ],
+  "radius": 0.15,
+  "amp": 0.012,
+  "note": "Mirei on desk, cash"
+ },
+ "cg_vault_x_thumb.png": {
+  "chest": [
+   0.48,
+   0.4
+  ],
+  "radius": 0.15,
+  "amp": 0.012,
+  "note": "Mirei on desk, cash"
+ },
+ "cg_vault_x_locked.png": {
+  "chest": [
+   0.48,
+   0.4
+  ],
+  "radius": 0.15,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_keys.png": {
+  "chest": [
+   0.48,
+   0.48
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Mirei standing, pinstripe suit"
+ },
+ "cg_keys_thumb.png": {
+  "chest": [
+   0.48,
+   0.48
+  ],
+  "radius": 0.18,
+  "amp": 0.012,
+  "note": "Mirei standing, pinstripe suit"
+ },
+ "cg_keys_locked.png": {
+  "chest": [
+   0.48,
+   0.48
+  ],
+  "radius": 0.18,
+  "amp": 0,
+  "note": "locked placeholder"
+ },
+ "cg_floor9.png": {
+  "chest": [
+   0.41,
+   0.57
+  ],
+  "radius": 0.12,
+  "amp": 0.012,
+  "note": "silhouette at desk, skyline"
+ },
+ "cg_floor9_thumb.png": {
+  "chest": [
+   0.41,
+   0.57
+  ],
+  "radius": 0.12,
+  "amp": 0.012,
+  "note": "silhouette at desk, skyline"
+ },
+ "cg_floor9_locked.png": {
+  "chest": [
+   0.41,
+   0.57
+  ],
+  "radius": 0.12,
+  "amp": 0,
+  "note": "locked placeholder"
+ }
+}

@@ -27,6 +27,7 @@ func _ready() -> void:
 	add_child(plate)
 	figure = Sprite2D.new()
 	figure.position = Vector2(VIEW.x * 0.72, VIEW.y * 0.62)
+	figure.material = NRAlive.material_for(null, true)
 	add_child(figure)
 	dust = Sprite2D.new()
 	dust.position = VIEW / 2
@@ -91,6 +92,7 @@ func set_figure(tex: Texture2D, x: float = 0.72) -> void:
 	if tex != null:
 		var k := VIEW.y * 0.86 / tex.get_height()
 		figure.scale = Vector2(k, k)
+		NRAlive.fit(figure.material, tex, true)
 		figure_base = Vector2(VIEW.x * x, VIEW.y - tex.get_height() * k / 2 + 30)
 
 

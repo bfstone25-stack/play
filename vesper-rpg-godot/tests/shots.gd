@@ -44,6 +44,13 @@ func _ready() -> void:
 		get_tree().quit()
 		return
 	var en_routes: Array = ROUTES if only == "" else Array(only.split(","))
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--langs="):
+			for l in a.trim_prefix("--langs=").split(","):
+				await run_lang(l, ["guyan"], false)
+			print("SHOTS: ", JSON.stringify(taken.keys()))
+			get_tree().quit()
+			return
 	await run_lang("en", en_routes, true)
 	await run_lang("ja", ["guyan"], true)
 	RPG.trial_override = true

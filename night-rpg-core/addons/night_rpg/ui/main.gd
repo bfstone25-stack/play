@@ -1162,6 +1162,23 @@ func show_settings() -> void:
 		if vl == cur:
 			vb.modulate = Color(1, 0.9, 0.6)
 		gv.add_child(vb)
+	# motion: breathing / sway on figures and CGs; off for players who prefer still images
+	var mrow := HBoxContainer.new()
+	v.add_child(mrow)
+	var mlab := NRSkin.label(Loc.t("st_motion"), 18)
+	mlab.custom_minimum_size = Vector2(260, 0)
+	mrow.add_child(mlab)
+	for on in [true, false]:
+		var mb := NRSkin.button(Loc.t("st_on") if on else Loc.t("st_off"), func():
+			RPG.persist["motion"] = on
+			RPG.save_persist()
+			for m in [stage.figure.material if stage != null else null, event.cg.material if event != null else null]:
+				if m is ShaderMaterial:
+					m.set_shader_parameter("motion", 1.0 if on else 0.0)
+			show_settings(), 18)
+		if NRAlive.enabled() == on:
+			mb.modulate = Color(1, 0.9, 0.6)
+		mrow.add_child(mb)
 	for key in ["vol_music", "vol_sfx", "vol_voice"]:
 		var row := HBoxContainer.new()
 		v.add_child(row)

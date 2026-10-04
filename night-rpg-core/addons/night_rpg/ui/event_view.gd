@@ -72,6 +72,9 @@ func show_cg(tex: Texture2D) -> void:
 	cg.texture = tex
 	cg.visible = tex != null
 	if tex != null:
+		if cg.material == null:
+			cg.material = NRAlive.material_for(null, false)
+		NRAlive.fit(cg.material, tex, false)
 		cg.modulate.a = 0.0
 		create_tween().tween_property(cg, "modulate:a", 1.0, 0.6)
 

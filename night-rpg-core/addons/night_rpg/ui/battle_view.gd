@@ -37,6 +37,7 @@ func _ready() -> void:
 	enemy_tex.position = Vector2(780, 196)
 	enemy_tex.size = Vector2(470, 524)
 	enemy_tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	enemy_tex.material = NRAlive.material_for(null, true)
 	add_child(enemy_tex)
 	var top := PanelContainer.new()
 	top.position = Vector2(760, 18)
@@ -100,6 +101,7 @@ func start(enemy_id: String) -> String:
 	for a in RPG.s["known"].get(enemy_id, []):
 		b["revealed"].append(a)
 	enemy_tex.texture = NRArt.tex("enemies", e.get("sprite", enemy_id))
+	NRAlive.fit(enemy_tex.material, enemy_tex.texture, true)
 	e_name.text = Loc.t(e["name_key"])
 	log_lbl.text = Loc.t(e.get("intro_key", "b_intro"))
 	var hb := _heroine_bark("open")
@@ -277,6 +279,7 @@ func _refresh() -> void:
 		var want: Texture2D = NRArt.tex("enemies", e["sprite_pressured"] if pressed else e.get("sprite", b["enemy_id"]))
 		if want != null and enemy_tex.texture != want:
 			enemy_tex.texture = want
+			NRAlive.fit(enemy_tex.material, want, true)
 			if pressed and shot_hook.is_valid():
 				shot_hook.call("battle_pressured")
 	e_comp_lbl.text = Loc.t("b_resolve") % [b["e_comp"], b["e_comp_max"]]

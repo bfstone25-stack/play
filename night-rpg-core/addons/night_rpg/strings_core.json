@@ -835,5 +835,32 @@
   "es": "Igual que el texto",
   "zh": "与文字相同",
   "ko": "텍스트와 동일"
+ },
+ "st_motion": {
+  "en": "Motion (breathing, sway)",
+  "ja": "モーション（呼吸・揺れ）",
+  "de": "Bewegung (Atmen, Wiegen)",
+  "fr": "Animation (respiration, balancement)",
+  "es": "Movimiento (respiración, balanceo)",
+  "zh": "动态（呼吸、摇曳）",
+  "ko": "모션 (호흡, 흔들림)"
+ },
+ "st_on": {
+  "en": "On",
+  "ja": "オン",
+  "de": "An",
+  "fr": "Activée",
+  "es": "Sí",
+  "zh": "开",
+  "ko": "켜기"
+ },
+ "st_off": {
+  "en": "Off",
+  "ja": "オフ",
+  "de": "Aus",
+  "fr": "Désactivée",
+  "es": "No",
+  "zh": "关",
+  "ko": "끄기"
  }
 }
