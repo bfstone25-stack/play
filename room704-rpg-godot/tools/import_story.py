@@ -108,5 +108,16 @@ def main():
         print(f"act{ch}: {len(lines)} lines, {voiced} voiced (EN), {len(menus)} menu strings, {len(missing)} without JA {missing[:5]}")
 
 
+
+def _wire_voice():
+    """Voice packs (ops/dlsite/voice_bulk.py wire): point the heroine lines at assets/voice/<lang>/.
+    Idempotent; re-applied after every rebuild so a regenerated file keeps the packs."""
+    import subprocess as _sp
+    _w = Path(__file__).resolve().parents[3] / "ops/dlsite/voice_bulk.py"
+    if _w.exists():
+        _sp.run(["python3", str(_w), "wire", "room704"], check=False)
+
+
 if __name__ == "__main__":
     main()
+    _wire_voice()

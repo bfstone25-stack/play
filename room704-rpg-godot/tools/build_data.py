@@ -194,3 +194,15 @@ if (RPG_OUT / "manifest.json").exists():
 (D / "game.json").write_text(json.dumps(game, indent=1))
 (D / "art_manifest.json").write_text(json.dumps(art, indent=1))
 print("game.json + art_manifest.json written:", len(ENEMIES), "enemies,", len(ITEMS), "items,", len(ROOMS), "rooms")
+
+
+def _wire_voice():
+    """Voice packs (ops/dlsite/voice_bulk.py wire): point the heroine lines at assets/voice/<lang>/.
+    Idempotent; re-applied after every rebuild so a regenerated file keeps the packs."""
+    import subprocess as _sp
+    _w = Path(__file__).resolve().parents[3] / "ops/dlsite/voice_bulk.py"
+    if _w.exists():
+        _sp.run(["python3", str(_w), "wire", "room704"], check=False)
+
+
+_wire_voice()
