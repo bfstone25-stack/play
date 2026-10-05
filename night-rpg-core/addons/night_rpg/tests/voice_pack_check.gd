@@ -2,7 +2,7 @@ extends Node
 ## Voice packs, headless (GPU box only, never pop-os):
 ##   godot --headless --audio-driver Dummy --path <game> res://addons/night_rpg/tests/voice_pack_check.tscn
 ## Every line that has a pack take (v_en under res://assets/voice/en/) must resolve, in each of the
-## seven packs, to that language's own file, load as a stream and be longer than 0.3 s; and the
+## seven packs, to that language's own file, load as a stream and be longer than 0.15 s (a one-syllable "네" is ~0.25 s); and the
 ## Settings coverage figure must agree. Prints VOICE_PACK PASS / FAIL.
 
 const LANGS := ["en", "ja", "zh", "ko", "de", "fr", "es"]
@@ -24,7 +24,7 @@ func _ready() -> void:
 			var p: String = Sound.voice_path(ln, vl)
 			var want := "res://assets/voice/%s/%s" % [vl, str(ln["v_en"]).get_file()]
 			var st: AudioStream = load(p) if ResourceLoader.exists(p) else null
-			if p != want or st == null or st.get_length() < 0.3:
+			if p != want or st == null or st.get_length() < 0.15:
 				fails += 1
 				if fails <= 20:
 					print("FAIL %s %s -> %s" % [vl, ln["v_en"], p])
