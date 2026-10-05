@@ -1356,67 +1356,316 @@
  ],
  "voice": {
   "v_greet_0": {
-   "v_en": "res://assets/voice/v_greet_0.ogg"
+   "v_en": "res://assets/voice/en/v_greet_0.ogg"
   },
   "v_greet_1": {
-   "v_en": "res://assets/voice/v_greet_1.ogg"
+   "v_en": "res://assets/voice/en/v_greet_1.ogg"
   },
   "v_stage_0": {
-   "v_en": "res://assets/voice/v_stage_0.ogg"
+   "v_en": "res://assets/voice/en/v_stage_0.ogg"
   },
   "v_stage_1": {
-   "v_en": "res://assets/voice/v_stage_1.ogg"
+   "v_en": "res://assets/voice/en/v_stage_1.ogg"
   },
   "v_stage_2": {
-   "v_en": "res://assets/voice/v_stage_2.ogg"
+   "v_en": "res://assets/voice/en/v_stage_2.ogg"
   },
   "v_stage_3": {
-   "v_en": "res://assets/voice/v_stage_3.ogg"
+   "v_en": "res://assets/voice/en/v_stage_3.ogg"
   },
   "v_near_0": {
-   "v_en": "res://assets/voice/v_near_0.ogg"
+   "v_en": "res://assets/voice/en/v_near_0.ogg"
   },
   "v_near_1": {
-   "v_en": "res://assets/voice/v_near_1.ogg"
+   "v_en": "res://assets/voice/en/v_near_1.ogg"
   },
   "v_win_0": {
-   "v_en": "res://assets/voice/v_win_0.ogg"
+   "v_en": "res://assets/voice/en/v_win_0.ogg"
   },
   "v_win_1": {
-   "v_en": "res://assets/voice/v_win_1.ogg"
+   "v_en": "res://assets/voice/en/v_win_1.ogg"
   },
   "v_win_2": {
-   "v_en": "res://assets/voice/v_win_2.ogg"
+   "v_en": "res://assets/voice/en/v_win_2.ogg"
   },
   "v_win_big_0": {
-   "v_en": "res://assets/voice/v_win_big_0.ogg"
+   "v_en": "res://assets/voice/en/v_win_big_0.ogg"
   },
   "v_win_big_1": {
-   "v_en": "res://assets/voice/v_win_big_1.ogg"
+   "v_en": "res://assets/voice/en/v_win_big_1.ogg"
   },
   "v_fail_0": {
-   "v_en": "res://assets/voice/v_fail_0.ogg"
+   "v_en": "res://assets/voice/en/v_fail_0.ogg"
   },
   "v_fail_1": {
-   "v_en": "res://assets/voice/v_fail_1.ogg"
+   "v_en": "res://assets/voice/en/v_fail_1.ogg"
   },
   "v_idle_0": {
-   "v_en": "res://assets/voice/v_idle_0.ogg"
+   "v_en": "res://assets/voice/en/v_idle_0.ogg"
   },
   "v_idle_1": {
-   "v_en": "res://assets/voice/v_idle_1.ogg"
+   "v_en": "res://assets/voice/en/v_idle_1.ogg"
   },
   "v_streak_0": {
-   "v_en": "res://assets/voice/v_streak_0.ogg"
+   "v_en": "res://assets/voice/en/v_streak_0.ogg"
   },
   "v_streak_1": {
-   "v_en": "res://assets/voice/v_streak_1.ogg"
+   "v_en": "res://assets/voice/en/v_streak_1.ogg"
   },
   "v_unlock_0": {
-   "v_en": "res://assets/voice/v_unlock_0.ogg"
+   "v_en": "res://assets/voice/en/v_unlock_0.ogg"
   },
   "v_unlock_1": {
-   "v_en": "res://assets/voice/v_unlock_1.ogg"
+   "v_en": "res://assets/voice/en/v_unlock_1.ogg"
+  },
+  "n1_o2": {
+   "v_en": "res://assets/voice/en/n1_o2.ogg"
+  },
+  "n1_o3": {
+   "v_en": "res://assets/voice/en/n1_o3.ogg"
+  },
+  "n1_o4": {
+   "v_en": "res://assets/voice/en/n1_o4.ogg"
+  },
+  "n1_o5": {
+   "v_en": "res://assets/voice/en/n1_o5.ogg"
+  },
+  "n1_how_1": {
+   "v_en": "res://assets/voice/en/n1_how_1.ogg"
+  },
+  "n1_why_1": {
+   "v_en": "res://assets/voice/en/n1_why_1.ogg"
+  },
+  "n1_o6": {
+   "v_en": "res://assets/voice/en/n1_o6.ogg"
+  },
+  "n1_o7": {
+   "v_en": "res://assets/voice/en/n1_o7.ogg"
+  },
+  "n1_o8": {
+   "v_en": "res://assets/voice/en/n1_o8.ogg"
+  },
+  "n1_p1": {
+   "v_en": "res://assets/voice/en/n1_p1.ogg"
+  },
+  "n1_p_help1": {
+   "v_en": "res://assets/voice/en/n1_p_help1.ogg"
+  },
+  "n1_p_ask1": {
+   "v_en": "res://assets/voice/en/n1_p_ask1.ogg"
+  },
+  "n1_m1": {
+   "v_en": "res://assets/voice/en/n1_m1.ogg"
+  },
+  "n1_m_keys1": {
+   "v_en": "res://assets/voice/en/n1_m_keys1.ogg"
+  },
+  "n1_m_mirei1": {
+   "v_en": "res://assets/voice/en/n1_m_mirei1.ogg"
+  },
+  "n1_short1": {
+   "v_en": "res://assets/voice/en/n1_short1.ogg"
+  },
+  "n1_after1": {
+   "v_en": "res://assets/voice/en/n1_after1.ogg"
+  },
+  "n1_after2": {
+   "v_en": "res://assets/voice/en/n1_after2.ogg"
+  },
+  "mirei_a_2": {
+   "v_en": "res://assets/voice/en/mirei_a_2.ogg"
+  },
+  "mirei_b_2": {
+   "v_en": "res://assets/voice/en/mirei_b_2.ogg"
+  },
+  "mara_a_2": {
+   "v_en": "res://assets/voice/en/mara_a_2.ogg"
+  },
+  "mara_a_4": {
+   "v_en": "res://assets/voice/en/mara_a_4.ogg"
+  },
+  "mara_b_2": {
+   "v_en": "res://assets/voice/en/mara_b_2.ogg"
+  },
+  "mara_b_4": {
+   "v_en": "res://assets/voice/en/mara_b_4.ogg"
+  },
+  "priya_a_2": {
+   "v_en": "res://assets/voice/en/priya_a_2.ogg"
+  },
+  "priya_a_4": {
+   "v_en": "res://assets/voice/en/priya_a_4.ogg"
+  },
+  "priya_b_2": {
+   "v_en": "res://assets/voice/en/priya_b_2.ogg"
+  },
+  "priya_b_4": {
+   "v_en": "res://assets/voice/en/priya_b_4.ogg"
+  },
+  "nia_a_2": {
+   "v_en": "res://assets/voice/en/nia_a_2.ogg"
+  },
+  "nia_b_2": {
+   "v_en": "res://assets/voice/en/nia_b_2.ogg"
+  },
+  "nia_b_4": {
+   "v_en": "res://assets/voice/en/nia_b_4.ogg"
+  },
+  "sol_a_2": {
+   "v_en": "res://assets/voice/en/sol_a_2.ogg"
+  },
+  "sol_b_2": {
+   "v_en": "res://assets/voice/en/sol_b_2.ogg"
+  },
+  "n2_o2": {
+   "v_en": "res://assets/voice/en/n2_o2.ogg"
+  },
+  "n2_o3": {
+   "v_en": "res://assets/voice/en/n2_o3.ogg"
+  },
+  "n2_p1": {
+   "v_en": "res://assets/voice/en/n2_p1.ogg"
+  },
+  "n2_p_st1": {
+   "v_en": "res://assets/voice/en/n2_p_st1.ogg"
+  },
+  "n2_p_te1": {
+   "v_en": "res://assets/voice/en/n2_p_te1.ogg"
+  },
+  "n2_m1": {
+   "v_en": "res://assets/voice/en/n2_m1.ogg"
+  },
+  "n2_m_h1": {
+   "v_en": "res://assets/voice/en/n2_m_h1.ogg"
+  },
+  "n2_m_w1": {
+   "v_en": "res://assets/voice/en/n2_m_w1.ogg"
+  },
+  "n2_mi1": {
+   "v_en": "res://assets/voice/en/n2_mi1.ogg"
+  },
+  "n2_mi_t1": {
+   "v_en": "res://assets/voice/en/n2_mi_t1.ogg"
+  },
+  "n2_mi_a1": {
+   "v_en": "res://assets/voice/en/n2_mi_a1.ogg"
+  },
+  "n2_after1": {
+   "v_en": "res://assets/voice/en/n2_after1.ogg"
+  },
+  "n3_o2": {
+   "v_en": "res://assets/voice/en/n3_o2.ogg"
+  },
+  "n3_o3": {
+   "v_en": "res://assets/voice/en/n3_o3.ogg"
+  },
+  "n3_n1": {
+   "v_en": "res://assets/voice/en/n3_n1.ogg"
+  },
+  "n3_n_b1": {
+   "v_en": "res://assets/voice/en/n3_n_b1.ogg"
+  },
+  "n3_n_w1": {
+   "v_en": "res://assets/voice/en/n3_n_w1.ogg"
+  },
+  "n3_p1": {
+   "v_en": "res://assets/voice/en/n3_p1.ogg"
+  },
+  "n3_p_t1": {
+   "v_en": "res://assets/voice/en/n3_p_t1.ogg"
+  },
+  "n3_p_s1": {
+   "v_en": "res://assets/voice/en/n3_p_s1.ogg"
+  },
+  "n3_m1": {
+   "v_en": "res://assets/voice/en/n3_m1.ogg"
+  },
+  "n3_m_s1": {
+   "v_en": "res://assets/voice/en/n3_m_s1.ogg"
+  },
+  "n3_m_r1": {
+   "v_en": "res://assets/voice/en/n3_m_r1.ogg"
+  },
+  "n3_after1": {
+   "v_en": "res://assets/voice/en/n3_after1.ogg"
+  },
+  "n4_o2": {
+   "v_en": "res://assets/voice/en/n4_o2.ogg"
+  },
+  "n4_o3": {
+   "v_en": "res://assets/voice/en/n4_o3.ogg"
+  },
+  "n4_s1": {
+   "v_en": "res://assets/voice/en/n4_s1.ogg"
+  },
+  "n4_s_st1": {
+   "v_en": "res://assets/voice/en/n4_s_st1.ogg"
+  },
+  "n4_s_h1": {
+   "v_en": "res://assets/voice/en/n4_s_h1.ogg"
+  },
+  "n4_n1": {
+   "v_en": "res://assets/voice/en/n4_n1.ogg"
+  },
+  "n4_n_y1": {
+   "v_en": "res://assets/voice/en/n4_n_y1.ogg"
+  },
+  "n4_n_s1": {
+   "v_en": "res://assets/voice/en/n4_n_s1.ogg"
+  },
+  "n4_p1": {
+   "v_en": "res://assets/voice/en/n4_p1.ogg"
+  },
+  "n4_p_v1": {
+   "v_en": "res://assets/voice/en/n4_p_v1.ogg"
+  },
+  "n4_p_a1": {
+   "v_en": "res://assets/voice/en/n4_p_a1.ogg"
+  },
+  "n4_after1": {
+   "v_en": "res://assets/voice/en/n4_after1.ogg"
+  },
+  "n5_o2": {
+   "v_en": "res://assets/voice/en/n5_o2.ogg"
+  },
+  "n5_o3": {
+   "v_en": "res://assets/voice/en/n5_o3.ogg"
+  },
+  "n5_m1": {
+   "v_en": "res://assets/voice/en/n5_m1.ogg"
+  },
+  "n5_m_we1": {
+   "v_en": "res://assets/voice/en/n5_m_we1.ogg"
+  },
+  "n5_m_s1": {
+   "v_en": "res://assets/voice/en/n5_m_s1.ogg"
+  },
+  "n5_s1": {
+   "v_en": "res://assets/voice/en/n5_s1.ogg"
+  },
+  "n5_s_e1": {
+   "v_en": "res://assets/voice/en/n5_s_e1.ogg"
+  },
+  "n5_s_i1": {
+   "v_en": "res://assets/voice/en/n5_s_i1.ogg"
+  },
+  "n5_ma1": {
+   "v_en": "res://assets/voice/en/n5_ma1.ogg"
+  },
+  "n5_ma_o1": {
+   "v_en": "res://assets/voice/en/n5_ma_o1.ogg"
+  },
+  "n5_ma_t1": {
+   "v_en": "res://assets/voice/en/n5_ma_t1.ogg"
+  },
+  "n5_vault2": {
+   "v_en": "res://assets/voice/en/n5_vault2.ogg"
+  },
+  "n5_keys1": {
+   "v_en": "res://assets/voice/en/n5_keys1.ogg"
+  },
+  "n5_hold1": {
+   "v_en": "res://assets/voice/en/n5_hold1.ogg"
   }
  },
  "room_audio": {
