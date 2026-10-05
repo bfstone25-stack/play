@@ -854,6 +854,15 @@
   "zh": "动态（呼吸、摇曳）",
   "ko": "모션 (호흡, 흔들림)"
  },
+ "st_spatial": {
+  "en": "Spatial audio (room echo, voice position)",
+  "ja": "空間オーディオ（部屋の響き・声の位置）",
+  "de": "Raumklang (Hall, Stimmposition)",
+  "fr": "Son spatial (acoustique, position des voix)",
+  "es": "Audio espacial (eco de la sala, posición de la voz)",
+  "zh": "空间音频（房间回响、声音方位）",
+  "ko": "공간 음향 (방 울림, 목소리 위치)"
+ },
  "st_on": {
   "en": "On",
   "ja": "オン",

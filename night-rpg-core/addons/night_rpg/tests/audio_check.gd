@@ -24,12 +24,12 @@ func _ready() -> void:
 	get_tree().root.set_meta("nr_no_title", true)
 	var lay := str(ProjectSettings.get_setting("audio/buses/default_bus_layout", ""))
 	check(lay == "res://addons/night_rpg/audio/default_bus_layout.tres", "project bus layout -> core (%s)" % lay)
-	var sends := {"Music": "Master", "Ambience": "Music", "SFX": "Master", "Voice": "Master"}
+	var sends := {"Music": "Master", "Ambience": "Music", "SFX": "Master", "SFXRoom": "SFX", "Voice": "Master"}
 	for b in sends:
 		var i := AudioServer.get_bus_index(b)
 		check(i != -1 and AudioServer.get_bus_send(i) == sends[b], "bus %s -> %s" % [b, sends[b]])
 	check(Sound._duck_fx() != null, "Music bus carries the Duck amplify")
-	check(Sound.voice.bus == "Voice" and Sound.music.bus == "Music" and Sound.amb.bus == "Ambience" and Sound.pool.all(func(p): return p.bus == "SFX"), "players routed to their buses")
+	check(Sound.voice.bus == "Voice" and Sound.music.bus == "Music" and Sound.amb.bus == "Ambience" and Sound.pool.all(func(p): return p.bus in ["SFX", "SFXRoom"]), "players routed to their buses")
 
 	main = load("res://addons/night_rpg/ui/main.tscn").instantiate()
 	add_child(main)
@@ -92,6 +92,56 @@ func _ready() -> void:
 	Sound.play_room_enter(n0["rooms"][r0id], r0id)
 	await wait(1.2)
 	check(Sound.cur_amb != "", "room enter: door/steps queued, ambience %s" % Sound.cur_amb.get_file())
+	# spatial audio: effects exist, every room has a known space, presets apply, toggle bypasses
+	for e in ["VoicePan", "OffMuffle", "ER", "Room"]:
+		check(Sound.fx("Voice", e) != null, "Voice bus has %s" % e)
+	check(Sound.fx("SFXRoom", "Room") != null and Sound.fx("SFXRoom", "ER") != null, "SFXRoom has ER + Room")
+	var bad_space := []
+	var spaces := {}
+	for nid in RPG.nights:
+		var rooms2: Dictionary = RPG.nights[nid].get("rooms", {})
+		for rid in rooms2:
+			var sp := Sound.room_space(rooms2[rid], rid)
+			spaces[sp] = int(spaces.get(sp, 0)) + 1
+			var plate: String = rooms2[rid].get("plate", rid)
+			if not Sound.SPACES.has(sp) or not (rooms2[rid].has("space") or ra.get(plate, ra.get(rid, {})).has("space")):
+				bad_space.append(plate)
+	check(bad_space.is_empty(), "every room is tagged with a known space %s" % [bad_space.slice(0, 6)])
+	print("info spaces: %s" % [spaces])
+	RPG.persist["spatial"] = true
+	Sound.set_close(false)
+	Sound.set_space("stairwell")
+	var rv := Sound.fx("Voice", "Room") as AudioEffectReverb
+	check(absf(rv.wet - Sound.SPACES["stairwell"]["wet"]) < 0.001 and rv.dry == 1.0, "stairwell wet %.3f, dry 1.0" % rv.wet)
+	Sound.play_foley("steps_stone")
+	Sound.play_foley("click")
+	var routed := {}
+	for p in Sound.pool:
+		if p.playing:
+			routed[p.stream.resource_path.get_file()] = p.bus
+	check(routed.get("ui_click.ogg", "") == "SFX" and routed.values().has("SFXRoom"), "steps -> SFXRoom, UI click stays dry on SFX %s" % [routed])
+	Sound.play_voice({"v_en": "res://addons/night_rpg/foley/amb_room_tone.ogg"}, {"pan": 0.5})
+	var pn := Sound.fx("Voice", "VoicePan") as AudioEffectPanner
+	check(absf(pn.pan - 0.5 * Sound.PAN_WIDTH) < 0.001 and Sound.voice.volume_db == 0.0, "on-screen voice pans %.3f" % pn.pan)
+	Sound.play_voice({"v_en": "res://addons/night_rpg/foley/amb_room_tone.ogg"}, {"pan": -1.0, "off": true})
+	var lp := Sound.fx("Voice", "OffMuffle") as AudioEffectLowPassFilter
+	check(pn.pan < -0.25 and Sound.voice.volume_db < -2.0 and lp.cutoff_hz < 8000.0 and rv.wet > Sound.SPACES["stairwell"]["wet"], "off-screen voice: pan %.2f, %.1f dB, LP %d Hz, wet %.3f" % [pn.pan, Sound.voice.volume_db, lp.cutoff_hz, rv.wet])
+	Sound.set_close(true)
+	Sound.play_voice({"v_en": "res://addons/night_rpg/foley/amb_room_tone.ogg"}, {"pan": 1.0})
+	check(pn.pan == 0.0 and rv.wet <= 0.03, "CG / close: centred, near-dry (wet %.3f)" % rv.wet)
+	Sound.set_close(false)
+	RPG.persist["spatial"] = false
+	Sound.set_space("bathroom")
+	Sound.play_voice({"v_en": "res://addons/night_rpg/foley/amb_room_tone.ogg"}, {"pan": 1.0, "off": true})
+	var vi := AudioServer.get_bus_index("Voice")
+	var enabled := 0
+	for i in AudioServer.get_bus_effect_count(vi):
+		if AudioServer.is_bus_effect_enabled(vi, i):
+			enabled += 1
+	check(enabled == 0 and pn.pan == 0.0 and Sound.voice.volume_db == 0.0, "spatial off: Voice bus effects bypassed, centred, full level")
+	RPG.persist["spatial"] = true
+	Sound.set_space("small_office")
+	Sound.stop_voice()
 	Sound.play_foley("no_such_key_xyz")
 	Sound.play_ambience("no_such_amb_xyz")
 	check(true, "missing foley/ambience keys are silent")

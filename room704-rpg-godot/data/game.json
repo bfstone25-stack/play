@@ -965,75 +965,93 @@
   "_steps": "steps_carpet",
   "lobby": {
    "amb": "amb_hotel_hall",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "hall"
   },
   "street": {
    "amb": "amb_rain_street",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "outdoor"
   },
   "back_office": {
    "amb": "amb_office",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "small_office"
   },
   "bar": {
    "amb": "amb_club",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "hall"
   },
   "kitchen": {
    "amb": "amb_boiler",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "bathroom"
   },
   "lift": {
    "amb": "amb_server",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "car"
   },
   "service_stair": {
    "amb": "amb_wind",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "stairwell"
   },
   "corridor_2": {
    "amb": "amb_hotel_hall",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "hall"
   },
   "room_212": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "bedroom"
   },
   "room704": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "bedroom"
   },
   "corridor4": {
    "amb": "amb_hotel_hall",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "hall"
   },
   "room_702": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "bedroom"
   },
   "linen": {
    "amb": "amb_room_tone",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "bedroom"
   },
   "roof": {
    "amb": "amb_wind",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "outdoor"
   },
   "manager_flat": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "bedroom"
   },
   "boiler": {
    "amb": "amb_boiler",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "cellar"
   },
   "laundry": {
    "amb": "amb_boiler",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "bathroom"
   },
   "loading_bay": {
    "amb": "amb_rain_street",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "outdoor"
   }
  }
 }

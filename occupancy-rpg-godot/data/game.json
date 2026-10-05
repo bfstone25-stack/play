@@ -1423,67 +1423,83 @@
   "_steps": "steps_carpet",
   "lobby": {
    "amb": "amb_rain_window",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "hall"
   },
   "open_plan": {
    "amb": "amb_office",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "open_plan"
   },
   "copy_room": {
    "amb": "amb_server",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "small_office"
   },
   "break_room": {
    "amb": "amb_office",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "small_office"
   },
   "stairwell": {
    "amb": "amb_wind",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "stairwell"
   },
   "sublet": {
    "amb": "amb_office",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "bedroom"
   },
   "meeting_room": {
    "amb": "amb_office",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "small_office"
   },
   "accounts": {
    "amb": "amb_office",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "small_office"
   },
   "records": {
    "amb": "amb_library",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "archive"
   },
   "server_room": {
    "amb": "amb_server",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "small_office"
   },
   "newsroom": {
    "amb": "amb_office",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "open_plan"
   },
   "print_room": {
    "amb": "amb_server",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "open_plan"
   },
   "rooftop": {
    "amb": "amb_wind",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "outdoor"
   },
   "penthouse": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "bedroom"
   },
   "boardroom": {
    "amb": "amb_office",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "open_plan"
   },
   "vault": {
    "amb": "amb_boiler",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "cellar"
   }
  }
 }

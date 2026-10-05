@@ -2775,15 +2775,108 @@
   "_steps": "steps_wood",
   "v_home": {
    "amb": "amb_rain_window",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "bedroom"
   },
   "v_street": {
    "amb": "amb_street_night",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "outdoor"
   },
   "v_cafe": {
    "amb": "amb_cafe",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "hall"
+  },
+  "v_adrian_1": {
+   "space": "hall"
+  },
+  "v_adrian_2": {
+   "space": "car"
+  },
+  "v_adrian_3": {
+   "space": "hall"
+  },
+  "v_adrian_4": {
+   "space": "open_plan"
+  },
+  "v_adrian_5": {
+   "space": "cellar"
+  },
+  "v_ethan_1": {
+   "space": "open_plan"
+  },
+  "v_ethan_2": {
+   "space": "small_office"
+  },
+  "v_ethan_3": {
+   "space": "small_office"
+  },
+  "v_ethan_4": {
+   "space": "hall"
+  },
+  "v_ethan_5": {
+   "space": "open_plan"
+  },
+  "v_fushen_1": {
+   "space": "small_office"
+  },
+  "v_fushen_2": {
+   "space": "hall"
+  },
+  "v_fushen_3": {
+   "space": "hall"
+  },
+  "v_fushen_4": {
+   "space": "hall"
+  },
+  "v_fushen_5": {
+   "space": "outdoor"
+  },
+  "v_guyan_1": {
+   "space": "archive"
+  },
+  "v_guyan_2": {
+   "space": "archive"
+  },
+  "v_guyan_3": {
+   "space": "outdoor"
+  },
+  "v_guyan_4": {
+   "space": "archive"
+  },
+  "v_guyan_5": {
+   "space": "archive"
+  },
+  "v_liam_1": {
+   "space": "outdoor"
+  },
+  "v_liam_2": {
+   "space": "outdoor"
+  },
+  "v_liam_3": {
+   "space": "outdoor"
+  },
+  "v_liam_4": {
+   "space": "hall"
+  },
+  "v_liam_5": {
+   "space": "outdoor"
+  },
+  "v_luxingye_1": {
+   "space": "small_office"
+  },
+  "v_luxingye_2": {
+   "space": "small_office"
+  },
+  "v_luxingye_3": {
+   "space": "hall"
+  },
+  "v_luxingye_4": {
+   "space": "hall"
+  },
+  "v_luxingye_5": {
+   "space": "cellar"
   }
  }
 }

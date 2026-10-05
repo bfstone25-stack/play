@@ -6,10 +6,46 @@ extends Node
 ## Buses (audio/default_bus_layout.tres, also rebuilt here if a project lacks it):
 ##   Master <- Music <- Ambience      (Music carries the "Duck" amplify: -8 dB under voice)
 ##   Master <- SFX                    (foley + UI, a pool of players so steps never cut clicks)
+##   Master <- SFX <- SFXRoom         (diegetic foley: steps, doors, cloth -- gets the room)
 ##   Master <- Voice                  (clean dialogue only — never bake foley into a take)
 ## Settings sliders set BUS volumes (vol_music, vol_ambience, vol_sfx, vol_voice).
+##
+## Spatial audio (Settings "Spatial audio", persist "spatial", default on) is done HERE at
+## runtime, never baked into the voice files, so one take works in every room:
+##   Voice:   VoicePan (panner) -> OffMuffle (low-pass) -> ER (2 early-reflection taps) -> Room (reverb)
+##   SFXRoom: ER -> Room   (same space as the voice, so steps and voice sit in one room)
+## Every room has a space (SPACES): room "space", else game.json room_audio[plate].space, else a
+## guess from its ambience bed. A CG on screen switches the voice to "close" (near-dry, centred).
+## Wet levels are deliberately small: the line must stay as intelligible as the dry take.
 
-const BUSES := [["Music", "Master"], ["Ambience", "Music"], ["SFX", "Master"], ["Voice", "Master"]]
+const BUSES := [["Music", "Master"], ["Ambience", "Music"], ["SFX", "Master"], ["SFXRoom", "SFX"], ["Voice", "Master"]]
+## Space presets. rs/damp/spread/hp/wet/pre = AudioEffectReverb room_size, damping, spread,
+## hipass, wet (dry stays 1.0), predelay ms; er = two early-reflection taps [ms, dB] (left, right).
+const SPACES := {
+	"close":        {"rs": 0.10, "damp": 0.90, "spread": 0.4, "hp": 0.30, "wet": 0.020, "pre": 2.0, "er": [[3.0, -30.0], [5.0, -30.0]]},
+	"bedroom":      {"rs": 0.18, "damp": 0.88, "spread": 0.5, "hp": 0.25, "wet": 0.045, "pre": 3.0, "er": [[4.0, -24.0], [7.0, -25.0]]},
+	"car":          {"rs": 0.05, "damp": 0.95, "spread": 0.3, "hp": 0.30, "wet": 0.030, "pre": 1.0, "er": [[1.8, -19.0], [2.6, -20.0]]},
+	"small_office": {"rs": 0.30, "damp": 0.65, "spread": 0.7, "hp": 0.20, "wet": 0.075, "pre": 7.0, "er": [[7.0, -20.0], [11.0, -21.0]]},
+	"open_plan":    {"rs": 0.55, "damp": 0.55, "spread": 0.9, "hp": 0.20, "wet": 0.095, "pre": 16.0, "er": [[14.0, -22.0], [21.0, -22.0]]},
+	"archive":      {"rs": 0.60, "damp": 0.80, "spread": 0.8, "hp": 0.20, "wet": 0.090, "pre": 18.0, "er": [[12.0, -22.0], [19.0, -23.0]]},
+	"hall":         {"rs": 0.72, "damp": 0.45, "spread": 1.0, "hp": 0.20, "wet": 0.120, "pre": 24.0, "er": [[16.0, -19.0], [27.0, -20.0]]},
+	"cellar":       {"rs": 0.65, "damp": 0.30, "spread": 0.8, "hp": 0.15, "wet": 0.130, "pre": 14.0, "er": [[11.0, -17.0], [18.0, -18.0]]},
+	"stairwell":    {"rs": 0.85, "damp": 0.20, "spread": 1.0, "hp": 0.15, "wet": 0.160, "pre": 28.0, "er": [[18.0, -16.0], [31.0, -17.0]]},
+	"bathroom":     {"rs": 0.35, "damp": 0.10, "spread": 0.7, "hp": 0.20, "wet": 0.150, "pre": 5.0, "er": [[5.0, -15.0], [9.0, -16.0]]},
+	"outdoor":      {"rs": 0.40, "damp": 0.92, "spread": 1.0, "hp": 0.25, "wet": 0.030, "pre": 0.0, "er": [[48.0, -27.0], [83.0, -29.0]]},
+}
+## A room with no space tag gets one from its ambience bed.
+const SPACE_FROM_AMB := {"amb_rain_window": "bedroom", "amb_rain_street": "outdoor", "amb_street_night": "outdoor",
+	"amb_wind": "stairwell", "amb_office": "open_plan", "amb_server": "small_office", "amb_hotel_hall": "hall",
+	"amb_cellar": "cellar", "amb_library": "archive", "amb_club": "hall", "amb_boiler": "cellar",
+	"amb_room_tone": "small_office", "amb_cafe": "hall"}
+const PAN_WIDTH := 0.35      # figure at the screen edge pans 0.35 (of 1.0): modest, never hard
+const OFF_PAN := 0.30        # an off-screen speaker sits a little further out ...
+const OFF_DB := -3.0         # ... softer ...
+const OFF_LP_HZ := 6500.0    # ... and duller (a wall or a doorway between)
+const OFF_WET := 1.6         # ... with more room than voice
+## Cues that are UI, not the world: they stay dry on the SFX bus.
+const NONDIEGETIC := ["click", "ui_open", "ui_close", "ui_confirm", "page_flip", "coins"]
 const DUCK_DB := -8.0
 const DUCK_ATTACK := 0.15    # s to reach DUCK_DB once the voice starts
 const DUCK_RELEASE := 0.40   # s to come back after it stops
@@ -61,6 +97,8 @@ var cur_amb := ""
 var duck_db := 0.0
 var _pool_i := 0
 var _last := {}
+var space := "small_office"   # the current room's space
+var close := false            # a CG / intimate scene: voice near-dry and centred
 
 
 func _ready() -> void:
@@ -70,6 +108,7 @@ func _ready() -> void:
 		pool.append(_p("SFX"))
 	sfx = pool[0]
 	apply_volumes()
+	set_space(space)
 
 
 ## The layout comes from project.godot [audio] buses/default_bus_layout; anything missing
@@ -85,6 +124,111 @@ func _ensure_buses() -> void:
 		var a := AudioEffectAmplify.new()
 		a.resource_name = "Duck"
 		AudioServer.add_bus_effect(mi, a, 0)
+	for bus in ["Voice", "SFXRoom"]:
+		var names := ["VoicePan", "OffMuffle", "ER", "Room"] if bus == "Voice" else ["ER", "Room"]
+		for n in names:
+			if fx(bus, n) != null:
+				continue
+			var e: AudioEffect
+			match n:
+				"VoicePan": e = AudioEffectPanner.new()
+				"OffMuffle":
+					e = AudioEffectLowPassFilter.new()
+					e.cutoff_hz = 20000.0
+				"ER":
+					var d := AudioEffectDelay.new()
+					d.dry = 1.0
+					d.feedback_active = false
+					d.tap1_pan = -0.6
+					d.tap2_pan = 0.6
+					e = d
+				"Room":
+					var r := AudioEffectReverb.new()
+					r.dry = 1.0
+					e = r
+			e.resource_name = n
+			AudioServer.add_bus_effect(AudioServer.get_bus_index(bus), e)
+
+
+## A named effect on a bus, or null.
+func fx(bus: String, name: String) -> AudioEffect:
+	var bi := AudioServer.get_bus_index(bus)
+	if bi == -1:
+		return null
+	for i in AudioServer.get_bus_effect_count(bi):
+		var e := AudioServer.get_bus_effect(bi, i)
+		if e.resource_name == name:
+			return e
+	return null
+
+
+func _fx_enable(bus: String, name: String, on: bool) -> void:
+	var bi := AudioServer.get_bus_index(bus)
+	for i in AudioServer.get_bus_effect_count(bi):
+		if AudioServer.get_bus_effect(bi, i).resource_name == name:
+			AudioServer.set_bus_effect_enabled(bi, i, on)
+
+
+func spatial_on() -> bool:
+	return bool(RPG.persist.get("spatial", true))
+
+
+## The room's acoustic space (see SPACES).
+func room_space(room: Dictionary, room_id: String = "") -> String:
+	if SPACES.has(str(room.get("space", ""))):
+		return room["space"]
+	var ra: Dictionary = RPG.game.get("room_audio", {})
+	var d: Dictionary = ra.get(room.get("plate", room_id), ra.get(room_id, {}))
+	if SPACES.has(str(d.get("space", ""))):
+		return d["space"]
+	return SPACE_FROM_AMB.get(room_audio(room, room_id)["amb"], "small_office")
+
+
+## Puts voice + diegetic foley in `sp` (a SPACES key); `off_screen` adds the far-voice extra wet.
+func set_space(sp: String, off_screen: bool = false) -> void:
+	if SPACES.has(sp):
+		space = sp
+	var p: Dictionary = SPACES["close" if close else space]
+	var on := spatial_on()
+	for bus in ["Voice", "SFXRoom"]:
+		var r := fx(bus, "Room") as AudioEffectReverb
+		var d := fx(bus, "ER") as AudioEffectDelay
+		if r == null or d == null:
+			continue
+		var k := OFF_WET if (off_screen and bus == "Voice") else 1.0
+		r.room_size = p["rs"]; r.damping = p["damp"]; r.spread = p["spread"]; r.hipass = p["hp"]
+		r.predelay_msec = maxf(1.0, p["pre"]); r.predelay_feedback = 0.0
+		r.wet = minf(0.20, p["wet"] * k)
+		d.tap1_active = true; d.tap2_active = true
+		d.tap1_delay_ms = p["er"][0][0]; d.tap1_level_db = p["er"][0][1] + (3.0 if k > 1.0 else 0.0)
+		d.tap2_delay_ms = p["er"][1][0]; d.tap2_level_db = p["er"][1][1] + (3.0 if k > 1.0 else 0.0)
+		_fx_enable(bus, "Room", on)
+		_fx_enable(bus, "ER", on)
+	_fx_enable("Voice", "VoicePan", on)
+	_fx_enable("Voice", "OffMuffle", on)
+
+
+## A CG or close scene on/off: the voice goes near-dry and centred while it is up.
+func set_close(on: bool) -> void:
+	if on != close:
+		close = on
+		set_space(space)
+
+
+## Where the next line comes from. pan -1..1 of screen x mapped to +-PAN_WIDTH; off = speaker
+## not on screen (further out, softer, duller, more room). Spatial off: centred, dry, unmuffled.
+func place_voice(pan: float = 0.0, off_screen: bool = false) -> void:
+	var on := spatial_on() and not close
+	var pn := fx("Voice", "VoicePan") as AudioEffectPanner
+	var lp := fx("Voice", "OffMuffle") as AudioEffectLowPassFilter
+	if pn != null:
+		var x := clampf(pan, -1.0, 1.0)
+		pn.pan = (signf(x if x != 0.0 else 1.0) * OFF_PAN if off_screen else x * PAN_WIDTH) if on else 0.0
+	if lp != null:
+		lp.cutoff_hz = OFF_LP_HZ if (on and off_screen) else 20000.0
+	if voice != null:
+		voice.volume_db = OFF_DB if (on and off_screen) else 0.0
+	set_space(space, off_screen)
 
 
 func _duck_fx() -> AudioEffectAmplify:
@@ -198,6 +342,7 @@ func room_audio(room: Dictionary, room_id: String = "") -> Dictionary:
 
 func play_room(room: Dictionary, room_id: String = "") -> void:
 	play_ambience(room_audio(room, room_id)["amb"])
+	set_space(room_space(room, room_id))
 
 
 func _pool_next() -> AudioStreamPlayer:
@@ -254,6 +399,7 @@ func play_foley(key: String, db: float = 0.0, delay: float = 0.0) -> void:
 	if st == null:
 		return
 	var p := _pool_next()
+	p.bus = "SFX" if key in NONDIEGETIC else "SFXRoom"
 	p.stream = st
 	p.volume_db = db
 	p.pitch_scale = randf_range(0.96, 1.04)
@@ -316,8 +462,10 @@ func voice_coverage(vl: String) -> float:
 
 
 ## Plays a line's voice in the chosen pack, English as fallback. Returns seconds.
-func play_voice(ln: Dictionary) -> float:
+## `place` (optional): {"pan": -1..1 screen position, "off": speaker off screen} -> place_voice.
+func play_voice(ln: Dictionary, place: Dictionary = {}) -> float:
 	voice.stop()
+	place_voice(float(place.get("pan", 0.0)), bool(place.get("off", false)))
 	var st := _stream(voice_path(ln), false)
 	if st == null:
 		return 0.0

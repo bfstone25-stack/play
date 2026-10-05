@@ -294,6 +294,7 @@ func render_room() -> void:
 		fig = r.get("heroine_pose", RPG.heroine_sprite())
 	stage.set_figure(NRArt.tex("sprites", fig) if fig != "" else null, float(r.get("heroine_x", 0.78)))
 	Sound.play_music(r.get("music", "explore"))
+	Sound.set_close(false)
 	Sound.play_room(r, RPG.s["room"])
 	hud.visible = true
 	_refresh_hud()
@@ -478,10 +479,36 @@ func _who(id: String) -> String:
 	return Loc.t("n_" + id)
 
 
-func _say_line(who: String, body: String, ln: Dictionary) -> void:
+## Speakers that are the reader's own ear (narration, the player): centred, never "off screen".
+const _SELF_SPEAKERS := ["", "narrator", "protagonist", "player", "you", "mc"]
+
+
+## Where a speaker's voice sits (Sound.place_voice): on screen -> toward her figure; a
+## character who has a figure but is not shown -> off screen; an extra with no figure ->
+## a little across the room from the heroine.
+func _voice_place(who_id: String) -> Dictionary:
+	if who_id in _SELF_SPEAKERS:
+		return {}
+	var sprites: Dictionary = NRArt.manifest().get("sprites", {})
+	var shown := ""
+	if stage != null and stage.figure.visible and stage.figure.texture != null:
+		var tp: String = stage.figure.texture.resource_path
+		for k in sprites:
+			if NRArt.path("sprites", k) == tp:
+				shown = k
+				break
+	if shown != "" and (shown == who_id or shown.begins_with(who_id + "_")):
+		return {"pan": stage.figure_base.x / stage.VIEW.x * 2.0 - 1.0}
+	for k in sprites:
+		if k == who_id or str(k).begins_with(who_id + "_"):
+			return {"pan": 1.0, "off": true}
+	return {"pan": -0.5}
+
+
+func _say_line(who: String, body: String, ln: Dictionary, who_id: String = "") -> void:
 	var secs := 0.0
 	if not auto:
-		secs = Sound.play_voice(ln)
+		secs = Sound.play_voice(ln, _voice_place(who_id))
 	else:
 		secs = _voice_len(ln)
 	body = interp(body)
@@ -521,17 +548,20 @@ func _step(st: Dictionary) -> String:
 		for ln in RPG.story_range(st["lines"]):
 			if ln.get("skip", false):
 				continue
-			await _say_line(_who(ln["who"]), Loc.line(ln), ln)
+			await _say_line(_who(ln["who"]), Loc.line(ln), ln, ln["who"])
 		return "ok"
 	if st.has("say"):
 		# RPG-only lines are voiced per string key (game.json "voice"); missing = silent
-		await _say_line(_who(st["say"]), Loc.t(st["key"]), RPG.game.get("voice", {}).get(st["key"], {}))
+		await _say_line(_who(st["say"]), Loc.t(st["key"]), RPG.game.get("voice", {}).get(st["key"], {}), st["say"])
 		return "ok"
 	if st.has("event"):
 		return await run_event(st["event"])
 	if st.has("bg"):
 		event.show_cg(null)
-		stage.set_plate(NRArt.tex("rooms", st["bg"]), RPG.night().get("rooms", {}).get(st["bg"], {}).get("mood", {}))
+		var bgr: Dictionary = RPG.night().get("rooms", {}).get(st["bg"], {})
+		stage.set_plate(NRArt.tex("rooms", st["bg"]), bgr.get("mood", {}))
+		Sound.set_close(Sound.cur_music_key == "intimate")
+		Sound.set_space(Sound.room_space(bgr, st["bg"]))
 		return "ok"
 	if st.has("cg"):
 		if NRArt.path("cg", st["cg"]) == "":
@@ -541,6 +571,7 @@ func _step(st: Dictionary) -> String:
 		if RPG.is_trial() and cg_id in RPG.game.get("trial_locked_cgs", []) and NRArt.path("cg", cg_id + "_locked") != "":
 			cg_id += "_locked"
 		event.show_cg(NRArt.tex("cg", cg_id))
+		Sound.set_close(true)
 		if st.has("cg_sfx"):
 			Sound.play_foley(st["cg_sfx"])
 		elif Sound.cur_music_key == "intimate":
@@ -551,12 +582,15 @@ func _step(st: Dictionary) -> String:
 		return "ok"
 	if st.has("hide_cg"):
 		event.show_cg(null)
+		Sound.set_close(Sound.cur_music_key == "intimate")
 		return "ok"
 	if st.has("show"):
 		stage.set_figure(NRArt.tex("sprites", st["show"]) if st["show"] != "" else null, float(st.get("x", 0.72)))
 		return "ok"
 	if st.has("music"):
 		Sound.play_music(st["music"])
+		if st["music"] == "intimate":
+			Sound.set_close(true)
 		return "ok"
 	if st.has("sfx"):
 		Sound.play_sfx(st["sfx"])
@@ -1188,6 +1222,22 @@ func show_settings() -> void:
 		if NRAlive.enabled() == on:
 			mb.modulate = Color(1, 0.9, 0.6)
 		mrow.add_child(mb)
+	# spatial audio: room acoustics + voice position (runtime buses; the takes stay dry)
+	var srow := HBoxContainer.new()
+	v.add_child(srow)
+	var slab := NRSkin.label(Loc.t("st_spatial"), 18)
+	slab.custom_minimum_size = Vector2(260, 0)
+	srow.add_child(slab)
+	for on in [true, false]:
+		var sb := NRSkin.button(Loc.t("st_on") if on else Loc.t("st_off"), func():
+			RPG.persist["spatial"] = on
+			RPG.save_persist()
+			Sound.set_space(Sound.space)
+			Sound.place_voice()
+			show_settings(), 18)
+		if Sound.spatial_on() == on:
+			sb.modulate = Color(1, 0.9, 0.6)
+		srow.add_child(sb)
 	for key in ["vol_music", "vol_ambience", "vol_sfx", "vol_voice"]:
 		var row := HBoxContainer.new()
 		v.add_child(row)

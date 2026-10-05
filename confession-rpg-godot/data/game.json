@@ -1287,63 +1287,78 @@
   "_steps": "steps_stone",
   "precinct": {
    "amb": "amb_office",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "open_plan"
   },
   "corridor": {
    "amb": "amb_hotel_hall",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "hall"
   },
   "interview": {
    "amb": "amb_room_tone",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "small_office"
   },
   "lockup": {
    "amb": "amb_cellar",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "cellar"
   },
   "alley": {
    "amb": "amb_rain_street",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "outdoor"
   },
   "club": {
    "amb": "amb_club",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "hall"
   },
   "back_office": {
    "amb": "amb_club",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "small_office"
   },
   "cooler": {
    "amb": "amb_server",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "bathroom"
   },
   "archive": {
    "amb": "amb_library",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "archive"
   },
   "morgue": {
    "amb": "amb_server",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "bathroom"
   },
   "loading_bay": {
    "amb": "amb_rain_street",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "outdoor"
   },
   "mop_room": {
    "amb": "amb_boiler",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "bathroom"
   },
   "fire_stairs": {
    "amb": "amb_wind",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "stairwell"
   },
   "flat": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "bedroom"
   },
   "safe_house": {
    "amb": "amb_rain_window",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "bedroom"
   }
  }
 }

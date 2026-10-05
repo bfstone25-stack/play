@@ -1334,83 +1334,103 @@
   "_steps": "steps_wood",
   "study": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "small_office"
   },
   "corridor": {
    "amb": "amb_library",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "hall"
   },
   "stair": {
    "amb": "amb_wind",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "stairwell"
   },
   "vault": {
    "amb": "amb_cellar",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "cellar"
   },
   "stacks": {
    "amb": "amb_library",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "archive"
   },
   "cellar": {
    "amb": "amb_cellar",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "cellar"
   },
   "entrance_hall": {
    "amb": "amb_rain_window",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "hall"
   },
   "dock": {
    "amb": "amb_rain_street",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "outdoor"
   },
   "deans_corridor": {
    "amb": "amb_library",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "hall"
   },
   "reading_room": {
    "amb": "amb_library",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "archive"
   },
   "map_room": {
    "amb": "amb_library",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "archive"
   },
   "bell_tower_stair": {
    "amb": "amb_wind",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "stairwell"
   },
   "bell_chamber": {
    "amb": "amb_wind",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "stairwell"
   },
   "common_room": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "hall"
   },
   "bindery": {
    "amb": "amb_library",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "archive"
   },
   "conservation_lab": {
    "amb": "amb_server",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "small_office"
   },
   "annex": {
    "amb": "amb_rain_window",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "archive"
   },
   "deans_office": {
    "amb": "amb_rain_window",
-   "steps": "steps_carpet"
+   "steps": "steps_carpet",
+   "space": "small_office"
   },
   "carrel": {
    "amb": "amb_library",
-   "steps": "steps_wood"
+   "steps": "steps_wood",
+   "space": "archive"
   },
   "muniment": {
    "amb": "amb_cellar",
-   "steps": "steps_stone"
+   "steps": "steps_stone",
+   "space": "archive"
   }
  }
 }
