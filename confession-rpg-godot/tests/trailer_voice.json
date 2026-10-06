@@ -1,0 +1,31 @@
+[
+ {
+  "kind": "story",
+  "ch": "interr",
+  "idx": 55,
+  "who": "adaeze",
+  "v_en": "res://assets/voice/en/route_bay_9bc8340e.ogg",
+  "v_ja": "res://assets/voice/ja/route_bay_9bc8340e.ogg",
+  "secs_ja": 4.08,
+  "secs_en": 3.08
+ },
+ {
+  "kind": "story",
+  "ch": "cases",
+  "idx": 29,
+  "who": "vee",
+  "v_en": "res://assets/voice/en/vee_bar.ogg",
+  "v_ja": "res://assets/voice/ja/vee_bar.ogg",
+  "secs_ja": 3.8,
+  "secs_en": 3.4
+ },
+ {
+  "kind": "say",
+  "key": "pb3_reply",
+  "who": "nikolai",
+  "v_en": "res://assets/voice/en/pb3_reply.ogg",
+  "v_ja": "res://assets/voice/ja/pb3_reply.ogg",
+  "secs_ja": 4.35,
+  "secs_en": 3.68
+ }
+]

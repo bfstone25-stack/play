@@ -1,0 +1,32 @@
+[
+ {
+  "kind": "story",
+  "ch": "act2",
+  "idx": 65,
+  "who": "mira",
+  "v_en": "res://assets/voice/en/act2_window_1501b845.ogg",
+  "v_ja": "res://assets/voice/ja/act2_window_1501b845.ogg",
+  "secs_ja": 3.96,
+  "secs_en": 3.16
+ },
+ {
+  "kind": "story",
+  "ch": "act3",
+  "idx": 15,
+  "who": "mira",
+  "v_en": "res://assets/voice/en/end_together_003306e9.ogg",
+  "v_ja": "res://assets/voice/ja/end_together_003306e9.ogg",
+  "secs_ja": 3.96,
+  "secs_en": 3.64
+ },
+ {
+  "kind": "story",
+  "ch": "act1",
+  "idx": 25,
+  "who": "mira",
+  "v_en": "res://assets/voice/en/ask_why_3912378d.ogg",
+  "v_ja": "res://assets/voice/ja/ask_why_3912378d.ogg",
+  "secs_ja": 3.92,
+  "secs_en": 2.81
+ }
+]

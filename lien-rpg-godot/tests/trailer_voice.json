@@ -1,0 +1,32 @@
+[
+ {
+  "kind": "story",
+  "ch": "lien",
+  "idx": 277,
+  "who": "mara",
+  "v_en": "res://assets/voice/en/lien_664.ogg",
+  "v_ja": "res://assets/voice/ja/lien_664.ogg",
+  "secs_ja": 3.76,
+  "secs_en": 2.76
+ },
+ {
+  "kind": "story",
+  "ch": "lien",
+  "idx": 268,
+  "who": "mara",
+  "v_en": "res://assets/voice/en/lien_655.ogg",
+  "v_ja": "res://assets/voice/ja/lien_655.ogg",
+  "secs_ja": 4.75,
+  "secs_en": 3.44
+ },
+ {
+  "kind": "story",
+  "ch": "lien",
+  "idx": 264,
+  "who": "mara",
+  "v_en": "res://assets/voice/en/lien_651.ogg",
+  "v_ja": "res://assets/voice/ja/lien_651.ogg",
+  "secs_ja": 4.99,
+  "secs_en": 3.2
+ }
+]

@@ -1,0 +1,32 @@
+[
+ {
+  "kind": "story",
+  "ch": "ch1",
+  "idx": 32,
+  "who": "elena",
+  "v_en": "res://assets/voice/en/start_3a5c43d1.ogg",
+  "v_ja": "res://assets/voice/ja/start_3a5c43d1.ogg",
+  "secs_ja": 4.0,
+  "secs_en": 4.2
+ },
+ {
+  "kind": "story",
+  "ch": "ch5",
+  "idx": 39,
+  "who": "elena",
+  "v_en": "res://assets/voice/en/ch5_ending_rewrite_9743cc0d.ogg",
+  "v_ja": "res://assets/voice/ja/ch5_ending_rewrite_9743cc0d.ogg",
+  "secs_ja": 4.16,
+  "secs_en": 3.68
+ },
+ {
+  "kind": "story",
+  "ch": "ch5",
+  "idx": 67,
+  "who": "elena",
+  "v_en": "res://assets/voice/en/ch5_ending_expose_d84a9f91.ogg",
+  "v_ja": "res://assets/voice/ja/ch5_ending_expose_d84a9f91.ogg",
+  "secs_ja": 3.84,
+  "secs_en": 2.89
+ }
+]

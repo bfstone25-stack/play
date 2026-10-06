@@ -1,0 +1,38 @@
+[
+ {
+  "kind": "say",
+  "key": "n5_ma_o1",
+  "who": "mara",
+  "v_en": "res://assets/voice/en/n5_ma_o1.ogg",
+  "v_ja": "res://assets/voice/ja/n5_ma_o1.ogg",
+  "secs_ja": 3.84,
+  "secs_en": 4.6
+ },
+ {
+  "kind": "say",
+  "key": "priya_b_4",
+  "who": "priya",
+  "v_en": "res://assets/voice/en/priya_b_4.ogg",
+  "v_ja": "res://assets/voice/ja/priya_b_4.ogg",
+  "secs_ja": 3.04,
+  "secs_en": 2.77
+ },
+ {
+  "kind": "say",
+  "key": "nia_b_4",
+  "who": "nia",
+  "v_en": "res://assets/voice/en/nia_b_4.ogg",
+  "v_ja": "res://assets/voice/ja/nia_b_4.ogg",
+  "secs_ja": 3.12,
+  "secs_en": 2.76
+ },
+ {
+  "kind": "say",
+  "key": "n1_after1",
+  "who": "mirei",
+  "v_en": "res://assets/voice/en/n1_after1.ogg",
+  "v_ja": "res://assets/voice/ja/n1_after1.ogg",
+  "secs_ja": 4.2,
+  "secs_en": 4.12
+ }
+]
