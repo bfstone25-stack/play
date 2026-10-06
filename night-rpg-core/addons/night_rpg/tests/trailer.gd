@@ -74,6 +74,7 @@ func _ready() -> void:
 			await get_tree().create_timer(0.3).timeout
 			await cue("room_" + rid, 2.5)
 	print("NIGHT DONE steps=%d cleared=%s" % [steps, str(first in RPG.s["nights_cleared"])])
+	await _choice_screen(first)
 	main._clear_overlay()
 	main.show_map()
 	await cue("map", 3.0)
@@ -150,3 +151,38 @@ func hook(tag: String) -> void:
 	held[tag] = true
 	await get_tree().create_timer(0.3).timeout
 	await cue(tag, hold.get(tag, 2.5))
+
+
+func _find_choice(o):
+	if o is Dictionary:
+		if o.has("choice") and o["choice"] is Array and o["choice"].size() >= 2:
+			return o["choice"]
+		for v in o.values():
+			var r = _find_choice(v)
+			if r != null:
+				return r
+	elif o is Array:
+		for v in o:
+			var r = _find_choice(v)
+			if r != null:
+				return r
+	return null
+
+
+## The real choice panel with its options on screen (the "choice" shot hook only fires after the
+## pick, when the buttons are gone): shown with auto_mode off and released after the hold.
+func _choice_screen(nid: String) -> void:
+	var ch = _find_choice(RPG.nights.get(nid, {}))
+	if ch == null:
+		return
+	var opts := []
+	for o in ch.slice(0, 4):
+		opts.append({"text": Loc.menu(o["menu"]) if o.has("menu") else Loc.t(o.get("key", ""))})
+	main.event.show_cg(null)
+	main.event.auto_mode = false
+	main.event.choose(opts)
+	await get_tree().create_timer(0.5).timeout
+	await cue("choice_screen", 3.0)
+	main.event.chosen.emit(0)
+	main.event.auto_mode = true
+	await get_tree().create_timer(0.2).timeout
