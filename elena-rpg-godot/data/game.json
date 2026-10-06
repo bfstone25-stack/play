@@ -68,76 +68,76 @@
    "v_en": "res://assets/voice/rpg_hb_win_3.ogg"
   },
   "n1_cart_2": {
-   "v_en": "res://assets/voice/rpg_n1_cart_2.ogg"
+   "v_en": "res://assets/voice/en/n1_cart_2.ogg"
   },
   "n1_cellar_2": {
-   "v_en": "res://assets/voice/rpg_n1_cellar_2.ogg"
+   "v_en": "res://assets/voice/en/n1_cellar_2.ogg"
   },
   "n1_coat_2": {
-   "v_en": "res://assets/voice/rpg_n1_coat_2.ogg"
+   "v_en": "res://assets/voice/en/n1_coat_2.ogg"
   },
   "n1_cobb2_10": {
-   "v_en": "res://assets/voice/rpg_n1_cobb2_10.ogg"
+   "v_en": "res://assets/voice/en/n1_cobb2_10.ogg"
   },
   "n1_cobb2_4": {
-   "v_en": "res://assets/voice/rpg_n1_cobb2_4.ogg"
+   "v_en": "res://assets/voice/en/n1_cobb2_4.ogg"
   },
   "n1_cobb2_7": {
-   "v_en": "res://assets/voice/rpg_n1_cobb2_7.ogg"
+   "v_en": "res://assets/voice/en/n1_cobb2_7.ogg"
   },
   "n1_dean_10": {
-   "v_en": "res://assets/voice/rpg_n1_dean_10.ogg"
+   "v_en": "res://assets/voice/en/n1_dean_10.ogg"
   },
   "n1_join_1": {
-   "v_en": "res://assets/voice/rpg_n1_join_1.ogg"
+   "v_en": "res://assets/voice/en/n1_join_1.ogg"
   },
   "n1_join_10": {
-   "v_en": "res://assets/voice/rpg_n1_join_10.ogg"
+   "v_en": "res://assets/voice/en/n1_join_10.ogg"
   },
   "n1_join_2": {
-   "v_en": "res://assets/voice/rpg_n1_join_2.ogg"
+   "v_en": "res://assets/voice/en/n1_join_2.ogg"
   },
   "n1_join_4": {
-   "v_en": "res://assets/voice/rpg_n1_join_4.ogg"
+   "v_en": "res://assets/voice/en/n1_join_4.ogg"
   },
   "n1_join_8": {
-   "v_en": "res://assets/voice/rpg_n1_join_8.ogg"
+   "v_en": "res://assets/voice/en/n1_join_8.ogg"
   },
   "n1_lamp_3": {
-   "v_en": "res://assets/voice/rpg_n1_lamp_3.ogg"
+   "v_en": "res://assets/voice/en/n1_lamp_3.ogg"
   },
   "n1_lbook_3": {
-   "v_en": "res://assets/voice/rpg_n1_lbook_3.ogg"
+   "v_en": "res://assets/voice/en/n1_lbook_3.ogg"
   },
   "n1_pen_11": {
-   "v_en": "res://assets/voice/rpg_n1_pen_11.ogg"
+   "v_en": "res://assets/voice/en/n1_pen_11.ogg"
   },
   "n1_pen_3": {
-   "v_en": "res://assets/voice/rpg_n1_pen_3.ogg"
+   "v_en": "res://assets/voice/en/n1_pen_3.ogg"
   },
   "n1_pen_7": {
-   "v_en": "res://assets/voice/rpg_n1_pen_7.ogg"
+   "v_en": "res://assets/voice/en/n1_pen_7.ogg"
   },
   "n1_roof_3": {
-   "v_en": "res://assets/voice/rpg_n1_roof_3.ogg"
+   "v_en": "res://assets/voice/en/n1_roof_3.ogg"
   },
   "n1_shelf_3": {
-   "v_en": "res://assets/voice/rpg_n1_shelf_3.ogg"
+   "v_en": "res://assets/voice/en/n1_shelf_3.ogg"
   },
   "n2_dock_grice_2": {
-   "v_en": "res://assets/voice/rpg_n2_dock_grice_2.ogg"
+   "v_en": "res://assets/voice/en/n2_dock_grice_2.ogg"
   },
   "n3_chart_2": {
-   "v_en": "res://assets/voice/rpg_n3_chart_2.ogg"
+   "v_en": "res://assets/voice/en/n3_chart_2.ogg"
   },
   "n3_t5_2": {
-   "v_en": "res://assets/voice/rpg_n3_t5_2.ogg"
+   "v_en": "res://assets/voice/en/n3_t5_2.ogg"
   },
   "n4_t3_2": {
-   "v_en": "res://assets/voice/rpg_n4_t3_2.ogg"
+   "v_en": "res://assets/voice/en/n4_t3_2.ogg"
   },
   "n4_t7_3": {
-   "v_en": "res://assets/voice/rpg_n4_t7_3.ogg"
+   "v_en": "res://assets/voice/en/n4_t7_3.ogg"
   }
  },
  "audio": {
@@ -1432,5 +1432,32 @@
    "steps": "steps_stone",
    "space": "archive"
   }
+ },
+ "voice_off": {
+  "de": [
+   "scene_dawn_resolution_4a80179f.ogg",
+   "scene_dawn_resolution_ca28ef3b.ogg"
+  ],
+  "fr": [
+   "chapter_2_b8942cf2.ogg",
+   "scene_dawn_resolution_35b88360.ogg",
+   "scene_dawn_resolution_ca28ef3b.ogg"
+  ],
+  "ja": [
+   "chapter_2_b8942cf2.ogg",
+   "chapter_3_820a1daf.ogg",
+   "chapter_4_045b58d0.ogg",
+   "chapter_5_107e101c.ogg",
+   "route_pact_045b58d0.ogg",
+   "scene_dawn_resolution_03cc1bd3.ogg",
+   "start_fc09ad15.ogg"
+  ],
+  "ko": [
+   "chapter_4_e0791f02.ogg",
+   "start_fc09ad15.ogg"
+  ],
+  "zh": [
+   "scene_dawn_resolution_52220cd5.ogg"
+  ]
  }
 }

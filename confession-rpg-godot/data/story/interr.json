@@ -187,7 +187,7 @@
    "who": "adaeze",
    "en": "When you write this up, spell my name right.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_57760552.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_57760552.ogg"
   },
   {
    "id": "suspect_route_7d4446b1",
@@ -205,7 +205,7 @@
    "who": "adaeze",
    "en": "Good. People get one chance at that.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_9cde9466.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_9cde9466.ogg"
   },
   {
    "id": "suspect_route_15a205b7",
@@ -223,7 +223,7 @@
    "who": "adaeze",
    "en": "My name is on the lease. Do you understand what that means at four in the morning with a dead man in my office?",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_93486345.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_93486345.ogg"
   },
   {
    "id": "suspect_route_2a5ef06b",
@@ -232,7 +232,7 @@
    "who": "adaeze",
    "en": "It means it is mine. Whatever happened in my building, I own it before anyone hands it to me.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_2a5ef06b.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_2a5ef06b.ogg"
   },
   {
    "id": "suspect_route_1ed31a37",
@@ -259,7 +259,7 @@
    "who": "adaeze",
    "en": "The cooler door. It has a seal, it drags. I heard it drag after I set the alarm, and I told myself it was the compressor, and I went home.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_5430dd22.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_5430dd22.ogg"
   },
   {
    "id": "suspect_route_b626bed6",
@@ -268,7 +268,7 @@
    "who": "adaeze",
    "en": "Write that down too. I'd rather you had it than kept it.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_b626bed6.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_b626bed6.ogg"
   },
   {
    "id": "suspect_route_f9716aca",
@@ -286,7 +286,7 @@
    "who": "vee",
    "en": "Don't stop asking. If you stop asking I'll start thinking.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_4f591432.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_4f591432.ogg"
   },
   {
    "id": "suspect_route_31d8d6eb",
@@ -304,7 +304,7 @@
    "who": "vee",
    "en": "About how long a room takes to get warm again.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_9a2164ce.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_9a2164ce.ogg"
   },
   {
    "id": "suspect_route_10266282",
@@ -322,7 +322,7 @@
    "who": "vee",
    "en": "Everyone keeps saying eleven minutes. Off the van, on the floor, gone. I said it so many times it stopped being a sentence.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_50f9d9a2.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_50f9d9a2.ogg"
   },
   {
    "id": "suspect_route_c54ffce0",
@@ -340,7 +340,7 @@
    "who": "vee",
    "en": "Long enough to stop feeling my hands.",
    "ja": "",
-   "v_en": "res://assets/voice/suspect_route_50c17620.ogg"
+   "v_en": "res://assets/voice/en/suspect_route_50c17620.ogg"
   },
   {
    "id": "suspect_route_c49b4238",
@@ -484,7 +484,7 @@
    "who": "adaeze",
    "en": "Six years. I signed every page she wrote.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_e623fd47.ogg"
+   "v_en": "res://assets/voice/en/route_bay_e623fd47.ogg"
   },
   {
    "id": "route_bay_b9398228",
@@ -502,7 +502,7 @@
    "who": "adaeze",
    "en": "It is the opposite of an alibi. Try to keep up.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_9bc8340e.ogg"
+   "v_en": "res://assets/voice/en/route_bay_9bc8340e.ogg"
   },
   {
    "id": "route_bay_1c094d8e",
@@ -520,7 +520,7 @@
    "who": "adaeze",
    "en": "Do you know what she did, the last time I saw her? She warned me. An auditor was coming and she told me first, because she thought that was decent.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_396b0d51.ogg"
+   "v_en": "res://assets/voice/en/route_bay_396b0d51.ogg"
   },
   {
    "id": "route_bay_f6d0edd6",
@@ -538,7 +538,7 @@
    "who": "adaeze",
    "en": "It was the most frightening thing anyone has ever done to me.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_4572707f.ogg"
+   "v_en": "res://assets/voice/en/route_bay_4572707f.ogg"
   },
   {
    "id": "route_bay_12e10ec1",
@@ -565,7 +565,7 @@
    "who": "adaeze",
    "en": "The mop room. I will say it before you find someone who says it for me.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_720b1925.ogg"
+   "v_en": "res://assets/voice/en/route_bay_720b1925.ogg"
   },
   {
    "id": "route_bay_977d4e91",
@@ -574,7 +574,7 @@
    "who": "adaeze",
    "en": "Write it down. All of it. Spell my name right.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_977d4e91.ogg"
+   "v_en": "res://assets/voice/en/route_bay_977d4e91.ogg"
   },
   {
    "id": "route_bay_03ab99f6",
@@ -592,7 +592,7 @@
    "who": "vee",
    "en": "You came and got me again.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_4cc50107.ogg"
+   "v_en": "res://assets/voice/en/route_bay_4cc50107.ogg"
   },
   {
    "id": "route_bay_9973e359",
@@ -610,7 +610,7 @@
    "who": "vee",
    "en": "You came with two uniforms and asked.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_c356ee19.ogg"
+   "v_en": "res://assets/voice/en/route_bay_c356ee19.ogg"
   },
   {
    "id": "route_bay_31e3457f",
@@ -628,7 +628,7 @@
    "who": "vee",
    "en": "She wrote down every crate I ever brought through that door. Six years. She never once wrote down my name.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_ac95b041.ogg"
+   "v_en": "res://assets/voice/en/route_bay_ac95b041.ogg"
   },
   {
    "id": "route_bay_a2d897c1",
@@ -646,7 +646,7 @@
    "who": "vee",
    "en": "Because everybody else in my life keeps a list. Hers was the only one I wasn't on.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_61fe66f9.ogg"
+   "v_en": "res://assets/voice/en/route_bay_61fe66f9.ogg"
   },
   {
    "id": "route_bay_77faf409",
@@ -664,7 +664,7 @@
    "who": "vee",
    "en": "I came back for a jacket. Around four. There was a light on in the mop room.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_a767fadb.ogg"
+   "v_en": "res://assets/voice/en/route_bay_a767fadb.ogg"
   },
   {
    "id": "route_bay_de6972ab",
@@ -682,7 +682,7 @@
    "who": "vee",
    "en": "No. I have been sick about it every day since.",
    "ja": "",
-   "v_en": "res://assets/voice/route_bay_ee3207db.ogg"
+   "v_en": "res://assets/voice/en/route_bay_ee3207db.ogg"
   },
   {
    "id": "route_bay_32a48924",
@@ -808,7 +808,7 @@
    "who": "adaeze",
    "en": "I signed nothing this month.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_6f7f7a3b.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_6f7f7a3b.ogg"
   },
   {
    "id": "route_stairs_201ba993",
@@ -826,7 +826,7 @@
    "who": "adaeze",
    "en": "Somebody else can be on every page for a while. I have been on every page since I was twenty-three.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_657aedc7.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_657aedc7.ogg"
   },
   {
    "id": "route_stairs_24fa9bbb",
@@ -844,7 +844,7 @@
    "who": "adaeze",
    "en": "Do you know what I did last night? Sat upstairs with the lights off, doing nothing at all, which is the only thing left that nobody can countersign.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_5ddbc214.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_5ddbc214.ogg"
   },
   {
    "id": "route_stairs_44700484",
@@ -862,7 +862,7 @@
    "who": "adaeze",
    "en": "The office light. From the flat you can see it thrown on the yard wall. It was on at one. I watched it go out.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_48985287.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_48985287.ogg"
   },
   {
    "id": "route_stairs_bc6efe71",
@@ -880,7 +880,7 @@
    "who": "adaeze",
    "en": "I have come down twice. Both times there was a person on the floor and my name on the lease.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_2c6aeed6.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_2c6aeed6.ogg"
   },
   {
    "id": "route_stairs_612adaca",
@@ -907,7 +907,7 @@
    "who": "vee",
    "en": "I'm here. Nobody had to come and get me.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_7ae8d735.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_7ae8d735.ogg"
   },
   {
    "id": "route_stairs_c9602627",
@@ -925,7 +925,7 @@
    "who": "vee",
    "en": "That has to be worth something. Not to a judge. To you.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_5bcee76d.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_5bcee76d.ogg"
   },
   {
    "id": "route_stairs_2e2ddc9e",
@@ -943,7 +943,7 @@
    "who": "vee",
    "en": "I was in the yard from midnight. You can hear the office through the vent. Not words. Just that there are words.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_f55e49da.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_f55e49da.ogg"
   },
   {
    "id": "route_stairs_403ed01e",
@@ -961,7 +961,7 @@
    "who": "vee",
    "en": "Feet on the stairs. Going down slow, like carrying.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_4818ed1b.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_4818ed1b.ogg"
   },
   {
    "id": "route_stairs_fb713c28",
@@ -979,7 +979,7 @@
    "who": "vee",
    "en": "Slow down. Quick up. Nobody carries anything up.",
    "ja": "",
-   "v_en": "res://assets/voice/route_stairs_3524760b.ogg"
+   "v_en": "res://assets/voice/en/route_stairs_3524760b.ogg"
   },
   {
    "id": "route_stairs_6901840f",

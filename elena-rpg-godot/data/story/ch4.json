@@ -28,8 +28,7 @@
    "who": "elena",
    "en": "She wants you in the cellar with a clipboard where she can see you.",
    "ja": "「彼女は君を地下室に呼び出す。クリップボードを持たせ、彼女の目の届く場所へ。」",
-   "v_en": "res://assets/voice/chapter_4_9cf4c71d.ogg",
-   "v_ja": "res://assets/voice/chapter_4_9cf4c71d.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_9cf4c71d.ogg"
   },
   {
    "id": "chapter_4_aa716468",
@@ -48,8 +47,7 @@
    "who": "elena",
    "en": "Both. She is the Dean. She does not do one thing at a time.",
    "ja": "「両方だ。彼女は学部長。一度に一つのことしかしない、などという真似はしない。」",
-   "v_en": "res://assets/voice/chapter_4_a0fb4831.ogg",
-   "v_ja": "res://assets/voice/chapter_4_a0fb4831.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_a0fb4831.ogg"
   },
   {
    "id": "chapter_4_d9834a2d",
@@ -78,8 +76,7 @@
    "who": "elena",
    "en": "Two o'clock. Tea takes forty minutes if she likes you and twenty if she does not.",
    "ja": "「2時。彼女が気に入れば紅茶は40分。気に入らなければ20分だ。」",
-   "v_en": "res://assets/voice/chapter_4_d87542e5.ogg",
-   "v_ja": "res://assets/voice/chapter_4_d87542e5.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_d87542e5.ogg"
   },
   {
    "id": "chapter_4_796a055c",
@@ -98,8 +95,7 @@
    "who": "elena",
    "en": "Then I have twenty minutes in the file room while she watches you drink.",
    "ja": "「なら、彼女が君の紅茶を飲むのを見ている間に、俺はファイル室で20分だ。」",
-   "v_en": "res://assets/voice/chapter_4_f01a3852.ogg",
-   "v_ja": "res://assets/voice/chapter_4_f01a3852.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_f01a3852.ogg"
   },
   {
    "id": "chapter_4_651b22e0",
@@ -118,8 +114,7 @@
    "who": "elena",
    "en": "Yes. You're the signing officer, I'm the assistant, and you keep saying that protects me. So let it.",
    "ja": "「ええ。あなたが署名責任者で、私が助手で、あなたはそれが私を守ると言い続けている。なら、守らせてください」",
-   "v_en": "res://assets/voice/chapter_4_3dda844c.ogg",
-   "v_ja": "res://assets/voice/chapter_4_3dda844c.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_3dda844c.ogg"
   },
   {
    "id": "chapter_4_0893928a",
@@ -128,8 +123,7 @@
    "who": "elena",
    "en": "You want to see her face.",
    "ja": "「君は彼女の顔を見たいんだろ。」",
-   "v_en": "res://assets/voice/chapter_4_0893928a.ogg",
-   "v_ja": "res://assets/voice/chapter_4_0893928a.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_0893928a.ogg"
   },
   {
    "id": "chapter_4_ca83a4aa",
@@ -158,8 +152,7 @@
    "who": "elena",
    "en": "She will ask about the crate.",
    "ja": "「彼女はあの木箱について尋ねるだろう。」",
-   "v_en": "res://assets/voice/chapter_4_6c3e39a4.ogg",
-   "v_ja": "res://assets/voice/chapter_4_6c3e39a4.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_6c3e39a4.ogg"
   },
   {
    "id": "chapter_4_9c13b2e3",
@@ -198,8 +191,7 @@
    "who": "elena",
    "en": "Twenty minutes, Vance. Do not enjoy yourself.",
    "ja": "「20分だ、ヴァンス。楽しむなよ。」",
-   "v_en": "res://assets/voice/chapter_4_189f4b5e.ogg",
-   "v_ja": "res://assets/voice/chapter_4_189f4b5e.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_189f4b5e.ogg"
   },
   {
    "id": "chapter_4_c3b87d92",
@@ -428,8 +420,7 @@
    "who": "elena",
    "en": "It isn't a chapel.",
    "ja": "「礼拝堂じゃありません」",
-   "v_en": "res://assets/voice/chapter_4_977f7d24.ogg",
-   "v_ja": "res://assets/voice/chapter_4_977f7d24.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_977f7d24.ogg"
   },
   {
    "id": "chapter_4_b751b322",
@@ -448,8 +439,7 @@
    "who": "elena",
    "en": "Under the floor. The 1994 survey. It's here — she kept it, she keeps everything. It isn't a chapel, it's a strongroom, and it isn't empty.",
    "ja": "「床の下。1994年の調査報告。ここにあった——彼女が保管していた、あの人は何でも保管する。礼拝堂じゃない、保管庫です。しかも空じゃない」",
-   "v_en": "res://assets/voice/chapter_4_4533b26b.ogg",
-   "v_ja": "res://assets/voice/chapter_4_4533b26b.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_4533b26b.ogg"
   },
   {
    "id": "chapter_4_e06710c0",
@@ -478,8 +468,7 @@
    "who": "elena",
    "en": "The other ledger, Vance. The real one.",
    "ja": "もう一つの台帳よ、ヴァンス。本物の方。",
-   "v_en": "res://assets/voice/chapter_4_198cbd71.ogg",
-   "v_ja": "res://assets/voice/chapter_4_198cbd71.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_198cbd71.ogg"
   },
   {
    "id": "chapter_4_da89a37e",
@@ -498,8 +487,7 @@
    "who": "elena",
    "en": "This one is the copy they kept upstairs for people like you to countersign. The one under the floor has who was paid, how much, and by whom. Thirty years of it.",
    "ja": "「こっちは、あなたのような人に副署させるために上階に置いていた写しです。床の下のほうには、誰が、いくら、誰から払われたかが書いてある。三十年分」",
-   "v_en": "res://assets/voice/chapter_4_c4ff9d52.ogg",
-   "v_ja": "res://assets/voice/chapter_4_c4ff9d52.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_c4ff9d52.ogg"
   },
   {
    "id": "chapter_4_26a1e395",
@@ -508,8 +496,7 @@
    "who": "elena",
    "en": "My father is in it. So is yours.",
    "ja": "私の父も載っている。あなたの父も。",
-   "v_en": "res://assets/voice/chapter_4_26a1e395.ogg",
-   "v_ja": "res://assets/voice/chapter_4_26a1e395.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_26a1e395.ogg"
   },
   {
    "id": "chapter_4_3e4d0a5e",
@@ -538,8 +525,7 @@
    "who": "elena",
    "en": "Your father gave the Academy four hundred pounds in 1971 and his name is on page two. I don't know why yet. But Penhallow knew it when he shook your hand.",
    "ja": "「あなたのお父様は1971年にアカデミーへ四百ポンド寄付していて、名前は二ページ目にあります。理由はまだわかりません。でもペンハロウは、あなたと握手したときに知っていた」",
-   "v_en": "res://assets/voice/chapter_4_0afda337.ogg",
-   "v_ja": "res://assets/voice/chapter_4_0afda337.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_0afda337.ogg"
   },
   {
    "id": "chapter_4_7cee18a5",
@@ -548,8 +534,7 @@
    "who": "elena",
    "en": "The survey gives you the cellar on Thursday. With a witness from Estates.",
    "ja": "調査書のおかげで、木曜日に地下室に入れる。財産管理部門の証人付きで。",
-   "v_en": "res://assets/voice/chapter_4_7cee18a5.ogg",
-   "v_ja": "res://assets/voice/chapter_4_7cee18a5.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_7cee18a5.ogg"
   },
   {
    "id": "chapter_4_6cc41d23",
@@ -568,8 +553,7 @@
    "who": "elena",
    "en": "Yes.",
    "ja": "ああ。",
-   "v_en": "res://assets/voice/chapter_4_045b58d0.ogg",
-   "v_ja": "res://assets/voice/chapter_4_045b58d0.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_045b58d0.ogg"
   },
   {
    "id": "chapter_4_4adc3052",
@@ -598,8 +582,7 @@
    "who": "elena",
    "en": "And if it is empty on Thursday?",
    "ja": "そして、もし木曜日に空っぽだったら？",
-   "v_en": "res://assets/voice/chapter_4_1f4bfe52.ogg",
-   "v_ja": "res://assets/voice/chapter_4_1f4bfe52.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_1f4bfe52.ogg"
   },
   {
    "id": "chapter_4_e99a2e41",
@@ -628,8 +611,7 @@
    "who": "elena",
    "en": "She already knows. Her phone buzzed at 2:24, you said so. That was the file room door.",
    "ja": "彼女はもう知っている。2時24分に彼女の携帯が鳴った。お前がそう言った。それは資料室のドアだった。",
-   "v_en": "res://assets/voice/chapter_4_f46e8bac.ogg",
-   "v_ja": "res://assets/voice/chapter_4_f46e8bac.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_f46e8bac.ogg"
   },
   {
    "id": "chapter_4_f35a8c7b",
@@ -648,8 +630,7 @@
    "who": "elena",
    "en": "It costs the file.",
    "ja": "ファイルが代償だ。",
-   "v_en": "res://assets/voice/chapter_4_e0791f02.ogg",
-   "v_ja": "res://assets/voice/chapter_4_e0791f02.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_e0791f02.ogg"
   },
   {
    "id": "chapter_4_276ae66f",
@@ -678,8 +659,7 @@
    "who": "elena",
    "en": "If we go down there tonight and it goes wrong, they'll say you made me.",
    "ja": "「今夜あそこへ降りて失敗したら、あなたが私にやらせたと言われます」",
-   "v_en": "res://assets/voice/chapter_4_d0c42578.ogg",
-   "v_ja": "res://assets/voice/chapter_4_d0c42578.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_d0c42578.ogg"
   },
   {
    "id": "chapter_4_b90ed1ca",
@@ -698,8 +678,7 @@
    "who": "elena",
    "en": "I want it on paper, then. Properly. Write it.",
    "ja": "「ならば、それを書類に残したい。きちんと。書け」",
-   "v_en": "res://assets/voice/chapter_4_a77797db.ogg",
-   "v_ja": "res://assets/voice/chapter_4_a77797db.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_a77797db.ogg"
   },
   {
    "id": "chapter_4_d0274726",
@@ -768,8 +747,7 @@
    "who": "elena",
    "en": "Your father. Four hundred pounds.",
    "ja": "お前の父親。400ポンド。",
-   "v_en": "res://assets/voice/chapter_4_a8f9f469.ogg",
-   "v_ja": "res://assets/voice/chapter_4_a8f9f469.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_a8f9f469.ogg"
   },
   {
    "id": "chapter_4_b5837b3c",
@@ -788,8 +766,7 @@
    "who": "elena",
    "en": "Maybe it was.",
    "ja": "「そうだったのかもしれない」",
-   "v_en": "res://assets/voice/chapter_4_82165b44.ogg",
-   "v_ja": "res://assets/voice/chapter_4_82165b44.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_82165b44.ogg"
   },
   {
    "id": "chapter_4_7e6e2b4b",
@@ -868,8 +845,7 @@
    "who": "elena",
    "en": "You're the first faculty member ever to stand in this room. If anyone sees you leave, I lose my funding.",
    "ja": "「この部屋に立った教員はあなたが初めてです。出ていくところを誰かに見られたら、私は奨学金を失う」",
-   "v_en": "res://assets/voice/chapter_4_01427d80.ogg",
-   "v_ja": "res://assets/voice/chapter_4_01427d80.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_01427d80.ogg"
   },
   {
    "id": "chapter_4_ea440645",
@@ -888,8 +864,7 @@
    "who": "elena",
    "en": "That was the idea.",
    "ja": "それが狙い。",
-   "v_en": "res://assets/voice/chapter_4_cc8e6a27.ogg",
-   "v_ja": "res://assets/voice/chapter_4_cc8e6a27.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_4_cc8e6a27.ogg"
   },
   {
    "id": "chapter_4_1011e269",

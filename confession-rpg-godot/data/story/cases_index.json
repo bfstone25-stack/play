@@ -74,112 +74,128 @@
      "who": "adaeze",
      "topic": "closing up",
      "need": 0,
-     "src": 1108
+     "src": 1108,
+     "v_en": "res://assets/voice/en/ade_drawer.ogg"
     },
     {
      "id": "ade_alarm",
      "who": "adaeze",
      "topic": "the alarm",
      "need": 0,
-     "src": 1109
+     "src": 1109,
+     "v_en": "res://assets/voice/en/ade_alarm.ogg"
     },
     {
      "id": "ade_staff",
      "who": "adaeze",
      "topic": "who was left",
      "need": 0,
-     "src": 1110
+     "src": 1110,
+     "v_en": "res://assets/voice/en/ade_staff.ogg"
     },
     {
      "id": "ade_marek",
      "who": "adaeze",
      "topic": "Marek",
      "need": 1,
-     "src": 1111
+     "src": 1111,
+     "v_en": "res://assets/voice/en/ade_marek.ogg"
     },
     {
      "id": "ade_kitchen",
      "who": "adaeze",
      "topic": "the kitchen",
      "need": 1,
-     "src": 1112
+     "src": 1112,
+     "v_en": "res://assets/voice/en/ade_kitchen.ogg"
     },
     {
      "id": "ade_vee",
      "who": "adaeze",
      "topic": "Vee",
      "need": 2,
-     "src": 1113
+     "src": 1113,
+     "v_en": "res://assets/voice/en/ade_vee.ogg"
     },
     {
      "id": "ade_lease",
      "who": "adaeze",
      "topic": "the lease",
      "need": 3,
-     "src": 1114
+     "src": 1114,
+     "v_en": "res://assets/voice/en/ade_lease.ogg"
     },
     {
      "id": "ade_seal",
      "who": "adaeze",
      "topic": "the cooler door",
      "need": 99,
-     "src": 1115
+     "src": 1115,
+     "v_en": "res://assets/voice/en/ade_seal.ogg"
     },
     {
      "id": "vee_crate",
      "who": "vee",
      "topic": "the delivery",
      "need": 0,
-     "src": 1116
+     "src": 1116,
+     "v_en": "res://assets/voice/en/vee_crate.ogg"
     },
     {
      "id": "vee_leave",
      "who": "vee",
      "topic": "leaving",
      "need": 0,
-     "src": 1117
+     "src": 1117,
+     "v_en": "res://assets/voice/en/vee_leave.ogg"
     },
     {
      "id": "vee_van",
      "who": "vee",
      "topic": "the van",
      "need": 0,
-     "src": 1118
+     "src": 1118,
+     "v_en": "res://assets/voice/en/vee_van.ogg"
     },
     {
      "id": "vee_marek",
      "who": "vee",
      "topic": "Marek",
      "need": 1,
-     "src": 1119
+     "src": 1119,
+     "v_en": "res://assets/voice/en/vee_marek.ogg"
     },
     {
      "id": "vee_name",
      "who": "vee",
      "topic": "whose name",
      "need": 1,
-     "src": 1120
+     "src": 1120,
+     "v_en": "res://assets/voice/en/vee_name.ogg"
     },
     {
      "id": "vee_bar",
      "who": "vee",
      "topic": "past the bar",
      "need": 2,
-     "src": 1121
+     "src": 1121,
+     "v_en": "res://assets/voice/en/vee_bar.ogg"
     },
     {
      "id": "vee_cold",
      "who": "vee",
      "topic": "the cold",
      "need": 3,
-     "src": 1122
+     "src": 1122,
+     "v_en": "res://assets/voice/en/vee_cold.ogg"
     },
     {
      "id": "vee_hands",
      "who": "vee",
      "topic": "eleven minutes",
      "need": 99,
-     "src": 1123
+     "src": 1123,
+     "v_en": "res://assets/voice/en/vee_hands.ogg"
     }
    ]
   },
@@ -257,112 +273,128 @@
      "who": "adaeze",
      "topic": "until four",
      "need": 0,
-     "src": 2108
+     "src": 2108,
+     "v_en": "res://assets/voice/en/ade2_four.ogg"
     },
     {
      "id": "ade2_iris",
      "who": "adaeze",
      "topic": "Iris",
      "need": 0,
-     "src": 2109
+     "src": 2109,
+     "v_en": "res://assets/voice/en/ade2_iris.ogg"
     },
     {
      "id": "ade2_bay",
      "who": "adaeze",
      "topic": "the loading bay",
      "need": 0,
-     "src": 2110
+     "src": 2110,
+     "v_en": "res://assets/voice/en/ade2_bay.ogg"
     },
     {
      "id": "ade2_sign",
      "who": "adaeze",
      "topic": "your signature",
      "need": 1,
-     "src": 2111
+     "src": 2111,
+     "v_en": "res://assets/voice/en/ade2_sign.ogg"
     },
     {
      "id": "ade2_audit",
      "who": "adaeze",
      "topic": "the audit",
      "need": 1,
-     "src": 2112
+     "src": 2112,
+     "v_en": "res://assets/voice/en/ade2_audit.ogg"
     },
     {
      "id": "ade2_night",
      "who": "adaeze",
      "topic": "that night",
      "need": 2,
-     "src": 2113
+     "src": 2113,
+     "v_en": "res://assets/voice/en/ade2_night.ogg"
     },
     {
      "id": "ade2_basin",
      "who": "adaeze",
      "topic": "clean water",
      "need": 3,
-     "src": 2114
+     "src": 2114,
+     "v_en": "res://assets/voice/en/ade2_basin.ogg"
     },
     {
      "id": "ade2_mop",
      "who": "adaeze",
      "topic": "the mop room",
      "need": 99,
-     "src": 2115
+     "src": 2115,
+     "v_en": "res://assets/voice/en/ade2_mop.ogg"
     },
     {
      "id": "vee2_where",
      "who": "vee",
      "topic": "where you were",
      "need": 0,
-     "src": 2116
+     "src": 2116,
+     "v_en": "res://assets/voice/en/vee2_where.ogg"
     },
     {
      "id": "vee2_bail",
      "who": "vee",
      "topic": "the bail",
      "need": 0,
-     "src": 2117
+     "src": 2117,
+     "v_en": "res://assets/voice/en/vee2_bail.ogg"
     },
     {
      "id": "vee2_iris",
      "who": "vee",
      "topic": "Iris",
      "need": 0,
-     "src": 2118
+     "src": 2118,
+     "v_en": "res://assets/voice/en/vee2_iris.ogg"
     },
     {
      "id": "vee2_kind",
      "who": "vee",
      "topic": "why that mattered",
      "need": 1,
-     "src": 2119
+     "src": 2119,
+     "v_en": "res://assets/voice/en/vee2_kind.ogg"
     },
     {
      "id": "vee2_paid",
      "who": "vee",
      "topic": "who paid",
      "need": 1,
-     "src": 2120
+     "src": 2120,
+     "v_en": "res://assets/voice/en/vee2_paid.ogg"
     },
     {
      "id": "vee2_cold",
      "who": "vee",
      "topic": "the last case",
      "need": 2,
-     "src": 2121
+     "src": 2121,
+     "v_en": "res://assets/voice/en/vee2_cold.ogg"
     },
     {
      "id": "vee2_scared",
      "who": "vee",
      "topic": "what you're afraid of",
      "need": 3,
-     "src": 2122
+     "src": 2122,
+     "v_en": "res://assets/voice/en/vee2_scared.ogg"
     },
     {
      "id": "vee2_seen",
      "who": "vee",
      "topic": "what you saw",
      "need": 99,
-     "src": 2123
+     "src": 2123,
+     "v_en": "res://assets/voice/en/vee2_seen.ogg"
     }
    ]
   },
@@ -440,112 +472,128 @@
      "who": "adaeze",
      "topic": "the lease, again",
      "need": 0,
-     "src": 3108
+     "src": 3108,
+     "v_en": "res://assets/voice/en/ade3_lease.ogg"
     },
     {
      "id": "ade3_bo",
      "who": "adaeze",
      "topic": "Bo Kestrel",
      "need": 0,
-     "src": 3109
+     "src": 3109,
+     "v_en": "res://assets/voice/en/ade3_bo.ogg"
     },
     {
      "id": "ade3_night",
      "who": "adaeze",
      "topic": "last night",
      "need": 0,
-     "src": 3110
+     "src": 3110,
+     "v_en": "res://assets/voice/en/ade3_night.ogg"
     },
     {
      "id": "ade3_report",
      "who": "adaeze",
      "topic": "the report",
      "need": 1,
-     "src": 3111
+     "src": 3111,
+     "v_en": "res://assets/voice/en/ade3_report.ogg"
     },
     {
      "id": "ade3_after",
      "who": "adaeze",
      "topic": "since Iris",
      "need": 1,
-     "src": 3112
+     "src": 3112,
+     "v_en": "res://assets/voice/en/ade3_after.ogg"
     },
     {
      "id": "ade3_nik",
      "who": "adaeze",
      "topic": "Nikolai",
      "need": 2,
-     "src": 3113
+     "src": 3113,
+     "v_en": "res://assets/voice/en/ade3_nik.ogg"
     },
     {
      "id": "ade3_owe",
      "who": "adaeze",
      "topic": "what he is owed",
      "need": 3,
-     "src": 3114
+     "src": 3114,
+     "v_en": "res://assets/voice/en/ade3_owe.ogg"
     },
     {
      "id": "ade3_office",
      "who": "adaeze",
      "topic": "the office light",
      "need": 99,
-     "src": 3115
+     "src": 3115,
+     "v_en": "res://assets/voice/en/ade3_office.ogg"
     },
     {
      "id": "vee3_here",
      "who": "vee",
      "topic": "why you came in",
      "need": 0,
-     "src": 3116
+     "src": 3116,
+     "v_en": "res://assets/voice/en/vee3_here.ogg"
     },
     {
      "id": "vee3_bo",
      "who": "vee",
      "topic": "Bo Kestrel",
      "need": 0,
-     "src": 3117
+     "src": 3117,
+     "v_en": "res://assets/voice/en/vee3_bo.ogg"
     },
     {
      "id": "vee3_night",
      "who": "vee",
      "topic": "last night",
      "need": 0,
-     "src": 3118
+     "src": 3118,
+     "v_en": "res://assets/voice/en/vee3_night.ogg"
     },
     {
      "id": "vee3_yard",
      "who": "vee",
      "topic": "the yard",
      "need": 1,
-     "src": 3119
+     "src": 3119,
+     "v_en": "res://assets/voice/en/vee3_yard.ogg"
     },
     {
      "id": "vee3_heard",
      "who": "vee",
      "topic": "what you heard",
      "need": 1,
-     "src": 3120
+     "src": 3120,
+     "v_en": "res://assets/voice/en/vee3_heard.ogg"
     },
     {
      "id": "vee3_tell",
      "who": "vee",
      "topic": "why you didn't say",
      "need": 2,
-     "src": 3121
+     "src": 3121,
+     "v_en": "res://assets/voice/en/vee3_tell.ogg"
     },
     {
      "id": "vee3_believe",
      "who": "vee",
      "topic": "what you want",
      "need": 3,
-     "src": 3122
+     "src": 3122,
+     "v_en": "res://assets/voice/en/vee3_believe.ogg"
     },
     {
      "id": "vee3_slow",
      "who": "vee",
      "topic": "going down slow",
      "need": 99,
-     "src": 3123
+     "src": 3123,
+     "v_en": "res://assets/voice/en/vee3_slow.ogg"
     }
    ]
   }

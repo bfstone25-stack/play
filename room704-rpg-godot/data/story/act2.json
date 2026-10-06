@@ -38,8 +38,7 @@
    "who": "mira",
    "en": "You came up.",
    "ja": "上がってきたのね。",
-   "v_en": "res://assets/voice/act2_8e0e450a.ogg",
-   "v_ja": "res://assets/voice/act2_8e0e450a.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_8e0e450a.ogg"
   },
   {
    "id": "act2_909cb681",
@@ -58,8 +57,7 @@
    "who": "mira",
    "en": "People don't always come when you call the desk.",
    "ja": "フロントに電話しても、いつも人が来るわけじゃない。",
-   "v_en": "res://assets/voice/act2_6f8ba988.ogg",
-   "v_ja": "res://assets/voice/act2_6f8ba988.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_6f8ba988.ogg"
   },
   {
    "id": "act2_e95efd8d",
@@ -88,8 +86,7 @@
    "who": "mira",
    "en": "He came in, didn't he.",
    "ja": "彼、入ってきたんでしょ。",
-   "v_en": "res://assets/voice/act2_97067f46.ogg",
-   "v_ja": "res://assets/voice/act2_97067f46.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_97067f46.ogg"
   },
   {
    "id": "act2_1f6605b7",
@@ -108,8 +105,7 @@
    "who": "mira",
    "en": "What did you say?",
    "ja": "何て言った？",
-   "v_en": "res://assets/voice/act2_fdcded8b.ogg",
-   "v_ja": "res://assets/voice/act2_fdcded8b.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_fdcded8b.ogg"
   },
   {
    "id": "act2_7ff2fe80",
@@ -138,8 +134,7 @@
    "who": "mira",
    "en": "You lied to a man you'd never met, for a woman you'd known eight minutes.",
    "ja": "会ったこともない男に嘘をついた。たった八分しか知らない女のために。",
-   "v_en": "res://assets/voice/act2_471bbdbd.ogg",
-   "v_ja": "res://assets/voice/act2_471bbdbd.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_471bbdbd.ogg"
   },
   {
    "id": "act2_905447cf",
@@ -158,8 +153,7 @@
    "who": "mira",
    "en": "No. That's the part I'm turning over.",
    "ja": "いいえ。そこが、私が考えていることよ。",
-   "v_en": "res://assets/voice/act2_1d6cf592.ogg",
-   "v_ja": "res://assets/voice/act2_1d6cf592.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_1d6cf592.ogg"
   },
   {
    "id": "act2_b55cc48e",
@@ -168,8 +162,7 @@
    "who": "mira",
    "en": "He came in.",
    "ja": "彼、入ってきた。",
-   "v_en": "res://assets/voice/act2_b55cc48e.ogg",
-   "v_ja": "res://assets/voice/act2_b55cc48e.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_b55cc48e.ogg"
   },
   {
    "id": "act2_465a44fe",
@@ -188,8 +181,7 @@
    "who": "mira",
    "en": "And you showed him the book.",
    "ja": "それで、彼に本を見せたのね。",
-   "v_en": "res://assets/voice/act2_4ff83c39.ogg",
-   "v_ja": "res://assets/voice/act2_4ff83c39.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_4ff83c39.ogg"
   },
   {
    "id": "act2_e27cd5d9",
@@ -218,8 +210,7 @@
    "who": "mira",
    "en": "Right.",
    "ja": "そう。",
-   "v_en": "res://assets/voice/act2_ed24bcfd.ogg",
-   "v_ja": "res://assets/voice/act2_ed24bcfd.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_ed24bcfd.ogg"
   },
   {
    "id": "act2_6c6f0ecc",
@@ -238,8 +229,7 @@
    "who": "mira",
    "en": "I'm not going to shout at you. You didn't owe me anything. I put money on a counter and asked a stranger to be on my side, and that was optimistic of me.",
    "ja": "あなたに怒鳴ったりしないわ。あなたは私に何も借りはない。私はカウンターに金を置いて、見知らぬ人に味方になってくれと頼んだ。それは、私がおめでたかっただけ。",
-   "v_en": "res://assets/voice/act2_a5242f1c.ogg",
-   "v_ja": "res://assets/voice/act2_a5242f1c.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_a5242f1c.ogg"
   },
   {
    "id": "act2_8cf08b3a",
@@ -248,8 +238,7 @@
    "who": "mira",
    "en": "But I'll be gone before it's light, and I'd rather not spend my last few hours angry at the only person who's spoken to me today.",
    "ja": "「でも明るくなる前には行く。最後の数時間を、今日話した唯一の相手に腹を立てて過ごしたくない」",
-   "v_en": "res://assets/voice/act2_8cf08b3a.ogg",
-   "v_ja": "res://assets/voice/act2_8cf08b3a.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_8cf08b3a.ogg"
   },
   {
    "id": "act2_5df2544b",
@@ -258,8 +247,7 @@
    "who": "mira",
    "en": "He came in and you gave him nothing.",
    "ja": "彼が入ってくる。あなたは何も与えない。",
-   "v_en": "res://assets/voice/act2_5df2544b.ogg",
-   "v_ja": "res://assets/voice/act2_5df2544b.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_5df2544b.ogg"
   },
   {
    "id": "act2_e1e72ab4",
@@ -278,8 +266,7 @@
    "who": "mira",
    "en": "The house line is a gift, at four in the morning.",
    "ja": "午前四時のハウスラインは、贈り物だ。",
-   "v_en": "res://assets/voice/act2_dd0c2740.ogg",
-   "v_ja": "res://assets/voice/act2_dd0c2740.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_dd0c2740.ogg"
   },
   {
    "id": "act2_71cdfbf6",
@@ -298,8 +285,7 @@
    "who": "mira",
    "en": "Sit down. You've been on your feet behind that desk for six hours. I could hear it in how you came up the stairs.",
    "ja": "「座って。六時間あのデスクで立ちっぱなしだったでしょう。階段の上がり方で分かった」",
-   "v_en": "res://assets/voice/act2_54351b94.ogg",
-   "v_ja": "res://assets/voice/act2_54351b94.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_54351b94.ogg"
   },
   {
    "id": "act2_0b2ca8bb",
@@ -326,8 +312,7 @@
    "who": "mira",
    "en": "Good.",
    "ja": "よし。",
-   "v_en": "res://assets/voice/act2_chair_c08bc8f4.ogg",
-   "v_ja": "res://assets/voice/act2_chair_c08bc8f4.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_chair_c08bc8f4.ogg"
   },
   {
    "id": "act2_chair_32e33182",
@@ -346,8 +331,7 @@
    "who": "mira",
    "en": "Most men would have sat on the bed.",
    "ja": "大抵の男はベッドに座るものだ。",
-   "v_en": "res://assets/voice/act2_chair_05ffe937.ogg",
-   "v_ja": "res://assets/voice/act2_chair_05ffe937.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_chair_05ffe937.ogg"
   },
   {
    "id": "act2_chair_aa51e009",
@@ -386,8 +370,7 @@
    "who": "mira",
    "en": "I'm going to ask you something and you can say no and it won't be strange afterwards.",
    "ja": "ひとつ、聞きたいことがある。断っても構わない。後腐れはない。",
-   "v_en": "res://assets/voice/act2_chair_3774e5ee.ogg",
-   "v_ja": "res://assets/voice/act2_chair_3774e5ee.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_chair_3774e5ee.ogg"
   },
   {
    "id": "act2_chair_acd8b322",
@@ -396,8 +379,7 @@
    "who": "mira",
    "en": "Stay up here. Not the chair.",
    "ja": "ここにいろ。椅子じゃない。",
-   "v_en": "res://assets/voice/act2_chair_acd8b322.ogg",
-   "v_ja": "res://assets/voice/act2_chair_acd8b322.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_chair_acd8b322.ogg"
   },
   {
    "id": "act2_chair_0cd7dd36",
@@ -424,8 +406,7 @@
    "who": "mira",
    "en": "There we are.",
    "ja": "これでよし。",
-   "v_en": "res://assets/voice/act2_bed_2aca18d2.ogg",
-   "v_ja": "res://assets/voice/act2_bed_2aca18d2.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_bed_2aca18d2.ogg"
   },
   {
    "id": "act2_bed_6b390c8a",
@@ -444,8 +425,7 @@
    "who": "mira",
    "en": "Do you want to know the stupid part?",
    "ja": "馬鹿な話、聞きたいか？",
-   "v_en": "res://assets/voice/act2_bed_2dc1990e.ogg",
-   "v_ja": "res://assets/voice/act2_bed_2dc1990e.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_bed_2dc1990e.ogg"
   },
   {
    "id": "act2_bed_ec842a4a",
@@ -464,8 +444,7 @@
    "who": "mira",
    "en": "I booked a train. It leaves at six-forty. I've had the ticket for nine days and I kept not getting on it.",
    "ja": "列車を予約した。六時四十分発だ。九日前から切符を持っていたが、ずっと乗れずにいた。",
-   "v_en": "res://assets/voice/act2_bed_0e38c0f7.ogg",
-   "v_ja": "res://assets/voice/act2_bed_0e38c0f7.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_bed_0e38c0f7.ogg"
   },
   {
    "id": "act2_bed_b1381ef4",
@@ -474,8 +453,7 @@
    "who": "mira",
    "en": "Tonight I got as far as the station and couldn't make myself sit on a bench for four hours where anyone could see me. So I walked, and your doors were the first ones that were open.",
    "ja": "今夜も駅までは行った。だが、誰かに見られる場所で四時間もベンチに座っている気にはなれなかった。だから、歩いた。そして、あなたの店が最初に開いていたドアだった。",
-   "v_en": "res://assets/voice/act2_bed_b1381ef4.ogg",
-   "v_ja": "res://assets/voice/act2_bed_b1381ef4.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_bed_b1381ef4.ogg"
   },
   {
    "id": "act2_bed_bd70ff42",
@@ -494,8 +472,7 @@
    "who": "mira",
    "en": "So this is the bravest thing I've done in a year. A hotel lobby.",
    "ja": "だから、これがこの一年で一番勇敢なことだ。ホテルのロビー。",
-   "v_en": "res://assets/voice/act2_bed_e25eede6.ogg",
-   "v_ja": "res://assets/voice/act2_bed_e25eede6.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_bed_e25eede6.ogg"
   },
   {
    "id": "act2_bed_b4c2d737",
@@ -514,8 +491,7 @@
    "who": "mira",
    "en": "Yes. I'm good at that.",
    "ja": "ああ。それは得意だ。",
-   "v_en": "res://assets/voice/act2_bed_26c308f1.ogg",
-   "v_ja": "res://assets/voice/act2_bed_26c308f1.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_bed_26c308f1.ogg"
   },
   {
    "id": "act2_bed_bc232ac3",
@@ -534,8 +510,7 @@
    "who": "mira",
    "en": "Ask me to stay awake with you, or tell me to go to sleep. Either one. Just decide, because I've been deciding nothing for eleven months and I'm tired of it.",
    "ja": "私に起きていてほしいのか、それとも寝ろと言うのか。どちらでもいい。ただ決めてくれ。この十一ヶ月間、何も決められずにいた。もううんざりだ。",
-   "v_en": "res://assets/voice/act2_bed_10b72939.ogg",
-   "v_ja": "res://assets/voice/act2_bed_10b72939.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_bed_10b72939.ogg"
   },
   {
    "id": "act2_bed_afb65c0e",
@@ -562,8 +537,7 @@
    "who": "mira",
    "en": "You can watch him all night. He'll still be there at six.",
    "ja": "一晩中、彼を見張っていてもいい。六時にはまだそこにいるだろう。",
-   "v_en": "res://assets/voice/act2_window_5aa547ca.ogg",
-   "v_ja": "res://assets/voice/act2_window_5aa547ca.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_window_5aa547ca.ogg"
   },
   {
    "id": "act2_window_08ec6ae1",
@@ -592,8 +566,7 @@
    "who": "mira",
    "en": "How do you know about the train?",
    "ja": "どうして電車のことを？",
-   "v_en": "res://assets/voice/act2_window_b6192088.ogg",
-   "v_ja": "res://assets/voice/act2_window_b6192088.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_window_b6192088.ogg"
   },
   {
    "id": "act2_window_b7235d90",
@@ -612,8 +585,7 @@
    "who": "mira",
    "en": "Six-forty.",
    "ja": "六時四十分。",
-   "v_en": "res://assets/voice/act2_window_4e9213fe.ogg",
-   "v_ja": "res://assets/voice/act2_window_4e9213fe.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_window_4e9213fe.ogg"
   },
   {
    "id": "act2_window_4d003817",
@@ -632,8 +604,7 @@
    "who": "mira",
    "en": "Nine days I've had that ticket.",
    "ja": "あの切符、九日間持ってた。",
-   "v_en": "res://assets/voice/act2_window_8d37aecb.ogg",
-   "v_ja": "res://assets/voice/act2_window_8d37aecb.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_window_8d37aecb.ogg"
   },
   {
    "id": "act2_window_223c2707",
@@ -652,8 +623,7 @@
    "who": "mira",
    "en": "I don't want to spend the last four hours of it being watched.",
    "ja": "「その最後の四時間を、見られて過ごしたくない」",
-   "v_en": "res://assets/voice/act2_window_1501b845.ogg",
-   "v_ja": "res://assets/voice/act2_window_1501b845.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_window_1501b845.ogg"
   },
   {
    "id": "act2_window_e72e4354",
@@ -680,8 +650,7 @@
    "who": "mira",
    "en": "All right.",
    "ja": "わかった。",
-   "v_en": "res://assets/voice/act2_decline_51cf8148.ogg",
-   "v_ja": "res://assets/voice/act2_decline_51cf8148.ja.ogg"
+   "v_en": "res://assets/voice/en/act2_decline_51cf8148.ogg"
   },
   {
    "id": "act2_decline_be842045",
@@ -730,8 +699,7 @@
    "who": "mira",
    "en": "Don't stop.",
    "ja": "やめないで。",
-   "v_en": "res://assets/voice/scene_bed_80f01d26.ogg",
-   "v_ja": "res://assets/voice/scene_bed_80f01d26.ja.ogg"
+   "v_en": "res://assets/voice/en/scene_bed_80f01d26.ogg"
   },
   {
    "id": "scene_bed_e901750d",
@@ -770,8 +738,7 @@
    "who": "mira",
    "en": "He can't see up here.",
    "ja": "彼はここまでは見えない。",
-   "v_en": "res://assets/voice/scene_window_99a61c12.ogg",
-   "v_ja": "res://assets/voice/scene_window_99a61c12.ja.ogg"
+   "v_en": "res://assets/voice/en/scene_window_99a61c12.ogg"
   },
   {
    "id": "scene_window_e5b0b3b1",
@@ -790,8 +757,7 @@
    "who": "mira",
    "en": "Good.",
    "ja": "よし。",
-   "v_en": "res://assets/voice/scene_window_c08bc8f4.ogg",
-   "v_ja": "res://assets/voice/scene_window_c08bc8f4.ja.ogg"
+   "v_en": "res://assets/voice/en/scene_window_c08bc8f4.ogg"
   },
   {
    "id": "scene_window_7a085ad0",

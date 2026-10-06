@@ -58,8 +58,7 @@
    "who": "elena",
    "en": "Brick over a door. Same mortar as the coal store. Same month.",
    "ja": "扉を塞ぐレンガ。石炭庫と同じモルタル。同じ月。",
-   "v_en": "res://assets/voice/chapter_5_021d491b.ogg",
-   "v_ja": "res://assets/voice/chapter_5_021d491b.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_5_021d491b.ogg"
   },
   {
    "id": "chapter_5_e039ac8f",
@@ -78,8 +77,7 @@
    "who": "elena",
    "en": "Penhallow's money. The men were ours. Cobb probably carried the bricks.",
    "ja": "ペンハローの金。男たちは我々のものだった。コブがレンガを運んだのだろう。",
-   "v_en": "res://assets/voice/chapter_5_d486ece9.ogg",
-   "v_ja": "res://assets/voice/chapter_5_d486ece9.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_5_d486ece9.ogg"
   },
   {
    "id": "chapter_5_25957888",
@@ -138,8 +136,7 @@
    "who": "elena",
    "en": "Someone comes down here.",
    "ja": "誰かがここへ来ている。",
-   "v_en": "res://assets/voice/chapter_5_806ce0fc.ogg",
-   "v_ja": "res://assets/voice/chapter_5_806ce0fc.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_5_806ce0fc.ogg"
   },
   {
    "id": "chapter_5_9046de15",
@@ -188,8 +185,7 @@
    "who": "elena",
    "en": "It goes on. Every name. Every year. Right up to—",
    "ja": "それは続く。全ての名前。全ての年。そして、—",
-   "v_en": "res://assets/voice/chapter_5_46c5284e.ogg",
-   "v_ja": "res://assets/voice/chapter_5_46c5284e.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_5_46c5284e.ogg"
   },
   {
    "id": "chapter_5_a2bafd96",
@@ -208,8 +204,7 @@
    "who": "elena",
    "en": "Last month.",
    "ja": "先月。",
-   "v_en": "res://assets/voice/chapter_5_107e101c.ogg",
-   "v_ja": "res://assets/voice/chapter_5_107e101c.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_5_107e101c.ogg"
   },
   {
    "id": "chapter_5_baa254f2",
@@ -378,8 +373,7 @@
    "who": "elena",
    "en": "Restore my name and I'm a scholarship. Restore all of them and I'm a footnote. I'd rather be a footnote in a true book.",
    "ja": "「私の名前だけ戻せば、私は奨学金です。全員の名前を戻せば、私は脚注になる。私は本当のことが書かれた本の脚注でいたい」",
-   "v_en": "res://assets/voice/ch5_ending_rewrite_5b10a8a0.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_rewrite_5b10a8a0.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_rewrite_5b10a8a0.ogg"
   },
   {
    "id": "ch5_ending_rewrite_c5e7fbb9",
@@ -398,8 +392,7 @@
    "who": "elena",
    "en": "Four hundred pounds. 1971. I have the receipt.",
    "ja": "四百ポンド。1971年。領収書はここにある。",
-   "v_en": "res://assets/voice/ch5_ending_rewrite_9743cc0d.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_rewrite_9743cc0d.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_rewrite_9743cc0d.ogg"
   },
   {
    "id": "ch5_ending_rewrite_0ea17c29",
@@ -508,8 +501,7 @@
    "who": "elena",
    "en": "Page fourteen is the most requested page in the archive. Did you know?",
    "ja": "十四ページは、この書庫で最も閲覧請求の多いページだ。知っていたか？",
-   "v_en": "res://assets/voice/ch5_ending_rewrite_f3e787ca.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_rewrite_f3e787ca.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_rewrite_f3e787ca.ogg"
   },
   {
    "id": "ch5_ending_rewrite_f190628a",
@@ -528,8 +520,7 @@
    "who": "elena",
    "en": "You sign everything.",
    "ja": "あなたは何にでも署名する。",
-   "v_en": "res://assets/voice/ch5_ending_rewrite_037e40de.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_rewrite_037e40de.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_rewrite_037e40de.ogg"
   },
   {
    "id": "ch5_ending_rewrite_f1f8cb06",
@@ -578,8 +569,7 @@
    "who": "elena",
    "en": "That's a receipt. You should recognise one.",
    "ja": "「これは受領書です。見慣れているはずでしょう」",
-   "v_en": "res://assets/voice/ch5_ending_expose_bd8063c3.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_expose_bd8063c3.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_expose_bd8063c3.ogg"
   },
   {
    "id": "ch5_ending_expose_d1ae86ad",
@@ -678,8 +668,7 @@
    "who": "elena",
    "en": "They spelled Ashcombe right. Second attempt.",
    "ja": "アシュコムの綴りは正しく記されていた。二度目の試みで。",
-   "v_en": "res://assets/voice/ch5_ending_expose_d84a9f91.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_expose_d84a9f91.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_expose_d84a9f91.ogg"
   },
   {
    "id": "ch5_ending_expose_b5b563de",
@@ -698,8 +687,7 @@
    "who": "elena",
    "en": "You read it first.",
    "ja": "あなたが最初に読んだ。",
-   "v_en": "res://assets/voice/ch5_ending_expose_627ad72f.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_expose_627ad72f.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_expose_627ad72f.ogg"
   },
   {
    "id": "ch5_ending_expose_7a038a65",
@@ -858,8 +846,7 @@
    "who": "elena",
    "en": "The Academy reported them stolen. Then it stopped reporting anything.",
    "ja": "アカデミーはそれらを盗難として報告した。その後、何も報告しなくなった。",
-   "v_en": "res://assets/voice/ch5_ending_abscond_58f3b500.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_abscond_58f3b500.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_abscond_58f3b500.ogg"
   },
   {
    "id": "ch5_ending_abscond_1b76751c",
@@ -878,8 +865,7 @@
    "who": "elena",
    "en": "You read it first?",
    "ja": "あなたが先に読んだのか？",
-   "v_en": "res://assets/voice/ch5_ending_abscond_7a627a12.ogg",
-   "v_ja": "res://assets/voice/ch5_ending_abscond_7a627a12.ja.ogg"
+   "v_en": "res://assets/voice/en/ch5_ending_abscond_7a627a12.ogg"
   },
   {
    "id": "ch5_ending_abscond_dca6d3f8",

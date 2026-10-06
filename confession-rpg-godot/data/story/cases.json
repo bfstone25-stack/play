@@ -17,7 +17,7 @@
    "who": "adaeze",
    "en": "I counted the drawer, I set the alarm, I went home. You can have the tape.",
    "ja": "",
-   "v_en": "res://assets/voice/open1_adaeze.ogg"
+   "v_en": "res://assets/voice/en/open1_adaeze.ogg"
   },
   {
    "id": "open1_vee",
@@ -26,7 +26,7 @@
    "who": "vee",
    "en": "I dropped a crate and I left. I never went past the bar.",
    "ja": "",
-   "v_en": "res://assets/voice/open1_vee.ogg"
+   "v_en": "res://assets/voice/en/open1_vee.ogg"
   },
   {
    "id": "victim1",
@@ -147,7 +147,7 @@
    "who": "adaeze",
    "en": "Four hundred and ten in the drawer, same as every Thursday. I wrote it down.",
    "ja": "",
-   "v_en": "res://assets/voice/ade_drawer.ogg"
+   "v_en": "res://assets/voice/en/ade_drawer.ogg"
   },
   {
    "id": "ade_alarm",
@@ -156,7 +156,7 @@
    "who": "adaeze",
    "en": "I set it. It logs. If it logs me at 02:14 then I was at the panel at 02:14.",
    "ja": "",
-   "v_en": "res://assets/voice/ade_alarm.ogg"
+   "v_en": "res://assets/voice/en/ade_alarm.ogg"
   },
   {
    "id": "ade_staff",
@@ -165,7 +165,7 @@
    "who": "adaeze",
    "en": "Me, Nikolai, a courier who should have been gone. That is not a crowd.",
    "ja": "",
-   "v_en": "res://assets/voice/ade_staff.ogg"
+   "v_en": "res://assets/voice/en/ade_staff.ogg"
   },
   {
    "id": "ade_marek",
@@ -174,7 +174,7 @@
    "who": "adaeze",
    "en": "He came in through the kitchen. He always did. I stopped telling him not to.",
    "ja": "",
-   "v_en": "res://assets/voice/ade_marek.ogg"
+   "v_en": "res://assets/voice/en/ade_marek.ogg"
   },
   {
    "id": "ade_kitchen",
@@ -183,7 +183,7 @@
    "who": "adaeze",
    "en": "Deliveries, ice, the cooler, the yard door. Everything that isn't for customers.",
    "ja": "",
-   "v_en": "res://assets/voice/ade_kitchen.ogg"
+   "v_en": "res://assets/voice/en/ade_kitchen.ogg"
   },
   {
    "id": "ade_vee",
@@ -192,7 +192,7 @@
    "who": "adaeze",
    "en": "Vee stayed. I watched them not leave. That's the part I didn't want to say.",
    "ja": "",
-   "v_en": "res://assets/voice/ade_vee.ogg"
+   "v_en": "res://assets/voice/en/ade_vee.ogg"
   },
   {
    "id": "ade_lease",
@@ -201,7 +201,7 @@
    "who": "adaeze",
    "en": "Everything here has my name on it. Including whatever you decide happened.",
    "ja": "",
-   "v_en": "res://assets/voice/ade_lease.ogg"
+   "v_en": "res://assets/voice/en/ade_lease.ogg"
   },
   {
    "id": "ade_seal",
@@ -210,7 +210,7 @@
    "who": "adaeze",
    "en": "The cooler door has a seal, it drags. I heard it drag after I set the alarm, and I told myself it was the compressor.",
    "ja": "",
-   "v_en": "res://assets/voice/ade_seal.ogg"
+   "v_en": "res://assets/voice/en/ade_seal.ogg"
   },
   {
    "id": "vee_crate",
@@ -219,7 +219,7 @@
    "who": "vee",
    "en": "One crate, off the van, onto the floor by the bar. Eleven minutes, end to end.",
    "ja": "",
-   "v_en": "res://assets/voice/vee_crate.ogg"
+   "v_en": "res://assets/voice/en/vee_crate.ogg"
   },
   {
    "id": "vee_leave",
@@ -228,7 +228,7 @@
    "who": "vee",
    "en": "I was gone before she counted the drawer. Ask her.",
    "ja": "",
-   "v_en": "res://assets/voice/vee_leave.ogg"
+   "v_en": "res://assets/voice/en/vee_leave.ogg"
   },
   {
    "id": "vee_van",
@@ -237,7 +237,7 @@
    "who": "vee",
    "en": "Not mine. I don't own anything that can be traced to an address.",
    "ja": "",
-   "v_en": "res://assets/voice/vee_van.ogg"
+   "v_en": "res://assets/voice/en/vee_van.ogg"
   },
   {
    "id": "vee_marek",
@@ -246,7 +246,7 @@
    "who": "vee",
    "en": "He owed me. Not money. He was supposed to keep a name out of a file.",
    "ja": "",
-   "v_en": "res://assets/voice/vee_marek.ogg"
+   "v_en": "res://assets/voice/en/vee_marek.ogg"
   },
   {
    "id": "vee_name",
@@ -255,7 +255,7 @@
    "who": "vee",
    "en": "Does it matter? It was never going to be his own.",
    "ja": "",
-   "v_en": "res://assets/voice/vee_name.ogg"
+   "v_en": "res://assets/voice/en/vee_name.ogg"
   },
   {
    "id": "vee_bar",
@@ -264,7 +264,7 @@
    "who": "vee",
    "en": "I said I never went past the bar. I'd like to keep saying that.",
    "ja": "",
-   "v_en": "res://assets/voice/vee_bar.ogg"
+   "v_en": "res://assets/voice/en/vee_bar.ogg"
   },
   {
    "id": "vee_cold",
@@ -273,7 +273,7 @@
    "who": "vee",
    "en": "You want me to say it. Fine. It was cold in there. My hands stopped working and I couldn't pick the thing back up. That's what I remember. The cold.",
    "ja": "",
-   "v_en": "res://assets/voice/vee_cold.ogg"
+   "v_en": "res://assets/voice/en/vee_cold.ogg"
   },
   {
    "id": "vee_hands",
@@ -282,7 +282,7 @@
    "who": "vee",
    "en": "Everyone keeps saying eleven minutes. I was there long enough to stop feeling my hands.",
    "ja": "",
-   "v_en": "res://assets/voice/vee_hands.ogg"
+   "v_en": "res://assets/voice/en/vee_hands.ogg"
   },
   {
    "id": "open2_nikolai",
@@ -300,7 +300,7 @@
    "who": "adaeze",
    "en": "I was in the office with the books until four. Alone. I know how that sounds.",
    "ja": "",
-   "v_en": "res://assets/voice/open2_adaeze.ogg"
+   "v_en": "res://assets/voice/en/open2_adaeze.ogg"
   },
   {
    "id": "open2_vee",
@@ -309,7 +309,7 @@
    "who": "vee",
    "en": "I wasn't there. For once in my life I have somewhere else to be and no way to prove it.",
    "ja": "",
-   "v_en": "res://assets/voice/open2_vee.ogg"
+   "v_en": "res://assets/voice/en/open2_vee.ogg"
   },
   {
    "id": "victim2",
@@ -430,7 +430,7 @@
    "who": "adaeze",
    "en": "Books, coffee, the desk lamp. No door, no phone, no witness. I am aware.",
    "ja": "",
-   "v_en": "res://assets/voice/ade2_four.ogg"
+   "v_en": "res://assets/voice/en/ade2_four.ogg"
   },
   {
    "id": "ade2_iris",
@@ -439,7 +439,7 @@
    "who": "adaeze",
    "en": "She worked for me for six years and I do not know the name of her sister.",
    "ja": "",
-   "v_en": "res://assets/voice/ade2_iris.ogg"
+   "v_en": "res://assets/voice/en/ade2_iris.ogg"
   },
   {
    "id": "ade2_bay",
@@ -448,7 +448,7 @@
    "who": "adaeze",
    "en": "It floods. It has flooded every winter since before my name went on anything.",
    "ja": "",
-   "v_en": "res://assets/voice/ade2_bay.ogg"
+   "v_en": "res://assets/voice/en/ade2_bay.ogg"
   },
   {
    "id": "ade2_sign",
@@ -457,7 +457,7 @@
    "who": "adaeze",
    "en": "On every page. That is what a manager is. A person who is on every page.",
    "ja": "",
-   "v_en": "res://assets/voice/ade2_sign.ogg"
+   "v_en": "res://assets/voice/en/ade2_sign.ogg"
   },
   {
    "id": "ade2_audit",
@@ -466,7 +466,7 @@
    "who": "adaeze",
    "en": "There was going to be one. She told me. She told me like she was doing me a kindness.",
    "ja": "",
-   "v_en": "res://assets/voice/ade2_audit.ogg"
+   "v_en": "res://assets/voice/en/ade2_audit.ogg"
   },
   {
    "id": "ade2_night",
@@ -475,7 +475,7 @@
    "who": "adaeze",
    "en": "I heard her car. I did not hear it leave. I told myself she was on the phone.",
    "ja": "",
-   "v_en": "res://assets/voice/ade2_night.ogg"
+   "v_en": "res://assets/voice/en/ade2_night.ogg"
   },
   {
    "id": "ade2_basin",
@@ -484,7 +484,7 @@
    "who": "adaeze",
    "en": "You keep saying drowned like the bay explains it. That water is filthy. The only clean basin in this building is the mop room sink and it is deep enough to lose an arm in. I have known that for six years.",
    "ja": "",
-   "v_en": "res://assets/voice/ade2_basin.ogg"
+   "v_en": "res://assets/voice/en/ade2_basin.ogg"
   },
   {
    "id": "ade2_mop",
@@ -493,7 +493,7 @@
    "who": "adaeze",
    "en": "I was in there at half past three. I will say that before you find someone who says it for me.",
    "ja": "",
-   "v_en": "res://assets/voice/ade2_mop.ogg"
+   "v_en": "res://assets/voice/en/ade2_mop.ogg"
   },
   {
    "id": "vee2_where",
@@ -502,7 +502,7 @@
    "who": "vee",
    "en": "A room with a door that locks from outside. You can check. Please check.",
    "ja": "",
-   "v_en": "res://assets/voice/vee2_where.ogg"
+   "v_en": "res://assets/voice/en/vee2_where.ogg"
   },
   {
    "id": "vee2_bail",
@@ -511,7 +511,7 @@
    "who": "vee",
    "en": "Somebody paid it. I did not ask who, because I know what asking costs.",
    "ja": "",
-   "v_en": "res://assets/voice/vee2_bail.ogg"
+   "v_en": "res://assets/voice/en/vee2_bail.ogg"
   },
   {
    "id": "vee2_iris",
@@ -520,7 +520,7 @@
    "who": "vee",
    "en": "She wrote down what I brought in. Every crate. She never once wrote down my name.",
    "ja": "",
-   "v_en": "res://assets/voice/vee2_iris.ogg"
+   "v_en": "res://assets/voice/en/vee2_iris.ogg"
   },
   {
    "id": "vee2_kind",
@@ -529,7 +529,7 @@
    "who": "vee",
    "en": "Because everyone else in my life keeps a list, and hers was the only one I wasn't on.",
    "ja": "",
-   "v_en": "res://assets/voice/vee2_kind.ogg"
+   "v_en": "res://assets/voice/en/vee2_kind.ogg"
   },
   {
    "id": "vee2_paid",
@@ -538,7 +538,7 @@
    "who": "vee",
    "en": "I have a guess. My guess is a man who likes people to owe him something soft.",
    "ja": "",
-   "v_en": "res://assets/voice/vee2_paid.ogg"
+   "v_en": "res://assets/voice/en/vee2_paid.ogg"
   },
   {
    "id": "vee2_cold",
@@ -547,7 +547,7 @@
    "who": "vee",
    "en": "You think I don't know what you all decided about me. I know.",
    "ja": "",
-   "v_en": "res://assets/voice/vee2_cold.ogg"
+   "v_en": "res://assets/voice/en/vee2_cold.ogg"
   },
   {
    "id": "vee2_scared",
@@ -556,7 +556,7 @@
    "who": "vee",
    "en": "That it doesn't matter what I did. That there's a shape people have decided I am, and it has a chair in it, and the chair is this one.",
    "ja": "",
-   "v_en": "res://assets/voice/vee2_scared.ogg"
+   "v_en": "res://assets/voice/en/vee2_scared.ogg"
   },
   {
    "id": "vee2_seen",
@@ -565,7 +565,7 @@
    "who": "vee",
    "en": "I came back for a jacket. Around four. There was a light on in the mop room and I did not go in, and I have been sick about it since.",
    "ja": "",
-   "v_en": "res://assets/voice/vee2_seen.ogg"
+   "v_en": "res://assets/voice/en/vee2_seen.ogg"
   },
   {
    "id": "open3_nikolai",
@@ -583,7 +583,7 @@
    "who": "adaeze",
    "en": "You let me out of one of these six days ago. I have not redecorated since.",
    "ja": "",
-   "v_en": "res://assets/voice/open3_adaeze.ogg"
+   "v_en": "res://assets/voice/en/open3_adaeze.ogg"
   },
   {
    "id": "open3_vee",
@@ -592,7 +592,7 @@
    "who": "vee",
    "en": "I'm here. I didn't wait for you to send anyone. That has to be worth something.",
    "ja": "",
-   "v_en": "res://assets/voice/open3_vee.ogg"
+   "v_en": "res://assets/voice/en/open3_vee.ogg"
   },
   {
    "id": "victim3",
@@ -713,7 +713,7 @@
    "who": "adaeze",
    "en": "Still mine. Getting heavier.",
    "ja": "",
-   "v_en": "res://assets/voice/ade3_lease.ogg"
+   "v_en": "res://assets/voice/en/ade3_lease.ogg"
   },
   {
    "id": "ade3_bo",
@@ -722,7 +722,7 @@
    "who": "adaeze",
    "en": "He was polite to me in a way that meant he had already written his report.",
    "ja": "",
-   "v_en": "res://assets/voice/ade3_bo.ogg"
+   "v_en": "res://assets/voice/en/ade3_bo.ogg"
   },
   {
    "id": "ade3_night",
@@ -731,7 +731,7 @@
    "who": "adaeze",
    "en": "Upstairs, in the flat over the club, with the lights off, doing nothing at all.",
    "ja": "",
-   "v_en": "res://assets/voice/ade3_night.ogg"
+   "v_en": "res://assets/voice/en/ade3_night.ogg"
   },
   {
    "id": "ade3_report",
@@ -740,7 +740,7 @@
    "who": "adaeze",
    "en": "It was going to close us. He did not say so. You do not have to say so.",
    "ja": "",
-   "v_en": "res://assets/voice/ade3_report.ogg"
+   "v_en": "res://assets/voice/en/ade3_report.ogg"
   },
   {
    "id": "ade3_after",
@@ -749,7 +749,7 @@
    "who": "adaeze",
    "en": "I sign nothing now. Somebody else can be on every page for a while.",
    "ja": "",
-   "v_en": "res://assets/voice/ade3_after.ogg"
+   "v_en": "res://assets/voice/en/ade3_after.ogg"
   },
   {
    "id": "ade3_nik",
@@ -758,7 +758,7 @@
    "who": "adaeze",
    "en": "He has never asked me for one thing in six years. I used to find that restful.",
    "ja": "",
-   "v_en": "res://assets/voice/ade3_nik.ogg"
+   "v_en": "res://assets/voice/en/ade3_nik.ogg"
   },
   {
    "id": "ade3_owe",
@@ -767,7 +767,7 @@
    "who": "adaeze",
    "en": "A man who is never owed anything is a man who has already taken it.",
    "ja": "",
-   "v_en": "res://assets/voice/ade3_owe.ogg"
+   "v_en": "res://assets/voice/en/ade3_owe.ogg"
   },
   {
    "id": "ade3_office",
@@ -776,7 +776,7 @@
    "who": "adaeze",
    "en": "There was a light in the office at one. From upstairs you can see it in the yard, on the wall. I watched it go out and I did not come down.",
    "ja": "",
-   "v_en": "res://assets/voice/ade3_office.ogg"
+   "v_en": "res://assets/voice/en/ade3_office.ogg"
   },
   {
    "id": "vee3_here",
@@ -785,7 +785,7 @@
    "who": "vee",
    "en": "Because the third time you send someone for me, I would rather have walked in myself.",
    "ja": "",
-   "v_en": "res://assets/voice/vee3_here.ogg"
+   "v_en": "res://assets/voice/en/vee3_here.ogg"
   },
   {
    "id": "vee3_bo",
@@ -794,7 +794,7 @@
    "who": "vee",
    "en": "Never met him. That is the first true thing I have said in this room in a month.",
    "ja": "",
-   "v_en": "res://assets/voice/vee3_bo.ogg"
+   "v_en": "res://assets/voice/en/vee3_bo.ogg"
   },
   {
    "id": "vee3_night",
@@ -803,7 +803,7 @@
    "who": "vee",
    "en": "Outside the yard door from midnight. Smoking. I can tell you what colour the wall is at one in the morning.",
    "ja": "",
-   "v_en": "res://assets/voice/vee3_night.ogg"
+   "v_en": "res://assets/voice/en/vee3_night.ogg"
   },
   {
    "id": "vee3_yard",
@@ -812,7 +812,7 @@
    "who": "vee",
    "en": "You can hear the office through the vent. You cannot hear words. You can hear that there are words.",
    "ja": "",
-   "v_en": "res://assets/voice/vee3_yard.ogg"
+   "v_en": "res://assets/voice/en/vee3_yard.ogg"
   },
   {
    "id": "vee3_heard",
@@ -821,7 +821,7 @@
    "who": "vee",
    "en": "Two people. One of them doing most of it. Then one set of feet on the stairs, going down slow, like carrying.",
    "ja": "",
-   "v_en": "res://assets/voice/vee3_heard.ogg"
+   "v_en": "res://assets/voice/en/vee3_heard.ogg"
   },
   {
    "id": "vee3_tell",
@@ -830,7 +830,7 @@
    "who": "vee",
    "en": "Because last time I told the truth about a room I was standing in, it took eleven months off my life.",
    "ja": "",
-   "v_en": "res://assets/voice/vee3_tell.ogg"
+   "v_en": "res://assets/voice/en/vee3_tell.ogg"
   },
   {
    "id": "vee3_believe",
@@ -839,7 +839,7 @@
    "who": "vee",
    "en": "One person in this city to hear me say a thing and write it down the way I said it.",
    "ja": "",
-   "v_en": "res://assets/voice/vee3_believe.ogg"
+   "v_en": "res://assets/voice/en/vee3_believe.ogg"
   },
   {
    "id": "vee3_slow",
@@ -848,7 +848,7 @@
    "who": "vee",
    "en": "Slow on the way down. Quick on the way up. Nobody carries anything up.",
    "ja": "",
-   "v_en": "res://assets/voice/vee3_slow.ogg"
+   "v_en": "res://assets/voice/en/vee3_slow.ogg"
   }
  ],
  "menus": {}

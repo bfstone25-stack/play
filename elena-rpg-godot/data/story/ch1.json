@@ -148,8 +148,7 @@
    "who": "elena",
    "en": "Professor Vance.",
    "ja": "ヴァンス教授。",
-   "v_en": "res://assets/voice/start_fc09ad15.ogg",
-   "v_ja": "res://assets/voice/start_fc09ad15.ja.ogg"
+   "v_en": "res://assets/voice/en/start_fc09ad15.ogg"
   },
   {
    "id": "start_a48e34f1",
@@ -158,8 +157,7 @@
    "who": "elena",
    "en": "The seal closed on me. I was going to call you at midnight.",
    "ja": "封鎖が閉まってしまって。真夜中に電話するつもりでした。",
-   "v_en": "res://assets/voice/start_a48e34f1.ogg",
-   "v_ja": "res://assets/voice/start_a48e34f1.ja.ogg"
+   "v_en": "res://assets/voice/en/start_a48e34f1.ogg"
   },
   {
    "id": "start_90c3d74e",
@@ -188,8 +186,7 @@
    "who": "elena",
    "en": "This crate is on the deaccession list. Tomorrow it goes to the incinerator with the rest of the water-damaged lot.",
    "ja": "この木箱は廃棄リストにある。明日には、他の水濡れ品と一緒に焼却炉行きだ。",
-   "v_en": "res://assets/voice/start_92392281.ogg",
-   "v_ja": "res://assets/voice/start_92392281.ja.ogg"
+   "v_en": "res://assets/voice/en/start_92392281.ogg"
   },
   {
    "id": "start_dca00dd8",
@@ -198,8 +195,7 @@
    "who": "elena",
    "en": "It isn't water-damaged. Somebody wants it gone.",
    "ja": "「水濡れなんかしていません。誰かが処分したがっているんです」",
-   "v_en": "res://assets/voice/start_dca00dd8.ogg",
-   "v_ja": "res://assets/voice/start_dca00dd8.ja.ogg"
+   "v_en": "res://assets/voice/en/start_dca00dd8.ogg"
   },
   {
    "id": "start_4c38dc55",
@@ -228,8 +224,7 @@
    "who": "elena",
    "en": "It is a donor ledger. 1994 to 1996. Names, sums, and what the sums bought.",
    "ja": "それは寄付者名簿だ。1994年から1996年。名前、金額、そしてその金額で何が買われたか。",
-   "v_en": "res://assets/voice/start_d44b7524.ogg",
-   "v_ja": "res://assets/voice/start_d44b7524.ja.ogg"
+   "v_en": "res://assets/voice/en/start_d44b7524.ogg"
   },
   {
    "id": "start_06b7ba19",
@@ -248,8 +243,7 @@
    "who": "elena",
    "en": "No, Professor. It is not.",
    "ja": "いいえ、教授。違います。",
-   "v_en": "res://assets/voice/start_6948684b.ogg",
-   "v_ja": "res://assets/voice/start_6948684b.ja.ogg"
+   "v_en": "res://assets/voice/en/start_6948684b.ogg"
   },
   {
    "id": "start_00503662",
@@ -278,8 +272,7 @@
    "who": "elena",
    "en": "You're not going to ask what it is?",
    "ja": "「それが何なのか、訊かないんですか?」",
-   "v_en": "res://assets/voice/start_0e05d244.ogg",
-   "v_ja": "res://assets/voice/start_0e05d244.ja.ogg"
+   "v_en": "res://assets/voice/en/start_0e05d244.ogg"
   },
   {
    "id": "start_18914745",
@@ -328,8 +321,7 @@
    "who": "elena",
    "en": "Professor. That door only opens from the outside after eleven.",
    "ja": "教授。そのドアは11時以降、外からしか開かない。",
-   "v_en": "res://assets/voice/start_3a5c43d1.ogg",
-   "v_ja": "res://assets/voice/start_3a5c43d1.ja.ogg"
+   "v_en": "res://assets/voice/en/start_3a5c43d1.ogg"
   },
   {
    "id": "start_8ea2bae7",
@@ -368,8 +360,7 @@
    "who": "elena",
    "en": "If I give you this, it goes to the Dean's office by nine, and by ten it does not exist.",
    "ja": "これを渡せば、9時には学部長室へ行き、10時には存在しないことになる。",
-   "v_en": "res://assets/voice/start_f25d166b.ogg",
-   "v_ja": "res://assets/voice/start_f25d166b.ja.ogg"
+   "v_en": "res://assets/voice/en/start_f25d166b.ogg"
   },
   {
    "id": "start_a4f843bb",
@@ -378,8 +369,7 @@
    "who": "elena",
    "en": "Do you know what it costs to have a name removed from a school like this one? I do. It is on page fourteen.",
    "ja": "このような学校から名前を消すのに、どれだけの費用がかかるか知っていますか？私は知っている。14ページに載っている。",
-   "v_en": "res://assets/voice/start_a4f843bb.ogg",
-   "v_ja": "res://assets/voice/start_a4f843bb.ja.ogg"
+   "v_en": "res://assets/voice/en/start_a4f843bb.ogg"
   },
   {
    "id": "start_3ed7e396",
@@ -428,8 +418,7 @@
    "who": "elena",
    "en": "Ashcombe. My name. It is in there twice.",
    "ja": "アッシュコム。私の名前だ。そこに二度、記されている。",
-   "v_en": "res://assets/voice/start_1f40c7ba.ogg",
-   "v_ja": "res://assets/voice/start_1f40c7ba.ja.ogg"
+   "v_en": "res://assets/voice/en/start_1f40c7ba.ogg"
   },
   {
    "id": "start_03248dfc",
@@ -438,8 +427,7 @@
    "who": "elena",
    "en": "Once as a donor. Once, two years later, crossed out. Somebody drew a line through my family and the Academy stopped knowing us.",
    "ja": "一度は寄付者として。二度目は、二年後。線で消されている。誰かが私の家族に線を引いた。アカデミーは私たちを知らなくなった。",
-   "v_en": "res://assets/voice/start_03248dfc.ogg",
-   "v_ja": "res://assets/voice/start_03248dfc.ja.ogg"
+   "v_en": "res://assets/voice/en/start_03248dfc.ogg"
   },
   {
    "id": "start_bbf38ba3",
@@ -448,8 +436,7 @@
    "who": "elena",
    "en": "My father died thinking he'd done something wrong. I wanted to know what it was.",
    "ja": "「父は、自分が何か悪いことをしたと思ったまま死にました。それが何だったのか知りたかった」",
-   "v_en": "res://assets/voice/start_bbf38ba3.ogg",
-   "v_ja": "res://assets/voice/start_bbf38ba3.ja.ogg"
+   "v_en": "res://assets/voice/en/start_bbf38ba3.ogg"
   },
   {
    "id": "start_7355aa34",
@@ -468,8 +455,7 @@
    "who": "elena",
    "en": "He did nothing. He was paid to leave. The signature on the receipt is not the Dean's.",
    "ja": "何もしていない。彼は金を払われ、去った。領収書の署名は、学長のものではない。",
-   "v_en": "res://assets/voice/start_25a425f6.ogg",
-   "v_ja": "res://assets/voice/start_25a425f6.ja.ogg"
+   "v_en": "res://assets/voice/en/start_25a425f6.ogg"
   },
   {
    "id": "start_b2876ad0",
@@ -508,8 +494,7 @@
    "who": "elena",
    "en": "Give it back.",
    "ja": "返せ。",
-   "v_en": "res://assets/voice/route_control_4f5eefa9.ogg",
-   "v_ja": "res://assets/voice/route_control_4f5eefa9.ja.ogg"
+   "v_en": "res://assets/voice/en/route_control_4f5eefa9.ogg"
   },
   {
    "id": "route_control_651b22e0",
@@ -558,8 +543,7 @@
    "who": "elena",
    "en": "Then talk.",
    "ja": "話せ。",
-   "v_en": "res://assets/voice/route_control_532078cd.ogg",
-   "v_ja": "res://assets/voice/route_control_532078cd.ja.ogg"
+   "v_en": "res://assets/voice/en/route_control_532078cd.ogg"
   },
   {
    "id": "route_control_14b3b1ec",
@@ -598,8 +582,7 @@
    "who": "elena",
    "en": "That isn't a job. That's a leash.",
    "ja": "「それは仕事じゃない。首輪です」",
-   "v_en": "res://assets/voice/route_control_c1f7fef7.ogg",
-   "v_ja": "res://assets/voice/route_control_c1f7fef7.ja.ogg"
+   "v_en": "res://assets/voice/en/route_control_c1f7fef7.ogg"
   },
   {
    "id": "route_control_414f024d",
@@ -628,8 +611,7 @@
    "who": "elena",
    "en": "Delete them yourself. I'm not doing it for you.",
    "ja": "「ご自分で消してください。あなたのためになんてやりません」",
-   "v_en": "res://assets/voice/route_control_55312f96.ogg",
-   "v_ja": "res://assets/voice/route_control_55312f96.ja.ogg"
+   "v_en": "res://assets/voice/en/route_control_55312f96.ogg"
   },
   {
    "id": "route_control_e86c46e0",
@@ -698,8 +680,7 @@
    "who": "elena",
    "en": "Is this part of the arrangement, Professor?",
    "ja": "これも取り決めの一部ですか、教授？",
-   "v_en": "res://assets/voice/route_control_74cfb1be.ogg",
-   "v_ja": "res://assets/voice/route_control_74cfb1be.ja.ogg"
+   "v_en": "res://assets/voice/en/route_control_74cfb1be.ogg"
   },
   {
    "id": "route_control_5c44df8b",
@@ -728,8 +709,7 @@
    "who": "elena",
    "en": "Then yes. But I want something.",
    "ja": "ならば、ええ。しかし、私も望むものがある。",
-   "v_en": "res://assets/voice/route_control_514ee793.ogg",
-   "v_ja": "res://assets/voice/route_control_514ee793.ja.ogg"
+   "v_en": "res://assets/voice/en/route_control_514ee793.ogg"
   },
   {
    "id": "route_control_6d322ae8",
@@ -738,8 +718,7 @@
    "who": "elena",
    "en": "Page fourteen. Not tonight. But before the end of term, you show me the signature.",
    "ja": "十四ページ。今夜ではない。だが、学期末までに、貴方は私に署名を見せる。",
-   "v_en": "res://assets/voice/route_control_6d322ae8.ogg",
-   "v_ja": "res://assets/voice/route_control_6d322ae8.ja.ogg"
+   "v_en": "res://assets/voice/en/route_control_6d322ae8.ogg"
   },
   {
    "id": "route_control_da8b8bd1",
@@ -758,8 +737,7 @@
    "who": "elena",
    "en": "Say it properly.",
    "ja": "きちんと口に出せ。",
-   "v_en": "res://assets/voice/route_control_6f848d51.ogg",
-   "v_ja": "res://assets/voice/route_control_6f848d51.ja.ogg"
+   "v_en": "res://assets/voice/en/route_control_6f848d51.ogg"
   },
   {
    "id": "route_control_56a42fe5",
@@ -888,8 +866,7 @@
    "who": "elena",
    "en": "If you look, you can't unlook.",
    "ja": "「見てしまったら、見なかったことにはできませんよ」",
-   "v_en": "res://assets/voice/route_pact_e8dde90f.ogg",
-   "v_ja": "res://assets/voice/route_pact_e8dde90f.ja.ogg"
+   "v_en": "res://assets/voice/en/route_pact_e8dde90f.ogg"
   },
   {
    "id": "route_pact_2472e7fa",
@@ -948,8 +925,7 @@
    "who": "elena",
    "en": "Yes.",
    "ja": "ええ。",
-   "v_en": "res://assets/voice/route_pact_045b58d0.ogg",
-   "v_ja": "res://assets/voice/route_pact_045b58d0.ja.ogg"
+   "v_en": "res://assets/voice/en/route_pact_045b58d0.ogg"
   },
   {
    "id": "route_pact_1b02ea3b",
@@ -978,8 +954,7 @@
    "who": "elena",
    "en": "I know. I checked. You countersigned eleven that year. Nine are ordinary. Two are like mine.",
    "ja": "知っている。確認した。その年、あなたは十一件に副署している。九件は普通のものだ。二件は、私と同じようなもの。",
-   "v_en": "res://assets/voice/route_pact_b93a254c.ogg",
-   "v_ja": "res://assets/voice/route_pact_b93a254c.ja.ogg"
+   "v_en": "res://assets/voice/en/route_pact_b93a254c.ogg"
   },
   {
    "id": "route_pact_99bb6a90",
@@ -988,8 +963,7 @@
    "who": "elena",
    "en": "I didn't come here to ruin you, Professor. I came to find out whether you knew.",
    "ja": "「あなたを潰しに来たんじゃありません、教授。あなたが知っていたのかどうかを、確かめに来たんです」",
-   "v_en": "res://assets/voice/route_pact_99bb6a90.ogg",
-   "v_ja": "res://assets/voice/route_pact_99bb6a90.ja.ogg"
+   "v_en": "res://assets/voice/en/route_pact_99bb6a90.ogg"
   },
   {
    "id": "route_pact_b54a9fd1",
@@ -1008,8 +982,7 @@
    "who": "elena",
    "en": "You didn't know. I can see it. That's the first good thing that's happened to me in this building in two years.",
    "ja": "「知らなかったんですね。見ればわかります。この二年、この建物で私に起きた最初の良いことです」",
-   "v_en": "res://assets/voice/route_pact_6e1ec7bc.ogg",
-   "v_ja": "res://assets/voice/route_pact_6e1ec7bc.ja.ogg"
+   "v_en": "res://assets/voice/en/route_pact_6e1ec7bc.ogg"
   },
   {
    "id": "route_pact_4f41c816",
@@ -1038,8 +1011,7 @@
    "who": "elena",
    "en": "That is conspiracy, Professor.",
    "ja": "それは共謀罪ですよ、教授。",
-   "v_en": "res://assets/voice/route_pact_f44591a5.ogg",
-   "v_ja": "res://assets/voice/route_pact_f44591a5.ja.ogg"
+   "v_en": "res://assets/voice/en/route_pact_f44591a5.ogg"
   },
   {
    "id": "route_pact_c7b980a3",
@@ -1078,8 +1050,7 @@
    "who": "elena",
    "en": "I've been alone with this for two years, Vance. I'm not going home tonight to be alone with it again.",
    "ja": "「二年間、私はこれと二人きりでした、ヴァンス。今夜また一人でこれと過ごすために帰るつもりはありません」",
-   "v_en": "res://assets/voice/route_pact_cfdb7d41.ogg",
-   "v_ja": "res://assets/voice/route_pact_cfdb7d41.ja.ogg"
+   "v_en": "res://assets/voice/en/route_pact_cfdb7d41.ogg"
   },
   {
    "id": "route_pact_30888043",
@@ -1108,8 +1079,7 @@
    "who": "elena",
    "en": "That's a very old-fashioned way to ask, Professor.",
    "ja": "「ずいぶん古風な誘い方ですね、教授」",
-   "v_en": "res://assets/voice/route_pact_a3ebdf33.ogg",
-   "v_ja": "res://assets/voice/route_pact_a3ebdf33.ja.ogg"
+   "v_en": "res://assets/voice/en/route_pact_a3ebdf33.ogg"
   },
   {
    "id": "route_pact_226ab759",
@@ -1228,8 +1198,7 @@
    "who": "elena",
    "en": "That is it?",
    "ja": "それだけか？",
-   "v_en": "res://assets/voice/route_walk_away_317fa108.ogg",
-   "v_ja": "res://assets/voice/route_walk_away_317fa108.ja.ogg"
+   "v_en": "res://assets/voice/en/route_walk_away_317fa108.ogg"
   },
   {
    "id": "route_walk_away_ba2bc21f",
@@ -1258,8 +1227,7 @@
    "who": "elena",
    "en": "Page fourteen, Professor. Read it before the Dean does.",
    "ja": "14ページよ、教授。学部長が読む前に、読んでおきなさい。",
-   "v_en": "res://assets/voice/route_walk_away_4243f551.ogg",
-   "v_ja": "res://assets/voice/route_walk_away_4243f551.ja.ogg"
+   "v_en": "res://assets/voice/en/route_walk_away_4243f551.ogg"
   },
   {
    "id": "route_walk_away_aaf452af",
@@ -1268,8 +1236,7 @@
    "who": "elena",
    "en": "You'll want to know what your handwriting was doing in 1995.",
    "ja": "「1995年にあなたの筆跡が何をしていたのか、知りたくなるはずです」",
-   "v_en": "res://assets/voice/route_walk_away_aaf452af.ogg",
-   "v_ja": "res://assets/voice/route_walk_away_aaf452af.ja.ogg"
+   "v_en": "res://assets/voice/en/route_walk_away_aaf452af.ogg"
   },
   {
    "id": "route_walk_away_4b611f18",
@@ -1328,7 +1295,7 @@
    "who": "elena",
    "en": "...Is it morning?",
    "ja": "…朝？",
-   "v_en": "res://assets/voice/scene_dawn_resolution_03cc1bd3.ogg"
+   "v_en": "res://assets/voice/en/scene_dawn_resolution_03cc1bd3.ogg"
   },
   {
    "id": "scene_dawn_resolution_4eb013f4",
@@ -1347,8 +1314,7 @@
    "who": "elena",
    "en": "Before the end of term, Vance. You said it properly.",
    "ja": "学期末までに、ヴァンス。ちゃんとそう言ったわね。",
-   "v_en": "res://assets/voice/scene_dawn_resolution_4a80179f.ogg",
-   "v_ja": "res://assets/voice/scene_dawn_resolution_4a80179f.ja.ogg"
+   "v_en": "res://assets/voice/en/scene_dawn_resolution_4a80179f.ogg"
   },
   {
    "id": "scene_dawn_resolution_00fe2e23",
@@ -1407,8 +1373,7 @@
    "who": "elena",
    "en": "...You are staring.",
    "ja": "…見つめている。",
-   "v_en": "res://assets/voice/scene_dawn_resolution_ca28ef3b.ogg",
-   "v_ja": "res://assets/voice/scene_dawn_resolution_ca28ef3b.ja.ogg"
+   "v_en": "res://assets/voice/en/scene_dawn_resolution_ca28ef3b.ogg"
   },
   {
    "id": "scene_dawn_resolution_991c482c",
@@ -1437,8 +1402,7 @@
    "who": "elena",
    "en": "Who?",
    "ja": "誰が？",
-   "v_en": "res://assets/voice/scene_dawn_resolution_52220cd5.ogg",
-   "v_ja": "res://assets/voice/scene_dawn_resolution_52220cd5.ja.ogg"
+   "v_en": "res://assets/voice/en/scene_dawn_resolution_52220cd5.ogg"
   },
   {
    "id": "scene_dawn_resolution_bf84c31d",
@@ -1457,8 +1421,7 @@
    "who": "elena",
    "en": "Not you.",
    "ja": "お前じゃない。",
-   "v_en": "res://assets/voice/scene_dawn_resolution_35b88360.ogg",
-   "v_ja": "res://assets/voice/scene_dawn_resolution_35b88360.ja.ogg"
+   "v_en": "res://assets/voice/en/scene_dawn_resolution_35b88360.ogg"
   },
   {
    "id": "scene_dawn_resolution_710b8f99",
@@ -1517,8 +1480,7 @@
    "who": "elena",
    "en": "I sent the Dean nothing. Yet. Meet me before nine. E.",
    "ja": "学部長には何も送っていない。まだだ。9時前に会おう。E。",
-   "v_en": "res://assets/voice/scene_dawn_resolution_ab36e99b.ogg",
-   "v_ja": "res://assets/voice/scene_dawn_resolution_ab36e99b.ja.ogg"
+   "v_en": "res://assets/voice/en/scene_dawn_resolution_ab36e99b.ogg"
   },
   {
    "id": "scene_dawn_resolution_d5d59a21",

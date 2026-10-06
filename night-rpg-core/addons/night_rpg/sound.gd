@@ -424,6 +424,14 @@ func play_room_enter(room: Dictionary, room_id: String = "") -> void:
 ## ("auto" follows the text). A take is found, in order, at the line's own "v_<lang>" path,
 ## then at res://assets/voice/<lang>/<file of the English take>; English is the reference
 ## pack and the fallback for any line a pack lacks.
+## Exception: game.json "voice_off" {"<lang>": ["<file>.ogg", ...]} lists takes that failed the
+## automatic check (ops/dlsite/voice_fix.py) and were pulled. Such a line is SILENT in that pack
+## (text only) -- never the English take in a non-English pack. voice_path() returns "" for it.
+func voice_off(vl: String, file: String) -> bool:
+	var off = RPG.game.get("voice_off", {}).get(vl, [])
+	return off is Array and off.has(file)
+
+
 func voice_lang() -> String:
 	var v := str(RPG.persist.get("voice_lang", "auto"))
 	return Loc.lang if v == "auto" else v
@@ -433,6 +441,8 @@ func voice_path(ln: Dictionary, vl: String = "") -> String:
 	if vl == "":
 		vl = voice_lang()
 	var en: String = ln.get("v_en", "")
+	if en.begins_with("res://assets/voice/") and voice_off(vl, en.get_file()):
+		return ""
 	if vl != "en":
 		var own: String = ln.get("v_" + vl, "")
 		if own != "" and ResourceLoader.exists(own):
@@ -456,7 +466,7 @@ func voice_coverage(vl: String) -> float:
 	for ln in rows:
 		if ln is Dictionary and str(ln.get("v_en", "")) != "":
 			n += 1
-			if voice_path(ln, vl) != ln["v_en"]:
+			if voice_path(ln, vl) != ln["v_en"] or voice_off(vl, str(ln["v_en"]).get_file()):
 				have += 1
 	return float(have) / max(1, n)
 

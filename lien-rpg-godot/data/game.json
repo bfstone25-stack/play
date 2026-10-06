@@ -1171,70 +1171,133 @@
  ],
  "voice": {
   "v_greet_0": {
-   "v_en": "res://assets/voice/v_greet_0.ogg"
+   "v_en": "res://assets/voice/en/v_greet_0.ogg"
   },
   "v_greet_1": {
-   "v_en": "res://assets/voice/v_greet_1.ogg"
+   "v_en": "res://assets/voice/en/v_greet_1.ogg"
   },
   "v_stage_0": {
-   "v_en": "res://assets/voice/v_stage_0.ogg"
+   "v_en": "res://assets/voice/en/v_stage_0.ogg"
   },
   "v_stage_1": {
-   "v_en": "res://assets/voice/v_stage_1.ogg"
+   "v_en": "res://assets/voice/en/v_stage_1.ogg"
   },
   "v_stage_2": {
-   "v_en": "res://assets/voice/v_stage_2.ogg"
+   "v_en": "res://assets/voice/en/v_stage_2.ogg"
   },
   "v_stage_3": {
-   "v_en": "res://assets/voice/v_stage_3.ogg"
+   "v_en": "res://assets/voice/en/v_stage_3.ogg"
   },
   "v_near_0": {
-   "v_en": "res://assets/voice/v_near_0.ogg"
+   "v_en": "res://assets/voice/en/v_near_0.ogg"
   },
   "v_near_1": {
-   "v_en": "res://assets/voice/v_near_1.ogg"
+   "v_en": "res://assets/voice/en/v_near_1.ogg"
   },
   "v_win_0": {
-   "v_en": "res://assets/voice/v_win_0.ogg"
+   "v_en": "res://assets/voice/en/v_win_0.ogg"
   },
   "v_win_1": {
-   "v_en": "res://assets/voice/v_win_1.ogg"
+   "v_en": "res://assets/voice/en/v_win_1.ogg"
   },
   "v_win_2": {
-   "v_en": "res://assets/voice/v_win_2.ogg"
+   "v_en": "res://assets/voice/en/v_win_2.ogg"
   },
   "v_win_big_0": {
-   "v_en": "res://assets/voice/v_win_big_0.ogg"
+   "v_en": "res://assets/voice/en/v_win_big_0.ogg"
   },
   "v_win_big_1": {
-   "v_en": "res://assets/voice/v_win_big_1.ogg"
+   "v_en": "res://assets/voice/en/v_win_big_1.ogg"
   },
   "v_fail_0": {
-   "v_en": "res://assets/voice/v_fail_0.ogg"
+   "v_en": "res://assets/voice/en/v_fail_0.ogg"
   },
   "v_fail_1": {
-   "v_en": "res://assets/voice/v_fail_1.ogg"
+   "v_en": "res://assets/voice/en/v_fail_1.ogg"
   },
   "v_idle_0": {
-   "v_en": "res://assets/voice/v_idle_0.ogg"
+   "v_en": "res://assets/voice/en/v_idle_0.ogg"
   },
   "v_idle_1": {
-   "v_en": "res://assets/voice/v_idle_1.ogg"
+   "v_en": "res://assets/voice/en/v_idle_1.ogg"
   },
   "v_idle_2": {
-   "v_en": "res://assets/voice/v_idle_2.ogg"
+   "v_en": "res://assets/voice/en/v_idle_2.ogg"
   },
   "v_streak_0": {
-   "v_en": "res://assets/voice/v_streak_0.ogg"
+   "v_en": "res://assets/voice/en/v_streak_0.ogg"
   },
   "v_streak_1": {
-   "v_en": "res://assets/voice/v_streak_1.ogg"
+   "v_en": "res://assets/voice/en/v_streak_1.ogg"
   },
   "v_unlock_0": {
-   "v_en": "res://assets/voice/v_unlock_0.ogg"
+   "v_en": "res://assets/voice/en/v_unlock_0.ogg"
   },
   "v_unlock_1": {
-   "v_en": "res://assets/voice/v_unlock_1.ogg"
+   "v_en": "res://assets/voice/en/v_unlock_1.ogg"
+  },
+  "h1_flat_1": {
+   "v_en": "res://assets/voice/en/h1_flat_1.ogg"
+  },
+  "h1_flat_2": {
+   "v_en": "res://assets/voice/en/h1_flat_2.ogg"
+  },
+  "h1_flat_3": {
+   "v_en": "res://assets/voice/en/h1_flat_3.ogg"
+  },
+  "h1_cast_1": {
+   "v_en": "res://assets/voice/en/h1_cast_1.ogg"
+  },
+  "h1_after_3": {
+   "v_en": "res://assets/voice/en/h1_after_3.ogg"
+  },
+  "h1_shelter_2": {
+   "v_en": "res://assets/voice/en/h1_shelter_2.ogg"
+  },
+  "h1_shelter_3": {
+   "v_en": "res://assets/voice/en/h1_shelter_3.ogg"
+  },
+  "h1_pledge_2": {
+   "v_en": "res://assets/voice/en/h1_pledge_2.ogg"
+  },
+  "h1_hatch_3": {
+   "v_en": "res://assets/voice/en/h1_hatch_3.ogg"
+  },
+  "h2_ink_2": {
+   "v_en": "res://assets/voice/en/h2_ink_2.ogg"
+  },
+  "h2_after_2": {
+   "v_en": "res://assets/voice/en/h2_after_2.ogg"
+  },
+  "h2_pledge_2": {
+   "v_en": "res://assets/voice/en/h2_pledge_2.ogg"
+  },
+  "h2_tickets_2": {
+   "v_en": "res://assets/voice/en/h2_tickets_2.ogg"
+  },
+  "h2_broker_3": {
+   "v_en": "res://assets/voice/en/h2_broker_3.ogg"
+  },
+  "h3_till": {
+   "v_en": "res://assets/voice/en/h3_till.ogg"
+  },
+  "h3_chair_2": {
+   "v_en": "res://assets/voice/en/h3_chair_2.ogg"
+  },
+  "h3_chair_3": {
+   "v_en": "res://assets/voice/en/h3_chair_3.ogg"
+  },
+  "h3_after_2": {
+   "v_en": "res://assets/voice/en/h3_after_2.ogg"
+  },
+  "h3_water_2": {
+   "v_en": "res://assets/voice/en/h3_water_2.ogg"
+  },
+  "h3_bailiff_3": {
+   "v_en": "res://assets/voice/en/h3_bailiff_3.ogg"
+  },
+  "h5_ivo_2": {
+   "v_en": "res://assets/voice/en/h5_ivo_2.ogg"
   }
  },
  "room_audio": {
@@ -1309,5 +1372,55 @@
    "steps": "steps_stone",
    "space": "hall"
   }
+ },
+ "voice_off": {
+  "de": [
+   "lien_435.ogg",
+   "lien_511.ogg",
+   "lien_571.ogg",
+   "lien_711.ogg"
+  ],
+  "en": [
+   "lien_352.ogg",
+   "lien_442.ogg",
+   "lien_696.ogg",
+   "lien_869.ogg"
+  ],
+  "es": [
+   "lien_511.ogg",
+   "lien_571.ogg"
+  ],
+  "fr": [
+   "h3_till.ogg",
+   "lien_511.ogg"
+  ],
+  "ja": [
+   "h3_bailiff_3.ogg",
+   "h3_till.ogg",
+   "lien_1057.ogg",
+   "lien_348.ogg",
+   "lien_352.ogg",
+   "lien_360.ogg",
+   "lien_435.ogg",
+   "lien_485.ogg",
+   "lien_511.ogg",
+   "lien_569.ogg",
+   "lien_571.ogg",
+   "lien_773.ogg"
+  ],
+  "ko": [
+   "h3_bailiff_3.ogg",
+   "lien_360.ogg",
+   "lien_470.ogg",
+   "lien_492.ogg",
+   "lien_762.ogg"
+  ],
+  "zh": [
+   "lien_1039.ogg",
+   "lien_435.ogg",
+   "lien_497.ogg",
+   "lien_511.ogg",
+   "lien_762.ogg"
+  ]
  }
 }

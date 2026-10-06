@@ -28,8 +28,7 @@
    "who": "mira",
    "en": "The car's gone.",
    "ja": "車は消えた。",
-   "v_en": "res://assets/voice/act3_6cee9f47.ogg",
-   "v_ja": "res://assets/voice/act3_6cee9f47.ja.ogg"
+   "v_en": "res://assets/voice/en/act3_6cee9f47.ogg"
   },
   {
    "id": "act3_dff1b552",
@@ -48,8 +47,7 @@
    "who": "mira",
    "en": "Yes. He will.",
    "ja": "ええ、そうね。",
-   "v_en": "res://assets/voice/act3_d3e444e7.ogg",
-   "v_ja": "res://assets/voice/act3_d3e444e7.ja.ogg"
+   "v_en": "res://assets/voice/en/act3_d3e444e7.ogg"
   },
   {
    "id": "act3_f3b38135",
@@ -68,8 +66,7 @@
    "who": "mira",
    "en": "Then I won't go to the station.",
    "ja": "それなら、駅には行かないわ。",
-   "v_en": "res://assets/voice/end_train_22f8f170.ogg",
-   "v_ja": "res://assets/voice/end_train_22f8f170.ja.ogg"
+   "v_en": "res://assets/voice/en/end_train_22f8f170.ogg"
   },
   {
    "id": "end_train_0ad5afee",
@@ -88,8 +85,7 @@
    "who": "mira",
    "en": "How do you know that?",
    "ja": "どうしてそんなこと知ってるの？",
-   "v_en": "res://assets/voice/end_train_c3aae7de.ogg",
-   "v_ja": "res://assets/voice/end_train_c3aae7de.ja.ogg"
+   "v_en": "res://assets/voice/en/end_train_c3aae7de.ogg"
   },
   {
    "id": "end_train_53054264",
@@ -118,7 +114,7 @@
    "who": "mira",
    "en": "Seven-oh-four.",
    "ja": "704。",
-   "v_en": "res://assets/voice/end_train_d1686792.ogg"
+   "v_en": "res://assets/voice/en/end_train_d1686792.ogg"
   },
   {
    "id": "end_train_b716a301",
@@ -137,8 +133,7 @@
    "who": "mira",
    "en": "Don't write it in the book.",
    "ja": "帳簿には書かないで。",
-   "v_en": "res://assets/voice/end_train_ab978939.ogg",
-   "v_ja": "res://assets/voice/end_train_ab978939.ja.ogg"
+   "v_en": "res://assets/voice/en/end_train_ab978939.ogg"
   },
   {
    "id": "end_train_a63c2723",
@@ -157,8 +152,7 @@
    "who": "mira",
    "en": "Come with me to the corner, at least. Not the station. The corner.",
    "ja": "せめて角まで来て。駅じゃない。角よ。",
-   "v_en": "res://assets/voice/end_together_003306e9.ogg",
-   "v_ja": "res://assets/voice/end_together_003306e9.ja.ogg"
+   "v_en": "res://assets/voice/en/end_together_003306e9.ogg"
   },
   {
    "id": "end_together_c085fd95",
@@ -187,8 +181,7 @@
    "who": "mira",
    "en": "If I write to the hotel, will it reach you?",
    "ja": "もしホテルに手紙を書いたら、あなたに届くかしら？",
-   "v_en": "res://assets/voice/end_together_db9e9c48.ogg",
-   "v_ja": "res://assets/voice/end_together_db9e9c48.ja.ogg"
+   "v_en": "res://assets/voice/en/end_together_db9e9c48.ogg"
   },
   {
    "id": "end_together_4c1a3664",
@@ -207,8 +200,7 @@
    "who": "mira",
    "en": "Then I'll make it four.",
    "ja": "それなら、私が四通目にするわ。",
-   "v_en": "res://assets/voice/end_together_cb9fa211.ogg",
-   "v_ja": "res://assets/voice/end_together_cb9fa211.ja.ogg"
+   "v_en": "res://assets/voice/en/end_together_cb9fa211.ogg"
   },
   {
    "id": "end_together_606d9929",
@@ -227,8 +219,7 @@
    "who": "mira",
    "en": "I'll take the station. He'll have given up by now, or he won't, and either way it stops being a thing I plan around.",
    "ja": "俺は駅に向かう。彼はもう諦めているだろう。あるいは、諦めていないだろう。どちらにせよ、俺がそれに合わせて動く必要はなくなる。",
-   "v_en": "res://assets/voice/end_alone_1f5d6182.ogg",
-   "v_ja": "res://assets/voice/end_alone_1f5d6182.ja.ogg"
+   "v_en": "res://assets/voice/en/end_alone_1f5d6182.ogg"
   },
   {
    "id": "end_alone_94f9fcd3",
@@ -247,8 +238,7 @@
    "who": "mira",
    "en": "Thanks for the room.",
    "ja": "部屋、ありがとう。",
-   "v_en": "res://assets/voice/end_alone_c1305e19.ogg",
-   "v_ja": "res://assets/voice/end_alone_c1305e19.ja.ogg"
+   "v_en": "res://assets/voice/en/end_alone_c1305e19.ogg"
   },
   {
    "id": "end_alone_86eb65a1",
@@ -267,8 +257,7 @@
    "who": "mira",
    "en": "You could have told him nothing. It wasn't a hard thing to withhold.",
    "ja": "「何も言わないこともできたのに。黙っているのは、そんなに難しいことじゃない」",
-   "v_en": "res://assets/voice/end_alone_abfc49c8.ogg",
-   "v_ja": "res://assets/voice/end_alone_abfc49c8.ja.ogg"
+   "v_en": "res://assets/voice/en/end_alone_abfc49c8.ogg"
   },
   {
    "id": "end_alone_a74660c7",

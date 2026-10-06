@@ -1053,5 +1053,59 @@
    "steps": "steps_stone",
    "space": "outdoor"
   }
+ },
+ "voice": {
+  "n4_t9_2": {
+   "v_en": "res://assets/voice/en/n4_t9_2.ogg"
+  },
+  "n4_t9_3": {
+   "v_en": "res://assets/voice/en/n4_t9_3.ogg"
+  },
+  "n2_join_3": {
+   "v_en": "res://assets/voice/en/n2_join_3.ogg"
+  },
+  "n2_bag_2": {
+   "v_en": "res://assets/voice/en/n2_bag_2.ogg"
+  },
+  "n2_coat_2": {
+   "v_en": "res://assets/voice/en/n2_coat_2.ogg"
+  },
+  "n2_roof_3": {
+   "v_en": "res://assets/voice/en/n2_roof_3.ogg"
+  },
+  "n2_t3_3": {
+   "v_en": "res://assets/voice/en/n2_t3_3.ogg"
+  },
+  "n2_cat_2": {
+   "v_en": "res://assets/voice/en/n2_cat_2.ogg"
+  },
+  "n2_gale_5": {
+   "v_en": "res://assets/voice/en/n2_gale_5.ogg"
+  },
+  "n3_t7_2": {
+   "v_en": "res://assets/voice/en/n3_t7_2.ogg"
+  },
+  "n3_t5_2": {
+   "v_en": "res://assets/voice/en/n3_t5_2.ogg"
+  },
+  "n3_plan_3": {
+   "v_en": "res://assets/voice/en/n3_plan_3.ogg"
+  }
+ },
+ "voice_off": {
+  "en": [
+   "end_train_d1686792.ogg"
+  ],
+  "fr": [
+   "act2_window_4e9213fe.ogg"
+  ],
+  "ja": [
+   "act2_fdcded8b.ogg",
+   "act2_window_8d37aecb.ogg",
+   "by_the_book_98ce8bb1.ogg"
+  ],
+  "zh": [
+   "end_train_d1686792.ogg"
+  ]
  }
 }

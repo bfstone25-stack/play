@@ -38,8 +38,7 @@
    "who": "elena",
    "en": "Penhallow gave eleven gifts between 1993 and 1997. Every one of them is matched, within a month, by a name leaving the Academy.",
    "ja": "ペンハローは1993年から1997年の間に11の贈り物をした。その一つ一つが、一ヶ月以内に、アカデミーを去る人物の名と一致する。",
-   "v_en": "res://assets/voice/chapter_3_42d9cd24.ogg",
-   "v_ja": "res://assets/voice/chapter_3_42d9cd24.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_42d9cd24.ogg"
   },
   {
    "id": "chapter_3_3d72ac28",
@@ -58,8 +57,7 @@
    "who": "elena",
    "en": "Quietly. Resigned, retired, transferred. Two died. My father was the fourth.",
    "ja": "静かに。辞職、引退、異動。二人は死亡。私の父は四人目だった。",
-   "v_en": "res://assets/voice/chapter_3_c98009d2.ogg",
-   "v_ja": "res://assets/voice/chapter_3_c98009d2.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_c98009d2.ogg"
   },
   {
    "id": "chapter_3_ea20eaa9",
@@ -78,8 +76,7 @@
    "who": "elena",
    "en": "He was not buying a wing. He was buying a building with nobody left in it who remembered what it stood on.",
    "ja": "彼は棟を買っていたのではない。彼は、それが何の上に建っていたかを覚えている者が誰も残っていない建物を買っていたのだ。",
-   "v_en": "res://assets/voice/chapter_3_63fe05cd.ogg",
-   "v_ja": "res://assets/voice/chapter_3_63fe05cd.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_63fe05cd.ogg"
   },
   {
    "id": "chapter_3_c97f4964",
@@ -98,8 +95,7 @@
    "who": "elena",
    "en": "There is no crypt, Vance. That's the story they tell the first-years. Under the Blackwood wing there is a cellar, and in the cellar there was a chapel, and in 1994 that chapel had a floor somebody did not want dug up.",
    "ja": "「地下聖堂なんてありません、ヴァンス。それは一年生に聞かせる話。ブラックウッド棟の下にあるのは地下室で、その地下室にはかつて礼拝堂があって、1994年、その礼拝堂には誰かが掘り返されたくない床があった」",
-   "v_en": "res://assets/voice/chapter_3_bbedf28b.ogg",
-   "v_ja": "res://assets/voice/chapter_3_bbedf28b.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_bbedf28b.ogg"
   },
   {
    "id": "chapter_3_aa707d00",
@@ -118,8 +114,7 @@
    "who": "elena",
    "en": "With what? A trowel and a postgraduate?",
    "ja": "何で？こてと大学院生でか？",
-   "v_en": "res://assets/voice/chapter_3_710fe6c8.ogg",
-   "v_ja": "res://assets/voice/chapter_3_710fe6c8.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_710fe6c8.ogg"
   },
   {
    "id": "chapter_3_30ebeecb",
@@ -148,8 +143,7 @@
    "who": "elena",
    "en": "The board chair is Penhallow's grandson.",
    "ja": "理事長はペンハローの孫よ。",
-   "v_en": "res://assets/voice/chapter_3_940a10c9.ogg",
-   "v_ja": "res://assets/voice/chapter_3_940a10c9.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_940a10c9.ogg"
   },
   {
    "id": "chapter_3_8d1ee176",
@@ -168,8 +162,7 @@
    "who": "elena",
    "en": "And if they are the two who died?",
    "ja": "もし、その二人が死んだ人たちだったら？",
-   "v_en": "res://assets/voice/chapter_3_8cdb846d.ogg",
-   "v_ja": "res://assets/voice/chapter_3_8cdb846d.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_8cdb846d.ogg"
   },
   {
    "id": "chapter_3_3cc05416",
@@ -188,8 +181,7 @@
    "who": "elena",
    "en": "You're very calm for a man whose signature is on eleven receipts.",
    "ja": "「十一枚の受領書に署名がある男にしては、ずいぶん落ち着いていますね」",
-   "v_en": "res://assets/voice/chapter_3_0a494090.ogg",
-   "v_ja": "res://assets/voice/chapter_3_0a494090.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_0a494090.ogg"
   },
   {
    "id": "chapter_3_c42d64ed",
@@ -208,8 +200,7 @@
    "who": "elena",
    "en": "Four, then.",
    "ja": "四つ、だ。",
-   "v_en": "res://assets/voice/chapter_3_820a1daf.ogg",
-   "v_ja": "res://assets/voice/chapter_3_820a1daf.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_820a1daf.ogg"
   },
   {
    "id": "chapter_3_13f5b025",
@@ -418,8 +409,7 @@
    "who": "elena",
    "en": "He knows my name.",
    "ja": "彼は私の名前を知っている。",
-   "v_en": "res://assets/voice/chapter_3_2d94dcde.ogg",
-   "v_ja": "res://assets/voice/chapter_3_2d94dcde.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_2d94dcde.ogg"
   },
   {
    "id": "chapter_3_ea6895f8",
@@ -438,8 +428,7 @@
    "who": "elena",
    "en": "He said it to the Dean. Out loud. In front of the whole room. Like a man setting a glass down hard so the room has to hear it.",
    "ja": "「学部長に向かって言ったんです。声に出して。あの部屋全員の前で。部屋に聞かせるためにグラスを強く置く男みたいに」",
-   "v_en": "res://assets/voice/chapter_3_0464309c.ogg",
-   "v_ja": "res://assets/voice/chapter_3_0464309c.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_0464309c.ogg"
   },
   {
    "id": "chapter_3_abc62f03",
@@ -458,8 +447,7 @@
    "who": "elena",
    "en": "Five, I said. On the dock. You did not ask.",
    "ja": "五日だ、と私は言った。埠頭で。お前は尋ねなかった。",
-   "v_en": "res://assets/voice/chapter_3_f07949e9.ogg",
-   "v_ja": "res://assets/voice/chapter_3_f07949e9.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_f07949e9.ogg"
   },
   {
    "id": "chapter_3_a86e3d35",
@@ -478,8 +466,7 @@
    "who": "elena",
    "en": "Five days. I gave myself five days to decide whether you were a coward or a careful man. It's been five days.",
    "ja": "「五日。あなたが臆病者なのか慎重な人なのかを決めるのに、五日くれてやりました。もう五日です」",
-   "v_en": "res://assets/voice/chapter_3_ed96bbd7.ogg",
-   "v_ja": "res://assets/voice/chapter_3_ed96bbd7.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_ed96bbd7.ogg"
   },
   {
    "id": "chapter_3_7355aa34",
@@ -508,8 +495,7 @@
    "who": "elena",
    "en": "Careful. Unfortunately.",
    "ja": "慎重だ。残念ながら。",
-   "v_en": "res://assets/voice/chapter_3_62916a06.ogg",
-   "v_ja": "res://assets/voice/chapter_3_62916a06.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_62916a06.ogg"
   },
   {
    "id": "chapter_3_56c41ae6",
@@ -528,8 +514,7 @@
    "who": "elena",
    "en": "He looked at my hands. He knows I have been in the crate.",
    "ja": "彼は私の手を見た。私が木箱の中にいたことを知っている。",
-   "v_en": "res://assets/voice/chapter_3_0e413c9d.ogg",
-   "v_ja": "res://assets/voice/chapter_3_0e413c9d.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_0e413c9d.ogg"
   },
   {
    "id": "chapter_3_8ada5930",
@@ -548,8 +533,7 @@
    "who": "elena",
    "en": "You keep saying that as if it protects me.",
    "ja": "まるでそれが私を守るかのように、お前はそう言い続ける。",
-   "v_en": "res://assets/voice/chapter_3_49980da0.ogg",
-   "v_ja": "res://assets/voice/chapter_3_49980da0.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_49980da0.ogg"
   },
   {
    "id": "chapter_3_d0736892",
@@ -578,8 +562,7 @@
    "who": "elena",
    "en": "Then keep me on paper. Off paper, tonight, I'd like to stop being frightened for one hour.",
    "ja": "「なら、書類の上では私を手元に置いてください。書類の外では、今夜だけ、一時間、怯えるのをやめたい」",
-   "v_en": "res://assets/voice/chapter_3_f809dc87.ogg",
-   "v_ja": "res://assets/voice/chapter_3_f809dc87.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_f809dc87.ogg"
   },
   {
    "id": "chapter_3_7b3d7047",
@@ -598,8 +581,7 @@
    "who": "elena",
    "en": "I want to burn his portrait.",
    "ja": "彼の肖像画を燃やしたい。",
-   "v_en": "res://assets/voice/chapter_3_30045f2a.ogg",
-   "v_ja": "res://assets/voice/chapter_3_30045f2a.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_30045f2a.ogg"
   },
   {
    "id": "chapter_3_80007b0a",
@@ -618,8 +600,7 @@
    "who": "elena",
    "en": "Then I want to burn the family.",
    "ja": "ならば、家族を焼き尽くしたい。",
-   "v_en": "res://assets/voice/chapter_3_34a5ba79.ogg",
-   "v_ja": "res://assets/voice/chapter_3_34a5ba79.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_34a5ba79.ogg"
   },
   {
    "id": "chapter_3_88a42b5f",
@@ -638,8 +619,7 @@
    "who": "elena",
    "en": "I know. I know. Give me an hour where I'm not the last Ashcombe, and then I'll be reasonable.",
    "ja": "「わかってる。わかってます。最後のアシュコム家の人間でいなくていい一時間をください。そうしたら理性的になりますから」",
-   "v_en": "res://assets/voice/chapter_3_0569a7d9.ogg",
-   "v_ja": "res://assets/voice/chapter_3_0569a7d9.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_0569a7d9.ogg"
   },
   {
    "id": "chapter_3_7200bb25",
@@ -798,8 +778,7 @@
    "who": "elena",
    "en": "The Dean retires in the spring. Penhallow wants your signature on the board. That means he needs you clean.",
    "ja": "学部長は春に引退する。ペンハローは理事会であなたの署名を欲しがっている。それは、彼があなたに清廉であることを求めている、ということだ。",
-   "v_en": "res://assets/voice/chapter_3_a9d223f1.ogg",
-   "v_ja": "res://assets/voice/chapter_3_a9d223f1.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_a9d223f1.ogg"
   },
   {
    "id": "chapter_3_36417d1e",
@@ -818,8 +797,7 @@
    "who": "elena",
    "en": "Or compromised. Either way, he needs you. So he does not need me.",
    "ja": "あるいは、弱みを握られている。いずれにせよ、彼にはあなたが必要だ。だから、私はいらない。",
-   "v_en": "res://assets/voice/chapter_3_25f5e4c2.ogg",
-   "v_ja": "res://assets/voice/chapter_3_25f5e4c2.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_25f5e4c2.ogg"
   },
   {
    "id": "chapter_3_2e30505c",
@@ -838,8 +816,7 @@
    "who": "elena",
    "en": "I'm the loose end, Vance. Not you. Whatever happens next happens to me.",
    "ja": "「私が切るべき糸なんです、ヴァンス。あなたじゃない。次に何が起きるにせよ、起きるのは私にです」",
-   "v_en": "res://assets/voice/chapter_3_d8ed7ba0.ogg",
-   "v_ja": "res://assets/voice/chapter_3_d8ed7ba0.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_3_d8ed7ba0.ogg"
   },
   {
    "id": "chapter_3_e1bb22cf",

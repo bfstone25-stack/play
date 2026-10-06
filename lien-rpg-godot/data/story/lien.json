@@ -20,7 +20,8 @@
    "src": 149,
    "who": "nara",
    "en": "That's not a reading. That's a receipt for one.",
-   "ja": "これは読み取りじゃない。読み取りの領収書だ。"
+   "ja": "これは読み取りじゃない。読み取りの領収書だ。",
+   "v_en": "res://assets/voice/en/lien_149.ogg"
   },
   {
    "id": "lien_150",
@@ -64,7 +65,8 @@
    "src": 176,
    "who": "nara",
    "en": "Two-sixty in. Two hundred out. Sixty to live on and a shop full of other people's decisions.",
-   "ja": "入りが二百六十。出が二百。暮らしに残るのは六十と、他人の決断で埋まった店がひとつ。"
+   "ja": "入りが二百六十。出が二百。暮らしに残るのは六十と、他人の決断で埋まった店がひとつ。",
+   "v_en": "res://assets/voice/en/lien_176.ogg"
   },
   {
    "id": "lien_177",
@@ -120,7 +122,8 @@
    "src": 184,
    "who": "nara",
    "en": "It is not free. It costs the shop.",
-   "ja": "ただではない。代償は店が払う。"
+   "ja": "ただではない。代償は店が払う。",
+   "v_en": "res://assets/voice/en/lien_184.ogg"
   },
   {
    "id": "lien_185",
@@ -190,14 +193,16 @@
    "src": 201,
    "who": "tam",
    "en": "Do you buy brass?",
-   "ja": "真鍮は買い取ってる？"
+   "ja": "真鍮は買い取ってる？",
+   "v_en": "res://assets/voice/en/lien_201.ogg"
   },
   {
    "id": "lien_202",
    "src": 202,
    "who": "nara",
    "en": "I buy anything I can price.",
-   "ja": "値のつけられるものなら何でも。"
+   "ja": "値のつけられるものなら何でも。",
+   "v_en": "res://assets/voice/en/lien_202.ogg"
   },
   {
    "id": "lien_203",
@@ -218,28 +223,32 @@
    "src": 205,
    "who": "nara",
    "en": "Where are the other three?",
-   "ja": "残りの三つは？"
+   "ja": "残りの三つは？",
+   "v_en": "res://assets/voice/en/lien_205.ogg"
   },
   {
    "id": "lien_206",
    "src": 206,
    "who": "tam",
    "en": "On the bed.",
-   "ja": "ベッドに。"
+   "ja": "ベッドに。",
+   "v_en": "res://assets/voice/en/lien_206.ogg"
   },
   {
    "id": "lien_207",
    "src": 207,
    "who": "nara",
    "en": "And the bed?",
-   "ja": "で、ベッドは？"
+   "ja": "で、ベッドは？",
+   "v_en": "res://assets/voice/en/lien_207.ogg"
   },
   {
    "id": "lien_208",
    "src": 208,
    "who": "tam",
    "en": "In the flat. For another two days.",
-   "ja": "部屋に。あと二日は。"
+   "ja": "部屋に。あと二日は。",
+   "v_en": "res://assets/voice/en/lien_208.ogg"
   },
   {
    "id": "lien_209",
@@ -260,21 +269,24 @@
    "src": 211,
    "who": "tam",
    "en": "Tamsin Reed. I'm not being coy. I just don't want to do the whole thing where you ask and I explain and you say you're sorry.",
-   "ja": "タムシン・リード。気取ってるんじゃないの。ただ、あなたが訊いて、私が説明して、あなたが『お気の毒に』って言う、あの一連をやりたくないだけ。"
+   "ja": "タムシン・リード。気取ってるんじゃないの。ただ、あなたが訊いて、私が説明して、あなたが『お気の毒に』って言う、あの一連をやりたくないだけ。",
+   "v_en": "res://assets/voice/en/lien_211.ogg"
   },
   {
    "id": "lien_212",
    "src": 212,
    "who": "nara",
    "en": "I wasn't going to say I'm sorry.",
-   "ja": "お気の毒になんて言うつもりはなかった。"
+   "ja": "お気の毒になんて言うつもりはなかった。",
+   "v_en": "res://assets/voice/en/lien_212.ogg"
   },
   {
    "id": "lien_213",
    "src": 213,
    "who": "tam",
    "en": "No. You were going to say twelve.",
-   "ja": "でしょうね。十二って言うつもりだった。"
+   "ja": "でしょうね。十二って言うつもりだった。",
+   "v_en": "res://assets/voice/en/lien_213.ogg"
   },
   {
    "id": "lien_214",
@@ -288,14 +300,16 @@
    "src": 215,
    "who": "nara",
    "en": "I was going to say fourteen and let you get me to eighteen.",
-   "ja": "十四って言って、十八まで引き上げさせるつもりだった。"
+   "ja": "十四って言って、十八まで引き上げさせるつもりだった。",
+   "v_en": "res://assets/voice/en/lien_215.ogg"
   },
   {
    "id": "lien_216",
    "src": 216,
    "who": "tam",
    "en": "See, that's worse.",
-   "ja": "ほら、そっちのほうがひどい。"
+   "ja": "ほら、そっちのほうがひどい。",
+   "v_en": "res://assets/voice/en/lien_216.ogg"
   },
   {
    "id": "lien_217",
@@ -330,21 +344,24 @@
    "src": 244,
    "who": "nara",
    "en": "It's a nice casting. Somebody paid for that bed.",
-   "ja": "いい鋳物ね。誰かがあのベッドにお金をかけた。"
+   "ja": "いい鋳物ね。誰かがあのベッドにお金をかけた。",
+   "v_en": "res://assets/voice/en/lien_244.ogg"
   },
   {
    "id": "lien_245",
    "src": 245,
    "who": "tam",
    "en": "Somebody did.",
-   "ja": "かけたわね。"
+   "ja": "かけたわね。",
+   "v_en": "res://assets/voice/en/lien_245.ogg"
   },
   {
    "id": "lien_246",
    "src": 246,
    "who": "nara",
    "en": "Some nights you want the whole story. Some nights the story is a cost.",
-   "ja": "物語を丸ごと知りたい夜もある。物語が代償になる夜もある。"
+   "ja": "物語を丸ごと知りたい夜もある。物語が代償になる夜もある。",
+   "v_en": "res://assets/voice/en/lien_246.ogg"
   },
   {
    "id": "lien_256",
@@ -421,21 +438,24 @@
    "src": 267,
    "who": "tam",
    "en": "You've gone a bit grey.",
-   "ja": "ちょっと顔色が悪いわよ。"
+   "ja": "ちょっと顔色が悪いわよ。",
+   "v_en": "res://assets/voice/en/lien_267.ogg"
   },
   {
    "id": "lien_268",
    "src": 268,
    "who": "nara",
    "en": "The lamp does that.",
-   "ja": "ランプのせい。"
+   "ja": "ランプのせい。",
+   "v_en": "res://assets/voice/en/lien_268.ogg"
   },
   {
    "id": "lien_269",
    "src": 269,
    "who": "tam",
    "en": "The lamp's been on the whole time.",
-   "ja": "ランプはずっとついてたけど。"
+   "ja": "ランプはずっとついてたけど。",
+   "v_en": "res://assets/voice/en/lien_269.ogg"
   },
   {
    "id": "lien_276",
@@ -463,21 +483,24 @@
    "src": 288,
    "who": "tam",
    "en": "Fine.",
-   "ja": "いいわ。"
+   "ja": "いいわ。",
+   "v_en": "res://assets/voice/en/lien_288.ogg"
   },
   {
    "id": "lien_289",
    "src": 289,
    "who": "nara",
    "en": "It's brass.",
-   "ja": "真鍮だから。"
+   "ja": "真鍮だから。",
+   "v_en": "res://assets/voice/en/lien_289.ogg"
   },
   {
    "id": "lien_290",
    "src": 290,
    "who": "tam",
    "en": "It's fourteen pounds of my bed. That's fine. That's — yeah.",
-   "ja": "私のベッドの十四ポンド分。いいの。それで――うん。"
+   "ja": "私のベッドの十四ポンド分。いいの。それで――うん。",
+   "v_en": "res://assets/voice/en/lien_290.ogg"
   },
   {
    "id": "lien_291",
@@ -491,7 +514,8 @@
    "src": 292,
    "who": "nara",
    "en": "Eight up. Well done.",
-   "ja": "八の得。ご立派なこと。"
+   "ja": "八の得。ご立派なこと。",
+   "v_en": "res://assets/voice/en/lien_292.ogg"
   },
   {
    "id": "lien_296",
@@ -505,14 +529,16 @@
    "src": 297,
    "who": "tam",
    "en": "That's more than it's worth.",
-   "ja": "値打ちより多いじゃない。"
+   "ja": "値打ちより多いじゃない。",
+   "v_en": "res://assets/voice/en/lien_297.ogg"
   },
   {
    "id": "lien_298",
    "src": 298,
    "who": "nara",
    "en": "That's exactly what it's worth. What's less than it's worth is fourteen, which is what you came in expecting, which is why you didn't bring the other three.",
-   "ja": "ちょうど値打ちどおり。値打ちより少ないのは十四。あなたが予想して来た額で、だから残りの三つを持ってこなかった。"
+   "ja": "ちょうど値打ちどおり。値打ちより少ないのは十四。あなたが予想して来た額で、だから残りの三つを持ってこなかった。",
+   "v_en": "res://assets/voice/en/lien_298.ogg"
   },
   {
    "id": "lien_299",
@@ -526,21 +552,24 @@
    "src": 300,
    "who": "tam",
    "en": "If I bring the other three, will you do the same?",
-   "ja": "残りの三つを持ってきたら、同じようにしてくれる？"
+   "ja": "残りの三つを持ってきたら、同じようにしてくれる？",
+   "v_en": "res://assets/voice/en/lien_300.ogg"
   },
   {
    "id": "lien_301",
    "src": 301,
    "who": "nara",
    "en": "If you bring the other three I'll do better, because four of anything is a set.",
-   "ja": "残りの三つを持ってきたら、もっと出す。四つ揃えばセットだから。"
+   "ja": "残りの三つを持ってきたら、もっと出す。四つ揃えばセットだから。",
+   "v_en": "res://assets/voice/en/lien_301.ogg"
   },
   {
    "id": "lien_302",
    "src": 302,
    "who": "tam",
    "en": "Right. Okay.",
-   "ja": "そう。わかった。"
+   "ja": "そう。わかった。",
+   "v_en": "res://assets/voice/en/lien_302.ogg"
   },
   {
    "id": "lien_303",
@@ -554,14 +583,16 @@
    "src": 304,
    "who": "tam",
    "en": "It was a good bed.",
-   "ja": "いいベッドだったの。"
+   "ja": "いいベッドだったの。",
+   "v_en": "res://assets/voice/en/lien_304.ogg"
   },
   {
    "id": "lien_305",
    "src": 305,
    "who": "nara",
    "en": "It sounded like one.",
-   "ja": "そう聞こえた。"
+   "ja": "そう聞こえた。",
+   "v_en": "res://assets/voice/en/lien_305.ogg"
   },
   {
    "id": "lien_306",
@@ -582,28 +613,32 @@
    "src": 311,
    "who": "tam",
    "en": "Why.",
-   "ja": "なぜ。"
+   "ja": "なぜ。",
+   "v_en": "res://assets/voice/en/lien_311.ogg"
   },
   {
    "id": "lien_312",
    "src": 312,
    "who": "nara",
    "en": "Because I looked at it and now I know what it's worth to you, and that's a different number, and I'd rather be wrong in that direction.",
-   "ja": "見たから。見て、これがあなたにとっていくらなのか分かった。それは別の数字で、どうせ間違えるならそっちの方向に間違えたいの。"
+   "ja": "見たから。見て、これがあなたにとっていくらなのか分かった。それは別の数字で、どうせ間違えるならそっちの方向に間違えたいの。",
+   "v_en": "res://assets/voice/en/lien_312.ogg"
   },
   {
    "id": "lien_313",
    "src": 313,
    "who": "tam",
    "en": "You can't afford to be wrong in that direction. Look at this place.",
-   "ja": "そっちの方向に間違える余裕なんてないでしょ。この店を見てよ。"
+   "ja": "そっちの方向に間違える余裕なんてないでしょ。この店を見てよ。",
+   "v_en": "res://assets/voice/en/lien_313.ogg"
   },
   {
    "id": "lien_314",
    "src": 314,
    "who": "nara",
    "en": "I know what I can afford. Take the thirty-three.",
-   "ja": "自分の余裕くらい分かってる。三十三、受け取って。"
+   "ja": "自分の余裕くらい分かってる。三十三、受け取って。",
+   "v_en": "res://assets/voice/en/lien_314.ogg"
   },
   {
    "id": "lien_315",
@@ -617,28 +652,32 @@
    "src": 316,
    "who": "tam",
    "en": "You saw it. Didn't you. The room.",
-   "ja": "見たのね。そうでしょ。あの部屋。"
+   "ja": "見たのね。そうでしょ。あの部屋。",
+   "v_en": "res://assets/voice/en/lien_316.ogg"
   },
   {
    "id": "lien_317",
    "src": 317,
    "who": "nara",
    "en": "Yes.",
-   "ja": "ええ。"
+   "ja": "ええ。",
+   "v_en": "res://assets/voice/en/lien_317.ogg"
   },
   {
    "id": "lien_318",
    "src": 318,
    "who": "tam",
    "en": "Was I —",
-   "ja": "私、どんな――"
+   "ja": "私、どんな――",
+   "v_en": "res://assets/voice/en/lien_318.ogg"
   },
   {
    "id": "lien_320",
    "src": 320,
    "who": "nara",
    "en": "You were sitting up. That's all. You were sitting up and it was a nice morning and the light was good.",
-   "ja": "起き上がって座ってた。それだけ。起きて座っていて、いい朝で、光がきれいだった。"
+   "ja": "起き上がって座ってた。それだけ。起きて座っていて、いい朝で、光がきれいだった。",
+   "v_en": "res://assets/voice/en/lien_320.ogg"
   },
   {
    "id": "lien_321",
@@ -687,7 +726,8 @@
    "src": 344,
    "who": "nara",
    "en": "Depends what it is.",
-   "ja": "物によるわ。"
+   "ja": "物によるわ。",
+   "v_en": "res://assets/voice/en/lien_344.ogg"
   },
   {
    "id": "lien_345",
@@ -715,7 +755,8 @@
    "src": 348,
    "who": "nara",
    "en": "There's a date in it.",
-   "ja": "日付が入ってる。"
+   "ja": "日付が入ってる。",
+   "v_en": "res://assets/voice/en/lien_348.ogg"
   },
   {
    "id": "lien_349",
@@ -743,7 +784,8 @@
    "src": 352,
    "who": "nara",
    "en": "Ivo?",
-   "ja": "アイヴォ？"
+   "ja": "アイヴォ？",
+   "v_en": "res://assets/voice/en/lien_352.ogg"
   },
   {
    "id": "lien_353",
@@ -757,7 +799,8 @@
    "src": 354,
    "who": "nara",
    "en": "It's on the card you're holding. You've been turning it over since you came in.",
-   "ja": "あなたが持ってるカードに書いてある。入ってきてからずっと、ひっくり返してるでしょう。"
+   "ja": "あなたが持ってるカードに書いてある。入ってきてからずっと、ひっくり返してるでしょう。",
+   "v_en": "res://assets/voice/en/lien_354.ogg"
   },
   {
    "id": "lien_355",
@@ -778,7 +821,8 @@
    "src": 357,
    "who": "nara",
    "en": "Most people have done it before. It's a shop, not a confession.",
-   "ja": "たいていの人は前にもやってる。ここは店で、懺悔室じゃない。"
+   "ja": "たいていの人は前にもやってる。ここは店で、懺悔室じゃない。",
+   "v_en": "res://assets/voice/en/lien_357.ogg"
   },
   {
    "id": "lien_358",
@@ -799,7 +843,8 @@
    "src": 360,
    "who": "nara",
    "en": "Do what.",
-   "ja": "何を。"
+   "ja": "何を。",
+   "v_en": "res://assets/voice/en/lien_360.ogg"
   },
   {
    "id": "lien_361",
@@ -820,7 +865,8 @@
    "src": 363,
    "who": "nara",
    "en": "All right.",
-   "ja": "わかった。"
+   "ja": "わかった。",
+   "v_en": "res://assets/voice/en/lien_363.ogg"
   },
   {
    "id": "lien_364",
@@ -834,7 +880,8 @@
    "src": 365,
    "who": "nara",
    "en": "Whose is it?",
-   "ja": "誰のもの？"
+   "ja": "誰のもの？",
+   "v_en": "res://assets/voice/en/lien_365.ogg"
   },
   {
    "id": "lien_366",
@@ -862,7 +909,8 @@
    "src": 369,
    "who": "nara",
    "en": "So it's not —",
-   "ja": "じゃあ、これは――"
+   "ja": "じゃあ、これは――",
+   "v_en": "res://assets/voice/en/lien_369.ogg"
   },
   {
    "id": "lien_370",
@@ -925,7 +973,8 @@
    "src": 402,
    "who": "nara",
    "en": "Nothing.",
-   "ja": "何も。"
+   "ja": "何も。",
+   "v_en": "res://assets/voice/en/lien_402.ogg"
   },
   {
    "id": "lien_403",
@@ -946,7 +995,8 @@
    "src": 412,
    "who": "nara",
    "en": "I didn't look.",
-   "ja": "見てない。"
+   "ja": "見てない。",
+   "v_en": "res://assets/voice/en/lien_412.ogg"
   },
   {
    "id": "lien_413",
@@ -960,7 +1010,8 @@
    "src": 414,
    "who": "nara",
    "en": "Then why did you ask?",
-   "ja": "じゃあ、なぜ頼んだ？"
+   "ja": "じゃあ、なぜ頼んだ？",
+   "v_en": "res://assets/voice/en/lien_414.ogg"
   },
   {
    "id": "lien_415",
@@ -1037,7 +1088,8 @@
    "src": 435,
    "who": "nara",
    "en": "Forty.",
-   "ja": "四十。"
+   "ja": "四十。",
+   "v_en": "res://assets/voice/en/lien_435.ogg"
   },
   {
    "id": "lien_436",
@@ -1051,7 +1103,8 @@
    "src": 437,
    "who": "nara",
    "en": "It's what I'm answering.",
-   "ja": "私が答えてるのはそういうこと。"
+   "ja": "私が答えてるのはそういうこと。",
+   "v_en": "res://assets/voice/en/lien_437.ogg"
   },
   {
    "id": "lien_438",
@@ -1072,7 +1125,8 @@
    "src": 440,
    "who": "nara",
    "en": "I did it.",
-   "ja": "やった。"
+   "ja": "やった。",
+   "v_en": "res://assets/voice/en/lien_440.ogg"
   },
   {
    "id": "lien_441",
@@ -1086,7 +1140,8 @@
    "src": 442,
    "who": "nara",
    "en": "No.",
-   "ja": "いいえ。"
+   "ja": "いいえ。",
+   "v_en": "res://assets/voice/en/lien_442.ogg"
   },
   {
    "id": "lien_443",
@@ -1100,7 +1155,8 @@
    "src": 444,
    "who": "nara",
    "en": "No. It isn't. I took a thing you asked me not to take and I'm not going to make it worse by making you pay to hear it described.",
-   "ja": "そう。卑怯よ。やめてと言われたものを私は取った。それを聞くのにお金まで払わせて、もっとひどくするつもりはない。"
+   "ja": "そう。卑怯よ。やめてと言われたものを私は取った。それを聞くのにお金まで払わせて、もっとひどくするつもりはない。",
+   "v_en": "res://assets/voice/en/lien_444.ogg"
   },
   {
    "id": "lien_445",
@@ -1128,7 +1184,8 @@
    "src": 448,
    "who": "nara",
    "en": "It was a nice room. The lamp was on the floor.",
-   "ja": "いい部屋だった。ランプが床に置いてあった。"
+   "ja": "いい部屋だった。ランプが床に置いてあった。",
+   "v_en": "res://assets/voice/en/lien_448.ogg"
   },
   {
    "id": "lien_449",
@@ -1177,7 +1234,8 @@
    "src": 470,
    "who": "nara",
    "en": "It's a gram and a half.",
-   "ja": "一グラム半だからな。"
+   "ja": "一グラム半だからな。",
+   "v_en": "res://assets/voice/en/lien_470.ogg"
   },
   {
    "id": "lien_471",
@@ -1212,7 +1270,8 @@
    "src": 478,
    "who": "nara",
    "en": "That's the real number.",
-   "ja": "本当の数字だな。"
+   "ja": "本当の数字だな。",
+   "v_en": "res://assets/voice/en/lien_478.ogg"
   },
   {
    "id": "lien_479",
@@ -1226,7 +1285,8 @@
    "src": 480,
    "who": "nara",
    "en": "You do look like that. It's still forty.",
-   "ja": "確かにそう見える。それでも四十。"
+   "ja": "確かにそう見える。それでも四十。",
+   "v_en": "res://assets/voice/en/lien_480.ogg"
   },
   {
    "id": "lien_481",
@@ -1247,7 +1307,8 @@
    "src": 483,
    "who": "nara",
    "en": "Thirty days on the ticket. After that it's the shop's.",
-   "ja": "札の期限は三十日。それを過ぎたら店のもの。"
+   "ja": "札の期限は三十日。それを過ぎたら店のもの。",
+   "v_en": "res://assets/voice/en/lien_483.ogg"
   },
   {
    "id": "lien_484",
@@ -1261,7 +1322,8 @@
    "src": 485,
    "who": "nara",
    "en": "The shop's.",
-   "ja": "店のもの。"
+   "ja": "店のもの。",
+   "v_en": "res://assets/voice/en/lien_485.ogg"
   },
   {
    "id": "lien_486",
@@ -1289,7 +1351,8 @@
    "src": 492,
    "who": "nara",
    "en": "Take it.",
-   "ja": "受け取って。"
+   "ja": "受け取って。",
+   "v_en": "res://assets/voice/en/lien_492.ogg"
   },
   {
    "id": "lien_493",
@@ -1303,7 +1366,8 @@
    "src": 494,
    "who": "nara",
    "en": "I'm paying you sixty pounds for a gold ring, Mr Glass, and if you want to argue about the till you can come round this side of it.",
-   "ja": "金の指輪に六十ポンド払ってるのよ、グラスさん。レジのことで揉めたいなら、こっち側に回ってきたら。"
+   "ja": "金の指輪に六十ポンド払ってるのよ、グラスさん。レジのことで揉めたいなら、こっち側に回ってきたら。",
+   "v_en": "res://assets/voice/en/lien_494.ogg"
   },
   {
    "id": "lien_495",
@@ -1324,7 +1388,8 @@
    "src": 497,
    "who": "nara",
    "en": "It's thirty days on the ticket.",
-   "ja": "札の期限は三十日。"
+   "ja": "札の期限は三十日。",
+   "v_en": "res://assets/voice/en/lien_497.ogg"
   },
   {
    "id": "lien_498",
@@ -1347,7 +1412,8 @@
    "en": "Till: %d.",
    "ja": "レジ：%d。",
    "fmt": true,
-   "skip": true
+   "skip": true,
+   "v_en": "res://assets/voice/en/lien_511.ogg"
   },
   {
    "id": "lien_512",
@@ -1395,7 +1461,8 @@
    "src": 523,
    "who": "nara",
    "en": "Good.",
-   "ja": "よし。"
+   "ja": "よし。",
+   "v_en": "res://assets/voice/en/lien_523.ogg"
   },
   {
    "id": "lien_524",
@@ -1430,7 +1497,8 @@
    "src": 530,
    "who": "nara",
    "en": "That's not funny.",
-   "ja": "笑えない。"
+   "ja": "笑えない。",
+   "v_en": "res://assets/voice/en/lien_530.ogg"
   },
   {
    "id": "lien_531",
@@ -1514,21 +1582,24 @@
    "src": 565,
    "who": "mara",
    "en": "You are Elsa's girl.",
-   "ja": "あなたがエルサの娘ね。"
+   "ja": "あなたがエルサの娘ね。",
+   "v_en": "res://assets/voice/en/lien_565.ogg"
   },
   {
    "id": "lien_566",
    "src": 566,
    "who": "nara",
    "en": "I'm Elsa's niece.",
-   "ja": "エルサの姪です。"
+   "ja": "エルサの姪です。",
+   "v_en": "res://assets/voice/en/lien_566.ogg"
   },
   {
    "id": "lien_567",
    "src": 567,
    "who": "mara",
    "en": "That is what I said.",
-   "ja": "そう言ったのよ。"
+   "ja": "そう言ったのよ。",
+   "v_en": "res://assets/voice/en/lien_567.ogg"
   },
   {
    "id": "lien_568",
@@ -1542,28 +1613,32 @@
    "src": 569,
    "who": "nara",
    "en": "A veil.",
-   "ja": "ヴェール。"
+   "ja": "ヴェール。",
+   "v_en": "res://assets/voice/en/lien_569.ogg"
   },
   {
    "id": "lien_570",
    "src": 570,
    "who": "mara",
    "en": "A mourning veil. There is a difference and you will want it for your ticket.",
-   "ja": "喪のヴェール。違いがあるの。札に書くならその違いが要るでしょう。"
+   "ja": "喪のヴェール。違いがあるの。札に書くならその違いが要るでしょう。",
+   "v_en": "res://assets/voice/en/lien_570.ogg"
   },
   {
    "id": "lien_571",
    "src": 571,
    "who": "nara",
    "en": "Voss.",
-   "ja": "ヴォス。"
+   "ja": "ヴォス。",
+   "v_en": "res://assets/voice/en/lien_571.ogg"
   },
   {
    "id": "lien_572",
    "src": 572,
    "who": "mara",
    "en": "Widow Voss, since about March. You may use either. I have not settled on which one I am.",
-   "ja": "ヴォス未亡人。三月ごろから。どちらで呼んでもいいわ。自分がどちらなのか、まだ決めていないの。"
+   "ja": "ヴォス未亡人。三月ごろから。どちらで呼んでもいいわ。自分がどちらなのか、まだ決めていないの。",
+   "v_en": "res://assets/voice/en/lien_572.ogg"
   },
   {
    "id": "lien_573",
@@ -1577,28 +1652,32 @@
    "src": 574,
    "who": "nara",
    "en": "It's been out of a box recently.",
-   "ja": "最近、箱から出されましたね。"
+   "ja": "最近、箱から出されましたね。",
+   "v_en": "res://assets/voice/en/lien_574.ogg"
   },
   {
    "id": "lien_575",
    "src": 575,
    "who": "mara",
    "en": "It has been out of a box for six months. It is on the chair in my bedroom and I go past it four times a day and I have decided that is a stupid way to run a house.",
-   "ja": "箱から出して六か月になるわ。寝室の椅子の上にあって、日に四回その前を通る。そんなふうに家を回すのは馬鹿げていると決めたの。"
+   "ja": "箱から出して六か月になるわ。寝室の椅子の上にあって、日に四回その前を通る。そんなふうに家を回すのは馬鹿げていると決めたの。",
+   "v_en": "res://assets/voice/en/lien_575.ogg"
   },
   {
    "id": "lien_576",
    "src": 576,
    "who": "nara",
    "en": "You could throw it away.",
-   "ja": "捨てることもできますよ。"
+   "ja": "捨てることもできますよ。",
+   "v_en": "res://assets/voice/en/lien_576.ogg"
   },
   {
    "id": "lien_577",
    "src": 577,
    "who": "mara",
    "en": "I could. That would be a decision about him. I would rather it were a transaction about a piece of cloth.",
-   "ja": "できるわね。でもそれは彼についての決断になる。私はこれを、布切れについての取引にしたいの。"
+   "ja": "できるわね。でもそれは彼についての決断になる。私はこれを、布切れについての取引にしたいの。",
+   "v_en": "res://assets/voice/en/lien_577.ogg"
   },
   {
    "id": "lien_578",
@@ -1619,21 +1698,24 @@
    "src": 593,
    "who": "nara",
    "en": "May I.",
-   "ja": "よろしいですか。"
+   "ja": "よろしいですか。",
+   "v_en": "res://assets/voice/en/lien_593.ogg"
   },
   {
    "id": "lien_594",
    "src": 594,
    "who": "mara",
    "en": "May you what?",
-   "ja": "何がよろしいの？"
+   "ja": "何がよろしいの？",
+   "v_en": "res://assets/voice/en/lien_594.ogg"
   },
   {
    "id": "lien_595",
    "src": 595,
    "who": "nara",
    "en": "Elsa will have told you what this shop does. May I.",
-   "ja": "この店が何をするか、エルサから聞いているはずです。よろしいですか。"
+   "ja": "この店が何をするか、エルサから聞いているはずです。よろしいですか。",
+   "v_en": "res://assets/voice/en/lien_595.ogg"
   },
   {
    "id": "lien_596",
@@ -1647,21 +1729,24 @@
    "src": 597,
    "who": "mara",
    "en": "She said it costs you. Is that true, or is it a thing you say to make people feel bought?",
-   "ja": "エルサは、あなたが代償を払うと言っていた。本当なの？ それとも、人に買われたと感じさせるための決まり文句？"
+   "ja": "エルサは、あなたが代償を払うと言っていた。本当なの？ それとも、人に買われたと感じさせるための決まり文句？",
+   "v_en": "res://assets/voice/en/lien_597.ogg"
   },
   {
    "id": "lien_598",
    "src": 598,
    "who": "nara",
    "en": "It's true. It comes out of the drawer.",
-   "ja": "本当です。引き出しから出ていきます。"
+   "ja": "本当です。引き出しから出ていきます。",
+   "v_en": "res://assets/voice/en/lien_598.ogg"
   },
   {
    "id": "lien_599",
    "src": 599,
    "who": "mara",
    "en": "Then spend it, and afterwards you will tell me what you saw, because I was there and I want to know if it is the same.",
-   "ja": "なら使いなさい。そして終わったら、何を見たか教えて。私はそこにいたから、同じものかどうか知りたいの。"
+   "ja": "なら使いなさい。そして終わったら、何を見たか教えて。私はそこにいたから、同じものかどうか知りたいの。",
+   "v_en": "res://assets/voice/en/lien_599.ogg"
   },
   {
    "id": "lien_609",
@@ -1675,35 +1760,40 @@
    "src": 610,
    "who": "nara",
    "en": "I can't. I haven't got it tonight.",
-   "ja": "できません。今夜はその持ち合わせがないんです。"
+   "ja": "できません。今夜はその持ち合わせがないんです。",
+   "v_en": "res://assets/voice/en/lien_610.ogg"
   },
   {
    "id": "lien_611",
    "src": 611,
    "who": "mara",
    "en": "That is the most honest thing anyone has said to me since March.",
-   "ja": "三月以来、誰かが私に言ったなかでいちばん正直な言葉だわ。"
+   "ja": "三月以来、誰かが私に言ったなかでいちばん正直な言葉だわ。",
+   "v_en": "res://assets/voice/en/lien_611.ogg"
   },
   {
    "id": "lien_619",
    "src": 619,
    "who": "nara",
    "en": "I'll price it as cloth.",
-   "ja": "布として値をつけます。"
+   "ja": "布として値をつけます。",
+   "v_en": "res://assets/voice/en/lien_619.ogg"
   },
   {
    "id": "lien_620",
    "src": 620,
    "who": "mara",
    "en": "You are allowed to look. Elsa looked.",
-   "ja": "見てもいいのよ。エルサは見た。"
+   "ja": "見てもいいのよ。エルサは見た。",
+   "v_en": "res://assets/voice/en/lien_620.ogg"
   },
   {
    "id": "lien_621",
    "src": 621,
    "who": "nara",
    "en": "Elsa looked at everything and died owing two hundred pounds and knowing what every object in this building had been doing. I'm not sure those are unrelated.",
-   "ja": "エルサは何でも見て、二百ポンドの借金を残して、この建物のすべての物が何をしてきたかを知ったまま死にました。その二つが無関係かどうか、私には自信がありません。"
+   "ja": "エルサは何でも見て、二百ポンドの借金を残して、この建物のすべての物が何をしてきたかを知ったまま死にました。その二つが無関係かどうか、私には自信がありません。",
+   "v_en": "res://assets/voice/en/lien_621.ogg"
   },
   {
    "id": "lien_622",
@@ -1717,7 +1807,8 @@
    "src": 623,
    "who": "mara",
    "en": "No. I don't imagine they are.",
-   "ja": "いいえ。無関係だとは思わないわ。"
+   "ja": "いいえ。無関係だとは思わないわ。",
+   "v_en": "res://assets/voice/en/lien_623.ogg"
   },
   {
    "id": "lien_630",
@@ -1815,42 +1906,48 @@
    "src": 644,
    "who": "mara",
    "en": "Well.",
-   "ja": "さて。"
+   "ja": "さて。",
+   "v_en": "res://assets/voice/en/lien_644.ogg"
   },
   {
    "id": "lien_645",
    "src": 645,
    "who": "nara",
    "en": "You were at the mirror.",
-   "ja": "鏡の前にいらした。"
+   "ja": "鏡の前にいらした。",
+   "v_en": "res://assets/voice/en/lien_645.ogg"
   },
   {
    "id": "lien_646",
    "src": 646,
    "who": "mara",
    "en": "Yes.",
-   "ja": "ええ。"
+   "ja": "ええ。",
+   "v_en": "res://assets/voice/en/lien_646.ogg"
   },
   {
    "id": "lien_647",
    "src": 647,
    "who": "nara",
    "en": "You had it over your face and then you took it off.",
-   "ja": "顔にかけて、それから外された。"
+   "ja": "顔にかけて、それから外された。",
+   "v_en": "res://assets/voice/en/lien_647.ogg"
   },
   {
    "id": "lien_648",
    "src": 648,
    "who": "mara",
    "en": "Yes.",
-   "ja": "ええ。"
+   "ja": "ええ。",
+   "v_en": "res://assets/voice/en/lien_648.ogg"
   },
   {
    "id": "lien_649",
    "src": 649,
    "who": "nara",
    "en": "You said something.",
-   "ja": "何かおっしゃった。"
+   "ja": "何かおっしゃった。",
+   "v_en": "res://assets/voice/en/lien_649.ogg"
   },
   {
    "id": "lien_650",
@@ -1864,7 +1961,8 @@
    "src": 651,
    "who": "mara",
    "en": "I said his name. To check that I could.",
-   "ja": "彼の名前を言ったの。言えるかどうか確かめるために。"
+   "ja": "彼の名前を言ったの。言えるかどうか確かめるために。",
+   "v_en": "res://assets/voice/en/lien_651.ogg"
   },
   {
    "id": "lien_652",
@@ -1878,21 +1976,24 @@
    "src": 653,
    "who": "mara",
    "en": "And could I, in your version?",
-   "ja": "それで、言えていた？ あなたの見た版では。"
+   "ja": "それで、言えていた？ あなたの見た版では。",
+   "v_en": "res://assets/voice/en/lien_653.ogg"
   },
   {
    "id": "lien_654",
    "src": 654,
    "who": "nara",
    "en": "You said one word. The reading doesn't carry sound.",
-   "ja": "ひとことおっしゃいました。読み取りは音を運ばないんです。"
+   "ja": "ひとことおっしゃいました。読み取りは音を運ばないんです。",
+   "v_en": "res://assets/voice/en/lien_654.ogg"
   },
   {
    "id": "lien_655",
    "src": 655,
    "who": "mara",
    "en": "Good. That is exactly the correct amount of it to have.",
-   "ja": "よかった。それがちょうど、持っていていい正しい量だわ。"
+   "ja": "よかった。それがちょうど、持っていていい正しい量だわ。",
+   "v_en": "res://assets/voice/en/lien_655.ogg"
   },
   {
    "id": "lien_656",
@@ -1906,42 +2007,48 @@
    "src": 657,
    "who": "mara",
    "en": "I will tell you what I expected, since I have paid for the right to be embarrassed. I expected the funeral. I have been dreading that you would see me at the funeral, where I was very badly behaved.",
-   "ja": "何を予想していたか話してあげる。恥をかく権利にお金を払ったのだから。葬儀だと思っていたの。葬儀の私を見られるのが怖くてたまらなかった。とてもみっともない振る舞いをしたから。"
+   "ja": "何を予想していたか話してあげる。恥をかく権利にお金を払ったのだから。葬儀だと思っていたの。葬儀の私を見られるのが怖くてたまらなかった。とてもみっともない振る舞いをしたから。",
+   "v_en": "res://assets/voice/en/lien_657.ogg"
   },
   {
    "id": "lien_658",
    "src": 658,
    "who": "nara",
    "en": "I got the night before.",
-   "ja": "私が見たのは前の晩でした。"
+   "ja": "私が見たのは前の晩でした。",
+   "v_en": "res://assets/voice/en/lien_658.ogg"
   },
   {
    "id": "lien_659",
    "src": 659,
    "who": "mara",
    "en": "The night before I was alone and had my arms down and was frightened. That is the version I can stand a stranger having.",
-   "ja": "前の晩の私はひとりで、腕を下ろして、怯えていた。見知らぬ人に持っていられても耐えられるのは、その版よ。"
+   "ja": "前の晩の私はひとりで、腕を下ろして、怯えていた。見知らぬ人に持っていられても耐えられるのは、その版よ。",
+   "v_en": "res://assets/voice/en/lien_659.ogg"
   },
   {
    "id": "lien_660",
    "src": 660,
    "who": "nara",
    "en": "It wasn't frightened.",
-   "ja": "怯えてはいませんでした。"
+   "ja": "怯えてはいませんでした。",
+   "v_en": "res://assets/voice/en/lien_660.ogg"
   },
   {
    "id": "lien_661",
    "src": 661,
    "who": "mara",
    "en": "Wasn't it.",
-   "ja": "そう？"
+   "ja": "そう？",
+   "v_en": "res://assets/voice/en/lien_661.ogg"
   },
   {
    "id": "lien_662",
    "src": 662,
    "who": "nara",
    "en": "It was somebody finding out they could do it. That's a different picture.",
-   "ja": "自分にはできると確かめている人でした。それは別の絵です。"
+   "ja": "自分にはできると確かめている人でした。それは別の絵です。",
+   "v_en": "res://assets/voice/en/lien_662.ogg"
   },
   {
    "id": "lien_663",
@@ -1955,7 +2062,8 @@
    "src": 664,
    "who": "mara",
    "en": "Thirty-five, Elsa would have said.",
-   "ja": "三十五、とエルサなら言ったでしょうね。"
+   "ja": "三十五、とエルサなら言ったでしょうね。",
+   "v_en": "res://assets/voice/en/lien_664.ogg"
   },
   {
    "id": "lien_671",
@@ -1983,21 +2091,24 @@
    "src": 683,
    "who": "mara",
    "en": "That is a costumier's number.",
-   "ja": "衣装屋の数字ね。"
+   "ja": "衣装屋の数字ね。",
+   "v_en": "res://assets/voice/en/lien_683.ogg"
   },
   {
    "id": "lien_684",
    "src": 684,
    "who": "nara",
    "en": "It's a fair trade number.",
-   "ja": "公正な取引の数字です。"
+   "ja": "公正な取引の数字です。",
+   "v_en": "res://assets/voice/en/lien_684.ogg"
   },
   {
    "id": "lien_685",
    "src": 685,
    "who": "mara",
    "en": "It is a number for a woman who does not know what she has. Thank you for the demonstration.",
-   "ja": "自分の持ち物の値打ちを知らない女に向けた数字よ。お手本をありがとう。"
+   "ja": "自分の持ち物の値打ちを知らない女に向けた数字よ。お手本をありがとう。",
+   "v_en": "res://assets/voice/en/lien_685.ogg"
   },
   {
    "id": "lien_686",
@@ -2018,21 +2129,24 @@
    "src": 691,
    "who": "mara",
    "en": "Elsa's number.",
-   "ja": "エルサの数字ね。"
+   "ja": "エルサの数字ね。",
+   "v_en": "res://assets/voice/en/lien_691.ogg"
   },
   {
    "id": "lien_692",
    "src": 692,
    "who": "nara",
    "en": "It's the right number.",
-   "ja": "正しい数字です。"
+   "ja": "正しい数字です。",
+   "v_en": "res://assets/voice/en/lien_692.ogg"
   },
   {
    "id": "lien_693",
    "src": 693,
    "who": "mara",
    "en": "It is the right number. You will find that the right number is very rarely the whole of what is owed, but it is a good place to start and I am glad you started there.",
-   "ja": "正しい数字ね。正しい数字が負っているものの全部であることはめったにないと、いずれ分かるでしょう。でも出発点としてはいいし、あなたがそこから始めてくれてうれしいわ。"
+   "ja": "正しい数字ね。正しい数字が負っているものの全部であることはめったにないと、いずれ分かるでしょう。でも出発点としてはいいし、あなたがそこから始めてくれてうれしいわ。",
+   "v_en": "res://assets/voice/en/lien_693.ogg"
   },
   {
    "id": "lien_694",
@@ -2046,21 +2160,24 @@
    "src": 695,
    "who": "mara",
    "en": "You will not tell anyone.",
-   "ja": "誰にも言いませんから。"
+   "ja": "誰にも言いませんから。",
+   "v_en": "res://assets/voice/en/lien_695.ogg"
   },
   {
    "id": "lien_696",
    "src": 696,
    "who": "nara",
    "en": "No.",
-   "ja": "いいえ。"
+   "ja": "いいえ。",
+   "v_en": "res://assets/voice/en/lien_696.ogg"
   },
   {
    "id": "lien_697",
    "src": 697,
    "who": "mara",
    "en": "No. I did not think you would. That is a different thing from not being able to.",
-   "ja": "ええ。言うとは思っていなかった。でもそれは、言えないのとは別のことよ。"
+   "ja": "ええ。言うとは思っていなかった。でもそれは、言えないのとは別のことよ。",
+   "v_en": "res://assets/voice/en/lien_697.ogg"
   },
   {
    "id": "lien_701",
@@ -2074,42 +2191,48 @@
    "src": 702,
    "who": "mara",
    "en": "That is seventeen pounds more than it is worth.",
-   "ja": "値打ちより十七ポンド多いわ。"
+   "ja": "値打ちより十七ポンド多いわ。",
+   "v_en": "res://assets/voice/en/lien_702.ogg"
   },
   {
    "id": "lien_703",
    "src": 703,
    "who": "nara",
    "en": "Yes.",
-   "ja": "ええ。"
+   "ja": "ええ。",
+   "v_en": "res://assets/voice/en/lien_703.ogg"
   },
   {
    "id": "lien_704",
    "src": 704,
    "who": "mara",
    "en": "Why.",
-   "ja": "なぜ。"
+   "ja": "なぜ。",
+   "v_en": "res://assets/voice/en/lien_704.ogg"
   },
   {
    "id": "lien_705",
    "src": 705,
    "who": "nara",
    "en": "Because I went into your bedroom on the worst night of your life without asking properly and I looked at you, and thirty-five is what the cloth costs and seventeen is what I owe.",
-   "ja": "あなたの人生で最悪の夜に、ちゃんと許しも得ずに寝室に入って、あなたを見たからです。三十五は布の値段で、十七は私の借りです。"
+   "ja": "あなたの人生で最悪の夜に、ちゃんと許しも得ずに寝室に入って、あなたを見たからです。三十五は布の値段で、十七は私の借りです。",
+   "v_en": "res://assets/voice/en/lien_705.ogg"
   },
   {
    "id": "lien_706",
    "src": 706,
    "who": "mara",
    "en": "That is not how a shop works.",
-   "ja": "店というのはそういうふうには回らないものよ。"
+   "ja": "店というのはそういうふうには回らないものよ。",
+   "v_en": "res://assets/voice/en/lien_706.ogg"
   },
   {
    "id": "lien_707",
    "src": 707,
    "who": "nara",
    "en": "It's how this one works after one in the morning.",
-   "ja": "この店は、午前一時を過ぎるとそう回るんです。"
+   "ja": "この店は、午前一時を過ぎるとそう回るんです。",
+   "v_en": "res://assets/voice/en/lien_707.ogg"
   },
   {
    "id": "lien_708",
@@ -2123,21 +2246,24 @@
    "src": 709,
    "who": "mara",
    "en": "You will want to be careful, Elsa's girl. That column adds up in both directions.",
-   "ja": "気をつけなさい、エルサの娘。あの欄は、どちらの方向にも足し算されるから。"
+   "ja": "気をつけなさい、エルサの娘。あの欄は、どちらの方向にも足し算されるから。",
+   "v_en": "res://assets/voice/en/lien_709.ogg"
   },
   {
    "id": "lien_710",
    "src": 710,
    "who": "nara",
    "en": "Which column?",
-   "ja": "どの欄ですか？"
+   "ja": "どの欄ですか？",
+   "v_en": "res://assets/voice/en/lien_710.ogg"
   },
   {
    "id": "lien_711",
    "src": 711,
    "who": "mara",
    "en": "The fourth one.",
-   "ja": "四つ目よ。"
+   "ja": "四つ目よ。",
+   "v_en": "res://assets/voice/en/lien_711.ogg"
   },
   {
    "id": "lien_712",
@@ -2344,7 +2470,8 @@
    "src": 762,
    "who": "nara",
    "en": "Calder.",
-   "ja": "カルダーだ。"
+   "ja": "カルダーだ。",
+   "v_en": "res://assets/voice/en/lien_762.ogg"
   },
   {
    "id": "lien_763",
@@ -2358,7 +2485,8 @@
    "src": 764,
    "who": "nara",
    "en": "That's the stock.",
-   "ja": "それが在庫だから。"
+   "ja": "それが在庫だから。",
+   "v_en": "res://assets/voice/en/lien_764.ogg"
   },
   {
    "id": "lien_765",
@@ -2393,7 +2521,8 @@
    "src": 769,
    "who": "nara",
    "en": "The fourth column's not stock.",
-   "ja": "四つ目の欄は在庫じゃない。"
+   "ja": "四つ目の欄は在庫じゃない。",
+   "v_en": "res://assets/voice/en/lien_769.ogg"
   },
   {
    "id": "lien_770",
@@ -2407,7 +2536,8 @@
    "src": 771,
    "who": "nara",
    "en": "It's not mine to sell.",
-   "ja": "私が売っていいものじゃない。"
+   "ja": "私が売っていいものじゃない。",
+   "v_en": "res://assets/voice/en/lien_771.ogg"
   },
   {
    "id": "lien_772",
@@ -2421,7 +2551,8 @@
    "src": 773,
    "who": "nara",
    "en": "A pistol is an object.",
-   "ja": "拳銃は物よ。"
+   "ja": "拳銃は物よ。",
+   "v_en": "res://assets/voice/en/lien_773.ogg"
   },
   {
    "id": "lien_774",
@@ -2435,7 +2566,8 @@
    "src": 775,
    "who": "nara",
    "en": "I haven't found out what it's worth.",
-   "ja": "値打ちなんて知らない。"
+   "ja": "値打ちなんて知らない。",
+   "v_en": "res://assets/voice/en/lien_775.ogg"
   },
   {
    "id": "lien_776",
@@ -2463,7 +2595,8 @@
    "src": 779,
    "who": "nara",
    "en": "Yes. That's the objection.",
-   "ja": "そう。それが異議よ。"
+   "ja": "そう。それが異議よ。",
+   "v_en": "res://assets/voice/en/lien_779.ogg"
   },
   {
    "id": "lien_780",
@@ -2477,7 +2610,8 @@
    "src": 781,
    "who": "nara",
    "en": "Not for free. It cost the shop.",
-   "ja": "ただじゃない。店が払った。"
+   "ja": "ただじゃない。店が払った。",
+   "v_en": "res://assets/voice/en/lien_781.ogg"
   },
   {
    "id": "lien_782",
@@ -2491,7 +2625,8 @@
    "src": 783,
    "who": "nara",
    "en": "I know what the difference is.",
-   "ja": "違いくらい分かってる。"
+   "ja": "違いくらい分かってる。",
+   "v_en": "res://assets/voice/en/lien_783.ogg"
   },
   {
    "id": "lien_784",
@@ -2540,7 +2675,8 @@
    "src": 795,
    "who": "nara",
    "en": "I don't want —",
-   "ja": "見たくなんか――"
+   "ja": "見たくなんか――",
+   "v_en": "res://assets/voice/en/lien_795.ogg"
   },
   {
    "id": "lien_796",
@@ -2582,7 +2718,8 @@
    "src": 806,
    "who": "nara",
    "en": "Who are they?",
-   "ja": "この人たちは誰？"
+   "ja": "この人たちは誰？",
+   "v_en": "res://assets/voice/en/lien_806.ogg"
   },
   {
    "id": "lien_807",
@@ -2596,7 +2733,8 @@
    "src": 808,
    "who": "nara",
    "en": "That's obscene.",
-   "ja": "おぞましい。"
+   "ja": "おぞましい。",
+   "v_en": "res://assets/voice/en/lien_808.ogg"
   },
   {
    "id": "lien_809",
@@ -2645,7 +2783,8 @@
    "src": 828,
    "who": "nara",
    "en": "Apparently.",
-   "ja": "そうらしい。"
+   "ja": "そうらしい。",
+   "v_en": "res://assets/voice/en/lien_828.ogg"
   },
   {
    "id": "lien_836",
@@ -2705,7 +2844,8 @@
    "src": 857,
    "who": "nara",
    "en": "That's it?",
-   "ja": "それだけ？"
+   "ja": "それだけ？",
+   "v_en": "res://assets/voice/en/lien_857.ogg"
   },
   {
    "id": "lien_858",
@@ -2719,7 +2859,8 @@
    "src": 859,
    "who": "nara",
    "en": "And them?",
-   "ja": "で、あの人たちは？"
+   "ja": "で、あの人たちは？",
+   "v_en": "res://assets/voice/en/lien_859.ogg"
   },
   {
    "id": "lien_860",
@@ -2749,7 +2890,8 @@
    "src": 869,
    "who": "nara",
    "en": "No.",
-   "ja": "いいえ。"
+   "ja": "いいえ。",
+   "v_en": "res://assets/voice/en/lien_869.ogg"
   },
   {
    "id": "lien_870",
@@ -2763,7 +2905,8 @@
    "src": 871,
    "who": "nara",
    "en": "There isn't one. That's not me being noble, it's me telling you the column doesn't have prices in it.",
-   "ja": "そんなものはない。気高いふりをしてるんじゃない。あの欄には値段なんて入ってないって言ってるの。"
+   "ja": "そんなものはない。気高いふりをしてるんじゃない。あの欄には値段なんて入ってないって言ってるの。",
+   "v_en": "res://assets/voice/en/lien_871.ogg"
   },
   {
    "id": "lien_872",
@@ -2777,7 +2920,8 @@
    "src": 873,
    "who": "nara",
    "en": "[i]What the living will offer, and what the dead will demand.[/i] You're neither. You're a man with an apron who found a gap.",
-   "ja": "[i]生者が差し出す値と、死者が求める値。[/i] あなたはどちらでもない。隙間を見つけた、エプロン姿の男よ。"
+   "ja": "[i]生者が差し出す値と、死者が求める値。[/i] あなたはどちらでもない。隙間を見つけた、エプロン姿の男よ。",
+   "v_en": "res://assets/voice/en/lien_873.ogg"
   },
   {
    "id": "lien_874",
@@ -2798,7 +2942,8 @@
    "src": 876,
    "who": "nara",
    "en": "Then you've had your answer twice.",
-   "ja": "なら、答えは二度聞いたわけね。"
+   "ja": "なら、答えは二度聞いたわけね。",
+   "v_en": "res://assets/voice/en/lien_876.ogg"
   },
   {
    "id": "lien_877",
@@ -2868,7 +3013,8 @@
    "src": 916,
    "who": "nara",
    "en": "Those stay blank. That's allowed. That's the whole point of a column — you're allowed to not fill it in.",
-   "ja": "そこは空白のまま。それでいい。欄というのはそういうものだ――埋めなくてもいい。"
+   "ja": "そこは空白のまま。それでいい。欄というのはそういうものだ――埋めなくてもいい。",
+   "v_en": "res://assets/voice/en/lien_916.ogg"
   },
   {
    "id": "lien_917",
@@ -2889,7 +3035,8 @@
    "src": 922,
    "who": "nara",
    "en": "Well. I've had a night.",
-   "ja": "まあ。大変な夜だった。"
+   "ja": "まあ。大変な夜だった。",
+   "v_en": "res://assets/voice/en/lien_922.ogg"
   },
   {
    "id": "lien_923",
@@ -2952,7 +3099,8 @@
    "src": 935,
    "who": "nara",
    "en": "You can't pawn this. You're the shop. I'm the shop. This is —",
-   "ja": "これは質に入れられない。あなたは店。私が店。これは――"
+   "ja": "これは質に入れられない。あなたは店。私が店。これは――",
+   "v_en": "res://assets/voice/en/lien_935.ogg"
   },
   {
    "id": "lien_936",
@@ -2987,7 +3135,8 @@
    "src": 940,
    "who": "nara",
    "en": "No, that's — I've been reading things for three years.",
-   "ja": "違う、それは――三年も前から物を読んでる。"
+   "ja": "違う、それは――三年も前から物を読んでる。",
+   "v_en": "res://assets/voice/en/lien_940.ogg"
   },
   {
    "id": "lien_941",
@@ -3080,7 +3229,8 @@
    "src": 959,
    "who": "nara",
    "en": "And then I'd spend the rest of my life not knowing what was in it.",
-   "ja": "そして私は残りの人生を、そこに何があったのか知らないまま過ごすことになる。"
+   "ja": "そして私は残りの人生を、そこに何があったのか知らないまま過ごすことになる。",
+   "v_en": "res://assets/voice/en/lien_959.ogg"
   },
   {
    "id": "lien_960",
@@ -3101,14 +3251,16 @@
    "src": 962,
    "who": "nara",
    "en": "Fine.",
-   "ja": "いいわ。"
+   "ja": "いいわ。",
+   "v_en": "res://assets/voice/en/lien_962.ogg"
   },
   {
    "id": "lien_963",
    "src": 963,
    "who": "nara",
    "en": "Let's see what I've been using myself for.",
-   "ja": "さあ、私が自分を何に使ってきたのか見てみよう。"
+   "ja": "さあ、私が自分を何に使ってきたのか見てみよう。",
+   "v_en": "res://assets/voice/en/lien_963.ogg"
   },
   {
    "id": "lien_971",
@@ -3310,7 +3462,8 @@
    "src": 1031,
    "who": "nara",
    "en": "I could have. That's the bit. It wasn't that I couldn't.",
-   "ja": "やろうと思えばできた。そこなんだ。できなかったわけじゃない。"
+   "ja": "やろうと思えばできた。そこなんだ。できなかったわけじゃない。",
+   "v_en": "res://assets/voice/en/lien_1031.ogg"
   },
   {
    "id": "lien_1032",
@@ -3345,7 +3498,8 @@
    "src": 1039,
    "who": "nara",
    "en": "Thirty days on the ticket.",
-   "ja": "札の期限は三十日。"
+   "ja": "札の期限は三十日。",
+   "v_en": "res://assets/voice/en/lien_1039.ogg"
   },
   {
    "id": "lien_1040",
@@ -3417,7 +3571,8 @@
    "src": 1057,
    "who": "nara",
    "en": "I've had a quiet one.",
-   "ja": "静かな四半期だった。"
+   "ja": "静かな四半期だった。",
+   "v_en": "res://assets/voice/en/lien_1057.ogg"
   },
   {
    "id": "lien_1058",
@@ -3431,7 +3586,8 @@
    "src": 1059,
    "who": "nara",
    "en": "I've only got —",
-   "ja": "私にはまだ――"
+   "ja": "私にはまだ――",
+   "v_en": "res://assets/voice/en/lien_1059.ogg"
   },
   {
    "id": "lien_1060",
@@ -3459,7 +3615,8 @@
    "src": 1063,
    "who": "nara",
    "en": "Come back in March.",
-   "ja": "三月にまた来い。"
+   "ja": "三月にまた来い。",
+   "v_en": "res://assets/voice/en/lien_1063.ogg"
   },
   {
    "id": "lien_1064",
@@ -3538,7 +3695,8 @@
    "src": 1083,
    "who": "nara",
    "en": "I buy anything I can price.",
-   "ja": "値のつけられるものなら何でも。"
+   "ja": "値のつけられるものなら何でも。",
+   "v_en": "res://assets/voice/en/lien_1083.ogg"
   },
   {
    "id": "lien_1084",

@@ -88,8 +88,7 @@
    "who": "mira",
    "en": "A room. Whatever you have.",
    "ja": "部屋を。何でもいい。",
-   "v_en": "res://assets/voice/start_337c7251.ogg",
-   "v_ja": "res://assets/voice/start_337c7251.ja.ogg"
+   "v_en": "res://assets/voice/en/start_337c7251.ogg"
   },
   {
    "id": "start_2e2c3fb4",
@@ -108,8 +107,7 @@
    "who": "mira",
    "en": "Let's say one and see how it goes.",
    "ja": "一泊で。様子を見て。",
-   "v_en": "res://assets/voice/start_2ca0cc24.ogg",
-   "v_ja": "res://assets/voice/start_2ca0cc24.ja.ogg"
+   "v_en": "res://assets/voice/en/start_2ca0cc24.ogg"
   },
   {
    "id": "start_36f8d542",
@@ -128,8 +126,7 @@
    "who": "mira",
    "en": "I would rather not.",
    "ja": "遠慮したい。",
-   "v_en": "res://assets/voice/start_69e457fa.ogg",
-   "v_ja": "res://assets/voice/start_69e457fa.ja.ogg"
+   "v_en": "res://assets/voice/en/start_69e457fa.ogg"
   },
   {
    "id": "start_6d67804f",
@@ -148,8 +145,7 @@
    "who": "mira",
    "en": "Be in the book.",
    "ja": "帳簿に載るのは。",
-   "v_en": "res://assets/voice/start_89cbf08f.ogg",
-   "v_ja": "res://assets/voice/start_89cbf08f.ja.ogg"
+   "v_en": "res://assets/voice/en/start_89cbf08f.ogg"
   },
   {
    "id": "start_d0736171",
@@ -206,8 +202,7 @@
    "who": "mira",
    "en": "Nothing you'd have to lie to the police about, if that's the worry.",
    "ja": "警察に嘘をつくようなことじゃない。もしそれが心配ならね。",
-   "v_en": "res://assets/voice/ask_why_f6ab7d4b.ogg",
-   "v_ja": "res://assets/voice/ask_why_f6ab7d4b.ja.ogg"
+   "v_en": "res://assets/voice/en/ask_why_f6ab7d4b.ogg"
   },
   {
    "id": "ask_why_b396459b",
@@ -216,8 +211,7 @@
    "who": "mira",
    "en": "I have a card in my bag with my name on it. If I use it tonight, someone will know the name of this hotel before breakfast.",
    "ja": "バッグの中に、私の名前が書かれたカードがある。今夜それを使えば、誰かが朝食前にこのホテルの名前を知ることになる。",
-   "v_en": "res://assets/voice/ask_why_b396459b.ogg",
-   "v_ja": "res://assets/voice/ask_why_b396459b.ja.ogg"
+   "v_en": "res://assets/voice/en/ask_why_b396459b.ogg"
   },
   {
    "id": "ask_why_f597369e",
@@ -236,8 +230,7 @@
    "who": "mira",
    "en": "Someone who pays for the account the card belongs to. He finds it restful, knowing where I spend money.",
    "ja": "「そのカードの口座に金を払っている人。私がどこで金を使うか知っていると、安心するらしいの」",
-   "v_en": "res://assets/voice/ask_why_14ea3e3d.ogg",
-   "v_ja": "res://assets/voice/ask_why_14ea3e3d.ja.ogg"
+   "v_en": "res://assets/voice/en/ask_why_14ea3e3d.ogg"
   },
   {
    "id": "ask_why_1bc60693",
@@ -256,8 +249,7 @@
    "who": "mira",
    "en": "So. Cash. And not in the book. That's the whole of it.",
    "ja": "つまり。現金で。帳簿には載せない。それが全て、と。",
-   "v_en": "res://assets/voice/ask_why_3912378d.ogg",
-   "v_ja": "res://assets/voice/ask_why_3912378d.ja.ogg"
+   "v_en": "res://assets/voice/en/ask_why_3912378d.ogg"
   },
   {
    "id": "take_cash_17b4330d",
@@ -296,8 +288,7 @@
    "who": "mira",
    "en": "That's a good book.",
    "ja": "いい帳簿だ。",
-   "v_en": "res://assets/voice/take_cash_e676f029.ogg",
-   "v_ja": "res://assets/voice/take_cash_e676f029.ja.ogg"
+   "v_en": "res://assets/voice/en/take_cash_e676f029.ogg"
   },
   {
    "id": "by_the_book_79ae07b0",
@@ -326,8 +317,7 @@
    "who": "mira",
    "en": "Of course you do.",
    "ja": "当然だ。",
-   "v_en": "res://assets/voice/by_the_book_98ce8bb1.ogg",
-   "v_ja": "res://assets/voice/by_the_book_98ce8bb1.ja.ogg"
+   "v_en": "res://assets/voice/en/by_the_book_98ce8bb1.ogg"
   },
   {
    "id": "by_the_book_76f9b880",
@@ -346,8 +336,7 @@
    "who": "mira",
    "en": "There. Now we're both honest.",
    "ja": "これで。お互い正直だ。",
-   "v_en": "res://assets/voice/by_the_book_c500fc8f.ogg",
-   "v_ja": "res://assets/voice/by_the_book_c500fc8f.ja.ogg"
+   "v_en": "res://assets/voice/en/by_the_book_c500fc8f.ogg"
   },
   {
    "id": "gives_key_570a86d0",
@@ -376,8 +365,7 @@
    "who": "mira",
    "en": "Mira.",
    "ja": "ミラ。",
-   "v_en": "res://assets/voice/gives_key_f86e94d0.ogg",
-   "v_ja": "res://assets/voice/gives_key_f86e94d0.ja.ogg"
+   "v_en": "res://assets/voice/en/gives_key_f86e94d0.ogg"
   },
   {
    "id": "gives_key_29e719a9",
@@ -396,8 +384,7 @@
    "who": "mira",
    "en": "I know. That's why.",
    "ja": "知ってる。だからよ。",
-   "v_en": "res://assets/voice/gives_key_756c2108.ogg",
-   "v_ja": "res://assets/voice/gives_key_756c2108.ja.ogg"
+   "v_en": "res://assets/voice/en/gives_key_756c2108.ogg"
   },
   {
    "id": "gives_key_6593f0e7",
@@ -406,8 +393,7 @@
    "who": "mira",
    "en": "Goodnight, night auditor.",
    "ja": "おやすみ、ナイトオーディター。",
-   "v_en": "res://assets/voice/gives_key_6593f0e7.ogg",
-   "v_ja": "res://assets/voice/gives_key_6593f0e7.ja.ogg"
+   "v_en": "res://assets/voice/en/gives_key_6593f0e7.ogg"
   },
   {
    "id": "gives_key_61f6631b",
@@ -704,8 +690,7 @@
    "who": "mira",
    "en": "It's Mira. From the book you didn't write in.",
    "ja": "ミラだ。あなたが書き込まなかった帳簿の。",
-   "v_en": "res://assets/voice/act1_end_d56c8b06.ogg",
-   "v_ja": "res://assets/voice/act1_end_d56c8b06.ja.ogg"
+   "v_en": "res://assets/voice/en/act1_end_d56c8b06.ogg"
   },
   {
    "id": "act1_end_44026d3a",
@@ -714,8 +699,7 @@
    "who": "mira",
    "en": "There's a car across the road that hasn't moved in twenty minutes, and I can't sleep, and I've decided I'd rather not be alone up here not sleeping.",
    "ja": "「通りの向かいに二十分動いていない車がいて、眠れなくて、それで決めたの。眠れないなら、せめて一人で眠れないのはやめようって」",
-   "v_en": "res://assets/voice/act1_end_44026d3a.ogg",
-   "v_ja": "res://assets/voice/act1_end_44026d3a.ja.ogg"
+   "v_en": "res://assets/voice/en/act1_end_44026d3a.ogg"
   },
   {
    "id": "act1_end_95a74821",
@@ -724,8 +708,7 @@
    "who": "mira",
    "en": "Bring the pass key. If I open the door myself, I have to stand in the corridor to do it.",
    "ja": "「マスターキーを持ってきて。自分で開けると、廊下に立って開けることになるから」",
-   "v_en": "res://assets/voice/act1_end_95a74821.ogg",
-   "v_ja": "res://assets/voice/act1_end_95a74821.ja.ogg"
+   "v_en": "res://assets/voice/en/act1_end_95a74821.ogg"
   }
  ],
  "menus": {

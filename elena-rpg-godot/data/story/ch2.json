@@ -48,8 +48,7 @@
    "who": "elena",
    "en": "Cobb. The night porter. He does the vault round at a quarter to six.",
    "ja": "コブ。夜警だ。彼は6時15分前に金庫室を見回る。",
-   "v_en": "res://assets/voice/chapter_2_580ca224.ogg",
-   "v_ja": "res://assets/voice/chapter_2_580ca224.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_580ca224.ogg"
   },
   {
    "id": "chapter_2_7f4f6b79",
@@ -68,8 +67,7 @@
    "who": "elena",
    "en": "He's never early.",
    "ja": "「彼が早く来ることはありません」",
-   "v_en": "res://assets/voice/chapter_2_4051292e.ogg",
-   "v_ja": "res://assets/voice/chapter_2_4051292e.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_4051292e.ogg"
   },
   {
    "id": "chapter_2_939f4555",
@@ -168,8 +166,7 @@
    "who": "elena",
    "en": "Yesterday. Before I ever opened the crate.",
    "ja": "昨日。私が木箱を開けるよりも前に。",
-   "v_en": "res://assets/voice/chapter_2_3b92a359.ogg",
-   "v_ja": "res://assets/voice/chapter_2_3b92a359.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_3b92a359.ogg"
   },
   {
    "id": "chapter_2_a2d2c2cf",
@@ -328,8 +325,7 @@
    "who": "elena",
    "en": "Cobb has a sister in the bursar's office. Whatever he saw, she knows by lunch. Meet me at the loading dock at eight. Bring the ledger.",
    "ja": "コブには経理課に妹がいる。彼が何を見たにせよ、昼までには彼女が知るだろう。8時に搬入口で会おう。帳簿を持ってきて。",
-   "v_en": "res://assets/voice/chapter_2_ea306aa9.ogg",
-   "v_ja": "res://assets/voice/chapter_2_ea306aa9.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_ea306aa9.ogg"
   },
   {
    "id": "chapter_2_fe9090d1",
@@ -348,8 +344,7 @@
    "who": "elena",
    "en": "He'll tell the Dean. You know that.",
    "ja": "「彼は学部長に話しますよ。わかってるでしょう」",
-   "v_en": "res://assets/voice/chapter_2_664418a2.ogg",
-   "v_ja": "res://assets/voice/chapter_2_664418a2.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_664418a2.ogg"
   },
   {
    "id": "chapter_2_ce032697",
@@ -368,8 +363,7 @@
    "who": "elena",
    "en": "He saw two cups.",
    "ja": "彼はカップを二つ見た。",
-   "v_en": "res://assets/voice/chapter_2_df18aa03.ogg",
-   "v_ja": "res://assets/voice/chapter_2_df18aa03.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_df18aa03.ogg"
   },
   {
    "id": "chapter_2_146e2015",
@@ -388,8 +382,7 @@
    "who": "elena",
    "en": "Give me the ledger, Vance. I can be out of this building in four minutes. You can't.",
    "ja": "「台帳をください、ヴァンス。私なら四分でこの建物を出られます。あなたには無理」",
-   "v_en": "res://assets/voice/chapter_2_a881269e.ogg",
-   "v_ja": "res://assets/voice/chapter_2_a881269e.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_a881269e.ogg"
   },
   {
    "id": "chapter_2_651b22e0",
@@ -418,8 +411,7 @@
    "who": "elena",
    "en": "Four this year. Four crates, four signing officers, four names that did not sign.",
    "ja": "今年は四件。四つの木箱、四人の署名担当官、署名しなかった四つの名前。",
-   "v_en": "res://assets/voice/chapter_2_f2391da1.ogg",
-   "v_ja": "res://assets/voice/chapter_2_f2391da1.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_f2391da1.ogg"
   },
   {
    "id": "chapter_2_e80d3350",
@@ -438,8 +430,7 @@
    "who": "elena",
    "en": "Then we don't stop the van. We change what's on the trolley.",
    "ja": "「なら、車は止めない。台車に載っているものを変えるんです」",
-   "v_en": "res://assets/voice/chapter_2_f6cbcd25.ogg",
-   "v_ja": "res://assets/voice/chapter_2_f6cbcd25.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_f6cbcd25.ogg"
   },
   {
    "id": "chapter_2_7f462286",
@@ -468,8 +459,7 @@
    "who": "elena",
    "en": "You brought it.",
    "ja": "持ってきたな。",
-   "v_en": "res://assets/voice/chapter_2_4d48c130.ogg",
-   "v_ja": "res://assets/voice/chapter_2_4d48c130.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_4d48c130.ogg"
   },
   {
    "id": "chapter_2_a10ad6bd",
@@ -488,7 +478,7 @@
    "who": "elena",
    "en": "And?",
    "ja": "で？",
-   "v_en": "res://assets/voice/chapter_2_b8942cf2.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_b8942cf2.ogg"
   },
   {
    "id": "chapter_2_e5489c93",
@@ -517,8 +507,7 @@
    "who": "elena",
    "en": "Good. I did not come for sorry.",
    "ja": "よし。謝罪など求めていない。",
-   "v_en": "res://assets/voice/chapter_2_34434d4a.ogg",
-   "v_ja": "res://assets/voice/chapter_2_34434d4a.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_34434d4a.ogg"
   },
   {
    "id": "chapter_2_1760174b",
@@ -607,8 +596,7 @@
    "who": "elena",
    "en": "That was my family's box.",
    "ja": "あれは私の家族の箱だ。",
-   "v_en": "res://assets/voice/chapter_2_0a8fbb79.ogg",
-   "v_ja": "res://assets/voice/chapter_2_0a8fbb79.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_0a8fbb79.ogg"
   },
   {
    "id": "chapter_2_a71f9958",
@@ -627,8 +615,7 @@
    "who": "elena",
    "en": "You don't know that.",
    "ja": "「そんなの、わからないでしょう」",
-   "v_en": "res://assets/voice/chapter_2_9601d5a2.ogg",
-   "v_ja": "res://assets/voice/chapter_2_9601d5a2.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_9601d5a2.ogg"
   },
   {
    "id": "chapter_2_f291ea20",
@@ -667,8 +654,7 @@
    "who": "elena",
    "en": "She thanked you.",
    "ja": "彼女はあなたに感謝した。",
-   "v_en": "res://assets/voice/chapter_2_ffdc3573.ogg",
-   "v_ja": "res://assets/voice/chapter_2_ffdc3573.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_ffdc3573.ogg"
   },
   {
    "id": "chapter_2_fd2f4e53",
@@ -687,8 +673,7 @@
    "who": "elena",
    "en": "Somebody will. Cobb's sister does the key audit in October.",
    "ja": "誰かがそうするだろう。コブの妹が10月に鍵の監査を行う。",
-   "v_en": "res://assets/voice/chapter_2_33613ba5.ogg",
-   "v_ja": "res://assets/voice/chapter_2_33613ba5.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_33613ba5.ogg"
   },
   {
    "id": "chapter_2_089667c6",
@@ -707,8 +692,7 @@
    "who": "elena",
    "en": "We.",
    "ja": "我々。",
-   "v_en": "res://assets/voice/chapter_2_335c8f41.ogg",
-   "v_ja": "res://assets/voice/chapter_2_335c8f41.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_335c8f41.ogg"
   },
   {
    "id": "chapter_2_115014b0",
@@ -747,8 +731,7 @@
    "who": "elena",
    "en": "You are going to keep it in there.",
    "ja": "あなたはそれをそこにしまっておく。",
-   "v_en": "res://assets/voice/chapter_2_1c9fbd3b.ogg",
-   "v_ja": "res://assets/voice/chapter_2_1c9fbd3b.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_1c9fbd3b.ogg"
   },
   {
    "id": "chapter_2_cb92a27b",
@@ -767,8 +750,7 @@
    "who": "elena",
    "en": "And me?",
    "ja": "私は？",
-   "v_en": "res://assets/voice/chapter_2_467faa5d.ogg",
-   "v_ja": "res://assets/voice/chapter_2_467faa5d.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_467faa5d.ogg"
   },
   {
    "id": "chapter_2_da397983",
@@ -797,8 +779,7 @@
    "who": "elena",
    "en": "This is what you meant. Every evening. In here.",
    "ja": "これがあなたの言いたかったことね。毎晩。ここで。",
-   "v_en": "res://assets/voice/chapter_2_978a3008.ogg",
-   "v_ja": "res://assets/voice/chapter_2_978a3008.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_978a3008.ogg"
   },
   {
    "id": "chapter_2_4934f011",
@@ -817,8 +798,7 @@
    "who": "elena",
    "en": "I have decided what I want. I decided at the loading dock, watching you shake.",
    "ja": "私の望みは決まった。荷下ろし場で、あなたが震えるのを見て決めた。",
-   "v_en": "res://assets/voice/chapter_2_c437fb01.ogg",
-   "v_ja": "res://assets/voice/chapter_2_c437fb01.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_c437fb01.ogg"
   },
   {
    "id": "chapter_2_4688af16",
@@ -887,8 +867,7 @@
    "who": "elena",
    "en": "We have a receipt with your signature, a crate the Dean thinks is ash, and a porter who knows both.",
    "ja": "あなたの署名入りの領収書がある。学長が灰だと思っている木箱がある。そして、その両方を知るポーターもいる。",
-   "v_en": "res://assets/voice/chapter_2_eb129a1a.ogg",
-   "v_ja": "res://assets/voice/chapter_2_eb129a1a.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_eb129a1a.ogg"
   },
   {
    "id": "chapter_2_d6a0fd31",
@@ -907,8 +886,7 @@
    "who": "elena",
    "en": "And that.",
    "ja": "そして、それ。",
-   "v_en": "res://assets/voice/chapter_2_2149f35d.ogg",
-   "v_ja": "res://assets/voice/chapter_2_2149f35d.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_2149f35d.ogg"
   },
   {
    "id": "chapter_2_82d47580",
@@ -927,8 +905,7 @@
    "who": "elena",
    "en": "I haven't slept. I haven't eaten. I've committed two crimes before nine in the morning with a man whose handwriting ruined my father.",
    "ja": "「寝てない。食べてない。父の人生を壊した筆跡の持ち主と、朝九時前に犯罪を二つ犯した」",
-   "v_en": "res://assets/voice/chapter_2_5664a3b7.ogg",
-   "v_ja": "res://assets/voice/chapter_2_5664a3b7.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_5664a3b7.ogg"
   },
   {
    "id": "chapter_2_7355aa34",
@@ -947,8 +924,7 @@
    "who": "elena",
    "en": "And I've never felt this awake in my life.",
    "ja": "「それなのに、こんなに目が冴えているのは生まれて初めて」",
-   "v_en": "res://assets/voice/chapter_2_521a8ef3.ogg",
-   "v_ja": "res://assets/voice/chapter_2_521a8ef3.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_521a8ef3.ogg"
   },
   {
    "id": "chapter_2_ae0f2670",
@@ -1007,8 +983,7 @@
    "who": "elena",
    "en": "Tonight. Your office. Bring the page. I will bring what I photographed.",
    "ja": "今夜。オフィスへ。ページを持ってこい。私は撮影したものを持っていく。",
-   "v_en": "res://assets/voice/chapter_2_6cf19164.ogg",
-   "v_ja": "res://assets/voice/chapter_2_6cf19164.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_6cf19164.ogg"
   },
   {
    "id": "chapter_2_88a42b5f",
@@ -1027,8 +1002,7 @@
    "who": "elena",
    "en": "Not yet, Professor. You have to earn the first name.",
    "ja": "まだですよ、教授。下の名前で呼ぶには、まだ早い。",
-   "v_en": "res://assets/voice/chapter_2_9bb7ee10.ogg",
-   "v_ja": "res://assets/voice/chapter_2_9bb7ee10.ja.ogg"
+   "v_en": "res://assets/voice/en/chapter_2_9bb7ee10.ogg"
   },
   {
    "id": "chapter_2_abf97620",

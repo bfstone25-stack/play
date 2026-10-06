@@ -1360,5 +1360,22 @@
    "steps": "steps_wood",
    "space": "bedroom"
   }
+ },
+ "voice": {
+  "ep_adaeze_1": {
+   "v_en": "res://assets/voice/en/ep_adaeze_1.ogg"
+  },
+  "ep_vee_1": {
+   "v_en": "res://assets/voice/en/ep_vee_1.ogg"
+  },
+  "pb1_reply": {
+   "v_en": "res://assets/voice/en/pb1_reply.ogg"
+  },
+  "pb2_reply": {
+   "v_en": "res://assets/voice/en/pb2_reply.ogg"
+  },
+  "pb3_reply": {
+   "v_en": "res://assets/voice/en/pb3_reply.ogg"
+  }
  }
 }
