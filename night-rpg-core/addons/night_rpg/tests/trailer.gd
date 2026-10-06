@@ -84,13 +84,14 @@ func _ready() -> void:
 	main._close_modal()
 	main._clear_overlay()
 	await _voices()
+	await _takes()
 	for id in safe:
 		if NRArt.path("cg", id) != "":
 			main.event.box.visible = false
 			main.event.name_panel.visible = false
 			main.event.show_cg(NRArt.tex("cg", id))
 			await get_tree().create_timer(0.7).timeout
-			await cue("safe_" + id, 3.5)
+			await cue("safe_" + id, 4.5)
 	main.event.show_cg(null)
 	main._clear_overlay()
 	main.show_title()
@@ -186,3 +187,47 @@ func _choice_screen(nid: String) -> void:
 	main.event.chosen.emit(0)
 	main.event.auto_mode = true
 	await get_tree().create_timer(0.2).timeout
+
+
+## Motion takes for the trailer edit: every room plate (ambient dust/light) and every heroine
+## figure over a plate, alive.gdshader breathing/sway running, no dialogue box, 3-4 s each.
+func _takes() -> void:
+	var excl := ["after", "undone", "lace", "nightwear"]
+	main.event.show_cg(null)
+	main.event.box.visible = false
+	main.event.name_panel.visible = false
+	main.hud.visible = false
+	var rooms: Dictionary = NRArt.manifest().get("rooms", {})
+	var rids := []
+	for r in rooms:
+		if NRArt.path("rooms", r) != "":
+			rids.append(r)
+	var n := 0
+	for r in rids.slice(0, 14):
+		main.stage.set_figure(null)
+		main.stage.set_plate(NRArt.tex("rooms", r), {})
+		await get_tree().create_timer(0.4).timeout
+		await cue("plate_" + r, 3.0)
+	var heroes := {}
+	var f := FileAccess.open("res://tests/trailer_voice.json", FileAccess.READ)
+	if f != null:
+		for row in JSON.parse_string(f.get_as_text()):
+			heroes[row["who"]] = true
+	var hs: String = RPG.game.get("heroine_sprite", "")
+	for k in NRArt.manifest().get("sprites", {}):
+		var ok := str(k) == hs
+		for h in heroes:
+			if str(k) == h or str(k).begins_with(h + "_"):
+				ok = true
+		for e in excl:
+			if e in str(k):
+				ok = false
+		if not ok or NRArt.path("sprites", k) == "":
+			continue
+		main.stage.set_plate(NRArt.tex("rooms", rids[n % rids.size()]), {})
+		n += 1
+		main.stage.set_figure(NRArt.tex("sprites", k), 0.62)
+		await get_tree().create_timer(0.4).timeout
+		await cue("fig_%s_%d" % [k, (n - 1) % rids.size()], 3.5)
+	main.stage.set_figure(null)
+	main.hud.visible = true
