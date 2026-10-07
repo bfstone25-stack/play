@@ -1093,19 +1093,8 @@
   }
  },
  "voice_off": {
-  "en": [
-   "end_train_d1686792.ogg"
-  ],
   "fr": [
    "act2_window_4e9213fe.ogg"
-  ],
-  "ja": [
-   "act2_fdcded8b.ogg",
-   "act2_window_8d37aecb.ogg",
-   "by_the_book_98ce8bb1.ogg"
-  ],
-  "zh": [
-   "end_train_d1686792.ogg"
   ]
  }
 }

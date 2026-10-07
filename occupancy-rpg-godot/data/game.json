@@ -1750,16 +1750,5 @@
    "steps": "steps_stone",
    "space": "cellar"
   }
- },
- "voice_off": {
-  "ja": [
-   "n3_n1.ogg",
-   "n4_n1.ogg",
-   "v_win_0.ogg",
-   "v_win_big_0.ogg"
-  ],
-  "zh": [
-   "v_win_1.ogg"
-  ]
  }
 }

@@ -1435,22 +1435,15 @@
  },
  "voice_off": {
   "de": [
-   "scene_dawn_resolution_4a80179f.ogg",
    "scene_dawn_resolution_ca28ef3b.ogg"
   ],
   "fr": [
-   "chapter_2_b8942cf2.ogg",
-   "scene_dawn_resolution_35b88360.ogg",
-   "scene_dawn_resolution_ca28ef3b.ogg"
+   "scene_dawn_resolution_35b88360.ogg"
   ],
   "ja": [
-   "chapter_2_b8942cf2.ogg",
-   "chapter_3_820a1daf.ogg",
    "chapter_4_045b58d0.ogg",
-   "chapter_5_107e101c.ogg",
    "route_pact_045b58d0.ogg",
-   "scene_dawn_resolution_03cc1bd3.ogg",
-   "start_fc09ad15.ogg"
+   "scene_dawn_resolution_03cc1bd3.ogg"
   ],
   "ko": [
    "chapter_4_e0791f02.ogg",

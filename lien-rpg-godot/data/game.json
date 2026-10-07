@@ -1375,16 +1375,8 @@
  },
  "voice_off": {
   "de": [
-   "lien_435.ogg",
    "lien_511.ogg",
-   "lien_571.ogg",
-   "lien_711.ogg"
-  ],
-  "en": [
-   "lien_352.ogg",
-   "lien_442.ogg",
-   "lien_696.ogg",
-   "lien_869.ogg"
+   "lien_571.ogg"
   ],
   "es": [
    "lien_511.ogg",
@@ -1395,32 +1387,19 @@
    "lien_511.ogg"
   ],
   "ja": [
-   "h3_bailiff_3.ogg",
    "h3_till.ogg",
-   "lien_1057.ogg",
-   "lien_348.ogg",
    "lien_352.ogg",
-   "lien_360.ogg",
-   "lien_435.ogg",
-   "lien_485.ogg",
-   "lien_511.ogg",
-   "lien_569.ogg",
-   "lien_571.ogg",
-   "lien_773.ogg"
+   "lien_511.ogg"
   ],
   "ko": [
-   "h3_bailiff_3.ogg",
    "lien_360.ogg",
    "lien_470.ogg",
    "lien_492.ogg",
    "lien_762.ogg"
   ],
   "zh": [
-   "lien_1039.ogg",
    "lien_435.ogg",
-   "lien_497.ogg",
-   "lien_511.ogg",
-   "lien_762.ogg"
+   "lien_511.ogg"
   ]
  }
 }
