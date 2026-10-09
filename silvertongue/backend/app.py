@@ -144,8 +144,10 @@ def _advance_state(pid, uid, scenario, difficulty, message, run_day=None):
 def _chat(system, messages, max_tokens=200, temperature=0.7):
     # SilverTongue's fine-tuned local model is the actor.  Do not silently
     # replace it with generic edge output or a canned sentence.
-    subprocess.run([os.path.expanduser("~/bin/llm_claim.sh"), "games", "8903"],
-                   timeout=90, check=False)
+    # The llm_claim.sh lane claim waited 90 s on every call and could never succeed
+    # once llm_spot was retired (2026-10-03): /say 500'd after 90 s for every player.
+    # Use a model started by hand; otherwise fail in a second, not ninety.
+    urllib.request.urlopen(f"{LLAMACPP}/health", timeout=1).close()
     body = json.dumps({"model": "silvertongue", "max_tokens": max_tokens, "temperature": temperature,
                        "messages": [{"role": "system", "content": system}] + messages}).encode()
     req = urllib.request.Request(f"{LLAMACPP}/v1/chat/completions", data=body,

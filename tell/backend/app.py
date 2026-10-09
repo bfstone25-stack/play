@@ -777,7 +777,8 @@ def _verify_candidate(reply, case, sid, intent, allow_tell=False):
     return True, "verified"
 
 def _chat(system, messages, max_tokens=160, temperature=0.45):
-    _claim_tell_gpu(wait=True)
+    if not _claim_tell_gpu(wait=True):
+        raise RuntimeError(f"model offline at {LLAMACPP}")
     body = json.dumps({"model": "tell", "max_tokens": max_tokens, "temperature": temperature,
                        "messages": [{"role": "system", "content": system}] + messages}).encode()
     req = urllib.request.Request(f"{LLAMACPP}/v1/chat/completions", data=body,
@@ -808,14 +809,18 @@ def _chat_or_none(tag, system, messages):
 
 
 def _claim_tell_gpu(wait=False):
-    """Refresh TELL's GPU lease; the shared scheduler may pack two fitting models."""
+    """True when TELL's model answers its /health within a second.
+
+    This used to run ~/bin/llm_claim.sh with a 90 s timeout. Since 2026-10-03 pop-os
+    boots light, llm_spot is retired and nothing writes the owner file the claim waits
+    for, so the claim could never succeed: every question sat 90 s and then took the
+    authored fallback anyway (probe 2026-10-09: latency_ms 90038 on both branches).
+    A model started by hand (`infer up`) is used; otherwise fail in a second.
+    """
     try:
-        result = subprocess.run([os.path.expanduser("~/bin/llm_claim.sh"), "tell", "8809"],
-                                timeout=90, check=False,
-                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        return result.returncode == 0
-    except Exception as exc:
-        print("[gpu-claim]", exc)
+        urllib.request.urlopen(f"{LLAMACPP}/health", timeout=1).close()
+        return True
+    except Exception:
         return False
 
 @app.get("/health")

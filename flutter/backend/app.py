@@ -177,7 +177,8 @@ def _llm_endpoint(lang="en"):
     return LLM_WEST
 
 def _chat(system, messages, max_tokens=240, temperature=0.85, lang="en"):
-    _claim_flutter_gpu(lang, wait=True)
+    if not _claim_flutter_gpu(lang, wait=True):
+        raise RuntimeError(f"model offline at {_llm_endpoint(lang)}")
     body = json.dumps({"model": "flutter", "max_tokens": max_tokens, "temperature": temperature,
                        "messages": [{"role": "system", "content": system}] + messages}).encode()
     req = urllib.request.Request(f"{_llm_endpoint(lang)}/v1/chat/completions", data=body,
@@ -185,18 +186,15 @@ def _chat(system, messages, max_tokens=240, temperature=0.85, lang="en"):
     return json.loads(urllib.request.urlopen(req, timeout=420).read())["choices"][0]["message"]["content"].strip()
 
 def _claim_flutter_gpu(lang="en", wait=False):
-    """Refresh the current V3 market lane through the shared GPU scheduler."""
+    """True when this market's model answers /health within a second.
+
+    Was a 90 s ~/bin/llm_claim.sh lane claim, which cannot succeed since llm_spot was
+    retired on 2026-10-03; every model call then waited 90 s before failing.
+    """
     try:
-        market = _edition(lang)
-        lane, port = ({"zh": ("flutter-zh", "8852"),
-                       "ja": ("flutter-ja", "8853")}
-                      .get(market, ("flutter-west", "8851")))
-        result = subprocess.run([os.path.expanduser("~/bin/llm_claim.sh"), lane, port],
-                                timeout=90, check=False,
-                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        return result.returncode == 0
-    except Exception as exc:
-        print("[gpu-claim]", exc)
+        urllib.request.urlopen(f"{_llm_endpoint(lang)}/health", timeout=1).close()
+        return True
+    except Exception:
         return False
 
 @app.post("/gpu/warmup")
